@@ -14,7 +14,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo4Rn from './demos/taro/demo4-rn'
 // import Demo5 from './demos/taro/demo5'
 
-const isRn = Taro.getEnv() === 'RN'
+const isNative = Taro.getEnv() === 'RN' || Taro.getEnv() === 'HARMONY'
 
 const HoverDemo = () => {
   const [translated] = useTranslate({
@@ -50,7 +50,7 @@ const HoverDemo = () => {
       <Header />
       <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-        style={isRn ? { minHeight: 420 } : {}}
+        style={isNative ? { minHeight: 420 } : {}}
       >
         <Text className="h2">{translated.basic}</Text>
         <Button
@@ -96,10 +96,10 @@ const HoverDemo = () => {
         {/* <Demo5 /> */}
       </ScrollView>
 
-      {curDemo === 'basic' && (isRn ? <Demo1Rn /> : <Demo1 />)}
-      {curDemo === 'multiButtons' && (isRn ? <Demo2Rn /> : <Demo2 />)}
-      {curDemo === 'hasTabbar' && (isRn ? <Demo3Rn /> : <Demo3 />)}
-      {curDemo === 'customZIndex' && (isRn ? <Demo4Rn /> : <Demo4 />)}
+      {curDemo === 'basic' && (isNative ? <Demo1Rn /> : <Demo1 />)}
+      {curDemo === 'multiButtons' && (isNative ? <Demo2Rn /> : <Demo2 />)}
+      {curDemo === 'hasTabbar' && (isNative ? <Demo3Rn /> : <Demo3 />)}
+      {curDemo === 'customZIndex' && (isNative ? <Demo4Rn /> : <Demo4 />)}
     </View>
   )
 }

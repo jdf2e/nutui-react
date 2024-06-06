@@ -20,7 +20,8 @@ const defaultProps = {
 } as HoverButtonItemProps
 
 const classPrefix = 'nut-hoverbutton-item'
-const isRn = Taro.getEnv() === 'RN'
+const isHarmony = Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+const isNative = Taro.getEnv() === Taro.ENV_TYPE.RN || isHarmony
 
 export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   const { className, style, icon, onClick } = {
@@ -30,7 +31,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   const [isTouchStart, setTouchStart] = useState(false)
   // @TODO 待添加暗黑模式及样式变量功能
   const rnProps = useMemo(
-    () => (isRn ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
+    () => (isNative ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
     [isTouchStart]
   )
 
@@ -41,17 +42,18 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   }
 
   const handleActiveStart = (event: BaseEventOrig) => {
-    isRn && setTouchStart(true)
+    isNative && setTouchStart(true)
   }
 
   const handleActiveEnd = (event: BaseEventOrig) => {
-    isRn && setTouchStart(false)
+    isNative && setTouchStart(false)
   }
 
   return (
     <View
       className={classNames([`${classPrefix}-container`, className], {
-        [`${classPrefix}-container-active`]: isRn && isTouchStart,
+        [`${classPrefix}-container-active`]: isNative && isTouchStart,
+        [`${classPrefix}-container-harmony`]: isHarmony,
       })}
       style={style}
       onTouchStart={handleActiveStart}

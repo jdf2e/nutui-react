@@ -10,6 +10,14 @@
     &-active {
       background-color: $hoverbutton-item-background-active;
     }
+
+    &-harmony {
+      margin-bottom: $hoverbutton-spacing;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 
   &-icon {
