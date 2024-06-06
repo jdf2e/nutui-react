@@ -1,4 +1,5 @@
 import React from 'react'
+import { Image } from '@tarojs/components'
 import { Swiper } from '@nutui/nutui-react-taro'
 
 const list = [
@@ -12,12 +13,10 @@ const Demo1 = () => {
     <Swiper defaultValue={1} autoPlay indicator>
       {list.map((item, index) => (
         <Swiper.Item key={item}>
-          <img
-            width="100%"
-            height="100%"
+          <Image
+            style={{ width: '100%', height: '100%' }}
             onClick={() => console.log(index)}
             src={item}
-            alt=""
           />
         </Swiper.Item>
       ))}
