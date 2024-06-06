@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Taro, { PageInstance, pxTransform } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/utils/use-uuid'
@@ -55,15 +55,17 @@ export const Progress: FunctionComponent<
   })
 
   const stylesOuter: React.CSSProperties = {
-    background,
+    width: '100%',
+    backgroundColor: background,
   }
 
   const [displayPercent, setDispalyPercent] = useState(0)
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    background: color,
+    backgroundColor: color || '#FF0F23',
   }
+
   if (strokeWidth) {
     stylesOuter.height = pxTransform(Number(strokeWidth))
     stylesInner.height = pxTransform(Number(strokeWidth))
@@ -111,6 +113,7 @@ export const Progress: FunctionComponent<
   }, [intersecting])
   const handleWebObserver = () => {
     /// web环境
+
     if (lazy) {
       webObserver.current = new IntersectionObserver(
         (entires, self) => {
@@ -129,6 +132,12 @@ export const Progress: FunctionComponent<
   }
   const handleOtherObserver = () => {
     // 非web环境
+    if (
+      Taro.getEnv() === Taro.ENV_TYPE.HARMONY ||
+      Taro.getEnv() === Taro.ENV_TYPE.RN
+    ) {
+      return
+    }
     let observer: any = null
     if (lazy) {
       observer = Taro.createIntersectionObserver(
@@ -154,44 +163,96 @@ export const Progress: FunctionComponent<
       handleOtherObserver()
     }
   }, [])
-
+  const getTextStyle = () => {
+    const value = Taro.getEnv() === Taro.ENV_TYPE.HARMONY ? '90%' : '100%'
+    return rtl ? { right: value } : { left: value }
+  }
+  const computeRight = () => {
+    if (children) {
+      return 0
+    }
+    if (!['HARMONY', 'RN'].includes(Taro.getEnv())) {
+      return Math.floor((`${percent}%`.length * 9) / 2)
+    }
+    if (Taro.getEnv() === Taro.ENV_TYPE.RN) {
+      return `${percent}%`.length * 9 + 4
+    }
+    return Math.floor((`${percent}%`.length * 9 + 4) / 2)
+  }
+  const computeInnerStyle = () => {
+    const style: any = {
+      backgroundColor: color || '#ff0f23',
+      height:
+        // eslint-disable-next-line no-nested-ternary
+        Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+          ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
+          : strokeWidth
+            ? Number(strokeWidth) + 8
+            : 18,
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }
+    if (['HARMONY', 'RN'].includes(Taro.getEnv())) {
+      style.width =
+        Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+          ? pxTransform(`${percent}%`.length * 9 + 4)
+          : `${percent}%`.length * 9 + 4
+    }
+    return style
+  }
   return (
-    <>
-      <View
-        ref={progressRef}
-        id={selector}
-        className={classNames(classPrefix, className)}
-        style={style}
-        {...rest}
-      >
-        <View className={`${classPrefix}-outer`} style={stylesOuter}>
-          <View className={classesInner} style={stylesInner}>
-            {showText && (
+    <View
+      ref={progressRef}
+      id={selector}
+      className={classNames(classPrefix, className)}
+      style={style}
+      {...rest}
+    >
+      <View className={`${classPrefix}-outer`} style={stylesOuter}>
+        <View
+          className={classesInner}
+          style={{ ...stylesInner, position: 'relative' }}
+        >
+          {showText && (
+            <View
+              style={{
+                position: 'relative',
+                [rtl ? 'left' : 'right']: computeRight(),
+              }}
+            >
               <View
                 className={`${classPrefix}-text`}
-                style={
-                  { left: '100%' }
-                  // rtl
-                  //   ? { right: `${displayPercent}%` }
-                  //   : { left: `${displayPercent}%` }
-                }
+                style={{
+                  ...getTextStyle(),
+                  height:
+                    // eslint-disable-next-line no-nested-ternary
+                    Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+                      ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
+                      : strokeWidth
+                        ? Number(strokeWidth) + 8
+                        : 18,
+                  position: 'absolute',
+                  top: -(strokeWidth
+                    ? (Number(strokeWidth) + 8 - 9) / 2 + 5
+                    : 9),
+                }}
               >
                 {children || (
-                  <Text
+                  <View
                     className={`${classPrefix}-text-inner`}
-                    style={{
-                      background: color,
-                    }}
+                    style={computeInnerStyle()}
                   >
-                    {percent}%
-                  </Text>
+                    {`${percent}%`}
+                  </View>
                 )}
               </View>
-            )}
-          </View>
+            </View>
+          )}
         </View>
       </View>
-    </>
+    </View>
   )
 }
 

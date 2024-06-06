@@ -5,8 +5,8 @@ const Demo2 = () => {
   return (
     <Progress
       percent={30}
-      color="var(--nutui-color-primary)"
-      background="var(--nutui-brand-1)"
+      color="#FF0F23"
+      background="#FFEAE8"
       strokeWidth="15"
     />
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Button, Toast, Progress } from '@nutui/nutui-react-taro'
 import { View, Text } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
+import Taro, { pxTransform } from '@tarojs/taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState(0)
@@ -9,14 +9,17 @@ const Demo7 = () => {
   const [toastMsg, setToastMsg] = useState('')
   return (
     <Cell.Group>
-      <Toast
-        type="text"
-        visible={show}
-        content={toastMsg}
-        onClose={() => {
-          setShow(false)
-        }}
-      />
+      {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+        <Toast
+          type="text"
+          visible={show}
+          content={toastMsg}
+          onClose={() => {
+            setShow(false)
+          }}
+        />
+      )}
+
       <Cell align="center">
         <View style={{ width: '90%', marginRight: pxTransform(5) }}>
           <Progress percent={value} />
@@ -26,7 +29,7 @@ const Demo7 = () => {
       <Cell align="center">
         <Button
           type="default"
-          style={{ margin: 8 }}
+          style={{ marginRight: pxTransform(16) }}
           onClick={() => {
             if (value <= 0) {
               setToastMsg('进度已为0')
@@ -39,7 +42,6 @@ const Demo7 = () => {
         </Button>
         <Button
           type="primary"
-          style={{ margin: 8 }}
           onClick={() => {
             if (value >= 100) {
               setToastMsg('进度已为100%')

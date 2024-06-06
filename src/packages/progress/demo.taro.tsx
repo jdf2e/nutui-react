@@ -63,20 +63,29 @@ const ProgressDemo = () => {
         <Cell>
           <Demo3 />
         </Cell>
-        <View className="h2">{translated.customContent}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+          <>
+            <View className="h2">{translated.customContent}</View>
+            <Cell>
+              <Demo4 />
+            </Cell>
+          </>
+        )}
         <View className="h2">{translated.customSize}</View>
         <Demo5 />
         <View className="h2">{translated.statusDisplay}</View>
         <Demo6 />
+
         <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        <View className="h2">{translated.lazy}</View>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+          <>
+            <View className="h2">{translated.lazy}</View>
+            <Cell>
+              <Demo8 />
+            </Cell>
+          </>
+        )}
       </ScrollView>
     </>
   )
