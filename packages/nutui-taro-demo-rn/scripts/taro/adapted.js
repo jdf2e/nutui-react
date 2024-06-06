@@ -15,6 +15,12 @@ exports = module.exports = [
   'grid',
   'griditem',
   'divider',
+  'image',
   'resultpage',
+  'notify',
+  'pagination',
+  'swiper',
+  'textarea',
+  'indicator',
   'skeleton',
 ]

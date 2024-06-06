@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
+import { Image, View, Text } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   const [current, setCurrent] = useState(0)
@@ -16,28 +18,33 @@ const Demo4 = () => {
         setCurrent(e.detail.current)
       }}
       indicator={
-        <div
+        <View
           style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
             position: 'absolute',
-            bottom: '0',
-            right: '0',
-            width: '46px',
-            height: '22px',
-            background: 'rgba(0, 0, 0, 0.33)',
-            borderRadius: '22px',
+            left: '85%',
+            top: pxTransform(120),
+            width: pxTransform(46),
+            height: pxTransform(22),
+            backgroundColor: 'rgba(0, 0, 0, 0.33)',
+            borderRadius: pxTransform(22),
             textAlign: 'center',
-            color: '#fff',
-            fontSize: '14px',
-            zIndex: '1',
+            fontSize: pxTransform(14),
+            zIndex: 1,
           }}
         >
-          {current + 1}/{list.length}
-        </div>
+          <Text style={{ color: '#fff' }}>
+            {current + 1}/{list.length}
+          </Text>
+        </View>
       }
     >
       {list.map((item) => (
         <Swiper.Item key={item}>
-          <img width="100%" height="100%" src={item} alt="" />
+          <Image style={{ width: '100%', height: '100%' }} src={item} />
         </Swiper.Item>
       ))}
     </Swiper>

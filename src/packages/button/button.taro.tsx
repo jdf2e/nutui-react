@@ -39,6 +39,7 @@ export interface ButtonProps
   disabled: boolean
   icon: React.ReactNode
   rightIcon: React.ReactNode
+  nativeType: 'submit' | 'reset'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -74,6 +75,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       children,
       className,
       style,
+      nativeType,
       onClick,
       ...rest
     } = {
@@ -112,6 +114,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       <TaroButton
         {...rest}
         ref={ref}
+        formType={nativeType}
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,

@@ -38,7 +38,7 @@ import { Signature } from '@nutui/nutui-react'
 | strokeStyle | Drawing stroke color | `string` | `#000` |
 | type | Picture format | `string` | `png` |
 | unsupported | Display copy without canvas | `ReactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
-| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string, isSigned?: boolean) => void` | `-` |
 | onClear | Clicking the reschedule button triggers the event callback function | `onClear: () => void` | `-` |
 
 ### Ref

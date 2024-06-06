@@ -5,8 +5,8 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PaginationProps extends BasicComponent {
-  value: number
   defaultValue: number
+  value: number
   mode: 'multi' | 'simple' | 'lite'
   prev: ReactNode
   next: ReactNode
@@ -14,7 +14,7 @@ export interface PaginationProps extends BasicComponent {
   pageSize: number
   itemSize: number
   ellipse: boolean
-  itemRender: (page: any) => ReactNode
+  itemRender: (page: any, index: number) => ReactNode
   onChange: (currPage: number) => void
 }
 
@@ -47,6 +47,7 @@ export const Pagination: FunctionComponent<
     itemRender,
     defaultValue,
     className,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -111,8 +112,8 @@ export const Pagination: FunctionComponent<
           <div
             className={classNames(
               `${classPrefix}-prev`,
-              mode === 'multi' ? '' : 'simple-border',
-              currentPage === 1 ? 'disabled' : ''
+              mode === 'multi' ? '' : `${classPrefix}-simple-border`,
+              currentPage === 1 ? `${classPrefix}-prev-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage - 1)}
           >
@@ -125,14 +126,15 @@ export const Pagination: FunctionComponent<
                   <div
                     key={`${index}pagination`}
                     className={classNames(`${classPrefix}-item`, {
-                      active: item.number === currentPage,
+                      [`${classPrefix}-item-active`]:
+                        item.number === currentPage,
                     })}
                     onClick={(e) => {
                       item.number !== currentPage &&
                         handleSelectPage(item.number)
                     }}
                   >
-                    {itemRender ? itemRender(item) : item.text}
+                    {itemRender ? itemRender(item, currentPage) : item.text}
                   </div>
                 )
               })}
@@ -148,7 +150,7 @@ export const Pagination: FunctionComponent<
           <div
             className={classNames(
               `${classPrefix}-next`,
-              currentPage >= pageCount ? 'disabled' : ''
+              currentPage >= pageCount ? `${classPrefix}-next-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage + 1)}
           >
@@ -159,8 +161,8 @@ export const Pagination: FunctionComponent<
       {mode === 'lite' && (
         <>
           <div className={`${classPrefix}-lite`}>
-            <div className={`${classPrefix}-lite-active`}>{2}</div>
-            <div className={`${classPrefix}-lite-default`}>{8}</div>
+            <div className={`${classPrefix}-lite-active`}>{currentPage}</div>
+            <div className={`${classPrefix}-lite-default`}>{pageCount}</div>
           </div>
         </>
       )}

@@ -1,26 +1,31 @@
 import React from 'react'
-import { Image, Row, Col } from '@nutui/nutui-react-taro'
+import { Image } from '@nutui/nutui-react-taro'
 import { Loading } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
 
 const Demo3 = () => {
+  const imageText: React.CSSProperties = {
+    width: 80,
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999',
+  }
   return (
     <>
-      <Row gutter={5}>
-        <Col span="8">
-          <Image width={pxTransform(80)} height={pxTransform(80)} />
-          <View style={{ textAlign: 'left' }}>默认</View>
-        </Col>
-        <Col span="8">
+      <View style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <View style={{ width: 98 }}>
+          <Image width="80" height="80" />
+          <View style={imageText}>默认</View>
+        </View>
+        <View style={{ width: 98 }}>
           <Image
-            width={pxTransform(80)}
-            height={pxTransform(80)}
+            width="80"
+            height="80"
             loading={<Loading className="nut-icon-loading" />}
           />
-          <View style={{ textAlign: 'left' }}>自定义</View>
-        </Col>
-      </Row>
+          <View style={imageText}>自定义</View>
+        </View>
+      </View>
     </>
   )
 }
