@@ -73,7 +73,7 @@ import { ShortPassword } from '@nutui/nutui-react';
 | description | description | `ReactNode` | `Verify` |
 | tips | tips | `ReactNode` | `Forget password` |
 | hideFooter | whether to hide the bottom button | `boolean` | `true` |
-| length | ShortPassword lenght The value is 4~6 | `number` | `6` |
+| length | ShortPassword length The value is 4~6 | `number` | `6` |
 | error | Error message | `ReactNode` | `-` |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
 | onChange | Trigger event when password is entered | `(value) => void` | `-` |

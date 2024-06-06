@@ -13,9 +13,6 @@ const Demo4 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type='primary' onClick={handleToggleShow}>
-          不锁定背景滚动
-        </Button> */}
         <View onClick={handleToggleShow}>不锁定背景滚动</View>
       </Cell>
 

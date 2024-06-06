@@ -129,7 +129,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
@@ -179,7 +179,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "GridItem",
           "type": "component",
           "cName": "宫格子组件",

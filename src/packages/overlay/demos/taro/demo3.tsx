@@ -13,9 +13,6 @@ const Demo3 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type="primary" onClick={handleToggleShow}>
-          设置动画时间
-        </Button> */}
         <View onClick={handleToggleShow}>设置动画时间</View>
       </Cell>
 

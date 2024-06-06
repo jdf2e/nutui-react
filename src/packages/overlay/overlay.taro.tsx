@@ -102,9 +102,8 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      {Taro.getEnv() !== 'RN' &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
+      {Taro.getEnv() !== Taro.ENV_TYPE.RN &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONY ? (
         <CSSTransition
           nodeRef={nodeRef}
           classNames={`${classPrefix}-slide`}
