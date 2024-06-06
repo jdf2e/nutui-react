@@ -28,7 +28,7 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch",
+    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch  --reset-cache",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "dev:weapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
     "dev:swan:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:swan -- --watch",
