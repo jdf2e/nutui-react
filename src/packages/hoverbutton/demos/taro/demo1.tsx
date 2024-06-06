@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
-import { ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent } from '@tarojs/components'
 import { Cart } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
@@ -13,10 +13,6 @@ const Demo1 = () => {
     console.log('点击事件')
   }
 
-  return (
-    <View>
-      <HoverButton icon={<Cart />} onClick={testClick} />
-    </View>
-  )
+  return <HoverButton icon={<Cart />} onClick={testClick} />
 }
 export default Demo1

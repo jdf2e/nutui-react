@@ -13,10 +13,6 @@ const Demo1 = () => {
     })
   }
 
-  return (
-    <>
-      <HoverButton icon={<Cart />} onClick={testClick} />
-    </>
-  )
+  return <HoverButton icon={<Cart />} onClick={testClick} />
 }
 export default Demo1

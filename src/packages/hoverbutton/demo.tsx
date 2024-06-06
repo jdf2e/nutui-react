@@ -6,7 +6,7 @@ import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
-// import Demo5 from './demos/h5/demo5'
+import Demo5 from './demos/h5/demo5'
 
 const HoverDemo = () => {
   const [translated] = useTranslate({
@@ -85,8 +85,16 @@ const HoverDemo = () => {
         </Button>
         {curDemo === 'customZIndex' && <Demo4 />}
 
-        {/* <h2>{translated.customSpacing}</h2> */}
-        {/* <Demo5 /> */}
+        <h2>{translated.customSpacing}</h2>
+        <Button
+          block
+          onClick={() => {
+            setCurDemo('customSpacing')
+          }}
+        >
+          {`${translated.show}${translated.customSpacing}`}
+        </Button>
+        {curDemo === 'customSpacing' && <Demo5 />}
       </>
     </>
   )

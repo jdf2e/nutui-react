@@ -92,14 +92,25 @@ const HoverDemo = () => {
           {`${translated.show}${translated.customZIndex}`}
         </Button>
 
-        {/* <View className="h2">{translated.customSpacing}</View> */}
-        {/* <Demo5 /> */}
+        {/* @TODO RN、鸿蒙端暂不支持 ConfigProvider */}
+        {/* {!isNative && <View className="h2">{translated.customSpacing}</View>}
+        {!isNative && (
+          <Button
+            block
+            onClick={() => {
+              setCurDemo('customSpacing')
+            }}
+          >
+            {`${translated.show}${translated.customSpacing}`}
+          </Button>
+        )} */}
       </ScrollView>
 
       {curDemo === 'basic' && (isNative ? <Demo1Rn /> : <Demo1 />)}
       {curDemo === 'multiButtons' && (isNative ? <Demo2Rn /> : <Demo2 />)}
       {curDemo === 'hasTabbar' && (isNative ? <Demo3Rn /> : <Demo3 />)}
       {curDemo === 'customZIndex' && (isNative ? <Demo4Rn /> : <Demo4 />)}
+      {/* {curDemo === 'customSpacing' && <Demo5 />} */}
     </View>
   )
 }
