@@ -64,6 +64,7 @@
     "dev:taro:h5:jmapp": "pnpm --dir ./packages/nutui-taro-demo dev:h5:jmapp",
     "dev:taro:alipay": "pnpm --dir ./packages/nutui-taro-demo dev:alipay",
     "dev:taro:harmony": "pnpm --dir ./packages/nutui-taro-demo dev:harmony",
+    "dev:taro:jdharmony": "pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
     "rn:copy": "node ./scripts/rn/copy-file.js",
     "dev:taro:rn": "pnpm --dir ./packages/nutui-taro-demo-rn dev:jdrn & pnpm run gulp:watch",
     "gulp:watch": "gulp watch --environment",

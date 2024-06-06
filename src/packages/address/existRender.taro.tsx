@@ -1,6 +1,6 @@
-import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react-taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, ITouchEvent } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './types'
 
@@ -51,7 +51,7 @@ export const ExistRender: FunctionComponent<
     onSelect && onSelect(item)
   }
 
-  const onClick: MouseEventHandler = (e) => {
+  const onClick = (e: ITouchEvent) => {
     e.stopPropagation()
     onSwitch && onSwitch({ type: type === 'exist' ? 'custom' : 'exist' })
   }

@@ -1,32 +1,66 @@
 import React from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
+import { Text, View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo9 = () => {
   return (
-    <Swiper loop autoPlay>
+    <Swiper
+      height={pxTransform(120)}
+      loop
+      autoPlay
+      style={{
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+      }}
+    >
       <Swiper.Item>
-        <div style={{ display: 'flex' }}>
-          <div style={{ flex: '1', border: '1 red' }}>Item1</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item2</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item3</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item4</div>
-        </div>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            height: '100%',
+            flexWrap: 'nowrap',
+          }}
+        >
+          <View style={{ width: '25%' }}>Item1</View>
+          <Text style={{ width: '25%' }}>Item2</Text>
+          <Text style={{ width: '25%' }}>Item3</Text>
+          <Text style={{ width: '25%' }}>Item4</Text>
+        </View>
       </Swiper.Item>
       <Swiper.Item>
-        <div style={{ display: 'flex' }}>
-          <div style={{ flex: '1', border: '1 red' }}>Item5</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item6</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item7</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item8</div>
-        </div>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            height: '100%',
+            flexWrap: 'nowrap',
+          }}
+        >
+          <Text style={{ width: '25%' }}>Item1</Text>
+          <Text style={{ width: '25%' }}>Item2</Text>
+          <Text style={{ width: '25%' }}>Item3</Text>
+          <Text style={{ width: '25%' }}>Item4</Text>
+        </View>
       </Swiper.Item>
       <Swiper.Item>
-        <div style={{ display: 'flex' }}>
-          <div style={{ flex: '1', border: '1 red' }}>Item9</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item10</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item11</div>
-          <div style={{ flex: '1', border: '1 red' }}>Item12</div>
-        </div>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            height: '100%',
+            flexWrap: 'nowrap',
+          }}
+        >
+          <Text style={{ width: '25%' }}>Item1</Text>
+          <Text style={{ width: '25%' }}>Item2</Text>
+          <Text style={{ width: '25%' }}>Item3</Text>
+          <Text style={{ width: '25%' }}>Item4</Text>
+        </View>
       </Swiper.Item>
     </Swiper>
   )
