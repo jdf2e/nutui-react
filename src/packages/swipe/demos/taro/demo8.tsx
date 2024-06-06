@@ -1,6 +1,12 @@
 import React, { useRef, useState } from 'react'
-import { Button, Cell, Dialog, Swipe } from '@nutui/nutui-react-taro'
-import { SwipeInstance } from '@/packages/Swipe'
+import {
+  Button,
+  Cell,
+  Dialog,
+  Swipe,
+  SwipeInstance,
+} from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   const [showDialog, setShowDialog] = useState(false)
@@ -17,19 +23,31 @@ const App = () => {
         ref={refDom}
         beforeClose={beforeClose}
         leftAction={
-          <Button shape="square" type="success">
+          <Button
+            shape="square"
+            type="success"
+            style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+          >
             选择
           </Button>
         }
         rightAction={
           <>
-            <Button shape="square" type="danger">
+            <Button
+              shape="square"
+              type="danger"
+              style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+            >
               删除
             </Button>
           </>
         }
       >
-        <Cell title="事件" />
+        <Cell
+          title="事件"
+          radius={0}
+          style={{ margin: 0, alignSelf: 'stretch' }}
+        />
       </Swipe>
       <Dialog
         visible={showDialog}

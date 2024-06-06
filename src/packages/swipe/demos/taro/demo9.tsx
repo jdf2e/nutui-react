@@ -1,6 +1,7 @@
 import React from 'react'
-import { Swipe, Cell, Button, InputNumber } from '@nutui/nutui-react-taro'
+import { Button, Cell, InputNumber, Swipe } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '../../../../utils/px-transform'
 
 const App = () => {
   return (
@@ -8,13 +9,17 @@ const App = () => {
       <Swipe
         rightAction={
           <>
-            <Button shape="square" type="danger">
+            <Button
+              shape="square"
+              type="danger"
+              style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+            >
               加入购物车
             </Button>
           </>
         }
       >
-        <Cell>
+        <Cell radius={0} style={{ margin: 0, alignSelf: 'stretch' }}>
           <View
             style={{
               display: 'flex',
@@ -23,7 +28,7 @@ const App = () => {
             }}
           >
             <span>商品</span>
-            <InputNumber style={{ float: 'right' }} />
+            <InputNumber />
           </View>
         </Cell>
       </Swipe>

@@ -1,22 +1,31 @@
 import React, { useRef } from 'react'
-import { Swipe, Cell, Button } from '@nutui/nutui-react-taro'
+import { Button, Cell, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const App = () => {
-  const closeRef = useRef(null)
+  const closeRef = useRef<SwipeInstance>(null)
   return (
     <>
       <Swipe
         ref={closeRef}
         rightAction={
-          <Button shape="square" type="danger">
+          <Button
+            shape="square"
+            type="danger"
+            style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+          >
             删除
           </Button>
         }
         onActionClick={() => {
-          closeRef.current.close()
+          closeRef.current?.close()
         }}
       >
-        <Cell title="点击右侧按钮关闭" radius={0} />
+        <Cell
+          title="点击右侧按钮关闭"
+          radius={0}
+          style={{ margin: 0, alignSelf: 'stretch' }}
+        />
       </Swipe>
     </>
   )

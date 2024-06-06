@@ -12,7 +12,6 @@
   justify-content: flex-start;
   align-self: stretch;
   width: 100%;
-  background: green;
   transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
   transition-property: transform;
 }
@@ -21,12 +20,10 @@
   top: 0;
   display: flex;
   flex-direction: row;
-  align-self: stretch;
-  align-items: stretch;
 }
 .nut-swipe-left {
   left: 0;
 }
 .nut-swipe-right {
-  right: 0;
+  left: 100%;
 }

@@ -1,5 +1,11 @@
-import type { MouseEvent } from 'react'
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  MouseEvent,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { useReady } from '@tarojs/taro'
@@ -79,14 +85,8 @@ export const Swipe = forwardRef<
       }
       if (rightWrapper.current) {
         const rightRect = await getRectByTaro(rightWrapper.current)
-        console.log('rightRect', rightRect.width)
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
-      }
-      if (root.current) {
-        const rootRect = await getRectByTaro(rightWrapper.current)
-        console.log('rootRect', rootRect.width)
-        rootRect && setRootWidth(rootRect.width)
       }
     }
     setTimeout(() => getWidth())
@@ -125,16 +125,11 @@ export const Swipe = forwardRef<
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
     if (leftWrapper.current) {
       const leftRect = await getRectByTaro(leftWrapper.current)
-      console.log('leftWrapper.current', leftRect.width)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
       const rightRect = await getRectByTaro(rightWrapper.current)
-      console.log(
-        'rightRect.current ontouchstart',
-        rightRect.width,
-        JSON.stringify(rightRect)
-      )
+
       rightRect &&
         setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
     }
@@ -166,13 +161,6 @@ export const Swipe = forwardRef<
         -actionWidth.current.right || 0,
         actionWidth.current.left || 0
       )
-      console.log(
-        'rightRect.current swipe.event',
-        touch.deltaX.current + startOffset.current,
-        actionWidth.current.right,
-        actionWidth.current.left
-      )
-
       setState(newState)
     }
   }
@@ -194,7 +182,6 @@ export const Swipe = forwardRef<
     const baseNum = opened ? 1 - base : base
     const width =
       side === 'left' ? actionWidth.current.left : actionWidth.current.right
-
     if (width && offset > Number(width) * baseNum) {
       open(side)
     } else {
@@ -238,7 +225,9 @@ export const Swipe = forwardRef<
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}-${side}`}
           style={{
-            transform: `${side === 'left' ? `translateX(-${rootWidth})` : `translateX(${rootWidth})`}`,
+            ...(side === 'left'
+              ? { left: Number(`${-actionWidth.current.left}`) }
+              : {}),
           }}
           onClick={(e) => handleOperate(e, side)}
         >
@@ -265,26 +254,26 @@ export const Swipe = forwardRef<
     close: () => close(),
   }))
 
-  // useEffect(() => {
-  //   const handler: any = (event: { target: Node | null }) => {
-  //     const targets = [root]
-  //     if (
-  //       targets.some((targetItem) => {
-  //         const targetElement = targetItem.current || targetItem
-  //         return !targetElement || targetElement?.contains(event.target)
-  //       })
-  //     ) {
-  //       return
-  //     }
-  //     close()
-  //   }
-  //
-  //   document.addEventListener('touchstart', handler)
-  //
-  //   return () => {
-  //     document.removeEventListener('touchstart', handler)
-  //   }
-  // }, [])
+  useEffect(() => {
+    const handler: any = (event: { target: Node | null }) => {
+      const targets = [root]
+      if (
+        targets.some((targetItem) => {
+          const targetElement = targetItem.current || targetItem
+          return !targetElement || targetElement?.contains(event.target)
+        })
+      ) {
+        return
+      }
+      close()
+    }
+
+    document.addEventListener('touchstart', handler)
+
+    return () => {
+      document.removeEventListener('touchstart', handler)
+    }
+  }, [])
 
   return (
     <View

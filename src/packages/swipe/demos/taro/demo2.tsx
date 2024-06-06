@@ -1,23 +1,27 @@
 import React from 'react'
-import { Swipe, Cell } from '@nutui/nutui-react-taro'
-import { View } from '@tarojs/components'
-// import { Del } from '@nutui/icons-react-taro'
+import { Cell, Swipe } from '@nutui/nutui-react-taro'
+import { Text, View } from '@tarojs/components'
+import { Del } from '@nutui/icons-react-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 const ViewNode = (text: string, style: any) => {
   return (
     <View
       style={{
-        width: '60px',
-        height: '104px',
         display: 'flex',
+        width: pxTransform(60),
+        height: pxTransform(104),
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         ...style,
       }}
     >
-      {/* <Del style={{ marginBottom: '8px' }} /> */}
-      <>{text}</>
+      {!harmonyAndRn() ? (
+        <Del style={{ marginBottom: pxTransform(8) }} />
+      ) : null}
+      <Text>{text}</Text>
     </View>
   )
 }
@@ -26,14 +30,15 @@ const App = () => {
   return (
     <>
       <Swipe
-        style={{ height: '104px' }}
+        style={{ height: pxTransform(104) }}
         rightAction={
           <View
             style={{
-              height: '104px',
-              width: '240px',
               display: 'flex',
-              fontSize: '12px',
+              flexDirection: 'row',
+              width: pxTransform(240),
+              height: pxTransform(104),
+              fontSize: pxTransform(12),
             }}
           >
             <>

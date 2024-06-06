@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Button, Cell, Swipe } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   const [shouldCatchMove, setShouldCatchMove] = useState(false)
@@ -10,7 +11,11 @@ const App = () => {
       <View catchMove={shouldCatchMove}>
         <Swipe
           rightAction={
-            <Button type="primary" shape="square">
+            <Button
+              type="primary"
+              shape="square"
+              style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+            >
               删除
             </Button>
           }
@@ -21,7 +26,11 @@ const App = () => {
             setShouldCatchMove(true)
           }}
         >
-          <Cell title="左滑删除" radius={0} />
+          <Cell
+            title="左滑删除"
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
       </View>
     </>

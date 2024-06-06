@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Cell, Swipe } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
           <Button
             type="primary"
             shape="square"
-            style={{ alignSelf: 'stretch', height: '46px' }}
+            style={{ alignSelf: 'stretch', height: pxTransform(46) }}
           >
             删除
           </Button>
