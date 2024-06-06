@@ -3,8 +3,9 @@
  */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
-import { ITouchEvent, View } from '@tarojs/components'
-import { Cart } from '@nutui/icons-react-taro'
+import { ITouchEvent, View, Icon } from '@tarojs/components'
+// @TODO Icon 暂未适配 rn、鸿蒙端
+// import { Cart } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   const testClick = (
@@ -15,7 +16,7 @@ const Demo1 = () => {
 
   return (
     <View>
-      <HoverButton icon={<Cart />} onClick={testClick} />
+      <HoverButton icon={<Icon type="search" />} onClick={testClick} />
     </View>
   )
 }

@@ -35,7 +35,14 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
       style={style}
       onClick={handleClick}
     >
-      <div className={`${classPrefix}-icon`}>{icon}</div>
+      <div className={`${classPrefix}-icon`}>
+        {React.isValidElement(icon)
+          ? React.cloneElement(icon, {
+              // @ts-ignore
+              size: 20,
+            })
+          : icon}
+      </div>
     </div>
   )
 }

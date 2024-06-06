@@ -16,7 +16,6 @@ const Index = () => {
     Taro.navigateTo({
       url: `/${enName}/pages/${name.toLocaleLowerCase()}/index`,
     })
-    console.log(`/${enName}/pages/${name.toLocaleLowerCase()}/index`)
   }
 
   return (

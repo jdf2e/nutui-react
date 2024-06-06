@@ -56,6 +56,7 @@ export const HoverButton: FunctionComponent<
     <View
       className={classNames([`${classPrefix}-container`, className], {
         [`${classPrefix}-container-rtl`]: rtl,
+        [`${classPrefix}-container-rn`]: Taro.getEnv() === 'RN',
       })}
       style={baseStyle}
     >

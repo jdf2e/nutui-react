@@ -9,6 +9,9 @@
   bottom: 48px;
   z-index: 10;
 }
+.nut-hoverbutton-container-rn {
+  position: absolute;
+}
 
 [dir=rtl] .nut-hoverbutton-container {
   right: auto;

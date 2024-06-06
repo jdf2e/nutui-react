@@ -8,6 +8,9 @@
 .nut-hoverbutton-item-container:active {
   background-color: #f6f6f6;
 }
+.nut-hoverbutton-item-container-active {
+  background-color: #f6f6f6;
+}
 .nut-hoverbutton-item-icon {
   width: 20px;
   height: 20px;

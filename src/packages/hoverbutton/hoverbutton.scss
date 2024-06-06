@@ -6,6 +6,10 @@
     z-index: 10;
   }
 
+  &-container-rn {
+    position: absolute;
+  }
+
   display: flex;
   flex-direction: column;
   gap: $hoverbutton-spacing;

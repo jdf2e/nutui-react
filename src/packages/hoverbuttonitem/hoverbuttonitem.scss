@@ -6,7 +6,8 @@
     border: 1px solid $hoverbutton-item-border-color;
     background-color: $hoverbutton-item-background;
 
-    &:active {
+    &:active,
+    &-active {
       background-color: $hoverbutton-item-background-active;
     }
   }
