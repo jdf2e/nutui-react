@@ -18,5 +18,7 @@ exports = module.exports = [
   'image',
   'resultpage',
   'notify',
+  'pagination',
+  'swiper',
   'textarea',
 ]

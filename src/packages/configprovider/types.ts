@@ -282,6 +282,7 @@ export type NutCSSVariables =
   | 'nutuiSwitchBorderRadius'
   | 'nutuiSwitchInsideWidth'
   | 'nutuiSwitchInsideHeight'
+  | 'nutuiSwitchInsideBorderRadius'
   | 'nutuiSwitchInsideOpenTransform'
   | 'nutuiSwitchInsideCloseTransform'
   | 'nutuiSwitchBoxShadow'

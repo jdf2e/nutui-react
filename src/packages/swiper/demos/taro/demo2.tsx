@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Image } from '@tarojs/components'
 import { Swiper } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
@@ -15,14 +16,14 @@ const Demo2 = () => {
       setAsyncList(list)
     }, 3000)
   }, [])
-  return (
+  return asyncList.length ? (
     <Swiper defaultValue={0} indicator>
       {asyncList.map((item, index) => (
         <Swiper.Item key={item}>
-          <img width="100%" height="100%" src={item} alt="" />
+          <Image style={{ width: '100%', height: '100%' }} src={item} />
         </Swiper.Item>
       ))}
     </Swiper>
-  )
+  ) : null
 }
 export default Demo2
