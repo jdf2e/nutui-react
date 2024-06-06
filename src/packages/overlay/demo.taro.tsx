@@ -2,7 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import './demo.scss'
+import '@/packages/overlay/demo.scss'
 import Header from '@/sites/components/header'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -43,26 +43,10 @@ const OverlayDemo = () => {
     <>
       <Header />
       {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID &&
-      Taro.getEnv() !== 'RN' ? (
+      Taro.getEnv() !== Taro.ENV_TYPE.RN ? (
         <div
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
         >
-          <h2>{translated['84aa6bce']}</h2>
-          <Demo1 />
-          <h2>{translated.abbf9359}</h2>
-          <Demo2 />
-          <h2>{translated.duration}</h2>
-          <Demo3 />
-          <h2>{translated.lockscroll}</h2>
-          <Demo4 />
-          <h2>{translated.ec0d7acf}</h2>
-          <Demo5 />
-          <h2>{translated.closeClickLay}</h2>
-          <Demo6 />
-        </div>
-      ) : (
-        <>
           <View className="h2">{translated['84aa6bce']}</View>
           <Demo1 />
           <View className="h2">{translated.abbf9359}</View>
@@ -74,6 +58,21 @@ const OverlayDemo = () => {
           <View className="h2">{translated.ec0d7acf}</View>
           <Demo5 />
           <View className="h2">{translated.closeClickLay}</View>
+          <Demo6 />
+        </div>
+      ) : (
+        <>
+          <View className="View">{translated['84aa6bce']}</View>
+          <Demo1 />
+          <View className="View">{translated.abbf9359}</View>
+          <Demo2 />
+          <View className="View">{translated.duration}</View>
+          <Demo3 />
+          <View className="View">{translated.lockscroll}</View>
+          <Demo4 />
+          <View className="View">{translated.ec0d7acf}</View>
+          <Demo5 />
+          <View className="View">{translated.closeClickLay}</View>
           <Demo6 />
         </>
       )}
