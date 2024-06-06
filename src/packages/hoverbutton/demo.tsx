@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { Button } from '@nutui/nutui-react-taro'
+import { Button } from '@nutui/nutui-react'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import Header from '@/sites/components/header'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 
-const HoverDemo = () => {
+const HoverButtonDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       show: '展示',
@@ -39,8 +38,7 @@ const HoverDemo = () => {
 
   return (
     <>
-      <Header />
-      <>
+      <div className="demo" style={{ paddingBottom: '100px' }}>
         <h2>{translated.basic}</h2>
         <Button
           block
@@ -95,9 +93,9 @@ const HoverDemo = () => {
           {`${translated.show}${translated.customSpacing}`}
         </Button>
         {curDemo === 'customSpacing' && <Demo5 />}
-      </>
+      </div>
     </>
   )
 }
 
-export default HoverDemo
+export default HoverButtonDemo
