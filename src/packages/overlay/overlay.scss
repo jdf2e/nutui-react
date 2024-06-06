@@ -1,18 +1,18 @@
 .nut-overlay {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
   position: fixed;
+  /* #endif */
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  background: $overlay-bg-color;
+  background-color: $overlay-bg-color;
   z-index: $overlay-zIndex;
-
-  .wrapper {
-    .content {
-      background-color: $overlay-content-bg-color;
-      color: $overlay-content-color;
-    }
-  }
 }
 
 [dir='rtl'] .nut-overlay,
