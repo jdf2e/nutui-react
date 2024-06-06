@@ -1,9 +1,13 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { pxTransform } from '@tarojs/taro'
 import { Indicator, Cell } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
 const Demo2 = () => {
+  const isHarmony = [
+    Taro.ENV_TYPE.HARMONY,
+    Taro.ENV_TYPE.HARMONYHYBRID,
+  ].includes(Taro.getEnv())
   return (
     <Cell>
       <Indicator total={6} current={5}>
@@ -26,15 +30,15 @@ const Demo2 = () => {
                 }
               : {
                   display: 'inline-block',
-                  width: 14,
-                  height: 14,
-                  lineHeight: 14,
+                  width: isHarmony ? pxTransform(14) : 14,
+                  height: isHarmony ? pxTransform(14) : 14,
+                  lineHeight: isHarmony ? pxTransform(14) : 14,
                   textAlign: 'center',
-                  fontSize: 12,
+                  fontSize: isHarmony ? pxTransform(12) : 12,
                   color: '#FFFFFF',
                   borderWidth: 1,
                   borderColor: '#FFFFFF',
-                  borderRadius: 14,
+                  borderRadius: isHarmony ? pxTransform(14) : 14,
                   margin: 4,
                   backgroundColor: '#ff0f23',
                   shadowColor: '#ff0f23',
