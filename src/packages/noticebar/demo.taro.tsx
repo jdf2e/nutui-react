@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import './demo.scss'
 import Header from '@/sites/components/header'
@@ -49,39 +50,39 @@ const NoticeBarDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={{ paddingBottom: '30px' }}
       >
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.align}</h2>
+        <View className="h2">{translated.align}</View>
         <Demo2 />
-        <h2>{translated.scrollable}</h2>
+        <View className="h2">{translated.scrollable}</View>
         <Demo3 />
-        <h2>{translated.mode}</h2>
+        <View className="h2">{translated.mode}</View>
         <Demo4 />
-        <h2>{translated.multiline}</h2>
+        <View className="h2">{translated.multiline}</View>
         <Demo5 />
-        <h2>{translated.customeRight}</h2>
+        <View className="h2">{translated.customeRight}</View>
         <Demo6 />
-        <h2>{translated.customTheme}</h2>
+        <View className="h2">{translated.customTheme}</View>
         <Demo7 />
-        <h2>{translated.vertical}</h2>
+        <View className="h2">{translated.vertical}</View>
         <Demo8 />
-        <h2>{translated.complexAm}</h2>
-        <div className="interstroll-list">
+        <View className="h2">{translated.complexAm}</View>
+        <View className="interstroll-list">
           <Demo9 />
-        </div>
-        <h2>{translated.customAm}</h2>
-        <div className="interstroll-list">
+        </View>
+        <View className="h2">{translated.customAm}</View>
+        <View className="interstroll-list">
           <Demo10 />
-        </div>
-        <h2>{translated.customRightIcon}</h2>
-        <div className="interstroll-list">
+        </View>
+        <View className="h2">{translated.customRightIcon}</View>
+        <View className="interstroll-list">
           <Demo11 />
-        </div>
-      </div>
+        </View>
+      </ScrollView>
     </>
   )
 }

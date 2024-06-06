@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -49,34 +50,34 @@ const ProgressDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.customStyle}</h2>
+        <View className="h2">{translated.customStyle}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.noShowPercentage}</h2>
+        <View className="h2">{translated.noShowPercentage}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.customContent}</h2>
+        <View className="h2">{translated.customContent}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.customSize}</h2>
+        <View className="h2">{translated.customSize}</View>
         <Demo5 />
-        <h2>{translated.statusDisplay}</h2>
+        <View className="h2">{translated.statusDisplay}</View>
         <Demo6 />
-        <h2>{translated.dynamicChange}</h2>
+        <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        <h2>{translated.lazy}</h2>
+        <View className="h2">{translated.lazy}</View>
         <Cell>
           <Demo8 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

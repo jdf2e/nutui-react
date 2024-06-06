@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -42,34 +43,34 @@ const CircleProgressDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         } demo-circleprogress`}
       >
-        <h2>{translated['84aa6bce']}</h2>
+        <View className="h2">{translated['84aa6bce']}</View>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo1 />
         </Cell>
-        <h2>{translated['67eacf7f']}</h2>
+        <View className="h2">{translated['67eacf7f']}</View>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo2 />
         </Cell>
-        <h2>{translated['3fee7d50']}</h2>
+        <View className="h2">{translated['3fee7d50']}</View>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo3 />
         </Cell>
-        <h2>{translated.f4aa4b4c}</h2>
+        <View className="h2">{translated.f4aa4b4c}</View>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo4 />
         </Cell>
-        <h2>{translated['9daa2dd9']}</h2>
+        <View className="h2">{translated['9daa2dd9']}</View>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo5 />
         </Cell>
-        <h2>{translated.c3e31425}</h2>
+        <View className="h2">{translated.c3e31425}</View>
         <Demo6 />
-      </div>
+      </ScrollView>
     </>
   )
 }

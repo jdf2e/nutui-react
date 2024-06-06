@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -41,32 +42,32 @@ const PaginationDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.simple}</h2>
+        <View className="h2">{translated.simple}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.lite}</h2>
+        <View className="h2">{translated.lite}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.ellipse}</h2>
+        <View className="h2">{translated.ellipse}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.custom}</h2>
+        <View className="h2">{translated.custom}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.uncontrolled}</h2>
+        <View className="h2">{translated.uncontrolled}</View>
         <Cell>
           <Demo6 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

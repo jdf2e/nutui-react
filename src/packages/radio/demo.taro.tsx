@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -65,54 +66,54 @@ const RadioDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated['74fc5d8a']}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated['74fc5d8a']}</View>
         <Demo1 />
-        <h2>{translated.disableOne}</h2>
+        <View className="h2">{translated.disableOne}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.disableAll}</h2>
+        <View className="h2">{translated.disableAll}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.disableOne}</h2>
+        <View className="h2">{translated.disableOne}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.disableAll}</h2>
+        <View className="h2">{translated.disableAll}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.c1bae1ec}</h2>
+        <View className="h2">{translated.c1bae1ec}</View>
         <Demo6 />
-        <h2>{translated['8a2e2847']}</h2>
+        <View className="h2">{translated['8a2e2847']}</View>
         <Cell>
           <Demo7 />
         </Cell>
-        <h2>{translated['70ffa5d8']}</h2>
+        <View className="h2">{translated['70ffa5d8']}</View>
         <Cell>
           <Demo8 />
         </Cell>
-        <h2>{translated['70ffa5d9']}</h2>
+        <View className="h2">{translated['70ffa5d9']}</View>
         <Cell>
           <Demo9 />
         </Cell>
-        <h2>{translated['0f261484']}</h2>
+        <View className="h2">{translated['0f261484']}</View>
         <Cell>
           <Demo10 />
         </Cell>
-        <h2>{translated.options}</h2>
+        <View className="h2">{translated.options}</View>
         <Cell>
           <Demo11 />
         </Cell>
-        <h2>{translated['0f261485']}</h2>
+        <View className="h2">{translated['0f261485']}</View>
         <Cell.Group>
           <Cell>
             <Demo12 />
           </Cell>
         </Cell.Group>
-      </div>
+      </ScrollView>
     </>
   )
 }

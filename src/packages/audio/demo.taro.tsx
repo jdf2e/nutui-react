@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell, Audio } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 
@@ -24,10 +25,10 @@ const AudioDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} audio-demo`}
       >
-        <div>
+        <View>
           <h2>1.Taro原生的Audio组件,1.6.0版本开始，该组件不再维护</h2>
           <h2>
             2.本组件基于Taro.createInnerAudioContext做了封装,由于api的限制,相比于NuiUI-React
@@ -36,9 +37,9 @@ const AudioDemo = () => {
             <h2>(2) 事件移除:onMute</h2>
             <h2>(3) 事件新增:onPlay</h2>
           </h2>
-        </div>
+        </View>
 
-        <h2>type=icon</h2>
+        <View className="h2">type=icon</View>
         <Cell>
           <Audio
             autoplay={false}
@@ -48,7 +49,7 @@ const AudioDemo = () => {
             onPlayEnd={() => console.log('ended!')}
           />
         </Cell>
-        <h2>type=progress</h2>
+        <View className="h2">type=progress</View>
         <Cell>
           <Audio
             autoplay={false}
@@ -62,7 +63,7 @@ const AudioDemo = () => {
             onPlayEnd={() => console.log('progress audio ended!')}
           />
         </Cell>
-        <h2>type=none</h2>
+        <View className="h2">type=none</View>
         <Cell>
           <Audio
             className="custom-voice-audio"
@@ -77,7 +78,7 @@ const AudioDemo = () => {
               setVoiceIcon('play-circle-fill')
             }}
           >
-            <div
+            <View
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -87,11 +88,11 @@ const AudioDemo = () => {
                 borderRadius: '18px',
               }}
             >
-              <div>{duration}&quot;</div>
-            </div>
+              <View>{duration}&quot;</View>
+            </View>
           </Audio>
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Card } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
@@ -21,7 +22,7 @@ const Demo4 = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-      tag={<div> 自定义店铺介绍 </div>}
+      tag={<View> 自定义店铺介绍 </View>}
     />
   )
 }

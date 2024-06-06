@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -55,46 +56,46 @@ const AvatarDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         } full avatar-demo`}
       >
-        <h2>{translated['67f78db5']}</h2>
+        <View className="h2">{translated['67f78db5']}</View>
         <Cell align="flex-end">
           <Demo1 />
         </Cell>
-        <h2>{translated['3928b17e']}</h2>
+        <View className="h2">{translated['3928b17e']}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated['049b6a97']}</h2>
+        <View className="h2">{translated['049b6a97']}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.a304dabf}</h2>
+        <View className="h2">{translated.a304dabf}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated['89bca4e7']}</h2>
+        <View className="h2">{translated['89bca4e7']}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.e981579e}</h2>
+        <View className="h2">{translated.e981579e}</View>
         <Demo6 />
-        <h2>{translated.f645fc65}</h2>
+        <View className="h2">{translated.f645fc65}</View>
         <Cell>
           <Demo7 />
         </Cell>
-        <h2>{translated['43f00872']}</h2>
+        <View className="h2">{translated['43f00872']}</View>
         <Cell>
           <Demo8 />
         </Cell>
-        <h2>{translated.f645fc66}</h2>
+        <View className="h2">{translated.f645fc66}</View>
         <Cell>
           <Demo9 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

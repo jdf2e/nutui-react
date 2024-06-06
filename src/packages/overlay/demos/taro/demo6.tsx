@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import Taro, { pxTransform } from '@tarojs/taro'
 
 const Demo6 = () => {
+  const isHarmony = [
+    Taro.ENV_TYPE.HARMONY,
+    Taro.ENV_TYPE.HARMONYHYBRID,
+  ].includes(Taro.getEnv())
   const [visible, setVisible] = useState(false)
   const wrapperStyle = {
     display: 'flex',
@@ -12,10 +17,11 @@ const Demo6 = () => {
   }
   const contentStyle = {
     display: 'flex',
-    width: 150,
-    height: 150,
+    width: isHarmony ? pxTransform(150) : 150,
+    height: isHarmony ? pxTransform(150) : 150,
+    borderRadius: isHarmony ? pxTransform(8) : 8,
+
     backgroundColor: '#fff',
-    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     color: 'red',
@@ -29,9 +35,6 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type="primary" onClick={handleToggleShow}>
-          点击遮罩不关闭
-        </Button> */}
         <View onClick={handleToggleShow}>点击遮罩不关闭</View>
       </Cell>
       <Overlay visible={visible} closeOnOverlayClick={false}>

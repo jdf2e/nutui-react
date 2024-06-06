@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
 import { Cell, Toast } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -56,7 +57,7 @@ const IconDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           content={state.msg}
           visible={state.visible}
@@ -71,29 +72,29 @@ const IconDemo = () => {
             })
           }}
         />
-        <h2>{translated.svg}</h2>
+        <View className="h2">{translated.svg}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated['84aa6bce']}</h2>
+        <View className="h2">{translated['84aa6bce']}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.dab8a74f}</h2>
+        <View className="h2">{translated.dab8a74f}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated['52c15454']}</h2>
+        <View className="h2">{translated['52c15454']}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated['7aeb5407']}</h2>
+        <View className="h2">{translated['7aeb5407']}</View>
         <Cell style={{ alignItems: 'center' }}>
           <Demo5 />
         </Cell>
         <Demo6 />
         <Demo7 />
-      </div>
+      </ScrollView>
     </>
   )
 }

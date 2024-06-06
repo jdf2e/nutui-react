@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import './demo.scss'
 import Header from '@/sites/components/header'
@@ -22,12 +23,12 @@ const BarrageDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-barrage`}
       >
-        <h2>{translated['84aa6bce']}</h2>
+        <View className="h2">{translated['84aa6bce']}</View>
         <Demo1 />
-      </div>
+      </ScrollView>
     </>
   )
 }

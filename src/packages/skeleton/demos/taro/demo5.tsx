@@ -1,5 +1,6 @@
 import { Avatar, Image, Skeleton, Switch } from '@nutui/nutui-react-taro'
 import React, { useState } from 'react'
+import { View, Text } from '@tarojs/components'
 
 const Demo5 = () => {
   const [checked, setChecked] = useState(false)
@@ -11,10 +12,10 @@ const Demo5 = () => {
     setChecked(value)
   }
   return (
-    <div className="content" style={{ width: '100%' }}>
+    <View className="content" style={{ width: '100%' }}>
       <Switch onChange={(value, event) => changeStatus(value, event)} />
       <Skeleton title animated avatar rows={3} visible={checked}>
-        <div className="nut-skeleton-content">
+        <View className="nut-skeleton-content">
           <Avatar
             size="50"
             icon={
@@ -24,15 +25,15 @@ const Demo5 = () => {
               />
             }
           />
-          <div className="right-content">
-            <span className="title">NutUI-React</span>
-            <div className="description">
+          <View className="right-content">
+            <Text className="title">NutUI-React</Text>
+            <View className="description">
               一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
-            </div>
-          </div>
-        </div>
+            </View>
+          </View>
+        </View>
       </Skeleton>
-    </div>
+    </View>
   )
 }
 export default Demo5

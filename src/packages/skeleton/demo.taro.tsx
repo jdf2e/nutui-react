@@ -1,7 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
-import './demo.scss'
+import '@/packages/skeleton/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -38,28 +39,28 @@ const SkeletonDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated['84aa6bce']}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated['84aa6bce']}</View>
         <Cell className="ske-cell-single">
           <Demo1 />
         </Cell>
-        <h2>{translated.ea3bc18a}</h2>
+        <View className="h2">{translated.ea3bc18a}</View>
         <Cell className="ske-cell-double">
           <Demo2 />
         </Cell>
-        <h2>{translated['02a53df5']}</h2>
+        <View className="h2">{translated['02a53df5']}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated['0a001122']}</h2>
+        <View className="h2">{translated['0a001122']}</View>
         <Cell className="ske-cell-single">
           <Demo4 />
         </Cell>
-        <h2>{translated['07d62d5c']}</h2>
+        <View className="h2">{translated['07d62d5c']}</View>
         <Cell>
           <Demo5 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

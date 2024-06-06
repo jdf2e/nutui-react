@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Cell, Switch, Tour, Divider } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
@@ -37,17 +38,17 @@ const Demo4 = () => {
         offset={[8, 8]}
         closeOnOverlayClick={false}
       >
-        <div className="tour-demo-custom-content">
-          <div>nutui 4.x 即将发布，敬请期待</div>
+        <View className="tour-demo-custom-content">
+          <View>nutui 4.x 即将发布，敬请期待</View>
           <Divider direction="vertical" />
-          <div
+          <View
             onClick={() => {
               setShowTour(false)
             }}
           >
             知道了
-          </div>
-        </div>
+          </View>
+        </View>
       </Tour>
     </>
   )

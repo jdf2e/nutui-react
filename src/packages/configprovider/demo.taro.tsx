@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -33,7 +33,7 @@ const ConfigProviderDemo = () => {
   return (
     <>
       <Header />
-      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.defaultTheme}</View>
         <Demo1 />
         <View className="h2">{translated.customTheme}</View>
@@ -44,7 +44,7 @@ const ConfigProviderDemo = () => {
         <Demo4 />
         <View className="h2">RTL</View>
         <Demo5 />
-      </View>
+      </ScrollView>
     </>
   )
 }
