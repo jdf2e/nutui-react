@@ -7,17 +7,18 @@ import React, {
   useState,
 } from 'react'
 import {
+  Input as TaroInput,
   InputProps as TaroInputProps,
   ITouchEvent,
   View,
-  Input as TaroInput,
 } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
-import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
+import Taro, { ENV_TYPE, getEnv } from '@tarojs/taro'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export type InputAlign = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
@@ -242,7 +243,8 @@ export const Input = forwardRef(
           onBlur={handleBlur}
           onFocus={handleFocus}
           onInput={(e: any) => {
-            handleInput(e.currentTarget.value)
+            console.log('eeeeee', e.detail.value)
+            handleInput((e.currentTarget || e.detail).value)
           }}
         />
         <View
@@ -262,7 +264,10 @@ export const Input = forwardRef(
             }
           }}
         >
-          {clearIcon || <MaskClose className="nut-input-clear" />}
+          {clearIcon ||
+            (!harmonyAndRn() ? (
+              <MaskClose className="nut-input-clear" />
+            ) : null)}
         </View>
       </View>
     )
