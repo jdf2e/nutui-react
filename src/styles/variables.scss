@@ -964,7 +964,7 @@ $hoverbutton-item-background: var(
 ) !default;
 $hoverbutton-item-background-active: var(
   --nutui-hoverbutton-item-background-active,
-  #f6f6f6
+  var(--nutui-gray-3, #f6f6f6)
 ) !default;
 $hoverbutton-item-icon-color: var(
   --nutui-hoverbutton-item-icon-color,
@@ -972,7 +972,7 @@ $hoverbutton-item-icon-color: var(
 ) !default;
 $hoverbutton-item-icon-color-active: var(
   --nutui-hoverbutton-item-icon-color-active,
-  #595959
+  var(--nutui-gray-6, #595959)
 ) !default;
 
 //overlay（✅）

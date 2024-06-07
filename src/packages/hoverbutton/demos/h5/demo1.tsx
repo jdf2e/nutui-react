@@ -7,7 +7,6 @@ import { Cart } from '@nutui/icons-react'
 
 const Demo1 = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    alert('点击事件')
     Toast.show({
       title: '点击事件',
     })
