@@ -182,13 +182,6 @@ export const Progress: FunctionComponent<
   const computeInnerStyle = () => {
     const style: any = {
       backgroundColor: color || '#ff0f23',
-      height:
-        // eslint-disable-next-line no-nested-ternary
-        Taro.getEnv() === Taro.ENV_TYPE.HARMONY
-          ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
-          : strokeWidth
-            ? Number(strokeWidth) + 8
-            : 18,
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
