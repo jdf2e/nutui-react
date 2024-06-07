@@ -13,9 +13,6 @@ const Demo1 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type='primary' onClick={handleToggleShow}>
-          显示遮罩层
-        </Button> */}
         <View onClick={handleToggleShow}>点击按钮显示遮罩层</View>
       </Cell>
 
