@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { BackTop, Cell } from '@nutui/nutui-react-taro'
 import { Top } from '@nutui/icons-react-taro'
 
@@ -11,7 +12,7 @@ const Demo4 = () => {
     minHeight: 'auto',
   }
   return (
-    <div style={demoStyle} id="target">
+    <View style={demoStyle} id="target">
       {new Array(24).fill(0).map((_, index) => {
         return <Cell key={index}>我是测试数据{index}</Cell>
       })}
@@ -23,7 +24,7 @@ const Demo4 = () => {
         }}
         onClick={handleClick}
       >
-        <div
+        <View
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -31,10 +32,10 @@ const Demo4 = () => {
           }}
         >
           <Top size={12} />
-          <div style={{ fontSize: '12px' }}>顶部</div>
-        </div>
+          <View style={{ fontSize: '12px' }}>顶部</View>
+        </View>
       </BackTop>
-    </div>
+    </View>
   )
 }
 export default Demo4

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Checklist } from '@nutui/icons-react-taro'
 import { Cell, Checkbox } from '@nutui/nutui-react-taro'
 
@@ -15,16 +16,16 @@ const Demo1 = () => {
           shape="button"
           className="test"
           label={
-            <div
+            <View
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
               }}
             >
-              <div>复选框</div>
-              <div style={{ color: 'gray' }}>描述信息</div>
-            </div>
+              <View>复选框</View>
+              <View style={{ color: 'gray' }}>描述信息</View>
+            </View>
           }
           defaultChecked={!checked}
         />
@@ -36,16 +37,16 @@ const Demo1 = () => {
           }
           className="test"
           label={
-            <div
+            <View
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
               }}
             >
-              <div>复选框</div>
-              <div style={{ color: 'gray' }}>描述信息</div>
-            </div>
+              <View>复选框</View>
+              <View style={{ color: 'gray' }}>描述信息</View>
+            </View>
           }
           defaultChecked={checked}
         />
@@ -54,16 +55,16 @@ const Demo1 = () => {
           className="test"
           disabled
           label={
-            <div
+            <View
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
               }}
             >
-              <div>复选框</div>
-              <div>描述信息</div>
-            </div>
+              <View>复选框</View>
+              <View>描述信息</View>
+            </View>
           }
           defaultChecked={checked}
         />

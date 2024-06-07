@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Card } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
@@ -32,7 +33,7 @@ const Demo2 = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       description={
-        <div
+        <View
           className="search_prolist_attr"
           style={{
             display: 'inline-flex',
@@ -47,7 +48,7 @@ const Demo2 = () => {
               </span>
             )
           })}
-        </div>
+        </View>
       }
     />
   )

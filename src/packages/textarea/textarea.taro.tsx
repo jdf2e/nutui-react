@@ -2,7 +2,10 @@ import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { Textarea, TextareaProps, View, Text } from '@tarojs/components'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import {
+  useConfig,
+  useRtl,
+} from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -55,6 +58,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
 
   const classPrefix = 'nut-textarea'
   const compositionRef = useRef(false)
+  const rtl = useRtl()
 
   const format = (value: string) => {
     if (maxLength !== -1 && value.length > maxLength) {
@@ -98,6 +102,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         classPrefix,
         {
           [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-rtl`]: rtl,
         },
         className
       )}

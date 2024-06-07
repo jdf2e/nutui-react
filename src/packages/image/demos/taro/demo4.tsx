@@ -12,16 +12,16 @@ const Demo4 = () => {
   }
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div style={{ width: 98 }}>
+      <View style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <View style={{ width: 98 }}>
           <Image src="https://x" width="80" height="80" />
           <View style={imageText}>默认</View>
-        </div>
-        <div style={{ width: 98 }}>
+        </View>
+        <View style={{ width: 98 }}>
           <Image src="https://x" width="80" height="80" error={<Failure />} />
           <View style={imageText}>自定义</View>
-        </div>
-      </div>
+        </View>
+      </View>
     </>
   )
 }

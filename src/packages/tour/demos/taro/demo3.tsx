@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Cell, Tour } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
@@ -25,7 +26,7 @@ const Demo3 = () => {
           setShowTour(true)
         }}
         extra={
-          <div className="tour-demo-img">
+          <View className="tour-demo-img">
             <img
               id="target3"
               src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
@@ -39,7 +40,7 @@ const Demo3 = () => {
               src="https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png"
               alt=""
             />
-          </div>
+          </View>
         }
       />
       <Tour

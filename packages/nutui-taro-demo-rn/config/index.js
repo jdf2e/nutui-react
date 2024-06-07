@@ -25,7 +25,11 @@ const config = {
   }`,
   plugins: [
     path.resolve(__dirname, '../plugins/inject-scss.js'),
-    process.env.TARO_ENV === 'harmony' ? '@tarojs/plugin-platform-harmony-ets' : process.env.TARO_ENV === 'jdrn' ? '@jdtaro/plugin-platform-jdrn' : '@tarojs/plugin-html'
+    process.env.TARO_ENV === 'harmony'
+      ? '@tarojs/plugin-platform-harmony-ets'
+      : process.env.TARO_ENV === 'jdrn'
+        ? '@jdtaro/plugin-platform-jdrn'
+        : '@tarojs/plugin-html',
   ],
   compiler: 'webpack5',
   alias: {
@@ -38,20 +42,14 @@ const config = {
     '@/locales': path.resolve(__dirname, '../nutui-react/locales'),
     '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
     '@nutui/nutui-react-taro': path.resolve(
-        __dirname,
-        '../nutui-react/packages/nutui.react.taro.ts',
-     ),
-     '@nutui/icons-react-taro': path.resolve(
-        __dirname,
-        '../nutui-react/packages/nutui.react.taro.ts',
-     ),
-     '@styles': path.resolve(
-        __dirname,
-        '../styles',
-     ),
-
-     
-     
+      __dirname,
+      '../nutui-react/packages/nutui.react.taro.ts'
+    ),
+    '@nutui/icons-react-taro': path.resolve(
+      __dirname,
+      '../nutui-react/packages/nutui.react.taro.ts'
+    ),
+    '@styles': path.resolve(__dirname, '../styles'),
   },
   sass: {
     resource: [
@@ -152,13 +150,13 @@ const config = {
       devServer: {},
     },
   },
-  rn:{
-    appName:"JDReactAPIDemos",
+  rn: {
+    appName: 'JDReactAPIDemos',
   },
   isWatch: true,
 }
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }

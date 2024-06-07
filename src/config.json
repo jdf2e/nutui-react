@@ -70,7 +70,7 @@
           "author": ""
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Cell",
           "type": "component",
           "cName": "单元格",
@@ -129,7 +129,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
@@ -157,7 +157,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Divider",
           "type": "component",
           "cName": "分割线",
@@ -168,7 +168,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Grid",
           "type": "component",
           "cName": "宫格",
@@ -179,7 +179,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "GridItem",
           "type": "component",
           "cName": "宫格子组件",
@@ -213,7 +213,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Space",
           "type": "component",
           "cName": "间距",
@@ -642,7 +642,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Switch",
           "type": "component",
           "cName": "开关",
@@ -726,7 +726,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Empty",
           "type": "component",
           "cName": "空状态",
@@ -735,6 +735,17 @@
           "show": true,
           "taro": true,
           "author": "liukun"
+        },
+        {
+          "version": "3.0.0",
+          "name": "ResultPage",
+          "type": "component",
+          "cName": "结果反馈",
+          "desc": "以页面的形式向用户反馈操作结果",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "author": "songsong"
         },
         {
           "version": "2.0.0",
@@ -838,7 +849,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Toast",
           "type": "component",
           "tarodoc": true,
@@ -944,7 +955,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",
@@ -988,7 +999,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Pagination",
           "type": "component",
           "cName": "分页",
@@ -999,7 +1010,7 @@
           "author": "lkjh3214"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Price",
           "type": "component",
           "cName": "价格",
@@ -1043,7 +1054,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Swiper",
           "type": "component",
           "cName": "轮播",
@@ -1054,7 +1065,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SwiperItem",
           "type": "component",
           "cName": "轮播子组件",
@@ -1076,7 +1087,7 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Tag",
           "type": "component",
           "cName": "标签",

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Pagination } from '@nutui/nutui-react-taro'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const Demo5 = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
@@ -8,8 +10,12 @@ const Demo5 = () => {
     const c = v
     setCurrentPage4(c)
   }
-  const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
+  const itemRender = (page: any, current: number) => {
+    return (
+      <View style={{ color: current === page.number ? '#fff' : '#ff0f23' }}>
+        {page.number === 3 ? 'hot' : page.text}
+      </View>
+    )
   }
   return (
     <Pagination
@@ -18,8 +24,18 @@ const Demo5 = () => {
       itemSize={5}
       onChange={pageChange4}
       itemRender={itemRender}
-      prev={<ArrowLeft />}
-      next={<ArrowRight />}
+      prev={
+        Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+        Taro.getEnv() !== Taro.ENV_TYPE.HARMONY ? (
+          <ArrowLeft />
+        ) : null
+      }
+      next={
+        Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+        Taro.getEnv() !== Taro.ENV_TYPE.HARMONY ? (
+          <ArrowRight />
+        ) : null
+      }
     />
   )
 }

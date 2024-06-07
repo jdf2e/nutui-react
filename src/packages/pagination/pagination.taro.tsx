@@ -15,7 +15,7 @@ export interface PaginationProps extends BasicComponent {
   pageSize: number
   itemSize: number
   ellipse: boolean
-  itemRender: (page: any) => ReactNode
+  itemRender: (page: any, index: number) => ReactNode
   onChange: (currPage: number) => void
 }
 
@@ -107,16 +107,14 @@ export const Pagination: FunctionComponent<
   }
 
   return (
-    // <View className="test-border">Test</View>
-
     <View className={classNames(classPrefix, className)} style={style}>
       {(mode === 'multi' || mode === 'simple') && (
         <>
           <View
             className={classNames(
               `${classPrefix}-prev`,
-              mode === 'multi' ? '' : 'simple-border',
-              currentPage === 1 ? 'disabled' : ''
+              mode === 'multi' ? '' : `${classPrefix}-simple-border`,
+              currentPage === 1 ? `${classPrefix}-prev-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage - 1)}
           >
@@ -129,14 +127,15 @@ export const Pagination: FunctionComponent<
                   <View
                     key={`${index}pagination`}
                     className={classNames(`${classPrefix}-item`, {
-                      active: item.number === currentPage,
+                      [`${classPrefix}-item-active`]:
+                        item.number === currentPage,
                     })}
                     onClick={(e) => {
                       item.number !== currentPage &&
                         handleSelectPage(item.number)
                     }}
                   >
-                    {itemRender ? itemRender(item) : item.text}
+                    {itemRender ? itemRender(item, currentPage) : item.text}
                   </View>
                 )
               })}
@@ -152,7 +151,7 @@ export const Pagination: FunctionComponent<
           <View
             className={classNames(
               `${classPrefix}-next`,
-              currentPage >= pageCount ? 'disabled' : ''
+              currentPage >= pageCount ? `${classPrefix}-next-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage + 1)}
           >

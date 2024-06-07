@@ -23,5 +23,6 @@ declare namespace NodeJS {
       | 'quickapp'
       | 'qq'
       | 'jd'
+      | 'harmony'
   }
 }

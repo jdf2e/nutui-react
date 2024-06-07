@@ -28,7 +28,7 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch",
+    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch  --reset-cache",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "dev:weapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
     "dev:swan:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:swan -- --watch",
@@ -49,7 +49,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.9",
     "@jdreact/jdreact-jsbundle-commonpack": "1.0.425",
-    "@jdtaro/plugin-platform-jdrn": "^1.0.1",
+    "@jdtaro/plugin-platform-jdrn": "^1.0.3",
     "@nutui/touch-emulator": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@tarojs/components": "4.0.0-beta.75",

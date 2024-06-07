@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -76,38 +77,38 @@ const CheckboxDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.uncontrolled}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.uncontrolled}</View>
         <Demo1 />
-        <h2>{translated.controlled}</h2>
+        <View className="h2">{translated.controlled}</View>
         <Demo2 />
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo3 />
-        <h2>{translated.selective}</h2>
+        <View className="h2">{translated.selective}</View>
         <Demo4 />
-        <h2>{translated.disbaled}</h2>
+        <View className="h2">{translated.disbaled}</View>
         <Demo5 />
-        <h2>{translated.customSize}</h2>
+        <View className="h2">{translated.customSize}</View>
         <Demo6 />
-        <h2>{translated.customIcon}</h2>
+        <View className="h2">{translated.customIcon}</View>
         <Demo7 />
-        <h2>{translated.triggerEvent}</h2>
+        <View className="h2">{translated.triggerEvent}</View>
         <Demo8 />
-        <h2>Checkbox.Group</h2>
+        <View className="h2">Checkbox.Group</View>
         <Demo9 />
-        <h2>{translated.Disabled}</h2>
+        <View className="h2">{translated.Disabled}</View>
         <Demo10 />
-        <h2>{translated.selectAndCancel}</h2>
+        <View className="h2">{translated.selectAndCancel}</View>
         <Demo11 />
-        <h2>{translated.max}</h2>
+        <View className="h2">{translated.max}</View>
         <Demo12 />
-        <h2>{translated.threeState}</h2>
+        <View className="h2">{translated.threeState}</View>
         <Demo13 />
-        <h2>{translated.options}</h2>
+        <View className="h2">{translated.options}</View>
         <Demo14 />
-        <h2>{translated.list}</h2>
+        <View className="h2">{translated.list}</View>
         <Demo15 />
-      </div>
+      </ScrollView>
     </>
   )
 }

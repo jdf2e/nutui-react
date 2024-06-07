@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Popover, Cell, Picker } from '@nutui/nutui-react-taro'
 
 interface PickerOption {
@@ -75,9 +76,9 @@ const Demo4 = () => {
           setCustomPosition(false)
         }}
       >
-        <div className="brickBox">
-          <div className="brick" id="pickerTarget" />
-        </div>
+        <View className="brickBox">
+          <View className="brick" id="pickerTarget" />
+        </View>
       </Picker>
       <Popover
         className="custom-color"

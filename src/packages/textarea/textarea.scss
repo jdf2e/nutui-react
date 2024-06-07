@@ -4,7 +4,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  background: $color-background-overlay;
+  background-color: $color-background-overlay;
   font-size: $textarea-font;
   padding: $textarea-padding;
 
@@ -25,13 +25,14 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
+    height: 40px;
     min-width: 0;
     margin: 0;
     padding: 0;
     font-size: $textarea-font;
     color: $textarea-text-color;
     caret-color: $textarea-text-curror-color;
-    text-align: start;
+    text-align: left;
     background-color: transparent;
     border: 0;
     resize: none;
@@ -46,22 +47,26 @@
       color: $textarea-disabled-color;
     }
   }
-
   .cpoyText {
     position: absolute;
     top: -999999px;
     left: -999999px;
   }
+
+  &.nut-textarea-rtl {
+    &-limit {
+      right: auto;
+      left: 15px;
+    }
+
+    .cpoyText {
+      left: auto;
+      right: -999999px;
+    }
+  }
 }
 
-[dir='rtl'] .nut-textarea,
-.nut-rtl .nut-textarea {
-  &-limit {
-    right: auto;
-    left: 15px;
-  }
-  .cpoyText {
-    left: auto;
-    right: -999999px;
-  }
+.taro-textarea {
+  background-color: transparent;
+  resize: none;
 }

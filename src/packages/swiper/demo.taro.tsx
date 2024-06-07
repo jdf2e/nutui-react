@@ -1,6 +1,7 @@
 import React from 'react'
-import '@/packages/swiper/demo.scss'
+import './demo.scss'
 import Taro from '@tarojs/taro'
+import { View, ScrollView } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -42,26 +43,42 @@ const SwiperDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.asyc}</h2>
+        <View className="h2">{translated.asyc}</View>
         <Demo2 />
-        <h2>{translated.size}</h2>
-        <Demo3 />
-        <h2>{translated.indicator}</h2>
+        <View className="h2">{translated.size}</View>
+        <View
+          style={{
+            display: 'flex',
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+        >
+          <Demo3 />
+        </View>
+        <View className="h2">{translated.indicator}</View>
         <Demo4 />
-        <h2>{translated.btns}</h2>
+        <View className="h2">{translated.btns}</View>
         <Demo5 />
-        <h2>{translated.vertical}</h2>
+        <View className="h2">{translated.vertical}</View>
         <Demo6 />
-        <h2>{translated.horizontalCenter}</h2>
+        <View className="h2">{translated.horizontalCenter}</View>
         <Demo7 />
-        <h2>{translated.verticalCenter}</h2>
-        <Demo8 />
-        <h2>{translated.multiItems}</h2>
+        {Taro.getEnv() !== Taro.ENV_TYPE.RN &&
+        Taro.getEnv() !== Taro.ENV_TYPE.HARMONY ? (
+          <>
+            <View className="h2">{translated.verticalCenter}</View>
+            <Demo8 />
+          </>
+        ) : null}
+        <View className="h2">{translated.multiItems}</View>
         <Demo9 />
-      </div>
+      </ScrollView>
     </>
   )
 }

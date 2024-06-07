@@ -51,17 +51,8 @@
     margin-top: 16px;
   }
 
-  &-action-left {
-    margin-right: 16px;
-  }
-}
-
-[dir='rtl'] .nut-empty,
-.nut-rtl .nut-empty {
-  &-actions {
-    .nut-empty-action-left {
-      margin-right: 0;
-      margin-left: 16px;
-    }
+  &-action {
+    margin-right: 6px;
+    margin-left: 6px;
   }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View, Text } from '@tarojs/components'
 import { Tabs } from '@nutui/nutui-react-taro'
 import { Star } from '@nutui/icons-react-taro'
 
@@ -25,15 +26,15 @@ const Demo23 = () => {
         value={tab7value}
         title={() => {
           return list6.map((item) => (
-            <div
+            <View
               onClick={() => setTab7value(item.paneKey)}
               className={`nut-tabs-titles-item ${tab7value === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
               key={item.paneKey}
             >
               {item.icon || null}
-              <span className="nut-tabs-titles-item-text">{item.title}</span>
-              <span className="nut-tabs-titles-item-line" />
-            </div>
+              <Text className="nut-tabs-titles-item-text">{item.title}</Text>
+              <Text className="nut-tabs-titles-item-line" />
+            </View>
           ))
         }}
       >
