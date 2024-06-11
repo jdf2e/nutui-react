@@ -25,14 +25,19 @@
 
   &-primary {
     background: $pulltorefresh-color-primary;
-    .nut-pulltorefresh-content {
+
+    &-content {
       color: $color-text-dark;
     }
 
-    .nut-pulltorefresh-head {
+    &-head {
       &-content {
         color: $color-text-dark;
       }
+    }
+
+    &-status-text {
+      color: $white;
     }
   }
 }

@@ -9,6 +9,8 @@ import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { PullToRefreshType } from './types'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -73,8 +75,10 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const renderIcons = (status: string) => {
     return (
       <>
-        {(status === 'pulling' || status === 'complete') && <Loading />}
-        {(status === 'canRelease' || status === 'refreshing') && <More />}
+        {(status === 'pulling' || status === 'complete') &&
+          (!harmonyAndRn() ? <Loading /> : null)}
+        {(status === 'canRelease' || status === 'refreshing') &&
+          (!harmonyAndRn() ? <More /> : null)}
       </>
     )
   }
@@ -98,6 +102,9 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     touch.start(e as any)
   }
   const handleTouchMove: any = (e: ITouchEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+
     if (props.scrollTop > 0) {
       return
     }
@@ -121,6 +128,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
   }
+
   async function doRefresh() {
     setHeight(headHeight)
     setStatus('refreshing')
@@ -138,6 +146,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     setHeight(0)
     setStatus('pulling')
   }
+
   const handleTouchEnd: any = () => {
     pullingRef.current = false
     if (status === 'canRelease') {
@@ -153,7 +162,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const isAndroidWeApp =
     Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
   const springStyles = {
-    height: `${height}px`,
+    height: pxTransform(height),
     ...(!pullingRef.current || isAndroidWeApp
       ? { transition: 'height .3s ease' }
       : {}),
@@ -166,16 +175,46 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <View style={springStyles} className={`${classPrefix}-head`}>
+      <View
+        style={springStyles}
+        className={classNames({
+          [`${classPrefix}-head`]: true,
+          [`${classPrefix}-primary-head`]: props.type === 'primary',
+        })}
+      >
         <View
-          className={`${classPrefix}-head-content`}
-          style={{ height: headHeight }}
+          className={classNames({
+            [`${classPrefix}-head-content`]: true,
+            [`${classPrefix}-primary-head-content`]: props.type === 'primary',
+          })}
+          style={{ height: pxTransform(headHeight) }}
         >
-          <View>{renderStatusIcon()}</View>
-          <View>{renderStatusText()}</View>
+          <View
+            className={classNames({
+              [`${classPrefix}-status-icon`]: true,
+              [`${classPrefix}-primary-status-icon`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusIcon()}
+          </View>
+          <View
+            className={classNames({
+              [`${classPrefix}-status-text`]: true,
+              [`${classPrefix}-primary-status-text`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusText()}
+          </View>
         </View>
       </View>
-      <View className={`${classPrefix}-content`}>{props.children}</View>
+      <View
+        className={classNames({
+          [`${classPrefix}-content`]: true,
+          [`${classPrefix}-primary-content}`]: props.type === 'primary',
+        })}
+      >
+        {props.children}
+      </View>
     </View>
   )
 }
