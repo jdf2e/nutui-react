@@ -73,6 +73,8 @@ export const Range: FunctionComponent<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
+  const verticalClassPrefix = `${classPrefix}-vertical`
+  const rtlClassPrefix = `rtl-${vertical ? verticalClassPrefix : classPrefix}`
   const [buttonIndex, setButtonIndex] = useState(0)
   const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
@@ -124,13 +126,13 @@ export const Range: FunctionComponent<
 
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
-    [`${classPrefix}-vertical`]: vertical,
+    [verticalClassPrefix]: vertical,
   })
 
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
-      [`${classPrefix}-container-vertical`]: vertical,
+      [`${verticalClassPrefix}-container`]: vertical,
     },
     className
   )
@@ -138,6 +140,7 @@ export const Range: FunctionComponent<
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
+      const verticalClassPrefix = 'nut-range-vertical-mark'
       let lowerBound = min
       let upperBound = max
       if (range && Array.isArray(current)) {
@@ -147,10 +150,21 @@ export const Range: FunctionComponent<
         upperBound = current as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
-      return [
+      const classNames = [
         `${classPrefix}-text`,
         `${isActive ? `${classPrefix}-text-active` : ''}`,
-      ].join(' ')
+      ]
+
+      if (vertical) {
+        classNames.push(`${verticalClassPrefix}-text`)
+        isActive && classNames.push(`${verticalClassPrefix}-text-active`)
+      }
+
+      if (rtl) {
+        classNames.push(`${rtlClassPrefix}-mark-text`)
+      }
+
+      return classNames.join(' ')
     },
     [range, current, min, max]
   )
@@ -331,9 +345,19 @@ export const Range: FunctionComponent<
     return (
       <>
         {button || (
-          <div className="nut-range-button">
+          <div
+            className={classNames(`${classPrefix}-button`, {
+              [`${verticalClassPrefix}-button`]: vertical,
+              [`${rtlClassPrefix}-button`]: rtl,
+            })}
+          >
             {currentDescription !== null && (
-              <div className="number">
+              <div
+                className={classNames(`${classPrefix}-button-number`, {
+                  [`${verticalClassPrefix}-button-number`]: vertical,
+                  [`${rtlClassPrefix}-button-number`]: rtl,
+                })}
+              >
                 {currentDescription
                   ? currentDescription(curValue(index))
                   : curValue(index)}
@@ -348,11 +372,16 @@ export const Range: FunctionComponent<
   return (
     <div className={containerClasses}>
       {minDescription !== null && (
-        <div className="min">{minDescription || min}</div>
+        <div className={`${classPrefix}-min`}>{minDescription || min}</div>
       )}
       <div ref={root} className={classes} onClick={(e) => click(e)}>
         {marksList.length > 0 && (
-          <div className="nut-range-mark">
+          <div
+            className={classNames(`${classPrefix}-mark`, {
+              [`${verticalClassPrefix}-mark`]: vertical,
+              [`${rtlClassPrefix}-mark`]: rtl,
+            })}
+          >
             {marksList.map((mark: any) => {
               return (
                 <span
@@ -362,8 +391,11 @@ export const Range: FunctionComponent<
                 >
                   {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
                   <span
-                    className={classNames('nut-range-tick', {
-                      active: tickClass(mark),
+                    className={classNames(`${classPrefix}-tick`, {
+                      [`${verticalClassPrefix}-tick`]: vertical,
+                      [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                        tickClass(mark),
+                      [`${rtlClassPrefix}-tick`]: rtl,
                     })}
                   />
                 </span>
@@ -372,16 +404,24 @@ export const Range: FunctionComponent<
           </div>
         )}
 
-        <div className="nut-range-bar" style={barStyle()}>
+        <div className={`${classPrefix}-bar`} style={barStyle()}>
           {range ? (
             [0, 1].map((item, index) => {
+              const isLeft = index === 0
+              const isRight = index === 1
               return (
                 <div
                   key={index}
-                  className={`${
-                    index === 0 ? 'nut-range-button-wrapper-left' : ''
-                  }
-                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
+                  className={classNames({
+                    [`${classPrefix}-button-wrapper-left`]: isLeft,
+                    [`${classPrefix}-button-wrapper-right`]: isRight,
+                    [`${verticalClassPrefix}-button-wrapper-left`]:
+                      isLeft && vertical,
+                    [`${verticalClassPrefix}-button-wrapper-right`]:
+                      isRight && vertical,
+                    [`${rtlClassPrefix}-button-wrapper-left`]: isLeft && rtl,
+                    [`${rtlClassPrefix}-button-wrapper-right`]: isRight && rtl,
+                  })}
                   onTouchStart={(e) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
@@ -400,7 +440,9 @@ export const Range: FunctionComponent<
             })
           ) : (
             <div
-              className="nut-range-button-wrapper"
+              className={classNames(`${classPrefix}-button-wrapper`, {
+                [`${verticalClassPrefix}-button-wrapper`]: vertical,
+              })}
               onTouchStart={(e) => onTouchStart(e)}
               onTouchMove={(e) => onTouchMove(e)}
               onTouchEnd={onTouchEnd}
@@ -413,7 +455,7 @@ export const Range: FunctionComponent<
         </div>
       </div>
       {maxDescription !== null && (
-        <div className="max">{maxDescription || max}</div>
+        <div className={`${classPrefix}-max`}>{maxDescription || max}</div>
       )}
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { Range, Cell, Toast } from '@nutui/nutui-react-taro'
+import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 
 const Demo12 = () => {
   const verticalStyle = {
@@ -14,7 +14,7 @@ const Demo12 = () => {
     setShow(true)
   }
   return (
-    <>
+    <View>
       <Cell style={verticalStyle}>
         <View style={{ width: '150px', height: '100%' }}>
           <Range
@@ -32,15 +32,15 @@ const Demo12 = () => {
           />
         </View>
       </Cell>
-      <Toast
+      {/* <Toast
         type="text"
         visible={show}
         content={msg}
         onClose={() => {
           setShow(false)
         }}
-      />
-    </>
+      /> */}
+    </View>
   )
 }
 export default Demo12

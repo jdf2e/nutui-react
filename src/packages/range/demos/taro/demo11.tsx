@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { View } from '@tarojs/components'
-import { Range, Cell, Toast } from '@nutui/nutui-react-taro'
+import { pxTransform } from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
+import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 
 const Demo11 = () => {
   const [value, setValue] = useState(60)
@@ -14,38 +15,45 @@ const Demo11 = () => {
     setShow(true)
   }
   return (
-    <>
+    <View>
       <Cell style={cellStyle}>
         <Range
           value={value}
           button={
             <View
               style={{
-                width: '26px',
-                color: 'white',
-                fontSize: '10px',
-                lineHeight: '18px',
-                textAlign: 'center',
+                display: 'flex',
+                width: pxTransform(26),
                 backgroundColor: 'red',
-                borderRadius: '10px',
+                borderRadius: pxTransform(10),
+                justifyContent: 'center',
               }}
             >
-              {value}
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: pxTransform(10),
+                  lineHeight: pxTransform(18),
+                  textAlign: 'center',
+                }}
+              >
+                {value}
+              </Text>
             </View>
           }
           onChange={(val: any) => setValue(val)}
           onEnd={(val) => showToast(`${val}`)}
         />
       </Cell>
-      <Toast
+      {/* <Toast
         type="text"
         visible={show}
         content={msg}
         onClose={() => {
           setShow(false)
         }}
-      />
-    </>
+      /> */}
+    </View>
   )
 }
 export default Demo11

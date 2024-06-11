@@ -1,266 +1,230 @@
 .nut-range-container {
   display: flex;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: $range-height;
   align-items: center;
 
-  .min,
-  .max {
+  &-native {
+    height: auto;
+  }
+}
+
+.nut-range {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: $range-height;
+  margin: 0 $range-margin;
+  background-color: $range-inactive-color;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    inset-block: -8px;
+    inset-inline: 0;
+    content: '';
+  }
+
+  &-min,
+  &-max {
     font-size: $font-size-small;
     color: $range-color;
     user-select: none;
   }
 
-  .nut-range {
+  &-bar {
     display: block;
     position: relative;
     width: 100%;
-    height: $range-height;
-    margin: 0 $range-margin;
-    background-color: $range-inactive-color;
+    height: 100%;
+    background: $range-active-color;
     border-radius: 2px;
-    cursor: pointer;
+    transition: all 0.2s;
+  }
 
-    &::before {
+  &-button {
+    display: block;
+    width: $range-button-width;
+    height: $range-button-height;
+    background: $range-button-background;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    border: $range-button-border;
+    outline: none;
+
+    &-wrapper,
+    &-wrapper-right {
+      touch-action: none;
       position: absolute;
-      inset-block: -8px;
-      inset-inline: 0;
-      content: '';
+      top: 50%;
+      right: 0;
+      // transform: translate3d(50%, -50%, 0);
+      cursor: grab;
+      outline: none;
     }
 
-    &-bar {
-      display: block;
-      position: relative;
+    &-wrapper-left {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      // transform: translate3d(-50%, -50%, 0);
+      cursor: grab;
+      outline: none;
+      touch-action: none;
+    }
+
+    &-number {
       width: 100%;
       height: 100%;
-      background: $range-active-color;
-      border-radius: inherit;
-      transition: all 0.2s;
-    }
-
-    &-button {
-      display: block;
-      width: $range-button-width;
-      height: $range-button-height;
-      background: $range-button-background;
-      border-radius: 50%;
-      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-      border: $range-button-border;
-      outline: none;
-
-      &-wrapper,
-      &-wrapper-right {
-        touch-action: none;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate3d(50%, -50%, 0);
-        cursor: grab;
-        outline: none;
-      }
-
-      &-wrapper-left {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate3d(-50%, -50%, 0);
-        cursor: grab;
-        outline: none;
-        touch-action: none;
-      }
-
-      .number {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        user-select: none;
-        font-size: $font-size-small;
-        color: $range-color;
-        transform: translate3d(0, -100%, 0);
-      }
-    }
-
-    &-disabled {
-      cursor: not-allowed;
-      opacity: 0.54;
-
-      .nut-range-button-wrapper,
-      .nut-range-button-wrapper-left,
-      .nut-range-button-wrapper-right {
-        cursor: not-allowed;
-      }
-    }
-
-    &-mark {
-      position: absolute;
-      width: 100%;
-      overflow: visible;
-      top: 50%;
-      font-size: 12px;
-      padding-top: 14px;
-    }
-
-    &-mark-text {
-      position: absolute;
-      display: inline-block;
-      line-height: 16px;
-      color: #999;
-      text-align: center;
-      word-break: keep-all;
+      line-height: 12px;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       user-select: none;
-      transform: translateX(-10px);
-    }
-
-    &-tick {
-      position: absolute;
-      top: -20px;
-      width: 11px;
-      height: 11px;
-      left: 0px;
-      border-radius: 50%;
-      background: $range-inactive-color;
-
-      &.active {
-        background: $range-active-color;
-      }
+      font-size: $font-size-small;
+      color: $range-color;
+      text-align: center;
+      vertical-align: center;
+      // transform: translate3d(0, -100%, 0);
     }
   }
 
-  &-vertical {
-    height: 100%;
-    flex-direction: column;
-    padding: 0px 15px;
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.54;
 
-    .nut-range {
-      width: $range-height;
-      height: 100%;
+    .nut-range-button-wrapper,
+    .nut-range-button-wrapper-left,
+    .nut-range-button-wrapper-right {
+      cursor: not-allowed;
+    }
+  }
 
-      &-button {
-        &-wrapper,
-        &-wrapper-right {
-          position: absolute;
-          top: initial;
-          bottom: 0px;
-          left: 50%;
-          right: initial;
-          transform: translate3d(-50%, 50%, 0);
-        }
+  &-mark {
+    position: absolute;
+    width: 100%;
+    overflow: visible;
+    top: 50%;
+    font-size: 12px;
+    padding-top: 14px;
+  }
 
-        &-wrapper-left {
-          top: 0px;
-          left: 50%;
-          right: initial;
-          transform: translate3d(-50%, -50%, 0);
-        }
-      }
+  &-mark-text {
+    position: absolute;
+    display: inline-block;
+    line-height: 16px;
+    color: #999;
+    text-align: center;
+    word-break: keep-all;
+    user-select: none;
+    transform: translateX(-10px);
+  }
 
-      .number {
-        transform: translate3d(100%, 0, 0);
-      }
+  &-tick {
+    position: absolute;
+    top: -20px;
+    width: 11px;
+    height: 11px;
+    left: 0px;
+    border-radius: 6px;
+    background: $range-inactive-color;
 
-      &-vertical {
-        margin: $range-margin 0px;
-      }
-
-      &-mark {
-        position: absolute;
-        width: 100%;
-        right: 50%;
-        overflow: visible;
-        font-size: 12px;
-        height: 100%;
-        top: initial;
-        width: 36px;
-        padding: 0px;
-      }
-
-      &-mark-text {
-        width: 20px;
-        position: absolute;
-        display: inline-block;
-        line-height: 16px;
-        color: #999;
-        text-align: center;
-        word-break: keep-all;
-        user-select: none;
-        transform: translateY(-11px);
-      }
-
-      &-tick {
-        position: absolute;
-        top: 0px;
-        left: 30px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: $range-inactive-color;
-
-        &.active {
-          background: $range-active-color;
-        }
-      }
+    &-active {
+      background: $range-active-color;
     }
   }
 }
 
-[dir='rtl'] .nut-range-container,
-.nut-rtl .nut-range-container {
-  &-vertical {
-    .nut-range {
-      &-button {
-        &-wrapper,
-        &-wrapper-right {
-          right: 50%;
-          left: initial;
-          transform: translate3d(50%, 50%, 0);
-        }
+.nut-range-vertical-container {
+  height: 100%;
+  flex-direction: column;
+  padding: 0px 15px;
+}
 
-        &-wrapper-left {
-          right: 50%;
-          left: initial;
-          transform: translate3d(50%, -50%, 0);
-        }
-      }
+.nut-range-vertical {
+  width: $range-height;
+  height: 100%;
+  margin: $range-margin 0px;
 
-      .number {
-        transform: translate3d(-100%, 0, 0);
-      }
+  &-button {
+    &-wrapper,
+    &-wrapper-right {
+      position: absolute;
+      top: initial;
+      bottom: 0px;
+      left: 50%;
+      right: initial;
+      // transform: translate3d(-50%, 50%, 0);
+    }
 
-      &-mark {
-        right: auto;
-        left: 50%;
-      }
+    &-wrapper-left {
+      top: 0px;
+      left: 50%;
+      right: initial;
+      // transform: translate3d(-50%, -50%, 0);
+    }
 
-      &-tick {
-        left: auto;
-        right: 30px;
-        margin-left: 0;
-        margin-right: -0px;
-      }
+    &-number {
+      // transform: translate3d(100%, 0, 0);
+    }
+  }
 
-      &-mark-text {
-        transform: translateY(-11px);
-      }
+  &-mark {
+    position: absolute;
+    width: 100%;
+    right: 50%;
+    overflow: visible;
+    font-size: 12px;
+    height: 100%;
+    top: initial;
+    width: 36px;
+    padding: 0px;
+  }
+
+  &-mark-text {
+    width: 20px;
+    position: absolute;
+    display: inline-block;
+    line-height: 16px;
+    color: #999;
+    text-align: center;
+    word-break: keep-all;
+    user-select: none;
+    transform: translateY(-11px);
+  }
+
+  &-tick {
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: $range-inactive-color;
+
+    &-active {
+      background: $range-active-color;
     }
   }
 }
 
 [dir='rtl'] .nut-range,
-.nut-rtl .nut-range {
+.rtl-nut-range {
   &-button {
     &-wrapper,
     &-wrapper-right {
       left: 0;
       right: initial;
-      transform: translate3d(-50%, -50%, 0);
+      // transform: translate3d(-50%, -50%, 0);
     }
     &-wrapper-left {
       right: 0;
       left: initial;
-      transform: translate3d(50%, -50%, 0);
+      // transform: translate3d(50%, -50%, 0);
     }
   }
 
@@ -271,5 +235,42 @@
 
   &-mark-text {
     transform: translateX(10px);
+  }
+
+  &-vertical {
+    &-button {
+      &-wrapper,
+      &-wrapper-right {
+        right: 50%;
+        left: initial;
+        // transform: translate3d(50%, 50%, 0);
+      }
+
+      &-wrapper-left {
+        right: 50%;
+        left: initial;
+        // transform: translate3d(50%, -50%, 0);
+      }
+
+      &-number {
+        // transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    &-mark {
+      right: auto;
+      left: 50%;
+    }
+
+    &-tick {
+      left: auto;
+      right: 30px;
+      margin-left: 0;
+      margin-right: -0px;
+    }
+
+    &-mark-text {
+      transform: translateY(-11px);
+    }
   }
 }

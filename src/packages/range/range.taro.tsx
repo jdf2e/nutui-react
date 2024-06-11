@@ -6,8 +6,9 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react'
+import Taro, { pxTransform } from '@tarojs/taro'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { useTouch } from '@/utils/use-touch'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -44,6 +45,9 @@ const defaultProps = {
   marks: {},
 } as RangeProps
 
+const isRn = Taro.getEnv() === Taro.ENV_TYPE.RN
+const isNative = isRn || Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+
 export const Range: FunctionComponent<
   Partial<RangeProps> &
     Omit<
@@ -73,6 +77,8 @@ export const Range: FunctionComponent<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-range'
+  const verticalClassPrefix = `${classPrefix}-vertical`
+  const rtlClassPrefix = `rtl-${vertical ? verticalClassPrefix : classPrefix}`
   const [buttonIndex, setButtonIndex] = useState(0)
   const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
@@ -124,13 +130,15 @@ export const Range: FunctionComponent<
 
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
-    [`${classPrefix}-vertical`]: vertical,
+    [verticalClassPrefix]: vertical,
+    [`${classPrefix}-native`]: isNative,
   })
 
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
-      [`${classPrefix}-container-vertical`]: vertical,
+      [`${verticalClassPrefix}-container`]: vertical,
+      [`${classPrefix}-container-native`]: isNative,
     },
     className
   )
@@ -138,6 +146,7 @@ export const Range: FunctionComponent<
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
+      const verticalClassPrefix = 'nut-range-vertical-mark'
       let lowerBound = min
       let upperBound = max
       if (range && Array.isArray(current)) {
@@ -147,10 +156,21 @@ export const Range: FunctionComponent<
         upperBound = current as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
-      return [
+      const classNames = [
         `${classPrefix}-text`,
         `${isActive ? `${classPrefix}-text-active` : ''}`,
-      ].join(' ')
+      ]
+
+      if (vertical) {
+        classNames.push(`${verticalClassPrefix}-text`)
+        isActive && classNames.push(`${verticalClassPrefix}-text-active`)
+      }
+
+      if (rtl) {
+        classNames.push(`${rtlClassPrefix}-mark-text`)
+      }
+
+      return classNames.join(' ')
     },
     [range, current, min, max]
   )
@@ -332,60 +352,129 @@ export const Range: FunctionComponent<
   }
 
   const renderButton = (index?: number) => {
+    const buttonNumberTransform = vertical
+      ? 'translate3d(100%, 0, 0)'
+      : 'translate3d(0, -100%, 0)'
+    const buttonNumberTransformRn = [
+      { translateX: pxTransform(vertical ? 26 : 0) },
+      { translateY: pxTransform(vertical ? 0 : -26) },
+    ]
+
     return (
-      <>
+      <View>
         {button || (
-          <div className="nut-range-button">
+          <View
+            className={classNames(`${classPrefix}-button`, {
+              [`${verticalClassPrefix}-button`]: vertical,
+              [`${rtlClassPrefix}-button`]: rtl,
+            })}
+            style={isNative ? { borderRadius: 13 } : {}}
+          >
             {currentDescription !== null && (
-              <div className="number">
+              <Text
+                className={classNames(`${classPrefix}-button-number`, {
+                  [`${verticalClassPrefix}-button-number`]: vertical,
+                  [`${rtlClassPrefix}-button-number`]: rtl,
+                })}
+                style={{
+                  // @ts-ignore
+                  transform: isRn
+                    ? buttonNumberTransformRn
+                    : buttonNumberTransform,
+                }}
+              >
                 {currentDescription
                   ? currentDescription(curValue(index))
                   : curValue(index)}
-              </div>
+              </Text>
             )}
-          </div>
+          </View>
         )}
-      </>
+      </View>
     )
   }
 
+  const getWrapperTransform = useCallback(() => {
+    const wrapperTransformRN = [
+      { translateX: pxTransform(vertical ? -13 : 13) },
+      { translateY: pxTransform(vertical ? 13 : -13) },
+    ]
+    const wrapperTransform = vertical
+      ? 'transform: translate3d(-50%, 50%, 0)'
+      : 'transform: translate3d(50%, -50%, 0)'
+
+    return isRn ? wrapperTransformRN : wrapperTransform
+  }, [vertical])
+
   return (
-    <div className={containerClasses}>
+    <View className={containerClasses}>
       {minDescription !== null && (
-        <div className="min">{minDescription || min}</div>
+        <Text className={`${classPrefix}-min`}>{minDescription || min}</Text>
       )}
-      <div ref={root} className={classes} onClick={(e) => click(e)}>
+      <View ref={root} className={classes} onClick={(e) => click(e)}>
         {marksList.length > 0 && (
-          <div className="nut-range-mark">
+          <View
+            className={classNames(`${classPrefix}-mark`, {
+              [`${verticalClassPrefix}-mark`]: vertical,
+              [`${rtlClassPrefix}-mark`]: rtl,
+            })}
+          >
             {marksList.map((mark: any) => {
               return (
-                <span
+                <View
                   key={mark}
                   className={markClassName(mark)}
                   style={marksStyle(mark)}
                 >
                   {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
-                  <span
-                    className={classNames('nut-range-tick', {
-                      active: tickClass(mark),
+                  <View
+                    className={classNames(`${classPrefix}-tick`, {
+                      [`${verticalClassPrefix}-tick`]: vertical,
+                      [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                        tickClass(mark),
+                      [`${rtlClassPrefix}-tick`]: rtl,
                     })}
                   />
-                </span>
+                </View>
               )
             })}
-          </div>
+          </View>
         )}
 
-        <div className="nut-range-bar" style={barStyle()}>
+        <View className={`${classPrefix}-bar`} style={barStyle()}>
           {range ? (
             [0, 1].map((item, index) => {
+              const isLeft = index === 0
+              const isRight = index === 1
+
+              // @TODO 支持变量
+              const transform = `translate3d(${isLeft || vertical ? '-' : ''}50%, ${vertical && isRight ? '' : '-'}50%, 0)`
+              const transformRn = [
+                {
+                  translateX: pxTransform(isLeft || vertical ? -13 : 13),
+                },
+                {
+                  translateY: pxTransform(vertical && isRight ? 13 : -13),
+                },
+              ]
+
               return (
-                <div
+                <View
                   key={index}
-                  className={`${
-                    index === 0 ? 'nut-range-button-wrapper-left' : ''
-                  }
-                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
+                  className={classNames({
+                    [`${classPrefix}-button-wrapper-left`]: isLeft,
+                    [`${classPrefix}-button-wrapper-right`]: isRight,
+                    [`${verticalClassPrefix}-button-wrapper-left`]:
+                      isLeft && vertical,
+                    [`${verticalClassPrefix}-button-wrapper-right`]:
+                      isRight && vertical,
+                    [`${rtlClassPrefix}-button-wrapper-left`]: isLeft && rtl,
+                    [`${rtlClassPrefix}-button-wrapper-right`]: isRight && rtl,
+                  })}
+                  style={{
+                    // @ts-ignore
+                    transform: isRn ? transformRn : transform,
+                  }}
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
@@ -399,13 +488,20 @@ export const Range: FunctionComponent<
                   onClick={(e) => e.stopPropagation()}
                 >
                   {renderButton(index)}
-                </div>
+                </View>
               )
             })
           ) : (
             <View
               catchMove
-              className="nut-range-button-wrapper"
+              className={classNames(`${classPrefix}-button-wrapper`, {
+                [`${verticalClassPrefix}-button-wrapper`]: vertical,
+              })}
+              style={{
+                // @TODO 支持变量
+                // @ts-ignore
+                transform: getWrapperTransform(),
+              }}
               onTouchStart={(e) => onTouchStart(e)}
               onTouchMove={(e) => onTouchMove(e)}
               onTouchEnd={onTouchEnd}
@@ -415,12 +511,12 @@ export const Range: FunctionComponent<
               {renderButton()}
             </View>
           )}
-        </div>
-      </div>
+        </View>
+      </View>
       {maxDescription !== null && (
-        <div className="max">{maxDescription || max}</div>
+        <Text className={`${classPrefix}-max`}>{maxDescription || max}</Text>
       )}
-    </div>
+    </View>
   )
 }
 
