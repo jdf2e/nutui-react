@@ -45,8 +45,15 @@ const ToastDemo = () => {
         <Demo3 />
         <View className="h2">{translated.toastCustomIcon}</View>
         <Demo4 />
-        <View className="h2">{translated.toastWordBreak}</View>
-        <Demo5 />
+        {/* rn和 鸿蒙不支持 break-all */}
+        {Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID ||
+        Taro.getEnv() === Taro.ENV_TYPE.HARMONY ||
+        Taro.getEnv() === Taro.ENV_TYPE.RN ? null : (
+          <>
+            <View className="h2">{translated.toastWordBreak}</View>
+            <Demo5 />
+          </>
+        )}
       </ScrollView>
     </>
   )
