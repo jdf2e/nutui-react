@@ -32,20 +32,10 @@ const ToastDemo = () => {
     },
   })
 
-  function demoClass() {
-    if (Taro.getEnv() === 'WEB') {
-      return 'web'
-    }
-    if (Taro.getEnv() === 'HARMONY') {
-      return 'full'
-    }
-    return ''
-  }
-
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${demoClass()}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.toastFunction}</View>

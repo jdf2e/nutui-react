@@ -134,7 +134,6 @@ export default class Notification extends React.PureComponent<
 
     const classes = classNames({
       'nut-toast-has-icon': icon,
-      [`nut-toast-${size}`]: true,
     })
     return (
       <>
@@ -150,10 +149,8 @@ export default class Notification extends React.PureComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
               style={{
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
                 ...contentStyle,
               }}
             >

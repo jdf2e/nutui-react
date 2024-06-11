@@ -183,13 +183,14 @@ export const Toast: FunctionComponent<
 
   const classes = classNames({
     'nut-toast-has-icon': icon,
-    [`nut-toast-${size}`]: true,
     'nut-toast-rtl': rtl,
   })
+
   const styles =
-    Taro.getEnv() !== 'RN'
+    Taro.getEnv() === 'HARMONY'
       ? { left: '50%', transform: 'translate(-50%, -50%)' }
       : null
+
   return (
     <>
       {innerVisible ? (
@@ -205,7 +206,7 @@ export const Toast: FunctionComponent<
         >
           <View className={`${classPrefix} ${classes}`} id={id}>
             <View
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
               style={{ ...styles, ...contentStyle }}
             >
               {hasIcon() ? (
@@ -214,7 +215,7 @@ export const Toast: FunctionComponent<
                 </View>
               ) : null}
               {title ? (
-                <View className={`${classPrefix}-title`}>{title}</View>
+                <Text className={`${classPrefix}-title`}>{title}</Text>
               ) : null}
               <Text
                 className={`${classPrefix}-text  ${content ? '' : `${classPrefix}-text-empty`}`}

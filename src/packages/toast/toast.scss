@@ -8,13 +8,13 @@
   }
 }
 
-.nut-overlay.nut-toast-overlay-default {
-  background: rgba(0, 0, 0, 0);
-  z-index: 1300;
-}
-
 .nut-toast {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
   position: fixed;
+  /* #endif */
   left: 0;
   top: 0;
   display: flex;
@@ -23,26 +23,20 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  text-align: center;
   pointer-events: none;
   z-index: 1300;
 
-  &-small {
-    .nut-toast-inner {
-      font-size: $font-size-small;
-    }
-  }
-
-  &-large {
-    .nut-toast-inner {
-      font-size: $font-size-large;
-    }
+  &-overlay-default {
+    background: rgba(0, 0, 0, 0);
+    z-index: 1300;
   }
 
   &-inner {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    justify-content: center;
+    align-items: center;
     min-width: 30%;
     max-width: 95.7%;
     font-size: $toast-text-font-size;
@@ -53,19 +47,32 @@
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
 
-    &.normal {
+    &-normal {
       word-break: normal;
       word-wrap: normal;
     }
 
-    &.break-word {
+    &-break-word {
       word-break: normal;
       word-wrap: break-word;
+    }
+
+    &-small {
+      font-size: $font-size-small;
+    }
+
+    &-large {
+      font-size: $font-size-large;
     }
   }
 
   &-center {
+    /* #ifdef rn */
+    top: var(--nutui-toast-inner-top, 38%);
+    /* #endif */
+    /* #ifndef rn */
     top: var(--nutui-toast-inner-top, 48%);
+    /* #endif */
   }
 
   &-bottom {
@@ -78,6 +85,7 @@
 
   &-text {
     color: #ffffff;
+    text-align: $toast-inner-text-align;
     &-empty {
       margin-bottom: -8px;
     }
@@ -87,20 +95,19 @@
     color: #ffffff;
     font-size: $toast-title-font-size;
     font-weight: 500;
+    text-align: $toast-inner-text-align;
   }
 
-  &-has-icon {
-    .nut-toast-icon-wrapper {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 8px;
+  &-icon-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
 
-      .nut-icon {
-        width: 24px;
-        height: 24px;
-      }
+    .nut-icon {
+      width: 24px;
+      height: 24px;
     }
   }
 

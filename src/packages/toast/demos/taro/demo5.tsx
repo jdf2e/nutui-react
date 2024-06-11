@@ -19,6 +19,7 @@ const Demo5 = () => {
         onClose={() => {
           setShow(false)
         }}
+        contentStyle={{ width: '200px' }}
         wordBreak={state.wordBreak}
       />
       <Cell.Group>
