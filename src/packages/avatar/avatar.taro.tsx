@@ -9,7 +9,6 @@ import type { MouseEvent } from 'react'
 import Taro, { getEnv } from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import classNames from 'classnames'
-import { User } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -173,7 +172,7 @@ export const Avatar: FunctionComponent<
             <>
               {src && (
                 <Image
-                  className="avatar-img"
+                  className="nut-avatar-img"
                   src={src}
                   style={{ objectFit: fit }}
                   onError={errorEvent}
@@ -182,11 +181,11 @@ export const Avatar: FunctionComponent<
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon`,
                   })
                 : null}
-              {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <User className="icon" />}
+              {children && <View className="nut-avatar-text">{children}</View>}
+              {/* {!src && !icon && !children && <User className="nut-avatar-icon" />} */}
             </>
           )}
           {/* 折叠头像 */}

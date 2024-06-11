@@ -155,7 +155,7 @@ export const Avatar: FunctionComponent<
             <>
               {src && (
                 <Image
-                  className="avatar-img"
+                  className="nut-avatar-img"
                   src={src}
                   alt={alt}
                   style={{ objectFit: fit }}
@@ -165,16 +165,18 @@ export const Avatar: FunctionComponent<
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon`,
                   })
                 : null}
-              {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <User className="icon" />}
+              {children && <span className="nut-avatar-text">{children}</span>}
+              {!src && !icon && !children && (
+                <User className="nut-avatar-icon" />
+              )}
             </>
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <div className="text">
+            <div className="nut-avatar-text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
                 : `+ ${

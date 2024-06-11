@@ -62,37 +62,37 @@ const AvatarDemo = () => {
         } full avatar-demo`}
       >
         <View className="h2">{translated['67f78db5']}</View>
-        <Cell align="flex-end">
+        <Cell className="cell-avatar" align="flex-end">
           <Demo1 />
         </Cell>
         <View className="h2">{translated['3928b17e']}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo2 />
         </Cell>
         <View className="h2">{translated['049b6a97']}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo3 />
         </Cell>
         <View className="h2">{translated.a304dabf}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo4 />
         </Cell>
         <View className="h2">{translated['89bca4e7']}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo5 />
         </Cell>
         <View className="h2">{translated.e981579e}</View>
         <Demo6 />
         <View className="h2">{translated.f645fc65}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo7 />
         </Cell>
         <View className="h2">{translated['43f00872']}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo8 />
         </Cell>
         <View className="h2">{translated.f645fc66}</View>
-        <Cell>
+        <Cell className="cell-avatar">
           <Demo9 />
         </Cell>
       </ScrollView>

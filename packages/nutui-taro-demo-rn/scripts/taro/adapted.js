@@ -22,4 +22,6 @@ exports = module.exports = [
   'swiper',
   'textarea',
   'indicator',
+  'avatar',
+  'avatargroup',
 ]

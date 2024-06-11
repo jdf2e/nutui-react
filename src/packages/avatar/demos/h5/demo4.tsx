@@ -6,7 +6,6 @@ const Demo4 = () => {
   return (
     <>
       <Avatar
-        className="demo-avatar"
         color="#fff"
         background="var(--nutui-color-primary)"
         icon={<User />}
