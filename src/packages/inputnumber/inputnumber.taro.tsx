@@ -180,7 +180,7 @@ export const InputNumber: FunctionComponent<
     if (text === '-') return null
     return text
   }
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: any) => {
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
@@ -192,7 +192,7 @@ export const InputNumber: FunctionComponent<
       }
     } else if (harmony()) {
       // valueStr移除非数字字符
-      setShadowValue(valueStr.replace(/[^\d]/g, ''))
+      setShadowValue(valueStr.replace(/[^\d/.]/g, ''))
     } else {
       setShadowValue(valueStr as any)
     }
@@ -200,7 +200,7 @@ export const InputNumber: FunctionComponent<
       onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
     }
   }
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = (e: any) => {
     setFocused(true)
     setInputValue(
       shadowValue !== undefined && shadowValue !== null
@@ -209,7 +209,7 @@ export const InputNumber: FunctionComponent<
     )
     onFocus && onFocus(e)
   }
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (e: any) => {
     setFocused(false)
     onBlur && onBlur(e)
     if (async) {
@@ -242,8 +242,7 @@ export const InputNumber: FunctionComponent<
           })}
           type={type}
           ref={inputRef}
-          disabled={disabled}
-          readOnly={readOnly}
+          disabled={disabled || readOnly}
           value={inputValue}
           onInput={handleInputChange}
           onBlur={handleBlur}
