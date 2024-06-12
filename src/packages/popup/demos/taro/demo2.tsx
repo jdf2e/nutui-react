@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 
 const Demo2 = () => {
   const [showTop, setShowTop] = useState(false)
@@ -55,7 +55,7 @@ const Demo2 = () => {
             .fill('')
             .map((_, i) => (
               <View key={i}>
-                <Cell>底部弹出-{i}</Cell>
+                <Text>底部弹出-{i}</Text>
               </View>
             ))}
         </ScrollView>

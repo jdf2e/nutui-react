@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Text } from '@tarojs/components'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
@@ -20,7 +21,7 @@ const Demo5 = () => {
           setShowMountNode(false)
         }}
       >
-        body
+        <Text>body</Text>
       </Popup>
     </>
   )

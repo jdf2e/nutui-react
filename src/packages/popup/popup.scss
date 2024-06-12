@@ -14,7 +14,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    // height: $popup-title-height;
     border-bottom: $popup-title-border-bottom;
     padding: $popup-title-padding;
     position: relative;
@@ -73,7 +72,9 @@
     top: 50%;
     left: 50%;
     min-height: 10%;
+    /* #ifndef rn */
     transform: translate(-50%, -50%);
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius;
@@ -195,19 +196,25 @@
     /* 从顶部滑出 */
     @keyframes popup-slide-top-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(0, -100%, 0);
+        /* #endif */
       }
     }
 
     @keyframes popup-slide-top-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(0, -100%, 0);
+        /* #endif */
       }
     }
 
     &-top-enter-active,
     &-top-appear-active {
+      /* #ifndef rn */
       transform: translate3d(0, 0%, 0);
+      /* #endif*/
       animation-fill-mode: both;
       animation-name: popup-slide-top-enter;
       animation-duration: $popup-animation-duration;
@@ -222,19 +229,25 @@
     /* 从右侧滑出 */
     @keyframes popup-slide-right-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(100%, 0, 0);
+        /* #endif*/
       }
     }
 
     @keyframes popup-slide-right-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(100%, 0, 0);
+        /* #endif*/
       }
     }
 
     &-right-enter-active,
     &-right-appear-active {
+      /* #ifndef rn */
       transform: translate3d(0, 0, 0);
+      /* #endif*/
       animation-fill-mode: both;
       animation-name: popup-slide-right-enter;
       animation-duration: $popup-animation-duration;
@@ -249,19 +262,25 @@
     /* 从底部滑出 */
     @keyframes popup-slide-bottom-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(0, 100%, 0);
+        /* #endif */
       }
     }
 
     @keyframes slide-bottom-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(0, 100%, 0);
+        /* #endif */
       }
     }
 
     &-bottom-enter-active,
     &-bottom-appear-active {
+      /* #ifndef rn */
       transform: translate(0, 0);
+      /* #endif */
       animation-fill-mode: both;
       animation-name: popup-slide-bottom-enter;
       animation-duration: $popup-animation-duration;
@@ -276,13 +295,17 @@
     /* 从左侧滑出 */
     @keyframes popup-slide-left-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(-100%, 0, 0);
+        /* #endif */
       }
     }
 
     @keyframes popup-slide-left-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(-100%, 0, 0);
+        /* #endif */
       }
     }
 
@@ -354,7 +377,9 @@
   &-center {
     left: auto;
     right: 50%;
+    /* #ifndef rn */
     transform: translate(50%, -50%);
+    /* #endif*/
   }
 
   &-bottom {

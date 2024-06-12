@@ -19,6 +19,7 @@ import {
 import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -213,7 +214,7 @@ export const Popup: FunctionComponent<
               )}
               {(title || description) && (
                 <View className={`${classPrefix}-title-title`}>
-                  {title}
+                  <View>{title}</View>
                   {description && (
                     <View className={`${classPrefix}-title-description`}>
                       {description}
@@ -245,26 +246,45 @@ export const Popup: FunctionComponent<
   }
   const renderPop = () => {
     return (
-      <CSSTransition
-        classNames={transitionName}
-        mountOnEnter
-        unmountOnExit={destroyOnClose}
-        timeout={duration}
-        in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
-      >
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onHandleClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : ''}
-        </View>
-      </CSSTransition>
+      <>
+        {!harmonyAndRn() ? (
+          <CSSTransition
+            classNames={transitionName}
+            mountOnEnter
+            unmountOnExit={destroyOnClose}
+            timeout={duration}
+            in={innerVisible}
+            onEntered={onHandleOpened}
+            onExited={onHandleClosed}
+          >
+            <View
+              ref={refObject}
+              style={popStyles}
+              className={popClassName}
+              onClick={onHandleClick}
+              catchMove={lockScroll}
+            >
+              {renderTitle()}
+              {showChildren ? children : ''}
+            </View>
+          </CSSTransition>
+        ) : (
+          <>
+            innerVisible ? (
+            <View
+              ref={refObject}
+              style={popStyles}
+              className={popClassName}
+              onClick={onHandleClick}
+              catchMove={lockScroll}
+            >
+              {renderTitle()}
+              {showChildren ? children : ''}
+            </View>
+            ) : null
+          </>
+        )}
+      </>
     )
   }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
+import { Text, ScrollView } from '@tarojs/components'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
-import { ScrollView } from '@tarojs/components'
 
 const Demo6 = () => {
   const [scrollPenetration, setScrollPenetration] = useState(false)
@@ -18,7 +18,7 @@ const Demo6 = () => {
           {Array.from({ length: 200 })
             .fill('')
             .map((_, i) => (
-              <Cell key={i}>禁止滚动穿透-{i}</Cell>
+              <Text key={i}>禁止滚动穿透-{i}</Text>
             ))}
         </ScrollView>
       </Popup>

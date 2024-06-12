@@ -805,7 +805,7 @@
           "author": "lzz"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Popup",
           "sort": 9,
           "cName": "弹出层",

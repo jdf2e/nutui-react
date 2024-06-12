@@ -1,12 +1,80 @@
 @charset "UTF-8";
 
+.nut-overlay {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
+  position: fixed;
+  /* #endif */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+[dir=rtl] .nut-overlay,
+.nut-rtl .nut-overlay {
+  left: auto;
+  right: 0;
+}
+
+.nut-overflow-hidden {
+  overflow: hidden !important;
+}
+.nut-overflow-hidden .taro_page {
+  overflow: hidden !important;
+}
+
+@keyframes nut-fade-in {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes nut-fade-out {
+  0% {
+    opacity: 1;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.nut-overlay-slide-enter-active {
+  animation-fill-mode: both;
+  animation-name: nut-fade-in;
+  animation-duration: 0.3s;
+}
+.nut-overlay-slide-appear-active {
+  animation-fill-mode: both;
+  animation-name: nut-fade-in;
+  animation-duration: 0.3s;
+}
+.nut-overlay-slide-exit-active {
+  animation-fill-mode: both;
+  animation-name: nut-fade-out;
+  animation-duration: 0.3s;
+}
+
 .nut-popup {
   position: fixed;
   min-height: 26%;
   max-height: 100%;
   overflow-y: auto;
   background-color: #ffffff;
-  color: #1A1A1A;
+  color: #1a1a1a;
   -webkit-overflow-scrolling: touch;
   font-size: 14px;
 }
@@ -23,11 +91,11 @@
   left: 16px;
 }
 .nut-popup-title-title {
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 20px;
 }
 .nut-popup-title-description {
-  color: #888B94;
+  color: #888b94;
   font-size: 10px;
   font-weight: 400;
 }
@@ -35,14 +103,14 @@
   position: absolute !important;
   z-index: 1;
   cursor: pointer;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 16px;
   right: 16px;
-  color: #888B94;
+  color: #888b94;
 }
 .nut-popup-title-right:active {
   opacity: 0.7;
@@ -63,7 +131,9 @@
   top: 50%;
   left: 50%;
   min-height: 10%;
+  /* #ifndef rn */
   transform: translate(-50%, -50%);
+  /* #endif */
 }
 .nut-popup-center.nut-popup-round {
   border-radius: 24px;
@@ -165,22 +235,30 @@
 }
 @keyframes popup-slide-top-enter {
   from {
+    /* #ifndef rn */
     transform: translate3d(0, -100%, 0);
+    /* #endif */
   }
 }
 @keyframes popup-slide-top-exit {
   to {
+    /* #ifndef rn */
     transform: translate3d(0, -100%, 0);
+    /* #endif */
   }
 }
 .nut-popup-slide-top-enter-active {
+  /* #ifndef rn */
   transform: translate3d(0, 0%, 0);
+  /* #endif*/
   animation-fill-mode: both;
   animation-name: popup-slide-top-enter;
   animation-duration: 0.3s;
 }
 .nut-popup-slide-top-appear-active {
+  /* #ifndef rn */
   transform: translate3d(0, 0%, 0);
+  /* #endif*/
   animation-fill-mode: both;
   animation-name: popup-slide-top-enter;
   animation-duration: 0.3s;
@@ -192,22 +270,30 @@
 }
 @keyframes popup-slide-right-enter {
   from {
+    /* #ifndef rn */
     transform: translate3d(100%, 0, 0);
+    /* #endif*/
   }
 }
 @keyframes popup-slide-right-exit {
   to {
+    /* #ifndef rn */
     transform: translate3d(100%, 0, 0);
+    /* #endif*/
   }
 }
 .nut-popup-slide-right-enter-active {
+  /* #ifndef rn */
   transform: translate3d(0, 0, 0);
+  /* #endif*/
   animation-fill-mode: both;
   animation-name: popup-slide-right-enter;
   animation-duration: 0.3s;
 }
 .nut-popup-slide-right-appear-active {
+  /* #ifndef rn */
   transform: translate3d(0, 0, 0);
+  /* #endif*/
   animation-fill-mode: both;
   animation-name: popup-slide-right-enter;
   animation-duration: 0.3s;
@@ -219,22 +305,30 @@
 }
 @keyframes popup-slide-bottom-enter {
   from {
+    /* #ifndef rn */
     transform: translate3d(0, 100%, 0);
+    /* #endif */
   }
 }
 @keyframes slide-bottom-exit {
   to {
+    /* #ifndef rn */
     transform: translate3d(0, 100%, 0);
+    /* #endif */
   }
 }
 .nut-popup-slide-bottom-enter-active {
+  /* #ifndef rn */
   transform: translate(0, 0);
+  /* #endif */
   animation-fill-mode: both;
   animation-name: popup-slide-bottom-enter;
   animation-duration: 0.3s;
 }
 .nut-popup-slide-bottom-appear-active {
+  /* #ifndef rn */
   transform: translate(0, 0);
+  /* #endif */
   animation-fill-mode: both;
   animation-name: popup-slide-bottom-enter;
   animation-duration: 0.3s;
@@ -246,12 +340,16 @@
 }
 @keyframes popup-slide-left-enter {
   from {
+    /* #ifndef rn */
     transform: translate3d(-100%, 0, 0);
+    /* #endif */
   }
 }
 @keyframes popup-slide-left-exit {
   to {
+    /* #ifndef rn */
     transform: translate3d(-100%, 0, 0);
+    /* #endif */
   }
 }
 .nut-popup-slide-left-enter-active {
@@ -332,7 +430,9 @@
 .nut-rtl .nut-popup-center {
   left: auto;
   right: 50%;
+  /* #ifndef rn */
   transform: translate(50%, -50%);
+  /* #endif*/
 }
 [dir=rtl] .nut-popup-bottom,
 .nut-rtl .nut-popup-bottom {
