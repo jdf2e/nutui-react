@@ -41,23 +41,28 @@ export function useTouch() {
     last.current = false
   }
 
+  const getTouch = (event: React.TouchEvent<HTMLElement>) => {
+    const touch = event.touches ? event.touches[0] : event.nativeEvent
+    return touch as React.Touch
+  }
+
   const getX = (touch: React.Touch) => {
-    return touch.screenX || touch.clientX
+    return touch.screenX || touch.clientX || touch.pageX
   }
 
   const getY = (touch: React.Touch) => {
-    return touch.screenY || touch.clientY
+    return touch.screenY || touch.clientY || touch.pageY
   }
 
   const start = (event: React.TouchEvent<HTMLElement>) => {
     reset()
     touchTime.current = Date.now()
-    startX.current = getX(event.touches[0])
-    startY.current = getY(event.touches[0])
+    startX.current = getX(getTouch(event))
+    startY.current = getY(getTouch(event))
   }
 
   const move = (event: React.TouchEvent<HTMLElement>) => {
-    const touch = event.touches[0]
+    const touch = getTouch(event)
     const clientX = getX(touch)
     const clientY = getY(touch)
     // Fix: Safari back will set clientX to negative number

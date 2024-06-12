@@ -7,10 +7,10 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
 import { PullToRefreshType } from './types'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -44,6 +44,7 @@ const defaultProps = {
   scrollTop: 0,
   onRefresh: () => {},
 } as PullToRefreshProps
+
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   p
 ) => {
@@ -71,6 +72,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const pullingRef = useRef(false)
   const [status, setStatus] = useState<PullStatus>('pulling')
   const [height, setHeight] = useState(0)
+  const timer = useRef<Timeout>()
 
   const renderIcons = (status: string) => {
     return (
@@ -102,9 +104,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     touch.start(e as any)
   }
   const handleTouchMove: any = (e: ITouchEvent) => {
-    e.stopPropagation()
     e.preventDefault()
-
     if (props.scrollTop > 0) {
       return
     }
@@ -127,6 +127,12 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       )
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
+    clearTimeout(timer.current)
+    if (rn()) {
+      timer.current = setTimeout(() => {
+        handleTouchEnd()
+      }, 300)
+    }
   }
 
   async function doRefresh() {
@@ -148,6 +154,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
 
   const handleTouchEnd: any = () => {
+    console.log('yyyyyyyyyyyyyy')
     pullingRef.current = false
     if (status === 'canRelease') {
       doRefresh()
