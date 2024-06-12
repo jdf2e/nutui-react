@@ -5,6 +5,7 @@
   width: 100%;
   height: 4px;
   align-items: center;
+  justify-content: space-between;
 }
 .nut-range-container-native {
   height: auto;
@@ -13,11 +14,11 @@
 .nut-range {
   display: block;
   position: relative;
-  width: 100%;
   height: 4px;
   margin: 0 15px;
   background-color: #ffebf1;
   border-radius: 2px;
+  flex: 1;
   cursor: pointer;
 }
 .nut-range::before {
@@ -46,7 +47,7 @@
   transition: all 0.2s;
 }
 .nut-range-button {
-  display: block;
+  display: flex;
   width: 24px;
   height: 24px;
   background: #ffffff;
@@ -54,6 +55,7 @@
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   border: 1px solid #ff0f23;
   outline: none;
+  align-items: center;
 }
 .nut-range-button-wrapper, .nut-range-button-wrapper-right {
   touch-action: none;
@@ -72,10 +74,10 @@
   touch-action: none;
 }
 .nut-range-button-number {
-  width: 100%;
+  width: 200%;
   height: 100%;
-  line-height: 12px;
-  padding: 6px 0;
+  line-height: 14px;
+  padding: 5px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,18 +101,21 @@
   width: 100%;
   overflow: visible;
   top: 50%;
-  font-size: 12px;
   padding-top: 14px;
 }
-.nut-range-mark-text {
+.nut-range-mark-text-wrapper {
   position: absolute;
+  top: 14px;
   display: inline-block;
+  transform: translateX(-10px);
+}
+.nut-range-mark-text {
   line-height: 16px;
+  font-size: 12px;
   color: #999;
   text-align: center;
   word-break: keep-all;
   user-select: none;
-  transform: translateX(-10px);
 }
 .nut-range-tick {
   position: absolute;
@@ -159,24 +164,25 @@
   width: 36px;
   padding: 0px;
 }
-.nut-range-vertical-mark-text {
-  width: 20px;
+.nut-range-vertical-mark-text-wrapper {
   position: absolute;
   display: inline-block;
+  user-select: none;
+  transform: translateY(-11px);
+}
+.nut-range-vertical-mark-text {
   line-height: 16px;
   color: #999;
   text-align: center;
   word-break: keep-all;
-  user-select: none;
-  transform: translateY(-11px);
 }
 .nut-range-vertical-tick {
   position: absolute;
-  top: 0px;
-  left: 30px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
+  top: 2px;
+  left: 31px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
   background: #ffebf1;
 }
 .nut-range-vertical-tick-active {
@@ -226,7 +232,7 @@
   margin-left: 0;
   margin-right: 0px;
 }
-[dir=rtl] .nut-range-vertical-mark-text,
-.rtl-nut-range-vertical-mark-text {
+[dir=rtl] .nut-range-vertical-mark-text-wrapper,
+.rtl-nut-range-vertical-mark-text-wrapper {
   transform: translateY(-11px);
 }

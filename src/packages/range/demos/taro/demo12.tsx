@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
+import { rn } from '@/utils/platform-taro'
+
+const verticalStyle = !rn()
+  ? {
+      height: '180px',
+      padding: '10px',
+    }
+  : {
+      height: 180,
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
+      paddingRight: 10,
+    }
+const viewStyle = !rn()
+  ? { width: '150px', height: '100%' }
+  : { width: 150, height: '100%' }
 
 const Demo12 = () => {
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
   const [show, setShow] = useState(false)
   const [msg, setMsg] = useState('')
   const showToast = (msg: string) => {
@@ -16,14 +29,14 @@ const Demo12 = () => {
   return (
     <View>
       <Cell style={verticalStyle}>
-        <View style={{ width: '150px', height: '100%' }}>
+        <View style={viewStyle}>
           <Range
             defaultValue={20}
             vertical
             onEnd={(val) => showToast(`${val}`)}
           />
         </View>
-        <View style={{ width: '150px', height: '100%' }}>
+        <View style={viewStyle}>
           <Range
             defaultValue={[20, 80]}
             vertical

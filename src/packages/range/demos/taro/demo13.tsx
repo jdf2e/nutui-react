@@ -1,6 +1,30 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
+import { rn } from '@/utils/platform-taro'
+
+const cellStyle = !rn()
+  ? {
+      padding: '40px 18px',
+    }
+  : {
+      paddingTop: 40,
+      paddingBottom: 40,
+      paddingLeft: 18,
+      paddingRight: 18,
+    }
+const verticalStyle = !rn()
+  ? {
+      height: '180px',
+      padding: '10px',
+    }
+  : {
+      height: 180,
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
+      paddingRight: 10,
+    }
 
 const Demo13 = () => {
   const [marks] = useState({
@@ -11,13 +35,6 @@ const Demo13 = () => {
     80: 80,
     100: 'End',
   })
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
   const [show, setShow] = useState(false)
   const [msg, setMsg] = useState('')
   const showToast = (msg: string) => {
@@ -51,6 +68,7 @@ const Demo13 = () => {
           minDescription={null}
           marks={marks}
           onEnd={(val) => showToast(`${val}`)}
+          style={{ flex: 1 }}
         />
         <Range
           defaultValue={[20, 80]}
@@ -58,6 +76,7 @@ const Demo13 = () => {
           marks={marks}
           range
           onEnd={(val) => showToast(`${val}`)}
+          style={{ flex: 1 }}
         />
       </Cell>
       {/* <Toast

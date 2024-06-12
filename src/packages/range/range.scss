@@ -5,6 +5,7 @@
   width: 100%;
   height: $range-height;
   align-items: center;
+  justify-content: space-between;
 
   &-native {
     height: auto;
@@ -14,11 +15,12 @@
 .nut-range {
   display: block;
   position: relative;
-  width: 100%;
+  // width: 100%;
   height: $range-height;
   margin: 0 $range-margin;
   background-color: $range-inactive-color;
   border-radius: 2px;
+  flex: 1;
   cursor: pointer;
 
   &::before {
@@ -46,7 +48,7 @@
   }
 
   &-button {
-    display: block;
+    display: flex;
     width: $range-button-width;
     height: $range-button-height;
     background: $range-button-background;
@@ -54,6 +56,7 @@
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
     border: $range-button-border;
     outline: none;
+    align-items: center;
 
     &-wrapper,
     &-wrapper-right {
@@ -77,10 +80,10 @@
     }
 
     &-number {
-      width: 100%;
+      width: 200%;
       height: 100%;
-      line-height: 12px;
-      padding: 6px 0;
+      line-height: 14px;
+      padding: 5px 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -109,19 +112,23 @@
     width: 100%;
     overflow: visible;
     top: 50%;
-    font-size: 12px;
     padding-top: 14px;
   }
 
-  &-mark-text {
+  &-mark-text-wrapper {
     position: absolute;
+    top: 14px;
     display: inline-block;
+    transform: translateX(-10px);
+  }
+
+  &-mark-text {
     line-height: 16px;
+    font-size: 12px;
     color: #999;
     text-align: center;
     word-break: keep-all;
     user-select: none;
-    transform: translateX(-10px);
   }
 
   &-tick {
@@ -185,25 +192,28 @@
     padding: 0px;
   }
 
-  &-mark-text {
-    width: 20px;
+  &-mark-text-wrapper {
+    // width: 20px;
     position: absolute;
     display: inline-block;
-    line-height: 16px;
-    color: #999;
-    text-align: center;
-    word-break: keep-all;
     user-select: none;
     transform: translateY(-11px);
   }
 
+  &-mark-text {
+    line-height: 16px;
+    color: #999;
+    text-align: center;
+    word-break: keep-all;
+  }
+
   &-tick {
     position: absolute;
-    top: 0px;
-    left: 30px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
+    top: 2px;
+    left: 31px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     background: $range-inactive-color;
 
     &-active {
@@ -269,7 +279,7 @@
       margin-right: -0px;
     }
 
-    &-mark-text {
+    &-mark-text-wrapper {
       transform: translateY(-11px);
     }
   }

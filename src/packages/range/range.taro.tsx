@@ -5,6 +5,7 @@ import React, {
   useRef,
   useCallback,
   ReactNode,
+  useMemo,
 } from 'react'
 import Taro, { pxTransform } from '@tarojs/taro'
 import classNames from 'classnames'
@@ -47,6 +48,8 @@ const defaultProps = {
 
 const isRn = Taro.getEnv() === Taro.ENV_TYPE.RN
 const isNative = isRn || Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+const classPrefix = 'nut-range'
+const verticalClassPrefix = `${classPrefix}-vertical`
 
 export const Range: FunctionComponent<
   Partial<RangeProps> &
@@ -58,6 +61,7 @@ export const Range: FunctionComponent<
   const rtl = useRtl()
   const {
     className,
+    style,
     range,
     disabled,
     button,
@@ -76,9 +80,31 @@ export const Range: FunctionComponent<
     defaultValue,
   } = { ...defaultProps, ...props }
 
-  const classPrefix = 'nut-range'
-  const verticalClassPrefix = `${classPrefix}-vertical`
-  const rtlClassPrefix = `rtl-${vertical ? verticalClassPrefix : classPrefix}`
+  const rtlClassPrefix = useMemo(
+    () => `rtl-${vertical ? verticalClassPrefix : classPrefix}`,
+    [vertical]
+  )
+  const classes = useMemo(
+    () =>
+      classNames(classPrefix, {
+        [`${classPrefix}-disabled`]: disabled,
+        [verticalClassPrefix]: vertical,
+        [`${classPrefix}-native`]: isNative,
+      }),
+    [disabled, vertical]
+  )
+  const containerClasses = useMemo(
+    () =>
+      classNames(
+        `${classPrefix}-container`,
+        {
+          [`${classPrefix}-container-native`]: isNative,
+          [`${verticalClassPrefix}-container`]: vertical,
+        },
+        className
+      ),
+    [className, vertical]
+  )
   const [buttonIndex, setButtonIndex] = useState(0)
   const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
@@ -122,26 +148,11 @@ export const Range: FunctionComponent<
         setMarksList(list)
       }
     }
-  }, [marks])
+  }, [marks, max, min])
 
   const scope = () => {
     return max - min
   }
-
-  const classes = classNames(classPrefix, {
-    [`${classPrefix}-disabled`]: disabled,
-    [verticalClassPrefix]: vertical,
-    [`${classPrefix}-native`]: isNative,
-  })
-
-  const containerClasses = classNames(
-    `${classPrefix}-container`,
-    {
-      [`${verticalClassPrefix}-container`]: vertical,
-      [`${classPrefix}-container-native`]: isNative,
-    },
-    className
-  )
 
   const markClassName = useCallback(
     (mark: any) => {
@@ -157,22 +168,23 @@ export const Range: FunctionComponent<
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       const classNames = [
-        `${classPrefix}-text`,
-        `${isActive ? `${classPrefix}-text-active` : ''}`,
+        `${classPrefix}-text-wrapper`,
+        `${isActive ? `${classPrefix}-text-wrapper-active` : ''}`,
       ]
 
       if (vertical) {
-        classNames.push(`${verticalClassPrefix}-text`)
-        isActive && classNames.push(`${verticalClassPrefix}-text-active`)
+        classNames.push(`${verticalClassPrefix}-text-wrapper`)
+        isActive &&
+          classNames.push(`${verticalClassPrefix}-text-wrapper-active`)
       }
 
       if (rtl) {
-        classNames.push(`${rtlClassPrefix}-mark-text`)
+        classNames.push(`${rtlClassPrefix}-mark-text-wrapper`)
       }
 
       return classNames.join(' ')
     },
-    [range, current, min, max]
+    [min, max, range, current, vertical, rtl, rtlClassPrefix]
   )
 
   const isRange = (val: any) => {
@@ -368,7 +380,7 @@ export const Range: FunctionComponent<
               [`${verticalClassPrefix}-button`]: vertical,
               [`${rtlClassPrefix}-button`]: rtl,
             })}
-            style={isNative ? { borderRadius: 13 } : {}}
+            style={isNative ? { borderRadius: pxTransform(13) } : {}}
           >
             {currentDescription !== null && (
               <Text
@@ -395,19 +407,20 @@ export const Range: FunctionComponent<
   }
 
   const getWrapperTransform = useCallback(() => {
+    // @TODO 支持变量
     const wrapperTransformRN = [
-      { translateX: pxTransform(vertical ? -13 : 13) },
+      { translateX: pxTransform(vertical ? -12 : 13) },
       { translateY: pxTransform(vertical ? 13 : -13) },
     ]
     const wrapperTransform = vertical
-      ? 'transform: translate3d(-50%, 50%, 0)'
-      : 'transform: translate3d(50%, -50%, 0)'
+      ? 'translate3d(-50%, 50%, 0)'
+      : 'translate3d(50%, -50%, 0)'
 
     return isRn ? wrapperTransformRN : wrapperTransform
   }, [vertical])
 
   return (
-    <View className={containerClasses}>
+    <View className={containerClasses} style={style}>
       {minDescription !== null && (
         <Text className={`${classPrefix}-min`}>{minDescription || min}</Text>
       )}
@@ -426,14 +439,22 @@ export const Range: FunctionComponent<
                   className={markClassName(mark)}
                   style={marksStyle(mark)}
                 >
-                  {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
+                  <Text
+                    className={`${vertical ? verticalClassPrefix : classPrefix}-mark-text`}
+                  >
+                    {Array.isArray(marks)
+                      ? marksRef.current[mark]
+                      : marks[mark]}
+                  </Text>
                   <View
-                    className={classNames(`${classPrefix}-tick`, {
-                      [`${verticalClassPrefix}-tick`]: vertical,
-                      [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
-                        tickClass(mark),
-                      [`${rtlClassPrefix}-tick`]: rtl,
-                    })}
+                    className={classNames(
+                      `${vertical ? verticalClassPrefix : classPrefix}-tick`,
+                      {
+                        [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                          tickClass(mark),
+                        [`${rtlClassPrefix}-tick`]: rtl,
+                      }
+                    )}
                   />
                 </View>
               )
@@ -451,7 +472,7 @@ export const Range: FunctionComponent<
               const transform = `translate3d(${isLeft || vertical ? '-' : ''}50%, ${vertical && isRight ? '' : '-'}50%, 0)`
               const transformRn = [
                 {
-                  translateX: pxTransform(isLeft || vertical ? -13 : 13),
+                  translateX: pxTransform(isLeft || vertical ? -12 : 13),
                 },
                 {
                   translateY: pxTransform(vertical && isRight ? 13 : -13),
@@ -498,7 +519,6 @@ export const Range: FunctionComponent<
                 [`${verticalClassPrefix}-button-wrapper`]: vertical,
               })}
               style={{
-                // @TODO 支持变量
                 // @ts-ignore
                 transform: getWrapperTransform(),
               }}
