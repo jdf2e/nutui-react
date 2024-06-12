@@ -12,9 +12,10 @@ import Demo3 from './demos/taro/demo3'
 import Demo3Rn from './demos/taro/demo3-rn'
 import Demo4 from './demos/taro/demo4'
 import Demo4Rn from './demos/taro/demo4-rn'
+import { harmonyAndRn } from '@/utils/platform-taro'
 // import Demo5 from './demos/taro/demo5'
 
-const isNative = Taro.getEnv() === 'RN' || Taro.getEnv() === 'HARMONY'
+const isNative = harmonyAndRn()
 
 const HoverDemo = () => {
   const [translated] = useTranslate({

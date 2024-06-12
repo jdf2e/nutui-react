@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import Taro, { pxTransform } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import HoverButtonItem, {
   HoverButtonItemProps,
 } from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
-import { harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
@@ -37,8 +37,7 @@ export const HoverButton: FunctionComponent<
   const baseStyle = { ...style }
 
   if (tabbarHeight) {
-    const bottom = tabbarHeight + 16
-    baseStyle.bottom = harmony() ? pxTransform(bottom) : bottom
+    baseStyle.bottom = pxTransform(tabbarHeight + 16)
   }
 
   if (typeof zIndex !== 'undefined') {
