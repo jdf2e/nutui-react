@@ -223,15 +223,23 @@ export const InputNumber: FunctionComponent<
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
         {rn() ? (
           <View
-            className={classNames(`${classPrefix}-icon icon-minus`, {
-              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
-            })}
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
           />
         ) : (
           <Minus
-            className={classNames(`${classPrefix}-icon icon-minus`, {
-              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
-            })}
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
           />
         )}
       </View>
@@ -253,15 +261,23 @@ export const InputNumber: FunctionComponent<
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
         {rn() ? (
           <View
-            className={classNames(`${classPrefix}-icon icon-plus`, {
-              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
-            })}
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
           />
         ) : (
           <Plus
-            className={classNames(`${classPrefix}-icon icon-plus`, {
-              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
-            })}
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
           />
         )}
       </View>

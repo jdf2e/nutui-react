@@ -29,9 +29,11 @@
     }
   }
 
-  input,
-  &-input,
-  &-text-readonly {
+  &-input-disabled {
+    color: $inputnumber-disabled-color !important;
+  }
+
+  &-input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,21 +49,18 @@
     &-disabled {
       color: $inputnumber-disabled-color !important;
     }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
   }
-
-  .nut-icon-Minus,
-  .nut-icon-minus {
+  &-icon-minus {
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;
   }
 
-  .nut-icon-Plus,
-  .nut-icon-plus {
+  &-icon-plus {
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;
   }
-}
-.nut-inputnumber-input::-webkit-outer-spin-button,
-.nut-inputnumber-input::-webkit-inner-spin-button {
-  appearance: none;
 }

@@ -35,19 +35,8 @@
   color: #c2c4cc;
   cursor: not-allowed;
 }
-.nut-inputnumber input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 24px;
-  text-align: center;
-  outline: none;
-  border: 0;
-  border-radius: 6px;
-  margin: 0;
-  color: #1a1a1a;
-  background-color: #f5f6fa;
+.nut-inputnumber-input-disabled {
+  color: #c2c4cc !important;
 }
 .nut-inputnumber-input {
   display: flex;
@@ -63,31 +52,9 @@
   color: #1a1a1a;
   background-color: #f5f6fa;
 }
-.nut-inputnumber-text-readonly {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 24px;
-  text-align: center;
-  outline: none;
-  border: 0;
-  border-radius: 6px;
-  margin: 0;
-  color: #1a1a1a;
-  background-color: #f5f6fa;
-}
-.nut-inputnumber input-disabled {
-  color: #c2c4cc !important;
-}
 .nut-inputnumber-input-disabled {
   color: #c2c4cc !important;
 }
-.nut-inputnumber-text-readonly-disabled {
-  color: #c2c4cc !important;
-}
-
-.nut-inputnumber-input::-webkit-outer-spin-button,
-.nut-inputnumber-input::-webkit-inner-spin-button {
+.nut-inputnumber-input::-webkit-outer-spin-button, .nut-inputnumber-input::-webkit-inner-spin-button {
   appearance: none;
 }
