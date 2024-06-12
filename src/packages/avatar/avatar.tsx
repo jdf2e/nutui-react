@@ -178,9 +178,7 @@ export const Avatar: FunctionComponent<
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <div
-              className={`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-text`}
-            >
+            <div className="nut-avatar-text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
                 : `+ ${
