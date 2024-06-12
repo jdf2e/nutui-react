@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render description correctly 1`] = `
+<div>
+  <div
+    class="nut-resultpage"
+  >
+    <div
+      class="nut-resultpage-icon"
+      style="background-image: url("https://img13.360buyimg.com/imagetools/jfs/t1/199421/5/44230/1320/66543100F23a9466e/0e9eadd5cebf07fb.png"); background-size: 100% 100%;"
+    />
+    <div
+      class="nut-resultpage-description"
+    >
+      内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行
+    </div>
+  </div>
+</div>
+`;
