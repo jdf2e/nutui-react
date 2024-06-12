@@ -16,6 +16,7 @@
     "nav/pages/backtop/index",
     "nav/pages/elevator/index",
     "nav/pages/fixednav/index",
+    "nav/pages/hoverbutton/index",
     "nav/pages/navbar/index",
     "nav/pages/sidenavbar/index",
     "nav/pages/tabbar/index",
