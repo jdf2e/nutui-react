@@ -17,7 +17,6 @@ const App = () => {
             style={{
               alignSelf: 'stretch',
               height: pxTransform(46),
-              zIndex: 20,
             }}
           >
             选择
