@@ -30,7 +30,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   } as any
   const [isTouchStart, setTouchStart] = useState(false)
   // @TODO 待添加暗黑模式及样式变量功能
-  const rnProps = useMemo(
+  const nativeProps = useMemo(
     () => (isNative ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
     [isTouchStart]
   )
@@ -65,7 +65,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
         {React.cloneElement(icon, {
           className: 'nut-icon',
           size: 20,
-          ...rnProps,
+          ...nativeProps,
         })}
       </View>
     </View>
