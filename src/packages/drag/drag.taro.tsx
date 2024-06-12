@@ -53,9 +53,7 @@ export const Drag: FunctionComponent<
       const { screenWidth, windowHeight } = getSystemInfoSync()
 
       const { width, height } = await getRectByTaro(dragRef.current)
-      dragRef.current && dragRef.current.getBoundingClientRect()
-
-      console.log('width', width, 'height', height)
+      dragRef.current?.getBoundingClientRect()
       createSelectorQuery()
         .select(`.${className}`)
         .boundingClientRect((rec: any) => {
