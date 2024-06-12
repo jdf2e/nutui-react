@@ -1,19 +1,16 @@
 import React from 'react'
-import Taro, { pxTransform } from '@tarojs/taro'
-import { Indicator, Cell } from '@nutui/nutui-react-taro'
+import { Cell, Indicator } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo2 = () => {
-  const isHarmony = [
-    Taro.ENV_TYPE.HARMONY,
-    Taro.ENV_TYPE.HARMONYHYBRID,
-  ].includes(Taro.getEnv())
   return (
     <Cell>
       <Indicator total={6} current={5}>
         <View
           style={
-            Taro.getEnv() !== 'HARMONY' && Taro.getEnv() !== 'RN'
+            !harmonyAndRn()
               ? {
                   display: 'inline-block',
                   width: '14px',
@@ -30,17 +27,18 @@ const Demo2 = () => {
                 }
               : {
                   display: 'inline-block',
-                  width: isHarmony ? pxTransform(14) : 14,
-                  height: isHarmony ? pxTransform(14) : 14,
-                  lineHeight: isHarmony ? pxTransform(14) : 14,
+                  width: pxTransform(14),
+                  height: pxTransform(14),
+                  lineHeight: pxTransform(14),
                   textAlign: 'center',
-                  fontSize: isHarmony ? pxTransform(12) : 12,
+                  fontSize: pxTransform(12),
                   color: '#FFFFFF',
                   borderWidth: 1,
                   borderColor: '#FFFFFF',
-                  borderRadius: isHarmony ? pxTransform(14) : 14,
+                  borderRadius: pxTransform(14),
                   margin: 4,
                   backgroundColor: '#ff0f23',
+                  // @ts-ignore
                   shadowColor: '#ff0f23',
                   shadowOffset: {
                     width: 0,

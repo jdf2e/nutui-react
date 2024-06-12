@@ -1,14 +1,12 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
-import Taro, { pxTransform, redirectTo, navigateTo } from '@tarojs/taro'
-// import { ArrowRight, User } from '@nutui/icons-react-taro'
-import { ITouchEvent, View, Text } from '@tarojs/components'
+import { navigateTo, redirectTo } from '@tarojs/taro'
+import { ArrowRight, User } from '@nutui/icons-react-taro'
+import { ITouchEvent, Text, View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo6 = () => {
-  const isHarmony = [
-    Taro.ENV_TYPE.HARMONY,
-    Taro.ENV_TYPE.HARMONYHYBRID,
-  ].includes(Taro.getEnv())
   const onJumpclick = (
     event: ITouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>,
     link: string
@@ -25,17 +23,17 @@ const Demo6 = () => {
           className="nutui-cell-clickable"
           title="链接"
           align="center"
-          //   extra={<ArrowRight />}
+          extra={harmonyAndRn() ? null : <ArrowRight />}
         />
         <Cell
           className="nutui-cell-clickable"
           title="URL 跳转"
           extra={
             <>
-              <View style={{ marginRight: isHarmony ? pxTransform(5) : 5 }}>
+              <View style={{ marginRight: pxTransform(5) }}>
                 /pages/index/index
               </View>
-              {/* <ArrowRight /> */}
+              {harmonyAndRn() ? null : <ArrowRight />}
             </>
           }
           align="center"
@@ -55,14 +53,12 @@ const Demo6 = () => {
                 flexDirection: 'row',
               }}
             >
-              <View style={{ fontWeight: isHarmony ? pxTransform(500) : 500 }}>
-                我是标题
-              </View>
+              <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
               <View
                 style={{
                   color: '#888B94',
-                  fontSize: isHarmony ? pxTransform(10) : 10,
-                  marginLeft: isHarmony ? pxTransform(5) : 5,
+                  fontSize: pxTransform(10),
+                  marginLeft: pxTransform(5),
                 }}
               >
                 我是描述
@@ -78,14 +74,14 @@ const Demo6 = () => {
               }}
             >
               More
-              {/* <ArrowRight size={12} style={{ marginLeft: 5 }} /> */}
+              {harmonyAndRn() ? null : (
+                <ArrowRight size={12} style={{ marginLeft: 5 }} />
+              )}
             </View>
           }
         />
         <Cell>
-          <View style={{ minHeight: isHarmony ? pxTransform(50) : 50 }}>
-            自定义内容
-          </View>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"
@@ -93,7 +89,7 @@ const Demo6 = () => {
             <Text
               style={{
                 color: '#888B94',
-                fontSize: isHarmony ? pxTransform(12) : 12,
+                fontSize: pxTransform(12),
               }}
             >
               我是描述
@@ -117,15 +113,14 @@ const Demo6 = () => {
                 flexDirection: 'row',
               }}
             >
-              {/* <User style={{ marginRight: 5 }} /> */}我是标题
+              {harmonyAndRn() ? null : <User style={{ marginRight: 5 }} />}
+              我是标题
             </View>
           }
-          //   extra={<ArrowRight />}
+          extra={harmonyAndRn() ? null : <ArrowRight />}
         />
         <Cell>
-          <View style={{ minHeight: isHarmony ? pxTransform(50) : 50 }}>
-            自定义内容
-          </View>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"
