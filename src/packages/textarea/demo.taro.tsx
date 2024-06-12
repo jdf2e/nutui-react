@@ -78,6 +78,7 @@ const TextAreaDemo = () => {
         <Demo2 />
         <View className="h2">{translated.numbers}</View>
         <Demo3 />
+        {/* harmony 不支持 */}
         <View className="h2">{translated.autoHeight}</View>
         <Demo4 />
         <View className="h2">{translated.we2312222}</View>
