@@ -301,6 +301,7 @@
           "name": "HoverButtonItem",
           "type": "component",
           "cName": "悬浮按钮子组件",
+          "exportEmpty": true,
           "desc": "悬浮按钮",
           "sort": 5,
           "show": false,
