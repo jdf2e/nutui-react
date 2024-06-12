@@ -9,3 +9,6 @@ export const harmony = () => {
 export const rn = () => {
   return ['RN'].includes(Taro.getEnv())
 }
+export const web = () => {
+  return ['WEB'].includes(Taro.getEnv())
+}

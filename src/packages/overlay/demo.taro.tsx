@@ -10,6 +10,7 @@ import Demo1 from './demos/taro/demo1'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const OverlayDemo = () => {
   const [translated] = useTranslate({
@@ -42,8 +43,7 @@ const OverlayDemo = () => {
   return (
     <>
       <Header />
-      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.RN ? (
+      {!harmonyAndRn() ? (
         <View
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
         >

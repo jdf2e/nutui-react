@@ -6,11 +6,11 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface CountDownProps extends BasicComponent {
   paused: boolean
@@ -94,14 +94,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
     } else {
       stateRef.current.handleEndTime = endTime
-      if (
-        ![
-          Taro.ENV_TYPE.RN,
-          Taro.ENV_TYPE.HARMONYHYBRID,
-          Taro.ENV_TYPE.HARMONY,
-          // @ts-ignore
-        ].includes(Taro.getEnv())
-      ) {
+      if (!harmonyAndRn()) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
       }
     }
