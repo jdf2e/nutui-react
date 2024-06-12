@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react'
-import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import { ITouchEvent, View, BaseEventOrig } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony, harmonyAndRn } from '@/utils/platform-taro'
 
 export interface HoverButtonItemProps extends BasicComponent {
   icon?: React.ReactNode
@@ -20,8 +20,8 @@ const defaultProps = {
 } as HoverButtonItemProps
 
 const classPrefix = 'nut-hoverbutton-item'
-const isHarmony = Taro.getEnv() === Taro.ENV_TYPE.HARMONY
-const isNative = Taro.getEnv() === Taro.ENV_TYPE.RN || isHarmony
+const isHarmony = harmony()
+const isNative = harmonyAndRn()
 
 export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   const { className, style, icon, onClick } = {

@@ -8,6 +8,7 @@ import HoverButtonItem, {
   HoverButtonItemProps,
 } from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
+import { harmony } from '@/utils/platform-taro'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
@@ -37,15 +38,7 @@ export const HoverButton: FunctionComponent<
 
   if (tabbarHeight) {
     const bottom = tabbarHeight + 16
-    baseStyle.bottom = [
-      Taro.ENV_TYPE.HARMONYHYBRID,
-      Taro.ENV_TYPE.HARMONY,
-    ].includes(
-      // @ts-ignore
-      Taro.getEnv()
-    )
-      ? pxTransform(bottom)
-      : bottom
+    baseStyle.bottom = harmony() ? pxTransform(bottom) : bottom
   }
 
   if (typeof zIndex !== 'undefined') {
