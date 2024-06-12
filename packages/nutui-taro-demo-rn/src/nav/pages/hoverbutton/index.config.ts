@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: 'HoverButton'
+  navigationBarTitleText: 'Hoverbutton'
 }
