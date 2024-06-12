@@ -286,7 +286,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "HoverButton",
           "type": "component",
           "cName": "悬浮按钮",
@@ -297,7 +297,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "HoverButtonItem",
           "type": "component",
           "cName": "悬浮按钮子组件",
