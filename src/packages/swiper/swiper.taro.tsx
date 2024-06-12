@@ -1,7 +1,6 @@
 import React, {
   Children,
   CSSProperties,
-  forwardRef,
   ReactNode,
   useEffect,
   useImperativeHandle,
@@ -17,10 +16,10 @@ import {
 import classNames from 'classnames'
 import { CommonEventFunction } from '@tarojs/components/types/common'
 import Indicator from '@/packages/indicator/index.taro'
-import { pxCheck } from '@/utils/px-check'
+import pxTransform from '@/utils/px-transform'
 
 export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
-  width: number
+  width: number | string
   height: number | string
   direction: 'horizontal' | 'vertical'
   indicator: ReactNode
@@ -41,7 +40,7 @@ const defaultProps = {
 } as SwiperProps
 
 const classPrefix = 'nut-swiper'
-export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
+export const Swiper = React.forwardRef((props: Partial<SwiperProps>, ref) => {
   const {
     width,
     height,
@@ -122,15 +121,15 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
       className={classNames(classPrefix, className)}
       style={{
         ...style,
-        width: !width ? '100%' : pxCheck(width),
-        height: !height ? '150px' : pxCheck(height),
+        width: !width ? '100%' : width,
+        height: !height ? pxTransform(150) : height,
       }}
     >
       <View
         className="nut-swiper-inner"
         style={{
-          width: !width ? '100%' : pxCheck(width),
-          height: !height ? '150px' : pxCheck(height),
+          width: !width ? '100%' : width,
+          height: !height ? pxTransform(150) : height,
         }}
       >
         <TaroSwiper
@@ -144,8 +143,8 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
             props.onChange?.(e)
           }}
           style={{
-            width: !width ? '100%' : pxCheck(width),
-            height: !height ? '150px' : pxCheck(height),
+            width: !width ? '100%' : width,
+            height: !height ? pxTransform(150) : height,
           }}
           {...rest}
         >

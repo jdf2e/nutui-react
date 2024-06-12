@@ -10,12 +10,13 @@ import Demo1 from './demos/taro/demo1'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const OverlayDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      '84aa6bce': '基础用法',
-      duration: '设置动画时间',
+      '84aa6bce': '基础用法-',
+      duration: '设置动画时间---',
       lockscroll: '不锁定背景滚动',
       abbf9359: '自定义遮罩样式',
       ec0d7acf: '嵌套内容',
@@ -42,25 +43,23 @@ const OverlayDemo = () => {
   return (
     <>
       <Header />
-      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID &&
-      Taro.getEnv() !== 'RN' ? (
-        <div
+      {!harmonyAndRn() ? (
+        <View
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
         >
-          <h2>{translated['84aa6bce']}</h2>
+          <View className="h2">{translated['84aa6bce']}</View>
           <Demo1 />
-          <h2>{translated.abbf9359}</h2>
+          <View className="h2">{translated.abbf9359}</View>
           <Demo2 />
-          <h2>{translated.duration}</h2>
+          <View className="h2">{translated.duration}</View>
           <Demo3 />
-          <h2>{translated.lockscroll}</h2>
+          <View className="h2">{translated.lockscroll}</View>
           <Demo4 />
-          <h2>{translated.ec0d7acf}</h2>
+          <View className="h2">{translated.ec0d7acf}</View>
           <Demo5 />
-          <h2>{translated.closeClickLay}</h2>
+          <View className="h2">{translated.closeClickLay}</View>
           <Demo6 />
-        </div>
+        </View>
       ) : (
         <>
           <View className="h2">{translated['84aa6bce']}</View>

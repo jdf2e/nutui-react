@@ -1,12 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
-import { View, Text } from '@tarojs/components'
-import Taro, { pxTransform } from '@tarojs/taro'
+import { Text, View } from '@tarojs/components'
 import '../../demo.scss'
-
-const HARMONY =
-  Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID ||
-  Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+import pxTransform from '@/utils/px-transform'
 
 const partItemStyle = {
   display: 'flex',
@@ -14,29 +10,18 @@ const partItemStyle = {
   justifyContent: 'center',
   backgroundColor: '#e8220e',
   color: '#fff',
-  ...(HARMONY
-    ? {
-        width: pxTransform(20),
-        height: pxTransform(25),
-        fontSize: pxTransform(14),
-        borderRadius: pxTransform(6),
-      }
-    : {
-        width: 20,
-        height: 25,
-        fontSize: 14,
-        borderRadius: 6,
-      }),
+  ...{
+    width: pxTransform(20),
+    height: pxTransform(25),
+    fontSize: pxTransform(14),
+    borderRadius: pxTransform(6),
+  },
 }
-const partItemSymbolStyle = HARMONY
-  ? {
-      marginLeft: pxTransform(5),
-      marginRight: pxTransform(5),
-    }
-  : {
-      marginLeft: 5,
-      marginRight: 5,
-    }
+const partItemSymbolStyle = {
+  marginLeft: pxTransform(5),
+  marginRight: pxTransform(5),
+}
+
 const Demo8 = () => {
   const onUpdate = (v: any) => {
     setResetTime(v)

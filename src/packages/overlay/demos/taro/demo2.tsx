@@ -13,9 +13,6 @@ const Demo2 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type="primary" onClick={handleToggleShow}>
-          自定义遮罩样式
-        </Button> */}
         <View onClick={handleToggleShow}>自定义遮罩样式</View>
       </Cell>
 
@@ -23,8 +20,7 @@ const Demo2 = () => {
         visible={visible}
         onClick={onClose}
         style={{
-          backgroundColor: 'rgba(0, 0, 0, .4)',
-          '--nutui-overlay-zIndex': 2000,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
         }}
       />
     </>
