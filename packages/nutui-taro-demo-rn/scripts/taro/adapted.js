@@ -22,4 +22,5 @@ exports = module.exports = [
   'swiper',
   'textarea',
   'indicator',
+  'configprovider',
 ]
