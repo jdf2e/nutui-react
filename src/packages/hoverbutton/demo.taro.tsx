@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View, Text } from '@tarojs/components'
-import { Button } from '@nutui/nutui-react-taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -53,56 +53,46 @@ const HoverDemo = () => {
         style={isNative ? { minHeight: 420 } : {}}
       >
         <Text className="h2">{translated.basic}</Text>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.basic}`}
           onClick={() => {
             setCurDemo('basic')
           }}
-        >
-          {`${translated.show}${translated.basic}`}
-        </Button>
+        />
 
         <Text className="h2">{translated.multiButtons}</Text>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.multiButtons}`}
           onClick={() => {
             setCurDemo('multiButtons')
           }}
-        >
-          {`${translated.show}${translated.multiButtons}`}
-        </Button>
+        />
 
         <Text className="h2">{translated.hasTabbar}</Text>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.hasTabbar}`}
           onClick={() => {
             setCurDemo('hasTabbar')
           }}
-        >
-          {`${translated.show}${translated.hasTabbar}`}
-        </Button>
+        />
 
         <Text className="h2">{translated.customZIndex}</Text>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.customZIndex}`}
           onClick={() => {
             setCurDemo('customZIndex')
           }}
-        >
-          {`${translated.show}${translated.customZIndex}`}
-        </Button>
+        />
 
         {/* @TODO RN、鸿蒙端暂不支持 ConfigProvider */}
         {/* {!isNative && <View className="h2">{translated.customSpacing}</View>}
         {!isNative && (
-          <Button
-            block
+          <Cell
+            title={`${translated.show}${translated.customSpacing}`}
             onClick={() => {
               setCurDemo('customSpacing')
             }}
-          >
-            {`${translated.show}${translated.customSpacing}`}
-          </Button>
+          />
         )} */}
       </ScrollView>
 

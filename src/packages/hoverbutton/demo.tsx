@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -40,58 +40,48 @@ const HoverButtonDemo = () => {
     <>
       <div className="demo" style={{ paddingBottom: '100px' }}>
         <h2>{translated.basic}</h2>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.basic}`}
           onClick={() => {
             setCurDemo('basic')
           }}
-        >
-          {`${translated.show}${translated.basic}`}
-        </Button>
+        />
         {curDemo === 'basic' && <Demo1 />}
 
         <h2>{translated.multiButtons}</h2>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.multiButtons}`}
           onClick={() => {
             setCurDemo('multiButtons')
           }}
-        >
-          {`${translated.show}${translated.multiButtons}`}
-        </Button>
+        />
         {curDemo === 'multiButtons' && <Demo2 />}
 
         <h2>{translated.hasTabbar}</h2>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.hasTabbar}`}
           onClick={() => {
             setCurDemo('hasTabbar')
           }}
-        >
-          {`${translated.show}${translated.hasTabbar}`}
-        </Button>
+        />
         {curDemo === 'hasTabbar' && <Demo3 />}
 
         <h2>{translated.customZIndex}</h2>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.customZIndex}`}
           onClick={() => {
             setCurDemo('customZIndex')
           }}
-        >
-          {`${translated.show}${translated.customZIndex}`}
-        </Button>
+        />
         {curDemo === 'customZIndex' && <Demo4 />}
 
         <h2>{translated.customSpacing}</h2>
-        <Button
-          block
+        <Cell
+          title={`${translated.show}${translated.customSpacing}`}
           onClick={() => {
             setCurDemo('customSpacing')
           }}
-        >
-          {`${translated.show}${translated.customSpacing}`}
-        </Button>
+        />
         {curDemo === 'customSpacing' && <Demo5 />}
       </div>
     </>
