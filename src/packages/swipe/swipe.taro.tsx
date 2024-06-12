@@ -13,6 +13,7 @@ import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -150,7 +151,6 @@ export const Swipe = forwardRef<
 
     if (touch.isHorizontal()) {
       lockClick.current = true
-      props.onTouchMove && props.onTouchMove(event)
       const newState = { ...state, dragging: true }
       const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
@@ -255,6 +255,8 @@ export const Swipe = forwardRef<
   }))
 
   useEffect(() => {
+    if (harmonyAndRn()) return
+
     const handler: any = (event: { target: Node | null }) => {
       const targets = [root]
       if (

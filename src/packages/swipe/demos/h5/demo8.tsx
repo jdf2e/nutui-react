@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Button, Cell, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Button, Cell, Dialog, Swipe, SwipeInstance } from '@nutui/nutui-react'
 
 const App = () => {
   const [showDialog, setShowDialog] = useState(false)
@@ -20,7 +19,7 @@ const App = () => {
           <Button
             shape="square"
             type="success"
-            style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+            style={{ alignSelf: 'stretch', height: 46 }}
           >
             选择
           </Button>
@@ -30,7 +29,7 @@ const App = () => {
             <Button
               shape="square"
               type="danger"
-              style={{ alignSelf: 'stretch', height: pxTransform(46) }}
+              style={{ alignSelf: 'stretch', height: 46 }}
             >
               删除
             </Button>
@@ -43,16 +42,16 @@ const App = () => {
           style={{ margin: 0, alignSelf: 'stretch' }}
         />
       </Swipe>
-      {/* <Dialog */}
-      {/*  visible={showDialog} */}
-      {/*  title="提示" */}
-      {/*  onConfirm={() => { */}
-      {/*    refDom.current && refDom.current.close() */}
-      {/*    setShowDialog(false) */}
-      {/*  }} */}
-      {/* > */}
-      {/*  {pRef.current === 'left' ? '确定选择吗？' : '确定删除吗？'} */}
-      {/* </Dialog> */}
+      <Dialog
+        visible={showDialog}
+        title="提示"
+        onConfirm={() => {
+          refDom.current && refDom.current.close()
+          setShowDialog(false)
+        }}
+      >
+        {pRef.current === 'left' ? '确定选择吗？' : '确定删除吗？'}
+      </Dialog>
     </>
   )
 }
