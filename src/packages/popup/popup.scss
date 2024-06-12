@@ -1,7 +1,12 @@
 @import '../overlay/overlay.scss';
 
 .nut-popup {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
   position: fixed;
+  /* #endif */
   min-height: 26%;
   max-height: 100%;
   overflow-y: auto;
@@ -90,6 +95,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
+    /* #ifdef rn */
+    height: 300px;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
@@ -99,6 +107,10 @@
   &-right {
     top: 0;
     right: 0;
+    /* #ifdef rn */
+    width: 100px;
+    height: 100%;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius 0 0 $popup-border-radius;
@@ -108,6 +120,10 @@
   &-left {
     top: 0;
     left: 0;
+    /* #ifdef rn */
+    width: 100px;
+    height: 100%;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: 0 $popup-border-radius $popup-border-radius 0;
@@ -118,6 +134,9 @@
     top: 0;
     left: 0;
     width: 100%;
+    /* #ifdef rn */
+    height: 100px;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: 0 0 $popup-border-radius $popup-border-radius;

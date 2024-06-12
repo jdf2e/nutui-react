@@ -69,7 +69,12 @@
 }
 
 .nut-popup {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
   position: fixed;
+  /* #endif */
   min-height: 26%;
   max-height: 100%;
   overflow-y: auto;
@@ -145,6 +150,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  /* #ifdef rn */
+  height: 300px;
+  /* #endif */
 }
 .nut-popup-bottom.nut-popup-round {
   border-radius: 24px 24px 0 0;
@@ -152,6 +160,10 @@
 .nut-popup-right {
   top: 0;
   right: 0;
+  /* #ifdef rn */
+  width: 100px;
+  height: 100%;
+  /* #endif */
 }
 .nut-popup-right.nut-popup-round {
   border-radius: 24px 0 0 24px;
@@ -159,6 +171,10 @@
 .nut-popup-left {
   top: 0;
   left: 0;
+  /* #ifdef rn */
+  width: 100px;
+  height: 100%;
+  /* #endif */
 }
 .nut-popup-left.nut-popup-round {
   border-radius: 0 24px 24px 0;
@@ -167,6 +183,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  /* #ifdef rn */
+  height: 100px;
+  /* #endif */
 }
 .nut-popup-top.nut-popup-round {
   border-radius: 0 0 24px 24px;

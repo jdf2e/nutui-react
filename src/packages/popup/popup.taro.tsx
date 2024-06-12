@@ -270,18 +270,18 @@ export const Popup: FunctionComponent<
           </CSSTransition>
         ) : (
           <>
-            innerVisible ? (
-            <View
-              ref={refObject}
-              style={popStyles}
-              className={popClassName}
-              onClick={onHandleClick}
-              catchMove={lockScroll}
-            >
-              {renderTitle()}
-              {showChildren ? children : ''}
-            </View>
-            ) : null
+            {innerVisible ? (
+              <View
+                ref={refObject}
+                style={popStyles}
+                className={popClassName}
+                onClick={onHandleClick}
+                catchMove={lockScroll}
+              >
+                {renderTitle()}
+                {showChildren ? children : ''}
+              </View>
+            ) : null}
           </>
         )}
       </>

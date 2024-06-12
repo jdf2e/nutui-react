@@ -51,7 +51,7 @@ const Demo2 = () => {
         lockScroll
       >
         <ScrollView scrollY style={{ height: '200px' }}>
-          {Array.from({ length: 200 })
+          {Array.from({ length: 2 })
             .fill('')
             .map((_, i) => (
               <View key={i}>
