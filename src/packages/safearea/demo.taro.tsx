@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -18,13 +19,13 @@ const SafeAreaDemo = () => {
   })
 
   return (
-    <>
+    <View>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <Text className="h2">{translated.basic}</Text>
         <Demo1 />
-      </div>
-    </>
+      </View>
+    </View>
   )
 }
 

@@ -27,6 +27,7 @@ const subPackages = [
       'pages/backtop/index',
       'pages/elevator/index',
       'pages/fixednav/index',
+      'pages/hoverbutton/index',
       'pages/navbar/index',
       'pages/sidenavbar/index',
       'pages/tabbar/index',
