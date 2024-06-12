@@ -74,6 +74,8 @@ export const Avatar: FunctionComponent<
   const classes = classNames({
     [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
     [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-round`]:
+      shape === 'round' && true,
   })
   const cls = classNames(classPrefix, classes, className)
 
@@ -176,7 +178,9 @@ export const Avatar: FunctionComponent<
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <div className="nut-avatar-text">
+            <div
+              className={`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-text`}
+            >
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
                 : `+ ${

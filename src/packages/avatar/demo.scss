@@ -3,7 +3,8 @@
   align-items: flex-end;
   border-radius: 0;
 
-  & > div {
+  & > div,
+  & > taro-view-core {
     margin-inline-end: 30px;
   }
 }

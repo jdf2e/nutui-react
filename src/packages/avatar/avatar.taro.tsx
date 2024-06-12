@@ -9,9 +9,11 @@ import type { MouseEvent } from 'react'
 import Taro, { getEnv } from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import classNames from 'classnames'
+import { User } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
 
 export interface AvatarProps extends BasicComponent {
@@ -75,6 +77,8 @@ export const Avatar: FunctionComponent<
   const classes = classNames({
     [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
     [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-round`]:
+      shape === 'round' && true,
   })
   const cls = classNames(classPrefix, classes, className)
 
@@ -172,7 +176,7 @@ export const Avatar: FunctionComponent<
             <>
               {src && (
                 <Image
-                  className="nut-avatar-img"
+                  className={`nut-avatar-img nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-img`}
                   src={src}
                   style={{ objectFit: fit }}
                   onError={errorEvent}
@@ -181,16 +185,28 @@ export const Avatar: FunctionComponent<
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} nut-avatar-icon`,
+                    className: `${icon.props.className || ''} nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-icon`,
                   })
                 : null}
-              {children && <View className="nut-avatar-text">{children}</View>}
-              {/* {!src && !icon && !children && <User className="nut-avatar-icon" />} */}
+              {children && (
+                <View
+                  className={`nut-avatar-text nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-text`}
+                >
+                  {children}
+                </View>
+              )}
+              {!src && !icon && !children && !harmonyAndRn() && (
+                <User
+                  className={`nut-avatar-icon nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-icon`}
+                />
+              )}
             </>
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <View className="text">
+            <View
+              className={`nut-avatar-text nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-text`}
+            >
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
                 : `+ ${
