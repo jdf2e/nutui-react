@@ -32,6 +32,7 @@ const Demo3 = () => {
         visible={showIcon}
         left="返回"
         title="我是标题"
+        description="我是描述"
         position="bottom"
         onClose={() => {
           setShowIcon(false)
