@@ -17,7 +17,6 @@
     "nav/pages/elevator/index",
     "nav/pages/fixednav/index",
     "nav/pages/navbar/index",
-    "nav/pages/hoverbutton/index",
     "nav/pages/sidenavbar/index",
     "nav/pages/tabbar/index",
     "nav/pages/tabs/index",
