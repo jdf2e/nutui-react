@@ -286,6 +286,29 @@
           "author": "Ymm0008"
         },
         {
+          "version": "3.0.0",
+          "name": "HoverButton",
+          "type": "component",
+          "cName": "悬浮按钮",
+          "desc": "悬浮多按钮，用于快捷功能",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "HoverButtonItem",
+          "type": "component",
+          "cName": "悬浮按钮子组件",
+          "exportEmpty": true,
+          "desc": "悬浮按钮",
+          "sort": 5,
+          "show": false,
+          "taro": true,
+          "author": "Ymm0008"
+        },
+        {
           "version": "2.0.0",
           "name": "NavBar",
           "type": "component",
