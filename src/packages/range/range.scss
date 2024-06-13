@@ -92,6 +92,7 @@
       color: $range-color;
       text-align: center;
       vertical-align: center;
+      box-sizing: content-box;
       // transform: translate3d(0, -100%, 0);
     }
   }
@@ -123,6 +124,7 @@
   }
 
   &-mark-text {
+    position: absolute;
     line-height: 16px;
     font-size: 12px;
     color: #999;
