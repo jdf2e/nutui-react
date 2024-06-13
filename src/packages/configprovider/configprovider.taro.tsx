@@ -84,7 +84,7 @@ export const ConfigProvider: FunctionComponent<
   return (
     <ConfigContext.Provider value={mergedConfig}>
       <View
-        className={classNames(classPrefix, className)}
+        className={classNames(classPrefix, className, `nut-${direction}`)}
         style={{
           ...cssVarStyle,
           ...style,
