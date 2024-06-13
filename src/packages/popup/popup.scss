@@ -40,7 +40,7 @@
     }
 
     &-right {
-      position: absolute !important;
+      position: absolute;
       z-index: 1;
       cursor: pointer;
       width: $popup-icon-size;
@@ -356,7 +356,7 @@
   }
 
   .nut-overflow-hidden {
-    overflow: hidden !important;
+    overflow: hidden;
   }
 }
 

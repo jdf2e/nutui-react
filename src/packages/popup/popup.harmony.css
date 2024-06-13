@@ -105,7 +105,7 @@
   font-weight: 400;
 }
 .nut-popup-title-right {
-  position: absolute !important;
+  position: absolute;
   z-index: 1;
   cursor: pointer;
   width: 20px;
@@ -397,7 +397,7 @@
   display: none;
 }
 .nut-popup .nut-overflow-hidden {
-  overflow: hidden !important;
+  overflow: hidden;
 }
 
 [dir=rtl] .nut-popup-title-left {

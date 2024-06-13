@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, {
   FunctionComponent,
   useState,
@@ -11,7 +12,7 @@ import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, Text, ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
   defaultOverlayProps,
@@ -161,7 +162,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: ITouchEvent) => {
-    e.stopPropagation()
+    !harmonyAndRn() && e.stopPropagation()
     if (closeOnOverlayClick) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
@@ -226,7 +227,13 @@ export const Popup: FunctionComponent<
           )}
           {closeable && (
             <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+              {React.isValidElement(closeIcon) ? (
+                closeIcon
+              ) : harmonyAndRn() ? (
+                <Text>T</Text>
+              ) : (
+                <Close />
+              )}
             </View>
           )}
         </View>
@@ -237,7 +244,13 @@ export const Popup: FunctionComponent<
         <>
           {closeable && (
             <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+              {React.isValidElement(closeIcon) ? (
+                closeIcon
+              ) : harmonyAndRn() ? (
+                <Text>I</Text>
+              ) : (
+                <Close />
+              )}
             </View>
           )}
         </>

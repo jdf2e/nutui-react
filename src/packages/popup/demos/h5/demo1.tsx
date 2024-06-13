@@ -18,7 +18,9 @@ const Demo1 = () => {
         onClose={() => {
           setShowBasic(false)
         }}
-      />
+      >
+        正文
+      </Popup>
     </>
   )
 }
