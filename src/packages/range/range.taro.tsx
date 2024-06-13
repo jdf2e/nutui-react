@@ -63,7 +63,7 @@ const handleOverlap = (value: number[]) => {
   return value
 }
 
-const getRect = async (ref: HTMLDivElement | ReactNativeFiberHostComponent) => {
+const getRect = async (ref: HTMLDivElement) => {
   if (isRn) {
     const rect = {
       width: 0,
@@ -72,6 +72,7 @@ const getRect = async (ref: HTMLDivElement | ReactNativeFiberHostComponent) => {
       top: 0,
     }
     await new Promise((resolve) => {
+      // @ts-ignore
       ref.measure(
         (
           xPos: number,
