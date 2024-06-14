@@ -45,7 +45,10 @@ export const Drag: FunctionComponent<
   const getInfo = () => {
     const el = myDrag.current
     if (el) {
-      const { offsetWidth, offsetHeight, offsetTop, offsetLeft } = el
+      const { offsetTop, offsetLeft } = el
+      const { offsetWidth, offsetHeight } = el.querySelector(
+        `.${classPrefix}-inner`
+      ) as HTMLDivElement
       const { clientWidth, clientHeight } = document.documentElement
       const { top, left, bottom, right } = boundary
       setBoundaryState({
@@ -94,7 +97,11 @@ export const Drag: FunctionComponent<
       {...reset}
       ref={myDrag}
     >
-      <animated.div style={currstyle} {...bind()}>
+      <animated.div
+        style={currstyle}
+        {...bind()}
+        className={`${classPrefix}-inner`}
+      >
         {children}
       </animated.div>
     </div>
