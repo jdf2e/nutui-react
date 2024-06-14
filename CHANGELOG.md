@@ -1,3 +1,12 @@
+# v2.6.9
+`2024-06-14`
+
+
+* :sparkles: feat(form): footer 容器增加 className (#2345) @oasis-cloud
+* :bug: fix: 解决Drag组件拖拽后会在原地留一个遮挡元素问题+解决weapp/taro-h5多个demo拖拽位置不正确问题 (#2330) @irisSong
+* :bug: fix(searchbar): 修复 clear 时未触发 change 的问题 (#2262) @eiinu
+
+
 # v2.6.8
 `2024-05-31`
 
