@@ -141,5 +141,4 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   )
 }
 
-CountUp.defaultProps = defaultProps
 CountUp.displayName = 'NutCountUp'

@@ -428,5 +428,4 @@ export const DatePicker: FunctionComponent<
   )
 }
 
-DatePicker.defaultProps = defaultProps
 DatePicker.displayName = 'NutDatePicker'

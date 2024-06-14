@@ -151,5 +151,4 @@ export const CheckboxGroup = React.forwardRef(
   }
 )
 
-CheckboxGroup.defaultProps = defaultProps
 CheckboxGroup.displayName = 'NutCheckboxGroup'

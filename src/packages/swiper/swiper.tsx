@@ -57,6 +57,8 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       duration,
       style,
       className,
+      slideSize,
+      onChange,
     } = { ...defaultProps, ...props }
     const isVertical = direction === 'vertical'
     const count = useMemo(() => {
@@ -67,7 +69,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       return c
     }, [children])
     const getSlideSize = () => {
-      if (props.slideSize) return props.slideSize
+      if (slideSize) return slideSize
       if (stageRef.current) {
         if (isVertical) return stageRef.current.offsetHeight
         return stageRef.current.offsetWidth
@@ -135,8 +137,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
     function boundIndex(current: number) {
       const min = 0
       const max = count - 1
-      if (current === max && !loop && props.slideSize) {
-        const slideSize = props.slideSize
+      if (current === max && !loop && slideSize) {
         const swiperSize = getSwiperSize()
         const ratio = (swiperSize - slideSize) / slideSize
         return bound(current, min, max - ratio)
@@ -151,7 +152,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
         targetIndex = cycleIndex < 0 ? cycleIndex + count : cycleIndex
       }
       setCurrent(targetIndex)
-      props.onChange?.(targetIndex)
+      onChange?.(targetIndex)
 
       if (effect) {
         updateTransform(transforms, setTransforms, effect, targetIndex)
@@ -315,5 +316,4 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
     )
   }
 )
-Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'

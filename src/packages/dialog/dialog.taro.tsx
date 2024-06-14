@@ -225,7 +225,6 @@ export function close(selector: string) {
   customEvents.trigger(path, { status: false })
 }
 
-BaseDialog.defaultProps = defaultProps
 BaseDialog.displayName = 'NutDialog'
 BaseDialog.open = open
 BaseDialog.close = close

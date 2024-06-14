@@ -141,7 +141,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           indicatorDots={false}
           onChange={(e) => {
             handleOnChange(e)
-            props.onChange?.(e)
+            onChange?.(e)
           }}
           style={{
             width: !width ? '100%' : pxCheck(width),
@@ -167,5 +167,4 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
   )
 })
 
-Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'
