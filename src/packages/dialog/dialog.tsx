@@ -64,8 +64,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
 
     const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
-      if (!beforeCancel?.()) return
-      if (!beforeClose?.()) return
+      if (beforeCancel && !beforeCancel?.()) return
+      if (beforeClose && !beforeClose?.()) return
       onClose?.()
       onCancel?.()
     }
@@ -115,8 +115,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
   const renderCloseIcon = () => {
     if (!closeIcon) return null
     const handleCancel = () => {
-      if (!beforeCancel?.()) return
-      if (!beforeClose?.()) return
+      if (beforeCancel && !beforeCancel?.()) return
+      if (beforeClose && !beforeClose?.()) return
       onClose?.()
       onCancel?.()
     }
