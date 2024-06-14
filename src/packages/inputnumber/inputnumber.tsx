@@ -216,9 +216,12 @@ export const InputNumber: FunctionComponent<
     <div className={classes} style={style} {...restProps}>
       <div className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
-          className={classNames(`${classPrefix}-icon icon-minus`, {
-            [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
-          })}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-minus`,
+            {
+              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
+            }
+          )}
         />
       </div>
       <>
@@ -238,9 +241,12 @@ export const InputNumber: FunctionComponent<
       </>
       <div className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
-          className={classNames(`${classPrefix}-icon icon-plus`, {
-            [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
-          })}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-plus`,
+            {
+              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
+            }
+          )}
         />
       </div>
     </div>

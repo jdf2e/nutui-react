@@ -10,7 +10,7 @@ import { ITouchEvent, Input, InputProps, View } from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony, rn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -81,6 +81,7 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const isRnAndHarmony = harmonyAndRn()
   const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -221,17 +222,7 @@ export const InputNumber: FunctionComponent<
   return (
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
-        {rn() ? (
-          <View
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-minus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === min || disabled,
-              }
-            )}
-          />
-        ) : (
+        {isRnAndHarmony ? null : (
           <Minus
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-minus`,
@@ -259,17 +250,7 @@ export const InputNumber: FunctionComponent<
       </>
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
-        {rn() ? (
-          <View
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-plus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === max || disabled,
-              }
-            )}
-          />
-        ) : (
+        {isRnAndHarmony ? null : (
           <Plus
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-plus`,

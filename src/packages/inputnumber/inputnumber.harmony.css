@@ -9,9 +9,13 @@
   align-items: center;
   width: 14px;
   height: 24px;
+  /*  #ifdef rn harmony  */
+  background-color: gray;
+  /*  #endif  */
+  /*  #ifndef  rn harmony  */
   background-color: transparent;
+  /*  #endif */
   border-radius: 16px;
-  background-color: pink;
 }
 .nut-inputnumber-add {
   display: flex;
@@ -19,17 +23,18 @@
   align-items: center;
   width: 14px;
   height: 24px;
+  /*  #ifdef rn harmony  */
+  background-color: gray;
+  /*  #endif  */
+  /*  #ifndef  rn harmony  */
   background-color: transparent;
+  /*  #endif */
   border-radius: 16px;
-  background-color: pink;
 }
 .nut-inputnumber-icon {
   color: #505259;
   font-size: 8px;
   cursor: pointer;
-  display: flex;
-  height: 100%;
-  width: 100%;
 }
 .nut-inputnumber-icon-disabled {
   color: #c2c4cc;

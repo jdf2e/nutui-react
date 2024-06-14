@@ -10,18 +10,19 @@
     align-items: center;
     width: $inputnumber-button-width;
     height: $inputnumber-button-height;
+    /*  #ifdef rn harmony  */
+    background-color: gray;
+    /*  #endif  */
+    /*  #ifndef  rn harmony  */
     background-color: $inputnumber-button-background-color;
+    /*  #endif */
     border-radius: $inputnumber-button-border-radius;
-    background-color: pink;
   }
 
   &-icon {
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;
-    display: flex;
-    height: 100%;
-    width: 100%;
 
     &-disabled {
       color: $inputnumber-disabled-color;
