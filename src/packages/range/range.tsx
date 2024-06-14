@@ -152,17 +152,18 @@ export const Range: FunctionComponent<
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       const classNames = [
-        `${classPrefix}-text`,
-        `${isActive ? `${classPrefix}-text-active` : ''}`,
+        `${classPrefix}-text-wrapper`,
+        `${isActive ? `${classPrefix}-text-wrapper-active` : ''}`,
       ]
 
       if (vertical) {
-        classNames.push(`${verticalClassPrefix}-text`)
-        isActive && classNames.push(`${verticalClassPrefix}-text-active`)
+        classNames.push(`${verticalClassPrefix}-text-wrapper`)
+        isActive &&
+          classNames.push(`${verticalClassPrefix}-text-active-wrapper`)
       }
 
       if (rtl) {
-        classNames.push(`${rtlClassPrefix}-mark-text`)
+        classNames.push(`${rtlClassPrefix}-mark-text-wrapper`)
       }
 
       return classNames.join(' ')
@@ -375,8 +376,8 @@ export const Range: FunctionComponent<
   const renderButton = useCallback(
     (index?: number) => {
       const buttonNumberTransform = vertical
-        ? 'translate3d(100%, 0, 0)'
-        : 'translate3d(0, -100%, 0)'
+        ? 'translate(100%, -50%)'
+        : 'translate(-50%, -100%)'
 
       return (
         <>
@@ -428,7 +429,9 @@ export const Range: FunctionComponent<
               style={marksStyle(mark)}
             >
               <span
-                className={`${vertical ? verticalClassPrefix : classPrefix}-mark-text`}
+                className={classNames(`${classPrefix}-mark-text`, {
+                  [`${verticalClassPrefix}-mark-text`]: vertical,
+                })}
               >
                 {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
               </span>
@@ -459,12 +462,10 @@ export const Range: FunctionComponent<
   ])
 
   const getWrapperTransform = useCallback(() => {
-    const wrapperTransform = vertical
-      ? 'translate3d(-50%, 50%, 0)'
-      : 'translate3d(50%, -50%, 0)'
+    const wrapperTransform = 'translate(-50%, -50%)'
 
     return wrapperTransform
-  }, [vertical])
+  }, [])
 
   const renderButtonWrapper = useCallback(() => {
     if (range)
@@ -472,7 +473,7 @@ export const Range: FunctionComponent<
         const isLeft = index === 0
         const suffix = isLeft ? 'left' : 'right'
 
-        const transform = `translate3d(${isLeft || vertical ? '-' : ''}50%, ${vertical && !isLeft ? '' : '-'}50%, 0)`
+        const transform = 'translate(-50%, -50%)'
 
         return (
           <div

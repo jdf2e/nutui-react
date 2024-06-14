@@ -16,7 +16,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { RangeMark, RangeValue } from './types'
 import { useRtl } from '../configprovider/index.taro'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface RangeProps extends BasicComponent {
   value: RangeValue
@@ -48,6 +48,7 @@ const defaultProps = {
 } as RangeProps
 
 const isRn = rn()
+const isHm = harmony()
 const isNative = harmonyAndRn()
 const classPrefix = 'nut-range'
 const verticalClassPrefix = `${classPrefix}-vertical`
@@ -61,41 +62,6 @@ const handleOverlap = (value: number[]) => {
     return value.slice(0).reverse()
   }
   return value
-}
-
-const getRect = async (ref: HTMLDivElement) => {
-  if (isRn) {
-    const rect = {
-      width: 0,
-      height: 0,
-      left: 0,
-      top: 0,
-    }
-    await new Promise((resolve) => {
-      // @ts-ignore
-      ref.measure(
-        (
-          xPos: number,
-          yPos: number,
-          measureWidth: number,
-          measureHeight: number,
-          pageX: number,
-          pageY: number
-        ) => {
-          rect.width = measureWidth
-          rect.height = measureHeight
-          rect.left = pageX
-          rect.top = pageY
-          resolve(rect)
-        }
-      )
-    })
-
-    return rect
-  }
-
-  const rect = await getRectByTaro(ref)
-  return rect
 }
 
 export const Range: FunctionComponent<
@@ -304,11 +270,20 @@ export const Range: FunctionComponent<
         return
       }
       setDragStatus('')
-      const rect = await getRect(root.current)
-      let delta = (event.detail.x ? event.detail.x : event.clientX) - rect.left
+      const rect = await getRectByTaro(root.current)
+      let x =
+        typeof event.detail?.x !== 'undefined' ? event.detail.x : event.clientX
+      if (isHm) x = parseFloat(pxTransform(event.windowX))
+      let delta = x - rect.left
       let total = rect.width
+
       if (vertical) {
-        delta = (event.detail.y ? event.detail.y : event.clientY) - rect.top
+        let y =
+          typeof event.detail?.y !== 'undefined'
+            ? event.detail.y
+            : event.clientY
+        if (isHm) y = parseFloat(pxTransform(event.windowY))
+        delta = y - rect.top
         total = rect.height
       }
       const value = min + (delta / total) * scope
@@ -348,7 +323,7 @@ export const Range: FunctionComponent<
 
   const onTouchMove = useCallback(
     async (event: any) => {
-      // @TODO RN 端垂直滑动时，页面会一同滑动，待解决
+      // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
       if (disabled || !root.current) {
         return
       }
@@ -357,17 +332,23 @@ export const Range: FunctionComponent<
       }
 
       touch.move(isRn ? event.nativeEvent : event)
+      // console.log(JSON.stringify(event.touches[0]))
 
       setDragStatus('draging')
 
-      const rect = await getRect(root.current)
+      const rect = await getRectByTaro(root.current)
       if (!rect) return
-      let delta = touch.deltaX.current
+      let delta = isHm
+        ? parseFloat(pxTransform(touch.deltaX.current))
+        : touch.deltaX.current
       let total = rect.width
+      // console.log(pxTransform(delta), total)
       let diff = (delta / total) * scope
       diff = rtl ? -diff : diff
       if (vertical) {
-        delta = touch.deltaY.current
+        delta = isHm
+          ? parseFloat(pxTransform(touch.deltaY.current))
+          : touch.deltaY.current
         total = rect.height
         diff = (delta / total) * scope
       }
@@ -420,8 +401,8 @@ export const Range: FunctionComponent<
   const renderButton = useCallback(
     (index?: number) => {
       const buttonNumberTransform = vertical
-        ? 'translate3d(100%, 0, 0)'
-        : 'translate3d(0, -100%, 0)'
+        ? 'translate(100%, -50%)'
+        : 'translate(-50%, -100%)'
       const buttonNumberTransformRn = [
         { translateX: pxTransform(vertical ? 26 : 0) },
         { translateY: pxTransform(vertical ? 0 : -26) },
@@ -465,11 +446,13 @@ export const Range: FunctionComponent<
 
   const renderMarks = useCallback(() => {
     if (marksList.length <= 0) return null
+
     return (
       <View
         className={classNames(`${classPrefix}-mark`, {
           [`${verticalClassPrefix}-mark`]: vertical,
           [`${rtlClassPrefix}-mark`]: rtl,
+          [`${vertical ? verticalClassPrefix : classPrefix}-mark-hm`]: isHm,
         })}
       >
         {marksList.map((mark: any) => {
@@ -480,7 +463,9 @@ export const Range: FunctionComponent<
               style={marksStyle(mark)}
             >
               <Text
-                className={`${vertical ? verticalClassPrefix : classPrefix}-mark-text`}
+                className={classNames(`${classPrefix}-mark-text`, {
+                  [`${verticalClassPrefix}-mark-text`]: vertical,
+                })}
               >
                 {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
               </Text>
@@ -513,12 +498,10 @@ export const Range: FunctionComponent<
   const getWrapperTransform = useCallback(() => {
     // @TODO 支持变量
     const wrapperTransformRN = [
-      { translateX: pxTransform(vertical ? -12 : 13) },
-      { translateY: pxTransform(vertical ? 13 : -13) },
+      { translateX: pxTransform(vertical ? -12 : -13) },
+      { translateY: pxTransform(-13) },
     ]
-    const wrapperTransform = vertical
-      ? 'translate3d(-50%, 50%, 0)'
-      : 'translate3d(50%, -50%, 0)'
+    const wrapperTransform = 'translate(-50%, -50%)'
 
     return isRn ? wrapperTransformRN : wrapperTransform
   }, [vertical])
@@ -528,14 +511,14 @@ export const Range: FunctionComponent<
       return [0, 1].map((item, index) => {
         const isLeft = index === 0
 
+        const transform = 'translate(-50%, -50%)'
         // @TODO 支持变量
-        const transform = `translate3d(${isLeft || vertical ? '-' : ''}50%, ${vertical && !isLeft ? '' : '-'}50%, 0)`
         const transformRn = [
           {
-            translateX: pxTransform(isLeft || vertical ? -12 : 13),
+            translateX: pxTransform(-12),
           },
           {
-            translateY: pxTransform(vertical && !isLeft ? 13 : -13),
+            translateY: pxTransform(-13),
           },
         ]
         const suffix = isLeft ? 'left' : 'right'

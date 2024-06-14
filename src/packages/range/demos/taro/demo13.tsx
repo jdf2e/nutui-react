@@ -1,30 +1,48 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
-import { rn } from '@/utils/platform-taro'
+import { rn, harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
-const cellStyle = !rn()
-  ? {
-      padding: '40px 18px',
-    }
-  : {
-      paddingTop: 40,
-      paddingBottom: 40,
-      paddingLeft: 18,
-      paddingRight: 18,
-    }
-const verticalStyle = !rn()
-  ? {
-      height: '180px',
-      padding: '10px',
-    }
-  : {
-      height: 180,
-      paddingTop: 10,
-      paddingBottom: 10,
-      paddingLeft: 10,
-      paddingRight: 10,
-    }
+let cellStyle = {
+  padding: '40px 18px',
+} as any
+let verticalStyle = {
+  height: '180px',
+  padding: '10px',
+} as any
+
+if (rn()) {
+  cellStyle = {
+    paddingTop: 40,
+    paddingBottom: 40,
+    paddingLeft: 18,
+    paddingRight: 18,
+  }
+  verticalStyle = {
+    height: 180,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+  }
+}
+
+if (harmony()) {
+  cellStyle = {
+    paddingTop: '40PX',
+    paddingBottom: '40PX',
+    paddingLeft: '18PX',
+    paddingRight: '18PX',
+  }
+  verticalStyle = {
+    height: pxTransform(180),
+    paddingTop: pxTransform(10),
+    paddingBottom: pxTransform(10),
+    paddingLeft: pxTransform(10),
+    paddingRight: pxTransform(10),
+  }
+}
 
 const Demo13 = () => {
   const [marks] = useState({

@@ -59,12 +59,20 @@
     align-items: center;
 
     &-wrapper,
+    &-wrapper-right,
+    &-wrapper-left {
+      width: $range-button-width;
+      height: $range-button-height;
+    }
+
+    &-wrapper,
     &-wrapper-right {
       touch-action: none;
       position: absolute;
       top: 50%;
-      right: 0;
-      // transform: translate3d(50%, -50%, 0);
+      left: 100%;
+      // right: 0;
+      // transform: translate3d(-50%, -50%, 0);
       cursor: grab;
       outline: none;
     }
@@ -80,10 +88,12 @@
     }
 
     &-number {
+      position: relative;
       width: 200%;
-      height: 14px;
+      height: 24px;
       line-height: 14px;
       padding: 5px 0;
+      left: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,7 +102,7 @@
       color: $range-color;
       text-align: center;
       vertical-align: center;
-      box-sizing: content-box;
+      box-sizing: border-box;
       // transform: translate3d(0, -100%, 0);
     }
   }
@@ -111,13 +121,14 @@
   &-mark {
     position: absolute;
     width: 100%;
+    height: 14px;
     overflow: visible;
     top: 50%;
-    padding-top: 14px;
   }
 
   &-mark-text-wrapper {
     position: absolute;
+    height: 100%;
     top: 14px;
     display: inline-block;
     transform: translateX(-10px);
@@ -156,7 +167,6 @@
 
 .nut-range-vertical {
   width: $range-height;
-  height: 100%;
   margin: $range-margin 0px;
 
   &-button {
@@ -164,10 +174,10 @@
     &-wrapper-right {
       position: absolute;
       top: initial;
-      bottom: 0px;
+      top: 100%;
       left: 50%;
       right: initial;
-      // transform: translate3d(-50%, 50%, 0);
+      // transform: translate3d(-50%, -50%, 0);
     }
 
     &-wrapper-left {
@@ -178,24 +188,30 @@
     }
 
     &-number {
+      left: 0px;
+      top: 50%;
       // transform: translate3d(100%, 0, 0);
     }
   }
 
   &-mark {
     position: absolute;
-    width: 100%;
+    width: 36px;
+    height: 100%;
+    top: initial;
     right: 50%;
     overflow: visible;
     font-size: 12px;
-    height: 100%;
-    top: initial;
-    width: 36px;
     padding: 0px;
+  }
+
+  &-mark-hm {
+    left: -34px;
   }
 
   &-mark-text-wrapper {
     // width: 20px;
+    height: 16px;
     position: absolute;
     display: inline-block;
     user-select: none;
@@ -203,6 +219,7 @@
   }
 
   &-mark-text {
+    height: 100%;
     line-height: 16px;
     color: #999;
     text-align: center;
