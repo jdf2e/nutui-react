@@ -2,7 +2,8 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   position: relative;
   flex: 0 0 auto;
 }
@@ -80,7 +81,7 @@
   text-align: center;
 }
 .nut-avatar-round {
-  border-radius: 50%;
+  border-radius: 999px;
   overflow: hidden;
 }
 .nut-avatar-square {
@@ -122,13 +123,9 @@
   height: 60px;
   line-height: 60px;
 }
-.nut-avatar-large-round {
-  border-radius: 60px;
-}
 .nut-avatar-large-img {
   width: 60px;
   height: 60px;
-  flex-shrink: 0;
 }
 .nut-avatar-large .nut-icon-img {
   width: 100%;
@@ -137,36 +134,30 @@
 .nut-avatar-large-text {
   width: 60px;
   height: 60px;
+  line-height: 60px;
 }
 .nut-avatar-small {
   width: 32px;
   height: 32px;
   line-height: 32px;
 }
-.nut-avatar-small-round {
-  border-radius: 32px;
-}
 .nut-avatar-small-img {
   width: 32px;
   height: 32px;
-  flex-shrink: 0;
 }
 .nut-avatar-small-text {
   width: 32px;
   height: 32px;
+  line-height: 32px;
 }
 .nut-avatar-normal {
   width: 40px;
   height: 40px;
   line-height: 40px;
 }
-.nut-avatar-normal-round {
-  border-radius: 40px;
-}
 .nut-avatar-normal-img {
   width: 40px;
   height: 40px;
-  flex-shrink: 0;
 }
 .nut-avatar-normal .nut-icon-img {
   width: 100%;
@@ -175,4 +166,5 @@
 .nut-avatar-normal-text {
   width: 40px;
   height: 40px;
+  line-height: 40px;
 }

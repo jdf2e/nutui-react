@@ -10,7 +10,7 @@
   flex: 0 0 auto; // 防止被压缩
   text-align: center;
   &-round {
-    border-radius: 50%;
+    border-radius: 999px;
     overflow: hidden;
   }
 
@@ -57,14 +57,10 @@
     width: $avatar-large-width;
     height: $avatar-large-height;
     line-height: $avatar-large-height;
-    &-round {
-      border-radius: $avatar-large-width;
-    }
 
     &-img {
       width: $avatar-large-width;
       height: $avatar-large-height;
-      flex-shrink: 0;
     }
 
     &-icon {
@@ -80,6 +76,7 @@
     &-text {
       width: $avatar-large-width;
       height: $avatar-large-height;
+      line-height: $avatar-large-height;
     }
   }
 
@@ -87,13 +84,10 @@
     width: $avatar-small-width;
     height: $avatar-small-height;
     line-height: $avatar-small-height;
-    &-round {
-      border-radius: $avatar-small-width;
-    }
+
     &-img {
       width: $avatar-small-width;
       height: $avatar-small-height;
-      flex-shrink: 0;
     }
     &-icon {
       // width: $avatar-small-width;
@@ -102,6 +96,7 @@
     &-text {
       width: $avatar-small-width;
       height: $avatar-small-height;
+      line-height: $avatar-small-height;
     }
   }
 
@@ -109,13 +104,10 @@
     width: $avatar-normal-width;
     height: $avatar-normal-height;
     line-height: $avatar-normal-height;
-    &-round {
-      border-radius: $avatar-normal-width;
-    }
+
     &-img {
       width: $avatar-normal-width;
       height: $avatar-normal-height;
-      flex-shrink: 0;
     }
 
     &-icon {
@@ -129,6 +121,7 @@
     &-text {
       width: $avatar-normal-width;
       height: $avatar-normal-height;
+      line-height: $avatar-normal-height;
     }
   }
 }

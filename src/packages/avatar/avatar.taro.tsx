@@ -185,7 +185,8 @@ export const Avatar: FunctionComponent<
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-icon`,
+                    style: { position: 'absolute' },
                   })
                 : null}
               {children && (
@@ -198,6 +199,7 @@ export const Avatar: FunctionComponent<
               {!src && !icon && !children && !harmonyAndRn() && (
                 <User
                   className={`nut-avatar-icon nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-icon`}
+                  style={{ position: 'absolute' }}
                 />
               )}
             </>
