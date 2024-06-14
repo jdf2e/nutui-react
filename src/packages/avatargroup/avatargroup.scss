@@ -1,10 +1,6 @@
 .nut-avatar-group {
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
   display: flex;
   flex-direction: row;
-  position: relative;
   flex: 0 0 auto; // 防止被压缩
   .nut-avatar {
     border: 1px solid #fff;

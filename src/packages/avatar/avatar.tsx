@@ -118,7 +118,7 @@ export const Avatar: FunctionComponent<
       }
     }
     const index = Number(avatarRef?.current?.dataset?.index)
-    const maxCount = parent?.propAvatarGroup?.max
+    const maxCount = parent?.propAvatarGroup?.max || children.length
     setMaxSum(children.length)
     setAvatarIndex(index)
     if (

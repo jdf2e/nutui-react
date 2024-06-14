@@ -15,6 +15,7 @@ import { AvatarContext } from '@/packages/avatargroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmonyAndRn } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface AvatarProps extends BasicComponent {
   size: string
@@ -135,7 +136,7 @@ export const Avatar: FunctionComponent<
       }
     }
     const index = avatarRef?.current?.dataset?.index
-    const maxCount = parent?.propAvatarGroup?.max
+    const maxCount = parent?.propAvatarGroup?.max || children.length
     setMaxSum(children.length)
     setAvatarIndex(index)
     if (
@@ -174,14 +175,24 @@ export const Avatar: FunctionComponent<
           {(!parent?.propAvatarGroup?.max ||
             avatarIndex <= parent?.propAvatarGroup?.max) && (
             <>
-              {src && (
-                <Image
-                  className={`nut-avatar-img nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-img`}
-                  src={src}
-                  style={{ objectFit: fit }}
-                  onError={errorEvent}
-                />
-              )}
+              {src &&
+                (harmonyAndRn() ? (
+                  <Image
+                    className={`nut-avatar-img nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-img`}
+                    src={src}
+                    width={pxTransform(60)}
+                    height={pxTransform(60)}
+                    style={{ objectFit: fit }}
+                    onError={errorEvent}
+                  />
+                ) : (
+                  <Image
+                    className={`nut-avatar-img nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-img`}
+                    src={src}
+                    style={{ objectFit: fit }}
+                    onError={errorEvent}
+                  />
+                ))}
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
