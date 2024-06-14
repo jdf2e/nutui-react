@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View, Text } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -53,7 +53,7 @@ const HoverDemo = () => {
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={isNative ? { minHeight: 420 } : {}}
       >
-        <Text className="h2">{translated.basic}</Text>
+        <View className="h2">{translated.basic}</View>
         <Cell
           title={`${translated.show}${translated.basic}`}
           onClick={() => {
@@ -61,7 +61,7 @@ const HoverDemo = () => {
           }}
         />
 
-        <Text className="h2">{translated.multiButtons}</Text>
+        <View className="h2">{translated.multiButtons}</View>
         <Cell
           title={`${translated.show}${translated.multiButtons}`}
           onClick={() => {
@@ -69,7 +69,7 @@ const HoverDemo = () => {
           }}
         />
 
-        <Text className="h2">{translated.hasTabbar}</Text>
+        <View className="h2">{translated.hasTabbar}</View>
         <Cell
           title={`${translated.show}${translated.hasTabbar}`}
           onClick={() => {
@@ -77,7 +77,7 @@ const HoverDemo = () => {
           }}
         />
 
-        <Text className="h2">{translated.customZIndex}</Text>
+        <View className="h2">{translated.customZIndex}</View>
         <Cell
           title={`${translated.show}${translated.customZIndex}`}
           onClick={() => {
