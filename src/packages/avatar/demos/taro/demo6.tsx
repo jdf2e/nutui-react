@@ -20,6 +20,18 @@ const Demo6 = () => {
           >
             U
           </Avatar>
+          <Avatar
+            color="var(--nutui-color-primary)"
+            background="var(--nutui-brand-2)"
+          >
+            U
+          </Avatar>
+          <Avatar
+            color="var(--nutui-color-primary)"
+            background="var(--nutui-brand-2)"
+          >
+            U
+          </Avatar>
         </Avatar.Group>
       </Cell>
       <Cell>

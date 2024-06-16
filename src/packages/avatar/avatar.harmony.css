@@ -54,10 +54,10 @@
   flex-direction: row;
   flex: 0 0 auto;
 }
-.nut-avatar-group .nut-avatar {
-  border: 1px solid #fff;
+.nut-avatar-group-avatar, .nut-avatar-group .nut-avatar {
+  border: 1px solid #ddd;
 }
-.nut-avatar-group .nut-avatar:not(:first-of-type) {
+.nut-avatar-group-avatar:not(:first-of-type), .nut-avatar-group .nut-avatar:not(:first-of-type) {
   margin-left: -8px;
 }
 
@@ -70,7 +70,6 @@
 .nut-avatar {
   position: relative;
   flex: 0 0 auto;
-  border: 1px solid #ddd;
 }
 .nut-avatar-round {
   border-radius: 999px;

@@ -4,7 +4,6 @@
 .nut-avatar {
   position: relative;
   flex: 0 0 auto; // 防止被压缩
-  border: 1px solid #ddd;
   &-round {
     border-radius: 999px;
     overflow: hidden;
