@@ -17,6 +17,7 @@ exports = module.exports = [
   'divider',
   'image',
   'resultpage',
+  'skeleton',
   'notify',
   'pagination',
   'swiper',
