@@ -192,6 +192,9 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  /* #ifndef rn */
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
+  /* #endif */
   animation: nut-skeleton 2s ease-in-out 0s infinite;
 }
 @keyframes nut-skeleton {
@@ -212,6 +215,9 @@
 .nut-rtl .nut-skeleton-animation {
   left: auto;
   right: 0;
+  /* #ifndef rn */
+  background: linear-gradient(-90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
+  /* #endif */
   animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
 }
 @keyframes nut-skeleton-rtl {

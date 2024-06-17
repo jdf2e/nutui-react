@@ -13,14 +13,19 @@ const Demo5 = () => {
     setChecked(value)
   }
   return (
-    <View className="content" style={{ width: '100%' }}>
+    <View style={{ width: '100%' }}>
       <Switch
         onChange={(value, event: any) => changeStatus(value, event)}
-        style={{ marginBottom: pxTransform(8) }}
+        style={{ display: 'flex', marginBottom: pxTransform(8) }}
       />
       <Skeleton title animated avatar rows={3} visible={checked}>
-        <View className="nut-skeleton-content">
+        <View
+          className="nut-skeleton-content"
+          style={{ display: 'flex', flexDirection: 'row' }}
+        >
           <Avatar
+            className="nut-skeleton-content-avatar"
+            style={{ marginRight: '20px' }}
             size="50"
             icon={
               <Image
@@ -29,8 +34,8 @@ const Demo5 = () => {
               />
             }
           />
-          <View className="right-content">
-            <Text className="title">NutUI-React</Text>
+          <View className="nut-skeleton-content-line">
+            <Text className="nut-skeleton-content-title">NutUI-React</Text>
             <View className="description">
               一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
             </View>

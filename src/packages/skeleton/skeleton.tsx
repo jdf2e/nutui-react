@@ -87,7 +87,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               <div className={`${classPrefix}-content-block`} />
             ) : (
               <div className={`${classPrefix}-content-line`}>
-                {title && <div className={`${classPrefix}-title`} />}
+                {title && <div className={`${classPrefix}-content-title`} />}
                 {repeatLines(rows).map((item, index) => {
                   return (
                     <div

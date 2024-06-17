@@ -42,11 +42,11 @@ const SkeletonDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated['84aa6bce']}</View>
-        <Cell className="ske-cell-single">
+        <Cell style={{ display: 'block', paddingTop: '3px' }}>
           <Demo1 />
         </Cell>
         <View className="h2">{translated.ea3bc18a}</View>
-        <Cell className="ske-cell-double">
+        <Cell style={{ display: 'block' }}>
           <Demo2 />
         </Cell>
         <View className="h2">{translated['02a53df5']}</View>
@@ -56,7 +56,7 @@ const SkeletonDemo = () => {
         {harmonyAndRn() ? null : (
           <>
             <View className="h2">{translated['0a001122']}</View>
-            <Cell className="ske-cell-single">
+            <Cell style={{ display: 'block' }}>
               <Demo4 />
             </Cell>
           </>
