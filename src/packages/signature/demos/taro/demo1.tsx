@@ -2,8 +2,12 @@ import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
-  const confirm = (dataurl: string) => {
-    console.log('图片地址', dataurl)
+  const confirm = (dataurl: string, isSigned?: boolean) => {
+    if (isSigned) {
+      console.log('图片地址', dataurl)
+    } else {
+      console.log('抱歉，没有签名哦~')
+    }
   }
   const clear = () => {
     console.log('清除事件')

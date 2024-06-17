@@ -6,10 +6,16 @@ import React, {
   CSSProperties,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { Image as TImage, ImageProps as TImageProps } from '@tarojs/components'
+import {
+  Image as TImage,
+  ImageProps as TImageProps,
+  View,
+} from '@tarojs/components'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { BaseEventOrig } from '@tarojs/components/types/common'
 import { pxCheck } from '@/utils/px-check'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
   style?: CSSProperties
@@ -44,31 +50,61 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
+  // 图片加载
+  const handleLoad = (e: BaseEventOrig<TImageProps.onLoadEventDetail>) => {
+    setIsError(false)
+    setInnerLoading(false)
+    onLoad && onLoad(e)
+  }
+  // 图片加载失败
+  const handleError = (e: BaseEventOrig<TImageProps.onErrorEventDetail>) => {
+    if (src) {
+      setIsError(true)
+      setInnerLoading(false)
+      onError && onError(e)
+    }
+  }
+
   const containerStyle = {
     // eslint-disable-next-line no-nested-ternary
-    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
+    height: height
+      ? Taro.getEnv() === 'RN'
+        ? height
+        : pxCheck(height)
+      : Taro.getEnv() === 'WEB'
+        ? ''
+        : '100%',
     // eslint-disable-next-line no-nested-ternary
-    width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
+    width: width
+      ? Taro.getEnv() === 'RN'
+        ? width
+        : pxCheck(width)
+      : Taro.getEnv() === 'WEB'
+        ? ''
+        : '100%',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
-      radius !== undefined && radius !== null ? pxCheck(radius) : '',
+      // eslint-disable-next-line no-nested-ternary
+      radius != null ? (Taro.getEnv() === 'RN' ? radius : pxCheck(radius)) : '',
   }
 
   const imgStyle: any = {
     ...style,
+    width,
+    height,
   }
 
   const renderErrorImg = useCallback(() => {
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <div className="nut-img-error">
+        <View className="nut-img-error">
           <ImageError />
-        </div>
+        </View>
       )
     }
     if (React.isValidElement(error) && !innerLoading) {
-      return <div className="nut-img-error">{error}</div>
+      return <View className="nut-img-error">{error}</View>
     }
     return null
   }, [error, isError, innerLoading])
@@ -77,20 +113,33 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     if (!loading) return null
     if (typeof loading === 'boolean' && loading === true && innerLoading) {
       return (
-        <div className="nut-img-loading">
+        <View className="nut-img-loading">
           <ImageIcon />
-        </div>
+        </View>
       )
     }
     if (React.isValidElement(loading) && innerLoading) {
-      return <div className="nut-img-loading">{loading}</div>
+      return <View className="nut-img-loading">{loading}</View>
     }
     return null
   }, [loading, innerLoading])
   return (
-    <div className={classNames(classPrefix, className)} style={containerStyle}>
-      <TImage {...rest} className="nut-img" style={imgStyle} src={src} />
-    </div>
+    <View className={classNames(classPrefix, className)} style={containerStyle}>
+      <TImage
+        {...rest}
+        className="nut-img"
+        style={imgStyle}
+        src={src}
+        onLoad={(e) => handleLoad(e)}
+        onError={(e) => handleError(e)}
+      />
+      {!harmonyAndRn() && (
+        <>
+          {renderLoading()}
+          {renderErrorImg()}
+        </>
+      )}
+    </View>
   )
 }
 

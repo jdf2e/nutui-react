@@ -326,7 +326,7 @@ const InternalCascader: ForwardRefRenderFunction<
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange(optionParams, pathNodes)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
         setInnerValue(optionParams)
       }
       setOptionsData(state.panes)
@@ -351,7 +351,7 @@ const InternalCascader: ForwardRefRenderFunction<
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item?.value)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
       }
       return
     }

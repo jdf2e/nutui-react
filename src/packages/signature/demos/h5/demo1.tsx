@@ -2,8 +2,16 @@ import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react'
 
 const Demo1 = () => {
-  const confirm = (canvas: HTMLCanvasElement, dataurl: string) => {
-    console.log(`图片地址 ${dataurl}`)
+  const confirm = (
+    canvas: HTMLCanvasElement,
+    dataurl: string,
+    isSigned?: boolean
+  ) => {
+    console.log(`0 图片地址 ${dataurl}`, isSigned)
+    if (!isSigned) {
+      console.log('抱歉，没有签名哦~')
+      return
+    }
     if (document.querySelector('.demo1 img')) {
       return
     }

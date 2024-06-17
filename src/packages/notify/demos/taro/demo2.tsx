@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Notify, Cell } from '@nutui/nutui-react-taro'
+import { Cell, Notify } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const [showNotify, setShowNotify] = useState(false)
@@ -12,7 +12,7 @@ const Demo2 = () => {
     setStates(change)
   }
   return (
-    <Cell.Group>
+    <>
       <Notify
         visible={showNotify}
         type={states.type as any}
@@ -22,35 +22,37 @@ const Demo2 = () => {
       >
         {states.message}
       </Notify>
-      <Cell
-        title="主要通知"
-        onClick={(event: React.MouseEvent) => {
-          changeNotify('主要通知', 'primary')
-          setShowNotify(true)
-        }}
-      />
-      <Cell
-        title="成功通知"
-        onClick={(event: React.MouseEvent) => {
-          changeNotify('成功通知', 'success')
-          setShowNotify(true)
-        }}
-      />
-      <Cell
-        title="危险通知"
-        onClick={(event: React.MouseEvent) => {
-          changeNotify('危险通知', 'danger')
-          setShowNotify(true)
-        }}
-      />
-      <Cell
-        title="警告通知"
-        onClick={(event: React.MouseEvent) => {
-          changeNotify('警告通知', 'warning')
-          setShowNotify(true)
-        }}
-      />
-    </Cell.Group>
+      <Cell.Group>
+        <Cell
+          title="主要通知"
+          onClick={(event: React.MouseEvent) => {
+            changeNotify('主要通知', 'primary')
+            setShowNotify(true)
+          }}
+        />
+        <Cell
+          title="成功通知"
+          onClick={(event: React.MouseEvent) => {
+            changeNotify('成功通知', 'success')
+            setShowNotify(true)
+          }}
+        />
+        <Cell
+          title="危险通知"
+          onClick={(event: React.MouseEvent) => {
+            changeNotify('危险通知', 'danger')
+            setShowNotify(true)
+          }}
+        />
+        <Cell
+          title="警告通知"
+          onClick={(event: React.MouseEvent) => {
+            changeNotify('警告通知', 'warning')
+            setShowNotify(true)
+          }}
+        />
+      </Cell.Group>
+    </>
   )
 }
 export default Demo2

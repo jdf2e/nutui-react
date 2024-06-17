@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image } from '@nutui/nutui-react-taro'
-import { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   const src =

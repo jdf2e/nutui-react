@@ -9,6 +9,48 @@ if (projectID) {
   themeStr = `src/styles/theme-${projectID}.scss`
 }
 
+let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
+  process.env.TARO_ENV
+)
+  ? ['@tarojs/plugin-html']
+  : []
+
+if (
+  process.env.TARO_ENV === 'harmony' ||
+  process.env.TARO_ENV === 'jdharmony'
+) {
+  plugins.push('@tarojs/plugin-platform-harmony-ets')
+}
+
+if (process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') {
+  plugins.push('@jdtaro/plugin-platform-jdrn')
+}
+
+// 小程序、jd H5 通过此插件覆盖
+if (
+  process.env.TARO_ENV === 'weapp' ||
+  process.env.TARO_ENV === 'jd' ||
+  process.env.TARO_ENV === 'jdhybrid'
+) {
+  plugins.push('@test/inject-platform-styles')
+}
+
+if (process.env.TARO_ENV === 'jdhybrid') {
+  plugins.push([
+    '@jdtaro/plugin-platform-jdhybrid',
+    {
+      externals: {
+        '@jdtaro/plugin-platform-jdhybrid': 'local',
+      },
+    },
+  ])
+}
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// if (process.env.TARO_ENV === 'jdharmony') {
+//   plugins = ['@test/taro-platform-jdharmony']
+// }
+
 const config = {
   projectName: 'first',
   date: '2022-7-11',
@@ -21,10 +63,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
-  plugins: [
-    path.resolve(__dirname, '../plugins/inject-scss.js'),
-    process.env.TARO_ENV === 'harmony' ? '@tarojs/plugin-platform-harmony-ets' : '@tarojs/plugin-html',
-  ],
+  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
   compiler: 'webpack5',
   alias: {
     '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
@@ -37,7 +76,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
-      '../../../src/packages/nutui.react.taro.ts',
+      '../../../src/packages/nutui.react.taro.ts'
     ),
   },
   sass: {
@@ -86,7 +125,7 @@ const config = {
   },
   mini: {
     compile: {
-      include: [path.resolve(__dirname, '../../../src')]
+      include: [path.resolve(__dirname, '../../../src')],
     },
     postcss: {
       pxtransform: {
@@ -111,7 +150,7 @@ const config = {
   },
   h5: {
     compile: {
-      include: [path.resolve(__dirname, '../../../src')]
+      include: [path.resolve(__dirname, '../../../src')],
     },
     publicPath: '/',
     staticDirectory: 'static',

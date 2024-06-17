@@ -25,6 +25,12 @@
     flex: 1;
   }
 
+  &-title,
+  &-description,
+  &-extra {
+    line-height: $cell-line-height;
+  }
+
   &-description {
     font-size: $cell-description-font-size;
     color: $cell-description-color;

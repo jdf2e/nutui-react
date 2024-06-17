@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const [visible, setVisible] = useState(false)
@@ -14,9 +15,6 @@ const Demo5 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type='success' onClick={handleToggleShow}>
-          嵌套内容
-        </Button> */}
         <View onClick={handleToggleShow}>嵌套内容</View>
       </Cell>
 
@@ -32,10 +30,10 @@ const Demo5 = () => {
           <View
             style={{
               display: 'flex',
-              width: 200,
-              height: 200,
+              width: pxTransform(150),
+              height: pxTransform(150),
+              borderRadius: pxTransform(8),
               backgroundColor: '#fff',
-              borderRadius: 8,
               alignItems: 'center',
               justifyContent: 'center',
             }}
