@@ -56,7 +56,7 @@
 }
 .nut-avatar-group-avatar,
 .nut-avatar-group .nut-avatar {
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   margin-left: -8px;
 }
 .nut-avatar-group-avatar:not(:first-of-type),
