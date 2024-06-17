@@ -37,11 +37,11 @@ const SkeletonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell className="ske-cell-single">
+        <Cell style={{ display: 'block' }}>
           <Demo1 />
         </Cell>
         <h2>{translated.ea3bc18a}</h2>
-        <Cell className="ske-cell-double">
+        <Cell style={{ display: 'block', paddingTop: '3px' }}>
           <Demo2 />
         </Cell>
         <h2>{translated['02a53df5']}</h2>
@@ -49,7 +49,7 @@ const SkeletonDemo = () => {
           <Demo3 />
         </Cell>
         <h2>{translated['0a001122']}</h2>
-        <Cell className="ske-cell-single">
+        <Cell style={{ display: 'block' }}>
           <Demo4 />
         </Cell>
         <h2>{translated['07d62d5c']}</h2>
