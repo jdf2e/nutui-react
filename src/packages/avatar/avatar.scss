@@ -13,6 +13,11 @@
     border-radius: $avatar-square;
   }
 
+  &-first-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   &-img {
     width: 100%;
     height: 100%;

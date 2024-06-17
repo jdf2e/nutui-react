@@ -26,6 +26,7 @@ export interface AvatarProps extends BasicComponent {
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
   alt: string
+  isFirst: boolean
   onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onError: () => void
 }
@@ -42,6 +43,7 @@ const defaultProps = {
   color: '#666',
   src: '',
   alt: '',
+  isFirst: false,
 } as AvatarProps
 
 const classPrefix = `nut-avatar`
@@ -58,6 +60,7 @@ export const Avatar: FunctionComponent<
     icon,
     fit,
     alt,
+    isFirst,
     className,
     style,
     onClick,
@@ -81,14 +84,19 @@ export const Avatar: FunctionComponent<
     [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-round`]:
       shape === 'round' && true,
   })
-  const cls = classNames(classPrefix, classes, className)
+
+  const nativeClasses = classNames({
+    [`nut-avatar-first-child`]: isFirst,
+  })
+
+  const cls = classNames(classPrefix, classes, className, nativeClasses)
 
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     backgroundColor: `${background}`,
     color,
-    marginLeft:
+    [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
       avatarIndex !== 1 && parent?.propAvatarGroup?.gap
         ? `${parent?.propAvatarGroup?.gap}px`
         : '',

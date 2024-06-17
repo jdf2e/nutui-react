@@ -5,6 +5,7 @@
   &-avatar,
   .nut-avatar {
     border: 1px solid #ddd;
+    margin-left: -8px;
 
     &:not(:first-of-type) {
       margin-left: -8px;
