@@ -54,11 +54,13 @@
   flex-direction: row;
   flex: 0 0 auto;
 }
-.nut-avatar-group-avatar, .nut-avatar-group .nut-avatar {
+.nut-avatar-group-avatar,
+.nut-avatar-group .nut-avatar {
   border: 1px solid #ddd;
   margin-left: -8px;
 }
-.nut-avatar-group-avatar:not(:first-of-type), .nut-avatar-group .nut-avatar:not(:first-of-type) {
+.nut-avatar-group-avatar:not(:first-of-type),
+.nut-avatar-group .nut-avatar:not(:first-of-type) {
   margin-left: -8px;
 }
 

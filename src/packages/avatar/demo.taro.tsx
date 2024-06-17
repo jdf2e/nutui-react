@@ -14,6 +14,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const AvatarDemo = () => {
   const [translated] = useTranslate({
@@ -73,14 +74,19 @@ const AvatarDemo = () => {
         <Cell className="cell-avatar">
           <Demo3 />
         </Cell>
-        <View className="h2">{translated.a304dabf}</View>
-        <Cell className="cell-avatar">
-          <Demo4 />
-        </Cell>
-        <View className="h2">{translated['89bca4e7']}</View>
-        <Cell className="cell-avatar">
-          <Demo5 />
-        </Cell>
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.a304dabf}</View>
+            <Cell className="cell-avatar">
+              <Demo4 />
+            </Cell>
+            <View className="h2">{translated['89bca4e7']}</View>
+            <Cell className="cell-avatar">
+              <Demo5 />
+            </Cell>
+          </>
+        )}
+
         <View className="h2">{translated.e981579e}</View>
         <Demo6 />
         <View className="h2">{translated.f645fc65}</View>

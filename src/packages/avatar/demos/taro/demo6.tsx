@@ -23,7 +23,7 @@ const Demo6 = () => {
             </Avatar>
             <Avatar
               color="var(--nutui-color-primary)"
-              background={`${harmonyAndRn() ? '#dce9ff' : 'var(--nutui-brand-2)'}`}
+              background={`${harmonyAndRn() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
             >
               U
             </Avatar>
@@ -44,15 +44,15 @@ const Demo6 = () => {
       <Cell>
         {harmonyAndRn() ? (
           <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
-            <Avatar size="normal">N</Avatar>
-            <Avatar size="normal">N</Avatar>
+            <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar size="normal">N</Avatar>
             <Avatar
               color="var(--nutui-color-primary)"
-              background={`${harmonyAndRn() ? '#dce9ff' : 'var(--nutui-brand-2)'}`}
+              background={`${harmonyAndRn() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
             >
               U
             </Avatar>
+            <Avatar size="normal">N</Avatar>
           </Avatar.Group>
         ) : (
           <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">

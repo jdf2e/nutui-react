@@ -8,14 +8,14 @@ const Demo7 = () => {
     <>
       {harmonyAndRn() ? (
         <Avatar.Group max="3" level="right" maxContent="...">
+          <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+          <Avatar>N</Avatar>
           <Avatar
             color="var(--nutui-color-primary)"
-            background={`${harmonyAndRn() ? '#eee' : 'var(--nutui-brand-2)'}`}
+            background={`${harmonyAndRn() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
           >
             U
           </Avatar>
-          <Avatar>N</Avatar>
-          <Avatar>N</Avatar>
           <Avatar>N</Avatar>
         </Avatar.Group>
       ) : (

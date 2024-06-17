@@ -188,8 +188,12 @@ export const Avatar: FunctionComponent<
                   <Image
                     className={`nut-avatar-img nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-img`}
                     src={src}
-                    width={pxTransform(60)}
-                    height={pxTransform(60)}
+                    width={pxTransform(
+                      !size || sizeValue.indexOf(size) > -1 ? 40 : Number(size)
+                    )}
+                    height={pxTransform(
+                      !size || sizeValue.indexOf(size) > -1 ? 40 : Number(size)
+                    )}
                     style={{ objectFit: fit }}
                     onError={errorEvent}
                   />
