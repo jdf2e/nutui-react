@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import pxTransform from '@/utils/px-transform'
 
 type avatarShape = 'round' | 'square'
 
@@ -58,13 +59,13 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const getStyle = () => {
     if (avatarSize) {
       return {
-        width: avatarSize,
-        height: avatarSize,
+        width: pxTransform(parseInt(avatarSize)),
+        height: pxTransform(parseInt(avatarSize)),
       }
     }
     return {
-      width: '50px',
-      height: '50px',
+      width: pxTransform(50),
+      height: pxTransform(50),
     }
   }
 

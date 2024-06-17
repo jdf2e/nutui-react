@@ -10,6 +10,7 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const SkeletonDemo = () => {
   const [translated] = useTranslate({
@@ -52,10 +53,14 @@ const SkeletonDemo = () => {
         <Cell>
           <Demo3 />
         </Cell>
-        <View className="h2">{translated['0a001122']}</View>
-        <Cell className="ske-cell-single">
-          {Taro.getEnv() !== 'RN' ? <Demo4 /> : null}
-        </Cell>
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated['0a001122']}</View>
+            <Cell className="ske-cell-single">
+              <Demo4 />
+            </Cell>
+          </>
+        )}
         <View className="h2">{translated['07d62d5c']}</View>
         <Cell>
           <Demo5 />

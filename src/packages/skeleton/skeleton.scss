@@ -9,6 +9,7 @@
 
   &-content {
     display: flex;
+    flex-direction: row;
 
     &-avatar {
       margin-right: 20px;
@@ -39,7 +40,7 @@
     }
 
     &-block-last-child {
-      width: 70%;
+      width: 55%;
     }
   }
 
@@ -81,12 +82,12 @@
   &-animation {
     left: auto;
     right: 0;
-    background: linear-gradient(
-      -90deg,
-      hsla(0, 0%, 100%, 0),
-      hsla(0, 0%, 100%, 0.5) 50%,
-      hsla(0, 0%, 100%, 0) 80%
-    );
+    // background: linear-gradient(
+    //   -90deg,
+    //   hsla(0, 0%, 100%, 0),
+    //   hsla(0, 0%, 100%, 0.5) 50%,
+    //   hsla(0, 0%, 100%, 0) 80%
+    // );
     animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
   }
 

@@ -1,6 +1,7 @@
 import { Avatar, Image, Skeleton, Switch } from '@nutui/nutui-react-taro'
 import React, { useState } from 'react'
 import { View, Text } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const [checked, setChecked] = useState(false)
@@ -13,7 +14,10 @@ const Demo5 = () => {
   }
   return (
     <View className="content" style={{ width: '100%' }}>
-      <Switch onChange={(value, event: any) => changeStatus(value, event)} />
+      <Switch
+        onChange={(value, event: any) => changeStatus(value, event)}
+        style={{ marginBottom: pxTransform(8) }}
+      />
       <Skeleton title animated avatar rows={3} visible={checked}>
         <View className="nut-skeleton-content">
           <Avatar

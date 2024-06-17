@@ -156,6 +156,7 @@
 }
 .nut-skeleton-content {
   display: flex;
+  flex-direction: row;
 }
 .nut-skeleton-content-avatar {
   margin-right: 20px;
@@ -182,7 +183,7 @@
   background: #f5f6fa;
 }
 .nut-skeleton-content-block-last-child {
-  width: 70%;
+  width: 55%;
 }
 .nut-skeleton-animation {
   position: absolute;
@@ -211,7 +212,6 @@
 .nut-rtl .nut-skeleton-animation {
   left: auto;
   right: 0;
-  background: linear-gradient(-90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
   animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
 }
 @keyframes nut-skeleton-rtl {
