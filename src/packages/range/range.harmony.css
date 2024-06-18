@@ -47,6 +47,7 @@
   transition: all 0.2s;
 }
 .nut-range-button {
+  position: absolute;
   display: flex;
   width: 24px;
   height: 24px;
@@ -56,6 +57,8 @@
   border: 1px solid #ff0f23;
   outline: none;
   align-items: center;
+  top: 50%;
+  left: 50%;
 }
 .nut-range-button-wrapper {
   width: 24px;

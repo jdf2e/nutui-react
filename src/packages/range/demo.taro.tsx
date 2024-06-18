@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View, Text } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -12,7 +12,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-// import Demo10 from './demos/taro/demo10'
+import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
@@ -52,37 +52,37 @@ const RangeDemo = () => {
   })
 
   return (
-    <View>
+    <>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <Text className="h2">{translated.title}</Text>
+        <View className="h2">{translated.title}</View>
         <Demo1 />
-        <Text className="h2">{translated.controlled}</Text>
+        <View className="h2">{translated.controlled}</View>
         <Demo2 />
-        <Text className="h2">{translated.title11}</Text>
+        <View className="h2">{translated.title11}</View>
         <Demo3 />
-        <Text className="h2">{translated.title1}</Text>
+        <View className="h2">{translated.title1}</View>
         <Demo4 />
-        <Text className="h2">{translated.title2}</Text>
+        <View className="h2">{translated.title2}</View>
         <Demo5 />
-        <Text className="h2">{translated.title3}</Text>
+        <View className="h2">{translated.title3}</View>
         <Demo6 />
-        <Text className="h2">{translated.title4}</Text>
+        <View className="h2">{translated.title4}</View>
         <Demo7 />
-        <Text className="h2">{translated.title5}</Text>
+        <View className="h2">{translated.title5}</View>
         <Demo8 />
-        <Text className="h2">{translated.title6}</Text>
+        <View className="h2">{translated.title6}</View>
         <Demo9 />
-        {/* <Text className="h2">{translated.title7}</Text>
-        <Demo10 /> */}
-        <Text className="h2">{translated.title8}</Text>
+        <View className="h2">{translated.title7}</View>
+        <Demo10 />
+        <View className="h2">{translated.title8}</View>
         <Demo11 />
-        <Text className="h2">{translated.title9}</Text>
+        <View className="h2">{translated.title9}</View>
         <Demo12 />
-        <Text className="h2">{translated.title10}</Text>
+        <View className="h2">{translated.title10}</View>
         <Demo13 />
       </ScrollView>
-    </View>
+    </>
   )
 }
 

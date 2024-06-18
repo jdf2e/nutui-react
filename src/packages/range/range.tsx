@@ -387,6 +387,9 @@ export const Range: FunctionComponent<
                 [`${verticalClassPrefix}-button`]: vertical,
                 [`${rtlClassPrefix}-button`]: rtl,
               })}
+              style={{
+                transform: 'translate(-50%, -50%)',
+              }}
             >
               {currentDescription !== null && (
                 <div

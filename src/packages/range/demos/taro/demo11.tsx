@@ -1,37 +1,24 @@
 import React, { useState } from 'react'
-import { pxTransform } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 import { rn, harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
-let cellStyle = {
-  padding: '40px 18px',
-} as any
+const cellStyle = {
+  paddingTop: pxTransform(40),
+  paddingBottom: pxTransform(40),
+  paddingLeft: pxTransform(18),
+  paddingRight: pxTransform(18),
+}
 
 let buttonNativeStyle = {} as any
 
 if (rn()) {
-  cellStyle = {
-    paddingTop: 40,
-    paddingBottom: 40,
-    paddingLeft: 18,
-    paddingRight: 18,
-  }
-
   buttonNativeStyle = {
     transform: [
       { translateX: pxTransform(-13) },
-      { translateY: pxTransform(4) },
+      { translateY: pxTransform(3) },
     ],
-  }
-}
-
-if (harmony()) {
-  cellStyle = {
-    paddingTop: '40PX',
-    paddingBottom: '40PX',
-    paddingLeft: '18PX',
-    paddingRight: '18PX',
   }
 }
 
@@ -51,21 +38,37 @@ const Demo11 = () => {
           button={
             <View
               style={{
+                position: 'absolute',
                 display: 'flex',
                 width: pxTransform(26),
                 backgroundColor: 'red',
                 borderRadius: pxTransform(10),
                 justifyContent: 'center',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
                 ...buttonNativeStyle,
               }}
             >
               <Text
-                style={{
-                  color: 'white',
-                  fontSize: pxTransform(10),
-                  lineHeight: pxTransform(18),
-                  textAlign: 'center',
-                }}
+                style={
+                  harmony()
+                    ? {
+                        height: pxTransform(18),
+                        color: 'white',
+                        fontSize: pxTransform(10),
+                        lineHeight: pxTransform(10),
+                        textAlign: 'center',
+                        paddingTop: pxTransform(4),
+                        paddingBottom: pxTransform(4),
+                      }
+                    : {
+                        color: 'white',
+                        fontSize: pxTransform(10),
+                        lineHeight: rn() ? pxTransform(18) : '18px',
+                        textAlign: 'center',
+                      }
+                }
               >
                 {value}
               </Text>

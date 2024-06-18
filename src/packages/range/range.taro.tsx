@@ -398,16 +398,43 @@ export const Range: FunctionComponent<
     [current]
   )
 
+  const buttonTransform = useMemo(() => {
+    const borderRadis = { borderRadius: pxTransform(13) }
+    const transform = {
+      transform: 'translate(-50%, -50%)',
+    }
+
+    if (isRn) {
+      // @TODO 支持变量
+      return {
+        ...borderRadis,
+        transform: [{ translateX: pxTransform(-12) }],
+      }
+    }
+    if (isHm) {
+      return {
+        ...borderRadis,
+        ...transform,
+      }
+    }
+    return {
+      ...transform,
+    }
+  }, [])
+  const buttonNumberTransform = useMemo(() => {
+    if (isRn) {
+      // @TODO 支持变量
+      return [
+        { translateX: pxTransform(vertical ? 26 : -12) },
+        { translateY: pxTransform(vertical ? -12 : -26) },
+      ]
+    }
+
+    return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
+  }, [vertical])
+
   const renderButton = useCallback(
     (index?: number) => {
-      const buttonNumberTransform = vertical
-        ? 'translate(100%, -50%)'
-        : 'translate(-50%, -100%)'
-      const buttonNumberTransformRn = [
-        { translateX: pxTransform(vertical ? 26 : 0) },
-        { translateY: pxTransform(vertical ? 0 : -26) },
-      ]
-
       return (
         <View>
           {button || (
@@ -416,7 +443,8 @@ export const Range: FunctionComponent<
                 [`${verticalClassPrefix}-button`]: vertical,
                 [`${rtlClassPrefix}-button`]: rtl,
               })}
-              style={isNative ? { borderRadius: pxTransform(13) } : {}}
+              // @ts-ignore
+              style={buttonTransform}
             >
               {currentDescription !== null && (
                 <Text
@@ -426,9 +454,7 @@ export const Range: FunctionComponent<
                   })}
                   style={{
                     // @ts-ignore
-                    transform: isRn
-                      ? buttonNumberTransformRn
-                      : buttonNumberTransform,
+                    transform: buttonNumberTransform,
                   }}
                 >
                   {currentDescription
@@ -441,7 +467,16 @@ export const Range: FunctionComponent<
         </View>
       )
     },
-    [button, curValue, currentDescription, rtl, rtlClassPrefix, vertical]
+    [
+      button,
+      buttonNumberTransform,
+      buttonTransform,
+      curValue,
+      currentDescription,
+      rtl,
+      rtlClassPrefix,
+      vertical,
+    ]
   )
 
   const renderMarks = useCallback(() => {
@@ -495,32 +530,36 @@ export const Range: FunctionComponent<
     vertical,
   ])
 
-  const getWrapperTransform = useCallback(() => {
+  const wrapperTransform = useMemo(() => {
     // @TODO 支持变量
     const wrapperTransformRN = [
       { translateX: pxTransform(vertical ? -12 : -13) },
-      { translateY: pxTransform(-13) },
+      { translateY: pxTransform(-12) },
     ]
     const wrapperTransform = 'translate(-50%, -50%)'
 
     return isRn ? wrapperTransformRN : wrapperTransform
   }, [vertical])
+  const rangeWrapperTransform = useMemo(() => {
+    if (isRn) {
+      // @TODO 支持变量
+      return [
+        {
+          translateX: pxTransform(-12),
+        },
+        {
+          translateY: pxTransform(-13),
+        },
+      ]
+    }
+
+    return 'translate(-50%, -50%)'
+  }, [])
 
   const renderButtonWrapper = useCallback(() => {
     if (range)
       return [0, 1].map((item, index) => {
         const isLeft = index === 0
-
-        const transform = 'translate(-50%, -50%)'
-        // @TODO 支持变量
-        const transformRn = [
-          {
-            translateX: pxTransform(-12),
-          },
-          {
-            translateY: pxTransform(-13),
-          },
-        ]
         const suffix = isLeft ? 'left' : 'right'
 
         return (
@@ -532,7 +571,7 @@ export const Range: FunctionComponent<
             })}
             style={{
               // @ts-ignore
-              transform: isRn ? transformRn : transform,
+              transform: rangeWrapperTransform,
             }}
             onTouchStart={(e: any) => {
               if (typeof index === 'number') {
@@ -559,7 +598,7 @@ export const Range: FunctionComponent<
         })}
         style={{
           // @ts-ignore
-          transform: getWrapperTransform(),
+          transform: wrapperTransform,
         }}
         onTouchStart={(e) => onTouchStart(e)}
         onTouchMove={(e) => onTouchMove(e)}
@@ -571,15 +610,16 @@ export const Range: FunctionComponent<
       </View>
     )
   }, [
-    getWrapperTransform,
     onTouchEnd,
     onTouchMove,
     onTouchStart,
     range,
+    rangeWrapperTransform,
     renderButton,
     rtl,
     rtlClassPrefix,
     vertical,
+    wrapperTransform,
   ])
 
   return (

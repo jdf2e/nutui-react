@@ -48,6 +48,7 @@
   }
 
   &-button {
+    position: absolute;
     display: flex;
     width: $range-button-width;
     height: $range-button-height;
@@ -57,6 +58,8 @@
     border: $range-button-border;
     outline: none;
     align-items: center;
+    top: 50%;
+    left: 50%;
 
     &-wrapper,
     &-wrapper-right,
@@ -109,6 +112,7 @@
 
   &-disabled {
     cursor: not-allowed;
+    // 鸿蒙端在外层设置的透明度会分发到所有子图层上，导致样式与其他端不一致
     opacity: 0.54;
 
     .nut-range-button-wrapper,

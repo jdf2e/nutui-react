@@ -1,27 +1,12 @@
 import React, { useState } from 'react'
 import { Range, Cell } from '@nutui/nutui-react-taro'
-import { rn, harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
-let cellStyle = {
-  padding: '40px 18px',
-} as any
-
-if (rn()) {
-  cellStyle = {
-    paddingTop: 40,
-    paddingBottom: 40,
-    paddingLeft: 18,
-    paddingRight: 18,
-  }
-}
-
-if (harmony()) {
-  cellStyle = {
-    paddingTop: '40PX',
-    paddingBottom: '40PX',
-    paddingLeft: '18PX',
-    paddingRight: '18PX',
-  }
+const cellStyle = {
+  paddingTop: pxTransform(40),
+  paddingBottom: pxTransform(40),
+  paddingLeft: pxTransform(18),
+  paddingRight: pxTransform(18),
 }
 
 const Demo2 = () => {
