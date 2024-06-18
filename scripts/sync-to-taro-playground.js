@@ -173,6 +173,14 @@ function main() {
       .replace(/@\/utils/g, '../../../utils')
     fs.writeFileSync(f, distFileContent)
   })
+  // 修改引入的 utils
+  glob.sync(distPath + '/**/' + 'demo.taro.tsx').map((f) => {
+    const sourceFileContent = fs.readFileSync(f, { encoding: 'utf-8' })
+    const distFileContent = sourceFileContent
+      .toString()
+      .replace(/@\/utils/g, '../utils')
+    fs.writeFileSync(f, `import '../../styles/demo.scss'\n${distFileContent}`)
+  })
 }
 
 main()

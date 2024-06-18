@@ -46,6 +46,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const classes = classNames(classPrefix, className)
   const avatarClass = classNames({
     [`nut-avatar`]: true,
+    [`nut-skeleton-content-avatar`]: true,
     [`avatar-${avatarShape}`]: avatarShape,
   })
 
@@ -83,12 +84,17 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
             {rows === 1 ? (
-              <div className={`${classPrefix}-block`} />
+              <div className={`${classPrefix}-content-block`} />
             ) : (
               <div className={`${classPrefix}-content-line`}>
-                {title && <div className={`${classPrefix}-title`} />}
+                {title && <div className={`${classPrefix}-content-title`} />}
                 {repeatLines(rows).map((item, index) => {
-                  return <div className={`${classPrefix}-block`} key={index} />
+                  return (
+                    <div
+                      className={`${classPrefix}-content-block`}
+                      key={index}
+                    />
+                  )
                 })}
               </div>
             )}

@@ -9,7 +9,11 @@ if (projectID) {
   themeStr = `src/styles/theme-${projectID}.scss`
 }
 
-let plugins = process.env.TARO_ENV === 'weapp' ? [['@tarojs/plugin-html']] : []
+let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
+  process.env.TARO_ENV
+)
+  ? ['@tarojs/plugin-html']
+  : []
 
 if (
   process.env.TARO_ENV === 'harmony' ||
