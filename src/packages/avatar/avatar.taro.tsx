@@ -35,7 +35,7 @@ export type AvatarShape = 'round' | 'square'
 
 const defaultProps = {
   ...ComponentDefaults,
-  size: '',
+  size: harmonyAndRn() ? '40' : '',
   shape: 'round',
   icon: '',
   fit: 'cover',
@@ -90,10 +90,9 @@ export const Avatar: FunctionComponent<
   })
 
   const cls = classNames(classPrefix, classes, className, nativeClasses)
-
   const styles: React.CSSProperties = {
-    width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
+    width: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
+    height: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
     backgroundColor: `${background}`,
     color,
     [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
@@ -233,7 +232,7 @@ export const Avatar: FunctionComponent<
           {/* 折叠头像 */}
           {showMax && (
             <View
-              className={`nut-avatar-text nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-text`}
+              className={`nut-avatar-text nut-avatar-${parent?.propAvatarGroup?.size || 'normal'}-text`}
             >
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
