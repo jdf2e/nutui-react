@@ -75,7 +75,6 @@ export const Swipe = forwardRef<
 >((props, instanceRef) => {
   const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
-  const [rootWidth, setRootWidth] = useState(0)
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
   useReady(() => {
