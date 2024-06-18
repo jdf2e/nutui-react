@@ -13,7 +13,8 @@ import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -85,6 +86,7 @@ export const Swipe = forwardRef<
       }
       if (rightWrapper.current) {
         const rightRect = await getRectByTaro(rightWrapper.current)
+
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
@@ -155,8 +157,11 @@ export const Swipe = forwardRef<
       if (isEdge) {
         preventDefault(event, true)
       }
+
       newState.offset = rangeCalculation(
-        touch.deltaX.current + startOffset.current,
+        (harmony()
+          ? parseFloat(pxTransform(touch.deltaX.current))
+          : touch.deltaX.current) + startOffset.current,
         -actionWidth.current.right || 0,
         actionWidth.current.left || 0
       )
