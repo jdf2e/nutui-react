@@ -20,9 +20,8 @@ const App = () => {
           title="左滑删除"
           radius={0}
           style={{
-            margin: 0,
-            alignSelf: 'stretch',
-            boxShadow: '0px 0px 0px 0px rgb(237, 238, 241)',
+            width: '100%',
+            marginBottom: 0,
           }}
         />
       </Swipe>

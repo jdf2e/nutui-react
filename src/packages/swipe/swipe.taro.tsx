@@ -131,7 +131,6 @@ export const Swipe = forwardRef<
     }
     if (rightWrapper.current) {
       const rightRect = await getRectByTaro(rightWrapper.current)
-
       rightRect &&
         setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
     }
@@ -149,7 +148,6 @@ export const Swipe = forwardRef<
 
     touch.move(event)
     props.onTouchMove?.(event)
-
     if (touch.isHorizontal()) {
       lockClick.current = true
       const newState = { ...state, dragging: true }
@@ -285,7 +283,9 @@ export const Swipe = forwardRef<
     <View
       ref={root}
       className={classNames(classPrefix, className)}
-      onTouchStart={(e) => onTouchStart(e)}
+      onTouchStart={(e) => {
+        onTouchStart(e)
+      }}
       onTouchMove={(e) => onTouchMove(e)}
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}

@@ -29,7 +29,10 @@ const App = () => {
           <Cell
             title="左滑删除"
             radius={0}
-            style={{ margin: 0, alignSelf: 'stretch' }}
+            style={{
+              width: '100%',
+              marginBottom: 0,
+            }}
           />
         </Swipe>
       </View>

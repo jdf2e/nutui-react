@@ -22,7 +22,10 @@ const App = () => {
         <Cell
           title="点击下方按钮打开或关闭"
           radius={0}
-          style={{ margin: 0, alignSelf: 'stretch', boxShadow: 'none' }}
+          style={{
+            width: '100%',
+            marginBottom: 0,
+          }}
         />
       </Swipe>
       <View style={{ display: 'flex', flexDirection: 'row' }}>

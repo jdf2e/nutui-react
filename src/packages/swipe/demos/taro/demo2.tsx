@@ -43,19 +43,19 @@ const App = () => {
           >
             <>
               {ViewNode('设置常买', {
-                background: '#F8F8F8',
+                backgroundColor: '#F8F8F8',
                 color: '#1A1A1A',
               })}
               {ViewNode('移入收藏', {
-                background: '#ffcc00',
+                backgroundColor: '#ffcc00',
                 color: '#FFF',
               })}
               {ViewNode('看相似', {
-                background: '#FF860D',
+                backgroundColor: '#FF860D',
                 color: '#FFF',
               })}
               {ViewNode('删除', {
-                background: '#FA2C19',
+                backgroundColor: '#FA2C19',
                 color: '#FFF',
               })}
             </>
@@ -65,7 +65,10 @@ const App = () => {
         <Cell
           title="左滑"
           radius={0}
-          style={{ margin: 0, alignSelf: 'stretch' }}
+          style={{
+            width: '100%',
+            marginBottom: 0,
+          }}
         />
       </Swipe>
     </>

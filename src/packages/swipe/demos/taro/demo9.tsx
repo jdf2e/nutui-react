@@ -20,7 +20,13 @@ const App = () => {
           </>
         }
       >
-        <Cell radius={0} style={{ margin: 0, alignSelf: 'stretch' }}>
+        <Cell
+          radius={0}
+          style={{
+            width: '100%',
+            marginBottom: 0,
+          }}
+        >
           <View
             style={{
               display: 'flex',

@@ -4,7 +4,6 @@
   position: relative;
   overflow: hidden;
   cursor: grab;
-  background-color: #ffffff;
 }
 .nut-swipe-wrapper {
   display: flex;

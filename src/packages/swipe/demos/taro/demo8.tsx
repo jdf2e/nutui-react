@@ -40,7 +40,10 @@ const App = () => {
         <Cell
           title="事件"
           radius={0}
-          style={{ margin: 0, alignSelf: 'stretch' }}
+          style={{
+            width: '100%',
+            marginBottom: 0,
+          }}
         />
       </Swipe>
       {/* <Dialog */}
