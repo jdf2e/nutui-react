@@ -6,6 +6,7 @@ const Demo1 = () => {
     <>
       <Input
         placeholder="请输入文本"
+        placeholderTextColor="#757575"
         onChange={(v) => {
           console.log('onChange', v)
         }}
