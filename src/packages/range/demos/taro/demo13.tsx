@@ -1,23 +1,28 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
 
-const cellStyle = {
-  paddingTop: pxTransform(40),
-  paddingBottom: pxTransform(40),
-  paddingLeft: pxTransform(18),
-  paddingRight: pxTransform(18),
-}
-const verticalStyle = {
-  height: pxTransform(180),
-  paddingTop: pxTransform(10),
-  paddingBottom: pxTransform(10),
-  paddingLeft: pxTransform(10),
-  paddingRight: pxTransform(10),
-}
-
 const Demo13 = () => {
+  const cellStyle = useMemo(
+    () => ({
+      paddingTop: pxTransform(40),
+      paddingBottom: pxTransform(40),
+      paddingLeft: pxTransform(18),
+      paddingRight: pxTransform(18),
+    }),
+    []
+  )
+  const verticalStyle = useMemo(
+    () => ({
+      height: pxTransform(180),
+      paddingTop: pxTransform(10),
+      paddingBottom: pxTransform(10),
+      paddingLeft: pxTransform(10),
+      paddingRight: pxTransform(10),
+    }),
+    []
+  )
   const [marks] = useState({
     0: 'Start',
     20: 20,

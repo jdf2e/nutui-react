@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 import { rn, harmony } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
-const cellStyle = {
-  paddingTop: pxTransform(40),
-  paddingBottom: pxTransform(40),
-  paddingLeft: pxTransform(18),
-  paddingRight: pxTransform(18),
-}
-
-let buttonNativeStyle = {} as any
-
-if (rn()) {
-  buttonNativeStyle = {
-    transform: [
-      { translateX: pxTransform(-13) },
-      { translateY: pxTransform(3) },
-    ],
-  }
-}
-
 const Demo11 = () => {
+  const cellStyle = useMemo(
+    () => ({
+      paddingTop: pxTransform(40),
+      paddingBottom: pxTransform(40),
+      paddingLeft: pxTransform(18),
+      paddingRight: pxTransform(18),
+    }),
+    []
+  )
+
+  const buttonNativeStyle = useMemo(() => {
+    if (rn()) {
+      return {
+        transform: [
+          { translateX: pxTransform(-13) },
+          { translateY: pxTransform(3) },
+        ],
+      }
+    }
+    return {}
+  }, [])
   const [value, setValue] = useState(60)
   const [show, setShow] = useState(false)
   const [msg, setMsg] = useState('')

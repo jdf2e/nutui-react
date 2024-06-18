@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Range, ConfigProvider, Cell } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
 
-const cellStyle = {
-  paddingTop: pxTransform(40),
-  paddingBottom: pxTransform(40),
-  paddingLeft: pxTransform(18),
-  paddingRight: pxTransform(18),
-}
-
 const Demo10 = () => {
+  const cellStyle = useMemo(
+    () => ({
+      paddingTop: pxTransform(40),
+      paddingBottom: pxTransform(40),
+      paddingLeft: pxTransform(18),
+      paddingRight: pxTransform(18),
+    }),
+    []
+  )
+
   return (
     <Cell
       style={{
