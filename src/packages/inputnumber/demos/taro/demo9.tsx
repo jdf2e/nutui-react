@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Cell, ConfigProvider, InputNumber } from '@nutui/nutui-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo9 = () => {
   const customTheme3 = {
@@ -9,7 +8,6 @@ const Demo9 = () => {
   const [toastType, SetToastType] = useState('text')
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
-  const isRnAndHarmony = harmonyAndRn()
   return (
     <>
       <Cell>
@@ -26,7 +24,7 @@ const Demo9 = () => {
         </ConfigProvider>
       </Cell>
       <Cell>
-        {isRnAndHarmony ? (
+        <ConfigProvider theme={customTheme3}>
           <InputNumber
             className="format-width"
             defaultValue={100}
@@ -34,17 +32,7 @@ const Demo9 = () => {
             max={100}
             formatter={(value) => `${value}%`}
           />
-        ) : (
-          <ConfigProvider theme={customTheme3}>
-            <InputNumber
-              className="format-width"
-              defaultValue={100}
-              min={0}
-              max={100}
-              formatter={(value) => `${value}%`}
-            />
-          </ConfigProvider>
-        )}
+        </ConfigProvider>
       </Cell>
       {/* <Toast
         type={toastType}

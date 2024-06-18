@@ -6,11 +6,17 @@ import React, {
   ChangeEvent,
 } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, Input, InputProps, View, Text } from '@tarojs/components'
+import {
+  ITouchEvent,
+  Input as TaroInput,
+  InputProps,
+  View,
+  Text,
+} from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
+import { harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -18,7 +24,7 @@ export interface InputNumberProps extends BasicComponent {
   allowEmpty: boolean
   min: number | string
   max: number | string
-  type?: Extract<InputProps['type'], 'text' | 'number' | 'digit'>
+  type?: Extract<InputProps['type'], 'number' | 'digit'>
   disabled: boolean
   readOnly: boolean
   step: number
@@ -183,6 +189,8 @@ export const InputNumber: FunctionComponent<
     return text
   }
   const handleInputChange = (e: any) => {
+    if (!focused) return
+    console.log('test', 3)
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
@@ -192,9 +200,6 @@ export const InputNumber: FunctionComponent<
       } else {
         setShadowValue(defaultValue)
       }
-    } else if (harmony()) {
-      // valueStr移除非数字字符
-      setShadowValue(valueStr.replace(/[^\d/.]/g, ''))
     } else {
       setShadowValue(valueStr as any)
     }
@@ -203,6 +208,7 @@ export const InputNumber: FunctionComponent<
     }
   }
   const handleFocus = (e: any) => {
+    console.log('test', 1)
     setFocused(true)
     setInputValue(
       shadowValue !== undefined && shadowValue !== null
@@ -212,6 +218,7 @@ export const InputNumber: FunctionComponent<
     onFocus && onFocus(e)
   }
   const handleBlur = (e: any) => {
+    console.log('test', 2)
     setFocused(false)
     onBlur && onBlur(e)
     if (async) {
@@ -248,7 +255,7 @@ export const InputNumber: FunctionComponent<
         )}
       </View>
       {isRn ? (
-        <Input
+        <TaroInput
           className={classNames(`${classPrefix}-input`, {
             [`${classPrefix}-input-disabled`]: disabled,
           })}
