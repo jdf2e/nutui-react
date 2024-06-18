@@ -16,7 +16,7 @@ import {
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -89,6 +89,7 @@ export const InputNumber: FunctionComponent<
   }
   const isRnAndHarmony = harmonyAndRn()
   const isRn = rn()
+  const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -189,8 +190,7 @@ export const InputNumber: FunctionComponent<
     return text
   }
   const handleInputChange = (e: any) => {
-    if (!focused) return
-    console.log('test', 3)
+    if (!focused && isHarmony) return
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
@@ -208,7 +208,6 @@ export const InputNumber: FunctionComponent<
     }
   }
   const handleFocus = (e: any) => {
-    console.log('test', 1)
     setFocused(true)
     setInputValue(
       shadowValue !== undefined && shadowValue !== null
@@ -218,7 +217,6 @@ export const InputNumber: FunctionComponent<
     onFocus && onFocus(e)
   }
   const handleBlur = (e: any) => {
-    console.log('test', 2)
     setFocused(false)
     onBlur && onBlur(e)
     if (async) {

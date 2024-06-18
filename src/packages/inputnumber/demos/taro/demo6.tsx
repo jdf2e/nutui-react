@@ -1,6 +1,5 @@
 import React from 'react'
 import { Cell, ConfigProvider, InputNumber } from '@nutui/nutui-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   const customTheme = {
@@ -19,8 +18,6 @@ const Demo6 = () => {
     nutuiInputnumberInputBackgroundColor: '#fff',
     nutuiInputnumberInputMargin: '0 2px',
   }
-
-  const isRnAndHarmony = harmonyAndRn()
 
   return (
     <>
