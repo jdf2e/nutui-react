@@ -21,7 +21,17 @@
 .nut-cell-left {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   flex: 1;
+}
+.nut-cell-title {
+  line-height: 20px;
+}
+.nut-cell-description {
+  line-height: 20px;
+}
+.nut-cell-extra {
+  line-height: 20px;
 }
 .nut-cell-description {
   font-size: 12px;
