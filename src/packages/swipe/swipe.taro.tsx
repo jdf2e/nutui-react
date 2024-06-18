@@ -8,13 +8,13 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import { useReady } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony, harmonyAndRn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
+import { useRefState } from '@/utils/use-ref-state'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -78,7 +78,7 @@ export const Swipe = forwardRef<
   const touch: any = useTouch()
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
-  useReady(() => {
+  useEffect(() => {
     const getWidth = async () => {
       if (leftWrapper.current) {
         const leftRect = await getRectByTaro(leftWrapper.current)
@@ -86,13 +86,13 @@ export const Swipe = forwardRef<
       }
       if (rightWrapper.current) {
         const rightRect = await getRectByTaro(rightWrapper.current)
-
+        console.log('actionWidth.current.left', rightRect.width)
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
     setTimeout(() => getWidth())
-  })
+  }, [])
 
   const { children, className, style } = { ...defaultProps, ...props }
 
@@ -106,17 +106,23 @@ export const Swipe = forwardRef<
     dragging: false,
   })
 
-  const actionWidth = useRef({
+  const [actionWidth, updateState] = useRefState({
     left: 0,
     right: 0,
   })
   const setActionWidth = (fn: any) => {
     const res = fn()
     if (res.left !== undefined) {
-      actionWidth.current.left = res.left
+      updateState({
+        ...actionWidth.current,
+        left: res.left,
+      })
     }
     if (res.right !== undefined) {
-      actionWidth.current.right = res.right
+      updateState({
+        ...actionWidth.current,
+        right: res.right,
+      })
     }
   }
   const wrapperStyle = {
@@ -125,6 +131,7 @@ export const Swipe = forwardRef<
   }
 
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
+    console.log('ontouchstart')
     if (leftWrapper.current) {
       const leftRect = await getRectByTaro(leftWrapper.current)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
@@ -222,6 +229,7 @@ export const Swipe = forwardRef<
   const rightWrapper = useRef(null)
   const renderActionContent = (side: SwipeSide) => {
     if (props[`${side}Action`]) {
+      console.log('actionWidth xxx', actionWidth.current.left)
       return (
         <View
           ref={side === 'left' ? leftWrapper : rightWrapper}
@@ -283,9 +291,7 @@ export const Swipe = forwardRef<
     <View
       ref={root}
       className={classNames(classPrefix, className)}
-      onTouchStart={(e) => {
-        onTouchStart(e)
-      }}
+      onTouchStart={(e) => onTouchStart(e)}
       onTouchMove={(e) => onTouchMove(e)}
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Cell, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
 const App = () => {
@@ -12,18 +13,24 @@ const App = () => {
             shape="square"
             style={{ alignSelf: 'stretch', height: pxTransform(46) }}
           >
-            删除
+            <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+              删除
+            </Text>
           </Button>
         }
       >
-        <Cell
-          title="左滑删除"
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
           }}
-        />
+        >
+          <View style={{ marginLeft: pxTransform(10) }}>左滑删除</View>
+        </View>
       </Swipe>
     </>
   )

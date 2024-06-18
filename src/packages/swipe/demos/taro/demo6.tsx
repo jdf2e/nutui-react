@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Cell, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { View, Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
 const App = () => {
@@ -12,19 +13,25 @@ const App = () => {
             type="danger"
             style={{ alignSelf: 'stretch', height: pxTransform(46) }}
           >
-            删除
+            <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+              删除
+            </Text>
           </Button>
         }
         disabled
       >
-        <Cell
-          title="禁用滑动"
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
           }}
-        />
+        >
+          <View style={{ marginLeft: pxTransform(10) }}>禁用滑动</View>
+        </View>
       </Swipe>
     </>
   )

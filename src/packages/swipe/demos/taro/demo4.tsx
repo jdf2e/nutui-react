@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Button, Cell, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
+import { Button, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
@@ -15,18 +15,26 @@ const App = () => {
             type="danger"
             style={{ alignSelf: 'stretch', height: pxTransform(46) }}
           >
-            删除
+            <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+              删除
+            </Text>
           </Button>
         }
       >
-        <Cell
-          title="点击下方按钮打开或关闭"
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
           }}
-        />
+        >
+          <View style={{ marginLeft: pxTransform(10) }}>
+            点击下方按钮打开或关闭
+          </View>
+        </View>
       </Swipe>
       <View style={{ display: 'flex', flexDirection: 'row' }}>
         <Button

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Cell, InputNumber, Swipe } from '@nutui/nutui-react-taro'
+import { Button, InputNumber, Swipe } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '../../../../utils/px-transform'
 import { harmonyAndRn } from '@/utils/platform-taro'
@@ -15,29 +15,36 @@ const App = () => {
               type="danger"
               style={{ alignSelf: 'stretch', height: pxTransform(46) }}
             >
-              加入购物车
+              <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+                加入购物车
+              </Text>
             </Button>
           </>
         }
       >
-        <Cell
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
           }}
         >
-          <View
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}
-          >
-            <Text>商品</Text>
-            {!harmonyAndRn() ? <InputNumber /> : null}
+          <View style={{ marginLeft: pxTransform(10) }}>
+            <View
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              <Text>商品</Text>
+              {!harmonyAndRn() ? <InputNumber /> : null}
+            </View>
           </View>
-        </Cell>
+        </View>
       </Swipe>
     </>
   )

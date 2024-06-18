@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell, Swipe } from '@nutui/nutui-react-taro'
+import { Swipe } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
@@ -21,7 +21,9 @@ const ViewNode = (text: string, style: any) => {
       {!harmonyAndRn() ? (
         <Del style={{ marginBottom: pxTransform(8) }} />
       ) : null}
-      <Text>{text}</Text>
+      <Text style={{ fontSize: pxTransform(12), color: style.color }}>
+        {text}
+      </Text>
     </View>
   )
 }
@@ -62,14 +64,18 @@ const App = () => {
           </View>
         }
       >
-        <Cell
-          title="左滑"
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
           }}
-        />
+        >
+          <View style={{ marginLeft: pxTransform(10) }}>左滑</View>
+        </View>
       </Swipe>
     </>
   )

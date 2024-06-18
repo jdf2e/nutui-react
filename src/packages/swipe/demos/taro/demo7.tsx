@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Button, Cell, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
 const App = () => {
@@ -19,7 +20,9 @@ const App = () => {
               height: pxTransform(46),
             }}
           >
-            选择
+            <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+              选择
+            </Text>
           </Button>
         }
         rightAction={
@@ -29,14 +32,18 @@ const App = () => {
               type="danger"
               style={{ alignSelf: 'stretch', height: pxTransform(46) }}
             >
-              删除
+              <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+                删除
+              </Text>
             </Button>
             <Button
               shape="square"
               type="info"
               style={{ alignSelf: 'stretch', height: pxTransform(46) }}
             >
-              收藏
+              <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+                收藏
+              </Text>
             </Button>
           </>
         }
@@ -44,14 +51,19 @@ const App = () => {
         onOpen={() => Taro.showToast({ title: '打开' })}
         onClose={() => Taro.showToast({ title: '关闭' })}
       >
-        <Cell
-          title="事件"
-          radius={0}
+        <View
           style={{
             width: '100%',
-            marginBottom: 0,
+            height: pxTransform(46),
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            position: 'relative',
+            zIndex: 2,
           }}
-        />
+        >
+          <View style={{ marginLeft: pxTransform(10) }}>事件</View>
+        </View>
       </Swipe>
     </>
   )
