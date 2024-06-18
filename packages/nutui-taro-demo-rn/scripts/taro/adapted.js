@@ -17,6 +17,7 @@ exports = module.exports = [
   'divider',
   'image',
   'resultpage',
+  'skeleton',
   'notify',
   'pagination',
   'swiper',
@@ -26,4 +27,5 @@ exports = module.exports = [
   'safearea',
   'hoverbuttonitem',
   'range',
+  'configprovider',
 ]

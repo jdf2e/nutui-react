@@ -93,7 +93,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ConfigProvider",
           "type": "component",
           "cName": "全局配置",
@@ -850,7 +850,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",
