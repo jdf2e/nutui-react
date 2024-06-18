@@ -1,5 +1,4 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { Toast } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -8,6 +7,7 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ToastDemo = () => {
   const [translated] = useTranslate({
@@ -32,10 +32,10 @@ const ToastDemo = () => {
   })
 
   function demoClass() {
-    if (Taro.getEnv() === 'WEB') {
+    if (web()) {
       return 'web'
     }
-    if (Taro.getEnv() === 'HARMONY') {
+    if (!harmonyAndRn()) {
       return 'full'
     }
     return ''

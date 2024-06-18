@@ -1,3 +1,152 @@
+.nut-avatar-group {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+}
+.nut-avatar-group .nut-avatar {
+  border: 1px solid #fff;
+}
+.nut-avatar-group .nut-avatar:not(:first-of-type) {
+  margin-left: -8px;
+}
+
+[dir=rtl] .nut-avatar-group .nut-avatar:not(:first-of-type),
+.nut-rtl .nut-avatar-group .nut-avatar:not(:first-of-type) {
+  margin-left: 0;
+  margin-right: -8px;
+}
+
+.nut-image {
+  display: block;
+  position: relative;
+}
+.nut-image .nut-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.nut-image.nut-image-round {
+  border-radius: 50%;
+  overflow: hidden;
+}
+.nut-image .nut-img-loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6fa;
+  background-size: 100% 100%;
+}
+.nut-image .nut-img-error {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6fa;
+  background-size: 100% 100%;
+}
+
+[dir=rtl] .nut-image .nut-img-loading,
+.nut-rtl .nut-image .nut-img-loading {
+  left: auto;
+  right: 0;
+}
+[dir=rtl] .nut-image .nut-img-error,
+.nut-rtl .nut-image .nut-img-error {
+  left: auto;
+  right: 0;
+}
+
+.nut-avatar {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+  text-align: center;
+}
+.nut-avatar .avatar-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+}
+.nut-avatar .icon {
+  background-size: 100% 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.nut-avatar .nut-icon-img {
+  width: 100%;
+  height: 100%;
+}
+.nut-avatar .text {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+[dir=rtl] .nut-avatar .avatar-img,
+.nut-rtl .nut-avatar .avatar-img {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+[dir=rtl] .nut-avatar .icon,
+.nut-rtl .nut-avatar .icon {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.nut-avatar-large {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+}
+
+.nut-avatar-small {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.nut-avatar-normal {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.nut-avatar-round {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.nut-avatar-square {
+  border-radius: 5px;
+}
+
 .nut-skeleton {
   display: inline-block;
   position: relative;
@@ -7,15 +156,16 @@
 }
 .nut-skeleton-content {
   display: flex;
+  flex-direction: row;
 }
-.nut-skeleton-content .nut-avatar {
+.nut-skeleton-content-avatar {
   margin-right: 20px;
-  background: #F7F8FC !important;
+  background: #f5f6fa !important;
 }
-.nut-skeleton-content .nut-skeleton-block {
+.nut-skeleton-content-block {
   width: 100%;
   height: 15px;
-  background: #F7F8FC;
+  background: #f5f6fa;
   margin-top: 10px;
   border-radius: 0;
 }
@@ -24,13 +174,16 @@
   display: flex;
   flex-direction: column;
 }
-.nut-skeleton-content-line .nut-skeleton-title {
+.nut-skeleton-content-line .nut-skeleton-content-block:last-child {
+  width: 70%;
+}
+.nut-skeleton-content-title {
   width: 30%;
   height: 15px;
-  background: #F7F8FC;
+  background: #f5f6fa;
 }
-.nut-skeleton-content-line .nut-skeleton-block:last-child {
-  width: 70%;
+.nut-skeleton-content-block-last-child {
+  width: 55%;
 }
 .nut-skeleton-animation {
   position: absolute;
@@ -39,7 +192,9 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  /* #ifndef rn */
   background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
+  /* #endif */
   animation: nut-skeleton 2s ease-in-out 0s infinite;
 }
 @keyframes nut-skeleton {
@@ -60,7 +215,9 @@
 .nut-rtl .nut-skeleton-animation {
   left: auto;
   right: 0;
+  /* #ifndef rn */
   background: linear-gradient(-90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.5) 50%, hsla(0, 0%, 100%, 0) 80%);
+  /* #endif */
   animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
 }
 @keyframes nut-skeleton-rtl {
