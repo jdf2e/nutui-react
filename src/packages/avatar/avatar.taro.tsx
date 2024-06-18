@@ -114,6 +114,9 @@ export const Avatar: FunctionComponent<
 
   useEffect(() => {
     const avatarChildren = parent?.avatarGroupRef?.current.children
+    // @todo children 在 rn 下 无法获取，同时会影响：
+    // 1）children 在group下无法展示触发max时的样式
+    // 2）无法处理层级关系
     if (avatarChildren) {
       avatarLength(avatarChildren)
     }
@@ -143,7 +146,7 @@ export const Avatar: FunctionComponent<
         children[i].setAttribute('data-index', i + 1)
       }
     }
-    const index = avatarRef?.current?.dataset?.index
+    const index = Number(avatarRef?.current?.dataset?.index)
     const maxCount = parent?.propAvatarGroup?.max || children.length
     setMaxSum(children.length)
     setAvatarIndex(index)
