@@ -11,6 +11,7 @@ const Demo12 = () => {
             title: 'onClick',
           })
         }
+        placeholderTextColor="#757575"
       />
     </>
   )

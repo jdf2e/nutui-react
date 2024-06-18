@@ -5,11 +5,16 @@ const Demo10 = () => {
   const formatter = (value: string) => value.replace(/\d/g, '')
   return (
     <>
-      <Input formatter={formatter} placeholder="在输入时执行格式化" />
+      <Input
+        formatter={formatter}
+        placeholder="在输入时执行格式化"
+        placeholderTextColor="#757575"
+      />
       <Input
         formatter={formatter}
         formatTrigger="onBlur"
         placeholder="在失焦时执行格式化"
+        placeholderTextColor="#757575"
       />
     </>
   )

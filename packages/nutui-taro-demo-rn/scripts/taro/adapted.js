@@ -27,5 +27,6 @@ exports = module.exports = [
   'safearea',
   'hoverbuttonitem',
   'configprovider',
+  'input',
   'swipe',
 ]

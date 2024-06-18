@@ -7,6 +7,7 @@ const Demo11 = () => {
       <Input
         style={{ '--nutui-input-border-bottom-width': '1px' }}
         placeholder="边框"
+        placeholderTextColor="#757575"
       />
     </>
   )
