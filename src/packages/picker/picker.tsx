@@ -98,7 +98,7 @@ const InternalPicker: ForwardRefRenderFunction<
     defaultValue: [...defaultValue],
     finalValue: [...defaultValue],
     onChange: (val: (string | number)[]) => {
-      props.onConfirm?.(setSelectedOptions(), val)
+      !val && props.onConfirm?.(setSelectedOptions(), val)
     },
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
