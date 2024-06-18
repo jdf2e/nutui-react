@@ -10,28 +10,24 @@
     align-items: center;
     width: $inputnumber-button-width;
     height: $inputnumber-button-height;
-    /*  #ifdef rn harmony  */
-    background-color: gray;
-    /*  #endif  */
-    /*  #ifndef  rn harmony  */
     background-color: $inputnumber-button-background-color;
-    /*  #endif */
     border-radius: $inputnumber-button-border-radius;
   }
 
   &-icon {
     color: $inputnumber-icon-color;
+    /*  #ifdef rn harmony  */
+    font-size: 14px;
+    /*  #endif  */
+    /*  #ifndef  rn harmony  */
     font-size: $inputnumber-icon-size;
+    /*  #endif */
     cursor: pointer;
 
     &-disabled {
       color: $inputnumber-disabled-color;
       cursor: not-allowed;
     }
-  }
-
-  &-input-disabled {
-    color: $inputnumber-disabled-color !important;
   }
 
   &-input {
@@ -48,13 +44,18 @@
     color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
     &-disabled {
-      color: $inputnumber-disabled-color !important;
+      color: $inputnumber-disabled-color;
     }
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       appearance: none;
     }
   }
+
+  &-input-disabled {
+    color: $inputnumber-disabled-color;
+  }
+
   &-icon-minus {
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;

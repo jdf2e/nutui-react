@@ -13,7 +13,7 @@ const Demo9 = () => {
   return (
     <>
       <Cell>
-        {isRnAndHarmony ? (
+        <ConfigProvider theme={customTheme3}>
           <InputNumber
             className="format-width"
             defaultValue={1000}
@@ -23,19 +23,7 @@ const Demo9 = () => {
               `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             }
           />
-        ) : (
-          <ConfigProvider theme={customTheme3}>
-            <InputNumber
-              className="format-width"
-              defaultValue={1000}
-              min={10}
-              max={15020}
-              formatter={(value) =>
-                `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-              }
-            />
-          </ConfigProvider>
-        )}
+        </ConfigProvider>
       </Cell>
       <Cell>
         {isRnAndHarmony ? (

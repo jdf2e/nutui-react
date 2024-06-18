@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputNumber } from '@nutui/nutui-react-taro'
+import { Cell, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const overlimit = () => {
@@ -17,12 +17,14 @@ const Demo3 = () => {
 
   return (
     <>
-      <InputNumber
-        defaultValue={10}
-        min={10}
-        max={20}
-        onOverlimit={overlimit}
-      />
+      <Cell>
+        <InputNumber
+          defaultValue={10}
+          min={10}
+          max={20}
+          onOverlimit={overlimit}
+        />
+      </Cell>
       {/* <Toast
         type={toastType}
         visible={show}

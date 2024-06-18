@@ -6,11 +6,11 @@ import React, {
   ChangeEvent,
 } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, Input, InputProps, View } from '@tarojs/components'
+import { ITouchEvent, Input, InputProps, View, Text } from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -18,7 +18,7 @@ export interface InputNumberProps extends BasicComponent {
   allowEmpty: boolean
   min: number | string
   max: number | string
-  type?: Extract<InputProps['type'], 'text'>
+  type?: Extract<InputProps['type'], 'text' | 'number' | 'digit'>
   disabled: boolean
   readOnly: boolean
   step: number
@@ -43,7 +43,7 @@ const defaultProps = {
   allowEmpty: false,
   min: 1,
   max: 9999,
-  type: 'text',
+  type: 'digit',
   step: 1,
   digits: 0,
   async: false,
@@ -82,6 +82,7 @@ export const InputNumber: FunctionComponent<
     ...props,
   }
   const isRnAndHarmony = harmonyAndRn()
+  const isRn = rn()
   const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -222,7 +223,19 @@ export const InputNumber: FunctionComponent<
   return (
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
-        {isRnAndHarmony ? null : (
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
+          >
+            -
+          </Text>
+        ) : (
           <Minus
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-minus`,
@@ -234,7 +247,7 @@ export const InputNumber: FunctionComponent<
           />
         )}
       </View>
-      <>
+      {isRn ? (
         <Input
           className={classNames(`${classPrefix}-input`, {
             [`${classPrefix}-input-disabled`]: disabled,
@@ -247,10 +260,37 @@ export const InputNumber: FunctionComponent<
           onBlur={handleBlur}
           onFocus={handleFocus}
         />
-      </>
+      ) : (
+        <input
+          className={classNames(`${classPrefix}-input`, {
+            [`${classPrefix}-input-disabled`]: disabled,
+          })}
+          type={type}
+          ref={inputRef}
+          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
+          disabled={disabled}
+          readOnly={readOnly}
+          value={inputValue}
+          onInput={handleInputChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+        />
+      )}
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
-        {isRnAndHarmony ? null : (
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
+          >
+            +
+          </Text>
+        ) : (
           <Plus
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-plus`,

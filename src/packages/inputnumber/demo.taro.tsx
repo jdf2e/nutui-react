@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -66,43 +65,21 @@ const InputNumberDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated['84aa6bce']}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
-
+        <Demo1 />
         <View className="h2">{translated['55cc5fb7']}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
-
+        <Demo2 />
         <View className="h2">{translated['9636103a']}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
-
+        <Demo3 />
         <View className="h2">{translated['181965e2']}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
-
+        <Demo4 />
         <View className="h2">{translated.e7b2ce1f}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
-
+        <Demo5 />
         <View className="h2">{translated.e7b2ce1g}</View>
         <Demo6 />
-
         <View className="h2">{translated['3a42134b']}</View>
-        <Cell>
-          <Demo7 />
-        </Cell>
-
+        <Demo7 />
         <View className="h2">{translated['65bafb1d']}</View>
-        <Cell>
-          <Demo8 />
-        </Cell>
-
+        <Demo8 />
         <View className="h2">Formatter</View>
         <Demo9 />
       </ScrollView>

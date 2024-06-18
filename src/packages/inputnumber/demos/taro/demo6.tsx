@@ -25,22 +25,14 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        {!isRnAndHarmony ? (
-          <ConfigProvider theme={customTheme}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
-        ) : (
+        <ConfigProvider theme={customTheme}>
           <InputNumber defaultValue={1} />
-        )}
+        </ConfigProvider>
       </Cell>
       <Cell>
-        {!isRnAndHarmony ? (
-          <ConfigProvider theme={customTheme2}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
-        ) : (
+        <ConfigProvider theme={customTheme2}>
           <InputNumber defaultValue={1} />
-        )}
+        </ConfigProvider>
       </Cell>
     </>
   )
