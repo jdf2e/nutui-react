@@ -206,11 +206,6 @@ const InternalPicker: ForwardRefRenderFunction<
     }
   }, [options, innerVisible])
 
-  // 选中值进行修改
-  useEffect(() => {
-    onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-  }, [innerValue, columnsList])
-
   const setSelectedOptions = () => {
     const options: PickerOption[] = []
     let currOptions = []
@@ -251,6 +246,8 @@ const InternalPicker: ForwardRefRenderFunction<
           ]
           setInnerValue(combineResult)
           setColumnsList(normalListData(combineResult) as PickerOption[][])
+
+          onChange && onChange(setSelectedOptions(), combineResult, columnIndex)
         } else {
           setInnerValue((data: (number | string)[]) => {
             const cdata: (number | string)[] = [...data]
@@ -260,6 +257,7 @@ const InternalPicker: ForwardRefRenderFunction<
             )
               ? columnOptions.value
               : ''
+            onChange && onChange(setSelectedOptions(), cdata, columnIndex)
             return cdata
           })
         }
