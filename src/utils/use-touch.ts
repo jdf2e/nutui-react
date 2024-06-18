@@ -42,17 +42,11 @@ export function useTouch() {
   }
 
   const getX = (touch: React.Touch) => {
-    if (typeof touch.screenX !== 'undefined') return touch.screenX
-    if (typeof touch.pageX !== 'undefined') return touch.pageX
-    if (typeof touch.clientX !== 'undefined') return touch.clientX
-    return 0
+    return touch.screenX ?? touch.pageX ?? touch.clientX ?? 0
   }
 
   const getY = (touch: React.Touch) => {
-    if (typeof touch.screenY !== 'undefined') return touch.screenY
-    if (typeof touch.pageY !== 'undefined') return touch.pageY
-    if (typeof touch.clientY !== 'undefined') return touch.clientY
-    return 0
+    return touch.screenY ?? touch.pageY ?? touch.clientY ?? 0
   }
 
   const start = (event: React.TouchEvent<HTMLElement>) => {
