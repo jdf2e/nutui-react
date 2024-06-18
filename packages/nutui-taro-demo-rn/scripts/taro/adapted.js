@@ -28,4 +28,5 @@ exports = module.exports = [
   'hoverbuttonitem',
   'range',
   'configprovider',
+  'input',
 ]

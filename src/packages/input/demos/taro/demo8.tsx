@@ -1,27 +1,42 @@
 import React, { useState } from 'react'
+import { View, Text } from '@tarojs/components'
 import { Input } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo8 = () => {
   const [currentLength, setCurrentLength] = useState(0)
   return (
     <>
-      <div
+      <View
         style={{
           display: 'flex',
+          flexWrap: 'nowrap',
           alignItems: 'center',
-          background: '#fff',
-          padding: '0 10px',
+          flexDirection: 'row',
+          backgroundColor: '#ffffff',
         }}
       >
         <Input
           type="text"
           maxLength={20}
           onChange={(val) => setCurrentLength(val.length)}
+          placeholderTextColor="#757575"
         />
-        <div className="right" style={{ fontSize: '12px' }}>
-          {currentLength} / 20
-        </div>
-      </div>
+        <View
+          style={{
+            marginRight: pxTransform(10),
+          }}
+        >
+          <Text
+            style={{
+              width: pxTransform(40),
+              fontSize: pxTransform(12),
+            }}
+          >
+            {currentLength} / 20
+          </Text>
+        </View>
+      </View>
     </>
   )
 }

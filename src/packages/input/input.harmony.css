@@ -1,9 +1,10 @@
 .nut-input {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   flex: 1;
-  width: 100%;
+  align-items: center;
   padding: 10px 25px;
   line-height: 24px;
   font-size: 14px;
@@ -15,25 +16,31 @@
 .nut-input .nut-icon {
   color: #c8c9cc;
 }
-.nut-input .nut-input-native {
-  width: 100%;
-  color: #1A1A1A;
+
+.nut-input-native {
   flex: 1;
-  background-color: transparent;
+  color: #1a1a1a;
+  font-size: 14px;
   padding: 0;
   border: 0;
   outline: 0 none;
-  font: inherit;
   text-decoration: none;
   background-color: transparent;
 }
+
+/* #ifndef rn */
+.nut-input-native::placeholder {
+  color: #757575;
+}
+
+/* #endif */
 .nut-input-disabled {
-  color: #C2C4CC !important;
+  color: #c2c4cc !important;
 }
 .nut-input-disabled input:disabled {
-  background: none;
-  color: #C2C4CC;
+  color: #c2c4cc;
   cursor: not-allowed;
+  background: none;
   opacity: 1;
-  -webkit-text-fill-color: #C2C4CC;
+  -webkit-text-fill-color: #c2c4cc;
 }
