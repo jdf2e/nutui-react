@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell, InputNumber, ConfigProvider } from '@nutui/nutui-react-taro'
+import { Cell, ConfigProvider, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   const customTheme = {
