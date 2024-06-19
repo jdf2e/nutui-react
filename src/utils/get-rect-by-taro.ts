@@ -1,5 +1,6 @@
 import { createSelectorQuery } from '@tarojs/taro'
 import { getRect, inBrowser } from './use-client-rect'
+import { rn } from './platform-taro'
 
 export interface Rect {
   dataset: Record<string, any>
@@ -27,6 +28,25 @@ export const getRectByTaro = async (element: any): Promise<Rect> => {
   if (element) {
     if (inBrowser) {
       return Promise.resolve(getRect(element))
+    }
+    if (rn()) {
+      return new Promise((resolve) => {
+        element.measure(
+          (
+            xPos: number,
+            yPos: number,
+            measureWidth: number,
+            measureHeight: number,
+            pageX: number,
+            pageY: number
+          ) => {
+            const rect = makeRect(measureWidth, measureHeight)
+            rect.left = pageX
+            rect.top = pageY
+            resolve(rect)
+          }
+        )
+      })
     }
     // 小程序下的逻辑
     return new Promise((resolve, reject) => {

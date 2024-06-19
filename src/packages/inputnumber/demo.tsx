@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
@@ -61,43 +60,21 @@ const InputNumberDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
-
+        <Demo1 />
         <h2>{translated['55cc5fb7']}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
-
+        <Demo2 />
         <h2>{translated['9636103a']}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-
+        <Demo3 />
         <h2>{translated['181965e2']}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-
+        <Demo4 />
         <h2>{translated.e7b2ce1f}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
-
+        <Demo5 />
         <h2>{translated.e7b2ce1g}</h2>
         <Demo6 />
-
         <h2>{translated['3a42134b']}</h2>
-        <Cell>
-          <Demo7 />
-        </Cell>
-
+        <Demo7 />
         <h2>{translated['65bafb1d']}</h2>
-        <Cell>
-          <Demo8 />
-        </Cell>
-
+        <Demo8 />
         <h2>Formatter</h2>
         <Demo9 />
       </div>
