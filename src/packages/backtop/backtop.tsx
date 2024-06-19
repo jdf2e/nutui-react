@@ -1,4 +1,11 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+} from 'react'
 import type { MouseEvent } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
@@ -45,23 +52,10 @@ export const BackTop: FunctionComponent<
   const classPrefix = 'nut-backtop'
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
-  let startTime = 0
+  const startTime = useRef<number>(0)
   const scrollEl: any = useRef<any>(null)
-  useEffect(() => {
-    init()
-    return () => removeEventListener()
-  }, [])
 
-  const init = () => {
-    if (target && document.getElementById(target)) {
-      scrollEl.current = document.getElementById(target) as HTMLElement | Window
-    } else {
-      scrollEl.current = window
-    }
-    addEventListener()
-    initCancelAniFrame()
-  }
-  const scrollListener = () => {
+  const scrollListener = useCallback(() => {
     let top: any = null
     if (scrollEl.current instanceof Window) {
       top = scrollEl.current.pageYOffset
@@ -72,20 +66,50 @@ export const BackTop: FunctionComponent<
     }
     const showBtn = top >= threshold
     SetBackTop(showBtn)
-  }
+  }, [threshold])
 
-  const scroll = (y = 0) => {
+  const addEventListener = useCallback(() => {
+    scrollEl.current?.addEventListener('scroll', scrollListener, false)
+    scrollEl.current?.addEventListener('resize', scrollListener, false)
+  }, [scrollListener])
+
+  const removeEventListener = useCallback(() => {
+    scrollEl.current?.removeEventListener('scroll', scrollListener, false)
+    scrollEl.current?.removeEventListener('resize', scrollListener, false)
+  }, [scrollListener])
+
+  const initCancelAniFrame = useCallback(() => {
+    window.cancelAnimationFrame = window.webkitCancelAnimationFrame
+  }, [])
+
+  const init = useCallback(() => {
+    if (target && document.getElementById(target)) {
+      scrollEl.current = document.getElementById(target) as HTMLElement | Window
+    } else {
+      scrollEl.current = window
+    }
+    addEventListener()
+    initCancelAniFrame()
+  }, [addEventListener, initCancelAniFrame, target])
+
+  useEffect(() => {
+    init()
+    return () => removeEventListener()
+  }, [init, removeEventListener])
+
+  const scroll = useCallback((y = 0) => {
     if (scrollEl.current instanceof Window) {
       window.scrollTo(0, y)
     } else {
       scrollEl.current.scrollTop = y
       window.scrollTo(0, y)
     }
-  }
+  }, [])
 
-  const scrollAnimation = () => {
+  const scrollAnimation = useCallback(() => {
     let cid = requestAniFrame(function fn() {
-      const t = duration - Math.max(0, startTime - +new Date() + duration / 2)
+      const t =
+        duration - Math.max(0, startTime.current - +new Date() + duration / 2)
       const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
       cid = requestAniFrame(fn)
@@ -93,31 +117,20 @@ export const BackTop: FunctionComponent<
         window.cancelAnimationFrame(cid)
       }
     })
-  }
+  }, [duration, scroll, scrollTop, startTime])
 
-  const initCancelAniFrame = () => {
-    window.cancelAnimationFrame = window.webkitCancelAnimationFrame
-  }
+  const goTop = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      onClick && onClick(e)
+      const otime = +new Date()
+      startTime.current = otime
+      duration > 0 ? scrollAnimation() : scroll()
+    },
+    [duration, onClick, scroll, scrollAnimation]
+  )
 
-  function addEventListener() {
-    scrollEl.current?.addEventListener('scroll', scrollListener, false)
-    scrollEl.current?.addEventListener('resize', scrollListener, false)
-  }
-
-  function removeEventListener() {
-    scrollEl.current?.removeEventListener('scroll', scrollListener, false)
-    scrollEl.current?.removeEventListener('resize', scrollListener, false)
-  }
-
-  const goTop = (e: MouseEvent<HTMLDivElement>) => {
-    onClick && onClick(e)
-    const otime = +new Date()
-    startTime = otime
-    duration > 0 ? scrollAnimation() : scroll()
-  }
-
-  const styles =
-    Object.keys(style || {}).length !== 0
+  const styles = useMemo(() => {
+    return Object.keys(style || {}).length !== 0
       ? {
           zIndex,
           ...style,
@@ -127,13 +140,14 @@ export const BackTop: FunctionComponent<
           bottom: '20px',
           zIndex,
         }
+  }, [rtl, style, zIndex])
 
   return (
     <div
       className={classNames(
         classPrefix,
         {
-          show: backTop,
+          [`${classPrefix}-show`]: backTop,
         },
         className
       )}

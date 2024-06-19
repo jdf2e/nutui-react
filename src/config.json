@@ -252,7 +252,7 @@
       "enName": "nav",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "BackTop",
           "type": "component",
           "cName": "返回顶部",
