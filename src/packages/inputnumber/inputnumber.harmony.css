@@ -1,82 +1,60 @@
 .nut-inputnumber {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
-.nut-inputnumber .nut-input-minus {
+.nut-inputnumber-minus {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 16px;
-  height: 16px;
-  background-color: #F7F8FC;
+  width: 14px;
+  height: 24px;
+  background-color: transparent;
   border-radius: 16px;
 }
-.nut-inputnumber .nut-input-add {
+.nut-inputnumber-add {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 16px;
-  height: 16px;
-  background-color: #F7F8FC;
+  width: 14px;
+  height: 24px;
+  background-color: transparent;
   border-radius: 16px;
-}
-.nut-inputnumber-disabled input {
-  color: #C2C4CC !important;
 }
 .nut-inputnumber-icon {
   color: #505259;
+  /*  #ifdef rn harmony  */
+  font-size: 14px;
+  /*  #endif  */
+  /*  #ifndef  rn harmony  */
   font-size: 8px;
+  /*  #endif */
   cursor: pointer;
 }
 .nut-inputnumber-icon-disabled {
-  color: #C2C4CC;
+  color: #c2c4cc;
   cursor: not-allowed;
 }
-.nut-inputnumber input {
+.nut-inputnumber-input {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  width: 60px;
   height: 24px;
   text-align: center;
   outline: none;
   border: 0;
   border-radius: 6px;
-  margin: 0 6px;
-  color: #1A1A1A;
-  background-color: #ffffff;
+  margin: 0;
+  color: #1a1a1a;
+  background-color: #f5f6fa;
 }
-.nut-inputnumber .nut-number-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 24px;
-  text-align: center;
-  outline: none;
-  border: 0;
-  border-radius: 6px;
-  margin: 0 6px;
-  color: #1A1A1A;
-  background-color: #ffffff;
+.nut-inputnumber-input-disabled {
+  color: #c2c4cc;
 }
-.nut-inputnumber-text-readonly {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 24px;
-  text-align: center;
-  outline: none;
-  border: 0;
-  border-radius: 6px;
-  margin: 0 6px;
-  color: #1A1A1A;
-  background-color: #ffffff;
-}
-.nut-inputnumber input::-webkit-outer-spin-button,
-.nut-inputnumber input::-webkit-inner-spin-button,
-.nut-inputnumber .nut-number-input::-webkit-outer-spin-button,
-.nut-inputnumber .nut-number-input::-webkit-inner-spin-button {
+.nut-inputnumber-input::-webkit-outer-spin-button, .nut-inputnumber-input::-webkit-inner-spin-button {
   appearance: none;
+}
+.nut-inputnumber-input-disabled {
+  color: #c2c4cc;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -95,39 +96,39 @@ const InputDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={{ paddingBottom: '20px' }}
       >
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.uncontrolled}</h2>
+        <View className="h2">{translated.uncontrolled}</View>
         <Demo2 />
-        <h2>{translated.controlled}</h2>
+        <View className="h2">{translated.controlled}</View>
         <Demo3 />
-        <h2>{translated.title1}</h2>
+        <View className="h2">{translated.title1}</View>
         <Demo4 />
-        <h2>{translated.title2}</h2>
+        <View className="h2">{translated.title2}</View>
         <Demo5 />
-        <h2>{translated.title3}</h2>
+        <View className="h2">{translated.title3}</View>
         <Demo6 />
-        <h2>{translated.clearControlled}</h2>
+        <View className="h2">{translated.clearControlled}</View>
         <Demo7 />
-        <h2>{translated.wordCount}</h2>
+        <View className="h2">{translated.wordCount}</View>
         <Demo8 />
-        <h2>{translated.password1}</h2>
+        <View className="h2">{translated.password1}</View>
         <Demo9 />
-        <h2>{translated.title6}</h2>
+        <View className="h2">{translated.title6}</View>
         <Demo10 />
-        <h2>{translated.title8}</h2>
+        <View className="h2">{translated.title8}</View>
         <Demo11 />
-        <h2>{translated.title10}</h2>
+        <View className="h2">{translated.title10}</View>
         <Demo12 />
-        <h2>{translated.title11}</h2>
+        <View className="h2">{translated.title11}</View>
         <Demo13 />
-        <h2>{translated.border}</h2>
+        <View className="h2">{translated.border}</View>
         <Demo14 />
-      </div>
+      </ScrollView>
     </>
   )
 }

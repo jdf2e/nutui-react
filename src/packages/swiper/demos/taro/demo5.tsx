@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
+import { Image, Text, View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
-const Demo5 = () => {
+function Demo5() {
   const swiperRef = React.useRef<any>(null)
   const [current2, setCurrent2] = useState(0)
 
@@ -13,25 +16,29 @@ const Demo5 = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   const btnsStyle = {
-    width: '100%',
     position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-15px)',
-    zIndex: 1,
+    top: pxTransform(60),
+    left: 0,
     display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '0px',
+    width: '100%',
+    height: pxTransform(30),
+    zIndex: 1,
   }
   const spanStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '20px',
-    height: '30px',
+    width: pxTransform(20),
+    height: pxTransform(30),
     backgroundColor: 'rgba(0, 0, 0, 0.2)',
   }
   return (
-    <div className="demo-box" style={{ height: 150, position: 'relative' }}>
+    <View
+      className="demo-box"
+      style={{ height: pxTransform(150), position: 'relative' }}
+    >
       <Swiper
         ref={swiperRef}
         defaultValue={0}
@@ -39,33 +46,31 @@ const Demo5 = () => {
           setCurrent2(e.detail.current)
         }}
         indicator={
-          <div className="page">
-            {current2 + 1}/{list.length}
-          </div>
+          <View className="page">
+            <Text>
+              {current2 + 1}/{list.length}
+            </Text>
+          </View>
         }
       >
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img
-                src={item}
-                alt=""
-                style={{ width: '100%', height: '100%' }}
-                draggable={false}
-              />
+              <Image src={item} style={{ width: '100%', height: '100%' }} />
             </Swiper.Item>
           )
         })}
       </Swiper>
-      <div style={btnsStyle as any}>
-        <span style={spanStyle} onClick={(e) => swiperRef.current?.prev()}>
-          <ArrowLeft />
-        </span>
-        <span style={spanStyle} onClick={(e) => swiperRef.current?.next()}>
-          <ArrowRight />
-        </span>
-      </div>
-    </div>
+      <View style={btnsStyle as any}>
+        <View style={spanStyle} onClick={(e) => swiperRef.current?.prev()}>
+          {!harmonyAndRn() ? <ArrowLeft /> : null}
+        </View>
+        <View style={spanStyle} onClick={(e) => swiperRef.current?.next()}>
+          {!harmonyAndRn() ? <ArrowRight /> : null}
+        </View>
+      </View>
+    </View>
   )
 }
+
 export default Demo5

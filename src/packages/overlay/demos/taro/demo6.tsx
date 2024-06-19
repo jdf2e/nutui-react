@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const [visible, setVisible] = useState(false)
@@ -12,10 +13,11 @@ const Demo6 = () => {
   }
   const contentStyle = {
     display: 'flex',
-    width: 150,
-    height: 150,
+    width: pxTransform(150),
+    height: pxTransform(150),
+    borderRadius: pxTransform(8),
+
     backgroundColor: '#fff',
-    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     color: 'red',
@@ -29,9 +31,6 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        {/* <Button type="primary" onClick={handleToggleShow}>
-          点击遮罩不关闭
-        </Button> */}
         <View onClick={handleToggleShow}>点击遮罩不关闭</View>
       </Cell>
       <Overlay visible={visible} closeOnOverlayClick={false}>

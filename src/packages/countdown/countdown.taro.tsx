@@ -6,10 +6,10 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 export interface CountDownTimeProps {
   d: number
@@ -89,14 +89,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
   })
 
-  // TODO: 后期统一替换
-  const harmonyAndRn = [
-    Taro.ENV_TYPE.RN,
-    Taro.ENV_TYPE.HARMONYHYBRID,
-    Taro.ENV_TYPE.HARMONY,
-    // @ts-ignore
-  ].includes(Taro.getEnv())
-
   // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
     if (!timeStr) return Date.now()
@@ -111,7 +103,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
     } else {
       stateRef.current.handleEndTime = endTime
-      if (!harmonyAndRn) {
+      if (web()) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
       }
     }
@@ -365,7 +357,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     <>
       {children || (
         <>
-          {!harmonyAndRn ? (
+          {!harmonyAndRn() ? (
             <View
               className={`${classPrefix} ${className}`}
               style={{ ...style }}

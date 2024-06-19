@@ -592,7 +592,7 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
-$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
+$inputnumber-input-width: var(--nutui-inputnumber-input-width, 60px) !default;
 $inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
 $inputnumber-input-background-color: var(
   --nutui-inputnumber-input-background-color,
@@ -975,6 +975,40 @@ $calendar-day-font-weight: var(
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px
+) !default;
+
+//hoverbutton
+$hoverbutton-spacing: var(
+  --nutui-hoverbutton-spacing,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-position-bottom: var(
+  --nutui-hoverbutton-position-bottom,
+  48px
+) !default;
+$hoverbutton-position-right: var(
+  --nutui-hoverbutton-position-right,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-item-border-color: var(
+  --nutui-hoverbutton-item-border-color,
+  var(--nutui-black-3, rgba(0, 0, 0, 0.06))
+) !default;
+$hoverbutton-item-background: var(
+  --nutui-hoverbutton-item-background,
+  var(--nutui-gray-1, #ffffff)
+) !default;
+$hoverbutton-item-background-active: var(
+  --nutui-hoverbutton-item-background-active,
+  var(--nutui-gray-3, #f6f6f6)
+) !default;
+$hoverbutton-item-icon-color: var(
+  --nutui-hoverbutton-item-icon-color,
+  var(--nutui-gray-7, #1a1a1a)
+) !default;
+$hoverbutton-item-icon-color-active: var(
+  --nutui-hoverbutton-item-icon-color-active,
+  var(--nutui-gray-6, #595959)
 ) !default;
 
 //overlay（✅）
@@ -1623,6 +1657,7 @@ $progress-text-border-radius: var(
 
 //pagination（✅）
 $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
+$pagination-lite-color: var(--nutui-pagination-lite-color, $white) !default;
 $pagination-font-size: var(
   --nutui-pagination-font-size,
   $font-size-base
@@ -1631,11 +1666,7 @@ $pagination-item-border-color: var(
   --nutui-pagination-item-border-color,
   $color-border
 ) !default;
-$pagination-active-background-color: linear-gradient(
-  135deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
-) !default;
+$pagination-active-background-color: $color-primary !default;
 $pagination-disable-color: var(
   --nutui-pagination-disable-color,
   $color-text-disabled
@@ -1658,7 +1689,7 @@ $pagination-prev-next-padding: var(
 ) !default;
 $pagination-lite-width: var(--nutui-pagination-lite-width, 40px) !default;
 $pagination-lite-height: var(--nutui-pagination-lite-height, 20px) !default;
-$pagination-lite-radius: var(--nutui-pagination-lite-radius, 12px) !default;
+$pagination-lite-radius: var(--nutui-pagination-lite-radius, 6px) !default;
 $pagination-lite-background-color: var(
   --nutui-pagination-lite-background-color,
   var(--nutui-black-7)

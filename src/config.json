@@ -81,7 +81,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CellGroup",
           "type": "component",
           "cName": "单元格",
@@ -93,7 +93,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ConfigProvider",
           "type": "component",
           "cName": "全局配置",
@@ -117,7 +117,7 @@
           "author": "oasis-cloud"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Image",
           "type": "component",
           "tarodoc": true,
@@ -129,7 +129,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Overlay",
           "type": "component",
           "cName": "遮罩层",
@@ -146,7 +146,7 @@
       "enName": "layout",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Col",
           "type": "component",
           "cName": "列",
@@ -179,7 +179,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "GridItem",
           "type": "component",
           "cName": "宫格子组件",
@@ -191,7 +191,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Layout",
           "type": "component",
           "cName": "布局",
@@ -202,7 +202,7 @@
           "author": "yushuang24"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Row",
           "type": "component",
           "cName": "行",
@@ -282,6 +282,29 @@
           "desc": "悬浮收齐体验交互，用于快捷导航",
           "sort": 5,
           "show": true,
+          "taro": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "HoverButton",
+          "type": "component",
+          "cName": "悬浮按钮",
+          "desc": "悬浮多按钮，用于快捷功能",
+          "sort": 5,
+          "show": true,
+          "taro": true,
+          "author": "Ymm0008"
+        },
+        {
+          "version": "3.0.0",
+          "name": "HoverButtonItem",
+          "type": "component",
+          "cName": "悬浮按钮子组件",
+          "exportEmpty": true,
+          "desc": "悬浮按钮",
+          "sort": 5,
+          "show": false,
           "taro": true,
           "author": "Ymm0008"
         },
@@ -492,7 +515,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Input",
           "type": "component",
           "cName": "输入框",
@@ -503,7 +526,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "InputNumber",
           "type": "component",
           "cName": "数字输入框",
@@ -653,7 +676,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TextArea",
           "type": "component",
           "cName": "文本域",
@@ -782,7 +805,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Notify",
           "type": "component",
           "tarodoc": true,
@@ -827,7 +850,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",
@@ -988,7 +1011,7 @@
           "author": "yangjinjun3"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Indicator",
           "type": "component",
           "cName": "指示器",
@@ -999,7 +1022,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Pagination",
           "type": "component",
           "cName": "分页",
@@ -1054,7 +1077,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Swiper",
           "type": "component",
           "cName": "轮播",
@@ -1065,7 +1088,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SwiperItem",
           "type": "component",
           "cName": "轮播子组件",

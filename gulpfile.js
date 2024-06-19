@@ -11,7 +11,10 @@ console.log(argvs, 'argvs')
 
 gulp.task('watch', function () {
   argvs.forEach((argv) => {
-    gulp.watch(`src/packages/**/demos/taro/*`, gulp.series(`${argv}copyDemo`))
+    gulp.watch(
+      `src/packages/${argv}/demos/taro/*`,
+      gulp.series(`${argv}copyDemo`)
+    )
     gulp.watch(
       `src/packages/${argv}/*.scss`,
       gulp.series(`${argv}sass`, `${argv}copyCss`)

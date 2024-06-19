@@ -2,10 +2,10 @@ import React, { useState, FunctionComponent, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
-import Taro from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface OverlayProps extends BasicComponent {
   zIndex: number
@@ -102,9 +102,7 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      {Taro.getEnv() !== 'RN' &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
+      {!harmonyAndRn() ? (
         <CSSTransition
           nodeRef={nodeRef}
           classNames={`${classPrefix}-slide`}
