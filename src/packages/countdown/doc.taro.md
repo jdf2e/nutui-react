@@ -138,7 +138,7 @@ import { CountDown } from '@nutui/nutui-react-taro'
 | \--nutui-countdown-color | 倒计时的文字颜色 | `$color-primary` |
 | \--nutui-countdown-font-size | 倒计时的字体大小 | `10px` |
 | \--nutui-countdown-font-weight | 倒计时的字体粗细 | `400` |
-| \--nutui-countdown-width | 倒计时的时间区域宽度 | `14px` |
+| \--nutui-countdown-width | 倒计时的时间区域宽度 | `20px` |
 | \--nutui-countdown-height | 倒计时的时间区域高度 | `14px` |
 | \--nutui-countdown-number-padding | 倒计时的时间区域padding | `0 1px` |
 | \--nutui-countdown-number-margin | 倒计时的时间区域margin | `0 2px` |

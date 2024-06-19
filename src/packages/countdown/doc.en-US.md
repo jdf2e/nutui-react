@@ -137,7 +137,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-countdown-color | Countdown text color | `$color-primary` |
 | \--nutui-countdown-font-size | Countdown font size | `10px` |
 | \--nutui-countdown-font-weight | Countdown font weight | `400` |
-| \--nutui-countdown-width | Time area width of the countdown | `14px` |
+| \--nutui-countdown-width | Time area width of the countdown | `20px` |
 | \--nutui-countdown-height | Time area height of the countdown | `14px` |
 | \--nutui-countdown-number-padding | Countdown time area padding | `0 1px` |
 | \--nutui-countdown-number-margin | Countdown time area margin | `0 2px` |

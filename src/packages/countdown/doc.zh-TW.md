@@ -138,7 +138,7 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-color | 倒計時的文字顔色 | `$color-primary` |
 | \--nutui-countdown-font-size | 倒計時的字體大小 | `10px` |
 | \--nutui-countdown-font-weight | 倒計時的字體粗細 | `400` |
-| \--nutui-countdown-width | 倒計時的時間區域寬度 | `14px` |
+| \--nutui-countdown-width | 倒計時的時間區域寬度 | `20px` |
 | \--nutui-countdown-height | 倒計時的時間區域高度 | `14px` |
 | \--nutui-countdown-number-padding | 倒計時的時間區域padding | `0 1px` |
 | \--nutui-countdown-number-margin | 倒計時的時間區域margin | `0 2px` |
