@@ -35,9 +35,13 @@ export const AvatarGroup: FunctionComponent<
   const cls = classNames(classPrefix, className)
 
   const parentAvatar = {
-    propAvatarGroup,
+    propAvatarGroup: {
+      avatarCount: React.Children.count(children) || 0,
+      ...propAvatarGroup,
+    },
     avatarGroupRef,
   }
+
   return (
     <AvatarContext.Provider value={parentAvatar}>
       <View className={cls} style={style} ref={avatarGroupRef}>
@@ -47,6 +51,7 @@ export const AvatarGroup: FunctionComponent<
             ? // @ts-ignore
               React.cloneElement(child, {
                 isFirst: index === 0,
+                avatarIndex: index + 1,
                 className: 'nut-avatar-group-avatar',
               })
             : child

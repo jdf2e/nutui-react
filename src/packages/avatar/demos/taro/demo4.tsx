@@ -1,9 +1,9 @@
 import React from 'react'
-import { Avatar } from '@nutui/nutui-react-taro'
+import { Avatar, Cell } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   return (
-    <>
+    <Cell className="cell-avatar">
       <Avatar
         color="#fff"
         background="var(--nutui-color-primary)"
@@ -15,7 +15,7 @@ const Demo4 = () => {
       >
         U
       </Avatar>
-    </>
+    </Cell>
   )
 }
 export default Demo4

@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import './demo.scss'
@@ -58,49 +57,30 @@ const AvatarDemo = () => {
     <>
       <Header />
       <ScrollView
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full avatar-demo`}
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} avatar-demo`}
       >
         <View className="h2">{translated['67f78db5']}</View>
-        <Cell className="cell-avatar" align="flex-end">
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated['3928b17e']}</View>
-        <Cell className="cell-avatar">
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated['049b6a97']}</View>
-        <Cell className="cell-avatar">
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         {harmonyAndRn() ? null : (
           <>
             <View className="h2">{translated.a304dabf}</View>
-            <Cell className="cell-avatar">
-              <Demo4 />
-            </Cell>
+            <Demo4 />
             <View className="h2">{translated['89bca4e7']}</View>
-            <Cell className="cell-avatar">
-              <Demo5 />
-            </Cell>
+            <Demo5 />
           </>
         )}
-
         <View className="h2">{translated.e981579e}</View>
         <Demo6 />
         <View className="h2">{translated.f645fc65}</View>
-        <Cell className="cell-avatar">
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         <View className="h2">{translated['43f00872']}</View>
-        <Cell className="cell-avatar">
-          <Demo8 />
-        </Cell>
+        <Demo8 />
         <View className="h2">{translated.f645fc66}</View>
-        <Cell className="cell-avatar">
-          <Demo9 />
-        </Cell>
+        <Demo9 />
       </ScrollView>
     </>
   )

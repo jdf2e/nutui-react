@@ -1,11 +1,11 @@
 import React from 'react'
-import { Avatar } from '@nutui/nutui-react-taro'
+import { Avatar, Cell } from '@nutui/nutui-react-taro'
 import { User } from '@nutui/icons-react-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo3 = () => {
   return (
-    <>
+    <Cell className="cell-avatar">
       {harmonyAndRn() ? (
         <>
           <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
@@ -19,7 +19,7 @@ const Demo3 = () => {
           <Avatar>N</Avatar>
         </>
       )}
-    </>
+    </Cell>
   )
 }
 export default Demo3

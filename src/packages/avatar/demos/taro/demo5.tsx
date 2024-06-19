@@ -1,11 +1,11 @@
 import React from 'react'
-import { Avatar, Badge } from '@nutui/nutui-react-taro'
+import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
 import { User } from '@nutui/icons-react-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo5 = () => {
   return (
-    <>
+    <Cell className="cell-avatar">
       {harmonyAndRn() ? null : (
         <>
           <Badge value="8">
@@ -16,7 +16,7 @@ const Demo5 = () => {
           </Badge>
         </>
       )}
-    </>
+    </Cell>
   )
 }
 export default Demo5
