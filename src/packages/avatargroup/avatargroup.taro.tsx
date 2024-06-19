@@ -50,7 +50,6 @@ export const AvatarGroup: FunctionComponent<
           return child?.type?.displayName === 'NutAvatar'
             ? // @ts-ignore
               React.cloneElement(child, {
-                isFirst: index === 0,
                 avatarIndex: index + 1,
                 className: 'nut-avatar-group-avatar',
               })

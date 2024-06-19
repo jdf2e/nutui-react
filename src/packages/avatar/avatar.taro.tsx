@@ -23,7 +23,6 @@ export interface AvatarProps extends BasicComponent {
   color: string
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
-  isFirst: boolean
   avatarIndex: number
   onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onError: () => void
@@ -40,7 +39,6 @@ const defaultProps = {
   background: '#eee',
   color: '#666',
   src: '',
-  isFirst: false,
   avatarIndex: 0,
 } as AvatarProps
 
@@ -57,7 +55,6 @@ export const Avatar: FunctionComponent<
     src,
     icon,
     fit,
-    isFirst,
     avatarIndex,
     className,
     style,
@@ -86,7 +83,7 @@ export const Avatar: FunctionComponent<
   })
 
   const nativeClasses = classNames({
-    [`nut-avatar-first-child`]: isFirst,
+    [`nut-avatar-first-child`]: avatarIndex === 1,
   })
 
   const cls = classNames(classPrefix, classes, className, nativeClasses)
