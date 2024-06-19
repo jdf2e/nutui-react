@@ -1764,7 +1764,10 @@ $tabs-titles-item-smile-bottom: var(
   -10px
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
-
+$tabs-tabpane-backgroundColor: var(
+  --nutui-tabs-tabpane-backgroundColor,
+  #fff
+) !default;
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-default) !default;
