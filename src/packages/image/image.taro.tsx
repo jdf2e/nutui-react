@@ -98,13 +98,13 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <View className="nut-img-error">
+        <View className={`${classPrefix}-error`}>
           <ImageError />
         </View>
       )
     }
     if (React.isValidElement(error) && !innerLoading) {
-      return <View className="nut-img-error">{error}</View>
+      return <View className={`${classPrefix}-error`}>{error}</View>
     }
     return null
   }, [error, isError, innerLoading])
@@ -113,13 +113,13 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     if (!loading) return null
     if (typeof loading === 'boolean' && loading === true && innerLoading) {
       return (
-        <View className="nut-img-loading">
+        <View className={`${classPrefix}-loading`}>
           <ImageIcon />
         </View>
       )
     }
     if (React.isValidElement(loading) && innerLoading) {
-      return <View className="nut-img-loading">{loading}</View>
+      return <View className={`${classPrefix}-loading`}>{loading}</View>
     }
     return null
   }, [loading, innerLoading])
@@ -127,7 +127,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     <View className={classNames(classPrefix, className)} style={containerStyle}>
       <TImage
         {...rest}
-        className="nut-img"
+        className={`${classPrefix}-default ${className}-image`}
         style={imgStyle}
         src={src}
         onLoad={(e) => handleLoad(e)}

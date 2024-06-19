@@ -214,15 +214,21 @@ export const InputNumber: FunctionComponent<
 
   return (
     <div className={classes} style={style} {...restProps}>
-      <div className="nut-input-minus" onClick={handleReduce}>
+      <div className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
-          className={classNames('nut-inputnumber-icon icon-minus', {
-            [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
-          })}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-minus`,
+            {
+              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
+            }
+          )}
         />
       </div>
       <>
         <input
+          className={classNames(`${classPrefix}-input`, {
+            [`${classPrefix}-input-disabled`]: disabled,
+          })}
           ref={inputRef}
           inputMode="decimal"
           disabled={disabled}
@@ -233,11 +239,14 @@ export const InputNumber: FunctionComponent<
           onFocus={handleFocus}
         />
       </>
-      <div className="nut-input-add" onClick={handlePlus}>
+      <div className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
-          className={classNames('nut-inputnumber-icon icon-plus', {
-            [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
-          })}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-plus`,
+            {
+              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
+            }
+          )}
         />
       </div>
     </div>
