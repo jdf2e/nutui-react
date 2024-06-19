@@ -31,4 +31,5 @@ exports = module.exports = [
   'inputnumber',
   'configprovider',
   'input',
+  'swipe',
 ]
