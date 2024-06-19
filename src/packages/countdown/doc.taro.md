@@ -142,7 +142,7 @@ import { CountDown } from '@nutui/nutui-react-taro'
 | \--nutui-countdown-height | 倒计时的时间区域高度 | `14px` |
 | \--nutui-countdown-number-padding | 倒计时的时间区域padding | `0 1px` |
 | \--nutui-countdown-number-margin | 倒计时的时间区域margin | `0 2px` |
-| \countdown-number-border-radius | 倒计时的时间区域圆角大小 | `2px` |
+| \--countdown-number-border-radius | 倒计时的时间区域圆角大小 | `2px` |
 | \--nutui-countdown-color | 倒计时的时间区域的文字颜色 | `$color-primary-light` |
 | \--nutui-countdown-background-color | 倒计时的时间区域的背景颜色 | `$color-primary` |
 | \--nutui-countdown-border-color | 倒计时的时间区域的边框颜色颜色 | `$color-primary` |
