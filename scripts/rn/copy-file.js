@@ -47,9 +47,14 @@ const copyFile = async (from, to, success, isSingle = false) => {
     adapted.map((item) => {
       if (item) {
         if (
-          !['cellgroup', 'row', 'col', 'griditem', 'hoverbuttonitem'].includes(
-            item
-          )
+          ![
+            'cellgroup',
+            'row',
+            'col',
+            'griditem',
+            'hoverbuttonitem',
+            'avatargroup',
+          ].includes(item)
         ) {
           modify(
             `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
