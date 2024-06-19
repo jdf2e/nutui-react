@@ -28,6 +28,7 @@ exports = module.exports = [
   'hoverbuttonitem',
   'avatar',
   'avatargroup',
+  'inputnumber',
   'configprovider',
   'input',
 ]

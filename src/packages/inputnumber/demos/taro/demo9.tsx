@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Cell, InputNumber, Toast } from '@nutui/nutui-react-taro'
-import ConfigProvider from '@/packages/configprovider'
+import { Cell, ConfigProvider, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo9 = () => {
   const customTheme3 = {
@@ -9,7 +8,6 @@ const Demo9 = () => {
   const [toastType, SetToastType] = useState('text')
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
-
   return (
     <>
       <Cell>
@@ -36,14 +34,14 @@ const Demo9 = () => {
           />
         </ConfigProvider>
       </Cell>
-      <Toast
+      {/* <Toast
         type={toastType}
         visible={show}
         content={toastMsg}
         onClose={() => {
           SetShow(false)
         }}
-      />
+      /> */}
     </>
   )
 }

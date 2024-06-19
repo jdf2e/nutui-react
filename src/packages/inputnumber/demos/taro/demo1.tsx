@@ -1,7 +1,11 @@
 import React from 'react'
-import { InputNumber } from '@nutui/nutui-react-taro'
+import { Cell, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
-  return <InputNumber defaultValue={1} allowEmpty />
+  return (
+    <Cell>
+      <InputNumber defaultValue={1} allowEmpty />
+    </Cell>
+  )
 }
 export default Demo1
