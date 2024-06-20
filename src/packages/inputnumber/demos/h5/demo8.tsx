@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputNumber, Toast } from '@nutui/nutui-react'
+import { Cell, InputNumber, Toast } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   const [inputValue, setInputValue] = useState(0)
@@ -10,6 +10,10 @@ const Demo8 = () => {
       Toast.clear()
     }, 2000)
   }
-  return <InputNumber value={inputValue} min={-6} onChange={onChange} async />
+  return (
+    <Cell>
+      <InputNumber value={inputValue} min={-6} onChange={onChange} async />
+    </Cell>
+  )
 }
 export default Demo8

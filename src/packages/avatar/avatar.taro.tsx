@@ -6,14 +6,14 @@ import React, {
   useContext,
 } from 'react'
 import type { MouseEvent } from 'react'
-import Taro, { getEnv } from '@tarojs/taro'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, ITouchEvent, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
-import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface AvatarProps extends BasicComponent {
   size: string
@@ -23,7 +23,7 @@ export interface AvatarProps extends BasicComponent {
   color: string
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
-  alt: string
+  avatarIndex: number
   onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onError: () => void
 }
@@ -32,14 +32,14 @@ export type AvatarShape = 'round' | 'square'
 
 const defaultProps = {
   ...ComponentDefaults,
-  size: '',
+  size: harmonyAndRn() ? '40' : '',
   shape: 'round',
   icon: '',
   fit: 'cover',
   background: '#eee',
   color: '#666',
   src: '',
-  alt: '',
+  avatarIndex: 0,
 } as AvatarProps
 
 const classPrefix = `nut-avatar`
@@ -55,7 +55,7 @@ export const Avatar: FunctionComponent<
     src,
     icon,
     fit,
-    alt,
+    avatarIndex,
     className,
     style,
     onClick,
@@ -66,31 +66,39 @@ export const Avatar: FunctionComponent<
     ...props,
   }
 
-  const [maxSum, setMaxSum] = useState(0) // avatarGroup里的avatar的个数
   const [showMax, setShowMax] = useState(false) // 是否显示的最大头像个数
-  const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
+  const groupSize = parent?.propAvatarGroup?.size
+  const groupShape = parent?.propAvatarGroup?.shape
+  const groupCount = parent?.propAvatarGroup?.avatarCount
+  const groupMax = parent?.propAvatarGroup?.max
 
   const classes = classNames({
-    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
-    [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${groupSize || size || 'normal'}`]: true,
+    [`nut-avatar-${groupShape || shape}`]: true,
+    [`nut-avatar-${groupSize || size || 'normal'}-round`]:
+      shape === 'round' && true,
   })
-  const cls = classNames(classPrefix, classes, className)
 
+  const nativeClasses = classNames({
+    [`nut-avatar-first-child`]: avatarIndex === 1,
+  })
+
+  const cls = classNames(classPrefix, classes, className, nativeClasses)
   const styles: React.CSSProperties = {
-    width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
+    width: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
+    height: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
     backgroundColor: `${background}`,
     color,
-    marginLeft:
+    [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
       avatarIndex !== 1 && parent?.propAvatarGroup?.gap
         ? `${parent?.propAvatarGroup?.gap}px`
         : '',
     zIndex:
       parent?.propAvatarGroup?.level === 'right'
-        ? `${Math.abs(maxSum - avatarIndex)}`
+        ? Math.abs(groupCount - avatarIndex)
         : '',
     ...style,
   }
@@ -101,48 +109,15 @@ export const Avatar: FunctionComponent<
   }
 
   useEffect(() => {
-    const avatarChildren = parent?.avatarGroupRef?.current.children
-    if (avatarChildren) {
-      avatarLength(avatarChildren)
-    }
-  }, [])
-
-  const isAvatarInClassList = (element: any) => {
-    if (getEnv() === Taro.ENV_TYPE.WEB) {
-      return (
-        element.classList[0] === 'nut-avatar' ||
-        element.classList.values().next().value === 'nut-avatar'
-      )
-    }
-
-    return (
-      element.classList?.tokenList[0] === 'nut-avatar' ||
-      element.classList?.tokenList.values().next().value === 'nut-avatar'
-    )
-  }
-
-  const avatarLength = (children: any) => {
-    for (let i = 0; i < children.length; i++) {
-      if (
-        children[i] &&
-        children[i].classList &&
-        isAvatarInClassList(children[i])
-      ) {
-        children[i].setAttribute('data-index', i + 1)
-      }
-    }
-    const index = avatarRef?.current?.dataset?.index
-    const maxCount = parent?.propAvatarGroup?.max
-    setMaxSum(children.length)
-    setAvatarIndex(index)
+    const maxCount = groupMax || groupCount
     if (
-      index === children.length &&
-      index !== maxCount &&
-      children.length > maxCount
+      avatarIndex === groupCount &&
+      avatarIndex !== maxCount &&
+      groupCount > maxCount
     ) {
       setShowMax(true)
     }
-  }
+  }, [avatarIndex, groupCount])
 
   const errorEvent = () => {
     if (onError) {
@@ -158,9 +133,7 @@ export const Avatar: FunctionComponent<
 
   return (
     <>
-      {(showMax ||
-        !parent?.propAvatarGroup?.max ||
-        avatarIndex <= parent?.propAvatarGroup?.max) && (
+      {(showMax || !groupMax || avatarIndex <= groupMax) && (
         <View
           className={cls}
           // {...rest}
@@ -168,35 +141,46 @@ export const Avatar: FunctionComponent<
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!parent?.propAvatarGroup?.max ||
-            avatarIndex <= parent?.propAvatarGroup?.max) && (
+          {(!groupMax || avatarIndex <= groupMax) && (
             <>
               {src && (
                 <Image
-                  className="avatar-img"
+                  className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
-                  style={{ objectFit: fit }}
+                  style={{ objectFit: fit, ...styles }}
                   onError={errorEvent}
                 />
               )}
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`,
+                    style: { position: 'absolute' },
                   })
                 : null}
-              {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <User className="icon" />}
+              {children && (
+                <View
+                  className={`nut-avatar-text nut-avatar-${groupSize || size || 'normal'}-text`}
+                >
+                  {children}
+                </View>
+              )}
+              {!src && !icon && !children && !harmonyAndRn() && (
+                <User
+                  className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
+                  style={{ position: 'absolute' }}
+                />
+              )}
             </>
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <View className="text">
+            <View
+              className={`nut-avatar-text nut-avatar-${groupSize || 'normal'}-text`}
+            >
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
-                : `+ ${
-                    avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
-                  }`}
+                : `+ ${avatarIndex - Number(groupMax || 0)}`}
             </View>
           )}
         </View>
