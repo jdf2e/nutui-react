@@ -1,16 +1,15 @@
 # Empty组件
 
-## 介绍
 
 空状态时的占位提示
 
-## 安装
+## 引入
 
 ```tsx
 import { Empty } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

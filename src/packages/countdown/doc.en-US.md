@@ -1,10 +1,10 @@
 # CountDown
 
-## Intro
+
 
 Used to display the countdown value in real time, and precision supports milliseconds.
 
-## Install
+## Import
 
 ```tsx
 import { CountDown } from '@nutui/nutui-react'

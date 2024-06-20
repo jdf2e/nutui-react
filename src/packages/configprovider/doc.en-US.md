@@ -1,10 +1,10 @@
 # ConfigProvider
 
-## Intro
+
 
 Used to configure NutUI-React components globally, provide theme customization, internationalization support.
 
-## Install
+## Import
 
 ```tsx
 import { ConfigProvider } from '@nutui/nutui-react';

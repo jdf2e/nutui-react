@@ -1,10 +1,10 @@
 # Popover
 
-## Intro
+
 
 Click or hover the mouse on the element to pop up the floating layer of the bubble card.
 
-## Install
+## Import
 
 ```tsx
 import { Popover } from '@nutui/nutui-react'

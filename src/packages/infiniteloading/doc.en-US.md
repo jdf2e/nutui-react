@@ -1,10 +1,10 @@
 # InfiniteLoading
 
-## Intro
+
 
 Scrolling to the bottom of the list automatically loads more data.
 
-## Install
+## Import
 
 ```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'

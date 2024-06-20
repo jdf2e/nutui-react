@@ -1,16 +1,16 @@
 # Table組件
 
-## 介紹
+
 
 用於展示基礎表格。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

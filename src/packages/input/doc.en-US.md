@@ -1,10 +1,10 @@
 # Input
 
-## Intro
+
 
 The user can enter content in the text box.
 
-## Install
+## Import
 
 ```tsx
 import { Input } from '@nutui/nutui-react';

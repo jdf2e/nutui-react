@@ -1,16 +1,16 @@
 # PullToRefresh 下拉刷新
 
-## 介紹
+
 
 在列表中通過手指下拉刷新加載新內容的交互操作。
 
-## 安裝
+## 引入
 
 ```tsx
 import { PullToRefresh } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

@@ -1,10 +1,10 @@
 # Toast
 
-## Intro
+
 
 For light tips.
 
-## Install
+## Import
 
 ```tsx
 import { Toast } from '@nutui/nutui-react';

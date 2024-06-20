@@ -1,16 +1,16 @@
 # Cascader 級聯選擇
 
-## 介紹
+
 
 級聯選擇器，用於多層級數據的選擇，典型場景為省市區選擇。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Cascader } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

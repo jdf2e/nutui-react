@@ -1,10 +1,10 @@
 # Swiper
 
-## Intro
+
 
 Often used in a group of pictures or card rotation.
 
-## Install
+## Import
 
 ```tsx
 import { Swiper } from '@nutui/nutui-react';

@@ -1,16 +1,15 @@
 # Cell 单元格
 
-## 介绍
 
 列表项，可组成列表。
 
-## 安装
+## 引入
 
 ```tsx
 import { Cell } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

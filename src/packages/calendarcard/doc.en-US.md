@@ -1,10 +1,10 @@
 # CalendarCard
 
-## Intro
+
 
 CalendarCard
 
-## Install
+## Import
 
 ```tsx
 import { CalendarCard } from '@nutui/nutui-react';

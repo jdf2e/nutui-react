@@ -1,10 +1,10 @@
 # SideNavBar组件
 
-## Intro
+
 
 For content selection and switching
 
-## Install
+## Import
 
 ```tsx
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';

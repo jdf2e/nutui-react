@@ -1,10 +1,10 @@
 # Cascader
 
-## Intro
+
 
 The cascader component is used for the selection of multi-level data. The typical scene is the selection of provinces and cities.
 
-## Install
+## Import
 
 ```tsx
 import { Cascader } from '@nutui/nutui-react';

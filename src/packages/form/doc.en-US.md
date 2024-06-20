@@ -1,10 +1,10 @@
 # Form
 
-## Intro
+
 
 It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
 
-## Install
+## Import
 
 ```tsx
 import { Form } from '@nutui/nutui-react'

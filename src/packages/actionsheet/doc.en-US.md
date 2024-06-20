@@ -1,10 +1,10 @@
 # ActionSheet
 
-## Intro
+
 
 Action menu panel that pops up from the bottom.
 
-## Install
+## Import
 
 ```tsx
 import { ActionSheet } from '@nutui/nutui-react';

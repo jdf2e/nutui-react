@@ -1,16 +1,15 @@
 # Menu 菜单
 
-## 介绍
 
 向下弹出的菜单列表
 
-## 安装
+## 引入
 
 ```tsx
 import { Menu } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

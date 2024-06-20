@@ -1,16 +1,15 @@
 # Space 间距
 
-### 介绍
-
+#
 元素排列中保持相同的宽度。
 
-### 安装
+### 引入
 
 ```tsx
 import { Space } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
