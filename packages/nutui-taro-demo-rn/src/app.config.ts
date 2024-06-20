@@ -1,3 +1,4 @@
+
 const subPackages = [
   {
     "root": "base",
@@ -123,7 +124,7 @@ const subPackages = [
   }
 ];
 
-export default defineAppConfig ({
+export default defineAppConfig({
   pages: ['pages/index/index'],
   subPackages,
   window: {
