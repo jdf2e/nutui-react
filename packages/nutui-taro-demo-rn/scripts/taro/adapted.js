@@ -26,6 +26,7 @@ exports = module.exports = [
   'hoverbutton',
   'safearea',
   'hoverbuttonitem',
+  'range',
   'avatar',
   'avatargroup',
   'inputnumber',
