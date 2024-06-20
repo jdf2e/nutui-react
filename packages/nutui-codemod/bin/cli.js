@@ -10,6 +10,7 @@ const transformers = [
   'component-name-migration',
   'icon-migration',
   'props-changed-migration',
+  'package-name-migration',
 ]
 const transformersDir = path.join(__dirname, '../transforms')
 const ignoreConfig = path.join(__dirname, './codemod.ignore')

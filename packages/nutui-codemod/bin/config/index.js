@@ -5,6 +5,8 @@ const pkgInfo = {
     ui: '@nutui/nutui-react',
   },
   taro: {
+    dongDesign: '@nutui/dong-design-taro',
+    dongDesignIcon: '@nutui/dong-design-icons',
     icon: '@nutui/icons-react-taro',
     ui: '@nutui/nutui-react-taro',
   },
