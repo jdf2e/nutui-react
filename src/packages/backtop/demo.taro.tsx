@@ -6,7 +6,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo5 from './demos/taro/demo5'
-import { rn } from '@/utils/platform-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const BackTopDemo = () => {
   const [translated] = useTranslate({
@@ -32,9 +32,12 @@ const BackTopDemo = () => {
       }}
     >
       <Header />
-      {rn() ? (
+      {harmonyAndRn() ? (
         <Demo5>
-          <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+          <View
+            className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+            style={{ height: 'auto' }}
+          >
             <View className="h2">{translated.title}</View>
             {new Array(24).fill(0).map((_, index) => {
               return <Cell key={index}>我是测试数据{index}</Cell>

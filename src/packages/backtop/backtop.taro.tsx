@@ -4,9 +4,15 @@ import React, {
   useState,
   useMemo,
   useEffect,
+  useRef,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { usePageScroll, pageScrollTo, PageScrollObject } from '@tarojs/taro'
+import {
+  usePageScroll,
+  pageScrollTo,
+  PageScrollObject,
+  getSystemInfo,
+} from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Top } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
@@ -61,6 +67,13 @@ export const BackTop: FunctionComponent<
 
   const [backTop, SetBackTop] = useState(false)
   const [isTouchStart, setTouchStart] = useState(false)
+  const systemInfo = useRef<getSystemInfo.Result>({})
+
+  useEffect(() => {
+    getSystemInfo().then((res) => {
+      systemInfo.current = res
+    })
+  }, [])
 
   const handleActiveStart = (event: BaseEventOrig) => {
     isNative && setTouchStart(true)

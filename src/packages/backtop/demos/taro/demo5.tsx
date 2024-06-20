@@ -5,7 +5,7 @@ import React, { useRef, useState } from 'react'
 import { ScrollView, View, Icon } from '@tarojs/components'
 import { BackTop } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
-import { rn } from '@/utils/platform-taro'
+import { harmony, rn } from '@/utils/platform-taro'
 import { BasicComponent } from '@/utils/typings'
 // @TODO 暂不支持
 // import { Top } from '@nutui/icons-react-taro'
@@ -17,7 +17,13 @@ const Demo5 = (props: BasicComponent) => {
 
   return (
     // @TODO 待 taro 侧支持获取视窗尺寸后调整
-    <View style={{ height: pxTransform(710) }}>
+    <View
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: rn() ? pxTransform(710) : '100%',
+      }}
+    >
       <ScrollView
         onScroll={(res) => {
           setScrollRes(res.detail)
@@ -25,20 +31,23 @@ const Demo5 = (props: BasicComponent) => {
         ref={sv}
         // @TODO RN 端暂不支持
         // trapScroll={true}
+        style={{ height: 'auto' }}
       >
         {children}
       </ScrollView>
       <BackTop
         threshold={200}
-        style={{
-          bottom: pxTransform(50),
-          right: pxTransform(20),
-          insetInlineEnd: pxTransform(20),
-        }}
         scrollRes={scrollRes}
         scrollToTop={() => {
-          if (!rn() || !sv.current?.scrollToOffset) return
-          sv.current.scrollToOffset({ offset: 0 })
+          if (harmony()) {
+            if (!sv.current?.scroller?.scrollEdge) return
+            // @ts-ignore
+            sv.current.scroller.scrollEdge(Edge.Top)
+          }
+          if (rn()) {
+            if (!sv.current?.scrollToOffset) return
+            sv.current.scrollToOffset({ offset: 0 })
+          }
         }}
       >
         <View
