@@ -2,17 +2,21 @@ import React, { useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo8 = () => {
-  const cellStyle = useMemo(
-    () => ({
-      paddingTop: pxTransform(40),
-      paddingBottom: pxTransform(40),
-      paddingLeft: pxTransform(18),
-      paddingRight: pxTransform(18),
-    }),
-    []
-  )
+  const cellStyle = useMemo(() => {
+    return harmonyAndRn()
+      ? {
+          paddingTop: pxTransform(40),
+          paddingBottom: pxTransform(40),
+          paddingLeft: pxTransform(18),
+          paddingRight: pxTransform(18),
+        }
+      : {
+          padding: '40px 18px',
+        }
+  }, [])
   const [show, setShow] = useState(false)
   const [msg, setMsg] = useState('')
   const showToast = (msg: string) => {

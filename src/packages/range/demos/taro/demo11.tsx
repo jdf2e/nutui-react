@@ -1,19 +1,22 @@
 import React, { useMemo, useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
-import { rn, harmony } from '@/utils/platform-taro'
+import { rn, harmony, harmonyAndRn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo11 = () => {
-  const cellStyle = useMemo(
-    () => ({
-      paddingTop: pxTransform(40),
-      paddingBottom: pxTransform(40),
-      paddingLeft: pxTransform(18),
-      paddingRight: pxTransform(18),
-    }),
-    []
-  )
+  const cellStyle = useMemo(() => {
+    return harmonyAndRn()
+      ? {
+          paddingTop: pxTransform(40),
+          paddingBottom: pxTransform(40),
+          paddingLeft: pxTransform(18),
+          paddingRight: pxTransform(18),
+        }
+      : {
+          padding: '40px 18px',
+        }
+  }, [])
 
   const buttonNativeStyle = useMemo(() => {
     if (rn()) {
@@ -49,6 +52,7 @@ const Demo11 = () => {
                 justifyContent: 'center',
                 top: '50%',
                 left: '50%',
+                // @ts-ignore
                 transform: 'translate(-50%, -50%)',
                 ...buttonNativeStyle,
               }}
