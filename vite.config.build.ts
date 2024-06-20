@@ -19,6 +19,9 @@ if (projectID) {
 }
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  },
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -73,7 +76,7 @@ export default defineConfig({
             react: 'React',
             'react-dom': 'ReactDOM',
           },
-          name: 'nutui.react',
+          name: 'nutui',
           format: 'umd',
           entryFileNames: 'nutui.react.umd.js',
         },
