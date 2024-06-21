@@ -1,10 +1,10 @@
 # SearchBar
 
-## Intro
+
 
 The input box component used to search the scene.
 
-## Install
+## Import
 
 ```tsx
 import { SearchBar } from '@nutui/nutui-react';

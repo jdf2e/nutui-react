@@ -1,17 +1,17 @@
 # Radio 單選按鈕
 
-## 介紹
+
 
 用於在一組備選項中進行單選
 
-## 安裝
+## 引入
 
 ```tsx
 import { Radio } from '@nutui/nutui-react';
 
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

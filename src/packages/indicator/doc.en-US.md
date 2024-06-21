@@ -1,10 +1,10 @@
 # Indicator
 
-## Intro
+
 
 Displays the progress of a task or process, often used for provisioning processes
 
-## Install
+## Import
 
 ```tsx
 import { Indicator } from '@nutui/nutui-react'

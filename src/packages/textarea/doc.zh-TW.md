@@ -1,16 +1,16 @@
 # TextArea 文本域
 
-## 介紹
+
 
 文本框內輸入或編輯文字，支持限制輸入數量。
 
-## 安裝
+## 引入
 
 ```tsx
 import { TextArea } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

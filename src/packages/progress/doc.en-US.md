@@ -1,10 +1,10 @@
 # Progress
 
-## Intro
+
 
 Used to show the current progress of the operation.
 
-## Install
+## Import
 
 ```tsx
 import { Progress } from '@nutui/nutui-react';

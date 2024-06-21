@@ -1,10 +1,10 @@
 # Video
 
-## Intro
+
 
 Video player implemented by native video
 
-## Install
+## Import
 
 ```tsx
 import { Video } from '@nutui/nutui-react';

@@ -1,16 +1,16 @@
 # Sticky組件
 
-## 介紹
+
 
 效果同 css 中的 position: sticky,對低端瀏覽器可使用其做兼容
 
-## 安裝
+## 引入
 
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

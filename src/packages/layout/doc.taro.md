@@ -1,16 +1,15 @@
 # Layout 布局
 
-## 介绍
 
 用于快速进行布局
 
-## 安装
+## 引入
 
 ```tsx
 import { Row, Col } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础布局
 

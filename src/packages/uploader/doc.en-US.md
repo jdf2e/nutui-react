@@ -1,10 +1,10 @@
 # Uploader
 
-## Intro
+
 
 Used to upload local pictures or files to the server.
 
-## Install
+## Import
 
 ```tsx
 import { Uploader } from '@nutui/nutui-react';

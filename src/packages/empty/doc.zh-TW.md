@@ -1,16 +1,16 @@
 # Empty組件
 
-## 介紹
+
 
 空狀態時的占位提示
 
-## 安裝
+## 引入
 
 ```tsx
 import { Empty } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

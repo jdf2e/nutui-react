@@ -1,10 +1,10 @@
 # Pagination
 
-## Intro
+
 
 When the amount of data is too much, use pagination to separate the data.
 
-## Install
+## Import
 
 ```tsx
 import { Pagination } from '@nutui/nutui-react';

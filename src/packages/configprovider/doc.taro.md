@@ -1,16 +1,15 @@
 # ConfigProvider 全局配置
 
-## 介绍
 
 用于全局配置 NutUI-React 组件，提供主题定制，国际化支持。
 
-## 安装
+## 引入
 
 ```tsx
 import { ConfigProvider } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 主题定制
 

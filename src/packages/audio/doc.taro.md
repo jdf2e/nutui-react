@@ -1,16 +1,15 @@
 # Audio 音频播放器
 
-## 介绍
 
 用于音频播放
 
-## 安装
+## 引入
 
 ```tsx
 import { Audio } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

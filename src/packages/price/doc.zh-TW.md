@@ -1,16 +1,16 @@
 # Price 價格
 
-## 介紹
+
 
 用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、仟位分隔符、設置小數點位數等功能。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Price } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法 small normal large
 

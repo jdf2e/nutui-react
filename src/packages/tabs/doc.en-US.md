@@ -1,10 +1,10 @@
 # Tabs
 
-## Intro
+
 
 It is often used for the storage and display of large blocks of content in the level area, and supports the form of embedded tags and rendering loop data.
 
-## Install
+## Import
 
 ```tsx
 import { Tabs } from '@nutui/nutui-react';
@@ -261,3 +261,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
 | \--nutui-tabs-tabpane-padding | Padding of the Tabpane content | `24px 20px` |
+| \--nutui-tabs-tabpane-backgroundColor | BackgroundColor of the Tabpane content| `#fff` |
