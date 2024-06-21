@@ -1,3 +1,14 @@
+# v2.6.10
+`2024-06-21`
+
+
+* 🏡 chore: 文档未来规范 (#2373) @Alex-huxiyang
+* 🤖 ci: 统一使用 pnpm @oasis-cloud
+* :sparkles: feat(tabpane): 增添修改tabpane背景色的主题变量 (#2366) @Alex-huxiyang
+* :bug: fix(tabs): 修复tabs异步设置titles滚动失效（#2351） (#2369) @ShuchenEason
+* :bug: fix: umd 中替换环境变量 (#2368) @oasis-cloud
+
+
 # v2.6.9
 `2024-06-14`
 
