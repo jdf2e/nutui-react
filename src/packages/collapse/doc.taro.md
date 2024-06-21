@@ -1,16 +1,15 @@
 # Collapse 折叠面板
 
-## 介绍
 
 将内容放置在多个折叠面板中，点击面板标题可展开或收缩内容。
 
-## 安装
+## 引入
 
 ```tsx
 import { Collapse } from 'nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

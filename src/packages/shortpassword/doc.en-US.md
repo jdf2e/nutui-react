@@ -1,10 +1,10 @@
 # ShortPassword
 
-## Intro
+
 
 Short password input box, which can be used to enter passwords, SMS verification codes, etc.
 
-## Install
+## Import
 
 ```tsx
 import { ShortPassword } from '@nutui/nutui-react';

@@ -1,16 +1,15 @@
 # AvatarCropper 头像裁剪
 
-## 介绍
 
 用来对头像进行裁剪生成一张新的图片。
 
-## 安装
+## 引入
 
 ```tsx
 import { AvatarCropper } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

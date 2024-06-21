@@ -1,16 +1,16 @@
 # Drag 拖拽
 
-## 介紹
+
 
 實現可拖拽的任意元素
 
-## 安裝
+## 引入
 
 ```tsx
 import { Drag } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

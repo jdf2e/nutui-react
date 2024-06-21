@@ -1,10 +1,10 @@
 # Tabs
 
-## Intro
+
 
 It is often used for the storage and display of large blocks of content in the level area, and supports the form of embedded tags and rendering loop data.
 
-## Install
+## Import
 
 ```tsx
 import { Tabs } from '@nutui/nutui-react';

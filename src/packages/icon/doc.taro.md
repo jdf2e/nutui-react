@@ -1,10 +1,9 @@
 # Icon 图标
 
-## 介绍
 
 独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
 
-## 安装
+## 引入
 
 ```bash
 npm i --save @nutui/icons-react-taro
@@ -12,7 +11,7 @@ npm i --save @nutui/icons-react-taro
 
 > 在 taro 项目中使用，需要将 prebundle 关闭。
 
-## 代码演示
+## 示例代码
 
 ### 方式一： Svg按需使用
 

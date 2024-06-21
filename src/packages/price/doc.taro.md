@@ -1,16 +1,15 @@
 # Price 价格
 
-## 介绍
 
 用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
 
-## 安装
+## 引入
 
 ```tsx
 import { Price } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法 small normal large
 

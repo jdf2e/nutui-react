@@ -1,16 +1,16 @@
 # AvatarCropper 头像剪裁
 
-## 介紹
+
 
 用來對頭像進行剪裁生成一張新圖片。
 
-## 安裝
+## 引入
 
 ```tsx
 import { AvatarCropper } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基礎用法
 

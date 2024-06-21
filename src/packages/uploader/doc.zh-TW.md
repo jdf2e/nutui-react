@@ -1,16 +1,16 @@
 # Uploader 上傳
 
-## 介紹
+
 
 用於將本地的圖片或文件上傳至服務器。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Uploader } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

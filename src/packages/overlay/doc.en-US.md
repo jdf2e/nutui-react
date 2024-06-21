@@ -1,10 +1,10 @@
 # Overlay
 
-## Intro
+
 
 Create a mask layer that is typically used to prevent users from doing other things
 
-## Install
+## Import
 
 ```tsx
 import { Overlay } from '@nutui/nutui-react';
