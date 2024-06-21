@@ -7,10 +7,8 @@ module.exports = (file, api, options) => {
   literals.forEach((path) => {
     const sourceValue = path.value.value
     console.log('sourceValue', sourceValue)
-    if (sourceValue === options.pkgInfo.ui) {
+    if (sourceValue.indexOf(options.pkgInfo.ui) !== -1) {
       path.value.value = options.pkgInfo.dongDesign
-    } else if (sourceValue === options.pkgInfo.icon) {
-      path.value.value = options.pkgInfo.dongDesignIcon
     }
   })
 
