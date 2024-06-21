@@ -1,11 +1,11 @@
 import React from 'react'
-import { Button } from '@nutui/nutui-react-taro'
+import { Button, Cell } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const marginStyle = { margin: 8 }
   return (
-    <>
-      <Button fill="solid" style={marginStyle}>
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Button type="primary" fill="solid" style={marginStyle}>
         Solid
       </Button>
       <Button type="primary" fill="outline" style={marginStyle}>
@@ -17,7 +17,7 @@ const Demo3 = () => {
       <Button fill="none" style={marginStyle}>
         None
       </Button>
-    </>
+    </Cell>
   )
 }
 export default Demo3

@@ -1,6 +1,6 @@
 {
-  "name": "@test/nutui-react-taro",
-  "version": "3.0.0-alpha.0",
+  "name": "@dongdesign/components",
+  "version": "1.0.0-alpha.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -42,7 +42,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "http://registry.m.jd.com/"
   },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",

@@ -8,8 +8,8 @@ import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
-import { readFile, access, writeFile, mkdir, appendFile } from 'fs/promises'
-import { dirname, join, basename, extname, resolve, relative } from 'path'
+import { access, mkdir, readFile, writeFile } from 'fs/promises'
+import { basename, dirname, extname, join, relative, resolve } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
@@ -36,12 +36,14 @@ const transform = (file, api) => {
   const ast = j(file.source)
   const imports = ast.find(j.ImportDeclaration)
   const exps = ast.find(j.ExportAllDeclaration)
+  const exportNameDeclaration = ast.find(j.ExportNamedDeclaration)
 
   function reNameAlias(path) {
     const alias =
-      path.node.source.value?.indexOf('@/') > -1
+      path.node.source?.value?.indexOf('@/') > -1
         ? path.node.source.value
         : ''
+    if (!path.node.source) return
     if (!alias) {
       path.node.source.value = path.node.source.value.replace('.taro', '')
       return
@@ -55,6 +57,7 @@ const transform = (file, api) => {
 
   imports.forEach(reNameAlias)
   exps.forEach(reNameAlias)
+  exportNameDeclaration.forEach(reNameAlias)
 
   return ast.toSource()
 }
@@ -159,6 +162,7 @@ async function buildDeclaration() {
   ])
 
   for (const file of files) {
+    console.log(file)
     const result = transform(
       {
         source: readFileSync(join(__dirname, '../', file), {
@@ -172,7 +176,7 @@ async function buildDeclaration() {
     await dest(join('dist/es', to), result)
     await dest(join('dist/cjs', to), result)
   }
-  deleteAsync('dist/types')
+  // deleteAsync('dist/types')
 }
 
 // 构建 UMD
@@ -288,7 +292,7 @@ async function buildCSS(p) {
     )
 
     // copy harmonycss
-    if(file.indexOf('countup') === -1) {
+    if (file.indexOf('countup') === -1) {
       await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
       await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
     }
