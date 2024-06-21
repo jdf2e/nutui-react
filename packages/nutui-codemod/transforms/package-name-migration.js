@@ -7,13 +7,6 @@ module.exports = (file, api, options) => {
   literals.forEach((path) => {
     const sourceValue = path.value.value
     console.log('sourceValue', sourceValue)
-    // const importDeclaration = path.parent.node
-    // const sourceValue = importDeclaration.source.value
-    // if (sourceValue === options.pkgInfo.ui) {
-    //   importDeclaration.source.value = options.pkgInfo.dongDesign
-    // } else if (sourceValue === options.pkgInfo.icon) {
-    //   importDeclaration.source.value = options.pkgInfo.dongDesignIcon
-    // }
     if (sourceValue === options.pkgInfo.ui) {
       path.value.value = options.pkgInfo.dongDesign
     } else if (sourceValue === options.pkgInfo.icon) {
