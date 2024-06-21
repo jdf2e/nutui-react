@@ -1,6 +1,7 @@
 const pkgVersion = process.argv.indexOf('-taro') > -1 ? 'taro' : 'h5'
 const pkgInfo = {
   h5: {
+    dongDesign: '@dongdesign/components',
     icon: '@nutui/icons-react',
     ui: '@nutui/nutui-react',
   },
