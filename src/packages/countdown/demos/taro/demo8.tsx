@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
-import { Text, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import '../../demo.scss'
 import pxTransform from '@/utils/px-transform'
 
@@ -8,7 +8,7 @@ const partItemStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: '#e8220e',
+  backgroundColor: '#fa2c19',
   color: '#fff',
   ...{
     width: pxTransform(20),
@@ -46,9 +46,8 @@ const Demo8 = () => {
             alignItems: 'center',
           }}
         >
-          <View style={partItemSymbolStyle}>
-            <Text>{resetTime.d}天</Text>
-          </View>
+          <View style={partItemStyle}>{resetTime.d}</View>
+          <View style={partItemSymbolStyle}>天</View>
           <View style={partItemStyle}>{resetTime.h}</View>
           <View style={partItemSymbolStyle}>:</View>
           <View style={partItemStyle}>{resetTime.m}</View>
