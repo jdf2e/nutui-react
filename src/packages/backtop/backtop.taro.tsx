@@ -26,13 +26,10 @@ export interface BackTopProps extends BasicComponent {
   zIndex: number
   duration: number
   /**
-   * 容器滚动时的参数，主要用于 rn 端
+   * 容器滚动时的回调参数，主要用于 rn、鸿蒙端
    */
   scrollRes?: PageScrollObject
   onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  scrollToTop?: (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => void
 }
 
 const defaultProps = {
@@ -57,7 +54,6 @@ export const BackTop: FunctionComponent<
     style,
     scrollRes,
     onClick,
-    scrollToTop,
   } = {
     ...defaultProps,
     ...props,
@@ -102,7 +98,7 @@ export const BackTop: FunctionComponent<
   // 返回顶部点击事件
   const goTop = useCallback(
     (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {
-      onClick && onClick(e)
+      onClick?.(e)
       pageScrollTo({
         scrollTop: 0,
         duration: duration > 0 ? duration : 0,
@@ -138,7 +134,6 @@ export const BackTop: FunctionComponent<
       style={styles}
       onClick={(e) => {
         goTop(e)
-        scrollToTop && scrollToTop(e)
       }}
       onTouchStart={handleActiveStart}
       onTouchEnd={handleActiveEnd}

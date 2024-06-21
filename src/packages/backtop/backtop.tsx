@@ -121,7 +121,7 @@ export const BackTop: FunctionComponent<
 
   const goTop = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
-      onClick && onClick(e)
+      onClick?.(e)
       const otime = +new Date()
       startTime.current = otime
       duration > 0 ? scrollAnimation() : scroll()

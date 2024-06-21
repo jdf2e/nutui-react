@@ -38,7 +38,7 @@ const Demo5 = (props: BasicComponent) => {
       <BackTop
         threshold={200}
         scrollRes={scrollRes}
-        scrollToTop={() => {
+        onClick={() => {
           if (harmony()) {
             if (!sv.current?.scroller?.scrollEdge) return
             // @ts-ignore
