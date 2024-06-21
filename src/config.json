@@ -59,7 +59,7 @@
       "enName": "base",
       "packages": [
         {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "Button",
           "type": "component",
           "cName": "按钮",
