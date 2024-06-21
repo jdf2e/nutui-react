@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   display: inline-block;
-  flex-direction: row;
   width: auto;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -22,9 +22,9 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: #1a1a1a;
   background: transparent;
-  width: 100px;
 }
 .nut-button-text {
+  color: #1a1a1a;
   margin-left: 4px;
 }
 .nut-button-text.right {
@@ -61,6 +61,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* #ifndef rn harmony */
+  background: initial;
+  /* #endif */
 }
 .nut-button-wrap .nut-icon {
   font-size: 14px;
@@ -105,19 +108,19 @@
 .nut-button-xlarge {
   height: 48px;
   padding: 0px 24px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
 }
 .nut-button-xlarge .nut-icon {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
 }
 .nut-button-large {
   height: 40px;
   padding: 0px 16px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .nut-button-large .nut-icon {
   font-size: 16px;
@@ -146,7 +149,7 @@
 }
 .nut-button-primary {
   color: #ffffff;
-  background: #fa2c19;
+  background: #ff0f23;
   background-origin: border-box;
   border: 1px solid transparent;
 }
@@ -179,6 +182,9 @@
   color: #ffadbe;
   border-color: #ffadbe;
 }
+.nut-button-primary-children {
+  color: #ffffff;
+}
 .nut-button-success {
   color: #ffffff;
   background: #2aa32a;
@@ -209,6 +215,9 @@
 }
 .nut-button-success.nut-button-none {
   color: #2aa32a;
+}
+.nut-button-success-children {
+  color: #ffffff;
 }
 .nut-button-info {
   color: #ffffff;
@@ -241,6 +250,9 @@
 .nut-button-info.nut-button-none {
   color: #1988fa;
 }
+.nut-button-info-children {
+  color: #ffffff;
+}
 .nut-button-danger {
   color: #ffffff;
   background: #ff0f23;
@@ -272,6 +284,9 @@
 .nut-button-danger.nut-button-none {
   color: #ff0f23;
 }
+.nut-button-danger-children {
+  color: #ffffff;
+}
 .nut-button-warning {
   color: #ffffff;
   background: #c47600;
@@ -302,6 +317,9 @@
 }
 .nut-button-warning.nut-button-none {
   color: #c47600;
+}
+.nut-button-warning-children {
+  color: #ffffff;
 }
 .nut-button-block {
   display: block;

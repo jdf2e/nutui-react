@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button } from '@nutui/nutui-react-taro'
+import { Button, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const marginStyle = { margin: 8 }
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <Button
         color="blue"
         style={{
@@ -39,7 +39,7 @@ const App = () => {
       >
         渐变按钮
       </Button>
-    </>
+    </Cell>
   )
 }
 export default App
