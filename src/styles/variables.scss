@@ -273,11 +273,13 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: linear-gradient(
-  135deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
-) !default;
+$button-primary-background-color: $color-primary;
+
+// linear-gradient(
+//   135deg,
+//   $color-primary-stop-1 0%,
+//   $color-primary-stop-2 100%
+// ) !default;
 $button-primary-disabled: var(
   --nutui-button-primary-disabled,
   $color-primary-disabled
