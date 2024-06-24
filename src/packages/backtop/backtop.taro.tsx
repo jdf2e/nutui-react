@@ -71,11 +71,11 @@ export const BackTop: FunctionComponent<
     })
   }, [])
 
-  const handleActiveStart = (event: BaseEventOrig) => {
+  const handleActiveStart = () => {
     isNative && setTouchStart(true)
   }
 
-  const handleActiveEnd = (event: BaseEventOrig) => {
+  const handleActiveEnd = () => {
     isNative && setTouchStart(false)
   }
 
