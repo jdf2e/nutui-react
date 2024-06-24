@@ -6,9 +6,10 @@ import {
   View,
   Button as TaroButton,
 } from '@tarojs/components'
-// import { Loading } from '@nutui/icons-react-taro'
+import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -39,7 +40,7 @@ export interface ButtonProps
   disabled: boolean
   icon: React.ReactNode
   rightIcon: React.ReactNode
-  nativeType: 'submit' | 'reset'
+  nativeType: 'submit' | 'reset' // | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -130,10 +131,12 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           className
         )}
         style={{ ...getStyle(), ...style }}
-        onClick={(e) => handleClick(e as any)}
+        onClick={(e) => handleClick(e)}
       >
         <View className="nut-button-wrap">
-          {/* {loading && <Loading className='nut-icon-loading' />} */}
+          {loading && !harmonyAndRn() && (
+            <Loading className="nut-icon-loading" />
+          )}
           {!loading && icon ? icon : null}
           {children && (
             <View

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Button } from '@nutui/nutui-react-taro'
+import { Button, Cell } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [loading, setLoading] = useState(false)
   const marginStyle = { margin: 8 }
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <Button loading type="warning" style={marginStyle}>
         Loading
       </Button>
@@ -22,7 +22,7 @@ const Demo7 = () => {
       >
         Click me!
       </Button>
-    </>
+    </Cell>
   )
 }
 export default Demo7

@@ -7,12 +7,20 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
+export interface CountDownTimeProps {
+  d: number
+  h: number
+  m: number
+  s: number
+  ms: number
+}
+export type CountDownType = 'default' | 'primary'
 export interface CountDownProps extends BasicComponent {
+  type: CountDownType
   paused: boolean
   startTime: number
   endTime: number
@@ -31,6 +39,7 @@ export interface CountDownProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'default',
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
@@ -46,8 +55,8 @@ const InternalCountDown: ForwardRefRenderFunction<
   unknown,
   Partial<CountDownProps>
 > = (props, ref) => {
-  const { locale } = useConfig()
   const {
+    type,
     paused,
     startTime,
     endTime,
@@ -94,7 +103,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
     } else {
       stateRef.current.handleEndTime = endTime
-      if (!harmonyAndRn()) {
+      if (web()) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
       }
     }
@@ -127,7 +136,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     })
   }
 
-  // 将倒计时剩余时间格式化   参数： t  时间戳  type custom 自定义类型
+  // 将倒计时剩余时间格式化   参数：t时间戳 type custom 自定义类型
   const formatRemainTime = (t: number, type?: string) => {
     const ts = t
     const rest = {
@@ -152,13 +161,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     return type === 'custom' ? rest : parseFormat({ ...rest })
   }
 
-  const parseFormat = (time: {
-    d: number
-    h: number
-    m: number
-    s: number
-    ms: number
-  }) => {
+  const parseFormat = (time: CountDownTimeProps) => {
     const { d } = time
     let { h, m, s, ms } = time
     let formatCache = format
@@ -198,8 +201,16 @@ const InternalCountDown: ForwardRefRenderFunction<
         formatCache = formatCache.replace('SS', msC.slice(0, 1))
       }
     }
+    formatCache = formatCache.replace(
+      /(\d+)/g,
+      type === 'primary'
+        ? `<View class="nut-countdown-number-primary">$1</View>`
+        : `<View class="nut-countdown-number">$1</View>`
+    )
+
     return formatCache
   }
+
   // 暂定
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
@@ -286,25 +297,87 @@ const InternalCountDown: ForwardRefRenderFunction<
     return formatRemainTime(stateRef.current.restTime)
   })()
 
+  const getUnit = (unit: string) => {
+    const formatArr = format.split(/(DD|HH|mm|ss|S)/)
+    const index = formatArr.indexOf(unit)
+    return index > -1 ? formatArr[index + 1] : ':'
+  }
+
+  const renderTimeItem = (
+    formatUnit: string,
+    time: number | string,
+    unit = ''
+  ) => {
+    return (
+      <>
+        {format.includes(formatUnit) ? (
+          <>
+            <View
+              className={`${classPrefix}-number${type === 'primary' ? '-primary' : ''}`}
+            >
+              {padZero(time)}
+            </View>
+            {unit ? (
+              <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
+            ) : null}
+          </>
+        ) : null}
+      </>
+    )
+  }
+
+  const renderTaroTime = () => {
+    const formatCache = formatRemainTime(stateRef.current.restTime, 'custom')
+    const { d, h, m, s, ms } = formatCache as CountDownTimeProps
+    const digit = format.match(/S/g)?.length
+    // format可能是DD天HH时mm分SSS秒或者DD天HH时mm分S秒或是DD：HH：mm：ss
+
+    return (
+      <>
+        {renderTimeItem('DD', d, 'DD')}
+        {renderTimeItem('HH', h, 'HH')}
+        {renderTimeItem('mm', m, 'mm')}
+        {renderTimeItem('ss', s)}
+        {(format.includes('S') || getUnit('ss') !== ':') && (
+          <>
+            <View className={`${classPrefix}-unit`}>{getUnit('ss')}</View>
+          </>
+        )}
+        {renderTimeItem(
+          'S',
+          padZero(ms, 3)
+            .toString()
+            .slice(0, digit || 2)
+        )}
+      </>
+    )
+  }
+
   return (
-    <View
-      className={`${classPrefix} ${className}`}
-      style={{ ...style }}
-      {...rest}
-    >
+    <>
       {children || (
-        <View
-          className={`${classPrefix}-block`}
-          // eslint-disable-next-line react/no-danger
-          // TODO:RN和鸿蒙暂时不支持dangerouslySetInnerHTML
-          //   dangerouslySetInnerHTML={{
-          //     __html: `${renderTime}`,
-          //   }}
-        >
-          {renderTime as any}
-        </View>
+        <>
+          {!harmonyAndRn() ? (
+            <View
+              className={`${classPrefix} ${className}`}
+              style={{ ...style }}
+              {...rest}
+              dangerouslySetInnerHTML={{
+                __html: `${renderTime}`,
+              }}
+            />
+          ) : (
+            <View
+              className={`${classPrefix} ${className}`}
+              style={{ ...style }}
+              {...rest}
+            >
+              {renderTaroTime()}
+            </View>
+          )}
+        </>
       )}
-    </View>
+    </>
   )
 }
 
