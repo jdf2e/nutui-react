@@ -71,13 +71,13 @@ export const BackTop: FunctionComponent<
     })
   }, [])
 
-  const handleActiveStart = () => {
+  const handleActiveStart = useCallback(() => {
     isNative && setTouchStart(true)
-  }
+  }, [])
 
-  const handleActiveEnd = () => {
+  const handleActiveEnd = useCallback(() => {
     isNative && setTouchStart(false)
-  }
+  }, [])
 
   const onScroll = useCallback(
     (res: PageScrollObject) => {
