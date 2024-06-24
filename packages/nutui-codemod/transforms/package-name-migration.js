@@ -5,11 +5,7 @@ module.exports = (file, api, options) => {
   const root = j(file.source)
   const literals = findLiterals(j, root, options.pkgInfo)
   literals.forEach((path) => {
-    const sourceValue = path.value.value
-    console.log('sourceValue', sourceValue)
-    if (sourceValue.indexOf(options.pkgInfo.ui) !== -1) {
-      path.value.value = options.pkgInfo.dongDesign
-    }
+    path.value.value = options.pkgInfo.dongDesign
   })
 
   return root.toSource()
