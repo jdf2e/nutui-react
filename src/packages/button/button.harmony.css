@@ -79,6 +79,10 @@
 .nut-button-loading::before, .nut-button-disabled::before {
   display: none;
 }
+.nut-button-disabled {
+  cursor: not-allowed;
+  color: #ffffff;
+}
 .nut-button.nut-button-icononly {
   width: 32px;
   padding: 0;
@@ -376,10 +380,6 @@
 .nut-button-none {
   background: transparent;
   border-color: transparent;
-}
-.nut-button-disabled {
-  cursor: not-allowed;
-  color: #ffffff;
 }
 .nut-button-loading {
   cursor: default;

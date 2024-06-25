@@ -89,6 +89,11 @@
     }
   }
 
+  &-disabled {
+    cursor: not-allowed;
+    color: #ffffff;
+  }
+
   &.nut-button-icononly {
     width: $button-default-height;
     padding: 0;
@@ -400,11 +405,6 @@
   &-none {
     background: transparent;
     border-color: transparent;
-  }
-
-  &-disabled {
-    cursor: not-allowed;
-    color: #ffffff;
   }
 
   &-loading {

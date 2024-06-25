@@ -108,9 +108,6 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       if (props.color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
           style.color = color
-          if (!color?.includes('gradient')) {
-            style.borderColor = color
-          }
         } else {
           style.color = '#fff'
           style.background = 'transparent'
