@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
+import { rn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo7 = () => {
   const [loading, setLoading] = useState(false)
   const marginStyle = {
+    width: pxTransform(rn() ? 90 : 120),
     marginRight: 8,
     marginTop: 8,
     marginLeft: 8,

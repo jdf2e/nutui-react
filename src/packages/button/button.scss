@@ -195,7 +195,6 @@
 
   &-primary {
     color: $button-primary-color;
-    background: $button-primary-background-color;
     background-origin: border-box;
     border-color: transparent;
 
@@ -204,6 +203,7 @@
     }
 
     &-solid {
+      background: $button-primary-background-color;
       color: $button-primary-color;
       border-color: transparent;
     }

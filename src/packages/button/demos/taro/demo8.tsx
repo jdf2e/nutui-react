@@ -6,6 +6,21 @@ import pxTransform from '@/utils/px-transform'
 const Demo8 = () => {
   const marginStyle = harmonyAndRn()
     ? {
+        width: pxTransform(90),
+        marginRight: 8,
+        marginTop: 8,
+        marginLeft: 8,
+        marginBottom: 8,
+      }
+    : {
+        marginRight: 8,
+        marginTop: 8,
+        marginLeft: 8,
+        marginBottom: 8,
+      }
+
+  const marginStyleXL = harmonyAndRn()
+    ? {
         width: pxTransform(140),
         marginRight: 8,
         marginTop: 8,
@@ -33,7 +48,7 @@ const Demo8 = () => {
       <Button size="large" type="primary" style={marginStyle}>
         Large
       </Button>
-      <Button size="xlarge" type="primary" style={marginStyle}>
+      <Button size="xlarge" type="primary" style={marginStyleXL}>
         XLarge
       </Button>
     </Cell>

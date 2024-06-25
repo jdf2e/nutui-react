@@ -1,12 +1,11 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
 import { Star, Plus } from '@nutui/icons-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn, harmony } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const marginStyle = {
-    width: pxTransform(100),
     marginRight: 8,
     marginTop: 8,
     marginLeft: 8,
@@ -143,7 +142,7 @@ const Demo5 = () => {
             type="primary"
             // icon={<Star />}
             // rightIcon={<Star />}
-            style={marginStyle}
+            style={{ width: pxTransform(harmony() ? 100 : 80), ...marginStyle }}
           >
             Disabled
           </Button>
@@ -153,7 +152,7 @@ const Demo5 = () => {
             fill="outline"
             // icon={<Star />}
             // rightIcon={<Star />}
-            style={marginStyle}
+            style={{ width: pxTransform(harmony() ? 100 : 80), ...marginStyle }}
           >
             Disabled
           </Button>
@@ -163,7 +162,7 @@ const Demo5 = () => {
             fill="dashed"
             // icon={<Star />}
             // rightIcon={<Star />}
-            style={marginStyle}
+            style={{ width: pxTransform(harmony() ? 100 : 80), ...marginStyle }}
           >
             Disabled
           </Button>
@@ -172,7 +171,7 @@ const Demo5 = () => {
             fill="solid"
             // icon={<Star />}
             // rightIcon={<Star />}
-            style={marginStyle}
+            style={{ width: pxTransform(harmony() ? 100 : 80), ...marginStyle }}
           >
             Disabled
           </Button>
@@ -186,6 +185,7 @@ const Demo5 = () => {
               ...{
                 backgroundColor: `#f6f6f6`,
                 color: `#888b94`,
+                width: pxTransform(harmony() ? 100 : 80),
               },
               ...marginStyle,
             }}
@@ -202,6 +202,7 @@ const Demo5 = () => {
               ...{
                 backgroundColor: `#ffffff`,
                 color: `#888b94`,
+                width: pxTransform(harmony() ? 100 : 80),
               },
               ...marginStyle,
             }}
@@ -212,7 +213,7 @@ const Demo5 = () => {
             disabled
             // icon={<Star />}
             // rightIcon={<Star />}
-            style={marginStyle}
+            style={{ width: pxTransform(harmony() ? 100 : 80), ...marginStyle }}
           >
             Disabled
           </Button>

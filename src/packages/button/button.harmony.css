@@ -172,7 +172,6 @@
 }
 .nut-button-primary {
   color: #ffffff;
-  background: #ff0f23;
   background-origin: border-box;
   border-color: transparent;
 }
@@ -180,6 +179,7 @@
   color: #ffffff;
 }
 .nut-button-primary-solid {
+  background: #ff0f23;
   color: #ffffff;
   border-color: transparent;
 }

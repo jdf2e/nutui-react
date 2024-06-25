@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn, rn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const marginStyle = harmonyAndRn()
     ? {
-        width: pxTransform(150),
+        width: pxTransform(rn() ? 120 : 150),
         marginRight: 8,
         marginTop: 8,
         marginLeft: 8,

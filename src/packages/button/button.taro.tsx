@@ -95,9 +95,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           style.color = '#fff'
           if (harmonyAndRn()) {
             style.backgroundColor = color
-          } else {
-            style.background = color
           }
+          style.background = color
           style.borderColor = 'transparent'
         }
       }
@@ -140,6 +139,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
+          type === 'primary' && !props.fill
+            ? `${prefixCls}-${type}-solid`
+            : null,
           props.fill ? `${prefixCls}-${fill}` : null,
           props.fill ? `${prefixCls}-${type}-${fill}` : null,
           children ? '' : `${prefixCls}-icononly`,
