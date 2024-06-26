@@ -7,10 +7,10 @@ const Demo8 = () => {
   const marginStyle = harmonyAndRn()
     ? {
         width: pxTransform(90),
-        marginRight: 8,
-        marginTop: 8,
-        marginLeft: 8,
-        marginBottom: 8,
+        marginRight: pxTransform(8),
+        marginTop: pxTransform(8),
+        marginLeft: pxTransform(8),
+        marginBottom: pxTransform(8),
       }
     : {
         marginRight: 8,
@@ -22,10 +22,10 @@ const Demo8 = () => {
   const marginStyleXL = harmonyAndRn()
     ? {
         width: pxTransform(140),
-        marginRight: 8,
-        marginTop: 8,
-        marginLeft: 8,
-        marginBottom: 8,
+        marginRight: pxTransform(8),
+        marginTop: pxTransform(8),
+        marginLeft: pxTransform(8),
+        marginBottom: pxTransform(8),
       }
     : {
         marginRight: 8,

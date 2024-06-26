@@ -5,10 +5,10 @@ import pxTransform from '@/utils/px-transform'
 const Demo3 = () => {
   const marginStyle = {
     width: pxTransform(80),
-    marginRight: 8,
-    marginTop: 8,
-    marginLeft: 8,
-    marginBottom: 8,
+    marginRight: pxTransform(8),
+    marginTop: pxTransform(8),
+    marginLeft: pxTransform(8),
+    marginBottom: pxTransform(8),
   }
   return (
     <Cell style={{ flexWrap: 'wrap' }}>

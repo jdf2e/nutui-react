@@ -6,10 +6,10 @@ import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const marginStyle = {
-    marginRight: 8,
-    marginTop: 8,
-    marginLeft: 8,
-    marginBottom: 8,
+    marginRight: pxTransform(8),
+    marginTop: pxTransform(8),
+    marginLeft: pxTransform(8),
+    marginBottom: pxTransform(8),
   }
   return (
     <>

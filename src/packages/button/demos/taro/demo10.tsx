@@ -7,10 +7,10 @@ const App = () => {
   const marginStyle = harmonyAndRn()
     ? {
         width: pxTransform(120),
-        marginRight: 8,
-        marginTop: 8,
-        marginLeft: 8,
-        marginBottom: 8,
+        marginRight: pxTransform(8),
+        marginTop: pxTransform(8),
+        marginLeft: pxTransform(8),
+        marginBottom: pxTransform(8),
       }
     : {
         marginRight: 8,
