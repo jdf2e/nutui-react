@@ -1,7 +1,11 @@
 import React from 'react'
-import { Price } from '@nutui/nutui-react-taro'
+import { Cell, Price } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
-  return <Price price={8888} digits={0} size="normal" thousands />
+  return (
+    <Cell>
+      <Price price={8888} digits={0} size="normal" thousands />
+    </Cell>
+  )
 }
 export default Demo2
