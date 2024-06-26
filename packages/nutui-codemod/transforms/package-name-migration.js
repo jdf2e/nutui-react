@@ -5,7 +5,10 @@ module.exports = (file, api, options) => {
   const root = j(file.source)
   const literals = findLiterals(j, root, options.pkgInfo)
   literals.forEach((path) => {
-    path.value.value = options.pkgInfo.dongDesign
+    path.value.value = path.value.value.replace(
+      options.pkgInfo.ui,
+      options.pkgInfo.dongDesign
+    )
   })
 
   return root.toSource()
