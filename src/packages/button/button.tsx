@@ -102,13 +102,19 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
+          type === 'primary' && !props.fill
+            ? `${prefixCls}-${type}-solid`
+            : null,
           props.fill ? `${prefixCls}-${fill}` : null,
+          props.fill ? `${prefixCls}-${type}-${fill}` : null,
           children ? '' : `${prefixCls}-icononly`,
           {
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-disabled`]: disabled || loading,
+            [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
+              disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className
@@ -121,8 +127,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <div
-              className={`${icon || loading ? 'nut-button-text' : ''}${
-                rightIcon ? ' nut-button-text right' : ''
+              className={` ${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''} ${icon || loading ? 'nut-button-text' : ''}${
+                rightIcon ? ' nut-button-text-right' : ''
               }`}
             >
               {children}
