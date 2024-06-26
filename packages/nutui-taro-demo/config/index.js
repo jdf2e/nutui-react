@@ -66,7 +66,7 @@ const config = {
   plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
   compiler: 'webpack5',
   alias: {
-    '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
+    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
       __dirname,
       '../../../src/locales/en-US.ts'
     ),
