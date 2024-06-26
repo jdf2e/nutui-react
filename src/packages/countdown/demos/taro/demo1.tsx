@@ -9,9 +9,18 @@ const Demo1 = () => {
     console.log('countdown: ended.')
   }
   return (
-    <Cell>
-      <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
-    </Cell>
+    <>
+      <Cell>
+        <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
+      </Cell>
+      <Cell>
+        <CountDown
+          endTime={stateRef.current.endTime}
+          type="primary"
+          onEnd={onEnd}
+        />
+      </Cell>
+    </>
   )
 }
 export default Demo1

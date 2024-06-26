@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Row } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import '../../demo.scss'
 
 const Demo2 = () => {
   return (

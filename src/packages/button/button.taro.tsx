@@ -6,9 +6,10 @@ import {
   View,
   Button as TaroButton,
 } from '@tarojs/components'
-// import { Loading } from '@nutui/icons-react-taro'
+import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -39,7 +40,7 @@ export interface ButtonProps
   disabled: boolean
   icon: React.ReactNode
   rightIcon: React.ReactNode
-  nativeType: 'submit' | 'reset'
+  nativeType: 'submit' | 'reset' // | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -92,7 +93,24 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           }
         } else {
           style.color = '#fff'
+          if (harmonyAndRn()) {
+            style.backgroundColor = color
+          }
           style.background = color
+          style.borderColor = 'transparent'
+        }
+      }
+      return style
+    }, [color])
+
+    const getContStyle = useCallback(() => {
+      const style: CSSProperties = {}
+      if (props.color) {
+        if (props.fill === 'outline' || props.fill === 'dashed') {
+          style.color = color
+        } else {
+          style.color = '#fff'
+          style.background = 'transparent'
           style.borderColor = 'transparent'
         }
       }
@@ -118,28 +136,38 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
+          type === 'primary' && !props.fill
+            ? `${prefixCls}-${type}-solid`
+            : null,
           props.fill ? `${prefixCls}-${fill}` : null,
+          props.fill ? `${prefixCls}-${type}-${fill}` : null,
           children ? '' : `${prefixCls}-icononly`,
           {
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
+            [`${prefixCls}-${shape}-${size}`]: shape && size,
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-disabled`]: disabled || loading,
+            [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
+              disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className
         )}
         style={{ ...getStyle(), ...style }}
-        onClick={(e) => handleClick(e as any)}
+        onClick={(e) => handleClick(e)}
       >
         <View className="nut-button-wrap">
-          {/* {loading && <Loading className='nut-icon-loading' />} */}
+          {loading && !harmonyAndRn() && (
+            <Loading className="nut-icon-loading" />
+          )}
           {!loading && icon ? icon : null}
           {children && (
             <View
-              className={`nut-button-children ${icon || loading ? 'nut-button-text' : ''}${
-                rightIcon ? ' nut-button-text right' : ''
+              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`} ${icon || loading ? `nut-button-text` : ''}${
+                rightIcon ? ` nut-button-text-right` : ''
               }`}
+              style={harmonyAndRn() ? getContStyle() : ''}
             >
               {children}
             </View>
