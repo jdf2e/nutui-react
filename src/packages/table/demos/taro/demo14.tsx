@@ -25,7 +25,7 @@ const Demo14 = () => {
       record: '小学',
     },
     {
-      height: '100px',
+      height: '50px',
       text: '这里是自定义行',
       Component: (props: any) => {
         return (
