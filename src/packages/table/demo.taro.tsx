@@ -16,6 +16,7 @@ import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
+import Demo14 from './demos/taro/demo14'
 
 const TableDemo = () => {
   const [translated] = useTranslate({
@@ -33,6 +34,7 @@ const TableDemo = () => {
       stickyHeader: '固定表头',
       stickyLeftColumn: '固定左列',
       stickyRightColumn: '固定右列',
+      customRow: '自定义行',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -50,6 +52,7 @@ const TableDemo = () => {
       stickyHeader: 'sticky header',
       stickyLeftColumn: 'sticky left column',
       stickyRightColumn: 'sticky right column',
+      customRow: 'Custom Row',
     },
   })
 
@@ -94,6 +97,8 @@ const TableDemo = () => {
         <Demo12 />
         <h2>{translated.stickyRightColumn}</h2>
         <Demo13 />
+        <h2>{translated.customRow}</h2>
+        <Demo14 />
       </div>
     </>
   )
