@@ -5,6 +5,7 @@ import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { harmonyAndRn } from '@/utils/platform-taro'
+import '../../demo.scss'
 
 const Demo6 = () => {
   const onJumpclick = (
@@ -30,9 +31,7 @@ const Demo6 = () => {
           title="URL 跳转"
           extra={
             <>
-              <View style={{ marginRight: pxTransform(5) }}>
-                /pages/index/index
-              </View>
+              <View className="nut-cell-demo-extra">/pages/index/index</View>
               {harmonyAndRn() ? null : <ArrowRight />}
             </>
           }
@@ -55,9 +54,9 @@ const Demo6 = () => {
             >
               <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
               <View
+                className="nut-cell-demo-desc"
                 style={{
                   color: '#888B94',
-                  fontSize: pxTransform(10),
                   marginLeft: pxTransform(5),
                 }}
               >
@@ -87,9 +86,9 @@ const Demo6 = () => {
           align="center"
           title={
             <Text
+              className="nut-cell-demo-desc"
               style={{
                 color: '#888B94',
-                fontSize: pxTransform(12),
               }}
             >
               我是描述

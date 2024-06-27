@@ -3,7 +3,7 @@ import { Input } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { Eye, Marshalling } from '@nutui/icons-react-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
+import '../../demo.scss'
 
 const Demo9 = () => {
   const [inputType, setInputType] = useState('password')
@@ -24,9 +24,9 @@ const Demo9 = () => {
           placeholderTextColor="#757575"
         />
         <View
+          className="nut-input-demo-eye"
           style={{
             display: 'flex',
-            marginRight: pxTransform(10),
             alignItems: 'center',
           }}
           onClick={() =>

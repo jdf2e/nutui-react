@@ -1,8 +1,8 @@
 .nut-overlay {
-  /* #ifdef rn */
+  /* #ifdef rn jdrn */
   position: absolute;
   /* #endif */
-  /* #ifndef rn */
+  /* #ifndef rn jdrn */
   position: fixed;
   /* #endif */
   top: 0;

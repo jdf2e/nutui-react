@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Text } from '@tarojs/components'
-import { ConfigProvider, Cell } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Text, View } from '@tarojs/components'
+import { Cell, ConfigProvider } from '@nutui/nutui-react-taro'
+import '../../demo.scss'
 
 const Demo5 = () => {
   return (
@@ -10,11 +10,14 @@ const Demo5 = () => {
         <Cell
           title={
             <View>
-              <Text style={{ fontSize: pxTransform(14) }}>我是标题</Text>
+              <Text className="nut-configprovider-cell-title">我是标题</Text>
             </View>
           }
           description={
-            <Text style={{ fontSize: pxTransform(12), color: '#ccc' }}>
+            <Text
+              className="nut-configprovider-cell-desc"
+              style={{ color: '#ccc' }}
+            >
               我是描述
             </Text>
           }

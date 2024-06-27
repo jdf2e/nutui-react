@@ -50,7 +50,7 @@
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
-    transform: translate(-50%, -50%);
+    //transform: translate(-50%, -50%);
 
     &.normal {
       word-break: normal;
