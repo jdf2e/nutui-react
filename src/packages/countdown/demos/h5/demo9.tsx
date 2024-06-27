@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Cell, CountDown, Grid, GridItem, Button } from '@nutui/nutui-react'
+import { Cell, CountDown, Grid, Button } from '@nutui/nutui-react'
 
 interface countdownRefState {
   start: () => void
@@ -31,22 +31,22 @@ const Demo9 = () => {
           ref={countDownRef}
         />
       </Cell>
-      <Grid columns="3" style={{ marginBottom: '5px' }}>
-        <GridItem>
+      <Grid columns={3} style={{ marginBottom: '5px' }}>
+        <Grid.Item>
           <Button type="primary" onClick={start}>
             开始
           </Button>
-        </GridItem>
-        <GridItem>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={pause}>
             暂停
           </Button>
-        </GridItem>
-        <GridItem>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={reset}>
             重置
           </Button>
-        </GridItem>
+        </Grid.Item>
       </Grid>
     </>
   )

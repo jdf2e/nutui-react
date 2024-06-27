@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import '../../demo.scss'
 import pxTransform from '@/utils/px-transform'
 
 const partItemStyle = {
