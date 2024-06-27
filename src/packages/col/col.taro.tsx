@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

@@ -171,6 +171,7 @@ function main() {
     const distFileContent = sourceFileContent
       .toString()
       .replace(/@\/utils/g, '../../../utils')
+      .replace(/@nutui\/nutui-react-taro/g, '@dongdesign/ui')
     fs.writeFileSync(f, distFileContent)
   })
   // 修改引入的 utils
@@ -179,6 +180,7 @@ function main() {
     const distFileContent = sourceFileContent
       .toString()
       .replace(/@\/utils/g, '../utils')
+      .replace(/@nutui\/nutui-react-taro/g, '@dongdesign/ui')
     fs.writeFileSync(f, `import '../../styles/demo.scss'\n${distFileContent}`)
   })
 }

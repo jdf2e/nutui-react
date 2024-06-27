@@ -7,9 +7,9 @@ import React, {
   ReactNode,
   useMemo,
 } from 'react'
-import { pxTransform } from '@tarojs/taro'
 import classNames from 'classnames'
 import { View, Text } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 import { useTouch } from '@/utils/use-touch'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
