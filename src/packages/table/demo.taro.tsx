@@ -16,7 +16,7 @@ import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
-import Demo14 from './demos/h5/demo14'
+import Demo14 from './demos/taro/demo14'
 
 const TableDemo = () => {
   const [translated] = useTranslate({
