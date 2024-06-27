@@ -33,5 +33,4 @@ exports = module.exports = [
   'configprovider',
   'input',
   'swipe',
-  'icon',
 ]
