@@ -1,15 +1,5 @@
 import React, { useState } from 'react'
-import { Table } from '@nutui/nutui-react'
-
-interface TableColumnProps {
-  key: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
-  fixed?: 'left' | 'right'
-  width?: number
-}
+import { Table, TableColumnProps } from '@nutui/nutui-react'
 
 const Demo14 = () => {
   const [columns] = useState<Array<TableColumnProps>>([
