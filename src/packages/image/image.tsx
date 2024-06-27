@@ -9,7 +9,6 @@ import React, {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { pxCheck } from '@/utils/px-check'
 
 export interface ImageProps extends BasicComponent {
   src: string
@@ -82,6 +81,9 @@ export const Image: FunctionComponent<
   const [isError, setIsError] = useState(false)
   const [complete, setComplete] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
+  const pxCheck = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
 
   useEffect(() => {
     if (imgRef.current && imgRef.current.complete && !lazy) {
