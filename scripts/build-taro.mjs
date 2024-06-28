@@ -162,7 +162,6 @@ async function buildDeclaration() {
   ])
 
   for (const file of files) {
-    console.log(file)
     const result = transform(
       {
         source: readFileSync(join(__dirname, '../', file), {
@@ -176,7 +175,7 @@ async function buildDeclaration() {
     await dest(join('dist/es', to), result)
     await dest(join('dist/cjs', to), result)
   }
-  // deleteAsync('dist/types')
+  deleteAsync('dist/types')
 }
 
 // 构建 UMD

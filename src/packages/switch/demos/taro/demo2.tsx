@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch } from '@nutui/nutui-react-taro'
+import { Cell, Switch } from '@nutui/nutui-react-taro'
 import Taro from '@tarojs/taro'
 
 const Demo2 = () => {
@@ -12,12 +12,12 @@ const Demo2 = () => {
     }, 2000)
   }
   return (
-    <>
+    <Cell>
       <Switch
         checked={checkedAsync}
         onChange={(value, event) => onChangeAsync(value, event)}
       />
-    </>
+    </Cell>
   )
 }
 export default Demo2

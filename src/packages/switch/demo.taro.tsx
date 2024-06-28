@@ -1,7 +1,6 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale//taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -43,29 +42,17 @@ const SwitchDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated.asyncControl}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.disabled}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <View className="h2">{translated.eventTip}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <View className="h2">{translated.customColor}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <View className="h2">{translated.supportText}</View>
-        <Cell>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
       </ScrollView>
     </>
   )

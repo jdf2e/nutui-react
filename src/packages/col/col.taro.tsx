@@ -68,6 +68,7 @@ export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
     <View
       className={classNames(colName, className)}
       style={{ ...style, ...colStyle }}
+      key={classNames(colName, className)}
       onClick={(e) => {
         onClick && onClick(e, 'col')
       }}
