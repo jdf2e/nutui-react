@@ -1,3 +1,11 @@
+# v2.6.11
+`2024-06-28`
+
+
+* :sparkles: feat(table): table新增自定义行 (#2390) @zanyuki-jd
+* :bug: fix(fixednav): 可拖拽元素样式缺失 (#2391) @oasis-cloud
+
+
 # v2.6.10
 `2024-06-21`
 
