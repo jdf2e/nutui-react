@@ -54,6 +54,7 @@ const copyFile = async (from, to, success, isSingle = false) => {
             'griditem',
             'hoverbuttonitem',
             'avatargroup',
+            'icon',
           ].includes(item)
         ) {
           modify(
@@ -61,10 +62,12 @@ const copyFile = async (from, to, success, isSingle = false) => {
             `import '../../../styles/demo.scss';\n`
           )
         }
-        modify(
-          `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
-          `import "./${item}.harmony.css";\n`
-        )
+        if (!['icon'].includes(item)) {
+          modify(
+            `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
+            `import "./${item}.harmony.css";\n`
+          )
+        }
       }
     })
   })
