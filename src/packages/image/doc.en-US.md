@@ -1,10 +1,10 @@
 # Image
 
-## Intro
+
 
 Enhanced img tag with multiple image fill modes, support for loading hint, loading failure hint.
 
-## Install
+## Import
 
 ```tsx
 import { Image } from '@nutui/nutui-react';

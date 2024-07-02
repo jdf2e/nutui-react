@@ -1,16 +1,15 @@
 # Checkbox 复选按钮
 
-## 介绍
 
 多选按钮用于选择。
 
-## 安装
+## 引入
 
 ```tsx
 import { Checkbox } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 非受控
 

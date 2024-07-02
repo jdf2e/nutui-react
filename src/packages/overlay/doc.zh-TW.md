@@ -1,16 +1,16 @@
 # Overlay 遮罩層
 
-## 介紹
+
 
 創建一個遮罩層，通常用於阻止用戶進行其他操作
 
-## 安裝
+## 引入
 
 ```tsx
 import { Overlay } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

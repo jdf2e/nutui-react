@@ -1,16 +1,15 @@
 # SideNavBar组件
 
-## 介绍
 
 用于内容选择和切换
 
-## 安装
+## 引入
 
 ```tsx
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

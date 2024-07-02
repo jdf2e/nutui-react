@@ -1,17 +1,16 @@
 # Input 输入框
 
-## 介绍
 
 用户可以在文本框里输入内容。
 
-## 安装
+## 引入
 
 ```tsx
 import { Input } from '@nutui/nutui-react';
 
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

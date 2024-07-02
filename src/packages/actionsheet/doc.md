@@ -1,16 +1,16 @@
 # ActionSheet 动作面板
 
-## 介绍
+
 
 从底部弹出的动作菜单面板。
 
-## 安装
+## 引入
 
 ```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

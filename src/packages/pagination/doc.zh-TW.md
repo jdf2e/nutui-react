@@ -1,16 +1,16 @@
 # Pagination 分頁
 
-## 介紹
+
 
 當數據量較多時，採用分頁的形式分隔長列錶。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Pagination } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

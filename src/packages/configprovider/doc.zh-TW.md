@@ -1,16 +1,16 @@
 # ConfigProvider 全域配置
 
-## 介紹
+
 
 用於全域配置 NutUI-React 元件，提供主題定製，國際化支援。
 
-## 安裝
+## 引入
 
 ```tsx
 import { ConfigProvider } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 主題定製
 

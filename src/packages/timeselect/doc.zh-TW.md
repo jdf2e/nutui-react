@@ -1,16 +1,16 @@
 # TimeSelect 配送時間
 
-## 介紹
+
 
 用於配送時間選擇
 
-## 安裝
+## 引入
 
 ```tsx
 import { TimeSelect } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

@@ -1,10 +1,10 @@
 # Icon
 
-## Intro
+
 
 Install the @nutui/icons-react icon component package independently. Two usage methods are provided (Svg on demand, IconFont in full).
 
-## Install
+## Import
 
 ```bash
 npm i --save @nutui/icons-react

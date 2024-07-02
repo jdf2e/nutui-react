@@ -1,10 +1,10 @@
 # Picker
 
-## Intro
+
 
 The picker component is usually used with Popup Component.
 
-## Install
+## Import
 
 ```tsx
 import { Picker } from '@nutui/nutui-react';
