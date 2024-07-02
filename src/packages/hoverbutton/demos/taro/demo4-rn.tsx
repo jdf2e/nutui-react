@@ -2,7 +2,8 @@
  * 自定义层级
  */
 import React from 'react'
-import { HoverButton, SafeArea } from '@nutui/nutui-react-taro'
+// import { HoverButton, SafeArea } from '@nutui/nutui-react-taro'
+import { HoverButton } from '@nutui/nutui-react-taro'
 import { View, Icon, Text } from '@tarojs/components'
 // import { Cart } from '@nutui/icons-react-taro'
 import Taro, { pxTransform } from '@tarojs/taro'
@@ -30,7 +31,7 @@ const App = () => {
         >
           这个图层层级为 100
         </Text>
-        <SafeArea position="bottom" />
+        {/* <SafeArea position="bottom" /> */}
       </View>
     </View>
   )

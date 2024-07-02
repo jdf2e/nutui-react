@@ -1,5 +1,4 @@
 import React from 'react'
-import { Cell } from '../cell/cell'
 import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -50,33 +49,19 @@ const PriceDemo = () => {
       <h2>{translated.title1}</h2>
       <Demo1 />
       <h2>{translated.title2}</h2>
-      <Cell>
-        <Demo2 />
-      </Cell>
+      <Demo2 />
       <h2>{translated.title3}</h2>
-      <Cell>
-        <Demo3 />
-      </Cell>
+      <Demo3 />
       <h2>{translated.title4}</h2>
-      <Cell>
-        <Demo4 />
-      </Cell>
+      <Demo4 />
       <h2>{translated.title5}</h2>
-      <Cell>
-        <Demo5 />
-      </Cell>
+      <Demo5 />
       <h2>{translated.title7}</h2>
-      <Cell>
-        <Demo6 />
-      </Cell>
+      <Demo6 />
       <h2>{translated.title6}</h2>
-      <Cell>
-        <Demo7 />
-      </Cell>
+      <Demo7 />
       <h2>{translated.title8}</h2>
-      <Cell>
-        <Demo8 />
-      </Cell>
+      <Demo8 />
     </div>
   )
 }

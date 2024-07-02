@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Price } from '@nutui/nutui-react'
+import { Cell, Price } from '@nutui/nutui-react'
 
 const Demo7 = () => {
   const [price, setPrice] = useState(Math.random() * 10000000)
@@ -12,6 +12,10 @@ const Demo7 = () => {
       clearInterval(timer)
     }
   }, [])
-  return <Price price={price} digits={3} size="normal" thousands />
+  return (
+    <Cell>
+      <Price price={price} digits={3} size="normal" thousands />
+    </Cell>
+  )
 }
 export default Demo7

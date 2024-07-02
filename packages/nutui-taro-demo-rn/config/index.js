@@ -28,12 +28,12 @@ const config = {
     process.env.TARO_ENV === 'harmony'
       ? '@tarojs/plugin-platform-harmony-ets'
       : process.env.TARO_ENV === 'jdrn'
-        ? '@jdtaro/plugin-platform-jdrn'
-        : '@tarojs/plugin-html',
+      ? '@jdtaro/plugin-platform-jdrn'
+      : '@tarojs/plugin-html',
   ],
   compiler: 'webpack5',
   alias: {
-    '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
+    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
       __dirname,
       '../nutui-react/locales/en-US.ts'
     ),

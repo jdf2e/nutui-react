@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -33,6 +34,7 @@ const ResultPageDemo = () => {
   })
   return (
     <>
+      <Header />
       <ScrollView className="demo">
         <View className="h2">{translated.basic}</View>
         <Demo1 />

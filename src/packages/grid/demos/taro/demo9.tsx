@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@nutui/nutui-react-taro'
 import { Image } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo9 = () => {
   const style = {

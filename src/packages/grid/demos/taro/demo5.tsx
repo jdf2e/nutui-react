@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@nutui/nutui-react-taro'
 // import { Image } from '@nutui/icons-react-taro'
 import { Text } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Image = () => <Text>T</Text>
 

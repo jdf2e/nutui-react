@@ -14,7 +14,6 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { pxCheck } from '@/utils/px-check'
 import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
@@ -49,6 +48,10 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
+
+  const pxCheck = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
 
   // 图片加载
   const handleLoad = (e: BaseEventOrig<TImageProps.onLoadEventDetail>) => {
@@ -85,7 +88,11 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       // eslint-disable-next-line no-nested-ternary
-      radius != null ? (Taro.getEnv() === 'RN' ? radius : pxCheck(radius)) : '',
+      radius !== undefined && radius != null
+        ? Taro.getEnv() === 'RN'
+          ? radius
+          : pxCheck(radius)
+        : '',
   }
 
   const imgStyle: any = {
@@ -127,7 +134,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     <View className={classNames(classPrefix, className)} style={containerStyle}>
       <TImage
         {...rest}
-        className={`${classPrefix}-default ${className}-image`}
+        className={`${classPrefix}-default ${className ? `${className}-image` : ''}`}
         style={imgStyle}
         src={src}
         onLoad={(e) => handleLoad(e)}
