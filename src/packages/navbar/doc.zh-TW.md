@@ -1,16 +1,16 @@
 # Navbar 頭部導航
 
-## 介紹
+
 
 提供導航功能。
 
-## 安裝
+## 引入
 
 ```tsx
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

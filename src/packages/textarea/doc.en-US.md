@@ -1,10 +1,10 @@
 # TextArea
 
-## Intro
+
 
 Enter or edit text in the text box, and limit the number of entries is supported.
 
-## Install
+## Import
 
 ```tsx
 import { TextArea } from '@nutui/nutui-react';

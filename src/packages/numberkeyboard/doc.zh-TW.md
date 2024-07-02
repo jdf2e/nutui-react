@@ -1,16 +1,16 @@
 # NumberKeyboard 數字鍵盤
 
-## 介紹
+
 
 虛擬數字鍵盤，用於輸入支付密碼的場景。
 
-## 安裝
+## 引入
 
 ```tsx
 import { NumberKeyboard } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 默認鍵盤
 

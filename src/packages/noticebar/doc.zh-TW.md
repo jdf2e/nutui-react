@@ -1,16 +1,16 @@
 # NoticeBar 公告欄
 
-## 介紹
+
 
 用於循環播放展示一組消息通知。
 
-## 安裝
+## 引入
 
 ```tsx
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

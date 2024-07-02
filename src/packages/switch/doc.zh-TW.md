@@ -1,16 +1,16 @@
 # Switch 開關
 
-## 介紹
+
 
 用來打開或關閉選項。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Switch } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 非受控
 

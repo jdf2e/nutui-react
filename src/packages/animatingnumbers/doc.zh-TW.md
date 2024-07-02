@@ -1,16 +1,16 @@
 # AnimatingNumbers 數字動畫
 
-## 介紹
+
 
 數字動畫集合
 
-## 安裝
+## 引入
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### AnimatingNumbers.CountUp - 基礎用法
 

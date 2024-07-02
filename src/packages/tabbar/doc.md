@@ -1,16 +1,15 @@
 # Tabbar 标签栏
 
-## 介绍
 
 底部导航常用场景
 
-## 安装
+## 引入
 
 ```tsx
 import { Tabbar } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

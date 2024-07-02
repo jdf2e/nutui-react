@@ -1,10 +1,10 @@
 # Drag
 
-## Intro
+
 
 Implement draggable arbitrary elements.
 
-## Install
+## Import
 
 ```tsx
 import { Drag } from '@nutui/nutui-react'

@@ -1,16 +1,15 @@
 # Address 地址
 
-## 介绍
 
 地址选择
 
-## 安装
+## 引入
 
 ```tsx
 import { Address } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 选择自定义地址
 

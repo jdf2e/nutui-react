@@ -1,10 +1,10 @@
 # Audio
 
-## Intro
+
 
 Used for audio playback
 
-## Install
+## Import
 
 ```tsx
 import { Audio } from '@nutui/nutui-react'

@@ -1,10 +1,10 @@
 # Elevator
 
-## Intro
+
 
 It is used to quickly locate the list and display the index
 
-## Install
+## Import
 
 ```tsx
 import { Elevator } from '@nutui/nutui-react'
