@@ -8,6 +8,10 @@ if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
 }
+const theme = process.env.THEME
+if (theme) {
+  themeStr = `src/styles/theme-${theme}.scss`
+}
 
 const config = {
   projectName: 'first',
@@ -28,8 +32,8 @@ const config = {
     process.env.TARO_ENV === 'harmony'
       ? '@tarojs/plugin-platform-harmony-ets'
       : process.env.TARO_ENV === 'jdrn'
-      ? '@jdtaro/plugin-platform-jdrn'
-      : '@tarojs/plugin-html',
+        ? '@jdtaro/plugin-platform-jdrn'
+        : '@tarojs/plugin-html',
   ],
   compiler: 'webpack5',
   alias: {
@@ -152,6 +156,18 @@ const config = {
   },
   rn: {
     appName: 'JDReactAPIDemos',
+    postcss: {
+      'postcss-css-variables': {
+        enable: true,
+        config: {
+          variables: {
+            '--nutui-color-primary': '#000',
+            '--nutui-color-primary-stop-1': '#000',
+            '--nutui-color-primary-stop-2': '#000',
+          },
+        },
+      },
+    },
   },
   isWatch: true,
 }
