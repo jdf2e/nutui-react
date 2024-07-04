@@ -157,16 +157,24 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e as any)}
       >
-        <View className="nut-button-wrap">
+        <View className={`${prefixCls}-wrap`}>
           {loading && !harmonyAndRn() && (
             <Loading className="nut-icon-loading" />
           )}
           {!loading && icon ? icon : null}
           {children && (
             <View
-              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`} ${icon || loading ? `nut-button-text` : ''}${
-                rightIcon ? ` nut-button-text-right` : ''
-              }`}
+              className={classNames(
+                `${prefixCls}-children`,
+                `${prefixCls}-${size}-children`,
+                `${prefixCls}-${type}-children`,
+                {
+                  [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`]:
+                    props.fill || disabled || loading,
+                  [`${prefixCls}-text`]: icon || loading,
+                  [`${prefixCls}-text-right`]: rightIcon,
+                }
+              )}
               style={harmonyAndRn() ? getContStyle() : {}}
             >
               {children}

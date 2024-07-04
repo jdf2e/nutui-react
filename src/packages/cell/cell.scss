@@ -9,8 +9,6 @@
   background-color: $cell-background-color;
   border-radius: $cell-border-radius;
   box-shadow: $cell-box-shadow;
-  font-size: $cell-title-font-size;
-  color: $cell-title-color;
   margin-bottom: 10px;
   box-sizing: border-box;
 
@@ -30,6 +28,8 @@
   &-title,
   &-description,
   &-extra {
+    font-size: $cell-title-font-size;
+    color: $cell-title-color;
     line-height: $cell-line-height;
   }
 

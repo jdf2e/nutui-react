@@ -16,16 +16,12 @@
   margin: 0;
   padding: 0;
   height: $button-default-height;
-  font-size: $button-default-font-size;
-  font-weight: $button-default-font-weight;
-  text-align: center;
   cursor: pointer;
   transition: $button-transition;
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: $button-default-color;
   background: $button-default-background-color;
   border-width: $button-border-width;
 
@@ -40,6 +36,10 @@
     display: flex;
     flex-direction: row;
     background: transparent;
+    font-size: $button-default-font-size;
+    font-weight: $button-default-font-weight;
+    text-align: center;
+    color: $button-default-color;
   }
 
   &::before {

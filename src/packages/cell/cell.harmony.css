@@ -36,8 +36,6 @@
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0px 1px 7px 0px rgb(237, 238, 241);
-  font-size: 14px;
-  color: #1a1a1a;
   margin-bottom: 10px;
   box-sizing: border-box;
 }
@@ -53,12 +51,18 @@
   flex: 1;
 }
 .nut-cell-title {
+  font-size: 14px;
+  color: #1a1a1a;
   line-height: 20px;
 }
 .nut-cell-description {
+  font-size: 14px;
+  color: #1a1a1a;
   line-height: 20px;
 }
 .nut-cell-extra {
+  font-size: 14px;
+  color: #1a1a1a;
   line-height: 20px;
 }
 .nut-cell-description {

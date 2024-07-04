@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
+import '../../demo.scss'
 
 const Demo5 = () => {
   const [visible, setVisible] = useState(false)
@@ -15,7 +16,9 @@ const Demo5 = () => {
   return (
     <>
       <Cell>
-        <View onClick={handleToggleShow}>嵌套内容</View>
+        <View className="nut-overlay-text" onClick={handleToggleShow}>
+          嵌套内容
+        </View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose}>

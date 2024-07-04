@@ -1,11 +1,12 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import '../../demo.scss'
 
 const Demo2 = () => {
   return (
     <Cell>
-      <View>自定义内容</View>
+      <View className="nutui-cell-demo-text">自定义内容</View>
     </Cell>
   )
 }

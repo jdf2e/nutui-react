@@ -5,6 +5,7 @@ import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { harmonyAndRn } from '@/utils/platform-taro'
+import '../../demo.scss'
 
 const Demo6 = () => {
   const onJumpclick = (
@@ -30,7 +31,10 @@ const Demo6 = () => {
           title="URL 跳转"
           extra={
             <>
-              <View style={{ marginRight: pxTransform(5) }}>
+              <View
+                className="nutui-cell-demo-text2"
+                style={{ marginRight: pxTransform(5) }}
+              >
                 /pages/index/index
               </View>
               {harmonyAndRn() ? null : <ArrowRight />}
@@ -53,7 +57,12 @@ const Demo6 = () => {
                 flexDirection: 'row',
               }}
             >
-              <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
+              <View
+                className="nutui-cell-demo-text"
+                style={{ fontWeight: pxTransform(500) }}
+              >
+                我是标题
+              </View>
               <View
                 style={{
                   color: '#888B94',
@@ -81,7 +90,12 @@ const Demo6 = () => {
           }
         />
         <Cell>
-          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
+          <View
+            className="nutui-cell-demo-text"
+            style={{ minHeight: pxTransform(50) }}
+          >
+            自定义内容
+          </View>
         </Cell>
         <Cell
           align="center"
@@ -107,6 +121,7 @@ const Demo6 = () => {
         <Cell
           title={
             <View
+              className="nutui-cell-demo-text"
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -120,7 +135,12 @@ const Demo6 = () => {
           extra={harmonyAndRn() ? null : <ArrowRight />}
         />
         <Cell>
-          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
+          <View
+            className="nutui-cell-demo-text"
+            style={{ minHeight: pxTransform(50) }}
+          >
+            自定义内容
+          </View>
         </Cell>
         <Cell
           align="center"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import '../../demo.scss'
 
 const Demo3 = () => {
   const [visible, setVisible] = useState(false)
@@ -13,7 +14,9 @@ const Demo3 = () => {
   return (
     <>
       <Cell>
-        <View onClick={handleToggleShow}>设置动画时间</View>
+        <View className="nut-overlay-text" onClick={handleToggleShow}>
+          设置动画时间
+        </View>
       </Cell>
 
       <Overlay

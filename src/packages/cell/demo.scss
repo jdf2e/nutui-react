@@ -23,6 +23,14 @@
   }
 }
 
+.nutui-cell-demo-text {
+  color: $cell-title-color;
+
+  &2 {
+    color: $cell-description-color;
+  }
+}
+
 [dir='rtl'] .nut-cell,
 .nut-rtl .nut-cell {
   .nut-icon-ArrowRight {

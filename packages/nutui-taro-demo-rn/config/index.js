@@ -8,9 +8,15 @@ if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
 }
+const sassResource = [
+  path.resolve(__dirname, '../../../', fileStr),
+  path.resolve(__dirname, '../../../', themeStr),
+]
 const theme = process.env.THEME
 if (theme) {
-  themeStr = `src/styles/theme-${theme}.scss`
+  sassResource.push(
+    path.resolve(__dirname, '../../../', `src/styles/theme-${theme}.scss`)
+  )
 }
 
 const config = {
@@ -56,10 +62,7 @@ const config = {
     '@styles': path.resolve(__dirname, '../styles'),
   },
   sass: {
-    resource: [
-      path.resolve(__dirname, '../../../', fileStr),
-      path.resolve(__dirname, '../../../', themeStr),
-    ],
+    resource: sassResource,
   },
   defineConstants: {},
   copy: {

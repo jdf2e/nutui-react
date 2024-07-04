@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import '../../demo.scss'
 
 const Demo4 = () => {
   const [visible, setVisible] = useState(false)
@@ -13,7 +14,9 @@ const Demo4 = () => {
   return (
     <>
       <Cell>
-        <View onClick={handleToggleShow}>不锁定背景滚动</View>
+        <View className="nut-overlay-text" onClick={handleToggleShow}>
+          不锁定背景滚动
+        </View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose} lockScroll={false} />
