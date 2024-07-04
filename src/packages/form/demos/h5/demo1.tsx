@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react'
+import { FormItemRuleWithoutValidator } from '@/packages/formitem/types'
 
 const Demo1 = () => {
   return (
@@ -21,6 +22,14 @@ const Demo1 = () => {
           rules={[
             { max: 5, message: '字段A不能超过5个字' },
             { required: true, message: '请输入字段A' },
+            {
+              validator: (
+                ruleCfg: FormItemRuleWithoutValidator,
+                value: string
+              ) => {
+                return value.length > 5
+              },
+            },
           ]}
         >
           <Input
