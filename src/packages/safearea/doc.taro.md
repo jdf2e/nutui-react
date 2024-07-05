@@ -1,16 +1,15 @@
 # SafeArea 安全区
 
-## 介绍
 
 在全面屏下提供自适应的边距调整。当网页被全屏展示时，可借助安全区实现自动适配。
 
-## 安装
+## 引入
 
 ```tsx
 import { SafeArea } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

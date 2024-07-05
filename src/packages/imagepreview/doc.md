@@ -1,16 +1,15 @@
 # ImagePreview组件
 
-## 介绍
 
 支持全屏预览视频和图片，可函数式调用
 
-## 安装
+## 引入
 
 ```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

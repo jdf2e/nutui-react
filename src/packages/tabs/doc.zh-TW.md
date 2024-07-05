@@ -1,16 +1,16 @@
 # Tabs 選項卡切換
 
-## 介紹
+
 
 常用於平級區域大塊內容的的收納和展現，支持內嵌標簽形式和渲染循環數據形式
 
-## 安裝
+## 引入
 
 ```tsx
 import { Tabs } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -259,3 +259,4 @@ import { Tabs } from '@nutui/nutui-react';
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向標題線條的寬度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向標題線條的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的內邊距 | `24px 20px` |
+| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色| `#fff` |

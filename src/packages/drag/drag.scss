@@ -1,10 +1,14 @@
 .nut-drag {
   position: fixed;
-  display: inline-flex;
   z-index: 9997 !important;
-  width: fit-content;
-  height: fit-content;
+  width: 0;
+  height: 0;
   touch-action: none;
   user-select: none;
   font-size: 0;
+  &-inner {
+    display: inline-flex;
+    width: fit-content;
+    height: fit-content;
+  }
 }

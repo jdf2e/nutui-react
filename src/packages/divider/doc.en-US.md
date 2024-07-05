@@ -1,10 +1,10 @@
 # Divider
 
-## Intro
+
 
 Separate content into multiple areas.
 
-## Install
+## Import
 
 ```tsx
 import { Divider } from '@nutui/nutui-react';

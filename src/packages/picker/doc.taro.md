@@ -1,16 +1,15 @@
 # Picker 选择器
 
-## 介绍
 
 提供多个选项集合供用户选择其中一项。
 
-## 安装
+## 引入
 
 ```tsx
 import { Picker } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

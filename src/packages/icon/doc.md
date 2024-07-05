@@ -1,16 +1,15 @@
 # Icon 图标
 
-## 介绍
 
 独立安装 @nutui/icons-react 图标组件包。提供两种使用方式（Svg 按需使用、IconFont 全量使用）。
 
-## 安装
+## 引入
 
 ```bash
 npm i --save @nutui/icons-react
 ```
 
-## 代码演示
+## 示例代码
 
 ### 方式一： Svg 按需使用
 

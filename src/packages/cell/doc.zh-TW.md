@@ -1,16 +1,16 @@
 # Cell 單元格
 
-## 介紹
+
 
 列表項，可組成列表。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Cell } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -45,20 +46,22 @@ export const Drag: FunctionComponent<
   const translateY = useRef(0)
   const middleLine = useRef(0)
 
-  const getInfo = () => {
+  const getInfo = async () => {
     const el = myDrag.current
     if (el) {
       const { top, left, bottom, right } = boundary
       const { screenWidth, windowHeight } = getSystemInfoSync()
 
+      const { width, height } = await getRectByTaro(dragRef.current)
+      dragRef.current?.getBoundingClientRect()
       createSelectorQuery()
         .select(`.${className}`)
         .boundingClientRect((rec: any) => {
           setBoundaryState({
             top: -rec.top + top,
             left: -rec.left + left,
-            bottom: windowHeight - rec.height - rec.top - bottom,
-            right: screenWidth - rec.width - rec.left - right,
+            bottom: windowHeight - rec.top - bottom - Math.ceil(height),
+            right: screenWidth - rec.left - right - Math.ceil(width),
           })
 
           middleLine.current =
@@ -135,6 +138,7 @@ export const Drag: FunctionComponent<
       ref={myDrag}
     >
       <div
+        className={`${classPrefix}-inner`}
         onTouchStart={(event) => touchStart(event)}
         ref={dragRef}
         onTouchMove={touchMove}

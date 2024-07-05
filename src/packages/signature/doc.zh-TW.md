@@ -1,16 +1,16 @@
 # Signature 簽名
 
-## 介紹
+
 
 基於 Canvas 的簽名組件
 
-## 安裝
+## 引入
 
 ```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
