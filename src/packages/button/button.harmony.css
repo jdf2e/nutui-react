@@ -16,16 +16,12 @@
   margin: 0;
   padding: 0;
   height: 32px;
-  font-size: 14px;
-  font-weight: 400;
-  text-align: center;
   cursor: pointer;
   transition: opacity 0.2s;
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: #1a1a1a;
   background: transparent;
   border-width: 1px;
 }
@@ -39,6 +35,10 @@
   display: flex;
   flex-direction: row;
   background: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #1a1a1a;
 }
 .nut-button::before {
   position: absolute;

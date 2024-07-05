@@ -3,6 +3,7 @@ import { Button, Cell } from '@nutui/nutui-react-taro'
 import { Star, Plus } from '@nutui/icons-react-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
+import '../../demo.scss'
 
 const Demo4 = () => {
   const marginStyle = {
@@ -158,44 +159,34 @@ const Demo4 = () => {
             Button
           </Button>
           <Button
+            className="button-demo4-3"
             // icon={<Star />}
             // rightIcon={<Star />}
             style={{
-              ...{
-                backgroundColor: `#ffebf1`,
-                borderColor: `#ff0f23`,
-                color: `#ff0f23`,
-              },
               ...marginStyle,
             }}
           >
             Button
           </Button>
           <Button
+            className="button-demo4-4"
             type="default"
             fill="none"
             // icon={<Star />}
             // rightIcon={<Star />}
             style={{
-              ...{
-                backgroundColor: `#f5f6fa`,
-                color: `#1a1a1a`,
-              },
               ...marginStyle,
             }}
           >
             Button
           </Button>
           <Button
+            className="button-demo4-5"
             type="default"
             fill="none"
             // icon={<Star />}
             // rightIcon={<Star />}
             style={{
-              ...{
-                backgroundColor: `#ffffff`,
-                color: `#1a1a1a`,
-              },
               ...marginStyle,
             }}
           >

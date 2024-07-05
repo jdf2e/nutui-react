@@ -1,0 +1,20 @@
+.button {
+  &-demo4 {
+    &-3 {
+      background-color: var(--nutui-color-primary-light);
+      border-color: var(--nutui-color-primary);
+      // @TODO RN 端文字样式无法继承
+      color: var(--nutui-color-primary);
+    }
+
+    &-4 {
+      background-color: var(--nutui-gray-3);
+      color: var(--nutui-gray-7);
+    }
+
+    &-5 {
+      background-color: var(--nutui-gray-1);
+      color: var(--nutui-gray-7);
+    }
+  }
+}
