@@ -15,7 +15,7 @@ const Demo1 = () => {
         labelPosition="right"
         footer={
           <>
-            <Button formType="submit" block type="primary">
+            <Button nativeType="submit" block type="primary">
               提交
             </Button>
           </>
