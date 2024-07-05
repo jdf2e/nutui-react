@@ -1,16 +1,16 @@
 # Button 按鈕
 
-## 介紹
+
 
 按鈕用於觸發一個操作，如提交表單。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Button } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 按鈕類型
 

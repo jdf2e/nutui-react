@@ -29,7 +29,7 @@ export interface SearchBarProps extends BasicComponent {
   /**  确定搜索时触发	 */
   onSearch?: (val: string) => void
   /** 输入框内容变化时触发	 */
-  onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
   /** 输入框获得焦点时触发	 */
   onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
   /** 输入框失去焦点时触发	 */
@@ -193,6 +193,7 @@ export const SearchBar: FunctionComponent<
       return
     }
     setValue('')
+    onChange && onChange?.('')
     onClear && onClear(event)
     forceFocus()
   }

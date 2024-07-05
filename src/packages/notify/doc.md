@@ -1,16 +1,15 @@
 # Notify 消息通知
 
-## 介绍
 
 在页面顶部展示消息提示
 
-## 安装
+## 引入
 
 ```tsx
 import { Notify } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

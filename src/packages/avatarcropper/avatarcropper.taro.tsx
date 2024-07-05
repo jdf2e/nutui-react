@@ -272,6 +272,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     if (canvasDom?.tagName !== 'CANVAS') {
       canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement
     }
+    if (!canvas) return
     canvas.width = state.displayWidth
     canvas.height = state.displayHeight
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D

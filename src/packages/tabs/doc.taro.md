@@ -1,16 +1,15 @@
 # Tabs 选项卡切换
 
-## 介绍
 
 常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式
 
-## 安装
+## 引入
 
 ```tsx
 import { Tabs } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -259,3 +258,4 @@ import { Tabs } from '@nutui/nutui-react-taro';
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向标题线条的宽度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
+| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色| `#fff` |

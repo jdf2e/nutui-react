@@ -1,10 +1,10 @@
 # Radio
 
-## Intro
+
 
 Used to single select in a set of alternatives
 
-## Install
+## Import
 
 ```tsx
 import { Radio } from '@nutui/nutui-react';

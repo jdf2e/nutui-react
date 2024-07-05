@@ -596,6 +596,7 @@ export type NutCSSVariables =
   | 'nutuiTabsVerticalTabLineHeight'
   | 'nutuiTabsTitlesItemSmileBottom'
   | 'nutuiTabsTabpanePadding'
+  | 'nutuiTabsTabpaneBackgroundColor'
   | 'nutuiIndicatorColor'
   | 'nutuiIndicatorDotColor'
   | 'nutuiIndicatorDotSize'

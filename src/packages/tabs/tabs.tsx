@@ -101,10 +101,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
     const titleItem = titleItemsRef.current
-    if (!nav || !titleItem || !titleItem[index]) {
+    const titlesLength = titles.current.length
+    const itemLength = titleItemsRef.current.length
+    if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
       return
     }
-    const title = titleItem[index]
+    const title = titleItem[itemLength - titlesLength + index]
 
     let to = 0
     if (direction === 'vertical') {

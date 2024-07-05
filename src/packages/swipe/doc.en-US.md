@@ -1,10 +1,10 @@
 # Swipe
 
-## Intro
+
 
 It is often used for gesture operations such as sliding left and right to delete cells
 
-## Install
+## Import
 
 ```tsx
 import { Swipe } from '@nutui/nutui-react';

@@ -1,16 +1,16 @@
 # CalendarCard 日歷
 
-## 介紹
+
 
 日歷
 
-## 安裝
+## 引入
 
 ```tsx
 import { CalendarCard } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 選擇單個日期
 

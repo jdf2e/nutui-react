@@ -1,16 +1,16 @@
 # Barrage 彈幕
 
-## 介紹
+
 
 用於話語和詞組的輪播展示，適用於視頻中或其他類似需求中。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Barrage } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

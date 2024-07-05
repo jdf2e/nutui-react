@@ -1,10 +1,10 @@
 # Tag
 
-## Intro
+
 
 Label for labeling and classification.
 
-## Install
+## Import
 
 ```tsx
 import { Tag } from '@nutui/nutui-react';

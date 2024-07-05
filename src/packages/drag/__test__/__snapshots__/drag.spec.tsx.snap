@@ -11,6 +11,7 @@ exports[`Drag > should render default slot correctly 1`] = `
 
 exports[`Drag > touch move 1`] = `
 <div
+  class="nut-drag-inner"
   style="transform: none;"
 >
   <span

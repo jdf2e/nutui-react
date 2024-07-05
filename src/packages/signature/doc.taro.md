@@ -1,16 +1,15 @@
 # Signature 签名
 
-## 介绍
 
 基于 Canvas 的签名组件
 
-## 安装
+## 引入
 
 ```tsx
 import { Signature } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

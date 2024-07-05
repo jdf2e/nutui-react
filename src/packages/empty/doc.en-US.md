@@ -1,10 +1,10 @@
 # Empty
 
-## Intro
+
 
 Placeholder prompt when empty
 
-## Install
+## Import
 
 ```tsx
 import { Empty } from '@nutui/nutui-react'

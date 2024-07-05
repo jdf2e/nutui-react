@@ -1,16 +1,16 @@
 # Ellipsis組件
 
-## 介紹
+
 
 展示空間不足時，隱去部分內容併用“...”替代。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Ellipsis } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 頭部省略
 

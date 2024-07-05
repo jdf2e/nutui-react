@@ -13,6 +13,7 @@ import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
+import Demo14 from './demos/h5/demo14'
 
 const TableDemo = () => {
   const [translated] = useTranslate({
@@ -30,6 +31,7 @@ const TableDemo = () => {
       stickyHeader: '固定表头',
       stickyLeftColumn: '固定左列',
       stickyRightColumn: '固定右列',
+      customRow: '自定义行',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -46,6 +48,7 @@ const TableDemo = () => {
       stickyHeader: 'Sticky Header',
       stickyLeftColumn: 'Sticky Left Column',
       stickyRightColumn: 'Sticky Rright Column',
+      customRow: 'Custom Row',
     },
   })
 
@@ -77,6 +80,8 @@ const TableDemo = () => {
       <Demo12 />
       <h2>{translated.stickyRightColumn}</h2>
       <Demo13 />
+      <h2>{translated.customRow}</h2>
+      <Demo14 />
     </div>
   )
 }
