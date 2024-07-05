@@ -86,7 +86,7 @@ export const Drag: FunctionComponent<
   }
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    onDragStart && onDragStart()
+    onDragStart?.()
     const touches = e.touches[0]
     axisCache.current = { x: touches.clientX, y: touches.clientY }
     transformCache.current = { x: translateX.current, y: translateY.current }
@@ -99,10 +99,9 @@ export const Drag: FunctionComponent<
       const y = touch.clientY - axisCache.current.y
       translateX.current = x + transformCache.current.x
       translateY.current = y + transformCache.current.y
-      onDrag &&
-        onDrag({
-          offset: [translateX.current, translateY.current],
-        })
+      onDrag?.({
+        offset: [translateX.current, translateY.current],
+      })
       // 边界判断
       if (translateX.current < boundaryState.left) {
         translateX.current = boundaryState.left
@@ -124,10 +123,9 @@ export const Drag: FunctionComponent<
   }
 
   const touchEnd = (e: React.TouchEvent) => {
-    onDragEnd &&
-      onDragEnd({
-        offset: [translateX.current, translateY.current],
-      })
+    onDragEnd?.({
+      offset: [translateX.current, translateY.current],
+    })
     if (direction !== 'y' && attract && dragRef.current) {
       if (translateX.current < middleLine.current) {
         translateX.current = boundaryState.left

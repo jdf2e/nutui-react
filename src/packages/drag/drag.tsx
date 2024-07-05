@@ -86,9 +86,9 @@ export const Drag: FunctionComponent<
         offset: [x, y],
         first,
       } = state
-      onDragStart && first && onDragStart()
-      onDrag && onDrag({ offset: [x, y] })
-      onDragEnd && last && onDragEnd({ offset: [x, y] })
+      first && onDragStart?.()
+      onDrag?.({ offset: [x, y] })
+      last && onDragEnd?.({ offset: [x, y] })
       api.start({ x, y, immediate: down })
       if (last) {
         if (direction !== 'y' && attract) {
