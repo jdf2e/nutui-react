@@ -1,3 +1,16 @@
+# v2.6.12
+`2024-07-05`
+
+
+* :sparkles: feat: add pagination whether to show pages in imagepreview (#2411) @xiaoyatong
+* :bug: fix(uploader): pre-upload pmage preview bug (#2416) @Alex-huxiyang
+* :bug: fix(taro-form-demo): 点击演示demo表单内的重置会触发提交表单事件bug修复 (#2415) @Skedush
+* :bug: fix(form): validator 中的 value 类型更新为 any (#2406) @oasis-cloud
+* :bug: fix(uploader): 京东小程序中可上传时可选择图片和视频 (#2410) @xueshufive
+* :bug: fix(avatarcropper): 报错 (#2364) @Alex-huxiyang
+* :bug: fix(form): setFields未触发校验 (#2400) @Alex-huxiyang
+
+
 # v2.6.11
 `2024-06-28`
 
@@ -65,12 +78,12 @@
 `2024-05-17`
 
 
-*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex.huxiyang
+*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex-huxiyang
 * :bug: fix(circleprogress): update demo (#2260) @Eiinu
 * :bug: fix: 移除 defaultProps(2) (#2254) @Eiinu
-* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex.huxiyang
-* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex.huxiyang
-* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex.huxiyang
+* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex-huxiyang
+* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex-huxiyang
+* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex-huxiyang
 * :bug: fix(input): 修复特殊场景下自动清除失效问题 (#2240) @Eiinu
 
 
