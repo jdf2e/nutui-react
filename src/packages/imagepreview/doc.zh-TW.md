@@ -80,6 +80,7 @@ import { ImagePreview } from '@nutui/nutui-react'
 | autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `3000` |
 | defaultValue | 初始頁碼 | `number` | `1` |
 | value | 頁碼，受控 | `number` | `1` |
+| pagination | 分頁是否展示 | `boolean` | `true` |
 | indicator | 分頁指示器是否展示 | `boolean` | `false` |
 | indicatorColor | 分頁指示器選中的顏色 | `string` | `#fff` |
 | closeOnContentClick | 點擊圖片可以退出預覽 | `boolean` | `false` |
