@@ -3,6 +3,9 @@ import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export interface DragState {
+  offset: [x: number, y: number]
+}
 export interface DragProps extends BasicComponent {
   attract: boolean
   direction: 'x' | 'y' | 'lock' | undefined
@@ -12,6 +15,9 @@ export interface DragProps extends BasicComponent {
     right: number
     bottom: number
   }
+  onDragStart: () => void
+  onDragEnd: (state: DragState) => void
+  onDrag: (state: DragState) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -27,11 +33,21 @@ const defaultProps = {
 export const Drag: FunctionComponent<
   Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { attract, direction, boundary, children, className, style, ...reset } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+  const {
+    attract,
+    direction,
+    boundary,
+    onDrag,
+    onDragStart,
+    onDragEnd,
+    children,
+    className,
+    style,
+    ...reset
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const classPrefix = 'nut-drag'
   const [boundaryState, setBoundaryState] = useState(boundary)
   const myDrag = useRef<HTMLDivElement>(null)
@@ -63,7 +79,16 @@ export const Drag: FunctionComponent<
   }
 
   const bind = useDrag(
-    ({ down, last, offset: [x, y] }) => {
+    (state) => {
+      const {
+        down,
+        last,
+        offset: [x, y],
+        first,
+      } = state
+      onDragStart && first && onDragStart()
+      onDrag && onDrag({ offset: [x, y] })
+      onDragEnd && last && onDragEnd({ offset: [x, y] })
       api.start({ x, y, immediate: down })
       if (last) {
         if (direction !== 'y' && attract) {
