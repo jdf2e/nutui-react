@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { DragState } from './drag'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -12,6 +13,9 @@ export interface DragProps extends BasicComponent {
     right: number
     bottom: number
   }
+  onDragStart: () => void
+  onDragEnd: (state: DragState) => void
+  onDrag: (state: DragState) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -28,11 +32,21 @@ const defaultProps = {
 export const Drag: FunctionComponent<
   Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { attract, direction, boundary, children, className, style, ...reset } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+  const {
+    attract,
+    direction,
+    boundary,
+    onDrag,
+    onDragStart,
+    onDragEnd,
+    children,
+    className,
+    style,
+    ...reset
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const classPrefix = 'nut-drag'
   const [boundaryState, setBoundaryState] = useState(boundary)
   const myDrag = useRef<HTMLDivElement>(null)
@@ -72,7 +86,7 @@ export const Drag: FunctionComponent<
   }
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const target = e.currentTarget as HTMLElement
+    onDragStart?.()
     const touches = e.touches[0]
     axisCache.current = { x: touches.clientX, y: touches.clientY }
     transformCache.current = { x: translateX.current, y: translateY.current }
@@ -85,7 +99,9 @@ export const Drag: FunctionComponent<
       const y = touch.clientY - axisCache.current.y
       translateX.current = x + transformCache.current.x
       translateY.current = y + transformCache.current.y
-
+      onDrag?.({
+        offset: [translateX.current, translateY.current],
+      })
       // 边界判断
       if (translateX.current < boundaryState.left) {
         translateX.current = boundaryState.left
@@ -107,6 +123,9 @@ export const Drag: FunctionComponent<
   }
 
   const touchEnd = (e: React.TouchEvent) => {
+    onDragEnd?.({
+      offset: [translateX.current, translateY.current],
+    })
     if (direction !== 'y' && attract && dragRef.current) {
       if (translateX.current < middleLine.current) {
         translateX.current = boundaryState.left

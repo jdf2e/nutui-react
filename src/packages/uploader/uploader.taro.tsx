@@ -222,8 +222,7 @@ const InternalUploader: ForwardRefRenderFunction<
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
-      fileList.splice(0, fileList.length)
-      setFileList([...fileList])
+      setFileList([])
     }
   }
 
@@ -420,8 +419,7 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      fileList.push(fileItem)
-      setFileList(fileList)
+      setFileList([...fileList, fileItem])
       executeUpload(fileItem, index)
     })
   }
