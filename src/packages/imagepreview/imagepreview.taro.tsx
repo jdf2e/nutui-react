@@ -276,7 +276,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         <Swiper
@@ -304,6 +303,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                   >
                     <TaroVideo
                       src={item.source.src}
+                      onClick={closeOnImg}
                       controls={item.options.controls}
                       autoplay={false}
                       loop={false}
@@ -322,9 +322,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                       className="nut-imagepreview-swiper-item"
                     >
                       {Taro.getEnv() === 'WEB' ? (
-                        <Image src={item.src} mode="aspectFit" />
+                        <Image
+                          src={item.src}
+                          mode="aspectFit"
+                          onClick={closeOnImg}
+                        />
                       ) : (
                         <Image
+                          onClick={closeOnImg}
                           src={item.src}
                           mode="aspectFit"
                           showMenuByLongpress={!!showMenuByLongpress}
