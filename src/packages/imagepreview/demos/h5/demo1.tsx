@@ -20,7 +20,6 @@ const Demo1 = () => {
   return (
     <>
       <ImagePreview
-        closeOnContentClick
         autoPlay={0}
         images={images}
         visible={showPreview}

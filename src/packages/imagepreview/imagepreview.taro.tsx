@@ -7,11 +7,11 @@ import React, {
   ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { ITouchEvent, Video as TaroVideo } from '@tarojs/components'
+import { ITouchEvent, Video as TaroVideo, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
-import Image from '@/packages/image/index.taro'
+// import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
@@ -321,20 +321,17 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                       key={index}
                       className="nut-imagepreview-swiper-item"
                     >
-                      {Taro.getEnv() === 'WEB' ? (
-                        <Image
-                          src={item.src}
-                          mode="aspectFit"
-                          onClick={closeOnImg}
-                        />
-                      ) : (
-                        <Image
-                          onClick={closeOnImg}
-                          src={item.src}
-                          mode="aspectFit"
-                          showMenuByLongpress={!!showMenuByLongpress}
-                        />
-                      )}
+                      (
+                      <Image
+                        src={item.src}
+                        mode="widthFix"
+                        onClick={closeOnImg}
+                        style={{ width: '100%' }}
+                        {...(Taro.getEnv() !== 'WEB' && {
+                          showMenuByLongpress,
+                        })}
+                      />
+                      )
                     </SwiperItem>
                   )
                 })
