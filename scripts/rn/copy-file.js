@@ -65,7 +65,7 @@ const copyFile = async (from, to, success, isSingle = false) => {
         if (!['icon'].includes(item)) {
           modify(
             `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
-            `import "./${item}.harmony.css";\n`
+            `import "./${item}.scss";\n`
           )
         }
       }

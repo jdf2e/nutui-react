@@ -67,6 +67,7 @@
     "dev:taro:jdharmony": "pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
     "rn:copy": "node ./scripts/rn/copy-file.js",
     "dev:taro:rn": "pnpm --dir ./packages/nutui-taro-demo-rn dev:jdrn & pnpm run gulp:watch",
+    "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
     "gulp:watch": "gulp watch --environment",
     "dev:taro:weapp:jmapp": "pnpm --dir ./packages/nutui-taro-demo && npm run dev:weapp:jmapp",
     "test": "vitest --coverage",
