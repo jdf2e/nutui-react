@@ -45,6 +45,7 @@ export interface ButtonProps
 }
 
 const prefixCls = 'nut-button'
+const FONT_STYLES = ['color', 'fontSize', 'fontWeight', 'textAlign']
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -101,7 +102,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.color, props.fill])
 
     const getContStyle = useCallback(() => {
       const style: CSSProperties = {}
@@ -114,8 +115,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           style.borderColor = 'transparent'
         }
       }
+
+      // 继承父节点文字相关样式
+      FONT_STYLES.forEach((prop) => {
+        // @ts-ignore
+        if (props.style?.[prop]) style[prop] = props.style[prop]
+      })
+
       return style
-    }, [color])
+    }, [color, props.color, props.fill, props.style])
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
@@ -175,7 +183,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
                   [`${prefixCls}-text-right`]: rightIcon,
                 }
               )}
-              style={harmonyAndRn() ? getContStyle() : {}}
+              style={getContStyle()}
             >
               {children}
             </View>
