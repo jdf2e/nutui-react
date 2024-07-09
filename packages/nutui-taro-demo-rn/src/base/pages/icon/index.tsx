@@ -1,2 +1,2 @@
-import Demo from '@/packages/icon/demo.taro'
-export default Demo
+import Demo from '@/packages/icon/demo.taro';
+export default Demo;

@@ -1,2 +1,2 @@
-import Demo from '@/packages/skeleton/demo.taro'
-export default Demo
+import Demo from '@/packages/skeleton/demo.taro';
+export default Demo;
