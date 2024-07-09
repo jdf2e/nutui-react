@@ -173,8 +173,7 @@ const InternalUploader: ForwardRefRenderFunction<
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
-      fileList.splice(0, fileList.length)
-      setFileList([...fileList])
+      setFileList([])
     }
   }
 
@@ -301,13 +300,11 @@ const InternalUploader: ForwardRefRenderFunction<
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileItem.url = (event.target as FileReader).result as string
-          fileList.push(fileItem)
-          setFileList([...fileList])
+          setFileList([...fileList, fileItem])
         }
         reader.readAsDataURL(file)
       } else {
-        fileList.push(fileItem)
-        setFileList([...fileList])
+        setFileList([...fileList, fileItem])
       }
     })
   }
