@@ -60,6 +60,7 @@
     "dev:theme": "npm run generate:themes-dev && npm run checked && vite  --force --config vite.config.theme.ts",
     "dev:taro:weapp": "pnpm --dir ./packages/nutui-taro-demo dev:weapp",
     "dev:taro:jd": "pnpm --dir ./packages/nutui-taro-demo dev:jd",
+    "build:taro:jd": "pnpm --dir ./packages/nutui-taro-demo build:jd",
     "dev:taro:h5": "pnpm --dir ./packages/nutui-taro-demo dev:h5",
     "dev:taro:h5:jmapp": "pnpm --dir ./packages/nutui-taro-demo dev:h5:jmapp",
     "dev:taro:alipay": "pnpm --dir ./packages/nutui-taro-demo dev:alipay",
