@@ -52,6 +52,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 10px;
 }
 .nut-tag-plain {
   background-color: #fff;
