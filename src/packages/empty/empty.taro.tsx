@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
-import { View, Image } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import { View, Image, Text } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
@@ -10,6 +9,7 @@ import {
   ButtonSize,
   ButtonType,
 } from '@/packages/button/button.taro'
+import { rn } from '@/utils/platform-taro'
 
 export interface EmptyAction {
   text: React.ReactNode
@@ -91,12 +91,11 @@ export const Empty: FunctionComponent<
     )
 
   useEffect(() => {
-    const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
     setImgStyle(() => {
       if (!imageSize) {
         return {}
       }
-      if (isRN || typeof imageSize !== 'number') {
+      if (rn() || typeof imageSize !== 'number') {
         return {
           width: imageSize,
           height: imageSize,
@@ -131,7 +130,11 @@ export const Empty: FunctionComponent<
             const { text, ...rest } = action
             return (
               <View className={`${classPrefix}-action`} key={index}>
-                <Button {...rest}>{action?.text}</Button>
+                <Button {...rest}>
+                  <Text className={`${classPrefix}-action-text`}>
+                    {action?.text}
+                  </Text>
+                </Button>
               </View>
             )
           })}
