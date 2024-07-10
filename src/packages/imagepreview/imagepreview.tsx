@@ -256,7 +256,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
 
-  const closeOnImg = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const closeOnImg = (e: any) => {
     e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
@@ -275,7 +275,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         {showPop ? (
@@ -298,7 +297,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
               ? videos.map((item, index) => {
                   return (
                     <SwiperItem key={index}>
-                      <Video source={item.source} options={item.options} />
+                      <Video
+                        source={item.source}
+                        options={item.options}
+                        onClick={closeOnImg}
+                      />
                     </SwiperItem>
                   )
                 })
@@ -308,7 +311,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                 ? images.map((item, index) => {
                     return (
                       <SwiperItem key={index}>
-                        <Image src={item.src} draggable={false} />
+                        <Image
+                          src={item.src}
+                          draggable={false}
+                          onClick={closeOnImg}
+                        />
                       </SwiperItem>
                     )
                   })
