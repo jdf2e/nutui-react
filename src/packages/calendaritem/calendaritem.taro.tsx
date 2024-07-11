@@ -480,11 +480,13 @@ export const CalendarItem = React.forwardRef<
     monthsData.splice(0)
     initData()
   }
-
   useEffect(() => {
     setCurrentDate(resetDefaultValue() || [])
-    popup && resetRender()
   }, [defaultValue])
+
+  useEffect(() => {
+    popup && resetRender()
+  }, [currentDate])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
