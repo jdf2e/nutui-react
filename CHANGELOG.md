@@ -1,3 +1,14 @@
+# v2.6.13
+`2024-07-12`
+
+
+* :sparkles: feat: tabs滚动条兼容火狐浏览器 (#2431) @JoanneXu6677
+* :sparkles: feat(drag):  add the ability to support onDrag, onDragStart, onDragEnd callbacks (#2418) @Alex-huxiyang
+* :bug: fix(formItem): validateTrigger无法正确触发校验 (#2433) @Alex-huxiyang
+* :bug: fix: 日历组件滚动到顶部时 出现空白问题 (#2409) @522109452
+* :bug: fix(imagepreview): 无法在预期情景正确关闭图片的异常 (#2421) @Alex-huxiyang
+
+
 # v2.6.12
 `2024-07-05`
 
