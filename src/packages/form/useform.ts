@@ -113,7 +113,6 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
-    this.validateFields()
   }
 
   setCallback = (callback: Callbacks) => {
