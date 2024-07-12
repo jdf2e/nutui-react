@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Radio, Toast, Button } from '@nutui/nutui-react'
+import { Form, Input, Radio, Toast } from '@nutui/nutui-react'
 
 const Demo5 = () => {
   const submitFailed = (error: any) => {
@@ -45,9 +45,6 @@ const Demo5 = () => {
             <Radio value="female">B</Radio>
           </Radio.Group>
         </Form.Item>
-        <Button onClick={() => form.setFieldsValue({ username: '1' })}>
-          click
-        </Button>
       </Form>
     </>
   )
