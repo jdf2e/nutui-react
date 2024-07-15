@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View, Image } from '@tarojs/components'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
@@ -39,43 +39,43 @@ function Index() {
   return (
     <>
       <ScrollView className="index">
-        <div className="index-header">
-          <img
+        <View className="index-header">
+          <Image
             className="img"
             src={`https://img14.360buyimg.com/imagetools/jfs/t1/117879/25/28831/6279/6329723bE66715a2f/5f099b8feca9e8cc.png`}
             alt=""
             srcSet=""
           />
-          <div className="info">
-            <h1 className="h1">NutUI React</h1>
-            <p className="p">京东风格的轻量级小程序组件库 React 版</p>
-            <p className="p">v{packageJson.version}</p>
-          </div>
-        </div>
-        <div className="index-components">
+          <View className="info">
+            <View className="h1">NutUI React</View>
+            <View className="p">京东风格的轻量级小程序组件库 React 版</View>
+            <View className="p">v{packageJson.version}</View>
+          </View>
+        </View>
+        <View className="index-components">
           {navs.map((nav) => (
-            <ol key={nav.enName} className="ol">
+            <View key={nav.enName} className="ol">
               {nav.enName === 'dataentry' ? null : (
-                <li className="li">{nav.name}</li>
+                <View className="li">{nav.name}</View>
               )}
-              <ul className="ul">
+              <View className="ul">
                 {nav.packages.map((com) =>
                   com.show && com.taro ? (
-                    <li key={com.name} className="li">
-                      <a
+                    <View key={com.name} className="li">
+                      <View
                         className="a"
                         key={com.name}
                         onClick={() => gotoNext(com.name, nav.enName)}
                       >
                         {com.name}
-                      </a>
-                    </li>
+                      </View>
+                    </View>
                   ) : null
                 )}
-              </ul>
-            </ol>
+              </View>
+            </View>
           ))}
-        </div>
+        </View>
       </ScrollView>
     </>
   )
