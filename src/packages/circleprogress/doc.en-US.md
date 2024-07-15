@@ -1,10 +1,10 @@
 # CricleProgress
 
-## Intro
+
 
 Circular progress bar component
 
-## Install
+## Import
 
 ```tsx
 import { CircleProgress } from '@nutui/nutui-react';

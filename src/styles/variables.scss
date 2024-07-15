@@ -273,11 +273,13 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: linear-gradient(
-  135deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
-) !default;
+$button-primary-background-color: $color-primary;
+
+// linear-gradient(
+//   135deg,
+//   $color-primary-stop-1 0%,
+//   $color-primary-stop-2 100%
+// ) !default;
 $button-primary-disabled: var(
   --nutui-button-primary-disabled,
   $color-primary-disabled
@@ -592,7 +594,7 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
-$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
+$inputnumber-input-width: var(--nutui-inputnumber-input-width, 60px) !default;
 $inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
 $inputnumber-input-background-color: var(
   --nutui-inputnumber-input-background-color,
@@ -757,8 +759,44 @@ $numberkeyboard-key-confirm-background-color: var(
 
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
-$countdown-color: var(--nutui-countdown-color, $color-title) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, 14px) !default;
+$countdown-color: var(--nutui-countdown-color, $color-primary) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, 10px) !default;
+$coutdown-font-weight: var(--nutui-countdown-font-weight, 400) !default;
+$countdown-height: var(--nutui-countdown-height, 14px) !default;
+$countdown-width: var(--nutui-countdown-width, 20px) !default;
+$countdown-number-padding: var(
+  --nutui-countdown-number-padding,
+  0 1px
+) !default;
+$countdown-number-border-radius: var(
+  --nutui-countdown-number-border-radius,
+  2px
+) !default;
+$countdown-number-margin: var(--nutui-countdown-number-margin, 0 2px) !default;
+$countdown-number-border-color: var(
+  --nutui-countdown-number-border-color,
+  $color-primary-light
+) !default;
+$countdown-number-color: var(
+  --nutui-countdown-number-color,
+  $color-primary
+) !default;
+$countdown-number-background-color: var(
+  --nutui-countdown-number-background-color,
+  transparent
+) !default;
+$countdown-number-primary-border-color: var(
+  --nutui-countdown-number-primary-border-color,
+  $color-primary
+) !default;
+$countdown-number-primary-color: var(
+  --nutui-countdown-number-primary-color,
+  #ffffff
+) !default;
+$countdown-number-primary-background-color: var(
+  --nutui-countdown-number-primary-background-color,
+  $color-primary
+) !default;
 
 //large price（✅）
 $price-symbol-padding-right: var(
@@ -939,6 +977,40 @@ $calendar-day-font-weight: var(
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px
+) !default;
+
+//hoverbutton
+$hoverbutton-spacing: var(
+  --nutui-hoverbutton-spacing,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-position-bottom: var(
+  --nutui-hoverbutton-position-bottom,
+  48px
+) !default;
+$hoverbutton-position-right: var(
+  --nutui-hoverbutton-position-right,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-item-border-color: var(
+  --nutui-hoverbutton-item-border-color,
+  var(--nutui-black-3, rgba(0, 0, 0, 0.06))
+) !default;
+$hoverbutton-item-background: var(
+  --nutui-hoverbutton-item-background,
+  var(--nutui-gray-1, #ffffff)
+) !default;
+$hoverbutton-item-background-active: var(
+  --nutui-hoverbutton-item-background-active,
+  var(--nutui-gray-3, #f6f6f6)
+) !default;
+$hoverbutton-item-icon-color: var(
+  --nutui-hoverbutton-item-icon-color,
+  var(--nutui-gray-7, #1a1a1a)
+) !default;
+$hoverbutton-item-icon-color-active: var(
+  --nutui-hoverbutton-item-icon-color-active,
+  var(--nutui-gray-6, #595959)
 ) !default;
 
 //overlay（✅）
@@ -1710,7 +1782,10 @@ $tabs-titles-item-smile-bottom: var(
   -10%
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
-
+$tabs-tabpane-backgroundColor: var(
+  --nutui-tabs-tabpane-backgroundColor,
+  #fff
+) !default;
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;

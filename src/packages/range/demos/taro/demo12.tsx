@@ -1,12 +1,28 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { View } from '@tarojs/components'
-import { Range, Cell, Toast } from '@nutui/nutui-react-taro'
+import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo12 = () => {
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
+  const verticalStyle = useMemo(() => {
+    return harmonyAndRn()
+      ? {
+          height: pxTransform(180),
+          paddingTop: pxTransform(10),
+          paddingBottom: pxTransform(10),
+          paddingLeft: pxTransform(10),
+          paddingRight: pxTransform(10),
+        }
+      : {
+          height: '180px',
+          padding: '10px',
+        }
+  }, [])
+  const viewStyle = useMemo(
+    () => ({ width: pxTransform(150), height: '100%' }),
+    []
+  )
   const [show, setShow] = useState(false)
   const [msg, setMsg] = useState('')
   const showToast = (msg: string) => {
@@ -14,16 +30,16 @@ const Demo12 = () => {
     setShow(true)
   }
   return (
-    <>
+    <View>
       <Cell style={verticalStyle}>
-        <View style={{ width: '150px', height: '100%' }}>
+        <View style={viewStyle}>
           <Range
             defaultValue={20}
             vertical
             onEnd={(val) => showToast(`${val}`)}
           />
         </View>
-        <View style={{ width: '150px', height: '100%' }}>
+        <View style={viewStyle}>
           <Range
             defaultValue={[20, 80]}
             vertical
@@ -32,15 +48,15 @@ const Demo12 = () => {
           />
         </View>
       </Cell>
-      <Toast
+      {/* <Toast
         type="text"
         visible={show}
         content={msg}
         onClose={() => {
           setShow(false)
         }}
-      />
-    </>
+      /> */}
+    </View>
   )
 }
 export default Demo12

@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import Taro, { pxTransform } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -66,12 +66,7 @@ export const Cell: FunctionComponent<
 
   const baseStyle = {
     ...style,
-    borderRadius: [Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
-      // @ts-ignore
-      Taro.getEnv()
-    )
-      ? pxTransform(radiusNumber)
-      : radiusNumber,
+    borderRadius: pxTransform(radiusNumber),
     alignItems: align,
   }
 

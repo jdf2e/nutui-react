@@ -1,3 +1,44 @@
+# v2.6.12
+`2024-07-05`
+
+
+* :sparkles: feat: add pagination whether to show pages in imagepreview (#2411) @xiaoyatong
+* :bug: fix(uploader): pre-upload pmage preview bug (#2416) @Alex-huxiyang
+* :bug: fix(taro-form-demo): 点击演示demo表单内的重置会触发提交表单事件bug修复 (#2415) @Skedush
+* :bug: fix(form): validator 中的 value 类型更新为 any (#2406) @oasis-cloud
+* :bug: fix(uploader): 京东小程序中可上传时可选择图片和视频 (#2410) @xueshufive
+* :bug: fix(avatarcropper): 报错 (#2364) @Alex-huxiyang
+* :bug: fix(form): setFields未触发校验 (#2400) @Alex-huxiyang
+
+
+# v2.6.11
+`2024-06-28`
+
+
+* :sparkles: feat(table): table新增自定义行 (#2390) @zanyuki-jd
+* :bug: fix(fixednav): 可拖拽元素样式缺失 (#2391) @oasis-cloud
+
+
+# v2.6.10
+`2024-06-21`
+
+
+* 🏡 chore: 文档未来规范 (#2373) @Alex-huxiyang
+* 🤖 ci: 统一使用 pnpm @oasis-cloud
+* :sparkles: feat(tabpane): 增添修改tabpane背景色的主题变量 (#2366) @Alex-huxiyang
+* :bug: fix(tabs): 修复tabs异步设置titles滚动失效（#2351） (#2369) @ShuchenEason
+* :bug: fix: umd 中替换环境变量 (#2368) @oasis-cloud
+
+
+# v2.6.9
+`2024-06-14`
+
+
+* :sparkles: feat(form): footer 容器增加 className (#2345) @oasis-cloud
+* :bug: fix: 解决Drag组件拖拽后会在原地留一个遮挡元素问题+解决weapp/taro-h5多个demo拖拽位置不正确问题 (#2330) @irisSong
+* :bug: fix(searchbar): 修复 clear 时未触发 change 的问题 (#2262) @eiinu
+
+
 # v2.6.8
 `2024-05-31`
 
@@ -37,12 +78,12 @@
 `2024-05-17`
 
 
-*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex.huxiyang
+*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex-huxiyang
 * :bug: fix(circleprogress): update demo (#2260) @Eiinu
 * :bug: fix: 移除 defaultProps(2) (#2254) @Eiinu
-* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex.huxiyang
-* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex.huxiyang
-* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex.huxiyang
+* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex-huxiyang
+* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex-huxiyang
+* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex-huxiyang
 * :bug: fix(input): 修复特殊场景下自动清除失效问题 (#2240) @Eiinu
 
 

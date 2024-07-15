@@ -1,240 +1,265 @@
 .nut-range-container {
   display: flex;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: 4px;
   align-items: center;
+  justify-content: space-between;
 }
-.nut-range-container .min {
-  font-size: 12px;
-  color: #1A1A1A;
-  user-select: none;
+.nut-range-container-native {
+  height: auto;
 }
-.nut-range-container .max {
-  font-size: 12px;
-  color: #1A1A1A;
-  user-select: none;
-}
-.nut-range-container .nut-range {
+
+.nut-range {
   display: block;
   position: relative;
-  width: 100%;
   height: 4px;
   margin: 0 15px;
-  background-color: #FFEBF1;
+  background-color: #ffebf1;
   border-radius: 2px;
+  flex: 1;
   cursor: pointer;
 }
-.nut-range-container .nut-range::before {
+.nut-range::before {
   position: absolute;
   inset-block: -8px;
   inset-inline: 0;
   content: "";
 }
-.nut-range-container .nut-range-bar {
+.nut-range-min {
+  font-size: 12px;
+  color: #1a1a1a;
+  user-select: none;
+}
+.nut-range-max {
+  font-size: 12px;
+  color: #1a1a1a;
+  user-select: none;
+}
+.nut-range-bar {
   display: block;
   position: relative;
   width: 100%;
   height: 100%;
-  background: #FF0F23;
-  border-radius: inherit;
+  background: #ff0f23;
+  border-radius: 2px;
   transition: all 0.2s;
 }
-.nut-range-container .nut-range-button {
-  display: block;
+.nut-range-button {
+  position: absolute;
+  display: flex;
   width: 24px;
   height: 24px;
   background: #ffffff;
   border-radius: 50%;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-  border: 1px solid #FF0F23;
+  border: 1px solid #ff0f23;
   outline: none;
+  align-items: center;
+  top: 50%;
+  left: 50%;
 }
-.nut-range-container .nut-range-button-wrapper, .nut-range-container .nut-range-button-wrapper-right {
+.nut-range-button-wrapper {
+  width: 24px;
+  height: 24px;
+}
+.nut-range-button-wrapper-right {
+  width: 24px;
+  height: 24px;
+}
+.nut-range-button-wrapper-left {
+  width: 24px;
+  height: 24px;
+}
+.nut-range-button-wrapper, .nut-range-button-wrapper-right {
   touch-action: none;
   position: absolute;
   top: 50%;
-  right: 0;
-  transform: translate3d(50%, -50%, 0);
+  left: 100%;
   cursor: grab;
   outline: none;
 }
-.nut-range-container .nut-range-button-wrapper-left {
+.nut-range-button-wrapper-left {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate3d(-50%, -50%, 0);
   cursor: grab;
   outline: none;
   touch-action: none;
 }
-.nut-range-container .nut-range-button .number {
-  width: 100%;
-  height: 100%;
+.nut-range-button-number {
+  position: relative;
+  width: 200%;
+  height: 24px;
+  line-height: 14px;
+  padding: 5px 0;
+  left: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
   font-size: 12px;
-  color: #1A1A1A;
-  transform: translate3d(0, -100%, 0);
+  color: #1a1a1a;
+  text-align: center;
+  vertical-align: center;
+  box-sizing: border-box;
 }
-.nut-range-container .nut-range-disabled {
+.nut-range-disabled {
   cursor: not-allowed;
   opacity: 0.54;
 }
-.nut-range-container .nut-range-disabled .nut-range-button-wrapper,
-.nut-range-container .nut-range-disabled .nut-range-button-wrapper-left,
-.nut-range-container .nut-range-disabled .nut-range-button-wrapper-right {
+.nut-range-disabled .nut-range-button-wrapper,
+.nut-range-disabled .nut-range-button-wrapper-left,
+.nut-range-disabled .nut-range-button-wrapper-right {
   cursor: not-allowed;
 }
-.nut-range-container .nut-range-mark {
+.nut-range-mark {
   position: absolute;
   width: 100%;
+  height: 14px;
   overflow: visible;
   top: 50%;
-  font-size: 12px;
-  padding-top: 14px;
 }
-.nut-range-container .nut-range-mark-text {
+.nut-range-mark-text-wrapper {
   position: absolute;
+  height: 100%;
+  top: 14px;
   display: inline-block;
+  transform: translateX(-10px);
+}
+.nut-range-mark-text {
+  position: absolute;
   line-height: 16px;
+  font-size: 12px;
   color: #999;
   text-align: center;
   word-break: keep-all;
   user-select: none;
-  transform: translateX(-10px);
 }
-.nut-range-container .nut-range-tick {
+.nut-range-tick {
   position: absolute;
   top: -20px;
   width: 11px;
   height: 11px;
   left: 0px;
-  border-radius: 50%;
-  background: #FFEBF1;
+  border-radius: 6px;
+  background: #ffebf1;
 }
-.nut-range-container .nut-range-tick.active {
-  background: #FF0F23;
+.nut-range-tick-active {
+  background: #ff0f23;
 }
-.nut-range-container-vertical {
+
+.nut-range-vertical-container {
   height: 100%;
   flex-direction: column;
   padding: 0px 15px;
 }
-.nut-range-container-vertical .nut-range {
+
+.nut-range-vertical {
   width: 4px;
-  height: 100%;
+  margin: 15px 0px;
 }
-.nut-range-container-vertical .nut-range-button-wrapper, .nut-range-container-vertical .nut-range-button-wrapper-right {
+.nut-range-vertical-button-wrapper, .nut-range-vertical-button-wrapper-right {
   position: absolute;
   top: initial;
-  bottom: 0px;
+  top: 100%;
   left: 50%;
   right: initial;
-  transform: translate3d(-50%, 50%, 0);
 }
-.nut-range-container-vertical .nut-range-button-wrapper-left {
+.nut-range-vertical-button-wrapper-left {
   top: 0px;
   left: 50%;
   right: initial;
-  transform: translate3d(-50%, -50%, 0);
 }
-.nut-range-container-vertical .nut-range .number {
-  transform: translate3d(100%, 0, 0);
+.nut-range-vertical-button-number {
+  left: 0px;
+  top: 50%;
 }
-.nut-range-container-vertical .nut-range-vertical {
-  margin: 15px 0px;
-}
-.nut-range-container-vertical .nut-range-mark {
+.nut-range-vertical-mark {
   position: absolute;
-  width: 100%;
+  width: 36px;
+  height: 100%;
+  top: initial;
   right: 50%;
   overflow: visible;
   font-size: 12px;
-  height: 100%;
-  top: initial;
-  width: 36px;
   padding: 0px;
 }
-.nut-range-container-vertical .nut-range-mark-text {
-  width: 20px;
+.nut-range-vertical-mark-hm {
+  left: -34px;
+}
+.nut-range-vertical-mark-text-wrapper {
+  height: 16px;
   position: absolute;
   display: inline-block;
+  user-select: none;
+  transform: translateY(-11px);
+}
+.nut-range-vertical-mark-text {
+  height: 100%;
   line-height: 16px;
   color: #999;
   text-align: center;
   word-break: keep-all;
-  user-select: none;
-  transform: translateY(-11px);
 }
-.nut-range-container-vertical .nut-range-tick {
+.nut-range-vertical-tick {
   position: absolute;
-  top: 0px;
-  left: 30px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #FFEBF1;
+  top: 2px;
+  left: 31px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: #ffebf1;
 }
-.nut-range-container-vertical .nut-range-tick.active {
-  background: #FF0F23;
+.nut-range-vertical-tick-active {
+  background: #ff0f23;
 }
 
-[dir=rtl] .nut-range-container-vertical .nut-range-button-wrapper, [dir=rtl] .nut-range-container-vertical .nut-range-button-wrapper-right,
-.nut-rtl .nut-range-container-vertical .nut-range-button-wrapper,
-.nut-rtl .nut-range-container-vertical .nut-range-button-wrapper-right {
+[dir=rtl] .nut-range-button-wrapper, [dir=rtl] .nut-range-button-wrapper-right,
+.rtl-nut-range-button-wrapper,
+.rtl-nut-range-button-wrapper-right {
+  left: 0;
+  right: initial;
+}
+[dir=rtl] .nut-range-button-wrapper-left,
+.rtl-nut-range-button-wrapper-left {
+  right: 0;
+  left: initial;
+}
+[dir=rtl] .nut-range-tick,
+.rtl-nut-range-tick {
+  right: 0px;
+  left: initial;
+}
+[dir=rtl] .nut-range-mark-text,
+.rtl-nut-range-mark-text {
+  transform: translateX(10px);
+}
+[dir=rtl] .nut-range-vertical-button-wrapper, [dir=rtl] .nut-range-vertical-button-wrapper-right,
+.rtl-nut-range-vertical-button-wrapper,
+.rtl-nut-range-vertical-button-wrapper-right {
   right: 50%;
   left: initial;
-  transform: translate3d(50%, 50%, 0);
 }
-[dir=rtl] .nut-range-container-vertical .nut-range-button-wrapper-left,
-.nut-rtl .nut-range-container-vertical .nut-range-button-wrapper-left {
+[dir=rtl] .nut-range-vertical-button-wrapper-left,
+.rtl-nut-range-vertical-button-wrapper-left {
   right: 50%;
   left: initial;
-  transform: translate3d(50%, -50%, 0);
 }
-[dir=rtl] .nut-range-container-vertical .nut-range .number,
-.nut-rtl .nut-range-container-vertical .nut-range .number {
-  transform: translate3d(-100%, 0, 0);
-}
-[dir=rtl] .nut-range-container-vertical .nut-range-mark,
-.nut-rtl .nut-range-container-vertical .nut-range-mark {
+[dir=rtl] .nut-range-vertical-mark,
+.rtl-nut-range-vertical-mark {
   right: auto;
   left: 50%;
 }
-[dir=rtl] .nut-range-container-vertical .nut-range-tick,
-.nut-rtl .nut-range-container-vertical .nut-range-tick {
+[dir=rtl] .nut-range-vertical-tick,
+.rtl-nut-range-vertical-tick {
   left: auto;
   right: 30px;
   margin-left: 0;
   margin-right: 0px;
 }
-[dir=rtl] .nut-range-container-vertical .nut-range-mark-text,
-.nut-rtl .nut-range-container-vertical .nut-range-mark-text {
+[dir=rtl] .nut-range-vertical-mark-text-wrapper,
+.rtl-nut-range-vertical-mark-text-wrapper {
   transform: translateY(-11px);
-}
-
-[dir=rtl] .nut-range-button-wrapper, [dir=rtl] .nut-range-button-wrapper-right,
-.nut-rtl .nut-range-button-wrapper,
-.nut-rtl .nut-range-button-wrapper-right {
-  left: 0;
-  right: initial;
-  transform: translate3d(-50%, -50%, 0);
-}
-[dir=rtl] .nut-range-button-wrapper-left,
-.nut-rtl .nut-range-button-wrapper-left {
-  right: 0;
-  left: initial;
-  transform: translate3d(50%, -50%, 0);
-}
-[dir=rtl] .nut-range-tick,
-.nut-rtl .nut-range-tick {
-  right: 0px;
-  left: initial;
-}
-[dir=rtl] .nut-range-mark-text,
-.nut-rtl .nut-range-mark-text {
-  transform: translateX(10px);
 }

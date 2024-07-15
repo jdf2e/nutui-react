@@ -14,7 +14,7 @@ const Links = () => {
     <>
       {navs.map((nav) => (
         <ol key={nav.enName}>
-          {nav.enName !== 'dentry1' ? <li>{nav.name}</li> : null}
+          {nav.enName !== 'dataentry' ? <li>{nav.name}</li> : null}
           <ul>
             {nav.packages.map((com) =>
               com.show ? (

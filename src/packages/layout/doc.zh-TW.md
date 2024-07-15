@@ -1,16 +1,16 @@
 # Layout 佈局
 
-## 介紹
+
 
 用於快速進行佈局
 
-## 安裝
+## 引入
 
 ```tsx
 import { Row, Col } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎佈局
 

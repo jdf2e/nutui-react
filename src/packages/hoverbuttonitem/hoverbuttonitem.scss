@@ -1,0 +1,41 @@
+.nut-hoverbutton-item {
+  &-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid $hoverbutton-item-border-color;
+    background-color: $hoverbutton-item-background;
+
+    &:active,
+    &-active {
+      background-color: $hoverbutton-item-background-active;
+    }
+
+    &-harmony {
+      margin-bottom: $hoverbutton-spacing;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-icon {
+    width: 20px;
+    height: 20px;
+    margin: 9px;
+    color: $hoverbutton-item-icon-color;
+    fill: $hoverbutton-item-icon-color;
+
+    .nut-icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &-container:active &-icon {
+    color: $hoverbutton-item-icon-color-active;
+    fill: $hoverbutton-item-icon-color-active;
+  }
+}

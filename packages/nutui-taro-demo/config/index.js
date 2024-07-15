@@ -9,7 +9,11 @@ if (projectID) {
   themeStr = `src/styles/theme-${projectID}.scss`
 }
 
-let plugins = process.env.TARO_ENV === 'weapp' ? [['@tarojs/plugin-html']] : []
+let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
+  process.env.TARO_ENV
+)
+  ? ['@tarojs/plugin-html']
+  : []
 
 if (
   process.env.TARO_ENV === 'harmony' ||
@@ -62,7 +66,7 @@ const config = {
   plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
   compiler: 'webpack5',
   alias: {
-    '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
+    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
       __dirname,
       '../../../src/locales/en-US.ts'
     ),

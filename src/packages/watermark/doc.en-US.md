@@ -1,10 +1,10 @@
 # Watermark
 
-## Intro
+
 
 Add specific words or patterns on the page to prevent information theft.
 
-## Install
+## Import
 
 ```tsx
 import { WaterMark } from '@nutui/nutui-react';

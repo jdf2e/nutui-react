@@ -1,16 +1,15 @@
 # AnimatingNumbers 数字动画
 
-## 介绍
 
 数字动画集合
 
-## 安装
+## 引入
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### AnimatingNumbers.CountUp - 基础用法
 

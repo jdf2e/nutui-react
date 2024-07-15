@@ -14,7 +14,7 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { pxCheck } from '@/utils/px-check'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
   style?: CSSProperties
@@ -48,6 +48,10 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
+
+  const pxCheck = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
 
   // 图片加载
   const handleLoad = (e: BaseEventOrig<TImageProps.onLoadEventDetail>) => {
@@ -84,7 +88,11 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       // eslint-disable-next-line no-nested-ternary
-      radius != null ? (Taro.getEnv() === 'RN' ? radius : pxCheck(radius)) : '',
+      radius !== undefined && radius != null
+        ? Taro.getEnv() === 'RN'
+          ? radius
+          : pxCheck(radius)
+        : '',
   }
 
   const imgStyle: any = {
@@ -97,13 +105,13 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <View className="nut-img-error">
+        <View className={`${classPrefix}-error`}>
           <ImageError />
         </View>
       )
     }
     if (React.isValidElement(error) && !innerLoading) {
-      return <View className="nut-img-error">{error}</View>
+      return <View className={`${classPrefix}-error`}>{error}</View>
     }
     return null
   }, [error, isError, innerLoading])
@@ -112,13 +120,13 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     if (!loading) return null
     if (typeof loading === 'boolean' && loading === true && innerLoading) {
       return (
-        <View className="nut-img-loading">
+        <View className={`${classPrefix}-loading`}>
           <ImageIcon />
         </View>
       )
     }
     if (React.isValidElement(loading) && innerLoading) {
-      return <View className="nut-img-loading">{loading}</View>
+      return <View className={`${classPrefix}-loading`}>{loading}</View>
     }
     return null
   }, [loading, innerLoading])
@@ -126,13 +134,13 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     <View className={classNames(classPrefix, className)} style={containerStyle}>
       <TImage
         {...rest}
-        className="nut-img"
+        className={`${classPrefix}-default ${className ? `${className}-image` : ''}`}
         style={imgStyle}
         src={src}
         onLoad={(e) => handleLoad(e)}
         onError={(e) => handleError(e)}
       />
-      {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+      {!harmonyAndRn() && (
         <>
           {renderLoading()}
           {renderErrorImg()}

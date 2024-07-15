@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Switch, Toast } from '@nutui/nutui-react'
+import { Cell, Switch, Toast } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
@@ -11,12 +11,12 @@ const Demo2 = () => {
     }, 2000)
   }
   return (
-    <>
+    <Cell>
       <Switch
         checked={checkedAsync}
         onChange={(value, event) => onChangeAsync(value, event)}
       />
-    </>
+    </Cell>
   )
 }
 export default Demo2

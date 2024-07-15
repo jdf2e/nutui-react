@@ -47,19 +47,27 @@ const copyFile = async (from, to, success, isSingle = false) => {
     adapted.map((item) => {
       if (item) {
         if (
-          !['cellgroup', 'row', 'col', 'griditem', 'hoverbuttonitem'].includes(
-            item
-          )
+          ![
+            'cellgroup',
+            'row',
+            'col',
+            'griditem',
+            'hoverbuttonitem',
+            'avatargroup',
+            'icon',
+          ].includes(item)
         ) {
           modify(
             `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
             `import '../../../styles/demo.scss';\n`
           )
         }
-        modify(
-          `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
-          `import "./${item}.harmony.css";\n`
-        )
+        if (!['icon'].includes(item)) {
+          modify(
+            `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
+            `import "./${item}.scss";\n`
+          )
+        }
       }
     })
   })

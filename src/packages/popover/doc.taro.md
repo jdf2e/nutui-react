@@ -1,16 +1,15 @@
 # Popover 气泡弹出框
 
-## 介绍
 
 点击或在元素上悬停鼠标，弹出气泡卡片浮层。
 
-## 安装
+## 引入
 
 ```tsx
 import { Popover } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

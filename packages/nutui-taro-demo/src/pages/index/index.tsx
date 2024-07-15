@@ -5,14 +5,14 @@ import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
 import Schema from 'async-validator'
-//
+
 const navs = pkg.nav
 // console.log(navs)
 
 try {
   console.log('xxx', Schema)
 } catch (e) {}
-// const Index = () => {
+
 function Index() {
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
@@ -55,7 +55,7 @@ function Index() {
         <div className="index-components">
           {navs.map((nav) => (
             <ol key={nav.enName} className="ol">
-              {nav.enName === 'dentry1' ? null : (
+              {nav.enName === 'dataentry' ? null : (
                 <li className="li">{nav.name}</li>
               )}
               <ul className="ul">

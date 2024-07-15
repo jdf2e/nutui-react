@@ -1,10 +1,10 @@
 # InputNumber
 
-## Intro
+
 
 Control the number increase or decrease by clicking the button.
 
-## Install
+## Import
 
 ```tsx
 import { InputNumber } from '@nutui/nutui-react';

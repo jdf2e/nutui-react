@@ -1,10 +1,10 @@
 # Menu
 
-## Intro
+
 
 The menu list that pops down downwards.
 
-## Install
+## Import
 
 ```tsx
 import { Menu } from '@nutui/nutui-react'

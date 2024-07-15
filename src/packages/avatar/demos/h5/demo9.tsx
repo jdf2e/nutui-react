@@ -1,9 +1,9 @@
 import React from 'react'
-import { Avatar } from '@nutui/nutui-react'
+import { Avatar, Cell } from '@nutui/nutui-react'
 
 const Demo9 = () => {
   return (
-    <>
+    <Cell>
       <Avatar
         size="normal"
         style={{ marginInlineEnd: 0 }}
@@ -13,7 +13,7 @@ const Demo9 = () => {
         <div style={{ fontSize: '16px' }}>标题</div>
         <div style={{ fontSize: '12px' }}>描述信息</div>
       </div>
-    </>
+    </Cell>
   )
 }
 export default Demo9

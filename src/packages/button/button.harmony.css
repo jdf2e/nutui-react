@@ -2,8 +2,13 @@
   position: relative;
   display: flex;
   display: inline-block;
-  flex-direction: row;
+  /* #ifdef rn harmony*/
+  width: 80px;
+  /* #endif */
+  /* #ifndef rn harmony*/
   width: auto;
+  /* #endif */
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -22,17 +27,18 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: #1a1a1a;
   background: transparent;
-  width: 100px;
+  border-width: 1px;
 }
 .nut-button-text {
   margin-left: 4px;
 }
-.nut-button-text.right {
+.nut-button-text-right {
   margin-right: 4px;
 }
 .nut-button-children {
   display: flex;
   flex-direction: row;
+  background: transparent;
 }
 .nut-button::before {
   position: absolute;
@@ -61,6 +67,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* #ifndef rn harmony */
+  background: initial;
+  /* #endif */
 }
 .nut-button-wrap .nut-icon {
   font-size: 14px;
@@ -70,33 +79,40 @@
 .nut-button-loading::before, .nut-button-disabled::before {
   display: none;
 }
+.nut-button-disabled {
+  cursor: not-allowed;
+  color: #ffffff;
+}
 .nut-button.nut-button-icononly {
   width: 32px;
   padding: 0;
 }
 .nut-button-default {
   padding: 0px 12px;
-  border: 1px solid #505259;
+  border-style: solid;
+  border-color: #505259;
 }
-.nut-button-default.nut-button-disabled {
-  color: #888b94;
-  background: transparent;
-}
-.nut-button-default.nut-button-none {
-  background: transparent;
-}
-.nut-button-default.nut-button-none.nut-button-disabled {
-  color: #888b94;
-}
-.nut-button-default.nut-button-outline, .nut-button-default.nut-button-dashed {
-  background: transparent;
-}
-.nut-button-default.nut-button-outline.nut-button-disabled {
-  color: #888b94;
+.nut-button-default-disabled {
+  color: #ffffff;
+  background: #c2c4cc;
   border-color: #c2c4cc;
 }
-.nut-button-default.nut-button-dashed.nut-button-disabled {
+.nut-button-default-solid-disabled {
+  color: #ffffff;
+  background: #c2c4cc;
+  border-color: #c2c4cc;
+}
+.nut-button-default-none-disabled {
   color: #888b94;
+}
+.nut-button-default-outline-disabled {
+  background: transparent;
+  color: #c2c4cc;
+  border-color: #c2c4cc;
+}
+.nut-button-default-dashed-disabled {
+  background: transparent;
+  color: #c2c4cc;
   border-color: #c2c4cc;
 }
 .nut-button-normal {
@@ -105,24 +121,32 @@
 .nut-button-xlarge {
   height: 48px;
   padding: 0px 24px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
 }
 .nut-button-xlarge .nut-icon {
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+.nut-button-xlarge-children {
+  font-size: 24px;
+  font-weight: 600;
 }
 .nut-button-large {
   height: 40px;
   padding: 0px 16px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .nut-button-large .nut-icon {
   font-size: 16px;
   width: 16px;
   height: 16px;
+}
+.nut-button-large-children {
+  font-size: 16px;
+  font-weight: 600;
 }
 .nut-button-small {
   height: 28px;
@@ -134,6 +158,9 @@
   width: 12px;
   height: 12px;
 }
+.nut-button-small-children {
+  font-size: 12px;
+}
 .nut-button-mini {
   height: 24px;
   padding: 0px 8px;
@@ -144,38 +171,51 @@
   width: 12px;
   height: 12px;
 }
+.nut-button-mini-children {
+  font-size: 12px;
+}
 .nut-button-primary {
   color: #ffffff;
-  background: #fa2c19;
   background-origin: border-box;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
-.nut-button-primary.nut-button-disabled {
+.nut-button-primary-children {
+  color: #ffffff;
+}
+.nut-button-primary-solid {
+  background: #ff0f23;
+  color: #ffffff;
+  border-color: transparent;
+}
+.nut-button-primary-disabled {
+  color: #ffffff;
   background: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-primary.nut-button-none {
-  background: transparent;
+.nut-button-primary-solid-disabled {
+  color: #ffffff;
+  background: #ffadbe;
+  border-color: #ffadbe;
+}
+.nut-button-primary-none {
   color: #ff0f23;
 }
-.nut-button-primary.nut-button-none.nut-button-disabled {
+.nut-button-primary-none-disabled {
   color: #ffadbe;
 }
-.nut-button-primary.nut-button-outline {
-  background: transparent;
+.nut-button-primary-outline {
   color: #ff0f23;
-  border: 1px solid #ff0f23;
+  border-color: #ff0f23;
 }
-.nut-button-primary.nut-button-outline.nut-button-disabled {
+.nut-button-primary-outline-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-primary.nut-button-dashed {
-  background: transparent;
+.nut-button-primary-dashed {
   color: #ff0f23;
-  border: 1px dashed #ff0f23;
+  border-color: #ff0f23;
 }
-.nut-button-primary.nut-button-dashed.nut-button-disabled {
+.nut-button-primary-dashed-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
@@ -183,153 +223,163 @@
   color: #ffffff;
   background: #2aa32a;
   background-origin: border-box;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
-.nut-button-success.nut-button-disabled {
+.nut-button-success-children {
+  color: #ffffff;
+}
+.nut-button-success-solid-disabled {
   background: #b2f0ae;
   border-color: #b2f0ae;
 }
-.nut-button-success.nut-button-outline {
+.nut-button-success-outline {
   color: #2aa32a;
   border-color: #2aa32a;
-  background: transparent;
 }
-.nut-button-success.nut-button-dashed {
+.nut-button-success-dashed {
   color: #2aa32a;
   border-color: #2aa32a;
-  background: transparent;
 }
-.nut-button-success.nut-button-outline.nut-button-disabled {
+.nut-button-success-outline-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-success.nut-button-dashed.nut-button-disabled {
+.nut-button-success-dashed-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-success.nut-button-none {
+.nut-button-success-none {
   color: #2aa32a;
+}
+.nut-button-success-none-disabled {
+  color: #b2f0ae;
 }
 .nut-button-info {
   color: #ffffff;
   background: #0073ff;
   background-origin: border-box;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
-.nut-button-info.nut-button-disabled {
+.nut-button-info-children {
+  color: #ffffff;
+}
+.nut-button-info-solid-disabled {
   background: #89a6f8;
   border-color: #89a6f8;
 }
-.nut-button-info.nut-button-outline {
+.nut-button-info-outline {
   color: #1988fa;
   border-color: #1988fa;
-  background: transparent;
 }
-.nut-button-info.nut-button-dashed {
+.nut-button-info-dashed {
   color: #1988fa;
   border-color: #1988fa;
-  background: transparent;
 }
-.nut-button-info.nut-button-outline.nut-button-disabled {
-  color: #ffadbe;
-  border-color: #ffadbe;
+.nut-button-info-outline-disabled {
+  color: #89a6f8;
+  border-color: #89a6f8;
 }
-.nut-button-info.nut-button-dashed.nut-button-disabled {
-  color: #ffadbe;
-  border-color: #ffadbe;
+.nut-button-info-dashed-disabled {
+  color: #89a6f8;
+  border-color: #89a6f8;
 }
-.nut-button-info.nut-button-none {
+.nut-button-info-none {
   color: #1988fa;
+}
+.nut-button-info-none-disabled {
+  color: #89a6f8;
 }
 .nut-button-danger {
   color: #ffffff;
   background: #ff0f23;
   background-origin: border-box;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
-.nut-button-danger.nut-button-disabled {
+.nut-button-danger-children {
+  color: #ffffff;
+}
+.nut-button-danger-solid-disabled {
   background: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-danger.nut-button-outline {
+.nut-button-danger-outline {
   color: #ff0f23;
   border-color: #ff0f23;
-  background: transparent;
 }
-.nut-button-danger.nut-button-dashed {
+.nut-button-danger-dashed {
   color: #ff0f23;
   border-color: #ff0f23;
-  background: transparent;
 }
-.nut-button-danger.nut-button-outline.nut-button-disabled {
+.nut-button-danger-outline-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-danger.nut-button-dashed.nut-button-disabled {
+.nut-button-danger-dashed-disabled {
   color: #ffadbe;
   border-color: #ffadbe;
 }
-.nut-button-danger.nut-button-none {
+.nut-button-danger-none {
   color: #ff0f23;
+}
+.nut-button-danger-none-disabled {
+  color: #ffadbe;
 }
 .nut-button-warning {
   color: #ffffff;
   background: #c47600;
   background-origin: border-box;
-  border: 1px solid transparent;
+  border-color: transparent;
 }
-.nut-button-warning.nut-button-disabled {
+.nut-button-warning-children {
+  color: #ffffff;
+}
+.nut-button-warning-disabled {
+  color: #ffffff;
   background: #fdd3b9;
   border-color: #fdd3b9;
 }
-.nut-button-warning.nut-button-outline {
+.nut-button-warning-solid-disabled {
+  color: #ffffff;
+  background: #fdd3b9;
+  border-color: #fdd3b9;
+}
+.nut-button-warning-outline {
   color: #c47600;
   border-color: #c47600;
-  background: transparent;
 }
-.nut-button-warning.nut-button-dashed {
+.nut-button-warning-dashed {
   color: #c47600;
   border-color: #c47600;
-  background: transparent;
 }
-.nut-button-warning.nut-button-outline.nut-button-disabled {
+.nut-button-warning-outline-disabled {
   color: #fdd3b9;
   border-color: #fdd3b9;
 }
-.nut-button-warning.nut-button-dashed.nut-button-disabled {
+.nut-button-warning-dashed-disabled {
   color: #fdd3b9;
   border-color: #fdd3b9;
 }
-.nut-button-warning.nut-button-none {
+.nut-button-warning-none {
   color: #c47600;
+}
+.nut-button-warning-none-disabled {
+  color: #fdd3b9;
 }
 .nut-button-block {
   display: block;
   width: 100%;
 }
-.nut-button-solid {
-  color: #ffffff;
-  background: #ff0f23;
-  background-origin: border-box;
-  border: 1px solid transparent;
-}
-.nut-button-solid.nut-button-disabled {
-  color: #888b94;
-  background: #c2c4cc;
-}
-.nut-button.nut-button-outline, .nut-button.nut-button-dashed {
+.nut-button-outline {
   background: transparent;
+  border-style: solid;
 }
-.nut-button.nut-button-none {
+.nut-button-dashed {
+  background: transparent;
+  border-style: dashed;
+}
+.nut-button-none {
   background: transparent;
   border-color: transparent;
-  background: transparent;
-}
-.nut-button-disabled {
-  cursor: not-allowed;
-  color: #ffffff;
-  background: #c2c4cc;
-  border-color: #c2c4cc;
 }
 .nut-button-loading {
   cursor: default;
@@ -338,16 +388,16 @@
 .nut-button-round {
   border-radius: 8px;
 }
-.nut-button-round.nut-button-xlarge {
+.nut-button-round-xlarge {
   border-radius: 12px;
 }
-.nut-button-round.nut-button-large {
+.nut-button-round-large {
   border-radius: 12px;
 }
-.nut-button-round.nut-button-small {
+.nut-button-round-small {
   border-radius: 8px;
 }
-.nut-button-round.nut-button-mini {
+.nut-button-round-mini {
   border-radius: 6px;
 }
 .nut-button-square {

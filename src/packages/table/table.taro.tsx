@@ -125,6 +125,10 @@ export const Table: FunctionComponent<
   }
 
   const renderBodyTds = (item: any, rowIndex: number) => {
+    const { rowRender } = item
+    if (rowRender && typeof rowRender === 'function') {
+      return rowRender(item, rowIndex)
+    }
     return sortDataItem().map(([value, render]) => {
       return (
         <div
