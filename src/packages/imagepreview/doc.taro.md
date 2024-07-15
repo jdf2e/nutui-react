@@ -79,6 +79,7 @@ import { ImagePreview } from '@nutui/nutui-react-taro'
 | autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `3000` |
 | defaultValue | 初始页码 | `number` | `1` |
 | value | 页码，受控 | `number` | `1` |
+| pagination | 分页是否展示 | `boolean` | `true` |
 | indicator | 分页指示器是否展示 | `boolean` | `false` |
 | indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
 | showMenuByLongpress | 开启长按图片显示识别小程序码菜单 | `boolean` | `false` |

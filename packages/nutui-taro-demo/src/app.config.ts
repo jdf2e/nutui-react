@@ -49,7 +49,7 @@ const subPackages = [
     ],
   },
   {
-    root: 'dentry1',
+    root: 'dataentry',
     pages: [
       'pages/menu/index',
       'pages/numberkeyboard/index',

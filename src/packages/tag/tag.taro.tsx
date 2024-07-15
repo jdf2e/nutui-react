@@ -145,6 +145,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                   setVisible(false)
                   onClose && onClose(e)
                 }}
+                className={`${classPrefix}-custom-icon`}
               >
                 X
               </Text>

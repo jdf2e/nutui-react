@@ -540,7 +540,7 @@
     },
     {
       "name": "数据录入",
-      "enName": "dentry1",
+      "enName": "dataentry",
       "packages": [
         {
           "version": "2.0.0",

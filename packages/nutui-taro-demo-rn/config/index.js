@@ -8,6 +8,16 @@ if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
 }
+const sassResource = [
+  path.resolve(__dirname, '../../../', fileStr),
+  path.resolve(__dirname, '../../../', themeStr),
+]
+const theme = process.env.THEME
+if (theme) {
+  sassResource.push(
+    path.resolve(__dirname, '../../../', `src/styles/theme-${theme}.scss`)
+  )
+}
 
 const config = {
   projectName: 'first',
@@ -52,10 +62,7 @@ const config = {
     '@styles': path.resolve(__dirname, '../styles'),
   },
   sass: {
-    resource: [
-      path.resolve(__dirname, '../../../', fileStr),
-      path.resolve(__dirname, '../../../', themeStr),
-    ],
+    resource: sassResource,
   },
   defineConstants: {},
   copy: {
@@ -152,13 +159,25 @@ const config = {
   },
   rn: {
     appName: 'JDReactAPIDemos',
+    postcss: {
+      'postcss-css-variables': {
+        enable: true,
+        config: {
+          // variables: {
+          //   '--nutui-color-primary': '#000',
+          //   '--nutui-color-primary-stop-1': '#000',
+          //   '--nutui-color-primary-stop-2': '#000',
+          // },
+        },
+      },
+    },
   },
   isWatch: true,
 }
 
 module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
-    return merge({}, config, require('./dev'))
+    return Object.assign({}, config, require('./dev'))
   }
-  return merge({}, config, require('./prod'))
+  return Object.assign({}, config, require('./prod'))
 }

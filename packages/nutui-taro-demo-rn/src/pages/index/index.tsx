@@ -36,7 +36,7 @@ const Index = () => {
       <View className='index_components'>
         {navs.map((nav) => (
           <View key={nav.enName} className='index_components_item'>
-            {nav.enName === 'dentry1' ? null : (
+            {nav.enName === 'dataentry' ? null : (
               <View className='index_components_item_title'>{nav.name}</View>
             )}
             <View className='index_components_sublist'>
