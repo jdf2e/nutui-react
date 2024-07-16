@@ -1,7 +1,5 @@
 # Empty組件
 
-
-
 空狀態時的占位提示
 
 ## 引入
@@ -66,15 +64,15 @@ import { Empty } from '@nutui/nutui-react'
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 默認值 |
-| --- | --- | --- | --- |
-| image | 圖片,支持傳入圖片 URL | `ReactNode` | `-` |
-| imageSize | 圖片大小，number 類型單位為 px | `number` \| `string` | `-` |
-| title | 圖片下方的標題 | `ReactNode` | `-` |
-| description | 圖片下方的描述文字 | `ReactNode` | `-` |
-| size | 組件整體大小，適配於全屏或半屏 | `small` \| `base` | `base` |
-| status | 默認圖片錯誤類型 | `empty` \| `error` \| `network` | `empty` |
-| actions | 可用於處理操作的一組數據 | `Array` | `[]` |
+| 屬性        | 說明                           | 類型                            | 默認值  |
+| ----------- | ------------------------------ | ------------------------------- | ------- |
+| image       | 圖片,支持傳入圖片 URL          | `ReactNode`                     | `-`     |
+| imageSize   | 圖片大小，number 類型單位為 px | `number` \| `string`            | `-`     |
+| title       | 圖片下方的標題                 | `ReactNode`                     | `-`     |
+| description | 圖片下方的描述文字             | `ReactNode`                     | `-`     |
+| size        | 組件整體大小，適配於全屏或半屏 | `small` \| `base`               | `base`  |
+| status      | 默認圖片錯誤類型               | `empty` \| `error` \| `network` | `empty` |
+| actions     | 可用於處理操作的一組數據       | `Array`                         | `[]`    |
 
 ## 主題定製
 
@@ -82,13 +80,13 @@ import { Empty } from '@nutui/nutui-react'
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 說明 | 默認值 |
-| --- | --- | --- |
-| \--nutui-empty-padding | Empty組件圖片的padding值 | `32px 40px` |
-| \--nutui-empty-image-size | Empty組件圖片的尺寸大小 | `160px` |
-| \--nutui-empty-image-small-size | size 為 small 時，Empty組件圖片的尺寸大小 | `120px` |
-| \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `0px` |
-| \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `8px` |
-| \--nutui-empty-title-line-height | Empty組件圖片標題行高 | `$font-size-base` |
-| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值 | `4px` |
-| \--nutui-empty-description-line-height | Empty組件圖片描述行高 | `1.2` |
+| 名稱                                  | 說明                                      | 默認值            |
+| ------------------------------------- | ----------------------------------------- | ----------------- |
+| \--nutui-empty-padding                | Empty組件圖片的padding值                  | `32px 40px`       |
+| \--nutui-empty-image-size             | Empty組件圖片的尺寸大小                   | `160px`           |
+| \--nutui-empty-image-small-size       | size 為 small 時，Empty組件圖片的尺寸大小 | `120px`           |
+| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值           | `0px`             |
+| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值           | `8px`             |
+| \--nutui-empty-title-line-height      | Empty組件圖片標題行高                     | `$font-size-base` |
+| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值           | `4px`             |
+| \--nutui-empty-background-color       | Empty組件背景色                           | `#fff`            |
