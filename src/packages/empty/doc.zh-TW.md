@@ -80,13 +80,13 @@ import { Empty } from '@nutui/nutui-react'
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱                                  | 說明                                      | 默認值            |
-| ------------------------------------- | ----------------------------------------- | ----------------- |
-| \--nutui-empty-padding                | Empty組件圖片的padding值                  | `32px 40px`       |
-| \--nutui-empty-image-size             | Empty組件圖片的尺寸大小                   | `160px`           |
+| 名稱                                   | 說明                                  | 默認值             |
+| ------------------------------------- | ------------------------------------- | ----------------- |
+| \--nutui-empty-padding                | Empty組件圖片的padding值                | `32px 40px`       |
+| \--nutui-empty-image-size             | Empty組件圖片的尺寸大小                  | `160px`           |
 | \--nutui-empty-image-small-size       | size 為 small 時，Empty組件圖片的尺寸大小 | `120px`           |
-| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值           | `0px`             |
-| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值           | `8px`             |
-| \--nutui-empty-title-line-height      | Empty組件圖片標題行高                     | `$font-size-base` |
-| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值           | `4px`             |
-| \--nutui-empty-background-color       | Empty組件背景色                           | `#fff`            |
+| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值          | `0px`             |
+| \--nutui-empty-title-margin-top       | Empty組件圖片標題margin-top的值          | `8px`             |
+| \--nutui-empty-title-line-height      | Empty組件圖片標題行高                    | `$font-size-base` |
+| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值          | `4px`             |
+| \--nutui-empty-background-color       | Empty組件背景色                         | `#fff`            |
