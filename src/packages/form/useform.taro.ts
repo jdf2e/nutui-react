@@ -114,6 +114,7 @@ class FormStore {
       }
     })
     needValidate && this.validateFields()
+
   }
 
   setCallback = (callback: Callbacks) => {
