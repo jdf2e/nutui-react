@@ -304,7 +304,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList(
-        fileList.map((item) => {
+        [...fileList, fileItem].map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -312,18 +312,17 @@ const InternalUploader: ForwardRefRenderFunction<
           return item
         })
       )
-      onStart && onStart(option)
+      onStart?.(option)
     }
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList(
-        fileList.map((item) => {
+        [...fileList, fileItem].map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = e.progress
-            onProgress &&
-              onProgress({ e, option, percentage: item.percentage as number })
+            onProgress?.({ e, option, percentage: item.percentage as number })
           }
           return item
         })
@@ -334,7 +333,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = [...fileList, fileItem].map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = SUCCESS
           item.message = locale.uploader.success
@@ -440,9 +439,7 @@ const InternalUploader: ForwardRefRenderFunction<
       }
       return true
     })
-    if (oversizes.length) {
-      onOversize && onOversize(files as any)
-    }
+    oversizes.length && onOversize?.(files as any)
 
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
