@@ -81,7 +81,7 @@ import { Empty } from '@nutui/nutui-react'
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name                                   | Description                                                  | Default           |
-| -------------------------------------- | ------------------------------------------------------------ | ----------------- |
+| --------------------------------- | ------------------------------------------------------------ | ----------------- |
 | \--nutui-empty-padding                 | The padding value of the Empty component image               | `32px 40px`       |
 | \--nutui-empty-image-size              | The size of the Empty component image                        | `160px`           |
 | \--nutui-empty-image-small-size        | The size of the Empty component image when the size is small | `120px`           |
