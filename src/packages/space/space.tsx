@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const prefixCls = 'nut-space'
 
@@ -17,7 +17,9 @@ export interface SpaceProps extends BasicComponent {
     | 'stretch'
   wrap: boolean
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   direction: 'horizontal',
 } as SpaceProps
 
@@ -39,12 +41,7 @@ export const Space: FunctionComponent<
   return (
     <div className={cls} style={style}>
       {React.Children.map(children, (child) => {
-        return (
-          child !== null &&
-          child !== undefined && (
-            <div className={`${prefixCls}-item`}>{child}</div>
-          )
-        )
+        return child ? <div className={`${prefixCls}-item`}>{child}</div> : null
       })}
     </div>
   )
