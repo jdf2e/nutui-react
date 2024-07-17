@@ -121,6 +121,7 @@
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
+    "@million/lint": "1.0.0-rc.80",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",

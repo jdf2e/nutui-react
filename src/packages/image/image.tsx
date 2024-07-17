@@ -1,10 +1,10 @@
 import React, {
   FunctionComponent,
-  useState,
+  ReactNode,
+  useCallback,
   useEffect,
   useRef,
-  useCallback,
-  ReactNode,
+  useState,
 } from 'react'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
@@ -31,9 +31,6 @@ const defaultProps: Partial<ImageProps> = {
   ...ComponentDefaults,
   fit: 'fill',
   position: 'center',
-  alt: '',
-  width: '',
-  height: '',
   error: true,
   loading: true,
   lazy: false,
@@ -120,11 +117,10 @@ export const Image: FunctionComponent<
   }
 
   const containerStyle = {
-    height: height ? pxCheck(height) : '',
-    width: width ? pxCheck(width) : '',
+    height: pxCheck(height),
+    width: pxCheck(width),
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
-    borderRadius:
-      radius !== undefined && radius !== null ? pxCheck(radius) : '',
+    borderRadius: pxCheck(radius),
     ...style,
   }
 
@@ -180,30 +176,30 @@ export const Image: FunctionComponent<
   }
 
   const renderErrorImg = useCallback(() => {
-    if (!isError) return null
-    if (typeof error === 'boolean' && error === true && !innerLoading) {
+    if (!isError || innerLoading) return
+    if (error === true) {
       return (
         <div className="nut-img-error">
           <ImageError />
         </div>
       )
     }
-    if (React.isValidElement(error) && !innerLoading) {
+    if (React.isValidElement(error)) {
       return <div className="nut-img-error">{error}</div>
     }
     return null
   }, [error, isError])
 
   const renderLoading = useCallback(() => {
-    if (!loading) return null
-    if (typeof loading === 'boolean' && loading === true && innerLoading) {
+    if (!loading || !innerLoading) return
+    if (loading === true) {
       return (
         <div className="nut-img-loading">
           <ImageIcon />
         </div>
       )
     }
-    if (React.isValidElement(loading) && innerLoading) {
+    if (React.isValidElement(loading)) {
       return <div className="nut-img-loading">{loading}</div>
     }
     return null

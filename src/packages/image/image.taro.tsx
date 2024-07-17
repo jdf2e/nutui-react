@@ -1,9 +1,9 @@
 import React, {
+  CSSProperties,
   FunctionComponent,
-  useState,
   ReactNode,
   useCallback,
-  CSSProperties,
+  useState,
 } from 'react'
 import Taro from '@tarojs/taro'
 import { Image as TImage, ImageProps as TImageProps } from '@tarojs/components'
@@ -59,15 +59,12 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
       onError && onError(e)
     }
   }
-
+  const size = Taro.getEnv() === 'WEB' ? '' : '100%'
   const containerStyle = {
-    // eslint-disable-next-line no-nested-ternary
-    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
-    // eslint-disable-next-line no-nested-ternary
-    width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
+    height: pxCheck(height) || size,
+    width: pxCheck(width) || size,
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
-    borderRadius:
-      radius !== undefined && radius !== null ? pxCheck(radius) : '',
+    borderRadius: pxCheck(radius),
   }
 
   const imgStyle: any = {
@@ -75,30 +72,30 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   }
 
   const renderErrorImg = useCallback(() => {
-    if (!isError) return null
-    if (typeof error === 'boolean' && error === true && !innerLoading) {
+    if (!isError || innerLoading) return null
+    if (error === true) {
       return (
         <div className="nut-img-error">
           <ImageError />
         </div>
       )
     }
-    if (React.isValidElement(error) && !innerLoading) {
+    if (React.isValidElement(error)) {
       return <div className="nut-img-error">{error}</div>
     }
     return null
   }, [error, isError, innerLoading])
 
   const renderLoading = useCallback(() => {
-    if (!loading) return null
-    if (typeof loading === 'boolean' && loading === true && innerLoading) {
+    if (!loading || !innerLoading) return null
+    if (loading === true) {
       return (
         <div className="nut-img-loading">
           <ImageIcon />
         </div>
       )
     }
-    if (React.isValidElement(loading) && innerLoading) {
+    if (React.isValidElement(loading)) {
       return <div className="nut-img-loading">{loading}</div>
     }
     return null

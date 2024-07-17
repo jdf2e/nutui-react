@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+import MillionLint from '@million/lint'
 import { defineConfig, UserConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
@@ -58,6 +59,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
       },
     },
     plugins: [
+      MillionLint.vite(),
       {
         enforce: 'pre',
         ...mdx.default({

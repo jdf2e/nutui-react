@@ -1,8 +1,14 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  ReactNode,
+  useContext,
+} from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
+import { pxCheck } from '@/utils/px-check'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -45,17 +51,13 @@ export const Cell: FunctionComponent<
     ...props,
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    onClick(event)
-  }
-
   const baseStyle = {
     ...style,
-    borderRadius: Number.isNaN(Number(radius)) ? String(radius) : `${radius}px`,
+    borderRadius: pxCheck(radius),
     alignItems: align,
   }
 
-  const styles =
+  const styles: CSSProperties =
     title || description
       ? {}
       : {
@@ -64,7 +66,7 @@ export const Cell: FunctionComponent<
   return (
     <div
       className={classNames(classPrefix, className)}
-      onClick={(event) => handleClick(event)}
+      onClick={onClick}
       style={baseStyle}
       {...rest}
     >
@@ -83,10 +85,7 @@ export const Cell: FunctionComponent<
             </div>
           ) : null}
           {extra ? (
-            <div
-              className={`${classPrefix}-extra`}
-              style={styles as React.CSSProperties}
-            >
+            <div className={`${classPrefix}-extra`} style={styles}>
               {extra}
             </div>
           ) : null}

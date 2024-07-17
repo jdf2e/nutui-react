@@ -104,7 +104,7 @@ export const CheckboxGroup = React.forwardRef(
           />
         )
       })
-    }, [options, max, min])
+    }, [options])
 
     return (
       <Context.Provider
