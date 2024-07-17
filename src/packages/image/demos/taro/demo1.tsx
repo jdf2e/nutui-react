@@ -4,10 +4,10 @@ import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   const src =
-    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
+    'https://s1-relay.360buyimg.com/relay/c/iconfont/img/6/09262afb06bc7710c6be812ef10348ee.svg?_=1721119524104'
   return (
     <>
-      <Image src={src} height={pxTransform(200)} />
+      <Image src={src} height={pxTransform(20)} />
     </>
   )
 }
