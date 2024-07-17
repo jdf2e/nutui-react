@@ -65,7 +65,7 @@ import { Empty } from '@nutui/nutui-react'
 ### Props
 
 | 屬性        | 說明                           | 類型                            | 默認值  |
-| ----------- | ------------------------------ | ------------------------------- | ------- |
+| --- | --- | --- | --- |
 | image       | 圖片,支持傳入圖片 URL          | `ReactNode`                     | `-`     |
 | imageSize   | 圖片大小，number 類型單位為 px | `number` \| `string`            | `-`     |
 | title       | 圖片下方的標題                 | `ReactNode`                     | `-`     |

@@ -65,7 +65,7 @@ import { Empty } from '@nutui/nutui-react-taro'
 ### Props
 
 | 属性        | 说明                           | 类型                            | 默认值  |
-| ----------- | ------------------------------ | ------------------------------- | ------- |
+| --- | --- | --- | --- |
 | image       | 图片,支持传入图片 URL          | `ReactNode`                     | `-`     |
 | imageSize   | 图片大小，number 类型单位为 px | `number` \| `string`            | `-`     |
 | title       | 图片下方的标题                 | `ReactNode`                     | `-`     |

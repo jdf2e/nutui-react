@@ -65,7 +65,7 @@ import { Empty } from '@nutui/nutui-react'
 ### Props
 
 | Property    | Description                                          | Type                            | Default |
-| ----------- | ---------------------------------------------------- | ------------------------------- | ------- |
+| --- | --- | --- | --- |
 | image       | Image type, supports incoming image URLs             | `ReactNode`                     | `-`     |
 | imageSize   | Image size, the unit of number type is px            | `number` \| `string`            | `-`     |
 | title       | Title below the image                                | `ReactNode`                     | `-`     |
