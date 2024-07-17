@@ -1,6 +1,6 @@
 {
   "name": "@dongdesign/components",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
