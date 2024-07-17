@@ -4,27 +4,40 @@ const postcss = require('gulp-postcss')
 const rename = require('gulp-rename')
 const cssvariables = require('postcss-css-variables')
 const insert = require('gulp-insert')
+const config = require('./src/config.json')
 
-const argvs = process.argv.splice(4)[0]?.split('/') || []
-
+const adaptedNameArray = []
+// eslint-disable-next-line array-callback-return
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
+    const { name, version } = element
+    if (version !== '3.0.0') return // 未适配不导出
+    adaptedNameArray.push(name.toLowerCase())
+  })
+})
+const argvs = process.argv.splice(4)[0]?.split('/') || adaptedNameArray
 console.log(argvs, 'argvs')
-
+// 监视文件的频率下降 https://www.martin-brennan.com/gulp-watch-high-cpu-usage/
 gulp.task('watch', function () {
   argvs.forEach((argv) => {
     gulp.watch(
       `src/packages/${argv}/demos/taro/*`,
+      { interval: 500 },
       gulp.series(`${argv}copyDemo`)
     )
     gulp.watch(
       `src/packages/${argv}/*.scss`,
+      { interval: 500 },
       gulp.series(`${argv}sass`, `${argv}copyCss`)
     )
     gulp.watch(
       `src/packages/${argv}/demo.taro.tsx`,
+      { interval: 500 },
       gulp.series(`${argv}copyTaroDemo`)
     )
     gulp.watch(
       `src/packages/${argv}/${argv}.taro.tsx`,
+      { interval: 500 },
       gulp.series(`${argv}copyTaro`)
     )
   })
@@ -40,6 +53,7 @@ gulp.task('watch', function () {
       'src/styles/mixins/text-ellipsis.scss',
       'src/styles/theme-default.scss',
     ],
+    { interval: 500 },
     gulp.series(watchTasks)
   )
 })
