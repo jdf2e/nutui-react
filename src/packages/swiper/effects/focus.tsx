@@ -59,7 +59,7 @@ export const focusEffect = (args: DefaultEffect) => {
               return getPerSlidePosition(index, position, loop, count)
             }
           ),
-          [isVertical ? 'top' : 'left']: `-${index * 100}%`,
+          [isVertical ? 'top' : 'inset-inline-start']: `-${index * 100}%`,
           scale: springs.s.to((ss: number) => {
             const scales = getRefValue(transforms)
             if (!scales) return 1

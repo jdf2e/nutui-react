@@ -36,7 +36,7 @@ export const defaultEffect = (args: DefaultEffect) => {
           [isVertical ? 'y' : 'x']: getSpringsAxis().to((position) => {
             return getPerSlidePosition(index, position, loop, count)
           }),
-          [isVertical ? 'top' : 'left']: `-${index * 100}%`,
+          [isVertical ? 'top' : 'inset-inline-start']: `-${index * 100}%`,
         }}
       >
         {child}
