@@ -128,7 +128,7 @@ export class FormItem extends React.Component<
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
-        setFieldsValue({ [name]: next })
+        setFieldsValue({ [name]: next }, false)
       },
     }
     const { validateTrigger } = this.props
