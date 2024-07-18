@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { animated, SpringValue } from '@react-spring/web'
+import { useRtl } from '@/packages/configprovider'
 
 type DefaultEffect = {
   children: ReactNode
@@ -29,6 +30,8 @@ const getPerSlidePosition = (
 export const defaultEffect = (args: DefaultEffect) => {
   return React.Children.map(args.children, (child, index) => {
     const { isVertical, getSpringsAxis, loop, count } = args
+    const rtl = useRtl()
+    const position = rtl ? 'right' : 'left'
     return (
       <animated.div
         className="nut-swiper-slide"
@@ -36,7 +39,7 @@ export const defaultEffect = (args: DefaultEffect) => {
           [isVertical ? 'y' : 'x']: getSpringsAxis().to((position) => {
             return getPerSlidePosition(index, position, loop, count)
           }),
-          [isVertical ? 'top' : 'inset-inline-start']: `-${index * 100}%`,
+          [isVertical ? 'top' : position]: `-${index * 100}%`,
         }}
       >
         {child}
