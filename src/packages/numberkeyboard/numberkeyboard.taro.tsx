@@ -19,13 +19,11 @@ export interface NumberKeyboardProps extends PopupProps {
   onClose: () => void
   onConfirm?: () => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
-  visible: false,
-  rightActions: '',
   type: 'default',
   custom: [],
-  random: false,
   onClose: () => {},
 } as unknown as NumberKeyboardProps
 
@@ -119,9 +117,7 @@ export const NumberKeyboard: FunctionComponent<
           className={classNames({
             key: true,
             active,
-            close: item.type === 'close',
-            delete: item.type === 'delete',
-            confirm: item.type === 'confirm',
+            [item.type]: true,
           })}
           onTouchStart={() => onTouchStart()}
           onTouchEnd={() => onTouchEnd(item)}
