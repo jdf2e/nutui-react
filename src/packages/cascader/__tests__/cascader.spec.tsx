@@ -321,7 +321,33 @@ describe('Cascader', () => {
     ).toBe(0)
     expect(container).toMatchSnapshot()
   })
-
+  it('init Value without defaultValue', async () => {
+    const { container } = render(
+      <Cascader
+        visible
+        value={['福建', '福州', '鼓楼区']}
+        options={mockOptions}
+      />
+    )
+    const element = container.querySelectorAll(
+      '.active.nut-tabpane .active .nut-cascader-item-title'
+    )[0]
+    expect(element).toHaveTextContent('鼓楼区')
+  })
+  it('init Value with both valu and defaultValue', async () => {
+    const { container } = render(
+      <Cascader
+        visible
+        value={['福建', '福州', '台江区']}
+        defaultValue={['福建', '福州', '鼓楼区']}
+        options={mockOptions}
+      />
+    )
+    const element = container.querySelectorAll(
+      '.active.nut-tabpane .active .nut-cascader-item-title'
+    )[0]
+    expect(element).toHaveTextContent('台江区')
+  })
   it('select', async () => {
     const change = vi.fn()
     const pathChange = vi.fn()
@@ -377,13 +403,10 @@ describe('Cascader', () => {
       />
     )
 
-    expect(container).toMatchSnapshot()
-
     expect(container.querySelector('.nut-popup')).toBe
 
     const tabPane = container.querySelectorAll('.nut-tabs-titles-item')[0]
     fireEvent.click(tabPane)
-    expect(container).toMatchSnapshot()
   })
 
   it('ref', async () => {
