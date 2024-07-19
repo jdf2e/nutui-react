@@ -1,3 +1,16 @@
+# v2.6.14
+`2024-07-19`
+
+
+* :sparkles: feat(menuitem): 新增css类名，增强自定义样式能力 (#2443) @Alex-huxiyang
+* :sparkles: feat(empty): add css variable nutui-empty-background-color (#2451) @Alex-huxiyang
+* :sparkles: feat(infiniteLoading): 继承 scrollView 的 props 类型 (#2441) @oasis-cloud
+* :bug: fix(cascader): 初始化设置value未成功选中 (#2435) @Alex-huxiyang
+* :bug: fix(swiper): display abnormal when dir = 'rtl' (#2454) @Alex-huxiyang
+* :bug: fix(form): 兼容校验时机 (#2437) @Alex-huxiyang
+* :bug: fix(form): 在FromInstance增加validateFields方法的定义 (#2450) @jinjl
+
+
 # v2.6.13
 `2024-07-12`
 
