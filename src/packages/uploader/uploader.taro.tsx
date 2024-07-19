@@ -300,11 +300,11 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.headers = headers
     uploadOption.taroFilePath = fileItem.path
     uploadOption.beforeXhrUpload = beforeXhrUpload
-
+    const curList = [...fileList, fileItem]
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList(
-        [...fileList, fileItem].map((item) => {
+        curList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -317,7 +317,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList(
-        [...fileList, fileItem].map((item) => {
+        curList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = UPLOADING
             item.message = locale.uploader.uploading
@@ -333,7 +333,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = [...fileList, fileItem].map((item) => {
+      const list = curList.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = SUCCESS
           item.message = locale.uploader.success
