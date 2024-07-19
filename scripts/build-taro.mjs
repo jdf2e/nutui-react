@@ -85,12 +85,20 @@ async function buildES(p) {
 
   for (const path of sourceFiles) {
     const code = await swc.transformFileSync(join(__dirname, '../', path), {
+      minify: true,
       jsc: {
         baseUrl: join(__dirname, '../'),
         target: 'es5',
         parser: {
           syntax: 'typescript',
           tsx: true,
+        },
+        minify: {
+          compress: {
+            keep_fnames: true,
+            drop_console: true
+          },
+          mangle: true,
         },
         paths: {
           '@/packages/*': ['src/packages/*'],
@@ -128,6 +136,7 @@ async function buildCJS(p) {
 
   for (const path of esFiles) {
     const code = await swc.transformFileSync(join(__dirname, '../', path), {
+      // minify: true,
       jsc: {
         target: 'es5',
         parser: {
