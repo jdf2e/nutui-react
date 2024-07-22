@@ -1,10 +1,10 @@
 # Steps
 
-## Intro
+
 
 Split and display the steps of a process, guide users to complete tasks according to the process, or show users the current status.
 
-## Install
+## Import
 
 ```tsx
 import { Steps } from '@nutui/nutui-react';

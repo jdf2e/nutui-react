@@ -1,16 +1,16 @@
 # ShortPassword 短密碼
 
-## 介紹
+
 
 短密碼輸入框，可用於輸入密碼、短信驗證碼等
 
-## 安裝
+## 引入
 
 ```tsx
 import { ShortPassword } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

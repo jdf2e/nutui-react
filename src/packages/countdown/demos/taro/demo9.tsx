@@ -1,13 +1,6 @@
 import React, { useRef } from 'react'
-import {
-  Cell,
-  CountDown,
-  Button,
-  Grid,
-  GridItem,
-} from '@nutui/nutui-react-taro'
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { Cell, CountDown, Button, Grid } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 interface countdownRefState {
   start: () => void
@@ -39,48 +32,24 @@ const Demo9 = () => {
           ref={countDownRef}
         />
       </Cell>
-      {/* TODO：gird未适配，适配后替换 */}
-      {Taro.getEnv() === Taro.ENV_TYPE.RN ? (
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            paddingTop: 16,
-            paddingBottom: 16,
-            marginBottom: 20,
-            backgroundColor: '#fff',
-          }}
-        >
+
+      <Grid columns={3} style={{ marginBottom: pxTransform(5) }}>
+        <Grid.Item>
           <Button type="primary" onClick={start}>
             开始
           </Button>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={pause}>
             暂停
           </Button>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={reset}>
             重置
           </Button>
-        </View>
-      ) : (
-        <Grid columns="3" style={{ marginBottom: '5px' }}>
-          <GridItem>
-            <Button type="primary" onClick={start}>
-              开始
-            </Button>
-          </GridItem>
-          <GridItem>
-            <Button type="primary" onClick={pause}>
-              暂停
-            </Button>
-          </GridItem>
-          <GridItem>
-            <Button type="primary" onClick={reset}>
-              重置
-            </Button>
-          </GridItem>
-        </Grid>
-      )}
+        </Grid.Item>
+      </Grid>
     </>
   )
 }

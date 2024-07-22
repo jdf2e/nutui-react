@@ -9,7 +9,7 @@ import React, {
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import { harmonyAndRn, web } from '@/utils/platform-taro'
+import { web } from '@/utils/platform-taro'
 
 export interface CountDownTimeProps {
   d: number
@@ -201,12 +201,6 @@ const InternalCountDown: ForwardRefRenderFunction<
         formatCache = formatCache.replace('SS', msC.slice(0, 1))
       }
     }
-    formatCache = formatCache.replace(
-      /(\d+)/g,
-      type === 'primary'
-        ? `<View class="nut-countdown-number-primary">$1</View>`
-        : `<View class="nut-countdown-number">$1</View>`
-    )
 
     return formatCache
   }
@@ -293,10 +287,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     destroy && cancelAnimationFrame(stateRef.current.timer)
   }
 
-  const renderTime = (() => {
-    return formatRemainTime(stateRef.current.restTime)
-  })()
-
   const getUnit = (unit: string) => {
     const formatArr = format.split(/(DD|HH|mm|ss|S)/)
     const index = formatArr.indexOf(unit)
@@ -356,26 +346,13 @@ const InternalCountDown: ForwardRefRenderFunction<
   return (
     <>
       {children || (
-        <>
-          {!harmonyAndRn() ? (
-            <View
-              className={`${classPrefix} ${className}`}
-              style={{ ...style }}
-              {...rest}
-              dangerouslySetInnerHTML={{
-                __html: `${renderTime}`,
-              }}
-            />
-          ) : (
-            <View
-              className={`${classPrefix} ${className}`}
-              style={{ ...style }}
-              {...rest}
-            >
-              {renderTaroTime()}
-            </View>
-          )}
-        </>
+        <View
+          className={`${classPrefix} ${className}`}
+          style={{ ...style }}
+          {...rest}
+        >
+          {renderTaroTime()}
+        </View>
       )}
     </>
   )

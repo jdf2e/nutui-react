@@ -1,10 +1,10 @@
 # Ellipsis
 
-## Intro
+
 
 isplay space is insufficient, hidden part of the content and "..." Alternative.
 
-## Install
+## Import
 
 ```tsx
 import { Ellipsis } from '@nutui/nutui-react';

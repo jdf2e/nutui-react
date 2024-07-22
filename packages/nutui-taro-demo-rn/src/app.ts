@@ -1,8 +1,14 @@
 import { Component } from 'react'
-// import '@/sites/assets/styles/reset.scss'
-// import NutUI from '@/packages/nutui.react.taro.scss'
-// import '@nutui/touch-emulator'
+import Taro from '@tarojs/taro'
 import './app.scss'
+
+if (Taro.getEnv() !== 'RN') {
+    import('@/sites/assets/styles/reset.scss');
+    import('@/packages/nutui.react.scss.taro');
+    import('@nutui/touch-emulator');
+}
+
+console.log(Taro.getEnv())
 
 // console.log(NutUI)
 class App extends Component {

@@ -1,16 +1,16 @@
 # Card 商品卡片
 
-## 介紹
+
 
 商品卡片，用於展示商品的圖片、價格等信息
 
-## 安裝
+## 引入
 
 ```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

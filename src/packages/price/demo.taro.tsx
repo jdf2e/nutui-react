@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -54,33 +53,19 @@ const PriceDemo = () => {
         <View className="h2">{translated.title1}</View>
         <Demo1 />
         <View className="h2">{translated.title2}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.title3}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <View className="h2">{translated.title4}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <View className="h2">{translated.title5}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <View className="h2">{translated.title7}</View>
-        <Cell>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
         <View className="h2">{translated.title6}</View>
-        <Cell>
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         <View className="h2">{translated.title8}</View>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        <Demo8 />
       </ScrollView>
     </>
   )

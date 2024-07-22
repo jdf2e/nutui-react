@@ -13,6 +13,7 @@ import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const ButtonDemo = () => {
   const [translated] = useTranslate({
@@ -57,8 +58,13 @@ const ButtonDemo = () => {
     <>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View className="h2">设置 open-type </View>
-        <Demo1 />
+        {!harmonyAndRn() ? (
+          <>
+            <View className="h2">设置 open-type </View>
+            <Demo1 />
+          </>
+        ) : null}
+
         <View className="h2">{translated.ce5c5446}</View>
         <Demo2 />
         <View className="h2">{translated.e51e4582}</View>

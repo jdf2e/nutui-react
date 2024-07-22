@@ -15,8 +15,8 @@ import { harmonyAndRn } from '@/utils/platform-taro'
 const OverlayDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      '84aa6bce': '基础用法-',
-      duration: '设置动画时间---',
+      '84aa6bce': '基础用法',
+      duration: '设置动画时间',
       lockscroll: '不锁定背景滚动',
       abbf9359: '自定义遮罩样式',
       ec0d7acf: '嵌套内容',

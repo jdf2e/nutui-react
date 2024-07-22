@@ -59,7 +59,7 @@
       "enName": "base",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Button",
           "type": "component",
           "cName": "按钮",
@@ -540,7 +540,7 @@
     },
     {
       "name": "数据录入",
-      "enName": "dentry1",
+      "enName": "dataentry",
       "packages": [
         {
           "version": "2.0.0",
@@ -861,7 +861,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Swipe",
           "type": "component",
           "cName": "滑动手势",

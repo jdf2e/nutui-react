@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/tongen/.ohos/config/default_nutui-harmony_PK697Wu5mnc6ZwkFy1SeSNQa86VdzjbAFwDwqKdj-o0=.cer",
+          "storePassword": "0000001B1D7AA645FFDC09EF80DB9127EE1487532F04045B7C357F80025FC2F69AAB86F59959BFF647D2ED",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B3046DD1422DFC16BA1BA8DF23A9D04C17FE2AA1CE5E27F1B3BBD036890625D4F51086AC2A4B3D2",
+          "profile": "/Users/tongen/.ohos/config/default_nutui-harmony_PK697Wu5mnc6ZwkFy1SeSNQa86VdzjbAFwDwqKdj-o0=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/tongen/.ohos/config/default_nutui-harmony_PK697Wu5mnc6ZwkFy1SeSNQa86VdzjbAFwDwqKdj-o0=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",

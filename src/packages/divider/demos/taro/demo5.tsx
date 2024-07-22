@@ -1,11 +1,11 @@
 import React from 'react'
-import { Divider } from '@nutui/nutui-react-taro'
+import { Cell, Divider } from '@nutui/nutui-react-taro'
 import { rn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   return (
-    <>
+    <Cell>
       <Divider
         style={{
           color: '#1989fa',
@@ -17,7 +17,7 @@ const Demo5 = () => {
       >
         文本
       </Divider>
-    </>
+    </Cell>
   )
 }
 export default Demo5

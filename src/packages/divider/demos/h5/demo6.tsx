@@ -1,9 +1,9 @@
 import React from 'react'
-import { Divider } from '@nutui/nutui-react'
+import { Cell, Divider } from '@nutui/nutui-react'
 
 const Demo6 = () => {
   return (
-    <>
+    <Cell align="center">
       文本
       <Divider direction="vertical" />
       <a href="#" style={{ color: '#1989fa' }}>
@@ -13,7 +13,7 @@ const Demo6 = () => {
       <a href="#" style={{ color: '#1989fa' }}>
         链接
       </a>
-    </>
+    </Cell>
   )
 }
 export default Demo6

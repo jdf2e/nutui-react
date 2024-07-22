@@ -1,10 +1,10 @@
 # Tour
 
-### Intro
+#
 
 A bubble component used to guide the user through the product's capabilities.
 
-## Install
+## Import
 
 ```tsx
 import { Tour } from '@nutui/nutui-react';

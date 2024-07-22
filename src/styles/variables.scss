@@ -1782,7 +1782,10 @@ $tabs-titles-item-smile-bottom: var(
   -10%
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
-
+$tabs-tabpane-backgroundColor: var(
+  --nutui-tabs-tabpane-backgroundColor,
+  #fff
+) !default;
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;
@@ -1931,6 +1934,7 @@ $empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
 $empty-image-size: var(--nutui-empty-image-size, 160px) !default;
 $empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
 $empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
+$empty-background-color: var(--nutui-empty-background-color, #fff) !default;
 $empty-title-margin-bottom: var(
   --nutui-empty-title-margin-bottom,
   8px

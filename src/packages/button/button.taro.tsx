@@ -93,7 +93,24 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           }
         } else {
           style.color = '#fff'
+          if (harmonyAndRn()) {
+            style.backgroundColor = color
+          }
           style.background = color
+          style.borderColor = 'transparent'
+        }
+      }
+      return style
+    }, [color])
+
+    const getContStyle = useCallback(() => {
+      const style: CSSProperties = {}
+      if (props.color) {
+        if (props.fill === 'outline' || props.fill === 'dashed') {
+          style.color = color
+        } else {
+          style.color = '#fff'
+          style.background = 'transparent'
           style.borderColor = 'transparent'
         }
       }
@@ -119,19 +136,26 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
+          type === 'primary' && !props.fill
+            ? `${prefixCls}-${type}-solid`
+            : null,
           props.fill ? `${prefixCls}-${fill}` : null,
+          props.fill ? `${prefixCls}-${type}-${fill}` : null,
           children ? '' : `${prefixCls}-icononly`,
           {
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
+            [`${prefixCls}-${shape}-${size}`]: shape && size,
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-disabled`]: disabled || loading,
+            [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
+              disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className
         )}
         style={{ ...getStyle(), ...style }}
-        onClick={(e) => handleClick(e)}
+        onClick={(e) => handleClick(e as any)}
       >
         <View className="nut-button-wrap">
           {loading && !harmonyAndRn() && (
@@ -140,9 +164,10 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <View
-              className={`nut-button-children ${icon || loading ? 'nut-button-text' : ''}${
-                rightIcon ? ' nut-button-text right' : ''
+              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`} ${icon || loading ? `nut-button-text` : ''}${
+                rightIcon ? ` nut-button-text-right` : ''
               }`}
+              style={harmonyAndRn() ? getContStyle() : {}}
             >
               {children}
             </View>
