@@ -1,19 +1,21 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   FunctionComponent,
   ReactNode,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, ScrollViewProps } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { InfiniteLoadingType } from './types'
 
-export interface InfiniteLoadingProps extends BasicComponent {
+export interface InfiniteLoadingProps
+  extends BasicComponent,
+    Omit<ScrollViewProps, 'style' | 'type' | 'onScroll'> {
   type: InfiniteLoadingType
   hasMore: boolean
   threshold: number
@@ -56,6 +58,7 @@ export const InfiniteLoading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScroll,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -174,6 +177,7 @@ export const InfiniteLoading: FunctionComponent<
       onTouchStart={touchStart}
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
+      {...rest}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="nut-infinite-top-tips">

@@ -1,3 +1,27 @@
+# v2.6.14
+`2024-07-19`
+
+
+* :sparkles: feat(menuitem): 新增css类名，增强自定义样式能力 (#2443) @Alex-huxiyang
+* :sparkles: feat(empty): add css variable nutui-empty-background-color (#2451) @Alex-huxiyang
+* :sparkles: feat(infiniteLoading): 继承 scrollView 的 props 类型 (#2441) @oasis-cloud
+* :bug: fix(cascader): 初始化设置value未成功选中 (#2435) @Alex-huxiyang
+* :bug: fix(swiper): display abnormal when dir = 'rtl' (#2454) @Alex-huxiyang
+* :bug: fix(form): 兼容校验时机 (#2437) @Alex-huxiyang
+* :bug: fix(form): 在FromInstance增加validateFields方法的定义 (#2450) @jinjl
+
+
+# v2.6.13
+`2024-07-12`
+
+
+* :sparkles: feat: tabs滚动条兼容火狐浏览器 (#2431) @JoanneXu6677
+* :sparkles: feat(drag):  add the ability to support onDrag, onDragStart, onDragEnd callbacks (#2418) @Alex-huxiyang
+* :bug: fix(formItem): validateTrigger无法正确触发校验 (#2433) @Alex-huxiyang
+* :bug: fix: 日历组件滚动到顶部时 出现空白问题 (#2409) @522109452
+* :bug: fix(imagepreview): 无法在预期情景正确关闭图片的异常 (#2421) @Alex-huxiyang
+
+
 # v2.6.12
 `2024-07-05`
 
