@@ -480,11 +480,13 @@ export const CalendarItem = React.forwardRef<
     monthsData.splice(0)
     initData()
   }
-
   useEffect(() => {
     setCurrentDate(resetDefaultValue() || [])
-    popup && resetRender()
   }, [defaultValue])
+
+  useEffect(() => {
+    popup && resetRender()
+  }, [currentDate])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
@@ -532,6 +534,7 @@ export const CalendarItem = React.forwardRef<
     const scrollTop = (e.target as HTMLElement).scrollTop
     Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
     let current = Math.floor(scrollTop / avgHeight)
+    if (current < 0) return
     if (!monthsData[current + 1]) return
     const nextTop = monthsData[current + 1].scrollTop
     const nextHeight = monthsData[current + 1].cssHeight

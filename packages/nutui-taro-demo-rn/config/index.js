@@ -50,6 +50,11 @@ if (process.env.TARO_ENV === 'jdhybrid') {
 if (process.env.TARO_ENV === 'jdharmony') {
   plugins = ['@jdtaro/taro-platform-jdharmony']
 }
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// if (process.env.TARO_ENV === 'jdharmony') {
+//   plugins = ['@test/taro-platform-jdharmony']
+// }
 
 const config = {
   projectName: 'first',
