@@ -3,6 +3,8 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
+  useRef,
+  useEffect,
 } from 'react'
 import classNames from 'classnames'
 import Taro, {
@@ -220,7 +222,10 @@ const InternalUploader: ForwardRefRenderFunction<
       clearUploadQueue()
     },
   }))
-
+  const fileListRef = useRef<FileItem[]>([])
+  useEffect(() => {
+    fileListRef.current = fileList
+  }, [fileList])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
@@ -300,11 +305,10 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.headers = headers
     uploadOption.taroFilePath = fileItem.path
     uploadOption.beforeXhrUpload = beforeXhrUpload
-    const curList = [...fileList, fileItem]
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList(
-        curList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -317,7 +321,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList(
-        curList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = UPLOADING
             item.message = locale.uploader.uploading
@@ -333,7 +337,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = curList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = SUCCESS
           item.message = locale.uploader.success
@@ -353,7 +357,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = curList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = ERROR
           item.message = locale.uploader.error
@@ -423,8 +427,8 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      setFileList([...fileList, fileItem])
       executeUpload(fileItem, index)
+      setFileList([...fileList, fileItem])
     })
   }
 
