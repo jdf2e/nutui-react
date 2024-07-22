@@ -1,0 +1,11 @@
+{
+  "module": {
+    "name": "nutui_jdharmony_example",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ]
+  }
+}

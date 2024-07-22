@@ -1,0 +1,12 @@
+{
+  "name": "jd_static_lib_template_example",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@jd-oh/base-router": "^2.0.0",
+    "nutui_jdharmony_library": "file:../library",
+  }
+}

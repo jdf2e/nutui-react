@@ -1,0 +1,12 @@
+{
+  "string": [
+    {
+      "name": "page_show",
+      "value": "page from package"
+    },
+    {
+      "name": "theme_color",
+      "value": "#FFCF0C0C"
+    }
+  ]
+}

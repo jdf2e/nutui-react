@@ -14,12 +14,12 @@ const navs = pkg.nav
 const Index = () => {
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
-    // alert(`/${enName}/pages/${name.toLocaleLowerCase()}/index`)
+    console.log('test111', `/${enName}/pages/${name.toLocaleLowerCase()}/index`)
     Taro.navigateTo({
-      url: `/${enName}/pages/${name.toLocaleLowerCase()}/index`,
+        url: `/${enName}/pages/${name.toLocaleLowerCase()}/index`,
     })
   }
-
+ 
   return (
     <ScrollView className='index'>
       <View className='index_header'>

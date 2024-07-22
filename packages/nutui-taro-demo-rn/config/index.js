@@ -20,7 +20,6 @@ if (
   process.env.TARO_ENV === 'jdharmony'
 ) {
   plugins.push('@tarojs/plugin-platform-harmony-ets')
-  plugins.push('@tarojs/taro-platform-jdharmony')
 }
 
 if (process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') {
@@ -48,9 +47,9 @@ if (process.env.TARO_ENV === 'jdhybrid') {
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-// if (process.env.TARO_ENV === 'jdharmony') {
-//   plugins = ['@test/taro-platform-jdharmony']
-// }
+if (process.env.TARO_ENV === 'jdharmony') {
+  plugins = ['@jdtaro/taro-platform-jdharmony']
+}
 
 const config = {
   projectName: 'first',
@@ -118,11 +117,9 @@ const config = {
     // 将编译方式设置为使用 Vite 编译
     compiler: { type: 'vite', vitePlugins: [injectScss()] },
     // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), '../nutui-harmony'),
+    projectPath: path.resolve(process.cwd(), './nutui-jdharmony'),
     // 【可选】HAP 的名称，默认为 'entry'
-    hapName: 'entry',
-    // 【可选】modules 的入口名称，默认为 'default'
-    name: 'default',
+    hapName: 'library',
     useNesting: true,
     postcss: {
       pxtransform: {
