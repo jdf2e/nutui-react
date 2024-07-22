@@ -629,6 +629,7 @@ export type NutCSSVariables =
   | 'nutuiEmptyImageSize'
   | 'nutuiEmptyImageSmallSize'
   | 'nutuiEmptyTitleMarginTop'
+  | 'nutuiEmptyBackgroundColor'
   | 'nutuiEmptyTitleMarginBottom'
   | 'nutuiEmptyTitleLineHeight'
   | 'nutuiEmptyDescriptionMarginTop'

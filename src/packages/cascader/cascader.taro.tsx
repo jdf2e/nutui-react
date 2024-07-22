@@ -211,7 +211,7 @@ const InternalCascader: ForwardRefRenderFunction<
 
     if (
       currentValue === undefined ||
-      currentValue !== defaultValue ||
+      ![defaultValue, value].includes(currentValue) ||
       !state.tree.nodes.length
     ) {
       return
@@ -252,7 +252,7 @@ const InternalCascader: ForwardRefRenderFunction<
       }
     }
 
-    if (needToSync.length && currentValue === defaultValue) {
+    if (needToSync.length && [defaultValue, value].includes(currentValue)) {
       const pathNodes = state.tree.getPathNodesByValue(needToSync)
       pathNodes.forEach((node, index) => {
         state.tabsCursor = index
