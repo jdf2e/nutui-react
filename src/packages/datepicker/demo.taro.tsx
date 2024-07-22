@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -48,24 +49,24 @@ const DatePickerDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.mmdd}</h2>
+        <View className="h2">{translated.mmdd}</View>
         <Demo2 />
-        <h2>{translated.showAll}</h2>
+        <View className="h2">{translated.showAll}</View>
         <Demo3 />
-        <h2>{translated.time}</h2>
+        <View className="h2">{translated.time}</View>
         <Demo4 />
-        <h2>{translated.hourMinutes}</h2>
+        <View className="h2">{translated.hourMinutes}</View>
         <Demo5 />
-        <h2>{translated.format}</h2>
+        <View className="h2">{translated.format}</View>
         <Demo6 />
-        <h2>{translated.stepMins}</h2>
+        <View className="h2">{translated.stepMins}</View>
         <Demo7 />
-        <h2>{translated.filter}</h2>
+        <View className="h2">{translated.filter}</View>
         <Demo8 />
-      </div>
+      </ScrollView>
     </>
   )
 }
