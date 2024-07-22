@@ -53,8 +53,8 @@
     "@babel/runtime": "^7.23.9",
     "@dongdesign/inject-jd-platform-styles": "^1.0.1",
     "@jdreact/jdreact-jsbundle-commonpack": "1.0.425",
+    "@jdtaross/plugin-platform-jdrn": "2.0.0-beta.0",
     "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
-    "@jdtaro/plugin-platform-jdrn": "../../jdtaro-plugin-platform-jdrn-1.0.9.tgz",
     "@jdtaro/taro-platform-jdharmony": "^2.0.70",
     "@nutui/touch-emulator": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
@@ -106,7 +106,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.35",
-    "stylelint": "^14.2.1",
+    "stylelint": "^16.7.0",
     "typescript": "^5.3.3"
   },
   "resolutions": {
