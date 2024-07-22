@@ -1,14 +1,16 @@
 import Taro from '@tarojs/taro'
+import { View, Image, Text, ScrollView } from '@tarojs/components'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
-import { View, Image, ScrollView } from '@tarojs/components'
-
-import adapted from '../../../scripts/taro/adapted.js'
+// import Schema from 'async-validator'
 
 const navs = pkg.nav
 // console.log(navs)
 
+// try {
+//     console.log('xxx', Schema)
+// } catch (e) {}
 const Index = () => {
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
@@ -30,7 +32,7 @@ const Index = () => {
           <View className='index_header_info_p'>
             京东风格的轻量级小程序组件库 React 版
           </View>
-          <View className='index_header_info_p'>v2.0.0000</View>
+          <View className='index_header_info_p'><Text>v{packageJson?.version}</Text></View>
         </View>
       </View>
       <View className='index_components'>
@@ -41,7 +43,7 @@ const Index = () => {
             )}
             <View className='index_components_sublist'>
               {nav.packages.map((com) =>
-                com.show && com.taro && adapted.includes(com.name.toLowerCase()) ? (
+                com.show && com.taro && com.version === '3.0.0' ? (
                   <View
                     key={com.name}
                     className='index_components_sublist_item'

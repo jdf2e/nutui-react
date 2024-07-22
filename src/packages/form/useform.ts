@@ -91,7 +91,7 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: any) => {
+  setFieldsValue = (newStore: any, needValidate = true) => {
     this.store = {
       ...this.store,
       ...newStore,
@@ -113,7 +113,7 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
-    this.validateFields()
+    needValidate && this.validateFields()
   }
 
   setCallback = (callback: Callbacks) => {

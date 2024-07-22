@@ -9,19 +9,17 @@ let importScssStr = `\n`
 const packages = []
 const mds = []
 const raws = []
-const adapted = require('./adapted')
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro, exportEmpty, exclude } = element
+    let { name, show, type, taro, exportEmpty, exclude, version } = element
     if (exclude) return
-    if (!adapted.includes(name.toLowerCase())) return // 不显示的不导出
+    if (version !== '3.0.0') return // 不显示的不导出
 
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.harmony.css'\n`
     packages.push(name)
-
     glob
       .sync(
         path.join(__dirname, `../../nutui-react/packages/${name.toLowerCase()}/`) +
@@ -67,17 +65,17 @@ fs.outputFile(
   }
 )
 
-// let taroScssfileStr = `
-// ${importScssStr}
-// export default { "NutUI":"NutUI-Taro" };`
-// fs.outputFile(
-//   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.scss.taro.ts'),
-//   taroScssfileStr,
-//   'utf8',
-//   (error) => {
-//     if (error) throw error
-//   }
-// )
+let taroScssfileStr = `
+${importScssStr}
+export default { "NutUI":"NutUI-Taro" };`
+fs.outputFile(
+  path.resolve(__dirname, '../../nutui-react/packages/nutui.react.scss.taro.ts'),
+  taroScssfileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
 
 // fs.outputFile(
 //   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.scss.ts'),

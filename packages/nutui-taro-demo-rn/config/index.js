@@ -8,16 +8,49 @@ if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
 }
-const sassResource = [
-  path.resolve(__dirname, '../../../', fileStr),
-  path.resolve(__dirname, '../../../', themeStr),
-]
-const theme = process.env.THEME
-if (theme) {
-  sassResource.push(
-    path.resolve(__dirname, '../../../', `src/styles/theme-${theme}.scss`)
-  )
+
+let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
+  process.env.TARO_ENV
+)
+  ? ['@tarojs/plugin-html']
+  : []
+
+if (
+  process.env.TARO_ENV === 'harmony' ||
+  process.env.TARO_ENV === 'jdharmony'
+) {
+  plugins.push('@tarojs/plugin-platform-harmony-ets')
+  plugins.push('@tarojs/taro-platform-jdharmony')
 }
+
+if (process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') {
+  plugins.push('@jdtaro/plugin-platform-jdrn')
+}
+
+// 小程序、jd H5 通过此插件覆盖
+if (
+  process.env.TARO_ENV === 'weapp' ||
+  process.env.TARO_ENV === 'jd' ||
+  process.env.TARO_ENV === 'jdhybrid'
+) {
+  plugins.push('@dongdesign/inject-jd-platform-styles')
+}
+
+if (process.env.TARO_ENV === 'jdhybrid') {
+  plugins.push([
+    '@jdtaro/plugin-platform-jdhybrid',
+    {
+      externals: {
+        '@jdtaro/plugin-platform-jdhybrid': 'local',
+      },
+    },
+  ])
+}
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// if (process.env.TARO_ENV === 'jdharmony') {
+//   plugins = ['@test/taro-platform-jdharmony']
+// }
 
 const config = {
   projectName: 'first',
@@ -30,39 +63,49 @@ const config = {
     375: 2 / 1,
   },
   sourceRoot: 'src',
-  outputRoot: `dist/${
-    process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV
-  }`,
-  plugins: [
-    path.resolve(__dirname, '../plugins/inject-scss.js'),
-    process.env.TARO_ENV === 'harmony'
-      ? '@tarojs/plugin-platform-harmony-ets'
-      : process.env.TARO_ENV === 'jdrn'
-      ? '@jdtaro/plugin-platform-jdrn'
-      : '@tarojs/plugin-html',
-  ],
+  outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
+  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
   compiler: 'webpack5',
-  alias: {
-    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
-      __dirname,
-      '../nutui-react/locales/en-US.ts'
-    ),
-    '@/packages': path.resolve(__dirname, '../nutui-react/packages'),
-    '@/sites': path.resolve(__dirname, '../nutui-react/sites'),
-    '@/locales': path.resolve(__dirname, '../nutui-react/locales'),
-    '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
-    '@nutui/nutui-react-taro': path.resolve(
-      __dirname,
-      '../nutui-react/packages/nutui.react.taro.ts'
-    ),
-    '@nutui/icons-react-taro': path.resolve(
-      __dirname,
-      '../nutui-react/packages/nutui.react.taro.ts'
-    ),
-    '@styles': path.resolve(__dirname, '../styles'),
-  },
+  alias:
+    process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
+      ? {
+          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+            __dirname,
+            '../nutui-react/locales/en-US.ts'
+          ),
+          '@/packages': path.resolve(__dirname, '../nutui-react/packages'),
+          '@/sites': path.resolve(__dirname, '../nutui-react/sites'),
+          '@/locales': path.resolve(__dirname, '../nutui-react/locales'),
+          '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
+          '@nutui/nutui-react-taro': path.resolve(
+            __dirname,
+            '../nutui-react/packages/nutui.react.taro.ts'
+          ),
+          '@nutui/icons-react-taro': path.resolve(
+            __dirname,
+            '../nutui-react/packages/nutui.react.taro.ts'
+          ),
+          '@styles': path.resolve(__dirname, '../styles'),
+        }
+      : {
+          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+            __dirname,
+            '../../../src/locales/en-US.ts'
+          ),
+          '@/packages': path.resolve(__dirname, '../../../src/packages'),
+          '@/sites': path.resolve(__dirname, '../../../src/sites'),
+          '@/locales': path.resolve(__dirname, '../../../src/locales'),
+          '@/utils': path.resolve(__dirname, '../../../src/utils'),
+          '@nutui/nutui-react-taro': path.resolve(
+            __dirname,
+            '../../../src/packages/nutui.react.taro.ts'
+          ),
+        },
   sass: {
-    resource: sassResource,
+    resource: [
+      path.resolve(__dirname, '../../../', fileStr),
+      path.resolve(__dirname, '../../../', themeStr),
+    ],
   },
   defineConstants: {},
   copy: {
@@ -103,6 +146,9 @@ const config = {
     },
   },
   mini: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')],
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -125,6 +171,9 @@ const config = {
     },
   },
   h5: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')],
+    },
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
@@ -177,7 +226,7 @@ const config = {
 
 module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
-    return Object.assign({}, config, require('./dev'))
+    return merge({}, config, require('./dev'))
   }
-  return Object.assign({}, config, require('./prod'))
+  return merge({}, config, require('./prod'))
 }
