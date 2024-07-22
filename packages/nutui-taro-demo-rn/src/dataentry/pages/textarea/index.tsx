@@ -1,2 +1,2 @@
-import Demo from '@/packages/textarea/demo.taro'
-export default Demo
+import Demo from '@/packages/textarea/demo.taro';
+export default Demo;
