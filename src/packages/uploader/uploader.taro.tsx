@@ -353,7 +353,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = curList.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = ERROR
           item.message = locale.uploader.error
