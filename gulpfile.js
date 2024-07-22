@@ -17,27 +17,29 @@ config.nav.map((item) => {
 })
 const argvs = process.argv.splice(4)[0]?.split('/') || adaptedNameArray
 console.log(argvs, 'argvs')
-// 监视文件的频率下降 https://www.martin-brennan.com/gulp-watch-high-cpu-usage/
+// 监视频率 https://www.martin-brennan.com/gulp-watch-high-cpu-usage/
+const interval = { interval: 500 }
+// 监视文件变化
 gulp.task('watch', function () {
   argvs.forEach((argv) => {
     gulp.watch(
       `src/packages/${argv}/demos/taro/*`,
-      { interval: 500 },
+      interval,
       gulp.series(`${argv}copyDemo`)
     )
     gulp.watch(
       `src/packages/${argv}/*.scss`,
-      { interval: 500 },
+      interval,
       gulp.series(`${argv}sass`, `${argv}copyCss`)
     )
     gulp.watch(
       `src/packages/${argv}/demo.taro.tsx`,
-      { interval: 500 },
+      interval,
       gulp.series(`${argv}copyTaroDemo`)
     )
     gulp.watch(
       `src/packages/${argv}/${argv}.taro.tsx`,
-      { interval: 500 },
+      interval,
       gulp.series(`${argv}copyTaro`)
     )
   })
@@ -46,14 +48,13 @@ gulp.task('watch', function () {
   argvs.map((argv) => {
     watchTasks.push(...[`${argv}sass`, `${argv}copyCss`])
   })
-  console.log(watchTasks.join(','), 'watchTasks')
   gulp.watch(
     [
       `src/styles/variables.scss`,
       'src/styles/mixins/text-ellipsis.scss',
       'src/styles/theme-default.scss',
     ],
-    { interval: 500 },
+    interval,
     gulp.series(watchTasks)
   )
 })
