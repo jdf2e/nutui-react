@@ -23,21 +23,18 @@ export const Divider: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classes =
-    direction === 'horizontal'
-      ? classNames({
-          [`${classPrefix}`]: true,
-          [`${classPrefix}-center`]: children,
-          [`${classPrefix}-left`]: contentPosition === 'left',
-          [`${classPrefix}-right`]: contentPosition === 'right',
-          [`${classPrefix}-hairline`]: true,
-        })
-      : classNames({
-          [`${classPrefix}`]: true,
-          [`${classPrefix}-vertical`]: direction === 'vertical',
-        })
+  const classes = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-center`]: children,
+      [`${classPrefix}-left`]: contentPosition === 'left',
+      [`${classPrefix}-right`]: contentPosition === 'right',
+      [`${classPrefix}-vertical`]: direction === 'vertical',
+    },
+    `${classPrefix}-hairline`
+  )
   return (
-    <div className={`${classes} ${className || ''}`} style={style} {...rest}>
+    <div className={`${classes} ${className}`} style={style} {...rest}>
       {children}
     </div>
   )
