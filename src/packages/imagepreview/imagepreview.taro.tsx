@@ -7,7 +7,12 @@ import React, {
   ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { ITouchEvent, Video as TaroVideo, Image } from '@tarojs/components'
+import {
+  ITouchEvent,
+  Video as TaroVideo,
+  Image,
+  View,
+} from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
@@ -271,7 +276,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       style={{ width: '100%' }}
       onClick={onCloseInner}
     >
-      <div
+      <View
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
@@ -320,7 +325,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                       key={index}
                       className="nut-imagepreview-swiper-item"
                     >
-                      (
                       <Image
                         src={item.src}
                         mode="widthFix"
@@ -330,26 +334,25 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                           showMenuByLongpress,
                         })}
                       />
-                      )
                     </SwiperItem>
                   )
                 })
               : []
           )}
         </Swiper>
-      </div>
+      </View>
       {pagination ? (
-        <div className={`${classPrefix}-index`}>
+        <View className={`${classPrefix}-index`}>
           {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-        </div>
+        </View>
       ) : null}
       {closeIcon !== false ? (
-        <div
+        <View
           className={`${classPrefix}-close ${closeIconPosition}`}
           onClick={onCloseInner}
         >
           {closeIcon === true ? <Close /> : closeIcon}
-        </div>
+        </View>
       ) : null}
     </Popup>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -48,24 +49,24 @@ const PickerDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.defaultSelected}</h2>
+        <View className="h2">{translated.defaultSelected}</View>
         <Demo2 />
-        <h2>{translated.controlled}</h2>
+        <View className="h2">{translated.controlled}</View>
         <Demo3 />
-        <h2>{translated.multipleColumns}</h2>
+        <View className="h2">{translated.multipleColumns}</View>
         <Demo4 />
-        <h2>{translated.tileDesc}</h2>
+        <View className="h2">{translated.tileDesc}</View>
         <Demo5 />
-        <h2>{translated.cascade}</h2>
+        <View className="h2">{translated.cascade}</View>
         <Demo6 />
-        <h2>{translated.async}</h2>
+        <View className="h2">{translated.async}</View>
         <Demo7 />
-        <h2>{translated.theme}</h2>
+        <View className="h2">{translated.theme}</View>
         <Demo8 />
-      </div>
+      </ScrollView>
     </>
   )
 }
