@@ -227,8 +227,7 @@ const InternalUploader: ForwardRefRenderFunction<
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
-      fileList.splice(0, fileList.length)
-      setFileList([...fileList])
+      setFileList([])
     }
   }
 
@@ -252,8 +251,8 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if (getEnv() === 'WEAPP' && chooseMedia) {
-      // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
+    if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
+      // 其余端全部使用 chooseImage API
       chooseMedia({
         /** 最多可以选择的文件个数 */
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
@@ -425,8 +424,7 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      fileList.push(fileItem)
-      setFileList(fileList)
+      setFileList([...fileList, fileItem])
       executeUpload(fileItem, index)
     })
   }
