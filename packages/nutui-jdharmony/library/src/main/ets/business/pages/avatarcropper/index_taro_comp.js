@@ -4,9 +4,7 @@ import { jsx, Fragment } from '@jd-oh/taro_library/src/main/ets/npm/react/jsx-ru
 import * as React from '@jd-oh/taro_library/src/main/ets/npm/react';
 import ReactDOM from '@jd-oh/taro_library/src/main/ets/npm/@tarojs/react';
 
-const component = /* @__PURE__ */jsx(Fragment, {
-  children: "button"
-});
+const component = /* @__PURE__ */jsx(Fragment, {});
 
 var config = {
   "navigationBarTitleText": "AvatarCropper"
