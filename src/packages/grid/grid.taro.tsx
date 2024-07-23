@@ -1,29 +1,28 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import GridContext from './grid.taro.context'
-import { GridItem, GridItemProps } from '../griditem/griditem.taro'
+import GridContext from './context'
+import { GridItem } from '../griditem/griditem.taro'
+import { GridItemProps } from '../griditem/types'
 import { pxCheck } from '@/utils/px-check'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
-export interface GridProps {
+export interface GridProps extends BasicComponent {
   columns: string | number
   gap: string | number
   center: boolean
   square: boolean
   reverse: boolean
   direction: GridDirection
-  className?: string
-  style?: CSSProperties
   onClick: (item: GridItemProps, index: number) => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   columns: 4,
   gap: 0,
   center: true,
-  square: false,
-  reverse: false,
   direction: 'vertical',
 } as GridProps
 
@@ -32,6 +31,7 @@ export const Grid: FunctionComponent<
 > & {
   Item: typeof GridItem
 } = (props) => {
+  const classPrefix = 'nut-grid'
   const {
     children,
     columns,
@@ -47,8 +47,6 @@ export const Grid: FunctionComponent<
   } = { ...defaultProps, ...props }
   const childrenDom = React.Children.toArray(children)
 
-  const classPrefix = 'nut-grid'
-
   const rootClass = () => {
     return classNames(
       classPrefix,
@@ -60,14 +58,10 @@ export const Grid: FunctionComponent<
   }
 
   const rootStyle = () => {
-    let styleSelf: CSSProperties = {}
-    if (style) {
-      styleSelf = style
-    }
+    const styleSelf: CSSProperties = style || {}
     if (gap) {
       styleSelf.paddingLeft = pxCheck(gap)
     }
-
     return styleSelf
   }
 
