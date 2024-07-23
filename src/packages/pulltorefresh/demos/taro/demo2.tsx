@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ScrollView } from '@tarojs/components'
-import { PullToRefresh, Cell, Toast } from '@nutui/nutui-react-taro'
+import { Cell, PullToRefresh } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
@@ -14,7 +15,7 @@ const Demo2 = () => {
   return (
     <>
       <ScrollView
-        style={{ height: '150px' }}
+        style={{ height: pxTransform(150) }}
         scrollY
         onScrollEnd={(e) => {
           // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
@@ -37,14 +38,6 @@ const Demo2 = () => {
           ))}
         </PullToRefresh>
       </ScrollView>
-      <Toast
-        type="text"
-        visible={show}
-        content={toastMsg}
-        onClose={() => {
-          SetShow(false)
-        }}
-      />
     </>
   )
 }
