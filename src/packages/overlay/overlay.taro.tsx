@@ -1,6 +1,5 @@
 import React, { useState, FunctionComponent, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -53,35 +52,15 @@ export const Overlay: FunctionComponent<
   const nodeRef = useLockScrollTaro(!!lockScroll && innerVisible)
 
   useEffect(() => {
-    if (visible) {
-      setInnerVisible(true)
-    } else {
-      setInnerVisible(false)
-    }
+    setInnerVisible(!visible)
   }, [visible])
 
   const classes = classNames(classPrefix, className)
-
-  const styles = {
-    ...style,
-  }
 
   const handleClick = (e: ITouchEvent) => {
     if (closeOnOverlayClick) {
       onClick && onClick(e)
     }
-  }
-
-  const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterShow && afterShow()
-  }
-
-  const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterClose && afterClose()
   }
 
   return (
@@ -92,13 +71,13 @@ export const Overlay: FunctionComponent<
         unmountOnExit
         timeout={duration}
         in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
+        onEntered={afterShow}
+        onExited={afterClose}
       >
         <View
           ref={nodeRef}
           className={classes}
-          style={styles}
+          style={style}
           {...(rest as any)}
           catchMove={lockScroll}
           onClick={handleClick}
