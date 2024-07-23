@@ -29,6 +29,7 @@
     justify-content: center;
     transition: all 0.4s;
     border-radius: $progress-border-radius;
+    background-color: $progress-color;
   }
 
   &-text {
@@ -42,6 +43,8 @@
 
     &-inner {
       display: flex;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
       height: 100%;
       width: 100%;
@@ -50,7 +53,7 @@
       border-radius: $progress-text-border-radius;
       font-size: $progress-text-font-size;
       line-height: 1;
-      // background: $progress-text-background;
+      background: $progress-text-background;
     }
   }
 

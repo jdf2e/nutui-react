@@ -4,6 +4,7 @@
   width: auto;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
 }
 .nut-indicator-dot {
   display: inline-block;

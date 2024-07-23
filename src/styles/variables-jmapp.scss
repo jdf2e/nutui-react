@@ -1652,7 +1652,7 @@ $progress-text-color: var(
 ) !default;
 $progress-text-background: var(
   --nutui-progress-text-background,
-  $progress-color
+  #ff0f23
 ) !default;
 $progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
 $progress-text-font-size: var(--nutui-progress-text-font-size, 9px) !default;

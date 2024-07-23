@@ -27,6 +27,7 @@
   justify-content: center;
   transition: all 0.4s;
   border-radius: 12px;
+  background-color: #ff0f23;
 }
 .nut-progress-text {
   display: flex;
@@ -38,6 +39,8 @@
 }
 .nut-progress-text-inner {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -46,6 +49,7 @@
   border-radius: 5px;
   font-size: 9px;
   line-height: 1;
+  background: #ff0f23;
 }
 @keyframes progressActive {
   0% {

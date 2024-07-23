@@ -178,10 +178,6 @@ export const Progress: FunctionComponent<
   const computeInnerStyle = () => {
     const style: any = {
       backgroundColor: color || '#ff0f23',
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
     }
     if (harmonyAndRn()) {
       style.width = harmony()

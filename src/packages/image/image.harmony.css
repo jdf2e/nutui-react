@@ -2,7 +2,7 @@
   display: block;
   position: relative;
 }
-.nut-image .nut-img {
+.nut-image-default {
   display: block;
   width: 100%;
   height: 100%;
@@ -11,7 +11,7 @@
   border-radius: 50%;
   overflow: hidden;
 }
-.nut-image .nut-img-loading {
+.nut-image-loading {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -24,7 +24,7 @@
   background: #f5f6fa;
   background-size: 100% 100%;
 }
-.nut-image .nut-img-error {
+.nut-image-error {
   width: 100%;
   height: 100%;
   position: absolute;

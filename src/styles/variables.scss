@@ -1625,10 +1625,7 @@ $popover-menu-item-padding: var(
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
-$progress-color: var(
-  --nutui-progress-color,
-  $color-primary-gradient-1
-) !default;
+$progress-color: var(--nutui-progress-color, #ff0f23) !default;
 $progress-background: var(
   --nutui-progress-background,
   $color-background
@@ -1640,7 +1637,7 @@ $progress-text-color: var(
 ) !default;
 $progress-text-background: var(
   --nutui-progress-text-background,
-  $progress-color
+  #ff0f23
 ) !default;
 $progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
 $progress-text-font-size: var(--nutui-progress-text-font-size, 9px) !default;
