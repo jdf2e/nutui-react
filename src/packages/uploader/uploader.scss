@@ -175,7 +175,9 @@
       }
 
       &-c {
-        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
         position: initial;
         border-radius: $uploader-image-border-radius;
