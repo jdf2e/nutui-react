@@ -29,13 +29,13 @@ const Demo1 = () => {
               {(status === 'pulling' || status === 'complete') && (
                 <Image
                   style={{ height: pxTransform(26), width: pxTransform(36) }}
-                  src="https://img12.360buyimg.com/imagetools/jfs/t1/232373/2/15010/432/65fab02fF99afdb71/0457cdfa268f92df.png"
+                  src="https://img13.360buyimg.com/imagetools/jfs/t1/219180/19/37902/438/65fa8cbbF5278d022/5eabe69b64bba791.png"
                 />
               )}
               {(status === 'canRelease' || status === 'refreshing') && (
                 <Image
                   style={{ height: pxTransform(26), width: pxTransform(36) }}
-                  src="https://img14.360buyimg.com/imagetools/jfs/t1/186707/25/42738/223/65fab272F0965554b/eae33de2f17909b8.png"
+                  src="https://img10.360buyimg.com/imagetools/jfs/t1/230454/20/14523/223/65fab2d1F379c3968/ac35992443abab0c.png"
                 />
               )}
             </>
