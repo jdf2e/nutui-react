@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Canvas } from '@tarojs/components'
+import { Canvas, View } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
@@ -662,17 +662,17 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const actions = [cancel, reset, rotate, confirm]
     return (
       <>
-        <div className={`${classPrefix}-popup-toolbar-flex`}>
+        <View className={`${classPrefix}-popup-toolbar-flex`}>
           {actions.map((action, index) => (
-            <div
+            <View
               key={index}
               className={`${classPrefix}-popup-toolbar-item`}
               onClick={(_e) => action()}
             >
               {toolbar[index]}
-            </div>
+            </View>
           ))}
-        </div>
+        </View>
       </>
     )
   }
@@ -681,7 +681,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const { canvasId } = canvasAll
     return (
       <>
-        <div
+        <View
           className={`${classPrefix}-popup`}
           style={{ display: visible ? 'block' : 'none' }}
         >
@@ -698,24 +698,24 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <div className="highlight" style={highlightStyle} />
+            <View className="highlight" style={highlightStyle} />
           </div>
-          <div className={toolbarPositionCls}>
+          <View className={toolbarPositionCls}>
             <ToolBar />
-          </div>
-        </div>
+          </View>
+        </View>
       </>
     )
   }
 
   return (
     <>
-      <div className={cls} {...rest} style={style}>
+      <View className={cls} {...rest} style={style}>
         {children}
-        <div className="nut-avatar-cropper-edit-text" onClick={chooseImage}>
+        <View className="nut-avatar-cropper-edit-text" onClick={chooseImage}>
           {editText}
-        </div>
-      </div>
+        </View>
+      </View>
       {CropperPopup()}
     </>
   )

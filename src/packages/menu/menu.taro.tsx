@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -134,7 +135,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
           return ''
         }
         return (
-          <div
+          <View
             className={classNames(
               'nut-menu-title ',
               {
@@ -150,36 +151,36 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
               !disabled && toggleMenuItem(index)
             }}
           >
-            <div className="nut-menu-title-text">{finallyTitle()}</div>
+            <View className="nut-menu-title-text">{finallyTitle()}</View>
             {icon ||
               (direction === 'up' ? (
                 <ArrowUp className="nut-menu-title-icon" size="12px" />
               ) : (
                 <ArrowDown className="nut-menu-title-icon" size="12px" />
               ))}
-          </div>
+          </View>
         )
       }
       return null
     })
   }
   return (
-    <div
+    <View
       {...rest}
       className={classNames(`nut-menu`, className, {
         'scroll-fixed': isScrollFixed,
       })}
       ref={menuRef}
     >
-      <div
+      <View
         className={classNames('nut-menu-bar', {
           opened: showMenuItem.includes(true),
         })}
       >
         {menuTitle()}
-      </div>
+      </View>
       {cloneChildren()}
-    </div>
+    </View>
   )
 }
 

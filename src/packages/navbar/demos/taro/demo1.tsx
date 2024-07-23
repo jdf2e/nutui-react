@@ -2,6 +2,7 @@ import React from 'react'
 import { NavBar } from '@nutui/nutui-react-taro'
 import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 
 const Demo1 = () => {
   return (
@@ -33,12 +34,12 @@ const Demo1 = () => {
         back={<ArrowLeft size={14} />}
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
-        <div className="title">
+        <View className="title">
           <span onClick={(e) => Taro.showToast({ title: '清空' })}>
             浏览记录
           </span>
           <span className="desc">浏览记录</span>
-        </div>
+        </View>
       </NavBar>
       <NavBar
         back={<ArrowLeft size={14} />}
