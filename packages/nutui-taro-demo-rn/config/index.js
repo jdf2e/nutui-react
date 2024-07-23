@@ -56,6 +56,8 @@ if (process.env.TARO_ENV === 'jdharmony') {
 //   plugins = ['@test/taro-platform-jdharmony']
 // }
 
+const isHarmony = process.env.TARO_ENV === 'harmony'
+
 const config = {
   projectName: 'first',
   date: '2022-7-11',
@@ -122,9 +124,9 @@ const config = {
     // 将编译方式设置为使用 Vite 编译
     compiler: { type: 'vite', vitePlugins: [injectScss()] },
     // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), './nutui-jdharmony'),
+    projectPath: path.resolve(process.cwd(), isHarmony ? '../nutui-harmony' : '../nutui-jdharmony'),
     // 【可选】HAP 的名称，默认为 'entry'
-    hapName: 'library',
+    hapName: isHarmony ? 'entry' : 'library',
     useNesting: true,
     postcss: {
       pxtransform: {

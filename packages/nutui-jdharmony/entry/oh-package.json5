@@ -1,0 +1,17 @@
+{
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "entry",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dynamicDependencies": {},
+  "dependencies": {
+    "@jd-oh/base-ui": "^1.1.7",
+    "@jd-oh/base-router": "^2.0.0",
+    "@jd-oh/taro_library": "file:../taro_library",
+    "nutui_jdharmony_library": "file:../library",
+    "nutui_jdharmony_example": "file:../nutui_jdharmony_example"
+  }
+}

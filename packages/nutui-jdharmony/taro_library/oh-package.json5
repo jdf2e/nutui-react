@@ -1,0 +1,30 @@
+{
+  "name": "@jd-oh/taro_library",
+  "version": "2.0.70",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "Taro Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@jd-oh/base-router": "^2.0.0",
+    "@jd-oh/native_router_bridge": "^1.0.0",
+    "@jd-oh/base_permission": "^1.0.0",
+    "@jd-oh/jdlocation": "^1.0.0",
+    "@jd-oh/jd-mp": "^1.2.0",
+    "@jd-oh/base-info": "^1.0.15",
+    "@jd-oh/base-network": "^1.1.20",
+    "@jd-oh/base-ui": "^1.1.3",
+    "@jd-oh/common-event-service": "^2.0.0",
+    "@jd-oh/jd_address_global_module": "^2.0.0",
+    "@jd-oh/jd-util": "^1.0.17",
+    "@jd-oh/jdcapverify": "^1.0.9",
+    "@jd-oh/jdloginsdk": "^0.0.23",
+    "@jd-oh/jdloginui": "^2.0.0",
+    "@jd-oh/jdma": "^1.0.27",
+    "@jd-oh/jdmabridge": "^1.0.30",
+    "@jd-oh/perflibrary": "^1.1.7",
+    "@jd-oh/image-browser": "^1.0.0",
+    "@jd-oh/image": "^0.2.17",
+    "@jd-oh/jdshare": "1.0.38"
+  }
+}
