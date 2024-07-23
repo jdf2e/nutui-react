@@ -4,6 +4,7 @@ import {
   Loading as IconLoading,
   Loading1 as IconLoading1,
 } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type LoadingType = 'spinner' | 'circular'
@@ -39,7 +40,7 @@ export const Loading: FunctionComponent<
   const CurLoadingIcon = loadingMap[rest.type] || IconLoading1
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         direction === 'vertical' ? `${classPrefix}-vertical` : '',
@@ -47,11 +48,15 @@ export const Loading: FunctionComponent<
       )}
       style={style}
     >
-      <div className={`${classPrefix}-icon-box`}>
+      <View className={`${classPrefix}-icon-box`}>
         {icon || <CurLoadingIcon className={`${classPrefix}-icon`} />}
-      </div>
-      {children ? <div className={`${classPrefix}-text`}>{children}</div> : ''}
-    </div>
+      </View>
+      {children ? (
+        <View className={`${classPrefix}-text`}>{children}</View>
+      ) : (
+        ''
+      )}
+    </View>
   )
 }
 

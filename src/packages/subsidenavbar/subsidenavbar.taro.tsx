@@ -7,6 +7,7 @@ import React, {
   useContext,
   useState,
 } from 'react'
+import { View } from '@tarojs/components'
 import { OffsetContext } from '../sidenavbar/context'
 
 export type SubSideNavBarProps = {
@@ -89,10 +90,10 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
 
   return (
     <div className={divClass} ref={listRef} onClick={clickFn} {...rest}>
-      <div className={`${classPrefix}-title ${classPrefix}-border-bt`}>
+      <View className={`${classPrefix}-title ${classPrefix}-border-bt`}>
         {title} <i className={iconClass} />
-      </div>
-      <div className={`${classPrefix}-content`}>{children}</div>
+      </View>
+      <View className={`${classPrefix}-content`}>{children}</View>
     </div>
   )
 }

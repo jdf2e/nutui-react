@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -40,20 +40,20 @@ const ShortPasswordDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.displayPlain}</h2>
+        <View className="h2">{translated.displayPlain}</View>
         <Demo2 />
-        <h2>{translated.displayButton}</h2>
+        <View className="h2">{translated.displayButton}</View>
         <Demo3 />
-        <h2>{translated.customLength}</h2>
+        <View className="h2">{translated.customLength}</View>
         <Demo4 />
-        <h2>{translated.forgetPassword}</h2>
+        <View className="h2">{translated.forgetPassword}</View>
         <Demo5 />
-        <h2>{translated.autoFocus}</h2>
+        <View className="h2">{translated.autoFocus}</View>
         <Demo6 />
-      </div>
+      </ScrollView>
     </>
   )
 }

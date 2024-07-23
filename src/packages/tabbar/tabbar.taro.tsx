@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
@@ -53,7 +54,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
   })
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -63,7 +64,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
       )}
       style={style}
     >
-      <div className={`${classPrefix}-wrap`}>
+      <View className={`${classPrefix}-wrap`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -77,9 +78,9 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
             return React.cloneElement(child, { ...child.props, index })
           })}
         </TabbarContext.Provider>
-      </div>
-      {(fixed || safeArea) && <div className={`${classPrefix}-safe-area`} />}
-    </div>
+      </View>
+      {(fixed || safeArea) && <View className={`${classPrefix}-safe-area`} />}
+    </View>
   )
 }
 

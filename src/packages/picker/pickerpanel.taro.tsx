@@ -5,6 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import { View } from '@tarojs/components'
 import { PickerOption } from './types'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -264,8 +265,8 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   })
 
   return (
-    <div className="nut-picker-list" ref={pickerPanelRef}>
-      <div
+    <View className="nut-picker-list" ref={pickerPanelRef}>
+      <View
         className="nut-picker-roller"
         ref={rollerRef}
         style={threeDimensional ? touchRollerStyle() : touchTileStyle()}
@@ -275,7 +276,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
         {threeDimensional &&
           options.map((item, index) => {
             return (
-              <div
+              <View
                 className={`nut-picker-roller-item ${
                   isHidden(index + 1) && 'nut-picker-roller-item-hidden'
                 }`}
@@ -289,14 +290,14 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                 key={item.value ? item.value : index}
               >
                 <>{item.text}</>
-              </div>
+              </View>
             )
           })}
         {/* 平铺 */}
         {!threeDimensional &&
           options.map((item, index) => {
             return (
-              <div
+              <View
                 className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
                 style={{
@@ -305,13 +306,13 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                 }}
               >
                 <>{item.text}</>
-              </div>
+              </View>
             )
           })}
-      </div>
-      <div className="nut-picker-mask" />
-      <div className="nut-picker-indicator" ref={listRef} />
-    </div>
+      </View>
+      <View className="nut-picker-mask" />
+      <View className="nut-picker-indicator" ref={listRef} />
+    </View>
   )
 }
 const PickerPanel = React.forwardRef<

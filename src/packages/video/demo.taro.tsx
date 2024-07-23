@@ -49,22 +49,16 @@ const VideoDemo = () => {
       >
         <View className="h2">{translated.basic}</View>
         <Demo1 />
-
         <View className="h2">{translated.autoPlay}</View>
         <Demo2 />
-
         <View className="h2">{translated.muted}</View>
         <Demo3 />
-
         <View className="h2">{translated.cover}</View>
         <Demo4 />
-
         <View className="h2">{translated.inline}</View>
         <Demo5 />
-
         <View className="h2">{translated.background}</View>
         <Demo6 />
-
         <View className="h2">{translated.switch}</View>
         <Demo7 />
       </ScrollView>

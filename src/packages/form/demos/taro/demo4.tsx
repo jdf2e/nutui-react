@@ -6,6 +6,7 @@ import {
   Button,
   type FormItemRuleWithoutValidator,
 } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo4 = () => {
   const submitFailed = (error: any) => {
@@ -36,7 +37,7 @@ const Demo4 = () => {
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
-          <div
+          <View
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -49,7 +50,7 @@ const Demo4 = () => {
             <Button nativeType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
-          </div>
+          </View>
         }
       >
         <Form.Item
