@@ -72,27 +72,6 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/core@^7.24.7":
-  version "7.24.9"
-  resolved "http://registry.m.jd.com/@babel/core/download/@babel/core-7.24.9.tgz#dc07c9d307162c97fa9484ea997ade65841c7c82"
-  integrity sha1-3AfJ0wcWLJf6lITqmXreZYQcfII=
-  dependencies:
-    "@ampproject/remapping" "^2.2.0"
-    "@babel/code-frame" "^7.24.7"
-    "@babel/generator" "^7.24.9"
-    "@babel/helper-compilation-targets" "^7.24.8"
-    "@babel/helper-module-transforms" "^7.24.9"
-    "@babel/helpers" "^7.24.8"
-    "@babel/parser" "^7.24.8"
-    "@babel/template" "^7.24.7"
-    "@babel/traverse" "^7.24.8"
-    "@babel/types" "^7.24.9"
-    convert-source-map "^2.0.0"
-    debug "^4.1.0"
-    gensync "^1.0.0-beta.2"
-    json5 "^2.2.3"
-    semver "^6.3.1"
-
 "@babel/eslint-parser@^7.24.1":
   version "7.24.8"
   resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.24.8.tgz#bc655255fa4ded3694cc10ef3dbea6d69639c831"
@@ -1302,10 +1281,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-3.1.1.tgz#63085d2995ca0f0e55aa8b8a07d69bfd48b844fe"
   integrity sha512-a7cxGcJ2wIlMFLlh8z2ONm+715QkPHiyJcxwQlKOz/03GPw1COpfhcmC9wm4xlZfp//jWHNNMwzjtqHXVWU9KA==
 
-"@dongdesign/inject-jd-platform-styles@^1.0.1":
-  version "1.0.3"
-  resolved "http://registry.m.jd.com/@dongdesign/inject-jd-platform-styles/download/@dongdesign/inject-jd-platform-styles-1.0.3.tgz#3fb7a75ff74e5d8acb6935a1c56f212d5bc4a5ce"
-  integrity sha1-P7enX/dOXYrLaTWhxW8hLVvEpc4=
+"@dongdesign/inject-jd-platform-styles@1.0.4":
+  version "1.0.4"
+  resolved "http://registry.m.jd.com/@dongdesign/inject-jd-platform-styles/download/@dongdesign/inject-jd-platform-styles-1.0.4.tgz#9fe1bce79659d63e875f9a5a104a4b6b7b1b6aaf"
+  integrity sha1-n+G855ZZ1j6HX5paEEpLa3sbaq8=
   dependencies:
     "@tarojs/service" "^4.0.0"
     lodash.kebabcase "^4.1.1"
@@ -2741,11 +2720,6 @@
   resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-4.0.2.tgz#b410e1562bf872c7a7b3a0e55f4766cb80b0786a"
   integrity sha512-x31gnbmVJk/vyF40etO9ozbRTeTl161J3PsN2Uz9oeWyPCeF5/bePKiBgfxaFkfPFBXBBNrrd+mCzetbfDbR0g==
 
-"@tarojs/api@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/api/-/api-4.0.2.tgz#b410e1562bf872c7a7b3a0e55f4766cb80b0786a"
-  integrity sha512-x31gnbmVJk/vyF40etO9ozbRTeTl161J3PsN2Uz9oeWyPCeF5/bePKiBgfxaFkfPFBXBBNrrd+mCzetbfDbR0g==
-
 "@tarojs/binding-darwin-arm64@4.0.0-alpha.34":
   version "4.0.0-alpha.34"
   resolved "https://registry.yarnpkg.com/@tarojs/binding-darwin-arm64/-/binding-darwin-arm64-4.0.0-alpha.34.tgz#6c304b0ba4dc8c08ccc906b2e8e48dd4b4fc0fc3"
@@ -2806,17 +2780,6 @@
   integrity sha512-Mlli1t958xTAiE0WwR9EpZ46YAM4p/DQEvXt1Z3aTB12Ikdh2BpA5LfDa+2Gs3iHbEXpZYQw04bM8JyRuhxIAw==
   dependencies:
     "@tarojs/components" "4.0.0-alpha.34"
-    classnames "^2.2.5"
-    csstype "^3.1.1"
-    memoize-one "^6.0.0"
-    tslib "^2.6.2"
-
-"@tarojs/components-advanced@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/components-advanced/-/components-advanced-4.0.2.tgz#bed6d50bdb37e15293046005976e36cc00fe2dbf"
-  integrity sha512-utiIqgLMpJa/zUkTycb/pJX/2mviQOTtfJRfMQewf8a2P9+RL9YFklPbSO+85YbxE+k1xPb7HwQRo9Z844sMpg==
-  dependencies:
-    "@tarojs/components" "4.0.2"
     classnames "^2.2.5"
     csstype "^3.1.1"
     memoize-one "^6.0.0"
@@ -2908,22 +2871,6 @@
     swiper "6.8.0"
     tslib "^2.6.2"
 
-"@tarojs/components@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/components/-/components-4.0.2.tgz#e8bcc7d632973f92721e5a67d2b8200fa703c3d7"
-  integrity sha512-s3JeHf4xrqnXcibgK/CFnrKGkC8Mn7AQZqRAi9dxU8G0XVmpDxxQyyBQmYRkdJOzY85LEG4q3Wk0N6/6aplCIQ==
-  dependencies:
-    "@stencil/core" "2.22.3"
-    "@tarojs/components-advanced" "4.0.2"
-    "@tarojs/runtime" "4.0.2"
-    "@tarojs/taro" "4.0.2"
-    classnames "^2.2.5"
-    hammerjs "^2.0.8"
-    hls.js "^1.1.5"
-    resolve-pathname "^3.0.0"
-    swiper "6.8.0"
-    tslib "^2.6.2"
-
 "@tarojs/helper@4.0.0-alpha.34":
   version "4.0.0-alpha.34"
   resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-4.0.0-alpha.34.tgz#f0a6ddefa3f5ac96c2dd0bc721599a5548c56a83"
@@ -2955,33 +2902,6 @@
   version "4.0.0-beta.123"
   resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-4.0.0-beta.123.tgz#4387225c784d4ad297824412582453473967962b"
   integrity sha512-J+xm/kbip1QQbPMREsUUtIJ7ANh9bJXEn5kN5Iaw0EpSFl1hOb+tg0s6QgUYv4NIJrjvcXXGEHzQeCVRnblF0w==
-  dependencies:
-    "@babel/core" "^7.24.4"
-    "@babel/generator" "^7.24.4"
-    "@babel/parser" "^7.24.4"
-    "@babel/traverse" "^7.24.1"
-    "@babel/types" "^7.24.0"
-    "@swc/core" "1.3.96"
-    "@swc/register" "0.1.10"
-    ansi-escapes "^4.3.2"
-    chalk "^4.1.2"
-    chokidar "^3.6.0"
-    cross-spawn "^7.0.3"
-    debug "^4.3.4"
-    dotenv "^16.4.5"
-    dotenv-expand "^11.0.6"
-    esbuild "~0.21.0"
-    find-yarn-workspace-root "^2.0.0"
-    fs-extra "^11.2.0"
-    lodash "^4.17.21"
-    require-from-string "^2.0.2"
-    resolve "^1.22.8"
-    supports-hyperlinks "^3.0.0"
-
-"@tarojs/helper@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-4.0.2.tgz#f34c447d2de59d2689c93d822ee7401c864c5c58"
-  integrity sha512-qknqEBLxhyuiIqGSa76H7wEqKB70oSazEQNuPMKDo/nLQbDKBu5/TrogaFOdQOWP3G2vORWyMR3fIh0x/OoouA==
   dependencies:
     "@babel/core" "^7.24.4"
     "@babel/generator" "^7.24.4"
@@ -3435,14 +3355,6 @@
     "@tarojs/shared" "4.0.2"
     tslib "^2.6.2"
 
-"@tarojs/runtime@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/runtime/-/runtime-4.0.2.tgz#f8646ad0f223f74da3617df644a0e151d844f17e"
-  integrity sha512-pSw4kOO7mvq5bQJHkTg/5RQ0tcf+gHcuSVZ4Cyx0jG58Qgcq7H1x10Eih5xKAgEecxtdyY7nC2DeW1kdgLo+EA==
-  dependencies:
-    "@tarojs/shared" "4.0.2"
-    tslib "^2.6.2"
-
 "@tarojs/service@4.0.0-alpha.34":
   version "4.0.0-alpha.34"
   resolved "https://registry.yarnpkg.com/@tarojs/service/-/service-4.0.0-alpha.34.tgz#58ced7051c1819e735e81c015cfa2cb4a2e2481b"
@@ -3473,22 +3385,7 @@
     tapable "^2.2.1"
     webpack-merge "^5.10.0"
 
-"@tarojs/service@4.0.2", "@tarojs/service@^4.0.0":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/service/-/service-4.0.2.tgz#8a50607d46ef61589b2844fbb7caad5ec8feee97"
-  integrity sha512-gCOVM6+m6G36ugMLpy02MlqbOLEwGEORuzvjvde2cqmdxr2yql0OgXbn12LKakz7hmVhcQm3cxQrRmjpSGLxKw==
-  dependencies:
-    "@tarojs/helper" "4.0.2"
-    "@tarojs/runner-utils" "4.0.2"
-    "@tarojs/shared" "4.0.2"
-    joi "^17.12.3"
-    lodash "^4.17.21"
-    ora "^5.4.1"
-    resolve "^1.22.8"
-    tapable "^2.2.1"
-    webpack-merge "^5.10.0"
-
-"@tarojs/service@4.0.2", "@tarojs/service@^4.0.0":
+"@tarojs/service@4.0.2", "@tarojs/service@^4.0.0", "@tarojs/service@^4.0.0-beta.49":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@tarojs/service/-/service-4.0.2.tgz#8a50607d46ef61589b2844fbb7caad5ec8feee97"
   integrity sha512-gCOVM6+m6G36ugMLpy02MlqbOLEwGEORuzvjvde2cqmdxr2yql0OgXbn12LKakz7hmVhcQm3cxQrRmjpSGLxKw==
@@ -3512,11 +3409,6 @@
   version "4.0.0-beta.123"
   resolved "https://registry.yarnpkg.com/@tarojs/shared/-/shared-4.0.0-beta.123.tgz#6556b168e6cebc2c2f9d695e716dd860d3d7ba4a"
   integrity sha512-MDz33f827pBicyTl6vTBPnbCKU0Vi2/Kd18bHrAnEt3D5XSFXiHaumSTBF0eb8cF3RdmpjGtuAW95dZxcon2nw==
-
-"@tarojs/shared@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/shared/-/shared-4.0.2.tgz#644d6bd523c7b26fe5baea549ea7704f8677950b"
-  integrity sha512-yS/2b2FUijRncRI8JxX74HY1s4yvBCjwRvTeExQOubgLar6xRM6RfQdcfkvRpAf7PE+I6XdLutTlmFkf0G/q7A==
 
 "@tarojs/shared@4.0.2":
   version "4.0.2"
@@ -3609,15 +3501,6 @@
   dependencies:
     "@tarojs/api" "4.0.0-alpha.34"
     "@tarojs/runtime" "4.0.0-alpha.34"
-    "@types/postcss-url" "^10.0.4"
-
-"@tarojs/taro@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-4.0.2.tgz#d7f79b10ad127e6b941184465e2ee0689f165882"
-  integrity sha512-ER04PYIYflg91E0mQj7FEu2M6CceTSV7tPP9eJtBvXeVDU/NacGuGNKPfpItrgGFQIjRFfinWy8de4uiLimeEg==
-  dependencies:
-    "@tarojs/api" "4.0.2"
-    "@tarojs/runtime" "4.0.2"
     "@types/postcss-url" "^10.0.4"
 
 "@tarojs/taro@4.0.2":
@@ -3731,6 +3614,16 @@
     webpack-format-messages "^3.0.1"
     webpack-virtual-modules "^0.6.1"
     webpackbar "^5.0.2"
+
+"@test/inject-platform-styles@^1.0.0-alpha.3":
+  version "1.0.0-alpha.3"
+  resolved "http://registry.m.jd.com/@test/inject-platform-styles/download/@test/inject-platform-styles-1.0.0-alpha.3.tgz#3db470066ec0170d2dfc599b4a832177e81316ba"
+  integrity sha1-PbRwBm7AFw0t/FmbSoMhd+gTFro=
+  dependencies:
+    "@tarojs/service" "^4.0.0-beta.49"
+    lodash.kebabcase "^4.1.1"
+    tslib "^2.6.2"
+    webpack-chain "^6.5.1"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -5244,16 +5137,6 @@ braces@^3.0.3, braces@~3.0.2:
 
 browserslist@^4.0.0, browserslist@^4.21.10, browserslist@^4.21.9, browserslist@^4.23.0, browserslist@^4.23.1:
   version "4.23.2"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.23.2.tgz#244fe803641f1c19c28c48c4b6ec9736eb3d32ed"
-  integrity sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==
-  dependencies:
-    caniuse-lite "^1.0.30001640"
-    electron-to-chromium "^1.4.820"
-    node-releases "^2.0.14"
-    update-browserslist-db "^1.1.0"
-
-browserslist@^4.23.1:
-  version "4.23.2"
   resolved "http://registry.m.jd.com/browserslist/download/browserslist-4.23.2.tgz#244fe803641f1c19c28c48c4b6ec9736eb3d32ed"
   integrity sha1-JE/oA2QfHBnCjEjEtuyXNus9Mu0=
   dependencies:
@@ -5455,7 +5338,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001599, caniuse-lite@^1.0.30001640:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001599:
   version "1.0.30001643"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001643.tgz#9c004caef315de9452ab970c3da71085f8241dbd"
   integrity sha512-ERgWGNleEilSrHM6iUz/zJNSQTP8Mr21wDWpdgvRwcTXGAq6jMtOUPP4dqFPTdKqZ2wKTdtB+uucZ3MRpAUSmg==
@@ -6765,11 +6648,6 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
-
-electron-to-chromium@^1.4.820:
-  version "1.4.832"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.832.tgz#d25882ce0a9237577b039bffa124ecef1822003b"
-  integrity sha512-cTen3SB0H2SGU7x467NRe1eVcQgcuS6jckKfWJHia2eo0cHIGOqHoAxevIYZD4eRHcWjkvFzo93bi3vJ9W+1lA==
 
 electron-to-chromium@^1.4.820:
   version "1.4.823"
@@ -14319,14 +14197,6 @@ unset-value@^1.0.0:
   dependencies:
     has-value "^0.3.1"
     isobject "^3.0.0"
-
-update-browserslist-db@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.1.0.tgz#7ca61c0d8650766090728046e416a8cde682859e"
-  integrity sha512-EdRAaAyk2cUE1wOf2DkEhzxqOQvFOoRJFNS6NeyJ01Gp2beMRpBAINjM2iDXE3KCuKhwnvHIQCJm6ThL2Z+HzQ==
-  dependencies:
-    escalade "^3.1.2"
-    picocolors "^1.0.1"
 
 update-browserslist-db@^1.1.0:
   version "1.1.0"

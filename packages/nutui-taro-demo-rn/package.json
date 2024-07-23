@@ -51,8 +51,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@dongdesign/inject-jd-platform-styles": "^1.0.1",
-    "@dongdesign/platform-styles": "^1.0.0",
+    "@dongdesign/inject-jd-platform-styles": "1.0.4",
     "@jdreact/jdreact-jsbundle-commonpack": "1.0.425",
     "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
     "@jdtaro/plugin-platform-jdrn": "2.0.0-beta.0",
