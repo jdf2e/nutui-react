@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import type { MouseEvent } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -18,7 +18,6 @@ export interface BackTopProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  target: '',
   threshold: 200,
   zIndex: 900,
   duration: 1000,
@@ -43,9 +42,8 @@ export const BackTop: FunctionComponent<
   }
 
   const classPrefix = 'nut-backtop'
-  const [backTop, SetBackTop] = useState(false)
-  const [scrollTop, SetScrollTop] = useState(0)
-  let startTime = 0
+  const [show, setShow] = useState(false)
+  const [scrollTop, setScrollTop] = useState(0)
   const scrollEl: any = useRef<any>(null)
   useEffect(() => {
     init()
@@ -53,37 +51,26 @@ export const BackTop: FunctionComponent<
   }, [])
 
   const init = () => {
-    if (target && document.getElementById(target)) {
-      scrollEl.current = document.getElementById(target) as HTMLElement | Window
-    } else {
-      scrollEl.current = window
-    }
+    scrollEl.current = document.getElementById(target) || window
     addEventListener()
     initCancelAniFrame()
   }
   const scrollListener = () => {
-    let top: any = null
-    if (scrollEl.current instanceof Window) {
-      top = scrollEl.current.pageYOffset
-      SetScrollTop(top)
-    } else {
-      top = scrollEl.current.scrollTop
-      SetScrollTop(top)
-    }
-    const showBtn = top >= threshold
-    SetBackTop(showBtn)
+    const top = scrollEl.current.pageYOffset || scrollEl.current.scrollTop
+    setScrollTop(top)
+    setShow(top >= threshold)
   }
 
   const scroll = (y = 0) => {
-    if (scrollEl.current instanceof Window) {
-      window.scrollTo(0, y)
-    } else {
+    if (!(scrollEl.current instanceof Window)) {
       scrollEl.current.scrollTop = y
+    } else {
       window.scrollTo(0, y)
     }
   }
 
   const scrollAnimation = () => {
+    const startTime = +new Date()
     let cid = requestAniFrame(function fn() {
       const t = duration - Math.max(0, startTime - +new Date() + duration / 2)
       const y = (t * -scrollTop) / duration + scrollTop
@@ -111,9 +98,13 @@ export const BackTop: FunctionComponent<
 
   const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
-    const otime = +new Date()
-    startTime = otime
     duration > 0 ? scrollAnimation() : scroll()
+  }
+
+  const defaultStyle = {
+    [rtl ? 'left' : 'right']: '10px',
+    bottom: '20px',
+    zIndex,
   }
 
   const styles =
@@ -122,18 +113,14 @@ export const BackTop: FunctionComponent<
           zIndex,
           ...style,
         }
-      : {
-          [rtl ? 'left' : 'right']: '10px',
-          bottom: '20px',
-          zIndex,
-        }
+      : defaultStyle
 
   return (
     <div
       className={classNames(
         classPrefix,
         {
-          show: backTop,
+          show,
         },
         className
       )}
