@@ -6,10 +6,10 @@
   background-color: #ffffff;
 }
 .nut-hoverbutton-item-container:active {
-  background-color: #f5f6fa;
+  background-color: #f6f6f6;
 }
 .nut-hoverbutton-item-container-active {
-  background-color: #f5f6fa;
+  background-color: #f6f6f6;
 }
 .nut-hoverbutton-item-container-harmony {
   margin-bottom: 16px;
@@ -30,6 +30,6 @@
   height: 20px;
 }
 .nut-hoverbutton-item-container:active .nut-hoverbutton-item-icon {
-  color: #505259;
-  fill: #505259;
+  color: #595959;
+  fill: #595959;
 }

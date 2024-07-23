@@ -22,7 +22,6 @@
 }
 .nut-grid-item-content {
   display: flex;
-  box-sizing: border-box;
   flex: 1;
   flex-direction: column;
   width: 100%;
