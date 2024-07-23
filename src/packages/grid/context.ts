@@ -1,5 +1,5 @@
 import React from 'react'
-import { GridItemProps } from '../griditem/griditem'
+import { GridItemProps } from '../griditem/types'
 
 const gridContext = {
   onClick: (item: GridItemProps, index: number) => {},
