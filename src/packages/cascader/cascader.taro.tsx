@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react-taro'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { Popup, PopupProps } from '@/packages/popup/popup.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import Tree, { convertListToOptions } from './utils'
@@ -400,7 +400,7 @@ const InternalCascader: ForwardRefRenderFunction<
     }
 
     return (
-      <div
+      <View
         style={{ color: checked ? activeColor : '' }}
         className={classes}
         key={index}
@@ -408,24 +408,24 @@ const InternalCascader: ForwardRefRenderFunction<
           chooseItem(node, false)
         }}
       >
-        <div className={classesTitle}>{node.text}</div>
+        <View className={classesTitle}>{node.text}</View>
         {node.loading ? (
           <Loading color="#969799" className="nut-cascader-item-icon-loading" />
         ) : (
           renderIcon()
         )}
-      </div>
+      </View>
     )
   }
 
   const renderTabs = () => {
     return (
-      <div className={`${classPrefix} ${className}`} style={style}>
+      <View className={`${classPrefix} ${className}`} style={style}>
         <Tabs
           value={tabvalue}
           title={() => {
             return optionsData.map((pane, index) => (
-              <div
+              <View
                 onClick={() => {
                   setTabvalue(pane.paneKey)
                   state.tabsCursor = index
@@ -446,7 +446,7 @@ const InternalCascader: ForwardRefRenderFunction<
                   {!(!state.initLoading && state.panes.length) && 'Loading...'}
                 </span>
                 <span className="nut-tabs-titles-item-line" />
-              </div>
+              </View>
             ))
           }}
         >
@@ -462,11 +462,11 @@ const InternalCascader: ForwardRefRenderFunction<
             ))
           ) : (
             <Tabs.TabPane>
-              <div className={classesPane} />
+              <View className={classesPane} />
             </Tabs.TabPane>
           )}
         </Tabs>
-      </div>
+      </View>
     )
   }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -30,12 +31,12 @@ const SideNavBarDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{text1}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{text1}</View>
         <Demo1 />
-        <h2>{text2}</h2>
+        <View className="h2">{text2}</View>
         <Demo2 />
-      </div>
+      </ScrollView>
     </>
   )
 }

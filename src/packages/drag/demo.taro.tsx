@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -35,19 +36,22 @@ const DragDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${isTaroWeb ? 'web' : 'full'}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${isTaroWeb ? 'web' : 'full'}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-
-        <h2 style={{ paddingTop: '30px' }}>{translated.direction}</h2>
+        <View className="h2" style={{ paddingTop: '30px' }}>
+          {translated.direction}
+        </View>
         <Demo2 />
-
-        <h2 style={{ paddingTop: '30px' }}>{translated.attract}</h2>
+        <View className="h2" style={{ paddingTop: '30px' }}>
+          {translated.attract}
+        </View>
         <Demo3 />
-
-        <h2 style={{ paddingTop: '30px' }}>{translated.limitBoundaries}</h2>
+        <View className="h2" style={{ paddingTop: '30px' }}>
+          {translated.limitBoundaries}
+        </View>
         <Demo4 />
-      </div>
+      </ScrollView>
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Toast } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -44,20 +45,19 @@ const ToastDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${demoClass()}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${demoClass()}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.toastFunction}</h2>
+        <View className="h2">{translated.toastFunction}</View>
         <Toast id="test" />
         <Demo2 />
-
-        <h2>{translated.toastDuration}</h2>
+        <View className="h2">{translated.toastDuration}</View>
         <Demo3 />
-        <h2>{translated.toastCustomIcon}</h2>
+        <View className="h2">{translated.toastCustomIcon}</View>
         <Demo4 />
-        <h2>{translated.toastWordBreak}</h2>
+        <View className="h2">{translated.toastWordBreak}</View>
         <Demo5 />
-      </div>
+      </ScrollView>
     </>
   )
 }
