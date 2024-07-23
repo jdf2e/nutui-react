@@ -1,10 +1,10 @@
 import React, {
+  CSSProperties,
   FunctionComponent,
-  useEffect,
   useCallback,
+  useEffect,
   useRef,
   useState,
-  CSSProperties,
 } from 'react'
 import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
@@ -58,14 +58,15 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
 
   useEffect(() => {
     if (position === 'top') return
-    const containerEle = container?.current as HTMLElement
+    const containerEle = container && container.current
+    const rootEle = rootRef.current
+    const stickyEle = stickyRef.current
 
-    if (!rootRef.current && !containerEle) return
-    const rootRect = getRect(rootRef.current as Element)
+    if (!rootEle && !containerEle) return
+    const rootRect = getRect(rootEle)
     const containerRect = getRect(containerEle)
     const clientHeight = document.documentElement.clientHeight
-    const stCurrent = stickyRef.current as Element
-    const stickyRect = getRect(stCurrent)
+    const stickyRect = getRect(stickyEle)
     let fixed = clientHeight - threshold < rootRect.bottom
     if (containerEle) {
       fixed =
@@ -82,21 +83,19 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     setIsFixed(fixed)
   }, [position, container, threshold])
   const handleScroll = useCallback(() => {
-    const containerEle = container?.current as HTMLElement
+    const containerEle = container && container.current
+    const rootEle = rootRef.current
+    const stickyEle = stickyRef.current
+    if (!rootEle && !containerEle) return
 
-    if (!rootRef.current && !containerEle) return
-
-    const rootRect = getRect(rootRef.current as Element)
-    const stCurrent = stickyRef.current as Element
-    const stickyRect = getRect(stCurrent)
+    const rootRect = getRect(rootEle)
+    const stickyRect = getRect(stickyEle)
     const containerRect = getRect(containerEle)
     if (rootRect.height) {
-      setRootStyle((prev) => {
-        return {
-          ...prev,
-          height: rootRect.height,
-        }
-      })
+      setRootStyle((prev) => ({
+        ...prev,
+        height: rootRect.height,
+      }))
     }
 
     const getFixed = () => {
@@ -119,22 +118,16 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     }
 
     const getTransform = (): CSSProperties => {
-      if (position === 'top') {
-        if (containerEle) {
-          const diff = containerRect.bottom - threshold - stickyRect.height
-          const transform = diff < 0 ? diff : 0
-          return { transform: `translate3d(0, ${transform}px, 0)` }
-        }
-        return {}
+      if (position === 'top' && containerEle) {
+        const diff = containerRect.bottom - threshold - stickyRect.height
+        const transform = diff < 0 ? diff : 0
+        return { transform: `translate3d(0, ${transform}px, 0)` }
       }
-      if (position === 'bottom') {
-        if (containerEle) {
-          const clientHeight = document.documentElement.clientHeight
-          const diff = containerRect.bottom - (clientHeight - threshold)
-          const transform = diff < 0 ? diff : 0
-          return { transform: `translate3d(0, ${transform}px, 0)` }
-        }
-        return {}
+      if (position === 'bottom' && containerEle) {
+        const clientHeight = document.documentElement.clientHeight
+        const diff = containerRect.bottom - (clientHeight - threshold)
+        const transform = diff < 0 ? diff : 0
+        return { transform: `translate3d(0, ${transform}px, 0)` }
       }
       return {}
     }
@@ -153,10 +146,10 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     onChange && onChange(isFixed)
   })
   useEffect(() => {
-    const el = getElement() as HTMLElement | Window
-    el.addEventListener('scroll', handleScroll, false)
+    const el = getElement()
+    el?.addEventListener('scroll', handleScroll, false)
     return () => {
-      el.removeEventListener('scroll', handleScroll)
+      el?.removeEventListener('scroll', handleScroll)
     }
   }, [getElement, handleScroll])
 

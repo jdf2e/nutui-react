@@ -167,6 +167,7 @@ export const InfiniteLoading: FunctionComponent<
 
   return (
     <ScrollView
+      {...rest}
       className={classes}
       scrollY
       id="scroller"
@@ -177,7 +178,6 @@ export const InfiniteLoading: FunctionComponent<
       onTouchStart={touchStart}
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
-      {...rest}
     >
       <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <View className="nut-infinite-top-tips">
