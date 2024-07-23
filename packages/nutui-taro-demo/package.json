@@ -111,6 +111,7 @@
     "typescript": "^5.3.3"
   },
   "resolutions": {
-    "react-native-webview": "13.6.3"
+    "react-native-webview": "13.6.3",
+    "sass":"1.77.6"
   }
 }
