@@ -160,7 +160,7 @@ export const Progress: FunctionComponent<
     }
   }, [])
   const getTextStyle = () => {
-    const value = harmony() ? '90%' : '100%'
+    const value = harmony() ? '90%' : '99%'
     return rtl ? { right: value } : { left: value }
   }
   const computeRight = () => {

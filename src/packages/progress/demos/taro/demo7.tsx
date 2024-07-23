@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Cell, Button, Toast, Progress } from '@nutui/nutui-react-taro'
-import { View, Text } from '@tarojs/components'
+import { Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { harmonyAndRn } from '@/utils/platform-taro'
 
@@ -22,10 +22,8 @@ const Demo7 = () => {
       )}
 
       <Cell align="center">
-        <View style={{ width: '90%', marginRight: pxTransform(5) }}>
-          <Progress percent={value} />
-        </View>
-        <Text>{value}%</Text>
+        <Progress percent={value} />
+        <Text style={{ marginLeft: '5px' }}>{value}%</Text>
       </Cell>
       <Cell align="center">
         <Button

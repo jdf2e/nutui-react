@@ -1,5 +1,4 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -11,6 +10,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -49,14 +49,14 @@ const ProgressDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.customStyle}</View>
         <Demo2 />
         <View className="h2">{translated.noShowPercentage}</View>
         <Demo3 />
-        {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+        {!harmonyAndRn() && (
           <>
             <View className="h2">{translated.customContent}</View>
             <Demo4 />
@@ -69,7 +69,7 @@ const ProgressDemo = () => {
 
         <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
+        {!harmonyAndRn() && (
           <>
             <View className="h2">{translated.lazy}</View>
             <Demo8 />
