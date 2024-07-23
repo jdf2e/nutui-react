@@ -123,6 +123,7 @@ const subPackages = [
     ]
   }
 ];
+
 export default defineAppConfig({
   pages: ['pages/index/index'],
   subPackages,
@@ -135,5 +136,4 @@ export default defineAppConfig({
   components: ['pages/index/index', ...(subPackages.map(subPackage => {
     return subPackage.pages.map(page => `${subPackage.root}/${page}`)
   }).flat())]
- 
 })
