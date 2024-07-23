@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import '@nutui/icons-react-taro/dist/style_iconfont.css'
-import { Cell, Toast } from '@nutui/nutui-react-taro'
+// import '@nutui/icons-react-taro/dist/style_iconfont.css'
+import { Toast } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -73,25 +73,15 @@ const IconDemo = () => {
           }}
         />
         <View className="h2">{translated.svg}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated['84aa6bce']}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.dab8a74f}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <View className="h2">{translated['52c15454']}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <View className="h2">{translated['7aeb5407']}</View>
-        <Cell style={{ alignItems: 'center' }}>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <Demo6 />
         <Demo7 />
       </ScrollView>

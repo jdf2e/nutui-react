@@ -1,16 +1,16 @@
 # Menu 菜單
 
-## 介紹
+
 
 嚮下彈出的菜單列錶
 
-## 安裝
+## 引入
 
 ```tsx
 import { Menu } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

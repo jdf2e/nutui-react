@@ -28,6 +28,7 @@ const subPackages = [
       "pages/backtop/index",
       "pages/elevator/index",
       "pages/fixednav/index",
+      "pages/hoverbutton/index",
       "pages/navbar/index",
       "pages/sidenavbar/index",
       "pages/tabbar/index",
@@ -49,7 +50,7 @@ const subPackages = [
     ]
   },
   {
-    "root": "dentry1",
+    "root": "dataentry",
     "pages": [
       "pages/menu/index",
       "pages/numberkeyboard/index",

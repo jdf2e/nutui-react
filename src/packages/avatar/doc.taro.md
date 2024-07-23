@@ -1,16 +1,15 @@
 # Avatar 头像
 
-## 介绍
 
 用来代表用户或事物，支持图片、图标或字符展示。
 
-## 安装
+## 引入
 
 ```tsx
 import { Avatar } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -103,7 +102,6 @@ Icon 和字符型可以自定义图标颜色及背景色
 | background | 设置 Icon、字符类型头像的背景色 | `string` | `#eee` |
 | color | 设置 Icon、字符类型头像的颜色 | `string` | `#666` |
 | src | 设置图片类型头像的地址 | `string` | `-` |
-| alt | 设置图片类型头像无法显示时的替代文本 | `string` | `-` |
 | icon | 设置 Icon 类型头像图标 | `ReactNode` | `-` |
 | onClick | 点击头像触发事件 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onError | 图片加载失败的事件 | `() => void` | `-` |

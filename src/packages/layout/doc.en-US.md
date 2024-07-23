@@ -1,10 +1,10 @@
 # Layout
 
-## Intro
+
 
 for quick layout
 
-## Install
+## Import
 
 ```tsx
 import { Row, Col } from '@nutui/nutui-react'

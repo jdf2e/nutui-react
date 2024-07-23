@@ -1,16 +1,16 @@
 # Audio 音頻播放器
 
-## 介紹
+
 
 用於音頻播放
 
-## 安裝
+## 引入
 
 ```tsx
 import { Audio } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

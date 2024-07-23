@@ -1,16 +1,15 @@
 # InputNumber 数字输入框
 
-## 介绍
 
 通过点击按钮控制数字增减。
 
-## 安装
+## 引入
 
 ```tsx
 import { InputNumber } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

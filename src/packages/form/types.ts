@@ -25,6 +25,7 @@ export interface FormInstance<Values = any> {
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
   getInternal: (secret: string) => any
+  validateFields: (nameList?: NamePath[]) => Promise<any[]>
 }
 
 export interface FormFieldEntity {

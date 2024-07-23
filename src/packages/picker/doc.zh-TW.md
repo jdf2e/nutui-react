@@ -1,16 +1,16 @@
 # Picker 選擇器
 
-## 介紹
+
 
 提供多個選項集合供用戶選擇其中一項。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Picker } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

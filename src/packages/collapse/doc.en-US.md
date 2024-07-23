@@ -1,10 +1,10 @@
 # Collapse 折叠面板
 
-## Intro
+
 
 Place the content in multiple folded panels, and click the panel title to expand or shrink the content.
 
-## Install
+## Import
 
 ```tsx
 import { Collapse } from 'nutui-react'

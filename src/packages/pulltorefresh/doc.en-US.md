@@ -1,10 +1,10 @@
 # PullToRefresh
 
-## Intro
+
 
 An interaction to load new content with a finger pull-to-refresh in a list.
 
-## Install
+## Import
 
 ```tsx
 import { PullToRefresh } from '@nutui/nutui-react';

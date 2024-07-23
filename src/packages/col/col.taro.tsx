@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -68,6 +68,7 @@ export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
     <View
       className={classNames(colName, className)}
       style={{ ...style, ...colStyle }}
+      key={classNames(colName, className)}
       onClick={(e) => {
         onClick && onClick(e, 'col')
       }}

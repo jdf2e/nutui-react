@@ -7,10 +7,7 @@ const Demo3 = () => {
   })
   return (
     <Cell>
-      <CountDown
-        endTime={stateRef.current.endTime}
-        format="DD 天 HH 时 mm 分 ss 秒"
-      />
+      <CountDown endTime={stateRef.current.endTime} format="DD天HH时mm分ss秒" />
     </Cell>
   )
 }

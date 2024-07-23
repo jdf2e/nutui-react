@@ -1,25 +1,23 @@
 import React from 'react'
-import { Divider } from '@nutui/nutui-react-taro'
-import Taro, { pxTransform } from '@tarojs/taro'
+import { Cell, Divider } from '@nutui/nutui-react-taro'
+import { rn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
-  /* RN unsupported dashed / dotted border style */
-  const isRn = Taro.getEnv() === 'RN'
-  const isHarmony = ['HARMONY', 'HARMONYHYBRID'].includes(Taro.getEnv())
   return (
-    <>
+    <Cell>
       <Divider
         style={{
           color: '#1989fa',
-          paddingLeft: isHarmony ? pxTransform(16) : 16,
-          paddingRight: isHarmony ? pxTransform(16) : 16,
+          paddingLeft: pxTransform(16),
+          paddingRight: pxTransform(16),
           borderColor: '#1989fa',
-          borderStyle: isRn ? 'solid' : 'dashed',
+          borderStyle: rn() ? 'solid' : 'dashed',
         }}
       >
         文本
       </Divider>
-    </>
+    </Cell>
   )
 }
 export default Demo5

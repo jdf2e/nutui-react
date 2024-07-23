@@ -1,16 +1,16 @@
 # Elevator 電梯樓層
 
-## 介紹
+
 
 用於列表快速定位以及索引的顯示
 
-## 安裝
+## 引入
 
 ```tsx
 import { Elevator } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

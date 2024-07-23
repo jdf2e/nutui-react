@@ -1,10 +1,10 @@
 # Price
 
-## Intro
+
 
 It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
-## Install
+## Import
 
 ```tsx
 import { Price } from '@nutui/nutui-react'

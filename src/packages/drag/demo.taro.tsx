@@ -35,7 +35,7 @@ const DragDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo full ${isTaroWeb ? 'web' : ''}`}>
+      <div className={`demo ${isTaroWeb ? 'web' : 'full'}`}>
         <h2>{translated.basic}</h2>
         <Demo1 />
 

@@ -1,10 +1,10 @@
 # Loading
 
-### Intro
+#
 
 A loading icon, Used to show the loading state
 
-### Install
+### Import
 
 ```tsx
 import { Loading } from '@nutui/nutui-react';

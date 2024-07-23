@@ -1,5 +1,4 @@
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
 import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -39,29 +38,17 @@ const SwitchDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <h2>{translated.asyncControl}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated.disabled}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <h2>{translated.eventTip}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated.customColor}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <h2>{translated.supportText}</h2>
-        <Cell>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
       </div>
     </>
   )

@@ -5,7 +5,7 @@ const Demo2 = () => {
   const marginStyle = { margin: 8 }
   return (
     <>
-      <Button fill="solid" style={marginStyle}>
+      <Button type="primary" fill="solid" style={marginStyle}>
         Solid
       </Button>
       <Button type="primary" fill="outline" style={marginStyle}>

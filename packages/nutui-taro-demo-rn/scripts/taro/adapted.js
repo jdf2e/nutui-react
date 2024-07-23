@@ -1,1 +1,0 @@
-exports = module.exports = ["cell","cellgroup","overlay","button","switch","countdown","empty","price","tag","layout","row","col","space","grid","griditem","divider","image","resultpage","notify","pagination","swiper","textarea","indicator","pulltorefresh"];

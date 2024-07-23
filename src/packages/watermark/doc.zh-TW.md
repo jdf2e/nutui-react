@@ -1,16 +1,14 @@
 # Watermark 水印
 
-## 介紹
-
 頁面上添加特定的文字或圖案，可用於防止信息盜用。
 
-## 安裝
+## 引入
 
 ```tsx
 import { WaterMark } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

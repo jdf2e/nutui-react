@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import Taro, { pxTransform } from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
-  const isHarmony = [
-    Taro.ENV_TYPE.HARMONY,
-    Taro.ENV_TYPE.HARMONYHYBRID,
-  ].includes(Taro.getEnv())
   const [visible, setVisible] = useState(false)
   const wrapperStyle = {
     display: 'flex',
@@ -17,9 +13,9 @@ const Demo6 = () => {
   }
   const contentStyle = {
     display: 'flex',
-    width: isHarmony ? pxTransform(150) : 150,
-    height: isHarmony ? pxTransform(150) : 150,
-    borderRadius: isHarmony ? pxTransform(8) : 8,
+    width: pxTransform(150),
+    height: pxTransform(150),
+    borderRadius: pxTransform(8),
 
     backgroundColor: '#fff',
     alignItems: 'center',

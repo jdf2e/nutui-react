@@ -1,7 +1,8 @@
 import React from 'react'
-import { View } from '@tarojs/components'
+import { View, Icon } from '@tarojs/components'
 import { BackTop, Cell } from '@nutui/nutui-react-taro'
-import { Top } from '@nutui/icons-react-taro'
+// @TODO 暂不支持
+// import { Top } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   return (
@@ -23,7 +24,8 @@ const Demo1 = () => {
             alignItems: 'center',
           }}
         >
-          <Top size={12} />
+          <Icon size={12} type="search" />
+          {/* <Top size={12} /> */}
           <View style={{ fontSize: '12px' }}>顶部</View>
         </View>
       </BackTop>
