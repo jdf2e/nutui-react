@@ -13,7 +13,9 @@ export function isWindow(val: unknown): val is Window {
   right	右侧与视图窗口左上角的距离	number
   bottom	底部与视图窗口左上角的距离	number
  */
-export const getRect = (elementRef: Element | Window | undefined): any => {
+export const getRect = (
+  elementRef: HTMLElement | Element | Window | undefined | null
+): any => {
   const element = elementRef
 
   if (isWindow(element)) {
