@@ -1,4 +1,0 @@
-resolve_conflict=true
-@jd-oh:registry=http://ohpm.jd.com/repos/ohpm/,http://umapohpm.jdfmgt.com/repos/ohpm/
-@jd:registry=http://ohpm.jd.com/repos/ohpm/,http://umapohpm.jdfmgt.com/repos/ohpm/
-registry=https://ohpm.openharmony.cn/ohpm/,http://ohpm.jd.com/repos/ohpm/
