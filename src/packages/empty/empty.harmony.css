@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 32px 40px;
-  background-color: #fff;
+  background-color: #ffffff;
 }
 .nut-empty-base {
   width: 160px;
@@ -45,6 +45,6 @@
   margin-top: 16px;
 }
 .nut-empty-action {
-  margin-right: 6px;
   margin-left: 6px;
+  margin-right: 6px;
 }
