@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import Taro, { PageInstance, pxTransform } from '@tarojs/taro'
+import Taro, { PageInstance } from '@tarojs/taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/utils/use-uuid'
+import { harmony, harmonyAndRn, rn, web } from '@/utils/platform-taro'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -80,7 +82,7 @@ export const Progress: FunctionComponent<
     }
 
     return () => {
-      lazy && resetObserver(Taro.getEnv())
+      lazy && resetObserver()
       timer && clearTimeout(timer)
     }
   }
@@ -93,8 +95,8 @@ export const Progress: FunctionComponent<
   const webObserver: any = useRef(null)
   const uuid = useUuid()
   const selector = `${classPrefix}-lazy-${uuid}`
-  const resetObserver = (env: string, observer: any = null) => {
-    if (env === 'WEB') {
+  const resetObserver = (observer: any = null) => {
+    if (web()) {
       webObserver.current.disconnect && webObserver.current.disconnect()
     } else {
       observer && observer.disconnect()
@@ -132,12 +134,6 @@ export const Progress: FunctionComponent<
   }
   const handleOtherObserver = () => {
     // 非web环境
-    if (
-      Taro.getEnv() === Taro.ENV_TYPE.HARMONY ||
-      Taro.getEnv() === Taro.ENV_TYPE.RN
-    ) {
-      return
-    }
     let observer: any = null
     if (lazy) {
       observer = Taro.createIntersectionObserver(
@@ -157,24 +153,24 @@ export const Progress: FunctionComponent<
   }
 
   useEffect(() => {
-    if (Taro.getEnv() === 'WEB') {
+    if (web()) {
       handleWebObserver()
-    } else {
+    } else if (!harmonyAndRn()) {
       handleOtherObserver()
     }
   }, [])
   const getTextStyle = () => {
-    const value = Taro.getEnv() === Taro.ENV_TYPE.HARMONY ? '90%' : '100%'
+    const value = harmony() ? '90%' : '100%'
     return rtl ? { right: value } : { left: value }
   }
   const computeRight = () => {
     if (children) {
       return 0
     }
-    if (!['HARMONY', 'RN'].includes(Taro.getEnv())) {
+    if (!harmonyAndRn()) {
       return Math.floor((`${percent}%`.length * 9) / 2)
     }
-    if (Taro.getEnv() === Taro.ENV_TYPE.RN) {
+    if (rn()) {
       return `${percent}%`.length * 9 + 4
     }
     return Math.floor((`${percent}%`.length * 9 + 4) / 2)
@@ -187,11 +183,10 @@ export const Progress: FunctionComponent<
       alignItems: 'center',
       justifyContent: 'center',
     }
-    if (['HARMONY', 'RN'].includes(Taro.getEnv())) {
-      style.width =
-        Taro.getEnv() === Taro.ENV_TYPE.HARMONY
-          ? pxTransform(`${percent}%`.length * 9 + 4)
-          : `${percent}%`.length * 9 + 4
+    if (harmonyAndRn()) {
+      style.width = harmony()
+        ? pxTransform(`${percent}%`.length * 9 + 4)
+        : `${percent}%`.length * 9 + 4
     }
     return style
   }
@@ -221,7 +216,7 @@ export const Progress: FunctionComponent<
                   ...getTextStyle(),
                   height:
                     // eslint-disable-next-line no-nested-ternary
-                    Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+                    harmony()
                       ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
                       : strokeWidth
                         ? Number(strokeWidth) + 8
