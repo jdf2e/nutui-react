@@ -19,6 +19,7 @@
     "build:jd": "taro build --type jd",
     "build:quickapp": "taro build --type quickapp",
     "build:harmony": "taro build --type harmony",
+    "build:jdhybrid": "taro build --type jdhybrid",
     "dev:harmony": "npm run build:harmony -- --watch",
     "dev:jdharmony": "pnpm exec taro build native-components --type jdharmony",
     "dev:weapp": "npm run build:weapp -- --watch",
@@ -29,6 +30,8 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
+    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch  --reset-cache",
+    "dev:jdhybrid": "npm run build:jdhybrid -- --watch",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "dev:weapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
     "dev:swan:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:swan -- --watch",
@@ -48,6 +51,11 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.23.9",
+    "@dongdesign/inject-jd-platform-styles": "1.0.4",
+    "@jdreact/jdreact-jsbundle-commonpack": "1.0.425",
+    "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
+    "@jdtaro/plugin-platform-jdrn": "2.0.0-beta.0",
+    "@jdtaro/taro-platform-jdharmony": "2.0.70",
     "@nutui/touch-emulator": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@tarojs/components": "4.0.0-alpha.34",
@@ -67,13 +75,15 @@
     "@tarojs/shared": "4.0.0-alpha.34",
     "@tarojs/taro": "4.0.0-alpha.34",
     "@tarojs/taro-h5": "4.0.0-alpha.34",
-    "@test/plugin-platform-jdhybrid": "0.1.3-beta.0",
-    "@test/taro-platform-jdharmony": "1.0.0-alpha.0",
-    "@test/inject-platform-styles": "1.0.0-alpha.4",
+    "@test/inject-platform-styles": "^1.0.0-alpha.3",
     "babel-plugin-import": "^1.13.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-refresh": "^0.14.0"
+    "lodash.isequal": "^4.5.0",
+    "lodash.kebabcase": "^4.1.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.72.3",
+    "react-refresh": "^0.14.0",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -97,7 +107,10 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.35",
-    "stylelint": "^16.2.1",
+    "stylelint": "^16.7.0",
     "typescript": "^5.3.3"
+  },
+  "resolutions": {
+    "react-native-webview": "13.6.3"
   }
 }

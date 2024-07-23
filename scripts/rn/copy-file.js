@@ -35,7 +35,7 @@ const childAdaptedArray = [
 ]
 
 // copy文件并增加css引入
-const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react`
+const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo/nutui-react`
 const targetwrapUrl = `${process.cwd()}/src`
 
 const copyFile = async (from, to, success, isSingle = false) => {

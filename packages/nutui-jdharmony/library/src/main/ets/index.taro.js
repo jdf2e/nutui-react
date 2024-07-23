@@ -160,7 +160,7 @@ function _objectWithoutPropertiesLoose(r, e) {
   if (null == r) return {};
   var t = {};
   for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
-    if (e.indexOf(n) >= 0) continue;
+    if (e.includes(n)) continue;
     t[n] = r[n];
   }
   return t;
@@ -172,8 +172,8 @@ function _objectWithoutProperties(e, t) {
     r,
     i = _objectWithoutPropertiesLoose(e, t);
   if (Object.getOwnPropertySymbols) {
-    var n = Object.getOwnPropertySymbols(e);
-    for (r = 0; r < n.length; r++) o = n[r], t.indexOf(o) >= 0 || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
+    var s = Object.getOwnPropertySymbols(e);
+    for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
   }
   return i;
 }
@@ -6061,6 +6061,9 @@ var FormItem = /* @__PURE__ */function (_React$Component) {
     var _this;
     _classCallCheck(this, FormItem2);
     _this = _callSuper(this, FormItem2, [props]);
+    _defineProperty(_this, "cancelRegister", void 0);
+    _defineProperty(_this, "componentRef", void 0);
+    _defineProperty(_this, "eventOff", void 0);
     _defineProperty(_this, "getControlled", function (children) {
       var _children$props;
       var _this$context = _this.context,

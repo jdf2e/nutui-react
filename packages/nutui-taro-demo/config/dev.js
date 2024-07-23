@@ -10,6 +10,8 @@ module.exports = {
         maxInitialRequests: Infinity,
         minSize: 0,
         cacheGroups: {
+          default: false,
+          defaultVendors: false,
           common: {
             name: 'common',
             minChunks: 2,

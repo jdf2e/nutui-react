@@ -56,7 +56,7 @@ const createConfig = async () => {
 const create = async () => {
   const subpackages = await createConfig()
   fse.writeFileSync(
-    `${process.cwd()}/packages/nutui-taro-demo-rn/src/app.config.ts`,
+    `${process.cwd()}/packages/nutui-taro-demo/src/app.config.ts`,
     `
 const subPackages = ${JSON.stringify(subpackages, null, 2)};\n
 export default defineAppConfig({
@@ -92,7 +92,7 @@ const updatePages = (componentBaseUrl, item) => {
 
 adaptedArray.map((item) => {
   if (childAdaptedArray.includes(item.lowercaseName)) return
-  const componentBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/src/${item.enName}/pages/${item.lowercaseName}`
+  const componentBaseUrl = `${process.cwd()}/packages/nutui-taro-demo/src/${item.enName}/pages/${item.lowercaseName}`
   // 判断文件夹是否存在
   fse.access(componentBaseUrl, fse.constants.F_OK, (err) => {
     if (err) {

@@ -10,7 +10,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    ['@babel/plugin-transform-typescript', { allowDeclareFields: true }],
-  ],
+  plugins:
+    process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
+      ? []
+      : [['@babel/plugin-transform-typescript', { allowDeclareFields: true }]],
 }
