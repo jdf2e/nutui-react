@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index.taro'
 import TabbarContext from '@/packages/tabbar/context'
@@ -70,7 +71,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
 
   return (
-    <div
+    <View
       className={tabbarItemClass}
       style={{
         color: active ? ctx?.activeColor : ctx?.inactiveColor,
@@ -82,15 +83,15 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       {icon ? (
         <>
           <Badge {...badgeProps}>
-            <div className={boxPrefix}>{icon}</div>
+            <View className={boxPrefix}>{icon}</View>
           </Badge>
-          <div className={titleClass}>{title}</div>
+          <View className={titleClass}>{title}</View>
         </>
       ) : (
         <Badge {...badgeProps}>
-          <div className={titleClass}>{title}</div>
+          <View className={titleClass}>{title}</View>
         </Badge>
       )}
-    </div>
+    </View>
   )
 }

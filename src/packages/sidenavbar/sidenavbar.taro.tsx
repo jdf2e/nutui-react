@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import { OffsetContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -51,14 +52,14 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
       onClose={onClose}
     >
       <div className={classNames(classPrefix, className)} {...rest}>
-        <div className={`${classPrefix}-content`}>
-          <div
+        <View className={`${classPrefix}-content`}>
+          <View
             className={`${classPrefix}-list ${
               sidenavbarShow ? 'sidenavbar-show' : 'sidenavbar-hide'
             }`}
             onClick={handleClick}
           >
-            <div
+            <View
               className={`${classPrefix}-title ${classPrefix}-border-bt`}
               style={{ paddingLeft: `${innerIndent}px` }}
             >
@@ -68,12 +69,12 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
                   sidenavbarShow ? 'arrow-up' : 'arrow-down'
                 }`}
               />
-            </div>
+            </View>
             <OffsetContext.Provider value={innerIndent}>
-              <div className={`${classPrefix}-content`}>{children}</div>
+              <View className={`${classPrefix}-content`}>{children}</View>
             </OffsetContext.Provider>
-          </div>
-        </div>
+          </View>
+        </View>
       </div>
     </Popup>
   )

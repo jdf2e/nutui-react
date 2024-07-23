@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { Tips } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
@@ -133,55 +134,55 @@ export const InternalShortPassword: ForwardRefRenderFunction<
       onCloseIconClick={onClose}
       {...rest}
     >
-      <div className={classNames(classPrefix, className)} style={style}>
-        <div className={`${classPrefix}-title`}>
+      <View className={classNames(classPrefix, className)} style={style}>
+        <View className={`${classPrefix}-title`}>
           {title || locale.shortpassword.title}
-        </div>
-        <div className={`${classPrefix}-description`}>
+        </View>
+        <View className={`${classPrefix}-description`}>
           {description || locale.shortpassword.description}
-        </div>
-        <div className={`${classPrefix}-input`} onClick={onFocus}>
-          <div className={`${classPrefix}-input-site`} />
-          <div className={`${classPrefix}-input-fake`}>
+        </View>
+        <View className={`${classPrefix}-input`} onClick={onFocus}>
+          <View className={`${classPrefix}-input-site`} />
+          <View className={`${classPrefix}-input-fake`}>
             {[...new Array(comLen).keys()].map((item, index) => {
               return (
-                <div className={`${classPrefix}-input-fake-li`} key={index}>
+                <View className={`${classPrefix}-input-fake-li`} key={index}>
                   {inputValue.length > index && (
                     <>
                       {plain ? (
                         inputValue[index]
                       ) : (
-                        <div className={`${classPrefix}-input-fake-li-icon`} />
+                        <View className={`${classPrefix}-input-fake-li-icon`} />
                       )}
                     </>
                   )}
-                </div>
+                </View>
               )
             })}
-          </div>
-        </div>
-        <div className={`${classPrefix}-message`}>
-          <div className={`${classPrefix}-message-error`}>{error}</div>
-          <div className={`${classPrefix}-message-forget`} onClick={onTips}>
+          </View>
+        </View>
+        <View className={`${classPrefix}-message`}>
+          <View className={`${classPrefix}-message-error`}>{error}</View>
+          <View className={`${classPrefix}-message-forget`} onClick={onTips}>
             {tips || (
               <>
                 <Tips size={11} />
                 {locale.shortpassword.tips}
               </>
             )}
-          </div>
-        </div>
+          </View>
+        </View>
         {!hideFooter && (
-          <div className={`${classPrefix}-footer`}>
-            <div className={`${classPrefix}-footer-cancel`} onClick={onCancel}>
+          <View className={`${classPrefix}-footer`}>
+            <View className={`${classPrefix}-footer-cancel`} onClick={onCancel}>
               {locale.cancel}
-            </div>
-            <div className={`${classPrefix}-footer-sure`} onClick={sure}>
+            </View>
+            <View className={`${classPrefix}-footer-sure`} onClick={sure}>
               {locale.confirm}
-            </div>
-          </div>
+            </View>
+          </View>
         )}
-      </div>
+      </View>
     </Popup>
   )
 }

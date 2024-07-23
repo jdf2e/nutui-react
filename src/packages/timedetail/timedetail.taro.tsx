@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   TimeType,
@@ -60,9 +61,9 @@ export const TimeDetail: FunctionComponent<
     [activeTime, optionKey, activeDate]
   )
   return (
-    <div className={classNames(classPrefix, className)}>
+    <View className={classNames(classPrefix, className)}>
       {timeList[optionKey.childrenKey].map((item: TimeType) => (
-        <span
+        <View
           className={classNames(`${classPrefix}-item`, {
             active: isActive(item[optionKey.valueKey]),
           })}
@@ -70,9 +71,9 @@ export const TimeDetail: FunctionComponent<
           onClick={() => onSelect(item)}
         >
           {item[optionKey.textKey]}
-        </span>
+        </View>
       ))}
-    </div>
+    </View>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -38,24 +39,26 @@ const MenuDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.controlled}</h2>
+        <View className="h2">{translated.controlled}</View>
         <Demo2 />
-        <h2>{translated.customMenuContent}</h2>
+        <View className="h2">{translated.customMenuContent}</View>
         <Demo3 />
-        <h2>{translated.twoColsInOneLine}</h2>
+        <View className="h2">{translated.twoColsInOneLine}</View>
         <Demo4 />
-        <h2>{translated.customActiveColor}</h2>
+        <View className="h2">{translated.customActiveColor}</View>
         <Demo5 />
-        <h2>{translated.customIcons}</h2>
+        <View className="h2">{translated.customIcons}</View>
         <Demo6 />
-        <h2>{translated.expandDirection}</h2>
+        <View className="h2">{translated.expandDirection}</View>
         <Demo7 />
-        <h2>{translated.disableMenu}</h2>
+        <View className="h2">{translated.disableMenu}</View>
         <Demo8 />
-      </div>
+      </ScrollView>
     </>
   )
 }

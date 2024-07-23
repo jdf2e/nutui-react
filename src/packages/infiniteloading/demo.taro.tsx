@@ -1,8 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -40,16 +40,16 @@ const InfiniteLoadingDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated['84aa6bce']}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated['84aa6bce']}</View>
         <Demo1 />
-        <h2>{translated.eb4236fe}</h2>
+        <View className="h2">{translated.eb4236fe}</View>
         <Demo2 />
-        <h2>{translated['9ed40460']}</h2>
+        <View className="h2">{translated['9ed40460']}</View>
         <Demo3 />
-        <h2>{translated['1254a90d']}</h2>
+        <View className="h2">{translated['1254a90d']}</View>
         <Demo4 />
-      </div>
+      </ScrollView>
     </>
   )
 }

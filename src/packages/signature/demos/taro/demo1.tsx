@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo1 = () => {
   const confirm = (dataurl: string, isSigned?: boolean) => {
@@ -16,7 +17,7 @@ const Demo1 = () => {
   return (
     <>
       <Signature onConfirm={confirm} onClear={clear} ref={signatureRef} />
-      <div className="demo-btn">
+      <View className="demo-btn">
         <Button
           type="default"
           size="small"
@@ -36,7 +37,7 @@ const Demo1 = () => {
         >
           确认
         </Button>
-      </div>
+      </View>
       <p className="demo-tips demo1">Tips: 点击确认按钮,下方显示签名图片</p>
     </>
   )
