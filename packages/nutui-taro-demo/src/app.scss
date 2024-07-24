@@ -67,3 +67,9 @@ body {
     background: rgba(255, 255, 255, 1);
   }
 }
+
+// 隐藏jdhybird的提示页面
+#react-refresh-overlay,
+#webpack-dev-server-client-overlay {
+  display: none;
+}
