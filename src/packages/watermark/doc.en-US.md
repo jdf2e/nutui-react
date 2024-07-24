@@ -13,6 +13,7 @@ import { WaterMark } from '@nutui/nutui-react';
 ## Demo
 
 ### Basic Usage
+Support Text, multi-line text, and image.
 
 :::demo
 
@@ -46,6 +47,8 @@ import { WaterMark } from '@nutui/nutui-react';
 | fontSize | Watermark text font size | `string` \| `number`  | `16` |
 | gapX | Horizontal spacing between watermarks | `number` | `24` |
 | gapY | Vertical spacing between watermarks | `number` | `48` |
+| startX | Horizontal start | `number` | `0` |
+| startY | Vertical start | `number` | `0` |
 | fullPage | Overwrite entire page | `boolean` | `true` |
 | fontFamily | Watermark text font family | `string` | `-` |
 

@@ -66,6 +66,12 @@ const Demo1 = () => {
             target="scroll"
             hasMore={hasMore}
             onLoadMore={loadMore}
+            onScroll={() => {
+              console.log('onScroll')
+            }}
+            onScrollToUpper={() => {
+              console.log('onScrollToUpper')
+            }}
             loadingText={
               <>
                 {renderJoyImg}
