@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Check, Loading, Failure, Tips } from '@nutui/icons-react'
+import { Success, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent } from '@/utils/typings'
@@ -84,7 +84,7 @@ export default class Notification extends React.PureComponent<
     const { icon } = this.props
     if (typeof icon === 'string') {
       const iconNode = {
-        success: <Check />,
+        success: <Success />,
         fail: <Failure />,
         warn: <Tips />,
         loading: <Loading className="nut-icon-loading" />,

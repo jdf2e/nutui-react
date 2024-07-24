@@ -168,16 +168,22 @@ export const Toast: FunctionComponent<
 
     return !harmonyAndRn()
       ? {
-          success: <Success color="#ffffff" size={iconSize} />,
+          success: (
+            <Success
+              className="nut-toast-icon"
+              color="#ffffff"
+              size={iconSize}
+            />
+          ),
           fail: <Failure color="#ffffff" size={iconSize} />,
           warn: <Tips color="#ffffff" size={iconSize} />,
           loading: <Loading color="#ffffff" size={iconSize} />,
         }[type]
       : {
-          success: <Text>success</Text>,
-          fail: <Text>fail</Text>,
-          warn: <Text>warn</Text>,
-          loading: <Text>loading</Text>,
+          success: <Text className="nut-toast-icon">success</Text>,
+          fail: <Text className="nut-toast-icon">fail</Text>,
+          warn: <Text className="nut-toast-icon">warn</Text>,
+          loading: <Text className="nut-toast-icon">loading</Text>,
         }[type]
   }
 

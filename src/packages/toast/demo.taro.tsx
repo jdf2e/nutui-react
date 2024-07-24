@@ -1,5 +1,4 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { Toast } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
@@ -9,7 +8,7 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ToastDemo = () => {
   const [translated] = useTranslate({
@@ -36,7 +35,7 @@ const ToastDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.toastFunction}</View>
