@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Cell, Toast, ToastWordBreak } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const [state, setState] = useState<{
-    content: string
+    content?: string
     wordBreak: ToastWordBreak
   }>({
     content: `Let's try ABCDEFGHIJKLMN here.`,
@@ -19,10 +20,20 @@ const Demo5 = () => {
         onClose={() => {
           setShow(false)
         }}
+        contentStyle={{ width: pxTransform(200) }}
         wordBreak={state.wordBreak}
       />
       <Cell.Group>
-        <Cell title="换行时截断单词" onClick={() => setShow(true)} />
+        <Cell
+          title="换行时截断单词"
+          onClick={() => {
+            setState({
+              content: `Let's try ABCDEFGHIJKLMN here.`,
+              wordBreak: 'break-all',
+            })
+            setShow(true)
+          }}
+        />
         <Cell
           title="换行时不截断单词"
           onClick={() => {

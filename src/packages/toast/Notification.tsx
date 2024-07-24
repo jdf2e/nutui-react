@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Check, Loading, Failure, Tips } from '@nutui/icons-react'
+import { Success, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent } from '@/utils/typings'
@@ -83,23 +83,12 @@ export default class Notification extends React.PureComponent<
   renderIcon() {
     const { icon } = this.props
     if (typeof icon === 'string') {
-      let iconNode = null
-      switch (icon) {
-        case 'success':
-          iconNode = <Check />
-          break
-        case 'loading':
-          iconNode = <Loading className="nut-icon-loading" />
-          break
-        case 'fail':
-          iconNode = <Failure />
-          break
-        case 'warn':
-          iconNode = <Tips />
-          break
-        default:
-          break
-      }
+      const iconNode = {
+        success: <Success />,
+        fail: <Failure />,
+        warn: <Tips />,
+        loading: <Loading className="nut-icon-loading" />,
+      }[icon]
       return <p className={`${classPrefix}-icon-wrapper`}>{iconNode}</p>
     }
     return icon
@@ -134,7 +123,6 @@ export default class Notification extends React.PureComponent<
 
     const classes = classNames({
       'nut-toast-has-icon': icon,
-      [`nut-toast-${size}`]: true,
     })
     return (
       <>
@@ -150,14 +138,20 @@ export default class Notification extends React.PureComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
-              style={contentStyle}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
+              style={{
+                ...contentStyle,
+              }}
             >
               {this.renderIcon()}
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
-              <span className={`${classPrefix}-text`}>{content}</span>
+              <span
+                className={`${classPrefix}-text ${content ? '' : `${classPrefix}-text-empty`}`}
+              >
+                {content}
+              </span>
             </div>
           </div>
         </Overlay>

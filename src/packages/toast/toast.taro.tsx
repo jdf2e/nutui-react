@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -11,6 +11,8 @@ import {
   useParams,
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import { harmonyAndRn, harmony } from '@/utils/platform-taro'
 
 export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
@@ -18,19 +20,19 @@ export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
-  maskClassName?: string
-  contentClassName?: string
-  contentStyle?: React.CSSProperties
-  icon: React.ReactNode
-  iconSize: string
-  content: React.ReactNode
   duration: number
   position?: ToastPosition
-  type: string
   title: string
   closeOnOverlayClick: boolean
   lockScroll: boolean
   size: ToastSize
+  icon: React.ReactNode
+  iconSize: string
+  maskClassName?: string
+  content: React.ReactNode
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
+  type: string
   visible: boolean
   wordBreak?: ToastWordBreak
   onClose: () => void
@@ -43,18 +45,18 @@ export interface ToastProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
+  duration: 2, // 时长,duration为0则一直展示
+  position: 'center',
+  title: '',
+  size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   iconSize: '20',
   content: '',
   msg: '',
-  duration: 2, // 时长,duration为0则一直展示
-  position: 'center',
   type: 'text',
-  title: '',
   closeOnOverlayClick: false,
   lockScroll: false,
   contentClassName: '', // 内容自定义样式名
-  size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
   wordBreak: 'break-all',
   onClose: () => {}, // 未实现
@@ -94,6 +96,7 @@ export const Toast: FunctionComponent<
     setParams,
   } = useParams({ ...defaultProps, ...props })
   const timer = useRef(-1)
+  const rtl = useRtl()
 
   const [innerVisible, setInnerVisible] = usePropsValue({
     value: visible,
@@ -103,7 +106,6 @@ export const Toast: FunctionComponent<
       !v && onClose?.()
     },
   })
-
   useEffect(() => {
     if (innerVisible) {
       autoClose()
@@ -123,7 +125,6 @@ export const Toast: FunctionComponent<
       }
     }
   )
-
   const clearTimer = () => {
     if (timer.current) {
       clearTimeout(timer.current)
@@ -164,18 +165,37 @@ export const Toast: FunctionComponent<
     if (icon) {
       return icon
     }
-    return {
-      success: <Success color="#ffffff" size={iconSize} />,
-      fail: <Failure color="#ffffff" size={iconSize} />,
-      warn: <Tips color="#ffffff" size={iconSize} />,
-      loading: <Loading color="#ffffff" size={iconSize} />,
-    }[type]
+
+    return !harmonyAndRn()
+      ? {
+          success: (
+            <Success
+              className="nut-toast-icon"
+              color="#ffffff"
+              size={iconSize}
+            />
+          ),
+          fail: <Failure color="#ffffff" size={iconSize} />,
+          warn: <Tips color="#ffffff" size={iconSize} />,
+          loading: <Loading color="#ffffff" size={iconSize} />,
+        }[type]
+      : {
+          success: <Text className="nut-toast-icon">success</Text>,
+          fail: <Text className="nut-toast-icon">fail</Text>,
+          warn: <Text className="nut-toast-icon">warn</Text>,
+          loading: <Text className="nut-toast-icon">loading</Text>,
+        }[type]
   }
 
   const classes = classNames({
     'nut-toast-has-icon': icon,
-    [`nut-toast-${size}`]: true,
+    'nut-toast-rtl': rtl,
   })
+
+  const styles = harmony()
+    ? { left: '50%', transform: 'translate(-50%, -50%)' }
+    : null
+
   return (
     <>
       {innerVisible ? (
@@ -191,16 +211,22 @@ export const Toast: FunctionComponent<
         >
           <View className={`${classPrefix} ${classes}`} id={id}>
             <View
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
-              style={contentStyle}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
+              style={{ ...styles, ...contentStyle }}
             >
               {hasIcon() ? (
-                <p className={`${classPrefix}-icon-wrapper`}>{iconName()}</p>
+                <View className={`${classPrefix}-icon-wrapper`}>
+                  {iconName()}
+                </View>
               ) : null}
               {title ? (
-                <View className={`${classPrefix}-title`}>{title}</View>
+                <Text className={`${classPrefix}-title`}>{title}</Text>
               ) : null}
-              <span className={`${classPrefix}-text`}>{content || msg}</span>
+              <Text
+                className={`${classPrefix}-text  ${content ? '' : `${classPrefix}-text-empty`}`}
+              >
+                {content || msg}
+              </Text>
             </View>
           </View>
         </Overlay>

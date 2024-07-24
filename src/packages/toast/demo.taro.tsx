@@ -1,6 +1,6 @@
 import React from 'react'
-import { Toast } from '@nutui/nutui-react-taro'
 import { ScrollView, View } from '@tarojs/components'
+import { Toast } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -32,20 +32,10 @@ const ToastDemo = () => {
     },
   })
 
-  function demoClass() {
-    if (web()) {
-      return 'web'
-    }
-    if (!harmonyAndRn()) {
-      return 'full'
-    }
-    return ''
-  }
-
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${demoClass()}`}>
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.toastFunction}</View>
@@ -55,8 +45,13 @@ const ToastDemo = () => {
         <Demo3 />
         <View className="h2">{translated.toastCustomIcon}</View>
         <Demo4 />
-        <View className="h2">{translated.toastWordBreak}</View>
-        <Demo5 />
+        {/* rn和 鸿蒙不支持 break-all */}
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.toastWordBreak}</View>
+            <Demo5 />
+          </>
+        )}
       </ScrollView>
     </>
   )
