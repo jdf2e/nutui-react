@@ -11,6 +11,7 @@ import { WaterMark } from '@nutui/nutui-react';
 ## 示例代碼
 
 ### 基礎用法
+包含單行文字、多行文字、支援圖片。
 
 :::demo
 
@@ -44,6 +45,8 @@ import { WaterMark } from '@nutui/nutui-react';
 | fontSize | 文字大小 | `string` \| `number`  | `16` |
 | gapX | 水印之間的水平間距 | `number` | `24` |
 | gapY | 水印之間的垂直間距 | `number` | `48` |
+| startX | 水印之間的水平起點 | `number` | `0` |
+| startY | 水印之間的垂直起點 | `number` | `0` |
 | fullPage | 是否覆蓋整個頁面 | `boolean` | `true` |
 | fontFamily | 水印文字字體 | `string` | `-` |
 
