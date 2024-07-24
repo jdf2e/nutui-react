@@ -88,7 +88,7 @@
     "lint:fix": "eslint --fix ./src/packages",
     "changelog": "node ./scripts/generate-changelog.js",
     "publish:beta": "npm publish --tag beta",
-    "prepare": "husky && npm run generate:file && npm run generate:file:taro",
+    "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
     "prepublishOnly": "node scripts/prepublish.js",
     "postpublish": "node scripts/postpublish.js"
   },

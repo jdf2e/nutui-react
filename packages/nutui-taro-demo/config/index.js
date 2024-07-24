@@ -1,7 +1,4 @@
 const path = require('path')
-const os = require('os')
-const home = os.homedir()
-const temp = path.join(home, 'dongdesign-jdharmony/JDHarmony')
 const injectScss = require('../plugins/inject-scss')
 
 let fileStr = `src/styles/variables.scss`
@@ -127,7 +124,7 @@ const config = {
     // 将编译方式设置为使用 Vite 编译
     compiler: { type: 'vite', vitePlugins: [injectScss()] },
     // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), isHarmony ? '../nutui-harmony' : temp),
+    projectPath: path.resolve(process.cwd(), isHarmony ? '../nutui-harmony' : '../nutui-jdharmony'),
     // 【可选】HAP 的名称，默认为 'entry'
     hapName: isHarmony ? 'entry' : 'library',
     useNesting: true,
