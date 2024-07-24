@@ -135,7 +135,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         }
         return (
           <div
-            className={classNames('nut-menu-title', `nut-menu-title${index}`, {
+            className={classNames('nut-menu-title', `nut-menu-title-${index}`, {
               active: showMenuItem[index],
               disabled,
             })}
