@@ -83,23 +83,12 @@ export default class Notification extends React.PureComponent<
   renderIcon() {
     const { icon } = this.props
     if (typeof icon === 'string') {
-      let iconNode = null
-      switch (icon) {
-        case 'success':
-          iconNode = <Check />
-          break
-        case 'loading':
-          iconNode = <Loading className="nut-icon-loading" />
-          break
-        case 'fail':
-          iconNode = <Failure />
-          break
-        case 'warn':
-          iconNode = <Tips />
-          break
-        default:
-          break
-      }
+      const iconNode = {
+        success: <Check />,
+        fail: <Failure />,
+        warn: <Tips />,
+        loading: <Loading className="nut-icon-loading" />,
+      }[icon]
       return <p className={`${classPrefix}-icon-wrapper`}>{iconNode}</p>
     }
     return icon

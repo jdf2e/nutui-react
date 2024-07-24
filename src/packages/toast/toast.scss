@@ -111,24 +111,6 @@
     }
   }
 
-  &-loading {
-    .nut-toast-inner {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .nut-toast-icon-wrapper {
-      animation: rotation 2s linear infinite;
-
-      .nut-icon {
-        width: 24px;
-        height: 24px;
-      }
-    }
-  }
-
   &-rtl {
     left: auto;
     right: 0;

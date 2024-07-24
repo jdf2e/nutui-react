@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
-import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
@@ -13,6 +12,7 @@ import {
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import { harmonyAndRn, harmony } from '@/utils/platform-taro'
 
 export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
@@ -20,19 +20,19 @@ export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
-  maskClassName?: string
-  contentClassName?: string
-  contentStyle?: React.CSSProperties
-  icon: React.ReactNode
-  iconSize: string
-  content: React.ReactNode
   duration: number
   position?: ToastPosition
-  type: string
   title: string
   closeOnOverlayClick: boolean
   lockScroll: boolean
   size: ToastSize
+  icon: React.ReactNode
+  iconSize: string
+  maskClassName?: string
+  content: React.ReactNode
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
+  type: string
   visible: boolean
   wordBreak?: ToastWordBreak
   onClose: () => void
@@ -45,18 +45,18 @@ export interface ToastProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
+  duration: 2, // 时长,duration为0则一直展示
+  position: 'center',
+  title: '',
+  size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   iconSize: '20',
   content: '',
   msg: '',
-  duration: 2, // 时长,duration为0则一直展示
-  position: 'center',
   type: 'text',
-  title: '',
   closeOnOverlayClick: false,
   lockScroll: false,
   contentClassName: '', // 内容自定义样式名
-  size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
   wordBreak: 'break-all',
   onClose: () => {}, // 未实现
@@ -166,7 +166,7 @@ export const Toast: FunctionComponent<
       return icon
     }
 
-    return Taro.getEnv() !== 'RN' && Taro.getEnv() !== 'HARMONY'
+    return !harmonyAndRn()
       ? {
           success: <Success color="#ffffff" size={iconSize} />,
           fail: <Failure color="#ffffff" size={iconSize} />,
@@ -186,10 +186,9 @@ export const Toast: FunctionComponent<
     'nut-toast-rtl': rtl,
   })
 
-  const styles =
-    Taro.getEnv() === 'HARMONY'
-      ? { left: '50%', transform: 'translate(-50%, -50%)' }
-      : null
+  const styles = harmony()
+    ? { left: '50%', transform: 'translate(-50%, -50%)' }
+    : null
 
   return (
     <>
