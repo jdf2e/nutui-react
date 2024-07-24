@@ -135,14 +135,10 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         }
         return (
           <div
-            className={classNames(
-              'nut-menu-title ',
-              {
-                active: showMenuItem[index],
-                disabled,
-              },
-              className
-            )}
+            className={classNames('nut-menu-title', `nut-menu-title${index}`, {
+              active: showMenuItem[index],
+              disabled,
+            })}
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={(e) => {
