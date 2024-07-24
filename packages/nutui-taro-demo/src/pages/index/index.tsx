@@ -19,38 +19,53 @@ const Index = () => {
     })
   }
 
+  const onShareAppMessage = (res) => {
+    return {
+      title: 'NutUI React 小程序',
+      path: 'pages/index/index',
+    }
+  }
+
+  const onShareTimeline = () => {
+    console.log('onShareTimeline')
+    return {
+      title: 'NutUI React 小程序',
+      path: 'pages/index/index',
+    }
+  }
+
   return (
     <ScrollView className='index'>
-      <View className='index_header'>
+      <View className='index-header'>
         <Image
-          className='index_header_img'
+          className='index-header-img'
           src='https://img14.360buyimg.com/imagetools/jfs/t1/117879/25/28831/6279/6329723bE66715a2f/5f099b8feca9e8cc.png'
         />
-        <View className='index_header_info'>
-          <View className='index_header_info_h1'>NutUI React</View>
-          <View className='index_header_info_p'>
+        <View className='index-header-info'>
+          <View className='index-header-info-h1'>NutUI React</View>
+          <View className='index-header-info-p'>
             京东风格的轻量级小程序组件库 React 版
           </View>
-          <View className='index_header_info_p'>
-            <Text>v{packageJson?.version}</Text>
+          <View className='index-header-info-p'>
+            <Text className='index-header-info-text'>v{packageJson?.version}</Text>
           </View>
         </View>
       </View>
-      <View className='index_components'>
+      <View className='index-components'>
         {navs.map((nav) => (
-          <View key={nav.enName} className='index_components_item'>
+          <View key={nav.enName} className='index-components-item'>
             {nav.enName === 'dataentry' ? null : (
-              <View className='index_components_item_title'>{nav.name}</View>
+              <View className='index-components-item-title'>{nav.name}</View>
             )}
-            <View className='index_components_sublist'>
+            <View className='index-components-sublist'>
               {nav.packages.map((com) =>
                 com.show && com.taro && com.version === '3.0.0' ? (
                   <View
                     key={com.name}
-                    className='index_components_sublist_item'
+                    className='index-components-sublist-item'
                   >
                     <View
-                      className='index_components_sublist_item_content'
+                      className='index-components-sublist-item-content'
                       key={com.name}
                       onClick={() => gotoNext(com.name, nav.enName)}
                     >

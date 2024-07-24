@@ -62,29 +62,30 @@ body {
   height: 100%;
   width: 100%;
   padding-top: 30px;
-  &_header {
+  &-header {
     display: flex;
     align-items: center;
     flex-direction: row;
     padding: 0 34px;
     height: 117px;
-    &_img {
+    &-img {
       width: 67px;
       height: 67px;
       margin-right: 18px;
       flex-shrink: 0;
     }
-    &_info {
+    &-info {
       display: flex;
       flex-direction: column;
-      &_h1 {
+      &-h1 {
         height: 48px;
         line-height: 48px;
         font-weight: 500;
         font-size: 24px;
         color: rgba(51, 51, 51, 1);
       }
-      &_p {
+      &-p,
+      &-text {
         height: 18px;
         line-height: 18px;
         font-size: 13px;
@@ -93,21 +94,21 @@ body {
       }
     }
   }
-  &_components {
+  &-components {
     background: #f7f8fa;
     border-radius: 30px 30px 0 0;
     padding: 30px 25px;
-    &_item {
+    &-item {
       margin-bottom: 17px;
-      &_title {
+      &-title {
         line-height: 20px;
         font-size: 14px;
         color: rgba(144, 156, 164, 1);
         margin-bottom: 10px;
       }
     }
-    &_sublist {
-      &_item {
+    &-sublist {
+      &-item {
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -118,7 +119,7 @@ body {
         border-radius: 22px;
         box-shadow: 0px 1px 4px 0px rgba(102, 102, 102, 0.06);
         margin-bottom: 13px;
-        &_content {
+        &-content {
           width: 100%;
           height: 100%;
           font-size: 15px;
@@ -135,19 +136,19 @@ body {
 
 [dir='rtl'] .index,
 .nut-rtl .index {
-  &_header {
-    &_img {
+  &-header {
+    &-img {
       margin-right: 0;
       margin-left: 18px;
     }
   }
-  &_components {
+  &-components {
     .nut-icon {
       transform: rotate(180deg);
     }
   }
 }
-.index_header .info .h5-h1 {
+.index-header .info .h5-h1 {
   font-weight: 500;
   font-size: 48rpx;
 }
