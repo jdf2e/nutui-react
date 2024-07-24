@@ -65,11 +65,12 @@
     "dev:taro:h5:jmapp": "pnpm --dir ./packages/nutui-taro-demo dev:h5:jmapp",
     "dev:taro:alipay": "pnpm --dir ./packages/nutui-taro-demo dev:alipay",
     "dev:taro:harmony": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:harmony",
-    "dev:taro:jdharmony": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
+    "dev:taro:jdharmony": "pnpm run clone:jdharmony && pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
     "dev:taro:jdhybrid": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdhybrid",
+    "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
     "update:taro:entry": "node ./scripts/rn/update-taro-entry",
-    "rn:copy": "pnpm run update:taro:entry && node ./scripts/rn/copy-file.js",
-    "dev:taro:jdrn": "pnpm run rn:copy && pnpm --dir ./packages/nutui-taro-demo dev:jdrn & pnpm run gulp:watch",
+    "clone:rn": "pnpm run update:taro:entry && node ./scripts/rn/copy-file.js",
+    "dev:taro:jdrn": "pnpm run clone:rn && pnpm --dir ./packages/nutui-taro-demo dev:jdrn & pnpm run gulp:watch",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
     "gulp:watch": "gulp watch --environment",
     "dev:taro:weapp:jmapp": "pnpm --dir ./packages/nutui-taro-demo && npm run dev:weapp:jmapp",
@@ -208,6 +209,7 @@
     "vite-plugin-dts": "3.6.4",
     "vitest": "^1.4.0",
     "vitest-canvas-mock": "^0.3.3",
+    "simple-git": "^3.25.0",
     "yargs": "^17.7.2"
   },
   "peerDependencies": {
