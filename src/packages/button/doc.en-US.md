@@ -1,10 +1,10 @@
 # Button
 
-## Intro
+
 
 Buttons are used to trigger an action, such as submitting a form.
 
-## Install
+## Import
 
 ```tsx
 import { Button } from '@nutui/nutui-react';

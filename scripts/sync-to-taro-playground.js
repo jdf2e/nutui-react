@@ -152,11 +152,11 @@ function main() {
     path.join(sourcePath, '..', 'utils/*'),
     path.join(distPath, 'packages/utils')
   )
-  // 拷贝配置文件
-  cp(
-    path.join(sourcePath, '..', 'config.json'),
-    path.join(distPath, 'packages')
-  )
+  // 拷贝配置文件，配置文件因为在 playground 里合并了 components 部分，所以暂时不拷贝该部分。
+  // cp(
+  //   path.join(sourcePath, '..', 'config.json'),
+  //   path.join(distPath, 'packages')
+  // )
   // 生成分包文件
   fs.writeFile(
     path.join(distPath, 'subpackages.ts'),
@@ -171,7 +171,17 @@ function main() {
     const distFileContent = sourceFileContent
       .toString()
       .replace(/@\/utils/g, '../../../utils')
+      .replace(/@nutui\/nutui-react-taro/g, '@dongdesign/ui')
     fs.writeFileSync(f, distFileContent)
+  })
+  // 修改引入的 utils
+  glob.sync(distPath + '/**/' + 'demo.taro.tsx').map((f) => {
+    const sourceFileContent = fs.readFileSync(f, { encoding: 'utf-8' })
+    const distFileContent = sourceFileContent
+      .toString()
+      .replace(/@\/utils/g, '../utils')
+      .replace(/@nutui\/nutui-react-taro/g, '@dongdesign/ui')
+    fs.writeFileSync(f, `import '../../styles/demo.scss'\n${distFileContent}`)
   })
 }
 

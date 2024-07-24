@@ -13,6 +13,7 @@ const Demo11 = () => {
         button={
           <div
             style={{
+              position: 'absolute',
               width: '26px',
               color: 'white',
               fontSize: '10px',
@@ -20,6 +21,9 @@ const Demo11 = () => {
               textAlign: 'center',
               backgroundColor: 'red',
               borderRadius: '10px',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
             }}
           >
             {value}

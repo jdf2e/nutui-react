@@ -7,8 +7,8 @@ const Demo5 = () => {
       <ConfigProvider direction="rtl">
         <Cell
           title={
-            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <span style={{ marginLeft: '5px' }}>我是标题</span>
+            <div>
+              <span>我是标题</span>
             </div>
           }
           description={<span>我是描述</span>}

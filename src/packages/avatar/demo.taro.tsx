@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import './demo.scss'
@@ -14,6 +13,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const AvatarDemo = () => {
   const [translated] = useTranslate({
@@ -57,44 +57,30 @@ const AvatarDemo = () => {
     <>
       <Header />
       <ScrollView
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full avatar-demo`}
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} avatar-demo`}
       >
         <View className="h2">{translated['67f78db5']}</View>
-        <Cell align="flex-end">
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated['3928b17e']}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated['049b6a97']}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <View className="h2">{translated.a304dabf}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <View className="h2">{translated['89bca4e7']}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo3 />
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.a304dabf}</View>
+            <Demo4 />
+            <View className="h2">{translated['89bca4e7']}</View>
+            <Demo5 />
+          </>
+        )}
         <View className="h2">{translated.e981579e}</View>
         <Demo6 />
         <View className="h2">{translated.f645fc65}</View>
-        <Cell>
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         <View className="h2">{translated['43f00872']}</View>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        <Demo8 />
         <View className="h2">{translated.f645fc66}</View>
-        <Cell>
-          <Demo9 />
-        </Cell>
+        <Demo9 />
       </ScrollView>
     </>
   )

@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
-import { PullToRefresh, Toast } from '@nutui/nutui-react-taro'
+import { Image, Text, View } from '@tarojs/components'
+import { PullToRefresh } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
   return (
     <>
       <PullToRefresh
         type="primary"
         onRefresh={() =>
           new Promise((resolve) => {
-            toastShow('😊')
+            Taro.showToast({
+              title: '😊',
+              icon: 'none',
+            })
             resolve('done')
           })
         }
@@ -23,16 +23,14 @@ const Demo1 = () => {
           return (
             <>
               {(status === 'pulling' || status === 'complete') && (
-                <img
-                  alt=""
-                  style={{ height: '26px', width: '36px' }}
+                <Image
+                  style={{ height: pxTransform(26), width: pxTransform(36) }}
                   src="https://img12.360buyimg.com/imagetools/jfs/t1/232373/2/15010/432/65fab02fF99afdb71/0457cdfa268f92df.png"
                 />
               )}
               {(status === 'canRelease' || status === 'refreshing') && (
-                <img
-                  alt=""
-                  style={{ height: '26px', width: '36px' }}
+                <Image
+                  style={{ height: pxTransform(26), width: pxTransform(36) }}
                   src="https://img14.360buyimg.com/imagetools/jfs/t1/186707/25/42738/223/65fab272F0965554b/eae33de2f17909b8.png"
                 />
               )}
@@ -41,26 +39,19 @@ const Demo1 = () => {
         }}
       >
         {list.map((item) => (
-          <div
+          <View
             style={{
-              textAlign: 'center',
-              height: '50px',
-              lineHeight: '50px',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: pxTransform(50),
             }}
             key={item}
           >
-            {item}
-          </div>
+            <Text style={{ color: '#ffffff' }}>{item}</Text>
+          </View>
         ))}
       </PullToRefresh>
-      <Toast
-        type="text"
-        visible={show}
-        content={toastMsg}
-        onClose={() => {
-          SetShow(false)
-        }}
-      />
     </>
   )
 }

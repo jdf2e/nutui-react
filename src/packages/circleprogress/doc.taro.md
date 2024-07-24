@@ -1,16 +1,15 @@
 # CircleProgress 进度条
 
-## 介绍
 
 展示操作或任务的当前进度。
 
-## 安装
+## 引入
 
 ```tsx
 import { CircleProgress } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

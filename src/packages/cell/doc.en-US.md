@@ -1,10 +1,10 @@
 # Cell
 
-## Intro
+
 
 The cell is a single display item in the list.
 
-## Install
+## Import
 
 ```tsx
 import { Cell } from '@nutui/nutui-react'

@@ -3,6 +3,8 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
+  useRef,
+  useEffect,
 } from 'react'
 import classNames from 'classnames'
 import Taro, {
@@ -215,15 +217,17 @@ const InternalUploader: ForwardRefRenderFunction<
       clearUploadQueue()
     },
   }))
-
+  const fileListRef = useRef<FileItem[]>([])
+  useEffect(() => {
+    fileListRef.current = fileList
+  }, [fileList])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
-      fileList.splice(0, fileList.length)
-      setFileList([...fileList])
+      setFileList([])
     }
   }
 
@@ -247,8 +251,8 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if (getEnv() === 'WEAPP' && chooseMedia) {
-      // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
+    if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
+      // 其余端全部使用 chooseImage API
       chooseMedia({
         /** 最多可以选择的文件个数 */
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
@@ -296,11 +300,10 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.headers = headers
     uploadOption.taroFilePath = fileItem.path
     uploadOption.beforeXhrUpload = beforeXhrUpload
-
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList(
-        fileList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -308,18 +311,17 @@ const InternalUploader: ForwardRefRenderFunction<
           return item
         })
       )
-      onStart && onStart(option)
+      onStart?.(option)
     }
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList(
-        fileList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = e.progress
-            onProgress &&
-              onProgress({ e, option, percentage: item.percentage as number })
+            onProgress?.({ e, option, percentage: item.percentage as number })
           }
           return item
         })
@@ -330,7 +332,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = SUCCESS
           item.message = locale.uploader.success
@@ -350,7 +352,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = ERROR
           item.message = locale.uploader.error
@@ -420,9 +422,8 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      fileList.push(fileItem)
-      setFileList(fileList)
       executeUpload(fileItem, index)
+      setFileList([...fileList, fileItem])
     })
   }
 
@@ -437,9 +438,7 @@ const InternalUploader: ForwardRefRenderFunction<
       }
       return true
     })
-    if (oversizes.length) {
-      onOversize && onOversize(files as any)
-    }
+    oversizes.length && onOversize?.(files as any)
 
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {

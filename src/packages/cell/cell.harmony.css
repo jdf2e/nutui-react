@@ -1,3 +1,31 @@
+.nut-cell-group {
+  display: block;
+}
+.nut-cell-group-title {
+  display: inherit;
+  padding: 0 10px;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.nut-cell-group-description {
+  display: inherit;
+  padding: 0 10px;
+  color: #505259;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.nut-cell-group-wrap {
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
 .nut-cell {
   position: relative;
   display: flex;
@@ -21,7 +49,17 @@
 .nut-cell-left {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   flex: 1;
+}
+.nut-cell-title {
+  line-height: 20px;
+}
+.nut-cell-description {
+  line-height: 20px;
+}
+.nut-cell-extra {
+  line-height: 20px;
 }
 .nut-cell-description {
   font-size: 12px;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '../../sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -47,24 +48,24 @@ const LoadingDemo = () => {
   return (
     <>
       <Header />
-      <div className="demo">
-        <h2>{translated.title1}</h2>
+      <ScrollView className="demo">
+        <View className="h2">{translated.title1}</View>
         <Demo1 />
-        <h2>{translated.title2}</h2>
+        <View className="h2">{translated.title2}</View>
         <Demo2 />
-        <h2>{translated.title3}</h2>
+        <View className="h2">{translated.title3}</View>
         <Demo3 />
-        <h2>{translated.title4}</h2>
+        <View className="h2">{translated.title4}</View>
         <Demo4 />
-        <h2>{translated.title5}</h2>
+        <View className="h2">{translated.title5}</View>
         <Demo5 />
-        <h2>{translated.title6}</h2>
+        <View className="h2">{translated.title6}</View>
         <Demo6 />
-        <h2>{translated.title7}</h2>
+        <View className="h2">{translated.title7}</View>
         <Demo7 />
-        <h2>{translated.title8}</h2>
+        <View className="h2">{translated.title8}</View>
         <Demo8 />
-      </div>
+      </ScrollView>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import { BasicTableProps, TableColumnProps } from './types'
 import {
   useConfig,
@@ -100,7 +101,7 @@ export const Table: FunctionComponent<
   const renderHeadCells = () => {
     return columns.map((item, index) => {
       return (
-        <div
+        <View
           className={classNames(
             `${headerClassPrefix}-th`,
             cellClasses(item),
@@ -113,7 +114,7 @@ export const Table: FunctionComponent<
           {item.title}&nbsp;
           {item.sorter &&
             (sorterIcon || <ArrowDown width="12px" height="12px" />)}
-        </div>
+        </View>
       )
     })
   }
@@ -125,9 +126,13 @@ export const Table: FunctionComponent<
   }
 
   const renderBodyTds = (item: any, rowIndex: number) => {
+    const { rowRender } = item
+    if (rowRender && typeof rowRender === 'function') {
+      return rowRender(item, rowIndex)
+    }
     return sortDataItem().map(([value, render]) => {
       return (
-        <div
+        <View
           className={classNames(
             `${bodyClassPrefix}-td`,
             cellClasses(getColumnItem(value)),
@@ -137,11 +142,11 @@ export const Table: FunctionComponent<
           style={getStickyStyle(value)}
         >
           {typeof item[value] === 'function' || typeof render === 'function' ? (
-            <div>{render ? render(item, rowIndex) : item[value](item)}</div>
+            <View>{render ? render(item, rowIndex) : item[value](item)}</View>
           ) : (
             item[value]
           )}
-        </div>
+        </View>
       )
     })
   }
@@ -149,16 +154,16 @@ export const Table: FunctionComponent<
   const renderBodyTrs = () => {
     return innerValue.map((item, index) => {
       return (
-        <div className={bodyClassPrefix} key={index}>
+        <View className={bodyClassPrefix} key={index}>
           {renderBodyTds(item, index)}
-        </div>
+        </View>
       )
     })
   }
 
   return (
     <div className={cls} {...rest}>
-      <div
+      <View
         className={classNames(
           `${classPrefix}-wrapper ${
             isSticky ? `${classPrefix}-wrapper-sticky` : ''
@@ -166,33 +171,33 @@ export const Table: FunctionComponent<
         )}
         style={style}
       >
-        <div
+        <View
           className={classNames(`${classPrefix}-main`, {
             [`${classPrefix}-main-striped`]: striped,
           })}
         >
           {showHeader && (
-            <div className={`${classPrefix}-main-head`}>
-              <div className={headerClassPrefix}>{renderHeadCells()}</div>
-            </div>
+            <View className={`${classPrefix}-main-head`}>
+              <View className={headerClassPrefix}>{renderHeadCells()}</View>
+            </View>
           )}
-          <div className={`${classPrefix}-main-body`}>{renderBodyTrs()}</div>
-        </div>
-      </div>
+          <View className={`${classPrefix}-main-body`}>{renderBodyTrs()}</View>
+        </View>
+      </View>
       {isSticky ? (
         <>
-          <div
+          <View
             className={`${classPrefix}-sticky-left`}
             style={{ width: stickyLeftWidth }}
           />
-          <div
+          <View
             className={`${classPrefix}-sticky-right`}
             style={{ width: stickyRightWidth }}
           />
         </>
       ) : null}
       {(summary || innerValue.length === 0) && (
-        <div className={`${classPrefix}-summary`}>{summary || noData}</div>
+        <View className={`${classPrefix}-summary`}>{summary || noData}</View>
       )}
     </div>
   )

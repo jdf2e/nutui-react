@@ -1,9 +1,10 @@
 .nut-inputnumber {
   display: flex;
+  flex-direction: row;
   align-items: center;
 
-  .nut-input-minus,
-  .nut-input-add {
+  &-minus,
+  &-add {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,15 +14,14 @@
     border-radius: $inputnumber-button-border-radius;
   }
 
-  &-disabled {
-    input {
-      color: $inputnumber-disabled-color !important;
-    }
-  }
-
   &-icon {
     color: $inputnumber-icon-color;
+    /*  #ifdef rn harmony  */
+    font-size: 14px;
+    /*  #endif  */
+    /*  #ifndef  rn harmony  */
     font-size: $inputnumber-icon-size;
+    /*  #endif */
     cursor: pointer;
 
     &-disabled {
@@ -30,9 +30,7 @@
     }
   }
 
-  input,
-  .nut-number-input,
-  &-text-readonly {
+  &-input {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,23 +43,25 @@
     margin: $inputnumber-input-margin;
     color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
+    &-disabled {
+      color: $inputnumber-disabled-color;
+    }
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+    }
   }
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button,
-  .nut-number-input::-webkit-outer-spin-button,
-  .nut-number-input::-webkit-inner-spin-button {
-    appearance: none;
+  &-input-disabled {
+    color: $inputnumber-disabled-color;
   }
 
-  .nut-icon-Minus,
-  .nut-icon-minus {
+  &-icon-minus {
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;
   }
 
-  .nut-icon-Plus,
-  .nut-icon-plus {
+  &-icon-plus {
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;
   }

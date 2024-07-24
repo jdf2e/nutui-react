@@ -27,6 +27,7 @@ const Demo4 = () => {
         }}
       />
       <Drag
+        className="drag-demo4"
         boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '400px', left: '50px' }}
       >

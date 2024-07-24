@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Toast } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -16,6 +17,7 @@ import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
+import Demo14 from './demos/taro/demo14'
 
 const TableDemo = () => {
   const [translated] = useTranslate({
@@ -33,6 +35,7 @@ const TableDemo = () => {
       stickyHeader: '固定表头',
       stickyLeftColumn: '固定左列',
       stickyRightColumn: '固定右列',
+      customRow: '自定义行',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -50,6 +53,7 @@ const TableDemo = () => {
       stickyHeader: 'sticky header',
       stickyLeftColumn: 'sticky left column',
       stickyRightColumn: 'sticky right column',
+      customRow: 'Custom Row',
     },
   })
 
@@ -59,7 +63,7 @@ const TableDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           type="text"
           visible={show}
@@ -68,33 +72,35 @@ const TableDemo = () => {
             setShow(false)
           }}
         />
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.borderedAndAlign}</h2>
+        <View className="h2">{translated.borderedAndAlign}</View>
         <Demo2 />
-        <h2>{translated.summaryTitle}</h2>
+        <View className="h2">{translated.summaryTitle}</View>
         <Demo3 />
-        <h2>{translated.striped}</h2>
+        <View className="h2">{translated.striped}</View>
         <Demo4 />
-        <h2>{translated.hideHeader}</h2>
+        <View className="h2">{translated.hideHeader}</View>
         <Demo5 />
-        <h2>{translated.noDataTitle}</h2>
+        <View className="h2">{translated.noDataTitle}</View>
         <Demo6 />
-        <h2>{translated.customCell}</h2>
+        <View className="h2">{translated.customCell}</View>
         <Demo7 />
-        <h2>{translated.asynchronousRendering}</h2>
+        <View className="h2">{translated.asynchronousRendering}</View>
         <Demo8 />
-        <h2>{translated.sorting}</h2>
+        <View className="h2">{translated.sorting}</View>
         <Demo9 />
-        <h2>{translated.sorterIcon}</h2>
+        <View className="h2">{translated.sorterIcon}</View>
         <Demo10 />
-        <h2>{translated.stickyHeader}</h2>
+        <View className="h2">{translated.stickyHeader}</View>
         <Demo11 />
-        <h2>{translated.stickyLeftColumn}</h2>
+        <View className="h2">{translated.stickyLeftColumn}</View>
         <Demo12 />
-        <h2>{translated.stickyRightColumn}</h2>
+        <View className="h2">{translated.stickyRightColumn}</View>
         <Demo13 />
-      </div>
+        <View className="h2">{translated.customRow}</View>
+        <Demo14 />
+      </ScrollView>
     </>
   )
 }

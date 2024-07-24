@@ -11,6 +11,8 @@ const transformers = [
   'icon-migration',
   'props-changed-migration',
 ]
+process.argv.indexOf('-internal') > -1 &&
+  transformers.push('package-name-migration')
 const transformersDir = path.join(__dirname, '../transforms')
 const ignoreConfig = path.join(__dirname, './codemod.ignore')
 

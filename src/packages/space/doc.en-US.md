@@ -1,10 +1,10 @@
 # Space
 
-## Intro
+
 
 Maintain the same width in the arrangement of elements.
 
-## Install
+## Import
 
 ```tsx
 import { Space } from '@nutui/nutui-react';

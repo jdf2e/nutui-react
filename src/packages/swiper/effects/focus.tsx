@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react'
 import { animated } from '@react-spring/web'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { useRtl } from '@/packages/configprovider'
 
 export interface FocusEffect {
   name: 'focus'
@@ -39,6 +40,8 @@ const getPerSlidePosition = (
 }
 export const focusEffect = (args: DefaultEffect) => {
   return React.Children.map(args.children, (child, index) => {
+    const rtl = useRtl()
+    const position = rtl ? 'right' : 'left'
     const {
       isVertical,
       springs,
@@ -59,7 +62,7 @@ export const focusEffect = (args: DefaultEffect) => {
               return getPerSlidePosition(index, position, loop, count)
             }
           ),
-          [isVertical ? 'top' : 'left']: `-${index * 100}%`,
+          [isVertical ? 'top' : position]: `-${index * 100}%`,
           scale: springs.s.to((ss: number) => {
             const scales = getRefValue(transforms)
             if (!scales) return 1

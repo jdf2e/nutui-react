@@ -1,10 +1,10 @@
 # NoticeBar
 
-## Intro
+
 
 Used to display a group of message notifications in a continuous loop.
 
-## Install
+## Import
 
 ```tsx
 import { NoticeBar } from '@nutui/nutui-react';

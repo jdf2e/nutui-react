@@ -45,10 +45,10 @@ const Demo2 = () => {
               width: '100%',
             }}
           >
-            <Button formType="submit" type="primary">
+            <Button nativeType="submit" type="primary">
               提交
             </Button>
-            <Button formType="reset" style={{ marginLeft: '20px' }}>
+            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>

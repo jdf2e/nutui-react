@@ -1,10 +1,10 @@
 # Checkbox
 
-## Intro
+
 
 多选按钮用于选择。
 
-## Install
+## Import
 
 ```tsx
 import { Checkbox } from '@nutui/nutui-react';

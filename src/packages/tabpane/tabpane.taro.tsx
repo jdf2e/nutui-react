@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 
 interface TabPanelInnerProps {
   autoHeightClassName: string
@@ -38,6 +39,6 @@ export const TabPane: FunctionComponent<
   )
 
   return children ? (
-    <div className={classes}>{!disabled && children}</div>
+    <View className={classes}>{!disabled && children}</View>
   ) : null
 }

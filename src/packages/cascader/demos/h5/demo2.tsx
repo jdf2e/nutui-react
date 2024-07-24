@@ -38,16 +38,16 @@ const Demo2 = () => {
           text1: '长沙',
           disabled: true,
           items: [
-            { value1: '西湖区', text1: '西湖区' },
-            { value1: '余杭区', text1: '余杭区' },
+            { value1: '芙蓉区', text1: '芙蓉区' },
+            { value1: '岳麓区', text1: '岳麓区' },
           ],
         },
         {
-          value1: '温州',
-          text1: '温州',
-          items: [
-            { value1: '鹿城区', text1: '鹿城区' },
-            { value1: '瓯海区', text1: '瓯海区' },
+          value1: '岳阳',
+          text1: '岳阳',
+          children: [
+            { value1: '岳阳楼区', text1: '岳阳楼区' },
+            { value1: '云溪区', text1: '云溪区' },
           ],
         },
       ],

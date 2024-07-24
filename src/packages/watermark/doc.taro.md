@@ -1,18 +1,18 @@
 # Watermark 水印
 
-## 介绍
 
 页面上添加特定的文字或图案，可用于防止信息盗用。
 
-## 安装
+## 引入
 
 ```tsx
 import { Watermark } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
+包含单行文本、多行文本、支持图片。
 
 :::demo
 
@@ -46,6 +46,8 @@ import { Watermark } from '@nutui/nutui-react-taro';
 | fontSize | 文字大小 | `string` \| `number`  | `16` |
 | gapX | 水印之间的水平间距 | `number` | `24` |
 | gapY | 水印之间的垂直间距 | `number` | `48` |
+| startX | 水印之间的水平起点 | `number` | `0` |
+| startY | 水印之间的垂直起点 | `number` | `0` |
 | fullPage | 是否覆盖整个页面 | `boolean` | `true` |
 | fontFamily | 水印文字字体 | `string` | `-` |
 

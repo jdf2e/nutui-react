@@ -1,15 +1,17 @@
 import React from 'react'
-import { Switch } from '@nutui/nutui-react'
+import { Cell, Switch } from '@nutui/nutui-react'
 
 const Demo5 = () => {
   return (
-    <Switch
-      defaultChecked
-      style={{
-        '--nutui-switch-open-background-color': 'blue',
-        '--nutui-switch-close-line-background-color': '#ebebeb',
-      }}
-    />
+    <Cell>
+      <Switch
+        defaultChecked
+        style={{
+          '--nutui-switch-open-background-color': 'blue',
+          '--nutui-switch-close-line-background-color': '#ebebeb',
+        }}
+      />
+    </Cell>
   )
 }
 export default Demo5

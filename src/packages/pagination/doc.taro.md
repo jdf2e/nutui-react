@@ -1,16 +1,15 @@
 # Pagination 分页
 
-## 介绍
 
 当数据量较多时，采用分页的形式分隔长列表。
 
-## 安装
+## 引入
 
 ```tsx
 import { Pagination } from '@nutui/nutui-react-taro';
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

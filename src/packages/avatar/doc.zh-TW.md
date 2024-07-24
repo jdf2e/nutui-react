@@ -1,17 +1,17 @@
 # Avatar 頭像
 
-## 介紹
+
 
 用來代錶用戶或事物，支持圖片、圖標或字符展示。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Avatar } from '@nutui/nutui-react';
 
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

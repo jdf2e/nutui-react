@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -155,28 +156,18 @@ const ElevatorDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo1 />
-        </div>
-        <h2>{translated.customIndex}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo2 />
-        </div>
-        <h2>{translated.showKeys}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo3 />
-        </div>
-        <h2>{translated.sticky}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo4 />
-        </div>
-        <h2>{translated.customContent}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo5 />
-        </div>
-      </div>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
+        <Demo1 />
+        <View className="h2">{translated.customIndex}</View>
+        <Demo2 />
+        <View className="h2">{translated.showKeys}</View>
+        <Demo3 />
+        <View className="h2">{translated.sticky}</View>
+        <Demo4 />
+        <View className="h2">{translated.customContent}</View>
+        <Demo5 />
+      </ScrollView>
     </>
   )
 }

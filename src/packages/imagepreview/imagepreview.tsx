@@ -44,6 +44,7 @@ export interface ImagePreviewProps extends BasicComponent {
   value?: number
   defaultValue: number
   closeOnContentClick: boolean
+  pagination: boolean
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
@@ -60,6 +61,7 @@ const defaultProps = {
   autoPlay: 3000,
   defaultValue: 0,
   closeOnContentClick: false,
+  pagination: true,
   indicator: false,
   indicatorColor: '#fff',
   closeIcon: false,
@@ -79,6 +81,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     visible,
     defaultValue,
     indicatorColor,
+    pagination,
     indicator,
     autoPlay,
     closeOnContentClick,
@@ -253,7 +256,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
 
-  const closeOnImg = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const closeOnImg = (e: any) => {
     e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
@@ -272,7 +275,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         {showPop ? (
@@ -295,7 +297,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
               ? videos.map((item, index) => {
                   return (
                     <SwiperItem key={index}>
-                      <Video source={item.source} options={item.options} />
+                      <Video
+                        source={item.source}
+                        options={item.options}
+                        onClick={closeOnImg}
+                      />
                     </SwiperItem>
                   )
                 })
@@ -305,7 +311,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                 ? images.map((item, index) => {
                     return (
                       <SwiperItem key={index}>
-                        <Image src={item.src} draggable={false} />
+                        <Image
+                          src={item.src}
+                          draggable={false}
+                          onClick={closeOnImg}
+                        />
                       </SwiperItem>
                     )
                   })
@@ -314,9 +324,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           </Swiper>
         ) : null}
       </div>
-      <div className={`${classPrefix}-index`}>
-        {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-      </div>
+      {pagination ? (
+        <div className={`${classPrefix}-index`}>
+          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
+        </div>
+      ) : null}
       {closeIcon !== false ? (
         <div
           className={`${classPrefix}-close ${closeIconPosition}`}

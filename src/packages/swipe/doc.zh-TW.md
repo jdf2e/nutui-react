@@ -1,16 +1,16 @@
 # Swipe組件
 
-## 介紹
+
 
 常用於單元格左右滑刪除等手勢操作
 
-## 安裝
+## 引入
 
 ```tsx
 import { Swipe } from '@nutui/nutui-react';
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

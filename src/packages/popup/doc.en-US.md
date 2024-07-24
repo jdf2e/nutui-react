@@ -1,10 +1,10 @@
 # Popup
 
-## Intro
+
 
 Popup layer container, used to display pop-up windows, information prompts, etc.
 
-## Install
+## Import
 
 ```tsx
 import { Popup } from '@nutui/nutui-react';
