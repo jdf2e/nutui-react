@@ -90,9 +90,8 @@
     "postpublish": "node scripts/postpublish.js"
   },
   "lint-staged": {
-    "*.scss": "prettier --write",
-    "*.{ts,tsx,js,md}": "eslint",
-    "*.md": ["npx prettier --write"]
+    "*.{scss,md}": "prettier --write",
+    "*.{ts,tsx,js,md}": "eslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
