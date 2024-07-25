@@ -91,7 +91,8 @@
   },
   "lint-staged": {
     "*.scss": "prettier --write",
-    "*.{ts,tsx,js,md}": "eslint"
+    "*.{ts,tsx,js,md}": "eslint",
+    "*.md": ["npx prettier --write"]
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
@@ -170,6 +171,7 @@
     "husky": "^9.0.11",
     "inquirer": "^9.2.15",
     "jscodeshift": "^0.15.1",
+    "linguist-languages": "^7.27.0",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",
