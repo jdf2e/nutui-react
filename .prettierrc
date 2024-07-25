@@ -6,5 +6,5 @@
   "printWidth": 80,
   "proseWrap": "preserve",
   "endOfLine": "auto",
-  "plugins": ["./plugins/table-format.mjs"]
+  "plugins": ["@nutui/prettier-plugin"]
 }
