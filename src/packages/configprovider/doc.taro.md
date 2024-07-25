@@ -1,12 +1,11 @@
 # ConfigProvider 全局配置
 
-
 用于全局配置 NutUI-React 组件，提供主题定制，国际化支持。
 
 ## 引入
 
 ```tsx
-import { ConfigProvider } from '@nutui/nutui-react-taro';
+import { ConfigProvider } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -84,11 +83,11 @@ page {
 
 NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。目前支持以下语言:
 
-* 简体中文 | zh-CN
-* 繁体中文（中国台湾） | zh-TW
-* 维吾尔语 ｜ zh-UG
-* 英语（美式） | en-US
-* 印尼语 ｜ id-ID
+- 简体中文 | zh-CN
+- 繁体中文（中国台湾） | zh-TW
+- 维吾尔语 ｜ zh-UG
+- 英语（美式） | en-US
+- 印尼语 ｜ id-ID
 
 :::demo
 

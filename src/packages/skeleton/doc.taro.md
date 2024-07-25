@@ -1,12 +1,11 @@
 # Skeleton 骨架屏组件
 
-
 在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
 
 ## 引入
 
 ```tsx
-import { Skeleton } from '@nutui/nutui-react-taro';
+import { Skeleton } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

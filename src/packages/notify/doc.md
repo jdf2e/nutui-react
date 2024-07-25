@@ -1,12 +1,11 @@
 # Notify 消息通知
 
-
 在页面顶部展示消息提示
 
 ## 引入
 
 ```tsx
-import { Notify } from '@nutui/nutui-react';
+import { Notify } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

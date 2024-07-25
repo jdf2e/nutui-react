@@ -1,12 +1,11 @@
 # Calendar 日历
 
-
 日历，可平铺/弹窗展示
 
 ## 引入
 
 ```tsx
-import { Calendar } from '@nutui/nutui-react';
+import { Calendar } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

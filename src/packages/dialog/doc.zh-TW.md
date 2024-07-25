@@ -1,7 +1,5 @@
 # Dialog 對話框
 
-
-
 模態對話框，在浮層中顯示，引導用戶進行相關操作，常用於消息提示、消息確認，或在當前頁面內完成特定的交互操作。
 
 彈出框組件支持函數調用和組件調用兩種方式。
@@ -23,6 +21,7 @@ import { Dialog } from '@nutui/nutui-react'
 :::
 
 ## 以下為標籤式使用
+
 ### 基礎用法
 
 :::demo
@@ -116,25 +115,25 @@ import React from 'react'
 import { Dialog, Input, Button } from '@nutui/nutui-react'
 
 export default function App() {
-  const [captcha, setCaptcha] = useState<string>("");
+  const [captcha, setCaptcha] = useState<string>('')
   const showCaptcha = () => {
     return Dialog.confirm({
       content: (
-          <Input
-            placeholder="請輸入驗證碼"
-            value={captcha} // App 中 captcha 的更新是不會傳遞到 Dialog 中的
-            onChange={(v) => {
-              setCaptcha(v)
-            }}
-          />
-      )
-    });
-  };
+        <Input
+          placeholder="請輸入驗證碼"
+          value={captcha} // App 中 captcha 的更新是不會傳遞到 Dialog 中的
+          onChange={(v) => {
+            setCaptcha(v)
+          }}
+        />
+      ),
+    })
+  }
   return (
     <div>
       <Button onClick={showCaptcha}>Show</Button>
     </div>
-  );
+  )
 }
 ```
 
@@ -168,4 +167,3 @@ export default function App() {
 | \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
 | \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
 | \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |
-

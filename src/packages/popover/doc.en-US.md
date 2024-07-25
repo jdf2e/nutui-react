@@ -1,7 +1,5 @@
 # Popover
 
-
-
 Click or hover the mouse on the element to pop up the floating layer of the bubble card.
 
 ## Import
@@ -163,9 +161,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-hover-background-color | The background color of the finger click menu option | `#fff` |
 | \--nutui-popover-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
-| \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
+| \--nutui-popover-border-color | Arrow colors for top, bottom, left and right | `$white` |
 | \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
-
-

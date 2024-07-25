@@ -1,12 +1,11 @@
 # Ellipsis组件
 
-
 展示空间不足时，隐去部分内容并用“...”替代。
 
 ## 引入
 
 ```tsx
-import { Ellipsis } from '@nutui/nutui-react';
+import { Ellipsis } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -58,12 +57,12 @@ import { Ellipsis } from '@nutui/nutui-react';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | content | 文本内容 | `string` | `-` |
-| direction | 省略位置 | `start` \| `end` \| `middle`  | `end` |
+| direction | 省略位置 | `start` \| `end` \| `middle` | `end` |
 | rows | 展示几行 | `number` | `1` |
 | expandText | 展开操作的文案 | `string` | `-` |
 | collapseText | 收起操作的文案 | `string` | `-` |
 | symbol | 省略的符号 | `string` | `...` |
-| lineHeight | 容器的行高 | `string` \| `number`  | `20` |
+| lineHeight | 容器的行高 | `string` \| `number` | `20` |
 | onClick | 文本点击是触发 | `() => void` | `-` |
 | onChange | 点击展开收起时触发 | `(type: string) => void` | `-` |
 

@@ -1,13 +1,11 @@
 # Menu 菜單
 
-
-
 嚮下彈出的菜單列錶
 
 ## 引入
 
 ```tsx
-import { Menu } from '@nutui/nutui-react';
+import { Menu } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

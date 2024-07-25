@@ -1,12 +1,11 @@
 # Menu 菜单
 
-
 向下弹出的菜单列表
 
 ## 引入
 
 ```tsx
-import { Menu } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -26,6 +25,7 @@ import { Menu } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 自定义菜单内容
 
 使用实例上的 toggle 方法可以手动关闭弹框。

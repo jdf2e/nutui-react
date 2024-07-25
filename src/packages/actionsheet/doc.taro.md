@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react-taro';
+import { ActionSheet } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

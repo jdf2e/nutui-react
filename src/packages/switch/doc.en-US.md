@@ -7,7 +7,7 @@ Used to open or close the options.
 ## Import
 
 ```tsx
-import { Switch } from '@nutui/nutui-react';
+import { Switch } from '@nutui/nutui-react'
 ```
 
 ## Demo

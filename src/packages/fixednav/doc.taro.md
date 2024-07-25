@@ -1,12 +1,11 @@
 # FixedNav 悬浮导航
 
-
 悬浮收齐体验交互，用于快捷导航
 
 ## 引入
 
 ```tsx
-import { FixedNav } from '@nutui/nutui-react-taro';
+import { FixedNav } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

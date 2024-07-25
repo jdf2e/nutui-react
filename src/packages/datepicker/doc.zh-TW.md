@@ -1,13 +1,11 @@
 # DatePicker 日期選擇器
 
-
-
 時間選擇器，支持日期、年月、時分等維度，通常與彈出層組件配合使用。
 
 ## 引入
 
 ```tsx
-import { DatePicker } from '@nutui/nutui';
+import { DatePicker } from '@nutui/nutui'
 ```
 
 ## 示例代碼

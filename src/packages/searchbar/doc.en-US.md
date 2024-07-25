@@ -1,13 +1,11 @@
 # SearchBar
 
-
-
 The input box component used to search the scene.
 
 ## Import
 
 ```tsx
-import { SearchBar } from '@nutui/nutui-react';
+import { SearchBar } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -127,7 +125,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-searchbar-content-border-radius | searchbar content border radius | `4px` |
 | \--nutui-searchbar-content-round-border-radius | searchbar content border radius when mode is round | `18px` |
 
-| \--nutui-searchbar-input-height |  searchbar input height  | `32px` |
+| \--nutui-searchbar-input-height | searchbar input height | `32px` |
 | \--nutui-searchbar-input-padding | searchbar input padding | `0 4px` |
 | \--nutui-searchbar-input-text-color | searchbar input text color | `$color-title` |
 | \--nutui-searchbar-input-curror-color | searchbar input curror color | `$color-title` |

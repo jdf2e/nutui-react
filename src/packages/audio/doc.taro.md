@@ -1,6 +1,5 @@
 # Audio 音频播放器
 
-
 用于音频播放
 
 ## 引入
@@ -16,8 +15,8 @@ import { Audio } from '@nutui/nutui-react-taro'
 :::demo
 
 ```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Audio } from '@nutui/nutui-react-taro'
 
 const App = () => {
   return (
@@ -32,9 +31,9 @@ const App = () => {
         onPlayEnd={() => alert('ended!')}
       />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -44,35 +43,35 @@ export default App;
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import { Audio,Icon } from '@nutui/nutui-react-taro';
+import React, { useState } from 'react'
+import { Audio, Icon } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const [duration, setDuration] = useState(0)
   const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
   return (
     <>
-     <Audio
-      className="custom-voice-audio"
-      id="custom-voice-audio"
-      autoPlay={false}
-      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-      type="none"
-      preload="auto"
-      onCanPlay={(e: any) => {
-        console.log('none-canplay', e)
-        setDuration(e?.target?.duration.toFixed(0) || 0)
-      }}
-    >
-      <div className="nut-voice">
-        <Icon name={voiceIcon} />
-        <div>{duration}&quot;</div>
-      </div>
-    </Audio>
+      <Audio
+        className="custom-voice-audio"
+        id="custom-voice-audio"
+        autoPlay={false}
+        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        type="none"
+        preload="auto"
+        onCanPlay={(e: any) => {
+          console.log('none-canplay', e)
+          setDuration(e?.target?.duration.toFixed(0) || 0)
+        }}
+      >
+        <div className="nut-voice">
+          <Icon name={voiceIcon} />
+          <div>{duration}&quot;</div>
+        </div>
+      </Audio>
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -82,8 +81,8 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Audio } from '@nutui/nutui-react-taro'
 
 const App = () => {
   return (
@@ -104,9 +103,9 @@ const App = () => {
         onPlayEnd={() => alert('progress audio ended!')}
       />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -116,8 +115,8 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Audio } from '@nutui/nutui-react-taro'
 
 const App = () => {
   return (
@@ -134,9 +133,9 @@ const App = () => {
         onPlayEnd={() => alert('ended!')}
       />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::

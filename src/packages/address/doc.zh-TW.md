@@ -1,13 +1,11 @@
 # Address 地址
 
-
-
 地址選擇，在2.0中，地址改用級聯組件實現。截止當前版本，只支持級聯，不支持級聯+電梯模式，開發中。
 
 ## 引入
 
 ```tsx
-import { Address } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -78,7 +76,7 @@ import { Address } from '@nutui/nutui-react';
 透過 ref 可以獲取到 Address 實例並調用實例方法。
 
 | 方法名 | 說明 | 參數 |
-| ---- | ---- | ---- |
+| --- | --- | --- |
 | open | 打開地址選擇 | `-` |
 | close | 關閉地址選擇 | `-` |
 

@@ -1,14 +1,11 @@
 # Radio
 
-
-
 Used to single select in a set of alternatives
 
 ## Import
 
 ```tsx
-import { Radio } from '@nutui/nutui-react';
-
+import { Radio } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -122,7 +119,7 @@ It is recommended that 'icon' and 'activeIcon' be modified together
 | checked | specifies whether it is currently checked | `boolean` | `-` |
 | defaultChecked | Initially checked or not | `boolean` | `-` |
 | disabled | Whether to disable selection | `boolean` | `false` |
-| value | The identification value carried, used in Group mode | `string`  \|  `number` | `-` |
+| value | The identification value carried, used in Group mode | `string` \| `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | icon | <a href="#/icon">icon name</a>, before selection (it is recommended to modify it together with `activeIcon`) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">icon name</a>, after selected (it is recommended to modify it together with `icon`) | `ReactNode` | `'CheckChecked'` |
@@ -135,12 +132,12 @@ It is recommended that 'icon' and 'activeIcon' be modified together
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | identifier of the currently selected item | `string`  \|  `number` | `-` |
+| value | identifier of the currently selected item | `string` \| `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | disabled | Whether to disable | `boolean` | `false` |
-| shape | shape | `button` \| `round` |`-` |
+| shape | shape | `button` \| `round` | `-` |
 | direction | use landscape orientation | `horizontal` \| `vertical` | `vertical` |
-| options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |
 
 ## Theming
@@ -161,6 +158,6 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radio-button-active-border | The shape is the border of the active button | `1px solid $color-primary` |
 | \--nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
 | \--nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
-| \--nutui-radiogroup-radio-margin | Margin Right of each radio in Group mode  | `20px` |
-| \--nutui-radiogroup-radio-margin-bottom | Margin Bottom of each radio in Group mode  | `5px` |
+| \--nutui-radiogroup-radio-margin | Margin Right of each radio in Group mode | `20px` |
+| \--nutui-radiogroup-radio-margin-bottom | Margin Bottom of each radio in Group mode | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
