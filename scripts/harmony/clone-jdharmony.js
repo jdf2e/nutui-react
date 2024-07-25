@@ -8,7 +8,8 @@ const home = os.homedir()
 const temp = `${process.cwd()}/packages`
 
 async function cloneJdHarmony() {
-  const remote = 'git@coding.jd.com:DongDesign/JDHarmony.git'
+  // 填写coding地址
+  const remote = ''
   const branch = 'master'
   const git = simpleGit({
     baseDir: temp,
