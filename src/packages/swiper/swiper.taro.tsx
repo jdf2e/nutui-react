@@ -167,5 +167,4 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
   )
 })
 
-Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'

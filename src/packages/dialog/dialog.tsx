@@ -161,5 +161,5 @@ Dialog.confirm = (props: DialogConfirmProps): DialogReturnProps => {
   }
 })
 
-Dialog.defaultProps = defaultProps
+Dialog.defaultProps = defaultProps // 不可删除
 Dialog.displayName = 'NutDialog'
