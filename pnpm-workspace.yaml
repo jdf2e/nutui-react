@@ -1,3 +1,2 @@
 packages:
-  - 'packages/nutui-taro-demo'
   - 'packages/nutui-codemod'

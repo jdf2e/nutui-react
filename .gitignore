@@ -24,6 +24,7 @@ package-lock.json
 /tsc/test
 /site_docs
 /coverage
+/packages/nutui-jdharmony
 
 # local env files
 .env.local
