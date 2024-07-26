@@ -1,3 +1,20 @@
+# v2.6.15
+
+`2024-07-26`
+
+- 🏡 chore: run md-table-format when git commit changes (#2484) @Alex-huxiyang
+- :sparkles: feat(menu): allow custom classnames for Menu and dynamic titles (#2480) @Alex-huxiyang
+- :sparkles: feat(watermark): support multi-line text (#2477) @xiaoyatong
+- :bug: fix: move defaultprops (#2482) @xiaoyatong
+- :bug: fix: snapshot update (#2481) @Alex-huxiyang
+- :bug: fix(uploader): image 居中展示 (#2475) @xiaoyatong
+- :bug: fix(infiniteLoading): rest 导致事件无法触发 (#2474) @oasis-cloud
+- :bug: fix: sticky 构建时类型错误 @oasis-cloud
+- :bug: fix(uploader): images should display when they've been successfully uploaded (#2448) @Alex-huxiyang
+- :bug: fix: 修复日历进行快捷选择日期时 点击确认获取的是上一次的日期 (#2436) @yangqianlu
+- 🪵 refactor: table (#2473) @zanyuki-jd
+- 🪵 refactor: sticky (#2468) @oasis-cloud
+
 # v2.6.14
 
 `2024-07-19`
