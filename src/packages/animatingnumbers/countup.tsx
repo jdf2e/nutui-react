@@ -122,4 +122,5 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   )
 }
 
+CountUp.defaultProps = defaultProps // 不可删除
 CountUp.displayName = 'NutCountUp'
