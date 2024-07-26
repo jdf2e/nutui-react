@@ -1,13 +1,11 @@
 # Skeleton
 
-
-
 Filling gray bitmap in the area to be loaded on the page is essentially the transition effect in the process of interface loading.
 
 ## Import
 
 ```tsx
-import { Skeleton } from '@nutui/nutui-react';
+import { Skeleton } from '@nutui/nutui-react'
 ```
 
 ## Code demonstration

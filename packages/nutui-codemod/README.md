@@ -3,9 +3,11 @@
 一组帮助你升级到 NutUI React 2.x 的 codemod 脚本集合，基于 [jscodeshift](https://github.com/facebook/jscodeshift) 构建。
 
 ## 安装和使用
+
 在运行 codemod 脚本钱，请先提交你本地代码的修改。
 
 ### 针对 @nutui/nutui-react 的升级可采用下面的脚本
+
 ```shell
 # 使用 npx 直接运行
 npx -p @nutui/nutui-react-codemod nutui-react-codemod src
@@ -13,7 +15,9 @@ npx -p @nutui/nutui-react-codemod nutui-react-codemod src
 # 或者使用 pnpm 直接运行
 pnpm --package=@nutui/nutui-react-codemod  dlx nutui-react-codemod src
 ```
+
 ### 针对 @nutui/nutui-react-taro 的升级可采用下面的脚本
+
 ```shell
 # 使用 npx 直接运行
 npx -p @nutui/nutui-react-codemod nutui-react-codemod src -taro
@@ -25,7 +29,9 @@ pnpm --package=@nutui/nutui-react-codemod  dlx nutui-react-codemod src -taro
 ## 功能
 
 `component-name-migration`
+
 - 将组件的使用方式进行修改，例如：`CollpaseItem` 改为 `Collpase.Item` 方式
+
 ```diff
 import  React from "react";
 - import { Collapse,CollapseItem } from '@nutui/nutui-react';
@@ -48,6 +54,7 @@ export default App;
 ```
 
 `props-changed-migration`
+
 - 将重命名的 props 进行替换
 
 ```diff
@@ -66,7 +73,9 @@ export default App
 ```
 
 `icon-migration`
+
 - 将 Icon 组件替换为对应的 @nutui/icons-react 或 @nutui/icons-react-taro
+
 ```diff
 import React from 'react'
 - import { Icon } from '@nutui/nutui-react'

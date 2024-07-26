@@ -1,6 +1,5 @@
 # Popover 气泡弹出框
 
-
 点击或在元素上悬停鼠标，弹出气泡卡片浮层。
 
 ## 引入
@@ -59,7 +58,6 @@ bottom-end    # 底部右侧位置
 <CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
-
 
 ### 位置自定义：单条数据
 
@@ -126,7 +124,7 @@ bottom-end    # 底部右侧位置
 | onClose | 关闭菜单时触发 | `() => void` | `() => {}` |
 
 ```
-此外，还支持Popup组件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick属性。  
+此外，还支持Popup组件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick属性。
 ```
 
 ### PopoverList 数据结构
@@ -156,7 +154,7 @@ PopoverList 属性是一个由对象构成的数组，数组中的每个对象�
 | \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
 | \--nutui-popover-hover-background-color | 手指点击菜单选项选中的背景颜色 | `#fff` |
 | \--nutui-popover-hover-text-color | 手指点击菜单选项选中的文字颜色 | `#1a1a1a` |
-| \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色| `$white` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色 | `$white` |
 | \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
 | \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |

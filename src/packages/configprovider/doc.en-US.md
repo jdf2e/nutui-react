@@ -1,13 +1,11 @@
 # ConfigProvider
 
-
-
 Used to configure NutUI-React components globally, provide theme customization, internationalization support.
 
 ## Import
 
 ```tsx
-import { ConfigProvider } from '@nutui/nutui-react';
+import { ConfigProvider } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -85,11 +83,11 @@ page {
 
 NutUI-React provides a ConfigProvider component for global configuration of internationalized copywriting. The following languages are currently supported:
 
-* Chinese Simplified | zh-CN
-* Chinese Traditional (Taiwan) | zh-TW
-* Uyghur | zh-UG
-* English (American) | en-US
-* Indonesian | id-ID
+- Chinese Simplified | zh-CN
+- Chinese Traditional (Taiwan) | zh-TW
+- Uyghur | zh-UG
+- English (American) | en-US
+- Indonesian | id-ID
 
 :::demo
 

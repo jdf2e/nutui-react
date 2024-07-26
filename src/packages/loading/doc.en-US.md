@@ -7,7 +7,7 @@ A loading icon, Used to show the loading state
 ### Import
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
 ## Demo

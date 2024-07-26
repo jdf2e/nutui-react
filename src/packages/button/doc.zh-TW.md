@@ -1,13 +1,11 @@
 # Button 按鈕
 
-
-
 按鈕用於觸發一個操作，如提交表單。
 
 ## 引入
 
 ```tsx
-import { Button } from '@nutui/nutui-react';
+import { Button } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

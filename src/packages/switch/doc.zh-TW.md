@@ -1,13 +1,11 @@
 # Switch 開關
 
-
-
 用來打開或關閉選項。
 
 ## 引入
 
 ```tsx
-import { Switch } from '@nutui/nutui-react';
+import { Switch } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

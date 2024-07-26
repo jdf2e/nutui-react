@@ -1,7 +1,5 @@
 # CountDown
 
-
-
 Used to display the countdown value in real time, and precision supports milliseconds.
 
 ## Import

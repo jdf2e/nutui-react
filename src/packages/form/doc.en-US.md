@@ -1,7 +1,5 @@
 # Form
 
-
-
 It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
 
 ## Import
@@ -27,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### Related Display
 
 :::demo
@@ -34,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### with initial value form validation
 
 :::demo
@@ -50,7 +50,7 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
-### Validate Trigger 
+### Validate Trigger
 
 :::demo
 
@@ -79,7 +79,7 @@ import { Form } from '@nutui/nutui-react'
 | shouldUpdate | Update logic | `boolean` | `false` |
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
-| starPosition | The red star position of the required form item label |  `left` \| `right` | `left` |
+| starPosition | The red star position of the required form item label | `left` \| `right` | `left` |
 | onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
 | onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 

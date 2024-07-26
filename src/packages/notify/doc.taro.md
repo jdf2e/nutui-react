@@ -1,12 +1,11 @@
 # Notify 消息通知
 
-
 在页面顶部展示消息提示
 
 ## 引入
 
 ```tsx
-import { Notify } from '@nutui/nutui-react-taro';
+import { Notify } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -20,41 +19,44 @@ import { Notify } from '@nutui/nutui-react-taro';
 :::
 
 ### 函数调用
+
 ```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
+import React, { useState } from 'react'
+import { Notify, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        type: 'danger',
-    })
-    const changeNotify = (message: string, type?: string) => {
-        const change = Object.assign(states, {message,type})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Notify
-                id="test"
-                visible={showNotify}
-                type={states.type}
-                onClose={() => {
-                    SetShowNotify(false)
-                }}
-                onClick={() => {
-                    console.log('click')
-                }}
-            >{states.message}</Notify>
-            <Cell
-                title="函数调用"
-                onClick={(event: React.MouseEvent) => {
-                  Notify.open('test')
-                }}
-            />
-        </>
-    )
+  const [showNotify, SetShowNotify] = useState(false)
+  const [states, SetStates] = useState({
+    message: '',
+    type: 'danger',
+  })
+  const changeNotify = (message: string, type?: string) => {
+    const change = Object.assign(states, { message, type })
+    SetStates(change)
+  }
+  return (
+    <>
+      <Notify
+        id="test"
+        visible={showNotify}
+        type={states.type}
+        onClose={() => {
+          SetShowNotify(false)
+        }}
+        onClick={() => {
+          console.log('click')
+        }}
+      >
+        {states.message}
+      </Notify>
+      <Cell
+        title="函数调用"
+        onClick={(event: React.MouseEvent) => {
+          Notify.open('test')
+        }}
+      />
+    </>
+  )
 }
 export default App
 ```

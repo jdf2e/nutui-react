@@ -90,7 +90,7 @@
     "postpublish": "node scripts/postpublish.js"
   },
   "lint-staged": {
-    "*.scss": "prettier --write",
+    "*.{scss,md}": "prettier --write",
     "*.{ts,tsx,js,md}": "eslint"
   },
   "dependencies": {
@@ -118,6 +118,7 @@
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
     "@loadable/component": "^5.16.3",
+    "@nutui/prettier-plugin": "workspace:*",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
@@ -170,6 +171,7 @@
     "husky": "^9.0.11",
     "inquirer": "^9.2.15",
     "jscodeshift": "^0.15.1",
+    "linguist-languages": "^7.27.0",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",

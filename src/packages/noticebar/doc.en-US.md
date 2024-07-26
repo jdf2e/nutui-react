@@ -1,13 +1,11 @@
 # NoticeBar
 
-
-
 Used to display a group of message notifications in a continuous loop.
 
 ## Import
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -55,6 +53,7 @@ When text is long, you can enable multi-line display by setting the wrap propert
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
+
 ### Custom right content
 
 Add Right mode to set more custom content.
@@ -72,7 +71,6 @@ Add Right mode to set more custom content.
 <CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ### Vertical Scroll
 

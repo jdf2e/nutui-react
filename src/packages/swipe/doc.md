@@ -1,12 +1,11 @@
 # Swipe组件
 
-
 常用于单元格左右滑删除等手势操作
 
 ## 引入
 
 ```tsx
-import { Swipe } from '@nutui/nutui-react';
+import { Swipe } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -16,34 +15,36 @@ import { Swipe } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button } from '@nutui/nutui-react'
 
 const App = () => {
-  return <>
-    <Swipe
-      rightAction={
-        <Button type="primary" shape="square">
-          删除
-        </Button>
-      }
-    >
-      <Cell title="左滑删除" radius={0} />
-    </Swipe>
-  </>
+  return (
+    <>
+      <Swipe
+        rightAction={
+          <Button type="primary" shape="square">
+            删除
+          </Button>
+        }
+      >
+        <Cell title="左滑删除" radius={0} />
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
 
 ### 卡片场景
+
 :::demo
 
 ```tsx
-
-import React from "react";
-import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button } from '@nutui/nutui-react'
 import { Del } from '@nutui/icons-react'
 
 const divNode = (text: string, style: any) => {
@@ -58,52 +59,53 @@ const divNode = (text: string, style: any) => {
         ...style,
       }}
     >
-      <Del style={{ marginBottom: '8px' }}/>
+      <Del style={{ marginBottom: '8px' }} />
       <>{text}</>
     </div>
   )
 }
 
 const App = () => {
-  return <>
-    <Swipe
-      style={{ height: '104px' }}
-      rightAction={
-        <div
-          style={{
-            height: 'inherit',
-            width: '240px',
-            display: 'flex',
-            fontSize: '12px',
-          }}
-        >
-          <>
-            {divNode('设置常买', {
-              background: '#F8F8F8',
-              color: '#1A1A1A',
-            })}
-            {divNode('移入收藏', {
-              background: '#ffcc00',
-              color: '#FFF',
-            })}
-            {divNode('看相似', {
-              background: '#FF860D',
-              color: '#FFF',
-            })}
-            {divNode('删除', {
-              background: '#FA2C19',
-              color: '#FFF',
-            })}
-          </>
-        </div>
-      }
-    >
-      <Cell title={`${translated.leftDel}+Icon`} radius={0} />
-    </Swipe>
-  </>
+  return (
+    <>
+      <Swipe
+        style={{ height: '104px' }}
+        rightAction={
+          <div
+            style={{
+              height: 'inherit',
+              width: '240px',
+              display: 'flex',
+              fontSize: '12px',
+            }}
+          >
+            <>
+              {divNode('设置常买', {
+                background: '#F8F8F8',
+                color: '#1A1A1A',
+              })}
+              {divNode('移入收藏', {
+                background: '#ffcc00',
+                color: '#FFF',
+              })}
+              {divNode('看相似', {
+                background: '#FF860D',
+                color: '#FFF',
+              })}
+              {divNode('删除', {
+                background: '#FA2C19',
+                color: '#FFF',
+              })}
+            </>
+          </div>
+        }
+      >
+        <Cell title={`${translated.leftDel}+Icon`} radius={0} />
+      </Swipe>
+    </>
+  )
 }
-export default App;
-
+export default App
 ```
 
 ### 通过实例方法控制
@@ -111,33 +113,36 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button } from '@nutui/nutui-react'
 
 const App = () => {
   const closeRef = useRef(null)
   const openRef = useRef(null)
-  return <>
-    <Swipe
-      ref={openRef}
-      rightAction={
-        <Button shape="square" type="danger">
-          删除
-        </Button>
-      }
-    >
-      <Cell title='点击下方按钮打开或关闭' radius={0} />
-    </Swipe>
-    <Button onClick={() => openRef.current?.open()} type="primary"
-            size="small">
-      打开
-    </Button>
-    <Button onClick={() => openRef.current?.close()}>
-      关闭
-    </Button>
-  </>
+  return (
+    <>
+      <Swipe
+        ref={openRef}
+        rightAction={
+          <Button shape="square" type="danger">
+            删除
+          </Button>
+        }
+      >
+        <Cell title="点击下方按钮打开或关闭" radius={0} />
+      </Swipe>
+      <Button
+        onClick={() => openRef.current?.open()}
+        type="primary"
+        size="small"
+      >
+        打开
+      </Button>
+      <Button onClick={() => openRef.current?.close()}>关闭</Button>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -147,28 +152,30 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button } from '@nutui/nutui-react'
 
 const App = () => {
   const closeRef = useRef(null)
-  return <>
-    <Swipe
-      ref={openRef}
-      rightAction={
-        <Button shape="square" type="danger">
-          删除
-        </Button>
-      }
-      onActionClick={() => {
-        closeRef.current.close()
-      }}
-    >
-      <Cell title='点击右侧按钮关闭' radius={0} />
-    </Swipe>
-  </>
+  return (
+    <>
+      <Swipe
+        ref={openRef}
+        rightAction={
+          <Button shape="square" type="danger">
+            删除
+          </Button>
+        }
+        onActionClick={() => {
+          closeRef.current.close()
+        }}
+      >
+        <Cell title="点击右侧按钮关闭" radius={0} />
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -178,24 +185,26 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button } from '@nutui/nutui-react'
 
 const App = () => {
-  return <>
-    <Swipe
-      rightAction={
-        <Button shape="square" type="danger">
-          删除
-        </Button>
-      }
-      disabled
-    >
-      <Cell title="禁用滑动" radius={0} />
-    </Swipe>
-  </>
+  return (
+    <>
+      <Swipe
+        rightAction={
+          <Button shape="square" type="danger">
+            删除
+          </Button>
+        }
+        disabled
+      >
+        <Cell title="禁用滑动" radius={0} />
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -205,39 +214,41 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react'
 
 const App = () => {
   const handleChange = () => {
-    Toast.show('点击');
+    Toast.show('点击')
   }
-  return <>
-    <Swipe
-      leftAction={
-        <Button shape="square" type="success">
-          选择
-        </Button>
-      }
-      rightAction={
-        <>
-          <Button shape="square" type="danger">
-            删除
+  return (
+    <>
+      <Swipe
+        leftAction={
+          <Button shape="square" type="success">
+            选择
           </Button>
-          <Button shape="square" type="info">
-            收藏
-          </Button>
-        </>
-      }
-      onActionClick={handleChange}
-      onOpen={() => Toast.show('打开')}
-      onClose={() => Toast.show('关闭')}
-    >
-      <Cell title="事件" />
-    </Swipe>
-  </>
+        }
+        rightAction={
+          <>
+            <Button shape="square" type="danger">
+              删除
+            </Button>
+            <Button shape="square" type="info">
+              收藏
+            </Button>
+          </>
+        }
+        onActionClick={handleChange}
+        onOpen={() => Toast.show('打开')}
+        onClose={() => Toast.show('关闭')}
+      >
+        <Cell title="事件" />
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -247,8 +258,8 @@ export default App;
 :::demo
 
 ```tsx
-import React, { useRef } from "react";
-import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react';
+import React, { useRef } from 'react'
+import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react'
 import { SwipeInstance } from '@/packages/Swipe'
 
 const App = () => {
@@ -262,28 +273,30 @@ const App = () => {
       },
     })
   }
-  return <>
-    <Swipe
-      ref={refDom}
-      beforeClose={beforeClose}
-      leftAction={
-        <Button shape="square" type="success">
-          选择
-        </Button>
-      }
-      rightAction={
-        <>
-          <Button shape="square" type="danger">
-            删除
+  return (
+    <>
+      <Swipe
+        ref={refDom}
+        beforeClose={beforeClose}
+        leftAction={
+          <Button shape="square" type="success">
+            选择
           </Button>
-        </>
-      }
-    >
-      <Cell title="事件" />
-    </Swipe>
-  </>
+        }
+        rightAction={
+          <>
+            <Button shape="square" type="danger">
+              删除
+            </Button>
+          </>
+        }
+      >
+        <Cell title="事件" />
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -293,36 +306,38 @@ export default App;
 :::demo
 
 ```tsx
-import React from "react";
-import { Swipe, Cell, Button, InputNumber } from '@nutui/nutui-react';
+import React from 'react'
+import { Swipe, Cell, Button, InputNumber } from '@nutui/nutui-react'
 
 const App = () => {
-  return <>
-    <Swipe
-      rightAction={
-        <>
-          <Button shape="square" type="danger">
-            加入购物车
-          </Button>
-        </>
-      }
-    >
-      <Cell>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          <span>商品</span>
-          <InputNumber style={{ float: 'right' }} />
-        </div>
-      </Cell>
-    </Swipe>
-  </>
+  return (
+    <>
+      <Swipe
+        rightAction={
+          <>
+            <Button shape="square" type="danger">
+              加入购物车
+            </Button>
+          </>
+        }
+      >
+        <Cell>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
+            <span>商品</span>
+            <InputNumber style={{ float: 'right' }} />
+          </div>
+        </Cell>
+      </Swipe>
+    </>
+  )
 }
-export default App;
+export default App
 ```
 
 :::

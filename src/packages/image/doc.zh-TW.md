@@ -1,13 +1,11 @@
 # Image組件
 
-
-
 增強版的 img 標簽，提供多種圖片填充模式，支持圖片加載中提示、加載失敗提示。
 
 ## 引入
 
 ```tsx
-import { Image } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -104,7 +102,7 @@ import { Image } from '@nutui/nutui-react';
 | alt | 替代文本 | `string` | `-` |
 | width | 寬度，默認單位`px` | `string` | `-` |
 | height | 高度，默認單位`px` | `string` | `-` |
-| radius | 圓角大小 | `string`  \|  `number` | `-` |
+| radius | 圓角大小 | `string` \| `number` | `-` |
 | error | 是否展示圖片加載失敗 | `boolean \| ReactNode` | `true` |
 | loading | 是否展示加載中圖片 | `boolean \| ReactNode` | `true` |
 | lazy | 是否為懶加載圖片 | `boolean` | `false` |

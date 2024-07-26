@@ -1,13 +1,11 @@
 # Tabs
 
-
-
 It is often used for the storage and display of large blocks of content in the level area, and supports the form of embedded tags and rendering loop data.
 
 ## Import
 
 ```tsx
-import { Tabs } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -120,7 +118,7 @@ By setting the style of the tab, for example: `tabStyle={{ position: 'sticky', t
 
 ### Tabpane Auto Height
 
-When autoHeight is set to true, nut-tabs and nut-tabs__content will change with the current height of nut-tabpane.
+When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change with the current height of nut-tabpane.
 
 :::demo
 
@@ -212,7 +210,7 @@ When autoHeight is set to true, nut-tabs and nut-tabs__content will change with 
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
 | activeColor | Label selected color | `string` | `#1a1a1a` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
-| activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
+| activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
 | align | title alignment | `left` \| `right` | `-` |
@@ -249,16 +247,16 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-large` |
 | \--nutui-tabs-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width |  Horizontal active tab line width | `12px` |
+| \--nutui-tabs-tab-line-width | Horizontal active tab line width | `12px` |
 | \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `2px` |
 | \--nutui-tabs-tab-line-color | Horizontal line color | `$color-primary` |
 | \--nutui-tabs-line-bottom | Horizontal line distance | `15%` |
 | \--nutui-tabs-line-border-radius | rounded corners for horizontal lines | `2px` |
 | \--nutui-tabs-tab-line-opacity | Opacity of horizontal tabs | `1` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
-| \--nutui-tabs-vertical-titles-item-height |  height of vertical titles | `40px` |
+| \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
 | \--nutui-tabs-tabpane-padding | Padding of the Tabpane content | `24px 20px` |
-| \--nutui-tabs-tabpane-backgroundColor | BackgroundColor of the Tabpane content| `#fff` |
+| \--nutui-tabs-tabpane-backgroundColor | BackgroundColor of the Tabpane content | `#fff` |

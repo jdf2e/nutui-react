@@ -7,7 +7,7 @@
 ### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

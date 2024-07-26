@@ -1,7 +1,5 @@
 # Price 價格
 
-
-
 用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、仟位分隔符、設置小數點位數等功能。
 
 ## 引入
@@ -108,5 +106,5 @@ import { Price } from '@nutui/nutui-react'
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
 | \--nutui-price-line-font-size | 劃線價字體大小 | `10px` |
-| \--nutui-price-line-color | 劃線價顏色 |  `#757575` |
-| \--nutui-price-symbol-padding-right | 符號的右內邊距 |  `1px` |
+| \--nutui-price-line-color | 劃線價顏色 | `#757575` |
+| \--nutui-price-symbol-padding-right | 符號的右內邊距 | `1px` |

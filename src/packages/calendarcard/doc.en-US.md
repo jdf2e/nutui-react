@@ -1,13 +1,11 @@
 # CalendarCard
 
-
-
 CalendarCard
 
 ## Import
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -136,7 +134,7 @@ Through ref, you can get the CalendarCard instance and call the instance method.
 | Name | Description | Arguments |
 | --- | --- | --- |
 | jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step: number` |
-| jumpTo | Jump to a specific year and month | `year: number, month: number`|
+| jumpTo | Jump to a specific year and month | `year: number, month: number` |
 
 ## Theming
 

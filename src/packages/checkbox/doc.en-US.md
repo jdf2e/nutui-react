@@ -1,13 +1,11 @@
 # Checkbox
 
-
-
 多选按钮用于选择。
 
 ## Import
 
 ```tsx
-import { Checkbox } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -143,13 +141,13 @@ When the value changes, the change event will be fired
 | checked | whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
-| labelPosition | The position of the text  | `left` \| `right` | `right` |
+| labelPosition | The position of the text | `left` \| `right` | `right` |
 | icon | before selection | `ReactNode` | `'CheckNormal'` |
-| activeIcon |  after selection | `ReactNode` | `'Checked'` |
+| activeIcon | after selection | `ReactNode` | `'Checked'` |
 | indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
 | label | text content of the checkbox | `string` | `-` |
 | value | identification value, used in Group mode | `string` \| `number` | `-` |
-| shape | shape | `button` \| `round` |`round` |
+| shape | shape | `button` \| `round` | `round` |
 | onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group

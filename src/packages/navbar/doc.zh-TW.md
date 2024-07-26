@@ -1,13 +1,11 @@
 # Navbar 頭部導航
 
-
-
 提供導航功能。
 
 ## 引入
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

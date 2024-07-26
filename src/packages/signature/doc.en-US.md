@@ -1,7 +1,5 @@
 # Signature
 
-
-
 Signature component based on canvas.
 
 ## Import

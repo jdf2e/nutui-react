@@ -1,13 +1,11 @@
 # Divider 分割線
 
-
-
 用於將內容分隔為多個區域。
 
 ## 引入
 
 ```tsx
-import { Divider } from '@nutui/nutui-react';
+import { Divider } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

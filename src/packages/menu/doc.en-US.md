@@ -1,7 +1,5 @@
 # Menu
 
-
-
 The menu list that pops down downwards.
 
 ## Import
@@ -126,15 +124,15 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-menu-bar-line-height | The height of the menu title bar | `48px` |
 | \--nutui-menu-bar-opened-z-index | z-index of opened state | `2001` |
 | \--nutui-menu-bar-box-shadow | Shadow of menu title bar | `0 2px 12px rgba(89, 89, 89, 0.12)` |
-| \--nutui-menu-title-padding |  Padding of title | `0 8px` |
+| \--nutui-menu-title-padding | Padding of title | `0 8px` |
 | \--nutui-menu-title-font-size | The font size of the title | `$font-size-base` |
 | \--nutui-menu-title-color | Title color | `$color-title` |
 | \--nutui-menu-container-z-index | zindex of container | `1000` |
-| \--nutui-menu-content-padding | Padding of menu item container  | `12px 24px` |
+| \--nutui-menu-content-padding | Padding of menu item container | `12px 24px` |
 | \--nutui-menu-content-max-height | Maximum height of menu item container | `214px` |
 | \--nutui-menu-content-background-color | Background color of menu item container | `$white` |
 | \--nutui-menu-item-active-color | Open state color | `$color-primary` |
-| \--nutui-menu-item-active-font-weight |  The font weight of the selected state | `$font-weight-bold` |
+| \--nutui-menu-item-active-font-weight | The font weight of the selected state | `$font-weight-bold` |
 | \--nutui-menu-item-disabled-color | Disabled state color | `$color-text-disabled` |
 | \--nutui-menu-item-padding | padding for menu options | `12px 0` |
 | \--nutui-menu-item-option-icon-margin | Distance between menu item text and icon | `6px` |

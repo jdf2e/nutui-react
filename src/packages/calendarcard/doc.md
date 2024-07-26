@@ -1,12 +1,11 @@
 # CalendarCard 日历
 
-
 日历
 
 ## 引入
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -135,7 +134,7 @@ import { CalendarCard } from '@nutui/nutui-react';
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
-| jumpTo | 跳转至特定的年月 | `year: number, month: number`|
+| jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
 ## 主题定制
 
