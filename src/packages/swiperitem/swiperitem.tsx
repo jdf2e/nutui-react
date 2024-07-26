@@ -21,5 +21,4 @@ export const SwiperItem = (props: SwiperItemProps) => {
     </div>
   )
 }
-SwiperItem.defaultProps = defaultProps
 SwiperItem.displayName = 'NutSwiperItem'

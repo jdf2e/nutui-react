@@ -108,7 +108,6 @@ export const Swipe = forwardRef<
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
   const leftWidth = actionWidth.left
-
   const rightWidth = actionWidth.right
 
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
@@ -275,5 +274,4 @@ export const Swipe = forwardRef<
   )
 })
 
-Swipe.defaultProps = defaultProps
 Swipe.displayName = 'NutSwipe'
