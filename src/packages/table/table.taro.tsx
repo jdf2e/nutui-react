@@ -125,10 +125,6 @@ export const Table: FunctionComponent<
   }
 
   const renderBodyTds = (item: any, rowIndex: number) => {
-    const { rowRender } = item
-    if (rowRender && typeof rowRender === 'function') {
-      return rowRender(item, rowIndex)
-    }
     return sortDataItem().map(([value, render]) => {
       return (
         <div
@@ -152,9 +148,14 @@ export const Table: FunctionComponent<
 
   const renderBodyTrs = () => {
     return innerValue.map((item, index) => {
+      const inner = renderBodyTds(item, index)
+      const { rowRender } = item
+      if (rowRender && typeof rowRender === 'function') {
+        return rowRender(item, index, { inner })
+      }
       return (
         <div className={bodyClassPrefix} key={index}>
-          {renderBodyTds(item, index)}
+          {inner}
         </div>
       )
     })

@@ -29,20 +29,22 @@ const Demo14 = () => {
       text: '这里是自定义行',
       Component: (props: any) => {
         return (
-          <div style={{ height: props.height }}>
-            <div
-              style={{
-                position: 'absolute',
-                height: props.height,
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderBottom:
-                  '1px solid var(--nutui-table-border-color, var(--nutui-black-3, rgba(0, 0, 0, 0.06)))',
-              }}
-            >
-              {props.text}
+          <div className="nut-table-main-body-tr">
+            <div style={{ height: props.height }}>
+              <div
+                style={{
+                  position: 'absolute',
+                  height: props.height,
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderBottom:
+                    '1px solid var(--nutui-table-border-color, var(--nutui-black-3, rgba(0, 0, 0, 0.06)))',
+                }}
+              >
+                {props.text}
+              </div>
             </div>
           </div>
         )
