@@ -47,7 +47,7 @@ export const ActionSheet: FunctionComponent<
   const classPrefix = 'nut-actionsheet'
 
   const cancelActionSheet = () => {
-    onCancel && onCancel()
+    onCancel?.()
   }
 
   const chooseItem = (
@@ -55,7 +55,7 @@ export const ActionSheet: FunctionComponent<
     index: number
   ) => {
     if (!item.disabled) {
-      onSelect && onSelect(item, index)
+      onSelect?.(item, index)
     }
   }
 
@@ -69,7 +69,7 @@ export const ActionSheet: FunctionComponent<
       description={description}
       className={classPrefix}
       onClose={() => {
-        onCancel && onCancel()
+        onCancel?.()
       }}
     >
       <div className={`${className}`} style={style}>
