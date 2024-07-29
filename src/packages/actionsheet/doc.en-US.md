@@ -65,6 +65,7 @@ import { ActionSheet } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Mask layer visible | `boolean` | `false` |
+| round | Whether to show rounded corners | `boolean` | `true` |
 | title | Set panel title | `string` | `-` |
 | description | Set panel subtitle/description | `string` | `-` |
 | cancelText | Cancel Text | `string` | `Cancel` |

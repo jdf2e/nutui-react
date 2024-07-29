@@ -22,6 +22,7 @@ const defaultProps = {
   cancelText: '',
   onCancel: () => {},
   onSelect: () => {},
+  round: true,
 } as unknown as ActionSheetProps
 export const ActionSheet: FunctionComponent<
   Partial<ActionSheetProps> &
@@ -39,6 +40,7 @@ export const ActionSheet: FunctionComponent<
     visible,
     className,
     style,
+    round,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -60,7 +62,7 @@ export const ActionSheet: FunctionComponent<
   return (
     <Popup
       {...rest}
-      round
+      round={round}
       visible={visible}
       position="bottom"
       title={title}

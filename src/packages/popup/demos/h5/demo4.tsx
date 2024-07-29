@@ -34,6 +34,7 @@ const Demo4 = () => {
         }}
       />
       <Popup
+        round
         closeable
         closeIcon={<Failure width="12px" height="12px" />}
         visible={showCloseIconStop}

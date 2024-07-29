@@ -28,6 +28,7 @@ const Demo3 = () => {
         }}
       />
       <Popup
+        round
         closeable
         visible={showIcon}
         left="返回"
@@ -38,6 +39,7 @@ const Demo3 = () => {
         }}
       />
       <Popup
+        round
         closeable
         visible={showIconPosition}
         closeIconPosition="top-left"
@@ -47,6 +49,7 @@ const Demo3 = () => {
         }}
       />
       <Popup
+        round
         closeable
         closeIcon={<Heart size="15px" />}
         visible={showIconDefine}

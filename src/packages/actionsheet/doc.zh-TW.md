@@ -65,6 +65,7 @@ import { ActionSheet } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 預設值 |
 | --- | --- | --- | --- |
 | visible | 遮罩層可見 | `boolean` | `false` |
+| round | 是否顯示圓角 | `boolean` | `true` |
 | title | 設定列錶面闆標題 | `string` | \- |
 | description | 設定列錶面闆副標題/描述 | `string` | \- |
 | options | 列錶項 | `Array` | `[]` |

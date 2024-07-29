@@ -65,6 +65,7 @@ import { ActionSheet } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 遮罩层可见 | `boolean` | `false` |
+| round | 是否显示圆角 | `boolean` | `true` |
 | title | 设置列表面板标题 | `string` | `-` |
 | description | 设置列表面板副标题/描述 | `string` | `-` |
 | options | 列表项 | `Array` | `[]` |
