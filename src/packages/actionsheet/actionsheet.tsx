@@ -16,6 +16,7 @@ export interface ActionSheetProps extends PopupProps {
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
+  round: true,
   description: '',
   options: [],
   optionKey: { name: 'name', description: 'description' },
@@ -39,6 +40,7 @@ export const ActionSheet: FunctionComponent<
     visible,
     className,
     style,
+    round,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -60,7 +62,7 @@ export const ActionSheet: FunctionComponent<
   return (
     <Popup
       {...rest}
-      round
+      round={round}
       visible={visible}
       position="bottom"
       title={title}
