@@ -95,6 +95,7 @@ import { Form } from '@nutui/nutui-react'
 | noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
 | shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 設置收集字段值變更的時機 | `string` | `-` |
+| align | 對齊方式, 可選值為：`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |

@@ -34,7 +34,7 @@ export interface FormItemProps
   shouldUpdate: boolean
   noStyle: boolean
   children: ReactNode | ((obj: any) => React.ReactNode)
-  align?: string;
+  align?: string
 }
 
 const defaultProps = {
