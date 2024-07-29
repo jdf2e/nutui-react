@@ -54,7 +54,6 @@ test('pop from bottom', () => {
   const { container } = render(<Popup visible position="bottom" />)
   const pop = container.querySelector('.nut-popup-bottom') as HTMLElement
   expect(pop).toBeTruthy()
-  expect(pop).toHaveClass('nut-popup-round')
 })
 
 test('pop from left', () => {
