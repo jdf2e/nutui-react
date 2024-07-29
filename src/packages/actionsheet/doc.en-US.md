@@ -1,13 +1,11 @@
 # ActionSheet
 
-
-
 Action menu panel that pops up from the bottom.
 
 ## Import
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react';
+import { ActionSheet } from '@nutui/nutui-react'
 ```
 
 ## Demo

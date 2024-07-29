@@ -1,12 +1,11 @@
 # Barrage 弹幕
 
-
 用于话语和词组的轮播展示，适用于视频中或其他类似需求中。
 
 ## 引入
 
 ```tsx
-import { Barrage } from '@nutui/nutui-react-taro';
+import { Barrage } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

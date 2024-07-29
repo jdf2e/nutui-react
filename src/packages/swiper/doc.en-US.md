@@ -1,13 +1,11 @@
 # Swiper
 
-
-
 Often used in a group of pictures or card rotation.
 
 ## Import
 
 ```tsx
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -18,13 +16,13 @@ import { Swiper } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   return (
@@ -50,7 +48,7 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -58,13 +56,13 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   return (
@@ -81,17 +79,18 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
+
 ### 异步加载
 
 :::demo
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const App = () => {
   const [asyncList, setAsyncList] = useState<string[]>([])
@@ -121,11 +120,10 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
-
 
 ### Custom size
 
@@ -135,13 +133,13 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   return (
@@ -158,7 +156,7 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -171,13 +169,13 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   const [current, setCurrent] = useState(1)
@@ -201,7 +199,7 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -214,19 +212,19 @@ You can manually switch through `ref` (`prev`, `next`)
 
 ```tsx
 import React, { useState, useRef } from 'react'
-import { Swiper, Icon } from '@nutui/nutui-react';
+import { Swiper, Icon } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   const swiperRef = React.useRef<any>(null)
   const [defaultValue6, setdefaultValue6] = useState(0)
   const [current2, setCurrent2] = useState(1)
-  
+
   const onChange3 = (e) => {
     setCurrent(e + 1)
   }
@@ -270,7 +268,7 @@ const App = () => {
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
     <div className="demo-box" style={{ height: '150px', position: 'relative' }}>
@@ -300,7 +298,7 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -313,13 +311,13 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
   'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
   'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
 ]
 const App = () => {
   return (
@@ -336,7 +334,7 @@ const App = () => {
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -349,7 +347,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const App = () => {
   const [defaultValue8, setdefaultValue8] = useState(0)
@@ -357,35 +355,34 @@ const App = () => {
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
-   <div className="demo-box " style={{ height: '150px' }}>
-     <Swiper loop style={{ '--swiper-offset': '6%' }} slideSize={300}>
-       {list.map((item, index) => {
-         return (
-           <Swiper.Item key={item}>
-             <img src={list[index]} alt={list[index]} draggable={false} />
-           </Swiper.Item>
-         )
-       })}
-     </Swiper>
+    <div className="demo-box " style={{ height: '150px' }}>
+      <Swiper loop style={{ '--swiper-offset': '6%' }} slideSize={300}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper>
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
 
 ### Vertically centered display
 
-
 :::demo
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react'
 
 const App = () => {
   const [defaultValue9, setdefaultValue9] = useState(0)
@@ -393,28 +390,28 @@ const App = () => {
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
-   <div className="demo-box vertical-center" style={{ height: '150px' }}>
-     <Swiper
-       loop
-       direction="vertical"
-       style={{ '--swiper-offset': '13%' }}
-       slideSize={120}
-     >
-       {list.map((item, index) => {
-         return (
-           <Swiper.Item key={item}>
-             <img src={list[index]} alt={list[index]} draggable={false} />
-           </Swiper.Item>
-         )
-       })}
-     </Swiper>
+    <div className="demo-box vertical-center" style={{ height: '150px' }}>
+      <Swiper
+        loop
+        direction="vertical"
+        style={{ '--swiper-offset': '13%' }}
+        slideSize={120}
+      >
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper>
     </div>
   )
 }
-export default App;
+export default App
 ```
 
 :::
@@ -425,7 +422,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| slideSize | Size of rotation card | `string` \| `number`  | `-` |
+| slideSize | Size of rotation card | `string` \| `number` | `-` |
 | direction | Rotation direction | `horizontal` \| `vertical` | `horizontal` |
 | indicator | Whether the pagination indicator is displayed | `boolean` | `false` |
 | loop | Whether to rotate | `boolean` | `true` |
@@ -452,4 +449,4 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-swiper-pagination-bottom | The distance from the bottom of the pager | `12px` |
-| \--swiper-offset | Offset of the carouse | `0`    |
+| \--swiper-offset | Offset of the carouse | `0` |

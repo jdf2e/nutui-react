@@ -138,6 +138,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
           <View
             className={classNames(
               'nut-menu-title ',
+              `nut-menu-title-${index}`,
               {
                 active: showMenuItem[index],
                 disabled,

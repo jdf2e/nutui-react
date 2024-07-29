@@ -1,12 +1,13 @@
 # Space 间距
 
 #
+
 元素排列中保持相同的宽度。
 
 ### 引入
 
 ```tsx
-import { Space } from '@nutui/nutui-react';
+import { Space } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

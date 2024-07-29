@@ -1,12 +1,11 @@
 # TimeSelect 配送时间
 
-
 用于配送时间选择
 
 ## 引入
 
 ```tsx
-import { TimeSelect } from '@nutui/nutui-react-taro';
+import { TimeSelect } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

@@ -1,12 +1,11 @@
 # Cascader 级联选择
 
-
 级联选择器，用于多层级数据的选择，典型场景为省市区选择。
 
 ## 引入
 
 ```tsx
-import { Cascader } from '@nutui/nutui-react-taro';
+import { Cascader } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -63,7 +62,7 @@ import { Cascader } from '@nutui/nutui-react-taro';
 
 使用configprovider 完成自定义设置
 
- :::demo
+:::demo
 
 <CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
@@ -89,15 +88,17 @@ import { Cascader } from '@nutui/nutui-react-taro';
 | closeIconPosition | 取消按钮位置，继承 Popup 组件 | `string` | `top-right` |
 | closeIcon | 自定义关闭按钮，继承 Popup 组件 | `ReactNode` | `close` |
 | closeable | 是否显示关闭按钮，继承 Popup 组件 | `boolean` | `true` |
-| onLoad | 动态加载回调，开启动态加载时生效 |  `(node: any, resolve: any) => void` | `-` |
+| onLoad | 动态加载回调，开启动态加载时生效 | `(node: any, resolve: any) => void` | `-` |
 | onChange | 选中值改变时触发 | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | 选中项改变时触发 | `(value: CascaderValue, params: any) => void` | `-` |
+
 ### Ref
 
-| 事件名  | 说明 | 回调参数 |
-|------| --- | --- |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
 | open | 显示 Cascader | `() => void` |
-| close  | 关闭 Cascader | `() => void` |
+| close | 关闭 Cascader | `() => void` |
+
 ## 主题定制
 
 ### 样式变量

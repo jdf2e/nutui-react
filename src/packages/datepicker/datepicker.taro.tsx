@@ -226,16 +226,15 @@ export const DatePicker: FunctionComponent<
       if (!isEqual) {
         setSelectedDate(formatValue(newDate as Date))
       }
-      props.onChange &&
-        props.onChange(
-          selectedOptions,
-          [
-            String(newDate.getFullYear()),
-            String(newDate.getMonth() + 1),
-            String(newDate.getDate()),
-          ],
-          index
-        )
+      onChange?.(
+        selectedOptions,
+        [
+          String(newDate.getFullYear()),
+          String(newDate.getMonth() + 1),
+          String(newDate.getDate()),
+        ],
+        index
+      )
     }
   }
   const handlePickerChange = (
@@ -350,8 +349,8 @@ export const DatePicker: FunctionComponent<
     pickerValue[columnIndex] = arr[index]?.value
     setPickerValue([...pickerValue])
 
-    if (props.filter && props.filter(type, arr)) {
-      return props.filter(type, arr)
+    if (filter?.(type, arr)) {
+      return filter?.(type, arr)
     }
     return arr
   }
@@ -428,5 +427,4 @@ export const DatePicker: FunctionComponent<
   )
 }
 
-DatePicker.defaultProps = defaultProps
 DatePicker.displayName = 'NutDatePicker'

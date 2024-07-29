@@ -1,7 +1,5 @@
 # Cell
 
-
-
 The cell is a single display item in the list.
 
 ## Import

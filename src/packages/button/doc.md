@@ -1,12 +1,11 @@
 # Button 按钮
 
-
 按钮用于触发一个操作，如提交表单。
 
 ## 引入
 
 ```tsx
-import { Button } from '@nutui/nutui-react';
+import { Button } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

@@ -1,13 +1,11 @@
 # Avatar
 
-
-
 Avatars can be used to represent people or objects. It supports images, Icons, or letters.
 
 ## Import
 
 ```tsx
-import { Avatar } from '@nutui/nutui-react';
+import { Avatar } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -115,14 +113,14 @@ Icon and letter types can have custom colors and background colors
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| max | Max avatars to show | `string` \| `number`  | `-` |
+| max | Max avatars to show | `string` \| `number` | `-` |
 | maxContent | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be ...、more、+N。 | `string` | `-` |
-| size | The size of the avatar，supports direct input of numbers | `large` \| `normal`  \| `small`  | `-` |
-| shape | The shape of avatar | `string` \| `round`  | `-` |
+| size | The size of the avatar，supports direct input of numbers | `large` \| `normal` \| `small` | `-` |
+| shape | The shape of avatar | `string` \| `round` | `-` |
 | maxBackground | The colors of Icon and letter types | `string` | `#eee` |
 | maxColor | The background colors of Icon and letter types | `string` | `#666` |
 | gap | Distance between avatars | `string` | `-8` |
-| level | Hierarchy direction between avatar group | `left` \| `right`  | `left` |
+| level | Hierarchy direction between avatar group | `left` \| `right` | `left` |
 
 ## Theming
 

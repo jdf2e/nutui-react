@@ -1,13 +1,11 @@
 # PullToRefresh 下拉刷新
 
-
-
 在列表中通過手指下拉刷新加載新內容的交互操作。
 
 ## 引入
 
 ```tsx
-import { PullToRefresh } from '@nutui/nutui-react';
+import { PullToRefresh } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -19,6 +17,7 @@ import { PullToRefresh } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
+
 ### 深色背景-反白模式:type='primary'
 
 :::demo
@@ -26,6 +25,7 @@ import { PullToRefresh } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ## PullToRefresh
 
 ### Props
@@ -43,7 +43,6 @@ import { PullToRefresh } from '@nutui/nutui-react';
 | renderText | 根據下拉狀態，自定義下拉提示文案 | `ReactNode` | `-` |
 | threshold | 觸發刷新需要下拉多少距離，單位為 px | `number` | `60` |
 | onRefresh | 觸發刷新時的處理函數 | `() => Promise<any>` | `-` |
-
 
 ## 主題定製
 

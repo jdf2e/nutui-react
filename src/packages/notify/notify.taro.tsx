@@ -146,7 +146,7 @@ export function close(selector: string) {
   customEvents.trigger(path, false)
 }
 
-Notify.defaultProps = defaultProps
+Notify.defaultProps = defaultProps // 不可删除
 Notify.displayName = 'NutNotify'
 Notify.open = open
 Notify.close = close

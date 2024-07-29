@@ -1,12 +1,11 @@
 # Badge 徽标
 
-
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
 ## 引入
 
 ```tsx
-import { Badge } from '@nutui/nutui-react-taro';
+import { Badge } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

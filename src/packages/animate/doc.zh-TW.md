@@ -1,13 +1,11 @@
 # Animate 動畫/動效
 
-
-
 給子元素添加動畫效果
 
 ## 引入
 
 ```tsx
-import { Animate } from '@nutui/nutui-react';
+import { Animate } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

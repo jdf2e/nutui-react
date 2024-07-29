@@ -1,12 +1,11 @@
 # TextArea 文本域
 
-
 文本框内输入或编辑文字，支持限制输入数量。
 
 ## 引入
 
 ```tsx
-import { TextArea } from '@nutui/nutui-react-taro';
+import { TextArea } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -59,7 +58,7 @@ import { TextArea } from '@nutui/nutui-react-taro';
 
 :::
 
-### 禁用 
+### 禁用
 
 :::demo
 

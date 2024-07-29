@@ -1,13 +1,11 @@
 # Navbar
 
-
-
 Provides navigation capabilities.
 
 ## Import
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar } from '@nutui/nutui-react'
 ```
 
 ## Code Example

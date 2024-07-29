@@ -1,13 +1,11 @@
 # Steps
 
-
-
 Split and display the steps of a process, guide users to complete tasks according to the process, or show users the current status.
 
 ## Import
 
 ```tsx
-import { Steps } from '@nutui/nutui-react';
+import { Steps } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -118,7 +116,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-base-icon-height | height of icon container | `25px` |
 | \--nutui-steps-base-icon-line-height | The line height of the icon container | `25px` |
 | \--nutui-steps-base-icon-margin-bottom | The bottom margin of the icon container | `12px` |
-| \--nutui-steps-base-icon-font-size | The font size of the icon container |  `$font-size-small` |
+| \--nutui-steps-base-icon-font-size | The font size of the icon container | `$font-size-small` |
 | \--nutui-steps-base-line-width | The width of the dividing line | `100%` |
 | \--nutui-steps-base-line-background | The background color of the dividing line | `$color-text-help` |
 | \--nutui-steps-base-title-font-size | The font size of the title | `$font-size-base` |
@@ -145,4 +143,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |
 | \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |
-| \--nutui-steps-process-icon-before-bg-color |  The color of the outer border of the dot progress bar in progress | `$color-primary-stop-2` |
+| \--nutui-steps-process-icon-before-bg-color | The color of the outer border of the dot progress bar in progress | `$color-primary-stop-2` |

@@ -223,7 +223,7 @@ export function hide(selector: string) {
   customEvents.trigger(path, { status: false })
 }
 
-Toast.defaultProps = defaultProps
+Toast.defaultProps = defaultProps // 不可删除
 Toast.displayName = 'NutToast'
 Toast.show = show
 Toast.hide = hide

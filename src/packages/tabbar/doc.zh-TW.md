@@ -1,13 +1,11 @@
 # Tabbar 標簽欄
 
-
-
 底部導航常用場景
 
 ## 引入
 
 ```tsx
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
