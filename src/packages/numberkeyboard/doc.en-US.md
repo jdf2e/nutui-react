@@ -77,6 +77,7 @@ You can use `rightActions` when you want to set the right actions on the title b
 | onDelete | Emitted when the delete key is pressed | `-` | `-` |
 | onClose | Emitted when the close button or non-keyboard area is clicked is clicked | `-` | `-` |
 | onConfirm | Emitted when confirm key is pressed | `-` | `-` |
+| round | Whether to show rounded corners | `boolean` | `true` |
 
 ## Theming
 

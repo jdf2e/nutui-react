@@ -77,6 +77,7 @@ import { NumberKeyboard } from '@nutui/nutui-react'
 | onDelete | 點擊刪除鍵時觸發 | `-` | `-` |
 | onClose | 點擊關閉按鈕或非鍵盤區域時觸發 | `-` | `-` |
 | onConfirm | 點擊確定按鈕時觸發 | `-` | `-` |
+| round | 是否顯示圓角 | `boolean` | `true` |
 
 ## 主題定製
 

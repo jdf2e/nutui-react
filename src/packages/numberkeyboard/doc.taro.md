@@ -77,6 +77,7 @@ import { NumberKeyboard } from '@nutui/nutui-react-taro'
 | onDelete | 点击删除键时触发 | `-` | `-` |
 | onClose | 点击关闭按钮或非键盘区域时触发 | `-` | `-` |
 | onConfirm | 点击确定按钮时触发 | `-` | `-` |
+| round | 是否显示圆角 | `boolean` | `true` |
 
 ## 主题定制
 
