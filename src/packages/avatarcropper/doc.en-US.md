@@ -7,7 +7,7 @@ Used to cut the profile picture to create a new image.
 ## install
 
 ```tsx
-import { AvatarCropper } from '@nutui/nutui-react';
+import { AvatarCropper } from '@nutui/nutui-react'
 ```
 
 ## Code demonstration

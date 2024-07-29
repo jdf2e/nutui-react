@@ -1,12 +1,13 @@
 # Loading 加载中
 
 #
+
 加载图标，用于显示正在加载中的状态
 
 ### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react-taro';
+import { Loading } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

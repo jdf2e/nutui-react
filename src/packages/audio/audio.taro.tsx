@@ -89,20 +89,20 @@ export const Audio: FunctionComponent<
   audioCtx.autoplay = autoplay || false
   audioCtx.loop = loop || false
   audioCtx.onPause(() => {
-    props.onPause && props.onPause(audioCtx)
+    onPause?.(audioCtx)
   })
   audioCtx.onEnded(() => {
-    if (props.loop) {
+    if (loop) {
       console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
-      props.onPlayEnd && props.onPlayEnd(audioCtx)
+      onPlayEnd?.(audioCtx)
     }
   })
 
   audioCtx.onPlay(() => {
     const { duration } = audioCtx
     setTotalSeconds(Math.floor(duration))
-    props.onPlay && props.onPlay(audioCtx)
+    onPlay?.(audioCtx)
   })
   audioCtx.onCanplay(() => {
     const intervalID = setInterval(function () {
@@ -112,7 +112,7 @@ export const Audio: FunctionComponent<
       }
     }, 500)
     setIsCanPlay(true)
-    props.onCanPlay && props.onCanPlay(audioCtx)
+    onCanPlay?.(audioCtx)
   })
   audioCtx.onTimeUpdate(() => {
     const time = parseInt(`${audioCtx.currentTime}`)
@@ -147,7 +147,7 @@ export const Audio: FunctionComponent<
     statusRef.current.currentTime = Math.max(currentTime - 1, 0)
     setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
     audioCtx.seek(statusRef.current.currentTime)
-    props.onFastBack && props.onFastBack(audioCtx)
+    onFastBack?.(audioCtx)
   }
 
   const handleForward = () => {
@@ -155,7 +155,7 @@ export const Audio: FunctionComponent<
     statusRef.current.currentTime = Math.min(currentTime + 1, audioCtx.duration)
     setCurrentDuration(formatSeconds(statusRef.current.currentTime.toString()))
     audioCtx.seek(statusRef.current.currentTime)
-    props.onForward && props.onForward(audioCtx)
+    onForward?.(audioCtx)
   }
 
   const handleStatusChange = () => {
@@ -268,5 +268,4 @@ export const Audio: FunctionComponent<
   )
 }
 
-Audio.defaultProps = defaultProps
 Audio.displayName = 'NutAudio'

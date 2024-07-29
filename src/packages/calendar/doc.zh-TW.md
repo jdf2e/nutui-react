@@ -1,13 +1,11 @@
 # Calendar 日歴
 
-
-
 日歴，可平鋪/彈窗展示
 
 ## 引入
 
 ```tsx
-import { Calendar } from '@nutui/nutui-react';
+import { Calendar } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

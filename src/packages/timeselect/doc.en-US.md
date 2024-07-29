@@ -1,13 +1,11 @@
 # TimeSelect
 
-
-
 For delivery time selection
 
 ## Import
 
 ```tsx
-import { TimeSelect } from '@nutui/nutui-react';
+import { TimeSelect } from '@nutui/nutui-react'
 ```
 
 ## Demo

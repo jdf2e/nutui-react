@@ -1,12 +1,11 @@
 # CalendarCard 日历
 
-
 日历
 
 ## 引入
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react-taro';
+import { CalendarCard } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -135,7 +134,7 @@ import { CalendarCard } from '@nutui/nutui-react-taro';
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
-| jumpTo | 跳转至特定的年月 | `year: number, month: number`|
+| jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
 ## 主题定制
 
@@ -146,8 +145,8 @@ import { CalendarCard } from '@nutui/nutui-react-taro';
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-calendar-active-background-color | 选中状态时的元素背景色 | `$color-primary` |
-| \--nutui-calendar-choose-background-color | 选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#FF0F23, 0.09)` |
-| \--nutui-calendar-disable-color | 不可选元素的字色 | `#C2C4CC` |
+| \--nutui-calendar-choose-background-color | 选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-disable-color | 不可选元素的字色 | `#bfbfbf` |
 | \--nutui-calendar-base-font-size | 字号 | `$font-size-large` |
 | \--nutui-calendar-day-width | 日历元素宽度 | `14.28%` |
 | \--nutui-calendar-choose-color | 日历选中元素的字色 | `$color-primary` |

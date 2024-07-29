@@ -1,12 +1,11 @@
 # Tabbar 标签栏
 
-
 底部导航常用场景
 
 ## 引入
 
 ```tsx
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

@@ -1,7 +1,5 @@
 # AnimatingNumbers
 
-
-
 Digital animation collection
 
 ## Import

@@ -1,13 +1,11 @@
 # SafeArea 安全区
 
-
-
 在全面屏下提供自适应的边距调整。当网页被全屏展示时，可借助安全区实现自动适配。
 
 ## 引入
 
 ```tsx
-import { SafeArea } from '@nutui/nutui-react';
+import { SafeArea } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -19,7 +17,6 @@ import { SafeArea } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
-
 
 ## SafeArea
 

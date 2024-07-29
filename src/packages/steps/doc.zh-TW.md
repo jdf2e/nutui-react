@@ -1,13 +1,11 @@
 # Steps 步驟條
 
-
-
 拆分展示某項流程的步驟，引導用戶按流程完成任務或嚮用戶展示當前狀態。
 
 ## 引入
 
 ```tsx
-import { Steps } from '@nutui/nutui-react';
+import { Steps } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

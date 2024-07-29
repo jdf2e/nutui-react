@@ -7,7 +7,7 @@ A bubble component used to guide the user through the product's capabilities.
 ## Import
 
 ```tsx
-import { Tour } from '@nutui/nutui-react';
+import { Tour } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -79,7 +79,7 @@ import { Tour } from '@nutui/nutui-react';
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| target |  target dom | `Element` \| `string` | `-` |
+| target | target dom | `Element` \| `string` | `-` |
 | content | popover content | `string` | `-` |
 | location | Location of popover | `string` | `-` |
 | popoverOffset | Offset of popopver | `number[]` | `-` |

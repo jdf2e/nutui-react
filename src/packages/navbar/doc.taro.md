@@ -1,12 +1,11 @@
 # Navbar 头部导航
 
-
 提供导航功能。
 
 ## 引入
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react-taro';
+import { NavBar } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

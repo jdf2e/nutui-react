@@ -1,13 +1,11 @@
 # Sticky組件
 
-
-
 效果同 css 中的 position: sticky,對低端瀏覽器可使用其做兼容
 
 ## 引入
 
 ```tsx
-import { Sticky } from '@nutui/nutui-react';
+import { Sticky } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

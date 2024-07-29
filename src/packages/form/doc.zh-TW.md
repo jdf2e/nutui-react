@@ -1,7 +1,5 @@
 # Form 錶單
 
-
-
 用於數據錄入、校驗，支持輸入框、單選框、復選框等類型。
 
 ## 引入
@@ -27,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 關聯展示
 
 :::demo
@@ -34,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### 帶有初始值表單校驗
 
 :::demo
@@ -78,7 +78,7 @@ import { Form } from '@nutui/nutui-react'
 | name | 錶單名稱 | `any` | `-` |
 | label | 标签名 | `ReactNode` | `-` |
 | labelPosition | 錶單項 label 的位置 | `top` \| `left` \| `right` | `right` |
-| starPosition | 必填錶單項 label 的紅色星標位置 |  `left` \| `right` | `left` |
+| starPosition | 必填錶單項 label 的紅色星標位置 | `left` \| `right` | `left` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一錶單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
 

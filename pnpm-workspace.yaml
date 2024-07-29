@@ -1,2 +1,3 @@
 packages:
   - 'packages/nutui-codemod'
+  - 'packages/nutui-prettier-plugin'

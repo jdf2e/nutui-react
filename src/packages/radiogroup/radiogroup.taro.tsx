@@ -106,5 +106,4 @@ export const RadioGroup = React.forwardRef(
   }
 )
 
-RadioGroup.defaultProps = defaultProps
 RadioGroup.displayName = 'NutRadioGroup'

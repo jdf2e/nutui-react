@@ -1,6 +1,5 @@
 # Form 表单
 
-
 用于数据录入、校验，支持输入框、单选框、复选框等类型。
 
 ## 引入
@@ -26,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 关联展示
 
 :::demo
@@ -33,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### 带有初始值表单校验
 
 :::demo
@@ -76,7 +77,7 @@ import { Form } from '@nutui/nutui-react'
 | initialValues | 表单初始值 | `any` | `-` |
 | name | 表单名称 | `any` | `-` |
 | labelPosition | 表单项 label 的位置 | `top` \| `left` \| `right` | `right` |
-| starPosition | 必填表单项 label 的红色星标位置 |  `left` \| `right` | `left` |
+| starPosition | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 | onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
 

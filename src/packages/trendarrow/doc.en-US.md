@@ -1,13 +1,11 @@
 # TrendArrow
 
-
-
 A percentage number with an arrow indicating the trend of the indicator
 
 ## Import
 
 ```tsx
-import { TrendArrow } from '@nutui/nutui-react';
+import { TrendArrow } from '@nutui/nutui-react'
 ```
 
 ## Demo
