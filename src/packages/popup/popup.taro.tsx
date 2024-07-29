@@ -125,7 +125,7 @@ export const Popup: FunctionComponent<
   const popClassName = classNames(
     {
       [`${classPrefix}`]: true,
-      [`${classPrefix}-round`]: round || position === 'bottom',
+      [`${classPrefix}-round`]: round,
       [`${classPrefix}-${position}`]: true,
     },
     className
