@@ -155,7 +155,7 @@ export const Popup: FunctionComponent<
           setShowChildren(false)
         }, Number(duration))
       }
-      onClose && onClose()
+      onClose?.()
     }
   }
 
