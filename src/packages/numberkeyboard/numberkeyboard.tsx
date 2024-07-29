@@ -106,17 +106,37 @@ export const NumberKeyboard: FunctionComponent<
     }
     const onTouchEnd = (item: { id: string; type: string }) => {
       setActive(false)
-      if (item.type === 'num' || item.type === 'custom') {
-        onChange && onChange(item.id)
+      switch (item.type) {
+        case 'num':
+        case 'custom':
+          onChange?.(item.id)
+          break
+        case 'close':
+          onClose?.()
+          break
+        case 'delete':
+          onDelete?.()
+          break
+        case 'confirm':
+          onConfirm?.()
+          break
+        default:
+          break
       }
-      if (item.type === 'close') {
-        onClose && onClose()
-      }
-      if (item.type === 'delete') {
-        onDelete && onDelete()
-      }
-      if (item.type === 'confirm') {
-        onConfirm && onConfirm()
+    }
+    const renderContent = (item: { id: string; type: string }) => {
+      switch (item.type) {
+        case 'num':
+        case 'custom':
+          return <div>{item.id}</div>
+        case 'delete':
+          return <DeleteIcon />
+        case 'close':
+          return <ArrowDown width={18} height={18} />
+        case 'confirm':
+          return <>{confirmText || locale.done}</>
+        default:
+          return null
       }
     }
     return (
@@ -133,12 +153,7 @@ export const NumberKeyboard: FunctionComponent<
           onTouchEnd={() => onTouchEnd(item)}
           onTouchCancel={() => onTouchEnd(item)}
         >
-          {(item.type === 'num' || item.type === 'custom') && (
-            <div>{item.id}</div>
-          )}
-          {item.type === 'delete' && <DeleteIcon />}
-          {item.type === 'close' && <ArrowDown width={18} height={18} />}
-          {item.type === 'confirm' && <>{confirmText || locale.done}</>}
+          {renderContent(item)}
         </div>
       </div>
     )
