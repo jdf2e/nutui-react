@@ -142,7 +142,7 @@ export const Popup: FunctionComponent<
     if (destroyOnClose) {
       setShowChildren(true)
     }
-    onOpen && onOpen()
+    onOpen?.()
   }
 
   const close = () => {
@@ -153,39 +153,39 @@ export const Popup: FunctionComponent<
           setShowChildren(false)
         }, Number(duration))
       }
-      onClose && onClose()
+      onClose?.()
     }
   }
 
   const onHandleClickOverlay = (e: MouseEvent) => {
     e.stopPropagation()
     if (closeOnOverlayClick) {
-      const closed = onOverlayClick && onOverlayClick(e)
+      const closed = onOverlayClick?.(e)
       closed && close()
     }
   }
 
   const onHandleClick: MouseEventHandler<HTMLDivElement> = (e: MouseEvent) => {
-    onClick && onClick(e)
+    onClick?.(e)
   }
 
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
     e: MouseEvent
   ) => {
-    const closed = onCloseIconClick && onCloseIconClick(e)
+    const closed = onCloseIconClick?.(e)
     closed && close()
   }
 
   const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
     e: HTMLElement
   ) => {
-    afterShow && afterShow()
+    afterShow?.()
   }
 
   const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
     e: HTMLElement
   ) => {
-    afterClose && afterClose()
+    afterClose?.()
   }
 
   const resolveContainer = (getContainer: Teleport | undefined) => {
@@ -271,7 +271,7 @@ export const Popup: FunctionComponent<
   const renderNode = () => {
     return (
       <>
-        {overlay ? (
+        {overlay && (
           <>
             <Overlay
               style={overlayStyles}
@@ -282,18 +282,15 @@ export const Popup: FunctionComponent<
               duration={duration}
               onClick={onHandleClickOverlay}
             />
-            {renderPop()}
           </>
-        ) : (
-          <>{renderPop()}</>
         )}
+        <>{renderPop()}</>
       </>
     )
   }
 
   useEffect(() => {
-    visible && open()
-    !visible && close()
+    visible ? open() : close()
   }, [visible])
 
   useEffect(() => {
