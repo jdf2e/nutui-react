@@ -95,7 +95,7 @@ import { Form } from '@nutui/nutui-react'
 | errorMessageAlign | Error text alignment | `center` \| `right` \| `left` | `left` |
 | initialValue | set the default value of child elements | `any` | `-` |
 | trigger | Set the timing to collect field value changes | `string` | `-` |
-| align | Alignment, optional values ​​are: `flex-start`, `center`, `flex-end` | `string` | `flex-start` |
+| align | Alignment | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
 | getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
 | validateTrigger | When to validate the value of children node | `string \| string[]` | `onChange` |
