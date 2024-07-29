@@ -165,7 +165,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^4.0.0",
     "fs-extra": "^11.2.0",
-    "glob": "^10.3.10",
+    "glob": "^11.0.0",
     "happy-dom": "^14.2.0",
     "highlight.js": "^11.9.0",
     "husky": "^9.0.11",
