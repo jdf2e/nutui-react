@@ -48,8 +48,9 @@ export const NumberKeyboard: FunctionComponent<
     onDelete,
     onClose,
     onConfirm,
+    round,
     ...rest
-  } = props
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-numberkeyboard'
 
   const getBasicKeys = () => {
@@ -140,13 +141,14 @@ export const NumberKeyboard: FunctionComponent<
 
   return (
     <Popup
+      {...rest}
+      round={round}
       visible={visible}
       position="bottom"
       onOverlayClick={onClose}
       onCloseIconClick={onClose}
       zIndex={9999}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
-      {...rest}
     >
       <div className={classNames(classPrefix, className)} style={style}>
         {title && (
