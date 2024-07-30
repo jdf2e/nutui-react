@@ -91,7 +91,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 | description | 描述 | `ReactNode` | `-` |
 | extra | 右侧描述 | `ReactNode` | `-` |
 | radius | 圆角半径 | `string` | `6px` |
-| align | 纵轴方向上的对齐方式，可选值为：`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
+| align | 纵轴方向上的对齐方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | onClick | 点击事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主题定制
