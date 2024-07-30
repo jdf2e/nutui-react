@@ -24,7 +24,7 @@ export interface InputNumberProps extends BasicComponent {
   formatter?: (value?: string | number) => string
   onPlus: (e: React.MouseEvent) => void
   onMinus: (e: React.MouseEvent) => void
-  onOverlimit: (e: React.MouseEvent) => void
+  onOverlimit: (e: React.MouseEvent | ChangeEvent<HTMLInputElement>) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange: (
@@ -32,7 +32,6 @@ export interface InputNumberProps extends BasicComponent {
     e: React.MouseEvent | ChangeEvent<HTMLInputElement>
   ) => void
 }
-
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
@@ -44,7 +43,6 @@ const defaultProps = {
   digits: 0,
   async: false,
 } as InputNumberProps
-
 const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
   Partial<InputNumberProps> &
@@ -86,7 +84,6 @@ export const InputNumber: FunctionComponent<
       inputRef.current?.select?.()
     }
   }, [focused])
-
   const [shadowValue, setShadowValue] = usePropsValue<number | null | string>({
     value: typeof value === 'string' ? parseFloat(value) : value,
     defaultValue:
@@ -120,14 +117,12 @@ export const InputNumber: FunctionComponent<
     return fixedValue.toString()
   }
   const [inputValue, setInputValue] = useState(format(shadowValue))
-
   useEffect(() => {
     if (!focused && !async) {
       setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
-
   useEffect(() => {
     if (async) {
       setShadowValue(bound(Number(value), Number(min), Number(max)))
@@ -171,11 +166,21 @@ export const InputNumber: FunctionComponent<
     onPlus?.(e)
     update(false, e)
   }
-
   const parseValue = (text: string) => {
     if (text === '') return null
     if (text === '-') return null
     return text
+  }
+  const onCallback = (
+    value: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const nextValue = bound(value, Number(min), Number(max))
+    if (value < Number(min) || value > Number(max)) {
+      onOverlimit?.(e)
+    } else {
+      onChange?.(nextValue, e)
+    }
   }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // 设置 input 值， 在 blur 时格式化
@@ -191,7 +196,7 @@ export const InputNumber: FunctionComponent<
       setShadowValue(valueStr as any)
     }
     if (!async) {
-      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+      onCallback(parseFloat(valueStr || '0').toFixed(digits) as any, e)
     }
   }
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -201,14 +206,14 @@ export const InputNumber: FunctionComponent<
         ? bound(Number(shadowValue), Number(min), Number(max)).toString()
         : ''
     )
-    onFocus && onFocus(e)
+    onFocus?.(e)
   }
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false)
-    onBlur && onBlur(e)
+    onBlur?.(e)
     if (async) {
       const valueStr = parseValue(e.target.value)
-      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+      onCallback(parseFloat(valueStr || '0').toFixed(digits) as any, e)
     }
   }
 
@@ -221,18 +226,16 @@ export const InputNumber: FunctionComponent<
           })}
         />
       </div>
-      <>
-        <input
-          ref={inputRef}
-          inputMode="decimal"
-          disabled={disabled}
-          readOnly={readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      </>
+      <input
+        ref={inputRef}
+        inputMode="decimal"
+        disabled={disabled}
+        readOnly={readOnly}
+        value={inputValue}
+        onInput={handleInputChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
       <div className="nut-input-add" onClick={handlePlus}>
         <Plus
           className={classNames('nut-inputnumber-icon icon-plus', {

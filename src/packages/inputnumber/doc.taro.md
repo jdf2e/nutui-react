@@ -118,7 +118,7 @@ import { InputNumber } from '@nutui/nutui-react-taro'
 | formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
 | onPlus | 点击增加按钮时触发 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 点击减少按钮时触发 | `(e: MouseEvent) => void` | `-` |
-| onOverlimit | 点击不可用的按钮时触发 | `(e: MouseEvent) => void` | `-` |
+| onOverlimit | 点击不可用的按钮时触发 | `(e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onChange | 值改变时触发 | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 输入框获得焦点时触发 | `(e: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | 输入框失去焦点时触发 | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |

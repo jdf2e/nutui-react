@@ -117,7 +117,7 @@ import { InputNumber } from '@nutui/nutui-react'
 | formatter | 指定輸入框展示值的格式 | `function(value: number \| string): string` | `-` |
 | onPlus | 點擊增加按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 點擊減少按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
-| onOverlimit | 點擊不可用的按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
+| onOverlimit | 點擊不可用的按鈕時觸發 | `(e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onChange | 值改變時觸發 | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 輸入框獲得焦點時觸發 | `(e: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | 輸入框失去焦點時觸發 | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |

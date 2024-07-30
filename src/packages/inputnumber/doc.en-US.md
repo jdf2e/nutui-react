@@ -117,7 +117,7 @@ Asynchronous modification through `change` event and `model-value`
 | formatter | Specifies the format of the value displayed in the input box | `function(value: number \| string): string` | `-` |
 | onPlus | Triggered when the Add button is clicked | `(e: MouseEvent) => void` | `-` |
 | onMinus | Triggered when the decrease button is clicked | `(e: MouseEvent) => void` | `-` |
-| onOverlimit | Triggered when an unavailable button is clicked | `(e: MouseEvent) => void` | `-` |
+| onOverlimit | Triggered when an unavailable button is clicked | `(e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onChange | Triggered when the value changes | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | Triggered when the input box blur | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | Triggered when the input box focus | `(e: FocusEvent<HTMLInputElement>) => void` | `-` |
