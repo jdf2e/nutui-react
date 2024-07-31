@@ -1,0 +1,14 @@
+.virtualList {
+  width: calc(100% - 16px);
+  border-radius: 16px;
+  overflow: auto;
+  margin: 0 auto;
+  li.nut-virtuallist-item {
+    margin: 0;
+    box-shadow: 0;
+  }
+  li.nut-virtuallist-item:last-child {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
