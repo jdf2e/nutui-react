@@ -1,0 +1,253 @@
+---
+sidebar_class_name: hasIcon
+---
+
+# Icon 图标
+
+:::info 兼容性
+仅支持H5及小程序，JDRN、鸿蒙端待支持
+:::
+
+独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
+
+## 引入
+
+```bash
+npm i --save @nutui/icons-react-taro
+```
+
+> 在 taro 项目中使用，需要将 prebundle 关闭。
+
+## 示例代码
+
+### 方式一： Svg按需使用
+
+按需加载组件使用方式，可选项见 @nutui/icons-react-taro/dist/types/index.d.ts
+
+```tsx
+import React from 'react'
+import { Cell } from '@dongdesign/ui'
+import { Add, Dongdong, UserAdd } from '@nutui/icons-react-taro'
+
+const Demo1 = () => {
+  return (
+    <Cell>
+      <Add color="red" style={{ marginRight: '10px' }} />
+      <UserAdd style={{ marginRight: '10px' }} />
+      <Dongdong />
+    </Cell>
+  )
+}
+export default Demo1
+```
+
+## Icon
+
+### Props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| name | 图标名称或图片链接 | `string` | `-` |
+| color | 图标颜色 | `string` | `-` |
+| width | 图标大小，如 `20px` `2em` `2rem` | `string` \| `object` | `-` |
+| height | 图标大小，如 `20px` `2em` `2rem` | `string` \| `object` | `-` |
+| onClick | 点击图标时触发 | `event: Event` | `-` |
+
+## 方式二： IconFont 全量使用
+
+```tsx
+import { IconFont } from '@nutui/icons-react-taro'
+```
+
+### 基础用法
+
+`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+
+```tsx
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const Demo2 = () => {
+  return (
+    <Cell>
+      <IconFont name="dongdong" style={{ marginRight: '10px' }} />
+      <IconFont name="add" style={{ marginRight: '10px' }} />
+      <IconFont name="minus" />
+    </Cell>
+  )
+}
+export default Demo2
+```
+
+### 图片链接
+
+`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+
+```tsx
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const Demo3 = () => {
+  return (
+    <Cell>
+      <IconFont
+        size="40"
+        name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+      />
+    </Cell>
+  )
+}
+export default Demo3
+```
+
+### 图标颜色
+
+`Icon` 的 `color` 属性用来设置图标的颜色。
+
+```tsx
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const Demo4 = () => {
+  return (
+    <Cell>
+      <IconFont
+        name="dongdong"
+        color="#FF0F23"
+        style={{ marginRight: '10px' }}
+      />
+      <IconFont
+        name="dongdong"
+        color="#64b578"
+        style={{ marginRight: '10px' }}
+      />
+      <IconFont name="dongdong" color="#ffd700" />
+    </Cell>
+  )
+}
+
+export default Demo4
+```
+
+### 图标大小
+
+`Icon` 的 `size` 属性用来设置图标的尺寸大小，默认单位为 `px`。
+
+```tsx
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const Demo5 = () => {
+  return (
+    <Cell style={{ alignItems: 'center' }}>
+      <IconFont name="dongdong" size="16" style={{ marginRight: '10px' }} />
+      <IconFont name="dongdong" size="20" style={{ marginRight: '10px' }} />
+      <IconFont name="dongdong" size="24" />
+    </Cell>
+  )
+}
+
+export default Demo5
+```
+
+### 自定义图标
+
+如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件，之后就可以在 Icon 组件中直接使用。
+
+> 方案一 引入 [iconfont](https://www.iconfont.cn/) 推荐此方案
+
+第一步：首先在 [iconfont](https://www.iconfont.cn/) 生成你自定义的Icon文件下载存放至本地项目 [详细使用说明](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+
+```bash
+/assets/font/demo.css
+/assets/font/demo_index.html
+/assets/font/iconfont.css
+/assets/font/iconfont.js
+/assets/font/iconfont.json
+/assets/font/iconfont.ttf
+/assets/font/iconfont.woff
+/assets/font/iconfont.woff2
+```
+
+第二步：项目入口文件 main.js 引用 `iconfont.css`
+
+```tsx
+import './assets/font/iconfont.css'
+```
+
+第三步:
+
+```tsx
+// fontClassName 指定类名为默认 iconfont
+// classPrefix 指定默认 icon
+// name 值根据 iconfont.css 中值对应填写
+import React from 'react'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const App = () => {
+  return <IconFont fontClassName="iconfont" classPrefix="icon" name="close" />
+}
+```
+
+> 方案二 第三方自定义字体库
+
+```css
+/* 引入第三方或自定义的字体图标样式 */
+@font-face {
+  font-family: 'my-icon';
+  src: url('./my-icon.ttf') format('truetype');
+}
+
+.my-icon {
+  font-family: 'my-icon';
+}
+
+.icon-extra::before {
+  content: '\e626';
+}
+```
+
+```tsx
+import React from 'react'
+import { IconFont } from '@nutui/icons-react-taro'
+
+const App = () => {
+  return (
+    <>
+      <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
+    </>
+  )
+}
+
+export default App
+```
+
+## IconFont
+
+### Props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--- | :--- | :--- | :--- |
+| name | 图标名称或图片链接 | `string` | `-` |
+| color | 图标颜色 | `string` | `-` |
+| size | 图标大小，如 `20px` `2em` `2rem` | `string` \| `number` | `-` |
+| classPrefix | 类名前缀，用于使用自定义图标 | `string` | `nut-iconfont` |
+| fontClassName | 自定义 icon 字体基础类名 | `string` | `nutui-iconfont` |
+| tag | tsx 标签 | `string` | `i` |
+| onClick | 点击图标时触发 | `event: Event` | `-` |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 说明 | 默认值 |
+| :--- | :--- | :--- |
+| \--nutui-icon-height | iconfont 容器的高度 | `16px` |
+| \--nutui-icon-width | iconfont 容器的宽度 | `16px` |
+| \--nutui-icon-line-height | iconfont 的行高 | `16px` |

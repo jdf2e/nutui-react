@@ -10,19 +10,19 @@ const config = require('../src/config.json')
 
 const components = config.nav.reduce(
   (prev, nav) => [...prev, ...nav.packages],
-  [],
+  []
 )
 
 const mixin = fs
   .readFileSync(path.join(__dirname, '../src/styles/mixins/text-ellipsis.scss'))
   .toString()
-const variables = fs.readFileSync(
-  path.join(__dirname, '../src/styles/variables.scss'),
-).toString()
+const variables = fs
+  .readFileSync(path.join(__dirname, '../src/styles/variables.scss'))
+  .toString()
 
-const theme = fs.readFileSync(
-  path.join(__dirname, '../src/styles/theme-default.scss'),
-).toString()
+const theme = fs
+  .readFileSync(path.join(__dirname, '../src/styles/theme-default.scss'))
+  .toString()
 
 const exclude = ['icon', 'toast']
 components.forEach((component) => {
@@ -33,13 +33,13 @@ components.forEach((component) => {
     .readFileSync(
       path.join(
         __dirname,
-        `../src/packages/${componentName}/${componentName}.scss`,
-      ),
+        `../src/packages/${componentName}/${componentName}.scss`
+      )
     )
     .toString()
   let to = path.join(
     __dirname,
-    `../src/packages/${componentName}/${componentName}.harmony.css`,
+    `../src/packages/${componentName}/${componentName}.harmony.css`
   )
   const matched = content.match(/@import.*?[;][\n\r]?/gi)
   if (matched) {
@@ -53,12 +53,9 @@ components.forEach((component) => {
   }
 
   const res = sass.compileString(theme + variables + content)
-  postcss([
-    cssvariables(/*options*/),
-  ])
+  postcss([cssvariables(/*options*/)])
     .process(res.css, { to })
     .then((result) => {
-      fs.writeFile(to, result.css, () => {
-      })
+      fs.writeFile(to, result.css, () => {})
     })
 })

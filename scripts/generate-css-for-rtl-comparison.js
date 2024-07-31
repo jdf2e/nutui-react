@@ -28,7 +28,7 @@ function postcssRemoveRtl() {
       // Transform CSS AST here
       root.nodes.forEach((node, index) => {
         if (node.type === 'rule') {
-          if (node.selector.indexOf('[dir=')> -1) {
+          if (node.selector.indexOf('[dir=') > -1) {
             console.log(node.selector, index)
             node.remove()
           }

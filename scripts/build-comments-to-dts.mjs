@@ -15,7 +15,9 @@ const __dirname = dirname(__filename)
  * 通过 cofnig.json 获取所有组件的数据
  */
 function readAllComponents() {
-  const config = JSON.parse(fse.readFileSync(path.join(__dirname, '../src/config.json')).toString())
+  const config = JSON.parse(
+    fse.readFileSync(path.join(__dirname, '../src/config.json')).toString()
+  )
   const components = config.nav.reduce(function (accumulator, currentValue) {
     currentValue.packages.forEach((pkg) => {
       if (pkg.exclude || pkg.version !== '2.0.0') {

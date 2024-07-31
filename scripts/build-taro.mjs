@@ -40,9 +40,7 @@ const transform = (file, api) => {
 
   function reNameAlias(path) {
     const alias =
-      path.node.source?.value?.indexOf('@/') > -1
-        ? path.node.source.value
-        : ''
+      path.node.source?.value?.indexOf('@/') > -1 ? path.node.source.value : ''
     if (!path.node.source) return
     if (!alias) {
       path.node.source.value = path.node.source.value.replace('.taro', '')
@@ -51,7 +49,7 @@ const transform = (file, api) => {
     const dir = join(__dirname, alias.replace('@/', '../src/'))
     path.node.source.value = relativeFilePath(file.path, dir)?.replace(
       '.taro',
-      '',
+      ''
     )
   }
 
@@ -80,7 +78,7 @@ async function buildES(p) {
         'src/packages/**/*.spec.tsx',
         'src/packages/**/demos/**/*',
       ],
-    },
+    }
   )
 
   for (const path of sourceFiles) {
@@ -116,7 +114,7 @@ async function buildES(p) {
           encoding: 'utf8',
         }),
       },
-      { jscodeshift: j },
+      { jscodeshift: j }
     )
     await dest(file, result)
   }
@@ -149,7 +147,7 @@ async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.taro.json')
   const dist = join(__dirname, '../dist/types')
   await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`,
+    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
   )
 
   const files = await glob([
@@ -169,7 +167,7 @@ async function buildDeclaration() {
         }),
         path: join(__dirname, '../', file).replace('/dist/types', ''),
       },
-      { jscodeshift: j },
+      { jscodeshift: j }
     )
     const to = file.replace('dist/types/src', '').replace('.taro', '')
     await dest(join('dist/es', to), result)
@@ -234,7 +232,7 @@ async function buildAllCSS() {
 async function copyStyles() {
   await copy(
     resolve(__dirname, '../src/styles'),
-    resolve(__dirname, '../dist/styles'),
+    resolve(__dirname, '../dist/styles')
   )
 
   const content = [
@@ -250,7 +248,7 @@ async function copyStyles() {
   const scssFiles = await glob(['dist/es/packages/**/*.scss'])
   scssFiles.forEach((file) => {
     content.push(
-      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`,
+      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`
     )
   })
   dest('dist/styles/themes/default.scss', content.join('\n'))
@@ -263,7 +261,7 @@ async function buildCSS(p) {
   })
 
   const variables = await readFile(
-    join(__dirname, '../src/styles/variables.scss'),
+    join(__dirname, '../src/styles/variables.scss')
   )
   for (const file of cssFiles) {
     const button = await readFile(join(__dirname, '../', file), {
@@ -274,7 +272,7 @@ async function buildCSS(p) {
     const loadPath = join(
       __dirname,
       '../src/packages',
-      base.replace('.scss', ''),
+      base.replace('.scss', '')
     )
     const code = sass.compileString(variables + '\n' + button, {
       loadPaths: [loadPath],
@@ -287,13 +285,19 @@ async function buildCSS(p) {
     await dest(join('dist/cjs', cssPath, 'style/style.css'), code.css)
     await dest(
       join('dist/cjs', cssPath, 'style/css.js'),
-      `import './style.css'`,
+      `import './style.css'`
     )
 
     // copy harmonycss
     if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
+      await copy(
+        join(__dirname, '../', file.replace('scss', 'harmony.css')),
+        join('dist/cjs', cssPath, 'style/style.harmony.css')
+      )
+      await copy(
+        join(__dirname, '../', file.replace('scss', 'harmony.css')),
+        join('dist/es', cssPath, 'style/style.harmony.css')
+      )
     }
 
     // 删除 import
@@ -304,7 +308,7 @@ async function buildCSS(p) {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
           if (root.name === 'import') {
-            if (root.params.indexOf('\'../../styles') > -1) {
+            if (root.params.indexOf("'../../styles") > -1) {
               atRules.push(root.params)
               root.params = root.params.replace('../../', '../../../../')
               return
@@ -325,7 +329,7 @@ async function buildCSS(p) {
 
     const jsContent = []
     atRules.forEach((rule) => {
-      rule = rule.replaceAll('\'', '')
+      rule = rule.replaceAll("'", '')
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
         jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
@@ -340,11 +344,10 @@ async function buildCSS(p) {
 
     await dest(
       join('dist/cjs', cssPath, `style/index.js`),
-      jsContent.join('\n'),
+      jsContent.join('\n')
     )
     await dest(join('dist/es', cssPath, `style/index.js`), jsContent.join('\n'))
   }
-
 }
 
 console.log('clean dist')

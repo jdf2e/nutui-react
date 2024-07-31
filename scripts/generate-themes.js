@@ -9,7 +9,9 @@ if (projectID) {
   fileStr = `@import '../theme-default.scss';\n@import '../variables-${projectID}.scss';\n`
 }
 let tasks = []
-const componentsScss = glob.sync('./src/packages/**/*.scss', { dotRelative: true })
+const componentsScss = glob.sync('./src/packages/**/*.scss', {
+  dotRelative: true,
+})
 componentsScss.map((cs) => {
   if (cs.indexOf('demo.scss') > -1) return
   tasks.push(
@@ -18,7 +20,7 @@ componentsScss.map((cs) => {
         path.resolve(__dirname, `.${cs}`),
         path.resolve(__dirname, `../dist`, `${cs.replace('./src/', '')}`)
       )
-      .catch((error) => { })
+      .catch((error) => {})
   )
 })
 

@@ -71,7 +71,11 @@ const copy = async () => {
           let docENpath = `src/packages/${cmpName}/doc.en-US.md`
           fse.readFile(docpath, (err, data) => {
             if (!err) {
-              copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`, cmpName)
+              copyFile(
+                docpath,
+                `${targetBaseUrl}/docs/${cmpName}/doc.md`,
+                cmpName
+              )
             }
           })
           fse.readFile(docENpath, (err, data) => {
@@ -79,7 +83,7 @@ const copy = async () => {
               copyFile(
                 docENpath,
                 `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`,
-                cmpName,
+                cmpName
               )
             }
           })
@@ -92,7 +96,7 @@ const copy = async () => {
               copyFile(
                 docTaropath,
                 `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`,
-                cmpName,
+                cmpName
               )
             }
           })
