@@ -22,6 +22,9 @@ const Demo3 = () => {
         min={10}
         max={20}
         onOverlimit={overlimit}
+        onChange={(v) => {
+          console.log('onChange', v)
+        }}
       />
       <Toast
         type={toastType}
