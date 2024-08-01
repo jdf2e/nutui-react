@@ -160,14 +160,36 @@ test('allowEmpty', () => {
 
 test('should overlimit when input', () => {
   const change = vi.fn()
-  const blur = vi.fn()
+  const overlimit = vi.fn()
   const { container } = render(
-    <InputNumber defaultValue={2} max={100} onChange={change} onBlur={blur} />
+    <InputNumber
+      defaultValue={2}
+      max={100}
+      onChange={change}
+      onOverlimit={overlimit}
+    />
+  )
+  const input = container.querySelectorAll('input')[0]
+  input.value = '200'
+  fireEvent.input(input)
+  expect(overlimit).toBeCalled()
+  expect(change).toBeCalled()
+})
+test('should overlimit when async input', () => {
+  const change = vi.fn()
+  const overlimit = vi.fn()
+  const { container } = render(
+    <InputNumber
+      defaultValue={2}
+      max={100}
+      onChange={change}
+      onOverlimit={overlimit}
+      async
+    />
   )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'
   fireEvent.blur(input)
-  waitFor(() => {
-    expect(container.querySelector('input')?.value).toBe('100')
-  })
+  expect(overlimit).toBeCalled()
+  expect(change).toBeCalled()
 })
