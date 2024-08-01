@@ -21,7 +21,7 @@ const Demo8 = () => {
     setTimeout(() => {
       setInputValue(Number(value))
       SetShow(false)
-    }, 200)
+    }, 2000)
   }
   return (
     <>
