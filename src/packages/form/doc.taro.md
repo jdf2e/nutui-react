@@ -95,6 +95,7 @@ import { Form } from '@nutui/nutui-react-taro'
 | noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
 | shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 设置收集字段值变更的时机 | `string` | `-` |
+| align | 对齐方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |

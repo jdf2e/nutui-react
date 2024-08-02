@@ -97,6 +97,7 @@ import { Menu } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | title | 菜單項標題 | `string` | `當前選中項文字` |
+| titleIcon | 菜單項 icon | `React.ReactNode` | `ArrowUp/ArrowDown` |
 | options | 選項數組 | `array` | `-` |
 | disabled | 是否禁用菜單 | `boolean` | `false` |
 | columns | 可以設置一行展示多少列 options | `number` | `1` |
