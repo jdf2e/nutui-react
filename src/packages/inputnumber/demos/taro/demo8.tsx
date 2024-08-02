@@ -12,8 +12,12 @@ const Demo8 = () => {
     SetToastType(type)
     SetShow(true)
   }
+  const overlimit = (e: any) => {
+    console.log('超出限制事件触发', e)
+  }
   const onChange = (value: string | number) => {
     toastShow('异步演示 2 秒后更改', 'loading')
+    console.log('onChange', value)
     setTimeout(() => {
       setInputValue(Number(value))
       SetShow(false)
@@ -21,7 +25,14 @@ const Demo8 = () => {
   }
   return (
     <>
-      <InputNumber value={inputValue} min="-6" onChange={onChange} async />
+      <InputNumber
+        value={inputValue}
+        min={-6}
+        max={6}
+        onChange={onChange}
+        onOverlimit={overlimit}
+        async
+      />
       <Toast
         type={toastType}
         visible={show}
