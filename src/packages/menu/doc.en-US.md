@@ -97,6 +97,7 @@ Popup can be closed with toggle method in menu instance.
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | title | Item title | `string` | `Current selected value` |
+| titleIcon | menu item icon | `React.ReactNode` | `ArrowUp/ArrowDown` |
 | options | Options | `Array` | `-` |
 | disabled | Whether to disable dropdown item | `boolean` | `false` |
 | columns | Display how many options in one line | `number` | `1` |

@@ -23,6 +23,7 @@ export interface OptionItem {
 
 export interface MenuItemProps extends BasicComponent {
   title: React.ReactNode
+  titleIcon: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
@@ -39,6 +40,7 @@ export interface MenuItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  titleIcon: null,
   columns: 1,
   direction: 'down',
   icon: null,
