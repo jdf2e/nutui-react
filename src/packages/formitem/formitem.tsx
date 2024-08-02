@@ -34,6 +34,7 @@ export interface FormItemProps
   shouldUpdate: boolean
   noStyle: boolean
   children: ReactNode | ((obj: any) => React.ReactNode)
+  align?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const defaultProps = {
@@ -194,6 +195,7 @@ export class FormItem extends React.Component<
       className,
       style,
       errorMessageAlign,
+      align,
     } = {
       ...defaultProps,
       ...this.props,
@@ -217,6 +219,7 @@ export class FormItem extends React.Component<
       <Cell
         className={`nut-form-item ${className}`}
         style={style}
+        align={align}
         onClick={(e) =>
           this.props.onClick && this.props.onClick(e, this.componentRef)
         }
