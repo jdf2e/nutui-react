@@ -187,9 +187,10 @@ export const InputNumber: FunctionComponent<
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const val = clampValue(valueStr)
-    if (val !== Number(e.target.value)) {
-      onOverlimit?.(e)
-    }
+    // input暂不触发onOverlimit
+    // if (val !== Number(e.target.value)) {
+    //   onOverlimit?.(e)
+    // }
     if (val !== Number(shadowValue)) {
       onChange?.(val, e)
     }

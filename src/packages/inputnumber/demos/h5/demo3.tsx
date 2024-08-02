@@ -8,6 +8,7 @@ const Demo3 = () => {
   return (
     <InputNumber
       defaultValue={10}
+      allowEmpty
       min={10}
       max={20}
       onOverlimit={overlimit}
