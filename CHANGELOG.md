@@ -1,3 +1,20 @@
+# v2.6.16
+
+`2024-08-03`
+
+- 📖 docs(card): correct doc (#2504) @Alex-huxiyang
+- :sparkles: feat(menu): menu-item 组件增加标题icon自定义方式 (#2488) @zhangming
+- :sparkles: feat(form): Form.Item 增加 align 属性 (#2492) @zhangming
+- :bug: fix(inputNumber): correct onChange, onOverlimit event triggering timing when async & sync (#2509) @Alex-huxiyang
+- :bug: fix(uploader): xhrBeforeUpload判断错误 (#2507) @Alex-huxiyang
+- :bug: fix(swiper): correct onChange ts type (#2493) @Alex-huxiyang
+- 🪵 refactor(numberkeyboard): optimize code & correct defaultProps (#2508) @Alex-huxiyang
+- 🏡 chore(cell): unify ts type & docs (#2496) @Alex-huxiyang
+- 🏡 chore(deps): update vitest monorepo to v2 (major) (#2439) @renovate[bot]
+- 🏡 chore(deps): update dependency glob to v11 (#2438) @renovate[bot]
+- 🏡 chore(deps): update dependency inquirer to v10 (#2420) @renovate[bot]
+- 🏡 chore(deps): update dependency marked to v13 (#2358) @renovate[bot]
+
 # v2.6.15
 
 `2024-07-26`
