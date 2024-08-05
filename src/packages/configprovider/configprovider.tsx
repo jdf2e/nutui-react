@@ -61,7 +61,7 @@ export const useRtl = () => {
 export const ConfigProvider: FunctionComponent<
   Partial<ConfigProviderProps & BasicComponent>
 > = (props) => {
-  const { style, className, children, direction, ...config } = props
+  const { style = {}, className, children, direction, ...config } = props
 
   const mergedConfig = useMemo(
     () => {
