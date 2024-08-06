@@ -268,7 +268,7 @@ const InternalUploader: ForwardRefRenderFunction<
         /** 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 30s 之间 */
         maxDuration,
         /** 仅对 mediaType 为 image 时有效，是否压缩所选文件 */
-        sizeType: [],
+        sizeType,
         /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
         camera,
         /** 接口调用失败的回调函数 */
