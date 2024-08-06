@@ -74,7 +74,7 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Whether to show preview | `boolean` | `false` |
 | videos | Videos Array(Videos are before images) | `Array<Object>` | `[]` |
-| images | Images array | `{ src: string }[]` | `[]` |
+| images | Images array | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | Autoplay time, zero means not autoplay | `number` \| `string` | `3000` |
 | defaultValue | Init no | `number` | `1` |
 | value | value,controlled | `number` | `1` |

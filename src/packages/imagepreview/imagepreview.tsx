@@ -25,6 +25,23 @@ interface Store {
 
 export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
+export interface ImageOption {
+  src: string
+  index?: number
+}
+
+export interface VideoOption {
+  source: {
+    src: string
+    type: string
+  }
+  options: {
+    muted: boolean
+    controls: boolean
+  }
+  index?: number
+}
+
 export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
@@ -293,34 +310,41 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
             }
             indicator={indicator}
           >
-            {(videos && videos.length > 0
-              ? videos.map((item, index) => {
+            {(videos ?? [])
+              .map(
+                (item) =>
+                  ({ type: 'video', data: item }) as {
+                    type: 'video' | 'image'
+                    data: ImageOption | VideoOption
+                  }
+              )
+              .concat(
+                (images ?? []).map((item) => ({ type: 'image', data: item }))
+              )
+              .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
+              .map((item, index) => {
+                if (item.type === 'video') {
+                  const { source, options } = item.data as VideoOption
                   return (
                     <SwiperItem key={index}>
                       <Video
-                        source={item.source}
-                        options={item.options}
+                        source={source}
+                        options={options}
                         onClick={closeOnImg}
                       />
                     </SwiperItem>
                   )
-                })
-              : []
-            ).concat(
-              images && images.length > 0
-                ? images.map((item, index) => {
-                    return (
-                      <SwiperItem key={index}>
-                        <Image
-                          src={item.src}
-                          draggable={false}
-                          onClick={closeOnImg}
-                        />
-                      </SwiperItem>
-                    )
-                  })
-                : []
-            )}
+                }
+                if (item.type === 'image') {
+                  const { src } = item.data as ImageOption
+                  return (
+                    <SwiperItem key={index}>
+                      <Image src={src} draggable={false} onClick={closeOnImg} />
+                    </SwiperItem>
+                  )
+                }
+                return null
+              })}
           </Swiper>
         ) : null}
       </div>
