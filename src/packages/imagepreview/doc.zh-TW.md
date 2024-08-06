@@ -74,7 +74,7 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否展示預覽圖片 | `boolean` | `false` |
 | videos | 預覽的視頻數組（視頻自動放到圖片之前） | `Array<Object>` | `[]` |
-| images | 預覽圖片數組 | `{ src: string }[]` | `[]` |
+| images | 預覽圖片數組 | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `3000` |
 | defaultValue | 初始頁碼 | `number` | `1` |
 | value | 頁碼，受控 | `number` | `1` |

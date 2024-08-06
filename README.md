@@ -84,11 +84,11 @@ cd nutui-react
 pnpm install
 
 # Start development
-# dir：src/sites/mobile-taro/dist/weapp
+# dir：packages/nutui-taro-demo/dist/weapp
 pnpm run dev:taro:weapp
 
 # OR run as jd mini-program
-# dir：src/sites/mobile-taro/dist/jd
+# dir：packages/nutui-taro-demo/dist/jd
 pnpm run dev:taro:jd
 ```
 
