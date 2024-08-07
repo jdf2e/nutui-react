@@ -1,16 +1,14 @@
 # Badge 徽標
 
-## 介紹
-
 出現在圖標或文字右上角的紅色圓點、數字或者文字，錶示有新內容或者待處理的信息。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Badge } from '@nutui/nutui-react';
+import { Badge } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

@@ -1,16 +1,14 @@
 # Table组件
 
-## 介绍
-
 用于展示基础表格
 
-## 安装
+## 引入
 
 ```tsx
-import { Table } from '@nutui/nutui-react-taro';
+import { Table } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -138,11 +136,11 @@ import { Table } from '@nutui/nutui-react-taro';
 | --- | --- | --- | --- |
 | key | 列的唯一标识 | `string` | `-` |
 | title | 表头标题 | `string` | `-` |
-| align | 列的对齐方式 | `left` \| `center` \| `right`  | `left` |
+| align | 列的对齐方式 | `left` \| `center` \| `right` | `left` |
 | sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定义渲染列数据，优先级高 | `Function(record)` | `-` |
 | width | 列宽度 | `number` | `auto` |
-| fixed | 固定位置 | `left` \| `right`  | `-` |
+| fixed | 固定位置 | `left` \| `right` | `-` |
 
 ## 主题定制
 

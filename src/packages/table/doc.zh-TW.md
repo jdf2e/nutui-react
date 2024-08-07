@@ -1,16 +1,14 @@
 # Table組件
 
-## 介紹
-
 用於展示基礎表格。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Table } from '@nutui/nutui-react';
+import { Table } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -142,7 +140,7 @@ import { Table } from '@nutui/nutui-react';
 | sorter | 排序，可選值有 true,function, default, 其中 default表示點擊之後可能會依賴接口, function可以返回具體的排序函數, default表示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
 | width | 列寬度 | `number` | `auto` |
-| fixed | 固定位置 | `left` \| `right`  | `-` |
+| fixed | 固定位置 | `left` \| `right` | `-` |
 
 ## 主題定制
 

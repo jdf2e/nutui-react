@@ -1,18 +1,16 @@
 # Dialog 对话框
 
-## 介绍
-
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
 弹出框组件支持函数调用和组件调用两种方式。
 
-## 安装
+## 引入
 
 ```tsx
 import { Dialog } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 函数式调用
 
@@ -23,7 +21,8 @@ import { Dialog } from '@nutui/nutui-react-taro'
 :::
 
 ## 以下为标签式使用
-### 基础用法 
+
+### 基础用法
 
 :::demo
 
@@ -110,6 +109,7 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
 ### Methods
+
 | 方法名 | 说明 | 类型 |
 | --- | --- | --- |
 | Dialog.open | 打开 Dialog | (id: string, options: DialogOptions) => void |
@@ -147,4 +147,3 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
-

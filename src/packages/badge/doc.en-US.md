@@ -1,13 +1,11 @@
 # Badge
 
-## Intro
-
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
-## Install
+## Import
 
 ```tsx
-import { Badge } from '@nutui/nutui-react';
+import { Badge } from '@nutui/nutui-react'
 ```
 
 ## Demo

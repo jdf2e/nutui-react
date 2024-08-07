@@ -1,10 +1,8 @@
 # Signature
 
-## Intro
-
 Signature component based on canvas.
 
-## Install
+## Import
 
 ```tsx
 import { Signature } from '@nutui/nutui-react'

@@ -1,16 +1,14 @@
 # CountDown 倒計時
 
-## 介紹
-
 用於實時展示倒計時數值，支持毫秒精度。
 
-## 安裝
+## 引入
 
 ```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

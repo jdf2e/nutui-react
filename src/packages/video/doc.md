@@ -1,16 +1,14 @@
 # Video 视频播放器
 
-## 介绍
-
 原生video实现的视频播放器
 
-## 安装
+## 引入
 
 ```tsx
-import { Video } from '@nutui/nutui-react';
+import { Video } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

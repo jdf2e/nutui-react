@@ -1,16 +1,14 @@
 # ImagePreview組件
 
-## 介紹
-
 支持全屏預覽視頻和圖片，可函數式調用
 
-## 安裝
+## 引入
 
 ```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -76,10 +74,11 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否展示預覽圖片 | `boolean` | `false` |
 | videos | 預覽的視頻數組（視頻自動放到圖片之前） | `Array<Object>` | `[]` |
-| images | 預覽圖片數組 | `{ src: string }[]` | `[]` |
+| images | 預覽圖片數組 | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `3000` |
 | defaultValue | 初始頁碼 | `number` | `1` |
 | value | 頁碼，受控 | `number` | `1` |
+| pagination | 分頁是否展示 | `boolean` | `true` |
 | indicator | 分頁指示器是否展示 | `boolean` | `false` |
 | indicatorColor | 分頁指示器選中的顏色 | `string` | `#fff` |
 | closeOnContentClick | 點擊圖片可以退出預覽 | `boolean` | `false` |

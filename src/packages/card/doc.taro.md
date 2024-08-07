@@ -1,16 +1,14 @@
 # Card 商品卡片
 
-## 介绍
-
 商品卡片，用于展示商品的图片、价格等信息
 
-## 安装
+## 引入
 
 ```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -56,7 +54,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

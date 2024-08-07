@@ -1,16 +1,14 @@
 # Button 按钮
 
-## 介绍
-
 按钮用于触发一个操作，如提交表单。
 
-## 安装
+## 引入
 
 ```tsx
-import { Button } from '@nutui/nutui-react-taro';
+import { Button } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 设置 open-type
 
@@ -115,10 +113,10 @@ import { Button } from '@nutui/nutui-react-taro';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按钮的尺寸 | `normal` \|`xlarge` \|  `large` \| `small` \| `mini` | `normal` |
+| size | 按钮的尺寸 | `normal` \|`xlarge` \| `large` \| `small` \| `mini` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按钮 | `boolean` | `false` |
 | block | 是否为块级元素 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | `-` |
@@ -129,7 +127,7 @@ import { Button } from '@nutui/nutui-react-taro';
 
 ### 支持小程序API能力
 
- 如果你是需要使用原生小程序 `Button` 组件能力的用户，关于原生小程序 `Button` 组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
+如果你是需要使用原生小程序 `Button` 组件能力的用户，关于原生小程序 `Button` 组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
 
 ## 主题定制
 
@@ -163,4 +161,3 @@ import { Button } from '@nutui/nutui-react-taro';
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
 | \--nutui-button-mini-border-radius | size 为 mini 的按钮的圆角 | `24px` |
 | \--nutui-button-text-icon-margin | 带 icon按钮的文本的边距 | `4px` |
-

@@ -1,10 +1,8 @@
 # ImagePreview
 
-## Intro
-
 Support full screen preview videos and images, support functional call.
 
-## Install
+## Import
 
 ```tsx
 import { ImagePreview } from '@nutui/nutui-react'
@@ -76,12 +74,13 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Whether to show preview | `boolean` | `false` |
 | videos | Videos Array(Videos are before images) | `Array<Object>` | `[]` |
-| images | Images array | `{ src: string }[]` | `[]` |
+| images | Images array | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | Autoplay time, zero means not autoplay | `number` \| `string` | `3000` |
 | defaultValue | Init no | `number` | `1` |
 | value | value,controlled | `number` | `1` |
-| indicator | Whether to show pagination | `boolean` | `false` |
-| indicatorColor | Pagination color | `string` | `#fff` |
+| pagination | Whether to show pagination | `boolean` | `true` |
+| indicator | Whether to show indicator | `boolean` | `false` |
+| indicatorColor | indicator color | `string` | `#fff` |
 | closeOnContentClick | Click image to exit preview | `boolean` | `false` |
 | closeIcon | Close Icon | `boolean` \| `ReactNode` | `false` |
 | closeIconPosition | Close Icon Position | `top-right` \| `top-left` \| `bottom` | `top-right` |

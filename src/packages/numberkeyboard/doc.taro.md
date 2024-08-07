@@ -1,16 +1,14 @@
 # NumberKeyboard 数字键盘
 
-## 介绍
-
 虚拟数字键盘，用于输入支付密码的场景。
 
-## 安装
+## 引入
 
 ```tsx
-import { NumberKeyboard } from '@nutui/nutui-react-taro';
+import { NumberKeyboard } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 默认键盘
 

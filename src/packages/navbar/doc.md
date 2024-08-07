@@ -1,16 +1,14 @@
 # Navbar 头部导航
 
-## 介绍
-
 提供导航功能。
 
-## 安装
+## 引入
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

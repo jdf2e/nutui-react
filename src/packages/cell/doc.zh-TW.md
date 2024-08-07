@@ -1,16 +1,14 @@
 # Cell 單元格
 
-## 介紹
-
 列表項，可組成列表。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Cell } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -94,7 +92,7 @@ import { Cell } from '@nutui/nutui-react'
 | description | 描述 | `ReactNode` | `-` |
 | extra | 右側描述 | `ReactNode` | `-` |
 | radius | 圓角半徑 | `string` | `6px` |
-| align | 縱軸方向上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
+| align | 縱軸方向上的對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主題定製

@@ -1,13 +1,11 @@
 # Ellipsis
 
-## Intro
-
 isplay space is insufficient, hidden part of the content and "..." Alternative.
 
-## Install
+## Import
 
 ```tsx
-import { Ellipsis } from '@nutui/nutui-react';
+import { Ellipsis } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -59,12 +57,12 @@ import { Ellipsis } from '@nutui/nutui-react';
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | content | Content | `string` | `-` |
-| direction | Direction | `start` \| `end` \| `middle`  | `end` |
+| direction | Direction | `start` \| `end` \| `middle` | `end` |
 | rows | Rows | `number` | `1` |
 | expandText | Expand text | `string` | `-` |
 | collapseText | Collapse text | `string` | `-` |
 | symbol | Symbol | `string` | `...` |
-| lineHeight | the row height of the container | `string` \| `number`  | `20` |
+| lineHeight | the row height of the container | `string` \| `number` | `20` |
 | onClick | Emitted when the content is clicked | `() => void` | `-` |
 | onChange | Emitted when expand or collapse is clicked | `(type: string) => void` | `-` |
 

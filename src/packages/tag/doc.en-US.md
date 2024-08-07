@@ -1,13 +1,11 @@
 # Tag
 
-## Intro
-
 Label for labeling and classification.
 
-## Install
+## Import
 
 ```tsx
-import { Tag } from '@nutui/nutui-react';
+import { Tag } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -44,7 +42,6 @@ import { Tag } from '@nutui/nutui-react';
 
 :::
 
-
 ## Tag
 
 ### Props
@@ -68,19 +65,19 @@ import { Tag } from '@nutui/nutui-react';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default | 
-| --- | --- | --- | 
-| \--nutui-tag-padding | padding | `0 2px`| 
-| \--nutui-tag-font-size | font size | `10px` | 
-| \--nutui-tag-border-radius | border radius | `2px` | 
-| \--nutui-tag-height | height | `14px` | 
-| \--nutui-tag-color | color | `#ffffff` | 
-| \--nutui-tag-border-width | border width | `1px` | 
-| \--nutui-tag-background-color | background color | `$color-title` | 
-| \--nutui-tag-primary-background-color |primary background color | `$color-primary-gradient-1` | 
-| \--nutui-tag-success-background-color | success background color | `#4fc08d` | 
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-tag-padding | padding | `0 2px` |
+| \--nutui-tag-font-size | font size | `10px` |
+| \--nutui-tag-border-radius | border radius | `2px` |
+| \--nutui-tag-height | height | `14px` |
+| \--nutui-tag-color | color | `#ffffff` |
+| \--nutui-tag-border-width | border width | `1px` |
+| \--nutui-tag-background-color | background color | `$color-title` |
+| \--nutui-tag-primary-background-color | primary background color | `$color-primary-gradient-1` |
+| \--nutui-tag-success-background-color | success background color | `#4fc08d` |
 | \--nutui-tag-info-background-color | info background color | `$color-info` |
-| \--nutui-tag-warning-background-color | warn background color | `#f3812e` | 
+| \--nutui-tag-warning-background-color | warn background color | `#f3812e` |
 | \--nutui-tag-danger-background-color | danger background color | `$color-primary` |
-| \--nutui-tag-round-border-radius | round border radius | `8px` | 
+| \--nutui-tag-round-border-radius | round border radius | `8px` |
 | \--nutui-tag-mark-border-radius | mark border radius | `0 8px 8px 0` |

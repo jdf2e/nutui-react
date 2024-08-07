@@ -1,16 +1,14 @@
 # CalendarCard 日历
 
-## 介绍
-
 日历
 
-## 安装
+## 引入
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react-taro';
+import { CalendarCard } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 选择单个日期
 
@@ -136,7 +134,7 @@ import { CalendarCard } from '@nutui/nutui-react-taro';
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
-| jumpTo | 跳转至特定的年月 | `year: number, month: number`|
+| jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
 ## 主题定制
 

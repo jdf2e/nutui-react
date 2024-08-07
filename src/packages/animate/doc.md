@@ -1,16 +1,14 @@
 # Animate 动画/动效
 
-## 介绍
-
 给子元素添加动画效果
 
-## 安装
+## 引入
 
 ```tsx
-import { Animate } from '@nutui/nutui-react';
+import { Animate } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 点击触发
 

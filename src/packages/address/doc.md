@@ -1,16 +1,14 @@
 # Address 地址
 
-## 介绍
-
 地址选择，在2.0中，地址改用级联组件实现。截止当前版本，只支持级联，不支持级联+电梯模式，开发中。
 
-## 安装
+## 引入
 
 ```tsx
-import { Address } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 选择自定义地址
 
@@ -86,7 +84,7 @@ import { Address } from '@nutui/nutui-react';
 通过 ref 可以获取到 Address 实例并调用实例方法。
 
 | 方法名 | 说明 | 参数 |
-| ----- | ----- | -- |
+| --- | --- | --- |
 | open | 打开地址选择 | `-` |
 | close | 关闭地址选择 | `-` |
 

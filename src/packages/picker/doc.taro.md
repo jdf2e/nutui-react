@@ -1,16 +1,14 @@
 # Picker 选择器
 
-## 介绍
-
 提供多个选项集合供用户选择其中一项。
 
-## 安装
+## 引入
 
 ```tsx
-import { Picker } from '@nutui/nutui-react-taro';
+import { Picker } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -90,7 +88,7 @@ import { Picker } from '@nutui/nutui-react-taro';
 | value | 选中值，受控 | `Array` | `[]` |
 | defaultValue | 默认选中 | `Array` | `[]` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |
-| duration | 快速滑动时惯性滚动的时长，单位 ms | `string`  \|  `number` | `1000` |
+| duration | 快速滑动时惯性滚动的时长，单位 ms | `string` \| `number` | `1000` |
 | popupProps | 透传popup属性 | `object` | `-` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | onConfirm | 点击确认按钮时候回调 | `(options, value) => void` | `-` |
@@ -103,8 +101,8 @@ import { Picker } from '@nutui/nutui-react-taro';
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| text | 选项的文字内容 | `string`  \|  `number` | `-` |
-| value | 选项对应的值，且唯一 | `string`  \|  `number` | `-` |
+| text | 选项的文字内容 | `string` \| `number` | `-` |
+| value | 选项对应的值，且唯一 | `string` \| `number` | `-` |
 | children | 用于级联选项 | `Array` | `-` |
 
 ## 主题定制

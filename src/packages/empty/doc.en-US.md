@@ -1,10 +1,8 @@
 # Empty
 
-## Intro
-
 Placeholder prompt when empty
 
-## Install
+## Import
 
 ```tsx
 import { Empty } from '@nutui/nutui-react'
@@ -92,3 +90,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-empty-title-line-height | Empty component image title row height | `$font-size-base` |
 | \--nutui-empty-description-margin-top | Empty component image description margin-top value | `4px` |
 | \--nutui-empty-description-line-height | Empty component image description row height | `1.2` |
+| \--nutui-empty-background-color | Empty component background color | `#fff` |

@@ -1,13 +1,11 @@
 # Notify
 
-## Intro
-
 Show message tips at the top of the page
 
-## Install
+## Import
 
 ```tsx
-import { Notify } from '@nutui/nutui-react';
+import { Notify } from '@nutui/nutui-react'
 ```
 
 ## Demo

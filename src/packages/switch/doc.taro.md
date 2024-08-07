@@ -1,16 +1,14 @@
 # Switch 开关
 
-## 介绍
-
 用来打开或关闭选项。
 
-## 安装
+## 引入
 
 ```tsx
-import { Switch } from '@nutui/nutui-react-taro';
+import { Switch } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 非受控
 

@@ -1,13 +1,11 @@
 # Address
 
-## Intro
-
 Load on demand Load the Icon、Popup、Elevator dependent component
 
-## Install
+## Import
 
 ```tsx
-import { Address } from '@nutui/nutui-react';
+import { Address } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -84,7 +82,7 @@ If you want to select a province, you need to set the region ID in the order of 
 You can get the Address instance and call instance methods through ref.
 
 | Method | Description | Parameter |
-| ----- | ----- | -- |
+| --- | --- | --- |
 | open | Open address selection | `-` |
 | close | Close address selection | `-` |
 

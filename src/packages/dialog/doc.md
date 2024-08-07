@@ -1,18 +1,16 @@
 # Dialog 对话框
 
-## 介绍
-
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
 弹出框组件支持函数调用和组件调用两种方式。
 
-## 安装
+## 引入
 
 ```tsx
 import { Dialog } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 函数式调用
 
@@ -23,7 +21,8 @@ import { Dialog } from '@nutui/nutui-react'
 :::
 
 ## 以下为标签式使用
-### 基础用法 
+
+### 基础用法
 
 :::demo
 
@@ -116,25 +115,25 @@ import React from 'react'
 import { Dialog, Input, Button } from '@nutui/nutui-react'
 
 export default function App() {
-  const [captcha, setCaptcha] = useState<string>("");
+  const [captcha, setCaptcha] = useState<string>('')
   const showCaptcha = () => {
     return Dialog.confirm({
       content: (
-          <Input
-            placeholder="请输入验证码"
-            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
-            onChange={(v) => {
-              setCaptcha(v)
-            }}
-          />
-      )
-    });
-  };
+        <Input
+          placeholder="请输入验证码"
+          value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+          onChange={(v) => {
+            setCaptcha(v)
+          }}
+        />
+      ),
+    })
+  }
   return (
     <div>
       <Button onClick={showCaptcha}>Show</Button>
     </div>
-  );
+  )
 }
 ```
 
@@ -168,4 +167,3 @@ export default function App() {
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
-

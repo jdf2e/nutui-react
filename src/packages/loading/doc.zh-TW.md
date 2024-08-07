@@ -1,16 +1,16 @@
 # Loading 加載中
 
-### 介紹
+#
 
 加載圖標，用於顯示正在加載中的狀態
 
-### 安裝
+### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

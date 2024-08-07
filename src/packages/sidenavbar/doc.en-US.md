@@ -1,13 +1,11 @@
 # SideNavBar组件
 
-## Intro
-
 For content selection and switching
 
-## Install
+## Import
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -47,7 +45,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string`  \|  `number` | `-` |
+| value | unique identifier for navigation | `string` \| `number` | `-` |
 | title | overall title | `string` | `-` |
 | open | whether the navigation is expanded by default | `boolean` | `true` |
 | onClick | Navigation click | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
@@ -58,7 +56,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string`  \|  `number` | `-` |
+| value | unique identifier for navigation | `string` \| `number` | `-` |
 | title | overall title | `string` | `-` |
 | onClick | Navigation click | `({title: string, value: string \| number}) => void` | `-` |
 

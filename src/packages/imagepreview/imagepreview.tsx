@@ -25,6 +25,23 @@ interface Store {
 
 export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
+export interface ImageOption {
+  src: string
+  index?: number
+}
+
+export interface VideoOption {
+  source: {
+    src: string
+    type: string
+  }
+  options: {
+    muted: boolean
+    controls: boolean
+  }
+  index?: number
+}
+
 export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
@@ -44,6 +61,7 @@ export interface ImagePreviewProps extends BasicComponent {
   value?: number
   defaultValue: number
   closeOnContentClick: boolean
+  pagination: boolean
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
@@ -60,6 +78,7 @@ const defaultProps = {
   autoPlay: 3000,
   defaultValue: 0,
   closeOnContentClick: false,
+  pagination: true,
   indicator: false,
   indicatorColor: '#fff',
   closeIcon: false,
@@ -79,6 +98,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     visible,
     defaultValue,
     indicatorColor,
+    pagination,
     indicator,
     autoPlay,
     closeOnContentClick,
@@ -253,7 +273,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
 
-  const closeOnImg = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const closeOnImg = (e: any) => {
     e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
@@ -272,7 +292,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         {showPop ? (
@@ -291,32 +310,49 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
             }
             indicator={indicator}
           >
-            {(videos && videos.length > 0
-              ? videos.map((item, index) => {
+            {(videos ?? [])
+              .map(
+                (item) =>
+                  ({ type: 'video', data: item }) as {
+                    type: 'video' | 'image'
+                    data: ImageOption | VideoOption
+                  }
+              )
+              .concat(
+                (images ?? []).map((item) => ({ type: 'image', data: item }))
+              )
+              .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
+              .map((item, index) => {
+                if (item.type === 'video') {
+                  const { source, options } = item.data as VideoOption
                   return (
                     <SwiperItem key={index}>
-                      <Video source={item.source} options={item.options} />
+                      <Video
+                        source={source}
+                        options={options}
+                        onClick={closeOnImg}
+                      />
                     </SwiperItem>
                   )
-                })
-              : []
-            ).concat(
-              images && images.length > 0
-                ? images.map((item, index) => {
-                    return (
-                      <SwiperItem key={index}>
-                        <Image src={item.src} draggable={false} />
-                      </SwiperItem>
-                    )
-                  })
-                : []
-            )}
+                }
+                if (item.type === 'image') {
+                  const { src } = item.data as ImageOption
+                  return (
+                    <SwiperItem key={index}>
+                      <Image src={src} draggable={false} onClick={closeOnImg} />
+                    </SwiperItem>
+                  )
+                }
+                return null
+              })}
           </Swiper>
         ) : null}
       </div>
-      <div className={`${classPrefix}-index`}>
-        {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-      </div>
+      {pagination ? (
+        <div className={`${classPrefix}-index`}>
+          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
+        </div>
+      ) : null}
       {closeIcon !== false ? (
         <div
           className={`${classPrefix}-close ${closeIconPosition}`}

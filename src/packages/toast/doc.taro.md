@@ -1,15 +1,13 @@
 # Toast 吐司
 
-## 介绍
-
 用于轻提示。
 
 > 当前组件 Taro 环境暂不支持函数式调用，推荐使用 Taro.API 使用原生组件 https://taro-docs.jd.com/taro/docs/apis/ui/interaction/showToast
 
-## 安装
+## 引入
 
 ```tsx
-import { Toast } from '@nutui/nutui-react-taro';
+import { Toast } from '@nutui/nutui-react-taro'
 ```
 
 ## 基础用法
@@ -76,13 +74,13 @@ import { Toast } from '@nutui/nutui-react-taro';
 | onClose | 关闭时触发的事件 | `Function` | `null` |
 
 ### Methods
+
 | 方法名 | 说明 | 类型 |
 | --- | --- | --- |
 | Toast.show | 打开 Toast | (id: string, options: ToastOptions) => void |
 | Toast.hide | 关闭 Toast | (id: string) => void |
 
 ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, duration
-
 
 ## 主题定制
 
@@ -95,7 +93,7 @@ ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, d
 | \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
-| \--nutui-toast-inner-top | `toast`内容区自定义高度    | `50%` |
+| \--nutui-toast-inner-top | `toast`内容区自定义高度 | `50%` |
 | \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |

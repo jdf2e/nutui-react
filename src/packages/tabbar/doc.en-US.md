@@ -1,13 +1,11 @@
 # Tabbar
 
-## Intro
-
 Bottom Navigation Common Scenarios
 
-## Install
+## Import
 
 ```tsx
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react'
 ```
 
 ## Demo

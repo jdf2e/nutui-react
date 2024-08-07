@@ -1,16 +1,14 @@
 # Empty組件
 
-## 介紹
-
 空狀態時的占位提示
 
-## 安裝
+## 引入
 
 ```tsx
 import { Empty } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -91,4 +89,4 @@ import { Empty } from '@nutui/nutui-react'
 | \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `8px` |
 | \--nutui-empty-title-line-height | Empty組件圖片標題行高 | `$font-size-base` |
 | \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值 | `4px` |
-| \--nutui-empty-description-line-height | Empty組件圖片描述行高 | `1.2` |
+| \--nutui-empty-background-color | Empty組件背景色 | `#fff` |

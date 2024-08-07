@@ -1,18 +1,18 @@
 import React, {
-  FunctionComponent,
-  useRef,
-  useState,
-  useMemo,
   CSSProperties,
+  FunctionComponent,
   useCallback,
   useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import {
+  getEnv,
+  getSystemInfoSync,
   PageScrollObject,
   usePageScroll,
-  getSystemInfoSync,
-  getEnv,
 } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/utils/use-watch'
@@ -72,12 +72,10 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         width: '',
       }
     }
-    const style: CSSProperties = {}
-    if (rootRect.height) {
-      style.height = rootRect.height
-    }
-    if (rootRect.width) {
-      style.width = rootRect.width
+
+    const style: CSSProperties = {
+      height: rootRect.height ?? '',
+      width: rootRect.width ?? '',
     }
     return style
   }, [fixed, rootRect.height, rootRect.width])
@@ -87,46 +85,47 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       return {
         height: '',
         width: '',
-        [position as string]: '',
+        [position]: '',
       }
     }
-    const style: CSSProperties = {}
-    if (rootRect.height) style.height = rootRect.height
-    if (rootRect.width) style.width = rootRect.width
-    style.transform = `translate3d(0, ${transform}px, 0)`
-    style[position] = threshold
-    style.zIndex = zIndex
+    const style: CSSProperties = {
+      height: rootRect.height ?? '',
+      width: rootRect.width ?? '',
+      transform: `translate3d(0, ${transform}px, 0)`,
+      [position]: threshold,
+      zIndex,
+    }
     return style
   }, [fixed, rootRect.height, rootRect.width, transform, position])
 
   const handleScroll: any = async (scrollTop: number) => {
     const curRootRect = await getRectByTaro(rootRef.current)
     const stickyRect = await getRectByTaro(stickyRef.current)
-    if (curRootRect && stickyRect) {
-      setRootRect(curRootRect)
-      if (position === 'top') {
-        if (container) {
-          const containerRect = await getRectByTaro(container.current)
-          const difference =
-            containerRect.bottom - threshold - curRootRect.height
-          const curTransform = difference < 0 ? difference : 0
-          setTransform(curTransform)
-          const curFixed =
-            threshold > curRootRect.top && containerRect.bottom > 0
-          setFixed(curFixed)
-        } else {
-          setFixed(threshold > curRootRect.top)
-        }
+    if (!curRootRect || !stickyRect) {
+      console.warn('getRectByTaro获取失败', { stickyRect, curRootRect })
+      return
+    }
+
+    setRootRect(curRootRect)
+
+    if (position === 'top') {
+      if (container) {
+        const containerRect = await getRectByTaro(container.current)
+        const difference = containerRect.bottom - threshold - curRootRect.height
+        const curTransform = difference < 0 ? difference : 0
+        setTransform(curTransform)
+        const curFixed = threshold > curRootRect.top && containerRect.bottom > 0
+        setFixed(curFixed)
       } else {
-        const windowHeight = getSystemInfoSync().windowHeight
-        setFixed(windowHeight - threshold < curRootRect.bottom)
+        setFixed(threshold > curRootRect.top)
       }
     } else {
-      console.warn('getRectByTaro获取失败', { stickyRect, curRootRect })
+      const windowHeight = getSystemInfoSync().windowHeight
+      setFixed(windowHeight - threshold < curRootRect.bottom)
     }
   }
   const getElement = useCallback(() => {
-    return getScrollParent(rootRef.current as HTMLElement)
+    return getScrollParent(rootRef.current)
   }, [])
 
   useEffect(() => {

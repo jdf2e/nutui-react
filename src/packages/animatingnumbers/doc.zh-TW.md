@@ -1,16 +1,14 @@
 # AnimatingNumbers 數字動畫
 
-## 介紹
-
 數字動畫集合
 
-## 安裝
+## 引入
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### AnimatingNumbers.CountUp - 基礎用法
 
@@ -39,7 +37,6 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 | delay | 等待動畫執行時間，單位 ms | `number` | `300` |
 | duration | 動畫執行時間，單位 s | `number` | `1` |
 | thousands | 是否有千位分隔符 | `boolean` | `false` |
-
 
 ## 主題定制
 

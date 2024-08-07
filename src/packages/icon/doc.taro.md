@@ -1,10 +1,8 @@
 # Icon 图标
 
-## 介绍
-
 独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
 
-## 安装
+## 引入
 
 ```bash
 npm i --save @nutui/icons-react-taro
@@ -12,7 +10,7 @@ npm i --save @nutui/icons-react-taro
 
 > 在 taro 项目中使用，需要将 prebundle 关闭。
 
-## 代码演示
+## 示例代码
 
 ### 方式一： Svg按需使用
 
@@ -104,7 +102,7 @@ import { IconFont } from '@nutui/icons-react-taro'
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
 ```tsx
-import './assets/font/iconfont.css';
+import './assets/font/iconfont.css'
 ```
 
 第三步:
@@ -112,12 +110,12 @@ import './assets/font/iconfont.css';
 ```tsx
 // fontClassName 指定类名为默认 iconfont
 // classPrefix 指定默认 icon
-// name 值根据 iconfont.css 中值对应填写 
+// name 值根据 iconfont.css 中值对应填写
 import React from 'react'
 import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
-  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix="icon" name="close" />
 }
 ```
 
@@ -140,16 +138,18 @@ const App = () => {
 ```
 
 ```tsx
-import React from "react";
+import React from 'react'
 import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
-  return <>
-    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
-  </>
+  return (
+    <>
+      <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 ## IconFont

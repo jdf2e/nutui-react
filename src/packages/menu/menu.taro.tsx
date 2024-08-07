@@ -120,8 +120,15 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const menuTitle = () => {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
-        const { title, options, value, defaultValue, disabled, direction } =
-          child.props
+        const {
+          title,
+          titleIcon,
+          options,
+          value,
+          defaultValue,
+          disabled,
+          direction,
+        } = child.props
         const selected = options?.filter(
           (option: OptionItem) =>
             option.value === (value !== undefined ? value : defaultValue)
@@ -133,16 +140,29 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             return selected[0].text
           return ''
         }
+        const finallyIcon = () => {
+          if (titleIcon) return titleIcon
+          if (icon) return icon
+          return direction === 'up' ? (
+            <ArrowUp
+              className="nut-menu-title-icon"
+              width="12px"
+              height="12px"
+            />
+          ) : (
+            <ArrowDown
+              className="nut-menu-title-icon"
+              width="12px"
+              height="12px"
+            />
+          )
+        }
         return (
           <div
-            className={classNames(
-              'nut-menu-title ',
-              {
-                active: showMenuItem[index],
-                disabled,
-              },
-              className
-            )}
+            className={classNames('nut-menu-title', `nut-menu-title-${index}`, {
+              active: showMenuItem[index],
+              disabled,
+            })}
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
@@ -151,12 +171,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             }}
           >
             <div className="nut-menu-title-text">{finallyTitle()}</div>
-            {icon ||
-              (direction === 'up' ? (
-                <ArrowUp className="nut-menu-title-icon" size="12px" />
-              ) : (
-                <ArrowDown className="nut-menu-title-icon" size="12px" />
-              ))}
+            {finallyIcon()}
           </div>
         )
       }

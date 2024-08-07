@@ -1,10 +1,8 @@
 # InfiniteLoading
 
-## Intro
-
 Scrolling to the bottom of the list automatically loads more data.
 
-## Install
+## Import
 
 ```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'
@@ -80,4 +78,4 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-infiniteloading-color | Swipe to bottom text color | `$color-text-help` |
-| \--nutui-infiniteloading-icon-size | Swipe to bottom icon size  | `24px` |
+| \--nutui-infiniteloading-icon-size | Swipe to bottom icon size | `24px` |

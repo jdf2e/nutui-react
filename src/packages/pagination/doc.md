@@ -1,16 +1,14 @@
 # Pagination 分页
 
-## 介绍
-
 当数据量较多时，采用分页的形式分隔长列表。
 
-## 安装
+## 引入
 
 ```tsx
-import { Pagination } from '@nutui/nutui-react';
+import { Pagination } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -96,7 +94,7 @@ import { Pagination } from '@nutui/nutui-react';
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-pagination-color | 页码字色 |  `$color-primary` |
+| \--nutui-pagination-color | 页码字色 | `$color-primary` |
 | \--nutui-pagination-font-size | 页码字号 | `$font-size-base` |
 | \--nutui-pagination-item-border-color | 边框颜色 | `$color-border` |
 | \--nutui-pagination-active-background-color | 当前页码的背景色 | `$color-primary` |
@@ -107,6 +105,6 @@ import { Pagination } from '@nutui/nutui-react';
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
 | \--nutui-pagination-lite-width | lite模式下的宽度 | `40px` |
 | \--nutui-pagination-lite-height | lite模式下的高度 | `20px` |
-| \--nutui-pagination-lite-radius| lite模式下的圆角 | `12px` |
+| \--nutui-pagination-lite-radius | lite模式下的圆角 | `12px` |
 | \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |

@@ -1,16 +1,18 @@
 # SideNavBar组件
 
-## 介绍
-
 用于内容选择和切换
 
-## 安装
+## 引入
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
+import {
+  SideNavBar,
+  SubSideNavBar,
+  SideNavBarItem,
+} from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -47,7 +49,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| key | 导航唯一标识 | `string`  \|  `number` | `-` |
+| key | 导航唯一标识 | `string` \| `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | open | 导航是否默认展开 | `boolean` | `true` |
 | onClick | 导航点击 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
@@ -58,7 +60,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| key | 导航唯一标识 | `string`  \|  `number` | `-` |
+| key | 导航唯一标识 | `string` \| `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | onClick | 导航点击 | `({title: string, value: string \| number}) => void` | `-` |
 

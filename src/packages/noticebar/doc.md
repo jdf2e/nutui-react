@@ -1,16 +1,14 @@
 # NoticeBar 公告栏
 
-## 介绍
-
 用于循环播放展示一组消息通知。
 
-## 安装
+## 引入
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -73,7 +71,6 @@ import { NoticeBar } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ### 垂直滚动
 

@@ -1,13 +1,11 @@
 # Divider
 
-## Intro
-
 Separate content into multiple areas.
 
-## Install
+## Import
 
 ```tsx
-import { Divider } from '@nutui/nutui-react';
+import { Divider } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -74,8 +72,8 @@ User can custom divider style with `style` attribute.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| contentPosition | Content position  |  `left` \| `center` \| `right` | `center` |
-| direction | The direction of divider  | `horizontal` \| `vertical` | `horizontal` |
+| contentPosition | Content position | `left` \| `center` \| `right` | `center` |
+| direction | The direction of divider | `horizontal` \| `vertical` | `horizontal` |
 
 ## Theming
 

@@ -1,16 +1,14 @@
 # Collapse 摺疊面闆
 
-## 介紹
-
 將內容放置在多個摺疊面闆中，點擊面闆標題可展開或收縮內容。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Collapse } from 'nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -74,10 +72,10 @@ import { Collapse } from 'nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| defaultActiveName | 默認展開面闆的 name，非受控 | `Array<string>` \| `string`  | `-` |
-| activeName | 當前展開面闆的 name，受控 | `Array<string>` \| `string`  | `-` |
+| defaultActiveName | 默認展開面闆的 name，非受控 | `Array<string>` \| `string` | `-` |
+| activeName | 當前展開面闆的 name，受控 | `Array<string>` \| `string` | `-` |
 | accordion | 是否開啟手風琴模式 | `boolean` | `false` |
-| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number`  | `180` |
+| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定義展開圖標 | `ReactNode` | `-` |
 
 ## Collapse.Item
@@ -90,7 +88,7 @@ import { Collapse } from 'nutui-react'
 | title | 標題欄左側內容 | `ReactNode` | `-` |
 | disabled | 標題欄是否禁用 | `boolean` | `false` |
 | extra | 標題欄副標題 | `ReactNode` | `-` |
-| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number`  | `180` |
+| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定義展開圖標 | `ReactNode` | `-` |
 | onChange | 切換面闆時觸發 | `(activeName, name, status) => void` | `-` |
 

@@ -1,16 +1,14 @@
 # InfiniteLoading 滾動加載
 
-## 介紹
-
 列錶滾動到底部自動加載更多數據。
 
-## 安裝
+## 引入
 
 ```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

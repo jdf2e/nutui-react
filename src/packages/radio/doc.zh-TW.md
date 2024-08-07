@@ -1,17 +1,14 @@
 # Radio 單選按鈕
 
-## 介紹
-
 用於在一組備選項中進行單選
 
-## 安裝
+## 引入
 
 ```tsx
-import { Radio } from '@nutui/nutui-react';
-
+import { Radio } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -122,11 +119,11 @@ import { Radio } from '@nutui/nutui-react';
 | checked | 指定當前是否選中 | `boolean` | `-` |
 | defaultChecked | 初始是否選中 | `boolean` | `-` |
 | disabled | 是否禁用選擇 | `boolean` | `false` |
-| value | 攜帶的標識值，用於 Group 模式 | `string`  \|  `number` | `-` |
+| value | 攜帶的標識值，用於 Group 模式 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | <a href="#/icon">圖標名稱</a>，選中前(建議和`activeIcon`一起修改) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">圖標名稱</a>，選中後(建議和`icon`一起修改) | `ReactNode` | `'CheckChecked'` |
-| shape | 形狀 | `button` \| `round` |`round` |
+| shape | 形狀 | `button` \| `round` | `round` |
 | onChange | 選中態變化時觸發 | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group
@@ -135,12 +132,12 @@ import { Radio } from '@nutui/nutui-react';
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 當前選中項的標識符 | `string`  \|  `number` | `-` |
+| value | 當前選中項的標識符 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| shape | 形状 | `button` \| `round` |`-` |
+| shape | 形状 | `button` \| `round` | `-` |
 | direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `vertical` |
-| options | 配置 options 渲染單選按鈕 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | 配置 options 渲染單選按鈕 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | 值變化時觸發 | `(value: string \| number) => void` | `-` |
 
 ## 主題定制
@@ -148,7 +145,6 @@ import { Radio } from '@nutui/nutui-react';
 ### 樣式變量
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
-
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |

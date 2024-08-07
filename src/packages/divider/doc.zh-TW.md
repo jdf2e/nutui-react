@@ -1,16 +1,14 @@
 # Divider 分割線
 
-## 介紹
-
 用於將內容分隔為多個區域。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Divider } from '@nutui/nutui-react';
+import { Divider } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

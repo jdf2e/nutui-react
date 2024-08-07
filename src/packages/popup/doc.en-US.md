@@ -1,13 +1,11 @@
 # Popup
 
-## Intro
-
 Popup layer container, used to display pop-up windows, information prompts, etc.
 
-## Install
+## Import
 
 ```tsx
-import { Popup } from '@nutui/nutui-react';
+import { Popup } from '@nutui/nutui-react'
 ```
 
 ## code demo
@@ -77,7 +75,7 @@ import { Popup } from '@nutui/nutui-react';
 | Props | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
-| zIndex | mask level | `string` \| `number`  | `2000` |
+| zIndex | mask level | `string` \| `number` | `2000` |
 | duration | Mask animation duration, in ms | `number` | `300` |
 | overlayClassName | custom mask class | `string` | `-` |
 | overlayStyle | custom mask style | `CSSProperties` | `-` |

@@ -1,16 +1,14 @@
 # NoticeBar 公告栏
 
-## 介绍
-
 用于循环播放展示一组消息通知。
 
-## 安装
+## 引入
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react-taro';
+import { NoticeBar } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -20,7 +18,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-
 ### 居中布局，不支持滚动
 
 :::demo
@@ -28,7 +25,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### 滚动播放
 
@@ -58,7 +54,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-
 ### 自定义右侧内容
 
 增加自定义右侧区域，区分rightIcon，更灵活配置。
@@ -76,7 +71,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ### 垂直滚动
 

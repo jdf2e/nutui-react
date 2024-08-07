@@ -10,6 +10,7 @@ const Demo2 = () => {
           top: '200px',
           left: '8px',
         }}
+        className="drag-demo21"
       >
         <Button type="primary">X</Button>
       </Drag>
@@ -19,6 +20,7 @@ const Demo2 = () => {
           top: '200px',
           right: '50px',
         }}
+        className="drag-demo22"
       >
         <Button type="primary">Y</Button>
       </Drag>

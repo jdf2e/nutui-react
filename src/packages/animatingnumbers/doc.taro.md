@@ -1,16 +1,14 @@
 # AnimatingNumbers 数字动画
 
-## 介绍
-
 数字动画集合
 
-## 安装
+## 引入
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### AnimatingNumbers.CountUp - 基础用法
 
@@ -39,7 +37,6 @@ import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 | delay | 等待动画执行时间，单位 ms | `number` | `300` |
 | duration | 动画执行时间，单位 s | `number` | `1` |
 | thousands | 是否有千位分隔符 | `boolean` | `false` |
-
 
 ## 主题定制
 

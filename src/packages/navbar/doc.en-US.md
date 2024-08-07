@@ -1,13 +1,11 @@
 # Navbar
 
-## Intro
-
 Provides navigation capabilities.
 
-## Install
+## Import
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar } from '@nutui/nutui-react'
 ```
 
 ## Code Example

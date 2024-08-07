@@ -1,13 +1,13 @@
 # Switch
 
-## Introduction
+duction
 
 Used to open or close the options.
 
-## Install
+## Import
 
 ```tsx
-import { Switch } from '@nutui/nutui-react';
+import { Switch } from '@nutui/nutui-react'
 ```
 
 ## Demo

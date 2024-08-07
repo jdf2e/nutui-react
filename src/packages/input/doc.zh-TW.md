@@ -1,17 +1,14 @@
 # Input 输入框
 
-## 介绍
-
 用户可以在文本框里输入内容。
 
-## 安装
+## 引入
 
 ```tsx
-import { Input } from '@nutui/nutui-react';
-
+import { Input } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -140,7 +137,7 @@ import { Input } from '@nutui/nutui-react';
 | disabled | 是否禁用 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
 | autoFocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
-| maxLength | 限制最长输入字符 | `string`  \|  `number` | `-` |
+| maxLength | 限制最长输入字符 | `string` \| `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
 | formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |

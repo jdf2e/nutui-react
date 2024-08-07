@@ -1,16 +1,14 @@
 # Form 錶單
 
-## 介紹
-
 用於數據錄入、校驗，支持輸入框、單選框、復選框等類型。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -27,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 關聯展示
 
 :::demo
@@ -34,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### 帶有初始值表單校驗
 
 :::demo
@@ -78,7 +78,7 @@ import { Form } from '@nutui/nutui-react'
 | name | 錶單名稱 | `any` | `-` |
 | label | 标签名 | `ReactNode` | `-` |
 | labelPosition | 錶單項 label 的位置 | `top` \| `left` \| `right` | `right` |
-| starPosition | 必填錶單項 label 的紅色星標位置 |  `left` \| `right` | `left` |
+| starPosition | 必填錶單項 label 的紅色星標位置 | `left` \| `right` | `left` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一錶單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
 
@@ -95,6 +95,7 @@ import { Form } from '@nutui/nutui-react'
 | noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
 | shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 設置收集字段值變更的時機 | `string` | `-` |
+| align | 對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |

@@ -1,16 +1,14 @@
 # Tag 标签
 
-## 介绍
-
 用于标记和分类的标签。
 
-## 安装
+## 引入
 
 ```tsx
-import { Tag } from '@nutui/nutui-react';
+import { Tag } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -43,7 +41,6 @@ import { Tag } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
-
 
 ## Tag
 

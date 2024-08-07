@@ -1,13 +1,11 @@
 # Image
 
-## Intro
-
 Enhanced img tag with multiple image fill modes, support for loading hint, loading failure hint.
 
-## Install
+## Import
 
 ```tsx
-import { Image } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -104,7 +102,7 @@ The Image component provides lazy loading of images, which can be realized by co
 | alt | alternative text | `string` | `-` |
 | width | width, default unit `px` | `string` | `-` |
 | height | height, default unit `px` | `string` | `-` |
-| radius | rounded corner size | `string`  \|  `number` | `-` |
+| radius | rounded corner size | `string` \| `number` | `-` |
 | error | Whether to display image loading failure | `boolean \| ReactNode` | `true` |
 | loading | Whether to show loading images | `boolean \| ReactNode` | `true` |
 | lazy | Whether to lazy load images | `boolean` | `false` |

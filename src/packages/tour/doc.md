@@ -1,16 +1,16 @@
 # Tour 引导
 
-### 介绍
+#
 
 用于引导用户了解产品功能的气泡组件。
 
-## 安装
+## 引入
 
 ```tsx
-import { Tour } from '@nutui/nutui-react';
+import { Tour } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

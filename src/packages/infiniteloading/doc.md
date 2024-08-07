@@ -1,16 +1,14 @@
 # InfiniteLoading 滚动加载
 
-## 介绍
-
 列表滚动到底部自动加载更多数据。
 
-## 安装
+## 引入
 
 ```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

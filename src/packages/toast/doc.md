@@ -1,13 +1,11 @@
 # Toast 吐司
 
-## 介绍
-
 用于轻提示。
 
-## 安装
+## 引入
 
 ```tsx
-import { Toast } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react'
 ```
 
 ## 基础用法
@@ -19,7 +17,6 @@ import { Toast } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
-
 
 ## 展示时长设置
 
@@ -77,8 +74,9 @@ import { Toast } from '@nutui/nutui-react';
 如果传入的参数是字符串类型，`Toast.show`会自动把它作为`content`
 
 Toast.config 全局配置：
+
 ```js
-Toast.config({className: 'demo', contentClassName:'content-demo'})
+Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 ```
 
 ### Ref
@@ -99,7 +97,7 @@ Toast.config({className: 'demo', contentClassName:'content-demo'})
 | \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
-| \--nutui-toast-inner-top | `toast`内容区自定义高度    | `50%` |
+| \--nutui-toast-inner-top | `toast`内容区自定义高度 | `50%` |
 | \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |

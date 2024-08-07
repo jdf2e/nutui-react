@@ -1,16 +1,14 @@
 # Form 表单
 
-## 介绍
-
 用于数据录入、校验，支持输入框、单选框、复选框等类型。
 
-## 安装
+## 引入
 
 ```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -27,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 关联展示
 
 :::demo
@@ -34,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### 带有初始值表单校验
 
 :::demo
@@ -77,7 +77,7 @@ import { Form } from '@nutui/nutui-react'
 | initialValues | 表单初始值 | `any` | `-` |
 | name | 表单名称 | `any` | `-` |
 | labelPosition | 表单项 label 的位置 | `top` \| `left` \| `right` | `right` |
-| starPosition | 必填表单项 label 的红色星标位置 |  `left` \| `right` | `left` |
+| starPosition | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 | onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
 
@@ -95,6 +95,7 @@ import { Form } from '@nutui/nutui-react'
 | noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
 | shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 设置收集字段值变更的时机 | `string` | `-` |
+| align | 对齐方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |

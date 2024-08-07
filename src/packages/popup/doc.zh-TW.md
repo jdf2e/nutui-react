@@ -1,16 +1,14 @@
 # Popup 彈出層
 
-## 介绍
-
 彈出層容器，用於展示彈窗、信息提示等內容
 
-## 安裝
+## 引入
 
 ```tsx
-import { Popup } from '@nutui/nutui-react';
+import { Popup } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -77,7 +75,7 @@ import { Popup } from '@nutui/nutui-react';
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 當前組件是否顯示 | `boolean` | `false` |
-| zIndex | 遮罩層級 | `string` \| `number`  | `2000` |
+| zIndex | 遮罩層級 | `string` \| `number` | `2000` |
 | duration | 遮罩動畫時長，單位秒 | `number` | `0.3` |
 | overlayClassName | 自定義遮罩類名 | `string` | `-` |
 | overlayStyle | 自定義遮罩樣式 | `CSSProperties` | `-` |

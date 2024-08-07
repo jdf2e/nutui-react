@@ -1,16 +1,14 @@
 # Popover 氣泡彈出框
 
-## 介紹
-
 點擊或在元素上懸停鼠標，彈出氣泡卡片浮層。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Popover } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -135,7 +133,7 @@ bottom-end    # 底部右側位置
 | onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
 
 ```
-此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
+此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。
 ```
 
 ### PopoverList 數據結構
@@ -165,7 +163,7 @@ PopoverList 屬性是一個由對象構成的數組，數組中的每個對象�
 | \--nutui-popover-content-background-color | 選項區的背景顏色 | `$white` |
 | \--nutui-popover-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
 | \--nutui-popover-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
-| \--nutui-popover-border-color | top、bottom、left 和 right 的箭頭顏色| `$white` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭頭顏色 | `$white` |
 | \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
 | \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 選項區菜單每一項的 padding 值 | `8px` |

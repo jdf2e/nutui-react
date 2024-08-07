@@ -210,7 +210,7 @@ const InternalCascader: ForwardRefRenderFunction<
 
     if (
       currentValue === undefined ||
-      currentValue !== defaultValue ||
+      ![defaultValue, value].includes(currentValue) ||
       !state.tree.nodes.length
     ) {
       return
@@ -251,7 +251,7 @@ const InternalCascader: ForwardRefRenderFunction<
       }
     }
 
-    if (needToSync.length && currentValue === defaultValue) {
+    if (needToSync.length && [defaultValue, value].includes(currentValue)) {
       const pathNodes = state.tree.getPathNodesByValue(needToSync)
       pathNodes.forEach((node, index) => {
         state.tabsCursor = index
@@ -327,7 +327,7 @@ const InternalCascader: ForwardRefRenderFunction<
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange(optionParams, pathNodes)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
         setInnerValue(optionParams)
       }
       setOptionsData(state.panes)
@@ -352,7 +352,7 @@ const InternalCascader: ForwardRefRenderFunction<
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item?.value)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
       }
       return
     }

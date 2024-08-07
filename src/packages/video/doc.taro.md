@@ -1,16 +1,14 @@
 # Video 视频播放器
 
-## 介绍
-
 借助 Taro Video 标签实现的视频播放器，可以透传使用 Taro Video 的属性。
 
-## 安装
+## 引入
 
 ```tsx
-import { Video } from '@nutui/nutui-react-taro';
+import { Video } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

@@ -1,16 +1,14 @@
 # Swiper 轮播
 
-## 介绍
-
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
-## 安装
+## 引入
 
 ```tsx
-import { Swiper } from '@nutui/nutui-react-taro';
+import { Swiper } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -109,7 +107,7 @@ import { Swiper } from '@nutui/nutui-react-taro';
 | loop | 是否循环轮播 | `boolean` | `true` |
 | autoPlay | 自动轮播 | `boolean` | `false` |
 | defaultValue | 初始化索引值 | `number` | `0` |
-| onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
+| onChange | 卡片切换后的回调 | `CommonEventFunction<TaroSwiperProps.onChangeEventDetail>` | `-` |
 
 > Swiper 是对 Taro Swiper 进行的封装，可以支持 Taro Swiper 属性的透传。具体支持属性可参考[https://taro-docs.jd.com/docs/components/viewContainer/swiper](https://taro-docs.jd.com/docs/components/viewContainer/swiper)
 

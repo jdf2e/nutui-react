@@ -1,16 +1,14 @@
 # Steps 步骤条
 
-## 介绍
-
 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 
-## 安装
+## 引入
 
 ```tsx
-import { Steps } from '@nutui/nutui-react-taro';
+import { Steps } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

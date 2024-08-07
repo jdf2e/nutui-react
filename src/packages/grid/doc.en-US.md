@@ -1,10 +1,8 @@
 # Grid
 
-## Intro
-
 Used to separate into equal-width blocks for page navigation.
 
-## Install
+## Import
 
 ```tsx
 import { Grid } from '@nutui/nutui-react'

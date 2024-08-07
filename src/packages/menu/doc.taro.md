@@ -1,16 +1,14 @@
 # Menu 菜单
 
-## 介绍
-
 向下弹出的菜单列表
 
-## 安装
+## 引入
 
 ```tsx
-import { Menu } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -27,6 +25,7 @@ import { Menu } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
+
 ### 自定义菜单内容
 
 使用实例上的 toggle 方法可以手动关闭弹框。
@@ -98,6 +97,7 @@ import { Menu } from '@nutui/nutui-react-taro';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 菜单项标题 | `string` | `当前选中项文字` |
+| titleIcon | 菜单项 icon | `React.ReactNode` | `ArrowUp/ArrowDown` |
 | options | 选项数组 | `array` | `-` |
 | disabled | 是否禁用菜单 | `boolean` | `false` |
 | columns | 可以设置一行展示多少列 options | `number` | `1` |

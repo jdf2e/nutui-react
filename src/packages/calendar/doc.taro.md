@@ -1,16 +1,14 @@
 # Calendar 日历
 
-## 介绍
-
 日历，可平铺/弹窗展示
 
-## 安装
+## 引入
 
 ```tsx
-import { Calendar } from '@nutui/nutui-react-taro';
+import { Calendar } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 

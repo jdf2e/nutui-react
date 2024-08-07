@@ -1,16 +1,14 @@
 # Checkbox 复选按钮
 
-## 介绍
-
 多选按钮用于选择。
 
-## 安装
+## 引入
 
 ```tsx
-import { Checkbox } from '@nutui/nutui-react';
+import { Checkbox } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 非受控
 
@@ -146,12 +144,12 @@ import { Checkbox } from '@nutui/nutui-react';
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
-| icon | 选中前| `ReactNode` | `'CheckNormal'` |
+| icon | 选中前 | `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
-| indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
+| indeterminateIcon | 半选状态 | `ReactNode` | `'CheckDisabled'` |
 | label | 复选框的文本内容 | `string` | `-` |
-| value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
-| shape | 形状 | `button` \| `round` |`round` |
+| value | 标识值，用于 Group 模式 | `string` \| `number` | `-` |
+| shape | 形状 | `button` \| `round` | `round` |
 | onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
@@ -163,8 +161,8 @@ import { Checkbox } from '@nutui/nutui-react';
 | value | 当前选中项的标识符 | `string` \| `number` | `-` |
 | defaultValue | 初始选中项的标识符 | `string` \| `number` | `-` |
 | disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean` | `false` |
-| max | 限制最大可选数 | `number` |  `-` |
-| min | 限制至少选择数 | `number` |  `-` |
+| max | 限制最大可选数 | `number` | `-` |
+| min | 限制至少选择数 | `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
 | options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
@@ -176,7 +174,7 @@ import { Checkbox } from '@nutui/nutui-react';
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | toggle | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选 |
-| reverse | 反选 |  `-` |
+| reverse | 反选 | `-` |
 
 ## 主题定制
 

@@ -1,14 +1,11 @@
 # Input
 
-## Intro
-
 The user can enter content in the text box.
 
-## Install
+## Import
 
 ```tsx
-import { Input } from '@nutui/nutui-react';
-
+import { Input } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -165,5 +162,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-input-disabled-color | disable color | `#c8c9cc` |
 | \--nutui-input-background-color | background color | `$color-background-overlay` |
 | \--nutui-input-border-radius | border radius | `0` |
-| \--nutui-input-font-size | font size  | `$font-size-base` |
+| \--nutui-input-font-size | font size | `$font-size-base` |
 | \--nutui-input-padding | input padding | `10px 25px` |

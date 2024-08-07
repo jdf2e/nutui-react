@@ -1,16 +1,14 @@
 # Button 按钮
 
-## 介绍
-
 按钮用于触发一个操作，如提交表单。
 
-## 安装
+## 引入
 
 ```tsx
-import { Button } from '@nutui/nutui-react';
+import { Button } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 按钮类型
 

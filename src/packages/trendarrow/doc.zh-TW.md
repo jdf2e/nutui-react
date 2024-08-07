@@ -1,16 +1,14 @@
 # TrendArrow 指標趨勢
 
-## 介紹
-
 帶有箭頭指示的百分比數字,用以展示指標趨勢
 
-## 安裝
+## 引入
 
 ```tsx
-import { TrendArrow } from '@nutui/nutui-react';
+import { TrendArrow } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -93,7 +91,6 @@ import { TrendArrow } from '@nutui/nutui-react';
 | dropColor | 嚮下箭頭顏色 | `string` | `#64b578` |
 | riseIcon | 自定義嚮上箭頭icon | `React.ReactNode` | `<TriangleUp/>` |
 | dropIcon | 自定義嚮下箭頭icon | `React.ReactNode` | `<TriangleDown/>` |
-
 
 ## 主題定制
 

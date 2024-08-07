@@ -1,16 +1,14 @@
 # Indicator 指示器
 
-## 介紹
-
 顯示一個任務或流程的進度，常用於開通流程。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Indicator } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 

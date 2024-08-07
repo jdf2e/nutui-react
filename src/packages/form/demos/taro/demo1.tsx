@@ -1,11 +1,12 @@
 import React from 'react'
 import {
-  Form,
   Button,
-  InputNumber,
+  Form,
   Input,
+  InputNumber,
   TextArea,
 } from '@nutui/nutui-react-taro'
+import { FormItemRuleWithoutValidator } from '@/packages/formitem/types'
 
 const Demo1 = () => {
   return (
@@ -14,19 +15,28 @@ const Demo1 = () => {
         labelPosition="right"
         footer={
           <>
-            <Button formType="submit" block type="primary">
+            <Button nativeType="submit" block type="primary">
               提交
             </Button>
           </>
         }
       >
         <Form.Item
+          align="center"
           required
           label="字段A"
           name="username"
           rules={[
             { max: 5, message: '字段A不能超过5个字' },
             { required: true, message: '请输入字段A' },
+            {
+              validator: (
+                ruleCfg: FormItemRuleWithoutValidator,
+                value: string
+              ) => {
+                return value.length > 5
+              },
+            },
           ]}
         >
           <Input

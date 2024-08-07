@@ -1,10 +1,8 @@
 # Barrage
 
-## Intro
-
 It is used for the rotation display of words and phrases, which is suitable for video or other similar needs.
 
-## Install
+## Import
 
 ```tsx
 import { Barrage } from '@nutui/nutui-react'

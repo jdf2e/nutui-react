@@ -24,6 +24,7 @@ export interface OptionItem {
 
 export interface MenuItemProps extends BasicComponent {
   title: React.ReactNode
+  titleIcon: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
@@ -40,6 +41,7 @@ export interface MenuItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  titleIcon: null,
   columns: 1,
   direction: 'down',
   icon: null,
@@ -237,17 +239,21 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                 >
                   {item.value === innerValue ? (
                     <>
-                      {icon || (
+                      {icon ? (
+                        React.cloneElement(icon, {
+                          className: `nut-menu-container-item-icon ${icon.props.className || ''}`,
+                        })
+                      ) : (
                         <Check
                           color={activeColor}
                           size={16}
-                          className={getIconCName(item.value, value)}
+                          className={`nut-menu-container-item-icon ${getIconCName(item.value, value)}`}
                         />
                       )}
                     </>
                   ) : null}
                   <View
-                    className={getIconCName(item.value, value)}
+                    className={`nut-menu-container-item-title ${getIconCName(item.value, value)}`}
                     style={{
                       color: `${item.value === innerValue ? activeColor : ''}`,
                     }}

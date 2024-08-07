@@ -1,13 +1,11 @@
 # NumberKeyboard
 
-## Intro
-
 Virtual numeric keypad, used for scenarios where payment passwords are entered.
 
-## Install
+## Import
 
 ```tsx
-import { NumberKeyboard } from '@nutui/nutui-react';
+import { NumberKeyboard } from '@nutui/nutui-react'
 ```
 
 ## Demo

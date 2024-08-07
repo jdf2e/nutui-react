@@ -1,10 +1,8 @@
 # Collapse 折叠面板
 
-## Intro
-
 Place the content in multiple folded panels, and click the panel title to expand or shrink the content.
 
-## Install
+## Import
 
 ```tsx
 import { Collapse } from 'nutui-react'
@@ -74,10 +72,10 @@ import { Collapse } from 'nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| defaultActiveName | Default active name, uncontrolled | `Array<string>` \| `string`  | `-` |
-| activeName | Of the currently expanded panel name, controlled | `Array<string>` \| `string`  | `-` |
+| defaultActiveName | Default active name, uncontrolled | `Array<string>` \| `string` | `-` |
+| activeName | Of the currently expanded panel name, controlled | `Array<string>` \| `string` | `-` |
 | accordion | Whether to turn on accordion mode | `boolean` | `false` |
-| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string` \| `number`  | `180` |
+| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string` \| `number` | `180` |
 | expandIcon | Icon | `ReactNode` | `-` |
 
 ## Collapse.Item
@@ -90,7 +88,7 @@ import { Collapse } from 'nutui-react'
 | title | the content on the left side of the title bar supports slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
 | disabled | whether the title bar is disabled | `boolean` | `false` |
 | extra | extra of title bar, support slot incoming (props incoming has higher priority) | `ReactNode` | `-` |
-| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string` \| `number`  | `180` |
+| rotate | Click the rotation angle of collapse and expansion to take effect in the custom icon mode | `string` \| `number` | `180` |
 | expandIcon | Icon | `ReactNode` | `-` |
 | onChange | Triggered when the panel is switched | `(activeName, name, status) => void` | `-` |
 

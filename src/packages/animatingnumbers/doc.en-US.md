@@ -1,10 +1,8 @@
 # AnimatingNumbers
 
-## Intro
-
 Digital animation collection
 
-## Install
+## Import
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react'

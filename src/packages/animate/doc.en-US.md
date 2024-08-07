@@ -1,13 +1,11 @@
 # Animate
 
-## Intro
-
 Add animation effects to child elements
 
-## Install
+## Import
 
 ```tsx
-import { Animate } from '@nutui/nutui-react';
+import { Animate } from '@nutui/nutui-react'
 ```
 
 ## Demo

@@ -1,16 +1,14 @@
 # SideNavBar組件
 
-## 介紹
-
 用於內容選擇和切換
 
-## 安裝
+## 引入
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -47,7 +45,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string`  \|  `number` | `-` |
+| value | 導航唯一標識 | `string` \| `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | open | 導航是否默認展開 | `boolean` | `true` |
 | onClick | 導航點擊 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
@@ -58,7 +56,7 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string`  \|  `number` | `-` |
+| value | 導航唯一標識 | `string` \| `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | onClick | 導航點擊 | `({title: string, value: string \| number}) => void` | `-` |
 

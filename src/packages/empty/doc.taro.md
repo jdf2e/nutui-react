@@ -1,16 +1,14 @@
 # Empty组件
 
-## 介绍
-
 空状态时的占位提示
 
-## 安装
+## 引入
 
 ```tsx
 import { Empty } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -92,3 +90,4 @@ import { Empty } from '@nutui/nutui-react-taro'
 | \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-base` |
 | \--nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
 | \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1.2` |
+| \--nutui-empty-background-color | Empty组件背景色 | `#fff` |

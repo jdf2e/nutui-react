@@ -1,10 +1,8 @@
 # Card
 
-## Intro
-
 Used to display product pictures, prices and other information.
 
-## Install
+## Import
 
 ```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react'
