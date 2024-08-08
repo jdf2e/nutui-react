@@ -14,6 +14,7 @@ const Demo3 = () => {
   }
 
   const setChooseValue = (chooseData: any) => {
+    console.log('onconfirm', chooseData)
     const dateArr = chooseData.map((item: any) => {
       return item[3]
     })
@@ -28,6 +29,7 @@ const Demo3 = () => {
         onClick={openSwitch}
       />
       <Calendar
+        onDayClick={(param) => console.log(param)}
         visible={isVisible}
         defaultValue={date}
         type="multiple"

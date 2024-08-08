@@ -14,6 +14,7 @@ const Demo4 = () => {
   }
 
   const setChooseValue = (chooseData: any) => {
+    console.log(chooseData)
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }
@@ -25,6 +26,9 @@ const Demo4 = () => {
         onClick={openSwitch}
       />
       <Calendar
+        onDayClick={(param) => {
+          console.log(param)
+        }}
         visible={isVisible}
         defaultValue={date}
         type="week"

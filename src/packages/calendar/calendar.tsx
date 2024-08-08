@@ -53,10 +53,6 @@ const defaultProps = {
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
-  renderHeaderButtons: undefined,
-  renderDay: undefined,
-  renderDayTop: undefined,
-  renderDayBottom: undefined,
   onClose: () => {},
   onConfirm: (param: string) => {},
   onDayClick: (data: string) => {},
@@ -101,16 +97,12 @@ export const Calendar = React.forwardRef<
 
   const calendarRef = useRef<any>(null)
 
-  const close = () => {
-    onClose && onClose()
-  }
-
   const choose = (param: string) => {
-    close()
+    onClose?.()
     onConfirm && onConfirm(param)
   }
   const closePopup = () => {
-    close()
+    onClose?.()
   }
 
   const select = (param: string) => {
