@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar, CalendarDay } from '@nutui/nutui-react'
 
+export type CalendarParam = string[] | string[][]
 const padZero = (num: number | string, targetLength = 2) => {
   let str = `${num}`
   while (str.length < targetLength) {
@@ -22,10 +23,13 @@ const Demo9 = () => {
     setIsVisible(false)
   }
 
-  const setChooseValue = (param: string) => {
-    setDate([...[param[0][3], param[1][3]]])
+  const onConfirm = (param: CalendarParam) => {
+    console.log('onConfirm', param)
+    setDate([param[0][3], param[1][3]])
   }
-
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
+  }
   const renderDay = (date: CalendarDay) => {
     return <>{padZero(date.day)}</>
   }
@@ -67,7 +71,8 @@ const Demo9 = () => {
         renderDayBottom={renderDayBottom}
         showToday
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onDayClick={onDayClick}
+        onConfirm={onConfirm}
       />
     </>
   )

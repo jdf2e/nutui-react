@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
+export type CalendarParam = string[] | string[][]
 function isLeapYear(y: number): boolean {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
 }
@@ -67,10 +68,13 @@ const Demo10 = () => {
     setIsVisible(false)
   }
 
-  const setChooseValue = (param: string) => {
+  const onConfirm = (param: CalendarParam) => {
+    console.log('onConfirm', param)
     setDate([...[param[0][3], param[1][3]]])
   }
-
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
+  }
   const goDate = () => {
     if (calendarRef.current) {
       calendarRef.current.scrollToDate('2023-04-01')
@@ -103,19 +107,16 @@ const Demo10 = () => {
       <div className="wrapper">
         <div className="d_div">
           <span className="d_btn" onClick={goDate}>
-            {/* {translated['781b07fd']} */}
             去某个月
           </span>
         </div>
         <div className="d_div">
           <span className="d_btn" onClick={clickBtn}>
-            {/* {translated['1076d771']} */}
             最近七天
           </span>
         </div>
         <div className="d_div">
           <span className="d_btn" onClick={clickBtn1}>
-            {/* {translated['6ab47cd2']} */}
             当月
           </span>
         </div>
@@ -139,7 +140,8 @@ const Demo10 = () => {
         endDate="2024-12-31"
         renderHeaderButtons={renderHeaderButtons}
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onConfirm={onConfirm}
+        onDayClick={onDayClick}
       />
     </>
   )

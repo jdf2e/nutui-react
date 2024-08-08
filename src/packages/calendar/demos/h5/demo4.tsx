@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
+export type CalendarParam = string[] | string[][]
 const Demo4 = () => {
   const [date, setDate] = useState<string[]>([])
   const [isVisible, setIsVisible] = useState(false)
@@ -13,10 +14,13 @@ const Demo4 = () => {
     setIsVisible(false)
   }
 
-  const setChooseValue = (chooseData: any) => {
-    console.log(chooseData)
-    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+  const onConfirm = (data: CalendarParam) => {
+    console.log('onConfirm', data)
+    const dateArr = [...[data[0][3], data[1][3]]]
     setDate([...dateArr])
+  }
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
   }
   return (
     <>
@@ -26,9 +30,7 @@ const Demo4 = () => {
         onClick={openSwitch}
       />
       <Calendar
-        onDayClick={(param) => {
-          console.log(param)
-        }}
+        onDayClick={onDayClick}
         visible={isVisible}
         defaultValue={date}
         type="week"
@@ -36,7 +38,7 @@ const Demo4 = () => {
         endDate="2024-09-10"
         firstDayOfWeek={1}
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onConfirm={onConfirm}
       />
     </>
   )

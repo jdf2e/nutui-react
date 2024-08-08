@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Cell, Calendar, DatePicker, CalendarDay } from '@nutui/nutui-react'
 
+export type CalendarParam = string[] | string[][]
 const padZero = (num: number | string, targetLength = 2) => {
   let str = `${num}`
   while (str.length < targetLength) {
@@ -23,9 +24,9 @@ const Demo6 = () => {
   const [desc2, setDesc2] = useState('20:00:00')
   const desc = useRef(0)
 
-  const setChooseValue = (chooseData: any) => {
+  const onConfirm = (chooseData: CalendarParam) => {
     console.log(
-      'setChooseValue',
+      'onConfirm',
       [...[chooseData[0][3], chooseData[1][3]]],
       chooseData
     )
@@ -94,7 +95,7 @@ const Demo6 = () => {
           setDatePickerAbled(d)
         }}
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onConfirm={onConfirm}
       >
         <div className="nut-calendar-btns">
           <div

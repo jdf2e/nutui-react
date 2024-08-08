@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
+export type CalendarParam = string[] | string[][]
 const Demo7 = () => {
   const [date, setDate] = useState('')
   const [isVisible, setIsVisible] = useState(false)
@@ -13,10 +14,13 @@ const Demo7 = () => {
     setIsVisible(false)
   }
 
-  const setChooseValue = (param: string) => {
-    setDate(param[3])
+  const onConfirm = (param: CalendarParam) => {
+    console.log('onConfirm', param)
+    setDate(param[3] as string)
   }
-
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
+  }
   return (
     <>
       <Cell
@@ -31,7 +35,8 @@ const Demo7 = () => {
         endDate=""
         autoBackfill
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onDayClick={onDayClick}
+        onConfirm={onConfirm}
       />
     </>
   )

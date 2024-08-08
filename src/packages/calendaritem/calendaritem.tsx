@@ -675,7 +675,7 @@ export const CalendarItem = React.forwardRef<
 
   const confirm = () => {
     if (type !== 'range' || curDateArr.length === 2) {
-      onConfirm?.([...curDateArr] as CalendarParam)
+      onConfirm?.(curDateArrRef.current)
       popup && onUpdate?.()
     }
   }
