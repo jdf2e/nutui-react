@@ -33,10 +33,6 @@ type CalendarRef = {
   scrollToDate: (date: string) => void
 }
 
-interface CalendarState {
-  currDateArray: any
-}
-
 export interface CalendarItemProps extends PopupProps {
   type: CalendarType
   autoBackfill: boolean
@@ -147,9 +143,8 @@ export const CalendarItem = React.forwardRef<
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
 
-  const [state] = useState<CalendarState>({
-    currDateArray: [],
-  })
+  const [curDateArr, setCurDateArr] = useState<CalendarParam>([])
+  const curDateArrRef = useRef<CalendarParam>([])
 
   const getMonthsPanel = () => {
     return monthsPanel.current as HTMLDivElement
@@ -477,7 +472,7 @@ export const CalendarItem = React.forwardRef<
   }, [])
 
   const resetRender = () => {
-    state.currDateArray.splice(0)
+    curDateArr.splice(0)
     monthsData.splice(0)
     initData()
   }
@@ -626,11 +621,12 @@ export const CalendarItem = React.forwardRef<
 
     const days = [...month.curData]
     const [y, m] = month.curData
+    days[0] = String(days[0])
     days[2] =
       typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
     days[3] = `${days[0]}/${days[1]}/${days[2]}`
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
-
+    let curDateArr_ = JSON.parse(JSON.stringify(curDateArr))
     if (type === 'multiple') {
       if (currentDate.length > 0) {
         let hasIndex: any = ''
@@ -640,17 +636,17 @@ export const CalendarItem = React.forwardRef<
           }
         })
         if (isFirst) {
-          state.currDateArray.push([...days])
+          curDateArr_.push(days)
         } else if (hasIndex !== '') {
           ;(currentDate as string[]).splice(hasIndex, 1)
-          state.currDateArray.splice(hasIndex, 1)
+          curDateArr.splice(hasIndex, 1)
         } else {
           ;(currentDate as string[]).push(days[3])
-          state.currDateArray.push([...days])
+          curDateArr_.push(days)
         }
       } else {
         ;(currentDate as string[]).push(days[3])
-        state.currDateArray = [[...days]]
+        curDateArr_ = [days]
       }
     } else if (type === 'range') {
       const curDataLength = Object.values(currentDate).length
@@ -658,13 +654,13 @@ export const CalendarItem = React.forwardRef<
         Array.isArray(currentDate) &&
           currentDate.splice(0) &&
           currentDate.push(days[3])
-        state.currDateArray = [[...days]]
+        curDateArr_ = [days]
       } else if (Utils.compareDate(currentDate[0], days[3])) {
         Array.isArray(currentDate) && currentDate.push(days[3])
-        state.currDateArray = [...state.currDateArray, [...days]]
+        curDateArr_.push(days)
       } else {
         Array.isArray(currentDate) && currentDate.unshift(days[3])
-        state.currDateArray = [[...days], ...state.currDateArray]
+        curDateArr_.unshift(days)
       }
     } else if (type === 'week') {
       const weekArr = Utils.getWeekDate(y, m, `${day.day}`, firstDayOfWeek)
@@ -677,17 +673,18 @@ export const CalendarItem = React.forwardRef<
       Array.isArray(currentDate) &&
         currentDate.splice(0) &&
         currentDate.push(...weekArr)
-      state.currDateArray = [
+      curDateArr_ = [
         Utils.formatResultDate(weekArr[0]),
         Utils.formatResultDate(weekArr[1]),
       ]
     } else {
       setCurrentDate(days[3])
-      state.currDateArray = [...days]
+      curDateArr_ = [...days]
     }
-
+    setCurDateArr(curDateArr_)
+    curDateArrRef.current = curDateArr_
     if (!isFirst) {
-      onDayClick && onDayClick(state.currDateArray)
+      onDayClick && onDayClick(curDateArrRef.current)
       if (autoBackfill || !popup) {
         confirm()
       }
@@ -696,34 +693,10 @@ export const CalendarItem = React.forwardRef<
     setMonthsData(monthsData.slice())
   }
 
-  const resetSelectedValue = () => {
-    const itemData = (dateArr: string) => {
-      days = dateArr.split('/')
-      days[3] = `${days[0]}/${days[1]}/${days[2]}`
-      days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
-      return days
-    }
-    let days = []
-    if (Array.isArray(currentDate) && currentDate) {
-      days = currentDate.map((item) => {
-        return itemData(item)
-      })
-    } else {
-      days = itemData(currentDate as string)
-    }
-    return days
-  }
-
   const confirm = () => {
-    if (
-      (type === 'range' && state.currDateArray.length === 2) ||
-      type !== 'range'
-    ) {
-      const chooseData = state.currDateArray.slice(0)
-      onConfirm && onConfirm(chooseData)
-      if (popup) {
-        onUpdate && onUpdate()
-      }
+    if ((type === 'range' && curDateArr.length === 2) || type !== 'range') {
+      onConfirm && onConfirm([...curDateArr] as CalendarParam)
+      popup && onUpdate?.()
     }
   }
 
@@ -759,7 +732,9 @@ export const CalendarItem = React.forwardRef<
       isEnd(getCurrDate(day, month), currentDate as string[])
     )
   }
-
+  useEffect(() => {
+    curDateArrRef.current = curDateArr
+  }, [curDateArr])
   const renderHeader = () => {
     return (
       <div className={headerClasses}>
