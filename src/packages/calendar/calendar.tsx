@@ -3,7 +3,12 @@ import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
-import type { CalendarDay, CalendarType, CalendarRef } from './types'
+import type {
+  CalendarDay,
+  CalendarType,
+  CalendarRef,
+  CalendarParam,
+} from './types'
 import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
@@ -29,9 +34,9 @@ export interface CalendarProps {
   renderDayTop?: (date: CalendarDay) => string | JSX.Element
   renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onClose?: () => void
-  onConfirm?: (param: string) => void
-  onDayClick?: (data: string) => void
-  onPageChange?: (param: string) => void
+  onConfirm?: (data: CalendarParam) => void
+  onDayClick?: (data: CalendarParam) => void
+  onPageChange?: (data: CalendarParam) => void
 }
 
 const defaultProps = {
@@ -54,9 +59,9 @@ const defaultProps = {
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
   onClose: () => {},
-  onConfirm: (param: string) => {},
-  onDayClick: (data: string) => {},
-  onPageChange: (param: string) => {},
+  onConfirm: (param: CalendarParam) => {},
+  onDayClick: (data: CalendarParam) => {},
+  onPageChange: (param: CalendarParam) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -97,7 +102,7 @@ export const Calendar = React.forwardRef<
 
   const calendarRef = useRef<any>(null)
 
-  const choose = (param: string) => {
+  const choose = (param: CalendarParam) => {
     onClose?.()
     onConfirm && onConfirm(param)
   }
@@ -105,7 +110,7 @@ export const Calendar = React.forwardRef<
     onClose?.()
   }
 
-  const select = (param: string) => {
+  const select = (param: CalendarParam) => {
     onDayClick && onDayClick(param)
   }
 
@@ -113,7 +118,7 @@ export const Calendar = React.forwardRef<
     calendarRef.current?.scrollToDate(date)
   }
 
-  const yearMonthChange = (param: string) => {
+  const yearMonthChange = (param: CalendarParam) => {
     onPageChange && onPageChange(param)
   }
 

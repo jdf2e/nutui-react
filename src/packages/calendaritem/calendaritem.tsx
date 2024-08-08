@@ -26,6 +26,7 @@ import {
   CalendarMonthInfo,
   CalendarValue,
   CalendarType,
+  CalendarParam,
 } from '../calendar/types'
 
 type CalendarRef = {
@@ -58,10 +59,10 @@ export interface CalendarItemProps extends PopupProps {
   renderDay: (date: CalendarDay) => string | JSX.Element
   renderDayTop: (date: CalendarDay) => string | JSX.Element
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
-  onConfirm: (data: string) => void
+  onConfirm: (data: CalendarParam) => void
   onUpdate: () => void
-  onDayClick: (data: string) => void
-  onPageChange: (data: any) => void
+  onDayClick: (data: CalendarParam) => void
+  onPageChange: (data: CalendarParam) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -84,10 +85,10 @@ const defaultProps = {
   renderDay: undefined,
   renderDayTop: undefined,
   renderDayBottom: undefined,
-  onConfirm: (data: string) => {},
+  onConfirm: (data: CalendarParam) => {},
   onUpdate: () => {},
-  onDayClick: (data: string) => {},
-  onPageChange: (data: any) => {},
+  onDayClick: (data: CalendarParam) => {},
+  onPageChange: (data: CalendarParam) => {},
 } as unknown as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
