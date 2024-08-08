@@ -17,8 +17,8 @@ const Demo1 = () => {
   }
 
   const setChooseValue = (param: string) => {
-    // setDate(param[3])
-    // setDateWeek(param[4])
+    setDate(param[3])
+    setDateWeek(param[4])
   }
 
   const select = (param: string) => {

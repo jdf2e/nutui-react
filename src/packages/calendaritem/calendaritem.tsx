@@ -77,10 +77,6 @@ const defaultProps = {
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
-  renderHeaderButtons: undefined,
-  renderDay: undefined,
-  renderDayTop: undefined,
-  renderDayBottom: undefined,
   onConfirm: (data: CalendarParam) => {},
   onUpdate: () => {},
   onDayClick: (data: CalendarParam) => {},
@@ -145,14 +141,6 @@ export const CalendarItem = React.forwardRef<
 
   const [curDateArr, setCurDateArr] = useState<CalendarParam>([])
   const curDateArrRef = useRef<CalendarParam>([])
-
-  const getMonthsPanel = () => {
-    return monthsPanel.current as HTMLDivElement
-  }
-
-  const getMonthsRef = () => {
-    return monthsRef.current as HTMLDivElement
-  }
 
   const resetDefaultValue = () => {
     if (
@@ -244,7 +232,7 @@ export const CalendarItem = React.forwardRef<
     const currentMonthsData = monthsData[current]
     const [year, month] = currentMonthsData.curData
     if (currentMonthsData.title === yearMonthTitle) return
-    onPageChange && onPageChange([year, month, `${year}-${month}`])
+    onPageChange && onPageChange([`${year}`, `${month}`, `${year}-${month}`])
     setYearMonthTitle(currentMonthsData.title)
   }
 
@@ -448,9 +436,11 @@ export const CalendarItem = React.forwardRef<
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = getMonthsRef().clientHeight
-        getMonthsPanel().style.height = `${containerHeight}px`
-        getMonthsRef().scrollTop = monthsData[current].scrollTop
+        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
+        ;(monthsPanel.current as HTMLDivElement).style.height =
+          `${containerHeight}px`
+        ;(monthsRef.current as HTMLDivElement).scrollTop =
+          monthsData[current].scrollTop
       }
     })
 
@@ -471,19 +461,9 @@ export const CalendarItem = React.forwardRef<
     initData()
   }, [])
 
-  const resetRender = () => {
-    curDateArr.splice(0)
-    monthsData.splice(0)
-    initData()
-  }
-
   useEffect(() => {
     setCurrentDate(resetDefaultValue() || [])
   }, [defaultValue])
-
-  useEffect(() => {
-    popup && resetRender()
-  }, [currentDate])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
@@ -694,8 +674,8 @@ export const CalendarItem = React.forwardRef<
   }
 
   const confirm = () => {
-    if ((type === 'range' && curDateArr.length === 2) || type !== 'range') {
-      onConfirm && onConfirm([...curDateArr] as CalendarParam)
+    if (type !== 'range' || curDateArr.length === 2) {
+      onConfirm?.([...curDateArr] as CalendarParam)
       popup && onUpdate?.()
     }
   }
@@ -703,16 +683,11 @@ export const CalendarItem = React.forwardRef<
   const classes = classNames(
     {
       [`${classPrefix}-title`]: !popup,
-      [`${classPrefix}-nofooter`]: !!autoBackfill,
+      [`${classPrefix}-nofooter`]: autoBackfill,
     },
     classPrefix,
     className
   )
-
-  const headerClasses = classNames({
-    [`${classPrefix}-header`]: true,
-    [`${classPrefix}-header-title`]: !popup,
-  })
 
   // 是否有开始提示
   const isStartTip = (day: CalendarDay, month: CalendarMonthInfo) => {
@@ -735,9 +710,12 @@ export const CalendarItem = React.forwardRef<
   useEffect(() => {
     curDateArrRef.current = curDateArr
   }, [curDateArr])
+
   const renderHeader = () => {
     return (
-      <div className={headerClasses}>
+      <div
+        className={`${classPrefix}-header${popup ? '' : ` ${classPrefix}-header-title`}`}
+      >
         {showTitle && (
           <div className={`${classPrefix}-title`}>
             {title || locale.calendaritem.title}
@@ -863,7 +841,7 @@ export const CalendarItem = React.forwardRef<
       <div className={classes} style={style}>
         {renderHeader()}
         {renderContent()}
-        {popup && !autoBackfill ? renderFooter() : ''}
+        {popup && !autoBackfill && renderFooter()}
       </div>
     </>
   )
