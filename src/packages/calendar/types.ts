@@ -1,6 +1,7 @@
 export interface CalendarDay {
   day: string | number
   type: string
+  [key: string]: string | number
 }
 
 export interface CalendarMonthInfo {

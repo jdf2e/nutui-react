@@ -105,7 +105,7 @@ import { Calendar } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Is it visible | `boolean` | `false` |
-| type | type, 'single' and 'range' | `string` | `single` |
+| type | type, 'single' and 'range' | `single` \| `range` \| `multiple` \| `week` | `single` |
 | popup | Whether to display the pop-up status | `boolean` | `true` |
 | autoBackfill | Automatic backfill | `boolean` | `false` |
 | title | show title | `string` | `日期选择` |
@@ -125,9 +125,9 @@ import { Calendar } from '@nutui/nutui-react'
 | renderDay | day info | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayTop | something above day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | something under day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
-| onDayClick | trigger when click the day element | `(data: string) => {}` | `-` |
-| onPageChange | page change ,one month makes as a page | `(param: string) => {}` | `-` |
-| onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` | `-` |
+| onDayClick | trigger when click the day element | `(data: string[] \| string[][]) => {}` | `-` |
+| onPageChange | page change ,one month makes as a page | `(param: string[] \| string[][]) => {}` | `-` |
+| onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string[] \| string[][]) => {}` | `-` |
 | onClose | trigger close | `() => {}` | `-` |
 
 ### CalendarDay

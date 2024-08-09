@@ -105,7 +105,7 @@ import { Calendar } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
-| type | 類型，日期選擇'single'，區間選擇'range' | `string` | `single` |
+| type | 類型，日期選擇'single'，區間選擇'range' | `single` \| `range` \| `multiple` \| `week` | `single` |
 | popup | 是否彈窗狀態展示 | `boolean` | `true` |
 | autoBackfill | 自動回填 | `boolean` | `false` |
 | title | 顯示標題 | `string` | `日期選擇` |
@@ -125,9 +125,9 @@ import { Calendar } from '@nutui/nutui-react'
 | renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayTop | 日期頂部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
-| onDayClick | 點擊/選擇後觸發 | `(data: string) => {}` | `-` |
-| onPageChange | 年月子標題到達頂部時觸發 | `(param: string) => {}` | `-` |
-| onConfirm | 選擇之後或是點擊確認按鈕觸發 | `(param: string) => {}` | `-` |
+| onDayClick | 點擊/選擇後觸發 | `(data: string[] \| string[][]) => {}` | `-` |
+| onPageChange | 年月子標題到達頂部時觸發 | `(param: string[] \| string[][]) => {}` | `-` |
+| onConfirm | 選擇之後或是點擊確認按鈕觸發 | `(param: string[] \| string[][]) => {}` | `-` |
 | onClose | 關閉時觸發 | `() => {}` | `-` |
 
 ### CalendarDay
