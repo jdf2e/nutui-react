@@ -19,7 +19,6 @@ import {
   getCurrDate,
   isStart,
   isEnd,
-  isStartAndEnd,
 } from '../calendar/utils'
 import {
   CalendarDay,
@@ -54,7 +53,7 @@ export interface CalendarItemProps extends PopupProps {
   renderHeaderButtons: () => string | JSX.Element
   renderDay: (date: CalendarDay) => string | JSX.Element
   renderDayTop: (date: CalendarDay) => string | JSX.Element
-  renderDayBottom: (date: CalendarDay) => string | JSX.Element
+  renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onConfirm: (data: CalendarParam) => void
   onUpdate: () => void
   onDayClick: (data: CalendarParam) => void
@@ -166,9 +165,7 @@ export const CalendarItem = React.forwardRef<
   const monthsPanel = useRef<HTMLDivElement>(null)
   const viewAreaRef = useRef<HTMLDivElement>(null)
   const [avgHeight, setAvgHeight] = useState(0)
-
   let viewHeight = 0
-
   const classPrefix = 'nut-calendar'
   const dayPrefix = 'nut-calendar-day'
 
@@ -669,8 +666,6 @@ export const CalendarItem = React.forwardRef<
         confirm()
       }
     }
-
-    setMonthsData(monthsData.slice())
   }
 
   const confirm = () => {
@@ -762,59 +757,63 @@ export const CalendarItem = React.forwardRef<
                       {month.title}
                     </div>
                     <div className={`${classPrefix}-days`}>
-                      {month.monthData.map((day: CalendarDay, i: number) => (
-                        <div
-                          className={[
-                            `${classPrefix}-day`,
-                            getClasses(day, month),
-                          ].join(' ')}
-                          onClick={() => {
-                            chooseDay(day, month)
-                          }}
-                          key={i}
-                        >
-                          <div className={`${classPrefix}-day-day`}>
-                            {renderDay ? renderDay(day) : day.day}
-                          </div>
-                          {!isStartTip(day, month) && renderDayTop && (
-                            <div className={`${classPrefix}-day-info-top`}>
-                              {renderDayTop(day)}
+                      {month.monthData.map((day: CalendarDay, i: number) => {
+                        const isNotTip =
+                          !isStartTip(day, month) && !isEndTip(day, month)
+                        const shouldShowBottomInfo =
+                          isNotTip &&
+                          renderDayBottom &&
+                          !isCurrDay(month, day.day)
+                        const shouldShowTodayInfo =
+                          isNotTip &&
+                          !renderDayBottom &&
+                          showToday &&
+                          isCurrDay(month, day.day)
+                        return (
+                          <div
+                            className={[
+                              `${classPrefix}-day`,
+                              getClasses(day, month),
+                            ].join(' ')}
+                            onClick={() => {
+                              chooseDay(day, month)
+                            }}
+                            key={i}
+                          >
+                            <div className={`${classPrefix}-day-day`}>
+                              {renderDay ? renderDay(day) : day.day}
                             </div>
-                          )}
-                          {!isStartTip(day, month) &&
-                            !isEndTip(day, month) &&
-                            renderDayBottom && (
+                            {!isStartTip(day, month) && renderDayTop && (
+                              <div className={`${classPrefix}-day-info-top`}>
+                                {renderDayTop(day)}
+                              </div>
+                            )}
+                            {shouldShowBottomInfo && (
                               <div className={`${classPrefix}-day-info-bottom`}>
                                 {renderDayBottom(day)}
                               </div>
                             )}
-                          {!isStartTip(day, month) &&
-                            !isEndTip(day, month) &&
-                            !renderDayBottom &&
-                            showToday &&
-                            isCurrDay(month, day.day) && (
-                              <div className={`${classPrefix}-day-info-curr`}>
-                                {locale.calendaritem.today}
+                            {shouldShowTodayInfo &&
+                              isCurrDay(month, day.day) && (
+                                <div className={`${classPrefix}-day-info-curr`}>
+                                  {locale.calendaritem.today}
+                                </div>
+                              )}
+                            {isStartTip(day, month) && (
+                              <div
+                                className={`${classPrefix}-day-info ${classPrefix}-day-info-top`}
+                              >
+                                {startText || locale.calendaritem.start}
                               </div>
                             )}
-                          {isStartTip(day, month) && (
-                            <div
-                              className={`${classPrefix}-day-info ${
-                                isStartAndEnd(currentDate as string[])
-                                  ? `${classPrefix}-day-info-top`
-                                  : ''
-                              }`}
-                            >
-                              {startText || locale.calendaritem.start}
-                            </div>
-                          )}
-                          {isEndTip(day, month) && (
-                            <div className={`${classPrefix}-day-info`}>
-                              {endText || locale.calendaritem.end}
-                            </div>
-                          )}
-                        </div>
-                      ))}
+                            {isEndTip(day, month) && (
+                              <div className={`${classPrefix}-day-info`}>
+                                {endText || locale.calendaritem.end}
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
                     </div>
                   </div>
                 )
