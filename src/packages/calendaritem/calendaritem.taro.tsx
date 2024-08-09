@@ -27,6 +27,7 @@ import {
   CalendarMonthInfo,
   CalendarValue,
   CalendarType,
+  CalendarParam,
 } from '../calendar/types'
 
 type CalendarRef = {
@@ -59,10 +60,10 @@ export interface CalendarItemProps extends PopupProps {
   renderDay: (date: CalendarDay) => string | JSX.Element
   renderDayTop: (date: CalendarDay) => string | JSX.Element
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
-  onConfirm: (data: string) => void
+  onConfirm: (data: CalendarParam) => void
   onUpdate: () => void
-  onDayClick: (data: string) => void
-  onPageChange: (data: any) => void
+  onDayClick: (data: CalendarParam) => void
+  onPageChange: (data: CalendarParam) => void
 }
 const defaultProps = {
   ...ComponentDefaults,

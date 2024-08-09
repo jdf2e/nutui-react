@@ -3,7 +3,12 @@ import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import type { CalendarDay, CalendarType, CalendarRef } from './types'
+import type {
+  CalendarDay,
+  CalendarType,
+  CalendarRef,
+  CalendarParam,
+} from './types'
 import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
@@ -29,9 +34,9 @@ export interface CalendarProps {
   renderDayTop?: (date: CalendarDay) => string | JSX.Element
   renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onClose?: () => void
-  onConfirm?: (param: string) => void
-  onDayClick?: (data: string) => void
-  onPageChange?: (param: string) => void
+  onConfirm?: (param: CalendarParam) => void
+  onDayClick?: (data: CalendarParam) => void
+  onPageChange?: (param: CalendarParam) => void
 }
 
 const defaultProps = {
@@ -53,14 +58,10 @@ const defaultProps = {
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
-  renderHeaderButtons: undefined,
-  renderDay: undefined,
-  renderDayTop: undefined,
-  renderDayBottom: undefined,
   onClose: () => {},
-  onConfirm: (param: string) => {},
-  onDayClick: (data: string) => {},
-  onPageChange: (param: string) => {},
+  onConfirm: (param: CalendarParam) => {},
+  onDayClick: (data: CalendarParam) => {},
+  onPageChange: (param: CalendarParam) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -101,27 +102,20 @@ export const Calendar = React.forwardRef<
 
   const calendarRef = useRef<any>(null)
 
-  const close = () => {
-    onClose && onClose()
-  }
-
-  const choose = (param: string) => {
-    close()
+  const choose = (param: CalendarParam) => {
+    onClose?.()
     onConfirm && onConfirm(param)
   }
   const closePopup = () => {
-    close()
+    onClose?.()
   }
-
-  const select = (param: string) => {
+  const select = (param: CalendarParam) => {
     onDayClick && onDayClick(param)
   }
-
   const scrollToDate = (date: string) => {
     calendarRef.current?.scrollToDate(date)
   }
-
-  const yearMonthChange = (param: string) => {
+  const yearMonthChange = (param: CalendarParam) => {
     onPageChange && onPageChange(param)
   }
 
