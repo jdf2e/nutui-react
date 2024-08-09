@@ -182,7 +182,6 @@ export const CalendarItem = React.forwardRef<
         ...(getDaysStatus('active', y, m) as CalendarDay[]),
       ]
       const cssHeight = 39 + (days.length > 35 ? 384 : 320)
-
       let scrollTop = 0
       if (monthData.length > 0) {
         const monthEle = monthData[monthData.length - 1]
@@ -195,7 +194,6 @@ export const CalendarItem = React.forwardRef<
         cssHeight,
         scrollTop,
       }
-
       if (type === 'next') {
         if (
           !endDates ||
@@ -273,13 +271,14 @@ export const CalendarItem = React.forwardRef<
   const setDefaultDate = () => {
     let defaultData: CalendarValue = []
     // 日期转化为数组，限制初始日期。判断时间范围
+    const currentDate_ = JSON.parse(JSON.stringify(currentDate))
     if (type === 'range' && Array.isArray(currentDate)) {
-      if (currentDate.length > 0) {
+      if (currentDate_.length > 0) {
         if (propStartDate && Utils.compareDate(currentDate[0], propStartDate)) {
-          currentDate.splice(0, 1, propStartDate)
+          currentDate_.splice(0, 1, propStartDate)
         }
         if (propEndDate && Utils.compareDate(propEndDate, currentDate[1])) {
-          currentDate.splice(1, 1, propEndDate)
+          currentDate_.splice(1, 1, propEndDate)
         }
         defaultData = [
           ...splitDate(currentDate[0]),
@@ -287,10 +286,10 @@ export const CalendarItem = React.forwardRef<
         ]
       }
     } else if (type === 'multiple' && Array.isArray(currentDate)) {
-      if (currentDate.length > 0) {
+      if (currentDate_.length > 0) {
         const defaultArr = [] as string[]
         const obj: Record<string, unknown> = {}
-        currentDate.forEach((item: string) => {
+        currentDate_.forEach((item: string) => {
           if (
             propStartDate &&
             !Utils.compareDate(item, propStartDate) &&
@@ -303,19 +302,22 @@ export const CalendarItem = React.forwardRef<
             }
           }
         })
-        currentDate.splice(0) && currentDate.push(...defaultArr)
+        currentDate_.splice(0) && currentDate_.push(...defaultArr)
         defaultData = [...splitDate(defaultArr[0])]
       }
     } else if (type === 'week' && Array.isArray(currentDate)) {
-      if (currentDate.length > 0) {
-        const [y, m, d] = splitDate(currentDate[0])
+      if (currentDate_.length > 0) {
+        const [y, m, d] = splitDate(currentDate_[0])
         const weekArr = Utils.getWeekDate(y, m, d, firstDayOfWeek)
-        currentDate.splice(0) && currentDate.push(...weekArr)
-        if (propStartDate && Utils.compareDate(currentDate[0], propStartDate)) {
-          currentDate.splice(0, 1, propStartDate)
+        currentDate_.splice(0) && currentDate_.push(...weekArr)
+        if (
+          propStartDate &&
+          Utils.compareDate(currentDate_[0], propStartDate)
+        ) {
+          currentDate_.splice(0, 1, propStartDate)
         }
-        if (propEndDate && Utils.compareDate(propEndDate, currentDate[1])) {
-          currentDate.splice(1, 1, propEndDate)
+        if (propEndDate && Utils.compareDate(propEndDate, currentDate_[1])) {
+          currentDate_.splice(1, 1, propEndDate)
         }
         defaultData = [
           ...splitDate(currentDate[0]),
@@ -323,24 +325,25 @@ export const CalendarItem = React.forwardRef<
         ]
       }
     } else if (currentDate) {
-      if (currentDate.length > 0) {
+      if (currentDate_.length > 0) {
         if (
           propStartDate &&
-          Utils.compareDate(currentDate as string, propStartDate)
+          Utils.compareDate(currentDate_ as string, propStartDate)
         ) {
           defaultData = [...splitDate(propStartDate as string)]
         } else if (
           propEndDate &&
-          !Utils.compareDate(currentDate as string, propEndDate)
+          !Utils.compareDate(currentDate_ as string, propEndDate)
         ) {
           defaultData = [...splitDate(propEndDate as string)]
         } else {
-          defaultData = [...splitDate(currentDate as string)]
+          defaultData = [...splitDate(currentDate_ as string)]
         }
       } else {
         defaultData = []
       }
     }
+    setCurrentDate(currentDate_)
     return defaultData
   }
 
@@ -604,10 +607,11 @@ export const CalendarItem = React.forwardRef<
     days[3] = `${days[0]}/${days[1]}/${days[2]}`
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
     let curDateArr_ = JSON.parse(JSON.stringify(curDateArr))
+    let currentDate_ = JSON.parse(JSON.stringify(currentDate))
     if (type === 'multiple') {
-      if (currentDate.length > 0) {
+      if (currentDate_.length > 0) {
         let hasIndex: any = ''
-        ;(currentDate as string[]).forEach((item: any, index: number) => {
+        ;(currentDate_ as string[]).forEach((item: any, index: number) => {
           if (item === days[3]) {
             hasIndex = index
           }
@@ -615,28 +619,28 @@ export const CalendarItem = React.forwardRef<
         if (isFirst) {
           curDateArr_.push(days)
         } else if (hasIndex !== '') {
-          ;(currentDate as string[]).splice(hasIndex, 1)
+          ;(currentDate_ as string[]).splice(hasIndex, 1)
           curDateArr.splice(hasIndex, 1)
         } else {
-          ;(currentDate as string[]).push(days[3])
+          ;(currentDate_ as string[]).push(days[3])
           curDateArr_.push(days)
         }
       } else {
-        ;(currentDate as string[]).push(days[3])
+        ;(currentDate_ as string[]).push(days[3])
         curDateArr_ = [days]
       }
     } else if (type === 'range') {
       const curDataLength = Object.values(currentDate).length
       if (curDataLength === 2 || curDataLength === 0) {
-        Array.isArray(currentDate) &&
-          currentDate.splice(0) &&
-          currentDate.push(days[3])
+        Array.isArray(currentDate_) &&
+          currentDate_.splice(0) &&
+          currentDate_.push(days[3])
         curDateArr_ = [days]
-      } else if (Utils.compareDate(currentDate[0], days[3])) {
-        Array.isArray(currentDate) && currentDate.push(days[3])
+      } else if (Utils.compareDate(currentDate_[0], days[3])) {
+        Array.isArray(currentDate_) && currentDate_.push(days[3])
         curDateArr_.push(days)
       } else {
-        Array.isArray(currentDate) && currentDate.unshift(days[3])
+        Array.isArray(currentDate_) && currentDate_.unshift(days[3])
         curDateArr_.unshift(days)
       }
     } else if (type === 'week') {
@@ -647,17 +651,18 @@ export const CalendarItem = React.forwardRef<
       if (propEndDate && Utils.compareDate(propEndDate, weekArr[1])) {
         weekArr.splice(1, 1, propEndDate)
       }
-      Array.isArray(currentDate) &&
-        currentDate.splice(0) &&
-        currentDate.push(...weekArr)
+      Array.isArray(currentDate_) &&
+        currentDate_.splice(0) &&
+        currentDate_.push(...weekArr)
       curDateArr_ = [
         Utils.formatResultDate(weekArr[0]),
         Utils.formatResultDate(weekArr[1]),
       ]
     } else {
-      setCurrentDate(days[3])
+      currentDate_ = days[3]
       curDateArr_ = [...days]
     }
+    setCurrentDate(currentDate_)
     setCurDateArr(curDateArr_)
     curDateArrRef.current = curDateArr_
     if (!isFirst) {
@@ -669,7 +674,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   const confirm = () => {
-    if (type !== 'range' || curDateArr.length === 2) {
+    if (type !== 'range' || curDateArrRef.current.length === 2) {
       onConfirm?.(curDateArrRef.current)
       popup && onUpdate?.()
     }
