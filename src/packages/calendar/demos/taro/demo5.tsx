@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar, CalendarDay } from '@nutui/nutui-react-taro'
 
+export type CalendarParam = string[] | string[][]
 const Demo5 = () => {
   const [date, setDate] = useState<string[]>([])
   const [isVisible, setIsVisible] = useState(false)
@@ -13,11 +14,13 @@ const Demo5 = () => {
     setIsVisible(false)
   }
 
-  const setChooseValue = (chooseData: any) => {
+  const onConfirm = (chooseData: CalendarParam) => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }
-
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
+  }
   const disableDate = (date: CalendarDay) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
@@ -39,9 +42,11 @@ const Demo5 = () => {
         disableDate={disableDate}
         firstDayOfWeek={1}
         onClose={closeSwitch}
-        onConfirm={setChooseValue}
+        onDayClick={onDayClick}
+        onConfirm={onConfirm}
       />
     </>
   )
 }
+
 export default Demo5

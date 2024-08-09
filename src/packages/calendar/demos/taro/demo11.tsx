@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react-taro'
 
+export type CalendarParam = string[] | string[][]
 const Demo11 = () => {
   const [date, setDate] = useState<string[]>(['2023-06-03', '2023-06-16'])
 
-  const setChooseValue = (param: string) => {
-    setDate([...[param[0][3], param[1][3]]])
+  const onConfirm = (param: CalendarParam) => {
+    console.log('onConfirm', param)
+    setDate([param[0][3], param[1][3]])
   }
-
-  const yearMonthChange = (param: string) => {
+  const onDayClick = (param: CalendarParam) => {
+    console.log('onDayClick', param)
+  }
+  const yearMonthChange = (param: CalendarParam) => {
     console.log(param)
   }
 
@@ -27,12 +31,13 @@ const Demo11 = () => {
           popup={false}
           defaultValue={date}
           type="range"
-          startDate="2023-5-23"
+          startDate="2023-05-23"
           endDate="2023-08-01"
           startText={<div>test</div>}
           endText="leave"
           autoBackfill
-          onConfirm={setChooseValue}
+          onConfirm={onConfirm}
+          onDayClick={onDayClick}
           onPageChange={yearMonthChange}
         />
       </div>
