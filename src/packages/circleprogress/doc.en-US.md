@@ -1,13 +1,11 @@
 # CricleProgress
 
-
-
 Circular progress bar component
 
 ## Import
 
 ```tsx
-import { CircleProgress } from '@nutui/nutui-react';
+import { CircleProgress } from '@nutui/nutui-react'
 ```
 
 ## Demo

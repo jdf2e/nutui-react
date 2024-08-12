@@ -10,7 +10,7 @@ export interface CellProps extends BasicComponent {
   description: ReactNode
   extra: ReactNode
   radius: string | number
-  align: string
+  align: 'flex-start' | 'center' | 'flex-end'
   isLast: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }

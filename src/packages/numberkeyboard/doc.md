@@ -1,12 +1,11 @@
 # NumberKeyboard 数字键盘
 
-
 虚拟数字键盘，用于输入支付密码的场景。
 
 ## 引入
 
 ```tsx
-import { NumberKeyboard } from '@nutui/nutui-react';
+import { NumberKeyboard } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -73,7 +72,7 @@ import { NumberKeyboard } from '@nutui/nutui-react';
 | type | 键盘模式, default：默认样式 rightColumn：带右侧栏 | `'default' \| 'rightColumn'` | `default` |
 | random | 随机数 | `boolean` | `false` |
 | custom | 自定义键盘额外的键, 数组形式最多支持添加 2 个, 超出默认取前 2 项 | `string[]` | `-` |
-| confirmText | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等，搭配 `rightColumn` 使用| `string` | `完成` |
+| confirmText | 自定义完成按钮文字，如"支付"，"下一步"，"提交"等，搭配 `rightColumn` 使用 | `string` | `完成` |
 | onChange | 点击按键时触发 | `(value: string) => void` | `-` |
 | onDelete | 点击删除键时触发 | `-` | `-` |
 | onClose | 点击关闭按钮或非键盘区域时触发 | `-` | `-` |

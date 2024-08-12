@@ -1,12 +1,13 @@
 # Space组件
 
 #
+
 元素排列中保持相同的宽度。
 
 ### 引入
 
 ```tsx
-import { Space } from '@nutui/nutui-react-taro';
+import { Space } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

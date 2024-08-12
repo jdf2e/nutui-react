@@ -7,7 +7,7 @@
 ## 引入
 
 ```tsx
-import { Tour } from '@nutui/nutui-react';
+import { Tour } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

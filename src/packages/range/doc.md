@@ -1,12 +1,11 @@
 # Range 区间选择器
 
-
 滑动输入条，用于在给定的范围内选择一个值。
 
 ## 引入
 
 ```tsx
-import { Range } from '@nutui/nutui-react';
+import { Range } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

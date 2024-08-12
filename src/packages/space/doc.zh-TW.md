@@ -7,7 +7,7 @@
 ### 引入
 
 ```tsx
-import { Space } from '@nutui/nutui-react';
+import { Space } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

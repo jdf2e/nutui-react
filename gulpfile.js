@@ -59,7 +59,7 @@ gulp.task('watch', function () {
   )
 })
 argvs.forEach((argv) => {
-  const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react/packages/${argv}`
+  const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo/nutui-react/packages/${argv}`
   gulp.task(`${argv}copyDemo`, function (path) {
     console.log(path, 'path')
     return gulp

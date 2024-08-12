@@ -1,11 +1,12 @@
 const fse = require('fs-extra')
 const config = require('../../src/config.json')
+
 const targetBaseUrl = `${process.cwd()}/packages`
 const taroConfig = `${targetBaseUrl}/nutui-taro-demo/src/app.config.ts`
 
 // 创建 config
 const createConfig = async () => {
-  let configRef = []
+  const configRef = []
 
   return new Promise((res, rej) => {
     config.nav.map((item) => {
@@ -40,7 +41,10 @@ export default defineAppConfig ({
     navigationBarBackgroundColor: '#fff',
     navigationBarTitleText: 'NutUI-React',
     navigationBarTextStyle: 'black'
-  }
+  },
+  components: ['pages/index/index', ...(subPackages.map(subPackage => {
+    return subPackage.pages.map(page => \`\${subPackage.root}/\${page}\`)
+  }).flat())]
 })`,
     'utf8'
   )

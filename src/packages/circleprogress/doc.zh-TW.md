@@ -1,13 +1,11 @@
 # CircleProgress 環形進度條
 
-
-
 展示操作或任務的當前進度。
 
 ## 引入
 
 ```tsx
-import { CircleProgress } from '@nutui/nutui-react';
+import { CircleProgress } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

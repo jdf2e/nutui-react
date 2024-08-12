@@ -1,7 +1,5 @@
 # ImagePreview
 
-
-
 Support full screen preview videos and images, support functional call.
 
 ## Import
@@ -76,11 +74,11 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Whether to show preview | `boolean` | `false` |
 | videos | Videos Array(Videos are before images) | `Array<Object>` | `[]` |
-| images | Images array | `{ src: string }[]` | `[]` |
+| images | Images array | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | Autoplay time, zero means not autoplay | `number` \| `string` | `3000` |
 | defaultValue | Init no | `number` | `1` |
 | value | value,controlled | `number` | `1` |
-| pagination | Whether to show pagination  | `boolean` | `true` |
+| pagination | Whether to show pagination | `boolean` | `true` |
 | indicator | Whether to show indicator | `boolean` | `false` |
 | indicatorColor | indicator color | `string` | `#fff` |
 | closeOnContentClick | Click image to exit preview | `boolean` | `false` |

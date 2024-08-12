@@ -1,13 +1,11 @@
 # ActionSheet 动作面板
 
-
-
 从底部弹出的动作菜单面板。
 
 ## 引入
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react';
+import { ActionSheet } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

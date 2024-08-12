@@ -1,7 +1,5 @@
 # Form
 
-
-
 It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
 
 ## Import
@@ -27,6 +25,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
+
 ### Related Display
 
 :::demo
@@ -34,6 +33,7 @@ import { Form } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
+
 ### with initial value form validation
 
 :::demo
@@ -50,7 +50,7 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
-### Validate Trigger 
+### Validate Trigger
 
 :::demo
 
@@ -79,7 +79,7 @@ import { Form } from '@nutui/nutui-react'
 | shouldUpdate | Update logic | `boolean` | `false` |
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
-| starPosition | The red star position of the required form item label |  `left` \| `right` | `left` |
+| starPosition | The red star position of the required form item label | `left` \| `right` | `left` |
 | onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
 | onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
@@ -95,6 +95,7 @@ import { Form } from '@nutui/nutui-react'
 | errorMessageAlign | Error text alignment | `center` \| `right` \| `left` | `left` |
 | initialValue | set the default value of child elements | `any` | `-` |
 | trigger | Set the timing to collect field value changes | `string` | `-` |
+| align | Alignment | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
 | getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
 | validateTrigger | When to validate the value of children node | `string \| string[]` | `onChange` |

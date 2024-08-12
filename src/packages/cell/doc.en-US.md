@@ -1,7 +1,5 @@
 # Cell
 
-
-
 The cell is a single display item in the list.
 
 ## Import
@@ -92,7 +90,7 @@ The 'divider' property allows you to keep the lower edge from being displayed be
 | description | Description | `ReactNode` | `-` |
 | extra | Extra | `ReactNode` | `-` |
 | radius | Corner radius | `string` | `6px` |
-| align | Alignment in the vertical direction, with an optional value of`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
+| align | Alignment in the vertical direction | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## Theming

@@ -1,12 +1,11 @@
 # Uploader 上传
 
-
 用于将本地的图片或文件上传至服务器。
 
 ## 引入
 
 ```tsx
-import { Uploader } from '@nutui/nutui-react';
+import { Uploader } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -18,7 +17,7 @@ import { Uploader } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
->
+
 > 在使用Uploader组件上传文件时，可能会遇到响应文件信息中文乱码的问题。这通常发生在客户端与服务器端在处理文件编码时不一致的情况下。为了避免这种问题，建议确保服务器端读取文件的编码格式与客户端保持一致。
 
 ```javascript
@@ -26,13 +25,20 @@ import React from 'react'
 import { Uploader } from '@nutui/nutui-react'
 // Server Demo
 app.post('/upload', upload.single('file'), (req, res) => {
-  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8';
-  const fileContent = iconv.decode(Buffer.from(JSON.stringify(req.file), 'binary'), fileEncoding);
-  res.json({ success: true, message: 'File uploaded successfully', data: JSON.parse(fileContent) });
-});
+  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8'
+  const fileContent = iconv.decode(
+    Buffer.from(JSON.stringify(req.file), 'binary'),
+    fileEncoding
+  )
+  res.json({
+    success: true,
+    message: 'File uploaded successfully',
+    data: JSON.parse(fileContent),
+  })
+})
 
 // Client Demo
-<Uploader url={uploadUrl} headers={{'x-file-encoding': 'UTF-8'}} />
+;<Uploader url={uploadUrl} headers={{ 'x-file-encoding': 'UTF-8' }} />
 ```
 
 ### 基础用法
@@ -148,8 +154,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | method | 上传请求的 http method | `string` | `post` |
 | previewType | 上传列表的内建样式，支持两种基本样式 picture、list | `string` | `picture` |
 | capture | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接调起摄像头 | `string` | `false` |
-| maxFileSize | 可以设定最大上传文件的大小（字节） | `number` \| `string`   | `Number.MAX_VALUE` |
-| maxCount | 文件上传数量限制 | `number` \| `string`  | `1` |
+| maxFileSize | 可以设定最大上传文件的大小（字节） | `number` \| `string` | `Number.MAX_VALUE` |
+| maxCount | 文件上传数量限制 | `number` \| `string` | `1` |
 | fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件 | `boolean` | `true` |
 | accept | 允许上传的文件类型，[详细说明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
@@ -161,7 +167,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | withCredentials | 支持发送 cookie 凭证信息 | `Boolean` | `false` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
-| timeout | 超时时间，单位为毫秒 | `number` \| `string`  | `1000 * 30` |
+| timeout | 超时时间，单位为毫秒 | `number` \| `string` | `1000 * 30` |
 | beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |

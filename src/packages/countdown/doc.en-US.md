@@ -1,7 +1,5 @@
 # CountDown
 
-
-
 Used to display the countdown value in real time, and precision supports milliseconds.
 
 ## Import
@@ -133,9 +131,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-countdown-display | 倒计时的布局方式 | `flex` |
+| \--nutui-countdown-display | display mode of countdown | `flex` |
 | \--nutui-countdown-color | Countdown text color | `$color-primary` |
-| \--nutui-countdown-font-size | Countdown font size | `10px` |
+| \--nutui-countdown-font-size | The font size of the countdown | `10px` |
 | \--nutui-countdown-font-weight | Countdown font weight | `400` |
 | \--nutui-countdown-width | Time area width of the countdown | `20px` |
 | \--nutui-countdown-height | Time area height of the countdown | `14px` |

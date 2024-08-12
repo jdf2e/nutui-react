@@ -1,7 +1,5 @@
 # Grid
 
-
-
 Used to separate into equal-width blocks for page navigation.
 
 ## Import

@@ -33,7 +33,7 @@ export interface InputNumberProps extends BasicComponent {
   formatter?: (value?: string | number) => string
   onPlus: (e: ITouchEvent) => void
   onMinus: (e: ITouchEvent) => void
-  onOverlimit: (e: ITouchEvent) => void
+  onOverlimit: (e: ITouchEvent | ChangeEvent<HTMLInputElement>) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange: (
@@ -189,8 +189,25 @@ export const InputNumber: FunctionComponent<
     if (text === '-') return null
     return text
   }
+  const clampValue = (valueStr: string | null) => {
+    if (valueStr === null) return defaultValue
+    const val = Number(parseFloat(valueStr || '0').toFixed(digits))
+    return Math.max(Number(min), Math.min(Number(max), val))
+  }
+  const handleValueChange = (
+    valueStr: string | null,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const val = clampValue(valueStr)
+    // input暂不触发onOverlimit
+    // if (val !== Number(e.target.value)) {
+    //   onOverlimit?.(e)
+    // }
+    if (val !== Number(shadowValue)) {
+      onChange?.(val, e)
+    }
+  }
   const handleInputChange = (e: any) => {
-    if (!focused && isHarmony) return
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
@@ -201,11 +218,9 @@ export const InputNumber: FunctionComponent<
         setShadowValue(defaultValue)
       }
     } else {
-      setShadowValue(valueStr as any)
+      setShadowValue(clampValue(valueStr) as any)
     }
-    if (!async) {
-      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
-    }
+    !async && handleValueChange(valueStr, e)
   }
   const handleFocus = (e: any) => {
     setFocused(true)
@@ -214,15 +229,22 @@ export const InputNumber: FunctionComponent<
         ? bound(Number(shadowValue), Number(min), Number(max)).toString()
         : ''
     )
-    onFocus && onFocus(e)
+    onFocus?.(e)
   }
   const handleBlur = (e: any) => {
     setFocused(false)
-    onBlur && onBlur(e)
-    if (async) {
-      const valueStr = parseValue(e.target.value)
-      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+    onBlur?.(e)
+    const valueStr = parseValue(e.target.value)
+    if (valueStr === null) {
+      if (allowEmpty) {
+        setShadowValue(null)
+      } else {
+        setShadowValue(defaultValue)
+      }
+    } else {
+      setShadowValue(clampValue(valueStr) as any)
     }
+    async && handleValueChange(valueStr, e)
   }
 
   return (

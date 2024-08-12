@@ -1,12 +1,11 @@
 # Tabs 选项卡切换
 
-
 常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式
 
 ## 引入
 
 ```tsx
-import { Tabs } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -211,7 +210,7 @@ import { Tabs } from '@nutui/nutui-react';
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 标签选中色 | `string` | `#1A1A1A` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
-| activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
+| activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
 | title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
 | align | 标题对齐方式 | `left` \| `right` | `-` |
@@ -260,4 +259,4 @@ import { Tabs } from '@nutui/nutui-react';
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向标题线条的宽度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
-| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色| `#fff` |
+| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色 | `#fff` |

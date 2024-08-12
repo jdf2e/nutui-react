@@ -1,13 +1,11 @@
 # Cascader
 
-
-
 The cascader component is used for the selection of multi-level data. The typical scene is the selection of provinces and cities.
 
 ## Import
 
 ```tsx
-import { Cascader } from '@nutui/nutui-react';
+import { Cascader } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -90,14 +88,14 @@ Use configprovider to set custom CSS
 | closeIconPosition | Cancel the button position and inherit the popup component | `string` | `top-right` |
 | closeIcon | Customize the close button and inherit the popup component | `ReactNode` | `close` |
 | closeable | Whether to display the close button and inherit the popup component | `boolean` | `true` |
-| onLoad | Dynamic loading callback, which takes effect when dynamic loading is enabled |  `(node: any, resolve: any) => void` | `-` |
+| onLoad | Dynamic loading callback, which takes effect when dynamic loading is enabled | `(node: any, resolve: any) => void` | `-` |
 | onChange | Triggered when the selected value changes | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | Triggered when the selected item changes | `(value: CascaderValue, params: any) => void` | `-` |
 
 ### Ref
 
 | Method | Description | Parameter |
-|------| --- | --- |
+| --- | --- | --- |
 | open | show Cascader | `() => void` |
 | close | Close Cascader | `() => void` |
 

@@ -16,6 +16,7 @@ const Demo1 = () => {
         }
       >
         <Form.Item
+          align="center"
           required
           label="字段A"
           name="username"

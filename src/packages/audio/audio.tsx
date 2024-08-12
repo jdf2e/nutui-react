@@ -76,16 +76,16 @@ export const Audio: FunctionComponent<
     percent: 0,
     duration: '00:00:00',
     second: 0,
-    hanMuted: props.muted,
-    playing: props.autoPlay,
+    hanMuted: muted,
+    playing: autoPlay,
     handPlaying: false,
   })
   const classPrefix = 'nut-audio'
   const handleEnded = (e: SyntheticEvent<HTMLAudioElement>) => {
-    if (props.loop) {
+    if (loop) {
       console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
-      props.onEnd && props.onEnd(e)
+      onEnd?.(e)
     }
   }
 
@@ -130,25 +130,25 @@ export const Audio: FunctionComponent<
     if (statusRef.current.currentTime > 0 && AudioRef.current) {
       statusRef.current.currentTime--
       AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onBack && props.onBack(AudioRef.current)
+      onBack?.(AudioRef.current)
     }
   }
   const handleForward = () => {
     if (AudioRef.current) {
       statusRef.current.currentTime++
       AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onForward && props.onForward(AudioRef.current)
+      onForward?.(AudioRef.current)
     }
   }
   const handleMute = () => {
     if (AudioRef.current) {
       AudioRef.current.muted = !AudioRef.current.muted
-      props.onMute && props.onMute(AudioRef.current)
+      onMute?.(AudioRef.current)
     }
   }
   const handlePause = (e: SyntheticEvent<HTMLAudioElement>) => {
     setPlaying(false)
-    props.onPause && props.onPause(e)
+    onPause?.(e)
   }
 
   const formatSeconds = (value: string) => {
@@ -252,12 +252,12 @@ export const Audio: FunctionComponent<
 
   const handleCanplay = (e: SyntheticEvent<HTMLAudioElement>) => {
     setIsCanPlay(true)
-    if (props.autoPlay && !playing) {
+    if (autoPlay && !playing) {
       AudioRef && AudioRef.current && AudioRef.current.play()
     }
     if (AudioRef.current) {
       statusRef.current.second = AudioRef.current.duration || 0
-      props.onCanPlay && props.onCanPlay(e)
+      onCanPlay?.(e)
     }
   }
   const onTimeupdate = (e: SyntheticEvent<HTMLAudioElement>) => {
@@ -290,5 +290,4 @@ export const Audio: FunctionComponent<
   )
 }
 
-Audio.defaultProps = defaultProps
 Audio.displayName = 'NutAudio'

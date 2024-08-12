@@ -1,6 +1,5 @@
 # Card 商品卡片
 
-
 商品卡片，用于展示商品的图片、价格等信息
 
 ## 引入
@@ -55,7 +54,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

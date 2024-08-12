@@ -1,7 +1,5 @@
 # Signature 簽名
 
-
-
 基於 Canvas 的簽名組件
 
 ## 引入
