@@ -23,7 +23,6 @@ const Demo7 = () => {
 
       <Cell align="center">
         <Progress percent={value} />
-        <Text style={{ marginLeft: '5px' }}>{value}%</Text>
       </Cell>
       <Cell align="center">
         <Button
@@ -51,6 +50,7 @@ const Demo7 = () => {
         >
           增加
         </Button>
+        <Text style={{ marginLeft: pxTransform(16) }}>{value}%</Text>
       </Cell>
     </Cell.Group>
   )
