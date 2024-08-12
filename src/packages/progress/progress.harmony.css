@@ -8,7 +8,7 @@
   flex: auto;
   border-radius: 12px;
   height: 10px;
-  background: #F7F8FC;
+  background: #f5f6fa;
 }
 .nut-progress-outer .nut-progress-active:before {
   content: "";
@@ -27,7 +27,7 @@
   justify-content: center;
   transition: all 0.4s;
   border-radius: 12px;
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  background-color: #ff0f23;
 }
 .nut-progress-text {
   display: flex;
@@ -36,10 +36,11 @@
   top: -4px;
   bottom: -4px;
   transition: all 0.4s;
-  transform: translate(-50%);
 }
 .nut-progress-text-inner {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -48,7 +49,7 @@
   border-radius: 5px;
   font-size: 9px;
   line-height: 1;
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  background: #ff0f23;
 }
 @keyframes progressActive {
   0% {

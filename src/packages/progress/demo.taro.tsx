@@ -1,7 +1,5 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -12,6 +10,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -50,33 +49,32 @@ const ProgressDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated.customStyle}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.noShowPercentage}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <View className="h2">{translated.customContent}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo3 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.customContent}</View>
+            <Demo4 />
+          </>
+        )}
         <View className="h2">{translated.customSize}</View>
         <Demo5 />
         <View className="h2">{translated.statusDisplay}</View>
         <Demo6 />
+
         <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        <View className="h2">{translated.lazy}</View>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.lazy}</View>
+            <Demo8 />
+          </>
+        )}
       </ScrollView>
     </>
   )
