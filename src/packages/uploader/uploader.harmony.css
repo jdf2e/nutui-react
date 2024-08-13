@@ -1,3 +1,76 @@
+.nut-progress {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.nut-progress-outer {
+  flex: auto;
+  border-radius: 12px;
+  height: 10px;
+  background: #f5f6fa;
+}
+.nut-progress-outer .nut-progress-active:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  animation: progressActive 2s ease-in-out infinite;
+}
+.nut-progress-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.4s;
+  border-radius: 12px;
+  background-color: #ff0f23;
+}
+.nut-progress-text {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  transition: all 0.4s;
+}
+.nut-progress-text-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  padding: 0 5px;
+  border-radius: 5px;
+  font-size: 9px;
+  line-height: 1;
+  background: #ff0f23;
+}
+@keyframes progressActive {
+  0% {
+    background: rgba(255, 255, 255, 0.1);
+    width: 0;
+  }
+  20% {
+    background: rgba(255, 255, 255, 0.5);
+    width: 0;
+  }
+  to {
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+  }
+}
+
+[dir=rtl] .nut-progress-text,
+.nut-rtl .nut-progress-text {
+  transform: translate(50%);
+}
+
 .nut-uploader {
   position: relative;
   display: flex;
@@ -11,7 +84,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #F7F8FC;
+  background: #f5f6fa;
   width: 100px;
   height: 100px;
   border: 0px;
@@ -22,14 +95,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #888B94;
+  color: #888b94;
 }
 .nut-uploader-icon i {
-  color: #888B94;
+  color: #888b94;
   margin-bottom: 6px;
 }
 .nut-uploader-icon .nut-icon {
-  color: #888B94;
+  color: #888b94;
   margin-bottom: 6px;
 }
 .nut-uploader-icon-tip {
@@ -49,15 +122,15 @@
   cursor: not-allowed;
 }
 .nut-uploader-upload-disabled {
-  background: #F7F8FC;
-  color: #C2C4CC;
+  background: #f5f6fa;
+  color: #c2c4cc;
 }
 .nut-uploader-upload-disabled .nut-uploader-icon i {
-  color: #C2C4CC;
+  color: #c2c4cc;
   margin-bottom: 6px;
 }
 .nut-uploader-upload-disabled .nut-uploader-icon .nut-icon {
-  color: #C2C4CC;
+  color: #c2c4cc;
   margin-bottom: 6px;
 }
 .nut-uploader-preview {
@@ -84,7 +157,7 @@
   margin-bottom: 6px;
 }
 .nut-uploader-preview-progress-msg {
-  color: #888B94;
+  color: #888b94;
   font-size: 12px;
 }
 .nut-uploader-preview.list {
@@ -102,7 +175,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background-color: #F7F8FC;
+  background-color: #f7f8fc;
 }
 .nut-uploader-preview-list .nut-uploader-preview-img-file-name {
   display: flex;
@@ -138,7 +211,7 @@
   overflow: hidden;
 }
 .nut-uploader-preview-img i {
-  color: #1A1A1A;
+  color: #1a1a1a;
 }
 .nut-uploader-preview-img .tips {
   position: absolute;
@@ -154,14 +227,16 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0 5px;
-  background: undefined;
+  background: rgba(0, 0, 0, 0.4);
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .nut-uploader-preview-img-c {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   position: initial;
   border-radius: 4px;
