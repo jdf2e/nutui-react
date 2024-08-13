@@ -73,8 +73,6 @@
 
 .nut-uploader {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
 }
 .nut-uploader-slot {
   position: relative;
@@ -84,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f6fa;
+  background-color: #f5f6fa;
   width: 100px;
   height: 100px;
   border: 0px;
@@ -106,6 +104,7 @@
   margin-bottom: 6px;
 }
 .nut-uploader-icon-tip {
+  color: #888b94;
   font-size: 12px;
 }
 .nut-uploader-input {
@@ -122,7 +121,7 @@
   cursor: not-allowed;
 }
 .nut-uploader-upload-disabled {
-  background: #f5f6fa;
+  background-color: #f5f6fa;
   color: #c2c4cc;
 }
 .nut-uploader-upload-disabled .nut-uploader-icon i {
@@ -150,7 +149,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 4px;
 }
 .nut-uploader-preview-progress i {
@@ -227,7 +226,7 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0 5px;
-  background: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -3,8 +3,8 @@
 
 .nut-uploader {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
 
   &-slot {
     position: relative;
@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $uploader-background;
+    background-color: $uploader-background;
     width: $uploader-image-width;
     height: $uploader-image-height;
     border: $uploader-image-border;
@@ -36,6 +36,7 @@
     }
 
     &-tip {
+      color: $uploader-image-color;
       font-size: $uploader-image-icon-tip-font-size;
     }
   }
@@ -56,7 +57,7 @@
   }
 
   &-upload-disabled {
-    background: $uploader-background-disabled;
+    background-color: $uploader-background-disabled;
     color: $uploader-image-disabled;
 
     .nut-uploader-icon {
@@ -85,7 +86,7 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      background: $uploader-preview-progress-background;
+      background-color: $uploader-preview-progress-background;
       border-radius: $uploader-image-border-radius;
 
       i {
@@ -170,7 +171,7 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         padding: $uploader-preview-tips-padding;
-        background: $uploader-preview-tips-background;
+        background-color: $uploader-preview-tips-background;
         @include oneline-ellipsis();
       }
 

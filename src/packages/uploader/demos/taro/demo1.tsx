@@ -13,15 +13,15 @@ const Demo1 = () => {
         url={uploadUrl}
         onStart={onStart}
         style={{
-          marginInlineEnd: '10px',
-          marginBottom: '10px',
+          marginRight: 5,
+          marginBottom: 5,
         }}
       />
       <Uploader
         url={uploadUrl}
         uploadLabel="商品主图"
         onStart={onStart}
-        style={{ marginInlineEnd: '10px' }}
+        style={{ marginRight: 5 }}
       />
       <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
     </Cell>

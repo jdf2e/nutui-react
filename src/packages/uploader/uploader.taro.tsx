@@ -23,6 +23,8 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FileItem } from './file-item.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
+import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 /** 图片的尺寸 */
 interface sizeType {
@@ -173,6 +175,7 @@ const InternalUploader: ForwardRefRenderFunction<
     xhrState,
     data,
     preview,
+    style,
     deletable,
     maxCount,
     maxFileSize,
@@ -478,9 +481,11 @@ const InternalUploader: ForwardRefRenderFunction<
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
-
+  const uploaderStyle: any = harmony()
+    ? style
+    : { display: 'flex', flexWrap: 'wrap', ...style }
   return (
-    <View className={classes} {...restProps}>
+    <View className={classes} style={uploaderStyle} {...restProps}>
       {(children || previewType === 'list') && (
         <View className="nut-uploader-slot">
           <>
@@ -517,8 +522,19 @@ const InternalUploader: ForwardRefRenderFunction<
             }`}
           >
             <View className="nut-uploader-icon">
-              {uploadIcon}
-              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+              {harmonyAndRn() ? (
+                <View
+                  style={{
+                    width: pxTransform(12),
+                    height: pxTransform(12),
+                    backgroundColor: '#808080',
+                    marginBottom: pxTransform(5),
+                  }}
+                />
+              ) : (
+                uploadIcon
+              )}
+              <View className="nut-uploader-icon-tip">{uploadLabel}</View>
             </View>
             <Button className="nut-uploader-input" onClick={_chooseImage} />
           </View>
