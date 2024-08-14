@@ -5,7 +5,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
 import Demo1 from './demos/taro/demo1'
-// import Demo2 from './demos/taro/demo2'
+import Demo2 from './demos/taro/demo2'
 // import Demo3 from './demos/taro/demo3'
 // import Demo4 from './demos/taro/demo4'
 // import Demo5 from './demos/taro/demo5'
@@ -75,7 +75,7 @@ const UploaderDemo = () => {
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2">{translated.basic}</View>
-        {/* <Demo2 /> */}
+        <Demo2 />
         <View className="h2">{translated.uploadStatus}</View>
         {/* <Demo3 /> */}
         <View className="h2">{translated.uploadListDefault}</View>

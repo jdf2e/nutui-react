@@ -5,7 +5,8 @@ import {
   Link as LinkIcon,
   Loading,
 } from '@nutui/icons-react-taro'
-import { Image, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import { Image } from '../image/image.taro'
 import Progress from '@/packages/progress/index.taro'
 import { FileItem } from '@/packages/uploader/file-item.taro'
 import { ERROR } from '@/packages/uploader/utils'
