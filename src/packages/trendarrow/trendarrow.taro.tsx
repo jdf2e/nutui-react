@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
+import { View, Text } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TrendArrowProps extends BasicComponent {
@@ -96,16 +97,16 @@ export const TrendArrow: FunctionComponent<
   const renderContent = (left: boolean) => {
     const classNameSuffix = !left ? 'icon-after' : 'icon-before'
     return (
-      <span
+      <Text
         className={`${classPrefix}-${classNameSuffix} ${classPrefix}-value`}
         style={calcStyle}
       >
         {calcRate}
-      </span>
+      </Text>
     )
   }
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+    <View className={`${classPrefix} ${className}`} style={style} {...rest}>
       {!left && renderContent(!left)}
       {Number(value) !== 0 && (
         <>
@@ -117,7 +118,7 @@ export const TrendArrow: FunctionComponent<
         </>
       )}
       {left && renderContent(!left)}
-    </div>
+    </View>
   )
 }
 

@@ -12,6 +12,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const TrendArrowDemo = () => {
   const [translated] = useTranslate({
@@ -64,8 +65,12 @@ const TrendArrowDemo = () => {
         <Demo6 />
         <View className="h2">{translated.title7}</View>
         <Demo7 />
-        <View className="h2">{translated.title8}</View>
-        <Demo8 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.title8}</View>
+            <Demo8 />
+          </>
+        )}
       </ScrollView>
     </>
   )

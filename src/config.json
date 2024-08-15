@@ -1206,7 +1206,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TrendArrow",
           "type": "component",
           "cName": "趋势箭头",
