@@ -2,6 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
 import { View, Text } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface TrendArrowProps extends BasicComponent {
   value: number
@@ -25,8 +26,8 @@ const defaultProps = {
   left: false,
   sync: true,
   color: '#333',
-  riseColor: 'var(--nutui-brand-6)',
-  dropColor: 'var(--nutui-secondary-1)',
+  riseColor: '#ff0f23',
+  dropColor: '#14cc33',
   riseIcon: null,
   dropIcon: null,
 } as TrendArrowProps
@@ -111,9 +112,17 @@ export const TrendArrow: FunctionComponent<
       {Number(value) !== 0 && (
         <>
           {rateTrend.current ? (
-            <>{riseIcon || <TriangleUp color={calcIconProps.color} />}</>
+            <>
+              {riseIcon ||
+                (!harmonyAndRn() && <TriangleUp color={calcIconProps.color} />)}
+            </>
           ) : (
-            <>{dropIcon || <TriangleDown color={calcIconProps.color} />}</>
+            <>
+              {dropIcon ||
+                (!harmonyAndRn() && (
+                  <TriangleDown color={calcIconProps.color} />
+                ))}
+            </>
           )}
         </>
       )}

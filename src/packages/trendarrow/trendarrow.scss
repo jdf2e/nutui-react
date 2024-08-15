@@ -1,5 +1,6 @@
 .nut-trendarrow {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   color: $color-title;
   font-size: $trendarrow-font-size;
