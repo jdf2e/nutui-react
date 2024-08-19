@@ -4,24 +4,20 @@
   flex: 1;
   text-align: center;
   font-size: 0;
-
   &-head {
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     margin-bottom: $steps-base-icon-margin-bottom;
   }
 
-  // 计算方法：left = calc(50% + (100% - $steps-base-line-width) / 2)
-  // 如 width=70%时，left=65%; width=100%,left=50%;
   &-line {
     position: absolute;
-    top: calc($steps-base-icon-height / 2);
-    left: calc(50% + (100% - $steps-base-line-width) / 2);
     height: $steps-base-line-height;
     width: $steps-base-line-width;
-    background: $steps-base-line-background;
+    background-color: $steps-base-line-background;
   }
 
   &-icon {
@@ -85,7 +81,7 @@
     }
   }
 
-  &.nut-step-process {
+  &-process {
     .nut-step-icon {
       background-color: $steps-process-icon-bg-color;
       border-color: $steps-process-icon-bg-color;

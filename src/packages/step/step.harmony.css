@@ -10,15 +10,14 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin-bottom: 12px;
 }
 .nut-step-line {
   position: absolute;
-  top: calc(25px / 2);
-  left: calc(50% + (100% - 70%) / 2);
   height: 1px;
   width: 70%;
-  background: #888b94;
+  background-color: #888b94;
 }
 .nut-step-icon {
   position: relative;
@@ -71,17 +70,17 @@
 .nut-step:last-child .nut-step-line {
   display: none;
 }
-.nut-step.nut-step-process .nut-step-icon {
+.nut-step-process .nut-step-icon {
   background-color: #ff0f23;
   border-color: #ff0f23;
   color: #ffffff;
 }
-.nut-step.nut-step-process .nut-step-title {
+.nut-step-process .nut-step-title {
   color: #ff0f23;
   font-size: 14px;
   font-weight: 600;
 }
-.nut-step.nut-step-process .nut-step-description {
+.nut-step-process .nut-step-description {
   color: #505259;
 }
 .nut-step.nut-step-wait .nut-step-title {

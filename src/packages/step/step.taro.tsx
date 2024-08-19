@@ -9,6 +9,7 @@ export interface StepProps extends BasicComponent {
   description: ReactNode
   value: number
   icon: ReactNode
+  lineWidth: 70
 }
 
 const defaultProps = {
@@ -17,15 +18,24 @@ const defaultProps = {
   description: '',
   value: 0,
   icon: null,
+  lineWidth: 70,
 } as StepProps
 export const Step: FunctionComponent<
   Partial<StepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const { children, title, description, value, icon, className, ...restProps } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+  const {
+    children,
+    title,
+    description,
+    value,
+    icon,
+    className,
+    lineWidth,
+    ...restProps
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const parent: any = useContext(DataContext)
 
   const dot = parent.propSteps.dot
@@ -56,13 +66,20 @@ export const Step: FunctionComponent<
     }
     return `${classPrefix}-icon`
   }
+  const renderLineStyle = () => {
+    const isLastItem =
+      parent.propSteps.children[parent.propSteps.children.length - 1].props
+        .value === value
+    const leftPosition = 100 - lineWidth / 2
+    return isLastItem ? { display: 'none' } : { left: `${leftPosition}%` }
+  }
   return (
     <View className={classes} {...restProps} onClick={handleClickStep}>
       <View className="nut-step-head">
-        <View className="nut-step-line" />
         <View className={renderIconClass()}>
           {icon || (!dot && <Text className="nut-step-inner">{value}</Text>)}
         </View>
+        <View className="nut-step-line" style={renderLineStyle()} />
       </View>
       {(title || description) && (
         <View className="nut-step-main">

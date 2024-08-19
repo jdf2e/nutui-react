@@ -29,7 +29,13 @@ const Demo4 = () => {
           <Step value={3} title="步骤三" description="步骤描述" />
         </Steps>
       </ConfigProvider>
-      <View style={{ marginTop: '10px', textAlign: 'center' }}>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+        }}
+      >
         <Button type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
