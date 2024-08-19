@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { Steps, Step } from '@nutui/nutui-react-taro'
 
 const Demo9 = () => {
@@ -17,8 +17,8 @@ const Demo9 = () => {
           title="未开始"
           description={
             <>
-              <p>收货地址为：</p>
-              <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+              <Text>收货地址为：</Text>
+              <Text>北京市经济技术开发区科创十一街18号院京东大厦</Text>
             </>
           }
         />

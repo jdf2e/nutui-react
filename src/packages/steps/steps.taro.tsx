@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -46,9 +47,9 @@ export const Steps: FunctionComponent<
   )
   return (
     <DataContext.Provider value={parentSteps}>
-      <div className={classes} {...restProps}>
+      <View className={classes} {...restProps}>
         {children}
-      </div>
+      </View>
     </DataContext.Provider>
   )
 }

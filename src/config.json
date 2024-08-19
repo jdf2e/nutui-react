@@ -1055,7 +1055,7 @@
           "author": "ailululu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",
@@ -1066,7 +1066,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Steps",
           "type": "component",
           "cName": "步骤条",
