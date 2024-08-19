@@ -8,22 +8,24 @@
 .nut-step-head {
   position: relative;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin-bottom: 12px;
 }
 .nut-step-line {
   position: absolute;
-  top: calc(25px / 2);
-  left: calc(50% + (100% - 70%) / 2);
   height: 1px;
   width: 70%;
-  background: #888b94;
+  background-color: #888b94;
 }
 .nut-step-icon {
   position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  border-radius: 999vmax;
   width: 25px;
   height: 25px;
   line-height: 25px;
@@ -38,12 +40,12 @@
   height: 100%;
 }
 .nut-step-icon.is-text {
-  border-radius: 50%;
+  border-radius: 999vmax;
   border-width: 1px;
   border-style: solid;
 }
 .nut-step-icon.is-icon {
-  border-radius: 50%;
+  border-radius: 999vmax;
   border-width: 1px;
   border-style: solid;
 }
@@ -65,40 +67,41 @@
   font-size: 12px;
   color: #505259;
 }
-.nut-step:last-child .nut-step-line {
-  display: none;
-}
-.nut-step.nut-step-process .nut-step-icon {
+.nut-step-process-icon {
   background-color: #ff0f23;
   border-color: #ff0f23;
   color: #ffffff;
 }
-.nut-step.nut-step-process .nut-step-title {
+.nut-step-process-title {
   color: #ff0f23;
   font-size: 14px;
   font-weight: 600;
 }
-.nut-step.nut-step-process .nut-step-description {
+.nut-step-process-inner {
+  color: #ffffff;
+}
+.nut-step-process-description {
   color: #505259;
 }
-.nut-step.nut-step-wait .nut-step-title {
-  color: #1a1a1a;
+.nut-step-finish-inner {
+  color: #ff0f23;
 }
-.nut-step.nut-step-wait .nut-step-description {
+.nut-step-finish-description {
   color: #505259;
 }
-.nut-step.nut-step-finish .nut-step-icon {
+.nut-step-finish-icon {
+  border-width: 1px;
   background-color: #ffffff;
   border-color: #ff0f23;
   color: #ff0f23;
 }
-.nut-step.nut-step-finish .nut-step-line {
-  background: #ff0f23;
+.nut-step-finish-line {
+  background-color: #ff0f23;
 }
-.nut-step.nut-step-finish .nut-step-title {
-  color: #ff0f23;
+.nut-step-wait-inner {
+  color: #1a1a1a;
 }
-.nut-step.nut-step-finish .nut-step-description {
+.nut-step-wait-description {
   color: #505259;
 }
 
@@ -112,7 +115,7 @@
   width: 6px;
   height: 6px;
   border: 2px solid #ffffff;
-  border-radius: 50%;
+  border-radius: 999vmax;
   box-sizing: content-box;
 }
 .nut-steps-dot .nut-step-wait .nut-step-icon {
@@ -136,7 +139,7 @@
   width: 14px;
   height: 14px;
   background-color: #ff0f23;
-  border-radius: 50%;
+  border-radius: 999vmax;
   opacity: 0.23;
 }
 
@@ -147,6 +150,7 @@
 
 .nut-steps-vertical .nut-step {
   display: flex;
+  flex-direction: row;
   height: 33.34%;
 }
 .nut-steps-vertical .nut-step-line {
