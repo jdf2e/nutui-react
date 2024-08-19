@@ -75,58 +75,43 @@
     color: $steps-base-description-color;
   }
 
-  &:last-child {
-    .nut-step-line {
-      display: none;
-    }
+  &-process-icon {
+    background-color: $steps-process-icon-bg-color;
+    border-color: $steps-process-icon-bg-color;
+    color: $steps-process-icon-color;
+  }
+  &-process-title {
+    color: $steps-process-title-color;
+    font-size: $steps-process-title-font-size;
+    font-weight: $steps-process-title-font-weight;
+  }
+  &-process-inner {
+    color: $steps-process-icon-color;
+  }
+  &-process-description {
+    color: $steps-process-description-color;
   }
 
-  &-process {
-    .nut-step-icon {
-      background-color: $steps-process-icon-bg-color;
-      border-color: $steps-process-icon-bg-color;
-      color: $steps-process-icon-color;
-    }
-
-    .nut-step-title {
-      color: $steps-process-title-color;
-      font-size: $steps-process-title-font-size;
-      font-weight: $steps-process-title-font-weight;
-    }
-
-    .nut-step-description {
-      color: $steps-process-description-color;
-    }
+  &-finish-inner {
+    color: $steps-finish-title-color;
   }
-
-  &.nut-step-wait {
-    .nut-step-title {
-      color: $steps-wait-title-color;
-    }
-
-    .nut-step-description {
-      color: $steps-wait-description-color;
-    }
+  &-finish-description {
+    color: $steps-finish-description-color;
   }
-
-  &.nut-step-finish {
-    .nut-step-icon {
-      background-color: $steps-finish-icon-bg-color;
-      border-color: $steps-finish-icon-border-color;
-      color: $steps-finish-icon-color;
-    }
-
-    .nut-step-line {
-      background: $steps-finish-line-background;
-    }
-
-    .nut-step-title {
-      color: $steps-finish-title-color;
-    }
-
-    .nut-step-description {
-      color: $steps-finish-description-color;
-    }
+  &-finish-icon {
+    border-width: 1px;
+    background-color: $steps-finish-icon-bg-color;
+    border-color: $steps-finish-icon-border-color;
+    color: $steps-finish-icon-color;
+  }
+  &-finish-line {
+    background-color: $steps-finish-line-background;
+  }
+  &-wait-inner {
+    color: $steps-wait-title-color;
+  }
+  &-wait-description {
+    color: $steps-wait-description-color;
   }
 }
 

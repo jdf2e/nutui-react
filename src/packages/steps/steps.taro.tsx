@@ -41,7 +41,7 @@ export const Steps: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-${direction}`]: true,
-      [`${classPrefix}-dot`]: !!dot,
+      [`${classPrefix}-dot`]: dot,
     },
     className
   )

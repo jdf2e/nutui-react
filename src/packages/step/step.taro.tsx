@@ -51,9 +51,7 @@ export const Step: FunctionComponent<
   const classPrefix = `nut-step`
   const classes = classNames(
     classPrefix,
-    {
-      [`${classPrefix}-${getCurrentStatus()}`]: true,
-    },
+    `${classPrefix}-${getCurrentStatus()}`,
     className
   )
 
@@ -76,16 +74,34 @@ export const Step: FunctionComponent<
   return (
     <View className={classes} {...restProps} onClick={handleClickStep}>
       <View className="nut-step-head">
-        <View className={renderIconClass()}>
-          {icon || (!dot && <Text className="nut-step-inner">{value}</Text>)}
+        <View
+          className={`${renderIconClass()} ${classPrefix}-${getCurrentStatus()}-icon`}
+        >
+          {icon ||
+            (!dot && (
+              <Text className={`${classPrefix}-${getCurrentStatus()}-inner`}>
+                {value}
+              </Text>
+            ))}
         </View>
-        <View className="nut-step-line" style={renderLineStyle()} />
+        <View
+          className={`${classPrefix}-line ${classPrefix}-${getCurrentStatus()}-line`}
+          style={renderLineStyle()}
+        />
       </View>
       {(title || description) && (
         <View className="nut-step-main">
-          <Text className="nut-step-title">{title}</Text>
+          <Text
+            className={`${classPrefix}-title ${classPrefix}-${getCurrentStatus()}-title`}
+          >
+            {title}
+          </Text>
           {description && (
-            <Text className="nut-step-description">{description}</Text>
+            <Text
+              className={`${classPrefix}-description ${classPrefix}-${getCurrentStatus()}-description`}
+            >
+              {description}
+            </Text>
           )}
         </View>
       )}
