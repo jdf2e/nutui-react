@@ -46,11 +46,13 @@ export const Steps: FunctionComponent<
     className
   )
   return (
-    <DataContext.Provider value={parentSteps}>
-      <View className={classes} {...restProps}>
-        {children}
-      </View>
-    </DataContext.Provider>
+    <View>
+      <DataContext.Provider value={parentSteps}>
+        <View className={classes} {...restProps}>
+          {children}
+        </View>
+      </DataContext.Provider>
+    </View>
   )
 }
 
