@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import { View, Text } from '@tarojs/components'
 import { DataContext } from '@/packages/steps/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface StepProps extends BasicComponent {
   title: ReactNode
@@ -62,20 +64,37 @@ export const Step: FunctionComponent<
     if (!dot && !icon) {
       return `${classPrefix}-icon is-text`
     }
-    return `${classPrefix}-icon`
+    return `${classPrefix}-icon ${classPrefix}-dot-icon`
   }
   const renderLineStyle = () => {
     const isLastItem =
       parent.propSteps.children[parent.propSteps.children.length - 1].props
         .value === value
     const leftPosition = 100 - lineWidth / 2
-    return isLastItem ? { display: 'none' } : { left: `${leftPosition}%` }
+    if (isLastItem) {
+      return { display: 'none' }
+    }
+    if (harmony()) {
+      return {
+        left: `${leftPosition}%`,
+        top: pxTransform(dot ? 3 : 12.5),
+      }
+    }
+    return {
+      left: `${leftPosition}%`,
+    }
   }
   return (
     <View className={classes} {...restProps} onClick={handleClickStep}>
       <View className="nut-step-head">
         <View
-          className={`${renderIconClass()} ${classPrefix}-${getCurrentStatus()}-icon`}
+          className={classNames(
+            renderIconClass(),
+            `${classPrefix}-${getCurrentStatus()}-icon`,
+            {
+              [`${classPrefix}-dot-${getCurrentStatus()}-icon`]: dot,
+            }
+          )}
         >
           {icon ||
             (!dot && (

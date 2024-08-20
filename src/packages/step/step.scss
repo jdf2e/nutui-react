@@ -113,56 +113,38 @@
   &-wait-description {
     color: $steps-wait-description-color;
   }
-}
-
-.nut-steps-dot {
-  .nut-step-head {
-    margin: $steps-dot-head-margin;
-  }
-
-  .nut-step-line {
-    top: 7px;
-  }
-
-  .nut-step-icon {
+  &-dot-icon {
     width: $steps-dot-icon-width;
     height: $steps-dot-icon-height;
     border: $steps-dot-icon-border;
     border-radius: 999vmax;
     box-sizing: content-box;
   }
-
-  .nut-step-wait {
-    .nut-step-icon {
-      background-color: $steps-dot-wait-icon-bg-color;
-    }
+  &-dot-wait-icon {
+    background-color: $steps-dot-wait-icon-bg-color;
   }
-
-  .nut-step-finish {
-    .nut-step-icon {
-      background-color: $steps-dot-finish-icon-bg-color;
-      border-color: $steps-dot-finish-icon-border-color;
-    }
+  &-dot-finish-icon {
+    background-color: $steps-dot-finish-icon-bg-color;
+    border-color: $steps-dot-finish-icon-border-color;
   }
-
-  .nut-step-process {
-    .nut-step-icon {
-      position: relative;
-
-      &:before {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -7px;
-        margin-top: -7px;
-        width: 14px;
-        height: 14px;
-        background-color: $steps-process-icon-before-bg-color;
-        border-radius: 999vmax;
-        opacity: 0.23;
-      }
+  &-dot-process-icon {
+    position: relative;
+    &::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      /* #ifdef harmony*/
+      top: 3px;
+      left: 3px;
+      /* #endif */
+      width: 14px;
+      height: 14px;
+      background-color: $steps-process-icon-before-bg-color;
+      border-radius: 999vmax;
+      opacity: 0.23;
     }
   }
 }
