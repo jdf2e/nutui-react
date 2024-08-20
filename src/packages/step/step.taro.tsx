@@ -40,7 +40,8 @@ export const Step: FunctionComponent<
   }
   const parent: any = useContext(DataContext)
 
-  const dot = parent.propSteps.dot
+  const { dot, direction } = parent.propSteps
+
   const getCurrentStatus = () => {
     const index = value
     if (index < +parent.propSteps.value) return 'finish'
@@ -54,6 +55,9 @@ export const Step: FunctionComponent<
   const classes = classNames(
     classPrefix,
     `${classPrefix}-${getCurrentStatus()}`,
+    {
+      [`${classPrefix}-vertical`]: direction === 'vertical',
+    },
     className
   )
 
@@ -106,12 +110,14 @@ export const Step: FunctionComponent<
             ))}
         </View>
         <View
-          className={`${classPrefix}-line ${classPrefix}-${getCurrentStatus()}-line`}
+          className={`${classPrefix}-line ${classPrefix}-${direction === 'vertical' ? 'vertical-' : ''}line  ${classPrefix}-${direction === 'vertical' ? 'vertical-' : ''}${dot ? 'dot-' : ''}line ${classPrefix}-${getCurrentStatus()}-line`}
           style={renderLineStyle()}
         />
       </View>
       {(title || description) && (
-        <View className="nut-step-main">
+        <View
+          className={`nut-step-main nut-step-${direction === 'vertical' ? 'vertical-' : ''}main`}
+        >
           <Text
             className={`${classPrefix}-title ${classPrefix}-${getCurrentStatus()}-title`}
           >

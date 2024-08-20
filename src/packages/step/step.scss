@@ -1,6 +1,4 @@
 .nut-step {
-  flex-grow: 0;
-  flex-shrink: 0;
   flex: 1;
   text-align: center;
   font-size: 0;
@@ -12,7 +10,7 @@
     align-items: center;
     margin-bottom: $steps-base-icon-margin-bottom;
   }
-
+  // 基本样式
   &-line {
     position: absolute;
     height: $steps-base-line-height;
@@ -56,7 +54,6 @@
   }
 
   &-main {
-    padding: 0 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,129 +68,122 @@
   }
 
   &-description {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     font-size: $steps-base-description-font-size;
     color: $steps-base-description-color;
   }
-
-  &-process-icon {
-    background-color: $steps-process-icon-bg-color;
-    border-color: $steps-process-icon-bg-color;
-    color: $steps-process-icon-color;
+  // 3种状态
+  &-process {
+    &-icon {
+      background-color: $steps-process-icon-bg-color;
+      border-color: $steps-process-icon-bg-color;
+      color: $steps-process-icon-color;
+    }
+    &-title {
+      color: $steps-process-title-color;
+      font-size: $steps-process-title-font-size;
+      font-weight: $steps-process-title-font-weight;
+    }
+    &-inner {
+      color: $steps-process-icon-color;
+    }
+    &-description {
+      color: $steps-process-description-color;
+    }
   }
-  &-process-title {
-    color: $steps-process-title-color;
-    font-size: $steps-process-title-font-size;
-    font-weight: $steps-process-title-font-weight;
+  &-finish {
+    &-description {
+      color: $steps-process-description-color;
+    }
+    &-description {
+      color: $steps-finish-description-color;
+    }
+    &-title {
+      color: $steps-finish-icon-color;
+    }
+    &-icon {
+      border-width: 1px;
+      background-color: $steps-finish-icon-bg-color;
+      border-color: $steps-finish-icon-border-color;
+      color: $steps-finish-icon-color;
+    }
+    &-finish-line {
+      background-color: $steps-finish-line-background;
+    }
   }
-  &-process-inner {
-    color: $steps-process-icon-color;
+  &-wait {
+    &-inner {
+      color: $steps-wait-icon-color;
+    }
+    &-description {
+      color: $steps-wait-description-color;
+    }
   }
-  &-process-description {
-    color: $steps-process-description-color;
-  }
-
-  &-finish-inner {
-    color: $steps-finish-title-color;
-  }
-  &-finish-description {
-    color: $steps-finish-description-color;
-  }
-  &-finish-title {
-    color: $steps-finish-icon-color;
-  }
-  &-finish-icon {
-    border-width: 1px;
-    background-color: $steps-finish-icon-bg-color;
-    border-color: $steps-finish-icon-border-color;
-    color: $steps-finish-icon-color;
-  }
-  &-finish-line {
-    background-color: $steps-finish-line-background;
-  }
-  &-wait-inner {
-    color: $steps-wait-icon-color;
-  }
-  &-wait-description {
-    color: $steps-wait-description-color;
-  }
-  &-dot-icon {
-    width: $steps-dot-icon-width;
-    height: $steps-dot-icon-height;
-    border: $steps-dot-icon-border;
-    border-radius: 999vmax;
-    box-sizing: content-box;
-  }
-  &-dot-wait-icon {
-    background-color: $steps-dot-wait-icon-bg-color;
-  }
-  &-dot-finish-icon {
-    background-color: $steps-dot-finish-icon-bg-color;
-    border-color: $steps-dot-finish-icon-border-color;
-  }
-  &-dot-process-icon {
-    position: relative;
-    &::before {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      /* #ifdef harmony*/
-      top: 3px;
-      left: 3px;
-      /* #endif */
-      width: 14px;
-      height: 14px;
-      background-color: $steps-process-icon-before-bg-color;
+  // 点模式
+  &-dot {
+    &-icon {
+      width: $steps-dot-icon-width;
+      height: $steps-dot-icon-height;
+      border: $steps-dot-icon-border;
       border-radius: 999vmax;
-      opacity: 0.23;
+      box-sizing: content-box;
+    }
+    &-wait-icon {
+      background-color: $steps-dot-wait-icon-bg-color;
+    }
+    &-finish-icon {
+      background-color: $steps-dot-finish-icon-bg-color;
+      border-color: $steps-dot-finish-icon-border-color;
+    }
+    &-process-icon {
+      position: relative;
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /* #ifdef harmony*/
+        top: 3px;
+        left: 3px;
+        /* #endif */
+        width: 14px;
+        height: 14px;
+        background-color: $steps-process-icon-before-bg-color;
+        border-radius: 999vmax;
+        opacity: 0.23;
+      }
     }
   }
-}
-
-.nut-steps-horizontal {
-  &.nut-steps-dot {
-    .nut-step-line {
-      top: 50%;
-      bottom: -50%;
-    }
-  }
-}
-
-.nut-steps-vertical {
-  .nut-step {
+  // 垂直模式
+  &-vertical {
     display: flex;
     flex-direction: row;
-    height: 33.34%;
-  }
-
-  .nut-step-line {
-    position: absolute;
-    display: inline-block;
-    width: 1px;
-    height: $steps-base-line-width;
-    background: $steps-base-line-background;
-    top: calc(
-      $steps-base-icon-height +
-        (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
-    );
-    left: calc(50% - 1px);
-  }
-
-  &.nut-steps-dot {
-    .nut-step-line {
-      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
+    align-items: start;
+    &-line {
+      position: absolute;
+      display: inline-block;
+      width: 1px;
+      height: 40px;
+      background: $steps-base-line-background;
+      top: 38px;
+      left: calc(50% - 1px);
+    }
+    &-main {
+      display: inline-block;
+      padding-left: 6%;
+      text-align: start;
+      position: relative;
+      bottom: 10px;
+    }
+    &-dot-line {
+      top: 30px;
     }
   }
-
-  .nut-step-main {
-    display: inline-block;
-    padding-left: 6%;
-    text-align: start;
-  }
 }
+
 [dir='rtl'] .nut-step,
 .nut-rtl .nut-step {
   &-line {

@@ -148,27 +148,28 @@
   bottom: -50%;
 }
 
-.nut-steps-vertical .nut-step {
+.nut-step-vertical {
   display: flex;
   flex-direction: row;
-  height: 33.34%;
 }
-.nut-steps-vertical .nut-step-line {
+
+.nut-step-vertical-line {
   position: absolute;
   display: inline-block;
   width: 1px;
   height: 70%;
   background: #888b94;
-  top: calc(25px + (100% - 70% - 12px) / 2);
   left: calc(50% - 1px);
 }
-.nut-steps-vertical.nut-steps-dot .nut-step-line {
-  top: calc(6px + (100% - 70%) / 2);
-}
-.nut-steps-vertical .nut-step-main {
+
+.nut-step-vertical-main {
   display: inline-block;
   padding-left: 6%;
   text-align: start;
+}
+
+.nut-step-vertical-dot-line {
+  top: calc(6px + (100% - 70%) / 2);
 }
 
 [dir=rtl] .nut-step-line {

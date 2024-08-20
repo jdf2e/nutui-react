@@ -5,7 +5,7 @@ const Demo2 = () => {
   const [val, setVal] = useState(1)
   return (
     <>
-      <Steps value={val} dot onStepClick={() => setVal((val % 3) + 1)}>
+      <Steps value={val} dot onStepClick={(v) => setVal(v)}>
         <Step value={1} />
         <Step value={2} />
         <Step value={3} />

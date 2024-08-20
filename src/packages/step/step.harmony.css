@@ -1,6 +1,4 @@
 .nut-step {
-  flex-grow: 0;
-  flex-shrink: 0;
   flex: 1;
   text-align: center;
   font-size: 0;
@@ -51,7 +49,6 @@
   border-style: solid;
 }
 .nut-step-main {
-  padding: 0 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +61,8 @@
   color: #1a1a1a;
 }
 .nut-step-description {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 12px;
   color: #505259;
 }
@@ -84,8 +82,8 @@
 .nut-step-process-description {
   color: #505259;
 }
-.nut-step-finish-inner {
-  color: #ff0f23;
+.nut-step-finish-description {
+  color: #505259;
 }
 .nut-step-finish-description {
   color: #505259;
@@ -99,7 +97,7 @@
   border-color: #ff0f23;
   color: #ff0f23;
 }
-.nut-step-finish-line {
+.nut-step-finish-finish-line {
   background-color: #ff0f23;
 }
 .nut-step-wait-inner {
@@ -142,33 +140,29 @@
   border-radius: 999vmax;
   opacity: 0.23;
 }
-
-.nut-steps-horizontal.nut-steps-dot .nut-step-line {
-  top: 50%;
-  bottom: -50%;
-}
-
-.nut-steps-vertical .nut-step {
+.nut-step-vertical {
   display: flex;
   flex-direction: row;
-  height: 33.34%;
+  align-items: start;
 }
-.nut-steps-vertical .nut-step-line {
+.nut-step-vertical-line {
   position: absolute;
   display: inline-block;
   width: 1px;
-  height: 70%;
+  height: 40px;
   background: #888b94;
-  top: calc(25px + (100% - 70% - 12px) / 2);
+  top: 38px;
   left: calc(50% - 1px);
 }
-.nut-steps-vertical.nut-steps-dot .nut-step-line {
-  top: calc(6px + (100% - 70%) / 2);
-}
-.nut-steps-vertical .nut-step-main {
+.nut-step-vertical-main {
   display: inline-block;
   padding-left: 6%;
   text-align: start;
+  position: relative;
+  bottom: 10px;
+}
+.nut-step-vertical-dot-line {
+  top: 30px;
 }
 
 [dir=rtl] .nut-step-line {
