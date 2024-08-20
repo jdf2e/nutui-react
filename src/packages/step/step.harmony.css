@@ -18,6 +18,7 @@
   height: 1px;
   width: 70%;
   background-color: #888b94;
+  left: calc(100% - 70% / 2);
 }
 .nut-step-icon {
   position: relative;
@@ -88,6 +89,9 @@
 }
 .nut-step-finish-description {
   color: #505259;
+}
+.nut-step-finish-title {
+  color: #ff0f23;
 }
 .nut-step-finish-icon {
   border-width: 1px;

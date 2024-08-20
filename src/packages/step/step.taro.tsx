@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View, Text } from '@tarojs/components'
 import { DataContext } from '@/packages/steps/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony, rn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 export interface StepProps extends BasicComponent {
@@ -11,7 +11,7 @@ export interface StepProps extends BasicComponent {
   description: ReactNode
   value: number
   icon: ReactNode
-  lineWidth: 70
+  lineWidth: number
 }
 
 const defaultProps = {
@@ -80,8 +80,10 @@ export const Step: FunctionComponent<
         top: pxTransform(dot ? 3 : 12.5),
       }
     }
-    return {
-      left: `${leftPosition}%`,
+    if (rn()) {
+      return {
+        left: `${leftPosition}%`,
+      }
     }
   }
   return (

@@ -18,6 +18,7 @@
     height: $steps-base-line-height;
     width: $steps-base-line-width;
     background-color: $steps-base-line-background;
+    left: calc(100% - $steps-base-line-width / 2);
   }
 
   &-icon {
@@ -97,6 +98,9 @@
   }
   &-finish-description {
     color: $steps-finish-description-color;
+  }
+  &-finish-title {
+    color: $steps-finish-icon-color;
   }
   &-finish-icon {
     border-width: 1px;

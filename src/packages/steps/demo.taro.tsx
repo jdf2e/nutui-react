@@ -67,14 +67,13 @@ const StepsDemo = () => {
         <View className="h2">{translated.info}</View>
         <Demo3 />
 
-        <View className="h2">{translated.custom}</View>
-        <Demo4 />
-
-        <View className="h2">{translated.customDot}</View>
-        <Demo5 />
-
         {!harmonyAndRn() && (
           <>
+            <View className="h2">{translated.custom}</View>
+            <Demo4 />
+
+            <View className="h2">{translated.customDot}</View>
+            <Demo5 />
             <View className="h2">{translated.customBoth}</View>
             <Demo6 />
             <View className="h2">{translated.customIcon}</View>

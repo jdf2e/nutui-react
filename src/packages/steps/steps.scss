@@ -6,6 +6,7 @@
 }
 
 .nut-steps-vertical {
+  display: flex;
   height: 100%;
-  flex-flow: column;
+  flex-direction: column;
 }
