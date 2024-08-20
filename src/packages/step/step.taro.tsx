@@ -52,6 +52,7 @@ export const Step: FunctionComponent<
   }
 
   const classPrefix = `nut-step`
+  const directionClass = direction === 'vertical' ? 'vertical' : ''
   const classes = classNames(
     classPrefix,
     `${classPrefix}-${getCurrentStatus()}`,
@@ -92,7 +93,7 @@ export const Step: FunctionComponent<
   }
   return (
     <View className={classes} {...restProps} onClick={handleClickStep}>
-      <View className="nut-step-head">
+      <View className={`${classPrefix}-head`}>
         <View
           className={classNames(
             renderIconClass(),
@@ -110,13 +111,20 @@ export const Step: FunctionComponent<
             ))}
         </View>
         <View
-          className={`${classPrefix}-line ${classPrefix}-${direction === 'vertical' ? 'vertical-' : ''}line  ${classPrefix}-${direction === 'vertical' ? 'vertical-' : ''}${dot ? 'dot-' : ''}line ${classPrefix}-${getCurrentStatus()}-line`}
+          className={classNames(
+            `${classPrefix}-line`,
+            {
+              [`${classPrefix}-vertical-line`]: direction === 'vertical',
+              [`${classPrefix}-${directionClass}-dot-line`]: dot,
+            },
+            `${classPrefix}-${getCurrentStatus()}-line`
+          )}
           style={renderLineStyle()}
         />
       </View>
       {(title || description) && (
         <View
-          className={`nut-step-main nut-step-${direction === 'vertical' ? 'vertical-' : ''}main`}
+          className={`${classPrefix}-main ${classPrefix}-${directionClass}-main`}
         >
           <Text
             className={`${classPrefix}-title ${classPrefix}-${getCurrentStatus()}-title`}

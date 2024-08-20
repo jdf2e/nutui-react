@@ -97,8 +97,11 @@
   border-color: #ff0f23;
   color: #ff0f23;
 }
-.nut-step-finish-finish-line {
+.nut-step-finish-line {
   background-color: #ff0f23;
+}
+.nut-step-finish-inner {
+  color: #ff0f23;
 }
 .nut-step-wait-inner {
   color: #ffffff;

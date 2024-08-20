@@ -108,8 +108,11 @@
       border-color: $steps-finish-icon-border-color;
       color: $steps-finish-icon-color;
     }
-    &-finish-line {
+    &-line {
       background-color: $steps-finish-line-background;
+    }
+    &-inner {
+      color: $steps-finish-icon-color;
     }
   }
   &-wait {
