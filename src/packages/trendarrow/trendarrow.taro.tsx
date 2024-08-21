@@ -114,12 +114,18 @@ export const TrendArrow: FunctionComponent<
           {rateTrend.current ? (
             <>
               {riseIcon ||
-                (!harmonyAndRn() && <TriangleUp color={calcIconProps.color} />)}
+                (harmonyAndRn() ? (
+                  <Text>⬆️</Text>
+                ) : (
+                  <TriangleUp color={calcIconProps.color} />
+                ))}
             </>
           ) : (
             <>
               {dropIcon ||
-                (!harmonyAndRn() && (
+                (harmonyAndRn() ? (
+                  <Text>⬇️</Text>
+                ) : (
                   <TriangleDown color={calcIconProps.color} />
                 ))}
             </>
