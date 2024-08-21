@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const customTheme = {
   nutuiStepsBaseLineWidth: '70%',
@@ -25,7 +26,11 @@ const Demo4 = () => {
         </Steps>
       </ConfigProvider>
 
-      <Button type="danger" onClick={() => setVal((val % 3) + 1)}>
+      <Button
+        type="danger"
+        onClick={() => setVal((val % 3) + 1)}
+        style={{ marginLeft: pxTransform(30), marginTop: pxTransform(10) }}
+      >
         Next
       </Button>
     </>
