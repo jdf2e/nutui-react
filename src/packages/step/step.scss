@@ -165,14 +165,14 @@
     display: flex;
     flex-direction: row;
     align-items: start;
+    position: relative;
     &-line {
       position: absolute;
-      // display: inline-block;
+      top: 150%;
       width: 1px;
-      height: 40px;
+      height: 50px;
       background: $steps-base-line-background;
-      // top: 38px;
-      // left: calc(50% - 1px);
+      left: calc(50% - 1px);
     }
 
     &-main {
@@ -181,9 +181,11 @@
       align-items: start;
       padding-left: 6%;
       text-align: start;
+      position: relative;
+      bottom: 10px;
     }
     &-dot-line {
-      top: 30px;
+      top: 300%;
     }
   }
 }

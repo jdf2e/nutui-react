@@ -80,15 +80,31 @@ export const Step: FunctionComponent<
       return { display: 'none' }
     }
     if (harmony()) {
+      if (direction === 'vertical') {
+        return dot
+          ? {
+              left: pxTransform(3),
+              top: '30%',
+            }
+          : {
+              left: '4%',
+              top: '40%',
+            }
+      }
       return {
         left: `${leftPosition}%`,
         top: pxTransform(dot ? 3 : 12.5),
       }
     }
     if (rn()) {
-      return {
-        left: `${leftPosition}%`,
-      }
+      return direction === 'vertical'
+        ? {
+            left: '50%',
+            top: dot ? '30%' : '40%',
+          }
+        : {
+            left: `${leftPosition}%`,
+          }
     }
   }
   return (
@@ -124,7 +140,9 @@ export const Step: FunctionComponent<
       </View>
       {(title || description) && (
         <View
-          className={`${classPrefix}-main ${classPrefix}-${directionClass}-main`}
+          className={classNames(`${classPrefix}-main`, {
+            [`${classPrefix}-${directionClass}-main`]: direction === 'vertical',
+          })}
         >
           <Text
             className={`${classPrefix}-title ${classPrefix}-${getCurrentStatus()}-title`}

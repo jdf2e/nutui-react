@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface StepsProps extends BasicComponent {
   value: number
@@ -45,15 +46,27 @@ export const Steps: FunctionComponent<
     },
     className
   )
-  return (
-    <View>
+  const renderContent = () => {
+    if (harmonyAndRn()) {
+      return (
+        <View>
+          <DataContext.Provider value={parentSteps}>
+            <View className={classes} {...restProps}>
+              {children}
+            </View>
+          </DataContext.Provider>
+        </View>
+      )
+    }
+    return (
       <DataContext.Provider value={parentSteps}>
         <View className={classes} {...restProps}>
           {children}
         </View>
       </DataContext.Provider>
-    </View>
-  )
+    )
+  }
+  return <>{renderContent()}</>
 }
 
 Steps.displayName = 'NutSteps'
