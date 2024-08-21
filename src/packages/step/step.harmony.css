@@ -150,19 +150,16 @@
 }
 .nut-step-vertical-line {
   position: absolute;
-  display: inline-block;
   width: 1px;
   height: 40px;
   background: #888b94;
-  top: 38px;
-  left: calc(50% - 1px);
 }
 .nut-step-vertical-main {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   padding-left: 6%;
   text-align: start;
-  position: relative;
-  bottom: 10px;
 }
 .nut-step-vertical-dot-line {
   top: 30px;
