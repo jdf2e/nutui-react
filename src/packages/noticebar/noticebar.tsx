@@ -11,8 +11,11 @@ import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { NoticeBarAlign } from './types'
+import { useRtl } from '@/packages/configprovider'
 
 export interface NoticeBarProps extends BasicComponent {
+  align: NoticeBarAlign
   direction: string
   list: any
   duration: number
@@ -22,6 +25,7 @@ export interface NoticeBarProps extends BasicComponent {
   wrap: boolean
   leftIcon: ReactNode
   rightIcon: ReactNode
+  right: ReactNode
   delay: string | number
   scrollable: boolean | null
   speed: number
@@ -34,6 +38,7 @@ export interface NoticeBarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  align: 'left',
   direction: 'horizontal',
   list: [],
   duration: 1000,
@@ -43,6 +48,7 @@ const defaultProps = {
   wrap: false,
   leftIcon: <Notice width={16} height={16} />,
   rightIcon: null,
+  right: null,
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -51,10 +57,12 @@ export const NoticeBar: FunctionComponent<
   Partial<NoticeBarProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     className,
     style,
+    align,
     direction,
     list,
     duration,
@@ -64,6 +72,7 @@ export const NoticeBar: FunctionComponent<
     wrap,
     leftIcon,
     rightIcon,
+    right,
     delay,
     scrollable,
     speed,
@@ -167,7 +176,8 @@ export const NoticeBar: FunctionComponent<
       }
       const wrapW = getRect(wrapRef.current).width
       const offsetW = getRect(contentRef.current).width
-      const canScroll = scrollable == null ? offsetW > wrapW : scrollable
+      const canScroll =
+        align === 'left' && scrollable == null ? offsetW > wrapW : scrollable
       SetIsCanScroll(canScroll)
       if (canScroll) {
         SetWrapWidth(wrapW)
@@ -230,7 +240,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const isEllipsis = () => {
-    if (isCanScroll == null) {
+    if (isCanScroll == null && align === 'left') {
       return wrap
     }
     return !isCanScroll && !wrap
@@ -239,7 +249,7 @@ export const NoticeBar: FunctionComponent<
   const contentStyle = {
     animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${animationDuration}s`,
-    transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
+    transform: `translateX(${firstRound ? 0 : `${rtl ? -wrapWidth : wrapWidth}px`})`,
   }
 
   const barStyle = {
@@ -417,16 +427,20 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-box': true,
-    [`nut-noticebar-box-wrapable`]: wrap,
+    [`${classPrefix}-box`]: true,
+    [`${classPrefix}-box-wrapable`]: wrap,
+    [`${classPrefix}-box-${align}`]: true,
   })
+
+  const cls = classNames(classPrefix, className)
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
   return (
-    <div className={`${classPrefix} ${className || ''}`} style={style}>
+    <div className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
@@ -445,6 +459,9 @@ export const NoticeBar: FunctionComponent<
               {content}
             </div>
           </div>
+          {right ? (
+            <div className="nut-noticebar-box-right">{right}</div>
+          ) : null}
           {closeable || rightIcon ? (
             <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
               {rightIcon || <Close width={12} height={12} />}
@@ -514,5 +531,4 @@ export const NoticeBar: FunctionComponent<
   )
 }
 
-NoticeBar.defaultProps = defaultProps
 NoticeBar.displayName = 'NutNoticeBar'

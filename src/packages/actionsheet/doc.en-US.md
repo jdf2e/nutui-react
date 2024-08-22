@@ -1,13 +1,11 @@
 # ActionSheet
 
-## Intro
-
 Action menu panel that pops up from the bottom.
 
-## Install
+## Import
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react';
+import { ActionSheet } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,53 +14,7 @@ import { ActionSheet } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-interface Item {
-  name: string
-  description?: string
-  disabled?: boolean
-}
-const App = () => {
-  const [val1, setVal1] = useState('')
-  const [isVisible1, setIsVisible1] = useState(false)
-  const optionsOne: ItemType<string>[] = [
-    {
-      name: 'Permission settings',
-    },
-    {
-      name: 'Rename',
-    },
-    {
-      name: 'Delete',
-    },
-  ]
-  const chooseItem = (item: any) => {
-    setVal1(item.name)
-    setIsVisible1(false)
-  }
-
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible1(!isVisible1)}>
-      <span>Basic Usage</span>
-      <div style={{ marginLeft: '10px' }}>{val1}</div>
-    </Cell>
-            
-    <ActionSheet
-      visible={isVisible1}
-      options={optionsOne}
-        onSelect={(item) => {chooseItem(item)}}
-      onCancel={() => setIsVisible1(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -70,48 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible2, setIsVisible2] = useState(false)
-  const [val2, setVal2] = useState('')
-  const optionsOne: ItemType<string>[] = [
-    {
-      name: 'Permission settings',
-    },
-    {
-      name: 'Rename',
-    },
-    {
-      name: 'Delete',
-    },
-  ]
-  const chooseItemTwo = (item: Item) => {
-    setVal2(item.name)
-    setIsVisible2(false)
-  }
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible2(!isVisible2)}>
-      <span>Show Cancel Button</span>
-      <div style={{ marginLeft: '10px' }}>{val2}</div>
-    </Cell>
-            
-    <ActionSheet
-      visible={isVisible2}
-      cancelText="Cancel"
-      options={optionsOne}
-      onSelect={(item)=>{chooseItemTwo(item)}}
-      onCancel={() => setIsVisible2(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -119,50 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible3, setIsVisible3] = useState(false)
-  const [val3, setVal3] = useState('')
-  const optionsTwo: ItemType<string>[] = [
-    {
-      name: 'Permission settings',
-    },
-    {
-      name: 'Rename',
-    },
-    {
-      name: 'Delete',
-      description: 'Cannot be restored after deletion'
-    },
-  ]
-  const chooseItemThree = (item: Item) => {
-    setVal3(item.name)
-    setIsVisible3(false)
-  }
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible3(!isVisible3)}>
-      <span>Display Description Information</span>
-      <div style={{ marginLeft: '10px' }}>{val3}</div>
-    </Cell>
-    <ActionSheet
-      visible={isVisible3}
-      title="Title"
-      description="This is a descriptive message"
-      cancelText="Cancel"
-      options={optionsTwo}
-      onSelect={(item)=>{chooseItemThree(item)}}      
-      onCancel={() => setIsVisible3(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -170,42 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible4, setIsVisible4] = useState(false)
-  const optionsThree: ItemType<string | boolean>[] = [
-    {
-      name: 'Shading Options',
-      danger: true
-    },
-    {
-      name: 'Disable Option',
-      disabled: true,
-    },
-  ]
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible4(!isVisible4)}>
-      <span>Option Status</span>
-    </Cell>
-    <ActionSheet
-      visible={isVisible4}
-      cancelText="Cancel"
-      options={optionsThree}
-      onCancel={() => setIsVisible4(false)}
-      onSelect={() => {
-        setIsVisible4(false)
-      }}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -213,38 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible5, setIsVisible5] = useState(false)
-  return ( 
-    <>   
-      <Cell  onClick={() => setIsVisible5(!isVisible5)}>
-        <span>Custom content</span>
-      </Cell>
-      <ActionSheet
-        visible={isVisible5}
-        cancelText={translated['2cd0f3be']}
-        onSelect={() => {
-          setIsVisible5(false)
-        }}
-        onCancel={() => setIsVisible5(false)}
-      >
-        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
-          Create A Table
-        </div>
-        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
-          Create A Document
-        </div>
-      </ActionSheet>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -252,45 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible6, setIsVisible6] = useState(false)
-  const optionsFour: ItemType<string | boolean>[] = [
-    {
-      title: 'Shading Option',
-      danger: true
-    },
-    {
-      title: 'Disable Option',
-      disabled: true,
-    },
-  ]
-  const optionKey = {
-    name: 'title',
-  }
-  return ( 
-    <>   
-      <Cell  onClick={() => setIsVisible6(!isVisible6)}>
-        <span>Custom key</span>
-      </Cell>
-      <ActionSheet
-        visible={isVisible6}
-        optionKey={optionKey}
-        options={optionsFour}
-        onSelect={() => {
-          setIsVisible6(false)
-        }}
-        onCancel={() => setIsVisible6(false)}
-      />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

@@ -1,131 +1,28 @@
 # SideNavBar組件
 
-## 介紹
-
 用於內容選擇和切換
 
-## 安裝
+## 引入
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-    const [navBarState, setNavBarState] = useState({
-    visible: false,
-    position: 'left',
-  })
-  const changeNarBar = (visible, position= navBarState.position) => {
-    setNavBarState({
-      visible,
-      position,
-    })
-  }
- 
-  return ( 
-    <>   
-    <Cell
-          title="左側彈出"
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="右側彈出"
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首頁"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一級標題" value="1-0" >
-            <SideNavBarItem title="一級內容1" value="1-01" />
-            <SideNavBarItem title="一級內容2" value="1-02" />
-            <SubSideNavBar title="二級標題" value="2-0">
-              <SideNavBarItem title="二級内容1" value="2-01" />
-              <SideNavBarItem title="二級内容2" value="2-02" />
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 嵌套及回調
+### 導航嵌套（建議最多三層）
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
-  }
-  const clickItem = ({ title, value }) => {
-    Toast.show(`title=${title},value=${value}`)
-  }
-  const clickTitle = ({ title, value, isShow }) => {
-    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
-  }
-  return ( 
-    <>  
-      <Cell
-          title="顯示"
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首頁"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一級標題" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一級內容1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一級內容2" value="1-02" />
-            <SubSideNavBar title="二級標題" value="2-0">
-              <SideNavBarItem title="二級内容1" value="2-01" />
-              <SideNavBarItem title="二級内容2" value="2-02" />
-                <SubSideNavBar title="三級標題" value="3-0">
-                  <SideNavBarItem title="三級内容1" value="3-01" />
-                  <SideNavBarItem title="三級内容2" value="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -148,10 +45,10 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string`  \|  `number` | `-` |
+| value | 導航唯一標識 | `string` \| `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | open | 導航是否默認展開 | `boolean` | `true` |
-| onClick | 導航點擊 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| onClick | 導航點擊 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -159,9 +56,9 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string`  \|  `number` | `-` |
+| value | 導航唯一標識 | `string` \| `number` | `-` |
 | title | 整體標題 | `string` | `-` |
-| onClick | 導航點擊 | `data: {title: string, value: string \| number}` | `-` |
+| onClick | 導航點擊 | `({title: string, value: string \| number}) => void` | `-` |
 
 ## 主題定制
 

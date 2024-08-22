@@ -1,17 +1,14 @@
 # Avatar 頭像
 
-## 介紹
-
 用來代錶用戶或事物，支持圖片、圖標或字符展示。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Avatar } from '@nutui/nutui-react';
-
+import { Avatar } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
@@ -19,30 +16,7 @@ import { Avatar } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar
-        size="large"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-      <Avatar
-        size="normal"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-      <Avatar
-        size="small"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -52,21 +26,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar icon={<User />} shape="square" />
-      <Avatar icon={<User />} shape="round" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -76,22 +36,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
-      <Avatar icon={<User />} />
-      <Avatar>N</Avatar>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -101,28 +46,7 @@ Icon 和字符型可以自定義圖標顏色及背景色
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar
-        className="demo-avatar"
-        color="#fff"
-        background="#FA2C19"
-        icon={<User />}
-      />
-      <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
-        U
-      </Avatar>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -130,25 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Badge } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Badge value="8">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge dot>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -156,35 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar.Group gap="-4">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
-          U
-        </Avatar>
-      </Avatar.Group>
-
-      <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
-          U
-        </Avatar>
-        <Avatar icon={<User />} />
-      </Avatar.Group>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -192,27 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Avatar.Group max="3" level="right" maxContent="...">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
-          U
-        </Avatar>
-        <Avatar icon={<User />} />
-      </Avatar.Group>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -220,23 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Toast } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  const activeAvatar = () => {
-    Toast.show('觸發點擊頭像')
-  }
-  return (
-    <>
-      <Avatar icon={<User />} onClick={activeAvatar} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -244,30 +86,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Toast, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Cell>
-        <Avatar
-          size="normal"
-          style={{ marginRight: 0 }}
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-        />
-        <div style={{ marginLeft: '10px' }}>
-          <div style={{ fontSize: '16px' }}>标题</div>
-          <div style={{ fontSize: '12px' }}>描述信息</div>
-        </div>
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -294,14 +113,14 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| max | 顯示的最大頭像個數 | `string` \| `number`  | `-` |
+| max | 顯示的最大頭像個數 | `string` \| `number` | `-` |
 | maxContent | 頭像數量超出時，會出現一個頭像摺疊元素。該元素內容可為...、more、+N。 | `string` | `-` |
-| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal`  \| `small`  | `-` |
-| shape | 設置頭像的形狀 | `string` \| `round`  | `-` |
+| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal` \| `small` | `-` |
+| shape | 設置頭像的形狀 | `string` \| `round` | `-` |
 | maxBackground | 設置 Icon、字符類型頭像的背景色 | `string` | `#eee` |
 | maxColor | 設置 Icon、字符類型頭像的顏色 | `string` | `#666` |
 | gap | 設置頭像之間的間距 | `string` | `-8` |
-| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right`  | `left` |
+| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right` | `left` |
 
 ## 主題定制
 

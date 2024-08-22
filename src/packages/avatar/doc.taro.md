@@ -1,16 +1,14 @@
 # Avatar 头像
 
-## 介绍
-
 用来代表用户或事物，支持图片、图标或字符展示。
 
-## 安装
+## 引入
 
 ```tsx
-import { Avatar } from '@nutui/nutui-react-taro';
+import { Avatar } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -18,30 +16,7 @@ import { Avatar } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar
-        size="large"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-      <Avatar
-        size="normal"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-      <Avatar
-        size="small"
-        src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -51,21 +26,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar icon={<User />} shape="square" />
-      <Avatar icon={<User />} shape="round" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -75,22 +36,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
-      <Avatar icon={<User />} />
-      <Avatar>N</Avatar>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -100,26 +46,7 @@ Icon 和字符型可以自定义图标颜色及背景色
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar
-        className="demo-avatar"
-        color="#fff"
-        background="#FA2C19"
-        icon={<User />}
-      />
-      <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">U</Avatar>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -127,25 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Badge } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Badge value="8">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge dot>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -153,35 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar.Group gap="-4">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
-          U
-        </Avatar>
-      </Avatar.Group>
-
-      <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
-          U
-        </Avatar>
-        <Avatar icon={<User />} />
-      </Avatar.Group>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -189,27 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Avatar.Group max="3" level="right" maxContent="...">
-        <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-        <Avatar icon={<User />} />
-        <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
-          U
-        </Avatar>
-        <Avatar icon={<User />} />
-      </Avatar.Group>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -217,24 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  const activeAvatar = () => {
-    Taro.showToast({ title: '触发点击头像' })
-  }
-  return (
-    <>
-      <Avatar icon={<User />} onClick={activeAvatar} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -242,30 +86,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Avatar, Toast, Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Cell>
-        <Avatar
-          size="normal"
-          style={{ marginRight: 0 }}
-          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-        />
-        <div style={{ marginLeft: '10px' }}>
-          <div style={{ fontSize: '16px' }}>标题</div>
-          <div style={{ fontSize: '12px' }}>描述信息</div>
-        </div>
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -291,14 +112,14 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| max | 显示的最大头像个数 | `string` \| `number`  | `-` |
+| max | 显示的最大头像个数 | `string` \| `number` | `-` |
 | maxContent | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。 | `string` | `-` |
-| size | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字 | `large` \| `normal`  \| `small`  | `-` |
-| shape | 设置头像的形状 | `string` \| `round`  | `-` |
+| size | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字 | `large` \| `normal` \| `small` | `-` |
+| shape | 设置头像的形状 | `string` \| `round` | `-` |
 | maxBackground | 设置 Icon、字符类型头像的背景色 | `string` | `#eee` |
 | maxColor | 设置 Icon、字符类型头像的颜色 | `string` | `#666` |
 | gap | 设置头像之间的间距 | `string` | `-8` |
-| level | 头像之间的层级关系，可选值为：left、right | `left` \| `right`  | `left` |
+| level | 头像之间的层级关系，可选值为：left、right | `left` \| `right` | `left` |
 
 ## 主题定制
 

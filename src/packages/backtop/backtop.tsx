@@ -4,6 +4,7 @@ import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import requestAniFrame from '@/utils/raf'
+import { useRtl } from '@/packages/configprovider'
 
 declare const window: any
 
@@ -26,6 +27,7 @@ const defaultProps = {
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     target,
@@ -41,15 +43,12 @@ export const BackTop: FunctionComponent<
   }
 
   const classPrefix = 'nut-backtop'
-
   const [backTop, SetBackTop] = useState(false)
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
   const scrollEl: any = useRef<any>(null)
-  // 初始化
   useEffect(() => {
     init()
-
     return () => removeEventListener()
   }, [])
 
@@ -72,7 +71,6 @@ export const BackTop: FunctionComponent<
       SetScrollTop(top)
     }
     const showBtn = top >= threshold
-
     SetBackTop(showBtn)
   }
 
@@ -101,19 +99,16 @@ export const BackTop: FunctionComponent<
     window.cancelAnimationFrame = window.webkitCancelAnimationFrame
   }
 
-  // 监听事件
   function addEventListener() {
     scrollEl.current?.addEventListener('scroll', scrollListener, false)
     scrollEl.current?.addEventListener('resize', scrollListener, false)
   }
 
-  // 移除监听事件
   function removeEventListener() {
     scrollEl.current?.removeEventListener('scroll', scrollListener, false)
     scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
 
-  // 返回顶部点击事件
   const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
     const otime = +new Date()
@@ -121,16 +116,17 @@ export const BackTop: FunctionComponent<
     duration > 0 ? scrollAnimation() : scroll()
   }
 
-  const styles = style
-    ? {
-        zIndex,
-        ...style,
-      }
-    : {
-        right: '10px',
-        bottom: '20px',
-        zIndex,
-      }
+  const styles =
+    Object.keys(style || {}).length !== 0
+      ? {
+          zIndex,
+          ...style,
+        }
+      : {
+          [rtl ? 'left' : 'right']: '10px',
+          bottom: '20px',
+          zIndex,
+        }
 
   return (
     <div
@@ -151,5 +147,4 @@ export const BackTop: FunctionComponent<
   )
 }
 
-BackTop.defaultProps = defaultProps
 BackTop.displayName = 'NutBackTop'

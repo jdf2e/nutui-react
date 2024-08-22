@@ -1,16 +1,14 @@
 # SearchBar组件
 
-## 介绍
-
 用于搜索场景的输入框组件。
 
-## 安装
+## 引入
 
 ```tsx
-import { SearchBar } from '@nutui/nutui-react';
+import { SearchBar } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -18,17 +16,7 @@ import { SearchBar } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <SearchBar backable placeholder="上京东，购好物" />
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,17 +26,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <SearchBar shape="round" maxLength={5} />
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -58,25 +36,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <ConfigProvider
-      theme={{
-        nutuiSearchbarBackground: 'var(--nutui-color-primary)',
-        nutuiSearchbarInputBackground: '#eee',
-        nutuiSearchbarInputTextAlign: 'right',
-      }}
-    >
-      <SearchBar onSearch={(value) => Toast.text(value)} />
-    </ConfigProvider>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -86,18 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <SearchBar left="文本" right="测试" />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -107,53 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react';
-import {   ArrowLeft,
-  Photograph,
-  ArrowDown,
-  More,
-  Close,
-  Star
-} from '@nutui/icons-react'
-
-const App = () => {
-  return <>
-    <SearchBar
-      left={
-        <>
-          <ArrowLeft width={20} height={20} />
-          <Close width={20} height={20} />
-        </>
-      }
-      right={
-        <>
-          <Star
-            width={20}
-            height={20}
-            style={{
-              color: 'var(--nutui-color-primary)',
-            }}
-          />
-          <More width={20} height={20} />
-        </>
-      }
-      rightIn={
-        <Photograph
-          width={16}
-          height={16}
-          onClick={() => {
-            console.log('Photograph right in')
-          }}
-        />
-      }
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -163,34 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar, PopOver } from '@nutui/nutui-react';
-import {  ArrowDown } from '@nutui/icons-react'
-
-const App = () => {
-  return <>
-    <SearchBar
-      leftIn={
-        <PopOver
-          visible={lightTheme}
-          onClick={() => {
-            lightTheme ? setLightTheme(false) : setLightTheme(true)
-          }}
-          list={itemList}
-        >
-          <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
-            更多
-            <ArrowDown />
-          </div>
-        </PopOver>
-      }
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -200,25 +76,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { SearchBar } from '@nutui/nutui-react';
-
-const App = () => {
-  const [value, setValue] = useState('')
-  const change = (val: string, e: Event) => {
-    setValue(val)
-  }
-  return <>
-    <SearchBar
-      onChange={(val: string, e: Event) => change(val, e)}
-      maxLength={10}
-    />
-    value：{value}
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 

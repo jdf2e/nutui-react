@@ -1,177 +1,62 @@
 # Pagination 分页
 
-## 介绍
-
 当数据量较多时，采用分页的形式分隔长列表。
 
-## 安装
+## 引入
 
 ```tsx
-import { Pagination } from '@nutui/nutui-react-taro';
+import { Pagination } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
-通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value，一般搭配 onChange 使用。 不需要受控时，可通过 defaultValue 指定当前页码 
+通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value，一般搭配 onChange 使用。 不需要受控时，可通过 defaultValue 指定当前页码
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: number) => {
-    const c = v
-    setCurrentPage1(c)
-  }
-  return (
-    <Pagination
-      value={currentPage1}
-      total={25}
-      pageSize={5}
-      onChange={pageChange1}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
 ### 简单模式
 
-将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。 
+将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="simple" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### 极简模式
 
 将 mode 设置为 "lite" 来切换到极简模式，可用于主图切换。
 
-
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="lite" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
-
 ### 显示省略号
 
-设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。 
+设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: number) => {
-    const c = v
-    setCurrentPage3(c)
-  }
-  return (
-    <Pagination
-      value={currentPage3}
-      total={125}
-      itemSize={2}
-      ellipse
-      onChange={pageChange3}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
 ### 自定义按钮
 
-通过itemRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
+通过itemRender传入自定义方法，入参数为`page: { number:页数, text:"文本", active:"选中状态" }`
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination} from '@nutui/nutui-react-taro'; 
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro';
-
-const App = () => {
-  const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: number) => {
-    const c = v
-    setCurrentPage4(c)
-  }
-  const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
-  }
-  return (
-    <Pagination
-      value={currentPage4}
-      total={500}
-      itemSize={5}
-      onChange={pageChange4}
-      itemRender={itemRender} 
-      prev={<ArrowLeft />}
-      next={<ArrowRight />}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -179,26 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react-taro'; 
-
-const App = () => {
-  const pageChange5 = (v: number) => {
-    console.log(v)
-  }
-  return (
-    <Pagination
-      defaultValue={15}
-      total={500}
-      pageSize={10}
-      itemSize={3}
-      onChange={pageChange5}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -228,7 +94,7 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-pagination-color | 页码字色 |  `$color-primary` |
+| \--nutui-pagination-color | 页码字色 | `$color-primary` |
 | \--nutui-pagination-font-size | 页码字号 | `$font-size-base` |
 | \--nutui-pagination-item-border-color | 边框颜色 | `$color-border` |
 | \--nutui-pagination-active-background-color | 当前页码的背景色 | `$color-primary` |
@@ -239,6 +105,6 @@ export default App;
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
 | \--nutui-pagination-lite-width | lite模式下的宽度 | `40px` |
 | \--nutui-pagination-lite-height | lite模式下的高度 | `20px` |
-| \--nutui-pagination-lite-radius| lite模式下的圆角 | `12px` |
+| \--nutui-pagination-lite-radius | lite模式下的圆角 | `12px` |
 | \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |

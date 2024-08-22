@@ -1,32 +1,20 @@
 # Skeleton 骨架屏组件
 
-## 介绍
-
 在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。
 
-## 安装
+## 引入
 
 ```tsx
-import { Skeleton } from '@nutui/nutui-react-taro';
+import { Skeleton } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { Skeleton } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Skeleton  animated />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -34,17 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Skeleton } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Skeleton  rows={3} title animated />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -52,17 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Skeleton } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Skeleton  rows={3} title animated avatar avatarSize="100px" />
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -70,23 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Skeleton, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <ConfigProvider
-      theme={{
-        nutuiSkeletonLineBorderRadius: '10px',
-      }}
-    >
-      <Skeleton rows={3} animated />
-    </ConfigProvider>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -94,39 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Skeleton, Switch, Avatar } from '@nutui/nutui-react-taro';
-
-
-const App = () => {
-  const [checked, setChecked] = useState(false)
-  const changeStatus = (value: boolean, event: React.MouseEvent<Element, MouseEvent>) => {
-    console.log(`触发了change事件，开关状态：${value}`)
-    setChecked(value)
-  }
-  return (
-    <div className="content">
-      <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-      <Skeleton  title animated avatar rows={3} visible={checked}>
-        <div className="container">
-          <Avatar
-            size="50"
-            icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-          />
-          <div className="right-content">
-            <span className="title">NutUI-React</span>
-            <div className="description">
-              一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
-            </div>
-          </div>
-        </div>
-      </Skeleton>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 

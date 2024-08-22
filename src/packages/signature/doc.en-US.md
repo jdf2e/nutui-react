@@ -1,10 +1,8 @@
 # Signature
 
-## Intro
-
 Signature component based on canvas.
 
-## Install
+## Import
 
 ```tsx
 import { Signature } from '@nutui/nutui-react'
@@ -16,35 +14,7 @@ import { Signature } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Signature} from '@nutui/nutui-react';
-
-const App = () => {
-    const confirm = (canvas: HTMLCanvasElement, data: string) => {
-      const img = document.createElement('img')
-      img.src = data
-      const demo = document.querySelector('.demo') as HTMLElement
-      demo.appendChild(img)
-    }
-    const clear = () => {
-      const img = document.querySelector('.demo img')
-      if (img) {
-        img.remove()
-      }
-    }
-    const demoStyles: React.CSSProperties = { margin: '1em 0' }
-    return (
-    <>
-        <Signature onConfirm={confirm} onClear={clear} />
-        <p className="demo-tips demo" style={demoStyles}>
-           Tips: click the confirm button, and the signature image is displayed below
-        </p>
-    </>
-    );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -52,40 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Signature} from '@nutui/nutui-react';
-
-const App = () => {
-    const confirm = (canvas: HTMLCanvasElement, data: string) => {
-    const img = document.createElement('img')
-    img.src = data
-    const demo = document.querySelector('.demo') as HTMLElement
-    demo.appendChild(img)
-    }
-    const clear = () => {
-    const img = document.querySelector('.demo img')
-    if (img) {
-        img.remove()
-    }
-    }
-    const demoStyles: React.CSSProperties = { margin: '1em 0' }
-    return (
-    <>
-        <Signature
-            lineWidth={4}
-            strokeStyle="green"
-            onConfirm={confirm}
-            onClear={clear}
-         />
-        <p className="demo-tips demo" style={demoStyles}>
-            Tips: click the confirm button, and the signature image is displayed below
-        </p>
-    </>
-    );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -99,7 +36,7 @@ export default App;
 | strokeStyle | Drawing stroke color | `string` | `#000` |
 | type | Picture format | `string` | `png` |
 | unsupported | Display copy without canvas | `ReactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
-| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string, isSigned?: boolean) => void` | `-` |
 | onClear | Clicking the reschedule button triggers the event callback function | `onClear: () => void` | `-` |
 
 ### Ref

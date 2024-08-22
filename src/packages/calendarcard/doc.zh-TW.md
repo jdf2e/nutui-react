@@ -1,36 +1,20 @@
 # CalendarCard 日歷
 
-## 介紹
-
 日歷
 
-## 安裝
+## 引入
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 選擇單個日期
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-// const date = null;
-const date = new Date('2023-01-01');
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard defaultValue={date} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,23 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [val, setVal] = useState(() => {
-    // return [];
-    return [new Date('2023-01-01'), new Date('2023-01-03')];
-  })
-  const onChange = (val) => {
-    setVal(val);
-    console.log(val);
-  };
-  return <CalendarCard type="multiple" value={val} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,18 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard type="range" onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,18 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard type="week" onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -100,20 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [date, setDate] = useState(() => new Date('2023-01-01'));
-  const onChange = (val) => {
-    console.log(val);
-    setDate(val);
-  };
-  return <CalendarCard value={date} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -121,28 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const renderDayTop = (day) => {
-    return day.date === 8 ? '☺' : ''
-  }
-  const renderDay = (day) => {
-    return day.date <= 9 ? `0${day.date}` : day.date
-  }
-  const renderDayBottom = (day) => {
-    return day.date === 8 ? '節日' : ''
-  }
-  return <CalendarCard
-    renderDayTop={renderDayTop}
-    renderDay={renderDay}
-    renderDayBottom={renderDayBottom}
-  />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -150,18 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard firstDayOfWeek={1} onChange={change} />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -169,22 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard
-    startDate={new Date('2023-08-01')}
-    endDate={new Date('2025-11-11')}
-    onChange={change}
-  />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -192,24 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard
-    disableDay={(day) => {
-      const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-      return d === 1 || d === 3
-    }}
-    onChange={change}
-  />;
-};
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -217,37 +86,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Popup, Button, CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const [date, setDate] = useState(null)
-  return <>
-    <Cell
-      title="點擊選擇日期"
-      description={String(date)}
-      onClick={() => setVisible(true)}
-    />
-    <Popup
-      title="選擇日期"
-      visible={visible}
-      position="bottom"
-      closeable
-      onClose={() => setVisible(false)}
-    >
-      <CalendarCard value={date} onChange={(d) => setDate(d)} />
-      <div style={{ padding: '10px' }}>
-        <Button block type="danger" onClick={() => setVisible(false)}>
-          確定
-        </Button>
-      </div>
-    </Popup>
-  </>;
-};
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -255,30 +94,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Space, Button, CalendarCard } from '@nutui/nutui-react';
-
-const App = () => {
-  const CalendarCardRef = useRef(null)
-  return <>
-    <Space>
-      <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
-      <Button onClick={() => CalendarCardRef.current?.jump(12)}>
-        + 12
-      </Button>
-      <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
-        - 12
-      </Button>
-      <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
-        2023 01
-      </Button>
-    </Space>
-    <CalendarCard ref={CalendarCardRef} />
-  </>;
-};
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -318,7 +134,7 @@ export default App;
 | 方法名 | 說明 | 參數 |
 | --- | --- | --- |
 | jump | 在當前基礎上前進或後退月數，正數向前，負數向後 | `step: number` |
-| jumpTo | 跳轉至特定的年月 | `year: number, month: number`|
+| jumpTo | 跳轉至特定的年月 | `year: number, month: number` |
 
 ## 主題定製
 

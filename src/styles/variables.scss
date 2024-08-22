@@ -194,6 +194,7 @@ $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 $padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
+$button-transition: opacity 0.2s;
 $button-square-border-radius: var(
   --nutui-button-square-border-radius,
   0
@@ -216,6 +217,10 @@ $button-default-disabled: var(
   --nutui-button-default-disabled,
   $color-text-disabled
 ) !default;
+$button-default-disabled-color: var(
+  --nutui-button-default-disabled-color,
+  $color-text-help
+) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0px 16px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
@@ -226,8 +231,15 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
+$button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
+$button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 32px) !default;
+$button-xlarge-font-size: var(
+  --nutui-button-xlarge-font-size,
+  $font-size-xl
+) !default;
+
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
-$button-large-padding: var(--nutui-button-large-padding, 0px 32px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 20px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-base
@@ -236,6 +248,10 @@ $button-large-font-weight: var(
   --nutui-button-large-font-weight,
   $font-weight-bold
 ) !default;
+$button-large-border-radius: var(
+  --nutui-button-large-border-radius,
+  24px
+) !default;
 
 $button-small-font-size: var(
   --nutui-button-small-font-size,
@@ -243,12 +259,20 @@ $button-small-font-size: var(
 ) !default;
 $button-small-padding: var(--nutui-button-small-padding, 0px 12px) !default;
 $button-small-height: var(--nutui-button-small-height, 28px) !default;
+$button-small-border-radius: var(
+  --nutui-button-small-border-radius,
+  24px
+) !default;
 
-$button-mini-padding: var(--nutui-button-mini-padding, 0px 12px) !default;
+$button-mini-padding: var(--nutui-button-mini-padding, 0px 8px) !default;
 $button-mini-height: var(--nutui-button-mini-height, 24px) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
   $font-size-small
+) !default;
+$button-mini-border-radius: var(
+  --nutui-button-mini-border-radius,
+  24px
 ) !default;
 
 $button-primary-color: var(
@@ -413,6 +437,7 @@ $cell-group-background-color: var(
   --nutui-cell-group-background-color,
   $color-background-overlay
 ) !default;
+$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
 
 // divider（✅）
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
@@ -582,7 +607,7 @@ $inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
 $inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
 $inputnumber-input-background-color: var(
   --nutui-inputnumber-input-background-color,
-  $color-background-overlay
+  $color-background
 ) !default;
 $inputnumber-input-font-color: var(
   --nutui-inputnumber-input-font-color,
@@ -597,14 +622,11 @@ $inputnumber-input-border-radius: var(
   --nutui-inputnumber-input-border-radius,
   6px
 ) !default;
-$inputnumber-input-margin: var(
-  --nutui-inputnumber-input-margin,
-  0 6px
-) !default;
-$inputnumber-button-width: var(--nutui-inputnumber-button-width, 16px) !default;
+$inputnumber-input-margin: var(--nutui-inputnumber-input-margin, 0) !default;
+$inputnumber-button-width: var(--nutui-inputnumber-button-width, 14px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
-  16px
+  24px
 ) !default;
 $inputnumber-button-border-radius: var(
   --nutui-inputnumber-button-border-radius,
@@ -612,7 +634,7 @@ $inputnumber-button-border-radius: var(
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
-  $color-background
+  transparent
 ) !default;
 $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
@@ -629,7 +651,6 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-background-overlay
 ) !default;
-$actionsheet-padding: var(--nutui-actionsheet-padding, 0 4px) !default;
 $actionsheet-border-color: var(
   --nutui-actionsheet-border-color,
   $color-border
@@ -1034,6 +1055,10 @@ $pulltorefresh-icon-height: var(
   --nutui-pulltorefresh-icon-height,
   26px
 ) !default;
+$pulltorefresh-color-primary: var(
+  --nutui-pulltorefresh-color-primary,
+  $color-primary
+) !default;
 
 //infiniteloading（✅）
 $infiniteloading-color: var(
@@ -1251,7 +1276,7 @@ $dialog-vertical-footer-ok-margin-top: var(
   --nutui-dialog-vertical-footer-ok-margin-top,
   5px
 ) !default;
-$dialog-close-color: var(--nutui-dialog-close-color, #8c8c8c) !default;
+$dialog-close-color: var(--nutui-dialog-close-color, #ffffff) !default;
 $dialog-close-width: var(--nutui-dialog-close-width, 18px) !default;
 $dialog-close-height: var(--nutui-dialog-close-height, 18px) !default;
 $dialog-close-top: var(--nutui-dialog-close-top, 16px) !default;
@@ -1302,6 +1327,19 @@ $checkbox-button-disabled-active-color: var(
   --nutui-checkbox-button-disabled-active-color,
   $white
 ) !default;
+$checkbox-list-background-color: var(
+  --nutui-checkbox-list-background-color,
+  $white
+) !default;
+$checkbox-list-item-border: var(
+  --nutui-checkbox-list-item-border,
+  1px solid $color-border
+) !default;
+$checkbox-list-padding: var(--nutui-checkbox-list-padding, 0 0 0 12px) !default;
+$checkbox-list-item-padding: var(
+  --nutui-checkbox-list-item-padding,
+  12px 12px 12px 0
+) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(
@@ -1340,13 +1378,14 @@ $radio-button-disabled-active-color: var(
   --nutui-radio-button-disabled-active-color,
   $white
 ) !default;
-$radiogroup-radio-margin: var(
-  --nutui-radiogroup-radio-margin,
-  0 20px 5px 0
+$radiogroup-radio-margin: var(--nutui-radiogroup-radio-margin, 20px) !default;
+$radiogroup-radio-margin-bottom: var(
+  --nutui-radiogroup-radio-margin-bottom,
+  5px
 ) !default;
 $radiogroup-radio-label-margin: var(
   --nutui-radiogroup-radio-label-margin,
-  0 5px 0 5px
+  0 5px
 ) !default;
 
 // signature（✅）
@@ -1449,7 +1488,7 @@ $tag-success-background-color: var(
 ) !default;
 $tag-danger-background-color: var(
   --nutui-tag-danger-background-color,
-  $color-primary
+  $color-danger
 ) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,
@@ -1484,6 +1523,7 @@ $badge-content-transform: var(
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
+$badge-dot-border: var(--nutui-badge-dot-border, 0px solid $color-primary-text);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
@@ -1602,7 +1642,6 @@ $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $color-background
 ) !default;
-$tabs-titles-padding: var(--nutui-tabs-titles-padding, 0 16px) !default;
 $tabs-titles-gap: var(--nutui-tabs-titles-gap, 12px) !default;
 $tabs-titles-font-size: var(
   --nutui-tabs-titles-font-size,
@@ -1677,7 +1716,11 @@ $tabs-titles-item-smile-bottom: var(
   --nutui-tabs-titles-item-smile-bottom,
   -10%
 ) !default;
-
+$tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
+$tabs-tabpane-backgroundColor: var(
+  --nutui-tabs-tabpane-backgroundColor,
+  #fff
+) !default;
 // indicator（✅）
 $indicator-color: var(
   --nutui-indicator-color,
@@ -1741,10 +1784,7 @@ $collapse-item-header-border-bottom: var(
   --nutui-collapse-item-header-border-bottom,
   1px solid $color-border
 ) !default;
-$collapse-item-padding: var(
-  --nutui-collapse-item-padding,
-  13px 0px 13px 26px
-) !default;
+$collapse-item-padding: var(--nutui-collapse-item-padding, 13px 26px) !default;
 $collapse-item-color: var(--nutui-collapse-item-color, $color-title) !default;
 $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,
@@ -1832,6 +1872,7 @@ $empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
 $empty-image-size: var(--nutui-empty-image-size, 160px) !default;
 $empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
 $empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
+$empty-background-color: var(--nutui-empty-background-color, #fff) !default;
 $empty-title-margin-bottom: var(
   --nutui-empty-title-margin-bottom,
   8px

@@ -1,4 +1,3 @@
-
 <p align="center">
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
@@ -35,26 +34,27 @@
 </p>
 
 ---
+
 > Nut[nʌt]，源自电影《冰河世纪》里松鼠 Scrat "执迷不悟"，一生追求，即便引发大灾难也绝不松手的坚果。
 
 简体中文 | [English](./README.md)
 
-##  特性
+## 特性
 
-* 🚀 70+ 高质量组件, 覆盖移动端主流场景
-* 📖 基于京东 APP 11.0 视觉规范
-* 🍭 支持按需引用
-* 📖 详尽的文档和示例
-* 💪 支持 TypeScript
-* 💪 支持服务端渲染（测试阶段）
-* 🍭 支持定制主题
-* 🍭 单元测试覆盖率超过90%, 保障稳定性
-* 📖 提供 Sketch 设计资源
-
+- 🚀 70+ 高质量组件, 覆盖移动端主流场景
+- 📖 基于京东 APP 11.0 视觉规范
+- 🍭 支持按需引用
+- 📖 详尽的文档和示例
+- 💪 支持 TypeScript
+- 💪 支持服务端渲染（测试阶段）
+- 🍭 支持定制主题
+- 🍭 单元测试覆盖率超过90%, 保障稳定性
+- 📖 提供 Sketch 设计资源
 
 ## 项目运行
 
 ### 本地运行H5
+
 ```sh
 # 克隆仓库
 git clone https://github.com/jdf2e/nutui-react.git
@@ -63,14 +63,16 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # 安装依赖
-npm install
+pnpm install
 
 # 进入开发模式
 # 浏览器访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
-npm run dev
+pnpm run dev
 
 ```
+
 ### 本地运行小程序
+
 ```sh
 # 克隆仓库
 git clone https://github.com/jdf2e/nutui-react.git
@@ -79,25 +81,24 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # 安装依赖
-npm install
+pnpm install
 
 # 进入小程序开发模式
 # 访问：src/sites/mobile-taro/dist/weapp
-npm run dev:taro:weapp
+pnpm run dev:taro:weapp
 
 # 其他小程序类似，如京东小程序
 # 访问：src/sites/mobile-taro/dist/jd
-npm run dev:taro:jd
+pnpm run dev:taro:jd
 ```
 
 ## 构建版本
 
 > AMD 环境、Webpack、Vite 等构建工具环境、服务端建议使用 es 版，非模块化环境（如通过 `<script>` 标签直接引用）建议使用 umd 压缩版。
 
-* es **nutui.react.es.js**
+- es **nutui.react.es.js**
 
-* umd **nutui.umd.js**
-
+- umd **nutui.umd.js**
 
 ## 链接
 
@@ -125,14 +126,15 @@ npm run dev:taro:jd
 </ul>
 
 ## 开发交流
-| 版本 | 微信群 |内部咚咚群 |
-| --- | --- |--- |
+
+| 版本 | 微信群 | 内部咚咚群 |
+| --- | --- | --- |
 | [NutUI React](https://github.com/jdf2e/nutui-react/issues) | <img src="https://storage.360buyimg.com/imgtools/17c67beff6-4acf07c0-609c-11ed-a6ef-69df15b605e4.png" width="100" /> 关注后回复「NutUI-React」 | 1025679314 |
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" /> 关注后回复「NutUI-React」 | 1022545110 |
 
 ## 参与共建
 
-如果您对这个项目感兴趣，欢迎参与贡献，也欢迎 "Star" 支持一下 ^_^
+如果您对这个项目感兴趣，欢迎参与贡献，也欢迎 "Star" 支持一下 ^\_^
 
 #### NutUI 社区共建倡议
 
@@ -162,7 +164,7 @@ NutUI 的共建方向主要分为：解决 issue、修复 bug、新增组件、�
   <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" />
 </a>
 
-## Stargazers 
+## Stargazers
 
 [![Stargazers repo roster for @jdf2e/nutui-react](https://reporoster.com/stars/jdf2e/nutui-react)](https://github.com/jdf2e/nutui-react/stargazers)
 

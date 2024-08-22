@@ -1,34 +1,20 @@
 # Progress 進度條
 
-## 介紹
-
 展示操作或任務的當前進度。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Progress } from '@nutui/nutui-react';
+import { Progress } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress percent={30} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -36,24 +22,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress
-        percent={30}
-        background="rgba(250,44,25,0.2)"
-        color="rgba(250,44,25,0.9)"
-        strokeWidth="15"
-      />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -61,19 +30,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress percent={50} showText />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,25 +38,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Image, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress percent={60} showText>
-        <Image
-          width="30px"
-          height="30px"
-          src="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-        />
-      </Progress>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -107,66 +46,15 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Cell>
-        <Progress percent={30} strokeWidth="5" showText />
-      </Cell>
-      <Cell>
-        <Progress percent={50} strokeWidth="10" showText />
-      </Cell>
-      <Cell>
-        <Progress percent={70} strokeWidth="15" showText />
-      </Cell>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
-### 設置狀態顯示
+### 狀態顯示
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-import { Checked, Tips } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-      <Cell>
-        <Progress
-          percent={30}
-          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-          animated
-        />
-      </Cell>
-      <Cell align="center">
-        <Progress percent={100} />
-        <Checked color="green" style={{ margin: '0 5px' }} />
-      </Cell>
-      <Cell align="center">
-        <Progress
-          percent={100}
-          color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-          strokeWidth="15"
-        />
-        <Tips color="red" style={{ margin: '0 5px' }} />
-      </Cell>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -174,46 +62,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React, {useState} from "react";
-import { Progress, Cell, Button, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [value, setValue] = useState(0);
-  return (
-    <Cell.Group>
-      <Cell align="center">
-        <Progress percent={value} />
-        <span style={{ margin: '0 5px' }}>{value}%</span>
-      </Cell>
-      <Cell align="center">
-        <Button
-          type="default"
-          style={{ margin: 8 }}
-          onClick={() => {
-            if (value <= 0) {
-              Toast.show('进度已为0')
-            }
-            setValue(Math.max(0, value - 10))
-          }}
-        >減少
-        </Button>
-        <Button 
-          type="primary"
-          style={{ margin: 8 }}
-          onClick={() => {
-            if (value >= 100) {
-              Toast.show('进度已为100%')
-            }
-            setValue(Math.min(100, value + 10))
-          }}
-        >增加</Button>
-      </Cell>
-    </Cell.Group>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -221,19 +70,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell align="center">
-      <Progress percent={30} lazy delay={500} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

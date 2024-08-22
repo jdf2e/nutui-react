@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '../configprovider'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -25,6 +26,7 @@ const defaultProps = {
 export const Progress: FunctionComponent<
   Partial<ProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const rtl = useRtl()
   const {
     className,
     style,
@@ -77,11 +79,7 @@ export const Progress: FunctionComponent<
     }
     observer.current = new IntersectionObserver((entires, self) => {
       entires.forEach((item) => {
-        if (item.isIntersecting) {
-          setIntersecting(true)
-        } else {
-          setIntersecting(false)
-        }
+        setIntersecting(item.isIntersecting)
       })
     }, options)
     observer.current.observe(progressRef.current)
@@ -131,7 +129,11 @@ export const Progress: FunctionComponent<
           {showText && (
             <div
               className={`${classPrefix}-text`}
-              style={{ left: `${displayPercent}%` }}
+              style={
+                rtl
+                  ? { right: `${displayPercent}%` }
+                  : { left: `${displayPercent}%` }
+              }
             >
               {children || (
                 <div
@@ -151,5 +153,4 @@ export const Progress: FunctionComponent<
   )
 }
 
-Progress.defaultProps = defaultProps
 Progress.displayName = 'NutProgress'

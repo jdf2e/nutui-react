@@ -25,6 +25,23 @@ interface Store {
 
 export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
+export interface ImageOption {
+  src: string
+  index?: number
+}
+
+export interface VideoOption {
+  source: {
+    src: string
+    type: string
+  }
+  options: {
+    muted: boolean
+    controls: boolean
+  }
+  index?: number
+}
+
 export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
@@ -44,6 +61,7 @@ export interface ImagePreviewProps extends BasicComponent {
   value?: number
   defaultValue: number
   closeOnContentClick: boolean
+  pagination: boolean
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
@@ -60,6 +78,7 @@ const defaultProps = {
   autoPlay: 3000,
   defaultValue: 0,
   closeOnContentClick: false,
+  pagination: true,
   indicator: false,
   indicatorColor: '#fff',
   closeIcon: false,
@@ -71,6 +90,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    value,
     className,
     style,
     images,
@@ -78,21 +98,23 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     visible,
     defaultValue,
     indicatorColor,
+    pagination,
     indicator,
     autoPlay,
     closeOnContentClick,
     closeIcon,
     closeIconPosition,
     onClose,
-  } = props
+    onChange,
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
-    value: props.value,
+    value,
     defaultValue,
     finalValue: defaultValue,
     onChange: (val: number) => {
-      props.onChange?.(val)
+      onChange?.(val)
     },
   })
 
@@ -236,10 +258,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    props.onChange?.(page + 1)
+    onChange?.(page + 1)
   }
 
-  const onCloseInner = () => {
+  const onCloseInner = (e: React.MouseEvent<Element, MouseEvent>) => {
+    e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
@@ -250,13 +273,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
 
-  const closeOnImg = () => {
+  const closeOnImg = (e: any) => {
+    e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
-      onCloseInner()
+      onCloseInner(e)
     }
   }
-
+  const duration = typeof autoPlay === 'string' ? parseInt(autoPlay) : autoPlay
   return (
     <Popup
       visible={showPop}
@@ -268,48 +292,67 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
-        <Swiper
-          autoPlay={autoPlay}
-          className={`${classPrefix}-swiper`}
-          loop
-          preventDefault={false}
-          style={{
-            display: showPop ? 'block' : 'none',
-            '--nutui-indicator-color': indicatorColor,
-          }}
-          direction="horizontal"
-          onChange={(page) => slideChangeEnd(page)}
-          defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
-          indicator={indicator}
-        >
-          {(videos && videos.length > 0
-            ? videos.map((item, index) => {
-                return (
-                  <SwiperItem key={index}>
-                    <Video source={item.source} options={item.options} />
-                  </SwiperItem>
-                )
-              })
-            : []
-          ).concat(
-            images && images.length > 0
-              ? images.map((item, index) => {
+        {showPop ? (
+          <Swiper
+            autoPlay={!!duration}
+            duration={duration}
+            className={`${classPrefix}-swiper`}
+            loop
+            style={{
+              '--nutui-indicator-color': indicatorColor,
+            }}
+            direction="horizontal"
+            onChange={(page) => slideChangeEnd(page)}
+            defaultValue={
+              innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)
+            }
+            indicator={indicator}
+          >
+            {(videos ?? [])
+              .map(
+                (item) =>
+                  ({ type: 'video', data: item }) as {
+                    type: 'video' | 'image'
+                    data: ImageOption | VideoOption
+                  }
+              )
+              .concat(
+                (images ?? []).map((item) => ({ type: 'image', data: item }))
+              )
+              .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
+              .map((item, index) => {
+                if (item.type === 'video') {
+                  const { source, options } = item.data as VideoOption
                   return (
                     <SwiperItem key={index}>
-                      <Image src={item.src} />
+                      <Video
+                        source={source}
+                        options={options}
+                        onClick={closeOnImg}
+                      />
                     </SwiperItem>
                   )
-                })
-              : []
-          )}
-        </Swiper>
+                }
+                if (item.type === 'image') {
+                  const { src } = item.data as ImageOption
+                  return (
+                    <SwiperItem key={index}>
+                      <Image src={src} draggable={false} onClick={closeOnImg} />
+                    </SwiperItem>
+                  )
+                }
+                return null
+              })}
+          </Swiper>
+        ) : null}
       </div>
-      <div className={`${classPrefix}-index`}>
-        {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-      </div>
+      {pagination ? (
+        <div className={`${classPrefix}-index`}>
+          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
+        </div>
+      ) : null}
       {closeIcon !== false ? (
         <div
           className={`${classPrefix}-close ${closeIconPosition}`}
@@ -322,5 +365,4 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   )
 }
 
-ImagePreview.defaultProps = defaultProps
 ImagePreview.displayName = 'NutImagePreview'

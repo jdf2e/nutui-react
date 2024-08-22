@@ -1,15 +1,42 @@
 const targetBaseUrl = `${process.cwd()}/site_docs`
 const fse = require('fs-extra')
 const type = process.argv[2] || 'h5'
+const path = require('path')
 
-const copyFile = (from, to) => {
+function readTsxFile(package, path) {
+  const data = fse.readFileSync(`src/packages/${package}/demos/${path}`, 'utf8')
+  return data
+}
+
+const copyFile = (from, to, package) => {
   fse
-    .copy(from, to)
+    .readFile(from, 'utf8')
+    .then((content) => {
+      const regex = /<CodeBlock src='(.*?)'><\/CodeBlock>/g
+      let match = ''
+      while ((match = regex.exec(content))) {
+        let temp = readTsxFile(package, match[1]) // 读取src中的文件
+        temp = temp.trim()
+        content = content.replace(
+          `<CodeBlock src='${match[1]}'></CodeBlock>`,
+          '```tsx\n' + temp + '\n```'
+        )
+      }
+      return content
+    })
+    .then((modifiedContent) => {
+      // 确保目标文件所在的目录存在，如果不存在就创建
+      return fse.ensureDir(path.dirname(to)).then(() => modifiedContent)
+    })
+    .then((modifiedContent) => {
+      // 将修改后的内容写入目标文件
+      return fse.writeFile(to, modifiedContent)
+    })
     .then(() => {
-      console.log('success!>', to)
+      console.log(`${from}>>${to} [success]`)
     })
     .catch((err) => {
-      console.error(err)
+      console.error('处理文件时发生错误:', err)
     })
 }
 const removeFile = async (url) => {
@@ -44,14 +71,15 @@ const copy = async () => {
           let docENpath = `src/packages/${cmpName}/doc.en-US.md`
           fse.readFile(docpath, (err, data) => {
             if (!err) {
-              copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`)
+              copyFile(docpath, `${targetBaseUrl}/docs/${cmpName}/doc.md`, cmpName)
             }
           })
           fse.readFile(docENpath, (err, data) => {
             if (!err) {
               copyFile(
                 docENpath,
-                `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`
+                `${targetBaseUrl}/docs/${cmpName}/doc.en-US.md`,
+                cmpName,
               )
             }
           })
@@ -63,7 +91,8 @@ const copy = async () => {
             if (!err) {
               copyFile(
                 docTaropath,
-                `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`
+                `${targetBaseUrl}/docs/${cmpName}/doc.taro.md`,
+                cmpName,
               )
             }
           })

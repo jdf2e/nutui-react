@@ -1,24 +1,11 @@
-@import '../swiperitem/swiperitem.scss';
 @import '../indicator/indicator.scss';
 
 .nut-swiper {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  transition-property: transform;
-  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-
-  &-inner {
-    display: flex;
-    height: 100%;
-  }
-
-  &-vertical {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-  }
+  touch-action: none;
+  position: relative;
 
   &-indicator {
     display: flex;
@@ -38,5 +25,44 @@
     -webkit-box-direction: normal;
     transform: translateY(-50%);
     z-index: 1;
+  }
+}
+.nut-swiper-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  &-horizontal {
+    transform: translateX(var(--swiper-offset));
+  }
+
+  &-vertical {
+    transform: translateY(var(--swiper-offset));
+    flex-direction: column;
+  }
+}
+
+.nut-swiper-slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.nut-swiper-item {
+  width: 100%;
+  height: 100%;
+}
+
+[dir='rtl'] .nut-swiper,
+.nut-rtl .nut-swiper {
+  &-indicator {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  &-indicator-vertical {
+    left: auto;
+    right: 12px;
   }
 }

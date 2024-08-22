@@ -1,10 +1,8 @@
 # Icon 图标
 
-## 介绍
-
 独立安装 @nutui/icons-react-taro 图标组件包。基于字体的图标集。
 
-## 安装
+## 引入
 
 ```bash
 npm i --save @nutui/icons-react-taro
@@ -12,7 +10,7 @@ npm i --save @nutui/icons-react-taro
 
 > 在 taro 项目中使用，需要将 prebundle 关闭。
 
-## 代码演示
+## 示例代码
 
 ### 方式一： Svg按需使用
 
@@ -20,19 +18,7 @@ npm i --save @nutui/icons-react-taro
 
 :::demo
 
-```tsx
-import React from "react";
-import { Add, Dongdong, UserAdd } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <Add color="red" />
-    <UserAdd />
-    <Dongdong />
-  </>
-}
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -60,20 +46,7 @@ import { IconFont } from '@nutui/icons-react-taro'
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" />
-    <IconFont name="add" />
-    <IconFont name="minus" />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -83,21 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont
-      size="40"
-      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -107,20 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" color="#fa2c19" />
-    <IconFont name="dongdong" color="#64b578" />
-    <IconFont name="dongdong" color="#ffd700" />
-  </>
-}
-
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -130,20 +76,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" size="16" />
-    <IconFont name="dongdong" size="20" />
-    <IconFont name="dongdong" size="24" />
-  </>
-}
-
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -169,7 +102,7 @@ export default App;
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
 ```tsx
-import './assets/font/iconfont.css';
+import './assets/font/iconfont.css'
 ```
 
 第三步:
@@ -177,12 +110,12 @@ import './assets/font/iconfont.css';
 ```tsx
 // fontClassName 指定类名为默认 iconfont
 // classPrefix 指定默认 icon
-// name 值根据 iconfont.css 中值对应填写 
+// name 值根据 iconfont.css 中值对应填写
 import React from 'react'
 import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
-  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix="icon" name="close" />
 }
 ```
 
@@ -205,16 +138,18 @@ const App = () => {
 ```
 
 ```tsx
-import React from "react";
+import React from 'react'
 import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
-  return <>
-    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
-  </>
+  return (
+    <>
+      <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 ## IconFont

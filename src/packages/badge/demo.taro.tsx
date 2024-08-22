@@ -1,40 +1,19 @@
-import React from 'react'
 import Taro from '@tarojs/taro'
-import {
-  Checklist,
-  Download,
-  User,
-  Link as LinkIcon,
-} from '@nutui/icons-react-taro'
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  Avatar,
-  Badge,
-  Cell,
-  ConfigProvider,
-} from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
-interface T {
-  '8ab98966': string
-  '1e7a2282': string
-  '781b07fd': string
-  '1c730245': string
-  '1c730248': string
-  '915d7b01': string
-  f1089312: string
-}
-
-const customTheme = {
-  nutuiBadgeBorderRadius: '12px 12px 12px 0',
-}
-
-const customTheme2 = {
-  nutuiBadgeDotWidth: '10px',
-  nutuiBadgeBorder: '2px solid #fff',
-}
 const BadgeDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '8ab98966': '默认用法',
       '1e7a2282': '最大值',
@@ -43,6 +22,7 @@ const BadgeDemo = () => {
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
+      a8237653: '填充模式',
     },
     'zh-TW': {
       '8ab98966': '默认用法',
@@ -52,6 +32,7 @@ const BadgeDemo = () => {
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
+      a8237653: '填充模式',
     },
     'en-US': {
       '8ab98966': 'Basic usage',
@@ -61,6 +42,7 @@ const BadgeDemo = () => {
       '1c730248': 'Custom CSS',
       '915d7b01': 'Custom Position',
       f1089312: 'Display Alone',
+      a8237653: 'Fill Mode',
     },
   })
   return (
@@ -69,141 +51,42 @@ const BadgeDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['8ab98966']}</h2>
         <Cell.Group>
-          <Cell>
-            <Badge style={{ marginRight: '40px' }} value={8}>
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} value={76}>
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} value="NEW">
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} dot top="2" right="4">
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-          </Cell>
+          <Demo1 />
         </Cell.Group>
 
         <h2>{translated['1e7a2282']}</h2>
         <Cell.Group>
-          <Cell>
-            <Badge style={{ marginRight: '40px' }} value={200} max={9}>
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} value={200} max={20}>
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} value={200} max={99}>
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-          </Cell>
+          <Demo2 />
         </Cell.Group>
 
         <h2>{translated['781b07fd']}</h2>
         <Cell.Group>
-          <Cell>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={8}
-              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={76}
-              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value="NEW"
-              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              dot
-              top="2"
-              right="4"
-              color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-          </Cell>
+          <Demo3 />
         </Cell.Group>
 
         <h2>{translated['1c730245']}</h2>
         <Cell.Group>
-          <Cell>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={<Checklist color="#fff" />}
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={<LinkIcon color="#fff" />}
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={<Download color="#fff" />}
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-          </Cell>
+          <Demo4 />
         </Cell.Group>
 
         <h2>{translated['1c730248']}</h2>
         <Cell.Group>
-          <Cell>
-            <ConfigProvider theme={customTheme}>
-              <Badge style={{ marginRight: '40px' }} value="NEW">
-                <Avatar icon={<User />} shape="square" />
-              </Badge>
-            </ConfigProvider>
-
-            <ConfigProvider theme={customTheme2}>
-              <Badge style={{ marginRight: '40px' }} dot top="2" right="8">
-                <Avatar icon={<User />} shape="square" />
-              </Badge>
-            </ConfigProvider>
-          </Cell>
+          <Demo5 />
         </Cell.Group>
 
         <h2>{translated['915d7b01']}</h2>
         <Cell.Group>
-          <Cell>
-            <Badge style={{ marginRight: '40px' }} value={8} top="5" right="5">
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge
-              style={{ marginRight: '40px' }}
-              value={76}
-              top="10"
-              right="10"
-            >
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-            <Badge style={{ marginRight: '40px' }} value="NEW">
-              <Avatar icon={<User />} shape="square" />
-            </Badge>
-          </Cell>
+          <Demo6 />
         </Cell.Group>
 
         <h2>{translated.f1089312}</h2>
         <Cell.Group>
-          <Cell style={{ height: '80px' }}>
-            <Badge style={{ marginRight: '40px' }} value={8} />
-            <Badge style={{ marginRight: '40px' }} value={76} />
-            <Badge style={{ marginRight: '40px' }} value="NEW" />
-          </Cell>
+          <Demo7 />
+        </Cell.Group>
+
+        <h2>{translated.a8237653}</h2>
+        <Cell.Group>
+          <Demo8 />
         </Cell.Group>
       </div>
     </>

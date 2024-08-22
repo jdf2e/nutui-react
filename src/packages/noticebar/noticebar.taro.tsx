@@ -3,16 +3,19 @@ import React, {
   useEffect,
   useRef,
   FunctionComponent,
-  MouseEvent,
   useMemo,
   ReactNode,
 } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { NoticeBarAlign } from './types'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface NoticeBarProps extends BasicComponent {
+  align: NoticeBarAlign
   direction: string
   list: any
   duration: number
@@ -22,6 +25,7 @@ export interface NoticeBarProps extends BasicComponent {
   wrap: boolean
   leftIcon: ReactNode
   rightIcon: ReactNode
+  right: ReactNode
   delay: string | number
   scrollable: boolean | null
   speed: number
@@ -34,6 +38,7 @@ export interface NoticeBarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  align: 'left',
   direction: 'horizontal',
   list: [],
   duration: 1000,
@@ -43,6 +48,7 @@ const defaultProps = {
   wrap: false,
   leftIcon: <Notice size={16} />,
   rightIcon: null,
+  right: null,
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -51,10 +57,12 @@ export const NoticeBar: FunctionComponent<
   Partial<NoticeBarProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     className,
     style,
+    align,
     direction,
     list,
     duration,
@@ -64,6 +72,7 @@ export const NoticeBar: FunctionComponent<
     wrap,
     leftIcon,
     rightIcon,
+    right,
     delay,
     scrollable,
     speed,
@@ -169,7 +178,8 @@ export const NoticeBar: FunctionComponent<
       const contentRes = await getRectByTaro(contentRef.current)
       const wrapW = warpRes.width
       const offsetW = contentRes.width
-      const canScroll = scrollable == null ? offsetW > wrapW : scrollable
+      const canScroll =
+        align === 'left' && scrollable == null ? offsetW > wrapW : scrollable
       SetIsCanScroll(canScroll)
       if (canScroll) {
         SetWrapWidth(wrapW)
@@ -181,12 +191,12 @@ export const NoticeBar: FunctionComponent<
       }
     }, 0)
   }
-  const handleClick = (event: MouseEvent) => {
+  const handleClick = (event: ITouchEvent) => {
     click && click(event)
     onClick && onClick(event)
   }
 
-  const onClickIcon = (event: MouseEvent) => {
+  const onClickIcon = (event: ITouchEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
     close && close(event)
@@ -224,7 +234,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   // 点击滚动单元
-  const handleClickIcon = (event: MouseEvent) => {
+  const handleClickIcon = (event: ITouchEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
     close && close(event)
@@ -232,7 +242,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const isEllipsis = () => {
-    if (isCanScroll == null) {
+    if (isCanScroll == null && align === 'left') {
       return wrap
     }
     return !isCanScroll && !wrap
@@ -241,7 +251,7 @@ export const NoticeBar: FunctionComponent<
   const contentStyle = {
     animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${animationDuration}s`,
-    transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
+    transform: `translateX(${firstRound ? 0 : `${rtl ? -wrapWidth : wrapWidth}px`})`,
   }
 
   const barStyle = {
@@ -354,7 +364,7 @@ export const NoticeBar: FunctionComponent<
       })
     })
   }
-  const handleItemClick = (event: MouseEvent, value: any) => {
+  const handleItemClick = (event: ITouchEvent, value: any) => {
     onItemClick && onItemClick(event, value)
   }
 
@@ -422,23 +432,27 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-box': true,
-    [`nut-noticebar-box-wrapable`]: wrap,
+    [`${classPrefix}-box`]: true,
+    [`${classPrefix}-box-wrapable`]: wrap,
+    [`${classPrefix}-box-${align}`]: true,
   })
+
+  const cls = classNames(classPrefix, className)
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
   return (
-    <div className={`${classPrefix} ${className || ''}`} style={style}>
+    <View className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
-        <div className={noticebarClass} style={barStyle} onClick={handleClick}>
+        <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
-          <div ref={wrapRef} className="nut-noticebar-box-wrap">
-            <div
+          <View ref={wrapRef} className="nut-noticebar-box-wrap">
+            <View
               ref={contentRef}
               className={`nut-noticebar-box-wrap-content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
@@ -448,30 +462,36 @@ export const NoticeBar: FunctionComponent<
             >
               {children}
               {content}
-            </div>
-          </div>
-          {closeable || rightIcon ? (
-            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close size={12} />}
-            </div>
+            </View>
+          </View>
+          {right ? (
+            <View className="nut-noticebar-box-right">{right}</View>
           ) : null}
-        </div>
+          {closeable || rightIcon ? (
+            <View
+              className="nut-noticebar-box-right-icon"
+              onClick={onClickIcon}
+            >
+              {rightIcon || <Close size={12} />}
+            </View>
+          ) : null}
+        </View>
       ) : null}
       {showNoticeBar && scrollList.current.length > 0 && isVertical ? (
-        <div
+        <View
           className="nut-noticebar-vertical"
           style={barStyle}
           ref={container}
           onClick={handleClick}
         >
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
           {children ? (
-            <div className="nut-noticebar-box-wrap" ref={innerRef}>
+            <View className="nut-noticebar-box-wrap" ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
-                  <div
+                  <View
                     style={itemStyle(index)}
                     key={index}
                     onClick={(e) => {
@@ -479,19 +499,19 @@ export const NoticeBar: FunctionComponent<
                     }}
                   >
                     {item}
-                  </div>
+                  </View>
                 )
               })}
-            </div>
+            </View>
           ) : (
-            <div
+            <View
               className="nut-noticebar-box-horseLamp-list"
               style={horseLampStyle}
             >
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-                  <div
+                  <View
                     className="nut-noticebar-box-horseLamp-list-item"
                     style={{ height }}
                     key={index}
@@ -500,24 +520,23 @@ export const NoticeBar: FunctionComponent<
                     }}
                   >
                     {item}
-                  </div>
+                  </View>
                 )
               })}
-            </div>
+            </View>
           )}
-          <div
+          <View
             className="nut-noticebar-box-right-icon"
             onClick={(e) => {
               handleClickIcon(e)
             }}
           >
             {rightIcon || (closeable ? <Close size={12} /> : null)}
-          </div>
-        </div>
+          </View>
+        </View>
       ) : null}
-    </div>
+    </View>
   )
 }
 
-NoticeBar.defaultProps = defaultProps
 NoticeBar.displayName = 'NutNoticeBar'

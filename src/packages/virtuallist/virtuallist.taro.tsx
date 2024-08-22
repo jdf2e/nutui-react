@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -12,8 +13,6 @@ import classNames from 'classnames'
 import { Data, PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
 
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
@@ -30,7 +29,6 @@ export interface VirtualListProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   list: [] as Array<Data>,
-  containerHeight: clientHeight,
   itemHeight: 66,
   margin: 10,
   itemEqual: true,
@@ -50,12 +48,22 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     key,
     onScroll,
     className,
-    containerHeight,
+    containerHeight: origContainerHeight,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
+
+  const clientHeight = useMemo(
+    () => getSystemInfoSync().windowHeight - 5 || 667,
+    []
+  )
+
+  const containerHeight = useMemo(
+    () => origContainerHeight ?? clientHeight,
+    [origContainerHeight, clientHeight]
+  )
 
   const [startOffset, setStartOffset] = useState(0)
   const start = useRef(0)
@@ -95,8 +103,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     const pos = initPositinoCache(itemHeight + margin, list.length)
     setPositions(pos)
   }, [itemHeight, list])
-
-  const prevListLength = useRef(list.length)
 
   // 可视区域总高度
   const getContainerHeight = () => {
@@ -146,9 +152,8 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
     const endIndex = end()
     // list 变动说明触底
-    if (endIndex > list.length - 1 && prevListLength.current < list.length) {
+    if (endIndex > list.length - 1) {
       onScroll && onScroll()
-      prevListLength.current = list.length
     }
   }
 
@@ -202,5 +207,4 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   )
 }
 
-VirtualList.defaultProps = defaultProps
 VirtualList.displayName = 'NutVirtualList'

@@ -1,16 +1,14 @@
 # AvatarCropper 头像剪切
 
-## 介绍
-
 用来对头像进行剪切生成一张新的图片。
 
-## 安装
+## 引入
 
 ```tsx
-import { AvatarCropper } from '@nutui/nutui-react';
+import { AvatarCropper } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
@@ -18,27 +16,7 @@ import { AvatarCropper } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper onConfirm={cutImage}>
-        <Avatar size="large" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,42 +26,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper, Button } from '@nutui/nutui-react';
-import { Refresh, Retweet } from '@nutui/icons-react-taro'
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper
-        toolbarPosition="top"
-        editText="修改"
-        onConfirm={cutImage}
-        toolbar={[
-          <Button type="danger" key="cancel">
-            取消
-          </Button>,
-          <Refresh key="reset" />,
-          <Retweet key="rotate" />,
-          <Button type="success" key="confirm">
-            确认
-          </Button>,
-        ]}
-        >
-        <Avatar size="large" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -93,27 +36,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper shape="round" onConfirm={cutImage}>
-        <Avatar size="large" shape="round" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

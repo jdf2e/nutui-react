@@ -136,5 +136,4 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   )
 }
 
-TextArea.defaultProps = defaultProps
 TextArea.displayName = 'NutTextArea'

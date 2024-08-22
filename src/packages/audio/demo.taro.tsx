@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Audio } from '@/packages/nutui.react.taro'
-import '@/packages/audio/demo.scss'
+import { Cell, Audio } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 
 const formatseconds = (value: string) => {
@@ -78,7 +77,16 @@ const AudioDemo = () => {
               setVoiceIcon('play-circle-fill')
             }}
           >
-            <div className="nut-voice">
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100px',
+                padding: '8px',
+                border: '1px solid var(--nutui-gray-7)',
+                borderRadius: '18px',
+              }}
+            >
               <div>{duration}&quot;</div>
             </div>
           </Audio>

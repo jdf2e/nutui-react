@@ -1,14 +1,11 @@
 # SafeArea
 
-## Intro
-
 Provides adaptive margin adjustment in full screen.When the web page is displayed in full screen, automatic adaptation can be achieved with the help of the safe area.
 
-
-## Install 
+## Import
 
 ```tsx
-import { SafeArea } from '@nutui/nutui-react';
+import { SafeArea } from '@nutui/nutui-react'
 ```
 
 ## Code
@@ -17,38 +14,9 @@ import { SafeArea } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from 'react'
-import { SafeArea } from '@nutui/nutui-react'
-
-function generateRandomTextArray(count) {
-  const characters = 'abcdefghijklmnopqrstuvwxyz'
-  const textArray = []
-  for (let j = 0; j < count; j++) {
-    const randomLength = Math.floor(Math.random() * 5) + 4
-    let randomText = ''
-    for (let i = 0; i < randomLength; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length)
-      randomText += characters.charAt(randomIndex)
-    }
-    textArray.push(randomText)
-  }
-  return textArray
-}
-const App = () => {
-  return (
-    <>
-      <div>{generateRandomTextArray(900).join(' ')}</div>
-      <SafeArea position="bottom" />
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
-
 
 ## SafeArea
 

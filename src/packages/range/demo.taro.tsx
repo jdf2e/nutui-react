@@ -1,27 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Range, Cell, Toast, ConfigProvider } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-
-interface T {
-  title: string
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-  title8: string
-  title9: string
-  title10: string
-  title11: string
-  controlled: string
-}
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
 
 const RangeDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       title: '基础用法',
       title1: '双滑块',
@@ -53,222 +49,37 @@ const RangeDemo = () => {
       controlled: 'Controlled',
     },
   })
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
-  const [show, setShow] = useState(false)
-  const [msg, setMsg] = useState('')
-  const showToast = (msg: string) => {
-    setMsg(msg)
-    setShow(true)
-  }
-
-  const [value1, setValue1] = useState(40)
-  const [value2, setValue2] = useState(60)
-  const [marks] = useState({
-    0: 'Start',
-    20: 20,
-    40: 40,
-    60: 60,
-    80: 80,
-    100: 'End',
-  })
 
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title}</h2>
-        <Cell style={cellStyle}>
-          <Range defaultValue={40} onEnd={(val) => showToast(`${val}`)} />
-        </Cell>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={40}
-            marks={[
-              { value: 0, label: 'start' },
-              { value: 100, label: 'end' },
-            ]}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo1 />
         <h2>{translated.controlled}</h2>
-        <Cell style={cellStyle}>
-          <Range value={value1} onChange={(val: any) => setValue1(val)} />
-        </Cell>
+        <Demo2 />
         <h2>{translated.title11}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={40}
-            minDescription="0%"
-            maxDescription="100%"
-            currentDescription={(value) => `${value}%`}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo3 />
         <h2>{translated.title1}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={[20, 80]}
-            range
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo4 />
         <h2>{translated.title2}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={0}
-            max={10}
-            min={-10}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo5 />
         <h2>{translated.title3}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={30}
-            step={5}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo6 />
         <h2>{translated.title4}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={30}
-            maxDescription={null}
-            minDescription={null}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo7 />
         <h2>{translated.title5}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={20}
-            currentDescription={null}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo8 />
         <h2>{translated.title6}</h2>
-        <Cell style={cellStyle}>
-          <Range defaultValue={50} disabled />
-        </Cell>
+        <Demo9 />
         <h2>{translated.title7}</h2>
-        <Cell
-          style={{
-            ...cellStyle,
-            display: 'block',
-          }}
-        >
-          <ConfigProvider
-            theme={{
-              nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
-              nutuiRangeActiveColor:
-                'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-              nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
-              nutuiRangeMargin: '20px',
-              nutuiRangeHeight: '6px',
-            }}
-          >
-            <Range
-              className="test-range"
-              defaultValue={40}
-              style={{ color: 'red' }}
-              marks={{
-                10: 10,
-                20: 20,
-              }}
-            />
-          </ConfigProvider>
-        </Cell>
+        <Demo10 />
         <h2>{translated.title8}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            value={value2}
-            button={
-              <div
-                style={{
-                  width: '26px',
-                  color: 'white',
-                  fontSize: '10px',
-                  lineHeight: '18px',
-                  textAlign: 'center',
-                  backgroundColor: 'red',
-                  borderRadius: '10px',
-                }}
-              >
-                {value2}
-              </div>
-            }
-            onChange={(val: any) => setValue2(val)}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
+        <Demo11 />
         <h2>{translated.title9}</h2>
-        <Cell style={verticalStyle}>
-          <div style={{ width: '150px', height: '100%' }}>
-            <Range
-              defaultValue={20}
-              vertical
-              onEnd={(val) => showToast(`${val}`)}
-            />
-          </div>
-          <div style={{ width: '150px', height: '100%' }}>
-            <Range
-              defaultValue={[20, 80]}
-              vertical
-              range
-              onEnd={(val) => showToast(`${val}`)}
-            />
-          </div>
-        </Cell>
+        <Demo12 />
         <h2>{translated.title10}</h2>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={60}
-            maxDescription={null}
-            minDescription={null}
-            marks={marks}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
-        <Cell style={cellStyle}>
-          <Range
-            defaultValue={[20, 80]}
-            marks={marks}
-            range
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
-
-        <Cell style={verticalStyle}>
-          <Range
-            defaultValue={60}
-            vertical
-            maxDescription={null}
-            minDescription={null}
-            marks={marks}
-            onEnd={(val) => showToast(`${val}`)}
-          />
-          <Range
-            defaultValue={[20, 80]}
-            vertical
-            marks={marks}
-            range
-            onEnd={(val) => showToast(`${val}`)}
-          />
-        </Cell>
-        <Toast
-          type="text"
-          visible={show}
-          msg={msg}
-          onClose={() => {
-            setShow(false)
-          }}
-        />
+        <Demo13 />
       </div>
     </>
   )

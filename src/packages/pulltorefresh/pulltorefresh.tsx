@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import classNames from 'classnames'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
 import { Loading, More } from '@nutui/icons-react'
@@ -14,11 +15,13 @@ import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { PullToRefreshType } from './types'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
 export interface PullToRefreshProps extends BasicComponent {
   onRefresh: () => Promise<any>
+  type: PullToRefreshType
   pullingText: ReactNode
   canReleaseText: ReactNode
   refreshingText: ReactNode
@@ -33,6 +36,7 @@ export interface PullToRefreshProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'default',
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
@@ -58,6 +62,12 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       completeText: p.completeText || locale.pullToRefresh.completeText,
     },
   }
+
+  const classes = classNames(
+    classPrefix,
+    props.className,
+    `${classPrefix}-${props.type}`
+  )
 
   const headHeight = props.headHeight
   const threshold = props.threshold
@@ -201,11 +211,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
 
   return (
-    <animated.div
-      ref={elementRef}
-      className={`${classPrefix} ${props.className}`}
-      style={props.style}
-    >
+    <animated.div ref={elementRef} className={classes} style={props.style}>
       <animated.div style={springStyles} className={`${classPrefix}-head`}>
         <div
           className={`${classPrefix}-head-content`}
@@ -220,5 +226,4 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   )
 }
 
-PullToRefresh.defaultProps = defaultProps
 PullToRefresh.displayName = 'NutPullToRefresh'

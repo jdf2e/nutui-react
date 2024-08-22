@@ -1,55 +1,20 @@
 # Barrage 弹幕
 
-## 介绍
-
 用于话语和词组的轮播展示，适用于视频中或其他类似需求中。
 
-## 安装
+## 引入
 
 ```tsx
-import { Barrage } from '@nutui/nutui-react-taro';
+import { Barrage } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, { useRef } from "react";
-import { Cell, Button, Barrage } from '@nutui/nutui-react-taro';
-
-const barrageStyle = {
-  padding: '20px 0',
-  height: '150px',
-  boxSizing: 'border-box'
-}
-const App = () => {
-  const barrageList = ['画美不看', '不明觉厉', '喜大普奔', '男默女泪', '累觉不爱', '爷青结-']
-  const barrageRef = useRef(null)
-  const addBarrage = () => {
-    const n = Math.random()
-    if (barrageRef.current) {
-      barrageRef.current.add(`随机——${  String(n).substr(2, 10)}`)
-    }
-  }
-  return (
-    <div className="demo">
-      <h2>基础用法</h2>
-      <Cell className="barrage-demo-wrap" style={barrageStyle}>
-        <Barrage className="barrage-demo" ref={barrageRef} list={barrageList} style={barrageStyle} />
-      </Cell>
-      <div className="test" style={{ textAlign: 'center' }}>
-        <Button type="danger" onClick={addBarrage}>
-          随机添加
-        </Button>
-      </div>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 

@@ -1,10 +1,8 @@
 # Audio
 
-## Intro
-
 Used for audio playback
 
-## Install
+## Import
 
 ```tsx
 import { Audio } from '@nutui/nutui-react'
@@ -16,27 +14,7 @@ import { Audio } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoPlay={false}
-        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="icon"
-        loop={false}
-        preload="auto"
-        muted={false}
-        onEnd={() => alert('ended!')}
-      />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,33 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoPlay={false}
-        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="progress"
-        preload="auto"
-        muted={false}
-        onMute={(e) => {
-          console.log('progress audio muted', e)
-        }}
-        onForward={() => console.log('forward')}
-        onPause={(e) => {
-          console.log('progress audio paused', e)
-        }}
-        onEnd={() => alert('progress audio ended!')}
-      />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -78,37 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import { Audio,Icon } from '@nutui/nutui-react';
-
-const App = () => {
-  const [duration, setDuration] = useState(0)
-  const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
-  return (
-    <>
-     <Audio
-      className="custom-voice-audio"
-      id="custom-voice-audio"
-      autoPlay={false}
-      src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-      type="none"
-      preload="auto"
-      onCanPlay={(e: any) => {
-        console.log('none-canplay', e)
-        setDuration(e?.target?.duration.toFixed(0) || 0)
-      }}
-    >
-      <div className="nut-voice">
-        <Icon name={voiceIcon} />
-        <div>{duration}&quot;</div>
-      </div>
-    </Audio>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -116,29 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoPlay={false}
-        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="controls"
-        preload="auto"
-        muted={false}
-        onPause={(e) => {
-          console.log('paused', e)
-        }}
-        onEnd={() => alert('ended!')}
-      />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

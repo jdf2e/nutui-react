@@ -13,23 +13,23 @@ import {
   Input as TaroInput,
 } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
-import { getEnv, ENV_TYPE } from '@tarojs/taro'
+import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
 import { formatNumber } from './util'
-import { useConfig } from '@/packages/configprovider/index.taro'
+import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export type InputAlignType = 'left' | 'center' | 'right'
+export type InputAlign = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends BasicComponent {
   type: keyof TaroInputProps.Type | HTMLInputTypeAttribute
   name: string
   defaultValue?: string
   value?: string
-  placeholder: string
-  align: InputAlignType
+  placeholder?: string
+  align: InputAlign
   disabled: boolean
   readOnly: boolean
   maxLength: number
@@ -37,11 +37,11 @@ export interface InputProps extends BasicComponent {
   clearIcon: React.ReactNode
   formatTrigger: InputFormatTrigger
   autoFocus: boolean
-  confirmType: ConfirmTextType
+  confirmType: InputConfirmType
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
-  onFocus?: (value: string) => void
+  onFocus?: (value: string, height?: number) => void
   onClear?: (value: string) => void
   onClick?: (e: ITouchEvent) => void
 }
@@ -50,7 +50,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
   name: '',
-  placeholder: '',
+  placeholder: undefined,
   confirmType: 'done',
   align: 'left',
   required: false,
@@ -74,6 +74,7 @@ export const Input = forwardRef(
       >,
     ref
   ) => {
+    const rtl = useRtl()
     const { locale } = useConfig()
     const {
       type,
@@ -104,8 +105,8 @@ export const Input = forwardRef(
       ...props,
     }
     const [value, setValue] = usePropsValue<string>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value: _value,
+      defaultValue,
       finalValue: '',
       onChange,
     })
@@ -167,9 +168,14 @@ export const Input = forwardRef(
       forceUpdate()
     }
 
-    const handleFocus = (event: Event) => {
-      const val: any = (event.target as any).value
-      onFocus && onFocus(val)
+    const handleFocus = (event: any) => {
+      if (Taro.getEnv() === 'WEB') {
+        const val: any = (event.target as any).value
+        onFocus && onFocus(val)
+      } else {
+        const height = (event.detail || {}).height
+        onFocus?.(value, height)
+      }
       setActive(true)
     }
 
@@ -177,12 +183,12 @@ export const Input = forwardRef(
       updateValue(value, 'onChange')
     }
 
-    const handleBlur = (event: Event) => {
-      const val: any = (event.target as any).value
+    const handleBlur = (event: any) => {
+      const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
       updateValue(val, 'onBlur')
       setTimeout(() => {
         setActive(false)
-      }, 50)
+      }, 200)
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
@@ -211,21 +217,30 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={{ textAlign: align }}
+          style={{
+            // eslint-disable-next-line no-nested-ternary
+            textAlign: rtl
+              ? // eslint-disable-next-line no-nested-ternary
+                align === 'right'
+                ? // eslint-disable-next-line no-nested-ternary
+                  'left'
+                : align === 'left'
+                  ? 'right'
+                  : 'center'
+              : align,
+          }}
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}
-          placeholder={placeholder || locale.placeholder}
+          placeholder={
+            placeholder === undefined ? locale.placeholder : placeholder
+          }
           disabled={disabled || readOnly}
           value={value}
           focus={autoFocus}
           confirmType={confirmType}
-          onBlur={(e: any) => {
-            handleBlur(e)
-          }}
-          onFocus={(e: any) => {
-            handleFocus(e)
-          }}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           onInput={(e: any) => {
             handleInput(e.currentTarget.value)
           }}
@@ -237,14 +252,13 @@ export const Input = forwardRef(
                 ? 'flex'
                 : 'none',
             alignItems: 'center',
+            cursor: 'pointer',
           }}
           onClick={(e) => {
             e.stopPropagation()
             if (!disabled) {
-              setTimeout(() => {
-                setValue('')
-                onClear && onClear('')
-              }, 50)
+              setValue('')
+              onClear?.('')
             }
           }}
         >
@@ -255,5 +269,4 @@ export const Input = forwardRef(
   }
 )
 
-Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'

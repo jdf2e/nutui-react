@@ -12,13 +12,27 @@ on:
 
 jobs:
   copy:
+    if: github.repository == 'jdf2e/nutui-react'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm i fs-extra --force
-      - run: node scripts/copy-migrate-from-v1.js
+
+      - name: Install pnpm
+        run: corepack enable pnpm
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Copy migrate from v1
+        run: node scripts/copy-migrate-from-v1.js
+
       - name : Sync
-        uses : JamesIves/github-pages-deploy-action@4.1.7
+        uses : JamesIves/github-pages-deploy-action@v4.5.0
         with :
           branch : new-site # action 应该部署到的分支 。
           folder : site_docs_migrate #操作应该部署的文件夹 。

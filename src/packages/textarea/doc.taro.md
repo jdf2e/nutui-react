@@ -1,39 +1,20 @@
 # TextArea 文本域
 
-## 介绍
-
 文本框内输入或编辑文字，支持限制输入数量。
 
-## 安装
+## 引入
 
 ```tsx
-import { TextArea } from '@nutui/nutui-react-taro';
+import { TextArea } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <TextArea
-      defaultValue="基础用法"
-      className="text-1"
-      style={{ fontSize: '12px' }}
-      onChange={(value) => console.log('change', value)}
-      onBlur={() => console.log('blur')}
-      onFocus={() => console.log('focus')}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,21 +22,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [value, setValue] = useState('');
-  return (
-    <TextArea
-      value={value}
-      onChange={(value) => setValue(value)}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -63,17 +30,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <TextArea showCount maxLength={20} />
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,17 +38,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <TextArea rows={1} autoSize />
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -99,44 +46,23 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { ConfigProvider, TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const customTheme = {
-    nutuiTextareaTextCurrorColor: `red`,
-    nutuiTextareaLimitColor: `red`,
-  }
-  return (
-    <ConfigProvider theme={customTheme}>
-      <TextArea showCount maxLength={20} />
-    </ConfigProvider>
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
-### 只读、禁用
+### 只读
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <>
-      <TextArea readOnly defaultValue="textarea只读状态" />
-      <TextArea disabled defaultValue="textarea禁用状态" showCount maxLength={20} />
-    </>
-  )
-};
-export default App
-```
+:::
+
+### 禁用
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -144,22 +70,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <TextArea
-      defaultValue="文本居右"
-      style={{
-        textAlign: "right",
-      }}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 

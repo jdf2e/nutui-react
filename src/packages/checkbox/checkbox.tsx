@@ -70,8 +70,8 @@ export const Checkbox: FunctionComponent<
   const ctx = useContext(Context)
 
   let [innerChecked, setChecked] = usePropsValue<boolean>({
-    value: props.checked,
-    defaultValue: props.defaultChecked,
+    value: checked,
+    defaultValue: defaultChecked,
     finalValue: defaultChecked,
     onChange,
   })
@@ -188,7 +188,19 @@ export const Checkbox: FunctionComponent<
     )
   }
 
+  const renderListItem = () => {
+    return (
+      <div className={`${classPrefix}-list-item`}>
+        {renderLabel()}
+        {renderIcon()}
+      </div>
+    )
+  }
+
   const renderCheckboxItem = () => {
+    if (ctx?.list) {
+      return <>{renderListItem()}</>
+    }
     if (shape === 'button') {
       return renderButton()
     }
@@ -217,6 +229,5 @@ export const Checkbox: FunctionComponent<
   )
 }
 
-Checkbox.defaultProps = defaultProps
 Checkbox.displayName = 'NutCheckBox'
 Checkbox.Group = CheckboxGroup

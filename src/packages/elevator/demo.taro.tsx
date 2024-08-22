@@ -1,60 +1,15 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Fabulous } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Elevator } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
 
-interface T {
-  basic: string
-  customIndex: string
-  sticky: string
-  customContent: string
-  showKeys: string
-  anhui: string
-  beijing: string
-  guangxi: string
-  guangdong: string
-  hunan: string
-  hubei: string
-  shanghai: string
-  shenzhen: string
-  guangzhou: string
-  hangzhou: string
-  chengdu: string
-  xian: string
-  tianjin: string
-  wuhan: string
-  changsha: string
-  chongqin: string
-  suzhou: string
-  nanjing: string
-  xining: string
-  lanzhou: string
-  shijiazhuang: string
-  qinhuangdao: string
-  dalian: string
-  haerbin: string
-  changchun: string
-  taiyuan: string
-  fujian: string
-  gansu: string
-  guizhou: string
-  hainan: string
-  hebei: string
-  henan: string
-  heilongjiang: string
-  jilin: string
-  jiangsu: string
-  jiangxi: string
-  liaoning: string
-  one: string
-  two: string
-  three: string
-}
 const ElevatorDemo = () => {
-  const floorKey = 'num'
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       customIndex: '自定义索引key',
@@ -197,345 +152,29 @@ const ElevatorDemo = () => {
       three: 'three',
     },
   })
-  const dataList = [
-    {
-      title: 'A',
-      list: [
-        {
-          name: translated.anhui,
-          id: 1,
-        },
-      ],
-    },
-    {
-      title: 'B',
-      list: [
-        {
-          name: translated.beijing,
-          id: 2,
-        },
-      ],
-    },
-    {
-      title: 'G',
-      list: [
-        {
-          name: translated.guangxi,
-          id: 3,
-        },
-        {
-          name: translated.guangdong,
-          id: 4,
-        },
-      ],
-    },
-    {
-      title: 'H',
-      list: [
-        {
-          name: translated.hunan,
-          id: 5,
-        },
-        {
-          name: translated.hubei,
-          id: 6,
-        },
-        {
-          name: translated.henan,
-          id: 7,
-        },
-      ],
-    },
-  ]
-  const dataList2 = [
-    {
-      num: translated.one,
-      list: [
-        {
-          name: translated.beijing,
-          id: 1,
-        },
-        {
-          name: translated.shanghai,
-          id: 2,
-        },
-        {
-          name: translated.shenzhen,
-          id: 3,
-        },
-        {
-          name: translated.guangzhou,
-          id: 4,
-        },
-        {
-          name: translated.hangzhou,
-          id: 5,
-        },
-      ],
-    },
-    {
-      num: translated.two,
-      list: [
-        {
-          name: translated.chengdu,
-          id: 6,
-        },
-        {
-          name: translated.xian,
-          id: 7,
-        },
-        {
-          name: translated.tianjin,
-          id: 8,
-        },
-        {
-          name: translated.wuhan,
-          id: 9,
-        },
-        {
-          name: translated.changsha,
-          id: 10,
-        },
-        {
-          name: translated.chongqin,
-          id: 11,
-        },
-        {
-          name: translated.suzhou,
-          id: 12,
-        },
-        {
-          name: translated.nanjing,
-          id: 13,
-        },
-      ],
-    },
-    {
-      num: translated.three,
-      list: [
-        {
-          name: translated.xining,
-          id: 14,
-        },
-        {
-          name: translated.lanzhou,
-          id: 15,
-        },
-        {
-          name: translated.shijiazhuang,
-          id: 16,
-        },
-        {
-          name: translated.qinhuangdao,
-          id: 17,
-        },
-        {
-          name: translated.dalian,
-          id: 18,
-        },
-        {
-          name: translated.haerbin,
-          id: 19,
-        },
-        {
-          name: translated.changchun,
-          id: 20,
-        },
-        {
-          name: translated.taiyuan,
-          id: 21,
-        },
-      ],
-    },
-  ]
-  const dataList3 = [
-    {
-      title: 'A',
-      list: [
-        {
-          name: translated.anhui,
-          id: 1,
-        },
-      ],
-    },
-    {
-      title: 'B',
-      list: [
-        {
-          name: translated.beijing,
-          id: 2,
-        },
-      ],
-    },
-    {
-      title: 'C',
-      list: [
-        {
-          name: translated.chongqin,
-          id: 3,
-        },
-      ],
-    },
-    {
-      title: 'F',
-      list: [
-        {
-          name: translated.anhui,
-          id: 4,
-        },
-      ],
-    },
-    {
-      title: 'G',
-      list: [
-        {
-          name: translated.guangxi,
-          id: 5,
-        },
-        {
-          name: translated.guangdong,
-          id: 6,
-        },
-        {
-          name: translated.gansu,
-          id: 7,
-        },
-        {
-          name: translated.guizhou,
-          id: 8,
-        },
-      ],
-    },
-    {
-      title: 'H',
-      list: [
-        {
-          name: translated.hunan,
-          id: 9,
-        },
-        {
-          name: translated.hubei,
-          id: 10,
-        },
-        {
-          name: translated.hainan,
-          id: 11,
-        },
-        {
-          name: translated.hebei,
-          id: 12,
-        },
-        {
-          name: translated.henan,
-          id: 13,
-        },
-        {
-          name: translated.heilongjiang,
-          id: 14,
-        },
-      ],
-    },
-    {
-      title: 'J',
-      list: [
-        {
-          name: translated.jilin,
-          id: 15,
-        },
-        {
-          name: translated.jiangsu,
-          id: 16,
-        },
-        {
-          name: translated.jiangxi,
-          id: 17,
-        },
-      ],
-    },
-    {
-      title: 'L',
-      list: [
-        {
-          name: translated.liaoning,
-          id: 18,
-        },
-      ],
-    },
-  ]
-  const onItemClick = (key: string, item: any) => {
-    console.log(key, JSON.stringify(item))
-  }
-
-  const onIndexClick = (key: string) => {
-    console.log(key)
-  }
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <div style={{ background: 'white' }}>
-          <Elevator
-            list={dataList}
-            height="260"
-            onItemClick={(key: string, item: any) => onItemClick(key, item)}
-            onIndexClick={(key: string) => onIndexClick(key)}
-          />
+          <Demo1 />
         </div>
-
         <h2>{translated.customIndex}</h2>
         <div style={{ background: 'white' }}>
-          <Elevator
-            className="test-elevator1"
-            list={dataList2}
-            height="220"
-            floorKey={floorKey}
-            onItemClick={(key: string, item: any) => onItemClick(key, item)}
-            onIndexClick={(key: string) => onIndexClick(key)}
-          />
+          <Demo2 />
         </div>
         <h2>{translated.showKeys}</h2>
         <div style={{ background: 'white' }}>
-          <Elevator
-            className="test-elevator4"
-            showKeys={false}
-            list={dataList}
-            height="260"
-            onItemClick={(key: string, item: any) => onItemClick(key, item)}
-            onIndexClick={(key: string) => onIndexClick(key)}
-          />
+          <Demo3 />
         </div>
         <h2>{translated.sticky}</h2>
         <div style={{ background: 'white' }}>
-          <Elevator
-            className="test-elevator2"
-            list={dataList3}
-            sticky
-            height="220"
-            onItemClick={(key: string, item: any) => onItemClick(key, item)}
-            onIndexClick={(key: string) => onIndexClick(key)}
-          />
+          <Demo4 />
         </div>
         <h2>{translated.customContent}</h2>
         <div style={{ background: 'white' }}>
-          <Elevator
-            className="test-elevator3"
-            list={dataList}
-            height="260"
-            onItemClick={(key: string, item: unknown) => onItemClick(key, item)}
-            onIndexClick={(key: string) => onIndexClick(key)}
-          >
-            <Elevator.Context.Consumer>
-              {(value) => {
-                return (
-                  <>
-                    <Fabulous size={10} />
-                    <span style={{ marginLeft: '15px' }}>{value?.name}</span>
-                  </>
-                )
-              }}
-            </Elevator.Context.Consumer>
-          </Elevator>
+          <Demo5 />
         </div>
       </div>
     </>

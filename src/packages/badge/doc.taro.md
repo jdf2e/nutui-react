@@ -1,46 +1,20 @@
 # Badge 徽标
 
-## 介绍
-
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
-## 安装
+## 引入
 
 ```tsx
-import { Badge } from '@nutui/nutui-react-taro';
+import { Badge } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar , Cell} from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge dot>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,28 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={200} max={9}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={20}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={99}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -77,43 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={8}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value={76}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value="NEW"
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        dot
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -121,31 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={<Checklist color="#fff"  />}
-        className="test"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<LinkIcon color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<Download color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -153,40 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, ConfigProvider,Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const customTheme = {
-  nutuiBadgeBorderRadius: '12px 12px 12px 0',
-}
-
-const customTheme2 = {
-  nutuiBadgeDotWidth: '14px',
-  nutuiBadgeDotHeight: '14px',
-  nutuiBadgeBorder: '2px solid #fff',
-}
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={customTheme}>
-        <Badge value="NEW">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-
-      <ConfigProvider theme={customTheme2}>
-        <Badge dot top="2" right="8">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -194,28 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar,Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8} top="5" right="5">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76} top="10" right="10">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -223,21 +62,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Cell } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <Cell style={{height: '100px'}}>
-      <Badge value={8}> </Badge>
-      <Badge value={76}> </Badge>
-      <Badge value="NEW"> </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+:::
+
+### 填充模式
+
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -249,10 +82,11 @@ export default App;
 | --- | --- | --- | --- |
 | value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
 | max | value 为数值时，最大值 | `number` | `99` |
-| dot | 是否为小点 | `boolean` | `false` |
+| dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
 | top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
-| color | 徽标背景颜色 | `string` | `#fa2c19` |
+| color | 徽标背景颜色 | `string` | `-` |
+| fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主题定制
 
@@ -275,3 +109,4 @@ export default App;
 | \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
 | \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |
+| \--nutui-badge-dot-border | badge 为圆点时的边框 | `0px solid $color-primary-text` |

@@ -1,35 +1,22 @@
 # Loading 加載中
 
-### 介紹
+#
 
 加載圖標，用於顯示正在加載中的狀態
 
-### 安裝
+### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading type='circular'/>
-      <Loading type='spinner'/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,24 +24,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
-        <Loading type='circular' />
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
-        <Loading type="spinner" />
-      </ConfigProvider>      
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,24 +32,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
-        <Loading type="circular" />
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
-        <Loading type="spinner" />
-      </ConfigProvider>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -87,19 +40,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading>加載中</Loading>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -107,19 +48,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading direction="vertical">加載中</Loading>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -127,24 +56,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
-        <Loading>加载中</Loading>
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
-        <Loading>加载中</Loading>
-      </ConfigProvider>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -152,20 +64,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
-import { Star } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading direction="vertical" icon={<Star width='30' height='30' color='red'/>}/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -173,43 +72,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React, { useState } from 'react'
-import { Loading, Cell, Button, Overlay } from '@nutui/nutui-react';
-
-const App = () => {
-
-  const [visible, setVisible] = useState(false)
-
-  const WrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-
-  function showOverlay() {
-    setVisible(true);
-    setTimeout(()=>{
-      setVisible(false);
-    }, 2000)
-  }  
-
-  return (
-    <>
-      <Cell>
-        <Button type="success" onClick={() => showOverlay()}>遮罩層loading(兩秒後關閉)</Button>
-      </Cell>
-      <Overlay visible={visible}>
-        <div className="wrapper" style={WrapperStyle}>
-          <Loading direction="vertical">加載中</Loading>
-        </div>
-      </Overlay>   
-    </> 
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -221,7 +84,7 @@ export default App;
 | --- | --- | --- | --- |
 | type | loading图标的样式 | `circular \| spinner` | `circular` |
 | direction | loading图标和文字的排列方式 | `horizontal \| vertical` | `horizontal` |
-| icon | 自定义loading的图标 | `JSX.Element` | `-` |
+| icon | 自定义loading的图标 | `tsx.Element` | `-` |
 
 ## 主題定制
 

@@ -3,6 +3,9 @@ import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from '@react-spring/web'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export interface DragState {
+  offset: [x: number, y: number]
+}
 export interface DragProps extends BasicComponent {
   attract: boolean
   direction: 'x' | 'y' | 'lock' | undefined
@@ -12,6 +15,9 @@ export interface DragProps extends BasicComponent {
     right: number
     bottom: number
   }
+  onDragStart: () => void
+  onDragEnd: (state: DragState) => void
+  onDrag: (state: DragState) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -27,11 +33,21 @@ const defaultProps = {
 export const Drag: FunctionComponent<
   Partial<DragProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { attract, direction, boundary, children, className, style, ...reset } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+  const {
+    attract,
+    direction,
+    boundary,
+    onDrag,
+    onDragStart,
+    onDragEnd,
+    children,
+    className,
+    style,
+    ...reset
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const classPrefix = 'nut-drag'
   const [boundaryState, setBoundaryState] = useState(boundary)
   const myDrag = useRef<HTMLDivElement>(null)
@@ -45,7 +61,10 @@ export const Drag: FunctionComponent<
   const getInfo = () => {
     const el = myDrag.current
     if (el) {
-      const { offsetWidth, offsetHeight, offsetTop, offsetLeft } = el
+      const { offsetTop, offsetLeft } = el
+      const { offsetWidth, offsetHeight } = el.querySelector(
+        `.${classPrefix}-inner`
+      ) as HTMLDivElement
       const { clientWidth, clientHeight } = document.documentElement
       const { top, left, bottom, right } = boundary
       setBoundaryState({
@@ -60,10 +79,19 @@ export const Drag: FunctionComponent<
   }
 
   const bind = useDrag(
-    ({ down, last, offset: [x, y] }) => {
+    (state) => {
+      const {
+        down,
+        last,
+        offset: [x, y],
+        first,
+      } = state
+      first && onDragStart?.()
+      onDrag?.({ offset: [x, y] })
+      last && onDragEnd?.({ offset: [x, y] })
       api.start({ x, y, immediate: down })
       if (last) {
-        if (props.direction !== 'y' && props.attract) {
+        if (direction !== 'y' && attract) {
           if (x < middleLine.current) {
             api.start({ x: boundaryState.left, y, immediate: down })
           } else {
@@ -94,12 +122,15 @@ export const Drag: FunctionComponent<
       {...reset}
       ref={myDrag}
     >
-      <animated.div style={currstyle} {...bind()}>
+      <animated.div
+        style={currstyle}
+        {...bind()}
+        className={`${classPrefix}-inner`}
+      >
         {children}
       </animated.div>
     </div>
   )
 }
 
-Drag.defaultProps = defaultProps
 Drag.displayName = 'NutDrag'

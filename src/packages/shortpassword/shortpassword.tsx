@@ -1,4 +1,10 @@
-import React, { FunctionComponent, ReactNode, useEffect, useMemo } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+} from 'react'
 import { Tips } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
@@ -6,6 +12,7 @@ import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { PopupProps } from '@/packages/popup/index'
 import { usePropsValue } from '@/utils/use-props-value'
+import { ShortPasswordActions } from '@/packages/shortpassword/types'
 
 export interface ShortPasswordProps extends PopupProps {
   value: string
@@ -36,15 +43,16 @@ const defaultProps = {
   length: 6, // 1~6
   autoFocus: false,
 } as ShortPasswordProps
-export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
-  props
-) => {
+export const InternalShortPassword: ForwardRefRenderFunction<
+  unknown,
+  Partial<ShortPasswordProps>
+> = (props, ref) => {
   const { locale } = useConfig()
   const {
     title,
     description,
     tips,
-    visible,
+    visible: outerVisible,
     value,
     error,
     hideFooter,
@@ -75,6 +83,26 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
   const format = (val: string) => {
     return val.slice(0, comLen)
   }
+
+  const [visible, setVisible] = usePropsValue({
+    value: outerVisible,
+    defaultValue: false,
+    finalValue: false,
+  })
+  const handleClose = () => {
+    onClose?.()
+    setVisible(false)
+  }
+  const actions: ShortPasswordActions = {
+    open: () => {
+      setVisible(true)
+    },
+    close: () => {
+      setVisible(false)
+    },
+  }
+  useImperativeHandle(ref, () => actions)
+
   const [inputValue, setInputValue] = usePropsValue<string>({ value, onChange })
   useEffect(() => {
     if (visible && autoFocus) {
@@ -101,8 +129,8 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
       }}
       visible={visible}
       closeable
-      onOverlayClick={onClose}
-      onCloseIconClick={onClose}
+      onOverlayClick={handleClose}
+      onCloseIconClick={handleClose}
       {...rest}
     >
       <div className={classNames(classPrefix, className)} style={style}>
@@ -137,7 +165,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
           <div className={`${classPrefix}-message-forget`} onClick={onTips}>
             {tips || (
               <>
-                <Tips width={11} height={11} style={{ marginRight: '3px' }} />
+                <Tips width={11} height={11} />
                 {locale.shortpassword.tips}
               </>
             )}
@@ -157,6 +185,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     </Popup>
   )
 }
-
-ShortPassword.defaultProps = defaultProps
-ShortPassword.displayName = 'NutShortPassword'
+export const ShortPassword = React.forwardRef<
+  unknown,
+  Partial<ShortPasswordProps>
+>(InternalShortPassword)

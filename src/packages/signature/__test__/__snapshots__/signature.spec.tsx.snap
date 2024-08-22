@@ -1,3 +1,3 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`props test 1`] = `"<div class="nut-signature test-signature"><div class="nut-signature-inner"><canvas height="0" width="0"></canvas></div></div>"`;
+exports[`props test 1`] = `"<div class="nut-signature test-signature"><div class="nut-signature-inner"><canvas height="0" width="0"></canvas></div></div><div class="demo-btn"><button data-testid="emit-click-1" type="button" class="nut-button nut-button-default nut-button-small nut-button-round" style="margin: 8px;"><div class="nut-button-wrap"><div class="">重签</div></div></button><button data-testid="emit-click-2" type="button" class="nut-button nut-button-primary nut-button-small nut-button-round"><div class="nut-button-wrap"><div class="">确认</div></div></button></div>"`;

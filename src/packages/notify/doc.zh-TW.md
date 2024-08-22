@@ -1,49 +1,22 @@
 # Notify 消息通知
 
-### 介紹
+#
 
 在頁面頂部展示消息提示
 
-### 安裝
+### 引入
 
 ```tsx
-import { Notify } from '@nutui/nutui-react';
+import { Notify } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const baseNotify = (message: string) => {
-        Notify.text(message, {
-        onClose: () => {
-            console.log('close')
-        },
-        onClick: () => {
-            console.log('click')
-        },
-        })
-    }
-    return (
-        <>
-            <Cell
-            title="基礎用法"
-            onClick={(event: React.MouseEvent) => {
-                baseNotify('基礎用法')
-            }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -51,54 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const primaryNotify = (message: string) => {
-        Notify.primary(message)
-    }
-    const successNotify = (message: string) => {
-        Notify.success(message)
-    }
-    const errorNotify = (message: string) => {
-        Notify.danger(message)
-    }
-    const warningNotify = (message: string) => {
-        Notify.warn(message)
-    }
-    return (
-        <>
-            <Cell
-                title="主要通知"
-                onClick={(event: React.MouseEvent) => {
-                primaryNotify('主要通知')
-                }}
-            />
-            <Cell
-                title="成功通知"
-                onClick={(event: React.MouseEvent) => {
-                successNotify('成功通知')
-                }}
-            />
-            <Cell
-                title="危險通知"
-                onClick={(event: React.MouseEvent) => {
-                errorNotify('危險通知')
-                }}
-            />
-            <Cell
-                title="警告通知"
-                onClick={(event: React.MouseEvent) => {
-                warningNotify('警告通知')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -106,31 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const cusBgNotify = (message: string) => {
-        Notify.text(message, { style: {
-                '--nutui-notify-text-color': '#ad0000',
-                '--nutui-notify-base-background-color': '#ffe1e1',
-            },
-             })
-    }
-    return (
-        <>
-            <Cell
-                title="自定義背景色和字體顏色"
-                onClick={(event: React.MouseEvent) => {
-                    cusBgNotify('自定義背景色和字體顏色')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -138,36 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const timeNotify = (message: string) => {
-        Notify.text(message, { duration: 1000 })
-    }
-    const positionNotify = (message: string) => {
-        Notify.text(message, { position: 'bottom' })
-    }
-    return (
-        <>
-             <Cell
-                title="自定義時長"
-                onClick={(event: React.MouseEvent) => {
-                    timeNotify('自定義時長')
-                }}
-            />
-            <Cell
-                title="自定義位置"
-                onClick={(event: React.MouseEvent) => {
-                    positionNotify('自定義位置')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

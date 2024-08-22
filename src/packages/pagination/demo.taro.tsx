@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
-import { Pagination, Cell } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-
-interface T {
-  basic: string
-  simple: string
-  lite: string
-  ellipse: string
-  custom: string
-  uncontrolled: string
-}
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
 
 const PaginationDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       simple: '简单模式',
@@ -41,97 +37,34 @@ const PaginationDemo = () => {
       uncontrolled: 'Uncontrolled mode',
     },
   })
-  const [currentPage1, setCurrent1] = useState(1)
-  const [currentPage2, setCurrent2] = useState(1)
-  const [currentPage3, setCurrent3] = useState(1)
-  const [currentPage4, setCurrent4] = useState(3)
-  const pageChange1 = (v: number) => {
-    const c = v
-    setCurrent1(c)
-  }
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrent2(c)
-  }
-  const pageChange3 = (v: number) => {
-    const c = v
-    setCurrent3(c)
-  }
-  const pageChange4 = (v: number) => {
-    const c = v
-    setCurrent4(c)
-  }
-  const itemRender = (item: any) => {
-    return <div>{item.number === 3 ? 'hot' : item.text}</div>
-  }
-  const pageChange5 = (v: number) => {
-    const c = v
-    setCurrent3(c)
-  }
+
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Pagination
-            value={currentPage1}
-            total={20}
-            pageSize={5}
-            onChange={pageChange1}
-          />
+          <Demo1 />
         </Cell>
         <h2>{translated.simple}</h2>
         <Cell>
-          <Pagination
-            value={currentPage2}
-            total={12}
-            pageSize={1}
-            mode="simple"
-            onChange={pageChange2}
-          />
+          <Demo2 />
         </Cell>
         <h2>{translated.lite}</h2>
         <Cell>
-          <Pagination
-            value={currentPage2}
-            total={12}
-            pageSize={1}
-            mode="lite"
-            onChange={pageChange2}
-          />
+          <Demo3 />
         </Cell>
         <h2>{translated.ellipse}</h2>
         <Cell>
-          <Pagination
-            value={currentPage3}
-            total={125}
-            itemSize={2}
-            ellipse
-            onChange={pageChange3}
-          />
+          <Demo4 />
         </Cell>
         <h2>{translated.custom}</h2>
         <Cell>
-          <Pagination
-            value={currentPage4}
-            total={500}
-            itemSize={5}
-            onChange={pageChange4}
-            prev={<ArrowLeft />}
-            next={<ArrowRight />}
-            itemRender={itemRender}
-          />
+          <Demo5 />
         </Cell>
         <h2>{translated.uncontrolled}</h2>
         <Cell>
-          <Pagination
-            defaultValue={15}
-            total={500}
-            pageSize={10}
-            itemSize={3}
-            onChange={pageChange5}
-          />
+          <Demo6 />
         </Cell>
       </div>
     </>

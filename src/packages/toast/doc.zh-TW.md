@@ -1,367 +1,58 @@
 # Toast 吐司
 
-### 介紹
+#
 
 用於輕提示。
 
-### 安裝
+### 引入
 
 ```tsx
-import { Toast } from '@nutui/nutui-react';
+import { Toast } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 文字提示
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const textToast = (msg: string) => {
-      Toast.show(msg);
-    }
-    return (
-        <>
-        <Cell
-          title="Text文字提示"
-          
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('網絡失敗，請稍後再試~')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 標題提示
+## 展示時長設置
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const titleToast = (msg: string) => {
-      Toast.show({
-      	content: msg,
-        title: '標題提示'
-      })
-    }
-    return (
-        <>
-        <Cell
-          title="Toast 標題提示"
-          
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => titleToast('Toast 標題提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
-### 成功提示
+## Toast自定義底部高度
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const successToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'success'
-      });
-    }
-    return (
-        <>
-        <Cell
-          title="Success 成功提示"
-          
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => successToast('成功提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-### 失敗提示
+## 加載Loading帶透明罩
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const errorToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'fail'
-      });
-    }
-    return (
-        <>
-        <Cell
-          title="Error 失敗提示"
-          
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失敗提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
-### 警告提示
+## 換行截斷方式
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const warningToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'warn'
-      });
-    }
-    return (
-        <>
-            <Cell
-              title=" Warning 警告提示"
-
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => warningToast('警告提示')}
-            />
-        </>
-    )
-}
-export default App
-```
-
-:::
-
-### 加載提示
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const loadingToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'loading'
-      });
-    }
-    return (
-        <>
-            <Cell
-              title=" Loading 加載提示"
-
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => loadingToast('加載中')}
-            />
-        </>
-    )
-}
-export default App
-```
-
-:::
-
-### 展示時長設置
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell, Button } from '@nutui/nutui-react';
-
-const App = () => {
-    const duringToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        duration: 10
-      });
-    }
-    
-    const permanentToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        duration: 0
-      });
-    }
-    
-    return (
-        <>
-            <Cell
-              title="設置展示時長為10秒提示"
-
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => duringToast('設置展示時長為10秒')}
-            />
-            <Cell
-              title="Toast 不消失"
-
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => permanentToast('Toast 不消失') }
-            />
-            <Button
-              style={{ margin: 8 }}
-              type="primary"
-              shape="round"
-              onClick={() => {
-                  Toast.clear()
-              }}
-            >隱藏Toast</Button>
-        </>
-    )
-}
-export default App
-```
-
-:::
-
-### Toast自定義底部高度
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const toastBottom = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'loading',
-        style: {
-          '--nutui-toast-inner-top': '90%'
-        }
-      });
-    }
-    return (
-        <Cell
-        title='Toast 自定義底部高度'
-        
-        onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => toastBottom('自定義距離')}
-        />
-    )
-}
-export default App
-```
-
-:::
-
-### 加載Loading帶透明罩
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const iconToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        style: {
-          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
-        },
-        closeOnOverlayClick: true,
-        onClose: () => {
-          console.log('closeToast')
-        },
-      });
-    }
-    return (
-        <>
-            <Cell
-            title="Loading狀態非透明遮罩"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => iconToast('加載狀態非透明遮罩')}
-            />
-        </>
-    )
-}
-export default App
-```
-
-:::
-
-### 換行截斷方式
-
-:::demo
-
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const showToast = (mode) => {
-    Toast.show({
-      content: `Let's try ABCDEFGHIJKLMN here.`,
-      wordBreak: mode
-    });
-  }
-  return (
-    <Cell.Group>
-      <Cell
-        title="換行時截斷單詞"
-        onClick={() => showToast('break-all')}
-      />
-      <Cell
-        title="換行時不截斷單詞"
-        onClick={() => showToast('break-word')}
-      />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
 ## Toast
-
 
 ### Props
 
@@ -372,7 +63,7 @@ export default App
 | position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
 | title | 標題 | `string` | `-` |
 | icon | 自定義圖標 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
-| size | 文案尺寸，三選一 | `small` \| `base` \| `large`  | `base` |
+| size | 文案尺寸，三選一 | `small` \| `base` \| `large` | `base` |
 | contentClassName | 自定義內容區類名 | `string` | `-` |
 | contentStyle | 自定義內容區樣式 | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | 是否在點擊遮罩層後關閉提示 | `boolean` | `false` |
@@ -384,8 +75,9 @@ export default App
 如果傳入的參數是字符串類型，`Toast.show`會自動把它作為`content`
 
 Toast.config 全局配置：
+
 ```js
-Toast.config({className: 'demo', contentClassName:'content-demo'})
+Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 ```
 
 ### Ref
@@ -406,7 +98,7 @@ Toast.config({className: 'demo', contentClassName:'content-demo'})
 | \--nutui-toast-title-font-size | `toast`標題文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`內容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字顏色 | `#fff` |
-| \--nutui-toast-inner-top           | `toast`內容區自定義高度    | `50%`              |
+| \--nutui-toast-inner-top | `toast`內容區自定義高度 | `50%` |
 | \--nutui-toast-inner-padding | `toast`內容區padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`內容區圓角值 | `12px` |

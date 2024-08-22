@@ -1,35 +1,20 @@
 # CircleProgress 環形進度條
 
-## 介紹
-
 展示操作或任務的當前進度。
 
-## 安裝
+## 引入
 
 ```tsx
-import { CircleProgress } from '@nutui/nutui-react';
+import { CircleProgress } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={20} />
-      <CircleProgress percent={60}>60%</CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,20 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} strokeWidth={2} />
-      <CircleProgress percent={60} strokeWidth={10} background='#e5e9f2'/>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -58,28 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react';
-
-const gradientColor = {
-  '0%': '#FF5E5E',
-  '100%': '#FFA062'
-};
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} color="var(--nutui-color-info)">
-        50%
-      </CircleProgress>
-      <CircleProgress percent={100} color={gradientColor}>
-        100%
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -87,22 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react';
-
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} radius={60}>
-        50%
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -110,24 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} radius={60}>
-        <> 
-          <div>3000</div>
-          <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>步</div>
-        </>
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -135,45 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, CircleProgress } from '@nutui/nutui-react';
-
-const App = () => {
-  const [percent, setPercent] = useState(30)
-  
-  const setReduceVal = () => {
-    if (percent - 10 <= 0) {
-      setPercent(0)
-      return
-    }
-    setPercent(percent - 10)
-  }
-  const setAddVal = () => {
-    if (percent >= 100) {
-      return
-    }
-    setPercent(percent + 10)
-  }
-
-  return (
-    <>
-      <div >
-        <CircleProgress percent={percent}>{percent}%</CircleProgress>
-      </div>
-      <div >
-        <Button type="primary" size="small" onClick={setReduceVal} style={{ marginRight: '10px' }}>
-          減少
-        </Button>
-        <Button type="primary" size="small" onClick={setAddVal}>
-          增加
-        </Button>
-      </div>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

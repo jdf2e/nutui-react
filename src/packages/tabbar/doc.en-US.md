@@ -1,70 +1,28 @@
 # Tabbar
 
-## Intro
-
 Bottom Navigation Common Scenarios
 
-## Install
+## Import
 
 ```tsx
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react'
 ```
 
 ## Demo
 
-### Basic usage
+### Basic Usage
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => {
-  const [activeIndex, setActiveIndex] = useState(2)
-
-  return <Tabbar
-    defaultValue={0}
-    value={activeIndex}
-    onSwitch={(value) => {
-      setActiveIndex(value)
-    }}
-  >
-    <Tabbar.Item title="Home" icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title="Category" icon={<Category width={18} height={18} />} dot />
-    <Tabbar.Item title="Find" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="Mine" icon={<User width={18} height={18} />} />
-  </Tabbar>
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### custom check
+### Custom DefaultValue
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar defaultValue={2}>
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -72,37 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar
-    onSwitch={(value) => {
-      console.log(value)
-    }}
-  >
-    <Tabbar.Item
-      title="Home"
-      icon={<Home width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="Category"
-      icon={<Category width={12} height={12} />}
-    />
-    <Tabbar.Item icon={<Find width={24} height={24} />} />
-    <Tabbar.Item
-      title="Cart"
-      icon={<Cart width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="Mine"
-      icon={<User width={12} height={12} />}
-    />
-  </Tabbar>
-)
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -110,24 +38,7 @@ const App = () => (
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-
-const App = () => (
-  <Tabbar
-    onSwitch={(value) => {
-      console.log(value)
-    }}
-  >
-    <Tabbar.Item title="Home" value={9} />
-    <Tabbar.Item title="Category" dot />
-    <Tabbar.Item title="Find" />
-    <Tabbar.Item title="Cart" />
-    <Tabbar.Item title="Mine" />
-  </Tabbar>
-)
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -135,117 +46,39 @@ const App = () => (
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar>
-    <Tabbar.Item title="Home" icon={<Home />} value={11} />
-    <Tabbar.Item title="Category" icon={<Category />} />
-    <Tabbar.Item title="Find" icon={<Find />} />
-    <Tabbar.Item title="Cart" icon={<Cart />} value={110} />
-    <Tabbar.Item title="Mine" icon={<User />} />
-  </Tabbar>
-);
-
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
-### Red dot
+### Dot
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar>
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} dot />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### custom color
+### Custom Color
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
-### Tabbar with customizable number of icons
+### Tabbar With Custom Number Of Icons
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Category, Find, Home } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-### Fixed bottom
+### Fixed Bottom
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar fixed>
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -273,7 +106,7 @@ export default App;
 | icon | Custom icon | `ReactNode` | `-` |
 | value | value to show in Badge, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
-| dot | Whther Bagde is dotted | `boolean` | `false` |
+| dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 

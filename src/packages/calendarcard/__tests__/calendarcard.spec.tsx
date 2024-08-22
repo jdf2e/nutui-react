@@ -31,9 +31,9 @@ test('test defaultValue render', async () => {
 })
 
 test('test onChange & onDayClick & onPageChange', async () => {
-  const onChange = jest.fn()
-  const onDayClick = jest.fn()
-  const onPageChange = jest.fn()
+  const onChange = vi.fn()
+  const onDayClick = vi.fn()
+  const onPageChange = vi.fn()
   const { container } = render(
     <CalendarCard
       defaultValue={new Date('2023-01-25')}
@@ -62,7 +62,7 @@ test('test onChange & onDayClick & onPageChange', async () => {
 
   const nextDays = container.querySelectorAll('.nut-calendarcard-day.next')
   fireEvent.click(nextDays[0])
-  expect(onDayClick).toHaveBeenCalledTimes(3)
+  expect(onDayClick).toHaveBeenCalledTimes(4)
   expect(onPageChange).toHaveBeenCalledTimes(1)
 })
 
@@ -91,7 +91,12 @@ test('test type range', async () => {
   const currentDays = container.querySelectorAll(
     '.nut-calendarcard-day.current'
   )
-  fireEvent.click(currentDays[1]) // 0102
+  fireEvent.click(currentDays[24]) // 0125
+  const startAndEnd = container.querySelectorAll(
+    '.nut-calendarcard-day.start.end'
+  )
+  expect(startAndEnd.length).toBe(1)
+
   fireEvent.click(currentDays[3]) // 0104
   fireEvent.click(currentDays[8]) // 0109
   const start = container.querySelector(
@@ -132,7 +137,7 @@ test('test type week', async () => {
 })
 
 test('test disableDay', async () => {
-  const onDayClick = jest.fn()
+  const onDayClick = vi.fn()
   const { container } = render(
     <CalendarCard
       defaultValue={new Date('2023-01-24')}
@@ -155,13 +160,13 @@ test('test disableDay', async () => {
     '.nut-calendarcard-day.current'
   )
   fireEvent.click(currentDays[22]) // 0123 disabled
-  expect(onDayClick).toHaveBeenCalledTimes(0)
-  fireEvent.click(currentDays[25]) // 0126
   expect(onDayClick).toHaveBeenCalledTimes(1)
+  fireEvent.click(currentDays[25]) // 0126
+  expect(onDayClick).toHaveBeenCalledTimes(2)
 })
 
 test('test ref methods', async () => {
-  const onPageChange = jest.fn()
+  const onPageChange = vi.fn()
   const App = () => {
     const CalendarRef = React.useRef<any>()
     const click1 = () => {

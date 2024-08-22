@@ -1,13 +1,11 @@
 # NoticeBar
 
-## Intro
+Used to display a group of message notifications in a continuous loop.
 
-Used to display a group of message notifications in a continuons loop.
-
-## Install
+## Import
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,48 +14,15 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
-    return (
-      <>
-        <NoticeBar content={content} />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-:::
-
-### Custom Theme
+### The layout is centered and does not support scrolling
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
-    return (
-      <ConfigProvider
-          theme={{
-            nutuiNoticebarBackground: '#EDF4FF',
-            nutuiNoticebarColor: '#3768FA',
-          }}
-        >
-          <NoticeBar content={translated.text} />
-        </ConfigProvider>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -67,60 +32,15 @@ Scrolling is automatically enabled when the content length of the notification b
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    return (
-      <>
-        <NoticeBar
-            content="Nutui is a mobile terminal component library."
-            scrollable
-        />
-
-        <NoticeBar 
-            content="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience." scrollable={false} 
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-### Mode
+### Close Mode
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-import { Failure } from '@nutui/icons-react';
-
-const App = () => {
-    const hello = () => {
-        console.log('hello world')
-    }
-    return (
-      <>
-       <NoticeBar closeable click={hello}>
-          Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
-        </NoticeBar>
-        <br />
-        <NoticeBar closeable rightIcon={<Failure />} click={hello}>
-          Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
-        </NoticeBar>
-        <br />
-        <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
-          <a href="https://www.jd.com">Jingdong</a>
-        </NoticeBar>
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -130,19 +50,25 @@ When text is long, you can enable multi-line display by setting the wrap propert
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
-const App = () => {
-    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
-    
-    return (
-      <NoticeBar content={text} wrap />
-    )
-}
-export default App
-```
+:::
+
+### Custom right content
+
+Add Right mode to set more custom content.
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### Custom Theme
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -150,32 +76,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const horseLamp1 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
-    const go = (item: any) => {
-        console.log(item)
-    }
-    return (
-      <div className="interstroll-list">
-          <NoticeBar
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onClick={(e) => {
-              go(e.target.innerHtml)
-            }}
-            closeable
-          />
-        </div>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -183,33 +84,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-
-const App = () => {
-     const horseLamp2 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox'];
-    return (
-      <>
-        <NoticeBar
-            direction="vertical"
-            list={horseLamp2}
-            speed={10}
-            duration={2000}
-            leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
-            onClick={(e) => {
-              console.log('listClick', e.target)
-            }}
-            onItemClick={(e, val) => {
-              console.log('dom', e.target)
-              console.log('value', val)
-            }}
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -217,38 +92,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const  horseLamp3 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
-
-    return (
-      <>
-        <NoticeBar direction="vertical" height={50} speed={10} duration={1000}
-        closeable
-        onClose={() => {console.log('close')}}>
-        {horseLamp3.map((item, index) => {
-            return (
-            <div
-                className="custom-item"
-                style={{ height: '50px', lineHeight: '50px' }}
-                key={index}
-                onClick={() => {
-                    console.log('custom-inner', item)
-                }}
-            >
-                {item}
-            </div>
-            )
-        })}
-        </NoticeBar>
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -256,31 +100,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-import { Fabulous } from '@nutui/icons-react';
-
-const App = () => {
-     const horseLamp1 = ['NoticeBar', 'Cascader', 'DatePicker', 'CheckBox']
-    return (
-      <>
-        <NoticeBar
-            className="custom"
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onItemClick={(e, v) => {
-              console.log('onclick-custom', v)
-            }}
-            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
-        />
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -290,11 +110,13 @@ export default App
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| align | Layout mode. When the value is center, scrolling is not supported | `left` \| `center` | `left` |
 | direction | Rolling direction | `string` | `horizontal` |
 | content | Notice text content | `string` | `-` |
 | closeable | Whether to enable the off mode | `boolean` | `false` |
 | leftIcon | Left Icon | `ReactNode` | `-` |
 | rightIcon | Right Icon | `ReactNode` | `-` |
+| right | Different from rightIcon, it is the right custom area, used by mode of direction='horizontal' | `ReactNode` | `-` |
 | delay | Delay time | `string` \| `number` | `1` |
 | scrollable | Whether to scroll content | `boolean` | `true` |
 | speed | Scrolling speed (px/s) | `number` | `50` |

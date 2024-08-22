@@ -5,6 +5,7 @@ import React, {
   ReactNode,
 } from 'react'
 import type { MouseEvent } from 'react'
+import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
@@ -108,7 +109,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
               <span className={`${classPrefix}-text`}>{children}</span>
             )}
             {React.isValidElement(closeIcon) ? (
-              <i
+              <View
                 className={`${classPrefix}-custom-icon`}
                 onClick={(e) => {
                   setVisible(false)
@@ -116,7 +117,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 }}
               >
                 {closeIcon}
-              </i>
+              </View>
             ) : (
               <Close
                 size={8}
@@ -143,5 +144,4 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   )
 }
 
-Tag.defaultProps = defaultProps
 Tag.displayName = 'NutTag'

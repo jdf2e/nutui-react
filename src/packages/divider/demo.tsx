@@ -1,20 +1,15 @@
 import React from 'react'
-import { Divider } from './divider'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
 
-interface T {
-  basic: string
-  withText: string
-  contentPosition: string
-  dashed: string
-  customStyle: string
-  verticalDivider: string
-  text: string
-  link: string
-}
 const DividerDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       withText: '展示文本',
@@ -22,8 +17,6 @@ const DividerDemo = () => {
       dashed: '虚线',
       customStyle: '自定义样式',
       verticalDivider: '垂直分割线',
-      text: '文本',
-      link: '链接',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -32,8 +25,6 @@ const DividerDemo = () => {
       dashed: 'Dashed',
       customStyle: 'Custom Style',
       verticalDivider: 'Vertical Divider',
-      text: 'Text',
-      link: 'Link',
     },
   })
   return (
@@ -41,59 +32,25 @@ const DividerDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
-          <Divider />
+          <Demo1 />
         </Cell>
-
         <h2>{translated.withText}</h2>
         <Cell>
-          <Divider>{translated.text}</Divider>
+          <Demo2 />
         </Cell>
-
         <h2>{translated.contentPosition}</h2>
-        <Cell>
-          <Divider contentPosition="left">{translated.text}</Divider>
-        </Cell>
-        <Cell>
-          <Divider contentPosition="right">{translated.text}</Divider>
-        </Cell>
+        <Demo3 />
         <h2>{translated.dashed}</h2>
         <Cell>
-          <Divider
-            style={{
-              borderStyle: 'dashed',
-            }}
-          >
-            {translated.text}
-          </Divider>
+          <Demo4 />
         </Cell>
-
         <h2>{translated.customStyle}</h2>
         <Cell>
-          <Divider
-            style={{
-              color: '#1989fa',
-              borderColor: '#1989fa',
-              padding: '0 16px',
-              borderStyle: 'dashed',
-            }}
-          >
-            {translated.text}
-          </Divider>
+          <Demo5 />
         </Cell>
         <h2>{translated.verticalDivider}</h2>
         <Cell>
-          <div style={{ fontSize: '14px', marginLeft: '27px', color: '' }}>
-            {translated.text}
-
-            <Divider direction="vertical" />
-            <a href="#/Divider" style={{ color: '#4d88ff' }}>
-              {translated.link}
-            </a>
-            <Divider direction="vertical" />
-            <a href="#/Divider" style={{ color: '#4d88ff' }}>
-              {translated.link}
-            </a>
-          </div>
+          <Demo6 />
         </Cell>
       </div>
     </>

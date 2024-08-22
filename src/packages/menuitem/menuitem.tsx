@@ -23,6 +23,7 @@ export interface OptionItem {
 
 export interface MenuItemProps extends BasicComponent {
   title: React.ReactNode
+  titleIcon: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
@@ -39,6 +40,7 @@ export interface MenuItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  titleIcon: null,
   columns: 1,
   direction: 'down',
   icon: null,
@@ -129,11 +131,13 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const getParentOffset = () => {
     setTimeout(() => {
       const p = parent.menuRef.current
-      const rect = p.getBoundingClientRect()
-      setPosition({
-        height: rect.height,
-        top: rect.top,
-      })
+      if (p) {
+        const rect = p.getBoundingClientRect()
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
+      }
     })
   }
 
@@ -227,7 +231,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                   }}
                 >
                   {item.value === innerValue ? (
-                    <i>
+                    <i className="nut-menu-container-item-icon">
                       {icon || (
                         <Check
                           color={activeColor}
@@ -237,7 +241,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                     </i>
                   ) : null}
                   <div
-                    className={getIconCName(item.value, value)}
+                    className={`nut-menu-container-item-title ${getIconCName(item.value, value)}`}
                     style={{
                       color: `${item.value === innerValue ? activeColor : ''}`,
                     }}
@@ -255,5 +259,4 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   )
 })
 
-MenuItem.defaultProps = defaultProps
 MenuItem.displayName = 'NutMenuItem'

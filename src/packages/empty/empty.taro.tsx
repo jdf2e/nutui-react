@@ -8,13 +8,14 @@ import { Button } from '@/packages/button/button.taro'
 type statusOptions = {
   [key: string]: string
 }
-/**
- * 内置图片地址
- */
+
 const defaultStatus: statusOptions = {
-  empty: 'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png',
-  error: 'https://ftcms.jd.com/p/files/61a9e33ee7dcdbcc0ce62736.png',
-  network: 'https://static-ftcms.jd.com/p/files/61a9e31de7dcdbcc0ce62734.png',
+  empty:
+    'https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png',
+  error:
+    'https://storage.360buyimg.com/imgtools/f3278d0ebb-0ce360c0-c0ac-11ee-8375-193101bb1a46.png',
+  network:
+    'https://storage.360buyimg.com/imgtools/43c30f7e29-0d483d10-c0ac-11ee-bec4-eb4d2a09a51d.png',
 }
 export interface EmptyProps extends BasicComponent {
   image?: ReactNode
@@ -132,5 +133,4 @@ export const Empty: FunctionComponent<
   )
 }
 
-Empty.defaultProps = defaultProps
 Empty.displayName = 'NutEmpty'

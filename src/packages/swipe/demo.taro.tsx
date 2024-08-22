@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { useTranslate } from '@/sites/assets/locale/taro'
+import { Del } from '@nutui/icons-react-taro'
 import {
   Button,
   Cell,
@@ -9,7 +9,8 @@ import {
   Dialog,
   InputNumber,
   Swipe,
-} from '@/packages/nutui.react.taro'
+} from '@nutui/nutui-react-taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
 type TSwipeDemo = {
@@ -22,9 +23,12 @@ type TSwipeDemo = {
   title7: string
   openOrClose: string
   title8: string
+  title9: string
   click: string
   sure: string
   del: string
+  alwaysbuy: string
+  liked: string
   choose: string
   event: string
   goods: string
@@ -52,19 +56,22 @@ const SwipeDemo = () => {
       openOrClose: '点击下方按钮打开或关闭',
       title7: '点击关闭',
       title8: '阻止父元素滚动',
+      title9: '卡片场景',
       click: '点击',
       sure: '确定',
       del: '删除',
+      alwaysbuy: '设置常购',
+      liked: '看相似',
       choose: '选择',
       event: '事件',
       goods: '商品',
-      collect: '收藏',
+      collect: '移入收藏',
       open: '打开',
       close: '关闭',
       closeLeft: '点击右侧按钮关闭',
       tips: '提示',
       cart: '加入购物车',
-      leftDel: '左滑删除',
+      leftDel: '左滑',
       disabled: '禁用滑动',
       chooseTips: '确定选择吗？',
       deleteTips: '确定删除吗？',
@@ -79,9 +86,12 @@ const SwipeDemo = () => {
       openOrClose: '點擊下方按鈕打開或關閉',
       title7: '点击关闭',
       title8: '阻止父元素滾動',
+      title9: '卡片場景',
       click: '點擊',
       sure: '確定',
       del: '刪除',
+      alwaysbuy: '设置常购',
+      liked: '看相似',
       choose: '選擇',
       event: '事件',
       goods: '商品',
@@ -91,7 +101,7 @@ const SwipeDemo = () => {
       closeLeft: '點擊右側按鈕關閉',
       tips: '提示',
       cart: '加入購物車',
-      leftDel: '左滑刪除',
+      leftDel: '左滑',
       disabled: '禁用滑動',
       chooseTips: '確定選擇嗎？ ',
       deleteTips: '確定刪除嗎？ ',
@@ -106,9 +116,12 @@ const SwipeDemo = () => {
       openOrClose: 'Click the button below',
       title7: 'Click to close',
       title8: 'Prevent parent scrolling',
+      title9: 'Card mode',
       click: 'click',
       sure: 'ok',
       del: 'delete',
+      alwaysbuy: 'always buy',
+      liked: 'liked',
       choose: 'select',
       event: 'event',
       goods: 'goods',
@@ -118,7 +131,7 @@ const SwipeDemo = () => {
       closeLeft: 'Click the right button to close',
       tips: 'tips',
       cart: 'add to shopping cart',
-      leftDel: 'left slide delete',
+      leftDel: 'left slide',
       disabled: 'Disable sliding',
       chooseTips: 'are you sure to choose?',
       deleteTips: 'are you sure to delete?',
@@ -149,6 +162,24 @@ const SwipeDemo = () => {
   const closeRef = useRef(null)
   const openRef = useRef(null)
   const [shouldCatchMove, setShouldCatchMove] = useState(false)
+
+  const divNode = (text: string, style: any, hasIcon: boolean = true) => {
+    return (
+      <div
+        style={{
+          width: '60px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          ...style,
+        }}
+      >
+        {hasIcon ? <Del style={{ marginBottom: '8px' }} /> : null}
+        <>{text}</>
+      </div>
+    )
+  }
   return (
     <>
       <Header />
@@ -159,6 +190,95 @@ const SwipeDemo = () => {
             <Button type="primary" shape="square">
               {translated.del}
             </Button>
+          }
+        >
+          <Cell title={translated.leftDel} radius={0} />
+        </Swipe>
+
+        <h2>{translated.title9}</h2>
+        <Swipe
+          style={{ height: '104px' }}
+          rightAction={
+            <div
+              style={{
+                height: 'inherit',
+                width: '240px',
+                display: 'flex',
+                fontSize: '12px',
+              }}
+            >
+              <>
+                {divNode(translated.alwaysbuy, {
+                  background: '#F8F8F8',
+                  color: '#1A1A1A',
+                })}
+                {divNode(translated.collect, {
+                  background: '#ffcc00',
+                  color: '#FFF',
+                })}
+                {divNode(translated.liked, {
+                  background: '#FF860D',
+                  color: '#FFF',
+                })}
+                {divNode(translated.del, {
+                  background: '#FA2C19',
+                  color: '#FFF',
+                })}
+              </>
+            </div>
+          }
+        >
+          <Cell title={translated.leftDel} radius={0} />
+        </Swipe>
+
+        <br style={{ display: 'block', height: '10px' }} />
+
+        <Swipe
+          style={{ height: '104px' }}
+          rightAction={
+            <div
+              style={{
+                height: 'inherit',
+                width: '240px',
+                display: 'flex',
+                fontSize: '12px',
+              }}
+            >
+              <>
+                {divNode(
+                  translated.alwaysbuy,
+                  {
+                    background: '#F8F8F8',
+                    color: '#1A1A1A',
+                  },
+                  false
+                )}
+                {divNode(
+                  translated.collect,
+                  {
+                    background: '#ffcc00',
+                    color: '#FFF',
+                  },
+                  false
+                )}
+                {divNode(
+                  translated.liked,
+                  {
+                    background: '#FF860D',
+                    color: '#FFF',
+                  },
+                  false
+                )}
+                {divNode(
+                  translated.del,
+                  {
+                    background: '#FA2C19',
+                    color: '#FFF',
+                  },
+                  false
+                )}
+              </>
+            </div>
           }
         >
           <Cell title={translated.leftDel} radius={0} />
@@ -197,7 +317,7 @@ const SwipeDemo = () => {
         </Swipe>
         <div style={{ display: 'flex' }}>
           <Button
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
             type="primary"
             size="small"
             onClick={() => (openRef.current as any)?.open()}
@@ -308,7 +428,7 @@ const SwipeDemo = () => {
         <Toast
           type="text"
           visible={show}
-          msg={toastMsg}
+          content={toastMsg}
           onClose={() => {
             SetShow(false)
           }}

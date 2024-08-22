@@ -1,61 +1,28 @@
 # NoticeBar 公告栏
 
-## 介绍
-
 用于循环播放展示一组消息通知。
 
-## 安装
+## 引入
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react-taro';
+import { NoticeBar } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const text = 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-    return (
-      <>
-        <NoticeBar content={text} />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
-### 自定义主题
+### 居中布局，不支持滚动
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
-    return (
-      <ConfigProvider
-          theme={{
-            nutuiNoticebarBackground: '#EDF4FF',
-            nutuiNoticebarColor: '#3768FA',
-          }}
-        >
-          <NoticeBar content={translated.text} />
-        </ConfigProvider>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -65,60 +32,15 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    return (
-      <>
-        <NoticeBar
-            content="NutUI 是京东风格的移动端组件库"
-            scrollable
-        />
-
-        <NoticeBar 
-            content="NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。" scrollable={false} 
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
-### 通告栏模式--关闭模式
+### 关闭模式
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-import { Failure } from '@nutui/icons-react';
-
-const App = () => {
-    const hello = () => {
-        console.log('hello world')
-    }
-    return (
-      <>
-       <NoticeBar closeable onClick={hello}>
-          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
-        </NoticeBar>
-        <br />
-        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
-          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
-        </NoticeBar>
-        <br />
-        <NoticeBar leftIcon={<img alt="notice" src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
-          <a href="https://www.jd.com">京东商城</a>
-        </NoticeBar>
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -128,155 +50,57 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const text = 'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-    
-    return (
-      <NoticeBar content={text} wrap />
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
-### 纵向滚动
+### 自定义右侧内容
+
+增加自定义右侧区域，区分rightIcon，更灵活配置。
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
-      ]
-    const go = (item: any) => {
-        console.log(item)
-    }
-    return (
-      <div className="interstroll-list">
-          <NoticeBar
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onClick={(e) => {
-              go(e.target.innerHtml)
-            }}
-            closeable
-          />
-        </div>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
-### 复杂滚动动画
+### 自定义主题
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-     const horseLamp2 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
-    return (
-      <>
-        <NoticeBar
-            direction="vertical"
-            list={horseLamp2}
-            speed={10}
-            duration={2000}
-            complexAm
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
-### 自定义滚动内容
+### 垂直滚动
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const  horseLamp3 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']
-
-    return (
-      <>
-        <NoticeBar direction="vertical" height={50} speed={10} duration={1000} 
-        closeable
-        onClose={() => {console.log('close')}}
-        onClick={(e) => {console.log(e)}}>
-        {horseLamp3.map((item, index) => {
-            return (
-            <div
-                className="custom-item"
-                style={{ height: '50px', lineHeight: '50px' }}
-                key={index}
-            >
-                {item}
-            </div>
-            )
-        })}
-        </NoticeBar>
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
-### 纵向自定义右侧图标
+### 纵向模式：自定义左侧图标
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react-taro';
-import { Fabulous } from '@nutui/icons-react-taro';
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
-const App = () => {
-     const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
-      ]
-    return (
-      <>
-        <NoticeBar
-            className="custom"
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            rightIcon={<Fabulous size={16}  color="#f0250f" />}
-        />
-        </>
-    )
-};
-export default App
-```
+:::
+
+### 纵向模式：自定义滚动内容
+
+:::demo
+
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
+
+:::
+
+### 纵向模式：自定义右侧图标
+
+:::demo
+
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -286,11 +110,13 @@ export default App
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| align | 布局方式, 值为`center`时，不支持滚动 | `left` \| `center` | `left` |
 | direction | 滚动的方向，可选 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否启用关闭模式 | `boolean` | `false` |
 | leftIcon | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-` |
 | rightIcon | closeable 模式下，默认为 `<Close />` | `ReactNode` | `-` |
+| right | 区别于rightIcon，为右边自定义区域，仅用于 direction='horizontal' 模式 | `ReactNode` | `-` |
 | delay | 延时多少秒 | `string` \| `number` | `1` |
 | scrollable | 是否可以滚动 | `boolean` | `true` |
 | speed | 滚动速率 (px/s) | `number` | `50` |

@@ -12,3 +12,8 @@ export interface CalendarCardMonth {
 }
 
 export type CalendarCardValue = Date | Date[] | null
+
+export type CalendarCardRef = {
+  jump: (step: number) => void
+  jumpTo: (year: number, month: number) => void
+}

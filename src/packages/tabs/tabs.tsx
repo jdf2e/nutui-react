@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -6,6 +6,7 @@ import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
+import { useRtl } from '../configprovider'
 
 export type TabsTitle = {
   title: string
@@ -44,6 +45,7 @@ const classPrefix = 'nut-tabs'
 export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
+  const rtl = useRtl()
   const {
     activeColor,
     tabStyle,
@@ -57,6 +59,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     onChange,
     className,
     autoHeight,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     ...rest
   } = {
     ...defaultProps,
@@ -64,12 +68,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const [value, setValue] = usePropsValue<string | number>({
-    value: props.value,
-    defaultValue: props.defaultValue,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     finalValue: 0,
     onChange,
   })
-  const [contentStyle, setContentStyle] = useState({})
   const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
   const scrollDirection = (
@@ -98,19 +101,21 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
     const titleItem = titleItemsRef.current
-    if (!nav || !titleItem || !titleItem[index]) {
+    const titlesLength = titles.current.length
+    const itemLength = titleItemsRef.current.length
+    if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
       return
     }
-    const title = titleItem[index]
+    const title = titleItem[itemLength - titlesLength + index]
 
     let to = 0
-    if (props.direction === 'vertical') {
+    if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
       to = runTop - (nav.offsetHeight - title.offsetHeight) / 2
     } else {
       to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
     }
-    scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction)
+    scrollDirection(nav, to, immediate ? 0 : 0.3, direction)
   }
 
   const getTitles = () => {
@@ -162,16 +167,22 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     color: activeType === 'smile' ? activeColor : '',
     background: activeType === 'line' ? activeColor : '',
   }
-  useEffect(() => {
+  const getContentStyle = () => {
     // eslint-disable-next-line eqeqeq
-    const index = titles.current.findIndex((t) => t.value == value)
-    setContentStyle({
+    let index = titles.current.findIndex((t) => t.value == value)
+    index = index < 0 ? 0 : index
+    return {
       transform:
         direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
+          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
-    })
+    }
+  }
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    let index = titles.current.findIndex((t) => t.value == value)
+    index = index < 0 ? 0 : index
     setTimeout(() => {
       scrollIntoView(index)
     })
@@ -184,7 +195,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     }
     setValue(item.value)
   }
-
   return (
     <div className={classes} {...rest}>
       <div className={classesTitle} style={{ ...tabStyle }} ref={navRef}>
@@ -234,7 +244,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             })}
       </div>
       <div className={`${classPrefix}-content-wrap`}>
-        <div className={`${classPrefix}-content`} style={contentStyle}>
+        <div className={`${classPrefix}-content`} style={getContentStyle()}>
           {React.Children.map(children, (child, idx) => {
             if (!React.isValidElement(child)) {
               return null
@@ -262,6 +272,5 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
 }
 
-Tabs.defaultProps = defaultProps
 Tabs.displayName = 'NutTabs'
 Tabs.TabPane = TabPane

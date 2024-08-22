@@ -88,10 +88,12 @@ export class UploaderTaro extends Upload {
 
   uploadTaro(uploadFile: any, env: string) {
     const options = this.options
+    if (options.beforeXhrUpload) {
+      options.beforeXhrUpload(uploadFile, options)
+      return
+    }
     if (env === 'WEB') {
       this.upload()
-    } else if (options.beforeXhrUpload) {
-      options.beforeXhrUpload(uploadFile, options)
     } else {
       const uploadTask = uploadFile({
         url: options.url,

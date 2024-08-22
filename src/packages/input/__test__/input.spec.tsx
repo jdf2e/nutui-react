@@ -2,9 +2,11 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Input from '@/packages/input'
+import ConfigProvider from '@/packages/configprovider'
 
 test('input props test', () => {
-  const { container } = render(
+  const blur = vi.fn()
+  const { container, rerender } = render(
     <Input name="text" placeholder="请输入文字" defaultValue="初始文本" />
   )
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(
@@ -23,7 +25,44 @@ test('input props test', () => {
     'type',
     'text'
   )
-  expect(container).toMatchSnapshot()
+  rerender(
+    <Input type="number" placeholder="1" defaultValue="1" onBlur={blur} />
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'type',
+    'tel'
+  )
+  const telInput = container.querySelector('.nut-input-native') as HTMLElement
+  fireEvent.focus(telInput)
+  fireEvent.blur(telInput)
+  expect(blur).toBeCalled()
+
+  rerender(
+    <Input type="digit" placeholder="1" defaultValue="1.01" onBlur={blur} />
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'type',
+    'text'
+  )
+  const digitInput = container.querySelector('.nut-input-native') as HTMLElement
+  fireEvent.focus(digitInput)
+  fireEvent.blur(digitInput)
+  expect(blur).toBeCalled()
+  rerender(
+    <Input
+      name="text"
+      formatTrigger="onBlur"
+      placeholder="1"
+      defaultValue="1"
+      onBlur={blur}
+    />
+  )
+  const triggerInput = container.querySelector(
+    '.nut-input-native'
+  ) as HTMLElement
+  fireEvent.focus(triggerInput)
+  fireEvent.blur(triggerInput)
+  expect(blur).toBeCalled()
 })
 
 test('password test', () => {
@@ -63,7 +102,7 @@ test('textarea test', () => {
 })
 
 test('clearable and clear event test', () => {
-  const handleClear = jest.fn()
+  const handleClear = vi.fn()
   const { container } = render(
     <Input defaultValue="清除文本" clearable onClear={handleClear} />
   )
@@ -91,11 +130,36 @@ test('disabled test', () => {
   )
 })
 
+test('rtl test', () => {
+  const { container } = render(
+    <ConfigProvider direction="rtl">
+      <Input placeholder="文本" />
+    </ConfigProvider>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'style',
+    'text-align: right;'
+  )
+})
+
+test('rtl test2', () => {
+  const { container } = render(
+    <ConfigProvider direction="rtl">
+      <Input placeholder="文本" align="right" />
+    </ConfigProvider>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'style',
+    'text-align: left;'
+  )
+})
+
 test('clearable and clear event test', () => {
-  const handleChange = jest.fn()
-  const handleFocus = jest.fn()
-  const handleBlur = jest.fn()
-  const handleClick = jest.fn()
+  const handleChange = vi.fn()
+  const handleFocus = vi.fn()
+  const handleBlur = vi.fn()
+  const handleClick = vi.fn()
+  const handleClear = vi.fn()
   const { container } = render(
     <Input
       defaultValue="文本"
@@ -104,6 +168,7 @@ test('clearable and clear event test', () => {
       onFocus={handleFocus}
       onBlur={handleBlur}
       onClick={handleClick}
+      onClear={handleClear}
     />
   )
   const inputEl = container.querySelector('.nut-input-native') as Element
@@ -117,6 +182,17 @@ test('clearable and clear event test', () => {
     expect(container.querySelector('.nut-input-native')).toHaveAttribute(
       'value',
       '文字改变'
+    )
+    expect(inputEl.querySelector('.nut-input span')).toHaveAttribute(
+      'style',
+      'display: flex; align-items: center;'
+    )
+    const clearBtn = inputEl.querySelector('.nut-input-clear') as Element
+    fireEvent.click(clearBtn)
+    expect(handleClear).toBeCalled()
+    expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+      'value',
+      ''
     )
     fireEvent.blur(inputEl)
     expect(handleBlur).toBeCalled()

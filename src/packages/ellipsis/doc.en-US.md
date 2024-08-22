@@ -1,13 +1,11 @@
 # Ellipsis
 
-## Intro
-
 isplay space is insufficient, hidden part of the content and "..." Alternative.
 
-## Install
+## Import
 
 ```tsx
-import { Ellipsis } from '@nutui/nutui-react';
+import { Ellipsis } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,21 +14,7 @@ import { Ellipsis } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="start"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,21 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="end"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -60,21 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="middle"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -82,21 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="start" rows="3"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -104,26 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
-  return (
-    <Cell>
-        <Ellipsis
-        content={content}
-        direction="start"
-        expandText="展开"
-        collapseText="收起"
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -134,12 +57,12 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | content | Content | `string` | `-` |
-| direction | Direction | `start` \| `end` \| `middle`  | `end` |
+| direction | Direction | `start` \| `end` \| `middle` | `end` |
 | rows | Rows | `number` | `1` |
 | expandText | Expand text | `string` | `-` |
 | collapseText | Collapse text | `string` | `-` |
 | symbol | Symbol | `string` | `...` |
-| lineHeight | the row height of the container | `string` \| `number`  | `20` |
+| lineHeight | the row height of the container | `string` \| `number` | `20` |
 | onClick | Emitted when the content is clicked | `() => void` | `-` |
 | onChange | Emitted when expand or collapse is clicked | `(type: string) => void` | `-` |
 

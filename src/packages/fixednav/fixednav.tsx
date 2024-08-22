@@ -5,7 +5,7 @@ import Overlay from '@/packages/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
-  FixedNavDirection,
+  FixedNavType,
   FixedNavItem,
   FixedNavPosition,
 } from '@/packages/fixednav/types'
@@ -17,7 +17,7 @@ export interface FixedNavProps extends BasicComponent {
   activeText: string
   inactiveText: string
   position: FixedNavPosition
-  type: FixedNavDirection
+  type: FixedNavType
   onChange: (item: any) => void
   onSelect: (item: any, event: MouseEvent) => void
   content: React.ReactNode
@@ -137,5 +137,4 @@ export const FixedNav: FunctionComponent<
   )
 }
 
-FixedNav.defaultProps = defaultProps
 FixedNav.displayName = 'NutFixedNav'

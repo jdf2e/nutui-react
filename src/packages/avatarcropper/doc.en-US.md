@@ -7,7 +7,7 @@ Used to cut the profile picture to create a new image.
 ## install
 
 ```tsx
-import { AvatarCropper } from '@nutui/nutui-react';
+import { AvatarCropper } from '@nutui/nutui-react'
 ```
 
 ## Code demonstration
@@ -18,27 +18,7 @@ Use the avatar component directly in the middle, and the image content will be r
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper onConfirm={cutImage}>
-        <Avatar size="large" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,42 +28,7 @@ Customize the clipping area toolbar, and toolbar-position controls the toolbar p
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper, Button } from '@nutui/nutui-react';
-import { Refresh, Retweet } from '@nutui/icons-react-taro'
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper
-        toolbarPosition="top"
-        editText="Modify"
-        onConfirm={cutImage}
-        toolbar={[
-          <Button type="danger" key="cancel">
-            Cancel
-          </Button>,
-          <Refresh key="reset" />,
-          <Retweet key="rotate" />,
-          <Button type="success" key="confirm">
-            Confirm
-          </Button>,
-        ]}
-        >
-        <Avatar size="large" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -93,27 +38,7 @@ Set the shape of the crop display, which is still square after the crop, and nee
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Avatar, AvatarCropper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [imageUrl, setImageUrl] = useState(
-    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
-  )
-  const cutImage = (data: any) => {
-    setImageUrl(data)
-  }
-  return (
-    <>
-      <AvatarCropper shape="round" onConfirm={cutImage}>
-        <Avatar size="large" shape="round" src={imageUrl} />
-      </AvatarCropper>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

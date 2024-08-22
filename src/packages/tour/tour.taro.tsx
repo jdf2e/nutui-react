@@ -2,12 +2,13 @@ import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import Popover, { PopoverLocation } from '@/packages/popover/index.taro'
+import Popover from '@/packages/popover/index.taro'
+import { PopoverLocation } from '@/packages/popover/types'
 import { getTaroRectById } from '@/utils/use-taro-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider'
 
-export interface ListOptions {
+export interface TourList {
   target: Element | string
   content?: string
   location?: string
@@ -25,7 +26,7 @@ export interface TourProps extends BasicComponent {
   maskWidth: number | string
   maskHeight: number | string
   offset: number[]
-  list: ListOptions[]
+  list: TourList[]
   title: ReactNode
   next: ReactNode
   prev: ReactNode
@@ -265,5 +266,4 @@ export const Tour: FunctionComponent<
   )
 }
 
-Tour.defaultProps = defaultProps
 Tour.displayName = 'NutTour'

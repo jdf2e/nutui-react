@@ -13,6 +13,7 @@ import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RangeMark, RangeValue } from './types'
+import { useRtl } from '../configprovider'
 
 export interface RangeProps extends BasicComponent {
   value: RangeValue
@@ -50,6 +51,7 @@ export const Range: FunctionComponent<
       'onClick' | 'onChange' | 'defaultValue'
     >
 > = (props) => {
+  const rtl = useRtl()
   const {
     className,
     range,
@@ -181,16 +183,18 @@ export const Range: FunctionComponent<
         transition: dragStatus ? 'none' : undefined,
       }
     }
+    const dir = rtl ? 'right' : 'left'
     return {
       width: calcMainAxis(),
-      left: calcOffset(),
+      [dir]: calcOffset(),
       transition: dragStatus ? 'none' : undefined,
     }
   }
 
   const marksStyle = (mark: any) => {
+    const dir = rtl ? 'right' : 'left'
     let style: any = {
-      left: `${((mark - min) / scope()) * 100}%`,
+      [dir]: `${((mark - min) / scope()) * 100}%`,
     }
     if (vertical) {
       style = {
@@ -284,22 +288,18 @@ export const Range: FunctionComponent<
     if (dragStatus === 'start') {
       onStart && onStart()
     }
-
     touch.move(event)
-
     setDragStatus('draging')
-
     const rect = getRect(root.current)
     let delta = touch.deltaX.current
     let total = rect.width
     let diff = (delta / total) * scope()
-
+    diff = rtl ? -diff : diff
     if (vertical) {
       delta = touch.deltaY.current
       total = rect.height
       diff = (delta / total) * scope()
     }
-
     let newValue
     if (isRange(startValue)) {
       newValue = (exactValue as number[]).slice()
@@ -419,5 +419,4 @@ export const Range: FunctionComponent<
   )
 }
 
-Range.defaultProps = defaultProps
 Range.displayName = 'NutRange'

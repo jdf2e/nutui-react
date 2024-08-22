@@ -9,22 +9,22 @@ import React, {
 } from 'react'
 import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './util'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export type InputAlignType = 'left' | 'center' | 'right'
+export type InputAlign = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
 export type InputType = HTMLInputTypeAttribute
-export type ConfirmTextType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
 
 export interface InputProps extends BasicComponent {
   type: InputType
   name: string
   defaultValue?: string
   value?: string
-  placeholder: string
-  align: InputAlignType
+  placeholder?: string
+  align: InputAlign
   disabled: boolean
   readOnly: boolean
   maxLength: number
@@ -32,7 +32,7 @@ export interface InputProps extends BasicComponent {
   clearIcon: React.ReactNode
   formatTrigger: InputFormatTrigger
   autoFocus: boolean
-  confirmType: ConfirmTextType
+  confirmType: InputConfirmType
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
@@ -45,7 +45,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
   name: '',
-  placeholder: '',
+  placeholder: undefined,
   confirmType: 'done',
   align: 'left',
   required: false,
@@ -67,6 +67,7 @@ export const Input = forwardRef(
       >,
     ref
   ) => {
+    const rtl = useRtl()
     const { locale } = useConfig()
     const {
       type,
@@ -90,14 +91,16 @@ export const Input = forwardRef(
       confirmType,
       defaultValue,
       value: _value,
+      onCompositionStart,
+      onCompositionEnd,
       ...rest
     } = {
       ...defaultProps,
       ...props,
     }
     const [value, setValue] = usePropsValue<string>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value: _value,
+      defaultValue,
       finalValue: '',
       onChange,
     })
@@ -196,10 +199,23 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={{ textAlign: align }}
+          style={{
+            // eslint-disable-next-line no-nested-ternary
+            textAlign: rtl
+              ? // eslint-disable-next-line no-nested-ternary
+                align === 'right'
+                ? // eslint-disable-next-line no-nested-ternary
+                  'left'
+                : align === 'left'
+                  ? 'right'
+                  : 'center'
+              : align,
+          }}
           type={inputType(type)}
           maxLength={maxLength}
-          placeholder={placeholder || locale.placeholder}
+          placeholder={
+            placeholder === undefined ? locale.placeholder : placeholder
+          }
           disabled={disabled}
           readOnly={readOnly}
           value={value}
@@ -216,20 +232,19 @@ export const Input = forwardRef(
           }}
           onCompositionStart={(e) => {
             composingRef.current = true
-            props.onCompositionStart?.(e)
+            onCompositionStart?.(e)
           }}
           onCompositionEnd={(e) => {
             composingRef.current = false
-            props.onCompositionEnd?.(e)
+            onCompositionEnd?.(e)
           }}
         />
         {clearable && !readOnly && active && value.length > 0 ? (
           <span
-            style={{ display: 'flex', alignItems: 'center' }}
+            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             onClick={() => {
               if (!disabled) {
                 setValue('')
-                // inputRef.current?.focus()
                 onClear && onClear('')
               }
             }}
@@ -242,5 +257,4 @@ export const Input = forwardRef(
   }
 )
 
-Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'

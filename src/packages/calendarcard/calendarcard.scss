@@ -23,6 +23,7 @@
       .left {
         margin-left: 8px;
       }
+
       .right {
         margin-right: 8px;
       }
@@ -60,32 +61,34 @@
       line-height: 12px;
     }
 
-    &.active,
-    &.start,
-    &.end {
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
+    &.active {
       background-color: $calendar-active-background-color;
-      color: $color-primary-text !important;
+      color: $color-primary-text;
       border-radius: $calendar-day-active-border-radius;
     }
 
+    &.start,
+    &.end {
+      background-color: $calendar-active-background-color;
+      color: $color-primary-text;
+    }
+
     &.start {
-      border-radius: 0px;
       border-top-left-radius: $calendar-day-active-border-radius;
       border-bottom-left-radius: $calendar-day-active-border-radius;
     }
 
     &.end {
-      border-radius: 0px;
       border-top-right-radius: $calendar-day-active-border-radius;
       border-bottom-right-radius: $calendar-day-active-border-radius;
     }
 
     &.mid {
       background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
-    }
-
-    &.weekend {
       color: $calendar-choose-color;
     }
 
@@ -99,6 +102,45 @@
     &.disabled {
       color: $calendar-disable-color;
       cursor: not-allowed;
+    }
+  }
+}
+
+[dir='rtl'] .nut-calendarcard,
+.nut-rtl .nut-calendarcard {
+  &-header {
+    &-left,
+    &-right {
+      .left {
+        margin-left: 0;
+        margin-right: 8px;
+      }
+
+      .right {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+
+      .nut-icon-ArrowLeft,
+      .nut-icon-ArrowRight,
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &-day {
+    &.start,
+    &.end {
+      border-radius: 0;
+    }
+    &.start {
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
     }
   }
 }

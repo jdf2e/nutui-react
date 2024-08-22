@@ -5,7 +5,7 @@ export interface FormItemRuleWithoutValidator {
   message?: string
 }
 
-export type StoreValue = any
+type StoreValue = any
 export type NamePath = string | number
 
 export interface Callbacks<Values = any> {
@@ -25,9 +25,10 @@ export interface FormInstance<Values = any> {
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
   getInternal: (secret: string) => any
+  validateFields: (nameList?: NamePath[]) => Promise<any[]>
 }
 
-export interface FieldEntity {
+export interface FormFieldEntity {
   onStoreChange: (type?: string) => void
   getNamePath: () => NamePath
   props: {

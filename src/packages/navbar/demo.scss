@@ -3,7 +3,9 @@
     display: inline-flex;
     align-items: center;
   }
-
+  .nut-navbar {
+    z-index: 9 !important;
+  }
   .nut-navbar-title .title {
     display: flex;
     flex-direction: column;
@@ -12,9 +14,6 @@
       font-weight: 400;
       font-size: 12px;
       color: $color-text-help;
-    }
-    &.title-left {
-      text-align: left;
     }
   }
 
@@ -30,5 +29,12 @@
         }
       }
     }
+  }
+}
+
+[dir='rtl'] .nut-navbar,
+.nut-rtl .nut-navbar {
+  .nut-icon-Share {
+    transform: rotateY(180deg);
   }
 }

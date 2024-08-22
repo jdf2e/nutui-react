@@ -1,35 +1,20 @@
 # Switch 开关
 
-## 介绍
-
 用来打开或关闭选项。
 
-## 安装
+## 引入
 
 ```tsx
-import { Switch } from '@nutui/nutui-react-taro';
+import { Switch } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 非受控
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch defaultChecked />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,32 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  const [checkedAsync, setCheckedAsync] = useState(true)
-  
-  const onChangeAsync = (value: boolean, event: Event) => {
-    Taro.showToast({ title: `2秒后异步触发 ${value}` })
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
-  }
-  return ( 
-    <>   
-    <Switch
-      checked={checkedAsync}
-      onChange={(value, event) => onChangeAsync(value, event)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -70,20 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch defaultChecked disabled />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -91,24 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  const onChange = (value: boolean, event: Event) => {
-    Taro.showToast({ title: `触发了onChange事件，开关状态：${value}` })
-  }
-  return ( 
-    <>   
-    <Switch defaultChecked  onChange={(value, event) => onChange(value, event)} />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -116,24 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return ( 
-    <Switch
-      defaultChecked
-      style={{
-        '--nutui-switch-open-background-color': 'blue',
-        '--nutui-switch-close-line-background-color': '#ebebeb',
-      }}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -141,21 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch  defaultChecked activeText=
-"开" inactiveText="关" />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

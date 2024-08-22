@@ -1,78 +1,20 @@
 # TimeSelect 配送时间
 
-## 介绍
-
 用于配送时间选择
 
-## 安装
+## 引入
 
 ```tsx
-import { TimeSelect } from '@nutui/nutui-react';
+import { TimeSelect } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { TimeSelect, Cell } from '@nutui/nutui-react'
-
-const Demo = () => {
-  const [visible, setVisible] = useState(false)
-  const options = [
-    {
-      value: '20230520',
-      text: '5月20日(今天)',
-      children: [
-        { value: '09', text: '09:00-10:00' },
-        { value: '10', text: '10:00-11:00' },
-        { value: '11', text: '11:00-12:00' },
-      ],
-    },
-    {
-      value: '20230521',
-      text: '5月21日(星期三)',
-      children: [
-        { value: '09', text: '09:00-10:00' },
-        { value: '10', text: '10:00-11:00' },
-      ],
-    },
-  ]
-  const handleClick = () => {
-    setVisible(true)
-  }
-  const handleSelect = (value) => {
-    setVisible(false)
-    console.log(`您选择了: ${JSON.stringify(value)}`)
-  }
-  const handleDateChange = (date, value) => {
-    console.log(date, value)
-  }
-  const handleTimeChange = (time, value) => {
-    console.log(time, value)
-  }
-  return (
-    <>
-      <Cell title="请选择配送时间" onClick={handleClick} />
-      <TimeSelect
-        visible={visible}
-        options={options}
-        style={{
-          height: '30%',
-        }}
-        onSelect={handleSelect}
-        onDateChange={handleDateChange}
-        onTimeChange={handleTimeChange}
-      />
-    </>
-  )
-}
-
-export default Demo
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -80,76 +22,7 @@ export default Demo
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { TimeSelect, Cell } from '@nutui/nutui-react'
-
-const Demo = () => {
-  const [visible, setVisible] = useState(false)
-  const optionKey = {
-    valueKey: 'value1',
-    textKey: 'text1',
-    childrenKey: 'children1',
-  }
-  const options = [
-    {
-      value1: '20230520',
-      text1: '5月20日(今天)',
-      children1: [
-        { value1: '09', text1: '09:00-10:00' },
-        { value1: '10', text1: '10:00-11:00' },
-        { value1: '11', text1: '11:00-12:00' },
-      ],
-    },
-    {
-      value1: '20230521',
-      text1: '5月21日(星期三)',
-      children1: [
-        { value1: '09', text1: '09:00-10:00' },
-        { value1: '10', text1: '10:00-11:00' },
-      ],
-    },
-  ]
-  const defaultValue = [
-    {
-      value1: '20230521',
-      children1: [{ value1: '10' }],
-    },
-  ]
-  const handleClick = () => {
-    setVisible(true)
-  }
-  const handleSelect = (value) => {
-    setVisible(false)
-    console.log(`您选择了: ${JSON.stringify(value)}`)
-  }
-  const handleDateChange = (date, value) => {
-    console.log(date, value)
-  }
-  const handleTimeChange = (time, value) => {
-    console.log(time, value)
-  }
-  return (
-    <>
-      <Cell title="请选择配送时间" onClick={handleClick} />
-      <TimeSelect
-        options={options}
-        optionKey={optionKey}
-        defaultValue={defaultValue}
-        visible={visible}
-        style={{
-          height: '30%',
-        }}
-        onSelect={handleSelect}
-        onDateChange={handleDateChange}
-        onTimeChange={handleTimeChange}
-      />
-    </>
-  )
-}
-
-export default Demo
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -157,64 +30,7 @@ export default Demo
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { TimeSelect, Cell } from '@nutui/nutui-react'
-
-const Demo = () => {
-  const [visible, setVisible] = useState(false)
-  const options = [
-    {
-      value: '20230520',
-      text: '5月20日(今天)',
-      children: [
-        { value: '09', text: '09:00-10:00' },
-        { value: '10', text: '10:00-11:00' },
-        { value: '11', text: '11:00-12:00' },
-      ],
-    },
-    {
-      value: '20230521',
-      text: '5月21日(星期三)',
-      children: [
-        { value: '09', text: '09:00-10:00' },
-        { value: '10', text: '10:00-11:00' },
-      ],
-    },
-  ]
-  const handleClick = () => {
-    setVisible(true)
-  }
-  const handleSelect = (value) => {
-    setVisible(false)
-    console.log(`您选择了: ${JSON.stringify(value)}`)
-  }
-  const handleDateChange = (date, value) => {
-    console.log(date, value)
-  }
-  const handleTimeChange = (time, value) => {
-    console.log(time, value)
-  }
-  return (
-    <>
-      <Cell title="请选择配送时间" onClick={handleClick} />
-      <TimeSelect
-        visible={visible}
-        options={options}
-        style={{
-          height: '30%',
-        }}
-        multiple
-        onSelect={handleSelect}
-        onDateChange={handleDateChange}
-        onTimeChange={handleTimeChange}
-      />
-    </>
-  )
-}
-
-export default Demo
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -222,64 +38,7 @@ export default Demo
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { TimeSelect, Cell } from '@nutui/nutui-react'
-
-const Demo = () => {
-  const [visible, setVisible] = useState(false)
-  const options = [
-    {
-      value: 'zhejiang',
-      text: '浙江',
-      children: [
-        { value: 'hangzhou', text: '杭州' },
-        { value: 'ningbo', text: '宁波' },
-      ],
-    },
-    {
-      value: 'jiangsu',
-      text: '江苏',
-      children: [
-        { value: 'nanjing', text: '南京' },
-        { value: 'suzhou', text: '苏州' },
-        { value: 'yangzhou', text: '扬州' },
-      ],
-    },
-  ]
-  const handleClick = () => {
-    setVisible(true)
-  }
-  const handleSelect = (value) => {
-    setVisible(false)
-    console.log(`您选择了: ${JSON.stringify(value)}`)
-  }
-  const handleDateChange = (date, value) => {
-    console.log(date, value)
-  }
-  const handleTimeChange = (time, value) => {
-    console.log(time, value)
-  }
-  return (
-    <>
-      <Cell title="请选择所在城市" onClick={handleClick} />
-      <TimeSelect
-        visible={visible}
-        options={options}
-        style={{
-          height: '30%',
-        }}
-        title="请选择所在城市"
-        onSelect={handleSelect}
-        onDateChange={handleDateChange}
-        onTimeChange={handleTimeChange}
-      />
-    </>
-  )
-}
-
-export default Demo
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

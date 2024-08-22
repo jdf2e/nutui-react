@@ -1,60 +1,20 @@
 # Animate 动画/动效
 
-## 介绍
-
 给子元素添加动画效果
 
-## 安装
+## 引入
 
 ```tsx
-import { Animate } from '@nutui/nutui-react';
+import { Animate } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 点击触发
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Animate, Button } from '@nutui/nutui-react'
-
-const AnimateDemo = () => {
-  return (
-    <>
-      <div className="demo">
-        <h2>点击触发</h2>
-        <div className="ani-demo-div">
-          <Animate type="slide-right" action="click">
-            <Button type="primary">由右向左划入</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="slide-left" action="click">
-            <Button type="primary">由左向右划入</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="slide-top" action="click">
-            <Button type="primary">由上至下划入</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="slide-bottom" action="click">
-            <Button type="primary">由下至上划入</Button>
-          </Animate>
-        </div>
-      </div>
-    </>
-  )
-}
-
-export default AnimateDemo
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -62,64 +22,7 @@ export default AnimateDemo
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Animate, Button } from '@nutui/nutui-react'
-
-const AnimateDemo = () => {
-  return (
-    <>
-      <div className="demo">
-        <h2>循环动画</h2>
-        <div className="ani-demo-div">
-          <Animate type="shake" loop>
-            <Button type="primary">shake-抖动</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="ripple" loop>
-            <Button type="primary">ripple-心跳</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="breath" loop>
-            <Button type="primary">breath-呼吸灯</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="twinkle" loop>
-            <Button type="primary">twinkle-水波</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="flicker" loop>
-            <Button type="primary">flicker-擦亮</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="jump" loop>
-            <Button type="primary">jump-跳跃</Button>
-          </Animate>
-        </div>
-
-        <div className="ani-demo-div">
-          <Animate type="float" loop>
-            <Button type="primary">float-漂浮</Button>
-          </Animate>
-        </div>
-      </div>
-    </>
-  )
-}
-
-export default AnimateDemo
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 

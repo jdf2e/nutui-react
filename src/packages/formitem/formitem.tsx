@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell'
@@ -15,7 +15,11 @@ type TextAlign =
   | 'justify'
   | 'match-parent'
 
-export interface FormItemProps extends BasicComponent, BaseFormField {
+type ShouldUpdate = (prevValue: any, curValue: any) => boolean
+
+export interface FormItemProps
+  extends Omit<BasicComponent, 'children'>,
+    BaseFormField {
   required: boolean
   initialValue: any
   trigger: string
@@ -27,6 +31,10 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   ) => void
   errorMessageAlign: TextAlign
   validateTrigger: string | string[]
+  shouldUpdate: boolean
+  noStyle: boolean
+  children: ReactNode | ((obj: any) => React.ReactNode)
+  align?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const defaultProps = {
@@ -37,6 +45,8 @@ const defaultProps = {
   rules: [{ required: false, message: '' }],
   errorMessageAlign: 'left',
   validateTrigger: 'onChange',
+  shouldUpdate: false,
+  noStyle: false,
 } as FormItemProps
 
 export class FormItem extends React.Component<
@@ -53,6 +63,8 @@ export class FormItem extends React.Component<
 
   private componentRef: React.RefObject<any>
 
+  private eventOff: any
+
   constructor(props: FormItemProps) {
     super(props)
     this.componentRef = React.createRef()
@@ -62,14 +74,31 @@ export class FormItem extends React.Component<
   }
 
   componentDidMount() {
+    // Form设置initialValues时的处理
+    const { store = {}, setInitialValues } = this.context.getInternal(SECRET)
+    if (
+      this.props.initialValue &&
+      this.props.name &&
+      !Object.keys(store).includes(this.props.name)
+    ) {
+      setInitialValues(
+        { ...store, [this.props.name]: this.props.initialValue },
+        true
+      )
+    }
     // 注册组件实例到FormStore
-    const { registerField } = this.context.getInternal(SECRET)
+    const { registerField, registerUpdate } = this.context.getInternal(SECRET)
     this.cancelRegister = registerField(this)
+    // 这里需要增加事件监听，因为此实现属于依赖触发
+    this.eventOff = registerUpdate(this, this.props.shouldUpdate)
   }
 
   componentWillUnmount() {
     if (this.cancelRegister) {
       this.cancelRegister()
+    }
+    if (this.eventOff) {
+      this.eventOff()
     }
   }
 
@@ -99,7 +128,7 @@ export class FormItem extends React.Component<
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
-        setFieldsValue({ [name]: next })
+        setFieldsValue({ [name]: next }, false)
       },
     }
     const { validateTrigger } = this.props
@@ -107,8 +136,8 @@ export class FormItem extends React.Component<
     if (validateTrigger) {
       validateTriggers =
         typeof validateTrigger === 'string'
-          ? [...validateTriggers, validateTrigger]
-          : [...validateTriggers, ...validateTrigger]
+          ? [validateTrigger]
+          : [...validateTrigger]
       validateTriggers.forEach((trigger) => {
         const originTrigger = controlled[trigger]
         controlled[trigger] = (...args: any) => {
@@ -166,6 +195,7 @@ export class FormItem extends React.Component<
       className,
       style,
       errorMessageAlign,
+      align,
     } = {
       ...defaultProps,
       ...this.props,
@@ -189,6 +219,7 @@ export class FormItem extends React.Component<
       <Cell
         className={`nut-form-item ${className}`}
         style={style}
+        align={align}
         onClick={(e) =>
           this.props.onClick && this.props.onClick(e, this.componentRef)
         }
@@ -216,13 +247,20 @@ export class FormItem extends React.Component<
   render() {
     const { children } = this.props
     const child = Array.isArray(children) ? children[0] : children
-    const returnChildNode = React.cloneElement(
-      child,
-      this.getControlled(child as React.ReactElement)
-    )
+    let returnChildNode
+    if (!this.props.shouldUpdate) {
+      returnChildNode = React.cloneElement(
+        child,
+        this.getControlled(child as React.ReactElement)
+      )
+    } else {
+      returnChildNode = child(this.context)
+    }
     return (
       <React.Fragment key={this.state.resetCount}>
-        {this.renderLayout(returnChildNode)}
+        {this.props.noStyle
+          ? returnChildNode
+          : this.renderLayout(returnChildNode)}
       </React.Fragment>
     )
   }

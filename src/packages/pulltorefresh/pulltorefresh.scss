@@ -22,4 +22,27 @@
       }
     }
   }
+
+  &-primary {
+    background: $pulltorefresh-color-primary;
+    .nut-pulltorefresh-content {
+      color: $color-text-dark;
+    }
+
+    .nut-pulltorefresh-head {
+      &-content {
+        color: $color-text-dark;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-pulltorefresh,
+.nut-rtl .nut-pulltorefresh {
+  &-head {
+    &-content {
+      left: auto;
+      right: 0;
+    }
+  }
 }

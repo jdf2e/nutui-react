@@ -1,199 +1,36 @@
 # Navbar 頭部導航
 
-## 介紹
-
 提供導航功能。
 
-## 安裝
+## 引入
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react';
+import { NavBar } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
-        }
-        left={<Close width={12} />}
-        right={
-        <span onClick={(e) =>  Toast.show('icon')}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("標題")}>
-        訂單詳情
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
+### 標題位置
+
 :::demo
 
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        right={
-        <span onClick={(e) =>  Toast.show('清空')}>
-            清空
-        </span>
-        }
-        back={<ArrowLeft color="#979797" />}
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("標題")}>
-        瀏覽記錄
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { Cart, ArrowLeft, More} from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={<ArrowLeft color="#979797" />}
-        right={
-        <>
-            <span style={{ marginRight: '5px' }} onClick={(e) =>  Toast.show('編輯')}>
-            編輯
-            </span>
-            <More onClick={(e) =>  Toast.show('icon')} />
-        </>
-        }
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("標題")}>
-        購物車
-        </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) =>  Toast.show('icon')}>
-            <Cart />
-        </i>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
+### 多tab切換導航
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
-import { ArrowLeft,More } from '@nutui/icons-react'
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0')
-  return (   
-      <NavBar
-         back={<ArrowLeft color="#979797" />}
-          right={
-            <>
-              <span style={{ marginRight: '5px' }} onClick={(e) =>  Toast.show("編輯")}>
-                編輯
-              </span>
-              <More onClick={(e) =>  Toast.show('icon')} />
-            </>
-          }
-          onBackClick={(e) =>  Toast.show("返回")}
-        >
-          <div style={{ width: '100%' }}>
-            <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}
-              style={{
-                '--nutui-tabs-titles-padding': 0,
-                '--nutui-tabs-titles-gap': 0,
-              }}
-            >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
-              <TabPane title="Tab 4"> Tab 4 </TabPane>
-            </Tabs>
-          </div>
-      </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        titleAlign="left"
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
-        }
-        left={<Close width={12} />}
-        right={
-        <span onClick={(e) =>  Toast.show('icon')}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("標題")}>
-        訂單詳情
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

@@ -108,6 +108,8 @@ const InternalCascader: ForwardRefRenderFunction<
     closeIconPosition,
     closeIcon,
     lazy,
+    title,
+    left,
     onLoad,
     onClose,
     onChange,
@@ -124,7 +126,7 @@ const InternalCascader: ForwardRefRenderFunction<
     finalValue: defaultValue,
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
-    value: props.visible,
+    value: visible,
     defaultValue: undefined,
     finalValue: false,
   })
@@ -209,7 +211,7 @@ const InternalCascader: ForwardRefRenderFunction<
 
     if (
       currentValue === undefined ||
-      currentValue !== defaultValue ||
+      ![defaultValue, value].includes(currentValue) ||
       !state.tree.nodes.length
     ) {
       return
@@ -250,7 +252,7 @@ const InternalCascader: ForwardRefRenderFunction<
       }
     }
 
-    if (needToSync.length && currentValue === defaultValue) {
+    if (needToSync.length && [defaultValue, value].includes(currentValue)) {
       const pathNodes = state.tree.getPathNodesByValue(needToSync)
       pathNodes.forEach((node, index) => {
         state.tabsCursor = index
@@ -326,7 +328,7 @@ const InternalCascader: ForwardRefRenderFunction<
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange(optionParams, pathNodes)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
         setInnerValue(optionParams)
       }
       setOptionsData(state.panes)
@@ -351,7 +353,7 @@ const InternalCascader: ForwardRefRenderFunction<
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
         const optionParams = pathNodes.map((item: any) => item?.value)
-        onPathChange(optionParams, pathNodes)
+        onPathChange?.(optionParams, pathNodes)
       }
       return
     }
@@ -481,8 +483,8 @@ const InternalCascader: ForwardRefRenderFunction<
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
-          title={popup && (props.title as ReactNode)}
-          left={props.left}
+          title={popup && (title as ReactNode)}
+          left={left}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onOverlayClick={closePopup}
           onCloseIconClick={closePopup}
@@ -498,5 +500,4 @@ const InternalCascader: ForwardRefRenderFunction<
 
 export const Cascader = React.forwardRef(InternalCascader)
 
-Cascader.defaultProps = defaultProps
 Cascader.displayName = 'NutCascader'

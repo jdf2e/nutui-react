@@ -1,51 +1,50 @@
 # Uploader 上傳
 
-## 介紹
-
 用於將本地的圖片或文件上傳至服務器。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Uploader } from '@nutui/nutui-react';
+import { Uploader } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong } from '@nutui/icons-react';
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onStart = () => {
-    console.log('start 觸發')
-  }
-  return (
-    <>
-      <h2>基礎用法</h2>
-      <Uploader
-        url={uploadUrl}
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader
-        url={uploadUrl}
-        uploadLabel="商品主圖"
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
-    </>
+:::
+
+> 在使用Uploader組件上傳文件時，可能會遇到響應文件信息中文亂碼的問題。這通常發生在客戶端與服務器端在處理文件編碼時不一致的情況下。為了避免這種問題，建議確保服務器端讀取文件的編碼格式與客戶端保持一致。
+
+```javascript
+import React from 'react'
+import { Uploader } from '@nutui/nutui-react'
+// Server Demo
+app.post('/upload', upload.single('file'), (req, res) => {
+  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8'
+  const fileContent = iconv.decode(
+    Buffer.from(JSON.stringify(req.file), 'binary'),
+    fileEncoding
   )
-}
-export default App;
+  res.json({
+    success: true,
+    message: 'File uploaded successfully',
+    data: JSON.parse(fileContent),
+  })
+})
+// Client Demo
+;<Uploader url={uploadUrl} headers={{ 'x-file-encoding': 'UTF-8' }} />
 ```
+
+### 基礎用法
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -53,170 +52,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong, Loading, Star } from '@nutui/icons-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList = [
-    {
-      name: '文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上傳成功',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上傳成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上傳失敗',
-      type: 'image',
-      uid: '124',
-      failIcon: <Star style={{ color: 'white' }}/>,
-    },
-    {
-      name: '文件5.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: '文件6.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: '文件7.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
-    console.log(translated.ca3903f3, file, fileList)
-  }
-  return (
-    <>
-      <h2>上傳狀態</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        onDelete={onDelete}
-        uploadIcon={<Dongdong />}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-### 基礎用法-上傳列錶展示
+### 基礎用法-上傳列表展示
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Loading } from '@nutui/icons-react'
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-
-  const defaultFileList = [
-    {
-      name: '文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上傳成功',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上傳成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上傳失敗',
-      type: 'image',
-      uid: '124',
-      errorIcon: 'star',
-    },
-    {
-      name: '文件5.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: '文件6.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: '文件7.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上傳中',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  return (
-    <>
-      <h2>基礎用法-上傳列錶展示</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        maxCount="10"
-        multiple
-        previewType="list"
-      >
-        <Button type="success" size="small">
-          {translated.bb5caa9c}
-        </Button>
-      </Uploader>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -224,35 +68,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button, Progress } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const [progressPercent, setProgressPercent] = useState(0)
-  const onProgress = ({ event, options, percentage }: any) => {
-    setProgressPercent(percentage)
-  }
-  return (
-    <>
-      <h2>自定義上傳使用默認進度條</h2>
-      <Uploader url={uploadUrl} onProgress={onProgress}>
-        <Button type="success" size="small">
-          上傳文件
-        </Button>
-      </Uploader>
-      <br />
-      <Progress
-        percentage={progressPercent}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -260,21 +76,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>直接調起攝像頭（移動端生效）</h2>
-      <Uploader capture url={uploadUrl} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -282,111 +84,31 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>限制上傳數量5個</h2>
-      <Uploader url={uploadUrl} multiple maxCount="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
-### 限制上傳大小（每個文件最大不超過 50kb）
+### 限制上傳大小（每個文件最大不超過50kb）
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onOversize = (files: File[]) => {
-    console.log('oversize 觸發 文件大小不能超過 50kb', files)
-  }
-  return (
-    <>
-      <h2>限制上傳大小（每個文件最大不超過 50kb）</h2>
-      <Uploader url={uploadUrl} multiple maxFileSize={1024 * 50} oversize={onOversize} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-### 圖片壓縮（在beforeupload鉤子中處理）
+### 圖片壓縮（在beforeupload鈎子中處理）
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeUpload = async (files: File[]) => {
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    const base64 = await fileToDataURL(files[0])
-    const img = await dataURLToImage(base64)
-    canvas.width = img.width
-    canvas.height = img.height
-    context.clearRect(0, 0, img.width, img.height)
-    context.drawImage(img, 0, 0, img.width, img.height)
-    const blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob
-    const f = await new File([blob], files[0].name, { type: files[0].type })
-    return [f]
-  }
-  return (
-    <>
-      <h2>圖片壓縮（在beforeupload鉤子中處理）</h2>
-      <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
-### 自定義數據 FormData headers
+### 自定義數據 FormData、headers
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const formData = {
-    custom: 'test',
-  }
-  return (
-    <>
-      <h2>自定義 FormData headers</h2>
-      <Uploader
-        url={uploadUrl}
-        data={formData}
-        headers={formData}
-        withCredentials
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -394,68 +116,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-    if (options.method.toLowerCase() === 'put') {
-      xhr.send(options.sourceFile);
-    } else {
-      xhr.send(options.formData);
-    }
-  };
-  return (
-    <>
-      <h2>自定義 xhr 上傳方式(before-xhr-upload)</h2>
-      <Uploader
-        url={uploadUrl}
-        method="put"
-        beforeXhrUpload={beforeXhrUpload}
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
-### 手動上傳
+### 選中文件後，通過按鈕手動執行上傳
 
 :::demo
 
-```tsx
-import React, { useState, useRef } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const uploadRef = useRef(null)
-  const submitUpload = () => {
-    uploadRef.current.submit()
-  }
-  const clearUpload = () => {
-    uploadRef.current.clear()
-  };
-  return (
-    <>
-      <h2>手動上傳</h2>
-      <Uploader url={uploadUrl} maxCount="5" autoUpload={false} ref={uploadRef} />
-      <br />
-      <Button type="success" size="small" onClick={submitUpload}>
-        執行上傳
-      </Button>
-      <Button type="danger" size="small" onClick={clearUpload}>
-        手動清空上傳
-      </Button>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -463,20 +132,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <h2>禁用狀態</h2>
-      <Uploader disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
@@ -497,8 +153,8 @@ export default App;
 | method | 上傳請求的 http method | `string` | `post` |
 | previewType | 上傳列錶的內建樣式，支持兩種基本樣式 picture、list | `string` | `picture` |
 | capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接調起攝像頭 | `string` | `false` |
-| maxFileSize | 可以設定最大上傳文件的大小（字節） | `number` \| `string`   | `Number.MAX_VALUE` |
-| maxCount | 文件上傳數量限制 | `number` \| `string`  | `1` |
+| maxFileSize | 可以設定最大上傳文件的大小（字節） | `number` \| `string` | `Number.MAX_VALUE` |
+| maxCount | 文件上傳數量限制 | `number` \| `string` | `1` |
 | fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`內容，設為`true`支持重復選擇上傳同一個文件 | `boolean` | `true` |
 | accept | 允許上傳的文件類型，[詳細說明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
@@ -510,7 +166,7 @@ export default App;
 | withCredentials | 支持發送 cookie 憑證信息 | `Boolean` | `false` |
 | multiple | 是否支持文件多選 | `boolean` | `false` |
 | disabled | 是否禁用文件上傳 | `boolean` | `false` |
-| timeout | 超時時間，單位為毫秒 | `number` \| `string`  | `1000 * 30` |
+| timeout | 超時時間，單位為毫秒 | `number` \| `string` | `1000 * 30` |
 | beforeUpload | 上傳前的函數需要返回一個`Promise`對象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 執行 XHR 上傳時，自定義方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |

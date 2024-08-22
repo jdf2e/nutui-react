@@ -1,56 +1,20 @@
 # VirtualList 虚拟列表
 
-## 介绍
-
 在正常的列表展示以及上拉加载中，我们通常使用 NutUI-React 提供的 滚动加载 组件，那如果我们加载的数据量非常大时，则可能会产生严重的性能问题，导致视图无法响应操作一段时间，这时候我们就用到了虚拟列表组件 VirtualList，它可以保证只渲染当前可视区域，其他部分在用户滚动到可视区域内之后再渲染。保证了页面流程度，提升性能。
 
-## 安装
+## 引入
 
 ```tsx
-import { VirtualList } from '@nutui/nutui-react';
+import { VirtualList } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法-垂直等高
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemRender = (data, dataIndex) => {
-    return <p>自定义-{data}-{dataIndex}</p>
-  }
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-      <VirtualList
-        itemHeight={66}
-        list={list}
-        itemRender={itemRender}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -58,50 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  const onScroll = () => {
-    if (pageNo > 100) return
-    setPageNo(pageNo + 1)
-  }
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemVariable = (data, dataIndex) => {
-    return (
-      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
-    )
-  }
-  /** itemSize为首屏最大元素大小 */
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-      <VirtualList
-        list={list}
-        itemRender={itemVariable}
-        itemHeight={128}
-        itemEqual={false}
-        onScroll={onScroll}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -109,42 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemRender = (data, dataIndex) => {
-    return <p>自定义-{data}-{dataIndex}</p>
-  }
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar'>
-      <VirtualList
-        list={list}
-        itemRender={itemRender}
-        itemHeight={124}
-        direction="horizontal"
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -152,51 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  const onScroll = () => {
-    if (pageNo > 100) return
-    setPageNo(pageNo + 1)
-  }
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemVariable = (data, dataIndex) => {
-    return (
-      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
-    )
-  }
-  /** itemSize为首屏最大元素大小 */
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar'>
-      <VirtualList
-        list={list}
-        itemHeight={300}
-        itemRender={itemVariable}
-        direction="horizontal"
-        itemEqual={false}
-        onScroll={onScroll}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

@@ -17,6 +17,7 @@ export type AvatarCropperToolbarPosition = 'top' | 'bottom'
 export type AvatarCropperSizeType = 'original' | 'compressed'
 export type AvatarCropperSourceType = 'album' | 'camera'
 export type AvatarCropperShape = 'square' | 'round'
+
 export interface AvatarCropperProps extends BasicComponent {
   maxZoom: number
   space: number
@@ -74,6 +75,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     ...defaultProps,
     ...props,
   }
+
   interface DrawImage {
     src: string | HTMLImageElement
     x: number
@@ -81,6 +83,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     width: number
     height: number
   }
+
   interface CanvasAll {
     canvasId: string
     cropperCanvas: any | null
@@ -269,6 +272,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     if (canvasDom?.tagName !== 'CANVAS') {
       canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement
     }
+    if (!canvas) return
     canvas.width = state.displayWidth
     canvas.height = state.displayHeight
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
@@ -400,6 +404,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     tempFilePath?: string
     path: string
   }
+
   // 选择图片后回调
   const imageChange = async (file: TFileType) => {
     Taro.getImageInfo({
@@ -557,7 +562,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   }
 
   // 关闭
-  const cancel = (isEmit: boolean = true) => {
+  const cancel = (isEmit = true) => {
     setVisible(false)
     resetScale()
     isEmit && onCancel && onCancel()
@@ -715,5 +720,4 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     </>
   )
 }
-AvatarCropper.defaultProps = defaultProps
 AvatarCropper.displayName = 'NutAvatarCropper'

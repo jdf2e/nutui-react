@@ -9,7 +9,7 @@ export interface FormItemRuleWithoutValidator {
 export interface FormItemRule extends FormItemRuleWithoutValidator {
   validator?: (
     ruleCfg: FormItemRuleWithoutValidator,
-    value: string
+    value: any
   ) => boolean | string | Promise<boolean | string>
 }
 
@@ -32,8 +32,8 @@ export interface BaseFormField {
   disabled: boolean
 }
 
-export type StoreValue = any
-export type NamePath = string | number
+type StoreValue = any
+type NamePath = string | number
 
 export interface Callbacks<Values = any> {
   onValuesChange?: (values: Values) => void
@@ -42,7 +42,7 @@ export interface Callbacks<Values = any> {
 }
 
 export interface FormInstance<Values = any> {
-  registerField: (entity: FieldEntity) => () => void
+  registerField: (entity: FormFieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
   setFieldsValue: (value: any) => void
   resetFields: (fields?: NamePath[]) => void
@@ -50,7 +50,7 @@ export interface FormInstance<Values = any> {
   setCallback: (callbacks: Callbacks) => void
 }
 
-export interface FieldEntity {
+export interface FormFieldEntity {
   onStoreChange: () => void
   getNamePath: () => NamePath
   props: {

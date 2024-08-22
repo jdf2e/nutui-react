@@ -10,7 +10,13 @@ import {
   getPrevMonthDays,
 } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { CalendarCardDay, CalendarCardMonth, CalendarCardValue } from './types'
+import type {
+  CalendarCardDay,
+  CalendarCardMonth,
+  CalendarCardRef,
+  CalendarCardValue,
+} from './types'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface CalendarCardProps extends BasicComponent {
   // 日视图-选择一个日期 | 日视图-选择多个日期 | 日视图-选择范围 | 周视图-选择某一周
@@ -32,11 +38,6 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
   firstDayOfWeek: 0,
-}
-
-type CalendarCardRef = {
-  jump: (step: number) => void
-  jumpTo: (year: number, month: number) => void
 }
 
 const prefixCls = 'nut-calendarcard'
@@ -102,19 +103,13 @@ export const CalendarCard = React.forwardRef<
     return range ? [convertDayToDate(range)] : []
   }
 
-  const [innerValue, setInnerValue] = useState<CalendarCardDay[]>(() => {
-    const val = (
-      value || defaultValue ? valueToRange(value || defaultValue) : []
-    ) as CalendarCardDay[]
-    return val
+  const [innerValue, setInnerValue] = usePropsValue<CalendarCardDay[]>({
+    value: value ? (valueToRange(value) as CalendarCardDay[]) : undefined,
+    defaultValue: defaultValue
+      ? (valueToRange(defaultValue) as CalendarCardDay[])
+      : undefined,
+    finalValue: [],
   })
-
-  useEffect(() => {
-    const val = (
-      value || defaultValue ? valueToRange(value || defaultValue) : []
-    ) as CalendarCardDay[]
-    setInnerValue(val)
-  }, [value])
 
   const change = (v: CalendarCardDay[]) => {
     setInnerValue(v)
@@ -325,10 +320,10 @@ export const CalendarCard = React.forwardRef<
   })
 
   const handleDayClick = (day: CalendarCardDay) => {
+    onDayClick?.(day)
     if (day.type === 'prev' || day.type === 'next' || isDisable(day)) {
       return
     }
-    onDayClick?.(day)
     switch (type) {
       case 'single': {
         if (innerValue[0] && isSameDay(innerValue[0], day)) {
@@ -353,7 +348,7 @@ export const CalendarCard = React.forwardRef<
           change([day])
         } else if (len === 1) {
           const t = compareDay(innerValue[0], day)
-          if (t === 0 || t === null || t === undefined) {
+          if (t === null || t === undefined) {
             change([])
           } else if (t < 0) {
             change([innerValue[0], day])
@@ -473,5 +468,4 @@ export const CalendarCard = React.forwardRef<
   ) : null
 })
 
-CalendarCard.defaultProps = defaultProps as CalendarCardProps
 CalendarCard.displayName = 'NutCalendarCard'

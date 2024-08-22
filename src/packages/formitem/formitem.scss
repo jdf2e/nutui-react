@@ -75,3 +75,36 @@
     }
   }
 }
+[dir='rtl'] .nut-form-item,
+.nut-rtl .nut-form-item {
+  &-label {
+    text-align: right;
+    margin-right: 0;
+    margin-left: $form-item-label-margin-right;
+
+    .required {
+      &::before {
+        margin-right: 0;
+        margin-left: $form-item-required-margin-right;
+      }
+    }
+  }
+  &-body {
+    &-slots {
+      text-align: right;
+      .nut-icon-ArrowRight,
+      .nut-icon-ArrowLeft {
+        transform: rotateY(180deg);
+      }
+      .nut-input-text {
+        text-align: right;
+      }
+      .nut-textarea-textarea {
+        text-align: right;
+      }
+    }
+  }
+  &-tips {
+    text-align: right;
+  }
+}

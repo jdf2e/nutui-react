@@ -45,7 +45,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const classPrefix = 'nut-skeleton'
   const classes = classNames(classPrefix, className)
   const avatarClass = classNames({
-    avatar: true,
+    [`nut-avatar`]: true,
     [`avatar-${avatarShape}`]: avatarShape,
   })
 
@@ -69,7 +69,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   return (
     <>
       {visible ? (
-        <div>{children}</div>
+        <>{children}</>
       ) : (
         <div className={classes} {...rest}>
           {animated && <div className={`${classPrefix}-animation`} />}
@@ -100,5 +100,4 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   )
 }
 
-Skeleton.defaultProps = defaultProps
 Skeleton.displayName = 'NutSkeleton'

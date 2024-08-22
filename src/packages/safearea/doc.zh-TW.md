@@ -1,53 +1,22 @@
 # SafeArea 安全区
 
-## 介紹
-
 在全面屏下提供自适应的边距调整。当网页被全屏展示时，可借助安全区实现自动适配。
 
-## 安装
+## 引入
 
 ```tsx
-import { SafeArea } from '@nutui/nutui-react';
+import { SafeArea } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { SafeArea } from '@nutui/nutui-react'
-
-function generateRandomTextArray(count) {
-  const characters = 'abcdefghijklmnopqrstuvwxyz'
-  const textArray = []
-  for (let j = 0; j < count; j++) {
-    const randomLength = Math.floor(Math.random() * 5) + 4
-    let randomText = ''
-    for (let i = 0; i < randomLength; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length)
-      randomText += characters.charAt(randomIndex)
-    }
-    textArray.push(randomText)
-  }
-  return textArray
-}
-const App = () => {
-  return (
-    <>
-      <div>{generateRandomTextArray(900).join(' ')}</div>
-      <SafeArea position="bottom" />
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
-
 
 ## SafeArea
 

@@ -1,35 +1,22 @@
 # Loading 加载中
 
-### 介绍
+#
 
 加载图标，用于显示正在加载中的状态
 
-### 安装
+### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react-taro';
+import { Loading } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading type='circular'/>
-      <Loading type='spinner'/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,24 +24,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
-        <Loading type='circular' />
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
-        <Loading type="spinner" />
-      </ConfigProvider>      
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,24 +32,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
-        <Loading type="circular" />
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
-        <Loading type="spinner" />
-      </ConfigProvider>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -87,19 +40,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading>加载中</Loading>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -107,19 +48,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading direction="vertical">加载中</Loading>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -127,24 +56,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
-        <Loading>加载中</Loading>
-      </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
-        <Loading>加载中</Loading>
-      </ConfigProvider>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -152,20 +64,7 @@ export default App;
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react-taro';
-import { Star } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Cell>
-      <Loading direction="vertical" icon={<Star size={30} color='red'/>}/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -173,43 +72,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React, { useState } from 'react'
-import { Loading, Cell, Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-
-  const [visible, setVisible] = useState(false)
-
-  const WrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-
-  function showOverlay() {
-    setVisible(true);
-    setTimeout(()=>{
-      setVisible(false);
-    }, 2000)
-  }  
-
-  return (
-    <>
-      <Cell>
-        <Button type="success" onClick={() => showOverlay()}>遮罩层loading(两秒后关闭)</Button>
-      </Cell>
-      <Overlay visible={visible}>
-        <div className="wrapper" style={WrapperStyle}>
-          <Loading direction="vertical">加载中</Loading>
-        </div>
-      </Overlay>   
-    </> 
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -221,7 +84,7 @@ export default App;
 | --- | --- | --- | --- |
 | type | loading图标的样式 | `circular \| spinner` | `circular` |
 | direction | loading图标和文字的排列方式 | `horizontal \| vertical` | `horizontal` |
-| icon | 自定义loading的图标 | `JSX.Element` | `-` |
+| icon | 自定义loading的图标 | `tsx.Element` | `-` |
 
 ## 主题定制
 

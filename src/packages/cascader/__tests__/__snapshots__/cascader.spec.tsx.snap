@@ -1,6 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Cascader change tab 1`] = `
+exports[`Cascader > options 1`] = `<div />`;
+
+exports[`Cascader > options with format 1`] = `<div />`;
+
+exports[`Cascader > options with valueKey/textKey/childrenKey 1`] = `<div />`;
+
+exports[`Cascader > value 1`] = `<div />`;
+
+exports[`Cascader > visible true 1`] = `
 <div>
   <div
     class="nut-overlay"
@@ -15,181 +23,6 @@ exports[`Cascader change tab 1`] = `
     >
       <div
         class="nut-tabs nut-tabs-horizontal"
-        value="c1"
-      >
-        <div
-          class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
-        >
-          <div
-            class="nut-tabs-titles-item nut-tabs-titles-item-active"
-          >
-            <span
-              class="nut-tabs-titles-item-text"
-            >
-              请选择
-            </span>
-            <span
-              class="nut-tabs-titles-item-line"
-            />
-          </div>
-        </div>
-        <div
-          class="nut-tabs-content-wrap"
-        >
-          <div
-            class="nut-tabs-content"
-            style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
-          >
-            <div
-              class="nut-tabpane active"
-            >
-              <div
-                class="nut-cascader-pane"
-              >
-                <div
-                  class="nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    浙江
-                  </div>
-                </div>
-                <div
-                  class="disabled nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    湖南
-                  </div>
-                </div>
-                <div
-                  class="nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    福建
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Cascader change tab 2`] = `
-<div>
-  <div
-    class="nut-overlay"
-    style="--nutui-overlay-zIndex: 1000;"
-  />
-  <div
-    class="nut-popup nut-popup-round nut-popup-bottom"
-    style="z-index: 1000;"
-  >
-    <div
-      class="nut-cascader "
-    >
-      <div
-        class="nut-tabs nut-tabs-horizontal"
-        value="c1"
-      >
-        <div
-          class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
-        >
-          <div
-            class="nut-tabs-titles-item nut-tabs-titles-item-active"
-          >
-            <span
-              class="nut-tabs-titles-item-text"
-            >
-              请选择
-            </span>
-            <span
-              class="nut-tabs-titles-item-line"
-            />
-          </div>
-        </div>
-        <div
-          class="nut-tabs-content-wrap"
-        >
-          <div
-            class="nut-tabs-content"
-            style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
-          >
-            <div
-              class="nut-tabpane active"
-            >
-              <div
-                class="nut-cascader-pane"
-              >
-                <div
-                  class="nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    浙江
-                  </div>
-                </div>
-                <div
-                  class="disabled nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    湖南
-                  </div>
-                </div>
-                <div
-                  class="nut-cascader-item"
-                >
-                  <div
-                    class="nut-cascader-item-title"
-                  >
-                    福建
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Cascader options 1`] = `<div />`;
-
-exports[`Cascader options with format 1`] = `<div />`;
-
-exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `<div />`;
-
-exports[`Cascader value 1`] = `<div />`;
-
-exports[`Cascader visible true 1`] = `
-<div>
-  <div
-    class="nut-overlay"
-    style="--nutui-overlay-zIndex: 1000;"
-  />
-  <div
-    class="nut-popup nut-popup-round nut-popup-bottom"
-    style="z-index: 1000;"
-  >
-    <div
-      class="nut-cascader "
-    >
-      <div
-        class="nut-tabs nut-tabs-horizontal"
-        value="c3"
       >
         <div
           class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
@@ -363,7 +196,7 @@ exports[`Cascader visible true 1`] = `
 </div>
 `;
 
-exports[`Cascader visible true 2`] = `
+exports[`Cascader > visible true 2`] = `
 <div
   class="active nut-cascader-item"
 >

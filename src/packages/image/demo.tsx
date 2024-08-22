@@ -1,10 +1,14 @@
 import React from 'react'
-import { Failure, Loading } from '@nutui/icons-react'
-import { Image } from './image'
 import { useTranslate } from '../../sites/assets/locale'
-import Row from '@/packages/row'
-import Col from '@/packages/col'
 import Cell from '@/packages/cell'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -16,10 +20,7 @@ const ImageDemo = () => {
       loading: '加载中提示',
       error: '加载失败',
       lazyload: '图片懒加载',
-      default: '默认',
-      custom: '自定义',
       imageText: 'Image + text 模式',
-      text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -29,223 +30,44 @@ const ImageDemo = () => {
       loading: 'Loading',
       error: 'Error',
       lazyload: 'Lazyload',
-      default: 'Default',
-      custom: 'Custom',
       imageText: 'image + text ',
-      text: 'Chiffon, 2021, spring, the new easy-to-wear blouse',
     },
   })
-  const src =
-    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const placeholderImg = (
-    <img
-      alt=""
-      width="100%"
-      height="150px"
-      src="https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png"
-    />
-  )
 
-  const fits = ['contain', 'cover', 'fill', 'none', 'scale-down']
-  const position1 = ['left', 'center', 'right']
-  const position2 = ['top', 'center', 'bottom']
-  const imageData = [1, 2, 3, 4, 5, 6]
-
-  const style = `
- .demo .image-text {
-    margin-top: 5px;
-    text-align: center;
-    color: #999;
-  }
- .demo .nut-row-flex-wrap .nut-col {
-    margin-bottom: 20px;
-  }
-   .lazy-box .nut-image{
-    margin-bottom: 10px;
-  }
-  .lazy-box{width:100%}
-`
   return (
     <>
-      <style>{style}</style>
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image
-            src={src}
-            onClick={() => {
-              console.log('click image')
-            }}
-          />
+          <Demo1 />
         </Cell>
-
         <h2>{translated.fill}</h2>
         <Cell>
-          <Row gutter={10} type="flex" wrap="wrap">
-            {fits.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image src={src} width="80" height="80" fit={i} />
-                  <div className="image-text">{i}</div>
-                </Col>
-              )
-            })}
-          </Row>
+          <Demo2 />
         </Cell>
-
         <h2>{translated.position}</h2>
         <Cell>
-          <Row gutter={10} type="flex" wrap="wrap">
-            {position2.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image
-                    src={src}
-                    width="80"
-                    height="80"
-                    fit="contain"
-                    position={i}
-                  />
-                  <div className="image-text">contain</div>
-                  <div className="image-text">{i}</div>
-                </Col>
-              )
-            })}
-            {position1.map((i) => {
-              return (
-                <Col span="8" key={i}>
-                  <Image
-                    src={src}
-                    width="80"
-                    height="80"
-                    fit="cover"
-                    position={i}
-                  />
-                  <div className="image-text">cover</div>
-                  <div className="image-text">{i}</div>
-                </Col>
-              )
-            })}
-          </Row>
+          <Demo3 />
         </Cell>
-
         <h2>{translated.circle}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                src={src}
-                width="100"
-                height="100"
-                fit="contain"
-                radius="50%"
-              />
-              <div className="image-text">contain</div>
-            </Col>
-            <Col span="8">
-              <Image
-                src={src}
-                width="100"
-                height="100"
-                fit="cover"
-                radius="50%"
-              />
-              <div className="image-text">cover</div>
-            </Col>
-            <Col span="8">
-              <Image
-                src={src}
-                width="100"
-                height="100"
-                fit="cover"
-                radius="10"
-              />
-              <div className="image-text">cover</div>
-            </Col>
-          </Row>
+          <Demo4 />
         </Cell>
-
         <h2>{translated.loading}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                width="100"
-                height="100"
-                lazy
-                onLoad={() => {
-                  console.log('image onload')
-                }}
-              />
-              <div className="image-text">{translated.default}</div>
-            </Col>
-            <Col span="8">
-              <Image width="100" height="100" lazy loading={<Loading />} />
-              <div className="image-text">{translated.custom}</div>
-            </Col>
-          </Row>
+          <Demo5 />
         </Cell>
-
         <h2>{translated.error}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                src="https://x"
-                width="100"
-                height="100"
-                onError={() => {
-                  console.log('image error')
-                }}
-              />
-              <div className="image-text">{translated.default}</div>
-            </Col>
-            <Col span="8">
-              <Image
-                src="https://x"
-                width="100"
-                height="100"
-                error={<Failure />}
-              />
-              <div className="image-text">{translated.custom}</div>
-            </Col>
-          </Row>
+          <Demo6 />
         </Cell>
         <h2>{translated.imageText}</h2>
         <Cell>
-          <Image
-            src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
-            width="30"
-            height="30"
-            style={{ marginRight: '10px' }}
-            onError={() => {
-              console.log('image error')
-            }}
-          />
-          <div
-            style={{
-              width: '220px',
-            }}
-          >
-            {translated.text}
-          </div>
+          <Demo7 />
         </Cell>
         <h2>{translated.lazyload}</h2>
         <Cell>
-          <div className="lazy-box">
-            {imageData.map((item) => {
-              return (
-                <Image
-                  key={item}
-                  height="150"
-                  src={src}
-                  lazy
-                  loading={placeholderImg}
-                  error={placeholderImg}
-                />
-              )
-            })}
-          </div>
+          <Demo8 />
         </Cell>
       </div>
     </>

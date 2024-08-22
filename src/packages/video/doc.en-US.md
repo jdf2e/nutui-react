@@ -1,13 +1,11 @@
 # Video
 
-## Intro
-
 Video player implemented by native video
 
-## Install
+## Import
 
 ```tsx
-import { Video } from '@nutui/nutui-react';
+import { Video } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,38 +14,7 @@ import { Video } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    controls: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>Basic Usage</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -57,40 +24,7 @@ autoplay Property to set video autoplay
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    autoplay: true,
-    muted: true,
-    controls: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>Auto play</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -100,39 +34,7 @@ The muted property sets the initial mute of the video
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    muted: true,
-    controls: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>Initialize mute</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -142,40 +44,7 @@ The poster property sets the video poster
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    controls: true,
-    poster:
-      'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp',
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>Video cover poster settings</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -185,39 +54,7 @@ The playsinline property sets the mobile terminal video to play in line and prev
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    controls: true,
-    playsinline: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>play inline</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -227,43 +64,7 @@ When setting the video as the background image, it is necessary to set muted, di
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source, setSource] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    controls: false,
-    autoplay: true,
-    disabled: true,
-    muted: true,
-    playsinline: true,
-    loop: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-  return (
-    <>
-      <h2>Set video as background</h2>
-      <Cell className='cell'>
-        <Video
-          source={source}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -273,43 +74,7 @@ Reset the video when the video address changes
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Video, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [source1, setSource1] = useState({
-    src: 'https://storage.360buyimg.com/nutui/video/legao-%E6%9D%A8%E8%BF%9B%E5%86%9B.mp4',
-    type: 'video/mp4',
-  })
-  const options = {
-    controls: true,
-  }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
-
-  const changeVideo = () => {
-    setSource1({...source1, src: 'https://vjs.zencdn.net/v/oceans.mp4'})
-  }
-  return (
-    <>
-      <h2>Video switching</h2>
-      <Cell className='cell'>
-        <Video
-          source={source1}
-          options={options}
-          onPlay={play}
-          onPause={pause}
-          onPlayEnd={playend}
-         />
-      </Cell>
-      <Button type="primary" className="m-b" onClick={changeVideo}>Video switching</Button>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 

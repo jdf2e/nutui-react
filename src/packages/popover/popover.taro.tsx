@@ -12,32 +12,12 @@ import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
-
-export type PopoverLocation =
-  | 'bottom'
-  | 'top'
-  | 'left'
-  | 'right'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'left-start'
-  | 'left-end'
-  | 'right-start'
-  | 'right-end'
-
-export interface List {
-  key?: string
-  name: string
-  icon?: React.ReactNode
-  disabled?: boolean
-  className?: string
-  action?: { icon?: React.ReactNode; onClick?: (e: any) => void }
-}
+import { PopoverTheme, PopoverLocation, PopoverList } from './types'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface PopoverProps extends PopupProps {
-  list: List[]
+  list: PopoverList[]
+  theme: PopoverTheme | string
   location: PopoverLocation | string
   visible: boolean
   offset: string[] | number[]
@@ -50,12 +30,19 @@ export interface PopoverProps extends PopupProps {
   onClick: () => void
   onOpen: () => void
   onClose: () => void
-  onSelect: (item: List, index: number) => void
+  onSelect: (item: PopoverList, index: number) => void
 }
-
+export interface RootPosition {
+  width: number
+  height: number
+  left: number
+  top: number
+  right: number
+}
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
+  theme: 'light',
   location: 'bottom',
   visible: false,
   offset: [0, 12],
@@ -63,9 +50,9 @@ const defaultProps = {
   targetId: '',
   className: '',
   showArrow: true,
-  overlay: false,
   closeOnOutsideClick: true,
   closeOnActionClick: true,
+  overlay: false,
   onClick: () => {},
   onOpen: () => {},
   onClose: () => {},
@@ -75,19 +62,21 @@ const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
   Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     list,
+    theme,
     location,
     visible,
     offset,
+    arrowOffset,
     targetId,
     overlay,
     closeOnOutsideClick,
     closeOnActionClick,
     className,
     showArrow,
-    arrowOffset,
     style,
     onClick,
     onOpen,
@@ -104,17 +93,9 @@ export const Popover: FunctionComponent<
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [rootPosition, setRootPosition] = useState<{
-    width: number
-    height: number
-    left: number
-    top: number
-    right: number
-  }>()
-
+  const [rootPosition, setRootPosition] = useState<RootPosition>()
   useEffect(() => {
     setShowPopup(visible)
-
     if (visible) {
       setTimeout(() => {
         getContentWidth()
@@ -143,9 +124,9 @@ export const Popover: FunctionComponent<
         setRootPosition({
           width: rect.width,
           height: rect.height,
-          left: rect.left,
+          left: rtl ? rect.right : rect.left,
           top: rect.top + distance,
-          right: rect.right,
+          right: rtl ? rect.left : rect.right,
         })
       })
       .exec()
@@ -173,7 +154,7 @@ export const Popover: FunctionComponent<
 
   const clickAway = () => {
     if (closeOnOutsideClick) {
-      props.onClick && props.onClick()
+      onClick && onClick()
       onClose && onClose()
     }
   }
@@ -181,6 +162,7 @@ export const Popover: FunctionComponent<
   const classes = classNames(
     {
       [`${classPrefix}`]: true,
+      [`${classPrefix}-${theme}`]: theme === 'dark',
     },
     className
   )
@@ -207,18 +189,20 @@ export const Popover: FunctionComponent<
     let cross = 0
     let parallel = 0
     if (Array.isArray(offset) && offset.length === 2) {
+      const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
-      parallel += +offset[0]
+      parallel += +rtloffset
     }
-
     if (width) {
+      const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
-          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+          styles[dir] =
+            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
         if (skew === 'start') {
           styles.left = `${left + parallel}px`
@@ -259,16 +243,18 @@ export const Popover: FunctionComponent<
     const skew = location.split('-')[1]
     const base = 16
 
-    if (props.arrowOffset !== 0) {
+    if (arrowOffset !== 0) {
+      const dir = rtl ? 'right' : 'left'
+      const dir2 = rtl ? 'left' : 'right'
       if (['bottom', 'top'].includes(direction)) {
         if (!skew) {
-          styles.left = `calc(50% + ${arrowOffset}px)`
+          styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
         if (skew === 'start') {
-          styles.left = `${base + arrowOffset}px`
+          styles[dir] = `${base + arrowOffset}px`
         }
         if (skew === 'end') {
-          styles.right = `${base - arrowOffset}px`
+          styles[dir2] = `${base - arrowOffset}px`
         }
       }
 
@@ -287,13 +273,13 @@ export const Popover: FunctionComponent<
     return styles
   }
 
-  const handleSelect = (item: List, index: number) => {
+  const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect && onSelect(item, index)
+      onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      props.onClick && props.onClick()
-      onClose && onClose()
+      onClick?.()
+      onClose?.()
     }
   }
   return (
@@ -303,11 +289,11 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            props.onClick && props.onClick()
+            props?.onClick?.()
             if (!visible) {
-              onOpen && onOpen()
+              onOpen?.()
             } else {
-              onClose && onClose()
+              onClose?.()
             }
           }}
           style={style}
@@ -372,5 +358,4 @@ export const Popover: FunctionComponent<
   )
 }
 
-Popover.defaultProps = defaultProps
 Popover.displayName = 'NutPopover'

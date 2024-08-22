@@ -1,10 +1,11 @@
 import React, {
   Children,
+  CSSProperties,
   forwardRef,
   ReactNode,
   useEffect,
   useImperativeHandle,
-  useRef,
+  useMemo,
   useState,
 } from 'react'
 import {
@@ -26,7 +27,9 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   autoPlay: boolean
   loop: boolean
   defaultValue: number
-  onChange: (e: any) => void
+  onChange: CommonEventFunction<TaroSwiperProps.onChangeEventDetail>
+
+  style: CSSProperties
 }
 
 const defaultProps = {
@@ -35,6 +38,7 @@ const defaultProps = {
   autoPlay: false,
   loop: false,
   defaultValue: 0,
+  style: {},
 } as SwiperProps
 
 const classPrefix = 'nut-swiper'
@@ -51,19 +55,26 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     direction,
     defaultValue,
     onChange,
+    style,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const [current, setCurrent] = useState(defaultValue)
-  const childrenCount = useRef(Children.toArray(children).length)
+  const childrenCount = useMemo(() => {
+    let c = 0
+    React.Children.map(children, (child, index) => {
+      c += 1
+    })
+    return c
+  }, [children])
   useEffect(() => {
     setCurrent(defaultValue)
   }, [defaultValue])
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
-    if (indicator === true) {
+    if (indicator) {
       return (
         <div
           className={classNames({
@@ -73,7 +84,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
         >
           <Indicator
             current={current}
-            total={childrenCount.current}
+            total={childrenCount}
             direction={direction}
           />
         </div>
@@ -92,16 +103,16 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     },
     next: () => {
       if (loop) {
-        setCurrent((current + 1) % childrenCount.current)
+        setCurrent((current + 1) % childrenCount)
       } else {
-        setCurrent(current + 1 >= childrenCount.current ? current : current + 1)
+        setCurrent(current + 1 >= childrenCount ? current : current + 1)
       }
     },
     prev: () => {
       if (loop) {
         let next = current - 1
-        next = next < 0 ? childrenCount.current + next : next
-        setCurrent(next % childrenCount.current)
+        next = next < 0 ? childrenCount + next : next
+        setCurrent(next % childrenCount)
       } else {
         setCurrent(current - 1 <= 0 ? 0 : current - 1)
       }
@@ -111,6 +122,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     <View
       className={classNames(classPrefix, className)}
       style={{
+        ...style,
         width: !width ? '100%' : pxCheck(width),
         height: !height ? '150px' : pxCheck(height),
       }}
@@ -156,5 +168,4 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
   )
 })
 
-Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'

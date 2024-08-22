@@ -1,13 +1,11 @@
 # Notify
 
-## Intro
-
 Show message tips at the top of the page
 
-## Install
+## Import
 
 ```tsx
-import { Notify } from '@nutui/nutui-react';
+import { Notify } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,34 +14,7 @@ import { Notify } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const baseNotify = (message: string) => {
-        Notify.text(message, {
-        onClose: () => {
-            console.log('close')
-        },
-        onClick: () => {
-            console.log('click')
-        },
-        })
-    }
-    return (
-        <>
-            <Cell
-            title="Basic Usage"
-            onClick={(event: React.MouseEvent) => {
-                baseNotify('Basic Usage')
-            }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -51,54 +22,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const primaryNotify = (message: string) => {
-        Notify.primary(message)
-    }
-    const successNotify = (message: string) => {
-        Notify.success(message)
-    }
-    const errorNotify = (message: string) => {
-        Notify.danger(message)
-    }
-    const warningNotify = (message: string) => {
-        Notify.warn(message)
-    }
-    return (
-        <>
-            <Cell
-                title="Primary Notify"
-                onClick={(event: React.MouseEvent) => {
-                    primaryNotify('Primary Notify')
-                }}
-            />
-            <Cell
-                title="Success Notify"
-                onClick={(event: React.MouseEvent) => {
-                successNotify('Success Notify')
-                }}
-            />
-            <Cell
-                title="Error Notify"
-                onClick={(event: React.MouseEvent) => {
-                errorNotify('Error Notify')
-                }}
-            />
-            <Cell
-                title="Warning Notify"
-                onClick={(event: React.MouseEvent) => {
-                warningNotify('Warning Notify')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -106,32 +30,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const cusBgNotify = (message: string) => {
-        Notify.text(message, { 
-            style: {
-                '--nutui-notify-text-color': '#ad0000',
-                '--nutui-notify-base-background-color': '#ffe1e1',
-            },
-             })
-    }
-    return (
-        <>
-            <Cell
-                title="Customize background and font colors"
-                onClick={(event: React.MouseEvent) => {
-                    cusBgNotify('Customize background and font colors')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -139,36 +38,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const timeNotify = (message: string) => {
-        Notify.text(message, { duration: 1000 })
-    }
-    const positionNotify = (message: string) => {
-        Notify.text(message, { position: 'bottom' })
-    }
-    return (
-        <>
-             <Cell
-                title="Custom Duration"
-                onClick={(event: React.MouseEvent) => {
-                    timeNotify('Custom Duration')
-                }}
-            />
-            <Cell
-                title="Custom Position"
-                onClick={(event: React.MouseEvent) => {
-                    positionNotify('Custom Postion')
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

@@ -1,53 +1,20 @@
 # Menu 菜單
 
-## 介紹
-
 嚮下彈出的菜單列錶
 
-## 安裝
+## 引入
 
 ```tsx
-import { Menu } from '@nutui/nutui-react';
+import { Menu } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu
-          onClose={(i: number) => console.log('onClose', i)}
-          onOpen={(i: number) => console.log('onOpen', i)}
-        >
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -55,37 +22,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  const [stateOne, setStateOne] = useState(0)
-  const [stateTwo, setStateTwo] = useState('a')
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
-          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -95,39 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useRef, useState } from 'react'
-import { Menu, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  const itemRef = useRef(null)
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} />
-          <Menu.Item title="篩選" ref={itemRef}>
-            <div>自定義內容</div>
-            <Button onClick={() => itemRef.current.toggle(false)}>確認</Button>
-          </Menu.Item>
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -135,30 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} columns={2} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -166,35 +48,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu activeColor="green">
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -202,36 +56,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-import { TriangleDown, Success } from '@nutui/icons-react'
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu icon={<TriangleDown />}>
-          <Menu.Item options={options} value={0} icon={<Success />} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -239,35 +64,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} direction="up" />
-          <Menu.Item options={options1} value="a" direction="up" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -275,35 +72,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活動商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默認排序', value: 'a' },
-    { text: '好評排序', value: 'b' },
-    { text: '銷量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} disabled />
-          <Menu.Item options={options1} value="a" disabled />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -328,6 +97,7 @@ export default App
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | title | 菜單項標題 | `string` | `當前選中項文字` |
+| titleIcon | 菜單項 icon | `React.ReactNode` | `ArrowUp/ArrowDown` |
 | options | 選項數組 | `array` | `-` |
 | disabled | 是否禁用菜單 | `boolean` | `false` |
 | columns | 可以設置一行展示多少列 options | `number` | `1` |

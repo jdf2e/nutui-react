@@ -1,68 +1,20 @@
 # ActionSheet 動作面闆
 
-## 介紹
-
 從底部彈出的動作菜單面闆。
 
-## 安裝
+## 引入
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react';
+import { ActionSheet } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-interface Item {
-  name: string
-  description?: string
-  disabled?: boolean
-}
-const App = () => {
-  const [val1, setVal1] = useState('')
-  const [isVisible1, setIsVisible1] = useState(false)
-  const optionsOne: ItemType<string>[] = [
-    {
-      name: '權限設定',
-    },
-    {
-      name: '重命名',
-    },
-    {
-      name: '刪除',
-    },
-  ]
-  const chooseItem = (item: any) => {
-    setVal1(item.name)
-    setIsVisible1(false)
-  }
-
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible1(!isVisible1)}>
-      <span>基礎用法</span>
-      <div style={{ marginLeft: '10px' }}>{val1}</div>
-    </Cell>
-            
-    <ActionSheet
-      visible={isVisible1}
-      options={optionsOne}
-      onSelect={(item) => {chooseItem(item)}}
-      onCancel={() => setIsVisible1(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -70,48 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible2, setIsVisible2] = useState(false)
-  const [val2, setVal2] = useState('')
-  const optionsOne: ItemType<string>[] = [
-    {
-      name: '權限設定',
-    },
-    {
-      name: '重命名',
-    },
-    {
-      name: '刪除',
-    },
-  ]
-  const chooseItemTwo = (item: Item) => {
-    setVal2(item.name)
-    setIsVisible2(false)
-  }
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible2(!isVisible2)}>
-      <span>展示取消按鈕</span>
-      <div style={{ marginLeft: '10px' }}>{val2}</div>
-    </Cell>
-            
-    <ActionSheet
-      visible={isVisible2}
-      cancelText="取消"
-      options={optionsOne}
-      onSelect={(item)=>{chooseItemTwo(item)}}
-      onCancel={() => setIsVisible2(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -119,50 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible3, setIsVisible3] = useState(false)
-  const [val3, setVal3] = useState('')
-  const optionsTwo: ItemType<string>[] = [
-    {
-      name: '權限設定',
-    },
-    {
-      name: '重命名',
-    },
-    {
-      name: '刪除',
-      description: '刪除後無法恢復',
-    },
-  ]
-  const chooseItemThree = (item: Item) => {
-    setVal3(item.name)
-    setIsVisible3(false)
-  }
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible3(!isVisible3)}>
-      <span>展示描述信息</span>
-      <div style={{ marginLeft: '10px' }}>{val3}</div>
-    </Cell>
-    <ActionSheet
-      visible={isVisible3}
-      title='標題'
-      description="請選擇操作動作"
-      cancelText="取消"
-      options={optionsTwo}
-      onSelect={(item)=>{chooseItemThree(item)}}
-      onCancel={() => setIsVisible3(false)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -170,42 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible4, setIsVisible4] = useState(false)
-  const optionsThree: ItemType<string | boolean>[] = [
-    {
-      name: '著色選項',
-      danger: true
-    },
-    {
-      name: '禁用選項',
-      disabled: true,
-    },
-  ]
-  return ( 
-    <>   
-    <Cell  onClick={() => setIsVisible4(!isVisible4)}>
-      <span>選項狀態</span>
-    </Cell>
-    <ActionSheet
-      visible={isVisible4}
-      cancelText="取消"
-      options={optionsThree}
-      onCancel={() => setIsVisible4(false)}
-      onSelect={() => {
-        setIsVisible4(false)
-      }}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -213,38 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible5, setIsVisible5] = useState(false)
-  return ( 
-    <>   
-      <Cell  onClick={() => setIsVisible5(!isVisible5)}>
-        <span>自定義內容</span>
-      </Cell>
-      <ActionSheet
-        visible={isVisible5}
-        cancelText={translated['2cd0f3be']}
-        onSelect={() => {
-          setIsVisible5(false)
-        }}
-        onCancel={() => setIsVisible5(false)}
-      >
-        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
-          新建錶格
-        </div>
-        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
-          新建文檔
-        </div>
-      </ActionSheet>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -252,45 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { ActionSheet,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [isVisible6, setIsVisible6] = useState(false)
-  const optionsFour: ItemType<string | boolean>[] = [
-    {
-      title: '著色選項',
-      danger: true
-    },
-    {
-      title: '禁用選項',
-      disabled: true,
-    },
-  ]
-  const optionKey = {
-    name: 'title',
-  }
-  return ( 
-    <>   
-      <Cell  onClick={() => setIsVisible6(!isVisible6)}>
-        <span>自定義key</span>
-      </Cell>
-      <ActionSheet
-        visible={isVisible6}
-        optionKey={optionKey}
-        options={optionsFour}
-        onSelect={() => {
-          setIsVisible6(false)
-        }}
-        onCancel={() => setIsVisible6(false)}
-      />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

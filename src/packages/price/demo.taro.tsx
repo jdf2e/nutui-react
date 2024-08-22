@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Price } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-
-interface T {
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-  title8: string
-}
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
 const PriceDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       title1: '支持三种尺寸：small、normal、large',
       title2: '不保留小数',
@@ -49,66 +46,39 @@ const PriceDemo = () => {
       title8: 'Line-through price',
     },
   })
-  const [price, setPrice] = useState(Math.random() * 10000000)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPrice(Math.random() * 10000000)
-    }, 1000)
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <Cell.Group title={translated.title1}>
-          <Cell>
-            <Price price={0} size="small" thousands />
-          </Cell>
-          <Cell>
-            <Price price={0} size="normal" thousands />
-          </Cell>
-          <Cell>
-            <Price price={0} size="large" thousands />
-          </Cell>
-        </Cell.Group>
+        <h2>{translated.title1}</h2>
+        <Demo1 />
         <h2>{translated.title2}</h2>
         <Cell>
-          <Price price={8888} digits={0} size="normal" thousands />
+          <Demo2 />
         </Cell>
         <h2>{translated.title3}</h2>
         <Cell>
-          <Price price={10010.01} size="normal" thousands={false} />
+          <Demo3 />
         </Cell>
         <h2>{translated.title4}</h2>
         <Cell>
-          <Price price={15213.1221} size="normal" digits={3} thousands />
+          <Demo4 />
         </Cell>
         <h2>{translated.title5}</h2>
         <Cell>
-          <Price
-            price={8888.01}
-            size="normal"
-            position="after"
-            symbol="元"
-            thousands
-          />
+          <Demo5 />
         </Cell>
         <h2>{translated.title7}</h2>
         <Cell>
-          <Price price={15213.1221} size="normal" symbol="" />
+          <Demo6 />
         </Cell>
         <h2>{translated.title6}</h2>
         <Cell>
-          <Price price={price} digits={3} size="normal" thousands />
+          <Demo7 />
         </Cell>
         <h2>{translated.title8}</h2>
         <Cell>
-          <Price price={1513.12} size="normal" thousands />
-          <span>&nbsp;</span>
-          <Price price={1513.88} thousands line />
+          <Demo8 />
         </Cell>
       </div>
     </>

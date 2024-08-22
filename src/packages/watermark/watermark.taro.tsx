@@ -10,6 +10,8 @@ export interface WaterMarkProps extends BasicComponent {
   zIndex: number
   gapX: number
   gapY: number
+  startX: number
+  startY: number
   width: number
   height: number
   image: string
@@ -31,6 +33,8 @@ const defaultProps = {
   gapY: 48,
   width: 120,
   height: 64,
+  startX: 0,
+  startY: 0,
   image: '',
   imageWidth: 120,
   imageHeight: 64,
@@ -51,6 +55,8 @@ export const WaterMark: FunctionComponent<
     className,
     gapX,
     gapY,
+    startX,
+    startY,
     width,
     height,
     image,
@@ -137,7 +143,7 @@ export const WaterMark: FunctionComponent<
           const markSize = Number(fontSize) * ratio
           ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`
           ctx.fillStyle = color
-          ctx.fillText(content, 0, 0) // 在画布上绘制"被填充的"文本。
+          ctx.fillText(content, startX, startY) // 在画布上绘制"被填充的"文本。
           ctx.restore() // 返回之前保存过的路径状态和属性。
           setBase64Url(canvas.toDataURL())
         }
@@ -160,5 +166,4 @@ export const WaterMark: FunctionComponent<
   )
 }
 
-WaterMark.defaultProps = defaultProps
 WaterMark.displayName = 'NutWaterMark'

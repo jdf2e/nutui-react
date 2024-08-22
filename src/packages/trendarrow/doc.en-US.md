@@ -1,13 +1,11 @@
 # TrendArrow
 
-## Intro
-
 A percentage number with an arrow indicating the trend of the indicator
 
-## Install
+## Import
 
 ```tsx
-import { TrendArrow } from '@nutui/nutui-react';
+import { TrendArrow } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,20 +14,7 @@ import { TrendArrow } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow sync={false} value={1} />
-        <TrendArrow sync={false} value={-0.2535} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,20 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow value={10.2365} />
-        <TrendArrow value={-0.2535} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -58,20 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-     <Cell>
-        <TrendArrow digits={1} value={10.2365} />
-        <TrendArrow digits={3} value={-0.2535} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -79,20 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow left value={0.2535} />
-        <TrendArrow left value={-0.2535} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -100,20 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow symbol value={1} />
-        <TrendArrow symbol value={-0.2535} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -121,20 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow symbol value={0} />
-        <TrendArrow symbol zero value={0} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -142,27 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
-        <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
-        <TrendArrow
-        sync={false}
-        value={-0.2535}
-        symbol
-        color="rgb(39,197,48)"
-        dropColor="rgb(255, 190, 13)"
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -170,21 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { TrendArrow, Cell, Icon } from '@nutui/nutui-react'
-import { Success, Failure } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
-        <TrendArrow value={-10.2365} dropIcon={<Failure color="red" />} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

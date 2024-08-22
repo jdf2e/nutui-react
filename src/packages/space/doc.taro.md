@@ -1,38 +1,22 @@
 # Space组件
 
-### 介绍
+#
 
 元素排列中保持相同的宽度。
 
-### 安装
+### 引入
 
 ```tsx
-import { Space } from '@nutui/nutui-react-taro';
+import { Space } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react-taro';
-
- const App = () => {
-  return (
-    <Space>
-      <Button>按钮1</Button>
-      <Button>按钮2</Button>
-      <Button>按钮3</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,25 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Space wrap>
-      <Button>按钮1</Button>
-      <Button>按钮2</Button>
-      <Button>按钮3</Button>
-      <Button>按钮4</Button>
-      <Button>按钮5</Button>
-      <Button>按钮6</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -66,22 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Space direction="vertical">
-      <Button>按钮1</Button>
-      <Button>按钮2</Button>
-      <Button>按钮3</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -89,84 +40,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button,ConfigProvider } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <ConfigProvider
-      theme={{
-        nutuiSpaceGap: '20px',
-      }}
-    >
-      <Space direction="vertical">
-        <Button>按钮1</Button>
-        <Button>按钮2</Button>
-        <Button>按钮3</Button>
-      </Space>
-    </ConfigProvider>
-  );
-};
-export default App;
-
-```
+:::
 
 ### 主轴对齐方式
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <Space justify="start" wrap>
-      <Button>按钮1</Button>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
-        <Button block>按钮2</Button>
-      </div>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
-        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
-        <Button block>按钮3</Button>
-      </div>
-    </Space> 
-  );
-};
-export default App;
-
-```
+:::
 
 ### 交叉轴对齐方式
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Space align="end" wrap>
-      <Button>按钮1</Button>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
-        <Button block>按钮2</Button>
-      </div>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
-        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
-        <Button block>按钮3</Button>
-      </div>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

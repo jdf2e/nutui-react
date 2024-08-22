@@ -1,54 +1,20 @@
 # Overlay 遮罩层
 
-## 介绍
-
 创建一个遮罩层，通常用于阻止用户进行其他操作
 
-## 安装
+## 引入
 
 ```tsx
-import { OverLay } from '@nutui/nutui-react-taro';
+import { Overlay } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="primary" onClick={handleToggleShow}>
-        显示遮罩层
-      </Button>
-      <Overlay
-        visible={visible}
-        onClick={onClose}
-        style={{ '--nutui-overlay-zIndex': 2020 }}
-        afterShow={() => {
-          console.log('afterShow')
-        }}
-        afterClose={() => {
-          console.log('afterClose')
-        }}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -56,36 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="primary" onClick={handleToggleShow}>
-        自定义遮罩样式
-      </Button>
-      <Overlay
-        visible={visible}
-        onClick={onClose}
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, .4)',
-          '--nutui-overlay-zIndex': 2000,
-        }}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -93,40 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="primary" onClick={handleToggleShow}>
-        设置动画时间
-      </Button>
-      <Overlay
-        visible={visible}
-        onClick={onClose}
-        style={{ '--nutui-overlay-animation-duration': '2.5s' }}
-        duration={2500}
-        afterShow={() => {
-          console.log('afterShow')
-        }}
-        afterClose={() => {
-          console.log('afterClose')
-        }}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -134,29 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="primary" onClick={handleToggleShow}>
-        不锁定背景滚动
-      </Button>
-      <Overlay visible={visible} onClick={onClose} lockScroll={false} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -164,50 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-
-  const wrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-  const contentStyle = {
-    display: 'flex',
-    width: '150px',
-    height: '150px',
-    background: '#fff',
-    borderRadius: '8px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'red'
-  }
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="success" onClick={handleToggleShow}>
-        嵌套内容
-      </Button>
-      <Overlay visible={visible} onClick={onClose}>
-        <div style={wrapperStyle}>
-          <div style={contentStyle}>这里是正文</div>
-        </div>
-      </Overlay>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -215,49 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, Overlay } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const wrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-  const contentStyle = {
-    display: 'flex',
-    width: '150px',
-    height: '150px',
-    background: '#fff',
-    borderRadius: '8px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'red'
-  }
-  const handleToggleShow = () => {
-    setVisible(true)
-  }
-  const onClose = () => {
-    setVisible(false)
-  }
-  return (
-    <>
-      <Button type="primary" onClick={handleToggleShow}>
-        点击遮罩不关闭
-      </Button>
-      <Overlay visible={visible} closeOnOverlayClick={false}>
-        <div style={wrapperStyle}>
-          <div style={contentStyle} onClick={onClose}>这里是正文</div>
-        </div>
-      </Overlay>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -288,4 +85,4 @@ export default App;
 | \--nutui-overlay-zIndex | overlay 的 z-index | `1000` |
 | \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$white` |
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$color-title` |
-| \--nutui-overlay-animation-duration| 遮罩层动画延时的时长 | `0.3s` |
+| \--nutui-overlay-animation-duration | 遮罩层动画延时的时长 | `0.3s` |

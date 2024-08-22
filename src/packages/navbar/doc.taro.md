@@ -1,203 +1,36 @@
 # Navbar 头部导航
 
-## 介绍
-
 提供导航功能。
 
-## 安装
+## 引入
 
 ```tsx
-import { NavBar } from '@nutui/nutui-react-taro';
+import { NavBar } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { ArrowLeft, Share, Close  } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
-        }
-        left={<Close size={12} />}
-        right={
-        <span onClick={(e) => Taro.showToast({ title: 'icon' })}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        订单详情
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
+### 标题位置
+
 :::demo
 
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { ArrowLeft } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        right={
-        <span onClick={(e) => Taro.showToast({ title: '清空' })}>
-            清空
-        </span>
-        }
-        back={<ArrowLeft color="#979797" />}
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        浏览记录
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { Cart, ArrowLeft, More } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={<ArrowLeft color="#979797" />}
-        right={
-        <>
-            <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showToast({ title: '编辑' })}>
-            编辑
-            </span>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-        </>
-        }
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        购物车
-        </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showToast({ title: 'icon' })}>
-            <Cart />
-        </i>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
+### 多tab切换导航
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
-import { ArrowLeft,More } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0')
-  return (   
-      <NavBar
-         back={<ArrowLeft color="#979797" />}
-          right={
-            <>
-              <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showToast({ title: '编辑' })}>
-                编辑
-              </span>
-              <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-            </>
-          }
-          onBackClick={(e) => Taro.showToast({ title: '返回' })}
-        >
-          <View style={{ width: '100%' }}>
-            <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}
-              style={{
-                '--nutui-tabs-titles-padding': 0,
-                '--nutui-tabs-titles-gap': 0,
-              }}
-            >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
-              <TabPane title="Tab 4"> Tab 4 </TabPane>
-            </Tabs>
-          </View>
-      </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
-        }
-        left={<Close size={12} />}
-        right={
-        <span onClick={(e) =>  Toast.show('icon')}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("标题")}>
-        订单详情
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 

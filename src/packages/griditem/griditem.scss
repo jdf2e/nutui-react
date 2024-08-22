@@ -92,3 +92,42 @@
     }
   }
 }
+
+[dir='rtl'] .nut-grid,
+.nut-rtl .nut-grid {
+  &-item {
+    $block: &;
+
+    &-content {
+      &-border {
+        border-right-width: 0;
+        border-left-width: 1px;
+      }
+
+      &-surround {
+        border-left-width: 0;
+        border-right-width: 1px;
+      }
+
+      &-horizontal {
+        .nut-grid-item-text {
+          margin: 0 $grid-item-text-margin 0 0;
+        }
+      }
+
+      &-horizontal.nut-grid-item-content-reverse {
+        .nut-grid-item-text {
+          margin: 0 0 0 $grid-item-text-margin;
+        }
+      }
+
+      &-clickable {
+        &::before {
+          left: auto;
+          right: 50%;
+          transform: translate(50%, -50%);
+        }
+      }
+    }
+  }
+}

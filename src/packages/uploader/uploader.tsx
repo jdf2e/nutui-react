@@ -3,6 +3,8 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
+  useRef,
+  useEffect,
 } from 'react'
 import classNames from 'classnames'
 import { Photograph } from '@nutui/icons-react'
@@ -102,6 +104,7 @@ const InternalUploader: ForwardRefRenderFunction<
   PropsWithChildren<Partial<UploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
+  const fileListRef = useRef<FileItem[]>([])
   const {
     children,
     uploadIcon,
@@ -155,7 +158,9 @@ const InternalUploader: ForwardRefRenderFunction<
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
 
   const classes = classNames(className, 'nut-uploader')
-
+  useEffect(() => {
+    fileListRef.current = fileList
+  }, [fileList])
   useImperativeHandle(ref, () => ({
     submit: () => {
       Promise.all(uploadQueue).then((res) => {
@@ -166,15 +171,13 @@ const InternalUploader: ForwardRefRenderFunction<
       clearUploadQueue()
     },
   }))
-
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
       setUploadQueue(uploadQueue)
     } else {
       setUploadQueue([])
-      fileList.splice(0, fileList.length)
-      setFileList([...fileList])
+      setFileList([])
     }
   }
 
@@ -203,7 +206,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList(
-        fileList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -211,19 +214,19 @@ const InternalUploader: ForwardRefRenderFunction<
           return item
         })
       )
-      onStart && onStart(option)
+      onStart?.(option)
     }
     uploadOption.onProgress = (
       e: ProgressEvent<XMLHttpRequestEventTarget>,
       option: UploadOptions
     ) => {
       setFileList(
-        fileList.map((item) => {
+        fileListRef.current.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = ((e.loaded / e.total) * 100).toFixed(0)
-            onProgress && onProgress({ e, option, percentage: item.percentage })
+            onProgress?.({ e, option, percentage: item.percentage })
           }
           return item
         })
@@ -233,7 +236,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = SUCCESS
           item.message = locale.uploader.success
@@ -253,7 +256,7 @@ const InternalUploader: ForwardRefRenderFunction<
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      const list = fileList.map((item) => {
+      const list = fileListRef.current.map((item) => {
         if (item.uid === fileItem.uid) {
           item.status = ERROR
           item.message = locale.uploader.error
@@ -269,7 +272,7 @@ const InternalUploader: ForwardRefRenderFunction<
       })
     }
     const task = new Upload(uploadOption)
-    if (props.autoUpload) {
+    if (autoUpload) {
       task.upload()
     } else {
       uploadQueue.push(
@@ -294,26 +297,23 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.message = autoUpload
         ? locale.uploader.readyUpload
         : locale.uploader.waitingUpload
-
       executeUpload(fileItem, index)
 
       if (preview && file.type?.includes('image')) {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileItem.url = (event.target as FileReader).result as string
-          fileList.push(fileItem)
-          setFileList([...fileList])
+          setFileList([...fileList, fileItem])
         }
         reader.readAsDataURL(file)
       } else {
-        fileList.push(fileItem)
-        setFileList([...fileList])
+        setFileList([...fileList, fileItem])
       }
     })
   }
 
   const filterFiles = (files: File[]) => {
-    const maximum = (props.maxCount as number) * 1
+    const maximum = (maxCount as number) * 1
     const oversizes = new Array<File>()
     const filterFile = files.filter((file: File) => {
       if (file.size > maxFileSize) {
@@ -322,9 +322,7 @@ const InternalUploader: ForwardRefRenderFunction<
       }
       return true
     })
-    if (oversizes.length) {
-      onOversize && onOversize(files)
-    }
+    oversizes.length && onOversize?.(files)
 
     if (filterFile.length > maximum) {
       filterFile.splice(maximum, filterFile.length - maximum)
@@ -370,8 +368,6 @@ const InternalUploader: ForwardRefRenderFunction<
       readFile(_files)
     }
 
-    setFileList(fileList)
-
     if (clearInput) {
       clearInputValue($el)
     }
@@ -390,7 +386,7 @@ const InternalUploader: ForwardRefRenderFunction<
               上传文件
             </Button>
           )}
-          {maxCount > fileList.length && (
+          {Number(maxCount) > fileList.length && (
             <input
               className="nut-uploader-input"
               type="file"
@@ -417,34 +413,35 @@ const InternalUploader: ForwardRefRenderFunction<
         }}
       />
 
-      {maxCount > fileList.length && previewType === 'picture' && !children && (
-        <div
-          className={classNames('nut-uploader-upload', previewType, {
-            'nut-uploader-upload-disabled': disabled,
-          })}
-        >
-          <div className="nut-uploader-icon">
-            {uploadIcon}
-            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-          </div>
+      {Number(maxCount) > fileList.length &&
+        previewType === 'picture' &&
+        !children && (
+          <div
+            className={classNames('nut-uploader-upload', previewType, {
+              'nut-uploader-upload-disabled': disabled,
+            })}
+          >
+            <div className="nut-uploader-icon">
+              {uploadIcon}
+              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+            </div>
 
-          <input
-            className="nut-uploader-input"
-            type="file"
-            capture={capture}
-            name={name}
-            accept={accept}
-            disabled={disabled}
-            multiple={multiple}
-            onChange={fileChange}
-          />
-        </div>
-      )}
+            <input
+              className="nut-uploader-input"
+              type="file"
+              capture={capture}
+              name={name}
+              accept={accept}
+              disabled={disabled}
+              multiple={multiple}
+              onChange={fileChange}
+            />
+          </div>
+        )}
     </div>
   )
 }
 
 export const Uploader = React.forwardRef(InternalUploader)
 
-Uploader.defaultProps = defaultProps
 Uploader.displayName = 'NutUploader'

@@ -1,46 +1,24 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/swiper/context'
+import { BasicComponent } from '@/utils/typings'
 
-export interface SwiperItemProps {
-  direction?: string
-  size?: 0
-}
-
-interface Style {
-  width?: string
-  height?: string
-  transform?: string
+export interface SwiperItemProps extends BasicComponent {
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 const defaultProps = {
-  direction: 'horizontal',
+  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => undefined,
 } as SwiperItemProps
 
-export const SwiperItem = React.forwardRef<
-  HTMLDivElement,
-  Partial<SwiperItemProps> & React.HTMLAttributes<HTMLDivElement>
->((props, ref) => {
+export const SwiperItem = (props: SwiperItemProps) => {
   const classPrefix = 'nut-swiper-item'
-  const _props = { ...defaultProps, ...props }
-  const { className, style, children, direction, size } = _props
-  const parent: any = useContext(DataContext)
+  const { className, style, children } = { ...defaultProps, ...props }
   const classes = classNames(classPrefix, className)
 
-  const getStyle = () => {
-    const style: Style = {}
-    const _direction = parent?.propSwiper.direction || direction
-    const _size = parent?.size || size
-    if (_size) {
-      style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
-    }
-    return style
-  }
   return (
-    <div className={classes} style={{ ...style, ...getStyle() }}>
+    <div className={classes} onClick={props.onClick} style={style}>
       {children}
     </div>
   )
-})
-SwiperItem.defaultProps = defaultProps
+}
 SwiperItem.displayName = 'NutSwiperItem'

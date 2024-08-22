@@ -1,43 +1,20 @@
 # Range 區間選擇器
 
-## 介紹
-
 滑動輸入條，用於在給定的範圍內選擇一個值。
 
-## 安裝
+## 引入
 
 ```tsx
-import { Range } from '@nutui/nutui-react';
+import { Range } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  };
-  return <Cell style={cellStyle}>
-    <Range defaultValue={40} onEnd={(val) => Toast.show(`${val}`)} />
-    <Range
-      defaultValue={40}
-      marks={[
-        { value: 0, label: 'start' },
-        { value: 100, label: 'end' },
-      ]}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -45,21 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Range, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  };
-  const [value, setValue] = useState(40)
-  return <Cell style={{cellStyle}}>
-    <Range value={value} onChange={(val) => setValue(val)} />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -67,26 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  };
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={40}
-      minDescription="0%"
-      maxDescription="100%"
-      currentDescription={(value) => `${value}%`}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -94,24 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={[20, 80]}
-      range
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -119,25 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={0}
-      max={10}
-      min={-10}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -145,24 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={30}
-      step={5}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -170,25 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={30}
-      maxDescription={null}
-      minDescription={null}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -196,24 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range
-      defaultValue={20}
-      currentDescription={null}
-      onEnd={(val) => Toast.show(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -221,20 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell style={cellStyle}>
-    <Range defaultValue={50} disabled />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -242,44 +86,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, ConfigProvider, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  return <Cell
-    style={{
-      ...cellStyle,
-      display: 'block',
-    }}
-  >
-    <ConfigProvider
-      theme={{
-        nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
-        nutuiRangeActiveColor:
-          'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
-        nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
-        nutuiRangeMargin: '20px',
-        nutuiRangeHeight: '6px',
-      }}
-    >
-      <Range
-        className="test-range"
-        defaultValue={40}
-        style={{ color: 'red' }}
-        marks={{
-          10: 10,
-          20: 20,
-        }}
-      />
-    </ConfigProvider>
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -287,35 +94,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  const buttonStyle = {
-    width: '26px',
-    color: 'white',
-    fontSize: '10px',
-    lineHeight: '18px',
-    textAlign: 'center',
-    backgroundColor: 'red',
-    borderRadius: '10px',
-  }
-  const [value, setValue] = useState(60)
-  return <Cell style={cellStyle}>
-    <Range
-      value={value}
-      button={<div style={buttonStyle}>{value}</div>}
-      onChange={(val) => setValue(val)}
-      onEnd={(val) => console.log(`${val}`)}
-    />
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -323,35 +102,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
-  return <Cell style={verticalStyle}>
-    <div style={{ width: '150px', height: '100%' }}>
-      <Range
-        defaultValue={20}
-        vertical
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-    </div>
-    <div style={{ width: '150px', height: '100%' }}>
-      <Range
-        defaultValue={[20, 80]}
-        vertical
-        range
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-    </div>
-  </Cell>
-};
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -359,57 +110,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const cellStyle = {
-    padding: '40px 18px',
-  }
-  const verticalStyle = {
-    height: '180px',
-    padding: '10px',
-  }
-  return <>
-    <Cell style={cellStyle}>
-      <Range
-        defaultValue={60}
-        maxDescription={null}
-        minDescription={null}
-        marks={marks}
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-    </Cell>
-    <Cell style={cellStyle}>
-      <Range
-        defaultValue={[20, 80]}
-        marks={marks}
-        range
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-    </Cell>
-    <Cell style={verticalStyle}>
-      <Range
-        defaultValue={60}
-        vertical
-        maxDescription={null}
-        minDescription={null}
-        marks={marks}
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-      <Range
-        defaultValue={[20, 80]}
-        vertical
-        marks={marks}
-        range
-        onEnd={(val) => Toast.show(`${val}`)}
-      />
-    </Cell>
-  </>
-};
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 

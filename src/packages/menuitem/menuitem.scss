@@ -15,6 +15,7 @@
       position: fixed;
     }
   }
+
   &-item {
     display: flex;
     align-items: center;
@@ -31,8 +32,10 @@
       display: inline-flex;
       align-items: center;
       margin-right: $menu-item-icon-margin;
+      flex-shrink: 0;
     }
   }
+
   &-wrap,
   &-wrap-up {
     position: absolute;
@@ -104,4 +107,18 @@
 .nut-menu-container-up-exit-done {
   opacity: 0;
   transition: all 100ms;
+}
+
+[dir='rtl'] .nut-menu-container,
+.nut-rtl .nut-menu-container {
+  &-item {
+    .nut-icon {
+      margin-right: 0;
+      margin-left: $menu-item-icon-margin;
+    }
+  }
+
+  .nut-icon {
+    transform: rotateY(180deg);
+  }
 }

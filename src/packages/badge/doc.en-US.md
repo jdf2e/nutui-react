@@ -1,13 +1,11 @@
 # Badge
 
-## Intro
-
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
-## Install
+## Import
 
 ```tsx
-import { Badge } from '@nutui/nutui-react';
+import { Badge } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,31 +14,7 @@ import { Badge } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge dot>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,28 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={200} max={9}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={20}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={99}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -77,43 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={8}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value={76}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value="NEW"
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        dot
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -121,31 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { User, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={<Checklist color="#fff"  />}
-        className="test"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<LinkIcon color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<Download color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -153,40 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, ConfigProvider, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const customTheme = {
-  nutuiBadgeBorderRadius: '12px 12px 12px 0',
-}
-
-const customTheme2 = {
-  nutuiBadgeDotWidth: '14px',
-  nutuiBadgeDotHeight: '14px',
-  nutuiBadgeBorder: '2px solid #fff',
-}
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={customTheme}>
-        <Badge value="NEW">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-
-      <ConfigProvider theme={customTheme2}>
-        <Badge dot top="2" right="8">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -194,28 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { User } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8} top="5" right="5">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76} top="10" right="10">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -223,21 +62,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge,Cell } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <Cell style={{height: '100px'}}>
-      <Badge value={8}> </Badge>
-      <Badge value={76}> </Badge>
-      <Badge value="NEW"> </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+:::
+
+### Fill Mode
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -249,10 +82,11 @@ export default App;
 | --- | --- | --- | --- |
 | value | value to show, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
-| dot | Is dotted | `boolean` | `false` |
+| dot | Is dotted, When `value` is a custom content, dot does not take effect | `boolean` | `false` |
 | top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
 | right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
 | color | background color,the default value is the theme primary color | `string` | `-` |
+| fill | Fill Mode | `solid` \| `outline` | `solid` |
 
 ## Theming
 
@@ -275,3 +109,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
 | \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |
+| \--nutui-badge-dot-border | when badge is dot, the dot border | `0px solid $color-primary-text` |

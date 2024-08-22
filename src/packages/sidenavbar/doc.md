@@ -1,131 +1,28 @@
 # SideNavBar组件
 
-## 介绍
-
 用于内容选择和切换
 
-## 安装
+## 引入
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-    const [navBarState, setNavBarState] = useState({
-    visible: false,
-    position: 'left',
-  })
-  const changeNarBar = (visible, position= navBarState.position) => {
-    setNavBarState({
-      visible,
-      position,
-    })
-  }
- 
-  return ( 
-    <>   
-    <Cell
-          title="左侧弹出"
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="右侧弹出"
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首页"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一级标题" value="1-0" >
-            <SideNavBarItem title="一级内容1" value="1-01" />
-            <SideNavBarItem title="一级内容2" value="1-02" />
-            <SubSideNavBar title="二级标题" value="2-0">
-              <SideNavBarItem title="二级内容1" value="2-01" />
-              <SideNavBarItem title="二级内容2" value="2-02" />
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 嵌套及回调
+### 导航嵌套（建议最多三层）
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
-  }
-  const clickItem = ({ title, value }) => {
-    Toast.show(`title=${title},value=${value}`)
-  }
-  const clickTitle = ({ title, value, isShow }) => {
-    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
-  }
-  return ( 
-    <>  
-      <Cell
-          title="显示"
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首页"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一级标题" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一级内容2" value="1-02" />
-            <SubSideNavBar title="二级标题" value="2-0">
-              <SideNavBarItem title="二级内容1" value="2-01" />
-              <SideNavBarItem title="二级内容2" value="2-02" />
-                <SubSideNavBar title="三级标题" value="3-0">
-                  <SideNavBarItem title="三级内容1" value="3-01" />
-                  <SideNavBarItem title="三级内容2" value="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -148,10 +45,10 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string`  \|  `number` | `-` |
+| value | 导航唯一标识 | `string` \| `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | open | 导航是否默认展开 | `boolean` | `true` |
-| onClick | 导航点击 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| onClick | 导航点击 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -159,9 +56,9 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string`  \|  `number` | `-` |
+| value | 导航唯一标识 | `string` \| `number` | `-` |
 | title | 整体标题 | `string` | `-` |
-| onClick | 导航点击 | `data: {title: string, value: string \| number}` | `-` |
+| onClick | 导航点击 | `({title: string, value: string \| number}) => void` | `-` |
 
 ## 主题定制
 

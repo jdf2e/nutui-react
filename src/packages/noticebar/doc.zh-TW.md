@@ -1,61 +1,28 @@
 # NoticeBar 公告欄
 
-## 介紹
-
 用於循環播放展示一組消息通知。
 
-## 安裝
+## 引入
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
-    return (
-      <>
-        <NoticeBar content={text} />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 自定義主題
+### 居中佈局，不支持滾動
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
-    return (
-      <ConfigProvider
-          theme={{
-            nutuiNoticebarBackground: '#EDF4FF',
-            nutuiNoticebarColor: '#3768FA',
-          }}
-        >
-          <NoticeBar content={translated.text} />
-        </ConfigProvider>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -65,60 +32,15 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    return (
-      <>
-        <NoticeBar
-            content="NutUI 是京東風格的移動端組件庫"
-            scrollable
-        />
-
-        <NoticeBar 
-            content="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-### 通告欄模式--關閉模式
+### 關閉模式
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-import { Failure } from '@nutui/icons-react';
-
-const App = () => {
-    const hello = () => {
-        console.log('hello world')
-    }
-    return (
-      <>
-       <NoticeBar closeable onClick={hello}>
-          NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
-        </NoticeBar>
-        <br />
-        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
-          NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
-        </NoticeBar>
-        <br />
-        <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
-          <a href="https://www.jd.com">京東商城</a>
-        </NoticeBar>
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -128,167 +50,57 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
-    
-    return (
-      <NoticeBar content={text} wrap />
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
-### 縱嚮滾動
+### 自定義右側內容
+
+增加自定義右側區域，區分rightIcon，更靈活配置。
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const horseLamp1 = [
-        'NoticeBar 公告欄',
-        'Cascader 級聯選擇',
-        'DatePicker 日期選擇器',
-        'CheckBox 復選按鈕',
-      ]
-    const go = (item: any) => {
-        console.log(item)
-    }
-    return (
-      <div className="interstroll-list">
-          <NoticeBar
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onClick={(e) => {
-              go(e.target.innerHtml)
-            }}
-            closeable
-          />
-        </div>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### 自定義左側圖標
+### 自定義主題
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-
-const App = () => {
-     const horseLamp2 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 復選按鈕'];
-    return (
-      <>
-        <NoticeBar
-            direction="vertical"
-            list={horseLamp2}
-            speed={10}
-            duration={2000}
-            leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
-            onClick={(e) => {
-              console.log('listClick', e.target)
-            }}
-            onItemClick={(e, val) => {
-              console.log('dom', e.target)
-              console.log('value', val)
-            }}
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
-### 自定義滾動內容
+### 垂直滾動
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const  horseLamp3 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 復選按鈕']
-
-    return (
-      <>
-        <NoticeBar direction="vertical" height={50} speed={10} duration={1000} 
-        closeable
-        onClose={() => {console.log('close')}}>
-        {horseLamp3.map((item, index) => {
-            return (
-            <div
-                className="custom-item"
-                style={{ height: '50px', lineHeight: '50px' }}
-                key={index}
-                onClick={() => {
-                    console.log('custom-inner', item)
-                }}
-            >
-                {item}
-            </div>
-            )
-        })}
-        </NoticeBar>
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-### 縱嚮自定義右側圖標
+### 縱嚮模式：自定義左側圖標
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-import { Fabulous } from '@nutui/icons-react';
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
-const App = () => {
-     const horseLamp1 = [
-        'NoticeBar 公告欄',
-        'Cascader 級聯選擇',
-        'DatePicker 日期選擇器',
-        'CheckBox 復選按鈕',
-      ]
-    return (
-      <>
-        <NoticeBar
-            className="custom"
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onItemClick={(e, v) => {
-              console.log('onclick-custom', v)
-            }}
-            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
-        />
-        </>
-    )
-};
-export default App
-```
+:::
+
+### 縱嚮模式：自定義滾動內容
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 縱嚮模式：自定義右側圖標
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -298,11 +110,13 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| align | 佈局方式, 值為`center`時，不支持滾動 | `left` \| `center` | `left` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |
 | leftIcon | 左邊的 icon，closeable 模式下默認為空 | `ReactNode` | `-` |
 | rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<Close />` | `ReactNode` | `-` |
+| right | 區別於rightIcon，為右邊自定義區域，僅用於 direction='horizontal' 模式 | `ReactNode` | `-` |
 | delay | 延時多少秒 | `string` \| `number` | `1` |
 | scrollable | 是否可以滾動 | `boolean` | `true` |
 | speed | 滾動速率 (px/s) | `number` | `50` |
@@ -335,7 +149,7 @@ export default App
 | \--nutui-noticebar-font-size | 字號 | `$font-size-small` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
-| \--nutui-noticebar-border-radius | 圆角 | `0` |
+| \--nutui-noticebar-border-radius | 圓角 | `0` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
 | \--nutui-noticebar-icon-gap | icon、text間距 | `4px` |
 | \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |

@@ -4,6 +4,7 @@ import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface BackTopProps extends BasicComponent {
   threshold: number
@@ -22,6 +23,7 @@ const defaultProps = {
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const { children, threshold, zIndex, className, duration, style, onClick } = {
     ...defaultProps,
     ...props,
@@ -46,16 +48,17 @@ export const BackTop: FunctionComponent<
     })
   }
 
-  const styles = style
-    ? {
-        zIndex,
-        ...style,
-      }
-    : {
-        right: '10px',
-        bottom: '20px',
-        zIndex,
-      }
+  const styles =
+    Object.keys(style || {}).length !== 0
+      ? {
+          zIndex,
+          ...style,
+        }
+      : {
+          [rtl ? 'left' : 'right']: '10px',
+          bottom: '20px',
+          zIndex,
+        }
 
   return (
     <div
@@ -76,5 +79,4 @@ export const BackTop: FunctionComponent<
   )
 }
 
-BackTop.defaultProps = defaultProps
 BackTop.displayName = 'NutBackTop'

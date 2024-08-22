@@ -1,10 +1,16 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
-import { Failure, Loading } from '@nutui/icons-react-taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Image, Cell, Row, Col } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -16,10 +22,7 @@ const ImageDemo = () => {
       loading: '加载中提示',
       error: '加载失败',
       lazyload: '图片懒加载',
-      default: '默认',
-      custom: '自定义',
       imageText: 'Image + text 模式',
-      text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -29,161 +32,43 @@ const ImageDemo = () => {
       loading: 'Loading',
       error: 'Error',
       lazyload: 'Lazyload',
-      default: 'Default',
-      custom: 'Custom',
       imageText: 'Image + text ',
-      text: 'Chiffon, 2021, spring, the new easy-to-wear blouse',
     },
   })
-  const src =
-    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image src={src} height={200} />
+          <Demo1 />
         </Cell>
         <h2>{translated.circle}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                src={src}
-                mode="aspectFit"
-                width="80"
-                height="80"
-                radius="50%"
-              />
-            </Col>
-          </Row>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                src={src}
-                mode="scaleToFill"
-                width="80"
-                height="80"
-                radius="50%"
-              />
-            </Col>
-          </Row>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image
-                src={src}
-                mode="scaleToFill"
-                width="80"
-                height="80"
-                radius="10px"
-              />
-            </Col>
-          </Row>
+          <Demo2 />
         </Cell>
         <h2>{translated.loading}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image width="80" height="80" />
-              <View style={{ textAlign: 'left' }}>{translated.default}</View>
-            </Col>
-            <Col span="8">
-              <Image
-                width="80"
-                height="80"
-                loading={<Loading className="nut-icon-loading" />}
-              />
-              <View style={{ textAlign: 'left' }}>{translated.custom}</View>
-            </Col>
-          </Row>
+          <Demo3 />
         </Cell>
-
         <h2>{translated.error}</h2>
         <Cell>
-          <Row gutter={10}>
-            <Col span="8">
-              <Image src="https://x" width="80" height="80" />
-              <View style={{ textAlign: 'left' }}>{translated.default}</View>
-            </Col>
-            <Col span="8">
-              <Image
-                src="https://x"
-                width="80"
-                height="80"
-                error={<Failure />}
-              />
-              <View style={{ textAlign: 'left' }}>{translated.custom}</View>
-            </Col>
-          </Row>
+          <Demo4 />
         </Cell>
         <h2>{translated.imageText}</h2>
         <Cell>
-          <Image
-            src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
-            width="30"
-            height="30"
-            style={{ marginRight: '10px' }}
-            onError={() => {
-              console.log('image error')
-            }}
-          />
-          <div
-            style={{
-              width: '220px',
-            }}
-          >
-            {translated.text}
-          </div>
+          <Demo5 />
         </Cell>
         <h2>{translated.fill}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          {[
-            'scaleToFill',
-            'aspectFit',
-            'aspectFill',
-            'widthFix',
-            'heightFix',
-          ].map((mode) => {
-            return (
-              <Col span="8" key={mode}>
-                <Image src={src} mode={mode as any} width="80" height="80" />
-                <View style={{ textAlign: 'left' }}>{mode}</View>
-              </Col>
-            )
-          })}
+          <Demo6 />
         </Cell>
         <h2>{translated.position}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          {[
-            'top left',
-            'top',
-            'top right',
-            'left',
-            'center',
-            'right',
-            'bottom left',
-            'bottom',
-            'bottom right',
-          ].map((mode) => {
-            return (
-              <Col span={8} key={mode}>
-                <Image src={src} mode={mode as any} width="80" height="80" />
-                <View style={{ textAlign: 'left' }}>{mode}</View>
-              </Col>
-            )
-          })}
+          <Demo7 />
         </Cell>
         <h2>{translated.lazyload}</h2>
-        <ScrollView style={{ height: '350px' }} scrollY>
-          {[
-            ...new Array(3).fill(src),
-            'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-          ].map((_) => {
-            return <Image key={_} src={_} lazyLoad width="100%" height="150" />
-          })}
-        </ScrollView>
+        <Demo8 />
       </div>
     </>
   )

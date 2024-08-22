@@ -1,4 +1,3 @@
-
 <p align="center">
     <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
@@ -36,27 +35,26 @@
 
 ---
 
-> Nut[nʌt]: the one Squirrel Scrat pursues resolutely for a lifetime and will never let go even if it causes a catastrophe from the animated film ***Ice Age***.
+> Nut[nʌt]: the one Squirrel Scrat pursues resolutely for a lifetime and will never let go even if it causes a catastrophe from the animated film **_Ice Age_**.
 
 [简体中文](./README_ZH.md) | English
 
 ## Features
 
-* 🚀 70+ High Quality Components
-* 📖 Based on JD APP 11.0 Visual Specifications
-* 🍭 Support Tree Shaking
-* 📖 Extensive Documentation and Demos
-* 💪 Written in TypeScript
-* 💪 Support SSR (Experimental)
-* 🍭 Support Custom Themes
-* 🍭 90%+ Unit Test Coverage
-* 📖 Provide Sketch Design Resources
-
-
+- 🚀 70+ High Quality Components
+- 📖 Based on JD APP 11.0 Visual Specifications
+- 🍭 Support Tree Shaking
+- 📖 Extensive Documentation and Demos
+- 💪 Written in TypeScript
+- 💪 Support SSR (Experimental)
+- 🍭 Support Custom Themes
+- 🍭 90%+ Unit Test Coverage
+- 📖 Provide Sketch Design Resources
 
 ## Running locally
 
 ### running with H5
+
 ```sh
 # Clone repository
 git clone https://github.com/jdf2e/nutui-react.git
@@ -65,14 +63,16 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development
-npm run dev
+pnpm run dev
 
 # visit in browser: http：http://localhost:3000 (you don't have to open it manually if you've run it in the browser again)
 ```
+
 ### running with mini-program
+
 ```sh
 # Clone repository
 git clone https://github.com/jdf2e/nutui-react.git
@@ -81,27 +81,26 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development
-# dir：src/sites/mobile-taro/dist/weapp
-npm run dev:taro:weapp
+# dir：packages/nutui-taro-demo/dist/weapp
+pnpm run dev:taro:weapp
 
 # OR run as jd mini-program
-# dir：src/sites/mobile-taro/dist/jd
-npm run dev:taro:jd
+# dir：packages/nutui-taro-demo/dist/jd
+pnpm run dev:taro:jd
 ```
 
 ## Build Versions
 
 > If you are using AMD environment or build tools such as Webpack, Vite, etc., we recommend using the `es` version. If it is a non-module environment (such as direct reference through the `<script>` tag), it is recommended to use the `umd` compressed version.
 
-* es **nutui.es.js**
+- es **nutui.es.js**
 
-* umd **nutui.umd.js**
+- umd **nutui.umd.js**
 
-
-##  Links
+## Links
 
 <ul>
     <li>
@@ -126,33 +125,30 @@ npm run dev:taro:jd
     </li>
 </ul>
 
-
 ## Communication
 
 | Version | WeChat Group | JD Dongdong Group |
-| --- | --- |--- |
+| --- | --- | --- |
 | [NutUI React](https://github.com/jdf2e/nutui-react/issues) | <img src="https://storage.360buyimg.com/imgtools/17c67beff6-4acf07c0-609c-11ed-a6ef-69df15b605e4.png" width="100" /> Reply 「NutUI-React」 after following | 1025679314 |
 | [NutUI x Taro](https://github.com/jdf2e/nutui/issues) | <img src="https://camo.githubusercontent.com/db4276b4ee4b443158195e943e9e678cb4d2afb7580f70d4d817ef0a90413aec/687474703a2f2f73746f726167652e333630627579696d672e636f6d2f7461726f2d6a642d636f6d2f7374617469632f636f6e746163745f7461726f5f6e757475695f71722e706e67" width="100" />Reply 「NutUI-React」 after following | 1022545110 |
-
 
 ## Join Us
 
 #### NutUI Community
 
-[*Welcome To NutUI-React  Community*](https://github.com/jdf2e/nutui-react/discussions/348)
+[_Welcome To NutUI-React Community_](https://github.com/jdf2e/nutui-react/discussions/348)
 
 #### Contribute to NutUI
 
 There are some choices of contributing to NutUI as follows, solving issues, fixing bugs, adding new components, i18n, UI customization, platform and cross-end adaptation, etc.
 
-You are very welcome to contribute code to NutUI. Before your pull requests, please read [*NutUI Developer Contributing Guide*](https://github.com/jdf2e/nutui-react/discussions/348)。
-
+You are very welcome to contribute code to NutUI. Before your pull requests, please read [_NutUI Developer Contributing Guide_](https://github.com/jdf2e/nutui-react/discussions/348)。
 
 ## Issue & Discussion
 
 [Report issues to NutUI](https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui-react&lang=zh-cn)
 
-> It is highly recommended to read [*How To Ask Questions The Smart Way*](https://github.com/ryanhanwu/, [*How To Ask Questions Of GitHub Community*](https://github.com/seajs/seajs/issues/545) and [*How to Report Bugs Effectively*](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html), then you can get understanding and help more easily.
+> It is highly recommended to read [*How To Ask Questions The Smart Way*](https://github.com/ryanhanwu/, [_How To Ask Questions Of GitHub Community_](https://github.com/seajs/seajs/issues/545) and [_How to Report Bugs Effectively_](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html), then you can get understanding and help more easily.
 
 [NutUI Discussion](https://github.com/jdf2e/nutui-react/discussions)
 
@@ -162,13 +158,11 @@ If you have any ideas, questions or suggestions, you can share your opinions her
 
 Thanks to all the following [developers](https://github.com/jdf2e/nutui-react/graphs/contributors)。 who have contributed code to NutUI.
 
-
 <a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" alt="contributors"/>
 </a>
 
-
-## Stargazers 
+## Stargazers
 
 [![Stargazers repo roster for @jdf2e/nutui-react](https://reporoster.com/stars/jdf2e/nutui-react)](https://github.com/jdf2e/nutui-react/stargazers)
 
@@ -183,7 +177,6 @@ Thanks to all the following [developers](https://github.com/jdf2e/nutui-react/gr
 ## Release Notes
 
 NutUI follows [Angular Style Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153). The up-to-date release notes are available on [Release](https://github.com/jdf2e/nutui-react/releases)
-
 
 ## Open Source License
 

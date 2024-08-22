@@ -1,21 +1,17 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Divider, Cell } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
 
-interface T {
-  basic: string
-  withText: string
-  contentPosition: string
-  dashed: string
-  customStyle: string
-  verticalDivider: string
-  text: string
-  link: string
-}
 const DividerDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       withText: '展示文本',
@@ -23,8 +19,6 @@ const DividerDemo = () => {
       dashed: '虚线',
       customStyle: '自定义样式',
       verticalDivider: '垂直分割线',
-      text: '文本',
-      link: '链接',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -33,8 +27,6 @@ const DividerDemo = () => {
       dashed: 'Dashed',
       customStyle: 'Custom Style',
       verticalDivider: 'Vertical Divider',
-      text: 'Text',
-      link: 'Link',
     },
   })
   return (
@@ -43,67 +35,25 @@ const DividerDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Divider />
+          <Demo1 />
         </Cell>
         <h2>{translated.withText}</h2>
         <Cell>
-          <Divider>{translated.text}</Divider>
+          <Demo2 />
         </Cell>
         <h2>{translated.contentPosition}</h2>
-        <Cell>
-          <Divider contentPosition="left">{translated.text}</Divider>
-        </Cell>
-        <Cell>
-          <Divider contentPosition="right">{translated.text}</Divider>
-        </Cell>
+        <Demo3 />
         <h2>{translated.dashed}</h2>
         <Cell>
-          <Divider
-            style={{
-              borderStyle: 'dashed',
-            }}
-          >
-            {translated.text}
-          </Divider>
+          <Demo4 />
         </Cell>
         <h2>{translated.customStyle}</h2>
         <Cell>
-          <Divider
-            style={{
-              color: '#1989fa',
-              borderColor: '#1989fa',
-              padding: '0 16px',
-              borderStyle: 'dashed',
-            }}
-          >
-            {translated.text}
-          </Divider>
+          <Demo5 />
         </Cell>
         <h2>{translated.verticalDivider}</h2>
         <Cell>
-          <div
-            style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}
-          >
-            {translated.text}
-            <Divider direction="vertical" />
-            <span
-              onClick={() => {
-                Taro.navigateTo({ url: '/pages/index/index' })
-              }}
-              style={{ color: '#1989fa', display: 'inline-block' }}
-            >
-              {translated.link}
-            </span>
-            <Divider direction="vertical" />
-            <span
-              onClick={() => {
-                Taro.navigateTo({ url: '/pages/index/index' })
-              }}
-              style={{ color: '#1989fa', display: 'inline-block' }}
-            >
-              {translated.link}
-            </span>
-          </div>
+          <Demo6 />
         </Cell>
       </div>
     </>

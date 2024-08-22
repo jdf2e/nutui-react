@@ -1,35 +1,20 @@
 # CircleProgress 进度条
 
-## 介绍
-
 展示操作或任务的当前进度。
 
-## 安装
+## 引入
 
 ```tsx
-import { CircleProgress } from '@nutui/nutui-react-taro';
+import { CircleProgress } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={20} />
-      <CircleProgress percent={60}>60%</CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,19 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} strokeWidth={10} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -57,28 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react-taro';
-
-const gradientColor = {
-  '0%': '#ff404f',
-  '100%': '#fa2c19',
-}
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} color="#fa2c19">
-        50%
-      </CircleProgress>
-      <CircleProgress percent={100} color={gradientColor}>
-        100%
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -86,22 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react-taro';
-
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} radius={60}>
-        50%
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -109,25 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CircleProgress } from '@nutui/nutui-react-taro';
-
-
-const App = () => {
-  return (
-    <>
-      <CircleProgress percent={50} radius={60}>
-        <div>3000</div>
-        <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>
-          步
-        </div>
-      </CircleProgress>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -135,45 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button, CircleProgress } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [percent, setPercent] = useState(30)
-  
-  const setReduceVal = () => {
-    if (percent - 10 <= 0) {
-      setPercent(0)
-      return
-    }
-    setPercent(percent - 10)
-  }
-  const setAddVal = () => {
-    if (percent >= 100) {
-      return
-    }
-    setPercent(percent + 10)
-  }
-
-  return (
-    <>
-      <div >
-        <CircleProgress percent={percent}>{percent}%</CircleProgress>
-      </div>
-      <div >
-        <Button type="primary" size="small" onClick={setReduceVal}>
-          减少
-        </Button>
-        <Button type="primary" size="small" onClick={setAddVal}>
-          增加
-        </Button>
-      </div>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

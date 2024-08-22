@@ -23,7 +23,7 @@ const classPrefix = 'nut-cell-group'
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, className, style, title, description, divider, ...rest } = {
+  const { children, className, title, description, divider, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -46,5 +46,4 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   )
 }
 
-CellGroup.defaultProps = defaultProps
 CellGroup.displayName = 'NutCellGroup'

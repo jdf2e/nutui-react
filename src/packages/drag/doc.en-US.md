@@ -1,10 +1,8 @@
 # Drag
 
-## Intro
-
 Implement draggable arbitrary elements.
 
-## Install
+## Import
 
 ```tsx
 import { Drag } from '@nutui/nutui-react'
@@ -16,19 +14,7 @@ import { Drag } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Drag>
-        <div className="touch-dom">Button</div>
-    </Drag>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -36,24 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-    <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <Button type="primary">X axis</Button>
-      </Drag>
-      <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <Button type="primary">Y axis</Button>
-      </Drag>
-    </>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -61,19 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Drag direction="x" attract>
-      <Button>Button</Button>
-    </Drag>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,41 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag, Button } from '@nutui/nutui-react';
-
-const App = () => {
-    const right = () => {
-    return document.documentElement.clientWidth - 300 - 9
-    }
-    const bottom = () => {
-        return document.documentElement.clientHeight - 202
-    }
-    return (
-    <>
-    <div
-        className="drag-boundary"
-        style={{
-          position: 'absolute',
-          top: '0px',
-          left: '8px',
-          width: '300px',
-          height: '200px',
-          border: '1px solid red',
-        }}
-       />
-      <Drag
-        boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
-        style={{ top: '40px', left: '50px' }}
-      >
-        <Button type="primary">Limit Boundaries</Button>
-      </Drag>
-    </>
-   );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -128,3 +51,6 @@ export default App;
 | attract | Whether to enable automatic edge suction | `boolean` | `false` |
 | direction | The drag direction limit of the dragged element | `x` \| `y` \| `all` | `all` |
 | boundary | The drag boundary of the dragged element | `Object` | `{top: 0, left: 0, right: 0, bottom: 0}` |
+| onDragStart | Start dragging elements | `() => void` | `-` |
+| onDrag | Drag element | `(state: { offset: [x: number, y: number] }) => void` | `-` |
+| onDragEnd | Stop dragging elements | `(state: { offset: [x: number, y: number] }) => void` | `-` |

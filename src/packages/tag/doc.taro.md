@@ -1,13 +1,11 @@
 # Tag 标签
 
-## 介绍
-
 用于标记和分类的标签。
 
-## 安装
+## 引入
 
 ```tsx
-import { Tag } from '@nutui/nutui-react-taro';
+import { Tag } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码实例
@@ -16,54 +14,15 @@ import { Tag } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag type="primary">标签</Tag>
-      <Tag type="info">标签</Tag>
-      <Tag type="success">标签</Tag>
-      <Tag type="danger">标签</Tag>
-      <Tag type="warning">标签</Tag>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
-
 
 ### 样式风格
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Failure } from '@nutui/icons-react-taro'
-import { Tag } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <>
-      <Tag plain>标签</Tag>
-      <Tag round type='primary'>标签</Tag>
-      <Tag mark type='primary'>标签</Tag>
-      <Tag closeable
-           onClose={() => alert('Tag closed')}
-           type='primary'>标签</Tag>
-      <Tag closeable
-           closeIcon={<Failure size={8}  />}
-           onClose={() => alert('Tag closed')}
-           type='primary'>标签</Tag>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -71,50 +30,15 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag background="#FA685D">标签</Tag>
-      <Tag background="#E9E9E9" color="#999999">标签</Tag>
-      <Tag background="#FA2400" plain>标签</Tag>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
-### 自定义颜色
+### 图文
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag type="info">
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img
-            height="10"
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAsCAMAAAAgsQpJAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABCUExURUdwTP////////////////////////////////////////////////////////////////////////////////////VtkI8AAAAVdFJOUwAdEr+crtuABfTnao8pUMpddzJFO9SD9HUAAAFqSURBVDjLjVVbAoMgDBN5CfhC5P5XXYtuDilivyaEpg0p67oiJufnvmvF4FTEkOEZ52z8xrLVYb1EhJEjT1BXpV1gVzmsbxoN/PYVoIC9cTg/GJ6aSdycsw3Ab8juIYXIKlY0+V4kWGO0BNDfEgI5aDWVQJBmbS9BqPK4BhVeAR0JhKZDCRQFbiX0xbWN6EXd5WWWUJJTJvBEkbCmCpcoQh9G1AjNmIHyzpKvMrCaLuXB5awgtI8aiMvWN3K0514zuJmycxWLo2yWnR9jpK7ljM38NtHucqiO4WVe/ohLFjoul/bsxQ2Ev4yi/pysUKO8auR0TqbxOcm6jsta1Lmn1ySqXEfobWQZ7HhsrP535CZNgoprMdFEPt95ep/eQBP+LtUIuvKQuMLXdVGyqhZBnS0y8yQZFmAPgCwMW+SMeE2MGslyQjXOLm/9A8yI8Y0KT1MtiLa6Eei5NLsvApTc3iDTePauRa1hOD/vACHPGH6amQAAAABJRU5ErkJggg=="
-            alt=""
-          />
-          {translated.tag}
-        </div>
-      </Tag>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 

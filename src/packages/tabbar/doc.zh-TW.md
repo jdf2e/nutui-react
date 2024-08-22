@@ -1,38 +1,20 @@
 # Tabbar 標簽欄
 
-## 介紹
-
 底部導航常用場景
 
-## 安裝
+## 引入
 
 ```tsx
-import { Tabbar } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar onSwitch={(value) => {console.log(value)}}>
-    <Tabbar.Item title="首頁" icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title="分類" icon={<Category width={18} height={18} dot />} />
-    <Tabbar.Item title="發現" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="我的" icon={<User width={18} height={18} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,31 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => {
-  const [activeIndex, setActiveIndex] = useState(2)
-  
-  return <Tabbar
-    defaultValue={0}
-    value={activeIndex}
-    onSwitch={(value) => {
-      setActiveIndex(value)
-    }}
-  >
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
-  </Tabbar>
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -72,25 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar
-    onSwitch={(value) => {
-      console.log(value)
-    }}
-  >
-    <Tabbar.Item title="首頁" icon={<Home width={12} height={12} />} />
-    <Tabbar.Item title="分類" icon={<Category width={12} height={12} />} />
-    <Tabbar.Item icon={<Find width={24} height={24} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={12} height={12} />} />
-    <Tabbar.Item title="我的" icon={<User width={12} height={12} />} />
-  </Tabbar>
-)
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -98,24 +38,7 @@ const App = () => (
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-
-const App = () => (
-  <Tabbar
-    onSwitch={(value) => {
-      console.log(value)
-    }}
-  >
-    <Tabbar.Item title="首頁" value={9} />
-    <Tabbar.Item title="分類" dot />
-    <Tabbar.Item title="發現" />
-    <Tabbar.Item title="購物車" />
-    <Tabbar.Item title="我的" />
-  </Tabbar>
-)
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -123,23 +46,7 @@ const App = () => (
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar>
-    <Tabbar.Item title="首頁" icon={<Home />} value={11} />
-    <Tabbar.Item title="分類" icon={<Category />} />
-    <Tabbar.Item title="發現" icon={<Find />} />
-    <Tabbar.Item title="購物車" icon={<Cart />} value={110} />
-    <Tabbar.Item title="我的" icon={<User />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -147,23 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar>
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} dot />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -171,24 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-
-const App = () => (
-  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -196,21 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Category, Find, Home } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -218,23 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar fixed>
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
-  </Tabbar>
-)
-
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 

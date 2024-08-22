@@ -1,33 +1,20 @@
 # Rate 评分
 
-## 介绍
-
 用于快速的评级操作，或对评价进行展示。
 
-## 安装
+## 引入
 
 ```tsx
-import { Rate } from '@nutui/nutui-react-taro';
+import { Rate } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -35,18 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  const [state, setState] = useState(2);
-  return (
-    <Rate value={score} onChange={(value) => setScore(value)} />
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -54,18 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate allowHalf defaultValue={3.5} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -73,22 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-import { HeartFill } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Rate
-      checkedIcon={<HeartFill />}
-      defaultValue={3}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -96,18 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate count="6" defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -115,18 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate count={5} defaultValue={2} min={3}/>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -134,22 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-import { HeartFill } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Rate
-      defaultValue={3}
-      checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -157,18 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate disabled defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -176,18 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Rate defaultValue={3} readOnly />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -195,62 +86,25 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
-const App = () => {
-  const onChange = (val: any) => {
-    console.log(val)
-  }
-  return (
-    <Rate defaultValue={3} onChange={onChange} />
-  );
-};  
-export default App;
-
-```
+:::
 
 ### 滑动选择
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
-const App = () => {
-  return ( 
-    <>   
-      <Rate defaultValue={3} allowHalf touchable />
-    </>
-  );
-};  
-export default App;
-
-```
+:::
 
 ### 滑动事件
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
 
-const App = () => {
-  const handleTouchEnd = (event, val) => {
-    console.log(event, val)
-  }
-  return ( 
-    <>   
-      <Rate defaultValue={3} touchable onTouchEnd={handleTouchEnd}/>
-    </>
-  );
-};  
-export default App;
-
-```
+:::
 
 ## Rate
 
@@ -269,7 +123,7 @@ export default App;
 | disabled | 是否禁用 | `boolean` | `false` |
 | touchable | 是否允许滑动选择 ｜ `boolean` | `false` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
-| onTouchEnd | TouchEnd 事件 | `(event: TouchEvent, value: number) => void` | `-` |
+| onTouchEnd | touch 滑动结束时触发 | `(event: TouchEvent, value: number) => void` | `-` |
 
 ## 主题定制
 

@@ -1,64 +1,22 @@
 # Tour 引导
 
-### 介绍
+#
 
 用于引导用户了解产品功能的气泡组件。
 
-## 安装
+## 引入
 
 ```tsx
-import { Tour } from '@nutui/nutui-react';
+import { Tour } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
+
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Switch, Tour } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTour, setShowTour] = useState(false)
-
-  const closeTour = () => {
-    setShowTour(false)
-  }
-
-  const steps = [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target',
-    },
-  ]
-
-  return (
-    <>
-      <Cell
-        title="点击试试"
-        extra={
-          <Switch
-            id="target"
-            onChange={() => {
-              setShowTour(true)
-            }}
-          />
-        }
-      />
-      <Tour
-        className="nut-custom-tour nut-customword-tour"
-        visible={showTour}
-        onClose={closeTour}
-        list={steps}
-        type="tile"
-        location="bottom-end"
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -66,58 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Switch, Tour } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTour, setShowTour] = useState(false)
-
-  const closeTour = () => {
-    setShowTour(false)
-  }
-
-  const steps = [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target',
-    },
-  ]
-
-  return (
-    <>
-      <Cell
-        title="点击试试"
-        extra={
-          <Switch
-            id="target"
-            onChange={() => {
-              setShowTour(true)
-            }}
-          />
-        }
-      />
-      <Tour
-        className="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-        visible={showTour}
-        onClose={closeTour}
-        list={steps}
-        type="tile"
-        location="bottom-end"
-        style={{
-          '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-          '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-          '--nutui-popover-border-color': 'rgb(255, 0, 0)',
-        }}
-        offset={[0, 0]}
-        maskWidth={50}
-        maskHeight={50}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -125,67 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Switch, Tour } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTour, setShowTour] = useState(false)
-
-  const closeTour = () => {
-    setShowTour(false)
-  }
-
-  const steps = [
-    {
-      content: '支持一套代码同时开发多端小程序+H5',
-      target: 'target',
-      popoverOffset: [40, 12],
-      arrowOffset: -36,
-    },
-  ]
-
-  return (
-    <>
-      <Cell
-        title="点击试试"
-        extra={
-          <div className="tour-demo-img">
-            <img
-              id="target2"
-              src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-              alt=""
-            />
-            <img
-              src="https://img10.360buyimg.com/imagetools/jfs/t1/31842/40/20385/1762/63998e3eE594254bb/98ff51da635ead4a.png"
-              alt=""
-            />
-            <img
-              src="https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png"
-              alt=""
-            />
-          </div>
-        }
-      />
-      <Tour
-        className="nut-custom-tour nut-customword-tour"
-        visible={showTour}
-        onClose={closeTour}
-        list={steps}
-        type="tile"
-        location="bottom-end"
-        style={{
-          '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-          '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-          '--nutui-popover-border-color': 'rgb(255, 0, 0)',
-        }}
-        offset={[8, 8]}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -193,67 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Switch, Tour, Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTour, setShowTour] = useState(false)
-
-  const closeTour = () => {
-    setShowTour(false)
-  }
-
-  const steps = [
-    {
-      target: 'target',
-    },
-  ]
-
-  return (
-    <>
-      <Cell
-        title="点击试试"
-        extra={
-          <Switch
-            id="target"
-            onChange={() => {
-            setShowTour3(true)
-            }}
-          />
-        }
-      />
-      <Tour
-        className="nut-custom-tour nut-customword-tour"
-        visible={showTour}
-        onClose={closeTour}
-        list={steps}
-        type="tile"
-        location="bottom-end"
-        style={{
-          '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
-          '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-          '--nutui-popover-border-color': 'rgb(75, 76, 77)',
-        }}
-        closeOnOverlayClick={false}
-      >
-        <div className="tour-demo-custom-content">
-          <div>nutui-react 2.x 已经发布</div>
-          <Divider direction="vertical" />
-          <div
-            onClick={() => {
-              setShowTour(false)
-            }}
-          >
-            知道了
-          </div>
-        </div>
-      </Tour>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -261,81 +48,19 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Tour, Tabbar } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTour, setShowTour] = useState(false)
-
-  const closeTour = () => {
-    setShowTour(false)
-  }
-
-  const steps = [
-    {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
-      target: 'target4',
-    },
-    {
-      content: '支持一套代码同时开发多端小程序+H5',
-      target: 'target5',
-    },
-    {
-      content: '基于京东APP 10.0 视觉规范',
-      target: 'target6',
-      location: 'top-end',
-    },
-    {
-      content: '支持定制主题，内置 700+ 个主题变量',
-      target: 'target7',
-      location: 'top-end',
-    },
-  ]
-
-  return (
-    <>
-      <Cell
-        title="点击试试"
-        onClick={() => {
-          setShowTour(true)
-        }}
-      />
-      <Tabbar fixed>
-        <Tabbar.Item id="target4" title='首页' />
-        <Tabbar.Item id="target5" title='分类' />
-        <Tabbar.Item id="target6" title='购物车' />
-        <Tabbar.Item id="target7" title='我的' />
-      </Tabbar>
-      <Tour
-        className="nut-custom-tour"
-        visible={showTour}
-        onClose={closeTour}
-        list={steps}
-        location="top-start"
-        offset={[0, 0]}
-        maskWidth={60}
-        maskHeight={50}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
-
 
 ## Tour
 
 ### Props
 
-
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否展示引导弹出层 | `boolean` | `false` |
 | type | 引导类型 | `step` \| `tile` | `step` |
-| list | 引导步骤内容 | `ListOptions[]` | `-` |
+| list | 引导步骤内容 | `TourList[]` | `-` |
 | offset | 镂空遮罩相对于目标元素的偏移量 | `number[]` | `[8, 10]` |
 | location | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
 | next | 下一步按钮文案 | `ReactNode` | `''` |
@@ -350,8 +75,7 @@ export default App;
 | onClose | 气泡层关闭时触发 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onChange | 切换步骤时触发 | `(value: number) => void` | `-` |
 
-### ListOptions
-
+### TourList
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -379,8 +103,3 @@ export default App;
 | \--nutui-tour-content-bottom-btn-padding | 内容区底部按钮的padding值 | `2px 4px` |
 | \--nutui-tour-content-bottom-btn-font-size | 内容区底部按钮的font-size值 | `12px` |
 | \--nutui-tour-content-bottom-btn-border-radius | 内容区底部按钮的border-radius值 | `4px` |
-
-
-
-
-

@@ -1,9 +1,12 @@
 import * as React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
 import { ShortPassword } from '../shortpassword'
 
+beforeAll(() => {
+  // @ts-ignore
+  global.IS_REACT_ACT_ENVIRONMENT = false
+})
 test('should render shortpassword when visible is true', async () => {
   const { container } = render(<ShortPassword visible value="123" />)
   const li = container.querySelectorAll('.nut-shortpassword-input-fake-li')
@@ -67,4 +70,19 @@ test('should limit input value when input', async () => {
   expect(sure).toBeTruthy()
   fireEvent.click(sure as HTMLElement)
   expect(inputValue).toBe('123456')
+})
+
+test('should ref open or close', async () => {
+  const ref = React.createRef<any>()
+  const { container } = render(<ShortPassword ref={ref} value="123456789" />)
+  ref.current?.open()
+  waitFor(() => {
+    const element = container.querySelector('.nut-shortpassword-title')
+    expect(element).toBeTruthy()
+  })
+  ref.current?.close()
+  waitFor(() => {
+    const element = container.querySelector('.nut-shortpassword-title')
+    expect(element).toBeFalsy()
+  })
 })

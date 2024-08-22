@@ -1,10 +1,8 @@
 # Indicator
 
-## Intro
-
 Displays the progress of a task or process, often used for provisioning processes
 
-## Install
+## Import
 
 ```tsx
 import { Indicator } from '@nutui/nutui-react'
@@ -16,19 +14,7 @@ import { Indicator } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Indicator, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Indicator total={3} current={2} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -36,38 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Indicator, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Indicator total={6} current={5}>
-        <div
-          style={{
-            display: 'inline-block',
-            width: '14px',
-            height: '14px',
-            lineHeight: '14px',
-            textAlign: 'center',
-            fontSize: '12px',
-            color: '#FFFFFF',
-            border: '1px solid #FFFFFF',
-            borderRadius: '50%',
-            margin: '4px',
-            background: `var(--nutui-color-primary)`,
-            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
-          }}
-        >
-          {5}
-        </div>
-      </Indicator>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -75,28 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react';
-
-const customTheme = {
-  nutuiIndicatorColor: '#3768fa',
-  nutuiIndicatorDotColor: '#ddd',
-  nutuiIndicatorDotSize: '8px',
-  nutuiIndicatorDotActiveSize: '24px',
-}
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={customTheme}>
-        <Indicator total={6} current={5} />
-      </ConfigProvider>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -104,46 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Indicator, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Indicator total={6} current={5} direction="vertical">
-        <div
-          style={{
-            display: 'inline-block',
-            width: '14px',
-            height: '14px',
-            lineHeight: '14px',
-            textAlign: 'center',
-            fontSize: '12px',
-            color: '#FFFFFF',
-            border: '1px solid #FFFFFF',
-            borderRadius: '50%',
-            margin: '4px',
-            background: `var(--nutui-color-primary)`,
-            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
-          }}
-        >
-          {5}
-        </div>
-      </Indicator>
-      <Indicator
-        total={6}
-        current={2}
-        direction="vertical"
-        style={{
-          marginLeft: '50px',
-        }}
-      />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

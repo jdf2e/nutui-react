@@ -1,98 +1,62 @@
 # Notify 消息通知
 
-## 介绍
-
 在页面顶部展示消息提示
 
-## 安装
+## 引入
 
 ```tsx
-import { Notify } from '@nutui/nutui-react-taro';
+import { Notify } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        type: 'danger',
-    })
-    const changeNotify = (message: string, type?: string) => {
-        const change = Object.assign(states, {message,type})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Notify
-                visible={showNotify}
-                type={states.type}
-                onClose={() => {
-                    SetShowNotify(false)
-                }}
-                onClick={() => {
-                    console.log('click')
-                }}
-            >{states.message}</Notify>
-            <Cell
-                title="基础用法"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify(translated.basic)
-                    SetShowNotify(true)
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
 ### 函数调用
+
 ```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
+import React, { useState } from 'react'
+import { Notify, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        type: 'danger',
-    })
-    const changeNotify = (message: string, type?: string) => {
-        const change = Object.assign(states, {message,type})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Notify
-                id="test"
-                visible={showNotify}
-                type={states.type}
-                onClose={() => {
-                    SetShowNotify(false)
-                }}
-                onClick={() => {
-                    console.log('click')
-                }}
-            >{states.message}</Notify>
-            <Cell
-                title="函数调用"
-                onClick={(event: React.MouseEvent) => {
-                  Notify.open('test')
-                }}
-            />
-        </>
-    )
+  const [showNotify, SetShowNotify] = useState(false)
+  const [states, SetStates] = useState({
+    message: '',
+    type: 'danger',
+  })
+  const changeNotify = (message: string, type?: string) => {
+    const change = Object.assign(states, { message, type })
+    SetStates(change)
+  }
+  return (
+    <>
+      <Notify
+        id="test"
+        visible={showNotify}
+        type={states.type}
+        onClose={() => {
+          SetShowNotify(false)
+        }}
+        onClick={() => {
+          console.log('click')
+        }}
+      >
+        {states.message}
+      </Notify>
+      <Cell
+        title="函数调用"
+        onClick={(event: React.MouseEvent) => {
+          Notify.open('test')
+        }}
+      />
+    </>
+  )
 }
 export default App
 ```
@@ -101,62 +65,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        type: 'danger',
-    })
-    const changeNotify = (message: string, type: string) => {
-        const change = Object.assign(states, {message,type})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Notify
-                visible={showNotify}
-                type={states.type}
-                onClose={() => {
-                    SetShowNotify(false)
-                }}
-            >{states.message}</Notify>
-            <Cell
-                title="主要通知"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('主要通知','primary')
-                    SetShowNotify(true)
-                }}
-            />
-            <Cell
-                title="成功通知"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('成功通知','success')
-                    SetShowNotify(true)
-                }}
-            />
-            <Cell
-                title="危险通知"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('危险通知','danger')
-                    SetShowNotify(true)
-                }}
-            />
-            <Cell
-                title="警告通知"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('警告通知','warning')
-                    SetShowNotify(true)
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -164,36 +73,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const [customShow, SetCustomShow] = useState(false)
-    return (
-        <>
-            <Notify
-                className="customer"
-                visible={customShow}
-                style={{
-                '--nutui-notify-text-color': '#ad0000',
-                '--nutui-notify-base-background-color': '#ffe1e1',
-            }}
-                onClose={() => {
-                    SetCustomShow(false)
-                }}
-            >自定义背景色和字体颜色</Notify>
-            <Cell
-                title="自定义背景色和字体颜色"
-                onClick={(event: React.MouseEvent) => {
-                    SetCustomShow(true)
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -201,49 +81,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Notify, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        duration:3000,
-        position:'top'
-    })
-    const changeNotify = (message: string, duration?: string,position?:string) => {
-        const change = Object.assign(states, {message,duration,position})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Notify
-                visible={showNotify}
-                position={states.position}
-                onClose={() => {
-                    SetShowNotify(false)
-                }}
-            >{states.message}</Notify>
-            <Cell
-                title="自定义时长"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('自定义时长', 5000)
-                    SetShowNotify(true)
-                }}
-            />
-            <Cell
-                title="自定义位置"
-                onClick={(event: React.MouseEvent) => {
-                    changeNotify('自定义位置在底部', 5000,  'bottom')
-                    SetShowNotify(true)
-                }}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 

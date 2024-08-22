@@ -1,13 +1,11 @@
 # VirtualList
 
-## Intro
-
 In normal list show and pull-up loading, we usually use the InfiniteLoading component provided by NutUI. If we load a large amount of data, serious performance problems may occur, resulting in the view unable to respond to the operation for a period of time. At this time, we use the virtual list component list, which can ensure that only the current visual area is rendered, Other parts are rendered after the user scrolls to the visible area. Ensure page flow and improve performance.
 
-## Install
+## Import
 
 ```tsx
-import { Virtuallist } from '@nutui/nutui-react';
+import { Virtuallist } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,41 +14,7 @@ import { Virtuallist } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemRender = (data, dataIndex) => {
-    return <p>Custom-{data}-{dataIndex}</p>
-  }
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-      <VirtualList
-        itemHeight={66}
-        list={list}
-        itemRender={itemRender}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -58,50 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
- const onScroll = () => {
-    if (pageNo > 100) return
-    setPageNo(pageNo + 1)
-  }
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemVariable = (data, dataIndex) => {
-    return (
-      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
-    )
-  }
-  /** ItemSize Indicates the maximum size of the first screen element */
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-      <VirtualList
-        list={list}
-        itemRender={itemVariable}
-        itemHeight={128}
-        itemEqual={false}
-        onScroll={onScroll}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -109,42 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-  const [pageNo, setPageNo] = useState(1)
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemRender = (data, dataIndex) => {
-    return <p>Custom-{data}-{dataIndex}</p>
-  }
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar'>
-      <VirtualList
-        list={list}
-        itemRender={itemRender}
-        itemHeight={124}
-        direction="horizontal"
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -152,51 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { VirtualList } from '@nutui/nutui-react';
-
-const App =() => {
-  const [list, setsourceData] = useState([])
-
-  const getData = useCallback(() => {
-    const datas = []
-    const pageSize = 90
-    for (let i = 10; i < pageSize; i++) {
-      datas.push(`${i} Item`)
-    }
-    setsourceData((list) => {
-      return [...list, ...datas]
-    })
-  }, [])
-  const onScroll = () => {
-    if (pageNo > 100) return
-    setPageNo(pageNo + 1)
-  }
-  useEffect(() => {
-    getData()
-  }, [getData])
-  const itemVariable = (data, dataIndex) => {
-    return (
-      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
-    )
-  }
-  /** ItemSize Indicates the maximum size of the first screen element */
-  return (
-    <div className='nut-virtualList-demo-box  hideScrollbar'>
-      <VirtualList
-        list={list}
-        itemHeight={300}
-        itemRender={itemVariable}
-        direction="horizontal"
-        itemEqual={false}
-        onScroll={onScroll}
-      />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

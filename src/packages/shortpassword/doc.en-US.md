@@ -1,13 +1,11 @@
 # ShortPassword
 
-## Intro
-
 Short password input box, which can be used to enter passwords, SMS verification codes, etc.
 
-## Install
+## Import
 
 ```tsx
-import { ShortPassword } from '@nutui/nutui-react';
+import { ShortPassword } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,46 +14,7 @@ import { ShortPassword } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible1, setVisible1] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  return (
-    <>
-      <Cell title="Basic Usage" onClick={() => setVisible1(true)} />
-      <ShortPassword
-        visible={visible1}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible1(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -63,47 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible2, setVisible2] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  return (
-    <>
-      <Cell title="Display Plaintext" onClick={() => setVisible2(true)} />
-      <ShortPassword
-        visible={visible2}
-        value={value}
-        plain
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible2(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -111,56 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-import { Star } from '@nutui/icons-react';
-
-const App = () => {
-  const [visible3, setVisible3] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  return (
-    <>
-      <Cell title="显示按钮组" onClick={() => setVisible3(true)} />
-      <ShortPassword
-        visible={visible3}
-        value={value}
-        tips={
-          <>
-            <Star width={11} height={11} />
-            自定义提示语
-          </>
-        }
-        hideFooter={false}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible3(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onConfirm={() => setVisible3(false)}
-        onCancel={() => setVisible3(false)}
-        onComplete={() => setVisible(false)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -168,47 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible4, setVisible4] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  return (
-    <>
-      <Cell title="Custom Password Length" onClick={() => setVisible4(true)} />
-      <ShortPassword
-        visible={visible4}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible4(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-        length={4}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -216,50 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible5, setVisible5] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  const onTips = () => {
-    console.log("Forget password callback")
-  }
-  return (
-    <>
-      <Cell title="Forget password callback" onClick={() => setVisible5(true)} />
-      <ShortPassword
-        visible={visible5}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible5(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onTips={() => onTips()}
-        onComplete={() => setVisible(false)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -267,47 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible6, setVisible6] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState('')
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  return (
-    <>
-      <Cell title="Auto Focus" onClick={() => setVisible6(true)} />
-      <ShortPassword
-        visible={visible6}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible6(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-        autoFocus
-      />
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -324,7 +71,7 @@ export default App;
 | description | description | `ReactNode` | `Verify` |
 | tips | tips | `ReactNode` | `Forget password` |
 | hideFooter | whether to hide the bottom button | `boolean` | `true` |
-| length | ShortPassword lenght The value is 4~6 | `number` | `6` |
+| length | ShortPassword length The value is 4~6 | `number` | `6` |
 | error | Error message | `ReactNode` | `-` |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
 | onChange | Trigger event when password is entered | `(value) => void` | `-` |

@@ -1,13 +1,11 @@
 # PullToRefresh
 
-## Intro
-
 An interaction to load new content with a finger pull-to-refresh in a list.
 
-## Install
+## Import
 
 ```tsx
-import { PullToRefresh } from '@nutui/nutui-react';
+import { PullToRefresh } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,27 +14,15 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, {useState}  from "react";
-import { PullToRefresh, Cell } from '@nutui/nutui-react'
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <PullToRefresh>
-          {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
-          ))}
-        </PullToRefresh>
-      </div>
-    </>
-  )
-}
+:::
 
-export default App
-```
+### type="primary"
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -66,5 +52,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-pulltorefresh-icon-width | Swipe to icon width  | `36px` |
-| \--nutui-pulltorefresh-icon-height | Swipe to icon height   | `26px` |
+| \--nutui-pulltorefresh-icon-width | Swipe to icon width | `36px` |
+| \--nutui-pulltorefresh-icon-height | Swipe to icon height | `26px` |
+| \--nutui-pulltorefresh-color-primary | When background is deep | `$color-primay` |

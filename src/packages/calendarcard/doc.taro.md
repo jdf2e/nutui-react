@@ -1,36 +1,20 @@
 # CalendarCard 日历
 
-## 介绍
-
 日历
 
-## 安装
+## 引入
 
 ```tsx
-import { CalendarCard } from '@nutui/nutui-react-taro';
+import { CalendarCard } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 选择单个日期
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-// const date = null;
-const date = new Date('2023-01-01');
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard defaultValue={date} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,23 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [val, setVal] = useState(() => {
-    // return [];
-    return [new Date('2023-01-01'), new Date('2023-01-03')];
-  })
-  const onChange = (val) => {
-    setVal(val);
-    console.log(val);
-  };
-  return <CalendarCard type="multiple" value={val} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,18 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard type="range" onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,18 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard type="week" onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -100,20 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [date, setDate] = useState(() => new Date('2023-01-01'));
-  const onChange = (val) => {
-    console.log(val);
-    setDate(val);
-  };
-  return <CalendarCard value={date} onChange={onChange} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -121,28 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const renderDayTop = (day) => {
-    return day.date === 8 ? '☺' : ''
-  }
-  const renderDay = (day) => {
-    return day.date <= 9 ? `0${day.date}` : day.date
-  }
-  const renderDayBottom = (day) => {
-    return day.date === 8 ? '节日' : ''
-  }
-  return <CalendarCard
-    renderDayTop={renderDayTop}
-    renderDay={renderDay}
-    renderDayBottom={renderDayBottom}
-  />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -150,18 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard firstDayOfWeek={1} onChange={change} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -169,22 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard
-    startDate={new Date('2023-08-01')}
-    endDate={new Date('2025-11-11')}
-    onChange={change}
-  />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -192,24 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const onChange = (val) => {
-    console.log(val);
-  };
-  return <CalendarCard
-    disableDay={(day) => {
-      const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-      return d === 1 || d === 3
-    }}
-    onChange={change}
-  />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -217,37 +86,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, Popup, Button, CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const [date, setDate] = useState(null)
-  return <>
-    <Cell
-      title="点击选择日期"
-      description={String(date)}
-      onClick={() => setVisible(true)}
-    />
-    <Popup
-      title="选择日期"
-      visible={visible}
-      position="bottom"
-      closeable
-      onClose={() => setVisible(false)}
-    >
-      <CalendarCard value={date} onChange={(d) => setDate(d)} />
-      <div style={{ padding: '10px' }}>
-        <Button block type="danger" onClick={() => setVisible(false)}>
-          确定
-        </Button>
-      </div>
-    </Popup>
-  </>;
-};
-export default App;
-```
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -255,30 +94,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Space, Button, CalendarCard } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const CalendarCardRef = useRef(null)
-  return <>
-    <Space>
-      <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
-      <Button onClick={() => CalendarCardRef.current?.jump(12)}>
-        + 12
-      </Button>
-      <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
-        - 12
-      </Button>
-      <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
-        2023 01
-      </Button>
-    </Space>
-    <CalendarCard ref={CalendarCardRef} />
-  </>;
-};
-export default App;
-```
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -318,7 +134,7 @@ export default App;
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
-| jumpTo | 跳转至特定的年月 | `year: number, month: number`|
+| jumpTo | 跳转至特定的年月 | `year: number, month: number` |
 
 ## 主题定制
 

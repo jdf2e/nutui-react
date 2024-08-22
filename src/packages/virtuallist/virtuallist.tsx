@@ -221,11 +221,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
               return (
                 <li
                   data-index={`${dataIndex}`}
-                  className={
-                    dataIndex % 2 === 0
-                      ? 'nut-virtuallist-item even'
-                      : 'nut-virtuallist-item odd'
-                  }
+                  className="nut-virtuallist-item"
                   key={`${keyVal}`}
                   style={{ display: styleVal }}
                 >
@@ -239,5 +235,4 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   )
 }
 
-VirtualList.defaultProps = defaultProps
 VirtualList.displayName = 'NutVirtualList'

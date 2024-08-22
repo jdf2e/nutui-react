@@ -1,13 +1,9 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { CalendarDay } from '@/packages/calendar/types'
 
 import { Calendar } from '../calendar'
-
-interface Day {
-  day: string | number
-  type: string
-}
 
 test('show-title prop', async () => {
   const { container, rerender } = render(
@@ -93,12 +89,12 @@ test('should render slot correctly', async () => {
     return <div className="d_div"> 最近七天</div>
   }
 
-  const renderDay = (date: Day) => {
+  const renderDay = (date: CalendarDay) => {
     return <span>custom{date.day}</span>
   }
 
-  const renderDayBottom = (date: Day) => {
-    return <span>{date.day <= 10 ? '上旬' : '下旬'}</span>
+  const renderDayBottom = (date: CalendarDay) => {
+    return <span>{Number(date.day) <= 10 ? '上旬' : '下旬'}</span>
   }
 
   const { container } = render(
@@ -122,7 +118,7 @@ test('should render slot correctly', async () => {
 })
 
 test('select event when click item', () => {
-  const onDayClick = jest.fn()
+  const onDayClick = vi.fn()
   const { container } = render(
     <Calendar
       visible
@@ -140,7 +136,7 @@ test('select event when click item', () => {
 })
 
 test('choose event when click item', async () => {
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
   const { container } = render(
     <Calendar
       visible

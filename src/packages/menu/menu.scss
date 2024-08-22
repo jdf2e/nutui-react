@@ -3,6 +3,7 @@
 
 .nut-menu {
   position: relative;
+
   &.scroll-fixed {
     position: fixed;
     top: $menu-scroll-fixed-top;
@@ -22,6 +23,7 @@
     z-index: $menu-bar-opened-z-index;
   }
 }
+
 .nut-menu-title {
   flex: 1;
   text-align: center;
@@ -40,6 +42,7 @@
   }
 
   &-icon {
+    flex-shrink: 0;
     transition: all 0.2s linear;
   }
 

@@ -7,11 +7,11 @@ import {
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type LoadingType = 'spinner' | 'circular'
-export type DirectionType = 'horizontal' | 'vertical'
+export type LoadingDirection = 'horizontal' | 'vertical'
 
 export interface LoadingProps extends BasicComponent {
   type: LoadingType
-  direction: DirectionType
+  direction: LoadingDirection
   icon?: ReactNode
 }
 
@@ -55,5 +55,4 @@ export const Loading: FunctionComponent<
   )
 }
 
-Loading.defaultProps = defaultProps
 Loading.displayName = 'NutLoading'

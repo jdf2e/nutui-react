@@ -23,18 +23,22 @@ export function useTouch() {
   const offsetX = useRef(0)
   const offsetY = useRef(0)
   const direction = useRef<Direction>('')
-  const touchTime = useRef<number | null>(null)
+  const last = useRef(false)
+  const velocity = useRef(0)
+  const touchTime = useRef<number>(Date.now())
 
   const isVertical = () => direction.current === 'vertical'
   const isHorizontal = () => direction.current === 'horizontal'
 
   const reset = () => {
-    touchTime.current = null
+    touchTime.current = Date.now()
     deltaX.current = 0
     deltaY.current = 0
     offsetX.current = 0
     offsetY.current = 0
+    delta.current = 0
     direction.current = ''
+    last.current = false
   }
 
   const start = (event: React.TouchEvent<HTMLElement>) => {
@@ -57,8 +61,15 @@ export function useTouch() {
       direction.current = getDirection(offsetX.current, offsetY.current)
     }
   }
+  const end = (event: React.TouchEvent<HTMLElement>) => {
+    last.current = true
+    velocity.current =
+      Math.sqrt(deltaX.current ** 2 + deltaY.current ** 2) /
+      (Date.now() - touchTime.current)
+  }
 
   return {
+    end,
     move,
     start,
     reset,
@@ -73,5 +84,6 @@ export function useTouch() {
     direction,
     isVertical,
     isHorizontal,
+    last,
   }
 }

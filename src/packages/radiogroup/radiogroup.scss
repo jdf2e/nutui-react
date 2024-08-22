@@ -1,6 +1,6 @@
 .nut-radiogroup {
   .nut-radio {
-    margin: $radiogroup-radio-margin;
+    margin: 0 $radiogroup-radio-margin $radiogroup-radio-margin-bottom 0;
 
     &-label {
       margin: $radiogroup-radio-label-margin;
@@ -48,5 +48,13 @@
     background: $color-text-disabled;
     color: $white;
     border: 1px solid $color-text-disabled;
+  }
+}
+
+[dir='rtl'] .nut-radiogroup,
+.nut-rtl .nut-radiogroup {
+  .nut-radio {
+    margin-left: $radiogroup-radio-margin;
+    margin-right: 0;
   }
 }

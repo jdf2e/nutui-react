@@ -40,7 +40,7 @@ export const Steps: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-${direction}`]: true,
-      [`${classPrefix}-dot`]: !!props.dot,
+      [`${classPrefix}-dot`]: !!dot,
     },
     className
   )
@@ -53,5 +53,4 @@ export const Steps: FunctionComponent<
   )
 }
 
-Steps.defaultProps = defaultProps
 Steps.displayName = 'NutSteps'

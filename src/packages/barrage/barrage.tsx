@@ -49,6 +49,8 @@ const InternalBarrage: ForwardRefRenderFunction<
   const barrageCWidth = useRef(0)
   const timer = useRef(0)
   const index = useRef(0)
+  const times = useRef<number[]>([])
+  const historyIndex = useRef(-1)
 
   const classes = classNames(classPrefix, className)
 
@@ -82,17 +84,35 @@ const InternalBarrage: ForwardRefRenderFunction<
 
   const run = () => {
     clearInterval(timer.current)
+    let intervalCache = interval
+    const _index = (loop ? index.current % list.length : index.current) % rows
+    const result = times.current[_index] - rows * interval
+    if (result > 0) {
+      intervalCache += result
+    }
     timer.current = window.setTimeout(() => {
       play()
-    }, interval)
+    }, intervalCache)
   }
 
   const play = () => {
     if (!loop && index.current >= list.length) {
       return
     }
+
     const _index = loop ? index.current % list.length : index.current
     const el = document.createElement(`div`)
+
+    let currentIndex = _index % rows
+    if (
+      currentIndex <= historyIndex.current ||
+      (historyIndex.current === 3 && currentIndex !== 0) ||
+      Math.abs(currentIndex - historyIndex.current) !== 1
+    ) {
+      currentIndex =
+        historyIndex.current + 1 >= rows ? 0 : historyIndex.current + 1
+    }
+    historyIndex.current = currentIndex
 
     el.innerHTML = list[_index] as string
     el.classList.add('barrage-item')
@@ -101,8 +121,12 @@ const InternalBarrage: ForwardRefRenderFunction<
     const width = el.offsetWidth
     const height = el.offsetHeight
     el.classList.add('move')
-    el.style.animationDuration = `${duration}ms`
-    el.style.top = `${(_index % rows) * (height + gapY) + 20}px`
+    const elScrollDuration = Math.ceil(
+      (width / barrageCWidth.current) * duration
+    )
+    times.current[currentIndex] = elScrollDuration
+    el.style.animationDuration = `${duration + elScrollDuration}ms`
+    el.style.top = `${currentIndex * (height + gapY) + 20}px`
     el.style.width = `${width}px`
 
     el.addEventListener('animationend', () => {
@@ -123,5 +147,4 @@ export const Barrage = React.forwardRef<unknown, Partial<BarrageProps>>(
   InternalBarrage
 )
 
-Barrage.defaultProps = defaultProps
 Barrage.displayName = 'NutBarrage'

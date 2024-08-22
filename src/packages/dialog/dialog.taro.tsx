@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
@@ -33,7 +33,7 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeIconPosition: 'top-right',
+  closeIconPosition: 'bottom',
   closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
@@ -46,6 +46,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
 } = (props) => {
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
+  const [loading, setLoading] = useState(false)
 
   const {
     params: {
@@ -101,10 +102,16 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onCancel?.()
     }
 
-    const handleOk = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
-      onClose?.()
-      onConfirm?.(e)
+      setLoading(true)
+      try {
+        await onConfirm?.(e)
+        setLoading(false)
+        onClose?.()
+      } catch {
+        setLoading(false)
+      }
     }
 
     return (
@@ -127,6 +134,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
               })}
               disabled={disableConfirmButton}
               onClick={(e) => handleOk(e)}
+              loading={loading}
             >
               {confirmText || locale.confirm}
             </Button>
@@ -217,7 +225,7 @@ export function close(selector: string) {
   customEvents.trigger(path, { status: false })
 }
 
-BaseDialog.defaultProps = defaultProps
+BaseDialog.defaultProps = defaultProps // 不可删除
 BaseDialog.displayName = 'NutDialog'
 BaseDialog.open = open
 BaseDialog.close = close

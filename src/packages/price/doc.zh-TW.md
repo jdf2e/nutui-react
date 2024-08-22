@@ -1,42 +1,20 @@
 # Price 價格
 
-## 介紹
-
 用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、仟位分隔符、設置小數點位數等功能。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Price } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法 small normal large
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <>
-        <Cell>
-            <Price price={0} size="small"  thousands />
-        </Cell>
-        <Cell>
-            <Price price={0} size="normal"  thousands />
-        </Cell>
-        <Cell>
-            <Price price={0} size="large"  thousands />
-        </Cell>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,24 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price
-          price={8888}
-          digits={0}
-          size="normal"
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -69,19 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={10010.01} size="normal"  thousands={false} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -89,24 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-         <Price
-          price={15213.1221}
-          size="normal"
-          digits={3}
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -114,25 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price
-          price={8888.01}
-          size="normal"
-          position="after"
-          symbol="元"
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -140,19 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={15213.1221} size="normal" symbol="" />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -160,34 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [price, setPrice] = useState(Math.random() * 10000000)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPrice(Math.random() * 10000000)
-    }, 1000)
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
-  return (
-    <Cell>
-        <Price
-          price={price}
-          digits={3}
-          size="normal"
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -195,21 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={1513.12} size="normal" thousands />
-        <span>&nbsp;</span>
-        <Price price={1513.88} thousands line />
-      </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -245,5 +106,5 @@ export default App;
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
 | \--nutui-price-line-font-size | 劃線價字體大小 | `10px` |
-| \--nutui-price-line-color | 劃線價顏色 |  `#757575` |
-| \--nutui-price-symbol-padding-right | 符號的右內邊距 |  `1px` |
+| \--nutui-price-line-color | 劃線價顏色 | `#757575` |
+| \--nutui-price-symbol-padding-right | 符號的右內邊距 | `1px` |

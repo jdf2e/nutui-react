@@ -1,13 +1,11 @@
 # SideNavBar组件
 
-## Intro
-
 For content selection and switching
 
-## Install
+## Import
 
 ```tsx
-import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,119 +14,15 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-    const [navBarState, setNavBarState] = useState({
-    visible: false,
-    position: 'left',
-  })
-  const changeNarBar = (visible, position= navBarState.position) => {
-    setNavBarState({
-      visible,
-      position,
-    })
-  }
- 
-  return ( 
-    <>   
-    <Cell
-          title="left"
-          
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="right"
-          
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首页"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="Level 1 title" value="1-0" >
-            <SideNavBarItem title="Level 1 content-1" value="1-01" />
-            <SideNavBarItem title="Level 1 content-2" value="1-02" />
-            <SubSideNavBar title="Level 2 title" value="2-0">
-              <SideNavBarItem title="Level 2 content-1" value="2-01" />
-              <SideNavBarItem title="Level 2 content-2" value="2-02" />
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### Nesting (up to three layers recommended)
+### Navigation Nesting (Up To Three Levels Recommended)
 
 :::demo
 
-```tsx
-import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
-  }
-  const clickItem = ({ title, value }) => {
-    Toast.show(`title=${title},value=${value}`)
-  }
-  const clickTitle = ({ title, value, isShow }) => {
-    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
-  }
-  return ( 
-    <>  
-      <Cell
-          title="show"
-          
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首页"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="Level 1 title" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="Level 1 content-2" value="1-02" />
-            <SubSideNavBar title="Level 2 title" value="2-0">
-              <SideNavBarItem title="Level 2 content-1" value="2-01" />
-              <SideNavBarItem title="Level 2 content-2" value="2-02" />
-                <SubSideNavBar title="Level 3 title" value="3-0">
-                  <SideNavBarItem title="Level 3 content-1" value="3-01" />
-                  <SideNavBarItem title="Level 3 content-2" value="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
-          </SubSideNavBar>
-        </SideNavBar>
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -151,10 +45,10 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string`  \|  `number` | `-` |
+| value | unique identifier for navigation | `string` \| `number` | `-` |
 | title | overall title | `string` | `-` |
 | open | whether the navigation is expanded by default | `boolean` | `true` |
-| onClick | Navigation click | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| onClick | Navigation click | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -162,9 +56,9 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string`  \|  `number` | `-` |
+| value | unique identifier for navigation | `string` \| `number` | `-` |
 | title | overall title | `string` | `-` |
-| onClick | Navigation click | `data: {title: string, value: string \| number}` | `-` |
+| onClick | Navigation click | `({title: string, value: string \| number}) => void` | `-` |
 
 ## Theming
 

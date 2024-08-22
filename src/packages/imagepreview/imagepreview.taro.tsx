@@ -7,11 +7,10 @@ import React, {
   ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { Video as TaroVideo } from '@tarojs/components'
+import { ITouchEvent, Video as TaroVideo, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
-import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
@@ -27,25 +26,32 @@ interface Store {
 
 export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
-export interface ImagePreviewProps extends BasicComponent {
-  images: Array<{
+export interface ImageOption {
+  src: string
+  index?: number
+}
+
+export interface VideoOption {
+  source: {
     src: string
-  }>
-  videos: Array<{
-    source: {
-      src: string
-      type: string
-    }
-    options: {
-      muted: boolean
-      controls: boolean
-    }
-  }>
+    type: string
+  }
+  options: {
+    muted: boolean
+    controls: boolean
+  }
+  index?: number
+}
+
+export interface ImagePreviewProps extends BasicComponent {
+  images: Array<ImageOption>
+  videos: Array<VideoOption>
   visible: boolean
   autoPlay: boolean
   value?: number
   defaultValue: number
   closeOnContentClick: boolean
+  pagination: boolean
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
@@ -63,6 +69,7 @@ const defaultProps = {
   autoPlay: false,
   defaultValue: 1,
   closeOnContentClick: false,
+  pagination: true,
   indicator: false,
   indicatorColor: '#fff',
   closeIcon: false,
@@ -75,6 +82,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    value,
     className,
     style,
     images,
@@ -82,6 +90,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     visible,
     defaultValue,
     indicatorColor,
+    pagination,
     indicator,
     autoPlay,
     closeOnContentClick,
@@ -89,15 +98,16 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     closeIconPosition,
     showMenuByLongpress,
     onClose,
-  } = props
+    onChange,
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
-    value: props.value,
+    value,
     defaultValue,
     finalValue: defaultValue,
     onChange: (val: number) => {
-      props.onChange?.(val)
+      onChange?.(val)
     },
   })
 
@@ -239,9 +249,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    props.onChange?.(page + 1)
+    onChange?.(page + 1)
   }
-  const onCloseInner = () => {
+  const onCloseInner = (e: ITouchEvent | React.MouseEvent) => {
+    e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
@@ -251,10 +262,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scale: 1,
     })
   }
-  const closeOnImg = () => {
+  const closeOnImg = (e: ITouchEvent | React.MouseEvent) => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
+    e.stopPropagation()
     if (closeOnContentClick) {
-      onCloseInner()
+      onCloseInner(e)
     }
   }
 
@@ -269,7 +281,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
-        onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         <Swiper
@@ -288,51 +299,67 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}
         >
-          {(videos && videos.length > 0
-            ? videos.map((item, index) => {
+          {(videos ?? [])
+            .map(
+              (item) =>
+                ({ type: 'video', data: item }) as {
+                  type: 'video' | 'image'
+                  data: ImageOption | VideoOption
+                }
+            )
+            .concat(
+              (images ?? []).map((item) => ({ type: 'image', data: item }))
+            )
+            .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
+            .map((item, index) => {
+              if (item.type === 'video') {
+                const { source, options } = item.data as VideoOption
                 return (
                   <SwiperItem
                     key={index}
                     className="nut-imagepreview-swiper-item"
                   >
                     <TaroVideo
-                      src={item.source.src}
-                      controls={item.options.controls}
+                      src={source.src}
+                      onClick={closeOnImg}
+                      controls={options.controls}
                       autoplay={false}
                       loop={false}
-                      muted={item.options.muted}
+                      muted={options.muted}
                     />
                   </SwiperItem>
                 )
-              })
-            : []
-          ).concat(
-            images && images.length > 0
-              ? images.map((item, index) => {
-                  return (
-                    <SwiperItem
-                      key={index}
-                      className="nut-imagepreview-swiper-item"
-                    >
-                      {Taro.getEnv() === 'WEB' ? (
-                        <Image src={item.src} mode="aspectFit" />
-                      ) : (
-                        <Image
-                          src={item.src}
-                          mode="aspectFit"
-                          showMenuByLongpress={!!showMenuByLongpress}
-                        />
-                      )}
-                    </SwiperItem>
-                  )
-                })
-              : []
-          )}
+              }
+              if (item.type === 'image') {
+                const { src } = item.data as ImageOption
+                return (
+                  <SwiperItem
+                    key={index}
+                    className="nut-imagepreview-swiper-item"
+                  >
+                    (
+                    <Image
+                      src={src}
+                      mode="widthFix"
+                      onClick={closeOnImg}
+                      style={{ width: '100%' }}
+                      {...(Taro.getEnv() !== 'WEB' && {
+                        showMenuByLongpress,
+                      })}
+                    />
+                    )
+                  </SwiperItem>
+                )
+              }
+              return null
+            })}
         </Swiper>
       </div>
-      <div className={`${classPrefix}-index`}>
-        {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-      </div>
+      {pagination ? (
+        <div className={`${classPrefix}-index`}>
+          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
+        </div>
+      ) : null}
       {closeIcon !== false ? (
         <div
           className={`${classPrefix}-close ${closeIconPosition}`}
@@ -345,5 +372,4 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   )
 }
 
-ImagePreview.defaultProps = defaultProps
 ImagePreview.displayName = 'NutImagePreview'

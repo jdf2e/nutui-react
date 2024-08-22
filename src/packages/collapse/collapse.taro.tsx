@@ -5,19 +5,23 @@ import CollapseItem from '../collapseitem/index.taro'
 import CollapseContext from './context'
 import { usePropsValue } from '@/utils/use-props-value'
 
-type keyType = Array<string> | string
+export type CollapseActiveName = Array<string> | string
 
 export interface CollapseProps extends BasicComponent {
-  activeName: keyType
-  defaultActiveName: keyType
+  activeName: CollapseActiveName
+  defaultActiveName: CollapseActiveName
   accordion: boolean
   expandIcon: ReactNode
   rotate: number
-  onChange: (activeName: keyType, name: string, isOpen: boolean) => void
+  onChange: (
+    activeName: CollapseActiveName,
+    name: string,
+    isOpen: boolean
+  ) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
-  defaultActiveName: [] as keyType,
+  defaultActiveName: [] as CollapseActiveName,
   accordion: false,
   expandIcon: null,
   rotate: 180,
@@ -42,13 +46,17 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
   }
   const classPrefix = 'nut-collapse'
 
-  const [value, setValue] = usePropsValue<keyType>({
+  const [value, setValue] = usePropsValue<CollapseActiveName>({
     value: activeName,
     defaultValue: defaultActiveName,
     finalValue: [],
   })
 
-  const changeVal = (newValue: keyType, name: string, isOpen: boolean) => {
+  const changeVal = (
+    newValue: CollapseActiveName,
+    name: string,
+    isOpen: boolean
+  ) => {
     setValue(newValue)
     onChange && onChange(newValue, name, isOpen)
   }
@@ -102,6 +110,5 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
   )
 }
 
-Collapse.defaultProps = defaultProps
 Collapse.displayName = 'NutCollapse'
 Collapse.Item = CollapseItem

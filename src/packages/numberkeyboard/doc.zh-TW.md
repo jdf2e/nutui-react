@@ -1,51 +1,20 @@
 # NumberKeyboard 數字鍵盤
 
-## 介紹
-
 虛擬數字鍵盤，用於輸入支付密碼的場景。
 
-## 安裝
+## 引入
 
 ```tsx
-import { NumberKeyboard } from '@nutui/nutui-react';
+import { NumberKeyboard } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
-### 基礎用法
+### 默認鍵盤
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`輸入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('刪除')
-  }
-  return (
-    <>
-      <Cell
-        title="基礎用法"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -53,38 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`輸入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('刪除')
-  }
-  return (
-    <>
-      <Cell
-        title="帶右側欄鍵盤"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        type="rightColumn"
-        custom={['.', 'x']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -92,37 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`輸入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('刪除')
-  }
-  return (
-    <>
-      <Cell
-        title="隨機數鍵盤"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        random
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -132,38 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`輸入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('刪除')
-  }
-  return (
-    <>
-      <Cell
-        title="帶標題欄鍵盤"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        title="標題"
-        custom={['.']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -171,37 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`輸入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('刪除')
-  }
-  return (
-    <>
-      <Cell
-        title="身份證鍵盤"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        custom={['X']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -209,41 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Show IdNumber Keyboard"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-        duration={1}
-        overlayClassName="number-keyboard-overlay"
-        onOpen={() => {
-          Toast.show('onOpen')
-        }}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -259,7 +72,7 @@ export default App;
 | type | 鍵盤模式, default：默認樣式 rightColumn：帶右側欄 | `'default' \| 'rightColumn'` | `default` |
 | random | 隨機數 | `boolean` | `false` |
 | custom | 自定義鍵盤額外的鍵, 數組形式最多支持添加 2 個, 超出默認取前 2 項 | `string[]` | `-` |
-| confirmText | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等，搭配 `rightColumn` 使用| `string` | `完成` |
+| confirmText | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等，搭配 `rightColumn` 使用 | `string` | `完成` |
 | onChange | 點擊按鍵時觸發 | `(value: string) => void` | `-` |
 | onDelete | 點擊刪除鍵時觸發 | `-` | `-` |
 | onClose | 點擊關閉按鈕或非鍵盤區域時觸發 | `-` | `-` |

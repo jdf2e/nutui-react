@@ -1,13 +1,11 @@
 # Sticky组件
 
-## Intro
-
 The effect is the same as position: sticky in CSS, which can be used for compatibility with low-end browsers
 
-## Install
+## Import
 
 ```tsx
-import { Sticky } from '@nutui/nutui-react';
+import { Sticky } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,24 +14,7 @@ import { Sticky } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  const handleChange = (val: boolean) => {
-    console.log('The ceiling state has changed, and the current fixed is', val)
-  }
-  return(
-    <>
-        <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
-          <Button type="primary">Ceiling effect</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,21 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  return(
-      <>
-        <Sticky threshold={120}>
-          <Button type="primary">120px from top</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -63,29 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useRef } from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  const containerTopRef = useRef(null)
-   return(
-    <>
-      <div
-        ref={containerTopRef}
-        style={{ height: '600px' }}
-      >
-        <Sticky container={containerTopRef} threshold={57}>
-          <Button type="info" style={{ marginLeft: '100px' }}>
-            Ceiling in specified container
-          </Button>
-        </Sticky>
-      </div>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -93,21 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-   return(
-    <>
-      <Sticky threshold={0} position="bottom">
-        <Button type="primary">0px from bottom</Button>
-      </Sticky>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -117,8 +48,8 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| position | adsorption position| `top` \| `bottom` | `top` |
+| position | adsorption position | `top` \| `bottom` | `top` |
 | threshold | distance, when position is top, set top | `number` | `0` |
 | zIndex | The level when snapping | `number` | `2000` |
 | container | the container's ref | `React.RefObject<HTMLElement>` | `-` |
-| onChange | Triggered when the snap state changes |  `(val: boolean) => void` | `-` |
+| onChange | Triggered when the snap state changes | `(val: boolean) => void` | `-` |

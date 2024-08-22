@@ -34,27 +34,8 @@
   }
 }
 
-.nut-virtualList-demo-item {
-  height: 100px;
-}
-
 .nut-virtualList-box {
   overflow: auto;
-}
-
-.nut-virtualList-demo-box {
-  .heigh1 {
-    height: 500px;
-  }
-
-  &.hideScrollbar {
-    .nut-virtualList-box {
-      &::-webkit-scrollbar {
-        width: 0px;
-        height: 0px;
-      }
-    }
-  }
 }
 
 .nut-virtuallist {
@@ -72,14 +53,25 @@
   }
 
   &-container {
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    position: absolute;
   }
 
   &-item {
     overflow: hidden;
     margin: $list-item-margin;
+  }
+}
+
+[dir='rtl'] .nut-horizontal-items,
+.nut-rtl .nut-horizontal-items {
+  float: right;
+
+  li {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
   }
 }

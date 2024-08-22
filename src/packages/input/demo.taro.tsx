@@ -1,9 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import { Tips, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
+import Demo14 from './demos/taro/demo14'
 
 const InputDemo = () => {
   const [translated] = useTranslate({
@@ -28,6 +41,8 @@ const InputDemo = () => {
       readOnly: '输入框只读',
       disabled: '输入框禁用',
       clear: '显示清除图标',
+      clearControlled: '受控下的清除',
+      clearButton: '点我清除',
       codeplaceholder: '请输入短信验证码',
       sendCode: '获取验证码',
       border: '边框',
@@ -61,6 +76,8 @@ const InputDemo = () => {
       readOnly: 'Input box is read-only',
       disabled: 'Input box disabled',
       clear: 'Show clear icon',
+      clearControlled: 'Clearing in Controlled Mode',
+      clearButton: 'Click to Clear',
       codeplaceholder: 'Please enter the SMS verification code',
       sendCode: 'Get code',
       border: 'border',
@@ -74,10 +91,6 @@ const InputDemo = () => {
       wordCount: 'Word count',
     },
   })
-  const formatter = (value: string) => value.replace(/\d/g, '')
-  const [val, setVal] = useState('NutUI React')
-  const [inputType, setInputType] = useState('password')
-  const [currentLength, setCurrentLength] = useState(0)
 
   return (
     <>
@@ -87,120 +100,33 @@ const InputDemo = () => {
         style={{ paddingBottom: '20px' }}
       >
         <h2>{translated.basic}</h2>
-        <Input
-          placeholder={translated.text}
-          onChange={(v) => {
-            console.log('onChange', v)
-          }}
-        />
+        <Demo1 />
         <h2>{translated.uncontrolled}</h2>
-        <Input defaultValue="NutUI React" placeholder={translated.text} />
+        <Demo2 />
         <h2>{translated.controlled}</h2>
-        <Input
-          value={val}
-          onChange={(val) => setVal(val)}
-          placeholder={translated.text}
-        />
+        <Demo3 />
         <h2>{translated.title1}</h2>
-        <Input type="text" placeholder={translated.text} />
-        <Input type="password" placeholder={translated.password} />
-        <Input type="digit" placeholder={translated.digit} />
-        <Input type="number" placeholder={translated.number} />
+        <Demo4 />
         <h2>{translated.title2}</h2>
-        <Input readOnly placeholder={translated.readOnly} />
-        <Input disabled placeholder={translated.disabled} />
+        <Demo5 />
         <h2>{translated.title3}</h2>
-        <Input type="text" clearable placeholder={translated.clear} />
-        <Input
-          type="text"
-          clearable
-          clearIcon={<Close size={14} />}
-          placeholder={translated.clear}
-        />
+        <Demo6 />
+        <h2>{translated.clearControlled}</h2>
+        <Demo7 />
         <h2>{translated.wordCount}</h2>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: '#fff',
-            padding: '0 10px',
-          }}
-        >
-          <Input
-            type="text"
-            maxLength={20}
-            onChange={(val) => setCurrentLength(val.length)}
-          />
-          <div className="right" style={{ fontSize: '12px' }}>
-            {currentLength} / 20
-          </div>
-        </div>
+        <Demo8 />
         <h2>{translated.password1}</h2>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: '#fff',
-            padding: '0 10px',
-          }}
-        >
-          <Input type={inputType} placeholder={translated.password} />
-          <div
-            className="right"
-            onClick={() =>
-              setInputType(inputType === 'text' ? 'password' : 'text')
-            }
-          >
-            {inputType === 'text' ? (
-              <Eye color="var(--nutui-gray-7)" />
-            ) : (
-              <Marshalling color="var(--nutui-gray-7)" />
-            )}
-          </div>
-        </div>
+        <Demo9 />
         <h2>{translated.title6}</h2>
-        <Input formatter={formatter} placeholder={translated.formatter} />
-        <Input
-          formatter={formatter}
-          formatTrigger="onBlur"
-          placeholder={translated.formatter2}
-        />
+        <Demo10 />
         <h2>{translated.title8}</h2>
-        <Input align="left" placeholder={translated.align} />
-        <Input align="right" placeholder={translated.align} />
+        <Demo11 />
         <h2>{translated.title10}</h2>
-        <Input
-          placeholder={translated.title10}
-          onClick={() => Taro.showToast({ title: 'onClick' })}
-        />
+        <Demo12 />
         <h2>{translated.title11}</h2>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            background: '#fff',
-            padding: '0 10px',
-          }}
-        >
-          <Tips color="var(--nutui-gray-7)" />
-          <Input
-            placeholder={translated.codeplaceholder}
-            style={{ '--nutui-input-padding': '10px' }}
-          />
-          <div
-            className="right"
-            style={{ display: 'flex', alignItems: 'center' }}
-          >
-            <Button type="primary" size="small">
-              {translated.sendCode}
-            </Button>
-          </div>
-        </div>
+        <Demo13 />
         <h2>{translated.border}</h2>
-        <Input
-          style={{ '--nutui-input-border-bottom-width': '1px' }}
-          placeholder={translated.border}
-        />
+        <Demo14 />
       </div>
     </>
   )

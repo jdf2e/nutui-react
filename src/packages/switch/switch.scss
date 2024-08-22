@@ -74,3 +74,27 @@
     }
   }
 }
+
+[dir='rtl'] .nut-switch,
+.nut-rtl .nut-switch {
+  &-base {
+    .nut-switch-button {
+      transform: var(--nutui-switch-inside-close-transform, translateX(-14%));
+    }
+
+    &.nut-switch-open {
+      .nut-switch-button {
+        transform: var(--nutui-switch-inside-open-transform, translateX(-90%));
+      }
+    }
+  }
+  &-label {
+    &.open {
+      transform: translateX(18px);
+    }
+
+    &.close {
+      transform: translateX(-14px);
+    }
+  }
+}

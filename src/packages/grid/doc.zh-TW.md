@@ -1,42 +1,20 @@
 # Grid 宮格
 
-## 介紹
-
 用於分隔成等寬區塊進行頁面導航。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Grid } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,25 +22,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid columns={3}>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -70,22 +30,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid columns={3} square>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -93,27 +38,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid gap={3}>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -121,23 +46,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid reverse>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -145,23 +54,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid direction="horizontal">
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -169,23 +62,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid reverse direction="horizontal">
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -193,28 +70,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react'
-import { Image } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Grid columns="3">
-      <Grid.Item text="文字">
-        <Image width={15} height={15} />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image color="red" />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image width={30} height={30} color="#478EF2" />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -222,28 +78,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid, Image } from '@nutui/nutui-react'
-
-const App = () => {
-  const imgSrc = "https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
-  return (
-    <Grid columns={3} square>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -251,34 +86,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid, Toast } from '@nutui/nutui-react'
-import { Image as ImageIcon } from '@nutui/icons-react'
-
-const App = () => {
-  const onClick = (item: any, index: number) => {
-    Toast.show(`点击了${item.text}，第${index}个`)
-  }
-  return (
-    <Grid direction="horizontal" onClick={onClick}>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 

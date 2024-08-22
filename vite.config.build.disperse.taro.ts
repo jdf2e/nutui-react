@@ -46,11 +46,13 @@ export default defineConfig({
       // 请确保外部化那些你的库中不需要的依赖
       external: (id, parent) =>
         /^react/.test(id) ||
+        /^lodash/.test(id) ||
+        /^async-validator/.test(id) ||
         /^react-dom/.test(id) ||
         /^classnames/.test(id) ||
         /^@use-gesture/.test(id) ||
         /^@react-spring/.test(id) ||
-        /^@nutui\/icons-react-taro/.test(id) ||
+        /^@nutui/.test(id) ||
         /^@bem-react/.test(id) ||
         /^@tarojs\/\w+$/.test(id) ||
         (/^@\/packages\/\w+$/.test(id) && !!parent),

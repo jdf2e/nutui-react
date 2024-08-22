@@ -73,6 +73,7 @@ export const Image: FunctionComponent<
     error,
     loading,
     lazy,
+    draggable,
     onClick,
     onLoad,
     onError,
@@ -226,6 +227,7 @@ export const Image: FunctionComponent<
           loading="lazy"
           onLoad={handleLoad}
           onError={handleError}
+          draggable={draggable}
         />
       ) : (
         <img
@@ -236,6 +238,7 @@ export const Image: FunctionComponent<
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
+          draggable={draggable}
         />
       )}
       {renderLoading()}
@@ -244,5 +247,4 @@ export const Image: FunctionComponent<
   )
 }
 
-Image.defaultProps = defaultProps
 Image.displayName = 'NutImage'

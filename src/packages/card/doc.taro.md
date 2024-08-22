@@ -1,50 +1,20 @@
 # Card 商品卡片
 
-## 介绍
-
 商品卡片，用于展示商品的图片、价格等信息
 
-## 安装
+## 引入
 
 ```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const state = {
-    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDescription: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  return (
-    <Card
-      src={state.src}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDescription={state.shopDescription}
-      delivery={state.delivery}
-      shopName={state.shopName}
-     />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -52,55 +22,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const state = {
-    src:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDescription: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  const wordStyles = {
-    padding: '0 5px',
-    borderRadius: '1px',
-    fontSize: '10px',
-    height: '15px',
-    lineHeight: '15px',
-    color: '#999',
-    backgroundColor: '#f2f2f7',
-    marginRight: '5px',
-  }
-  return (
-    <Card
-      src = { state.src }
-  title = { state.title }
-  price = { state.price }
-  vipPrice = { state.vipPrice }
-  shopDescription = { state.shopDescription }
-  delivery = { state.delivery }
-  shopName = { state.shopName }
-  description = {
-    < div className = "search_prolist_attr"
-    style = {{
-        display: 'inline-flex', 
-        margin:'3px 0 1px', 
-        height:'15px'}}>
-        {['鲜活', '礼盒', '国产'].map((item) => {
-        return (
-            <span style = { wordStyles } className = "word" key = { item } >{ item }</span>)})}
-        </div>} />
-);
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -108,49 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const state = {
-    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title:
-      '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDescription: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  const tagStyles = {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    marginRight: '5px',
-    marginLeft: '2px',
-    height: '14px',
-  }
-  return (
-    <Card
-      src={state.src}
-      title={state.title}
-      price={state.price}
-      vipPrice={state.vipPrice}
-      shopDescription={state.shopDescription}
-      delivery={state.delivery}
-      shopName={state.shopName}
-      priceTag={
-        <img
-          style={tagStyles}
-          src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
-          alt=""
-        />
-      }
-     />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -158,35 +38,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const state = {
-    src:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDescription: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
-  return (
-    <Card
-        src = { state.src }
-        title = { state.title }
-        price = { state.price }
-        vipPrice = { state.vipPrice }
-        shopDescription = { state.shopDescription }
-        delivery = { state.delivery }
-        shopName = { state.shopName }
-        tag = { <div> 自定义店铺介绍 </div>}> </Card>
-    );
-};
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -194,36 +46,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
-const App = () => {
-  const state = {
-    src:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
-    title: '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
-    price: '388',
-    vipPrice: '378',
-    shopDescription: '自营',
-    delivery: '厂商配送',
-    shopName: '阳澄湖大闸蟹自营店>',
-  }
+:::
 
-  return (
-    <Card
-       src = { state.src }
-        title = { state.title }
-        price = { state.price }
-        vipPrice = { state.vipPrice }
-        shopDescription = { state.shopDescription }
-        delivery = { state.delivery }
-        shopName = { state.shopName }
-        extra = { < div style = {{fontSize: '12px'}}>自定义</div>} />
-    );
-};
-export default App;
-```
+### 不显示价格和店铺
+
+:::demo
+
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

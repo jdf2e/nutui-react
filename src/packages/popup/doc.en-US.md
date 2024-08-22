@@ -1,13 +1,11 @@
 # Popup
 
-## Intro
-
 Popup layer container, used to display pop-up windows, information prompts, etc.
 
-## Install
+## Import
 
 ```tsx
-import { Popup } from '@nutui/nutui-react';
+import { Popup } from '@nutui/nutui-react'
 ```
 
 ## code demo
@@ -18,22 +16,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBasic, setShowBasic] = useState(false);
-  return (
-    <>
-        <Cell title="Show popup"  onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>text</Popup>
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,64 +24,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTop, setShowTop] = useState(false);
-  const [showBottom, setShowBottom] = useState(false);
-  const [showLeft, setShowLeft] = useState(false);
-  const [showRight, setShowRight] = useState(false);
-
-  return (
-    <>
-        <Cell title="top pop"  onClick={() => { setShowTop(true) }}/>
-        <Cell title="bottom pop"  onClick={() => { setShowBottom(true) }}/>
-        <Cell title="pop up left"  onClick={() => { setShowLeft(true) }}/>
-        <Cell title="pop up right"  onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
-### Icon
+### Close Icon
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-import { Heart } from '@nutui/icons-react';
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  const [showIcon, setShowIcon] = useState(false);
-  const [showIconPosition, setShowIconPosition] = useState(false);
-  const [showIconDefine, setShowIconDefine] = useState(false);
+:::
 
-  return (
-    <>
-        <Cell title="close icon"  onClick={() => { setShowIcon(true) }}/>
-        <Cell title="Icon position"  onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="custom icon"  onClick={() => { setShowIconDefine(true) }}/>
-        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
-        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
-      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
-    </>
-  );
-};
-export default App;
+### Stop close
 
+:::demo
 
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -106,22 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBottomRound, setShowBottomRound] = useState(false);
-
-  return (
-    <>
-        <Cell title="Rounded popup"  onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -129,24 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showMountNode, setShowMountNode] = useState(false);
-
-  return (
-    <>
-        <Cell title="Mount the specified node"  onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
-          body
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -154,40 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showMutiple, setShowMutiple] = useState(false)
-  const [showMutipleInner, setShowMutipleInner] = useState(false)
-
-  return (
-    <>
-        <Cell title="multi-layer stacking"  onClick={() => { setShowMutiple(true) }}/>
-        <Popup
-          visible={showMutiple}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutiple(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(true) } }>Click It</span>
-        </Popup>
-        <Popup
-          visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutipleInner(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(false) } }>close</span>
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -198,7 +75,7 @@ export default App;
 | Props | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
-| zIndex | mask level | `string` \| `number`  | `2000` |
+| zIndex | mask level | `string` \| `number` | `2000` |
 | duration | Mask animation duration, in ms | `number` | `300` |
 | overlayClassName | custom mask class | `string` | `-` |
 | overlayStyle | custom mask style | `CSSProperties` | `-` |

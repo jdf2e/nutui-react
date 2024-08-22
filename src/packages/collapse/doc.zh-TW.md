@@ -1,45 +1,20 @@
 # Collapse 摺疊面闆
 
-## 介紹
-
 將內容放置在多個摺疊面闆中，點擊面闆標題可展開或收縮內容。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Collapse } from 'nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```jsx
-import  React from "react";
-import { Collapse } from '@nutui/nutui-react';
-import { ArrowDown } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <>
-    <Collapse defaultActiveName={['1', '2']} expandIcon={<ArrowDown />}>
-      <Collapse.Item title="標題1" name="1">
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item title="標題2" name="2">
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item title="標題3" name="3" disabled>
-        京東“廠直優品計劃”首推“政府優品館”
-      </Collapse.Item>
-    </Collapse>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -47,32 +22,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React, {useState} from "react";
-import { Collapse } from '@nutui/nutui-react';
-import { ArrowDown } from '@nutui/icons-react';
-
-const App = () => {
-  const [activeName, setActiveName] = useState(['1', '2'])
-  const onChange = (activeName, name, status) => {
-    setActiveName(activeName)
-  }
-  return (
-    <Collapse activeName={activeName} onChange={onChange}>
-      <Collapse.Item title="標題1" name="1">
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item title="標題2" name="2">
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item title="標題3" name="3">
-        京東“廠直優品計劃”首推“政府優品館”
-      </Collapse.Item>
-    </Collapse>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -80,31 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Collapse} from '@nutui/nutui-react'
-import { ArrowDown } from '@nutui/icons-react'
-
-const App = () => {
-  const handleChange = (activeName, name, status) => {
-    console.log(activeName, name, status)
-  }
-  return (  
-  <Collapse defaultActiveName={['1', '2']} onChange={handleChange}>
-    <Collapse.Item title="標題1" name="1">
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題2" name="2">
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題3" name="3">
-      京東“廠直優品計劃”首推“政府優品館”
-    </Collapse.Item>
-  </Collapse>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -112,28 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Collapse} from '@nutui/nutui-react'
-import { ArrowDown } from '@nutui/icons-react'
-
-const App = () => {
-  return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
-    <Collapse.Item title="標題1" name="1" extra="文本內容">
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題2" name="2">
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題3" name="3">
-      京東“廠直優品計劃”首推“政府優品館”
-    </Collapse.Item>
-  </Collapse>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -141,28 +46,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React from 'react'
-import { Collapse} from '@nutui/nutui-react'
-import { ArrowDown, Checked } from '@nutui/icons-react'
-
-const App = () => {
-  return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />} rotate={90}>
-    <Collapse.Item title="標題1" name="1" expandIcon={<Checked />}>
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題2" name="2" expandIcon={<Checked />}>
-      京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-    </Collapse.Item>
-    <Collapse.Item title="標題3" name="3">
-      京東“廠直優品計劃”首推“政府優品館”
-    </Collapse.Item>
-  </Collapse>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -170,53 +54,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React from 'react'
-import { Collapse, Button} from '@nutui/nutui-react'
-import { ArrowDown, Checked } from '@nutui/icons-react'
-
-const App = () => {
-  return (  
-    <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
-      <Collapse.Item
-        title={
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <Checked />標題1
-          </div>
-        }
-        name="1"
-      >
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item
-        title="標題2"
-        name="2"
-        extra={
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            標題2<Checked color="red" />
-          </div>
-        }
-      >
-        京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
-      </Collapse.Item>
-      <Collapse.Item title="標題3" name="3">
-        京東“廠直優品計劃”首推“政府優品館”
-      </Collapse.Item>
-    </Collapse>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -224,70 +62,7 @@ export default App;
 
 :::demo
 
-```jsx
-import React, { useState } from 'react'
-import { Collapse, Button } from '@nutui/nutui-react'
-
-const oldDate = [
-  {
-    title: '標題1',
-    name: '1',
-    data: '京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府',
-  },
-  {
-    title: '標題12',
-    name: '2',
-    data: '京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府',
-  },
-  {
-    title: '標題13',
-    name: '3',
-    data: '京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府',
-  },
-]
-const newDate = [
-  {
-    title: '標題21',
-    name: '1',
-    data: '京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府',
-  },
-  {
-    title: '標題22',
-    name: '2',
-    data: '京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府',
-  },
-]
-
-const App = () => {
-  const [domData, setDomData] = useState(oldDate)
-  const changeNewData = () => {
-    setDomData(newDate)
-  }
-  const changeOldData = () => {
-    setDomData(oldDate)
-  }
-  return (
-    <>
-      <Collapse defaultActiveName="2" accordion>
-        {domData.map((item, index) => {
-          return (
-            <Collapse.Item title={item.title} name={item.name} key={index}>
-              {item.data}
-            </Collapse.Item>
-          )
-        })}
-      </Collapse>
-      <Button type="primary" size="small" onClick={() => changeNewData()}>
-        改變數據
-      </Button>
-      <Button type="info" size="small" onClick={() => changeOldData()}>
-        還原數據
-      </Button>
-    </>
-  )
-}
-  export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -297,10 +72,10 @@ const App = () => {
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| defaultActiveName | 默認展開面闆的 name，非受控 | `Array<string>` \| `string`  | `-` |
-| activeName | 當前展開面闆的 name，受控 | `Array<string>` \| `string`  | `-` |
+| defaultActiveName | 默認展開面闆的 name，非受控 | `Array<string>` \| `string` | `-` |
+| activeName | 當前展開面闆的 name，受控 | `Array<string>` \| `string` | `-` |
 | accordion | 是否開啟手風琴模式 | `boolean` | `false` |
-| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number`  | `180` |
+| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定義展開圖標 | `ReactNode` | `-` |
 
 ## Collapse.Item
@@ -313,7 +88,7 @@ const App = () => {
 | title | 標題欄左側內容 | `ReactNode` | `-` |
 | disabled | 標題欄是否禁用 | `boolean` | `false` |
 | extra | 標題欄副標題 | `ReactNode` | `-` |
-| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number`  | `180` |
+| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定義展開圖標 | `ReactNode` | `-` |
 | onChange | 切換面闆時觸發 | `(activeName, name, status) => void` | `-` |
 
@@ -325,7 +100,7 @@ const App = () => {
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-collapse-item-padding | 內邊距 | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-padding | 內邊距 | `13px 26px` |
 | \--nutui-collapse-item-font-size | 字體大小 | `$font-size-base` |
 | \--nutui-collapse-item-line-height | 行高 | `24px` |
 | \--nutui-collapse-item-color | 字體顏色 | `#666666` |

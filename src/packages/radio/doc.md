@@ -1,71 +1,52 @@
 # Radio 单选按钮
 
-## 介绍
-
 用于在一组备选项中进行单选
 
-## 安装
+## 引入
 
 ```tsx
-import { Radio } from '@nutui/nutui-react';
-
+import { Radio } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio defaultChecked>选项1</Radio>
-    <Radio defaultChecked disabled>
-      选项1
-    </Radio>
-    <Radio.Group defaultValue="1">
-      <Radio value="1" disabled>
-        选项1
-      </Radio>
-      <Radio value="2">选项2</Radio>
-      <Radio value="3">选项3</Radio>
-    </Radio.Group>
-    <Radio.Group disabled defaultValue="1">
-      <Radio value="1">选项1</Radio>
-      <Radio value="2">选项2</Radio>
-      <Radio value="3">选项3</Radio>
-    </Radio.Group>
-    <Radio.Group defaultValue="1">
-      <Radio shape="button" disabled value="1">
-        选项1
-      </Radio>
-      <Radio shape="button" value="2">
-        选项2
-      </Radio>
-      <Radio shape="button" value="3">
-        选项3
-      </Radio>
-    </Radio.Group>
-    <Radio.Group disabled defaultValue="1">
-      <Radio shape="button" value="1">
-        选项1
-      </Radio>
-      <Radio shape="button" value="2">
-        选项2
-      </Radio>
-      <Radio shape="button" value="3">
-        选项3
-      </Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+:::
+
+### Group 模式下禁用某一项
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### Group 模式下禁用全部选项
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+### Group 模式下禁用某一项
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### Group 模式下禁用全部选项
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -73,46 +54,7 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio.Group defaultValue="1" direction="horizontal">
-      <Radio value="1">选项1</Radio>
-      <Radio disabled value="2">
-        选项2
-      </Radio>
-      <Radio value="3">选项3</Radio>
-    </Radio.Group>
-    <Radio.Group
-      defaultValue="1"
-      labelPosition="left"
-      direction="horizontal"
-    >
-      <Radio value="1">选项1</Radio>
-      <Radio disabled value="2">
-        选项2
-      </Radio>
-      <Radio value="3">选项3</Radio>
-    </Radio.Group>
-    <Radio.Group defaultValue="1" direction="horizontal">
-      <Radio shape="button" value="1">
-        选项1
-      </Radio>
-      <Radio shape="button" disabled value="2">
-        选项2
-      </Radio>
-      <Radio shape="button" value="3">
-        选项3
-      </Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -120,25 +62,7 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio
-      style={{
-        '--nut-icon-width': '12px',
-        '--nutui-icon-height': '12px',
-      }}
-    >
-      自定义尺寸
-    </Radio>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -148,49 +72,25 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-import { Checklist } from '@nutui/icons-react'
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio
-      icon={<Checklist />}
-      activeIcon={<Checklist style={{ color: 'red' }} />}
-    >
-      自定义图标
-    </Radio>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-## 触发 change 事件
+## 自定义图标，通过Group实现列表形式
+
+建议 `icon` `activeIcon` 一起修改
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
-const RadioGroupLast = () => {
-  const [checkedValue] = useState(1)
-  return <>
-    <Radio.Group
-      defaultValue={checkedValue}
-      onChange={(value) => Toast.show(value)}
-    >
-      <Radio value={1}>触发事件</Radio>
-      <Radio value={2}>触发事件</Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+:::
+
+## 触发事件
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -198,36 +98,7 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupOptions = () => {
-  const [radioVal, setRadioVal] = useState('1')
-  const [optionsDemo1, setOptionsDemo1] = useState([
-    {
-      label: '选项1',
-      value: '1',
-    },
-    {
-      label: '选项2',
-      value: '2',
-      disabled: true,
-    },
-    {
-      label: '选项3',
-      value: '3',
-    },
-  ])
-  const handleChange = (v) => {
-    console.log(v)
-    setRadioVal(v)
-  }
-  return <Radio.Group options={optionsDemo1} value={radioVal}
-                           onChange={handleChange} />
-}
-export default RadioGroupOptions;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -235,18 +106,7 @@ export default RadioGroupOptions;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Radio } from '@nutui/nutui-react'
-
-const RadioGroupOptions = () => {
-  return <Radio.Group defaultValue={1} shape='button'>
-    <Radio value={1}>设置形状</Radio>
-    <Radio value={2}>设置形状</Radio>
-  </Radio.Group>
-}
-export default RadioGroupOptions
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -259,11 +119,11 @@ export default RadioGroupOptions
 | checked | 指定当前是否选中 | `boolean` | `-` |
 | defaultChecked | 初始是否选中 | `boolean` | `-` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
-| value | 携带的标识值，用于 Group 模式 | `string`  \|  `number` | `-` |
+| value | 携带的标识值，用于 Group 模式 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | <a href="#/icon">图标名称</a>，选中前(建议和`activeIcon`一起修改) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">图标名称</a>，选中后(建议和`icon`一起修改) | `ReactNode` | `'CheckChecked'` |
-| shape | 形状 | `button` \| `round` |`round` |
+| shape | 形状 | `button` \| `round` | `round` |
 | onChange | 选中态变化时触发 | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group
@@ -272,12 +132,12 @@ export default RadioGroupOptions
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前选中项的标识符 | `string`  \|  `number` | `-` |
+| value | 当前选中项的标识符 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| shape | 形状 | `button` \| `round` |`-` |
+| shape | 形状 | `button` \| `round` | `-` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `vertical` |
-| options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | 值变化时触发 | `(value: string \| number) => void` | `-` |
 
 ## 主题定制
@@ -298,5 +158,6 @@ export default RadioGroupOptions
 | \--nutui-radio-button-active-border | shape为button选中态的边框 | `1px solid $color-primary` |
 | \--nutui-radio-button-padding | shape为button的内边距 | `5px 18px` |
 | \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
-| \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
+| \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的右侧边距 | `20px` |
+| \--nutui-radiogroup-radio-margin-bottom | Group模式下每个 radio 的底部边距 | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |

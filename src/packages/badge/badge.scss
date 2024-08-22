@@ -38,6 +38,8 @@
     border: $badge-border;
     border-radius: $badge-border-radius;
     min-width: $badge-min-width;
+    white-space: nowrap;
+    z-index: 1;
   }
 
   &-one {
@@ -53,8 +55,31 @@
   &-dot {
     width: $badge-dot-width;
     height: $badge-dot-width;
-    border: $badge-border;
+    border: $badge-dot-border;
     border-radius: $badge-dot-width;
     padding: 0;
+  }
+
+  &-outline {
+    .nut-badge-content {
+      background: $color-primary-text;
+      border: 1px solid $color-primary;
+      color: $color-primary;
+    }
+  }
+}
+
+[dir='rtl'] .nut-badge,
+.nut-rtl .nut-badge {
+  &-icon {
+    right: auto;
+    left: -15%;
+  }
+
+  &-content {
+    transform: var(
+      --nutui-badge-content-transform,
+      translateY(-50%) translateX(-100%)
+    );
   }
 }

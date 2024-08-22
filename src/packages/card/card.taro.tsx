@@ -63,25 +63,28 @@ export const Card: FunctionComponent<
         <div className={`${classPrefix}-right-title`}>{title}</div>
         {description}
         <div className={`${classPrefix}-right-price`}>
-          <Price size="normal" price={price} />
-          {priceTag || (
-            <Price
-              size="normal"
-              className={`${classPrefix}-right-price-origin`}
-              price={vipPrice}
-            />
-          )}
+          {price && <Price size="normal" price={price} />}
+          {priceTag ||
+            (vipPrice && (
+              <Price
+                size="normal"
+                className={`${classPrefix}-right-price-origin`}
+                price={vipPrice}
+              />
+            ))}
         </div>
         <div className={`${classPrefix}-right-other`}>
           {tag || (
             <>
-              <Tag type="danger">{shopDescription}</Tag>
-              <Tag plain>{delivery}</Tag>
+              {shopDescription && <Tag type="danger">{shopDescription}</Tag>}
+              {delivery && <Tag plain>{delivery}</Tag>}
             </>
           )}
         </div>
         <div className={`${classPrefix}-right-shop`}>
-          <div className={`${classPrefix}-right-shop-name`}>{shopName}</div>
+          {shopName && (
+            <div className={`${classPrefix}-right-shop-name`}>{shopName}</div>
+          )}
           {extra}
         </div>
       </div>
@@ -89,5 +92,4 @@ export const Card: FunctionComponent<
   )
 }
 
-Card.defaultProps = defaultProps
 Card.displayName = 'NutCard'

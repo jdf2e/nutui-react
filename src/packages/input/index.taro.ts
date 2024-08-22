@@ -2,8 +2,8 @@ import { Input } from './input.taro'
 
 export type {
   InputProps,
-  InputAlignType,
+  InputAlign,
   InputFormatTrigger,
-  ConfirmTextType,
+  InputConfirmType,
 } from './input.taro'
 export default Input

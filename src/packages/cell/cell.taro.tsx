@@ -9,7 +9,7 @@ export interface CellProps extends BasicComponent {
   description: ReactNode
   extra: ReactNode
   radius: string | number
-  align: string
+  align: 'flex-start' | 'center' | 'flex-end'
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -97,6 +97,5 @@ export const Cell: FunctionComponent<
   )
 }
 
-Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
 Cell.Group = CellGroup

@@ -1,13 +1,13 @@
 # Switch
 
-## Introduction
+duction
 
 Used to open or close the options.
 
-## Install
+## Import
 
 ```tsx
-import { Switch } from '@nutui/nutui-react';
+import { Switch } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -16,20 +16,7 @@ import { Switch } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch defaultChecked />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,31 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Switch, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [checkedAsync, setCheckedAsync] = useState(true)
-  
-  const onChangeAsync = (value: boolean, event: Event) => {
-    Toast.show(`Asynchronous trigger after 2 seconds ${value}`)
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
-  }
-  return ( 
-    <>   
-    <Switch
-      checked={checkedAsync}
-      onChange={(value, event) => onChangeAsync(value, event)}
-     />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -69,20 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch defaultChecked disabled />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -90,23 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const onChange = (value: boolean, event: Event) => {
-    Toast.show(`Triggering the onChange event, the switch status：${value}`)
-  }
-  return ( 
-    <>   
-    <Switch defaultChecked  onChange={(value, event) => onChange(value, event)} />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -114,24 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <Switch
-      defaultChecked
-      style={{
-        '--nutui-switch-open-background-color': 'blue',
-        '--nutui-switch-close-line-background-color': '#ebebeb',
-      }}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -139,21 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Switch } from '@nutui/nutui-react';
-
-const App = () => {
-  return ( 
-    <>   
-    <Switch  defaultChecked activeText=
-"open" inactiveText="close" />
-    </>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

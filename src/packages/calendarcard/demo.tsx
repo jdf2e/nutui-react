@@ -1,31 +1,19 @@
-import React, { useRef, useState } from 'react'
-import CalendarCard from '../calendarcard'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
-import Popup from '@/packages/popup'
-import Button from '@/packages/button'
-import Space from '@/packages/space'
-import Tag from '@/packages/tag'
-import { CalendarCardDay, CalendarCardValue } from './types'
-
-interface T {
-  single: string
-  multiple: string
-  range: string
-  week: string
-  control: string
-  renderDay: string
-  firstDay: string
-  customRange: string
-  disable: string
-  popup: string
-  select: string
-  confirm: string
-  ref: string
-}
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
+import Demo11 from './demos/h5/demo11'
 
 const CalendarDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       single: '选择单个日期',
       multiple: '选择多个日期',
@@ -72,131 +60,42 @@ const CalendarDemo = () => {
       ref: 'Use ref',
     },
   })
-  const change = (d: CalendarCardValue) => {
-    console.log(d)
-  }
-  const [val1, setVal1] = useState<Date | null>(() => {
-    return null
-  })
-  const [val2, setVal2] = useState(() => {
-    return [new Date('2023-01-01'), new Date('2023-01-03')]
-  })
-  const change1 = (v: any) => {
-    console.log(v)
-    setVal1(v)
-  }
-  const [visible, setVisible] = useState(false)
-  const [date, setDate] = useState(null)
 
-  const CalendarCardRef = useRef<any>(null)
-
-  const renderDayTop = (day: CalendarCardDay) => {
-    return day.date === 8 ? '☺' : ''
-  }
-
-  const renderDay = (day: CalendarCardDay) => {
-    return day.date <= 9 ? `0${day.date}` : day.date
-  }
-
-  const renderDayBottom = (day: CalendarCardDay) => {
-    return day.date === 8 ? '节日' : ''
-  }
   return (
     <>
       <div className="demo">
         <h2>{translated.single}</h2>
-        <CalendarCard defaultValue={new Date('2023-01-01')} onChange={change} />
+        <Demo1 />
 
         <h2>{translated.multiple}</h2>
-        <Space wrap>
-          {val2.map((d) => {
-            return (
-              <Tag key={d.getTime()} type="info">
-                {`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`}
-              </Tag>
-            )
-          })}
-        </Space>
-        <CalendarCard
-          type="multiple"
-          value={val2}
-          onChange={(v: any) => setVal2(v)}
-        />
+        <Demo2 />
 
         <h2>{translated.range}</h2>
-        <CalendarCard type="range" onChange={change} />
+        <Demo3 />
 
         <h2>{translated.week}</h2>
-        <CalendarCard type="week" onChange={change} />
+        <Demo4 />
 
         <h2>{translated.control}</h2>
-        <CalendarCard value={val1} onChange={change1} />
+        <Demo5 />
 
         <h2>{translated.renderDay}</h2>
-        <CalendarCard
-          renderDayTop={renderDayTop}
-          renderDay={renderDay}
-          renderDayBottom={renderDayBottom}
-        />
+        <Demo6 />
 
         <h2>{translated.firstDay}</h2>
-        <CalendarCard firstDayOfWeek={1} onChange={change} />
+        <Demo7 />
 
         <h2>{translated.customRange}</h2>
-        <CalendarCard
-          startDate={new Date('2023-08-01')}
-          endDate={new Date('2025-11-11')}
-          onChange={change}
-        />
+        <Demo8 />
 
         <h2>{translated.disable}</h2>
-        <CalendarCard
-          disableDay={(day) => {
-            const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-            return d === 1 || d === 3
-          }}
-          onChange={change}
-        />
+        <Demo9 />
 
         <h2>{translated.popup}</h2>
-        <Cell
-          title={translated.select}
-          description={String(date)}
-          onClick={() => setVisible(true)}
-        />
-        <Popup
-          title={translated.select}
-          visible={visible}
-          position="bottom"
-          closeable
-          onClose={() => setVisible(false)}
-        >
-          <CalendarCard value={date} onChange={(d: any) => setDate(d)} />
-          <div
-            style={{
-              padding: '10px',
-            }}
-          >
-            <Button block type="danger" onClick={() => setVisible(false)}>
-              {translated.confirm}
-            </Button>
-          </div>
-        </Popup>
+        <Demo10 />
 
         <h2>{translated.ref}</h2>
-        <Space style={{ marginBottom: '10px' }}>
-          <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
-          <Button onClick={() => CalendarCardRef.current?.jump(12)}>
-            + 12
-          </Button>
-          <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
-            - 12
-          </Button>
-          <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
-            2023 01
-          </Button>
-        </Space>
-        <CalendarCard ref={CalendarCardRef} />
+        <Demo11 />
       </div>
     </>
   )

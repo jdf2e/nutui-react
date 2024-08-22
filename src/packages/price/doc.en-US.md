@@ -1,10 +1,8 @@
 # Price
 
-## Intro
-
 It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
-## Install
+## Import
 
 ```tsx
 import { Price } from '@nutui/nutui-react'
@@ -16,27 +14,7 @@ import { Price } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-<>
-        <Cell>
-            <Price price={0} size="small"  thousands />
-        </Cell>
-        <Cell>
-            <Price price={0} size="normal"  thousands />
-        </Cell>
-        <Cell>
-            <Price price={0} size="large"  thousands />
-        </Cell>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,25 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price
-          price={8888}
-          digits={0}
-          
-          size="normal"
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -70,19 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={10010.01} size="normal"  thousands={false} />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -90,25 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price
-          price={15213.1221}
-          size="normal"
-          digits={3}
-          
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -116,26 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price
-          price={8888.01}
-          size="normal"
-          position="after"
-          symbol="元"
-          
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -143,19 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react"
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={15213.1221} size="normal" symbol="" />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -163,35 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [price, setPrice] = useState(Math.random() * 10000000)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPrice(Math.random() * 10000000)
-    }, 1000)
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
-  return (
-    <Cell>
-        <Price
-          price={price}
-          digits={3}
-          size="normal"
-          
-          thousands
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -199,21 +70,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Price, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-        <Price price={1513.12} size="normal" thousands />
-        <span>&nbsp;</span>
-        <Price price={1513.88} thousands line />
-      </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -249,5 +106,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-price-integer-small-size | small Size Integer partial font size | `12px` |
 | \--nutui-price-decimal-small-size | small Size Size of the decimal part of the font | `10px` |
 | \--nutui-price-line-font-size | Line-through price Font size | `10px` |
-| \--nutui-price-line-color | Line through price color |  `#757575` |
-| \--nutui-price-symbol-padding-right | Symbol padding right |  `1px` |
+| \--nutui-price-line-color | Line through price color | `#757575` |
+| \--nutui-price-symbol-padding-right | Symbol padding right | `1px` |

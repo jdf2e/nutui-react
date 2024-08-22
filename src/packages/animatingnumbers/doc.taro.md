@@ -1,67 +1,28 @@
 # AnimatingNumbers 数字动画
 
-## 介绍
-
 数字动画集合
 
-## 安装
+## 引入
 
 ```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 ```
 
-## 代码演示
+## 示例代码
 
-### AnimatingNumbers.CountUp-基础用法
+### AnimatingNumbers.CountUp - 基础用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { AnimatingNumbers, Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-    return  <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
-### AnimatingNumbers.CountUp-自定义样式，动态修改数据（需要指定最大位数）
+### AnimatingNumbers.CountUp - 自定义样式，动态修改数据（需要指定最大位数）
 
 :::demo
 
-```tsx
-import React, { useEffect, useState } from 'react'
-import { AnimatingNumbers, Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const [value, setEndNumer] = useState('1570.99')
-  useEffect(() => {
-    setInterval(() => {
-      setEndNumer(
-        `${Math.floor(Math.random() * 999999)}.${Math.floor(
-          Math.random() * 89 + 10
-        )}`
-      )
-    }, 30000)
-  }, [])
-  return (
-    <Cell
-        title={
-        <AnimatingNumbers.CountUp
-            value={value}
-            duration={1.2}
-            length={6}
-            className="custom-coutup"
-        />
-        }
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -76,7 +37,6 @@ export default App
 | delay | 等待动画执行时间，单位 ms | `number` | `300` |
 | duration | 动画执行时间，单位 s | `number` | `1` |
 | thousands | 是否有千位分隔符 | `boolean` | `false` |
-
 
 ## 主题定制
 

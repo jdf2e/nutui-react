@@ -48,13 +48,13 @@ export const Row: FunctionComponent<
     return className
   }
   const getClasses = () => {
-    return `
-    ${getClass('', type)}
-    ${getClass('justify', justify)}
-    ${getClass('align', align)}
-    ${getClass('flex', wrap)}
-    ${classPrefix}
-   `
+    return classNames(
+      classPrefix,
+      getClass('', type),
+      getClass('justify', justify),
+      getClass('align', align),
+      getClass('flex', wrap)
+    )
   }
   const parentRow = {
     gutter,
@@ -77,5 +77,4 @@ export const Row: FunctionComponent<
   )
 }
 
-Row.defaultProps = defaultProps
 Row.displayName = 'NutRow'

@@ -1,39 +1,20 @@
 # Sticky组件
 
-## 介绍
-
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
-## 安装
+## 引入
 
 ```tsx
-import { Sticky } from '@nutui/nutui-react';
+import { Sticky } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 示例代码
 
 ### 基础用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  const handleChange = (val: boolean) => {
-    console.log('吸顶状态发生了改变,当前fixed为', val)
-  }
-  return(
-      <>
-        <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
-          <Button type="primary">吸顶</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,21 +22,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  return(
-      <>
-        <Sticky threshold={120}>
-          <Button type="primary">距离顶部120px</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -63,29 +30,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useRef } from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-  const containerTopRef = useRef(null)
-   return(
-    <>
-      <div
-        ref={containerTopRef}
-        style={{ height: '600px' }}
-      >
-        <Sticky container={containerTopRef} threshold={57}>
-          <Button type="info" style={{ marginLeft: '100px' }}>
-            指定容器内吸顶
-          </Button>
-        </Sticky>
-      </div>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -93,21 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react'
-
-const App = () => {
-   return(
-    <>
-      <Sticky threshold={0} position="bottom">
-        <Button type="primary">距离底部0px</Button>
-      </Sticky>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

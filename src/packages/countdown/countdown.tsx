@@ -82,7 +82,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   const getTimeStamp = (timeStr?: string | number) => {
     if (!timeStr) return Date.now()
     let t = timeStr
-    t = t > 0 ? +t : t.toString().replace(/-/g, '/')
+    t = Number(t) > 0 ? +t : t.toString().replace(/-/g, '/')
     return new Date(t).getTime()
   }
 
@@ -306,5 +306,4 @@ export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
   InternalCountDown
 )
 
-CountDown.defaultProps = defaultProps
 CountDown.displayName = 'NutCountDown'

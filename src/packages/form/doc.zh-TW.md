@@ -1,77 +1,20 @@
 # Form 錶單
 
-## 介紹
-
 用於數據錄入、校驗，支持輸入框、單選框、復選框等類型。
 
-## 安裝
+## 引入
 
 ```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 
-## 代碼演示
+## 示例代碼
 
 ### 基礎用法
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Form
-        labelPosition="right"
-        footer={
-          <>
-            <Button nativeType="submit" block type="primary">
-              提交
-            </Button>
-          </>
-        }
-      >
-        <Form.Item
-          required
-          label="欄位 A"
-          name="username"
-          rules={[
-            { max: 5, message: '欄位 A不能超过5个字' },
-            { required: true, message: '请输入欄位 A' },
-          ]}
-        >
-          <Input
-            className="nut-input-text"
-            placeholder="請輸入欄位 A"
-            type="text"
-          />
-        </Form.Item>
-        <Form.Item
-          label="欄位 D"
-          name="address"
-          rules={[
-            { max: 15, message: '欄位 D不能超过15个字' },
-            { required: true, message: '請輸入欄位 D' },
-          ]}
-        >
-          <TextArea placeholder="請輸入欄位 D" maxLength={100} />
-        </Form.Item>
-        <Form.Item
-          label="數量"
-          name="num"
-          getValueFromEvent={(...args) => args[0]}
-        >
-          <InputNumber />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -79,157 +22,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Button, Input, TextArea } from '@nutui/nutui-react';
-
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  return (
-    <>
-      <Form
-        divider
-        labelPosition="left"
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              提交
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              重置
-            </Button>
-          </div>
-        }
-      >
-        <Form.Item
-          label="欄位 A"
-          name="username"
-          rules={[{ required: true, message: "請輸入欄位 A" }]}
-        >
-          <Input placeholder="請輸入欄位 A" type="text" />
-        </Form.Item>
-        <Form.Item
-          label="欄位 B"
-          name="age"
-          rules={[
-            { required: true, message: "請輸入欄位 B" },
-            { validator: customValidator, message: "必須輸入數字" },
-            { validator: valueRangeValidator, message: "必須輸入0-200區間" },
-          ]}
-        >
-          <Input placeholder="請輸入欄位 B，必須數字且0-200區間" type="text" />
-        </Form.Item>
-        <Form.Item
-          label="欄位 C"
-          name="tel"
-          rules={[{ max: 13, message: "請輸入欄位 C" }]}
-        >
-          <Input placeholder="欄位 C格式不正確" type="number" />
-        </Form.Item>
-        <Form.Item
-          label="欄位 D"
-          name="address"
-          rules={[{ required: true, message: "請輸入欄位 D" }]}
-        >
-          <Input placeholder="請輸入欄位 D" type="text" />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
-### 帶有初始值錶單校驗
+### 關聯展示
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input, Cell, Button } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
+:::
 
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  // 函數校驗
-  const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
-    return /^\d+$/.test(value)
-  }
+### 帶有初始值表單校驗
 
-  const valueRangeValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
-    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
-  }
-  return (
-    <>
-      <Form
-        initialValues={{ username: 'LiSi', age: 20 }}
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              提交
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              重置
-            </Button>
-          </div>
-        }
-      >
-        <Form.Item
-          label="欄位 A"
-          name="username"
-          rules={[{ required: true, message: "請輸入欄位 A" }]}
-          initialValue="ZhangSan"
-        >
-          <Input placeholder="請輸入欄位 A" type="text" />
-        </Form.Item>
-        <Form.Item label="欄位 B" name="age" initialValue={18} rules={[
-          { required: true, message: "請輸入欄位 B" },
-          { validator: customValidator, message: "必須輸入數字" },
-          { validator: valueRangeValidator, message: "必須輸入0-200區間" },
-        ]}>
-          <Input
-            placeholder="請輸入欄位 B，必須數字且0-200區間"
-            type="number"
-          />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
+:::demo
 
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -237,203 +46,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input, Radio, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-
-  const [form] = Form.useForm()
-  const onMenuChange = (value: string | number | boolean) => {
-    switch (value) {
-      case 'male':
-        form.setFieldsValue({ note: '👨' })
-        break
-      case 'female':
-        form.setFieldsValue({ note: '👩' })
-        break
-      default:
-    }
-  }
-  return (
-    <>
-      <Form
-        form={form}
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-      >
-        <Form.Item
-          label="欄位 A"
-          name="username"
-          rules={[{ required: true, message: "請輸入欄位 A" }]}
-        >
-          <Input placeholder="請輸入欄位 A" type="text" />
-        </Form.Item>
-        <Form.Item label="標註" name="note">
-          <Input placeholder="請輸入標註" type="string" />
-        </Form.Item>
-        <Form.Item label="性別" name="gender">
-          <Radio.Group onChange={onMenuChange}>
-            <Radio value="male">A</Radio>
-            <Radio value="female">B</Radio>
-          </Radio.Group>
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
-### 錶單類型
+### 校驗觸發時機
 
 :::demo
 
-```tsx
-import React from "react";
-import {
-  Form,
-  Input,
-  Cell,
-  Switch,
-  Checkbox,
-  Radio,
-  Picker,
-  Uploader,
-  Button,
-  Rate,
-  Range,
-  Toast,
-} from '@nutui/nutui-react';
-import { ArrowRight } from '@nutui/icons-react'
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
+:::
 
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  return (
-    <>
-      <Form
-        style={{ '--nutui-form-item-label-width': '120px' }}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              提交
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              重置
-            </Button>
-          </div>
-        }
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-      >
-        <Form.Item label="Input" name="form_input">
-          <Input placeholder="placeholder" />
-        </Form.Item>
-        <Form.Item label="Switch" name="switch">
-          <Switch />
-        </Form.Item>
-        <Form.Item label="Checkbox" name="checkbox">
-          <Checkbox labelPosition="right" label="Option 1" />
-        </Form.Item>
-        <Form.Item label="Check Group" name="checkbox_group">
-          <Checkbox.Group>
-            <Checkbox labelPosition="right" label="Option 1" value={1} />
-            <Checkbox labelPosition="right" label="Option 2" value={2} />
-          </Checkbox.Group>
-        </Form.Item>
-        <Form.Item label="Radio" name="radio">
-          <Radio value="1">Radio 1</Radio>
-        </Form.Item>
-        <Form.Item label="Radio Group" name="radio_group">
-          <Radio.Group>
-            <Radio value="1">Radio 1</Radio>
-            <Radio value="2">Radio 2</Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Rate" name="rate">
-          <Rate defaultValue={0} />
-        </Form.Item>
-        <Form.Item label="Range" name="range">
-          <Range max={10} min={-10} />
-        </Form.Item>
-        <Form.Item
-          label="Picker"
-          name="picker"
-          trigger="onConfirm"
-          getValueFromEvent={(...args) => args[1]}
-          onClick={(event, ref: any) => {
-            ref.open()
-          }}
-        >
-          <Picker options={[pickerOptions]}>
-            {(value: any) => {
-              return (
-                <Cell
-                  style={{
-                    padding: 0,
-                    '--nutui-cell-divider-border-bottom': '0',
-                  }}
-                  className="nutui-cell--clickable"
-                  title={
-                    value.length
-                      ? pickerOptions.filter((po) => po.value === value[0])[0]
-                        ?.text
-                      : 'Please select'
-                  }
-                  extra={<ArrowRight />}
-                  align="center"
-                />
-              )
-            }}
-          </Picker>
-        </Form.Item>
-        <Form.Item
-          label="Uploader"
-          name="files"
-          initialValue={[
-            {
-              name: 'file1.png',
-              url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-              status: 'success',
-              message: 'success',
-              type: 'image',
-              uid: '122',
-            },
-          ]}
-        >
-          <Uploader
-            url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
+### 表單類型
 
+:::demo
 
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -449,7 +78,7 @@ export default App;
 | name | 錶單名稱 | `any` | `-` |
 | label | 标签名 | `ReactNode` | `-` |
 | labelPosition | 錶單項 label 的位置 | `top` \| `left` \| `right` | `right` |
-| starPosition | 必填錶單項 label 的紅色星標位置 |  `left` \| `right` | `left` |
+| starPosition | 必填錶單項 label 的紅色星標位置 | `left` \| `right` | `left` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一錶單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
 
@@ -463,7 +92,10 @@ export default App;
 | name | 在使用錶單校驗功能的情況下，該屬性是必填的 | `string` | `-` |
 | errorMessageAlign | 錯誤提示文案對齊方式 | `center` \| `right` \| `left` | `left` |
 | initialValue | 設置子元素默認值 | `any` | `-` |
+| noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
+| shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 設置收集字段值變更的時機 | `string` | `-` |
+| align | 對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |
