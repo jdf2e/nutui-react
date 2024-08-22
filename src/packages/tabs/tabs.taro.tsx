@@ -209,6 +209,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
           to = left - (navRectRef.current.width - titleRect.width) / 2
+          to = to < 0 ? 0 : to
           to = rtl ? -to : to
         }
         nextTick(() => {
