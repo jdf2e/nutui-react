@@ -105,6 +105,7 @@ const InternalUploader: ForwardRefRenderFunction<
 > = (props, ref) => {
   const { locale } = useConfig()
   const fileListRef = useRef<FileItem[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
   const {
     children,
     uploadIcon,
@@ -350,9 +351,8 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const fileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return
-    }
+    if (disabled) return
+
     const $el = event.target
     const { files } = $el
 
@@ -360,6 +360,7 @@ const InternalUploader: ForwardRefRenderFunction<
       beforeUpload(new Array<File>().slice.call(files)).then(
         (f: Array<File> | boolean) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files) fileInputRef.current?.reset()
           readFile(_files)
         }
       )
@@ -388,6 +389,7 @@ const InternalUploader: ForwardRefRenderFunction<
           )}
           {Number(maxCount) > fileList.length && (
             <input
+              ref={fileInputRef}
               className="nut-uploader-input"
               type="file"
               capture={capture}
@@ -428,6 +430,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
             <input
               className="nut-uploader-input"
+              ref={fileInputRef}
               type="file"
               capture={capture}
               name={name}
