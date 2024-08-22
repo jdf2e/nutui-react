@@ -359,7 +359,7 @@ const InternalUploader: ForwardRefRenderFunction<
       beforeUpload(new Array<File>().slice.call(files)).then(
         (f: Array<File> | boolean) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
-          if (!_files) $el.value = ''
+          if (!_files.length) $el.value = ''
           readFile(_files)
         }
       )
