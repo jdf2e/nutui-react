@@ -8,7 +8,6 @@ const Demo1 = () => {
     console.log('start触发')
   }
   const beforeUpload = async (files: File[]) => {
-    console.log('bbb')
     const allowedTypes = ['image/png']
     const filteredFiles = Array.from(files).filter((file) =>
       allowedTypes.includes(file.type)
