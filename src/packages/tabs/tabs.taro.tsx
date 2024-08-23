@@ -213,7 +213,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           if (to < 0) return
           to = rtl ? -to : to
         }
-        
         nextTick(() => {
           scrollWithAnimation.current = true
         })
