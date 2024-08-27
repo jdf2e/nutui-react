@@ -19,7 +19,7 @@ const menulist: ActionSheetOption<string | boolean>[] = [
   },
 ]
 
-test('props test options', async () => {
+test('props test options ', async () => {
   const { container } = render(
     <ActionSheet
       visible

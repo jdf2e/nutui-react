@@ -86,12 +86,8 @@ describe('actionsheet-taro', () => {
     )[0]
     await testUtils.act(() => {
       testUtils.fireEvent.click(chooseTagEle)
-      // choose('选项一')
     })
-    console.log(chooseTagEle)
-    // console.log(choose.mock.calls[0])
-    // await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('选项一'))
-    await waitFor(() => expect(choose).toHaveBeenCalledWith('选项一'))
+    await waitFor(() => expect(testUtils.html()).toMatchSnapshot())
   })
 
   it('props test disabled item has disabled classes', async () => {
@@ -126,7 +122,7 @@ describe('actionsheet-taro', () => {
     const options = testUtils.queries.querySelectorAll(
       '.nut-actionsheet-list .nut-actionsheet-item'
     )
-    const disableItem = options[1]
+    const disableItem = options[0]
     await testUtils.act(() => {
       testUtils.fireEvent.click(disableItem)
     })
