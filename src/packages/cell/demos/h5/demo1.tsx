@@ -12,6 +12,7 @@ const Demo1 = () => {
       <Cell title="我是标题" extra="描述文字" />
       <Cell title="我是标题" description="我是描述" extra="描述文字" />
       <Cell
+        clickable
         title="点击测试"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
