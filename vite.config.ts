@@ -94,6 +94,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         provider: 'v8',
       },
       include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
+      exclude: ['src/packages/**/*.taro.(test|spec).(ts|tsx)'],
       reporters: ['default', 'html'],
     },
   }

@@ -8,6 +8,11 @@ module.exports = defineJestConfig({
   // testEnvironment: 'jsdom',  // 测试使用的环境
   testEnvironment: 'jest-environment-jsdom', // 测试使用的环境
   testMatch: ['<rootDir>/src/packages/**/*.taro.test.{tsx,ts}'], // 测试文件匹配
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '<rootDir>/src/packages/**/*.taro.tsx',
+    '!<rootDir>/src/packages/**/demo.taro.tsx',
+  ],
   moduleNameMapper: {
     // ...
     '@tarojs/taro': '@tarojs/taro-h5',

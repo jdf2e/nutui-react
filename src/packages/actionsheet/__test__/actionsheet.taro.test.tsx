@@ -1,5 +1,7 @@
 import TestUtils from '@tarojs/test-utils-react'
+import { waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { jest } from '@jest/globals'
 import { ActionSheet, ActionSheetOption } from '../actionsheet.taro'
 
 const menulist: ActionSheetOption<string | boolean>[] = [
@@ -18,9 +20,8 @@ const menulist: ActionSheetOption<string | boolean>[] = [
   },
 ]
 const testUtils = new TestUtils()
-describe('App', () => {
+describe('actionsheet-taro', () => {
   it('props test options ', async () => {
-    // React跟Vue相同用法
     await testUtils.mount(ActionSheet, {
       props: {
         visible: true,
@@ -30,19 +31,105 @@ describe('App', () => {
         options: menulist,
       },
     })
-    // 等待页面出现.btn这个节点
     const options = await testUtils.queries.waitForQuerySelectorAll(
       '.nut-actionsheet-list .nut-actionsheet-item'
     )
     expect(options.length).toBe(3)
-    // const btn = await testUtils.queries.waitForQuerySelector('.btn')
-    // // 等待react的渲染更新完成
-    // await testUtils.act(() => {
-    //   // 触发点击事件
-    //   testUtils.fireEvent.click(btn)
-    // })
-    // // 打印渲染结果
-    // expect(testUtils.html()).toMatchSnapshot()
-    // <div class="hello">...
+  })
+  it('props test cancelText ', async () => {
+    await testUtils.mount(ActionSheet, {
+      props: {
+        visible: true,
+        title: '弹层标题',
+        description: '弹层描述信息',
+        cancelText: '关闭弹层',
+        options: menulist,
+      },
+    })
+    const cancelEle = testUtils.queries.querySelectorAll(
+      '.nut-actionsheet-cancel'
+    )[0]
+    expect(cancelEle).toHaveTextContent('关闭弹层')
+  })
+
+  it('props test has value ', async () => {
+    await testUtils.mount(ActionSheet, {
+      props: {
+        visible: true,
+        title: '弹层标题',
+        description: '弹层描述信息',
+        cancelText: '关闭弹层',
+        options: menulist,
+      },
+    })
+    const chooseTagEle = testUtils.queries.querySelectorAll(
+      '.nut-actionsheet-list .nut-actionsheet-item'
+    )[0]
+    expect(chooseTagEle).toHaveTextContent('选项一')
+    expect(chooseTagEle).toHaveClass('danger')
+  })
+
+  it('props test choose item and show value', async () => {
+    const choose: any = jest.fn()
+    await testUtils.mount(ActionSheet, {
+      props: {
+        visible: true,
+        title: '弹层标题',
+        description: '弹层描述信息',
+        cancelText: '关闭弹层',
+        options: menulist,
+        onSelect: choose,
+      },
+    })
+    const chooseTagEle = testUtils.queries.querySelectorAll(
+      '.nut-actionsheet-list .nut-actionsheet-item'
+    )[0]
+    await testUtils.act(() => {
+      testUtils.fireEvent.click(chooseTagEle)
+      // choose('选项一')
+    })
+    console.log(chooseTagEle)
+    // console.log(choose.mock.calls[0])
+    // await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('选项一'))
+    await waitFor(() => expect(choose).toHaveBeenCalledWith('选项一'))
+  })
+
+  it('props test disabled item has disabled classes', async () => {
+    await testUtils.mount(ActionSheet, {
+      props: {
+        visible: true,
+        title: '弹层标题',
+        description: '弹层描述信息',
+        cancelText: '关闭弹层',
+        options: menulist,
+      },
+    })
+    const options = testUtils.queries.querySelectorAll(
+      '.nut-actionsheet-list .nut-actionsheet-item'
+    )
+    const disableItem = options[1]
+    expect(disableItem).toHaveClass('nut-actionsheet-item disabled')
+  })
+
+  it('props test click disabled item and not call fn', async () => {
+    const choose = jest.fn()
+    await testUtils.mount(ActionSheet, {
+      props: {
+        visible: true,
+        title: '弹层标题',
+        description: '弹层描述信息',
+        cancelText: '关闭弹层',
+        options: menulist,
+        onSelect: choose,
+      },
+    })
+    const options = testUtils.queries.querySelectorAll(
+      '.nut-actionsheet-list .nut-actionsheet-item'
+    )
+    const disableItem = options[1]
+    await testUtils.act(() => {
+      testUtils.fireEvent.click(disableItem)
+    })
+    await waitFor(() => expect(choose).not.toBeCalled())
   })
 })
