@@ -71,7 +71,7 @@
     "lint:fix": "eslint --fix ./src/packages",
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
-    "test:h5": "vitest --coverage",
+    "test": "vitest --coverage",
     "test:taro": "jest --coverage",
     "test:ui": "vitest --ui --coverage",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
