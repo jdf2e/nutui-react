@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`button-taro should match snapshot 1`] = `
+"[36m<body>[39m
+  [36m<div>[39m
+    [36m<button[39m
+      [33mclass[39m=[32m"nut-button nut-button-primary nut-button-normal nut-button-round"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-button-wrap"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m""[39m
+        [36m>[39m
+          [0m主要按钮[0m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</button>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;
