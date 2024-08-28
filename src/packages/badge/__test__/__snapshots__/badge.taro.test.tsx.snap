@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`backtop-taro should match snapshot 1`] = `
+"[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nut-badge"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-badge-content nut-badge-sup nut-badge-one"[39m
+        [33mstyle[39m=[32m"top: 4px; right: 8px;"[39m
+      [36m>[39m
+        [0m8[0m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;

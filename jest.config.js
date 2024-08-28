@@ -18,7 +18,7 @@ module.exports = defineJestConfig({
     // ...
     '@tarojs/taro': '@tarojs/taro-h5',
     '^@/packages/(.*)$': '<rootDir>/src/packages/$1',
-    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@/utils(/.*)?$': '<rootDir>/src/utils$1',
     '^@/locales/(.*)$': '<rootDir>/src/locales/$1',
     // '@tarojs/components': '@tarojs/components/lib/react',
     // '@tarojs/plugin-framework-react/dist/runtime': '<rootDir>/__mocks__/taro-framework',
