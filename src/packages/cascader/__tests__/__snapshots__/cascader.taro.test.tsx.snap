@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cascader-taro options 1`] = `
+"[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m"
+`;
+
+exports[`options 1`] = `
+"[36m<body>[39m
+  [36m<div />[39m
+[36m</body>[39m"
+`;
