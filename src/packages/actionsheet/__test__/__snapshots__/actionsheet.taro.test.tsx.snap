@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionsheet-taro props test choose item and show value 1`] = `
+"[36m<body[39m
+  [33mclass[39m=[32m"nut-overflow-hidden"[39m
+[36m>[39m
+  [36m<div>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-overlay"[39m
+      [33mstyle[39m=[32m"--nutui-overlay-zIndex: 1000;"[39m
+    [36m/>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-popup nut-popup-round nut-popup-bottom nut-actionsheet"[39m
+      [33mstyle[39m=[32m"z-index: 1000;"[39m
+    [36m>[39m
+      [36m<taro-view-core[39m
+        [33mclass[39m=[32m"nut-popup-title"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-popup-title-title"[39m
+        [36m>[39m
+          [0m弹层标题[0m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-popup-title-description"[39m
+          [36m>[39m
+            [0m弹层描述信息[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</taro-view-core>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m""[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-list"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  danger"[39m
+          [36m>[39m
+            [0m选项一[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m>[39m
+              [0m选项一的描述信息[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item disabled "[39m
+          [36m>[39m
+            [0m选项二[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  "[39m
+          [36m>[39m
+            [0m必填[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-cancel"[39m
+        [36m>[39m
+          [0m关闭弹层[0m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-actionsheet-safe-area"[39m
+      [36m/>[39m
+    [36m</taro-view-core>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-overlay"[39m
+      [33mstyle[39m=[32m"--nutui-overlay-zIndex: 1000;"[39m
+    [36m/>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-popup nut-popup-round nut-popup-bottom nut-actionsheet"[39m
+      [33mstyle[39m=[32m"z-index: 1000;"[39m
+    [36m>[39m
+      [36m<taro-view-core[39m
+        [33mclass[39m=[32m"nut-popup-title"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-popup-title-title"[39m
+        [36m>[39m
+          [0m弹层标题[0m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-popup-title-description"[39m
+          [36m>[39m
+            [0m弹层描述信息[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</taro-view-core>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m""[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-list"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  danger"[39m
+          [36m>[39m
+            [0m选项一[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m>[39m
+              [0m选项一的描述信息[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item disabled "[39m
+          [36m>[39m
+            [0m选项二[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  "[39m
+          [36m>[39m
+            [0m必填[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-cancel"[39m
+        [36m>[39m
+          [0m关闭弹层[0m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-actionsheet-safe-area"[39m
+      [36m/>[39m
+    [36m</taro-view-core>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-overlay"[39m
+      [33mstyle[39m=[32m"--nutui-overlay-zIndex: 1000;"[39m
+    [36m/>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-popup nut-popup-round nut-popup-bottom nut-actionsheet"[39m
+      [33mstyle[39m=[32m"z-index: 1000;"[39m
+    [36m>[39m
+      [36m<taro-view-core[39m
+        [33mclass[39m=[32m"nut-popup-title"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-popup-title-title"[39m
+        [36m>[39m
+          [0m弹层标题[0m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-popup-title-description"[39m
+          [36m>[39m
+            [0m弹层描述信息[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</taro-view-core>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m""[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-list"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  danger"[39m
+          [36m>[39m
+            [0m选项一[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m>[39m
+              [0m选项一的描述信息[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item disabled "[39m
+          [36m>[39m
+            [0m选项二[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  "[39m
+          [36m>[39m
+            [0m必填[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-cancel"[39m
+        [36m>[39m
+          [0m关闭弹层[0m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-actionsheet-safe-area"[39m
+      [36m/>[39m
+    [36m</taro-view-core>[39m
+  [36m</div>[39m
+  [36m<div>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-overlay"[39m
+      [33mstyle[39m=[32m"--nutui-overlay-zIndex: 1000;"[39m
+    [36m/>[39m
+    [36m<taro-view-core[39m
+      [33mcatch-move[39m=[32m"true"[39m
+      [33mclass[39m=[32m"nut-popup nut-popup-round nut-popup-bottom nut-actionsheet"[39m
+      [33mstyle[39m=[32m"z-index: 1000;"[39m
+    [36m>[39m
+      [36m<taro-view-core[39m
+        [33mclass[39m=[32m"nut-popup-title"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-popup-title-title"[39m
+        [36m>[39m
+          [0m弹层标题[0m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-popup-title-description"[39m
+          [36m>[39m
+            [0m弹层描述信息[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</taro-view-core>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m""[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-list"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  danger"[39m
+          [36m>[39m
+            [0m选项一[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m>[39m
+              [0m选项一的描述信息[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item disabled "[39m
+          [36m>[39m
+            [0m选项二[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-actionsheet-item  "[39m
+          [36m>[39m
+            [0m必填[0m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-actionsheet-item-description"[39m
+            [36m/>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-actionsheet-cancel"[39m
+        [36m>[39m
+          [0m关闭弹层[0m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-actionsheet-safe-area"[39m
+      [36m/>[39m
+    [36m</taro-view-core>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;

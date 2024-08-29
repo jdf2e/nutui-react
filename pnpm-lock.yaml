@@ -27,6 +27,9 @@ importers:
       '@react-spring/web':
         specifier: ~9.6.1
         version: 9.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tarojs/test-utils-react':
+        specifier: ^0.1.1
+        version: 0.1.1(@babel/core@7.24.7)(@tarojs/components@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1))(@tarojs/helper@3.6.31)(@tarojs/plugin-framework-react@3.6.22(@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@4.11.1(webpack@5.92.0(@swc/core@1.3.96)))(webpack@5.92.0(@swc/core@1.3.96)))(@types/react@18.3.3)(postcss@8.4.38)(react-refresh@0.14.2)(react@18.3.1))(@tarojs/plugin-platform-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38))(@tarojs/react@3.6.22(react@18.3.1))(@tarojs/runtime@3.6.22)(@tarojs/shared@3.6.22)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@use-gesture/react':
         specifier: 10.2.20
         version: 10.2.20(react@18.3.1)
@@ -76,6 +79,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.0.3
         version: 19.2.2
+      '@jest/globals':
+        specifier: ^29.7.0
+        version: 29.7.0
       '@loadable/component':
         specifier: ^5.16.3
         version: 5.16.4(react@18.3.1)
@@ -235,6 +241,12 @@ importers:
       inquirer:
         specifier: ^10.1.4
         version: 10.1.4
+      jest:
+        specifier: ^29.7.0
+        version: 29.7.0(@types/node@20.14.2)(ts-node@10.9.2(@swc/core@1.3.96)(@types/node@20.14.2)(typescript@5.4.5))
+      jest-environment-jsdom:
+        specifier: ^29.7.0
+        version: 29.7.0
       jscodeshift:
         specifier: ^0.15.1
         version: 0.15.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
@@ -421,7 +433,7 @@ importers:
         version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-h5':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-jd':
         specifier: 3.6.22
         version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
@@ -430,10 +442,10 @@ importers:
         version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-swan':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-tt':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.22
         version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
@@ -454,7 +466,7 @@ importers:
         version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
       '@tarojs/taro-h5':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+        version: 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       babel-plugin-import:
         specifier: ^1.13.8
         version: 1.13.8
@@ -2614,6 +2626,25 @@ packages:
       vue:
         optional: true
 
+  '@tarojs/test-utils-dom@0.1.1':
+    resolution: {integrity: sha512-IbX/fhfxYZT1sZjFi3i9pGLypUa86I1/HW134BLsn2ByEID3MON1Zay9uT7qAFPQsfGuek/VbjjbyFfrGajULA==}
+
+  '@tarojs/test-utils-react@0.1.1':
+    resolution: {integrity: sha512-8F+jqQCe3P37FqWl/Fmy5elH/1LsfSQsZMLWp5II27EdjBUfmXr95EjZ4DJjPJkbfuM4Z9LefjXVk3nghRRdqg==}
+    peerDependencies:
+      '@tarojs/components': ^3.6.0
+      '@tarojs/helper': ^3.6.0
+      '@tarojs/plugin-framework-react': ^3.6.0
+      '@tarojs/plugin-platform-h5': ^3.6.0
+      '@tarojs/react': ^3.6.0
+      '@tarojs/runtime': ^3.6.0
+      '@tarojs/shared': ^3.6.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+
+  '@tarojs/test-utils-shared@0.1.1':
+    resolution: {integrity: sha512-DnBFzVFrunaR8B80amqwfIAcYVp6kLEXlwC6nY2vfN3JeuMvUI6IOcKq1NqjapuNulI6hwfUKI4Drsz7GZS+cw==}
+
   '@tarojs/webpack5-prebundle@3.6.22':
     resolution: {integrity: sha512-AEqrZW5j8HGzfGiCFL9L7JVYBEKXKp04/y3TpLyoEXJ2/HUX6N/hmc4PNQa+1QoMCA8Zw0c8L7ZsEtaB5L2JlA==}
     peerDependencies:
@@ -2790,6 +2821,9 @@ packages:
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
 
+  '@types/jsdom@20.0.1':
+    resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
+
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
@@ -2923,6 +2957,9 @@ packages:
   '@types/testing-library__jest-dom@6.0.0':
     resolution: {integrity: sha512-bnreXCgus6IIadyHNlN/oI5FfX4dWgvGhOPvpr7zzCYDGAPIfvyIoAozMBINmhmsVuqV0cncejF2y5KC7ScqOg==}
     deprecated: This is a stub types definition. @testing-library/jest-dom provides its own type definitions, so you do not need this installed.
+
+  '@types/tough-cookie@4.0.5':
+    resolution: {integrity: sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==}
 
   '@types/unist@2.0.10':
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
@@ -4432,6 +4469,16 @@ packages:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
 
+  cssom@0.3.8:
+    resolution: {integrity: sha512-b0tGHbfegbhPJpxpiBPU2sCkigAqtM9O121le6bbOlgyV+NyGyCmVfJ6QW9eRjz8CpNfWEOYBIMIGRYkLwsIYg==}
+
+  cssom@0.5.0:
+    resolution: {integrity: sha512-iKuQcq+NdHqlAcwUY0o/HL69XQrUaQdMjmStJ8JFmUaiiQErlhrmuigkg/CU4E2J0IyUKUrMAgl36TvN67MqTw==}
+
+  cssstyle@2.3.0:
+    resolution: {integrity: sha512-AZL67abkUzIuvcHqk7c09cezpGNcxUxU4Ioi/05xHk4DQeTkWmGYftIE6ctU6AEt+Gn4n1lDStOtj7FKycP71A==}
+    engines: {node: '>=8'}
+
   cssstyle@3.0.0:
     resolution: {integrity: sha512-N4u2ABATi3Qplzf0hWbVCdjenim8F3ojEXpBDF5hBpjzW182MjNGLqfmQ0SkSPeQ+V86ZXgeH8aXj6kayd4jgg==}
     engines: {node: '>=14'}
@@ -4460,6 +4507,10 @@ packages:
   data-uri-to-buffer@6.0.2:
     resolution: {integrity: sha512-7hvf7/GW8e86rW0ptuwS3OcBGDjIi6SZva7hCyWC0yYry2cOPmLIjXAUHI6DK2HsnwJd9ifmt57i8eV2n4YNpw==}
     engines: {node: '>= 14'}
+
+  data-urls@3.0.2:
+    resolution: {integrity: sha512-Jy/tj3ldjZJo63sVAvg6LHt2mHvl4V6AgRAmNDtLdm7faqtsx+aJG42rsyCo9JCoRVKwPFzKlIPx3DIibwSIaQ==}
+    engines: {node: '>=12'}
 
   data-urls@4.0.0:
     resolution: {integrity: sha512-/mMTei/JXPqvFqQtfyTowxmJVwr2PVAeCcDxyFf6LhoOu/09TX2OX3kb2wzi4DMXcfj4OItwDOnhl5oziPnT6g==}
@@ -6585,6 +6636,15 @@ packages:
     resolution: {integrity: sha512-gns+Er14+ZrEoC5fhOfYCY1LOHHr0TI+rQUHZS8Ttw2l7gl+80eHc/gFf2Ktkw0+SIACDTeWvpFcv3B04VembQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
+  jest-environment-jsdom@29.7.0:
+    resolution: {integrity: sha512-k9iQbsf9OyOfdzWH8HDmrRT0gSIcX+FLNW7IQq94tFX0gynPwqDTW0Ho6iMVNjGz/nb+l/vW3dWM2bbLLpkbXA==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+    peerDependencies:
+      canvas: ^2.5.0
+    peerDependenciesMeta:
+      canvas:
+        optional: true
+
   jest-environment-node@29.7.0:
     resolution: {integrity: sha512-DOSwCRqXirTOyheM+4d5YZOrWcdu0LNZ87ewUoywbcb2XR4wKgqiG8vNeYwhjFMbEkfju7wx2GYH0P2gevGvFw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -6717,6 +6777,15 @@ packages:
       '@babel/preset-env': ^7.1.6
     peerDependenciesMeta:
       '@babel/preset-env':
+        optional: true
+
+  jsdom@20.0.3:
+    resolution: {integrity: sha512-SYhBvTh89tTfCD/CRdSOm13mOBa42iTaTyfyEWBdKcGdPxPtLFBXuHR8XHb33YNYaP+lLbmSvBTsnoesCNJEsQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      canvas: ^2.5.0
+    peerDependenciesMeta:
+      canvas:
         optional: true
 
   jsdom@21.1.2:
@@ -9586,6 +9655,10 @@ packages:
     resolution: {integrity: sha512-Loo5UUvLD9ScZ6jh8beX1T6sO1w2/MpCRpEP7V280GKMVUQ0Jzar2U3UJPsrdbziLEMMhu3Ujnq//rhiFuIeag==}
     engines: {node: '>=6'}
 
+  tr46@3.0.0:
+    resolution: {integrity: sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==}
+    engines: {node: '>=12'}
+
   tr46@4.1.1:
     resolution: {integrity: sha512-2lv/66T7e5yNyhAAC4NaKe5nVavzuGJQVVtRYLyQ2OI8tsJ61PMLlelehb0wi2Hx6+hT/OJUWZcw8MjlSRnxvw==}
     engines: {node: '>=14'}
@@ -10175,6 +10248,10 @@ packages:
 
   whatwg-mimetype@3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
+    engines: {node: '>=12'}
+
+  whatwg-url@11.0.0:
+    resolution: {integrity: sha512-RKT8HExMpoYx4igMiVMY83lN6UeITKJlBQ+vR/8ZJ8OCdSiN3RwCq+9gH0+Xzj0+5IrM6i4j/6LuvzbZIQgEcQ==}
     engines: {node: '>=12'}
 
   whatwg-url@12.0.1:
@@ -11863,7 +11940,7 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       jest-mock: 29.7.0
 
   '@jest/expect-utils@29.7.0':
@@ -11881,7 +11958,7 @@ snapshots:
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -11972,7 +12049,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       '@types/yargs': 15.0.19
       chalk: 4.1.2
 
@@ -12568,7 +12645,7 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
 
-  '@tarojs/components-react@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
+  '@tarojs/components-react@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.24.7
       '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
@@ -12584,6 +12661,7 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - vue
 
   '@tarojs/components@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
@@ -12780,14 +12858,14 @@ snapshots:
       - supports-color
       - vue
 
-  '@tarojs/plugin-platform-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
+  '@tarojs/plugin-platform-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
     dependencies:
       '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
-      '@tarojs/components-react': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+      '@tarojs/components-react': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/router': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
       '@tarojs/service': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
       '@tarojs/shared': 3.6.22
-      '@tarojs/taro-h5': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+      '@tarojs/taro-h5': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       babel-plugin-transform-taroapi: 3.6.22
       change-case: 4.1.2
       lodash-es: 4.17.21
@@ -12799,6 +12877,7 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - supports-color
       - vue
 
@@ -12831,7 +12910,7 @@ snapshots:
       - supports-color
       - vue
 
-  '@tarojs/plugin-platform-swan@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
+  '@tarojs/plugin-platform-swan@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
     dependencies:
       '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/service': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
@@ -12843,10 +12922,11 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - supports-color
       - vue
 
-  '@tarojs/plugin-platform-tt@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
+  '@tarojs/plugin-platform-tt@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
     dependencies:
       '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/service': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
@@ -12858,6 +12938,7 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - supports-color
       - vue
 
@@ -12936,7 +13017,7 @@ snapshots:
 
   '@tarojs/shared@3.6.22': {}
 
-  '@tarojs/taro-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
+  '@tarojs/taro-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)':
     dependencies:
       '@tarojs/api': 3.6.22
       '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
@@ -12959,6 +13040,7 @@ snapshots:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - vue
 
   '@tarojs/taro-loader@3.6.22(@types/react@18.3.3)(postcss@8.4.38)':
@@ -12982,6 +13064,44 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.3
       postcss: 8.4.38
+
+  '@tarojs/test-utils-dom@0.1.1(@babel/core@7.24.7)':
+    dependencies:
+      '@babel/runtime': 7.24.7
+      babel-jest: 29.7.0(@babel/core@7.24.7)
+      pretty-format: 29.7.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+
+  '@tarojs/test-utils-react@0.1.1(@babel/core@7.24.7)(@tarojs/components@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1))(@tarojs/helper@3.6.31)(@tarojs/plugin-framework-react@3.6.22(@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@4.11.1(webpack@5.92.0(@swc/core@1.3.96)))(webpack@5.92.0(@swc/core@1.3.96)))(@types/react@18.3.3)(postcss@8.4.38)(react-refresh@0.14.2)(react@18.3.1))(@tarojs/plugin-platform-h5@3.6.22(@types/react@18.3.3)(postcss@8.4.38))(@tarojs/react@3.6.22(react@18.3.1))(@tarojs/runtime@3.6.22)(@tarojs/shared@3.6.22)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.7
+      '@tarojs/components': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
+      '@tarojs/helper': 3.6.31
+      '@tarojs/plugin-framework-react': 3.6.22(@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.2)(type-fest@2.19.0)(webpack-dev-server@4.11.1(webpack@5.92.0(@swc/core@1.3.96)))(webpack@5.92.0(@swc/core@1.3.96)))(@types/react@18.3.3)(postcss@8.4.38)(react-refresh@0.14.2)(react@18.3.1)
+      '@tarojs/plugin-platform-h5': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
+      '@tarojs/react': 3.6.22(react@18.3.1)
+      '@tarojs/runtime': 3.6.22
+      '@tarojs/shared': 3.6.22
+      '@tarojs/test-utils-dom': 0.1.1(@babel/core@7.24.7)
+      '@tarojs/test-utils-shared': 0.1.1(@babel/core@7.24.7)
+      babel-jest: 29.7.0(@babel/core@7.24.7)
+      pretty-format: 29.7.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+
+  '@tarojs/test-utils-shared@0.1.1(@babel/core@7.24.7)':
+    dependencies:
+      '@babel/runtime': 7.24.7
+      babel-jest: 29.7.0(@babel/core@7.24.7)
+      pretty-format: 29.7.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
 
   '@tarojs/webpack5-prebundle@3.6.22(@types/react@18.3.3)(postcss@8.4.38)(webpack@5.92.0(@swc/core@1.3.96))':
     dependencies:
@@ -13010,8 +13130,8 @@ snapshots:
       '@tarojs/plugin-platform-alipay': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-jd': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
       '@tarojs/plugin-platform-qq': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
-      '@tarojs/plugin-platform-swan': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
-      '@tarojs/plugin-platform-tt': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)
+      '@tarojs/plugin-platform-swan': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
+      '@tarojs/plugin-platform-tt': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.3.3)(postcss@8.4.38)(react@18.3.1)
       '@tarojs/runner-utils': 3.6.22
       '@tarojs/runtime': 3.6.22
@@ -13230,20 +13350,20 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 4.19.3
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
@@ -13271,7 +13391,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.3':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       '@types/qs': 6.9.15
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -13290,16 +13410,16 @@ snapshots:
 
   '@types/fs-extra@8.1.5':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/graceful-fs@4.1.9':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/hast@2.3.10':
     dependencies:
@@ -13319,7 +13439,7 @@ snapshots:
 
   '@types/http-proxy@1.17.14':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -13331,6 +13451,12 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
 
+  '@types/jsdom@20.0.1':
+    dependencies:
+      '@types/node': 20.14.13
+      '@types/tough-cookie': 4.0.5
+      parse5: 7.1.2
+
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
@@ -13341,7 +13467,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/loadable__component@5.13.9':
     dependencies:
@@ -13387,7 +13513,7 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/node@20.14.13':
     dependencies:
@@ -13447,7 +13573,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/retry@0.12.0': {}
 
@@ -13458,7 +13584,7 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -13467,12 +13593,12 @@ snapshots:
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       '@types/send': 0.17.4
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/stack-utils@2.0.3': {}
 
@@ -13486,6 +13612,8 @@ snapshots:
       - jest
       - vitest
 
+  '@types/tough-cookie@4.0.5': {}
+
   '@types/unist@2.0.10': {}
 
   '@types/unist@3.0.2': {}
@@ -13496,7 +13624,7 @@ snapshots:
 
   '@types/ws@8.5.10':
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -15193,6 +15321,14 @@ snapshots:
     dependencies:
       css-tree: 2.2.1
 
+  cssom@0.3.8: {}
+
+  cssom@0.5.0: {}
+
+  cssstyle@2.3.0:
+    dependencies:
+      cssom: 0.3.8
+
   cssstyle@3.0.0:
     dependencies:
       rrweb-cssom: 0.6.0
@@ -15212,6 +15348,12 @@ snapshots:
   data-uri-to-buffer@4.0.1: {}
 
   data-uri-to-buffer@6.0.2: {}
+
+  data-urls@3.0.2:
+    dependencies:
+      abab: 2.0.6
+      whatwg-mimetype: 3.0.0
+      whatwg-url: 11.0.0
 
   data-urls@4.0.0:
     dependencies:
@@ -17672,7 +17814,7 @@ snapshots:
       '@jest/expect': 29.7.0
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       chalk: 4.1.2
       co: 4.6.0
       dedent: 1.5.3
@@ -17761,12 +17903,27 @@ snapshots:
       jest-util: 29.7.0
       pretty-format: 29.7.0
 
+  jest-environment-jsdom@29.7.0:
+    dependencies:
+      '@jest/environment': 29.7.0
+      '@jest/fake-timers': 29.7.0
+      '@jest/types': 29.6.3
+      '@types/jsdom': 20.0.1
+      '@types/node': 20.14.13
+      jest-mock: 29.7.0
+      jest-util: 29.7.0
+      jsdom: 20.0.3
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   jest-environment-node@29.7.0:
     dependencies:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -17815,7 +17972,7 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       jest-util: 29.7.0
 
   jest-pnp-resolver@1.2.3(jest-resolve@29.7.0):
@@ -17952,13 +18109,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 20.14.2
+      '@types/node': 20.14.13
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -18032,6 +18189,39 @@ snapshots:
       '@babel/preset-env': 7.24.7(@babel/core@7.24.7)
     transitivePeerDependencies:
       - supports-color
+
+  jsdom@20.0.3:
+    dependencies:
+      abab: 2.0.6
+      acorn: 8.12.0
+      acorn-globals: 7.0.1
+      cssom: 0.5.0
+      cssstyle: 2.3.0
+      data-urls: 3.0.2
+      decimal.js: 10.4.3
+      domexception: 4.0.0
+      escodegen: 2.1.0
+      form-data: 4.0.0
+      html-encoding-sniffer: 3.0.0
+      http-proxy-agent: 5.0.0
+      https-proxy-agent: 5.0.1
+      is-potential-custom-element-name: 1.0.1
+      nwsapi: 2.2.10
+      parse5: 7.1.2
+      saxes: 6.0.0
+      symbol-tree: 3.2.4
+      tough-cookie: 4.1.4
+      w3c-xmlserializer: 4.0.0
+      webidl-conversions: 7.0.0
+      whatwg-encoding: 2.0.0
+      whatwg-mimetype: 3.0.0
+      whatwg-url: 11.0.0
+      ws: 8.17.0
+      xml-name-validator: 4.0.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
 
   jsdom@21.1.2:
     dependencies:
@@ -21481,6 +21671,10 @@ snapshots:
       universalify: 0.2.0
       url-parse: 1.5.10
 
+  tr46@3.0.0:
+    dependencies:
+      punycode: 2.3.1
+
   tr46@4.1.1:
     dependencies:
       punycode: 2.3.1
@@ -22221,6 +22415,11 @@ snapshots:
   whatwg-fetch@3.6.20: {}
 
   whatwg-mimetype@3.0.0: {}
+
+  whatwg-url@11.0.0:
+    dependencies:
+      tr46: 3.0.0
+      webidl-conversions: 7.0.0
 
   whatwg-url@12.0.1:
     dependencies:

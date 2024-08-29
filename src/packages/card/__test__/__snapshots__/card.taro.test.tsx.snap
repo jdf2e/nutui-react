@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`card-taro props test 1`] = `
+"[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"nut-card"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-card-left"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m""[39m
+          [33msrc[39m=[32m"//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"[39m
+        [36m/>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"nut-card-right"[39m
+      [36m>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-card-right-title"[39m
+        [36m>[39m
+          [0m活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水[0m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-card-right-price"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-price  "[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-symbol nut-price-symbol-normal"[39m
+            [36m>[39m
+              [0m￥[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-integer nut-price-integer-normal"[39m
+            [36m>[39m
+              [0m388[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-decimal nut-price-decimal-normal"[39m
+            [36m>[39m
+              [0m.[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-decimal nut-price-decimal-normal"[39m
+            [36m>[39m
+              [0m00[0m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-price  nut-card-right-price-origin"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-symbol nut-price-symbol-normal"[39m
+            [36m>[39m
+              [0m￥[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-integer nut-price-integer-normal"[39m
+            [36m>[39m
+              [0m378[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-decimal nut-price-decimal-normal"[39m
+            [36m>[39m
+              [0m.[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"nut-price-decimal nut-price-decimal-normal"[39m
+            [36m>[39m
+              [0m00[0m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-card-right-other"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-tag nut-tag-danger"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"nut-tag-text"[39m
+            [36m>[39m
+              [0m自营[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-tag nut-tag-default nut-tag-plain"[39m
+          [36m>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"nut-tag-text"[39m
+            [36m>[39m
+              [0m厂商配送[0m
+            [36m</span>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"nut-card-right-shop"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"nut-card-right-shop-name"[39m
+          [36m>[39m
+            [0m阳澄湖大闸蟹自营店&gt;[0m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;
