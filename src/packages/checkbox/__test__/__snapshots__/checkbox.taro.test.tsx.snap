@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checkbox-taro should match snapshot 1`] = `
+"[36m<body>[39m
+  [36m<div>[39m
+    [36m<taro-view-core[39m
+      [33mclass[39m=[32m"nut-checkbox nut-checkbox-reverse"[39m
+    [36m>[39m
+      [36m<i[39m
+        [33mclass[39m=[32m" nut-icon nut-icon-Checked nut-checkbox-icon nut-checkbox-icon-checked"[39m
+        [33mstyle[39m=[32m"background-color: currentColor; mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik01MTIgMEMyMzAuNCAwIDAgMjMwLjQgMCA1MTJzMjMwLjQgNTEyIDUxMiA1MTIgNTEyLTIzMC40IDUxMi01MTJTNzkzLjYgMCA1MTIgMG0yODEuNiAzNjkuNzhjLTE0LjIyIDExLjM4LTE5My40MiAxMzAuODQtMzIxLjQyIDMyMS40MiAwIDAgMCAyLjg0LTIuODUgMi44NC04LjUzIDUuNjktNDguMzUgMzYuOTgtODguMTctOC41My0zOS44Mi01MS4yLTYyLjU4LTk5LjU2LTE0Mi4yMy0xNDIuMjItMi44NCAwLTIuODQtMi44NS0yLjg0LTIuODUtOC41My0xMS4zOC0zOS44Mi01Ni44OSAxOS45MS01Ni44OCA0NS41MSAwIDkxLjAyIDExLjM4IDE2Mi4xMyA3My45NSA1LjY5IDUuNjkgMTQuMjIgNS42OSAxNy4wNyAwIDM0LjEzLTM5LjgyIDE3My41MS0xOTAuNTggMzMyLjgtMjM4LjkzIDAgMCAxOS45MS0yLjg1IDMxLjI5IDE0LjIyIDUuNjkgMTEuMzggMTEuMzggMjIuNzYtNS42OSAzNi45OCIvPjwvc3ZnPg==')  0 0/100% 100% no-repeat;"[39m
+      [36m/>[39m
+      [36m<span[39m
+        [33mclass[39m=[32m"nut-checkbox-label "[39m
+      [36m>[39m
+        [0m复选框[0m
+      [36m</span>[39m
+    [36m</taro-view-core>[39m
+  [36m</div>[39m
+[36m</body>[39m"
+`;
