@@ -334,7 +334,7 @@ describe('Cascader', () => {
     )[0]
     expect(element).toHaveTextContent('鼓楼区')
   })
-  it('init Value with both valu and defaultValue', async () => {
+  it('init Value with both value and defaultValue', async () => {
     const { container } = render(
       <Cascader
         visible
