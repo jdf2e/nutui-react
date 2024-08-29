@@ -350,9 +350,8 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const fileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return
-    }
+    if (disabled) return
+
     const $el = event.target
     const { files } = $el
 
@@ -360,6 +359,7 @@ const InternalUploader: ForwardRefRenderFunction<
       beforeUpload(new Array<File>().slice.call(files)).then(
         (f: Array<File> | boolean) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) $el.value = ''
           readFile(_files)
         }
       )

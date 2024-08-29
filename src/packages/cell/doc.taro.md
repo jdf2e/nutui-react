@@ -92,6 +92,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 | extra | 右侧描述 | `ReactNode` | `-` |
 | radius | 圆角半径 | `string` | `6px` |
 | align | 纵轴方向上的对齐方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| clickable | 点击的样式反馈 | `boolean` | `false` |
 | onClick | 点击事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主题定制
