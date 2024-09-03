@@ -44,12 +44,13 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   const stickyRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
   const [isFixed, setIsFixed] = useState(false)
-
   const [stickyStyle, setStickyStyle] = useState<CSSProperties>({
     [position]: `${threshold}px`,
     zIndex,
   })
-
+  useEffect(() => {
+    setStickyStyle({ ...stickyStyle, [position]: `${threshold}px` })
+  }, [threshold, position])
   const [rootStyle, setRootStyle] = useState({})
 
   const getElement = useCallback(() => {
