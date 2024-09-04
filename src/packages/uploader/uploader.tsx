@@ -329,7 +329,7 @@ const InternalUploader: ForwardRefRenderFunction<
     oversizes.length && onOversize?.(files)
     if (filterFile.length > maximum) {
       filterFile.splice(maximum, filterFile.length - maximum)
-      onOverLimit?.(files)
+      onOverLimit?.(filterFile)
     }
     if (fileList.length !== 0) {
       const index = maximum - fileList.length

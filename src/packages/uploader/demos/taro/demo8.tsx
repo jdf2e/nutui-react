@@ -7,7 +7,7 @@ const Demo8 = () => {
     <Uploader
       url={uploadUrl}
       multiple
-      maxCount="3"
+      maxCount="5"
       onOverLimit={(files: File[]) => {
         console.log('onOverLimit', files)
       }}

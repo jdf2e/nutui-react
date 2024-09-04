@@ -456,7 +456,7 @@ const InternalUploader: ForwardRefRenderFunction<
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
-      onOverLimit?.(files)
+      onOverLimit?.(filterFile)
     }
     return filterFile
   }
