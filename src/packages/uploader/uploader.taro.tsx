@@ -114,6 +114,9 @@ export interface UploaderProps extends BasicComponent {
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
+  onOverLimit?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => void
   onChange?: (files: FileItem[]) => void
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
@@ -196,6 +199,7 @@ const InternalUploader: ForwardRefRenderFunction<
     onUpdate,
     onFailure,
     onOversize,
+    onOverLimit,
     beforeXhrUpload,
     beforeDelete,
     ...restProps
@@ -387,6 +391,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const readFile = <T extends TFileType>(files: T[]) => {
+    const _files: FileItem[] = []
     files.forEach((file: T, index: number) => {
       let fileType = file.type
       const filepath = (file.tempFilePath || file.path) as string
@@ -426,9 +431,12 @@ const InternalUploader: ForwardRefRenderFunction<
       }
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
+        _files.push(fileItem)
+      } else {
+        _files.push(fileItem)
       }
       executeUpload(fileItem, index)
-      setFileList([...fileList, fileItem])
+      setFileList(_files)
     })
   }
 
@@ -448,6 +456,7 @@ const InternalUploader: ForwardRefRenderFunction<
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
+      onOverLimit?.(files)
     }
     return filterFile
   }

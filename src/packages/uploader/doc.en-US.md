@@ -173,6 +173,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | onStart | File upload started | `(option: UploadOptions) => void` | `-` |
 | onProgress | Progress of file upload | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onOversize | Triggered when the file size exceeds the limit | `(file: File[]) => void` | `-` |
+| onOverLimit | Triggered when the file size exceeds the maxCount | `(file: File[]) => void` | `-` |
 | onSuccess | uploaded successfully | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | upload failed | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onChange | Status when uploaded files change | `(files: FileItem[]) => void` | `-` |

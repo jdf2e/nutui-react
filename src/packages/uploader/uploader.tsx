@@ -64,6 +64,7 @@ export interface UploaderProps extends BasicComponent {
   }) => void
   onUpdate?: (files: FileItem[]) => void
   onOversize?: (files: File[]) => void
+  onOverLimit?: (files: File[]) => void
   onChange?: (files: FileItem[]) => void
   beforeUpload?: (files: File[]) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
@@ -142,6 +143,7 @@ const InternalUploader: ForwardRefRenderFunction<
     onUpdate,
     onFailure,
     onOversize,
+    onOverLimit,
     beforeUpload,
     beforeXhrUpload,
     beforeDelete,
@@ -285,6 +287,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const readFile = (files: File[]) => {
+    const _files: FileItem[] = []
     files.forEach((file: File, index: number) => {
       const formData = new FormData()
       formData.append(name, file)
@@ -298,16 +301,17 @@ const InternalUploader: ForwardRefRenderFunction<
         ? locale.uploader.readyUpload
         : locale.uploader.waitingUpload
       executeUpload(fileItem, index)
-
       if (preview && file.type?.includes('image')) {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileItem.url = (event.target as FileReader).result as string
-          setFileList([...fileList, fileItem])
+          _files.push(fileItem)
+          setFileList(_files)
         }
         reader.readAsDataURL(file)
       } else {
-        setFileList([...fileList, fileItem])
+        _files.push(fileItem)
+        setFileList(_files)
       }
     })
   }
@@ -323,9 +327,9 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     oversizes.length && onOversize?.(files)
-
     if (filterFile.length > maximum) {
       filterFile.splice(maximum, filterFile.length - maximum)
+      onOverLimit?.(files)
     }
     if (fileList.length !== 0) {
       const index = maximum - fileList.length

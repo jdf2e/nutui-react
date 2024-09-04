@@ -174,6 +174,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | onStart | 文件上传开始 | `(option: UploadOptions) => void` | `-` |
 | onProgress | 文件上传的进度 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onOversize | 文件大小超过限制时触发 | `(file: File[]) => void` | `-` |
+| onOverLimit | 文件数量超过限制时触发 | `(file: File[]) => void` | `-` |
 | onSuccess | 上传成功 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | 上传失败 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onChange | 上传文件改变时的状态 | `(files: FileItem[]) => void` | `-` |
