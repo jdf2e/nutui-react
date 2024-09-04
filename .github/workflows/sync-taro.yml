@@ -31,7 +31,7 @@ jobs:
         run: node scripts/copy-docs-h5-or-taro.js taro
 
       - name : Sync
-        uses : JamesIves/github-pages-deploy-action@v4.5.0
+        uses : JamesIves/github-pages-deploy-action@v4.6.4
         with :
           branch : new-site # action 应该部署到的分支 。
           folder : site_docs #操作应该部署的文件夹 。
