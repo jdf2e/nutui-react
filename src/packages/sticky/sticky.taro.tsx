@@ -96,7 +96,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       zIndex,
     }
     return style
-  }, [fixed, rootRect.height, rootRect.width, transform, position])
+  }, [fixed, rootRect.height, rootRect.width, transform, position, threshold])
 
   const handleScroll: any = async (scrollTop: number) => {
     const curRootRect = await getRectByTaro(rootRef.current)
