@@ -51,7 +51,7 @@ shell.exec(
           perf: '* zap: ',
           refactor: '* 🪵 ',
           revert: '* 🚦 ',
-          style: ':art: ',
+          style: '* :art: ',
           test: '* 💡 ',
           others: '* 🔔 ',
         }
