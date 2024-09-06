@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Popup, Cell, Dialog } from '@nutui/nutui-react-taro'
 
-const Demo6 = () => {
+const Demo7 = () => {
   const [showMutiple, setShowMutiple] = useState(false)
   const [showMutipleInner, setShowMutipleInner] = useState(false)
   const [showDialog, setShowDialog] = useState(false)
@@ -83,4 +83,4 @@ const Demo6 = () => {
     </>
   )
 }
-export default Demo6
+export default Demo7
