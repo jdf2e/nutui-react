@@ -49,8 +49,8 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     zIndex,
   })
   useEffect(() => {
-    setStickyStyle({ ...stickyStyle, [position]: `${threshold}px` })
-  }, [threshold, position])
+    setStickyStyle({ ...stickyStyle, [position]: `${threshold}px`, zIndex })
+  }, [threshold, position, zIndex])
   const [rootStyle, setRootStyle] = useState({})
 
   const getElement = useCallback(() => {
