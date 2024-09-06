@@ -8,6 +8,7 @@ const Demo7 = () => {
 
   return (
     <>
+      <Dialog id="test" />
       <Cell
         title="多层堆叠"
         onClick={() => {
