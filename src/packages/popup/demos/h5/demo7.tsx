@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Popup, Cell } from '@nutui/nutui-react'
+import { Popup, Cell, Dialog } from '@nutui/nutui-react'
 
-const Demo6 = () => {
+const Demo7 = () => {
   const [showMutiple, setShowMutiple] = useState(false)
   const [showMutipleInner, setShowMutipleInner] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
 
   return (
     <>
@@ -44,7 +45,37 @@ const Demo6 = () => {
           close
         </span>
       </Popup>
+
+      <Cell
+        title="PopUp + Dialog"
+        onClick={() => {
+          setShowDialog(true)
+        }}
+      />
+
+      <Popup
+        closeable
+        visible={showDialog}
+        style={{ height: '100%' }}
+        position="bottom"
+        onClose={() => {
+          setShowDialog(false)
+        }}
+      >
+        <Cell
+          title="打开 Dialog"
+          style={{ margin: '20% 20px', width: '80%' }}
+          onClick={() =>
+            Dialog.alert({
+              title: '提示',
+              content: '支持函数调用和组件调用两种方式。',
+              hideCancelButton: true,
+              confirmText: '确认',
+            })
+          }
+        />
+      </Popup>
     </>
   )
 }
-export default Demo6
+export default Demo7
