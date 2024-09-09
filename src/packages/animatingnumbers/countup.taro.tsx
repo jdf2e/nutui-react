@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { mergeProps } from '@/utils/merge-props'
 
 export interface CountUpProps extends BasicComponent {
   length: number
@@ -33,10 +34,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     thousands,
     style,
     ...reset
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef(0)
@@ -141,5 +139,4 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   )
 }
 
-CountUp.defaultProps = defaultProps // 不可删除
 CountUp.displayName = 'NutCountUp'

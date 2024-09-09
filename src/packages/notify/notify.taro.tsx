@@ -7,6 +7,7 @@ import {
   useCustomEvent,
   useCustomEventsPath,
 } from '@/utils/use-custom-event'
+import { mergeProps } from '@/utils/merge-props'
 
 export type NotifyPosition = 'top' | 'bottom'
 export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
@@ -49,7 +50,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
     duration,
     onClose,
     onClick,
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
 
   useCustomEvent(id as string, (status: boolean) => {
     status ? show() : hide()
@@ -130,7 +131,6 @@ export function close(selector: string) {
   customEvents.trigger(path, false)
 }
 
-Notify.defaultProps = defaultProps // 不可删除
 Notify.displayName = 'NutNotify'
 Notify.open = open
 Notify.close = close
