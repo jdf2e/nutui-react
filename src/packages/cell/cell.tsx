@@ -11,7 +11,7 @@ export interface CellProps extends BasicComponent {
   extra: ReactNode
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
-  isLast: boolean
+  clickable: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -22,6 +22,7 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
+  clickable: false,
   isLast: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
@@ -34,6 +35,7 @@ export const Cell: FunctionComponent<
   const ctx = useContext(CellGroupContext)
   const {
     children,
+    clickable,
     onClick,
     title,
     description,
@@ -63,13 +65,16 @@ export const Cell: FunctionComponent<
   return (
     <>
       <div
-        className={classNames([
-          classPrefix,
-          className,
-          {
-            [`${classPrefix}-group-item`]: ctx?.group,
-          },
-        ])}
+        className={`${classNames(
+          [
+            classPrefix,
+            className,
+            {
+              [`${classPrefix}-group-item`]: ctx?.group,
+            },
+          ],
+          clickable ? `${classPrefix}-clickable` : ''
+        )}`}
         onClick={(event) => handleClick(event)}
         style={baseStyle}
         {...rest}

@@ -168,6 +168,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | timeout | 超时时间，单位为毫秒 | `number` \| `string` | `1000 * 30` |
+| beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
 | onStart | 文件上传开始 | `(option: UploadOptions) => void` | `-` |

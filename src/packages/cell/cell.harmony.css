@@ -77,6 +77,26 @@
   font-size: 14px;
   color: #505259;
 }
+.nut-cell:active {
+  opacity: 0.7;
+}
+.nut-cell-clickable {
+  cursor: pointer;
+}
+.nut-cell-clickable::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  border: inherit;
+  border-color: #1a1a1a;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  content: " ";
+}
 .nut-cell-divider {
   display: flex;
   min-height: 1px;

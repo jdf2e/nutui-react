@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
 
-const Demo5 = () => {
+const Demo6 = () => {
   const [showMountNode, setShowMountNode] = useState(false)
 
   return (
@@ -25,4 +25,4 @@ const Demo5 = () => {
     </>
   )
 }
-export default Demo5
+export default Demo6
