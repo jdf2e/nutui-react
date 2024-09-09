@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
 import { ScrollView } from '@tarojs/components'
 
-const Demo6 = () => {
+const Demo8 = () => {
   const [scrollPenetration, setScrollPenetration] = useState(false)
 
   return (
@@ -25,4 +25,4 @@ const Demo6 = () => {
     </>
   )
 }
-export default Demo6
+export default Demo8
