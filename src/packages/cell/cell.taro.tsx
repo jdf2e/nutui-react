@@ -76,6 +76,7 @@ export const Cell: FunctionComponent<
   return (
     <>
       <View
+        hoverStyle={{ opacity: clickable ? 0.7 : 1 }}
         className={`${classNames(
           [
             classPrefix,
