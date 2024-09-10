@@ -13,6 +13,7 @@ import {
   DialogConfirmProps,
 } from './config'
 import { ComponentDefaults } from '@/utils/typings'
+import { mergeProps } from '@/utils/merge-props'
 
 export type DialogProps = DialogBasicProps
 const defaultProps = {
@@ -55,7 +56,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     beforeCancel,
     beforeClose,
     ...restProps
-  } = props
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const [loading, setLoading] = useState(false)
 
@@ -161,5 +162,4 @@ Dialog.confirm = (props: DialogConfirmProps): DialogReturnProps => {
   }
 })
 
-Dialog.defaultProps = defaultProps // 不可删除
 Dialog.displayName = 'NutDialog'
