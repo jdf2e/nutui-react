@@ -403,7 +403,7 @@ export const DatePicker: FunctionComponent<
       catchMove
       {...(rest as any)}
     >
-      {!!pickerOptions?.length && (
+      {pickerOptions.length > 0 && (
         <Picker
           {...pickerProps}
           title={title}
