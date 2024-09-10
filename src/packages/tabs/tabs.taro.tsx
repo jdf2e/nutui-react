@@ -122,14 +122,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     className
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
-    [`${classPrefix}-titles-${activeType}`]: activeType,
+    [`${classPrefix}-titles-${activeType}`]: !!activeType,
     [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
   const tabsActiveStyle = {
     color: activeType === 'smile' ? activeColor : '',
-    background: activeType === 'line' ? activeColor : '',
+    backgroundColor: activeType === 'line' ? activeColor : '',
   }
   const getRect = (selector: string) => {
     return new Promise((resolve) => {

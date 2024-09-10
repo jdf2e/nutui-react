@@ -3,27 +3,30 @@
 
 .nut-tabs {
   display: flex;
+  flex-direction: row;
 }
 
 .nut-tabs-titles {
   display: flex;
+  flex-direction: row;
   box-sizing: border-box;
   height: $tabs-titles-height;
   user-select: none;
   overflow: hidden;
-  background: $tabs-titles-background-color;
+  background-color: $tabs-titles-background-color;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
     width: 0;
-    background: transparent;
+    background-color: transparent;
   }
 
   .nut-tabs-list {
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: row;
     flex-shrink: 0;
   }
 
@@ -49,6 +52,7 @@
   &-item {
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     flex: 1 0 auto;
@@ -79,7 +83,7 @@
       content: ' ';
       bottom: $tabs-tab-line-bottom;
       left: 50%;
-      transform: translate(-50%, 0);
+      // transform: translate(-50%, 0);
       border-radius: $tabs-tab-line-border-radius;
       opacity: $tabs-tab-line-opacity;
       overflow: hidden;
@@ -102,14 +106,18 @@
       font-weight: $tabs-titles-item-active-font-weight;
 
       .nut-tabs-titles-item-line {
+        color: $tabs-titles-item-active-color;
+        font-weight: $tabs-titles-item-active-font-weight;
         overflow: unset;
         content: ' ';
         width: $tabs-tab-line-width;
         height: $tabs-tab-line-height;
-        background: $tabs-tab-line-color;
+        background-color: $tabs-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
+        color: $tabs-titles-item-active-color;
+        font-weight: $tabs-titles-item-active-font-weight;
         overflow: unset;
         width: 40px;
         height: 20px;
@@ -150,6 +158,7 @@
         flex: 1;
         height: 28px;
         display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         padding: 0 8px;
@@ -157,7 +166,7 @@
     }
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-text {
-        background: $color-default-light;
+        background-color: $color-default-light;
         color: $color-text;
         border-radius: $tabs-tab-button-border-radius;
         font-weight: $font-weight-bold;
@@ -183,7 +192,7 @@
         top: 50%;
         height: 50%;
         width: 1px;
-        background: $color-border;
+        background-color: $color-border;
         transform: translateY(-50%);
       }
 
@@ -287,7 +296,7 @@
         left: 10px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
-        background: $tabs-vertical-tab-line-color;
+        background-color: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
@@ -359,6 +368,7 @@
 
       .nut-tabs-titles-item {
         display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         flex: 1 0 auto;
@@ -372,7 +382,7 @@
             content: ' ';
             width: $tabs-tab-line-width;
             height: $tabs-tab-line-height;
-            background: $tabs-tab-line-color;
+            background-color: $tabs-tab-line-color;
           }
         }
       }
@@ -429,5 +439,6 @@
   }
 
   display: flex;
+  flex-direction: row;
   box-sizing: border-box;
 }

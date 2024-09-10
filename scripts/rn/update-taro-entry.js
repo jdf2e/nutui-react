@@ -28,6 +28,7 @@ const childAdaptedArray = [
   'hoverbuttonitem',
   'avatargroup',
   'icon',
+  'tabpane'
 ]
 
 // 更新 app.config.ts 文件
