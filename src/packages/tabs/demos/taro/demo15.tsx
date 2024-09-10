@@ -7,7 +7,7 @@ const Demo15 = () => {
   useEffect(() => {
     setTimeout(() => {
       setTab3value(2)
-      setList3([...new Array(3).keys()])
+      setList3([1, 2, 3])
     }, 3000)
   }, [])
   return (

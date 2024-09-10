@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo14 = () => {
   const [tab2value, setTab2value] = useState<string | number>('0')
@@ -13,10 +14,10 @@ const Demo14 = () => {
         }}
       >
         <Tabs.TabPane title="Tab 1">
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
+          <View>Tab 1</View>
+          <View>Tab 1</View>
+          <View>Tab 1</View>
+          <View>Tab 1</View>
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>

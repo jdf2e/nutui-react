@@ -10,6 +10,7 @@ import { useForceUpdate } from '@/utils/use-force-update'
 import raf from '@/utils/raf'
 import useUuid from '@/utils/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
+import { rn } from '@/utils/platform-taro'
 
 export type TabsTitle = {
   title: string
@@ -227,6 +228,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       (t) => String(t.value) === String(value)
     )
     index = index < 0 ? 0 : index
+    if (rn()) {
+      return {
+        transitionDuration: `${duration}ms`,
+      }
+    }
     return {
       transform:
         direction === 'horizontal'

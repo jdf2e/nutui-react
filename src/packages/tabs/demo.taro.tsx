@@ -5,28 +5,29 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
 import Demo1 from './demos/taro/demo1'
-// import Demo2 from './demos/taro/demo2'
-// import Demo3 from './demos/taro/demo3'
-// import Demo4 from './demos/taro/demo4'
-// import Demo5 from './demos/taro/demo5'
-// import Demo6 from './demos/taro/demo6'
-// import Demo7 from './demos/taro/demo7'
-// import Demo8 from './demos/taro/demo8'
-// import Demo9 from './demos/taro/demo9'
-// import Demo10 from './demos/taro/demo10'
-// import Demo11 from './demos/taro/demo11'
-// import Demo12 from './demos/taro/demo12'
-// import Demo13 from './demos/taro/demo13'
-// import Demo14 from './demos/taro/demo14'
-// import Demo15 from './demos/taro/demo15'
-// import Demo16 from './demos/taro/demo16'
-// import Demo17 from './demos/taro/demo17'
-// import Demo18 from './demos/taro/demo18'
-// import Demo19 from './demos/taro/demo19'
-// import Demo20 from './demos/taro/demo20'
-// import Demo21 from './demos/taro/demo21'
-// import Demo22 from './demos/taro/demo22'
-// import Demo23 from './demos/taro/demo23'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
+import Demo14 from './demos/taro/demo14'
+import Demo15 from './demos/taro/demo15'
+import Demo16 from './demos/taro/demo16'
+import Demo17 from './demos/taro/demo17'
+import Demo18 from './demos/taro/demo18'
+import Demo19 from './demos/taro/demo19'
+import Demo20 from './demos/taro/demo20'
+import Demo21 from './demos/taro/demo21'
+import Demo22 from './demos/taro/demo22'
+import Demo23 from './demos/taro/demo23'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({
@@ -88,8 +89,12 @@ const TabsDemo = () => {
       >
         <View className="h2">{translated.basic}</View>
         <Demo1 />
-        {/* <View className="h2">{translated.title1}</View>
-        <Demo2 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.title1}</View>
+            <Demo2 />
+          </>
+        )}
         <View className="h2">{translated.titleLite}</View>
         <Demo3 />
         <View className="h2">{translated.titleCard}</View>
@@ -118,20 +123,28 @@ const TabsDemo = () => {
         <Demo15 />
         <View className="h2">{translated.title4}</View>
         <Demo16 />
-        <View className="h2">{translated.title4} 2</View>
+        <View className="h2">{`${translated.title4} 2`}</View>
         <Demo17 />
         <View className="h2">{translated.title5}</View>
         <Demo18 />
-        <View className="h2">{translated.title6}</View>
-        <Demo19 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.title6}</View>
+            <Demo19 />
+          </>
+        )}
         <View className="h2">{translated.title12}</View>
         <Demo20 />
         <View className="h2">{translated.title13}</View>
         <Demo21 />
         <View className="h2">{translated.title7}</View>
         <Demo22 />
-        <View className="h2">{translated.title8}</View>
-        <Demo23 /> */}
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.title8}</View>
+            <Demo23 />
+          </>
+        )}
       </ScrollView>
     </>
   )
