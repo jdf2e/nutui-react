@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -57,6 +57,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
 
   let timer: number | null
   const [showNotify, setShowNotify] = useState(false)
+  const cssRef = useRef(null)
   useEffect(() => {
     if (visible) {
       show()
@@ -98,6 +99,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   return (
     <>
       <CSSTransition
+        nodeRef={cssRef}
         in={showNotify}
         timeout={300}
         classNames="fade"
