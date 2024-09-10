@@ -246,6 +246,7 @@ export const Popup: FunctionComponent<
   const renderPop = () => {
     return (
       <CSSTransition
+        nodeRef={refObject}
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}
