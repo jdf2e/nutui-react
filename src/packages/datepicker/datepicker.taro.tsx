@@ -403,7 +403,7 @@ export const DatePicker: FunctionComponent<
       catchMove
       {...(rest as any)}
     >
-      {pickerOptions.length ? (
+      {!!pickerOptions.length && (
         <Picker
           {...pickerProps}
           title={title}
@@ -422,7 +422,7 @@ export const DatePicker: FunctionComponent<
           ) => handlePickerChange(options, value, index)}
           threeDimensional={threeDimensional}
         />
-      ) : null}
+      )}
     </View>
   )
 }
