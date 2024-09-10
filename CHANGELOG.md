@@ -1,3 +1,32 @@
+# v2.6.18
+
+`2024-09-06`
+
+- 🏡 chore: remove deprecated (#2573)
+- 🏡 chore(deps): update dependency marked to v14 (#2532)
+- :sparkles: feat: demos for popup & dialog (#2574)
+- :sparkles: feat: beforeupload (#2567)
+- :bug: fix: remove icons defaultprops (#2571)
+- :bug: fix(input): type props didnot work when equals number|digit (#2563)
+- :bug: fix: dialog
+- :bug: fix(sticky): should rerender when zIndex changes (#2572)
+- :bug: fix(sticky): rerender sticky when threshold change (#2564)
+- :bug: fix(deps): update dependency jscodeshift to v17 (#2534)
+
+# v2.6.17
+
+`2024-08-30`
+
+- 🏡 chore(form): form demo (#2528)
+- 📖 docs(readme): fix pnpm run dev weapp jd dir (#2514)
+- :sparkles: feat(cell): add clickable prop to support click style feedback (#2527)
+- :sparkles: feat(image-preview): 增加索引字段，用于预览内容排序 (#2519)
+- :bug: fix(tabs.taro.tsx): 解决在不需要滚动的时候，切换tab产生tab位置错乱的问题 (#2554)
+- :bug: fix(uploader): beforeUpload should trigger every time before uploading (#2553)
+- :bug: fix(PullToRefresh): 修复PullToRefresh组件disabled属性在taro中无效的问题 (#2538)
+- :bug: fix(uploader): ios 下无法回显的问题修复 (#2550)
+- :bug: fix(uploader): sizeType prop didnot work when weapp || jd (#2526)
+
 # v2.6.16
 
 `2024-08-03`

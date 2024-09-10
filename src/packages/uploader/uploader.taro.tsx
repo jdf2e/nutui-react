@@ -115,6 +115,9 @@ export interface UploaderProps extends BasicComponent {
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
   onChange?: (files: FileItem[]) => void
+  beforeUpload?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
@@ -196,6 +199,7 @@ const InternalUploader: ForwardRefRenderFunction<
     onUpdate,
     onFailure,
     onOversize,
+    beforeUpload,
     beforeXhrUpload,
     beforeDelete,
     ...restProps
@@ -470,14 +474,34 @@ const InternalUploader: ForwardRefRenderFunction<
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
-    readFile(_files)
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
+    }
   }
 
   const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
-    readFile(_files)
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
+    }
   }
 
   const handleItemClick = (file: FileItem, index: number) => {
