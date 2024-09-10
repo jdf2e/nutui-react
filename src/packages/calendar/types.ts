@@ -13,7 +13,7 @@ export interface CalendarMonthInfo {
 }
 
 export type CalendarValue = string | string[]
-export type CalendarParam = string[] | string[][]
+export type CalendarParam = CalendarValue | string[][]
 export type CalendarType = 'single' | 'range' | 'multiple' | 'week'
 
 export type CalendarRef = {

@@ -605,7 +605,7 @@ export const CalendarItem = React.forwardRef<
       typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
     days[3] = `${days[0]}/${days[1]}/${days[2]}`
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
-    let curDateArr_ = JSON.parse(JSON.stringify(curDateArr))
+    let tempCurDateArr = JSON.parse(JSON.stringify(curDateArr))
     let currentDate_ = JSON.parse(JSON.stringify(currentDate))
     if (type === 'multiple') {
       if (currentDate_.length > 0) {
@@ -616,17 +616,17 @@ export const CalendarItem = React.forwardRef<
           }
         })
         if (isFirst) {
-          curDateArr_.push(days)
+          tempCurDateArr.push(days)
         } else if (hasIndex !== '') {
           ;(currentDate_ as string[]).splice(hasIndex, 1)
-          curDateArr.splice(hasIndex, 1)
+          tempCurDateArr.splice(hasIndex, 1)
         } else {
           ;(currentDate_ as string[]).push(days[3])
-          curDateArr_.push(days)
+          tempCurDateArr.push(days)
         }
       } else {
         ;(currentDate_ as string[]).push(days[3])
-        curDateArr_ = [days]
+        tempCurDateArr = [days]
       }
     } else if (type === 'range') {
       const curDataLength = Object.values(currentDate).length
@@ -634,13 +634,13 @@ export const CalendarItem = React.forwardRef<
         Array.isArray(currentDate_) &&
           currentDate_.splice(0) &&
           currentDate_.push(days[3])
-        curDateArr_ = [days]
+        tempCurDateArr = [days]
       } else if (Utils.compareDate(currentDate_[0], days[3])) {
         Array.isArray(currentDate_) && currentDate_.push(days[3])
-        curDateArr_.push(days)
+        tempCurDateArr.push(days)
       } else {
         Array.isArray(currentDate_) && currentDate_.unshift(days[3])
-        curDateArr_.unshift(days)
+        tempCurDateArr.unshift(days)
       }
     } else if (type === 'week') {
       const weekArr = Utils.getWeekDate(y, m, `${day.day}`, firstDayOfWeek)
@@ -653,17 +653,17 @@ export const CalendarItem = React.forwardRef<
       Array.isArray(currentDate_) &&
         currentDate_.splice(0) &&
         currentDate_.push(...weekArr)
-      curDateArr_ = [
+      tempCurDateArr = [
         Utils.formatResultDate(weekArr[0]),
         Utils.formatResultDate(weekArr[1]),
       ]
     } else {
       currentDate_ = days[3]
-      curDateArr_ = [...days]
+      tempCurDateArr = [...days]
     }
     setCurrentDate(currentDate_)
-    setCurDateArr(curDateArr_)
-    curDateArrRef.current = curDateArr_
+    setCurDateArr(tempCurDateArr)
+    curDateArrRef.current = tempCurDateArr
     if (!isFirst) {
       onDayClick && onDayClick(curDateArrRef.current)
       if (autoBackfill || !popup) {
