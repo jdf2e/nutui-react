@@ -403,7 +403,7 @@ export const DatePicker: FunctionComponent<
       catchMove
       {...(rest as any)}
     >
-      {Array.isArray(pickerOptions) && pickerOptions.length ? (
+      {pickerOptions.length ? (
         <Picker
           {...pickerProps}
           title={title}
