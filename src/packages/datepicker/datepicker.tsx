@@ -398,7 +398,7 @@ export const DatePicker: FunctionComponent<
 
   return (
     <div className={`nut-datepicker ${className}`} style={style} {...rest}>
-      {!!pickerOptions.length && (
+      {!!pickerOptions?.length && (
         <Picker
           {...pickerProps}
           title={title}
