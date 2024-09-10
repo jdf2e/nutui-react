@@ -1,6 +1,8 @@
 import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Progress from '@/packages/progress'
+
+import Image from '@/packages/image'
 import { FileItem } from '@/packages/uploader/file-item'
 import { ERROR } from '@/packages/uploader/upload'
 
@@ -59,7 +61,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   {item.type?.includes('image') ? (
                     <>
                       {item.url && (
-                        <img
+                        <Image
                           className="nut-uploader-preview-img-c"
                           style={{ objectFit: 'fill' }}
                           src={item.url}
@@ -71,7 +73,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   ) : (
                     <>
                       {previewUrl ? (
-                        <img
+                        <Image
                           className="nut-uploader-preview-img-c"
                           src={previewUrl}
                           alt=""
