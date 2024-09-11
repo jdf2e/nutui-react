@@ -77,7 +77,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   }
 
   interface DrawImage {
-    src: string | HTMLImageElement
     x: number
     y: number
     width: number
@@ -107,13 +106,18 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   // 获取系统信息
   const systemInfo: Taro.getSystemInfoSync.Result = Taro.getSystemInfoSync()
   // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
-  const showAlipayCanvas2D = useMemo(() => {
+  const showCanvas2D = useMemo(() => {
     return (
-      Taro.getEnv() === 'ALIPAY' &&
-      parseInt((Taro as any).SDKVersion.replace(/\./g, '')) >= 270
+      (Taro.getEnv() === 'ALIPAY' &&
+        parseInt((Taro as any).SDKVersion.replace(/\./g, '')) >= 270) ||
+      (systemInfo.platform !== 'devtools' &&
+        systemInfo.SDKVersion &&
+        parseInt(systemInfo.SDKVersion.replace(/\./g, '')) >= 290 &&
+        Taro.getEnv() === 'WEAPP')
     )
   }, [])
-  const showPixelRatio = Taro.getEnv() === 'WEB' || showAlipayCanvas2D
+
+  const showPixelRatio = Taro.getEnv() === 'WEB' || showCanvas2D
   // 设备像素比
   const pixelRatio = showPixelRatio ? systemInfo.pixelRatio : 1
   const [state, setState] = useState({
@@ -128,7 +132,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cropperHeight: systemInfo.windowWidth * pixelRatio - space * pixelRatio * 2,
   })
   const defDrawImage: DrawImage = {
-    src: '', // 规定要使用的图像
     x: 0, // 在画布上x的坐标位置
     y: 0, // 在画布上y的坐标位置
     width: 0, // 要使用的图像的宽度
@@ -140,9 +143,13 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cropperCanvas: null,
     cropperCanvasContext: null,
   })
+  // 设置 canvasImage 的状态，用于存储要裁剪的图像
+  const [canvasImage, setCanvasImage] = useState<
+    HTMLImageElement | string | null
+  >(null)
 
   useReady(() => {
-    if (showAlipayCanvas2D) {
+    if (showCanvas2D) {
       const { canvasId } = canvasAll
       createSelectorQuery()
         .select(`#${canvasId}`)
@@ -229,8 +236,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
 
   const canvas2dDraw = useCallback(
     (ctx: CanvasRenderingContext2D) => {
-      const { src, width, height, x, y } = drawImage
-      if (!ctx || !src) return
+      const { width, height, x, y } = drawImage
+      if (!ctx || !canvasImage) return
       const {
         moveX,
         moveY,
@@ -258,9 +265,9 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       // 绘制缩放
       ctx.scale(scale, scale)
       // 绘制图片
-      ctx.drawImage(src as HTMLImageElement, x, y, width, height)
+      ctx.drawImage(canvasImage as HTMLImageElement, x, y, width, height)
     },
-    [drawImage, state]
+    [drawImage, canvasImage, state]
   )
 
   // web绘制
@@ -279,8 +286,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     canvas2dDraw(ctx)
   }, [canvas2dDraw])
 
-  const alipayDraw = useCallback(() => {
-    const ctx = canvasAll.cropperCanvas.getContext(
+  const canvas2dContextDraw = useCallback(() => {
+    const ctx = canvasAll.cropperCanvas?.getContext?.(
       '2d'
     ) as CanvasRenderingContext2D
     ctx && ctx.resetTransform()
@@ -293,11 +300,11 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       webDraw()
       return
     }
-    if (showAlipayCanvas2D) {
-      alipayDraw()
+    if (showCanvas2D) {
+      canvas2dContextDraw()
       return
     }
-    const { src, width, height, x, y } = drawImage
+    const { width, height, x, y } = drawImage
     const {
       moveX,
       moveY,
@@ -335,7 +342,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     // 绘制缩放
     ctx.scale(scale, scale)
     // 绘制图片
-    ctx.drawImage(src as string, x, y, width, height)
+    ctx.drawImage(canvasImage as unknown as string, x, y, width, height)
     ctx.draw()
   }, [drawImage, state.scale, state.angle, state.moveX, state.moveY])
 
@@ -356,14 +363,13 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const { displayWidth, cropperWidth } = state
     const copyDrawImg = { ...defDrawImage }
     const { width: imgWidth, height: imgHeight } = image
-    copyDrawImg.src = image.path
+    setCanvasImage(image.path)
     if (Taro.getEnv() === 'WEB') {
-      copyDrawImg.src = await dataURLToImage(image.path)
+      setCanvasImage(await dataURLToImage(image.path))
     }
-    if (showAlipayCanvas2D) {
-      copyDrawImg.src = await dataURLToCanvasImage(
-        canvasAll.cropperCanvas,
-        image.path
+    if (showCanvas2D) {
+      setCanvasImage(
+        await dataURLToCanvasImage(canvasAll.cropperCanvas, image.path)
       )
     }
 
@@ -609,16 +615,17 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cancel(false)
   }
 
-  // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
-  const confirmALIPAY = () => {
+  // Canvas2D裁剪为图片
+  const confirmCanvas2D = () => {
     const { cropperWidth, displayHeight } = state
     const { cropperCanvas } = canvasAll
+    const pixelRatio = Taro.getEnv() === 'ALIPAY' ? 1 : systemInfo.pixelRatio
     Taro.canvasToTempFilePath({
       canvas: cropperCanvas,
       x: props.space,
-      y: (displayHeight - cropperWidth) / 2,
-      width: cropperWidth,
-      height: cropperWidth,
+      y: (displayHeight - cropperWidth) / pixelRatio / 2,
+      width: cropperWidth / pixelRatio,
+      height: cropperWidth / pixelRatio,
       destWidth: cropperWidth,
       destHeight: cropperWidth,
       success: async (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
@@ -635,8 +642,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       confirmWEB()
       return
     }
-    if (showAlipayCanvas2D) {
-      confirmALIPAY()
+    if (showCanvas2D) {
+      confirmCanvas2D()
       return
     }
     const { cropperWidth, displayHeight } = state
@@ -688,7 +695,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
           <Canvas
             id={canvasId}
             canvas-id={canvasId}
-            type={showAlipayCanvas2D ? '2d' : undefined}
+            type={showCanvas2D ? '2d' : undefined}
             style={canvasStyle}
             className={`${classPrefix}-popup-canvas`}
           />
