@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
@@ -58,7 +58,8 @@ export class FormItem extends React.Component<
 
   static contextType: any = Context
 
-  declare context: React.ContextType<typeof Context>
+  // @ts-ignore
+  // declare context: React.ContextType<typeof Context>
 
   private cancelRegister: any
 
@@ -208,12 +209,12 @@ export class FormItem extends React.Component<
 
     const { starPosition } = this.context
     const renderStar = (required || requiredInRules) && (
-      <i className="required" />
+      <View className="required" />
     )
     const renderLabel = (
       <>
         {starPosition === 'left' ? renderStar : null}
-        {label}
+        <Text>{label}</Text>
         {starPosition === 'right' ? renderStar : null}
       </>
     )

@@ -1,15 +1,15 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
-import Demo2 from './demos/taro/demo2'
-import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
-import Demo5 from './demos/taro/demo5'
-import Demo6 from './demos/taro/demo6'
-import Demo7 from './demos/taro/demo7'
+// import Demo2 from './demos/taro/demo2'
+// import Demo3 from './demos/taro/demo3'
+// import Demo4 from './demos/taro/demo4'
+// import Demo5 from './demos/taro/demo5'
+// import Demo6 from './demos/taro/demo6'
+// import Demo7 from './demos/taro/demo7'
 
 const FormDemo = () => {
   const [translated] = useTranslate({
@@ -37,9 +37,11 @@ const FormDemo = () => {
     <>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View className="h2">{translated.basic}</View>
+        <View className="h2">
+          <Text>{translated.basic}</Text>
+        </View>
         <Demo1 />
-        <View className="h2">{translated.title2}</View>
+        {/* <View className="h2">{translated.title2}</View>
         <Demo2 />
         <View className="h2">{translated.relatedDisplay}</View>
         <Demo3 />
@@ -50,7 +52,7 @@ const FormDemo = () => {
         <View className="h2">{translated.validateTrigger}</View>
         <Demo6 />
         <View className="h2">{translated.title5}</View>
-        <Demo7 />
+        <Demo7 /> */}
       </ScrollView>
     </>
   )

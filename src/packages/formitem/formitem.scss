@@ -16,8 +16,8 @@
     font-weight: normal;
     width: $form-item-label-width;
     margin-right: $form-item-label-margin-right;
-    flex: none !important;
-    display: inline-block !important;
+    flex: 0 0 auto;
+    display: inline-block;
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
 
@@ -32,7 +32,7 @@
 
   &-body {
     flex: 1;
-    display: flex !important;
+    display: flex;
     flex-direction: column;
 
     &-slots {
@@ -59,7 +59,7 @@
       }
 
       .nut-textarea {
-        padding: 0 !important;
+        padding: 0;
 
         .nut-textarea-textarea {
           font: inherit;

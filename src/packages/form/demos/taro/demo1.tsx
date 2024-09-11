@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  Form,
-  Input,
-  InputNumber,
-  TextArea,
-} from '@nutui/nutui-react-taro'
+import { Button, Form, Input, TextArea } from '@nutui/nutui-react-taro'
 import { FormItemRuleWithoutValidator } from '@/packages/formitem/types'
 
 const Demo1 = () => {
@@ -54,13 +48,6 @@ const Demo1 = () => {
           ]}
         >
           <TextArea placeholder="请输入字段D" maxLength={100} />
-        </Form.Item>
-        <Form.Item
-          label="数量"
-          name="num"
-          getValueFromEvent={(...args) => args[0]}
-        >
-          <InputNumber />
         </Form.Item>
       </Form>
     </>

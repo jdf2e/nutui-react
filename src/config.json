@@ -492,7 +492,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Form",
           "type": "component",
           "cName": "表单",
@@ -503,7 +503,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "FormItem",
           "type": "component",
           "cName": "表单项",

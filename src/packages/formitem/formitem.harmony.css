@@ -2,7 +2,7 @@
   display: flex;
 }
 .nut-form-item.error.line::before {
-  border-bottom: 1px solid #FF0F23;
+  border-bottom: 1px solid #ff0f23;
   transform: scaleX(1);
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
@@ -11,23 +11,23 @@
   font-weight: normal;
   width: 90px;
   margin-right: 10px;
-  flex: none !important;
-  display: inline-block !important;
+  flex: 0 0 auto;
+  display: inline-block;
   word-wrap: break-word;
-  text-align: start;
+  text-align: left;
 }
 .nut-form-item-label .required::before {
   content: "*";
-  color: #FF0F23;
+  color: #ff0f23;
   margin-right: 4px;
 }
 .nut-form-item-body {
   flex: 1;
-  display: flex !important;
+  display: flex;
   flex-direction: column;
 }
 .nut-form-item-body-slots {
-  text-align: start;
+  text-align: left;
 }
 .nut-form-item-body-slots .nut-input {
   padding: 0;
@@ -35,8 +35,8 @@
 }
 .nut-form-item-body-slots .nut-input-text {
   font-size: 14px;
-  text-align: start;
-  color: #1A1A1A;
+  text-align: left;
+  color: #1a1a1a;
   width: 100%;
   outline: 0 none;
   border: 0;
@@ -47,24 +47,26 @@
   min-height: 24px;
 }
 .nut-form-item-body-slots .nut-textarea {
-  padding: 0 !important;
+  padding: 0;
 }
 .nut-form-item-body-slots .nut-textarea .nut-textarea-textarea {
   font: inherit;
-  text-align: start;
+  text-align: left;
 }
 .nut-form-item-body-tips {
-  text-align: start;
+  text-align: left;
   font-size: 10px;
-  color: #FF0F23;
+  color: #ff0f23;
 }
 
 [dir=rtl] .nut-form-item-label {
+  text-align: right;
   margin-right: 0;
   margin-left: 10px;
 }
 
 .nut-rtl .nut-form-item-label {
+  text-align: right;
   margin-right: 0;
   margin-left: 10px;
 }
@@ -75,4 +77,26 @@
 .nut-rtl .nut-form-item-label .required::before {
   margin-right: 0;
   margin-left: 4px;
+}
+[dir=rtl] .nut-form-item-body-slots,
+.nut-rtl .nut-form-item-body-slots {
+  text-align: right;
+}
+[dir=rtl] .nut-form-item-body-slots .nut-icon-ArrowRight,
+[dir=rtl] .nut-form-item-body-slots .nut-icon-ArrowLeft,
+.nut-rtl .nut-form-item-body-slots .nut-icon-ArrowRight,
+.nut-rtl .nut-form-item-body-slots .nut-icon-ArrowLeft {
+  transform: rotateY(180deg);
+}
+[dir=rtl] .nut-form-item-body-slots .nut-input-text,
+.nut-rtl .nut-form-item-body-slots .nut-input-text {
+  text-align: right;
+}
+[dir=rtl] .nut-form-item-body-slots .nut-textarea-textarea,
+.nut-rtl .nut-form-item-body-slots .nut-textarea-textarea {
+  text-align: right;
+}
+[dir=rtl] .nut-form-item-tips,
+.nut-rtl .nut-form-item-tips {
+  text-align: right;
 }
