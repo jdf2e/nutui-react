@@ -56,10 +56,9 @@ export class FormItem extends React.Component<
 > {
   static defaultProps = defaultProps
 
-  static contextType: any = Context
+  static contextType = Context
 
-  // @ts-ignore
-  // declare context: React.ContextType<typeof Context>
+  context!: React.ContextType<typeof Context>
 
   private cancelRegister: any
 
