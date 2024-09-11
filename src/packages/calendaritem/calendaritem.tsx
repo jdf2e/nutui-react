@@ -798,12 +798,11 @@ export const CalendarItem = React.forwardRef<
                                 {renderDayBottom(day)}
                               </div>
                             )}
-                            {shouldShowTodayInfo &&
-                              isCurrDay(month, day.day) && (
-                                <div className={`${classPrefix}-day-info-curr`}>
-                                  {locale.calendaritem.today}
-                                </div>
-                              )}
+                            {shouldShowTodayInfo && (
+                              <div className={`${classPrefix}-day-info-curr`}>
+                                {locale.calendaritem.today}
+                              </div>
+                            )}
                             {isStartTip(day, month) && (
                               <div
                                 className={`${classPrefix}-day-info ${classPrefix}-day-info-top`}
