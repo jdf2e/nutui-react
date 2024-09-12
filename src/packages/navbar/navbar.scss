@@ -3,11 +3,11 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
   background: $navbar-background;
-  background-color: #ffffff;
   box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
   color: $navbar-color;
@@ -37,9 +37,8 @@
   }
 
   &-title {
-    min-width: 53%;
+    width: 50%;
     height: 100%;
-    margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction: row;
@@ -50,7 +49,6 @@
     color: $navbar-title-font-color;
     &-align-left {
       min-width: 0;
-      margin: 0;
       flex: 1;
       justify-content: flex-start;
       padding: 0 8px;
@@ -70,6 +68,7 @@
     display: flex;
     align-items: center;
     flex-direction: row;
+    height: 100%;
     cursor: pointer;
     padding: 0 14px;
     /* #ifndef rn harmony jd h5 weapp*/

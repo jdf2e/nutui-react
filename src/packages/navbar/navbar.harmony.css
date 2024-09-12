@@ -3,11 +3,11 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   height: 44px;
   box-sizing: border-box;
   background: #f5f6fa;
-  background-color: #FFFFFF;
   box-shadow: 0 0 transparent;
   font-size: 14px;
   color: #1a1a1a;
@@ -33,9 +33,8 @@
   padding-left: 14px;
 }
 .nut-navbar-title {
-  min-width: 53%;
+  width: 50%;
   height: 100%;
-  margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -47,7 +46,6 @@
 }
 .nut-navbar-title-align-left {
   min-width: 0;
-  margin: 0;
   flex: 1;
   justify-content: flex-start;
   padding: 0 8px;
@@ -63,6 +61,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  height: 100%;
   cursor: pointer;
   padding: 0 14px;
   /* #ifndef rn harmony jd h5 weapp*/

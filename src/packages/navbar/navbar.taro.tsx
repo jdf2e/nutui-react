@@ -4,6 +4,8 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -100,7 +102,9 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       }
       setContentWidth(centerWidth.toFixed(2))
     }
-    init()
+    setTimeout(() => {
+      init()
+    }, 0)
   }, [left, right, back])
 
   const renderLeft = () => {
@@ -134,11 +138,11 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const renderContent = () => {
     let titleStyle = {}
     if (titleAlign === 'center') {
-      const contentRealWidth = `${contentWidth}${
-        /%$/i.test(contentWidth) ? '' : 'px'
-      }`
+      const width = harmonyAndRn()
+        ? pxTransform(Number(contentWidth))
+        : `${contentWidth}px`
+      const contentRealWidth = /%$/i.test(contentWidth) ? contentWidth : width
       titleStyle = {
-        minWidth: contentRealWidth,
         width: contentRealWidth,
       }
     }
