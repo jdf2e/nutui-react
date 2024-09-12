@@ -4,6 +4,14 @@
 .nut-tabs {
   display: flex;
   flex-direction: row;
+  &-list {
+    background-color: red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+  }
 }
 
 .nut-tabs-titles {
