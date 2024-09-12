@@ -358,28 +358,26 @@ export const Ellipsis: FunctionComponent<
             </View>
           ) : null}
           {exceeded && expanded ? (
-            <>
-              <View
-                style={{
-                  width: `${
-                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
-                  }`,
-                }}
-              >
-                {content}
-                {expandText ? (
-                  <span
-                    className="nut-ellipsis-text"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      clickHandle(2)
-                    }}
-                  >
-                    {collapseText}
-                  </span>
-                ) : null}
-              </View>
-            </>
+            <View
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+              }}
+            >
+              {content}
+              {expandText ? (
+                <span
+                  className="nut-ellipsis-text"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    clickHandle(2)
+                  }}
+                >
+                  {collapseText}
+                </span>
+              ) : null}
+            </View>
           ) : null}
         </View>
       </div>
