@@ -260,7 +260,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       // 绘制图片
       ctx.drawImage(src as HTMLImageElement, x, y, width, height)
     },
-    [drawImage, state]
+    [drawImage, state, pixelRatio, space]
   )
 
   // web绘制
@@ -277,7 +277,12 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     canvas.height = state.displayHeight
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     canvas2dDraw(ctx)
-  }, [canvas2dDraw])
+  }, [
+    canvas2dDraw,
+    canvasAll.canvasId,
+    state.displayWidth,
+    state.displayHeight,
+  ])
 
   const alipayDraw = useCallback(() => {
     const ctx = canvasAll.cropperCanvas.getContext(

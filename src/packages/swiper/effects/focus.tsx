@@ -102,7 +102,7 @@ export const useList = (
             : scale
         )
     )
-  }, [count])
+  }, [count, effect, current])
   return [transforms, setTransforms]
 }
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -104,12 +104,6 @@ export const Toast: FunctionComponent<
     },
   })
 
-  useEffect(() => {
-    if (innerVisible) {
-      autoClose()
-    }
-  }, [innerVisible, duration])
-
   useCustomEvent(
     id as string,
     ({ status, options }: { status: boolean; options: any }) => {
@@ -133,11 +127,12 @@ export const Toast: FunctionComponent<
   const show = () => {
     setInnerVisible(true)
   }
-  const hide = () => {
+  const hide = useCallback(() => {
     clearTimer()
     setInnerVisible(false)
-  }
-  const autoClose = () => {
+  }, [setInnerVisible])
+
+  const autoClose = useCallback(() => {
     clearTimer()
     if (duration) {
       timer.current = window.setTimeout(() => {
@@ -145,7 +140,13 @@ export const Toast: FunctionComponent<
         hide()
       }, duration * 1000)
     }
-  }
+  }, [duration, hide, setParams])
+
+  useEffect(() => {
+    if (innerVisible) {
+      autoClose()
+    }
+  }, [innerVisible, duration, autoClose])
 
   const clickCover = () => {
     if (closeOnOverlayClick) {

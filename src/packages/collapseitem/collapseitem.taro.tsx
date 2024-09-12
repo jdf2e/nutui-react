@@ -6,6 +6,7 @@ import React, {
   useContext,
   useRef,
   useMemo,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import { createSelectorQuery } from '@tarojs/taro'
@@ -62,13 +63,13 @@ export const CollapseItem: FunctionComponent<
       return context.isOpen(name)
     }
     return false
-  }, [name, context.isOpen])
+  }, [name, context])
 
   const iconStyle = useMemo(() => {
     return expanded
       ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
       : { transform: 'translateY(-50%)' }
-  }, [expanded, rotate])
+  }, [expanded, rotate, context.rotate])
 
   const handleClick = () => {
     if (!disabled) {
@@ -102,7 +103,7 @@ export const CollapseItem: FunctionComponent<
         }
       })
     }, 200)
-  }, [children])
+  }, [children, target])
 
   useEffect(() => {
     setTimeout(() => {
@@ -112,9 +113,9 @@ export const CollapseItem: FunctionComponent<
         }
       })
     }, 100)
-  }, [])
+  }, [target])
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     // 连续切换状态时，清除打开的后续操作
     if (timer) {
       clearTimeout(timer)
@@ -134,7 +135,7 @@ export const CollapseItem: FunctionComponent<
         setTimer(timer)
       }
     }, 100)
-  }
+  }, [currentHeight, expanded, timer])
 
   const init = useRef(true)
 
@@ -144,7 +145,7 @@ export const CollapseItem: FunctionComponent<
     } else {
       toggle()
     }
-  }, [expanded])
+  }, [expanded, toggle])
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>

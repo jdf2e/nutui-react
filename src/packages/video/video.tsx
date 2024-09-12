@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, FunctionComponent } from 'react'
+import React, { useEffect, useRef, FunctionComponent, useCallback } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -57,11 +57,7 @@ export const Video: FunctionComponent<
   const rootRef = useRef<HTMLVideoElement>(null)
   const classes = classNames(classPrefix, className)
 
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
+  const init = useCallback(() => {
     if (rootRef.current) {
       const videoRef = rootRef.current
       if (options.autoplay) {
@@ -86,7 +82,11 @@ export const Video: FunctionComponent<
         onPlayEnd && onPlayEnd(videoRef)
       })
     }
-  }
+  }, [onPause, onPlay, onPlayEnd, options.autoplay, options.playsinline])
+
+  useEffect(() => {
+    init()
+  }, [init])
 
   return (
     <div className={classes} {...restProps}>

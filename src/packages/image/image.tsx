@@ -192,7 +192,7 @@ export const Image: FunctionComponent<
       return <div className="nut-img-error">{error}</div>
     }
     return null
-  }, [error, isError])
+  }, [error, isError, innerLoading])
 
   const renderLoading = useCallback(() => {
     if (!loading) return null

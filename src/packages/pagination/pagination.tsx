@@ -96,7 +96,7 @@ export const Pagination: FunctionComponent<
       }
     }
     return items
-  }, [currentPage, itemSize, pageCount])
+  }, [currentPage, itemSize, pageCount, ellipse])
 
   // 点击选择 page
   const handleSelectPage = (curPage: number) => {

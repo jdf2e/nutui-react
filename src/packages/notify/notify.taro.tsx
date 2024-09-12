@@ -60,11 +60,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   const [showNotify, setShowNotify] = useState(false)
   const cssRef = useRef(null)
   useEffect(() => {
-    if (visible) {
-      show()
-    } else {
-      hide()
-    }
+    visible ? show() : hide()
   }, [visible])
 
   const clickHandle = () => {
@@ -98,26 +94,24 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
     [`${classPrefix}-${type}`]: true,
   })
   return (
-    <>
-      <CSSTransition
-        nodeRef={cssRef}
-        in={showNotify}
-        timeout={300}
-        classNames="fade"
-        unmountOnExit
-        appear
-        position={position}
-        id={id}
+    <CSSTransition
+      nodeRef={cssRef}
+      in={showNotify}
+      timeout={300}
+      classNames="fade"
+      unmountOnExit
+      appear
+      position={position}
+      id={id}
+    >
+      <div
+        className={`${classes} ${className}`}
+        style={style}
+        onClick={clickHandle}
       >
-        <div
-          className={`${classes} ${className}`}
-          style={style}
-          onClick={clickHandle}
-        >
-          {children}
-        </div>
-      </CSSTransition>
-    </>
+        {children}
+      </div>
+    </CSSTransition>
   )
 }
 

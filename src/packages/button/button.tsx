@@ -86,7 +86,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.color, props.fill])
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {

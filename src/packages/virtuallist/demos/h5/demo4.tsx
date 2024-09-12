@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { VirtualList } from '@nutui/nutui-react'
 
 const Demo4 = () => {
   const [list, setList] = useState<string[]>([])
   const [pageNo, setPageNo] = useState(1)
   const isLoading = useRef(false)
-  const getData = () => {
+  const getData = useCallback(() => {
     const data: string[] = []
     const pageSize = 20
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
@@ -18,7 +18,7 @@ const Demo4 = () => {
     setTimeout(() => {
       isLoading.current = false
     }, 30)
-  }
+  }, [pageNo])
   const itemVariable = (data: any, dataIndex: number, index: number) => {
     return <p style={dataIndex % 2 === 0 ? {} : { width: '100px' }}>{data}</p>
   }
@@ -29,7 +29,7 @@ const Demo4 = () => {
   }
   useEffect(() => {
     getData()
-  }, [pageNo])
+  }, [pageNo, getData])
   return (
     <VirtualList
       list={list}

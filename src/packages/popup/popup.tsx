@@ -288,8 +288,7 @@ export const Popup: FunctionComponent<
   }
 
   useEffect(() => {
-    visible && open()
-    !visible && close()
+    visible ? open() : close()
   }, [visible])
 
   useEffect(() => {

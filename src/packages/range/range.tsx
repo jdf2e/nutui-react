@@ -116,7 +116,7 @@ export const Range: FunctionComponent<
         setMarksList(list)
       }
     }
-  }, [marks])
+  }, [marks, min, max])
 
   const scope = () => {
     return max - min

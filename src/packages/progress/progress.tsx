@@ -99,7 +99,7 @@ export const Progress: FunctionComponent<
         }
       }, delay)
     }
-  }, [intersecting])
+  }, [intersecting, delay, lazy, percent])
 
   useEffect(() => {
     lazy && initObserver()

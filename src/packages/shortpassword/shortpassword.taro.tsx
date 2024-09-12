@@ -115,7 +115,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
       onComplete && onComplete(val)
     }
     setInputValue(format(value))
-  }, [value])
+  }, [value, comLen])
   const sure = () => {
     onConfirm && onConfirm(inputValue)
   }

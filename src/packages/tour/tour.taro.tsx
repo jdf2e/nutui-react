@@ -1,4 +1,10 @@
-import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  FunctionComponent,
+  useCallback,
+} from 'react'
 import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
@@ -100,25 +106,8 @@ export const Tour: FunctionComponent<
 
   const classes = classNames(classPrefix, className)
 
-  useEffect(() => {
-    if (visible) {
-      getRootPosition()
-    }
-    setActive(0)
-    setShowTour(visible)
-    setShowPopup(visible)
-  }, [visible])
-
-  useEffect(() => {
-    if (visible) {
-      setShowPopup(true)
-      getRootPosition()
-    }
-  }, [active])
-
-  const getRootPosition = () => {
+  const getRootPosition = useCallback(() => {
     getTaroRectById(list[active].target as string).then((rect: any) => {
-      console.log('rect', rect)
       setMaskRect({
         top: rect.top,
         left: rect.left,
@@ -128,7 +117,22 @@ export const Tour: FunctionComponent<
         height: rect.height,
       })
     })
-  }
+  }, [active, list])
+  useEffect(() => {
+    if (visible) {
+      getRootPosition()
+    }
+    setActive(0)
+    setShowTour(visible)
+    setShowPopup(visible)
+  }, [visible, getRootPosition])
+
+  useEffect(() => {
+    if (visible) {
+      setShowPopup(true)
+      getRootPosition()
+    }
+  }, [active, visible, getRootPosition])
 
   const maskStyle = () => {
     const { width, height, left, top } = maskRect
@@ -147,7 +151,6 @@ export const Tour: FunctionComponent<
   const maskClose = (e: MouseEvent<HTMLDivElement>) => {
     setShowTour(false)
     setShowPopup(false)
-
     onClose && onClose(e)
   }
 

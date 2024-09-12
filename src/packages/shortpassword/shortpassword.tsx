@@ -108,14 +108,14 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     if (visible && autoFocus) {
       onFocus && onFocus()
     }
-  }, [visible])
+  }, [visible, autoFocus])
   useEffect(() => {
     const val = format(value)
     if (val.length >= comLen) {
       onComplete && onComplete(val)
     }
     setInputValue(format(value))
-  }, [value])
+  }, [value, comLen])
   const sure = () => {
     onConfirm && onConfirm(inputValue)
   }

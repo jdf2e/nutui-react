@@ -96,7 +96,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     }
 
     setContentWidth(centerWidth.toFixed(2))
-  }, [left, right, back])
+  }, [left, right, back, titleAlign])
 
   const renderLeft = () => {
     return back || left ? (

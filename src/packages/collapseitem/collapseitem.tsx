@@ -5,6 +5,7 @@ import React, {
   useContext,
   useRef,
   useMemo,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -58,13 +59,13 @@ export const CollapseItem: FunctionComponent<
       return context.isOpen(name)
     }
     return false
-  }, [name, context.isOpen])
+  }, [name, context])
 
   const iconStyle = useMemo(() => {
     return expanded
       ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
       : { transform: 'translateY(-50%)' }
-  }, [expanded, rotate])
+  }, [expanded, rotate, context.rotate])
 
   const handleClick = () => {
     if (!disabled) {
@@ -85,7 +86,7 @@ export const CollapseItem: FunctionComponent<
     return height ? `${height}px` : ''
   }
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     const start = expanded ? '0px' : getOffsetHeight()
     if (wrapperRef.current) {
       wrapperRef.current.style.height = start
@@ -98,7 +99,8 @@ export const CollapseItem: FunctionComponent<
         }
       })
     })
-  }
+  }, [expanded])
+
   const init = useRef(true)
 
   useEffect(() => {
@@ -110,7 +112,7 @@ export const CollapseItem: FunctionComponent<
     } else {
       toggle()
     }
-  }, [expanded])
+  }, [expanded, toggle])
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
