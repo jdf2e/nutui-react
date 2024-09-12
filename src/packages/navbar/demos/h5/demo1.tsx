@@ -3,6 +3,24 @@ import { NavBar, Toast } from '@nutui/nutui-react'
 import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react'
 
 const Demo1 = () => {
+  const styles = {
+    flexCenter: {
+      display: 'flex',
+      aliginItem: 'center',
+    },
+    title: {
+      fontSize: '18px',
+      fontWeight: 'bold',
+      lineHeight: '26px',
+    },
+    descrption: {
+      fontSize: '12px',
+      fontWeight: 400,
+      color: 'rgba(0,0,0, 0.5)',
+      lineHeight: '16px',
+      textAlign: 'center',
+    },
+  }
   return (
     <>
       <NavBar
@@ -13,7 +31,7 @@ const Demo1 = () => {
           </>
         }
         right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+          <span style={styles.flexCenter} onClick={(e) => Toast.show('icon')}>
             <Share />
           </span>
         }
@@ -23,7 +41,7 @@ const Demo1 = () => {
       </NavBar>
       <NavBar
         right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+          <span style={styles.flexCenter} onClick={(e) => Toast.show('icon')}>
             <Share />
           </span>
         }
@@ -37,16 +55,23 @@ const Demo1 = () => {
         back={<ArrowLeft />}
         onBackClick={(e) => Toast.show('返回')}
       >
-        <div className="title">
-          <span onClick={(e) => Toast.show('标题')}>浏览记录</span>
-          <span className="desc">浏览记录</span>
+        <div style={{ ...styles.flexCenter, flexDirection: 'column' }}>
+          <span style={styles.title} onClick={(e) => Toast.show('标题')}>
+            浏览记录
+          </span>
+          <span style={styles.descrption}>浏览记录</span>
         </div>
       </NavBar>
       <NavBar
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+            <span
+              style={{ marginRight: '5px' }}
+              onClick={(e) => Toast.show('编辑')}
+            >
+              编辑
+            </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
@@ -54,8 +79,7 @@ const Demo1 = () => {
       >
         <span onClick={(e) => Toast.show('标题')}>购物车</span>
         <i
-          style={{ marginLeft: '5px' }}
-          className="flex-center"
+          style={{ ...styles.flexCenter, margin: '0 5px' }}
           onClick={(e) => Toast.show('icon')}
         >
           <Cart />

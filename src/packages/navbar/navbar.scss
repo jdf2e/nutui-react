@@ -2,10 +2,12 @@
   width: $navbar-width;
   position: relative;
   display: flex;
+  flex-direction: row;
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
   background: $navbar-background;
+  background-color: #ffffff;
   box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
   color: $navbar-color;
@@ -16,6 +18,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
   }
 
@@ -29,27 +32,29 @@
     padding-top: env(safe-area-inset-top);
   }
 
+  &-align-left {
+    padding-left: 14px;
+  }
+
   &-title {
     min-width: 53%;
+    height: 100%;
     margin: 0 auto;
     text-align: center;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     font-size: $navbar-title-font-size;
     font-weight: $navbar-title-font-weight;
     color: $navbar-title-font-color;
-
-    .nut-tabs-titles {
-      background: transparent;
-
-      &-item-text {
-        color: $color-title;
-      }
-    }
-
-    .nut-tabpane {
-      display: none;
+    &-align-left {
+      min-width: 0;
+      margin: 0;
+      flex: 1;
+      justify-content: flex-start;
+      padding: 0 8px;
+      text-align: left;
     }
   }
 
@@ -64,125 +69,61 @@
     bottom: 0;
     display: flex;
     align-items: center;
+    flex-direction: row;
     cursor: pointer;
     padding: 0 14px;
-
+    /* #ifndef rn harmony jd h5 weapp*/
     .nut-icon,
     .nutui-iconfont {
       width: 20px;
       height: 20px;
       font-size: 20px;
     }
+    /* #endif */
   }
 
   &-left {
     left: 0;
+    &-rtl {
+      left: auto;
+      right: 0;
+    }
+    &-align-left {
+      position: static;
+      padding: 0;
+    }
 
     &-back {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      margin-right: 10px;
+      &-children {
+        margin-right: 10px;
+        &-rtl {
+          margin-right: 0;
+          margin-left: 10px;
+        }
+      }
     }
   }
 
   &-right {
     right: 0;
-
-    .nut-icon {
-      margin-left: 12px;
-
-      &:first-child {
-        margin-left: 0;
-      }
+    &-rtl {
+      right: auto;
+      left: 0;
     }
-  }
-
-  &-title-align-left {
-    padding-left: 14px;
-
-    .nut-navbar-left {
-      position: static;
-      padding: 0;
-
-      .nut-icon {
-        margin-left: 12px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-    }
-    .nut-navbar-right {
+    &-align-left {
       position: static;
       display: inline-flex;
       white-space: nowrap;
       padding-left: 0;
     }
-    .nut-navbar-left-back {
-      margin-right: 0;
-    }
-
-    .nut-navbar-title {
-      min-width: 0;
-      margin: 0;
-      flex: 1;
-      justify-content: flex-start;
-      padding: 0 8px;
-      text-align: left;
-    }
   }
-}
-
-[dir='rtl'] .nut-navbar,
-.nut-rtl .nut-navbar {
-  &-fixed {
-    left: auto;
-    right: 0;
-  }
-
-  &-left {
-    left: auto;
-    right: 0;
+  &-rtl {
     .nut-icon-ArrowLeft {
       transform: rotateY(180deg);
-    }
-    &-back {
-      margin-right: 0;
-      margin-left: 10px;
-    }
-  }
-
-  &-right {
-    right: auto;
-    left: 0;
-    .nut-icon {
-      margin-left: 0;
-      margin-right: 12px;
-
-      &:first-child {
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
-  }
-
-  &-title-align-left {
-    .nut-navbar-left {
-      .nut-icon-ArrowLeft {
-        margin-left: 0;
-        margin-right: 12px;
-
-        &:first-child {
-          margin-left: 0;
-          margin-right: 0;
-        }
-      }
-    }
-
-    .nut-navbar-left-back {
-      margin-right: 0;
-      margin-left: 0;
     }
   }
 }
