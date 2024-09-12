@@ -157,12 +157,10 @@ export const Pagination: FunctionComponent<
         </>
       )}
       {mode === 'lite' && (
-        <>
-          <div className={`${classPrefix}-lite`}>
-            <div className={`${classPrefix}-lite-active`}>{2}</div>
-            <div className={`${classPrefix}-lite-default`}>{8}</div>
-          </div>
-        </>
+        <div className={`${classPrefix}-lite`}>
+          <div className={`${classPrefix}-lite-active`}>{2}</div>
+          <div className={`${classPrefix}-lite-default`}>{8}</div>
+        </div>
       )}
     </div>
   )

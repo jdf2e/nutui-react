@@ -884,13 +884,11 @@ export const CalendarItem = React.forwardRef<
   }
 
   return (
-    <>
-      <div className={classes} style={style}>
-        {renderHeader()}
-        {renderContent()}
-        {popup && !autoBackfill ? renderFooter() : ''}
-      </div>
-    </>
+    <div className={classes} style={style}>
+      {renderHeader()}
+      {renderContent()}
+      {popup && !autoBackfill ? renderFooter() : ''}
+    </div>
   )
 })
 
