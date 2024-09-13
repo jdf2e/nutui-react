@@ -294,8 +294,8 @@ export const Elevator: FunctionComponent<
           <View className={`${classPrefix}-bars`}>
             <View
               className={`${classPrefix}-bars-inner`}
-              onTouchStart={(event) => touchStart(event)}
-              onTouchMove={(event) => touchMove(event)}
+              onTouchStart={(event) => touchStart(event as any)}
+              onTouchMove={(event) => touchMove(event as any)}
               onTouchEnd={touchEnd}
               style={{ touchAction: 'pan-y' }}
             >

@@ -12,6 +12,7 @@ export interface CellProps extends BasicComponent {
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
   clickable: boolean
+  isLast: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
