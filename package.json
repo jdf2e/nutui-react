@@ -90,7 +90,8 @@
     "publish:beta": "npm publish --tag beta",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
     "prepublishOnly": "node scripts/prepublish.js",
-    "postpublish": "node scripts/postpublish.js"
+    "postpublish": "node scripts/postpublish.js",
+    "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro"
   },
   "lint-staged": {
     "*.{scss,md}": "prettier --write",
