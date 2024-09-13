@@ -6,14 +6,14 @@ const Demo1 = () => {
   const styles = {
     flexCenter: {
       display: 'flex',
-      aliginItem: 'center',
+      aliginItems: 'center',
     },
     title: {
       fontSize: '18px',
       fontWeight: 'bold',
       lineHeight: '26px',
     },
-    descrption: {
+    description: {
       fontSize: '12px',
       fontWeight: 400,
       color: 'rgba(0,0,0, 0.5)',
@@ -59,7 +59,7 @@ const Demo1 = () => {
           <span style={styles.title} onClick={(e) => Toast.show('标题')}>
             浏览记录
           </span>
-          <span style={styles.descrption}>浏览记录</span>
+          <span style={styles.description}>浏览记录</span>
         </div>
       </NavBar>
       <NavBar

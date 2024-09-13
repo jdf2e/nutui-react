@@ -11,14 +11,14 @@ const Demo1 = () => {
   const styles = {
     flexCenter: {
       display: 'flex',
-      aliginItem: 'center',
+      alignItems: 'center',
     },
     title: {
       fontSize: pxTransform(18),
       fontWeight: 'bold',
       lineHeight: pxTransform(26),
     },
-    descrption: {
+    description: {
       fontSize: pxTransform(12),
       fontWeight: 400,
       color: 'rgba(0,0,0, 0.5)',
@@ -45,7 +45,9 @@ const Demo1 = () => {
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
-        <Text style={styles.title}>订单详情</Text>
+        <Text style={styles.title}>
+          订单详情订单详情订单详情订单详情订单详情订单详情
+        </Text>
       </NavBar>
       <NavBar
         right={
@@ -80,7 +82,7 @@ const Demo1 = () => {
           >
             浏览记录
           </Text>
-          <Text style={styles.descrption}>浏览记录</Text>
+          <Text style={styles.description}>浏览记录</Text>
         </View>
       </NavBar>
       <NavBar

@@ -11,14 +11,14 @@ const Demo2 = () => {
   const styles = {
     flexCenter: {
       display: 'flex',
-      aliginItem: 'center',
+      aliginItems: 'center',
     },
     title: {
       fontSize: pxTransform(18),
       fontWeight: 'bold',
       lineHeight: pxTransform(26),
     },
-    descrption: {
+    description: {
       fontSize: pxTransform(12),
       fontWeight: 400,
       color: 'rgba(0,0,0, 0.5)',
@@ -82,7 +82,7 @@ const Demo2 = () => {
           >
             浏览记录
           </Text>
-          <Text style={styles.descrption}>浏览记录</Text>
+          <Text style={styles.description}>浏览记录</Text>
         </View>
       </NavBar>
       <NavBar
