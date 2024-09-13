@@ -1,3 +1,15 @@
+# v2.6.19
+
+`2024-09-13`
+
+- 🏡 chore(deps): update dependency vite-plugin-dts to v4 (#2533)
+- :bug: fix(cascader): 受控状态下 value 变化时同步组件选中状态 (#2591)
+- :bug: fix: 移除不必要的 fragment 元素 (#2587)
+- :bug: fix(datepicker): show zero on page (#2582)
+- :bug: fix: findDomNode from transition (#2525)
+- :bug: fix(props): add mergeProps utility to resolve all defaultProps warnings (#2581)
+- 🪵 refactor: resolve sass nested rules warning (#2579)
+
 # v2.6.18
 
 `2024-09-06`
