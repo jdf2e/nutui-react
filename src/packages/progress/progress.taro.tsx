@@ -192,7 +192,7 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      {...rest}
+      {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
         <View
