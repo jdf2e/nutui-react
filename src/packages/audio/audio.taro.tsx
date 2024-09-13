@@ -168,20 +168,16 @@ export const Audio: FunctionComponent<
 
   const renderIcon = () => {
     return (
-      <>
-        <div className={`${classPrefix}-icon`}>
-          <div
-            className={`${classPrefix}-icon-box} ${
-              playing
-                ? `${classPrefix}-icon-play}`
-                : `${classPrefix}-icon-stop}`
-            }`}
-            onClick={handleStatusChange}
-          >
-            <Service className={playing ? 'nut-icon-loading' : ''} />
-          </div>
+      <div className={`${classPrefix}-icon`}>
+        <div
+          className={`${classPrefix}-icon-box} ${
+            playing ? `${classPrefix}-icon-play}` : `${classPrefix}-icon-stop}`
+          }`}
+          onClick={handleStatusChange}
+        >
+          <Service className={playing ? 'nut-icon-loading' : ''} />
         </div>
-      </>
+      </div>
     )
   }
 

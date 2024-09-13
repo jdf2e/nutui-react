@@ -661,50 +661,46 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   const ToolBar = () => {
     const actions = [cancel, reset, rotate, confirm]
     return (
-      <>
-        <div className={`${classPrefix}-popup-toolbar-flex`}>
-          {actions.map((action, index) => (
-            <div
-              key={index}
-              className={`${classPrefix}-popup-toolbar-item`}
-              onClick={(_e) => action()}
-            >
-              {toolbar[index]}
-            </div>
-          ))}
-        </div>
-      </>
+      <div className={`${classPrefix}-popup-toolbar-flex`}>
+        {actions.map((action, index) => (
+          <div
+            key={index}
+            className={`${classPrefix}-popup-toolbar-item`}
+            onClick={(_e) => action()}
+          >
+            {toolbar[index]}
+          </div>
+        ))}
+      </div>
     )
   }
 
   const CropperPopup = () => {
     const { canvasId } = canvasAll
     return (
-      <>
+      <div
+        className={`${classPrefix}-popup`}
+        style={{ display: visible ? 'block' : 'none' }}
+      >
+        <Canvas
+          id={canvasId}
+          canvas-id={canvasId}
+          type={showAlipayCanvas2D ? '2d' : undefined}
+          style={canvasStyle}
+          className={`${classPrefix}-popup-canvas`}
+        />
         <div
-          className={`${classPrefix}-popup`}
-          style={{ display: visible ? 'block' : 'none' }}
+          className={`${classPrefix}-popup-highlight`}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          <Canvas
-            id={canvasId}
-            canvas-id={canvasId}
-            type={showAlipayCanvas2D ? '2d' : undefined}
-            style={canvasStyle}
-            className={`${classPrefix}-popup-canvas`}
-          />
-          <div
-            className={`${classPrefix}-popup-highlight`}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            <div className="highlight" style={highlightStyle} />
-          </div>
-          <div className={toolbarPositionCls}>
-            <ToolBar />
-          </div>
+          <div className="highlight" style={highlightStyle} />
         </div>
-      </>
+        <div className={toolbarPositionCls}>
+          <ToolBar />
+        </div>
+      </div>
     )
   }
 
