@@ -145,7 +145,7 @@ export const CollapseItem: FunctionComponent<
     } else {
       toggle()
     }
-  }, [expanded, toggle])
+  }, [expanded])
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
