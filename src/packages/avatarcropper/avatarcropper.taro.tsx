@@ -156,10 +156,10 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   })
 
   useEffect(() => {
-    setCanvasAll({
+    setCanvasAll((canvasAll) => ({
       ...canvasAll,
       cropperCanvasContext: Taro.createCanvasContext(canvasAll.canvasId),
-    })
+    }))
   }, [])
 
   // 触摸
@@ -174,7 +174,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       height,
       borderRadius: shape === 'round' ? '50%' : '',
     }
-  }, [pixelRatio, state.cropperWidth])
+  }, [pixelRatio, state.cropperWidth, shape])
 
   // 是否是横向
   const isAngle = useMemo(() => {
@@ -342,7 +342,15 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     // 绘制图片
     ctx.drawImage(src as string, x, y, width, height)
     ctx.draw()
-  }, [drawImage, state.scale, state.angle, state.moveX, state.moveY])
+  }, [
+    drawImage,
+    state,
+    canvasAll,
+    space,
+    alipayDraw,
+    showAlipayCanvas2D,
+    webDraw,
+  ])
 
   useEffect(() => {
     if (Math.abs(state.moveX) > maxMoveX) {
