@@ -21,7 +21,7 @@ const Demo1 = () => {
           label="字段A"
           name="username"
           rules={[
-            { max: 5, message: '字段A不能超过5个字' },
+            { max: 7, message: '字段A不能超过5个字' },
             { required: true, message: '请输入字段A' },
             {
               validator: (
@@ -47,7 +47,11 @@ const Demo1 = () => {
             { required: true, message: '请输入字段D' },
           ]}
         >
-          <TextArea placeholder="请输入字段D" maxLength={100} />
+          <TextArea
+            placeholder="请输入字段D"
+            maxLength={100}
+            style={{ paddingTop: 0, paddingBottom: 0 }}
+          />
         </Form.Item>
       </Form>
     </>

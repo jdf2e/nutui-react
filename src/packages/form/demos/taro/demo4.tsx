@@ -7,6 +7,7 @@ import {
   type FormItemRuleWithoutValidator,
 } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   const submitFailed = (error: any) => {
@@ -41,13 +42,14 @@ const Demo4 = () => {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              flexDirection: 'row',
               width: '100%',
             }}
           >
             <Button nativeType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button nativeType="reset" style={{ marginLeft: pxTransform(20) }}>
               重置
             </Button>
           </View>

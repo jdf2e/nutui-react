@@ -1,7 +1,6 @@
 .nut-cell-group {
   display: block;
 }
-
 .nut-cell-group-title {
   display: inherit;
   padding: 0 10px;
@@ -11,7 +10,6 @@
   margin-top: 30px;
   margin-bottom: 10px;
 }
-
 .nut-cell-group-description {
   display: inherit;
   padding: 0 10px;
@@ -21,7 +19,6 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .nut-cell-group-wrap {
   border-radius: 6px;
   overflow: hidden;
@@ -32,7 +29,6 @@
 .nut-cell-group {
   display: block;
 }
-
 .nut-cell-group-title {
   display: inherit;
   padding: 0 10px;
@@ -42,7 +38,6 @@
   margin-top: 30px;
   margin-bottom: 10px;
 }
-
 .nut-cell-group-description {
   display: inherit;
   padding: 0 10px;
@@ -52,7 +47,6 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .nut-cell-group-wrap {
   border-radius: 6px;
   overflow: hidden;
@@ -75,37 +69,30 @@
   margin-bottom: 10px;
   box-sizing: border-box;
 }
-
 .nut-cell-group-item {
   border-radius: 0;
   box-shadow: 0 0 transparent;
   margin: 0;
 }
-
 .nut-cell-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
 }
-
 .nut-cell-title {
   line-height: 20px;
 }
-
 .nut-cell-description {
   line-height: 20px;
 }
-
 .nut-cell-extra {
   line-height: 20px;
 }
-
 .nut-cell-description {
   font-size: 12px;
   color: #505259;
 }
-
 .nut-cell-extra {
   display: flex;
   flex-direction: row;
@@ -118,15 +105,12 @@
   font-size: 14px;
   color: #505259;
 }
-
 .nut-cell-clickable:active {
   opacity: 0.7;
 }
-
 .nut-cell-clickable {
   cursor: pointer;
 }
-
 .nut-cell-clickable::before {
   position: absolute;
   top: 50%;
@@ -141,21 +125,18 @@
   opacity: 0;
   content: " ";
 }
-
 .nut-cell-divider {
   display: flex;
   min-height: 1px;
   padding-left: 16px;
   padding-right: 16px;
 }
-
 .nut-cell-divider-inner {
   display: flex;
   height: 1px;
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
-
 .nut-cell-divider-rtl {
   padding-left: 16px;
   padding-right: 16px;
@@ -164,45 +145,37 @@
 .nut-form-item {
   display: flex;
 }
-
-.nut-form-item.error.line::before {
-  border-bottom: 1px solid #ff0f23;
-  transform: scaleX(1);
-  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-}
-
 .nut-form-item-label {
+  display: flex;
+  flex-direction: row;
   font-size: 14px;
   font-weight: normal;
   width: 90px;
   margin-right: 10px;
   flex: 0 0 auto;
-  display: inline-block;
   word-wrap: break-word;
   text-align: left;
 }
-
-.nut-form-item-label .required::before {
-  content: "*";
+.nut-form-item-label-required {
   color: #ff0f23;
   margin-right: 4px;
 }
-
+.nut-form-item .nut-form-item-labeltxt {
+  font-size: 12px;
+  height: 10px;
+}
 .nut-form-item-body {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-
 .nut-form-item-body-slots {
   text-align: left;
 }
-
 .nut-form-item-body-slots .nut-input {
   padding: 0;
   border: 0;
 }
-
 .nut-form-item-body-slots .nut-input-text {
   font-size: 14px;
   text-align: left;
@@ -213,20 +186,16 @@
   text-decoration: none;
   background: transparent;
 }
-
 .nut-form-item-body-slots .nut-range-container {
   min-height: 24px;
 }
-
 .nut-form-item-body-slots .nut-textarea {
   padding: 0;
 }
-
 .nut-form-item-body-slots .nut-textarea .nut-textarea-textarea {
   font: inherit;
   text-align: left;
 }
-
 .nut-form-item-body-tips {
   text-align: left;
   font-size: 10px;
@@ -244,77 +213,70 @@
   margin-right: 0;
   margin-left: 10px;
 }
-
 [dir=rtl] .nut-form-item-label .required::before {
   margin-right: 0;
   margin-left: 4px;
 }
-
 .nut-rtl .nut-form-item-label .required::before {
   margin-right: 0;
   margin-left: 4px;
 }
-
 [dir=rtl] .nut-form-item-body-slots,
 .nut-rtl .nut-form-item-body-slots {
   text-align: right;
 }
-
 [dir=rtl] .nut-form-item-body-slots .nut-icon-ArrowRight,
 [dir=rtl] .nut-form-item-body-slots .nut-icon-ArrowLeft,
 .nut-rtl .nut-form-item-body-slots .nut-icon-ArrowRight,
 .nut-rtl .nut-form-item-body-slots .nut-icon-ArrowLeft {
   transform: rotateY(180deg);
 }
-
 [dir=rtl] .nut-form-item-body-slots .nut-input-text,
 .nut-rtl .nut-form-item-body-slots .nut-input-text {
   text-align: right;
 }
-
 [dir=rtl] .nut-form-item-body-slots .nut-textarea-textarea,
 .nut-rtl .nut-form-item-body-slots .nut-textarea-textarea {
   text-align: right;
 }
-
 [dir=rtl] .nut-form-item-tips,
 .nut-rtl .nut-form-item-tips {
   text-align: right;
 }
 
-.form-layout-right .nut-form-item-label {
-  text-align: right;
+/* position */
+.nut-form-item-label-right {
+  justify-content: flex-end;
   padding-right: 24px;
   white-space: nowrap;
 }
 
-.form-layout-left .nut-form-item-label {
+.nut-form-item-label-left {
   position: relative;
-  text-align: left;
   padding-left: 12px;
   white-space: nowrap;
 }
 
-.form-layout-left .nut-form-item-label .required {
+.nut-form-item-label-left-required {
   display: block;
   line-height: 1.5;
   position: absolute;
   left: 0.1em;
 }
 
-.form-layout-top .nut-form-item {
+.nut-form-item-top {
   flex-direction: column;
   align-items: flex-start;
   white-space: nowrap;
 }
 
-.form-layout-top .nut-form-item-label {
-  padding-bottom: 4px;
+.nut-form-item-label-top {
   display: block;
+  padding-bottom: 4px;
   padding-right: 24px;
 }
 
-.form-layout-top .nut-form-item-body {
+.nut-form-item-body-top {
   margin-left: 0;
   width: 100%;
 }
@@ -332,7 +294,6 @@
   padding-left: 0;
   padding-right: 12px;
 }
-
 [dir=rtl] .form-layout-left .nut-form-item-label .required,
 .nut-rtl .form-layout-left .nut-form-item-label .required {
   left: auto;

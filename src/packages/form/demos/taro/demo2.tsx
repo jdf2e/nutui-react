@@ -1,11 +1,13 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import {
   Form,
   Button,
   Input,
   type FormItemRuleWithoutValidator,
 } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const submitFailed = (error: any) => {
@@ -38,9 +40,10 @@ const Demo2 = () => {
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
-          <div
+          <View
             style={{
               display: 'flex',
+              flexDirection: 'row',
               justifyContent: 'center',
               width: '100%',
             }}
@@ -48,10 +51,10 @@ const Demo2 = () => {
             <Button nativeType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button nativeType="reset" style={{ marginLeft: pxTransform(20) }}>
               重置
             </Button>
-          </div>
+          </View>
         }
       >
         <Form.Item

@@ -32,6 +32,7 @@ const childAdaptedArray = [
   'hoverbuttonitem',
   'avatargroup',
   'icon',
+  'formitem',
 ]
 
 // copy文件并增加css引入

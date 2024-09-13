@@ -96,7 +96,9 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
         }}
       >
         <Cell.Group divider={divider}>
-          <Context.Provider value={formInstance}>{children}</Context.Provider>
+          <Context.Provider value={{ formInstance, labelPosition }}>
+            {children}
+          </Context.Provider>
           {footer ? (
             <Cell className={`${classPrefix}-footer`}>{footer}</Cell>
           ) : null}
