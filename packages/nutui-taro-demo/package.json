@@ -41,7 +41,8 @@
     "dev:rn:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:rn -- --watch",
     "dev:qq:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:qq -- --watch",
     "dev:jd:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:jd -- --watch",
-    "dev:quickapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:quickapp -- --watch"
+    "dev:quickapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:quickapp -- --watch",
+    "upgradeTaro": "chmod +x scripts/taro/upgradeTaro && ./scripts/taro/upgradeTaro"
   },
   "browserslist": [
     "last 3 versions",
