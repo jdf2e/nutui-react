@@ -170,6 +170,10 @@ const InternalCascader: ForwardRefRenderFunction<
     initData()
   }, [options, format])
 
+  useEffect(() => {
+    syncValue()
+  }, [value])
+
   const initData = async () => {
     // 初始化开始处理数据
     state.lazyLoadMap.clear()
