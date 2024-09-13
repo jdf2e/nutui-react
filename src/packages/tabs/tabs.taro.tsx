@@ -262,7 +262,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     <View className={classes} {...rest}>
       <ScrollView
         enableFlex
-        scrollX={direction === 'horizontal'}
+        // scrollX={direction === 'horizontal'}
         scrollY={direction === 'vertical'}
         scrollLeft={scrollLeft}
         scrollTop={scrollTop}

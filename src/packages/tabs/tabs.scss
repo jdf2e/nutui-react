@@ -5,25 +5,25 @@
   display: flex;
   flex-direction: row;
   &-list {
-    background-color: red;
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
   }
+  &-titles {
+    // display: flex;
+    // flex-direction: row;
+    box-sizing: border-box;
+    height: $tabs-titles-height;
+    user-select: none;
+    overflow: hidden;
+    background-color: $tabs-titles-background-color;
+    scrollbar-width: none;
+  }
 }
 
 .nut-tabs-titles {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  height: $tabs-titles-height;
-  user-select: none;
-  overflow: hidden;
-  background-color: $tabs-titles-background-color;
-  scrollbar-width: none;
-
   &::-webkit-scrollbar {
     display: none;
     width: 0;

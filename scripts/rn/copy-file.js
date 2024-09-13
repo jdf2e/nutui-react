@@ -77,7 +77,6 @@ const removeFile = async (url) => {
 }
 
 const modify = (fileUrl, importStatement) => {
-  if(!fse.ensureFileSync(fileUrl)) return
   fse.readFile(fileUrl, 'utf8').then((content) => {
     let modifiedContent = content
     modifiedContent = [importStatement, modifiedContent.slice(0)].join('')

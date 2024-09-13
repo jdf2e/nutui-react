@@ -18,17 +18,13 @@
   flex-direction: row;
 }
 .nut-tabs-list {
-  background-color: red;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
 }
-
 .nut-tabs-titles {
-  display: flex;
-  flex-direction: row;
   box-sizing: border-box;
   height: 44px;
   user-select: none;
@@ -36,6 +32,7 @@
   background-color: #f5f6fa;
   scrollbar-width: none;
 }
+
 .nut-tabs-titles::-webkit-scrollbar {
   display: none;
   width: 0;
