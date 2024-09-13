@@ -98,7 +98,6 @@ export const Pagination: FunctionComponent<
     return items
   }, [currentPage, itemSize, pageCount])
 
-  // 点击选择 page
   const handleSelectPage = (curPage: number) => {
     if (curPage > pageCount || curPage < 1) return
     setCurrentPage(curPage)

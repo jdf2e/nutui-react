@@ -54,7 +54,7 @@ export const Ellipsis: FunctionComponent<
   } = { ...defaultProps, ...props }
   const rtl = useRtl()
   let container: any = null
-  let maxHeight = 0 // 当行的最大高度
+  let maxHeight = 0
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisValue>()
@@ -198,7 +198,6 @@ export const Ellipsis: FunctionComponent<
     return match ? Number(match[0]) : 0
   }
 
-  // 展开收起
   const clickHandle = (type: number) => {
     if (type === 1) {
       setExpanded(true)
@@ -209,7 +208,6 @@ export const Ellipsis: FunctionComponent<
     }
   }
 
-  // 文本点击
   const handleClick = () => {
     onClick && onClick()
   }

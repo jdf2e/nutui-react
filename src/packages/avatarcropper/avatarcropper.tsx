@@ -12,6 +12,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
 import { clamp, preventDefault } from '@/utils'
 import { getRect } from '@/utils/use-client-rect'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'
 export type AvatarCropperShape = 'square' | 'round'
@@ -32,16 +33,16 @@ const defaultProps = {
   space: 10,
   toolbar: [
     <Button type="danger" key="cancel">
-      取消
+      Cancel
     </Button>,
-    <Button key="reset">重置</Button>,
-    <Button key="rotate">旋转</Button>,
+    <Button key="reset">Reset</Button>,
+    <Button key="rotate">Rotate</Button>,
     <Button type="success" key="confirm">
-      确认
+      Confirm
     </Button>,
   ],
   toolbarPosition: 'bottom',
-  editText: '编辑',
+  editText: 'Edit',
   shape: 'square',
 } as AvatarCropperProps
 
@@ -49,11 +50,23 @@ const classPrefix = `nut-avatar-cropper`
 export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   props
 ) => {
+  const { locale } = useConfig()
+  defaultProps.toolbar = [
+    <Button type="danger" key="cancel">
+      {locale.cancel}
+    </Button>,
+    <Button key="reset">{locale.reset}</Button>,
+    <Button key="rotate">{locale.avatarCropper.rotate}</Button>,
+    <Button type="success" key="confirm">
+      {locale.confirm}
+    </Button>,
+  ]
+
   const {
     children,
-    toolbar,
     maxZoom,
     space,
+    toolbar,
     toolbarPosition,
     editText,
     shape,
@@ -100,13 +113,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     height: 0, // 要使用的图像的高度
   }
   const [drawImage, setDrawImg] = useState({ ...defDrawImage })
-  // 设备像素比
   const devicePixelRatio = window.devicePixelRatio || 1
-
-  // 触摸
   const touch = useTouch()
-
-  // 高亮框样式
   const highlightStyle = useMemo(() => {
     const width = `${drawImage.swidth / devicePixelRatio}px`
     const height = width
@@ -241,7 +249,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     setDrawImgs(image)
   }
 
-  // 重设缩放
   const resetScale = (scale?: number) => {
     setState({
       ...state,
@@ -253,7 +260,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     })
   }
 
-  // 设置缩放
   const setScale = (scale: number) => {
     scale = clamp(scale, +0.3, +maxZoom + 1)
     if (scale !== state.scale) {
@@ -275,7 +281,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   })
   const { startMoveX, startMoveY, startScale, startDistance } = startMove
 
-  // 触摸开始
   const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
     const { offsetX } = touch
@@ -299,7 +304,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  // 触摸移动
   const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
 
@@ -328,7 +332,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  // 触摸结束
   const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
     let stopPropagation = false
 
@@ -373,12 +376,10 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     touch.reset()
   }
 
-  // 重置角度
   const reset = () => {
     setState({ ...state, angle: 0 })
   }
 
-  // 设置角度
   const rotate = () => {
     if (state.angle === 270) {
       setState({ ...state, angle: 0 })
@@ -387,7 +388,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     setState({ ...state, angle: state.angle + 90 })
   }
 
-  // 关闭
   const cancel = (isEmit: boolean = true) => {
     setVisible(false)
     resetScale()
@@ -470,7 +470,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
           accept="image/*"
           className={`${classPrefix}-input`}
           onChange={(e: any) => inputImageChange(e)}
-          aria-label="选择图片"
+          aria-label={locale.avatarCropper.selectImage}
         />
         <div className="nut-avatar-cropper-edit-text">{editText}</div>
       </div>
