@@ -20,6 +20,19 @@
     overflow: hidden;
     background-color: $tabs-titles-background-color;
     scrollbar-width: none;
+    &-text-active {
+      color: $tabs-titles-item-active-color;
+      font-weight: $tabs-titles-item-active-font-weight;
+    }
+    &-text-simple {
+      color: $color-title;
+      font-size: $tabs-titles-item-active-font-size;
+    }
+    &-line-active {
+      background-color: $tabs-titles-item-active-color;
+      width: $tabs-tab-line-width;
+      height: $tabs-tab-line-height;
+    }
   }
 }
 

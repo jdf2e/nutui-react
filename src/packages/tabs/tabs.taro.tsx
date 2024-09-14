@@ -299,12 +299,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                       <View
                         className={classNames(
                           `${classPrefix}-titles-item-line`,
+                          `${classPrefix}-titles-item-line-${direction}`,
                           {
-                            [`${classPrefix}-titles-item-line-${direction}`]:
-                              true,
+                            [`${classPrefix}-titles-line-active`]:
+                              !item.disabled &&
+                              String(item.value) === String(value),
                           }
                         )}
-                        style={tabsActiveStyle}
+                        // style={{ ...tabsActiveStyle, width: 20, height: 2, backgroundColor: 'red' }}
                       />
                     )}
                     {activeType === 'smile' && (
@@ -318,7 +320,17 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                     <View
                       className={classNames(
                         `${classPrefix}-ellipsis`,
-                        `${classPrefix}-titles-item-text`
+                        `${classPrefix}-titles-item-text`,
+                        {
+                          [`${classPrefix}-titles-text-active`]:
+                            !item.disabled &&
+                            String(item.value) === String(value) &&
+                            activeType !== 'simple',
+                          [`${classPrefix}-titles-text-simple`]:
+                            !item.disabled &&
+                            String(item.value) === String(value) &&
+                            activeType === 'simple',
+                        }
                       )}
                     >
                       {item.title}

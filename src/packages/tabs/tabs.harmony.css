@@ -32,6 +32,19 @@
   background-color: #f5f6fa;
   scrollbar-width: none;
 }
+.nut-tabs-titles-text-active {
+  color: #ff0f23;
+  font-weight: 600;
+}
+.nut-tabs-titles-text-simple {
+  color: #1a1a1a;
+  font-size: 16px;
+}
+.nut-tabs-titles-line-active {
+  background-color: #ff0f23;
+  width: 12px;
+  height: 2px;
+}
 
 .nut-tabs-titles::-webkit-scrollbar {
   display: none;
