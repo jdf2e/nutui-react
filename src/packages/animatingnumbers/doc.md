@@ -46,7 +46,7 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-countup-width | 每个数字的宽度 | `auto` |
+| \--nutui-countup-width | 每个数字的宽度 | `auto`1 |
 | \--nutui-countup-height | 数字高度 | `32px` |
 | \--nutui-countup-base-size | 字号 | `18px` |
 | \--nutui-countup-border-radius | 每个数字的边框圆角 | `4px` |
