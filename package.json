@@ -91,7 +91,7 @@
   },
   "lint-staged": {
     "*.{scss,md}": "prettier --write",
-    "*.{ts,tsx,js,md}": "eslint"
+    "*.{ts,tsx,js}": "eslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
