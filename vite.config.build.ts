@@ -43,10 +43,10 @@ export default defineConfig({
         fse
           .readFile('./dist/types/packages/nutui.react.build.d.ts', 'utf-8')
           .then((data: string) => {
-            fse.remove('./dist/types/packages/nutui.react.build.d.ts')
+            // fse.remove('./dist/types/packages/nutui.react.build.d.ts')
             fse.outputFile(
               './dist/types/index.d.ts',
-              `${data.replace(/\.\.\//g, './')}`
+              `${data.replace(/\.\//g, './packages/')}`
             )
           })
       },
