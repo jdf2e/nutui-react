@@ -171,7 +171,6 @@
     "husky": "^9.0.11",
     "inquirer": "^10.1.4",
     "jscodeshift": "^17.0.0",
-    "linguist-languages": "^7.27.0",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",
