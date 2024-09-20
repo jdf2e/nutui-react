@@ -235,9 +235,6 @@ importers:
       jscodeshift:
         specifier: ^17.0.0
         version: 17.0.0(@babel/preset-env@7.25.4(@babel/core@7.25.2))
-      linguist-languages:
-        specifier: ^7.27.0
-        version: 7.27.0
       lint-staged:
         specifier: ^15.2.2
         version: 15.2.9
@@ -278,8 +275,8 @@ importers:
         specifier: ^3.2.5
         version: 3.3.3
       prettier-markdown-table:
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -8386,8 +8383,8 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier-markdown-table@1.0.1:
-    resolution: {integrity: sha512-4UrRDtD/k0xc5BAjI2Zv/L1cf6gTm7tdb4Uks0xUJ3Dm4brIbFMYkRdF/h6bqC1+SVSonNoD+ZcilmjH4wD0sA==}
+  prettier-markdown-table@1.0.2:
+    resolution: {integrity: sha512-WYaAn3GX8hn1v+dZcHljxgZfG0PeWvP2Ufav0vzvlDiWhb8uj+FIKpUIMiaf6uP1PF8Ni/1m7X6FwucSgCvY2w==}
 
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -20071,7 +20068,9 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-markdown-table@1.0.1: {}
+  prettier-markdown-table@1.0.2:
+    dependencies:
+      linguist-languages: 7.27.0
 
   prettier@2.8.8:
     optional: true
