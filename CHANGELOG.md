@@ -1,3 +1,11 @@
+# v2.6.20
+
+`2024-09-20`
+
+- :bug: fix: i18n (#2597)
+- :bug: fix: 类型构建错误 (#2605)
+- 🏡 chore: replace local prettier plugin with npm package (#2603)
+
 # v2.6.19
 
 `2024-09-13`
