@@ -35,7 +35,6 @@ export const getDefaultConfig = () => {
   return defaultConfigRef.current
 }
 
-// 创建一个 Context 对象
 const ConfigContext = createContext<ConfigProviderProps | null>(null)
 
 export const useConfig = () => {

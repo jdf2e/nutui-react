@@ -35,7 +35,6 @@ export interface CurrentData {
   custom: string
   selectedRegion?: Regions
 }
-// 已选地址
 export interface Regions {
   province: RegionData
   city: RegionData
