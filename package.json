@@ -1,5 +1,5 @@
 {
-  "name": "@nutui/nutui-react-taro",
+  "name": "@feewee/nutui-react-taro",
   "version": "2.6.20",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
@@ -41,7 +41,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.feewee.cn"
   },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",
