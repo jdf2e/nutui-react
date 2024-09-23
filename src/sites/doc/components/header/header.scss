@@ -156,7 +156,6 @@
 }
 // 颜色
 .doc-header {
-  // 红色
   &-red {
     background-image: $theme-red-header-bg;
     color: $theme-red-word;
@@ -234,7 +233,6 @@
       }
     }
   }
-  // 白色
   &-white {
     background: $white;
     color: $theme-white-word;
@@ -313,7 +311,6 @@
       }
     }
   }
-  // 黑色
   &-black {
     background: $black;
     color: $theme-black-word;

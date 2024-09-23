@@ -13,7 +13,7 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import { ERROR, SUCCESS, UploaderTaro, UPLOADING, UploadOptions } from './utils'
@@ -24,7 +24,6 @@ import { FileItem } from './file-item.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
 
-/** 图片的尺寸 */
 interface sizeType {
   /** 原图 */
   original: string
@@ -32,7 +31,6 @@ interface sizeType {
   compressed: string
 }
 
-/** 图片的来源 */
 interface sourceType {
   /** 从相册选图 */
   album: string
@@ -40,7 +38,6 @@ interface sourceType {
   camera: string
 }
 
-/** 视频的来源 */
 interface mediaType {
   /** 只能拍摄图片或从相册选择图片 */
   image: string
@@ -258,7 +255,6 @@ const InternalUploader: ForwardRefRenderFunction<
     if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
       // 其余端全部使用 chooseImage API
       chooseMedia({
-        /** 最多可以选择的文件个数 */
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         /** 文件类型 */
         mediaType: mediaType as any,
@@ -270,16 +266,13 @@ const InternalUploader: ForwardRefRenderFunction<
         sizeType,
         /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
         camera,
-        /** 接口调用失败的回调函数 */
         fail: (res: any) => {
           onFailure && onFailure(res)
         },
-        /** 接口调用成功的回调函数 */
         success: onChangeMedia,
       })
     } else {
       chooseImage({
-        // 选择数量
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType,
@@ -509,8 +502,8 @@ const InternalUploader: ForwardRefRenderFunction<
         <View className="nut-uploader-slot">
           <>
             {children || (
-              <Button size="small" type="primary">
-                上传文件
+              <Button nativeType="button" size="small" type="primary">
+                {locale.uploader.list}
               </Button>
             )}
             {Number(maxCount) > fileList.length && (
@@ -542,7 +535,7 @@ const InternalUploader: ForwardRefRenderFunction<
           >
             <View className="nut-uploader-icon">
               {uploadIcon}
-              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+              <Text className="nut-uploader-icon-tip">{uploadLabel}</Text>
             </View>
             <Button className="nut-uploader-input" onClick={_chooseImage} />
           </View>

@@ -165,6 +165,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
 
   const micRef = useRef<HTMLDivElement>(null)
+  const cssRef = useRef(null)
   const targetSet = [micRef.current]
   useClickAway(
     () => {
@@ -207,6 +208,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
+          nodeRef={cssRef}
           in={showPopup}
           timeout={100}
           classNames={

@@ -6,6 +6,7 @@ import React, {
   useImperativeHandle,
   useMemo,
   useState,
+  useRef,
 } from 'react'
 import classNames from 'classnames'
 import { getSystemInfoSync, usePageScroll } from '@tarojs/taro'
@@ -85,6 +86,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       onChange?.(option)
     },
   })
+  const cssRef = useRef(null)
   useEffect(() => {
     setShowPopup(show)
   }, [show])
@@ -214,6 +216,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
+          nodeRef={cssRef}
           in={showPopup}
           timeout={100}
           classNames={

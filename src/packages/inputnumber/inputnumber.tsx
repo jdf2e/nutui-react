@@ -247,21 +247,19 @@ export const InputNumber: FunctionComponent<
           )}
         />
       </div>
-      <>
-        <input
-          className={classNames(`${classPrefix}-input`, {
-            [`${classPrefix}-input-disabled`]: disabled,
-          })}
-          ref={inputRef}
-          inputMode="decimal"
-          disabled={disabled}
-          readOnly={readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      </>
+      <input
+        className={classNames(`${classPrefix}-input`, {
+          [`${classPrefix}-input-disabled`]: disabled,
+        })}
+        ref={inputRef}
+        inputMode="decimal"
+        disabled={disabled}
+        readOnly={readOnly}
+        value={inputValue}
+        onInput={handleInputChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
       <div className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
           className={classNames(

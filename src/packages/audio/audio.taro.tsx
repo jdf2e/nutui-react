@@ -169,7 +169,6 @@ export const Audio: FunctionComponent<
 
   const renderIcon = () => {
     return (
-      <>
         <View className={`${classPrefix}-icon`}>
           <View
             className={`${classPrefix}-icon-box} ${
@@ -182,7 +181,6 @@ export const Audio: FunctionComponent<
             <Service className={playing ? 'nut-icon-loading' : ''} />
           </View>
         </View>
-      </>
     )
   }
 

@@ -383,7 +383,7 @@ const InternalUploader: ForwardRefRenderFunction<
         <div className="nut-uploader-slot">
           {children || (
             <Button size="small" type="primary">
-              上传文件
+              {locale.uploader.list}
             </Button>
           )}
           {Number(maxCount) > fileList.length && (

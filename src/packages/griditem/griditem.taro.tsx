@@ -7,7 +7,6 @@ import React, {
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { useConfig } from '@/packages/configprovider/index.taro'
 import GridContext from '../grid/context'
 import { BasicComponent } from '@/utils/typings'
 
@@ -36,7 +35,6 @@ const defaultProps = {
 export const GridItem: FunctionComponent<
   Partial<GridItemProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     style,

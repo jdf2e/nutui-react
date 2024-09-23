@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { fireEvent, render, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { act } from 'react-dom/test-utils'
 import Swiper, { SwiperRef } from '../index'
 import { triggerDrag } from '@/utils/test/event'
 

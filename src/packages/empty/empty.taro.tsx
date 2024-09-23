@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, Image } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   Button,
@@ -56,7 +55,6 @@ const classPrefix = `nut-empty`
 export const Empty: FunctionComponent<
   Partial<EmptyProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     image,
     imageSize,

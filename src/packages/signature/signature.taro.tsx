@@ -120,7 +120,7 @@ const InternalSignature: ForwardRefRenderFunction<
             onConfirm && onConfirm(res.tempFilePath, isSignedRef.current)
           },
           fail: (res) => {
-            console.warn('保存失败')
+            console.warn('保存失败', res)
           },
         })
       })

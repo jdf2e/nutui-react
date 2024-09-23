@@ -93,27 +93,25 @@ export const Overlay: FunctionComponent<
   }
 
   return (
-    <>
-      <CSSTransition
-        nodeRef={nodeRef}
-        classNames={`${classPrefix}-slide`}
-        unmountOnExit
-        timeout={duration}
-        in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
+    <CSSTransition
+      nodeRef={nodeRef}
+      classNames={`${classPrefix}-slide`}
+      unmountOnExit
+      timeout={duration}
+      in={innerVisible}
+      onEntered={onHandleOpened}
+      onExited={onHandleClosed}
+    >
+      <div
+        ref={nodeRef}
+        className={classes}
+        style={styles}
+        {...rest}
+        onClick={handleClick}
       >
-        <div
-          ref={nodeRef}
-          className={classes}
-          style={styles}
-          {...rest}
-          onClick={handleClick}
-        >
-          {children}
-        </div>
-      </CSSTransition>
-    </>
+        {children}
+      </div>
+    </CSSTransition>
   )
 }
 

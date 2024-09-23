@@ -50,8 +50,8 @@
     font-size: $cell-extra-font-size;
     color: $cell-extra-color;
   }
-  &-clickable:active {
-    opacity: 0.7;
+  &:active::before {
+    opacity: 0.1;
   }
   &-clickable {
     cursor: pointer;

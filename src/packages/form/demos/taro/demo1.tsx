@@ -34,7 +34,7 @@ const Demo1 = () => {
                 ruleCfg: FormItemRuleWithoutValidator,
                 value: string
               ) => {
-                return value.length > 5
+                return value?.length > 5
               },
             },
           ]}
