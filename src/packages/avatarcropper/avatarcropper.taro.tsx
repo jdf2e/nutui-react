@@ -655,46 +655,46 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   const ToolBar = () => {
     const actions = [cancel, reset, rotate, confirm]
     return (
-        <View className={`${classPrefix}-popup-toolbar-flex`}>
-          {actions.map((action, index) => (
-            <View
-              key={index}
-              className={`${classPrefix}-popup-toolbar-item`}
-              onClick={(_e) => action()}
-            >
-              {toolbar[index]}
-            </View>
-          ))}
-        </View>
+      <View className={`${classPrefix}-popup-toolbar-flex`}>
+        {actions.map((action, index) => (
+          <View
+            key={index}
+            className={`${classPrefix}-popup-toolbar-item`}
+            onClick={(_e) => action()}
+          >
+            {toolbar[index]}
+          </View>
+        ))}
+      </View>
     )
   }
 
   const CropperPopup = () => {
     const { canvasId } = canvasAll
     return (
+      <View
+        className={`${classPrefix}-popup`}
+        style={{ display: visible ? 'block' : 'none' }}
+      >
+        <Canvas
+          id={canvasId}
+          canvas-id={canvasId}
+          type={showAlipayCanvas2D ? '2d' : undefined}
+          style={canvasStyle}
+          className={`${classPrefix}-popup-canvas`}
+        />
         <View
-          className={`${classPrefix}-popup`}
-          style={{ display: visible ? 'block' : 'none' }}
+          className={`${classPrefix}-popup-highlight`}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          <Canvas
-            id={canvasId}
-            canvas-id={canvasId}
-            type={showAlipayCanvas2D ? '2d' : undefined}
-            style={canvasStyle}
-            className={`${classPrefix}-popup-canvas`}
-          />
-          <View
-            className={`${classPrefix}-popup-highlight`}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            <View className="highlight" style={highlightStyle} />
-          </View>
-          <View className={toolbarPositionCls}>
-            <ToolBar />
-          </View>
+          <View className="highlight" style={highlightStyle} />
         </View>
+        <View className={toolbarPositionCls}>
+          <ToolBar />
+        </View>
+      </View>
     )
   }
 
