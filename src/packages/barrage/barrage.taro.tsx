@@ -141,7 +141,6 @@ const InternalBarrage: ForwardRefRenderFunction<
   }
 
   const play = () => {
-    clearDomTimeout()
     if (!loop && index.current >= list.length) {
       return
     }
@@ -163,11 +162,9 @@ const InternalBarrage: ForwardRefRenderFunction<
     el.innerHTML = list[_index] as string
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
     el.classList.add('barrage-item')
+    requestAnimationFrame(() => setStyle(el, currentIndex))
     index.current++
     run()
-    domTimer.current = window.setTimeout(() => {
-      setStyle(el, currentIndex)
-    }, 0)
   }
 
   return (
