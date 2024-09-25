@@ -7,7 +7,7 @@ const config = require('../../src/config.json')
 
 const args = process.argv.splice(2)
 
-console.log(args, 'args')
+console.log('rn copy-file.js args',args)
 
 // 已适配组件对象
 const adaptedArray = []

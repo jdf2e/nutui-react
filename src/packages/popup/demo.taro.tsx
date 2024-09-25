@@ -3,13 +3,13 @@ import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
-import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 
 const PopupDemo = () => {
@@ -79,7 +79,9 @@ const PopupDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        className={`${!harmonyAndRn() ? `demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}` : ''}`}
+      >
         <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
 
@@ -99,7 +101,7 @@ const PopupDemo = () => {
         <Demo6 /> */}
 
         <View className="h2">{translated.c9e6df49}</View>
-        <Demo7 />
+        {/* <Demo7 /> */}
 
         <View className="h2">{translated.cfbdc782}</View>
         <Demo8 />
