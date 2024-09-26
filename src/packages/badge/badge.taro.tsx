@@ -12,7 +12,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony, rn } from '@/utils/platform-taro'
 
 export type BadgeFill = 'solid' | 'outline'
 export interface BadgeProps extends BasicComponent {
@@ -53,7 +53,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   const classPrefix = 'nut-badge'
   const classes = classNames(classPrefix, className)
-  const isHarmonyAndRn = harmonyAndRn()
   const badgeRef = useRef(null)
   const [contentStyle, setContentStyle] = useState({})
 
@@ -93,19 +92,17 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const getPositionStyle = async () => {
     const style: CSSProperties = {}
     style.top = pxTransform(Number(-top) || 0)
-    if (isHarmonyAndRn) {
-      try {
-        const reacts = await getRectByTaro(badgeRef.current)
-        style.left =
-          reacts?.width && reacts?.width > Number(right)
-            ? pxTransform(reacts.width - Number(right))
-            : 0
-      } catch (error) {
-        console.log(error)
-      }
+    if (rn()) {
+      const reacts = await getRectByTaro(badgeRef.current)
+      style.left =
+        reacts?.width && reacts?.width > Number(right)
+          ? pxTransform(reacts.width - Number(right))
+          : 0
     } else {
       const dir = rtl ? 'left' : 'right'
-      style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
+      style[dir] = harmony()
+        ? pxTransform(Number(right))
+        : `${Number(right) || parseFloat(String(right)) || 0}px`
     }
     setContentStyle(style)
   }

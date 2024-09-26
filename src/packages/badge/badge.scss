@@ -55,11 +55,7 @@
   }
 
   &-content {
-    /* #ifdef harmony */
-    top: 0;
-    /* #endif */
-    /* #ifndef rn harmony */
-    top: initial;
+    /* #ifndef rn */
     transform: $badge-content-transform;
     /* #endif */
   }

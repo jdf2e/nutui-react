@@ -51,11 +51,7 @@
   padding: 0;
 }
 .nut-badge-content {
-  /* #ifdef harmony */
-  top: 0;
-  /* #endif */
-  /* #ifndef rn harmony */
-  top: initial;
+  /* #ifndef rn */
   transform: translateX(100%);
   /* #endif */
 }
