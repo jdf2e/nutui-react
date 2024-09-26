@@ -66,18 +66,16 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (typeof value === 'string' && value) return value
   }
 
-  const contentClasses = classNames(
-    { [`${classPrefix}-dot`]: dot },
-    `${classPrefix}-content`,
-    { [`${classPrefix}-sup`]: isNumber() || isString() || dot },
-    {
-      [`${classPrefix}-one`]:
-        typeof content() === 'string' && `${content()}`?.length === 1,
-    }
-  )
+  const contentClasses = classNames(`${classPrefix}-content`, {
+    [`${classPrefix}-sup`]: isNumber() || isString() || dot,
+    [`${classPrefix}-one`]:
+      typeof content() === 'string' && `${content()}`?.length === 1,
+    [`${classPrefix}-dot`]: dot,
+    [`${classPrefix}-${fill}`]: fill === 'outline',
+  })
   const getStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
+    style.top = `${Number(-top) || parseFloat(String(-top)) || 0}px`
     const dir = rtl ? 'left' : 'right'
     style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
 
@@ -97,7 +95,16 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   return (
     <div className={classes} style={style}>
-      {isIcon() && <div className={`${classPrefix}-icon`}>{value}</div>}
+      {isIcon() && (
+        <div
+          className={classNames(`${classPrefix}-content`, {
+            [`${classPrefix}-icon`]: true,
+            [`${classPrefix}-icon-rtl`]: rtl,
+          })}
+        >
+          {value}
+        </div>
+      )}
       {children}
       {!isIcon() && (
         <div className={contentClasses} style={getStyle()}>

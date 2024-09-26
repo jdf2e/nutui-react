@@ -1,20 +1,26 @@
 .nut-badge {
   position: relative;
-  display: inline-block;
-
+  display: inline-flex;
+  width: auto;
+  /* #ifdef harmony */
+  min-width: 1px;
+  /* #endif */
   &-icon {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     background: $badge-background-color;
-    top: -10%;
-    right: -15%;
     padding: $badge-icon-padding;
     text-align: center;
     border: $badge-border;
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
+
+    &-rtl {
+      right: auto;
+      left: -15%;
+    }
 
     .nut-icon {
       width: $badge-icon-size;
@@ -49,7 +55,13 @@
   }
 
   &-content {
+    /* #ifdef harmony */
+    top: 0;
+    /* #endif */
+    /* #ifndef rn harmony */
+    top: initial;
     transform: $badge-content-transform;
+    /* #endif */
   }
 
   &-dot {
@@ -61,25 +73,8 @@
   }
 
   &-outline {
-    .nut-badge-content {
-      background: $color-primary-text;
-      border: 1px solid $color-primary;
-      color: $color-primary;
-    }
-  }
-}
-
-[dir='rtl'] .nut-badge,
-.nut-rtl .nut-badge {
-  &-icon {
-    right: auto;
-    left: -15%;
-  }
-
-  &-content {
-    transform: var(
-      --nutui-badge-content-transform,
-      translateY(-50%) translateX(-100%)
-    );
+    background: $color-primary-text;
+    border: 1px solid $color-primary;
+    color: $color-primary;
   }
 }

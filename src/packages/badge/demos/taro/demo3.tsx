@@ -1,39 +1,53 @@
 import { User } from '@nutui/icons-react-taro'
 import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
 import React from 'react'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo3 = () => {
+  const isRnAndHarmony = harmonyAndRn()
+  const renderChildren = () => {
+    return (
+      <>
+        {isRnAndHarmony ? (
+          <Avatar shape="square">N</Avatar>
+        ) : (
+          <Avatar icon={<User />} shape="square" />
+        )}
+      </>
+    )
+  }
   return (
     <Cell>
       <Badge
-        style={{ marginInlineEnd: '40px' }}
+        style={{ marginRight: pxTransform(40) }}
         value={8}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+        color="rgba(73,143,242,1)"
       >
-        <Avatar icon={<User />} shape="square" />
+        {renderChildren()}
       </Badge>
       <Badge
-        style={{ marginInlineEnd: '40px' }}
+        style={{ marginRight: pxTransform(40) }}
         value={76}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+        color="rgba(73,143,242,1)"
       >
-        <Avatar icon={<User />} shape="square" />
+        {renderChildren()}
       </Badge>
       <Badge
-        style={{ marginInlineEnd: '40px' }}
+        style={{ marginRight: pxTransform(40) }}
         value="NEW"
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+        color="rgba(73,143,242,1)"
       >
-        <Avatar icon={<User />} shape="square" />
+        {renderChildren()}
       </Badge>
       <Badge
-        style={{ marginInlineEnd: '40px' }}
+        style={{ marginRight: pxTransform(40) }}
         top="2"
         right="4"
         dot
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
+        color="rgba(73,143,242,1)"
       >
-        <Avatar icon={<User />} shape="square" />
+        {renderChildren()}
       </Badge>
     </Cell>
   )

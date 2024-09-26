@@ -716,7 +716,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Badge",
           "type": "component",
           "cName": "徽标",

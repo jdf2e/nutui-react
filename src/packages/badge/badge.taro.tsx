@@ -1,8 +1,18 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import pxTransform from '@/utils/px-transform'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export type BadgeFill = 'solid' | 'outline'
 export interface BadgeProps extends BasicComponent {
@@ -42,9 +52,10 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     ...props,
   }
   const classPrefix = 'nut-badge'
-  const classes = classNames(classPrefix, className, {
-    [`${classPrefix}-${fill}`]: fill === 'outline',
-  })
+  const classes = classNames(classPrefix, className)
+  const isHarmonyAndRn = harmonyAndRn()
+  const badgeRef = useRef(null)
+  const [contentStyle, setContentStyle] = useState({})
 
   function content() {
     if (dot || typeof value === 'object' || value === 0) return null
@@ -66,41 +77,75 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (typeof value === 'string' && value) return value
   }
 
-  const contentClasses = classNames(
-    { [`${classPrefix}-dot`]: dot },
-    `${classPrefix}-content`,
-    { [`${classPrefix}-sup`]: isNumber() || isString() || dot },
-    {
-      [`${classPrefix}-one`]:
-        typeof content() === 'string' && `${content()}`?.length === 1,
+  const contentClasses = classNames(`${classPrefix}-content`, {
+    [`${classPrefix}-sup`]: isNumber() || isString() || dot,
+    [`${classPrefix}-one`]:
+      typeof content() === 'string' && `${content()}`?.length === 1,
+    [`${classPrefix}-dot`]: dot,
+    [`${classPrefix}-${fill}`]: fill === 'outline',
+  })
+
+  useEffect(() => {
+    if (badgeRef.current) {
+      getPositionStyle()
     }
-  )
+  }, [badgeRef.current])
+  const getPositionStyle = async () => {
+    const style: CSSProperties = {}
+    style.top = pxTransform(Number(-top) || 0)
+    if (isHarmonyAndRn) {
+      try {
+        const reacts = await getRectByTaro(badgeRef.current)
+        style.left =
+          reacts?.width && reacts?.width > Number(right)
+            ? pxTransform(reacts.width - Number(right))
+            : 0
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      const dir = rtl ? 'left' : 'right'
+      style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
+    }
+    setContentStyle(style)
+  }
+
   const getStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
-    const dir = rtl ? 'left' : 'right'
-    style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
-
     if (color) {
       if (fill === 'outline') {
         style.color = color
-        style.background = '#fff'
+        style.backgroundColor = '#fff'
         if (!color?.includes('gradient')) {
-          style.border = `1px solid ${color}`
+          style.borderColor = color
         }
       } else {
         style.color = '#fff'
-        style.background = color
+        style.backgroundColor = color
       }
     }
     return style
   }
+
   return (
-    <View className={classes} style={style}>
-      {isIcon() && <View className={`${classPrefix}-icon`}>{value}</View>}
+    <View className={classes} style={style} ref={badgeRef}>
+      {isIcon() && (
+        <View
+          className={classNames(`${classPrefix}-content`, {
+            [`${classPrefix}-icon`]: true,
+            [`${classPrefix}-icon-rtl`]: rtl,
+          })}
+          style={contentStyle}
+        >
+          {value}
+        </View>
+      )}
       {children}
       {!isIcon() && (
-        <View className={contentClasses} style={getStyle()}>
+        <View
+          className={contentClasses}
+          style={{ ...contentStyle, ...getStyle() }}
+        >
           {content()}
         </View>
       )}
