@@ -2,7 +2,6 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import GridContext from './grid.taro.context'
 import { GridItem, GridItemProps } from '../griditem/griditem.taro'
-import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -63,9 +62,6 @@ export const Grid: FunctionComponent<
     let styleSelf: CSSProperties = {}
     if (style) {
       styleSelf = style
-    }
-    if (gap) {
-      styleSelf.paddingLeft = pxCheck(gap)
     }
 
     return styleSelf

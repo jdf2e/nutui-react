@@ -4,7 +4,7 @@ import { Image } from '@nutui/icons-react'
 
 const Demo1 = () => {
   return (
-    <Grid>
+    <Grid gap={20}>
       <Grid.Item text="文字">
         <Image />
       </Grid.Item>
