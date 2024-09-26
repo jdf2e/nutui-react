@@ -8,7 +8,6 @@ import React, {
   ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
@@ -117,6 +116,8 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
     '--nutui-overlay-zIndex': index,
+    width: '100%',
+    height: '100%',
   }
 
   const popStyles = {
@@ -162,7 +163,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: ITouchEvent) => {
-    !harmonyAndRn() && e.stopPropagation()
+    e.stopPropagation()
     if (closeOnOverlayClick) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
@@ -260,106 +261,68 @@ export const Popup: FunctionComponent<
   const renderPop = () => {
     return (
       <>
-        {!harmonyAndRn() ? (
-          <CSSTransition
-            nodeRef={refObject}
-            classNames={transitionName}
-            mountOnEnter
-            unmountOnExit={destroyOnClose}
-            timeout={duration}
-            in={innerVisible}
-            onEntered={onHandleOpened}
-            onExited={onHandleClosed}
+        {innerVisible ? (
+          <View
+            ref={refObject}
+            style={popStyles}
+            className={popClassName}
+            onClick={onHandleClick}
+            catchMove={lockScroll}
           >
-            <View
-              ref={refObject}
-              style={popStyles}
-              className={popClassName}
-              onClick={onHandleClick}
-              catchMove={lockScroll}
-            >
-              {renderTitle()}
-              {showChildren ? children : ''}
-            </View>
-          </CSSTransition>
-        ) : (
-          <>
-            {innerVisible ? (
-              <View
-                ref={refObject}
-                style={popStyles}
-                className={popClassName}
-                onClick={onHandleClick}
-                catchMove={lockScroll}
-              >
-                {renderTitle()}
-                {showChildren ? children : ''}
-              </View>
-            ) : null}
-          </>
-        )}
+            {renderTitle()}
+            {showChildren ? children : ''}
+          </View>
+        ) : null}
       </>
     )
   }
 
   const renderPopByRN = () => {
     return (
-      <Modal
-        // animationType="slide" // 使用 slide 动画
-        transparent // 使背景透明
-        visible={innerVisible}
-        onRequestClose={onHandleClickOverlay} // 处理 Android 设备的返回按钮
+      <View
+        style={{
+          position: 'absolute',
+          overflow: 'hidden',
+          ...popStyles,
+        }}
+        className={popClassName}
       >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'flex-end',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: 'white',
-              padding: 20,
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-              alignItems: 'center',
-            }}
-          >
-            <Text
-              style={{
-                marginBottom: 20,
-                fontSize: 18,
-              }}
-            >
-              这是一个从底部弹出的弹框！------
-            </Text>
-            <TouchableOpacity onPress={onHandleClickOverlay}>
-              <Text>关闭</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
+        {renderTitle()}
+        {showChildren ? children : ''}
+      </View>
     )
   }
 
   const renderNode = () => {
     return (
-      <>
-        {/* {overlay ? (
-          <Overlay
+      <Modal
+        animationType="none" // 使用 slide 动画
+        transparent // 使背景透明
+        visible={innerVisible}
+        onRequestClose={onHandleClickOverlay} // 处理 Android 设备的返回按钮
+      >
+        {overlay ? (
+          <TouchableOpacity
             style={overlayStyles}
+            activeOpacity={1}
             className={overlayClassName}
-            visible={innerVisible}
-            closeOnOverlayClick={closeOnOverlayClick}
-            lockScroll={lockScroll}
-            duration={duration}
-            onClick={onHandleClickOverlay}
-          />
-        ) : null} */}
-        {/* {renderPop()} */}
+            // visible={innerVisible}
+            // closeOnOverlayClick={closeOnOverlayClick}
+            // lockScroll={lockScroll}
+            // duration={duration}
+            onPress={onHandleClickOverlay}
+          >
+            <View
+              style={{
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              }}
+            />
+          </TouchableOpacity>
+        ) : null}
         {renderPopByRN()}
-      </>
+      </Modal>
     )
   }
 

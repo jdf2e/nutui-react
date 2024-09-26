@@ -10,6 +10,7 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
+import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 
 const PopupDemo = () => {
@@ -100,8 +101,12 @@ const PopupDemo = () => {
         {/* <View className="h2">{translated.ea3d02f2}</View>
         <Demo6 /> */}
 
-        <View className="h2">{translated.c9e6df49}</View>
-        {/* <Demo7 /> */}
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.c9e6df49}</View>
+            <Demo7 />
+          </>
+        )}
 
         <View className="h2">{translated.cfbdc782}</View>
         <Demo8 />
