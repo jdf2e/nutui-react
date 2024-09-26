@@ -3,7 +3,6 @@ import React, {
   FunctionComponent,
   ReactNode,
   useContext,
-  useRef,
 } from 'react'
 import classNames from 'classnames'
 import GridContext from '../grid/grid.context'
@@ -56,7 +55,6 @@ export const GridItem: FunctionComponent<
   const classPrefix = 'nut-grid-item'
   const classes = classNames(classPrefix, className)
   const context = useContext(GridContext)
-  const containerRef = useRef(null)
   const rootStyle = () => {
     const styles: CSSProperties = {
       flexBasis: `calc((100% - ${pxCheck((+columns - 1) * Number(gap))}) / ${columns})`,
@@ -111,7 +109,6 @@ export const GridItem: FunctionComponent<
     <div
       className={classes}
       style={rootStyle()}
-      ref={containerRef}
       {...rest}
       onClick={handleClick}
     >
