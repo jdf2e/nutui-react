@@ -258,34 +258,36 @@ export const Popup: FunctionComponent<
       )
     }
   }
+  // const renderPop = () => {
+  //   return (
+  //     <>
+  //       {innerVisible ? (
+  //         <View
+  //           ref={refObject}
+  //           style={popStyles}
+  //           className={popClassName}
+  //           onClick={onHandleClick}
+  //           catchMove={lockScroll}
+  //         >
+  //           {renderTitle()}
+  //           {showChildren ? children : ''}
+  //         </View>
+  //       ) : null}
+  //     </>
+  //   )
+  // }
+
   const renderPop = () => {
     return (
-      <>
-        {innerVisible ? (
-          <View
-            ref={refObject}
-            style={popStyles}
-            className={popClassName}
-            onClick={onHandleClick}
-            catchMove={lockScroll}
-          >
-            {renderTitle()}
-            {showChildren ? children : ''}
-          </View>
-        ) : null}
-      </>
-    )
-  }
-
-  const renderPopByRN = () => {
-    return (
       <View
+        ref={refObject}
         style={{
           position: 'absolute',
           overflow: 'hidden',
           ...popStyles,
         }}
         className={popClassName}
+        onClick={onHandleClick}
       >
         {renderTitle()}
         {showChildren ? children : ''}
@@ -321,7 +323,7 @@ export const Popup: FunctionComponent<
             />
           </TouchableOpacity>
         ) : null}
-        {renderPopByRN()}
+        {renderPop()}
       </Modal>
     )
   }
