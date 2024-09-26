@@ -118,6 +118,7 @@ export const Popup: FunctionComponent<
     '--nutui-overlay-zIndex': index,
     width: '100%',
     height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   }
 
   const popStyles = {
@@ -258,24 +259,6 @@ export const Popup: FunctionComponent<
       )
     }
   }
-  // const renderPop = () => {
-  //   return (
-  //     <>
-  //       {innerVisible ? (
-  //         <View
-  //           ref={refObject}
-  //           style={popStyles}
-  //           className={popClassName}
-  //           onClick={onHandleClick}
-  //           catchMove={lockScroll}
-  //         >
-  //           {renderTitle()}
-  //           {showChildren ? children : ''}
-  //         </View>
-  //       ) : null}
-  //     </>
-  //   )
-  // }
 
   const renderPop = () => {
     return (
@@ -305,22 +288,14 @@ export const Popup: FunctionComponent<
       >
         {overlay ? (
           <TouchableOpacity
-            style={overlayStyles}
             activeOpacity={1}
-            className={overlayClassName}
             // visible={innerVisible}
             // closeOnOverlayClick={closeOnOverlayClick}
             // lockScroll={lockScroll}
             // duration={duration}
             onPress={onHandleClickOverlay}
           >
-            <View
-              style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              }}
-            />
+            <View className={overlayClassName} style={overlayStyles} />
           </TouchableOpacity>
         ) : null}
         {renderPop()}
