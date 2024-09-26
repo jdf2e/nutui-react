@@ -1,0 +1,114 @@
+{
+  "name": "@nutui/nutui-react-auto-import",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.11.0",
+  "description": "Description.",
+  "type": "module",
+  "keywords": [
+    "unplugin",
+    "rollup",
+    "vite",
+    "esbuild",
+    "webpack"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jdf2e/nutui-react.git",
+  "bugs": {
+    "url": "https://github.com/jdf2e/nutui-react.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui-react.git"
+  },
+  "author": "oasis",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./vite": {
+      "require": "./dist/vite.cjs",
+      "import": "./dist/vite.js"
+    },
+    "./webpack": {
+      "require": "./dist/webpack.cjs",
+      "import": "./dist/webpack.js"
+    },
+    "./rspack": {
+      "require": "./dist/rspack.cjs",
+      "import": "./dist/rspack.js"
+    },
+    "./rollup": {
+      "require": "./dist/rollup.cjs",
+      "import": "./dist/rollup.js"
+    },
+    "./rolldown": {
+      "require": "./dist/rolldown.cjs",
+      "import": "./dist/rolldown.js"
+    },
+    "./esbuild": {
+      "require": "./dist/esbuild.cjs",
+      "import": "./dist/esbuild.js"
+    },
+    "./api": {
+      "require": "./dist/api.cjs",
+      "import": "./dist/api.js"
+    },
+    "./*": [
+      "./*",
+      "./*.d.ts"
+    ]
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.1.1",
+    "@types/babel__traverse": "^7.20.6",
+    "estree-walker": "^3.0.3",
+    "magic-string": "^0.30.11",
+    "unplugin": "^1.14.1"
+  },
+  "devDependencies": {
+    "@sxzz/eslint-config": "^4.2.0",
+    "@sxzz/prettier-config": "^2.0.2",
+    "@sxzz/test-utils": "^0.3.2",
+    "@types/node": "^22.5.5",
+    "bumpp": "^9.5.2",
+    "eslint": "^9.11.0",
+    "fast-glob": "^3.3.2",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.7",
+    "vitest": "^2.1.1"
+  },
+  "engines": {
+    "node": ">=18.12.0"
+  }
+}
