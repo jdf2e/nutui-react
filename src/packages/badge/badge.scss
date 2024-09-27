@@ -17,11 +17,6 @@
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
 
-    &-rtl {
-      right: auto;
-      left: -15%;
-    }
-
     .nut-icon {
       width: $badge-icon-size;
       height: $badge-icon-size;
