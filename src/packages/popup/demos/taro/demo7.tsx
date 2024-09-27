@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Popup, Cell, Dialog } from '@nutui/nutui-react-taro'
+import { Text } from '@tarojs/components'
 
 const Demo7 = () => {
   const [showMutiple, setShowMutiple] = useState(false)
@@ -23,13 +24,13 @@ const Demo7 = () => {
           setShowMutiple(false)
         }}
       >
-        <span
+        <Text
           onClick={() => {
             setShowMutipleInner(true)
           }}
         >
           Click It
-        </span>
+        </Text>
       </Popup>
       <Popup
         visible={showMutipleInner}
@@ -39,13 +40,13 @@ const Demo7 = () => {
           setShowMutipleInner(false)
         }}
       >
-        <span
+        <Text
           onClick={() => {
             setShowMutipleInner(false)
           }}
         >
           close
-        </span>
+        </Text>
       </Popup>
 
       <Cell

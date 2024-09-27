@@ -85,11 +85,11 @@ const config = {
           '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
           '@nutui/nutui-react-taro': path.resolve(
             __dirname,
-            '../nutui-react/packages/nutui.react.taro.ts'
+            '../nutui-react/packages/nutui.react.rn.ts'
           ),
           '@nutui/icons-react-taro': path.resolve(
             __dirname,
-            '../nutui-react/packages/nutui.react.taro.ts'
+            '../nutui-react/packages/nutui.react.rn.ts'
           ),
           '@styles': path.resolve(__dirname, '../styles'),
         }

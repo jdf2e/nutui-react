@@ -20,7 +20,7 @@ console.log(argvs, 'argvs')
 // 监视频率 https://www.martin-brennan.com/gulp-watch-high-cpu-usage/
 const interval = { interval: 500 }
 // 监视文件变化
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   argvs.forEach((argv) => {
     gulp.watch(
       `src/packages/${argv}/demos/taro/*`,
@@ -42,6 +42,11 @@ gulp.task('watch', function () {
       interval,
       gulp.series(`${argv}copyTaro`)
     )
+    gulp.watch(
+      `src/packages/${argv}/${argv}.rn.tsx`,
+      interval,
+      gulp.series(`${argv}copyRN`)
+    )
   })
   const watchTasks = []
   // eslint-disable-next-line array-callback-return
@@ -60,14 +65,14 @@ gulp.task('watch', function () {
 })
 argvs.forEach((argv) => {
   const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo/nutui-react/packages/${argv}`
-  gulp.task(`${argv}copyDemo`, function (path) {
+  gulp.task(`${argv}copyDemo`, (path) => {
     console.log(path, 'path')
     return gulp
       .src(`src/packages/${argv}/demos/taro/*`)
       .pipe(gulp.dest(`${targetBaseUrl}/demos/taro/`))
   })
 
-  gulp.task(`${argv}sass`, function () {
+  gulp.task(`${argv}sass`, () => {
     return gulp
       .src([`src/packages/${argv}/${argv}.scss`])
       .pipe(
@@ -94,7 +99,7 @@ argvs.forEach((argv) => {
       .pipe(gulp.dest(`src/packages/${argv}/`))
   })
 
-  gulp.task(`${argv}copyCss`, function () {
+  gulp.task(`${argv}copyCss`, () => {
     return gulp
       .src([
         `src/packages/${argv}/*.scss`,
@@ -103,16 +108,22 @@ argvs.forEach((argv) => {
       .pipe(gulp.dest(`${targetBaseUrl}/`))
   })
 
-  gulp.task(`${argv}copyTaroDemo`, function () {
+  gulp.task(`${argv}copyTaroDemo`, () => {
     return gulp
       .src(`src/packages/${argv}/demo.taro.tsx`)
       .pipe(insert.prepend(`import '../../../styles/demo.scss';\n`))
       .pipe(gulp.dest(`${targetBaseUrl}/`))
   })
 
-  gulp.task(`${argv}copyTaro`, function () {
+  gulp.task(`${argv}copyTaro`, () => {
     return gulp
       .src(`src/packages/${argv}/${argv}.taro.tsx`)
+      .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
+      .pipe(gulp.dest(`${targetBaseUrl}/`))
+  })
+  gulp.task(`${argv}copyRN`, () => {
+    return gulp
+      .src(`src/packages/${argv}/${argv}.rn.tsx`)
       .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
       .pipe(gulp.dest(`${targetBaseUrl}/`))
   })
