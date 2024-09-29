@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-
+import { useRtl } from '@/packages/configprovider/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
 
@@ -47,6 +47,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const classPrefix = 'nut-navbar'
+
+  const rtl = useRtl()
 
   const children = Array.isArray(props.children)
     ? props.children
@@ -100,10 +102,22 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderLeft = () => {
     return back || left ? (
-      <div className={`${classPrefix}-left`} ref={leftRef}>
+      <div
+        className={classNames({
+          [`${classPrefix}-left`]: true,
+          [`${classPrefix}-left-align-${titleAlign}`]: true,
+          [`${classPrefix}-left-rtl`]: rtl,
+        })}
+        ref={leftRef}
+      >
         {back && (
           <div
-            className={`${classPrefix}-left-back`}
+            className={classNames({
+              [`${classPrefix}-left-back`]: true,
+              [`${classPrefix}-left-back-align-${titleAlign}`]: true,
+              [`${classPrefix}-left-back-children`]: left,
+              [`${classPrefix}-left-back-children-rtl`]: left && rtl,
+            })}
             onClick={(e) => onBackClick(e)}
           >
             {back}
@@ -127,7 +141,13 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     }
 
     return (
-      <div className={`${classPrefix}-title`} style={titleStyle}>
+      <div
+        className={classNames({
+          [`${classPrefix}-title`]: true,
+          [`${classPrefix}-title-align-${titleAlign}`]: true,
+        })}
+        style={titleStyle}
+      >
         {children}
       </div>
     )
@@ -135,7 +155,14 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderRight = () => {
     return (
-      <div className={`${classPrefix}-right`} ref={rightRef}>
+      <div
+        className={classNames({
+          [`${classPrefix}-right`]: true,
+          [`${classPrefix}-right-align-${titleAlign}`]: true,
+          [`${classPrefix}-right-rtl`]: rtl,
+        })}
+        ref={rightRef}
+      >
         {right}
       </div>
     )
@@ -154,7 +181,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const classes = classNames({
     [`${classPrefix}-fixed`]: fixed,
     [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
-    [`${classPrefix}-title-align-${titleAlign}`]: true,
+    [`${classPrefix}-align-${titleAlign}`]: true,
+    [`${classPrefix}-rtl`]: rtl,
   })
 
   const cls = classNames(classPrefix, classes, className)
