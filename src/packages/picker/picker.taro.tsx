@@ -176,7 +176,6 @@ const InternalPicker: ForwardRefRenderFunction<
       case 'multiple':
         return options
       case 'cascade':
-        // 级联数据处理
         return formatCascade(options as PickerOption[], innerValue)
       default:
         return [options]
@@ -201,7 +200,7 @@ const InternalPicker: ForwardRefRenderFunction<
 
   useEffect(() => {
     setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
-  }, [innerVisible, selectedValue])
+  }, [innerVisible, selectedValue, innerValue])
 
   useEffect(() => {
     if (innerVisible) {
@@ -216,7 +215,7 @@ const InternalPicker: ForwardRefRenderFunction<
     }
     Taro.getEnv() !== 'WEB' && setCurrentValue(defaultValuesConvert())
     onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-  }, [innerValue, columnsList, innerVisible])
+  }, [innerValue, columnsList, innerVisible, columnIndex])
 
   const setSelectedOptions = () => {
     const options: PickerOption[] = []

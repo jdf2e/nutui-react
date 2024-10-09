@@ -96,7 +96,7 @@ export const Pagination: FunctionComponent<
       }
     }
     return items
-  }, [currentPage, itemSize, pageCount])
+  }, [currentPage, itemSize, pageCount, ellipse])
 
   const handleSelectPage = (curPage: number) => {
     if (curPage > pageCount || curPage < 1) return

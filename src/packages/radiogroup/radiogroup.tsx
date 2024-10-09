@@ -72,7 +72,7 @@ export const RadioGroup = React.forwardRef(
           />
         )
       })
-    }, [options])
+    }, [options, labelPosition, val2State])
 
     return (
       <RadioContext.Provider

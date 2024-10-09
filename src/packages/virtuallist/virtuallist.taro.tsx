@@ -87,36 +87,37 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
 
-  //   初始计算可视区域展示数量
-  useEffect(() => {
-    setPositions((options) => {
-      return { ...options, endIndex: visibleCount() }
-    })
-  }, [itemHeight, overscan, offSetSize])
-
-  useEffect(() => {
-    if (containerHeight) return
-    setOffSetSize(getContainerHeight())
-  }, [containerHeight])
-
-  useEffect(() => {
-    const pos = initPositinoCache(itemHeight + margin, list.length)
-    setPositions(pos)
-  }, [itemHeight, list])
-
   // 可视区域总高度
-  const getContainerHeight = () => {
+  const getContainerHeight = useCallback(() => {
     // 初始首页列表高度
     const initH = (itemHeight + margin) * list.length
     // 未设置containerHeight高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
       ? initH + overscan * (itemHeight + margin) - 5
       : Math.min(containerHeight, clientHeight) // Math.min(containerHeight, clientHeight)
-  }
+  }, [clientHeight, itemHeight, margin, list.length, overscan, containerHeight])
+
+  useEffect(() => {
+    if (containerHeight) return
+    setOffSetSize(getContainerHeight())
+  }, [containerHeight, getContainerHeight])
+
   // 可视区域条数
-  const visibleCount = () => {
+  const visibleCount = useCallback(() => {
     return Math.ceil(getContainerHeight() / (itemHeight + margin)) + overscan
-  }
+  }, [getContainerHeight, itemHeight, margin, overscan])
+
+  //   初始计算可视区域展示数量
+  useEffect(() => {
+    setPositions((options) => {
+      return { ...options, endIndex: visibleCount() }
+    })
+  }, [itemHeight, overscan, offSetSize, visibleCount])
+
+  useEffect(() => {
+    const pos = initPositinoCache(itemHeight + margin, list.length)
+    setPositions(pos)
+  }, [itemHeight, list, margin])
 
   const end = () => {
     return start.current + visibleCount()
@@ -136,7 +137,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     if (!items.length) return
     // 更新缓存
     updateItemSize(positions, items, 'height', margin)
-  }, [positions])
+  }, [positions, margin])
 
   // 滚动监听
   const listScroll = (e: any) => {

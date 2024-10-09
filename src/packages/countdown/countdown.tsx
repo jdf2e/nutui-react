@@ -270,7 +270,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.isIninted = true
     }
     return componentWillUnmount
-  }, [])
+  }, [autoStart, time])
 
   const componentWillUnmount = () => {
     destroy && cancelAnimationFrame(stateRef.current.timer)

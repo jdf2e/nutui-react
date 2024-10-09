@@ -151,7 +151,6 @@ export const NoticeBar: FunctionComponent<
       initScrollWrap(content)
     }
     return () => {
-      // 销毁事件
       clearInterval(timer)
     }
   }, [])

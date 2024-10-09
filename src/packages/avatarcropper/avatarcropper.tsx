@@ -123,7 +123,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       height,
       borderRadius: shape === 'round' ? '50%' : '',
     }
-  }, [devicePixelRatio, drawImage.swidth])
+  }, [devicePixelRatio, drawImage.swidth, shape])
 
   // 是否是横向
   const isAngle = useMemo(() => {

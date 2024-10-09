@@ -1,4 +1,9 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  FunctionComponent,
+  useCallback,
+} from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -80,11 +85,7 @@ export const WaterMark: FunctionComponent<
   })
   const cls = classNames(classes, className)
 
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
+  const init = useCallback(() => {
     const canvas = document.createElement('canvas')
     const ratio = window.devicePixelRatio
     const ctx = canvas.getContext('2d')
@@ -131,7 +132,29 @@ export const WaterMark: FunctionComponent<
     } else {
       throw new Error(locale.watermark.errorCanvasTips)
     }
-  }
+  }, [
+    gapX,
+    gapY,
+    width,
+    height,
+    color,
+    image,
+    content,
+    fontSize,
+    fontWeight,
+    rotate,
+    imageWidth,
+    imageHeight,
+    fontFamily,
+    fontStyle,
+    startX,
+    startY,
+    locale.watermark.errorCanvasTips,
+  ])
+
+  useEffect(() => {
+    init()
+  }, [init])
 
   return (
     <div

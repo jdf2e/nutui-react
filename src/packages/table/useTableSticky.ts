@@ -58,7 +58,7 @@ export default function useTableSticky(
     setStickyColumnClassMap(_columnClassMap)
     setStickyLeftWidth(_stickyLeftWidth)
     setStickyRightWidth(_stickyRightWidth)
-  }, [columns])
+  }, [columns, rtl])
 
   const getStickyStyle = useCallback(
     (key: string) => {

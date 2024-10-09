@@ -151,9 +151,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
       setOptions({ startOffset, startIndex, overStart, endIndex })
       // 无限下滑
       if (endIndex > list.length - 1) {
-        if (onScroll) {
-          onScroll()
-        }
+        onScroll && onScroll()
       }
     })
   }, [
@@ -169,6 +167,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     horizontal,
     overscan,
     offSetSize,
+    onScroll,
   ])
 
   useEffect(() => {

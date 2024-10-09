@@ -1,4 +1,10 @@
-import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+  FunctionComponent,
+  useCallback,
+} from 'react'
 import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
@@ -100,6 +106,12 @@ export const Tour: FunctionComponent<
 
   const classes = classNames(classPrefix, className)
 
+  const getRootPosition = useCallback(() => {
+    const el: any = document.querySelector(`#${list[active].target}`)
+    const rect = getRect(el)
+    setMaskRect(rect)
+  }, [active, list])
+
   useEffect(() => {
     if (visible) {
       getRootPosition()
@@ -107,20 +119,14 @@ export const Tour: FunctionComponent<
     setActive(0)
     setShowTour(visible)
     setShowPopup(visible)
-  }, [visible])
+  }, [visible, getRootPosition])
 
   useEffect(() => {
     if (visible) {
       setShowPopup(true)
       getRootPosition()
     }
-  }, [active])
-
-  const getRootPosition = () => {
-    const el: any = document.querySelector(`#${list[active].target}`)
-    const rect = getRect(el)
-    setMaskRect(rect)
-  }
+  }, [active, visible, getRootPosition])
 
   const maskStyle = () => {
     const { width, height, left, top } = maskRect
@@ -139,7 +145,6 @@ export const Tour: FunctionComponent<
   const maskClose = (e: MouseEvent<HTMLDivElement>) => {
     setShowTour(false)
     setShowPopup(false)
-
     onClose && onClose(e)
   }
 

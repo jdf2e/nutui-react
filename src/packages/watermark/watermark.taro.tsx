@@ -1,4 +1,9 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, {
+  useState,
+  useEffect,
+  FunctionComponent,
+  useCallback,
+} from 'react'
 import { getSystemInfo, createOffscreenCanvas } from '@tarojs/taro'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/index.taro'
@@ -81,11 +86,7 @@ export const WaterMark: FunctionComponent<
   })
   const cls = classNames(classes, className)
 
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
+  const init = useCallback(() => {
     let ratio = 1
     getSystemInfo().then((res) => {
       ratio = res.pixelRatio
@@ -151,7 +152,29 @@ export const WaterMark: FunctionComponent<
         throw new Error(locale.watermark.errorCanvasTips)
       }
     })
-  }
+  }, [
+    gapX,
+    gapY,
+    width,
+    height,
+    color,
+    image,
+    content,
+    fontSize,
+    fontWeight,
+    rotate,
+    imageWidth,
+    imageHeight,
+    fontFamily,
+    fontStyle,
+    startX,
+    startY,
+    locale.watermark.errorCanvasTips,
+  ])
+
+  useEffect(() => {
+    init()
+  }, [init])
 
   return (
     <div

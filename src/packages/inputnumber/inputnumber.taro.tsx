@@ -130,14 +130,14 @@ export const InputNumber: FunctionComponent<
       setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
       setInputValue(format(shadowValue))
     }
-  }, [focused, shadowValue])
+  }, [focused, shadowValue, async, min, max])
 
   useEffect(() => {
     if (async) {
       setShadowValue(bound(Number(value), Number(min), Number(max)))
       setInputValue(format(value))
     }
-  }, [value])
+  }, [value, async, min, max])
 
   const calcNextValue = (current: any, step: any, symbol: number) => {
     const dig = digits + 1

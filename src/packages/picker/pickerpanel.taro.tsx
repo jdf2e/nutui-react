@@ -4,6 +4,7 @@ import React, {
   useRef,
   ForwardRefRenderFunction,
   useImperativeHandle,
+  useCallback,
 } from 'react'
 import { PickerOption } from './types'
 import { useTouch } from '@/utils/use-touch'
@@ -47,7 +48,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   const [touchDeg, setTouchDeg] = useState('0deg')
   const rotation = 20
   const moving = useRef(false)
-  let timer: number | undefined
+  const timer = useRef<NodeJS.Timeout | number>(0)
 
   const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
@@ -81,45 +82,53 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     setScrollDistance(translateY)
   }
 
-  const setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + transformY.current
-    if (type === 'end') {
-      // 限定滚动距离
-      if (updateMove > 0) {
-        updateMove = 0
+  const setMove = useCallback(
+    (move: number, type?: string, time?: number) => {
+      let updateMove = move + transformY.current
+      if (type === 'end') {
+        // 限定滚动距离
+        if (updateMove > 0) {
+          updateMove = 0
+        }
+        if (updateMove < -(options.length - 1) * lineSpacing.current) {
+          updateMove = -(options.length - 1) * lineSpacing.current
+        }
+
+        // 设置滚动距离为lineSpacing的倍数值
+        const endMove =
+          Math.round(updateMove / lineSpacing.current) * lineSpacing.current
+        const deg = `${
+          (Math.abs(Math.round(endMove / lineSpacing.current)) + 1) * rotation
+        }deg`
+
+        setTransform(type, deg, time, endMove)
+        setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
+      } else {
+        let deg = 0
+        const currentDeg = (-updateMove / lineSpacing.current + 1) * rotation
+
+        // picker 滚动的最大角度
+        const maxDeg = (options.length + 1) * rotation
+        const minDeg = 0
+        deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
+
+        if (minDeg < deg && deg < maxDeg) {
+          setTransform('', `${deg}deg`, undefined, updateMove)
+          setCurrIndex(
+            Math.abs(Math.round(updateMove / lineSpacing.current)) + 1
+          )
+        }
       }
-      if (updateMove < -(options.length - 1) * lineSpacing.current) {
-        updateMove = -(options.length - 1) * lineSpacing.current
-      }
+    },
+    [options.length]
+  )
 
-      // 设置滚动距离为lineSpacing的倍数值
-      const endMove =
-        Math.round(updateMove / lineSpacing.current) * lineSpacing.current
-      const deg = `${
-        (Math.abs(Math.round(endMove / lineSpacing.current)) + 1) * rotation
-      }deg`
-
-      setTransform(type, deg, time, endMove)
-      setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
-    } else {
-      let deg = 0
-      const currentDeg = (-updateMove / lineSpacing.current + 1) * rotation
-
-      // picker 滚动的最大角度
-      const maxDeg = (options.length + 1) * rotation
-      const minDeg = 0
-      deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
-
-      if (minDeg < deg && deg < maxDeg) {
-        setTransform('', `${deg}deg`, undefined, updateMove)
-        setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing.current)) + 1)
-      }
-    }
-  }
-
-  const setChooseValue = (move: number) => {
-    chooseItem?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
-  }
+  const setChooseValue = useCallback(
+    (move: number) => {
+      chooseItem?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
+    },
+    [keyIndex, options, chooseItem]
+  )
 
   // 开始滚动
   const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -166,30 +175,33 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     return nDistance
   }
 
-  const modifyStatus = (type?: boolean, val?: string | number) => {
-    const value = val || defaultValue
-    let index = -1
-    if (value) {
-      options.some((item, idx) => {
-        if (item.value === value) {
-          index = idx
-          return true
-        }
-        return false
-      })
-    } else {
-      options.forEach((item, i) => {
-        if (item.value === defaultValue) {
-          index = i
-        }
-      })
-    }
+  const modifyStatus = useCallback(
+    (type?: boolean, val?: string | number) => {
+      const value = val || defaultValue
+      let index = -1
+      if (value) {
+        options.some((item, idx) => {
+          if (item.value === value) {
+            index = idx
+            return true
+          }
+          return false
+        })
+      } else {
+        options.forEach((item, i) => {
+          if (item.value === defaultValue) {
+            index = i
+          }
+        })
+      }
 
-    setCurrIndex(index === -1 ? 1 : index + 1)
-    const move = index === -1 ? 0 : index * lineSpacing.current
-    type && setChooseValue(-move)
-    setMove(-move)
-  }
+      setCurrIndex(index === -1 ? 1 : index + 1)
+      const move = index === -1 ? 0 : index * lineSpacing.current
+      type && setChooseValue(-move)
+      setMove(-move)
+    },
+    [defaultValue, options, setMove, setChooseValue]
+  )
 
   // 惯性滚动结束
   const stopMomentum = () => {
@@ -231,13 +243,13 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     transformY.current = 0
     modifyStatus(false)
     return () => {
-      clearTimeout(timer)
+      clearTimeout(timer.current)
     }
-  }, [options])
+  }, [options, timer, modifyStatus])
 
   useEffect(() => {
     if (itemShow) {
-      setTimeout(() => {
+      timer.current = setTimeout(() => {
         getReference()
       }, 200)
     }

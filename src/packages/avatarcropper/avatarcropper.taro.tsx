@@ -169,10 +169,10 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   })
 
   useEffect(() => {
-    setCanvasAll({
+    setCanvasAll((canvasAll) => ({
       ...canvasAll,
       cropperCanvasContext: Taro.createCanvasContext(canvasAll.canvasId),
-    })
+    }))
   }, [])
 
   const touch = useTouch()
@@ -185,7 +185,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       height,
       borderRadius: shape === 'round' ? '50%' : '',
     }
-  }, [pixelRatio, state.cropperWidth])
+  }, [pixelRatio, state.cropperWidth, shape])
 
   // 是否是横向
   const isAngle = useMemo(() => {
@@ -267,7 +267,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       ctx.scale(scale, scale)
       ctx.drawImage(src as HTMLImageElement, x, y, width, height)
     },
-    [drawImage, state]
+    [drawImage, state, pixelRatio, space]
   )
 
   // web绘制
@@ -284,7 +284,12 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     canvas.height = state.displayHeight
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     canvas2dDraw(ctx)
-  }, [canvas2dDraw])
+  }, [
+    canvas2dDraw,
+    canvasAll.canvasId,
+    state.displayWidth,
+    state.displayHeight,
+  ])
 
   const alipayDraw = useCallback(() => {
     const ctx = canvasAll.cropperCanvas.getContext(
@@ -341,7 +346,15 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     ctx.scale(scale, scale)
     ctx.drawImage(src as string, x, y, width, height)
     ctx.draw()
-  }, [drawImage, state.scale, state.angle, state.moveX, state.moveY])
+  }, [
+    drawImage,
+    state,
+    canvasAll,
+    space,
+    alipayDraw,
+    showAlipayCanvas2D,
+    webDraw,
+  ])
 
   useEffect(() => {
     if (Math.abs(state.moveX) > maxMoveX) {

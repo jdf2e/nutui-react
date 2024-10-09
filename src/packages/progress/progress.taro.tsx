@@ -104,7 +104,7 @@ export const Progress: FunctionComponent<
         }
       }, delay)
     }
-  }, [intersecting])
+  }, [intersecting, percent, delay, lazy])
   const handleWebObserver = () => {
     /// web环境
     if (lazy) {

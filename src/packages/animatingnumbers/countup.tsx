@@ -1,6 +1,7 @@
 import React, {
   CSSProperties,
   FunctionComponent,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -53,7 +54,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   const numerArr = useMemo(getShowNumber, [value, length, thousands])
 
-  const setNumberTransform = () => {
+  const setNumberTransform = useCallback(() => {
     if (countupRef.current) {
       const numberItems = countupRef.current.querySelectorAll(
         '.nut-countup-number'
@@ -72,7 +73,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
         }
       })
     }
-  }
+  }, [numerArr])
 
   const numberEaseStyle: CSSProperties = {
     transition: `transform ${duration}s ease-in-out`,
@@ -85,7 +86,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return () => {
       window.clearTimeout(timerRef.current)
     }
-  }, [numerArr])
+  }, [numerArr, delay, setNumberTransform])
 
   return (
     <div className={`${classPrefix} ${className}`} ref={countupRef}>

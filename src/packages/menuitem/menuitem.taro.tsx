@@ -106,7 +106,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         })
       }
     })
-  }, [direction, windowHeight])
+  }, [direction, windowHeight, parent.lockScroll, parent.menuRef])
   usePageScroll(updateItemOffset)
 
   useImperativeHandle<any, any>(ref, () => ({

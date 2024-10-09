@@ -173,7 +173,6 @@ const InternalPicker: ForwardRefRenderFunction<
       case 'multiple':
         return options
       case 'cascade':
-        // 级联数据处理
         return formatCascade(options as PickerOption[], innerValue)
       default:
         return [options]
@@ -198,7 +197,7 @@ const InternalPicker: ForwardRefRenderFunction<
 
   useEffect(() => {
     setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
-  }, [innerVisible, selectedValue])
+  }, [innerVisible, selectedValue, innerValue])
 
   useEffect(() => {
     if (innerVisible) {
@@ -209,7 +208,7 @@ const InternalPicker: ForwardRefRenderFunction<
   // 选中值进行修改
   useEffect(() => {
     onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-  }, [innerValue, columnsList])
+  }, [innerValue, columnsList, columnIndex])
 
   const setSelectedOptions = () => {
     const options: PickerOption[] = []
