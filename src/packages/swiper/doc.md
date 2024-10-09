@@ -12,6 +12,8 @@ import { Swiper } from '@nutui/nutui-react'
 
 ### 基础用法
 
+`Swiper` 通过 CSS 的 `touch-action` 属性设置用户的操作行为，如果需要再水平滑动时也可垂直滑动页面，可通过 `Swiper` 的 `style` 属性进行设置。CSS 的 `touch-action` 属性可参考 [https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action](https://developer.mozilla.org/zh-CN/docs/Web/CSS/touch-action)
+
 :::demo
 
 ```tsx
