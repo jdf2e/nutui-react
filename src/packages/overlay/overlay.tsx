@@ -1,10 +1,10 @@
 import React, {
-  useState,
-  useEffect,
   FunctionComponent,
   MouseEvent,
   MouseEventHandler,
+  useEffect,
   useRef,
+  useState,
 } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
@@ -17,7 +17,7 @@ export interface OverlayProps extends BasicComponent {
   duration: number
   closeOnOverlayClick: boolean
   visible: boolean
-  lockScroll: boolean
+  lockScroll: boolean | 'strict'
   onClick: (event: MouseEvent) => void
   afterShow: () => void
   afterClose: () => void
@@ -66,7 +66,9 @@ export const Overlay: FunctionComponent<
     }
   }, [visible])
 
-  useLockScroll(nodeRef, !!lockScroll && innerVisible)
+  const shouldLockScroll = !innerVisible ? false : lockScroll
+
+  useLockScroll(nodeRef, shouldLockScroll)
 
   const classes = classNames(classPrefix, className)
 
