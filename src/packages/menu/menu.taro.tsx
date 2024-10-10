@@ -67,7 +67,10 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   })
 
   const getScrollTop = (el: Element | Window) => {
-    return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.scrollY)
+    return Math.max(
+      0,
+      el === window ? window.scrollY : (el as Element).scrollTop
+    )
   }
   const onScroll = useCallback(() => {
     const scrollTop = getScrollTop(window)
