@@ -66,7 +66,7 @@ import { Overlay } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 当前组件是否显示 | `boolean` | `false` |
 | duration | 动画时长，单位毫秒 | `number` | `300` |
-| lockScroll | 背景是否锁定 | `boolean\|strict` | `true` |
+| lockScroll | 背景是否锁定，strict 用于支持 iOS12 | `boolean\|strict` | `true` |
 | zIndex | 设置组件页面层级 | `number` | `1000` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | onClick | 点击时触发 | `event: Event` | `-` |
