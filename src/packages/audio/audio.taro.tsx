@@ -97,14 +97,13 @@ export const Audio: FunctionComponent<
       onPlayEnd?.(audioCtx)
     }
   })
-
   audioCtx.onPlay(() => {
     const { duration } = audioCtx
     setTotalSeconds(Math.floor(duration))
     onPlay?.(audioCtx)
   })
   audioCtx.onCanplay(() => {
-    const intervalID = setInterval(function () {
+    const intervalID = setInterval(() => {
       if (audioCtx.duration !== 0) {
         setTotalSeconds(audioCtx.duration)
         clearInterval(intervalID)
@@ -122,8 +121,7 @@ export const Audio: FunctionComponent<
   })
 
   audioCtx.onError((res) => {
-    console.warn('code', res.errCode)
-    console.warn('message', res.errMsg)
+    console.warn('onError', res.errCode, res.errMsg)
   })
 
   function formatSeconds(value: string) {

@@ -73,7 +73,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     }
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
-      if (props.color) {
+      if (color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
           style.color = color
           if (!color?.includes('gradient')) {
@@ -86,7 +86,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.fill])
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
