@@ -79,7 +79,7 @@ import { Popup } from '@nutui/nutui-react'
 | duration | 遮罩動畫時長，單位秒 | `number` | `0.3` |
 | overlayClassName | 自定義遮罩類名 | `string` | `-` |
 | overlayStyle | 自定義遮罩樣式 | `CSSProperties` | `-` |
-| lockScroll | 背景是否鎖定 | `boolean` | `true` |
+| lockScroll | 背景是否鎖定 | `boolean\|strict` | `true` |
 | overlay | 是否顯示遮罩 | `boolean` | `true` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | position | 彈出位置（top,bottom,left,right,center） | `string` | `center` |
