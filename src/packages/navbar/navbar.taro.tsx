@@ -156,7 +156,6 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const classes = classNames({
     [`${classPrefix}-fixed`]: fixed,
-    [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
     [`${classPrefix}-title-align-${titleAlign}`]: true,
   })
 
