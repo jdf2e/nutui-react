@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-
 import { ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { SafeArea } from '@/packages/safearea/safearea.taro'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -164,6 +164,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   return (
     <>
+      {safeAreaInsetTop && <SafeArea position="top" />}
       {fixed && placeholder ? (
         <View className={`${classPrefix}-placeholder`}>{renderWrapper()}</View>
       ) : (
