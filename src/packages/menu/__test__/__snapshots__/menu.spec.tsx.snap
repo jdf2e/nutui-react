@@ -193,15 +193,3 @@ exports[`should match snapshot of two columns in one line 1`] = `
   </div>
 </DocumentFragment>
 `;
-
-exports[`should match snapshot of two columns in one line 2`] = `
-<DocumentFragment>
-  <div
-    class="nut-menu"
-  >
-    <div
-      class="nut-menu-bar"
-    />
-  </div>
-</DocumentFragment>
-`;
