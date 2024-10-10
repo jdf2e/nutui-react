@@ -3,7 +3,6 @@ import { act, fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Success } from '@nutui/icons-react'
 import Menu from '@/packages/menu'
-import MenuItem from '@/packages/menuitem'
 
 function mockGetBoundingClientRect(rect: any): () => void {
   const spy = vi.spyOn(Element.prototype, 'getBoundingClientRect')
@@ -29,7 +28,21 @@ test('should match snapshot', () => {
   ]
   const { asFragment } = render(
     <Menu>
-      <MenuItem options={options} value={0} />
+      <Menu.Item options={options} value={0} />
+    </Menu>
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
+
+test('should match snapshot of two columns in one line', () => {
+  const options = [
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 },
+  ]
+  const { asFragment } = render(
+    <Menu scrollFixed>
+      <Menu.Item options={options} value={0} columns={2} />
     </Menu>
   )
   expect(asFragment()).toMatchSnapshot()
@@ -52,26 +65,25 @@ test('test props', async () => {
 
   const { container, getByText } = render(
     <Menu lockScroll={false}>
-      <MenuItem
+      <Menu.Item
         className="custom-className"
         title="custom title"
         options={options}
         value={0}
         disabled
-        columns={2}
+        direction="up"
         icon={<Success />}
         activeTitleClass="activeTitleClass"
         inactiveTitleClass="inactiveTitleClass"
         onChange={testClick}
       />
+      <Menu.Item />
     </Menu>
   )
 
   await act(() => {
     fireEvent.click(getByText('custom title'))
-
     fireEvent.click(container.querySelectorAll('.nut-menu-container-item')[1])
-
     expect(testClick).toBeCalledWith({ text: '新款商品', value: 1 })
   })
 
