@@ -23,9 +23,8 @@
 
 .nut-overflow-hidden {
   overflow: hidden !important;
-
   .taro_page {
-    overflow: hidden !important;
+    position: fixed;
   }
 }
 
