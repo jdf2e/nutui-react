@@ -30,13 +30,7 @@ export const BackTop: FunctionComponent<
   }
   const classPrefix = 'nut-backtop'
   const [backTop, SetBackTop] = useState(false)
-  const cls = classNames(
-    classPrefix,
-    {
-      show: backTop,
-    },
-    className
-  )
+  const cls = classNames(classPrefix, { show: backTop }, className)
   // 监听用户滑动页面事件
   usePageScroll((res) => {
     const { scrollTop } = res

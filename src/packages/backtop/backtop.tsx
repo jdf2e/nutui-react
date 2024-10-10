@@ -51,13 +51,7 @@ export const BackTop: FunctionComponent<
   const [scrollTop, SetScrollTop] = useState(0)
   let startTime = 0
   const scrollEl = useRef<any>(null)
-  const cls = classNames(
-    classPrefix,
-    {
-      show: backTop,
-    },
-    className
-  )
+  const cls = classNames(classPrefix, { show: backTop }, className)
 
   const scrollListener = useCallback(() => {
     let top = null
