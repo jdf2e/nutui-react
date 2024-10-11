@@ -145,7 +145,10 @@ export const Range: FunctionComponent<
     return !!range && Array.isArray(val)
   }
   const scope = useMemo(() => {
-    return max === min ? 0.1 : max - min
+    if (max < min || max === min) {
+      console.log('max 的值需要大于 min的值')
+    }
+    return max - min
   }, [max, min])
   const calcMainAxis = () => {
     const modelVal = current as any
