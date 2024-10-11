@@ -5,7 +5,7 @@ import {
   Link as LinkIcon,
   Loading,
 } from '@nutui/icons-react-taro'
-import { Image } from '@tarojs/components'
+import { Image, View } from '@tarojs/components'
 import Progress from '@/packages/progress/index.taro'
 import { FileItem } from '@/packages/uploader/file-item'
 import { ERROR } from '@/packages/uploader/upload'
@@ -17,6 +17,7 @@ export const Preview: React.FunctionComponent<any> = ({
   onDeleteItem,
   handleItemClick,
   previewUrl,
+  deleteIcon,
   children,
 }) => {
   const renderIcon = (item: FileItem) => {
@@ -37,11 +38,12 @@ export const Preview: React.FunctionComponent<any> = ({
               key={item.uid}
             >
               {previewType === 'picture' && !children && deletable && (
-                <Failure
-                  color="rgba(0,0,0,0.6)"
+                <View
                   className="close"
                   onClick={() => onDeleteItem(item, index)}
-                />
+                >
+                  {deleteIcon}
+                </View>
               )}
               {previewType === 'picture' && !children && (
                 <div className="nut-uploader-preview-img">

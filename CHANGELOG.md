@@ -1,3 +1,11 @@
+# v2.6.21
+
+`2024-09-27`
+
+- 🏡 chore: update dependency linguist-languages to be included within package (#2607)
+- :sparkles: feat(Uploader): add support for deleteIcon prop customization (#2618)
+- :bug: fix: 修改jd小程序高版本弹幕不滚动问题 (#2612)
+
 # v2.6.20
 
 `2024-09-20`

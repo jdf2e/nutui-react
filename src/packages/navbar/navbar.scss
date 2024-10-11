@@ -24,11 +24,6 @@
     width: 100%;
   }
 
-  &-safe-area-inset-top {
-    padding-top: constant(safe-area-inset-top);
-    padding-top: env(safe-area-inset-top);
-  }
-
   &-title {
     min-width: 53%;
     margin: 0 auto;
