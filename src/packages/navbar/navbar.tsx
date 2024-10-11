@@ -3,6 +3,7 @@ import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
+import { SafeArea } from '@/packages/safearea/safearea'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -153,7 +154,6 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const classes = classNames({
     [`${classPrefix}-fixed`]: fixed,
-    [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
     [`${classPrefix}-title-align-${titleAlign}`]: true,
   })
 
@@ -161,6 +161,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   return (
     <>
+      {safeAreaInsetTop && <SafeArea position="top" />}
       {fixed && placeholder ? (
         <div className={`${classPrefix}-placeholder`}>{renderWrapper()}</div>
       ) : (
