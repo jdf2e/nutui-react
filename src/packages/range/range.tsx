@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   ReactNode,
+  useMemo,
 } from 'react'
 import type { TouchEvent } from 'react'
 import classNames from 'classnames'
@@ -88,7 +89,6 @@ export const Range: FunctionComponent<
     finalValue: 0,
     onChange: handleChange,
   })
-
   const [exactValue, setEaxctValue] = useState<RangeValue>(
     () => value || defaultValue || 0
   )
@@ -114,12 +114,10 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
-
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [`${classPrefix}-vertical`]: vertical,
   })
-
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
@@ -127,7 +125,6 @@ export const Range: FunctionComponent<
     },
     className
   )
-
   const markClassName = (mark: any) => {
     const classPrefix = 'nut-range-mark'
     let lowerBound = min
@@ -144,30 +141,22 @@ export const Range: FunctionComponent<
       `${isActive ? `${classPrefix}-text-active` : ''}`,
     ].join(' ')
   }
-
   const isRange = (val: any) => {
     return !!range && Array.isArray(val)
   }
-
-  const scope = () => {
-    return max - min
-  }
-
+  const scope = useMemo(() => {
+    return max === min ? 0.1 : max - min
+  }, [max, min])
   const calcMainAxis = () => {
     const modelVal = current as any
-    if (isRange(modelVal)) {
-      return `${((modelVal[1] - modelVal[0]) * 100) / scope()}%`
-    }
-    return `${((modelVal - min) * 100) / scope()}%`
+    return isRange(modelVal)
+      ? `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
+      : `${((modelVal - min) * 100) / scope}%`
   }
-
   const calcOffset = () => {
     const modelVal = current as any
-    return isRange(modelVal)
-      ? `${((modelVal[0] - min) * 100) / scope()}%`
-      : `0%`
+    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : `0%`
   }
-
   const barStyle = () => {
     if (vertical) {
       return {
@@ -183,36 +172,31 @@ export const Range: FunctionComponent<
       transition: dragStatus ? 'none' : undefined,
     }
   }
-
   const marksStyle = (mark: any) => {
     const dir = rtl ? 'right' : 'left'
     let style: any = {
-      [dir]: `${((mark - min) / scope()) * 100}%`,
+      [dir]: `${((mark - min) / scope) * 100}%`,
     }
     if (vertical) {
       style = {
-        top: `${((mark - min) / scope()) * 100}%`,
+        top: `${((mark - min) / scope) * 100}%`,
       }
     }
     return style
   }
-
   const tickClass = (mark: any) => {
     if (range && Array.isArray(current)) {
       return mark <= current[1] && mark >= current[0]
     }
     return mark <= current
   }
-
   const format = (value: number) => {
     value = Math.max(+min, Math.min(value, +max))
     return Math.round(value / +step) * +step
   }
-
   const isSameValue = (newValue: RangeValue, oldValue: RangeValue) => {
     return JSON.stringify(newValue) === JSON.stringify(oldValue)
   }
-
   const handleOverlap = (value: number[]) => {
     if (value[0] > value[1]) {
       return value.slice(0).reverse()
@@ -230,7 +214,6 @@ export const Range: FunctionComponent<
     }
     end && onEnd && onEnd(value)
   }
-
   const click = (event: any) => {
     if (disabled || !root.current) {
       return
@@ -243,7 +226,7 @@ export const Range: FunctionComponent<
       delta = event.clientY - rect.top
       total = rect.height
     }
-    const value = min + (delta / total) * scope()
+    const value = min + (delta / total) * scope
     setEaxctValue(current)
     if (isRange(current)) {
       const [left, right] = current as any
@@ -257,7 +240,6 @@ export const Range: FunctionComponent<
       updateValue(value, true)
     }
   }
-
   const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     if (disabled) {
       return
@@ -271,7 +253,6 @@ export const Range: FunctionComponent<
     }
     setDragStatus('start')
   }
-
   const onTouchMove = (event: TouchEvent<HTMLDivElement>) => {
     event.stopPropagation()
     if (disabled || !root.current) {
@@ -285,12 +266,12 @@ export const Range: FunctionComponent<
     const rect = getRect(root.current)
     let delta = touch.deltaX.current
     let total = rect.width
-    let diff = (delta / total) * scope()
+    let diff = (delta / total) * scope
     diff = rtl ? -diff : diff
     if (vertical) {
       delta = touch.deltaY.current
       total = rect.height
-      diff = (delta / total) * scope()
+      diff = (delta / total) * scope
     }
     let newValue
     if (isRange(startValue)) {
@@ -302,7 +283,6 @@ export const Range: FunctionComponent<
     setEaxctValue(newValue)
     updateValue(newValue)
   }
-
   const onTouchEnd = () => {
     if (disabled) {
       return
@@ -312,13 +292,11 @@ export const Range: FunctionComponent<
     }
     setDragStatus('')
   }
-
   const curValue = (idx?: number) => {
     const modelVal = current as any
     const value = typeof idx === 'number' ? modelVal[idx] : modelVal
     return value
   }
-
   const renderButton = (index?: number) => {
     return (
       <>
@@ -336,7 +314,6 @@ export const Range: FunctionComponent<
       </>
     )
   }
-
   const renderRangeButton = () => {
     return [0, 1].map((item, index) => {
       const cls = `${index === 0 ? 'nut-range-button-wrapper-left' : ''}
@@ -346,12 +323,10 @@ export const Range: FunctionComponent<
           key={index}
           className={cls}
           onTouchStart={(e) => {
-            if (typeof index === 'number') {
-              setButtonIndex(index)
-            }
+            setButtonIndex(index)
             onTouchStart(e)
           }}
-          onTouchMove={(e) => onTouchMove(e)}
+          onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           onTouchCancel={onTouchEnd}
           onClick={(e) => e.stopPropagation()}
@@ -366,8 +341,8 @@ export const Range: FunctionComponent<
     return (
       <div
         className="nut-range-button-wrapper"
-        onTouchStart={(e) => onTouchStart(e)}
-        onTouchMove={(e) => onTouchMove(e)}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
         onClick={(e) => e.stopPropagation()}
