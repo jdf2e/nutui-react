@@ -66,7 +66,7 @@ import { Overlay } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
 | duration | Animation duration, in ms | `number` | `300` |
-| lockScroll | Whether the background is locked | `boolean` | `true` |
+| lockScroll | Whether the background is locked ,strict is used to support iOS12 | `boolean\|strict` | `true` |
 | zIndex | Set component page level | `number` | `1000` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
 | onClick | Triggered when the button is clicked | `event: Event` | `-` |
