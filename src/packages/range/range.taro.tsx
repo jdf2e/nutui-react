@@ -116,7 +116,7 @@ export const Range: FunctionComponent<
         setMarksList(list)
       }
     }
-  }, [marks])
+  }, [marks, max, min])
 
   const scope = () => {
     return max - min
@@ -379,13 +379,12 @@ export const Range: FunctionComponent<
         <div className="nut-range-bar" style={barStyle()}>
           {range ? (
             [0, 1].map((item, index) => {
+              const cls = `${index === 0 ? 'nut-range-button-wrapper-left' : ''}
+                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`
               return (
                 <div
                   key={index}
-                  className={`${
-                    index === 0 ? 'nut-range-button-wrapper-left' : ''
-                  }
-                  ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
+                  className={cls}
                   onTouchStart={(e: any) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
