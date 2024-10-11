@@ -63,8 +63,7 @@ export const BackTop: FunctionComponent<
 
   const [backTop, SetBackTop] = useState(false)
   const [isTouchStart, setTouchStart] = useState(false)
-  const systemInfo = useRef<getSystemInfo.Result>({})
-
+  const systemInfo = useRef({})
   useEffect(() => {
     getSystemInfo().then((res) => {
       systemInfo.current = res

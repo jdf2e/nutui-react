@@ -66,7 +66,7 @@ export const Avatar: FunctionComponent<
 
   const [maxSum, setMaxSum] = useState(0) // avatarGroup里的avatar的个数
   const [showMax, setShowMax] = useState(false) // 是否显示的最大头像个数
-  const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
+  const [avatarIndex, setAvatarIndex] = useState(1)
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
@@ -176,7 +176,6 @@ export const Avatar: FunctionComponent<
               )}
             </>
           )}
-          {/* 折叠头像 */}
           {showMax && (
             <div className="nut-avatar-text">
               {parent?.propAvatarGroup?.maxContent

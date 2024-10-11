@@ -13,6 +13,7 @@ export interface CellProps extends BasicComponent {
   extra: ReactNode
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
+  clickable: boolean
   isLast: boolean
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
@@ -26,6 +27,7 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
+  clickable: false,
   isLast: false,
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
@@ -49,6 +51,7 @@ export const Cell: FunctionComponent<
     isLast,
     className,
     style,
+    clickable,
   } = {
     ...defaultProps,
     ...props,
@@ -73,13 +76,17 @@ export const Cell: FunctionComponent<
   return (
     <>
       <View
-        className={classNames([
-          classPrefix,
-          className,
-          {
-            [`${classPrefix}-group-item`]: ctx?.group,
-          },
-        ])}
+        hoverStyle={{ opacity: clickable ? 0.7 : 1 }}
+        className={`${classNames(
+          [
+            classPrefix,
+            className,
+            {
+              [`${classPrefix}-group-item`]: ctx?.group,
+            },
+          ],
+          clickable ? `${classPrefix}-clickable` : ''
+        )}`}
         onClick={(event) => handleClick(event)}
         style={baseStyle}
       >

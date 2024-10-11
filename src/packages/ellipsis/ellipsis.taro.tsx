@@ -58,7 +58,7 @@ export const Ellipsis: FunctionComponent<
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
-  const maxHeight = useRef(0) // 当行的最大高度
+  const maxHeight = useRef(0)
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [cacled, setCacled] = useState(false)
@@ -290,7 +290,6 @@ export const Ellipsis: FunctionComponent<
     return match ? Number(match[0]) : 0
   }
 
-  // 展开收起
   const clickHandle = (type: number) => {
     if (type === 1) {
       setExpanded(true)
@@ -301,7 +300,6 @@ export const Ellipsis: FunctionComponent<
     }
   }
 
-  // 文本点击
   const handleClick = () => {
     onClick && onClick()
   }
@@ -358,28 +356,26 @@ export const Ellipsis: FunctionComponent<
             </View>
           ) : null}
           {exceeded && expanded ? (
-            <>
-              <View
-                style={{
-                  width: `${
-                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
-                  }`,
-                }}
-              >
-                {content}
-                {expandText ? (
-                  <span
-                    className="nut-ellipsis-text"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      clickHandle(2)
-                    }}
-                  >
-                    {collapseText}
-                  </span>
-                ) : null}
-              </View>
-            </>
+            <View
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+              }}
+            >
+              {content}
+              {expandText ? (
+                <span
+                  className="nut-ellipsis-text"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    clickHandle(2)
+                  }}
+                >
+                  {collapseText}
+                </span>
+              ) : null}
+            </View>
           ) : null}
         </View>
       </div>

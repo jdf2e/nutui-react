@@ -203,6 +203,7 @@ export const Tour: FunctionComponent<
                   offset={item.popoverOffset || [0, 12]}
                   arrowOffset={item.arrowOffset || 0}
                 >
+                  {/* placeholder don't delete <></> */}
                   <></>
                   <>
                     {children || (

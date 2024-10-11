@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
-import { Popup, Cell } from '@nutui/nutui-react-taro'
+import { Popup, Cell, Dialog } from '@nutui/nutui-react-taro'
+import { Text } from '@tarojs/components'
 
-const Demo6 = () => {
+const Demo7 = () => {
   const [showMutiple, setShowMutiple] = useState(false)
   const [showMutipleInner, setShowMutipleInner] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
 
   return (
     <>
+      <Dialog id="test" />
       <Cell
         title="多层堆叠"
         onClick={() => {
           setShowMutiple(true)
         }}
       />
+
       <Popup
         visible={showMutiple}
         style={{ padding: '30px 50px' }}
@@ -20,13 +24,13 @@ const Demo6 = () => {
           setShowMutiple(false)
         }}
       >
-        <span
+        <Text
           onClick={() => {
             setShowMutipleInner(true)
           }}
         >
           Click It
-        </span>
+        </Text>
       </Popup>
       <Popup
         visible={showMutipleInner}
@@ -36,15 +40,49 @@ const Demo6 = () => {
           setShowMutipleInner(false)
         }}
       >
-        <span
+        <Text
           onClick={() => {
             setShowMutipleInner(false)
           }}
         >
           close
-        </span>
+        </Text>
+      </Popup>
+
+      <Cell
+        title="PopUp + Dialog"
+        onClick={() => {
+          setShowDialog(true)
+        }}
+      />
+
+      <Popup
+        closeable
+        visible={showDialog}
+        style={{ height: '100%' }}
+        position="bottom"
+        onClose={() => {
+          setShowDialog(false)
+        }}
+      >
+        <Cell
+          title="打开 Dialog"
+          style={{ margin: '20% 20px', width: '80%' }}
+          onClick={() =>
+            Dialog.open('test', {
+              title: 'Dialog',
+              content: '可通过 Dialog.open 打开对话框',
+              onConfirm: () => {
+                Dialog.close('test')
+              },
+              onCancel: () => {
+                Dialog.close('test')
+              },
+            })
+          }
+        />
       </Popup>
     </>
   )
 }
-export default Demo6
+export default Demo7

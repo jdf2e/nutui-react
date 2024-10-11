@@ -59,7 +59,6 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     setInnerLoading(false)
     onLoad && onLoad(e)
   }
-  // 图片加载失败
   const handleError = (e: BaseEventOrig<TImageProps.onErrorEventDetail>) => {
     if (src) {
       setIsError(true)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react'
 
-const Demo4 = () => {
+const Demo5 = () => {
   const [showBottomRound, setShowBottomRound] = useState(false)
 
   return (
@@ -24,4 +24,4 @@ const Demo4 = () => {
     </>
   )
 }
-export default Demo4
+export default Demo5

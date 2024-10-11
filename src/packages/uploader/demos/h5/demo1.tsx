@@ -7,10 +7,18 @@ const Demo1 = () => {
   const onStart = () => {
     console.log('start触发')
   }
+  const beforeUpload = async (files: File[]) => {
+    const allowedTypes = ['image/png']
+    const filteredFiles = Array.from(files).filter((file) =>
+      allowedTypes.includes(file.type)
+    )
+    return filteredFiles
+  }
   return (
     <>
       <Cell style={{ flexWrap: 'wrap', paddingBottom: '0px' }}>
         <Uploader
+          beforeUpload={beforeUpload}
           url={uploadUrl}
           onStart={onStart}
           style={{

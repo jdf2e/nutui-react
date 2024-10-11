@@ -272,21 +272,17 @@ export const Popup: FunctionComponent<
     return (
       <>
         {overlay ? (
-          <>
-            <Overlay
-              style={overlayStyles}
-              className={overlayClassName}
-              visible={innerVisible}
-              closeOnOverlayClick={closeOnOverlayClick}
-              lockScroll={lockScroll}
-              duration={duration}
-              onClick={onHandleClickOverlay}
-            />
-            {renderPop()}
-          </>
-        ) : (
-          <>{renderPop()}</>
-        )}
+          <Overlay
+            style={overlayStyles}
+            className={overlayClassName}
+            visible={innerVisible}
+            closeOnOverlayClick={closeOnOverlayClick}
+            lockScroll={lockScroll}
+            duration={duration}
+            onClick={onHandleClickOverlay}
+          />
+        ) : null}
+        <>{renderPop()}</>
       </>
     )
   }

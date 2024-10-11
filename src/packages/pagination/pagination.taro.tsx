@@ -100,7 +100,6 @@ export const Pagination: FunctionComponent<
     return items
   }, [currentPage, itemSize, pageCount])
 
-  // 点击选择 page
   const handleSelectPage = (curPage: number) => {
     if (curPage > pageCount || curPage < 1) return
     setCurrentPage(curPage)
@@ -160,12 +159,10 @@ export const Pagination: FunctionComponent<
         </>
       )}
       {mode === 'lite' && (
-        <>
-          <View className={`${classPrefix}-lite`}>
-            <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
-            <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
-          </View>
-        </>
+        <View className={`${classPrefix}-lite`}>
+          <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
+          <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
+        </View>
       )}
     </View>
   )
