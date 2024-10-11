@@ -1,6 +1,10 @@
 @import '../hoverbuttonitem/hoverbuttonitem.scss';
 
 .nut-hoverbutton {
+  display: flex;
+  flex-direction: column;
+  gap: $hoverbutton-spacing;
+
   &-container {
     position: fixed;
     right: $hoverbutton-position-right;
@@ -11,10 +15,6 @@
   &-container-rn {
     position: absolute;
   }
-
-  display: flex;
-  flex-direction: column;
-  gap: $hoverbutton-spacing;
 }
 
 [dir='rtl'] .nut-hoverbutton-container,

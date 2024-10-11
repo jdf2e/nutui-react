@@ -6,6 +6,8 @@ export interface BaseLang {
   noData: string
   placeholder: string
   select: string
+  edit: string
+  reset: string
   video: {
     errorTip: string
     clickRetry: string
@@ -44,6 +46,7 @@ export interface BaseLang {
     tips: string
   }
   uploader: {
+    list: string
     ready: string
     readyUpload: string
     waitingUpload: string
@@ -112,6 +115,7 @@ export interface BaseLang {
     mute: string
     tips: string
   }
+  avatarCropper: { rotate: string; selectImage: string }
   datepicker: {
     year: string
     month: string

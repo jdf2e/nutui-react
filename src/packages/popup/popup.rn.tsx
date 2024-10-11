@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, {
   FunctionComponent,
   useState,
@@ -7,18 +8,18 @@ import React, {
   ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, Text, ITouchEvent } from '@tarojs/components'
+import { Modal, TouchableOpacity } from 'react-native'
 import {
   OverlayProps,
   defaultOverlayProps,
 } from '@/packages/overlay/overlay.taro'
-import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -115,6 +116,9 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
     '--nutui-overlay-zIndex': index,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   }
 
   const popStyles = {
@@ -213,7 +217,7 @@ export const Popup: FunctionComponent<
               )}
               {(title || description) && (
                 <View className={`${classPrefix}-title-title`}>
-                  {title}
+                  <View>{title}</View>
                   {description && (
                     <View className={`${classPrefix}-title-description`}>
                       {description}
@@ -225,7 +229,13 @@ export const Popup: FunctionComponent<
           )}
           {closeable && (
             <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+              {React.isValidElement(closeIcon) ? (
+                closeIcon
+              ) : harmonyAndRn() ? (
+                <Text>T</Text>
+              ) : (
+                <Close />
+              )}
             </View>
           )}
         </View>
@@ -236,55 +246,60 @@ export const Popup: FunctionComponent<
         <>
           {closeable && (
             <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+              {React.isValidElement(closeIcon) ? (
+                closeIcon
+              ) : harmonyAndRn() ? (
+                <Text>I</Text>
+              ) : (
+                <Close />
+              )}
             </View>
           )}
         </>
       )
     }
   }
+
   const renderPop = () => {
     return (
-      <CSSTransition
-        nodeRef={refObject}
-        classNames={transitionName}
-        mountOnEnter
-        unmountOnExit={destroyOnClose}
-        timeout={duration}
-        in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
+      <View
+        ref={refObject}
+        style={{
+          position: 'absolute',
+          overflow: 'hidden',
+          ...popStyles,
+        }}
+        className={popClassName}
+        onClick={onHandleClick}
       >
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onHandleClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : ''}
-        </View>
-      </CSSTransition>
+        {renderTitle()}
+        {showChildren ? children : ''}
+      </View>
     )
   }
 
   const renderNode = () => {
     return (
-      <>
+      <Modal
+        animationType="none" // 使用 slide 动画
+        transparent // 使背景透明
+        visible={innerVisible}
+        onRequestClose={onHandleClickOverlay} // 处理 Android 设备的返回按钮
+      >
         {overlay ? (
-          <Overlay
-            style={overlayStyles}
-            className={overlayClassName}
-            visible={innerVisible}
-            closeOnOverlayClick={closeOnOverlayClick}
-            lockScroll={lockScroll}
-            duration={duration}
-            onClick={onHandleClickOverlay}
-          />
+          <TouchableOpacity
+            activeOpacity={1}
+            // visible={innerVisible}
+            // closeOnOverlayClick={closeOnOverlayClick}
+            // lockScroll={lockScroll}
+            // duration={duration}
+            onPress={onHandleClickOverlay}
+          >
+            <View className={overlayClassName} style={overlayStyles} />
+          </TouchableOpacity>
         ) : null}
-        <>{renderPop()}</>
-      </>
+        {renderPop()}
+      </Modal>
     )
   }
 

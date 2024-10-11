@@ -1,0 +1,50 @@
+#!/bin/bash
+
+get_package_version() {
+  grep "\"$1\"" package.json | sed -E 's/.*"\^*~*([^"]+)".*/\1/'
+}
+
+set_package_version() {
+  local package=$(echo "$1" | sed 's/\//\\\//g')
+  local latest_version=$2
+
+  if [[ $package ]] && [[ $latest_version ]]; then
+    sed -E -i '' "s/(\"$package\": )\"[^\"]*\"/\1\"$latest_version\"/g" package.json
+
+    echo "成功替换package.json文件中的 $package 版本号为 $latest_version"
+  fi
+
+}
+
+echo "检查最新版本..."
+
+lasterTaroVersion=$(npm view @tarojs/cli@beta version --registry=https://registry.npmjs.org)
+lasterJdTaroVersion=$(npm view @jdtaro/taro-platform-jdharmony version --registry=http://registry.m.jd.com)
+lasterJdTaroCppVersion=$(npm view @jdtaro/plugin-platform-jdharmony-cpp version --registry=http://registry.m.jd.com)
+
+echo "最新版本号为："
+if [[ $lasterTaroVersion ]]; then
+  echo "  @tarojs/*: $lasterTaroVersion"
+fi
+
+if [[ $lasterJdTaroVersion ]]; then
+  echo "  @jdtaro/taro-platform-jdharmony: $lasterJdTaroVersion"
+fi
+
+if [[ $lasterJdTaroCppVersion ]]; then
+  echo "  @jdtaro/taro-platform-jdharmony: $lasterJdTaroCppVersion"
+fi
+
+echo "
+"
+
+if [ -f "package.json" ]; then
+
+  set_package_version @tarojs/.+ $lasterTaroVersion
+
+  set_package_version @jdtaro/taro-platform-jdharmony $lasterJdTaroVersion
+
+  set_package_version @jdtaro/plugin-platform-jdharmony-cpp $lasterJdTaroCppVersion
+else
+  echo "当前目录下没有package.json文件"
+fi

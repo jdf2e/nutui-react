@@ -9,6 +9,8 @@ import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas, View } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
 import { clamp, preventDefault } from '@/utils'
@@ -37,16 +39,16 @@ const defaultProps = {
   space: 10,
   toolbar: [
     <Button type="danger" key="cancel">
-      取消
+      Cancel
     </Button>,
-    <Button key="reset">重置</Button>,
-    <Button key="rotate">旋转</Button>,
+    <Button key="reset">Reset</Button>,
+    <Button key="rotate">Rotate</Button>,
     <Button type="success" key="confirm">
-      确认
+      Confirm
     </Button>,
   ],
   toolbarPosition: 'bottom',
-  editText: '编辑',
+  editText: 'Edit',
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
   shape: 'square',
@@ -56,6 +58,18 @@ const classPrefix = `nut-avatar-cropper`
 export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   props
 ) => {
+  const { locale } = useConfig()
+  defaultProps.toolbar = [
+    <Button type="danger" key="cancel">
+      {locale.cancel}
+    </Button>,
+    <Button key="reset">{locale.reset}</Button>,
+    <Button key="rotate">{locale.avatarCropper.rotate}</Button>,
+    <Button type="success" key="confirm">
+      {locale.confirm}
+    </Button>,
+  ]
+  defaultProps.editText = locale.edit
   const {
     children,
     toolbar,
@@ -104,7 +118,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   const [moving, setMoving] = useState(false)
   const [zooming, setZooming] = useState(false)
 
-  // 获取系统信息
   const systemInfo: Taro.getSystemInfoSync.Result = Taro.getSystemInfoSync()
   // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
   const showAlipayCanvas2D = useMemo(() => {
@@ -162,10 +175,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     })
   }, [])
 
-  // 触摸
   const touch = useTouch()
 
-  // 高亮框样式
   const highlightStyle = useMemo(() => {
     const width = `${state.cropperWidth / pixelRatio}px`
     const height = width
@@ -251,13 +262,9 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
         cropperWidth
       )
 
-      // 绘制偏移量
       ctx.translate(displayWidth / 2 + moveX, displayHeight / 2 + moveY)
-      // 绘制旋转角度
       ctx.rotate((Math.PI / 180) * angle)
-      // 绘制缩放
       ctx.scale(scale, scale)
-      // 绘制图片
       ctx.drawImage(src as HTMLImageElement, x, y, width, height)
     },
     [drawImage, state]
@@ -330,11 +337,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
 
     // 绘制偏移量
     ctx.translate(displayWidth / 2 + moveX, displayHeight / 2 + moveY)
-    // 绘制旋转角度
     ctx.rotate((Math.PI / 180) * angle)
-    // 绘制缩放
     ctx.scale(scale, scale)
-    // 绘制图片
     ctx.drawImage(src as string, x, y, width, height)
     ctx.draw()
   }, [drawImage, state.scale, state.angle, state.moveX, state.moveY])
@@ -383,7 +387,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     resetScale(scale)
   }
 
-  // 选择图片
   const chooseImage = () => {
     Taro.chooseImage({
       count: 1,
@@ -405,7 +408,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     path: string
   }
 
-  // 选择图片后回调
   const imageChange = async (file: TFileType) => {
     Taro.getImageInfo({
       src: file.path,
@@ -415,7 +417,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     })
   }
 
-  // 重设缩放
   const resetScale = (scale?: number) => {
     setState({
       ...state,
@@ -427,7 +428,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     })
   }
 
-  // 设置缩放
   const setScale = (scale: number) => {
     scale = clamp(scale, +0.3, +maxZoom + 1)
     if (scale !== state.scale) {
@@ -449,7 +449,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   })
   const { startMoveX, startMoveY, startScale, startDistance } = startMove
 
-  // 触摸开始
   const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
     const { offsetX } = touch
@@ -473,7 +472,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  // 触摸移动
   const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
 
@@ -502,7 +500,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  // 触摸结束
   const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
     let stopPropagation = false
 
@@ -547,12 +544,10 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     touch.reset()
   }
 
-  // 重置角度
   const reset = () => {
     setState({ ...state, angle: 0 })
   }
 
-  // 设置角度
   const rotate = () => {
     if (state.angle === 270) {
       setState({ ...state, angle: 0 })
@@ -561,7 +556,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     setState({ ...state, angle: state.angle + 90 })
   }
 
-  // 关闭
   const cancel = (isEmit = true) => {
     setVisible(false)
     resetScale()
@@ -661,50 +655,46 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   const ToolBar = () => {
     const actions = [cancel, reset, rotate, confirm]
     return (
-      <>
-        <View className={`${classPrefix}-popup-toolbar-flex`}>
-          {actions.map((action, index) => (
-            <View
-              key={index}
-              className={`${classPrefix}-popup-toolbar-item`}
-              onClick={(_e) => action()}
-            >
-              {toolbar[index]}
-            </View>
-          ))}
-        </View>
-      </>
+      <View className={`${classPrefix}-popup-toolbar-flex`}>
+        {actions.map((action, index) => (
+          <View
+            key={index}
+            className={`${classPrefix}-popup-toolbar-item`}
+            onClick={(_e) => action()}
+          >
+            {toolbar[index]}
+          </View>
+        ))}
+      </View>
     )
   }
 
   const CropperPopup = () => {
     const { canvasId } = canvasAll
     return (
-      <>
+      <View
+        className={`${classPrefix}-popup`}
+        style={{ display: visible ? 'block' : 'none' }}
+      >
+        <Canvas
+          id={canvasId}
+          canvas-id={canvasId}
+          type={showAlipayCanvas2D ? '2d' : undefined}
+          style={canvasStyle}
+          className={`${classPrefix}-popup-canvas`}
+        />
         <View
-          className={`${classPrefix}-popup`}
-          style={{ display: visible ? 'block' : 'none' }}
+          className={`${classPrefix}-popup-highlight`}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
-          <Canvas
-            id={canvasId}
-            canvas-id={canvasId}
-            type={showAlipayCanvas2D ? '2d' : undefined}
-            style={canvasStyle}
-            className={`${classPrefix}-popup-canvas`}
-          />
-          <div
-            className={`${classPrefix}-popup-highlight`}
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
-          >
-            <View className="highlight" style={highlightStyle} />
-          </div>
-          <View className={toolbarPositionCls}>
-            <ToolBar />
-          </View>
+          <View className="highlight" style={highlightStyle} />
         </View>
-      </>
+        <View className={toolbarPositionCls}>
+          <ToolBar />
+        </View>
+      </View>
     )
   }
 

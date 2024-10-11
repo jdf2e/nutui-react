@@ -6,5 +6,5 @@
   "printWidth": 80,
   "proseWrap": "preserve",
   "endOfLine": "auto",
-  "plugins": ["@nutui/prettier-plugin"]
+  "plugins": ["prettier-markdown-table"]
 }
