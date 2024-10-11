@@ -50,6 +50,14 @@ export const RadioGroup = React.forwardRef(
       ...rest
     } = { ...defaultProps, ...props }
 
+    const cls = classNames(
+      classPrefix,
+      {
+        [`${classPrefix}-${props.direction}`]: props.direction,
+      },
+      className
+    )
+
     const [val2State, setVal2State] = usePropsValue<string | number>({
       defaultValue: props.defaultValue,
       value: props.value,
@@ -72,7 +80,7 @@ export const RadioGroup = React.forwardRef(
           />
         )
       })
-    }, [options])
+    }, [options, labelPosition, val2State])
 
     return (
       <RadioContext.Provider
@@ -89,16 +97,7 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <div
-          className={classNames(
-            classPrefix,
-            {
-              [`${classPrefix}-${props.direction}`]: props.direction,
-            },
-            className
-          )}
-          {...rest}
-        >
+        <div className={cls} {...rest}>
           {options?.length ? renderOptionsChildren() : children}
         </div>
       </RadioContext.Provider>

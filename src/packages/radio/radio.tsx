@@ -33,7 +33,6 @@ export const Radio: FunctionComponent<
   Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & { Group: typeof RadioGroup } = (props) => {
   const classPrefix = 'nut-radio'
-
   const {
     children,
     className,
@@ -76,30 +75,6 @@ export const Radio: FunctionComponent<
       }
     }
   }
-
-  const renderLabel = () => {
-    return (
-      <div
-        className={classNames(`${classPrefix}-label`, {
-          [`${classPrefix}-label-disabled`]: disabled,
-        })}
-      >
-        {children}
-      </div>
-    )
-  }
-  const renderButton = () => {
-    return (
-      <div
-        className={classNames(`${classPrefix}-button`, {
-          [`${classPrefix}-button-active`]: checkedStatement,
-          [`${classPrefix}-button-disabled`]: disabled,
-        })}
-      >
-        {children}
-      </div>
-    )
-  }
   const color = () => {
     return {
       [`${classPrefix}-icon-disabled`]: disabled,
@@ -112,7 +87,6 @@ export const Radio: FunctionComponent<
     if (disabled && !checkedStatement) {
       return <CheckDisabled className={classNames(color())} />
     }
-
     if (checkedStatement) {
       return React.isValidElement(activeIcon) ? (
         React.cloneElement<any>(activeIcon, {
@@ -132,15 +106,26 @@ export const Radio: FunctionComponent<
       <CheckNormal className={classNames(color())} />
     )
   }
-  const renderByShape = (shape: RadioShape) => {
-    return shape === 'button' ? (
-      renderButton()
-    ) : (
+  const renderLabel = () => {
+    const labelcls = classNames(`${classPrefix}-label`, {
+      [`${classPrefix}-label-disabled`]: disabled,
+    })
+    return (
       <>
         {renderIcon()}
-        {renderLabel()}
+        <div className={labelcls}>{children}</div>
       </>
     )
+  }
+  const renderButton = () => {
+    const buttoncls = classNames(`${classPrefix}-button`, {
+      [`${classPrefix}-button-active`]: checkedStatement,
+      [`${classPrefix}-button-disabled`]: disabled,
+    })
+    return <div className={buttoncls}>{children}</div>
+  }
+  const renderByShape = (shape: RadioShape) => {
+    return shape === 'button' ? renderButton() : renderLabel()
   }
   const renderRadioItem = () => {
     return renderByShape(context && context.shape ? context.shape : shape)
@@ -149,20 +134,15 @@ export const Radio: FunctionComponent<
     if (disabled || checkedStatement) return
     setCheckedStatement(!checkedStatement)
   }
-
+  const cls = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-reverse`]: labelPosition === 'left',
+    },
+    className
+  )
   return (
-    <div
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-reverse`]: labelPosition === 'left',
-        },
-        className
-      )}
-      style={style}
-      onClick={handleClick}
-      {...rest}
-    >
+    <div className={cls} style={style} onClick={handleClick} {...rest}>
       {renderRadioItem()}
     </div>
   )
