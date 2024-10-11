@@ -1,6 +1,4 @@
-const { environments } = require('eslint-plugin-prettier')
 const path = require('path')
-const { isAsyncFunction } = require('util/types')
 
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
