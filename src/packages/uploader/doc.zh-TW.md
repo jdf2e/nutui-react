@@ -161,6 +161,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | headers | 設置上傳的請求頭部 | `object` | `{}` |
 | data | 附加上傳的信息 formData | `object` | `{}` |
 | uploadIcon | 上傳區域<a href="#/zh-CN/icon">圖標名稱</a> | `React.ReactNode` | `-` |
+| deleteIcon | 刪除區域的圖標名稱 | `React.ReactNode` | `-` |
 | uploadLabel | 上傳區域圖片下方文字 | `React.ReactNode` | `-` |
 | xhrState | 接口響應的成功狀態（status）值 | `number` | `200` |
 | withCredentials | 支持發送 cookie 憑證信息 | `Boolean` | `false` |

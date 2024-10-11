@@ -100,7 +100,6 @@ export const Image: FunctionComponent<
     setComplete(false)
   }, [src])
 
-  // 图片加载
   const handleLoad = () => {
     if (!complete) {
       setIsError(false)
@@ -109,7 +108,6 @@ export const Image: FunctionComponent<
       setComplete(true)
     }
   }
-  // 图片加载失败
   const handleError = () => {
     if (!complete) {
       setIsError(true)

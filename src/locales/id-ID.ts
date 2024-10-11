@@ -8,6 +8,8 @@ const idID: BaseLang = {
   noData: 'Tidak Ada Data',
   placeholder: 'Kolom Input',
   select: 'Pilih',
+  edit: 'Sunting',
+  reset: 'Mengatur Ulang',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
@@ -45,6 +47,7 @@ const idID: BaseLang = {
     tips: 'Lupa Kata Sandi',
   },
   uploader: {
+    list: 'Unggah file',
     ready: 'File berhasil diunggah',
     readyUpload: 'Siap untuk mengunggah',
     waitingUpload: 'Menunggu untuk diunggah',
@@ -112,6 +115,7 @@ const idID: BaseLang = {
     mute: 'bisu',
     tips: 'Acara Onplayend hanya akan dipicu saat loop = false',
   },
+  avatarCropper: { rotate: 'Memutar', selectImage: 'Pilih gambar' },
   datepicker: {
     year: 'Tahun',
     month: 'Bulan',

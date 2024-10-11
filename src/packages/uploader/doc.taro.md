@@ -163,6 +163,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | headers | 设置上传的请求头部 | `object` | `{}` |
 | data | 附加上传的信息 formData | `object` | `{}` |
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `ReactNode` | `-` |
+| deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `string` | `&quot;&quot;` |
 | xhrState | 接口响应的成功状态（status）值 | `number` | `200` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |

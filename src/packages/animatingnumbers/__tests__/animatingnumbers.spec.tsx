@@ -2,7 +2,6 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { AnimatingNumbers } from '../animatingnumbers'
-import { CountUp } from '@/packages/animatingnumbers/countup'
 
 vi.useFakeTimers()
 test('test value props', () => {
@@ -13,7 +12,8 @@ test('test value props', () => {
     'style',
     'transition: transform 1s ease-in-out;'
   )
-  vi.advanceTimersByTime(CountUp.defaultProps?.delay ?? 0)
+  const defaultDelay = 300
+  vi.advanceTimersByTime(defaultDelay)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
     'transition: transform 1s ease-in-out; transform: translate(0, -30%);'
@@ -28,7 +28,8 @@ test('test aysnc value and  duration props', async () => {
   )
   const listNumbers = container.querySelectorAll('.nut-countup-number')
   expect(listNumbers.length).toBe(8)
-  vi.advanceTimersByTime(CountUp.defaultProps?.delay ?? 0)
+  const defaultDelay = 300
+  vi.advanceTimersByTime(defaultDelay)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
     'transition: transform 1.2s ease-in-out; transform: translate(0, -50%);'

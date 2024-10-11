@@ -86,7 +86,6 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   const closeFun = () => {
     onSelect && onSelect(activeTime)
   }
-  // 选择配送时间回调
   const handleSelectTime = (selectTime: TimeType) => {
     let newActiveTime = [...activeTime]
     const date = newActiveTime.find((item: DateType) => {

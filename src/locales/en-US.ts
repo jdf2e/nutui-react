@@ -8,6 +8,8 @@ const enUS: BaseLang = {
   noData: 'No Data',
   placeholder: 'Placeholder',
   select: 'Select',
+  edit: 'Edit',
+  reset: 'Reset',
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',
@@ -44,6 +46,7 @@ const enUS: BaseLang = {
     tips: 'Forget password',
   },
   uploader: {
+    list: 'Upload Files',
     ready: 'Ready',
     readyUpload: 'Ready to upload',
     waitingUpload: 'Waiting for upload',
@@ -111,6 +114,7 @@ const enUS: BaseLang = {
     mute: 'mute',
     tips: 'The onplayend event will only be triggered when loop = false',
   },
+  avatarCropper: { rotate: 'Rotate', selectImage: 'Select Image' },
   datepicker: {
     year: 'Year',
     month: 'Month',

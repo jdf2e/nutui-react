@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "2.6.17",
+  "version": "2.6.21",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -91,12 +91,12 @@
   },
   "lint-staged": {
     "*.{scss,md}": "prettier --write",
-    "*.{ts,tsx,js,md}": "eslint"
+    "*.{ts,tsx,js}": "eslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^1.0.4",
-    "@nutui/icons-react-taro": "^1.0.4",
+    "@nutui/icons-react": "^1.0.5",
+    "@nutui/icons-react-taro": "^1.0.5",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
@@ -118,7 +118,7 @@
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.0.3",
     "@loadable/component": "^5.16.3",
-    "@nutui/prettier-plugin": "workspace:*",
+    "prettier-markdown-table": "^1.0.2",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@mdx-js/rollup": "^3.0.1",
@@ -171,7 +171,6 @@
     "husky": "^9.0.11",
     "inquirer": "^10.1.4",
     "jscodeshift": "^17.0.0",
-    "linguist-languages": "^7.27.0",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",
@@ -208,7 +207,7 @@
     "unist-util-visit": "^5.0.0",
     "vinyl-fs": "^4.0.0",
     "vite": "^5.1.3",
-    "vite-plugin-dts": "3.6.4",
+    "vite-plugin-dts": "4.2.1",
     "vitest": "^2.0.4",
     "vitest-canvas-mock": "^0.3.3"
   },

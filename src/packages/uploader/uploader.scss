@@ -196,6 +196,7 @@
           width: 90%;
           font-size: 12px;
           color: $color-text;
+          @include moreline-ellipsis();
 
           &.error {
             color: red !important;
@@ -208,8 +209,6 @@
           .nut-icon-Link {
             flex-shrink: 0;
           }
-
-          @include moreline-ellipsis();
         }
       }
     }
