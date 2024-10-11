@@ -1,4 +1,6 @@
+const { environments } = require('eslint-plugin-prettier')
 const path = require('path')
+const { isAsyncFunction } = require('util/types')
 
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
@@ -104,6 +106,11 @@ const config = {
       // 自定义 Webpack 配置
       devServer: {},
     },
+    output: {
+      environment: {
+        asyncFunction: true
+      }
+    }
   },
   isWatch: true,
 }
