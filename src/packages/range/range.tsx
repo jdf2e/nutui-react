@@ -89,7 +89,7 @@ export const Range: FunctionComponent<
     finalValue: 0,
     onChange: handleChange,
   })
-  const [exactValue, setEaxctValue] = useState<RangeValue>(
+  const [exactValue, setExactValue] = useState<RangeValue>(
     () => value || defaultValue || 0
   )
   const marksRef = useRef<{ [key: string]: any }>({})
@@ -230,7 +230,7 @@ export const Range: FunctionComponent<
       total = rect.height
     }
     const value = min + (delta / total) * scope
-    setEaxctValue(current)
+    setExactValue(current)
     if (isRange(current)) {
       const [left, right] = current as any
       const middle = (left + right) / 2
@@ -248,7 +248,7 @@ export const Range: FunctionComponent<
       return
     }
     touch.start(event)
-    setEaxctValue(current)
+    setExactValue(current)
     if (isRange(current)) {
       setStartValue((current as number[]).map(format))
     } else {
@@ -283,7 +283,7 @@ export const Range: FunctionComponent<
     } else {
       newValue = startValue + diff
     }
-    setEaxctValue(newValue)
+    setExactValue(newValue)
     updateValue(newValue)
   }
   const onTouchEnd = () => {
