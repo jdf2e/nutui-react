@@ -77,5 +77,5 @@ export const DialogWrap: FunctionComponent<
     </>
   )
 }
-
+DialogWrap.defaultProps = defaultDialogProps
 DialogWrap.displayName = 'NutDialogWrap'
