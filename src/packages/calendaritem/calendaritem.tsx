@@ -447,8 +447,19 @@ export const CalendarItem = React.forwardRef<
 
   const requestAniFrameFunc = (current: number, monthNum: number) => {
     const lastItem = monthsData[monthsData.length - 1]
-    const containerHeight = lastItem.cssHeight + lastItem.scrollTop
-
+    let HEIGHT_ITEM = 60 // 一行日历的高度
+    const LAST_MONTN_HAS_SIX_LINE = lastItem.monthData.length > 35
+    if (popup && autoBackfill) {
+      HEIGHT_ITEM = LAST_MONTN_HAS_SIX_LINE ? 60 : 80
+    } else if (popup && !autoBackfill) {
+      // 在popup里展示 且底部有确认按钮
+      HEIGHT_ITEM = LAST_MONTN_HAS_SIX_LINE ? 0 : 60
+    } else {
+      HEIGHT_ITEM = LAST_MONTN_HAS_SIX_LINE ? 120 : 140
+    }
+    // 让整个日历区域变高 确保能滚动到最后一个日历
+    const containerHeight =
+      lastItem.cssHeight + lastItem.scrollTop + HEIGHT_ITEM
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
@@ -457,8 +468,7 @@ export const CalendarItem = React.forwardRef<
         getMonthsRef().scrollTop = monthsData[current].scrollTop
       }
     })
-
-    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+    setAvgHeight(Math.floor((containerHeight - HEIGHT_ITEM) / (monthNum + 1)))
   }
 
   const initData = () => {
@@ -532,32 +542,13 @@ export const CalendarItem = React.forwardRef<
       return
     }
     const scrollTop = (e.target as HTMLElement).scrollTop
-    let current = Math.floor(scrollTop / avgHeight)
+    // avgHeight变小 确保current能取到最后一个月的索引
+    const current = Math.floor(scrollTop / avgHeight)
     if (current < 0) return
-    if (!monthsData[current + 1]) return
-    const nextTop = monthsData[current + 1].scrollTop
-    const nextHeight = monthsData[current + 1].cssHeight
-    if (current === 0) {
-      if (scrollTop >= nextTop) {
-        current += 1
-      }
-    } else if (current > 0 && current < monthsNum - 1) {
-      if (scrollTop >= nextTop) {
-        current += 1
-      }
-      if (scrollTop < monthsData[current].scrollTop) {
-        current -= 1
-      }
-    } else {
-      const viewPosition = Math.round(scrollTop + viewHeight)
-      if (current + 1 <= monthsNum && viewPosition >= nextTop + nextHeight) {
-        current += 1
-      }
-      if (current >= 1 && scrollTop < monthsData[current - 1].scrollTop) {
-        current -= 1
-      }
+    if (current === monthsData.length - 1) {
+      setDefaultRange(monthsNum, current)
+      return
     }
-
     setDefaultRange(monthsNum, current)
   }
 
