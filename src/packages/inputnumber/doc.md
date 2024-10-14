@@ -20,6 +20,16 @@ import { InputNumber } from '@nutui/nutui-react'
 
 :::
 
+### 全选设置
+
+取消全选
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### 步长设置
 
 设置步长 `step` 5
@@ -114,6 +124,7 @@ import { InputNumber } from '@nutui/nutui-react'
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只读状态禁用输入框操作行为 | `boolean` | `false` |
 | async | 支持异步修改 | `boolean` | `false` |
+| select | 支持修改全选 | `boolean` | `true` |
 | formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
 | onPlus | 点击增加按钮时触发 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 点击减少按钮时触发 | `(e: MouseEvent) => void` | `-` |
