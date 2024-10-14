@@ -79,7 +79,7 @@ import { Popup } from '@nutui/nutui-react'
 | duration | Mask animation duration, in ms | `number` | `300` |
 | overlayClassName | custom mask class | `string` | `-` |
 | overlayStyle | custom mask style | `CSSProperties` | `-` |
-| lockScroll | Whether the background is locked | `boolean` | `true` |
+| lockScroll | Whether the background is locked ,strict is used to support iOS12 | `boolean\|strict` | `true` |
 | overlay | Whether to show the mask | `boolean` | `true` |
 | closeOnOverlayClick | Whether to click the mask to close | `boolean` | `true` |
 | position | popup location | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |
