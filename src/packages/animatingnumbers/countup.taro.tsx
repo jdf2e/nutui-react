@@ -2,6 +2,7 @@ import React, {
   CSSProperties,
   FunctionComponent,
   useEffect,
+  useCallback,
   useRef,
   useState,
 } from 'react'
@@ -34,14 +35,14 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     className,
     thousands,
     style,
-    ...reset
+    ...rest
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef(0)
   const numbers = Array.from({ length: 10 }, (v, i) => i)
 
-  const getShowNumber = () => {
+  const getShowNumber = useCallback(() => {
     const splitArr = value.split('.')
     const intNumber =
       length && splitArr[0].length < length
@@ -51,16 +52,15 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       thousands ? intNumber.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : intNumber
     }${splitArr[1] ? '.' : ''}${splitArr[1] || ''}`
     return currNumber.split('')
-  }
+  }, [length, thousands, value])
 
   const [numerArr, setNumerArr] = useState<string[]>([])
-
   const [transformArr, setTransformArr] = useState<Array<string>>([])
   const isLoaded = useRef(false)
 
-  const setNumberTransform = () => {
+  const setNumberTransform = useCallback(() => {
     if (countupRef.current && numerArr.length) {
-      const query = createSelectorQuery()
+      createSelectorQuery()
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
           const transformArrCache: string[] = []
@@ -80,7 +80,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
         })
         .exec()
     }
-  }
+  }, [numerArr])
 
   const numberEaseStyle = (idx: number) => {
     return {
@@ -91,7 +91,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   useEffect(() => {
     setNumberTransform()
-  }, [numerArr])
+  }, [numerArr, setNumberTransform])
 
   useEffect(() => {
     if (!isLoaded.current) {
@@ -105,7 +105,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return () => {
       window.clearTimeout(timerRef.current)
     }
-  }, [value])
+  }, [value, delay, getShowNumber])
 
   return (
     <View className={`${classPrefix} ${className}`} ref={countupRef}>

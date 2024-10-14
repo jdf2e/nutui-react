@@ -14,7 +14,7 @@ import Taro, {
   chooseMedia,
 } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
-import { Photograph } from '@nutui/icons-react-taro'
+import { Failure, Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import { ERROR, SUCCESS, UploaderTaro, UPLOADING, UploadOptions } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -68,6 +68,7 @@ export interface UploaderProps extends BasicComponent {
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
+  deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
   accept: string
@@ -124,6 +125,7 @@ const defaultProps = {
   mediaType: ['image', 'video'],
   camera: 'back',
   uploadIcon: <Photograph size="20px" color="#808080" />,
+  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
   uploadLabel: '',
   previewType: 'picture',
   fit: 'cover',
@@ -155,6 +157,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const {
     children,
     uploadIcon,
+    deleteIcon,
     uploadLabel,
     accept,
     name,
@@ -521,6 +524,7 @@ const InternalUploader: ForwardRefRenderFunction<
           onDeleteItem,
           handleItemClick,
           previewUrl,
+          deleteIcon,
           children,
         }}
       />

@@ -2,10 +2,10 @@ import React, {
   FunctionComponent,
   useEffect,
   useState,
-  useRef,
   useCallback,
-  ReactNode,
   useMemo,
+  useRef,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
 import { View, Text } from '@tarojs/components'
@@ -80,9 +80,6 @@ export const Range: FunctionComponent<
     button,
     vertical,
     marks,
-    onChange,
-    onStart,
-    onEnd,
     minDescription,
     maxDescription,
     currentDescription,
@@ -91,6 +88,9 @@ export const Range: FunctionComponent<
     step,
     value,
     defaultValue,
+    onChange,
+    onStart,
+    onEnd,
   } = { ...defaultProps, ...props }
 
   const rtlClassPrefix = useMemo(
@@ -102,9 +102,13 @@ export const Range: FunctionComponent<
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
   const [marksList, setMarksList] = useState<number[]>([])
-
   const [startValue, setStartValue] = useState<any>(0)
-  const scope = useMemo(() => max - min, [max, min])
+  const scope = useMemo(() => {
+    if (max < min || max === min) {
+      console.log('max 的值需要大于 min的值')
+    }
+    return max - min
+  }, [max, min])
 
   const handleChange = (value: RangeValue) => {
     onChange && onChange(value)
@@ -115,7 +119,6 @@ export const Range: FunctionComponent<
     finalValue: 0,
     onChange: handleChange,
   })
-
   const [exactValue, setExactValue] = useState<RangeValue>(
     () => value || defaultValue || 0
   )
@@ -123,7 +126,6 @@ export const Range: FunctionComponent<
   useEffect(() => {
     if (marks) {
       if (Array.isArray(marks)) {
-        // 增加变量
         const list = marks
           .sort((a, b) => a.value - b.value)
           .filter((point) => point.value >= min && point.value <= max)
@@ -142,7 +144,19 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
-
+  const classes = classNames(classPrefix, {
+    [`${classPrefix}-disabled`]: disabled,
+    [verticalClassPrefix]: vertical,
+    [`${classPrefix}-native`]: isNative,
+  })
+  const containerClasses = classNames(
+    `${classPrefix}-container`,
+    {
+      [`${classPrefix}-container-native`]: isNative,
+      [`${verticalClassPrefix}-container`]: vertical,
+    },
+    className
+  )
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
@@ -185,18 +199,14 @@ export const Range: FunctionComponent<
 
   const calcMainAxis = useCallback(() => {
     const modelVal = current as any
-    if (isRange(modelVal)) {
-      return `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
-    }
-    return `${((modelVal - min) * 100) / scope}%`
+    return isRange(modelVal)
+      ? `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
+      : `${((modelVal - min) * 100) / scope}%`
   }, [current, isRange, min, scope])
 
   const calcOffset = useCallback(() => {
     const modelVal = current as any
-    if (isRange(modelVal)) {
-      return `${((modelVal[0] - min) * 100) / scope}%`
-    }
-    return `0%`
+    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : `0%`
   }, [current, isRange, min, scope])
 
   const barStyle = useCallback(() => {
@@ -332,17 +342,13 @@ export const Range: FunctionComponent<
       }
 
       touch.move(isRn ? event.nativeEvent : event)
-      // console.log(JSON.stringify(event.touches[0]))
-
       setDragStatus('draging')
-
       const rect = await getRectByTaro(root.current)
       if (!rect) return
       let delta = isHm
         ? parseFloat(pxTransform(touch.deltaX.current))
         : touch.deltaX.current
       let total = rect.width
-      // console.log(pxTransform(delta), total)
       let diff = (delta / total) * scope
       diff = rtl ? -diff : diff
       if (vertical) {
@@ -478,18 +484,18 @@ export const Range: FunctionComponent<
       vertical,
     ]
   )
-
   const renderMarks = useCallback(() => {
     if (marksList.length <= 0) return null
-
+    const markcls = classNames(`${classPrefix}-mark`, {
+      [`${verticalClassPrefix}-mark`]: vertical,
+      [`${rtlClassPrefix}-mark`]: rtl,
+      [`${vertical ? verticalClassPrefix : classPrefix}-mark-hm`]: isHm,
+    })
+    const textcls = classNames(`${classPrefix}-mark-text`, {
+      [`${verticalClassPrefix}-mark-text`]: vertical,
+    })
     return (
-      <View
-        className={classNames(`${classPrefix}-mark`, {
-          [`${verticalClassPrefix}-mark`]: vertical,
-          [`${rtlClassPrefix}-mark`]: rtl,
-          [`${vertical ? verticalClassPrefix : classPrefix}-mark-hm`]: isHm,
-        })}
-      >
+      <View className={markcls}>
         {marksList.map((mark: any) => {
           return (
             <View
@@ -497,11 +503,7 @@ export const Range: FunctionComponent<
               className={markClassName(mark)}
               style={marksStyle(mark)}
             >
-              <Text
-                className={classNames(`${classPrefix}-mark-text`, {
-                  [`${verticalClassPrefix}-mark-text`]: vertical,
-                })}
-              >
+              <Text className={textcls}>
                 {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
               </Text>
               <View
@@ -552,44 +554,51 @@ export const Range: FunctionComponent<
         },
       ]
     }
-
     return 'translate(-50%, -50%)'
   }, [])
 
-  const renderButtonWrapper = useCallback(() => {
-    if (range)
-      return [0, 1].map((item, index) => {
-        const isLeft = index === 0
-        const suffix = isLeft ? 'left' : 'right'
-
-        return (
-          <View
-            key={index}
-            className={classNames(`${classPrefix}-button-wrapper-${suffix}`, {
-              [`${verticalClassPrefix}-button-wrapper-${suffix}`]: vertical,
-              [`${rtlClassPrefix}-button-wrapper-${suffix}`]: rtl,
-            })}
-            style={{
-              // @ts-ignore
-              transform: rangeWrapperTransform,
-            }}
-            onTouchStart={(e: any) => {
-              if (typeof index === 'number') {
-                // 实时更新当前拖动的按钮索引
-                setButtonIndex(index)
-              }
-              onTouchStart(e)
-            }}
-            onTouchMove={(e) => onTouchMove(e)}
-            onTouchEnd={onTouchEnd}
-            onTouchCancel={onTouchEnd}
-            onClick={(e) => !isRn && e.stopPropagation()}
-          >
-            {renderButton(index)}
-          </View>
-        )
+  const renderRangeButton = useCallback(() => {
+    return [0, 1].map((item, index) => {
+      const isLeft = index === 0
+      const suffix = isLeft ? 'left' : 'right'
+      const cls = classNames(`${classPrefix}-button-wrapper-${suffix}`, {
+        [`${verticalClassPrefix}-button-wrapper-${suffix}`]: vertical,
+        [`${rtlClassPrefix}-button-wrapper-${suffix}`]: rtl,
       })
 
+      return (
+        <View
+          key={index}
+          className={cls}
+          style={{
+            // @ts-ignore
+            transform: rangeWrapperTransform,
+          }}
+          onTouchStart={(e: any) => {
+            setButtonIndex(index)
+            onTouchStart(e)
+          }}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          onTouchCancel={onTouchEnd}
+          onClick={(e) => !isRn && e.stopPropagation()}
+        >
+          {renderButton(index)}
+        </View>
+      )
+    })
+  }, [
+    onTouchEnd,
+    onTouchMove,
+    onTouchStart,
+    renderButton,
+    rangeWrapperTransform,
+    vertical,
+    rtl,
+    rtlClassPrefix,
+  ])
+
+  const renderSingleButton = useCallback(() => {
     return (
       <View
         catchMove
@@ -600,8 +609,8 @@ export const Range: FunctionComponent<
           // @ts-ignore
           transform: wrapperTransform,
         }}
-        onTouchStart={(e) => onTouchStart(e)}
-        onTouchMove={(e) => onTouchMove(e)}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
         onClick={(e) => !isRn && e.stopPropagation()}
@@ -613,39 +622,25 @@ export const Range: FunctionComponent<
     onTouchEnd,
     onTouchMove,
     onTouchStart,
-    range,
-    rangeWrapperTransform,
     renderButton,
-    rtl,
-    rtlClassPrefix,
-    vertical,
     wrapperTransform,
+    vertical,
   ])
 
+  const renderButtonWrapper = useCallback(() => {
+    if (range) {
+      return renderRangeButton()
+    }
+
+    return renderSingleButton()
+  }, [renderRangeButton, renderSingleButton, range])
+
   return (
-    <View
-      className={classNames(
-        `${classPrefix}-container`,
-        {
-          [`${classPrefix}-container-native`]: isNative,
-          [`${verticalClassPrefix}-container`]: vertical,
-        },
-        className
-      )}
-      style={style}
-    >
+    <View className={containerClasses} style={style}>
       {minDescription !== null && (
         <Text className={`${classPrefix}-min`}>{minDescription || min}</Text>
       )}
-      <View
-        ref={root}
-        className={classNames(classPrefix, {
-          [`${classPrefix}-disabled`]: disabled,
-          [verticalClassPrefix]: vertical,
-          [`${classPrefix}-native`]: isNative,
-        })}
-        onClick={(e) => click(e)}
-      >
+      <View ref={root} className={classes} onClick={(e) => click(e)}>
         {renderMarks()}
 
         <View className={`${classPrefix}-bar`} style={barStyle()}>

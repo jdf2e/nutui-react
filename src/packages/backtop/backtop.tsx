@@ -10,10 +10,8 @@ import type { MouseEvent } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import requestAniFrame from '@/utils/raf'
+import requestAniFrame, { cancelRaf } from '@/utils/raf'
 import { useRtl } from '@/packages/configprovider'
-
-declare const window: any
 
 export interface BackTopProps extends BasicComponent {
   target: string
@@ -50,37 +48,28 @@ export const BackTop: FunctionComponent<
   }
 
   const classPrefix = 'nut-backtop'
-  const [backTop, SetBackTop] = useState(false)
-  const [scrollTop, SetScrollTop] = useState(0)
+  const [backTop, setBackTop] = useState(false)
+  const [scrollTop, setScrollTop] = useState(0)
   const startTime = useRef<number>(0)
+  const cls = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-show`]: backTop,
+    },
+    className
+  )
   const scrollEl: any = useRef<any>(null)
 
   const scrollListener = useCallback(() => {
     let top: any = null
     if (scrollEl.current instanceof Window) {
-      top = scrollEl.current.pageYOffset
-      SetScrollTop(top)
+      top = scrollEl.current.scrollY
     } else {
       top = scrollEl.current.scrollTop
-      SetScrollTop(top)
     }
-    const showBtn = top >= threshold
-    SetBackTop(showBtn)
+    setScrollTop(top)
+    setBackTop(top >= threshold)
   }, [threshold])
-
-  const addEventListener = useCallback(() => {
-    scrollEl.current?.addEventListener('scroll', scrollListener, false)
-    scrollEl.current?.addEventListener('resize', scrollListener, false)
-  }, [scrollListener])
-
-  const removeEventListener = useCallback(() => {
-    scrollEl.current?.removeEventListener('scroll', scrollListener, false)
-    scrollEl.current?.removeEventListener('resize', scrollListener, false)
-  }, [scrollListener])
-
-  const initCancelAniFrame = useCallback(() => {
-    window.cancelAnimationFrame = window.webkitCancelAnimationFrame
-  }, [])
 
   const init = useCallback(() => {
     if (target && document.getElementById(target)) {
@@ -88,14 +77,17 @@ export const BackTop: FunctionComponent<
     } else {
       scrollEl.current = window
     }
-    addEventListener()
-    initCancelAniFrame()
-  }, [addEventListener, initCancelAniFrame, target])
+    scrollEl.current?.addEventListener('scroll', scrollListener, false)
+    scrollEl.current?.addEventListener('resize', scrollListener, false)
+  }, [scrollListener, target])
 
   useEffect(() => {
     init()
-    return () => removeEventListener()
-  }, [init, removeEventListener])
+    return () => {
+      scrollEl.current?.removeEventListener('scroll', scrollListener, false)
+      scrollEl.current?.removeEventListener('resize', scrollListener, false)
+    }
+  }, [init, scrollListener])
 
   const scroll = useCallback((y = 0) => {
     if (scrollEl.current instanceof Window) {
@@ -114,7 +106,7 @@ export const BackTop: FunctionComponent<
       scroll(y)
       cid = requestAniFrame(fn)
       if (t === duration || y === 0) {
-        window.cancelAnimationFrame(cid)
+        cancelRaf(cid)
       }
     })
   }, [duration, scroll, scrollTop, startTime])
@@ -144,13 +136,7 @@ export const BackTop: FunctionComponent<
 
   return (
     <div
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-show`]: backTop,
-        },
-        className
-      )}
+      className={cls}
       style={styles}
       onClick={(e) => {
         goTop(e)

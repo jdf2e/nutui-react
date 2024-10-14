@@ -58,11 +58,18 @@ export const BackTop: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
   const classPrefix = 'nut-backtop'
-
-  const [backTop, SetBackTop] = useState(false)
+  const [backTop, setBackTop] = useState(false)
   const [isTouchStart, setTouchStart] = useState(false)
+  const cls = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-show`]: backTop,
+      [`${classPrefix}-show-active`]: isNative && isTouchStart,
+      [`${classPrefix}-rn`]: rn(),
+    },
+    className
+  )
   const systemInfo = useRef({})
   useEffect(() => {
     getSystemInfo().then((res) => {
@@ -81,7 +88,7 @@ export const BackTop: FunctionComponent<
   const onScroll = useCallback(
     (res: PageScrollObject) => {
       const { scrollTop } = res
-      scrollTop >= threshold ? SetBackTop(true) : SetBackTop(false)
+      setBackTop(scrollTop >= threshold)
     },
     [threshold]
   )
@@ -121,15 +128,7 @@ export const BackTop: FunctionComponent<
 
   return (
     <View
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-show`]: backTop,
-          [`${classPrefix}-show-active`]: isNative && isTouchStart,
-          [`${classPrefix}-rn`]: rn(),
-        },
-        className
-      )}
+      className={cls}
       style={styles}
       onClick={(e) => {
         goTop(e)

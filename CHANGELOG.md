@@ -1,3 +1,28 @@
+# v2.6.22
+
+`2024-10-12`
+
+- :sparkles: feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 (#2629)
+- :bug: fix(dialog): revert defaultprops
+- :bug: fix(range): usememo (#2638)
+- :bug: fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed (#2633)
+- :bug: fix: taro async warning in taro-h5 env (#2636)
+- :bug: fix(range): refactor & lint fixed (#2637)
+- :bug: fix(radio): lint fixed (#2635)
+- :bug: fix(navbar): safearea displays abnormal when safeAreaInsetTop has been set true (#2632)
+- :bug: fix: usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize (#2628)
+- 🏡 chore(demo): display bound dispatchSetState in demo8 of table demos (#2626)
+- 📖 docs: swiper 可通过 css 的 touch-action 设置用户操作行为 (#2630)
+- 📖 docs: 文档构建出现未闭合标签的错误提示
+
+# v2.6.21
+
+`2024-09-27`
+
+- 🏡 chore: update dependency linguist-languages to be included within package (#2607)
+- :sparkles: feat(Uploader): add support for deleteIcon prop customization (#2618)
+- :bug: fix: 修改jd小程序高版本弹幕不滚动问题 (#2612)
+
 # v2.6.20
 
 `2024-09-20`

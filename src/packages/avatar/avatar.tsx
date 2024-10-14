@@ -4,6 +4,7 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
+  useCallback,
 } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
@@ -16,10 +17,10 @@ import AvatarGroup from '@/packages/avatargroup'
 export interface AvatarProps extends BasicComponent {
   size: string
   icon: React.ReactNode
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   shape: AvatarShape
   background: string
   color: string
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
   alt: string
   onClick: (e: MouseEvent<HTMLDivElement>) => void
@@ -70,11 +71,12 @@ export const Avatar: FunctionComponent<
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
+  const { propAvatarGroup, avatarGroupRef } = parent
 
   const classes = classNames({
-    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
-    [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
-    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}-round`]:
+    [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}`]: true,
+    [`nut-avatar-${propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}-round`]:
       shape === 'round' && true,
   })
   const cls = classNames(classPrefix, classes, className)
@@ -85,55 +87,56 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${background}`,
     color,
     marginLeft:
-      avatarIndex !== 1 && parent?.propAvatarGroup?.gap
-        ? `${parent?.propAvatarGroup?.gap}px`
+      avatarIndex !== 1 && propAvatarGroup?.gap
+        ? `${propAvatarGroup?.gap}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.level === 'right'
+      propAvatarGroup?.level === 'right'
         ? `${Math.abs(maxSum - avatarIndex)}`
         : '',
     ...style,
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
-    color: `${parent?.propAvatarGroup?.maxColor}`,
+    backgroundColor: `${propAvatarGroup?.maxBackground}`,
+    color: `${propAvatarGroup?.maxColor}`,
   }
 
+  const avatarLength = useCallback(
+    (children: any) => {
+      for (let i = 0; i < children.length; i++) {
+        if (
+          children[i] &&
+          children[i].classList &&
+          children[i].classList[0] === 'nut-avatar'
+        ) {
+          children[i].setAttribute('data-index', i + 1)
+        }
+      }
+      const index = Number(avatarRef?.current?.dataset?.index)
+      const maxCount = propAvatarGroup?.max || children.length
+      setMaxSum(children.length)
+      setAvatarIndex(index)
+      if (
+        index === children.length &&
+        index !== maxCount &&
+        children.length > maxCount
+      ) {
+        setShowMax(true)
+      }
+    },
+    [propAvatarGroup?.max]
+  )
+
   useEffect(() => {
-    const avatarChildren = parent?.avatarGroupRef?.current.children
+    const avatarChildren = avatarGroupRef?.current.children
     if (avatarChildren) {
       avatarLength(avatarChildren)
     }
-  }, [])
-
-  const avatarLength = (children: any) => {
-    for (let i = 0; i < children.length; i++) {
-      if (
-        children[i] &&
-        children[i].classList &&
-        children[i].classList[0] === 'nut-avatar'
-      ) {
-        children[i].setAttribute('data-index', i + 1)
-      }
-    }
-    const index = Number(avatarRef?.current?.dataset?.index)
-    const maxCount = parent?.propAvatarGroup?.max || children.length
-    setMaxSum(children.length)
-    setAvatarIndex(index)
-    if (
-      index === children.length &&
-      index !== maxCount &&
-      children.length > maxCount
-    ) {
-      setShowMax(true)
-    }
-  }
+  }, [avatarLength, avatarGroupRef])
 
   const errorEvent = () => {
-    if (onError) {
-      onError()
-    }
+    onError && onError()
   }
 
   const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
@@ -143,8 +146,8 @@ export const Avatar: FunctionComponent<
   return (
     <>
       {(showMax ||
-        !parent?.propAvatarGroup?.max ||
-        avatarIndex <= parent?.propAvatarGroup?.max) && (
+        !propAvatarGroup?.max ||
+        avatarIndex <= propAvatarGroup?.max) && (
         <div
           className={cls}
           {...rest}
@@ -152,8 +155,7 @@ export const Avatar: FunctionComponent<
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!parent?.propAvatarGroup?.max ||
-            avatarIndex <= parent?.propAvatarGroup?.max) && (
+          {(!propAvatarGroup?.max || avatarIndex <= propAvatarGroup?.max) && (
             <>
               {src && (
                 <Image
@@ -178,11 +180,9 @@ export const Avatar: FunctionComponent<
           )}
           {showMax && (
             <div className="nut-avatar-text">
-              {parent?.propAvatarGroup?.maxContent
-                ? parent?.propAvatarGroup?.maxContent
-                : `+ ${
-                    avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
-                  }`}
+              {propAvatarGroup?.maxContent
+                ? propAvatarGroup?.maxContent
+                : `+ ${avatarIndex - Number(propAvatarGroup?.max || 0)}`}
             </div>
           )}
         </div>

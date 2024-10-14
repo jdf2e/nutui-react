@@ -50,6 +50,7 @@ const InternalBarrage: ForwardRefRenderFunction<
   const barrageContainer = useRef<HTMLDivElement>(null)
   const barrageCWidth = useRef(0)
   const timer = useRef(0)
+  const domTimer = useRef(0)
   const index = useRef(0)
   const times = useRef<number[]>([])
   const historyIndex = useRef(-1)
@@ -75,30 +76,35 @@ const InternalBarrage: ForwardRefRenderFunction<
     return 0
   }
 
+  const clearDomTimeout = () => {
+    if (domTimer.current) {
+      clearTimeout(domTimer.current)
+      domTimer.current = 0
+    }
+  }
+
   useEffect(() => {
     const init = async () => {
       if (barrageBody.current) {
         barrageCWidth.current = await getNodeWidth(barrageBody.current)
+        barrageBody.current?.style.setProperty(
+          '--move-distance',
+          `-${barrageCWidth.current}px`
+        )
+        index.current = 0
+        run()
       }
     }
-
-    init()
-
-    setTimeout(() => {
-      barrageBody.current?.style.setProperty(
-        '--move-distance',
-        `-${barrageCWidth.current}px`
-      )
-      index.current = 0
-      run()
+    domTimer.current = window.setTimeout(() => {
+      init()
     }, 300)
     return () => {
-      clearInterval(timer.current)
+      clearDomTimeout()
     }
   }, [list])
 
   const run = () => {
-    clearInterval(timer.current)
+    clearTimeout(timer.current)
     let intervalCache = interval
     const _index = (loop ? index.current % list.length : index.current) % rows
     const result = times.current[_index] - rows * interval
@@ -110,7 +116,31 @@ const InternalBarrage: ForwardRefRenderFunction<
     }, intervalCache)
   }
 
-  const play = async () => {
+  const setStyle = async (el: HTMLElement, currentIndex: number) => {
+    try {
+      if (el) {
+        const refe = await getRectByTaro(el)
+        const width = refe.width
+        const height = refe.height
+        el.classList.add('move')
+        const elScrollDuration = Math.round(
+          (width / barrageCWidth.current) * duration
+        )
+        times.current[currentIndex] = elScrollDuration
+        el.style.animationDuration = `${duration + elScrollDuration}ms`
+        el.style.top = `${currentIndex * (height + gapY) + 20}px`
+        el.style.width = `${width}px`
+      }
+    } catch (error) {
+      console.log('异常自动流转到下一个', error)
+      ;(barrageContainer.current as HTMLDivElement).removeChild(el)
+    }
+    el.addEventListener('animationend', () => {
+      ;(barrageContainer.current as HTMLDivElement).removeChild(el)
+    })
+  }
+
+  const play = () => {
     if (!loop && index.current >= list.length) {
       return
     }
@@ -130,26 +160,9 @@ const InternalBarrage: ForwardRefRenderFunction<
     historyIndex.current = currentIndex
 
     el.innerHTML = list[_index] as string
-    el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
-
-    try {
-      const width = await getNodeWidth(el)
-      const height = await getNodeWidth(el, 'height')
-      el.classList.add('move')
-      const elScrollDuration = (width / barrageCWidth.current) * duration
-      times.current[currentIndex] = Math.ceil(elScrollDuration)
-      el.style.animationDuration = `${(duration + elScrollDuration).toFixed(
-        2
-      )}ms`
-      el.style.top = `${currentIndex * (height + gapY) + 20}px`
-      el.style.width = `${width}px`
-    } catch (error) {
-      console.log('异常自动流转到下一个')
-    }
-    el.addEventListener('animationend', () => {
-      ;(barrageContainer.current as HTMLDivElement).removeChild(el)
-    })
+    el.classList.add('barrage-item')
+    requestAnimationFrame(() => setStyle(el, currentIndex))
     index.current++
     run()
   }
