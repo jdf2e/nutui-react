@@ -101,10 +101,12 @@ export const Tour: FunctionComponent<
   const classes = classNames(classPrefix, className)
 
   useEffect(() => {
+    if (visible) {
+      getRootPosition()
+    }
     setActive(0)
     setShowTour(visible)
     setShowPopup(visible)
-    getRootPosition()
   }, [visible])
 
   useEffect(() => {
