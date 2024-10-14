@@ -1,6 +1,6 @@
 import * as React from 'react'
 import '@testing-library/jest-dom'
-import { render } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import Range from '@/packages/range'
 
 test('range props test', () => {
@@ -159,4 +159,62 @@ test('desc test', () => {
   expect(container.querySelector('.min')?.innerHTML).toBe(state.minDescription)
   expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDescription)
   expect(container.querySelector('.number')?.innerHTML).toBe('40%')
+})
+
+test('range click test', () => {
+  const { container } = render(
+    <Range defaultValue={40} style={{ color: 'red' }} />
+  )
+
+  if (container.querySelector('.nut-range-bar')) {
+    fireEvent.click(container.querySelector('.nut-range-bar') as HTMLElement)
+  }
+})
+
+test('range click test', () => {
+  const state = {
+    value0: [30, 60],
+  }
+  const { container } = render(<Range range defaultValue={state.value0} />)
+  if (container.querySelector('.nut-range-bar')) {
+    fireEvent.click(container.querySelector('.nut-range-bar') as HTMLElement)
+  }
+})
+
+test('range click disable test', () => {
+  const { container } = render(
+    <Range defaultValue={40} disabled style={{ color: 'red' }} />
+  )
+
+  if (container.querySelector('.nut-range-bar')) {
+    fireEvent.click(container.querySelector('.nut-range-bar') as HTMLElement)
+  }
+})
+
+test('range click vertical test', () => {
+  const { container } = render(
+    <Range defaultValue={40} vertical style={{ color: 'red' }} />
+  )
+
+  if (container.querySelector('.nut-range-bar')) {
+    fireEvent.click(container.querySelector('.nut-range-bar') as HTMLElement)
+  }
+})
+
+test('range touch test', () => {
+  const { container } = render(<Range defaultValue={40} />)
+
+  const track = container.querySelector('.nut-range-button')
+  const button = container.querySelector('.number')
+
+  if (track) {
+    fireEvent.touchStart(track, {
+      touches: [{ clientX: 0 }],
+    })
+    fireEvent.touchMove(track, {
+      touches: [{ clientX: 10 }],
+    })
+    fireEvent.touchEnd(track)
+    expect(button?.innerHTML).toBe('100')
+  }
 })
