@@ -33,14 +33,12 @@ const unpluginFactory = (
       // @ts-ignore
       const ast = this.parse(code)
       const magicString = new MagicString(code)
-      const components = []
+      const components: any[] = []
+      let absolutePath: string[] = []
       walk(ast as any, {
-        enter(node) {
+        enter(node, parent) {
           if (node.type === 'ImportDeclaration') {
-            // console.log(node)
             if (node.source.value !== libraryName) return
-
-            let absolutePath: string[] = []
             try {
               const resolvePath = require.resolve(libraryName)
               absolutePath = resolvePath.split(libraryName)
@@ -53,18 +51,29 @@ const unpluginFactory = (
               if (specifier.type === 'ImportSpecifier') {
                 // 把节点存下来
                 components.push(specifier)
-                // @ts-ignore
-                const name = specifier.imported.name.toLowerCase()
+              }
+            })
+          }
+          if (node.type === 'Identifier') {
+            const nodeName = node.name
+            components.forEach((ast: any, index: number) => {
+              // 因为插入后会删除，所以要有判断逻辑
+              if (ast === undefined) return
+              if (
+                (ast.imported.name === nodeName ||
+                  ast.local.name === nodeName) &&
+                parent &&
+                // 父节点类型不能是导入类型的，因为这样无法识别要不要插入样式。从而导致无法 treeshake
+                parent.type !== 'ImportSpecifier'
+              ) {
+                // 插入后从数组删除，防止重复插入
                 if (absolutePath.length === 0) return
-                if (options.style === 'css') {
-                  magicString.prepend(
-                    `import "${absolutePath[0]}${libraryName}/dist/es/packages/${name}/style/css.js";`
-                  )
-                } else if (options.style) {
-                  magicString.prepend(
-                    `import "${absolutePath[0]}${libraryName}/dist/es/packages/${name}/style/index.js";`
-                  )
-                }
+                const name = nodeName.toLowerCase()
+                magicString.prepend(
+                  `import "${absolutePath[0]}${libraryName}/dist/es/packages/${name}/style/${options.style === 'css' ? 'css' : 'index'}.js";`
+                )
+                // 从数组删除，防止重复插入
+                components[index] = undefined
               }
             })
           }
