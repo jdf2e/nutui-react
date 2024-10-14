@@ -104,11 +104,7 @@ export const Tour: FunctionComponent<
     setActive(0)
     setShowTour(visible)
     setShowPopup(visible)
-    if (visible) {
-      setTimeout(() => {
-        getRootPosition()
-      })
-    }
+    getRootPosition()
   }, [visible])
 
   useEffect(() => {
