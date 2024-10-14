@@ -2,9 +2,28 @@
 
 exports[`rollup > basic.js 1`] = `
 "// basic.js
-// unplugin-starter injected
+import { Button, Cell } from '@nutui/nutui-react';
+
 const num = 10;
+console.log(Button);
+console.log(Cell);
 
 export { num };
+"
+`;
+
+exports[`rollup > basic.jsx 1`] = `
+"// basic.js
+import '../../../../node_modules/.pnpm/@nutui+nutui-react@2.6.22_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/@nutui/nutui-react/dist/es/packages/cell/style/css.js';
+import '../../../../node_modules/.pnpm/@nutui+nutui-react@2.6.22_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/@nutui/nutui-react/dist/es/packages/button/style/css.js';
+import { Cell } from '@nutui/nutui-react';
+
+// console.log(Button)
+console.log(Cell);
+const A = () => {
+  return /*#__PURE__*/React.createElement(Cell, null, "Test");
+};
+
+export { A };
 "
 `;

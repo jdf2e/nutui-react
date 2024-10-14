@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-auto-import",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@9.11.0",
   "description": "Description.",
   "type": "module",
@@ -87,6 +87,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
+    "@nutui/nutui-react": "^2.6.22",
     "@rollup/pluginutils": "^5.1.1",
     "@types/babel__traverse": "^7.20.6",
     "estree-walker": "^3.0.3",
@@ -94,6 +95,9 @@
     "unplugin": "^1.14.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/preset-react": "^7.25.7",
+    "@rollup/plugin-babel": "^6.0.4",
     "@sxzz/eslint-config": "^4.2.0",
     "@sxzz/prettier-config": "^2.0.2",
     "@sxzz/test-utils": "^0.3.2",

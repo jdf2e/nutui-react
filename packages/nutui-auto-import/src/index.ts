@@ -1,15 +1,22 @@
 import { createFilter } from '@rollup/pluginutils'
-import { createUnplugin } from 'unplugin'
-import { UnpluginOptions } from 'unplugin/dist'
+import {
+  createUnplugin,
+  type UnpluginInstance,
+  type UnpluginOptions,
+} from 'unplugin'
 import { walk } from 'estree-walker'
 import MagicString from 'magic-string'
-import { getLibraryName, resolveOptions } from './core/options'
+import {
+  getLibraryName,
+  type OptionsResolved,
+  resolveOptions,
+} from './core/options'
 
 const unpluginFactory = (
   rawOptions = {
     libraryName: '',
     style: true,
-  }
+  } as OptionsResolved
 ): UnpluginOptions => {
   const options = resolveOptions(rawOptions)
   const filter = createFilter(options.include, options.exclude)
@@ -22,13 +29,17 @@ const unpluginFactory = (
     transformInclude(id) {
       return filter(id)
     },
-    transform(code, id) {
+    transform(code) {
+      // @ts-ignore
       const ast = this.parse(code)
       const magicString = new MagicString(code)
+      const components = []
       walk(ast as any, {
-        enter(node, parent) {
+        enter(node) {
           if (node.type === 'ImportDeclaration') {
+            // console.log(node)
             if (node.source.value !== libraryName) return
+
             let absolutePath: string[] = []
             try {
               const resolvePath = require.resolve(libraryName)
@@ -39,6 +50,8 @@ const unpluginFactory = (
             }
             node.specifiers.forEach((specifier) => {
               if (specifier.type === 'ImportSpecifier') {
+                // 把节点存下来
+                components.push(specifier)
                 // @ts-ignore
                 const name = specifier.imported.name.toLowerCase()
                 if (absolutePath.length === 0 || !absolutePath[0]) return
@@ -64,4 +77,7 @@ const unpluginFactory = (
   } as UnpluginOptions
 }
 
-export const NutUIAutoImport = createUnplugin(unpluginFactory)
+export const NutUIAutoImport: UnpluginInstance<
+  OptionsResolved | undefined,
+  boolean
+> = createUnplugin(unpluginFactory)
