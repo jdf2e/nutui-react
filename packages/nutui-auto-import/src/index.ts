@@ -46,6 +46,7 @@ const unpluginFactory = (
               absolutePath = resolvePath.split(libraryName)
             } catch (e) {
               /* empty */
+              absolutePath = ['']
               console.log(`warn: cannot reslove ${libraryName}`)
             }
             node.specifiers.forEach((specifier) => {
@@ -54,7 +55,7 @@ const unpluginFactory = (
                 components.push(specifier)
                 // @ts-ignore
                 const name = specifier.imported.name.toLowerCase()
-                if (absolutePath.length === 0 || !absolutePath[0]) return
+                if (absolutePath.length === 0) return
                 if (options.style === 'css') {
                   magicString.prepend(
                     `import "${absolutePath[0]}${libraryName}/dist/es/packages/${name}/style/css.js";`
