@@ -55,17 +55,19 @@ export const GridItem: FunctionComponent<
   const classPrefix = 'nut-grid-item'
   const classes = classNames(classPrefix, className)
   const context = useContext(GridContext)
-
   const rootStyle = () => {
     const styles: CSSProperties = {
-      flexBasis: `${100 / +columns}%`,
+      flexBasis: `calc((100% - ${pxCheck((+columns - 1) * Number(gap))}) / ${columns})`,
       ...style,
     }
 
     if (square) {
       styles.paddingTop = `${100 / +columns}%`
     } else if (gap) {
-      styles.paddingRight = pxCheck(gap)
+      if ((index + 1) % Number(columns) !== 0) {
+        styles.marginRight = pxCheck(gap)
+      }
+
       if (index >= Number(columns)) {
         styles.marginTop = pxCheck(gap)
       }

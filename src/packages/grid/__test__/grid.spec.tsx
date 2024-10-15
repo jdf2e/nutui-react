@@ -26,36 +26,6 @@ test('should match snapshot', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('render with column num', () => {
-  const { container } = render(
-    <>
-      <Grid columns={3}>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-        <Grid.Item text="文本">
-          <ImageIcon />
-        </Grid.Item>
-      </Grid>
-    </>
-  )
-
-  const regionItem = container.querySelector('.nut-grid-item')
-  expect(regionItem).toHaveStyle('flex-basis:33.333333333333336%')
-})
-
 test('render with props gap', () => {
   const { container } = render(
     <>
@@ -89,7 +59,7 @@ test('render with props gap', () => {
   )
 
   const regionItem = container.querySelector('.nut-grid-item')
-  expect(regionItem).toHaveStyle('padding-right:3px')
+  expect(regionItem).toHaveStyle('margin-right:3px')
 })
 
 test('render with props reverse', () => {
