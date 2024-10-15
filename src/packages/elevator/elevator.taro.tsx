@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -221,7 +221,7 @@ export const Elevator: FunctionComponent<
 
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      <div
+      <View
         className={`${classPrefix}-list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
@@ -240,17 +240,17 @@ export const Elevator: FunctionComponent<
         >
           {list.map((item: any, idx: number) => {
             return (
-              <div
+              <View
                 className={`${classPrefix}-list-item nut-elevator-item-${idx}`}
                 key={idx}
               >
-                <div className={`${classPrefix}-list-item-code`}>
+                <View className={`${classPrefix}-list-item-code`}>
                   {item[floorKey]}
-                </div>
+                </View>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
-                      <div
+                      <View
                         className={classNames({
                           [`${classPrefix}-list-item-name`]: true,
                           [`${classPrefix}-list-item-name-highcolor`]:
@@ -269,38 +269,38 @@ export const Elevator: FunctionComponent<
                         ) : (
                           subitem.name
                         )}
-                      </div>
+                      </View>
                     )
                   })}
                 </>
-              </div>
+              </View>
             )
           })}
         </ScrollView>
-      </div>
+      </View>
       {showKeys ? (
         <>
           {list.length && scrollStart ? (
-            <div
+            <View
               className={classNames({
                 [`${classPrefix}-code-current`]: true,
                 [`${classPrefix}-code-current-current`]: true,
               })}
             >
               {list[codeIndex][floorKey]}
-            </div>
+            </View>
           ) : null}
-          <div className={`${classPrefix}-bars`}>
-            <div
+          <View className={`${classPrefix}-bars`}>
+            <View
               className={`${classPrefix}-bars-inner`}
-              onTouchStart={(event) => touchStart(event)}
-              onTouchMove={(event) => touchMove(event)}
+              onTouchStart={(event) => touchStart(event as any)}
+              onTouchMove={(event) => touchMove(event as any)}
               onTouchEnd={touchEnd}
               style={{ touchAction: 'pan-y' }}
             >
               {list.map((item: any, index: number) => {
                 return (
-                  <div
+                  <View
                     className={classNames({
                       [`${classPrefix}-bars-inner-item`]: true,
                       [`${classPrefix}-bars-inner-item-active`]:
@@ -311,19 +311,19 @@ export const Elevator: FunctionComponent<
                     onClick={() => handleClickIndex(item[floorKey])}
                   >
                     {item[floorKey]}
-                  </div>
+                  </View>
                 )
               })}
-            </div>
-          </div>
+            </View>
+          </View>
         </>
       ) : null}
       {sticky && scrollY > 0 ? (
-        <div className={`${classPrefix}-list-fixed`}>
+        <View className={`${classPrefix}-list-fixed`}>
           <span className={`${classPrefix}-list-fixed-title`}>
             {list[codeIndex][floorKey]}
           </span>
-        </div>
+        </View>
       ) : null}
     </div>
   )

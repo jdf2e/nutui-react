@@ -1,5 +1,6 @@
 import React from 'react'
 import { getEnv } from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -34,24 +35,24 @@ const StickyDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{basic}</h2>
+      <ScrollView className={`demo ${getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{title1}</h2>
+        <View className="h2">{title1}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{title2}</h2>
+        <View className="h2">{title2}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{title3}</h2>
+        <View className="h2">{title3}</View>
         <Cell style={{ height: '64px' }}>
           <Demo4 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Popover, Button } from '@nutui/nutui-react-taro'
 import {
   Home,
@@ -78,25 +79,25 @@ const Demo3 = () => {
           自定义内容
         </Button>
         {customized ? (
-          <div className="self-content" style={selfContentStyle}>
+          <View className="self-content" style={selfContentStyle}>
             {selfContent.map((item: any) => {
               return (
-                <div
+                <View
                   className="self-content-item"
                   key={item.key}
                   style={selfContentItem}
                 >
                   {item.name ? item.name : null}
-                  <div
+                  <View
                     className="self-content-description"
                     style={selfContentDesc}
                   >
                     {item.description}
-                  </div>
-                </div>
+                  </View>
+                </View>
               )
             })}
-          </div>
+          </View>
         ) : null}
       </Popover>
     </>

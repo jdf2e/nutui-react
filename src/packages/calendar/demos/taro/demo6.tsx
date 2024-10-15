@@ -5,6 +5,7 @@ import {
   DatePicker,
   CalendarDay,
 } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const padZero = (num: number | string, targetLength = 2) => {
   let str = `${num}`
@@ -65,15 +66,15 @@ const Demo6 = () => {
       <Cell
         title="日期区间"
         description={
-          <div className="desc-box">
-            <div className="desc" onClick={openSwitch}>
+          <View className="desc-box">
+            <View className="desc" onClick={openSwitch}>
               {date && date.length ? `${date[0]} ${desc1}` : '请选择起始时间'}
-            </div>
-            <div className="desc1">-</div>
-            <div className="desc" onClick={openSwitch}>
+            </View>
+            <View className="desc1">-</View>
+            <View className="desc" onClick={openSwitch}>
               {date && date.length ? `${date[1]} ${desc2}` : '请选择截止时间'}
-            </div>
-          </div>
+            </View>
+          </View>
         }
       />
       <Calendar
@@ -96,25 +97,25 @@ const Demo6 = () => {
         onClose={closeSwitch}
         onConfirm={setChooseValue}
       >
-        <div className="nut-calendar-btns">
-          <div
+        <View className="nut-calendar-btns">
+          <View
             className={`nut-calendar-date ${dpAbled[0] ? '' : 'disabled'}`}
             onClick={(e) => {
               showDatePicker(e, 1)
             }}
           >
             开始时间：{desc1}
-          </div>
+          </View>
           -
-          <div
+          <View
             className={`nut-calendar-date ${dpAbled[1] ? '' : 'disabled'}`}
             onClick={(e) => {
               showDatePicker(e, 2)
             }}
           >
             结束时间：{desc2}
-          </div>
-        </div>
+          </View>
+        </View>
         <DatePicker
           title="时间选择"
           type="time"

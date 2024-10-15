@@ -1,8 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -47,20 +47,20 @@ const NumberKeyboardDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.sidebar}</h2>
+        <View className="h2">{translated.sidebar}</View>
         <Demo2 />
-        <h2>{translated.randomKeyOrder}</h2>
+        <View className="h2">{translated.randomKeyOrder}</View>
         <Demo3 />
-        <h2>{translated.withTitle}</h2>
+        <View className="h2">{translated.withTitle}</View>
         <Demo4 />
-        <h2>{translated.idNumberKeyboard}</h2>
+        <View className="h2">{translated.idNumberKeyboard}</View>
         <Demo5 />
-        <h2>{translated.popup}</h2>
+        <View className="h2">{translated.popup}</View>
         <Demo6 />
-      </div>
+      </ScrollView>
     </>
   )
 }

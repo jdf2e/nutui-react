@@ -122,7 +122,7 @@ export const NumberKeyboard: FunctionComponent<
       switch (item.type) {
         case 'num':
         case 'custom':
-          return <div>{item.id}</div>
+          return <View>{item.id}</View>
         case 'delete':
           return <DeleteIcon />
         case 'close':
@@ -134,8 +134,8 @@ export const NumberKeyboard: FunctionComponent<
       }
     }
     return (
-      <div key={item.id} className={`${classPrefix}-body-wrapper`}>
-        <div
+      <View key={item.id} className={`${classPrefix}-body-wrapper`}>
+        <View
           className={classNames({
             key: true,
             active,
@@ -148,8 +148,8 @@ export const NumberKeyboard: FunctionComponent<
           onTouchCancel={() => onTouchEnd(item)}
         >
           {renderContent(item)}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
@@ -163,10 +163,10 @@ export const NumberKeyboard: FunctionComponent<
       zIndex={9999}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
     >
-      <div className={classNames(classPrefix, className)} style={style}>
+      <View className={classNames(classPrefix, className)} style={style}>
         {title && (
-          <div className={`${classPrefix}-header`}>
-            <div className={`${classPrefix}-header-title`}>{title}</div>
+          <View className={`${classPrefix}-header`}>
+            <View className={`${classPrefix}-header-title`}>{title}</View>
             {type === 'default' && (
               <span
                 className={`${classPrefix}-header-close`}
@@ -175,16 +175,16 @@ export const NumberKeyboard: FunctionComponent<
                 {rightActions || locale.done}
               </span>
             )}
-          </div>
+          </View>
         )}
-        <div className={`${classPrefix}-body`}>
-          <div className={`${classPrefix}-body-keys`}>
+        <View className={`${classPrefix}-body`}>
+          <View className={`${classPrefix}-body-keys`}>
             {keysList?.map((item: any) => {
               return <NumberKeyboardKey key={item.id} item={item} />
             })}
-          </div>
+          </View>
           {type === 'rightColumn' && (
-            <div className={`${classPrefix}-sidebar`}>
+            <View className={`${classPrefix}-sidebar`}>
               <NumberKeyboardKey
                 key="delete"
                 item={{
@@ -199,10 +199,10 @@ export const NumberKeyboard: FunctionComponent<
                   type: 'confirm',
                 }}
               />
-            </div>
+            </View>
           )}
-        </div>
-      </div>
+        </View>
+      </View>
     </Popup>
   )
 }

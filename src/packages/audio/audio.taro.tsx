@@ -7,6 +7,7 @@ import React, {
 
 import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
 import { Service } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -166,25 +167,25 @@ export const Audio: FunctionComponent<
 
   const renderIcon = () => {
     return (
-      <div className={`${classPrefix}-icon`}>
-        <div
+      <View className={`${classPrefix}-icon`}>
+        <View
           className={`${classPrefix}-icon-box} ${
             playing ? `${classPrefix}-icon-play}` : `${classPrefix}-icon-stop}`
           }`}
           onClick={handleStatusChange}
         >
           <Service className={playing ? 'nut-icon-loading' : ''} />
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
   const renderProgerss = () => {
     return (
       <>
-        <div className={`${classPrefix}-progress`}>
-          <div className="time">{currentDuration}</div>
-          <div className={`${classPrefix}-progress-bar-wrapper`}>
+        <View className={`${classPrefix}-progress`}>
+          <View className="time">{currentDuration}</View>
+          <View className={`${classPrefix}-progress-bar-wrapper`}>
             <Range
               value={percent}
               onChange={(val: any) => setPercent(val)}
@@ -192,14 +193,14 @@ export const Audio: FunctionComponent<
               maxDescription={null}
               minDescription={null}
               inactive-color="#cccccc"
-              active-color="#fa2c19"
+              active-color="#FF0F23"
             />
-          </div>
-          <div className="time">
+          </View>
+          <View className="time">
             {formatSeconds(`${totalSeconds}`) || '00:00:00'}
-          </div>
-        </div>
-        <div
+          </View>
+        </View>
+        <View
           className={
             isCanPlay ? 'custom-button-group' : 'custom-button-group-disable'
           }
@@ -225,19 +226,19 @@ export const Audio: FunctionComponent<
           <Button type="primary" size="small" onClick={handleForward}>
             {locale.audio.forward || '快进'}
           </Button>
-        </div>
+        </View>
       </>
     )
   }
 
   const renderNone = () => {
     return (
-      <div
+      <View
         className={`${classPrefix}-none-container`}
         onClick={handleStatusChange}
       >
         {children}
-      </div>
+      </View>
     )
   }
 
@@ -255,9 +256,9 @@ export const Audio: FunctionComponent<
   }
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+    <View className={`${classPrefix} ${className}`} style={style} {...rest}>
       {renderAudio()}
-    </div>
+    </View>
   )
 }
 

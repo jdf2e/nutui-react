@@ -14,6 +14,7 @@ import {
   PageScrollObject,
   usePageScroll,
 } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/utils/use-watch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -159,7 +160,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       className={classNames(classPrefix, className)}
       {...rest}
     >
-      <div
+      <View
         className={classNames('nut-sticky-box', {
           'nut-sticky-fixed': fixed,
         })}
@@ -167,7 +168,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         style={stickyStyle}
       >
         {children}
-      </div>
+      </View>
     </div>
   )
 }

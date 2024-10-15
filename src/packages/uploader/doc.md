@@ -218,7 +218,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | \--nutui-uploader-background | 上传图片的背景颜色 | `$color-background` |
 | \--nutui-uploader-background-disabled | 上传图片禁用状态的背景颜色 | `$color-background` |
 | \--nutui-uploader-image-icon-tip-font-size | 上传区域图片下方文字大小 | `12px` |
-| \--nutui-uploader-image-icon-tip-color | 上传区域图片下方文字颜色 | `#BFBFBF` |
+| \--nutui-uploader-image-icon-tip-color | 上传区域图片下方文字颜色 | `#C2C4CC` |
 | \--nutui-uploader-preview-progress-background | 上传区域预览进度的背景颜色 | `rgba(0, 0, 0, 0.65)` |
 | \--nutui-uploader-preview-margin-right | 上传区域预览margin-right的值 | `10px` |
 | \--nutui-uploader-preview-margin-bottom | 上传区域预览margin-bottom的值 | `10px` |

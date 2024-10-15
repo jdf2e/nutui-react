@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -167,11 +168,16 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
           )
         }
         return (
-          <div
-            className={classNames('nut-menu-title', `nut-menu-title-${index}`, {
-              active: showMenuItem[index],
-              disabled,
-            })}
+          <View
+            className={classNames(
+              'nut-menu-title ',
+              `nut-menu-title-${index}`,
+              {
+                active: showMenuItem[index],
+                disabled,
+              },
+              className
+            )}
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
@@ -179,25 +185,25 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
               !disabled && toggleMenuItem(index)
             }}
           >
-            <div className="nut-menu-title-text">{finallyTitle()}</div>
+            <View className="nut-menu-title-text">{finallyTitle()}</View>
             {finallyIcon()}
-          </div>
+          </View>
         )
       }
       return null
     })
   }
   return (
-    <div {...rest} className={cls} ref={menuRef}>
-      <div
+    <View {...rest} className={cls} ref={menuRef}>
+      <View
         className={classNames('nut-menu-bar', {
           opened: showMenuItem.includes(true),
         })}
       >
         {menuTitle()}
-      </div>
+      </View>
       {cloneChildren()}
-    </div>
+    </View>
   )
 }
 

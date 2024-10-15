@@ -206,7 +206,7 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | value | 当前激活 tab 面板的值 | `number` \| `string` | `0` |
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
-| activeColor | 标签选中色 | `string` | `#1a1a1a` |
+| activeColor | 标签选中色 | `string` | `#1A1A1A` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
 | activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
@@ -253,7 +253,7 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | \--nutui-tabs-tab-line-opacity | 水平方向线的透明度 | `1` |
 | \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向标题线条的宽度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |

@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Photograph, Failure } from '@nutui/icons-react'
-import { ERROR, SUCCESS, Upload, UPLOADING, UploadOptions } from './upload'
+import { ERROR, SUCCESS, Utils, UPLOADING, UploadOptions } from './utils'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -158,7 +158,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
+  const [uploadQueue, setUploadQueue] = useState<Promise<Utils>[]>([])
 
   const classes = classNames(className, 'nut-uploader')
   useEffect(() => {
@@ -274,7 +274,7 @@ const InternalUploader: ForwardRefRenderFunction<
         files: list,
       })
     }
-    const task = new Upload(uploadOption)
+    const task = new Utils(uploadOption)
     if (autoUpload) {
       task.upload()
     } else {

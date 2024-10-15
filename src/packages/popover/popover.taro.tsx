@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import Taro, { createSelectorQuery } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -285,7 +286,7 @@ export const Popover: FunctionComponent<
   return (
     <>
       {!targetId && (
-        <div
+        <View
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
@@ -299,9 +300,9 @@ export const Popover: FunctionComponent<
           style={style}
         >
           {Array.isArray(children) ? children[0] : children}
-        </div>
+        </View>
       )}
-      <div className={classes} style={getRootPosition()}>
+      <View className={classes} style={getRootPosition()}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
           position="default"
@@ -309,14 +310,14 @@ export const Popover: FunctionComponent<
           visible={showPopup}
           {...rest}
         >
-          <div className="nut-popover-content-group" ref={popoverContentRef}>
+          <View className="nut-popover-content-group" ref={popoverContentRef}>
             {showArrow && (
-              <div className={popoverArrow()} style={popoverArrowStyle()} />
+              <View className={popoverArrow()} style={popoverArrowStyle()} />
             )}
             {Array.isArray(children) ? children[1] : ''}
             {list.map((item, index) => {
               return (
-                <div
+                <View
                   className={classNames(
                     {
                       'nut-popover-menu-item': true,
@@ -328,32 +329,34 @@ export const Popover: FunctionComponent<
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon ? (
-                    <div className="nut-popover-menu-item-icon">
+                    <View className="nut-popover-menu-item-icon">
                       {item.icon}
-                    </div>
+                    </View>
                   ) : null}
-                  <div className="nut-popover-menu-item-name">{item.name}</div>
+                  <View className="nut-popover-menu-item-name">
+                    {item.name}
+                  </View>
                   {item.action && item.action.icon ? (
-                    <div
+                    <View
                       className="nut-popover-menu-item-action-icon"
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}
-                    </div>
+                    </View>
                   ) : null}
-                </div>
+                </View>
               )
             })}
-          </div>
+          </View>
         </Popup>
         {showPopup && closeOnOutsideClick && (
-          <div
+          <View
             className="nut-popover-content-bg"
             onClick={clickAway}
             onTouchMove={clickAway}
           />
         )}
-      </div>
+      </View>
     </>
   )
 }

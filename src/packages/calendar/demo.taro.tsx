@@ -1,9 +1,9 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import '@/packages/calendar/demo.scss'
-
+import './demo.scss'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -92,37 +92,23 @@ const CalendarDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.ce5c5446}</h2>
-
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
-
         <Demo2 />
-
         <Demo3 />
-
         <Demo4 />
-
         <Demo5 />
-
         <Demo6 />
-
-        <h2>{translated.cfbdc781}</h2>
-
+        <View className="h2">{translated.cfbdc781}</View>
         <Demo7 />
-
         <Demo8 />
-
-        <h2>{translated.d04fcbda}</h2>
-
+        <View className="h2">{translated.d04fcbda}</View>
         <Demo9 />
-
         <Demo10 />
-
-        <h2>{translated.e51e4582}</h2>
-
+        <View className="h2">{translated.e51e4582}</View>
         <Demo11 />
-      </div>
+      </ScrollView>
     </>
   )
 }

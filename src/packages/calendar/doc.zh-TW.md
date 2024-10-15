@@ -154,7 +154,7 @@ import { Calendar } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-calendar-active-background-color | 日歴選中狀態時的元素背景色 | `$color-primary` |
-| \--nutui-calendar-choose-background-color | 日歴選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-choose-background-color | 日歴選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#FF0F23, 0.09)` |
 | \--nutui-calendar-choose-color | 日歴選中元素的字色 | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | 日歴不可選元素的選中時的背景色 | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-disable-color | 日歴不可選元素的字色 | `#d1d0d0` |

@@ -2,6 +2,7 @@ import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { View, ITouchEvent } from '@tarojs/components'
 import Popover from '@/packages/popover/index.taro'
 import { PopoverLocation } from '@/packages/popover/types'
 import { getTaroRectById } from '@/utils/use-taro-rect'
@@ -33,7 +34,7 @@ export interface TourProps extends BasicComponent {
   complete: ReactNode
   showPrev: boolean
   closeOnOverlayClick: boolean
-  onClose: (e: MouseEvent<HTMLDivElement>) => void
+  onClose: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onChange: (value: number) => void
 }
 
@@ -79,7 +80,8 @@ export const Tour: FunctionComponent<
     complete,
     onClose,
     onChange,
-    ...rest
+    style,
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -144,14 +146,18 @@ export const Tour: FunctionComponent<
     return styles
   }
 
-  const maskClose = (e: MouseEvent<HTMLDivElement>) => {
+  const maskClose = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     setShowTour(false)
     setShowPopup(false)
 
     onClose && onClose(e)
   }
 
-  const handleClickMask = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClickMask = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     closeOnOverlayClick && maskClose(e)
   }
 
@@ -167,19 +173,19 @@ export const Tour: FunctionComponent<
   }
 
   return (
-    <div className={classes} {...rest}>
-      <div
+    <View className={classes} style={style}>
+      <View
         className="nut-tour-masked"
         style={{ display: showTour ? 'block' : 'none' }}
         onClick={handleClickMask}
       />
       {list.map((item, index) => {
         return (
-          <div key={index} style={{ height: 0 }}>
+          <View key={index} style={{ height: 0 }}>
             {index === active && (
               <>
                 {showTour && (
-                  <div
+                  <View
                     className={`${
                       mask
                         ? 'nut-tour-mask'
@@ -203,56 +209,56 @@ export const Tour: FunctionComponent<
                     {children || (
                       <>
                         {type === 'step' && (
-                          <div className="nut-tour-content">
+                          <View className="nut-tour-content">
                             {title && (
-                              <div className="nut-tour-content-top">
-                                <div onClick={(e) => maskClose(e)}>
+                              <View className="nut-tour-content-top">
+                                <View onClick={(e) => maskClose(e)}>
                                   <Close className="nut-tour-content-top-close" />
-                                </div>
-                              </div>
+                                </View>
+                              </View>
                             )}
-                            <div className="nut-tour-content-inner">
+                            <View className="nut-tour-content-inner">
                               {item.content}
-                            </div>
-                            <div className="nut-tour-content-bottom">
-                              <div className="nut-tour-content-bottom-init">
+                            </View>
+                            <View className="nut-tour-content-bottom">
+                              <View className="nut-tour-content-bottom-init">
                                 {active + 1}/{list.length}
-                              </div>
-                              <div className="nut-tour-content-bottom-operate">
+                              </View>
+                              <View className="nut-tour-content-bottom-operate">
                                 {active !== 0 && showPrev && (
-                                  <div
+                                  <View
                                     className="nut-tour-content-bottom-operate-btn"
                                     onClick={() => changeStep('prev')}
                                   >
                                     {prev || locale.tour.prevStepText}
-                                  </div>
+                                  </View>
                                 )}
                                 {list.length - 1 === active && (
-                                  <div
+                                  <View
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={(e) => maskClose(e)}
                                   >
                                     {complete || locale.tour.completeText}
-                                  </div>
+                                  </View>
                                 )}
                                 {list.length - 1 !== active && (
-                                  <div
+                                  <View
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={() => changeStep('next')}
                                   >
                                     {next || locale.tour.nextStepText}
-                                  </div>
+                                  </View>
                                 )}
-                              </div>
-                            </div>
-                          </div>
+                              </View>
+                            </View>
+                          </View>
                         )}
                         {type === 'tile' && (
-                          <div className="nut-tour-content nut-tour-content-tile">
-                            <div className="nut-tour-content-inner">
+                          <View className="nut-tour-content nut-tour-content-tile">
+                            <View className="nut-tour-content-inner">
                               {item.content}
-                            </div>
-                          </div>
+                            </View>
+                          </View>
                         )}
                       </>
                     )}
@@ -260,10 +266,10 @@ export const Tour: FunctionComponent<
                 </Popover>
               </>
             )}
-          </div>
+          </View>
         )
       })}
-    </div>
+    </View>
   )
 }
 

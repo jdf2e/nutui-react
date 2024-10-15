@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { isObject } from '@/utils'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,7 +25,7 @@ const defaultProps = {
   strokeWidth: 5,
   radius: 50,
   strokeLinecap: 'round',
-  color: '#fa2c19',
+  color: '#FF0F23',
   background: '#e5e9f2',
   clockwise: true,
 } as CircleProgressProps
@@ -146,8 +147,8 @@ export const CircleProgress: FunctionComponent<
 
   return (
     <div className={classes} style={styles} {...restProps}>
-      <div style={circleStyle()} />
-      <div className="nut-circleprogress-text">{children}</div>
+      <View style={circleStyle()} />
+      <View className="nut-circleprogress-text">{children}</View>
     </div>
   )
 }

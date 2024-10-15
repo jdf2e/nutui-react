@@ -13,6 +13,7 @@ import {
   canvasToTempFilePath,
   CanvasContext,
 } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type SignatureType = 'jpg' | 'png'
@@ -31,7 +32,7 @@ const defaultProps = {
   canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
-  strokeStyle: '#1a1a1a',
+  strokeStyle: '#1A1A1A',
 } as SignatureProps
 
 const InternalSignature: ForwardRefRenderFunction<
@@ -193,8 +194,8 @@ const InternalSignature: ForwardRefRenderFunction<
   }, [])
 
   return (
-    <div className={`${classPrefix} ${className}`} {...rest}>
-      <div className={`${classPrefix}-inner spcanvas_WEAPP`} ref={wrapRef}>
+    <View className={`${classPrefix} ${className}`} {...rest}>
+      <View className={`${classPrefix}-inner spcanvas_WEAPP`} ref={wrapRef}>
         {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
           <canvas
             id={canvasId}
@@ -220,8 +221,8 @@ const InternalSignature: ForwardRefRenderFunction<
             onTouchCancel={endEventHandler}
           />
         )}
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

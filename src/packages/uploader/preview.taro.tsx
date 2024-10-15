@@ -7,8 +7,8 @@ import {
 } from '@nutui/icons-react-taro'
 import { Image, View } from '@tarojs/components'
 import Progress from '@/packages/progress/index.taro'
-import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/upload'
+import { FileItem } from '@/packages/uploader/file-item.taro'
+import { ERROR } from '@/packages/uploader/utils'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,
@@ -33,7 +33,7 @@ export const Preview: React.FunctionComponent<any> = ({
       {fileList.length !== 0 &&
         fileList.map((item: any, index: number) => {
           return (
-            <div
+            <View
               className={`nut-uploader-preview ${previewType}`}
               key={item.uid}
             >
@@ -46,21 +46,21 @@ export const Preview: React.FunctionComponent<any> = ({
                 </View>
               )}
               {previewType === 'picture' && !children && (
-                <div className="nut-uploader-preview-img">
+                <View className="nut-uploader-preview-img">
                   {item.status === 'ready' ? (
-                    <div className="nut-uploader-preview-progress">
-                      <div className="nut-uploader-preview-progress-msg">
+                    <View className="nut-uploader-preview-progress">
+                      <View className="nut-uploader-preview-progress-msg">
                         {item.message}
-                      </div>
-                    </div>
+                      </View>
+                    </View>
                   ) : (
                     item.status !== 'success' && (
-                      <div className="nut-uploader-preview-progress">
+                      <View className="nut-uploader-preview-progress">
                         {renderIcon(item)}
-                        <div className="nut-uploader-preview-progress-msg">
+                        <View className="nut-uploader-preview-progress-msg">
                           {item.message}
-                        </div>
-                      </div>
+                        </View>
+                      </View>
                     )
                   )}
                   {item.type?.includes('image') ? (
@@ -85,33 +85,33 @@ export const Preview: React.FunctionComponent<any> = ({
                           onClick={() => handleItemClick(item, index)}
                         />
                       ) : (
-                        <div className="nut-uploader-preview-img-file">
-                          <div
+                        <View className="nut-uploader-preview-img-file">
+                          <View
                             onClick={() => handleItemClick(item, index)}
                             className="nut-uploader-preview-img-file-name"
                           >
                             <LinkIcon color="#808080" />
                             <span>&nbsp;{item.name}</span>
-                          </div>
-                        </div>
+                          </View>
+                        </View>
                       )}
                     </>
                   )}
                   {item.status === 'success' ? (
-                    <div className="tips">{item.name}</div>
+                    <View className="tips">{item.name}</View>
                   ) : null}
-                </div>
+                </View>
               )}
 
               {previewType === 'list' && (
-                <div className="nut-uploader-preview-list">
-                  <div
+                <View className="nut-uploader-preview-list">
+                  <View
                     className={`nut-uploader-preview-img-file-name ${item.status}`}
                     onClick={() => handleItemClick(item, index)}
                   >
                     <LinkIcon />
                     <span>&nbsp;{item.name}</span>
-                  </div>
+                  </View>
                   {deletable && (
                     <Del
                       color="#808080"
@@ -126,9 +126,9 @@ export const Preview: React.FunctionComponent<any> = ({
                       showText={false}
                     />
                   )}
-                </div>
+                </View>
               )}
-            </div>
+            </View>
           )
         })}
     </>

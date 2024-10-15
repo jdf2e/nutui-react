@@ -208,7 +208,7 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 | --- | --- | --- | --- |
 | value | The value of the currently active tab panel | `number` \| `string` | `0` |
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
-| activeColor | Label selected color | `string` | `#1a1a1a` |
+| activeColor | Label selected color | `string` | `#1A1A1A` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
 | activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |

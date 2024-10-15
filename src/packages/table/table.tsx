@@ -5,7 +5,7 @@ import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import useTableSticky from './useTableSticky'
+import { useTableSticky } from './utils'
 
 export type TableProps = BasicTableProps
 

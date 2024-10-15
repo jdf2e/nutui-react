@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   useState,
 } from 'react'
+import { View } from '@tarojs/components'
 import { ArrowLeft } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
@@ -124,13 +125,13 @@ const InternalAddress: ForwardRefRenderFunction<
     return (
       <>
         {custom && (
-          <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
+          <View className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
             {React.isValidElement(backIcon) ? (
               backIcon
             ) : (
               <ArrowLeft color="#cccccc" />
             )}
-          </div>
+          </View>
         )}
       </>
     )
@@ -179,7 +180,7 @@ const InternalAddress: ForwardRefRenderFunction<
           title={title || locale.address.selectRegion}
           onClose={handleClose}
         >
-          <div
+          <View
             className={`${classPrefix} ${className || ''}`}
             style={{ ...style }}
           >
@@ -195,7 +196,7 @@ const InternalAddress: ForwardRefRenderFunction<
                 onSwitch={onSwitchModule}
               />
             }
-          </div>
+          </View>
         </Popup>
       )}
     </>

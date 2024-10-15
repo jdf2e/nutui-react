@@ -4,7 +4,7 @@ import Progress from '@/packages/progress'
 
 import Image from '@/packages/image'
 import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/upload'
+import { ERROR } from '@/packages/uploader/utils'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,

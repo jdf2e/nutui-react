@@ -1,6 +1,7 @@
 import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -97,14 +98,14 @@ export const FixedNav: FunctionComponent<
           onClick={() => onUpdateValue(false)}
         />
       )}
-      <div className="list">
+      <View className="list">
         {children || (
-          <div className={`${classPrefix}-list`}>
+          <View className={`${classPrefix}-list`}>
             {list.map((item: any, index) => {
               return (
-                <div
+                <View
                   className={`${classPrefix}-list-item`}
-                  onClick={(event) => handleClick(item, event)}
+                  onClick={(event) => handleClick(item, event as any)}
                   key={item.id || index}
                 >
                   {React.isValidElement(item.icon) ? (
@@ -112,27 +113,29 @@ export const FixedNav: FunctionComponent<
                   ) : (
                     <img src={item.icon} alt="" />
                   )}
-                  <div className={`${classPrefix}-list-text`}>{item.text}</div>
-                  {item.num && <div className="b">{item.num}</div>}
-                </div>
+                  <View className={`${classPrefix}-list-text`}>
+                    {item.text}
+                  </View>
+                  {item.num && <View className="b">{item.num}</View>}
+                </View>
               )
             })}
-          </div>
+          </View>
         )}
-      </div>
+      </View>
 
-      <div className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
+      <View className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
         {content || (
           <>
             <ArrowLeft color="#fff" />
-            <div className="text">
+            <View className="text">
               {visible
                 ? activeText || locale.fixednav.activeText
                 : inactiveText || locale.fixednav.inactiveText}
-            </div>
+            </View>
           </>
         )}
-      </div>
+      </View>
     </div>
   )
 }

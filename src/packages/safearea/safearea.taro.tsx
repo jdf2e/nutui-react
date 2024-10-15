@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent } from '@/utils/typings'
 
 export interface SafeAreaProps extends BasicComponent {
@@ -9,7 +10,7 @@ export interface SafeAreaProps extends BasicComponent {
 const classPrefix = 'nut-safe-area'
 export const SafeArea: FC<SafeAreaProps> = (props) => {
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         `${classPrefix}-position-${props.position}`

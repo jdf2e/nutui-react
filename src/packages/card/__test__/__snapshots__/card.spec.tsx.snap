@@ -52,17 +52,17 @@ exports[`description slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             388
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -76,17 +76,17 @@ exports[`description slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             378
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -108,7 +108,7 @@ exports[`description slot test 1`] = `
           class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
-            class="nut-tag-text"
+            class="nut-tag-text nut-tag-text-plain"
           >
             厂商配送
           </span>
@@ -161,17 +161,17 @@ exports[`extra slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             388
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -185,17 +185,17 @@ exports[`extra slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             378
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -217,7 +217,7 @@ exports[`extra slot test 1`] = `
           class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
-            class="nut-tag-text"
+            class="nut-tag-text nut-tag-text-plain"
           >
             厂商配送
           </span>
@@ -275,17 +275,17 @@ exports[`priceTag slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             388
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -311,7 +311,7 @@ exports[`priceTag slot test 1`] = `
           class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
-            class="nut-tag-text"
+            class="nut-tag-text nut-tag-text-plain"
           >
             厂商配送
           </span>
@@ -364,17 +364,17 @@ exports[`props test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             388
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -388,17 +388,17 @@ exports[`props test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             378
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -420,7 +420,7 @@ exports[`props test 1`] = `
           class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
-            class="nut-tag-text"
+            class="nut-tag-text nut-tag-text-plain"
           >
             厂商配送
           </span>
@@ -473,17 +473,17 @@ exports[`tag slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             388
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>
@@ -497,17 +497,17 @@ exports[`tag slot test 1`] = `
             ¥
           </div>
           <div
-            class="nut-price-integer nut-price-integer-normal"
+            class="nut-price-integer nut-price-integer-normal "
           >
             378
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             .
           </div>
           <div
-            class="nut-price-decimal nut-price-decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal "
           >
             00
           </div>

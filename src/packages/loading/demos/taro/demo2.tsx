@@ -4,7 +4,7 @@ import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
 const Demo2 = () => {
   return (
     <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
+      <ConfigProvider theme={{ nutuiLoadingIconColor: '#FF0F23' }}>
         <Loading type="circular" />
       </ConfigProvider>
       <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>

@@ -35,7 +35,7 @@ export const UPLOADING = 'uploading'
 export const SUCCESS = 'success'
 export const ERROR = 'error'
 
-export class Upload {
+export class Utils {
   options: UploadOptions
 
   constructor(options: UploadOptions) {
@@ -81,7 +81,7 @@ export class Upload {
   }
 }
 
-export class UploaderTaro extends Upload {
+export class UploaderTaro extends Utils {
   constructor(options: UploadOptions) {
     super(options)
   }
