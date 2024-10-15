@@ -1,18 +1,8 @@
 .nut-col {
-  float: left;
+  //float: left;
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
-
-  &.nut-col-gutter {
-    &:last-child {
-      padding-right: 0 !important;
-    }
-
-    &:first-child {
-      padding-left: 0 !important;
-    }
-  }
 }
 
 [dir='rtl'] .nut-col,
@@ -32,18 +22,20 @@
   }
 }
 
+// RN 不支持 calc
+// dart-sass: math.div -> round & *
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: calc((100 / 24) * #{$i} * 1%);
+    margin-left: #{$i * 4.166666666} + '%';
   }
 
   [dir='rtl'] .nut-col-offset-#{$i},
   .nut-rtl .nut-col-offset-#{$i} {
     margin-left: 0;
-    margin-right: calc((100 / 24) * #{$i} * 1%);
+    margin-right: #{$i * 4.166666666} + '%';
   }
 
   .nut-col-#{$i} {
-    width: calc((100 / 24) * #{$i} * 1%);
+    width: #{$i * 4.166666666} + '%';
   }
 }

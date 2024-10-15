@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Cell } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -13,6 +13,7 @@ import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const ButtonDemo = () => {
   const [translated] = useTranslate({
@@ -56,48 +57,33 @@ const ButtonDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>设置 open-type </h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo1 />
-        </Cell>
-        <h2>{translated.ce5c5446}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo2 />
-        </Cell>
-        <h2>{translated.e51e4582}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo3 />
-        </Cell>
-        <h2>{translated['0aaad622']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo4 />
-        </Cell>
-        <h2>{translated['7db1a8b2']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo5 />
-        </Cell>
-        <h2>{translated.ce5c5447}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo6 />
-        </Cell>
-        <h2>{translated.a52bef0c}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo7 />
-        </Cell>
-        <h2>{translated['0aaad620']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo8 />
-        </Cell>
-        <h2>{translated.c9e6df49}</h2>
-        <Cell>
-          <Demo9 />
-        </Cell>
-        <h2>{translated['781b07fd']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo10 />
-        </Cell>
-      </div>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        {!harmonyAndRn() ? (
+          <>
+            <View className="h2">设置 open-type </View>
+            <Demo1 />
+          </>
+        ) : null}
+
+        <View className="h2">{translated.ce5c5446}</View>
+        <Demo2 />
+        <View className="h2">{translated.e51e4582}</View>
+        <Demo3 />
+        <View className="h2">{translated['0aaad622']}</View>
+        <Demo4 />
+        <View className="h2">{translated['7db1a8b2']}</View>
+        <Demo5 />
+        <View className="h2">{translated.ce5c5447}</View>
+        <Demo6 />
+        <View className="h2">{translated.a52bef0c}</View>
+        <Demo7 />
+        <View className="h2">{translated['0aaad620']}</View>
+        <Demo8 />
+        <View className="h2">{translated.c9e6df49}</View>
+        <Demo9 />
+        <View className="h2">{translated['781b07fd']}</View>
+        <Demo10 />
+      </ScrollView>
     </>
   )
 }

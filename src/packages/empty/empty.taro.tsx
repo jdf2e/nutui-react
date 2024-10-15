@@ -1,8 +1,23 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View, Image } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import type { EmptyAction } from './types'
-import { Button } from '@/packages/button/button.taro'
+import {
+  Button,
+  ButtonFill,
+  ButtonSize,
+  ButtonType,
+} from '@/packages/button/button.taro'
+
+export interface EmptyAction {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 
 type statusOptions = {
   [key: string]: string
@@ -50,7 +65,8 @@ export const Empty: FunctionComponent<
     size,
     status,
     actions,
-    ...rest
+    style,
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -61,73 +77,66 @@ export const Empty: FunctionComponent<
   const imageUrl = image || defaultStatus[status]
   const imageNode =
     typeof imageUrl === 'string' ? (
-      <img className="img" src={imageUrl} alt="empty" />
+      <Image
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        src={imageUrl}
+      />
     ) : (
       imageUrl
     )
 
   useEffect(() => {
+    const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
     setImgStyle(() => {
       if (!imageSize) {
         return {}
       }
-      if (typeof imageSize === 'number') {
+      if (isRN || typeof imageSize !== 'number') {
         return {
-          width: `${imageSize}px`,
-          height: `${imageSize}px`,
+          width: imageSize,
+          height: imageSize,
         }
       }
       return {
-        width: imageSize,
-        height: imageSize,
+        width: `${imageSize}px`,
+        height: `${imageSize}px`,
       }
     })
   }, [imageSize])
-  const classes = classNames({
-    [`${classPrefix}-${size}`]: size !== 'base',
-  })
-  const cls = classNames(classPrefix, classes, className)
+  const cls = classNames(classPrefix, className)
 
   return (
-    <div className={cls} {...rest}>
-      <div className={`${classPrefix}-image`} style={imgStyle}>
+    <View className={cls} style={style}>
+      <View className={`${classPrefix}-${size}`} style={imgStyle}>
         {imageNode}
-      </div>
+      </View>
       {typeof title === 'string' && title ? (
-        <div className={`${classPrefix}-title`}>{title}</div>
+        <View className={`${classPrefix}-title`}>{title}</View>
       ) : (
         title
       )}
       {typeof description === 'string' ? (
-        <div className={`${classPrefix}-description`}>{description}</div>
+        <View className={`${classPrefix}-description`}>{description}</View>
       ) : (
         description
       )}
-      {actions.length > 0 && (
-        <div className={`${classPrefix}-actions`}>
-          {actions.map((item, index) => {
+      {actions.length ? (
+        <View className={`${classPrefix}-actions`}>
+          {actions.map((action, index) => {
+            const { text, ...rest } = action
             return (
-              <Button
-                className={classNames({
-                  [`${classPrefix}-actions-right`]: actions.length === 1,
-                  [`${classPrefix}-actions-left`]:
-                    actions.length > 1 && index === 0,
-                })}
-                type={`${
-                  actions.length > 1 && index === 0 ? 'default' : 'primary'
-                }`}
-                size="small"
-                fill="outline"
-                key={`action-${index}`}
-              >
-                {item?.text}
-              </Button>
+              <View className={`${classPrefix}-action`} key={index}>
+                <Button {...rest}>{action?.text}</Button>
+              </View>
             )
           })}
-        </div>
-      )}
+        </View>
+      ) : null}
       {children}
-    </div>
+    </View>
   )
 }
 

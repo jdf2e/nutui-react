@@ -1,13 +1,11 @@
-.avatar-demo {
-  .nut-cell {
-    align-items: flex-end;
-    border-radius: 0;
+.cell-avatar,
+.avatar-demo .nut-cell {
+  align-items: flex-end;
+  border-radius: 0;
 
-    & > div {
-      margin-inline-end: 30px;
-    }
+  & > div,
+  & > taro-view-core,
+  & > view {
+    margin-inline-end: 30px;
   }
-}
-.demo-avatar {
-  color: #fff;
 }

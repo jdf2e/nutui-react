@@ -1,8 +1,10 @@
 .nut-indicator {
   display: flex;
+  flex-direction: row;
   width: auto;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
 
   &-dot {
     display: inline-block;
@@ -34,7 +36,7 @@
     align-items: center;
     justify-content: center;
 
-    .nut-indicator-dot {
+    &-dot {
       margin: $indicator-dot-margin 0;
 
       &:first-child {
@@ -46,12 +48,13 @@
       }
     }
 
-    .nut-indicator-active {
+    &-active {
       width: $indicator-dot-size;
       height: $indicator-dot-active-size;
     }
   }
 }
+
 [dir='rtl'] .nut-indicator,
 .nut-rtl .nut-indicator {
   &-dot {

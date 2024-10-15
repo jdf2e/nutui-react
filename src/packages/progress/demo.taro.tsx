@@ -1,6 +1,5 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
-import { Cell } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -11,6 +10,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -49,34 +49,33 @@ const ProgressDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
-        <h2>{translated.customStyle}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
-        <h2>{translated.noShowPercentage}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <h2>{translated.customContent}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <h2>{translated.customSize}</h2>
+      <ScrollView className={`demo ${web() ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
+        <Demo1 />
+        <View className="h2">{translated.customStyle}</View>
+        <Demo2 />
+        <View className="h2">{translated.noShowPercentage}</View>
+        <Demo3 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.customContent}</View>
+            <Demo4 />
+          </>
+        )}
+        <View className="h2">{translated.customSize}</View>
         <Demo5 />
-        <h2>{translated.statusDisplay}</h2>
+        <View className="h2">{translated.statusDisplay}</View>
         <Demo6 />
-        <h2>{translated.dynamicChange}</h2>
+
+        <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        <h2>{translated.lazy}</h2>
-        <Cell>
-          <Demo8 />
-        </Cell>
-      </div>
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.lazy}</View>
+            <Demo8 />
+          </>
+        )}
+      </ScrollView>
     </>
   )
 }

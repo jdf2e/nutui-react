@@ -8,7 +8,7 @@ import React, {
   MouseEvent,
 } from 'react'
 import { MaskClose } from '@nutui/icons-react'
-import { formatNumber } from './util'
+import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'

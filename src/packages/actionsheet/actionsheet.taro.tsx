@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+import { View } from '@tarojs/components'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -71,12 +72,12 @@ export const ActionSheet: FunctionComponent<
         onCancel && onCancel()
       }}
     >
-      <div className={`${className}`} style={style}>
+      <View className={`${className}`} style={style}>
         {options.length ? (
-          <div className={`${classPrefix}-list`}>
+          <View className={`${classPrefix}-list`}>
             {options.map((item, index) => {
               return (
-                <div
+                <View
                   className={`${classPrefix}-item ${
                     item.disabled ? 'disabled' : ''
                   } ${item.danger ? 'danger' : ''}`}
@@ -84,26 +85,26 @@ export const ActionSheet: FunctionComponent<
                   onClick={() => chooseItem(item, index)}
                 >
                   {item[optionKey.name]}
-                  <div className={`${classPrefix}-item-description`}>
+                  <View className={`${classPrefix}-item-description`}>
                     {item[optionKey.description]}
-                  </div>
-                </div>
+                  </View>
+                </View>
               )
             })}
-          </div>
+          </View>
         ) : (
           children
         )}
         {cancelText && (
-          <div
+          <View
             className={`${classPrefix}-cancel`}
             onClick={() => cancelActionSheet()}
           >
             {cancelText}
-          </div>
+          </View>
         )}
-      </div>
-      <div className={`${classPrefix}-safe-area`} />
+      </View>
+      <View className={`${classPrefix}-safe-area`} />
     </Popup>
   )
 }

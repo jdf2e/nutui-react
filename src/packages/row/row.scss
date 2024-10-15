@@ -1,4 +1,6 @@
 .nut-row {
+  display: flex;
+  flex-direction: row;
   width: 100%;
   overflow: hidden;
 
@@ -15,10 +17,6 @@
 
     &:after {
       display: none;
-    }
-
-    .nut-col {
-      float: none;
     }
   }
 

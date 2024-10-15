@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
+import { View, ITouchEvent } from '@tarojs/components'
 import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -22,7 +23,7 @@ export interface SearchBarProps extends BasicComponent {
   onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
   onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
   onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onClear?: (event: MouseEvent<HTMLDivElement>) => void
+  onClear?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
 }
 
@@ -135,42 +136,44 @@ export const SearchBar: FunctionComponent<
   const renderLeftIn = () => {
     if (!leftIn) return null
     return (
-      <div className={`${classPrefix}-leftin ${classPrefix}-icon`}>
+      <View className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
-      </div>
+      </View>
     )
   }
   const renderLeft = () => {
     if (!backable && !left) return null
     return (
-      <div className={`${classPrefix}-left`}>
+      <View className={`${classPrefix}-left`}>
         {backable ? <ArrowLeft size="16" /> : left}
-      </div>
+      </View>
     )
   }
   const renderRightIn = () => {
     if (!rightIn) return null
     return (
-      <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
+      <View className={`${classPrefix}-rightin ${classPrefix}-icon`}>
         {rightIn}
-      </div>
+      </View>
     )
   }
   const renderRight = () => {
     if (!right) return null
-    return <div className={`${classPrefix}-right`}>{right}</div>
+    return <View className={`${classPrefix}-right`}>{right}</View>
   }
   const handleClear = () => {
     return (
-      <div
+      <View
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
         <MaskClose size={16} />
-      </div>
+      </View>
     )
   }
-  const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
+  const clearaVal = (
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     if (disabled || readOnly) {
       return
     }
@@ -188,25 +191,25 @@ export const SearchBar: FunctionComponent<
     }
   }
   return (
-    <div
+    <View
       className={`${classPrefix} ${
         disabled ? `${classPrefix}-disabled` : ''
       }  ${className || ''}`}
       style={style}
     >
       {renderLeft()}
-      <div
+      <View
         className={`${classPrefix}-content ${
           shape === 'round' ? `${classPrefix}-round` : ''
         }`}
       >
         {renderLeftIn()}
-        <div className="nut-searchbar-input-box">{renderField()}</div>
+        <View className="nut-searchbar-input-box">{renderField()}</View>
         {clearable && !value && renderRightIn()}
         {clearable && value && handleClear()}
-      </div>
+      </View>
       {renderRight()}
-    </div>
+    </View>
   )
 }
 

@@ -1,0 +1,24 @@
+@import '../hoverbuttonitem/hoverbuttonitem.scss';
+
+.nut-hoverbutton {
+  display: flex;
+  flex-direction: column;
+  gap: $hoverbutton-spacing;
+
+  &-container {
+    position: fixed;
+    right: $hoverbutton-position-right;
+    bottom: $hoverbutton-position-bottom;
+    z-index: 10;
+  }
+
+  &-container-rn {
+    position: absolute;
+  }
+}
+
+[dir='rtl'] .nut-hoverbutton-container,
+.nut-hoverbutton-container-rtl {
+  right: auto;
+  left: $hoverbutton-position-right;
+}

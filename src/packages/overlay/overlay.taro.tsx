@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface OverlayProps extends BasicComponent {
   zIndex: number
@@ -84,16 +85,8 @@ export const Overlay: FunctionComponent<
     afterClose && afterClose()
   }
 
-  return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      classNames={`${classPrefix}-slide`}
-      unmountOnExit
-      timeout={duration}
-      in={innerVisible}
-      onEntered={onHandleOpened}
-      onExited={onHandleClosed}
-    >
+  function renderHarmony() {
+    return innerVisible ? (
       <View
         ref={nodeRef}
         className={classes}
@@ -104,7 +97,36 @@ export const Overlay: FunctionComponent<
       >
         {children}
       </View>
-    </CSSTransition>
+    ) : null
+  }
+
+  return (
+    <>
+      {!harmonyAndRn() ? (
+        <CSSTransition
+          nodeRef={nodeRef}
+          classNames={`${classPrefix}-slide`}
+          unmountOnExit
+          timeout={duration}
+          in={innerVisible}
+          onEntered={onHandleOpened}
+          onExited={onHandleClosed}
+        >
+          <View
+            ref={nodeRef}
+            className={classes}
+            style={styles}
+            {...(rest as any)}
+            catchMove={lockScroll}
+            onClick={handleClick}
+          >
+            {children}
+          </View>
+        </CSSTransition>
+      ) : (
+        renderHarmony()
+      )}
+    </>
   )
 }
 

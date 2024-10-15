@@ -10,7 +10,6 @@ declare module '*.less'
 declare module '*.scss'
 declare module '*.sass'
 declare module '*.styl'
-// declare module '@/packages/nutui.react.taro'
 
 declare namespace NodeJS {
   interface ProcessEnv {
@@ -24,5 +23,6 @@ declare namespace NodeJS {
       | 'quickapp'
       | 'qq'
       | 'jd'
+      | 'harmony'
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo4 = () => {
   const [visible, setVisible] = useState(false)
@@ -11,9 +12,10 @@ const Demo4 = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={handleToggleShow}>
-        不锁定背景滚动
-      </Button>
+      <Cell>
+        <View onClick={handleToggleShow}>不锁定背景滚动</View>
+      </Cell>
+
       <Overlay visible={visible} onClick={onClose} lockScroll={false} />
     </>
   )

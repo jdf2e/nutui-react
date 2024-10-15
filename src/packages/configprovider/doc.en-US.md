@@ -54,17 +54,17 @@ NutUI-React supports the following CSS variables:
 ```css
 :root,
 page {
-  --nutui-color-primary: #fa2c19;
+  --nutui-color-primary: #FF0F23;
   // The main content is colored, common words, general title content, detailed text browsing, general button text and chart guidance
-  --nutui-gray-7: #1a1a1a;
+  --nutui-gray-7: #1A1A1A;
   // Secondary text color, used for secondary headings, attribute indications, non-primary information guidance, etc.
   --nutui-black-10: #757575;
   // Non-operable content color for preset content, invalid content, special non-clickable buttons, component border lines, etc.
-  --nutui-gray-6: #bfbfbf;
+  --nutui-gray-6: #C2C4CC;
   // The base color of the page, used for the bottom of the card-style page, is always placed at the bottom of the page.
   --nutui-gray-5: #f4f4f4;
   // The background color is embedded in the card, which is used for information wrapping inside the card, and the perception is weak.
-  --nutui-gray-4: #f8f8f8;
+  --nutui-gray-4: #F7F8FC;
   // Card background color
   --nutui-black-3: #ffffff;
   // Page global mask, used for pop-up layers, pop-ups, full-page masks that new features lead to appear

@@ -1,5 +1,6 @@
-import Taro from '@tarojs/taro'
 import React from 'react'
+import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -48,47 +49,47 @@ const BadgeDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated['8ab98966']}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated['8ab98966']}</View>
         <Cell.Group>
           <Demo1 />
         </Cell.Group>
 
-        <h2>{translated['1e7a2282']}</h2>
+        <View className="h2">{translated['1e7a2282']}</View>
         <Cell.Group>
           <Demo2 />
         </Cell.Group>
 
-        <h2>{translated['781b07fd']}</h2>
+        <View className="h2">{translated['781b07fd']}</View>
         <Cell.Group>
           <Demo3 />
         </Cell.Group>
 
-        <h2>{translated['1c730245']}</h2>
+        <View className="h2">{translated['1c730245']}</View>
         <Cell.Group>
           <Demo4 />
         </Cell.Group>
 
-        <h2>{translated['1c730248']}</h2>
+        <View className="h2">{translated['1c730248']}</View>
         <Cell.Group>
           <Demo5 />
         </Cell.Group>
 
-        <h2>{translated['915d7b01']}</h2>
+        <View className="h2">{translated['915d7b01']}</View>
         <Cell.Group>
           <Demo6 />
         </Cell.Group>
 
-        <h2>{translated.f1089312}</h2>
+        <View className="h2">{translated.f1089312}</View>
         <Cell.Group>
           <Demo7 />
         </Cell.Group>
 
-        <h2>{translated.a8237653}</h2>
+        <View className="h2">{translated.a8237653}</View>
         <Cell.Group>
           <Demo8 />
         </Cell.Group>
-      </div>
+      </ScrollView>
     </>
   )
 }

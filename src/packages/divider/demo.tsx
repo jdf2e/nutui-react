@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
@@ -31,27 +30,17 @@ const DividerDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <h2>{translated.withText}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated.contentPosition}</h2>
         <Demo3 />
         <h2>{translated.dashed}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated.customStyle}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <h2>{translated.verticalDivider}</h2>
-        <Cell>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
       </div>
     </>
   )

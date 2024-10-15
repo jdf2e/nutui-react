@@ -1,0 +1,68 @@
+.nut-badge {
+  position: relative;
+  display: inline-block;
+}
+.nut-badge-icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  top: -10%;
+  right: -15%;
+  padding: 3px;
+  text-align: center;
+  border: 0px solid #ffffff;
+  border-radius: 14px;
+  z-index: 1;
+}
+.nut-badge-icon .nut-icon {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+}
+.nut-badge-sup {
+  height: 14px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  color: #fff;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: normal;
+  text-align: center;
+  border: 0px solid #ffffff;
+  border-radius: 14px;
+  min-width: 5px;
+  white-space: nowrap;
+  z-index: 1;
+}
+.nut-badge-one {
+  height: 14px;
+  width: 14px;
+  padding: 0;
+}
+.nut-badge-content {
+  transform: translateY(-50%) translateX(100%);
+}
+.nut-badge-dot {
+  width: 7px;
+  height: 7px;
+  border: 0px solid #ffffff;
+  border-radius: 7px;
+  padding: 0;
+}
+
+[dir=rtl] .nut-badge-icon,
+.nut-rtl .nut-badge-icon {
+  right: auto;
+  left: -15%;
+}
+[dir=rtl] .nut-badge-content {
+  transform: translateY(-50%) translateX(-100%);
+}
+.nut-rtl .nut-badge-content {
+  transform: translateY(-50%) translateX(-100%);
+}

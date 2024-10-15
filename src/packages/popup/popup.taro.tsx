@@ -212,14 +212,14 @@ export const Popup: FunctionComponent<
                 <View className={`${classPrefix}-title-left`}>{left}</View>
               )}
               {(title || description) && (
-                <div className={`${classPrefix}-title-title`}>
+                <View className={`${classPrefix}-title-title`}>
                   {title}
                   {description && (
-                    <div className={`${classPrefix}-title-description`}>
+                    <View className={`${classPrefix}-title-description`}>
                       {description}
-                    </div>
+                    </View>
                   )}
-                </div>
+                </View>
               )}
             </>
           )}

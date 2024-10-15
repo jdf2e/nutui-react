@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
 import './demo.scss'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -54,40 +53,24 @@ const AvatarDemo = () => {
     <>
       <div className="demo full avatar-demo">
         <h2>{translated['67f78db5']}</h2>
-        <Cell align="flex-end">
-          <Demo1 />
-        </Cell>
+        <Demo1 />
 
         <h2>{translated['3928b17e']}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated['049b6a97']}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <h2>{translated.a304dabf}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated['89bca4e7']}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <h2>{translated.e981579e}</h2>
         <Demo6 />
         <h2>{translated.f645fc65}</h2>
-        <Cell>
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         <h2>{translated['43f00872']}</h2>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        <Demo8 />
         <h2>{translated.f645fc66}</h2>
-        <Cell>
-          <Demo9 />
-        </Cell>
+        <Demo9 />
       </div>
     </>
   )

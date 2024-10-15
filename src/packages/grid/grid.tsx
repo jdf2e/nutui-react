@@ -1,7 +1,7 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { GridItem, GridItemProps } from '../griditem/griditem'
-import GridContext from './grid.context'
+import GridContext from './context'
 import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'

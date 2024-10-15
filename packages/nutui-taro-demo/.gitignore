@@ -8,7 +8,10 @@ src/base/
 src/business/
 src/dentry/
 src/dentry1/
+src/dataentry/
 src/exhibition/
 src/feedback/
 src/layout/
 src/nav/
+.npmrc
+nutui-react/

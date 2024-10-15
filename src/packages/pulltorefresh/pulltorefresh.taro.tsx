@@ -7,8 +7,10 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
 import { PullToRefreshType } from './types'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -42,6 +44,7 @@ const defaultProps = {
   scrollTop: 0,
   onRefresh: () => {},
 } as PullToRefreshProps
+
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   p
 ) => {
@@ -69,12 +72,15 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const pullingRef = useRef(false)
   const [status, setStatus] = useState<PullStatus>('pulling')
   const [height, setHeight] = useState(0)
+  const timer = useRef<Timeout>()
 
   const renderIcons = (status: string) => {
     return (
       <>
-        {(status === 'pulling' || status === 'complete') && <Loading />}
-        {(status === 'canRelease' || status === 'refreshing') && <More />}
+        {(status === 'pulling' || status === 'complete') &&
+          (!harmonyAndRn() ? <Loading /> : null)}
+        {(status === 'canRelease' || status === 'refreshing') &&
+          (!harmonyAndRn() ? <More /> : null)}
       </>
     )
   }
@@ -121,7 +127,14 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       )
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
+    clearTimeout(timer.current)
+    if (rn()) {
+      timer.current = setTimeout(() => {
+        handleTouchEnd()
+      }, 300)
+    }
   }
+
   async function doRefresh() {
     setHeight(headHeight)
     setStatus('refreshing')
@@ -139,6 +152,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     setHeight(0)
     setStatus('pulling')
   }
+
   const handleTouchEnd: any = () => {
     if (props.disabled) return
     pullingRef.current = false
@@ -155,7 +169,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const isAndroidWeApp =
     Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
   const springStyles = {
-    height: `${height}px`,
+    height: pxTransform(height),
     ...(!pullingRef.current || isAndroidWeApp
       ? { transition: 'height .3s ease' }
       : {}),
@@ -168,16 +182,46 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <View style={springStyles} className={`${classPrefix}-head`}>
-        <div
-          className={`${classPrefix}-head-content`}
-          style={{ height: headHeight }}
+      <View
+        style={springStyles}
+        className={classNames({
+          [`${classPrefix}-head`]: true,
+          [`${classPrefix}-primary-head`]: props.type === 'primary',
+        })}
+      >
+        <View
+          className={classNames({
+            [`${classPrefix}-head-content`]: true,
+            [`${classPrefix}-primary-head-content`]: props.type === 'primary',
+          })}
+          style={{ height: pxTransform(headHeight) }}
         >
-          <div>{renderStatusIcon()}</div>
-          <div>{renderStatusText()}</div>
-        </div>
+          <View
+            className={classNames({
+              [`${classPrefix}-status-icon`]: true,
+              [`${classPrefix}-primary-status-icon`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusIcon()}
+          </View>
+          <View
+            className={classNames({
+              [`${classPrefix}-status-text`]: true,
+              [`${classPrefix}-primary-status-text`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusText()}
+          </View>
+        </View>
       </View>
-      <div className={`${classPrefix}-content`}>{props.children}</div>
+      <View
+        className={classNames({
+          [`${classPrefix}-content`]: true,
+          [`${classPrefix}-primary-content}`]: props.type === 'primary',
+        })}
+      >
+        {props.children}
+      </View>
     </View>
   )
 }

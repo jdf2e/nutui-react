@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo2 = () => {
   const [visible, setVisible] = useState(false)
@@ -11,15 +12,15 @@ const Demo2 = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={handleToggleShow}>
-        自定义遮罩样式
-      </Button>
+      <Cell>
+        <View onClick={handleToggleShow}>自定义遮罩样式</View>
+      </Cell>
+
       <Overlay
         visible={visible}
         onClick={onClose}
         style={{
-          backgroundColor: 'rgba(0, 0, 0, .4)',
-          '--nutui-overlay-zIndex': 2000,
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
         }}
       />
     </>

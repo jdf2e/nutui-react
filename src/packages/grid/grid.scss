@@ -2,6 +2,8 @@
 
 .nut-grid {
   display: flex;
+  flex-direction: row;
+  align-items: stretch;
   flex-wrap: wrap;
   border: 0 solid $grid-border-color;
 

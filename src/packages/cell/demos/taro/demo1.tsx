@@ -1,9 +1,10 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
+import { ITouchEvent } from '@tarojs/components'
 
 const Demo1 = () => {
   const testClick = (
-    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {
     console.log('点击事件')
   }

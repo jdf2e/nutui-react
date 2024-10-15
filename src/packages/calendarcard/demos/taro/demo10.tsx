@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import {
   Cell,
   Popup,
@@ -28,11 +29,11 @@ const Demo10 = () => {
           value={date}
           onChange={(d: CalendarCardValue) => setDate(d as Date)}
         />
-        <div style={{ padding: '10px' }}>
+        <View style={{ padding: '10px' }}>
           <Button block type="danger" onClick={() => setVisible(false)}>
             确定
           </Button>
-        </div>
+        </View>
       </Popup>
     </>
   )

@@ -1,0 +1,252 @@
+.nut-searchbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 16px;
+  background: #F7F8FC;
+  color: #1A1A1A;
+  font-size: 14px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.nut-searchbar-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 4px;
+}
+.nut-searchbar-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nut-searchbar-clear {
+  width: 16px;
+  height: 16px;
+  color: undefined;
+}
+.nut-searchbar-rightin {
+  width: 16px;
+  height: 16px;
+  color: undefined;
+}
+.nut-searchbar-left, .nut-searchbar-right {
+  display: flex;
+}
+.nut-searchbar-left.nut-icon, .nut-searchbar-right.nut-icon {
+  width: 20px;
+  height: 20px;
+}
+.nut-searchbar-left {
+  margin-right: 16px;
+}
+.nut-searchbar-left > div {
+  margin-right: 16px;
+}
+.nut-searchbar-left > span {
+  margin-right: 16px;
+}
+.nut-searchbar-left > svg {
+  margin-right: 16px;
+}
+.nut-searchbar-left > div:last-child, .nut-searchbar-left > span:last-child, .nut-searchbar-left > svg:last-child {
+  margin-right: 0;
+}
+.nut-searchbar-right {
+  margin-left: 16px;
+}
+.nut-searchbar-right > div {
+  margin-left: 16px;
+}
+.nut-searchbar-right > span {
+  margin-left: 16px;
+}
+.nut-searchbar-right > svg {
+  margin-left: 16px;
+}
+.nut-searchbar-right > div:first-child, .nut-searchbar-right > span:first-child, .nut-searchbar-right > svg:first-child {
+  margin-left: 0;
+}
+.nut-searchbar-left > text {
+  margin-right: 16px;
+}
+.nut-searchbar-left > view {
+  margin-right: 16px;
+}
+.nut-searchbar-left > text:last-child, .nut-searchbar-left > view:last-child {
+  margin-right: 0;
+}
+.nut-searchbar-right > text {
+  margin-left: 16px;
+}
+.nut-searchbar-right > view {
+  margin-left: 16px;
+}
+.nut-searchbar-right > text:first-child, .nut-searchbar-right > view:first-child {
+  margin-left: 0;
+}
+.nut-searchbar-input-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.nut-searchbar-input {
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 4px;
+  font-size: 14px;
+  color: #1A1A1A;
+  caret-color: #1A1A1A;
+  background: transparent;
+  text-align: left;
+}
+.nut-searchbar-round {
+  border-radius: 18px;
+}
+.nut-searchbar-disabled {
+  cursor: not-allowed;
+}
+
+[dir=rtl] .nut-searchbar-left {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.nut-rtl .nut-searchbar-left {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > div {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > span {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > svg {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.nut-rtl .nut-searchbar-left > div {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.nut-rtl .nut-searchbar-left > span {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.nut-rtl .nut-searchbar-left > svg {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > div.nut-icon, [dir=rtl] .nut-searchbar-left > span.nut-icon, [dir=rtl] .nut-searchbar-left > svg.nut-icon,
+.nut-rtl .nut-searchbar-left > div.nut-icon,
+.nut-rtl .nut-searchbar-left > span.nut-icon,
+.nut-rtl .nut-searchbar-left > svg.nut-icon {
+  transform: rotate(180deg);
+}
+[dir=rtl] .nut-searchbar-left > div:last-child, [dir=rtl] .nut-searchbar-left > span:last-child, [dir=rtl] .nut-searchbar-left > svg:last-child,
+.nut-rtl .nut-searchbar-left > div:last-child,
+.nut-rtl .nut-searchbar-left > span:last-child,
+.nut-rtl .nut-searchbar-left > svg:last-child {
+  margin-right: 0;
+  margin-left: 0;
+}
+[dir=rtl] .nut-searchbar-right {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > div {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > span {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > svg {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right > div {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right > span {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right > svg {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > div:first-child, [dir=rtl] .nut-searchbar-right > span:first-child, [dir=rtl] .nut-searchbar-right > svg:first-child,
+.nut-rtl .nut-searchbar-right > div:first-child,
+.nut-rtl .nut-searchbar-right > span:first-child,
+.nut-rtl .nut-searchbar-right > svg:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+[dir=rtl] .nut-searchbar-left > text {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > view {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.nut-rtl .nut-searchbar-left > text {
+  margin-right: 0;
+  margin-left: 16px;
+}
+.nut-rtl .nut-searchbar-left > view {
+  margin-right: 0;
+  margin-left: 16px;
+}
+[dir=rtl] .nut-searchbar-left > text:last-child, [dir=rtl] .nut-searchbar-left > view:last-child,
+.nut-rtl .nut-searchbar-left > text:last-child,
+.nut-rtl .nut-searchbar-left > view:last-child {
+  margin-right: 0;
+  margin-left: 0;
+}
+[dir=rtl] .nut-searchbar-right > text {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > view {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right > text {
+  margin-left: 0;
+  margin-right: 16px;
+}
+.nut-rtl .nut-searchbar-right > view {
+  margin-left: 0;
+  margin-right: 16px;
+}
+[dir=rtl] .nut-searchbar-right > text:first-child, [dir=rtl] .nut-searchbar-right > view:first-child,
+.nut-rtl .nut-searchbar-right > text:first-child,
+.nut-rtl .nut-searchbar-right > view:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+[dir=rtl] .nut-searchbar-input {
+  text-align: right;
+}
+.nut-rtl .nut-searchbar-input {
+  text-align: right;
+}

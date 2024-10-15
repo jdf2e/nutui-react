@@ -76,6 +76,8 @@ export const Avatar: FunctionComponent<
   const classes = classNames({
     [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}`]: true,
     [`nut-avatar-${propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}-round`]:
+      shape === 'round' && true,
   })
   const cls = classNames(classPrefix, classes, className)
 
@@ -111,8 +113,8 @@ export const Avatar: FunctionComponent<
           children[i].setAttribute('data-index', i + 1)
         }
       }
-      const index = Number(avatarRef.current?.dataset?.index)
-      const maxCount = propAvatarGroup?.max
+      const index = Number(avatarRef?.current?.dataset?.index)
+      const maxCount = propAvatarGroup?.max || children.length
       setMaxSum(children.length)
       setAvatarIndex(index)
       if (
@@ -157,7 +159,7 @@ export const Avatar: FunctionComponent<
             <>
               {src && (
                 <Image
-                  className="avatar-img"
+                  className="nut-avatar-img"
                   src={src}
                   alt={alt}
                   style={{ objectFit: fit }}
@@ -167,15 +169,17 @@ export const Avatar: FunctionComponent<
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon`,
                   })
                 : null}
-              {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <User className="icon" />}
+              {children && <span className="nut-avatar-text">{children}</span>}
+              {!src && !icon && !children && (
+                <User className="nut-avatar-icon" />
+              )}
             </>
           )}
           {showMax && (
-            <div className="text">
+            <div className="nut-avatar-text">
               {propAvatarGroup?.maxContent
                 ? propAvatarGroup?.maxContent
                 : `+ ${avatarIndex - Number(propAvatarGroup?.max || 0)}`}

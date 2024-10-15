@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
+import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type RowEventType = 'row' | 'col'
@@ -43,8 +43,9 @@ export const Row: FunctionComponent<
   }
   const getClass = (prefix: string, type: string) => {
     const classType = type ? `nut-row-${prefix}-${type}` : ''
-    const className = prefix ? classType : `nut-row-${type}`
-    return className
+    if (prefix) return classType
+    if (type) return `nut-row-${type}`
+    return ''
   }
   const getClasses = () => {
     return classNames(
@@ -61,17 +62,24 @@ export const Row: FunctionComponent<
 
   return (
     <DataContext.Provider value={parentRow}>
-      {React.createElement(
-        'div',
-        {
-          className: classNames(getClasses(), className),
-          style,
-          onClick: (e: MouseEvent<HTMLDivElement>) => {
-            onClick && onClick(e, 'row')
-          },
-        },
-        children
-      )}
+      <div
+        className={classNames(getClasses(), className)}
+        style={style}
+        onClick={(e: MouseEvent<HTMLDivElement>) => {
+          onClick?.(e, 'row')
+        }}
+      >
+        {React.Children.map(children, (child, index) => {
+          // @ts-ignore
+          return child?.type?.displayName === 'NutCol'
+            ? // @ts-ignore
+              React.cloneElement(child, {
+                isFirst: index === 0,
+                isLast: index === React.Children.count(children) - 1,
+              })
+            : child
+        })}
+      </div>
     </DataContext.Provider>
   )
 }

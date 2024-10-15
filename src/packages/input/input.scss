@@ -1,9 +1,10 @@
 .nut-input {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
   flex: 1;
-  width: 100%;
+  align-items: center;
   padding: $input-padding;
   line-height: 24px;
   font-size: $input-font-size;
@@ -15,29 +16,34 @@
   .nut-icon {
     color: #c8c9cc;
   }
+}
 
-  .nut-input-native {
-    width: 100%;
-    color: $input-color;
-    flex: 1;
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    outline: 0 none;
-    font: inherit;
-    text-decoration: none;
-    background-color: transparent;
-  }
+.nut-input-native {
+  flex: 1;
+  color: $input-color;
+  font-size: $input-font-size;
+  padding: 0;
+  border: 0;
+  outline: 0 none;
+  text-decoration: none;
+  background-color: transparent;
+}
 
-  &-disabled {
-    color: $input-disabled-color !important;
+/* #ifndef rn */
+.nut-input-native::placeholder {
+  color: #757575;
+}
 
-    input:disabled {
-      background: none;
-      color: $input-disabled-color;
-      cursor: not-allowed;
-      opacity: 1;
-      -webkit-text-fill-color: $input-disabled-color;
-    }
+/* #endif */
+
+.nut-input-disabled {
+  color: $input-disabled-color !important;
+
+  input:disabled {
+    color: $input-disabled-color;
+    cursor: not-allowed;
+    background: none;
+    opacity: 1;
+    -webkit-text-fill-color: $input-disabled-color;
   }
 }

@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CellGroup from '@/packages/cellgroup'
 import CellGroupContext from '@/packages/cellgroup/context'
+import { useRtl } from '@/packages/configprovider'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -11,6 +12,7 @@ export interface CellProps extends BasicComponent {
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
   clickable: boolean
+  isLast: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -22,6 +24,7 @@ const defaultProps = {
   radius: '6px',
   align: 'flex-start',
   clickable: false,
+  isLast: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -40,6 +43,7 @@ export const Cell: FunctionComponent<
     extra,
     radius,
     align,
+    isLast,
     className,
     style,
     ...rest
@@ -48,6 +52,7 @@ export const Cell: FunctionComponent<
     ...props,
   }
 
+  const rtl = useRtl()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
   }
@@ -58,45 +63,56 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
-  const styles =
-    title || description
-      ? {}
-      : {
-          flex: 1,
-        }
   return (
-    <div
-      className={`${classNames(classPrefix, className, clickable ? `${classPrefix}-clickable` : '')}`}
-      onClick={(event) => handleClick(event)}
-      style={baseStyle}
-      {...rest}
-    >
-      {children || (
-        <>
-          {title || description ? (
-            <div className={`${classPrefix}-left`}>
-              {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
-              ) : null}
-              {description ? (
-                <div className={`${classPrefix}-description`}>
-                  {description}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
-          {extra ? (
-            <div
-              className={`${classPrefix}-extra`}
-              style={styles as React.CSSProperties}
-            >
-              {extra}
-            </div>
-          ) : null}
-        </>
-      )}
-      {ctx?.divider ? <div className={`${classPrefix}-divider`} /> : null}
-    </div>
+    <>
+      <div
+        className={`${classNames(
+          [
+            classPrefix,
+            className,
+            {
+              [`${classPrefix}-group-item`]: ctx?.group,
+            },
+          ],
+          clickable ? `${classPrefix}-clickable` : ''
+        )}`}
+        onClick={(event) => handleClick(event)}
+        style={baseStyle}
+        {...rest}
+      >
+        {children || (
+          <>
+            {title || description ? (
+              <div className={`${classPrefix}-left`}>
+                {title ? (
+                  <div className={`${classPrefix}-title`}>{title}</div>
+                ) : null}
+                {description ? (
+                  <div className={`${classPrefix}-description`}>
+                    {description}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+            {extra ? (
+              <div className={`${classPrefix}-extra`}>{extra}</div>
+            ) : null}
+          </>
+        )}
+      </div>
+      {ctx?.divider && !isLast ? (
+        <div
+          className={classNames([
+            {
+              [`${classPrefix}-divider`]: true,
+              [`${classPrefix}-divider-rtl`]: rtl,
+            },
+          ])}
+        >
+          <div className={`${classPrefix}-divider-inner`} />
+        </div>
+      ) : null}
+    </>
   )
 }
 

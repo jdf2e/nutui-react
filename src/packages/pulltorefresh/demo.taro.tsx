@@ -1,11 +1,13 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
@@ -31,19 +33,20 @@ const PullToRefreshDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-
-        <h2>{translated.scrollView}</h2>
+        <View className="h2">{translated.scrollView}</View>
         <Demo2 />
-
-        <h2>{translated.primary}</h2>
+        <View className="h2">{translated.primary}</View>
         <Demo3 />
-
-        <h2>{translated.disabled}</h2>
-        <Demo4 />
-      </div>
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.disabled}</View>
+            <Demo4 />
+          </>
+        )}
+      </ScrollView>
     </>
   )
 }

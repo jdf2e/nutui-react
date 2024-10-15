@@ -5,21 +5,21 @@ import '@testing-library/jest-dom'
 
 test('should icon snapshot match', () => {
   const { asFragment } = render(
-    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+    <Icon className="test" name="JD" color="#FF0F23" size="24" />
   )
   expect(asFragment()).toMatchSnapshot()
 })
 
-test('should color #fa2c19', async () => {
+test('should color #FF0F23', async () => {
   const { container } = render(
-    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+    <Icon className="test" name="JD" color="#FF0F23" size="24" />
   )
   expect(container.querySelector('i')?.style.color).toBeTruthy()
 })
 
 test('should classname test', async () => {
   const { container } = render(
-    <Icon className="test" name="JD" color="#fa2c19" size="24" />
+    <Icon className="test" name="JD" color="#FF0F23" size="24" />
   )
   expect(container.querySelector('.test')).toBeInTheDocument()
 })
@@ -31,7 +31,7 @@ test('should onclick called', () => {
       data-testid="test"
       className="test"
       name="JD"
-      color="#fa2c19"
+      color="#FF0F23"
       size="24"
       onClick={handleClick}
     />

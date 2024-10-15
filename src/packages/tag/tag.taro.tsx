@@ -5,8 +5,8 @@ import React, {
   ReactNode,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { View } from '@tarojs/components'
-import { Close } from '@nutui/icons-react-taro'
+import { View, ITouchEvent, Text } from '@tarojs/components'
+// import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -28,7 +28,7 @@ export interface TagProps extends BasicComponent {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onClose: (e?: any) => void
 }
 
@@ -43,7 +43,7 @@ const defaultProps = {
   closeable: false,
   closeIcon: null,
   onClose: (e: any) => {},
-  onClick: (e: MouseEvent<HTMLDivElement>) => {},
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
@@ -76,11 +76,24 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     [`${className}`]: className,
   })
 
-  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClick = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     onClick && onClick(e)
   }
   // 综合考虑 color、background、plain 组合使用时的效果
   const getStyle = (): CSSProperties => {
+    const style: CSSProperties = {}
+    // 标签背景与边框颜色
+    if (plain) {
+      style.borderColor = background
+    } else if (background) {
+      style.backgroundColor = background
+    }
+    return style
+  }
+
+  const getTextStyle = () => {
     const style: CSSProperties = {}
     // 标签内字体颜色
     if (color) {
@@ -88,27 +101,27 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     } else if (background && plain) {
       style.color = background
     }
-    // 标签背景与边框颜色
-    if (plain) {
-      style.borderColor = background
-    } else if (background) {
-      style.background = background
-    }
     return style
   }
+
+  const textClasses = classNames(`${classPrefix}-text`, {
+    [`${classPrefix}-text-plain`]: plain,
+  })
   return (
     <>
       {closeable ? (
         visible && (
-          <div
+          <View
             className={classes}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
             {children && (
-              <span className={`${classPrefix}-text`}>{children}</span>
+              <View className={textClasses} style={getTextStyle()}>
+                {children}
+              </View>
             )}
-            {React.isValidElement(closeIcon) ? (
+            {closeIcon ? (
               <View
                 className={`${classPrefix}-custom-icon`}
                 onClick={(e) => {
@@ -119,26 +132,38 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 {closeIcon}
               </View>
             ) : (
-              <Close
-                size={8}
+              // TODO: icon 适配
+              // <Close
+              //   size={8}
+              //   onClick={(e) => {
+              //     setVisible(false)
+              //     onClose && onClose(e)
+              //   }}
+              // />
+              <Text
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e)
                 }}
-              />
+                className={`${classPrefix}-custom-icon`}
+              >
+                X
+              </Text>
             )}
-          </div>
+          </View>
         )
       ) : (
-        <div
+        <View
           className={classes}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
           {children && (
-            <span className={`${classPrefix}-text`}>{children}</span>
+            <View className={textClasses} style={getTextStyle()}>
+              {children}
+            </View>
           )}
-        </div>
+        </View>
       )}
     </>
   )

@@ -7,14 +7,14 @@ const partItemStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   width: '20px',
-  height: '25px',
-  background: '#e8220e',
+  height: '20px',
+  background: '#fa2c19',
   color: '#fff',
-  fontSize: '14px',
-  borderRadius: '6px',
+  fontSize: '12px',
+  borderRadius: '4px',
 }
 const partItemSymbolStyle = {
-  margin: '0 5px',
+  margin: '0 2px',
 }
 const Demo8 = () => {
   const onUpdate = (v: any) => {
@@ -32,33 +32,17 @@ const Demo8 = () => {
 
   return (
     <Cell>
-      <span>
-        <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
-          <div
-            className="countdown-part-box"
-            style={{ display: 'flex', alignItems: 'center' }}
-          >
-            <div className="part-item-symbol" style={partItemSymbolStyle}>
-              {resetTime.d}天
-            </div>
-            <div className="part-item h" style={partItemStyle}>
-              {resetTime.h}
-            </div>
-            <span className="part-item-symbol" style={partItemSymbolStyle}>
-              :
-            </span>
-            <div className="part-item m" style={partItemStyle}>
-              {resetTime.m}
-            </div>
-            <span className="part-item-symbol" style={partItemSymbolStyle}>
-              :
-            </span>
-            <div className="part-item s" style={partItemStyle}>
-              {resetTime.s}
-            </div>
-          </div>
-        </CountDown>
-      </span>
+      <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={partItemStyle}>{resetTime.d}</div>
+          <span style={partItemSymbolStyle}>天</span>
+          <div style={partItemStyle}>{resetTime.h}</div>
+          <span style={partItemSymbolStyle}>:</span>
+          <div style={partItemStyle}>{resetTime.m}</div>
+          <span style={partItemSymbolStyle}>:</span>
+          <div style={partItemStyle}>{resetTime.s}</div>
+        </div>
+      </CountDown>
     </Cell>
   )
 }

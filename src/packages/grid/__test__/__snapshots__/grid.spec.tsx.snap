@@ -32,7 +32,7 @@ exports[`render with custom content 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item-text"
+          class="nut-grid-item-text nut-grid-item-text-horizontal"
         >
           <span>
             More
@@ -48,11 +48,11 @@ exports[`render with custom content 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
-          class="nut-grid-item-text"
+          class="nut-grid-item-text nut-grid-item-text-horizontal"
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-            style="background-color: #FA2C19; color: #666;"
+            style="background-color: #FF0F23; color: #666;"
           >
             <svg
               aria-labelledby="Image"
@@ -87,7 +87,7 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-          style="background-color: #FA2C19; color: #666;"
+          style="background-color: #FF0F23; color: #666;"
         >
           <svg
             aria-labelledby="Image"

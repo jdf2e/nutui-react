@@ -1,8 +1,11 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
+import { ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -11,7 +14,10 @@ export interface CellProps extends BasicComponent {
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
   clickable: boolean
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  isLast: boolean
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => void
 }
 
 const defaultProps = {
@@ -22,7 +28,10 @@ const defaultProps = {
   radius: '6px',
   align: 'flex-start',
   clickable: false,
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
+  isLast: false,
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => {},
 } as CellProps
 
 const classPrefix = 'nut-cell'
@@ -39,64 +48,81 @@ export const Cell: FunctionComponent<
     extra,
     radius,
     align,
+    isLast,
     className,
     style,
     clickable,
-    ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const rtl = useRtl()
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => {
     onClick(event)
   }
 
+  const radiusNumber = Number(String(radius).replace(/[^\d]/g, ''))
+
   const baseStyle = {
     ...style,
-    borderRadius: Number.isNaN(Number(radius)) ? String(radius) : `${radius}px`,
+    borderRadius: pxTransform(radiusNumber),
     alignItems: align,
   }
 
-  const styles =
-    title || description
-      ? {}
-      : {
-          flex: 1,
-        }
   return (
-    <div
-      className={`${classNames(classPrefix, className, clickable ? `${classPrefix}-clickable` : '')}`}
-      onClick={(event) => handleClick(event)}
-      style={baseStyle}
-      {...rest}
-    >
-      {children || (
-        <>
-          {title || description ? (
-            <div className={`${classPrefix}-left`}>
-              {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
-              ) : null}
-              {description ? (
-                <div className={`${classPrefix}-description`}>
-                  {description}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
-          {extra ? (
-            <div
-              className={`${classPrefix}-extra`}
-              style={styles as React.CSSProperties}
-            >
-              {extra}
-            </div>
-          ) : null}
-        </>
-      )}
-      {ctx?.divider ? <div className={`${classPrefix}-divider`} /> : null}
-    </div>
+    <>
+      <View
+        hoverStyle={{ opacity: clickable ? 0.7 : 1 }}
+        className={`${classNames(
+          [
+            classPrefix,
+            className,
+            {
+              [`${classPrefix}-group-item`]: ctx?.group,
+            },
+          ],
+          clickable ? `${classPrefix}-clickable` : ''
+        )}`}
+        onClick={(event) => handleClick(event)}
+        style={baseStyle}
+      >
+        {children || (
+          <>
+            {title || description ? (
+              <View className={`${classPrefix}-left`}>
+                {title ? (
+                  <View className={`${classPrefix}-title`}>{title}</View>
+                ) : null}
+                {description ? (
+                  <View className={`${classPrefix}-description`}>
+                    {description}
+                  </View>
+                ) : null}
+              </View>
+            ) : null}
+            {extra ? (
+              <View className={`${classPrefix}-extra`}>{extra}</View>
+            ) : null}
+          </>
+        )}
+      </View>
+      {ctx?.divider && !isLast ? (
+        <View
+          className={classNames([
+            {
+              [`${classPrefix}-divider`]: true,
+              [`${classPrefix}-divider-rtl`]: rtl,
+            },
+          ])}
+        >
+          <View className={`${classPrefix}-divider-inner`} />
+        </View>
+      ) : null}
+    </>
   )
 }
 

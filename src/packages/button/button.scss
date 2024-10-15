@@ -2,6 +2,13 @@
   position: relative;
   display: flex;
   display: inline-block;
+  /* #ifdef rn harmony*/
+  width: 80px;
+  /* #endif */
+  /* #ifndef rn harmony*/
+  width: auto;
+  /* #endif */
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -20,13 +27,19 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: $button-default-color;
   background: $button-default-background-color;
+  border-width: $button-border-width;
 
   &-text {
     margin-left: $button-text-icon-margin;
-
-    &.right {
+    &-right {
       margin-right: $button-text-icon-margin;
     }
+  }
+
+  &-children {
+    display: flex;
+    flex-direction: row;
+    background: transparent;
   }
 
   &::before {
@@ -56,9 +69,12 @@
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    /* #ifndef rn harmony */
     background: initial;
+    /* #endif */
     .nut-icon {
       font-size: $button-default-font-size;
       width: $button-default-font-size;
@@ -73,6 +89,11 @@
     }
   }
 
+  &-disabled {
+    cursor: not-allowed;
+    color: #ffffff;
+  }
+
   &.nut-button-icononly {
     width: $button-default-height;
     padding: 0;
@@ -80,27 +101,27 @@
 
   &-default {
     padding: $button-default-padding;
-    border: $button-border-width solid $button-default-border-color;
+    border-style: solid;
+    border-color: $button-default-border-color;
 
-    &.nut-button-disabled {
-      color: $button-default-disabled-color;
-      background: transparent;
+    &-disabled,
+    &-solid-disabled {
+      color: $button-primary-color;
+      background: $button-default-disabled;
+      border-color: $button-default-disabled;
     }
 
-    &.nut-button-none {
-      background: transparent;
-
-      &.nut-button-disabled {
+    &-none {
+      &-disabled {
         color: $button-default-disabled-color;
       }
     }
 
-    &.nut-button-outline,
-    &.nut-button-dashed {
-      background: transparent;
-
-      &.nut-button-disabled {
-        color: $button-default-disabled-color;
+    &-outline,
+    &-dashed {
+      &-disabled {
+        background: transparent;
+        color: $button-default-disabled;
         border-color: $button-default-disabled;
       }
     }
@@ -121,6 +142,10 @@
       width: $button-xlarge-font-size;
       height: $button-xlarge-font-size;
     }
+    &-children {
+      font-size: $button-xlarge-font-size;
+      font-weight: $button-large-font-weight;
+    }
   }
 
   &-large {
@@ -134,6 +159,11 @@
       width: $button-large-font-size;
       height: $button-large-font-size;
     }
+
+    &-children {
+      font-size: $button-large-font-size;
+      font-weight: $button-large-font-weight;
+    }
   }
 
   &-small {
@@ -145,6 +175,10 @@
       font-size: $button-small-font-size;
       width: $button-small-font-size;
       height: $button-small-font-size;
+    }
+
+    &-children {
+      font-size: $button-small-font-size;
     }
   }
 
@@ -158,45 +192,57 @@
       width: $button-mini-font-size;
       height: $button-mini-font-size;
     }
+
+    &-children {
+      font-size: $button-mini-font-size;
+    }
   }
 
   &-primary {
     color: $button-primary-color;
-    background: $button-primary-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
+    border-color: transparent;
 
-    &.nut-button-disabled {
+    &-children {
+      color: $button-primary-color;
+    }
+
+    &-solid {
+      background: $button-primary-background-color;
+      color: $button-primary-color;
+      border-color: transparent;
+    }
+
+    &-disabled,
+    &-solid-disabled {
+      color: $button-primary-color;
       background: $button-primary-disabled;
       border-color: $button-primary-disabled;
     }
 
-    &.nut-button-none {
-      background: transparent;
+    &-none {
       color: $button-primary-border-color;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-primary-disabled;
       }
     }
 
-    &.nut-button-outline {
-      background: transparent;
+    &-outline {
       color: $button-primary-border-color;
-      border: $button-border-width solid $button-primary-border-color;
+      border-color: $button-primary-border-color;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
 
-    &.nut-button-dashed {
-      background: transparent;
+    &-dashed {
       color: $button-primary-border-color;
-      border: $button-border-width dashed $button-primary-border-color;
+      border-color: $button-primary-border-color;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
@@ -207,27 +253,33 @@
     color: $button-success-color;
     background: $button-success-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
+    border-color: transparent;
 
-    &.nut-button-disabled {
+    &-children {
+      color: $button-success-color;
+    }
+
+    &-solid-disabled {
       background: $button-success-disabled;
       border-color: $button-success-disabled;
     }
 
-    &.nut-button-outline,
-    &.nut-button-dashed {
+    &-outline,
+    &-dashed {
       color: $button-success-border-color;
       border-color: $button-success-border-color;
-      background: transparent;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
 
-    &.nut-button-none {
+    &-none {
       color: $button-success-border-color;
+      &-disabled {
+        color: $button-success-disabled;
+      }
     }
   }
 
@@ -235,27 +287,33 @@
     color: $button-info-color;
     background: $button-info-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
+    border-color: transparent;
 
-    &.nut-button-disabled {
+    &-children {
+      color: $button-info-color;
+    }
+
+    &-solid-disabled {
       background: $button-info-disabled;
       border-color: $button-info-disabled;
     }
 
-    &.nut-button-outline,
-    &.nut-button-dashed {
+    &-outline,
+    &-dashed {
       color: $button-info-border-color;
       border-color: $button-info-border-color;
-      background: transparent;
 
-      &.nut-button-disabled {
-        color: $button-primary-disabled;
-        border-color: $button-primary-disabled;
+      &-disabled {
+        color: $button-info-disabled;
+        border-color: $button-info-disabled;
       }
     }
 
-    &.nut-button-none {
+    &-none {
       color: $button-info-border-color;
+      &-disabled {
+        color: $button-info-disabled;
+      }
     }
   }
 
@@ -263,27 +321,33 @@
     color: $button-danger-color;
     background: $button-danger-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
+    border-color: transparent;
 
-    &.nut-button-disabled {
+    &-children {
+      color: $button-danger-color;
+    }
+
+    &-solid-disabled {
       background: $button-danger-disabled;
       border-color: $button-danger-disabled;
     }
 
-    &.nut-button-outline,
-    &.nut-button-dashed {
+    &-outline,
+    &-dashed {
       color: $button-danger-border-color;
       border-color: $button-danger-border-color;
-      background: transparent;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-danger-disabled;
         border-color: $button-danger-disabled;
       }
     }
 
-    &.nut-button-none {
+    &-none {
       color: $button-danger-border-color;
+      &-disabled {
+        color: $button-danger-disabled;
+      }
     }
   }
 
@@ -291,27 +355,35 @@
     color: $button-warning-color;
     background: $button-warning-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
+    border-color: transparent;
 
-    &.nut-button-disabled {
+    &-children {
+      color: $button-warning-color;
+    }
+
+    &-disabled,
+    &-solid-disabled {
+      color: $button-warning-color;
       background: $button-warning-disabled;
       border-color: $button-warning-disabled;
     }
 
-    &.nut-button-outline,
-    &.nut-button-dashed {
+    &-outline,
+    &-dashed {
       color: $button-warning-border-color;
       border-color: $button-warning-border-color;
-      background: transparent;
 
-      &.nut-button-disabled {
+      &-disabled {
         color: $button-warning-disabled;
         border-color: $button-warning-disabled;
       }
     }
 
-    &.nut-button-none {
+    &-none {
       color: $button-warning-border-color;
+      &-disabled {
+        color: $button-warning-disabled;
+      }
     }
   }
 
@@ -320,34 +392,19 @@
     width: 100%;
   }
 
-  &-solid {
-    color: $button-primary-color;
-    background: $button-primary-background-color;
-    background-origin: border-box;
-    border: $button-border-width solid transparent;
-
-    &.nut-button-disabled {
-      color: $button-default-disabled-color;
-      background: $button-default-disabled;
-    }
-  }
-
-  &.nut-button-outline,
-  &.nut-button-dashed {
+  &-outline {
     background: transparent;
+    border-style: solid;
   }
 
-  &.nut-button-none {
+  &-dashed {
+    background: transparent;
+    border-style: dashed;
+  }
+
+  &-none {
     background: transparent;
     border-color: transparent;
-    background: transparent;
-  }
-
-  &-disabled {
-    cursor: not-allowed;
-    color: #ffffff;
-    background: $button-default-disabled;
-    border-color: $button-default-disabled;
   }
 
   &-loading {
@@ -358,16 +415,16 @@
   &-round {
     border-radius: $button-border-radius;
 
-    &.nut-button-xlarge,
-    &.nut-button-large {
+    &-xlarge,
+    &-large {
       border-radius: $button-large-border-radius;
     }
 
-    &.nut-button-small {
+    &-small {
       border-radius: $button-small-border-radius;
     }
 
-    &.nut-button-mini {
+    &-mini {
       border-radius: $button-mini-border-radius;
     }
   }
@@ -387,6 +444,7 @@
       margin-left: $button-text-icon-margin;
     }
   }
+
   &::before {
     left: auto;
     right: 50%;

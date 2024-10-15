@@ -1,7 +1,11 @@
 .nut-switch {
   cursor: pointer;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  width: $switch-width;
+  height: $switch-height;
+  line-height: $switch-line-height;
   background-color: $switch-open-background-color;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
@@ -11,53 +15,44 @@
 
   &-button {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    height: $switch-inside-height;
+    width: $switch-inside-width;
+    transform: $switch-inside-close-transform;
+    border-radius: $switch-inside-border-radius;
     background: $color-primary-text;
     transition: transform 0.3s;
     box-shadow: $switch-button-box-shadow;
-  }
-
-  &-base {
-    width: $switch-width;
-    height: $switch-height;
-    line-height: $switch-line-height;
-
-    .nut-switch-button {
-      height: $switch-inside-height;
-      width: $switch-inside-width;
+    &-open {
+      transform: $switch-inside-open-transform;
+      &-rtl {
+        transform: var(--nutui-switch-inside-open-transform, translateX(-18px));
+      }
+    }
+    &-close {
       transform: $switch-inside-close-transform;
-    }
-
-    &.nut-switch-open {
-      .nut-switch-button {
-        transform: $switch-inside-open-transform;
-      }
-
-      &.nut-switch-disabled {
-        background-color: $switch-open-disabled-background-color;
-      }
-    }
-
-    &.nut-switch-close {
-      .nut-switch-close-line {
-        width: 12px;
-        height: 2px;
-      }
-
-      &.nut-switch-disabled {
-        background-color: $switch-close-disabled-background-color;
+      &-rtl {
+        transform: var(--nutui-switch-inside-close-transform, translateX(-2px));
       }
     }
   }
 
   &-close {
     background-color: $switch-close-background-color;
-
     &-line {
+      width: 12px;
+      height: 2px;
       background: $switch-close-line-background-color;
       border-radius: 2px;
+    }
+  }
+
+  &-disabled {
+    background-color: $switch-open-disabled-background-color;
+    &-close {
+      background-color: $switch-close-disabled-background-color;
     }
   }
 
@@ -65,36 +60,18 @@
     color: $color-primary-text;
     font-size: $font-size-small;
 
-    &.open {
+    &-open {
       transform: translateX(-18px);
-    }
-
-    &.close {
-      transform: translateX(14px);
-    }
-  }
-}
-
-[dir='rtl'] .nut-switch,
-.nut-rtl .nut-switch {
-  &-base {
-    .nut-switch-button {
-      transform: var(--nutui-switch-inside-close-transform, translateX(-14%));
-    }
-
-    &.nut-switch-open {
-      .nut-switch-button {
-        transform: var(--nutui-switch-inside-open-transform, translateX(-90%));
+      &-rtl {
+        transform: translateX(18px);
       }
     }
-  }
-  &-label {
-    &.open {
-      transform: translateX(18px);
-    }
 
-    &.close {
-      transform: translateX(-14px);
+    &-close {
+      transform: translateX(18px);
+      &-rtl {
+        transform: translateX(-18px);
+      }
     }
   }
 }

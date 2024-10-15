@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputNumber, Toast } from '@nutui/nutui-react'
+import { Cell, InputNumber, Toast } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   const [inputValue, setInputValue] = useState(0)
@@ -15,14 +15,16 @@ const Demo8 = () => {
     }, 2000)
   }
   return (
-    <InputNumber
-      value={inputValue}
-      min={-6}
-      max={6}
-      onChange={onChange}
-      onOverlimit={overlimit}
-      async
-    />
+    <Cell>
+      <InputNumber
+        value={inputValue}
+        min={-6}
+        max={6}
+        onChange={onChange}
+        onOverlimit={overlimit}
+        async
+      />
+    </Cell>
   )
 }
 export default Demo8

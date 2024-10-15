@@ -1,0 +1,37 @@
+.nut-trendarrow {
+  display: inline-flex;
+  align-items: center;
+  color: #1A1A1A;
+  font-size: 14px;
+}
+.nut-trendarrow-icon-before {
+  margin-right: 4px;
+}
+.nut-trendarrow-icon-after {
+  margin-left: 4px;
+}
+.nut-trendarrow-rate {
+  vertical-align: middle;
+  display: inline;
+}
+.nut-trendarrow .nut-icon {
+  vertical-align: middle;
+}
+
+[dir=rtl] .nut-trendarrow-icon-before {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+.nut-rtl .nut-trendarrow-icon-before {
+  margin-right: 0;
+  margin-left: 4px;
+}
+[dir=rtl] .nut-trendarrow-icon-after {
+  margin-left: 0;
+  margin-right: 4px;
+}
+.nut-rtl .nut-trendarrow-icon-after {
+  margin-left: 0;
+  margin-right: 4px;
+}

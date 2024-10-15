@@ -1,7 +1,10 @@
 import React, { FunctionComponent } from 'react'
 
+import { ITouchEvent, View } from '@tarojs/components'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface SwitchProps extends BasicComponent {
   checked: boolean
@@ -9,7 +12,10 @@ export interface SwitchProps extends BasicComponent {
   disabled: boolean
   activeText: string
   inactiveText: string
-  onChange: (val: boolean, event: React.MouseEvent) => void
+  onChange: (
+    val: boolean,
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -34,42 +40,76 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   }
   const classPrefix = 'nut-switch'
 
+  const rtl = useRtl()
+
   const [value, setValue] = usePropsValue<boolean>({
     value: checked,
     defaultValue: defaultChecked,
   })
 
   const classes = () => {
-    return `${classPrefix} ${value ? 'nut-switch-open' : 'nut-switch-close'} ${
-      disabled ? `${classPrefix}-disabled` : ''
-    } ${`${classPrefix}-base`} ${className}`
+    return classNames([
+      classPrefix,
+      className,
+      {
+        [`${classPrefix}-close`]: !value,
+        [`${classPrefix}-disabled`]: disabled,
+        [`${classPrefix}-disabled-close`]: disabled && !value,
+      },
+    ])
   }
 
-  const onClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+  const onClick = (
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     if (disabled) return
     onChange && onChange(!value, event)
     setValue(!value)
   }
   return (
-    <div
+    <View
       className={classes()}
       onClick={(e) => onClick(e)}
       style={style}
       {...rest}
     >
-      <div className={`${classPrefix}-button`}>
-        {!value && <div className={`${classPrefix}-close-line`} />}
-        {activeText && (
-          <>
-            {value ? (
-              <div className={`${classPrefix}-label open`}>{activeText}</div>
-            ) : (
-              <div className={`${classPrefix}-label close`}>{inactiveText}</div>
-            )}
-          </>
+      <View
+        className={classNames([
+          [`${classPrefix}-button`],
+          [
+            value
+              ? `${classPrefix}-button-open`
+              : `${classPrefix}-button-close`,
+          ],
+          {
+            [`${classPrefix}-button-open-rtl`]: rtl && value,
+            [`${classPrefix}-button-close-rtl`]: rtl && !value,
+          },
+        ])}
+      >
+        {!value && !activeText && (
+          <View className={`${classPrefix}-close-line`} />
         )}
-      </div>
-    </div>
+        {activeText && (
+          <View
+            className={classNames([
+              [`${classPrefix}-label`],
+              [
+                value
+                  ? `${classPrefix}-label-open`
+                  : `${classPrefix}-label-close`,
+              ],
+              {
+                [`${classPrefix}-label-open-rtl`]: rtl && value,
+                [`${classPrefix}-button-close-rtl`]: rtl && !value,
+              },
+            ])}
+          >
+            {value ? activeText : inactiveText}
+          </View>
+        )}
+      </View>
+    </View>
   )
 }
 

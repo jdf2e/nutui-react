@@ -4,6 +4,7 @@ var glob = require('glob')
 const path = require('path')
 const fs = require('fs-extra')
 let importStr = ``
+let importRNStr = ``
 let importMarkdownStr = ``
 let importScssStr = `\n`
 const packages = []
@@ -12,15 +13,16 @@ const raws = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro, exportEmpty, exclude } = element
+    let { name, show, type, taro, exportEmpty, exclude, rn } = element
     if (exclude) return
-    // if (show ) {
+
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`
+    importRNStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
+    importRNStr += `export * from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
     packages.push(name)
-    // }
-    // if (show) {
+
     glob
       .sync(
         path.join(__dirname, `../../src/packages/${name.toLowerCase()}/`) +
@@ -46,7 +48,7 @@ let fileStrBuild = `${importStr}
 export { ${packages.join(',')} };`
 
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.taro.react.build.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.react.build.taro.ts'),
   fileStrBuild,
   'utf8',
   (error) => {
@@ -66,11 +68,36 @@ fs.outputFile(
   }
 )
 
+
+let fileRNStrBuild = `${importRNStr}
+export { ${packages.join(',')} };`
+
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.react.build.rn.ts'),
+  fileRNStrBuild,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
+let fileRNStr = `${importRNStr}
+${importScssStr}
+export { ${packages.join(',')} };`
+fs.outputFile(
+  path.resolve(__dirname, '../../src/packages/nutui.react.rn.ts'),
+  fileRNStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
 let taroScssfileStr = `
 ${importScssStr}
 export default { "NutUI":"NutUI-Taro" };`
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.taro.scss.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.react.scss.taro.ts'),
   taroScssfileStr,
   'utf8',
   (error) => {

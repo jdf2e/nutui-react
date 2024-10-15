@@ -92,7 +92,7 @@ import { ActionSheet } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-actionsheet-background-color | 背景色 | `$color-background-overlay` |
 | \--nutui-actionsheet-border-radius | 列表和取消按钮圆角 | `0` |
-| \--nutui-actionsheet-border-color | 标题和取消位置的border色值 | `#f6f6f6` |
+| \--nutui-actionsheet-border-color | 标题和取消位置的border色值 | `#F7F8FC` |
 | \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `center` |
 | \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `none` |
 | \--nutui-actionsheet-item-line-height | 列表项行高 | `24px` |

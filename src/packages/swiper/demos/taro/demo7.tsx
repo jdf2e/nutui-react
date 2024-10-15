@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
+import { Image } from '@tarojs/components'
 
 const Demo7 = () => {
   const [initPage8, setInitPage8] = useState(0)
@@ -13,7 +14,7 @@ const Demo7 = () => {
     <Swiper defaultValue={0} loop previousMargin="20px" nextMargin="20px">
       {list.map((item) => (
         <Swiper.Item key={item}>
-          <img width="100%" height="100%" src={item} alt="" />
+          <Image style={{ width: '100%', height: '100%' }} src={item} />
         </Swiper.Item>
       ))}
     </Swiper>

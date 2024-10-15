@@ -1,20 +1,33 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
-import { User } from '@nutui/icons-react-taro'
+import { View, Text } from '@tarojs/components'
 
 const Demo3 = () => {
   return (
     <Cell
       title={
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <User />
-          <span style={{ marginLeft: '5px' }}>我是标题</span>
-        </div>
+        <View
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}
+        >
+          {/* <User /> */}
+          {/* <View style={{ marginLeft: 5 }}>我是标题</View> */}
+          <View>我是标题</View>
+        </View>
       }
       description={
-        <span>
-          我是描述<b style={{ color: 'red' }}>1</b>
-        </span>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          我是描述<Text style={{ color: 'red' }}>1</Text>
+        </View>
       }
       extra="描述文字"
     />

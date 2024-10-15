@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import '@nutui/icons-react-taro/dist/style_iconfont.css'
-import { Cell, Toast } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
+// import '@nutui/icons-react-taro/dist/style_iconfont.css'
+import { Toast } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -11,7 +12,6 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
-// import '@/packages/icon/demo.scss'
 
 const IconDemo = () => {
   const [translated] = useTranslate({
@@ -57,7 +57,7 @@ const IconDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           content={state.msg}
           visible={state.visible}
@@ -72,29 +72,19 @@ const IconDemo = () => {
             })
           }}
         />
-        <h2>{translated.svg}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
-        <h2>{translated['84aa6bce']}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
-        <h2>{translated.dab8a74f}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <h2>{translated['52c15454']}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <h2>{translated['7aeb5407']}</h2>
-        <Cell style={{ alignItems: 'center' }}>
-          <Demo5 />
-        </Cell>
+        <View className="h2">{translated.svg}</View>
+        <Demo1 />
+        <View className="h2">{translated['84aa6bce']}</View>
+        <Demo2 />
+        <View className="h2">{translated.dab8a74f}</View>
+        <Demo3 />
+        <View className="h2">{translated['52c15454']}</View>
+        <Demo4 />
+        <View className="h2">{translated['7aeb5407']}</View>
+        <Demo5 />
         <Demo6 />
         <Demo7 />
-      </div>
+      </ScrollView>
     </>
   )
 }

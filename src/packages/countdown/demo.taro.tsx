@@ -1,9 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-
+import { View, ScrollView } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import '@/packages/countdown/demo.scss'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -54,30 +53,30 @@ const CountDownDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo demo-countdown ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         }`}
       >
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.remainingTime}</h2>
+        <View className="h2">{translated.remainingTime}</View>
         <Demo2 />
-        <h2>{translated.format}</h2>
+        <View className="h2">{translated.format}</View>
         <Demo3 />
-        <h2>{translated.millisecond}</h2>
+        <View className="h2">{translated.millisecond}</View>
         <Demo4 />
-        <h2>{translated.serverTime}</h2>
+        <View className="h2">{translated.serverTime}</View>
         <Demo5 />
-        <h2>{translated.async}</h2>
+        <View className="h2">{translated.async}</View>
         <Demo6 />
-        <h2>{translated.controlTime}</h2>
+        <View className="h2">{translated.controlTime}</View>
         <Demo7 />
-        <h2>{translated.customStyle}</h2>
+        <View className="h2">{translated.customStyle}</View>
         <Demo8 />
-        <h2>{translated.handleControl}</h2>
+        <View className="h2">{translated.handleControl}</View>
         <Demo9 />
-      </div>
+      </ScrollView>
     </>
   )
 }

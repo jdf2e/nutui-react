@@ -1,11 +1,6 @@
 import React, { useRef } from 'react'
-import {
-  Cell,
-  CountDown,
-  Grid,
-  GridItem,
-  Button,
-} from '@nutui/nutui-react-taro'
+import { Cell, CountDown, Button, Grid } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 interface countdownRefState {
   start: () => void
@@ -26,6 +21,7 @@ const Demo9 = () => {
   const reset = () => {
     countDownRef.current && countDownRef.current.reset()
   }
+
   return (
     <>
       <Cell>
@@ -36,22 +32,23 @@ const Demo9 = () => {
           ref={countDownRef}
         />
       </Cell>
-      <Grid columns="3" style={{ marginBottom: '5px' }}>
-        <GridItem>
+
+      <Grid columns={3} style={{ marginBottom: pxTransform(5) }}>
+        <Grid.Item>
           <Button type="primary" onClick={start}>
             开始
           </Button>
-        </GridItem>
-        <GridItem>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={pause}>
             暂停
           </Button>
-        </GridItem>
-        <GridItem>
+        </Grid.Item>
+        <Grid.Item>
           <Button type="primary" onClick={reset}>
             重置
           </Button>
-        </GridItem>
+        </Grid.Item>
       </Grid>
     </>
   )

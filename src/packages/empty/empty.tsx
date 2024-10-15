@@ -1,9 +1,17 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { EmptyAction } from '@/packages/empty/index'
 
-import Button from '../button'
+import Button, { ButtonFill, ButtonSize, ButtonType } from '../button'
+
+export interface EmptyAction {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 
 type statusOptions = {
   [key: string]: string
@@ -51,6 +59,7 @@ export const Empty: FunctionComponent<
     size,
     status,
     actions,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -62,7 +71,14 @@ export const Empty: FunctionComponent<
   const imageUrl = image || defaultStatus[status]
   const imageNode =
     typeof imageUrl === 'string' ? (
-      <img className="img" src={imageUrl} alt="empty" />
+      <img
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        src={imageUrl}
+        alt="empty"
+      />
     ) : (
       imageUrl
     )
@@ -84,14 +100,11 @@ export const Empty: FunctionComponent<
       }
     })
   }, [imageSize])
-  const classes = classNames({
-    [`${classPrefix}-${size}`]: size !== 'base',
-  })
-  const cls = classNames(classPrefix, classes, className)
+  const cls = classNames(classPrefix, className)
 
   return (
     <div className={cls} {...rest}>
-      <div className={`${classPrefix}-image`} style={imgStyle}>
+      <div className={`${classPrefix}-${size}`} style={imgStyle}>
         {imageNode}
       </div>
       {typeof title === 'string' && title ? (
@@ -104,29 +117,18 @@ export const Empty: FunctionComponent<
       ) : (
         description
       )}
-      {actions.length > 0 && (
+      {actions.length ? (
         <div className={`${classPrefix}-actions`}>
-          {actions.map((item, index) => {
+          {actions.map((action, index) => {
+            const { text, ...rest } = action
             return (
-              <Button
-                className={classNames({
-                  [`${classPrefix}-actions-right`]: actions.length === 1,
-                  [`${classPrefix}-actions-left`]:
-                    actions.length > 1 && index === 0,
-                })}
-                type={`${
-                  actions.length > 1 && index === 0 ? 'default' : 'primary'
-                }`}
-                size="small"
-                fill="outline"
-                key={`action-${index}`}
-              >
-                {item?.text}
-              </Button>
+              <div className={`${classPrefix}-action`} key={index}>
+                <Button {...rest}>{action?.text}</Button>
+              </div>
             )
           })}
         </div>
-      )}
+      ) : null}
       {children}
     </div>
   )

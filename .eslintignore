@@ -10,12 +10,14 @@ iconfont.js
 .vscode
 **/nutui.react.build.ts
 **/nutui.react.scss.ts
-**/nutui.react.taro.scss.ts
+**/nutui.react.scss.taro.ts
 **/nutui.react.taro.ts
 **/nutui.react.ts
-**/nutui.taro.react.build.ts
+**/nutui.react.build.taro.ts
 **/app.config.ts
 packages/nutui-taro-demo/**/*
+packages/nutui-harmony/**/*
+packages/nutui-jdharmony/**/*
 packages/nutui-templates/**/*
 packages/nutui-codemod/test/*
 packages/nutui-codemod/transforms/__test__/*

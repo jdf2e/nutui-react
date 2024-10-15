@@ -87,7 +87,7 @@ import { TrendArrow } from '@nutui/nutui-react'
 | left | Whether to show an arrow to the left of the number | `boolean` | `false` |
 | sync | Whether the text color is in sync with the arrow | `boolean` | `true` |
 | color | Text color | `string` | `#333333` |
-| riseColor | Rise arrow color | `string` | `#fa2c19` |
+| riseColor | Rise arrow color | `string` | `#FF0F23` |
 | dropColor | Down arrow color | `string` | `#64b578` |
 | riseIcon | Custom Rise arrow icon | `string` | `<TriangleUp/>` |
 | dropIcon | Custom down arrow icon | `string` | `<TriangleDown/>` |

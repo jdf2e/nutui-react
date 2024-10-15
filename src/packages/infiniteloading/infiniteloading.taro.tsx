@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { ScrollView, ScrollViewProps } from '@tarojs/components'
+import { ScrollView, ScrollViewProps, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
@@ -179,25 +179,25 @@ export const InfiniteLoading: FunctionComponent<
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
     >
-      <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <div className="nut-infinite-top-tips">
+      <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
+        <View className="nut-infinite-top-tips">
           {pullingText || locale.infiniteloading.pullRefreshText}
-        </div>
-      </div>
-      <div className="nut-infinite-container">{children}</div>
-      <div className="nut-infinite-bottom">
+        </View>
+      </View>
+      <View className="nut-infinite-container">{children}</View>
+      <View className="nut-infinite-bottom">
         {isInfiniting ? (
-          <div className="nut-infinite-bottom-tips">
+          <View className="nut-infinite-bottom-tips">
             {loadingText || locale.infiniteloading.loadText}
-          </div>
+          </View>
         ) : (
           !hasMore && (
-            <div className="nut-infinite-bottom-tips">
+            <View className="nut-infinite-bottom-tips">
               {loadMoreText || locale.infiniteloading.loadMoreText}
-            </div>
+            </View>
           )
         )}
-      </div>
+      </View>
     </ScrollView>
   )
 }

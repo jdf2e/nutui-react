@@ -1,6 +1,8 @@
 import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
@@ -99,24 +101,38 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   })
   return (
     <>
-      <CSSTransition
-        nodeRef={cssRef}
-        in={showNotify}
-        timeout={300}
-        classNames="fade"
-        unmountOnExit
-        appear
-        position={position}
-        id={id}
-      >
-        <div
-          className={`${classes} ${className}`}
-          style={style}
-          onClick={clickHandle}
+      {Taro.getEnv() !== Taro.ENV_TYPE.RN ? (
+        <CSSTransition
+          nodeRef={cssRef}
+          in={showNotify}
+          timeout={300}
+          classNames="fade"
+          unmountOnExit
+          appear
+          position={position}
+          id={id}
         >
-          {children}
-        </div>
-      </CSSTransition>
+          <View
+            className={`${classes} ${className}`}
+            style={style}
+            onClick={clickHandle}
+          >
+            {children}
+          </View>
+        </CSSTransition>
+      ) : (
+        <>
+          {showNotify ? (
+            <View
+              className={`${classes} ${className}`}
+              style={{ ...style, position: 'absolute' }}
+              onClick={clickHandle}
+            >
+              {children}
+            </View>
+          ) : null}
+        </>
+      )}
     </>
   )
 }

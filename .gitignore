@@ -3,9 +3,10 @@ node_modules
 .idea
 .eslintcache
 /dist
+/dist-demo
 /libs
 /jd/upload.js
-yarn.lock
+# yarn.lock
 package-lock.json
 /cache
 /src/nutui.ts
@@ -23,6 +24,7 @@ package-lock.json
 /tsc/test
 /site_docs
 /coverage
+/packages/nutui-jdharmony
 
 # local env files
 .env.local

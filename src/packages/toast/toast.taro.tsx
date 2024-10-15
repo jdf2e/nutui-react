@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -189,8 +190,8 @@ export const Toast: FunctionComponent<
             clickCover()
           }}
         >
-          <div className={`${classPrefix} ${classes}`} id={id}>
-            <div
+          <View className={`${classPrefix} ${classes}`} id={id}>
+            <View
               className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
               style={contentStyle}
             >
@@ -198,11 +199,11 @@ export const Toast: FunctionComponent<
                 <p className={`${classPrefix}-icon-wrapper`}>{iconName()}</p>
               ) : null}
               {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
+                <View className={`${classPrefix}-title`}>{title}</View>
               ) : null}
               <span className={`${classPrefix}-text`}>{content || msg}</span>
-            </div>
-          </div>
+            </View>
+          </View>
         </Overlay>
       ) : null}
     </>

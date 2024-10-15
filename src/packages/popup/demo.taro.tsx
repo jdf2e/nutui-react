@@ -1,7 +1,9 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -78,31 +80,37 @@ const PopupDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.ce5c5446}</h2>
+      <ScrollView
+        className={`${!harmonyAndRn() ? `demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}` : ''}`}
+      >
+        <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
 
-        <h2>{translated.a74a1fd4}</h2>
+        <View className="h2">{translated.a74a1fd4}</View>
         <Demo2 />
 
-        <h2>{translated['7db1a8b2']}</h2>
+        <View className="h2">{translated['7db1a8b2']}</View>
         <Demo3 />
 
-        <h2>{translated[`7db1a8b3`]}</h2>
+        <View className="h2">{translated[`7db1a8b3`]}</View>
         <Demo4 />
 
-        <h2>{translated['0aaad620']}</h2>
+        <View className="h2">{translated['0aaad620']}</View>
         <Demo5 />
         {/* 等一下3.5.0 */}
-        {/* <h2>{translated.ea3d02f2}</h2>
+        {/* <View className="h2">{translated.ea3d02f2}</View>
         <Demo6 /> */}
 
-        <h2>{translated.c9e6df49}</h2>
-        <Demo7 />
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.c9e6df49}</View>
+            <Demo7 />
+          </>
+        )}
 
-        <h2>{translated.cfbdc782}</h2>
+        <View className="h2">{translated.cfbdc782}</View>
         <Demo8 />
-      </div>
+      </ScrollView>
     </>
   )
 }

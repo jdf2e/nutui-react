@@ -1,6 +1,6 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
 import { Toast } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -8,6 +8,7 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
+import { harmonyAndRn, web } from '@/utils/platform-taro'
 
 const ToastDemo = () => {
   const [translated] = useTranslate({
@@ -31,23 +32,32 @@ const ToastDemo = () => {
     },
   })
 
+  function demoClass() {
+    if (web()) {
+      return 'web'
+    }
+    if (!harmonyAndRn()) {
+      return 'full'
+    }
+    return ''
+  }
+
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${demoClass()}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.toastFunction}</h2>
+        <View className="h2">{translated.toastFunction}</View>
         <Toast id="test" />
         <Demo2 />
-
-        <h2>{translated.toastDuration}</h2>
+        <View className="h2">{translated.toastDuration}</View>
         <Demo3 />
-        <h2>{translated.toastCustomIcon}</h2>
+        <View className="h2">{translated.toastCustomIcon}</View>
         <Demo4 />
-        <h2>{translated.toastWordBreak}</h2>
+        <View className="h2">{translated.toastWordBreak}</View>
         <Demo5 />
-      </div>
+      </ScrollView>
     </>
   )
 }

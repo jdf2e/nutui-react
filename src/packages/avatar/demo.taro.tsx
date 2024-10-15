@@ -1,9 +1,9 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Cell } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import '@/packages/avatar/demo.scss'
+import './demo.scss'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -13,6 +13,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const AvatarDemo = () => {
   const [translated] = useTranslate({
@@ -55,46 +56,32 @@ const AvatarDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full avatar-demo`}
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} avatar-demo`}
       >
-        <h2>{translated['67f78db5']}</h2>
-        <Cell align="flex-end">
-          <Demo1 />
-        </Cell>
-        <h2>{translated['3928b17e']}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
-        <h2>{translated['049b6a97']}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <h2>{translated.a304dabf}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <h2>{translated['89bca4e7']}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
-        <h2>{translated.e981579e}</h2>
+        <View className="h2">{translated['67f78db5']}</View>
+        <Demo1 />
+        <View className="h2">{translated['3928b17e']}</View>
+        <Demo2 />
+        <View className="h2">{translated['049b6a97']}</View>
+        <Demo3 />
+        {harmonyAndRn() ? null : (
+          <>
+            <View className="h2">{translated.a304dabf}</View>
+            <Demo4 />
+            <View className="h2">{translated['89bca4e7']}</View>
+            <Demo5 />
+          </>
+        )}
+        <View className="h2">{translated.e981579e}</View>
         <Demo6 />
-        <h2>{translated.f645fc65}</h2>
-        <Cell>
-          <Demo7 />
-        </Cell>
-        <h2>{translated['43f00872']}</h2>
-        <Cell>
-          <Demo8 />
-        </Cell>
-        <h2>{translated.f645fc66}</h2>
-        <Cell>
-          <Demo9 />
-        </Cell>
-      </div>
+        <View className="h2">{translated.f645fc65}</View>
+        <Demo7 />
+        <View className="h2">{translated['43f00872']}</View>
+        <Demo8 />
+        <View className="h2">{translated.f645fc66}</View>
+        <Demo9 />
+      </ScrollView>
     </>
   )
 }

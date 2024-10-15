@@ -163,7 +163,7 @@ export default function App() {
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
 | \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `18px` |
 | \--nutui-dialog-close-height | 对话框关闭按钮的高度 | `18px` |
-| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#8c8c8c` |
+| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#888B94` |
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |

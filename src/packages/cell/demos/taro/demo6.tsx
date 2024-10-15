@@ -1,11 +1,14 @@
 import React from 'react'
-import { Cell, Button } from '@nutui/nutui-react-taro'
+import { Button, Cell } from '@nutui/nutui-react-taro'
+import { navigateTo, redirectTo } from '@tarojs/taro'
 import { ArrowRight, User } from '@nutui/icons-react-taro'
-import { redirectTo, navigateTo } from '@tarojs/taro'
+import { ITouchEvent, Text, View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   const onJumpclick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: ITouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>,
     link: string
   ) => {
     const replace = false
@@ -20,21 +23,21 @@ const Demo6 = () => {
           className="nutui-cell-clickable"
           title="链接"
           align="center"
-          extra={<ArrowRight />}
+          extra={harmonyAndRn() ? null : <ArrowRight />}
         />
         <Cell
           className="nutui-cell-clickable"
           title="URL 跳转"
           extra={
             <>
-              <span style={{ marginRight: '5px' }}>/pages/index/index</span>
-              <ArrowRight />
+              <View style={{ marginRight: pxTransform(5) }}>
+                /pages/index/index
+              </View>
+              {harmonyAndRn() ? null : <ArrowRight />}
             </>
           }
           align="center"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => {
+          onClick={(event) => {
             onJumpclick(event, '/pages/index/index')
           }}
         />
@@ -43,41 +46,54 @@ const Demo6 = () => {
       <Cell.Group>
         <Cell
           title={
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <span style={{ fontWeight: '500' }}>我是标题</span>
-              <span
+            <View
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                flexDirection: 'row',
+              }}
+            >
+              <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
+              <View
                 style={{
-                  color: '#8C8C8C',
-                  fontSize: '10px',
-                  marginLeft: '5px',
-                  lineHeight: 1.5,
+                  color: '#888B94',
+                  fontSize: pxTransform(10),
+                  marginLeft: pxTransform(5),
                 }}
               >
                 我是描述
-              </span>
-            </div>
+              </View>
+            </View>
           }
           extra={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <View
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+              }}
+            >
               More
-              <ArrowRight size={12} style={{ marginLeft: '5px' }} />
-            </div>
+              {harmonyAndRn() ? null : (
+                <ArrowRight size={12} style={{ marginLeft: 5 }} />
+              )}
+            </View>
           }
         />
         <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"
           title={
-            <div
+            <Text
               style={{
-                color: '#8C8C8C',
-                fontSize: '12px',
+                color: '#888B94',
+                fontSize: pxTransform(12),
               }}
             >
               我是描述
-            </div>
+            </Text>
           }
           extra={
             <Button type="primary" size="small">
@@ -90,14 +106,21 @@ const Demo6 = () => {
       <Cell.Group>
         <Cell
           title={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <User style={{ marginRight: '5px' }} /> 我是标题
-            </div>
+            <View
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+              }}
+            >
+              {harmonyAndRn() ? null : <User style={{ marginRight: 5 }} />}
+              我是标题
+            </View>
           }
-          extra={<ArrowRight />}
+          extra={harmonyAndRn() ? null : <ArrowRight />}
         />
         <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"
@@ -112,15 +135,20 @@ const Demo6 = () => {
       <Cell.Group>
         <Cell
           title={
-            <div
-              style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
+            <View
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'row',
+                color: 'blue',
+              }}
             >
               我是标题
-            </div>
+            </View>
           }
         />
         <Cell>
-          <div style={{ color: '#26bf26' }}>自定义内容</div>
+          <View style={{ color: '#26bf26' }}>自定义内容</View>
         </Cell>
       </Cell.Group>
     </>

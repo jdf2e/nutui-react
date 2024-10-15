@@ -87,7 +87,7 @@ import { TrendArrow } from '@nutui/nutui-react'
 | left | 是否在数字左侧显示箭头 | `boolean` | `false` |
 | sync | 文字颜色是否与箭头同步 | `boolean` | `true` |
 | color | 文字颜色 | `string` | `#333333` |
-| riseColor | 向上箭头颜色 | `string` | `#fa2c19` |
+| riseColor | 向上箭头颜色 | `string` | `#FF0F23` |
 | dropColor | 向下箭头颜色 | `string` | `#64b578` |
 | riseIcon | 自定义向上箭头icon | `React.ReactNode` | `<TriangleUp/>` |
 | dropIcon | 自定义向下箭头icon | `React.ReactNode` | `<TriangleDown/>` |

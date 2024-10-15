@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import '@/packages/layout/demo.scss'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -33,20 +33,14 @@ const LayoutDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
-        <h2>{translated.title1}</h2>
-        <div className="box-item">
-          <Demo1 />
-        </div>
-        <h2>{translated.title2}</h2>
-        <div className="box-item">
-          <Demo2 />
-        </div>
-        <h2>{translated.title3}</h2>
-        <div className="box-item">
-          <Demo3 />
-        </div>
-      </div>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.title1}</View>
+        <Demo1 />
+        <View className="h2">{translated.title2}</View>
+        <Demo2 />
+        <View className="h2">{translated.title3}</View>
+        <Demo3 />
+      </ScrollView>
     </>
   )
 }

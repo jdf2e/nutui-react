@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro'
 import { More, ArrowLeft } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 
 const Demo3 = () => {
   const [tab1value, setTab1value] = useState<string | number>('0')
@@ -26,7 +27,7 @@ const Demo3 = () => {
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
-        <div style={{ width: '100%' }}>
+        <View style={{ width: '100%' }}>
           <Tabs
             value={tab1value}
             onChange={(paneKey) => {
@@ -41,7 +42,7 @@ const Demo3 = () => {
             <TabPane title="Tab 3"> Tab 3 </TabPane>
             <TabPane title="Tab 4"> Tab 4 </TabPane>
           </Tabs>
-        </div>
+        </View>
       </NavBar>
 
       <NavBar

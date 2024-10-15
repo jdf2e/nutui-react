@@ -81,7 +81,7 @@ import { Progress } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | percent | 百分比 | `number` | `0` |
-| color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | background | 进度条背景颜色 | `string` | `#f3f3f3` |
 | strokeWidth | 进度条宽度 | `string` | `-` |
 | showText | 是否显示文字内容 | `boolean` | `false` |
@@ -99,7 +99,7 @@ import { Progress } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-progress-height | 进度条宽度 | `10px` |
 | \--nutui-progress-border-radius | 进度条边框圆角 | `12px` |
-| \--nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| \--nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | 进度条背景色 | `#f3f3f3` |
 | \--nutui-progress-text-color | 文本颜色 | `$color-primary-text` |
 | \--nutui-progress-text-padding | 文本内边距 | `0 5px` |

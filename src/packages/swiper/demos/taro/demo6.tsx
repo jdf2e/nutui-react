@@ -1,4 +1,5 @@
 import React from 'react'
+import { Image } from '@tarojs/components'
 import { Swiper } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
@@ -12,7 +13,7 @@ const Demo6 = () => {
     <Swiper defaultValue={0} direction="vertical" indicator>
       {list.map((item) => (
         <Swiper.Item key={item}>
-          <img width="100%" height="100%" src={item} alt="" />
+          <Image style={{ width: '100%', height: '100%' }} src={item} />
         </Swiper.Item>
       ))}
     </Swiper>

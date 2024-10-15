@@ -1,12 +1,13 @@
 import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
 import { IconFont } from '@nutui/icons-react-taro'
 
 const Demo4 = () => {
   return (
-    <>
+    <Cell>
       <IconFont
         name="dongdong"
-        color="#fa2c19"
+        color="#FF0F23"
         style={{ marginRight: '10px' }}
       />
       <IconFont
@@ -15,7 +16,7 @@ const Demo4 = () => {
         style={{ marginRight: '10px' }}
       />
       <IconFont name="dongdong" color="#ffd700" />
-    </>
+    </Cell>
   )
 }
 

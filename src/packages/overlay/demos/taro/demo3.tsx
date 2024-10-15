@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo3 = () => {
   const [visible, setVisible] = useState(false)
@@ -11,9 +12,10 @@ const Demo3 = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={handleToggleShow}>
-        设置动画时间
-      </Button>
+      <Cell>
+        <View onClick={handleToggleShow}>设置动画时间</View>
+      </Cell>
+
       <Overlay
         visible={visible}
         onClick={onClose}

@@ -1,10 +1,15 @@
 import React, { CSSProperties, useCallback } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
+import {
+  ButtonProps as MiniProgramButtonProps,
+  View,
+  Button as TaroButton,
+} from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -35,7 +40,7 @@ export interface ButtonProps
   disabled: boolean
   icon: React.ReactNode
   rightIcon: React.ReactNode
-  nativeType: 'submit' | 'reset' | 'button'
+  nativeType: 'submit' | 'reset' // | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -88,12 +93,29 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           }
         } else {
           style.color = '#fff'
+          if (harmonyAndRn()) {
+            style.backgroundColor = color
+          }
           style.background = color
           style.borderColor = 'transparent'
         }
       }
       return style
     }, [color, props.fill])
+
+    const getContStyle = useCallback(() => {
+      const style: CSSProperties = {}
+      if (props.color) {
+        if (props.fill === 'outline' || props.fill === 'dashed') {
+          style.color = color
+        } else {
+          style.color = '#fff'
+          style.background = 'transparent'
+          style.borderColor = 'transparent'
+        }
+      }
+      return style
+    }, [color])
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
@@ -107,42 +129,52 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
-      <button
+      <TaroButton
         {...rest}
         ref={ref}
-        type={nativeType}
+        formType={nativeType}
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
+          type === 'primary' && !props.fill
+            ? `${prefixCls}-${type}-solid`
+            : null,
           props.fill ? `${prefixCls}-${fill}` : null,
+          props.fill ? `${prefixCls}-${type}-${fill}` : null,
           children ? '' : `${prefixCls}-icononly`,
           {
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
+            [`${prefixCls}-${shape}-${size}`]: shape && size,
             [`${prefixCls}-block`]: block,
             [`${prefixCls}-disabled`]: disabled || loading,
+            [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
+              disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className
         )}
         style={{ ...getStyle(), ...style }}
-        onClick={(e) => handleClick(e)}
+        onClick={(e) => handleClick(e as any)}
       >
-        <div className="nut-button-wrap">
-          {loading && <Loading className="nut-icon-loading" />}
+        <View className="nut-button-wrap">
+          {loading && !harmonyAndRn() && (
+            <Loading className="nut-icon-loading" />
+          )}
           {!loading && icon ? icon : null}
           {children && (
-            <div
-              className={`${icon || loading ? 'nut-button-text' : ''}${
-                rightIcon ? ' nut-button-text right' : ''
+            <View
+              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`} ${icon || loading ? `nut-button-text` : ''}${
+                rightIcon ? ` nut-button-text-right` : ''
               }`}
+              style={harmonyAndRn() ? getContStyle() : {}}
             >
               {children}
-            </div>
+            </View>
           )}
           {rightIcon || null}
-        </div>
-      </button>
+        </View>
+      </TaroButton>
     )
   }
 )

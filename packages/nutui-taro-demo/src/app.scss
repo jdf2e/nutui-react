@@ -8,8 +8,6 @@ body {
 
 .demo {
   box-sizing: border-box;
-  min-height: 100vh;
-
   &.web {
     padding-top: 57px !important;
   }
@@ -27,15 +25,15 @@ body {
   &.full {
     padding: 57px 0 0 0;
 
-    h2 {
+    .h2 {
       padding-left: 17px;
     }
   }
 
   &-full {
-    padding: 0 0 0 0 !important;
+    padding: 0 0 0 0;
 
-    h2 {
+    .h2 {
       padding-left: 17px;
     }
   }
@@ -49,7 +47,9 @@ body {
     background: transparent;
   }
 
-  > h2 {
+  .h2,
+  h2,
+  .h5-h2 {
     margin-top: 30px;
     margin-bottom: 10px;
     font-size: 14px;
@@ -58,7 +58,7 @@ body {
     font-weight: normal;
   }
 
-  > p {
+  > .p {
     font-size: 12px;
   }
 
@@ -66,4 +66,10 @@ body {
     padding: 25px 18px;
     background: rgba(255, 255, 255, 1);
   }
+}
+
+// 隐藏jdhybird的提示页面
+#react-refresh-overlay,
+#webpack-dev-server-client-overlay {
+  display: none;
 }

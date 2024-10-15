@@ -1,21 +1,26 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const partItemStyle = {
-  flexShrink: 0,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '20px',
-  height: '25px',
-  background: '#e8220e',
+  backgroundColor: '#fa2c19',
   color: '#fff',
-  fontSize: '14px',
-  borderRadius: '6px',
+  ...{
+    width: pxTransform(20),
+    height: pxTransform(25),
+    fontSize: pxTransform(14),
+    borderRadius: pxTransform(6),
+  },
 }
 const partItemSymbolStyle = {
-  margin: '0 5px',
+  marginLeft: pxTransform(5),
+  marginRight: pxTransform(5),
 }
+
 const Demo8 = () => {
   const onUpdate = (v: any) => {
     setResetTime(v)
@@ -32,33 +37,23 @@ const Demo8 = () => {
 
   return (
     <Cell>
-      <span>
-        <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
-          <div
-            className="countdown-part-box"
-            style={{ display: 'flex', alignItems: 'center' }}
-          >
-            <div className="part-item-symbol" style={partItemSymbolStyle}>
-              {resetTime.d}天
-            </div>
-            <div className="part-item h" style={partItemStyle}>
-              {resetTime.h}
-            </div>
-            <span className="part-item-symbol" style={partItemSymbolStyle}>
-              :
-            </span>
-            <div className="part-item m" style={partItemStyle}>
-              {resetTime.m}
-            </div>
-            <span className="part-item-symbol" style={partItemSymbolStyle}>
-              :
-            </span>
-            <div className="part-item s" style={partItemStyle}>
-              {resetTime.s}
-            </div>
-          </div>
-        </CountDown>
-      </span>
+      <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <View style={partItemStyle}>{resetTime.d}</View>
+          <View style={partItemSymbolStyle}>天</View>
+          <View style={partItemStyle}>{resetTime.h}</View>
+          <View style={partItemSymbolStyle}>:</View>
+          <View style={partItemStyle}>{resetTime.m}</View>
+          <View style={partItemSymbolStyle}>:</View>
+          <View style={partItemStyle}>{resetTime.s}</View>
+        </View>
+      </CountDown>
     </Cell>
   )
 }

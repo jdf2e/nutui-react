@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import TimeDetail from '@/packages/timedetail/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -151,11 +152,11 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       onClose={closeFun}
       {...rest}
     >
-      <div className={classNames(classPrefix, className)}>
-        <div className={`${classPrefix}-content`}>
-          <div className={`${classPrefix}-content-left`}>
+      <View className={classNames(classPrefix, className)}>
+        <View className={`${classPrefix}-content`}>
+          <View className={`${classPrefix}-content-left`}>
             {options.map((item: DateType) => (
-              <div
+              <View
                 key={item[optionKey.valueKey]}
                 className={classNames('nut-timepannel', {
                   active: item[optionKey.valueKey] === activeDate,
@@ -163,9 +164,9 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
                 onClick={() => handleChange(item)}
               >
                 {item[optionKey.textKey]}
-              </div>
+              </View>
             ))}
-          </div>
+          </View>
           <TimeDetail
             options={options}
             optionKey={optionKey}
@@ -173,8 +174,8 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
             activeTime={activeTime}
             onSelect={handleSelectTime}
           />
-        </div>
-      </div>
+        </View>
+      </View>
     </Popup>
   )
 }

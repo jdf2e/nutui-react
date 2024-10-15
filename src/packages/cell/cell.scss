@@ -1,8 +1,8 @@
 @import '../cellgroup/cellgroup.scss';
-
 .nut-cell {
   position: relative;
   display: flex;
+  flex-direction: row;
   width: 100%;
   line-height: $cell-line-height;
   padding: $cell-padding;
@@ -11,13 +11,26 @@
   box-shadow: $cell-box-shadow;
   font-size: $cell-title-font-size;
   color: $cell-title-color;
-  margin: 10px 0;
+  margin-bottom: 10px;
   box-sizing: border-box;
+
+  &-group-item {
+    border-radius: 0;
+    box-shadow: 0 0 transparent;
+    margin: 0;
+  }
 
   &-left {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     flex: 1;
+  }
+
+  &-title,
+  &-description,
+  &-extra {
+    line-height: $cell-line-height;
   }
 
   &-description {
@@ -26,10 +39,12 @@
   }
 
   &-extra {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     flex: 1;
+    flex-shrink: 0;
     min-width: 0;
     word-break: break-all;
     font-size: $cell-extra-font-size;
@@ -53,6 +68,23 @@
       transform: translate(-50%, -50%);
       opacity: 0;
       content: ' ';
+    }
+  }
+
+  &-divider {
+    display: flex;
+    min-height: 1px;
+    padding-left: $cell-divider-left;
+    padding-right: $cell-divider-right;
+    &-inner {
+      display: flex;
+      height: 1px;
+      width: 100%;
+      border-top: $cell-divider-border-bottom;
+    }
+    &-rtl {
+      padding-left: $cell-divider-right;
+      padding-right: $cell-divider-left;
     }
   }
 }

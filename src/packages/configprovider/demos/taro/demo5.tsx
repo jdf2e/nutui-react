@@ -1,5 +1,7 @@
 import React from 'react'
+import { View, Text } from '@tarojs/components'
 import { ConfigProvider, Cell } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   return (
@@ -7,11 +9,15 @@ const Demo5 = () => {
       <ConfigProvider direction="rtl">
         <Cell
           title={
-            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <span style={{ marginLeft: '5px' }}>我是标题</span>
-            </div>
+            <View>
+              <Text style={{ fontSize: pxTransform(14) }}>我是标题</Text>
+            </View>
           }
-          description={<span>我是描述</span>}
+          description={
+            <Text style={{ fontSize: pxTransform(12), color: '#ccc' }}>
+              我是描述
+            </Text>
+          }
           extra="描述文字"
         />
       </ConfigProvider>

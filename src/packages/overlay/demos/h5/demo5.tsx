@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react'
+import { Button, Cell, Overlay } from '@nutui/nutui-react'
 
 const Demo5 = () => {
   const [visible, setVisible] = useState(false)
@@ -27,9 +27,11 @@ const Demo5 = () => {
   }
   return (
     <>
-      <Button type="success" onClick={handleToggleShow}>
-        嵌套内容
-      </Button>
+      <Cell>
+        <Button type="success" onClick={handleToggleShow}>
+          嵌套内容
+        </Button>
+      </Cell>
       <Overlay visible={visible} onClick={onClose}>
         <div style={wrapperStyle}>
           <div style={contentStyle}>这里是正文</div>

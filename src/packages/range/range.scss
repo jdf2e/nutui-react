@@ -1,268 +1,265 @@
 .nut-range-container {
   display: flex;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: $range-height;
   align-items: center;
+  justify-content: space-between;
 
-  .min,
-  .max {
+  &-native {
+    height: auto;
+  }
+}
+
+.nut-range {
+  display: block;
+  position: relative;
+  // width: 100%;
+  height: $range-height;
+  margin: 0 $range-margin;
+  background-color: $range-inactive-color;
+  border-radius: 2px;
+  flex: 1;
+  cursor: pointer;
+
+  &::before {
+    position: absolute;
+    inset-block: -8px;
+    inset-inline: 0;
+    content: '';
+  }
+
+  &-min,
+  &-max {
     font-size: $font-size-small;
     color: $range-color;
     user-select: none;
   }
 
-  .nut-range {
+  &-bar {
     display: block;
     position: relative;
     width: 100%;
-    height: $range-height;
-    margin: 0 $range-margin;
-    background-color: $range-inactive-color;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background: $range-active-color;
     border-radius: 2px;
-    cursor: pointer;
+    transition: all 0.2s;
+  }
 
-    &::before {
-      position: absolute;
-      inset-block: -8px;
-      inset-inline: 0;
-      content: '';
-    }
+  &-button {
+    position: absolute;
+    display: flex;
+    width: $range-button-width;
+    height: $range-button-height;
+    background: $range-button-background;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    border: $range-button-border;
+    outline: none;
+    align-items: center;
+    top: 50%;
+    left: 50%;
 
-    &-bar {
-      display: block;
-      position: relative;
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      background: $range-active-color;
-      border-radius: inherit;
-      transition: all 0.2s;
-    }
-
-    &-button {
-      display: block;
+    &-wrapper,
+    &-wrapper-right,
+    &-wrapper-left {
       width: $range-button-width;
       height: $range-button-height;
-      background: $range-button-background;
-      border-radius: 50%;
-      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-      border: $range-button-border;
-      outline: none;
-
-      &-wrapper,
-      &-wrapper-right {
-        touch-action: none;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate3d(50%, -50%, 0);
-        cursor: grab;
-        outline: none;
-      }
-
-      &-wrapper-left {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate3d(-50%, -50%, 0);
-        cursor: grab;
-        outline: none;
-        touch-action: none;
-      }
-
-      .number {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        user-select: none;
-        font-size: $font-size-small;
-        color: $range-color;
-        transform: translate3d(0, -100%, 0);
-      }
     }
 
-    &-disabled {
-      cursor: not-allowed;
-      opacity: 0.54;
-
-      .nut-range-button-wrapper,
-      .nut-range-button-wrapper-left,
-      .nut-range-button-wrapper-right {
-        cursor: not-allowed;
-      }
-    }
-
-    &-mark {
+    &-wrapper,
+    &-wrapper-right {
+      touch-action: none;
       position: absolute;
-      width: 100%;
-      overflow: visible;
       top: 50%;
-      font-size: 12px;
-      padding-top: 14px;
+      left: 100%;
+      // right: 0;
+      // transform: translate3d(-50%, -50%, 0);
+      cursor: grab;
+      outline: none;
     }
 
-    &-mark-text {
+    &-wrapper-left {
       position: absolute;
-      display: inline-block;
-      line-height: 16px;
-      color: #999;
-      text-align: center;
-      word-break: keep-all;
+      top: 50%;
+      left: 0;
+      // transform: translate3d(-50%, -50%, 0);
+      cursor: grab;
+      outline: none;
+      touch-action: none;
+    }
+
+    &-number {
+      position: relative;
+      width: 200%;
+      height: 24px;
+      line-height: 14px;
+      padding: 5px 0;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       user-select: none;
-      transform: translateX(-10px);
-    }
-
-    &-tick {
-      position: absolute;
-      top: -20px;
-      width: 11px;
-      height: 11px;
-      left: 0px;
-      border-radius: 50%;
-      background: $range-inactive-color;
-
-      &.active {
-        background: $range-active-color;
-      }
+      font-size: $font-size-small;
+      color: $range-color;
+      text-align: center;
+      vertical-align: center;
+      box-sizing: border-box;
+      // transform: translate3d(0, -100%, 0);
     }
   }
 
-  &-vertical {
+  &-disabled {
+    cursor: not-allowed;
+    // 鸿蒙端在外层设置的透明度会分发到所有子图层上，导致样式与其他端不一致
+    opacity: 0.54;
+
+    .nut-range-button-wrapper,
+    .nut-range-button-wrapper-left,
+    .nut-range-button-wrapper-right {
+      cursor: not-allowed;
+    }
+  }
+
+  &-mark {
+    position: absolute;
+    width: 100%;
+    height: 14px;
+    overflow: visible;
+    top: 50%;
+  }
+
+  &-mark-text-wrapper {
+    position: absolute;
     height: 100%;
-    flex-direction: column;
-    padding: 0px 15px;
+    top: 14px;
+    display: inline-block;
+    transform: translateX(-10px);
+  }
 
-    .nut-range {
-      width: $range-height;
-      height: 100%;
+  &-mark-text {
+    position: absolute;
+    line-height: 16px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    word-break: keep-all;
+    user-select: none;
+  }
 
-      &-button {
-        &-wrapper,
-        &-wrapper-right {
-          position: absolute;
-          top: initial;
-          bottom: 0px;
-          left: 50%;
-          right: initial;
-          transform: translate3d(-50%, 50%, 0);
-        }
+  &-tick {
+    position: absolute;
+    top: -20px;
+    width: 11px;
+    height: 11px;
+    left: 0px;
+    border-radius: 6px;
+    background: $range-inactive-color;
 
-        &-wrapper-left {
-          top: 0px;
-          left: 50%;
-          right: initial;
-          transform: translate3d(-50%, -50%, 0);
-        }
-      }
-
-      .number {
-        transform: translate3d(100%, 0, 0);
-      }
-
-      &-vertical {
-        margin: $range-margin 0px;
-      }
-
-      &-mark {
-        position: absolute;
-        width: 100%;
-        right: 50%;
-        overflow: visible;
-        font-size: 12px;
-        height: 100%;
-        top: initial;
-        width: 36px;
-        padding: 0px;
-      }
-
-      &-mark-text {
-        width: 20px;
-        position: absolute;
-        display: inline-block;
-        line-height: 16px;
-        color: #999;
-        text-align: center;
-        word-break: keep-all;
-        user-select: none;
-        transform: translateY(-11px);
-      }
-
-      &-tick {
-        position: absolute;
-        top: 0px;
-        left: 30px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: $range-inactive-color;
-
-        &.active {
-          background: $range-active-color;
-        }
-      }
+    &-active {
+      background: $range-active-color;
     }
   }
 }
 
-[dir='rtl'] .nut-range-container,
-.nut-rtl .nut-range-container {
-  &-vertical {
-    .nut-range {
-      &-button {
-        &-wrapper,
-        &-wrapper-right {
-          right: 50%;
-          left: initial;
-          transform: translate3d(50%, 50%, 0);
-        }
+.nut-range-vertical-container {
+  height: 100%;
+  flex-direction: column;
+  padding: 0px 15px;
+}
 
-        &-wrapper-left {
-          right: 50%;
-          left: initial;
-          transform: translate3d(50%, -50%, 0);
-        }
-      }
+.nut-range-vertical {
+  width: $range-height;
+  margin: $range-margin 0px;
 
-      .number {
-        transform: translate3d(-100%, 0, 0);
-      }
+  &-button {
+    &-wrapper,
+    &-wrapper-right {
+      position: absolute;
+      top: initial;
+      top: 100%;
+      left: 50%;
+      right: initial;
+      // transform: translate3d(-50%, -50%, 0);
+    }
 
-      &-mark {
-        right: auto;
-        left: 50%;
-      }
+    &-wrapper-left {
+      top: 0px;
+      left: 50%;
+      right: initial;
+      // transform: translate3d(-50%, -50%, 0);
+    }
 
-      &-tick {
-        left: auto;
-        right: 30px;
-        margin-left: 0;
-        margin-right: -0px;
-      }
+    &-number {
+      left: 0px;
+      top: 50%;
+      // transform: translate3d(100%, 0, 0);
+    }
+  }
 
-      &-mark-text {
-        transform: translateY(-11px);
-      }
+  &-mark {
+    position: absolute;
+    width: 36px;
+    height: 100%;
+    top: initial;
+    right: 50%;
+    overflow: visible;
+    font-size: 12px;
+    padding: 0px;
+  }
+
+  &-mark-hm {
+    left: -34px;
+  }
+
+  &-mark-text-wrapper {
+    // width: 20px;
+    height: 16px;
+    position: absolute;
+    display: inline-block;
+    user-select: none;
+    transform: translateY(-11px);
+  }
+
+  &-mark-text {
+    height: 100%;
+    line-height: 16px;
+    color: #999;
+    text-align: center;
+    word-break: keep-all;
+  }
+
+  &-tick {
+    position: absolute;
+    top: 2px;
+    left: 31px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: $range-inactive-color;
+
+    &-active {
+      background: $range-active-color;
     }
   }
 }
 
 [dir='rtl'] .nut-range,
-.nut-rtl .nut-range {
+.rtl-nut-range {
   &-button {
     &-wrapper,
     &-wrapper-right {
       left: 0;
       right: initial;
-      transform: translate3d(-50%, -50%, 0);
+      // transform: translate3d(-50%, -50%, 0);
     }
     &-wrapper-left {
       right: 0;
       left: initial;
-      transform: translate3d(50%, -50%, 0);
+      // transform: translate3d(50%, -50%, 0);
     }
   }
 
@@ -273,5 +270,42 @@
 
   &-mark-text {
     transform: translateX(10px);
+  }
+
+  &-vertical {
+    &-button {
+      &-wrapper,
+      &-wrapper-right {
+        right: 50%;
+        left: initial;
+        // transform: translate3d(50%, 50%, 0);
+      }
+
+      &-wrapper-left {
+        right: 50%;
+        left: initial;
+        // transform: translate3d(50%, -50%, 0);
+      }
+
+      &-number {
+        // transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    &-mark {
+      right: auto;
+      left: 50%;
+    }
+
+    &-tick {
+      left: auto;
+      right: 30px;
+      margin-left: 0;
+      margin-right: -0px;
+    }
+
+    &-mark-text-wrapper {
+      transform: translateY(-11px);
+    }
   }
 }

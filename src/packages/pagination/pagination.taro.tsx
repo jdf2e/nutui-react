@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useMemo, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -14,7 +15,7 @@ export interface PaginationProps extends BasicComponent {
   pageSize: number
   itemSize: number
   ellipse: boolean
-  itemRender: (page: any) => ReactNode
+  itemRender: (page: any, index: number) => ReactNode
   onChange: (currPage: number) => void
 }
 
@@ -47,6 +48,7 @@ export const Pagination: FunctionComponent<
     itemRender,
     defaultValue,
     className,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -104,64 +106,65 @@ export const Pagination: FunctionComponent<
   }
 
   return (
-    <div className={classNames(classPrefix, className)} {...rest}>
+    <View className={classNames(classPrefix, className)} style={style}>
       {(mode === 'multi' || mode === 'simple') && (
         <>
-          <div
+          <View
             className={classNames(
               `${classPrefix}-prev`,
-              mode === 'multi' ? '' : 'simple-border',
-              currentPage === 1 ? 'disabled' : ''
+              mode === 'multi' ? '' : `${classPrefix}-simple-border`,
+              currentPage === 1 ? `${classPrefix}-prev-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage - 1)}
           >
             {prev || locale.pagination.prev}
-          </div>
+          </View>
           {mode === 'multi' && (
-            <div className={`${classPrefix}-contain`}>
+            <View className={`${classPrefix}-contain`}>
               {pages.map((item: any, index: number) => {
                 return (
-                  <div
+                  <View
                     key={`${index}pagination`}
                     className={classNames(`${classPrefix}-item`, {
-                      active: item.number === currentPage,
+                      [`${classPrefix}-item-active`]:
+                        item.number === currentPage,
                     })}
                     onClick={(e) => {
                       item.number !== currentPage &&
                         handleSelectPage(item.number)
                     }}
                   >
-                    {itemRender ? itemRender(item) : item.text}
-                  </div>
+                    {itemRender ? itemRender(item, currentPage) : item.text}
+                  </View>
                 )
               })}
-            </div>
+            </View>
           )}
           {mode === 'simple' && (
-            <div className={`${classPrefix}-contain`}>
-              <div className={`${classPrefix}-simple`}>
-                {currentPage}/{pageCount}
-              </div>
-            </div>
+            <View className={`${classPrefix}-contain`}>
+              <View className={`${classPrefix}-simple`}>
+                {`${currentPage}/${pageCount}`}
+              </View>
+            </View>
           )}
-          <div
+          <View
             className={classNames(
               `${classPrefix}-next`,
-              currentPage >= pageCount ? 'disabled' : ''
+              currentPage >= pageCount ? `${classPrefix}-next-disabled` : ''
             )}
             onClick={(e) => handleSelectPage(currentPage + 1)}
           >
             {next || locale.pagination.next}
-          </div>
+          </View>
         </>
       )}
       {mode === 'lite' && (
-        <div className={`${classPrefix}-lite`}>
-          <div className={`${classPrefix}-lite-active`}>{2}</div>
-          <div className={`${classPrefix}-lite-default`}>{8}</div>
-        </div>
+        <View className={`${classPrefix}-lite`}>
+          <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
+          <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
+        </View>
       )}
-    </div>
+    </View>
   )
 }
 

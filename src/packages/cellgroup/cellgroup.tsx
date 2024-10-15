@@ -38,8 +38,16 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
           divider ? `${classPrefix}-wrap-divider` : ''
         }`}
       >
-        <CellGroupContext.Provider value={{ divider }}>
-          {children}
+        <CellGroupContext.Provider value={{ divider, group: true }}>
+          {React.Children.map(children, (child, index) => {
+            // @ts-ignore
+            return child?.type?.displayName === 'NutCell'
+              ? // @ts-ignore
+                React.cloneElement(child, {
+                  isLast: index === React.Children.count(children) - 1,
+                })
+              : child
+          })}
         </CellGroupContext.Provider>
       </div>
     </div>

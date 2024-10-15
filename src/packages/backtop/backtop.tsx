@@ -4,6 +4,7 @@ import React, {
   useState,
   useRef,
   useCallback,
+  useMemo,
 } from 'react'
 import type { MouseEvent } from 'react'
 import { Top } from '@nutui/icons-react'
@@ -47,32 +48,38 @@ export const BackTop: FunctionComponent<
   }
 
   const classPrefix = 'nut-backtop'
-  const [backTop, SetBackTop] = useState(false)
-  const [scrollTop, SetScrollTop] = useState(0)
-  let startTime = 0
-  const scrollEl = useRef<any>(null)
-  const cls = classNames(classPrefix, { show: backTop }, className)
+  const [backTop, setBackTop] = useState(false)
+  const [scrollTop, setScrollTop] = useState(0)
+  const startTime = useRef<number>(0)
+  const cls = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-show`]: backTop,
+    },
+    className
+  )
+  const scrollEl: any = useRef<any>(null)
 
   const scrollListener = useCallback(() => {
-    let top = null
+    let top: any = null
     if (scrollEl.current instanceof Window) {
       top = scrollEl.current.scrollY
     } else {
-      top = scrollEl.current?.scrollTop
+      top = scrollEl.current.scrollTop
     }
-    SetScrollTop(top)
-    SetBackTop(top >= threshold)
+    setScrollTop(top)
+    setBackTop(top >= threshold)
   }, [threshold])
 
   const init = useCallback(() => {
     if (target && document.getElementById(target)) {
-      scrollEl.current = document.getElementById(target)
+      scrollEl.current = document.getElementById(target) as HTMLElement | Window
     } else {
       scrollEl.current = window
     }
     scrollEl.current?.addEventListener('scroll', scrollListener, false)
     scrollEl.current?.addEventListener('resize', scrollListener, false)
-  }, [target, scrollListener])
+  }, [scrollListener, target])
 
   useEffect(() => {
     init()
@@ -82,18 +89,19 @@ export const BackTop: FunctionComponent<
     }
   }, [init, scrollListener])
 
-  const scroll = (y = 0) => {
+  const scroll = useCallback((y = 0) => {
     if (scrollEl.current instanceof Window) {
       window.scrollTo(0, y)
     } else {
       scrollEl.current.scrollTop = y
       window.scrollTo(0, y)
     }
-  }
+  }, [])
 
-  const scrollAnimation = () => {
+  const scrollAnimation = useCallback(() => {
     let cid = requestAniFrame(function fn() {
-      const t = duration - Math.max(0, startTime - +new Date() + duration / 2)
+      const t =
+        duration - Math.max(0, startTime.current - +new Date() + duration / 2)
       const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
       cid = requestAniFrame(fn)
@@ -101,16 +109,20 @@ export const BackTop: FunctionComponent<
         cancelRaf(cid)
       }
     })
-  }
+  }, [duration, scroll, scrollTop, startTime])
 
-  const goTop = (e: MouseEvent<HTMLDivElement>) => {
-    onClick && onClick(e)
-    startTime = +new Date()
-    duration > 0 ? scrollAnimation() : scroll()
-  }
+  const goTop = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      onClick?.(e)
+      const otime = +new Date()
+      startTime.current = otime
+      duration > 0 ? scrollAnimation() : scroll()
+    },
+    [duration, onClick, scroll, scrollAnimation]
+  )
 
-  const styles =
-    Object.keys(style || {}).length !== 0
+  const styles = useMemo(() => {
+    return Object.keys(style || {}).length !== 0
       ? {
           zIndex,
           ...style,
@@ -120,9 +132,16 @@ export const BackTop: FunctionComponent<
           bottom: '20px',
           zIndex,
         }
+  }, [rtl, style, zIndex])
 
   return (
-    <div className={cls} style={styles} onClick={(e) => goTop(e)}>
+    <div
+      className={cls}
+      style={styles}
+      onClick={(e) => {
+        goTop(e)
+      }}
+    >
       {children || <Top width={19} height={19} className="nut-backtop-main" />}
     </div>
   )

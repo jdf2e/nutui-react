@@ -1,9 +1,12 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/utils/use-uuid'
+import { harmony, harmonyAndRn, rn, web } from '@/utils/platform-taro'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -54,15 +57,20 @@ export const Progress: FunctionComponent<
   })
 
   const stylesOuter: React.CSSProperties = {
-    height: `${strokeWidth}px`,
-    background,
+    width: '100%',
+    backgroundColor: background,
   }
 
   const [displayPercent, setDispalyPercent] = useState(0)
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    background: color,
+    backgroundColor: color || '#FF0F23',
+  }
+
+  if (strokeWidth) {
+    stylesOuter.height = pxTransform(Number(strokeWidth))
+    stylesInner.height = pxTransform(Number(strokeWidth))
   }
   const handlePercent = () => {
     let timer: any = null
@@ -74,7 +82,7 @@ export const Progress: FunctionComponent<
     }
 
     return () => {
-      lazy && resetObserver(Taro.getEnv())
+      lazy && resetObserver()
       timer && clearTimeout(timer)
     }
   }
@@ -87,8 +95,8 @@ export const Progress: FunctionComponent<
   const webObserver: any = useRef(null)
   const uuid = useUuid()
   const selector = `${classPrefix}-lazy-${uuid}`
-  const resetObserver = (env: string, observer: any = null) => {
-    if (env === 'WEB') {
+  const resetObserver = (observer: any = null) => {
+    if (web()) {
       webObserver.current.disconnect && webObserver.current.disconnect()
     } else {
       observer && observer.disconnect()
@@ -107,6 +115,7 @@ export const Progress: FunctionComponent<
   }, [intersecting])
   const handleWebObserver = () => {
     /// web环境
+
     if (lazy) {
       webObserver.current = new IntersectionObserver(
         (entires, self) => {
@@ -144,47 +153,90 @@ export const Progress: FunctionComponent<
   }
 
   useEffect(() => {
-    if (Taro.getEnv() === 'WEB') {
+    if (web()) {
       handleWebObserver()
-    } else {
+    } else if (!harmonyAndRn()) {
       handleOtherObserver()
     }
   }, [])
-
+  const getTextStyle = () => {
+    const value = harmony() ? '90%' : '99%'
+    return rtl ? { right: value } : { left: value }
+  }
+  const computeRight = () => {
+    if (children) {
+      return 0
+    }
+    if (!harmonyAndRn()) {
+      return Math.floor((`${percent}%`.length * 9) / 2)
+    }
+    if (rn()) {
+      return `${percent}%`.length * 9 + 4
+    }
+    return Math.floor((`${percent}%`.length * 9 + 4) / 2)
+  }
+  const computeInnerStyle = () => {
+    const style: any = {
+      backgroundColor: color || '#ff0f23',
+    }
+    if (harmonyAndRn()) {
+      style.width = harmony()
+        ? pxTransform(`${percent}%`.length * 9 + 4)
+        : `${percent}%`.length * 9 + 4
+    }
+    return style
+  }
   return (
-    <div
+    <View
       ref={progressRef}
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      {...rest}
+      {...(rest as any)}
     >
-      <div className={`${classPrefix}-outer`} style={stylesOuter}>
-        <div className={classesInner} style={stylesInner}>
+      <View className={`${classPrefix}-outer`} style={stylesOuter}>
+        <View
+          className={classesInner}
+          style={{ ...stylesInner, position: 'relative' }}
+        >
           {showText && (
-            <div
-              className={`${classPrefix}-text`}
-              style={
-                rtl
-                  ? { right: `${displayPercent}%` }
-                  : { left: `${displayPercent}%` }
-              }
+            <View
+              style={{
+                position: 'relative',
+                [rtl ? 'left' : 'right']: computeRight(),
+              }}
             >
-              {children || (
-                <div
-                  className={`${classPrefix}-text-inner`}
-                  style={{
-                    background: color,
-                  }}
-                >
-                  {percent}%
-                </div>
-              )}
-            </div>
+              <View
+                className={`${classPrefix}-text`}
+                style={{
+                  ...getTextStyle(),
+                  height:
+                    // eslint-disable-next-line no-nested-ternary
+                    harmony()
+                      ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
+                      : strokeWidth
+                        ? Number(strokeWidth) + 8
+                        : 18,
+                  position: 'absolute',
+                  top: -(strokeWidth
+                    ? (Number(strokeWidth) + 8 - 9) / 2 + 5
+                    : 9),
+                }}
+              >
+                {children || (
+                  <View
+                    className={`${classPrefix}-text-inner`}
+                    style={computeInnerStyle()}
+                  >
+                    {`${percent}%`}
+                  </View>
+                )}
+              </View>
+            </View>
           )}
-        </div>
-      </div>
-    </div>
+        </View>
+      </View>
+    </View>
   )
 }
 

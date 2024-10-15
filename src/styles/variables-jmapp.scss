@@ -425,7 +425,7 @@ $cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;
 $cell-divider-left: var(--nutui-cell-divider-left, 16px) !default;
 $cell-divider-border-bottom: var(
   --nutui-cell-divider-border-bottom,
-  2px solid $color-border
+  1px solid $color-border
 ) !default;
 $cell-background-color: var(--nutui-cell-background-color, $white) !default;
 $cell-box-shadow: var(
@@ -471,7 +471,7 @@ $cell-group-background-color: var(
   $color-background-overlay
 ) !default;
 
-$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
+$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px) !default;
 
 // divider（✅）
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
@@ -488,7 +488,6 @@ $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
 $divider-spacing: var(--nutui-divider-spacing, $spacing-base) !default;
 $divider-side-width: var(--nutui-divider-side-width, 16px) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
-$divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
@@ -995,6 +994,40 @@ $calendar-day-font-weight: var(
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px
+) !default;
+
+//hoverbutton
+$hoverbutton-spacing: var(
+  --nutui-hoverbutton-spacing,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-position-bottom: var(
+  --nutui-hoverbutton-position-bottom,
+  48px
+) !default;
+$hoverbutton-position-right: var(
+  --nutui-hoverbutton-position-right,
+  var(--nutui-spacing-16, 16px)
+) !default;
+$hoverbutton-item-border-color: var(
+  --nutui-hoverbutton-item-border-color,
+  var(--nutui-black-3, rgba(0, 0, 0, 0.06))
+) !default;
+$hoverbutton-item-background: var(
+  --nutui-hoverbutton-item-background,
+  var(--nutui-gray-1, #ffffff)
+) !default;
+$hoverbutton-item-background-active: var(
+  --nutui-hoverbutton-item-background-active,
+  var(--nutui-gray-3, #f6f6f6)
+) !default;
+$hoverbutton-item-icon-color: var(
+  --nutui-hoverbutton-item-icon-color,
+  var(--nutui-gray-7, #1a1a1a)
+) !default;
+$hoverbutton-item-icon-color-active: var(
+  --nutui-hoverbutton-item-icon-color-active,
+  var(--nutui-gray-6, #595959)
 ) !default;
 
 //overlay（✅）
@@ -1619,7 +1652,7 @@ $progress-text-color: var(
 ) !default;
 $progress-text-background: var(
   --nutui-progress-text-background,
-  $progress-color
+  #ff0f23
 ) !default;
 $progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
 $progress-text-font-size: var(--nutui-progress-text-font-size, 9px) !default;

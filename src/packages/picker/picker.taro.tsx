@@ -315,8 +315,8 @@ const InternalPicker: ForwardRefRenderFunction<
 
   const renderTitleBar = () => {
     return (
-      <div className={`${classPrefix}-control`}>
-        <span
+      <View className={`${classPrefix}-control`}>
+        <View
           className={`${classPrefix}-cancel-btn`}
           onClick={(e) => {
             e.stopPropagation()
@@ -325,9 +325,9 @@ const InternalPicker: ForwardRefRenderFunction<
           }}
         >
           {locale?.cancel}
-        </span>
-        <div className={`${classPrefix}-title`}>{title || ''}</div>
-        <span
+        </View>
+        <View className={`${classPrefix}-title`}>{title || ''}</View>
+        <View
           className={`${classPrefix}-confirm-btn`}
           onClick={(e) => {
             e.stopPropagation()
@@ -335,8 +335,8 @@ const InternalPicker: ForwardRefRenderFunction<
           }}
         >
           {locale.confirm}
-        </span>
-      </div>
+        </View>
+      </View>
     )
   }
 
@@ -389,7 +389,7 @@ const InternalPicker: ForwardRefRenderFunction<
         <View className={classes} style={style} {...rest} catchMove>
           {renderTitleBar()}
           {typeof children !== 'function' && children}
-          <div className={`${classPrefix}-panel`} ref={pickerRef}>
+          <View className={`${classPrefix}-panel`} ref={pickerRef}>
             {Taro.getEnv() === 'WEB' ? (
               columnsList?.map((item, index) => {
                 return (
@@ -437,7 +437,7 @@ const InternalPicker: ForwardRefRenderFunction<
                 })}
               </PickerView>
             )}
-          </div>
+          </View>
         </View>
       </Popup>
     </>

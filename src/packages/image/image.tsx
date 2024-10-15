@@ -9,7 +9,6 @@ import React, {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { pxCheck } from '@/utils/px-check'
 
 export interface ImageProps extends BasicComponent {
   src: string
@@ -82,6 +81,9 @@ export const Image: FunctionComponent<
   const [isError, setIsError] = useState(false)
   const [complete, setComplete] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
+  const pxCheck = (value: string | number): string => {
+    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+  }
 
   useEffect(() => {
     if (imgRef.current && imgRef.current.complete && !lazy) {
@@ -181,13 +183,13 @@ export const Image: FunctionComponent<
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <div className="nut-img-error">
+        <div className={`${classPrefix}-error`}>
           <ImageError />
         </div>
       )
     }
     if (React.isValidElement(error) && !innerLoading) {
-      return <div className="nut-img-error">{error}</div>
+      return <div className={`${classPrefix}-error`}>{error}</div>
     }
     return null
   }, [error, isError])
@@ -196,13 +198,13 @@ export const Image: FunctionComponent<
     if (!loading) return null
     if (typeof loading === 'boolean' && loading === true && innerLoading) {
       return (
-        <div className="nut-img-loading">
+        <div className={`${classPrefix}-loading`}>
           <ImageIcon />
         </div>
       )
     }
     if (React.isValidElement(loading) && innerLoading) {
-      return <div className="nut-img-loading">{loading}</div>
+      return <div className={`${classPrefix}-loading`}>{loading}</div>
     }
     return null
   }, [loading, innerLoading])
@@ -218,7 +220,7 @@ export const Image: FunctionComponent<
       {lazy ? (
         <img
           ref={imgRef}
-          className="nut-img lazyload"
+          className={`${classPrefix}-default lazyload`}
           style={imgStyle}
           data-src={src}
           alt={alt}
@@ -230,7 +232,7 @@ export const Image: FunctionComponent<
       ) : (
         <img
           ref={imgRef}
-          className="nut-img"
+          className={`${classPrefix}-default`}
           style={imgStyle}
           src={src}
           alt={alt}

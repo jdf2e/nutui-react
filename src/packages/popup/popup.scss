@@ -1,7 +1,12 @@
 @import '../overlay/overlay.scss';
 
 .nut-popup {
+  /* #ifdef rn */
+  position: absolute;
+  /* #endif */
+  /* #ifndef rn */
   position: fixed;
+  /* #endif */
   min-height: 26%;
   max-height: 100%;
   overflow-y: auto;
@@ -12,9 +17,9 @@
 
   &-title {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    // height: $popup-title-height;
     border-bottom: $popup-title-border-bottom;
     padding: $popup-title-padding;
     position: relative;
@@ -25,6 +30,10 @@
     }
 
     &-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       font-weight: $font-weight-bold;
       font-size: $popup-title-font-size;
     }
@@ -36,7 +45,7 @@
     }
 
     &-right {
-      position: absolute !important;
+      position: absolute;
       z-index: 1;
       cursor: pointer;
       width: $popup-icon-size;
@@ -73,7 +82,9 @@
     top: 50%;
     left: 50%;
     min-height: 10%;
+    /* #ifndef rn */
     transform: translate(-50%, -50%);
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius;
@@ -89,6 +100,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
+    /* #ifdef rn */
+    height: 300px;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
@@ -98,6 +112,10 @@
   &-right {
     top: 0;
     right: 0;
+    /* #ifdef rn */
+    width: 100px;
+    height: 100%;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius 0 0 $popup-border-radius;
@@ -107,6 +125,10 @@
   &-left {
     top: 0;
     left: 0;
+    /* #ifdef rn */
+    width: 100px;
+    height: 100%;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: 0 $popup-border-radius $popup-border-radius 0;
@@ -117,6 +139,9 @@
     top: 0;
     left: 0;
     width: 100%;
+    /* #ifdef rn */
+    height: 100px;
+    /* #endif */
 
     &.nut-popup-round {
       border-radius: 0 0 $popup-border-radius $popup-border-radius;
@@ -195,19 +220,25 @@
     /* 从顶部滑出 */
     @keyframes popup-slide-top-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(0, -100%, 0);
+        /* #endif */
       }
     }
 
     @keyframes popup-slide-top-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(0, -100%, 0);
+        /* #endif */
       }
     }
 
     &-top-enter-active,
     &-top-appear-active {
+      /* #ifndef rn */
       transform: translate3d(0, 0%, 0);
+      /* #endif*/
       animation-fill-mode: both;
       animation-name: popup-slide-top-enter;
       animation-duration: $popup-animation-duration;
@@ -222,19 +253,25 @@
     /* 从右侧滑出 */
     @keyframes popup-slide-right-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(100%, 0, 0);
+        /* #endif*/
       }
     }
 
     @keyframes popup-slide-right-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(100%, 0, 0);
+        /* #endif*/
       }
     }
 
     &-right-enter-active,
     &-right-appear-active {
+      /* #ifndef rn */
       transform: translate3d(0, 0, 0);
+      /* #endif*/
       animation-fill-mode: both;
       animation-name: popup-slide-right-enter;
       animation-duration: $popup-animation-duration;
@@ -249,19 +286,25 @@
     /* 从底部滑出 */
     @keyframes popup-slide-bottom-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(0, 100%, 0);
+        /* #endif */
       }
     }
 
     @keyframes slide-bottom-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(0, 100%, 0);
+        /* #endif */
       }
     }
 
     &-bottom-enter-active,
     &-bottom-appear-active {
+      /* #ifndef rn */
       transform: translate(0, 0);
+      /* #endif */
       animation-fill-mode: both;
       animation-name: popup-slide-bottom-enter;
       animation-duration: $popup-animation-duration;
@@ -276,13 +319,17 @@
     /* 从左侧滑出 */
     @keyframes popup-slide-left-enter {
       from {
+        /* #ifndef rn */
         transform: translate3d(-100%, 0, 0);
+        /* #endif */
       }
     }
 
     @keyframes popup-slide-left-exit {
       to {
+        /* #ifndef rn */
         transform: translate3d(-100%, 0, 0);
+        /* #endif */
       }
     }
 
@@ -314,7 +361,7 @@
   }
 
   .nut-overflow-hidden {
-    overflow: hidden !important;
+    overflow: hidden;
   }
 }
 
@@ -354,7 +401,9 @@
   &-center {
     left: auto;
     right: 50%;
+    /* #ifndef rn */
     transform: translate(50%, -50%);
+    /* #endif*/
   }
 
   &-bottom {

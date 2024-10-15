@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { View } from '@tarojs/components'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
@@ -222,17 +223,17 @@ export class FormItem extends React.Component<
         style={style}
         align={align}
         onClick={(e) =>
-          this.props.onClick && this.props.onClick(e, this.componentRef)
+          this.props.onClick && this.props.onClick(e as any, this.componentRef)
         }
       >
         {label ? (
-          <div className="nut-cell-title nut-form-item-label">
+          <View className="nut-cell-title nut-form-item-label">
             {renderLabel}
-          </div>
+          </View>
         ) : null}
-        <div className="nut-cell-value nut-form-item-body">
-          <div className="nut-form-item-body-slots">{childNode}</div>
-          <div
+        <View className="nut-cell-value nut-form-item-body">
+          <View className="nut-form-item-body-slots">{childNode}</View>
+          <View
             className="nut-form-item-body-tips"
             style={{
               textAlign: errorMessageAlign,
@@ -240,8 +241,8 @@ export class FormItem extends React.Component<
             }}
           >
             {item?.[0]?.message}
-          </div>
-        </div>
+          </View>
+        </View>
       </Cell>
     )
   }

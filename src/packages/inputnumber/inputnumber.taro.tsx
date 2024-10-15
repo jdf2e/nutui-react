@@ -5,11 +5,18 @@ import React, {
   useState,
   ChangeEvent,
 } from 'react'
-import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { InputProps } from '@tarojs/components'
+import {
+  ITouchEvent,
+  Input as TaroInput,
+  InputProps,
+  View,
+  Text,
+} from '@tarojs/components'
+import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -24,14 +31,14 @@ export interface InputNumberProps extends BasicComponent {
   digits: number
   async: boolean
   formatter?: (value?: string | number) => string
-  onPlus: (e: React.MouseEvent) => void
-  onMinus: (e: React.MouseEvent) => void
-  onOverlimit: (e: React.MouseEvent | ChangeEvent<HTMLInputElement>) => void
+  onPlus: (e: ITouchEvent) => void
+  onMinus: (e: ITouchEvent) => void
+  onOverlimit: (e: ITouchEvent | ChangeEvent<HTMLInputElement>) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange: (
     param: string | number,
-    e: React.MouseEvent | ChangeEvent<HTMLInputElement>
+    e: ITouchEvent | ChangeEvent<HTMLInputElement>
   ) => void
 }
 
@@ -80,9 +87,10 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classes = classNames(classPrefix, className, {
-    [`${classPrefix}-disabled`]: disabled,
-  })
+  const isRnAndHarmony = harmonyAndRn()
+  const isRn = rn()
+  const isHarmony = harmony()
+  const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
@@ -145,7 +153,7 @@ export const InputNumber: FunctionComponent<
       (parseFloat(current || '0') * dig + parseFloat(step) * dig * symbol) / dig
     )
   }
-  const update = (negative: boolean, e: React.MouseEvent) => {
+  const update = (negative: boolean, e: ITouchEvent) => {
     if (step !== undefined) {
       const shouldOverBoundary = calcNextValue(
         shadowValue,
@@ -165,12 +173,12 @@ export const InputNumber: FunctionComponent<
       }
     }
   }
-  const handleReduce = (e: React.MouseEvent) => {
+  const handleReduce = (e: ITouchEvent) => {
     if (disabled) return
     onMinus?.(e)
     update(true, e)
   }
-  const handlePlus = (e: React.MouseEvent) => {
+  const handlePlus = (e: ITouchEvent) => {
     if (disabled) return
     onPlus?.(e)
     update(false, e)
@@ -199,7 +207,7 @@ export const InputNumber: FunctionComponent<
       onChange?.(val, e)
     }
   }
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: any) => {
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
@@ -214,7 +222,7 @@ export const InputNumber: FunctionComponent<
     }
     !async && handleValueChange(valueStr, e)
   }
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = (e: any) => {
     setFocused(true)
     setInputValue(
       shadowValue !== undefined && shadowValue !== null
@@ -223,7 +231,7 @@ export const InputNumber: FunctionComponent<
     )
     onFocus?.(e)
   }
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (e: any) => {
     setFocused(false)
     onBlur?.(e)
     const valueStr = parseValue(e.target.value)
@@ -240,34 +248,88 @@ export const InputNumber: FunctionComponent<
   }
 
   return (
-    <div className={classes} style={style} {...restProps}>
-      <div className="nut-input-minus" onClick={handleReduce}>
-        <Minus
-          className={classNames('nut-inputnumber-icon icon-minus', {
-            [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
+    <View className={classes} style={style}>
+      <View className={`${classPrefix}-minus`} onClick={handleReduce}>
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
+          >
+            -
+          </Text>
+        ) : (
+          <Minus
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
+          />
+        )}
+      </View>
+      {isRn ? (
+        <TaroInput
+          className={classNames(`${classPrefix}-input`, {
+            [`${classPrefix}-input-disabled`]: disabled,
           })}
+          type={type}
+          ref={inputRef}
+          disabled={disabled || readOnly}
+          value={inputValue}
+          onInput={handleInputChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
         />
-      </div>
-      <input
-        className="nut-number-input"
-        type={type}
-        ref={inputRef}
-        inputMode={type === 'digit' ? 'decimal' : 'numeric'}
-        disabled={disabled}
-        readOnly={readOnly}
-        value={inputValue}
-        onInput={handleInputChange}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-      />
-      <div className="nut-input-add" onClick={handlePlus}>
-        <Plus
-          className={classNames('nut-inputnumber-icon icon-plus', {
-            [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
+      ) : (
+        <input
+          className={classNames(`${classPrefix}-input`, {
+            [`${classPrefix}-input-disabled`]: disabled,
           })}
+          type={type}
+          ref={inputRef}
+          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
+          disabled={disabled}
+          readOnly={readOnly}
+          value={inputValue}
+          onInput={handleInputChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
         />
-      </div>
-    </div>
+      )}
+
+      <View className={`${classPrefix}-add`} onClick={handlePlus}>
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
+          >
+            +
+          </Text>
+        ) : (
+          <Plus
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
+          />
+        )}
+      </View>
+    </View>
   )
 }
 

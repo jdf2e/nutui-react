@@ -212,16 +212,46 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   return (
     <animated.div ref={elementRef} className={classes} style={props.style}>
-      <animated.div style={springStyles} className={`${classPrefix}-head`}>
+      <animated.div
+        style={springStyles}
+        className={classNames({
+          [`${classPrefix}-head`]: true,
+          [`${classPrefix}-primary-head`]: props.type === 'primary',
+        })}
+      >
         <div
-          className={`${classPrefix}-head-content`}
+          className={classNames({
+            [`${classPrefix}-head-content`]: true,
+            [`${classPrefix}-primary-head-content`]: props.type === 'primary',
+          })}
           style={{ height: headHeight }}
         >
-          <div>{renderStatusIcon()}</div>
-          <div>{renderStatusText()}</div>
+          <div
+            className={classNames({
+              [`${classPrefix}-status-icon`]: true,
+              [`${classPrefix}-primary-status-icon`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusIcon()}
+          </div>
+          <div
+            className={classNames({
+              [`${classPrefix}-status-text`]: true,
+              [`${classPrefix}-primary-status-text`]: props.type === 'primary',
+            })}
+          >
+            {renderStatusText()}
+          </div>
         </div>
       </animated.div>
-      <div className={`${classPrefix}-content`}>{props.children}</div>
+      <div
+        className={classNames({
+          [`${classPrefix}-content`]: true,
+          [`${classPrefix}-primary-content}`]: props.type === 'primary',
+        })}
+      >
+        {props.children}
+      </div>
     </animated.div>
   )
 }

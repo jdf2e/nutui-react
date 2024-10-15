@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputNumber, Toast } from '@nutui/nutui-react-taro'
+import { Cell, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [inputValue, setInputValue] = useState(0)
@@ -25,6 +25,10 @@ const Demo8 = () => {
   }
   return (
     <>
+      <Cell>
+        <InputNumber value={inputValue} min="-6" onChange={onChange} async />
+      </Cell>
+      {/* <Toast
       <InputNumber
         value={inputValue}
         min={-6}
@@ -40,7 +44,7 @@ const Demo8 = () => {
         onClose={() => {
           SetShow(false)
         }}
-      />
+      /> */}
     </>
   )
 }

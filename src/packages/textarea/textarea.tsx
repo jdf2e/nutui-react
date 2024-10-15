@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import type { ChangeEvent, FocusEvent } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -60,6 +60,7 @@ export const TextArea: FunctionComponent<
   const classPrefix = 'nut-textarea'
   const textareaRef = useRef<any>(null)
   const compositionRef = useRef(false)
+  const rtl = useRtl()
 
   const format = (value: string) => {
     if (maxLength !== -1 && value.length > maxLength) {
@@ -116,13 +117,14 @@ export const TextArea: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-rtl`]: rtl,
         },
         className
       )}
     >
       <textarea
         ref={textareaRef}
-        className={`${classPrefix}-textarea`}
+        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
         style={style}
         disabled={disabled}
         readOnly={readOnly}
@@ -142,7 +144,9 @@ export const TextArea: FunctionComponent<
         {...rest}
       />
       {showCount && (
-        <div className={`${classPrefix}-limit`}>
+        <div
+          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+        >
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
       )}

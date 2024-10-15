@@ -81,7 +81,7 @@ import { Progress } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | percent | percent | `number` | `0` |
-| color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| color | Stroke color | `string` | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | background | Progress bar background color | `string` | `#f3f3f3` |
 | strokeWidth | Stroke width | `string` | `-` |
 | showText | Whether to show text | `boolean` | `false` |
@@ -99,7 +99,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-progress-height | strokeWidth | `10px` |
 | \--nutui-progress-border-radius | borderRadius | `12px` |
-| \--nutui-progress-color | progress color | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| \--nutui-progress-color | progress color | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | progress background | `#f3f3f3` |
 | \--nutui-progress-text-color | text color | `$color-primary-text` |
 | \--nutui-progress-text-padding | text padding | `0 5px` |

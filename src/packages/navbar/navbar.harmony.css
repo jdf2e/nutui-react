@@ -1,0 +1,164 @@
+.nut-navbar {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  box-sizing: border-box;
+  background: #F7F8FC;
+  box-shadow: 0px;
+  font-size: 14px;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.nut-navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.nut-navbar-placeholder {
+  display: inline-block;
+  width: 100%;
+}
+.nut-navbar-safe-area-inset-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+.nut-navbar-title {
+  min-width: 53%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+.nut-navbar-title .nut-tabs-titles {
+  background: transparent;
+}
+.nut-navbar-title .nut-tabs-titles-item-text {
+  color: #1A1A1A;
+}
+.nut-navbar-title .nut-tabpane {
+  display: none;
+}
+.nut-navbar-title ::-webkit-scrollbar {
+  display: none;
+}
+.nut-navbar-left, .nut-navbar-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 14px;
+}
+.nut-navbar-left .nut-icon,
+.nut-navbar-left .nutui-iconfont, .nut-navbar-right .nut-icon,
+.nut-navbar-right .nutui-iconfont {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+.nut-navbar-left {
+  left: 0;
+}
+.nut-navbar-left-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+.nut-navbar-right {
+  right: 0;
+}
+.nut-navbar-right .nut-icon {
+  margin-left: 12px;
+}
+.nut-navbar-right .nut-icon:first-child {
+  margin-left: 0;
+}
+.nut-navbar-title-align-left {
+  padding-left: 14px;
+}
+.nut-navbar-title-align-left .nut-navbar-left {
+  position: static;
+  padding: 0;
+}
+.nut-navbar-title-align-left .nut-navbar-left .nut-icon {
+  margin-left: 12px;
+}
+.nut-navbar-title-align-left .nut-navbar-left .nut-icon:first-child {
+  margin-left: 0;
+}
+.nut-navbar-title-align-left .nut-navbar-right {
+  position: static;
+  display: inline-flex;
+  white-space: nowrap;
+  padding-left: 0;
+}
+.nut-navbar-title-align-left .nut-navbar-left-back {
+  margin-right: 0;
+}
+.nut-navbar-title-align-left .nut-navbar-title {
+  min-width: 0;
+  margin: 0;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 0 8px;
+}
+
+[dir=rtl] .nut-navbar-fixed,
+.nut-rtl .nut-navbar-fixed {
+  left: auto;
+  right: 0;
+}
+[dir=rtl] .nut-navbar-left,
+.nut-rtl .nut-navbar-left {
+  left: auto;
+  right: 0;
+}
+[dir=rtl] .nut-navbar-left .nut-icon-ArrowLeft,
+.nut-rtl .nut-navbar-left .nut-icon-ArrowLeft {
+  transform: rotateY(180deg);
+}
+[dir=rtl] .nut-navbar-left-back,
+.nut-rtl .nut-navbar-left-back {
+  margin-right: 0;
+  margin-left: 10px;
+}
+[dir=rtl] .nut-navbar-right,
+.nut-rtl .nut-navbar-right {
+  right: auto;
+  left: 0;
+}
+[dir=rtl] .nut-navbar-right .nut-icon,
+.nut-rtl .nut-navbar-right .nut-icon {
+  margin-left: 0;
+  margin-right: 12px;
+}
+[dir=rtl] .nut-navbar-right .nut-icon:first-child,
+.nut-rtl .nut-navbar-right .nut-icon:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+[dir=rtl] .nut-navbar-title-align-left .nut-navbar-left .nut-icon-ArrowLeft,
+.nut-rtl .nut-navbar-title-align-left .nut-navbar-left .nut-icon-ArrowLeft {
+  margin-left: 0;
+  margin-right: 12px;
+}
+[dir=rtl] .nut-navbar-title-align-left .nut-navbar-left .nut-icon-ArrowLeft:first-child,
+.nut-rtl .nut-navbar-title-align-left .nut-navbar-left .nut-icon-ArrowLeft:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+[dir=rtl] .nut-navbar-title-align-left .nut-navbar-left-back,
+.nut-rtl .nut-navbar-title-align-left .nut-navbar-left-back {
+  margin-right: 0;
+  margin-left: 0;
+}

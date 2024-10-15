@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
+import { View, ITouchEvent } from '@tarojs/components'
+import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type RowEventType = 'row' | 'col'
@@ -12,7 +13,10 @@ export interface RowProps extends BasicComponent {
   align: string
   wrap: string
   gutter: string | number
-  onClick: (e: MouseEvent<HTMLDivElement>, type: RowEventType) => void
+  onClick: (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
+    type: RowEventType
+  ) => void
 }
 
 const classPrefix = 'nut-row'
@@ -44,8 +48,9 @@ export const Row: FunctionComponent<
   }
   const getClass = (prefix: string, type: string) => {
     const classType = type ? `nut-row-${prefix}-${type}` : ''
-    const className = prefix ? classType : `nut-row-${type}`
-    return className
+    if (prefix) return classType
+    if (type) return `nut-row-${type}`
+    return ''
   }
   const getClasses = () => {
     return classNames(
@@ -62,17 +67,24 @@ export const Row: FunctionComponent<
 
   return (
     <DataContext.Provider value={parentRow}>
-      {React.createElement(
-        'div',
-        {
-          className: classNames(getClasses(), className),
-          style,
-          onClick: (e: MouseEvent<HTMLDivElement>) => {
-            onClick && onClick(e, 'row')
-          },
-        },
-        children
-      )}
+      <View
+        className={classNames(getClasses(), className)}
+        style={style}
+        onClick={(e) => {
+          onClick?.(e as any, 'row')
+        }}
+      >
+        {React.Children.map(children, (child, index) => {
+          // @ts-ignore
+          return child?.type?.displayName === 'NutCol'
+            ? // @ts-ignore
+              React.cloneElement(child, {
+                isFirst: index === 0,
+                isLast: index === React.Children.count(children) - 1,
+              })
+            : child
+        })}
+      </View>
     </DataContext.Provider>
   )
 }

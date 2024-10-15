@@ -4,7 +4,7 @@
 
 ## 安装和使用
 
-在运行 codemod 脚本钱，请先提交你本地代码的修改。
+在运行 codemod 脚本前，请先提交你本地代码的修改。
 
 ### 针对 @nutui/nutui-react 的升级可采用下面的脚本
 
@@ -90,4 +90,29 @@ const App = () => {
 }
 export default App
 
+```
+
+`package-name-migration`
+
+- 包名替换
+
+```shell
+# 使用 npx 直接运行
+npx -p @nutui/nutui-react-codemod nutui-react-codemod src -taro -internal
+
+# 或者使用 pnpm 直接运行
+pnpm --package=@nutui/nutui-react-codemod  dlx nutui-react-codemod src -taro -internal
+```
+
+```diff
+- import { Button, Collapse } from "@nutui/nutui-react-taro";
+- import { Cell } from '@nutui/nutui-react-taro/dist/components/cell/index';
+- import '@nutui/nutui-react-taro/dist/components/cell/index';
+- import "@nutui/nutui-react-taro/dist/style.css";
+- import NutUI from "@nutui/nutui-react-taro";
++ import { Button, Collapse } from "@dongdesign/components";
++ import { Cell } from "@dongdesign/components/dist/components/cell/index";
++ import "@dongdesign/components/dist/components/cell/index";
++ import "@dongdesign/components/dist/style.css";
++ import NutUI from "@dongdesign/components";
 ```

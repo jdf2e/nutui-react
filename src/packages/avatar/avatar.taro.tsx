@@ -4,16 +4,17 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
-  useCallback,
 } from 'react'
 import type { MouseEvent } from 'react'
-import Taro, { getEnv } from '@tarojs/taro'
+import { View, ITouchEvent, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
-import Image from '@/packages/image/index.taro'
+// import Image from '@/packages/image/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmonyAndRn } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface AvatarProps extends BasicComponent {
   size: string
@@ -23,8 +24,8 @@ export interface AvatarProps extends BasicComponent {
   color: string
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
-  alt: string
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
+  avatarIndex: number
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onError: () => void
 }
 
@@ -32,14 +33,14 @@ export type AvatarShape = 'round' | 'square'
 
 const defaultProps = {
   ...ComponentDefaults,
-  size: '',
+  size: harmonyAndRn() ? '40' : '',
   shape: 'round',
   icon: '',
   background: '#eee',
   color: '#666',
   fit: 'cover',
   src: '',
-  alt: '',
+  avatarIndex: 0,
 } as AvatarProps
 
 const classPrefix = `nut-avatar`
@@ -56,42 +57,51 @@ export const Avatar: FunctionComponent<
     alt,
     icon,
     fit,
+    avatarIndex,
     className,
     style,
     onClick,
     onError,
-    ...rest
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const [maxSum, setMaxSum] = useState(0) // avatarGroup里的avatar的个数
   const [showMax, setShowMax] = useState(false) // 是否显示的最大头像个数
-  const [avatarIndex, setAvatarIndex] = useState(1)
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
-  const { propAvatarGroup, avatarGroupRef } = parent
+  const { propAvatarGroup } = parent
+  const groupSize = propAvatarGroup?.size
+  const groupShape = propAvatarGroup?.shape
+  const groupCount = propAvatarGroup?.avatarCount
+  const groupMax = propAvatarGroup?.max
 
   const classes = classNames({
-    [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}`]: true,
-    [`nut-avatar-${propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${groupSize || size || 'normal'}`]: true,
+    [`nut-avatar-${groupShape || shape}`]: true,
+    [`nut-avatar-${groupSize || size || 'normal'}-round`]:
+      shape === 'round' && true,
   })
-  const cls = classNames(classPrefix, classes, className)
 
+  const nativeClasses = classNames({
+    [`nut-avatar-first-child`]: avatarIndex === 1,
+  })
+
+  const cls = classNames(classPrefix, classes, className, nativeClasses)
   const styles: React.CSSProperties = {
-    width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
+    width: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
+    height: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
     backgroundColor: `${background}`,
     color,
-    marginLeft:
+    [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
       avatarIndex !== 1 && propAvatarGroup?.gap
         ? `${propAvatarGroup?.gap}px`
         : '',
     zIndex:
       propAvatarGroup?.level === 'right'
-        ? `${Math.abs(maxSum - avatarIndex)}`
+        ? Math.abs(groupCount - avatarIndex)
         : '',
     ...style,
   }
@@ -101,101 +111,79 @@ export const Avatar: FunctionComponent<
     color: `${propAvatarGroup?.maxColor}`,
   }
 
-  const avatarLength = useCallback(
-    (children: any) => {
-      for (let i = 0; i < children.length; i++) {
-        if (
-          children[i] &&
-          children[i].classList &&
-          isAvatarInClassList(children[i])
-        ) {
-          children[i].setAttribute('data-index', i + 1)
-        }
-      }
-      const index = Number(avatarRef?.current?.dataset?.index)
-      const maxCount = propAvatarGroup?.max
-      setMaxSum(children.length)
-      setAvatarIndex(index)
-      if (
-        index === children.length &&
-        index !== maxCount &&
-        children.length > maxCount
-      ) {
-        setShowMax(true)
-      }
-    },
-    [propAvatarGroup?.max]
-  )
-
   useEffect(() => {
-    const avatarChildren = avatarGroupRef?.current.children
-    if (avatarChildren) {
-      avatarLength(avatarChildren)
+    const maxCount = groupMax || groupCount
+    if (
+      avatarIndex === groupCount &&
+      avatarIndex !== maxCount &&
+      groupCount > maxCount
+    ) {
+      setShowMax(true)
     }
-  }, [avatarLength, avatarGroupRef])
-
-  const isAvatarInClassList = (element: any) => {
-    if (getEnv() === Taro.ENV_TYPE.WEB) {
-      return (
-        element.classList[0] === 'nut-avatar' ||
-        element.classList.values().next().value === 'nut-avatar'
-      )
-    }
-
-    return (
-      element.classList?.tokenList[0] === 'nut-avatar' ||
-      element.classList?.tokenList.values().next().value === 'nut-avatar'
-    )
-  }
+  }, [avatarIndex, groupCount])
 
   const errorEvent = () => {
     onError && onError()
   }
 
-  const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
+  const clickAvatar = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     onClick && onClick(e)
   }
 
   return (
     <>
-      {(showMax ||
-        !propAvatarGroup?.max ||
-        avatarIndex <= propAvatarGroup?.max) && (
-        <div
+      {(showMax || !groupMax || avatarIndex <= groupMax) && (
+        <View
           className={cls}
-          {...rest}
+          // {...rest}
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!propAvatarGroup?.max || avatarIndex <= propAvatarGroup?.max) && (
+          {(!groupMax || avatarIndex <= groupMax) && (
             <>
               {src && (
                 <Image
-                  className="avatar-img"
+                  className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
-                  style={{ objectFit: fit }}
+                  style={{ objectFit: fit, ...styles }}
                   onError={errorEvent}
                 />
               )}
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
                     ...icon.props,
-                    className: `${icon.props.className || ''} icon`,
+                    className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`,
+                    style: { position: 'absolute' },
                   })
                 : null}
-              {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <User className="icon" />}
+              {children && (
+                <View
+                  className={`nut-avatar-text nut-avatar-${groupSize || size || 'normal'}-text`}
+                >
+                  {children}
+                </View>
+              )}
+              {!src && !icon && !children && !harmonyAndRn() && (
+                <User
+                  className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
+                  style={{ position: 'absolute' }}
+                />
+              )}
             </>
           )}
           {showMax && (
-            <div className="text">
+            <View
+              className={`nut-avatar-text nut-avatar-${groupSize || 'normal'}-text`}
+            >
               {propAvatarGroup?.maxContent
                 ? propAvatarGroup?.maxContent
-                : `+ ${avatarIndex - Number(propAvatarGroup?.max || 0)}`}
-            </div>
+                : `+ ${avatarIndex - Number(groupMax || 0)}`}
+            </View>
           )}
-        </div>
+        </View>
       )}
     </>
   )

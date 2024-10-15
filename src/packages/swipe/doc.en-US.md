@@ -81,7 +81,7 @@ const App = () => {
           >
             <>
               {divNode('AlwaysBuy', {
-                background: '#F8F8F8',
+                background: '#F7F8FC',
                 color: '#1A1A1A',
               })}
               {divNode('Collected', {
@@ -93,7 +93,7 @@ const App = () => {
                 color: '#FFF',
               })}
               {divNode('Delete', {
-                background: '#FA2C19',
+                background: '#FF0F23',
                 color: '#FFF',
               })}
             </>

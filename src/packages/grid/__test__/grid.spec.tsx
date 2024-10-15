@@ -181,7 +181,7 @@ test('render with custom content', () => {
             <Avatar
               className="demo-avatar"
               icon={<ImageIcon color="#fff" />}
-              background="#FA2C19"
+              background="#FF0F23"
             />
           }
         />
@@ -189,7 +189,7 @@ test('render with custom content', () => {
           <Avatar
             className="demo-avatar"
             icon={<ImageIcon color="#fff" />}
-            background="#FA2C19"
+            background="#FF0F23"
           />
         </Grid.Item>
         <Grid.Item>

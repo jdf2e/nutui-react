@@ -1,0 +1,153 @@
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.nut-toast-overlay-default {
+  background: rgba(0, 0, 0, 0);
+  z-index: 1300;
+}
+
+.nut-toast {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+}
+
+
+.nut-toast-small .nut-toast-inner {
+  font-size: 12px;
+}
+
+.nut-toast-large .nut-toast-inner {
+  font-size: 16px;
+}
+
+.nut-toast-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 30%;
+  max-width: 95.7%;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px 24px;
+  word-break: break-all;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
+  color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+
+.nut-toast-inner.normal {
+  word-break: normal;
+  word-wrap: normal;
+}
+
+.nut-toast-inner.break-word {
+  word-break: normal;
+  word-wrap: break-word;
+}
+
+.nut-toast-center {
+  top: 50%;
+}
+
+.nut-toast-bottom {
+  top: 80%;
+}
+
+.nut-toast-top {
+  top: 20%;
+}
+
+.nut-toast-text {
+  display: flex;
+  color: #ffffff;
+  text-align: center;
+}
+
+.nut-toast-text:empty {
+  margin-bottom: -8px;
+}
+
+.nut-toast-title {
+  display: flex;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.nut-toast-title:empty {
+  margin-bottom: -8px;
+}
+
+.nut-toast-has-icon .nut-toast-icon-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.nut-toast-has-icon .nut-toast-icon-wrapper .nut-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nut-toast-loading .nut-toast-inner {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nut-toast-loading .nut-toast-icon-wrapper {
+  animation: rotation 2s linear infinite;
+}
+
+.nut-toast-loading .nut-toast-icon-wrapper .nut-icon {
+  width: 24px;
+  height: 24px;
+}
+
+[dir=rtl] .nut-toast,
+.nut-rtl .nut-toast {
+  left: auto;
+  right: 0;
+}
+
+[dir=rtl] .nut-toast-inner,
+.nut-rtl .nut-toast-inner {
+  left: auto;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.toast-fade-enter-active {
+  transition: opacity 0.3s;
+}
+
+.toast-fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.toast-fade-enter-from,
+.toast-fade-leave-to {
+  opacity: 0;
+}

@@ -50,6 +50,16 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
+### RN、鴻蒙端使用
+
+由於不支援固定定位，需配合 ScrollView 進行使用。
+
+:::demo
+
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
+
+:::
+
 ## BackTop
 
 ### Props
@@ -60,6 +70,7 @@ import { BackTop } from '@nutui/nutui-react'
 | threshold | 頁面垂直滾動多高後出現 | `number` | `200` |
 | zIndex | 設置組件頁面層級 | `number` | `900` |
 | duration | 設置動畫持續時間，為 0 時表示無動畫 | `number` | `1000` |
+| scrollRes | 被監聽容器滾動時的回調參數，主要用於 RN、鴻蒙端 | `PageScrollObejct` | `-` |
 | onClick | 按鈕點擊時觸發事件 | `(event: MouseEvent) => void` | `-` |
 
 ## 主題定制

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -11,6 +12,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -38,38 +40,47 @@ const ImageDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.circle}</h2>
+        <View className="h2">{translated.circle}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.loading}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <h2>{translated.error}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <h2>{translated.imageText}</h2>
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.loading}</View>
+            <Cell>
+              <Demo3 />
+            </Cell>
+            <View className="h2">{translated.error}</View>
+            <Cell>
+              <Demo4 />
+            </Cell>
+          </>
+        )}
+
+        <View className="h2">{translated.imageText}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.fill}</h2>
+        <View className="h2">{translated.fill}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo6 />
         </Cell>
-        <h2>{translated.position}</h2>
+        <View className="h2">{translated.position}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo7 />
         </Cell>
-        <h2>{translated.lazyload}</h2>
-        <Demo8 />
-      </div>
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.lazyload}</View>
+            <Demo8 />
+          </>
+        )}
+      </ScrollView>
     </>
   )
 }

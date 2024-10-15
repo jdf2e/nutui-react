@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/row/UserContext'
+import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ColEventType = 'row' | 'col'
@@ -15,6 +15,8 @@ export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
+  isFirst: boolean
+  isLast: boolean
   onClick: (e: MouseEvent<HTMLDivElement>, type: ColEventType) => void
 }
 const defaultProps = {
@@ -22,15 +24,18 @@ const defaultProps = {
   span: '24',
   offset: '0',
   gutter: '0',
+  isFirst: false,
+  isLast: false,
 } as ColProps
 
 export const Col: FunctionComponent<
   Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const { className, style, span, offset, children, onClick } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { className, style, span, offset, children, isFirst, isLast, onClick } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
@@ -45,8 +50,12 @@ export const Col: FunctionComponent<
   const getStyle = () => {
     // 定义col的style类
     const style: CSSProperties = {}
-    style.paddingLeft = `${(gutter as number) / 2}px`
-    style.paddingRight = `${(gutter as number) / 2}px`
+    if (!isFirst) {
+      style.paddingLeft = `${(gutter as number) / 2}px`
+    }
+    if (!isLast) {
+      style.paddingRight = `${(gutter as number) / 2}px`
+    }
     return style
   }
   useEffect(() => {

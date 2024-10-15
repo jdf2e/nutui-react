@@ -1,13 +1,12 @@
 /// <reference types="vitest" />
 import { defineConfig, UserConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
-import path from 'path'
+import { resolve, join } from 'path'
+// @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
-
-const { resolve } = path
 
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
 if (projectID) {
@@ -27,11 +26,11 @@ export default defineConfig(async (): Promise<UserConfig> => {
     resolve: {
       alias: [
         {
-          find: '@nutui/nutui-react/dist/locale/enUS',
+          find: '@nutui/nutui-react/dist/locale/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         {
-          find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+          find: '@nutui/nutui-react-taro/dist/locales/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         { find: '@', replacement: resolve(__dirname, './src') },
@@ -53,7 +52,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           additionalData: fileStr,
         },
         postcss: {
-          plugins: [atImport({ path: path.join(__dirname, 'src`') })],
+          plugins: [atImport({ path: join(__dirname, 'src`') })],
         },
       },
     },

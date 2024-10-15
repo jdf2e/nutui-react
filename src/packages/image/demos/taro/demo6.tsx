@@ -1,5 +1,7 @@
 import React from 'react'
 import { Image } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const src =
@@ -11,17 +13,29 @@ const Demo6 = () => {
     'widthFix',
     'heightFix',
   ]
+
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
         {modes.map((mode) => {
           return (
-            <div style={{ width: 100, height: 100 }} key={mode}>
-              <Image src={src} mode={mode as any} width="80" height="80" />
-            </div>
+            <View
+              style={{
+                width: pxTransform(90),
+                height: pxTransform(90),
+              }}
+              key={mode}
+            >
+              <Image
+                src={src}
+                mode={mode as any}
+                width={pxTransform(80)}
+                height={pxTransform(80)}
+              />
+            </View>
           )
         })}
-      </div>
+      </View>
     </>
   )
 }

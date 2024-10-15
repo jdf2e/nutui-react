@@ -1,7 +1,11 @@
 import React from 'react'
-import { Price } from '@nutui/nutui-react'
+import { Cell, Price } from '@nutui/nutui-react'
 
 const Demo6 = () => {
-  return <Price price={15213.1221} size="normal" symbol="" />
+  return (
+    <Cell>
+      <Price price={15213.1221} size="normal" symbol="" />
+    </Cell>
+  )
 }
 export default Demo6

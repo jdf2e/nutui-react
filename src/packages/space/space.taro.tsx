@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 const prefixCls = 'nut-space'
 
@@ -28,25 +30,40 @@ export const Space: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const cls = classNames(
-    prefixCls,
-    wrap && `${prefixCls}-wrap`,
-    direction && `${prefixCls}-${direction}`,
-    align && `${prefixCls}-align-${align}`,
-    justify && `${prefixCls}-justify-${justify}`,
-    className
-  )
+  const rtl = useRtl()
+  const cls = classNames(prefixCls, {
+    [`${prefixCls}-${direction}`]: direction,
+    [`${prefixCls}-${direction}-wrap`]: wrap,
+    [`${prefixCls}-align-${align}`]: align,
+    [`${prefixCls}-justify-${justify}`]: justify,
+    [`${className}`]: className,
+  })
+  const itemCls = classNames(`${prefixCls}-item`, {
+    [`${prefixCls}-${direction}-item`]: direction,
+    [`${prefixCls}-${direction}-wrap-item`]: wrap,
+    [`${prefixCls}-item-rtl`]: rtl,
+  })
+  const childrenCount = React.Children.count(children)
+
   return (
-    <div className={cls} style={style}>
-      {React.Children.map(children, (child) => {
+    <View className={cls} style={style}>
+      {React.Children.map(children, (child, idx) => {
+        const isLast = idx === childrenCount - 1
         return (
           child !== null &&
           child !== undefined && (
-            <div className={`${prefixCls}-item`}>{child}</div>
+            <View
+              className={classNames(
+                itemCls,
+                isLast && `${prefixCls}-${direction}-item-last`
+              )}
+            >
+              {child}
+            </View>
           )
         )
       })}
-    </div>
+    </View>
   )
 }
 

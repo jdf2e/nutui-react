@@ -9,7 +9,10 @@ import React, {
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 
+export type CountDownType = 'default' | 'primary'
+
 export interface CountDownProps extends BasicComponent {
+  type: CountDownType
   paused: boolean
   startTime: number
   endTime: number
@@ -28,6 +31,7 @@ export interface CountDownProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'default',
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
@@ -44,6 +48,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   Partial<CountDownProps>
 > = (props, ref) => {
   const {
+    type,
     paused,
     startTime,
     endTime,
@@ -192,6 +197,13 @@ const InternalCountDown: ForwardRefRenderFunction<
         formatCache = formatCache.replace('SS', msC.slice(0, 1))
       }
     }
+    formatCache = formatCache.replace(
+      /(\d+)/g,
+      type === 'primary'
+        ? `<span class="nut-countdown-number-primary">$1</span>`
+        : `<span class="nut-countdown-number">$1</span>`
+    )
+
     return formatCache
   }
 
@@ -281,21 +293,18 @@ const InternalCountDown: ForwardRefRenderFunction<
   })()
 
   return (
-    <div
-      className={`${classPrefix} ${className}`}
-      style={{ ...style }}
-      {...rest}
-    >
+    <>
       {children || (
         <div
-          className={`${classPrefix}-block`}
-          // eslint-disable-next-line react/no-danger
+          className={`${classPrefix} ${className}`}
+          style={{ ...style }}
+          {...rest}
           dangerouslySetInnerHTML={{
             __html: `${renderTime}`,
           }}
         />
       )}
-    </div>
+    </>
   )
 }
 

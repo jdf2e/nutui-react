@@ -81,7 +81,7 @@ const App = () => {
           >
             <>
               {divNode('设置常买', {
-                background: '#F8F8F8',
+                background: '#F7F8FC',
                 color: '#1A1A1A',
               })}
               {divNode('移入收藏', {
@@ -93,7 +93,7 @@ const App = () => {
                 color: '#FFF',
               })}
               {divNode('删除', {
-                background: '#FA2C19',
+                background: '#FF0F23',
                 color: '#FFF',
               })}
             </>

@@ -1,5 +1,6 @@
 .nut-empty {
   box-sizing: border-box;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -7,16 +8,21 @@
   padding: $empty-padding;
   background-color: $empty-background-color;
 
-  &-image {
+  &-base {
     width: $empty-image-size;
     height: $empty-image-size;
 
-    .img {
+    img,
+    image {
       width: 100%;
       height: 100%;
     }
+  }
 
-    // 兼容小程序标签和img-slot
+  &-small {
+    width: $empty-image-small-size;
+    height: $empty-image-small-size;
+
     img,
     image {
       width: 100%;
@@ -39,36 +45,14 @@
     line-height: $empty-description-line-height;
   }
 
-  &-small {
-    .nut-empty-image {
-      width: $empty-image-small-size;
-      height: $empty-image-small-size;
-    }
-  }
-
   &-actions {
     display: flex;
+    flex-direction: row;
     margin-top: 16px;
-
-    .nut-button.nut-empty-actions-left,
-    .nut-button.nut-empty-actions-right {
-      height: 28px;
-      padding: 0px 12px;
-      font-weight: 400;
-    }
-
-    .nut-button.nut-empty-actions-left {
-      margin-right: 16px;
-    }
   }
-}
 
-[dir='rtl'] .nut-empty,
-.nut-rtl .nut-empty {
-  &-actions {
-    .nut-button.nut-empty-actions-left {
-      margin-right: 0;
-      margin-left: 16px;
-    }
+  &-action {
+    margin-right: 6px;
+    margin-left: 6px;
   }
 }

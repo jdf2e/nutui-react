@@ -5,9 +5,10 @@ import React, {
   CSSProperties,
   useContext,
 } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/row/UserContext'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
+import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ColEventType = 'row' | 'col'
@@ -16,7 +17,9 @@ export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
-  onClick: (e: MouseEvent<HTMLDivElement>, type: ColEventType) => void
+  isFirst: boolean
+  isLast: boolean
+  onClick: (e: any, type: ColEventType) => void
 }
 
 const defaultProps = {
@@ -24,15 +27,16 @@ const defaultProps = {
   span: '24',
   offset: '0',
   gutter: '0',
+  isFirst: false,
+  isLast: false,
 } as ColProps
 
-export const Col: FunctionComponent<
-  Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
-  const { className, style, span, offset, children, onClick } = {
-    ...defaultProps,
-    ...props,
-  }
+export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
+  const { className, style, span, offset, children, isFirst, isLast, onClick } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
@@ -42,13 +46,17 @@ export const Col: FunctionComponent<
     const prefixCls = 'nut-col'
     return `${prefixCls} ${prefixCls}-${span} ${
       gutter ? `${prefixCls}-gutter` : ''
-    } ${prefixCls}-${offset}`
+    } ${prefixCls}-offset-${offset}`
   }
   const getStyle = () => {
     // 定义col的style类
     const style: CSSProperties = {}
-    style.paddingLeft = `${(gutter as number) / 2}px`
-    style.paddingRight = `${(gutter as number) / 2}px`
+    if (!isFirst) {
+      style.paddingLeft = pxTransform((gutter as number) / 2)
+    }
+    if (!isLast) {
+      style.paddingRight = pxTransform((gutter as number) / 2)
+    }
     return style
   }
   useEffect(() => {
@@ -57,15 +65,16 @@ export const Col: FunctionComponent<
   }, [span, offset, gutter])
 
   return (
-    <div
+    <View
       className={classNames(colName, className)}
       style={{ ...style, ...colStyle }}
+      key={classNames(colName, className)}
       onClick={(e) => {
         onClick && onClick(e, 'col')
       }}
     >
       {children}
-    </div>
+    </View>
   )
 }
 

@@ -11,3 +11,5 @@ export const ComponentDefaults = {
   className: '',
   style: {},
 }
+
+export type Timeout = ReturnType<typeof setTimeout>

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Swiper } from '@nutui/nutui-react-taro'
 import {
+  Image,
   CommonEventFunction,
   SwiperProps as TaroSwiperProps,
 } from '@tarojs/components'
+import { Swiper } from '@nutui/nutui-react-taro'
 
 const list = [
   'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
@@ -21,12 +22,10 @@ const Demo1 = () => {
     <Swiper defaultValue={1} autoPlay indicator onChange={onChange}>
       {list.map((item, index) => (
         <Swiper.Item key={item}>
-          <img
-            width="100%"
-            height="100%"
+          <Image
+            style={{ width: '100%', height: '100%' }}
             onClick={() => console.log(index)}
             src={item}
-            alt=""
           />
         </Swiper.Item>
       ))}
