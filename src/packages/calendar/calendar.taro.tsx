@@ -23,6 +23,7 @@ export interface CalendarProps {
   showSubTitle?: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
+  closeIcon?: ReactNode
   disableDate: (date: CalendarDay) => boolean
   renderHeaderButtons?: () => string | JSX.Element
   renderDay?: (date: CalendarDay) => string | JSX.Element
@@ -88,6 +89,7 @@ export const Calendar = React.forwardRef<
     showSubTitle,
     scrollAnimation,
     firstDayOfWeek,
+    closeIcon,
     disableDate,
     renderHeaderButtons,
     renderDay,
@@ -176,6 +178,7 @@ export const Calendar = React.forwardRef<
           onOverlayClick={closePopup}
           onCloseIconClick={closePopup}
           style={{ height: '83%' }}
+          closeIcon={closeIcon}
         >
           {renderItem()}
         </Popup>
