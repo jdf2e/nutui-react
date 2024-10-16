@@ -126,7 +126,7 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-typescript": "^12.1.1",
     "@tarojs/components": "3.6.22",
     "@tarojs/plugin-platform-alipay": "3.6.22",
     "@tarojs/plugin-platform-weapp": "3.6.22",
