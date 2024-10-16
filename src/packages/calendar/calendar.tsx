@@ -25,6 +25,7 @@ export interface CalendarProps {
   firstDayOfWeek: number
   disableDate: (date: CalendarDay) => boolean
   renderHeaderButtons?: () => string | JSX.Element
+  renderBottomButton?: () => string | JSX.Element
   renderDay?: (date: CalendarDay) => string | JSX.Element
   renderDayTop?: (date: CalendarDay) => string | JSX.Element
   renderDayBottom?: (date: CalendarDay) => string | JSX.Element
@@ -90,6 +91,7 @@ export const Calendar = React.forwardRef<
     firstDayOfWeek,
     disableDate,
     renderHeaderButtons,
+    renderBottomButton,
     renderDay,
     renderDayTop,
     renderDayBottom,
@@ -138,6 +140,7 @@ export const Calendar = React.forwardRef<
         children={children}
         type={type}
         autoBackfill={autoBackfill}
+        renderBottomButton={renderBottomButton}
         popup={popup}
         title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
