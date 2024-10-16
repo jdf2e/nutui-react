@@ -878,7 +878,9 @@ export const CalendarItem = React.forwardRef<
       <div className="nut-calendar-footer">
         {children}
         <div onClick={confirm}>
-          {renderBottomButton() || (
+          {renderBottomButton ? (
+            renderBottomButton()
+          ) : (
             <div className="calendar-confirm-btn">
               {confirmText || locale.confirm}
             </div>
