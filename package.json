@@ -124,7 +124,7 @@
     "@mdx-js/rollup": "^3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@tarojs/components": "3.6.22",
