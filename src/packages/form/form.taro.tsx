@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Form as TForm } from '@tarojs/components'
 import classNames from 'classnames'
 import { Context } from './context'
 import { SECRET, useForm } from './useform.taro'
@@ -77,7 +78,7 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
     }
 
     return (
-      <form
+      <TForm
         className={classNames(
           classPrefix,
           PositionInfo[labelPosition],
@@ -96,12 +97,14 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
         }}
       >
         <Cell.Group divider={divider}>
-          <Context.Provider value={formInstance}>{children}</Context.Provider>
+          <Context.Provider value={{ formInstance, labelPosition }}>
+            {children}
+          </Context.Provider>
           {footer ? (
             <Cell className={`${classPrefix}-footer`}>{footer}</Cell>
           ) : null}
         </Cell.Group>
-      </form>
+      </TForm>
     )
   }
 )

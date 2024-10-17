@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
@@ -56,9 +56,10 @@ export class FormItem extends React.Component<
 > {
   static defaultProps = defaultProps
 
-  static contextType: any = Context
+  static contextType = Context
 
-  declare context: React.ContextType<typeof Context>
+  // @ts-ignore
+  context!: React.ContextType<typeof Context>
 
   private cancelRegister: any
 
@@ -76,7 +77,8 @@ export class FormItem extends React.Component<
 
   componentDidMount() {
     // Form设置initialValues时的处理
-    const { store = {}, setInitialValues } = this.context.getInternal(SECRET)
+    const { store = {}, setInitialValues } =
+      this.context.formInstance.getInternal(SECRET)
     if (
       this.props.initialValue &&
       this.props.name &&
@@ -88,7 +90,8 @@ export class FormItem extends React.Component<
       )
     }
     // 注册组件实例到FormStore
-    const { registerField, registerUpdate } = this.context.getInternal(SECRET)
+    const { registerField, registerUpdate } =
+      this.context.formInstance.getInternal(SECRET)
     this.cancelRegister = registerField(this)
     // 这里需要增加事件监听，因为此实现属于依赖触发
     this.eventOff = registerUpdate(this, this.props.shouldUpdate)
@@ -105,8 +108,8 @@ export class FormItem extends React.Component<
 
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
-    const { setFieldsValue, getFieldValue } = this.context
-    const { dispatch } = this.context.getInternal(SECRET)
+    const { setFieldsValue, getFieldValue } = this.context.formInstance
+    const { dispatch } = this.context.formInstance.getInternal(SECRET)
     const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {
@@ -116,6 +119,7 @@ export class FormItem extends React.Component<
     const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
+      className: classNames('a', children.props.className),
       [this.props.valuePropName || 'value']:
         fieldValue !== undefined ? fieldValue : this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
@@ -181,11 +185,18 @@ export class FormItem extends React.Component<
 
   onStoreChange = (type?: string) => {
     if (type === 'reset') {
-      this.context.errors[this.props.name as string] = []
+      this.context.formInstance.errors[this.props.name as string] = []
       this.refresh()
     } else {
       this.forceUpdate()
     }
+  }
+
+  getClassNameWithDirection(className: string) {
+    if (className && this.context.labelPosition) {
+      return `${className} ${className}-${this.context.labelPosition}`
+    }
+    return className
   }
 
   renderLayout = (childNode: React.ReactNode) => {
@@ -204,22 +215,22 @@ export class FormItem extends React.Component<
     }
     const requiredInRules = rules?.some((rule: any) => rule.required)
 
-    const item = name ? this.context.errors[name] : []
+    const item = name ? this.context.formInstance.errors[name] : []
 
-    const { starPosition } = this.context
+    const { starPosition } = this.context.formInstance
     const renderStar = (required || requiredInRules) && (
-      <i className="required" />
+      <Text className="nut-form-item-label-required">*</Text>
     )
     const renderLabel = (
       <>
         {starPosition === 'left' ? renderStar : null}
-        {label}
+        <Text className="nut-form-item-labeltxt">{label}</Text>
         {starPosition === 'right' ? renderStar : null}
       </>
     )
     return (
       <Cell
-        className={`nut-form-item ${className}`}
+        className={`${this.getClassNameWithDirection('nut-form-item')} ${className}`}
         style={style}
         align={align}
         onClick={(e) =>
@@ -227,11 +238,15 @@ export class FormItem extends React.Component<
         }
       >
         {label ? (
-          <View className="nut-cell-title nut-form-item-label">
+          <View
+            className={`nut-cell-title ${this.getClassNameWithDirection('nut-form-item-label')}`}
+          >
             {renderLabel}
           </View>
         ) : null}
-        <View className="nut-cell-value nut-form-item-body">
+        <View
+          className={`nut-cell-value ${this.getClassNameWithDirection('nut-form-item-body')}`}
+        >
           <View className="nut-form-item-body-slots">{childNode}</View>
           <View
             className="nut-form-item-body-tips"
@@ -250,6 +265,7 @@ export class FormItem extends React.Component<
   render() {
     const { children } = this.props
     const child = Array.isArray(children) ? children[0] : children
+    console.log('testtest', child)
     let returnChildNode
     if (!this.props.shouldUpdate) {
       returnChildNode = React.cloneElement(
@@ -257,7 +273,7 @@ export class FormItem extends React.Component<
         this.getControlled(child as React.ReactElement)
       )
     } else {
-      returnChildNode = child(this.context)
+      returnChildNode = child(this.context.formInstance)
     }
     return (
       <React.Fragment key={this.state.resetCount}>
