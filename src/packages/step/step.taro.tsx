@@ -1,14 +1,17 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { DataContext } from '@/packages/steps/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony, rn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 export interface StepProps extends BasicComponent {
   title: ReactNode
   description: ReactNode
   value: number
   icon: ReactNode
+  lineWidth: number
 }
 
 const defaultProps = {
@@ -17,18 +20,28 @@ const defaultProps = {
   description: '',
   value: 0,
   icon: null,
+  lineWidth: 70,
 } as StepProps
 export const Step: FunctionComponent<
   Partial<StepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const { children, title, description, value, icon, className, ...restProps } =
-    {
-      ...defaultProps,
-      ...props,
-    }
+  const {
+    children,
+    title,
+    description,
+    value,
+    icon,
+    className,
+    lineWidth,
+    ...restProps
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const parent: any = useContext(DataContext)
 
-  const dot = parent.propSteps.dot
+  const { dot, direction } = parent.propSteps
+
   const getCurrentStatus = () => {
     const index = value
     if (index < +parent.propSteps.value) return 'finish'
@@ -39,10 +52,12 @@ export const Step: FunctionComponent<
   }
 
   const classPrefix = `nut-step`
+  const directionClass = direction === 'vertical' ? 'vertical' : ''
   const classes = classNames(
     classPrefix,
+    `${classPrefix}-${getCurrentStatus()}`,
     {
-      [`${classPrefix}-${getCurrentStatus()}`]: true,
+      [`${classPrefix}-vertical`]: direction === 'vertical',
     },
     className
   )
@@ -54,25 +69,96 @@ export const Step: FunctionComponent<
     if (!dot && !icon) {
       return `${classPrefix}-icon is-text`
     }
-    return `${classPrefix}-icon`
+    return `${classPrefix}-icon ${classPrefix}-dot-icon`
+  }
+  const renderLineStyle = () => {
+    const isLastItem =
+      parent.propSteps.children[parent.propSteps.children.length - 1].props
+        .value === value
+    const leftPosition = 100 - lineWidth / 2
+    if (isLastItem) {
+      return { display: 'none' }
+    }
+    if (harmony()) {
+      if (direction === 'vertical') {
+        return dot
+          ? {
+              left: pxTransform(3),
+              top: '30%',
+            }
+          : {
+              left: '4%',
+              top: '40%',
+            }
+      }
+      return {
+        left: `${leftPosition}%`,
+        top: pxTransform(dot ? 3 : 12.5),
+      }
+    }
+    if (rn()) {
+      return direction === 'vertical'
+        ? {
+            left: '50%',
+            top: dot ? '30%' : '40%',
+          }
+        : {
+            left: `${leftPosition}%`,
+          }
+    }
   }
   return (
-    <div className={classes} {...restProps} onClick={handleClickStep}>
-      <View className="nut-step-head">
-        <View className="nut-step-line" />
-        <View className={renderIconClass()}>
-          {icon || (!dot && <span className="nut-step-inner">{value}</span>)}
+    <View className={classes} {...restProps} onClick={handleClickStep}>
+      <View className={`${classPrefix}-head`}>
+        <View
+          className={classNames(
+            renderIconClass(),
+            `${classPrefix}-${getCurrentStatus()}-icon`,
+            {
+              [`${classPrefix}-dot-${getCurrentStatus()}-icon`]: dot,
+            }
+          )}
+        >
+          {icon ||
+            (!dot && (
+              <Text className={`${classPrefix}-${getCurrentStatus()}-inner`}>
+                {value}
+              </Text>
+            ))}
         </View>
+        <View
+          className={classNames(
+            `${classPrefix}-line`,
+            {
+              [`${classPrefix}-vertical-line`]: direction === 'vertical',
+              [`${classPrefix}-${directionClass}-dot-line`]: dot,
+            },
+            `${classPrefix}-${getCurrentStatus()}-line`
+          )}
+          style={renderLineStyle()}
+        />
       </View>
       {(title || description) && (
-        <View className="nut-step-main">
-          <span className="nut-step-title">{title}</span>
+        <View
+          className={classNames(`${classPrefix}-main`, {
+            [`${classPrefix}-${directionClass}-main`]: direction === 'vertical',
+          })}
+        >
+          <Text
+            className={`${classPrefix}-title ${classPrefix}-${getCurrentStatus()}-title`}
+          >
+            {title}
+          </Text>
           {description && (
-            <span className="nut-step-description">{description}</span>
+            <Text
+              className={`${classPrefix}-description ${classPrefix}-${getCurrentStatus()}-description`}
+            >
+              {description}
+            </Text>
           )}
         </View>
       )}
-    </div>
+    </View>
   )
 }
 

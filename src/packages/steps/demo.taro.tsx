@@ -12,6 +12,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const StepsDemo = () => {
   const [translated] = useTranslate({
@@ -66,17 +67,19 @@ const StepsDemo = () => {
         <View className="h2">{translated.info}</View>
         <Demo3 />
 
-        <View className="h2">{translated.custom}</View>
-        <Demo4 />
+        {!harmonyAndRn() && (
+          <>
+            <View className="h2">{translated.custom}</View>
+            <Demo4 />
 
-        <View className="h2">{translated.customDot}</View>
-        <Demo5 />
-
-        <View className="h2">{translated.customBoth}</View>
-        <Demo6 />
-
-        <View className="h2">{translated.customIcon}</View>
-        <Demo7 />
+            <View className="h2">{translated.customDot}</View>
+            <Demo5 />
+            <View className="h2">{translated.customBoth}</View>
+            <Demo6 />
+            <View className="h2">{translated.customIcon}</View>
+            <Demo7 />
+          </>
+        )}
 
         <View className="h2">{translated.vertical}</View>
         <Demo8 />

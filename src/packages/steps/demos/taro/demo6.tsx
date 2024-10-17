@@ -8,7 +8,7 @@ const customTheme = {
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsBaseLineBackground: `black`,
   nutuiStepsFinishIconBgColor: 'black',
   nutuiStepsFinishIconColor: 'black',
   nutuiStepsProcessIconBgColor: 'white',

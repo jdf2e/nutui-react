@@ -1,28 +1,23 @@
 import React, { useState } from 'react'
-import { View } from '@tarojs/components'
 import { Steps, Step, Button } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const [val, setVal] = useState(1)
-  const handleStep = () => {
-    const newVal = (val % 3) + 1
-    setVal(newVal)
-  }
-  const handleClickStep = (value: number) => {
-    console.log(value)
-  }
   return (
     <>
-      <Steps value={val} dot onStepClick={handleClickStep}>
+      <Steps value={val} dot onStepClick={(v) => setVal(v)}>
         <Step value={1} />
         <Step value={2} />
         <Step value={3} />
       </Steps>
-      <View style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button type="danger" onClick={() => handleStep()}>
-          下一步
-        </Button>
-      </View>
+      <Button
+        type="danger"
+        onClick={() => setVal((val % 3) + 1)}
+        style={{ marginLeft: pxTransform(30) }}
+      >
+        Next
+      </Button>
     </>
   )
 }
