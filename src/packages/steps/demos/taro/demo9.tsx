@@ -1,10 +1,18 @@
 import React from 'react'
-import { View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { Steps, Step } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo9 = () => {
   return (
-    <View style={{ height: '300px', padding: '15px 30px' }}>
+    <View
+      style={{
+        height: pxTransform(300),
+        paddingTop: pxTransform(15),
+        paddingLeft: pxTransform(30),
+        paddingRight: pxTransform(30),
+      }}
+    >
       <Steps direction="vertical" dot value={2}>
         <Step
           value={1}
@@ -17,8 +25,9 @@ const Demo9 = () => {
           title="未开始"
           description={
             <>
-              <p>收货地址为：</p>
-              <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+              <Text>
+                收货地址为： 北京市经济技术开发区科创十一街18号院京东大厦
+              </Text>
             </>
           }
         />

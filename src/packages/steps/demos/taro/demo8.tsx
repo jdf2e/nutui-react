@@ -1,10 +1,18 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 import { Steps, Step } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo8 = () => {
   return (
-    <View style={{ height: '300px', padding: '15px 30px' }}>
+    <View
+      style={{
+        height: pxTransform(300),
+        paddingTop: pxTransform(15),
+        paddingLeft: pxTransform(30),
+        paddingRight: pxTransform(30),
+      }}
+    >
       <Steps direction="vertical" value={2}>
         <Step
           value={1}

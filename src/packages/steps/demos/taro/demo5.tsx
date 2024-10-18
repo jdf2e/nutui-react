@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { View } from '@tarojs/components'
 import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const customTheme = {
   nutuiStepsBaseLineWidth: '30%',
@@ -8,10 +8,6 @@ const customTheme = {
 
 const Demo5 = () => {
   const [val, setVal] = useState(1)
-  const handleStep = () => {
-    const newVal = (val % 3) + 1
-    setVal(newVal)
-  }
   return (
     <>
       <ConfigProvider theme={customTheme}>
@@ -21,11 +17,13 @@ const Demo5 = () => {
           <Step value={3} />
         </Steps>
       </ConfigProvider>
-      <View style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button type="danger" onClick={() => handleStep()}>
-          下一步
-        </Button>
-      </View>
+      <Button
+        type="danger"
+        onClick={() => setVal((val % 3) + 1)}
+        style={{ marginLeft: pxTransform(30) }}
+      >
+        Next
+      </Button>
     </>
   )
 }
