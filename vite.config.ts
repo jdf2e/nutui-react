@@ -49,6 +49,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         scss: {
           // example : additionalData: `@import "./src/design/styles/variables";`
           // dont need include file extend .scss
+          api: 'modern-compiler',
           additionalData: fileStr,
         },
         postcss: {
