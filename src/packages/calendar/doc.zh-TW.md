@@ -120,6 +120,7 @@ import { Calendar } from '@nutui/nutui-react'
 | showSubTitle | 是否展示日期標題 | `boolean` | `true` |
 | scrollAnimation | 是否啟動滾動動畫 | `boolean` | `true` |
 | firstDayOfWeek | 設置周起始日 | `0-6` | `0` |
+| closeIcon | 自定義 Icon | `ReactNode` | `close` |
 | disableDate | 設置不可選日期 | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | 自定義日歴標題下部，可用以添加自定義操作 | `() => string` \| `JSX.Element` | `-` |
 | renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |

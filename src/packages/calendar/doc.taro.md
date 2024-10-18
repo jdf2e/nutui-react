@@ -120,6 +120,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | showSubTitle | 是否展示日期标题 | `boolean` | `true` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
+| closeIcon | 自定义 Icon | `ReactNode` | `close` |
 | disableDate | 设置不可选日期 | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` \| `JSX.Element` | `-` |
 | renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |

@@ -120,6 +120,7 @@ import { Calendar } from '@nutui/nutui-react'
 | showSubTitle | whether to show sub title for calendar | `boolean` | `true` |
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
+| closeIcon | Custom Icon | `ReactNode` | `close` |
 | disableDate | set disable date | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string` \| `JSX.Element` | `-` |
 | renderDay | day info | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
