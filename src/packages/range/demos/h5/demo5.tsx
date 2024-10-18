@@ -8,8 +8,8 @@ const Demo5 = () => {
   return (
     <Cell style={cellStyle}>
       <Range
-        defaultValue={0}
-        max={10}
+        defaultValue={-8}
+        max={-6}
         min={-10}
         onEnd={(val) => Toast.show(`${val}`)}
       />

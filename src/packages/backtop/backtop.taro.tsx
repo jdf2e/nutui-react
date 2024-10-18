@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, useCallback } from 'react'
 import type { MouseEvent } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
@@ -28,18 +28,18 @@ export const BackTop: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
   const classPrefix = 'nut-backtop'
-
-  const [backTop, SetBackTop] = useState(false)
-
+  const [backTop, setBackTop] = useState(false)
+  const cls = classNames(classPrefix, { show: backTop }, className)
   // 监听用户滑动页面事件
-  usePageScroll((res) => {
-    const { scrollTop } = res
-    scrollTop >= threshold ? SetBackTop(true) : SetBackTop(false)
-  })
-
-  // 返回顶部点击事件
+  const handleScroll = useCallback(
+    (res: { scrollTop: number }) => {
+      const { scrollTop } = res
+      setBackTop(scrollTop >= threshold)
+    },
+    [threshold]
+  )
+  usePageScroll(handleScroll)
   const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
     pageScrollTo({
@@ -47,7 +47,6 @@ export const BackTop: FunctionComponent<
       duration: duration > 0 ? duration : 0,
     })
   }
-
   const styles =
     Object.keys(style || {}).length !== 0
       ? {
@@ -59,21 +58,8 @@ export const BackTop: FunctionComponent<
           bottom: '20px',
           zIndex,
         }
-
   return (
-    <div
-      className={classNames(
-        classPrefix,
-        {
-          show: backTop,
-        },
-        className
-      )}
-      style={styles}
-      onClick={(e) => {
-        goTop(e)
-      }}
-    >
+    <div className={cls} style={styles} onClick={(e) => goTop(e)}>
       {children || <Top size={19} className="nut-backtop-main" />}
     </div>
   )

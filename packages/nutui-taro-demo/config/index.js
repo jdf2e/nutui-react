@@ -104,6 +104,11 @@ const config = {
       // 自定义 Webpack 配置
       devServer: {},
     },
+    output: {
+      environment: {
+        asyncFunction: true
+      }
+    }
   },
   isWatch: true,
 }

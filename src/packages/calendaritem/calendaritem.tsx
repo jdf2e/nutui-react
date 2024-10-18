@@ -10,7 +10,7 @@ import {
   getPreMonthDates,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
-import { useConfig } from '@/packages/configprovider/configprovider'
+import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
 import {
   splitDate,
@@ -55,6 +55,7 @@ export interface CalendarItemProps extends PopupProps {
   firstDayOfWeek: number
   disableDate: (date: CalendarDay) => boolean
   renderHeaderButtons: () => string | JSX.Element
+  renderBottomButton: () => string | JSX.Element
   renderDay: (date: CalendarDay) => string | JSX.Element
   renderDayTop: (date: CalendarDay) => string | JSX.Element
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
@@ -116,6 +117,7 @@ export const CalendarItem = React.forwardRef<
     firstDayOfWeek,
     disableDate,
     renderHeaderButtons,
+    renderBottomButton,
     renderDay,
     renderDayTop,
     renderDayBottom,
@@ -875,8 +877,14 @@ export const CalendarItem = React.forwardRef<
     return (
       <div className="nut-calendar-footer">
         {children}
-        <div className="calendar-confirm-btn" onClick={confirm}>
-          {confirmText || locale.confirm}
+        <div onClick={confirm}>
+          {renderBottomButton ? (
+            renderBottomButton()
+          ) : (
+            <div className="calendar-confirm-btn">
+              {confirmText || locale.confirm}
+            </div>
+          )}
         </div>
       </div>
     )
