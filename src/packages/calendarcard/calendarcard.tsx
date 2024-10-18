@@ -9,7 +9,7 @@ import {
   getCurrentWeekDays,
   getPrevMonthDays,
 } from './utils'
-import { useConfig } from '@/packages/configprovider/configprovider'
+import { useConfig } from '@/packages/configprovider'
 import type {
   CalendarCardDay,
   CalendarCardMonth,
