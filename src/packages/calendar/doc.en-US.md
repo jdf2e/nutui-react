@@ -123,6 +123,7 @@ import { Calendar } from '@nutui/nutui-react'
 | closeIcon | Custom Icon | `ReactNode` | `close` |
 | disableDate | set disable date | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string` \| `JSX.Element` | `-` |
+| renderBottomButton | Custom calendar bottom button | `() => string` \| `JSX.Element` | `-` |
 | renderDay | day info | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayTop | something above day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | something under day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |

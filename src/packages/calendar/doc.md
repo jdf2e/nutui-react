@@ -123,6 +123,7 @@ import { Calendar } from '@nutui/nutui-react'
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
 | disableDate | 设置不可选日期 | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` \| `JSX.Element` | `-` |
+| renderBottomButton | 自定义日历底部按钮 | `() => string` \| `JSX.Element` | `-` |
 | renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayTop | 日期顶部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
