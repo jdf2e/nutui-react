@@ -21,11 +21,11 @@
     -webkit-font-smoothing: auto;
 
     &:hover {
-      color: darken($nutui-doc-blue, 10%);
+      color: mix(black, $nutui-doc-blue, 10%);
     }
 
     &:active {
-      color: darken($nutui-doc-blue, 20%);
+      color: mix(black, $nutui-doc-blue, 20%);
     }
   }
 
