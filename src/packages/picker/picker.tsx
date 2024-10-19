@@ -98,7 +98,7 @@ const InternalPicker: ForwardRefRenderFunction<
     defaultValue: [...defaultValue],
     finalValue: [...defaultValue],
     onChange: (val: (string | number)[]) => {
-      props.onConfirm?.(setSelectedOptions(), val)
+      !val && props.onConfirm?.(setSelectedOptions(), val)
     },
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
@@ -197,7 +197,11 @@ const InternalPicker: ForwardRefRenderFunction<
   }
 
   useEffect(() => {
-    setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
+    // 此hook的作用是‘如果内部选中值与用户选中值不同则把内部值置用户选中值’保证用户打开选项时选中的是选择的值。
+    // 但是当用户并没有进行确认选择，则不需要进行修改innerValue，否则会出现 issue#2290的问题
+    if (innerValue !== selectedValue && selectedValue.length > 0) {
+      setInnerValue(selectedValue)
+    }
   }, [innerVisible, selectedValue])
 
   useEffect(() => {
@@ -205,11 +209,6 @@ const InternalPicker: ForwardRefRenderFunction<
       init()
     }
   }, [options, innerVisible])
-
-  // 选中值进行修改
-  useEffect(() => {
-    onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-  }, [innerValue, columnsList])
 
   const setSelectedOptions = () => {
     const options: PickerOption[] = []
@@ -251,6 +250,8 @@ const InternalPicker: ForwardRefRenderFunction<
           ]
           setInnerValue(combineResult)
           setColumnsList(normalListData(combineResult) as PickerOption[][])
+
+          onChange && onChange(setSelectedOptions(), combineResult, columnIndex)
         } else {
           setInnerValue((data: (number | string)[]) => {
             const cdata: (number | string)[] = [...data]
@@ -260,6 +261,7 @@ const InternalPicker: ForwardRefRenderFunction<
             )
               ? columnOptions.value
               : ''
+            onChange && onChange(setSelectedOptions(), cdata, columnIndex)
             return cdata
           })
         }
