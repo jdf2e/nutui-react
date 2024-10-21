@@ -260,7 +260,7 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
+    if (getEnv() === 'WEAPP' && chooseMedia) {
       // 其余端全部使用 chooseImage API
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
