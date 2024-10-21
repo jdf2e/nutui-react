@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react-taro'
-import { Star } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   const d = new Date()
