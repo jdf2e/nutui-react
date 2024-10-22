@@ -126,4 +126,4 @@ import { Grid } from '@nutui/nutui-react'
 | \--nutui-grid-item-content-bg-color | 背景 | `$white` |
 | \--nutui-grid-item-text-margin | 外边距 | `8px` |
 | \--nutui-grid-item-text-color | 文字颜色 | `$color-title` |
-| \--nutui-grid-item-text-font-size | 文字字体大小 | `$font-size-small` |
+| \--nutui-grid-item-text-font-size | 文字字体大小 | `$font-size-s` |

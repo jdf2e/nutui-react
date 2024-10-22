@@ -125,7 +125,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | boxShadow | `none` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xs` |
-| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
 | \--nutui-tabbar-text-line-height | title lineHeight | `initial` |
 | \--nutui-tabbar-text-margin-top | title marginTop | `3px` |

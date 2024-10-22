@@ -1,5 +1,6 @@
 :root,
 page {
+  // 品牌颜色
   --nutui-brand-1: #ffebf1; // 梯度1
   --nutui-brand-2: #ffd6e1; // 梯度2
   --nutui-brand-3: #ffadbe; // 梯度3
@@ -15,18 +16,83 @@ page {
   --nutui-brand-stop-1: #ff475d; // 渐变色起
   --nutui-brand-stop-2: #ff0f23; // 渐变色止
 
+  // 品牌颜色语义化
+  --nutui-color-primary: var(
+    --nutui-brand-6
+  ); // 品牌主色调默认态，主要功能控件的背景、边框、镂空状态下的文字等
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1); // 品牌渐变色左端
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2); // 品牌渐变色右端
+  --nutui-color-primary-text: var(
+    --nutui-color-background-gray-1
+  ); // 品牌主色调或其他深色背景下的文字
+  --nutui-color-primary-pressed: var(
+    --nutui-brand-7
+  ); // 品牌主色调点击态，背景、边框、镂空状态下的文字
+  --nutui-color-primary-disabled: var(
+    --nutui-color-content-gray-1
+  ); // 品牌主色调禁用态，背景、边框、镂空状态下的文字
+  --nutui-color-primary-disabled-special: var(
+    --nutui-brand-3
+  ); // 品牌主色调特殊禁用态，通过操作后可转位默认态
+  --nutui-color-primary-light-pressed: var(
+    --nutui-brand-1
+  ); // 品牌主色调镂空背景点击态
+
+  // service color
+  --nutui-golden-1: #fff2e0;
+  --nutui-golden-2: #ffd4a3;
+  --nutui-golden-3: #cc8241; // todo
+  --nutui-golden-4: #994d00; // todo
+
+  --nutui-golden-stop-1: #fff9f0;
+  --nutui-golden-stop-2: #ffe3c2;
+
+  // service color 语义化
+  --nutui-color-service: var(--nutui-golden-1);
+  --nutui-color-service-border: var(--nutui-golden-2);
+  --nutui-color-service-pressed: var(--nutui-golden-4);
+  --nutui-color-service-stop-1: var(--nutui-golden-stop-1);
+  --nutui-color-service-stop-2: var(--nutui-golden-stop-2);
+  --nutui-color-service-text: var(--nutui-golden-3);
+
+  // success color
+  --nutui-green-1: #ebfbeb;
+  --nutui-green-2: #00d900;
+  --nutui-green-3: #2aa32a;
+
+  // success color 语义化
+  --nutui-color-success: var(--nutui-green-2);
+  --nutui-color-success-light: var(--nutui-green-1);
+  --nutui-color-success-pressed: var(--nutui-green-3);
+
+  // danger color
+  --nutui-red-1: #ffebef;
+  --nutui-red-2: #ff0f23;
+
+  // danger color 语义化
+  --nutui-color-danger: var(--nutui-red-2);
+  --nutui-color-danger-light: var(--nutui-red-1);
+
+  // warning color
+  --nutui-yellow-1: #fff5cc;
+  --nutui-yellow-2: #ffbf00;
+  --nutui-yellow-3: #c47600;
+
+  // warning color 语义化
+  --nutui-color-warning: var(--nutui-yellow-2);
+  --nutui-color-warning-light: var(--nutui-yellow-1);
+  --nutui-color-warning-pressed: var(--nutui-yellow-3);
+
+  // info color
+  --nutui-blue-1: #e5f5ff;
+  --nutui-blue-2: #0073ff;
+
+  // info color 语义化
+  --nutui-color-info: var(--nutui-blue-2);
+  --nutui-color-info-light: var(--nutui-blue-1);
+
   --nutui-secondary-1: #14cc33; // 辅助色
-
-  --nutui-color-primary: var(--nutui-brand-6);
-  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
-  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
-  --nutui-color-primary-pressed: var(--nutui-brand-7);
-  --nutui-color-primary-disabled: var(--nutui-brand-3);
-  --nutui-color-primary-text: var(--nutui-gray-1);
-  --nutui-color-primary-light: var(--nutui-brand-1);
-  --nutui-color-primary-light-pressed: var(--nutui-brand-1);
-
-  --nutui-color-text-link: #0073ff;
+  --nutui-color-text-link: var(--nutui-blue-2);
 
   // 背景色
   // 卡片背景色
@@ -81,26 +147,65 @@ page {
   --nutui-white-12: rgba(255, 255, 255, 0.9);
   --nutui-white-13: rgba(255, 255, 255, 1);
 
-  --nutui-color-info: #1988fa;
-  --nutui-color-text-disabled: var(--nutui-gray-4);
+  // 文字颜色值 语义化
+  --nutui-color-content-gray-1: var(--nutui-gray-4);
+  --nutui-color-content-gray-2: var(--nutui-gray-5);
+  --nutui-color-content-gray-3: var(--nutui-gray-6);
+  --nutui-color-content-gray-4: var(--nutui-gray-7);
+  --nutui-color-title: var(--nutui-color-content-gray-4);
+  --nutui-color-text: var(--nutui-color-content-gray-3);
+  --nutui-color-text-help: var(--nutui-color-content-gray-2);
+  --nutui-color-text-disabled: var(--nutui-color-content-gray-1);
 
-  // 字体
-  --nutui-font-size-1: 10px;
-  --nutui-font-size-2: 12px;
-  --nutui-font-size-3: 14px;
-  --nutui-font-size-4: 16px;
-  --nutui-font-size-5: 18px;
-  --nutui-font-size-6: 20px;
-  --nutui-font-size-7: 22px;
-  --nutui-font-size-8: 24px;
-  --nutui-font-size-9: 26px;
-  --nutui-font-size-10: 28px;
-  --nutui-font-size-11: 32px;
-  // 字重
+  // 背景颜色值 语义化
+  --nutui-color-background-gray-1: var(--nutui-gray-1);
+  --nutui-color-background-gray-2: var(--nutui-gray-2);
+  --nutui-color-background-gray-3: var(--nutui-gray-3);
+  --nutui-color-background: var(--nutui-color-content-gray-3);
+  --nutui-color-background-overlay: var(--nutui-color-content-gray-1);
+  --nutui-color-background-sunken: var(--nutui-color-content-gray-2);
+
+  // 蒙层颜色值 语义化
+  --nutui-color-mask-gray-1: var(--nutui-black-2);
+  --nutui-color-mask-gray-2: var(--nutui-black-7);
+  --nutui-color-mask-gray-3: var(--nutui-black-10);
+  --nutui-color-mask: var(--nutui-color-mask-gray-3);
+  --nutui-color-mask-part: var(--nutui-color-mask-gray-2);
+  --nutui-color-mask-fault-toleran: var(--nutui-color-mask-gray-1); // 容错弹层
+
+  // 线颜色值 语义化
+  --nutui-color-line-gray-1: var(--nutui-black-3);
+  --nutui-color-border: var(--nutui-color-line-gray-1);
+  --nutui-color-border-disabled: var(--nutui-color-content-gray-1);
+
+  // 字体 ok
+  --nutui-font-size-8: 8px;
+  --nutui-font-size-9: 9px;
+  --nutui-font-size-10: 10px;
+  --nutui-font-size-12: 12px;
+  --nutui-font-size-13: 13px;
+  --nutui-font-size-14: 14px;
+  --nutui-font-size-15: 15px;
+  --nutui-font-size-16: 16px;
+  --nutui-font-size-17: 17px;
+  --nutui-font-size-18: 18px;
+  --nutui-font-size-19: 19px;
+  --nutui-font-size-20: 20px;
+  --nutui-font-size-21: 21px;
+  --nutui-font-size-22: 22px;
+  --nutui-font-size-23: 23px;
+  --nutui-font-size-24: 24px;
+  --nutui-font-size-25: 25px;
+  --nutui-font-size-26: 26px;
+
+  // 字重 ok
+  --nutui-font-weight-light: 300;
   --nutui-font-weight: 400;
   --nutui-font-weight-bold: 600;
+
   // 行高
   --nutui-line-height-base: 1.5;
+
   // 对齐方式
   --nutui-text-align: left;
 
@@ -122,7 +227,7 @@ page {
   --nutui-spacing-15: 15px;
   --nutui-spacing-16: 16px;
 
-  // radius
+  // radius ok
   --nutui-radius-0: 0px;
   --nutui-radius-1: 1px;
   --nutui-radius-2: 2px;

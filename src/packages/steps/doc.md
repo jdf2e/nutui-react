@@ -117,13 +117,13 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-base-icon-height | icon 容器的高度 | `25px` |
 | \--nutui-steps-base-icon-line-height | icon 容器的行高 | `25px` |
 | \--nutui-steps-base-icon-margin-bottom | icon 容器的底部外边距 | `12px` |
-| \--nutui-steps-base-icon-font-size | icon 容器的字号 | `$font-size-small` |
+| \--nutui-steps-base-icon-font-size | icon 容器的字号 | `$font-size-s` |
 | \--nutui-steps-base-line-width | 分割线的宽度 | `100%` |
 | \--nutui-steps-base-line-background | 分割线的背景色 | `$color-text-help` |
 | \--nutui-steps-base-title-font-size | 标题的字号 | `$font-size-base` |
 | \--nutui-steps-base-title-color | 标题的颜色 | `$color-title` |
 | \--nutui-steps-base-title-margin-bottom | 标题底部外边距 | `10px` |
-| \--nutui-steps-base-description-font-size | 描述文案的字号 | `$font-size-small` |
+| \--nutui-steps-base-description-font-size | 描述文案的字号 | `$font-size-s` |
 | \--nutui-steps-base-description-color | 描述文案的字体颜色 | `$color-text` |
 | \--nutui-steps-wait-icon-bg-color | 等待状态的 icon 容器的背景色 | `$color-text-help` |
 | \--nutui-steps-wait-icon-color | 等待状态的 icon 容器的字体颜色 | `$white` |

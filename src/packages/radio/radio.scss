@@ -41,7 +41,7 @@
       color: $color-primary;
 
       &.nut-radio-icon-disabled {
-        color: $color-primary-disabled;
+        color: $color-primary-disabled-special;
       }
     }
 
@@ -62,7 +62,7 @@
     border: 1px solid $radio-button-background;
 
     &-active {
-      background: $color-primary-light;
+      background: $color-primary-light-pressed;
       color: $color-primary;
       border: $radio-button-active-border;
     }
