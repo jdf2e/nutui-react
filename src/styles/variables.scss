@@ -1,5 +1,5 @@
 // ----------------------------------------------------
-// 主色调
+// 主色调 // done
 $color-primary: var(--nutui-color-primary, #ff0f23) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff475d) !default;
 $color-primary-stop-2: var(--nutui-color-primary-stop-2, #ff0f23) !default;
@@ -19,141 +19,114 @@ $color-primary-gradient-1: linear-gradient(
   $color-primary-stop-2 100%
 ) !default;
 
-// 默认
+// 默认色
 $color-default: var(--nutui-color-default) !default;
 $color-default-pressed: var(--nutui-color-default-pressed) !default;
 $color-default-light: var(--nutui-color-default-light) !default;
 $color-default-disabled: var(--nutui-color-default-disabled) !default;
 
-// 信息
-$color-info: var(--nutui-color-info, #1988fa) !default;
+// 信息色
+$color-info: var(--nutui-color-info, #0073ff) !default; // done
 $color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
 $color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
-$color-info-light: var(--nutui-color-info-light) !default;
-$color-info-background: var(--nutui-color-info-background, #0073ff) !default;
+$color-info-light: var(--nutui-color-info-light, #e5f5ff) !default; // done
+$color-info-background: var(
+  --nutui-color-info-background,
+  #0073ff
+) !default; // done
+$color-info-text: var(--nutui-color-info, #0073ff) !default; // done
 
-// 成功
-$color-success: var(--nutui-color-success, #2aa32a) !default;
-$color-success-pressed: var(--nutui-color-success-pressed) !default;
+// 成功色
+$color-success: var(--nutui-color-success, #00d900) !default; // done
+$color-success-pressed: var(
+  --nutui-color-success-pressed,
+  #2aa32a
+) !default; // done
 $color-success-disabled: var(--nutui-color-success-disabled, #b2f0ae) !default;
-$color-success-light: var(--nutui-color-success-light, #ebfbeb) !default;
-$color-success-background: var(--nutui-color-success-background) !default;
+$color-success-light: var(
+  --nutui-color-success-light,
+  #ebfbeb
+) !default; // done
+$color-success-background: var(
+  --nutui-color-success-background,
+  #00d900
+) !default; // done
+$color-success-text: var(
+  --nutui-color-success-pressed,
+  #2aa32a
+) !default; // done
 
-// 警告
-$color-warning: var(--nutui-color-warning, #c47600) !default;
-$color-warning-pressed: var(--nutui-color-warning-pressed) !default;
+// 警告色
+$color-warning: var(--nutui-color-warning, #ffbf00) !default; // done
+$color-warning-pressed: var(
+  --nutui-color-warning-pressed,
+  #c47600
+) !default; // done
 $color-warning-disabled: var(--nutui-color-warning-disabled, #fdd3b9) !default;
-$color-warning-light: var(--nutui-color-warning-light) !default;
-$color-warning-background: var(--nutui-color-warning-background) !default;
+$color-warning-light: var(
+  --nutui-color-warning-light,
+  #fff5cc
+) !default; // done
+$color-warning-background: var(
+  --nutui-color-warning-background,
+  #ffbf00
+) !default; // done
+$color-warning-text: var(
+  --nutui-color-warning-pressed,
+  #c47600
+) !default; // done
 
-// 危险
-$color-danger: var(--nutui-color-danger, #ff0f23) !default;
+// 危险色
+$color-danger: var(--nutui-color-danger, #ff0f23) !default; //done
 $color-danger-pressed: var(--nutui-color-danger-pressed) !default;
 $color-danger-disabled: var(
   --nutui-color-danger-disabled,
   $color-primary-disabled-special
 ) !default;
-$color-danger-light: var(--nutui-color-danger-light) !default;
-$color-danger-background: var(--nutui-color-danger-background) !default;
+$color-danger-light: var(--nutui-color-danger-light, #ffebef) !default; //done
+$color-danger-background: var(--nutui-color-danger-background) !default; //done
+$color-danger-text: var(--nutui-color-danger, #ff0f23) !default; //done
 
-// 中性
-$color-dark: var(--nutui-gray-12) !default; // 分隔线
-$color-light: var(--nutui-gray-0) !default; // 输入框、头像边框等
-
-// 界面
-$color-surface-1: var(--nutui-gray-1) !default; // APP 的框架背景色
-$color-surface-2: var(--nutui-white-12) !default; // 卡片、内容容器背景色
-$color-surface-3: var(
-  --nutui-white-12
-) !default; // 3333	下拉菜单，即时反馈控件背景色
-$color-surface-4: var(--nutui-white-12) !default;
-$color-surface-overlay: var(--nutui-black-8) !default; // 	Mask遮罩
-
-// 边框
-$color-border: var(--nutui-black-3, rgba(0, 0, 0, 0.06)) !default;
-$color-border-disabled: var(--nutui-gray-4, #c2c4cc) !default;
-
-// 文本
-$color-title: var(
-  --nutui-gray-7,
-  #1a1a1a
-) !default; // 一级文字色：主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$color-text: var(
-  --nutui-gray-6,
-  #505259
-) !default; // 常规，二级文字色: 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$color-text-help: var(
-  --nutui-gray-5,
-  #888b94
-) !default; // 辅助色，三级文字色：暂无用到。todo
-$color-text-disabled: var(
-  --nutui-color-text-disabled,
-  #c2c4cc
-) !default; // 特殊禁用色
-$color-text-dark: var(--nutui-white-12) !default; //	深色背景下的反向文本色
-$color-text-link: $color-primary !default; //链接文本色
-$color-text-title: $color-title;
-
-// 字重 ok
-$font-weight-light: var(--nutui-font-weight-light, 300) !default;
-$font-weight: var(--nutui-font-weight, 400) !default;
-$font-weight-bold: var(--nutui-font-weight-bold, 500) !default;
-
-// 行高
-$line-height-base: var(--nutui-line-height-base, 1.5) !default;
-
-// 间距 space
-$spacing-xxs: var(--nutui-spacing-2) !default; // 多用于文本与图标之间的间距
-$spacing-xs: var(--nutui-spacing-4) !default; // 多用于文本与图标之间的间距
-$spacing-s: var(--nutui-spacing-6) !default; // 二级卡片与屏幕两侧的间距
-$spacing-base: var(
-  --nutui-spacing-8
-) !default; // 楼层间距（二级卡片之间的上下间距）
-$spacing-l: var(
-  --nutui-spacing-10
-) !default; // 卡片布局容器中，同类信息组之间的上下间距（比如两行金刚位之间的间距）
-$spacing-xl: var(
-  --nutui-spacing-12
-) !default; // 卡片布局容器中，信息组之间的上下间距
-$spacing-xxl: var(--nutui-spacing-14) !default; // 卡片布局容器的内容左右间距，
-$spacing-xxxl: var(--nutui-spacing-16) !default; // 卡片布局容器的内容上下间距
-
-// 圆角 corners ok
-$radius-xxxs: var(--nutui-radius-0) !default; // 内容描述型的详情页面通栏结构
-$radius-xxs: var(--nutui-radius-2) !default; // 标签
-$radius-xs: var(--nutui-radius-4) !default; // 单行高度20、24、28的组件
-$radius-s: var(--nutui-radius-6) !default; // 单行高度32、36的组件
-$radius-base: var(--nutui-radius-8) !default; // 单行高度40及以上的组件
-$radius-l: var(--nutui-radius-8) !default; // 入口型非通栏卡片
-$radius-xl: var(
-  --nutui-radius-12
-) !default; // 结构分割、通栏卡片、临时操作层组件等场景
-$radius-xxl: var(--nutui-radius-20) !default; // v14暂无。//平台型通栏卡片
-$radius-xxxl: var(
-  --nutui-radius-24
-) !default; // v14暂无。//页面结构分割或弹出层容器
-$radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角样式
-$radius-full: 50% !default; // 头像、图片等不限制尺寸规格，需要以圆形呈现
-
-// 阴影 shadows
-$shadow-light: 0 0 4 0 rgba(0, 0, 0, 0.05) !default;
-$shadow-raised: 0 0 6 0 rgba(0, 0, 0, 0.1) !default;
-$shadow-overlay: 0 0 8 0 rgba(0, 0, 0, 0.2) !default;
-
-// 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$color-background: var(--nutui-gray-3, #f5f6fa) !default;
+// 背景色
+$color-background: var(--nutui-color-background, #f5f6fa) !default; //done
 // 卡片背景色
-$color-background-overlay: var(--nutui-gray-1, #ffffff) !default;
-// 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$color-background-sunken: var(--nutui-gray-2, #f7f8fc) !default;
+$color-background-overlay: var(
+  --nutui-color-background-overlay,
+  #ffffff
+) !default;
+// 卡片内嵌背景色
+$color-background-sunken: var(
+  --nutui-color-background-sunken,
+  #f7f8fc
+) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
-$color-mask: var(--nutui-black-10, rgba(0, 0, 0, 0.7)) !default;
+$color-mask: var(--nutui-color-mask, rgba(0, 0, 0, 0.7)) !default;
+// 局部蒙层
+$color-mask-part: var(--nutui-color-mask-part, rgba(0, 0, 0, 0.4)) !default;
 // 容错蒙层
-$color-mask-part: var(--nutui-black-2, rgba(0, 0, 0, 0.02)) !default;
+$color-mask-fault-toleran: var(
+  --nutui-color-mask-fault-toleran,
+  rgba(0, 0, 0, 0.02)
+) !default;
 
-$spacing-icon-text: var(--nutui-spacing-2, 4px) !default;
+// 边框色
+$color-border: var(--nutui-color-border, rgba(0, 0, 0, 0.06)) !default;
+$color-border-disabled: var(--nutui-color-border-disabled, #c2c4cc) !default;
+
+// 文本色
+$color-title: var(--nutui-color-title, #1a1a1a) !default;
+$color-text: var(--nutui-color-text, #505259) !default;
+$color-text-help: var(--nutui-color-text-help, #888b94) !default;
+$color-text-disabled: var(--nutui-color-text-disabled, #c2c4cc) !default;
+$color-text-dark: var(--nutui-white-12) !default;
+$color-text-link: var(--nutui-color-info, #0073ff) !default;
+
+// 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
+$color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
+$white: #ffffff !default;
+$black: $color-title !default;
 
 // ---- Font Family ----
 $font-family:
@@ -165,41 +138,58 @@ $font-family:
   sans-serif !default;
 
 // Font
-$font-size-xxs: var(--nutui-font-size-10, 10px) !default; // 标签内文字
-$font-size-xs: var(
-  --nutui-font-size-11,
-  11px
-) !default; // 导购或信息密集的次要内容、辅助信息
-$font-size-s: var(
-  --nutui-font-size-12,
-  12px
-) !default; // 汉字：次要内容、辅助类信息; 数字：羊角符号、小数点及角分
-$font-size-base: var(
-  --nutui-font-size-14,
-  14px
-) !default; // 标准内容、名称类关键信息
-$font-size-l: var(
-  --nutui-font-size-16,
-  16px
-) !default; // 汉字：楼层标题、卡片标题; 数字：重复型价格，如搜推商卡
-$font-size-xl: var(
-  --nutui-font-size-18,
-  18px
-) !default; // 汉字：页面标题、页面级最重要内容; 数字：模块级主价格，如购物车、结算、底导
-$font-size-xxl: var(
-  --nutui-font-size-24,
-  24px
-) !default; // 数字：页面级主价格，如商详、收银台
-$font-size-xxxl: var(--nutui-font-size-10, 28px) !default; //
-$font-size-xxxxl: var(--nutui-font-size-11, 32px) !default; //
+$font-size-xxs: var(--nutui-font-size-xxs, 10px) !default;
+$font-size-xs: var(--nutui-font-size-xs, 11px) !default;
+$font-size-s: var(--nutui-font-size-s, 12px) !default;
+$font-size-base: var(--nutui-font-size-base, 14px) !default;
+$font-size-l: var(--nutui-font-size-l, 16px) !default;
+$font-size-xl: var(--nutui-font-size-xl, 18px) !default;
+$font-size-xxl: var(--nutui-font-size-xxl, 24px) !default;
+$font-size-xxxl: var(--nutui-font-size-10, 26px) !default;
+$font-size-xxxxl: var(--nutui-font-size-11, 28px) !default;
 
-// todo
-// 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
-$color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
-// 链接色 todo
-$color-text-link: var(--nutui-color-text-link, #0073ff) !default;
-$white: #ffffff !default;
-$black: $color-title !default;
+// 字重 ok
+$font-weight-light: var(--nutui-font-weight-light, 300) !default;
+$font-weight: var(--nutui-font-weight, 400) !default;
+$font-weight-bold: var(--nutui-font-weight-bold, 600) !default;
+
+// 行高
+$line-height-base: var(--nutui-line-height-base, 1.5) !default;
+
+// 间距 space
+$spacing-xxxs: var(--nutui-spacing-xxxs, 2px) !default;
+$spacing-xxs: var(--nutui-spacing-xxs, 4px) !default;
+$spacing-xs: var(--nutui-spacing-xs, 6px) !default;
+$spacing-s: var(--nutui-spacing-s, 7px) !default;
+$spacing-base: var(--nutui-spacing-base, 8px) !default;
+$spacing-l: var(--nutui-spacing-l, 9px) !default;
+$spacing-xl: var(--nutui-spacing-xl, 12px) !default;
+$spacing-xxl: var(--nutui-spacing-xxl, 16px) !default;
+$spacing-xxxl: var(--nutui-spacing-xxxl, 18px) !default;
+
+// 圆角 corners ok
+$radius-xxxs: var(
+  --nutui-radius-xxxs,
+  0
+) !default; // 内容描述型的详情页面通栏结构
+$radius-xxs: var(--nutui-radius-xxs, 2px) !default; // 标签
+$radius-xs: var(--nutui-radius-xs, 4px) !default; // 单行高度20、24、28的组件
+$radius-s: var(--nutui-radius-s, 6px) !default; // 单行高度32、36的组件
+$radius-base: var(--nutui-radius-base, 8px) !default; // 单行高度40及以上的组件
+$radius-l: var(--nutui-radius-l, 8px) !default; // 入口型非通栏卡片
+$radius-xl: var(
+  --nutui-radius-xl,
+  12px
+) !default; // 结构分割、通栏卡片、临时操作层组件等场景
+$radius-xxl: var(--nutui-radius-xxl, 14px) !default; // 暂无
+$radius-xxxl: var(--nutui-radius-xxxl, 16px) !default; // 暂无
+$radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角样式
+$radius-full: 50% !default; // 头像、图片等不限制尺寸规格，需要以圆形呈现
+
+// 阴影 shadows
+$shadow-light: 0 0 4 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-raised: 0 0 6 0 rgba(0, 0, 0, 0.1) !default;
+$shadow-overlay: 0 0 8 0 rgba(0, 0, 0, 0.2) !default;
 
 // --- z-index ----
 $mask-z-index: 1000;
@@ -208,9 +198,6 @@ $mask-content-z-index: 1200;
 // ---- Animation ----
 $animation-duration: 0.25s !default;
 $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
-
-// padding
-$padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
 $button-transition: opacity 0.2s;
@@ -1390,7 +1377,7 @@ $checkbox-icon-disable-color: var(
 ) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
-  $spacing-icon-text
+  $spacing-xxs
 ) !default;
 $checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
 $checkbox-label-font-size: var(
