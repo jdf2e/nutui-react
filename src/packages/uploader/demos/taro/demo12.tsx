@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import { View } from '@tarojs/components'
 import { Uploader, Button } from '@nutui/nutui-react-taro'
 
 interface uploadRefState {
@@ -25,7 +24,7 @@ const Demo12 = () => {
         autoUpload={false}
         ref={uploadRef}
       />
-      <View style={{ display: 'flex' }}>
+      <div style={{ display: 'flex' }}>
         <Button
           type="success"
           size="small"
@@ -37,7 +36,7 @@ const Demo12 = () => {
         <Button type="primary" size="small" onClick={clearUpload}>
           手动清空上传
         </Button>
-      </View>
+      </div>
     </>
   )
 }

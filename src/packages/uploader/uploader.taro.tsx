@@ -13,14 +13,19 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
 import { Failure, Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { ERROR, SUCCESS, UploaderTaro, UPLOADING, UploadOptions } from './utils'
+import {
+  ERROR,
+  SUCCESS,
+  UploaderTaro,
+  UPLOADING,
+  UploadOptions,
+} from './upload'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { FileItem } from './file-item.taro'
+import { FileItem } from './file-item'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
 
@@ -500,9 +505,9 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   return (
-    <View className={classes} {...restProps}>
+    <div className={classes} {...restProps}>
       {(children || previewType === 'list') && (
-        <View className="nut-uploader-slot">
+        <div className="nut-uploader-slot">
           <>
             {children || (
               <Button nativeType="button" size="small" type="primary">
@@ -510,10 +515,14 @@ const InternalUploader: ForwardRefRenderFunction<
               </Button>
             )}
             {Number(maxCount) > fileList.length && (
-              <Button className="nut-uploader-input" onClick={_chooseImage} />
+              <Button
+                nativeType="button"
+                className="nut-uploader-input"
+                onClick={_chooseImage}
+              />
             )}
           </>
-        </View>
+        </div>
       )}
 
       <Preview
@@ -532,19 +541,23 @@ const InternalUploader: ForwardRefRenderFunction<
       {Number(maxCount) > fileList.length &&
         previewType === 'picture' &&
         !children && (
-          <View
+          <div
             className={`nut-uploader-upload ${previewType} ${
               disabled ? 'nut-uploader-upload-disabled' : ''
             }`}
           >
-            <View className="nut-uploader-icon">
+            <div className="nut-uploader-icon">
               {uploadIcon}
-              <Text className="nut-uploader-icon-tip">{uploadLabel}</Text>
-            </View>
-            <Button className="nut-uploader-input" onClick={_chooseImage} />
-          </View>
+              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+            </div>
+            <Button
+              nativeType="button"
+              className="nut-uploader-input"
+              onClick={_chooseImage}
+            />
+          </div>
         )}
-    </View>
+    </div>
   )
 }
 

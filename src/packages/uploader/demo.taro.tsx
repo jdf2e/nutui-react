@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -73,38 +73,36 @@ const UploaderDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} bg-w`}
-      >
-        <View className="h2">{translated.basic}</View>
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} bg-w`}>
+        <h2>{translated.basic}</h2>
         <Demo1 />
-        <View className="h2">{translated.basic}</View>
+        <h2>{translated.basic}</h2>
         <Demo2 />
-        <View className="h2">{translated.uploadStatus}</View>
+        <h2>{translated.uploadStatus}</h2>
         <Demo3 />
-        <View className="h2">{translated.uploadListDefault}</View>
+        <h2>{translated.uploadListDefault}</h2>
         <Demo4 />
-        <View className="h2">{translated.uploadDefaultProgress}</View>
+        <h2>{translated.uploadDefaultProgress}</h2>
         <Demo5 />
-        <View className="h2">{translated.camera}</View>
+        <h2>{translated.camera}</h2>
         <Demo6 />
-        <View className="h2">{translated.videoUploader}</View>
+        <h2>{translated.videoUploader}</h2>
         <Demo7 />
-        <View className="h2">{translated.limitedQuantity}</View>
+        <h2>{translated.limitedQuantity}</h2>
         <Demo8 />
-        <View className="h2">{translated.limitSize}</View>
+        <h2>{translated.limitSize}</h2>
         <Demo9 />
-        <View className="h2">{translated.custom}</View>
+        <h2>{translated.custom}</h2>
         <Demo10 />
-        <View className="h2">{translated.uploadXhrCustom}</View>
+        <h2>{translated.uploadXhrCustom}</h2>
         <Demo11 />
-        <View className="h2">{translated.manualExecution}</View>
+        <h2>{translated.manualExecution}</h2>
         <Demo12 />
-        <View className="h2">{translated.disabled}</View>
+        <h2>{translated.disabled}</h2>
         <Demo13 />
         <h2>{translated.customDeleteIcon}</h2>
         <Demo14 />
-      </ScrollView>
+      </div>
     </>
   )
 }
