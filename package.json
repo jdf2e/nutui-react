@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "3.0.0-beta0",
+  "version": "3.0.0-beta-0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
