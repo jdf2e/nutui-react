@@ -1,0 +1,40 @@
+import React, { useState } from 'react'
+import { Uploader, Cell } from '@nutui/nutui-react'
+import { FileItem } from '../../file-item'
+
+const Demo5 = () => {
+  const [list, setList] = useState<FileItem[]>([])
+  const beforeUpload = async (files: File[]) => {
+    console.log('bbb')
+    const allowedTypes = ['image/png']
+    const filteredFiles = Array.from(files).filter((file) =>
+      allowedTypes.includes(file.type)
+    )
+    console.log(filteredFiles)
+    return filteredFiles
+  }
+  function sleep(time: number) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    })
+  }
+  async function upload(file: File) {
+    await sleep(2000)
+    return {
+      url: URL.createObjectURL(file),
+    }
+  }
+  return (
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Uploader
+        value={list}
+        onChange={setList}
+        beforeUpload={beforeUpload}
+        upload={(file: File) => upload(file)}
+      />
+    </Cell>
+  )
+}
+export default Demo5
