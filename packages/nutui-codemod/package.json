@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "prettier": "^3.2.5",
-    "release-it": "^17.1.1",
-    "ts-jest": "^29.1.2"
+    "prettier": "^3.3.3",
+    "release-it": "^17.10.0",
+    "ts-jest": "^29.2.5"
   }
 }
