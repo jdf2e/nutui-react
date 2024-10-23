@@ -2,7 +2,6 @@ import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Image from '@/packages/image'
 import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/upload'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,
@@ -15,7 +14,7 @@ export const Preview: React.FunctionComponent<any> = ({
   children,
 }) => {
   const renderIcon = (item: FileItem) => {
-    if (item.status === ERROR) {
+    if (item.status === 'error') {
       return item.failIcon || <Failure color="#fff" />
     }
     return (
