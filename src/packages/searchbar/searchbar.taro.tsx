@@ -28,6 +28,7 @@ export interface SearchBarProps extends BasicComponent {
   onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
 }
 
+// TODO:harmony 下图标为了适配展示使用，待icon适配之后统一移除
 const isHarmony = harmony()
 
 const defaultProps = {
@@ -170,7 +171,11 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
-        {isHarmony ? <Icon type="search" size={16} /> : <MaskClose size={16} />}
+        {isHarmony ? (
+          <Icon type="cancel" size={16} color="#c2c4cc" />
+        ) : (
+          <MaskClose size={16} />
+        )}
       </View>
     )
   }

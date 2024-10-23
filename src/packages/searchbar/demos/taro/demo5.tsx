@@ -11,6 +11,7 @@ import { Icon } from '@tarojs/components'
 import { harmony } from '@/utils/platform-taro'
 
 const Demo5 = () => {
+  // TODO:harmony 下图标为了适配展示使用，待icon适配之后统一移除
   const isHarmony = harmony()
   return (
     <>
@@ -18,8 +19,8 @@ const Demo5 = () => {
         left={
           isHarmony ? (
             <>
-              <Icon type="download" size={20} />
-              <Icon type="clear" size={20} />
+              <Icon type="waiting" size={20} />
+              <Icon type="cancel" size={20} color="#c2c4cc" />
             </>
           ) : (
             <>
@@ -31,8 +32,8 @@ const Demo5 = () => {
         right={
           isHarmony ? (
             <>
-              <Icon type="download" size={20} />
-              <Icon type="clear" size={20} />
+              <Icon type="cancel" size={20} />
+              <Icon type="info" size={20} />
             </>
           ) : (
             <>
@@ -48,7 +49,7 @@ const Demo5 = () => {
         }
         rightIn={
           isHarmony ? (
-            <Icon type="clear" size={20} />
+            <Icon type="download" size={20} />
           ) : (
             <Photograph
               size={16}
