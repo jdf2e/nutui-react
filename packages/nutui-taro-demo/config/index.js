@@ -162,6 +162,9 @@ const config = {
     compile: {
       include: [path.resolve(__dirname, '../../../src')],
     },
+    miniCssExtractPluginOption: {
+      ignoreOrder: true,
+    },
     postcss: {
       pxtransform: {
         enable: true,
