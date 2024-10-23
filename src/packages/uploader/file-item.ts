@@ -11,7 +11,7 @@ export interface FileItem {
 
   url?: string
 
-  type?: 'image' | 'list'
+  type?: 'image' | 'list' | string
 
   path?: string
 

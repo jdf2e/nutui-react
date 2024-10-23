@@ -7,25 +7,65 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import { Photograph, Failure } from '@nutui/icons-react-taro'
+import Taro, {
+  chooseImage,
+  uploadFile,
+  getEnv,
+  chooseMedia,
+} from '@tarojs/taro'
+import { Failure, Photograph } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { useConfig } from '@/packages/configprovider/index.taro'
+import Button from '@/packages/button/index.taro'
+import { UploaderTaro } from './upload'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Button from '@/packages/button/index.taro'
+import { FileItem } from './file-item'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
-import { FileItem } from './file-item'
-import { mergeProps } from '@/utils/merge-props'
+
+interface sizeType {
+  /** 原图 */
+  original: string
+  /** compressed */
+  compressed: string
+}
+
+interface sourceType {
+  /** 从相册选图 */
+  album: string
+  /** 使用相机 */
+  camera: string
+}
+
+interface mediaType {
+  /** 只能拍摄图片或从相册选择图片 */
+  image: string
+  /** 只能拍摄视频或从相册选择视频 */
+  video: string
+}
+
+interface TFileType {
+  size: number
+  type?: string
+  fileType?: string
+  originalFileObj?: any
+  tempFilePath?: string
+  thumbTempFilePath?: string
+  path?: string
+}
 
 export interface UploaderProps extends BasicComponent {
   maxCount: string | number
+  sizeType: (keyof sizeType)[]
+  sourceType: (keyof sourceType)[]
+  mediaType: (keyof mediaType)[]
+  camera: string
   maxFileSize: number
   defaultValue?: FileItem[]
   value?: FileItem[]
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  upload: (file: File) => Promise<FileItem>
   uploadIcon?: React.ReactNode
   deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
@@ -34,26 +74,37 @@ export interface UploaderProps extends BasicComponent {
   disabled: boolean
   autoUpload: boolean
   multiple: boolean
-  clearInput: boolean
   preview: boolean
   deletable: boolean
-  capture: boolean | 'user' | 'environment'
   className: string
   previewUrl?: string
+  maxDuration: number
   style: React.CSSProperties
   onDelete?: (file: FileItem, files: FileItem[]) => void
-  onOversize?: (files: File[]) => void
-  onOverCount?: (count: number) => void
+  onOversize?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => void
   onChange?: (files: FileItem[]) => void
-  beforeUpload?: (files: File[]) => Promise<File[]>
+  upload: (
+    files: Taro.chooseImage.ImageFile | Taro.chooseMedia.ChooseMedia | any
+  ) => Promise<FileItem>
+  beforeUpload?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => Promise<File[]>
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
-  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  maxCount: Number.MAX_VALUE,
+  maxCount: 1,
+  sizeType: ['original', 'compressed'],
+  sourceType: ['album', 'camera'],
+  mediaType: ['image', 'video'],
+  camera: 'back',
+  uploadIcon: <Photograph size="20px" color="#808080" />,
+  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
+  uploadLabel: '',
   previewType: 'picture',
   fit: 'cover',
   name: 'file',
@@ -62,12 +113,10 @@ const defaultProps = {
   autoUpload: true,
   multiple: false,
   maxFileSize: Number.MAX_VALUE,
-  clearInput: true,
+  previewUrl: '',
   preview: true,
   deletable: true,
-  capture: false,
-  uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
-  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
+  maxDuration: 10,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
@@ -78,14 +127,14 @@ const InternalUploader: ForwardRefRenderFunction<
   PropsWithChildren<Partial<UploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
-  const fileListRef = useRef<FileItem[]>([])
   const {
     children,
     uploadIcon,
     deleteIcon,
     uploadLabel,
-    name,
     accept,
+    name,
+    camera,
     defaultValue,
     value,
     previewType,
@@ -96,22 +145,22 @@ const InternalUploader: ForwardRefRenderFunction<
     preview,
     deletable,
     maxCount,
-    capture,
     maxFileSize,
+    mediaType,
     className,
     autoUpload,
-    clearInput,
-    upload,
+    sizeType,
+    sourceType,
+    maxDuration,
     onDelete,
     onChange,
     onFileItemClick,
     onOversize,
-    onOverCount,
     beforeUpload,
+    upload,
     beforeDelete,
-    onUploadQueueChange,
     ...restProps
-  } = mergeProps(defaultProps, props)
+  } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
     value,
     defaultValue,
@@ -120,23 +169,24 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
+  const [uploadQueue, setUploadQueue] = useState<Promise<UploaderTaro>[]>([])
 
   const classes = classNames(className, 'nut-uploader')
-  useEffect(() => {
-    fileListRef.current = fileList
-  }, [fileList])
-  useEffect(() => {
-    onUploadQueueChange?.(uploadQueue)
-  }, [uploadQueue])
+
   useImperativeHandle(ref, () => ({
-    submit: async () => {
-      await uploadAction(uploadQueue)
+    submit: () => {
+      Promise.all(uploadQueue).then((res) => {
+        res.forEach((i) => i.uploadTaro(uploadFile, getEnv()))
+      })
     },
     clear: () => {
       clearUploadQueue()
     },
   }))
+  const fileListRef = useRef<FileItem[]>([])
+  useEffect(() => {
+    fileListRef.current = fileList
+  }, [fileList])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
@@ -147,98 +197,55 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const idCountRef = useRef(0)
-  const filterFiles = (files: File[]) => {
-    const maximum = (maxCount as number) * 1
-    const oversizes = new Array<File>()
-    const filterFile = files.filter((file: File) => {
-      if (file.size > maxFileSize) {
-        oversizes.push(file)
-        return false
-      }
-      return true
-    })
-    oversizes.length && onOversize?.(files)
-
-    if (filterFile.length > maximum) {
-      onOverCount?.(filterFile.length)
-      filterFile.splice(maximum, filterFile.length - maximum)
+  const _chooseImage = () => {
+    if (disabled) {
+      return
     }
-    if (fileList.length !== 0) {
-      const index = maximum - fileList.length
-      filterFile.splice(index, filterFile.length - index)
-    }
-
-    return filterFile
-  }
-
-  const deleted = (file: FileItem, index: number) => {
-    const deletedFileList = fileListRef.current.filter(
-      (file, idx) => idx !== index
-    )
-    onDelete?.(file, deletedFileList)
-    setFileList(deletedFileList)
-  }
-
-  const onDeleteItem = (file: FileItem, index: number) => {
-    clearUploadQueue(index)
-    funcInterceptor(beforeDelete, {
-      args: [file, fileList],
-      done: () => deleted(file, index),
-    })
-  }
-
-  const fileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) return
-    const $el = event.target
-    const { files } = $el
-    let _files: File[] = []
-    if (beforeUpload) {
-      _files = await beforeUpload(new Array<File>().slice.call(files))
-      if (!_files.length) $el.value = ''
-    }
-    _files = filterFiles(new Array<File>().slice.call(files))
-
-    const tasks = _files.map((file) => {
-      const info: any = {
-        uid: idCountRef.current++,
-        status: autoUpload ? 'uploading' : 'ready',
-        file,
-        message: autoUpload
-          ? locale.uploader.uploading
-          : locale.uploader.waitingUpload,
-        name: file.name,
-        type: file.type,
+    if (Taro.getEnv() === 'WEB') {
+      const el = document.getElementById('taroChooseImage')
+      if (el) {
+        el?.setAttribute('accept', accept)
+      } else {
+        const obj = document.createElement('input')
+        obj.setAttribute('type', 'file')
+        obj.setAttribute('id', 'taroChooseImage')
+        obj.setAttribute('accept', accept)
+        obj.setAttribute(
+          'style',
+          'position: fixed; top: -4000px; left: -3000px; z-index: -300;'
+        )
+        document.body.appendChild(obj)
       }
-      if (preview && file.type?.includes('image')) {
-        const reader = new FileReader()
-        reader.onload = (event: ProgressEvent<FileReader>) => {
-          fileListRef.current = [
-            ...fileListRef.current,
-            {
-              ...info,
-              url: (event.target as FileReader).result as string,
-            },
-          ]
-          setFileList(fileListRef.current)
-        }
-        reader.readAsDataURL(file)
-      }
-      return info
-    })
-    if (!autoUpload) {
-      setUploadQueue(tasks)
+    }
+    if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
+      chooseMedia({
+        count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
+        /** 文件类型 */
+        mediaType: mediaType as any,
+        /** 图片和视频选择的来源 */
+        sourceType,
+        /** 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 30s 之间 */
+        maxDuration,
+        /** 仅对 mediaType 为 image 时有效，是否压缩所选文件 */
+        sizeType,
+        /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
+        camera,
+        success: onChangeMedia,
+      })
     } else {
-      await uploadAction(tasks)
-    }
-    if (clearInput) {
-      $el.value = ''
+      chooseImage({
+        count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
+        // 可以指定是原图还是压缩图，默认二者都有
+        sizeType,
+        sourceType,
+        success: onChangeImage,
+      })
     }
   }
   const uploadAction = async (tasks: FileItem[]) => {
     const taskIds = tasks.map((task) => task.uid)
     setFileList(
-      fileList.map((file: FileItem) => {
+      tasks.map((file: FileItem) => {
         if (taskIds.includes(file.uid)) {
           return {
             ...file,
@@ -276,66 +283,130 @@ const InternalUploader: ForwardRefRenderFunction<
       })
     ).catch((errs) => console.error(errs))
   }
+
+  const idCountRef = useRef(0)
+  const readFile = async <T extends TFileType>(files: T[]) => {
+    const tasks = files.map((file) => {
+      let fileType = file.type
+      const filepath = (file.tempFilePath || file.path) as string
+      if (file.fileType) {
+        fileType = file.fileType
+      } else {
+        const imgReg = /\.(png|jpeg|jpg|webp|gif)$/i
+        if (
+          !fileType &&
+          (imgReg.test(filepath) || filepath.includes('data:image'))
+        ) {
+          fileType = 'image'
+        }
+      }
+      const info: any = {
+        uid: idCountRef.current++,
+        status: autoUpload ? 'uploading' : 'ready',
+        file,
+        message: autoUpload
+          ? locale.uploader.uploading
+          : locale.uploader.waitingUpload,
+        name: getEnv() === 'WEB' ? file.originalFileObj?.name : filepath,
+        path: filepath,
+        type: getEnv() === 'WEB' ? file.originalFileObj?.type : fileType,
+      }
+      if (preview) {
+        info.url = fileType === 'video' ? file.thumbTempFilePath : filepath
+      }
+      return info
+    })
+    if (!autoUpload) {
+      setUploadQueue(tasks)
+    } else {
+      await uploadAction(tasks)
+    }
+  }
+
+  const filterFiles = <T extends TFileType>(files: T[]) => {
+    const maximum = (maxCount as number) * 1
+    const maximize = (maxFileSize as number) * 1
+    const oversizes = new Array<T>()
+    const filterFile = files.filter((file: T) => {
+      if (file.size > maximize) {
+        oversizes.push(file)
+        return false
+      }
+      return true
+    })
+    oversizes.length && onOversize?.(files as any)
+
+    const currentFileLength = filterFile.length + fileList.length
+    if (currentFileLength > maximum) {
+      filterFile.splice(filterFile.length - (currentFileLength - maximum))
+    }
+    return filterFile
+  }
+
+  const deleted = (file: FileItem, index: number) => {
+    const deletedFileList = fileList.filter((file, idx) => idx !== index)
+    onDelete?.(file, deletedFileList)
+    setFileList(deletedFileList)
+  }
+
+  const onDeleteItem = (file: FileItem, index: number) => {
+    clearUploadQueue(index)
+    funcInterceptor(beforeDelete, {
+      args: [file, fileList],
+      done: () => deleted(file, index),
+    })
+  }
+
+  const onChangeMedia = async (res: Taro.chooseMedia.SuccessCallbackResult) => {
+    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+    const { tempFiles } = res
+    const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
+    }
+  }
+
+  const onChangeImage = async (res: Taro.chooseImage.SuccessCallbackResult) => {
+    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+    const { tempFiles } = res
+    const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
+    let files = []
+    if (beforeUpload) {
+      files = await beforeUpload(new Array<File>().slice.call(_files))
+    }
+    files = filterFiles(new Array<File>().slice.call(_files))
+    readFile(_files)
+  }
+
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
-  const renderImageUploader = () => {
-    return (
-      Number(maxCount) > fileList.length &&
-      previewType === 'picture' &&
-      !children && (
-        <View
-          className={classNames('nut-uploader-upload', previewType, {
-            'nut-uploader-upload-disabled': disabled,
-          })}
-        >
-          <View className="nut-uploader-icon">
-            {uploadIcon}
-            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-          </View>
 
-          <input
-            className="nut-uploader-input"
-            type="file"
-            capture={capture}
-            name={name}
-            accept={accept}
-            disabled={disabled}
-            multiple={multiple}
-            onChange={fileChange}
-          />
-        </View>
-      )
-    )
-  }
-  const renderListUploader = () => {
-    return (
-      (children || previewType === 'list') && (
-        <View className="nut-uploader-slot">
-          {children || (
-            <Button size="small" type="primary">
-              {locale.uploader.list}
-            </Button>
-          )}
-          {Number(maxCount) > fileList.length && (
-            <input
-              className="nut-uploader-input"
-              type="file"
-              capture={capture}
-              name={name}
-              accept={accept}
-              disabled={disabled}
-              multiple={multiple}
-              onChange={fileChange}
-            />
-          )}
-        </View>
-      )
-    )
-  }
   return (
     <View className={classes} {...restProps}>
-      {renderListUploader()}
+      {(children || previewType === 'list') && (
+        <View className="nut-uploader-slot">
+          <>
+            {children || (
+              <Button size="small" type="primary">
+                {locale.uploader.list}
+              </Button>
+            )}
+            {Number(maxCount) > fileList.length && (
+              <Button className="nut-uploader-input" onClick={_chooseImage} />
+            )}
+          </>
+        </View>
+      )}
+
       <Preview
         {...{
           fileList,
@@ -344,14 +415,30 @@ const InternalUploader: ForwardRefRenderFunction<
           onDeleteItem,
           handleItemClick,
           previewUrl,
-          children,
           deleteIcon,
+          children,
         }}
       />
-      {renderImageUploader()}
+
+      {Number(maxCount) > fileList.length &&
+        previewType === 'picture' &&
+        !children && (
+          <View
+            className={`nut-uploader-upload ${previewType} ${
+              disabled ? 'nut-uploader-upload-disabled' : ''
+            }`}
+          >
+            <View className="nut-uploader-icon">
+              {uploadIcon}
+              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+            </View>
+            <Button className="nut-uploader-input" onClick={_chooseImage} />
+          </View>
+        )}
     </View>
   )
 }
 
 export const Uploader = React.forwardRef(InternalUploader)
+
 Uploader.displayName = 'NutUploader'
