@@ -5,8 +5,9 @@ import {
   Link as LinkIcon,
   Loading,
 } from '@nutui/icons-react-taro'
-import { Image, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { FileItem } from '@/packages/uploader/file-item'
+import { Image } from '@/packages/image/image.taro'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,

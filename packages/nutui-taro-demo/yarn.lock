@@ -12267,7 +12267,7 @@ react-devtools-core@^4.27.2:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-dom@^18.3.1:
+react-dom@^18.2.0, react-dom@^18.3.1:
   version "18.3.1"
   resolved "http://registry.m.jd.com/react-dom/download/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha1-wiZdeVEbV9R5s90/36UVNklMXLQ=
@@ -12528,7 +12528,7 @@ react@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
 
-react@^18.3.1:
+react@^18.2.0, react@^18.3.1:
   version "18.3.1"
   resolved "http://registry.m.jd.com/react/download/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha1-SauJIAnFOTNiW9FrJTP8dUyrKJE=

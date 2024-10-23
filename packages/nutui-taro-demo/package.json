@@ -82,6 +82,8 @@
     "lodash.isequal": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
     "react-native": "0.72.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-refresh": "^0.14.0",
     "react-transition-group": "^4.4.5"
   },
