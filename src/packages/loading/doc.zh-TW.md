@@ -95,6 +95,6 @@ import { Loading } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-loading-icon-color | icon色值 | `$color-text-help` |
-| \--nutui-loading-icon-size | icon大小 | `$font-size-small` |
+| \--nutui-loading-icon-size | icon大小 | `$font-size-s` |
 | \--nutui-loading-color | 文本色值 | `$color-text-help` |
-| \--nutui-loading-font-size | 文本字號 | `$font-size-small` |
+| \--nutui-loading-font-size | 文本字號 | `$font-size-s` |

@@ -158,7 +158,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | \--nutui-calendar-choose-color | 日历选中元素的字色 | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色 | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-large` |
+| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-l` |
 | \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | 日历标题字重 | `500` |
 | \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-base` |

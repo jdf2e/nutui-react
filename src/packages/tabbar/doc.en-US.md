@@ -91,7 +91,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | defaultValue | The default index value of the selected label | `number` | `0` |
 | value | The index value of the selected label | `number` | `-` |
 | fixed | Whether it is fixed at the bottom of the page | `boolean` | `false` |
-| activeColor | icon active color | `string` | `#1989fa` |
+| activeColor | icon active color | `string` | `#0073ff` |
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |
@@ -125,7 +125,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | boxShadow | `none` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xs` |
-| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
 | \--nutui-tabbar-text-line-height | title lineHeight | `initial` |
 | \--nutui-tabbar-text-margin-top | title marginTop | `3px` |

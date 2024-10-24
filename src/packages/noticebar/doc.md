@@ -146,7 +146,7 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-height | 高度 | `36px` |
 | \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | 文字色 | `#d9500b` |
-| \--nutui-noticebar-font-size | 字号 | `$font-size-small` |
+| \--nutui-noticebar-font-size | 字号 | `$font-size-s` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
 | \--nutui-noticebar-border-radius | 圆角 | `0` |

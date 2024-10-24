@@ -146,7 +146,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-height | noticebar height | `36px` |
 | \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | noticebar color | `#d9500b` |
-| \--nutui-noticebar-font-size | noticebar font size | `$font-size-small` |
+| \--nutui-noticebar-font-size | noticebar font size | `$font-size-s` |
 | \--nutui-noticebar-line-height | noticebar line height | `24px` |
 | \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
 | \--nutui-noticebar-border-radius | noticebar border radius | `0` |

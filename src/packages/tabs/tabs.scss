@@ -138,7 +138,7 @@
       &-active {
         font-weight: $font-weight-bold;
         background-color: $white;
-        border-radius: $radius-s $radius-s 0 0;
+        border-radius: $radius-base $radius-base 0 0;
       }
     }
   }
@@ -162,7 +162,7 @@
         border-radius: $tabs-tab-button-border-radius;
         font-weight: $font-weight-bold;
         background-color: $tabs-tab-button-active-background-color;
-        color: $color-text-link;
+        color: $color-primary;
         border: $tabs-tab-button-active-border;
       }
     }

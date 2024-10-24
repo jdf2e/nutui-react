@@ -91,7 +91,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | defaultValue | 默認選中的標簽的索引值 | `number` | `0` |
 | value | 選中的標簽的索引值 | `number` | `-` |
 | fixed | 是否固定在頁面底部，為 true 時默認開啟 safeArea | `boolean` | `false` |
-| activeColor | icon激活的顏色 | `string` | `#1989fa` |
+| activeColor | icon激活的顏色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
 | onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |
@@ -125,7 +125,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 陰影 | `none` |
 | \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xs` |
-| \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 標題上外邊距 | `3px` |
