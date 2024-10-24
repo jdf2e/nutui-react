@@ -383,10 +383,9 @@ const InternalUploader: ForwardRefRenderFunction<
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
-
-  return (
-    <View className={classes} {...restProps}>
-      {(children || previewType === 'list') && (
+  const renderListUploader = () => {
+    return (
+      (children || previewType === 'list') && (
         <View className="nut-uploader-slot">
           <>
             {children || (
@@ -399,8 +398,31 @@ const InternalUploader: ForwardRefRenderFunction<
             )}
           </>
         </View>
-      )}
-
+      )
+    )
+  }
+  const renderImageUploader = () => {
+    return (
+      Number(maxCount) > fileList.length &&
+      previewType === 'picture' &&
+      !children && (
+        <View
+          className={`nut-uploader-upload ${previewType} ${
+            disabled ? 'nut-uploader-upload-disabled' : ''
+          }`}
+        >
+          <View className="nut-uploader-icon">
+            {uploadIcon}
+            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+          </View>
+          <Button className="nut-uploader-input" onClick={_chooseImage} />
+        </View>
+      )
+    )
+  }
+  return (
+    <View className={classes} {...restProps}>
+      {renderListUploader()}
       <Preview
         {...{
           fileList,
@@ -413,22 +435,7 @@ const InternalUploader: ForwardRefRenderFunction<
           children,
         }}
       />
-
-      {Number(maxCount) > fileList.length &&
-        previewType === 'picture' &&
-        !children && (
-          <View
-            className={`nut-uploader-upload ${previewType} ${
-              disabled ? 'nut-uploader-upload-disabled' : ''
-            }`}
-          >
-            <View className="nut-uploader-icon">
-              {uploadIcon}
-              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-            </View>
-            <Button className="nut-uploader-input" onClick={_chooseImage} />
-          </View>
-        )}
+      {renderImageUploader()}
     </View>
   )
 }
