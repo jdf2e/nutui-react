@@ -91,7 +91,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | defaultValue | The default index value of the selected label | `number` | `0` |
 | value | The index value of the selected label | `number` | `-` |
 | fixed | Whether it is fixed at the bottom of the page | `boolean` | `false` |
-| activeColor | icon active color | `string` | `#1989fa` |
+| activeColor | icon active color | `string` | `#0073ff` |
 | inactiveColor | Icon inactive color | `string` | `#7d7e80` |
 | safeArea | Whether to enable the full screen bottom safety zone adaptation of the iphone series | `boolean` | `false` |
 | onSwitch | Trigger an event when switching tabs | `(value) => void` | `-` |

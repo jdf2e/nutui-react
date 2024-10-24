@@ -40,7 +40,7 @@ test('should emit change event after clicking visible option', async () => {
 
   expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(5)
   expect(container.querySelectorAll('.nut-pagination-item')[1]).toHaveClass(
-    'active'
+    'nut-pagination-item-active'
   )
 })
 
@@ -93,7 +93,9 @@ test('test controlled mode', () => {
   const { container, getByText } = render(
     <Pagination value={value} total={25} pageSize={5} onChange={pageChange} />
   )
-  expect(container.querySelector('.active')).toHaveTextContent('2')
+  expect(
+    container.querySelector('.nut-pagination-item-active')
+  ).toHaveTextContent('2')
   const page = getByText('4')
   fireEvent.click(page)
   expect(value).toEqual(4)
@@ -112,9 +114,13 @@ test('test uncontrolled mode', () => {
       onChange={pageChange}
     />
   )
-  expect(container.querySelector('.active')).toHaveTextContent('2')
+  expect(
+    container.querySelector('.nut-pagination-item-active')
+  ).toHaveTextContent('2')
   const page = getByText('4')
   fireEvent.click(page)
   expect(value).toEqual(4)
-  expect(container.querySelector('.active')).toHaveTextContent('4')
+  expect(
+    container.querySelector('.nut-pagination-item-active')
+  ).toHaveTextContent('4')
 })

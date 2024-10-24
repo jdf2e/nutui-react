@@ -51,12 +51,12 @@ exports[`render with custom content 1`] = `
           class="nut-grid-item-text nut-grid-item-text-horizontal"
         >
           <div
-            class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+            class="nut-avatar nut-avatar-normal nut-avatar-round nut-avatar-normal-round demo-avatar"
             style="background-color: #FF0F23; color: #666;"
           >
             <svg
               aria-labelledby="Image"
-              class="nut-icon nut-icon-Image  icon"
+              class="nut-icon nut-icon-Image  nut-avatar-icon"
               color="#fff"
               role="presentation"
               viewBox="0 0 1024 1024"
@@ -86,12 +86,12 @@ exports[`render with custom content 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
-          class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+          class="nut-avatar nut-avatar-normal nut-avatar-round nut-avatar-normal-round demo-avatar"
           style="background-color: #FF0F23; color: #666;"
         >
           <svg
             aria-labelledby="Image"
-            class="nut-icon nut-icon-Image  icon"
+            class="nut-icon nut-icon-Image  nut-avatar-icon"
             color="#fff"
             role="presentation"
             viewBox="0 0 1024 1024"
@@ -120,20 +120,20 @@ exports[`render with custom content 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
-          class="nut-avatar nut-avatar-large nut-avatar-round"
+          class="nut-avatar nut-avatar-large nut-avatar-round nut-avatar-large-round"
           style="background-color: #eee; color: #666;"
         >
           <div
-            class="nut-image  icon"
+            class="nut-image  nut-avatar-icon"
           >
             <img
               alt=""
-              class="nut-img"
+              class="nut-image-default"
               src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
               style="object-fit: fill; object-position: center;"
             />
             <div
-              class="nut-img-loading"
+              class="nut-image-loading"
             >
               <svg
                 aria-labelledby="Image"

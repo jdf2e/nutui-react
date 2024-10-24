@@ -91,7 +91,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | defaultValue | 默認選中的標簽的索引值 | `number` | `0` |
 | value | 選中的標簽的索引值 | `number` | `-` |
 | fixed | 是否固定在頁面底部，為 true 時默認開啟 safeArea | `boolean` | `false` |
-| activeColor | icon激活的顏色 | `string` | `#1989fa` |
+| activeColor | icon激活的顏色 | `string` | `#0073ff` |
 | inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
 | safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
 | onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |

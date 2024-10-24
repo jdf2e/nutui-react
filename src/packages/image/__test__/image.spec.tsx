@@ -12,11 +12,11 @@ test('image props test', () => {
     'style',
     'height: 100px; width: 100px;'
   )
-  expect(container.querySelector('.nut-img')).toHaveAttribute(
+  expect(container.querySelector('.nut-image-default')).toHaveAttribute(
     'src',
     'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   )
-  expect(container.querySelector('.nut-img')).toHaveAttribute(
+  expect(container.querySelector('.nut-image-default')).toHaveAttribute(
     'style',
     'object-fit: fill; object-position: center;'
   )
@@ -27,7 +27,7 @@ test('image position test', () => {
   const { container } = render(
     <Image src={src} width="100" height="100" fit="cover" position="left" />
   )
-  expect(container.querySelector('.nut-img')).toHaveAttribute(
+  expect(container.querySelector('.nut-image-default')).toHaveAttribute(
     'style',
     'object-fit: cover; object-position: left;'
   )

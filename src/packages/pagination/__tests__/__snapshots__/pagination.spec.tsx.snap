@@ -6,7 +6,7 @@ exports[`should match snapshot 1`] = `
     class="nut-pagination"
   >
     <div
-      class="nut-pagination-prev disabled"
+      class="nut-pagination-prev nut-pagination-prev-disabled"
     >
       上一页
     </div>
@@ -14,7 +14,7 @@ exports[`should match snapshot 1`] = `
       class="nut-pagination-contain"
     >
       <div
-        class="nut-pagination-item active"
+        class="nut-pagination-item nut-pagination-item-active"
       >
         1
       </div>

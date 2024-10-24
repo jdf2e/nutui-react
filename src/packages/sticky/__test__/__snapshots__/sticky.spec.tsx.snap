@@ -14,7 +14,7 @@ exports[`should match snapshot 1`] = `
         style="top: 0px; z-index: 900;"
       >
         <button
-          class="nut-button nut-button-primary nut-button-normal nut-button-round"
+          class="nut-button nut-button-primary nut-button-primary-solid nut-button-normal nut-button-round"
           type="button"
         >
           <div
