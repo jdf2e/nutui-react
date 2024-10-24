@@ -7,7 +7,7 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import { Photograph } from '@nutui/icons-react'
+import { Photograph, Failure } from '@nutui/icons-react'
 import { ERROR, SUCCESS, Upload, UPLOADING, UploadOptions } from './upload'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
@@ -26,6 +26,7 @@ export interface UploaderProps extends BasicComponent {
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
+  deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
   accept: string
@@ -94,6 +95,7 @@ const defaultProps = {
   deletable: true,
   capture: false,
   uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
+  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
@@ -108,6 +110,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const {
     children,
     uploadIcon,
+    deleteIcon,
     uploadLabel,
     name,
     accept,
@@ -350,9 +353,8 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const fileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (disabled) {
-      return
-    }
+    if (disabled) return
+
     const $el = event.target
     const { files } = $el
 
@@ -360,6 +362,7 @@ const InternalUploader: ForwardRefRenderFunction<
       beforeUpload(new Array<File>().slice.call(files)).then(
         (f: Array<File> | boolean) => {
           const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) $el.value = ''
           readFile(_files)
         }
       )
@@ -383,7 +386,7 @@ const InternalUploader: ForwardRefRenderFunction<
         <div className="nut-uploader-slot">
           {children || (
             <Button size="small" type="primary">
-              上传文件
+              {locale.uploader.list}
             </Button>
           )}
           {Number(maxCount) > fileList.length && (
@@ -410,6 +413,7 @@ const InternalUploader: ForwardRefRenderFunction<
           handleItemClick,
           previewUrl,
           children,
+          deleteIcon,
         }}
       />
 

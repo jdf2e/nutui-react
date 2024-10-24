@@ -95,10 +95,11 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     return ''
   }
   const handleTouchStart: any = (e: ITouchEvent) => {
+    if (props.disabled) return
     touch.start(e as any)
   }
   const handleTouchMove: any = (e: ITouchEvent) => {
-    if (props.scrollTop > 0) {
+    if (props.scrollTop > 0 || props.disabled) {
       return
     }
     if (status === 'refreshing' || status === 'complete') return
@@ -139,6 +140,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     setStatus('pulling')
   }
   const handleTouchEnd: any = () => {
+    if (props.disabled) return
     pullingRef.current = false
     if (status === 'canRelease') {
       doRefresh()

@@ -145,13 +145,11 @@ export const Input = forwardRef(
       trigger: InputFormatTrigger = 'onChange'
     ) => {
       let val = value
-      if (getEnv() === ENV_TYPE.WEB) {
-        if (type === 'number') {
-          val = formatNumber(val, false, true)
-        }
-        if (type === 'digit') {
-          val = formatNumber(val, true, true)
-        }
+      if (type === 'number') {
+        val = formatNumber(val, false, true)
+      }
+      if (type === 'digit') {
+        val = formatNumber(val, true, true)
       }
       if (formatter && trigger === formatTrigger) {
         val = formatter(val)

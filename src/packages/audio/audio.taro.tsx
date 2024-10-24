@@ -97,14 +97,13 @@ export const Audio: FunctionComponent<
       onPlayEnd?.(audioCtx)
     }
   })
-
   audioCtx.onPlay(() => {
     const { duration } = audioCtx
     setTotalSeconds(Math.floor(duration))
     onPlay?.(audioCtx)
   })
   audioCtx.onCanplay(() => {
-    const intervalID = setInterval(function () {
+    const intervalID = setInterval(() => {
       if (audioCtx.duration !== 0) {
         setTotalSeconds(audioCtx.duration)
         clearInterval(intervalID)
@@ -122,8 +121,7 @@ export const Audio: FunctionComponent<
   })
 
   audioCtx.onError((res) => {
-    console.warn('code', res.errCode)
-    console.warn('message', res.errMsg)
+    console.warn('onError', res.errCode, res.errMsg)
   })
 
   function formatSeconds(value: string) {
@@ -168,20 +166,16 @@ export const Audio: FunctionComponent<
 
   const renderIcon = () => {
     return (
-      <>
-        <div className={`${classPrefix}-icon`}>
-          <div
-            className={`${classPrefix}-icon-box} ${
-              playing
-                ? `${classPrefix}-icon-play}`
-                : `${classPrefix}-icon-stop}`
-            }`}
-            onClick={handleStatusChange}
-          >
-            <Service className={playing ? 'nut-icon-loading' : ''} />
-          </div>
+      <div className={`${classPrefix}-icon`}>
+        <div
+          className={`${classPrefix}-icon-box} ${
+            playing ? `${classPrefix}-icon-play}` : `${classPrefix}-icon-stop}`
+          }`}
+          onClick={handleStatusChange}
+        >
+          <Service className={playing ? 'nut-icon-loading' : ''} />
         </div>
-      </>
+      </div>
     )
   }
 

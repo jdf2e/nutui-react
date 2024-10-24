@@ -88,7 +88,6 @@ export const Elevator: FunctionComponent<
   const scrolling = useRef(false)
   const [scrollTop, setScrollTop] = useState(0)
   const [scrollY, setScrollY] = useState(0)
-  // 重置滚动参数
   const resetScrollState = () => {
     setScrollStart(false)
   }

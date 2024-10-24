@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 export class FileItem {
   status: FileItemStatus = 'ready'
 
-  message = '准备中..'
+  message = ''
 
   uid: string = new Date().getTime().toString()
 

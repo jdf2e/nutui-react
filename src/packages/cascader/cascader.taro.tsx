@@ -23,6 +23,7 @@ import {
 import Tree from './tree'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface CascaderProps
   extends Pick<
@@ -48,7 +49,7 @@ export interface CascaderProps
       | 'onClose'
     >
   >
-  visible: boolean // popup 显示状态
+  visible: boolean // popup visible
   activeColor: string
   activeIcon: string
   options: CascaderOption[]
@@ -91,6 +92,7 @@ const InternalCascader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderProps>>
 > = (props, ref) => {
+  const { locale } = useConfig()
   const {
     className,
     style,
@@ -170,6 +172,10 @@ const InternalCascader: ForwardRefRenderFunction<
   useEffect(() => {
     initData()
   }, [options, format])
+
+  useEffect(() => {
+    syncValue()
+  }, [value])
 
   const initData = async () => {
     // 初始化开始处理数据
@@ -443,7 +449,7 @@ const InternalCascader: ForwardRefRenderFunction<
                   {!state.initLoading &&
                     state.panes.length &&
                     !pane?.selectedNode?.text &&
-                    '请选择'}
+                    `${locale.select}`}
                   {!(!state.initLoading && state.panes.length) && 'Loading...'}
                 </span>
                 <span className="nut-tabs-titles-item-line" />

@@ -248,20 +248,18 @@ export const InputNumber: FunctionComponent<
           })}
         />
       </div>
-      <>
-        <input
-          className="nut-number-input"
-          type={type}
-          ref={inputRef}
-          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
-          disabled={disabled}
-          readOnly={readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      </>
+      <input
+        className="nut-number-input"
+        type={type}
+        ref={inputRef}
+        inputMode={type === 'digit' ? 'decimal' : 'numeric'}
+        disabled={disabled}
+        readOnly={readOnly}
+        value={inputValue}
+        onInput={handleInputChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
       <div className="nut-input-add" onClick={handlePlus}>
         <Plus
           className={classNames('nut-inputnumber-icon icon-plus', {

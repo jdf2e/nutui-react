@@ -13,7 +13,7 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
-import { Photograph } from '@nutui/icons-react-taro'
+import { Failure, Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import {
   ERROR,
@@ -29,7 +29,6 @@ import { FileItem } from './file-item'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
 
-/** 图片的尺寸 */
 interface sizeType {
   /** 原图 */
   original: string
@@ -37,7 +36,6 @@ interface sizeType {
   compressed: string
 }
 
-/** 图片的来源 */
 interface sourceType {
   /** 从相册选图 */
   album: string
@@ -45,7 +43,6 @@ interface sourceType {
   camera: string
 }
 
-/** 视频的来源 */
 interface mediaType {
   /** 只能拍摄图片或从相册选择图片 */
   image: string
@@ -76,6 +73,7 @@ export interface UploaderProps extends BasicComponent {
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
+  deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
   accept: string
@@ -115,6 +113,9 @@ export interface UploaderProps extends BasicComponent {
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
   onChange?: (files: FileItem[]) => void
+  beforeUpload?: (
+    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
+  ) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
@@ -129,6 +130,7 @@ const defaultProps = {
   mediaType: ['image', 'video'],
   camera: 'back',
   uploadIcon: <Photograph size="20px" color="#808080" />,
+  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
   uploadLabel: '',
   previewType: 'picture',
   fit: 'cover',
@@ -160,6 +162,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const {
     children,
     uploadIcon,
+    deleteIcon,
     uploadLabel,
     accept,
     name,
@@ -196,6 +199,7 @@ const InternalUploader: ForwardRefRenderFunction<
     onUpdate,
     onFailure,
     onOversize,
+    beforeUpload,
     beforeXhrUpload,
     beforeDelete,
     ...restProps
@@ -259,7 +263,6 @@ const InternalUploader: ForwardRefRenderFunction<
     if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
       // 其余端全部使用 chooseImage API
       chooseMedia({
-        /** 最多可以选择的文件个数 */
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         /** 文件类型 */
         mediaType: mediaType as any,
@@ -271,16 +274,13 @@ const InternalUploader: ForwardRefRenderFunction<
         sizeType,
         /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
         camera,
-        /** 接口调用失败的回调函数 */
         fail: (res: any) => {
           onFailure && onFailure(res)
         },
-        /** 接口调用成功的回调函数 */
         success: onChangeMedia,
       })
     } else {
       chooseImage({
-        // 选择数量
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         // 可以指定是原图还是压缩图，默认二者都有
         sizeType,
@@ -470,14 +470,34 @@ const InternalUploader: ForwardRefRenderFunction<
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
-    readFile(_files)
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
+    }
   }
 
   const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
-    readFile(_files)
+    if (beforeUpload) {
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
+    }
   }
 
   const handleItemClick = (file: FileItem, index: number) => {
@@ -491,7 +511,7 @@ const InternalUploader: ForwardRefRenderFunction<
           <>
             {children || (
               <Button nativeType="button" size="small" type="primary">
-                上传文件
+                {locale.uploader.list}
               </Button>
             )}
             {Number(maxCount) > fileList.length && (
@@ -513,6 +533,7 @@ const InternalUploader: ForwardRefRenderFunction<
           onDeleteItem,
           handleItemClick,
           previewUrl,
+          deleteIcon,
           children,
         }}
       />

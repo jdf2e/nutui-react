@@ -424,10 +424,10 @@
 }
 
 .nut-tabs-content {
+  display: flex;
+  box-sizing: border-box;
+
   &-wrap {
     overflow: hidden;
   }
-
-  display: flex;
-  box-sizing: border-box;
 }

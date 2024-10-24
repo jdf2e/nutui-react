@@ -4,13 +4,14 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
+  useCallback,
 } from 'react'
 import type { MouseEvent } from 'react'
 import Taro, { getEnv } from '@tarojs/taro'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
-import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
+import Image from '@/packages/image/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
 
@@ -34,9 +35,9 @@ const defaultProps = {
   size: '',
   shape: 'round',
   icon: '',
-  fit: 'cover',
   background: '#eee',
   color: '#666',
+  fit: 'cover',
   src: '',
   alt: '',
 } as AvatarProps
@@ -52,9 +53,9 @@ export const Avatar: FunctionComponent<
     background,
     color,
     src,
+    alt,
     icon,
     fit,
-    alt,
     className,
     style,
     onClick,
@@ -67,14 +68,15 @@ export const Avatar: FunctionComponent<
 
   const [maxSum, setMaxSum] = useState(0) // avatarGroup里的avatar的个数
   const [showMax, setShowMax] = useState(false) // 是否显示的最大头像个数
-  const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
+  const [avatarIndex, setAvatarIndex] = useState(1)
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
+  const { propAvatarGroup, avatarGroupRef } = parent
 
   const classes = classNames({
-    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
-    [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
+    [`nut-avatar-${propAvatarGroup?.size || size || 'normal'}`]: true,
+    [`nut-avatar-${propAvatarGroup?.shape || shape}`]: true,
   })
   const cls = classNames(classPrefix, classes, className)
 
@@ -84,27 +86,53 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${background}`,
     color,
     marginLeft:
-      avatarIndex !== 1 && parent?.propAvatarGroup?.gap
-        ? `${parent?.propAvatarGroup?.gap}px`
+      avatarIndex !== 1 && propAvatarGroup?.gap
+        ? `${propAvatarGroup?.gap}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.level === 'right'
+      propAvatarGroup?.level === 'right'
         ? `${Math.abs(maxSum - avatarIndex)}`
         : '',
     ...style,
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
-    color: `${parent?.propAvatarGroup?.maxColor}`,
+    backgroundColor: `${propAvatarGroup?.maxBackground}`,
+    color: `${propAvatarGroup?.maxColor}`,
   }
 
+  const avatarLength = useCallback(
+    (children: any) => {
+      for (let i = 0; i < children.length; i++) {
+        if (
+          children[i] &&
+          children[i].classList &&
+          isAvatarInClassList(children[i])
+        ) {
+          children[i].setAttribute('data-index', i + 1)
+        }
+      }
+      const index = Number(avatarRef?.current?.dataset?.index)
+      const maxCount = propAvatarGroup?.max
+      setMaxSum(children.length)
+      setAvatarIndex(index)
+      if (
+        index === children.length &&
+        index !== maxCount &&
+        children.length > maxCount
+      ) {
+        setShowMax(true)
+      }
+    },
+    [propAvatarGroup?.max]
+  )
+
   useEffect(() => {
-    const avatarChildren = parent?.avatarGroupRef?.current.children
+    const avatarChildren = avatarGroupRef?.current.children
     if (avatarChildren) {
       avatarLength(avatarChildren)
     }
-  }, [])
+  }, [avatarLength, avatarGroupRef])
 
   const isAvatarInClassList = (element: any) => {
     if (getEnv() === Taro.ENV_TYPE.WEB) {
@@ -120,33 +148,8 @@ export const Avatar: FunctionComponent<
     )
   }
 
-  const avatarLength = (children: any) => {
-    for (let i = 0; i < children.length; i++) {
-      if (
-        children[i] &&
-        children[i].classList &&
-        isAvatarInClassList(children[i])
-      ) {
-        children[i].setAttribute('data-index', i + 1)
-      }
-    }
-    const index = avatarRef?.current?.dataset?.index
-    const maxCount = parent?.propAvatarGroup?.max
-    setMaxSum(children.length)
-    setAvatarIndex(index)
-    if (
-      index === children.length &&
-      index !== maxCount &&
-      children.length > maxCount
-    ) {
-      setShowMax(true)
-    }
-  }
-
   const errorEvent = () => {
-    if (onError) {
-      onError()
-    }
+    onError && onError()
   }
 
   const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
@@ -156,8 +159,8 @@ export const Avatar: FunctionComponent<
   return (
     <>
       {(showMax ||
-        !parent?.propAvatarGroup?.max ||
-        avatarIndex <= parent?.propAvatarGroup?.max) && (
+        !propAvatarGroup?.max ||
+        avatarIndex <= propAvatarGroup?.max) && (
         <div
           className={cls}
           {...rest}
@@ -165,8 +168,7 @@ export const Avatar: FunctionComponent<
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!parent?.propAvatarGroup?.max ||
-            avatarIndex <= parent?.propAvatarGroup?.max) && (
+          {(!propAvatarGroup?.max || avatarIndex <= propAvatarGroup?.max) && (
             <>
               {src && (
                 <Image
@@ -186,14 +188,11 @@ export const Avatar: FunctionComponent<
               {!src && !icon && !children && <User className="icon" />}
             </>
           )}
-          {/* 折叠头像 */}
           {showMax && (
             <div className="text">
-              {parent?.propAvatarGroup?.maxContent
-                ? parent?.propAvatarGroup?.maxContent
-                : `+ ${
-                    avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
-                  }`}
+              {propAvatarGroup?.maxContent
+                ? propAvatarGroup?.maxContent
+                : `+ ${avatarIndex - Number(propAvatarGroup?.max || 0)}`}
             </div>
           )}
         </div>

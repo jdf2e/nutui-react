@@ -10,7 +10,7 @@ shell.exec(
   { silent: true },
   (code, stdout, stderr) => {
     shell.exec(
-      `git log --since="${stdout.replace('\n', '')}" --pretty=format:"%s @%an" next`,
+      `git log --since="${stdout.replace('\n', '')}" --pretty=format:"%s" next`,
       { silent: true },
       (code, stdout, stderr) => {
         const logs = stdout.split('\n')
@@ -43,7 +43,7 @@ shell.exec(
         }
         const logSymbol = {
           build: '* 📦 ',
-          chore: '*🏡 ',
+          chore: '* 🏡 ',
           ci: '* 🤖 ',
           docs: '* 📖 ',
           feat: '* :sparkles: ',
@@ -51,13 +51,11 @@ shell.exec(
           perf: '* zap: ',
           refactor: '* 🪵 ',
           revert: '* 🚦 ',
-          style: ':art: ',
+          style: '* :art: ',
           test: '* 💡 ',
           others: '* 🔔 ',
         }
         logs.forEach((log, index) => {
-          // const groups = log.match(/#(?<pr>[0-9]+)/)?.groups
-          // if (groups && groups.pr) {
           if (log.indexOf(beforeTag) === -1) {
             const a = rules.filter((rule) => {
               return log.toLowerCase().startsWith(rule)

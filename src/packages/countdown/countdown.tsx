@@ -6,7 +6,6 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 
@@ -44,7 +43,6 @@ const InternalCountDown: ForwardRefRenderFunction<
   unknown,
   Partial<CountDownProps>
 > = (props, ref) => {
-  const { locale } = useConfig()
   const {
     paused,
     startTime,
@@ -197,7 +195,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     return formatCache
   }
 
-  // 暂定
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
     stateRef.current.counting = false

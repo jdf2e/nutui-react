@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -7,6 +7,7 @@ import {
   useCustomEvent,
   useCustomEventsPath,
 } from '@/utils/use-custom-event'
+import { mergeProps } from '@/utils/merge-props'
 
 export type NotifyPosition = 'top' | 'bottom'
 export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
@@ -24,7 +25,7 @@ export interface NotifyProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000, // 时长
+  duration: 3000,
   type: 'danger',
   position: 'top',
   visible: false,
@@ -49,7 +50,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
     duration,
     onClose,
     onClick,
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
 
   useCustomEvent(id as string, (status: boolean) => {
     status ? show() : hide()
@@ -57,6 +58,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
 
   let timer: number | null
   const [showNotify, setShowNotify] = useState(false)
+  const cssRef = useRef(null)
   useEffect(() => {
     if (visible) {
       show()
@@ -98,6 +100,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   return (
     <>
       <CSSTransition
+        nodeRef={cssRef}
         in={showNotify}
         timeout={300}
         classNames="fade"
@@ -130,7 +133,6 @@ export function close(selector: string) {
   customEvents.trigger(path, false)
 }
 
-Notify.defaultProps = defaultProps // 不可删除
 Notify.displayName = 'NutNotify'
 Notify.open = open
 Notify.close = close

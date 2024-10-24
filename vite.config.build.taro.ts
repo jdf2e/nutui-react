@@ -47,7 +47,7 @@ export default defineConfig({
             fse.remove('./dist/types/packages/nutui.taro.react.build.d.ts')
             fse.outputFile(
               './dist/types/index.d.ts',
-              `${data.replace(/\.\.\//g, './')}`
+              `${data.replace(/\.\//g, './packages/')}`
             )
           })
       },

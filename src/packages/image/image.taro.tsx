@@ -45,13 +45,11 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
-  // 图片加载
   const handleLoad = (e: BaseEventOrig<TImageProps.onLoadEventDetail>) => {
     setIsError(false)
     setInnerLoading(false)
     onLoad && onLoad(e)
   }
-  // 图片加载失败
   const handleError = (e: BaseEventOrig<TImageProps.onErrorEventDetail>) => {
     if (src) {
       setIsError(true)

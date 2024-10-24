@@ -91,6 +91,7 @@ The 'divider' property allows you to keep the lower edge from being displayed be
 | extra | Extra | `ReactNode` | `-` |
 | radius | Corner radius | `string` | `6px` |
 | align | Alignment in the vertical direction | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| clickable | click style feedback | `boolean` | `false` |
 | onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## Theming

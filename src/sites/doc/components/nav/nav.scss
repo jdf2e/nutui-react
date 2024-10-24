@@ -67,6 +67,8 @@
           }
 
           a {
+            height: 100%;
+
             &.router-link-active,
             &.active {
               color: $doc-default-color !important;
@@ -84,8 +86,6 @@
                 color: $doc-default-color;
               }
             }
-
-            height: 100%;
 
             b {
               font-weight: normal;

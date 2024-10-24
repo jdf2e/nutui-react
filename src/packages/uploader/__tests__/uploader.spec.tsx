@@ -90,7 +90,7 @@ test('should render base uploader other props', () => {
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(onDelete).toBeCalled()
 
-  const toast2 = container.querySelector('.nut-uploader-preview-img-c')
+  const toast2 = container.querySelector('.nut-uploader-preview-img-c .nut-img')
   expect(toast2).toBeTruthy()
   fireEvent.click(container.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(fileItemClick).toBeCalled()

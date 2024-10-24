@@ -5,7 +5,6 @@ import React, {
   useContext,
 } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import GridContext from '../grid/grid.context'
 import { BasicComponent } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
@@ -35,7 +34,6 @@ const defaultProps = {
 export const GridItem: FunctionComponent<
   Partial<GridItemProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     style,

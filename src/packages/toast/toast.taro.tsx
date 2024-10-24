@@ -10,6 +10,7 @@ import {
   useParams,
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
+import { mergeProps } from '@/utils/merge-props'
 
 export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
@@ -91,7 +92,7 @@ export const Toast: FunctionComponent<
       wordBreak,
     },
     setParams,
-  } = useParams({ ...defaultProps, ...props })
+  } = useParams(mergeProps(defaultProps, props))
   const timer = useRef(-1)
 
   const [innerVisible, setInnerVisible] = usePropsValue({
@@ -222,7 +223,6 @@ export function hide(selector: string) {
   customEvents.trigger(path, { status: false })
 }
 
-Toast.defaultProps = defaultProps // 不可删除
 Toast.displayName = 'NutToast'
 Toast.show = show
 Toast.hide = hide

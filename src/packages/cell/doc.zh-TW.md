@@ -93,6 +93,7 @@ import { Cell } from '@nutui/nutui-react'
 | extra | 右側描述 | `ReactNode` | `-` |
 | radius | 圓角半徑 | `string` | `6px` |
 | align | 縱軸方向上的對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| clickable | 點擊的樣式反饋 | `boolean` | `false` |
 | onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主題定製
