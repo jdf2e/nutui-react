@@ -3,8 +3,8 @@
   align-items: center;
   width: 100%;
   padding: 6px 16px;
-  background: #F7F8FC;
-  color: #1A1A1A;
+  background: #f5f6fa;
+  color: #1a1a1a;
   font-size: 14px;
   box-sizing: border-box;
   justify-content: center;
@@ -27,15 +27,16 @@
 .nut-searchbar-clear {
   width: 16px;
   height: 16px;
-  color: undefined;
+  color: rgba(0, 0, 0, 0.2);
 }
 .nut-searchbar-rightin {
   width: 16px;
   height: 16px;
-  color: undefined;
+  color: rgba(0, 0, 0, 0.2);
 }
 .nut-searchbar-left, .nut-searchbar-right {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
 }
 .nut-searchbar-left.nut-icon, .nut-searchbar-right.nut-icon {
   width: 20px;
@@ -89,7 +90,7 @@
 .nut-searchbar-right > text:first-child, .nut-searchbar-right > view:first-child {
   margin-left: 0;
 }
-.nut-searchbar-input-box {
+.nut-searchbar-input-box, .nut-searchbar-input {
   display: flex;
   align-items: center;
   flex: 1;
@@ -99,12 +100,10 @@
   outline: 0;
   box-sizing: border-box;
   width: 100%;
-  height: 32px;
-  line-height: 32px;
   padding: 0 4px;
   font-size: 14px;
-  color: #1A1A1A;
-  caret-color: #1A1A1A;
+  color: #1a1a1a;
+  caret-color: #1a1a1a;
   background: transparent;
   text-align: left;
 }

@@ -1,12 +1,13 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View, ITouchEvent, Input as TaroInput, Icon } from '@tarojs/components'
 import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
 
 export interface SearchBarProps extends BasicComponent {
-  value?: number | string
+  value?: string
   placeholder?: string
   shape?: 'square' | 'round'
   disabled?: boolean
@@ -27,6 +28,9 @@ export interface SearchBarProps extends BasicComponent {
   onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
 }
 
+// TODO:harmony 下图标为了适配展示使用，待icon适配之后统一移除
+const isHarmony = harmony()
+
 const defaultProps = {
   ...ComponentDefaults,
   placeholder: '',
@@ -40,7 +44,7 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search size="16" />,
+  leftIn: isHarmony ? <Icon type="search" size={16} /> : <Search size="16" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -87,21 +91,20 @@ export const SearchBar: FunctionComponent<
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
   }
-  const change = (event: ChangeEvent<HTMLInputElement>) => {
-    if (value === event.target.value) return
-    onChange && onChange?.(event.target.value, event)
-    setValue(event.target.value)
-    event.target.value === '' && forceFocus()
+  const onInput = (event: any) => {
+    const eventValue = event?.detail?.value
+    if (value === eventValue) return
+    onChange && onChange?.(eventValue, event)
+    setValue(eventValue)
+    eventValue === '' && forceFocus()
   }
-  const focus = (event: FocusEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onFocus && onFocus?.(value, event)
+  const focus = (event: any) => {
+    onFocus && onFocus?.(event?.detail?.value, event)
   }
-  const blur = (event: FocusEvent<HTMLInputElement>) => {
+  const blur = (event: any) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
-    const { value } = event.target
-    onBlur && onBlur?.(value, event)
+    onBlur && onBlur?.(event?.detail?.value, event)
   }
   useEffect(() => {
     setValue(outerValue || '')
@@ -111,7 +114,7 @@ export const SearchBar: FunctionComponent<
   }, [autoFocus])
   const renderField = () => {
     return (
-      <input
+      <TaroInput
         className={`${classPrefix}-input ${
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
@@ -119,18 +122,19 @@ export const SearchBar: FunctionComponent<
         style={style}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
-        disabled={disabled}
-        readOnly={readOnly}
-        maxLength={maxLength}
-        onKeyPress={onKeypress}
-        onChange={(e) => change(e)}
-        onFocus={(e) => focus(e)}
-        onBlur={(e) => blur(e)}
-        onClick={(e) => clickInput(e)}
+        disabled={disabled || readOnly}
+        maxlength={maxLength}
+        // @ts-ignore
+        // onKeyDown={onKeypress}
+        onInput={onInput}
+        onFocus={focus}
+        onBlur={blur}
+        onClick={clickInput}
+        onConfirm={onConfirm}
       />
     )
   }
-  const clickInput = (e: MouseEvent<HTMLInputElement>) => {
+  const clickInput = (e: any) => {
     onInputClick && onInputClick(e)
   }
   const renderLeftIn = () => {
@@ -167,7 +171,11 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <MaskClose size={16} />
+        {isHarmony ? (
+          <Icon type="cancel" size={16} color="#c2c4cc" />
+        ) : (
+          <MaskClose size={16} />
+        )}
       </View>
     )
   }
@@ -182,13 +190,16 @@ export const SearchBar: FunctionComponent<
     onChange && onChange?.('')
     onClear && onClear(event)
   }
-  const onKeypress = (e: any) => {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-      if (typeof e.cancelable !== 'boolean' || e.cancelable) {
-        e.preventDefault()
-      }
-      onSearch && onSearch(value as string)
-    }
+  //   const onKeypress = (event: any) => {
+  //     if (event?.detail?.keyCode === 13) {
+  //       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+  //         event.preventDefault()
+  //       }
+  //       onSearch && onSearch(value as string)
+  //     }
+  //   }
+  const onConfirm = () => {
+    onSearch && onSearch(value as string)
   }
   return (
     <View

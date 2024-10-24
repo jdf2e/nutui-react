@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import { harmony } from '@/utils/platform-taro'
 
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -66,8 +67,15 @@ const SearchBarDemo = () => {
         <Demo4 />
         <View className="h2">{translated.title5}</View>
         <Demo5 />
-        <View className="h2">{translated.title7}</View>
-        <Demo6 />
+        {/* 组件引入Popover组件，带Popover组件适配harmony后验证 */}
+        {harmony() ? (
+          <></>
+        ) : (
+          <>
+            <View className="h2">{translated.title7}</View>
+            <Demo6 />
+          </>
+        )}
         <View className="h2">{translated.title6}</View>
         <Demo7 />
       </ScrollView>
