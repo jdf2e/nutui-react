@@ -142,10 +142,10 @@ import { Button } from '@nutui/nutui-react'
 | \--nutui-button-large-border-radius | size 為 large 的按鈕的圓角 | `24px` |
 | \--nutui-button-small-padding | size 為 small 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-small-height | size 為 small 的按鈕的高度 | `28px` |
-| \--nutui-button-small-font-size | size 為 small 的按鈕的字號 | `$font-size-small` |
+| \--nutui-button-small-font-size | size 為 small 的按鈕的字號 | `$font-size-s` |
 | \--nutui-button-small-border-radius | size 為 small 的按鈕的圓角 | `24px` |
 | \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
-| \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-small` |
+| \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-s` |
 | \--nutui-button-mini-border-radius | size 為 mini 的按鈕的圓角 | `24px` |
 | \--nutui-button-text-icon-margin | 帶 icon按鈕的文本的邊距 | `4px` |

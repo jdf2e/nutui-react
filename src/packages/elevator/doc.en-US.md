@@ -75,7 +75,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | Floor area background color | `$white` |
-| \--nutui-elevator-list-font-size | Floor area list item font size | `$font-size-small` |
+| \--nutui-elevator-list-font-size | Floor area list item font size | `$font-size-s` |
 | \--nutui-elevator-list-color | Floor area list item font color | `$color-title` |
 | \--nutui-elevator-list-item-padding | Floor area list item inside margin | `0 20px` |
 | \--nutui-elevator-list-item-name-height | Height of floor area list item | `30px` |

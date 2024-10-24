@@ -16,15 +16,17 @@ test('range props test', () => {
       'linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%)',
   })
 
-  expect(container.querySelector('.number')?.innerHTML).toBe('40')
+  expect(container.querySelector('.nut-range-button-number')?.innerHTML).toBe(
+    '40'
+  )
 
   expect(container).toMatchSnapshot()
 })
 
 test('range max and min test', () => {
   const { container } = render(<Range defaultValue={0} max={10} min={-10} />)
-  expect(container.querySelector('.min')?.innerHTML).toBe('-10')
-  expect(container.querySelector('.max')?.innerHTML).toBe('10')
+  expect(container.querySelector('.nut-range-min')?.innerHTML).toBe('-10')
+  expect(container.querySelector('.nut-range-max')?.innerHTML).toBe('10')
 })
 
 test('range test', () => {
@@ -39,8 +41,8 @@ test('range description test', () => {
   const { container } = render(
     <Range minDescription="0%" maxDescription="100%" />
   )
-  expect(container.querySelector('.min')?.innerHTML).toBe('0%')
-  expect(container.querySelector('.max')?.innerHTML).toBe('100%')
+  expect(container.querySelector('.nut-range-min')?.innerHTML).toBe('0%')
+  expect(container.querySelector('.nut-range-max')?.innerHTML).toBe('100%')
 })
 
 test('disabled test', () => {
@@ -64,8 +66,8 @@ test('hidden range test', () => {
       defaultValue={state.value0}
     />
   )
-  expect(container.querySelector('.max')).toBeFalsy()
-  expect(container.querySelector('.min')).toBeFalsy()
+  expect(container.querySelector('.nut-range-max')).toBeFalsy()
+  expect(container.querySelector('.nut-range-min')).toBeFalsy()
 })
 
 test('hiddenTag test', () => {
@@ -84,7 +86,7 @@ test('vertical test', () => {
   }
   const { container } = render(<Range vertical defaultValue={state.value0} />)
   expect(container.querySelector('.nut-range-container')).toHaveClass(
-    'nut-range-container-vertical'
+    'nut-range-vertical-container'
   )
 })
 
@@ -156,9 +158,15 @@ test('desc test', () => {
       currentDescription={(value) => `${value}%`}
     />
   )
-  expect(container.querySelector('.min')?.innerHTML).toBe(state.minDescription)
-  expect(container.querySelector('.max')?.innerHTML).toBe(state.maxDescription)
-  expect(container.querySelector('.number')?.innerHTML).toBe('40%')
+  expect(container.querySelector('.nut-range-min')?.innerHTML).toBe(
+    state.minDescription
+  )
+  expect(container.querySelector('.nut-range-max')?.innerHTML).toBe(
+    state.maxDescription
+  )
+  expect(container.querySelector('.nut-range-button-number')?.innerHTML).toBe(
+    '40%'
+  )
 })
 
 test('range click test', () => {
@@ -205,7 +213,7 @@ test('range touch test', () => {
   const { container } = render(<Range defaultValue={40} />)
 
   const track = container.querySelector('.nut-range-button')
-  const button = container.querySelector('.number')
+  const button = container.querySelector('.nut-range-button-number')
 
   if (track) {
     fireEvent.touchStart(track, {

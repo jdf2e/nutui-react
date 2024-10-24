@@ -99,7 +99,7 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge 內容色值 | `#fff` |
-| \--nutui-badge-font-size | badge 內容字號 | `$font-size-small` |
+| \--nutui-badge-font-size | badge 內容字號 | `$font-size-s` |
 | \--nutui-badge-border | badge 邊框 | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge 邊框圓角 | `14px` |
 | \--nutui-badge-min-width | badge 最小寬度 | `5px` |

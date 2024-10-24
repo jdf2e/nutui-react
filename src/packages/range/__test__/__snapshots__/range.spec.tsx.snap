@@ -4,9 +4,10 @@ exports[`range props test 1`] = `
 <div>
   <div
     class="nut-range-container test-range"
+    style="color: red;"
   >
     <div
-      class="min"
+      class="nut-range-min"
     >
       0
     </div>
@@ -19,12 +20,15 @@ exports[`range props test 1`] = `
       >
         <div
           class="nut-range-button-wrapper"
+          style="transform: translate(-50%, -50%);"
         >
           <div
             class="nut-range-button"
+            style="transform: translate(-50%, -50%);"
           >
             <div
-              class="number"
+              class="nut-range-button-number"
+              style="transform: translate(-50%, -100%);"
             >
               40
             </div>
@@ -33,7 +37,7 @@ exports[`range props test 1`] = `
       </div>
     </div>
     <div
-      class="max"
+      class="nut-range-max"
     >
       100
     </div>
@@ -41,55 +45,4 @@ exports[`range props test 1`] = `
 </div>
 `;
 
-exports[`range props test 2`] = `
-<div>
-  <div
-    class="nut-range-container test-range"
-  >
-    <div
-      class="min"
-    >
-      0
-    </div>
-    <div
-      class="nut-range"
-    >
-      <div
-        class="nut-range-bar"
-        style="width: 40%; left: 0%; transition: none;"
-      >
-        <div
-          class="nut-range-button-wrapper"
-        >
-          <div
-            class="nut-range-button"
-          >
-            <div
-              class="number"
-            >
-              40
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="max"
-    >
-      100
-    </div>
-  </div>
-</div>
-`;
-
-exports[`range test 1`] = `
-"<div><div class="nut-range-container"><div class="min">0</div><div class="nut-range"><div class="nut-range-bar" style="width: 30%; left: 30%; transition: none;"><div class="nut-range-button-wrapper-left
-                  "><div class="nut-range-button"><div class="number">30</div></div></div><div class="
-                  nut-range-button-wrapper-right"><div class="nut-range-button"><div class="number">60</div></div></div></div></div><div class="max">100</div></div></div>"
-`;
-
-exports[`range test 2`] = `
-"<div><div class="nut-range-container"><div class="min">0</div><div class="nut-range"><div class="nut-range-bar" style="width: 30%; left: 30%; transition: none;"><div class="nut-range-button-wrapper-left
-                  "><div class="nut-range-button"><div class="number">30</div></div></div><div class="
-                  nut-range-button-wrapper-right"><div class="nut-range-button"><div class="number">60</div></div></div></div></div><div class="max">100</div></div></div>"
-`;
+exports[`range test 1`] = `"<div><div class="nut-range-container"><div class="nut-range-min">0</div><div class="nut-range"><div class="nut-range-bar" style="width: 30%; left: 30%; transition: none;"><div class="nut-range-button-wrapper-left" style="transform: translate(-50%, -50%);"><div class="nut-range-button" style="transform: translate(-50%, -50%);"><div class="nut-range-button-number" style="transform: translate(-50%, -100%);">30</div></div></div><div class="nut-range-button-wrapper-right" style="transform: translate(-50%, -50%);"><div class="nut-range-button" style="transform: translate(-50%, -50%);"><div class="nut-range-button-number" style="transform: translate(-50%, -100%);">60</div></div></div></div></div><div class="nut-range-max">100</div></div></div>"`;

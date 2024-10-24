@@ -16,7 +16,7 @@
 
       &-button-active {
         border: $radio-button-active-border;
-        background-color: $color-primary-light;
+        background-color: $color-primary-light-pressed;
       }
     }
   }
@@ -28,7 +28,7 @@
 
       &-button-active {
         border: $radio-button-active-border;
-        background-color: $color-primary-light;
+        background-color: $color-primary-light-pressed;
       }
     }
   }

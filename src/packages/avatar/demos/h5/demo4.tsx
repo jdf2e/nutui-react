@@ -12,7 +12,7 @@ const Demo4 = () => {
       />
       <Avatar
         color="var(--nutui-color-primary)"
-        background="var(--nutui-color-primary-light)"
+        background="var(--nutui-color-primary-light-pressed)"
       >
         U
       </Avatar>
