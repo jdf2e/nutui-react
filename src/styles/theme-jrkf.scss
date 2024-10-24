@@ -1,0 +1,252 @@
+:root,
+page {
+  --nutui-brand-1: #ffe5e5; // 梯度1
+  --nutui-brand-2: #ffcccc; // 梯度2
+  --nutui-brand-3: #ffb2b2; // 梯度3
+  --nutui-brand-4: #ff9999; // 梯度4
+  --nutui-brand-5: #ff7f7f; // 梯度5
+  --nutui-brand-6: #ff6666; // 梯度6
+  --nutui-brand-7: #ff4c4c; // 梯度7
+  --nutui-brand-8: #ff4144; // 梯度8 * 主题色 primary brand
+  --nutui-brand-9: #e6393b; // 梯度9
+  --nutui-brand-10: #cc3133; // 梯度10
+  --nutui-brand-11: #b32a2b; // 梯度11
+  --nutui-brand-12: #992222; // 梯度12
+
+  --nutui-color-primary: var(--nutui-brand-6);
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
+  --nutui-color-primary-pressed: var(--nutui-brand-7);
+  --nutui-color-primary-disabled: var(--nutui-brand-3);
+  --nutui-color-primary-light: var(--nutui-brand-1);
+  --nutui-color-primary-light-pressed: var(--nutui-brand-2);
+
+  // 通用css变量
+  // Font Size
+  --nutui-font-size-1: 12px;
+  --nutui-font-size-2: 14px;
+  --nutui-font-size-3: 16px;
+  --nutui-font-size-4: 18px;
+  --nutui-font-size-5: 20px;
+  --nutui-font-size-6: 22px;
+  --nutui-font-size-7: 24px;
+  --nutui-font-size-8: 26px;
+  --nutui-font-size-9: 28px;
+  --nutui-font-size-10: 30px;
+  --nutui-font-size-11: 32px;
+  --nutui-font-size-12: 34px;
+  --nutui-font-size-13: 36px;
+  --nutui-font-size-14: 38px;
+  --nutui-font-size-15: 40px;
+  --nutui-font-size-16: 42px;
+  --nutui-font-size-17: 44px;
+
+
+  --nutui-font-size-large: 36px;
+  --nutui-font-size-middle: 28px;
+  --nutui-font-size-small: 24px;
+
+  // padding
+  --nutui-padding-1: 2px;
+  --nutui-padding-2: 4px;
+  --nutui-padding-3: 6px;
+  --nutui-padding-4: 8px;
+  --nutui-padding-5: 10px;
+  --nutui-padding-6: 12px;
+  --nutui-padding-7: 14px;
+  --nutui-padding-8: 16px;
+  --nutui-padding-9: 18px;
+  --nutui-padding-10: 20px;
+  --nutui-padding-11: 22px;
+  --nutui-padding-12: 24px;
+  --nutui-padding-13: 26px;
+  --nutui-padding-14: 28px;
+  --nutui-padding-15: 30px;
+  --nutui-padding-16: 32px;
+  --nutui-padding-17: 34px;
+  --nutui-padding-18: 36px;
+  --nutui-padding-19: 38px;
+  --nutui-padding-20: 40px;
+  --nutui-padding-21: 42px;
+  --nutui-padding-22: 44px;
+  --nutui-padding-23: 46px;
+  --nutui-padding-24: 48px;
+  --nutui-padding-25: 50px;
+  --nutui-padding-26: 52px;
+  --nutui-padding-27: 54px;
+  --nutui-padding-28: 56px;
+  --nutui-padding-29: 58px;
+  --nutui-padding-30: 60px;
+  --nutui-padding-31: 62px;
+  --nutui-padding-32: 64px;
+  --nutui-padding-33: 66px;
+  --nutui-padding-34: 68px;
+  --nutui-padding-35: 70px;
+  --nutui-padding-36: 72px;
+  --nutui-padding-37: 74px;
+  --nutui-padding-38: 76px;
+  --nutui-padding-39: 78px;
+  --nutui-padding-40: 80px;
+
+
+  // margin
+  --nutui-margin-1: 2px;
+  --nutui-margin-2: 4px;
+  --nutui-margin-3: 6px;
+  --nutui-margin-4: 8px;
+  --nutui-margin-5: 10px;
+  --nutui-margin-6: 12px;
+  --nutui-margin-7: 14px;
+  --nutui-margin-8: 16px;
+  --nutui-margin-9: 18px;
+  --nutui-margin-10: 20px;
+  --nutui-margin-11: 22px;
+  --nutui-margin-12: 24px;
+  --nutui-margin-13: 26px;
+  --nutui-margin-14: 28px;
+  --nutui-margin-15: 30px;
+  --nutui-margin-16: 32px;
+  --nutui-margin-17: 34px;
+  --nutui-margin-18: 36px;
+  --nutui-margin-19: 38px;
+  --nutui-margin-20: 40px;
+  --nutui-margin-21: 42px;
+  --nutui-margin-22: 44px;
+  --nutui-margin-23: 46px;
+  --nutui-margin-24: 48px;
+  --nutui-margin-25: 50px;
+  --nutui-margin-26: 52px;
+  --nutui-margin-27: 54px;
+  --nutui-margin-28: 56px;
+  --nutui-margin-29: 58px;
+  --nutui-margin-30: 60px;
+  --nutui-margin-31: 62px;
+  --nutui-margin-32: 64px;
+  --nutui-margin-33: 66px;
+  --nutui-margin-34: 68px;
+  --nutui-margin-35: 70px;
+  --nutui-margin-36: 72px;
+  --nutui-margin-37: 74px;
+  --nutui-margin-38: 76px;
+  --nutui-margin-39: 78px;
+  --nutui-margin-40: 80px;
+
+
+  // font weight
+  --nutui-font-weight-light: 300;
+  --nutui-font-weight-normal: 400;
+  --nutui-font-weight-medium: 500;
+  --nutui-font-weight-bold: 600;
+
+  // border radius
+  --nutui-border-radius-1: 4px;
+  --nutui-border-radius-2: 8px;
+  --nutui-border-radius-3: 12px;
+  --nutui-border-radius-4: 16px;
+  --nutui-border-radius-5: 20px;
+  --nutui-border-radius-6: 24px;
+  --nutui-border-radius-7: 28px;
+  --nutui-border-radius-8: 32px;
+  --nutui-border-radius-9: 36px;
+  --nutui-border-radius-10: 40px;
+  --nutui-border-radius-11: 44px;
+  --nutui-border-radius-12: 48px;
+  --nutui-border-radius-13: 52px;
+  --nutui-border-radius-14: 56px;
+  --nutui-border-radius-15: 60px;
+  --nutui-border-radius-16: 64px;
+
+  // 基础色值，不要直接引用 主要背景色，用于页面背景、卡片背景、弹窗背景、按钮背景等
+  --nutui-white: #ffffff;
+  --nutui-black: #000000;
+  --nutui-gray--1: #333333;
+  --nutui-gray--2: #666666;
+  --nutui-gray--3: #999999;
+
+  // 基础色值，不要直接引用 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
+  --nutui-gray--4: rgba(0, 0, 0, 0.6);
+  --nutui-gray--5: #cccccc;
+  --nutui-gray--6: #eeeeee;
+  --nutui-gray--7: #d4d4d4;
+  --nutui-gray--8: #f5f4f8;
+  --nutui-gray--9: #dddddd;
+
+
+  // --------以上为基础色值不要直接引用，引用的需要是语义化变量名--------------------------------------------
+
+
+  // 特殊字体色
+  --nutui-unique-color: #ffb540;
+
+  // 主色调-背景色
+  --nutui-primary-color: var(--nutui-brand-8);
+
+  // 主色调-链接色
+  --nutui-primary-link-color: #cc8c4e;
+
+  // 主色调-文字色
+  --nutui-primary-text-color: var(--nutui-white);
+
+  // 主色调-选择块背景色
+  --nutui-primary-block-bg-color: #fff4f4;
+
+  // 主色调-整体背景色
+  --nutui-primary-bg-color: #fbf1eb;
+
+  // 主色调-红圆点背景色
+  --nutui-primary-red-dot-bg-color: #ff4144;
+
+  // 标题、常规文字
+  --nutui-text-color: var(--nutui-black);
+
+  //次级标题、属性标示、非主要信息引导
+  --nutui-second-text-color: var(--nutui-gray-2);
+
+  //次要内容
+  --nutui-third-text-color: var(--nutui-gray-1);
+
+  // 无效内容，未激活状态文本
+  --nutui-last-text-color: var(--nutui-gray-3);
+
+  // placeholder
+  --nutui-placeholder-color: var(--nutui-gray-5);
+
+  // 输入框边框颜色
+  --nutui-input-border-color: #ffd6d6;
+
+  // 默认背景色
+  --nutui-background-default-color: var(--nutui-white);
+
+  // 灰色背景色
+  --nutui-background-gray-color: var(--nutui-gray-8);
+
+  // 特殊禁用色
+  --nutui-disable-color: var(--nutui-gray-4);
+
+  // 页面全局蒙层
+  --nutui-mask-color: var(--nutui-gray-4);
+
+  // 图片容错蒙层
+  --nutui-mask-color: var(--nutui-gray-4);
+
+  //分割线颜色
+  --nutui-dividers-color: var(--nutui-gray-6);
+
+  // ---- Font Family ----
+  --nutui-font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun, sans-serif;
+
+  // --- z-index ----
+  --nutui-mask-z-index: 1000;
+  --nutui-mask-content-z-index: 1200;
+
+  // button
+  --nutui-button-border-width: 1px;
+
+  --nutui-button-default-color: var(--nutui-black);
+  --nutui-button-default-background-color: var(--nutui-white);
+  --nutui-button-default-border-color: var(--nutui-gray-5);
+
+  --nutui-button-primary-color: var(--nutui-white);
+  --nutui-button-primary-background-color: var(--nutui-primary-color);
+  --nutui-button-primary-border-color: var(--nutui-primary-color);
+}
