@@ -3,6 +3,9 @@ import { Uploader, Cell } from '@nutui/nutui-react-taro'
 import { FileItem } from '../../file-item'
 
 const Demo3 = () => {
+  const demoUrl =
+    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
+
   const [list, setList] = useState<FileItem[]>([])
   const uploaderStyle = {
     marginInlineEnd: '10px',
@@ -18,7 +21,7 @@ const Demo3 = () => {
   async function upload(file: File) {
     await sleep(2000)
     return {
-      url: URL.createObjectURL(file),
+      url: demoUrl,
     }
   }
   return (

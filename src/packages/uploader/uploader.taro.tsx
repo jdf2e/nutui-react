@@ -7,16 +7,10 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import Taro, {
-  chooseImage,
-  uploadFile,
-  getEnv,
-  chooseMedia,
-} from '@tarojs/taro'
+import Taro, { chooseImage, getEnv, chooseMedia } from '@tarojs/taro'
 import { Failure, Photograph } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
-import { UploaderTaro } from './upload'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -97,7 +91,7 @@ export interface UploaderProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  maxCount: 1,
+  maxCount: Number.MAX_VALUE,
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
   mediaType: ['image', 'video'],
@@ -169,15 +163,13 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<Promise<UploaderTaro>[]>([])
+  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
 
   const classes = classNames(className, 'nut-uploader')
 
   useImperativeHandle(ref, () => ({
-    submit: () => {
-      Promise.all(uploadQueue).then((res) => {
-        res.forEach((i) => i.uploadTaro(uploadFile, getEnv()))
-      })
+    submit: async () => {
+      await uploadAction(uploadQueue)
     },
     clear: () => {
       clearUploadQueue()
@@ -186,6 +178,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const fileListRef = useRef<FileItem[]>([])
   useEffect(() => {
     fileListRef.current = fileList
+    console.log(fileListRef.current)
   }, [fileList])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
@@ -244,18 +237,17 @@ const InternalUploader: ForwardRefRenderFunction<
   }
   const uploadAction = async (tasks: FileItem[]) => {
     const taskIds = tasks.map((task) => task.uid)
-    setFileList(
-      tasks.map((file: FileItem) => {
-        if (taskIds.includes(file.uid)) {
-          return {
-            ...file,
-            status: 'uploading',
-            message: locale.uploader.uploading,
-          }
+    const list: FileItem[] = fileListRef.current.map((file: FileItem) => {
+      if (taskIds.includes(file.uid)) {
+        return {
+          ...file,
+          status: 'uploading',
+          message: locale.uploader.uploading,
         }
-        return file
-      })
-    )
+      }
+      return file
+    })
+    setFileList(list)
     await Promise.all(
       tasks.map(async (currentTask, index) => {
         try {
@@ -314,6 +306,8 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         info.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
+      fileListRef.current = [...fileListRef.current, info]
+      setFileList(fileListRef.current)
       return info
     })
     if (!autoUpload) {

@@ -17,7 +17,7 @@ const Demo4 = () => {
   async function upload(file: File) {
     await sleep(2000)
     return {
-      url: URL.createObjectURL(file),
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
     }
   }
   return (

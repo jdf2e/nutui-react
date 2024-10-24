@@ -9,7 +9,6 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import Demo10 from './demos/taro/demo10'
 
 const UploaderDemo = () => {
   const [translated] = useTranslate({
@@ -17,7 +16,6 @@ const UploaderDemo = () => {
       basic: '基础用法',
       uploadListDefault: '基础用法-上传列表展示',
       uploadStatus: '上传状态',
-      camera: '直接调起摄像头（移动端生效）',
       limitedQuantity: '限制上传数量',
       limitSize: '限制上传大小（每个文件最大不超过50kb）',
       beforeUpload: '自定义上传前的处理',
@@ -29,7 +27,6 @@ const UploaderDemo = () => {
       basic: '基础用法',
       uploadListDefault: '基础用法-上傳列表展示',
       uploadStatus: '上傳狀態',
-      camera: '直接調起攝像頭（移動端生效）',
       limitedQuantity: '限制上傳數量',
       beforeUpload: '自定義上傳前的處理',
       limitSize: '限制上傳大小',
@@ -42,7 +39,6 @@ const UploaderDemo = () => {
       uploadListDefault: 'Basic usage - upload list dispaly',
       uploadStatus: 'Upload status',
       beforeUpload: 'Beforeupload Usage',
-      camera: 'Direct camera up (mobile)',
       limitedQuantity: 'Limit the number of uploads',
       limitSize: 'Limit upload size (maximum 50kb per file)',
       manualExecution:
@@ -69,12 +65,10 @@ const UploaderDemo = () => {
         <Demo6 />
         <h2>{translated.customDeleteIcon}</h2>
         <Demo7 />
-        <h2>{translated.camera}</h2>
-        <Demo8 />
         <h2>{translated.manualExecution}</h2>
-        <Demo9 />
+        <Demo8 />
         <h2>{translated.uploadListDefault}</h2>
-        <Demo10 />
+        <Demo9 />
       </div>
     </>
   )
