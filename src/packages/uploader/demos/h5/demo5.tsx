@@ -5,12 +5,10 @@ import { FileItem } from '../../file-item'
 const Demo5 = () => {
   const [list, setList] = useState<FileItem[]>([])
   const beforeUpload = async (files: File[]) => {
-    console.log('bbb')
     const allowedTypes = ['image/png']
     const filteredFiles = Array.from(files).filter((file) =>
       allowedTypes.includes(file.type)
     )
-    console.log(filteredFiles)
     return filteredFiles
   }
   function sleep(time: number) {

@@ -9,7 +9,6 @@ const Demo5 = () => {
     const filteredFiles = Array.from(files).filter((file) =>
       allowedTypes.includes(file.type)
     )
-    console.log(filteredFiles)
     return filteredFiles
   }
   function sleep(time: number) {
