@@ -66,7 +66,7 @@ import { Uploader } from '@nutui/nutui-react-taro'
 
 :::
 
-### 直接调起摄像头（移动端生效）
+### 选中文件后，通过按钮手动执行上传
 
 :::demo
 
@@ -74,19 +74,11 @@ import { Uploader } from '@nutui/nutui-react-taro'
 
 :::
 
-### 选中文件后，通过按钮手动执行上传
-
-:::demo
-
-<CodeBlock src='taro/demo9.tsx'></CodeBlock>
-
-:::
-
 ### 基础用法-上传列表展示
 
 :::demo
 
-<CodeBlock src='taro/demo10.tsx'></CodeBlock>
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -106,12 +98,10 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | deletable | 是否展示删除按钮 | `boolean` | `true` |
 | method | 上传请求的 http method | `string` | `post` |
 | previewType | 上传列表的内建样式，支持两种基本样式 picture、list | `string` | `picture` |
-| capture | 图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接调起摄像头 | `string` | `false` |
 | maxFileSize | 可以设定最大上传文件的大小（字节） | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | 文件上传数量限制 | `number` \| `string` | `1` |
 | fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件 | `boolean` | `true` |
-| accept | 允许上传的文件类型，[详细说明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `React.ReactNode` | `-` |
 | deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
@@ -125,8 +115,6 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | onDelete | 点击删除文件时触发 | `(file: FileItem, files: FileItem[]) => void` | `-` |
 | onFileItemClick | 文件上传成功后点击触发 | `(file: FileItem, index: number) => void` | `-` |
 | onUploadQueueChange | 图片上传队列变化时触发 | `(tasks: FileItem[]) => void` | `-` |
-
-> 注意：accept、capture 和 multiple 为浏览器 input 标签的原生属性，移动端各种机型对这些属性的支持程度有所差异，因此在不同机型和 WebView 下可能出现一些兼容性问题。
 
 ### FileItem
 

@@ -78,6 +78,7 @@ export interface UploaderProps extends BasicComponent {
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
+  onOverCount?: (count: number) => void
   onChange?: (files: FileItem[]) => void
   upload: (
     files: Taro.chooseImage.ImageFile | Taro.chooseMedia.ChooseMedia | any
@@ -87,6 +88,7 @@ export interface UploaderProps extends BasicComponent {
   ) => Promise<File[]>
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
+  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
@@ -150,9 +152,11 @@ const InternalUploader: ForwardRefRenderFunction<
     onChange,
     onFileItemClick,
     onOversize,
+    onOverCount,
     beforeUpload,
     upload,
     beforeDelete,
+    onUploadQueueChange,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -164,9 +168,8 @@ const InternalUploader: ForwardRefRenderFunction<
     },
   })
   const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
-
+  const fileListRef = useRef<FileItem[]>([])
   const classes = classNames(className, 'nut-uploader')
-
   useImperativeHandle(ref, () => ({
     submit: async () => {
       await uploadAction(uploadQueue)
@@ -175,11 +178,12 @@ const InternalUploader: ForwardRefRenderFunction<
       clearUploadQueue()
     },
   }))
-  const fileListRef = useRef<FileItem[]>([])
   useEffect(() => {
     fileListRef.current = fileList
-    console.log(fileListRef.current)
   }, [fileList])
+  useEffect(() => {
+    onUploadQueueChange?.(uploadQueue)
+  }, [uploadQueue])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
@@ -329,9 +333,9 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     oversizes.length && onOversize?.(files as any)
-
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
+      onOverCount?.(filterFile.length)
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
     }
     return filterFile
