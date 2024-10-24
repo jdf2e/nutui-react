@@ -1,8 +1,11 @@
 import React from 'react'
-import { Uploader } from '@nutui/nutui-react-taro'
+import { Uploader, Cell } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return <Uploader url={uploadUrl} sourceType={['camera']} />
+  return (
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Uploader disabled />
+    </Cell>
+  )
 }
 export default Demo6

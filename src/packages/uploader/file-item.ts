@@ -1,36 +1,27 @@
 import { ReactNode } from 'react'
 
-export class FileItem {
-  status: FileItemStatus = 'ready'
+export interface FileItem {
+  status?: FileItemStatus
 
-  message = ''
+  message?: string
 
-  uid: string = new Date().getTime().toString()
+  uid?: string | number
 
   name?: string
 
   url?: string
 
-  type?: string
+  type?: 'image' | 'list' | string
 
   path?: string
-
-  percentage?: string | number = 0
-
-  formData?: FormData = {} as FormData
-
-  responseText?: string
 
   loadingIcon?: ReactNode
 
   failIcon?: ReactNode
+
+  file?: File
 }
 
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed'
+export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error'
 
 export type FileType<T> = { [key: string]: T }

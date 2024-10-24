@@ -1,18 +1,24 @@
 import React from 'react'
-import { Uploader } from '@nutui/nutui-react'
+import { Uploader, Cell } from '@nutui/nutui-react'
 
 const Demo8 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files)
+  function sleep(time: number) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    })
+  }
+  async function upload(file: File) {
+    await sleep(2000)
+    return {
+      url: URL.createObjectURL(file),
+    }
   }
   return (
-    <Uploader
-      url={uploadUrl}
-      multiple
-      maxFileSize={1024 * 50}
-      onOversize={onOversize}
-    />
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Uploader capture upload={(file: File) => upload(file)} />
+    </Cell>
   )
 }
 export default Demo8

@@ -73,7 +73,6 @@ test('should render base uploader other props', () => {
       <Uploader
         deletable
         defaultValue={defaultFileList}
-        headers={{}}
         multiple
         preview
         uploadIcon="dongdong"
@@ -89,14 +88,8 @@ test('should render base uploader other props', () => {
   expect(container.querySelectorAll('.nut-uploader-preview').length).toBe(3)
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(onDelete).toBeCalled()
-
-  const toast2 = container.querySelector('.nut-uploader-preview-img-c .nut-img')
-  expect(toast2).toBeTruthy()
   fireEvent.click(container.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(fileItemClick).toBeCalled()
-  expect(toast2?.getAttribute('src')).toBe(
-    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
-  )
 })
 
 test('should render base uploader list', () => {
@@ -206,7 +199,7 @@ test('before-delete prop return true', () => {
 })
 
 test('ready file list', () => {
-  const list = new FileItem()
+  const list: any = {}
   list.name = '文件1.png'
   list.url =
     'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
@@ -238,6 +231,7 @@ test('preview component', () => {
       status: 'success',
       message: '上传成功',
       uid: '12',
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
     },
   ]
 
@@ -248,7 +242,6 @@ test('preview component', () => {
       deletable
       onDeleteItem={delFunc}
       handleItemClick={clickFunc}
-      previewUrl="https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif"
     />
   )
   fireEvent.click(container.querySelectorAll('.close')[0])
@@ -266,9 +259,7 @@ test('preview component', () => {
       handleItemClick={clickFunc}
     />
   )
-  fireEvent.click(
-    container1.querySelectorAll('.nut-uploader-preview-img-file-name')[0]
-  )
+  fireEvent.click(container1.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(clickFunc).toBeCalled()
 
   const { container: container2 } = render(
