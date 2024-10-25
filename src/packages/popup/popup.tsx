@@ -1,19 +1,19 @@
 import React, {
   FunctionComponent,
-  useState,
-  useEffect,
-  MouseEventHandler,
   MouseEvent,
+  MouseEventHandler,
   ReactElement,
-  ReactPortal,
   ReactNode,
+  ReactPortal,
+  useEffect,
+  useState,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
-import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
+import { defaultOverlayProps, OverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/utils/use-lock-scroll'
@@ -104,7 +104,10 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-  useLockScroll(nodeRef, innerVisible && lockScroll)
+
+  const shouldLockScroll = !innerVisible ? false : lockScroll
+  useLockScroll(nodeRef, shouldLockScroll)
+
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,

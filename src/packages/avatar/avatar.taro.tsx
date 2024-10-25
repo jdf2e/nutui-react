@@ -10,6 +10,7 @@ import { View, ITouchEvent, Image } from '@tarojs/components'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
+// import Image from '@/packages/image/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmonyAndRn } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
@@ -35,9 +36,9 @@ const defaultProps = {
   size: harmonyAndRn() ? '40' : '',
   shape: 'round',
   icon: '',
-  fit: 'cover',
   background: '#eee',
   color: '#666',
+  fit: 'cover',
   src: '',
   avatarIndex: 0,
 } as AvatarProps
@@ -53,6 +54,7 @@ export const Avatar: FunctionComponent<
     background,
     color,
     src,
+    alt,
     icon,
     fit,
     avatarIndex,
@@ -70,10 +72,11 @@ export const Avatar: FunctionComponent<
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
   const sizeValue = ['large', 'normal', 'small']
-  const groupSize = parent?.propAvatarGroup?.size
-  const groupShape = parent?.propAvatarGroup?.shape
-  const groupCount = parent?.propAvatarGroup?.avatarCount
-  const groupMax = parent?.propAvatarGroup?.max
+  const { propAvatarGroup } = parent
+  const groupSize = propAvatarGroup?.size
+  const groupShape = propAvatarGroup?.shape
+  const groupCount = propAvatarGroup?.avatarCount
+  const groupMax = propAvatarGroup?.max
 
   const classes = classNames({
     [`nut-avatar-${groupSize || size || 'normal'}`]: true,
@@ -93,19 +96,19 @@ export const Avatar: FunctionComponent<
     backgroundColor: `${background}`,
     color,
     [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
-      avatarIndex !== 1 && parent?.propAvatarGroup?.gap
-        ? `${parent?.propAvatarGroup?.gap}px`
+      avatarIndex !== 1 && propAvatarGroup?.gap
+        ? `${propAvatarGroup?.gap}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.level === 'right'
+      propAvatarGroup?.level === 'right'
         ? Math.abs(groupCount - avatarIndex)
         : '',
     ...style,
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
-    color: `${parent?.propAvatarGroup?.maxColor}`,
+    backgroundColor: `${propAvatarGroup?.maxBackground}`,
+    color: `${propAvatarGroup?.maxColor}`,
   }
 
   useEffect(() => {
@@ -120,9 +123,7 @@ export const Avatar: FunctionComponent<
   }, [avatarIndex, groupCount])
 
   const errorEvent = () => {
-    if (onError) {
-      onError()
-    }
+    onError && onError()
   }
 
   const clickAvatar = (
@@ -173,13 +174,12 @@ export const Avatar: FunctionComponent<
               )}
             </>
           )}
-          {/* 折叠头像 */}
           {showMax && (
             <View
               className={`nut-avatar-text nut-avatar-${groupSize || 'normal'}-text`}
             >
-              {parent?.propAvatarGroup?.maxContent
-                ? parent?.propAvatarGroup?.maxContent
+              {propAvatarGroup?.maxContent
+                ? propAvatarGroup?.maxContent
                 : `+ ${avatarIndex - Number(groupMax || 0)}`}
             </View>
           )}

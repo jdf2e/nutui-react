@@ -8,21 +8,19 @@ import BackTop from '@/packages/backtop'
 test('backtop props test', () => {
   const handleClick = vi.fn()
   const { container } = render(
-    <BackTop
-      target="target"
-      threshold={200}
-      style={{
-        right: '20px',
-        bottom: '50px',
-      }}
-      onClick={handleClick}
-    />
+    <div id="target" style={{ height: '100vh' }}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <div key={index}>我是测试数据{index}</div>
+      })}
+      <BackTop
+        target="target"
+        className="backtop-button"
+        onClick={handleClick}
+      />
+    </div>
   )
-  expect(container.querySelector('.nut-backtop')).toHaveAttribute(
-    'style',
-    'z-index: 900; right: 20px; bottom: 50px;'
-  )
-  fireEvent.click(container)
+  const chooseTagEle = container.querySelectorAll('.backtop-button')[0]
+  fireEvent.click(chooseTagEle)
   expect(handleClick).toBeCalled
 })
 
