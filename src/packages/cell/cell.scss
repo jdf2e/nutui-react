@@ -55,4 +55,14 @@
       content: ' ';
     }
   }
+  &-disabled {
+    display: flex;
+    align-items: center;
+    color: #b5b5b5;
+    font-size: 14px;
+    font-family: PingFang SC;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
 }

@@ -1,5 +1,6 @@
-import React from 'react'
+import { ArrowRight } from '@nutui/icons-react-taro'
 import { Cell } from '@nutui/nutui-react-taro'
+import React from 'react'
 
 const Demo1 = () => {
   const testClick = (
@@ -17,7 +18,16 @@ const Demo1 = () => {
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
+        extra={
+          <ArrowRight
+            size={14}
+            style={{
+              alignItems: 'center',
+            }}
+          />
+        }
       />
+      <Cell title="禁用状态" disabled extra={<ArrowRight size={14} />} />
       <Cell title="圆角设置0" radius={0} />
     </>
   )
