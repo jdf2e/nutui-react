@@ -16,7 +16,7 @@ const Demo2 = () => {
           Math.random() * 89 + 10
         )}`
       )
-    }, 30000)
+    }, 3000)
   }, [])
   return (
     <Cell

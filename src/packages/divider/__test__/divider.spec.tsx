@@ -27,8 +27,8 @@ test('custom style test', () => {
   const { container } = render(
     <Divider
       style={{
-        color: '#1989fa',
-        borderColor: '#1989fa',
+        color: '#0073ff',
+        borderColor: '#0073ff',
         padding: '0 16px',
       }}
     >
@@ -37,7 +37,7 @@ test('custom style test', () => {
   )
   expect(container.querySelector('.nut-divider')).toHaveAttribute(
     'style',
-    'color: #1989fa; border-color: #1989fa; padding: 0px 16px;'
+    'color: #0073ff; border-color: #0073ff; padding: 0px 16px;'
   )
 })
 
@@ -46,11 +46,11 @@ test('prop direction vertical test', () => {
     <div style={{ fontSize: '14px', marginLeft: '27px', color: '#909ca4' }}>
       文本
       <Divider direction="vertical" />
-      <a href="#/" style={{ color: '#1989fa' }}>
+      <a href="#/" style={{ color: '#0073ff' }}>
         链接
       </a>
       <Divider direction="vertical" />
-      <a href="#/" style={{ color: '#1989fa' }}>
+      <a href="#/" style={{ color: '#0073ff' }}>
         链接
       </a>
     </div>

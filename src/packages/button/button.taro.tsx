@@ -85,7 +85,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     }
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
-      if (props.color) {
+      if (color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
           style.color = color
           if (!color?.includes('gradient')) {
@@ -101,7 +101,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.fill])
 
     const getContStyle = useCallback(() => {
       const style: CSSProperties = {}
@@ -164,7 +164,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <View
-              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`} ${icon || loading ? `nut-button-text` : ''}${
+              className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`}${icon || loading ? ` nut-button-text` : ''}${
                 rightIcon ? ` nut-button-text-right` : ''
               }`}
               style={harmonyAndRn() ? getContStyle() : {}}

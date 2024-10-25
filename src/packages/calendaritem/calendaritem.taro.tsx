@@ -56,6 +56,7 @@ export interface CalendarItemProps extends PopupProps {
   firstDayOfWeek: number
   disableDate: (date: CalendarDay) => boolean
   renderHeaderButtons: () => string | JSX.Element
+  renderBottomButton: () => string | JSX.Element
   renderDay: (date: CalendarDay) => string | JSX.Element
   renderDayTop: (date: CalendarDay) => string | JSX.Element
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
@@ -121,6 +122,7 @@ export const CalendarItem = React.forwardRef<
     renderDay,
     renderDayTop,
     renderDayBottom,
+    renderBottomButton,
     value,
     onConfirm,
     onUpdate,
@@ -879,7 +881,13 @@ export const CalendarItem = React.forwardRef<
       <View className="nut-calendar-footer">
         {children}
         <View className="calendar-confirm-btn" onClick={confirm}>
-          {confirmText || locale.confirm}
+          {renderBottomButton ? (
+            renderBottomButton()
+          ) : (
+            <View className="calendar-confirm-btn">
+              {confirmText || locale.confirm}
+            </View>
+          )}
         </View>
       </View>
     )

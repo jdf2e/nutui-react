@@ -116,13 +116,13 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-base-icon-height | height of icon container | `25px` |
 | \--nutui-steps-base-icon-line-height | The line height of the icon container | `25px` |
 | \--nutui-steps-base-icon-margin-bottom | The bottom margin of the icon container | `12px` |
-| \--nutui-steps-base-icon-font-size | The font size of the icon container | `$font-size-small` |
+| \--nutui-steps-base-icon-font-size | The font size of the icon container | `$font-size-s` |
 | \--nutui-steps-base-line-width | The width of the dividing line | `100%` |
 | \--nutui-steps-base-line-background | The background color of the dividing line | `$color-text-help` |
 | \--nutui-steps-base-title-font-size | The font size of the title | `$font-size-base` |
 | \--nutui-steps-base-title-color | Title color | `$color-title` |
 | \--nutui-steps-base-title-margin-bottom | Title bottom margin | `10px` |
-| \--nutui-steps-base-description-font-size | The font size of the description text | `$font-size-small` |
+| \--nutui-steps-base-description-font-size | The font size of the description text | `$font-size-s` |
 | \--nutui-steps-base-description-color | The font color of description text | `$color-text` |
 | \--nutui-steps-wait-icon-bg-color | Background color of icon container in waiting state | `$color-text-help` |
 | \--nutui-steps-wait-icon-color | font color of icon container in waiting state | `$white` |

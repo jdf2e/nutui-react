@@ -5,11 +5,13 @@ on:
     branches:
       - next
       - dev-harmony
+      - V3.0
 
   pull_request:
     branches:
       - next
       - dev-harmony
+      - V3.0
 
   workflow_dispatch:
 

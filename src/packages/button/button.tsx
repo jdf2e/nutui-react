@@ -73,7 +73,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     }
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
-      if (props.color) {
+      if (color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
           style.color = color
           if (!color?.includes('gradient')) {
@@ -86,7 +86,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.fill])
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
@@ -127,7 +127,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <div
-              className={` ${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''} ${icon || loading ? 'nut-button-text' : ''}${
+              className={`${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''}${icon || loading ? ' nut-button-text' : ''}${
                 rightIcon ? ' nut-button-text-right' : ''
               }`}
             >
