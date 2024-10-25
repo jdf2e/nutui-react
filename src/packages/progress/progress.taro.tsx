@@ -61,7 +61,7 @@ export const Progress: FunctionComponent<
     backgroundColor: background,
   }
 
-  const [displayPercent, setDispalyPercent] = useState(0)
+  const [displayPercent, setDispalyPercent] = useState(percent)
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
@@ -160,7 +160,7 @@ export const Progress: FunctionComponent<
     }
   }, [])
   const getTextStyle = () => {
-    const value = harmony() ? '90%' : '99%'
+    const value = harmony() ? '92%' : '99%'
     return rtl ? { right: value } : { left: value }
   }
   const computeRight = () => {
