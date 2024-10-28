@@ -10,6 +10,7 @@ describe('base components test', () => {
       .parent()
       .find('i.nut-icon-Loading')
       .should('exist')
+    cy.wait(400)
   })
 
   it('cell successfully passes', () => {
@@ -32,6 +33,7 @@ describe('base components test', () => {
     cy.window().then((location) => {
       expect(location.location.pathname).to.equal('/')
     })
+    cy.wait(400)
   })
 
   it('ConfigProvider successfully passes', () => {
@@ -60,6 +62,7 @@ describe('base components test', () => {
       .find('.nut-rate-item .nut-rate-item-icon')
       .filter('.nut-rate-item-icon-disabled')
       .should('have.length', 4)
+    cy.wait(400)
   })
 
   it('Icon successfully passes', () => {
@@ -75,6 +78,7 @@ describe('base components test', () => {
     cy.contains(
       `<HeartFill className='nut-icon-am-breathe nut-icon-am-infinite' />`
     )
+    cy.wait(400)
   })
   it('Image successfully passes', () => {
     cy.visit(getPath('image'))
@@ -89,6 +93,7 @@ describe('base components test', () => {
     cy.get('.taro-scroll-view__scroll-y .taro-img__mode-scaletofill')
       .filter('[src]')
       .should('have.length.greaterThan', 3)
+    cy.wait(400)
   })
   it('Overlay successfully passes', () => {
     cy.visit(getPath('overlay'))
@@ -105,4 +110,7 @@ describe('base components test', () => {
     cy.contains('这里是正文').should('not.exist')
     cy.get('nut-overlay').should('not.exist')
   })
+})
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
 })

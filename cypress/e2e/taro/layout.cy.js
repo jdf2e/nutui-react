@@ -11,6 +11,7 @@ describe('layout components test', () => {
       const currentPath = win.location.pathname
       expect(currentPath).to.equal('/')
     })
+    cy.wait(400)
   })
 
   it('grid successfully passes', () => {
@@ -29,6 +30,7 @@ describe('layout components test', () => {
           })
       }
     })
+    cy.wait(400)
   })
 
   it('layout successfully passes', () => {
@@ -39,6 +41,7 @@ describe('layout components test', () => {
     cy.contains('span:12').parent().parent().children().should('have.length', 2)
     cy.contains('span:8').parent().parent().children().should('have.length', 3)
     cy.contains('span:6').parent().parent().children().should('have.length', 4)
+    cy.wait(400)
   })
 
   it('space successfully passes', () => {
@@ -49,6 +52,7 @@ describe('layout components test', () => {
       .next()
       .find('.nut-space')
       .should('have.class', 'nut-space-vertical')
+    cy.wait(400)
   })
 
   it('sticky successfully passes', () => {
@@ -59,6 +63,7 @@ describe('layout components test', () => {
     cy.contains('距离顶部120px').parent().should('have.css', 'top', '120px')
     cy.get('.demo').scrollTo('top')
     cy.contains('距离底部0px').parent().should('have.css', 'bottom', '0px')
+    cy.wait(400)
   })
 
   it('safearea successfully passes', () => {
@@ -68,5 +73,6 @@ describe('layout components test', () => {
     cy.get('.demo').scrollTo('bottom')
     cy.get('.nut-safe-area').should('exist')
     cy.get('.nut-safe-area-position-bottom').should('exist')
+    cy.wait(400)
   })
 })
