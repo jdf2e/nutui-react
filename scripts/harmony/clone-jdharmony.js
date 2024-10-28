@@ -14,8 +14,8 @@ const platform = args && args[0] === 'cpp' ? 'jdharmonycpp' : 'jdharmony'
 
 async function cloneJdHarmony() {
   // 填写coding地址
-  const remote = ''
-  const branch = args && args[0] === 'cpp' ? 'master-cpp': 'master'
+  const remote = 'git@coding.jd.com:DongDesign/JDHarmony.git'
+  const branch = args && args[0] === 'cpp' ? 'master-cpp' : 'master'
   const git = simpleGit({
     baseDir: temp,
   })
