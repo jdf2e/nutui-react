@@ -98,6 +98,14 @@ Asynchronous modification through `change` event and `model-value`
 
 :::
 
+### support deselect all text
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ## InputNumber
 
 ### Props
@@ -114,6 +122,7 @@ Asynchronous modification through `change` event and `model-value`
 | disabled | Disable all features | `boolean` | `false` |
 | readOnly | Read only status disables input box operation behavior | `boolean` | `false` |
 | async | Support for asynchronous modification | `boolean` | `false` |
+| select | Support deselect all text | `boolean` | `true` |
 | formatter | Specifies the format of the value displayed in the input box | `function(value: number \| string): string` | `-` |
 | onPlus | Triggered when the Add button is clicked | `(e: MouseEvent) => void` | `-` |
 | onMinus | Triggered when the decrease button is clicked | `(e: MouseEvent) => void` | `-` |
