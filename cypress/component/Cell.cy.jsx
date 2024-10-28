@@ -34,5 +34,4 @@ it('slot default test', () => {
 it('slot extra', () => {
   cy.mount(<Cell title="Switch" extra={<Switch defaultChecked />} />)
   cy.get('.nut-switch').should('be.visible')
-  // expect(container.querySelector('.nut-switch')).toBeInTheDocument()
 })
