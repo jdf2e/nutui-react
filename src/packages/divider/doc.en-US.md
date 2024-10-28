@@ -90,5 +90,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-divider-line-height | The row height of the dividing line | `2px` |
 | \--nutui-divider-spacing | The spacing value between the dividing line of the text | `8px` |
 | \--nutui-divider-vertical-height | The height of the vertical split line | `12px` |
-| \--nutui-divider-vertical-top | The top value of the vertical split line | `2px` |
 | \--nutui-divider-vertical-margin | The margin value of the vertical split line | `0 8px` |
