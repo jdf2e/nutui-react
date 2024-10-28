@@ -106,7 +106,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-title-color | 单元格标题字体颜色 | `$color-title` |
 | \--nutui-cell-title-font-size | 单元格标题字体大小 | `$font-size-base` |
 | \--nutui-cell-description-color | 单元格描述字体颜色 | `$color-text` |
-| \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-small` |
+| \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-s` |
 | \--nutui-cell-extra-color | 单元格右侧描述字体颜色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
@@ -123,7 +123,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-group-title-line-height | 单元格分组的标题行高 | `20px` |
 | \--nutui-cell-group-description-padding | 单元格分组的描述内边距 | `0 10px` |
 | \--nutui-cell-group-description-color | 单元格分组的描述颜色 | `#909ca4` |
-| \--nutui-cell-group-description-font-size | 单元格分组的描述字体大小 | `$font-size-small` |
+| \--nutui-cell-group-description-font-size | 单元格分组的描述字体大小 | `$font-size-s` |
 | \--nutui-cell-group-description-line-height | 单元格分组的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |
 | \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px` |

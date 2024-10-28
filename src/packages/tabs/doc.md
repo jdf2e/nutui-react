@@ -245,7 +245,7 @@ import { Tabs } from '@nutui/nutui-react'
 | \--nutui-tabs-titles-item-color | Tab 标题的字色 | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab 选中标题的字色 | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 选中标题的字重 | `$font-weight-bold` |
-| \--nutui-tabs-titles-item-active-font-size | Tab 选中标题的字号 | `$font-size-large` |
+| \--nutui-tabs-titles-item-active-font-size | Tab 选中标题的字号 | `$font-size-l` |
 | \--nutui-tabs-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$color-background-overlay` |
 | \--nutui-tabs-tab-line-width | 水平方向激活选项卡线条的宽度 | `12px` |
 | \--nutui-tabs-tab-line-height | 水平方向激活选项卡线条的高度 | `2px` |

@@ -6,11 +6,11 @@ const Demo6 = () => {
     <Cell align="center">
       文本
       <Divider direction="vertical" />
-      <a href="#" style={{ color: '#1989fa' }}>
+      <a href="#" style={{ color: '#0073ff' }}>
         链接
       </a>
       <Divider direction="vertical" />
-      <a href="#" style={{ color: '#1989fa' }}>
+      <a href="#" style={{ color: '#0073ff' }}>
         链接
       </a>
     </Cell>

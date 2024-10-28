@@ -32,7 +32,7 @@ test('should have righticon correctly', () => {
       主要按钮
     </Button>
   )
-  expect(getByText('主要按钮')).toHaveClass('right')
+  expect(getByText('主要按钮')).toHaveClass('nut-button-text-right')
 })
 
 test('should props color when use fill correctly', () => {

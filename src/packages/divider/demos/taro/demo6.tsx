@@ -7,9 +7,9 @@ const Demo6 = () => {
     <Cell align="center">
       <Text>文本</Text>
       <Divider direction="vertical" />
-      <Text style={{ color: '#1989fa' }}>链接</Text>
+      <Text style={{ color: '#0073ff' }}>链接</Text>
       <Divider direction="vertical" />
-      <Text style={{ color: '#1989fa' }}>链接</Text>
+      <Text style={{ color: '#0073ff' }}>链接</Text>
     </Cell>
   )
 }

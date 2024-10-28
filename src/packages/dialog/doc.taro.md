@@ -134,7 +134,7 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 对话框内容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 对话框内容文本对齐方式 | `left` |
-| \--nutui-dialog-header-font-size | 对话框标题字体大小 | `$font-size-large` |
+| \--nutui-dialog-header-font-size | 对话框标题字体大小 | `$font-size-l` |
 | \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `117px` |

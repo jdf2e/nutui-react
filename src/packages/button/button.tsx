@@ -127,7 +127,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <div
-              className={` ${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''} ${icon || loading ? 'nut-button-text' : ''}${
+              className={`${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''}${icon || loading ? ' nut-button-text' : ''}${
                 rightIcon ? ' nut-button-text-right' : ''
               }`}
             >

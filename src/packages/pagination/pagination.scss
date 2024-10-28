@@ -83,13 +83,13 @@
   justify-content: center;
   width: $pagination-lite-height;
   height: $pagination-lite-height;
-  font-size: $font-size-small;
+  font-size: $font-size-s;
   color: $pagination-lite-color;
   font-weight: 400;
 }
 
 .nut-pagination-lite-active {
   border-radius: $pagination-lite-radius;
-  font-size: $font-size-small;
+  font-size: $font-size-s;
   background-color: $pagination-lite-active-background-color;
 }
