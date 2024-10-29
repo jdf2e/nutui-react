@@ -16,7 +16,7 @@ mini: { compile: { include: [path.resolve(__dirname, '../node_modules')], } } }
 2. 在 babel.config.js 文件中增加如下代码
 
 ```js
-const { repleaceIcons } = require('@dongdesign/replace-icons')
+const { repleaceIcons } = require('@nutui/replace-icons')
 {
   plugins: [
     [
