@@ -1,5 +1,5 @@
 {
-  "name": "@nutui/opt-css",
+  "name": "@nutui/optimization-css",
   "version": "1.0.0",
   "description": "remove rtl",
   "main": "dist/index.cjs",
