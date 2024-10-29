@@ -83,12 +83,10 @@ export const Step: FunctionComponent<
       if (direction === 'vertical') {
         return dot
           ? {
-              left: pxTransform(3),
-              top: '30%',
+              left: pxTransform(2),
             }
           : {
-              left: '4%',
-              top: '40%',
+              left: '50%',
             }
       }
       return {
@@ -108,7 +106,7 @@ export const Step: FunctionComponent<
     }
   }
   return (
-    <View className={classes} {...restProps} onClick={handleClickStep}>
+    <View className={classes} {...(restProps as any)} onClick={handleClickStep}>
       <View className={`${classPrefix}-head`}>
         <View
           className={classNames(
