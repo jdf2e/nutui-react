@@ -25,7 +25,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-radius: 999vmax;
+    border-radius: calc($steps-base-icon-width / 2);
     width: $steps-base-icon-width;
     height: $steps-base-icon-height;
     line-height: $steps-base-icon-line-height;
@@ -41,13 +41,13 @@
     }
 
     &.is-text {
-      border-radius: 999vmax;
+      border-radius: calc($steps-base-icon-width / 2);
       border-width: 1px;
       border-style: solid;
     }
 
     &.is-icon {
-      border-radius: 999vmax;
+      border-radius: calc($steps-base-icon-width / 2);
       border-width: 1px;
       border-style: solid;
     }
@@ -129,7 +129,7 @@
       width: $steps-dot-icon-width;
       height: $steps-dot-icon-height;
       border: $steps-dot-icon-border;
-      border-radius: 50%;
+      border-radius: calc($steps-dot-icon-width / 2);
       box-sizing: content-box;
     }
     &-wait-icon {
@@ -153,7 +153,7 @@
         width: 14px;
         height: 14px;
         background-color: $steps-process-icon-before-bg-color;
-        border-radius: 999vmax;
+        border-radius: 7px;
         opacity: 0.23;
       }
     }
