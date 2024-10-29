@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.14.11",
     "@types/lodash": "^4.17.1",
+    "@types/node": "^20.14.11",
+    "@types/postcss-css-variables": "^0.18.3",
     "ts-node": "^10.9.2",
     "unbuild": "^2.0.0"
   },
