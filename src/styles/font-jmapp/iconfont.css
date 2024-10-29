@@ -1,1474 +1,299 @@
+@font-face {
+  font-family: "nutui-iconfont"; /* Project id 3744858 */
+  src: url('iconfont.woff2?t=1672726613438') format('woff2'),
+       url('iconfont.woff?t=1672726613438') format('woff'),
+       url('iconfont.ttf?t=1672726613438') format('truetype');
+}
+
+.nutui-iconfont {
+  font-family: "nutui-iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nut-icon-photograph-line:before {
+  content: "\e65e";
+}
+
+.nut-icon-qr-scan-2-line:before {
+  content: "\e65f";
+}
+
+.nut-icon-cloud-line:before {
+  content: "\e660";
+}
+
+.nut-icon-new-built:before {
+  content: "\e658";
+}
+
+.nut-icon-capacity:before {
+  content: "\e659";
+}
+
+.nut-icon-switch:before {
+  content: "\e65a";
+}
+
+.nut-icon-upload:before {
+  content: "\e65b";
+}
+
+.nut-icon-a-Batchoperation:before {
+  content: "\e65c";
+}
+
+.nut-icon-top:before {
+  content: "\e65d";
+}
+
+.nut-icon-left:before {
+  content: "\e655";
+}
+
+.nut-icon-down:before {
+  content: "\e656";
+}
+
+.nut-icon-up:before {
+  content: "\e657";
+}
+
+.nut-icon-save:before {
+  content: "\e653";
+}
+
+.nut-icon-horizontal-n:before {
+  content: "\e654";
+}
+
+.nut-icon-ask:before {
+  content: "\e61a";
+}
+
+.nut-icon-check-disabled:before {
+  content: "\e61b";
+}
+
+.nut-icon-bookmark:before {
+  content: "\e61c";
+}
+
+.nut-icon-check-normal:before {
+  content: "\e61d";
+}
+
+.nut-icon-close-little:before {
+  content: "\e61e";
+}
+
+.nut-icon-date:before {
+  content: "\e61f";
+}
+
+.nut-icon-edit:before {
+  content: "\e620";
+}
+
+.nut-icon-checked:before {
+  content: "\e621";
+}
+
+.nut-icon-del2:before {
+  content: "\e622";
+}
+
+.nut-icon-copy-1:before {
+  content: "\e623";
+}
+
+.nut-icon-home:before {
+  content: "\e624";
+}
+
+.nut-icon-filter:before {
+  content: "\e625";
+}
+
+.nut-icon-download:before {
+  content: "\e626";
+}
+
+.nut-icon-copy:before {
+  content: "\e627";
+}
+
+.nut-icon-image:before {
+  content: "\e628";
+}
+
+.nut-icon-add:before {
+  content: "\e629";
+}
+
+.nut-icon-mask-close:before {
+  content: "\e62a";
+}
+
+.nut-icon-Check:before {
+  content: "\e62b";
+}
+
+.nut-icon-locationg3:before {
+  content: "\e62c";
+}
+
+.nut-icon-go-back:before {
+  content: "\e62d";
+}
+
+.nut-icon-message:before {
+  content: "\e62e";
+}
+
+.nut-icon-fabulous:before {
+  content: "\e62f";
+}
+
+.nut-icon-failure:before {
+  content: "\e630";
+}
+
+.nut-icon-minus:before {
+  content: "\e631";
+}
+
+.nut-icon-loading:before {
+  content: "\e632";
+}
+
+.nut-icon-marshalling:before {
+  content: "\e633";
+}
+
+.nut-icon-play-stop:before {
+  content: "\e634";
+}
+
+.nut-icon-photograph:before {
+  content: "\e635";
+}
+
+.nut-icon-my2:before {
+  content: "\e636";
+}
+
+.nut-icon-microphone:before {
+  content: "\e637";
+}
+
+.nut-icon-play-circle-fill:before {
+  content: "\e638";
+}
+
+.nut-icon-play-start:before {
+  content: "\e639";
+}
+
+.nut-icon-poweroff-circle-fill:before {
+  content: "\e63a";
+}
 
-  @font-face {
-    font-family: 'nutui-icon';
-    src: url('iconfont.eot'); /* IE9 */
-    src: url('iconfont.eot#iefix') format('embedded-opentype') /* IE6-IE8 */,
-		url('iconfont.woff2') format('woff2') /* chrome、firefox */,
-		url('iconfont.woff') format('woff') /* chrome、firefox */,
-		url('iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */,
-		/* url('iconfont.svg#nutui-icon') format('svg') iOS 4.1-; */
-  }
-
-  .nutui-iconfont{
-    font-family: 'nutui-icon';
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  .nut-icon-remove-rectangle::before {
-    content: "\f497";
-  }
-
-  .nut-icon-clock-circle-f::before {
-    content: "\ec16";
-  }
-
-  .nut-icon-close::before {
-    content: "\e959";
-  }
-
-  .nut-icon-face-mild-f::before {
-    content: "\f115";
-  }
-
-  .nut-icon-chat-f::before {
-    content: "\f114";
-  }
-
-  .nut-icon-shopping-minus::before {
-    content: "\e340";
-  }
-
-  .nut-icon-skip-backward::before {
-    content: "\e207";
-  }
-
-  .nut-icon-cart-remove-f::before {
-    content: "\e8f2";
-  }
-
-  .nut-icon-invoice-f::before {
-    content: "\e859";
-  }
-
-  .nut-icon-shopping-check-f::before {
-    content: "\f096";
-  }
-
-  .nut-icon-headphones::before {
-    content: "\e991";
-  }
-
-  .nut-icon-tag-f::before {
-    content: "\eef1";
-  }
-
-  .nut-icon-calendar-f::before {
-    content: "\e8cb";
-  }
-
-  .nut-icon-purse-f::before {
-    content: "\e677";
-  }
-
-  .nut-icon-list-tree::before {
-    content: "\ecef";
-  }
-
-  .nut-icon-cart-add-f::before {
-    content: "\e921";
-  }
-
-  .nut-icon-check::before {
-    content: "\e032";
-  }
-
-  .nut-icon-package-box-time::before {
-    content: "\ea98";
-  }
-
-  .nut-icon-book-f::before {
-    content: "\e86c";
-  }
-
-  .nut-icon-thumbs-up-f::before {
-    content: "\e536";
-  }
-
-  .nut-icon-user-circle-f::before {
-    content: "\e2a9";
-  }
-
-  .nut-icon-purse::before {
-    content: "\e138";
-  }
-
-  .nut-icon-invoice::before {
-    content: "\f005";
-  }
-
-  .nut-icon-warehouse::before {
-    content: "\f494";
-  }
-
-  .nut-icon-board::before {
-    content: "\f21c";
-  }
-
-  .nut-icon-timer-f::before {
-    content: "\e8ce";
-  }
-
-  .nut-icon-pause-circle-f::before {
-    content: "\e95a";
-  }
-
-  .nut-icon-check-rectangle::before {
-    content: "\e0ed";
-  }
-
-  .nut-icon-calendar::before {
-    content: "\e8f6";
-  }
-
-  .nut-icon-copy-check-f::before {
-    content: "\ec93";
-  }
-
-  .nut-icon-first-aid-kit-f::before {
-    content: "\e576";
-  }
-
-  .nut-icon-arrow-circle-right-f::before {
-    content: "\e710";
-  }
-
-  .nut-icon-heart-add-f::before {
-    content: "\e03d";
-  }
-
-  .nut-icon-close-circle::before {
-    content: "\e93f";
-  }
-
-  .nut-icon-arrow-circle-down-f::before {
-    content: "\e767";
-  }
-
-  .nut-icon-filter-f::before {
-    content: "\f23e";
-  }
-
-  .nut-icon-users::before {
-    content: "\edf2";
-  }
-
-  .nut-icon-globe::before {
-    content: "\e625";
-  }
-
-  .nut-icon-zoom-out::before {
-    content: "\ec2c";
-  }
-
-  .nut-icon-information-polygon::before {
-    content: "\f32a";
-  }
-
-  .nut-icon-alarm::before {
-    content: "\e08f";
-  }
-
-  .nut-icon-credit-card::before {
-    content: "\ede0";
-  }
-
-  .nut-icon-arrow-circle-up::before {
-    content: "\e966";
-  }
-
-  .nut-icon-gift::before {
-    content: "\e523";
-  }
-
-  .nut-icon-mail-f::before {
-    content: "\e8d8";
-  }
-
-  .nut-icon-wallet::before {
-    content: "\f090";
-  }
-
-  .nut-icon-more-vertical::before {
-    content: "\e8de";
-  }
-
-  .nut-icon-warning-circle::before {
-    content: "\e652";
-  }
-
-  .nut-icon-unlock::before {
-    content: "\ecca";
-  }
-
-  .nut-icon-thumbs-up::before {
-    content: "\e9e6";
-  }
-
-  .nut-icon-badge-percent::before {
-    content: "\ec6d";
-  }
-
-  .nut-icon-help-polygon-f::before {
-    content: "\ea18";
-  }
-
-  .nut-icon-volume-max::before {
-    content: "\e427";
-  }
-
-  .nut-icon-video::before {
-    content: "\ea9f";
-  }
-
-  .nut-icon-cart-add::before {
-    content: "\e81e";
-  }
-
-  .nut-icon-agenda::before {
-    content: "\e73c";
-  }
-
-  .nut-icon-arrow-corner-left::before {
-    content: "\e0e1";
-  }
-
-  .nut-icon-location::before {
-    content: "\e3ad";
-  }
-
-  .nut-icon-shopping-add-f::before {
-    content: "\e8a2";
-  }
-
-  .nut-icon-voucher-f::before {
-    content: "\e0b5";
-  }
-
-  .nut-icon-chat::before {
-    content: "\e594";
-  }
-
-  .nut-icon-lock-f::before {
-    content: "\e2e6";
-  }
-
-  .nut-icon-truck-f::before {
-    content: "\e423";
-  }
-
-  .nut-icon-grip-horizontal::before {
-    content: "\e059";
-  }
-
-  .nut-icon-arrow-up::before {
-    content: "\f31e";
-  }
-
-  .nut-icon-microphone-mute-f::before {
-    content: "\e8c9";
-  }
-
-  .nut-icon-book::before {
-    content: "\ea0b";
-  }
-
-  .nut-icon-search::before {
-    content: "\ed1a";
-  }
-
-  .nut-icon-microphone-mute::before {
-    content: "\ea1d";
-  }
-
-  .nut-icon-store::before {
-    content: "\f12f";
-  }
-
-  .nut-icon-heart-add::before {
-    content: "\f42f";
-  }
-
-  .nut-icon-camera-f::before {
-    content: "\e1e1";
-  }
-
-  .nut-icon-sort-vertical::before {
-    content: "\e3a6";
-  }
-
-  .nut-icon-circle-f::before {
-    content: "\f140";
-  }
-
-  .nut-icon-notepad::before {
-    content: "\e0b6";
-  }
-
-  .nut-icon-face-smile::before {
-    content: "\e697";
-  }
-
-  .nut-icon-close-circle-f::before {
-    content: "\f282";
-  }
-
-  .nut-icon-cloud-f::before {
-    content: "\f340";
-  }
-
-  .nut-icon-shield-f::before {
-    content: "\e3e1";
-  }
-
-  .nut-icon-arrow-circle-sort::before {
-    content: "\ed01";
-  }
-
-  .nut-icon-caret-up-f::before {
-    content: "\e9f1";
-  }
-
-  .nut-icon-microphone::before {
-    content: "\e7f0";
-  }
-
-  .nut-icon-apps::before {
-    content: "\f4fe";
-  }
-
-  .nut-icon-user-remove-f::before {
-    content: "\ef91";
-  }
-
-  .nut-icon-skip-forward-f::before {
-    content: "\eeba";
-  }
-
-  .nut-icon-book-mark::before {
-    content: "\eca5";
-  }
-
-  .nut-icon-dongdong-f::before {
-    content: "\ea75";
-  }
-
-  .nut-icon-arrow-circle-up-f::before {
-    content: "\f210";
-  }
-
-  .nut-icon-information-polygon-f::before {
-    content: "\ecf9";
-  }
-
-  .nut-icon-add-rectangle-f::before {
-    content: "\e332";
-  }
-
-  .nut-icon-home-f::before {
-    content: "\e348";
-  }
-
-  .nut-icon-share-f::before {
-    content: "\e564";
-  }
-
-  .nut-icon-search-f::before {
-    content: "\f4c1";
-  }
-
-  .nut-icon-shopping-f::before {
-    content: "\ecf2";
-  }
-
-  .nut-icon-logout::before {
-    content: "\f50c";
-  }
-
-  .nut-icon-arrow-transfe-circler-f::before {
-    content: "\f0a5";
-  }
-
-  .nut-icon-server::before {
-    content: "\ef7c";
-  }
-
-  .nut-icon-thumbs-down::before {
-    content: "\e379";
-  }
-
-  .nut-icon-bookmark-f::before {
-    content: "\eb58";
-  }
-
-  .nut-icon-arrow-circle-sort-f::before {
-    content: "\eb8e";
-  }
-
-  .nut-icon-flag::before {
-    content: "\e753";
-  }
-
-  .nut-icon-face-angry::before {
-    content: "\ef66";
-  }
-
-  .nut-icon-package-f::before {
-    content: "\ee74";
-  }
-
-  .nut-icon-globe-f::before {
-    content: "\eda5";
-  }
-
-  .nut-icon-share::before {
-    content: "\f3c5";
-  }
-
-  .nut-icon-presentation-f::before {
-    content: "\f236";
-  }
-
-  .nut-icon-bell-ring-f::before {
-    content: "\e8fb";
-  }
-
-  .nut-icon-menu::before {
-    content: "\e71c";
-  }
-
-  .nut-icon-pin::before {
-    content: "\e901";
-  }
-
-  .nut-icon-eye-slash-f::before {
-    content: "\f09a";
-  }
-
-  .nut-icon-users-f::before {
-    content: "\e636";
-  }
-
-  .nut-icon-check-circle-f::before {
-    content: "\e1f5";
-  }
-
-  .nut-icon-zoom-in-f::before {
-    content: "\e60e";
-  }
-
-  .nut-icon-scan::before {
-    content: "\e936";
-  }
-
-  .nut-icon-cart-remove::before {
-    content: "\e7f8";
-  }
-
-  .nut-icon-file-f::before {
-    content: "\e885";
-  }
-
-  .nut-icon-multiply::before {
-    content: "\ef58";
-  }
-
-  .nut-icon-mouse-f::before {
-    content: "\e9d1";
-  }
-
-  .nut-icon-arrow-exchange::before {
-    content: "\f07b";
-  }
-
-  .nut-icon-bookmark::before {
-    content: "\f333";
-  }
-
-  .nut-icon-robot-f::before {
-    content: "\ec36";
-  }
-
-  .nut-icon-arrow-forward-left::before {
-    content: "\f2db";
-  }
-
-  .nut-icon-stop-circle::before {
-    content: "\e358";
-  }
-
-  .nut-icon-setting-f::before {
-    content: "\e7b7";
-  }
-
-  .nut-icon-edit-rectangle-f::before {
-    content: "\f149";
-  }
-
-  .nut-icon-mouse::before {
-    content: "\e87c";
-  }
-
-  .nut-icon-arrow-move::before {
-    content: "\f00e";
-  }
-
-  .nut-icon-shopping::before {
-    content: "\e232";
-  }
-
-  .nut-icon-user::before {
-    content: "\ef09";
-  }
-
-  .nut-icon-bell-unread::before {
-    content: "\f35b";
-  }
-
-  .nut-icon-fast-forward::before {
-    content: "\e129";
-  }
-
-  .nut-icon-more-horizontal::before {
-    content: "\e720";
-  }
-
-  .nut-icon-volume-off-f::before {
-    content: "\ed76";
-  }
-
-  .nut-icon-voucher::before {
-    content: "\e5fb";
-  }
-
-  .nut-icon-refund::before {
-    content: "\e198";
-  }
-
-  .nut-icon-home::before {
-    content: "\e143";
-  }
-
-  .nut-icon-angle-left::before {
-    content: "\f04f";
-  }
-
-  .nut-icon-volume-off::before {
-    content: "\f335";
-  }
-
-  .nut-icon-angle-up::before {
-    content: "\e05e";
-  }
-
-  .nut-icon-user-remove::before {
-    content: "\f05e";
-  }
-
-  .nut-icon-fast-backward::before {
-    content: "\e4ef";
-  }
-
-  .nut-icon-packaging-check-f::before {
-    content: "\e06e";
-  }
-
-  .nut-icon-filter-v::before {
-    content: "\e9ca";
-  }
-
-  .nut-icon-warning-polygon::before {
-    content: "\e7f9";
-  }
-
-  .nut-icon-arrow-circle-down::before {
-    content: "\e24f";
-  }
-
-  .nut-icon-remove::before {
-    content: "\e857";
-  }
-
-  .nut-icon-filter-h::before {
-    content: "\e69c";
-  }
-
-  .nut-icon-camera-off::before {
-    content: "\ed4d";
-  }
-
-  .nut-icon-shopping-follow-f::before {
-    content: "\e082";
-  }
-
-  .nut-icon-bell-unread-f::before {
-    content: "\eab9";
-  }
-
-  .nut-icon-ticket-f::before {
-    content: "\e0bf";
-  }
-
-  .nut-icon-copy-check::before {
-    content: "\f3de";
-  }
-
-  .nut-icon-equals::before {
-    content: "\ea69";
-  }
-
-  .nut-icon-shield-warning-f::before {
-    content: "\e226";
-  }
-
-  .nut-icon-credit-card-f::before {
-    content: "\e29d";
-  }
-
-  .nut-icon-cart-f::before {
-    content: "\e7d2";
-  }
-
-  .nut-icon-user-add::before {
-    content: "\e27e";
-  }
-
-  .nut-icon-face-angry-f::before {
-    content: "\e377";
-  }
-
-  .nut-icon-reload::before {
-    content: "\f091";
-  }
-
-  .nut-icon-skip-backward-f::before {
-    content: "\e71b";
-  }
-
-  .nut-icon-pause-circle::before {
-    content: "\ebed";
-  }
-
-  .nut-icon-volume-mute-f::before {
-    content: "\e178";
-  }
-
-  .nut-icon-shopping-add::before {
-    content: "\e56c";
-  }
-
-  .nut-icon-volume-max-f::before {
-    content: "\f20e";
-  }
-
-  .nut-icon-arrow-forward-right::before {
-    content: "\f2a9";
-  }
-
-  .nut-icon-disk::before {
-    content: "\eb24";
-  }
-
-  .nut-icon-clock-circle::before {
-    content: "\f02d";
-  }
-
-  .nut-icon-package-arrow-down::before {
-    content: "\f2af";
-  }
-
-  .nut-icon-fast-backward-f::before {
-    content: "\f4e6";
-  }
-
-  .nut-icon-blockquote::before {
-    content: "\ec12";
-  }
-
-  .nut-icon-book-mark-f::before {
-    content: "\ed62";
-  }
-
-  .nut-icon-disk-f::before {
-    content: "\f18e";
-  }
-
-  .nut-icon-minimize::before {
-    content: "\f27b";
-  }
-
-  .nut-icon-add-rectangle::before {
-    content: "\e893";
-  }
-
-  .nut-icon-computer-f::before {
-    content: "\f473";
-  }
-
-  .nut-icon-user-f::before {
-    content: "\f164";
-  }
-
-  .nut-icon-dongdong::before {
-    content: "\e4e0";
-  }
-
-  .nut-icon-brightness::before {
-    content: "\e5b3";
-  }
-
-  .nut-icon-photo-disable::before {
-    content: "\e703";
-  }
-
-  .nut-icon-shield-warning::before {
-    content: "\ef2f";
-  }
-
-  .nut-icon-apps-f::before {
-    content: "\f21e";
-  }
-
-  .nut-icon-clear-rectangle-f::before {
-    content: "\e8a1";
-  }
-
-  .nut-icon-eye-slash::before {
-    content: "\e795";
-  }
-
-  .nut-icon-receipt::before {
-    content: "\e7db";
-  }
-
-  .nut-icon-caret-right-f::before {
-    content: "\efa8";
-  }
-
-  .nut-icon-grip-vertical::before {
-    content: "\e8df";
-  }
-
-  .nut-icon-arrow-transfer-circle::before {
-    content: "\e909";
-  }
-
-  .nut-icon-wallet-f::before {
-    content: "\e20b";
-  }
-
-  .nut-icon-fast-forward-f::before {
-    content: "\e5d5";
-  }
-
-  .nut-icon-cart-arrow-down-f::before {
-    content: "\e781";
-  }
-
-  .nut-icon-user-circle::before {
-    content: "\f095";
-  }
-
-  .nut-icon-packaging-check::before {
-    content: "\eba1";
-  }
-
-  .nut-icon-remove-circle::before {
-    content: "\e150";
-  }
-
-  .nut-icon-eye-f::before {
-    content: "\f451";
-  }
-
-  .nut-icon-package-arrow-up-f::before {
-    content: "\ea11";
-  }
-
-  .nut-icon-shopping-follow::before {
-    content: "\e5fe";
-  }
-
-  .nut-icon-device-rotate-horizontal::before {
-    content: "\ed99";
-  }
-
-  .nut-icon-file::before {
-    content: "\f397";
-  }
-
-  .nut-icon-upload::before {
-    content: "\e352";
-  }
-
-  .nut-icon-arrow-down::before {
-    content: "\f3b4";
-  }
-
-  .nut-icon-star-f::before {
-    content: "\e222";
-  }
-
-  .nut-icon-list::before {
-    content: "\f4b5";
-  }
-
-  .nut-icon-arrow-left::before {
-    content: "\e87f";
-  }
-
-  .nut-icon-unlock-f::before {
-    content: "\f45e";
-  }
-
-  .nut-icon-calculator-f::before {
-    content: "\eaca";
-  }
-
-  .nut-icon-list-check::before {
-    content: "\e7fb";
-  }
-
-  .nut-icon-copy-f::before {
-    content: "\e18a";
-  }
-
-  .nut-icon-zoom-out-f::before {
-    content: "\f3a1";
-  }
-
-  .nut-icon-qr-code::before {
-    content: "\ee1f";
-  }
-
-  .nut-icon-circle-dot::before {
-    content: "\f290";
-  }
-
-  .nut-icon-play-circle-f::before {
-    content: "\f465";
-  }
-
-  .nut-icon-edit-rectangle::before {
-    content: "\e404";
-  }
-
-  .nut-icon-volume-mute::before {
-    content: "\e072";
-  }
-
-  .nut-icon-flag-f::before {
-    content: "\f101";
-  }
-
-  .nut-icon-shield-check::before {
-    content: "\f307";
-  }
-
-  .nut-icon-target::before {
-    content: "\f16f";
-  }
-
-  .nut-icon-back-to-top::before {
-    content: "\f4ef";
-  }
-
-  .nut-icon-robot::before {
-    content: "\e96a";
-  }
-
-  .nut-icon-cart-arrow-up-f::before {
-    content: "\efdd";
-  }
-
-  .nut-icon-photo-f::before {
-    content: "\edbf";
-  }
-
-  .nut-icon-plugin::before {
-    content: "\e45a";
-  }
-
-  .nut-icon-store-f::before {
-    content: "\ee7b";
-  }
-
-  .nut-icon-darkness::before {
-    content: "\eead";
-  }
-
-  .nut-icon-login::before {
-    content: "\e16d";
-  }
-
-  .nut-icon-brush::before {
-    content: "\e8a8";
-  }
-
-  .nut-icon-package::before {
-    content: "\eb07";
-  }
-
-  .nut-icon-headphones-f::before {
-    content: "\e998";
-  }
-
-  .nut-icon-package-box::before {
-    content: "\e77c";
-  }
-
-  .nut-icon-trash-f::before {
-    content: "\ed1f";
-  }
-
-  .nut-icon-heart::before {
-    content: "\f472";
-  }
-
-  .nut-icon-link::before {
-    content: "\e869";
-  }
-
-  .nut-icon-bell::before {
-    content: "\e3be";
-  }
-
-  .nut-icon-bell-f::before {
-    content: "\e47b";
-  }
-
-  .nut-icon-video-f::before {
-    content: "\eb03";
-  }
-
-  .nut-icon-badge-percent-f::before {
-    content: "\e9c3";
-  }
-
-  .nut-icon-shopping-minus-f::before {
-    content: "\e19c";
-  }
-
-  .nut-icon-eye::before {
-    content: "\e883";
-  }
-
-  .nut-icon-darkness-f::before {
-    content: "\ef95";
-  }
-
-  .nut-icon-shopping-remove::before {
-    content: "\f3c6";
-  }
-
-  .nut-icon-maximize::before {
-    content: "\eaac";
-  }
-
-  .nut-icon-power::before {
-    content: "\e787";
-  }
-
-  .nut-icon-information-circle-f::before {
-    content: "\f033";
-  }
-
-  .nut-icon-device-tv::before {
-    content: "\e176";
-  }
-
-  .nut-icon-cart-check-f::before {
-    content: "\e2ba";
-  }
-
-  .nut-icon-photo-error::before {
-    content: "\e64e";
-  }
-
-  .nut-icon-add::before {
-    content: "\e9bd";
-  }
-
-  .nut-icon-arrow-corner-right::before {
-    content: "\e822";
-  }
-
-  .nut-icon-package-arrow-up::before {
-    content: "\ee20";
-  }
-
-  .nut-icon-bell-off::before {
-    content: "\e0b1";
-  }
-
-  .nut-icon-arrow-circle-right::before {
-    content: "\e51c";
-  }
-
-  .nut-icon-divide::before {
-    content: "\f445";
-  }
-
-  .nut-icon-tag::before {
-    content: "\ec01";
-  }
-
-  .nut-icon-plus::before {
-    content: "\eaec";
-  }
-
-  .nut-icon-minus::before {
-    content: "\f2eb";
-  }
-
-  .nut-icon-face-mild::before {
-    content: "\ef2a";
-  }
-
-  .nut-icon-ai-f::before {
-    content: "\e8e6";
-  }
-
-  .nut-icon-package-add-f::before {
-    content: "\e825";
-  }
-
-  .nut-icon-face-smile-f::before {
-    content: "\f3b6";
-  }
-
-  .nut-icon-shopping-check::before {
-    content: "\efda";
-  }
-
-  .nut-icon-cloud::before {
-    content: "\e318";
-  }
-
-  .nut-icon-angle-double-left::before {
-    content: "\ed3f";
-  }
-
-  .nut-icon-brightness-f::before {
-    content: "\e63c";
-  }
-
-  .nut-icon-package-add::before {
-    content: "\ed9e";
-  }
-
-  .nut-icon-angle-down::before {
-    content: "\ed2b";
-  }
-
-  .nut-icon-board-f::before {
-    content: "\e12e";
-  }
-
-  .nut-icon-required::before {
-    content: "\ea3b";
-  }
-
-  .nut-icon-arrow-transfer::before {
-    content: "\e11b";
-  }
-
-  .nut-icon-play-circle::before {
-    content: "\f0b7";
-  }
-
-  .nut-icon-user-add-f::before {
-    content: "\ebf4";
-  }
-
-  .nut-icon-cart-check::before {
-    content: "\e410";
-  }
-
-  .nut-icon-computer::before {
-    content: "\e5a9";
-  }
-
-  .nut-icon-cart::before {
-    content: "\e895";
-  }
-
-  .nut-icon-setting::before {
-    content: "\e638";
-  }
-
-  .nut-icon-camera::before {
-    content: "\e023";
-  }
-
-  .nut-icon-circle::before {
-    content: "\eb04";
-  }
-
-  .nut-icon-angle-double-up::before {
-    content: "\e92e";
-  }
-
-  .nut-icon-caret-down-f::before {
-    content: "\f270";
-  }
-
-  .nut-icon-pin-f::before {
-    content: "\e3a4";
-  }
-
-  .nut-icon-brush-f::before {
-    content: "\e209";
-  }
-
-  .nut-icon-package-arrow-down-f::before {
-    content: "\eafe";
-  }
-
-  .nut-icon-photo::before {
-    content: "\f343";
-  }
-
-  .nut-icon-edit-f::before {
-    content: "\e754";
-  }
-
-  .nut-icon-copy::before {
-    content: "\ee9d";
-  }
-
-  .nut-icon-server-f::before {
-    content: "\e1ea";
-  }
-
-  .nut-icon-device-rotate-vertical::before {
-    content: "\effd";
-  }
-
-  .nut-icon-warning-f::before {
-    content: "\f0a0";
-  }
-
-  .nut-icon-thumbs-down-f::before {
-    content: "\e836";
-  }
-
-  .nut-icon-shield-check-f::before {
-    content: "\e3c1";
-  }
-
-  .nut-icon-trash::before {
-    content: "\ed9c";
-  }
-
-  .nut-icon-check-rectangle-f::before {
-    content: "\e39b";
-  }
-
-  .nut-icon-gift-f::before {
-    content: "\e5e9";
-  }
-
-  .nut-icon-add-circle-f::before {
-    content: "\ec65";
-  }
-
-  .nut-icon-comment-f::before {
-    content: "\f34c";
-  }
-
-  .nut-icon-reward-f::before {
-    content: "\e79d";
-  }
-
-  .nut-icon-device-tv-f::before {
-    content: "\e9a4";
-  }
-
-  .nut-icon-compass::before {
-    content: "\eb28";
-  }
-
-  .nut-icon-undo::before {
-    content: "\e49a";
-  }
-
-  .nut-icon-filter::before {
-    content: "\e297";
-  }
-
-  .nut-icon-warning-polygon-f::before {
-    content: "\e47f";
-  }
-
-  .nut-icon-unlink::before {
-    content: "\e4bd";
-  }
-
-  .nut-icon-zoom-in::before {
-    content: "\e668";
-  }
-
-  .nut-icon-angle-double-down::before {
-    content: "\e467";
-  }
-
-  .nut-icon-filter-v-f::before {
-    content: "\e9b6";
-  }
-
-  .nut-icon-close-rectangle::before {
-    content: "\ea46";
-  }
-
-  .nut-icon-layers::before {
-    content: "\e1b0";
-  }
-
-  .nut-icon-first-aid-kit::before {
-    content: "\ef78";
-  }
-
-  .nut-icon-star::before {
-    content: "\ef2e";
-  }
-
-  .nut-icon-skip-forward::before {
-    content: "\e484";
-  }
-
-  .nut-icon-filter-h-f::before {
-    content: "\ea79";
-  }
-
-  .nut-icon-camera-off-f::before {
-    content: "\e1e8";
-  }
-
-  .nut-icon-receipt-f::before {
-    content: "\f120";
-  }
-
-  .nut-icon-close-rectangle-f::before {
-    content: "\eca3";
-  }
-
-  .nut-icon-redo::before {
-    content: "\e974";
-  }
-
-  .nut-icon-warning-error-f::before {
-    content: "\e76e";
-  }
-
-  .nut-icon-caret-left-f::before {
-    content: "\e8e7";
-  }
-
-  .nut-icon-check-circle::before {
-    content: "\ecb1";
-  }
-
-  .nut-icon-package-remove-f::before {
-    content: "\e518";
-  }
-
-  .nut-icon-ticket::before {
-    content: "\e2fb";
-  }
-
-  .nut-icon-notepad-f::before {
-    content: "\e045";
-  }
-
-  .nut-icon-mail::before {
-    content: "\ecc8";
-  }
-
-  .nut-icon-calculator::before {
-    content: "\f387";
-  }
-
-  .nut-icon-edit::before {
-    content: "\e9ad";
-  }
-
-  .nut-icon-angle-double-right::before {
-    content: "\e27b";
-  }
-
-  .nut-icon-comment::before {
-    content: "\e175";
-  }
-
-  .nut-icon-information-circle::before {
-    content: "\eaae";
-  }
-
-  .nut-icon-shield::before {
-    content: "\ed60";
-  }
-
-  .nut-icon-location-f::before {
-    content: "\e832";
-  }
-
-  .nut-icon-agenda-f::before {
-    content: "\e543";
-  }
-
-  .nut-icon-plugin-f::before {
-    content: "\ebb1";
-  }
-
-  .nut-icon-photo-disable-f::before {
-    content: "\f36f";
-  }
-
-  .nut-icon-target-f::before {
-    content: "\e649";
-  }
-
-  .nut-icon-help::before {
-    content: "\e77b";
-  }
-
-  .nut-icon-wifi-error::before {
-    content: "\e6da";
-  }
-
-  .nut-icon-package-delete::before {
-    content: "\e9e3";
-  }
-
-  .nut-icon-heart-f::before {
-    content: "\f385";
-  }
-
-  .nut-icon-presentation::before {
-    content: "\e6c0";
-  }
-
-  .nut-icon-help-f::before {
-    content: "\e7a5";
-  }
-
-  .nut-icon-truck::before {
-    content: "\e571";
-  }
-
-  .nut-icon-wifi::before {
-    content: "\ec14";
-  }
-
-  .nut-icon-photo-error-f::before {
-    content: "\e775";
-  }
-
-  .nut-icon-lock::before {
-    content: "\eeee";
-  }
-
-  .nut-icon-layers-f::before {
-    content: "\f11c";
-  }
-
-  .nut-icon-arrow-circle-left-f::before {
-    content: "\e3b3";
-  }
-
-  .nut-icon-warning-triangle::before {
-    content: "\f146";
-  }
-
-  .nut-icon-bell-ring::before {
-    content: "\e320";
-  }
-
-  .nut-icon-remove-circle-f::before {
-    content: "\e575";
-  }
-
-  .nut-icon-timer::before {
-    content: "\f30f";
-  }
-
-  .nut-icon-alarm-f::before {
-    content: "\e4ea";
-  }
-
-  .nut-icon-arrow-right::before {
-    content: "\ee6e";
-  }
-
-  .nut-icon-ai::before {
-    content: "\e5dc";
-  }
-
-  .nut-icon-smile-joy::before {
-    content: "\efcb";
-  }
-
-  .nut-icon-shopping-remove-f::before {
-    content: "\e64b";
-  }
-
-  .nut-icon-bell-off-f::before {
-    content: "\f3aa";
-  }
-
-  .nut-icon-cart-arrow-up::before {
-    content: "\f3ea";
-  }
-
-  .nut-icon-reward::before {
-    content: "\f02e";
-  }
-
-  .nut-icon-loading::before {
-    content: "\ef56";
-  }
-
-  .nut-icon-add-circle::before {
-    content: "\e7d0";
-  }
-
-  .nut-icon-stop-circle-f::before {
-    content: "\eafd";
-  }
-
-  .nut-icon-arrow-circle-left::before {
-    content: "\e147";
-  }
-
-  .nut-icon-cart-arrow-down::before {
-    content: "\ec09";
-  }
-
-  .nut-icon-download::before {
-    content: "\e1ac";
-  }
-
-  .nut-icon-angle-right::before {
-    content: "\f4b2";
-  }
-
-  .nut-icon-help-polygon::before {
-    content: "\eaaf";
-  }
-
-  .nut-icon-microphone-f::before {
-    content: "\e20e";
-  }
+.nut-icon-right:before {
+  content: "\e63b";
+}
+
+.nut-icon-plus:before {
+  content: "\e63c";
+}
+
+.nut-icon-retweet:before {
+  content: "\e63d";
+}
+
+.nut-icon-notice:before {
+  content: "\e63e";
+}
+
+.nut-icon-s-follow:before {
+  content: "\e63f";
+}
+
+.nut-icon-refresh:before {
+  content: "\e640";
+}
+
+.nut-icon-scan2:before {
+  content: "\e641";
+}
+
+.nut-icon-triangle-down:before {
+  content: "\e642";
+}
+
+.nut-icon-ticket:before {
+  content: "\e643";
+}
+
+.nut-icon-eye:before {
+  content: "\e644";
+}
+
+.nut-icon-star:before {
+  content: "\e645";
+}
+
+.nut-icon-link:before {
+  content: "\e646";
+}
+
+.nut-icon-success:before {
+  content: "\e647";
+}
+
+.nut-icon-triangle-up:before {
+  content: "\e648";
+}
+
+.nut-icon-search2:before {
+  content: "\e649";
+}
+
+.nut-icon-share-n:before {
+  content: "\e64a";
+}
+
+.nut-icon-jdl:before {
+  content: "\e64b";
+}
+
+.nut-icon-volume:before {
+  content: "\e64c";
+}
+
+.nut-icon-wallet:before {
+  content: "\e64d";
+}
+
+.nut-icon-more-x:before {
+  content: "\e64e";
+}
+
+.nut-icon-more-s:before {
+  content: "\e64f";
+}
+
+.nut-icon-bank-card:before {
+  content: "\e650";
+}
+
+.nut-icon-service:before {
+  content: "\e651";
+}
+
+.nut-icon-warning:before {
+  content: "\e652";
+}
+

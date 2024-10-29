@@ -1,7 +1,6 @@
-import { Filter } from '@nutui/icons-react'
-import { ArrowDown, Star } from '@nutui/icons-react-taro'
-import { Menu } from '@nutui/nutui-react-taro'
 import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react-taro'
+import { ArrowDown, Star, Filter } from '@nutui/icons-react-taro'
 
 const Demo6 = () => {
   const [options] = useState([

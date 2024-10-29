@@ -1,8 +1,8 @@
-import classNames from 'classnames'
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -11,7 +11,6 @@ export interface CellProps extends BasicComponent {
   radius: string | number
   align: 'flex-start' | 'center' | 'flex-end'
   clickable: boolean
-  disabled: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -23,7 +22,6 @@ const defaultProps = {
   radius: '6px',
   align: 'flex-start',
   clickable: false,
-  disabled: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -44,7 +42,6 @@ export const Cell: FunctionComponent<
     className,
     style,
     clickable,
-    disabled,
     ...rest
   } = {
     ...defaultProps,
@@ -69,10 +66,7 @@ export const Cell: FunctionComponent<
         }
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}-clickable`]: clickable,
-        [`${classPrefix}-disabled`]: disabled,
-      })}
+      className={`${classNames(classPrefix, className, clickable ? `${classPrefix}-clickable` : '')}`}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
       {...rest}
