@@ -5,9 +5,6 @@ import { replaceIcons } from '../src/replace-icons'
 const plugin = replaceIcons({
   sourceLibrary: ['@nutui/icons-react', '@nutui/icons-react-taro'],
   targetLibrary: '@test/aa',
-  iconMappings: {
-    Loading: 'Star',
-  },
 })
 
 const babelOptions = {
@@ -15,11 +12,9 @@ const babelOptions = {
   plugins: [plugin],
 }
 const caseIns = `
-import { Loading } from '@nutui/icons-react'
-import { ArrowSize6 as Arrow } from '@nutui/icons-react'
-const ReplaceOne = () => {
-  return <><Loading /> <Arrow /></>
-}
+import '@nutui/icons-react/dist/test.css'
+import '@nutui/icons-react-taro/dist/test.css'
+import '@nutui/taro/dist/test.css'
 `
 describe('', () => {
   it('replace Loading icons with Star', () => {
