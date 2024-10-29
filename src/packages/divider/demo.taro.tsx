@@ -52,7 +52,7 @@ const DividerDemo = () => {
           <Demo5 />
         </Cell>
         <h2>{translated.verticalDivider}</h2>
-        <Cell align="center">
+        <Cell>
           <Demo6 />
         </Cell>
       </div>
