@@ -1,4 +1,4 @@
-import postcss from 'postcss'
+import postcss, { ProcessOptions, Root, Document } from 'postcss'
 import { merge } from 'lodash'
 import cssVariables from 'postcss-css-variables'
 import { parse } from 'postcss-scss'
@@ -39,15 +39,22 @@ async function replaceCssVariables(
   exclude: string[] = []
 ) {
   cssVariablesContent.push(root.toResult().css)
-  const replacedCss = await postcss([
+  const options: ProcessOptions<Document | Root> = {
+    parser: parse,
+    from: undefined,
+  } as ProcessOptions<Root>
+  const replacedCss = postcss([
     cssVariables({
       preserve: (declaration) => {
-        if (exclude.includes(declaration.prop)) return true
+        if (exclude.includes(declaration.prop)) {
+          return true
+        }
+        const cssvars = declaration.value.match(/var\((--nutui-[\w\d-]+)\)/)
+        if (cssvars && exclude.includes(cssvars[1])) return true
         return false
       },
     }),
-  ]).process(cssVariablesContent.join('\n'), { parser: parse, from: undefined })
-    .css
+  ]).process(cssVariablesContent.join('\n'), options).css
 
   const replacedRoot = postcss.parse(replacedCss)
   root.raws = replacedRoot.raws
