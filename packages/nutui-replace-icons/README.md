@@ -1,4 +1,4 @@
-# @dongdesign/replace-icons
+# @nutui/replace-icons
 
 ## 功能说明
 
