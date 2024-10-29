@@ -94,7 +94,7 @@ export const InfiniteLoading: FunctionComponent<
 
   const getStyle = () => {
     return {
-      height: topDisScoll < 0 ? `0px` : `${topDisScoll}px`,
+      height: topDisScoll < 0 ? px : `${topDisScoll}px`,
       transition: `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
     }
   }
