@@ -54,7 +54,7 @@ async function replaceCssVariables(
   root.nodes = replacedRoot.nodes
 }
 
-export function profileGuidedOptimization(opts: Options) {
+export function optimizeCss(opts: Options) {
   const defaultConfig = {
     removeRtl: false,
     cssVariables: {
@@ -78,7 +78,7 @@ export function profileGuidedOptimization(opts: Options) {
   }
 
   return {
-    postcssPlugin: 'postcss-dongdesign-optimization-css',
+    postcssPlugin: 'postcss-optimize-css',
     OnceExit(root) {
       if (config.cssVariables.type === 'replace') {
         replaceCssVariables(

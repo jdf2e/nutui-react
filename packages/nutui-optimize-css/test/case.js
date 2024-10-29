@@ -1,6 +1,6 @@
 const postcss = require('postcss')
 const path = require('path')
-const profileGuidedOptimization = require('../dist/index.cjs')
+const optimizeCss = require('../dist/index.cjs')
 
 const css = `
 .nut-address-footer-btn {
@@ -18,7 +18,7 @@ const css = `
 `
 
 postcss([
-  profileGuidedOptimization({
+  optimizeCss({
     removeRtl: true,
     cssVariables: {
       include: [path.join(__dirname, 'variables.scss')],

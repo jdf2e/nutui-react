@@ -6,7 +6,7 @@
 {
   "mini": {
     "postcss": {
-      "@nutui/optimization-css": {
+      "@nutui/optimize-css": {
         "enable": true,
         "config": {
           "removeRtl": true,

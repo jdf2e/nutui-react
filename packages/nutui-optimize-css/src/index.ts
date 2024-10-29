@@ -1,3 +1,3 @@
-import { profileGuidedOptimization } from './postcss-plugins'
+import { optimizeCss } from './postcss-plugins'
 
-export default profileGuidedOptimization
+export default optimizeCss
