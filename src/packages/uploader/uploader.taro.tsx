@@ -505,7 +505,7 @@ const InternalUploader: ForwardRefRenderFunction<
         <View className="nut-uploader-slot">
           <>
             {children || (
-              <Button nativeType="button" size="small" type="primary">
+              <Button size="small" type="primary">
                 {locale.uploader.list}
               </Button>
             )}
