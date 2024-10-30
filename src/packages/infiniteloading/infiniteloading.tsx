@@ -213,7 +213,15 @@ export const InfiniteLoading: FunctionComponent<
     onScroll && onScroll(resScrollTop)
     return offsetDistance <= threshold && direction === 'down'
   }
-
+  function getBottomTipsText() {
+    if (isInfiniting) {
+      return loadingText || locale.infiniteloading.loadText
+    }
+    if (!hasMore) {
+      return loadMoreText || locale.infiniteloading.loadMoreText
+    }
+    return null
+  }
   return (
     <div
       className={classes}
@@ -229,17 +237,7 @@ export const InfiniteLoading: FunctionComponent<
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
-        {isInfiniting ? (
-          <div className="nut-infinite-bottom-tips">
-            {loadingText || locale.infiniteloading.loadText}
-          </div>
-        ) : (
-          !hasMore && (
-            <div className="nut-infinite-bottom-tips">
-              {loadMoreText || locale.infiniteloading.loadMoreText}
-            </div>
-          )
-        )}
+        <div className="nut-infinite-bottom-tips">{getBottomTipsText()}</div>
       </div>
     </div>
   )

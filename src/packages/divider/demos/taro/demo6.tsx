@@ -7,9 +7,23 @@ const Demo6 = () => {
     <Cell align="center">
       <Text>文本</Text>
       <Divider direction="vertical" />
-      <Text style={{ color: '#0073ff' }}>链接</Text>
+      <Text
+        onClick={() => {
+          console.log('跳转')
+        }}
+        style={{ color: '#0073ff', verticalAlign: 'middle' }}
+      >
+        链接
+      </Text>
       <Divider direction="vertical" />
-      <Text style={{ color: '#0073ff' }}>链接</Text>
+      <Text
+        onClick={() => {
+          console.log('跳转')
+        }}
+        style={{ color: '#0073ff', verticalAlign: 'middle' }}
+      >
+        链接
+      </Text>
     </Cell>
   )
 }

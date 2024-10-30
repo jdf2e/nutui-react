@@ -67,6 +67,8 @@
     align-items: center;
     justify-content: center;
     font-size: $tag-font-size;
+    color: $tag-color;
+    margin-left: 4px;
   }
 
   &-plain {
