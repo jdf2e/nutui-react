@@ -1545,7 +1545,7 @@ $timeselect-time-background: var(
 
 //tag（✅）
 $tag-padding: var(--nutui-tag-padding, 0px 2px) !default;
-$tag-font-size: var(--nutui-tag-font-size, $font-size-xs) !default;
+$tag-font-size: var(--nutui-tag-font-size, $font-size-xxs) !default;
 $tag-border-radius: var(--nutui-tag-border-radius, 2px) !default;
 $tag-height: var(--nutui-tag-height, 14px) !default;
 $tag-color: var(--nutui-tag-color, #ffffff) !default;
@@ -1584,7 +1584,7 @@ $badge-background-color: var(
   $color-primary-gradient-1
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-xs) !default;
+$badge-font-size: var(--nutui-badge-font-size, $font-size-xxs) !default;
 $badge-border: var(
   --nutui-badge-border,
   0px solid $color-primary-text
