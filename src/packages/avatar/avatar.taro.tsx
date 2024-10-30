@@ -54,7 +54,6 @@ export const Avatar: FunctionComponent<
     background,
     color,
     src,
-    alt,
     icon,
     fit,
     avatarIndex,

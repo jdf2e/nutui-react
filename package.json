@@ -84,7 +84,7 @@
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "gulp:watch": "gulp watch --environment",
-    "lint": "eslint ./src/packages",
+    "lint": "eslint ./src/packages/*/",
     "lint:fix": "eslint --fix ./src/packages",
     "postpublish": "node scripts/postpublish.js",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
