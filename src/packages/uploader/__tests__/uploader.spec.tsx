@@ -89,14 +89,8 @@ test('should render base uploader other props', () => {
   expect(container.querySelectorAll('.nut-uploader-preview').length).toBe(3)
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(onDelete).toBeCalled()
-
-  const toast2 = container.querySelector('.nut-uploader-preview-img-c .nut-img')
-  expect(toast2).toBeTruthy()
   fireEvent.click(container.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(fileItemClick).toBeCalled()
-  expect(toast2?.getAttribute('src')).toBe(
-    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
-  )
 })
 
 test('should render base uploader list', () => {

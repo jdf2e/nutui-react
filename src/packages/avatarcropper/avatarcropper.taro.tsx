@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Canvas, View } from '@tarojs/components'
+import { Canvas, CommonEventFunction, View } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
@@ -449,7 +449,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   })
   const { startMoveX, startMoveY, startScale, startDistance } = startMove
 
-  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+  const onTouchStart: CommonEventFunction = (event: any) => {
     const { touches } = event
     const { offsetX } = touch
 
@@ -472,7 +472,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+  const onTouchMove: CommonEventFunction = (event: any) => {
     const { touches } = event
 
     touch.move(event)
@@ -500,7 +500,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     }
   }
 
-  const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+  const onTouchEnd: CommonEventFunction = (event: any) => {
     let stopPropagation = false
 
     if (moving || zooming) {
