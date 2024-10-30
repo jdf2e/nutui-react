@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - next
-      - dev-harmony
       - V3.0
 
   pull_request:
     branches:
-      - next
-      - dev-harmony
       - V3.0
+      - next
+
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -20,12 +20,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-      run: corepack enable pnpm
+        run: corepack enable pnpm
 
       - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'pnpm'
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
@@ -64,12 +64,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-      run: corepack enable pnpm
+        run: corepack enable pnpm
 
       - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'pnpm'
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
