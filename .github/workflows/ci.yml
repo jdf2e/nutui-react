@@ -13,18 +13,16 @@ on:
       - dev-harmony
       - V3.0
 
-  workflow_dispatch:
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-    - name: Install pnpm
+      - name: Install pnpm
       run: corepack enable pnpm
 
-    - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'pnpm'
@@ -65,10 +63,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-    - name: Install pnpm
+      - name: Install pnpm
       run: corepack enable pnpm
 
-    - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
       with:
         node-version: '20'
         cache: 'pnpm'
