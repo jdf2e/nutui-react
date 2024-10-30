@@ -6,3 +6,4 @@
 **/*.eot
 package.json
 node_modules
+src/packages/nutui.react.build.rn.ts
