@@ -12,6 +12,7 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { InfiniteLoadingType } from './types'
+import pxTransform from '@/utils/px-transform'
 
 export interface InfiniteLoadingProps
   extends BasicComponent,
@@ -72,15 +73,16 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
-
+  const classPrefix = 'nut-infinite'
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
     refreshMaxH.current = threshold
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       getScrollHeight()
     }, 200)
-  }, [hasMore, isInfiniting])
+    return () => clearTimeout(timer)
+  }, [hasMore, isInfiniting, threshold])
 
   /** 获取需要滚动的距离 */
   const getScrollHeight = () => {
@@ -94,7 +96,7 @@ export const InfiniteLoading: FunctionComponent<
 
   const getStyle = () => {
     return {
-      height: topDisScoll < 0 ? `0px` : `${topDisScoll}px`,
+      height: topDisScoll < 0 ? pxTransform(0) : pxTransform(topDisScoll),
       transition: `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
     }
   }
@@ -164,7 +166,15 @@ export const InfiniteLoading: FunctionComponent<
       refreshDone()
     }
   }
-
+  function getBottomTipsText() {
+    if (isInfiniting) {
+      return loadingText || locale.infiniteloading.loadText
+    }
+    if (!hasMore) {
+      return loadMoreText || locale.infiniteloading.loadMoreText
+    }
+    return null
+  }
   return (
     <ScrollView
       {...rest}
@@ -179,24 +189,20 @@ export const InfiniteLoading: FunctionComponent<
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
     >
-      <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <View className="nut-infinite-top-tips">
+      <View
+        className={`${classPrefix}-top`}
+        ref={refreshTop}
+        style={getStyle()}
+      >
+        <View className={`${classPrefix}-top-tips`}>
           {pullingText || locale.infiniteloading.pullRefreshText}
         </View>
       </View>
-      <View className="nut-infinite-container">{children}</View>
-      <View className="nut-infinite-bottom">
-        {isInfiniting ? (
-          <View className="nut-infinite-bottom-tips">
-            {loadingText || locale.infiniteloading.loadText}
-          </View>
-        ) : (
-          !hasMore && (
-            <View className="nut-infinite-bottom-tips">
-              {loadMoreText || locale.infiniteloading.loadMoreText}
-            </View>
-          )
-        )}
+      <View className={`${classPrefix}-container`}>{children}</View>
+      <View className={`${classPrefix}-bottom`}>
+        <View className={`${classPrefix}-bottom-tips`}>
+          {getBottomTipsText()}
+        </View>
       </View>
     </ScrollView>
   )
