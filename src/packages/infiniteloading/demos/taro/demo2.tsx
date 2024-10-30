@@ -1,12 +1,14 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
 import { Cell, InfiniteLoading, Toast } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const sleep = (time: number): Promise<unknown> =>
   new Promise((resolve) => {
     setTimeout(resolve, time)
   })
 const InfiniteUlStyle: CSSProperties = {
-  height: '300px',
+  height: pxTransform(200),
   width: '100%',
   padding: '0',
   overflowY: 'auto',
@@ -14,8 +16,8 @@ const InfiniteUlStyle: CSSProperties = {
 }
 
 const InfiniteLiStyle: CSSProperties = {
-  marginTop: '10px',
-  fontSize: '14px',
+  marginTop: pxTransform(10),
+  fontSize: pxTransform(14),
   color: 'rgba(100, 100, 100, 1)',
   textAlign: 'center',
 }
@@ -62,13 +64,13 @@ const Demo2 = () => {
   return (
     <>
       <Cell>
-        <ul id="refreshScroll" style={InfiniteUlStyle}>
+        <View id="refreshScroll" style={InfiniteUlStyle}>
           <InfiniteLoading
             pullingText={
               <>
                 <img
                   alt=""
-                  style={{ height: '26px', width: '36px' }}
+                  style={{ height: pxTransform(36), width: pxTransform(36) }}
                   src="https://img13.360buyimg.com/imagetools/jfs/t1/219180/19/37902/438/65fa8cbbF5278d022/5eabe69b64bba791.png"
                   className="nut-infinite-top-tips-icons"
                 />
@@ -79,7 +81,7 @@ const Demo2 = () => {
               <>
                 <img
                   alt=""
-                  style={{ height: '24px', width: '24px' }}
+                  style={{ height: pxTransform(24), width: pxTransform(24) }}
                   src="https://img11.360buyimg.com/imagetools/jfs/t1/180248/35/42577/173/65fab7e9Fa868ae37/41e33477f960b5b2.png"
                   className="nut-infinite-bottom-tips-icons"
                 />
@@ -94,13 +96,17 @@ const Demo2 = () => {
           >
             {refreshList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
+                <View
+                  className="infiniteLi"
+                  key={index}
+                  style={InfiniteLiStyle}
+                >
                   {item}
-                </li>
+                </View>
               )
             })}
           </InfiniteLoading>
-        </ul>
+        </View>
         <Toast
           type="text"
           visible={show}

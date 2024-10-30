@@ -1,5 +1,6 @@
 import React from 'react'
 import { Empty } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   return (
@@ -12,9 +13,9 @@ const Demo1 = () => {
       <Empty
         description="无数据"
         actions={[{ text: '操作按钮' }]}
-        style={{ marginTop: '10px' }}
+        style={{ marginTop: pxTransform(10) }}
       />
-      <Empty description="无数据" style={{ marginTop: '10px' }} />
+      <Empty description="无数据" style={{ marginTop: pxTransform(10) }} />
     </>
   )
 }
