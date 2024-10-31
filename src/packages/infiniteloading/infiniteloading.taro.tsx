@@ -12,6 +12,7 @@ import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { InfiniteLoadingType } from './types'
+import pxTransform from '@/utils/px-transform'
 
 export interface InfiniteLoadingProps
   extends BasicComponent,
@@ -94,7 +95,7 @@ export const InfiniteLoading: FunctionComponent<
 
   const getStyle = () => {
     return {
-      height: topDisScoll < 0 ? `0px` : `${topDisScoll}px`,
+      height: topDisScoll < 0 ? pxTransform(0) : pxTransform(topDisScoll),
       transition: `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
     }
   }
