@@ -48,9 +48,10 @@ export default defineConfig(async (): Promise<UserConfig> => {
       preprocessorOptions: {
         scss: {
           // example : additionalData: `@import "./src/design/styles/variables";`
-          // dont need include file extend .scss
           api: 'modern-compiler',
           additionalData: fileStr,
+          // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
+          silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
           plugins: [atImport({ path: join(__dirname, 'src`') })],
