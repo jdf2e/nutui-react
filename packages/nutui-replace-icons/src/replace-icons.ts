@@ -19,7 +19,8 @@ function replace(options: IOptions) {
           })
         } else {
           sourceLibrary.forEach((library) => {
-            if (path.node.source.value.indexOf(`${library}/`) > -1) {
+            const libraryPattern = new RegExp(`^${library}(?:/|$)`)
+            if (libraryPattern.test(path.node.source.value)) {
               // import '@nutui/icons-react-taro/dist/style_iconfont.css'
               path.node.source.value = path.node.source.value.replace(
                 library,
