@@ -84,4 +84,5 @@ jobs:
       run: npm run build:site
 
     - name: Build NutUI-React Taro H5 Demo
+      if: github.ref == 'refs/heads/next'
       run: npm run build:taro:site
