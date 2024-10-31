@@ -107,7 +107,11 @@ export const TrendArrow: FunctionComponent<
     )
   }
   return (
-    <View className={`${classPrefix} ${className}`} style={style} {...rest}>
+    <View
+      className={`${classPrefix} ${className}`}
+      style={style}
+      {...(rest as any)}
+    >
       {!left && renderContent(!left)}
       {Number(value) !== 0 && (
         <>
