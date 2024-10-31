@@ -2,7 +2,6 @@ import React from 'react'
 // import { Failure } from '@nutui/icons-react-taro'
 import { Cell, Tag } from '@nutui/nutui-react-taro'
 import Taro from '@tarojs/taro'
-import { Icon } from '@tarojs/components'
 
 const Demo2 = () => {
   return (
@@ -33,7 +32,7 @@ const Demo2 = () => {
               onClose={() => Taro.showToast({ title: 'Tag closed' })}
               type="primary"
             >
-              标签0
+              标签
             </Tag>
           }
         />
@@ -43,8 +42,8 @@ const Demo2 = () => {
             <Tag
               closeable
               // TODO: icon 适配
-              // closeIcon="C"
-              closeIcon={<Icon type="search" color="red" />}
+              closeIcon="C"
+              // closeIcon={<Failure size={8} />}
               onClose={() => Taro.showToast({ title: 'Tag closed' })}
               type="primary"
             >

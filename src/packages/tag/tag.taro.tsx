@@ -5,7 +5,7 @@ import React, {
   ReactNode,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { View, ITouchEvent, Text, Icon } from '@tarojs/components'
+import { View, ITouchEvent, Text } from '@tarojs/components'
 // import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
@@ -147,8 +147,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 }}
                 className={`${classPrefix}-custom-icon`}
               >
-                -
-                <Icon type="search" color="red" />-
+                X
               </Text>
             )}
           </View>
