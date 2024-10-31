@@ -51,7 +51,7 @@ export const Steps: FunctionComponent<
       return (
         <View>
           <DataContext.Provider value={parentSteps}>
-            <View className={classes} {...restProps}>
+            <View className={classes} {...(restProps as any)}>
               {children}
             </View>
           </DataContext.Provider>
@@ -60,7 +60,7 @@ export const Steps: FunctionComponent<
     }
     return (
       <DataContext.Provider value={parentSteps}>
-        <View className={classes} {...restProps}>
+        <View className={classes} {...(restProps as any)}>
           {children}
         </View>
       </DataContext.Provider>
