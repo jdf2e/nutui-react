@@ -78,10 +78,11 @@ export const InfiniteLoading: FunctionComponent<
 
   useEffect(() => {
     refreshMaxH.current = threshold
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       getScrollHeight()
     }, 200)
-  }, [hasMore, isInfiniting])
+    return () => clearTimeout(timer)
+  }, [hasMore, isInfiniting, threshold])
 
   /** 获取需要滚动的距离 */
   const getScrollHeight = () => {
