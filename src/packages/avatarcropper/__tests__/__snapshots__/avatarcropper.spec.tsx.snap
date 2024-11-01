@@ -17,7 +17,7 @@ exports[`layout default slot 1`] = `
   <div
     class="nut-avatar-cropper-edit-text"
   >
-    Edit
+    编辑
   </div>
 </div>
 `;

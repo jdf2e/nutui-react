@@ -61,6 +61,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       {locale.confirm}
     </Button>,
   ]
+  defaultProps.editText = locale.edit
 
   const {
     children,

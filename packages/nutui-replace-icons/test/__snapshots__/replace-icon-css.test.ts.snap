@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`replace Loading icons with Star 1`] = `
+"import "@test/aa/dist/test.css";
+import "@test/aa/dist/test.css";
+import '@nutui/taro/dist/test.css';"
+`;

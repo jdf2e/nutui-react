@@ -90,5 +90,4 @@ import { Divider } from '@nutui/nutui-react-taro'
 | \--nutui-divider-line-height | 分割线的行高 | `2px` |
 | \--nutui-divider-spacing | 左边分割线与文案的间隔值 | `8px` |
 | \--nutui-divider-vertical-height | 垂直分割线的高度 | `12px` |
-| \--nutui-divider-vertical-top | 垂直分割线的top值 | `2px` |
 | \--nutui-divider-vertical-margin | 垂直分割线的margin值 | `0 8px` |
