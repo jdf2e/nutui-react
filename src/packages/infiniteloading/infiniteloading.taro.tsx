@@ -73,7 +73,7 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
-  const classPrefix = 'nut-infinite'
+
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
@@ -189,20 +189,14 @@ export const InfiniteLoading: FunctionComponent<
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
     >
-      <View
-        className={`${classPrefix}-top`}
-        ref={refreshTop}
-        style={getStyle()}
-      >
-        <View className={`${classPrefix}-top-tips`}>
+      <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
+        <View className="nut-infinite-top-tips">
           {pullingText || locale.infiniteloading.pullRefreshText}
         </View>
       </View>
-      <View className={`${classPrefix}-container`}>{children}</View>
-      <View className={`${classPrefix}-bottom`}>
-        <View className={`${classPrefix}-bottom-tips`}>
-          {getBottomTipsText()}
-        </View>
+      <View className="nut-infinite-container">{children}</View>
+      <View className="nut-infinite-bottom">
+        <View className="nut-infinite-bottom-tips">{getBottomTipsText()}</View>
       </View>
     </ScrollView>
   )
