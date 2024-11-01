@@ -589,7 +589,7 @@ packages:
       '@babel/core': ^7.0.0-0
 
   '@babel/code-frame@7.24.7':
-    resolution: {integrity: sha1-iC/Z4J6O4yTklr0EBAHG8EbvRGU=, tarball: http://registry.m.jd.com/@babel/code-frame/download/@babel/code-frame-7.24.7.tgz}
+    resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
     engines: {node: '>=6.9.0'}
 
   '@babel/code-frame@7.26.0':
