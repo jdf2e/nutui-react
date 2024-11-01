@@ -10,10 +10,7 @@ on:
       - next
       - V3.0
   pull_request_target:
-    branches:
-      - next
-      - V3.0
-
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
@@ -21,11 +18,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
 
       - name: Determine label based on target branch
         id: determine-label
@@ -35,13 +29,14 @@ jobs:
           elif [[ "${{ github.event.pull_request.base.ref }}" == "V3.0" ]]; then
             echo "label=3.x" >> $GITHUB_ENV
           else
-            echo "label=none" >> $GITHUB_ENV
+            echo "label=" >> $GITHUB_ENV
           fi
 
       - name: Add label to Pull Request
+        if: env.label != ''
         uses: actions-ecosystem/action-add-labels@v1
         with:
-          github_token:  ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           labels: ${{ env.label }}
   lint:
     runs-on: ubuntu-latest
