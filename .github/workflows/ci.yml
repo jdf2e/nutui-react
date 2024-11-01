@@ -5,12 +5,8 @@ on:
     branches:
       - next
       - V3.0
-  pull_request:
-    branches:
-      - next
-      - V3.0
   pull_request_target:
-    types: [opened, synchronize, reopened]
+    types: [assigned, opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions: write-all
