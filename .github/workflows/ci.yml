@@ -13,10 +13,8 @@ on:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pull-requests: write
-  
+permissions: write-all
+
 jobs:
   add-label:
     runs-on: ubuntu-latest
