@@ -154,7 +154,6 @@ export type NutCSSVariables =
   | 'nutuiDividerSpacing'
   | 'nutuiDividerSideWidth'
   | 'nutuiDividerVerticalHeight'
-  | 'nutuiDividerVerticalTop'
   | 'nutuiDividerVerticalMargin'
   | 'nutuiIconHeight'
   | 'nutuiIconWidth'
