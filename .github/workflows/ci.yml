@@ -28,6 +28,7 @@ jobs:
           echo "label=3.x" >> $GITHUB_ENV
         else
           echo "label=other" >> $GITHUB_ENV
+        fi
   lint:
     runs-on: ubuntu-latest
     steps:
