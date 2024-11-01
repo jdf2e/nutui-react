@@ -37,6 +37,7 @@
     resize: none;
 
     .taro-textarea {
+      color: $textarea-text-color;
       background-color: transparent;
       resize: none;
     }
@@ -44,11 +45,12 @@
     &-disabled {
       cursor: not-allowed;
       color: $textarea-disabled-color;
-      &::-webkit-input-placeholder {
+      &::placeholder {
         color: $textarea-disabled-color;
       }
       .taro-textarea {
-        &::-webkit-input-placeholder {
+        color: $textarea-disabled-color;
+        &::placeholder {
           color: $textarea-disabled-color;
         }
       }

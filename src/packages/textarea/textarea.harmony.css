@@ -36,6 +36,7 @@
   resize: none;
 }
 .nut-textarea-textarea .taro-textarea {
+  color: #1a1a1a;
   background-color: transparent;
   resize: none;
 }
@@ -43,10 +44,13 @@
   cursor: not-allowed;
   color: #c2c4cc;
 }
-.nut-textarea-textarea-disabled::-webkit-input-placeholder {
+.nut-textarea-textarea-disabled::placeholder {
   color: #c2c4cc;
 }
-.nut-textarea-textarea-disabled .taro-textarea::-webkit-input-placeholder {
+.nut-textarea-textarea-disabled .taro-textarea {
+  color: #c2c4cc;
+}
+.nut-textarea-textarea-disabled .taro-textarea::placeholder {
   color: #c2c4cc;
 }
 .nut-textarea.nut-textarea-rtl-limit {
