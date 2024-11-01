@@ -1,3 +1,16 @@
+# v2.7.0
+
+`2024-11-01`
+
+- :sparkles: feat: add plugin to remove rtl (#2673)
+- :sparkles: feat: replacing the css paths imported from a specified package (#2675)
+- :sparkles: feat(replace icon): jmapp icon (#2672)
+- :sparkles: feat: add plugin to replace icons (#2671)
+- :bug: fix(tabs): clicked tabs should be entirely visible (#2685)
+- :bug: fix(avatarcropper): multi-language support (#2666)
+- :bug: fix: optimize vertical type syntax for divider (#2664)
+- :bug: fix: @nutui/icons-react changed to @nutui/icons-react-taro (#2651)
+
 # v2.6.23
 
 `2024-10-18`
