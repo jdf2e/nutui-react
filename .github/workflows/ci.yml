@@ -28,7 +28,7 @@ jobs:
             echo "label=3.x" >> $GITHUB_ENV
           fi
 
-      - name: Add label to PR
+      - name: Add label to PR test
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
