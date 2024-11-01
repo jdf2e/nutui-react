@@ -26,6 +26,7 @@ jobs:
       - name: Determine label based on target branch
         id: determine-label
         run: |
+          echo "${{github.event_name}}"
           if [[ "${{ github.event.pull_request.base.ref }}" == "next" ]]; then
             echo "label=2.x" >> $GITHUB_ENV
           elif [[ "${{ github.event.pull_request.base.ref }}" == "V3.0" ]]; then
@@ -33,12 +34,6 @@ jobs:
           else
             echo "label=" >> $GITHUB_ENV
           fi
-          
-      - name: Debug event
-        run: echo "Event name is: ${{ github.event_name }}"
-
-      - name: Debug label
-        run: echo "Label is: ${{ env.label }}"
 
       - name: Add label to Pull Request
         if: github.event_name == 'pull_request_target' && env.label != ''
