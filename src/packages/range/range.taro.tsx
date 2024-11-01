@@ -74,7 +74,7 @@ export const Range: FunctionComponent<
 
   const classPrefix = 'nut-range'
   const [buttonIndex, setButtonIndex] = useState(0)
-  const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
+  const [dragStatus, setDragStatus] = useState('start')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
   const [marksList, setMarksList] = useState<number[]>([])
