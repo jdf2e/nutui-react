@@ -9,8 +9,6 @@ on:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
-permissions: write-all
-
 jobs:
   add-label:
     runs-on: ubuntu-latest
