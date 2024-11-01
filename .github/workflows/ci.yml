@@ -5,8 +5,12 @@ on:
     branches:
       - next
       - V3.0
+  pull_request:
+    branches:
+      - next
+      - V3.0
   pull_request_target:
-    types: [assigned, opened, synchronize, reopened]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions: write-all
@@ -31,7 +35,7 @@ jobs:
           fi
 
       - name: Add label to Pull Request
-        if: env.label != ''
+        if: github.event_name == 'pull_request_target' && env.label != ''
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
