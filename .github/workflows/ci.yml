@@ -36,7 +36,7 @@ jobs:
         if: env.label != ''
         uses: actions-ecosystem/action-add-labels@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labels: ${{ env.label }}
   lint:
     runs-on: ubuntu-latest
