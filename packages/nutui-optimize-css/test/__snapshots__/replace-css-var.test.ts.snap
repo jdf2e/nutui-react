@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`@nutui/optimize-css > optimize css 1`] = `
+":root {
+  --nutui-color-primary-text: blue;
+}
+
+
+.nut-address-footer-btn {
+  background: linear-gradient(135deg, yellow 0%, #fa2c19 100%);
+  color: blue;
+  color: var(--nutui-color-primary-text)
+}
+"
+`;
