@@ -15,29 +15,17 @@ on:
 
 jobs:
   add-label:
+    name: Add Label
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Determine label based on target branch
-        id: determine-label
-        run: |
-          if [[ "${{ github.event.pull_request.base.ref }}" == "next" ]]; then
-            echo "label=2.x" >> $GITHUB_ENV
-          elif [[ "${{ github.event.pull_request.base.ref }}" == "V3.0" ]]; then
-            echo "label=3.x" >> $GITHUB_ENV
-          else
-            echo "label=" >> $GITHUB_ENV
-          fi
-
-      - name: Add label to Pull Request
-        if: env.label != ''
-        uses: actions-ecosystem/action-add-labels@v1
+      - uses: actions/checkout@v2
+      - uses: christianvuerings/add-labels@v1
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          labels: ${{ env.label }}
+          labels: |
+            minor release
+            bug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   lint:
     runs-on: ubuntu-latest
     steps:
