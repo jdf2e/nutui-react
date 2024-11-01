@@ -208,10 +208,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           const left = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
-          to = left - (navRectRef.current.width - titleRect.width) / 2
-          // to < 0 说明不需要进行滚动，页面元素已全部显示出来
-          if (to < 0) return
-          to = rtl ? -to : to
+          to = rtl ? -left : left
         }
         nextTick(() => {
           scrollWithAnimation.current = true
