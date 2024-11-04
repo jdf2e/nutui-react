@@ -45,9 +45,7 @@ const Demo1 = () => {
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
-        <Text style={styles.title}>
-          订单详情订单详情订单详情订单详情订单详情订单详情
-        </Text>
+        <Text style={styles.title}>订单详情</Text>
       </NavBar>
       <NavBar
         right={
