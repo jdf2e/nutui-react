@@ -1,12 +1,14 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const sleep = (time: number): Promise<unknown> =>
   new Promise((resolve) => {
     setTimeout(resolve, time)
   })
 const InfiniteUlStyle: CSSProperties = {
-  height: '300px',
+  height: pxTransform(200),
   width: '100%',
   padding: '0',
   overflowY: 'auto',
@@ -14,8 +16,8 @@ const InfiniteUlStyle: CSSProperties = {
 }
 
 const InfiniteLiStyle: CSSProperties = {
-  margin: '10px 10px 0',
-  fontSize: '14px',
+  marginTop: pxTransform(10),
+  fontSize: pxTransform(14),
   color: 'rgba(100, 100, 100, 1)',
   textAlign: 'center',
   backgroundColor: '#FFF',
@@ -52,7 +54,7 @@ const Demo4 = () => {
     return (
       <img
         alt=""
-        style={{ height: '24px', width: '24px' }}
+        style={{ height: pxTransform(24), width: pxTransform(24) }}
         src="https://img13.360buyimg.com/imagetools/jfs/t1/235005/5/15288/348/65fabd46F80f7367e/09fb5d99d07bee66.png"
         className="nut-infinite-bottom-tips-icons"
       />
@@ -62,7 +64,7 @@ const Demo4 = () => {
   return (
     <>
       <Cell>
-        <ul id="primaryScroll" style={InfiniteUlStyle}>
+        <View id="primaryScroll" style={InfiniteUlStyle}>
           <InfiniteLoading
             target="primaryScroll"
             type="primary"
@@ -78,13 +80,13 @@ const Demo4 = () => {
           >
             {customList.map((item, index) => {
               return (
-                <li key={index} style={InfiniteLiStyle}>
+                <View key={index} style={InfiniteLiStyle}>
                   {item}
-                </li>
+                </View>
               )
             })}
           </InfiniteLoading>
-        </ul>
+        </View>
       </Cell>
     </>
   )

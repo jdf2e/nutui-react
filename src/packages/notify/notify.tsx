@@ -15,7 +15,7 @@ export interface NotifyProps extends BasicComponent {
 const options: NotifyProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000, // 时长
+  duration: 3000,
   type: 'danger',
   position: 'top',
   onClose: () => {},

@@ -8,6 +8,8 @@ const trTR: BaseLang = {
   noData: 'Veri Yok',
   placeholder: 'Placeholder',
   select: 'Seçiniz',
+  edit: 'düzenlemek',
+  reset: 'sıfırlama',
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
@@ -53,6 +55,7 @@ const trTR: BaseLang = {
     tips: 'Şifrenizi mi unuttunuz',
   },
   uploader: {
+    list: 'Dosyaları yükle',
     ready: 'Tamamlamaya hazır',
     readyUpload: 'Yüklemeye hazır',
     waitingUpload: 'Yükleme için bekleniyor',
@@ -120,6 +123,7 @@ const trTR: BaseLang = {
     mute: 'sessiz',
     tips: 'onPlayEnd olayı loop=false olduğunda ateşlenir',
   },
+  avatarCropper: { rotate: 'döndürmek', selectImage: 'Resim seç' },
   datepicker: {
     year: 'yıl',
     month: 'ay',

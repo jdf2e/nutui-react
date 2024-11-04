@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { View } from '@tarojs/components'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { mergeProps } from '@/utils/merge-props'
 
 export type ActionSheetOption<T> = { [key: string]: T }
 
@@ -41,7 +42,7 @@ export const ActionSheet: FunctionComponent<
     className,
     style,
     ...rest
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
 
   const classPrefix = 'nut-actionsheet'
 

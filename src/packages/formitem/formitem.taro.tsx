@@ -119,7 +119,7 @@ export class FormItem extends React.Component<
     const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
-      className: classNames('a', children.props.className),
+      className: children.props.className,
       [this.props.valuePropName || 'value']:
         fieldValue !== undefined ? fieldValue : this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {

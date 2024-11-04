@@ -79,7 +79,7 @@ import { Popup } from '@nutui/nutui-react'
 | duration | 遮罩动画时长，单位毫秒 | `number` | `300` |
 | overlayClassName | 自定义遮罩类名 | `string` | `-` |
 | overlayStyle | 自定义遮罩样式 | `CSSProperties` | `-` |
-| lockScroll | 背景是否锁定 | `boolean` | `true` |
+| lockScroll | 背景是否锁定，strict 用于支持 iOS12 | `boolean\|strict` | `true` |
 | overlay | 是否显示遮罩 | `boolean` | `true` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | position | 弹出位置 | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |

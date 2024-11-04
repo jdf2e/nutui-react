@@ -17,6 +17,7 @@ import {
 } from '@/utils/use-custom-event'
 import { BasicComponent } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { mergeProps } from '@/utils/merge-props'
 
 export type DialogProps = DialogBasicProps & BasicComponent
 const defaultProps = {
@@ -78,7 +79,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       beforeClose,
     },
     setParams,
-  } = useParams({ ...defaultProps, ...props })
+  } = useParams(mergeProps(defaultProps, props))
 
   useCustomEvent(
     id as string,
@@ -225,7 +226,6 @@ export function close(selector: string) {
   customEvents.trigger(path, { status: false })
 }
 
-BaseDialog.defaultProps = defaultProps // 不可删除
 BaseDialog.displayName = 'NutDialog'
 BaseDialog.open = open
 BaseDialog.close = close

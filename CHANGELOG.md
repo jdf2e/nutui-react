@@ -1,3 +1,58 @@
+# v2.6.23
+
+`2024-10-18`
+
+- :sparkles: feat(calendar): support renderBottomButton props (#2645)
+- :sparkles: feat(calendar): support deleteIcon props (#2644)
+- :bug: fix(overlay): tour position offset in tour.taro (#2631)
+- :bug: fix: import error (#2648)
+- :bug: fix(dialog): remove defaultprops (#2639)
+
+# v2.6.22
+
+`2024-10-12`
+
+- :sparkles: feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 (#2629)
+- :bug: fix(dialog): revert defaultprops
+- :bug: fix(range): usememo (#2638)
+- :bug: fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed (#2633)
+- :bug: fix: taro async warning in taro-h5 env (#2636)
+- :bug: fix(range): refactor & lint fixed (#2637)
+- :bug: fix(radio): lint fixed (#2635)
+- :bug: fix(navbar): safearea displays abnormal when safeAreaInsetTop has been set true (#2632)
+- :bug: fix: usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize (#2628)
+- 🏡 chore(demo): display bound dispatchSetState in demo8 of table demos (#2626)
+- 📖 docs: swiper 可通过 css 的 touch-action 设置用户操作行为 (#2630)
+- 📖 docs: 文档构建出现未闭合标签的错误提示
+
+# v2.6.21
+
+`2024-09-27`
+
+- 🏡 chore: update dependency linguist-languages to be included within package (#2607)
+- :sparkles: feat(Uploader): add support for deleteIcon prop customization (#2618)
+- :bug: fix: 修改jd小程序高版本弹幕不滚动问题 (#2612)
+
+# v2.6.20
+
+`2024-09-20`
+
+- :bug: fix: i18n (#2597)
+- :bug: fix: 类型构建错误 (#2605)
+- 🏡 chore: replace local prettier plugin with npm package (#2603)
+
+# v2.6.19
+
+`2024-09-13`
+
+- 🏡 chore(deps): update dependency vite-plugin-dts to v4 (#2533)
+- :bug: fix(cascader): 受控状态下 value 变化时同步组件选中状态 (#2591)
+- :bug: fix: 移除不必要的 fragment 元素 (#2587)
+- :bug: fix(datepicker): show zero on page (#2582)
+- :bug: fix: findDomNode from transition (#2525)
+- :bug: fix(props): add mergeProps utility to resolve all defaultProps warnings (#2581)
+- 🪵 refactor: resolve sass nested rules warning (#2579)
+
 # v2.6.18
 
 `2024-09-06`

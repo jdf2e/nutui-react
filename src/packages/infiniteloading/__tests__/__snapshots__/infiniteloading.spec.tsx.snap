@@ -20,7 +20,11 @@ exports[`infiniteloading base 01 1`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -127,7 +131,11 @@ exports[`pull base 01 1`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -152,7 +160,11 @@ exports[`pull base 03 1`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -177,7 +189,11 @@ exports[`pull base 03 2`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -202,7 +218,11 @@ exports[`pull base 1`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -227,7 +247,11 @@ exports[`pull base 2`] = `
     />
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      />
+    </div>
   </div>
 </div>
 `;

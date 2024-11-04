@@ -267,7 +267,6 @@ const InternalPicker: ForwardRefRenderFunction<
       }
     }
   }
-  // 点击确定
   const confirm = () => {
     let moving = false
     refs.forEach((ref: any) => {

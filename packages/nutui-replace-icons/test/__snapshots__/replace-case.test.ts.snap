@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`replace Loading icons with Star 1`] = `
+"import { Star as Loading } from "@test/aa";
+import { ArrowSize6 as Arrow } from "@test/aa";
+const ReplaceOne = () => {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Loading, null), " ", /*#__PURE__*/React.createElement(Arrow, null));
+};"
+`;

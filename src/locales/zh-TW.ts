@@ -8,6 +8,8 @@ const zhCN: BaseLang = {
   noData: '暫無數據',
   placeholder: '請輸入內容',
   select: '請選擇',
+  edit: '編輯',
+  reset: '重置',
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試',
@@ -46,6 +48,7 @@ const zhCN: BaseLang = {
     tips: '忘記密碼',
   },
   uploader: {
+    list: '上傳文件',
     ready: '準備完成',
     readyUpload: '準備上傳',
     waitingUpload: '等待上傳',
@@ -112,6 +115,7 @@ const zhCN: BaseLang = {
     mute: '靜音',
     tips: 'onPlayEnd事件在loop=false時才會觸發',
   },
+  avatarCropper: { rotate: '旋轉', selectImage: '選擇圖片' },
   datepicker: {
     year: '年',
     month: '月',
