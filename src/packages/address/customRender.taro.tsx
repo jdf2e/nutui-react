@@ -8,7 +8,7 @@ import Cascader, {
 import { ComponentDefaults } from '@/utils/typings'
 
 export interface AddressProps extends CascaderProps {
-  visible: boolean // popup 显示状态
+  visible: boolean // popup visible
   type: string
   options: CascaderOption[]
   value?: CascaderValue

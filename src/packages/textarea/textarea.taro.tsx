@@ -122,8 +122,8 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
         style={Taro.getEnv() === 'WEB' ? undefined : style}
         disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
-        value={inputValue}
         // @ts-ignore
+        value={inputValue}
         onInput={(e: any) => handleChange(e)}
         onBlur={(e: any) => handleBlur(e)}
         onFocus={(e: any) => handleFocus(e)}

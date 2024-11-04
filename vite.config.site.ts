@@ -21,11 +21,11 @@ export default defineConfig(async (): Promise<UserConfig> => {
     resolve: {
       alias: [
         {
-          find: '@nutui/nutui-react/dist/locale/enUS',
+          find: '@nutui/nutui-react/dist/locale/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         {
-          find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+          find: '@nutui/nutui-react-taro/dist/locales/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         { find: '@', replacement: resolve(__dirname, './src') },
@@ -42,9 +42,12 @@ export default defineConfig(async (): Promise<UserConfig> => {
     css: {
       preprocessorOptions: {
         scss: {
-          // example : additionalData: `@import "./src/design/styles/variables";`
+          // example : additionalData: `@import "./src/dclearesign/styles/variables";`
           // dont need include file extend .scss
+          api: 'modern-compiler',
           additionalData: fileStr,
+          // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
+          silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
           plugins: [

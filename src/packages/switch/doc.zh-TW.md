@@ -82,7 +82,7 @@ import { Switch } from '@nutui/nutui-react'
 | \--nutui-switch-close-background-color | 開關關閉狀態背景顏色 | `$color-text-disabled` |
 | \--nutui-switch-open-background-color | 開關打開狀態背景顏色 | `$color-primary` |
 | \--nutui-switch-close-disabled-background-color | 開關關閉時的禁用時的背景顏色 | `$color-background` |
-| \--nutui-switch-open-disabled-background-color | 開關打開時的禁用時的背景顏色 | `$color-primary-disabled` |
+| \--nutui-switch-open-disabled-background-color | 開關打開時的禁用時的背景顏色 | `$color-primary-disabled-special` |
 | \--nutui-switch-width | 開關寬度 | `40px` |
 | \--nutui-switch-height | 開關高度 | `24px` |
 | \--nutui-switch-line-height | 開關行高 | `24px` |

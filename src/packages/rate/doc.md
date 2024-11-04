@@ -121,7 +121,7 @@ import { Rate } from '@nutui/nutui-react'
 | allowHalf | 是否半星 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| touchable | 是否允许滑动选择 ｜ `boolean` | `false` |
+| touchable | 是否允许滑动选择 | `boolean` | `false` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
 | onTouchEnd | touch 滑动结束时触发 | `(event: TouchEvent, value: number) => void` | `-` |
 

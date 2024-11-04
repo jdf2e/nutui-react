@@ -40,7 +40,10 @@ const InfiniteLoadingDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+        showScrollbar={false}
+      >
         <View className="h2">{translated['84aa6bce']}</View>
         <Demo1 />
         <View className="h2">{translated.eb4236fe}</View>

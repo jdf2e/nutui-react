@@ -5,6 +5,7 @@ import { Content } from './content'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import { ComponentDefaults } from '@/utils/typings'
 import Overlay from '@/packages/overlay'
+import { mergeProps } from '@/utils/merge-props'
 
 interface DialogWrapProps extends OverlayProps {
   visible: boolean
@@ -43,7 +44,7 @@ export const DialogWrap: FunctionComponent<
     onClose,
     onCancel,
     onOverlayClick,
-  } = props
+  } = mergeProps(defaultDialogProps, props)
 
   const onHandleClickOverlay = (e: any) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
@@ -77,5 +78,4 @@ export const DialogWrap: FunctionComponent<
     </>
   )
 }
-
 DialogWrap.displayName = 'NutDialogWrap'

@@ -6,6 +6,7 @@ import React, {
   useImperativeHandle,
   useMemo,
   useState,
+  useRef,
 } from 'react'
 import classNames from 'classnames'
 import { getSystemInfoSync, usePageScroll } from '@tarojs/taro'
@@ -85,12 +86,25 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       onChange?.(option)
     },
   })
+  const cssRef = useRef(null)
   useEffect(() => {
     setShowPopup(show)
   }, [show])
+
+  const getParentOffset = useCallback(() => {
+    setTimeout(async () => {
+      const p = parent.menuRef.current
+      const rect = await getRectByTaro(p)
+      setPosition({
+        height: rect.height,
+        top: rect.top,
+      })
+    }, 100)
+  }, [parent.menuRef])
+
   useEffect(() => {
     getParentOffset()
-  }, [showPopup])
+  }, [showPopup, getParentOffset])
 
   const windowHeight = useMemo(() => getSystemInfoSync().windowHeight, [])
   const updateItemOffset = useCallback(() => {
@@ -104,7 +118,8 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         })
       }
     })
-  }, [direction, windowHeight])
+  }, [direction, windowHeight, parent.lockScroll, parent.menuRef])
+
   usePageScroll(updateItemOffset)
 
   useImperativeHandle<any, any>(ref, () => ({
@@ -134,16 +149,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     top: 0,
     height: 0,
   })
-  const getParentOffset = () => {
-    setTimeout(async () => {
-      const p = parent.menuRef.current
-      const rect = await getRectByTaro(p)
-      setPosition({
-        height: rect.height,
-        top: rect.top,
-      })
-    }, 100)
-  }
+
   const isShow = () => {
     if (showPopup) return {}
     return { display: 'none' }
@@ -214,6 +220,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
+          nodeRef={cssRef}
           in={showPopup}
           timeout={100}
           classNames={

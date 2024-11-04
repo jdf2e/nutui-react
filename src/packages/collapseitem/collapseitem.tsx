@@ -49,7 +49,6 @@ export const CollapseItem: FunctionComponent<
 
   const classPrefix = 'nut-collapse-item'
   const context = useContext(CollapseContext)
-  // 获取 Dom 元素
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
 

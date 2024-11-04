@@ -4,6 +4,7 @@ var glob = require('glob')
 const path = require('path')
 const fs = require('fs-extra')
 let importStr = ``
+let importRNStr = ``
 let importMarkdownStr = ``
 let importScssStr = `\n`
 const packages = []
@@ -12,14 +13,17 @@ const raws = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro, exportEmpty, exclude, version } = element
+    let { name, show, type, taro, exportEmpty, exclude, version, rn } = element
     if (exclude) return
-    if (version !== '3.0.0') return // 不显示的不导出
+    if (version !== '3.0.0') return
 
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`
+    importRNStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
+    importRNStr += `export * from '@/packages/${name.toLowerCase()}/index.${rn?'rn':'taro'}'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.harmony.css'\n`
     packages.push(name)
+
     glob
       .sync(
         path.join(__dirname, `../../nutui-react/packages/${name.toLowerCase()}/`) +
@@ -41,24 +45,24 @@ config.nav.map((item) => {
   })
 })
 
-// let fileStrBuild = `${importStr}
-// export { ${packages.join(',')} };`
-
-// fs.outputFile(
-//   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.build.taro.ts'),
-//   fileStrBuild,
-//   'utf8',
-//   (error) => {
-//     if (error) throw error
-//   }
-// )
-
 let fileStr = `${importStr}
 ${importScssStr}
 export { ${packages.join(',')} };`
 fs.outputFile(
   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.taro.ts'),
   fileStr,
+  'utf8',
+  (error) => {
+    if (error) throw error
+  }
+)
+
+let fileRNStr = `${importRNStr}
+${importScssStr}
+export { ${packages.join(',')} };`
+fs.outputFile(
+  path.resolve(__dirname, '../../nutui-react/packages/nutui.react.rn.ts'),
+  fileRNStr,
   'utf8',
   (error) => {
     if (error) throw error
@@ -76,28 +80,3 @@ fs.outputFile(
     if (error) throw error
   }
 )
-
-// fs.outputFile(
-//   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.scss.ts'),
-//   importScssStr,
-//   'utf8',
-//   (error) => {
-//     if (error) throw error
-//   }
-// )
-
-// let mdFileStr = `${importMarkdownStr}
-// export const routers = [${mds.map((m) => `'${m}'`)}]
-// export const raws = {${raws.join(',')}}
-// `
-
-// fs.outputFile(
-//   path.resolve(__dirname, '../../src/sites/doc/docs.taro.ts'),
-//   mdFileStr,
-//   'utf8',
-//   (error) => {
-//     if (error) throw error
-//   }
-// )
-
-

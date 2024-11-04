@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 import Button, { ButtonFill, ButtonSize, ButtonType } from '../button'
@@ -50,7 +49,6 @@ const classPrefix = `nut-empty`
 export const Empty: FunctionComponent<
   Partial<EmptyProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     image,
     imageSize,

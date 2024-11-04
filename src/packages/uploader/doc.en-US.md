@@ -161,6 +161,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | headers | Set request headers | `object` | `{}` |
 | data | Uploading extra params or function which can return uploading extra params formData | `object` | `{}` |
 | uploadIcon | Upload area<a href="#/zh-CN/icon">icon name</a> | `React.ReactNode` | `-` |
+| deleteIcon | Delete area icon name | `React.ReactNode` | `-` |
 | uploadLabel | Upload area tip | `React.ReactNode` | `-` |
 | xhrState | The success status (status) value of the interface response | `number` | `200` |
 | withCredentials | Support for sending cookie credential information | `boolean` | `false` |

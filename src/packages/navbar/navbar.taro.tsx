@@ -6,6 +6,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { harmonyAndRn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
+import { SafeArea } from '@/packages/safearea/safearea.taro'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -196,6 +197,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   return (
     <>
+      {safeAreaInsetTop && <SafeArea position="top" />}
       {fixed && placeholder ? (
         <View className={`${classPrefix}-placeholder`}>{renderWrapper()}</View>
       ) : (

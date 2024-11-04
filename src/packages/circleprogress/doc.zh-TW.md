@@ -83,4 +83,4 @@ import { CircleProgress } from '@nutui/nutui-react'
 | \--nutui-circleprogress-primary-color | 環形進度條填充部分的顏色 | `$color-primary` |
 | \--nutui-circleprogress-path-color | 環形進度條軌道的顏色 | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | 環形進度條軌道內容區的顏色 | `$color-title` |
-| \--nutui-circleprogress-text-size | 環形進度條軌道內容區的大小 | `$font-size-large` |
+| \--nutui-circleprogress-text-size | 環形進度條軌道內容區的大小 | `$font-size-l` |

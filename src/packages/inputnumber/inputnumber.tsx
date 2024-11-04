@@ -21,6 +21,7 @@ export interface InputNumberProps extends BasicComponent {
   step: number
   digits: number
   async: boolean
+  select: boolean
   formatter?: (value?: string | number) => string
   onPlus: (e: React.MouseEvent) => void
   onMinus: (e: React.MouseEvent) => void
@@ -43,6 +44,7 @@ const defaultProps = {
   step: 1,
   digits: 0,
   async: false,
+  select: true,
 } as InputNumberProps
 
 const classPrefix = `nut-inputnumber`
@@ -62,6 +64,7 @@ export const InputNumber: FunctionComponent<
     digits,
     step,
     async,
+    select,
     className,
     style,
     formatter,
@@ -82,10 +85,10 @@ export const InputNumber: FunctionComponent<
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
-    if (focused) {
+    if (select && focused) {
       inputRef.current?.select?.()
     }
-  }, [focused])
+  }, [select, focused])
 
   const [shadowValue, setShadowValue] = usePropsValue<number | null | string>({
     value: typeof value === 'string' ? parseFloat(value) : value,
@@ -247,21 +250,19 @@ export const InputNumber: FunctionComponent<
           )}
         />
       </div>
-      <>
-        <input
-          className={classNames(`${classPrefix}-input`, {
-            [`${classPrefix}-input-disabled`]: disabled,
-          })}
-          ref={inputRef}
-          inputMode="decimal"
-          disabled={disabled}
-          readOnly={readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      </>
+      <input
+        className={classNames(`${classPrefix}-input`, {
+          [`${classPrefix}-input-disabled`]: disabled,
+        })}
+        ref={inputRef}
+        inputMode="decimal"
+        disabled={disabled}
+        readOnly={readOnly}
+        value={inputValue}
+        onInput={handleInputChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
       <div className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
           className={classNames(

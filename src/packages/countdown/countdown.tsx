@@ -207,7 +207,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     return formatCache
   }
 
-  // 暂定
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
     stateRef.current.counting = false
