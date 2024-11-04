@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -67,7 +67,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
           Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
             const idx = Number(numerArr[Number(key)])
-            if (elem) {
+            if (elem && typeof idx === 'number' && !Number.isNaN(idx)) {
               // 计算规则：父元素和实际列表高度的百分比，分割成20等份
               const transform =
                 idx || idx === 0
@@ -106,13 +106,12 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       window.clearTimeout(timerRef.current)
     }
   }, [value, delay, getShowNumber])
-
   return (
     <View className={`${classPrefix} ${className}`} ref={countupRef}>
-      <ul className={`${classPrefix}-list`}>
+      <View className={`${classPrefix}-list`}>
         {numerArr.map((item: string, idx: number) => {
           return (
-            <li
+            <View
               className={`${classPrefix}-listitem ${
                 !Number.isNaN(Number(item))
                   ? `${classPrefix}-listitem-number`
@@ -121,21 +120,28 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
               key={idx}
             >
               {!Number.isNaN(Number(item)) ? (
-                <span
+                <View
                   className={`${classPrefix}-number`}
                   style={numberEaseStyle(idx)}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
-                    return <span key={subidx}>{number}</span>
+                    return (
+                      <Text
+                        className={`${classPrefix}-number-text`}
+                        key={subidx}
+                      >
+                        {number}
+                      </Text>
+                    )
                   })}
-                </span>
+                </View>
               ) : (
-                <span className={`${classPrefix}-separator`}>{item}</span>
+                <View className={`${classPrefix}-separator`}>{item}</View>
               )}
-            </li>
+            </View>
           )
         })}
-      </ul>
+      </View>
     </View>
   )
 }
