@@ -35,15 +35,15 @@ test('should match top、right: bad number', () => {
 })
 
 test('should match top、right: have px', () => {
-  const { container } = render(<Badge value={10} top="-10px" right="0" />)
+  const { container } = render(<Badge value={10} top="-10" right="0" />)
   const badgeContent = container.querySelectorAll('.nut-badge-content')[0]
-  expect(badgeContent).toHaveStyle({ top: '-10px', right: '0px' })
+  expect(badgeContent).toHaveStyle({ top: '10px', right: '0px' })
 })
 
 test('should match top、right: float', () => {
-  const { container } = render(<Badge value={10} top="-10.8px" right="0.5px" />)
+  const { container } = render(<Badge value={10} top="-10.8" right="0.5px" />)
   const badgeContent = container.querySelectorAll('.nut-badge-content')[0]
-  expect(badgeContent).toHaveStyle({ top: '-10.8px', right: '0.5px' })
+  expect(badgeContent).toHaveStyle({ top: '10.8px', right: '0.5px' })
 })
 
 test('should match custom color', () => {

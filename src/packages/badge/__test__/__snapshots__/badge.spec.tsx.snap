@@ -6,7 +6,7 @@ exports[`should match custom icon 1`] = `
     class="nut-badge"
   >
     <div
-      class="nut-badge-icon"
+      class="nut-badge-content nut-badge-icon"
     >
       <svg
         aria-labelledby="Checklist"
@@ -33,7 +33,7 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-badge-content nut-badge-sup nut-badge-one"
-      style="top: 4px; right: 8px;"
+      style="top: -4px; right: 8px;"
     >
       8
     </div>
