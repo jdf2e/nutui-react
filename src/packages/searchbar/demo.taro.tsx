@@ -67,10 +67,8 @@ const SearchBarDemo = () => {
         <Demo4 />
         <View className="h2">{translated.title5}</View>
         <Demo5 />
-        {/* 组件引入Popover组件，带Popover组件适配harmony后验证 */}
-        {harmony() ? (
-          <></>
-        ) : (
+        {/* 组件引入Popover组件，待Popover组件适配harmony后验证 */}
+        {!harmony() && (
           <>
             <View className="h2">{translated.title7}</View>
             <Demo6 />

@@ -99,12 +99,12 @@ export const SearchBar: FunctionComponent<
     eventValue === '' && forceFocus()
   }
   const focus = (event: any) => {
-    onFocus && onFocus?.(event?.detail?.value, event)
+    onFocus && onFocus(event?.detail?.value, event)
   }
   const blur = (event: any) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
-    onBlur && onBlur?.(event?.detail?.value, event)
+    onBlur && onBlur(event?.detail?.value, event)
   }
   useEffect(() => {
     setValue(outerValue || '')
