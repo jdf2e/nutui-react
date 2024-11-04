@@ -7,7 +7,7 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import { Photograph } from '@nutui/icons-react'
+import { Photograph, Failure } from '@nutui/icons-react'
 import { ERROR, SUCCESS, Utils, UPLOADING, UploadOptions } from './utils'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
@@ -26,6 +26,7 @@ export interface UploaderProps extends BasicComponent {
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
+  deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
   accept: string
@@ -94,6 +95,7 @@ const defaultProps = {
   deletable: true,
   capture: false,
   uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
+  deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
@@ -108,6 +110,7 @@ const InternalUploader: ForwardRefRenderFunction<
   const {
     children,
     uploadIcon,
+    deleteIcon,
     uploadLabel,
     name,
     accept,
@@ -410,6 +413,7 @@ const InternalUploader: ForwardRefRenderFunction<
           handleItemClick,
           previewUrl,
           children,
+          deleteIcon,
         }}
       />
 

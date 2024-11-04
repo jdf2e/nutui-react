@@ -8,10 +8,10 @@ const Demo5 = () => {
     <Cell>
       <Divider
         style={{
-          color: '#1989fa',
+          color: '#0073ff',
           paddingLeft: pxTransform(16),
           paddingRight: pxTransform(16),
-          borderColor: '#1989fa',
+          borderColor: '#0073ff',
           borderStyle: rn() ? 'solid' : 'dashed',
         }}
       >

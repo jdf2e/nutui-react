@@ -1,4 +1,5 @@
 src/sites
+src/packages/nutui.react.build.rn.ts
 scripts
 site_docs
 coverage

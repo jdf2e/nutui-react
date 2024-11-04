@@ -105,7 +105,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-title-color | The cell title the font color | `$color-title` |
 | \--nutui-cell-title-font-size | The cell title the font size | `$font-size-base` |
 | \--nutui-cell-description-color | The cell describes the font color | `$color-text` |
-| \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-small` |
+| \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-s` |
 | \--nutui-cell-extra-color | The right side of the cell describes the font color | `$color-text` |
 | \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-base` |
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
@@ -122,7 +122,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-group-title-line-height | The title row height of the cell group | `20px` |
 | \--nutui-cell-group-description-padding | The description padding for cell groups | `0 10px` |
 | \--nutui-cell-group-description-color | The description color of the cell group | `#909ca4` |
-| \--nutui-cell-group-description-font-size | The description font size of the cell group | `$font-size-small` |
+| \--nutui-cell-group-description-font-size | The description font size of the cell group | `$font-size-s` |
 | \--nutui-cell-group-description-line-height | The description row height of cell group | `16px` |
 | \--nutui-cell-group-background-color | The background color of the cell group | `$white` |
 | \--nutui-cell-group-wrap-margin | The margin of the cell group wrap | `10px` |
