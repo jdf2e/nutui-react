@@ -284,7 +284,7 @@ export const Popup: FunctionComponent<
         animationType="none" // 使用 slide 动画
         transparent // 使背景透明
         visible={innerVisible}
-        onRequestClose={onHandleClickOverlay} // 处理 Android 设备的返回按钮
+        // onRequestClose={onHandleClickOverlay} // 处理 Android 设备的返回按钮
       >
         {overlay ? (
           <TouchableOpacity
@@ -293,7 +293,7 @@ export const Popup: FunctionComponent<
             // closeOnOverlayClick={closeOnOverlayClick}
             // lockScroll={lockScroll}
             // duration={duration}
-            onPress={onHandleClickOverlay}
+            // onPress={onHandleClickOverlay}
           >
             <View className={overlayClassName} style={overlayStyles} />
           </TouchableOpacity>

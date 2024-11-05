@@ -1,3 +1,13 @@
+# v2.6.23
+
+`2024-10-18`
+
+- :sparkles: feat(calendar): support renderBottomButton props (#2645)
+- :sparkles: feat(calendar): support deleteIcon props (#2644)
+- :bug: fix(overlay): tour position offset in tour.taro (#2631)
+- :bug: fix: import error (#2648)
+- :bug: fix(dialog): remove defaultprops (#2639)
+
 # v2.6.22
 
 `2024-10-12`

@@ -1,12 +1,14 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const sleep = (time: number): Promise<unknown> =>
   new Promise((resolve) => {
     setTimeout(resolve, time)
   })
 const InfiniteUlStyle: CSSProperties = {
-  height: '300px',
+  height: pxTransform(200),
   width: '100%',
   padding: '0',
   overflowY: 'auto',
@@ -14,8 +16,8 @@ const InfiniteUlStyle: CSSProperties = {
 }
 
 const InfiniteLiStyle: CSSProperties = {
-  marginTop: '10px',
-  fontSize: '14px',
+  marginTop: pxTransform(10),
+  fontSize: pxTransform(14),
   color: 'rgba(100, 100, 100, 1)',
   textAlign: 'center',
 }
@@ -50,7 +52,7 @@ const Demo3 = () => {
   return (
     <>
       <Cell>
-        <ul id="customScroll" style={InfiniteUlStyle}>
+        <View id="customScroll" style={InfiniteUlStyle}>
           <InfiniteLoading
             target="customScroll"
             loadingText="loading"
@@ -60,13 +62,13 @@ const Demo3 = () => {
           >
             {customList.map((item, index) => {
               return (
-                <li key={index} style={InfiniteLiStyle}>
+                <View key={index} style={InfiniteLiStyle}>
                   {item}
-                </li>
+                </View>
               )
             })}
           </InfiniteLoading>
-        </ul>
+        </View>
       </Cell>
     </>
   )

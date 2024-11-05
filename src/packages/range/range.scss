@@ -32,7 +32,7 @@
 
   &-min,
   &-max {
-    font-size: $font-size-small;
+    font-size: $font-size-s;
     color: $range-color;
     user-select: none;
   }
@@ -103,7 +103,7 @@
       align-items: center;
       justify-content: center;
       user-select: none;
-      font-size: $font-size-small;
+      font-size: $font-size-s;
       color: $range-color;
       text-align: center;
       vertical-align: center;

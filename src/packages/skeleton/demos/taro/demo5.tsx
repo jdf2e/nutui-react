@@ -35,8 +35,8 @@ const Demo5 = () => {
             }
           />
           <View className="nut-skeleton-content-line">
-            <Text className="nut-skeleton-content-title">NutUI-React</Text>
-            <View className="description">
+            <Text>NutUI-React</Text>
+            <View style={{ marginTop: '10px', width: '70%' }}>
               一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
             </View>
           </View>

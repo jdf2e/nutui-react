@@ -140,7 +140,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-countdown-number-padding | Countdown time area padding | `0 1px` |
 | \--nutui-countdown-number-margin | Countdown time area margin | `0 2px` |
 | \--countdown-number-border-radius | Countdown time area border radius | `2px` |
-| \--nutui-countdown-color | Countdown time area text color | `$color-primary-light` |
+| \--nutui-countdown-color | Countdown time area text color | `$color-primary-light-pressed` |
 | \--nutui-countdown-background-color | Countdown time area background color | `$color-primary` |
 | \--nutui-countdown-border-color | Countdown time area border color color | `$color-primary` |
 | \--nutui-countdown-primary-color | When type is primary, the text color of the countdown time area | `#FFFFFF` |
