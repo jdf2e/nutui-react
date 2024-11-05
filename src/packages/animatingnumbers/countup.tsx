@@ -76,7 +76,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   }, [numerArr])
 
   const numberEaseStyle: CSSProperties = {
-    transition: `transform ${duration}s ease-in-out`,
+    transitionDuration: `${duration}s`,
   }
 
   useEffect(() => {
@@ -107,7 +107,14 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
                   style={numberEaseStyle}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
-                    return <span key={subidx}>{number}</span>
+                    return (
+                      <span
+                        className={`${classPrefix}-number-text`}
+                        key={subidx}
+                      >
+                        {number}
+                      </span>
+                    )
                   })}
                 </span>
               ) : (

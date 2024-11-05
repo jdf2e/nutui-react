@@ -82,9 +82,11 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     }
   }, [numerArr])
 
+  console.log('transitionDuration', `${duration}s`)
+
   const numberEaseStyle = (idx: number) => {
     return {
-      transition: `transform ${duration}s ease-in-out`,
+      transitionDuration: `${duration}s`,
       transform: transformArr[idx] ? transformArr[idx] : null,
     } as CSSProperties
   }
