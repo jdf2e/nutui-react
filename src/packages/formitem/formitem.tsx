@@ -1,9 +1,10 @@
-import React, { CSSProperties, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
+import { toArray } from '@/utils/to-array'
 import { SECRET } from '@/packages/form/useform'
 
 type TextAlign =
@@ -34,7 +35,7 @@ export interface FormItemProps
   shouldUpdate: boolean
   noStyle: boolean
   children: ReactNode | ((obj: any) => React.ReactNode)
-  align?: 'flex-start' | 'center' | 'flex-end'
+  align: 'flex-start' | 'center' | 'flex-end'
 }
 
 const defaultProps = {
@@ -44,7 +45,6 @@ const defaultProps = {
   label: '',
   rules: [{ required: false, message: '' }],
   errorMessageAlign: 'left',
-  validateTrigger: 'onChange',
   shouldUpdate: false,
   noStyle: false,
 } as FormItemProps
@@ -136,26 +136,23 @@ export class FormItem extends React.Component<
       },
     }
     const { validateTrigger } = this.props
-    let validateTriggers: string[] = [this.props.trigger || 'onChange']
-    if (validateTrigger) {
-      validateTriggers =
-        typeof validateTrigger === 'string'
-          ? [validateTrigger]
-          : [...validateTrigger]
-      validateTriggers.forEach((trigger) => {
-        const originTrigger = controlled[trigger]
-        controlled[trigger] = (...args: any) => {
-          if (originTrigger) {
-            originTrigger(...args)
-          }
-          if (this.props.rules && this.props.rules.length) {
-            dispatch({
-              name: this.props.name,
-            })
-          }
+    const mergedValidateTrigger =
+      validateTrigger || this.context.validateTrigger
+
+    const validateTriggers: string[] = toArray(mergedValidateTrigger)
+    validateTriggers.forEach((trigger) => {
+      const originTrigger = controlled[trigger]
+      controlled[trigger] = (...args: any) => {
+        if (originTrigger) {
+          originTrigger(...args)
         }
-      })
-    }
+        if (this.props.rules && this.props.rules.length) {
+          dispatch({
+            name: this.props.name,
+          })
+        }
+      }
+    })
 
     if (isForwardRefComponent(children)) {
       controlled.ref = (componentInstance: any) => {
@@ -271,9 +268,7 @@ export class FormItem extends React.Component<
     } else {
       returnChildNode = child(this.context.formInstance)
     }
-    const itemStyle: CSSProperties = this.context.disabled
-      ? { opacity: 0.4, pointerEvents: 'none' }
-      : {}
+
     return (
       <React.Fragment key={this.state.resetCount}>
         <div className={this.context.disabled ? 'nut-form-item-disabled' : ''}>

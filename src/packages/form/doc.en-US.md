@@ -80,6 +80,7 @@ import { Form } from '@nutui/nutui-react'
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
 | starPosition | The red star position of the required form item label | `left` \| `right` | `left` |
+| validateTrigger | uniformly set the timing for fields to trigger validation | `string` \| `string[]` | `onChange` |
 | onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
 | onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
