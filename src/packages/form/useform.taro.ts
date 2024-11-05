@@ -1,11 +1,12 @@
 import { useRef } from 'react'
 import Schema from 'async-validator'
+import { merge } from '@/utils/merge'
 import {
-  Store,
   Callbacks,
-  FormInstance,
   FormFieldEntity,
+  FormInstance,
   NamePath,
+  Store,
 } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
@@ -74,16 +75,22 @@ class FormStore {
     return fieldsValue
   }
 
+  updateStore(nextStore: Store) {
+    this.store = nextStore
+  }
+
   /**
    * 设置 form 的初始值，之后在 reset 的时候使用
    * @param values
    * @param init
    */
 
-  setInitialValues = (values: Store, init: boolean) => {
+  setInitialValues = (initialValues: Store, init: boolean) => {
+    this.initialValues = initialValues || {}
     if (init) {
-      this.initialValues = values
-      this.store = values
+      const nextStore = merge(initialValues, this.store)
+      this.updateStore(nextStore)
+      console.log(this.store === this.initialValues)
     }
   }
 
@@ -91,11 +98,9 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: any, needValidate = true) => {
-    this.store = {
-      ...this.store,
-      ...newStore,
-    }
+  setFieldsValue = (newStore: any) => {
+    const nextStore = merge(this.store, newStore)
+    this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
       Object.keys(newStore).forEach((key) => {
@@ -113,7 +118,6 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
-    needValidate && this.validateFields()
   }
 
   setCallback = (callback: Callbacks) => {
@@ -142,7 +146,7 @@ class FormStore {
     // validator.messages()
     try {
       await validator.validate({ [name]: this.store?.[name] })
-    } catch ({ errors }: any) {
+    } catch ({ errors }) {
       if (errors) {
         errs.push(...(errors as any[]))
         this.errors[name] = errors
@@ -186,7 +190,9 @@ class FormStore {
 
   resetFields = () => {
     this.errors.length = 0
-    this.store = this.initialValues
+    const nextStore = merge({}, this.initialValues)
+    console.log('xxx', nextStore, this.initialValues)
+    this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')
     })
@@ -244,6 +250,6 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
       const formStore = new FormStore()
       formRef.current = formStore.getForm() as FormInstance
     }
+    return [formRef.current as FormInstance]
   }
-  return [formRef.current]
 }

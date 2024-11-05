@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell'
@@ -113,9 +113,11 @@ export class FormItem extends React.Component<
     if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
     }
+
     const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
+      className: children.props.className,
       [this.props.valuePropName || 'value']:
         fieldValue !== undefined ? fieldValue : this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
@@ -130,7 +132,7 @@ export class FormItem extends React.Component<
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
-        setFieldsValue({ [name]: next }, false)
+        setFieldsValue({ [name]: next })
       },
     }
     const { validateTrigger } = this.props
@@ -269,11 +271,16 @@ export class FormItem extends React.Component<
     } else {
       returnChildNode = child(this.context.formInstance)
     }
+    const itemStyle: CSSProperties = this.context.disabled
+      ? { opacity: 0.4, pointerEvents: 'none' }
+      : {}
     return (
       <React.Fragment key={this.state.resetCount}>
-        {this.props.noStyle
-          ? returnChildNode
-          : this.renderLayout(returnChildNode)}
+        <div className={this.context.disabled ? 'nut-form-item-disabled' : ''}>
+          {this.props.noStyle
+            ? returnChildNode
+            : this.renderLayout(returnChildNode)}
+        </div>
       </React.Fragment>
     )
   }

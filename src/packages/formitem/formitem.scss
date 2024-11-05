@@ -1,6 +1,11 @@
 .nut-form-item {
   display: flex;
 
+  &-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
   &-label {
     display: flex;
     flex-direction: row;

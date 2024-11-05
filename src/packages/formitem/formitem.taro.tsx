@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { View, Text } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
@@ -56,9 +56,8 @@ export class FormItem extends React.Component<
 > {
   static defaultProps = defaultProps
 
-  static contextType = Context
+  static contextType: any = Context
 
-  // @ts-ignore
   context!: React.ContextType<typeof Context>
 
   private cancelRegister: any
@@ -134,7 +133,7 @@ export class FormItem extends React.Component<
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
-        setFieldsValue({ [name]: next }, false)
+        setFieldsValue({ [name]: next })
       },
     }
     const { validateTrigger } = this.props
@@ -207,8 +206,8 @@ export class FormItem extends React.Component<
       rules,
       className,
       style,
-      align,
       errorMessageAlign,
+      align,
     } = {
       ...defaultProps,
       ...this.props,
@@ -265,7 +264,6 @@ export class FormItem extends React.Component<
   render() {
     const { children } = this.props
     const child = Array.isArray(children) ? children[0] : children
-    console.log('testtest', child)
     let returnChildNode
     if (!this.props.shouldUpdate) {
       returnChildNode = React.cloneElement(
@@ -275,11 +273,17 @@ export class FormItem extends React.Component<
     } else {
       returnChildNode = child(this.context.formInstance)
     }
+
     return (
       <React.Fragment key={this.state.resetCount}>
-        {this.props.noStyle
-          ? returnChildNode
-          : this.renderLayout(returnChildNode)}
+        <View
+          className={this.context.disabled ? 'nut-form-item-disabled' : ''}
+          catchMove={this.context.disabled}
+        >
+          {this.props.noStyle
+            ? returnChildNode
+            : this.renderLayout(returnChildNode)}
+        </View>
       </React.Fragment>
     )
   }
