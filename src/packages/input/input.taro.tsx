@@ -241,7 +241,6 @@ export const Input = forwardRef(
           onBlur={handleBlur}
           onFocus={handleFocus}
           onInput={(e: any) => {
-            console.log('eeeeee', e.detail.value)
             handleInput((e.currentTarget || e.detail).value)
           }}
         />
