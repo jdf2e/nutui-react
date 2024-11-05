@@ -21,7 +21,7 @@ const Demo1 = () => {
           label="字段A"
           name="username"
           rules={[
-            { max: 7, message: '字段A不能超过5个字' },
+            { max: 5, message: '字段A不能超过5个字' },
             { required: true, message: '请输入字段A' },
             {
               validator: (

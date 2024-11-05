@@ -111,7 +111,12 @@ export class FormItem extends React.Component<
     const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {
-      console.warn('通过 initialValue 设置初始值')
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          '[NutUI] FormItem:',
+          '请通过 initialValue 设置初始值，而不是 defaultValue'
+        )
+      }
     }
 
     const fieldValue = getFieldValue(name)

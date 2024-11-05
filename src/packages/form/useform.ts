@@ -135,6 +135,12 @@ class FormStore {
 
   validateEntities = async (entity: FormFieldEntity, errs: any[]) => {
     const { name, rules = [] } = entity.props
+
+    if (!name) {
+      console.warn('Form field missing name property')
+      return
+    }
+
     const descriptor: any = {}
     if (rules.length) {
       // 多条校验规则
