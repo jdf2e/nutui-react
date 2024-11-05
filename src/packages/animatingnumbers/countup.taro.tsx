@@ -54,19 +54,19 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return currNumber.split('')
   }, [length, thousands, value])
 
-  const [numerArr, setNumerArr] = useState<string[]>([])
+  const [numberArr, setNumberArr] = useState<string[]>([])
   const [transformArr, setTransformArr] = useState<Array<string>>([])
   const isLoaded = useRef(false)
 
   const setNumberTransform = useCallback(() => {
-    if (countupRef.current && numerArr.length) {
+    if (countupRef.current && numberArr.length) {
       createSelectorQuery()
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
           const transformArrCache: any[] = []
           Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
-            const idx = Number(numerArr[Number(key)])
+            const idx = Number(numberArr[Number(key)])
             if (elem && typeof idx === 'number' && !Number.isNaN(idx)) {
               // 计算规则：父元素和实际列表高度的百分比，分割成20等份
               const transform =
@@ -83,10 +83,10 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
         })
         .exec()
     }
-  }, [numerArr])
+  }, [numberArr])
 
   useEffect(() => {
-    if (numerArr.length) {
+    if (numberArr.length) {
       if (!isLoaded.current) {
         isLoaded.current = true
         timerRef.current = window.setTimeout(() => {
@@ -99,16 +99,16 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return () => {
       window.clearTimeout(timerRef.current)
     }
-  }, [numerArr, delay, setNumberTransform])
+  }, [numberArr, delay, setNumberTransform])
 
   useEffect(() => {
-    setNumerArr(getShowNumber())
+    setNumberArr(getShowNumber())
   }, [value, getShowNumber])
 
   return (
     <View className={`${classPrefix} ${className}`} ref={countupRef} {...rest}>
       <View className={`${classPrefix}-list`}>
-        {numerArr.map((item: string, idx: number) => {
+        {numberArr.map((item: string, idx: number) => {
           return (
             <View
               className={`${classPrefix}-listitem ${
