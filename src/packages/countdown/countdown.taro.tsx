@@ -10,6 +10,7 @@ import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/platform-taro'
+import { CountDownProps } from './types'
 
 interface CountDownTimeProps {
   d: number
@@ -289,7 +290,7 @@ const InternalCountDown: ForwardRefRenderFunction<
                 [`${classPrefix}-number-text`]: type === 'text',
               })}
             >
-              {padZero(time)}
+              {unit ? padZero(time) : time}
             </View>
             {unit ? (
               <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
@@ -321,7 +322,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           'S',
           padZero(ms, 3)
             .toString()
-            .slice(0, digit || 2)
+            .slice(0, digit || 1)
         )}
       </>
     )
