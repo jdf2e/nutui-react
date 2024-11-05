@@ -90,7 +90,6 @@ class FormStore {
     if (init) {
       const nextStore = merge(initialValues, this.store)
       this.updateStore(nextStore)
-      console.log(this.store === this.initialValues)
     }
   }
 
@@ -118,6 +117,13 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
+  }
+
+  setFieldValue = <T>(name: NamePath, value: T) => {
+    const store = {
+      [name]: value,
+    }
+    this.setFieldsValue(store)
   }
 
   setCallback = (callback: Callbacks) => {
@@ -191,7 +197,6 @@ class FormStore {
   resetFields = () => {
     this.errors.length = 0
     const nextStore = merge({}, this.initialValues)
-    console.log('xxx', nextStore, this.initialValues)
     this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')
@@ -232,6 +237,7 @@ class FormStore {
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
+      setFieldValue: this.setFieldValue,
       resetFields: this.resetFields,
       validateFields: this.validateFields,
       submit: this.submit,
@@ -250,6 +256,6 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
       const formStore = new FormStore()
       formRef.current = formStore.getForm() as FormInstance
     }
-    return [formRef.current as FormInstance]
   }
+  return [formRef.current as FormInstance]
 }

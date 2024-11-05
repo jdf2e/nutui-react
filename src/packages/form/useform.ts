@@ -119,6 +119,13 @@ class FormStore {
     })
   }
 
+  setFieldValue = <T>(name: NamePath, value: T) => {
+    const store = {
+      [name]: value,
+    }
+    this.setFieldsValue(store)
+  }
+
   setCallback = (callback: Callbacks) => {
     this.callbacks = {
       ...this.callbacks,
@@ -230,6 +237,7 @@ class FormStore {
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
+      setFieldValue: this.setFieldValue,
       resetFields: this.resetFields,
       validateFields: this.validateFields,
       submit: this.submit,
@@ -248,6 +256,6 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
       const formStore = new FormStore()
       formRef.current = formStore.getForm() as FormInstance
     }
-    return [formRef.current as FormInstance]
   }
+  return [formRef.current as FormInstance]
 }
