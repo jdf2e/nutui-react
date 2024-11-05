@@ -63,7 +63,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       createSelectorQuery()
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
-          const transformArrCache: string[] = []
+          const transformArrCache: any[] = []
           Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
             const idx = Number(numerArr[Number(key)])
@@ -73,7 +73,10 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
                 idx || idx === 0
                   ? `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
                   : ''
-              transformArrCache.push(transform)
+              transformArrCache.push({
+                transitionDuration: `${duration}s`,
+                transform,
+              } as CSSProperties)
             }
           })
           setTransformArr([...transformArrCache])
@@ -82,34 +85,28 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     }
   }, [numerArr])
 
-  console.log('transitionDuration', `${duration}s`)
-
-  const numberEaseStyle = (idx: number) => {
-    return {
-      transitionDuration: `${duration}s`,
-      transform: transformArr[idx] ? transformArr[idx] : null,
-    } as CSSProperties
-  }
-
   useEffect(() => {
-    setNumberTransform()
-  }, [numerArr, setNumberTransform])
-
-  useEffect(() => {
-    if (!isLoaded.current) {
-      isLoaded.current = true
-      timerRef.current = window.setTimeout(() => {
-        setNumerArr(getShowNumber())
-      }, delay)
-    } else {
-      setNumerArr(getShowNumber())
+    if (numerArr.length) {
+      if (!isLoaded.current) {
+        isLoaded.current = true
+        timerRef.current = window.setTimeout(() => {
+          setNumberTransform()
+        }, delay)
+      } else {
+        setNumberTransform()
+      }
     }
     return () => {
       window.clearTimeout(timerRef.current)
     }
-  }, [value, delay, getShowNumber])
+  }, [numerArr, delay, setNumberTransform])
+
+  useEffect(() => {
+    setNumerArr(getShowNumber())
+  }, [value, getShowNumber])
+
   return (
-    <View className={`${classPrefix} ${className}`} ref={countupRef}>
+    <View className={`${classPrefix} ${className}`} ref={countupRef} {...rest}>
       <View className={`${classPrefix}-list`}>
         {numerArr.map((item: string, idx: number) => {
           return (
@@ -124,7 +121,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
               {!Number.isNaN(Number(item)) ? (
                 <View
                   className={`${classPrefix}-number`}
-                  style={numberEaseStyle(idx)}
+                  style={transformArr?.[idx]}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
                     return (

@@ -28,6 +28,7 @@
   align-items: center;
   width: auto;
   transition: transform 1s ease-in-out;
+  transform: translate(0, 0);
 }
 .nut-countup-number-text {
   height: 32px;

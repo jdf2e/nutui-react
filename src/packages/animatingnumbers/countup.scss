@@ -33,6 +33,7 @@
     align-items: center;
     width: $countup-width;
     transition: transform 1s ease-in-out;
+    transform: translate(0, 0);
 
     &-text {
       height: $countup-height;
