@@ -2,39 +2,21 @@ import React, {
   useState,
   useRef,
   useEffect,
-  ReactNode,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/platform-taro'
 
-export interface CountDownTimeProps {
+interface CountDownTimeProps {
   d: number
   h: number
   m: number
   s: number
   ms: number
-}
-export type CountDownType = 'default' | 'primary'
-export interface CountDownProps extends BasicComponent {
-  type: CountDownType
-  paused: boolean
-  startTime: number
-  endTime: number
-  remainingTime: number
-  millisecond: boolean
-  format: string
-  autoStart: boolean
-  time: number
-  destroy: boolean
-  onEnd: () => void
-  onPaused: (restTime: number) => void
-  onRestart: (restTime: number) => void
-  onUpdate: (restTime: any) => void
-  children: ReactNode
 }
 
 const defaultProps = {
@@ -198,7 +180,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       } else if (formatCache.includes('SS')) {
         formatCache = formatCache.replace('SS', msC.slice(0, 2))
       } else if (formatCache.includes('S')) {
-        formatCache = formatCache.replace('SS', msC.slice(0, 1))
+        formatCache = formatCache.replace('S', msC.slice(0, 1))
       }
     }
 
@@ -301,7 +283,11 @@ const InternalCountDown: ForwardRefRenderFunction<
         {format.includes(formatUnit) ? (
           <>
             <View
-              className={`${classPrefix}-number${type === 'primary' ? '-primary' : ''}`}
+              className={classNames({
+                [`${classPrefix}-number`]: type === 'default',
+                [`${classPrefix}-number-primary`]: type === 'primary',
+                [`${classPrefix}-number-text`]: type === 'text',
+              })}
             >
               {padZero(time)}
             </View>

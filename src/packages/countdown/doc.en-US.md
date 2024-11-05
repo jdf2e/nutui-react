@@ -90,6 +90,7 @@ Paused and restarted the countdown with the paused attribute
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| type | Display Type | `default`\|`primary`\|`text` | `default` |
 | startTime | Start Time | `number` | `Date.now()` |
 | endTime | End Time | `number` | `Date.now()` |
 | remainingTime | Remaining time, unit milliseconds | `number` | `0` |
@@ -133,12 +134,12 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-countdown-display | display mode of countdown | `flex` |
 | \--nutui-countdown-color | Countdown text color | `$color-primary` |
-| \--nutui-countdown-font-size | The font size of the countdown | `10px` |
+| \--nutui-countdown-font-size | The font size of the countdown | `11px` |
 | \--nutui-countdown-font-weight | Countdown font weight | `400` |
-| \--nutui-countdown-width | Time area width of the countdown | `20px` |
-| \--nutui-countdown-height | Time area height of the countdown | `14px` |
-| \--nutui-countdown-number-padding | Countdown time area padding | `0 1px` |
-| \--nutui-countdown-number-margin | Countdown time area margin | `0 2px` |
+| \--nutui-countdown-width | Time area width of the countdown | `6px` |
+| \--nutui-countdown-height | Time area height of the countdown | `16px` |
+| \--nutui-countdown-number-padding | Countdown time area padding | `0 0` |
+| \--nutui-countdown-number-margin | Countdown time area margin | `0 1px` |
 | \--countdown-number-border-radius | Countdown time area border radius | `2px` |
 | \--nutui-countdown-color | Countdown time area text color | `$color-primary-light-pressed` |
 | \--nutui-countdown-background-color | Countdown time area background color | `$color-primary` |
