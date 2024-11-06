@@ -141,10 +141,10 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-height | 倒計時的時間區域高度 | `16px` |
 | \--nutui-countdown-number-padding | 倒計時的時間區域padding | `0 0` |
 | \--nutui-countdown-number-margin | 倒計時的時間區域margin | `0 1px` |
-| \--countdown-number-border-radius | 倒計時的時間區域圓角大小 | `2px` |
-| \--nutui-countdown-color | 倒計時的時間區域的文字顏色 | `$color-primary-light-pressed` |
-| \--nutui-countdown-background-color | 倒計時的時間區域的背景顏色 | `$color-primary` |
-| \--nutui-countdown-border-color | 倒計時的時間區域的邊框顏色顏色 | `$color-primary` |
-| \--nutui-countdown-primary-color | type爲`primary`時，倒計時的時間區域的文字顏色 | `#FFFFFF` |
+| \--nutui-countdown-number-border-radius | 倒計時的時間區域圓角大小 | `2px` |
+| \--nutui-countdown-number-color | 倒計時的時間區域的文字顏色 | `$color-primary` |
+| \--nutui-countdown-background-color | 倒計時的時間區域的背景顏色 | `$color-background-overlay` |
+| \--nutui-countdown-border-color | 倒計時的時間區域的邊框顏色顏色 | `$color-primary-light-pressed` |
+| \--nutui-countdown-number-primary-color | type爲`primary`時，倒計時的時間區域的文字顏色 | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | type爲`primary`時，倒計時的時間區域的背景顏色 | `$color-primary` |
 | \--nutui-countdown-primary-border-color | type爲`primary`時，倒計時的時間區域的邊框顏色顏色 | `$color-primary` |

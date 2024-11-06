@@ -788,10 +788,6 @@ $countdown-number-border-radius: var(
   $radius-xxs
 ) !default;
 $countdown-number-margin: var(--nutui-countdown-number-margin, 0 1px) !default;
-$countdown-number-border-color: var(
-  --nutui-countdown-number-border-color,
-  $color-primary-light-pressed
-) !default;
 $countdown-number-color: var(
   --nutui-countdown-number-color,
   $color-primary
@@ -800,9 +796,9 @@ $countdown-number-background-color: var(
   --nutui-countdown-number-background-color,
   $color-background-overlay
 ) !default;
-$countdown-number-primary-border-color: var(
-  --nutui-countdown-number-primary-border-color,
-  $color-primary
+$countdown-number-border-color: var(
+  --nutui-countdown-number-border-color,
+  $color-primary-light-pressed
 ) !default;
 $countdown-number-primary-color: var(
   --nutui-countdown-number-primary-color,
@@ -810,6 +806,10 @@ $countdown-number-primary-color: var(
 ) !default;
 $countdown-number-primary-background-color: var(
   --nutui-countdown-number-primary-background-color,
+  $color-primary
+) !default;
+$countdown-number-primary-border-color: var(
+  --nutui-countdown-number-primary-border-color,
   $color-primary
 ) !default;
 

@@ -16,6 +16,6 @@ export interface CountDownProps extends BasicComponent {
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
-  onUpdate: (restTime: any) => void
+  onUpdate: (restTime: number) => void
   children: React.ReactNode
 }
