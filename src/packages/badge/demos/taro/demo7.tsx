@@ -1,13 +1,18 @@
 import React from 'react'
 import { Badge, Cell } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo7 = () => {
+  const isRnAndHarmony = harmonyAndRn()
+  const marginStyles = isRnAndHarmony
+    ? { marginRight: pxTransform(40) }
+    : { marginInlineEnd: '40px' }
   return (
     <Cell style={{ height: pxTransform(80) }}>
-      <Badge style={{ marginRight: pxTransform(40) }} value={8} />
-      <Badge style={{ marginRight: pxTransform(40) }} value={76} />
-      <Badge style={{ marginRight: pxTransform(40) }} value="NEW" />
+      <Badge style={marginStyles} value={8} />
+      <Badge style={marginStyles} value={76} />
+      <Badge style={marginStyles} value="NEW" />
     </Cell>
   )
 }

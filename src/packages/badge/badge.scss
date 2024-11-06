@@ -5,6 +5,9 @@
   /* #ifdef harmony */
   min-width: 1px;
   /* #endif */
+  /* #ifndef harmony */
+  min-width: auto;
+  /* #endif */
   &-icon {
     position: absolute;
     display: flex;

@@ -17,25 +17,18 @@ const Demo6 = () => {
       </>
     )
   }
+  const marginStyles = isRnAndHarmony
+    ? { marginRight: pxTransform(40) }
+    : { marginInlineEnd: '40px' }
   return (
     <Cell>
-      <Badge
-        style={{ marginRight: pxTransform(40) }}
-        value={8}
-        top="3"
-        right="5"
-      >
+      <Badge style={marginStyles} value={8} top="3" right="5">
         {renderChildren()}
       </Badge>
-      <Badge
-        style={{ marginRight: pxTransform(40) }}
-        value={76}
-        top="-3"
-        right="10"
-      >
+      <Badge style={marginStyles} value={76} top="-3" right="10">
         {renderChildren()}
       </Badge>
-      <Badge style={{ marginRight: pxTransform(40) }} value="NEW">
+      <Badge style={marginStyles} value="NEW">
         {renderChildren()}
       </Badge>
     </Cell>

@@ -52,6 +52,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     ...props,
   }
   const classPrefix = 'nut-badge'
+  const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const badgeRef = useRef(null)
   const [contentStyle, setContentStyle] = useState({})
@@ -88,10 +89,10 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (badgeRef.current) {
       getPositionStyle()
     }
-  }, [badgeRef.current])
+  }, [])
   const getPositionStyle = async () => {
     const style: CSSProperties = {}
-    style.top = pxTransform(Number(-top) || 0)
+    style.top = pxTransform(-Number(top) || 0)
     if (rn()) {
       const reacts = await getRectByTaro(badgeRef.current)
       style.left =
@@ -100,7 +101,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
           : 0
     } else {
       const dir = rtl ? 'left' : 'right'
-      style[dir] = harmony()
+      style[dir] = isHarmony
         ? pxTransform(Number(right))
         : `${Number(right) || parseFloat(String(right)) || 0}px`
     }
@@ -112,13 +113,15 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (color) {
       if (fill === 'outline') {
         style.color = color
-        style.backgroundColor = '#fff'
+        isHarmony
+          ? (style.backgroundColor = '#fff')
+          : (style.background = '#fff')
         if (!color?.includes('gradient')) {
           style.borderColor = color
         }
       } else {
         style.color = '#fff'
-        style.backgroundColor = color
+        isHarmony ? (style.backgroundColor = color) : (style.background = color)
       }
     }
     return style

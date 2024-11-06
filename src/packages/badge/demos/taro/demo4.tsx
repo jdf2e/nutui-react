@@ -18,7 +18,9 @@ const Demo4 = () => {
       </>
     )
   }
-
+  const marginStyles = isRnAndHarmony
+    ? { marginRight: pxTransform(40) }
+    : { marginInlineEnd: '40px' }
   const renderIcon = () => {
     return (
       <>
@@ -32,7 +34,7 @@ const Demo4 = () => {
   }
   return (
     <Cell>
-      <Badge style={{ marginRight: pxTransform(40) }} value={renderIcon()}>
+      <Badge style={marginStyles} value={renderIcon()}>
         {renderChildren()}
       </Badge>
       {/* <Badge
