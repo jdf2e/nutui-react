@@ -1,12 +1,11 @@
 # Progress 进度条
 
-
 展示操作或任务的当前进度。
 
 ## 引入
 
 ```tsx
-import { Progress } from '@nutui/nutui-react-taro';
+import { Progress } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

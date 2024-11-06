@@ -26,7 +26,8 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   autoPlay: boolean
   loop: boolean
   defaultValue: number
-  onChange: (e: any) => void
+  onChange: CommonEventFunction<TaroSwiperProps.onChangeEventDetail>
+
   style: CSSProperties
 }
 
@@ -166,5 +167,4 @@ export const Swiper = React.forwardRef((props: Partial<SwiperProps>, ref) => {
   )
 })
 
-Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'

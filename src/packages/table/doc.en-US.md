@@ -1,13 +1,11 @@
 # Table
 
-
-
 Used for displaying basic tables.
 
 ## Import
 
 ```tsx
-import { Table } from '@nutui/nutui-react';
+import { Table } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -142,7 +140,7 @@ import { Table } from '@nutui/nutui-react';
 | sorter | Sorting, optional values are true, function, default, where default indicates that it may rely on an interface after clicking, function can return a specific sorting function, default indicates using the default sorting algorithm | `boolean` \| `Function` \| `string` | `-` |
 | render | Custom rendering of column data, priority is high | `Function(record)` | `-` |
 | width | Column width | `number` | `auto` |
-| fixed | Fixed position | `left` \| `right`  | `-` |
+| fixed | Fixed position | `left` \| `right` | `-` |
 
 ## Theme Customization
 

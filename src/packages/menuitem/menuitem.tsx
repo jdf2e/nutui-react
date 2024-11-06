@@ -1,6 +1,7 @@
 import React, {
   CSSProperties,
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -23,6 +24,7 @@ export interface OptionItem {
 
 export interface MenuItemProps extends BasicComponent {
   title: React.ReactNode
+  titleIcon: React.ReactNode
   options: OptionItem[]
   disabled: boolean
   columns: number
@@ -39,6 +41,7 @@ export interface MenuItemProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  titleIcon: null,
   columns: 1,
   direction: 'down',
   icon: null,
@@ -85,9 +88,23 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   useEffect(() => {
     setShowPopup(show)
   }, [show])
+
+  const getParentOffset = useCallback(() => {
+    setTimeout(() => {
+      const p = parent.menuRef.current
+      if (p) {
+        const rect = p.getBoundingClientRect()
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
+      }
+    })
+  }, [parent.menuRef])
+
   useEffect(() => {
     getParentOffset()
-  }, [showPopup])
+  }, [showPopup, getParentOffset])
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: (s: boolean) => {
@@ -126,19 +143,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     return getScrollParent(parent.menuRef, window)
   }, [parent.menuRef])
 
-  const getParentOffset = () => {
-    setTimeout(() => {
-      const p = parent.menuRef.current
-      if (p) {
-        const rect = p.getBoundingClientRect()
-        setPosition({
-          height: rect.height,
-          top: rect.top,
-        })
-      }
-    })
-  }
-
   useEffect(() => {
     if (!parent.lockScroll) {
       scrollParent?.addEventListener('scroll', getParentOffset, false)
@@ -146,7 +150,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         scrollParent?.removeEventListener('scroll', getParentOffset, false)
       }
     }
-  }, [])
+  }, [parent.lockScroll, scrollParent, getParentOffset])
 
   const getPosition = (): CSSProperties => {
     return direction === 'down'
@@ -163,6 +167,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
 
   const micRef = useRef<HTMLDivElement>(null)
+  const cssRef = useRef(null)
   const targetSet = [micRef.current]
   useClickAway(
     () => {
@@ -205,6 +210,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
+          nodeRef={cssRef}
           in={showPopup}
           timeout={100}
           classNames={

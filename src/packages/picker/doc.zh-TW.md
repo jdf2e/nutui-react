@@ -1,13 +1,11 @@
 # Picker 選擇器
 
-
-
 提供多個選項集合供用戶選擇其中一項。
 
 ## 引入
 
 ```tsx
-import { Picker } from '@nutui/nutui-react';
+import { Picker } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -90,7 +88,7 @@ import { Picker } from '@nutui/nutui-react';
 | value | 選中值，受控 | `Array` | `[]` |
 | defaultValue | 默認選中 | `Array` | `[]` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
-| duration | 快速滑動時慣性滾動的時長，單位 ms | `string`  \|  `number` | `1000` |
+| duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
 | popupProps | 透傳popup屬性 | `object` | `-` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | onConfirm | 點擊確認按鈕時候回調 | `(options, value) => void` | `-` |
@@ -103,8 +101,8 @@ import { Picker } from '@nutui/nutui-react';
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| text | 選項的文字內容 | `string`  \|  `number` | `-` |
-| value | 選項對應的值，且唯一 | `string`  \|  `number` | `-` |
+| text | 選項的文字內容 | `string` \| `number` | `-` |
+| value | 選項對應的值，且唯一 | `string` \| `number` | `-` |
 | children | 用於級聯選項 | `Array` | `-` |
 
 ## 主題定製

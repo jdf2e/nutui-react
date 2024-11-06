@@ -1,12 +1,11 @@
 # TrendArrow 指标趋势
 
-
 带有箭头指示的百分比数字,用以展示指标趋势
 
 ## 引入
 
 ```tsx
-import { TrendArrow } from '@nutui/nutui-react';
+import { TrendArrow } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

@@ -157,3 +157,20 @@ test('allowEmpty', () => {
     expect(container.querySelector('input')?.value).toBe('')
   })
 })
+
+test('should overlimit when input', () => {
+  const change = vi.fn()
+  const overlimit = vi.fn()
+  const { container } = render(
+    <InputNumber
+      defaultValue={2}
+      max={100}
+      onChange={change}
+      onOverlimit={overlimit}
+    />
+  )
+  const input = container.querySelectorAll('input')[0]
+  input.value = '200'
+  fireEvent.input(input)
+  expect(change).toBeCalled()
+})

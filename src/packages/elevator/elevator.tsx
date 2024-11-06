@@ -80,7 +80,6 @@ export const Elevator: FunctionComponent<
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
-  // 重置滚动参数
   const resetScrollState = () => {
     setScrollStart(false)
   }

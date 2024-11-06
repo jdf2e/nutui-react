@@ -19,6 +19,9 @@ const Demo3 = () => {
     <>
       <Cell>
         <InputNumber
+          onChange={(v) => {
+            console.log(v)
+          }}
           defaultValue={10}
           min={10}
           max={20}

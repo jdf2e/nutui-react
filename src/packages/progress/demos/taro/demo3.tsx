@@ -1,7 +1,11 @@
 import React from 'react'
-import { Progress } from '@nutui/nutui-react-taro'
+import { Cell, Progress } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
-  return <Progress percent={50} showText />
+  return (
+    <Cell>
+      <Progress percent={50} showText />
+    </Cell>
+  )
 }
 export default Demo3

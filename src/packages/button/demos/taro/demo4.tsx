@@ -46,7 +46,7 @@ const Demo4 = () => {
             rightIcon={<Star />}
             style={{
               margin: 8,
-              backgroundColor: `var(--nutui-color-primary-light)`,
+              backgroundColor: `var(--nutui-color-primary-light-pressed)`,
               borderColor: `var(--nutui-color-primary)`,
               color: `var(--nutui-color-primary)`,
             }}

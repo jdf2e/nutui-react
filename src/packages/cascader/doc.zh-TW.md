@@ -1,20 +1,18 @@
 # Cascader 級聯選擇
 
-
-
 級聯選擇器，用於多層級數據的選擇，典型場景為省市區選擇。
 
 ## 引入
 
 ```tsx
-import { Cascader } from '@nutui/nutui-react';
+import { Cascader } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
 
 ### 基礎用法
 
-傳入`options`列表 
+傳入`options`列表
 
 :::demo
 
@@ -62,7 +60,7 @@ import { Cascader } from '@nutui/nutui-react';
 
 ### 自定義样式
 
-使用configprovider 完成自定義设置 
+使用configprovider 完成自定義设置
 
 :::demo
 
@@ -90,16 +88,17 @@ import { Cascader } from '@nutui/nutui-react';
 | closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | `string` | `top-right` |
 | closeIcon | 自定義關閉按鈕，繼承 Popup 組件 | `ReactNode` | `close` |
 | closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | `boolean` | `true` |
-| onLoad | 動態加載回調，開啟動態加載時生效 |  `(node: any, resolve: any) => void` | `-` |
+| onLoad | 動態加載回調，開啟動態加載時生效 | `(node: any, resolve: any) => void` | `-` |
 | onChange | 選中值改變時觸發 | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | 選中項改變時觸發 | `(value: CascaderValue, params: any) => void` | `-` |
 
 ### Ref
 
-|事件名 |說明 |回調參數 |
-|------| --- | --- |
+| 事件名 | 說明 | 回調參數 |
+| --- | --- | --- |
 | open | 顯示 Cascader | `() => void` |
-| close  | 關閉 Cascader | `() => void` |
+| close | 關閉 Cascader | `() => void` |
+
 ## 主題定制
 
 ### 樣式變量

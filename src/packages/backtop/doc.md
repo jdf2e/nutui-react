@@ -1,12 +1,11 @@
 # BackTop 返回顶部
 
-
 提供较长的页面快捷返回顶部功能。
 
 ## 引入
 
 ```tsx
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

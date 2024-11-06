@@ -1,7 +1,5 @@
 # Barrage
 
-
-
 It is used for the rotation display of words and phrases, which is suitable for video or other similar needs.
 
 ## Import

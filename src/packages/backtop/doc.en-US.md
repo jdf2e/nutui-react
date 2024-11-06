@@ -1,13 +1,11 @@
 # BackTop
 
-
-
 Provides a quick return to the top function for long pages.
 
 ## Import
 
 ```tsx
-import { BackTop } from '@nutui/nutui-react';
+import { BackTop } from '@nutui/nutui-react'
 ```
 
 ## Code

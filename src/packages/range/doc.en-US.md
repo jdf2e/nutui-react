@@ -1,13 +1,11 @@
 # Range
 
-
-
 Slide the input bar to select a value within a given range.
 
 ## Import
 
 ```tsx
-import { Range } from '@nutui/nutui-react';
+import { Range } from '@nutui/nutui-react'
 ```
 
 ## Demo

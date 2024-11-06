@@ -1,13 +1,11 @@
 # Tabs 選項卡切換
 
-
-
 常用於平級區域大塊內容的的收納和展現，支持內嵌標簽形式和渲染循環數據形式
 
 ## 引入
 
 ```tsx
-import { Tabs } from '@nutui/nutui-react';
+import { Tabs } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -210,7 +208,7 @@ import { Tabs } from '@nutui/nutui-react';
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 標簽選中色 | `string` | `#1A1A1A` |
 | direction | 使用橫縱方向 | `horizontal` \| `vertical` | `horizontal` |
-| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
+| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple` \| `card` \| `button`\| `divider` | `line` |
 | duration | 切換動畫時長,單位 ms 0 代表無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
 | align | 標題對齊方式 | `left` \| `right` | `-` |
@@ -245,7 +243,7 @@ import { Tabs } from '@nutui/nutui-react';
 | \--nutui-tabs-titles-item-color | Tab 標題的字色 | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab 選中標題的字色 | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `$font-weight-bold` |
-| \--nutui-tabs-titles-item-active-font-size | Tab 選中標題的字號 | `$font-size-large` |
+| \--nutui-tabs-titles-item-active-font-size | Tab 選中標題的字號 | `$font-size-l` |
 | \--nutui-tabs-titles-item-active-background-color | 水平方向激活選項卡標題的背景色 | `$color-background-overlay` |
 | \--nutui-tabs-tab-line-width | 水平方向激活選項卡線條的寬度 | `12px` |
 | \--nutui-tabs-tab-line-height | 水平方向激活選項卡線條的高度 | `2px` |
@@ -259,4 +257,4 @@ import { Tabs } from '@nutui/nutui-react';
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向標題線條的寬度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向標題線條的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的內邊距 | `24px 20px` |
-| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色| `#fff` |
+| \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色 | `#fff` |

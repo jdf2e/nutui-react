@@ -1,13 +1,11 @@
 # Popup
 
-
-
 Popup layer container, used to display pop-up windows, information prompts, etc.
 
 ## Import
 
 ```tsx
-import { Popup } from '@nutui/nutui-react';
+import { Popup } from '@nutui/nutui-react'
 ```
 
 ## code demo
@@ -77,11 +75,11 @@ import { Popup } from '@nutui/nutui-react';
 | Props | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
-| zIndex | mask level | `string` \| `number`  | `2000` |
+| zIndex | mask level | `string` \| `number` | `2000` |
 | duration | Mask animation duration, in ms | `number` | `300` |
 | overlayClassName | custom mask class | `string` | `-` |
 | overlayStyle | custom mask style | `CSSProperties` | `-` |
-| lockScroll | Whether the background is locked | `boolean` | `true` |
+| lockScroll | Whether the background is locked ,strict is used to support iOS12 | `boolean\|strict` | `true` |
 | overlay | Whether to show the mask | `boolean` | `true` |
 | closeOnOverlayClick | Whether to click the mask to close | `boolean` | `true` |
 | position | popup location | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |

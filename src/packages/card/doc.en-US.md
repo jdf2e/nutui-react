@@ -1,7 +1,5 @@
 # Card
 
-
-
 Used to display product pictures, prices and other information.
 
 ## Import

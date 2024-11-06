@@ -1,7 +1,5 @@
 # Icon
 
-
-
 Install the @nutui/icons-react icon component package independently. Two usage methods are provided (Svg on demand, IconFont in full).
 
 ## Import
@@ -102,7 +100,7 @@ Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.
 Step 2: Project entry file main.js references `iconfont.css`
 
 ```tsx
-import './assets/font/iconfont.css';
+import './assets/font/iconfont.css'
 ```
 
 Step 3:
@@ -115,7 +113,7 @@ import React from 'react'
 import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix="icon" name="close" />
 }
 ```
 
@@ -138,16 +136,18 @@ const App = () => {
 ```
 
 ```tsx
-import React from "react";
+import React from 'react'
 import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-  return <>
-    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
-  </>
+  return (
+    <>
+      <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 ## IconFont

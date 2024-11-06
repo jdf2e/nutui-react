@@ -1,12 +1,11 @@
 # CircleProgress 环形进度条
 
-
 展示操作或任务的当前进度。
 
 ## 引入
 
 ```tsx
-import { CircleProgress } from '@nutui/nutui-react';
+import { CircleProgress } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -84,4 +83,4 @@ import { CircleProgress } from '@nutui/nutui-react';
 | \--nutui-circleprogress-primary-color | 环形进度条填充部分的颜色 | `$color-primary` |
 | \--nutui-circleprogress-path-color | 环形进度条轨道的颜色 | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | 环形进度条轨道内容区的颜色 | `$color-title` |
-| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-large` |
+| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-l` |

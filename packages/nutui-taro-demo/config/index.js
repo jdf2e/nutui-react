@@ -16,8 +16,7 @@ let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
   : []
 
 if (
-  process.env.TARO_ENV === 'harmony' ||
-  process.env.TARO_ENV === 'jdharmony'
+  process.env.TARO_ENV === 'harmony'
 ) {
   plugins.push('@tarojs/plugin-platform-harmony-ets')
 }
@@ -32,7 +31,7 @@ if (
   process.env.TARO_ENV === 'jd' ||
   process.env.TARO_ENV === 'jdhybrid'
 ) {
-  plugins.push('@test/inject-platform-styles')
+  plugins.push('@dongdesign/inject-jd-platform-styles')
 }
 
 if (process.env.TARO_ENV === 'jdhybrid') {
@@ -47,9 +46,20 @@ if (process.env.TARO_ENV === 'jdhybrid') {
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
+if (process.env.TARO_ENV === 'jdharmony') {
+  plugins = ['@jdtaro/taro-platform-jdharmony']
+}
+if (process.env.TARO_ENV === 'jdharmony_cpp') {
+    plugins = ['@jdtaro/plugin-platform-jdharmony-cpp']
+}
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 // if (process.env.TARO_ENV === 'jdharmony') {
 //   plugins = ['@test/taro-platform-jdharmony']
 // }
+
+const isHarmony = process.env.TARO_ENV === 'harmony'
+const isHarmonycpp = process.env.TARO_ENV === 'jdharmony_cpp'
 
 const config = {
   projectName: 'first',
@@ -65,20 +75,41 @@ const config = {
   outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
   plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
   compiler: 'webpack5',
-  alias: {
-    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
-      __dirname,
-      '../../../src/locales/en-US.ts'
-    ),
-    '@/packages': path.resolve(__dirname, '../../../src/packages'),
-    '@/sites': path.resolve(__dirname, '../../../src/sites'),
-    '@/locales': path.resolve(__dirname, '../../../src/locales'),
-    '@/utils': path.resolve(__dirname, '../../../src/utils'),
-    '@nutui/nutui-react-taro': path.resolve(
-      __dirname,
-      '../../../src/packages/nutui.react.taro.ts'
-    ),
-  },
+  alias:
+    process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
+      ? {
+          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+            __dirname,
+            '../nutui-react/locales/en-US.ts'
+          ),
+          '@/packages': path.resolve(__dirname, '../nutui-react/packages'),
+          '@/sites': path.resolve(__dirname, '../nutui-react/sites'),
+          '@/locales': path.resolve(__dirname, '../nutui-react/locales'),
+          '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
+          '@nutui/nutui-react-taro': path.resolve(
+            __dirname,
+            '../nutui-react/packages/nutui.react.rn.ts'
+          ),
+          '@nutui/icons-react-taro': path.resolve(
+            __dirname,
+            '../nutui-react/packages/nutui.react.rn.ts'
+          ),
+          '@styles': path.resolve(__dirname, '../styles'),
+        }
+      : {
+          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+            __dirname,
+            '../../../src/locales/en-US.ts'
+          ),
+          '@/packages': path.resolve(__dirname, '../../../src/packages'),
+          '@/sites': path.resolve(__dirname, '../../../src/sites'),
+          '@/locales': path.resolve(__dirname, '../../../src/locales'),
+          '@/utils': path.resolve(__dirname, '../../../src/utils'),
+          '@nutui/nutui-react-taro': path.resolve(
+            __dirname,
+            '../../../src/packages/nutui.react.taro.ts'
+          ),
+        },
   sass: {
     resource: [
       path.resolve(__dirname, '../../../', fileStr),
@@ -93,20 +124,24 @@ const config = {
   framework: 'react',
   // harmony 相关配置
   harmony: {
+    ohPackage: {
+      dependencies: {
+        '@jd-oh/taro_library': '2.0.70',
+        '@jd-oh/taro_cpp_library': '0.0.88-beta.0'
+      },
+    },
     // 将编译方式设置为使用 Vite 编译
     compiler: { type: 'vite', vitePlugins: [injectScss()] },
     // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), '../nutui-harmony'),
+    projectPath: path.resolve(process.cwd(), isHarmony ? '../nutui-harmony' : isHarmonycpp ? '../nutui-jdharmonycpp' : '../nutui-jdharmony'),
     // 【可选】HAP 的名称，默认为 'entry'
-    hapName: 'entry',
-    // 【可选】modules 的入口名称，默认为 'default'
-    name: 'default',
+    hapName: isHarmony ? 'entry' : 'library',
     useNesting: true,
     postcss: {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-', 'demo', 'index', 'page'] },
+        // config: { selectorBlackList: ['nut-', 'demo', 'index', 'page'] },
       },
       url: {
         enable: true,
@@ -126,6 +161,9 @@ const config = {
   mini: {
     compile: {
       include: [path.resolve(__dirname, '../../../src')],
+    },
+    miniCssExtractPluginOption: {
+      ignoreOrder: true,
     },
     postcss: {
       pxtransform: {
@@ -182,6 +220,26 @@ const config = {
       },
       // 自定义 Webpack 配置
       devServer: {},
+    },
+    output: {
+      environment: {
+        asyncFunction: true
+      }
+    }
+  },
+  rn: {
+    appName: 'JDReactAPIDemos',
+    postcss: {
+      'postcss-css-variables': {
+        enable: true,
+        config: {
+          // variables: {
+          //   '--nutui-color-primary': '#000',
+          //   '--nutui-color-primary-stop-1': '#000',
+          //   '--nutui-color-primary-stop-2': '#000',
+          // },
+        },
+      },
     },
   },
   isWatch: true,

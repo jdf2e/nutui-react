@@ -1,12 +1,11 @@
 # Tag 标签
 
-
 用于标记和分类的标签。
 
 ## 引入
 
 ```tsx
-import { Tag } from '@nutui/nutui-react-taro';
+import { Tag } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码实例

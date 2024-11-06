@@ -20,7 +20,12 @@ const Demo1 = () => {
   return (
     <>
       <Cell className="barrage-demo-wrap">
-        <Barrage className="barrage-demo" ref={barrageRef} list={barrageList} />
+        <Barrage
+          className="barrage-demo"
+          interval={100}
+          ref={barrageRef}
+          list={barrageList}
+        />
       </Cell>
       <Button type="primary" onClick={addBarrage}>
         随机添加

@@ -1,7 +1,5 @@
 # Price
 
-
-
 It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
 ## Import
@@ -108,5 +106,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-price-integer-small-size | small Size Integer partial font size | `12px` |
 | \--nutui-price-decimal-small-size | small Size Size of the decimal part of the font | `10px` |
 | \--nutui-price-line-font-size | Line-through price Font size | `10px` |
-| \--nutui-price-line-color | Line through price color |  `#757575` |
-| \--nutui-price-symbol-padding-right | Symbol padding right |  `1px` |
+| \--nutui-price-line-color | Line through price color | `#757575` |
+| \--nutui-price-symbol-padding-right | Symbol padding right | `1px` |

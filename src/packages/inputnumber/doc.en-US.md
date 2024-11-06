@@ -1,13 +1,11 @@
 # InputNumber
 
-
-
 Control the number increase or decrease by clicking the button.
 
 ## Import
 
 ```tsx
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -100,6 +98,14 @@ Asynchronous modification through `change` event and `model-value`
 
 :::
 
+### support deselect all text
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ## InputNumber
 
 ### Props
@@ -107,15 +113,16 @@ Asynchronous modification through `change` event and `model-value`
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | allowEmpty | Whether to allow the content to be empty | `boolean` | `false` |
-| defaultValue | Defaults | `string`  \|  `number` | `0` |
-| value | current value, controlled value | `string`  \|  `number` | `-` |
-| min | Minimum limit | `string`  \|  `number` | `1` |
-| max | Maximum limit | `string`  \|  `number` | `9999` |
-| step | step | `string`  \|  `number` | `1` |
-| digits | Set reserved decimal places | `string`  \|  `number` | `0` |
+| defaultValue | Defaults | `string` \| `number` | `0` |
+| value | current value, controlled value | `string` \| `number` | `-` |
+| min | Minimum limit | `string` \| `number` | `1` |
+| max | Maximum limit | `string` \| `number` | `9999` |
+| step | step | `string` \| `number` | `1` |
+| digits | Set reserved decimal places | `string` \| `number` | `0` |
 | disabled | Disable all features | `boolean` | `false` |
 | readOnly | Read only status disables input box operation behavior | `boolean` | `false` |
 | async | Support for asynchronous modification | `boolean` | `false` |
+| select | Support deselect all text | `boolean` | `true` |
 | formatter | Specifies the format of the value displayed in the input box | `function(value: number \| string): string` | `-` |
 | onPlus | Triggered when the Add button is clicked | `(e: MouseEvent) => void` | `-` |
 | onMinus | Triggered when the decrease button is clicked | `(e: MouseEvent) => void` | `-` |

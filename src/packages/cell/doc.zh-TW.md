@@ -1,7 +1,5 @@
 # Cell 單元格
 
-
-
 列表項，可組成列表。
 
 ## 引入
@@ -94,7 +92,8 @@ import { Cell } from '@nutui/nutui-react'
 | description | 描述 | `ReactNode` | `-` |
 | extra | 右側描述 | `ReactNode` | `-` |
 | radius | 圓角半徑 | `string` | `6px` |
-| align | 縱軸方向上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
+| align | 縱軸方向上的對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| clickable | 點擊的樣式反饋 | `boolean` | `false` |
 | onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主題定製
@@ -108,7 +107,7 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-title-color | 單元格標題字體顏色 | `$color-title` |
 | \--nutui-cell-title-font-size | 單元格標題字體大小 | `$font-size-base` |
 | \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text` |
-| \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-small` |
+| \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-s` |
 | \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 單元格圓角大小 | `6px` |
@@ -125,7 +124,7 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-group-title-line-height | 單元格分組的標題行高 | `20px` |
 | \--nutui-cell-group-description-padding | 單元格分組的描述內邊距 | `0 10px` |
 | \--nutui-cell-group-description-color | 單元格分組的描述顏色 | `#909ca4` |
-| \--nutui-cell-group-description-font-size | 單元格分組的描述字體大小 | `$font-size-small` |
+| \--nutui-cell-group-description-font-size | 單元格分組的描述字體大小 | `$font-size-s` |
 | \--nutui-cell-group-description-line-height | 單元格分組的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 單元格分組的背景顏色 | `$white` |
 | \--nutui-cell-group-wrap-margin | 單元格分組容器的外邊距 | `10px` |

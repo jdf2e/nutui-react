@@ -105,7 +105,7 @@ export const FixedNav: FunctionComponent<
               return (
                 <View
                   className={`${classPrefix}-list-item`}
-                  onClick={(event) => handleClick(item, event)}
+                  onClick={(event) => handleClick(item, event as any)}
                   key={item.id || index}
                 >
                   {React.isValidElement(item.icon) ? (

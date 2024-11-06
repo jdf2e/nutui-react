@@ -1,6 +1,5 @@
 # ImagePreview组件
 
-
 支持全屏预览视频和图片，可函数式调用
 
 ## 引入
@@ -75,7 +74,7 @@ import { ImagePreview } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否展示预览图片 | `boolean` | `false` |
 | videos | 预览的视频数组（视频自动放到图片之前） | `Array<Object>` | `[]` |
-| images | 预览图片数组 | `{ src: string }[]` | `[]` |
+| images | 预览图片数组 | `{ src: string; index?: number }[]` | `[]` |
 | autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `3000` |
 | defaultValue | 初始页码 | `number` | `1` |
 | value | 页码，受控 | `number` | `1` |

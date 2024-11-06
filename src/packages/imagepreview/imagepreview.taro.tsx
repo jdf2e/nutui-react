@@ -31,20 +31,26 @@ interface Store {
 
 export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
-export interface ImagePreviewProps extends BasicComponent {
-  images: Array<{
+export interface ImageOption {
+  src: string
+  index?: number
+}
+
+export interface VideoOption {
+  source: {
     src: string
-  }>
-  videos: Array<{
-    source: {
-      src: string
-      type: string
-    }
-    options: {
-      muted: boolean
-      controls: boolean
-    }
-  }>
+    type: string
+  }
+  options: {
+    muted: boolean
+    controls: boolean
+  }
+  index?: number
+}
+
+export interface ImagePreviewProps extends BasicComponent {
+  images: Array<ImageOption>
+  videos: Array<VideoOption>
   visible: boolean
   autoPlay: boolean
   value?: number
@@ -298,47 +304,60 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}
         >
-          {(videos && videos.length > 0
-            ? videos.map((item, index) => {
+          {(videos ?? [])
+            .map(
+              (item) =>
+                ({ type: 'video', data: item }) as {
+                  type: 'video' | 'image'
+                  data: ImageOption | VideoOption
+                }
+            )
+            .concat(
+              (images ?? []).map((item) => ({ type: 'image', data: item }))
+            )
+            .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
+            .map((item, index) => {
+              if (item.type === 'video') {
+                const { source, options } = item.data as VideoOption
                 return (
                   <SwiperItem
                     key={index}
                     className="nut-imagepreview-swiper-item"
                   >
                     <TaroVideo
-                      src={item.source.src}
+                      src={source.src}
                       onClick={closeOnImg}
-                      controls={item.options.controls}
+                      controls={options.controls}
                       autoplay={false}
                       loop={false}
-                      muted={item.options.muted}
+                      muted={options.muted}
                     />
                   </SwiperItem>
                 )
-              })
-            : []
-          ).concat(
-            images && images.length > 0
-              ? images.map((item, index) => {
-                  return (
-                    <SwiperItem
-                      key={index}
-                      className="nut-imagepreview-swiper-item"
-                    >
-                      <Image
-                        src={item.src}
-                        mode="widthFix"
-                        onClick={closeOnImg}
-                        style={{ width: '100%' }}
-                        {...(Taro.getEnv() !== 'WEB' && {
-                          showMenuByLongpress,
-                        })}
-                      />
-                    </SwiperItem>
-                  )
-                })
-              : []
-          )}
+              }
+              if (item.type === 'image') {
+                const { src } = item.data as ImageOption
+                return (
+                  <SwiperItem
+                    key={index}
+                    className="nut-imagepreview-swiper-item"
+                  >
+                    (
+                    <Image
+                      src={src}
+                      mode="widthFix"
+                      onClick={closeOnImg}
+                      style={{ width: '100%' }}
+                      {...(Taro.getEnv() !== 'WEB' && {
+                        showMenuByLongpress,
+                      })}
+                    />
+                    )
+                  </SwiperItem>
+                )
+              }
+              return null
+            })}
         </Swiper>
       </View>
       {pagination ? (

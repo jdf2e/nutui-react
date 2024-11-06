@@ -1,12 +1,11 @@
 # Divider 分割线
 
-
 用于将内容分隔为多个区域。
 
 ## 引入
 
 ```tsx
-import { Divider } from '@nutui/nutui-react-taro';
+import { Divider } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -73,8 +72,8 @@ import { Divider } from '@nutui/nutui-react-taro';
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| contentPosition | 内容位置  | `left` \| `center` \| `right` | `center` |
-| direction | 水平还是垂直类型  | `horizontal` \| `vertical` | `horizontal` |
+| contentPosition | 内容位置 | `left` \| `center` \| `right` | `center` |
+| direction | 水平还是垂直类型 | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主题定制
 

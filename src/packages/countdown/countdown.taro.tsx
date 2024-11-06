@@ -83,7 +83,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     isPaused: paused,
     isIninted: false,
     timer: 0,
-    restTime: 0, // 倒计时剩余时间时间
+    restTime: 0,
     counting: !paused && autoStart, // 是否处于倒计时中
     handleEndTime: Date.now(), // 最终截止时间
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
@@ -204,8 +204,6 @@ const InternalCountDown: ForwardRefRenderFunction<
 
     return formatCache
   }
-
-  // 暂定
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)
     stateRef.current.counting = false

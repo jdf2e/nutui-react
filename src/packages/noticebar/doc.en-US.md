@@ -1,13 +1,11 @@
 # NoticeBar
 
-
-
 Used to display a group of message notifications in a continuous loop.
 
 ## Import
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react';
+import { NoticeBar } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -55,6 +53,7 @@ When text is long, you can enable multi-line display by setting the wrap propert
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
+
 ### Custom right content
 
 Add Right mode to set more custom content.
@@ -72,7 +71,6 @@ Add Right mode to set more custom content.
 <CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ### Vertical Scroll
 
@@ -148,7 +146,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-height | noticebar height | `36px` |
 | \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | noticebar color | `#d9500b` |
-| \--nutui-noticebar-font-size | noticebar font size | `$font-size-small` |
+| \--nutui-noticebar-font-size | noticebar font size | `$font-size-s` |
 | \--nutui-noticebar-line-height | noticebar line height | `24px` |
 | \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
 | \--nutui-noticebar-border-radius | noticebar border radius | `0` |

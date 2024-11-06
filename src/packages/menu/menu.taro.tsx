@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
@@ -54,29 +60,33 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     ...props,
   }
   const menuRef = useRef(null)
+  const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
+  const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
   const [isScrollFixed, setIsScrollFixed] = useState(false)
+  const cls = classNames(`nut-menu`, className, {
+    'scroll-fixed': isScrollFixed,
+  })
 
   const getScrollTop = (el: Element | Window) => {
-    return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset)
+    return Math.max(
+      0,
+      el === window ? window.scrollY : (el as Element).scrollTop
+    )
   }
-  const onScroll = () => {
-    const { scrollFixed } = props
-
+  const onScroll = useCallback(() => {
     const scrollTop = getScrollTop(window)
     const isFixed =
       scrollTop > (typeof scrollFixed === 'boolean' ? 30 : Number(scrollFixed))
     setIsScrollFixed(isFixed)
-  }
+  }, [scrollFixed])
 
   useEffect(() => {
     if (scrollFixed) {
       window.addEventListener('scroll', onScroll)
     }
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [scrollFixed, onScroll])
 
-  const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
-  const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
   const toggleMenuItem: MenuCallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
@@ -98,7 +108,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     menuItemTitle[index] = text
     setMenuItemTitle([...menuItemTitle])
   }
-
   const cloneChildren = () => {
     return React.Children.map(children, (child, index) => {
       return React.cloneElement(child as any, {
@@ -121,8 +130,15 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const menuTitle = () => {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
-        const { title, options, value, defaultValue, disabled, direction } =
-          child.props
+        const {
+          title,
+          titleIcon,
+          options,
+          value,
+          defaultValue,
+          disabled,
+          direction,
+        } = child.props
         const selected = options?.filter(
           (option: OptionItem) =>
             option.value === (value !== undefined ? value : defaultValue)
@@ -134,10 +150,28 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             return selected[0].text
           return ''
         }
+        const finallyIcon = () => {
+          if (titleIcon) return titleIcon
+          if (icon) return icon
+          return direction === 'up' ? (
+            <ArrowUp
+              className="nut-menu-title-icon"
+              width="12px"
+              height="12px"
+            />
+          ) : (
+            <ArrowDown
+              className="nut-menu-title-icon"
+              width="12px"
+              height="12px"
+            />
+          )
+        }
         return (
           <View
             className={classNames(
               'nut-menu-title ',
+              `nut-menu-title-${index}`,
               {
                 active: showMenuItem[index],
                 disabled,
@@ -152,12 +186,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             }}
           >
             <View className="nut-menu-title-text">{finallyTitle()}</View>
-            {icon ||
-              (direction === 'up' ? (
-                <ArrowUp className="nut-menu-title-icon" size="12px" />
-              ) : (
-                <ArrowDown className="nut-menu-title-icon" size="12px" />
-              ))}
+            {finallyIcon()}
           </View>
         )
       }
@@ -165,13 +194,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     })
   }
   return (
-    <View
-      {...rest}
-      className={classNames(`nut-menu`, className, {
-        'scroll-fixed': isScrollFixed,
-      })}
-      ref={menuRef}
-    >
+    <View {...rest} className={cls} ref={menuRef}>
       <View
         className={classNames('nut-menu-bar', {
           opened: showMenuItem.includes(true),

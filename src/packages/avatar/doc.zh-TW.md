@@ -1,14 +1,11 @@
 # Avatar 頭像
 
-
-
 用來代錶用戶或事物，支持圖片、圖標或字符展示。
 
 ## 引入
 
 ```tsx
-import { Avatar } from '@nutui/nutui-react';
-
+import { Avatar } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -116,14 +113,14 @@ Icon 和字符型可以自定義圖標顏色及背景色
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| max | 顯示的最大頭像個數 | `string` \| `number`  | `-` |
+| max | 顯示的最大頭像個數 | `string` \| `number` | `-` |
 | maxContent | 頭像數量超出時，會出現一個頭像摺疊元素。該元素內容可為...、more、+N。 | `string` | `-` |
-| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal`  \| `small`  | `-` |
-| shape | 設置頭像的形狀 | `string` \| `round`  | `-` |
+| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal` \| `small` | `-` |
+| shape | 設置頭像的形狀 | `string` \| `round` | `-` |
 | maxBackground | 設置 Icon、字符類型頭像的背景色 | `string` | `#eee` |
 | maxColor | 設置 Icon、字符類型頭像的顏色 | `string` | `#666` |
 | gap | 設置頭像之間的間距 | `string` | `-8` |
-| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right`  | `left` |
+| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right` | `left` |
 
 ## 主題定制
 

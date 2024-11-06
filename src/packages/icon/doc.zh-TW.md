@@ -1,7 +1,5 @@
 # Icon 圖標
 
-
-
 獨立安裝 @nutui/icons-react 圖標組件包。提供兩種使用方式（Svg 按需使用、IconFont 全量使用）。
 
 ## 引入
@@ -102,7 +100,7 @@ import { IconFont } from '@nutui/icons-react'
 第二步：項目入口文件 main.js 引用 `iconfont.css`
 
 ```tsx
-import './assets/font/iconfont.css';
+import './assets/font/iconfont.css'
 ```
 
 第三步:
@@ -110,12 +108,12 @@ import './assets/font/iconfont.css';
 ```tsx
 // fontClassName 指定類名為默認 iconfont
 // classPrefix 指定默認 icon
-// name 值根據 iconfont.css 中值對應填寫 
+// name 值根據 iconfont.css 中值對應填寫
 import React from 'react'
 import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix="icon" name="close" />
 }
 ```
 
@@ -138,16 +136,18 @@ const App = () => {
 ```
 
 ```tsx
-import React from "react";
+import React from 'react'
 import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-  return <>
-    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
-  </>
+  return (
+    <>
+      <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
+    </>
+  )
 }
 
-export default App;
+export default App
 ```
 
 ## IconFont

@@ -47,15 +47,15 @@ export const CheckboxGroup = React.forwardRef(
       className,
       disabled,
       list,
-      onChange,
       value,
       defaultValue,
       max,
       min,
-      onLimit,
       labelPosition,
       direction,
       options,
+      onChange,
+      onLimit,
       ...rest
     } = { ...defaultProps, ...props }
 
@@ -86,8 +86,8 @@ export const CheckboxGroup = React.forwardRef(
     }))
 
     const [_value, setValue] = usePropsValue<string[]>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value,
+      defaultValue,
       finalValue: [] as string[],
       onChange,
     })
@@ -137,7 +137,7 @@ export const CheckboxGroup = React.forwardRef(
           className={classNames(
             classPrefix,
             {
-              [`nut-checkboxgroup-${props.direction}`]: props.direction,
+              [`nut-checkboxgroup-${direction}`]: direction,
               [`nut-checkboxgroup-list`]: list,
             },
             className
@@ -151,5 +151,4 @@ export const CheckboxGroup = React.forwardRef(
   }
 )
 
-CheckboxGroup.defaultProps = defaultProps
 CheckboxGroup.displayName = 'NutCheckboxGroup'

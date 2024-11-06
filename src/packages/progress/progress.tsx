@@ -61,7 +61,7 @@ export const Progress: FunctionComponent<
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    background: color,
+    backgroundColor: color || '#FF0F23',
   }
 
   useEffect(() => {

@@ -1,13 +1,11 @@
 # Badge
 
-
-
 出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
 
 ## Import
 
 ```tsx
-import { Badge } from '@nutui/nutui-react';
+import { Badge } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -101,7 +99,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-height | badge height | `14px` |
 | \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge content color | `#fff` |
-| \--nutui-badge-font-size | badge content font size | `$font-size-small` |
+| \--nutui-badge-font-size | badge content font size | `$font-size-s` |
 | \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge border-radius | `14px` |
 | \--nutui-badge-min-width | badge min-width | `5px` |

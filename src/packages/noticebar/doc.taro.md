@@ -1,12 +1,11 @@
 # NoticeBar 公告栏
 
-
 用于循环播放展示一组消息通知。
 
 ## 引入
 
 ```tsx
-import { NoticeBar } from '@nutui/nutui-react-taro';
+import { NoticeBar } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -19,7 +18,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-
 ### 居中布局，不支持滚动
 
 :::demo
@@ -27,7 +25,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### 滚动播放
 
@@ -57,7 +54,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-
 ### 自定义右侧内容
 
 增加自定义右侧区域，区分rightIcon，更灵活配置。
@@ -75,7 +71,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ### 垂直滚动
 
@@ -151,7 +146,7 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 | \--nutui-noticebar-height | 高度 | `36px` |
 | \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | 文字色 | `#d9500b` |
-| \--nutui-noticebar-font-size | 字号 | `$font-size-small` |
+| \--nutui-noticebar-font-size | 字号 | `$font-size-s` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
 | \--nutui-noticebar-border-radius | 圆角 | `0` |

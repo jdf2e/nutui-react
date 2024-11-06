@@ -1,6 +1,5 @@
 # Collapse 折叠面板
 
-
 将内容放置在多个折叠面板中，点击面板标题可展开或收缩内容。
 
 ## 引入
@@ -73,10 +72,10 @@ import { Collapse } from 'nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| defaultActiveName | 默认展开面板的 name，非受控 | `Array<string>` \| `string`  | `-` |
-| activeName | 当前展开面板的 name，受控 | `Array<string>` \| `string`  | `-` |
+| defaultActiveName | 默认展开面板的 name，非受控 | `Array<string>` \| `string` | `-` |
+| activeName | 当前展开面板的 name，受控 | `Array<string>` \| `string` | `-` |
 | accordion | 是否开启手风琴模式 | `boolean` | `false` |
-| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string` \| `number`  | `180` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定义展开图标 | `ReactNode` | `-` |
 
 ## Collapse.Item
@@ -89,7 +88,7 @@ import { Collapse } from 'nutui-react-taro'
 | title | 标题栏左侧内容 | `ReactNode` | `-` |
 | disabled | 标题栏是否禁用 | `boolean` | `false` |
 | extra | 标题栏副标题 | `ReactNode` | `-` |
-| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string` \| `number`  | `180` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string` \| `number` | `180` |
 | expandIcon | 自定义展开图标 | `ReactNode` | `-` |
 | onChange | 切换面板时触发 | `(activeName, name, status) => void` | `-` |
 

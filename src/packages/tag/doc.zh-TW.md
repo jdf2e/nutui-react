@@ -1,13 +1,11 @@
 # Tag 標簽
 
-
-
 用於標記和分類的標簽。
 
 ## 引入
 
 ```tsx
-import { Tag } from '@nutui/nutui-react';
+import { Tag } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -43,7 +41,6 @@ import { Tag } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
-
 
 ## Tag
 

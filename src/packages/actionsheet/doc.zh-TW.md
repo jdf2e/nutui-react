@@ -1,13 +1,11 @@
 # ActionSheet 動作面闆
 
-
-
 從底部彈出的動作菜單面闆。
 
 ## 引入
 
 ```tsx
-import { ActionSheet } from '@nutui/nutui-react';
+import { ActionSheet } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -31,7 +29,6 @@ import { ActionSheet } from '@nutui/nutui-react';
 ### 展示描述信息
 
 :::demo
-
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
 

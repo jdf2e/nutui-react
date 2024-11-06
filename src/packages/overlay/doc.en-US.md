@@ -1,13 +1,11 @@
 # Overlay
 
-
-
 Create a mask layer that is typically used to prevent users from doing other things
 
 ## Import
 
 ```tsx
-import { Overlay } from '@nutui/nutui-react';
+import { Overlay } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -68,7 +66,7 @@ import { Overlay } from '@nutui/nutui-react';
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
 | duration | Animation duration, in ms | `number` | `300` |
-| lockScroll | Whether the background is locked | `boolean` | `true` |
+| lockScroll | Whether the background is locked ,strict is used to support iOS12 | `boolean\|strict` | `true` |
 | zIndex | Set component page level | `number` | `1000` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
 | onClick | Triggered when the button is clicked | `event: Event` | `-` |
@@ -87,4 +85,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-overlay-zIndex | z-index | `1000` |
 | \--nutui-overlay-content-bg-color | Mask layer nested content background color | `$white` |
 | \--nutui-overlay-content-color | Mask layer nested content font color | `$color-title` |
-| \--nutui-overlay-animation-duration| Mask layer nested content animation duration | `0.3s` |
+| \--nutui-overlay-animation-duration | Mask layer nested content animation duration | `0.3s` |

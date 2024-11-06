@@ -5,12 +5,13 @@
 ## 引入
 
 ```tsx
-import { WaterMark } from '@nutui/nutui-react';
+import { WaterMark } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
 
 ### 基礎用法
+
 包含單行文字、多行文字、支援圖片。
 
 :::demo
@@ -42,7 +43,7 @@ import { WaterMark } from '@nutui/nutui-react';
 | zIndex | 追加的水印元素的 z-index | `number` | `2000` |
 | content | 水印文字內容 | `string` | `-` |
 | color | 水印文字顏色 | `string` | `rgba(0, 0, 0, .15)` |
-| fontSize | 文字大小 | `string` \| `number`  | `16` |
+| fontSize | 文字大小 | `string` \| `number` | `16` |
 | gapX | 水印之間的水平間距 | `number` | `24` |
 | gapY | 水印之間的垂直間距 | `number` | `48` |
 | startX | 水印之間的水平起點 | `number` | `0` |

@@ -7,7 +7,7 @@ A loading icon, Used to show the loading state
 ### Import
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -95,6 +95,6 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-loading-icon-color | icon color | `$color-text-help` |
-| \--nutui-loading-icon-size | icon size | `$font-size-small` |
+| \--nutui-loading-icon-size | icon size | `$font-size-s` |
 | \--nutui-loading-color | font color | `$color-text-help` |
-| \--nutui-loading-font-size | font size | `$font-size-small` |
+| \--nutui-loading-font-size | font size | `$font-size-s` |

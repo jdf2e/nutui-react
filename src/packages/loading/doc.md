@@ -1,12 +1,13 @@
 # Loading 加载中
 
 #
+
 加载图标，用于显示正在加载中的状态
 
 ### 引入
 
 ```tsx
-import { Loading } from '@nutui/nutui-react';
+import { Loading } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -94,6 +95,6 @@ import { Loading } from '@nutui/nutui-react';
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-loading-icon-color | icon色值 | `$color-text-help` |
-| \--nutui-loading-icon-size | icon大小 | `$font-size-small` |
+| \--nutui-loading-icon-size | icon大小 | `$font-size-s` |
 | \--nutui-loading-color | 文本色值 | `$color-text-help` |
-| \--nutui-loading-font-size | 文本字号 | `$font-size-small` |
+| \--nutui-loading-font-size | 文本字号 | `$font-size-s` |

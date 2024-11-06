@@ -76,7 +76,7 @@ function main() {
         const a = path.join(
           sourcePath,
           '../../',
-          'packages/nutui-taro-demo-rn/src',
+          'packages/nutui-taro-demo/src',
           nav.enName,
           'pages',
           package.name.toLowerCase()
@@ -166,7 +166,7 @@ function main() {
     }
   )
   // 修改引入的 utils
-  glob.sync(distPath + '/**/' + 'demos/taro/*.tsx').map((f) => {
+  glob.sync(`${distPath}/**/` + `demos/taro/*.tsx`).map((f) => {
     const sourceFileContent = fs.readFileSync(f, { encoding: 'utf-8' })
     const distFileContent = sourceFileContent
       .toString()
@@ -175,7 +175,7 @@ function main() {
     fs.writeFileSync(f, distFileContent)
   })
   // 修改引入的 utils
-  glob.sync(distPath + '/**/' + 'demo.taro.tsx').map((f) => {
+  glob.sync(`${distPath}/**/` + `demo.taro.tsx`).map((f) => {
     const sourceFileContent = fs.readFileSync(f, { encoding: 'utf-8' })
     const distFileContent = sourceFileContent
       .toString()

@@ -1,13 +1,11 @@
 # Video 視頻播放器
 
-
-
 原生video實現的視頻播放器
 
 ## 引入
 
 ```tsx
-import { Video } from '@nutui/nutui-react';
+import { Video } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

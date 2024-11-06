@@ -1,13 +1,11 @@
 # Progress
 
-
-
 Used to show the current progress of the operation.
 
 ## Import
 
 ```tsx
-import { Progress } from '@nutui/nutui-react';
+import { Progress } from '@nutui/nutui-react'
 ```
 
 ## Demo

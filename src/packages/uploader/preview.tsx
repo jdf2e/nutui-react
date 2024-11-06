@@ -1,6 +1,8 @@
 import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Progress from '@/packages/progress'
+
+import Image from '@/packages/image'
 import { FileItem } from '@/packages/uploader/file-item'
 import { ERROR } from '@/packages/uploader/utils'
 
@@ -11,6 +13,7 @@ export const Preview: React.FunctionComponent<any> = ({
   onDeleteItem,
   handleItemClick,
   previewUrl,
+  deleteIcon,
   children,
 }) => {
   const renderIcon = (item: FileItem) => {
@@ -31,11 +34,12 @@ export const Preview: React.FunctionComponent<any> = ({
               key={item.uid}
             >
               {previewType === 'picture' && !children && deletable && (
-                <Failure
-                  color="rgba(0,0,0,0.6)"
-                  className="close"
+                <div
                   onClick={() => onDeleteItem(item, index)}
-                />
+                  className="close"
+                >
+                  {deleteIcon}
+                </div>
               )}
               {previewType === 'picture' && !children && (
                 <div className="nut-uploader-preview-img">
@@ -59,7 +63,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   {item.type?.includes('image') ? (
                     <>
                       {item.url && (
-                        <img
+                        <Image
                           className="nut-uploader-preview-img-c"
                           style={{ objectFit: 'fill' }}
                           src={item.url}
@@ -71,7 +75,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   ) : (
                     <>
                       {previewUrl ? (
-                        <img
+                        <Image
                           className="nut-uploader-preview-img-c"
                           src={previewUrl}
                           alt=""

@@ -1,6 +1,5 @@
 # Sticky 组件
 
-
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
 > 支持吸顶、吸底、容器内吸顶效果，也可以使用官方sticky组件 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
@@ -55,4 +54,4 @@ import { Sticky } from '@nutui/nutui-react-taro'
 | threshold | 距离，当 position 为 top 时，设置的是 top | `number` | `0` |
 | zIndex | 吸附时的层级 | `number` | `2000` |
 | container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
-| onChange | 吸附状态改变时触发 |  `(val: boolean) => void` | `-` |
+| onChange | 吸附状态改变时触发 | `(val: boolean) => void` | `-` |

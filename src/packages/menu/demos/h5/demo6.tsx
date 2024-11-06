@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Menu } from '@nutui/nutui-react'
-import { ArrowDown, Star } from '@nutui/icons-react'
+import { ArrowDown, Star, Filter } from '@nutui/icons-react'
 
 const Demo6 = () => {
   const [options] = useState([
@@ -15,7 +15,12 @@ const Demo6 = () => {
   ])
   return (
     <Menu icon={<ArrowDown />}>
-      <Menu.Item options={options} defaultValue={0} icon={<Star />} />
+      <Menu.Item
+        options={options}
+        defaultValue={0}
+        icon={<Star />}
+        titleIcon={<Filter />}
+      />
       <Menu.Item options={options1} defaultValue="a" />
     </Menu>
   )

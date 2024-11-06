@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { render, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { act } from 'react-dom/test-utils'
 import { ImagePreview } from '../imagepreview'
 
 const images = [

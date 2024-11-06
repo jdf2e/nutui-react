@@ -5,6 +5,9 @@
   "main": "",
   "author": "",
   "license": "",
-  "dependencies": {},
+  "dependencies": {
+    "@jd-oh/taro_library": "2.0.70",
+    "@jd-oh/taro_cpp_library": "0.0.88-beta.0"
+  },
   "devDependencies": {}
 }

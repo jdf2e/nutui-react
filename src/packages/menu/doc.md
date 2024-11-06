@@ -1,12 +1,11 @@
 # Menu 菜单
 
-
 向下弹出的菜单列表
 
 ## 引入
 
 ```tsx
-import { Menu } from '@nutui/nutui-react';
+import { Menu } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -98,6 +97,7 @@ import { Menu } from '@nutui/nutui-react';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 菜单项标题 | `string` | `当前选中项文字` |
+| titleIcon | 菜单项 icon | `React.ReactNode` | `ArrowUp/ArrowDown` |
 | options | 选项数组 | `array` | `-` |
 | disabled | 是否禁用菜单 | `boolean` | `false` |
 | columns | 可以设置一行展示多少列 options | `number` | `1` |
@@ -137,5 +137,3 @@ import { Menu } from '@nutui/nutui-react';
 | \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `$color-text-disabled` |
 | \--nutui-menu-item-padding | 菜单选项的内边距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜单选项文本与icon的距离 | `8px` |
-
-

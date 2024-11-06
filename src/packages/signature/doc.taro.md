@@ -1,6 +1,5 @@
 # Signature 签名
 
-
 基于 Canvas 的签名组件
 
 ## 引入
@@ -58,4 +57,3 @@ import { Signature } from '@nutui/nutui-react-taro'
 | \--nutui-signature-border-width | 签名边框宽度 | `1px` |
 | \--nutui-signature-background-color | 签名背景颜色 | `$white` |
 | \--nutui-signature-font-size | 签名文字字号 | `$font-size-base` |
-

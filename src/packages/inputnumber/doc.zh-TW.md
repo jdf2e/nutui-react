@@ -1,13 +1,11 @@
 # InputNumber 數字輸入框
 
-
-
 通過點擊按鈕控制數字增減。
 
 ## 引入
 
 ```tsx
-import { InputNumber } from '@nutui/nutui-react';
+import { InputNumber } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -107,12 +105,12 @@ import { InputNumber } from '@nutui/nutui-react';
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | allowEmpty | 是否允許內容為空 | `boolean` | `false` |
-| defaultValue | 默認值 | `string`  \|  `number` | `0` |
-| value | 當前值，受控值 | `string`  \|  `number` | `-` |
-| min | 最小值限制 | `string`  \|  `number` | `1` |
-| max | 最大值限制 | `string`  \|  `number` | `9999` |
-| step | 步長 | `string`  \|  `number` | `1` |
-| digits | 設置保留的小數位 | `string`  \|  `number` | `0` |
+| defaultValue | 默認值 | `string` \| `number` | `0` |
+| value | 當前值，受控值 | `string` \| `number` | `-` |
+| min | 最小值限制 | `string` \| `number` | `1` |
+| max | 最大值限制 | `string` \| `number` | `9999` |
+| step | 步長 | `string` \| `number` | `1` |
+| digits | 設置保留的小數位 | `string` \| `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只讀狀態禁用輸入框操作行為 | `boolean` | `false` |
 | async | 支持異步修改 | `boolean` | `false` |

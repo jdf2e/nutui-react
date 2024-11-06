@@ -1,13 +1,11 @@
 # Radio 单选按钮
 
-
 用于在一组备选项中进行单选
 
 ## 引入
 
 ```tsx
-import { Radio } from '@nutui/nutui-react';
-
+import { Radio } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -121,11 +119,11 @@ import { Radio } from '@nutui/nutui-react';
 | checked | 指定当前是否选中 | `boolean` | `-` |
 | defaultChecked | 初始是否选中 | `boolean` | `-` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
-| value | 携带的标识值，用于 Group 模式 | `string`  \|  `number` | `-` |
+| value | 携带的标识值，用于 Group 模式 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | <a href="#/icon">图标名称</a>，选中前(建议和`activeIcon`一起修改) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">图标名称</a>，选中后(建议和`icon`一起修改) | `ReactNode` | `'CheckChecked'` |
-| shape | 形状 | `button` \| `round` |`round` |
+| shape | 形状 | `button` \| `round` | `round` |
 | onChange | 选中态变化时触发 | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group
@@ -134,12 +132,12 @@ import { Radio } from '@nutui/nutui-react';
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前选中项的标识符 | `string`  \|  `number` | `-` |
+| value | 当前选中项的标识符 | `string` \| `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| shape | 形状 | `button` \| `round` |`-` |
+| shape | 形状 | `button` \| `round` | `-` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `vertical` |
-| options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | 值变化时触发 | `(value: string \| number) => void` | `-` |
 
 ## 主题定制

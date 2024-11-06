@@ -50,6 +50,7 @@
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
+    vertical-align: middle;
   }
   &-rtl {
     &-before {

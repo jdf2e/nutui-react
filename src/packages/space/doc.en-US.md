@@ -1,13 +1,11 @@
 # Space
 
-
-
 Maintain the same width in the arrangement of elements.
 
 ## Import
 
 ```tsx
-import { Space } from '@nutui/nutui-react';
+import { Space } from '@nutui/nutui-react'
 ```
 
 ## Code
@@ -78,6 +76,6 @@ import { Space } from '@nutui/nutui-react';
 The component provides the following CSS variables, which can be used to customize styles. Please refer
 to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default           |
-| --- | --- |--------------|
+| Name | Description | Default |
+| --- | --- | --- |
 | \--nutui-space-gap | `8px` | spacing size |

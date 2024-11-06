@@ -99,13 +99,12 @@
       &-item {
         display: block;
         padding: $elevator-bars-inner-item-padding;
+        cursor: pointer;
 
         &-active {
           font-weight: $font-weight-bold;
           color: $elevator-bars-active-color;
         }
-
-        cursor: pointer;
       }
     }
   }

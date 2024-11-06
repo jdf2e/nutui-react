@@ -1,13 +1,11 @@
 # SearchBar組件
 
-
-
 用於搜索場景的輸入框組件。
 
 ## 引入
 
 ```tsx
-import { SearchBar } from '@nutui/nutui-react';
+import { SearchBar } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

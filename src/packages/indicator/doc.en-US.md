@@ -1,7 +1,5 @@
 # Indicator
 
-
-
 Displays the progress of a task or process, often used for provisioning processes
 
 ## Import

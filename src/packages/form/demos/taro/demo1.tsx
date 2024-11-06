@@ -22,6 +22,7 @@ const Demo1 = () => {
         }
       >
         <Form.Item
+          align="center"
           required
           label="字段A"
           name="username"
@@ -33,7 +34,7 @@ const Demo1 = () => {
                 ruleCfg: FormItemRuleWithoutValidator,
                 value: string
               ) => {
-                return value.length > 5
+                return value?.length > 5
               },
             },
           ]}

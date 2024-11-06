@@ -1,13 +1,11 @@
 # Rate 評分
 
-
-
 用於快速的評級操作，或對評價進行展示。
 
 ## 引入
 
 ```tsx
-import { Rate } from '@nutui/nutui-react';
+import { Rate } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼

@@ -1,6 +1,5 @@
 # CountDown 倒计时
 
-
 用于实时展示倒计时数值，支持毫秒精度。
 
 ## 引入
@@ -91,7 +90,7 @@ import { CountDown } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type| 展示类型 | `default`\|`primary` | `default` |
+| type | 展示类型 | `default`\|`primary` | `default` |
 | startTime | 开始时间 | `number` | `Date.now()` |
 | endTime | 结束时间 | `number` | `Date.now()` |
 | remainingTime | 剩余时间，单位是毫秒 | `number` | `0` |
@@ -143,7 +142,7 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-number-padding | 倒计时的时间区域padding | `0 1px` |
 | \--nutui-countdown-number-margin | 倒计时的时间区域margin | `0 2px` |
 | \--countdown-number-border-radius | 倒计时的时间区域圆角大小 | `2px` |
-| \--nutui-countdown-color | 倒计时的时间区域的文字颜色 | `$color-primary-light` |
+| \--nutui-countdown-color | 倒计时的时间区域的文字颜色 | `$color-primary-light-pressed` |
 | \--nutui-countdown-background-color | 倒计时的时间区域的背景颜色 | `$color-primary` |
 | \--nutui-countdown-border-color | 倒计时的时间区域的边框颜色颜色 | `$color-primary` |
 | \--nutui-countdown-primary-color | type为`primary`时，倒计时的时间区域的文字颜色 | `#FFFFFF` |

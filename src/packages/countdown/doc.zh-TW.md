@@ -1,7 +1,5 @@
 # CountDown 倒計時
 
-
-
 用於實時展示倒計時數值，支持毫秒精度。
 
 ## 引入
@@ -143,7 +141,7 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-number-padding | 倒計時的時間區域padding | `0 1px` |
 | \--nutui-countdown-number-margin | 倒計時的時間區域margin | `0 2px` |
 | \--countdown-number-border-radius | 倒計時的時間區域圓角大小 | `2px` |
-| \--nutui-countdown-color | 倒計時的時間區域的文字顔色 | `$color-primary-light` |
+| \--nutui-countdown-color | 倒計時的時間區域的文字顔色 | `$color-primary-light-pressed` |
 | \--nutui-countdown-background-color | 倒計時的時間區域的背景顔色 | `$color-primary` |
 | \--nutui-countdown-border-color | 倒計時的時間區域的邊框顔色顔色 | `$color-primary` |
 | \--nutui-countdown-primary-color | type爲`primary`時，倒計時的時間區域的文字顔色 | `#FFFFFF` |

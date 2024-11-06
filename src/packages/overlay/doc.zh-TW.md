@@ -1,13 +1,11 @@
 # Overlay 遮罩層
 
-
-
 創建一個遮罩層，通常用於阻止用戶進行其他操作
 
 ## 引入
 
 ```tsx
-import { Overlay } from '@nutui/nutui-react';
+import { Overlay } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -68,7 +66,7 @@ import { Overlay } from '@nutui/nutui-react';
 | --- | --- | --- | --- |
 | visible | 當前組件是否顯示 | `boolean` | `false` |
 | duration | 動畫時長，單位毫秒 | `number` | `300` |
-| lockScroll | 背景是否鎖定 | `boolean` | `true` |
+| lockScroll | 背景是否鎖定，strict 用於支援 iOS12 | `boolean\|strict` | `true` |
 | zIndex | 設置組件頁面層級 | `number` | `1000` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | onClick | 點擊時觸發 | `event: Event` | `-` |
@@ -87,4 +85,4 @@ import { Overlay } from '@nutui/nutui-react';
 | \--nutui-overlay-zIndex | overlay 的 z-index | `1000` |
 | \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$white` |
 | \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$color-title` |
-| \--nutui-overlay-animation-duration| 遮罩層動畫延時的時長 | `0.3s` |
+| \--nutui-overlay-animation-duration | 遮罩層動畫延時的時長 | `0.3s` |

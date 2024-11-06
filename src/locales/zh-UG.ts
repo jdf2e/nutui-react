@@ -8,6 +8,8 @@ const zhUG: BaseLang = {
   noData: 'مەزمۇن يوق',
   placeholder: 'كىرگۈزۈڭ',
   select: 'تاللاڭ',
+  edit: 'يحرر',
+  reset: 'إعادة ضبط',
   video: {
     errorTip: 'فىلىمنى قويۇش مەغلۇپ بولدى',
     clickRetry: 'قايتا سىناش',
@@ -44,6 +46,7 @@ const zhUG: BaseLang = {
     tips: 'ئۇنتۇپ قاپتىمەن',
   },
   uploader: {
+    list: 'تحميل الملفات',
     ready: 'تاماملىنىۋاتىدۇ',
     readyUpload: 'يوللاش ئالدىدا',
     waitingUpload: 'ساقلاۋاتىدۇ',
@@ -110,6 +113,7 @@ const zhUG: BaseLang = {
     mute: 'جىم',
     tips: 'onPlayEnd بولسا loop=false بولغاندا ئىشلەيدۇ',
   },
+  avatarCropper: { rotate: 'تناوب', selectImage: 'حدد الصورة' },
   datepicker: {
     year: 'يىل',
     month: 'ئاي',

@@ -1,19 +1,18 @@
 # Cascader 级联选择
 
-
 级联选择器，用于多层级数据的选择，典型场景为省市区选择。
 
 ## 引入
 
 ```tsx
-import { Cascader } from '@nutui/nutui-react';
+import { Cascader } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
 
 ### 基础用法
 
-传入`options`列表 
+传入`options`列表
 
 :::demo
 
@@ -95,10 +94,10 @@ import { Cascader } from '@nutui/nutui-react';
 
 ### Ref
 
-| 事件名  | 说明 | 回调参数 |
-|------| --- | --- |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
 | open | 显示 Cascader | `() => void` |
-| close  | 关闭 Cascader | `() => void` |
+| close | 关闭 Cascader | `() => void` |
 
 ## 主题定制
 

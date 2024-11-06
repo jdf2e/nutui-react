@@ -1,12 +1,11 @@
 # Calendar 日历
 
-
 日历，可平铺/弹窗展示
 
 ## 引入
 
 ```tsx
-import { Calendar } from '@nutui/nutui-react-taro';
+import { Calendar } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -121,8 +120,10 @@ import { Calendar } from '@nutui/nutui-react-taro';
 | showSubTitle | 是否展示日期标题 | `boolean` | `true` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
+| closeIcon | 自定义 Icon | `ReactNode` | `close` |
 | disableDate | 设置不可选日期 | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` \| `JSX.Element` | `-` |
+| renderBottomButton | 自定义日历底部按钮 | `() => string` \| `JSX.Element` | `-` |
 | renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayTop | 日期顶部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
@@ -159,7 +160,7 @@ import { Calendar } from '@nutui/nutui-react-taro';
 | \--nutui-calendar-choose-color | 日历选中元素的字色 | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色 | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-large` |
+| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-l` |
 | \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | 日历标题字重 | `500` |
 | \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-base` |

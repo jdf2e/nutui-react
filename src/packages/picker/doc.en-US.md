@@ -1,13 +1,11 @@
 # Picker
 
-
-
 The picker component is usually used with Popup Component.
 
 ## Import
 
 ```tsx
-import { Picker } from '@nutui/nutui-react';
+import { Picker } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -77,6 +75,7 @@ Cancel the 3D display effect by setting `threeDimensional`, and control the dura
 <CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
+
 ## Picker
 
 ### Props
@@ -89,7 +88,7 @@ Cancel the 3D display effect by setting `threeDimensional`, and control the dura
 | value | Controlled Value | `Array` | `[]` |
 | defaultValue | Default Index | `Array` | `[]` |
 | threeDimensional | Turn on 3D effects | `boolean` | `true` |
-| duration | move animation duration, ms | `string`  \|  `number` | `1000` |
+| duration | move animation duration, ms | `string` \| `number` | `1000` |
 | popupProps | popup props | `object` | `-` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
@@ -102,8 +101,8 @@ Cancel the 3D display effect by setting `threeDimensional`, and control the dura
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| text | Text of column | `string`  \|  `number` | `-` |
-| value | Value of column | `string`  \|  `number` | `-` |
+| text | Text of column | `string` \| `number` | `-` |
+| value | Value of column | `string` \| `number` | `-` |
 | children | Cascader Option | `Array` | `-` |
 
 ## Theming

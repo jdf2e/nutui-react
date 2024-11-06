@@ -1,13 +1,11 @@
 # Video
 
-
-
 Video player implemented by native video
 
 ## Import
 
 ```tsx
-import { Video } from '@nutui/nutui-react';
+import { Video } from '@nutui/nutui-react'
 ```
 
 ## Demo

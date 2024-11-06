@@ -163,11 +163,11 @@
     }
 
     &-top-end {
+      right: 0;
       .nut-popover-arrow-top-end {
         right: 16px;
         transform: translateX(0%);
       }
-      right: 0;
     }
 
     &-top-start {
@@ -187,12 +187,12 @@
     }
 
     &-bottom-end {
+      right: 0;
+
       .nut-popover-arrow-bottom-end {
         right: 16px;
         transform: translateX(0%);
       }
-
-      right: 0;
     }
 
     &-bottom-start {

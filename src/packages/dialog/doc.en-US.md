@@ -1,7 +1,5 @@
 # Dialog
 
-
-
 Modular dialog box, displayed in the floating layer, guides users to perform related operations, often used in message prompts, message confirmation, or complete specific interaction operations on the current page。
 
 The pop -up box components support the function call and component call.
@@ -23,6 +21,7 @@ import { Dialog } from '@nutui/nutui-react'
 :::
 
 ## Labeled use
+
 ### Basic use
 
 :::demo
@@ -116,25 +115,25 @@ import React from 'react'
 import { Dialog, Input, Button } from '@nutui/nutui-react'
 
 export default function App() {
-  const [captcha, setCaptcha] = useState<string>("");
+  const [captcha, setCaptcha] = useState<string>('')
   const showCaptcha = () => {
     return Dialog.confirm({
       content: (
-          <Input
-            placeholder="Please enter the verification code"
-            value={captcha} // Updates to captcha in the App are not passed to the Dialog
-            onChange={(v) => {
-              setCaptcha(v)
-            }}
-          />
-      )
-    });
-  };
+        <Input
+          placeholder="Please enter the verification code"
+          value={captcha} // Updates to captcha in the App are not passed to the Dialog
+          onChange={(v) => {
+            setCaptcha(v)
+          }}
+        />
+      ),
+    })
+  }
   return (
     <div>
       <Button onClick={showCaptcha}>Show</Button>
     </div>
-  );
+  )
 }
 ```
 
@@ -155,7 +154,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-content-max-height | dialog content max height | `268px` |
 | \--nutui-dialog-content-line-height | dialog content line height | `20px` |
 | \--nutui-dialog-content-text-align | dialog content text align | `left` |
-| \--nutui-dialog-header-font-size | dialog header font size | `$font-size-large` |
+| \--nutui-dialog-header-font-size | dialog header font size | `$font-size-l` |
 | \--nutui-dialog-header-font-weight | dialog header font weight | `normal` |
 | \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
 | \--nutui-dialog-footer-button-min-width | dialog footer button min width | `117px` |

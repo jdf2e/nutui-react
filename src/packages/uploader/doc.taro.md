@@ -1,12 +1,11 @@
 # Uploader 上传
 
-
 用于将本地的图片或文件上传至服务器。
 
 ## 引入
 
 ```tsx
-import { Uploader } from '@nutui/nutui-react-taro';
+import { Uploader } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -18,7 +17,7 @@ import { Uploader } from '@nutui/nutui-react-taro';
 <CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
->
+
 > 在使用Uploader组件上传文件时，可能会遇到响应文件信息中文乱码的问题。这通常发生在客户端与服务器端在处理文件编码时不一致的情况下。为了避免这种问题，建议确保服务器端读取文件的编码格式与客户端保持一致。
 
 ```javascript
@@ -26,13 +25,19 @@ import React from 'react'
 import { Uploader } from '@nutui/nutui-react'
 // Server Demo
 app.post('/upload', upload.single('file'), (req, res) => {
-  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8';
-  const fileContent = iconv.decode(Buffer.from(JSON.stringify(req.file), 'binary'), fileEncoding);
-  res.json({ success: true, message: 'File uploaded successfully', data: JSON.parse(fileContent) });
-});
+  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8'
+  const fileContent = iconv.decode(
+    Buffer.from(JSON.stringify(req.file), 'binary'),
+    fileEncoding
+  )
+  res.json({
+    success: true,
+    message: 'File uploaded successfully',
+    data: JSON.parse(fileContent),
+  })
+})
 // Client Demo
-<Uploader url={uploadUrl} headers={{'x-file-encoding': 'UTF-8'}} />
-
+;<Uploader url={uploadUrl} headers={{ 'x-file-encoding': 'UTF-8' }} />
 ```
 
 ### 基础用法
@@ -158,11 +163,13 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | headers | 设置上传的请求头部 | `object` | `{}` |
 | data | 附加上传的信息 formData | `object` | `{}` |
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `ReactNode` | `-` |
+| deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `string` | `&quot;&quot;` |
 | xhrState | 接口响应的成功状态（status）值 | `number` | `200` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
-| timeout | 超时时间，单位为毫秒 | `number` \| `string`   | `1000 * 30` |
+| timeout | 超时时间，单位为毫秒 | `number` \| `string` | `1000 * 30` |
+| beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
 | onStart | 文件上传开始 | `(option: UploadOptions) => void` | `-` |

@@ -1,6 +1,5 @@
 # Elevator 电梯楼层
 
-
 用于列表快速定位以及索引的显示
 
 ## 引入
@@ -76,7 +75,7 @@ import { Elevator } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | 楼层区域背景颜色 | `$white` |
-| \--nutui-elevator-list-font-size | 楼层区域列表项字体大小 | `$font-size-small` |
+| \--nutui-elevator-list-font-size | 楼层区域列表项字体大小 | `$font-size-s` |
 | \--nutui-elevator-list-color | 楼层区域列表项字体颜色 | `$color-title` |
 | \--nutui-elevator-list-item-padding | 楼层区域列表项内边距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 楼层区域列表项高度 | `30px` |

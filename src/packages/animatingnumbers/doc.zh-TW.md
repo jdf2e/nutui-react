@@ -1,7 +1,5 @@
 # AnimatingNumbers 數字動畫
 
-
-
 數字動畫集合
 
 ## 引入
@@ -39,7 +37,6 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 | delay | 等待動畫執行時間，單位 ms | `number` | `300` |
 | duration | 動畫執行時間，單位 s | `number` | `1` |
 | thousands | 是否有千位分隔符 | `boolean` | `false` |
-
 
 ## 主題定制
 

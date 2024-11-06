@@ -1,12 +1,11 @@
 # Switch 开关
 
-
 用来打开或关闭选项。
 
 ## 引入
 
 ```tsx
-import { Switch } from '@nutui/nutui-react-taro';
+import { Switch } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -83,7 +82,7 @@ import { Switch } from '@nutui/nutui-react-taro';
 | \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
 | \--nutui-switch-open-background-color | 开关打开状态背景颜色 | `$color-primary` |
 | \--nutui-switch-close-disabled-background-color | 开关关闭时的禁用时的背景颜色 | `$color-background` |
-| \--nutui-switch-open-disabled-background-color | 开关打开时的禁用时的背景颜色 | `$color-primary-disabled` |
+| \--nutui-switch-open-disabled-background-color | 开关打开时的禁用时的背景颜色 | `$color-primary-disabled-special` |
 | \--nutui-switch-width | 开关宽度 | `40px` |
 | \--nutui-switch-height | 开关高度 | `24px` |
 | \--nutui-switch-line-height | 开关行高 | `24px` |

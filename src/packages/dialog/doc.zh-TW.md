@@ -1,7 +1,5 @@
 # Dialog 對話框
 
-
-
 模態對話框，在浮層中顯示，引導用戶進行相關操作，常用於消息提示、消息確認，或在當前頁面內完成特定的交互操作。
 
 彈出框組件支持函數調用和組件調用兩種方式。
@@ -23,6 +21,7 @@ import { Dialog } from '@nutui/nutui-react'
 :::
 
 ## 以下為標籤式使用
+
 ### 基礎用法
 
 :::demo
@@ -116,25 +115,25 @@ import React from 'react'
 import { Dialog, Input, Button } from '@nutui/nutui-react'
 
 export default function App() {
-  const [captcha, setCaptcha] = useState<string>("");
+  const [captcha, setCaptcha] = useState<string>('')
   const showCaptcha = () => {
     return Dialog.confirm({
       content: (
-          <Input
-            placeholder="請輸入驗證碼"
-            value={captcha} // App 中 captcha 的更新是不會傳遞到 Dialog 中的
-            onChange={(v) => {
-              setCaptcha(v)
-            }}
-          />
-      )
-    });
-  };
+        <Input
+          placeholder="請輸入驗證碼"
+          value={captcha} // App 中 captcha 的更新是不會傳遞到 Dialog 中的
+          onChange={(v) => {
+            setCaptcha(v)
+          }}
+        />
+      ),
+    })
+  }
   return (
     <div>
       <Button onClick={showCaptcha}>Show</Button>
     </div>
-  );
+  )
 }
 ```
 
@@ -155,7 +154,7 @@ export default function App() {
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
-| \--nutui-dialog-header-font-size | 對話框標題字體大小 | `$font-size-large` |
+| \--nutui-dialog-header-font-size | 對話框標題字體大小 | `$font-size-l` |
 | \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
@@ -168,4 +167,3 @@ export default function App() {
 | \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
 | \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
 | \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |
-

@@ -2,6 +2,17 @@ const fse = require('fs-extra')
 const path = require('path')
 const fs = require('fs')
 const config = require('../../src/config.json')
+
+// 已适配组件对象
+const adaptedArray = []
+config.nav.map((item) => {
+  item.packages.forEach((element) => {
+    const { name, version } = element
+    if (version !== '3.0.0') return // 未适配不导出
+    adaptedArray.push(element.name.toLowerCase())
+  })
+})
+
 const navs = config.nav
 
 // let fileStr = `@import '../../../styles/font/iconfont.css';`
@@ -17,7 +28,7 @@ const createIndexConfig = (enName, package) => {
     if (package.show && package.taro) {
       const name = package.name
       const nameLc = package.name.toLowerCase()
-      let content = `export default {
+      const content = `export default {
   navigationBarTitleText: '${name}',
 }`
       const dirPath = path.join(
@@ -39,8 +50,10 @@ const createIndexConfig = (enName, package) => {
       })
 
       // 生成 demo
-      const demoContent = `import Demo from '@/packages/${nameLc}/demo.taro';
+      const demoContent = adaptedArray.includes(nameLc)
+        ? `import Demo from '@/packages/${nameLc}/demo.taro';
 export default Demo;`
+        : `export default <></>;`
       const demoDirPath = path.join(
         __dirname,
         `../../packages/nutui-taro-demo/src/${enName}/pages/${nameLc}`
@@ -66,7 +79,7 @@ const replaceAppSCSS = () => {
   const filePath = path.join(dirPath, `app.scss`)
   fse.readFile(filePath, (err, data) => {
     if (!err) {
-      let fileString = data.toString()
+      const fileString = data.toString()
       const lines = fileString.split('\n')
       if (lines[0].indexOf(`@import '../../../styles/font`) !== -1) {
         lines[0] = ''

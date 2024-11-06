@@ -64,15 +64,15 @@ import { Empty } from '@nutui/nutui-react'
 
 ### Props
 
-| 屬性        | 說明                           | 類型                            | 默認值  |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| image       | 圖片,支持傳入圖片 URL          | `ReactNode`                     | `-`     |
-| imageSize   | 圖片大小，number 類型單位為 px | `number` \| `string`            | `-`     |
-| title       | 圖片下方的標題                 | `ReactNode`                     | `-`     |
-| description | 圖片下方的描述文字             | `ReactNode`                     | `-`     |
-| size        | 組件整體大小，適配於全屏或半屏 | `small` \| `base`               | `base`  |
-| status      | 默認圖片錯誤類型               | `empty` \| `error` \| `network` | `empty` |
-| actions     | 可用於處理操作的一組數據       | `Array`                         | `[]`    |
+| image | 圖片,支持傳入圖片 URL | `ReactNode` | `-` |
+| imageSize | 圖片大小，number 類型單位為 px | `number` \| `string` | `-` |
+| title | 圖片下方的標題 | `ReactNode` | `-` |
+| description | 圖片下方的描述文字 | `ReactNode` | `-` |
+| size | 組件整體大小，適配於全屏或半屏 | `small` \| `base` | `base` |
+| status | 默認圖片錯誤類型 | `empty` \| `error` \| `network` | `empty` |
+| actions | 可用於處理操作的一組數據 | `Array` | `[]` |
 
 ## 主題定製
 

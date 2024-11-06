@@ -1,13 +1,11 @@
 # Rate
 
-
-
 Use for quick rating actions, or to showcase reviews.
 
 ## Import
 
 ```tsx
-import { Rate } from '@nutui/nutui-react';
+import { Rate } from '@nutui/nutui-react'
 ```
 
 ## Code

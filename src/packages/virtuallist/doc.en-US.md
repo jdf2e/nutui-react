@@ -1,13 +1,11 @@
 # VirtualList
 
-
-
 In normal list show and pull-up loading, we usually use the InfiniteLoading component provided by NutUI. If we load a large amount of data, serious performance problems may occur, resulting in the view unable to respond to the operation for a period of time. At this time, we use the virtual list component list, which can ensure that only the current visual area is rendered, Other parts are rendered after the user scrolls to the visible area. Ensure page flow and improve performance.
 
 ## Import
 
 ```tsx
-import { Virtuallist } from '@nutui/nutui-react';
+import { Virtuallist } from '@nutui/nutui-react'
 ```
 
 ## Demo

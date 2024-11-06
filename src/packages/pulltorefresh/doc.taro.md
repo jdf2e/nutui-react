@@ -1,6 +1,5 @@
 # PullToRefresh 下拉刷新
 
-
 在列表中通过手指下拉刷新加载新内容的交互操作。
 
 ## 引入
@@ -28,7 +27,6 @@ import { PullToRefresh } from '@nutui/nutui-react-taro'
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### 深色背景-反白模式:type='primary'
 

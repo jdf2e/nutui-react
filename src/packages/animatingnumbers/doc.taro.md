@@ -1,6 +1,5 @@
 # AnimatingNumbers 数字动画
 
-
 数字动画集合
 
 ## 引入
@@ -38,7 +37,6 @@ import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 | delay | 等待动画执行时间，单位 ms | `number` | `300` |
 | duration | 动画执行时间，单位 s | `number` | `1` |
 | thousands | 是否有千位分隔符 | `boolean` | `false` |
-
 
 ## 主题定制
 

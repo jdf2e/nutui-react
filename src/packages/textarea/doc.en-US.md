@@ -1,13 +1,11 @@
 # TextArea
 
-
-
 Enter or edit text in the text box, and limit the number of entries is supported.
 
 ## Import
 
 ```tsx
-import { TextArea } from '@nutui/nutui-react';
+import { TextArea } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -101,11 +99,11 @@ import { TextArea } from '@nutui/nutui-react';
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default | 
-| --- | --- | --- | 
-| \--nutui-textarea-font | fontSize | `$font-size-base` | 
-| \--nutui-textarea-padding | padding | `10px 25px`| 
-| \--nutui-textarea-limit-color | limit color | `$color-text` | 
-| \--nutui-textarea-text-color | text color | `$color-title` | 
-| \--nutui-textarea-text-curror-color | caret color | `$color-title`| 
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-textarea-font | fontSize | `$font-size-base` |
+| \--nutui-textarea-padding | padding | `10px 25px` |
+| \--nutui-textarea-limit-color | limit color | `$color-text` |
+| \--nutui-textarea-text-color | text color | `$color-title` |
+| \--nutui-textarea-text-curror-color | caret color | `$color-title` |
 | \--nutui-textarea-disabled-color | disabled color | `$color-text-disabled` |

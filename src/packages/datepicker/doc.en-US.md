@@ -1,13 +1,11 @@
 # DatePicker
 
-
-
 Used to select time, support date and time dimensions, usually used with the Popup component.
 
 ## Import
 
 ```tsx
-import { DatePicker } from '@nutui/nutui';
+import { DatePicker } from '@nutui/nutui'
 ```
 
 ### Choose Date

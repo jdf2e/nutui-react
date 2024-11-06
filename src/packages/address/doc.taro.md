@@ -1,12 +1,11 @@
 # Address 地址
 
-
 地址选择
 
 ## 引入
 
 ```tsx
-import { Address } from '@nutui/nutui-react-taro';
+import { Address } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -85,7 +84,7 @@ import { Address } from '@nutui/nutui-react-taro';
 通过 ref 可以获取到 Address 实例并调用实例方法。
 
 | 方法名 | 说明 | 参数 |
-| ----- | ----- | -- |
+| --- | --- | --- |
 | open | 打开地址选择 | `-` |
 | close | 关闭地址选择 | `-` |
 

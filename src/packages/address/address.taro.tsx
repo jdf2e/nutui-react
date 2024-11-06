@@ -41,7 +41,6 @@ export interface AddressProps extends CascaderProps {
   selectIcon: React.ReactNode
   backIcon: React.ReactNode
   onSwitch?: (data: { type: string }) => void
-  // 仅用于选择已有地址
   onExistSelect?: (data: AddressList) => void
 }
 
@@ -143,7 +142,6 @@ const InternalAddress: ForwardRefRenderFunction<
     handleClose()
   }
 
-  // 切换地址选择模式
   const onSwitchModule = () => {
     if (currentType === 'exist') {
       setCurrentType('custom')

@@ -1,6 +1,5 @@
 # Dialog 对话框
 
-
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
 弹出框组件支持函数调用和组件调用两种方式。
@@ -22,7 +21,8 @@ import { Dialog } from '@nutui/nutui-react-taro'
 :::
 
 ## 以下为标签式使用
-### 基础用法 
+
+### 基础用法
 
 :::demo
 
@@ -109,6 +109,7 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
 ### Methods
+
 | 方法名 | 说明 | 类型 |
 | --- | --- | --- |
 | Dialog.open | 打开 Dialog | (id: string, options: DialogOptions) => void |
@@ -133,7 +134,7 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 对话框内容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 对话框内容文本对齐方式 | `left` |
-| \--nutui-dialog-header-font-size | 对话框标题字体大小 | `$font-size-large` |
+| \--nutui-dialog-header-font-size | 对话框标题字体大小 | `$font-size-l` |
 | \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `117px` |
@@ -146,4 +147,3 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
-
