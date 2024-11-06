@@ -987,7 +987,8 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "v14": true
         },
         {
           "version": "2.0.0",
