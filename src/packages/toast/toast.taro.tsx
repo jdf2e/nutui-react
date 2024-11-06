@@ -156,10 +156,7 @@ export const Toast: FunctionComponent<
   }
 
   const hasIcon = () => {
-    if (type !== 'text') {
-      return true
-    }
-    return !!icon
+    return type !== 'text' || !!icon
   }
 
   const iconName = () => {
@@ -167,25 +164,23 @@ export const Toast: FunctionComponent<
       return icon
     }
 
-    return !harmonyAndRn()
-      ? {
-          success: (
-            <Success
-              className="nut-toast-icon"
-              color="#ffffff"
-              size={iconSize}
-            />
-          ),
-          fail: <Failure color="#ffffff" size={iconSize} />,
-          warn: <Tips color="#ffffff" size={iconSize} />,
-          loading: <Loading color="#ffffff" size={iconSize} />,
-        }[type]
-      : {
-          success: <Text className="nut-toast-icon">success</Text>,
-          fail: <Text className="nut-toast-icon">fail</Text>,
-          warn: <Text className="nut-toast-icon">warn</Text>,
-          loading: <Text className="nut-toast-icon">loading</Text>,
-        }[type]
+    if (harmonyAndRn()) {
+      return {
+        success: <Text>success</Text>,
+        fail: <Text>fail</Text>,
+        warn: <Text>warn</Text>,
+        loading: <Text>loading</Text>,
+      }[type]
+    }
+
+    return {
+      success: (
+        <Success className="nut-toast-icon" color="#ffffff" size={iconSize} />
+      ),
+      fail: <Failure color="#ffffff" size={iconSize} />,
+      warn: <Tips color="#ffffff" size={iconSize} />,
+      loading: <Loading color="#ffffff" size={iconSize} />,
+    }[type]
   }
 
   const classes = classNames({
