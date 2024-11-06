@@ -43,6 +43,17 @@ describe('Countdown', () => {
     })
   })
 
+  test('type props text primary', async () => {
+    const { container } = render(
+      <>
+        <CountDown endTime={Date.now() + 1 * 1000} type="text" />
+        <CountDown endTime={Date.now() + 1 * 1000} type="primary" />
+      </>
+    )
+
+    expect(container).toMatchSnapshot()
+  })
+
   test('paused props', async () => {
     const testClick = vi.fn()
     let paused = false

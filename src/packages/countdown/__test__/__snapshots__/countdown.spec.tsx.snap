@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Countdown > type props text primary 1`] = `
+<div>
+  <div
+    class="nut-countdown "
+  >
+    <span
+      class="nut-countdown-number-text"
+    >
+      00
+    </span>
+    :
+    <span
+      class="nut-countdown-number-text"
+    >
+      00
+    </span>
+    :
+    <span
+      class="nut-countdown-number-text"
+    >
+      00
+    </span>
+  </div>
+  <div
+    class="nut-countdown "
+  >
+    <span
+      class="nut-countdown-number-primary"
+    >
+      00
+    </span>
+    :
+    <span
+      class="nut-countdown-number-primary"
+    >
+      00
+    </span>
+    :
+    <span
+      class="nut-countdown-number-primary"
+    >
+      00
+    </span>
+  </div>
+</div>
+`;
