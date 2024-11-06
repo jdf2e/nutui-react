@@ -39,7 +39,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
-  const timerRef = useRef(0)
+  const timerRef = useRef()
   const numbers = Array.from({ length: 10 }, (v, i) => i)
 
   const getShowNumber = useCallback(() => {
@@ -55,7 +55,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   }, [length, thousands, value])
 
   const [numberArr, setNumberArr] = useState<string[]>([])
-  const [transformArr, setTransformArr] = useState<Array<string>>([])
+  const [transformArr, setTransformArr] = useState<CSSProperties[]>([])
   const isLoaded = useRef(false)
 
   const setNumberTransform = useCallback(() => {
@@ -63,11 +63,13 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       createSelectorQuery()
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
-          const transformArrCache: any[] = []
+          const transformArrCache: CSSProperties[] = []
           Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
             const idx = Number(numberArr[Number(key)])
-            if (elem && typeof idx === 'number' && !Number.isNaN(idx)) {
+            const enabled =
+              elem && typeof idx === 'number' && !Number.isNaN(idx)
+            if (enabled) {
               // 计算规则：父元素和实际列表高度的百分比，分割成20等份
               const transform =
                 idx || idx === 0
@@ -89,7 +91,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     if (numberArr.length) {
       if (!isLoaded.current) {
         isLoaded.current = true
-        timerRef.current = window.setTimeout(() => {
+        timerRef.current = setTimeout(() => {
           setNumberTransform()
         }, delay)
       } else {
@@ -97,7 +99,8 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
       }
     }
     return () => {
-      window.clearTimeout(timerRef.current)
+      clearTimeout(timerRef.current)
+      isLoaded.current = false
     }
   }, [numberArr, delay, setNumberTransform])
 

@@ -7,6 +7,8 @@
 .nut-countup-listitem {
   height: 32px;
   overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .nut-countup-listitem-number {
   margin: 0 0;

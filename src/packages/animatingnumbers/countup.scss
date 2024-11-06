@@ -9,6 +9,8 @@
   &-listitem {
     height: $countup-height;
     overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 
     &-number {
       margin: 0 $countup-lr-margin;
