@@ -24,9 +24,6 @@
 .nut-overflow-hidden {
   overflow: hidden !important;
 }
-.nut-overflow-hidden .taro_page {
-  overflow: hidden !important;
-}
 
 @keyframes nut-fade-in {
   0% {
