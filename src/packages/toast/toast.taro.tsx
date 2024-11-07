@@ -12,7 +12,7 @@ import {
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { harmonyAndRn, harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import { mergeProps } from '@/utils/merge-props'
 
 export type ToastPosition = 'top' | 'bottom' | 'center'
@@ -162,15 +162,6 @@ export const Toast: FunctionComponent<
   const iconName = () => {
     if (icon) {
       return icon
-    }
-
-    if (harmonyAndRn()) {
-      return {
-        success: <Text>success</Text>,
-        fail: <Text>fail</Text>,
-        warn: <Text>warn</Text>,
-        loading: <Text>loading</Text>,
-      }[type]
     }
 
     return {

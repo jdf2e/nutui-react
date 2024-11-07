@@ -25,8 +25,12 @@
   z-index: 1300;
 }
 .nut-toast-overlay-default {
-  background: rgba(0, 0, 0, 0);
+  /* #ifndef harmony */
+  /* #endif */
+  /* #ifdef harmony */
+  background-color: rgba(0, 0, 0, 0);
   z-index: 1300;
+  /* #endif */
 }
 .nut-toast-inner {
   position: absolute;
