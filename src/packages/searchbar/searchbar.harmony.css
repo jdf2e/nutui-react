@@ -51,10 +51,17 @@
 .nut-searchbar-left > span {
   margin-right: 16px;
 }
+.nut-searchbar-left > i {
+  margin-right: 16px;
+}
 .nut-searchbar-left > svg {
   margin-right: 16px;
 }
-.nut-searchbar-left > div:last-child, .nut-searchbar-left > span:last-child, .nut-searchbar-left > svg:last-child {
+.nut-searchbar-left .nut-icon {
+  margin-right: 16px;
+}
+.nut-searchbar-left > div:last-child, .nut-searchbar-left > span:last-child, .nut-searchbar-left > i:last-child, .nut-searchbar-left > svg:last-child,
+.nut-searchbar-left .nut-icon:last-child {
   margin-right: 0;
 }
 .nut-searchbar-right {
@@ -66,10 +73,17 @@
 .nut-searchbar-right > span {
   margin-left: 16px;
 }
+.nut-searchbar-right > i {
+  margin-left: 16px;
+}
 .nut-searchbar-right > svg {
   margin-left: 16px;
 }
-.nut-searchbar-right > div:first-child, .nut-searchbar-right > span:first-child, .nut-searchbar-right > svg:first-child {
+.nut-searchbar-right .nut-icon {
+  margin-left: 16px;
+}
+.nut-searchbar-right > div:first-child, .nut-searchbar-right > span:first-child, .nut-searchbar-right > i:first-child, .nut-searchbar-right > svg:first-child,
+.nut-searchbar-right .nut-icon:first-child {
   margin-left: 0;
 }
 .nut-searchbar-left > text {

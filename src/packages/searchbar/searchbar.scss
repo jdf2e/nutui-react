@@ -50,7 +50,8 @@
     & > div,
     & > span,
     & > i,
-    & > svg {
+    & > svg,
+    .nut-icon {
       margin-right: $searchbar-gap;
 
       &:last-child {
@@ -61,11 +62,11 @@
 
   &-right {
     margin-left: $searchbar-gap;
-
     & > div,
     & > span,
     & > i,
-    & > svg {
+    & > svg,
+    .nut-icon {
       margin-left: $searchbar-gap;
 
       &:first-child {

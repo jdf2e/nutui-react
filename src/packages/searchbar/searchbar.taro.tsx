@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { View, ITouchEvent, Input as TaroInput, Icon } from '@tarojs/components'
+import { View, ITouchEvent, Input as TaroInput } from '@tarojs/components'
 import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
 
 export interface SearchBarProps extends BasicComponent {
   value?: string
@@ -28,9 +27,6 @@ export interface SearchBarProps extends BasicComponent {
   onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
 }
 
-// TODO:harmony 下图标为了适配展示使用，待icon适配之后统一移除
-const isHarmony = harmony()
-
 const defaultProps = {
   ...ComponentDefaults,
   placeholder: '',
@@ -44,7 +40,7 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: isHarmony ? <Icon type="search" size={16} /> : <Search size="16" />,
+  leftIn: <Search size="16" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -171,11 +167,7 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
-        {isHarmony ? (
-          <Icon type="cancel" size={16} color="#c2c4cc" />
-        ) : (
-          <MaskClose size={16} />
-        )}
+        <MaskClose size={16} />
       </View>
     )
   }
