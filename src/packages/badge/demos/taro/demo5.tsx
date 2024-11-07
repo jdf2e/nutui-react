@@ -17,15 +17,7 @@ const customTheme2 = {
 const Demo5 = () => {
   const isRnAndHarmony = harmonyAndRn()
   const renderChildren = () => {
-    return (
-      <>
-        {isRnAndHarmony ? (
-          <Avatar shape="square">N</Avatar>
-        ) : (
-          <Avatar icon={<User />} shape="square" />
-        )}
-      </>
-    )
+    return <Avatar icon={<User />} shape="square" />
   }
   const marginStyles = isRnAndHarmony
     ? { marginRight: pxTransform(40) }

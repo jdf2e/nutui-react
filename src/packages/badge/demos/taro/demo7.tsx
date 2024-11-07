@@ -9,7 +9,7 @@ const Demo7 = () => {
     ? { marginRight: pxTransform(40) }
     : { marginInlineEnd: '40px' }
   return (
-    <Cell style={{ height: pxTransform(80) }}>
+    <Cell style={{ height: pxTransform(66) }}>
       <Badge style={marginStyles} value={8} />
       <Badge style={marginStyles} value={76} />
       <Badge style={marginStyles} value="NEW" />
