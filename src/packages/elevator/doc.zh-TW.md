@@ -75,7 +75,7 @@ import { Elevator } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | 樓層區域背景顏色 | `$white` |
-| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-small` |
+| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-s` |
 | \--nutui-elevator-list-color | 樓層區域列表項字體顏色 | `$color-title` |
 | \--nutui-elevator-list-item-padding | 樓層區域列表項內邊距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `30px` |

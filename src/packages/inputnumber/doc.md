@@ -98,6 +98,14 @@ import { InputNumber } from '@nutui/nutui-react'
 
 :::
 
+### 支持取消文本全选中
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ## InputNumber
 
 ### Props
@@ -114,6 +122,7 @@ import { InputNumber } from '@nutui/nutui-react'
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只读状态禁用输入框操作行为 | `boolean` | `false` |
 | async | 支持异步修改 | `boolean` | `false` |
+| select | 支持取消文本全选中 | `boolean` | `true` |
 | formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
 | onPlus | 点击增加按钮时触发 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 点击减少按钮时触发 | `(e: MouseEvent) => void` | `-` |

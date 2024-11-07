@@ -16,10 +16,7 @@ export type OptionsResolved = Overwrite<
 >
 
 export function getLibraryName(options: Options): string {
-  if (options.libraryName) {
-    return options.libraryName
-  }
-  return '@nutui/nutui-react'
+  return options.libraryName || '@nutui/nutui-react'
 }
 
 export function resolveOptions(options: Options): OptionsResolved {

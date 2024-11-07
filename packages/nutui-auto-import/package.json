@@ -2,7 +2,7 @@
   "name": "@nutui/nutui-react-auto-import",
   "version": "0.0.1",
   "packageManager": "pnpm@9.11.0",
-  "description": "Description.",
+  "description": "NutUI React 组件的自动导入插件，支持多种构建工具如 Vite、Webpack、Rollup 等。",
   "type": "module",
   "keywords": [
     "unplugin",
@@ -87,7 +87,6 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@nutui/nutui-react": "^2.6.22",
     "@rollup/pluginutils": "^5.1.1",
     "@types/babel__traverse": "^7.20.6",
     "estree-walker": "^3.0.3",
@@ -95,6 +94,7 @@
     "unplugin": "^1.14.1"
   },
   "devDependencies": {
+    "@nutui/nutui-react": "^2.6.22",
     "@babel/core": "^7.25.8",
     "@babel/preset-react": "^7.25.7",
     "@rollup/plugin-babel": "^6.0.4",

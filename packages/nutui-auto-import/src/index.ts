@@ -43,9 +43,8 @@ const unpluginFactory = (
               const resolvePath = require.resolve(libraryName)
               absolutePath = resolvePath.split(libraryName)
             } catch (e) {
-              /* empty */
               absolutePath = ['']
-              console.log(`warn: cannot reslove ${libraryName}`)
+              console.log(`warn: cannot resolve ${libraryName}`)
             }
             node.specifiers.forEach((specifier) => {
               if (specifier.type === 'ImportSpecifier') {

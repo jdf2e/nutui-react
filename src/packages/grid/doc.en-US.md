@@ -126,4 +126,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-grid-item-content-bg-color | background | `$white` |
 | \--nutui-grid-item-text-margin | margin | `8px` |
 | \--nutui-grid-item-text-color | text color | `$color-title` |
-| \--nutui-grid-item-text-font-size | text font size | `$font-size-small` |
+| \--nutui-grid-item-text-font-size | text font size | `$font-size-s` |

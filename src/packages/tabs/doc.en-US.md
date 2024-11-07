@@ -245,7 +245,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-titles-item-color | Tab titles font color | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab selected titles font color | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `$font-weight-bold` |
-| \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-large` |
+| \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-l` |
 | \--nutui-tabs-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$color-background-overlay` |
 | \--nutui-tabs-tab-line-width | Horizontal active tab line width | `12px` |
 | \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `2px` |

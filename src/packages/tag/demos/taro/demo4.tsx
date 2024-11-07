@@ -1,15 +1,9 @@
 import React from 'react'
 import { Cell, Tag } from '@nutui/nutui-react-taro'
 import { Image, Text, View } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
-  const convertSize = (size: number) => {
-    if (Taro.getEnv() === Taro.ENV_TYPE.RN) {
-      return size
-    }
-    return `${size}px`
-  }
   return (
     <>
       <Cell
@@ -26,14 +20,15 @@ const Demo4 = () => {
             >
               <Image
                 style={{
-                  height: convertSize(10),
-                  width: convertSize(10),
+                  height: pxTransform(11),
+                  width: pxTransform(10),
+                  lineHeight: 1,
                 }}
                 src="https://img13.360buyimg.com/imagetools/jfs/t1/249078/11/8928/559/6641c6f6F823e1c5e/a90a3b3cab20caaa.png"
               />
               <Text
                 style={{
-                  fontSize: convertSize(10),
+                  fontSize: pxTransform(10),
                   color: 'white',
                 }}
               >

@@ -25,6 +25,7 @@ package-lock.json
 /site_docs
 /coverage
 /packages/nutui-jdharmony
+/packages/nutui-jdharmonycpp
 
 # local env files
 .env.local

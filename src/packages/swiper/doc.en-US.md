@@ -12,6 +12,7 @@ import { Swiper } from '@nutui/nutui-react'
 
 ### Basic Usage
 
+`Swiper` sets the user's operation behavior through the CSS `touch-action` attribute. If you need to slide the page vertically when sliding horizontally, you can set it through the `style` attribute of `Swiper`. For the CSS `touch-action` attribute, please refer to [https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action)
 :::demo
 
 ```tsx

@@ -17,6 +17,7 @@ export const Preview: React.FunctionComponent<any> = ({
   onDeleteItem,
   handleItemClick,
   previewUrl,
+  deleteIcon,
   children,
 }) => {
   const renderIcon = (item: FileItem) => {
@@ -37,11 +38,12 @@ export const Preview: React.FunctionComponent<any> = ({
               key={item.uid}
             >
               {previewType === 'picture' && !children && deletable && (
-                <Failure
-                  color="rgba(0,0,0,0.6)"
+                <View
                   className="close"
                   onClick={() => onDeleteItem(item, index)}
-                />
+                >
+                  {deleteIcon}
+                </View>
               )}
               {previewType === 'picture' && !children && (
                 <View className="nut-uploader-preview-img">
