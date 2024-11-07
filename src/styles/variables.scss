@@ -850,47 +850,50 @@ $avatar-normal-width: var(--nutui-avatar-normal-width, 40px) !default;
 $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
-$switch-close-background-color: var(
-  --nutui-switch-close-background-color,
-  $color-text-disabled
-) !default;
 $switch-open-background-color: var(
   --nutui-switch-open-background-color,
   $color-primary
 ) !default;
-$switch-close-disabled-background-color: var(
-  --nutui-switch-close-disabled-background-color,
-  $color-background
+$switch-close-background-color: var(
+  --nutui-switch-close-background-color,
+  $color-text-disabled
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
   $color-primary-disabled-special
 ) !default;
+$switch-close-disabled-background-color: var(
+  --nutui-switch-close-disabled-background-color,
+  $color-background
+) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-background-color,
-  #fff
+  #ffffff
 ) !default;
-$switch-width: var(--nutui-switch-width, 40px) !default;
-$switch-height: var(--nutui-switch-height, 24px) !default;
-$switch-line-height: var(--nutui-switch-line-height, 24px) !default;
-$switch-border-radius: var(--nutui-switch-border-radius, 8px) !default;
-$switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
-$switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
+$switch-width: var(--nutui-switch-width, 46px) !default;
+$switch-height: var(--nutui-switch-height, 28px) !default;
+$switch-line-height: var(--nutui-switch-line-height, 28px) !default;
+$switch-border-radius: var(
+  --nutui-switch-border-radius,
+  $radius-circle
+) !default;
+$switch-border-width: var(--nutui-switch-border-width, 2px) !default;
 $switch-inside-border-radius: var(
   --nutui-switch-inside-border-radius,
-  $radius-s
+  $radius-full
 ) !default;
-$switch-inside-open-transform: var(
-  --nutui-switch-inside-open-transform,
-  translateX(18px)
+$switch-inside-box-shadow: var(
+  --nutui-switch-inside-box-shadow,
+  0px 2px 6px 0px rgba(0, 0, 0, 0.4)
 ) !default;
-$switch-inside-close-transform: var(
-  --nutui-switch-inside-close-transform,
-  translateX(2px)
+$switch-label-text-color: var(
+  --nutui-switch-label-text-color,
+  $color-primary-text
 ) !default;
-$switch-button-box-shadow: var(
-  --nutui-switch-box-shadow,
-  0 0 transparent
+$switch-label-font-size: var(--nutui--label-font-size, $font-size-s) !default;
+$switch-close-disabled-label-text-color: var(
+  --nutui-switch-close-disabled-label-text-color,
+  $color-text-disabled
 ) !default;
 
 // toast（✅）

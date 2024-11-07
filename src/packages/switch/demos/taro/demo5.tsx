@@ -1,16 +1,11 @@
 import React from 'react'
 import { Cell, Switch } from '@nutui/nutui-react-taro'
+import { Check, Close } from '@nutui/icons-react-taro'
 
 const Demo5 = () => {
   return (
     <Cell>
-      <Switch
-        defaultChecked
-        style={{
-          '--nutui-switch-open-background-color': 'blue',
-          '--nutui-switch-close-line-background-color': '#ebebeb',
-        }}
-      />
+      <Switch defaultChecked activeText={<Check />} inactiveText={<Close />} />
     </Cell>
   )
 }

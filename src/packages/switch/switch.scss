@@ -1,9 +1,9 @@
 .nut-switch {
-  cursor: pointer;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: $switch-width;
+  min-width: $switch-width;
   height: $switch-height;
   line-height: $switch-line-height;
   background-color: $switch-open-background-color;
@@ -14,25 +14,26 @@
   flex: 0 0 auto; // 防止被压缩
 
   &-button {
+    position: absolute;
+    top: $switch-border-width;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: $switch-inside-height;
-    width: $switch-inside-width;
-    transform: $switch-inside-close-transform;
+    height: calc($switch-height - $switch-border-width * 2);
+    width: calc($switch-height - $switch-border-width * 2);
     border-radius: $switch-inside-border-radius;
     background: $color-primary-text;
-    transition: transform 0.3s;
-    box-shadow: $switch-button-box-shadow;
+    transition: left 0.3s;
+    box-shadow: $switch-inside-box-shadow;
     &-open {
-      transform: $switch-inside-open-transform;
+      left: calc(100% - $switch-height + $switch-border-width);
       &-rtl {
         transform: var(--nutui-switch-inside-open-transform, translateX(-18px));
       }
     }
     &-close {
-      transform: $switch-inside-close-transform;
+      left: $switch-border-width;
       &-rtl {
         transform: var(--nutui-switch-inside-close-transform, translateX(-2px));
       }
@@ -42,10 +43,36 @@
   &-close {
     background-color: $switch-close-background-color;
     &-line {
-      width: 12px;
+      width: calc(($switch-height - $switch-border-width * 2) / 2);
       height: 2px;
       background: $switch-close-line-background-color;
       border-radius: 2px;
+    }
+  }
+
+  &-label {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+    color: $switch-label-text-color;
+    font-size: $switch-label-font-size;
+    &-open {
+      margin: 0 calc($switch-height - $switch-border-width + 5px) 0 7px;
+      &-rtl {
+        transform: translateX(18px);
+      }
+    }
+
+    &-close {
+      margin: 0 7px 0 calc($switch-height - $switch-border-width + 5px);
+      &-rtl {
+        transform: translateX(-18px);
+      }
+    }
+
+    &-close-disabled {
+      color: $switch-close-disabled-label-text-color;
     }
   }
 
@@ -53,25 +80,6 @@
     background-color: $switch-open-disabled-background-color;
     &-close {
       background-color: $switch-close-disabled-background-color;
-    }
-  }
-
-  &-label {
-    color: $color-primary-text;
-    font-size: $font-size-s;
-
-    &-open {
-      transform: translateX(-18px);
-      &-rtl {
-        transform: translateX(18px);
-      }
-    }
-
-    &-close {
-      transform: translateX(18px);
-      &-rtl {
-        transform: translateX(-18px);
-      }
     }
   }
 }
