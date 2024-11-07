@@ -3,7 +3,7 @@ import { Cell, Video, Button } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo7 = () => {
-  const [source1, setSource1] = useState({
+  const [source, setSource] = useState({
     src: 'https://storage.360buyimg.com/nutui/video/legao-%E6%9D%A8%E8%BF%9B%E5%86%9B.mp4',
     type: 'video/mp4',
   })
@@ -15,13 +15,13 @@ const Demo7 = () => {
   const playend = (elm: any) => console.log('playend', elm)
 
   const changeVideo = () => {
-    setSource1({ ...source1, src: 'https://vjs.zencdn.net/v/oceans.mp4' })
+    setSource({ ...source, src: 'https://vjs.zencdn.net/v/oceans.mp4' })
   }
   return (
     <>
       <Cell style={{ padding: 0 }}>
         <Video
-          source={source1}
+          source={source}
           options={options}
           onPlay={play}
           onPause={pause}

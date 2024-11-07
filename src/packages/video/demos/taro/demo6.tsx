@@ -3,7 +3,7 @@ import { Cell, Video } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
-  const [source, setSource] = useState({
+  const [source] = useState({
     src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
     type: 'video/mp4',
   })
