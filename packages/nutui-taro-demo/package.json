@@ -45,7 +45,7 @@
   "author": "",
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/replace-icons": "^1.0.0",
+    "@nutui/replace-icons": "^1.0.3",
     "@nutui/touch-emulator": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@tarojs/components": "3.6.22",

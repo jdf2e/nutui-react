@@ -1,3 +1,6 @@
+const projectID = process.env.VITE_APP_PROJECT_ID
+const publicPath = `/taro/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}/demo`
+
 module.exports = {
   env: {
     NODE_ENV: '"production"',
@@ -5,7 +8,7 @@ module.exports = {
   defineConstants: {},
   mini: {},
   h5: {
-    publicPath: '/taro/react/2x/demo',
+    publicPath,
     /**
      * WebpackChain 插件配置
      * @docs https://github.com/neutrinojs/webpack-chain
