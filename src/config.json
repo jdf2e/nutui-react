@@ -891,7 +891,7 @@
       "enName": "exhibition",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Animate",
           "type": "component",
           "cName": "动画/动效",
@@ -1133,7 +1133,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
@@ -1163,7 +1163,7 @@
       "enName": "business",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",

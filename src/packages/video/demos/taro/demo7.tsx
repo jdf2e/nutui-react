@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Cell, Video, Button } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo7 = () => {
   const [source1, setSource1] = useState({
@@ -18,19 +19,19 @@ const Demo7 = () => {
   }
   return (
     <>
-      <Cell style={{ padding: '0' }}>
+      <Cell style={{ padding: 0 }}>
         <Video
           source={source1}
           options={options}
           onPlay={play}
           onPause={pause}
           onPlayEnd={playend}
-          style={{ height: '163px' }}
+          style={{ height: pxTransform(163) }}
         />
       </Cell>
       <Button
         type="primary"
-        style={{ marginBottom: '60px' }}
+        style={{ marginBottom: pxTransform(60) }}
         onClick={changeVideo}
       >
         视频切换
