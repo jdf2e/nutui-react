@@ -24,16 +24,18 @@
   pointer-events: none;
   z-index: 1300;
 }
-.nut-toast-overlay-default {
-  /* #ifndef harmony */
-  /* #endif */
+.nut-toast-overlay-default-taro {
   /* #ifdef harmony */
   background-color: rgba(0, 0, 0, 0);
   z-index: 1300;
   /* #endif */
+  /* #ifndef harmony */
+  /* #endif */
 }
 .nut-toast-inner {
   position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;

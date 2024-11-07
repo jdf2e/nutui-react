@@ -189,7 +189,7 @@ export const Toast: FunctionComponent<
         <Overlay
           visible={innerVisible}
           style={style}
-          className={`${classPrefix}-overlay-default ${className}`}
+          className={`${classPrefix}-overlay-default-taro ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={() => {
