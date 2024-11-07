@@ -2,12 +2,10 @@ import React from 'react'
 import { NavBar } from '@nutui/nutui-react-taro'
 import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
-import { View, Text, Icon } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo2 = () => {
-  const isRnAndHarmony = harmonyAndRn()
   const styles = {
     flexCenter: {
       display: 'flex',
@@ -31,7 +29,7 @@ const Demo2 = () => {
         titleAlign="left"
         back={
           <>
-            {!isRnAndHarmony ? <ArrowLeft size={20} /> : <Text>《 </Text>}
+            <ArrowLeft size={20} />
             <Text>返回</Text>
           </>
         }
@@ -40,7 +38,7 @@ const Demo2 = () => {
             style={styles.flexCenter}
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            {!isRnAndHarmony ? <Share size={20} /> : <Text> 》</Text>}
+            <Share size={20} />
           </View>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
@@ -54,7 +52,7 @@ const Demo2 = () => {
             style={styles.flexCenter}
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            {!isRnAndHarmony ? <Share size={20} /> : <Text> 》</Text>}
+            <Share size={20} />
           </View>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
@@ -66,8 +64,8 @@ const Demo2 = () => {
         right={
           <Text onClick={(e) => Taro.showToast({ title: '清空' })}>清空</Text>
         }
-        left={!isRnAndHarmony ? <Close size={20} /> : <Text>×</Text>}
-        back={!isRnAndHarmony ? <ArrowLeft size={20} /> : <Text>《 </Text>}
+        left={<Close size={20} />}
+        back={<ArrowLeft size={20} />}
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
         <View
@@ -86,7 +84,7 @@ const Demo2 = () => {
         </View>
       </NavBar>
       <NavBar
-        back={!isRnAndHarmony ? <ArrowLeft size={20} /> : <Text>《 </Text>}
+        back={<ArrowLeft size={20} />}
         right={
           <>
             <Text
@@ -95,14 +93,10 @@ const Demo2 = () => {
             >
               编辑
             </Text>
-            {!isRnAndHarmony ? (
-              <More
-                size={20}
-                onClick={(e) => Taro.showToast({ title: 'icon' })}
-              />
-            ) : (
-              <Text onClick={(e) => Taro.showToast({ title: 'icon' })}>…</Text>
-            )}
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
@@ -121,11 +115,7 @@ const Demo2 = () => {
           }}
           onClick={(e) => Taro.showToast({ title: 'icon' })}
         >
-          {!isRnAndHarmony ? (
-            <Cart size={20} />
-          ) : (
-            <Icon type="search" size={20} />
-          )}
+          <Cart size={20} />
         </View>
       </NavBar>
     </>

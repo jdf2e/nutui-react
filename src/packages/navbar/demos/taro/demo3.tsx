@@ -14,7 +14,7 @@ const Demo3 = () => {
   return (
     <>
       <NavBar
-        back={!isRnAndHarmony ? <ArrowLeft size={20} /> : <Text>《 </Text>}
+        back={<ArrowLeft size={20} />}
         right={
           <>
             <View
@@ -23,14 +23,11 @@ const Demo3 = () => {
             >
               编辑
             </View>
-            {isRnAndHarmony ? (
-              <Text>…</Text>
-            ) : (
-              <More
-                size={20}
-                onClick={(e) => Taro.showToast({ title: 'icon' })}
-              />
-            )}
+
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
@@ -54,7 +51,7 @@ const Demo3 = () => {
 
       <NavBar
         titleAlign="left"
-        back={!isRnAndHarmony ? <ArrowLeft size={20} /> : <Text>《 </Text>}
+        back={<ArrowLeft size={20} />}
         right={
           <>
             <Text
@@ -63,14 +60,10 @@ const Demo3 = () => {
             >
               编辑
             </Text>
-            {isRnAndHarmony ? (
-              <Text>…</Text>
-            ) : (
-              <More
-                size={20}
-                onClick={(e) => Taro.showToast({ title: 'icon' })}
-              />
-            )}
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
