@@ -5,7 +5,7 @@ module.exports = {
   defineConstants: {},
   mini: {},
   h5: {
-    publicPath: '/taro/react/2x/demo',
+    publicPath: '/taro/react/3x/demo',
     /**
      * WebpackChain 插件配置
      * @docs https://github.com/neutrinojs/webpack-chain
