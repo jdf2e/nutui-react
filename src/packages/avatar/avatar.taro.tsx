@@ -151,13 +151,15 @@ export const Avatar: FunctionComponent<
                   onError={errorEvent}
                 />
               )}
-              {React.isValidElement(icon)
-                ? React.cloneElement<any>(icon, {
+              {React.isValidElement(icon) ? (
+                <View className="nut-avatar-text">
+                  {React.cloneElement<any>(icon, {
                     ...icon.props,
                     className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`,
                     style: { position: 'absolute' },
-                  })
-                : null}
+                  })}
+                </View>
+              ) : null}
               {children && (
                 <View
                   className={`nut-avatar-text nut-avatar-${groupSize || size || 'normal'}-text`}
@@ -165,11 +167,13 @@ export const Avatar: FunctionComponent<
                   {children}
                 </View>
               )}
-              {!src && !icon && !children && !harmonyAndRn() && (
-                <User
-                  className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
-                  style={{ position: 'absolute' }}
-                />
+              {!src && !icon && !children && (
+                <View className="nut-avatar-text">
+                  <User
+                    className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
+                    style={{ position: 'absolute' }}
+                  />
+                </View>
               )}
             </>
           )}

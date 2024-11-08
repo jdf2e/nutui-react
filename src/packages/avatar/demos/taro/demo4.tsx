@@ -1,5 +1,6 @@
 import React from 'react'
 import { Avatar, Cell } from '@nutui/nutui-react-taro'
+import { User } from '@nutui/icons-react-taro'
 
 const Demo4 = () => {
   return (
@@ -7,7 +8,7 @@ const Demo4 = () => {
       <Avatar
         color="#fff"
         background="var(--nutui-color-primary)"
-        // icon={<User />}
+        icon={<User />}
       />
       <Avatar
         color="var(--nutui-color-primary)"

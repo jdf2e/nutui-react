@@ -13,13 +13,12 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const AvatarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       '67f78db5': '支持三种尺寸：small、normal、large',
-      '3928b17e': '支持两种形状：square、round',
+      '3928b17e': '支持两种形状：square、round---',
       '049b6a97': '支持三种类型：图片、Icon 以及字符',
       a304dabf: 'Icon和字符型可以自定义图标颜色及背景色',
       '89bca4e7': '带徽标的头像',
@@ -65,14 +64,10 @@ const AvatarDemo = () => {
         <Demo2 />
         <View className="h2">{translated['049b6a97']}</View>
         <Demo3 />
-        {harmonyAndRn() ? null : (
-          <>
-            <View className="h2">{translated.a304dabf}</View>
-            <Demo4 />
-            <View className="h2">{translated['89bca4e7']}</View>
-            <Demo5 />
-          </>
-        )}
+        <View className="h2">{translated.a304dabf}</View>
+        <Demo4 />
+        <View className="h2">{translated['89bca4e7']}</View>
+        <Demo5 />
         <View className="h2">{translated.e981579e}</View>
         <Demo6 />
         <View className="h2">{translated.f645fc65}</View>
