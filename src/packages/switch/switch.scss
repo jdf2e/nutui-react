@@ -15,7 +15,8 @@
 
   &-button {
     position: absolute;
-    top: $switch-border-width;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: row;
     align-items: center;
