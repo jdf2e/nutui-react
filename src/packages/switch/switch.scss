@@ -25,7 +25,7 @@
     width: calc($switch-height - $switch-border-width * 2);
     border-radius: $switch-inside-border-radius;
     background: $color-primary-text;
-    transition: left 0.3s;
+    transition: left 0.3s linear;
     box-shadow: $switch-inside-box-shadow;
     &-open {
       left: calc(100% - $switch-height + $switch-border-width);

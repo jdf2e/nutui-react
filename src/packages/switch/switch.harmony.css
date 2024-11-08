@@ -25,7 +25,7 @@
   width: calc(28px - 2px * 2);
   border-radius: 50%;
   background: #ffffff;
-  transition: left 0.3s;
+  transition: left 0.3s linear;
   box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
 }
 .nut-switch-button-open {
