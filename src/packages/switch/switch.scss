@@ -29,13 +29,13 @@
     &-open {
       left: calc(100% - $switch-height + $switch-border-width);
       &-rtl {
-        transform: var(--nutui-switch-inside-open-transform, translateX(-18px));
+        left: $switch-border-width;
       }
     }
     &-close {
       left: $switch-border-width;
       &-rtl {
-        transform: var(--nutui-switch-inside-close-transform, translateX(-2px));
+        left: calc(100% - $switch-height + $switch-border-width);
       }
     }
   }
@@ -60,14 +60,14 @@
     &-open {
       margin: 0 calc($switch-height - $switch-border-width + 5px) 0 7px;
       &-rtl {
-        transform: translateX(18px);
+        margin: 0 7px 0 calc($switch-height - $switch-border-width + 5px);
       }
     }
 
     &-close {
       margin: 0 7px 0 calc($switch-height - $switch-border-width + 5px);
       &-rtl {
-        transform: translateX(-18px);
+        margin: 0 calc($switch-height - $switch-border-width + 5px) 0 7px;
       }
     }
 
