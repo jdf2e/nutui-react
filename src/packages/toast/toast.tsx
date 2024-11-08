@@ -37,11 +37,11 @@ let options: ToastProps = {
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  onClose: () => {},
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
   lockScroll: false,
   contentClassName: '',
   wordBreak: 'break-all',
+  onClose: () => {},
 }
 
 function getInstance(
