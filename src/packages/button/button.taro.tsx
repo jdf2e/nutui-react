@@ -158,9 +158,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         onClick={(e) => handleClick(e as any)}
       >
         <View className="nut-button-wrap">
-          {loading && !harmonyAndRn() && (
-            <Loading className="nut-icon-loading" />
-          )}
+          {loading && <Loading className="nut-icon-loading" />}
           {!loading && icon ? icon : null}
           {children && (
             <View

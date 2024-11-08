@@ -1,7 +1,8 @@
 .nut-trendarrow {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  color: #1A1A1A;
+  color: #1a1a1a;
   font-size: 14px;
 }
 .nut-trendarrow-icon-before {
