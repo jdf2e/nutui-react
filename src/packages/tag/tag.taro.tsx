@@ -5,7 +5,7 @@ import React, {
   ReactNode,
   useState,
 } from 'react'
-import { ITouchEvent, View, Text } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
@@ -140,15 +140,6 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                     onClose && onClose(e)
                   }}
                 />
-                <Text
-                  onClick={(e) => {
-                    setVisible(false)
-                    onClose && onClose(e)
-                  }}
-                  className={`${classPrefix}-custom-icon`}
-                >
-                  X
-                </Text>
               </>
             )}
           </View>
