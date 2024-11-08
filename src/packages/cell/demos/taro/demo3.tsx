@@ -27,7 +27,7 @@ const Demo3 = () => {
             flexDirection: 'row',
             alignItems: 'center',
             fontSize: pxTransform(12),
-            color: 'rgba(255, 255, 255, 0.3)',
+            color: '#505259',
           }}
         >
           我是描述
