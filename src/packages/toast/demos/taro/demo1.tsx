@@ -41,14 +41,14 @@ const Demo1 = () => {
         }}
       />
       <Cell
-        title="Text文字提示"
+        title="文字提示"
         onClick={() => {
           openToast('text', '网络失败，请稍后再试~')
           setShowToast(true)
         }}
       />
       <Cell
-        title="Toast 标题提示"
+        title="标题提示"
         onClick={() => {
           openToast(
             'text',
@@ -61,30 +61,30 @@ const Demo1 = () => {
         }}
       />
       <Cell
-        title="Success 成功提示"
+        title="成功提示"
         onClick={() => {
-          openToast('success', '成功提示')
+          openToast('success', '成功提示成功提示成功提示')
           setShowToast(true)
         }}
       />
       <Cell
-        title="Error 失败提示"
+        title="失败提示"
         onClick={() => {
           openToast('fail', '失败提示')
           setShowToast(true)
         }}
       />
       <Cell
-        title=" Warning 警告提示"
+        title="警告提示"
         onClick={() => {
           openToast('warn', '警告提示')
           setShowToast(true)
         }}
       />
       <Cell
-        title=" Loading 加载提示"
+        title="加载提示"
         onClick={() => {
-          openToast('loading', '加载中')
+          openToast('loading', '加载提示')
           setShowToast(true)
         }}
       />

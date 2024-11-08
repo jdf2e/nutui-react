@@ -6,6 +6,7 @@ const Demo5 = () => {
     Toast.show({
       content: `Let's try ABCDEFGHIJKLMN here.`,
       wordBreak: mode,
+      contentStyle: { width: '200px' },
     })
   }
   return (
