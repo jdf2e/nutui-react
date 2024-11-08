@@ -18,7 +18,7 @@ const AvatarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       '67f78db5': '支持三种尺寸：small、normal、large',
-      '3928b17e': '支持两种形状：square、round---',
+      '3928b17e': '支持两种形状：square、round',
       '049b6a97': '支持三种类型：图片、Icon 以及字符',
       a304dabf: 'Icon和字符型可以自定义图标颜色及背景色',
       '89bca4e7': '带徽标的头像',
