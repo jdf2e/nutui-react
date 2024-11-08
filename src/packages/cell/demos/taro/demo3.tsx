@@ -16,7 +16,7 @@ const Demo3 = () => {
             lineHeight: pxTransform(20),
           }}
         >
-          <User size={pxTransform(16)} />
+          <User size={16} />
           <View style={{ marginLeft: pxTransform(5) }}>我是标题</View>
         </View>
       }
