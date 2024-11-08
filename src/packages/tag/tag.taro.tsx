@@ -132,15 +132,13 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 {closeIcon}
               </View>
             ) : (
-              <>
-                <Close
-                  size={8}
-                  onClick={(e) => {
-                    setVisible(false)
-                    onClose && onClose(e)
-                  }}
-                />
-              </>
+              <Close
+                size={8}
+                onClick={(e) => {
+                  setVisible(false)
+                  onClose && onClose(e)
+                }}
+              />
             )}
           </View>
         )
