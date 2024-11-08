@@ -62,7 +62,9 @@ test('test toast props', async () => {
     fireEvent.click(getByTestId('emit-click'))
     expect(onClickToast).toBeCalled()
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('文案')
-    expect(document.querySelector('.nut-toast')).toHaveClass('nut-toast-small')
+    expect(document.querySelector('.nut-toast-inner')).toHaveClass(
+      'nut-toast-inner-small'
+    )
     expect(document.querySelector('.nut-toast')).toHaveClass(
       'nut-toast-has-icon'
     )
@@ -83,7 +85,9 @@ test('event show-success-toast', async () => {
   await waitFor(() => {
     fireEvent.click(getByTestId('emit-click'))
     expect(onClickToast).toBeCalled()
-    expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-Check')
+    expect(document.querySelector('.nut-icon')).toHaveClass(
+      'nut-icon nut-icon-Success'
+    )
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('success')
   })
 })
