@@ -13,7 +13,8 @@ const Demo1 = () => {
         title="成功提示"
         onClick={() =>
           Toast.show({
-            content: '成功提示',
+            title: '成功提示',
+            content: '成功提示成功提示成功提示',
             icon: 'success',
           })
         }
