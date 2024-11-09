@@ -11,7 +11,12 @@ const Demo3 = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+            <span
+              onClick={(e) => Toast.show('编辑')}
+              style={{ marginRight: '5px' }}
+            >
+              编辑
+            </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
@@ -39,7 +44,12 @@ const Demo3 = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+            <span
+              onClick={(e) => Toast.show('编辑')}
+              style={{ marginRight: '5px' }}
+            >
+              编辑
+            </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }

@@ -309,7 +309,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "NavBar",
           "type": "component",
           "cName": "头部导航",
