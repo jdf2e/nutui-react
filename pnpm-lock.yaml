@@ -19,7 +19,7 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5
       '@nutui/icons-react-taro':
-        specifier: 2.0.0-beta.0
+        specifier: ^2.0.0-beta.0
         version: 2.0.0-beta.0
       '@nutui/jdesign-icons-react-taro':
         specifier: 1.0.6-beta.2
