@@ -1,8 +1,11 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
+import { useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 import { SafeArea } from '@/packages/safearea/safearea.taro'
 
 export interface NavBarProps extends BasicComponent {
@@ -48,6 +51,8 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const classPrefix = 'nut-navbar'
+
+  const rtl = useRtl()
 
   const children = Array.isArray(props.children)
     ? props.children
@@ -98,15 +103,29 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       }
       setContentWidth(centerWidth.toFixed(2))
     }
-    init()
+    setTimeout(() => {
+      init()
+    }, 0)
   }, [left, right, back])
 
   const renderLeft = () => {
     return back || left ? (
-      <View className={`${classPrefix}-left`} ref={leftRef}>
+      <View
+        className={classNames({
+          [`${classPrefix}-left`]: true,
+          [`${classPrefix}-left-align-${titleAlign}`]: true,
+          [`${classPrefix}-left-rtl`]: rtl,
+        })}
+        ref={leftRef}
+      >
         {back && (
           <View
-            className={`${classPrefix}-left-back`}
+            className={classNames({
+              [`${classPrefix}-left-back`]: true,
+              [`${classPrefix}-left-back-align-${titleAlign}`]: true,
+              [`${classPrefix}-left-back-children`]: left,
+              [`${classPrefix}-left-back-children-rtl`]: left && rtl,
+            })}
             onClick={(e) => onBackClick(e)}
           >
             {back}
@@ -120,17 +139,23 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const renderContent = () => {
     let titleStyle = {}
     if (titleAlign === 'center') {
-      const contentRealWidth = `${contentWidth}${
-        /%$/i.test(contentWidth) ? '' : 'px'
-      }`
+      const width = harmonyAndRn()
+        ? pxTransform(Number(contentWidth))
+        : `${contentWidth}px`
+      const contentRealWidth = /%$/i.test(contentWidth) ? contentWidth : width
       titleStyle = {
-        minWidth: contentRealWidth,
         width: contentRealWidth,
       }
     }
 
     return (
-      <View className={`${classPrefix}-title`} style={titleStyle}>
+      <View
+        className={classNames({
+          [`${classPrefix}-title`]: true,
+          [`${classPrefix}-title-align-${titleAlign}`]: true,
+        })}
+        style={titleStyle}
+      >
         {children}
       </View>
     )
@@ -138,7 +163,14 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderRight = () => {
     return (
-      <View className={`${classPrefix}-right`} ref={rightRef}>
+      <View
+        className={classNames({
+          [`${classPrefix}-right`]: true,
+          [`${classPrefix}-right-align-${titleAlign}`]: true,
+          [`${classPrefix}-right-rtl`]: rtl,
+        })}
+        ref={rightRef}
+      >
         {right}
       </View>
     )
@@ -156,7 +188,9 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const classes = classNames({
     [`${classPrefix}-fixed`]: fixed,
-    [`${classPrefix}-title-align-${titleAlign}`]: true,
+    [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
+    [`${classPrefix}-align-${titleAlign}`]: true,
+    [`${classPrefix}-rtl`]: rtl,
   })
 
   const cls = classNames(classPrefix, classes, className)
