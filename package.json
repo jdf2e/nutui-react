@@ -1,5 +1,5 @@
 {
-  "name": "@nutui/nutui-react-taro",
+  "name": "@nutui/nutui-react",
   "version": "3.0.0-beta.2",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
