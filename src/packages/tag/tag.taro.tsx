@@ -1,12 +1,12 @@
+import type { MouseEvent } from 'react'
 import React, {
   CSSProperties,
   FunctionComponent,
-  useState,
   ReactNode,
+  useState,
 } from 'react'
-import type { MouseEvent } from 'react'
-import { View, ITouchEvent, Text } from '@tarojs/components'
-// import { Close } from '@nutui/icons-react-taro'
+import { ITouchEvent, View } from '@tarojs/components'
+import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -132,23 +132,13 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 {closeIcon}
               </View>
             ) : (
-              // TODO: icon 适配
-              // <Close
-              //   size={8}
-              //   onClick={(e) => {
-              //     setVisible(false)
-              //     onClose && onClose(e)
-              //   }}
-              // />
-              <Text
+              <Close
+                size={8}
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e)
                 }}
-                className={`${classPrefix}-custom-icon`}
-              >
-                X
-              </Text>
+              />
             )}
           </View>
         )
