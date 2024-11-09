@@ -11,11 +11,12 @@ import {
   Input as TaroInput,
   InputProps,
   View,
+  Text,
 } from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -90,6 +91,8 @@ export const InputNumber: FunctionComponent<
     ...props,
   }
   const isRnAndHarmony = harmonyAndRn()
+  const isRn = rn()
+  const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -250,16 +253,31 @@ export const InputNumber: FunctionComponent<
   return (
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
-        <Minus
-          className={classNames(
-            `${classPrefix}-icon ${classPrefix}-icon-minus`,
-            {
-              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
-            }
-          )}
-        />
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
+          >
+            -
+          </Text>
+        ) : (
+          <Minus
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-minus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === min || disabled,
+              }
+            )}
+          />
+        )}
       </View>
-      {isRnAndHarmony ? (
+      {isRn ? (
         <TaroInput
           className={classNames(`${classPrefix}-input`, {
             [`${classPrefix}-input-disabled`]: disabled,
@@ -290,14 +308,29 @@ export const InputNumber: FunctionComponent<
       )}
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
-        <Plus
-          className={classNames(
-            `${classPrefix}-icon ${classPrefix}-icon-plus`,
-            {
-              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
-            }
-          )}
-        />
+        {isRnAndHarmony ? (
+          <Text
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
+          >
+            +
+          </Text>
+        ) : (
+          <Plus
+            className={classNames(
+              `${classPrefix}-icon ${classPrefix}-icon-plus`,
+              {
+                [`${classPrefix}-icon-disabled`]:
+                  shadowValue === max || disabled,
+              }
+            )}
+          />
+        )}
       </View>
     </View>
   )
