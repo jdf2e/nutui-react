@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, Input } from '@nutui/nutui-react-taro'
 import { Tips } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components'
-import { harmonyAndRn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo13 = () => {
@@ -17,9 +16,7 @@ const Demo13 = () => {
           backgroundColor: '#ffffff',
         }}
       >
-        {!harmonyAndRn() ? (
-          <Tips style={{ marginLeft: pxTransform(10) }} />
-        ) : null}
+        <Tips style={{ marginLeft: pxTransform(10) }} />
         <Input
           placeholder="请输入短信验证码"
           placeholderTextColor="#757575"

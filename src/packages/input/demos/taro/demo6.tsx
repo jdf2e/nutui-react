@@ -1,7 +1,6 @@
 import React from 'react'
 import { Input } from '@nutui/nutui-react-taro'
 import { Close } from '@nutui/icons-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   return (
@@ -13,7 +12,7 @@ const Demo6 = () => {
       />
       <Input
         clearable
-        clearIcon={!harmonyAndRn() ? <Close /> : null}
+        clearIcon={<Close />}
         placeholder="显示清除图标"
         placeholderTextColor="#757575"
       />
