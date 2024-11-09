@@ -178,6 +178,7 @@ export const Avatar: FunctionComponent<
           {showMax && (
             <View
               className={`nut-avatar-text nut-avatar-${groupSize || 'normal'}-text`}
+              style={{ ...maxStyles }}
             >
               {propAvatarGroup?.maxContent
                 ? propAvatarGroup?.maxContent
