@@ -588,7 +588,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Radio",
           "type": "component",
           "cName": "单选按钮",
@@ -599,7 +599,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "RadioGroup",
           "type": "component",
           "cName": "单选按钮组",
