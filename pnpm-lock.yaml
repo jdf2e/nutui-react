@@ -19,8 +19,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5
       '@nutui/icons-react-taro':
-        specifier: 2.0.0-beta.0
-        version: 2.0.0-beta.0
+        specifier: ^2.0.0-beta.2
+        version: 2.0.0-beta.2
       '@nutui/jdesign-icons-react-taro':
         specifier: 1.0.6-beta.2
         version: 1.0.6-beta.2
@@ -1615,8 +1615,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==, tarball: https://r2.cnpmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz}
     engines: {node: '>= 8'}
 
-  '@nutui/icons-react-taro@2.0.0-beta.0':
-    resolution: {integrity: sha512-Wca6RWjy76fT9Co4T8PTjZCB/nzUxxyBR6efYl5tSKUJEvc6FPGHuA2FL6F0Gs9BBHo6ppTs02DRcSohX6UFWQ==}
+  '@nutui/icons-react-taro@2.0.0-beta.2':
+    resolution: {integrity: sha512-2wT+3TVJ8Gab9B27nfxpQZQUWOi8NQ2+rpH9q4XXlSg/9Sa1nLpwjtK3QB/7PsEpqXwpNMf4h4AdfWyyOZ09Rw==}
 
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==}
@@ -9914,7 +9914,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@nutui/icons-react-taro@2.0.0-beta.0': {}
+  '@nutui/icons-react-taro@2.0.0-beta.2': {}
 
   '@nutui/icons-react@1.0.5': {}
 
