@@ -3,7 +3,7 @@ name: sync to docs-taro
 on:
   push:
     branches:
-      - next # default branch
+      - V3.0
     paths:
       - '.github/workflows/**'
       - 'src/**'
@@ -33,7 +33,7 @@ jobs:
       - name : Sync
         uses : JamesIves/github-pages-deploy-action@v4.5.0
         with :
-          branch : new-site # action 应该部署到的分支 。
+          branch : react3x/new-site # action 应该部署到的分支 。
           folder : site_docs #操作应该部署的文件夹 。
           clean: false
           repository-name: jdf2e/nutui-docs

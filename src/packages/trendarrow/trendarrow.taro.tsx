@@ -2,6 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
 import { View, Text } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
 
 export interface TrendArrowProps extends BasicComponent {
   value: number
@@ -25,8 +26,8 @@ const defaultProps = {
   left: false,
   sync: true,
   color: '#333',
-  riseColor: '#ff0f23',
-  dropColor: '#14cc33',
+  riseColor: harmony() ? '#ff0f23' : '#ff0f23',
+  dropColor: harmony() ? '#14cc33' : '#14cc33',
   riseIcon: null,
   dropIcon: null,
 } as TrendArrowProps
