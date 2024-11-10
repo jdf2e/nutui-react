@@ -6,6 +6,7 @@ import {
   BaseEventOrig,
   View,
 } from '@tarojs/components'
+import { mergeProps } from '@/utils/merge-props'
 
 export interface VideoProps extends Omit<VideoPropsTaro, 'src'> {
   source: {
@@ -32,7 +33,7 @@ const defaultProps = {
   },
   options: {
     controls: true,
-    muted: false, // 默认不是静音
+    muted: false,
     autoplay: false,
     poster: '',
     playsinline: false,
@@ -43,7 +44,6 @@ const defaultProps = {
 const classPrefix = `nut-video`
 export const Video: FunctionComponent<Partial<VideoProps>> = (props) => {
   const {
-    children,
     source,
     options,
     className,
@@ -52,16 +52,13 @@ export const Video: FunctionComponent<Partial<VideoProps>> = (props) => {
     onPause,
     onPlayEnd,
     ...restProps
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const classes = classNames(classPrefix, className)
 
   return (
     <View className={classes} style={style}>
       <VideoTaro
-        className="nut-video-player"
+        className={`${classPrefix}-player`}
         muted={options.muted}
         autoplay={options.autoplay}
         loop={options.loop}
