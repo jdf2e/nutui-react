@@ -60,7 +60,6 @@ const Demo5 = () => {
           }}
         >
           <Top size={12} />
-          <View style={{ fontSize: pxTransform(12) }}>顶部</View>
         </View>
       </BackTop>
     </View>
