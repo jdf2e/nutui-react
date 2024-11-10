@@ -10,7 +10,7 @@ import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
 import { PullToRefreshType } from './types'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
+import { rn } from '@/utils/platform-taro'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -77,10 +77,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const renderIcons = (status: string) => {
     return (
       <>
-        {(status === 'pulling' || status === 'complete') &&
-          (!harmonyAndRn() ? <Loading /> : null)}
-        {(status === 'canRelease' || status === 'refreshing') &&
-          (!harmonyAndRn() ? <More /> : null)}
+        {(status === 'pulling' || status === 'complete') && <Loading />}
+        {(status === 'canRelease' || status === 'refreshing') && <More />}
       </>
     )
   }
