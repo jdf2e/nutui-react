@@ -1,9 +1,6 @@
 import React from 'react'
 import { Grid } from '@nutui/nutui-react-taro'
-// import { Image } from '@nutui/icons-react-taro'
-import { Text } from '@tarojs/components'
-
-const Image = () => <Text>T</Text>
+import { Image } from '@nutui/icons-react-taro'
 
 const Demo7 = () => {
   return (

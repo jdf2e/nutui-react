@@ -18,7 +18,6 @@ import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 export type InputAlign = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
@@ -241,8 +240,7 @@ export const Input = forwardRef(
           onBlur={handleBlur}
           onFocus={handleFocus}
           onInput={(e: any) => {
-            console.log('eeeeee', e.detail.value)
-            handleInput((e.currentTarget || e.detail).value)
+            handleInput((e.detail || e.currentTarget).value)
           }}
         />
         <View
@@ -262,10 +260,7 @@ export const Input = forwardRef(
             }
           }}
         >
-          {clearIcon ||
-            (!harmonyAndRn() ? (
-              <MaskClose className="nut-input-clear" />
-            ) : null)}
+          {clearIcon || <MaskClose className="nut-input-clear" />}
         </View>
       </View>
     )
