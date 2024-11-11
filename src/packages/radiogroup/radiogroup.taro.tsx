@@ -54,7 +54,7 @@ export const RadioGroup = React.forwardRef(
       },
       className
     )
-
+    console.log(className)
     const [val2State, setVal2State] = usePropsValue<string | number>({
       defaultValue: props.defaultValue,
       value: props.value,
