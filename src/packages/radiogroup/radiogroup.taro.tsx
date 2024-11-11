@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components/types/View'
 import {
   RadioGroupDirection,
   RadioGroupOption,
@@ -48,9 +49,9 @@ export const RadioGroup = React.forwardRef(
       direction,
       options,
       disabled,
-      ...rest
+      ...others
     } = { ...defaultProps, ...props }
-
+    const rest = others as ViewProps
     const cls = classNames(
       classPrefix,
       {
