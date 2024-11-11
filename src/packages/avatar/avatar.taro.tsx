@@ -136,7 +136,6 @@ export const Avatar: FunctionComponent<
       {(showMax || !groupMax || avatarIndex <= groupMax) && (
         <View
           className={cls}
-          // {...rest}
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
@@ -147,7 +146,7 @@ export const Avatar: FunctionComponent<
                 <Image
                   className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
-                  style={{ objectFit: fit, ...styles }}
+                  style={{ objectFit: fit }}
                   onError={errorEvent}
                 />
               )}
