@@ -2,6 +2,7 @@ import React from 'react'
 import { Image } from '@nutui/nutui-react-taro'
 import { Failure } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   const imageText: React.CSSProperties = {
@@ -13,12 +14,21 @@ const Demo4 = () => {
   return (
     <>
       <View style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <View style={{ width: 98 }}>
-          <Image src="https://x" width="80" height="80" />
+        <View style={{ width: pxTransform(98) }}>
+          <Image
+            src="https://x"
+            width={pxTransform(80)}
+            height={pxTransform(80)}
+          />
           <View style={imageText}>默认</View>
         </View>
-        <View style={{ width: 98 }}>
-          <Image src="https://x" width="80" height="80" error={<Failure />} />
+        <View style={{ width: pxTransform(98) }}>
+          <Image
+            src="https://x"
+            width={pxTransform(80)}
+            height={pxTransform(80)}
+            error={<Failure />}
+          />
           <View style={imageText}>自定义</View>
         </View>
       </View>

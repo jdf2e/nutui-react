@@ -12,7 +12,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony, harmonyAndRn } from '@/utils/platform-taro'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -49,19 +49,18 @@ const ImageDemo = () => {
         <Cell>
           <Demo2 />
         </Cell>
-        {!harmonyAndRn() && (
+        <View className="h2">{translated.loading}</View>
+        <Cell>
+          <Demo3 />
+        </Cell>
+        {!harmony() && (
           <>
-            <View className="h2">{translated.loading}</View>
-            <Cell>
-              <Demo3 />
-            </Cell>
             <View className="h2">{translated.error}</View>
             <Cell>
               <Demo4 />
             </Cell>
           </>
         )}
-
         <View className="h2">{translated.imageText}</View>
         <Cell>
           <Demo5 />

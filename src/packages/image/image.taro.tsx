@@ -14,7 +14,6 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
   style?: CSSProperties
@@ -139,12 +138,10 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
         onLoad={(e) => handleLoad(e)}
         onError={(e) => handleError(e)}
       />
-      {!harmonyAndRn() && (
-        <>
-          {renderLoading()}
-          {renderErrorImg()}
-        </>
-      )}
+      <>
+        {renderLoading()}
+        {renderErrorImg()}
+      </>
     </View>
   )
 }
