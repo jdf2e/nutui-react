@@ -148,7 +148,7 @@ export const CalendarCard = React.forwardRef<
     const newDays = getDays(month)
     setDays(newDays)
     onPageChange?.(month)
-  }, [month])
+  }, [month, getDays, onPageChange, firstDayOfWeek])
 
   const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     return (
