@@ -4,6 +4,15 @@
 const fse = require('fs-extra')
 const path = require('path')
 const config = require('../../src/config.json')
+const param = process.env.C
+
+console.log('xxxxxxxxxxxxxxxxxxxxxxx-------x-x-x-x-x-x-x-x-x', param)
+
+// C=radio pnpm dev:taro:jdharmonycpp
+
+function specialComponent(name) {
+  return param && name.toLowerCase() == param.toLowerCase()
+}
 
 // 已适配组件对象
 const adaptedArray = []
@@ -11,6 +20,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     const { name, version } = element
     if (version !== '3.0.0') return // 未适配不导出
+    if (specialComponent(name)) return
     adaptedArray.push({
       ...element,
       lowercaseName: element.name.toLowerCase(),
@@ -43,7 +53,13 @@ const createConfig = async () => {
 
       item.packages.map((it) => {
         if (!(it.exportEmpty == false) && it.show && it.taro) {
-          co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+          if (param) {
+            if (specialComponent(it.name)) {
+              co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+            }
+          } else {
+            co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+          }
         }
       })
       co = { ...co, pages: co.pages.sort() }
