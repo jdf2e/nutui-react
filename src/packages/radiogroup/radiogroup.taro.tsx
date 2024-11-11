@@ -54,7 +54,7 @@ export const RadioGroup = React.forwardRef(
     const cls = classNames(
       classPrefix,
       {
-        [`${classPrefix}-${props.direction}`]: props.direction,
+        [`${classPrefix}-${direction}`]: direction,
       },
       className
     )
