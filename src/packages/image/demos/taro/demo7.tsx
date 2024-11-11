@@ -30,12 +30,7 @@ const Demo7 = () => {
               }}
               key={mode}
             >
-              <Image
-                src={src}
-                mode={mode as any}
-                width={pxTransform(80)}
-                height={pxTransform(80)}
-              />
+              <Image src={src} mode={mode as any} width={80} height={80} />
             </View>
           )
         })}

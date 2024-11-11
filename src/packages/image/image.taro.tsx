@@ -14,6 +14,7 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
+import pxTransform from '@/utils/px-transform'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
   style?: CSSProperties
@@ -49,7 +50,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   const [isError, setIsError] = useState(false)
 
   const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
+    return Number.isNaN(Number(value)) ? String(value) : pxTransform(+value)
   }
 
   // 图片加载
@@ -68,21 +69,9 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
 
   const containerStyle = {
     // eslint-disable-next-line no-nested-ternary
-    height: height
-      ? Taro.getEnv() === 'RN'
-        ? height
-        : pxCheck(height)
-      : Taro.getEnv() === 'WEB'
-        ? ''
-        : '100%',
+    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
     // eslint-disable-next-line no-nested-ternary
-    width: width
-      ? Taro.getEnv() === 'RN'
-        ? width
-        : pxCheck(width)
-      : Taro.getEnv() === 'WEB'
-        ? ''
-        : '100%',
+    width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       // eslint-disable-next-line no-nested-ternary

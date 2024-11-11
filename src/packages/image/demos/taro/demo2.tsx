@@ -13,27 +13,27 @@ const Demo2 = () => {
           <Image
             src={src}
             mode="aspectFit"
-            width={pxTransform(80)}
-            height={pxTransform(80)}
-            radius={pxTransform(40)}
+            width={80}
+            height={80}
+            radius={40}
           />
         </View>
         <View style={{ width: pxTransform(98) }}>
           <Image
             src={src}
             mode="scaleToFill"
-            width={pxTransform(80)}
-            height={pxTransform(80)}
-            radius={pxTransform(40)}
+            width={80}
+            height={80}
+            radius={40}
           />
         </View>
         <View style={{ width: pxTransform(98) }}>
           <Image
             src={src}
             mode="scaleToFill"
-            width={pxTransform(80)}
-            height={pxTransform(80)}
-            radius={pxTransform(10)}
+            width={80}
+            height={80}
+            radius={10}
           />
         </View>
       </View>

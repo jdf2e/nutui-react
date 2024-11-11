@@ -15,20 +15,11 @@ const Demo4 = () => {
     <>
       <View style={{ display: 'flex', flexWrap: 'wrap' }}>
         <View style={{ width: pxTransform(98) }}>
-          <Image
-            src="https://x"
-            width={pxTransform(80)}
-            height={pxTransform(80)}
-          />
+          <Image src="https://x" width={80} height={80} />
           <View style={imageText}>默认</View>
         </View>
         <View style={{ width: pxTransform(98) }}>
-          <Image
-            src="https://x"
-            width={pxTransform(80)}
-            height={pxTransform(80)}
-            error={<Failure />}
-          />
+          <Image src="https://x" width={80} height={80} error={<Failure />} />
           <View style={imageText}>自定义</View>
         </View>
       </View>

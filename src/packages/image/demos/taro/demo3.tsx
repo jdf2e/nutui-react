@@ -15,13 +15,13 @@ const Demo3 = () => {
     <>
       <View style={{ display: 'flex', flexWrap: 'wrap' }}>
         <View style={{ width: pxTransform(98) }}>
-          <Image width={pxTransform(80)} height={pxTransform(80)} />
+          <Image width={80} height={80} />
           <View style={imageText}>默认</View>
         </View>
         <View style={{ width: pxTransform(98) }}>
           <Image
-            width={pxTransform(80)}
-            height={pxTransform(80)}
+            width={80}
+            height={80}
             loading={<Loading className="nut-icon-loading" />}
           />
           <View style={imageText}>自定义</View>
