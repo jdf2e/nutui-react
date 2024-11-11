@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Checkbox, Cell } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo3 = () => {
   const [checked, setChecked] = useState(true)
@@ -30,9 +31,9 @@ const Demo3 = () => {
       </Cell>
       <Cell className="nut-cell">
         <Checkbox.Group labelPosition="left" defaultValue={['1']}>
-          <span>
+          <View>
             <Checkbox value="1" label={optionsDemo1[0].label} />
-          </span>
+          </View>
           <Checkbox value="2" label={optionsDemo1[1].label} />
           <Checkbox value="3" label={optionsDemo1[2].label} />
         </Checkbox.Group>
