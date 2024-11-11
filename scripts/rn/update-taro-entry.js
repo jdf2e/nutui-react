@@ -6,10 +6,7 @@ const path = require('path')
 const config = require('../../src/config.json')
 const param = process.env.C
 
-console.log('xxxxxxxxxxxxxxxxxxxxxxx-------x-x-x-x-x-x-x-x-x', param)
-
 // C=radio pnpm dev:taro:jdharmonycpp
-
 function specialComponent(name) {
   return param && name.toLowerCase() == param.toLowerCase()
 }
