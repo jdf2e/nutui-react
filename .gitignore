@@ -2,6 +2,7 @@
 node_modules
 .idea
 .eslintcache
+.vite
 /dist
 /dist-demo
 /libs

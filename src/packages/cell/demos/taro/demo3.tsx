@@ -1,6 +1,8 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
 import { View, Text } from '@tarojs/components'
+import { User } from '@nutui/icons-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo3 = () => {
   return (
@@ -11,11 +13,11 @@ const Demo3 = () => {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'row',
+            lineHeight: pxTransform(20),
           }}
         >
-          {/* <User /> */}
-          {/* <View style={{ marginLeft: 5 }}>我是标题</View> */}
-          <View>我是标题</View>
+          <User size={16} />
+          <View style={{ marginLeft: pxTransform(5) }}>我是标题</View>
         </View>
       }
       description={
@@ -24,9 +26,12 @@ const Demo3 = () => {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
+            fontSize: pxTransform(12),
+            color: '#505259',
           }}
         >
-          我是描述<Text style={{ color: 'red' }}>1</Text>
+          我是描述
+          <Text style={{ color: 'red', fontSize: pxTransform(12) }}>1</Text>
         </View>
       }
       extra="描述文字"

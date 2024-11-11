@@ -35,7 +35,8 @@
 
   &-left,
   &-right {
-    display: flex;
+    display: inline-flex;
+    align-items: center;
 
     &.nut-icon {
       width: 20px;
@@ -48,7 +49,9 @@
 
     & > div,
     & > span,
-    & > svg {
+    & > i,
+    & > svg,
+    .nut-icon {
       margin-right: $searchbar-gap;
 
       &:last-child {
@@ -59,10 +62,11 @@
 
   &-right {
     margin-left: $searchbar-gap;
-
     & > div,
     & > span,
-    & > svg {
+    & > i,
+    & > svg,
+    .nut-icon {
       margin-left: $searchbar-gap;
 
       &:first-child {
@@ -89,7 +93,8 @@
     }
   }
 
-  &-input-box {
+  &-input-box,
+  &-input {
     display: flex;
     align-items: center;
     flex: 1;
@@ -100,8 +105,6 @@
     outline: 0;
     box-sizing: border-box;
     width: 100%;
-    height: $searchbar-input-height;
-    line-height: $searchbar-input-height;
     padding: $searchbar-input-padding;
     font-size: $searchbar-font-size;
     color: $searchbar-input-text-color;
