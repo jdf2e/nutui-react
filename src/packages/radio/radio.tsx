@@ -31,7 +31,7 @@ const defaultProps = {
 } as RadioProps
 export const Radio: FunctionComponent<
   Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & { Group: typeof RadioGroup } = (props) => {
+> = (props) => {
   const classPrefix = 'nut-radio'
   const {
     children,

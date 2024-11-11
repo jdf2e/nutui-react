@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import {
   RadioGroupDirection,
   RadioGroupOption,
@@ -53,7 +54,7 @@ export const RadioGroup = React.forwardRef(
     const cls = classNames(
       classPrefix,
       {
-        [`${classPrefix}-${props.direction}`]: props.direction,
+        [`${classPrefix}-${direction}`]: direction,
       },
       className
     )
@@ -97,9 +98,9 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <div className={cls} {...rest}>
+        <View className={cls} {...rest}>
           {options?.length ? renderOptionsChildren() : children}
-        </div>
+        </View>
       </RadioContext.Provider>
     )
   }
