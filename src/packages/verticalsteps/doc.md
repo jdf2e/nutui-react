@@ -1,11 +1,11 @@
-# Steps 步骤条
+# VerticalSteps 纵向步骤条
 
 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 
 ## 引入
 
 ```tsx
-import { Steps } from '@nutui/nutui-react-taro'
+import { VerticalSteps } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -14,7 +14,7 @@ import { Steps } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo1.tsx'></CodeBlock>
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -22,39 +22,7 @@ import { Steps } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo2.tsx'></CodeBlock>
-
-:::
-
-### 标题和描述信息
-
-:::demo
-
-<CodeBlock src='taro/demo3.tsx'></CodeBlock>
-
-:::
-
-### 自定义步骤条
-
-:::demo
-
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
-
-:::
-
-### 自定义步骤条：点状
-
-:::demo
-
-<CodeBlock src='taro/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定义步骤条：点状 + icon
-
-:::demo
-
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,11 +30,11 @@ import { Steps } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo7.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-## Steps
+## VerticalSteps
 
 ### Props
 
@@ -114,6 +82,7 @@ import { Steps } from '@nutui/nutui-react-taro'
 | \--nutui-steps-wait-description-color | 等待状态描述字体颜色 | `$color-text` |
 | \--nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `$color-primary` |
 | \--nutui-steps-process-icon-color | 进行中icon容器字体颜色 | `$white` |
+| \--nutui-steps-process-icon-before-bg-color | 进行中颜色 | `$color-primary-stop-2` |
 | \--nutui-steps-process-title-color | 进行中标题字体颜色 | `$color-primary` |
 | \--nutui-steps-process-title-font-size | 进行中标题字号 | `$font-size-base` |
 | \--nutui-steps-process-title-font-weight | 进行中标题字重 | `$font-weight-bold` |
@@ -126,5 +95,5 @@ import { Steps } from '@nutui/nutui-react-taro'
 | \--nutui-steps-dot-icon-width | 点状进度条点的宽度 | `6px` |
 | \--nutui-steps-dot-icon-height | 点状进度条点的高度 | `6px` |
 | \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $white` |
-| \--nutui-steps-dot-head-margin | 点状进度条点的外边距 | `7px 0 0 0` |
+| \--nutui-steps-vertical-dot-head-margin | 点状进度条点的外边距 | `5px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | 进行中点状进度条点的外边颜色 | `$color-primary-stop-2` |

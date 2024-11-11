@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/steps/context'
+import { DataContext } from '@/packages/step/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StepProps extends BasicComponent {
@@ -26,7 +26,6 @@ export const Step: FunctionComponent<
       ...props,
     }
   const parent: any = useContext(DataContext)
-
   const dot = parent.propSteps.dot
   const getCurrentStatus = () => {
     const index = value

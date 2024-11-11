@@ -1078,6 +1078,17 @@
           "author": "swag~jun"
         },
         {
+            "version": "2.0.0",
+            "name": "VerticalSteps",
+            "type": "component",
+            "cName": "步骤条",
+            "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
+            "sort": 7,
+            "show": true,
+            "taro": true,
+            "author": "swag~jun"
+        },
+        {
           "version": "3.0.0",
           "name": "Swiper",
           "type": "component",

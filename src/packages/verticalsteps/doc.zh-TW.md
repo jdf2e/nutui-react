@@ -1,11 +1,11 @@
-# Steps 步驟條
+# VerticalSteps 纵向步驟條
 
 拆分展示某項流程的步驟，引導用戶按流程完成任務或嚮用戶展示當前狀態。
 
 ## 引入
 
 ```tsx
-import { Steps } from '@nutui/nutui-react'
+import { VerticalSteps } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -26,7 +26,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 標題和描述信息
+### 自定義圖標
 
 :::demo
 
@@ -34,39 +34,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 自定義步驟條
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-### 自定義步驟條：點狀
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定義步驟條：點狀 + icon
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### 自定義圖標
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-## Steps
+## VerticalSteps
 
 ### Props
 
@@ -126,5 +94,5 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-dot-icon-width | 點狀進度條點的寬度 | `6px` |
 | \--nutui-steps-dot-icon-height | 點狀進度條點的高度 | `6px` |
 | \--nutui-steps-dot-icon-border | 點狀進度條點的邊框 | `2px solid $white` |
-| \--nutui-steps-dot-head-margin | 點狀進度條點的外邊距 | `7px 0 0 0` |
+| \--nutui-steps-vertical-dot-head-margin | 點狀進度條點的外邊距 | `5px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | 進行中點狀進度條點的外邊顏色 | `$color-primary-stop-2` |

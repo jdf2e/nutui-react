@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './context'
+import { DataContext } from '../step/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StepsProps extends BasicComponent {
   value: number
-  direction: string
   dot: boolean
   onStepClick: (index: number) => void
 }
@@ -13,7 +12,6 @@ export interface StepsProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   value: 0,
-  direction: 'horizontal',
   dot: false,
 } as StepsProps
 
@@ -21,15 +19,8 @@ export const Steps: FunctionComponent<
   Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const propSteps = { ...defaultProps, ...props }
-  const {
-    children,
-    value,
-    direction,
-    className,
-    dot,
-    onStepClick,
-    ...restProps
-  } = propSteps
+  const { children, value, className, dot, onStepClick, ...restProps } =
+    propSteps
 
   const parentSteps = {
     propSteps,
@@ -39,7 +30,8 @@ export const Steps: FunctionComponent<
   const classes = classNames(
     classPrefix,
     {
-      [`${classPrefix}-${direction}`]: true,
+      [`${classPrefix}-horizontal`]: true,
+      [`${classPrefix}-horizontal-dot`]: !!dot,
       [`${classPrefix}-dot`]: !!dot,
     },
     className

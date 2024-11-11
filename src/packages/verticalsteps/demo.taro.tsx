@@ -6,39 +6,22 @@ import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
-import Demo5 from './demos/taro/demo5'
-import Demo6 from './demos/taro/demo6'
-import Demo7 from './demos/taro/demo7'
 
 const StepsDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       dot: '基础用法：点状',
-      info: '标题和描述信息',
-      custom: '自定义步骤条',
-      customDot: '自定义步骤条：点状',
-      customBoth: '自定义步骤条：点状 + icon',
       customIcon: '自定义图标',
-      vertical: '竖向步骤条',
     },
     'zh-TW': {
       basic: '基础用法',
       dot: '基础用法：点状',
-      info: '標題和描述信息',
-      custom: '自定義步驟条',
-      customDot: '自定義步驟条：点状',
-      customBoth: '自定義步驟条：点状+icon',
       customIcon: '自定義圖標',
     },
     'en-US': {
       basic: 'Basic usage',
       dot: 'Basic usage: Dot',
-      info: 'Title and description information',
-      custom: 'Custom Step Bar',
-      customDot: 'Custom Step Bar: Dot',
-      customBoth: 'Custom Step Bar: Dot+icon',
       customIcon: 'custom Icon',
     },
   })
@@ -52,16 +35,8 @@ const StepsDemo = () => {
         <Demo1 />
         <View className="h2">{translated.dot}</View>
         <Demo2 />
-        <View className="h2">{translated.info}</View>
-        <Demo3 />
-        <View className="h2">{translated.custom}</View>
-        <Demo4 />
-        <View className="h2">{translated.customDot}</View>
-        <Demo5 />
-        <View className="h2">{translated.customBoth}</View>
-        <Demo6 />
         <View className="h2">{translated.customIcon}</View>
-        <Demo7 />
+        <Demo3 />
       </ScrollView>
     </>
   )

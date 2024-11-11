@@ -66,29 +66,12 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 竖向步骤条
-
-:::demo
-
-<CodeBlock src='h5/demo8.tsx'></CodeBlock>
-
-:::
-
-### 点状步骤和垂直方向
-
-:::demo
-
-<CodeBlock src='h5/demo9.tsx'></CodeBlock>
-
-:::
-
 ## Steps
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| direction | 显示方向 | `horizontal` \| `vertical` | `horizontal` |
 | value | 当前所在的步骤 | `number` | `0` |
 | dot | 点状步骤条 | `boolean` | `false` |
 

@@ -1308,6 +1308,10 @@ $steps-dot-icon-border: var(
   2px solid $color-primary-text
 ) !default;
 $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 10px 0) !default;
+$verticalsteps-dot-head-margin: var(
+  --nutui-verticalsteps-dot-head-margin,
+  5px 0
+) !default;
 
 // dialog（✅）
 $dialog-z-index: var(--nutui-dialog-z-index, $mask-content-z-index) !default;

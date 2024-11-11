@@ -1,11 +1,11 @@
-# Steps
+# VerticalSteps
 
 Split and display the steps of a process, guide users to complete tasks according to the process, or show users the current status.
 
 ## Import
 
 ```tsx
-import { Steps } from '@nutui/nutui-react'
+import { VerticalSteps } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -26,7 +26,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### Title and description information
+### Custom icon
 
 :::demo
 
@@ -34,39 +34,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### Custom Step Bar
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-### Custom Step Bar: Dot
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### Custom Step Bar: Dot + icon
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### Custom icon
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-## Steps
+## VerticalSteps
 
 ### Props
 
@@ -113,6 +81,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-wait-description-color | wait state description font color | `$color-text` |
 | \--nutui-steps-process-icon-bg-color | Process icon container background color | `$color-primary` |
 | \--nutui-steps-process-icon-color | Process icon container font color | `$white` |
+| \--nutui-steps-process-icon-before-bg-color | Process icon color | `$color-primary-stop-2` |
 | \--nutui-steps-process-title-color | Process title font color | `$color-primary` |
 | \--nutui-steps-process-title-font-size | Process title font size | `$font-size-base` |
 | \--nutui-steps-process-title-font-weight | Process title font weight | `$font-weight-bold` |
@@ -125,5 +94,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-dot-icon-width | Width of dot progress bar dots | `6px` |
 | \--nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |
 | \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
-| \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |
+| \--nutui-steps-vertical-dot-head-margin | Dot progress bar dot margin | `5px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | The color of the outer border of the dot progress bar in progress | `$color-primary-stop-2` |

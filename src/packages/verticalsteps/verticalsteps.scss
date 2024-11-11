@@ -1,0 +1,50 @@
+@import '../step/step.scss';
+.nut-steps-vertical {
+  height: 100%;
+  .nut-step {
+    display: flex;
+    height: 33.34%;
+    &:last-child {
+      height: auto;
+    }
+    &-line {
+      position: absolute;
+      display: inline-block;
+      width: 1px;
+      height: $steps-base-line-width;
+      background: $steps-base-line-background;
+      top: calc(
+        $steps-base-icon-height +
+          (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
+      );
+      left: calc(50% - 1px);
+    }
+    &-main {
+      display: inline-block;
+      padding: 0 0 0 6%;
+      text-align: start;
+    }
+  }
+
+  &.nut-steps-dot {
+    .nut-step-head {
+      margin: $verticalsteps-dot-head-margin;
+    }
+    .nut-step-line {
+      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
+    }
+  }
+}
+
+[dir='rtl'] .nut-steps-vertical,
+.nut-rtl .nut-steps-vertical {
+  .nut-step-line {
+    left: auto;
+    right: calc(50% - 1px);
+  }
+
+  .nut-step-main {
+    padding-left: 0;
+    padding-right: 6%;
+  }
+}

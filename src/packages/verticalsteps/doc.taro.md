@@ -1,11 +1,11 @@
-# Steps 步骤条
+# VerticalSteps 纵向步骤条
 
 拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。
 
 ## 引入
 
 ```tsx
-import { Steps } from '@nutui/nutui-react-taro'
+import { VerticalSteps } from '@nutui/nutui-react'
 ```
 
 ## 示例代码
@@ -26,7 +26,7 @@ import { Steps } from '@nutui/nutui-react-taro'
 
 :::
 
-### 标题和描述信息
+### 自定义图标
 
 :::demo
 
@@ -34,39 +34,7 @@ import { Steps } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义步骤条
-
-:::demo
-
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
-
-:::
-
-### 自定义步骤条：点状
-
-:::demo
-
-<CodeBlock src='taro/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定义步骤条：点状 + icon
-
-:::demo
-
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
-
-:::
-
-### 自定义图标
-
-:::demo
-
-<CodeBlock src='taro/demo7.tsx'></CodeBlock>
-
-:::
-
-## Steps
+## VerticalSteps
 
 ### Props
 
@@ -126,5 +94,5 @@ import { Steps } from '@nutui/nutui-react-taro'
 | \--nutui-steps-dot-icon-width | 点状进度条点的宽度 | `6px` |
 | \--nutui-steps-dot-icon-height | 点状进度条点的高度 | `6px` |
 | \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $white` |
-| \--nutui-steps-dot-head-margin | 点状进度条点的外边距 | `7px 0 0 0` |
+| \--nutui-steps-vertical-dot-head-margin | 点状进度条点的外边距 | `5px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | 进行中点状进度条点的外边颜色 | `$color-primary-stop-2` |

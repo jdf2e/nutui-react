@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { DataContext } from '../step/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface StepsProps extends BasicComponent {
+export interface VerticalStepsProps extends BasicComponent {
   value: number
   dot: boolean
   onStepClick: (index: number) => void
@@ -13,10 +13,10 @@ const defaultProps = {
   ...ComponentDefaults,
   value: 0,
   dot: false,
-} as StepsProps
+} as VerticalStepsProps
 
-export const Steps: FunctionComponent<
-  Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>
+export const VerticalSteps: FunctionComponent<
+  Partial<VerticalStepsProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const propSteps = { ...defaultProps, ...props }
   const { children, value, className, dot, onStepClick, ...restProps } =
@@ -30,8 +30,8 @@ export const Steps: FunctionComponent<
   const classes = classNames(
     classPrefix,
     {
-      [`${classPrefix}-horizontal`]: true,
-      [`${classPrefix}-horizontal-dot`]: !!dot,
+      [`${classPrefix}-vertical`]: true,
+      [`${classPrefix}-vertical-dot`]: !!dot,
       [`${classPrefix}-dot`]: !!dot,
     },
     className
@@ -45,4 +45,4 @@ export const Steps: FunctionComponent<
   )
 }
 
-Steps.displayName = 'NutSteps'
+VerticalSteps.displayName = 'NutVerticalSteps'

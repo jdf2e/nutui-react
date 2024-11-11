@@ -1,10 +1,45 @@
 @import '../step/step.scss';
 
-.nut-steps {
+.nut-steps-horizontal {
   display: flex;
+  .nut-step {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex: 1;
+    text-align: center;
+    font-size: 0;
+    &-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    // 计算方法：left = calc(50% + (100% - $steps-base-line-width) / 2)
+    // 如 width=70%时，left=65%; width=100%,left=50%;
+    &-line {
+      position: absolute;
+      top: calc($steps-base-icon-height / 2);
+      left: calc(50% + (100% - $steps-base-line-width) / 2);
+      height: $steps-base-line-height;
+      width: $steps-base-line-width;
+      background: $steps-base-line-background;
+    }
+  }
+  &.nut-steps-dot {
+    .nut-step-head {
+      margin: $steps-dot-head-margin;
+    }
+    .nut-step-line {
+      top: 50%;
+      bottom: -50%;
+    }
+  }
 }
 
-.nut-steps-vertical {
-  height: 100%;
-  flex-flow: column;
+[dir='rtl'] .nut-steps-horizontal,
+.nut-rtl .nut-steps-horizontal {
+  .nut-step-line {
+    left: auto;
+    right: calc(50% + (100% - $steps-base-line-width) / 2);
+  }
 }

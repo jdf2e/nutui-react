@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { DataContext } from '@/packages/steps/context'
+import { DataContext } from '@/packages/step/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StepProps extends BasicComponent {
