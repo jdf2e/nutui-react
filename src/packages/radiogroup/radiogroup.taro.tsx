@@ -99,7 +99,7 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <View className={cls} {...rest}>
+        <View className={cls}>
           {options?.length ? renderOptionsChildren() : children}
         </View>
       </RadioContext.Provider>
