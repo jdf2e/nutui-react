@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
@@ -35,6 +35,7 @@ export interface CalendarCardProps extends BasicComponent {
   onPageChange: (data: CalendarCardMonth) => void
   onChange: (value: CalendarCardValue) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
@@ -149,7 +150,7 @@ export const CalendarCard = React.forwardRef<
     const newDays = getDays(month)
     setDays(newDays)
     onPageChange?.(month)
-  }, [month])
+  }, [month, getDays, onPageChange])
 
   const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     return (
