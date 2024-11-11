@@ -14,7 +14,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ff0f23;
+  background: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
   padding: 3px;
   text-align: center;
   border: 0px solid #ffffff;
@@ -32,7 +32,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* #ifdef harmony */
   background: #ff0f23;
+  /* #endif */
+  /* #ifndef harmony */
+  background: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
+  /* #endif */
   color: #fff;
   padding: 0 4px;
   font-size: 10px;

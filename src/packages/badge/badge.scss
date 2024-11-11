@@ -33,7 +33,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* #ifdef harmony */
+    background: $color-primary;
+    /* #endif */
+    /* #ifndef harmony */
     background: $badge-background-color;
+    /* #endif */
     color: $badge-color;
     padding: $badge-padding;
     font-size: $badge-font-size;
