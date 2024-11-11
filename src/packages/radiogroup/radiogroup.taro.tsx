@@ -33,11 +33,7 @@ const defaultProps = {
 const classPrefix = 'nut-radiogroup'
 
 export const RadioGroup = React.forwardRef(
-  (
-    props: Partial<RadioGroupProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
-    ref
-  ) => {
+  (props: Partial<RadioGroupProps> & Omit<ViewProps, 'onChange'>, ref) => {
     const {
       children,
       className,
@@ -49,9 +45,8 @@ export const RadioGroup = React.forwardRef(
       direction,
       options,
       disabled,
-      ...others
+      ...rest
     } = { ...defaultProps, ...props }
-    const rest = others as ViewProps
     const cls = classNames(
       classPrefix,
       {
@@ -71,7 +66,6 @@ export const RadioGroup = React.forwardRef(
       return options?.map(({ label, value, disabled, onChange, ...rest }) => {
         return (
           <Radio
-            {...rest}
             key={value?.toString()}
             children={label}
             value={value}
