@@ -66,6 +66,7 @@ export const RadioGroup = React.forwardRef(
       return options?.map(({ label, value, disabled, onChange, ...rest }) => {
         return (
           <Radio
+            {...rest}
             key={value?.toString()}
             children={label}
             value={value}
@@ -93,7 +94,7 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <View className={cls}>
+        <View className={cls} {...rest}>
           {options?.length ? renderOptionsChildren() : children}
         </View>
       </RadioContext.Provider>
