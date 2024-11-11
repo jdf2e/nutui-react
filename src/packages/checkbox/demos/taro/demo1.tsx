@@ -23,8 +23,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View style={{ color: 'gray' }}>描述信息</View>
+              <View style={{ fontSize: 12 }}>复选框</View>
+              <View style={{ color: 'gray', fontSize: 12 }}>描述信息</View>
             </View>
           }
           defaultChecked={!checked}
@@ -44,8 +44,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View style={{ color: 'gray' }}>描述信息</View>
+              <View style={{ fontSize: 12 }}>复选框</View>
+              <View style={{ color: 'gray', fontSize: 12 }}>描述信息</View>
             </View>
           }
           defaultChecked={checked}
@@ -62,8 +62,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View>描述信息</View>
+              <View style={{ fontSize: 12 }}>复选框</View>
+              <View style={{ fontSize: 12 }}>描述信息</View>
             </View>
           }
           defaultChecked={checked}

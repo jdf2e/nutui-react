@@ -6,6 +6,9 @@
   }
 
   &-vertical {
+    display: flex;
+    flex-direction: column;
+
     .nut-checkbox {
       margin-bottom: 5px;
 
@@ -22,6 +25,10 @@
   }
 
   &-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     .nut-checkbox {
       display: inline-flex;
       margin-right: 20px;
