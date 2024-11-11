@@ -1,6 +1,7 @@
 const modulesPage = import.meta.glob('/src/packages/**/doc.md', {
-  as: 'raw',
-  eager: true
+  query: '?raw',
+  import: 'default',
+  eager: true,
 })
 const routes: any[] = []
 for (const path in modulesPage) {
@@ -13,8 +14,9 @@ for (const path in modulesPage) {
 }
 
 const modulesENPage = import.meta.glob('/src/packages/**/doc.en-US.md', {
-  as: 'raw',
-  eager: true
+  query: '?raw',
+  import: 'default',
+  eager: true,
 })
 // console.log('modulesENPage', modulesENPage)
 for (const path in modulesENPage) {
@@ -27,8 +29,9 @@ for (const path in modulesENPage) {
 }
 
 const modulesTaroPage = import.meta.glob('/src/packages/**/doc.taro.md', {
-  as: 'raw',
-  eager: true
+  query: '?raw',
+  import: 'default',
+  eager: true,
 })
 // console.log('modulesTaroPage', modulesTaroPage)
 for (const path in modulesTaroPage) {
