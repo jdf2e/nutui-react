@@ -7,7 +7,6 @@ import {
 import classNames, { Mapping } from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
-import RadioGroup from '@/packages/radiogroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
@@ -156,4 +155,3 @@ export const Radio: FC<
 }
 
 Radio.displayName = 'NutRadio'
-Radio.Group = RadioGroup
