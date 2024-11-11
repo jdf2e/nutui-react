@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from '@nutui/nutui-react-taro'
+import { Cell, Image } from '@nutui/nutui-react-taro'
 import { Loading } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
@@ -12,7 +12,7 @@ const Demo3 = () => {
     color: '#999',
   }
   return (
-    <>
+    <Cell>
       <View style={{ display: 'flex', flexWrap: 'wrap' }}>
         <View style={{ width: pxTransform(98) }}>
           <Image width={80} height={80} />
@@ -27,7 +27,7 @@ const Demo3 = () => {
           <View style={imageText}>自定义</View>
         </View>
       </View>
-    </>
+    </Cell>
   )
 }
 export default Demo3

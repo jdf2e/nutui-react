@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -42,37 +41,23 @@ const ImageDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated.circle}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.loading}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         {!harmony() && (
           <>
             <View className="h2">{translated.error}</View>
-            <Cell>
-              <Demo4 />
-            </Cell>
+            <Demo4 />
           </>
         )}
         <View className="h2">{translated.imageText}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <View className="h2">{translated.fill}</View>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
         <View className="h2">{translated.position}</View>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         {!harmonyAndRn() && (
           <>
             <View className="h2">{translated.lazyload}</View>
