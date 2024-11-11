@@ -53,11 +53,7 @@ const createConfig = async () => {
 
       item.packages.map((it) => {
         if (!(it.exportEmpty == false) && it.show && it.taro) {
-          if (param) {
-            if (specialComponent(it.name)) {
-              co.pages.push(`pages/${it.name.toLowerCase()}/index`)
-            }
-          } else {
+          if (!param || specialComponent(it.name)) {
             co.pages.push(`pages/${it.name.toLowerCase()}/index`)
           }
         }
