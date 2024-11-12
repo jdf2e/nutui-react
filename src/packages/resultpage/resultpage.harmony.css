@@ -6,21 +6,23 @@
   margin: 0 auto;
 }
 .nut-resultpage-icon {
-  height: 48px;
-  width: 48px;
-  margin-bottom: 16px;
-  background-size: 100%;
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+.nut-resultpage-icon .nut-icon {
+  height: 36px;
+  width: 36px;
 }
 .nut-resultpage-title {
-  width: 247px;
-  margin-bottom: 9px;
+  width: 240px;
+  margin-bottom: 12px;
   font-size: 18px;
   color: #1a1a1a;
   font-weight: 600;
   text-align: center;
 }
 .nut-resultpage-description {
-  width: 247px;
+  width: 240px;
   line-height: 20px;
   font-size: 14px;
   color: #505259;
@@ -33,7 +35,7 @@
 .nut-resultpage-actions {
   display: flex;
   flex-direction: row;
-  margin-top: 21px;
+  margin-top: 16px;
 }
 .nut-resultpage-action {
   margin-left: 6px;
