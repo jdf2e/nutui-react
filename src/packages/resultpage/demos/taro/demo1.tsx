@@ -10,10 +10,10 @@ const Demo1 = () => {
         status="success"
         actions={[
           {
-            text: '次要按钮',
+            text: '操作按钮',
           },
           {
-            text: '主要按钮',
+            text: '操作按钮',
             type: 'primary',
           },
         ]}

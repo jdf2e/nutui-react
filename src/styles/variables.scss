@@ -2399,15 +2399,15 @@ $loading-color: var(--nutui-loading-color, $color-text-help) !default;
 $loading-font-size: var(--nutui-loading-font-size, $font-size-s) !default;
 
 // ResultPage
-$resultpage-width: var(--nutui-resultpage-width, 247px) !default;
-$resultpage-icon-size: var(--nutui-resultpage-icon-size, 48px) !default;
+$resultpage-width: var(--nutui-resultpage-width, 240px) !default;
+$resultpage-icon-size: var(--nutui-resultpage-icon-size, 36px) !default;
 $resultpage-icon-margin-bottom: var(
   --nutui-resultpage-icon-margin-bottom,
-  16px
+  12px
 ) !default;
 $resultpage-title-margin-bottom: var(
   --nutui-resultpage-title-margin-bottom,
-  9px
+  12px
 ) !default;
 $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
@@ -2431,5 +2431,5 @@ $resultpage-description-line-height: var(
 ) !default;
 $resultpage-actions-margin-top: var(
   --nutui-resultpage-actions-margin-top,
-  21px
+  16px
 ) !default;
