@@ -1,15 +1,20 @@
 .nut-badge {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  width: auto;
+  /* #ifdef harmony */
+  min-width: 1px;
+  /* #endif */
+  /* #ifndef harmony */
+  min-width: auto;
+  /* #endif */
 }
 .nut-badge-icon {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
-  top: -10%;
-  right: -15%;
+  background: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
   padding: 3px;
   text-align: center;
   border: 0px solid #ffffff;
@@ -27,7 +32,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  /* #ifdef harmony */
+  background: #ff0f23;
+  /* #endif */
+  /* #ifndef harmony */
+  background: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
+  /* #endif */
   color: #fff;
   padding: 0 4px;
   font-size: 10px;
@@ -45,7 +55,9 @@
   padding: 0;
 }
 .nut-badge-content {
-  transform: translateY(-50%) translateX(100%);
+  /* #ifndef rn */
+  transform: translateX(100%);
+  /* #endif */
 }
 .nut-badge-dot {
   width: 7px;
@@ -54,15 +66,8 @@
   border-radius: 7px;
   padding: 0;
 }
-
-[dir=rtl] .nut-badge-icon,
-.nut-rtl .nut-badge-icon {
-  right: auto;
-  left: -15%;
-}
-[dir=rtl] .nut-badge-content {
-  transform: translateY(-50%) translateX(-100%);
-}
-.nut-rtl .nut-badge-content {
-  transform: translateY(-50%) translateX(-100%);
+.nut-badge-outline {
+  background: #ffffff;
+  border: 1px solid #ff0f23;
+  color: #ff0f23;
 }

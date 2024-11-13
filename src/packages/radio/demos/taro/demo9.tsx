@@ -11,14 +11,14 @@ const Demo9 = () => {
     >
       <Radio
         icon={<Checklist />}
-        activeIcon={<Checklist style={{ color: 'red' }} />}
+        activeIcon={<Checklist color="red" />}
         value="1"
       >
         自定义图标
       </Radio>
       <Radio
         icon={<Checklist />}
-        activeIcon={<Checklist style={{ color: 'red' }} />}
+        activeIcon={<Checklist color="red" />}
         value="2"
       >
         自定义图标

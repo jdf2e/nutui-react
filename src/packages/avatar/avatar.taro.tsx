@@ -136,7 +136,6 @@ export const Avatar: FunctionComponent<
       {(showMax || !groupMax || avatarIndex <= groupMax) && (
         <View
           className={cls}
-          // {...rest}
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
@@ -147,17 +146,18 @@ export const Avatar: FunctionComponent<
                 <Image
                   className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
-                  style={{ objectFit: fit, ...styles }}
+                  style={{ objectFit: fit }}
                   onError={errorEvent}
                 />
               )}
-              {React.isValidElement(icon)
-                ? React.cloneElement<any>(icon, {
+              {React.isValidElement(icon) ? (
+                <View className="nut-avatar-text">
+                  {React.cloneElement<any>(icon, {
                     ...icon.props,
                     className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`,
-                    style: { position: 'absolute' },
-                  })
-                : null}
+                  })}
+                </View>
+              ) : null}
               {children && (
                 <View
                   className={`nut-avatar-text nut-avatar-${groupSize || size || 'normal'}-text`}
@@ -165,17 +165,19 @@ export const Avatar: FunctionComponent<
                   {children}
                 </View>
               )}
-              {!src && !icon && !children && !harmonyAndRn() && (
-                <User
-                  className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
-                  style={{ position: 'absolute' }}
-                />
+              {!src && !icon && !children && (
+                <View className="nut-avatar-text">
+                  <User
+                    className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
+                  />
+                </View>
               )}
             </>
           )}
           {showMax && (
             <View
               className={`nut-avatar-text nut-avatar-${groupSize || 'normal'}-text`}
+              style={{ ...maxStyles }}
             >
               {propAvatarGroup?.maxContent
                 ? propAvatarGroup?.maxContent
