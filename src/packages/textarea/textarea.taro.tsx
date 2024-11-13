@@ -124,7 +124,9 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         onFocus={(e: any) => handleFocus(e)}
         autoHeight={autoSize}
         maxlength={maxLength}
-        placeholder={placeholder || locale.placeholder}
+        placeholder={
+          placeholder === undefined ? locale.placeholder : placeholder
+        }
         {...rest}
       />
       {showCount && (
