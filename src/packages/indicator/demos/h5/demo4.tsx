@@ -1,5 +1,5 @@
 import React from 'react'
-import { Indicator, Cell } from '@nutui/nutui-react'
+import { Cell, Indicator } from '@nutui/nutui-react'
 
 const Demo4 = () => {
   return (
@@ -28,6 +28,26 @@ const Demo4 = () => {
         total={6}
         current={2}
         direction="vertical"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        color="white"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
+
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        color="white"
+        type="slide"
         style={{
           marginLeft: '50px',
         }}

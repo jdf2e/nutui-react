@@ -60,6 +60,26 @@ const Demo4 = () => {
           marginLeft: 50,
         }}
       />
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        color="white"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
+
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        color="white"
+        type="slide"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
     </Cell>
   )
 }

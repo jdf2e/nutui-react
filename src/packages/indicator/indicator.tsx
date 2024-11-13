@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 
-export type IndicatorType = 'dot' | 'line'
+export type IndicatorType = 'anchor' | 'slide'
 export type IndicatorColor = 'primary' | 'white'
 
 export interface IndicatorProps {
@@ -13,11 +13,11 @@ export interface IndicatorProps {
 }
 
 const defaultProps = {
-  total: 3,
+  total: 2,
   current: 0,
   direction: 'horizontal',
   color: 'primary',
-  type: 'dot',
+  type: 'anchor',
 } as IndicatorProps
 
 const classPrefix = `nut-indicator`
@@ -41,7 +41,7 @@ export const Indicator: FunctionComponent<
   const classes = classNames({
     [`${classPrefix}-vertical`]: direction === 'vertical',
     [`${classPrefix}-white`]: color === 'white',
-    [`${classPrefix}-track`]: type === 'line',
+    [`${classPrefix}-track`]: type === 'slide',
   })
 
   const renderDotElement = () => {
@@ -71,7 +71,7 @@ export const Indicator: FunctionComponent<
             <div
               key={item}
               style={{
-                transform: `translateX(${current * 100}%)`,
+                transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * 100}%)`,
               }}
               className={`${classPrefix}-line ${classPrefix}-line-active`}
             />
@@ -85,7 +85,7 @@ export const Indicator: FunctionComponent<
   }
   const renderByType = (type: IndicatorType) => {
     switch (type) {
-      case 'line':
+      case 'slide':
         return renderLineElement()
       default:
         return renderDotElement()
