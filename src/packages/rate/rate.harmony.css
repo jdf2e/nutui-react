@@ -12,10 +12,10 @@
   display: flex;
   flex-shrink: 0;
   position: relative;
-  margin-right: 14px;
+  margin-left: 14px;
 }
-.nut-rate-item:last-child {
-  margin-right: 0;
+.nut-rate-item:first-child {
+  margin-left: 0;
 }
 .nut-rate-item-half {
   position: absolute;

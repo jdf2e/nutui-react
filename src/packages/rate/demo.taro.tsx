@@ -4,6 +4,7 @@ import { View, ScrollView } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { harmony } from '@/utils/platform-taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -120,16 +121,19 @@ const RateDemo = () => {
         <Cell style={cellStyle}>
           <Demo10 />
         </Cell>
+        {harmony() ? null : (
+          <>
+            <View className="h2">{translated.touchable}</View>
+            <Cell style={cellStyle}>
+              <Demo11 />
+            </Cell>
 
-        <View className="h2">{translated.touchable}</View>
-        <Cell style={cellStyle}>
-          <Demo11 />
-        </Cell>
-
-        <View className="h2">{translated.touchend}</View>
-        <Cell style={cellStyle}>
-          <Demo12 />
-        </Cell>
+            <View className="h2">{translated.touchend}</View>
+            <Cell style={cellStyle}>
+              <Demo12 />
+            </Cell>
+          </>
+        )}
       </ScrollView>
     </>
   )
