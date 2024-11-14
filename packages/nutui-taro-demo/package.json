@@ -112,6 +112,8 @@
     "typescript": "^5.3.3"
   },
   "resolutions": {
-    "sass":"1.77.6"
+    "sass": "1.77.6",
+    "@tarojs/api": "4.0.8-beta.0",
+    "@tarojs/components": "4.0.8-beta.0"
   }
 }

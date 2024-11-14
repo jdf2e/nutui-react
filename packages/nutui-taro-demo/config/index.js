@@ -1,5 +1,4 @@
 const path = require('path')
-const injectScss = require('../plugins/inject-scss')
 
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
@@ -71,7 +70,7 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
-  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
+  plugins: [...plugins],
   compiler: 'webpack5',
   alias:
     process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
@@ -129,7 +128,7 @@ const config = {
       },
     },
     // 将编译方式设置为使用 Vite 编译
-    compiler: { type: 'vite', vitePlugins: [injectScss()] },
+    compiler: { type: 'vite' },
     // 【必填】鸿蒙主应用的绝对路径，例如：
     projectPath: path.resolve(
       process.cwd(),
