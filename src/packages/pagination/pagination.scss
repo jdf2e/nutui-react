@@ -71,6 +71,7 @@
   padding: 0 $spacing-xs;
   display: flex;
   flex-direction: row;
+  align-items: center;
   color: $color-primary-text;
   background-color: $pagination-lite-background-color;
   border-radius: $pagination-lite-radius;
