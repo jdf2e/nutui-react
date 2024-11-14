@@ -5,12 +5,15 @@ on:
     branches:
       - next
       - V3.0
+  pull_request:
+    types: [opened, synchronize, reopened]
   pull_request_target:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
   lint:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +33,7 @@ jobs:
         run: npm run lint
 
   test:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -55,6 +59,7 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,6 +88,7 @@ jobs:
         if: github.ref == 'refs/heads/next'
         run: npm run build:taro:site
   add-label:
+    if: ${{ github.event_name == 'pull_request_target' }}
     runs-on: ubuntu-latest
 
     steps:
