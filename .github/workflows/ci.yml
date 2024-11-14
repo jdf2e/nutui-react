@@ -27,7 +27,7 @@ jobs:
         run: pnpm install
 
       - name: Run linter
-        run: npm run lint
+        run: pnpm lint
 
   test:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
         run: pnpm install
 
       - name: Run test
-        run: npm run test
+        run: pnpm test
 
       - name: Upload coverage reports to Codecov
         if: ${{ always() }}
@@ -71,17 +71,17 @@ jobs:
         run: pnpm install
 
       - name: Build NutUI-React
-        run: npm run build
+        run: pnpm build
 
       - name: Build NutUI-React-Taro
-        run: npm run build:taro
+        run: pnpm build:taro
 
       - name: Build NutUI-React Demo
-        run: npm run build:site
+        run: pnpm build:site
 
       - name: Build NutUI-React Taro H5 Demo
         if: github.ref == 'refs/heads/next'
-        run: npm run build:taro:site
+        run: pnpm build:taro:site
   add-label:
     runs-on: ubuntu-latest
 
