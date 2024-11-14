@@ -3,6 +3,7 @@ node_modules
 .idea
 .eslintcache
 .vite
+.npmrc
 /dist
 /dist-demo
 /libs
