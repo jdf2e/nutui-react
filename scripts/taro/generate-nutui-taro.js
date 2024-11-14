@@ -69,29 +69,29 @@ fs.outputFile(
 )
 
 
-let fileRNStrBuild = `${importRNStr}
-export { ${packages.join(',')} };`
+// let fileRNStrBuild = `${importRNStr}
+// export { ${packages.join(',')} };`
+//
+// fs.outputFile(
+//   path.resolve(__dirname, '../../src/packages/nutui.react.build.rn.ts'),
+//   fileRNStrBuild,
+//   'utf8',
+//   (error) => {
+//     if (error) throw error
+//   }
+// )
 
-fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.build.rn.ts'),
-  fileRNStrBuild,
-  'utf8',
-  (error) => {
-    if (error) throw error
-  }
-)
-
-let fileRNStr = `${importRNStr}
-${importScssStr}
-export { ${packages.join(',')} };`
-fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.rn.ts'),
-  fileRNStr,
-  'utf8',
-  (error) => {
-    if (error) throw error
-  }
-)
+// let fileRNStr = `${importRNStr}
+// ${importScssStr}
+// export { ${packages.join(',')} };`
+// fs.outputFile(
+//   path.resolve(__dirname, '../../src/packages/nutui.react.rn.ts'),
+//   fileRNStr,
+//   'utf8',
+//   (error) => {
+//     if (error) throw error
+//   }
+// )
 
 let taroScssfileStr = `
 ${importScssStr}
