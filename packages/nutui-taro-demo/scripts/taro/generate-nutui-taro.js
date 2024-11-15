@@ -57,18 +57,18 @@ fs.outputFile(
   }
 )
 
-let fileRNStr = `${importRNStr}
-${importScssStr}
-export { ${packages.join(',')} };`
-fs.outputFile(
-  path.resolve(__dirname, '../../nutui-react/packages/nutui.react.rn.ts'),
-  fileRNStr,
-  'utf8',
-  (error) => {
-    if (error) throw error
-  }
-)
-
+// let fileRNStr = `${importRNStr}
+// ${importScssStr}
+// export { ${packages.join(',')} };`
+// fs.outputFile(
+//   path.resolve(__dirname, '../../nutui-react/packages/nutui.react.rn.ts'),
+//   fileRNStr,
+//   'utf8',
+//   (error) => {
+//     if (error) throw error
+//   }
+// )
+//
 let taroScssfileStr = `
 ${importScssStr}
 export default { "NutUI":"NutUI-Taro" };`
