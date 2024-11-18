@@ -1697,10 +1697,13 @@ $pagination-prev-next-padding: var(
 ) !default;
 $pagination-lite-width: var(--nutui-pagination-lite-width, 40px) !default;
 $pagination-lite-height: var(--nutui-pagination-lite-height, 20px) !default;
-$pagination-lite-radius: var(--nutui-pagination-lite-radius, 6px) !default;
+$pagination-lite-radius: var(
+  --nutui-pagination-lite-radius,
+  $radius-xs
+) !default;
 $pagination-lite-background-color: var(
   --nutui-pagination-lite-background-color,
-  var(--nutui-black-7)
+  rgba(0, 0, 0, 0.45)
 ) !default;
 $pagination-lite-active-background-color: var(
   --nutui-pagination-lite-active-background-color,

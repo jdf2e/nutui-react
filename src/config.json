@@ -235,7 +235,7 @@
           "author": "hx"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SafeArea",
           "type": "component",
           "cName": "安全区",
@@ -1031,6 +1031,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "lkjh3214"
         },
         {
