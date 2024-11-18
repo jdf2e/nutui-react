@@ -882,9 +882,23 @@ $switch-inside-border-radius: var(
   --nutui-switch-inside-border-radius,
   $radius-full
 ) !default;
+/* #ifdef harmony */
 $switch-inside-box-shadow: var(
   --nutui-switch-inside-box-shadow,
-  0px 2px 6px 0px rgba(0, 0, 0, 0.4)
+  0px 2px 6px 0px rgba(0, 0, 0, 0.1)
+) !default;
+/* #endif */
+/* #ifndef harmony */
+$switch-inside-box-shadow: var(
+  --nutui-switch-inside-box-shadow,
+  0px 2px 1px 0px rgba(0, 0, 0, 0.06),
+  0px 2px 6px 0px rgba(0, 0, 0, 0.1),
+  0px 0px 0px 1px rgba(0, 0, 0, 0.02)
+) !default;
+/* #endif */
+$switch-inside-box-shadow: var(
+  --nutui-switch-inside-box-shadow,
+  0px 2px 6px 0px rgba(0, 0, 0, 0.1)
 ) !default;
 $switch-label-text-color: var(
   --nutui-switch-label-text-color,
