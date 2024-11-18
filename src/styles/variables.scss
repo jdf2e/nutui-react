@@ -1942,6 +1942,35 @@ $searchbar-input-text-align: var(
   left
 ) !default;
 
+// segmented
+$segmented-padding: var(--nutui-segmented-padding, $spacing-xxxs) !default;
+$segmented-border-radius: var(--nutui-segmented-radius, $radius-xs) !default;
+$segmented-background: var(
+  --nutui-segmented-background,
+  $color-mask-part
+) !default;
+$segmented-item-padding: var(
+  --nutui-segmented-item-padding,
+  $spacing-xxs $spacing-xs
+) !default;
+$segmented-item-radius: var(--nutui-segmented-item-radius, $radius-xs) !default;
+$segmented-item-fontsize: var(
+  --nutui-segmented-item-fontsize,
+  $font-size-s
+) !default;
+$segmented-item-color: var(
+  --nutui-segmented-item-color,
+  $color-primary-text
+) !default;
+$segmented-active-background: var(
+  --nutui-segmented-active-background,
+  $color-mask-part
+) !default;
+$segmented-icon-margin-right: var(
+  --nutui-segmented-icon-margin-right,
+  $spacing-xxxs
+) !default;
+
 // empty（✅）
 $empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
 $empty-image-size: var(--nutui-empty-image-size, 160px) !default;
