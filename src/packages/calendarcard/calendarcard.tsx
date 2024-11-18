@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react'
+import React, { ReactNode, useEffect, useState, useCallback } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -34,6 +34,7 @@ export interface CalendarCardProps extends BasicComponent {
   onPageChange: (data: CalendarCardMonth) => void
   onChange: (value: CalendarCardValue) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
@@ -122,33 +123,36 @@ export const CalendarCard = React.forwardRef<
     }
   }
 
-  const getDays = (month: CalendarCardMonth) => {
-    const y = month.year
-    const m = month.month
-    const days = [
-      ...getPrevMonthDays(y, m, firstDayOfWeek),
-      ...getCurrentMonthDays(y, m),
-    ] as CalendarCardDay[]
-    const size = days.length
-    const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year
-    const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1
-    // 补全 6 行 7 列视图
-    for (let i = 1; i <= 42 - size; i++) {
-      days.push({
-        type: 'next',
-        year: yearOfNextMonth,
-        month: monthOfNextMonth,
-        date: i,
-      })
-    }
-    return days
-  }
+  const getDays = useCallback(
+    (month: CalendarCardMonth) => {
+      const y = month.year
+      const m = month.month
+      const days = [
+        ...getPrevMonthDays(y, m, firstDayOfWeek),
+        ...getCurrentMonthDays(y, m),
+      ] as CalendarCardDay[]
+      const size = days.length
+      const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year
+      const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1
+      // 补全 6 行 7 列视图
+      for (let i = 1; i <= 42 - size; i++) {
+        days.push({
+          type: 'next',
+          year: yearOfNextMonth,
+          month: monthOfNextMonth,
+          date: i,
+        })
+      }
+      return days
+    },
+    [firstDayOfWeek]
+  )
 
   useEffect(() => {
     const newDays = getDays(month)
     setDays(newDays)
     onPageChange?.(month)
-  }, [month])
+  }, [month, getDays, onPageChange, firstDayOfWeek])
 
   const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     return (

@@ -5,7 +5,8 @@ import DemoBlock from './demoblock'
 import './demoblock.scss'
 
 const modules = import.meta.glob('@/packages/**/demos/*/*.tsx', {
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
   eager: true,
 })
 // console.log('modules', modules)

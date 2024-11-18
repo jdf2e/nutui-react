@@ -17,7 +17,7 @@ if (projectID) {
 export default defineConfig(async (): Promise<UserConfig> => {
   return {
     mode: 'production',
-    base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
+    base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '3x'}`,
     resolve: {
       alias: [
         {
@@ -67,7 +67,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     },
     build: {
       target: 'es2015',
-      outDir: `./dist-demo/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
+      outDir: `./dist-demo/${projectID === 'jmapp' ? 'jdesign' : '3x'}/`,
       cssCodeSplit: true,
       rollupOptions: {
         input: {

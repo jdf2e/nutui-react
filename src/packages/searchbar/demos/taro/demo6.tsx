@@ -30,7 +30,7 @@ const Demo6 = () => {
               }}
             >
               更多
-              <ArrowDown size={12} style={{ marginLeft: '5px' }} />
+              <ArrowDown size={16} />
             </View>
           </Popover>
         }
