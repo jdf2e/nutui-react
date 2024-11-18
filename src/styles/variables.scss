@@ -1596,7 +1596,7 @@ $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
-  translateY(-50%) translateX(100%)
+  translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
@@ -1697,10 +1697,13 @@ $pagination-prev-next-padding: var(
 ) !default;
 $pagination-lite-width: var(--nutui-pagination-lite-width, 40px) !default;
 $pagination-lite-height: var(--nutui-pagination-lite-height, 20px) !default;
-$pagination-lite-radius: var(--nutui-pagination-lite-radius, 6px) !default;
+$pagination-lite-radius: var(
+  --nutui-pagination-lite-radius,
+  $radius-xs
+) !default;
 $pagination-lite-background-color: var(
   --nutui-pagination-lite-background-color,
-  var(--nutui-black-7)
+  rgba(0, 0, 0, 0.45)
 ) !default;
 $pagination-lite-active-background-color: var(
   --nutui-pagination-lite-active-background-color,
@@ -2103,7 +2106,7 @@ $navbar-width: var(--nutui-navbar-width, 100%) !default;
 $navbar-height: var(--nutui-navbar-height, 44px) !default;
 $navbar-margin-bottom: var(--nutui-navbar-margin-bottom, 20px) !default;
 $navbar-background: var(--nutui-navbar-background, $color-background) !default;
-$navbar-box-shadow: var(--nutui-navbar-box-shadow, 0px) !default;
+$navbar-box-shadow: var(--nutui-navbar-box-shadow, 0 0 transparent) !default;
 $navbar-color: var(--nutui-navbar-color, $color-title) !default;
 $navbar-font-size: var(--nutui-navbar-font-size, $font-size-base) !default;
 $navbar-title-font-size: var(

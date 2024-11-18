@@ -1,5 +1,4 @@
 import React from 'react'
-import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -48,44 +47,21 @@ const BadgeDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['8ab98966']}</h2>
-        <Cell.Group>
-          <Demo1 />
-        </Cell.Group>
-
+        <Demo1 />
         <h2>{translated['1e7a2282']}</h2>
-        <Cell.Group>
-          <Demo2 />
-        </Cell.Group>
-
+        <Demo2 />
         <h2>{translated['781b07fd']}</h2>
-        <Cell.Group>
-          <Demo3 />
-        </Cell.Group>
-
+        <Demo3 />
         <h2>{translated['1c730245']}</h2>
-        <Cell.Group>
-          <Demo4 />
-        </Cell.Group>
-
+        <Demo4 />
         <h2>{translated['1c730248']}</h2>
-        <Cell.Group>
-          <Demo5 />
-        </Cell.Group>
-
+        <Demo5 />
         <h2>{translated['915d7b01']}</h2>
-        <Cell.Group>
-          <Demo6 />
-        </Cell.Group>
-
+        <Demo6 />
         <h2>{translated.f1089312}</h2>
-        <Cell.Group>
-          <Demo7 />
-        </Cell.Group>
-
+        <Demo7 />
         <h2>{translated.a8237653}</h2>
-        <Cell.Group>
-          <Demo8 />
-        </Cell.Group>
+        <Demo8 />
       </div>
     </>
   )

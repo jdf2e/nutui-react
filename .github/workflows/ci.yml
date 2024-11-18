@@ -5,12 +5,8 @@ on:
     branches:
       - next
       - V3.0
-
   pull_request:
-    branches:
-      - next
-      - V3.0
-
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 jobs:
@@ -36,27 +32,27 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install pnpm
-      run: corepack enable pnpm
+      - name: Install pnpm
+        run: corepack enable pnpm
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'pnpm'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Run test
-      run: npm run test
+      - name: Run test
+        run: npm run test
 
-    - name: Upload coverage reports to Codecov
-      if: ${{ always() }}
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage reports to Codecov
+        if: ${{ always() }}
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
@@ -84,4 +80,5 @@ jobs:
         run: npm run build:site
 
       - name: Build NutUI-React Taro H5 Demo
+        if: github.ref == 'refs/heads/next'
         run: npm run build:taro:site

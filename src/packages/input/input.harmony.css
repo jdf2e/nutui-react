@@ -44,3 +44,7 @@
   opacity: 1;
   -webkit-text-fill-color: #c2c4cc;
 }
+
+.nut-input-clear {
+  flex: 0;
+}

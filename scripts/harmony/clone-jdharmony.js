@@ -3,6 +3,7 @@ const os = require('os')
 const path = require('path')
 const { remove, ensureDir } = require('fs-extra')
 const fs = require('fs')
+const fse = require('fs-extra')
 const args = process.argv.splice(2)
 
 const home = os.homedir()
@@ -22,6 +23,7 @@ async function cloneJdHarmony() {
   console.log(`Clone ${platform}, branch: ${branch}`)
 
   await git.clone(remote, ['-b', branch, '--depth', '1'])
+  await fse.remove(path.join(__dirname, '../../packages/JDHarmony/.git'))
 
   console.log(`Clone completed successfully.`)
   // 修改文件夹名称
