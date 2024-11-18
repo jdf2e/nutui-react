@@ -74,6 +74,7 @@
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {
             z-index: 4;
+            background-color: #fff; // issues:#2763  给个默认背景，解决Table固定的列的背景透明，导致与横向滑动内容冲突
           }
 
           &:last-child {
