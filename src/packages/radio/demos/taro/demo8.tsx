@@ -4,10 +4,7 @@ import { Checklist } from '@nutui/icons-react-taro'
 
 const Demo8 = () => {
   return (
-    <Radio
-      icon={<Checklist />}
-      activeIcon={<Checklist style={{ color: 'red' }} />}
-    >
+    <Radio icon={<Checklist />} activeIcon={<Checklist color="red" />}>
       自定义图标
     </Radio>
   )

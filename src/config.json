@@ -235,7 +235,7 @@
           "author": "hx"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SafeArea",
           "type": "component",
           "cName": "安全区",
@@ -437,7 +437,7 @@
           "author": "szg2008"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CalendarCard",
           "type": "component",
           "cName": "日历卡片",
@@ -588,7 +588,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Radio",
           "type": "component",
           "cName": "单选按钮",
@@ -599,7 +599,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "RadioGroup",
           "type": "component",
           "cName": "单选按钮组",
@@ -716,7 +716,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Badge",
           "type": "component",
           "cName": "徽标",
@@ -783,7 +783,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Loading",
           "type": "component",
           "cName": "加载中",
@@ -1031,6 +1031,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "lkjh3214"
         },
         {
