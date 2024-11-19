@@ -30,6 +30,8 @@
   }
 
   &-horizontal {
+    display: flex;
+
     .nut-radio {
       display: inline-flex;
 

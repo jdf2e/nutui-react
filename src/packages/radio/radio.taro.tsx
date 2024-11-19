@@ -10,6 +10,7 @@ import RadioContext from '../radiogroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
+import { harmony } from '@/utils/platform-taro'
 
 export interface RadioProps extends BasicComponent {
   disabled: boolean
@@ -89,25 +90,32 @@ export const Radio: FC<
   const renderIcon = () => {
     const { icon, activeIcon } = props
     if (disabled && !checkedStatement) {
-      return <CheckDisabled className={classNames(color())} />
+      const colors = harmony() ? { color: '#c2c4cc' } : {}
+      return <CheckDisabled className={classNames(color())} {...colors} />
     }
     if (checkedStatement) {
+      const colors = harmony()
+        ? { color: disabled ? '#ffadbe' : '#ff0f23' }
+        : {}
       return React.isValidElement(activeIcon) ? (
         React.cloneElement<any>(activeIcon, {
           ...activeIcon.props,
           className: classNames(color()),
+          ...colors,
         })
       ) : (
-        <CheckChecked className={classNames(color())} />
+        <CheckChecked className={classNames(color())} {...colors} />
       )
     }
+    const colors = harmony() ? { color: '#c2c4cc' } : {}
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
         ...icon.props,
         className: classNames(color()),
+        ...colors,
       })
     ) : (
-      <CheckNormal className={classNames(color())} />
+      <CheckNormal className={classNames(color())} {...colors} />
     )
   }
   const renderLabel = () => {
