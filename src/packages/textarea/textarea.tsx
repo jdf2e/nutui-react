@@ -138,7 +138,9 @@ export const TextArea: FunctionComponent<
         }}
         rows={rows}
         maxLength={maxLength === -1 ? undefined : maxLength}
-        placeholder={placeholder || locale.placeholder}
+        placeholder={
+          placeholder === undefined ? locale.placeholder : placeholder
+        }
         {...rest}
       />
       {showCount && (
