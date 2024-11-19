@@ -7,18 +7,11 @@ const Demo5 = () => {
   const style = { height: pxTransform(100) }
   return (
     <Grid reverse style={style}>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
+      {[...Array(4)].map((_, index) => (
+        <Grid.Item key={index} text="文字">
+          <Image />
+        </Grid.Item>
+      ))}
     </Grid>
   )
 }

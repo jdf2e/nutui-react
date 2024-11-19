@@ -2068,7 +2068,12 @@ $skeleton-line-border-radius: var(
 $card-border-radius: var(--nutui-card-border-radius, 4px) !default;
 
 // grid（✅）
+$grid-border-width: var(--nutui-grid-border-width, 0px) !default;
 $grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
+$grid-item-border-radius: var(
+  --nutui-grid-item-border-radius,
+  $radius-l
+) !default;
 $grid-item-content-padding: var(
   --nutui-grid-item-content-padding,
   16px 8px

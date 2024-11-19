@@ -3,17 +3,22 @@ import { Grid } from '@nutui/nutui-react-taro'
 import { Image } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
+  const customTheme = {
+    nutuiGridBorderWidth: '1px',
+  }
   return (
-    <Grid columns={3} square>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
+    <Grid
+      square={false}
+      gap={0}
+      style={{
+        '--nutui-grid-border-width': '1px',
+      }}
+    >
+      {[...Array(4)].map((_, index) => (
+        <Grid.Item key={index} text="文字">
+          <Image />
+        </Grid.Item>
+      ))}
     </Grid>
   )
 }

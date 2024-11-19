@@ -26,7 +26,7 @@ import { Grid } from '@nutui/nutui-react-taro'
 
 :::
 
-### 正方形格子
+### 自定义格子
 
 :::demo
 
@@ -97,9 +97,9 @@ import { Grid } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | columns | 列数 | `number` \| `string` | `4` |
-| gap | 格子之间的间距，默认单位为`px` | `number` \| `string` | `0` |
+| gap | 格子之间的间距，默认单位为`px` | `number` \| `string` | `9` |
 | center | 是否将格子内容居中显示 | `boolean` | `true` |
-| square | 是否将格子固定为正方形 | `boolean` | `false` |
+| square | 是否将格子固定为正方形 | `boolean` | `true` |
 | reverse | 内容翻转 | `boolean` | `false` |
 | direction | 格子内容排列的方向 | `horizontal` \| `vertical` | `vertical` |
 | onClick | 宫格子项点击事件 | `(index) => void` | `-` |
@@ -121,7 +121,9 @@ import { Grid } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-grid-border-color | 边框颜色 | `#f5f6f7` |
+| \--nutui-grid-border-width | 边框宽度 | `0` |
+| \--nutui-grid-border-color | 边框颜色 | `$color-border` |
+| \--nutui-grid-border-radius | 边框圆角大小 | `$radius-l` |
 | \--nutui-grid-item-content-padding | 内边距 | `16px 8px` |
 | \--nutui-grid-item-content-bg-color | 背景 | `$white` |
 | \--nutui-grid-item-text-margin | 外边距 | `8px` |
