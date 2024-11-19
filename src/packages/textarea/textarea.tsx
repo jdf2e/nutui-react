@@ -26,7 +26,6 @@ const defaultProps = {
   showCount: false,
   rows: 2,
   maxLength: 140,
-  placeholder: '',
   readOnly: false,
   disabled: false,
   autoSize: false,
@@ -39,6 +38,7 @@ export const TextArea: FunctionComponent<
     >
 > = (props) => {
   const { locale } = useConfig()
+  console.log(locale)
   const {
     className,
     value,
