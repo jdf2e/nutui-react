@@ -2001,11 +2001,11 @@ $empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
 $empty-background-color: var(--nutui-empty-background-color, #fff) !default;
 $empty-title-margin-bottom: var(
   --nutui-empty-title-margin-bottom,
-  12px
+  8px
 ) !default;
 $empty-title-line-height: var(
   --nutui-empty-title-line-height,
-  $font-size-l
+  $font-size-base
 ) !default;
 $empty-description-margin-top: var(
   --nutui-empty-description-margin-top,
@@ -2013,7 +2013,7 @@ $empty-description-margin-top: var(
 ) !default;
 $empty-description-line-height: var(
   --nutui-empty-description-line-height,
-  1
+  1.2
 ) !default;
 
 // cascader（✅）
