@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - next
-      - V3.0
-  pull_request_target:
-    types: [opened, synchronize, reopened]
+
+  pull_request:
+    branches:
+      - next
+
   workflow_dispatch:
 
 jobs:
@@ -81,7 +83,7 @@ jobs:
 
       - name: Build NutUI-React Taro H5 Demo
         run: npm run build:taro:site
-        
+
   add-label:
     runs-on: ubuntu-latest
 
