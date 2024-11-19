@@ -36,7 +36,7 @@ export interface FormItemProps
   shouldUpdate: boolean
   noStyle: boolean
   children: ReactNode | ((obj: any) => React.ReactNode)
-  align: 'flex-start' | 'center' | 'flex-end'
+  align?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const defaultProps = {

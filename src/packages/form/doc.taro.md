@@ -79,6 +79,7 @@ import { Form } from '@nutui/nutui-react-taro'
 | labelPosition | 表单项 label 的位置 | \`\`'top' | 'left'\` | \`'right'\`\` |
 | starPosition | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
 | validateTrigger | 统一设置字段触发验证的时机 | `string` \| `string[]` | `onChange` |
+| disabled | 是否禁用 | `boolean` | `false` |
 | onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
 
