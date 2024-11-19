@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react'
+import React, { ReactNode, useContext, useEffect, useState, FC } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
