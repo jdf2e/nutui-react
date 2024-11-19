@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useMemo, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
 
 export interface PaginationProps extends BasicComponent {
   defaultValue: number
@@ -105,6 +106,15 @@ export const Pagination: FunctionComponent<
     setCurrentPage(curPage)
   }
 
+  function addColorForHarmony(maybeElement: ReactNode, color: string) {
+    if (React.isValidElement(maybeElement) && harmony()) {
+      return React.cloneElement<any>(maybeElement, {
+        color,
+      })
+    }
+    return maybeElement
+  }
+
   return (
     <View className={classNames(classPrefix, className)} style={style}>
       {(mode === 'multi' || mode === 'simple') && (
@@ -117,7 +127,10 @@ export const Pagination: FunctionComponent<
             )}
             onClick={(e) => handleSelectPage(currentPage - 1)}
           >
-            {prev || locale.pagination.prev}
+            {addColorForHarmony(
+              prev || locale.pagination.prev,
+              currentPage === 1 ? '#c2c4cc' : '#ff0f23'
+            )}
           </View>
           {mode === 'multi' && (
             <View className={`${classPrefix}-contain`}>
@@ -154,7 +167,10 @@ export const Pagination: FunctionComponent<
             )}
             onClick={(e) => handleSelectPage(currentPage + 1)}
           >
-            {next || locale.pagination.next}
+            {addColorForHarmony(
+              next || locale.pagination.next,
+              currentPage >= pageCount ? '#c2c4cc' : '#ff0f23'
+            )}
           </View>
         </>
       )}
