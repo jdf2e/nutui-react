@@ -8,7 +8,14 @@ const Demo1 = () => {
         title="文字提示"
         onClick={() => Toast.show('网络失败，请稍后再试~')}
       />
-      <Cell title="标题提示" onClick={() => Toast.show('标题提示')} />
+      <Cell
+        title="标题提示"
+        onClick={() =>
+          Toast.show({
+            title: '成功提示',
+          })
+        }
+      />
       <Cell
         title="成功提示"
         onClick={() =>
@@ -23,7 +30,7 @@ const Demo1 = () => {
         title="失败提示"
         onClick={() =>
           Toast.show({
-            content: '失败提示',
+            title: '失败提示',
             icon: 'fail',
           })
         }
@@ -32,7 +39,7 @@ const Demo1 = () => {
         title="警告提示"
         onClick={() =>
           Toast.show({
-            content: '警告提示',
+            title: '警告提示',
             icon: 'warn',
           })
         }
@@ -41,7 +48,7 @@ const Demo1 = () => {
         title="加载提示"
         onClick={() =>
           Toast.show({
-            content: '加载提示',
+            title: '加载提示',
             icon: 'loading',
           })
         }

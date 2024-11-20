@@ -198,7 +198,16 @@ export const Toast: FunctionComponent<
         >
           <View className={`${classPrefix} ${classes}`} id={id}>
             <View
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
+              className={classNames(
+                `${classPrefix}-inner`,
+                `${classPrefix}-${position}`,
+                contentClassName,
+                `${classPrefix}-inner-${size}`,
+                `${classPrefix}-inner-${wordBreak}`,
+                {
+                  [`${classPrefix}-inner-descrption`]: content || msg,
+                }
+              )}
               style={{ ...styles, ...contentStyle }}
             >
               {hasIcon() ? (
@@ -209,11 +218,9 @@ export const Toast: FunctionComponent<
               {title ? (
                 <Text className={`${classPrefix}-title`}>{title}</Text>
               ) : null}
-              <Text
-                className={`${classPrefix}-text  ${content ? '' : `${classPrefix}-text-empty`}`}
-              >
-                {content || msg}
-              </Text>
+              {content || msg ? (
+                <Text className={`${classPrefix}-text`}>{content || msg}</Text>
+              ) : null}
             </View>
           </View>
         </Overlay>

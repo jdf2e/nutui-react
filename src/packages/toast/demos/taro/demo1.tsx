@@ -13,10 +13,10 @@ const Demo1 = () => {
 
   const openToast = (
     type: string,
-    content: string,
+    title?: string,
     duration?: number,
     icon?: string,
-    title?: string
+    content?: string
   ) => {
     const changeState = Object.assign(state, {
       type,
@@ -43,27 +43,27 @@ const Demo1 = () => {
       <Cell
         title="文字提示"
         onClick={() => {
-          openToast('text', '网络失败，请稍后再试~')
+          openToast(
+            'text',
+            undefined,
+            undefined,
+            undefined,
+            '网络失败，请稍后再试~'
+          )
           setShowToast(true)
         }}
       />
       <Cell
         title="标题提示"
         onClick={() => {
-          openToast(
-            'text',
-            '网络失败，请稍后再试~',
-            undefined,
-            undefined,
-            '标题提示'
-          )
+          openToast('text', '标题提示')
           setShowToast(true)
         }}
       />
       <Cell
         title="成功提示"
         onClick={() => {
-          openToast('success', '成功提示成功提示成功提示')
+          openToast('success', '成功提示')
           setShowToast(true)
         }}
       />
