@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import addColorForHarmony from '@/utils/add-color-for-harmony'
 
 export interface PaginationProps extends BasicComponent {
   defaultValue: number
@@ -104,15 +104,6 @@ export const Pagination: FunctionComponent<
   const handleSelectPage = (curPage: number) => {
     if (curPage > pageCount || curPage < 1) return
     setCurrentPage(curPage)
-  }
-
-  function addColorForHarmony(maybeElement: ReactNode, color: string) {
-    if (React.isValidElement(maybeElement) && harmony()) {
-      return React.cloneElement<any>(maybeElement, {
-        color,
-      })
-    }
-    return maybeElement
   }
 
   return (
