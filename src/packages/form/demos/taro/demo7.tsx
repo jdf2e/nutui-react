@@ -58,7 +58,7 @@ const Demo7 = () => {
         <Form.Item label="Input" name="form_input">
           <Input placeholder="placeholder" />
         </Form.Item>
-        <Form.Item label="Switch" name="switch">
+        <Form.Item label="Switch" name="switch" valuePropName="checked">
           <Switch />
         </Form.Item>
         <Form.Item label="Checkbox" name="checkbox">
