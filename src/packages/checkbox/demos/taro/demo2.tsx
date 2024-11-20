@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Cell, Checkbox } from '@nutui/nutui-react-taro'
 import { Checklist } from '@nutui/icons-react-taro'
-import { View } from '@tarojs/components'
 
 const Demo2 = () => {
   const [controlled, setControlled] = useState(false)
@@ -37,9 +36,7 @@ const Demo2 = () => {
           value={controlledGroup}
           onChange={(value) => setControlledGroup(value)}
         >
-          <View>
-            <Checkbox value="1" label={optionsDemo1[0].label} />
-          </View>
+          <Checkbox value="1" label={optionsDemo1[0].label} />
           <Checkbox value="2" label={optionsDemo1[1].label} />
           <Checkbox value="3" disabled label={optionsDemo1[2].label} />
         </Checkbox.Group>
