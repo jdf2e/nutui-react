@@ -100,7 +100,7 @@ import { Form } from '@nutui/nutui-react'
 | align | 對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
-| validateTrigger | 统一设置字段触发验证的时机 | `string \| string[]` | `onChange` |
+| validateTrigger | 統一設定字段觸發驗證的時機 | `string \| string[]` | `onChange` |
 | onClick | 點擊事件併收集子組件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
 ### Form.Item Rule

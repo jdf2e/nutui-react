@@ -38,7 +38,6 @@ export const TextArea: FunctionComponent<
     >
 > = (props) => {
   const { locale } = useConfig()
-  console.log(locale)
   const {
     className,
     value,
