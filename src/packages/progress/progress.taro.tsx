@@ -65,7 +65,7 @@ export const Progress: FunctionComponent<
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    backgroundColor: color || '#FF0F23',
+    background: color || '#FF0F23',
   }
 
   if (strokeWidth) {
