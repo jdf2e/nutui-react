@@ -154,12 +154,14 @@ export const Avatar: FunctionComponent<
                 <View className="nut-avatar-text">
                   {React.cloneElement<any>(icon, {
                     ...icon.props,
+                    color,
                     className: `${icon.props.className || ''} nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`,
                   })}
                 </View>
               ) : null}
               {children && (
                 <View
+                  style={{ color }}
                   className={`nut-avatar-text nut-avatar-${groupSize || size || 'normal'}-text`}
                 >
                   {children}
@@ -168,6 +170,7 @@ export const Avatar: FunctionComponent<
               {!src && !icon && !children && (
                 <View className="nut-avatar-text">
                   <User
+                    style={{ color }}
                     className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
                   />
                 </View>

@@ -1,14 +1,7 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
-import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react-taro'
+import React, { ReactNode, useContext, useEffect, useState, FC } from 'react'
+import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -43,10 +36,10 @@ const defaultProps = {
 } as CheckboxProps
 
 const classPrefix = 'nut-checkbox'
-export const Checkbox: FunctionComponent<
+export const Checkbox: FC<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & { Group: typeof CheckboxGroup } = (props) => {
+> = (props) => {
   const { children } = {
     ...defaultProps,
     ...props,
@@ -152,13 +145,13 @@ export const Checkbox: FunctionComponent<
   }
   const renderLabel = () => {
     return (
-      <span
+      <View
         className={classNames(`${classPrefix}-label `, {
           [`${classPrefix}-label-disabled`]: innerDisabled,
         })}
       >
         {children || label}
-      </span>
+      </View>
     )
   }
 
@@ -231,4 +224,3 @@ export const Checkbox: FunctionComponent<
 }
 
 Checkbox.displayName = 'NutCheckBox'
-Checkbox.Group = CheckboxGroup
