@@ -56,12 +56,8 @@ const ProgressDemo = () => {
         <Demo2 />
         <View className="h2">{translated.noShowPercentage}</View>
         <Demo3 />
-        {!harmonyAndRn() && (
-          <>
-            <View className="h2">{translated.customContent}</View>
-            <Demo4 />
-          </>
-        )}
+        <View className="h2">{translated.customContent}</View>
+        <Demo4 />
         <View className="h2">{translated.customSize}</View>
         <Demo5 />
         <View className="h2">{translated.statusDisplay}</View>

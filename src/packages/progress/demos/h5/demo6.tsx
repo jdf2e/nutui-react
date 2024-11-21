@@ -8,7 +8,7 @@ const Demo6 = () => {
       <Cell>
         <Progress
           percent={30}
-          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          color="linear-gradient(270deg, rgb(18, 126, 255) 0%, rgb(32, 147, 255) 32.8156%, rgb(13, 242, 204) 100%)"
           animated
         />
       </Cell>

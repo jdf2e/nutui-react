@@ -8,15 +8,12 @@ test('test value props', () => {
   const { container } = render(<AnimatingNumbers.CountUp value="678.94" />)
 
   const listNumbers = container.querySelectorAll('.nut-countup-number')
-  expect(listNumbers[0]).toHaveAttribute(
-    'style',
-    'transition: transform 1s ease-in-out;'
-  )
+  expect(listNumbers[0]).toHaveAttribute('style', 'transition-duration: 1s;')
   const defaultDelay = 300
   vi.advanceTimersByTime(defaultDelay)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
-    'transition: transform 1s ease-in-out; transform: translate(0, -30%);'
+    'transition-duration: 1s; transform: translate(0, -30%);'
   )
   expect(listNumbers.length).toBe(5)
 })
@@ -32,7 +29,7 @@ test('test aysnc value and  duration props', async () => {
   vi.advanceTimersByTime(defaultDelay)
   expect(listNumbers[0]).toHaveAttribute(
     'style',
-    'transition: transform 1.2s ease-in-out; transform: translate(0, -50%);'
+    'transition-duration: 1.2s; transform: translate(0, -50%);'
   )
 
   for (let i = 0; i < 5; i++) {
@@ -45,7 +42,7 @@ test('test aysnc value and  duration props', async () => {
     const lastlen = value.length - 1
     const lastNumber = Number(value.slice(lastlen))
     const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
-    const style = `transition: transform 0s ease-in-out; transform: translate(${0}, -${percentage}%);`
+    const style = `transition-duration: 0s; transform: translate(${0}, -${percentage}%);`
     expect(listNumbers2[7]).toHaveAttribute('style', style)
   }
 })
