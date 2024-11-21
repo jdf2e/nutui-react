@@ -21,10 +21,14 @@
   &-label-required {
     color: $form-item-required-color;
     margin-right: $form-item-required-margin-right;
+    display: block;
+    position: absolute;
+    left: -0.8em;
   }
   .nut-form-item-labeltxt {
     font-size: 12px;
     height: 10px;
+    position: relative;
   }
   &-body {
     flex: 1;

@@ -219,12 +219,14 @@ export class FormItem extends React.Component<
 
     const { starPosition } = this.context.formInstance
     const renderStar = (required || requiredInRules) && (
-      <div className="nut-form-item-label-required">*</div>
+      <div className="nut-form-item-label-required required">*</div>
     )
     const renderLabel = (
       <>
-        {starPosition === 'left' ? renderStar : null}
-        <span className="nut-form-item-labeltxt">{label}</span>
+        <span className="nut-form-item-labeltxt">
+          {starPosition === 'left' ? renderStar : null}
+          {label}
+        </span>
         {starPosition === 'right' ? renderStar : null}
       </>
     )
