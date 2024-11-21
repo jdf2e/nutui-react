@@ -5,9 +5,8 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react'
+import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
-import CheckboxGroup from '@/packages/checkboxgroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -45,7 +44,7 @@ const classPrefix = 'nut-checkbox'
 export const Checkbox: FunctionComponent<
   Partial<CheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & { Group: typeof CheckboxGroup } = (props) => {
+> = (props) => {
   const { children } = {
     ...defaultProps,
     ...props,
@@ -230,4 +229,3 @@ export const Checkbox: FunctionComponent<
 }
 
 Checkbox.displayName = 'NutCheckBox'
-Checkbox.Group = CheckboxGroup

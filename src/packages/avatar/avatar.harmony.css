@@ -73,6 +73,11 @@
 .nut-avatar {
   position: relative;
   flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
 }
 .nut-avatar-round {
   border-radius: 999px;
@@ -96,21 +101,12 @@
 .nut-avatar-icon {
   background-size: 100% 100%;
 }
-.nut-avatar .nut-icon-img {
-  width: 100%;
-  height: 100%;
-}
 .nut-avatar-text {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
 .nut-avatar-large {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 60px;
   height: 60px;
 }
@@ -118,53 +114,19 @@
   width: 60px;
   height: 60px;
 }
-.nut-avatar-large-img-image {
-  width: 60px;
-  height: 60px;
-}
 .nut-avatar-large-icon {
   width: 60px;
   height: 60px;
-}
-.nut-avatar-large .nut-icon-img {
-  width: 100%;
-  height: 100%;
 }
 .nut-avatar-large-text {
   width: 60px;
   height: 60px;
 }
 .nut-avatar-small {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-}
-.nut-avatar-small-img-image {
   width: 32px;
   height: 32px;
 }
 .nut-avatar-small-text {
   width: 32px;
   height: 32px;
-}
-.nut-avatar-normal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-}
-.nut-avatar-normal-img-image {
-  width: 40px;
-  height: 40px;
-}
-.nut-avatar-normal .nut-icon-img {
-  width: 100%;
-  height: 100%;
-}
-.nut-avatar-normal-text {
-  width: 40px;
-  height: 40px;
 }

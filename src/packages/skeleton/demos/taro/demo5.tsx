@@ -1,4 +1,4 @@
-import { Avatar, Image, Skeleton, Switch } from '@nutui/nutui-react-taro'
+import { Avatar, Skeleton, Switch } from '@nutui/nutui-react-taro'
 import React, { useState } from 'react'
 import { View, Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
@@ -27,12 +27,7 @@ const Demo5 = () => {
             className="nut-skeleton-content-avatar"
             style={{ marginRight: '20px' }}
             size="50"
-            icon={
-              <Image
-                loading={false}
-                src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
-              />
-            }
+            src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
           />
           <View className="nut-skeleton-content-line">
             <Text>NutUI-React</Text>
