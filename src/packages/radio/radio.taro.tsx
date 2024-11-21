@@ -1,13 +1,12 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FC, useContext } from 'react'
 import {
   CheckChecked,
-  CheckNormal,
   CheckDisabled,
+  CheckNormal,
 } from '@nutui/icons-react-taro'
-import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
+import classNames, { Mapping } from 'classnames'
+import { ITouchEvent, View } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
-import RadioGroup from '@/packages/radiogroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
@@ -34,9 +33,9 @@ const defaultProps = {
   activeIcon: null,
   onChange: (checked: boolean) => {},
 } as RadioProps
-export const Radio: FunctionComponent<
+export const Radio: FC<
   Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> & { Group: typeof RadioGroup } = (props) => {
+> = (props) => {
   const classPrefix = 'nut-radio'
   const {
     children,
@@ -80,7 +79,7 @@ export const Radio: FunctionComponent<
       }
     }
   }
-  const color = () => {
+  const color = (): Mapping => {
     return {
       [`${classPrefix}-icon-disabled`]: disabled,
       [`${classPrefix}-icon`]: !checkedStatement,
@@ -118,7 +117,7 @@ export const Radio: FunctionComponent<
     return (
       <>
         {renderIcon()}
-        <div className={labelcls}>{children}</div>
+        <View className={labelcls}>{children}</View>
       </>
     )
   }
@@ -127,7 +126,7 @@ export const Radio: FunctionComponent<
       [`${classPrefix}-button-active`]: checkedStatement,
       [`${classPrefix}-button-disabled`]: disabled,
     })
-    return <div className={buttoncls}>{children}</div>
+    return <View className={buttoncls}>{children}</View>
   }
   const renderByShape = (shape: RadioShape) => {
     return shape === 'button' ? renderButton() : renderLabel()
@@ -149,16 +148,10 @@ export const Radio: FunctionComponent<
     className
   )
   return (
-    <View
-      className={cls}
-      style={style}
-      onClick={handleClick}
-      // {...rest}
-    >
+    <View className={cls} style={style} onClick={handleClick}>
       {renderRadioItem()}
     </View>
   )
 }
 
 Radio.displayName = 'NutRadio'
-Radio.Group = RadioGroup

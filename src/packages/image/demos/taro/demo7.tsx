@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from '@nutui/nutui-react-taro'
+import { Cell, Image } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
@@ -19,7 +19,7 @@ const Demo7 = () => {
   ]
 
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
         {modes.map((mode) => {
           return (
@@ -30,17 +30,12 @@ const Demo7 = () => {
               }}
               key={mode}
             >
-              <Image
-                src={src}
-                mode={mode as any}
-                width={pxTransform(80)}
-                height={pxTransform(80)}
-              />
+              <Image src={src} mode={mode as any} width={80} height={80} />
             </View>
           )
         })}
       </View>
-    </>
+    </Cell>
   )
 }
 export default Demo7

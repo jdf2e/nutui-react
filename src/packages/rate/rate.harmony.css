@@ -12,10 +12,10 @@
   display: flex;
   flex-shrink: 0;
   position: relative;
-  margin-right: 14px;
+  margin-left: 14px;
 }
-.nut-rate-item:last-child {
-  margin-right: 0;
+.nut-rate-item:first-child {
+  margin-left: 0;
 }
 .nut-rate-item-half {
   position: absolute;
@@ -30,11 +30,13 @@
 }
 .nut-rate-item-icon {
   display: flex;
-  color: #FF0F23;
   cursor: pointer;
 }
-.nut-rate-item-icon-disabled {
-  color: #C2C4CC;
+.nut-rate-item-icon .nut-icon {
+  color: #ff0f23;
+}
+.nut-rate-item-icon-disabled .nut-icon {
+  color: #c2c4cc;
 }
 .nut-rate-item-icon.nut-rate-item-icon.nut-rate-item-icon-half {
   position: absolute;

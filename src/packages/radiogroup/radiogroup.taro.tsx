@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
+import { ViewProps } from '@tarojs/components/types/View'
 import {
   RadioGroupDirection,
   RadioGroupOption,
@@ -31,11 +33,7 @@ const defaultProps = {
 const classPrefix = 'nut-radiogroup'
 
 export const RadioGroup = React.forwardRef(
-  (
-    props: Partial<RadioGroupProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
-    ref
-  ) => {
+  (props: Partial<RadioGroupProps> & Omit<ViewProps, 'onChange'>, ref) => {
     const {
       children,
       className,
@@ -49,11 +47,10 @@ export const RadioGroup = React.forwardRef(
       disabled,
       ...rest
     } = { ...defaultProps, ...props }
-
     const cls = classNames(
       classPrefix,
       {
-        [`${classPrefix}-${props.direction}`]: props.direction,
+        [`${classPrefix}-${direction}`]: direction,
       },
       className
     )
@@ -97,9 +94,9 @@ export const RadioGroup = React.forwardRef(
           },
         }}
       >
-        <div className={cls} {...rest}>
+        <View className={cls} {...rest}>
           {options?.length ? renderOptionsChildren() : children}
-        </div>
+        </View>
       </RadioContext.Provider>
     )
   }

@@ -1,10 +1,7 @@
 import React from 'react'
 import { Grid } from '@nutui/nutui-react-taro'
-// import { Image } from '@nutui/icons-react-taro'
+import { Image } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
-import { Text } from '@tarojs/components'
-
-const Image = () => <Text>T</Text>
 
 const Demo10 = () => {
   const onClick = (item: any, index: number) => {

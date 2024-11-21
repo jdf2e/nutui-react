@@ -192,9 +192,9 @@ $font-family:
 // Font
 $font-size-xxs: $font-text-mini !default;
 $font-size-xs: $font-text-xs !default;
-$font-size-small: $font-text-small !default;
+$font-size-s: $font-text-small !default;
 $font-size-base: $font-text !default;
-$font-size-large: $font-text-large !default;
+$font-size-l: $font-text-large !default;
 $font-size-xl: $font-h2 !default;
 $font-size-xxl: var(--nutui-font-size-8) !default;
 $font-size-xxxl: var(--nutui-font-size-10) !default;
@@ -280,7 +280,7 @@ $button-large-padding: var(
 ) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $button-large-font-weight: var(
   --nutui-button-large-font-weight,
@@ -312,7 +312,7 @@ $button-mini-padding: var(
 $button-mini-height: var(--nutui-button-mini-height, 24px) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $button-mini-border-radius: var(
   --nutui-button-mini-border-radius,
@@ -408,7 +408,7 @@ $cell-title-font-size: var(
 ) !default;
 $cell-description-font-size: var(
   --nutui-cell-description-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $cell-description-color: var(
   --nutui-cell-description-color,
@@ -461,7 +461,7 @@ $cell-group-description-color: var(
 ) !default;
 $cell-group-description-font-size: var(
   --nutui-cell-group-description-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $cell-group-description-line-height: var(
   --nutui-cell-group-description-line-height,
@@ -478,7 +478,7 @@ $cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
 $divider-text-font-size: var(
   --nutui-divider-text-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $divider-border-color: var(
   --nutui-divider-border-color,
@@ -802,7 +802,7 @@ $numberkeyboard-key-color: var(
 ) !default;
 $numberkeyboard-key-confirm-font-size: var(
   --nutui-numberkeyboard-key-confirm-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $numberkeyboard-key-confirm-color: var(
   --nutui-numberkeyboard-key-confirm-color,
@@ -1011,7 +1011,7 @@ $calendar-disable-color: var(
 ) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $calendar-title-font-size: var(
   --nutui-calendar-title-font-size,
@@ -1233,7 +1233,7 @@ $steps-base-icon-margin-bottom: var(
 ) !default;
 $steps-base-icon-font-size: var(
   --nutui-steps-base-icon-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $steps-base-line-width: var(--nutui-steps-base-line-width, 70%) !default;
 $steps-base-line-height: var(--nutui-steps-base-line-height, 1px) !default;
@@ -1255,7 +1255,7 @@ $steps-base-title-margin-bottom: var(
 ) !default;
 $steps-base-description-font-size: var(
   --nutui-steps-base-description-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $steps-base-description-color: var(
   --nutui-steps-base-description-color,
@@ -1392,7 +1392,7 @@ $dialog-footer-ok-max-width: var(
 ) !default;
 $dialog-header-font-size: var(
   --nutui-dialog-header-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $dialog-header-font-weight: var(
   --nutui-dialog-header-font-weight,
@@ -1424,7 +1424,7 @@ $checkbox-label-font-size: var(
 ) !default;
 $checkbox-icon-font-size: var(
   --nutui-checkbox-icon-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $checkbox-button-font-size: var(
   --nutui-checkbox-button-font-size,
@@ -1463,10 +1463,7 @@ $checkbox-list-item-padding: var(
 ) !default;
 
 //radio（✅）
-$radio-icon-font-size: var(
-  --nutui-radio-icon-font-size,
-  $font-size-large
-) !default;
+$radio-icon-font-size: var(--nutui-radio-icon-font-size, $font-size-l) !default;
 $radio-label-color: var(--nutui-radio-label-color, $color-text) !default;
 $radio-label-disable-color: var(
   --nutui-radio-label-disable-color,
@@ -1551,10 +1548,7 @@ $noticebar-background: var(
   rgba(251, 248, 220, 1)
 ) !default;
 $noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
-$noticebar-font-size: var(
-  --nutui-noticebar-font-size,
-  $font-size-small
-) !default;
+$noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-s) !default;
 $noticebar-line-height: var(--nutui-noticebar-line-height, 24px) !default;
 $noticebar-box-padding: var(
   --nutui-noticebar-box-padding,
@@ -1790,7 +1784,7 @@ $tabs-titles-item-active-font-weight: var(
 ) !default;
 $tabs-titles-item-active-font-size: var(
   --nutui-tabs-titles-item-active-font-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 $tabs-titles-item-active-background-color: var(
   --nutui-tabs-titles-item-active-background-color,
@@ -2151,7 +2145,7 @@ $grid-item-text-color: var(
 ) !default;
 $grid-item-text-font-size: var(
   --nutui-grid-item-text-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 
 // table（✅）
@@ -2242,7 +2236,7 @@ $sidenavbar-sub-list-color: var(
 $elevator-list-bg-color: var(--nutui-elevator-list-bg-color, $white) !default;
 $elevator-list-font-size: var(
   --nutui-elevator-list-font-size,
-  $font-size-small
+  $font-size-s
 ) !default;
 $elevator-list-color: var(
   --nutui-elevator-list-color,
@@ -2409,7 +2403,7 @@ $circleprogress-text-color: var(
 ) !default;
 $circleprogress-text-size: var(
   --nutui-circleprogress-text-size,
-  $font-size-large
+  $font-size-l
 ) !default;
 
 // Ellipsis
@@ -2464,9 +2458,9 @@ $space-gap: var(--nutui-space-gap, 8px) !default;
 
 // loading
 $loading-icon-color: var(--nutui-loading-icon-color, $color-text-help) !default;
-$loading-icon-size: var(--nutui-loading-icon-size, $font-size-small) !default;
+$loading-icon-size: var(--nutui-loading-icon-size, $font-size-s) !default;
 $loading-color: var(--nutui-loading-color, $color-text-help) !default;
-$loading-font-size: var(--nutui-loading-font-size, $font-size-small) !default;
+$loading-font-size: var(--nutui-loading-font-size, $font-size-s) !default;
 // ResultPage
 $resultpage-width: var(--nutui-resultpage-width, 247px) !default;
 $resultpage-icon-size: var(--nutui-resultpage-icon-size, 48px) !default;

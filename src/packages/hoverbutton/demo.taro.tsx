@@ -5,13 +5,9 @@ import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
-import Demo1Rn from './demos/taro/demo1-rn'
 import Demo2 from './demos/taro/demo2'
-import Demo2Rn from './demos/taro/demo2-rn'
 import Demo3 from './demos/taro/demo3'
-import Demo3Rn from './demos/taro/demo3-rn'
 import Demo4 from './demos/taro/demo4'
-import Demo4Rn from './demos/taro/demo4-rn'
 import { harmonyAndRn } from '@/utils/platform-taro'
 // import Demo5 from './demos/taro/demo5'
 
@@ -97,10 +93,10 @@ const HoverDemo = () => {
         )} */}
       </ScrollView>
 
-      {curDemo === 'basic' && (isNative ? <Demo1Rn /> : <Demo1 />)}
-      {curDemo === 'multiButtons' && (isNative ? <Demo2Rn /> : <Demo2 />)}
-      {curDemo === 'hasTabbar' && (isNative ? <Demo3Rn /> : <Demo3 />)}
-      {curDemo === 'customZIndex' && (isNative ? <Demo4Rn /> : <Demo4 />)}
+      {curDemo === 'basic' && <Demo1 />}
+      {curDemo === 'multiButtons' && <Demo2 />}
+      {curDemo === 'hasTabbar' && <Demo3 />}
+      {curDemo === 'customZIndex' && <Demo4 />}
       {/* {curDemo === 'customSpacing' && <Demo5 />} */}
     </View>
   )

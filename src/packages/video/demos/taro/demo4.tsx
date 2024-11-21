@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Cell, Video } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
-  const [source, setSource] = useState({
+  const [source] = useState({
     src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
     type: 'video/mp4',
   })
@@ -23,7 +24,7 @@ const Demo4 = () => {
           onPlay={play}
           onPause={pause}
           onPlayEnd={playend}
-          style={{ height: '163px' }}
+          style={{ height: pxTransform(163) }}
         />
       </Cell>
     </>

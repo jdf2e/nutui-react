@@ -161,6 +161,7 @@ export const Pagination: FunctionComponent<
       {mode === 'lite' && (
         <View className={`${classPrefix}-lite`}>
           <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
+          <View className={`${classPrefix}-lite-spliterator`}>/</View>
           <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
         </View>
       )}

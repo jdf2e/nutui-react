@@ -1,7 +1,6 @@
 .nut-button {
   position: relative;
   display: flex;
-  display: inline-block;
   /* #ifdef rn harmony*/
   width: 80px;
   /* #endif */
@@ -21,9 +20,9 @@
   text-align: center;
   cursor: pointer;
   transition: $button-transition;
-  -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: $button-default-color;
   background: $button-default-background-color;
@@ -99,6 +98,23 @@
     padding: 0;
   }
 
+  &-round {
+    border-radius: $button-border-radius;
+
+    &-xlarge,
+    &-large {
+      border-radius: $button-large-border-radius;
+    }
+
+    &-small {
+      border-radius: $button-small-border-radius;
+    }
+
+    &-mini {
+      border-radius: $button-mini-border-radius;
+    }
+  }
+
   &-default {
     padding: $button-default-padding;
     border-style: solid;
@@ -136,6 +152,14 @@
     padding: $button-xlarge-padding;
     font-size: $button-xlarge-font-size;
     font-weight: $button-large-font-weight;
+    border-radius: $radius-base;
+
+    .nut-button-text {
+      margin-left: $button-xlarge-text-icon-margin;
+      &-right {
+        margin-right: $button-xlarge-text-icon-margin;
+      }
+    }
 
     .nut-icon {
       font-size: $button-xlarge-font-size;
@@ -153,6 +177,14 @@
     padding: $button-large-padding;
     font-size: $button-large-font-size;
     font-weight: $button-large-font-weight;
+    border-radius: $radius-base;
+
+    .nut-button-text {
+      margin-left: $button-xlarge-text-icon-margin;
+      &-right {
+        margin-right: $button-xlarge-text-icon-margin;
+      }
+    }
 
     .nut-icon {
       font-size: $button-large-font-size;
@@ -170,6 +202,7 @@
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
+    border-radius: $radius-s;
 
     .nut-icon {
       font-size: $button-small-font-size;
@@ -186,6 +219,7 @@
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
+    border-radius: $radius-s;
 
     .nut-icon {
       font-size: $button-mini-font-size;
@@ -410,23 +444,6 @@
   &-loading {
     cursor: default;
     opacity: 0.9;
-  }
-
-  &-round {
-    border-radius: $button-border-radius;
-
-    &-xlarge,
-    &-large {
-      border-radius: $button-large-border-radius;
-    }
-
-    &-small {
-      border-radius: $button-small-border-radius;
-    }
-
-    &-mini {
-      border-radius: $button-mini-border-radius;
-    }
   }
 
   &-square {
