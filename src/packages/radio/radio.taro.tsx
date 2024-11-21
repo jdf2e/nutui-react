@@ -1,15 +1,11 @@
 import React, { FC, useContext } from 'react'
-import {
-  CheckChecked,
-  CheckDisabled,
-  CheckNormal,
-} from '@nutui/icons-react-taro'
 import classNames, { Mapping } from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
+import Icon from '@/packages/radio/icon'
 
 export interface RadioProps extends BasicComponent {
   disabled: boolean
@@ -88,18 +84,25 @@ export const Radio: FC<
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
+
+    function renderIconByDisabledProperty() {
+      return disabled ? (
+        <Icon name="checked-disabled" tag={View} />
+      ) : (
+        <Icon name="checked" tag={View} />
+      )
+    }
+
     if (disabled && !checkedStatement) {
-      return <CheckDisabled className={classNames(color())} />
+      return <Icon name="disabled" tag={View} />
     }
     if (checkedStatement) {
-      return React.isValidElement(activeIcon) ? (
-        React.cloneElement<any>(activeIcon, {
-          ...activeIcon.props,
-          className: classNames(color()),
-        })
-      ) : (
-        <CheckChecked className={classNames(color())} />
-      )
+      return React.isValidElement(activeIcon)
+        ? React.cloneElement<any>(activeIcon, {
+            ...activeIcon.props,
+            className: classNames(color()),
+          })
+        : renderIconByDisabledProperty()
     }
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
@@ -107,7 +110,7 @@ export const Radio: FC<
         className: classNames(color()),
       })
     ) : (
-      <CheckNormal className={classNames(color())} />
+      <Icon name="normal" tag={View} />
     )
   }
   const renderLabel = () => {
@@ -117,7 +120,7 @@ export const Radio: FC<
     return (
       <>
         {renderIcon()}
-        <View className={labelcls}>{children}</View>
+        {children ? <View className={labelcls}>{children}</View> : null}
       </>
     )
   }

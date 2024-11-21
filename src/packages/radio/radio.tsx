@@ -1,10 +1,10 @@
 import React, { FunctionComponent, MouseEventHandler, useContext } from 'react'
-import { CheckChecked, CheckNormal, CheckDisabled } from '@nutui/icons-react'
 import classNames from 'classnames'
 import RadioContext from '../radiogroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
+import Icon from '@/packages/radio/icon'
 
 export interface RadioProps extends BasicComponent {
   disabled: boolean
@@ -83,18 +83,25 @@ export const Radio: FunctionComponent<
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
+
+    function renderIconByDisabledProperty() {
+      return disabled ? (
+        <Icon name="checked-disabled" />
+      ) : (
+        <Icon name="checked" />
+      )
+    }
+
     if (disabled && !checkedStatement) {
-      return <CheckDisabled className={classNames(color())} />
+      return <Icon name="disabled" />
     }
     if (checkedStatement) {
-      return React.isValidElement(activeIcon) ? (
-        React.cloneElement<any>(activeIcon, {
-          ...activeIcon.props,
-          className: classNames(color()),
-        })
-      ) : (
-        <CheckChecked className={classNames(color())} />
-      )
+      return React.isValidElement(activeIcon)
+        ? React.cloneElement<any>(activeIcon, {
+            ...activeIcon.props,
+            className: classNames(color()),
+          })
+        : renderIconByDisabledProperty()
     }
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
@@ -102,7 +109,7 @@ export const Radio: FunctionComponent<
         className: classNames(color()),
       })
     ) : (
-      <CheckNormal className={classNames(color())} />
+      <Icon name="normal" />
     )
   }
   const renderLabel = () => {
@@ -112,7 +119,7 @@ export const Radio: FunctionComponent<
     return (
       <>
         {renderIcon()}
-        <div className={labelcls}>{children}</div>
+        {children ? <div className={labelcls}>{children}</div> : null}
       </>
     )
   }
