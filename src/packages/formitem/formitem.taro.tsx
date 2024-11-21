@@ -224,8 +224,10 @@ export class FormItem extends React.Component<
     )
     const renderLabel = (
       <>
-        {starPosition === 'left' ? renderStar : null}
-        <Text className="nut-form-item-labeltxt">{label}</Text>
+        <Text className="nut-form-item-labeltxt">
+          {starPosition === 'left' ? renderStar : null}
+          {label}
+        </Text>
         {starPosition === 'right' ? renderStar : null}
       </>
     )

@@ -21,6 +21,9 @@
   &-label-required {
     color: $form-item-required-color;
     margin-right: $form-item-required-margin-right;
+    display: block;
+    position: absolute;
+    left: -10px;
   }
   .nut-form-item-labeltxt {
     font-size: 12px;
