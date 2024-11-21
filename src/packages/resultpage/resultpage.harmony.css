@@ -1,0 +1,43 @@
+.nut-resultpage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.nut-resultpage-icon {
+  display: inline-flex;
+  margin-bottom: 12px;
+}
+.nut-resultpage-icon .nut-icon {
+  height: 36px;
+  width: 36px;
+}
+.nut-resultpage-title {
+  width: 240px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #1a1a1a;
+  font-weight: 600;
+  text-align: center;
+}
+.nut-resultpage-description {
+  width: 240px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #505259;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+}
+.nut-resultpage-actions {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+}
+.nut-resultpage-action {
+  margin-left: 6px;
+  margin-right: 6px;
+}
