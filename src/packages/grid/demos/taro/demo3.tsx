@@ -3,9 +3,6 @@ import { Grid } from '@nutui/nutui-react-taro'
 import { Image } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
-  const customTheme = {
-    nutuiGridBorderWidth: '1px',
-  }
   return (
     <Grid
       square={false}
