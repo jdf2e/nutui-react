@@ -73,7 +73,7 @@ import { ResultPage } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-resultpage-width | 內容區域寬度 | `240px` |
-| \--nutui-resultpage-icon-size | icon的寬高 | `36x` |
+| \--nutui-resultpage-icon-size | icon的寬高 | `36px` |
 | \--nutui-resultpage-icon-margin-bottom | icon的margin-bottom值 | `12px` |
 | \--resultpage-title-margin-bottom | 標題的margin-top值 | `12px` |
 | \--nutui-resultpage-title-font-size | 標題的字體大小 | `$font-size-xl` |

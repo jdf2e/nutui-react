@@ -11,7 +11,7 @@ const Demo1 = () => {
           status="info"
           actions={[
             {
-              text: '主要操作',
+              text: '操作按钮',
               type: 'primary',
             },
           ]}
