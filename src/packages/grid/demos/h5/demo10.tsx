@@ -8,7 +8,7 @@ const Demo10 = () => {
   }
   return (
     <Grid direction="horizontal" onClick={onClick}>
-      {[...Array(4)].map((_, index) => (
+      {Array.from({ length: 4 }, (_, index) => (
         <Grid.Item key={index} text="文字">
           <Image />
         </Grid.Item>

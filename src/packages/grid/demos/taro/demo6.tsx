@@ -5,7 +5,7 @@ import { Image } from '@nutui/icons-react-taro'
 const Demo6 = () => {
   return (
     <Grid direction="horizontal">
-      {[...Array(4)].map((_, index) => (
+      {Array.from({ length: 4 }, (_, index) => (
         <Grid.Item key={index} text="文字">
           <Image />
         </Grid.Item>
