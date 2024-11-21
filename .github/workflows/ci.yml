@@ -5,7 +5,7 @@ on:
     branches:
       - next
       - V3.0
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
 
@@ -82,28 +82,3 @@ jobs:
       - name: Build NutUI-React Taro H5 Demo
         if: github.ref == 'refs/heads/next'
         run: npm run build:taro:site
-  add-label:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-
-      - name: Determine label based on target branch
-        id: determine-label
-        run: |
-          echo "${{github.event_name}}"
-          if [[ "${{ github.event.pull_request.base.ref }}" == "next" ]]; then
-            echo "label=2.x" >> $GITHUB_ENV
-          elif [[ "${{ github.event.pull_request.base.ref }}" == "V3.0" ]]; then
-            echo "label=3.x" >> $GITHUB_ENV
-          else
-            echo "label=" >> $GITHUB_ENV
-          fi
-
-      - name: Add label to Pull Request
-        if: env.label != ''
-        uses: actions-ecosystem/action-add-labels@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: ${{ env.label }}

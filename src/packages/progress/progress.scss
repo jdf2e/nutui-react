@@ -29,7 +29,7 @@
     justify-content: center;
     transition: all 0.4s;
     border-radius: $progress-border-radius;
-    background-color: $progress-color;
+    background: $progress-color;
   }
 
   &-text {
@@ -39,7 +39,7 @@
     top: $progress-text-position-top;
     bottom: $progress-text-position-bottom;
     transition: all 0.4s;
-    // transform: translate(-50%);
+    transform: translate(-50%);
 
     &-inner {
       display: flex;

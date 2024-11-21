@@ -13,9 +13,7 @@ test('should render different height and color when use color height props', asy
     <Progress percent={50} color="blue" strokeWidth="20" />
   )
   const inner = container.querySelector('.nut-progress-inner')
-  expect(inner?.getAttribute('style')).toBe(
-    'width: 50%; background-color: blue;'
-  )
+  expect(inner?.getAttribute('style')).toBe('width: 50%; background: blue;')
 })
 
 test('should show percent when use showText props', () => {

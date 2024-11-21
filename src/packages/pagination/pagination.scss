@@ -67,10 +67,11 @@
 }
 
 .nut-pagination-lite {
-  width: $pagination-lite-width;
   height: $pagination-lite-height;
+  padding: 0 $spacing-xs;
   display: flex;
   flex-direction: row;
+  align-items: center;
   color: $color-primary-text;
   background-color: $pagination-lite-background-color;
   border-radius: $pagination-lite-radius;
@@ -78,18 +79,11 @@
 
 .nut-pagination-lite-active,
 .nut-pagination-lite-default {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: $pagination-lite-height;
-  height: $pagination-lite-height;
-  font-size: $font-size-s;
+  font-size: $font-size-xs;
   color: $pagination-lite-color;
-  font-weight: 400;
 }
 
-.nut-pagination-lite-active {
-  border-radius: $pagination-lite-radius;
-  font-size: $font-size-s;
-  background-color: $pagination-lite-active-background-color;
+.nut-pagination-lite-spliterator {
+  font-size: $font-size-xs;
+  color: $pagination-lite-color;
 }
