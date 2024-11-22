@@ -10,15 +10,7 @@ import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/platform-taro'
-import { CountDownProps } from './types'
-
-interface CountDownTimeProps {
-  d: number
-  h: number
-  m: number
-  s: number
-  ms: number
-}
+import { CountDownProps, CountDownTimeProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -220,8 +212,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   // 监听值变更
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
-
-    onUpdate && onUpdate(tranTime)
+    onUpdate && onUpdate(tranTime as CountDownTimeProps)
   }, [restTimeStamp])
 
   // 监听暂停
