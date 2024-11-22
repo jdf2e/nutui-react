@@ -3,7 +3,6 @@ import * as iconfonts from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { camelCase } from '@/utils/camel-case'
-import { web } from '@/utils/platform-taro'
 
 const Demo7 = () => {
   const generateAMCopyText = (icon: any) => {
@@ -63,20 +62,11 @@ const Demo7 = () => {
                         justifyContent: 'center',
                       }}
                     >
-                      {!web() ? (
-                        React.createElement(
-                          iconfonts[
-                            camelCase(icon.name || '', { pascalCase: true })
-                          ],
-                          {
-                            className: `nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`,
-                          }
-                        )
-                      ) : (
-                        <iconfonts.IconFont
-                          name={icon.name}
-                          className={`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}
-                        />
+                      {React.createElement(
+                        iconfonts[camelCase(icon.name, { pascalCase: true })],
+                        {
+                          className: `nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`,
+                        }
                       )}
                     </View>
                   )

@@ -7,8 +7,7 @@ const Demo3 = () => {
     <Cell>
       <IconFont
         size={40}
-        width={40}
-        height={40}
+        style={{ width: 40, height: 40 }}
         name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
       />
     </Cell>
