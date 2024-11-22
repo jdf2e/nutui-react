@@ -364,7 +364,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TabbarItem",
           "sort": 2,
           "cName": "标签栏子组件",
