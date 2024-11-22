@@ -44,7 +44,7 @@ const Demo4 = () => {
 
       <Indicator
         total={6}
-        current={2}
+        current={5}
         direction="vertical"
         color="white"
         type="slide"

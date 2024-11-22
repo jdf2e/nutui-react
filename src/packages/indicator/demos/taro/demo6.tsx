@@ -5,7 +5,10 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        <Indicator total={3} current={0} type="slide" />
+        <Indicator total={3} current={2} type="slide" />
+      </Cell>
+      <Cell>
+        <Indicator total={3} current={2} type="slide" direction="vertical" />
       </Cell>
     </>
   )

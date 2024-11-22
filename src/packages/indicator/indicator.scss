@@ -4,7 +4,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
+  //justify-content: center;
+
+  &-fixed-width {
+    width: 21px;
+  }
 
   &-dot,
   &-line {
@@ -30,6 +34,39 @@
       border-radius: $indicator-border-radius;
       background: $indicator-color;
       opacity: 1;
+    }
+  }
+
+  // 固定宽度
+  &-fixed-width {
+    // 两个页码的时候
+    .nut-indicator-dot {
+      width: 12px;
+      border-radius: $indicator-border-radius;
+
+      &-active {
+        width: 6px;
+      }
+    }
+  }
+
+  &-vertical {
+    // 竖向固定高度
+    &.nut-indicator-fixed-width {
+      justify-content: flex-start;
+      height: 21px;
+      width: auto;
+
+      // 竖向两个页码
+      .nut-indicator-dot {
+        width: 3px;
+        height: 12px;
+        border-radius: $indicator-border-radius;
+
+        &-active {
+          height: 6px;
+        }
+      }
     }
   }
 

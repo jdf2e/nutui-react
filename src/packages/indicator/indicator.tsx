@@ -63,25 +63,17 @@ export const Indicator: FunctionComponent<
     return childs
   }
   const renderLineElement = () => {
-    const childs: ReactNode[] = []
-    for (let item = 0; item < total; item++) {
-      childs.push(
-        item === 0 ? (
-          children || (
-            <div
-              key={item}
-              style={{
-                transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * 100}%)`,
-              }}
-              className={`${classPrefix}-line ${classPrefix}-line-active`}
-            />
-          )
-        ) : (
-          <div key={item} className={`${classPrefix}-line`} />
-        )
-      )
-    }
-    return childs
+    const trackWidth: number = 21
+    const sliderWidth: number = 6
+    const stride = (trackWidth - sliderWidth) / (total - 1)
+    return (
+      <div
+        style={{
+          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * stride}px)`,
+        }}
+        className={`${classPrefix}-line ${classPrefix}-line-active`}
+      />
+    )
   }
   const renderByType = (type: IndicatorType) => {
     switch (type) {
@@ -92,8 +84,18 @@ export const Indicator: FunctionComponent<
     }
   }
 
+  function maybeFixedWidth() {
+    if (total === 2 || type === 'slide') {
+      return `${classPrefix}-fixed-width`
+    }
+    return ''
+  }
+
   return (
-    <div className={classNames(classPrefix, classes, className)} {...rest}>
+    <div
+      className={classNames(classPrefix, classes, maybeFixedWidth(), className)}
+      {...rest}
+    >
       {renderByType(type)}
     </div>
   )
