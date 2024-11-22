@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { IconFontConfig, IconFont } from '@nutui/icons-react-taro'
+import * as iconfonts from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 import { camelCase } from '@/utils/camel-case'
+import { web } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   const generateCopyText = (name: string) => {
     return `<${camelCase(name, { pascalCase: true })} />`
   }
+
   const copyTag = (text: string) => {
     const input = document.createElement('input')
     document.body.appendChild(input)
@@ -25,11 +28,11 @@ const Demo6 = () => {
   return (
     <>
       <Toast visible={state.visible} content={state.content} type="text" />
-      {(IconFontConfig as any).data.map((item: any) => {
+      {(iconfonts.IconFontConfig as any).data.map((item: any) => {
         return (
           <Cell.Group key={item.name} title={item.name}>
             <Cell>
-              <ul
+              <View
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -39,7 +42,7 @@ const Demo6 = () => {
               >
                 {item.icons.map((icon: any) => {
                   return (
-                    <li
+                    <View
                       key={Math.random()}
                       onClick={() => {
                         copyTag(generateCopyText(icon))
@@ -59,11 +62,17 @@ const Demo6 = () => {
                         justifyContent: 'center',
                       }}
                     >
-                      <IconFont name={icon} />
-                    </li>
+                      {!web() ? (
+                        React.createElement(
+                          iconfonts[camelCase(icon, { pascalCase: true })] || ''
+                        )
+                      ) : (
+                        <iconfonts.IconFont name={icon} />
+                      )}
+                    </View>
                   )
                 })}
-              </ul>
+              </View>
             </Cell>
           </Cell.Group>
         )
