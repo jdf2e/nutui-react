@@ -71,7 +71,7 @@ import { Ellipsis } from '@nutui/nutui-react-taro'
 | collapseText | 收起操作的文案 | `string` | `-` |
 | symbol | 省略的符号 | `string` | `...` |
 | lineHeight | 容器的行高 | `string` \| `number` | `20` |
-| onClick | 文本点击是触发 | `() => void` | `-` |
+| onClick | 文本点击时触发 | `() => void` | `-` |
 | onChange | 点击展开收起时触发 | `(type: string) => void` | `-` |
 
 ## 主题定制

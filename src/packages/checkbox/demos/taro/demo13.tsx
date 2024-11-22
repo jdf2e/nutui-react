@@ -30,6 +30,7 @@ const Demo13 = () => {
           ref={checkboxgroup2Ref}
           direction="horizontal"
           defaultValue={checkboxgroup2}
+          style={{ width: '50%' }}
           onChange={(value) => {
             if (value.length === 4) {
               setIndeterminate(false)
@@ -42,10 +43,18 @@ const Demo13 = () => {
             }
           }}
         >
-          <Checkbox value="1">选项</Checkbox>
-          <Checkbox value="2">选项</Checkbox>
-          <Checkbox value="3">选项</Checkbox>
-          <Checkbox value="4">选项</Checkbox>
+          <Checkbox value="1" style={{ marginBottom: 10 }}>
+            选项
+          </Checkbox>
+          <Checkbox value="2" style={{ marginBottom: 10 }}>
+            选项
+          </Checkbox>
+          <Checkbox value="3" style={{ marginBottom: 10 }}>
+            选项
+          </Checkbox>
+          <Checkbox value="4" style={{ marginBottom: 10 }}>
+            选项
+          </Checkbox>
         </Checkbox.Group>
       </Cell>
     </>

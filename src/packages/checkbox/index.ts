@@ -1,4 +1,15 @@
-import { Checkbox } from './checkbox'
+import { Checkbox, CheckboxProps } from './checkbox'
+import { CheckboxGroup } from '../checkboxgroup/checkboxgroup'
 
 export type { CheckboxProps, CheckboxShape } from './checkbox'
-export default Checkbox
+
+type CompoundedComponent = React.FC<
+  Partial<CheckboxProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+> & {
+  Group: typeof CheckboxGroup
+}
+const InnerCheckbox = Checkbox as CompoundedComponent
+InnerCheckbox.Group = CheckboxGroup
+
+export default InnerCheckbox
