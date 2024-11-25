@@ -28,7 +28,6 @@ export interface ToastProps extends BasicComponent {
   lockScroll: boolean
   size: ToastSize
   icon: React.ReactNode
-  iconSize: string
   maskClassName?: string
   content: React.ReactNode
   contentClassName?: string
@@ -51,7 +50,6 @@ const defaultProps = {
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  iconSize: '20',
   content: '',
   msg: '',
   type: 'text',
@@ -78,7 +76,6 @@ export const Toast: FunctionComponent<
       position,
       contentStyle,
       icon,
-      iconSize,
       content,
       msg,
       duration,
@@ -165,12 +162,10 @@ export const Toast: FunctionComponent<
     }
 
     return {
-      success: (
-        <Success className="nut-toast-icon" color="#ffffff" size={iconSize} />
-      ),
-      fail: <Failure color="#ffffff" size={iconSize} />,
-      warn: <Tips color="#ffffff" size={iconSize} />,
-      loading: <Loading color="#ffffff" size={iconSize} />,
+      success: <Success />,
+      fail: <Failure />,
+      warn: <Tips />,
+      loading: <Loading />,
     }[type]
   }
 

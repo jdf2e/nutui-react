@@ -52,10 +52,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 30%;
-    max-width: 64%;
-    // min-width: 112px;
-    // max-width: 240px;
+    min-width: 96px;
+    max-width: 60%;
+    // max-width: 224px;
     font-size: $toast-text-font-size;
     text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
@@ -65,8 +64,8 @@
     color: $toast-font-color;
 
     &-descrption {
-      max-width: 95.7%;
-      // max-width: 359px;
+      max-width: 68.2%;
+      // max-width: 256px;
     }
 
     &-normal {
@@ -119,7 +118,7 @@
     line-height: 22px;
   }
 
-  &-icon {
+  .nut-icon {
     width: 24px;
     height: 24px;
     color: #ffffff;
