@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { IconFontConfig, IconFont } from '@nutui/icons-react-taro'
+import * as iconfonts from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 import { camelCase } from '@/utils/camel-case'
 
 const Demo7 = () => {
@@ -27,11 +28,11 @@ const Demo7 = () => {
   return (
     <>
       <Toast visible={state.visible} content={state.content} type="text" />
-      {(IconFontConfig as any).style.map((item: any) => {
+      {(iconfonts.IconFontConfig as any).style.map((item: any) => {
         return (
           <Cell.Group key={item.name} title={item.name}>
             <Cell>
-              <ul
+              <View
                 style={{
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -41,7 +42,7 @@ const Demo7 = () => {
               >
                 {item.icons.map((icon: any) => {
                   return (
-                    <li
+                    <View
                       key={icon.name}
                       onClick={() => {
                         copyTag(generateAMCopyText(icon))
@@ -61,14 +62,16 @@ const Demo7 = () => {
                         justifyContent: 'center',
                       }}
                     >
-                      <IconFont
-                        name={icon.name}
-                        className={`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}
-                      />
-                    </li>
+                      {React.createElement(
+                        iconfonts[camelCase(icon.name, { pascalCase: true })],
+                        {
+                          className: `nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`,
+                        }
+                      )}
+                    </View>
                   )
                 })}
-              </ul>
+              </View>
             </Cell>
           </Cell.Group>
         )
