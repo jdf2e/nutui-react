@@ -10,7 +10,7 @@ const Demo4 = () => {
       <CountDown
         endTime={stateRef.current.endTime}
         millisecond
-        format="HH:mm:ss:SS"
+        format="HH:mm:ss:S"
       />
     </Cell>
   )

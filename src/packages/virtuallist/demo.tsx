@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale'
 
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'

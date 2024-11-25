@@ -52,14 +52,14 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return currNumber.split('')
   }
 
-  const numerArr = useMemo(getShowNumber, [value, length, thousands])
+  const numberArr = useMemo(getShowNumber, [value, length, thousands])
 
   const setNumberTransform = useCallback(() => {
     if (countupRef.current) {
       const numberItems = countupRef.current.querySelectorAll(
         '.nut-countup-number'
       )
-      const numberFilterArr: Array<string> = numerArr.filter(
+      const numberFilterArr: Array<string> = numberArr.filter(
         (item: string) => !Number.isNaN(Number(item))
       )
       Object.keys(numberItems).forEach((key) => {
@@ -73,10 +73,10 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
         }
       })
     }
-  }, [numerArr])
+  }, [numberArr])
 
   const numberEaseStyle: CSSProperties = {
-    transition: `transform ${duration}s ease-in-out`,
+    transitionDuration: `${duration}s`,
   }
 
   useEffect(() => {
@@ -86,12 +86,12 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return () => {
       window.clearTimeout(timerRef.current)
     }
-  }, [numerArr, delay, setNumberTransform])
+  }, [numberArr, delay, setNumberTransform])
 
   return (
     <div className={`${classPrefix} ${className}`} ref={countupRef}>
       <ul className={`${classPrefix}-list`}>
-        {numerArr.map((item: string, idx: number) => {
+        {numberArr.map((item: string, idx: number) => {
           return (
             <li
               className={`${classPrefix}-listitem ${
@@ -107,7 +107,14 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
                   style={numberEaseStyle}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
-                    return <span key={subidx}>{number}</span>
+                    return (
+                      <span
+                        className={`${classPrefix}-number-text`}
+                        key={subidx}
+                      >
+                        {number}
+                      </span>
+                    )
                   })}
                 </span>
               ) : (

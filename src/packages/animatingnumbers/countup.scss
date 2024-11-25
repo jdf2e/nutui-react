@@ -9,9 +9,8 @@
   &-listitem {
     height: $countup-height;
     overflow: hidden;
-    color: $color-title;
-    font-size: $countup-base-size;
-    font-weight: $font-weight-bold;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 
     &-number {
       margin: 0 $countup-lr-margin;
@@ -26,6 +25,8 @@
     height: 80%;
     align-items: flex-end;
     color: $countup-bg-color;
+    font-size: $countup-base-size;
+    font-weight: $font-weight-bold;
   }
 
   &-number {
@@ -33,10 +34,15 @@
     flex-direction: column;
     align-items: center;
     width: $countup-width;
+    transition: transform 1s ease-in-out;
+    transform: translate(0, 0);
 
-    span {
+    &-text {
       height: $countup-height;
       line-height: $countup-height;
+      color: $countup-color;
+      font-size: $countup-base-size;
+      font-weight: $font-weight-bold;
     }
   }
 }

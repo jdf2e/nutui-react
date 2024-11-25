@@ -6,8 +6,8 @@ const Demo4 = () => {
     <Cell>
       <Progress percent={60} showText>
         <Image
-          width="30px"
-          height="30px"
+          width={20}
+          height={20}
           src="https://img12.360buyimg.com/imagetools/jfs/t1/229362/18/22746/11607/669f8bfeF5fcbeaab/d4162bbf29bb1b00.png"
         />
       </Progress>

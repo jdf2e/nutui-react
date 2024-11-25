@@ -290,12 +290,6 @@ async function buildCSS(p) {
       `import './style.css'`,
     )
 
-    // copy harmonycss
-    if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
-    }
-
     // 删除 import
     // 写入 style.scss
     const atRules = []

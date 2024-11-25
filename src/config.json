@@ -105,7 +105,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Icon",
           "type": "component",
           "cName": "图标",
@@ -353,7 +353,7 @@
           "author": "hx"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Tabbar",
           "type": "component",
           "cName": "标签栏",
@@ -364,7 +364,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TabbarItem",
           "sort": 2,
           "cName": "标签栏子组件",
@@ -459,7 +459,7 @@
           "author": "ailululu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Checkbox",
           "type": "component",
           "cName": "复选按钮",
@@ -470,7 +470,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CheckboxGroup",
           "type": "component",
           "cName": "多选按钮组",
@@ -621,7 +621,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Rate",
           "type": "component",
           "cName": "评分",
@@ -728,7 +728,7 @@
           "author": "lzz"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Dialog",
           "type": "component",
           "cName": "对话框",
@@ -903,7 +903,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
@@ -988,7 +988,8 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "v14": true
         },
         {
           "version": "2.0.0",
@@ -1002,7 +1003,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ImagePreview",
           "type": "component",
           "cName": "图片预览",
