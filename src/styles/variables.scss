@@ -896,15 +896,14 @@ $switch-inside-box-shadow: var(
   0px 0px 0px 1px rgba(0, 0, 0, 0.02)
 ) !default;
 /* #endif */
-$switch-inside-box-shadow: var(
-  --nutui-switch-inside-box-shadow,
-  0px 2px 6px 0px rgba(0, 0, 0, 0.1)
-) !default;
 $switch-label-text-color: var(
   --nutui-switch-label-text-color,
   $color-primary-text
 ) !default;
-$switch-label-font-size: var(--nutui--label-font-size, $font-size-s) !default;
+$switch-label-font-size: var(
+  --nutui-switch-label-font-size,
+  $font-size-s
+) !default;
 $switch-close-disabled-label-text-color: var(
   --nutui-switch-close-disabled-label-text-color,
   $color-text-disabled
