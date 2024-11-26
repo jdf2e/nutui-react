@@ -4,7 +4,7 @@ import { Rate, Space } from '@nutui/nutui-react-taro'
 const Demo1 = () => {
   return (
     <Space direction="vertical">
-      <Rate defaultValue={4.9} size="large" />
+      <Rate defaultValue={3} size="large" />
       <Rate defaultValue={3} />
       <Rate defaultValue={3} size="small" />
     </Space>

@@ -123,7 +123,7 @@ import { Rate } from '@nutui/nutui-react'
 | allowHalf | Half star or not | `boolean` | `false` |
 | readOnly | Read only | `boolean` | `false` |
 | disabled | Disable or not | `boolean` | `false` |
-| touchable | Enable touch to select ｜ `boolean` | `false` | `-` |
+| touchable | Enable touch to select ｜ `boolean` | `false` |
 | onChange | Event triggered when the current score is modified | `(value: number) => void` | `-` |
 | onTouchEnd | Event triggered when touch end | `(event: TouchEvent, value: number) => void` | `-` |
 
