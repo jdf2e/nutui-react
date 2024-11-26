@@ -4,18 +4,19 @@ import { View, ScrollView } from '@tarojs/components'
 import { Cell } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
-// import Demo1 from './demos/taro/demo1'
-// import Demo2 from './demos/taro/demo2'
-// import Demo3 from './demos/taro/demo3'
-// import Demo4 from './demos/taro/demo4'
-// import Demo5 from './demos/taro/demo5'
-// import Demo6 from './demos/taro/demo6'
-// import Demo7 from './demos/taro/demo7'
-// import Demo8 from './demos/taro/demo8'
-// import Demo9 from './demos/taro/demo9'
-// import Demo10 from './demos/taro/demo10'
-// import Demo11 from './demos/taro/demo11'
-// import Demo12 from './demos/taro/demo12'
+import { harmony } from '@/utils/platform-taro'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -73,10 +74,9 @@ const RateDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Cell style={cellStyle}>
-          TODO：icon 问题需先解决
-          {/* <Demo1 /> */}
+          <Demo1 />
         </Cell>
-        {/*
+
         <View className="h2">{translated.control}</View>
         <Cell style={cellStyle}>
           <Demo2 />
@@ -121,16 +121,19 @@ const RateDemo = () => {
         <Cell style={cellStyle}>
           <Demo10 />
         </Cell>
+        {harmony() ? null : (
+          <>
+            <View className="h2">{translated.touchable}</View>
+            <Cell style={cellStyle}>
+              <Demo11 />
+            </Cell>
 
-        <View className="h2">{translated.touchable}</View>
-        <Cell style={cellStyle}>
-          <Demo11 />
-        </Cell>
-
-        <View className="h2">{translated.touchend}</View>
-        <Cell style={cellStyle}>
-          <Demo12 />
-        </Cell> */}
+            <View className="h2">{translated.touchend}</View>
+            <Cell style={cellStyle}>
+              <Demo12 />
+            </Cell>
+          </>
+        )}
       </ScrollView>
     </>
   )

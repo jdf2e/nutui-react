@@ -229,7 +229,7 @@ $button-default-disabled-color: var(
 $button-default-padding: var(--nutui-button-default-padding, 0px 12px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
-  $font-size-base
+  $font-size-s
 ) !default;
 $button-default-font-weight: var(
   --nutui-button-default-font-weight,
@@ -240,14 +240,14 @@ $button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
 $button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 24px) !default;
 $button-xlarge-font-size: var(
   --nutui-button-xlarge-font-size,
-  $font-size-xxl
+  $font-size-xl
 ) !default;
 
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
 $button-large-padding: var(--nutui-button-large-padding, 0px 16px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $font-size-l
+  $font-size-base
 ) !default;
 $button-large-font-weight: var(
   --nutui-button-large-font-weight,
@@ -273,7 +273,7 @@ $button-mini-padding: var(--nutui-button-mini-padding, 0px 8px) !default;
 $button-mini-height: var(--nutui-button-mini-height, 24px) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
-  $font-size-s
+  $font-size-xs
 ) !default;
 $button-mini-border-radius: var(
   --nutui-button-mini-border-radius,
@@ -288,13 +288,12 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: $color-primary;
+$button-primary-background-color: linear-gradient(
+  90deg,
+  $color-primary-stop-1 0%,
+  $color-primary-stop-2 100%
+) !default;
 
-// linear-gradient(
-//   135deg,
-//   $color-primary-stop-1 0%,
-//   $color-primary-stop-2 100%
-// ) !default;
 $button-primary-disabled: var(
   --nutui-button-primary-disabled,
   $color-primary-disabled-special
@@ -368,6 +367,10 @@ $button-danger-disabled: var(
   $color-danger-disabled
 ) !default;
 
+$button-xlarge-text-icon-margin: var(
+  --nutui-button-xlarge-text-icon-margin,
+  6px
+) !default;
 $button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 
 // cell（✅）
@@ -775,41 +778,41 @@ $numberkeyboard-key-confirm-background-color: var(
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
 $countdown-color: var(--nutui-countdown-color, $color-primary) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, 10px) !default;
-$coutdown-font-weight: var(--nutui-countdown-font-weight, 400) !default;
-$countdown-height: var(--nutui-countdown-height, 14px) !default;
-$countdown-width: var(--nutui-countdown-width, 20px) !default;
-$countdown-number-padding: var(
-  --nutui-countdown-number-padding,
-  0 1px
+$countdown-font-size: var(--nutui-countdown-font-size, $font-size-xs) !default;
+$coutdown-font-weight: var(
+  --nutui-countdown-font-weight,
+  $font-weight
 ) !default;
+$countdown-height: var(--nutui-countdown-height, 16px) !default;
+$countdown-width: var(--nutui-countdown-width, 16px) !default;
+$countdown-number-padding: var(--nutui-countdown-number-padding, 0 0) !default;
 $countdown-number-border-radius: var(
   --nutui-countdown-number-border-radius,
-  2px
+  $radius-xxs
 ) !default;
-$countdown-number-margin: var(--nutui-countdown-number-margin, 0 2px) !default;
-$countdown-number-border-color: var(
-  --nutui-countdown-number-border-color,
-  $color-primary-light-pressed
-) !default;
+$countdown-number-margin: var(--nutui-countdown-number-margin, 0 1px) !default;
 $countdown-number-color: var(
   --nutui-countdown-number-color,
   $color-primary
 ) !default;
 $countdown-number-background-color: var(
   --nutui-countdown-number-background-color,
-  transparent
+  $color-background-overlay
 ) !default;
-$countdown-number-primary-border-color: var(
-  --nutui-countdown-number-primary-border-color,
-  $color-primary
+$countdown-number-border-color: var(
+  --nutui-countdown-number-border-color,
+  $color-primary-light-pressed
 ) !default;
 $countdown-number-primary-color: var(
   --nutui-countdown-number-primary-color,
-  #ffffff
+  $color-primary-text
 ) !default;
 $countdown-number-primary-background-color: var(
   --nutui-countdown-number-primary-background-color,
+  $color-primary
+) !default;
+$countdown-number-primary-border-color: var(
+  --nutui-countdown-number-primary-border-color,
   $color-primary
 ) !default;
 
@@ -1634,7 +1637,10 @@ $popover-menu-item-padding: var(
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
-$progress-color: var(--nutui-progress-color, #ff0f23) !default;
+$progress-color: var(
+  --nutui-progress-color,
+  $color-primary-gradient-1
+) !default;
 $progress-background: var(
   --nutui-progress-background,
   $color-background
@@ -1646,7 +1652,7 @@ $progress-text-color: var(
 ) !default;
 $progress-text-background: var(
   --nutui-progress-text-background,
-  #ff0f23
+  $color-primary-gradient-1
 ) !default;
 $progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
 $progress-text-font-size: var(--nutui-progress-text-font-size, 9px) !default;

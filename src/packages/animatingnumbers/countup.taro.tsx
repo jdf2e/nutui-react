@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -39,7 +39,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
-  const timerRef = useRef(0)
+  const timerRef = useRef()
   const numbers = Array.from({ length: 10 }, (v, i) => i)
 
   const getShowNumber = useCallback(() => {
@@ -54,65 +54,67 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     return currNumber.split('')
   }, [length, thousands, value])
 
-  const [numerArr, setNumerArr] = useState<string[]>([])
-  const [transformArr, setTransformArr] = useState<Array<string>>([])
+  const [numberArr, setNumberArr] = useState<string[]>([])
+  const [transformArr, setTransformArr] = useState<CSSProperties[]>([])
   const isLoaded = useRef(false)
 
   const setNumberTransform = useCallback(() => {
-    if (countupRef.current && numerArr.length) {
+    if (countupRef.current && numberArr.length) {
       createSelectorQuery()
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
-          const transformArrCache: string[] = []
+          const transformArrCache: CSSProperties[] = []
           Object.keys(numberItems).forEach((key: any) => {
             const elem = numberItems[Number(key)] as HTMLElement
-            const idx = Number(numerArr[Number(key)])
-            if (elem) {
+            const idx = Number(numberArr[Number(key)])
+            const enabled =
+              elem && typeof idx === 'number' && !Number.isNaN(idx)
+            if (enabled) {
               // 计算规则：父元素和实际列表高度的百分比，分割成20等份
               const transform =
                 idx || idx === 0
                   ? `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
                   : ''
-              transformArrCache.push(transform)
+              transformArrCache.push({
+                transitionDuration: `${duration}s`,
+                transform,
+              } as CSSProperties)
             }
           })
           setTransformArr([...transformArrCache])
         })
         .exec()
     }
-  }, [numerArr])
-
-  const numberEaseStyle = (idx: number) => {
-    return {
-      transition: `transform ${duration}s ease-in-out`,
-      transform: transformArr[idx] ? transformArr[idx] : null,
-    } as CSSProperties
-  }
+  }, [numberArr])
 
   useEffect(() => {
-    setNumberTransform()
-  }, [numerArr, setNumberTransform])
-
-  useEffect(() => {
-    if (!isLoaded.current) {
-      isLoaded.current = true
-      timerRef.current = window.setTimeout(() => {
-        setNumerArr(getShowNumber())
-      }, delay)
-    } else {
-      setNumerArr(getShowNumber())
+    if (numberArr.length) {
+      if (!isLoaded.current) {
+        isLoaded.current = true
+        // @ts-ignore
+        timerRef.current = setTimeout(() => {
+          setNumberTransform()
+        }, delay)
+      } else {
+        setNumberTransform()
+      }
     }
     return () => {
-      window.clearTimeout(timerRef.current)
+      clearTimeout(timerRef.current)
+      isLoaded.current = false
     }
-  }, [value, delay, getShowNumber])
+  }, [numberArr, delay, setNumberTransform])
+
+  useEffect(() => {
+    setNumberArr(getShowNumber())
+  }, [value, getShowNumber])
 
   return (
-    <View className={`${classPrefix} ${className}`} ref={countupRef}>
-      <ul className={`${classPrefix}-list`}>
-        {numerArr.map((item: string, idx: number) => {
+    <View className={`${classPrefix} ${className}`} ref={countupRef} {...rest}>
+      <View className={`${classPrefix}-list`}>
+        {numberArr.map((item: string, idx: number) => {
           return (
-            <li
+            <View
               className={`${classPrefix}-listitem ${
                 !Number.isNaN(Number(item))
                   ? `${classPrefix}-listitem-number`
@@ -121,21 +123,28 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
               key={idx}
             >
               {!Number.isNaN(Number(item)) ? (
-                <span
+                <View
                   className={`${classPrefix}-number`}
-                  style={numberEaseStyle(idx)}
+                  style={transformArr?.[idx]}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
-                    return <span key={subidx}>{number}</span>
+                    return (
+                      <Text
+                        className={`${classPrefix}-number-text`}
+                        key={subidx}
+                      >
+                        {number}
+                      </Text>
+                    )
                   })}
-                </span>
+                </View>
               ) : (
-                <span className={`${classPrefix}-separator`}>{item}</span>
+                <View className={`${classPrefix}-separator`}>{item}</View>
               )}
-            </li>
+            </View>
           )
         })}
-      </ul>
+      </View>
     </View>
   )
 }

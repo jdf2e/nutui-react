@@ -18,10 +18,10 @@
     display: flex;
     flex-shrink: 0;
     position: relative;
-    margin-right: $rate-item-margin;
+    margin-left: $rate-item-margin;
 
-    &:last-child {
-      margin-right: 0;
+    &:first-child {
+      margin-left: 0;
     }
 
     &-half {
@@ -39,11 +39,16 @@
 
     &-icon {
       display: flex;
-      color: $rate-icon-color;
       cursor: pointer;
 
+      .nut-icon {
+        color: $rate-icon-color;
+      }
+
       &-disabled {
-        color: $rate-icon-inactive-color;
+        .nut-icon {
+          color: $rate-icon-inactive-color;
+        }
       }
 
       &.nut-rate-item-icon.nut-rate-item-icon-half {
