@@ -1,3 +1,4 @@
+@import '@/styles/mixins/font.scss';
 .nut-rate {
   display: flex;
   touch-action: pan-x;
@@ -16,13 +17,9 @@
 
   &-item {
     display: flex;
+    align-items: center;
     flex-shrink: 0;
     position: relative;
-    margin-left: $rate-item-margin;
-
-    &:first-child {
-      margin-left: 0;
-    }
 
     &-half {
       position: absolute;
@@ -37,8 +34,41 @@
       }
     }
 
+    &-normal {
+      margin-left: $rate-item-margin;
+      .nut-icon {
+        height: $rate-icon-size;
+        width: $rate-icon-size;
+      }
+    }
+
+    &-large {
+      margin-left: calc($rate-item-margin * 2);
+      .nut-icon {
+        height: calc($rate-font-size + 8px);
+        width: calc($rate-icon-size + 8px);
+      }
+    }
+
+    &-small {
+      margin-left: calc($rate-item-margin / 2);
+      .nut-icon {
+        height: calc($rate-icon-size - 4px);
+        width: calc($rate-icon-size - 4px);
+      }
+    }
+
+    &-normal,
+    &-large,
+    &-small {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
     &-icon {
       display: flex;
+      align-items: center;
       cursor: pointer;
 
       .nut-icon {
@@ -66,18 +96,58 @@
       }
     }
   }
+
+  &-score {
+    display: inline-flex;
+    align-items: center;
+    padding-left: $rate-item-margin;
+    color: $rate-font-color;
+    font-family: 'JDZhengHei-Regular';
+    line-height: 1;
+
+    &-normal {
+      font-size: $rate-font-size;
+    }
+
+    &-large {
+      font-size: calc($rate-font-size + 6px);
+      padding-left: calc($rate-item-margin * 2);
+    }
+
+    &-small {
+      font-size: calc($rate-font-size - 2px);
+    }
+
+    &-disabled {
+      color: $rate-icon-inactive-color;
+    }
+  }
 }
 
 [dir='rtl'] .nut-rate,
 .nut-rtl .nut-rate {
   &-item {
-    margin-right: 0;
-    margin-left: $rate-item-margin;
+    margin-left: 0;
+    &:first-child {
+      margin-right: 0;
+    }
+
+    &-normal {
+      margin-right: $rate-item-margin;
+    }
+
+    &-large {
+      margin-right: calc($rate-item-margin * 2);
+    }
+
+    &-small {
+      margin-right: calc($rate-item-margin / 2);
+    }
 
     &:last-child {
-      margin-right: 0;
       margin-left: 0;
     }
+
     &-half {
       left: auto;
       right: 0;
@@ -93,6 +163,14 @@
         left: auto;
         right: auto;
       }
+    }
+  }
+
+  &-score {
+    padding-right: $rate-item-margin;
+    padding-left: 0;
+    &-large {
+      padding-right: calc($rate-item-margin * 2);
     }
   }
 }

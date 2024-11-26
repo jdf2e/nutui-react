@@ -18,6 +18,11 @@ $color-primary-gradient-1: linear-gradient(
   $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
+$color-primary-icon: var(--nutui-color-primary-icon, #ff3333) !default;
+$color-primary-icon-disabled: var(
+  --nutui-color-icon-disabled,
+  #dadce0
+) !default;
 
 // 默认色
 $color-default: var(--nutui-color-default) !default;
@@ -1099,12 +1104,15 @@ $notify-warning-background-color: var(
 ) !default;
 
 // rate（✅）
-$rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
-$rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
+$rate-item-margin: var(--nutui-rate-item-margin, 4px) !default;
+$rate-icon-color: var(--nutui-rate-icon-color, $color-primary-icon) !default;
 $rate-icon-inactive-color: var(
   --nutui-rate-icon-inactive-color,
-  $color-text-disabled
+  $color-primary-icon-disabled
 ) !default;
+$rate-icon-size: var(--nutui-rate-icon-size, 12px) !default;
+$rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
+$rate-font-size: var(--nutui-rate-font-size, 12px) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;

@@ -112,6 +112,8 @@ import { Rate } from '@nutui/nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
+| showScore | 展示评分 | `boolean` | `true` |
 | defaultValue | 非受控的 star 默认值 | `number` | `0` |
 | value | 受控的 star 数值 | `number` | `0` |
 | count | star 总数 | `number` | `5` |
@@ -121,7 +123,7 @@ import { Rate } from '@nutui/nutui-react-taro'
 | allowHalf | 是否半星 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| touchable | 是否允许滑动选择 ｜ `boolean` | `false` |
+| touchable | 是否允许滑动选择 ｜ `boolean` | `false` | `-` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
 | onTouchEnd | touch 滑动结束时触发 | `(event: TouchEvent, value: number) => void` | `-` |
 
@@ -133,6 +135,9 @@ import { Rate } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-rate-item-margin | 间距 | `14px` |
-| \--nutui-rate-icon-color | icon 激活颜色 | `$color-primary` |
-| \--nutui-rate-icon-inactive-color | icon 未激活颜色 | `$color-text-disabled` |
+| \--nutui-rate-item-margin | 间距 | `4px` |
+| \--nutui-rate-icon-color | icon 激活颜色 | `$color-primary-icon` |
+| \--nutui-rate-icon-inactive-color | icon 未激活颜色 | `$color-primary-icon-disabled` |
+| \--nutui-rate-icon-size | icon 尺寸 | `12px` |
+| \--nutui-rate-font-color | 评分字体颜色 | `$color-primary-icon` |
+| \--nutui-rate-font-size | 评分字体大小 | `12px` |
