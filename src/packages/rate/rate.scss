@@ -50,7 +50,7 @@
     }
 
     &-small {
-      margin-left: calc($rate-item-margin / 2);
+      margin-left: calc($rate-item-margin - 2px);
       .nut-icon {
         height: calc($rate-icon-size - 4px);
         width: calc($rate-icon-size - 4px);
@@ -99,12 +99,12 @@
   &-score {
     display: inline-flex;
     align-items: center;
-    padding-left: $rate-item-margin;
     color: $rate-font-color;
     font-family: 'JDZhengHei-Regular';
     line-height: 1;
 
     &-normal {
+      padding-left: $rate-item-margin;
       font-size: $rate-font-size;
     }
 
@@ -114,6 +114,7 @@
     }
 
     &-small {
+      padding-left: calc($rate-item-margin - 2px);
       font-size: calc($rate-font-size - 2px);
     }
 
@@ -140,7 +141,7 @@
     }
 
     &-small {
-      margin-right: calc($rate-item-margin / 2);
+      margin-right: calc($rate-item-margin - 2px);
     }
 
     &:last-child {
@@ -166,10 +167,18 @@
   }
 
   &-score {
-    padding-right: $rate-item-margin;
     padding-left: 0;
+
     &-large {
       padding-right: calc($rate-item-margin * 2);
+    }
+
+    &-normal {
+      padding-right: $rate-item-margin;
+    }
+
+    &-small {
+      padding-right: calc($rate-item-margin - 2px);
     }
   }
 }
