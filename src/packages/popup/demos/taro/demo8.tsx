@@ -20,6 +20,7 @@ const Demo8 = () => {
         onOpen={() => {
           // @ts-ignore
           Taro.getEnv().toLowerCase() === 'weapp' &&
+            // @ts-ignore
             wx.setPageStyle({
               complete: console.log,
               style: { overflow: 'hidden' },
