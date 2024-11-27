@@ -80,6 +80,8 @@ import { Popup } from '@nutui/nutui-react-taro'
 
 如果需要内容支持溢出滚动，则需要包裹一层 ScrollView 组件。
 
+如果 page 可以滚动，可以在 popup 的 onOpen 中通过环境判断来动态设置 page 标签的样式。
+
 :::demo
 
 <CodeBlock src='taro/demo8.tsx'></CodeBlock>

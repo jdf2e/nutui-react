@@ -13,7 +13,19 @@ const Demo8 = () => {
           setScrollPenetration(true)
         }}
       />
-      <Popup visible={scrollPenetration} position="bottom" lockScroll>
+      <Popup
+        visible={scrollPenetration}
+        position="bottom"
+        lockScroll
+        onOpen={() => {
+          // @ts-ignore
+          Taro.getEnv().toLowerCase() === 'weapp' &&
+            wx.setPageStyle({
+              complete: console.log,
+              style: { overflow: 'hidden' },
+            })
+        }}
+      >
         <ScrollView scrollY style={{ height: '200px' }}>
           {Array.from({ length: 200 })
             .fill('')
