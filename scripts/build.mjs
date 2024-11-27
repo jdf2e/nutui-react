@@ -200,13 +200,13 @@ async function copyStyles() {
   let content = [
     `@import '../theme-default.scss';`,
     `@import '../theme-dark.scss';`,
-    `@import '../font-face.scss';`,
+    `@import '../jd-font';`,
   ]
   const projectID = process.env.VITE_APP_PROJECT_ID
   if (projectID) {
     content = [
       `@import '../theme-${projectID}.scss';`,
-      `@import '../font-face.scss';`,
+      `@import '../jd-font';`,
     ]
   }
 
