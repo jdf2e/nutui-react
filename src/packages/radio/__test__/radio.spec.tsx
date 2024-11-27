@@ -16,16 +16,12 @@ describe('radio', () => {
 
   test('radio disable', () => {
     const { container } = render(<Radio disabled>Test Case</Radio>)
-    expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-radio-icon-disabled'
-    )
+    expect(container.querySelector('.nut-radio-self-disabled')).toBeTruthy()
   })
 
   test('radio checked', () => {
     const { container } = render(<Radio checked>Test Case</Radio>)
-    expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-icon-CheckChecked'
-    )
+    expect(container.querySelector('.nut-radio-self-checked')).toBeTruthy()
   })
 
   test('radio custom icon', () => {
