@@ -68,6 +68,7 @@ async function buildES(p) {
     [
       'src/packages/**/*.taro.{ts,tsx}',
       'src/packages/**/types.ts',
+      'src/packages/**/icon.tsx',
       'src/packages/**/context.ts',
       'src/packages/**/utils.ts',
       'src/utils/**/*.{ts,tsx}',
