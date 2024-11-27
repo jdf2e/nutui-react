@@ -1,11 +1,11 @@
 import React, { ReactNode, useContext, useEffect, useState, FC } from 'react'
-import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
 import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
+import Icon from '@/packages/checkbox/icon'
 
 export type CheckboxShape = 'button' | 'round'
 
@@ -97,31 +97,31 @@ export const Checkbox: FC<
   const renderIcon = () => {
     if (innerDisabled) {
       if (innerIndeterminate) {
-        return <CheckDisabled className={color()} />
+        return <Icon tag={View} name="disabled" />
       }
       if (innerChecked) {
-        return <Checked className={color()} />
+        return <Icon tag={View} name="checked-disabled" />
       }
-      return <CheckDisabled className={color()} />
+      return <Icon tag={View} name="disabled" />
     }
     if (!innerChecked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal className={color()} />
+        <Icon tag={View} name="normal" />
       )
     }
     if (innerIndeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled className={color()} />
+        <Icon tag={View} name="disabled" />
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked className={color()} />
+      <Icon tag={View} name="checked" />
     )
   }
   const color = () => {

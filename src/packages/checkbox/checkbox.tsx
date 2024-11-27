@@ -5,12 +5,12 @@ import React, {
   useEffect,
   useState,
 } from 'react'
-import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
 import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
+import Icon from '@/packages/checkbox/icon'
 
 export type CheckboxShape = 'button' | 'round'
 
@@ -102,51 +102,28 @@ export const Checkbox: FunctionComponent<
   const renderIcon = () => {
     if (innerDisabled) {
       if (innerIndeterminate) {
-        return <CheckDisabled className={color()} />
+        return <Icon name="disabled" />
       }
       if (innerChecked) {
-        return <Checked className={color()} />
+        return <Icon name="checked-disabled" />
       }
-      return <CheckDisabled className={color()} />
+      return <Icon name="disabled" />
     }
     if (!innerChecked) {
-      return React.isValidElement(icon) ? (
-        icon
-      ) : (
-        <CheckNormal className={color()} />
-      )
+      return React.isValidElement(icon) ? icon : <Icon name="normal" />
     }
     if (innerIndeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled className={color()} />
+        <Icon name="disabled" />
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked className={color()} />
+      <Icon name="checked" />
     )
-  }
-  const color = () => {
-    const cls = `${classPrefix}-icon `
-    if (innerDisabled) {
-      if (innerChecked && !innerIndeterminate) {
-        return `${cls}${classPrefix}-icon-checked ${classPrefix}-icon-disabled`
-      }
-      if (innerChecked && innerIndeterminate) {
-        return `${cls}${classPrefix}-icon-indeterminate ${classPrefix}-icon-disabled`
-      }
-      return `${cls}${classPrefix}-icon-disabled`
-    }
-    if (innerChecked) {
-      if (innerIndeterminate) {
-        return `${cls}${classPrefix}-icon-indeterminate`
-      }
-      return `${cls}${classPrefix}-icon-checked`
-    }
-    return cls
   }
   const renderLabel = () => {
     return (

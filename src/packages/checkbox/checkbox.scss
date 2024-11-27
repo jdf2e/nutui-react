@@ -1,44 +1,80 @@
 @import '../checkboxgroup/checkboxgroup.scss';
 
+.nut-checkbox-self {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  &-normal {
+    border: 0.5px solid $color-text-disabled;
+    background: $color-background-overlay;
+  }
+
+  &-checked,
+  &-disabled,
+  &-checked-disabled {
+    &:after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: ' ';
+      background: $color-primary-text;
+    }
+  }
+
+  &-checked {
+    background: linear-gradient(
+      90deg,
+      $color-primary-stop-1 0%,
+      $color-primary-stop-2 100%
+    );
+    box-shadow: 0px 2px 4px 0px rgba(255, 15, 35, 0.2);
+
+    &:after {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+
+  &-disabled {
+    background: $color-text-disabled;
+
+    &:after {
+      width: 8px;
+      height: 1.5px;
+    }
+  }
+
+  &-checked-disabled {
+    background: $color-primary-disabled-special;
+
+    &:after {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+}
+
 .nut-checkbox {
   display: flex;
   align-items: center;
-
-  &-icon {
-    color: $color-text-disabled;
-    font-size: $checkbox-icon-font-size;
-  }
-
-  &-icon-checked {
-    color: $color-primary;
-    transition-duration: 0.3s;
-    transition-property: color, border-color, background-color;
-
-    &.nut-checkbox-icon-disabled {
-      color: $color-primary-disabled-special;
-    }
-  }
 
   &-label {
     margin-left: $checkbox-label-margin-left;
     font-size: $checkbox-label-font-size;
     color: $checkbox-label-color;
+    white-space: nowrap;
 
     &-disabled {
       color: $color-text-disabled;
     }
-  }
-
-  &-icon-indeterminate {
-    color: $color-primary;
-
-    &.nut-checkbox-icon-disabled {
-      color: $color-primary-disabled-special;
-    }
-  }
-
-  &-icon-disabled {
-    color: $color-text-disabled;
   }
 
   &-reverse {
