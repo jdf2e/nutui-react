@@ -264,7 +264,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -1198,7 +1198,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeSelect",
           "type": "component",
           "cName": "配送时间",
