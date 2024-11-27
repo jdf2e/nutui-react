@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import { useState } from 'react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import { Checklist } from '@nutui/icons-react'
 import Radio from '@/packages/radio'
 import RadioGroup from '@/packages/radiogroup'
@@ -22,6 +22,17 @@ describe('radio', () => {
   test('radio checked', () => {
     const { container } = render(<Radio checked>Test Case</Radio>)
     expect(container.querySelector('.nut-radio-self-checked')).toBeTruthy()
+  })
+
+  test('radio checked-disabled', () => {
+    const { container } = render(
+      <Radio checked disabled>
+        Test Case
+      </Radio>
+    )
+    expect(
+      container.querySelector('.nut-radio-self-checked-disabled')
+    ).toBeTruthy()
   })
 
   test('radio custom icon', () => {
