@@ -53,7 +53,6 @@ const Demo1 = () => {
         value={new Date(value)}
         showChinese
         onClose={() => setShow2(false)}
-        threeDimensional={false}
         onChange={(options, values) => change(options, values)}
       />
     </>

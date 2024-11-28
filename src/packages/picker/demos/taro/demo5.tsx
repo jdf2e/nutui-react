@@ -52,7 +52,6 @@ const Demo5 = () => {
         options={listData1}
         onConfirm={(list, values) => confirmPicker(list, values)}
         defaultValue={[2]}
-        threeDimensional={false}
         duration={1000}
         onClose={() => setIsVisible(false)}
         onChange={changePicker}

@@ -12,7 +12,6 @@ test('Show Chinese', async () => {
       visible
       defaultValue={new Date(currentYear - 10, 0, 1)}
       showChinese
-      threeDimensional={false}
       onConfirm={(options) => confirm(options)}
     />
   )
@@ -35,7 +34,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
     />
   )
@@ -55,7 +53,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
     />
   )
@@ -67,7 +64,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
     />
   )
@@ -79,7 +75,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
     />
   )
@@ -91,7 +86,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
     />
   )
@@ -124,7 +118,6 @@ test('Min date & Max date', async () => {
       defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
-      threeDimensional={false}
       onConfirm={confirm}
       formatter={formatter}
     />

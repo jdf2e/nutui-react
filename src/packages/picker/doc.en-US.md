@@ -42,16 +42,6 @@ import { Picker } from '@nutui/nutui-react'
 
 :::
 
-### Tile
-
-Cancel the 3D display effect by setting `threeDimensional`, and control the duration of fast scrolling by setting `duration`.
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
 ### Cascade
 
 :::demo
@@ -87,7 +77,6 @@ Cancel the 3D display effect by setting `threeDimensional`, and control the dura
 | options | Columns data | `Array` | `[]` |
 | value | Controlled Value | `Array` | `[]` |
 | defaultValue | Default Index | `Array` | `[]` |
-| threeDimensional | Turn on 3D effects | `boolean` | `true` |
 | duration | move animation duration, ms | `string` \| `number` | `1000` |
 | popupProps | popup props | `object` | `-` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |

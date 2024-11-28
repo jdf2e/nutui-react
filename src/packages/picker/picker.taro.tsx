@@ -28,7 +28,6 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   options: (PickerOption | PickerOption[])[]
   value?: (number | string)[]
   defaultValue?: (number | string)[]
-  threeDimensional?: boolean
   duration: number | string
   closeOnOverlayClick: boolean
   popupProps: Partial<
@@ -63,7 +62,6 @@ const defaultProps = {
   options: [],
   value: [],
   defaultValue: [],
-  threeDimensional: true,
   closeOnOverlayClick: true,
   duration: 1000,
 } as unknown as PickerProps
@@ -82,7 +80,6 @@ const InternalPicker: ForwardRefRenderFunction<
     defaultValue = [],
     className,
     style,
-    threeDimensional,
     duration,
     onConfirm,
     onCancel,
@@ -397,7 +394,6 @@ const InternalPicker: ForwardRefRenderFunction<
                     ref={setRefs(index)}
                     defaultValue={innerValue?.[index]}
                     options={item}
-                    threeDimensional={threeDimensional}
                     chooseItem={(value: PickerOption, index: number) =>
                       chooseItem(value, index)
                     }

@@ -1,9 +1,9 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   ForwardRefRenderFunction,
+  useEffect,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import { View } from '@tarojs/components'
 import { PickerOption } from './types'
@@ -15,7 +15,6 @@ interface PickerPanelProps {
   keyIndex?: number
   defaultValue?: string | number
   options?: PickerOption[]
-  threeDimensional: boolean
   duration: number | string
   itemShow: boolean
   chooseItem?: (val: PickerOption, idx: number) => void
@@ -29,7 +28,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     keyIndex = 0,
     defaultValue,
     options = [],
-    threeDimensional = true,
     duration = 1000,
     itemShow = false,
     chooseItem,
@@ -269,46 +267,24 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       <View
         className="nut-picker-roller"
         ref={rollerRef}
-        style={threeDimensional ? touchRollerStyle() : touchTileStyle()}
+        style={touchTileStyle()}
         onTransitionEnd={stopMomentum}
       >
-        {/* 3D 效果 */}
-        {threeDimensional &&
-          options.map((item, index) => {
-            return (
-              <View
-                className={`nut-picker-roller-item ${
-                  isHidden(index + 1) && 'nut-picker-roller-item-hidden'
-                }`}
-                style={{
-                  transform: `rotate3d(1, 0, 0, ${
-                    -rotation * (index + 1)
-                  }deg) translate3d(0px, 0px, 104px)`,
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
-                }}
-                key={item.value ? item.value : index}
-              >
-                <>{item.text}</>
-              </View>
-            )
-          })}
         {/* 平铺 */}
-        {!threeDimensional &&
-          options.map((item, index) => {
-            return (
-              <View
-                className="nut-picker-roller-item-title"
-                key={item.value ? item.value : index}
-                style={{
-                  height: `${lineSpacing.current}px`,
-                  lineHeight: `${lineSpacing.current}px`,
-                }}
-              >
-                <>{item.text}</>
-              </View>
-            )
-          })}
+        {options.map((item, index) => {
+          return (
+            <View
+              className="nut-picker-roller-item-title"
+              key={item.value ? item.value : index}
+              style={{
+                height: `${lineSpacing.current}px`,
+                lineHeight: `${lineSpacing.current}px`,
+              }}
+            >
+              <>{item.text}</>
+            </View>
+          )
+        })}
       </View>
       <View className="nut-picker-mask" />
       <View className="nut-picker-indicator" ref={listRef} />

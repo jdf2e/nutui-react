@@ -100,7 +100,6 @@ DatetimePicker 通過 type 屬性來定義需要選擇的時間類型。將 type
 | formatter | 選項格式化函數 | `(type: string, option: PickerOption) => PickerOption` | `-` |
 | pickerProps | 透传 picker 屬性 | `object` | `-` |
 | filter | 選項過濾函數 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
-| threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | onConfirm | 點擊確定按鈕時觸發 | `(options, value) => void` | `-` |
 | onCancel | 點擊取消按鈕時觸發 | `() => void` | `-` |
 | onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |

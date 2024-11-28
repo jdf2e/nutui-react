@@ -24,12 +24,10 @@ export interface DatePickerProps extends BasicComponent {
   minuteStep: number
   startDate: Date
   endDate: Date
-  threeDimensional: boolean
   pickerProps: Partial<
     Omit<
       PickerProps,
       | 'defaultValue'
-      | 'threeDimensional'
       | 'title'
       | 'value'
       | 'onConfirm'
@@ -60,7 +58,6 @@ const defaultProps = {
   title: '',
   type: 'date',
   showChinese: false,
-  threeDimensional: true,
   minuteStep: 1,
   startDate: new Date(currentYear - 10, 0, 1),
   endDate: new Date(currentYear + 10, 11, 31),
@@ -86,7 +83,6 @@ export const DatePicker: FunctionComponent<
     onConfirm,
     filter,
     onChange,
-    threeDimensional,
     className,
     style,
     ...rest
@@ -420,7 +416,6 @@ export const DatePicker: FunctionComponent<
             value: (number | string)[],
             index: number
           ) => handlePickerChange(options, value, index)}
-          threeDimensional={threeDimensional}
         />
       )}
     </View>

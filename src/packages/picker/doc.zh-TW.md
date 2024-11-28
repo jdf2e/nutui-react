@@ -42,16 +42,6 @@ import { Picker } from '@nutui/nutui-react'
 
 :::
 
-### 平鋪展示
-
-通過設置 `threeDimensional` 取消 3D 展示效果，並且通過設置 `duration` 可以控製快速滾動的時長。
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
 ### 多級聯動
 
 :::demo
@@ -87,7 +77,6 @@ import { Picker } from '@nutui/nutui-react'
 | options | 列表數據 | `Array` | `[]` |
 | value | 選中值，受控 | `Array` | `[]` |
 | defaultValue | 默認選中 | `Array` | `[]` |
-| threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
 | popupProps | 透傳popup屬性 | `object` | `-` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |

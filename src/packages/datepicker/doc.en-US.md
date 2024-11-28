@@ -90,7 +90,6 @@ import { DatePicker } from '@nutui/nutui'
 | pickerProps | picker props | `object` | `-` |
 | formatter | Option text formatter | `(type: string, option: PickerOption) => PickerOption` | `-` |
 | filter | Option filter | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
-| threeDimensional | Turn on 3D effects | `boolean` | `true` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
 | onCancel | Emitted when click cancel button. | `() => void` | `-` |
 | onClose | Emitted when click confirm and cancel button. | `(options, value) => void` | `-` |

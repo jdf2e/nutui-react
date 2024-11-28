@@ -1,9 +1,9 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   ForwardRefRenderFunction,
+  useEffect,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import { PickerOption } from './types'
 import { useTouch } from '@/utils/use-touch'
@@ -13,7 +13,6 @@ interface PickerPanelProps {
   keyIndex?: number
   defaultValue?: string | number
   options?: PickerOption[]
-  threeDimensional: boolean
   duration: number | string
   chooseItem?: (val: PickerOption, idx: number) => void
 }
@@ -26,7 +25,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     keyIndex = 0,
     defaultValue,
     options = [],
-    threeDimensional = true,
     duration = 1000,
     chooseItem,
   } = props
@@ -258,40 +256,20 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       <div
         className="nut-picker-roller"
         ref={rollerRef}
-        style={threeDimensional ? touchRollerStyle() : touchTileStyle()}
+        style={touchTileStyle()}
         onTransitionEnd={stopMomentum}
       >
-        {/* 3D 效果 */}
-        {threeDimensional &&
-          options.map((item, index) => {
-            return (
-              <div
-                className={`nut-picker-roller-item ${
-                  isHidden(index + 1) && 'nut-picker-roller-item-hidden'
-                }`}
-                style={{
-                  transform: `rotate3d(1, 0, 0, ${
-                    -rotation * (index + 1)
-                  }deg) translate3d(0px, 0px, 104px)`,
-                }}
-                key={item.value ? item.value : index}
-              >
-                <>{item.text}</>
-              </div>
-            )
-          })}
         {/* 平铺 */}
-        {!threeDimensional &&
-          options.map((item, index) => {
-            return (
-              <div
-                className="nut-picker-roller-item-title"
-                key={item.value ? item.value : index}
-              >
-                <>{item.text}</>
-              </div>
-            )
-          })}
+        {options.map((item, index) => {
+          return (
+            <div
+              className="nut-picker-roller-item-title"
+              key={item.value ? item.value : index}
+            >
+              <>{item.text}</>
+            </div>
+          )
+        })}
       </div>
       <div className="nut-picker-mask" />
       <div className="nut-picker-indicator" />
