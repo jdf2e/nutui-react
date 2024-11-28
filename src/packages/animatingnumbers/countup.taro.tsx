@@ -91,6 +91,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     if (numberArr.length) {
       if (!isLoaded.current) {
         isLoaded.current = true
+        // @ts-ignore
         timerRef.current = setTimeout(() => {
           setNumberTransform()
         }, delay)

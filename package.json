@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.4",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -66,7 +66,7 @@
     "dev:taro:jdharmony": "pnpm run clone:jdharmony  && pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
     "dev:taro:jdharmonycpp": "pnpm run clone:jdharmony cpp && pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdharmonycpp",
     "dev:taro:jdhybrid": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev:jdhybrid",
-    "dev:taro:jdrn": "pnpm run clone:rn && pnpm --dir ./packages/nutui-taro-demo dev:jdrn & pnpm run gulp:watch",
+    "dev:taro:jdrn": "pnpm run clone:rn && pnpm --dir ./packages/nutui-taro-demo dev:jdrn",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
     "dev:taro:weapp:jmapp": "pnpm --dir ./packages/nutui-taro-demo && npm run dev:weapp:jmapp",
     "build": "npm run checked && node scripts/build.mjs",
@@ -83,7 +83,6 @@
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
-    "gulp:watch": "gulp watch --environment",
     "lint": "eslint ./src/packages/*/",
     "lint:fix": "eslint --fix ./src/packages",
     "postpublish": "node scripts/postpublish.js",
@@ -104,7 +103,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.9",
     "@nutui/icons-react": "^1.0.5",
-    "@nutui/icons-react-taro": "^2.0.0",
+    "@nutui/icons-react-taro": "^2.0.1",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
