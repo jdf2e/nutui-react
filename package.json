@@ -138,7 +138,7 @@
     "@types/loadable__component": "^5.13.8",
     "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.kebabcase": "^4.1.9",
-    "@types/node": "^20.11.19",
+    "@types/node": "^22.10.1",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
