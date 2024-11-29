@@ -3,7 +3,7 @@ name: sync to docs-taro
 on:
   push:
     branches:
-      - V3.0
+      - feat_v3.x
     paths:
       - '.github/workflows/**'
       - 'src/**'
