@@ -9,7 +9,10 @@ test('activeText && checked && onChange && inactiveText && className && style te
     inactiveText: '关',
     checked: false,
     className: 'switch-test',
-    style: { fontSize: '12px', '--nutui-switch-open-background-color': 'blue' },
+    style: {
+      fontSize: '12px',
+      '--nutui-switch-active-background-color': 'blue',
+    },
   }
   const { activeText, inactiveText, className, style } = state
   const testFn = vi.fn()
@@ -28,11 +31,11 @@ test('activeText && checked && onChange && inactiveText && className && style te
   if (el) {
     expect(el).toHaveAttribute(
       'class',
-      `nut-switch nut-switch-close  nut-switch-base switch-test`
+      `nut-switch nut-switch-inactive  nut-switch-base switch-test`
     )
     expect(el).toHaveAttribute(
       'style',
-      `font-size: 12px; --nutui-switch-open-background-color: blue;`
+      `font-size: 12px; --nutui-switch-active-background-color: blue;`
     )
     expect(el).toHaveTextContent(inactiveText)
     await act(() => {

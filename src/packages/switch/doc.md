@@ -87,11 +87,11 @@ import { Switch } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-switch-open-background-color | 开关打开状态背景颜色 | `$color-primary` |
-| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
-| \--nutui-switch-open-disabled-background-color | 开关打开状态禁用的背景颜色 | `$color-primary-disabled-special` |
-| \--nutui-switch-close-disabled-background-color | 开关关闭状态禁用的背景颜色 | `$color-background` |
-| \--nutui-switch-close-line-bg-color | 开关关闭状态内部按钮线条颜色 | `#ffffff` |
+| \--nutui-switch-active-background-color | 开关打开状态背景颜色 | `$color-primary` |
+| \--nutui-switch-inactive-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
+| \--nutui-switch-active-disabled-background-color | 开关打开状态禁用的背景颜色 | `$color-primary-disabled-special` |
+| \--nutui-switch-inactive-disabled-background-color | 开关关闭状态禁用的背景颜色 | `$color-background` |
+| \--nutui-switch-inactive-line-bg-color | 开关关闭状态内部按钮线条颜色 | `#ffffff` |
 | \--nutui-switch-width | 开关宽度 | `46px` |
 | \--nutui-switch-height | 开关高度 | `28px` |
 | \--nutui-switch-line-height | 开关行高 | `28px` |
@@ -101,4 +101,4 @@ import { Switch } from '@nutui/nutui-react'
 | \--nutui-switch-inside-box-shadow | 开关内部按钮阴影 | `0px 2px 6px 0px rgba(0, 0, 0, 0.4)` |
 | \--nutui-switch-label-text-color | 开关内部文字颜色 | `$color-primary-text` |
 | \--nutui-switch-label-font-size | 开关内部文字大小 | `$font-size-s` |
-| \--nutui-switch-close-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |
+| \--nutui-switch-inactive-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |

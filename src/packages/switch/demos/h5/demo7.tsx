@@ -7,8 +7,8 @@ const Demo7 = () => {
       <Switch
         defaultChecked
         style={{
-          '--nutui-switch-open-background-color': 'blue',
-          '--nutui-switch-close-line-background-color': '#ebebeb',
+          '--nutui-switch-active-background-color': 'blue',
+          '--nutui-switch-inactive-line-background-color': '#ebebeb',
         }}
       />
     </Cell>

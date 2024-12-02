@@ -853,24 +853,24 @@ $avatar-normal-width: var(--nutui-avatar-normal-width, 40px) !default;
 $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
-$switch-open-background-color: var(
-  --nutui-switch-open-background-color,
+$switch-active-background-color: var(
+  --nutui-switch-active-background-color,
   $color-primary
 ) !default;
-$switch-close-background-color: var(
-  --nutui-switch-close-background-color,
+$switch-inactive-background-color: var(
+  --nutui-switch-inactive-background-color,
   $color-text-disabled
 ) !default;
-$switch-open-disabled-background-color: var(
-  --nutui-switch-open-disabled-background-color,
+$switch-active-disabled-background-color: var(
+  --nutui-switch-active-disabled-background-color,
   $color-primary-disabled-special
 ) !default;
-$switch-close-disabled-background-color: var(
-  --nutui-switch-close-disabled-background-color,
+$switch-inactive-disabled-background-color: var(
+  --nutui-switch-inactive-disabled-background-color,
   $color-background
 ) !default;
-$switch-close-line-background-color: var(
-  --nutui-switch-close-line-background-color,
+$switch-inactive-line-background-color: var(
+  --nutui-switch-inactive-line-background-color,
   #ffffff
 ) !default;
 $switch-width: var(--nutui-switch-width, 46px) !default;
@@ -907,8 +907,8 @@ $switch-label-font-size: var(
   --nutui-switch-label-font-size,
   $font-size-s
 ) !default;
-$switch-close-disabled-label-text-color: var(
-  --nutui-switch-close-disabled-label-text-color,
+$switch-inactive-disabled-label-text-color: var(
+  --nutui-switch-inactive-disabled-label-text-color,
   $color-text-disabled
 ) !default;
 

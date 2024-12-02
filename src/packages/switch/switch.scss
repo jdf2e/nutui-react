@@ -7,7 +7,7 @@
   min-width: $switch-width;
   height: $switch-height;
   line-height: $switch-line-height;
-  background-color: $switch-open-background-color;
+  background-color: $switch-active-background-color;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -43,11 +43,11 @@
   }
 
   &-close {
-    background-color: $switch-close-background-color;
+    background-color: $switch-inactive-background-color;
     &-line {
       width: calc(($switch-height - $switch-border-width * 2) / 2);
       height: 2px;
-      background: $switch-close-line-background-color;
+      background: $switch-inactive-line-background-color;
       border-radius: 2px;
     }
   }
@@ -77,17 +77,17 @@
     }
 
     &-close-disabled {
-      color: $switch-close-disabled-label-text-color;
+      color: $switch-inactive-disabled-label-text-color;
       .nut-icon {
-        color: $switch-close-disabled-label-text-color;
+        color: $switch-inactive-disabled-label-text-color;
       }
     }
   }
 
   &-disabled {
-    background-color: $switch-open-disabled-background-color;
+    background-color: $switch-active-disabled-background-color;
     &-close {
-      background-color: $switch-close-disabled-background-color;
+      background-color: $switch-inactive-disabled-background-color;
     }
   }
 }

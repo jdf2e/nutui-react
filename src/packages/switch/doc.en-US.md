@@ -87,11 +87,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-switch-open-background-color | Switch on status background color | `$color-primary` |
-| \--nutui-switch-close-background-color | Switch off status background color | `$color-text-disabled` |
-| \--nutui-switch-open-disabled-background-color | Switch toggle on the background color disabled | `$color-primary-disabled-special` |
-| \--nutui-switch-close-disabled-background-color | Turn off the background color disabled | `$color-background` |
-| \--nutui-switch-close-line-bg-color | Switch Off Internal Button Line Color | `#ffffff` |
+| \--nutui-switch-active-background-color | Switch on status background color | `$color-primary` |
+| \--nutui-switch-inactive-background-color | Switch off status background color | `$color-text-disabled` |
+| \--nutui-switch-active-disabled-background-color | Switch toggle on the background color disabled | `$color-primary-disabled-special` |
+| \--nutui-switch-inactive-disabled-background-color | Turn off the background color disabled | `$color-background` |
+| \--nutui-switch-inactive-line-bg-color | Switch Off Internal Button Line Color | `#ffffff` |
 | \--nutui-switch-width | Switch Width | `46px` |
 | \--nutui-switch-height | Switch height | `28px` |
 | \--nutui-switch-line-height | Switch line height | `28px` |
@@ -101,4 +101,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-switch-inside-box-shadow | Switch Internal Button Shadow | `0px 2px 6px 0px rgba(0, 0, 0, 0.4)` |
 | \--nutui-switch-label-text-color | Switch internal text color | `$color-primary-text` |
 | \--nutui-switch-label-font-size | Switch internal text size | `$font-size-s` |
-| \--nutui-switch-close-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |
+| \--nutui-switch-inactive-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |
