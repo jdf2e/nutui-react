@@ -6,7 +6,6 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const args = process.argv.splice(2)
 
-const home = os.homedir()
 const temp = `${process.cwd()}/packages`
 
 console.log('args', args)
