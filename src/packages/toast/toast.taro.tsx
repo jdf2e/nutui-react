@@ -36,10 +36,6 @@ export interface ToastProps extends BasicComponent {
   visible: boolean
   wordBreak?: ToastWordBreak
   onClose: () => void
-  /**
-   * @deprecated Please use `content` prop instead.
-   */
-  msg: React.ReactNode
 }
 
 const defaultProps = {
@@ -51,7 +47,6 @@ const defaultProps = {
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   content: '',
-  msg: '',
   type: 'text',
   closeOnOverlayClick: false,
   lockScroll: false,
@@ -77,7 +72,6 @@ export const Toast: FunctionComponent<
       contentStyle,
       icon,
       content,
-      msg,
       duration,
       type,
       title,
@@ -200,7 +194,7 @@ export const Toast: FunctionComponent<
                 `${classPrefix}-inner-${size}`,
                 `${classPrefix}-inner-${wordBreak}`,
                 {
-                  [`${classPrefix}-inner-descrption`]: content || msg,
+                  [`${classPrefix}-inner-descrption`]: content,
                 }
               )}
               style={{ ...styles, ...contentStyle }}
@@ -213,8 +207,8 @@ export const Toast: FunctionComponent<
               {title ? (
                 <Text className={`${classPrefix}-title`}>{title}</Text>
               ) : null}
-              {content || msg ? (
-                <Text className={`${classPrefix}-text`}>{content || msg}</Text>
+              {content ? (
+                <Text className={`${classPrefix}-text`}>{content}</Text>
               ) : null}
             </View>
           </View>
