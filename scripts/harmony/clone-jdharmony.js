@@ -11,7 +11,7 @@ const temp = `${process.cwd()}/packages`
 
 console.log('args', args)
 
-const platform = args && args[0] === 'cpp' ? 'jdharmonycpp' : 'jdharmony'
+const platform = args && args[0] === 'cpp' ? 'feat_jdharmonycpp' : 'jdharmony'
 
 async function cloneJdHarmony() {
   // 填写coding地址
