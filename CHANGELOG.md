@@ -1,3 +1,17 @@
+# v2.7.1
+
+`2024-11-22`
+
+- :bug: fix(popup): display should not trigger the scrollview to update (#2773)
+- :bug: fix(toast): load dependent CSS (#2776)
+- :bug: fix(Form): Form 组件文档 demo 中 Switch 组件使用问题 (#2774)
+- :bug: fix(textarea): handle undefined placeholder explicitly (#2748)
+- 🏡 chore: jdesign 主题 (#2703)
+- 🏡 chore: ci optimize (#2692)
+- 🏡 chore: ci (#2690)
+- 📖 docs(infiniteLoading): optimize target description (#2770)
+- 📖 docs: 官方主题入口 (#2634)
+
 # v2.7.0
 
 `2024-11-01`

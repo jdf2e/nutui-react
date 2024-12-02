@@ -60,7 +60,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | hasMore | 是否還有更多數據 | `boolean` | `true` |
 | threshold | 距離底部多遠加載 | `number` | `200` |
 | capture | 是否使用捕獲模式 true 捕獲 false 冒泡 | `boolean` | `false` |
-| target | 獲取監聽的目標元素 | `string` | `-` |
+| target | 用於標識和區分頁面中多個組件實例的唯一標識符。注意，這個屬性並不是用於監聽 DOM 元素，而是用於在同一頁面上管理多個組件實例。 | `string` | `-` |
 | loadMoreText | “沒有更多數據”展示文案 | `string` | `哎呀，這裏是底部了啦` |
 | pullRefresh | 是否開啟下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `鬆手刷新` |
@@ -78,4 +78,3 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-infiniteloading-color | 滑動到底部的文字顏色 | `$color-text-help` |
-| \--nutui-infiniteloading-icon-size | 滑動到底部的文字顏色 | `24px` |

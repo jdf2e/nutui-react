@@ -60,7 +60,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | hasMore | Has more data | `boolean` | `true` |
 | threshold | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | `number` | `200` |
 | capture | Whether to use capture mode | `boolean` | `false` |
-| target | Get the target element to monitor | `string` | `-` |
+| target | Identifies and distinguishes multiple component instances on a page. Not for listening to DOM elements. | `string` | `-` |
 | loadMoreText | “No more” text | `string` | `Oops, here's the bottom` |
 | pullRefresh | Enable pull refresh | `boolean` | `false` |
 | pullingText | Pull refresh text | `ReactNode` | `Let go and refresh` |
@@ -78,4 +78,3 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-infiniteloading-color | Swipe to bottom text color | `$color-text-help` |
-| \--nutui-infiniteloading-icon-size | Swipe to bottom icon size | `24px` |
