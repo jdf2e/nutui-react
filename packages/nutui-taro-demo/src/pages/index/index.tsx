@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { View, Image, Text, ScrollView, Button, Input, Video } from '@tarojs/components'
+import { View, Image, Swiper, SwiperItem, Text, ScrollView, Button, Input, Video } from '@tarojs/components'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
@@ -10,7 +10,7 @@ const navs = pkg.nav
 
 
 // hack taro load button xml
-console.log(Button, Input, Video )
+console.log(Button, Input, Video,Image, Swiper, SwiperItem,  )
 
 // try {
 //     console.log('xxx', Schema)
