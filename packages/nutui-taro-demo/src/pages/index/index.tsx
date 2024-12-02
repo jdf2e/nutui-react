@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { useState } from 'react'
 import { Button, Image, Input, ScrollView, Swiper, SwiperItem, Text, Video, View } from '@tarojs/components'
-import {SearchBar} from '@/packages/searchbar/searchbar'
+import { SearchBar } from '@/packages/searchbar/searchbar'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
@@ -54,10 +54,12 @@ const Index = () => {
       </View>
 
       <View className='index-components'>
-        <SearchBar style={{background: '#fff'}} placeholder='...' value={search} onChange={(e) => {
-          setSearch(e)
-        }} />
-        <View style={{height: 25}}></View>
+        {process.env.NODE_ENV === 'development' ? <>
+          <SearchBar style={{ background: '#fff' }} placeholder='' value={search} onChange={(e) => {
+            setSearch(e)
+          }} />
+          <View style={{ height: 25 }}></View>
+        </> : null}
         {navs.map((nav) => (
           <View key={nav.enName} className='index-components-item'>
             {nav.enName === 'dataentry' ? null : (
