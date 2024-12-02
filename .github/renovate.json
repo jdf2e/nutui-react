@@ -3,6 +3,7 @@
   "extends": [
     "config:base", "schedule:weekly", "group:allNonMajor"
   ],
+  "baseBranches": ["feat_v3.x"],
   "rangeStrategy": "bump",
   "labels": ["dependencies"],
   "ignorePaths": [
