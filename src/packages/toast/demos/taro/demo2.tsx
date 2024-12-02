@@ -14,7 +14,7 @@ const Demo5 = () => {
             type: 'fail',
             duration: 2,
             position: 'center',
-            icon: <Jd />,
+            icon: <Jd color="#ffffff" />,
             lockScroll: true,
             onClose: () => {
               console.log('close')

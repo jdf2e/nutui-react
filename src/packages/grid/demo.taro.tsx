@@ -2,6 +2,7 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { harmony } from '@/utils/platform-taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -19,7 +20,7 @@ const GridDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       columns: '自定义列数',
-      square: '正方形格子',
+      custom: '自定义格子',
       gap: '格子间距',
       reverse: '内容翻转',
       horizontal: '内容横向',
@@ -31,7 +32,7 @@ const GridDemo = () => {
     'zh-TW': {
       basic: '基础用法',
       columns: '自定義列數',
-      square: '正方形格子',
+      custom: '自定義格子',
       gap: '格子間距',
       reverse: '內容翻轉',
       horizontal: '內容橫向',
@@ -43,7 +44,7 @@ const GridDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       columns: 'Column Num',
-      square: 'Square',
+      custom: 'Custom Grids',
       gap: 'Gap',
       reverse: 'Reverse',
       horizontal: 'Horizontal',
@@ -65,8 +66,13 @@ const GridDemo = () => {
         <Demo1 />
         <View className="h2">{translated.columns}</View>
         <Demo2 />
-        <View className="h2">{translated.square}</View>
-        <Demo3 />
+        {/* harmony 不支持 css 变量 */}
+        {harmony() ? null : (
+          <>
+            <View className="h2">{translated.custom}</View>
+            <Demo3 />
+          </>
+        )}
         <View className="h2">{translated.gap}</View>
         <Demo4 />
         <View className="h2">{translated.reverse}</View>

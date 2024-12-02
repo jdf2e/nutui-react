@@ -39,28 +39,13 @@
       line-height: 18px;
       margin-top: 9px;
 
-      .nut-price {
-        .nut-price-big {
-          font-size: 18px;
-        }
-
-        .nut-price-symbol,
-        .nut-price-point,
-        .nut-price-small {
-          font-size: 12px;
-        }
-      }
-
       &-origin {
         &.nut-price {
           margin-left: 2px;
-          color: #d2a448;
-
-          .nut-price-big,
           .nut-price-symbol,
-          .nut-price-point,
-          .nut-price-small {
-            font-size: 12px;
+          .nut-price-integer,
+          .nut-price-decimal {
+            color: #d2a448;
           }
         }
       }

@@ -2,7 +2,6 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { GridItem, GridItemProps } from '../griditem/griditem'
 import GridContext from './context'
-import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -20,9 +19,9 @@ export interface GridProps {
 
 const defaultProps = {
   columns: 4,
-  gap: 0,
+  gap: 9,
   center: true,
-  square: false,
+  square: true,
   reverse: false,
   direction: 'vertical',
 } as GridProps
@@ -64,10 +63,6 @@ export const Grid: FunctionComponent<
     if (style) {
       styleSelf = style
     }
-    if (gap) {
-      styleSelf.paddingLeft = pxCheck(gap)
-    }
-
     return styleSelf
   }
 

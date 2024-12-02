@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
 import { useState } from 'react'
-import { View, Image, Text, ScrollView, Button, Input, Video } from '@tarojs/components'
+import { Button, Image, Input, ScrollView, Swiper, SwiperItem, Text, Video, View } from '@tarojs/components'
+import {SearchBar} from '@/packages/searchbar/searchbar'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
@@ -8,7 +9,7 @@ import './index.scss'
 const navs = pkg.nav
 
 // hack taro load button xml
-console.log(Button, Input, Video )
+console.log(Button, Input, Video, Image, Swiper, SwiperItem)
 
 const Index = () => {
   const [search, setSearch] = useState()
@@ -51,10 +52,12 @@ const Index = () => {
           </View>
         </View>
       </View>
-      <Input value={search} onInput={(e) => {
-        setSearch(e.detail.value)
-      }} />
+
       <View className='index-components'>
+        <SearchBar style={{background: '#fff'}} placeholder='...' value={search} onChange={(e) => {
+          setSearch(e)
+        }} />
+        <View style={{height: 25}}></View>
         {navs.map((nav) => (
           <View key={nav.enName} className='index-components-item'>
             {nav.enName === 'dataentry' ? null : (
@@ -62,7 +65,7 @@ const Index = () => {
             )}
             <View className='index-components-sublist'>
               {nav.packages.map((com) =>
-                com.show && com.taro && com.version === '3.0.0' && (!search || search == com.name.toLowerCase()) ? (
+                com.show && com.taro && com.version === '3.0.0' && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className='index-components-sublist-item'
@@ -75,7 +78,7 @@ const Index = () => {
                       {com.name}
                     </View>
                   </View>
-                ) : null
+                ) : null,
               )}
             </View>
           </View>

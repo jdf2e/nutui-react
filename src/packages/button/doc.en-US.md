@@ -125,27 +125,27 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-button-border-radius | Rounded corners of the button | `24px` |
-| \--nutui-button-border-width | Button border width | `1px` |
-| \--nutui-button-normal-padding | The padding of the button whose size is normal | `0px 16px` |
-| \--nutui-button-default-height | The height of the button whose type is default | `32px` |
-| \--nutui-button-default-color | The text color of the button whose type is default | `$color-title` |
-| \--nutui-button-default-background-color | The background color of the button whose type is default | `$white` |
-| \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
-| \--nutui-button-default-disabled | The color of the button whose type is default and whose status is disable | `$color-text-disabled` |
-| \--nutui-button-default-disabled-color | The text color of the button whose type is default and whose status is disable | `$color-text-help` |
-| \--nutui-button-default-padding | padding of buttons with type default | `0 16px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size-base` |
-| \--nutui-button-default-font-weight | The font weight of the button whose type is default | `$font-weight` |
-| \--nutui-button-large-height | The height of the button whose size is large | `40px` |
-| \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
-| \--nutui-button-small-border-radius | The border radius of buttons whose size is large | `24px` |
-| \--nutui-button-small-padding | Padding for small buttons | `0 12px` |
-| \--nutui-button-small-height | The height of the button whose size is small | `28px` |
-| \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-s` |
-| \--nutui-button-small-border-radius | The border radius of buttons whose size is small | `24px` |
-| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
-| \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
-| \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-s` |
-| \--nutui-button-mini-border-radius | The border radius of buttons whose size is mini | `24px` |
-| \--nutui-button-text-icon-margin | margin of text with icon button | `4px` |
+| \--nutui-button-border-radius | Button rounded corner settings | `8px` |
+| \--nutui-button-border-width | The border width of the button | `1px` |
+| \--nutui-button-normal-padding | padding value when size normal | `0px 12px` |
+| \--nutui-button-default-height | The height of the button with type default | `32px` |
+| \--nutui-button-default-color | The text color of the button with type default | `$color-title` |
+| \--nutui-button-default-background-color | The background color of the button with type default | `transparent` |
+| \--nutui-button-default-border-color | The border color of the button with type default | `$color-text` |
+| \--nutui-button-default-disabled | Disabled color for buttons of type default | `$color-text-disabled` |
+| \--nutui-button-default-disabled-color | Disabled text color for buttons of type default | `$color-text-help` |
+| \--nutui-button-default-padding | Padding for buttons of type default | `0 12px` |
+| \--nutui-button-default-font-size | The font size of the button with type default | `$font-size-s` |
+| \--nutui-button-default-font-weight | The font weight of the button with type default | `$font-weight` |
+| \--nutui-button-large-height | The height of the button with size large | `40px` |
+| \--nutui-button-large-font-size | The font size of the button with size large | `$font-size-base` |
+| \--nutui-button-large-border-radius | Rounded corners for buttons with size large | `12px` |
+| \--nutui-button-small-padding | Padding for buttons of size small | `0 8px` |
+| \--nutui-button-small-height | The height of the button with size small | `28px` |
+| \--nutui-button-small-font-size | The font size of the button with size small | `$font-size-s` |
+| \--nutui-button-small-border-radius | Rounded corners for buttons with size small | `8px` |
+| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 8px` |
+| \--nutui-button-mini-height | size is the height of the mini button | `24px` |
+| \--nutui-button-mini-font-size | The font size of the button with size mini | `$font-size-xs` |
+| \--nutui-button-mini-border-radius | The rounded corners of the button with size mini | `6px` |
+| \--nutui-button-text-icon-margin | Margin of text with icon button | `4px` |

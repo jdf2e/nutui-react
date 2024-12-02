@@ -21,12 +21,6 @@ const Demo8 = () => {
           setShowToast(false)
         }}
       />
-      <Checkbox
-        defaultChecked={false}
-        onChange={(state) => handleChange(state)}
-      >
-        change复选框
-      </Checkbox>
       <Cell className="nut-cell">
         <Checkbox
           defaultChecked={false}
