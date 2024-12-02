@@ -43,7 +43,7 @@
     "@babel/preset-react": "^7.25.7",
     "@types/babel__core": "^7.20.5",
     "@types/babel__generator": "^7.6.8",
-    "vitest": "^1.5.0"
+    "vitest": "^2.1.7"
   },
   "devDependencies": {
     "@types/lodash.kebabcase": "^4.1.9",
