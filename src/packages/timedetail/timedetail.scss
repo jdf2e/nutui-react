@@ -1,6 +1,8 @@
 .nut-timedetail {
   display: flex;
   align-content: flex-start;
+  flex: 1;
+  min-width: 0;
   flex-wrap: wrap;
   padding: 0 0 50px 12px;
 

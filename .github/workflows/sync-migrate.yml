@@ -31,6 +31,9 @@ jobs:
       - name: Copy migrate from v2
         run: node scripts/copy-migrate-from-v2.js
 
+      - name: Copy migrate from v1
+        run: node scripts/copy-migrate-from-v1.js
+
       - name : Sync
         uses : JamesIves/github-pages-deploy-action@v4.5.0
         with :
