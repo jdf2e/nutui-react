@@ -26,7 +26,7 @@ import { Grid } from '@nutui/nutui-react'
 
 :::
 
-### 正方形格子
+### 自定義格子
 
 :::demo
 
@@ -97,9 +97,9 @@ import { Grid } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | columns | 列數 | `number` \| `string` | `4` |
-| gap | 格子之間的間距，默認單位為`px` | `number` \| `string` | `0` |
+| gap | 格子之間的間距，默認單位為`px` | `number` \| `string` | `9` |
 | center | 是否將格子內容居中顯示 | `boolean` | `true` |
-| square | 是否將格子固定為正方形 | `boolean` | `false` |
+| square | 是否將格子固定為正方形 | `boolean` | `true` |
 | reverse | 內容翻轉 | `boolean` | `false` |
 | direction | 格子內容排列的方向 | `horizontal` \| `vertical` | `vertical` |
 | onClick | 宮格子項點擊事件 | `(index) => void` | `-` |
@@ -121,7 +121,9 @@ import { Grid } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-grid-border-color | 邊框顏色 | `#f5f6f7` |
+| \--nutui-grid-border-width | 邊框寬度 | `0` |
+| \--nutui-grid-border-color | 邊框顏色 | `$color-border` |
+| \--nutui-grid-border-radius | 邊框圓角大小 | `$radius-l` |
 | \--nutui-grid-item-content-padding | 內邊距 | `16px 8px` |
 | \--nutui-grid-item-content-bg-color | 背景 | `$white` |
 | \--nutui-grid-item-text-margin | 外邊距 | `8px` |

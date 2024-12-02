@@ -16,7 +16,7 @@ const GridDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       columns: '自定义列数',
-      square: '正方形格子',
+      custom: '自定义格子',
       gap: '格子间距',
       reverse: '内容翻转',
       horizontal: '内容横向',
@@ -28,7 +28,7 @@ const GridDemo = () => {
     'zh-TW': {
       basic: '基础用法',
       columns: '自定義列數',
-      square: '正方形格子',
+      custom: '自定義格子',
       gap: '格子間距',
       reverse: '內容翻轉',
       horizontal: '內容橫向',
@@ -40,7 +40,7 @@ const GridDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       columns: 'Column Num',
-      square: 'Square',
+      custom: 'Custom Grids',
       gap: 'Gap',
       reverse: 'Reverse',
       horizontal: 'Horizontal',
@@ -58,7 +58,7 @@ const GridDemo = () => {
         <Demo1 />
         <h2>{translated.columns}</h2>
         <Demo2 />
-        <h2>{translated.square}</h2>
+        <h2>{translated.custom}</h2>
         <Demo3 />
         <h2>{translated.gap}</h2>
         <Demo4 />

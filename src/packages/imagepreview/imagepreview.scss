@@ -77,6 +77,13 @@
       justify-content: center;
       height: 100%;
 
+      .nut-image,
+      .nut-video {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       .nut-image-preview-box {
         width: 100%;
       }

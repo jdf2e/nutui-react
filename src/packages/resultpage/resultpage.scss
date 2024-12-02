@@ -5,10 +5,12 @@
   align-items: center;
   margin: 0 auto;
   &-icon {
-    height: $resultpage-icon-size;
-    width: $resultpage-icon-size;
+    display: inline-flex;
     margin-bottom: $resultpage-icon-margin-bottom;
-    background-size: 100%;
+    .nut-icon {
+      height: $resultpage-icon-size;
+      width: $resultpage-icon-size;
+    }
   }
   &-title {
     width: $resultpage-width;

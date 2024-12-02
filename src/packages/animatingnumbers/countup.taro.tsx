@@ -39,7 +39,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
-  const timerRef = useRef()
+  const timerRef = useRef<ReturnType<typeof setTimeout>>()
   const numbers = Array.from({ length: 10 }, (v, i) => i)
 
   const getShowNumber = useCallback(() => {
