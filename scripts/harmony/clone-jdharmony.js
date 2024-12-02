@@ -11,12 +11,12 @@ const temp = `${process.cwd()}/packages`
 
 console.log('args', args)
 
-const platform = args && args[0] === 'cpp' ? 'feat_jdharmonycpp' : 'jdharmony'
+const platform = args && args[0] === 'cpp' ? 'jdharmonycpp' : 'jdharmony'
 
 async function cloneJdHarmony() {
   // 填写coding地址
   const remote = 'git@coding.jd.com:DongDesign/JDHarmony.git'
-  const branch = args && args[0] === 'cpp' ? 'master-cpp' : 'master'
+  const branch = args && args[0] === 'cpp' ? 'feat_jdharmonycpp' : 'master'
   const git = simpleGit({
     baseDir: temp,
   })
