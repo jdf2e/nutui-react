@@ -25,9 +25,9 @@ export interface GridItemProps extends BasicComponent {
 const defaultProps = {
   text: '',
   columns: 4,
-  gap: 0,
+  gap: 9,
   center: true,
-  square: false,
+  square: true,
   reverse: false,
   direction: 'vertical',
 } as GridItemProps
@@ -57,18 +57,25 @@ export const GridItem: FunctionComponent<
   const context = useContext(GridContext)
 
   const rootStyle = () => {
+    const width = `calc((100% - ${Number(gap) * (Number(columns) - 1)}px) / ${Number(columns)})`
     const styles: CSSProperties = {
-      flexBasis: `${100 / +columns}%`,
+      flexBasis: width,
       ...style,
     }
 
     if (square) {
-      styles.paddingTop = `${100 / +columns}%`
-    } else if (gap) {
-      styles.paddingRight = pxCheck(gap)
+      styles.paddingTop = width
+    }
+    if (gap) {
+      if ((index + 1) % Number(columns)) {
+        styles.marginRight = pxCheck(gap)
+      }
+
       if (index >= Number(columns)) {
         styles.marginTop = pxCheck(gap)
       }
+    } else {
+      styles.borderRadius = 0
     }
 
     return styles

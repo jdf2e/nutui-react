@@ -58,7 +58,7 @@ import { ResultPage } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| title | 標題 | `ReactNode` | `-`|
+| title | 標題 | `ReactNode` | `-` |
 | description | 描述，最多展示兩行 | `ReactNode` | `-` |
 | status | 狀態類型 | `success` \| `error` \| `warning` \| `info` \| `waiting` | `info` |
 | icon | 自定義 `icon` | `ReactNode` | `-` |
@@ -72,13 +72,13 @@ import { ResultPage } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-resultpage-width | 內容區域寬度 | `247px` |
-| \--nutui-resultpage-icon-size | icon的寬高 | `48px` |
-| \--nutui-resultpage-icon-margin-bottom | icon的margin-bottom值 | `16px` |
-| \--resultpage-title-margin-bottom | 標題的margin-top值 | `9px` |
+| \--nutui-resultpage-width | 內容區域寬度 | `240px` |
+| \--nutui-resultpage-icon-size | icon的寬高 | `36px` |
+| \--nutui-resultpage-icon-margin-bottom | icon的margin-bottom值 | `12px` |
+| \--resultpage-title-margin-bottom | 標題的margin-top值 | `12px` |
 | \--nutui-resultpage-title-font-size | 標題的字體大小 | `$font-size-xl` |
 | \---nutui-resultpage-title-color | 標題的文字顏色 | `$color-title` |
 | \--nutui-resultpage-description-font-size | 描述的字體大小 | `$font-size-base` |
 | \--nutui-resultpage-description-color | 描述的文字顏色 | `$color-text` |
 | \--nutui-resultpage-description-line-height | 描述的行高 | `20px` |
-| \--nutui-resultpage-actions-margin-topt | 操作區域的margin-top值 | `21px` |
+| \--nutui-resultpage-actions-margin-topt | 操作區域的margin-top值 | `16px` |

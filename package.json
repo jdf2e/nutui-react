@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react-taro",
-  "version": "3.0.0-beta.4",
+  "name": "@nutui/nutui-react",
+  "version": "3.0.0-beta.5",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -75,7 +75,7 @@
     "build:taro:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp node scripts/build-taro.mjs",
     "build:site": "npm run checked && vite build --config vite.config.site.ts",
     "build:site:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite build",
-    "build:taro:site": "npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
+    "build:taro:site": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && VITE_APP_PROJECT_ID=jmapp pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:theme:site": "npm run checked && vite build --config vite.config.theme.ts && npm run generate:themes-dev",
     "generate:file": "node scripts/generate-nutui.js",

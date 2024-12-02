@@ -1,5 +1,5 @@
 export type ResultPageStatusOptions = {
-  [key: string]: string
+  [key: string]: React.ReactNode
 }
 
 export type ResultPageStatus =
