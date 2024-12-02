@@ -4,9 +4,7 @@ import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import HoverButtonItem, {
-  HoverButtonItemProps,
-} from '@/packages/hoverbuttonitem/index.taro'
+import HoverButtonItem, { HoverButtonItemProps } from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
 import pxTransform from '@/utils/px-transform'
 
@@ -23,7 +21,7 @@ const classPrefix = 'nut-hoverbutton'
 
 export const HoverButton: FunctionComponent<
   Partial<HoverButtonProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > & {
   Item: typeof HoverButtonItem
 } = (props) => {
@@ -37,7 +35,7 @@ export const HoverButton: FunctionComponent<
   const baseStyle = { ...style }
 
   if (tabbarHeight) {
-    baseStyle.bottom = pxTransform(tabbarHeight + 16)
+    baseStyle.bottom = pxTransform(tabbarHeight + 60)
   }
 
   if (typeof zIndex !== 'undefined') {
@@ -56,7 +54,7 @@ export const HoverButton: FunctionComponent<
         {children ||
           (icon && <HoverButtonItem icon={icon} onClick={onClick} />)}
       </View>
-      <SafeArea position="bottom" />
+      <SafeArea position='bottom' />
     </View>
   )
 }
