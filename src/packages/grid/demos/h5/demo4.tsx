@@ -5,30 +5,11 @@ import { Image } from '@nutui/icons-react'
 const Demo4 = () => {
   return (
     <Grid gap={3}>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image />
-      </Grid.Item>
+      {Array.from({ length: 8 }, (_, index) => (
+        <Grid.Item key={index} text="文字">
+          <Image />
+        </Grid.Item>
+      ))}
     </Grid>
   )
 }
