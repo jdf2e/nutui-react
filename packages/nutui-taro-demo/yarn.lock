@@ -1480,10 +1480,10 @@
   dependencies:
     hoist-non-react-statics "^3.0.0"
 
-"@jdtaro/plugin-platform-jdharmony-cpp@0.1.4-alpha.2":
-  version "0.1.4-alpha.2"
-  resolved "http://registry.m.jd.com/@jdtaro/plugin-platform-jdharmony-cpp/download/@jdtaro/plugin-platform-jdharmony-cpp-0.1.4-alpha.2.tgz#c0414be5cce3a0149d7c0feb79bbc809228744f0"
-  integrity sha1-wEFL5czjoBSdfA/rebvICSKHRPA=
+"@jdtaro/plugin-platform-jdharmony-cpp@0.1.4-alpha.3":
+  version "0.1.4-alpha.3"
+  resolved "http://registry.m.jd.com/@jdtaro/plugin-platform-jdharmony-cpp/download/@jdtaro/plugin-platform-jdharmony-cpp-0.1.4-alpha.3.tgz#f7eef0e78be81ae9a85e9aff8083dd01e1dc6eb1"
+  integrity sha1-9+7w54voGumoXpr/gIPdAeHcbrE=
   dependencies:
     "@babel/core" "^7.24.7"
     "@babel/preset-env" "^7.24.4"
