@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import Price from '@/packages/price/index.taro'
 import Tag from '@/packages/tag/index.taro'
+import Image from '@/packages/image/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CardProps extends BasicComponent {
@@ -58,7 +59,7 @@ export const Card: FunctionComponent<
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <View className={`${classPrefix}-left`}>
-        <img src={src} alt="" />
+        <Image src={src} />
       </View>
       <View className={`${classPrefix}-right`}>
         <View className={`${classPrefix}-right-title`}>{title}</View>

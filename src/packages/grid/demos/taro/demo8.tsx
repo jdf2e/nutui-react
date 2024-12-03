@@ -4,16 +4,7 @@ import { Image } from '@nutui/icons-react-taro'
 
 const Demo8 = () => {
   return (
-    <Grid columns="3">
-      <Grid.Item text="文字">
-        <Image size={16} />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image color="red" />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image size={30} color="#478EF2" />
-      </Grid.Item>
+    <Grid columns={3} gap={7}>
       <Grid.Item text="文字">
         <Image size={16} />
       </Grid.Item>

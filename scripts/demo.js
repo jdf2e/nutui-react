@@ -1,4 +1,3 @@
-var nameLc = 'test'
 var demoModel = function (name) {
   var temp = {
     demo: `import React from 'react'

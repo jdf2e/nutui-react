@@ -26,9 +26,9 @@ export interface GridItemProps extends BasicComponent {
 const defaultProps = {
   text: '',
   columns: 4,
-  gap: 0,
+  gap: 9,
   center: true,
-  square: false,
+  square: true,
   reverse: false,
   direction: 'vertical',
 } as GridItemProps
@@ -58,23 +58,29 @@ export const GridItem: FunctionComponent<
   const context = useContext(GridContext)
 
   const rootStyle = () => {
+    const width = `calc(${100 / Number(columns)}% - ${pxTransform((Number(gap) * (Number(columns) - 1)) / Number(columns))})`
     const styles: CSSProperties = {
-      width: `${100 / +columns}%`,
+      width,
       overflow: 'hidden',
       ...style,
     }
 
     if (square) {
-      styles.paddingTop = `${100 / +columns}%`
-    } else if (gap) {
-      styles.paddingRight = pxTransform(
-        typeof gap === 'number' ? gap : parseFloat(gap)
-      )
+      styles.paddingTop = width
+    }
+    if (gap) {
+      if ((index + 1) % Number(columns)) {
+        styles.marginRight = pxTransform(
+          typeof gap === 'number' ? gap : parseFloat(gap)
+        )
+      }
       if (index >= Number(columns)) {
         styles.marginTop = pxTransform(
           typeof gap === 'number' ? gap : parseFloat(gap)
         )
       }
+    } else {
+      styles.borderRadius = 0
     }
 
     return styles
@@ -131,5 +137,4 @@ export const GridItem: FunctionComponent<
     </>
   )
 }
-
 GridItem.displayName = 'NutGridItem'

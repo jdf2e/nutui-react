@@ -15,9 +15,21 @@
         "show": true
       },
       {
+        "name": "official-theme-react",
+        "cName": "官方主题",
+        "eName": "Official Theme",
+        "show": true
+      },
+      {
         "name": "theme-react",
         "cName": "主题定制",
         "eName": "Customize Theme",
+        "show": true
+      },
+      {
+        "name": "migrate-from-v1",
+        "cName": "从 v1 升级到 v2",
+        "eName": "Migrate-from-v1",
         "show": true
       },
       {
@@ -176,6 +188,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "yangxiaolu"
         },
         {
@@ -264,7 +277,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -758,7 +771,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "liukun"
+          "author": "liukun",
+          "v14": true
         },
         {
           "version": "3.0.0",
@@ -769,6 +783,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "songsong"
         },
         {
@@ -1177,7 +1192,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Card",
           "type": "component",
           "cName": "商品卡片",
@@ -1199,7 +1214,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeSelect",
           "type": "component",
           "cName": "配送时间",
