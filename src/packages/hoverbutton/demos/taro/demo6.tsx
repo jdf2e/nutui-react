@@ -5,17 +5,19 @@ import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { Cart } from '@nutui/icons-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   return (
     <>
       <HoverButton>
         <View
-          className="nut-hoverbutton-item-container"
+          className="nut-hoverbutton-item nut-hoverbutton-item-container"
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            marginBottom: 8,
           }}
         >
           <View
@@ -41,7 +43,7 @@ const Demo1 = () => {
           <View
             style={{
               fontSize: 10,
-              lineHeight: '9px',
+              lineHeight: pxTransform(9),
               fontFamily: 'JD',
             }}
           >
@@ -58,7 +60,9 @@ const Demo1 = () => {
           }}
         >
           <Cart style={{ width: 14, height: 14, marginTop: 5 }} />
-          <View style={{ fontSize: 10, marginTop: 5, lineHeight: '9px' }}>
+          <View
+            style={{ fontSize: 10, marginTop: 5, lineHeight: pxTransform(9) }}
+          >
             购物
           </View>
         </View>
