@@ -4,19 +4,14 @@ import React from 'react'
 
 const Demo8 = () => {
   return (
-    <Cell>
-      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge dot fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value={76} fill="outline">
+      <Badge value={8} fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge
-        style={{ marginInlineEnd: '40px' }}
-        value="NEW"
-        color="blue"
-        fill="outline"
-      >
+      <Badge value="内容" color="blue" fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>

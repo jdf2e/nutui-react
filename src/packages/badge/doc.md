@@ -83,8 +83,8 @@ import { Badge } from '@nutui/nutui-react'
 | value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
 | max | value 为数值时，最大值 | `number` | `99` |
 | dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
-| top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
-| right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
+| top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `0` |
+| right | 左右偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `0` |
 | color | 徽标背景颜色,默认值为当前主题色 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 
