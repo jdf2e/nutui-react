@@ -120,7 +120,7 @@ exports[`tabbar height 1`] = `
 <div>
   <div
     class="nut-hoverbutton-container"
-    style="bottom: 64px;"
+    style="bottom: 108px;"
   >
     <div
       class="nut-hoverbutton"

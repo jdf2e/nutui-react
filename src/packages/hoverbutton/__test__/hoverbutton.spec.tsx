@@ -34,7 +34,7 @@ test('tabbar height', () => {
 
   expect(container.querySelector('.nut-hoverbutton-container')).toHaveAttribute(
     'style',
-    'bottom: 64px;'
+    'bottom: 108px;'
   )
   expect(container).toMatchSnapshot()
 })
