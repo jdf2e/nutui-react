@@ -20,6 +20,14 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::
 
+### 按钮和文字
+
+:::demo
+
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+:::
+
 ### 多个按钮
 
 :::demo

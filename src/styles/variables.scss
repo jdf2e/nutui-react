@@ -998,21 +998,18 @@ $calendar-day-active-border-radius: var(
 ) !default;
 
 //hoverbutton
-$hoverbutton-spacing: var(
-  --nutui-hoverbutton-spacing,
-    $spacing-base
-) !default;
+$hoverbutton-spacing: var(--nutui-hoverbutton-spacing, $spacing-base) !default;
 $hoverbutton-position-bottom: var(
   --nutui-hoverbutton-position-bottom,
   60px
 ) !default;
 $hoverbutton-position-right: var(
   --nutui-hoverbutton-position-right,
-    $spacing-base
+  $spacing-base
 ) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
-  var(--nutui-black-3, rgba(0, 0, 0, 0.06))
+  rgba(0, 0, 0, 0.12)
 ) !default;
 $hoverbutton-item-background: var(
   --nutui-hoverbutton-item-background,
@@ -1020,15 +1017,15 @@ $hoverbutton-item-background: var(
 ) !default;
 $hoverbutton-item-background-active: var(
   --nutui-hoverbutton-item-background-active,
-  rgba(247,248,252, 0.9)
+  rgba(247, 248, 252, 0.9)
 ) !default;
 $hoverbutton-item-icon-color: var(
   --nutui-hoverbutton-item-icon-color,
-    $color-title
+  $color-title
 ) !default;
 $hoverbutton-item-icon-color-active: var(
   --nutui-hoverbutton-item-icon-color-active,
-    $color-title
+  $color-title
 ) !default;
 
 //overlay（✅）

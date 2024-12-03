@@ -2,7 +2,9 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import HoverButtonItem, { HoverButtonItemProps } from '@/packages/hoverbuttonitem/index'
+import HoverButtonItem, {
+  HoverButtonItemProps,
+} from '@/packages/hoverbuttonitem/index'
 import SafeArea from '@/packages/safearea/index'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
@@ -18,7 +20,7 @@ const classPrefix = 'nut-hoverbutton'
 
 export const HoverButton: FunctionComponent<
   Partial<HoverButtonProps> &
-  Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > & {
   Item: typeof HoverButtonItem
 } = (props) => {
@@ -51,7 +53,7 @@ export const HoverButton: FunctionComponent<
         {children ||
           (icon && <HoverButtonItem icon={icon} onClick={onClick} />)}
       </div>
-      <SafeArea position='bottom' />
+      <SafeArea position="bottom" />
     </div>
   )
 }
