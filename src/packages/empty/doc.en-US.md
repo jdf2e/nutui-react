@@ -87,6 +87,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-empty-image-small-size | When size is small, the size of the Empty component image | `120px` |
 | \--nutui-empty-title-margin-top | The value of margin-top of the Empty component image title | `0px` |
 | \--nutui-empty-title-line-height | Empty component image title line height | `$font-size-l` |
-| \--nutui-empty-description-margin-top | The value of margin-top of the Empty component image description | `4px` |
 | \--nutui-empty-description-line-height | Empty component image description line height | `1` |
 | \--nutui-empty-background-color | Empty component background color | `#fff` |
