@@ -16,6 +16,7 @@
     flex: 0 0 auto;
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
+    line-height: unset;
   }
 
   &-label-required {
@@ -26,6 +27,7 @@
     left: -10px;
   }
   .nut-form-item-labeltxt {
+    position: relative;
     font-size: 12px;
     height: 10px;
   }
