@@ -670,6 +670,7 @@ plugins: [
 - 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
 - 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来.
 - 主题定制，增加包含 icon 情况下的样式变量。
+- 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
 
 #### CircleProgress
 
