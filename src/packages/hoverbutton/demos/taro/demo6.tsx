@@ -55,10 +55,9 @@ const Demo1 = () => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            paddingTop: 5,
           }}
         >
-          <Cart style={{ width: 14, height: 14 }} />
+          <Cart style={{ width: 14, height: 14, marginTop: 5 }} />
           <View style={{ fontSize: 10, marginTop: 5, lineHeight: '9px' }}>
             购物
           </View>
