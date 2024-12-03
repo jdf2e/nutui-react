@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   width: $dialog-width;
-  max-height: 67%;
+  // max-height: 67%;
   min-height: $dialog-min-height;
   padding: $dialog-padding;
   box-sizing: border-box;
@@ -42,27 +42,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: $dialog-close-top;
     color: $dialog-close-color;
     .nut-icon {
-      font-size: 24px;
-      height: 24px;
-      width: 24px;
+      font-size: $dialog-close-width;
+      width: $dialog-close-width;
+      height: $dialog-close-height;
     }
 
     &-top-right {
+      top: $dialog-close-top;
       right: $dialog-close-right;
     }
 
     &-top-left {
+      top: $dialog-close-top;
       left: $dialog-close-left;
     }
 
     &-bottom {
-      top: initial;
       bottom: -56px;
       left: 50%;
-      transform: translate(-50%);
+      transform: translateY(-50%);
+      .nut-icon {
+        color: $dialog-close-color;
+      }
     }
 
     &:active {

@@ -42,10 +42,20 @@
     color: $tabbar-active-color;
 
     .nut-tabbar-item-icon-box {
+      /* #ifdef harmony*/
+      color: $tabbar-active-color;
+      /* #endif*/
+      /* #ifndef harmony*/
       color: inherit;
+      /* #endif*/
 
       .nut-icon {
+        /* #ifdef harmony*/
+        color: $tabbar-active-color;
+        /* #endif*/
+        /* #ifndef harmony*/
         color: inherit;
+        /* #endif*/
       }
     }
   }

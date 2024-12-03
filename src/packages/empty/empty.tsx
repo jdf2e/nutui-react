@@ -118,7 +118,7 @@ export const Empty: FunctionComponent<
         description
       )}
       {actions.length ? (
-        <div className={`${classPrefix}-actions`}>
+        <div className={`${classPrefix}-actions-${size}`}>
           {actions.map((action, index) => {
             const { text, ...rest } = action
             return (

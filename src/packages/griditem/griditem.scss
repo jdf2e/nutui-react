@@ -4,6 +4,7 @@
   position: relative;
   box-sizing: border-box;
   color: $grid-item-text-color;
+  overflow: hidden;
 
   &-text {
     color: $grid-item-text-color;
@@ -35,13 +36,14 @@
     border: 0 solid $grid-border-color;
 
     &-border {
-      border-right-width: 1px;
-      border-bottom-width: 1px;
+      border-right-width: $grid-border-width;
+      border-bottom-width: $grid-border-width;
     }
 
     &-surround {
-      border-top-width: 1px;
-      border-left-width: 1px;
+      border-top-width: $grid-border-width;
+      border-left-width: $grid-border-width;
+      border-radius: $grid-item-border-radius;
     }
 
     &-center {

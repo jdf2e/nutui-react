@@ -2,40 +2,15 @@ import React, {
   useState,
   useRef,
   useEffect,
-  ReactNode,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/platform-taro'
-
-export interface CountDownTimeProps {
-  d: number
-  h: number
-  m: number
-  s: number
-  ms: number
-}
-export type CountDownType = 'default' | 'primary'
-export interface CountDownProps extends BasicComponent {
-  type: CountDownType
-  paused: boolean
-  startTime: number
-  endTime: number
-  remainingTime: number
-  millisecond: boolean
-  format: string
-  autoStart: boolean
-  time: number
-  destroy: boolean
-  onEnd: () => void
-  onPaused: (restTime: number) => void
-  onRestart: (restTime: number) => void
-  onUpdate: (restTime: any) => void
-  children: ReactNode
-}
+import { CountDownProps, CountDownTimeProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -198,7 +173,7 @@ const InternalCountDown: ForwardRefRenderFunction<
       } else if (formatCache.includes('SS')) {
         formatCache = formatCache.replace('SS', msC.slice(0, 2))
       } else if (formatCache.includes('S')) {
-        formatCache = formatCache.replace('SS', msC.slice(0, 1))
+        formatCache = formatCache.replace('S', msC.slice(0, 1))
       }
     }
 
@@ -237,8 +212,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   // 监听值变更
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
-
-    onUpdate && onUpdate(tranTime)
+    onUpdate && onUpdate(tranTime as CountDownTimeProps)
   }, [restTimeStamp])
 
   // 监听暂停
@@ -301,9 +275,13 @@ const InternalCountDown: ForwardRefRenderFunction<
         {format.includes(formatUnit) ? (
           <>
             <View
-              className={`${classPrefix}-number${type === 'primary' ? '-primary' : ''}`}
+              className={classNames({
+                [`${classPrefix}-number`]: type === 'default',
+                [`${classPrefix}-number-primary`]: type === 'primary',
+                [`${classPrefix}-number-text`]: type === 'text',
+              })}
             >
-              {padZero(time)}
+              {unit ? padZero(time) : time}
             </View>
             {unit ? (
               <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
@@ -335,7 +313,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           'S',
           padZero(ms, 3)
             .toString()
-            .slice(0, digit || 2)
+            .slice(0, digit || 1)
         )}
       </>
     )
