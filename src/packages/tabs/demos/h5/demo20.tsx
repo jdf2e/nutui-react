@@ -2,22 +2,22 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 
 const Demo20 = () => {
-  const [tab8value, setTab8value] = useState<number | string>('0')
-  const [tab9value, setTab9value] = useState<number | string>('0')
+  const [tabvalue, setTabvalue] = useState<number | string>('0')
+  const [tab1value, setTab1value] = useState<number | string>('0')
   return (
     <>
       <Tabs
-        value={tab8value}
+        value={tabvalue}
         onChange={(value) => {
-          setTab8value(value)
+          setTabvalue(value)
         }}
         direction="vertical"
       >
         <Tabs.TabPane title="Tab 1">
           <Tabs
-            value={tab9value}
+            value={tab1value}
             onChange={(value) => {
-              setTab9value(value)
+              setTab1value(value)
             }}
             direction="horizontal"
           >
