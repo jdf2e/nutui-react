@@ -7,6 +7,7 @@ const Demo20 = () => {
   return (
     <>
       <Tabs
+        style={{ height: 300 }}
         value={tab8value}
         onChange={(value) => {
           setTab8value(value)

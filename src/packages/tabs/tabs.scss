@@ -61,6 +61,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
+    .nut-icon {
+      color: $tabs-titles-item-color;
+    }
+
     &-left,
     &-right {
       flex: none;
@@ -68,6 +72,7 @@
 
     &-text {
       text-align: center;
+      color: $tabs-titles-item-color;
     }
 
     &-smile,
@@ -93,13 +98,21 @@
         font-size: 20px;
         width: 100%;
         height: 100%;
-        color: $color-primary;
       }
     }
 
     &-active {
       color: $tabs-titles-item-active-color;
       font-weight: $tabs-titles-item-active-font-weight;
+
+      .nut-icon {
+        color: $tabs-titles-item-active-color;
+      }
+
+      .nut-tabs-titles-item-text {
+        color: $tabs-titles-item-active-color;
+        font-weight: $tabs-titles-item-active-font-weight;
+      }
 
       .nut-tabs-titles-item-line {
         overflow: unset;
@@ -113,6 +126,10 @@
         overflow: unset;
         width: 40px;
         height: 20px;
+
+        .nut-icon {
+          color: $tabs-titles-item-active-color;
+        }
       }
     }
 
@@ -162,7 +179,6 @@
         border-radius: $tabs-tab-button-border-radius;
         font-weight: $font-weight-bold;
         background-color: $tabs-tab-button-active-background-color;
-        color: $color-primary;
         border: $tabs-tab-button-active-border;
       }
     }

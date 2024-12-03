@@ -40,6 +40,7 @@ const TabsDemo = () => {
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
+      title4_1: '数量多,滚动操作2',
       title5: '左右布局',
       title6: '左右布局-微笑曲线',
       title12: '嵌套布局',
@@ -64,6 +65,7 @@ const TabsDemo = () => {
       title2: 'Match By Value',
       title3: 'Data Is Rendered Asynchronously For 3s',
       title4: 'A Large Number Of Scrolling Operations',
+      title4_1: 'A Large Number Of Scrolling Operations',
       title5: 'Left And Right Layout',
       title6: 'Left And Right Layout - Smile Curve',
       title12: 'Tabs In Tabs',
@@ -118,7 +120,7 @@ const TabsDemo = () => {
         <Demo15 />
         <View className="h2">{translated.title4}</View>
         <Demo16 />
-        <View className="h2">{translated.title4} 2</View>
+        <View className="h2">{translated.title4_1}</View>
         <Demo17 />
         <View className="h2">{translated.title5}</View>
         <Demo18 />

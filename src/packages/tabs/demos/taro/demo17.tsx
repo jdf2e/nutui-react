@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
+import { Text } from '@tarojs/components'
 
 const Demo17 = () => {
-  const [tab4value, setTab4value] = useState<string | number>('0')
-  const list4 = Array.from(new Array(10).keys())
+  const [tabvalue, setTabvalue] = useState<string | number>('0')
+  const list = Array.from(new Array(10).keys())
   return (
     <>
       <Tabs
-        value={tab4value}
-        style={{ height: '300px' }}
+        value={tabvalue}
+        style={{ height: 300 }}
         onChange={(value) => {
-          setTab4value(value)
+          setTabvalue(value)
         }}
         direction="vertical"
       >
-        {list4.map((item) => (
+        {list.map((item) => (
           <Tabs.TabPane key={item} title={`Tab ${item}`}>
-            Tab {item}
+            <Text>Tab {item}</Text>
           </Tabs.TabPane>
         ))}
       </Tabs>
