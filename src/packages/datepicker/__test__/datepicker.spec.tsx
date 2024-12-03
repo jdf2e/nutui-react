@@ -160,7 +160,7 @@ test('Increment step setting', async () => {
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[1]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item')
+  const lists = columns.querySelectorAll('.nut-picker-roller-item-title')
   expect(lists.length).toBe(12)
 })
 
@@ -183,6 +183,6 @@ test('Filter Time', async () => {
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[3]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item')
+  const lists = columns.querySelectorAll('.nut-picker-roller-item-title')
   expect(lists.length).toBe(4)
 })
