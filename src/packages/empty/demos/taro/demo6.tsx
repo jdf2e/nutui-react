@@ -8,7 +8,7 @@ const Demo6 = () => {
     <Empty status="error" description="加载失败">
       <View style={{ marginTop: pxTransform(10) }}>
         <Button type="primary" size="small">
-          重试
+          刷新重试
         </Button>
       </View>
     </Empty>

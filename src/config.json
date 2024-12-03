@@ -17,7 +17,8 @@
       {
         "name": "official-theme-react",
         "cName": "官方主题",
-        "eName": "Official Theme"
+        "eName": "Official Theme",
+        "show": true
       },
       {
         "name": "theme-react",
@@ -769,7 +770,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "liukun"
+          "author": "liukun",
+          "v14": true
         },
         {
           "version": "3.0.0",

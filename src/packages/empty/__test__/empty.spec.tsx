@@ -31,9 +31,9 @@ test('should render actions correctly', () => {
       actions={[{ text: '操作1' }, { text: '操作2' }]}
     />
   )
-  expect(container.querySelector('.nut-empty-actions')).toBeTruthy()
+  expect(container.querySelector('.nut-empty-actions-base')).toBeTruthy()
   expect(
-    container.querySelectorAll('.nut-empty-actions .nut-button').length
+    container.querySelectorAll('.nut-empty-actions-base .nut-button').length
   ).toEqual(2)
 })
 test('should render custom image correctly', () => {
