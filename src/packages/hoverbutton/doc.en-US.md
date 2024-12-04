@@ -20,14 +20,6 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::
 
-### Icon And Text
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
 ### Multiple Buttons
 
 :::demo
@@ -49,6 +41,14 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 :::demo
 
 <CodeBlock src='taro/demo4.tsx'></CodeBlock>
+
+:::
+
+### Custom Node
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

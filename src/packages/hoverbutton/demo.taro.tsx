@@ -19,7 +19,7 @@ const HoverDemo = () => {
     'zh-CN': {
       show: '展示',
       basic: '基础用法',
-      customNode: '按钮和文字',
+      customNode: '自定义内容',
       multiButtons: '多个按钮',
       hasTabbar: '有底部导航栏的情况',
       customZIndex: '自定义层级',
@@ -61,14 +61,6 @@ const HoverDemo = () => {
           }}
         />
 
-        <View className="h2">{translated.customNode}</View>
-        <Cell
-          title={`${translated.show}${translated.customNode}`}
-          onClick={() => {
-            setCurDemo('customNode')
-          }}
-        />
-
         <View className="h2">{translated.multiButtons}</View>
         <Cell
           title={`${translated.show}${translated.multiButtons}`}
@@ -103,6 +95,14 @@ const HoverDemo = () => {
             }}
           />
         )} */}
+
+        <View className="h2">{translated.customNode}</View>
+        <Cell
+          title={`${translated.show}${translated.customNode}`}
+          onClick={() => {
+            setCurDemo('customNode')
+          }}
+        />
       </ScrollView>
 
       {curDemo === 'basic' && <Demo1 />}

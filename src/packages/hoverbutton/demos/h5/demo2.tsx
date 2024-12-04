@@ -30,6 +30,9 @@ const Demo2 = () => {
       <HoverButton.Item icon={<Cart />} onClick={testClick1} />
       <HoverButton.Item icon={<Cart />} onClick={testClick2} />
       <HoverButton.Item icon={<Cart />} onClick={testClick3} />
+      <HoverButton.Item icon={<Cart />} onClick={testClick3}>
+        购物
+      </HoverButton.Item>
     </HoverButton>
   )
 }

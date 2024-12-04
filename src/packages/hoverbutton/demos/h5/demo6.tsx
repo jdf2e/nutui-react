@@ -3,7 +3,6 @@
  */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react'
-import { Cart } from '@nutui/icons-react'
 
 const Demo1 = () => {
   return (
@@ -45,19 +44,6 @@ const Demo1 = () => {
             }}
           >
             238
-          </div>
-        </div>
-        <div
-          className="nut-hoverbutton-item-container"
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Cart style={{ width: 14, height: 14, marginTop: 5 }} />
-          <div style={{ fontSize: 10, marginTop: 5, lineHeight: '9px' }}>
-            购物
           </div>
         </div>
       </HoverButton>

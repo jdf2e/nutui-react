@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View, BaseEventOrig } from '@tarojs/components'
+import { BaseEventOrig, ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony, harmonyAndRn } from '@/utils/platform-taro'
 
@@ -24,7 +24,7 @@ const isHarmony = harmony()
 const isNative = harmonyAndRn()
 
 export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
-  const { className, style, icon, onClick } = {
+  const { className, style, icon, onClick, children } = {
     ...defaultProps,
     ...props,
   } as any
@@ -49,11 +49,48 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
     isNative && setTouchStart(false)
   }
 
+  const renderBody = () => {
+    if (icon && !children)
+      return (
+        <View className={`${classPrefix}-icon`}>
+          {React.cloneElement(icon, {
+            className: 'nut-icon',
+            size: 20,
+            ...nativeProps,
+          })}
+        </View>
+      )
+    if (icon && children) {
+      return (
+        <>
+          <View
+            className={classNames({
+              [`${classPrefix}-text-icon`]: true,
+            })}
+          />
+          {React.cloneElement(icon, {
+            className: 'nut-icon',
+            size: 14,
+            ...nativeProps,
+          })}
+          <View
+            className={classNames({
+              [`${classPrefix}-text`]: true,
+            })}
+          >
+            {children}
+          </View>
+        </>
+      )
+    }
+  }
+
   return (
     <View
       className={classNames([`${classPrefix}-container`, className], {
         [`${classPrefix}-container-active`]: isNative && isTouchStart,
         [`${classPrefix}-container-harmony`]: isHarmony,
+        [`${classPrefix}-container-icontext`]: icon && children,
       })}
       style={style}
       onTouchStart={handleActiveStart}
@@ -61,13 +98,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
       onTouchCancel={handleActiveEnd}
       onClick={handleClick}
     >
-      <View className={`${classPrefix}-icon`}>
-        {React.cloneElement(icon, {
-          className: 'nut-icon',
-          size: 20,
-          ...nativeProps,
-        })}
-      </View>
+      {renderBody()}
     </View>
   )
 }

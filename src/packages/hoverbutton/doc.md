@@ -20,14 +20,6 @@ import { HoverButton } from '@nutui/nutui-react'
 
 :::
 
-### 按钮和文字
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
 ### 多个按钮
 
 :::demo
@@ -57,6 +49,14 @@ import { HoverButton } from '@nutui/nutui-react'
 :::demo
 
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 自定义内容
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
