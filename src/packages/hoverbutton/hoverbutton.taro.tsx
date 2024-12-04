@@ -9,7 +9,7 @@ import HoverButtonItem, {
 } from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
 import pxTransform from '@/utils/px-transform'
-import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/constant'
+import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
