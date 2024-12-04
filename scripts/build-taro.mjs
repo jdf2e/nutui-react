@@ -70,6 +70,7 @@ async function buildES(p) {
       'src/packages/**/types.ts',
       'src/packages/**/context.ts',
       'src/packages/**/utils.ts',
+      'src/packages/**/constant.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
