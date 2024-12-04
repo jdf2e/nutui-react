@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem } from '@nutui/nutui-react'
+import { Uploader, Cell, FileItem, Space } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   const [list, setList] = useState<FileItem[]>([])
-  const uploaderStyle = {
-    marginInlineEnd: '10px',
-    marginBottom: '10px',
-  }
   function sleep(time: number) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
@@ -23,14 +19,15 @@ const Demo3 = () => {
   return (
     <>
       <Cell style={{ flexWrap: 'wrap' }}>
-        <Uploader
-          value={list}
-          onChange={setList}
-          upload={(file: File) => upload(file)}
-          style={uploaderStyle}
-          maxCount={5}
-          multiple
-        />
+        <Space wrap>
+          <Uploader
+            value={list}
+            onChange={setList}
+            upload={(file: File) => upload(file)}
+            maxCount={5}
+            multiple
+          />
+        </Space>
       </Cell>
     </>
   )

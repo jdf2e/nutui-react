@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem } from '@nutui/nutui-react'
+import { Uploader, Cell, FileItem, Space } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const Demo1 = () => {
@@ -10,10 +10,6 @@ const Demo1 = () => {
     },
   ])
 
-  const uploaderStyle = {
-    marginInlineEnd: '10px',
-    marginBottom: '10px',
-  }
   function sleep(time: number) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
@@ -34,19 +30,19 @@ const Demo1 = () => {
   return (
     <>
       <Cell style={{ flexWrap: 'wrap' }}>
-        <Uploader
-          uploadLabel="商品主图"
-          value={list}
-          onChange={setList}
-          upload={(file: File) => upload(file)}
-          style={uploaderStyle}
-        />
-        <Uploader style={uploaderStyle} upload={(file: File) => upload(file)} />
-        <Uploader
-          uploadIcon={<Dongdong />}
-          upload={(file: File) => uploadFail(file)}
-          style={uploaderStyle}
-        />
+        <Space wrap>
+          <Uploader
+            uploadLabel="商品主图"
+            value={list}
+            onChange={setList}
+            upload={(file: File) => upload(file)}
+          />
+          <Uploader upload={(file: File) => upload(file)} />
+          <Uploader
+            uploadIcon={<Dongdong />}
+            upload={(file: File) => uploadFail(file)}
+          />
+        </Space>
       </Cell>
     </>
   )
