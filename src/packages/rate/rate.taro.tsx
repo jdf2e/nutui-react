@@ -18,7 +18,7 @@ import { RateProps } from './types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
-  showScore: true,
+  showScore: false,
   count: 5,
   min: 0,
   checkedIcon: null,

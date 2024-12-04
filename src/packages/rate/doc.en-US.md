@@ -113,7 +113,7 @@ import { Rate } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | size | Score size | `large` \| `normal` \| `small` | `normal` |
-| showScore | Show Score | `boolean` | `true` |
+| showScore | Show Score | `boolean` | `false` |
 | defaultValue | Uncontrolled star value | `number` | `0` |
 | value | Controlled star value | `number` | `0` |
 | count | total number of stars | `number` | `5` |

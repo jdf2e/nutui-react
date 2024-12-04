@@ -44,7 +44,7 @@
     &-large {
       margin-left: calc($rate-item-margin * 2);
       .nut-icon {
-        height: calc($rate-font-size + 8px);
+        height: calc($rate-icon-size + 8px);
         width: calc($rate-icon-size + 8px);
       }
     }

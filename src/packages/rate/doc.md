@@ -113,7 +113,7 @@ import { Rate } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
-| showScore | 展示评分 | `boolean` | `true` |
+| showScore | 展示评分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默认值 | `number` | `0` |
 | value | 受控的 star 数值 | `number` | `0` |
 | count | star 总数 | `number` | `5` |

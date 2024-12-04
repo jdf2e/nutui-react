@@ -68,6 +68,7 @@ page {
   // danger color
   --nutui-red-1: #ffebef;
   --nutui-red-2: #ff0f23;
+  --nutui-red-6: #ff3333;
 
   // danger color 语义化
   --nutui-color-danger: var(--nutui-red-2); // 背景或文字
@@ -110,6 +111,8 @@ page {
   --nutui-gray-6: #505259;
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
   --nutui-gray-7: #1a1a1a;
+  // icon 未选中颜色
+  --nutui-gray-8: #dadce0;
 
   --nutui-black-1: rgba(0, 0, 0, 0);
   // 蒙层色
