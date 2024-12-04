@@ -6,15 +6,15 @@ const Demo6 = () => {
     <Cell>
       <Space align="end" wrap>
         <Button>按钮1</Button>
-        <div>
-          <Button style={{ marginBottom: 5 }}>按钮2</Button>
+        <Space direction="vertical">
           <Button>按钮2</Button>
-        </div>
-        <div>
-          <Button style={{ marginBottom: 5 }}>按钮3</Button>
-          <Button style={{ marginBottom: 5 }}>按钮3</Button>
+          <Button>按钮2</Button>
+        </Space>
+        <Space direction="vertical">
           <Button>按钮3</Button>
-        </div>
+          <Button>按钮3</Button>
+          <Button>按钮3</Button>
+        </Space>
       </Space>
     </Cell>
   )

@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from '@tarojs/components'
 import { Space, Button, Cell } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
@@ -7,15 +6,15 @@ const Demo5 = () => {
     <Cell>
       <Space justify="start" wrap>
         <Button>按钮1</Button>
-        <View>
-          <Button style={{ marginBottom: 5 }}>按钮2</Button>
+        <Space direction="vertical">
           <Button>按钮2</Button>
-        </View>
-        <View>
-          <Button style={{ marginBottom: 5 }}>按钮3</Button>
-          <Button style={{ marginBottom: 5 }}>按钮3</Button>
+          <Button>按钮2</Button>
+        </Space>
+        <Space direction="vertical">
           <Button>按钮3</Button>
-        </View>
+          <Button>按钮3</Button>
+          <Button>按钮3</Button>
+        </Space>
       </Space>
     </Cell>
   )
