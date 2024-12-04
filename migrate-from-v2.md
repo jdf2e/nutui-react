@@ -616,6 +616,8 @@ plugins: [
 - 移除 `isAsync`，通过 `checked`实现
 - 移除 `activeColor` ，通过css变量`--nutui-switch-open-background-color`实现
 - 移除 `inactiveColor`，通过css变量`--nutui-switch-close-background-color`实现
+- `activeText 属性类型更改为 `ReactNode`
+- `inactiveText` 属性类型更改为 `ReactNode`
 
 #### Toast
 
