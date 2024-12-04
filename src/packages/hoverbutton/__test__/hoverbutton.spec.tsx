@@ -21,9 +21,10 @@ test('child element count', () => {
       <HoverButton.Item icon={<Cart />} />
       <HoverButton.Item icon={<Cart />} />
       <HoverButton.Item icon={<Cart />} />
+      <HoverButton.Item icon={<Cart />}>购物</HoverButton.Item>
     </HoverButton>
   )
-  expect(container.querySelector('.nut-hoverbutton')?.childElementCount).toBe(3)
+  expect(container.querySelector('.nut-hoverbutton')?.childElementCount).toBe(4)
   expect(container).toMatchSnapshot()
 })
 
