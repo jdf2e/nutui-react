@@ -73,6 +73,7 @@ const Index = () => {
             setSearch(e)
           }} />
           <View style={{ height: 25 }}></View>
+          </> : null}
         {navs.map((nav) => (
           <View key={nav.enName} className="index-components-item">
             {nav.enName === 'dataentry' ? null : (
@@ -93,7 +94,7 @@ const Index = () => {
                       {com.name}
                     </View>
                   </View>
-                ) : null,
+                ) : null
               )}
             </View>
           </View>
