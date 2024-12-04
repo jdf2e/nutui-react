@@ -50,7 +50,7 @@
     }
 
     &-small {
-      margin-left: calc($rate-item-margin - 2px);
+      margin-left: calc($rate-item-margin / 2);
       .nut-icon {
         height: calc($rate-icon-size - 4px);
         width: calc($rate-icon-size - 4px);
@@ -114,8 +114,8 @@
     }
 
     &-small {
-      padding-left: calc($rate-item-margin - 2px);
       font-size: calc($rate-font-size - 2px);
+      padding-left: calc($rate-item-margin / 2);
     }
 
     &-disabled {
