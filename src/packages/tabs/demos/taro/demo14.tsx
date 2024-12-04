@@ -1,44 +1,25 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 // TODO：鸿蒙支持的不好
 const Demo14 = () => {
-  const [tab2value, setTab2value] = useState<string | number>('0')
+  const [tabvalue, setTabvalue] = useState<string | number>('0')
   return (
     <>
       <Tabs
-        value={tab2value}
+        value={tabvalue}
         autoHeight
         onChange={(value) => {
-          setTab2value(value)
+          setTabvalue(value)
         }}
       >
         <Tabs.TabPane title="Tab 1">
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
-          <View>
-            <Text>Tab 1</Text>
-          </View>
+          {Array(8)
+            .fill(null)
+            .map((_, index) => (
+              <View key={index}>Tab 1</View>
+            ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>

@@ -3,7 +3,7 @@ import { Tabs } from '@nutui/nutui-react-taro'
 
 const Demo21 = () => {
   const [tabvalue, setTabvalue] = useState<string | number>('0')
-  const [tab2value, setTab2value] = useState<string | number>('0')
+  const [tabvalue1, setTabvalue1] = useState<string | number>('0')
   return (
     <>
       <Tabs
@@ -15,9 +15,9 @@ const Demo21 = () => {
       >
         <Tabs.TabPane title="Tab 1">
           <Tabs
-            value={tab2value}
+            value={tabvalue1}
             onChange={(value) => {
-              setTab2value(value)
+              setTabvalue1(value)
             }}
             direction="vertical"
           >

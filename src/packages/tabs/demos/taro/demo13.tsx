@@ -15,24 +15,18 @@ const Demo13 = () => {
         }}
       >
         <Tabs.TabPane title="Tab 1">
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
-          <View>Tab 1</View>
+          {Array(8)
+            .fill(null)
+            .map((_, index) => (
+              <View key={index}>Tab 1</View>
+            ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2">
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
-          <View>Tab 2</View>
+          {Array(8)
+            .fill(null)
+            .map((_, index) => (
+              <View key={index}>Tab 2</View>
+            ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
