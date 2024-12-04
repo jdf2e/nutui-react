@@ -532,6 +532,8 @@ plugins: [
 - 新增`onUploadQueueChange`属性，图片上传队列变化时触发
 - 简化`FileItem`类型的使用，除url外其他属性变为可选
 - 调整多选状态下`maxCount`属性的默认值为`Number.MAX_VALUE`
+- 新增了的 `upload` 方法
+- `defaultValue` 和 `value` 的类型从 `FileType` 变更为 `FileItem`
 
 ### 操作反馈
 
