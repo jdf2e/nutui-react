@@ -21,7 +21,7 @@ const Demo1 = () => {
         onClick={() =>
           Toast.show({
             title: '成功提示',
-            content: '成功提示成功提示成功提示',
+            content: '简介表述最多展示十二个字',
             icon: 'success',
           })
         }
