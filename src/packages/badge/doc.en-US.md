@@ -85,8 +85,8 @@ import { Badge } from '@nutui/nutui-react'
 | dot | Is dotted, When `value` is a custom content, dot does not take effect | `boolean` | `false` |
 
 | size | dot size, effective when dot is equal to `true` | `small` \| `normal` \| `large` | `large` |
-| top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
-| right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
+| top | Up and down offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
+| right | Left and right offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
 | color | background color,the default value is the theme primary color | `string` | `-` |
 | fill | Fill Mode | `solid` \| `outline` | `solid` |
 

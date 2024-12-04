@@ -84,8 +84,8 @@ import { Badge } from '@nutui/nutui-react-taro'
 | max | value 为数值时，最大值 | `number` | `99` |
 | dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
 | size | dot 尺寸，当 dot 等于 `true` 时生效 | `small` \| `normal` \| `large` | `large` |
-| top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
-| right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
+| top | 上下偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
+| right | 左右偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | color | 徽标背景颜色 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 

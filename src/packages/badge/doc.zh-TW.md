@@ -84,8 +84,8 @@ import { Badge } from '@nutui/nutui-react'
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 是否為小點，當`value`值為自定義內容時，dot不生效 | `boolean` | `false` |
 | size | dot 尺寸，當 dot 等於 `true` 時生效 | `small` \| `normal` \| `large` | `large` |
-| top | 上下偏移量，支持單位設置，可設置為："0"或0 等 | `string` \| `number` | `"0"` |
-| right | 左右偏移量，支持單位設置，可設置為："5"或5 等 | `string` \| `number` | `"5"` |
+| top | 上下偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
+| right | 左右偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
 | color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 
