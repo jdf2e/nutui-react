@@ -770,7 +770,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "liukun"
+          "author": "liukun",
+          "v14": true
         },
         {
           "version": "3.0.0",
@@ -896,6 +897,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "VickyYe"
         }
       ]

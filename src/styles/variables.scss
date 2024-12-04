@@ -901,11 +901,11 @@ $toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
 $toast-text-font-size: var(--nutui-toast-text-font-size, 14px) !default;
 $toast-font-color: var(--nutui-toast-font-color, $white) !default;
-$toast-inner-padding: var(--nutui-toast-inner-padding, 16px 24px) !default;
+$toast-inner-padding: var(--nutui-toast-inner-padding, 13px 16px) !default;
 $toast-inner-bg-color: var(--nutui-toast-inner-bg-color, $color-mask) !default;
 $toast-inner-border-radius: var(
   --nutui-toast-inner-border-radius,
-  16px
+  $radius-xl
 ) !default;
 $toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
 
@@ -1956,19 +1956,15 @@ $empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
 $empty-background-color: var(--nutui-empty-background-color, #fff) !default;
 $empty-title-margin-bottom: var(
   --nutui-empty-title-margin-bottom,
-  8px
+  12px
 ) !default;
 $empty-title-line-height: var(
   --nutui-empty-title-line-height,
-  $font-size-base
-) !default;
-$empty-description-margin-top: var(
-  --nutui-empty-description-margin-top,
-  0px
+  $font-size-l
 ) !default;
 $empty-description-line-height: var(
   --nutui-empty-description-line-height,
-  1.2
+  1
 ) !default;
 
 // cascader（✅）
