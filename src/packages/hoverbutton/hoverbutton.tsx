@@ -33,8 +33,10 @@ export const HoverButton: FunctionComponent<
 
   const baseStyle = { ...style }
 
+  const UI_GUIDE = 60
+
   if (tabbarHeight) {
-    const bottom = tabbarHeight + 60
+    const bottom = tabbarHeight + UI_GUIDE
     baseStyle.bottom = `${bottom}px`
   }
 
