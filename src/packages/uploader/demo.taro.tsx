@@ -11,6 +11,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 import Header from '@/sites/components/header'
 
 const UploaderDemo = () => {
@@ -25,6 +26,7 @@ const UploaderDemo = () => {
       manualExecution: '选中文件后，通过按钮手动执行上传',
       disabled: '禁用状态',
       customDeleteIcon: '自定义删除icon',
+      camera: '直接调起摄像头（移动端生效）',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -36,6 +38,7 @@ const UploaderDemo = () => {
       manualExecution: '選取檔後，通過按鈕手動執行上傳',
       disabled: '禁用狀態',
       customDeleteIcon: '自定義刪除icon',
+      camera: '直接調起攝像頭（移動端生效）',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -48,6 +51,7 @@ const UploaderDemo = () => {
         'After selecting Chinese, manually perform the upload via the button',
       disabled: 'Disabled state',
       customDeleteIcon: 'Custom DeleteIcon',
+      camera: 'Direct camera up (mobile)',
     },
   })
 
@@ -72,10 +76,12 @@ const UploaderDemo = () => {
         <Demo6 />
         <View className="h2">{translated.customDeleteIcon}</View>
         <Demo7 />
-        <View className="h2">{translated.manualExecution}</View>
+        <View className="h2">{translated.camera}</View>
         <Demo8 />
-        <View className="h2">{translated.uploadListDefault}</View>
+        <View className="h2">{translated.manualExecution}</View>
         <Demo9 />
+        <View className="h2">{translated.uploadListDefault}</View>
+        <Demo10 />
       </ScrollView>
     </>
   )

@@ -1,42 +1,14 @@
-import React, { useState } from 'react'
-import { Loading, Star } from '@nutui/icons-react'
-import { Uploader, Button, FileItem } from '@nutui/nutui-react-taro'
+import React, { useRef } from 'react'
+import { Uploader, Button, Cell } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+
+interface uploadRefState {
+  submit: () => void
+  clear: () => void
+}
 
 const Demo9 = () => {
-  const [list, setList] = useState<FileItem[]>([
-    {
-      name: '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-    },
-    {
-      name: '文件2.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-    },
-    {
-      name: '文件3.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上传失败',
-      failIcon: <Star style={{ color: 'white' }} />,
-    },
-    {
-      name: '文件444.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中...',
-    },
-    {
-      name: '文件555.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中...',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-  ])
+  const uploadRef = useRef<uploadRefState>(null)
   function sleep(time: number) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
@@ -46,27 +18,40 @@ const Demo9 = () => {
   }
   async function upload(file: File) {
     await sleep(2000)
-    if (Math.random() < 0.5) {
-      return {
-        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      }
+    return {
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
     }
-    throw new Error('Fail to upload')
+  }
+  const submitUpload = () => {
+    ;(uploadRef.current as uploadRefState).submit()
+  }
+  const clearUpload = () => {
+    ;(uploadRef.current as uploadRefState).clear()
   }
   return (
-    <Uploader
-      upload={(file: File) => upload(file)}
-      value={list}
-      onChange={setList}
-      maxCount="10"
-      multiple
-      previewType="list"
-      style={{ marginBottom: 20 }}
-    >
-      <Button type="success" size="small">
-        上传文件
-      </Button>
-    </Uploader>
+    <Cell style={{ display: 'flex', flexDirection: 'column' }}>
+      <Uploader
+        maxCount="5"
+        multiple
+        autoUpload={false}
+        ref={uploadRef}
+        upload={(file: File) => upload(file)}
+        style={{ marginBottom: 10 }}
+      />
+      <View style={{ display: 'flex' }}>
+        <Button
+          type="success"
+          size="small"
+          onClick={submitUpload}
+          style={{ marginRight: '10px' }}
+        >
+          执行上传
+        </Button>
+        <Button type="primary" size="small" onClick={clearUpload}>
+          手动清空上传
+        </Button>
+      </View>
+    </Cell>
   )
 }
 export default Demo9
