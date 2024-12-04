@@ -13,7 +13,7 @@ const Demo1 = () => {
     justifyContent: 'center',
     color: '#fff',
     textAlign: 'center',
-    borderRadius: pxTransform(6),
+    borderRadius: pxTransform(2),
     backgroundColor: '#ff8881',
     fontSize: pxTransform(14),
   }
