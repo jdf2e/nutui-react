@@ -18,6 +18,8 @@ export type FileItem = {
   failIcon?: React.ReactNode
 
   file?: File
+
+  percentage?: number
 }
 
 export type FileItemStatus = 'ready' | 'uploading' | 'success' | 'error'

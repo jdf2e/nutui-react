@@ -139,6 +139,7 @@ import { Uploader } from '@nutui/nutui-react'
 | type | 文件類型 | `image` |
 | loadingIcon | 加載圖標 | `-` |
 | failIcon | 加載失敗圖標 | `-` |
+| percentage | 上傳進度條百分比 | `-` |
 
 ### Methods
 

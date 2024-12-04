@@ -135,6 +135,7 @@ import { Uploader } from '@nutui/nutui-react'
 | type | file type | `image` |
 | loadingIcon | Loading Icon | `-` |
 | failIcon | failureIcon | `-` |
+| percentage | upload prgress percent | `-` |
 
 ### Methods
 
