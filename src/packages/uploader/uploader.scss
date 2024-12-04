@@ -178,8 +178,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: var(--nutui-uploader-image-width, 100px);
-        height: var(--nutui-uploader-image-height, 100px);
+        width: $uploader-image-width;
+        height: $uploader-image-height;
         position: initial;
         border-radius: $uploader-image-border-radius;
       }
