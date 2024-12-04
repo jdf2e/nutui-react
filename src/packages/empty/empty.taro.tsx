@@ -124,7 +124,7 @@ export const Empty: FunctionComponent<
         description
       )}
       {actions.length ? (
-        <View className={`${classPrefix}-actions`}>
+        <View className={`${classPrefix}-actions-${size}`}>
           {actions.map((action, index) => {
             const { text, ...rest } = action
             return (

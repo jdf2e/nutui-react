@@ -28,7 +28,6 @@ export interface ToastProps extends BasicComponent {
   lockScroll: boolean
   size: ToastSize
   icon: React.ReactNode
-  iconSize: string
   maskClassName?: string
   content: React.ReactNode
   contentClassName?: string
@@ -37,10 +36,6 @@ export interface ToastProps extends BasicComponent {
   visible: boolean
   wordBreak?: ToastWordBreak
   onClose: () => void
-  /**
-   * @deprecated Please use `content` prop instead.
-   */
-  msg: React.ReactNode
 }
 
 const defaultProps = {
@@ -51,9 +46,7 @@ const defaultProps = {
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  iconSize: '20',
   content: '',
-  msg: '',
   type: 'text',
   closeOnOverlayClick: false,
   lockScroll: false,
@@ -78,9 +71,7 @@ export const Toast: FunctionComponent<
       position,
       contentStyle,
       icon,
-      iconSize,
       content,
-      msg,
       duration,
       type,
       title,
@@ -165,12 +156,10 @@ export const Toast: FunctionComponent<
     }
 
     return {
-      success: (
-        <Success className="nut-toast-icon" color="#ffffff" size={iconSize} />
-      ),
-      fail: <Failure color="#ffffff" size={iconSize} />,
-      warn: <Tips color="#ffffff" size={iconSize} />,
-      loading: <Loading color="#ffffff" size={iconSize} />,
+      success: <Success />,
+      fail: <Failure />,
+      warn: <Tips />,
+      loading: <Loading />,
     }[type]
   }
 
@@ -198,7 +187,16 @@ export const Toast: FunctionComponent<
         >
           <View className={`${classPrefix} ${classes}`} id={id}>
             <View
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
+              className={classNames(
+                `${classPrefix}-inner`,
+                `${classPrefix}-${position}`,
+                contentClassName,
+                `${classPrefix}-inner-${size}`,
+                `${classPrefix}-inner-${wordBreak}`,
+                {
+                  [`${classPrefix}-inner-descrption`]: content,
+                }
+              )}
               style={{ ...styles, ...contentStyle }}
             >
               {hasIcon() ? (
@@ -209,11 +207,9 @@ export const Toast: FunctionComponent<
               {title ? (
                 <Text className={`${classPrefix}-title`}>{title}</Text>
               ) : null}
-              <Text
-                className={`${classPrefix}-text  ${content ? '' : `${classPrefix}-text-empty`}`}
-              >
-                {content || msg}
-              </Text>
+              {content ? (
+                <Text className={`${classPrefix}-text`}>{content}</Text>
+              ) : null}
             </View>
           </View>
         </Overlay>

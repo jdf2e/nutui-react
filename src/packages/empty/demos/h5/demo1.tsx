@@ -5,16 +5,19 @@ const Demo1 = () => {
   return (
     <>
       <Empty
-        title="标题"
-        description="无数据"
-        actions={[{ text: '操作按钮' }, { text: '操作按钮', type: 'primary' }]}
+        title="全屏缺省标题"
+        description="内容描述内容描述内容描述"
+        actions={[{ text: '次要操作' }, { text: '主要操作', type: 'primary' }]}
       />
       <Empty
-        description="无数据"
+        description="内容描述内容描述内容描述"
         actions={[{ text: '操作按钮' }]}
         style={{ marginTop: '10px' }}
       />
-      <Empty description="无数据" style={{ marginTop: '10px' }} />
+      <Empty
+        description="内容描述内容描述内容描述"
+        style={{ marginTop: '10px' }}
+      />
     </>
   )
 }

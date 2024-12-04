@@ -52,8 +52,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 30%;
-    max-width: 95.7%;
+    min-width: 96px;
+    max-width: 60%;
+    // max-width: 224px;
+    box-sizing: border-box;
     font-size: $toast-text-font-size;
     text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
@@ -61,6 +63,11 @@
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
+
+    &-descrption {
+      max-width: 68.2%;
+      // max-width: 256px;
+    }
 
     &-normal {
       word-break: normal;
@@ -101,19 +108,18 @@
   &-text {
     color: #ffffff;
     text-align: $toast-inner-text-align;
-    &-empty {
-      margin-bottom: -8px;
-    }
+    line-height: 20px;
   }
 
   &-title {
     color: #ffffff;
     font-size: $toast-title-font-size;
-    font-weight: 500;
+    font-weight: 600;
     text-align: $toast-inner-text-align;
+    line-height: 22px;
   }
 
-  &-icon {
+  .nut-icon {
     width: 24px;
     height: 24px;
     color: #ffffff;
@@ -124,7 +130,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8px;
+    margin: 3px 0 5px;
     color: #ffffff;
 
     &-icon {
