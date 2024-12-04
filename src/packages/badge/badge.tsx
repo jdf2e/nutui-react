@@ -80,9 +80,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       if (fill === 'outline') {
         style.color = color
         style.background = '#FFFFFF'
-        if (!color?.includes('gradient')) {
-          style.border = `1px solid ${color}`
-        }
       } else {
         style.color = '#FFFFFF'
         style.background = color

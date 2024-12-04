@@ -101,7 +101,7 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-background-color | badge 背景色 | `$color-primary` |
 | \--nutui-badge-color | badge 內容色值 | `$color-primary-text)` |
 | \--nutui-badge-font-size | badge 內容字號 | `$font-size-xxs` |
-| \--nutui-badge-border | badge 邊框 | `0px solid $color-primary-text` |
+| \--nutui-badge-border | badge 邊框 | `1px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge 邊框圓角 | `14px` |
 | \--nutui-badge-min-width | badge 最小寬度 | `6px` |
 | \--nutui-badge-padding | badge 的padding值 | `1px 4px` |
@@ -109,7 +109,8 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-icon-size | badge 為自定義icon時 的 size | `10px` |
 | \--nutui-badge-content-transform | badge 內容位置 | `translate(50%, -50%)` |
 | \--nutui-badge-z-index | badge 自定義icon時的z-index | `1` |
-| \--nutui-badge-dot-width | badge 為圓點時，size 等於 normal 的寬度、高度、圓角 | `6px` |
-| \--nutui-badge-dot-small-width | badge 為圓點時，size 等於 small 的寬度、高度、圓角 | `4px` |
-| \--nutui-badge-dot-large-width | badge 為圓點時，size 等於 large 的寬度、高度、圓角 | `8px` |
-| \--nutui-badge-dot-border | badge 為圓點時的邊框 | `0px solid $color-primary-text` |
+| \--nutui-badge-dot-width | badge 為圓點時，size 等於 normal 的寬高 | `6px` |
+| \--nutui-badge-dot-small-width | badge 為圓點時，size 等於 small 的寬高 | `4px` |
+| \--nutui-badge-dot-large-width | badge 為圓點時，size 等於 large 的寬高 | `8px` |
+| \--nutui-badge-dot-border | badge 為圓點時的邊框 | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-border | badge 為 outline 填充模式時的邊框 | `1px solid $color-primary-text` |

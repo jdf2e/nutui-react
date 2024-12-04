@@ -102,7 +102,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-background-color | badge background color | `$color-primary` |
 | \--nutui-badge-color | badge content color value | `$color-primary-text)` |
 | \--nutui-badge-font-size | badge content font size | `$font-size-xxs` |
-| \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
+| \--nutui-badge-border | badge border | `1px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge border rounded corners | `14px` |
 | \--nutui-badge-min-width | badge minimum width | `6px` |
 | \--nutui-badge-padding | badge’s padding value | `1px 4px` |
@@ -110,7 +110,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-icon-size | The size of badge when it is a custom icon | `10px` |
 | \--nutui-badge-content-transform | badge content position | `translate(50%, -50%)` |
 | \--nutui-badge-z-index | badge z-index when customizing the icon | `1` |
-| \--nutui-badge-dot-width | When the badge is a dot, size is equal to the width, height, and rounded corners of normal | `6px` |
-| \--nutui-badge-dot-small-width | When badge is a dot, size is equal to the width, height, and rounded corners of small | `4px` |
-| \--nutui-badge-dot-large-width | When badge is a dot, size is equal to the width, height, and rounded corners of large | `8px` |
-| \--nutui-badge-dot-border | The border when the badge is a dot | `0px solid $color-primary-text` |
+| \--nutui-badge-dot-width | When the badge is a dot, the size is equal to the width and height of normal | `6px` |
+| \--nutui-badge-dot-small-width | When badge is a dot, size is equal to the width and height of small | `4px` |
+| \--nutui-badge-dot-large-width | When the badge is a dot, size is equal to the width and height of large | `8px` |
+| \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |

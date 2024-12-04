@@ -102,9 +102,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
         isHarmony
           ? (style.backgroundColor = '#FFFFFF')
           : (style.background = '#FFFFFF')
-        if (!color?.includes('gradient')) {
-          style.borderColor = color
-        }
       } else {
         style.color = '#fff'
         isHarmony ? (style.backgroundColor = color) : (style.background = color)

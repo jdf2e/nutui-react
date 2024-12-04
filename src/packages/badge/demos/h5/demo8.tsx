@@ -11,7 +11,14 @@ const Demo8 = () => {
       <Badge value={8} fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge value="内容" color="blue" fill="outline">
+      <Badge
+        value="内容"
+        color="blue"
+        fill="outline"
+        style={{
+          '--nutui-badge-outline-border': '1px solid blue',
+        }}
+      >
         <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>

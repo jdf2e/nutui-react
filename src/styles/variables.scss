@@ -1588,7 +1588,10 @@ $badge-background-color: var(
 ) !default;
 $badge-color: var(--nutui-badge-color, $color-primary-text) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-xxs) !default;
-$badge-border: var(--nutui-badge-border, 0px solid $color-primary) !default;
+$badge-border: var(
+  --nutui-badge-border,
+  1px solid $color-primary-text
+) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, $badge-height) !default;
 $badge-min-width: var(--nutui-badge-min-width, 6px) !default;
 $badge-padding: var(--nutui-badge-padding, 1px 4px) !default;
@@ -1602,7 +1605,11 @@ $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 6px) !default;
 $badge-dot-small-width: var(--nutui-badge-dot-width, 4px) !default;
 $badge-dot-large-width: var(--nutui-badge-dot-width, 8px) !default;
-$badge-dot-border: var(--nutui-badge-dot-border, 0px solid $color-primary);
+$badge-dot-border: var(--nutui-badge-dot-border, 1px solid $color-primary-text);
+$badge-outline-border: var(
+  --nutui-badge-outline-border,
+  1px solid $color-primary
+);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
