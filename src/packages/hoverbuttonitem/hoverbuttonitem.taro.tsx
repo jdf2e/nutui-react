@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { BaseEventOrig, ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import { getIcon } from '@/packages/hoverbuttonitem/utils'
 
 export interface HoverButtonItemProps extends BasicComponent {
   icon?: React.ReactNode
@@ -51,15 +52,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
 
   const renderBody = () => {
     if (icon && !children)
-      return (
-        <View className={`${classPrefix}-icon`}>
-          {React.cloneElement(icon, {
-            className: 'nut-icon',
-            size: 20,
-            ...nativeProps,
-          })}
-        </View>
-      )
+      return <View className={`${classPrefix}-icon`}>{getIcon(icon)}</View>
     if (icon && children) {
       return (
         <>
@@ -68,11 +61,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
               [`${classPrefix}-text-icon`]: true,
             })}
           />
-          {React.cloneElement(icon, {
-            className: 'nut-icon',
-            size: 14,
-            ...nativeProps,
-          })}
+          {getIcon(icon)}
           <View
             className={classNames({
               [`${classPrefix}-text`]: true,

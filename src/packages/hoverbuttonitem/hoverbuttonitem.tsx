@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getIcon } from '@/packages/hoverbuttonitem/utils'
 
 export interface HoverButtonItemProps extends BasicComponent {
   className?: string
@@ -31,16 +32,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
 
   const renderBody = () => {
     if (icon && !children)
-      return (
-        <div className={`${classPrefix}-icon`}>
-          {React.isValidElement(icon)
-            ? React.cloneElement(icon, {
-                // @ts-ignore
-                size: 20,
-              })
-            : icon}
-        </div>
-      )
+      return <div className={`${classPrefix}-icon`}>{getIcon(icon)}</div>
     if (icon && children) {
       return (
         <>
@@ -49,12 +41,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
               [`${classPrefix}-text-icon`]: true,
             })}
           />
-          {React.isValidElement(icon)
-            ? React.cloneElement(icon, {
-                // @ts-ignore
-                size: 14,
-              })
-            : icon}
+          {getIcon(icon)}
           <div
             className={classNames({
               [`${classPrefix}-text`]: true,
