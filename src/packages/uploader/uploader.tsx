@@ -14,7 +14,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Button from '@/packages/button'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
-import { FileItem } from '../uploader'
+import { FileItem } from './types'
 import { mergeProps } from '@/utils/merge-props'
 
 export interface UploaderProps extends BasicComponent {
