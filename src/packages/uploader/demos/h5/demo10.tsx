@@ -28,6 +28,7 @@ const Demo10 = () => {
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       status: 'uploading',
       message: '上传中...',
+      percentage: 30,
     },
     {
       name: '文件555.png',
@@ -35,6 +36,7 @@ const Demo10 = () => {
       status: 'uploading',
       message: '上传中...',
       loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
+      percentage: 80,
     },
   ])
   function sleep(time: number) {

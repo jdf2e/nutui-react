@@ -2,7 +2,7 @@ import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Image from '@/packages/image'
 import { FileItem } from '../uploader'
-import Progress from '../progress'
+import { Progress } from '../progress/progress'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,
@@ -120,14 +120,15 @@ export const Preview: React.FunctionComponent<any> = ({
                       onClick={() => onDeleteItem(item, index)}
                     />
                   )}
+
+                  {item.status === 'uploading' && item.percentage && (
+                    <Progress
+                      percent={item.percentage}
+                      color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+                      showText={false}
+                    />
+                  )}
                 </div>
-              )}
-              {item.status === 'uploading' && (
-                <Progress
-                  percent={item.percentage}
-                  color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-                  showText={false}
-                />
               )}
             </div>
           )

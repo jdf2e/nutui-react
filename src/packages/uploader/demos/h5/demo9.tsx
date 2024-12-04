@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Uploader, Button, Cell } from '@nutui/nutui-react'
+import { Uploader, Button, Cell, Space } from '@nutui/nutui-react'
 
 interface uploadRefState {
   submit: () => void
@@ -37,19 +37,14 @@ const Demo9 = () => {
         upload={(file: File) => upload(file)}
         style={{ marginBottom: 10 }}
       />
-      <div>
-        <Button
-          type="success"
-          size="small"
-          onClick={submitUpload}
-          style={{ marginInlineEnd: '10px' }}
-        >
+      <Space wrap>
+        <Button type="success" size="small" onClick={submitUpload}>
           执行上传
         </Button>
         <Button type="primary" size="small" onClick={clearUpload}>
           手动清空上传
         </Button>
-      </div>
+      </Space>
     </Cell>
   )
 }
