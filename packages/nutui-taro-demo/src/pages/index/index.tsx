@@ -12,7 +12,7 @@ import {
   Video,
   Textarea,
 } from '@tarojs/components'
-import { SearchBar } from '@/packages/searchbar/searchbar'
+import { SearchBar } from '@/packages/searchbar/searchbar.taro'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
