@@ -98,7 +98,7 @@ Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 | \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
 | \--nutui-toast-inner-top | `toast`内容区自定义高度 | `50%` |
-| \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
+| \--nutui-toast-inner-padding | `toast`内容区padding值 | `13px 16px` |
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
-| \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |
+| \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `$radius-xl` |
 | \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |

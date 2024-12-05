@@ -87,6 +87,5 @@ import { Empty } from '@nutui/nutui-react'
 | \--nutui-empty-image-small-size | size 爲 small 時，Empty組件圖片的尺寸大小 | `120px` |
 | \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `0px` |
 | \--nutui-empty-title-line-height | Empty組件圖片標題行高 | `$font-size-l` |
-| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值 | `4px` |
 | \--nutui-empty-description-line-height | Empty組件圖片描述行高 | `1` |
 | \--nutui-empty-background-color | Empty組件背景色 | `#fff` |

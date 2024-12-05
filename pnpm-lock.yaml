@@ -97,6 +97,9 @@ importers:
       '@tarojs/plugin-platform-alipay':
         specifier: 4.0.8-beta.1
         version: 4.0.8-beta.1(@tarojs/service@4.0.8-beta.0(@swc/helpers@0.5.13))(@tarojs/shared@4.0.8-beta.1)
+      '@tarojs/plugin-platform-jd':
+        specifier: 4.0.8-beta.1
+        version: 4.0.8-beta.1(@tarojs/service@4.0.8-beta.0(@swc/helpers@0.5.13))(@tarojs/shared@4.0.8-beta.1)
       '@tarojs/plugin-platform-weapp':
         specifier: 4.0.8-beta.1
         version: 4.0.8-beta.1(@tarojs/service@4.0.8-beta.0(@swc/helpers@0.5.13))(@tarojs/shared@4.0.8-beta.1)
@@ -2622,6 +2625,13 @@ packages:
 
   '@tarojs/plugin-platform-alipay@4.0.8-beta.1':
     resolution: {integrity: sha512-Nf0djrZFmuF4NG48ae1sqpqfRwcYvDM3nw7zpA798ypfJ49T8jqch+EyGTnyBpYSf+f6W43Q19BsUHzPI+NWAA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@tarojs/service': 4.0.8-beta.1
+      '@tarojs/shared': 4.0.8-beta.1
+
+  '@tarojs/plugin-platform-jd@4.0.8-beta.1':
+    resolution: {integrity: sha512-whHKWCbDp2oN2g9p0bZqZtTKmVYg2N6nk7u5c0nw8xHXMnW1T6eJ3w8m58r3Uc87g3KkjtznAY5TCtyVdiq0WQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@tarojs/service': 4.0.8-beta.1
@@ -11858,6 +11868,11 @@ snapshots:
       - supports-color
 
   '@tarojs/plugin-platform-alipay@4.0.8-beta.1(@tarojs/service@4.0.8-beta.0(@swc/helpers@0.5.13))(@tarojs/shared@4.0.8-beta.1)':
+    dependencies:
+      '@tarojs/service': 4.0.8-beta.0(@swc/helpers@0.5.13)
+      '@tarojs/shared': 4.0.8-beta.1
+
+  '@tarojs/plugin-platform-jd@4.0.8-beta.1(@tarojs/service@4.0.8-beta.0(@swc/helpers@0.5.13))(@tarojs/shared@4.0.8-beta.1)':
     dependencies:
       '@tarojs/service': 4.0.8-beta.0(@swc/helpers@0.5.13)
       '@tarojs/shared': 4.0.8-beta.1

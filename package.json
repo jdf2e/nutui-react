@@ -132,6 +132,7 @@
     "@tarojs/components": "4.0.8-beta.1",
     "@tarojs/plugin-platform-alipay": "4.0.8-beta.1",
     "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
+    "@tarojs/plugin-platform-jd": "4.0.8-beta.1",
     "@tarojs/react": "4.0.8-beta.1",
     "@tarojs/taro": "4.0.8-beta.1",
     "@testing-library/jest-dom": "^6.4.2",

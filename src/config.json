@@ -642,6 +642,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "dsj"
         },
         {
@@ -686,6 +687,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "dsj"
         },
         {
@@ -897,6 +899,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "VickyYe"
         }
       ]
@@ -1002,8 +1005,8 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "author": "songsong",
-          "v14": true
+          "v14": true,
+          "author": "songsong"
         },
         {
           "version": "2.0.0",
@@ -1044,6 +1047,18 @@
           "type": "component",
           "cName": "分页",
           "desc": "当数据量较多时，采用分页的形式分隔长列表。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v14": true,
+          "author": "lkjh3214"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
           "sort": 6,
           "show": true,
           "taro": true,
@@ -1202,7 +1217,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeDetail",
           "type": "component",
           "cName": "配送时间",
