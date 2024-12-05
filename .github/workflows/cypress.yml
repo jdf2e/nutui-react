@@ -3,10 +3,10 @@ name: E2E Tests
 on:
   push:
     branches:
-      - V3.0
+      - feat_v3.x
   pull_request:
     branches:
-      - V3.0
+      - feat_v3.x
 
 jobs:
   test:
@@ -28,7 +28,7 @@ jobs:
         env:
           CI: true
         run: pnpm cypress install --force && pnpm e2e:run:h5
-        
+
       # Taro的自动化测试，demo包管理解决后解除注释
       # - name: Run E2E Tests for Taro
       #   env:
