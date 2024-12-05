@@ -10,7 +10,8 @@
   box-sizing: border-box;
   height: $tabs-titles-height;
   user-select: none;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   background: $tabs-titles-background-color;
   scrollbar-width: none;
 
@@ -39,11 +40,6 @@
     .nut-tabs-titles-item {
       padding: 0 22px;
     }
-  }
-
-  &-scrollable {
-    overflow-x: auto;
-    overflow-y: hidden;
   }
 
   &-item {
@@ -102,9 +98,6 @@
     }
 
     &-active {
-      color: $tabs-titles-item-active-color;
-      font-weight: $tabs-titles-item-active-font-weight;
-
       .nut-icon {
         color: $tabs-titles-item-active-color;
       }
@@ -135,13 +128,24 @@
 
     &-disabled {
       color: $color-text-disabled;
+      .nut-icon {
+        color: $color-text-disabled;
+      }
+      .nut-tabs-titles-item-text {
+        color: $color-text-disabled;
+      }
     }
   }
 
   &-simple {
-    .nut-tabs-titles-item-active {
-      color: $color-title;
-      font-size: $tabs-titles-item-active-font-size;
+    .nut-tabs-titles-item {
+      &-active {
+        .nut-tabs-titles-item-text,
+        .nut-icon {
+          color: $color-title;
+          font-size: $tabs-titles-item-active-font-size;
+        }
+      }
     }
   }
 
@@ -151,7 +155,6 @@
 
     .nut-tabs-titles-item {
       padding: 0;
-
       &-active {
         font-weight: $font-weight-bold;
         background-color: $white;
@@ -175,7 +178,7 @@
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-text {
         background: $color-default-light;
-        color: $color-text;
+        color: $tabs-titles-item-active-color;
         border-radius: $tabs-tab-button-border-radius;
         font-weight: $font-weight-bold;
         background-color: $tabs-tab-button-active-background-color;
@@ -267,11 +270,6 @@
         padding-left: 14px;
       }
     }
-  }
-
-  .nut-tabs-titles-scrollable {
-    overflow-x: hidden;
-    overflow-y: auto;
   }
 
   .nut-tabs-titles-item {

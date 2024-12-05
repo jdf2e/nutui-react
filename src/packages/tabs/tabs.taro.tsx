@@ -123,7 +123,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
-    [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
