@@ -13,7 +13,7 @@ const HoverButtonDemo = () => {
     'zh-CN': {
       show: '展示',
       basic: '基础用法',
-      customNode: '按钮和文字',
+      customNode: '自定义内容',
       multiButtons: '多个按钮',
       hasTabbar: '有底部导航栏的情况',
       customZIndex: '自定义层级',
@@ -87,16 +87,15 @@ const HoverButtonDemo = () => {
           }}
         />
         {curDemo === 'customSpacing' && <Demo5 />}
+        <h2>{translated.customNode}</h2>
+        <Cell
+          title={`${translated.show}${translated.customNode}`}
+          onClick={() => {
+            setCurDemo('customNode')
+          }}
+        />
+        {curDemo === 'customNode' && <Demo6 />}
       </div>
-
-      <h2>{translated.customNode}</h2>
-      <Cell
-        title={`${translated.show}${translated.customNode}`}
-        onClick={() => {
-          setCurDemo('customNode')
-        }}
-      />
-      {curDemo === 'customNode' && <Demo6 />}
     </>
   )
 }
