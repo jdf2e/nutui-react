@@ -53,13 +53,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   const transformY = useRef(0)
   const [scrollDistance, setScrollDistance] = useState(0)
 
-  const isHidden = (index: number) => {
-    if (index >= currIndex + 8 || index <= currIndex - 8) {
-      return true
-    }
-    return false
-  }
-
   const setTransform = (
     type: string,
     deg: string,
@@ -206,12 +199,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     }
   }
 
-  const touchRollerStyle = () => {
-    return {
-      transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-      transform: `rotate3d(1, 0, 0, ${touchDeg})`,
-    }
-  }
   const touchTileStyle = () => {
     return {
       transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
