@@ -9,10 +9,10 @@ const Demo1 = () => {
         status="warning"
         actions={[
           {
-            text: '次要按钮',
+            text: '次要操作',
           },
           {
-            text: '主要按钮',
+            text: '主要操作',
             type: 'primary',
           },
         ]}

@@ -8,8 +8,8 @@ export interface SwitchProps extends BasicComponent {
   checked: boolean
   defaultChecked: boolean
   disabled: boolean
-  activeText: string
-  inactiveText: string
+  activeText: React.ReactNode
+  inactiveText: React.ReactNode
   onChange: (val: boolean, event: React.MouseEvent) => void
 }
 const defaultProps = {
@@ -83,25 +83,20 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
         {!value && !activeText && (
           <div className={`${classPrefix}-close-line`} />
         )}
-        {activeText && (
-          <div
-            className={classNames([
-              [`${classPrefix}-label`],
-              [
-                value
-                  ? `${classPrefix}-label-open`
-                  : `${classPrefix}-label-close`,
-              ],
-              {
-                [`${classPrefix}-label-open-rtl`]: rtl && value,
-                [`${classPrefix}-button-close-rtl`]: rtl && !value,
-              },
-            ])}
-          >
-            {value ? activeText : inactiveText}
-          </div>
-        )}
       </div>
+      {activeText && (
+        <div
+          className={classNames(`${classPrefix}-label`, {
+            [`${classPrefix}-label-open`]: value,
+            [`${classPrefix}-label-close`]: !value,
+            [`${classPrefix}-label-open-rtl`]: rtl && value,
+            [`${classPrefix}-label-close-rtl`]: rtl && !value,
+            [`${classPrefix}-label-close-disabled`]: disabled && !value,
+          })}
+        >
+          {value ? activeText : inactiveText}
+        </div>
+      )}
     </div>
   )
 }

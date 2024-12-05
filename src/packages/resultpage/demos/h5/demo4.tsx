@@ -6,12 +6,12 @@ const Demo1 = () => {
     <>
       <Cell>
         <ResultPage
-          title="信息补充"
+          title="信息反馈"
           description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
           status="info"
           actions={[
             {
-              text: '主要按钮',
+              text: '主要操作',
               type: 'primary',
             },
           ]}
@@ -19,12 +19,12 @@ const Demo1 = () => {
       </Cell>
       <Cell>
         <ResultPage
-          title="信息补充"
+          title="信息反馈"
           description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
           status="info"
           actions={[
             {
-              text: '次要按钮',
+              text: '次要操作',
             },
           ]}
         />

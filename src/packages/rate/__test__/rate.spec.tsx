@@ -74,6 +74,22 @@ test('allowHalf test', () => {
     )
   }
 })
+test('size test', () => {
+  const { container } = render(<Rate count={1} size="large" />)
+  const el = container.querySelector('.nut-rate-item')
+  if (el) {
+    expect(el).toHaveClass('nut-rate-item-large')
+  }
+  expect(container).toMatchSnapshot()
+})
+
+test('showScore test', () => {
+  const { container } = render(<Rate count={1} showScore defaultValue={0.5} />)
+  const el = container.querySelector('.nut-rate-score')
+  if (el) {
+    expect(el?.innerHTML).toBe('0.5')
+  }
+})
 
 test('touchable', () => {
   const state = {

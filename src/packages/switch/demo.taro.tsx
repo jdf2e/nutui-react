@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { useTranslate } from '@/sites/assets/locale//taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -9,6 +9,7 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -18,6 +19,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定义颜色',
       supportText: '支持文字',
+      supportIcon: '支持Icon',
       eventTip: '触发了 onChange 事件，开关状态：',
     },
     'zh-TW': {
@@ -26,6 +28,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定義顏色',
       supportText: '支持文字',
+      supportIcon: '支持Icon',
       eventTip: '觸發了 onChange 事件，開關狀態：',
     },
     'en-US': {
@@ -34,6 +37,7 @@ const SwitchDemo = () => {
       asyncControl: 'controlled',
       customColor: 'Custom Color',
       supportText: 'Support Text',
+      supportIcon: 'Support Icon',
       eventTip: 'Emit onChange event, current state:',
     },
   })
@@ -47,12 +51,14 @@ const SwitchDemo = () => {
         <Demo2 />
         <View className="h2">{translated.disabled}</View>
         <Demo3 />
-        <View className="h2">{translated.eventTip}</View>
-        <Demo4 />
-        <View className="h2">{translated.customColor}</View>
-        <Demo5 />
         <View className="h2">{translated.supportText}</View>
+        <Demo4 />
+        <View className="h2">{translated.supportIcon}</View>
+        <Demo5 />
+        <View className="h2">{translated.eventTip}</View>
         <Demo6 />
+        <View className="h2">{translated.customColor}</View>
+        <Demo7 />
       </ScrollView>
     </>
   )
