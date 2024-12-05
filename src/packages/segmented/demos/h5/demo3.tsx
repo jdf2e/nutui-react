@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Segmented, SegmentedItem } from '@nutui/nutui-react'
+import { Segmented, SegmentedItem, Cell } from '@nutui/nutui-react'
 import { AfterSaleService, Apps } from '@nutui/icons-react'
 
 const defaultOptions: SegmentedItem[] = [
@@ -18,13 +18,15 @@ const defaultOptions: SegmentedItem[] = [
 const Demo3 = () => {
   const [value, setValue] = useState<string | number>('Apps')
   return (
-    <Segmented
-      value={value}
-      options={defaultOptions}
-      onChange={(val) => {
-        setValue(val)
-      }}
-    />
+    <Cell>
+      <Segmented
+        value={value}
+        options={defaultOptions}
+        onChange={(val) => {
+          setValue(val)
+        }}
+      />
+    </Cell>
   )
 }
 export default Demo3

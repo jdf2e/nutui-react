@@ -1,6 +1,6 @@
 .nut-segmented {
   display: inline-flex;
-  height: 24px;
+  height: $segmented-height;
   min-width: 24px;
   padding: $segmented-padding;
   align-items: center;
@@ -10,7 +10,7 @@
 
 .nut-segmented-item {
   display: flex;
-  height: 20px;
+  height: $segmented-item-height;
   align-items: center;
   justify-content: center;
   padding: $segmented-item-padding;

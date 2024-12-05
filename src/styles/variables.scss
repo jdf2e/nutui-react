@@ -1970,12 +1970,14 @@ $searchbar-input-text-align: var(
 ) !default;
 
 // segmented
+$segmented-height: var(--nutui-segmented-height, 24px) !default;
 $segmented-padding: var(--nutui-segmented-padding, $spacing-xxxs) !default;
 $segmented-border-radius: var(--nutui-segmented-radius, $radius-xs) !default;
 $segmented-background: var(
   --nutui-segmented-background,
   $color-mask-part
 ) !default;
+$segmented-item-height: var(--nutui-segmented-height, 20px) !default;
 $segmented-item-padding: var(
   --nutui-segmented-item-padding,
   $spacing-xxs $spacing-xs

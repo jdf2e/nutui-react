@@ -7,9 +7,7 @@ import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   options: [],
-  onChange: <T = any,>(value: T) => {
-    console.log(value)
-  },
+  onChange: <T = any,>(value: T) => {},
 }
 
 export const Segmented = (props: Partial<SegmentedProps>) => {
@@ -51,9 +49,10 @@ export const Segmented = (props: Partial<SegmentedProps>) => {
                 {opt.label}
               </View>
             )
-          case 'string':
-          case 'number':
-          default:
+          default: {
+            if (typeof option !== 'string' && typeof option !== 'number') {
+              console.warn('Unsupported option type:', optionType)
+            }
             return (
               <View
                 className={classNames(itemClassPrefix, {
@@ -67,6 +66,7 @@ export const Segmented = (props: Partial<SegmentedProps>) => {
                 {option as string}
               </View>
             )
+          }
         }
       })
     },
