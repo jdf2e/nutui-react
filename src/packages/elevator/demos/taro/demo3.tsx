@@ -61,6 +61,7 @@ const Demo3 = () => {
   }
   return (
     <Elevator
+      className="test-elevator3"
       showKeys={false}
       list={dataList}
       height="260"

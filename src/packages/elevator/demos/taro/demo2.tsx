@@ -113,7 +113,7 @@ const Demo2 = () => {
   }
   return (
     <Elevator
-      className="test-elevator1"
+      className="test-elevator2"
       list={dataList}
       height="220"
       floorKey={floorKey}
