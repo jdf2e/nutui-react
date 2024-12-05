@@ -1,15 +1,16 @@
 import React, {
-  FunctionComponent,
-  useRef,
-  useEffect,
-  useState,
   createContext,
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
-import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
+import Taro, { createSelectorQuery, nextTick } from '@tarojs/taro'
 
 import { ScrollView } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import useUuid from '@/utils/use-uuid'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
@@ -65,6 +66,7 @@ export const Elevator: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const uuid = useUuid()
   const classPrefix = 'nut-elevator'
   const listview = useRef<HTMLDivElement>(null)
   const initData = {
@@ -106,7 +108,7 @@ export const Elevator: FunctionComponent<
     for (let i = 0; i < state.current.listGroup.length; i++) {
       const query = createSelectorQuery()
       query
-        .selectAll(`.${className} .nut-elevator-item-${i}`)
+        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-item-${i}`)
         .boundingClientRect()
       // eslint-disable-next-line no-loop-func
       query.exec((res: any) => {
@@ -180,7 +182,7 @@ export const Elevator: FunctionComponent<
   const setListGroup = () => {
     if (listview.current) {
       createSelectorQuery()
-        .selectAll(`.${className} .nut-elevator-list-item`)
+        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-list-item`)
         .node((el) => {
           state.current.listGroup = [...Object.keys(el)]
           calculateHeight()
@@ -220,7 +222,11 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+    <div
+      className={`${classPrefix} ${className} ${classPrefix}-${uuid}`}
+      style={style}
+      {...rest}
+    >
       <div
         className={`${classPrefix}-list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
