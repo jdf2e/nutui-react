@@ -9,8 +9,8 @@ const Demo6 = () => {
       style={{ marginBottom: '20px' }}
     >
       <div style={{ marginTop: '10px' }}>
-        <Button icon="refresh" type="primary" size="small">
-          重试
+        <Button type="primary" size="small">
+          刷新重试
         </Button>
       </div>
     </Empty>

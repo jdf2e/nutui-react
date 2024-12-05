@@ -7,28 +7,16 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { getRect } from '@/utils/use-client-rect'
 import useRefs from '@/utils/use-refs'
-
-export interface RateProps extends BasicComponent {
-  count: number
-  value: number
-  defaultValue: number
-  min: number
-  checkedIcon: React.ReactNode
-  uncheckedIcon: React.ReactNode
-  disabled: boolean
-  readOnly: boolean
-  allowHalf: boolean
-  touchable: boolean
-  onChange: (value: number) => void
-  onTouchEnd: (e: TouchEvent, value: number) => void
-}
+import { RateProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
+  size: 'normal',
+  showScore: false,
   count: 5,
   min: 0,
   checkedIcon: null,
@@ -42,6 +30,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
     className,
     style,
+    size,
+    showScore,
     count,
     value,
     defaultValue,
@@ -219,7 +209,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
       {countArray.map((n, index) => {
         return (
           <div
-            className={`${classPrefix}-item`}
+            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
             key={n}
             ref={setRefs(index)}
             onClick={(event) => onClick(event, n)}
@@ -246,6 +236,19 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           </div>
         )
       })}
+      {showScore ? (
+        <span
+          className={classNames(
+            `${classPrefix}-score`,
+            `${classPrefix}-score-${size}`,
+            {
+              [`${classPrefix}-score-disabled`]: disabled,
+            }
+          )}
+        >
+          {score.toFixed(1)}
+        </span>
+      ) : null}
     </div>
   )
 }

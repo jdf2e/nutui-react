@@ -1,7 +1,5 @@
 import React from 'react'
-import { ConfigProvider, Cell, Button } from '@nutui/nutui-react-taro'
-// import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react-taro'
-// import { harmonyAndRn } from '@/utils/platform-taro'
+import { ConfigProvider, Cell, Button, Rate } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const darkTheme = {
@@ -13,7 +11,9 @@ const Demo2 = () => {
     <>
       <ConfigProvider theme={darkTheme}>
         <Cell.Group>
-          {/* <Cell>{harmonyAndRn() ? null : <Rate defaultValue={3} />}</Cell> */}
+          <Cell>
+            <Rate defaultValue={3} />
+          </Cell>
           <Cell>
             <Button type="primary" block>
               提交

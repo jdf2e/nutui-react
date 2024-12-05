@@ -237,22 +237,19 @@ async function copyStyles() {
     resolve(__dirname, '../dist/styles'),
   )
 
-  const content = [
+  let content = [
     `@import '../theme-default.scss';`,
-    `@import '../variables.scss';`,
-    `@import '../mixins/index.scss';`,
-    `@import '../animation/index.scss';`,
+    `@import '../theme-dark.scss';`,
+    `@import '../jd-font';`,
   ]
   const projectID = process.env.VITE_APP_PROJECT_ID
   if (projectID) {
-    content[1] = `@import '../variables-${projectID}.scss';`
+    content = [
+      `@import '../theme-${projectID}.scss';`,
+      `@import '../jd-font';`,
+    ]
   }
-  const scssFiles = await glob(['dist/es/packages/**/*.scss'])
-  scssFiles.forEach((file) => {
-    content.push(
-      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`,
-    )
-  })
+
   dest('dist/styles/themes/default.scss', content.join('\n'))
 }
 
@@ -289,12 +286,6 @@ async function buildCSS(p) {
       join('dist/cjs', cssPath, 'style/css.js'),
       `import './style.css'`,
     )
-
-    // copy harmonycss
-    if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
-    }
 
     // 删除 import
     // 写入 style.scss

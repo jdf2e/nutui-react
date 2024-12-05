@@ -19,7 +19,7 @@ jobs:
           echo "${{github.event_name}}"
           if [[ "${{ github.event.pull_request.base.ref }}" == "next" ]]; then
             echo "label=2.x" >> $GITHUB_ENV
-          elif [[ "${{ github.event.pull_request.base.ref }}" == "V3.0" ]]; then
+          elif [[ "${{ github.event.pull_request.base.ref }}" == "feat_v3.x" ]]; then
             echo "label=3.x" >> $GITHUB_ENV
           else
             echo "label=" >> $GITHUB_ENV

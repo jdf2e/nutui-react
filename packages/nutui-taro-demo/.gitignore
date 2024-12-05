@@ -13,5 +13,6 @@ src/exhibition/
 src/feedback/
 src/layout/
 src/nav/
+src/app.config.ts
 .npmrc
 nutui-react/

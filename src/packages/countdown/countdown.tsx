@@ -2,32 +2,12 @@ import React, {
   useState,
   useRef,
   useEffect,
-  ReactNode,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-
-export type CountDownType = 'default' | 'primary'
-
-export interface CountDownProps extends BasicComponent {
-  type: CountDownType
-  paused: boolean
-  startTime: number
-  endTime: number
-  remainingTime: number
-  millisecond: boolean
-  format: string
-  autoStart: boolean
-  time: number
-  destroy: boolean
-  onEnd: () => void
-  onPaused: (restTime: number) => void
-  onRestart: (restTime: number) => void
-  onUpdate: (restTime: any) => void
-  children: ReactNode
-}
+import { CountDownProps, CountDownTimeProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -194,14 +174,18 @@ const InternalCountDown: ForwardRefRenderFunction<
       } else if (formatCache.includes('SS')) {
         formatCache = formatCache.replace('SS', msC.slice(0, 2))
       } else if (formatCache.includes('S')) {
-        formatCache = formatCache.replace('SS', msC.slice(0, 1))
+        formatCache = formatCache.replace('S', msC.slice(0, 1))
       }
     }
+    const isTextDom =
+      type === 'text'
+        ? `<span class="nut-countdown-number-text">$1</span>`
+        : `<span class="nut-countdown-number">$1</span>`
     formatCache = formatCache.replace(
       /(\d+)/g,
       type === 'primary'
         ? `<span class="nut-countdown-number-primary">$1</span>`
-        : `<span class="nut-countdown-number">$1</span>`
+        : isTextDom
     )
 
     return formatCache
@@ -241,7 +225,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
 
-    onUpdate && onUpdate(tranTime)
+    onUpdate && onUpdate(tranTime as CountDownTimeProps)
   }, [restTimeStamp])
 
   // 监听暂停

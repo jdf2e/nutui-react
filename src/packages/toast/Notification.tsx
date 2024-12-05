@@ -138,7 +138,16 @@ export default class Notification extends React.PureComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${classPrefix}-inner-${size} ${classPrefix}-inner-${wordBreak}`}
+              className={classNames(
+                `${classPrefix}-inner`,
+                `${classPrefix}-${position}`,
+                contentClassName,
+                `${classPrefix}-inner-${size}`,
+                `${classPrefix}-inner-${wordBreak}`,
+                {
+                  [`${classPrefix}-inner-descrption`]: content,
+                }
+              )}
               style={{
                 ...contentStyle,
               }}
@@ -147,11 +156,9 @@ export default class Notification extends React.PureComponent<
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
-              <span
-                className={`${classPrefix}-text ${content ? '' : `${classPrefix}-text-empty`}`}
-              >
-                {content}
-              </span>
+              {content ? (
+                <span className={`${classPrefix}-text`}>{content}</span>
+              ) : null}
             </div>
           </div>
         </Overlay>

@@ -115,12 +115,12 @@
     &.prev,
     &.next,
     &.disabled {
+      cursor: not-allowed;
       .nut-calendarcard-day-top,
       .nut-calendarcard-day-inner,
       .nut-calendarcard-day-bottom {
         color: $calendar-disable-color;
       }
-      cursor: not-allowed;
     }
   }
 }

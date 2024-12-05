@@ -43,6 +43,28 @@ describe('Countdown', () => {
     })
   })
 
+  test('type props text', async () => {
+    const { container } = render(
+      <CountDown endTime={Date.now() + 1 * 1000} type="text" />
+    )
+    const countdownDom = container.querySelector('.nut-countdown') as Element
+    expect(container).toMatchSnapshot()
+    expect(
+      countdownDom?.querySelectorAll('.nut-countdown-number-text')?.length
+    ).toBe(3)
+  })
+
+  test('type props primary', async () => {
+    const { container } = render(
+      <CountDown endTime={Date.now() + 1 * 1000} type="primary" />
+    )
+    const countdownDom = container.querySelector('.nut-countdown') as Element
+    expect(container).toMatchSnapshot()
+    expect(
+      countdownDom?.querySelectorAll('.nut-countdown-number-primary')?.length
+    ).toBe(3)
+  })
+
   test('paused props', async () => {
     const testClick = vi.fn()
     let paused = false

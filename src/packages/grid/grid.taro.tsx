@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import GridContext from './context'
 import { GridItem, GridItemProps } from '../griditem/griditem.taro'
-import { pxCheck } from '@/utils/px-check'
 
 export type GridDirection = 'horizontal' | 'vertical'
 
@@ -21,9 +20,9 @@ export interface GridProps {
 
 const defaultProps = {
   columns: 4,
-  gap: 0,
+  gap: 9,
   center: true,
-  square: false,
+  square: true,
   reverse: false,
   direction: 'vertical',
 } as GridProps
@@ -65,10 +64,6 @@ export const Grid: FunctionComponent<
     if (style) {
       styleSelf = style
     }
-    if (gap) {
-      styleSelf.paddingLeft = pxCheck(gap)
-    }
-
     return styleSelf
   }
 

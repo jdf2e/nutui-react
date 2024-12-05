@@ -86,8 +86,6 @@ import { Empty } from '@nutui/nutui-react-taro'
 | \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `160px` |
 | \--nutui-empty-image-small-size | size 为 small 时，Empty组件图片的尺寸大小 | `120px` |
 | \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `0px` |
-| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `8px` |
-| \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-base` |
-| \--nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
-| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1.2` |
+| \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-l` |
+| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1` |
 | \--nutui-empty-background-color | Empty组件背景色 | `#fff` |
