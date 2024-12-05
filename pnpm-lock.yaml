@@ -171,7 +171,7 @@ importers:
         version: 10.4.20(postcss@8.4.47)
       axios:
         specifier: ^1.6.7
-        version: 1.7.7
+        version: 1.7.7(debug@4.3.7)
       cypress:
         specifier: ^13.15.0
         version: 13.15.1
@@ -337,6 +337,9 @@ importers:
       simple-git:
         specifier: ^3.25.0
         version: 3.27.0
+      start-server-and-test:
+        specifier: ^2.0.8
+        version: 2.0.8
       turndown:
         specifier: ^7.1.2
         version: 7.2.0
@@ -3388,6 +3391,9 @@ packages:
     resolution: {integrity: sha512-ixiS0nLNNG5jNQzgZJNoUpBKdo9yTYZMGJ+QgT2jmjR7G7+QHRCc4v6LQ3NgE7EBJq+o0ams3waJwkrlBom8Ig==}
     engines: {node: '>=14'}
 
+  arg@5.0.2:
+    resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
+
   argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==, tarball: https://r2.cnpmjs.org/argparse/-/argparse-1.0.10.tgz}
 
@@ -3654,7 +3660,7 @@ packages:
     resolution: {integrity: sha512-T7JQa+zsXXEa6/8ZhHcQEW1UFfVM49Ts65uBkFL6fz2QmrElqmbajIDJvuA0tEhRe5eIjpV9ZF+0RfZR9voJFQ==, tarball: https://r2.cnpmjs.org/blob-util/-/blob-util-2.0.2.tgz}
 
   bluebird@3.7.2:
-    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==, tarball: https://r2.cnpmjs.org/bluebird/-/bluebird-3.7.2.tgz}
+    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
 
   body-parser@1.20.3:
     resolution: {integrity: sha512-7rAxByjUMqQ3/bHJy7D6OGXvx/MMc4IqBn/X0fcM1QUcAItpZrBEYhWGem+tzXH90c+G01ypMcYJBO9Y30203g==}
@@ -3827,7 +3833,7 @@ packages:
     engines: {node: '>= 16'}
 
   check-more-types@2.24.0:
-    resolution: {integrity: sha512-Pj779qHxV2tuapviy1bSZNEL1maXr13bPYpsvSDB68HlYcYuhlDrmGd63i0JHMCLKzc7rUSNIrpdJlhVlNwrxA==, tarball: https://r2.cnpmjs.org/check-more-types/-/check-more-types-2.24.0.tgz}
+    resolution: {integrity: sha512-Pj779qHxV2tuapviy1bSZNEL1maXr13bPYpsvSDB68HlYcYuhlDrmGd63i0JHMCLKzc7rUSNIrpdJlhVlNwrxA==}
     engines: {node: '>= 0.8.0'}
 
   chokidar@3.6.0:
@@ -4397,6 +4403,9 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
+  duplexer@0.1.2:
+    resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
+
   each-props@3.0.0:
     resolution: {integrity: sha512-IYf1hpuWrdzse/s/YJOrFmU15lyhSzxelNVAHTEG3DtP4QsLTWZUzcUL3HMXmKQxXpa4EIrBPpwRgj0aehdvAw==}
     engines: {node: '>= 10.13.0'}
@@ -4873,6 +4882,9 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
+  event-stream@3.3.4:
+    resolution: {integrity: sha512-QHpkERcGsR0T7Qm3HNJSyXKEEj8AHNxkY3PK8TS2KJvQ7NiSHe3DDpwVKKtoYprL/AreyzFBeIkBIWChAqn60g==}
+
   event-target-shim@5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==, tarball: https://r2.cnpmjs.org/event-target-shim/-/event-target-shim-5.0.1.tgz}
     engines: {node: '>=6'}
@@ -4899,7 +4911,7 @@ packages:
     engines: {node: '>=10'}
 
   execa@5.1.1:
-    resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==, tarball: https://r2.cnpmjs.org/execa/-/execa-5.1.1.tgz}
+    resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
 
   execa@8.0.0:
@@ -5141,6 +5153,9 @@ packages:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
 
+  from@0.1.7:
+    resolution: {integrity: sha512-twe20eF1OxVxp/ML/kq2p1uc6KvFK/+vs8WjEbeKmV2He22MKm7YF2ANIt+EOqhJ5L3K/SuuPhk0hWQDjOM23g==}
+
   fs-extra@11.2.0:
     resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
     engines: {node: '>=14.14'}
@@ -5214,7 +5229,7 @@ packages:
     engines: {node: '>=8'}
 
   get-stream@6.0.1:
-    resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==, tarball: https://r2.cnpmjs.org/get-stream/-/get-stream-6.0.1.tgz}
+    resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
     engines: {node: '>=10'}
 
   get-stream@8.0.1:
@@ -5546,7 +5561,7 @@ packages:
     engines: {node: '>=8.12.0'}
 
   human-signals@2.1.0:
-    resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==, tarball: https://r2.cnpmjs.org/human-signals/-/human-signals-2.1.0.tgz}
+    resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
   human-signals@5.0.0:
@@ -6360,7 +6375,7 @@ packages:
     resolution: {integrity: sha512-Gcnl4Bd+hRO9P9icCP/RVVT2o8SFlPXofuCxvA2SaZuH45whSvf5p8x5oih5ftLiVhEI4sp5xDY+R+b3zJBh5w==}
 
   lazy-ass@1.6.0:
-    resolution: {integrity: sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==, tarball: https://r2.cnpmjs.org/lazy-ass/-/lazy-ass-1.6.0.tgz}
+    resolution: {integrity: sha512-cc8oEVoctTvsFZ/Oje/kGnHbpWHYBe8IAJe4C0QNc3t8uM/0Y8+erSz/7Y1ALuXTEZTMvxXwO6YbX1ey3ujiZw==}
     engines: {node: '> 0.8'}
 
   lead@4.0.0:
@@ -6676,6 +6691,9 @@ packages:
   map-stream@0.0.7:
     resolution: {integrity: sha512-C0X0KQmGm3N2ftbTGBhSyuydQ+vV1LC3f3zPvT3RXHXNZrvfPZcoXp/N5DOa8vedX/rTMm2CjTtivFg2STJMRQ==, tarball: https://r2.cnpmjs.org/map-stream/-/map-stream-0.0.7.tgz}
 
+  map-stream@0.1.0:
+    resolution: {integrity: sha512-CkYQrPYZfWnu/DAmVCpTSX/xHpKZ80eKh2lAkyA6AJTef6bW+6JpbQZN5rofum7da+SyN1bi5ctTm+lTfcCW3g==}
+
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
     engines: {node: '>=16'}
@@ -6913,7 +6931,7 @@ packages:
     hasBin: true
 
   mimic-fn@2.1.0:
-    resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==, tarball: https://r2.cnpmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz}
+    resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
 
   mimic-fn@4.0.0:
@@ -7179,7 +7197,7 @@ packages:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==, tarball: https://r2.cnpmjs.org/once/-/once-1.4.0.tgz}
 
   onetime@5.1.2:
-    resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==, tarball: https://r2.cnpmjs.org/onetime/-/onetime-5.1.2.tgz}
+    resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
 
   onetime@6.0.0:
@@ -7392,6 +7410,9 @@ packages:
   pathval@2.0.0:
     resolution: {integrity: sha512-vE7JKRyES09KiunauX7nd2Q9/L7lhok4smP9RZTDeD4MVs72Dp2qNFVz39Nz5a0FVEW0BJR6C0DYrq6unoziZA==}
     engines: {node: '>= 14.16'}
+
+  pause-stream@0.0.11:
+    resolution: {integrity: sha512-e3FBlXLmN/D1S+zHzanP4E/4Z60oFAa3O051qt1pxa7DEJWKAyil6upYVXCWadEnuoqa4Pkc9oUx9zsxYeRv8A==}
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==, tarball: https://r2.cnpmjs.org/pend/-/pend-1.2.0.tgz}
@@ -7637,6 +7658,11 @@ packages:
 
   prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+
+  ps-tree@1.2.0:
+    resolution: {integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==}
+    engines: {node: '>= 0.10'}
+    hasBin: true
 
   pseudomap@1.0.2:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==, tarball: https://r2.cnpmjs.org/pseudomap/-/pseudomap-1.0.2.tgz}
@@ -8309,6 +8335,9 @@ packages:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
 
+  split@0.3.3:
+    resolution: {integrity: sha512-wD2AeVmxXRBoX44wAycgjVpMhvbwdI2aZjCkvfNcH1YqHQvJVa1duWc73OyVGJUc05fhFaTZeQ/PYsrmyH0JVA==}
+
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==, tarball: https://r2.cnpmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz}
 
@@ -8333,6 +8362,11 @@ packages:
   stackframe@1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
 
+  start-server-and-test@2.0.8:
+    resolution: {integrity: sha512-v2fV6NV2F7tL1ocwfI4Wpait+IKjRbT5l3ZZ+ZikXdMLmxYsS8ynGAsCQAUVXkVyGyS+UibsRnvgHkMvJIvCsw==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   statuses@1.5.0:
     resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
     engines: {node: '>= 0.6'}
@@ -8347,6 +8381,9 @@ packages:
   stdin-discarder@0.2.2:
     resolution: {integrity: sha512-UhDfHmA92YAlNnCfhmq0VeNL5bDbiZGg7sZ2IvPsXubGkiNa9EC+tUTsjBRsYUAz87btI6/1wf4XoVvQ3uRnmQ==}
     engines: {node: '>=18'}
+
+  stream-combiner@0.0.4:
+    resolution: {integrity: sha512-rT00SPnTVyRsaSz5zgSPma/aHSOic5U1prhYdRy5HS2kTZviFpmDgzilbtsJsxiroqACmayynDN/9VzIbX5DOw==}
 
   stream-composer@1.0.2:
     resolution: {integrity: sha512-bnBselmwfX5K10AH6L4c8+S5lgZMWI7ZYrz2rvYjCPB2DIMC4Ig8OpxGpNJSxRZ58oti7y1IcNvjBAz9vW5m4w==}
@@ -9098,6 +9135,11 @@ packages:
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
+
+  wait-on@8.0.1:
+    resolution: {integrity: sha512-1wWQOyR2LVVtaqrcIL2+OM+x7bkpmzVROa0Nf6FryXkS+er5Sa1kzFGjzZRqLnHa3n1rACFLeTwUqE1ETL9Mig==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
 
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==, tarball: https://r2.cnpmjs.org/walker/-/walker-1.0.8.tgz}
@@ -12831,6 +12873,8 @@ snapshots:
 
   are-docs-informative@0.0.2: {}
 
+  arg@5.0.2: {}
+
   argparse@1.0.10:
     dependencies:
       sprintf-js: 1.0.3
@@ -13004,9 +13048,9 @@ snapshots:
 
   axe-core@4.10.2: {}
 
-  axios@1.7.7:
+  axios@1.7.7(debug@4.3.7):
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.3.7)
       form-data: 4.0.1
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -13939,6 +13983,8 @@ snapshots:
 
   dotenv@16.4.5: {}
 
+  duplexer@0.1.2: {}
+
   each-props@3.0.0:
     dependencies:
       is-plain-object: 5.0.0
@@ -14715,6 +14761,16 @@ snapshots:
   etag@1.8.1:
     optional: true
 
+  event-stream@3.3.4:
+    dependencies:
+      duplexer: 0.1.2
+      from: 0.1.7
+      map-stream: 0.1.0
+      pause-stream: 0.0.11
+      split: 0.3.3
+      stream-combiner: 0.0.4
+      through: 2.3.8
+
   event-target-shim@5.0.1: {}
 
   eventemitter2@6.4.7: {}
@@ -15021,7 +15077,9 @@ snapshots:
 
   flow-parser@0.251.0: {}
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.9(debug@4.3.7):
+    optionalDependencies:
+      debug: 4.3.7(supports-color@8.1.1)
 
   for-each@0.3.3:
     dependencies:
@@ -15055,6 +15113,8 @@ snapshots:
 
   fresh@0.5.2:
     optional: true
+
+  from@0.1.7: {}
 
   fs-extra@11.2.0:
     dependencies:
@@ -15586,7 +15646,7 @@ snapshots:
   http-proxy@1.18.1:
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.3.7)
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -16893,6 +16953,8 @@ snapshots:
 
   map-stream@0.0.7: {}
 
+  map-stream@0.1.0: {}
+
   markdown-extensions@2.0.0: {}
 
   markdown-it@14.1.0:
@@ -17929,6 +17991,10 @@ snapshots:
 
   pathval@2.0.0: {}
 
+  pause-stream@0.0.11:
+    dependencies:
+      through: 2.3.8
+
   pend@1.2.0: {}
 
   perfect-debounce@1.0.0: {}
@@ -18152,6 +18218,10 @@ snapshots:
 
   prr@1.0.1:
     optional: true
+
+  ps-tree@1.2.0:
+    dependencies:
+      event-stream: 3.3.4
 
   pseudomap@1.0.2: {}
 
@@ -19072,6 +19142,10 @@ snapshots:
 
   split2@4.2.0: {}
 
+  split@0.3.3:
+    dependencies:
+      through: 2.3.8
+
   sprintf-js@1.0.3: {}
 
   sprintf-js@1.1.3: {}
@@ -19098,6 +19172,19 @@ snapshots:
 
   stackframe@1.3.4: {}
 
+  start-server-and-test@2.0.8:
+    dependencies:
+      arg: 5.0.2
+      bluebird: 3.7.2
+      check-more-types: 2.24.0
+      debug: 4.3.7(supports-color@8.1.1)
+      execa: 5.1.1
+      lazy-ass: 1.6.0
+      ps-tree: 1.2.0
+      wait-on: 8.0.1(debug@4.3.7)
+    transitivePeerDependencies:
+      - supports-color
+
   statuses@1.5.0:
     optional: true
 
@@ -19107,6 +19194,10 @@ snapshots:
   std-env@3.7.0: {}
 
   stdin-discarder@0.2.2: {}
+
+  stream-combiner@0.0.4:
+    dependencies:
+      duplexer: 0.1.2
 
   stream-composer@1.0.2:
     dependencies:
@@ -20018,6 +20109,16 @@ snapshots:
     dependencies:
       xml-name-validator: 5.0.0
     optional: true
+
+  wait-on@8.0.1(debug@4.3.7):
+    dependencies:
+      axios: 1.7.7(debug@4.3.7)
+      joi: 17.13.3
+      lodash: 4.17.21
+      minimist: 1.2.8
+      rxjs: 7.8.1
+    transitivePeerDependencies:
+      - debug
 
   walker@1.0.8:
     dependencies:
