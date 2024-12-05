@@ -1980,7 +1980,7 @@ $segmented-background: var(
 $segmented-item-height: var(--nutui-segmented-height, 20px) !default;
 $segmented-item-padding: var(
   --nutui-segmented-item-padding,
-  $spacing-xxs $spacing-xs
+  0 $spacing-xs
 ) !default;
 $segmented-item-radius: var(--nutui-segmented-item-radius, $radius-xs) !default;
 $segmented-item-fontsize: var(

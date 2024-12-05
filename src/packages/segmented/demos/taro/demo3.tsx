@@ -22,7 +22,6 @@ const Demo3 = () => {
       <Segmented
         value={value}
         options={defaultOptions}
-        style={{ width: 173 }}
         onChange={(val) => {
           setValue(val)
         }}

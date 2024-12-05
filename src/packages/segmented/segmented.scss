@@ -6,6 +6,7 @@
   align-items: center;
   border-radius: $segmented-border-radius;
   background: $color-mask-part;
+  box-sizing: border-box;
 }
 
 .nut-segmented-item {
@@ -18,6 +19,7 @@
   color: $segmented-item-color;
   font-size: $segmented-item-fontsize;
   line-height: 1;
+  box-sizing: border-box;
 }
 
 .nut-segmented-item-active {
