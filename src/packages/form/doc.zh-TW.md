@@ -79,7 +79,7 @@ import { Form } from '@nutui/nutui-react'
 | label | 标签名 | `ReactNode` | `-` |
 | labelPosition | 錶單項 label 的位置 | `top` \| `left` \| `right` | `right` |
 | starPosition | 必填錶單項 label 的紅色星標位置 | `left` \| `right` | `left` |
-| validateTrigger | 統一設定字段觸發驗證的時機 | `string` \| `string[]` | `onChange` |
+| validateTrigger | 統一設定字段觸發驗證的時機 | `string` \| `string[]`\| `false` | `onChange` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一錶單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
