@@ -6,6 +6,7 @@
   font-size: $countdown-font-size;
   &-number-primary,
   &-number,
+  &-number-text,
   &-unit {
     display: flex;
     align-items: center;
@@ -20,19 +21,24 @@
     padding: $countdown-number-padding;
     border-radius: $countdown-number-border-radius;
     margin: $countdown-number-margin;
+    text-align: center;
   }
   &-number {
     border: 1px solid $countdown-number-border-color;
     background-color: $countdown-number-background-color;
     color: $countdown-number-color;
-    text-align: center;
   }
   &-number-primary {
     border: 1px solid $countdown-number-primary-border-color;
     background-color: $countdown-number-primary-background-color;
     color: $countdown-number-primary-color;
   }
+  &-number-text {
+    border: 0;
+    background-color: transparent;
+    color: $countdown-number-color;
+  }
   &-unit {
-    color: $color-primary;
+    color: $countdown-color;
   }
 }

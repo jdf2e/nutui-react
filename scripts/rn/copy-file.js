@@ -2,9 +2,7 @@
  * RN 自动化适配脚本
  */
 const fse = require('fs-extra')
-const path = require('path')
 const config = require('../../src/config.json')
-
 const args = process.argv.splice(2)
 
 console.log('rn copy-file.js args',args)
@@ -76,7 +74,6 @@ const removeFile = async (url) => {
 }
 
 const modify = (fileUrl, importStatement) => {
-  // if(!fse.ensureFileSync(fileUrl)) return
   fse.readFile(fileUrl, 'utf8').then((content) => {
     let modifiedContent = content
     modifiedContent = [importStatement, modifiedContent.slice(0)].join('')

@@ -62,6 +62,7 @@ const Demo5 = () => {
   }
   return (
     <Elevator
+      className="test-elevator5"
       list={dataList}
       height="260"
       onItemClick={(key: string, item: any) => onItemClick(key, item)}

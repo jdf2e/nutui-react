@@ -8,7 +8,7 @@ import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
-import { readFile, access, writeFile, mkdir, appendFile } from 'fs/promises'
+import { readFile, access, writeFile, mkdir } from 'fs/promises'
 import { dirname, join, basename, extname, resolve, relative } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
@@ -197,22 +197,19 @@ async function copyStyles() {
     resolve(__dirname, '../dist/styles')
   )
 
-  const content = [
+  let content = [
     `@import '../theme-default.scss';`,
-    `@import '../variables.scss';`,
-    `@import '../mixins/index.scss';`,
-    `@import '../animation/index.scss';`,
+    `@import '../theme-dark.scss';`,
+    `@import '../jd-font';`,
   ]
   const projectID = process.env.VITE_APP_PROJECT_ID
   if (projectID) {
-    content[1] = `@import '../variables-${projectID}.scss';`
+    content = [
+      `@import '../theme-${projectID}.scss';`,
+      `@import '../jd-font';`,
+    ]
   }
-  const scssFiles = await glob(['dist/es/packages/**/*.scss'])
-  scssFiles.forEach((file) => {
-    content.push(
-      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`
-    )
-  })
+
   dest('dist/styles/themes/default.scss', content.join('\n'))
 }
 

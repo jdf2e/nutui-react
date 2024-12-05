@@ -9,6 +9,7 @@ import HoverButtonItem, {
 } from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
 import pxTransform from '@/utils/px-transform'
+import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
@@ -37,7 +38,7 @@ export const HoverButton: FunctionComponent<
   const baseStyle = { ...style }
 
   if (tabbarHeight) {
-    baseStyle.bottom = pxTransform(tabbarHeight + 16)
+    baseStyle.bottom = pxTransform(tabbarHeight + UI_BOTTOM_DISTANCE)
   }
 
   if (typeof zIndex !== 'undefined') {

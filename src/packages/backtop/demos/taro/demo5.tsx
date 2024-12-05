@@ -2,16 +2,14 @@
  * JDRN 端最佳实践
  */
 import React, { useRef, useState } from 'react'
-import { ScrollView, View, Icon } from '@tarojs/components'
-import { BackTop } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
+import { BackTop, Cell } from '@nutui/nutui-react-taro'
+import { Top } from '@nutui/icons-react-taro'
 import pxTransform from '@/utils/px-transform'
 import { harmony, rn } from '@/utils/platform-taro'
-import { BasicComponent } from '@/utils/typings'
-// @TODO 暂不支持
-// import { Top } from '@nutui/icons-react-taro'
 
-const Demo5 = (props: BasicComponent) => {
-  const { children } = props
+const Demo5 = () => {
   const [scrollRes, setScrollRes] = useState<any>(null)
   const sv = useRef<any>(null)
 
@@ -31,9 +29,13 @@ const Demo5 = (props: BasicComponent) => {
         ref={sv}
         // @TODO RN 端暂不支持
         // trapScroll={true}
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
         style={{ height: 'auto' }}
       >
-        {children}
+        <View className="h2">基础用法</View>
+        {new Array(24).fill(0).map((_, index) => {
+          return <Cell key={index}>我是测试数据{index}</Cell>
+        })}
       </ScrollView>
       <BackTop
         threshold={200}
@@ -57,9 +59,7 @@ const Demo5 = (props: BasicComponent) => {
             alignItems: 'center',
           }}
         >
-          <Icon size={12} type="search" />
-          {/* <Top size={12} /> */}
-          <View style={{ fontSize: pxTransform(12) }}>顶部</View>
+          <Top size={12} />
         </View>
       </BackTop>
     </View>

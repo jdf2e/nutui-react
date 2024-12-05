@@ -7,8 +7,28 @@ exports[`should render description correctly 1`] = `
   >
     <div
       class="nut-resultpage-icon"
-      style="background-image: url("https://img13.360buyimg.com/imagetools/jfs/t1/199421/5/44230/1320/66543100F23a9466e/0e9eadd5cebf07fb.png"); background-size: 100% 100%;"
-    />
+    >
+      <svg
+        aria-labelledby="Tips"
+        class="nut-icon nut-icon-Tips "
+        color="#0073FF"
+        role="presentation"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M530.65 456.17H425.54l-21.34 55.85h74.39l-38.18 210.13a34.97 34.97 0 0 0 34.38 41.22H579.9l21.34-55.85h-74.39l38.18-210.13a34.92 34.92 0 0 0-34.38-41.22M512 384a64 64 0 1 0 0-128 64 64 0 0 0 0 128"
+          fill="currentColor"
+          fill-opacity="0.9"
+        />
+        ,
+        <path
+          d="M512 1024c282.77 0 512-229.23 512-512S794.77 0 512 0 0 229.23 0 512s229.23 512 512 512m0-85.33C276.35 938.67 85.33 747.65 85.33 512S276.35 85.33 512 85.33 938.67 276.35 938.67 512 747.65 938.67 512 938.67"
+          fill="currentColor"
+          fill-opacity="0.9"
+        />
+      </svg>
+    </div>
     <div
       class="nut-resultpage-description"
     >
