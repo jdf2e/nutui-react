@@ -1,12 +1,28 @@
-import { componentTest } from './utils'
+import { visitH5Demo } from '../common/visit-demo'
 
 describe('nav components test', () => {
-  componentTest('BackTop', () => {})
-  componentTest('Elevator', () => {})
-  componentTest('FixedNav', () => {})
-  componentTest('HoverButton', () => {})
-  componentTest('NavBar', () => {})
-  componentTest('SideNavBar', () => {})
-  componentTest('Tabbar', () => {})
-  componentTest('Tabs', () => {})
+  it('BackTop', () => {
+    visitH5Demo('BackTop')
+  })
+  it('Elevator', () => {
+    visitH5Demo('Elevator')
+  })
+  it('FixedNav', () => {
+    visitH5Demo('FixedNav')
+  })
+  it('HoverButton', () => {
+    visitH5Demo('HoverButton')
+  })
+  it('NavBar', () => {
+    visitH5Demo('NavBar')
+  })
+  it('SideNavBar', () => {
+    visitH5Demo('SideNavBar')
+  })
+  it('Tabbar', () => {
+    visitH5Demo('Tabbar')
+  })
+  it('Tabs', () => {
+    visitH5Demo('Tabs')
+  })
 })

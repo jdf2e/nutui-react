@@ -1,10 +1,22 @@
-import { componentTest } from './utils'
+import { visitH5Demo } from '../common/visit-demo'
 
 describe('layout components test', () => {
-  componentTest('Divider', () => {})
-  componentTest('Grid', () => {})
-  componentTest('Layout', () => {})
-  componentTest('Space', () => {})
-  componentTest('Sticky', () => {})
-  componentTest('SafeArea', () => {})
+  it('Divider', () => {
+    visitH5Demo('Divider')
+  })
+  it('Grid', () => {
+    visitH5Demo('Grid')
+  })
+  it('Layout', () => {
+    visitH5Demo('Layout')
+  })
+  it('Space', () => {
+    visitH5Demo('Space')
+  })
+  it('Sticky', () => {
+    visitH5Demo('Sticky')
+  })
+  it('SafeArea', () => {
+    visitH5Demo('SafeArea')
+  })
 })

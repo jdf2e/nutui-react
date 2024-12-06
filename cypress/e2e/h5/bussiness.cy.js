@@ -1,10 +1,22 @@
-import { componentTest } from './utils'
+import { visitH5Demo } from '../common/visit-demo'
 
 describe('bussiness components test', () => {
-  componentTest('Barrage', () => {})
-  componentTest('Card', () => {})
-  componentTest('TimeSelect', () => {})
-  componentTest('TrendArrow', () => {})
-  componentTest('WaterMark', () => {})
-  componentTest('AvatarCropper', () => {})
+  it('Barrage', () => {
+    visitH5Demo('Barrage')
+  })
+  it('Card', () => {
+    visitH5Demo('Card')
+  })
+  it('TimeSelect', () => {
+    visitH5Demo('TimeSelect')
+  })
+  it('TrendArrow', () => {
+    visitH5Demo('TrendArrow')
+  })
+  it('WaterMark', () => {
+    visitH5Demo('WaterMark')
+  })
+  it('AvatarCropper', () => {
+    visitH5Demo('AvatarCropper')
+  })
 })
