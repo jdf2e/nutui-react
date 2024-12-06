@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '@nutui/nutui-react'
+import { Card, Tag } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const state = {
@@ -13,13 +13,6 @@ const Demo2 = () => {
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const wordStyles = {
-    padding: '0 5px',
-    borderRadius: '1px',
-    fontSize: '10px',
-    height: '15px',
-    lineHeight: '15px',
-    color: '#999',
-    backgroundColor: '#f2f2f7',
     marginRight: '5px',
   }
   return (
@@ -33,18 +26,21 @@ const Demo2 = () => {
       shopName={state.shopName}
       description={
         <div
-          className="search_prolist_attr"
           style={{
             display: 'inline-flex',
             margin: '3px 0 1px',
-            height: '15px',
           }}
         >
           {['鲜活', '礼盒', '国产'].map((item) => {
             return (
-              <span style={wordStyles} className="word" key={item}>
+              <Tag
+                background="#f2f2f7"
+                color="#999999"
+                key={item}
+                style={wordStyles}
+              >
                 {item}
-              </span>
+              </Tag>
             )
           })}
         </div>

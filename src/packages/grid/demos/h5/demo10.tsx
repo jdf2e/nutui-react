@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Toast } from '@nutui/nutui-react'
-import { Image as ImageIcon } from '@nutui/icons-react'
+import { Image } from '@nutui/icons-react'
 
 const Demo10 = () => {
   const onClick = (item: any, index: number) => {
@@ -8,18 +8,11 @@ const Demo10 = () => {
   }
   return (
     <Grid direction="horizontal" onClick={onClick}>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
+      {Array.from({ length: 4 }, (_, index) => (
+        <Grid.Item key={index} text="文字">
+          <Image />
+        </Grid.Item>
+      ))}
     </Grid>
   )
 }

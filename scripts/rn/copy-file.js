@@ -2,9 +2,7 @@
  * RN 自动化适配脚本
  */
 const fse = require('fs-extra')
-const path = require('path')
 const config = require('../../src/config.json')
-
 const args = process.argv.splice(2)
 
 console.log('rn copy-file.js args',args)

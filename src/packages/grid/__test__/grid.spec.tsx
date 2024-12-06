@@ -52,14 +52,13 @@ test('render with column num', () => {
     </>
   )
 
-  const regionItem = container.querySelector('.nut-grid-item')
-  expect(regionItem).toHaveStyle('flex-basis:33.333333333333336%')
+  expect(container).toMatchSnapshot()
 })
 
 test('render with props gap', () => {
   const { container } = render(
     <>
-      <Grid gap={3}>
+      <Grid gap={10}>
         <Grid.Item text="文本">
           <ImageIcon />
         </Grid.Item>
@@ -88,8 +87,8 @@ test('render with props gap', () => {
     </>
   )
 
-  const regionItem = container.querySelector('.nut-grid-item')
-  expect(regionItem).toHaveStyle('padding-right:3px')
+  const regionItem = container.querySelectorAll('.nut-grid-item')[0]
+  expect(regionItem).toHaveStyle('margin-right: 10px')
 })
 
 test('render with props reverse', () => {

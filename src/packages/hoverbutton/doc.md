@@ -44,6 +44,22 @@ import { HoverButton } from '@nutui/nutui-react'
 
 :::
 
+### 自定义间距
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 自定义内容
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ## HoverButton
 
 ### Props

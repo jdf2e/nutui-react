@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getIcon } from '@/packages/hoverbuttonitem/utils'
 
 export interface HoverButtonItemProps extends BasicComponent {
   className?: string
@@ -18,7 +19,7 @@ const defaultProps = {
 const classPrefix = 'nut-hoverbutton-item'
 
 export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
-  const { className, style, icon, onClick } = {
+  const { className, children, style, icon, onClick } = {
     ...defaultProps,
     ...props,
   }
@@ -29,20 +30,39 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
     }
   }
 
+  const renderBody = () => {
+    if (icon && !children)
+      return <div className={`${classPrefix}-icon`}>{getIcon(icon)}</div>
+    if (icon && children) {
+      return (
+        <>
+          <div
+            className={classNames({
+              [`${classPrefix}-text-icon`]: true,
+            })}
+          />
+          {getIcon(icon)}
+          <div
+            className={classNames({
+              [`${classPrefix}-text`]: true,
+            })}
+          >
+            {children}
+          </div>
+        </>
+      )
+    }
+  }
+
   return (
     <div
-      className={classNames([`${classPrefix}-container`, className])}
+      className={classNames([`${classPrefix}-container`, className], {
+        [`${classPrefix}-container-icontext`]: icon && children,
+      })}
       style={style}
       onClick={handleClick}
     >
-      <div className={`${classPrefix}-icon`}>
-        {React.isValidElement(icon)
-          ? React.cloneElement(icon, {
-              // @ts-ignore
-              size: 20,
-            })
-          : icon}
-      </div>
+      {renderBody()}
     </div>
   )
 }

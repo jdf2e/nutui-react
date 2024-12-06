@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import { CountDownProps } from './types'
+import { CountDownProps, CountDownTimeProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -225,7 +225,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
 
-    onUpdate && onUpdate(tranTime)
+    onUpdate && onUpdate(tranTime as CountDownTimeProps)
   }, [restTimeStamp])
 
   // 监听暂停

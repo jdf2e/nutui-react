@@ -58,7 +58,7 @@ import { ResultPage } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| title | title | `ReactNode` | `-`|
+| title | title | `ReactNode` | `-` |
 | description | Description, up to two lines displayed | `ReactNode` | `-` |
 | status | Status type | `success` \| `error` \| `warning` \| `info` \| `waiting` | `info` |
 | icon | Custom `icon` | `ReactNode` | `-` |
@@ -72,13 +72,13 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-resultpage-width | Content area width | `247px` |
-| \--nutui-resultpage-icon-size | Width and height of icon | `48px` |
-| \--nutui-resultpage-icon-margin-bottom | margin-bottom value of the icon | `16px` |
-| \--resultpage-title-margin-bottom | The margin-top value of the title | `9px` |
+| \--nutui-resultpage-width | Content area width | `240px` |
+| \--nutui-resultpage-icon-size | Width and height of icon | `36px` |
+| \--nutui-resultpage-icon-margin-bottom | margin-bottom value of the icon | `12px` |
+| \--resultpage-title-margin-bottom | The margin-top value of the title | `12px` |
 | \--nutui-resultpage-title-font-size | The font size of the title | `$font-size-xl` |
 | \---nutui-resultpage-title-color | The text color of the title | `$color-title` |
 | \--nutui-resultpage-description-font-size | Describe the font size | `$font-size-base` |
 | \--nutui-resultpage-description-color | Describe the text color | `$color-text` |
 | \--nutui-resultpage-description-line-height | Describe the line height | `20px` |
-| \--nutui-resultpage-actions-margin-topt | The margin-top value of the operation area | `21px` |
+| \--nutui-resultpage-actions-margin-topt | The margin-top value of the operation area | `16px` |

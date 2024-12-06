@@ -4,6 +4,7 @@ import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index.taro'
 import TabbarContext from '@/packages/tabbar/context'
+import addColorForHarmony from '@/utils/add-color-for-harmony'
 
 export interface TabbarItemProps extends BasicComponent {
   title: ReactNode
@@ -83,13 +84,32 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
       {icon ? (
         <>
           <Badge {...badgeProps}>
-            <View className={boxPrefix}>{icon}</View>
+            <View className={boxPrefix}>
+              {addColorForHarmony(
+                icon,
+                active ? ctx?.activeColor : ctx?.inactiveColor
+              )}
+            </View>
           </Badge>
-          <View className={titleClass}>{title}</View>
+          <View
+            className={titleClass}
+            style={{
+              color: active ? ctx?.activeColor : ctx?.inactiveColor,
+            }}
+          >
+            {title}
+          </View>
         </>
       ) : (
         <Badge {...badgeProps}>
-          <View className={titleClass}>{title}</View>
+          <View
+            className={titleClass}
+            style={{
+              color: active ? ctx?.activeColor : ctx?.inactiveColor,
+            }}
+          >
+            {title}
+          </View>
         </Badge>
       )}
     </View>

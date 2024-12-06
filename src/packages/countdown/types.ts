@@ -2,6 +2,14 @@ import { BasicComponent } from '@/utils/typings'
 
 export type CountDownType = 'default' | 'primary' | 'text'
 
+export interface CountDownTimeProps {
+  d: number
+  h: number
+  m: number
+  s: number
+  ms: number
+}
+
 export interface CountDownProps extends BasicComponent {
   type: CountDownType
   paused: boolean
@@ -16,6 +24,6 @@ export interface CountDownProps extends BasicComponent {
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
-  onUpdate: (restTime: number) => void
+  onUpdate: (restTime: string | CountDownTimeProps) => void
   children: React.ReactNode
 }

@@ -616,6 +616,8 @@ plugins: [
 - 移除 `isAsync`，通过 `checked`实现
 - 移除 `activeColor` ，通过css变量`--nutui-switch-open-background-color`实现
 - 移除 `inactiveColor`，通过css变量`--nutui-switch-close-background-color`实现
+- `activeText 属性类型更改为 `ReactNode`
+- `inactiveText` 属性类型更改为 `ReactNode`
 
 #### Toast
 
@@ -829,6 +831,8 @@ plugins: [
 - `upIconName` 重命名为 `riseIcon`，类型修改为 `React.Node`
 - `downIconName` 重命名为 `dropIcon`，类型修改为 `React.Node`
 - 移除 `iconSize`，通过`riseIcon`、`dropIcon`自定义传入icon大小
+- 新增 `size`，star 尺寸, 默认值 `normal` 为 `12px`
+- 新增 `showScore`, 展示评分
 
 #### Video
 
