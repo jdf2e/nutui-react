@@ -216,7 +216,7 @@ export const Elevator: FunctionComponent<
   const getWrapStyle = useMemo(() => {
     const calcHeight = Number.isNaN(+height) ? height : `${height}px`
 
-    return { height: harmony() ? Number(calcHeight) : calcHeight }
+    return { height: harmony() ? Number(height) : calcHeight }
   }, [height])
 
   useEffect(() => {
