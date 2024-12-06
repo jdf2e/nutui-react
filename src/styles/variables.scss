@@ -1016,37 +1016,34 @@ $calendar-day-active-border-radius: var(
 ) !default;
 
 //hoverbutton
-$hoverbutton-spacing: var(
-  --nutui-hoverbutton-spacing,
-  var(--nutui-spacing-16, 16px)
-) !default;
+$hoverbutton-spacing: var(--nutui-hoverbutton-spacing, $spacing-base) !default;
 $hoverbutton-position-bottom: var(
   --nutui-hoverbutton-position-bottom,
-  48px
+  60px
 ) !default;
 $hoverbutton-position-right: var(
   --nutui-hoverbutton-position-right,
-  var(--nutui-spacing-16, 16px)
+  $spacing-base
 ) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
-  var(--nutui-black-3, rgba(0, 0, 0, 0.06))
+  rgba(0, 0, 0, 0.12)
 ) !default;
 $hoverbutton-item-background: var(
   --nutui-hoverbutton-item-background,
-  var(--nutui-gray-1, #ffffff)
+  var(--nutui-white-12)
 ) !default;
 $hoverbutton-item-background-active: var(
   --nutui-hoverbutton-item-background-active,
-  var(--nutui-gray-3, #f6f6f6)
+  rgba(247, 248, 252, 0.9)
 ) !default;
 $hoverbutton-item-icon-color: var(
   --nutui-hoverbutton-item-icon-color,
-  var(--nutui-gray-7, #1a1a1a)
+  $color-title
 ) !default;
 $hoverbutton-item-icon-color-active: var(
   --nutui-hoverbutton-item-icon-color-active,
-  var(--nutui-gray-6, #595959)
+  $color-title
 ) !default;
 
 //overlay（✅）
@@ -1967,6 +1964,37 @@ $searchbar-input-curror-color: var(
 $searchbar-input-text-align: var(
   --nutui-searchbar-input-text-align,
   left
+) !default;
+
+// segmented
+$segmented-height: var(--nutui-segmented-height, 24px) !default;
+$segmented-padding: var(--nutui-segmented-padding, $spacing-xxxs) !default;
+$segmented-border-radius: var(--nutui-segmented-radius, $radius-xs) !default;
+$segmented-background: var(
+  --nutui-segmented-background,
+  $color-mask-part
+) !default;
+$segmented-item-height: var(--nutui-segmented-height, 20px) !default;
+$segmented-item-padding: var(
+  --nutui-segmented-item-padding,
+  0 $spacing-xs
+) !default;
+$segmented-item-radius: var(--nutui-segmented-item-radius, $radius-xs) !default;
+$segmented-item-fontsize: var(
+  --nutui-segmented-item-fontsize,
+  $font-size-s
+) !default;
+$segmented-item-color: var(
+  --nutui-segmented-item-color,
+  $color-primary-text
+) !default;
+$segmented-active-background: var(
+  --nutui-segmented-active-background,
+  $color-mask-part
+) !default;
+$segmented-icon-margin-right: var(
+  --nutui-segmented-icon-margin-right,
+  $spacing-xxxs
 ) !default;
 
 // empty（✅）

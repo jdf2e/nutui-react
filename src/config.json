@@ -1055,6 +1055,18 @@
         },
         {
           "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v14": true,
+          "author": "lkjh3214"
+        },
+        {
+          "version": "3.0.0",
           "name": "Price",
           "type": "component",
           "cName": "价格",
@@ -1205,7 +1217,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeDetail",
           "type": "component",
           "cName": "配送时间",
