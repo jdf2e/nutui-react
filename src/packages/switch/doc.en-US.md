@@ -1,7 +1,5 @@
 # Switch
 
-duction
-
 Used to open or close the options.
 
 ## Import
@@ -36,7 +34,7 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
-### onChange event
+### Support text
 
 :::demo
 
@@ -44,7 +42,7 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
-### Custom color
+### Support Icon
 
 :::demo
 
@@ -52,11 +50,19 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
-### Support text
+### onChange event
 
 :::demo
 
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### Custom color
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -69,8 +75,8 @@ import { Switch } from '@nutui/nutui-react'
 | defaultChecked | Switch status, uncontrolled | `boolean` | `false` |
 | checked | Switch status, controlled | `boolean` | `false` |
 | disabled | Disabled | `boolean` | `false` |
-| activeText | Text description when opening | `string` | `-` |
-| inactiveText | Text description when closed | `string` | `-` |
+| activeText | Text description when opening | `ReactNode` | `-` |
+| inactiveText | Text description when closed | `ReactNode` | `-` |
 | onChange | Trigger when switching switches | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## Theming
@@ -81,16 +87,18 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-switch-close-background-color | Switch off state background color | `$color-text-disabled` |
-| \--nutui-switch-open-background-color | Switch on background color | `$color-primary` |
-| \--nutui-switch-close-disabled-background-color | Switch off state's disabled background color | `$color-background` |
-| \--nutui-switch-open-disabled-background-color | Switch on state's disabled background color | `$color-primary-disabled-special` |
-| \--nutui-switch-width | Switch width | `40px` |
-| \--nutui-switch-height | Switch height | `24px` |
-| \--nutui-switch-line-height | Switch line height | `24px` |
-| \--nutui-switch-border-radius | Switch border radius | `8px` |
-| \--nutui-switch-inside-width | Width of button inside switch | `20px` |
-| \--nutui-switch-inside-height | Switch internal button height | `20px` |
-| \--nutui-switch-inside-open-transform | Position of internal button in switch on state | `translateX(18px)` |
-| \--nutui-switch-inside-close-transform | Switch off state internal button position | `translateX(2px)` |
-| \--nutui-switch-close-line-bg-color | Switch off state inner button line color | `#ffffff` |
+| \--nutui-switch-active-background-color | Switch on status background color | `$color-primary` |
+| \--nutui-switch-inactive-background-color | Switch off status background color | `$color-text-disabled` |
+| \--nutui-switch-active-disabled-background-color | Switch toggle on the background color disabled | `$color-primary-disabled-special` |
+| \--nutui-switch-inactive-disabled-background-color | Turn off the background color disabled | `$color-background` |
+| \--nutui-switch-inactive-line-bg-color | Switch Off Internal Button Line Color | `#ffffff` |
+| \--nutui-switch-width | Switch Width | `46px` |
+| \--nutui-switch-height | Switch height | `28px` |
+| \--nutui-switch-line-height | Switch line height | `28px` |
+| \--nutui-switch-border-radius | Switch rounded corner size | `$radius-circle` |
+| \--nutui-switch-border-width | Switch border width | `2px` |
+| \--nutui-switch-inside-border-radius | Switch internal button rounded corner size | `$radius-full` |
+| \--nutui-switch-inside-box-shadow | Switch Internal Button Shadow | `0px 2px 6px 0px rgba(0, 0, 0, 0.4)` |
+| \--nutui-switch-label-text-color | Switch internal text color | `$color-primary-text` |
+| \--nutui-switch-label-font-size | Switch internal text size | `$font-size-s` |
+| \--nutui-switch-inactive-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |

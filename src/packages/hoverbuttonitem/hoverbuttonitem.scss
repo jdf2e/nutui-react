@@ -18,6 +18,19 @@
         margin-bottom: 0;
       }
     }
+
+    &-icontext {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .nut-icon {
+        display: block;
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+      }
+    }
   }
 
   &-icon {
@@ -31,11 +44,23 @@
       display: block;
       width: 20px;
       height: 20px;
+      font-size: 20px;
     }
   }
 
   &-container:active &-icon {
     color: $hoverbutton-item-icon-color-active;
     fill: $hoverbutton-item-icon-color-active;
+  }
+
+  &-text-icon {
+    width: 14px;
+    height: 5px;
+  }
+
+  &-text {
+    font-size: 10px;
+    margin-top: 5px;
+    line-height: 9px;
   }
 }

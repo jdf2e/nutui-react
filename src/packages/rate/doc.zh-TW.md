@@ -112,6 +112,8 @@ import { Rate } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
+| showScore | 展示評分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默認值 | `number` | `0` |
 | value | 受控的 star 數值 | `number` | `0` |
 | count | star 總數 | `number` | `5` |
@@ -133,6 +135,9 @@ import { Rate } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-rate-item-margin | 間距 | `14px` |
-| \--nutui-rate-icon-color | icon 激活顏色 | `$color-primary` |
-| \--nutui-rate-icon-inactive-color | icon 未激活顏色 | `$color-text-disabled` |
+| \--nutui-rate-item-margin | 間距 | `4px` |
+| \--nutui-rate-icon-color | icon 激活顏色 | `$color-primary-icon` |
+| \--nutui-rate-icon-inactive-color | icon 未激活顏色 | `$color-primary-icon-disabled` |
+| \--nutui-rate-icon-size | icon 尺寸 | `12px` |
+| \--nutui-rate-font-color | 評分字體顏色 | `$color-primary-icon` |
+| \--nutui-rate-font-size | 評分字體大小 | `12px` |

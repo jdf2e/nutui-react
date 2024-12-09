@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "3.0.0-beta.5",
+  "name": "@nutui/nutui-react-taro",
+  "version": "3.0.0-beta.6",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -102,7 +102,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^1.0.5",
+    "@nutui/icons-react": "^2.0.1",
     "@nutui/icons-react-taro": "^2.0.1",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
@@ -132,6 +132,7 @@
     "@tarojs/components": "4.0.8-beta.1",
     "@tarojs/plugin-platform-alipay": "4.0.8-beta.1",
     "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
+    "@tarojs/plugin-platform-jd": "4.0.8-beta.1",
     "@tarojs/react": "4.0.8-beta.1",
     "@tarojs/taro": "4.0.8-beta.1",
     "@testing-library/jest-dom": "^6.4.2",

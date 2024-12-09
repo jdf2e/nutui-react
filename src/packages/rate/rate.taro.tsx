@@ -8,29 +8,17 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
 import { useReady } from '@tarojs/taro'
-import { View, ITouchEvent } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { View, Text, ITouchEvent } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import useRefs from '@/utils/use-refs'
-
-export interface RateProps extends BasicComponent {
-  count: number
-  value: number
-  defaultValue: number
-  min: number
-  checkedIcon: React.ReactNode
-  uncheckedIcon: React.ReactNode
-  disabled: boolean
-  readOnly: boolean
-  allowHalf: boolean
-  touchable: boolean
-  onChange: (value: number) => void
-  onTouchEnd: (e: TouchEvent, value: number) => void
-}
+import { RateProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
+  size: 'normal',
+  showScore: false,
   count: 5,
   min: 0,
   checkedIcon: null,
@@ -44,6 +32,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
     className,
     style,
+    size,
+    showScore,
     count,
     value,
     defaultValue,
@@ -216,7 +206,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
       {countArray.map((n, index) => {
         return (
           <View
-            className={`${classPrefix}-item`}
+            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
             key={n}
             ref={setRefs(index)}
             onClick={(event) => onClick(event, n)}
@@ -243,6 +233,19 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           </View>
         )
       })}
+      {showScore ? (
+        <Text
+          className={classNames(
+            `${classPrefix}-score`,
+            `${classPrefix}-score-${size}`,
+            {
+              [`${classPrefix}-score-disabled`]: disabled,
+            }
+          )}
+        >
+          {score.toFixed(1)}
+        </Text>
+      ) : null}
     </View>
   )
 }
