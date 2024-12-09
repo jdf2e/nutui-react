@@ -272,6 +272,26 @@ test('simulates multiple file upload', () => {
   expect(handleOverCount).toHaveBeenCalledTimes(1)
   expect(handleOverCount).toHaveBeenCalledWith(3)
 })
+test('simulates file upload when autoupload is false', () => {
+  const handleUpload: any = vi.fn()
+  const handleOverCount: any = vi.fn()
+  const { container } = render(
+    <Uploader
+      upload={(file: File) => handleUpload(file)}
+      multiple
+      autoUpload={false}
+      maxCount={2}
+      onOverCount={handleOverCount}
+    />
+  )
+  const file1 = new File(['file1'], 'file1.txt', { type: 'text/plain' })
+  const file2 = new File(['file2'], 'file2.txt', { type: 'text/plain' })
+  const file3 = new File(['file3'], 'file3.txt', { type: 'text/plain' })
+  const files = [file1, file2, file3]
+  const input: any = container.querySelector('input')
+  fireEvent.change(input, { target: { files } })
+  expect(handleUpload).toHaveBeenCalledTimes(0)
+})
 test('should render button', () => {
   const clearUpload = vi.fn()
   const submitUpload = vi.fn()
