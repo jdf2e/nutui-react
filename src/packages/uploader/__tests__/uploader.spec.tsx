@@ -281,7 +281,46 @@ test('ready file list', () => {
   const { container, getByText } = render(<App />)
   expect(getByText('准备上传')).toHaveTextContent('准备上传')
 })
-
+test('type is not image and doesnot set previewurl', () => {
+  const list: any = {}
+  list.name = '文件1.png'
+  list.url =
+    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
+  list.status = 'ready'
+  list.message = '准备上传'
+  list.type = 'video'
+  list.uid = '12'
+  const App = () => {
+    return <Uploader deletable defaultValue={[list]} />
+  }
+  const { container, getByText } = render(<App />)
+  expect(
+    container.querySelector('.nut-uploader-preview-img-file')
+  ).toBeInTheDocument()
+})
+test('type is not image and set previewurl', () => {
+  const list: any = {}
+  list.name = '文件1.png'
+  list.url =
+    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
+  list.status = 'ready'
+  list.message = '准备上传'
+  list.type = 'video'
+  list.uid = '12'
+  const App = () => {
+    return (
+      <Uploader
+        deletable
+        defaultValue={[list]}
+        previewUrl="https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif"
+      />
+    )
+  }
+  const { container, getByText } = render(<App />)
+  expect(
+    container.querySelector('.nut-uploader-preview-img-c')
+  ).toBeInTheDocument()
+})
 test('preview component', () => {
   const delFunc = vi.fn()
   const clickFunc = vi.fn()
