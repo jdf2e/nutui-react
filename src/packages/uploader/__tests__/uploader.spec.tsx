@@ -218,6 +218,8 @@ test('should render progress', () => {
   const progressInnerElement = container.querySelector('.nut-progress-inner')
   expect(progressInnerElement).toBeInTheDocument()
   expect(progressInnerElement).toHaveStyle('width: 30%')
+  const textElement = container.querySelector('span')
+  expect(textElement).toHaveTextContent('文件444.png')
 })
 test('should render button', () => {
   const clearUpload = vi.fn()
