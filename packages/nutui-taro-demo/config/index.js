@@ -3,6 +3,8 @@ const path = require('path')
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
 const projectID = process.env.VITE_APP_PROJECT_ID
+const JD = process.env.JD
+console.log('JDJDJDJDJDJD', JD)
 if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
@@ -18,20 +20,21 @@ if (process.env.TARO_ENV === 'harmony') {
   plugins.push('@tarojs/plugin-platform-harmony-ets')
 }
 
-if (process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') {
+if ((process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') && JD) {
   plugins.push('@jdtaro/plugin-platform-jdrn')
 }
 
 // 小程序、jd H5 通过此插件覆盖
 if (
-  process.env.TARO_ENV === 'weapp' ||
-  process.env.TARO_ENV === 'jd' ||
-  process.env.TARO_ENV === 'jdhybrid'
+  (process.env.TARO_ENV === 'weapp' ||
+    process.env.TARO_ENV === 'jd' ||
+    process.env.TARO_ENV === 'jdhybrid') &&
+  JD
 ) {
   plugins.push('@dongdesign/inject-jd-platform-styles')
 }
 
-if (process.env.TARO_ENV === 'jdhybrid') {
+if (process.env.TARO_ENV === 'jdhybrid' && JD) {
   plugins.push([
     '@jdtaro/plugin-platform-jdhybrid',
     {
@@ -43,10 +46,10 @@ if (process.env.TARO_ENV === 'jdhybrid') {
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-if (process.env.TARO_ENV === 'jdharmony') {
+if (process.env.TARO_ENV === 'jdharmony' && JD) {
   plugins = ['@jdtaro/taro-platform-jdharmony']
 }
-if (process.env.TARO_ENV === 'jdharmony_cpp') {
+if (process.env.TARO_ENV === 'jdharmony_cpp' && JD) {
   plugins = ['@jdtaro/plugin-platform-jdharmony-cpp']
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -74,7 +77,7 @@ const config = {
   compiler: {
     type: 'webpack5',
     prebundle: {
-      exclude: ['@nutui/icons-react-taro']
+      exclude: ['@nutui/icons-react-taro'],
     },
   },
   alias:
