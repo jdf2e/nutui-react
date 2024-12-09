@@ -221,6 +221,19 @@ test('should render progress', () => {
   const textElement = container.querySelector('span')
   expect(textElement).toHaveTextContent('文件444.png')
 })
+test('simulates single file upload', () => {
+  const handleUpload: any = vi.fn() // 使用 Vitest 的 vi.fn() 创建一个模拟函数
+  const { container } = render(
+    <Uploader upload={(file: File) => handleUpload(file)} />
+  )
+  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const input: any = container.querySelector('input')
+
+  fireEvent.change(input, { target: { files: [file] } })
+
+  expect(handleUpload).toHaveBeenCalledTimes(1)
+  expect(handleUpload).toHaveBeenCalledWith(file)
+})
 test('should render button', () => {
   const clearUpload = vi.fn()
   const submitUpload = vi.fn()
