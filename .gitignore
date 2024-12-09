@@ -39,6 +39,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Other lock files
+pnpm-lock.*.yaml
+
 # Editor directories and files
 .idea
 .vscode
