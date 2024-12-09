@@ -3,8 +3,9 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Uploader } from '../uploader'
-import { FileItem } from '../file-item'
+import { FileItem } from '../types'
 import { Preview } from '../preview'
+import Button from '@/packages/button'
 
 test('should render base uploader and type', () => {
   const { container, getByTestId } = render(
@@ -143,7 +144,7 @@ test('should render base uploader props disabled', () => {
 test('before-delete prop return false', () => {
   const onDelete = vi.fn()
   const App = () => {
-    const defaultFileList: FileItem[] = [
+    const fileList: FileItem[] = [
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -156,7 +157,7 @@ test('before-delete prop return false', () => {
     return (
       <Uploader
         deletable
-        defaultValue={defaultFileList}
+        value={fileList}
         onDelete={onDelete}
         beforeDelete={() => {
           return false
@@ -198,6 +199,50 @@ test('before-delete prop return true', () => {
   expect(onDelete).toBeCalled()
 })
 
+test('should render progress', () => {
+  const App = () => {
+    const list: FileItem[] = [
+      {
+        name: '文件444.png',
+        url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+        status: 'uploading',
+        message: '上传中...',
+        percentage: 30,
+      },
+    ]
+    return <Uploader deletable value={list} previewType="list" />
+  }
+  const { container } = render(<App />)
+  const progressElement = container.querySelector('.nut-progress')
+  expect(progressElement).toBeInTheDocument()
+  const progressInnerElement = container.querySelector('.nut-progress-inner')
+  expect(progressInnerElement).toBeInTheDocument()
+  expect(progressInnerElement).toHaveStyle('width: 30%')
+})
+test('should render button', () => {
+  const clearUpload = vi.fn()
+  const submitUpload = vi.fn()
+  const App = () => {
+    return (
+      <>
+        <Uploader />
+        <Button type="success" onClick={submitUpload}>
+          执行上传
+        </Button>
+        <Button type="primary" onClick={clearUpload}>
+          手动清空上传
+        </Button>
+      </>
+    )
+  }
+  const { container } = render(<App />)
+  const buttonElement = container.querySelector('.nut-button')
+  expect(buttonElement).toBeInTheDocument()
+  fireEvent.click(container.querySelectorAll('.nut-button-success')[0])
+  expect(submitUpload).toBeCalled()
+  fireEvent.click(container.querySelectorAll('.nut-button-primary')[0])
+  expect(clearUpload).toBeCalled()
+})
 test('ready file list', () => {
   const list: any = {}
   list.name = '文件1.png'
