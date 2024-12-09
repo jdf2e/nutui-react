@@ -222,7 +222,22 @@ test('should render progress', () => {
   expect(textElement).toHaveTextContent('文件444.png')
 })
 test('simulates single file upload', () => {
-  const handleUpload: any = vi.fn() // 使用 Vitest 的 vi.fn() 创建一个模拟函数
+  const handleUpload: any = vi.fn()
+  const { container } = render(
+    <Uploader upload={(file: File) => handleUpload(file)} />
+  )
+  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const input: any = container.querySelector('input')
+
+  fireEvent.change(input, { target: { files: [file] } })
+
+  expect(handleUpload).toHaveBeenCalledTimes(1)
+  expect(handleUpload).toHaveBeenCalledWith(file)
+})
+test('simulates single file upload fail', async () => {
+  const handleUpload: any = vi.fn(() =>
+    Promise.reject(new Error('Upload failed'))
+  )
   const { container } = render(
     <Uploader upload={(file: File) => handleUpload(file)} />
   )
