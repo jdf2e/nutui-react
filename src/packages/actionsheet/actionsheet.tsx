@@ -75,16 +75,19 @@ export const ActionSheet: FunctionComponent<
         {options.length ? (
           <div className={`${classPrefix}-list`}>
             {options.map((item, index) => {
+              const statusClass = `${item.disabled ? `${classPrefix}-item-disabled` : ''} ${item.danger ? `${classPrefix}-item-danger` : ''}`
               return (
                 <div
-                  className={`${classPrefix}-item ${
-                    item.disabled ? 'disabled' : ''
-                  } ${item.danger ? 'danger' : ''}`}
+                  className={`${classPrefix}-item ${statusClass}`}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >
-                  {item[optionKey.name]}
-                  <div className={`${classPrefix}-item-description`}>
+                  <div className={`${classPrefix}-item-name ${statusClass}`}>
+                    {item[optionKey.name]}
+                  </div>
+                  <div
+                    className={`${classPrefix}-item-description ${statusClass}`}
+                  >
                     {item[optionKey.description]}
                   </div>
                 </div>

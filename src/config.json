@@ -188,7 +188,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "yangxiaolu"
         },
         {
@@ -642,7 +642,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -687,7 +687,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -720,7 +720,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -773,7 +773,7 @@
           "show": true,
           "taro": true,
           "author": "liukun",
-          "v14": true
+          "v15": true
         },
         {
           "version": "3.0.0",
@@ -784,7 +784,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -899,7 +899,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "VickyYe"
         }
       ]
@@ -1005,7 +1005,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -1050,7 +1050,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "lkjh3214"
         },
         {
@@ -1062,7 +1062,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "lkjh3214"
         },
         {

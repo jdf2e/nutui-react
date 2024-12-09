@@ -100,9 +100,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    /* #ifdef rn */
-    height: 300px;
-    /* #endif */
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;

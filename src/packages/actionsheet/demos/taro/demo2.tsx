@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -23,8 +24,10 @@ const Demo2 = () => {
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <span>展示取消按钮</span>
-        <View style={{ marginInlineStart: '10px', color: '#999' }}>{val}</View>
+        <View>展示取消按钮</View>
+        <View style={{ marginLeft: pxTransform(10), color: '#999' }}>
+          {val}
+        </View>
       </Cell>
       <ActionSheet
         visible={isVisible}

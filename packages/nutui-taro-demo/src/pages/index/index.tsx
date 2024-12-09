@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { useState } from 'react'
 import {
   View,
   Image,
@@ -11,21 +12,19 @@ import {
   Video,
   Textarea,
 } from '@tarojs/components'
+import { SearchBar } from '@/packages/searchbar/searchbar.taro'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
-// import Schema from 'async-validator'
 
 const navs = pkg.nav
-// console.log(navs)
 
 // hack taro load button xml
 console.log(Button, Input, Video, Image, Swiper, SwiperItem, Textarea)
 
-// try {
-//     console.log('xxx', Schema)
-// } catch (e) {}
+
 const Index = () => {
+  const [search, setSearch] = useState()
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面
     Taro.navigateTo({
@@ -67,7 +66,14 @@ const Index = () => {
           </View>
         </View>
       </View>
-      <View className="index-components">
+
+      <View className='index-components'>
+        {process.env.NODE_ENV === 'development' ? <>
+          <SearchBar style={{ background: '#fff' }} placeholder='' value={search} onChange={(e) => {
+            setSearch(e)
+          }} />
+          <View style={{ height: 25 }}></View>
+          </> : null}
         {navs.map((nav) => (
           <View key={nav.enName} className="index-components-item">
             {nav.enName === 'dataentry' ? null : (
@@ -75,7 +81,7 @@ const Index = () => {
             )}
             <View className="index-components-sublist">
               {nav.packages.map((com) =>
-                com.show && com.taro && com.version === '3.0.0' ? (
+                com.show && com.taro && com.version === '3.0.0' && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className="index-components-sublist-item"

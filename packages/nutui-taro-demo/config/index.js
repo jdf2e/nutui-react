@@ -71,7 +71,12 @@ const config = {
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
   plugins: [...plugins],
-  compiler: 'webpack5',
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      exclude: ['@nutui/icons-react-taro']
+    },
+  },
   alias:
     process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
       ? {
