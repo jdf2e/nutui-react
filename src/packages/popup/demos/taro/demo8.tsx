@@ -13,8 +13,13 @@ const Demo8 = () => {
           setScrollPenetration(true)
         }}
       />
-      <Popup visible={scrollPenetration} position="bottom" lockScroll>
-        <ScrollView scrollY style={{ height: '200px' }}>
+      <Popup
+        visible={scrollPenetration}
+        title="禁止滚动穿透"
+        position="bottom"
+        lockScroll
+      >
+        <ScrollView scrollY style={{ height: '300px' }}>
           {Array.from({ length: 200 })
             .fill('')
             .map((_, i) => (

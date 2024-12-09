@@ -285,14 +285,13 @@ export const Popup: FunctionComponent<
             onClick={onHandleClickOverlay}
           />
         ) : null}
-        <>{renderPop()}</>
+        {renderPop()}
       </>
     )
   }
 
   useEffect(() => {
-    visible && open()
-    !visible && close()
+    visible ? open() : close()
   }, [visible])
 
   useEffect(() => {
