@@ -227,7 +227,18 @@
   color: $popover-content-background-color;
 
   .nut-popover-arrow {
-    border-bottom-color: $popover-text-color;
+    &-top {
+      border-top-color: $popover-text-color;
+    }
+    &-bottom {
+      border-bottom-color: $popover-text-color;
+    }
+    &-left {
+      border-left-color: $popover-text-color;
+    }
+    &-right {
+      border-right-color: $popover-text-color;
+    }
   }
 
   .nut-popover-content {
