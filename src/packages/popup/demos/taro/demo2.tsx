@@ -81,7 +81,7 @@ const Demo2 = () => {
           setShowText(false)
         }}
       >
-        <ScrollView style={{ height: '100px' }} scrollY>
+        <ScrollView style={{ height: 200 }} scrollY>
           {Array.from({ length: 10 })
             .fill('')
             .map((_, i) => (
