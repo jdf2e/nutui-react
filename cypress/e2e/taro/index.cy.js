@@ -1,3 +1,6 @@
+import { describe } from 'yargs'
 import { checkTaroBlank } from '../common/pageWhiteTest.cy'
 
-checkTaroBlank() // 全部组件demo的白屏测试
+describe('All Taro Demos White Page Test', () => {
+  checkTaroBlank()
+})

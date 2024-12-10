@@ -8,4 +8,6 @@ import { checkH5Blank } from '../common/pageWhiteTest.cy'
 // import './exhibition.cy'
 // import './feedback.cy'
 
-checkH5Blank() // 全部组件demo的白屏测试
+describe('All Taro Demos White Page Test', () => {
+  checkH5Blank()
+})
