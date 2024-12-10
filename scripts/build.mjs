@@ -267,6 +267,7 @@ async function buildCSS(p) {
   const cssFiles = await glob(['src/packages/**/*.scss'], {
     ignore: ['src/packages/**/demo.scss'],
   })
+
   const variables = await readFile(
     join(__dirname, '../src/styles/variables.scss')
   )
