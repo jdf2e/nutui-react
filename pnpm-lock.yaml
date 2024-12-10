@@ -16,8 +16,8 @@ importers:
         specifier: ^7.23.9
         version: 7.26.0
       '@nutui/icons-react':
-        specifier: ^1.0.5
-        version: 1.0.5
+        specifier: ^2.0.1
+        version: 2.0.1
       '@nutui/icons-react-taro':
         specifier: ^2.0.1
         version: 2.0.1
@@ -1634,6 +1634,9 @@ packages:
 
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==}
+
+  '@nutui/icons-react@2.0.1':
+    resolution: {integrity: sha512-xRgfR52G18DM7/8kb6Giem12G5CxpMo563YKg0HVc27Ch/0+TbB9ODvk0KwY8Wqnn+qMEdpv9UPp1uXj+Rfibg==}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2':
     resolution: {integrity: sha512-2Scz5c9o14gA7Mw5JdiEkc/KEbNlNWMcJMuqVyFVipYeeYN/118N/fvHVpocmJviN0Gc4P+u3ZB3dIQSA2j4Fw==}
@@ -9583,6 +9586,8 @@ snapshots:
   '@nutui/icons-react-taro@2.0.1': {}
 
   '@nutui/icons-react@1.0.5': {}
+
+  '@nutui/icons-react@2.0.1': {}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2': {}
 
