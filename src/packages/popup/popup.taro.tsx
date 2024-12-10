@@ -12,11 +12,10 @@ import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { View, ITouchEvent } from '@tarojs/components'
-import {
+import Overlay, {
   OverlayProps,
   defaultOverlayProps,
-} from '@/packages/overlay/overlay.taro'
-import Overlay from '@/packages/overlay/index.taro'
+} from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 

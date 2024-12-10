@@ -1,3 +1,4 @@
+import './safearea.scss'
 import { SafeArea } from './safearea'
 
 export type { SafeAreaProps } from './safearea'

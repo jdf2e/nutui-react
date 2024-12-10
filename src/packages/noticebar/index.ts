@@ -1,3 +1,4 @@
+import './noticebar.scss'
 import { NoticeBar } from './noticebar'
 
 export type { NoticeBarAlign } from './types'

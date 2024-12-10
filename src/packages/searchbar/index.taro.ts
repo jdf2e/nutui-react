@@ -1,3 +1,4 @@
+import './searchbar.scss'
 import { SearchBar } from './searchbar.taro'
 
 export type { SearchBarProps } from './searchbar.taro'

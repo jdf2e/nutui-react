@@ -1,3 +1,4 @@
+import './popup.scss'
 import { Popup } from './popup.taro'
 
 export type { PopupProps } from './popup.taro'

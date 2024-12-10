@@ -1,3 +1,4 @@
+import './tabbar.scss'
 import { Tabbar } from './tabbar.taro'
 
 export type { TabbarContext } from './context'

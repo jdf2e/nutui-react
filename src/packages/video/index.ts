@@ -1,3 +1,4 @@
+import './video.scss'
 import { Video } from './video'
 
 export type { VideoProps } from './video'

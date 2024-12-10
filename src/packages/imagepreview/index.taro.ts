@@ -1,3 +1,4 @@
+import './imagepreview.scss'
 import { ImagePreview } from './imagepreview.taro'
 
 export type {

@@ -1,3 +1,4 @@
+import './sidenavbar.scss'
 import { SideNavBar } from './sidenavbar'
 
 export type { SideNavBarProps } from './sidenavbar'

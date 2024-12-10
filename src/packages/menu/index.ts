@@ -1,3 +1,4 @@
+import './menu.scss'
 import { Menu } from './menu'
 
 export type { MenuProps, MenuTriggerType, MenuCallBackFunction } from './menu'

@@ -4,7 +4,7 @@ import Cascader, {
   CascaderOption,
   CascaderValue,
   CascaderOptionKey,
-} from '@/packages/cascader/index'
+} from '@/packages/cascader'
 import { ComponentDefaults } from '@/utils/typings'
 
 export interface AddressProps extends CascaderProps {

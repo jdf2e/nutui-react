@@ -1,3 +1,4 @@
+import './watermark.scss'
 import { WaterMark } from './watermark.taro'
 
 export type { WaterMarkProps } from './watermark.taro'

@@ -1,3 +1,4 @@
+import './fixednav.scss'
 import { FixedNav } from './fixednav'
 
 export type { FixedNavType, FixedNavPosition, FixedNavItem } from './types'

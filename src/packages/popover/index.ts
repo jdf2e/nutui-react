@@ -1,3 +1,4 @@
+import './popover.scss'
 import { Popover } from './popover'
 
 export type { PopoverProps } from './popover'

@@ -1,3 +1,4 @@
+import './tag.scss'
 import { Tag } from './tag.taro'
 
 export type { TagType, TagProps } from './tag.taro'

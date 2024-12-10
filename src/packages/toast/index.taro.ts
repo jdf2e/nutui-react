@@ -1,3 +1,4 @@
+import './toast.scss'
 import { Toast } from './toast.taro'
 
 export type {

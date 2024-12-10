@@ -1,3 +1,4 @@
+import './countdown.scss'
 import { CountDown } from './countdown'
 
 export type { CountDownProps, CountDownType, CountDownTimeProps } from './types'

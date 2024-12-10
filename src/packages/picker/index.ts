@@ -1,3 +1,4 @@
+import './picker.scss'
 import Picker from './picker'
 
 export type { PickerOption } from './types'

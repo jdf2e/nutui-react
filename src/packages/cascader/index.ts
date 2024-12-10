@@ -1,3 +1,4 @@
+import './cascader.scss'
 import { Cascader } from './cascader'
 
 export type {

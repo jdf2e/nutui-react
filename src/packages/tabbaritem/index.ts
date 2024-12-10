@@ -1,3 +1,4 @@
+import './tabbaritem.scss'
 import { TabbarItem } from './tabbaritem'
 
 export type { TabbarItemProps } from './tabbaritem'

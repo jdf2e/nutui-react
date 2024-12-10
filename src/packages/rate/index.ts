@@ -1,3 +1,4 @@
+import './rate.scss'
 import { Rate } from './rate'
 
 export type { RateSize, RateProps } from './types'

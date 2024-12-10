@@ -1,3 +1,4 @@
+import './radio.scss'
 import React from 'react'
 import { Radio, RadioProps } from './radio'
 import { RadioGroup } from '../radiogroup/radiogroup'

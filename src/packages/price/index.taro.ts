@@ -1,3 +1,4 @@
+import './price.scss'
 import { Price } from './price.taro'
 
 export type { PriceProps } from './price.taro'

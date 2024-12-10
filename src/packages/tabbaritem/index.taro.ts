@@ -1,3 +1,4 @@
+import './tabbaritem.scss'
 import { TabbarItem } from './tabbaritem.taro'
 
 export type { TabbarItemProps } from './tabbaritem.taro'

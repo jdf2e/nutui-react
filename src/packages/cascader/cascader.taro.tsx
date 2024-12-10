@@ -10,8 +10,8 @@ import React, {
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react-taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Popup, PopupProps } from '@/packages/popup/popup.taro'
-import { Tabs } from '@/packages/tabs/tabs.taro'
+import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Tabs from '@/packages/tabs/index.taro'
 import Tree, { convertListToOptions } from './utils'
 import {
   CascaderPane,

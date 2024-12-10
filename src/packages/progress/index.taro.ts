@@ -1,3 +1,4 @@
+import './progress.scss'
 import { Progress } from './progress.taro'
 
 export type { ProgressProps } from './progress.taro'

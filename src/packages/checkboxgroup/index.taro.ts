@@ -1,3 +1,4 @@
+import './checkboxgroup.scss'
 import { CheckboxGroup } from './checkboxgroup.taro'
 
 export type {

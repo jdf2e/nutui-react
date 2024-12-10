@@ -1,3 +1,4 @@
+import './formitem.scss'
 import { FormItem } from './formitem'
 
 export type { FormItemRule } from './types'

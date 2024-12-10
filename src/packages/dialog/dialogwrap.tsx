@@ -2,9 +2,8 @@ import React, { FunctionComponent, HTMLAttributes } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Content } from './content'
-import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
+import Overlay, { OverlayProps, defaultOverlayProps } from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
-import Overlay from '@/packages/overlay'
 import { mergeProps } from '@/utils/merge-props'
 
 interface DialogWrapProps extends OverlayProps {

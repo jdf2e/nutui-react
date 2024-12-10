@@ -1,3 +1,4 @@
+import './tabs.scss'
 import { Tabs } from './tabs.taro'
 
 export type { TabsProps, TabsTitle } from './tabs.taro'

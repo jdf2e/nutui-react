@@ -1,3 +1,4 @@
+import './indicator.scss'
 import { Indicator } from './indicator'
 
 export type { IndicatorProps } from './indicator'

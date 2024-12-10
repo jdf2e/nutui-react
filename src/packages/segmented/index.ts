@@ -1,3 +1,4 @@
+import './segmented.scss'
 import { Segmented } from './segmented'
 
 export type { SegmentedProps, SegmentedItem } from './types'

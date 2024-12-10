@@ -15,7 +15,7 @@ import {
   CascaderOptionKey,
   CascaderProps,
   CascaderValue,
-} from '@/packages/cascader/index'
+} from '@/packages/cascader'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 

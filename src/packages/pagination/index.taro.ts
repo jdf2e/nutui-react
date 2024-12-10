@@ -1,3 +1,4 @@
+import './pagination.scss'
 import { Pagination } from './pagination.taro'
 
 export type { PaginationProps } from './pagination.taro'

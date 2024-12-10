@@ -1,3 +1,4 @@
+import './form.scss'
 import React from 'react'
 import { Form, FormProps } from './form.taro'
 import { FormItem } from '../formitem/formitem.taro'

@@ -1,3 +1,4 @@
+import './input.scss'
 import { Input } from './input'
 
 export type {

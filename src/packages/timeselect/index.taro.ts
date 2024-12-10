@@ -1,3 +1,4 @@
+import './timeselect.scss'
 import { TimeSelect } from './timeselect.taro'
 
 export type {

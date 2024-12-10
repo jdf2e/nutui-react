@@ -1,3 +1,5 @@
+import './animatingnumbers.scss'
+import './countup.scss'
 import { AnimatingNumbers } from './animatingnumbers'
 import { CountUp } from './countup'
 

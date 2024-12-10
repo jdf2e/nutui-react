@@ -1,3 +1,4 @@
+import './animate.scss'
 import { Animate } from './animate'
 
 export type { AnimateType, AnimateAction } from './types'

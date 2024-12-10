@@ -1,3 +1,4 @@
+import './tabs.scss'
 import { Tabs } from './tabs'
 
 export type { TabsProps, TabsTitle } from './tabs'

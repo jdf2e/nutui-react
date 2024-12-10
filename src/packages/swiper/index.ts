@@ -1,3 +1,4 @@
+import './swiper.scss'
 import React from 'react'
 import { Swiper, SwiperProps } from './swiper'
 import SwiperItem from '@/packages/swiperitem'

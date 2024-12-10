@@ -1,3 +1,4 @@
+import './tour.scss'
 import { Tour } from './tour'
 
 export type { TourList, TourType, TourProps } from './tour'

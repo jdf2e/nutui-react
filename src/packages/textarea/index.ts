@@ -1,3 +1,4 @@
+import './textarea.scss'
 import { TextArea } from './textarea'
 
 export type { TextAreaProps } from './textarea'

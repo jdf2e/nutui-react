@@ -1,3 +1,4 @@
+import './animate.scss'
 import { Animate } from './animate.taro'
 
 export type { AnimateType, AnimateAction } from './types'

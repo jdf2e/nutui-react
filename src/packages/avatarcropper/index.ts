@@ -1,3 +1,4 @@
+import './avatarcropper.scss'
 import { AvatarCropper } from './avatarcropper'
 
 export type {

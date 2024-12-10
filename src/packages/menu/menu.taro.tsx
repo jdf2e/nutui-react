@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
+import MenuItem, { OptionItem } from '@/packages/menuitem/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type MenuTriggerType = 'NORMAL' | 'REF'

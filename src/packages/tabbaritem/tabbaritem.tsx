@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Badge from '@/packages/badge/index'
+import Badge from '@/packages/badge'
 import TabbarContext from '@/packages/tabbar/context'
 
 export interface TabbarItemProps extends BasicComponent {

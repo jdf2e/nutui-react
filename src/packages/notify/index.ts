@@ -1,3 +1,4 @@
+import './notify.scss'
 import Notify from './notify'
 
 export type { NotifyProps } from './notify'

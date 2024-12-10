@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react'
-import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem'
+import MenuItem, { OptionItem } from '@/packages/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type MenuTriggerType = 'NORMAL' | 'REF'

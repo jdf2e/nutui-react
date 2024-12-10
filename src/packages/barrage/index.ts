@@ -1,3 +1,4 @@
+import './barrage.scss'
 import { Barrage } from './barrage'
 
 export type { BarrageProps } from './barrage'

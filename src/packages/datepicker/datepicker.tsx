@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import Picker from '@/packages/picker'
-import { PickerOption, PickerProps } from '@/packages/picker/index'
+import Picker, { PickerOption, PickerProps } from '@/packages/picker'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'

@@ -1,3 +1,4 @@
+import './datepicker.scss'
 import { DatePicker } from './datepicker'
 
 export type { DatePickerProps } from './datepicker'

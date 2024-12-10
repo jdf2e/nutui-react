@@ -1,3 +1,4 @@
+import './inputnumber.scss'
 import { InputNumber } from './inputnumber'
 
 export type { InputNumberProps } from './inputnumber'

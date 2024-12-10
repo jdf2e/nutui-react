@@ -1,3 +1,4 @@
+import './menu.scss'
 import { Menu } from './menu.taro'
 
 export type {

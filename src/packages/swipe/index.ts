@@ -1,3 +1,4 @@
+import './swipe.scss'
 import { Swipe } from './swipe'
 
 export type { SwipeProps, SwipeInstance, SwipeSide } from './swipe'

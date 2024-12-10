@@ -11,7 +11,7 @@ import React, {
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react'
-import { Overlay } from '@/packages/overlay/overlay'
+import Overlay from '@/packages/overlay'
 import useClickAway from '@/utils/use-click-away'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'

@@ -1,3 +1,4 @@
+import './configprovider.scss'
 import {
   ConfigProvider,
   useConfig,

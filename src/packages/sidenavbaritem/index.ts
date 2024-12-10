@@ -1,3 +1,4 @@
+import './sidenavbaritem.scss'
 import { SideNavBarItem } from './sidenavbaritem'
 
 export type { SideNavBarItemProps } from './sidenavbaritem'

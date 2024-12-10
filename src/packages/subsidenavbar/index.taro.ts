@@ -1,3 +1,4 @@
+import './subsidenavbar.scss'
 import { SubSideNavBar } from './subsidenavbar.taro'
 
 export type { SubSideNavBarProps } from './subsidenavbar.taro'

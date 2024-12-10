@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import GridContext from './context'
-import { GridItem, GridItemProps } from '../griditem/griditem.taro'
+import GridItem, { GridItemProps } from '../griditem/index.taro'
 
 export type GridDirection = 'horizontal' | 'vertical'
 

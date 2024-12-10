@@ -1,3 +1,4 @@
+import './collapseitem.scss'
 import { CollapseItem } from './collapseitem'
 
 export type { CollapseItemProps } from './collapseitem'

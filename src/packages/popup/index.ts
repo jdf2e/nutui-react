@@ -1,3 +1,4 @@
+import './popup.scss'
 import { Popup } from './popup'
 
 export type { PopupProps } from './popup'

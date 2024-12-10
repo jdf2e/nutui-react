@@ -1,3 +1,4 @@
+import './row.scss'
 import { Row } from './row'
 
 export type { RowEventType, RowProps } from './row'

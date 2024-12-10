@@ -1,3 +1,4 @@
+import './searchbar.scss'
 import { SearchBar } from './searchbar'
 
 export type { SearchBarProps } from './searchbar'

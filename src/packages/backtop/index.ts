@@ -1,3 +1,4 @@
+import './backtop.scss'
 import { BackTop } from './backtop'
 
 export type { BackTopProps } from './backtop'

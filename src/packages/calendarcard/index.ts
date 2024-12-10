@@ -1,3 +1,4 @@
+import './calendarcard.scss'
 import { CalendarCard } from './calendarcard'
 
 export type {

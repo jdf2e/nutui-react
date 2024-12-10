@@ -9,8 +9,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react'
-import { Popup, PopupProps } from '@/packages/popup/popup'
-import { Tabs } from '@/packages/tabs/tabs'
+import Popup, { PopupProps } from '@/packages/popup'
+import Tabs from '@/packages/tabs'
 import Tree, { convertListToOptions } from './utils'
 import {
   CascaderPane,

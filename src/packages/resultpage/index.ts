@@ -1,3 +1,4 @@
+import './resultpage.scss'
 import { ResultPage } from './resultpage'
 
 export type { ResultPageProps, ResultPageAction } from './resultpage'

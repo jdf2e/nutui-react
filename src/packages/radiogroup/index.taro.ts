@@ -1,3 +1,4 @@
+import './radiogroup.scss'
 import { RadioGroup } from './radiogroup.taro'
 
 export type {

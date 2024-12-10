@@ -1,3 +1,4 @@
+import './image.scss'
 import { Image } from './image'
 
 export type { ImageFit, ImagePosition, ImageProps } from './image'

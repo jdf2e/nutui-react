@@ -1,3 +1,4 @@
+import './tabpane.scss'
 import { TabPane } from './tabpane'
 
 export type { TabPaneProps } from './tabpane'

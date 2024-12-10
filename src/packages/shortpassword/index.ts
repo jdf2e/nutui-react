@@ -1,3 +1,4 @@
+import './shortpassword.scss'
 import { ShortPassword } from './shortpassword'
 
 export type { ShortPasswordProps } from './shortpassword'

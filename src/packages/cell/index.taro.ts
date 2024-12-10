@@ -1,3 +1,4 @@
+import './cell.scss'
 import { Cell } from './cell.taro'
 
 export type { CellProps } from './cell.taro'

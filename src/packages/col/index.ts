@@ -1,3 +1,4 @@
+import './col.scss'
 import { Col } from './col'
 
 export type { ColEventType, ColProps } from './col'

@@ -1,3 +1,4 @@
+import './backtop.scss'
 import { BackTop } from './backtop.taro'
 
 export type { BackTopProps } from './backtop.taro'

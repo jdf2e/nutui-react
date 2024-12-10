@@ -1,3 +1,4 @@
+import './checkbox.scss'
 import { Checkbox, CheckboxProps } from './checkbox.taro'
 import { CheckboxGroup } from '../checkboxgroup/checkboxgroup.taro'
 

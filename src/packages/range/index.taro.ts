@@ -1,3 +1,4 @@
+import './range.scss'
 import { Range } from './range.taro'
 
 export type { RangeMark, RangeValue } from './types'

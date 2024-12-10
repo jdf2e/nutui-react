@@ -1,6 +1,6 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { GridItem, GridItemProps } from '../griditem/griditem'
+import GridItem, { GridItemProps } from '../griditem'
 import GridContext from './context'
 
 export type GridDirection = 'horizontal' | 'vertical'

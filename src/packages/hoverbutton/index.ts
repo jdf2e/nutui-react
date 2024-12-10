@@ -1,3 +1,4 @@
+import './hoverbutton.scss'
 import { HoverButton } from './hoverbutton'
 
 export type { HoverButtonProps } from './hoverbutton'

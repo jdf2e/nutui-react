@@ -1,3 +1,4 @@
+import './numberkeyboard.scss'
 import { NumberKeyboard } from './numberkeyboard.taro'
 
 export type { NumberKeyboardProps } from './numberkeyboard.taro'

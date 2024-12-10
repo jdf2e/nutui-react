@@ -1,3 +1,4 @@
+import './navbar.scss'
 import { NavBar } from './navbar.taro'
 
 export type { NavBarProps } from './navbar.taro'

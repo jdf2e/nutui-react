@@ -1,3 +1,4 @@
+import './numberkeyboard.scss'
 import { NumberKeyboard } from './numberkeyboard'
 
 export type { NumberKeyboardProps } from './numberkeyboard'

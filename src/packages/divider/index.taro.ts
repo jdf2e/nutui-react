@@ -1,3 +1,4 @@
+import './divider.scss'
 import { Divider } from './divider.taro'
 
 export type {

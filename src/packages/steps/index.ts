@@ -1,3 +1,4 @@
+import './steps.scss'
 import { Steps } from './steps'
 
 export type { StepsProps } from './steps'

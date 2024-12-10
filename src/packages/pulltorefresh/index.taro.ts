@@ -1,3 +1,4 @@
+import './pulltorefresh.scss'
 import { PullToRefresh } from './pulltorefresh.taro'
 
 export type { PullToRefreshType } from './types'

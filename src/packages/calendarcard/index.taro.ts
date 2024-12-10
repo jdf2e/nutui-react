@@ -1,3 +1,4 @@
+import './calendarcard.scss'
 import { CalendarCard } from './calendarcard.taro'
 
 export type {

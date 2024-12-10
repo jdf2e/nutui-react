@@ -1,3 +1,4 @@
+import './uploader.scss'
 import { Uploader } from './uploader.taro'
 
 export type { UploaderProps } from './uploader.taro'

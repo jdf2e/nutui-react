@@ -4,7 +4,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
 import HoverButtonItem, {
   HoverButtonItemProps,
-} from '@/packages/hoverbuttonitem/index'
+} from '@/packages/hoverbuttonitem'
 import SafeArea from '@/packages/safearea/index'
 import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
 

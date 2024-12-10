@@ -1,3 +1,4 @@
+import './tabpane.scss'
 import { TabPane } from './tabpane.taro'
 
 export type { TabPaneProps } from './tabpane.taro'
