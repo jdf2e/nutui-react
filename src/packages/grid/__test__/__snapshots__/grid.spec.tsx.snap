@@ -266,6 +266,7 @@ exports[`render with custom content 1`] = `
               class="nut-icon nut-icon-Image  nut-avatar-icon"
               color="#fff"
               role="presentation"
+              style="color: #fff;"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -301,6 +302,7 @@ exports[`render with custom content 1`] = `
             class="nut-icon nut-icon-Image  nut-avatar-icon"
             color="#fff"
             role="presentation"
+            style="color: #fff;"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
           >

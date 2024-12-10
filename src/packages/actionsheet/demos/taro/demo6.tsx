@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo6 = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -21,7 +22,7 @@ const Demo6 = () => {
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <span>自定义key</span>
+        <View>自定义key</View>
       </Cell>
       <ActionSheet
         visible={isVisible}

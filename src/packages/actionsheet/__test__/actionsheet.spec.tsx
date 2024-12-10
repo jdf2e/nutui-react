@@ -63,7 +63,9 @@ test('props test has value ', async () => {
     '.nut-actionsheet-list .nut-actionsheet-item'
   )[0]
   expect(chooseTagEle).toHaveTextContent('选项一')
-  expect(chooseTagEle).toHaveClass('danger')
+  expect(chooseTagEle).toHaveClass(
+    'nut-actionsheet-item nut-actionsheet-item-danger'
+  )
 })
 
 test('props test choose item and show value', async () => {
@@ -101,7 +103,9 @@ test('props test disabled item has disabled classes', async () => {
     '.nut-actionsheet-list .nut-actionsheet-item'
   )
   const disableItem = options[1]
-  expect(disableItem).toHaveClass('nut-actionsheet-item disabled')
+  expect(disableItem).toHaveClass(
+    'nut-actionsheet-item nut-actionsheet-item-disabled'
+  )
 })
 
 test('props test click disabled item and not call fn', async () => {
