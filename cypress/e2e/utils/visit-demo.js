@@ -1,4 +1,4 @@
-export const visitH5Demo = (componentName, delay = 800) => {
+export const visitH5Demo = (componentName, delay = 500) => {
   const getPath = () => `${Cypress.env('baseUrl')}${componentName}`
   cy.visit(getPath(componentName), {
     onBeforeLoad: (win) => {
@@ -11,9 +11,9 @@ export const visitH5Demo = (componentName, delay = 800) => {
   cy.get('#nav').contains(componentName)
   cy.wait(delay)
 }
-export const visitTaroDemo = (componentName, delay = 1000) => {
+export const visitTaroDemo = (path, componentName, delay = 1000) => {
   const getPath = (component) =>
-    `${Cypress.env('baseUrl')}base/pages/${component.toLowerCase()}/index`
+    `${Cypress.env('baseUrl')}${path}/pages/${component.toLowerCase()}/index`
 
   cy.visit(getPath(componentName))
   cy.get('.applets-demo-header').contains(componentName)

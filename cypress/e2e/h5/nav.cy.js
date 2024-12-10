@@ -1,4 +1,4 @@
-import { visitH5Demo } from '../common/visit-demo'
+import { visitH5Demo } from '../utils/visit-demo'
 
 describe('nav components test', () => {
   it('BackTop', () => {
