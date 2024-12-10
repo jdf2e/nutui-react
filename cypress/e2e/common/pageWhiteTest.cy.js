@@ -1,4 +1,4 @@
-import { visitH5Demo, visitTaroDemo } from '../utils/visit-demo.js'
+import { visitH5Demo, visitTaroDemo } from '../utils/visit-demo.cy.js'
 import data from '../../../src/config.json'
 
 const { nav } = data
