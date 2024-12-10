@@ -121,7 +121,7 @@ pnpm dev:jdtaro weapp
 # 京东小程序
 pnpm dev:jdtaro jd
 # harmony cpp
-pnpm dev:jdharmonycpp
+pnpm dev:jdtaro:jdharmonycpp
 ````
 
 ## 构建版本

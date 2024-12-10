@@ -119,7 +119,7 @@ pnpm dev:jdtaro weapp
 # JD Mini Program
 pnpm dev:jdtaro jd
 # harmony cpp
-pnpm dev:jdharmonycpp
+pnpm dev:jdtaro:jdharmonycpp
 ```
 
 ## Build Versions
