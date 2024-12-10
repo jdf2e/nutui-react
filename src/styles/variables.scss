@@ -1063,7 +1063,7 @@ $overlay-animation-duration: var(
 ) !default;
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, $radius-xl) !default;
-$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, 20px) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
 $popup-title-font-size: var(
   --nutui-popup-title-font-size,
@@ -1080,7 +1080,6 @@ $popup-description-font-size: var(
 $popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
-$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
