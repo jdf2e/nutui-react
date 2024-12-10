@@ -5,6 +5,10 @@
   display: flex;
 }
 
+.nut-tabs-horizontal {
+  flex-direction: column;
+}
+
 .nut-tabs-titles {
   display: flex;
   box-sizing: border-box;
@@ -23,7 +27,6 @@
 
   .nut-tabs-list {
     width: 100%;
-    height: auto;
     display: flex;
     flex-shrink: 0;
   }
@@ -67,7 +70,6 @@
     }
 
     &-text {
-      text-align: center;
       color: $tabs-titles-item-color;
     }
 
@@ -78,9 +80,9 @@
       width: 0;
       height: 0;
       content: ' ';
-      bottom: $tabs-tab-line-bottom;
       left: 50%;
       transform: translate(-50%, 0);
+      bottom: $tabs-tab-line-bottom;
       border-radius: $tabs-tab-line-border-radius;
       opacity: $tabs-tab-line-opacity;
       overflow: hidden;
@@ -215,35 +217,7 @@
   }
 }
 
-[dir='rtl'] .nut-tabs-titles,
-.nut-rtl .nut-tabs-titles {
-  &-item {
-    &-smile,
-    &-line {
-      left: auto;
-      right: 50%;
-      transform: translate(50%, 0);
-    }
-  }
-  &-divider {
-    .nut-tabs-titles-item {
-      &::after {
-        right: auto;
-        left: 0;
-      }
-    }
-  }
-}
-
-.nut-tabs-horizontal {
-  flex-direction: column;
-  position: relative;
-}
-
 .nut-tabs-vertical {
-  flex-direction: row;
-  width: 100%;
-
   .nut-tabs-ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -251,42 +225,26 @@
   }
 
   .nut-tabs-titles {
-    box-sizing: border-box;
     flex-direction: column;
     height: 100%;
-    padding: 0;
     width: $tabs-vertical-titles-width;
     flex-shrink: 0;
 
     .nut-tabs-list {
-      width: 100%;
-      display: flex;
       flex-direction: column;
-      flex-shrink: 0;
-    }
-
-    &-line {
-      .nut-tabs-titles-item {
-        padding-left: 14px;
-      }
     }
   }
 
   .nut-tabs-titles-item {
     height: $tabs-vertical-titles-item-height;
-    margin: 0;
     flex: none;
 
     &-smile {
-      width: 0;
-      height: 0;
       overflow: hidden;
       transition: width 0.3s ease;
     }
 
     &-line {
-      width: 0;
-      height: 0;
       transform: translate(0, -50%);
       transition: height 0.3s ease;
 
@@ -308,8 +266,6 @@
         right: -12px;
         bottom: -2%;
         left: auto;
-        width: 40px;
-        height: 20px;
         transform: rotate(320deg);
       }
     }
@@ -318,15 +274,13 @@
   .nut-tabs-horizontal {
     .nut-tabs-titles {
       flex-direction: row;
-      overflow-x: auto;
-      overflow-y: hidden;
       height: $tabs-titles-height;
+      width: 100%;
+      padding: 0 !important;
 
       .nut-tabs-list {
-        width: 100%;
-        display: flex;
         flex-direction: row;
-        flex-shrink: 0;
+        height: auto;
       }
     }
 
@@ -340,6 +294,9 @@
       .nut-tabs-titles-item-line {
         left: 50%;
         transform: translate(-50%, 0);
+        width: $tabs-tab-line-width;
+        height: $tabs-tab-line-height;
+        background: $tabs-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
@@ -363,32 +320,32 @@
       height: 100%;
     }
   }
+}
 
-  .nut-tabs-horizontal {
-    .nut-tabs-titles {
-      display: flex;
-      flex-direction: row;
-      padding: 0 !important;
-      width: 100%;
+.nut-tabs-content {
+  display: flex;
+  box-sizing: border-box;
 
-      .nut-tabs-titles-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 1 0 auto;
+  &-wrap {
+    overflow: hidden;
+  }
+}
 
-        &-active {
-          color: $color-primary;
-          font-weight: $tabs-titles-item-active-font-weight;
-          font-size: $tabs-titles-item-active-font-size;
-
-          .nut-tabs-titles-item-line {
-            content: ' ';
-            width: $tabs-tab-line-width;
-            height: $tabs-tab-line-height;
-            background: $tabs-tab-line-color;
-          }
-        }
+[dir='rtl'] .nut-tabs-titles,
+.nut-rtl .nut-tabs-titles {
+  &-item {
+    &-smile,
+    &-line {
+      left: auto;
+      right: 50%;
+      transform: translate(50%, 0);
+    }
+  }
+  &-divider {
+    .nut-tabs-titles-item {
+      &::after {
+        right: auto;
+        left: 0;
       }
     }
   }
@@ -434,14 +391,5 @@
         transform: translate(50%, 0) rotate(0deg);
       }
     }
-  }
-}
-
-.nut-tabs-content {
-  display: flex;
-  box-sizing: border-box;
-
-  &-wrap {
-    overflow: hidden;
   }
 }

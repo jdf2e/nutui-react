@@ -27,6 +27,7 @@ import Demo20 from './demos/taro/demo20'
 import Demo21 from './demos/taro/demo21'
 import Demo22 from './demos/taro/demo22'
 import Demo23 from './demos/taro/demo23'
+import { harmony } from '@/utils/platform-taro'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({
@@ -110,10 +111,15 @@ const TabsDemo = () => {
         <Demo10 />
         <View className="h2">{translated.title2}</View>
         <Demo11 />
-        <View className="h2">{translated.title14}</View>
-        <Demo12 />
-        <View className="h2">{translated.title10}</View>
-        <Demo13 />
+        {harmony() ? null : (
+          <>
+            <View className="h2">{translated.title14}</View>
+            <Demo12 />
+            <View className="h2">{translated.title10}</View>
+            <Demo13 />
+          </>
+        )}
+
         <View className="h2">{translated.title9}</View>
         <Demo14 />
         <View className="h2">{translated.title3}</View>
