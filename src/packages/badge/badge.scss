@@ -44,12 +44,7 @@
     box-sizing: border-box;
     color: $badge-color;
     font-size: $badge-font-size;
-    /* #ifdef harmony */
     line-height: 12px;
-    /* #endif */
-    /* #ifndef harmony */
-    line-height: 11px;
-    /* #endif */
     white-space: nowrap;
     font-weight: normal;
     vertical-align: middle;
@@ -59,7 +54,12 @@
 
   &-number {
     font-family: 'JD';
+    /* #ifdef harmony */
     line-height: 12px;
+    /* #endif */
+    /* #ifndef harmony */
+    line-height: 13px;
+    /* #endif */
   }
 
   &-one {
