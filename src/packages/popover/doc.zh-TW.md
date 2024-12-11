@@ -167,3 +167,4 @@ PopoverList 屬性是一個由對象構成的數組，數組中的每個對象�
 | \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
 | \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 選項區菜單每一項的 padding 值 | `8px` |
+| \--nutui-popover-menu-item-width | 選項區菜單每一項宽度值，超过宽度值后，会折行展示，保障信息的完整性 | `160px` |
