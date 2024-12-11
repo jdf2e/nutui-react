@@ -13,7 +13,7 @@ const VideoDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
-      autoPlay: '自动播放',
+      autoPlay: '自动播放，支持 Ref 暂停 和继续播放',
       muted: '初始化静音',
       cover: '视频封面海报设置',
       inline: '行内播放',
@@ -22,7 +22,7 @@ const VideoDemo = () => {
     },
     'zh-TW': {
       basic: '基礎用法',
-      autoPlay: '自動播放',
+      autoPlay: '自動播放，支持 Ref 暫停 和繼續播放',
       muted: '初始化靜音',
       cover: '視頻封面海報設置',
       inline: '行內播放',
@@ -31,7 +31,7 @@ const VideoDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
-      autoPlay: 'Auto play',
+      autoPlay: 'Auto play, Ref pause and play',
       muted: 'Initialize mute',
       cover: 'Video cover poster settings',
       inline: 'play inline',
