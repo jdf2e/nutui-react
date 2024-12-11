@@ -93,7 +93,7 @@ import { Empty } from '@nutui/nutui-react-taro'
 | size | Button 组件的 size | ButtonSize | - |
 | fill | Button 组件的 fill 属性 | ButtonFill | - |
 | disabled | 是否禁用 | boolean | false |
-| onClick | Button 组件的 onClick | () =\> void | - |
+| onClick | Button 组件的 onClick | `() => void` | - |
 
 ## 主题定制
 

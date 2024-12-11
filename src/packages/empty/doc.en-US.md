@@ -93,7 +93,7 @@ import { Empty } from '@nutui/nutui-react'
 | size | Size of the action button | ButtonSize | - |
 | fill | Fill of the action button | ButtonFill | - |
 | disabled | Whether disabled state or not | boolean | false |
-| onClick | Triggered on click | () =\> void | - |
+| onClick | Triggered on click | `() => void` | - |
 
 ## Theming
 

@@ -93,7 +93,7 @@ import { Empty } from '@nutui/nutui-react'
 | size | Button 組件的 size | `ButtonSize` | `-` |
 | fill | Button 組件的 fill 屬性 | `ButtonFill` | `-` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| onClick | Button 組件的 onClick | `() =\> void` | `-` |
+| onClick | Button 組件的 onClick | `() => void` | `-` |
 
 ## 主題定製
 
