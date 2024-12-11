@@ -28,14 +28,18 @@ test('video base info', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('video props', () => {
+test('video ref call', () => {
   const pause = vi.fn()
+  // 确保在每个测试后清理 mock
+  afterEach(() => {
+    pause.mockClear()
+  })
+  const itemRef = React.useRef<HTMLVideoElement>(null)
   const App = () => {
     const source = {
       src: 'xxx.mp4',
       type: 'video/mp4',
     }
-    const itemRef = React.useRef<HTMLVideoElement>(null)
     const options = {
       controls: true,
       autoplay: true,
@@ -65,6 +69,8 @@ test('video props', () => {
   }
 
   const { getByTestId } = render(<App />)
+  const videoEle = itemRef.current
+  expect(videoEle).not.toBeNull()
   fireEvent.click(getByTestId('emit-click'))
-  expect(pause).toBeCalled()
+  expect(pause).toHaveBeenCalledTimes(1)
 })
