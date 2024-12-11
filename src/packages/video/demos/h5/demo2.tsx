@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Cell, Video } from '@nutui/nutui-react'
 
 const Demo2 = () => {
-  const [source, setSource] = useState({
+  const [source] = useState({
     src: 'https://storage.360buyimg.com/nutui/video/video_NutUI.mp4',
     type: 'video/mp4',
   })
