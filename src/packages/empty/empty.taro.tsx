@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import type { EmptyAction } from './types'
 import { Button } from '@/packages/button/button.taro'
+import { getButtonType } from '@/packages/empty/utils'
 
 type statusOptions = {
   [key: string]: string
@@ -113,12 +114,13 @@ export const Empty: FunctionComponent<
                   [`${classPrefix}-actions-left`]:
                     actions.length > 1 && index === 0,
                 })}
-                type={`${
-                  actions.length > 1 && index === 0 ? 'default' : 'primary'
-                }`}
-                size="small"
-                fill="outline"
+                style={item.style}
+                type={getButtonType(actions, index)}
+                size={item.size || 'small'}
+                fill={item.fill || 'outline'}
+                disabled={item.disabled || false}
                 key={`action-${index}`}
+                onClick={item.onClick || (() => undefined)}
               >
                 {item?.text}
               </Button>

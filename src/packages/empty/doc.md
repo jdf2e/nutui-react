@@ -60,6 +60,14 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
+### 自定义操作
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ## Empty
 
 ### Props
@@ -72,7 +80,20 @@ import { Empty } from '@nutui/nutui-react'
 | description | 图片下方的描述文字 | `ReactNode` | `-` |
 | size | 组件整体大小，适配于全屏或半屏 | `small` \| `base` | `base` |
 | status | 默认图片错误类型 | `empty` \| `error` \| `network` | `empty` |
-| actions | 可用于处理操作的一组数据 | `Array` | `[]` |
+| actions | 可用于处理操作的一组数据 | `Array<EmptyAction>` | `[]` |
+
+### EmptyAction
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| text | 文本 | `ReactNode` | `-` |
+| className | Button 组件的类名 | `string` | `-` |
+| style | Button 组件的 style | `CSSProperties` | `-` |
+| type | Button 组件的 type | `ButtonType` | `-` |
+| size | Button 组件的 size | `ButtonSize` | `-` |
+| fill | Button 组件的 fill 属性 | `ButtonFill` | `-` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| onClick | Button 组件的 onClick | `() => void` | `-` |
 
 ## 主题定制
 
