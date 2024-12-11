@@ -60,6 +60,14 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
+### Actions
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ## Empty
 
 ### Props
@@ -72,7 +80,20 @@ import { Empty } from '@nutui/nutui-react'
 | description | Description below the image | `ReactNode` | `-` |
 | size | Size of component,used by full screen or half screen | `small` \| `base` | `base` |
 | status | The Default error type | `empty` \| `error` \| `network` | `empty` |
-| actions | Actions of operation | `Array` | `[]` |
+| actions | Actions of operation | `Array<EmptyAction>` | `[]` |
+
+### EmptyAction
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| text | The text | ReactNode | - |
+| className | Class name of the action button | string | - |
+| style | Style of the action button | CSSProperties | - |
+| type | Type of the action button | ButtonType | - |
+| size | Size of the action button | ButtonSize | - |
+| fill | Fill of the action button | ButtonFill | - |
+| disabled | Whether disabled state or not | boolean | false |
+| onClick | Triggered on click | () =\> void | - |
 
 ## Theming
 
