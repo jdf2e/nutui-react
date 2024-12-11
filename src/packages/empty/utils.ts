@@ -1,4 +1,6 @@
-export const getButtonType = (actions, index) => {
+import { EmptyAction } from './types'
+
+export const getButtonType = (actions: Array<EmptyAction>, index: number) => {
   const action = actions[index]
   if (!actions || actions.length === 0) return 'default'
   if (action.type) return action.type
