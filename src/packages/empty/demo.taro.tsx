@@ -19,7 +19,7 @@ const EmptyDemo = () => {
       b840c88f: '图片类型，内置3个',
       a74a1fd4: '自定义图片',
       '8dab2f66': '底部内容',
-      actions: 'Actions',
+      actions: '自定义操作',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -28,7 +28,7 @@ const EmptyDemo = () => {
       b840c88f: '圖片類型，內置3個',
       a74a1fd4: '自定義圖片',
       '8dab2f66': '底部內容',
-      actions: 'Actions',
+      actions: '自定義操作',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
