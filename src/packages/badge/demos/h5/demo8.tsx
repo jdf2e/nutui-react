@@ -13,10 +13,10 @@ const Demo8 = () => {
       </Badge>
       <Badge
         value="内容"
-        color="blue"
         fill="outline"
         style={{
           '--nutui-badge-outline-border': '1px solid blue',
+          '--nutui-badge-outline-color': 'blue',
         }}
       >
         <Avatar icon={<User />} shape="square" />

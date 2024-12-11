@@ -11,7 +11,6 @@ const defaultProps = {
   max: 99,
   top: 0,
   right: 0,
-  color: '',
   fill: 'solid',
   size: 'large',
 } as BadgeProps
@@ -26,7 +25,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     dot,
     top,
     right,
-    color,
     fill,
     size,
   } = {
@@ -102,10 +100,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       )}
       {children}
       {!isIcon() && (
-        <div
-          className={contentClasses}
-          style={{ ...getPositionStyle(), ...getCustomStyle() }}
-        >
+        <div className={contentClasses} style={getPositionStyle()}>
           {content()}
         </div>
       )}

@@ -20,7 +20,6 @@ const defaultProps = {
   max: 99,
   top: 0,
   right: 0,
-  color: '',
   fill: 'solid',
   size: 'large',
 } as BadgeProps
@@ -35,7 +34,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     dot,
     top,
     right,
-    color,
     fill,
     size,
   } = {
@@ -94,22 +92,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     setContentStyle(style)
   }
 
-  const getCustomStyle = () => {
-    const style: CSSProperties = {}
-    if (color) {
-      if (fill === 'outline') {
-        style.color = color
-        isHarmony
-          ? (style.backgroundColor = '#FFFFFF')
-          : (style.background = '#FFFFFF')
-      } else {
-        style.color = '#fff'
-        isHarmony ? (style.backgroundColor = color) : (style.background = color)
-      }
-    }
-    return style
-  }
-
   return (
     <View className={classes} style={style} ref={badgeRef}>
       {isIcon() && (
@@ -125,10 +107,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       )}
       {children}
       {!isIcon() && (
-        <View
-          className={contentClasses}
-          style={{ ...contentStyle, ...getCustomStyle() }}
-        >
+        <View className={contentClasses} style={contentStyle}>
           {content()}
         </View>
       )}

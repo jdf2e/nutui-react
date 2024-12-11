@@ -98,7 +98,7 @@
 
   &-outline {
     background: $color-primary-text;
-    color: $color-primary;
+    color: $badge-outline-color;
     &::after {
       border: $badge-outline-border;
     }

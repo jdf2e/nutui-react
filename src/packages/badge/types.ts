@@ -9,7 +9,6 @@ export interface BadgeProps extends BasicComponent {
   max: number
   top: string | number
   right: string | number
-  color: string
   fill: BadgeFill
   size: BadgeDotSize
 }

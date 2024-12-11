@@ -86,7 +86,6 @@ import { Badge } from '@nutui/nutui-react'
 | size | dot 尺寸，當 dot 等於 `true` 時生效 | `small` \| `normal` \| `large` | `large` |
 | top | 上下偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
 | right | 左右偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
-| color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主題定制
@@ -113,4 +112,5 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-dot-small-width | badge 為圓點時，size 等於 small 的寬高 | `4px` |
 | \--nutui-badge-dot-large-width | badge 為圓點時，size 等於 large 的寬高 | `8px` |
 | \--nutui-badge-dot-border | badge 為圓點時的邊框 | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-color | badge 為 outline 文字色值 | `$color-primary` |
 | \--nutui-badge-outline-border | badge 為 outline 填充模式時的邊框 | `1px solid $color-primary-text` |

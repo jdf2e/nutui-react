@@ -87,7 +87,6 @@ import { Badge } from '@nutui/nutui-react'
 | size | dot size, effective when dot is equal to `true` | `small` \| `normal` \| `large` | `large` |
 | top | Up and down offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
 | right | Left and right offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
-| color | background color,the default value is the theme primary color | `string` | `-` |
 | fill | Fill Mode | `solid` \| `outline` | `solid` |
 
 ## Theming
@@ -114,4 +113,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-dot-small-width | When badge is a dot, size is equal to the width and height of small | `4px` |
 | \--nutui-badge-dot-large-width | When the badge is a dot, size is equal to the width and height of large | `8px` |
 | \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-color | The border when badge is outline text color value | `$color-primary` |
 | \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |

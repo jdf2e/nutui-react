@@ -86,7 +86,6 @@ import { Badge } from '@nutui/nutui-react-taro'
 | size | dot 尺寸，当 dot 等于 `true` 时生效 | `small` \| `normal` \| `large` | `large` |
 | top | 上下偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | right | 左右偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
-| color | 徽标背景颜色 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主题定制
@@ -113,4 +112,5 @@ import { Badge } from '@nutui/nutui-react-taro'
 | \--nutui-badge-dot-small-width | badge 为圆点时，size 等于 small 的宽高 | `4px` |
 | \--nutui-badge-dot-large-width | badge 为圆点时，size 等于 large 的宽高 | `8px` |
 | \--nutui-badge-dot-border | badge 为圆点时的边框 | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-color | badge 为 outline 文字色值 | `$color-primary` |
 | \--nutui-badge-outline-border | badge 为 outline 填充模式时的边框 | `1px solid $color-primary-text` |
