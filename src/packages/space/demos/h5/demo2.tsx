@@ -1,16 +1,18 @@
 import React from 'react'
-import { Space, Button } from '@nutui/nutui-react'
+import { Space, Button, Cell } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   return (
-    <Space wrap>
-      <Button>按钮1</Button>
-      <Button>按钮2</Button>
-      <Button>按钮3</Button>
-      <Button>按钮4</Button>
-      <Button>按钮5</Button>
-      <Button>按钮6</Button>
-    </Space>
+    <Cell>
+      <Space wrap>
+        <Button>按钮1</Button>
+        <Button>按钮2</Button>
+        <Button>按钮3</Button>
+        <Button>按钮4</Button>
+        <Button>按钮5</Button>
+        <Button>按钮6</Button>
+      </Space>
+    </Cell>
   )
 }
 export default Demo2

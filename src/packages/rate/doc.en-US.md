@@ -112,6 +112,8 @@ import { Rate } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| size | Score size | `large` \| `normal` \| `small` | `normal` |
+| showScore | Show Score | `boolean` | `false` |
 | defaultValue | Uncontrolled star value | `number` | `0` |
 | value | Controlled star value | `number` | `0` |
 | count | total number of stars | `number` | `5` |
@@ -133,6 +135,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| \--nutui-rate-item-margin | rate item margin | `14px` |
-| \--nutui-rate-icon-color | checked icon color | `$color-primary` |
-| \--nutui-rate-icon-inactive-color | unchecked icon color | `$color-text-disabled` |
+| \--nutui-rate-item-margin | spacing | `4px` |
+| \--nutui-rate-icon-color | icon activation color | `$color-primary-icon` |
+| \--nutui-rate-icon-inactive-color | icon inactive color | `$color-primary-icon-disabled` |
+| \--nutui-rate-icon-size | icon size | `12px` |
+| \--nutui-rate-font-color | Rating font color | `$color-primary-icon` |
+| \--nutui-rate-font-size | Rating font size | `12px` |

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react'
+import { Cell, Switch, Space } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   return (
     <Cell>
-      <Switch defaultChecked disabled />
+      <Space>
+        <Switch defaultChecked disabled />
+        <Switch disabled />
+      </Space>
     </Cell>
   )
 }

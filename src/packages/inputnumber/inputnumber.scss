@@ -1,8 +1,13 @@
 .nut-inputnumber {
-  display: flex;
+  display: inline-flex;
+  width: calc(
+    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} + #{$inputnumber-input-width}
+  );
   flex-direction: row;
   align-items: center;
-
+  background-color: $color-background;
+  border-radius: $inputnumber-input-border-radius;
+  overflow: hidden;
   &-minus,
   &-add {
     display: flex;
@@ -11,21 +16,18 @@
     width: $inputnumber-button-width;
     height: $inputnumber-button-height;
     background-color: $inputnumber-button-background-color;
-    border-radius: $inputnumber-button-border-radius;
+    .nut-icon {
+      --nut-icon-width: 20px;
+      --nut-icon-height: 20px;
+    }
   }
 
   &-icon {
-    color: $inputnumber-icon-color;
-    /*  #ifdef rn harmony  */
-    font-size: 14px;
-    /*  #endif  */
-    /*  #ifndef  rn harmony  */
-    font-size: $inputnumber-icon-size;
-    /*  #endif */
+    color: $color-text;
     cursor: pointer;
 
     &-disabled {
-      color: $inputnumber-disabled-color;
+      color: $color-text-disabled;
       cursor: not-allowed;
     }
   }
@@ -35,16 +37,17 @@
     justify-content: center;
     align-items: center;
     width: $inputnumber-input-width;
+    font-size: $inputnumber-input-font-size;
     height: $inputnumber-input-height;
     text-align: center;
     outline: none;
     border: $inputnumber-input-border;
-    border-radius: $inputnumber-input-border-radius;
-    margin: $inputnumber-input-margin;
-    color: $inputnumber-input-font-color;
+    margin-left: $inputnumber-input-margin;
+    margin-right: $inputnumber-input-margin;
+    color: $color-text;
     background-color: $inputnumber-input-background-color;
     &-disabled {
-      color: $inputnumber-disabled-color;
+      color: $color-text-disabled;
     }
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
@@ -53,7 +56,7 @@
   }
 
   &-input-disabled {
-    color: $inputnumber-disabled-color;
+    color: $color-text-disabled;
   }
 
   &-icon-minus {

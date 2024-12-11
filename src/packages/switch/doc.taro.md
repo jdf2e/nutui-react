@@ -34,7 +34,7 @@ import { Switch } from '@nutui/nutui-react-taro'
 
 :::
 
-### onChange事件
+### 支持文字
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Switch } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义颜色
+### 支持 Icon
 
 :::demo
 
@@ -50,11 +50,19 @@ import { Switch } from '@nutui/nutui-react-taro'
 
 :::
 
-### 支持文字
+### onChange事件
 
 :::demo
 
 <CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+:::
+
+### 自定义颜色
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -67,8 +75,8 @@ import { Switch } from '@nutui/nutui-react-taro'
 | defaultChecked | 开关状态，非受控 | `boolean` | `false` |
 | checked | 开关状态，受控 | `boolean` | `false` |
 | disabled | 禁用状态 | `boolean` | `false` |
-| activeText | 打开时文字描述 | `string` | `-` |
-| inactiveText | 关闭时文字描述 | `string` | `-` |
+| activeText | 打开时文字描述 | `ReactNode` | `-` |
+| inactiveText | 关闭时文字描述 | `ReactNode` | `-` |
 | onChange | 切换开关时触发 | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## 主题定制
@@ -79,16 +87,18 @@ import { Switch } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
-| \--nutui-switch-open-background-color | 开关打开状态背景颜色 | `$color-primary` |
-| \--nutui-switch-close-disabled-background-color | 开关关闭时的禁用时的背景颜色 | `$color-background` |
-| \--nutui-switch-open-disabled-background-color | 开关打开时的禁用时的背景颜色 | `$color-primary-disabled-special` |
-| \--nutui-switch-width | 开关宽度 | `40px` |
-| \--nutui-switch-height | 开关高度 | `24px` |
-| \--nutui-switch-line-height | 开关行高 | `24px` |
-| \--nutui-switch-border-radius | 开关圆角大小 | `8px` |
-| \--nutui-switch-inside-width | 开关内部按钮宽度 | `20px` |
-| \--nutui-switch-inside-height | 开关内部按钮高度 | `20px` |
-| \--nutui-switch-inside-open-transform | 开关打开状态内部按钮位置 | `translateX(18px)` |
-| \--nutui-switch-inside-close-transform | 开关关闭状态内部按钮位置 | `translateX(2px)` |
-| \--nutui-switch-close-line-bg-color | 开关关闭状态内部按钮线条颜色 | `#ffffff` |
+| \--nutui-switch-active-background-color | 开关打开状态背景颜色 | `$color-primary` |
+| \--nutui-switch-inactive-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
+| \--nutui-switch-active-disabled-background-color | 开关打开状态禁用的背景颜色 | `$color-primary-disabled-special` |
+| \--nutui-switch-inactive-disabled-background-color | 开关关闭状态禁用的背景颜色 | `$color-background` |
+| \--nutui-switch-inactive-line-bg-color | 开关关闭状态内部按钮线条颜色 | `#ffffff` |
+| \--nutui-switch-width | 开关宽度 | `46px` |
+| \--nutui-switch-height | 开关高度 | `28px` |
+| \--nutui-switch-line-height | 开关行高 | `28px` |
+| \--nutui-switch-border-radius | 开关圆角大小 | `$radius-circle` |
+| \--nutui-switch-border-width | 开关边框宽度 | `2px` |
+| \--nutui-switch-inside-border-radius | 开关内部按钮圆角大小 | `$radius-full` |
+| \--nutui-switch-inside-box-shadow | 开关内部按钮阴影 | `0px 2px 6px 0px rgba(0, 0, 0, 0.4)` |
+| \--nutui-switch-label-text-color | 开关内部文字颜色 | `$color-primary-text` |
+| \--nutui-switch-label-font-size | 开关内部文字大小 | `$font-size-s` |
+| \--nutui-switch-inactive-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |

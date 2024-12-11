@@ -5,7 +5,7 @@ const fse = require('fs-extra')
 const config = require('../../src/config.json')
 const args = process.argv.splice(2)
 
-console.log('rn copy-file.js args',args)
+console.log('rn copy-file.js args', args)
 
 // 已适配组件对象
 const adaptedArray = []
@@ -30,6 +30,7 @@ const childAdaptedArray = [
   'hoverbuttonitem',
   'avatargroup',
   'icon',
+  'tabpane',
 ]
 
 // copy文件并增加css引入

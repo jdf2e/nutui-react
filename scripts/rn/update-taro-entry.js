@@ -6,9 +6,10 @@ const path = require('path')
 const config = require('../../src/config.json')
 const param = process.env.C
 
-// C=radio pnpm dev:taro:jdharmonycpp
+// C=radio pnpm dev:taro:jdharmonycpp or C=radio,button,cell pnpm dev:taro:jdharmonycpp
 function specialComponent(name) {
-  return param && name.toLowerCase() == param.toLowerCase()
+  const entries = param.split(',').map((i) => i.toLowerCase())
+  return entries.includes(name.toLowerCase())
 }
 
 // 已适配组件对象
@@ -35,6 +36,7 @@ const childAdaptedArray = [
   'hoverbuttonitem',
   'avatargroup',
   'icon',
+  'tabpane',
 ]
 
 // 更新 app.config.ts 文件

@@ -16,7 +16,7 @@ exports[`child element count 1`] = `
         >
           <svg
             aria-labelledby="Cart"
-            class="nut-icon nut-icon-Cart "
+            class="nut-icon nut-icon-Cart nut-icon"
             role="presentation"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ exports[`child element count 1`] = `
         >
           <svg
             aria-labelledby="Cart"
-            class="nut-icon nut-icon-Cart "
+            class="nut-icon nut-icon-Cart nut-icon"
             role="presentation"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ exports[`child element count 1`] = `
         >
           <svg
             aria-labelledby="Cart"
-            class="nut-icon nut-icon-Cart "
+            class="nut-icon nut-icon-Cart nut-icon"
             role="presentation"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +69,31 @@ exports[`child element count 1`] = `
               fill-opacity="0.9"
             />
           </svg>
+        </div>
+      </div>
+      <div
+        class="nut-hoverbutton-item-container nut-hoverbutton-item-container-icontext"
+      >
+        <div
+          class="nut-hoverbutton-item-text-icon"
+        />
+        <svg
+          aria-labelledby="Cart"
+          class="nut-icon nut-icon-Cart nut-icon"
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 65.17c0-24.21 19.37-43.84 43.24-43.84h51.14c70.46 0 128.85 55.4 133.55 126.68l.74 11.12h661.46c81.45 0 144 73.15 132.48 154.9l-33.02 234.45c-14.63 103.94-97.49 184.23-200.58 194.35l-467.47 45.86C246.4 796.07 180.12 739 175.1 662.63l-30.03-456.32v-.76l-3.42-51.69c-1.66-25.24-22.34-44.84-47.27-44.85H43.24C19.35 109.01 0 89.38 0 65.17m234.45 181.66 26.95 409.98c1.77 27.03 25.22 47.21 51.82 44.59l467.47-45.87c63.36-6.19 114.28-55.55 123.29-119.44L937 301.63c4.1-28.93-18.05-54.83-46.87-54.82h-655.7zm64.22 670.5a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0M896 1002.67A85.33 85.33 0 1 0 896 832a85.33 85.33 0 0 0 0 170.67"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+        <div
+          class="nut-hoverbutton-item-text"
+        >
+          购物
         </div>
       </div>
     </div>
@@ -95,7 +120,7 @@ exports[`emit click event 1`] = `
         >
           <svg
             aria-labelledby="Cart"
-            class="nut-icon nut-icon-Cart "
+            class="nut-icon nut-icon-Cart nut-icon"
             role="presentation"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +145,7 @@ exports[`tabbar height 1`] = `
 <div>
   <div
     class="nut-hoverbutton-container"
-    style="bottom: 64px;"
+    style="bottom: 108px;"
   >
     <div
       class="nut-hoverbutton"
@@ -133,7 +158,7 @@ exports[`tabbar height 1`] = `
         >
           <svg
             aria-labelledby="Cart"
-            class="nut-icon nut-icon-Cart "
+            class="nut-icon nut-icon-Cart nut-icon"
             role="presentation"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"

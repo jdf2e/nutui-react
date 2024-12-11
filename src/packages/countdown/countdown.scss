@@ -12,26 +12,45 @@
     align-items: center;
     justify-content: center;
     height: $countdown-height;
+    box-sizing: border-box;
     font-weight: $coutdown-font-weight;
     font-size: $countdown-font-size;
+    line-height: calc($countdown-font-size + 2px);
+    font-family: 'JD';
   }
   &-number,
   &-number-primary {
+    position: relative;
     min-width: $countdown-width;
     padding: $countdown-number-padding;
     border-radius: $countdown-number-border-radius;
     margin: $countdown-number-margin;
     text-align: center;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      bottom: -50%;
+      left: -50%;
+      right: -50%;
+      transform: scale(0.5);
+      border-radius: calc($countdown-number-border-radius * 2);
+    }
   }
   &-number {
-    border: 1px solid $countdown-number-border-color;
     background-color: $countdown-number-background-color;
     color: $countdown-number-color;
+    &::after {
+      border: 1px solid $countdown-number-border-color;
+    }
   }
+
   &-number-primary {
-    border: 1px solid $countdown-number-primary-border-color;
     background-color: $countdown-number-primary-background-color;
     color: $countdown-number-primary-color;
+    &::after {
+      border: 1px solid $countdown-number-primary-border-color;
+    }
   }
   &-number-text {
     border: 0;

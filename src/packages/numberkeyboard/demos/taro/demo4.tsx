@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Cell, NumberKeyboard } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo4 = () => {
   const [visible, setVisible] = useState(false)
@@ -15,7 +16,7 @@ const Demo4 = () => {
       <NumberKeyboard
         visible={visible}
         title="标题"
-        rightActions={<span>Done</span>}
+        rightActions={<View>Done</View>}
         custom={['.']}
         onChange={onChange}
         onDelete={onDelete}
