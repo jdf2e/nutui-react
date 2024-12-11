@@ -19,12 +19,15 @@
     &-title {
       color: $color-title;
       display: inline-block;
+      font-size: $popup-title-font-size;
     }
 
     &-close {
       position: absolute;
       display: block;
       right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       padding: $numberkeyboard-header-close-padding;
       color: $numberkeyboard-header-close-color;
       font-size: $numberkeyboard-header-close-font-size;
@@ -47,7 +50,12 @@
     &-wrapper {
       position: relative;
       flex: 1;
+      /* #ifdef harmony */
+      width: 33%;
+      /* #endif */
+      /* #ifndef harmony */
       flex-basis: 33%;
+      /* #endif */
       box-sizing: border-box;
       padding: 0 6px 6px 0;
       background-color: $numberkeyboard-wrapper-background-color;
@@ -76,9 +84,10 @@
   &-sidebar {
     display: flex;
     flex: 1;
+    flex-basis: 33%;
     flex-direction: column;
-
     .nut-numberkeyboard-body-wrapper {
+      width: 100%;
       .key {
         position: absolute;
         top: 0;

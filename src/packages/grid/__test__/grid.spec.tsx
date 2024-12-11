@@ -162,7 +162,7 @@ test('render with custom', () => {
   expect(gridItem.length).toBe(3)
   const two = gridItem[1].querySelector('.nut-icon')
   expect(two).toHaveStyle({
-    color: '#478EF',
+    color: '#478EF2',
     height: '40px',
     width: '40px',
   })

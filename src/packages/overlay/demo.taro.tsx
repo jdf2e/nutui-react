@@ -10,7 +10,6 @@ import Demo1 from './demos/taro/demo1'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const OverlayDemo = () => {
   const [translated] = useTranslate({
@@ -43,39 +42,22 @@ const OverlayDemo = () => {
   return (
     <>
       <Header />
-      {!harmonyAndRn() ? (
-        <View
-          className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
-        >
-          <View className="h2">{translated['84aa6bce']}</View>
-          <Demo1 />
-          <View className="h2">{translated.abbf9359}</View>
-          <Demo2 />
-          <View className="h2">{translated.duration}</View>
-          <Demo3 />
-          <View className="h2">{translated.lockscroll}</View>
-          <Demo4 />
-          <View className="h2">{translated.ec0d7acf}</View>
-          <Demo5 />
-          <View className="h2">{translated.closeClickLay}</View>
-          <Demo6 />
-        </View>
-      ) : (
-        <>
-          <View className="h2">{translated['84aa6bce']}</View>
-          <Demo1 />
-          <View className="h2">{translated.abbf9359}</View>
-          <Demo2 />
-          <View className="h2">{translated.duration}</View>
-          <Demo3 />
-          <View className="h2">{translated.lockscroll}</View>
-          <Demo4 />
-          <View className="h2">{translated.ec0d7acf}</View>
-          <Demo5 />
-          <View className="h2">{translated.closeClickLay}</View>
-          <Demo6 />
-        </>
-      )}
+      <View
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
+      >
+        <View className="h2">{translated['84aa6bce']}</View>
+        <Demo1 />
+        <View className="h2">{translated.abbf9359}</View>
+        <Demo2 />
+        <View className="h2">{translated.duration}</View>
+        <Demo3 />
+        <View className="h2">{translated.lockscroll}</View>
+        <Demo4 />
+        <View className="h2">{translated.ec0d7acf}</View>
+        <Demo5 />
+        <View className="h2">{translated.closeClickLay}</View>
+        <Demo6 />
+      </View>
     </>
   )
 }

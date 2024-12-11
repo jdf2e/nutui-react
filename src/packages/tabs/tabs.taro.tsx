@@ -81,7 +81,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   })
 
   const titleItemsRef = useRef<HTMLDivElement[]>([])
-  const navRef = useRef<HTMLDivElement>(null)
 
   const getTitles = () => {
     const titles: TabsTitle[] = []
@@ -123,7 +122,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
-    [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
@@ -268,7 +266,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         className={classesTitle}
         style={{ ...tabStyle }}
       >
-        <View className="nut-tabs-list" ref={navRef}>
+        <View className="nut-tabs-list">
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {

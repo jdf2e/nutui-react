@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 
 const Demo16 = () => {
-  const [tab4value, setTab4value] = useState<number | string>('0')
+  const [tabvalue, setTabvalue] = useState<number | string>('0')
   return (
     <>
       <Tabs
-        value={tab4value}
+        value={tabvalue}
         onChange={(value) => {
-          setTab4value(value)
+          setTabvalue(value)
         }}
       >
         <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>

@@ -6,6 +6,7 @@ import HoverButtonItem, {
   HoverButtonItemProps,
 } from '@/packages/hoverbuttonitem/index'
 import SafeArea from '@/packages/safearea/index'
+import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
@@ -34,7 +35,7 @@ export const HoverButton: FunctionComponent<
   const baseStyle = { ...style }
 
   if (tabbarHeight) {
-    const bottom = tabbarHeight + 16
+    const bottom = tabbarHeight + UI_BOTTOM_DISTANCE
     baseStyle.bottom = `${bottom}px`
   }
 

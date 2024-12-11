@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { View } from '@tarojs/components'
 import { Tabs, Swiper } from '@nutui/nutui-react-taro'
 
+// TODO：鸿蒙支持的不好
 const Demo12 = () => {
   const swiperRef = useRef<React.ElementRef<typeof Swiper> | null>(null)
   const [tabIndex, setTabIndex] = useState<string | number>(0)

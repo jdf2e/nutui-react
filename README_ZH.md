@@ -71,9 +71,9 @@ pnpm run dev
 
 ```
 
-### 本地运行小程序
+### 本地运行 Taro 相关的预览
 
-```sh
+````sh
 # 克隆仓库
 git clone https://github.com/jdf2e/nutui-react.git
 
@@ -84,13 +84,45 @@ cd nutui-react
 pnpm install
 
 # 进入小程序开发模式
-# 访问：src/sites/mobile-taro/dist/weapp
-pnpm run dev:taro:weapp
+```shell
+# Taro H5
+pnpm dev:taro h5
+# 微信小程序
+pnpm dev:taro weapp
+# 京东小程序
+pnpm dev:taro jd
+# 其他平台 参考 demo 目录中 package.json 的 script
+````
 
-# 其他小程序类似，如京东小程序
-# 访问：src/sites/mobile-taro/dist/jd
-pnpm run dev:taro:jd
+### 本地运行 JDTaro 相关的预览
+
+1. 仓库根目录下增加 .npmrc 文件，增加如下配置:
+
+```shell
+git-branch-lockfile=true
 ```
+
+````sh
+# 克隆仓库
+git clone https://github.com/jdf2e/nutui-react.git
+
+# 进入项目根目录
+cd nutui-react
+
+# 安装依赖
+pnpm install --ignore-pnpmfile
+
+# 进入小程序开发模式
+```shell
+# Taro H5
+pnpm dev:jdtaro h5
+# 微信小程序
+pnpm dev:jdtaro weapp
+# 京东小程序
+pnpm dev:jdtaro jd
+# harmony cpp
+pnpm dev:jdtaro:jdharmonycpp
+````
 
 ## 构建版本
 

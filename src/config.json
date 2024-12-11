@@ -188,7 +188,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "yangxiaolu"
         },
         {
@@ -389,7 +389,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TabPane",
           "sort": 2,
           "cName": "选项卡切换子组件",
@@ -400,7 +400,7 @@
           "author": "张晶发"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Tabs",
           "type": "component",
           "cName": "选项卡切换",
@@ -579,7 +579,7 @@
           "author": "oasis-cloud"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "NumberKeyboard",
           "type": "component",
           "cName": "数字键盘",
@@ -642,7 +642,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -687,7 +687,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -720,7 +720,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -773,7 +773,7 @@
           "show": true,
           "taro": true,
           "author": "liukun",
-          "v14": true
+          "v15": true
         },
         {
           "version": "3.0.0",
@@ -784,7 +784,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -899,7 +899,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "VickyYe"
         }
       ]
@@ -1005,7 +1005,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -1050,7 +1050,19 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v14": true,
+          "v15": true,
+          "author": "lkjh3214"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v15": true,
           "author": "lkjh3214"
         },
         {
@@ -1205,7 +1217,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeDetail",
           "type": "component",
           "cName": "配送时间",
