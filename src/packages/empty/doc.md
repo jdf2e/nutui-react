@@ -86,14 +86,14 @@ import { Empty } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| text | 文本 | ReactNode | - |
-| className | Button 组件的类名 | string | - |
-| style | Button 组件的 style | CSSProperties | - |
-| type | Button 组件的 type | ButtonType | - |
-| size | Button 组件的 size | ButtonSize | - |
-| fill | Button 组件的 fill 属性 | ButtonFill | - |
-| disabled | 是否禁用 | boolean | false |
-| onClick | Button 组件的 onClick | `() => void` | - |
+| text | 文本 | `ReactNode` | `-` |
+| className | Button 组件的类名 | `string` | `-` |
+| style | Button 组件的 style | `CSSProperties` | `-` |
+| type | Button 组件的 type | `ButtonType` | `-` |
+| size | Button 组件的 size | `ButtonSize` | `-` |
+| fill | Button 组件的 fill 属性 | `ButtonFill` | `-` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| onClick | Button 组件的 onClick | `() => void` | `-` |
 
 ## 主题定制
 

@@ -86,14 +86,14 @@ import { Empty } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| text | The text | ReactNode | - |
-| className | Class name of the action button | string | - |
-| style | Style of the action button | CSSProperties | - |
-| type | Type of the action button | ButtonType | - |
-| size | Size of the action button | ButtonSize | - |
-| fill | Fill of the action button | ButtonFill | - |
-| disabled | Whether disabled state or not | boolean | false |
-| onClick | Triggered on click | `() => void` | - |
+| text | text | `ReactNode` | `-` |
+| className | The class name of the Button component | `string` | `-` |
+| style | style of Button component | `CSSProperties` | `-` |
+| type | type of Button component | `ButtonType` | `-` |
+| size | The size of the Button component | `ButtonSize` | `-` |
+| fill | fill property of Button component | `ButtonFill` | `-` |
+| disabled | Whether to disable | `boolean` | `false` |
+| onClick | onClick of Button component | `() => void` | `-` |
 
 ## Theming
 
