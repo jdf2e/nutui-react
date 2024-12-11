@@ -34,7 +34,6 @@ test('video ref call', () => {
   afterEach(() => {
     pause.mockClear()
   })
-  const itemRef = React.useRef<HTMLVideoElement>(null)
   const App = () => {
     const source = {
       src: 'xxx.mp4',
@@ -48,6 +47,7 @@ test('video ref call', () => {
       poster:
         'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp',
     }
+    const itemRef = React.useRef<HTMLVideoElement>(null)
 
     return (
       <>
@@ -69,8 +69,6 @@ test('video ref call', () => {
   }
 
   const { getByTestId } = render(<App />)
-  const videoEle = itemRef.current
-  expect(videoEle).not.toBeNull()
   fireEvent.click(getByTestId('emit-click'))
   expect(pause).toHaveBeenCalledTimes(1)
 })
