@@ -130,14 +130,12 @@ export const InputNumber: FunctionComponent<
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
-
   useEffect(() => {
     if (async) {
       setShadowValue(bound(Number(value), Number(min), Number(max)))
       setInputValue(format(value))
     }
   }, [value])
-
   const calcNextValue = (current: any, step: any, symbol: number) => {
     const dig = digits + 1
     return (
@@ -185,6 +183,7 @@ export const InputNumber: FunctionComponent<
     const val = Number(parseFloat(valueStr || '0').toFixed(digits))
     return Math.max(Number(min), Math.min(Number(max), val))
   }
+
   const handleValueChange = (
     valueStr: string | null,
     e: React.ChangeEvent<HTMLInputElement>

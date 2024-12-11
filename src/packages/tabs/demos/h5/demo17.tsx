@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 
 const Demo17 = () => {
-  const [tab4value, setTab4value] = useState<number | string>('0')
-  const list4 = Array.from(new Array(10).keys())
+  const [tabvalue, setTabvalue] = useState<number | string>('0')
+  const list = Array.from(new Array(10).keys())
   return (
     <>
       <Tabs
-        value={tab4value}
+        value={tabvalue}
         style={{ height: '300px' }}
         onChange={(value) => {
-          setTab4value(value)
+          setTabvalue(value)
         }}
         direction="vertical"
       >
-        {list4.map((item) => (
+        {list.map((item) => (
           <Tabs.TabPane key={item} title={`Tab ${item}`}>
             Tab {item}
           </Tabs.TabPane>
