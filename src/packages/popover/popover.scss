@@ -95,6 +95,8 @@
       justify-content: center;
       padding: $popover-menu-item-padding;
       border-bottom: 1px solid $popover-divider-color;
+      max-width: $popover-menu-item-width;
+      word-wrap: break-word;
 
       &:last-child {
         margin-bottom: 0px;
@@ -227,18 +229,7 @@
   color: $popover-content-background-color;
 
   .nut-popover-arrow {
-    &-top {
-      border-top-color: $popover-text-color;
-    }
-    &-bottom {
-      border-bottom-color: $popover-text-color;
-    }
-    &-left {
-      border-left-color: $popover-text-color;
-    }
-    &-right {
-      border-right-color: $popover-text-color;
-    }
+    border-bottom-color: $popover-text-color;
   }
 
   .nut-popover-content {
