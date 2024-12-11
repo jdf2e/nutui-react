@@ -9,6 +9,11 @@
     "css": "sass"
   },
   "scripts": {
+    "dev": "taro build --watch --type",
+    "dev:jmapp": "VITE_APP_PROJECT_ID=jmapp taro build --watch --type",
+    "build": "taro build --type",
+    "build:jmapp": "taro build --type",
+
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
