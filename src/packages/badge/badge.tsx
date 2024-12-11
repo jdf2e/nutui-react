@@ -72,19 +72,6 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     return style
   }
 
-  const getCustomStyle = () => {
-    const style: CSSProperties = {}
-    if (color) {
-      if (fill === 'outline') {
-        style.color = color
-        style.background = '#FFFFFF'
-      } else {
-        style.color = '#FFFFFF'
-        style.background = color
-      }
-    }
-    return style
-  }
   return (
     <div className={classes} style={style}>
       {isIcon() && (
