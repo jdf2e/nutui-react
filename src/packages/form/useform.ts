@@ -1,11 +1,12 @@
 import { useRef } from 'react'
 import Schema from 'async-validator'
+import { merge } from '@/utils/merge'
 import {
-  Store,
   Callbacks,
-  FormInstance,
   FormFieldEntity,
+  FormInstance,
   NamePath,
+  Store,
 } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
@@ -74,16 +75,21 @@ class FormStore {
     return fieldsValue
   }
 
+  updateStore(nextStore: Store) {
+    this.store = nextStore
+  }
+
   /**
    * 设置 form 的初始值，之后在 reset 的时候使用
    * @param values
    * @param init
    */
 
-  setInitialValues = (values: Store, init: boolean) => {
+  setInitialValues = (initialValues: Store, init: boolean) => {
+    this.initialValues = initialValues || {}
     if (init) {
-      this.initialValues = values
-      this.store = values
+      const nextStore = merge(initialValues, this.store)
+      this.updateStore(nextStore)
     }
   }
 
@@ -91,11 +97,9 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: any, needValidate = true) => {
-    this.store = {
-      ...this.store,
-      ...newStore,
-    }
+  setFieldsValue = (newStore: any) => {
+    const nextStore = merge(this.store, newStore)
+    this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
       Object.keys(newStore).forEach((key) => {
@@ -113,7 +117,13 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
-    needValidate && this.validateFields()
+  }
+
+  setFieldValue = <T>(name: NamePath, value: T) => {
+    const store = {
+      [name]: value,
+    }
+    this.setFieldsValue(store)
   }
 
   setCallback = (callback: Callbacks) => {
@@ -123,48 +133,61 @@ class FormStore {
     }
   }
 
+  validateEntities = async (entity: FormFieldEntity, errs: any[]) => {
+    const { name, rules = [] } = entity.props
+
+    if (!name) {
+      console.warn('Form field missing name property')
+      return
+    }
+
+    const descriptor: any = {}
+    if (rules.length) {
+      // 多条校验规则
+      if (rules.length > 1) {
+        descriptor[name] = []
+        rules.forEach((v: any) => {
+          descriptor[name].push(v)
+        })
+      } else {
+        descriptor[name] = rules[0]
+      }
+    }
+    const validator = new Schema(descriptor)
+    // 此处合并无值message 没有意义？
+    // validator.messages()
+    try {
+      await validator.validate({ [name]: this.store?.[name] })
+    } catch ({ errors }: any) {
+      if (errors) {
+        errs.push(...(errors as any[]))
+        this.errors[name] = errors
+      }
+    } finally {
+      if (!errs || errs.length === 0) {
+        this.errors[name] = []
+      }
+    }
+
+    entity.onStoreChange('validate')
+  }
+
   validateFields = async (nameList?: NamePath[]) => {
-    let filterEntitys = []
-    const errs = []
+    let filterEntities = []
     this.errors.length = 0
     if (!nameList || nameList.length === 0) {
-      filterEntitys = this.fieldEntities
+      filterEntities = this.fieldEntities
     } else {
-      filterEntitys = this.fieldEntities.filter(({ props: { name } }) =>
+      filterEntities = this.fieldEntities.filter(({ props: { name } }) =>
         nameList.includes(name)
       )
     }
-    for (const entity of filterEntitys) {
-      const { name, rules = [] } = entity.props
-      const descriptor: any = {}
-      if (rules.length) {
-        // 多条校验规则
-        if (rules.length > 1) {
-          descriptor[name] = []
-          rules.forEach((v: any) => {
-            descriptor[name].push(v)
-          })
-        } else {
-          descriptor[name] = rules[0]
-        }
-      }
-      const validator = new Schema(descriptor)
-      // 此处合并无值message 没有意义？
-      // validator.messages()
-      try {
-        await validator.validate({ [name]: this.store?.[name] })
-      } catch ({ errors }: any) {
-        if (errors) {
-          errs.push(...(errors as any[]))
-          this.errors[name] = errors
-        }
-      } finally {
-        if (!errs || errs.length === 0) {
-          this.errors[name] = []
-        }
-      }
-      entity.onStoreChange('validate')
-    }
+    const errs: any[] = []
+    await Promise.all(
+      filterEntities.map(async (entity) => {
+        await this.validateEntities(entity, errs)
+      })
+    )
     return errs
   }
 
@@ -179,7 +202,8 @@ class FormStore {
 
   resetFields = () => {
     this.errors.length = 0
-    this.store = this.initialValues
+    const nextStore = merge({}, this.initialValues)
+    this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')
     })
@@ -219,6 +243,7 @@ class FormStore {
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
+      setFieldValue: this.setFieldValue,
       resetFields: this.resetFields,
       validateFields: this.validateFields,
       submit: this.submit,
@@ -238,5 +263,5 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
       formRef.current = formStore.getForm() as FormInstance
     }
   }
-  return [formRef.current]
+  return [formRef.current as FormInstance]
 }

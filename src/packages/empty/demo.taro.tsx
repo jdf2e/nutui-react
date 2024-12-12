@@ -8,6 +8,7 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const EmptyDemo = () => {
   const [translated] = useTranslate({
@@ -18,6 +19,7 @@ const EmptyDemo = () => {
       b840c88f: '图片类型，内置3个',
       a74a1fd4: '自定义图片',
       '8dab2f66': '底部内容',
+      actions: '自定义操作',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -26,6 +28,7 @@ const EmptyDemo = () => {
       b840c88f: '圖片類型，內置3個',
       a74a1fd4: '自定義圖片',
       '8dab2f66': '底部內容',
+      actions: '自定義操作',
     },
     'en-US': {
       ce5c5446: 'Basic usage',
@@ -34,6 +37,7 @@ const EmptyDemo = () => {
       b840c88f: 'Picture type, built-in 3',
       a74a1fd4: 'Custom image',
       '8dab2f66': 'Bottom content',
+      actions: 'Actions',
     },
   })
 
@@ -53,6 +57,8 @@ const EmptyDemo = () => {
         <Demo5 />
         <h2>{translated['8dab2f66']}</h2>
         <Demo6 />
+        <h2>{translated.actions}</h2>
+        <Demo7 />
       </div>
     </>
   )

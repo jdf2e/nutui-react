@@ -1,38 +1,38 @@
 .nut-form-item {
   display: flex;
 
-  &.error {
-    &.line {
-      &::before {
-        border-bottom: 1px solid $form-item-error-line-color;
-        transform: scaleX(1);
-        transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-      }
-    }
+  &-disabled {
+    opacity: 0.4;
+    pointer-events: none;
   }
 
   &-label {
+    display: flex;
+    flex-direction: row;
     font-size: $form-item-label-font-size;
     font-weight: normal;
     width: $form-item-label-width;
     margin-right: $form-item-label-margin-right;
-    flex: none !important;
-    display: inline-block !important;
+    flex: 0 0 auto;
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
-
-    .required {
-      &::before {
-        content: '*';
-        color: $form-item-required-color;
-        margin-right: $form-item-required-margin-right;
-      }
-    }
   }
 
+  &-label-required {
+    color: $form-item-required-color;
+    margin-right: $form-item-required-margin-right;
+    display: block;
+    position: absolute;
+    left: -0.8em;
+  }
+  .nut-form-item-labeltxt {
+    font-size: 12px;
+    height: 10px;
+    position: relative;
+  }
   &-body {
     flex: 1;
-    display: flex !important;
+    display: flex;
     flex-direction: column;
 
     &-slots {
@@ -59,8 +59,7 @@
       }
 
       .nut-textarea {
-        padding: 0 !important;
-
+        padding: 0;
         .nut-textarea-textarea {
           font: inherit;
           text-align: $form-item-body-input-text-align;
@@ -75,6 +74,7 @@
     }
   }
 }
+
 [dir='rtl'] .nut-form-item,
 .nut-rtl .nut-form-item {
   &-label {
@@ -107,4 +107,73 @@
   &-tips {
     text-align: right;
   }
+}
+
+/* position */
+
+.nut-form-item-label-right {
+  justify-content: flex-end;
+  padding-right: 24px;
+  white-space: nowrap;
+}
+
+.nut-form-item-label-left {
+  position: relative;
+  padding-left: 12px;
+  white-space: nowrap;
+}
+
+.nut-form-item-label-left-required {
+  display: block;
+  line-height: 1.5;
+  position: absolute;
+  left: 0.1em;
+}
+
+.nut-form-item-top {
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: nowrap;
+}
+
+.nut-form-item-label-top {
+  display: block;
+  padding-bottom: 4px;
+  padding-right: 24px;
+}
+
+.nut-form-item-body-top {
+  margin-left: 0;
+  width: 100%;
+}
+
+[dir='rtl'] .form-layout-right .nut-form-item-label,
+.nut-rtl .form-layout-right .nut-form-item-label {
+  text-align: left;
+  padding-right: 0;
+  padding-left: 24px;
+}
+
+[dir='rtl'] .form-layout-left .nut-form-item-label,
+.nut-rtl .form-layout-left .nut-form-item-label {
+  text-align: right;
+  padding-left: 0;
+  padding-right: 12px;
+
+  .required {
+    left: auto;
+    right: 0.1em;
+  }
+}
+
+[dir='rtl'] .form-layout-top .nut-form-item-label,
+.nut-rtl .form-layout-top .nut-form-item-label {
+  padding-right: 0;
+  padding-left: 24px;
+}
+
+[dir='rtl'] .form-layout-top .nut-form-item-body,
+.nut-rtl .form-layout-top .nut-form-item-body {
+  margin-left: 0;
+  margin-right: 0;
 }

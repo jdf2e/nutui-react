@@ -1,5 +1,6 @@
 export interface FormItemRuleWithoutValidator {
   [key: string]: any
+
   regex?: RegExp
   required?: boolean
   message?: string
@@ -20,8 +21,9 @@ export interface Store {
 
 export interface FormInstance<Values = any> {
   getFieldValue: (name: NamePath) => StoreValue
+  setFieldValue: <T = any>(name: NamePath, value: T) => void
   getFieldsValue: (nameList: NamePath[] | true) => { [key: NamePath]: any }
-  setFieldsValue: (value: any) => void
+  setFieldsValue: (value: Store) => void
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
   getInternal: (secret: string) => any

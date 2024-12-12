@@ -1,3 +1,18 @@
+# v2.7.2
+
+`2024-12-06`
+
+- 🏡 chore(uploader): use scss variable (#2825)
+- 🏡 chore: migrate to v3
+- 📖 docs(infiniteloading): remove deprecated usage (#2801)
+- :sparkles: feat(form): add validateTrigger, setFieldValue and disabled (#2772)
+- :sparkles: feat(elevator): 采用唯一ID，避免未传入 className 导致的报错 (#2834)
+- :bug: fix: 解决微信小程序滚动报错问题 (#2833)
+- :bug: fix(uploader): 修复选择多个文件上传只会上传一个文件的问题 (#2807)
+- :bug: fix: Uploade 组件无法预览图片 (#2822)
+- :bug: fix(deps): update dependency vitest to v2 (#2697)
+- :bug: fix(Table): 给个默认背景色，解决在小程序中固定列与滚动内列混合 (#2789)
+
 # v2.7.1
 
 `2024-11-22`

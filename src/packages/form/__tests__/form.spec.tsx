@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import { useEffect } from 'react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Form, { FormInstance } from '@/packages/form'
 import Input from '@/packages/input'
 
@@ -167,7 +167,9 @@ test('form set required', () => {
       </Form.Item>
     </Form>
   )
-  expect(container.querySelectorAll('.required')).toHaveLength(1)
+  expect(
+    container.querySelectorAll('.nut-form-item-label-required')
+  ).toHaveLength(1)
 })
 
 test('form set change value', async () => {

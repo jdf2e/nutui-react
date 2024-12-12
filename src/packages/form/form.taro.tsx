@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Form as TForm } from '@tarojs/components'
 import classNames from 'classnames'
 import { Context } from './context'
 import { SECRET, useForm } from './useform.taro'
@@ -11,7 +12,9 @@ export interface FormProps extends BasicComponent {
   initialValues: any
   name: string
   form: any
+  disabled: boolean
   divider: boolean
+  validateTrigger: string | string[] | false
   labelPosition: 'top' | 'left' | 'right'
   starPosition: 'left' | 'right'
   onFinish: (values: any) => void
@@ -22,7 +25,9 @@ const defaultProps = {
   ...ComponentDefaults,
   labelPosition: 'right',
   starPosition: 'left',
+  disabled: false,
   divider: false,
+  validateTrigger: 'onChange',
   onFinish: (values) => {},
   onFinishFailed: (values, errorFields) => {},
 } as FormProps
@@ -43,8 +48,10 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       children,
       initialValues,
       divider,
+      disabled,
       onFinish,
       onFinishFailed,
+      validateTrigger,
       labelPosition,
       starPosition,
       form,
@@ -77,7 +84,7 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
     }
 
     return (
-      <form
+      <TForm
         className={classNames(
           classPrefix,
           PositionInfo[labelPosition],
@@ -96,12 +103,16 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
         }}
       >
         <Cell.Group divider={divider}>
-          <Context.Provider value={formInstance}>{children}</Context.Provider>
+          <Context.Provider
+            value={{ formInstance, labelPosition, disabled, validateTrigger }}
+          >
+            {children}
+          </Context.Provider>
           {footer ? (
             <Cell className={`${classPrefix}-footer`}>{footer}</Cell>
           ) : null}
         </Cell.Group>
-      </form>
+      </TForm>
     )
   }
 )

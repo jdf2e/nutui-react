@@ -80,6 +80,8 @@ import { Form } from '@nutui/nutui-react'
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
 | starPosition | The red star position of the required form item label | `left` \| `right` | `left` |
+| disabled | Disable all form fields | `boolean` | `false` |
+| validateTrigger | uniformly set the timing for fields to trigger validation | `string` \| `string[]`\| `false` | `onChange` |
 | onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
 | onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
@@ -125,7 +127,8 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 | --- | --- | --- |
 | getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
 | getFieldsValue | Get values by a set of field names. Return according to the corresponding structure. Default return mounted field value, but you can use getFieldsValue(true) to get all values | `(name: NamePath \| boolean) => any` |
-| setFieldsValue | set field values | `(values) => void` |
+| setFieldsValue | Set the value of the form (the value will be passed directly to the form store. If you do not want the object passed in to be modified, please copy it and pass it in) | `(values) => void` |
+| setFieldValue | Set the value of the corresponding field name | `<T>(name: NamePath, value: T) => void` |
 | resetFields | Reset form prompt state | `() => void` |
 | submit | method to submit a form for validation | `Promise` |
 

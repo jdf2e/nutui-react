@@ -78,6 +78,8 @@ import { Form } from '@nutui/nutui-react-taro'
 | name | 表单名称 | `any` | `-` |
 | labelPosition | 表单项 label 的位置 | \`\`'top' | 'left'\` | \`'right'\`\` |
 | starPosition | 必填表单项 label 的红色星标位置 | `left` \| `right` | `left` |
+| validateTrigger | 统一设置字段触发验证的时机 | `string` \| `string[]`\| `false` | `onChange` |
+| disabled | 是否禁用 | `boolean` | `false` |
 | onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
 | onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
 
@@ -124,7 +126,8 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 | --- | --- | --- |
 | getFieldValue | 获取对应字段名的值 | `(name: NamePath) => any` |
 | getFieldsValue | 获取一组字段名对应的值，会按照对应结构返回。默认返回现存字段值，当调用 getFieldsValue(true) 时返回所有值 | `(name: NamePath \| boolean) => any` |
-| setFieldsValue | 设置表单的值 | `(values) => void` |
+| setFieldsValue | 设置表单的值（该值将直接传入 form store 中。如果你不希望传入对象被修改，请克隆后传入） | `(values) => void` |
+| setFieldValue | 设置对应字段名的值 | `<T>(name: NamePath, value: T) => void` |
 | resetFields | 重置表单提示状态 | `() => void` |
 | submit | 提交表单进行校验的方法 | `Promise` |
 
