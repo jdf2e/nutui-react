@@ -17,20 +17,24 @@
     padding: $popup-title-padding;
     position: relative;
 
-    &-title {
+    &-wrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+    &-title {
       color: $color-title;
       font-weight: $font-weight-bold;
       font-size: $popup-title-font-size;
+      line-height: $popup-title-font-size;
     }
 
     &-description {
       color: $color-text;
       font-size: $popup-description-font-size;
       font-weight: $font-weight;
+      margin-top: $popup-description-spacing;
     }
 
     &-left {

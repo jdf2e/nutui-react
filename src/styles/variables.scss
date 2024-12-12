@@ -1077,6 +1077,10 @@ $popup-description-font-size: var(
   --nutui-popup-description-font-size,
   $font-size-base
 ) !default;
+$popup-description-spacing: var(
+  --nutui-popup-description-spacing,
+  $spacing-base
+) !default;
 $popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
