@@ -11,7 +11,7 @@ const Demo4 = () => {
     return screenWidth - 300 - 9
   }
   const bottom = () => {
-    return windowHeight - 501 - 57
+    return windowHeight - 559
   }
   return (
     <>

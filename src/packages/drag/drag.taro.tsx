@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
+import { getSystemInfoSync } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'
@@ -66,22 +66,22 @@ export const Drag: FunctionComponent<
       const { top, left, bottom, right } = boundary
       const { screenWidth, windowHeight } = getSystemInfoSync()
 
-      const { width, height } = await getRectByTaro(dragRef.current)
-      dragRef.current?.getBoundingClientRect()
-      createSelectorQuery()
-        .select(`.${className}`)
-        .boundingClientRect((rec: any) => {
-          setBoundaryState({
-            top: -rec.top + top,
-            left: -rec.left + left,
-            bottom: windowHeight - rec.top - bottom - Math.ceil(height),
-            right: screenWidth - rec.left - right - Math.ceil(width),
-          })
+      const {
+        width,
+        height,
+        top: dragTop,
+        left: dragLeft,
+      } = await getRectByTaro(dragRef.current)
 
-          middleLine.current =
-            screenWidth - rec.width - rec.left - (screenWidth - rec.width) / 2
-        })
-        .exec()
+      setBoundaryState({
+        top: -dragTop + top,
+        left: -dragLeft + left,
+        bottom: windowHeight - dragTop - bottom - Math.ceil(height),
+        right: screenWidth - dragLeft - right - Math.ceil(width),
+      })
+
+      middleLine.current =
+        screenWidth - width - dragLeft - (screenWidth - width) / 2
     }
   }
 
