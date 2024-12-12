@@ -231,7 +231,7 @@ export const Popup: FunctionComponent<
       )
     }
     if (closeable) {
-      renderCloseIcon()
+      return renderCloseIcon()
     }
   }
   const renderPop = () => {

@@ -117,7 +117,6 @@ test('event click-title-right icon and keep overlay test ', () => {
   const closeIcon = container.querySelector(
     '.nut-popup-title-right'
   ) as HTMLElement
-  const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)
   expect(onCloseIconClick).toBeCalled()
   const overlay2 = container.querySelector('.hidden-render') as Element
