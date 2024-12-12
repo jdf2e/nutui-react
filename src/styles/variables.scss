@@ -1553,6 +1553,7 @@ $popover-menu-item-padding: var(
   --nutui-popover-menu-item-padding,
   8px
 ) !default;
+$popover-menu-item-width: var(--nutui-popover-menu-item-width, 160px) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
