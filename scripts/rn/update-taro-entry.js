@@ -18,7 +18,7 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     const { name, version } = element
     if (version !== '3.0.0') return // 未适配不导出
-    if (specialComponent(name)) return
+    if (param && specialComponent(name)) return
     adaptedArray.push({
       ...element,
       lowercaseName: element.name.toLowerCase(),
