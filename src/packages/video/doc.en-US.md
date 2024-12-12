@@ -95,3 +95,10 @@ Reset the video when the video address changes
 | onPlay | play event | `(element: HTMLVideoElement) => void` | `-` |
 | onPause | pause event | `(element: HTMLVideoElement) => void` | `-` |
 | onPlayEnd | Playback completion callback | `(element: HTMLVideoElement) => void` | `-` |
+
+### Ref
+
+| Name | Description | Arguments |
+| --- | --- | --- |
+| play | play | `-` |
+| pause | pause | `-` |

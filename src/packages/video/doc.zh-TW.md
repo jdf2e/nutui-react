@@ -95,3 +95,10 @@ playsinline 屬性設置移動端視頻行內播放，阻止新打開頁面播�
 | onPlay | 播放 | `(element: HTMLVideoElement) => void` | `-` |
 | onPause | 暫停 | `(element: HTMLVideoElement) => void` | `-` |
 | onPlayEnd | 播放完成回調 | `(element: HTMLVideoElement) => void` | `-` |
+
+### Ref
+
+| 方法名 | 說明 | 參數 |
+| --- | --- | --- |
+| play | 播放 | `-` |
+| pause | 暫停 | `-` |
