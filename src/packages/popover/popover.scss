@@ -95,17 +95,13 @@
       justify-content: center;
       padding: $popover-menu-item-padding;
       border-bottom: 1px solid $popover-divider-color;
+      max-width: $popover-menu-item-width;
+      word-wrap: break-word;
 
       &:last-child {
         margin-bottom: 0px;
         border-bottom: none;
       }
-
-      // &:hover:not(:only-child) {
-      //   cursor: pointer;
-      //   color: $popover-hover-text-color;
-      //   background-color: $popover-hover-background-color;
-      // }
 
       &:hover:nth-of-type(2) {
         border-radius: 8px 8px 0px 0px;
@@ -130,9 +126,10 @@
       }
 
       &-name {
-        width: 100%;
+        width: calc(100% - 34px);
         word-break: keep-all;
         margin: 0 6px 0 4px;
+        flex: 1;
       }
 
       &-action-icon {
@@ -172,7 +169,6 @@
 
     &-top-start {
       left: 0;
-
       .nut-popover-arrow-top-start {
         left: 16px;
         transform: translateX(0%);
@@ -188,7 +184,6 @@
 
     &-bottom-end {
       right: 0;
-
       .nut-popover-arrow-bottom-end {
         right: 16px;
         transform: translateX(0%);
@@ -197,7 +192,6 @@
 
     &-bottom-start {
       left: 0;
-
       .nut-popover-arrow-bottom-start {
         left: 16px;
         transform: translateX(0%);
@@ -227,7 +221,18 @@
   color: $popover-content-background-color;
 
   .nut-popover-arrow {
-    border-bottom-color: $popover-text-color;
+    &-top {
+      border-top-color: $popover-text-color;
+    }
+    &-bottom {
+      border-bottom-color: $popover-text-color;
+    }
+    &-left {
+      border-left-color: $popover-text-color;
+    }
+    &-right {
+      border-right-color: $popover-text-color;
+    }
   }
 
   .nut-popover-content {

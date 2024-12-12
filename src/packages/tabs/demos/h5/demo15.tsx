@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 
 const Demo15 = () => {
-  const [tab3value, setTab3value] = useState<number | string>(0)
-  const [list3, setList3] = useState<number[]>([])
+  const [tabvalue, setTabvalue] = useState<number | string>(0)
+  const [list, setList] = useState<number[]>([])
   useEffect(() => {
     setTimeout(() => {
-      setTab3value(2)
-      setList3([...new Array(3).keys()])
+      setTabvalue(2)
+      setList([...new Array(3).keys()])
     }, 3000)
   }, [])
   return (
     <>
       <Tabs
-        value={tab3value}
+        value={tabvalue}
         onChange={(value) => {
-          setTab3value(value)
+          setTabvalue(value)
         }}
       >
-        {list3.map((item) => (
+        {list.map((item) => (
           <Tabs.TabPane key={item} title={`Tab ${item}`}>
             Tab {item}
           </Tabs.TabPane>
