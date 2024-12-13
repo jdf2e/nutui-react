@@ -2456,6 +2456,10 @@ $loading-icon-color: var(--nutui-loading-icon-color, $color-text-help) !default;
 $loading-icon-size: var(--nutui-loading-icon-size, $font-size-s) !default;
 $loading-color: var(--nutui-loading-color, $color-text-help) !default;
 $loading-font-size: var(--nutui-loading-font-size, $font-size-s) !default;
+$loading-lottie-background: var(
+  --nutui-loading-lottie-background,
+  rgba(0, 0, 0, 0.06)
+) !default;
 
 // ResultPage
 $resultpage-width: var(--nutui-resultpage-width, 240px) !default;

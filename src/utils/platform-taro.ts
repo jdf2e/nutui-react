@@ -16,3 +16,7 @@ export const rn = () => {
 export const web = () => {
   return ['web'].includes(Taro.getEnv().toLowerCase())
 }
+
+export const miniprogram = () => {
+  return ['mini'].includes(Taro.getEnv().toLowerCase())
+}

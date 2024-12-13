@@ -1,0 +1,31 @@
+import React from 'react'
+import { ScrollView, View } from '@tarojs/components'
+import Header from '@/sites/components/header'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import Demo1 from './demos/taro/demo1'
+
+const LoadingDemo = () => {
+  const [translated] = useTranslate({
+    'zh-CN': {
+      title1: '基础用法',
+    },
+    'zh-TW': {
+      title1: '基礎用法',
+    },
+    'en-US': {
+      title1: 'Basic Usage',
+    },
+  })
+
+  return (
+    <>
+      <Header />
+      <ScrollView className="demo">
+        <View className="h2">{translated.title1}</View>
+        <Demo1 />
+      </ScrollView>
+    </>
+  )
+}
+
+export default LoadingDemo

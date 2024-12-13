@@ -112,7 +112,10 @@
     "classnames": "^2.5.1",
     "lodash.isequal": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "lottie-react": "^2.4.0",
+    "lottie-miniprogram": "^1.0.12",
+    "lottie-react-native": "^7.1.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.18.6",
