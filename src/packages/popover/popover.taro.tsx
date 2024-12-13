@@ -138,12 +138,12 @@ export const Popover: FunctionComponent<
 
   const getRectTaro = async (targetId: any): Promise<any> => {
     return new Promise((resolve) => {
-      const query = createSelectorQuery()
-      query.select(`#${targetId}`) &&
-        query.select(`#${targetId}`).boundingClientRect()
-      query.exec((res: any) => {
-        resolve(res[0])
-      })
+      createSelectorQuery()
+        .select(`#${targetId}`)
+        .boundingClientRect()
+        .exec((res: any) => {
+          resolve(res[0])
+        })
     })
   }
 
@@ -170,9 +170,8 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    const loca = location
-    const direction = loca.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${loca}`
+    const direction = location.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
@@ -182,8 +181,6 @@ export const Popover: FunctionComponent<
       return styles
     }
 
-    const contentWidth = elWidth
-    const contentHeight = elHeight
     const { width, height, left, top, right } = rootPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
@@ -197,13 +194,12 @@ export const Popover: FunctionComponent<
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
-        const h =
-          direction === 'bottom' ? height + cross : -(contentHeight + cross)
+        const h = direction === 'bottom' ? height + cross : -(elHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
           styles[dir] =
-            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
+            `${-(elWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
         if (skew === 'start') {
           styles.left = `${left + parallel}px`
@@ -214,12 +210,10 @@ export const Popover: FunctionComponent<
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
-          direction === 'left' ? -(contentWidth + cross) : width + cross
+          direction === 'left' ? -(elWidth + cross) : width + cross
         styles.left = `${left + contentW}px`
         if (!skew) {
-          styles.top = `${
-            top - contentHeight / 2 + height / 2 - 4 + parallel
-          }px`
+          styles.top = `${top - elHeight / 2 + height / 2 - 4 + parallel}px`
         }
         if (skew === 'start') {
           styles.top = `${top + parallel}px`
@@ -230,11 +224,10 @@ export const Popover: FunctionComponent<
       }
     }
 
-    if (elWidth === 0) {
-      styles.visibility = 'hidden'
-    } else {
-      styles.visibility = 'initial'
-    }
+    elWidth === 0
+      ? (styles.visibility = 'hidden')
+      : (styles.visibility = 'initial')
+
     return styles
   }
 
@@ -276,11 +269,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect?.(item, index)
+      onSelect && onSelect(item, index)
     }
     if (closeOnActionClick) {
-      onClick?.()
-      onClose?.()
+      onClick && onClick()
+      onClose && onClose()
     }
   }
   return (
