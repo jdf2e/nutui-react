@@ -223,11 +223,7 @@ export const Popover: FunctionComponent<
         }
       }
     }
-
-    elWidth === 0
-      ? (styles.visibility = 'hidden')
-      : (styles.visibility = 'initial')
-
+    styles.visibility = elWidth === 0 ? 'hidden' : 'initial'
     return styles
   }
 
