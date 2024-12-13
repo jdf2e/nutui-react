@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Popover, Button } from '@nutui/nutui-react-taro'
+import { Popover, Button, Space } from '@nutui/nutui-react-taro'
 import { Home, Cart, Location, Checklist } from '@nutui/icons-react-taro'
 
 interface List {
@@ -56,7 +56,7 @@ const Demo2 = () => {
     console.log('选择')
   }
   return (
-    <>
+    <Space>
       <Popover
         className="demo-popover"
         visible={showIcon}
@@ -84,7 +84,7 @@ const Demo2 = () => {
           禁用选项
         </Button>
       </Popover>
-    </>
+    </Space>
   )
 }
 
