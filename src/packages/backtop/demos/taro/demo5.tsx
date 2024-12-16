@@ -5,7 +5,6 @@ import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { BackTop, Cell } from '@nutui/nutui-react-taro'
-import { Top } from '@nutui/icons-react-taro'
 import pxTransform from '@/utils/px-transform'
 import { harmony, rn } from '@/utils/platform-taro'
 
@@ -51,17 +50,7 @@ const Demo5 = () => {
             sv.current.scrollToOffset({ offset: 0 })
           }
         }}
-      >
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Top size={12} />
-        </View>
-      </BackTop>
+      />
     </View>
   )
 }

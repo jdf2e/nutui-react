@@ -960,12 +960,6 @@ $tour-content-bottom-btn-border-radius: var(
   4px
 ) !default;
 
-//backtop（✅）
-$backtop-border-color: var(
-  --nutui-backtop-border-color,
-  $color-border
-) !default;
-
 // calendar（✅）
 $calendar-active-background-color: var(
   --nutui-calendar-active-background-color,
@@ -1025,6 +1019,7 @@ $hoverbutton-position-right: var(
   --nutui-hoverbutton-position-right,
   $spacing-base
 ) !default;
+$hoverbutton-item-size: var(--nutui-hoverbutton-item-size, 40px) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
   rgba(0, 0, 0, 0.12)

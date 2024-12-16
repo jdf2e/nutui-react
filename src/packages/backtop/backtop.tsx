@@ -4,14 +4,13 @@ import React, {
   useState,
   useRef,
   useCallback,
-  useMemo,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
+import { Top } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import requestAniFrame, { cancelRaf } from '@/utils/raf'
-import { useRtl } from '@/packages/configprovider'
+import HoverButton from '@/packages/hoverbutton/index'
 
 export interface BackTopProps extends BasicComponent {
   target: string
@@ -32,7 +31,6 @@ const defaultProps = {
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const rtl = useRtl()
   const {
     children,
     target,
@@ -121,29 +119,26 @@ export const BackTop: FunctionComponent<
     [duration, onClick, scroll, scrollAnimation]
   )
 
-  const styles = useMemo(() => {
-    return Object.keys(style || {}).length !== 0
-      ? {
-          zIndex,
-          ...style,
-        }
-      : {
-          [rtl ? 'left' : 'right']: '10px',
-          bottom: '20px',
-          zIndex,
-        }
-  }, [rtl, style, zIndex])
-
   return (
-    <div
+    <HoverButton
       className={cls}
-      style={styles}
+      style={{ zIndex, ...style }}
+      icon={!children && <Top />}
       onClick={(e) => {
         goTop(e)
       }}
     >
-      {children || <Top width={19} height={19} className="nut-backtop-main" />}
-    </div>
+      {children && (
+        <div
+          className="nut-hoverbutton-item-container"
+          onClick={(e) => {
+            goTop(e)
+          }}
+        >
+          {children}
+        </div>
+      )}
+    </HoverButton>
   )
 }
 

@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   useCallback,
   useState,
-  useMemo,
   useEffect,
   useRef,
 } from 'react'
@@ -13,13 +12,12 @@ import {
   PageScrollObject,
   getSystemInfo,
 } from '@tarojs/taro'
-import { View, ITouchEvent } from '@tarojs/components'
-import { Top } from '@nutui/icons-react-taro'
+import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
+import { Top } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider/index.taro'
+import HoverButton from '@/packages/hoverbutton/index.taro'
 import { harmonyAndRn, rn } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 
 export interface BackTopProps extends BasicComponent {
   threshold: number
@@ -44,7 +42,6 @@ const isNative = harmonyAndRn()
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const rtl = useRtl()
   const {
     children,
     threshold,
@@ -65,7 +62,7 @@ export const BackTop: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-show`]: backTop,
-      [`${classPrefix}-show-active`]: isNative && isTouchStart,
+      // [`${classPrefix}-show-active`]: isNative && isTouchStart,
       [`${classPrefix}-rn`]: rn(),
     },
     className
@@ -113,23 +110,11 @@ export const BackTop: FunctionComponent<
     [duration, onClick]
   )
 
-  const styles = useMemo(() => {
-    return Object.keys(style || {}).length !== 0
-      ? {
-          zIndex,
-          ...style,
-        }
-      : {
-          [rtl ? 'left' : 'right']: pxTransform(10),
-          bottom: pxTransform(20),
-          zIndex,
-        }
-  }, [rtl, style, zIndex])
-
   return (
-    <View
+    <HoverButton
       className={cls}
-      style={styles}
+      style={{ zIndex, ...style }}
+      icon={!children && <Top />}
       onClick={(e) => {
         goTop(e)
       }}
@@ -137,8 +122,17 @@ export const BackTop: FunctionComponent<
       onTouchEnd={handleActiveEnd}
       onTouchCancel={handleActiveEnd}
     >
-      {children || <Top size={19} className="nut-backtop-main" />}
-    </View>
+      {children && (
+        <View
+          className="nut-hoverbutton-item-container"
+          onClick={(e) => {
+            goTop(e)
+          }}
+        >
+          {children}
+        </View>
+      )}
+    </HoverButton>
   )
 }
 

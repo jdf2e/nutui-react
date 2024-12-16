@@ -1,8 +1,8 @@
 .nut-hoverbutton-item {
   &-container {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+    width: $hoverbutton-item-size;
+    height: $hoverbutton-item-size;
+    border-radius: $hoverbutton-item-size;
     border: 1px solid $hoverbutton-item-border-color;
     background-color: $hoverbutton-item-background;
 
