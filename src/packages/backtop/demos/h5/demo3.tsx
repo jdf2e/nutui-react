@@ -8,7 +8,7 @@ const Demo3 = () => {
       {new Array(24).fill(0).map((_, index) => {
         return <Cell key={index}>我是测试数据{index}</Cell>
       })}
-      <BackTop threshold={100}>
+      <BackTop threshold={100} target="target">
         <div
           style={{
             display: 'flex',

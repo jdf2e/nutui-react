@@ -7,7 +7,7 @@ const Demo5 = () => {
     console.log('触发返回顶部')
   }
   return (
-    <div style={{ height: '100vh', overflowY: 'auto' }} id="target">
+    <div style={{ height: '100vh' }} id="target">
       {new Array(24).fill(0).map((_, index) => {
         return <Cell key={index}>我是测试数据{index}</Cell>
       })}

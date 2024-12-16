@@ -17,11 +17,7 @@ const BackTopDemo = () => {
 
   return (
     <>
-      <div
-        className="demo"
-        style={{ height: '100vh', overflowY: 'auto' }}
-        id="target"
-      >
+      <div className="demo" style={{ height: '100vh' }} id="target">
         <h2>{translated.title}</h2>
         <Demo1 />
       </div>
