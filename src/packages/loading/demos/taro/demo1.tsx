@@ -1,6 +1,5 @@
 import React from 'react'
-import { Loading, Cell } from '@nutui/nutui-react-taro'
-import data from '../../lottie/animation/light/demo.json'
+import { Cell, Loading } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   return (
@@ -10,19 +9,10 @@ const Demo1 = () => {
         <Loading type="spinner" />
       </Cell>
       <Cell>
-        <Loading direction="vertical" type="lottie" jsonData={data}>
-          正在奋力加载中，感谢您的等待
-        </Loading>
+        <Loading direction="vertical">正在奋力加载中，感谢您的等待</Loading>
       </Cell>
       <Cell>
-        <Loading
-          direction="vertical"
-          type="lottie"
-          jsonData={data}
-          lottieProps={{ autoplay: true, loop: true }}
-        >
-          正在奋力加载中，感谢您的等待
-        </Loading>
+        <Loading direction="vertical">正在奋力加载中，感谢您的等待</Loading>
       </Cell>
     </>
   )
