@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react-taro'
-import { Lottie } from '../../web'
+import Lottie from '../../index.taro'
 import data from '../../animation/light/demo.json'
 
 const Demo1 = () => {
