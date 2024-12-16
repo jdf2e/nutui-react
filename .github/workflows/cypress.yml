@@ -29,8 +29,7 @@ jobs:
           CI: true
         run: pnpm cypress install --force && pnpm e2e:run:h5
 
-      # Taro的自动化测试，demo包管理解决后解除注释
-      # - name: Run E2E Tests for Taro
-      #   env:
-      #     CI: true
-      #   pnpm cypress install --force && run: pnpm e2e:run:taro
+      - name: Run E2E Tests for Taro
+        env:
+          CI: true
+        run: pnpm cypress install --force && pnpm e2e:run:taro

@@ -1625,8 +1625,8 @@ $badge-dot-border: var(--nutui-badge-dot-border, 0px solid $color-primary-text);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-border-color: var(--nutui-popover-border-color, #ffffff) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   #ffffff
@@ -1652,6 +1652,7 @@ $popover-menu-item-padding: var(
   --nutui-popover-menu-item-padding,
   8px
 ) !default;
+$popover-menu-item-width: var(--nutui-popover-menu-item-width, 160px) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;

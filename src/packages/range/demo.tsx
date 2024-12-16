@@ -24,7 +24,7 @@ const RangeDemo = () => {
       title4: '隐藏范围',
       title5: '隐藏标签',
       title6: '禁用',
-      title7: '自定义样式',
+      customStyle: '自定义样式',
       title8: '自定义按钮',
       title9: '垂直方向',
       title10: '刻度标记',
@@ -39,7 +39,7 @@ const RangeDemo = () => {
       title4: 'Hidden Range',
       title5: 'Hidden Tag',
       title6: 'Disabled',
-      title7: 'Custom Style',
+      customStyle: 'Custom Style',
       title8: 'Custom Button',
       title9: 'Vertical',
       title10: 'Marks',
@@ -69,7 +69,7 @@ const RangeDemo = () => {
         <Demo8 />
         <h2>{translated.title6}</h2>
         <Demo9 />
-        <h2>{translated.title7}</h2>
+        <h2>{translated.customStyle}</h2>
         <Demo10 />
         <h2>{translated.title8}</h2>
         <Demo11 />

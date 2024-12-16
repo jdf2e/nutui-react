@@ -95,3 +95,10 @@ playsinline 属性设置移动端视频行内播放，阻止新打开页面播�
 | onPlay | 播放 | `(element: HTMLVideoElement) => void` | `-` |
 | onPause | 暂停 | `(element: HTMLVideoElement) => void` | `-` |
 | onPlayEnd | 播放完成回调 | `(element: HTMLVideoElement) => void` | `-` |
+
+### Ref
+
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| play | 播放 | `-` |
+| pause | 暂停 | `-` |

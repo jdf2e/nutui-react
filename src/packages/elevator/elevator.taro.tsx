@@ -1,15 +1,16 @@
 import React, {
-  createContext,
   FunctionComponent,
   useEffect,
   useRef,
   useState,
+  createContext,
+  useMemo,
 } from 'react'
-import Taro, { createSelectorQuery, nextTick } from '@tarojs/taro'
-
-import { ScrollView, View } from '@tarojs/components'
+import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
+import { ScrollView, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
 import useUuid from '@/utils/use-uuid'
 
 export const elevatorContext = createContext({} as ElevatorData)
@@ -148,8 +149,7 @@ export const Elevator: FunctionComponent<
     touchState.current.y2 = firstTouch.pageY
     const delta =
       (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
-    const cacheIndex = state.current.anchorIndex + Math.floor(delta)
-
+    const cacheIndex = state.current.anchorIndex + Math.round(delta)
     setCodeIndex(cacheIndex)
     scrollTo(cacheIndex)
   }
@@ -213,6 +213,12 @@ export const Elevator: FunctionComponent<
     }
   }
 
+  const getWrapStyle = useMemo(() => {
+    const calcHeight = Number.isNaN(+height) ? height : `${height}px`
+
+    return { height: harmony() ? Number(height) : calcHeight }
+  }, [height])
+
   useEffect(() => {
     if (listview.current) {
       nextTick(() => {
@@ -227,10 +233,7 @@ export const Elevator: FunctionComponent<
       style={style}
       {...rest}
     >
-      <View
-        className={`${classPrefix}-list`}
-        style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
-      >
+      <View className={`${classPrefix}-list`} style={getWrapStyle}>
         <ScrollView
           scrollTop={scrollTop}
           scrollY
@@ -297,13 +300,7 @@ export const Elevator: FunctionComponent<
             </View>
           ) : null}
           <View className={`${classPrefix}-bars`}>
-            <View
-              className={`${classPrefix}-bars-inner`}
-              onTouchStart={(event) => touchStart(event as any)}
-              onTouchMove={(event) => touchMove(event as any)}
-              onTouchEnd={touchEnd}
-              style={{ touchAction: 'pan-y' }}
-            >
+            <View className={`${classPrefix}-bars-inner`}>
               {list.map((item: any, index: number) => {
                 return (
                   <View
@@ -315,6 +312,10 @@ export const Elevator: FunctionComponent<
                     data-index={index}
                     key={index}
                     onClick={() => handleClickIndex(item[floorKey])}
+                    onTouchStart={(event) => touchStart(event as any)}
+                    onTouchMove={(event) => touchMove(event as any)}
+                    onTouchEnd={touchEnd}
+                    style={{ touchAction: 'pan-y' }}
                   >
                     {item[floorKey]}
                   </View>
@@ -326,9 +327,9 @@ export const Elevator: FunctionComponent<
       ) : null}
       {sticky && scrollY > 0 ? (
         <View className={`${classPrefix}-list-fixed`}>
-          <span className={`${classPrefix}-list-fixed-title`}>
+          <Text className={`${classPrefix}-list-fixed-title`}>
             {list[codeIndex][floorKey]}
-          </span>
+          </Text>
         </View>
       ) : null}
     </div>

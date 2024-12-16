@@ -17,7 +17,7 @@ const AvatarDemo = () => {
       '67f78db5': '支持三种尺寸：small、normal、large',
       '3928b17e': '支持两种形状：square、round',
       '049b6a97': '支持三种类型：图片、Icon 以及字符',
-      a304dabf: 'Icon和字符型可以自定义图标颜色及背景色',
+      customIcon: 'Icon和字符型可以自定义图标颜色及背景色',
       '89bca4e7': '带徽标的头像',
       e981579e: '头像组合展现',
       f645fc65: '组合头像可控制层级方向',
@@ -28,7 +28,7 @@ const AvatarDemo = () => {
       '67f78db5': '支持三種尺寸：small、normal、large',
       '3928b17e': '支持兩種形狀：square、round',
       '049b6a97': '支持三種類型：圖片、Icon 以及字符',
-      a304dabf: 'Icon和字符型可以自定義圖標顏色及背景色',
+      customIcon: 'Icon和字符型可以自定義圖標顏色及背景色',
       '89bca4e7': '帶徽標的頭像',
       e981579e: '頭像組合展現',
       f645fc65: '組合頭像可控制層級方向',
@@ -39,7 +39,7 @@ const AvatarDemo = () => {
       '67f78db5': 'Support three sizes: small, normal, large',
       '3928b17e': 'Two shapes are supported: square, round',
       '049b6a97': 'Three types are supported: Picture, Icon and Character',
-      a304dabf:
+      customIcon:
         'Icon and character type can customize icon color and background color',
       '89bca4e7': 'Avatar with logo',
       e981579e: 'Avatar combination display',
@@ -59,7 +59,7 @@ const AvatarDemo = () => {
         <Demo2 />
         <h2>{translated['049b6a97']}</h2>
         <Demo3 />
-        <h2>{translated.a304dabf}</h2>
+        <h2>{translated.customIcon}</h2>
         <Demo4 />
         <h2>{translated['89bca4e7']}</h2>
         <Demo5 />

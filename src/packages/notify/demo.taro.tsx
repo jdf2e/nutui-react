@@ -14,13 +14,13 @@ const NotifyDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       t1: '通知类型',
-      t2: '自定义样式',
+      customStyle: '自定义样式',
       t3: '自定义时长',
     },
     'en-US': {
       basic: 'Basic Usage',
       t1: 'Notify Type',
-      t2: 'Custom Style',
+      customStyle: 'Custom Style',
       t3: 'Custom Duration',
     },
   })
@@ -37,7 +37,7 @@ const NotifyDemo = () => {
           <Demo1 />
           <View className="h2">{translated.t1}</View>
           <Demo2 />
-          <View className="h2">{translated.t2}</View>
+          <View className="h2">{translated.customStyle}</View>
           <Demo3 />
           <View className="h2">{translated.t3}</View>
           <Demo4 />

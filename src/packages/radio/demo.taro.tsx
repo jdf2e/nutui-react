@@ -24,8 +24,8 @@ const RadioDemo = () => {
       bb7486f4: '选项',
       c1bae1ec: '水平使用',
       '8a2e2847': '自定义尺寸',
-      '70ffa5d8': '自定义图标',
-      '70ffa5d9': '自定义图标，通过Group实现列表形式',
+      customIcon: '自定义图标',
+      customIcon2: '自定义图标，通过Group实现列表形式',
       '0f261484': '触发事件',
       '0f261485': '设置形状',
       '6b1f669d': '当前选中值',
@@ -38,8 +38,8 @@ const RadioDemo = () => {
       bb7486f4: '選項',
       c1bae1ec: '水準使用',
       '8a2e2847': '自定義尺寸',
-      '70ffa5d8': '自定義圖標',
-      '70ffa5d9': '自定義圖標，通過Group實現列表形式',
+      customIcon: '自定義圖標',
+      customIcon2: '自定義圖標，通過Group實現列表形式',
       '0f261484': '觸發事件',
       '0f261485': '設置形狀',
       '6b1f669d': '當前選中值',
@@ -52,8 +52,8 @@ const RadioDemo = () => {
       bb7486f4: 'Options',
       c1bae1ec: 'Horizontal use',
       '8a2e2847': 'Custom size',
-      '70ffa5d8': 'Custom Icon',
-      '70ffa5d9': 'Custom Icon, render list in Group mode',
+      customIcon: 'Custom Icon',
+      customIcon2: 'Custom Icon, render list in Group mode',
       '0f261484': 'Trigger Event',
       '0f261485': 'Set shape',
       '6b1f669d': 'Currently selected',
@@ -91,11 +91,11 @@ const RadioDemo = () => {
         <Cell>
           <Demo7 />
         </Cell>
-        <View className="h2">{translated['70ffa5d8']}</View>
+        <View className="h2">{translated.customIcon}</View>
         <Cell>
           <Demo8 />
         </Cell>
-        <View className="h2">{translated['70ffa5d9']}</View>
+        <View className="h2">{translated.customIcon2}</View>
         <Cell>
           <Demo9 />
         </Cell>

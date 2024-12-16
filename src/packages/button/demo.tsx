@@ -23,7 +23,7 @@ const ButtonDemo = () => {
       '0aaad622': '图标按钮',
       '0aaad620': '按钮尺寸',
       c9e6df49: '块级元素',
-      '781b07fd': '自定义颜色',
+      customColor: '自定义颜色',
     },
     'zh-TW': {
       ce5c5446: '按鈕類型',
@@ -35,7 +35,7 @@ const ButtonDemo = () => {
       '0aaad622': '图标按钮',
       '0aaad620': '按鈕尺寸',
       c9e6df49: '塊級元素',
-      '781b07fd': '自定義顏色',
+      customColor: '自定義顏色',
     },
     'en-US': {
       ce5c5446: 'Button Type',
@@ -47,7 +47,7 @@ const ButtonDemo = () => {
       '0aaad622': 'Icon Button',
       '0aaad620': 'Button size',
       c9e6df49: 'Block-level elements',
-      '781b07fd': 'Custom Colors',
+      customColor: 'Custom Colors',
     },
   })
   return (
@@ -85,7 +85,7 @@ const ButtonDemo = () => {
         <Cell>
           <Demo8 />
         </Cell>
-        <h2>{translated['781b07fd']}</h2>
+        <h2>{translated.customColor}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo9 />
         </Cell>

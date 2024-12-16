@@ -14,7 +14,7 @@ const CircleProgressDemo = () => {
     'zh-CN': {
       '84aa6bce': '基础用法',
       '67eacf7f': '环形进度条自定义样式',
-      '3fee7d50': '环形进度条自定义颜色(支持渐变色)',
+      customColor: '环形进度条自定义颜色(支持渐变色)',
       f4aa4b4c: '环形进度条自定义大小',
       '9daa2dd9': '环形进度条自定义内容',
       c3e31425: '动态改变环形进度条的进度',
@@ -22,7 +22,7 @@ const CircleProgressDemo = () => {
     'zh-TW': {
       '84aa6bce': '基礎用法',
       '67eacf7f': '環形進度條自定義樣式',
-      '3fee7d50': '環形進度條自定義顏色(支持漸變色)',
+      customColor: '環形進度條自定義顏色(支持漸變色)',
       f4aa4b4c: '環形進度條自定義大小',
       '9daa2dd9': '環形進度條自定義內容',
       c3e31425: '動態改變環形進度條的進度',
@@ -30,7 +30,7 @@ const CircleProgressDemo = () => {
     'en-US': {
       '84aa6bce': 'Basic usage',
       '67eacf7f': 'Ring progress bar custom style',
-      '3fee7d50': 'Ring progress bar custom color (support gradient color)',
+      customColor: 'Ring progress bar custom color (support gradient color)',
       f4aa4b4c: 'Ring progress bar custom size',
       '9daa2dd9': 'Ring progress bar custom content',
       c3e31425: 'Dynamically change the progress of the circular progress bar',
@@ -48,7 +48,7 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <Demo2 />
         </Cell>
-        <h2>{translated['3fee7d50']}</h2>
+        <h2>{translated.customColor}</h2>
         <Cell style={{ justifyContent: 'center' }}>
           <Demo3 />
         </Cell>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, FunctionComponent } from 'react'
+import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -36,11 +36,17 @@ const defaultProps = {
   },
 } as VideoProps
 
+export type VideoRef = {
+  pause: () => void
+  play: () => void
+}
+
 const classPrefix = `nut-video`
-export const Video: FunctionComponent<
+export const Video = React.forwardRef<
+  VideoRef,
   Partial<VideoProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
-> = (props) => {
+>((props, ref) => {
   const {
     children,
     source,
@@ -88,6 +94,18 @@ export const Video: FunctionComponent<
     }
   }
 
+  const pause = () => {
+    rootRef?.current?.pause()
+  }
+  const play = () => {
+    rootRef?.current?.play()
+  }
+
+  React.useImperativeHandle(ref, () => ({
+    pause,
+    play,
+  }))
+
   return (
     <div className={classes} {...restProps}>
       <video
@@ -105,6 +123,6 @@ export const Video: FunctionComponent<
       </video>
     </div>
   )
-}
+})
 
 Video.displayName = 'NutVideo'
