@@ -8,6 +8,7 @@ const param = process.env.C
 
 // C=radio pnpm dev:taro:jdharmonycpp or C=radio,button,cell pnpm dev:taro:jdharmonycpp
 function specialComponent(name) {
+  if(!param) return true
   const entries = param.split(',').map((i) => i.toLowerCase())
   return entries.includes(name.toLowerCase())
 }
