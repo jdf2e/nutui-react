@@ -1,6 +1,5 @@
 .nut-backtop {
   display: none;
-  position: fixed;
 
   &-rn {
     position: absolute;
@@ -10,6 +9,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: $hoverbutton-item-size;
+    height: $hoverbutton-item-size;
     transition: all 0.2s ease-in-out;
     .nut-hoverbutton-item-container {
       display: flex;

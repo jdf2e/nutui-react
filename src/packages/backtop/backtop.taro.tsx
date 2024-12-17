@@ -57,12 +57,10 @@ export const BackTop: FunctionComponent<
   }
   const classPrefix = 'nut-backtop'
   const [backTop, setBackTop] = useState(false)
-  const [isTouchStart, setTouchStart] = useState(false)
   const cls = classNames(
     classPrefix,
     {
       [`${classPrefix}-show`]: backTop,
-      // [`${classPrefix}-show-active`]: isNative && isTouchStart,
       [`${classPrefix}-rn`]: rn(),
     },
     className
@@ -72,14 +70,6 @@ export const BackTop: FunctionComponent<
     getSystemInfo().then((res) => {
       systemInfo.current = res
     })
-  }, [])
-
-  const handleActiveStart = useCallback(() => {
-    isNative && setTouchStart(true)
-  }, [])
-
-  const handleActiveEnd = useCallback(() => {
-    isNative && setTouchStart(false)
   }, [])
 
   const onScroll = useCallback(
@@ -118,9 +108,6 @@ export const BackTop: FunctionComponent<
       onClick={(e) => {
         goTop(e)
       }}
-      onTouchStart={handleActiveStart}
-      onTouchEnd={handleActiveEnd}
-      onTouchCancel={handleActiveEnd}
     >
       {children && (
         <View
