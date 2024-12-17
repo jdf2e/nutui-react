@@ -2,7 +2,7 @@
 import * as React from 'react'
 import '@testing-library/jest-dom'
 import { Top } from '@nutui/icons-react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import BackTop from '@/packages/backtop'
 
 test('backtop props test', () => {
@@ -37,31 +37,38 @@ test('backtop custom test', () => {
       }}
       onClick={handleClick}
     >
-      <div
-        className="backtop-demo"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <Top width="12px" height="12px" className="nut-backtop-main" />
-        <div style={{ fontSize: '12px' }}>顶部</div>
-      </div>
+      <Top />
+      <div style={{ fontSize: '12px' }}>顶部</div>
     </BackTop>
   )
   expect(container.querySelector('.nut-backtop')).toHaveAttribute(
     'style',
     'z-index: 900; bottom: 110px; right: 10px;'
   )
-  expect(container.querySelector('.backtop-demo')).toHaveAttribute(
-    'style',
-    'display: flex; flex-direction: column; align-items: center;'
-  )
-  expect(container.querySelector('.nut-icon-Top')).toHaveClass(
-    'nut-backtop-main'
-  )
+
   fireEvent.click(container)
   expect(handleClick).toBeCalled
   expect(container).toMatchSnapshot()
+})
+
+test('scroll', async () => {
+  const { container } = render(
+    <div id="target" style={{ height: '100vh' }} className="backtop-wrapper">
+      {new Array(24).fill(0).map((_, index) => {
+        return <div key={index}>我是测试数据{index}</div>
+      })}
+      <BackTop target="target" className="backtop-button" />
+    </div>
+  )
+  const track = container.querySelector('.backtop-wrapper')
+  if (track) {
+    track.scrollTop = 200
+    act(() => {
+      track.dispatchEvent(new Event('scroll'))
+    })
+    await waitFor(() => {
+      const element18 = container.querySelector('.backtop-button')
+      expect(element18).toHaveClass('nut-backtop-show')
+    })
+  }
 })
