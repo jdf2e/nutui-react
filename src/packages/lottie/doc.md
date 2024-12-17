@@ -10,11 +10,27 @@ import { Lottie } from '@nutui/nutui-react'
 
 ## 示例代码
 
-### 基础用法
+### 明亮模式
 
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+### 暗黑模式
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### 反白模式
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

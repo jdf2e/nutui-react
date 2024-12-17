@@ -10,11 +10,27 @@ import { Lottie } from '@nutui/nutui-react-taro'
 
 ## 示例代码
 
-### 基础用法
+### 明亮模式
 
 :::demo
 
-<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
+
+:::
+
+### 暗黑模式
+
+:::demo
+
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
+
+:::
+
+### 反白模式
+
+:::demo
+
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 

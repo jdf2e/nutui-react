@@ -10,11 +10,27 @@ import { Lottie } from '@nutui/nutui-react'
 
 ## Demo
 
-### Basic Usage
+### Light
 
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+### Drak
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### White
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
