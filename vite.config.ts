@@ -88,6 +88,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
       reactRefresh(),
     ],
     test: {
+      setupFiles: ['./vitest.setup.ts'],
       globals: true,
       environment: 'happy-dom',
       coverage: {
