@@ -27,3 +27,9 @@ import { Lottie } from '@nutui/nutui-react'
 | type | loading icon type | circular | spinner | `circular` |
 | direction | direction of icon and text | horizontal | vertical | `horizontal` |
 | icon | custom loading icon | tsx.Element | `-` |
+
+### Ref
+
+| Method | Description | Parameter |
+| --- | --- | --- |
+

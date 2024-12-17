@@ -1,5 +1,7 @@
+import { ComponentType } from 'react'
 import { Lottie as LottieWeb } from './web'
 import { Lottie as LottieMp } from './mp'
+import { LottieProps } from './types'
 
 let implementation
 if (process.env.TARO_ENV === 'h5') {
@@ -7,4 +9,5 @@ if (process.env.TARO_ENV === 'h5') {
 } else if (process.env.TARO_ENV === 'weapp') {
   implementation = LottieMp
 }
-export default implementation
+const Lottie: ComponentType<Partial<LottieProps>> = implementation as any
+export default Lottie

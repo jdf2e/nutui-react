@@ -4,7 +4,7 @@ import { LottieOptions } from 'lottie-react'
 export interface LottieProps extends Omit<LottieOptions, 'animationData'> {
   style: React.CSSProperties
   source: NonNullable<unknown>
-  loop: boolean
+  loop: boolean | number
   autoPlay: boolean
   initialSegment: [number, number]
   speed: number

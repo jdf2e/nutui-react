@@ -1,6 +1,6 @@
 # Lottie 動畫
 
-載入圖標，用於顯示正在載入中的狀態
+載入 Lottie 動畫
 
 ### 引入
 
@@ -24,6 +24,16 @@ import { Lottie } from '@nutui/nutui-react-taro'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | loading圖標的樣式 | `circular \| spinner` | `circular` |
-| direction | loading圖示與文字的排列方式 | `horizo​​ntal \| vertical` | `horizo​​ntal` |
-| icon | 自訂loading的圖示 | `tsx.Element` | `-` |
+| source | 包含导出动画数据的 JSON 对象 | `Object` | `circular` |
+| loop | loading图标和文字的排列方式 | `boolean \| number` | `horizontal` |
+| autoPlay | 动画将在加载后立即播放 | `boolean` | `-` |
+| initialSegment | 第一个值是初始帧，第二个值是最终帧。如果设置了该值，动画将从此时间位置开始 | `[number, number]` | `-` |
+| speed | 播放速度 | `number` | `1` |
+
+### Ref
+
+透過 ref 可以取得 Lottie 實例並呼叫實例方法。
+
+| 方法名 | 說明 | 參數 |
+| --- | --- | --- |
+
