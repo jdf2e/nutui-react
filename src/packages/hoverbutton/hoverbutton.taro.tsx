@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -14,7 +14,6 @@ import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
   tabbarHeight?: number
-  onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
 }
 
 const defaultProps = {

@@ -29,7 +29,7 @@ export interface BackTopProps extends HoverButtonProps {
    * 容器滚动时的回调参数，主要用于 rn、鸿蒙端
    */
   scrollRes?: PageScrollObject
-  // onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
+  onClick?: (event: React.MouseEvent<HTMLDivElement> | ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -91,7 +91,7 @@ export const BackTop: FunctionComponent<
 
   // 返回顶部点击事件
   const goTop = useCallback(
-    (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {
+    (e: MouseEvent<HTMLDivElement> | ITouchEvent) => {
       onClick?.(e)
       pageScrollTo({
         scrollTop: 0,
