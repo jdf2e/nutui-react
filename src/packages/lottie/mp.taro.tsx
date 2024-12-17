@@ -5,6 +5,7 @@ import {
   useReady,
   useUnload,
 } from '@tarojs/taro'
+import { Canvas } from '@tarojs/components'
 import lottie from 'lottie-miniprogram'
 import useUuid from '@/utils/use-uuid'
 import { LottieProps } from './types'
@@ -48,8 +49,8 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
               style.height !== undefined
             ) {
               const dpr = getSystemInfoSync().pixelRatio
-              canvas.width = parseFloat(style.width) * dpr
-              canvas.height = parseFloat(style.height) * dpr
+              canvas.width = parseFloat(style.width.toString()) * dpr
+              canvas.height = parseFloat(style.height.toString()) * dpr
               context.scale(dpr, dpr)
             }
 
@@ -77,10 +78,7 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
     onComplete && animation.current.removeEventListener('complete', onComplete)
     animation.current.destroy()
   })
-  return (
-    // eslint-disable-next-line react/no-unknown-property
-    <canvas id={id} canvasId={id} type="2d" style={style} />
-  )
+  return <Canvas id={id} canvas-id={id} type="2d" style={style} />
 })
 
 Lottie.displayName = 'NutLottie'
