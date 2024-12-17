@@ -562,10 +562,9 @@ plugins: [
 
 #### BackTop
 
-- `elId` 重命名为 `target`
-- 移除 `right`、`bottom`，通过 style 传入，增加支持 `left`、`top`
-- `distance` 重命名为 `threshold`
-- 移除 `isAnimation`，通过 `duration` 设置 0 实现无动画效果
+- 使用 `HoverButton` 重构 `BackTop`
+- 新增 `icon` 字段，可直接修改图标
+- 继续支持自定义节点
 
 #### Dialog
 

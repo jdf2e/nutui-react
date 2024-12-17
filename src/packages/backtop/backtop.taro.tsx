@@ -15,11 +15,13 @@ import {
 import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Top } from '@nutui/icons-react-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import HoverButton from '@/packages/hoverbutton/index.taro'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
+import { ComponentDefaults } from '@/utils/typings'
+import HoverButton, {
+  HoverButtonProps,
+} from '@/packages/hoverbutton/index.taro'
+import { rn } from '@/utils/platform-taro'
 
-export interface BackTopProps extends BasicComponent {
+export interface BackTopProps extends HoverButtonProps {
   threshold: number
   zIndex: number
   duration: number
@@ -27,7 +29,7 @@ export interface BackTopProps extends BasicComponent {
    * 容器滚动时的回调参数，主要用于 rn、鸿蒙端
    */
   scrollRes?: PageScrollObject
-  onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
+  // onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -36,8 +38,6 @@ const defaultProps = {
   zIndex: 900,
   duration: 1000,
 } as BackTopProps
-
-const isNative = harmonyAndRn()
 
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
@@ -48,6 +48,7 @@ export const BackTop: FunctionComponent<
     zIndex,
     className,
     duration,
+    icon,
     style,
     scrollRes,
     onClick,
@@ -104,7 +105,7 @@ export const BackTop: FunctionComponent<
     <HoverButton
       className={cls}
       style={{ zIndex, ...style }}
-      icon={!children && <Top />}
+      icon={!children && (icon || <Top />)}
       onClick={(e) => {
         goTop(e)
       }}

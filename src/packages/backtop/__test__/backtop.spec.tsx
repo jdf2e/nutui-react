@@ -45,7 +45,6 @@ test('backtop custom test', () => {
     'style',
     'z-index: 900; bottom: 110px; right: 10px;'
   )
-
   fireEvent.click(container)
   expect(handleClick).toBeCalled
   expect(container).toMatchSnapshot()
@@ -61,14 +60,15 @@ test('scroll', async () => {
     </div>
   )
   const track = container.querySelector('.backtop-wrapper')
+  const element18 = container.querySelectorAll('.backtop-button')[0]
   if (track) {
     track.scrollTop = 200
     act(() => {
       track.dispatchEvent(new Event('scroll'))
     })
     await waitFor(() => {
-      const element18 = container.querySelector('.backtop-button')
       expect(element18).toHaveClass('nut-backtop-show')
     })
+    fireEvent.click(element18 as Element)
   }
 })

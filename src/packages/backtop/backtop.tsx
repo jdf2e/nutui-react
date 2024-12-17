@@ -8,11 +8,11 @@ import React, {
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Top } from '@nutui/icons-react'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import requestAniFrame, { cancelRaf } from '@/utils/raf'
-import HoverButton from '@/packages/hoverbutton/index'
+import HoverButton, { HoverButtonProps } from '@/packages/hoverbutton/index'
 
-export interface BackTopProps extends BasicComponent {
+export interface BackTopProps extends HoverButtonProps {
   target: string
   threshold: number
   zIndex: number
@@ -38,6 +38,7 @@ export const BackTop: FunctionComponent<
     zIndex,
     className,
     duration,
+    icon,
     style,
     onClick,
   } = {
@@ -123,7 +124,7 @@ export const BackTop: FunctionComponent<
     <HoverButton
       className={cls}
       style={{ zIndex, ...style }}
-      icon={!children && <Top />}
+      icon={!children && (icon || <Top />)}
       onClick={(e) => {
         goTop(e)
       }}
