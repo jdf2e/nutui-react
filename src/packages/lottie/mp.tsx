@@ -15,7 +15,14 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
   const animation = useRef<any>()
   const inited = useRef(false)
 
-  const { source, loop, autoPlay = true, onComplete, style, speed = 1 } = props
+  const {
+    source,
+    loop = true,
+    autoPlay = true,
+    onComplete,
+    style,
+    speed = 1,
+  } = props
   const setSpeed = () => {
     animation.current.setSpeed(Math.abs(speed))
     animation.current.setDirection(speed > 0 ? 1 : -1)
@@ -72,7 +79,7 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
   })
   return (
     // eslint-disable-next-line react/no-unknown-property
-    <canvas id={id} canvasId={id} type="2d" style={{ width: 56, height: 56 }} />
+    <canvas id={id} canvasId={id} type="2d" style={style} />
   )
 })
 

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { LottieComponentProps } from 'lottie-react'
+import { LottieProps } from '../lottie/types'
 import { BasicComponent } from '@/utils/typings'
 
 export type LoadingRef = any
@@ -10,7 +10,7 @@ export type LoadingDirection = 'horizontal' | 'vertical'
 export interface LoadingProps extends BasicComponent {
   type: LoadingType
   jsonData: any
-  lottieProps: Omit<LottieComponentProps, 'animationData'>
+  lottieProps: Partial<LottieProps>
   direction: LoadingDirection
   icon?: ReactNode
 }

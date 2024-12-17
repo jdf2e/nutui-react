@@ -4,7 +4,7 @@ import {
   Loading as IconLoading,
   Loading1 as IconLoading1,
 } from '@nutui/icons-react'
-import Lottie, { LottieRefCurrentProps } from 'lottie-react'
+import Lottie, { LottieProps } from '../lottie'
 import { ComponentDefaults } from '@/utils/typings'
 import { LoadingProps, LoadingRef } from './types'
 import { mergeProps } from '@/utils/merge-props' // 方便以后扩展设置为键值对形式
@@ -41,7 +41,7 @@ export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
       ...props,
     }
     // @ts-ignore
-    const loadingLottieRef: React.MutableRefObject<LottieRefCurrentProps | null> =
+    const loadingLottieRef: React.MutableRefObject<LottieProps | null> =
       useRef()
     const mergedLottieProps = mergeProps(defaultLottieProps, lottieProps)
     React.useImperativeHandle(ref, () => loadingLottieRef)
@@ -52,8 +52,8 @@ export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
         return (
           <Lottie
             {...mergedLottieProps}
-            lottieRef={loadingLottieRef}
-            animationData={rest.jsonData}
+            ref={loadingLottieRef}
+            source={rest.jsonData}
           />
         )
       }

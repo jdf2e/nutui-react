@@ -7,11 +7,12 @@ import {
 import { View } from '@tarojs/components'
 import Lottie from '../lottie/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { LoadingProps, LoadingRef } from './types'
-import { mergeProps } from '@/utils/merge-props' // 方便以后扩展设置为键值对形式
+import { LoadingProps, LoadingRef, LoadingType } from './types'
+import { mergeProps } from '@/utils/merge-props'
+import { LottieProps } from '@/packages/lottie' // 方便以后扩展设置为键值对形式
 
 // 方便以后扩展设置为键值对形式
-const loadingMap = {
+const loadingMap: { [key in LoadingType]?: any } = {
   circular: IconLoading1,
   spinner: IconLoading,
 }
@@ -42,21 +43,19 @@ export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
       ...props,
     }
     // @ts-ignore
-    const loadingLottieRef: React.MutableRefObject<LottieRefCurrentProps | null> =
+    const loadingLottieRef: React.MutableRefObject<LottieProps | null> =
       useRef()
     const mergedLottieProps = mergeProps(defaultLottieProps, lottieProps)
     React.useImperativeHandle(ref, () => loadingLottieRef)
 
     const classPrefix = 'nut-loading'
     const getLoadingIcon = () => {
-      console.log('jsonData', rest.jsonData)
       if (rest.type === 'lottie' && rest.jsonData) {
         return (
           <Lottie
             {...mergedLottieProps}
+            // @ts-ignore
             ref={loadingLottieRef}
-            width={20}
-            height={20}
             source={rest.jsonData}
           />
         )
