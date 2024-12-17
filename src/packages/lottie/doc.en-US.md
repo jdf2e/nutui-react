@@ -24,12 +24,23 @@ import { Lottie } from '@nutui/nutui-react'
 
 | Property | Description | type | default |
 | --- | --- | --- | --- |
-| type | loading icon type | circular | spinner | `circular` |
-| direction | direction of icon and text | horizontal | vertical | `horizontal` |
-| icon | custom loading icon | tsx.Element | `-` |
+| source | JSON object containing exported animation data | `Object` | `circular` |
+| loop | The arrangement of loading icons and text | `boolean \| number` | `horizontal` |
+| autoPlay | The animation will play immediately after loading | `boolean` | `-` |
+| initialSegment | The first value is the initial frame and the second value is the final frame. If this value is set, the animation will start at this time position | `[number, number]` | `-` |
+| speed | playback speed | `number` | `1` |
 
 ### Ref
 
 | Method | Description | Parameter |
 | --- | --- | --- |
-
+| play | play | `-` |
+| stop | stop | `-` |
+| pause | pause | `-` |
+| setSpeed | Set playback speed | `(speed: number) => void` |
+| goToAndPlay | Jump to the specified frame and play | `(value: number, isFrame?: boolean) => void` |
+| goToAndStop | Jump to the specified frame and stop | `(value: number, isFrame?: boolean) => void` |
+| setDirection | Playback direction setting | `(direction: AnimationDirection) => void` |
+| playSegments | Play interval frame | `(segments: AnimationSegment \| AnimationSegment[], forceFlag?: boolean) => void` |
+| destroy | destroy | `() => void` |
+| getDuration | inFrames If true, returns the duration in frames; inFrames if false, returns the duration in seconds. | `(inFrames?: boolean) => number` |
