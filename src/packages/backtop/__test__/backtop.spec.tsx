@@ -2,7 +2,7 @@
 import * as React from 'react'
 import '@testing-library/jest-dom'
 import { Top } from '@nutui/icons-react'
-import { render, fireEvent, waitFor, act } from '@testing-library/react'
+import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import BackTop from '@/packages/backtop'
 
 test('backtop props test', () => {
@@ -52,22 +52,30 @@ test('backtop custom test', () => {
 
 test('scroll', async () => {
   const { container } = render(
-    <div id="target" style={{ height: '100vh' }} className="backtop-wrapper">
+    <div id="target" style={{ height: '100px' }} className="backtop-wrapper">
       {new Array(24).fill(0).map((_, index) => {
-        return <div key={index}>我是测试数据{index}</div>
+        return (
+          <div key={index} style={{ height: 30 }}>
+            我是测试数据{index}
+          </div>
+        )
       })}
       <BackTop target="target" className="backtop-button" />
     </div>
   )
   const track = container.querySelector('.backtop-wrapper')
-  const element18 = container.querySelectorAll('.backtop-button')[0]
+  const element18 = container.querySelectorAll(
+    '.nut-hoverbutton-item-container'
+  )[0]
+  const element19 = container.querySelectorAll('.nut-hoverbutton-container')[0]
   if (track) {
+    track.scrollTo = vi.fn()
     track.scrollTop = 200
     act(() => {
       track.dispatchEvent(new Event('scroll'))
     })
     await waitFor(() => {
-      expect(element18).toHaveClass('nut-backtop-show')
+      expect(element19).toHaveClass('nut-backtop-show')
     })
     fireEvent.click(element18 as Element)
   }
