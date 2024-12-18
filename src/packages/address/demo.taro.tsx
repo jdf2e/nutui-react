@@ -16,7 +16,7 @@ const AddressDemo = () => {
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
       existList: '选择已有地址',
-      icon: '自定义图标',
+      customIcon: '自定义图标',
       change: '自定义地址与已有地址切换',
       uncontrolled: '非受控方式',
     },
@@ -24,7 +24,7 @@ const AddressDemo = () => {
       customAddress: '選擇自定義地址',
       selectCity: '選中省市區',
       existList: '選擇已有地址',
-      icon: '自定義圖標',
+      customIcon: '自定義圖標',
       change: '自定義地址與已有地址切換',
       uncontrolled: '非受控方式',
     },
@@ -32,7 +32,7 @@ const AddressDemo = () => {
       customAddress: 'Choose Custom Address',
       selectCity: 'Choose City',
       existList: 'Choose Exist Address',
-      icon: 'Custom Icon',
+      customIcon: 'Custom Icon',
       change: 'Custom Or Exist',
       uncontrolled: 'Uncontrolled',
     },
@@ -48,7 +48,7 @@ const AddressDemo = () => {
         <Demo2 />
         <View className="h2">{translated.existList}</View>
         <Demo3 />
-        <View className="h2">{translated.icon}</View>
+        <View className="h2">{translated.customIcon}</View>
         <Demo4 />
         <View className="h2">{translated.change}</View>
         <Demo5 />

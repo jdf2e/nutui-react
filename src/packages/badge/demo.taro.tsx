@@ -17,7 +17,7 @@ const BadgeDemo = () => {
     'zh-CN': {
       '8ab98966': '默认用法',
       '1e7a2282': '最大值',
-      '781b07fd': '自定义颜色',
+      customColor: '自定义颜色',
       '1c730245': '自定义徽标内容',
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
@@ -27,7 +27,7 @@ const BadgeDemo = () => {
     'zh-TW': {
       '8ab98966': '默认用法',
       '1e7a2282': '最大值',
-      '781b07fd': '自定义颜色',
+      customColor: '自定义颜色',
       '1c730245': '自定义徽标内容',
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
@@ -37,7 +37,7 @@ const BadgeDemo = () => {
     'en-US': {
       '8ab98966': 'Basic usage',
       '1e7a2282': 'Max Size',
-      '781b07fd': 'Custom Color',
+      customColor: 'Custom Color',
       '1c730245': ' Custom Context',
       '1c730248': 'Custom CSS',
       '915d7b01': 'Custom Position',
@@ -53,7 +53,7 @@ const BadgeDemo = () => {
         <Demo1 />
         <View className="h2">{translated['1e7a2282']}</View>
         <Demo2 />
-        <View className="h2">{translated['781b07fd']}</View>
+        <View className="h2">{translated.customColor}</View>
         <Demo3 />
         <View className="h2">{translated['1c730245']}</View>
         <Demo4 />

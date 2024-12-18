@@ -15,7 +15,7 @@ const CascaderDemo = () => {
       title2: '动态加载',
       title3: '部分数据动态加载',
       title4: '自动转换',
-      title5: '自定义样式',
+      customStyle: '自定义样式',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -23,7 +23,7 @@ const CascaderDemo = () => {
       title2: '動態加載',
       title3: '部分數據動態加載',
       title4: '自動轉換',
-      title5: '自定義样式',
+      customStyle: '自定義样式',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -31,7 +31,7 @@ const CascaderDemo = () => {
       title2: 'Async Loading',
       title3: 'Async Loading Of Partial Data',
       title4: 'Automatic Data Conversion',
-      title5: 'Customize CSS',
+      customStyle: 'Customize CSS',
     },
   })
 
@@ -48,7 +48,7 @@ const CascaderDemo = () => {
         <Demo4 />
         <h2>{translated.title4}</h2>
         <Demo5 />
-        <h2>{translated.title5}</h2>
+        <h2>{translated.customStyle}</h2>
         <Demo6 />
       </div>
     </>

@@ -18,7 +18,7 @@ const TabbarDemo = () => {
       ce5c5448: '只配图标',
       ce5c5440: '无图标',
       b840c88f: '徽标提示',
-      a74a1fd4: '自定义颜色',
+      customColor: '自定义颜色',
       '8dab2f66': '可自定义icon个数的tabbar',
       cfbdc781: '固定底部',
       c9e6df49: '红点',
@@ -29,7 +29,7 @@ const TabbarDemo = () => {
       ce5c5448: '只配图标',
       ce5c5440: '无图标',
       b840c88f: '徽標提示',
-      a74a1fd4: '自定義顏色',
+      customColor: '自定義顏色',
       '8dab2f66': '可自定義icon個數的tabbar',
       cfbdc781: '固定底部',
       c9e6df49: '紅點',
@@ -40,7 +40,7 @@ const TabbarDemo = () => {
       ce5c5448: 'Only Icon',
       ce5c5440: 'No Icon',
       b840c88f: 'Logo Tips',
-      a74a1fd4: 'Custom Color',
+      customColor: 'Custom Color',
       '8dab2f66': 'Tabbar With Custom Number Of Icons',
       cfbdc781: 'Fixed Bottom',
       c9e6df49: 'Dot',
@@ -62,7 +62,7 @@ const TabbarDemo = () => {
         <Demo5 />
         <h2>{translated.c9e6df49}</h2>
         <Demo6 />
-        <h2>{translated.a74a1fd4}</h2>
+        <h2>{translated.customColor}</h2>
         <Demo7 />
         <h2>{translated['8dab2f66']}</h2>
         <Demo8 />
