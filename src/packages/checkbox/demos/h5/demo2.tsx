@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Checkbox, Cell } from '@nutui/nutui-react'
-import { Checklist } from '@nutui/icons-react'
+import { Check } from '@nutui/icons-react'
 
 const Demo2 = () => {
   const [controlled, setControlled] = useState(false)
@@ -49,25 +49,19 @@ const Demo2 = () => {
           onChange={(value) => setControlledGroup(value)}
         >
           <Checkbox
-            activeIcon={
-              <Checklist className="nut-checkbox-button-icon-checked" />
-            }
+            activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
             shape="button"
             value="1"
             label={optionsDemo1[0].label}
           />
           <Checkbox
-            activeIcon={
-              <Checklist className="nut-checkbox-button-icon-checked" />
-            }
+            activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
             shape="button"
             value="2"
             label={optionsDemo1[1].label}
           />
           <Checkbox
-            activeIcon={
-              <Checklist className="nut-checkbox-button-icon-checked" />
-            }
+            activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
             shape="button"
             value="3"
             label={optionsDemo1[2].label}

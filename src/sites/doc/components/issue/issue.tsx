@@ -1,6 +1,6 @@
 import './issue.scss'
 import React, { useEffect, useState } from 'react'
-import { Tips, Checklist, Add } from '@nutui/icons-react'
+import { Tips, Check, Add } from '@nutui/icons-react'
 import { useLocation } from 'react-router-dom'
 import { nav } from '@/config.json'
 
@@ -51,7 +51,7 @@ export function Issue() {
           href={`https://github.com/jdf2e/nutui-react/issues?q=is:issue+is:closed+${componentName.name}`}
           target="_blank"
         >
-          <Checklist />
+          <Check />
           Closed
         </a>
       </div>

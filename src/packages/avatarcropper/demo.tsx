@@ -24,7 +24,7 @@ const AvatarCropperDemo = () => {
   })
   return (
     <>
-      <div className="demo full">
+      <div className="demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
 

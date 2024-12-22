@@ -8,7 +8,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import { Loading, Checklist } from '@nutui/icons-react'
+import { Loading, Check } from '@nutui/icons-react'
 import { Popup, PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
 import Tree, { convertListToOptions } from './utils'
@@ -396,9 +396,7 @@ const InternalCascader: ForwardRefRenderFunction<
           return activeIcon
         }
         return (
-          <Checklist
-            className={`${checked ? `${classPrefix}-icon-check` : ''}`}
-          />
+          <Check className={`${checked ? `${classPrefix}-icon-check` : ''}`} />
         )
       }
       return null
