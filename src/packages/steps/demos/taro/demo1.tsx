@@ -15,7 +15,9 @@ const Demo1 = () => {
         <Step value={2} title="步骤二" />
         <Step value={3} title="步骤三" />
       </Steps>
-      <View style={{ marginTop: '10px', textAlign: 'center' }}>
+      <View
+        style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}
+      >
         <Button type="danger" onClick={() => handleStep()}>
           下一步
         </Button>

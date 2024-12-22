@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react'
+import { Cart, Category, Hi, Home, User } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 
 test('should render tabbar when default', () => {
@@ -11,7 +11,7 @@ test('should render tabbar when default', () => {
       <Tabbar>
         <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
         <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="逛" icon={<Hi width={20} height={20} />} />
         <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
         <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
       </Tabbar>
@@ -35,7 +35,7 @@ test('should render custom color and badge when using prop', () => {
           value={11}
         />
         <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="逛" icon={<Hi width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -69,7 +69,7 @@ test('should match active tabbar by click', async () => {
           value={11}
         />
         <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="逛" icon={<Hi width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -94,7 +94,7 @@ test('should show sure emitted when click', async () => {
           value={11}
         />
         <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-        <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+        <Tabbar.Item title="逛" icon={<Hi width={20} height={20} />} />
       </Tabbar>
     </>
   )
@@ -112,7 +112,7 @@ test('should only render title', async () => {
       <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
         <Tabbar.Item title="首页" value={11} />
         <Tabbar.Item title="分类" />
-        <Tabbar.Item title="发现" />
+        <Tabbar.Item title="逛" />
       </Tabbar>
     </>
   )

@@ -1,4 +1,4 @@
-import { Dongdong, User } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 import { Avatar, Badge, Cell } from '@nutui/nutui-react'
 import React from 'react'
 
@@ -19,7 +19,7 @@ const Demo1 = () => {
       <Cell align="center" style={{ justifyContent: 'space-around' }}>
         <Badge dot>{renderText()}</Badge>
         <Badge dot>
-          <Dongdong height={22} width={22} />
+          <User height={22} width={22} />
         </Badge>
         <Badge dot>
           <Avatar icon={<User />} shape="square" />
@@ -28,7 +28,7 @@ const Demo1 = () => {
       <Cell align="center" style={{ justifyContent: 'space-around' }}>
         <Badge value={8}>{renderText()}</Badge>
         <Badge value={8}>
-          <Dongdong height={22} width={22} />
+          <User height={22} width={22} />
         </Badge>
         <Badge value={8}>
           <Avatar icon={<User />} shape="square" />
@@ -39,7 +39,7 @@ const Demo1 = () => {
           {renderText()}
         </Badge>
         <Badge value="内容">
-          <Dongdong height={22} width={22} />
+          <User height={22} width={22} />
         </Badge>
         <Badge value="内容">
           <Avatar icon={<User />} shape="square" />
