@@ -5,7 +5,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo5 from './demos/taro/demo5'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const BackTopDemo = () => {
   const [translated] = useTranslate({
@@ -26,24 +26,17 @@ const BackTopDemo = () => {
 
   return (
     <>
-      {harmonyAndRn() ? (
-        <>
-          <View style={{ position: 'relative' }}>
-            <Header />
-            <Demo5 />
-          </View>
-        </>
+      <Header />
+      {harmony() ? (
+        <Demo5 />
       ) : (
-        <>
-          <Header />
-          <ScrollView
-            className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-            style={demoStyle}
-          >
-            <View className="h2">{translated.title}</View>
-            <Demo1 />
-          </ScrollView>
-        </>
+        <ScrollView
+          className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+          style={demoStyle}
+        >
+          <View className="h2">{translated.title}</View>
+          <Demo1 />
+        </ScrollView>
       )}
     </>
   )
