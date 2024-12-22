@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Check, People, Service } from '@nutui/icons-react'
+import { Check, Transit, Service } from '@nutui/icons-react'
 import { Steps } from '../steps'
 import Step from '../../step'
 import Button from '../../button'
@@ -52,7 +52,7 @@ test('should render horizontal class when props direction is to be horizontal', 
         value={2}
         title="进行中"
         description="您的订单正在配送途中"
-        icon={<People />}
+        icon={<Transit />}
       >
         2
       </Step>
