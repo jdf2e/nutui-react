@@ -17,9 +17,7 @@ const Demo2 = () => {
         <Step value={2} />
         <Step value={3} />
       </Steps>
-      <div
-        style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}
-      >
+      <div style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
