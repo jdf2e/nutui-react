@@ -30,6 +30,7 @@ const Demo3 = () => {
             }}
             style={{
               '--nutui-tabs-titles-gap': 0,
+              background: 'transparent',
             }}
           >
             <TabPane title="Tab 1"> Tab 1 </TabPane>
