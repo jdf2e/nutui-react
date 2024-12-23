@@ -65,7 +65,7 @@ export const Progress: FunctionComponent<
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    backgroundColor: color || '#FF0F23',
+    background: color || '#FF0F23',
   }
 
   if (strokeWidth) {
@@ -160,8 +160,7 @@ export const Progress: FunctionComponent<
     }
   }, [])
   const getTextStyle = () => {
-    const value = harmony() ? '93%' : '99%'
-    return rtl ? { right: value } : { left: value }
+    return rtl ? { right: '100%' } : { left: '100%' }
   }
   const computeRight = () => {
     if (children) {

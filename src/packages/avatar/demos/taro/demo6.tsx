@@ -12,7 +12,7 @@ const Demo6 = () => {
           <Avatar icon={<User />} />
           <Avatar
             color={`${harmonyAndRn() ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
-            background={`${harmonyAndRn() ? '#eee' : 'var(--nutui-brand-2)'}`}
+            background={`${harmonyAndRn() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
           >
             U
           </Avatar>

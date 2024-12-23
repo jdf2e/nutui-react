@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
 
+// TODO：鸿蒙支持的不好
 const Demo16 = () => {
-  const [tab4value, setTab4value] = useState<string | number>('0')
+  const [tabvalue, setTabvalue] = useState<string | number>('0')
   return (
     <>
       <Tabs
-        value={tab4value}
+        value={tabvalue}
         onChange={(value) => {
-          setTab4value(value)
+          setTabvalue(value)
         }}
       >
         <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>

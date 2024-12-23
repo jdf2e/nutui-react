@@ -2,22 +2,14 @@
   position: relative;
   display: inline-flex;
   width: auto;
-  /* #ifdef harmony */
-  min-width: 1px;
-  /* #endif */
-  /* #ifndef harmony */
-  min-width: auto;
-  /* #endif */
+
   &-icon {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     background: $badge-background-color;
     padding: $badge-icon-padding;
     text-align: center;
-    border: $badge-border;
-    border-radius: $badge-border-radius;
     z-index: $badge-z-index;
 
     .nut-icon {
@@ -27,53 +19,88 @@
     }
   }
 
+  &-sup,
+  &-icon {
+    border-radius: $badge-border-radius;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      bottom: -50%;
+      left: -50%;
+      right: -50%;
+      transform: scale(0.5);
+      border: $badge-border;
+      border-radius: $badge-border-radius;
+    }
+  }
+
   &-sup {
-    height: $badge-height;
-    position: absolute;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    align-items: center;
+    height: $badge-height;
+    min-width: $badge-min-width;
+    padding: $badge-padding;
+    box-sizing: border-box;
+    color: $badge-color;
+    font-size: $badge-font-size;
+    line-height: 12px;
+    white-space: nowrap;
+    font-weight: normal;
+    vertical-align: middle;
+    background: $badge-background-color;
+    z-index: 1;
+  }
+
+  &-number {
+    font-family: 'JD';
     /* #ifdef harmony */
-    background: $color-primary;
+    line-height: 12px;
     /* #endif */
     /* #ifndef harmony */
-    background: $badge-background-color;
+    line-height: 13px;
     /* #endif */
-    color: $badge-color;
-    padding: $badge-padding;
-    font-size: $badge-font-size;
-    font-weight: normal;
-    text-align: center;
-    border: $badge-border;
-    border-radius: $badge-border-radius;
-    min-width: $badge-min-width;
-    white-space: nowrap;
-    z-index: 1;
   }
 
   &-one {
     height: $badge-height;
     width: $badge-height;
-    padding: 0;
   }
 
   &-content {
-    /* #ifndef rn */
+    position: absolute;
     transform: $badge-content-transform;
-    /* #endif */
   }
 
   &-dot {
-    width: $badge-dot-width;
-    height: $badge-dot-width;
-    border: $badge-dot-border;
-    border-radius: $badge-dot-width;
     padding: 0;
+    border-radius: 50%;
+    &::after {
+      border: $badge-dot-border;
+      border-radius: 50%;
+    }
+    &-normal {
+      min-width: $badge-dot-width;
+      width: $badge-dot-width;
+      height: $badge-dot-width;
+    }
+    &-small {
+      min-width: $badge-dot-small-width;
+      width: $badge-dot-small-width;
+      height: $badge-dot-small-width;
+    }
+    &-large {
+      min-width: $badge-dot-large-width;
+      width: $badge-dot-large-width;
+      height: $badge-dot-large-width;
+    }
   }
 
   &-outline {
     background: $color-primary-text;
-    border: 1px solid $color-primary;
-    color: $color-primary;
+    color: $badge-outline-color;
+    &::after {
+      border: $badge-outline-border;
+    }
   }
 }

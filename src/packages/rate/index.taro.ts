@@ -1,4 +1,4 @@
 import { Rate } from './rate.taro'
 
-export type { RateProps } from './rate.taro'
+export type { RateSize, RateProps } from './types'
 export default Rate

@@ -11,12 +11,19 @@ const Demo1 = () => {
   return (
     <>
       <Cell>
+        <CountDown
+          endTime={stateRef.current.endTime}
+          type="primary"
+          onEnd={onEnd}
+        />
+      </Cell>
+      <Cell>
         <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
       </Cell>
       <Cell>
         <CountDown
           endTime={stateRef.current.endTime}
-          type="primary"
+          type="text"
           onEnd={onEnd}
         />
       </Cell>

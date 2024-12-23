@@ -22,8 +22,8 @@ const TrendArrowDemo = () => {
       title4: '箭头在前面',
       title5: '显示正负号',
       title6: '是否展示0',
-      title7: '自定义颜色',
-      title8: '自定义图标',
+      customColor: '自定义颜色',
+      customIcon: '自定义图标',
     },
     'zh-TW': {
       title1: '基础用法',
@@ -32,8 +32,8 @@ const TrendArrowDemo = () => {
       title4: '箭头在前面',
       title5: '显示正负号',
       title6: '是否展示0',
-      title7: '自定义颜色',
-      title8: '自定义图标',
+      customColor: '自定义颜色',
+      customIcon: '自定义图标',
     },
     'en-US': {
       title1: 'Basic Usage',
@@ -42,8 +42,8 @@ const TrendArrowDemo = () => {
       title4: 'Arrow ahead',
       title5: 'Show sign',
       title6: 'Show zero or not',
-      title7: 'Custom color',
-      title8: 'Custom icon',
+      customColor: 'Custom color',
+      customIcon: 'Custom icon',
     },
   })
   return (
@@ -62,9 +62,9 @@ const TrendArrowDemo = () => {
         <Demo5 />
         <View className="h2">{translated.title6}</View>
         <Demo6 />
-        <View className="h2">{translated.title7}</View>
+        <View className="h2">{translated.customColor}</View>
         <Demo7 />
-        <View className="h2">{translated.title8}</View>
+        <View className="h2">{translated.customIcon}</View>
         <Demo8 />
       </ScrollView>
     </>

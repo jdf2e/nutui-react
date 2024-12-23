@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
-  const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tabvalue, setTabvalue] = useState<string | number>('0')
   return (
     <Tabs
-      value={tab1value}
+      value={tabvalue}
       onChange={(value) => {
-        setTab1value(value)
+        setTabvalue(value)
       }}
       activeType="smile"
     >

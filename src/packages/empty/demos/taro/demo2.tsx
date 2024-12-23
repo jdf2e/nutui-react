@@ -2,6 +2,12 @@ import React from 'react'
 import { Empty } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
-  return <Empty description="无数据" size="small" />
+  return (
+    <Empty
+      title="半屏缺省标题"
+      description="内容描述内容描述内容描述"
+      size="small"
+    />
+  )
 }
 export default Demo2

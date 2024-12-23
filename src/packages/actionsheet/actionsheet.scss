@@ -28,20 +28,26 @@
     line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
     color: $actionsheet-item-color;
-    background-color: $color-background-overlay;
     cursor: pointer;
-
+    &-name {
+      text-align: $actionsheet-item-text-align;
+      line-height: $actionsheet-item-line-height;
+      font-size: $font-size-base;
+      color: $actionsheet-item-color;
+    }
     &-description {
       display: block;
       font-size: $font-size-s;
       color: $color-text;
+      text-align: $actionsheet-item-text-align;
+      line-height: $actionsheet-item-line-height;
     }
 
-    &.danger {
+    &-danger {
       color: $actionsheet-item-danger;
     }
 
-    &.disabled {
+    &-disabled {
       color: $color-text-disabled !important;
       cursor: not-allowed;
     }

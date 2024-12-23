@@ -1,36 +1,36 @@
+import React from 'react'
 import { User } from '@nutui/icons-react-taro'
 import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
-import React from 'react'
-import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo3 = () => {
-  const isRnAndHarmony = harmonyAndRn()
-  const renderChildren = () => {
-    return <Avatar icon={<User />} shape="square" />
-  }
-  const marginStyles = isRnAndHarmony
-    ? { marginRight: pxTransform(40) }
-    : { marginInlineEnd: '40px' }
   return (
-    <Cell>
-      <Badge style={marginStyles} value={8} color="rgba(73,143,242,1)">
-        {renderChildren()}
-      </Badge>
-      <Badge style={marginStyles} value={76} color="rgba(73,143,242,1)">
-        {renderChildren()}
-      </Badge>
-      <Badge style={marginStyles} value="NEW" color="rgba(73,143,242,1)">
-        {renderChildren()}
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge
+        dot
+        style={{
+          '--nutui-badge-background-color':
+            'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
+        }}
+      >
+        <Avatar icon={<User />} shape="square" />
       </Badge>
       <Badge
-        style={marginStyles}
-        top="2"
-        right="4"
-        dot
-        color="rgba(73,143,242,1)"
+        value={8}
+        style={{
+          '--nutui-badge-background-color':
+            'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
+        }}
       >
-        {renderChildren()}
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        value="内容"
+        style={{
+          '--nutui-badge-background-color':
+            'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
+        }}
+      >
+        <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>
   )

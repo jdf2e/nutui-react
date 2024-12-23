@@ -1,9 +1,10 @@
 const path = require('path')
-const injectScss = require('../plugins/inject-scss')
 
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
 const projectID = process.env.VITE_APP_PROJECT_ID
+const JD = process.env.JD
+console.log('JDJDJDJDJDJD', JD)
 if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
@@ -15,26 +16,25 @@ let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
   ? ['@tarojs/plugin-html']
   : []
 
-if (
-  process.env.TARO_ENV === 'harmony'
-) {
+if (process.env.TARO_ENV === 'harmony') {
   plugins.push('@tarojs/plugin-platform-harmony-ets')
 }
 
-if (process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') {
+if ((process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') && JD) {
   plugins.push('@jdtaro/plugin-platform-jdrn')
 }
 
 // 小程序、jd H5 通过此插件覆盖
 if (
-  process.env.TARO_ENV === 'weapp' ||
-  process.env.TARO_ENV === 'jd' ||
-  process.env.TARO_ENV === 'jdhybrid'
+  (process.env.TARO_ENV === 'weapp' ||
+    process.env.TARO_ENV === 'jd' ||
+    process.env.TARO_ENV === 'jdhybrid') &&
+  JD
 ) {
   plugins.push('@dongdesign/inject-jd-platform-styles')
 }
 
-if (process.env.TARO_ENV === 'jdhybrid') {
+if (process.env.TARO_ENV === 'jdhybrid' && JD) {
   plugins.push([
     '@jdtaro/plugin-platform-jdhybrid',
     {
@@ -46,11 +46,11 @@ if (process.env.TARO_ENV === 'jdhybrid') {
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
-if (process.env.TARO_ENV === 'jdharmony') {
+if (process.env.TARO_ENV === 'jdharmony' && JD) {
   plugins = ['@jdtaro/taro-platform-jdharmony']
 }
-if (process.env.TARO_ENV === 'jdharmony_cpp') {
-    plugins = ['@jdtaro/plugin-platform-jdharmony-cpp']
+if (process.env.TARO_ENV === 'jdharmony_cpp' && JD) {
+  plugins = ['@jdtaro/plugin-platform-jdharmony-cpp']
 }
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -73,8 +73,13 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
-  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), ...plugins],
-  compiler: 'webpack5',
+  plugins: [...plugins],
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      exclude: ['@nutui/icons-react-taro'],
+    },
+  },
   alias:
     process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
       ? {
@@ -127,13 +132,20 @@ const config = {
     ohPackage: {
       dependencies: {
         '@jd-oh/taro_library': '2.0.70',
-        '@jd-oh/taro_cpp_library': '0.0.88-beta.0'
+        '@jd-oh/taro_cpp_library': '0.1.2-alpha.0',
       },
     },
     // 将编译方式设置为使用 Vite 编译
-    compiler: { type: 'vite', vitePlugins: [injectScss()] },
+    compiler: { type: 'vite' },
     // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), isHarmony ? '../nutui-harmony' : isHarmonycpp ? '../nutui-jdharmonycpp' : '../nutui-jdharmony'),
+    projectPath: path.resolve(
+      process.cwd(),
+      isHarmony
+        ? '../nutui-harmony'
+        : isHarmonycpp
+          ? '../nutui-jdharmonycpp'
+          : '../nutui-jdharmony'
+    ),
     // 【可选】HAP 的名称，默认为 'entry'
     hapName: isHarmony ? 'entry' : 'library',
     useNesting: true,
@@ -223,9 +235,9 @@ const config = {
     },
     output: {
       environment: {
-        asyncFunction: true
-      }
-    }
+        asyncFunction: true,
+      },
+    },
   },
   rn: {
     appName: 'JDReactAPIDemos',

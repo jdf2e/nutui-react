@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { Checklist } from '@nutui/icons-react-taro'
+import { Check } from '@nutui/icons-react-taro'
 import { Cell, Checkbox } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [checked] = useState(false)
+  const fontSize = { fontSize: 12 }
   return (
     <>
       <Cell className="nut-cell">
@@ -23,8 +24,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View style={{ color: 'gray' }}>描述信息</View>
+              <View style={fontSize}>复选框</View>
+              <View style={{ color: 'gray', ...fontSize }}>描述信息</View>
             </View>
           }
           defaultChecked={!checked}
@@ -32,9 +33,7 @@ const Demo1 = () => {
         <Checkbox
           style={{ marginInlineEnd: '8px' }}
           shape="button"
-          activeIcon={
-            <Checklist className="nut-checkbox-button-icon-checked" />
-          }
+          activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
           className="test"
           label={
             <View
@@ -44,8 +43,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View style={{ color: 'gray' }}>描述信息</View>
+              <View style={fontSize}>复选框</View>
+              <View style={{ color: 'gray', ...fontSize }}>描述信息</View>
             </View>
           }
           defaultChecked={checked}
@@ -62,8 +61,8 @@ const Demo1 = () => {
                 alignItems: 'center',
               }}
             >
-              <View>复选框</View>
-              <View>描述信息</View>
+              <View style={fontSize}>复选框</View>
+              <View style={fontSize}>描述信息</View>
             </View>
           }
           defaultChecked={checked}

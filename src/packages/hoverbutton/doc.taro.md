@@ -44,6 +44,14 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::
 
+### 自定义内容
+
+:::demo
+
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+:::
+
 ## HoverButton
 
 ### Props

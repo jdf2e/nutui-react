@@ -32,20 +32,24 @@
 
   &-title {
     margin-top: $empty-title-margin-top;
+    font-weight: $font-weight-bold;
     margin-bottom: $empty-title-margin-bottom;
     color: $color-title;
-    font-size: $font-size-base;
+    font-size: $font-size-l;
     line-height: $empty-title-line-height;
   }
 
   &-description {
-    margin-top: $empty-description-margin-top;
-    color: $color-text-help;
+    color: $color-text;
     font-size: $font-size-s;
     line-height: $empty-description-line-height;
   }
-
-  &-actions {
+  &-actions-base {
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+  }
+  &-actions-small {
     display: flex;
     flex-direction: row;
     margin-top: 16px;

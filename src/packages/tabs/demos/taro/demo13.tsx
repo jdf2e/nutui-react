@@ -1,36 +1,32 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
+// TODO：鸿蒙支持的不好
 const Demo13 = () => {
-  const [tab2value, setTab2value] = useState<string | number>('0')
+  const [tabvalue, setTabvalue] = useState<string | number>('0')
   return (
     <>
       <Tabs
-        value={tab2value}
-        tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
+        value={tabvalue}
+        tabStyle={{ position: 'sticky', top: 0, zIndex: 11 }}
         onChange={(value) => {
-          setTab2value(value)
+          setTabvalue(value)
         }}
       >
         <Tabs.TabPane title="Tab 1">
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
+          {Array(8)
+            .fill(null)
+            .map((_, index) => (
+              <View key={index}>Tab 1</View>
+            ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2">
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
+          {Array(8)
+            .fill(null)
+            .map((_, index) => (
+              <View key={index}>Tab 2</View>
+            ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>

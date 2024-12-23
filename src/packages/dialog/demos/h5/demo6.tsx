@@ -36,6 +36,8 @@ const Demo6 = () => {
         className="test-dialog"
         title="底部带关闭按钮"
         visible={visible2}
+        confirmText="决策1"
+        cancelText="决策2"
         onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
         closeIcon

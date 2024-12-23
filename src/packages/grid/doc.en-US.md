@@ -26,7 +26,7 @@ import { Grid } from '@nutui/nutui-react'
 
 :::
 
-### Square
+### Custom Grids
 
 :::demo
 
@@ -97,9 +97,9 @@ import { Grid } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | columns | Column Num | `number` \| `string` | `4` |
-| gap | Gap. The default unit is `px` | `number` \| `string` | `0` |
+| gap | Gap. The default unit is `px` | `number` \| `string` | `9` |
 | center | Whether to center content | `boolean` | `true` |
-| square | Whether to be square shape | `boolean` | `false` |
+| square | Whether to be square shape | `boolean` | `true` |
 | reverse | Whether to reverse the position of icon and text | `boolean` | `false` |
 | direction | Content arrangement direction | `horizontal` \| `vertical` | `vertical` |
 | onClick | Grid.Item Click Event | `(item: GridItem, index) => void` | `-` |
@@ -121,7 +121,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-grid-border-color | border color | `#f5f6f7` |
+
+
+| \--nutui-grid-border-width | Border width | `0` |
+| \--nutui-grid-border-color | Border color | `$color-border` |
+| \--nutui-grid-border-radius | Border radius | `$radius-l` |
 | \--nutui-grid-item-content-padding | padding | `16px 8px` |
 | \--nutui-grid-item-content-bg-color | background | `$white` |
 | \--nutui-grid-item-text-margin | margin | `8px` |

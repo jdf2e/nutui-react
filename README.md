@@ -71,25 +71,55 @@ pnpm run dev
 # visit in browser: http：http://localhost:3000 (you don't have to open it manually if you've run it in the browser again)
 ```
 
-### running with mini-program
+### running with Taro
 
 ```sh
-# Clone repository
+# Clone the repository
 git clone https://github.com/jdf2e/nutui-react.git
 
-# Enter the project dictionary
+# Navigate to the project root directory
 cd nutui-react
 
 # Install dependencies
 pnpm install
 
-# Start development
-# dir：packages/nutui-taro-demo/dist/weapp
-pnpm run dev:taro:weapp
+# Enter mini-program development mode
+# Taro H5
+pnpm dev:taro h5
+# WeChat Mini Program
+pnpm dev:taro weapp
+# JD Mini Program
+pnpm dev:taro jd
+# For other platforms, refer to the scripts in the package.json file in the demo directory
+```
 
-# OR run as jd mini-program
-# dir：packages/nutui-taro-demo/dist/jd
-pnpm run dev:taro:jd
+### running with JDTaro
+
+1. Add a .npmrc file in the root directory of the repository with the following configuration:
+
+```shell
+git-branch-lockfile=true
+```
+
+```sh
+# Clone the repository
+git clone https://github.com/jdf2e/nutui-react.git
+
+# Navigate to the project root directory
+cd nutui-react
+
+# Install dependencies
+pnpm install
+
+# Enter mini-program development mode
+# Taro H5
+pnpm dev:jdtaro h5
+# WeChat Mini Program
+pnpm dev:jdtaro weapp
+# JD Mini Program
+pnpm dev:jdtaro jd
+# harmony cpp
+pnpm dev:jdtaro:jdharmonycpp
 ```
 
 ## Build Versions

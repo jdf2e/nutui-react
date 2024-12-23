@@ -42,11 +42,11 @@ gulp.task('watch', () => {
       interval,
       gulp.series(`${argv}copyTaro`)
     )
-    gulp.watch(
-      `src/packages/${argv}/${argv}.rn.tsx`,
-      interval,
-      gulp.series(`${argv}copyRN`)
-    )
+    // gulp.watch(
+    //   `src/packages/${argv}/${argv}.rn.tsx`,
+    //   interval,
+    //   gulp.series(`${argv}copyRN`)
+    // )
   })
   const watchTasks = []
   // eslint-disable-next-line array-callback-return
@@ -121,10 +121,10 @@ argvs.forEach((argv) => {
       .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
       .pipe(gulp.dest(`${targetBaseUrl}/`))
   })
-  gulp.task(`${argv}copyRN`, () => {
-    return gulp
-      .src(`src/packages/${argv}/${argv}.rn.tsx`)
-      .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
-      .pipe(gulp.dest(`${targetBaseUrl}/`))
-  })
+  // gulp.task(`${argv}copyRN`, () => {
+  //   return gulp
+  //     .src(`src/packages/${argv}/${argv}.rn.tsx`)
+  //     .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
+  //     .pipe(gulp.dest(`${targetBaseUrl}/`))
+  // })
 })

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Checkbox, Toast, Cell } from '@nutui/nutui-react-taro'
+import { Cell, Checkbox, Toast } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo9 = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
@@ -32,7 +33,7 @@ const Demo9 = () => {
         </Checkbox.Group>
       </Cell>
       <Cell>
-        <span>选中：{checkboxgroup1.toString()}</span>
+        <View>选中：{checkboxgroup1.toString()}</View>
       </Cell>
     </>
   )

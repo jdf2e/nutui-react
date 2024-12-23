@@ -3,6 +3,7 @@ node_modules
 .idea
 .eslintcache
 .vite
+.npmrc
 /dist
 /dist-demo
 /libs
@@ -37,6 +38,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Other lock files
+pnpm-lock.*.yaml
 
 # Editor directories and files
 .idea

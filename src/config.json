@@ -15,9 +15,21 @@
         "show": true
       },
       {
+        "name": "official-theme-react",
+        "cName": "官方主题",
+        "eName": "Official Theme",
+        "show": true
+      },
+      {
         "name": "theme-react",
         "cName": "主题定制",
         "eName": "Customize Theme",
+        "show": true
+      },
+      {
+        "name": "migrate-from-v1",
+        "cName": "从 v1 升级到 v2",
+        "eName": "Migrate-from-v1",
         "show": true
       },
       {
@@ -105,7 +117,7 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Icon",
           "type": "component",
           "cName": "图标",
@@ -176,6 +188,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "yangxiaolu"
         },
         {
@@ -235,7 +248,7 @@
           "author": "hx"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SafeArea",
           "type": "component",
           "cName": "安全区",
@@ -261,10 +274,11 @@
           "tarodoc": true,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Elevator",
           "type": "component",
           "cName": "电梯楼层",
@@ -353,7 +367,7 @@
           "author": "hx"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Tabbar",
           "type": "component",
           "cName": "标签栏",
@@ -364,7 +378,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TabbarItem",
           "sort": 2,
           "cName": "标签栏子组件",
@@ -376,7 +390,7 @@
           "author": "dsj"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TabPane",
           "sort": 2,
           "cName": "选项卡切换子组件",
@@ -387,7 +401,7 @@
           "author": "张晶发"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Tabs",
           "type": "component",
           "cName": "选项卡切换",
@@ -459,7 +473,7 @@
           "author": "ailululu"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Checkbox",
           "type": "component",
           "cName": "复选按钮",
@@ -470,7 +484,7 @@
           "author": "oasis"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CheckboxGroup",
           "type": "component",
           "cName": "多选按钮组",
@@ -566,7 +580,7 @@
           "author": "oasis-cloud"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "NumberKeyboard",
           "type": "component",
           "cName": "数字键盘",
@@ -621,7 +635,7 @@
           "author": "vickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Rate",
           "type": "component",
           "cName": "评分",
@@ -629,6 +643,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -673,6 +688,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -705,7 +721,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -724,10 +740,11 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "lzz"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Dialog",
           "type": "component",
           "cName": "对话框",
@@ -757,7 +774,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "liukun"
+          "author": "liukun",
+          "v15": true
         },
         {
           "version": "3.0.0",
@@ -768,6 +786,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -882,6 +901,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "VickyYe"
         }
       ]
@@ -902,7 +922,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
@@ -987,6 +1007,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -1001,7 +1022,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "ImagePreview",
           "type": "component",
           "cName": "图片预览",
@@ -1032,6 +1053,19 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v15": true,
+          "author": "lkjh3214"
+        },
+        {
+          "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v15": true,
           "author": "lkjh3214"
         },
         {
@@ -1175,7 +1209,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Card",
           "type": "component",
           "cName": "商品卡片",
@@ -1186,7 +1220,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeDetail",
           "type": "component",
           "cName": "配送时间",
@@ -1197,7 +1231,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "TimeSelect",
           "type": "component",
           "cName": "配送时间",

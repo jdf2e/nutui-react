@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   useCallback,
   useState,
-  useMemo,
   useEffect,
   useRef,
 } from 'react'
@@ -13,15 +12,16 @@ import {
   PageScrollObject,
   getSystemInfo,
 } from '@tarojs/taro'
-import { View, ITouchEvent } from '@tarojs/components'
-import { Top } from '@nutui/icons-react-taro'
+import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider/index.taro'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
+import { Top } from '@nutui/icons-react-taro'
+import { ComponentDefaults } from '@/utils/typings'
+import HoverButton, {
+  HoverButtonProps,
+} from '@/packages/hoverbutton/index.taro'
+import { rn } from '@/utils/platform-taro'
 
-export interface BackTopProps extends BasicComponent {
+export interface BackTopProps extends HoverButtonProps {
   threshold: number
   zIndex: number
   duration: number
@@ -29,7 +29,7 @@ export interface BackTopProps extends BasicComponent {
    * 容器滚动时的回调参数，主要用于 rn、鸿蒙端
    */
   scrollRes?: PageScrollObject
-  onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
+  onClick?: (event: React.MouseEvent<HTMLDivElement> | ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -39,18 +39,16 @@ const defaultProps = {
   duration: 1000,
 } as BackTopProps
 
-const isNative = harmonyAndRn()
-
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const rtl = useRtl()
   const {
     children,
     threshold,
     zIndex,
     className,
     duration,
+    icon,
     style,
     scrollRes,
     onClick,
@@ -60,12 +58,10 @@ export const BackTop: FunctionComponent<
   }
   const classPrefix = 'nut-backtop'
   const [backTop, setBackTop] = useState(false)
-  const [isTouchStart, setTouchStart] = useState(false)
   const cls = classNames(
     classPrefix,
     {
       [`${classPrefix}-show`]: backTop,
-      [`${classPrefix}-show-active`]: isNative && isTouchStart,
       [`${classPrefix}-rn`]: rn(),
     },
     className
@@ -75,14 +71,6 @@ export const BackTop: FunctionComponent<
     getSystemInfo().then((res) => {
       systemInfo.current = res
     })
-  }, [])
-
-  const handleActiveStart = useCallback(() => {
-    isNative && setTouchStart(true)
-  }, [])
-
-  const handleActiveEnd = useCallback(() => {
-    isNative && setTouchStart(false)
   }, [])
 
   const onScroll = useCallback(
@@ -103,7 +91,7 @@ export const BackTop: FunctionComponent<
 
   // 返回顶部点击事件
   const goTop = useCallback(
-    (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {
+    (e: MouseEvent<HTMLDivElement> | ITouchEvent) => {
       onClick?.(e)
       pageScrollTo({
         scrollTop: 0,
@@ -113,32 +101,26 @@ export const BackTop: FunctionComponent<
     [duration, onClick]
   )
 
-  const styles = useMemo(() => {
-    return Object.keys(style || {}).length !== 0
-      ? {
-          zIndex,
-          ...style,
-        }
-      : {
-          [rtl ? 'left' : 'right']: pxTransform(10),
-          bottom: pxTransform(20),
-          zIndex,
-        }
-  }, [rtl, style, zIndex])
-
   return (
-    <View
+    <HoverButton
       className={cls}
-      style={styles}
+      style={{ zIndex, ...style }}
+      icon={!children && (icon || <Top />)}
       onClick={(e) => {
         goTop(e)
       }}
-      onTouchStart={handleActiveStart}
-      onTouchEnd={handleActiveEnd}
-      onTouchCancel={handleActiveEnd}
     >
-      {children || <Top size={19} className="nut-backtop-main" />}
-    </View>
+      {children && (
+        <View
+          className="nut-hoverbutton-item-container"
+          onClick={(e) => {
+            goTop(e)
+          }}
+        >
+          {children}
+        </View>
+      )}
+    </HoverButton>
   )
 }
 

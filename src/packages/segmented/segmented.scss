@@ -1,0 +1,38 @@
+.nut-segmented {
+  display: inline-flex;
+  height: $segmented-height;
+  min-width: 24px;
+  padding: $segmented-padding;
+  align-items: center;
+  border-radius: $segmented-border-radius;
+  background: $color-mask-part;
+  box-sizing: border-box;
+}
+
+.nut-segmented-item {
+  display: flex;
+  height: $segmented-item-height;
+  align-items: center;
+  justify-content: center;
+  padding: $segmented-item-padding;
+  border-radius: $segmented-item-radius;
+  color: $segmented-item-color;
+  font-size: $segmented-item-fontsize;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.nut-segmented-item-active {
+  background: $segmented-active-background;
+}
+
+.nut-segmented-icon {
+  height: 10px;
+  width: 10px;
+  margin-right: $segmented-icon-margin-right;
+  .nut-icon {
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+  }
+}

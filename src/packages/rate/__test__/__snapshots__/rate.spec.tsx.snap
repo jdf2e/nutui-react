@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`size test 1`] = `
+<div>
+  <div
+    class="nut-rate"
+  >
+    <div
+      class="nut-rate-item nut-rate-item-large"
+    >
+      <div
+        class="nut-rate-item-icon nut-rate-item-icon-disabled"
+      >
+        <svg
+          aria-labelledby="StarFill"
+          class="nut-icon nut-icon-StarFill "
+          role="presentation"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M24 .1a1.5 1.5 0 0 1 1.296.745l7.316 12.56 14.206 3.077a1.5 1.5 0 0 1 .8 2.466l-9.684 10.839 1.464 14.462a1.5 1.5 0 0 1-2.097 1.524L24 39.91l-13.3 5.862a1.5 1.5 0 0 1-2.098-1.524l1.464-14.462-9.685-10.84a1.5 1.5 0 0 1 .802-2.465l14.205-3.076L22.704.846A1.5 1.5 0 0 1 24 .1"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

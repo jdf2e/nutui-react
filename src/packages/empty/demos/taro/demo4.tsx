@@ -12,20 +12,20 @@ const Demo4 = () => {
     //     setTabvalue(paneKey)
     //   }}
     // >
-    //   <TabPane title="无内容" value="0">
-    //     <Empty status="empty" title="无内容" />
+    //   <TabPane title="通用空状态" value="0">
+    //     <Empty status="empty" title="通用空状态" />
     //   </TabPane>
     //   <TabPane title="加载失败/错误" value="1">
     //     <Empty status="error" title="加载失败/错误" />
     //   </TabPane>
-    //   <TabPane title="无网络" value="2">
-    //     <Empty status="network" title="无网络" />
+    //   <TabPane title="网络异常" value="2">
+    //     <Empty status="network" title="网络异常" />
     //   </TabPane>
     // </Tabs>
     <>
-      <Empty status="empty" title="无内容" />
+      <Empty status="empty" title="通用空状态" />
       <Empty status="error" title="加载失败/错误" />
-      <Empty status="network" title="无网络" />
+      <Empty status="network" title="网络异常" />
     </>
   )
 }

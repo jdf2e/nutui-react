@@ -3,10 +3,10 @@ import React from 'react'
 
 const Demo7 = () => {
   return (
-    <Cell style={{ height: '66px' }}>
-      <Badge style={{ marginInlineEnd: '40px' }} value={8} />
-      <Badge style={{ marginInlineEnd: '40px' }} value={76} />
-      <Badge style={{ marginInlineEnd: '40px' }} value="NEW" />
+    <Cell align="center" style={{ justifyContent: 'space-around' }}>
+      <Badge dot />
+      <Badge value={8} />
+      <Badge value="内容" />
     </Cell>
   )
 }

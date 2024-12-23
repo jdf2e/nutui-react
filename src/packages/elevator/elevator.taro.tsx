@@ -1,15 +1,17 @@
 import React, {
   FunctionComponent,
-  useRef,
   useEffect,
+  useRef,
   useState,
   createContext,
+  useMemo,
 } from 'react'
 import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
-
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
+import useUuid from '@/utils/use-uuid'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
@@ -65,6 +67,7 @@ export const Elevator: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const uuid = useUuid()
   const classPrefix = 'nut-elevator'
   const listview = useRef<HTMLDivElement>(null)
   const initData = {
@@ -106,7 +109,7 @@ export const Elevator: FunctionComponent<
     for (let i = 0; i < state.current.listGroup.length; i++) {
       const query = createSelectorQuery()
       query
-        .selectAll(`.${className} .nut-elevator-item-${i}`)
+        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-item-${i}`)
         .boundingClientRect()
       // eslint-disable-next-line no-loop-func
       query.exec((res: any) => {
@@ -146,8 +149,7 @@ export const Elevator: FunctionComponent<
     touchState.current.y2 = firstTouch.pageY
     const delta =
       (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
-    const cacheIndex = state.current.anchorIndex + Math.floor(delta)
-
+    const cacheIndex = state.current.anchorIndex + Math.round(delta)
     setCodeIndex(cacheIndex)
     scrollTo(cacheIndex)
   }
@@ -180,7 +182,7 @@ export const Elevator: FunctionComponent<
   const setListGroup = () => {
     if (listview.current) {
       createSelectorQuery()
-        .selectAll(`.${className} .nut-elevator-list-item`)
+        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-list-item`)
         .node((el) => {
           state.current.listGroup = [...Object.keys(el)]
           calculateHeight()
@@ -211,6 +213,12 @@ export const Elevator: FunctionComponent<
     }
   }
 
+  const getWrapStyle = useMemo(() => {
+    const calcHeight = Number.isNaN(+height) ? height : `${height}px`
+
+    return { height: harmony() ? Number(height) : calcHeight }
+  }, [height])
+
   useEffect(() => {
     if (listview.current) {
       nextTick(() => {
@@ -220,11 +228,12 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      <View
-        className={`${classPrefix}-list`}
-        style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
-      >
+    <div
+      className={`${classPrefix} ${className} ${classPrefix}-${uuid}`}
+      style={style}
+      {...rest}
+    >
+      <View className={`${classPrefix}-list`} style={getWrapStyle}>
         <ScrollView
           scrollTop={scrollTop}
           scrollY
@@ -291,13 +300,7 @@ export const Elevator: FunctionComponent<
             </View>
           ) : null}
           <View className={`${classPrefix}-bars`}>
-            <View
-              className={`${classPrefix}-bars-inner`}
-              onTouchStart={(event) => touchStart(event as any)}
-              onTouchMove={(event) => touchMove(event as any)}
-              onTouchEnd={touchEnd}
-              style={{ touchAction: 'pan-y' }}
-            >
+            <View className={`${classPrefix}-bars-inner`}>
               {list.map((item: any, index: number) => {
                 return (
                   <View
@@ -309,6 +312,10 @@ export const Elevator: FunctionComponent<
                     data-index={index}
                     key={index}
                     onClick={() => handleClickIndex(item[floorKey])}
+                    onTouchStart={(event) => touchStart(event as any)}
+                    onTouchMove={(event) => touchMove(event as any)}
+                    onTouchEnd={touchEnd}
+                    style={{ touchAction: 'pan-y' }}
                   >
                     {item[floorKey]}
                   </View>
@@ -320,9 +327,9 @@ export const Elevator: FunctionComponent<
       ) : null}
       {sticky && scrollY > 0 ? (
         <View className={`${classPrefix}-list-fixed`}>
-          <span className={`${classPrefix}-list-fixed-title`}>
+          <Text className={`${classPrefix}-list-fixed-title`}>
             {list[codeIndex][floorKey]}
-          </span>
+          </Text>
         </View>
       ) : null}
     </div>

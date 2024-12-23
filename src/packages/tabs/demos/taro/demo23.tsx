@@ -4,8 +4,8 @@ import { Tabs } from '@nutui/nutui-react-taro'
 import { Star } from '@nutui/icons-react-taro'
 
 const Demo23 = () => {
-  const [tab7value, setTab7value] = useState('c1')
-  const list6 = [
+  const [tabvalue, setTabvalue] = useState('c1')
+  const list = [
     {
       title: '自定义 1',
       paneKey: 'c1',
@@ -23,22 +23,22 @@ const Demo23 = () => {
   return (
     <>
       <Tabs
-        value={tab7value}
+        value={tabvalue}
         title={() => {
-          return list6.map((item) => (
+          return list.map((item) => (
             <View
-              onClick={() => setTab7value(item.paneKey)}
-              className={`nut-tabs-titles-item ${tab7value === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
+              onClick={() => setTabvalue(item.paneKey)}
+              className={`nut-tabs-titles-item ${tabvalue === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
               key={item.paneKey}
             >
-              {item.icon || null}
+              {item.icon}
               <Text className="nut-tabs-titles-item-text">{item.title}</Text>
               <Text className="nut-tabs-titles-item-line" />
             </View>
           ))
         }}
       >
-        {list6.map((item) => (
+        {list.map((item) => (
           <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
             {item.title}
           </Tabs.TabPane>
