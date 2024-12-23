@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { useRtl } from '@/packages/configprovider/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { SafeArea } from '@/packages/safearea/safearea'
+import SafeArea from '@/packages/safearea'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
