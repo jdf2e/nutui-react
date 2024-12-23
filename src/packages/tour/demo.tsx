@@ -11,14 +11,14 @@ const TourDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       title1: '基础用法',
-      title2: '自定义样式',
+      customStyle: '自定义样式',
       title3: '设置偏移量',
       title4: '自定义内容',
       title5: '步骤引导',
     },
     'en-US': {
       title1: 'Basic Usage',
-      title2: 'Custom Style',
+      customStyle: 'Custom Style',
       title3: 'Custom Offset',
       title4: 'Custom Content',
       title5: 'Steps',
@@ -30,7 +30,7 @@ const TourDemo = () => {
       <div className="demo">
         <h2>{translated.title1}</h2>
         <Demo1 />
-        <h2>{translated.title2}</h2>
+        <h2>{translated.customStyle}</h2>
         <Demo2 />
         <h2>{translated.title3}</h2>
         <Demo3 />

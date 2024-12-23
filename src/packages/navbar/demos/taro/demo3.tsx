@@ -39,6 +39,9 @@ const Demo3 = () => {
               onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
+              style={{
+                background: 'transparent',
+              }}
             >
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>

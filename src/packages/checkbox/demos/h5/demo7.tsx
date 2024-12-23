@@ -1,6 +1,6 @@
 import React from 'react'
 import { Checkbox, Cell } from '@nutui/nutui-react'
-import { Checklist } from '@nutui/icons-react'
+import { Check } from '@nutui/icons-react'
 
 const Demo7 = () => {
   return (
@@ -8,8 +8,8 @@ const Demo7 = () => {
       <Cell className="nut-cell">
         <Checkbox
           defaultChecked={false}
-          icon={<Checklist />}
-          activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
+          icon={<Check />}
+          activeIcon={<Check className="nut-checkbox-icon-checked" />}
         >
           自定义图标
         </Checkbox>
@@ -23,16 +23,16 @@ const Demo7 = () => {
           <Checkbox
             value="1"
             defaultChecked={false}
-            icon={<Checklist />}
-            activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
+            icon={<Check />}
+            activeIcon={<Check className="nut-checkbox-icon-checked" />}
           >
             自定义图标
           </Checkbox>
           <Checkbox
             value="2"
             defaultChecked={false}
-            icon={<Checklist />}
-            activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
+            icon={<Check />}
+            activeIcon={<Check className="nut-checkbox-icon-checked" />}
           >
             自定义图标
           </Checkbox>

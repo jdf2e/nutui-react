@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { Checklist } from '@nutui/icons-react-taro'
+import { Check } from '@nutui/icons-react-taro'
 import { Cell, Checkbox } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
@@ -33,9 +33,7 @@ const Demo1 = () => {
         <Checkbox
           style={{ marginInlineEnd: '8px' }}
           shape="button"
-          activeIcon={
-            <Checklist className="nut-checkbox-button-icon-checked" />
-          }
+          activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
           className="test"
           label={
             <View

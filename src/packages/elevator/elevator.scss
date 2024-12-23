@@ -51,6 +51,8 @@
     }
 
     &-fixed {
+      display: flex;
+      align-items: center;
       width: 100%;
       position: absolute;
       top: 0;
@@ -58,13 +60,14 @@
       z-index: 1;
       padding: $elevator-list-item-padding;
       height: $elevator-list-item-code-height;
-      line-height: $elevator-list-item-code-line-height;
-      font-size: $elevator-list-item-code-font-size;
-      color: $elevator-list-fixed-color;
-      font-weight: $elevator-list-item-code-font-weight;
       background-color: $elevator-list-fixed-bg-color;
       box-sizing: border-box;
       box-shadow: $elevator-list-fixed-box-shadow;
+      &-title {
+        font-size: $elevator-list-item-code-font-size;
+        color: $elevator-list-fixed-color;
+        font-weight: $elevator-list-item-code-font-weight;
+      }
     }
   }
 

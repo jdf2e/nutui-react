@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Segmented, SegmentedItem, Cell } from '@nutui/nutui-react-taro'
-import { AfterSaleService, Apps } from '@nutui/icons-react-taro'
+import { Star } from '@nutui/icons-react-taro'
 
 const defaultOptions: SegmentedItem[] = [
   {
     label: 'Apps',
     value: 'Apps',
-    icon: <Apps color="#ffffff" />,
+    icon: <Star color="#ffffff" />,
   },
   {
     label: 'AfterSaleService',
     value: 'AfterSaleService',
-    icon: <AfterSaleService color="#ffffff" />,
+    icon: <Star color="#ffffff" />,
   },
 ]
 

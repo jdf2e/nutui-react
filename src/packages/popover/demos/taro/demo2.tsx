@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Popover, Button } from '@nutui/nutui-react-taro'
-import { Home, Cart, Location, Checklist } from '@nutui/icons-react-taro'
+import { Home, Cart, Location, Check } from '@nutui/icons-react-taro'
 
 interface List {
   key?: string
@@ -18,7 +18,7 @@ const Demo2 = () => {
       name: 'option1',
       icon: <Home color="rgba(250, 44, 25, 1)" />,
       action: {
-        icon: <Checklist color="rgba(250, 44, 25, 1)" />,
+        icon: <Check color="rgba(250, 44, 25, 1)" />,
         onClick: (e: any) => {
           console.log('onclick 1')
           e.stopPropagation()

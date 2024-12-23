@@ -1,27 +1,25 @@
+import React from 'react'
 import { User } from '@nutui/icons-react-taro'
 import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
-import React from 'react'
-import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo8 = () => {
-  const isRnAndHarmony = harmonyAndRn()
-  const renderChildren = () => {
-    return <Avatar icon={<User />} shape="square" />
-  }
-  const marginStyles = isRnAndHarmony
-    ? { marginRight: pxTransform(40) }
-    : { marginInlineEnd: '40px' }
   return (
-    <Cell>
-      <Badge style={marginStyles} value={8} color="green">
-        {renderChildren()}
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge dot fill="outline">
+        <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={marginStyles} value={76} fill="outline">
-        {renderChildren()}
+      <Badge value={8} fill="outline">
+        <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={marginStyles} value="NEW" color="blue" fill="outline">
-        {renderChildren()}
+      <Badge
+        value="内容"
+        fill="outline"
+        style={{
+          '--nutui-badge-outline-border': '1px solid blue',
+          '--nutui-badge-outline-color': 'blue',
+        }}
+      >
+        <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>
   )

@@ -4,18 +4,20 @@ import React from 'react'
 
 const Demo8 = () => {
   return (
-    <Cell>
-      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge dot fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value={76} fill="outline">
+      <Badge value={8} fill="outline">
         <Avatar icon={<User />} shape="square" />
       </Badge>
       <Badge
-        style={{ marginInlineEnd: '40px' }}
-        value="NEW"
-        color="blue"
+        value="内容"
         fill="outline"
+        style={{
+          '--nutui-badge-outline-border': '1px solid blue',
+          '--nutui-badge-outline-color': 'blue',
+        }}
       >
         <Avatar icon={<User />} shape="square" />
       </Badge>

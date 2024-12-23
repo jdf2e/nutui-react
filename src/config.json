@@ -274,6 +274,7 @@
           "tarodoc": true,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "vickyYe"
         },
         {
@@ -739,6 +740,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v14": true,
           "author": "lzz"
         },
         {

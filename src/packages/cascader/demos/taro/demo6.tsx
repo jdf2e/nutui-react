@@ -107,7 +107,7 @@ const Demo6 = () => {
           }}
           onChange={change6}
           onPathChange={onPathChange}
-        />{' '}
+        />
       </ConfigProvider>
     </>
   )

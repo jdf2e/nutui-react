@@ -562,10 +562,9 @@ plugins: [
 
 #### BackTop
 
-- `elId` 重命名为 `target`
-- 移除 `right`、`bottom`，通过 style 传入，增加支持 `left`、`top`
-- `distance` 重命名为 `threshold`
-- 移除 `isAnimation`，通过 `duration` 设置 0 实现无动画效果
+- 使用 `HoverButton` 重构 `BackTop`
+- 新增 `icon` 字段，可直接修改图标
+- 继续支持自定义节点
 
 #### Dialog
 
@@ -667,11 +666,8 @@ plugins: [
 
 #### Badge
 
-- 移除 `zIndex`，目前没有用到，也不生效，直接去掉。
-- 移除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
-- 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
-- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来.
-- 主题定制，增加包含 icon 情况下的样式变量。
+- 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
+- 移除 `徽标背景颜色`，通过css变量`--nutui-badge-background-color`实现
 
 #### CircleProgress
 
