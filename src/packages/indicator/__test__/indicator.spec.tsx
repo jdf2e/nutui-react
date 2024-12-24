@@ -43,3 +43,14 @@ test('should be shown when custom node', () => {
   )
   expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(5)
 })
+
+test('should be shown when slide', () => {
+  const { container } = render(
+    <Cell>
+      <Indicator type="slide" total={6} current={5} />
+    </Cell>
+  )
+  expect(container.querySelectorAll('.nut-indicator-line-active')).toHaveLength(
+    1
+  )
+})
