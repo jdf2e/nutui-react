@@ -8,23 +8,23 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Photograph, Failure } from '@nutui/icons-react'
-import { ERROR, SUCCESS, Utils, UPLOADING, UploadOptions } from './utils'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Button from '@/packages/button'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
-import { FileItem } from './file-item'
+import { FileItem } from './types'
+import { mergeProps } from '@/utils/merge-props'
 
 export interface UploaderProps extends BasicComponent {
-  url: string
   maxCount: string | number
   maxFileSize: number
   defaultValue?: FileItem[]
   value?: FileItem[]
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+  upload: (file: File) => Promise<FileItem>
   uploadIcon?: React.ReactNode
   deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
@@ -33,12 +33,6 @@ export interface UploaderProps extends BasicComponent {
   disabled: boolean
   autoUpload: boolean
   multiple: boolean
-  timeout: number
-  data: any
-  method: string
-  xhrState: number | string
-  headers: any
-  withCredentials: boolean
   clearInput: boolean
   preview: boolean
   deletable: boolean
@@ -46,36 +40,19 @@ export interface UploaderProps extends BasicComponent {
   className: string
   previewUrl?: string
   style: React.CSSProperties
-  onStart?: (option: UploadOptions) => void
   onDelete?: (file: FileItem, files: FileItem[]) => void
-  onSuccess?: (param: {
-    responseText: XMLHttpRequest['responseText']
-    option: UploadOptions
-    files: FileItem[]
-  }) => void
-  onProgress?: (param: {
-    e: ProgressEvent<XMLHttpRequestEventTarget>
-    option: UploadOptions
-    percentage: string | number
-  }) => void
-  onFailure?: (param: {
-    responseText: XMLHttpRequest['responseText']
-    option: UploadOptions
-    files: FileItem[]
-  }) => void
-  onUpdate?: (files: FileItem[]) => void
   onOversize?: (files: File[]) => void
+  onOverCount?: (count: number) => void
   onChange?: (files: FileItem[]) => void
-  beforeUpload?: (files: File[]) => Promise<File[] | boolean>
-  beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
+  beforeUpload?: (files: File[]) => Promise<File[]>
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
+  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  url: '',
-  maxCount: 1,
+  maxCount: Number.MAX_VALUE,
   previewType: 'picture',
   fit: 'cover',
   name: 'file',
@@ -84,12 +61,6 @@ const defaultProps = {
   autoUpload: true,
   multiple: false,
   maxFileSize: Number.MAX_VALUE,
-  data: {},
-  headers: {},
-  method: 'post',
-  xhrState: 200,
-  timeout: 1000 * 30,
-  withCredentials: false,
   clearInput: true,
   preview: true,
   deletable: true,
@@ -120,14 +91,7 @@ const InternalUploader: ForwardRefRenderFunction<
     fit,
     disabled,
     multiple,
-    url,
     previewUrl,
-    headers,
-    timeout,
-    method,
-    xhrState,
-    withCredentials,
-    data,
     preview,
     deletable,
     maxCount,
@@ -136,20 +100,17 @@ const InternalUploader: ForwardRefRenderFunction<
     className,
     autoUpload,
     clearInput,
-    onStart,
+    upload,
     onDelete,
     onChange,
     onFileItemClick,
-    onProgress,
-    onSuccess,
-    onUpdate,
-    onFailure,
     onOversize,
+    onOverCount,
     beforeUpload,
-    beforeXhrUpload,
     beforeDelete,
+    onUploadQueueChange,
     ...restProps
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
   const [fileList, setFileList] = usePropsValue({
     value,
     defaultValue,
@@ -158,17 +119,18 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<Promise<Utils>[]>([])
+  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
 
   const classes = classNames(className, 'nut-uploader')
   useEffect(() => {
     fileListRef.current = fileList
   }, [fileList])
+  useEffect(() => {
+    onUploadQueueChange?.(uploadQueue)
+  }, [uploadQueue])
   useImperativeHandle(ref, () => ({
-    submit: () => {
-      Promise.all(uploadQueue).then((res) => {
-        res.forEach((i) => i.upload())
-      })
+    submit: async () => {
+      await uploadAction(uploadQueue)
     },
     clear: () => {
       clearUploadQueue()
@@ -184,137 +146,7 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const clearInputValue = (el: HTMLInputElement) => {
-    el.value = ''
-  }
-
-  const executeUpload = (fileItem: FileItem, index: number) => {
-    const uploadOption = new UploadOptions()
-    uploadOption.url = url
-    for (const [key, value] of Object.entries<string | Blob>(data)) {
-      fileItem.formData?.append(key, value)
-    }
-    uploadOption.formData = fileItem.formData
-    uploadOption.timeout = timeout * 1
-    uploadOption.method = method
-    uploadOption.xhrState = xhrState
-    uploadOption.headers = headers
-    uploadOption.withCredentials = withCredentials
-    uploadOption.beforeXhrUpload = beforeXhrUpload
-    try {
-      uploadOption.sourceFile = fileItem.formData?.get(name)
-    } catch (error) {
-      console.warn(error)
-    }
-    uploadOption.onStart = (option: UploadOptions) => {
-      clearUploadQueue(index)
-      setFileList(
-        fileListRef.current.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'ready'
-            item.message = locale.uploader.readyUpload
-          }
-          return item
-        })
-      )
-      onStart?.(option)
-    }
-    uploadOption.onProgress = (
-      e: ProgressEvent<XMLHttpRequestEventTarget>,
-      option: UploadOptions
-    ) => {
-      setFileList(
-        fileListRef.current.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = UPLOADING
-            item.message = locale.uploader.uploading
-            item.percentage = ((e.loaded / e.total) * 100).toFixed(0)
-            onProgress?.({ e, option, percentage: item.percentage })
-          }
-          return item
-        })
-      )
-    }
-    uploadOption.onSuccess = (
-      responseText: XMLHttpRequest['responseText'],
-      option: UploadOptions
-    ) => {
-      const list = fileListRef.current.map((item) => {
-        if (item.uid === fileItem.uid) {
-          item.status = SUCCESS
-          item.message = locale.uploader.success
-          item.responseText = responseText
-        }
-        return item
-      })
-      setFileList(list)
-      onUpdate?.(list)
-      onSuccess?.({
-        responseText,
-        option,
-        files: list,
-      })
-    }
-    uploadOption.onFailure = (
-      responseText: XMLHttpRequest['responseText'],
-      option: UploadOptions
-    ) => {
-      const list = fileListRef.current.map((item) => {
-        if (item.uid === fileItem.uid) {
-          item.status = ERROR
-          item.message = locale.uploader.error
-          item.responseText = responseText
-        }
-        return item
-      })
-      setFileList(list)
-      onFailure?.({
-        responseText,
-        option,
-        files: list,
-      })
-    }
-    const task = new Utils(uploadOption)
-    if (autoUpload) {
-      task.upload()
-    } else {
-      uploadQueue.push(
-        new Promise((resolve, reject) => {
-          resolve(task)
-        })
-      )
-      setUploadQueue(uploadQueue)
-    }
-  }
-
-  const readFile = (files: File[]) => {
-    files.forEach((file: File, index: number) => {
-      const formData = new FormData()
-      formData.append(name, file)
-      const fileItem = new FileItem()
-      fileItem.name = file.name
-      fileItem.status = 'ready'
-      fileItem.type = file.type
-      fileItem.formData = formData
-      fileItem.uid = file.lastModified + fileItem.uid
-      fileItem.message = autoUpload
-        ? locale.uploader.readyUpload
-        : locale.uploader.waitingUpload
-      executeUpload(fileItem, index)
-
-      if (preview && file.type?.includes('image')) {
-        const reader = new FileReader()
-        reader.onload = (event: ProgressEvent<FileReader>) => {
-          fileItem.url = (event.target as FileReader).result as string
-          setFileList([...fileList, fileItem])
-        }
-        reader.readAsDataURL(file)
-      } else {
-        setFileList([...fileList, fileItem])
-      }
-    })
-  }
-
+  const idCountRef = useRef(0)
   const filterFiles = (files: File[]) => {
     const maximum = (maxCount as number) * 1
     const oversizes = new Array<File>()
@@ -328,6 +160,7 @@ const InternalUploader: ForwardRefRenderFunction<
     oversizes.length && onOversize?.(files)
 
     if (filterFile.length > maximum) {
+      onOverCount?.(filterFile.length)
       filterFile.splice(maximum, filterFile.length - maximum)
     }
     if (fileList.length !== 0) {
@@ -339,7 +172,9 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const deleted = (file: FileItem, index: number) => {
-    const deletedFileList = fileList.filter((file, idx) => idx !== index)
+    const deletedFileList = fileListRef.current.filter(
+      (file, idx) => idx !== index
+    )
     onDelete?.(file, deletedFileList)
     setFileList(deletedFileList)
   }
@@ -352,43 +187,134 @@ const InternalUploader: ForwardRefRenderFunction<
     })
   }
 
-  const fileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const fileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (disabled) return
-
     const $el = event.target
     const { files } = $el
-
+    let _files: File[] = []
+    const filesArr = new Array<File>().slice.call(files)
     if (beforeUpload) {
-      beforeUpload(new Array<File>().slice.call(files)).then(
-        (f: Array<File> | boolean) => {
-          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
-          if (!_files.length) $el.value = ''
-          readFile(_files)
-        }
-      )
-    } else {
-      const _files = filterFiles(new Array<File>().slice.call(files))
-      readFile(_files)
+      _files = await beforeUpload(filesArr)
+      if (!_files.length) $el.value = ''
     }
+    _files = filterFiles(filesArr)
 
+    const tasks = _files.map((file) => {
+      const info: any = {
+        uid: idCountRef.current++,
+        status: autoUpload ? 'uploading' : 'ready',
+        file,
+        message: autoUpload
+          ? locale.uploader.uploading
+          : locale.uploader.waitingUpload,
+        name: file.name,
+        type: file.type,
+      }
+      if (preview && file.type?.includes('image')) {
+        const reader = new FileReader()
+        reader.onload = (event: ProgressEvent<FileReader>) => {
+          fileListRef.current = [
+            ...fileListRef.current,
+            {
+              ...info,
+              url: (event.target as FileReader).result as string,
+            },
+          ]
+          setFileList(fileListRef.current)
+        }
+        reader.readAsDataURL(file)
+      }
+      return info
+    })
+    if (!autoUpload) {
+      setUploadQueue(tasks)
+    } else {
+      await uploadAction(tasks)
+    }
     if (clearInput) {
-      clearInputValue($el)
+      $el.value = ''
     }
   }
-
+  const uploadAction = async (tasks: FileItem[]) => {
+    const taskIds = tasks.map((task) => task.uid)
+    setFileList(
+      fileList.map((file: FileItem) => {
+        if (taskIds.includes(file.uid)) {
+          return {
+            ...file,
+            status: 'uploading',
+            message: locale.uploader.uploading,
+          }
+        }
+        return file
+      })
+    )
+    await Promise.all(
+      tasks.map(async (currentTask, index) => {
+        try {
+          const result = await upload(currentTask.file as File)
+          const list = fileListRef.current.map((item) => {
+            if (item.uid === currentTask.uid) {
+              item.status = 'success'
+              item.message = locale.uploader.success
+              item.url = result.url
+            }
+            return item
+          })
+          setFileList(list)
+        } catch (e) {
+          const list = fileListRef.current.map((item) => {
+            if (item.uid === currentTask.uid) {
+              item.status = 'error'
+              item.message = locale.uploader.error
+            }
+            return item
+          })
+          setFileList(list)
+          throw e
+        }
+      })
+    ).catch((errs) => console.error(errs))
+  }
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
+  const renderImageUploader = () => {
+    const shouldShow =
+      Number(maxCount) > fileList.length && previewType === 'picture'
+    return (
+      shouldShow && (
+        <div
+          className={classNames('nut-uploader-upload', previewType, {
+            'nut-uploader-upload-disabled': disabled,
+          })}
+        >
+          <div className="nut-uploader-icon">
+            {uploadIcon}
+            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+          </div>
 
-  return (
-    <div className={classes} {...restProps}>
-      {(children || previewType === 'list') && (
+          <input
+            className="nut-uploader-input"
+            type="file"
+            capture={capture}
+            name={name}
+            accept={accept}
+            disabled={disabled}
+            multiple={multiple}
+            onChange={fileChange}
+          />
+        </div>
+      )
+    )
+  }
+  const renderListUploader = () => {
+    return (
+      previewType === 'list' && (
         <div className="nut-uploader-slot">
-          {children || (
-            <Button size="small" type="primary">
-              {locale.uploader.list}
-            </Button>
-          )}
+          <Button size="small" type="primary">
+            {locale.uploader.list}
+          </Button>
           {Number(maxCount) > fileList.length && (
             <input
               className="nut-uploader-input"
@@ -402,8 +328,12 @@ const InternalUploader: ForwardRefRenderFunction<
             />
           )}
         </div>
-      )}
-
+      )
+    )
+  }
+  return (
+    <div className={classes} {...restProps}>
+      {renderListUploader()}
       <Preview
         {...{
           fileList,
@@ -416,36 +346,10 @@ const InternalUploader: ForwardRefRenderFunction<
           deleteIcon,
         }}
       />
-
-      {Number(maxCount) > fileList.length &&
-        previewType === 'picture' &&
-        !children && (
-          <div
-            className={classNames('nut-uploader-upload', previewType, {
-              'nut-uploader-upload-disabled': disabled,
-            })}
-          >
-            <div className="nut-uploader-icon">
-              {uploadIcon}
-              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-            </div>
-
-            <input
-              className="nut-uploader-input"
-              type="file"
-              capture={capture}
-              name={name}
-              accept={accept}
-              disabled={disabled}
-              multiple={multiple}
-              onChange={fileChange}
-            />
-          </div>
-        )}
+      {renderImageUploader()}
     </div>
   )
 }
 
 export const Uploader = React.forwardRef(InternalUploader)
-
 Uploader.displayName = 'NutUploader'

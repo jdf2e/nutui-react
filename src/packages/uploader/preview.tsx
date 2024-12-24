@@ -1,10 +1,8 @@
 import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
-import Progress from '@/packages/progress'
-
 import Image from '@/packages/image'
-import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/utils'
+import { FileItem } from '../uploader'
+import { Progress } from '../progress/progress'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,
@@ -17,7 +15,7 @@ export const Preview: React.FunctionComponent<any> = ({
   children,
 }) => {
   const renderIcon = (item: FileItem) => {
-    if (item.status === ERROR) {
+    if (item.status === 'error') {
       return item.failIcon || <Failure color="#fff" />
     }
     return (
@@ -27,12 +25,18 @@ export const Preview: React.FunctionComponent<any> = ({
   return (
     <>
       {fileList.length !== 0 &&
-        fileList.map((item: any, index: number) => {
+        fileList.map((item: FileItem, index: number) => {
+          const {
+            status = 'success',
+            uid = index,
+            url,
+            message = '',
+            name = '',
+            type = 'image',
+          } = item
+
           return (
-            <div
-              className={`nut-uploader-preview ${previewType}`}
-              key={item.uid}
-            >
+            <div className={`nut-uploader-preview ${previewType}`} key={uid}>
               {previewType === 'picture' && !children && deletable && (
                 <div
                   onClick={() => onDeleteItem(item, index)}
@@ -43,30 +47,30 @@ export const Preview: React.FunctionComponent<any> = ({
               )}
               {previewType === 'picture' && !children && (
                 <div className="nut-uploader-preview-img">
-                  {item.status === 'ready' ? (
+                  {status === 'ready' ? (
                     <div className="nut-uploader-preview-progress">
                       <div className="nut-uploader-preview-progress-msg">
-                        {item.message}
+                        {message}
                       </div>
                     </div>
                   ) : (
-                    item.status !== 'success' && (
+                    status !== 'success' && (
                       <div className="nut-uploader-preview-progress">
                         {renderIcon(item)}
                         <div className="nut-uploader-preview-progress-msg">
-                          {item.message}
+                          {message}
                         </div>
                       </div>
                     )
                   )}
 
-                  {item.type?.includes('image') ? (
+                  {type.includes('image') ? (
                     <>
-                      {item.url && (
+                      {url && (
                         <Image
                           className="nut-uploader-preview-img-c"
                           style={{ objectFit: 'fill' }}
-                          src={item.url}
+                          src={url}
                           alt=""
                           onClick={() => handleItemClick(item, index)}
                         />
@@ -88,14 +92,14 @@ export const Preview: React.FunctionComponent<any> = ({
                             className="nut-uploader-preview-img-file-name"
                           >
                             <LinkIcon color="#808080" />
-                            <span>&nbsp;{item.name}</span>
+                            <span>&nbsp;{name}</span>
                           </div>
                         </div>
                       )}
                     </>
                   )}
-                  {item.status === 'success' ? (
-                    <div className="tips">{item.name}</div>
+                  {status === 'success' && name ? (
+                    <div className="tips">{name}</div>
                   ) : null}
                 </div>
               )}
@@ -103,11 +107,11 @@ export const Preview: React.FunctionComponent<any> = ({
               {previewType === 'list' && (
                 <div className="nut-uploader-preview-list">
                   <div
-                    className={`nut-uploader-preview-img-file-name ${item.status}`}
+                    className={`nut-uploader-preview-img-file-name ${status}`}
                     onClick={() => handleItemClick(item, index)}
                   >
                     <LinkIcon />
-                    <span>&nbsp;{item.name}</span>
+                    <span>&nbsp;{name}</span>
                   </div>
                   {deletable && (
                     <Del
@@ -117,7 +121,7 @@ export const Preview: React.FunctionComponent<any> = ({
                     />
                   )}
 
-                  {item.status === 'uploading' && (
+                  {item.status === 'uploading' && item.percentage && (
                     <Progress
                       percent={item.percentage}
                       color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
