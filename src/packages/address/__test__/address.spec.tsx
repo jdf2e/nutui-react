@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Star } from '@nutui/icons-react'
 import { Address } from '../address'
 
 const existList = [
@@ -122,6 +123,41 @@ test('Address: show custom', async () => {
     <Address visible options={optionsDemo1} custom title="选择地址" />
   )
   expect(container.innerHTML).toMatchSnapshot()
+})
+
+test('Address: show custom icon', async () => {
+  const { container } = render(
+    <Address
+      visible
+      options={optionsDemo1}
+      custom
+      backIcon={<Star />}
+      title="选择地址"
+    />
+  )
+  expect(container.innerHTML).toMatchSnapshot()
+})
+
+test('Address: show custom icon', async () => {
+  const onExistSelect = vi.fn()
+  const onSwitch = vi.fn()
+  const { container } = render(
+    <Address
+      visible
+      type="exist"
+      existList={existList}
+      options={optionsDemo1}
+      custom="选择其他地址"
+      onExistSelect={onExistSelect}
+      onSwitch={onSwitch}
+    />
+  )
+  expect(container.innerHTML).toMatchSnapshot()
+  const btn = container.querySelector('.nut-address-footer-btn') as Element
+  fireEvent.click(btn)
+  const leftIcon = container.querySelector('.nut-address-left-icon') as Element
+  expect(leftIcon).toBeTruthy()
+  fireEvent.click(leftIcon)
 })
 
 test('Address: options disabled', async () => {
