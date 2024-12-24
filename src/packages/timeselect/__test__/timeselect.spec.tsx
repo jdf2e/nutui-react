@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import ReactTestUtils from 'react-dom/test-utils'
 import { TimeSelect } from '../timeselect'
@@ -29,14 +29,13 @@ test('timeselect props test', async () => {
     return <TimeSelect visible options={options} />
   }
   const { container } = render(<App />)
-  await waitFor(() => {
-    expect(container.outerHTML).toMatchSnapshot()
-  })
+  expect(container.outerHTML).toMatchSnapshot()
 })
 
 test('timeselect event test', async () => {
   const handleDateChange = vi.fn()
   const handleTimeChange = vi.fn()
+  const handleSelect = vi.fn()
   const App = () => {
     return (
       <TimeSelect
@@ -44,6 +43,7 @@ test('timeselect event test', async () => {
         options={options}
         onDateChange={handleDateChange}
         onTimeChange={handleTimeChange}
+        onSelect={handleSelect}
       />
     )
   }
@@ -61,5 +61,12 @@ test('timeselect event test', async () => {
         children: [options[0].children[0]],
       },
     ])
+
+    const close = container.querySelector(
+      '.nut-popup-title-right-top-right'
+    ) as Element
+    fireEvent.click(close)
+    const overlay = container.querySelector('.nut-overlay') as HTMLElement
+    expect(overlay.style.display).toEqual('')
   })
 })
