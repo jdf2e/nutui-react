@@ -69,6 +69,28 @@ test('pop from right', () => {
   expect(pop).toBeTruthy()
 })
 
+test('pop title', () => {
+  const { container } = render(<Popup title="标题" visible position="bottom" />)
+  const title = container.querySelector('.nut-popup-title-title') as HTMLElement
+  expect(title).toHaveTextContent('标题')
+})
+
+test('pop left', () => {
+  const { container } = render(<Popup left="返回" visible position="bottom" />)
+  const title = container.querySelector('.nut-popup-title-left') as HTMLElement
+  expect(title).toHaveTextContent('返回')
+})
+
+test('pop description', () => {
+  const { container } = render(
+    <Popup description="副标题" visible position="bottom" />
+  )
+  const title = container.querySelector(
+    '.nut-popup-title-description'
+  ) as HTMLElement
+  expect(title).toHaveTextContent('副标题')
+})
+
 test('should render close icon when using closeable prop', () => {
   const { container } = render(<Popup visible closeable />)
   const closeIcon = container.querySelector(
@@ -138,4 +160,14 @@ test('event click-overlay test', async () => {
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(overlay)
   expect(onOverlayClick).toBeCalled()
+})
+
+test('pop destroyOnClose', () => {
+  const onClose = vi.fn()
+  const { container } = render(
+    <Popup visible destroyOnClose onClose={onClose} />
+  )
+  const overlay = container.querySelector('.nut-overlay') as Element
+  fireEvent.click(overlay)
+  expect(onClose).toBeCalled()
 })

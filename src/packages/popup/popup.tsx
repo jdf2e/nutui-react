@@ -218,7 +218,9 @@ export const Popup: FunctionComponent<
                     <div className={`${classPrefix}-title-title`}>{title}</div>
                   )}
                   {description && (
-                    <div className={`${classPrefix}-title-description`}>
+                    <div
+                      className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
+                    >
                       {description}
                     </div>
                   )}

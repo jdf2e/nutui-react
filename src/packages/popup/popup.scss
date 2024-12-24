@@ -23,6 +23,7 @@
       justify-content: center;
       align-items: center;
     }
+
     &-title {
       color: $color-title;
       font-weight: $font-weight-bold;
@@ -34,7 +35,9 @@
       color: $color-text;
       font-size: $popup-description-font-size;
       font-weight: $font-weight;
-      margin-top: $popup-description-spacing;
+      &-gap {
+        margin-top: $popup-description-spacing;
+      }
     }
 
     &-left {
