@@ -9,27 +9,27 @@
     position: absolute;
     width: 0;
     height: 0;
-    border: 8px solid transparent;
+    border: 4px solid transparent;
 
     &-top {
       bottom: 0;
       border-top-color: $popover-border-color;
       border-bottom-width: 0;
-      margin-bottom: -8px;
+      margin-bottom: -3px;
     }
 
     &-bottom {
       top: 0px;
       border-bottom-color: $popover-border-color;
       border-top-width: 0;
-      margin-top: -8px;
+      margin-top: -3px;
     }
 
     &-left {
       right: 0px;
       border-left-color: $popover-border-color;
       border-right-width: 0;
-      margin-right: -8px;
+      margin-right: -3px;
 
       &.nut-popover-arrow-left {
         top: 50%;
@@ -51,7 +51,7 @@
       left: 0px;
       border-right-color: $popover-border-color;
       border-left-width: 0;
-      margin-left: -8px;
+      margin-left: -3px;
 
       &.nut-popover-arrow-right {
         top: 50%;
@@ -103,14 +103,6 @@
         border-bottom: none;
       }
 
-      &:hover:nth-of-type(2) {
-        border-radius: 8px 8px 0px 0px;
-      }
-
-      &:hover:last-of-type {
-        border-radius: 0px 0px 8px 8px;
-      }
-
       &-icon {
         display: flex;
         justify-content: center;
@@ -128,7 +120,7 @@
       &-name {
         width: calc(100% - 34px);
         word-break: keep-all;
-        margin: 0 6px 0 4px;
+        margin: 0 8px 0 4px;
         flex: 1;
       }
 
@@ -240,9 +232,8 @@
     color: $popover-content-background-color !important;
     .nut-popover-menu-item {
       border-bottom-color: $popover-content-background-color;
-      &:hover {
-        color: $popover-content-background-color;
-        background-color: $popover-text-color;
+      &-action-icon {
+        color: rgba(255, 255, 255, 0.8);
       }
     }
   }

@@ -1587,14 +1587,14 @@ $badge-outline-border: var(
 );
 
 //popover（✅）
-$popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
+$popover-border-radius: var(--nutui-popover-border-radius, $radius-xs) !default;
 $popover-border-color: var(--nutui-popover-border-color, #ffffff) !default;
 $popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   #ffffff
 ) !default;
-$popover-text-color: var(--nutui-popover-text-color, #1a1a1a) !default;
+$popover-text-color: var(--nutui-popover-text-color, $color-mask) !default;
 $popover-hover-background-color: var(
   --nutui-popover-hover-background-color,
   #fff

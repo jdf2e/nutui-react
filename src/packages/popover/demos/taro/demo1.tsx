@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Popover, Button } from '@nutui/nutui-react-taro'
+import { Popover, Button, Space } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [basic, setBasic] = useState(false)
@@ -19,7 +19,7 @@ const Demo1 = () => {
     },
   ]
   return (
-    <>
+    <Space>
       <Popover
         visible={basic}
         list={itemList}
@@ -54,7 +54,7 @@ const Demo1 = () => {
           暗黑风格
         </Button>
       </Popover>
-    </>
+    </Space>
   )
 }
 
