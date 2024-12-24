@@ -8,6 +8,12 @@ import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
 import { CellProps } from './types'
 
+interface CellTaroProps extends CellProps {
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => void
+}
+
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
@@ -20,12 +26,12 @@ const defaultProps = {
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {},
-} as CellProps
+} as CellTaroProps
 
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<CellTaroProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {
