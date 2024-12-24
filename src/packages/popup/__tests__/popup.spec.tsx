@@ -106,7 +106,7 @@ test('should have "nut-popup-round" class when setting the round prop', () => {
 })
 
 test('should allow to using portal prop', () => {
-  render(<Popup visible />)
+  render(<Popup visible portal={document.body} />)
   expect(document.body.querySelector('.nut-popup')).toBeTruthy()
 })
 
