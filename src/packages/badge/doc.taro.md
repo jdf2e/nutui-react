@@ -83,9 +83,9 @@ import { Badge } from '@nutui/nutui-react-taro'
 | value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
 | max | value 为数值时，最大值 | `number` | `99` |
 | dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
-| top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
-| right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
-| color | 徽标背景颜色 | `string` | `-` |
+| size | dot 尺寸，当 dot 等于 `true` 时生效 | `small` \| `normal` \| `large` | `large` |
+| top | 上下偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
+| right | 左右偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主题定制
@@ -97,16 +97,20 @@ import { Badge } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-badge-height | badge 的高度 | `14px` |
-| \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
-| \--nutui-badge-color | badge 内容色值 | `#fff` |
-| \--nutui-badge-font-size | badge 内容字号 | `$font-size-s` |
-| \--nutui-badge-border | badge 边框 | `0px solid $color-primary-text` |
+| \--nutui-badge-background-color | badge 背景色 | `$color-primary` |
+| \--nutui-badge-color | badge 内容色值 | `$color-primary-text` |
+| \--nutui-badge-font-size | badge 内容字号 | `$font-size-xxs` |
+| \--nutui-badge-border | badge 边框 | `1px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
-| \--nutui-badge-min-width | badge 最小宽度 | `5px` |
-| \--nutui-badge-padding | badge 的padding值 | `0 5px` |
+| \--nutui-badge-min-width | badge 最小宽度 | `6px` |
+| \--nutui-badge-padding | badge 的padding值 | `1px 4px` |
 | \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
-| \--nutui-badge-icon-size | badge 为自定义icon时 的 size | `12px` |
-| \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
+| \--nutui-badge-icon-size | badge 为自定义icon时 的 size | `10px` |
+| \--nutui-badge-content-transform | badge 内容位置 | `translate(50%, -50%)` |
 | \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
-| \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |
-| \--nutui-badge-dot-border | badge 为圆点时的边框 | `0px solid $color-primary-text` |
+| \--nutui-badge-dot-width | badge 为圆点时，size 等于 normal 的宽高 | `6px` |
+| \--nutui-badge-dot-small-width | badge 为圆点时，size 等于 small 的宽高 | `4px` |
+| \--nutui-badge-dot-large-width | badge 为圆点时，size 等于 large 的宽高 | `8px` |
+| \--nutui-badge-dot-border | badge 为圆点时的边框 | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-color | badge 为 outline 文字色值 | `$color-primary` |
+| \--nutui-badge-outline-border | badge 为 outline 填充模式时的边框 | `1px solid $color-primary-text` |

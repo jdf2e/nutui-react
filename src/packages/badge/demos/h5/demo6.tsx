@@ -4,15 +4,15 @@ import React from 'react'
 
 const Demo6 = () => {
   return (
-    <Cell>
-      <Badge style={{ marginInlineEnd: '40px' }} value={8} top="5" right="5">
-        <Avatar icon={<User />} shape="square" />
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge dot top={4} right={4}>
+        <Avatar icon={<User />} />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value={76} top="10" right="10">
-        <Avatar icon={<User />} shape="square" />
+      <Badge value={8} top={7} right={7}>
+        <Avatar icon={<User />} />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value="NEW">
-        <Avatar icon={<User />} shape="square" />
+      <Badge value="内容" top={7} right={10}>
+        <Avatar icon={<User />} />
       </Badge>
     </Cell>
   )

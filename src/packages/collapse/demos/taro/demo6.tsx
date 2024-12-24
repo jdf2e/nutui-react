@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 import { Collapse } from '@nutui/nutui-react-taro'
-import { ArrowDown, Checked } from '@nutui/icons-react-taro'
+import { ArrowDown, Check } from '@nutui/icons-react-taro'
 
 const Demo6 = () => {
   return (
@@ -14,7 +14,7 @@ const Demo6 = () => {
               alignItems: 'center',
             }}
           >
-            <Checked />
+            <Check />
             标题1
           </View>
         }
@@ -30,10 +30,11 @@ const Demo6 = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
+              color: '#999',
             }}
           >
-            标题2
-            <Checked color="red" />
+            描述2
+            <Check color="#999" size={12} />
           </View>
         }
       >

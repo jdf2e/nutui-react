@@ -2394,6 +2394,10 @@ $countup-border-radius: var(--nutui-countup-border-radius, 4px) !default;
 $countup-lr-margin: var(--nutui-countup-lr-margin, 0) !default;
 $countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
 $countup-color: var(--nutui-countup-color, $color-title) !default;
+$countup-separator-color: var(
+  --nutui-countup-separator-color,
+  $color-title
+) !default;
 
 // layout（✅）
 $row-content-color: var(--nutui-row-content-color, #fff) !default;

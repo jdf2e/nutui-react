@@ -39,9 +39,12 @@
   &-icon {
     &-checked {
       color: $color-primary;
+      box-shadow: 0px 2px 4px 0px #ff0f2333;
+      border-radius: 50%;
 
       &.nut-radio-icon-disabled {
         color: $color-primary-disabled-special;
+        box-shadow: none;
       }
     }
 

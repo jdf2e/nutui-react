@@ -31,7 +31,6 @@ const App = () => {
         >
           <Text style={{ color: '#FFFFFF' }}>这个图层层级为 1000</Text>
         </View>
-        {/* <SafeArea position="bottom" /> */}
       </View>
     </View>
   )
