@@ -49,7 +49,7 @@ const darkTheme = {
   nutuiGray7: '#e6e6e6',
   nutuiBlack1: 'rgba(255, 255, 255, 0)',
   nutuiBlack2: 'rgba(20, 20, 20, 0.2)',
-  nutuiBlack3: 'rgba(20, 20, 20, 0.06)',
+  nutuiBlack3: 'rgba(255, 255, 255, 0.06)',
   nutuiBlack4: 'rgba(20, 20, 20, 0.1)',
   nutuiBlack5: 'rgba(20, 20, 20, 0.2)',
   nutuiBlack6: 'rgba(20, 20, 20, 0.3)',
