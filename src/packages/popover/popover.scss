@@ -16,15 +16,16 @@
     }
 
     &-top {
-      bottom: -3.5px;
+      bottom: -4px;
     }
 
     &-bottom {
-      top: -3.5px;
+      top: -4px;
     }
 
     &-left {
-      right: -3.6px;
+      right: -6px;
+      transform-origin: center top;
 
       &.nut-popover-arrow-left {
         top: 50%;
@@ -33,34 +34,34 @@
 
       &.nut-popover-arrow-left-start {
         top: 16px;
-        right: -5.6px;
+        right: -8px;
         transform: rotate(90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-left-end {
         bottom: 16px;
-        right: -5.6px;
+        right: -8px;
         transform: rotate(90deg) translateY(0%);
       }
     }
 
     &-right {
-      left: -3px;
-
+      transform-origin: center top;
       &.nut-popover-arrow-right {
         top: 50%;
+        left: -6px;
         transform: rotate(-90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-right-start {
         top: 16px;
-        left: -6px;
+        left: -8px;
         transform: rotate(-90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-right-end {
         bottom: 16px;
-        left: -6px;
+        left: -8px;
         transform: rotate(-90deg) translateY(0%);
       }
     }
@@ -68,7 +69,7 @@
 
   .nut-popover-content {
     position: absolute;
-    background-color: $popover-content-background-color;
+    background: $popover-content-background-color;
     border-radius: $popover-border-radius;
     font-size: $popover-font-size;
     color: $popover-text-color;
@@ -139,6 +140,7 @@
     &-top {
       .nut-popover-arrow-top {
         left: 50%;
+        transform-origin: center left;
         transform: rotate(180deg) translateX(-50%);
       }
     }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Popover, Button, Space } from '@nutui/nutui-react-taro'
+import { Tips, Close } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   const [basic, setBasic] = useState(false)
@@ -8,14 +9,14 @@ const Demo1 = () => {
     {
       key: 'key1',
       name: 'option1',
-    },
-    {
-      key: 'key2',
-      name: 'option2',
-    },
-    {
-      key: 'key3',
-      name: 'option3',
+      icon: <Tips />,
+      action: {
+        icon: <Close />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
   ]
   return (
