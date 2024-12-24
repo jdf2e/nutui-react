@@ -117,6 +117,13 @@ test('Address: show custom', async () => {
   expect(container.innerHTML).toMatchSnapshot()
 })
 
+test('Address: show custom', async () => {
+  const { container } = render(
+    <Address visible options={optionsDemo1} custom title="选择地址" />
+  )
+  expect(container.innerHTML).toMatchSnapshot()
+})
+
 test('Address: options disabled', async () => {
   const { container } = render(<Address visible options={optionsDemo1} />)
   const items = container.querySelectorAll('.nut-cascader-item')
