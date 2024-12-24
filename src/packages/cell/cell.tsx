@@ -1,20 +1,10 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import CellGroup from '@/packages/cellgroup'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider'
-
-export interface CellProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  extra: ReactNode
-  radius: string | number
-  align: 'flex-start' | 'center' | 'flex-end'
-  clickable: boolean
-  isLast: boolean
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-}
+import { CellProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,

@@ -1,24 +1,12 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
-
-export interface CellProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  extra: ReactNode
-  radius: string | number
-  align: 'flex-start' | 'center' | 'flex-end'
-  clickable: boolean
-  isLast: boolean
-  onClick: (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
-  ) => void
-}
+import { CellProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,

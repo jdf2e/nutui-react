@@ -1,30 +1,24 @@
 import React, { FunctionComponent } from 'react'
 import { Text } from '@tarojs/components'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import { PriceProps } from './types'
 
-export interface PriceProps extends BasicComponent {
-  price: number | string
-  symbol: string
-  digits: number
-  thousands: boolean
-  position: string
-  size: string
-  line: boolean
-}
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'primary',
   price: 0,
   symbol: '&yen;',
   digits: 2,
   thousands: false,
   position: 'before',
-  size: 'large',
+  size: 'normal',
   line: false,
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const {
+    type,
     price,
     symbol,
     digits,
@@ -112,9 +106,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   return (
     <Text
-      className={`${classPrefix} ${
-        line ? `${classPrefix}-line` : ''
-      } ${className}`}
+      className={`${classPrefix} ${classPrefix}-${type} ${className}`}
       style={style}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
