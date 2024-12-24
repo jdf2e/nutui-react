@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { Text } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { PriceProps } from './types'
+import { harmony } from '@/utils/platform-taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -55,12 +56,11 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     if (Number(num) === 0) {
       num = 0
     }
+    num = num.toString()
+
     if (checkPoint(num)) {
-      num = Number(num).toFixed(digits)
       num =
         typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
-    } else {
-      num = num.toString()
     }
     if (thousands) {
       return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
@@ -103,38 +103,59 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       </Text>
     )
   }
-
-  return (
-    <Text
-      className={`${classPrefix} ${classPrefix}-${type} ${className}`}
-      style={style}
-    >
-      {symbol && position === 'before' ? renderSymbol() : null}
-      <Text
-        className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
-          line ? `${classPrefix}-line` : ''
-        }`}
-      >
-        {formatThousands(price)}
-      </Text>
-      {digits !== 0 ? (
+  const renderInner = () => {
+    return (
+      <>
+        {symbol && position === 'before' ? renderSymbol() : null}
         <Text
-          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+          className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
             line ? `${classPrefix}-line` : ''
           }`}
         >
-          .
+          {formatThousands(price)}
         </Text>
-      ) : null}
-      <Text
-        className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-          line ? `${classPrefix}-line` : ''
-        }`}
-      >
-        {formatDecimal(price)}
-      </Text>
-      {symbol && position === 'after' ? renderSymbol() : null}
-    </Text>
+        {digits ? (
+          <>
+            <Text
+              className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+                line ? `${classPrefix}-line` : ''
+              }`}
+            >
+              .
+            </Text>
+            <Text
+              className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+                line ? `${classPrefix}-line` : ''
+              }`}
+            >
+              {formatDecimal(price)}
+            </Text>
+          </>
+        ) : null}
+
+        {symbol && position === 'after' ? renderSymbol() : null}
+      </>
+    )
+  }
+
+  return (
+    <>
+      {harmony() ? (
+        <Text
+          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
+          style={style}
+        >
+          {renderInner()}
+        </Text>
+      ) : (
+        <View
+          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
+          style={style}
+        >
+          {renderInner()}
+        </View>
+      )}
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 import { BasicComponent } from '@/utils/typings'
 
-export type PriceSize = 'xlarge' | 'large' | 'normal' | 'small' | 'mini'
-export type PriceType = 'default' | 'primary'
+export type PriceSize = 'xlarge' | 'large' | 'normal' | 'small'
+export type PriceType = 'primary' | 'gray' | 'darkgray'
 export interface PriceProps extends BasicComponent {
   type: PriceType
   price: number | string

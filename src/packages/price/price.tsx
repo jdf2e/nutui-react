@@ -46,11 +46,9 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       num = 0
     }
     if (checkPoint(num)) {
-      num = Number(num).toFixed(digits)
+      num = num.toString()
       num =
         typeof num.split('.') === 'string' ? num.split('.') : num.split('.')[0]
-    } else {
-      num = num.toString()
     }
     if (thousands) {
       return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
@@ -107,22 +105,25 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       >
         {formatThousands(price)}
       </div>
-      {digits !== 0 ? (
-        <div
-          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-            line ? `${classPrefix}-line` : ''
-          }`}
-        >
-          .
-        </div>
+      {digits ? (
+        <>
+          <div
+            className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+              line ? `${classPrefix}-line` : ''
+            }`}
+          >
+            .
+          </div>
+          <div
+            className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+              line ? `${classPrefix}-line` : ''
+            }`}
+          >
+            {formatDecimal(price)}
+          </div>
+        </>
       ) : null}
-      <div
-        className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-          line ? `${classPrefix}-line` : ''
-        }`}
-      >
-        {formatDecimal(price)}
-      </div>
+
       {symbol && position === 'after' ? renderSymbol() : null}
     </div>
   )

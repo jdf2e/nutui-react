@@ -747,9 +747,8 @@ plugins: [
 
 #### Price
 
-- `decimalDigits` 重命名为 `digits`
-- 移除 `needSymbol`，通过 `symbol` 判断是否需要加上 symbol 符号
-- 新增 `line`，是否展示划线价
+- 修改 `size`，增加 'xlarge' 尺寸
+- 新增 `type`, 价格类型
 
 #### Progress
 

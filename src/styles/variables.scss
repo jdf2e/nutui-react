@@ -782,11 +782,14 @@ $countdown-number-primary-border-color: var(
 //price（✅）
 $price-primary-color: var(--nutui-price-color, $color-primary) !default;
 $price-color: var(--nutui-price-color, var(--nutui-color-text-help)) !default;
+$price-darkgray-color: var(
+  --nutui-price-darkgray-color,
+  var(--nutui-gray-7)
+) !default;
 $price-line-color: var(
   --nutui-price-line-color,
   var(--nutui-color-text-help)
 ) !default;
-$price-line-font-size: var(--nutui-price-line-font-size, 12px) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
   0px
