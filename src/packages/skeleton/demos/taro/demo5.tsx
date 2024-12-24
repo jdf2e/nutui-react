@@ -16,7 +16,7 @@ const Demo5 = () => {
     <View style={{ width: '100%' }}>
       <Switch
         onChange={(value, event: any) => changeStatus(value, event)}
-        style={{ display: 'flex', marginBottom: pxTransform(8) }}
+        style={{ marginBottom: pxTransform(8) }}
       />
       <Skeleton title animated avatar rows={3} visible={checked}>
         <View
