@@ -1,14 +1,14 @@
-# Uploader
+# Uploader Upload
 
-Used to upload local pictures or files to the server.
+Used to upload local images or files to the server.
 
-## Import
+## Introduction
 
 ```tsx
 import { Uploader } from '@nutui/nutui-react'
 ```
 
-## Demo
+## Sample code
 
 ### Basic usage
 
@@ -18,29 +18,7 @@ import { Uploader } from '@nutui/nutui-react'
 
 :::
 
-> When using the Uploader component to upload files, you may encounter the problem of garbled Chinese characters in the response file information. This usually happens when the client and server are inconsistent in how they handle the encoding of the file. To avoid this problem, it is recommended to ensure that the encoding format of the file read by the server is consistent with that of the client.
-
-```javascript
-import React from 'react'
-import { Uploader } from '@nutui/nutui-react'
-// Server Demo
-app.post('/upload', upload.single('file'), (req, res) => {
-  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8'
-  const fileContent = iconv.decode(
-    Buffer.from(JSON.stringify(req.file), 'binary'),
-    fileEncoding
-  )
-  res.json({
-    success: true,
-    message: 'File uploaded successfully',
-    data: JSON.parse(fileContent),
-  })
-})
-// Client Demo
-;<Uploader url={uploadUrl} headers={{ 'x-file-encoding': 'UTF-8' }} />
-```
-
-### Basic usage
+### Upload status
 
 :::demo
 
@@ -48,7 +26,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### upload status
+### Limit the number of uploads
 
 :::demo
 
@@ -56,7 +34,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Basic usage - upload list dispaly
+### Limit upload size
 
 :::demo
 
@@ -64,7 +42,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Custom upload uses default progress bar
+### Customize pre-upload processing
 
 :::demo
 
@@ -72,7 +50,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Direct camera up (mobile)
+### Disabled state
 
 :::demo
 
@@ -80,7 +58,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Limit the number of uploads to 5
+### Custom delete icon
 
 :::demo
 
@@ -88,7 +66,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Limit upload size (maximum 50kb per file)
+### Directly activate the camera (valid on mobile version)
 
 :::demo
 
@@ -96,133 +74,98 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
-### Image compression (handled in a foreupload hook)
+### Manually perform an upload with a button when a file is selected
 
 :::demo
-
 <CodeBlock src='h5/demo9.tsx'></CodeBlock>
-
 :::
 
-### Custom data FormData, headers
+### Basic usage - upload list display
 
 :::demo
-
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
-
-:::
-
-### Custom xhr upload method (before-xhr-upload)
-
-:::demo
-
-<CodeBlock src='h5/demo11.tsx'></CodeBlock>
-
-:::
-
-### After selecting Chinese, manually perform the upload via the button
-
-:::demo
-
-<CodeBlock src='h5/demo12.tsx'></CodeBlock>
-
-:::
-
-### Disabled state
-
-:::demo
-
-<CodeBlock src='h5/demo13.tsx'></CodeBlock>
-
-:::
+:::.
 
 ## Uploader
 
 ### Props
 
 | Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| autoUpload | Whether to upload the file immediately after selecting it, if false, you need to manually execute the ref submit method to upload | `boolean` | `true` |
-| name | The name of the `input` tag `name`, the file parameter name sent to the background | `string` | `file` |
-| url | The interface address of the upload server | `string` | `-` |
-| defaultValue | List of uploaded files by default | `FileType<React.ReactNode>[]` | `[]` |
-| value | List of uploaded files | `FileType<string>[]` | `[]` |
-| preview | Whether to display the preview image after the upload is successful | `boolean` | `true` |
-| previewUrl | When uploading a default image URL in a non-image ('image') format | `string` | `-` |
-| deletable | Whether to display the delete button | `boolean` | `true` |
-| method | The http method of upload request | `string` | `post` |
-| previewType | The built-in style of the upload list, supports two basic styles picture, list | `string` | `picture` |
-| capture | Capture, can be set to [camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，turn on the camera directly | `string` | `false` |
-| maxFileSize | You can set the maximum upload file size (bytes) | `number` \| `string` | `Number.MAX_VALUE` |
-| maxCount | File upload limit | `number` \| `string` | `1` |
-| fit | image fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
-| clearInput | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file | `boolean` | `true` |
-| accept | File types that can be accepted. See [Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
-| headers | Set request headers | `object` | `{}` |
-| data | Uploading extra params or function which can return uploading extra params formData | `object` | `{}` |
-| uploadIcon | Upload area<a href="#/zh-CN/icon">icon name</a> | `React.ReactNode` | `-` |
-| deleteIcon | Delete area icon name | `React.ReactNode` | `-` |
-| uploadLabel | Upload area tip | `React.ReactNode` | `-` |
-| xhrState | The success status (status) value of the interface response | `number` | `200` |
-| withCredentials | Support for sending cookie credential information | `boolean` | `false` |
-| multiple | Whether to support multiple file selection | `boolean` | `false` |
-| disabled | Whether to disable file upload | `boolean` | `false` |
-| timeout | timeout, in milliseconds | `number` \| `string` | `1000 * 30` |
-| beforeUpload | The pre-upload function needs to return a `Promise` object | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
-| beforeXhrUpload | When performing an XHR upload, the custom method | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
-| beforeDelete | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
-| onStart | File upload started | `(option: UploadOptions) => void` | `-` |
-| onProgress | Progress of file upload | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onOversize | Triggered when the file size exceeds the limit | `(file: File[]) => void` | `-` |
-| onSuccess | uploaded successfully | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onFailure | upload failed | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onChange | Status when uploaded files change | `(files: FileItem[]) => void` | `-` |
-| onDelete | The state of the file before deletion | `(file: FileItem, files: FileItem[]) => void` | `-` |
-| onFileItemClick | Click trigger after the file is uploaded successfully | `(file: FileItem, index: number) => void` | `-` |
+| --- | --- | --- | --- | autoUpload | Whether to upload the file immediately after selecting it.
+| autoUpload | If or not the upload will be done immediately after the file is selected, if false, you need to manually execute the ref submit method to upload | `boolean` | `true` | upload | The upload method, the input parameter is the file to be uploaded.
+| upload | Upload method, input is the file object to be uploaded, after asynchronous processing, return the upload result | `(file: File) => Promise<FileItem>` | `-` |
+| name | The name of the `input` tag `name`, the name of the file parameter sent to the backend | `string` | `file` |
+| defaultValue | Default list of files already uploaded | `FileItem[]` | `[]` |
+| value | List of files that have been uploaded | `FileItem[]` | `-` |
+| preview | Whether or not to show the preview image after a successful upload | `boolean` | `true` |
+| previewUrl | Default image address when uploading non-image ('image') formats | `string` | `-` |
+| deletable | Whether or not to show the delete button | `boolean` | `true` |
+| method | The http method for the upload request | `string` | `post` | | previewType
+| previewType | The built-in style of the uploaded list, two basic styles are supported picture, list | `string`
+| capture | Picture [selection mode] (<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture>"), directly bring up the camera | `string` | `false` | maxFileSize
+| maxFileSize | You can set the maximum file size (in bytes) for uploading | `number` \| `string` | `Number.MAX_VALUE` |
+| maxCount | File upload count limit | `number` \| `string` | `1` |
+| fit | Picture fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
+| clearInput | If or not you want to clear the `input` content, set it to `true` to support selecting the same file to upload over and over again | `boolean` | `true` |
+| accept | Allowed file types to be uploaded, [Details] ("<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%> B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
+| uploadIcon | uploadRegion <a href=“#/zh-CN/icon”>Icon Name</a> | `React.ReactNode` | `-` |
+| deleteIcon | Delete the icon name of the region | `React.ReactNode` | `-` |
+| uploadLabel | Text below the image in the upload area | `React.
+| multiple | Whether to support file multi-selection |`boolean`|`false`|
+| disabled | Whether to disable file uploading |`boolean`|`false`|
+| beforeUpload | The beforeUpload function needs to return a`Promise`object |`(file: File[]) => Promise<File[] \| boolean>`|`-`|
+| beforeDelete | Callback when deleting a file, does not remove it if the return value is false. Supports returning a`Promise`object, which is not removed when resolve(false) or reject |`(file: FileItem, files: FileItem[]) => boolean`|`-`|
+| onOversize | Triggered when file size exceeds limit |`(file: File[]) => void`|`-`|
+| onOverCount | Triggered when the number of files exceeds the limit |`(count: number) => void`|`-`|
+| onChange | Triggered when the list of uploaded files changes |`(files: FileItem[]) => void`|`-`|
+| onDelete | Triggered when clicked to delete a file |`(file: FileItem, files: FileItem[]) => void`|`-`|
+| onFileItemClick | Triggered when a file is uploaded successfully |`(file: FileItem, index: number) => void`|`-`|
+| onUploadQueueChange | Triggered when the image upload queue changes |`(tasks: FileItem[]) => void`|`-` |
 
-> Note: accept, capture, and multiple are the native attributes of the browser's input tag. The mobile terminal's different models support these attributes differently, so there may be some compatibility problems under different models and WebView.
+> Note: accept, capture and multiple are the native attributes of the browser input tag, the support for these attributes varies among mobile models, so there may be some compatibility issues under different models and WebViews.
 
 ### FileItem
 
-| Property | Description | Default |
-| --- | --- | --- |
-| status | File status value, optional ‘ready,uploading,success,error’' | `ready` |
-| uid | Unique ID of the file | `new Date().getTime().toString()` |
-| name | File name | `-` |
-| url | File path | `-` |
-| type | File type | `image/jpeg` |
-| formData | Upload the required data | `new FormData()` |
+| Name | Description | Default Value |
+| --- | --- | --- | status | File status value.
+| status | File status value, optionally 'ready,uploading,success,error' | `ready` |
+| uid | Unique identifier of the file | `-` | name | File name.
+| name | File name | `-` | url | Path to file
+| url | file path | `-` | uid | unique identifier for the file | `-` | name | file name | `-` | url | file path | `-` | type | file type
+| type | file type | `image` |
+| loadingIcon | Loading Icon | `-` |
+| failIcon | failureIcon | `-` |
+| percentage | upload prgress percent | `-` |
 
 ### Methods
 
-Use ref to get Uploader instance and call instance methods.
+The Uploader instance can be retrieved by ref and the instance methods called.
+| MethodName | Description | Parameters | ReturnValues |
+| --- | --- | --- | --- | --- | submit | Manual upload mode
+| submit | Manual upload mode, performs the upload operation | `-` | `-` |
+| clear | Clear the queue of selected files (this method is usually used when uploading in manual mode) | `index` | `-` |
 
-| Name | Description | Arguments | Return value |
-| --- | --- | --- | --- |
-| submit | Manual upload mode, perform upload operation | `-` | `-` |
-| clear | Empty the selected file queue (this method is generally used when uploading in manual mode) | `index` | `-` |
+## Theme customization
 
-## Theming
+### Style variables
 
-### CSS Variables
-
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+The component provides the following CSS variables that can be used to customize styles, see [ConfigProvider component](#/zh-CN/component/configprovider).
 
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-uploader-image-width | The width of the uploaded image | `100px` |
-| \--nutui-uploader-image-height | The height of the uploaded image | `100px` |
-| \--nutui-uploader-image-border | The border value of the uploaded image | `0px` | `-` |
-| \--nutui-uploader-image-border-radius | Border rounded corners of uploaded images | `4px` |
+| \--nutui-uploader-image-height | Height of the uploaded image | `100px` |
+| \--nutui-uploader-image-border | Border value of the uploaded image | `0px` |
+| \--nutui-uploader-image-border-radius | Rounded border of uploaded image | `4px` |
 | \--nutui-uploader-background | The background color of the uploaded image | `$color-background` |
-| \--nutui-uploader-background-disabled | The background color of the disabled state of uploading images | `$color-background` |
-| \--nutui-uploader-image-icon-tip-font-size | The size of the text below the image in the upload area | `12px` |
-| \--nutui-uploader-image-icon-tip-color | The color of the text below the image in the upload area | `#C2C4CC` |
-| \--nutui-uploader-preview-progress-background | The background color of the upload area preview progress | `rgba(0, 0, 0, 0.65)` |
-| \--nutui-uploader-preview-margin-right | Upload area preview margin-right value | `10px` |
-| \--nutui-uploader-preview-margin-bottom | Upload area preview margin-bottom value | `10px` |
-| \--nutui-uploader-preview-tips-height | Upload a picture to preview the height under tips | `24px` |
-| \--nutui-uploader-preview-tips-background | Upload image preview background color under tips | `rgba(0, 0, 0, 0.45)` |
-| \--nutui-uploader-preview-tips-padding | Upload an image to preview the padding value under tips | `0 5px` |
-| \--nutui-uploader-preview-close-right | The right value of the upload image close button | `0px` |
-| \--nutui-uploader-preview-close-top | The top value of the upload image close button | `0px` |
+| \--nutui-uploader-background-disabled | Background color for uploaded images in disabled state | `$color-background` |
+| \--nutui-uploader-image-icon-tip-font-size | Text size below image in upload area | `12px` |
+| \--nutui-uploader-image-icon-tip-color | Text color below image in upload area | `#BFBFBF` |
+| \--nutui-uploader-preview-progress-background | The background color of the preview progress in the upload area | `rgba(0, 0, 0, 0.65)` |
+| \--nutui-uploader-preview-margin-right | The value of margin-right for the preview of the upload area | `10px` |
+| \--nutui-uploader-preview-margin-bottom | Upload area preview the value of margin-bottom | `10px` |
+| \--nutui-uploader-preview-tips-height | Height under uploaded image preview tips | `24px` |
+| \--nutui-uploader-preview-tips-background | Background color under uploaded image preview tips | `rgba(0, 0, 0, 0.45)` |
+| \--nutui-uploader-preview-tips-padding | Padding value under uploaded image preview tips | `0 5px` |
+| \--nutui-uploader-preview-close-right | The right value under the upload image's close button | `0px` |
+| \--nutui-uploader-preview-close-top | The top value of the uploader's close button | `0px` |

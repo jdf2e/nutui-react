@@ -525,23 +525,15 @@ plugins: [
 
 #### Uploader
 
-- `maximize` 重命名为 `maxFileSize`
-- `maximum` 重命名为 `maxCount`
-- `listType ` 重命名为 `previewType`
-- `isDeletable ` 重命名为 `deletable`
-- `isPreview` 重命名为 ` preview`
-- `defaultImg` 重命名为 ` previewUrl`
-- `defaultFileList` 重命名为 ` defaultValue`
-- `uploadIconTip` 重命名为 `uploadLabel`，类型变更为 `ReactNode`
-- `onBeforeUpload` 重命名为 `beforeUpload`
-- `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
-- `onBeforeDelete` 重命名为 `beforeDelete`
-- `onRemove` 重命名为 `onDelete`
-- 增加 `fit`，用于图片填充模式
-- 增加 `value`，用于受控传值
-- 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
-- `uploadIcon` 类型从 `string` 调整为 `ReactNode`
-- `onChange` 参数类型从 `{fileList: FileItem[], event: any}` 调整为 `FileItem[]`
+- 移除了组件内部关于ajax相关网络逻辑的处理
+- 移除了`url`、`headers`、`data`、`xhrState`、`withCredentials`、`timeout` 网络配置相关props
+- 移除了`onStart`、`onProgress`、`onFailure`、`beforeXhrUpload` 触发时机函数相关props
+- 新增`onOverCount`属性，文件数量超过限制时触发
+- 新增`onUploadQueueChange`属性，图片上传队列变化时触发
+- 简化`FileItem`类型的使用，除url外其他属性变为可选
+- 调整多选状态下`maxCount`属性的默认值为`Number.MAX_VALUE`
+- 新增了的 `upload` 方法
+- `defaultValue` 和 `value` 的类型从 `FileType` 变更为 `FileItem`
 
 ### 操作反馈
 

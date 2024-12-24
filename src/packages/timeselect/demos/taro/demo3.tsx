@@ -53,9 +53,6 @@ const Demo3 = () => {
       <TimeSelect
         visible={visible}
         options={options}
-        style={{
-          height: '30%',
-        }}
         multiple
         onSelect={handleSelect}
         onDateChange={handleDateChange}
