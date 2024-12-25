@@ -14,10 +14,17 @@ const Demo5 = () => {
   }
   return (
     <View style={{ width: '100%' }}>
-      <Switch
-        onChange={(value, event: any) => changeStatus(value, event)}
-        style={{ marginBottom: pxTransform(8) }}
-      />
+      <View
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-start',
+        }}
+      >
+        <Switch
+          onChange={(value, event: any) => changeStatus(value, event)}
+          style={{ marginBottom: pxTransform(8) }}
+        />
+      </View>
       <Skeleton title animated avatar rows={3} visible={checked}>
         <View
           className="nut-skeleton-content"
