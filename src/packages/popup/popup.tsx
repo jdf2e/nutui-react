@@ -191,18 +191,16 @@ export const Popup: FunctionComponent<
     afterClose && afterClose()
   }
 
-  const resolveContainer = (getContainer: Teleport | undefined) => {
-    const container =
-      typeof getContainer === 'function' ? getContainer() : getContainer
-    return container || document.body
-  }
-
-  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
-    if (getContainer) {
-      const container = resolveContainer(getContainer)
-      return createPortal(node, container) as ReactPortal
-    }
-    return node
+  const renderCloseIcon = () => {
+    return (
+      <>
+        {closeable && (
+          <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+            {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+          </div>
+        )}
+      </>
+    )
   }
 
   const renderTitle = () => {
@@ -215,10 +213,14 @@ export const Popup: FunctionComponent<
                 <div className={`${classPrefix}-title-left`}>{left}</div>
               )}
               {(title || description) && (
-                <div className={`${classPrefix}-title-title`}>
-                  {title}
+                <div className={`${classPrefix}-title-wrapper`}>
+                  {title && (
+                    <div className={`${classPrefix}-title-title`}>{title}</div>
+                  )}
                   {description && (
-                    <div className={`${classPrefix}-title-description`}>
+                    <div
+                      className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
+                    >
                       {description}
                     </div>
                   )}
@@ -226,24 +228,12 @@ export const Popup: FunctionComponent<
               )}
             </>
           )}
-          {closeable && (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-            </div>
-          )}
+          {renderCloseIcon()}
         </div>
       )
     }
     if (closeable) {
-      return (
-        <>
-          {closeable && (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-            </div>
-          )}
-        </>
-      )
+      return renderCloseIcon()
     }
   }
   const renderPop = () => {
@@ -285,19 +275,32 @@ export const Popup: FunctionComponent<
             onClick={onHandleClickOverlay}
           />
         ) : null}
-        <>{renderPop()}</>
+        {renderPop()}
       </>
     )
   }
 
   useEffect(() => {
-    visible && open()
-    !visible && close()
+    visible ? open() : close()
   }, [visible])
 
   useEffect(() => {
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
+
+  const resolveContainer = (getContainer: Teleport | undefined) => {
+    const container =
+      typeof getContainer === 'function' ? getContainer() : getContainer
+    return container || document.body
+  }
+
+  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
+    if (getContainer) {
+      const container = resolveContainer(getContainer)
+      return createPortal(node, container) as ReactPortal
+    }
+    return node
+  }
 
   return <>{renderToContainer(portal as Teleport, renderNode())}</>
 }
