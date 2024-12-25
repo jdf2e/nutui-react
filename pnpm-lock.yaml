@@ -18,11 +18,11 @@ importers:
         specifier: ^7.23.9
         version: 7.25.4
       '@nutui/icons-react':
-        specifier: ^3.0.0-beta.1
-        version: 3.0.0-beta.1
+        specifier: ^3.0.0-beta.2
+        version: 3.0.0-beta.2
       '@nutui/icons-react-taro':
-        specifier: ^3.0.1-beta.0
-        version: 3.0.1-beta.1
+        specifier: ^3.0.0-beta.2
+        version: 3.0.0-beta.2
       '@nutui/jdesign-icons-react-taro':
         specifier: 1.0.6-beta.2
         version: 1.0.6-beta.2
@@ -2386,14 +2386,14 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@nutui/icons-react-taro@3.0.1-beta.1':
-    resolution: {integrity: sha512-ZWsNgmApFEqczvVnjuGK0V73Tz8DXantIE2rJ4niF9Wo59ul1xz7nJGhHHSQeQDvkQEziSTCOL/6pu/6yEMAmg==, tarball: https://registry.npmjs.org/@nutui/icons-react-taro/-/icons-react-taro-3.0.1-beta.1.tgz}
+  '@nutui/icons-react-taro@3.0.0-beta.2':
+    resolution: {integrity: sha512-18/mbhcHEVqDUYqSvZGK0gPl2AJMjqXarYj6mCFBdN4PWgaAh500YVncEwxmCYNbHm72qHZff+/UhOCU7OwAow==, tarball: https://registry.npmjs.org/@nutui/icons-react-taro/-/icons-react-taro-3.0.0-beta.2.tgz}
 
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==}
 
-  '@nutui/icons-react@3.0.0-beta.1':
-    resolution: {integrity: sha512-2dpDPy8ZYcUHpqQ+F+/V7DKNDXi3NqJMsra/v79LWZ7k4/fnGKp/XDfsH7dC4LWjvX6PP+jiIB4m+7rYHZ60Dg==, tarball: https://registry.npmjs.org/@nutui/icons-react/-/icons-react-3.0.0-beta.1.tgz}
+  '@nutui/icons-react@3.0.0-beta.2':
+    resolution: {integrity: sha512-rzdOuRl4YKIKKnMSAS414PCbVfZVYouYjewWLrGSdA0GfrUzHifvIRIIHBSGUZ4XjUQC3PFK0mir2pox6jFCgQ==, tarball: https://registry.npmjs.org/@nutui/icons-react/-/icons-react-3.0.0-beta.2.tgz}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2':
     resolution: {integrity: sha512-2Scz5c9o14gA7Mw5JdiEkc/KEbNlNWMcJMuqVyFVipYeeYN/118N/fvHVpocmJviN0Gc4P+u3ZB3dIQSA2j4Fw==}
@@ -8675,7 +8675,7 @@ packages:
     engines: {node: '>= 0.6'}
 
   mime@1.6.0:
-    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==}
+    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==, tarball: https://registry.npmjs.org/mime/-/mime-1.6.0.tgz}
     engines: {node: '>=4'}
     hasBin: true
 
@@ -14893,11 +14893,11 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@nutui/icons-react-taro@3.0.1-beta.1': {}
+  '@nutui/icons-react-taro@3.0.0-beta.2': {}
 
   '@nutui/icons-react@1.0.5': {}
 
-  '@nutui/icons-react@3.0.0-beta.1': {}
+  '@nutui/icons-react@3.0.0-beta.2': {}
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2': {}
 

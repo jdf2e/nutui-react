@@ -102,8 +102,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^3.0.0-beta.1",
-    "@nutui/icons-react-taro": "^3.0.1-beta.0",
+    "@nutui/icons-react": "^3.0.0-beta.2",
+    "@nutui/icons-react-taro": "^3.0.0-beta.2",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
