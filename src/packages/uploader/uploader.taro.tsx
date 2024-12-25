@@ -7,20 +7,14 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import Taro, {
-  chooseImage,
-  uploadFile,
-  getEnv,
-  chooseMedia,
-} from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import Taro, { chooseImage, getEnv, chooseMedia } from '@tarojs/taro'
 import { Failure, Photograph } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
-import { ERROR, SUCCESS, UploaderTaro, UPLOADING, UploadOptions } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { FileItem } from './file-item.taro'
+import { FileItem } from './types'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
 
@@ -56,7 +50,6 @@ interface TFileType {
 }
 
 export interface UploaderProps extends BasicComponent {
-  url: string
   maxCount: string | number
   sizeType: (keyof sizeType)[]
   sourceType: (keyof sourceType)[]
@@ -75,51 +68,32 @@ export interface UploaderProps extends BasicComponent {
   disabled: boolean
   autoUpload: boolean
   multiple: boolean
-  timeout: number
-  data: any
-  method: string
-  xhrState: number | string
-  headers: any
   preview: boolean
   deletable: boolean
   className: string
   previewUrl?: string
   maxDuration: number
   style: React.CSSProperties
-  onStart?: (option: UploadOptions) => void
   onDelete?: (file: FileItem, files: FileItem[]) => void
-  onSuccess?: (param: {
-    responseText: XMLHttpRequest['responseText']
-    option: UploadOptions
-    files: FileItem[]
-  }) => void
-  onProgress?: (param: {
-    e: ProgressEvent<XMLHttpRequestEventTarget>
-    option: UploadOptions
-    percentage: number | string
-  }) => void
-  onFailure?: (param: {
-    responseText: XMLHttpRequest['responseText']
-    option: UploadOptions
-    files: FileItem[]
-  }) => void
-  onUpdate?: (files: FileItem[]) => void
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
+  onOverCount?: (count: number) => void
   onChange?: (files: FileItem[]) => void
+  upload: (
+    files: Taro.chooseImage.ImageFile | Taro.chooseMedia.ChooseMedia | any
+  ) => Promise<FileItem>
   beforeUpload?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
-  ) => Promise<File[] | boolean>
-  beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
+  ) => Promise<File[]>
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
+  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  url: '',
-  maxCount: 1,
+  maxCount: Number.MAX_VALUE,
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
   mediaType: ['image', 'video'],
@@ -135,12 +109,7 @@ const defaultProps = {
   autoUpload: true,
   multiple: false,
   maxFileSize: Number.MAX_VALUE,
-  data: {},
-  headers: {},
-  method: 'post',
   previewUrl: '',
-  xhrState: 200,
-  timeout: 1000 * 30,
   preview: true,
   deletable: true,
   maxDuration: 10,
@@ -168,13 +137,7 @@ const InternalUploader: ForwardRefRenderFunction<
     fit,
     disabled,
     multiple,
-    url,
     previewUrl,
-    headers,
-    timeout,
-    method,
-    xhrState,
-    data,
     preview,
     deletable,
     maxCount,
@@ -185,18 +148,15 @@ const InternalUploader: ForwardRefRenderFunction<
     sizeType,
     sourceType,
     maxDuration,
-    onStart,
     onDelete,
     onChange,
     onFileItemClick,
-    onProgress,
-    onSuccess,
-    onUpdate,
-    onFailure,
     onOversize,
+    onOverCount,
     beforeUpload,
-    beforeXhrUpload,
+    upload,
     beforeDelete,
+    onUploadQueueChange,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -207,24 +167,23 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<Promise<UploaderTaro>[]>([])
-
+  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
+  const fileListRef = useRef<FileItem[]>([])
   const classes = classNames(className, 'nut-uploader')
-
   useImperativeHandle(ref, () => ({
-    submit: () => {
-      Promise.all(uploadQueue).then((res) => {
-        res.forEach((i) => i.uploadTaro(uploadFile, getEnv()))
-      })
+    submit: async () => {
+      await uploadAction(uploadQueue)
     },
     clear: () => {
       clearUploadQueue()
     },
   }))
-  const fileListRef = useRef<FileItem[]>([])
   useEffect(() => {
     fileListRef.current = fileList
   }, [fileList])
+  useEffect(() => {
+    onUploadQueueChange?.(uploadQueue)
+  }, [uploadQueue])
   const clearUploadQueue = (index = -1) => {
     if (index > -1) {
       uploadQueue.splice(index, 1)
@@ -256,7 +215,6 @@ const InternalUploader: ForwardRefRenderFunction<
       }
     }
     if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
-      // 其余端全部使用 chooseImage API
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         /** 文件类型 */
@@ -269,9 +227,6 @@ const InternalUploader: ForwardRefRenderFunction<
         sizeType,
         /** 仅在 sourceType 为 camera 时生效，使用前置或后置摄像头 */
         camera,
-        fail: (res: any) => {
-          onFailure && onFailure(res)
-        },
         success: onChangeMedia,
       })
     } else {
@@ -281,111 +236,55 @@ const InternalUploader: ForwardRefRenderFunction<
         sizeType,
         sourceType,
         success: onChangeImage,
-        fail: (res: any) => {
-          onFailure && onFailure(res)
-        },
       })
     }
   }
-
-  const executeUpload = (fileItem: FileItem, index: number) => {
-    const uploadOption = new UploadOptions()
-    uploadOption.name = name
-    uploadOption.url = url
-    uploadOption.fileType = fileItem.type
-    uploadOption.formData = fileItem.formData
-    uploadOption.timeout = timeout * 1
-    uploadOption.method = method
-    uploadOption.xhrState = xhrState
-    uploadOption.headers = headers
-    uploadOption.taroFilePath = fileItem.path
-    uploadOption.beforeXhrUpload = beforeXhrUpload
-    uploadOption.onStart = (option: UploadOptions) => {
-      clearUploadQueue(index)
-      setFileList(
-        fileListRef.current.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'ready'
-            item.message = locale.uploader.readyUpload
-          }
-          return item
-        })
-      )
-      onStart?.(option)
-    }
-
-    uploadOption.onProgress = (e: any, option: UploadOptions) => {
-      setFileList(
-        fileListRef.current.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = UPLOADING
-            item.message = locale.uploader.uploading
-            item.percentage = e.progress
-            onProgress?.({ e, option, percentage: item.percentage as number })
-          }
-          return item
-        })
-      )
-    }
-
-    uploadOption.onSuccess = (
-      responseText: XMLHttpRequest['responseText'],
-      option: UploadOptions
-    ) => {
-      const list = fileListRef.current.map((item) => {
-        if (item.uid === fileItem.uid) {
-          item.status = SUCCESS
-          item.message = locale.uploader.success
-          item.responseText = responseText
+  const uploadAction = async (tasks: FileItem[]) => {
+    const taskIds = tasks.map((task) => task.uid)
+    const list: FileItem[] = fileListRef.current.map((file: FileItem) => {
+      if (taskIds.includes(file.uid)) {
+        return {
+          ...file,
+          status: 'uploading',
+          message: locale.uploader.uploading,
         }
-        return item
-      })
-      setFileList(list)
-      onSuccess?.({
-        responseText,
-        option,
-        files: list,
-      })
-    }
-
-    uploadOption.onFailure = (
-      responseText: XMLHttpRequest['responseText'],
-      option: UploadOptions
-    ) => {
-      const list = fileListRef.current.map((item) => {
-        if (item.uid === fileItem.uid) {
-          item.status = ERROR
-          item.message = locale.uploader.error
-          item.responseText = responseText
+      }
+      return file
+    })
+    setFileList(list)
+    await Promise.all(
+      tasks.map(async (currentTask, index) => {
+        try {
+          const result = await upload(currentTask.file as File)
+          const list = fileListRef.current.map((item) => {
+            if (item.uid === currentTask.uid) {
+              item.status = 'success'
+              item.message = locale.uploader.success
+              item.url = result.url
+            }
+            return item
+          })
+          setFileList(list)
+        } catch (e) {
+          const list = fileListRef.current.map((item) => {
+            if (item.uid === currentTask.uid) {
+              item.status = 'error'
+              item.message = locale.uploader.error
+            }
+            return item
+          })
+          setFileList(list)
+          throw e
         }
-        return item
       })
-      setFileList(list)
-      onFailure?.({
-        responseText,
-        option,
-        files: list,
-      })
-    }
-
-    const task = new UploaderTaro(uploadOption)
-    if (autoUpload) {
-      task.uploadTaro(uploadFile, getEnv())
-    } else {
-      uploadQueue.push(
-        new Promise((resolve, reject) => {
-          resolve(task)
-        })
-      )
-      setUploadQueue(uploadQueue)
-    }
+    ).catch((errs) => console.error(errs))
   }
 
-  const readFile = <T extends TFileType>(files: T[]) => {
-    files.forEach((file: T, index: number) => {
+  const idCountRef = useRef(0)
+  const readFile = async <T extends TFileType>(files: T[]) => {
+    const tasks = files.map((file) => {
       let fileType = file.type
       const filepath = (file.tempFilePath || file.path) as string
-      const fileItem = new FileItem()
       if (file.fileType) {
         fileType = file.fileType
       } else {
@@ -397,34 +296,29 @@ const InternalUploader: ForwardRefRenderFunction<
           fileType = 'image'
         }
       }
-
-      fileItem.path = filepath
-      fileItem.name = filepath
-      fileItem.status = 'ready'
-      fileItem.type = fileType
-      fileItem.uid = `${fileItem.uid}_${index}`
-      fileItem.message = autoUpload
-        ? locale.uploader.readyUpload
-        : locale.uploader.waitingUpload
-
-      if (getEnv() === 'WEB') {
-        const formData = new FormData()
-        for (const [key, value] of Object.entries(data)) {
-          formData.append(key, value as any)
-        }
-        formData.append(name, file.originalFileObj as Blob)
-        fileItem.name = file.originalFileObj?.name
-        fileItem.type = file.originalFileObj?.type
-        fileItem.formData = formData
-      } else {
-        fileItem.formData = data as any
+      const info: any = {
+        uid: idCountRef.current++,
+        status: autoUpload ? 'uploading' : 'ready',
+        file,
+        message: autoUpload
+          ? locale.uploader.uploading
+          : locale.uploader.waitingUpload,
+        name: getEnv() === 'WEB' ? file.originalFileObj?.name : filepath,
+        path: filepath,
+        type: getEnv() === 'WEB' ? file.originalFileObj?.type : fileType,
       }
       if (preview) {
-        fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
+        info.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      executeUpload(fileItem, index)
-      setFileList([...fileList, fileItem])
+      fileListRef.current = [...fileListRef.current, info]
+      setFileList(fileListRef.current)
+      return info
     })
+    if (!autoUpload) {
+      setUploadQueue(tasks)
+    } else {
+      await uploadAction(tasks)
+    }
   }
 
   const filterFiles = <T extends TFileType>(files: T[]) => {
@@ -439,9 +333,9 @@ const InternalUploader: ForwardRefRenderFunction<
       return true
     })
     oversizes.length && onOversize?.(files as any)
-
     const currentFileLength = filterFile.length + fileList.length
     if (currentFileLength > maximum) {
+      onOverCount?.(filterFile.length)
       filterFile.splice(filterFile.length - (currentFileLength - maximum))
     }
     return filterFile
@@ -461,7 +355,7 @@ const InternalUploader: ForwardRefRenderFunction<
     })
   }
 
-  const onChangeMedia = (res: Taro.chooseMedia.SuccessCallbackResult) => {
+  const onChangeMedia = async (res: Taro.chooseMedia.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
@@ -478,44 +372,60 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
+  const onChangeImage = async (res: Taro.chooseImage.SuccessCallbackResult) => {
     // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
+    let files: File[] = []
+    const filesArr = new Array<File>().slice.call(files)
     if (beforeUpload) {
-      beforeUpload(new Array<File>().slice.call(_files)).then(
-        (f: Array<File> | boolean) => {
-          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
-          if (!_files.length) res.tempFiles = []
-          readFile(_files)
-        }
-      )
-    } else {
-      readFile(_files)
+      files = await beforeUpload(filesArr)
     }
+    files = filterFiles(filesArr)
+    readFile(_files)
   }
 
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
-
-  return (
-    <View className={classes} {...restProps}>
-      {(children || previewType === 'list') && (
+  const renderListUploader = () => {
+    return (
+      previewType === 'list' && (
         <View className="nut-uploader-slot">
           <>
-            {children || (
-              <Button size="small" type="primary">
-                {locale.uploader.list}
-              </Button>
-            )}
+            <Button size="small" type="primary">
+              {locale.uploader.list}
+            </Button>
             {Number(maxCount) > fileList.length && (
               <Button className="nut-uploader-input" onClick={_chooseImage} />
             )}
           </>
         </View>
-      )}
-
+      )
+    )
+  }
+  const renderImageUploader = () => {
+    const shouldShow =
+      Number(maxCount) > fileList.length && previewType === 'picture'
+    return (
+      shouldShow && (
+        <View
+          className={`nut-uploader-upload ${previewType} ${
+            disabled ? 'nut-uploader-upload-disabled' : ''
+          }`}
+        >
+          <View className="nut-uploader-icon">
+            {uploadIcon}
+            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+          </View>
+          <Button className="nut-uploader-input" onClick={_chooseImage} />
+        </View>
+      )
+    )
+  }
+  return (
+    <View className={classes} {...restProps}>
+      {renderListUploader()}
       <Preview
         {...{
           fileList,
@@ -528,22 +438,7 @@ const InternalUploader: ForwardRefRenderFunction<
           children,
         }}
       />
-
-      {Number(maxCount) > fileList.length &&
-        previewType === 'picture' &&
-        !children && (
-          <View
-            className={`nut-uploader-upload ${previewType} ${
-              disabled ? 'nut-uploader-upload-disabled' : ''
-            }`}
-          >
-            <View className="nut-uploader-icon">
-              {uploadIcon}
-              <Text className="nut-uploader-icon-tip">{uploadLabel}</Text>
-            </View>
-            <Button className="nut-uploader-input" onClick={_chooseImage} />
-          </View>
-        )}
+      {renderImageUploader()}
     </View>
   )
 }

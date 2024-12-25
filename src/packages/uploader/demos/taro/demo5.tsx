@@ -1,26 +1,37 @@
 import React, { useState } from 'react'
-import { Uploader, Button, Progress } from '@nutui/nutui-react-taro'
+import { Uploader, Cell, FileItem } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const [progressPercent, setProgressPercent] = useState(0)
-  const onProgress = ({ event, options, percentage }: any) => {
-    setProgressPercent(percentage)
+  const [list, setList] = useState<FileItem[]>([])
+  const beforeUpload = async (files: File[]) => {
+    const allowedTypes = ['image/png']
+    const filteredFiles = Array.from(files).filter((file) =>
+      allowedTypes.includes(file.type)
+    )
+    return filteredFiles
+  }
+  function sleep(time: number) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
+    })
+  }
+  async function upload(file: File) {
+    await sleep(2000)
+    return {
+      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+    }
   }
   return (
-    <>
-      <Uploader url={uploadUrl} onProgress={onProgress}>
-        <Button type="success" size="small">
-          上传文件
-        </Button>
-      </Uploader>
-      <br />
-      <Progress
-        percent={progressPercent}
-        color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        animated
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Uploader
+        value={list}
+        onChange={setList}
+        beforeUpload={beforeUpload}
+        upload={(file: File) => upload(file)}
       />
-    </>
+    </Cell>
   )
 }
 export default Demo5

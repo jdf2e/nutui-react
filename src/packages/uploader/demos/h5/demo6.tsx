@@ -1,8 +1,11 @@
 import React from 'react'
-import { Uploader } from '@nutui/nutui-react'
+import { Uploader, Cell } from '@nutui/nutui-react'
 
 const Demo6 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return <Uploader capture url={uploadUrl} />
+  return (
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Uploader disabled />
+    </Cell>
+  )
 }
 export default Demo6

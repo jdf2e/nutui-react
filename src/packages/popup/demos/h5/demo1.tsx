@@ -1,25 +1,28 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react'
 
-const Demo1 = () => {
-  const [showBasic, setShowBasic] = useState(false)
+const Demo = () => {
+  const [showIcon, setShowIcon] = useState(false)
+
   return (
     <>
       <Cell
-        title="展示弹出层"
+        title="基础弹框"
         onClick={() => {
-          setShowBasic(true)
+          setShowIcon(true)
         }}
       />
       <Popup
-        zIndex={2000}
-        visible={showBasic}
-        style={{ padding: '30px 50px' }}
+        closeable
+        visible={showIcon}
+        title="标题"
+        description="这里是副标题这是副标题"
+        position="bottom"
         onClose={() => {
-          setShowBasic(false)
+          setShowIcon(false)
         }}
       />
     </>
   )
 }
-export default Demo1
+export default Demo

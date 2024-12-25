@@ -705,7 +705,7 @@
           "author": "VickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Uploader",
           "type": "component",
           "tarodoc": true,
@@ -857,6 +857,7 @@
           "type": "component",
           "show": true,
           "taro": true,
+          "v15": true,
           "rn": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
