@@ -131,8 +131,8 @@ export const Popover: FunctionComponent<
   }
   useClickAway(
     () => {
-      onClick && onClick()
-      onClose && onClose()
+      onClick?.()
+      onClose?.()
     },
     targetSet as Element[],
     'touchstart',
