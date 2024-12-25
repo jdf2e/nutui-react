@@ -5,6 +5,7 @@ const Demo8 = () => {
   return (
     <TextArea
       defaultValue="文本居右"
+      type="container"
       style={{
         textAlign: 'right',
       }}

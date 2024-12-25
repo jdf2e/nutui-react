@@ -8,6 +8,7 @@ const Demo7 = () => {
         disabled
         defaultValue="textarea禁用状态"
         showCount
+        type="container"
         maxLength={20}
       />
     </>

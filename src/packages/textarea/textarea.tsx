@@ -15,6 +15,7 @@ export interface TextAreaProps extends BasicComponent {
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
+  type: 'plain' | 'container'
   onChange: (value: string) => void
   onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
   onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
@@ -30,6 +31,7 @@ const defaultProps = {
   readOnly: false,
   disabled: false,
   autoSize: false,
+  type: 'plain',
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -51,6 +53,7 @@ export const TextArea: FunctionComponent<
     disabled,
     autoSize,
     style,
+    type,
     onChange,
     onBlur,
     onFocus,
@@ -118,6 +121,7 @@ export const TextArea: FunctionComponent<
         {
           [`${classPrefix}-disabled`]: disabled,
           [`${classPrefix}-rtl`]: rtl,
+          [`${classPrefix}-${type}`]: type,
         },
         className
       )}

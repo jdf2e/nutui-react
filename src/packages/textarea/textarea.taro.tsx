@@ -21,6 +21,7 @@ export interface TextAreaProps
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
+  type: 'plain' | 'container'
   onChange: (value: string) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
@@ -35,6 +36,7 @@ const defaultProps = {
   readOnly: false,
   disabled: false,
   autoSize: false,
+  type: 'plain',
 } as TextAreaProps
 export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
@@ -50,6 +52,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     disabled,
     autoSize,
     style,
+    type,
     onChange,
     onBlur,
     onFocus,
@@ -103,6 +106,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         {
           [`${classPrefix}-disabled`]: disabled,
           [`${classPrefix}-rtl`]: rtl,
+          [`${classPrefix}-${type}`]: type,
         },
         className
       )}

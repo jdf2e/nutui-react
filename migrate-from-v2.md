@@ -516,12 +516,8 @@ plugins: [
 
 #### TextArea
 
-- `maxlength` 重命名为 `maxLength`
-- `readonly` 重命名为 `readOnly`
-- `limitShow` 重命名为 `showCount`
-- `autosize` 重命名为 `autoSize`
-- 移除 `textAlign`，可通过 `style` 传入
-- `defaultValue` 改为非受控，增加受控值 `value`
+- 增加 `type`，只为 `plain` 和 `container`
+- 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader
 

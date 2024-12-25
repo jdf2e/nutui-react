@@ -7,6 +7,7 @@ const Demo7 = () => {
       <TextArea
         disabled
         defaultValue="textarea禁用状态"
+        type="container"
         showCount
         maxLength={20}
       />

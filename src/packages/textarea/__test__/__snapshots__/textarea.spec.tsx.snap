@@ -3,7 +3,7 @@
 exports[`textarea props test 1`] = `
 <div>
   <div
-    class="nut-textarea"
+    class="nut-textarea nut-textarea-plain"
   >
     <textarea
       class="nut-textarea-textarea "
