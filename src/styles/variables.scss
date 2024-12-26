@@ -547,18 +547,18 @@ $input-border-bottom-width: var(
   --nutui-input-border-bottom-width,
   0px
 ) !default;
-$input-disabled-color: var(
-  --nutui-input-disabled-color,
-  $color-text-disabled
-) !default;
+// $input-disabled-color: var(
+//   --nutui-input-disabled-color,
+//   $color-text-disabled
+// ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
-$input-border-radius: var(--nutui-input-border-radius, 0) !default;
-$input-color: var(--nutui-input-color, $color-title) !default;
+$input-border-radius: var(--nutui-input-border-radius, $radius-s) !default;
+// $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(
   --nutui-input-background-color,
   $color-background-overlay
 ) !default;
-$input-padding: var(--nutui-input-padding, 10px 25px) !default;
+$input-padding: var(--nutui-input-padding, 12px) !default;
 
 // textarea（✅）
 $textarea-font: var(--nutui-textarea-font, $font-size-base) !default;

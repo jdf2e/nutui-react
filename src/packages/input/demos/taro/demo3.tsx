@@ -9,7 +9,6 @@ const Demo3 = () => {
         value={val}
         onChange={(val) => setVal(val)}
         placeholder="请输入文本"
-        placeholderTextColor="#757575"
       />
     </>
   )

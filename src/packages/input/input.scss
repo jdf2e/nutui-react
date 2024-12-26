@@ -5,23 +5,29 @@
   flex-wrap: nowrap;
   flex: 1;
   align-items: center;
-  padding: $input-padding;
-  line-height: 24px;
   font-size: $input-font-size;
   box-sizing: border-box;
-  border-radius: $input-border-radius;
-  background-color: $input-background-color;
-  border-bottom: $input-border-bottom-width solid $input-border-bottom;
 
   .nut-icon {
-    color: #c8c9cc;
+    color: $color-text-disabled;
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+  }
+  &-container {
+    height: 38px;
+    padding: $input-padding;
+    background-color: $input-background-color;
+    border-radius: $input-border-radius;
+    border-bottom: $input-border-bottom-width solid $input-border-bottom;
   }
 }
 
 .nut-input-native {
   flex: 1;
-  color: $input-color;
+  color: $color-title;
   font-size: $input-font-size;
+  line-height: $input-font-size;
   padding: 0;
   border: 0;
   outline: 0 none;
@@ -31,23 +37,28 @@
 
 /* #ifndef rn */
 .nut-input-native::placeholder {
-  color: #757575;
+  color: $color-text-help;
 }
-
 /* #endif */
 
+.nut-input-readonly {
+  .nut-input-native {
+    color: $color-text-help;
+  }
+}
+
 .nut-input-disabled {
-  color: $input-disabled-color !important;
+  color: $color-text-disabled !important;
 
   input:disabled {
-    color: $input-disabled-color;
+    color: $color-text-disabled;
     cursor: not-allowed;
     background: none;
     opacity: 1;
-    -webkit-text-fill-color: $input-disabled-color;
+    -webkit-text-fill-color: $color-text-disabled;
   }
 }
 
 .nut-input-clear {
-  flex: 0;
+  // flex: 0;
 }

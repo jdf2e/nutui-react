@@ -417,6 +417,10 @@ plugins: [
 
 #### Input
 
+- 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型；
+- 区分了 readonly 和 disabled 的样式；
+- 删除一些样式变量，统一到由通用变量控制，如`$input-color`、`$input-disabled-color`
+
 #### InputNumber
 
 - 增加 `allowEmpty`, 用于允许内容是否为空
