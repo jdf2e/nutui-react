@@ -40,14 +40,18 @@ export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
       ...defaultProps,
       ...props,
     }
+    const loadingLottieRef = useRef<LottieProps | null>(null)
     // @ts-ignore
-    const loadingLottieRef: React.MutableRefObject<LottieProps | null> =
-      useRef()
+    // const loadingLottieRef: React.MutableRefObject<LottieProps | null> =
+    //   useRef()
     const mergedLottieProps = mergeProps(defaultLottieProps, lottieProps)
     React.useImperativeHandle(ref, () => loadingLottieRef)
 
     const classPrefix = 'nut-loading'
     const getLoadingIcon = () => {
+      if (!rest.jsonData) {
+        console.warn('Lottie animation requires jsonData prop')
+      }
       if (rest.type === 'lottie') {
         return (
           <Lottie

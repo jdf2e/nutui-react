@@ -25,10 +25,13 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
     speed = 1,
   } = props
   const setSpeed = () => {
-    animation.current.setSpeed(Math.abs(speed))
-    animation.current.setDirection(speed > 0 ? 1 : -1)
+    if (animation.current) {
+      animation.current.setSpeed(Math.abs(speed))
+      animation.current.setDirection(speed > 0 ? 1 : -1)
+    }
   }
-  useImperativeHandle(ref, () => animation.current)
+  useImperativeHandle(ref, () => animation.current || {})
+  const dpr = useRef(getSystemInfoSync().pixelRatio)
   useReady(() => {
     createSelectorQuery()
       .select(`#${id}`)
@@ -48,10 +51,9 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
               style.width !== undefined &&
               style.height !== undefined
             ) {
-              const dpr = getSystemInfoSync().pixelRatio
-              canvas.width = parseFloat(style.width.toString()) * dpr
-              canvas.height = parseFloat(style.height.toString()) * dpr
-              context.scale(dpr, dpr)
+              canvas.width = parseFloat(style.width.toString()) * dpr.current
+              canvas.height = parseFloat(style.height.toString()) * dpr.current
+              context.scale(dpr.current, dpr.current)
             }
 
             lottie.setup(canvas)
@@ -75,8 +77,10 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
       .exec()
   })
   useUnload(() => {
-    onComplete && animation.current.removeEventListener('complete', onComplete)
-    animation.current.destroy()
+    onComplete &&
+      animation.current &&
+      animation.current.removeEventListener('complete', onComplete)
+    animation.current && animation.current.destroy()
   })
   return <Canvas id={id} canvas-id={id} type="2d" style={style} />
 })

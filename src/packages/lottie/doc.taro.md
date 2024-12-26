@@ -46,7 +46,7 @@ import { Lottie } from '@nutui/nutui-react-taro'
 | initialSegment | 第一个值是初始帧，第二个值是最终帧。如果设置了该值，动画将从此时间位置开始 | `[number, number]` | `-` |
 | speed | 播放速度 | `number` | `1` |
 
-更多属性可以参考 (https://lottiereact.com/)[https://lottiereact.com/]
+更多属性可以参考 [lottie-react](https://lottiereact.com/)
 
 ### Ref
 

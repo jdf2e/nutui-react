@@ -41,7 +41,7 @@ import { Lottie } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | source | 包含导出动画数据的 JSON 对象 | `Object` | `circular` |
-| loop | loading图标和文字的排列方式 | `boolean \| number` | `horizontal` |
+| loop | 动画是否循环播放，设置为数字时代表循环次数 | `boolean \| number` | `horizontal` |
 | autoPlay | 动画将在加载后立即播放 | `boolean` | `-` |
 | initialSegment | 第一个值是初始帧，第二个值是最终帧。如果设置了该值，动画将从此时间位置开始 | `[number, number]` | `-` |
 | speed | 播放速度 | `number` | `1` |
