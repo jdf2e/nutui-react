@@ -6,7 +6,7 @@ const Demo1 = () => {
   const styles = {
     flexCenter: {
       display: 'flex',
-      aliginItems: 'center',
+      alignItems: 'center',
     },
     title: {
       fontSize: '18px',
