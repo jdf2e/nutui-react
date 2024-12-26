@@ -273,16 +273,9 @@ plugins: [
 
 #### NavBar
 
-- `desc` 重命名为 `right`，类型修改为 `React.Node`
-- 新增 `left`，左侧内容，渲染在返回区域的右侧
-- 新增 `back`，返回区域内容
-- `onClickBack` 重命名为 `onBackClick`
-- 移除 `title`，通过 `children` 实现
-- 移除 `leftText` `leftShow`，通过 `back`、`left`实现
-- `safeAreaInsetTop` 重命名为 `safeArea`
-- `border` 废弃
-- 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
--
+- 移除 titleAlign 属性，可通过 title 和 children 替代
+- 增加 title 属性，默认居中展示
+- 组件中出现 children ，则采取 titleAlign 的 left 方式布局
 
 #### Pagination
 
