@@ -46,7 +46,6 @@ const Demo4 = () => {
         total={6}
         current={5}
         direction="vertical"
-        color="white"
         type="slide"
         style={{
           marginLeft: '50px',
