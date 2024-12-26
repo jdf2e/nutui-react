@@ -91,7 +91,6 @@ import { TextArea } from '@nutui/nutui-react'
 | disabled | 禁用属性 | `boolean` | `false` |
 | plain | 标记文本域的容器类型，false 为容器型 `container`, true 为 `纯文本型` | `boolean` | `false` |
 | status | 文本域状态，可标记为 默认状态 和 错误状态 | `default /\ error` | `default` |
-| message | 文本域描述，搭配error状态使用 | `string` | `` |
 | onChange | 输入内容时触发 | `(value) => void` | `-` |
 | onFocus | 聚焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | 失焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |

@@ -17,7 +17,6 @@ export interface TextAreaProps extends BasicComponent {
   autoSize: boolean
   plain: boolean
   status: 'error' | 'default'
-  message: string
   onChange: (value: string) => void
   onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
   onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
@@ -35,7 +34,6 @@ const defaultProps = {
   autoSize: false,
   plain: false,
   status: 'default',
-  message: '',
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -59,7 +57,6 @@ export const TextArea: FunctionComponent<
     style,
     plain,
     status,
-    message,
     onChange,
     onBlur,
     onFocus,
@@ -162,9 +159,6 @@ export const TextArea: FunctionComponent<
           </div>
         )}
       </div>
-      {status === 'error' && message && (
-        <div className={`${classPrefix}-description`}>{message}</div>
-      )}
     </>
   )
 }

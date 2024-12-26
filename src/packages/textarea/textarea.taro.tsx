@@ -23,7 +23,6 @@ export interface TextAreaProps
   autoSize: boolean
   plain: boolean
   status: 'error' | 'default'
-  message: string
   onChange: (value: string) => void
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
@@ -40,7 +39,6 @@ const defaultProps = {
   autoSize: false,
   plain: false,
   status: 'default',
-  message: '',
 } as TextAreaProps
 export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
@@ -58,7 +56,6 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     style,
     plain,
     status,
-    message,
     onChange,
     onBlur,
     onFocus,
@@ -151,9 +148,6 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
           </Text>
         )}
       </View>
-      {status === 'error' && message && (
-        <View className={`${classPrefix}-description`}>{message}</View>
-      )}
     </>
   )
 }

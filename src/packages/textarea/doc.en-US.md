@@ -91,7 +91,6 @@ import { TextArea } from '@nutui/nutui-react'
 | disabled | disable attribute | `boolean` | `false` |
 | plain | mark textarea's container type, false is for `container`, true is for `纯文本型` | `boolean` | `false` |
 | status | textarea status, with default and error | `default /\ error` | `default` |
-| message | textarea description | `string` | `` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
 | onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |

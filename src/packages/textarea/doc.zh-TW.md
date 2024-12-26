@@ -90,7 +90,6 @@ import { TextArea } from '@nutui/nutui-react'
 | disabled | 禁用屬性 | `boolean` | `false` |
 | plain | 標記文本域的容器類型，false 為容器型 `container`, true 為 `純文本型` | `boolean` | `false` |
 | status | 文本域狀態，可標記為 默認狀態 和 錯誤狀態 | `default /\ error` | `default` |
-| message | 文本域描述，搭配error狀態使用 | `string` | `` |
 | onChange | 輸入內容時觸發 | `(value) => void` | `-` |
 | onFocus | 聚焦時觸發 | `(event) => void` | `-` |
 | onBlur | 失焦時觸發 | `(event) => void` | `-` |
