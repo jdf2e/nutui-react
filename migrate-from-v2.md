@@ -516,7 +516,7 @@ plugins: [
 
 #### TextArea
 
-- 增加 `type`，只为 `plain` 和 `container`
+- 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型；
 - 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader

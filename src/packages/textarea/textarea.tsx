@@ -15,7 +15,9 @@ export interface TextAreaProps extends BasicComponent {
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
-  type: 'plain' | 'container'
+  plain: boolean
+  status: 'error' | 'default'
+  message: string
   onChange: (value: string) => void
   onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
   onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
@@ -31,7 +33,9 @@ const defaultProps = {
   readOnly: false,
   disabled: false,
   autoSize: false,
-  type: 'plain',
+  plain: false,
+  status: 'default',
+  message: '',
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -53,7 +57,9 @@ export const TextArea: FunctionComponent<
     disabled,
     autoSize,
     style,
-    type,
+    plain,
+    status,
+    message,
     onChange,
     onBlur,
     onFocus,
@@ -115,46 +121,51 @@ export const TextArea: FunctionComponent<
   }
 
   return (
-    <div
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-disabled`]: disabled,
-          [`${classPrefix}-rtl`]: rtl,
-          [`${classPrefix}-${type}`]: type,
-        },
-        className
+    <>
+      <div
+        className={classNames(
+          classPrefix,
+          disabled ? `${classPrefix}-disabled` : '',
+          readOnly ? `${classPrefix}-readonly` : '',
+          rtl ? `${classPrefix}-rtl` : '',
+          plain ? `${classPrefix}-plain` : `${classPrefix}-container`,
+          status ? `${classPrefix}-${status}` : '',
+          className
+        )}
+      >
+        <textarea
+          ref={textareaRef}
+          className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
+          style={style}
+          disabled={disabled}
+          readOnly={readOnly}
+          value={inputValue}
+          onChange={(e) => handleChange(e)}
+          onBlur={(e) => handleBlur(e)}
+          onFocus={(e) => handleFocus(e)}
+          onCompositionEnd={() => {
+            compositionRef.current = false
+          }}
+          onCompositionStart={() => {
+            compositionRef.current = true
+          }}
+          rows={rows}
+          maxLength={maxLength === -1 ? undefined : maxLength}
+          placeholder={placeholder || locale.placeholder}
+          {...rest}
+        />
+        {showCount && (
+          <div
+            className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+          >
+            {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
+          </div>
+        )}
+      </div>
+      {status === 'error' && message && (
+        <div className={`${classPrefix}-description`}>{message}</div>
       )}
-    >
-      <textarea
-        ref={textareaRef}
-        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
-        style={style}
-        disabled={disabled}
-        readOnly={readOnly}
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
-        onBlur={(e) => handleBlur(e)}
-        onFocus={(e) => handleFocus(e)}
-        onCompositionEnd={() => {
-          compositionRef.current = false
-        }}
-        onCompositionStart={() => {
-          compositionRef.current = true
-        }}
-        rows={rows}
-        maxLength={maxLength === -1 ? undefined : maxLength}
-        placeholder={placeholder || locale.placeholder}
-        {...rest}
-      />
-      {showCount && (
-        <div
-          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
-        >
-          {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-        </div>
-      )}
-    </div>
+    </>
   )
 }
 

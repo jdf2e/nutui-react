@@ -5,14 +5,14 @@ const Demo1 = () => {
   return (
     <Space direction="vertical">
       <TextArea
-        defaultValue="基础用法1"
+        plain
+        defaultValue="基础用法：纯文本型"
         onChange={(value) => console.log('change', value)}
         onBlur={() => console.log('blur')}
         onFocus={() => console.log('focus')}
       />
       <TextArea
-        defaultValue="基础用法2"
-        type="container"
+        defaultValue="基础用法：容器型"
         onChange={(value) => console.log('change', value)}
         onBlur={() => console.log('blur')}
         onFocus={() => console.log('focus')}

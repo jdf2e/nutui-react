@@ -4,10 +4,9 @@ import { TextArea } from '@nutui/nutui-react'
 const Demo8 = () => {
   return (
     <TextArea
-      defaultValue="文本居右"
-      style={{
-        textAlign: 'right',
-      }}
+      status="error"
+      defaultValue="输入内容错误"
+      message="输入内容错误"
     />
   )
 }

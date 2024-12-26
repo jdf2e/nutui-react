@@ -8,7 +8,7 @@ const Demo5 = () => {
   }
   return (
     <ConfigProvider theme={customTheme}>
-      <TextArea showCount maxLength={20} type="container" />
+      <TextArea showCount maxLength={20} />
     </ConfigProvider>
   )
 }

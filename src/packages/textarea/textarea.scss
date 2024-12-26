@@ -12,16 +12,28 @@
     background-color: $color-background-overlay;
   }
 
+  &-error {
+    border: 0.5px solid $color-danger;
+    background-color: $color-danger-light;
+  }
+
   &-limit {
     text-align: right;
     font-size: $font-size-base;
     line-height: $font-size-base;
-    margin-top: 8px;
+    margin-top: $spacing-base;
     color: $color-text-help;
     &-disabled {
       cursor: not-allowed;
       color: $color-text-disabled;
     }
+  }
+
+  &-description {
+    color: $color-danger;
+    margin-top: $spacing-base;
+    margin-left: $spacing-xxs;
+    font-size: $font-size-s;
   }
 
   &-textarea {
