@@ -77,9 +77,7 @@ const PopupDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView
-        className={`${!harmonyAndRn() ? `demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}` : ''}`}
-      >
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
 

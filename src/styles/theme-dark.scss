@@ -37,10 +37,10 @@ page {
   --nutui-color-primary-specialdisabled: var(--nutui-red-3);
 
   // service color
-  --nutui-golden-1: #fff2e0;
-  --nutui-golden-2: #ffd4a3;
-  --nutui-golden-3: #cc8241; // todo
-  --nutui-golden-4: #994d00; // todo
+  --nutui-golden-1: #292725;
+  --nutui-golden-2: #4d4134;
+  --nutui-golden-3: #c59463;
+  --nutui-golden-4: #d18e54;
 
   --nutui-golden-stop-1: #fff9f0;
   --nutui-golden-stop-2: #ffe3c2;
@@ -54,9 +54,9 @@ page {
   --nutui-color-service-text: var(--nutui-golden-3);
 
   // success color
-  --nutui-green-1: #ebfbeb;
-  --nutui-green-2: #00d900;
-  --nutui-green-3: #2aa32a;
+  --nutui-green-1: #1f2920;
+  --nutui-green-2: #32c241;
+  --nutui-green-3: #12b222;
 
   // success color 语义化
   --nutui-color-success: var(--nutui-green-2); // 深背景
@@ -64,9 +64,9 @@ page {
   --nutui-color-success-pressed: var(--nutui-green-3); // 文字
 
   // danger color
-  --nutui-red-1: #ffebef;
-  --nutui-red-2: #ff0f23;
-  --nutui-red-3: #ffadbe;
+  --nutui-red-1: #2e2526;
+  --nutui-red-2: #ff3344;
+  --nutui-red-3: #ff3344;
   --nutui-red-6: #ff3b3b;
 
   // danger color 语义化
@@ -74,9 +74,9 @@ page {
   --nutui-color-danger-light: var(--nutui-red-1); // 背景
 
   // warning color
-  --nutui-yellow-1: #fff5cc;
-  --nutui-yellow-2: #ffbf00;
-  --nutui-yellow-3: #c47600;
+  --nutui-yellow-1: #29271f;
+  --nutui-yellow-2: #faaf00;
+  --nutui-yellow-3: #c47600; //todo
 
   // warning color 语义化
   --nutui-color-warning: var(--nutui-yellow-2); // 深背景
@@ -84,8 +84,8 @@ page {
   --nutui-color-warning-pressed: var(--nutui-yellow-3); // 文字
 
   // info color
-  --nutui-blue-1: #e5f5ff;
-  --nutui-blue-2: #0073ff;
+  --nutui-blue-1: #23292e;
+  --nutui-blue-2: #3385ff;
 
   // info color 语义化
   --nutui-color-info: var(--nutui-blue-2); // 背景或文字，链接色
@@ -116,10 +116,10 @@ page {
   --nutui-black-1: rgba(255, 255, 255, 0);
   // 蒙层色
   // 容错蒙层
-  --nutui-black-2: rgba(0, 0, 0, 0.2);
+  --nutui-black-2: rgba(0, 0, 0, 0.1);
   // 线条色
   // 间隔线/容错线，用于结构或信息分割
-  --nutui-black-3: rgba(20, 20, 20, 0.06);
+  --nutui-black-3: rgba(255, 255, 255, 0.06);
   --nutui-black-4: rgba(20, 20, 20, 0.1);
   --nutui-black-5: rgba(20, 20, 20, 0.2);
   --nutui-black-6: rgba(20, 20, 20, 0.3);

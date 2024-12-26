@@ -15,12 +15,6 @@
   z-index: $overlay-zIndex;
 }
 
-[dir='rtl'] .nut-overlay,
-.nut-rtl .nut-overlay {
-  left: auto;
-  right: 0;
-}
-
 .nut-overflow-hidden {
   overflow: hidden !important;
 }
@@ -66,4 +60,10 @@
     animation-name: nut-fade-out;
     animation-duration: $overlay-animation-duration;
   }
+}
+
+[dir='rtl'] .nut-overlay,
+.nut-rtl .nut-overlay {
+  left: auto;
+  right: 0;
 }

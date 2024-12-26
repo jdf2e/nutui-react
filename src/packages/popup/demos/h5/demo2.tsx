@@ -6,6 +6,7 @@ const Demo2 = () => {
   const [showBottom, setShowBottom] = useState(false)
   const [showLeft, setShowLeft] = useState(false)
   const [showRight, setShowRight] = useState(false)
+  const [showText, setShowText] = useState(false)
 
   return (
     <>
@@ -33,6 +34,12 @@ const Demo2 = () => {
           setShowRight(true)
         }}
       />
+      <Cell
+        title="居中弹出"
+        onClick={() => {
+          setShowText(true)
+        }}
+      />
       <Popup
         visible={showTop}
         destroyOnClose
@@ -50,7 +57,6 @@ const Demo2 = () => {
       />
       <Popup
         visible={showLeft}
-        style={{ width: '40%', height: '100%' }}
         position="left"
         onClose={() => {
           setShowLeft(false)
@@ -58,12 +64,26 @@ const Demo2 = () => {
       />
       <Popup
         visible={showRight}
-        style={{ width: '40%', height: '100%' }}
         position="right"
         onClose={() => {
           setShowRight(false)
         }}
       />
+      <Popup
+        visible={showText}
+        style={{ padding: '30px 50px' }}
+        onClose={() => {
+          setShowText(false)
+        }}
+      >
+        <div style={{ height: '100px', overflowY: 'auto' }}>
+          {Array.from({ length: 10 })
+            .fill('')
+            .map((_, i) => (
+              <Cell key={i}>正文</Cell>
+            ))}
+        </div>
+      </Popup>
     </>
   )
 }

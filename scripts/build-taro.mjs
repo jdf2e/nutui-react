@@ -213,6 +213,32 @@ async function buildUMD() {
 }
 
 async function buildAllCSS() {
+  // 拷贝styles
+  async function copyStyles() {
+    await copy(
+      resolve(__dirname, '../src/styles'),
+      resolve(__dirname, '../dist/styles')
+    )
+
+    const content = [
+      `@import './styles/theme-default.scss';`,
+      `@import './styles/variables.scss';`,
+      `@import './styles/mixins/index.scss';`,
+      `@import './styles/animation/index.scss';`,
+    ]
+    const projectID = process.env.VITE_APP_PROJECT_ID
+    if (projectID) {
+      content[1] = `@import '../variables-${projectID}.scss';`
+    }
+    const scssFiles = await glob(['dist/es/packages/**/*.scss'])
+    scssFiles.forEach((file) => {
+      content.push(
+        `@import '${relativeFilePath('/dist/style.scss', '/' + file)}';`
+      )
+    })
+    dest('dist/style.scss', content.join('\n'))
+  }
+  await copyStyles()
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -221,10 +247,33 @@ async function buildAllCSS() {
     build: {
       emptyOutDir: false,
       lib: {
-        entry: './dist/styles/themes/default.scss',
+        entry: './dist/style.scss',
         formats: ['es'],
         name: 'style',
         fileName: 'style',
+      },
+    },
+  })
+}
+
+async function buildThemeCSS() {
+  await vite.build({
+    logLevel: 'error',
+    resolve: {
+      alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],
+    },
+    build: {
+      emptyOutDir: false,
+      rollupOptions: {
+        output: [
+          {
+            dir: 'dist/styles/themes',
+            assetFileNames: 'default.css',
+          },
+        ],
+      },
+      lib: {
+        entry: './dist/styles/themes/default.scss',
       },
     },
   })
@@ -338,39 +387,45 @@ async function buildCSS(p) {
 
 }
 
-console.log('clean dist')
+console.time('clean dist')
 await deleteAsync('dist')
-console.log('clean: ✅')
+console.timeEnd('clean dist')
 
 await generate()
 
-console.log('build ES Module')
+console.time('build ES Module')
 await buildES()
-console.log('build ES Module: ✅')
+console.timeEnd('build ES Module')
 
-console.log('build CommonJS')
+console.time('build CommonJS')
 await buildCJS()
-console.log('build CommonJS: ✅')
+console.timeEnd('build CommonJS')
 
-console.log('build UMD')
+console.time('build UMD')
 await buildUMD()
-console.log('build UMD: ✅')
+console.timeEnd('build UMD')
 
-console.log('Build CSS')
+console.time('Build CSS')
 await buildCSS()
-console.log('Build CSS: ✅')
+console.timeEnd('Build CSS')
 
-console.log('Copy Styles')
+console.time('Copy Styles')
 await copyStyles()
-console.log('Copy Styles: ✅')
+console.timeEnd('Copy Styles')
 
-console.log('Build All CSS')
+console.time('Build All CSS')
 await buildAllCSS()
-console.log('Build All CSS: ✅')
+console.timeEnd('Build All CSS')
 
-console.log('Build Declaration')
+console.time('Build Theme CSS')
+await buildThemeCSS()
+console.timeEnd('Build Theme CSS')
+
+console.time('Build Declaration')
 await buildDeclaration()
-console.log('Build Declaration: ✅')
+console.timeEnd('Build Declaration')
+
+// await exportProps()
 
 await deleteAsync([
   'dist/es/packages/nutui.react.js',
@@ -379,4 +434,6 @@ await deleteAsync([
   'dist/es/packages/nutui.react.scss.js',
 ])
 
-codeShift('Taro')
+console.time('Build JSDoc')
+codeShift()
+console.timeEnd('Build JSDoc')

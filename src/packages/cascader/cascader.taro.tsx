@@ -481,7 +481,6 @@ const InternalCascader: ForwardRefRenderFunction<
           {...popupProps}
           visible={innerVisible}
           position="bottom"
-          style={{ overflowY: 'hidden' }}
           round
           closeIcon={closeIcon}
           closeable={closeable}
