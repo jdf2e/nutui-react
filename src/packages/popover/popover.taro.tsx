@@ -47,7 +47,7 @@ const defaultProps = {
   theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: [0, 12],
+  offset: [0, 4],
   arrowOffset: 0,
   targetId: '',
   className: '',

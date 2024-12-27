@@ -44,7 +44,7 @@ const defaultProps = {
   theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: [0, 12],
+  offset: [0, 8],
   arrowOffset: 0,
   targetId: '',
   showArrow: true,
@@ -186,11 +186,13 @@ export const Popover: FunctionComponent<
     const skew = location.split('-')[1]
     let cross = 0
     let parallel = 0
+    console.log('offset', offset)
     if (Array.isArray(offset) && offset.length === 2) {
       const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
       parallel += +rtloffset
     }
+    console.log('offset', offset, parallel, cross, width, top, height)
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
