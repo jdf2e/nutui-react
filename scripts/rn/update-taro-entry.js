@@ -17,8 +17,8 @@ function specialComponent(name) {
 const adaptedArray = []
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, version,v15 } = element
-    if (!v15) return // 未适配不导出
+    const { name, version } = element
+    if (version !== '3.0.0') return // 未适配不导出
     if (specialComponent(name)) return
     adaptedArray.push({
       ...element,
@@ -52,7 +52,7 @@ const createConfig = async () => {
       }
 
       item.packages.map((it) => {
-        if (!(it.exportEmpty == false) && it.show && it.taro) {
+        if (!(it.exportEmpty == false) && it.show && it.taro && it.v15) {
           if (!param || specialComponent(it.name)) {
             co.pages.push(`pages/${it.name.toLowerCase()}/index`)
           }
