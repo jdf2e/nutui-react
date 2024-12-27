@@ -79,6 +79,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": ""
         },
         {
@@ -90,6 +91,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -102,6 +104,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -114,6 +117,7 @@
           "show": true,
           "exportEmpty": true,
           "taro": true,
+          "v15": true,
           "author": "hanyuxinting"
         },
         {
@@ -126,6 +130,7 @@
           "show": true,
           "taro": true,
           "exclude": true,
+          "v15": true,
           "author": "oasis-cloud"
         },
         {
@@ -138,6 +143,7 @@
           "sort": 8,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "vickyYE"
         },
         {
@@ -149,6 +155,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "junjun"
         }
       ]
@@ -177,6 +184,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "vickyYE"
         },
         {
@@ -201,6 +209,7 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
+          "v15": true,
           "author": "yangxiaolu"
         },
         {
@@ -308,6 +317,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "Ymm0008"
         },
         {
@@ -320,6 +330,7 @@
           "sort": 5,
           "show": false,
           "taro": true,
+          "v15": true,
           "author": "Ymm0008"
         },
         {
@@ -376,6 +387,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -386,6 +398,7 @@
           "type": "component",
           "show": false,
           "taro": true,
+          "v15": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "dsj"
@@ -397,6 +410,7 @@
           "cName": "选项卡切换子组件",
           "type": "component",
           "show": false,
+          "v15": true,
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发"
@@ -410,6 +424,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "oasis"
         }
       ]
@@ -493,6 +508,7 @@
           "desc": "多选按钮组",
           "sort": 11,
           "show": false,
+          "v15": true,
           "exportEmpty": true,
           "author": "oasis"
         },
@@ -551,6 +567,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "swag~jun"
         }
       ]
@@ -625,6 +642,7 @@
           "sort": 10,
           "exportEmpty": true,
           "show": false,
+          "v15": true,
           "author": "oasis"
         },
         {
@@ -757,10 +775,11 @@
           "sort": 12,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "yangjinjun3"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
@@ -768,6 +787,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "songsong"
         },
         {
@@ -816,6 +836,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "mike8625"
         },
         {
@@ -842,7 +863,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Popover",
           "type": "component",
           "cName": "气泡弹出框",
@@ -850,6 +871,7 @@
           "sort": 19,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "lzz"
         },
         {
@@ -874,6 +896,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "oasis"
         },
         {

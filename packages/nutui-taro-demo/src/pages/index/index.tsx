@@ -69,7 +69,7 @@ const Index = () => {
 
       <View className='index-components'>
         {process.env.NODE_ENV === 'development' ? <>
-          <SearchBar style={{ background: '#fff' }} placeholder='' value={search} onChange={(e) => {
+          <SearchBar style={{ background: '#fff',borderRadius:'8px' }} placeholder='' value={search} onChange={(e) => {
             setSearch(e)
           }} />
           <View style={{ height: 25 }}></View>
