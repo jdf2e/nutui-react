@@ -11,6 +11,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 interface T {
   basic: string
@@ -24,6 +25,7 @@ interface T {
   disabledState: string
   textAlign: string
   alignRight: string
+  error: string
 }
 
 const TextAreaDemo = () => {
@@ -40,6 +42,7 @@ const TextAreaDemo = () => {
       disabledState: '禁用状态',
       textAlign: '文本位置',
       alignRight: '文本居右',
+      error: '错误状态',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -53,6 +56,7 @@ const TextAreaDemo = () => {
       disabledState: '禁用狀態',
       textAlign: '文本位置',
       alignRight: '文本居右',
+      error: '錯誤狀態',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -66,6 +70,7 @@ const TextAreaDemo = () => {
       disabledState: 'Disabled state',
       textAlign: 'TextAlign',
       alignRight: 'TextAlign Right',
+      error: 'Status is error',
     },
   })
   return (
@@ -89,6 +94,8 @@ const TextAreaDemo = () => {
         <Demo7 />
         <View className="h2">{translated.textAlign}</View>
         <Demo8 />
+        <h2>{translated.error}</h2>
+        <Demo9 />
       </ScrollView>
     </>
   )

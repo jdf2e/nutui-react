@@ -1,28 +1,18 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
+import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
+import { BadgeProps } from './types'
 
-export type BadgeFill = 'solid' | 'outline'
-
-export interface BadgeProps extends BasicComponent {
-  value: ReactNode
-  dot: boolean
-  max: number
-  top: string | number
-  right: string | number
-  color: string
-  fill: BadgeFill
-}
 const defaultProps = {
   ...ComponentDefaults,
   value: '',
   dot: false,
   max: 99,
-  top: '4',
-  right: '8',
-  color: '',
+  top: 0,
+  right: 0,
   fill: 'solid',
+  size: 'large',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const rtl = useRtl()
@@ -35,16 +25,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     dot,
     top,
     right,
-    color,
     fill,
+    size,
   } = {
     ...defaultProps,
     ...props,
   }
   const classPrefix = 'nut-badge'
-  const classes = classNames(classPrefix, className, {
-    [`${classPrefix}-${fill}`]: fill === 'outline',
-  })
+  const classes = classNames(classPrefix, className)
 
   function content() {
     if (dot || typeof value === 'object' || value === 0) return null
@@ -66,33 +54,24 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (typeof value === 'string' && value) return value
   }
 
-  const contentClasses = classNames(`${classPrefix}-content`, {
+  const contentClasses = classNames({
     [`${classPrefix}-sup`]: isNumber() || isString() || dot,
+    [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-one`]:
       typeof content() === 'string' && `${content()}`?.length === 1,
     [`${classPrefix}-dot`]: dot,
+    [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
+    [`${classPrefix}-content`]: children,
   })
-  const getStyle = () => {
+  const getPositionStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${Number(-top) || parseFloat(String(-top)) || 0}px`
+    style.top = `${Number(top) || 0}px`
     const dir = rtl ? 'left' : 'right'
     style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
-
-    if (color) {
-      if (fill === 'outline') {
-        style.color = color
-        style.background = '#fff'
-        if (!color?.includes('gradient')) {
-          style.border = `1px solid ${color}`
-        }
-      } else {
-        style.color = '#fff'
-        style.background = color
-      }
-    }
     return style
   }
+
   return (
     <div className={classes} style={style}>
       {isIcon() && (
@@ -101,13 +80,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
             [`${classPrefix}-icon`]: true,
             [`${classPrefix}-icon-rtl`]: rtl,
           })}
+          style={getPositionStyle()}
         >
           {value}
         </div>
       )}
       {children}
       {!isIcon() && (
-        <div className={contentClasses} style={getStyle()}>
+        <div className={contentClasses} style={getPositionStyle()}>
           {content()}
         </div>
       )}

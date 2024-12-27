@@ -274,6 +274,7 @@
           "tarodoc": true,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "vickyYe"
         },
         {
@@ -330,6 +331,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "dsj"
         },
         {
@@ -480,6 +482,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "oasis"
         },
         {
@@ -536,6 +539,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "VickyYe"
         },
         {
@@ -609,6 +613,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "oasis"
         },
         {
@@ -699,10 +704,11 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "VickyYe"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Uploader",
           "type": "component",
           "tarodoc": true,
@@ -739,6 +745,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "lzz"
         },
         {
@@ -797,6 +804,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "swag~jun"
         },
         {
@@ -853,6 +861,7 @@
           "type": "component",
           "show": true,
           "taro": true,
+          "v15": true,
           "rn": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
@@ -1040,6 +1049,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "liukun"
         },
         {
@@ -1086,6 +1096,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": true,
           "author": "songsong"
         },
         {

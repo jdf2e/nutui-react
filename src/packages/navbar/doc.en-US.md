@@ -43,7 +43,7 @@ import { NavBar } from '@nutui/nutui-react'
 | right | Right side content | `ReactNode` | `-` |
 | left | The left content, rendered to the right of the return area | `ReactNode` | `-` |
 | back | Returns the text of the area | `ReactNode` | `-` |
-| titleAlign | Title align, optional value center、left | `string` | `center` |
+| title | Title | `ReactNode` | `-` |
 | fixed | Is it fixed | `boolean` | `false` |
 | safeAreaInsetTop | Whether it is suitable for the safe area | `boolean` | `false` |
 | placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |

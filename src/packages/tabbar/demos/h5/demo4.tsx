@@ -9,7 +9,7 @@ const Demo4 = () => (
   >
     <Tabbar.Item title="首页" value={9} />
     <Tabbar.Item title="分类" dot />
-    <Tabbar.Item title="发现" />
+    <Tabbar.Item title="逛" />
     <Tabbar.Item title="购物车" />
     <Tabbar.Item title="我的" />
   </Tabbar>

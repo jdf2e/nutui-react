@@ -255,12 +255,8 @@ plugins: [
 
 #### Indicator
 
-- 移除 `block`，暴露自定义节点
-- 移除 `align`，暴露自定义节点
-- `vertical` 重命名为`direction`，默认值为 `horizontal`，可选 `vertical`
-- 移除 `fillZero`，暴露自定义节点
-- `size` 重命名为 `total`
-- 增加非数字展示，并设置为默认状态
+- type 属性的值调整为 `'anchor'` 或 `'slide'`
+- color 属性的值增加 `'white'`
 
 #### Menu
 
@@ -273,16 +269,9 @@ plugins: [
 
 #### NavBar
 
-- `desc` 重命名为 `right`，类型修改为 `React.Node`
-- 新增 `left`，左侧内容，渲染在返回区域的右侧
-- 新增 `back`，返回区域内容
-- `onClickBack` 重命名为 `onBackClick`
-- 移除 `title`，通过 `children` 实现
-- 移除 `leftText` `leftShow`，通过 `back`、`left`实现
-- `safeAreaInsetTop` 重命名为 `safeArea`
-- `border` 废弃
-- 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
--
+- 移除 titleAlign 属性，可通过 title 和 children 替代
+- 增加 title 属性，默认居中展示
+- 组件中出现 children ，则采取 titleAlign 的 left 方式布局
 
 #### Pagination
 
@@ -417,6 +406,10 @@ plugins: [
 
 #### Input
 
+- 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型；
+- 区分了 readonly 和 disabled 的样式；
+- 删除一些样式变量，统一到由通用变量控制，如`$input-color`、`$input-disabled-color`
+
 #### InputNumber
 
 - 增加 `allowEmpty`, 用于允许内容是否为空
@@ -516,32 +509,21 @@ plugins: [
 
 #### TextArea
 
-- `maxlength` 重命名为 `maxLength`
-- `readonly` 重命名为 `readOnly`
-- `limitShow` 重命名为 `showCount`
-- `autosize` 重命名为 `autoSize`
-- 移除 `textAlign`，可通过 `style` 传入
-- `defaultValue` 改为非受控，增加受控值 `value`
+- 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型；
+- 新增 `status` 属性，值为 `default` | `error`，可定义输入框的状态；
+- 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader
 
-- `maximize` 重命名为 `maxFileSize`
-- `maximum` 重命名为 `maxCount`
-- `listType ` 重命名为 `previewType`
-- `isDeletable ` 重命名为 `deletable`
-- `isPreview` 重命名为 ` preview`
-- `defaultImg` 重命名为 ` previewUrl`
-- `defaultFileList` 重命名为 ` defaultValue`
-- `uploadIconTip` 重命名为 `uploadLabel`，类型变更为 `ReactNode`
-- `onBeforeUpload` 重命名为 `beforeUpload`
-- `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
-- `onBeforeDelete` 重命名为 `beforeDelete`
-- `onRemove` 重命名为 `onDelete`
-- 增加 `fit`，用于图片填充模式
-- 增加 `value`，用于受控传值
-- 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
-- `uploadIcon` 类型从 `string` 调整为 `ReactNode`
-- `onChange` 参数类型从 `{fileList: FileItem[], event: any}` 调整为 `FileItem[]`
+- 移除了组件内部关于ajax相关网络逻辑的处理
+- 移除了`url`、`headers`、`data`、`xhrState`、`withCredentials`、`timeout` 网络配置相关props
+- 移除了`onStart`、`onProgress`、`onFailure`、`beforeXhrUpload` 触发时机函数相关props
+- 新增`onOverCount`属性，文件数量超过限制时触发
+- 新增`onUploadQueueChange`属性，图片上传队列变化时触发
+- 简化`FileItem`类型的使用，除url外其他属性变为可选
+- 调整多选状态下`maxCount`属性的默认值为`Number.MAX_VALUE`
+- 新增了的 `upload` 方法
+- `defaultValue` 和 `value` 的类型从 `FileType` 变更为 `FileItem`
 
 ### 操作反馈
 
@@ -562,10 +544,9 @@ plugins: [
 
 #### BackTop
 
-- `elId` 重命名为 `target`
-- 移除 `right`、`bottom`，通过 style 传入，增加支持 `left`、`top`
-- `distance` 重命名为 `threshold`
-- 移除 `isAnimation`，通过 `duration` 设置 0 实现无动画效果
+- 使用 `HoverButton` 重构 `BackTop`
+- 新增 `icon` 字段，可直接修改图标
+- 继续支持自定义节点
 
 #### Dialog
 
@@ -667,11 +648,8 @@ plugins: [
 
 #### Badge
 
-- 移除 `zIndex`，目前没有用到，也不生效，直接去掉。
-- 移除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
-- 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
-- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来.
-- 主题定制，增加包含 icon 情况下的样式变量。
+- 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
+- 移除 `徽标背景颜色`，通过css变量`--nutui-badge-background-color`实现
 
 #### CircleProgress
 
@@ -751,9 +729,8 @@ plugins: [
 
 #### Price
 
-- `decimalDigits` 重命名为 `digits`
-- 移除 `needSymbol`，通过 `symbol` 判断是否需要加上 symbol 符号
-- 新增 `line`，是否展示划线价
+- 修改 `size`，增加 'xlarge' 尺寸
+- 新增 `color`, 价格类型
 
 #### Progress
 
