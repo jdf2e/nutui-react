@@ -6,7 +6,7 @@ import { PriceProps } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,
-  type: 'primary',
+  color: 'primary',
   price: 0,
   symbol: '&yen;',
   digits: 2,
@@ -17,7 +17,7 @@ const defaultProps = {
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const {
-    type,
+    color,
     price,
     symbol,
     digits,
@@ -93,7 +93,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   return (
     <div
-      className={`${classPrefix} ${classPrefix}-${type} ${className}`}
+      className={`${classPrefix} ${classPrefix}-${color} ${className}`}
       style={style}
       {...rest}
     >

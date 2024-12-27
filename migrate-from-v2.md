@@ -734,7 +734,7 @@ plugins: [
 #### Price
 
 - 修改 `size`，增加 'xlarge' 尺寸
-- 新增 `type`, 价格类型
+- 新增 `color`, 价格类型
 
 #### Progress
 

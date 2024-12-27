@@ -19,22 +19,22 @@ const Demo9 = () => {
       <Cell align="baseline">
         <Price price={618.68} size="small" />
         <span style={{ ...priceStyles, ...colorStyles }}>专享价</span>
-        <Price price={1080.68} type="gray" size="small" />
+        <Price price={1080.68} color="gray" size="small" />
       </Cell>
       <Cell align="baseline">
         <Price price={618.68} size="normal" />
         <span style={{ ...priceStyles, ...colorStyles }}>粉丝到手价</span>
-        <Price price={1080.68} type="gray" size="small" />
+        <Price price={1080.68} color="gray" size="small" />
       </Cell>
       <Cell align="baseline">
         <Price price={618.68} size="large" />
         <span style={{ ...exclusivePriceStyles, ...colorStyles }}>秒杀价</span>
-        <Price price={1080.68} type="gray" size="small" />
+        <Price price={1080.68} color="gray" size="small" />
       </Cell>
       <Cell align="baseline">
         <Price price={618.68} size="xlarge" />
         <span style={{ ...exclusivePriceStyles, ...colorStyles }}>专享价</span>
-        <Price price={1080.68} type="gray" size="small" />
+        <Price price={1080.68} color="gray" size="small" />
       </Cell>
     </CellGroup>
   )

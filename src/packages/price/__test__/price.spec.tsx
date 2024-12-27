@@ -47,7 +47,7 @@ test('props size', () => {
   )
 })
 
-test('props type', () => {
-  const { container } = render(<Price price={1010} type="primary" />)
+test('props color', () => {
+  const { container } = render(<Price price={1010} color="primary" />)
   expect(container.querySelector('.nut-price')).toHaveClass('nut-price-primary')
 })

@@ -88,7 +88,7 @@ import { Price } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 价格类型 | `primary` \| `gray` \| `darkgray` | `primary` |
+| color | 价格类型 | `primary` \| `gray` \| `darkgray` | `primary` |
 | price | 价格数量 | `number` | `0` |
 | symbol | 符号类型 | `string` | `&yen;` |
 | digits | 小数位位数 | `number` | `2` |

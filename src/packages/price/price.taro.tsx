@@ -8,7 +8,7 @@ import { harmony } from '@/utils/platform-taro'
 
 const defaultProps = {
   ...ComponentDefaults,
-  type: 'primary',
+  color: 'primary',
   price: 0,
   symbol: '&yen;',
   digits: 2,
@@ -19,7 +19,7 @@ const defaultProps = {
 } as PriceProps
 export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const {
-    type,
+    color,
     price,
     symbol,
     digits,
@@ -142,14 +142,14 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     <>
       {harmony() ? (
         <Text
-          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
+          className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
           {renderInner()}
         </Text>
       ) : (
         <View
-          className={`${classPrefix} ${classPrefix}-${type} ${className}`}
+          className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
           {renderInner()}
