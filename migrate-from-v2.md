@@ -255,12 +255,8 @@ plugins: [
 
 #### Indicator
 
-- 移除 `block`，暴露自定义节点
-- 移除 `align`，暴露自定义节点
-- `vertical` 重命名为`direction`，默认值为 `horizontal`，可选 `vertical`
-- 移除 `fillZero`，暴露自定义节点
-- `size` 重命名为 `total`
-- 增加非数字展示，并设置为默认状态
+- type 属性的值调整为 `'anchor'` 或 `'slide'`
+- color 属性的值增加 `'white'`
 
 #### Menu
 

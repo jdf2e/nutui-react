@@ -4,7 +4,6 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  //justify-content: center;
 
   &-fixed-width {
     width: 21px;
@@ -116,6 +115,12 @@
 
       &-active {
         opacity: 1;
+        background: rgba(255, 255, 255, 1);
+      }
+    }
+    &-dot {
+      &-active {
+        background: rgba(255, 255, 255, 1);
       }
     }
   }
