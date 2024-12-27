@@ -172,7 +172,7 @@ $button-square-border-radius: var(
   --nutui-button-square-border-radius,
   0
 ) !default;
-$button-border-radius: var(--nutui-button-border-radius, 8px) !default;
+$button-border-radius: var(--nutui-button-border-radius, $radius-s) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 $button-normal-padding: var(--nutui-button-normal-padding, 0px 12px) !default;
 $button-default-height: var(--nutui-button-default-height, 32px) !default;
@@ -196,7 +196,7 @@ $button-default-disabled-color: var(
 $button-default-padding: var(--nutui-button-default-padding, 0px 12px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
-  $font-size-s
+  $font-size-base
 ) !default;
 $button-default-font-weight: var(
   --nutui-button-default-font-weight,
@@ -209,12 +209,20 @@ $button-xlarge-font-size: var(
   --nutui-button-xlarge-font-size,
   $font-size-xl
 ) !default;
+$button-xlarge-text-icon-margin: var(
+  --nutui-button-xlarge-text-icon-margin,
+  6px
+) !default;
+$button-xlarge-border-radius: var(
+  --nutui-button-xlarge-border-radius,
+  $radius-base
+) !default;
 
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
 $button-large-padding: var(--nutui-button-large-padding, 0px 16px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $font-size-base
+  $font-size-l
 ) !default;
 $button-large-font-weight: var(
   --nutui-button-large-font-weight,
@@ -222,7 +230,7 @@ $button-large-font-weight: var(
 ) !default;
 $button-large-border-radius: var(
   --nutui-button-large-border-radius,
-  12px
+  $radius-s
 ) !default;
 
 $button-small-font-size: var(
@@ -233,7 +241,7 @@ $button-small-padding: var(--nutui-button-small-padding, 0px 8px) !default;
 $button-small-height: var(--nutui-button-small-height, 28px) !default;
 $button-small-border-radius: var(
   --nutui-button-small-border-radius,
-  8px
+  $radius-xs
 ) !default;
 
 $button-mini-padding: var(--nutui-button-mini-padding, 0px 8px) !default;
@@ -244,7 +252,7 @@ $button-mini-font-size: var(
 ) !default;
 $button-mini-border-radius: var(
   --nutui-button-mini-border-radius,
-  6px
+  $radius-xs
 ) !default;
 
 $button-primary-color: var(
@@ -334,10 +342,6 @@ $button-danger-disabled: var(
   $color-danger-disabled
 ) !default;
 
-$button-xlarge-text-icon-margin: var(
-  --nutui-button-xlarge-text-icon-margin,
-  6px
-) !default;
 $button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 
 // cell（✅）

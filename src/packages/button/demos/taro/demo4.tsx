@@ -1,14 +1,12 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
 import { Plus, Star } from '@nutui/icons-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo4 = () => {
   const marginStyle = {
-    marginRight: pxTransform(8),
-    marginTop: pxTransform(8),
-    marginLeft: pxTransform(8),
-    marginBottom: pxTransform(8),
+    width: harmony() ? 140 : 'auto',
+    margin: 8,
   }
   return (
     <>
@@ -44,6 +42,7 @@ const Demo4 = () => {
           rightIcon={<Star />}
           style={{
             margin: 8,
+            width: harmony() ? 140 : 'auto',
             backgroundColor: `var(--nutui-color-primary-light-pressed)`,
             borderColor: `var(--nutui-color-primary)`,
             color: `var(--nutui-color-primary)`,
@@ -58,6 +57,7 @@ const Demo4 = () => {
           rightIcon={<Star />}
           style={{
             margin: 8,
+            width: harmony() ? 140 : 'auto',
             backgroundColor: `var(--nutui-gray-3)`,
             color: `var(--nutui-gray-7)`,
           }}
@@ -71,6 +71,7 @@ const Demo4 = () => {
           rightIcon={<Star />}
           style={{
             margin: 8,
+            width: harmony() ? 140 : 'auto',
             backgroundColor: `var(--nutui-gray-1)`,
             color: `var(--nutui-gray-7)`,
           }}
@@ -81,9 +82,7 @@ const Demo4 = () => {
           type="default"
           icon={<Star />}
           rightIcon={<Star />}
-          style={{
-            margin: 8,
-          }}
+          style={marginStyle}
         >
           Button
         </Button>
@@ -91,20 +90,26 @@ const Demo4 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           fill="outline"
           type="primary"
-          icon={<Plus />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           type="primary"
           fill="dashed"
-          icon={<Plus />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           shape="round"
