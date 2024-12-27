@@ -1,5 +1,7 @@
 .nut-form-item {
   display: flex;
+  align-items: center;
+  padding: 4px 12px;
 
   &.error {
     &.line {

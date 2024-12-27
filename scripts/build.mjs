@@ -173,6 +173,32 @@ async function buildUMD(p) {
 }
 
 async function buildAllCSS() {
+  // 拷贝styles
+  async function copyStyles() {
+    await copy(
+      resolve(__dirname, '../src/styles'),
+      resolve(__dirname, '../dist/styles')
+    )
+
+    const content = [
+      `@import './styles/theme-default.scss';`,
+      `@import './styles/variables.scss';`,
+      `@import './styles/mixins/index.scss';`,
+      `@import './styles/animation/index.scss';`,
+    ]
+    const projectID = process.env.VITE_APP_PROJECT_ID
+    if (projectID) {
+      content[1] = `@import '../variables-${projectID}.scss';`
+    }
+    const scssFiles = await glob(['dist/es/packages/**/*.scss'])
+    scssFiles.forEach((file) => {
+      content.push(
+        `@import '${relativeFilePath('/dist/style.scss', '/' + file)}';`
+      )
+    })
+    dest('dist/style.scss', content.join('\n'))
+  }
+  await copyStyles()
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -181,10 +207,33 @@ async function buildAllCSS() {
     build: {
       emptyOutDir: false,
       lib: {
-        entry: './dist/styles/themes/default.scss',
+        entry: './dist/style.scss',
         formats: ['es'],
         name: 'style',
         fileName: 'style',
+      },
+    },
+  })
+}
+
+async function buildThemeCSS() {
+  await vite.build({
+    logLevel: 'error',
+    resolve: {
+      alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],
+    },
+    build: {
+      emptyOutDir: false,
+      rollupOptions: {
+        output: [
+          {
+            dir: 'dist/styles/themes',
+            assetFileNames: 'default.css',
+          },
+        ],
+      },
+      lib: {
+        entry: './dist/styles/themes/default.scss',
       },
     },
   })
@@ -218,6 +267,7 @@ async function buildCSS(p) {
   const cssFiles = await glob(['src/packages/**/*.scss'], {
     ignore: ['src/packages/**/demo.scss'],
   })
+
   const variables = await readFile(
     join(__dirname, '../src/styles/variables.scss')
   )
@@ -296,26 +346,6 @@ async function buildCSS(p) {
   }
 }
 
-// async function exportProps() {
-//   const types = []
-//   const a = await readFile(join(__dirname, '../src/config.json'))
-//   const componentsConfig = JSON.parse(a.toString())
-//   componentsConfig.nav.forEach((item) => {
-//     item.packages.forEach((element) => {
-//       const { name, show, exportEmpty } = element
-//       if (show || exportEmpty) {
-//         const lowerName = name.toLowerCase()
-//         if (lowerName === 'icon') return
-//         types.push(`export * from './${lowerName}/index'`)
-//       }
-//     })
-//   })
-//   await appendFile(
-//     join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
-//     types.join('\n')
-//   )
-// }
-
 console.time('clean dist')
 await deleteAsync('dist')
 console.timeEnd('clean dist')
@@ -345,6 +375,10 @@ console.timeEnd('Copy Styles')
 console.time('Build All CSS')
 await buildAllCSS()
 console.timeEnd('Build All CSS')
+
+console.time('Build Theme CSS')
+await buildThemeCSS()
+console.timeEnd('Build Theme CSS')
 
 console.time('Build Declaration')
 await buildDeclaration()

@@ -88,6 +88,8 @@ import { TextArea } from '@nutui/nutui-react'
 | autoSize | 高度是否可拉伸 | `boolean` | `false` |
 | readOnly | 只讀屬性 | `boolean` | `false` |
 | disabled | 禁用屬性 | `boolean` | `false` |
+| plain | 標記文本域的容器類型，false 為容器型 `container`, true 為 `純文本型` | `boolean` | `false` |
+| status | 文本域狀態，可標記為 默認狀態 和 錯誤狀態 | `default /\ error` | `default` |
 | onChange | 輸入內容時觸發 | `(value) => void` | `-` |
 | onFocus | 聚焦時觸發 | `(event) => void` | `-` |
 | onBlur | 失焦時觸發 | `(event) => void` | `-` |
@@ -100,9 +102,6 @@ import { TextArea } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-textarea-font | 字體大小 | `$font-size-base` |
 | \--nutui-textarea-padding | 內邊距 | `10px 25px` |
-| \--nutui-textarea-limit-color | 字數統計顏色 | `$color-text` |
 | \--nutui-textarea-text-color | 文本顏色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光標顏色 | `$color-title` |
-| \--nutui-textarea-disabled-color | 禁用顏色 | `$color-text-disabled` |

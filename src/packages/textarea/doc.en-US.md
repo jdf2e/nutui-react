@@ -89,6 +89,8 @@ import { TextArea } from '@nutui/nutui-react'
 | autoSize | whether to adapt the content height. | `boolean` | `false` |
 | readOnly | read only attribute | `boolean` | `false` |
 | disabled | disable attribute | `boolean` | `false` |
+| plain | mark textarea's container type, false is for `container`, true is for `纯文本型` | `boolean` | `false` |
+| status | textarea status, with default and error | `default /\ error` | `default` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
 | onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
@@ -101,9 +103,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-textarea-font | fontSize | `$font-size-base` |
 | \--nutui-textarea-padding | padding | `10px 25px` |
-| \--nutui-textarea-limit-color | limit color | `$color-text` |
 | \--nutui-textarea-text-color | text color | `$color-title` |
 | \--nutui-textarea-text-curror-color | caret color | `$color-title` |
-| \--nutui-textarea-disabled-color | disabled color | `$color-text-disabled` |
