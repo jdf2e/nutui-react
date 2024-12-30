@@ -136,7 +136,6 @@ import { Button } from '@nutui/nutui-react'
 | \--nutui-button-default-disabled-color | type 為 default 的按鈕的停用文字色 | `$color-text-help` |
 | \--nutui-button-default-padding | type 為 default 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-default-font-size | type 為 default 的按鈕的字號 | `$font-size-s` |
-| \--nutui-button-default-font-weight | type 為 default 的按鈕的字重 | `$font-weight` |
 | \--nutui-button-large-height | size 為 large 的按鈕的高度 | `40px` |
 | \--nutui-button-large-font-size | size 為 large 的按鈕的字號 | `$font-size-base` |
 | \--nutui-button-large-border-radius | size 為 large 的按鈕的圓角 | `12px` |
