@@ -17,7 +17,6 @@ const Demo5 = () => {
     borderRadius: '8px',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'red',
   }
   const handleToggleShow = () => {
     setVisible(true)

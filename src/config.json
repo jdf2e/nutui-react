@@ -389,7 +389,8 @@
           "show": true,
           "taro": true,
           "author": "Alex.hxy",
-          "v15": true
+          "v15": true,
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -401,7 +402,8 @@
           "show": false,
           "taro": true,
           "author": "Alex.hxy",
-          "v15": true
+          "v15": true,
+          "dd": true
         },
         {
           "version": "2.0.0",

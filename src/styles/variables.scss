@@ -12,9 +12,15 @@ $color-primary-gradient-1: linear-gradient(
   $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
-$color-primary-icon: var(--nutui-red-6) !default;
-$color-primary-icon-disabled: var(--nutui-gray-8) !default;
-$color-primary-specialdisabled: var(--nutui-red-3) !default;
+$color-primary-icon: var(--nutui-color-primary-icon, #ff3333) !default;
+$color-primary-icon-disabled: var(
+  --nutui-color-primary-icon-disabled,
+  #dadce0
+) !default;
+$color-primary-specialdisabled: var(
+  --nutui-color-primary-specialdisabled,
+  #ffadbe
+) !default;
 
 // 默认色
 $color-default: var(--nutui-color-default) !default;

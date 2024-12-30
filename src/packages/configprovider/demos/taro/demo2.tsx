@@ -3,7 +3,7 @@ import { ConfigProvider, Cell, Button, Rate } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const darkTheme = {
-    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryIcon: 'green',
     nutuiColorPrimaryStop1: 'green',
     nutuiColorPrimaryStop2: 'green',
   }
