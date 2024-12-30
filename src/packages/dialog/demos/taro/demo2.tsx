@@ -19,7 +19,7 @@ const Demo2 = () => {
 
       <Cell title="提示弹框" onClick={() => setVisible2(true)} />
       <Dialog
-        title="提示弹框"
+        title="标题"
         visible={visible2}
         confirmText="确认"
         hideCancelButton

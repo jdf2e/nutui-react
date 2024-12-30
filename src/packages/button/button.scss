@@ -17,7 +17,7 @@
   padding: 0;
   height: $button-default-height;
   font-size: $button-default-font-size;
-  font-weight: $button-default-font-weight;
+  font-weight: $font-weight;
   text-align: center;
   cursor: pointer;
   transition: $button-transition;
@@ -155,7 +155,6 @@
     height: $button-xlarge-height;
     padding: $button-xlarge-padding;
     font-size: $button-xlarge-font-size;
-    font-weight: $button-large-font-weight;
     border-radius: $radius-base;
 
     .nut-button-text {
@@ -172,7 +171,6 @@
     }
     &-children {
       font-size: $button-xlarge-font-size;
-      font-weight: $button-large-font-weight;
     }
   }
 
@@ -180,7 +178,6 @@
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
-    font-weight: $button-large-font-weight;
     border-radius: $radius-s;
 
     .nut-button-text {
@@ -198,7 +195,6 @@
 
     &-children {
       font-size: $button-large-font-size;
-      font-weight: $button-large-font-weight;
     }
   }
 

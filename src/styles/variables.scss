@@ -173,7 +173,7 @@ $button-square-border-radius: var(
   0
 ) !default;
 $button-border-radius: var(--nutui-button-border-radius, $radius-s) !default;
-$button-border-width: var(--nutui-button-border-width, 1px) !default;
+$button-border-width: var(--nutui-button-border-width, 0.5px) !default;
 $button-normal-padding: var(--nutui-button-normal-padding, 0px 12px) !default;
 $button-default-height: var(--nutui-button-default-height, 32px) !default;
 $button-default-color: var(--nutui-button-default-color, $color-title) !default;
@@ -183,7 +183,7 @@ $button-default-background-color: var(
 ) !default;
 $button-default-border-color: var(
   --nutui-button-default-border-color,
-  $color-text
+  $color-text-disabled
 ) !default;
 $button-default-disabled: var(
   --nutui-button-default-disabled,
@@ -197,10 +197,6 @@ $button-default-padding: var(--nutui-button-default-padding, 0px 12px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
   $font-size-base
-) !default;
-$button-default-font-weight: var(
-  --nutui-button-default-font-weight,
-  $font-weight
 ) !default;
 
 $button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
@@ -223,10 +219,6 @@ $button-large-padding: var(--nutui-button-large-padding, 0px 16px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-l
-) !default;
-$button-large-font-weight: var(
-  --nutui-button-large-font-weight,
-  $font-weight-bold
 ) !default;
 $button-large-border-radius: var(
   --nutui-button-large-border-radius,
@@ -1305,17 +1297,19 @@ $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 10px 0) !default;
 
 // dialog（✅）
 $dialog-z-index: var(--nutui-dialog-z-index, $mask-content-z-index) !default;
+$dialog-min-width: var(--nutui-dialog-min-width, 240px) !default;
 $dialog-width: var(--nutui-dialog-width, 295px) !default;
 $dialog-padding: var(--nutui-dialog-padding, 24px) !default;
+$dialog-max-height: var(--nutui-dialog-max-height, 420px) !default;
 $dialog-min-height: var(--nutui-dialog-min-height, 124px) !default;
-$dialog-border-radius: var(--nutui-dialog-border-radius, 16px) !default;
+$dialog-border-radius: var(--nutui-dialog-border-radius, $radius-xl) !default;
 $dialog-footer-justify-content: var(
   --nutui-dialog-footer-justify-content,
   space-around
 ) !default;
 $dialog-content-margin: var(
   --nutui-dialog-content-margin,
-  5px 0 24px 0
+  12px 0 16px 0
 ) !default;
 $dialog-content-max-height: var(
   --nutui-dialog-content-max-height,
@@ -1347,15 +1341,19 @@ $dialog-header-font-size: var(
 ) !default;
 $dialog-header-font-weight: var(
   --nutui-dialog-header-font-weight,
-  normal
+  $font-weight-bold
 ) !default;
 $dialog-vertical-footer-ok-margin-top: var(
   --nutui-dialog-vertical-footer-ok-margin-top,
-  5px
+  16px
 ) !default;
 $dialog-close-color: var(--nutui-dialog-close-color, #ffffff) !default;
-$dialog-close-width: var(--nutui-dialog-close-width, 18px) !default;
-$dialog-close-height: var(--nutui-dialog-close-height, 18px) !default;
+$dialog-close-width: var(--nutui-dialog-close-width, 16px) !default;
+$dialog-close-height: var(--nutui-dialog-close-height, 16px) !default;
+$dialog-bottom-close-icon-size: var(
+  --nutui-dialog-bottom-close-icon-size,
+  24px
+) !default;
 $dialog-close-top: var(--nutui-dialog-close-top, 16px) !default;
 $dialog-close-left: var(--nutui-dialog-close-left, 16px) !default;
 $dialog-close-right: var(--nutui-dialog-close-right, 16px) !default;
