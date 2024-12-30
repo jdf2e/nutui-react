@@ -25,7 +25,7 @@ const Demo1 = () => {
           type="lottie"
           jsonData={data}
           lottieProps={{
-            autoplay: false,
+            autoPlay: false,
             loop: false,
             style: { width: 56, height: 56 },
           }}

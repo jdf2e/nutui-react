@@ -176,6 +176,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     <View
       className={classes}
       style={props.style}
+      catchMove
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
