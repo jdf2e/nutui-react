@@ -39,7 +39,7 @@ const defaultProps = {
   completeText: '',
   completeDelay: 500,
   disabled: false,
-  headHeight: 64 + 16,
+  headHeight: 80,
   threshold: 60,
   scrollTop: 0,
   onRefresh: () => {},
