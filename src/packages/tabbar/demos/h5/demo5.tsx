@@ -8,7 +8,7 @@ const Demo5 = () => (
     <Tabbar.Item title="分类" icon={<Category />} />
     <Tabbar.Item title="逛" icon={<Hi />} />
     <Tabbar.Item title="购物车" icon={<Cart />} value={110} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<User />} />
   </Tabbar>
 )
 
