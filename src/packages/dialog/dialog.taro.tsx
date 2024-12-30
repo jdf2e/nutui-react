@@ -125,7 +125,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             (footerDirection === 'vertical' ? (
               <View
                 className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e)}
+                onClick={(e) => handleCancel(e as any)}
               >
                 {cancelText || locale.cancel}
               </View>

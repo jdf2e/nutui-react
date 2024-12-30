@@ -64,7 +64,9 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleCancel = (
+      e: MouseEvent<HTMLButtonElement | HTMLDivElement>
+    ) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
