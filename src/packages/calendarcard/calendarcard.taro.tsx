@@ -10,7 +10,7 @@ import {
   getCurrentWeekDays,
   getPrevMonthDays,
 } from './utils'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import type {
   CalendarCardDay,
   CalendarCardMonth,

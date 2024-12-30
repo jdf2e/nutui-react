@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   FixedNavType,

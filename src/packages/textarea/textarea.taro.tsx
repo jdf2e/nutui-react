@@ -2,10 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { Textarea, TextareaProps, View, Text } from '@tarojs/components'
-import {
-  useConfig,
-  useRtl,
-} from '@/packages/configprovider/configprovider.taro'
+import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
