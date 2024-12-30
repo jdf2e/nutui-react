@@ -13,9 +13,9 @@ const raws = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, taro, exportEmpty, exclude, version, rn } = element
+    let { name, show, type, taro, exportEmpty, exclude, version, rn, dd } = element
     if (exclude) return
-    if (version !== '3.0.0') return
+    if (!dd) return
 
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`

@@ -10,8 +10,8 @@ const adaptedNameArray = []
 // eslint-disable-next-line array-callback-return
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    const { name, version } = element
-    if (version !== '3.0.0') return // 未适配不导出
+    const { name, version, dd } = element
+    if (!dd) return // 未适配不导出
     adaptedNameArray.push(name.toLowerCase())
   })
 })
