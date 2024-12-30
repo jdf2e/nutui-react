@@ -152,12 +152,7 @@ plugins: [
 
 #### Button
 
-- 移除 `plain`，通过 `fill="outline"` 实现
-- 增加 `ref`，对外暴露组件内 `button` 元素
-- CSS 变量中，对 `type` 类型对应的色值的定义，不在暴露到文档中，建议使用默认值，或修改主题变量
-- 增加 `fill` 模式类型，`dashed`，修改 `fill` 默认值为 `outline`。
-- 增加 `rightIcon`，可满足同时设置左右两个icon的情况。
-- 修改 `size` 为 `large` 时的默认 `width` 为 `100%` 的值，如果使用通栏的 `button`，可搭配 `block` 来使用。
+- 去掉一些样式变量。如 `$button-default-font-weight` `$button-large-font-weight` 等。
 
 #### Cell
 
@@ -290,6 +285,16 @@ plugins: [
 #### SideNavBar
 
 - `offset` 重命名为 `indent`
+
+#### SideBar
+
+- 新增SideBar组件
+- 支持属性value，用于当前激活的`item`的key
+- 支持属性defaultValue, 表示未设置value时，`item`的key的默认值
+- 支持属性contentDuration， 用于内容滚动动画时长
+- 支持属性sidebarDuration, 用于侧栏滚动动画时长
+- 支持属性onClick, 点击标签时触发
+- 支持属性onChange, 当前激活的标签改变时触发
 
 #### Tabbar
 
@@ -550,21 +555,9 @@ plugins: [
 
 #### Dialog
 
-- `okText` 重命名为 `confirmText`，规范命名。
-- `mask` 重命名为 `overlay`，组件库中统一使用 Overlay 组件作为遮罩层，并使用 overlay 作为是否展示遮罩层的属性值。
-- `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`，组件库统一到该属性。
-- `noOkBtn` 重命名为 `hideConfirmButton`，初始值不变，依然表示是否隐藏确认按钮，主要是为了语义化更强。
-- `noCancelBtn` 重命名为 `hideCancelButton`，初始值不变，依然表示是否隐藏取消按钮，主要是为了语义化更强。
-- `okBtnDisabled` 重命名为 `disableConfirmButton`，初始值不变，依然表示是否禁用确认按钮，主要是为了语义化更强。
-- 移除 `noFooter`，使用 footer 统一处理，当 footer 为空时，及可替代该值。目前 noFooter 也需要手动声明是否为 noFooter；修改后需手动指出 footer={null}
-- 移除 `textAlign`，改用样式变量 `--nutui-dialog-content-text-align` 或 SCSS 变量 `$dialog-content-text-align` 控制，默认值为 center。
-- 移除 `cancelAutoClose`，改为 `beforeCancel` 和 `beforeClose` 来实现，在点击关闭或取消时，可先触发这两个方法，以确定是否要关闭弹框，如返回true，则关闭；否则不关闭。
-- `onOk` 重命名为 `onConfirm`，规范命名。
-- `onClosed` 重命名为 `onClose`，规范命名，关闭时触发。
-- `onClickSelf` 重命名为 `onClick`，语义不变，仍表示点击弹框自身时触发事件。
-- 增加 `overlayStyle` 和 `overlayClassName`，用来配置 Overlay 组件样式。
-- 增加 `onOverlayClick`，支持点击overlay时，触发事件。
-- `onCancel` 回调不会自动关闭弹层，需主动调用 `Dialog.close(xx)`
+- 修改了操作按钮上下布局的样式；
+- 当只有一个主操作按钮时，主操作按钮样式撑开；
+- 增加了底部icon的大小设置的样式变量；修改右侧按钮的默认值为 16 px；
 
 #### Drag
 
@@ -597,7 +590,7 @@ plugins: [
 - 移除 `isAsync`，通过 `checked`实现
 - 移除 `activeColor` ，通过css变量`--nutui-switch-open-background-color`实现
 - 移除 `inactiveColor`，通过css变量`--nutui-switch-close-background-color`实现
-- `activeText 属性类型更改为 `ReactNode`
+- `activeText` 属性类型更改为`ReactNode`
 - `inactiveText` 属性类型更改为 `ReactNode`
 
 #### Toast
@@ -780,7 +773,7 @@ plugins: [
   - 移除 `pageContent`，通过 indicator 实现
   - `autoplay` 重命名为 `autoplay`
   - `initPage` 重命名为 `defaultValue`
-  - `paginationVisible` 重命名为 `indicator`，类型改为` ReactNode`
+  - `paginationVisible` 重命名为 `indicator`，类型改为`ReactNode`
   - `isPreventDefault` 重命名为 `preventDefault`
   - `isStopPropagation` 重命名为 `stopPropagation`
   - `isCenter` 重命名为 `center`

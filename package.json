@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "3.0.0-beta.8",
+  "name": "@nutui/nutui-react-taro",
+  "version": "3.0.0-beta.9",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -102,8 +102,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^3.0.0-beta.1",
-    "@nutui/icons-react-taro": "^3.0.1-beta.0",
+    "@nutui/icons-react": "^3.0.0-beta.2",
+    "@nutui/icons-react-taro": "^3.0.0-beta.2",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
@@ -113,6 +113,8 @@
     "classnames": "^2.5.1",
     "lodash.isequal": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
+    "lottie-miniprogram": "^1.0.12",
+    "lottie-react": "^2.4.0",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -131,8 +133,8 @@
     "@swc/core": "^1.4.8",
     "@tarojs/components": "4.0.8-beta.1",
     "@tarojs/plugin-platform-alipay": "4.0.8-beta.1",
-    "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
     "@tarojs/plugin-platform-jd": "4.0.8-beta.1",
+    "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
     "@tarojs/react": "4.0.8-beta.1",
     "@tarojs/taro": "4.0.8-beta.1",
     "@testing-library/jest-dom": "^6.4.2",
@@ -228,6 +230,9 @@
   },
   "resolutions": {
     "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19"
+    "@types/react-dom": "^18.2.19",
+    "sass": "1.77.6",
+    "@tarojs/api": "4.0.8-beta.1",
+    "@tarojs/components": "4.0.8-beta.1"
   }
 }

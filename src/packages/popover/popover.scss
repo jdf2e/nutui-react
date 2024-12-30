@@ -7,93 +7,81 @@
 
   &-arrow {
     position: absolute;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
+    width: 8px;
+    height: 4px;
+
+    .nut-icon-ArrowRadius {
+      position: absolute;
+      color: $popover-content-background-color;
+    }
 
     &-top {
-      bottom: 0;
-      border-top-color: $popover-border-color;
-      border-bottom-width: 0;
-      margin-bottom: -8px;
+      bottom: -4px;
     }
 
     &-bottom {
-      top: 0px;
-      border-bottom-color: $popover-border-color;
-      border-top-width: 0;
-      margin-top: -8px;
+      top: -4px;
     }
 
     &-left {
-      right: 0px;
-      border-left-color: $popover-border-color;
-      border-right-width: 0;
-      margin-right: -8px;
+      right: -6px;
+      transform-origin: center top;
 
       &.nut-popover-arrow-left {
         top: 50%;
-        transform: translateY(-50%);
+        transform: rotate(90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-left-start {
         top: 16px;
-        transform: translateY(0%);
+        right: -8px;
+        transform: rotate(90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-left-end {
         bottom: 16px;
-        transform: translateY(0%);
+        right: -8px;
+        transform: rotate(90deg) translateY(0%);
       }
     }
 
     &-right {
-      left: 0px;
-      border-right-color: $popover-border-color;
-      border-left-width: 0;
-      margin-left: -8px;
-
+      transform-origin: center top;
       &.nut-popover-arrow-right {
         top: 50%;
-        transform: translateY(-50%);
+        left: -6px;
+        transform: rotate(-90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-right-start {
         top: 16px;
-        transform: translateY(0%);
+        left: -8px;
+        transform: rotate(-90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-right-end {
         bottom: 16px;
-        transform: translateY(0%);
+        left: -8px;
+        transform: rotate(-90deg) translateY(0%);
       }
     }
   }
 
   .nut-popover-content {
     position: absolute;
-    background-color: $popover-content-background-color;
+    background: $popover-content-background-color;
     border-radius: $popover-border-radius;
     font-size: $popover-font-size;
-    font-family: PingFangSC;
-    font-weight: normal;
     color: $popover-text-color;
-    box-shadow: 0 2px 12px #3232331f;
+    line-height: 28px;
     max-height: initial;
     overflow-y: initial;
 
-    &-group {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-
     .nut-popover-menu-item {
-      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: $popover-menu-item-padding;
+      padding: 0 $popover-menu-item-padding;
       border-bottom: 1px solid $popover-divider-color;
       max-width: $popover-menu-item-width;
       word-wrap: break-word;
@@ -101,14 +89,6 @@
       &:last-child {
         margin-bottom: 0px;
         border-bottom: none;
-      }
-
-      &:hover:nth-of-type(2) {
-        border-radius: 8px 8px 0px 0px;
-      }
-
-      &:hover:last-of-type {
-        border-radius: 0px 0px 8px 8px;
       }
 
       &-icon {
@@ -128,7 +108,7 @@
       &-name {
         width: calc(100% - 34px);
         word-break: keep-all;
-        margin: 0 6px 0 4px;
+        margin: 0 8px 0 4px;
         flex: 1;
       }
 
@@ -140,6 +120,11 @@
         height: 12px;
         font-size: 12px;
         color: $color-text;
+        .nut-icon {
+          width: 12px;
+          height: 12px;
+          font-size: 12px;
+        }
       }
 
       &.nut-popover-menu-disabled {
@@ -155,7 +140,8 @@
     &-top {
       .nut-popover-arrow-top {
         left: 50%;
-        transform: translateX(-50%);
+        transform-origin: center left;
+        transform: rotate(180deg) translateX(-50%);
       }
     }
 
@@ -163,7 +149,8 @@
       right: 0;
       .nut-popover-arrow-top-end {
         right: 16px;
-        transform: translateX(0%);
+        bottom: -3.5px;
+        transform: rotate(180deg) translateX(0%);
       }
     }
 
@@ -171,7 +158,8 @@
       left: 0;
       .nut-popover-arrow-top-start {
         left: 16px;
-        transform: translateX(0%);
+        bottom: -3.5px;
+        transform: rotate(180deg) translateX(0%);
       }
     }
 
@@ -221,17 +209,8 @@
   color: $popover-content-background-color;
 
   .nut-popover-arrow {
-    &-top {
-      border-top-color: $popover-text-color;
-    }
-    &-bottom {
-      border-bottom-color: $popover-text-color;
-    }
-    &-left {
-      border-left-color: $popover-text-color;
-    }
-    &-right {
-      border-right-color: $popover-text-color;
+    .nut-icon-ArrowRadius {
+      color: $popover-text-color;
     }
   }
 
@@ -239,10 +218,8 @@
     background: $popover-text-color !important;
     color: $popover-content-background-color !important;
     .nut-popover-menu-item {
-      border-bottom-color: $popover-content-background-color;
-      &:hover {
-        color: $popover-content-background-color;
-        background-color: $popover-text-color;
+      &-action-icon {
+        color: rgba(255, 255, 255, 0.8);
       }
     }
   }

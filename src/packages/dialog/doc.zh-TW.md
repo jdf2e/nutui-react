@@ -147,23 +147,25 @@ export default function App() {
 | --- | --- | --- |
 | \--nutui-dialog-z-index | 對話框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-width | 對話框寬度 | `295px` |
+| \--nutui-dialog-min-width | 對話框最小寬度 | `240px` |
 | \--nutui-dialog-padding | 對話框padding | `24px` |
-| \--nutui-dialog-min-height | 對話框最小高度 | `156px` |
+| \--nutui-dialog-max-height | 對話框最大高度 | `420px` |
+| \--nutui-dialog-min-height | 對話框最小高度 | `124px` |
 | \--nutui-dialog-border-radius | 對話框圓角 | `16px` |
-| \--nutui-dialog-content-margin | 對話框內容 margin | `5px 0 24px 0` |
+| \--nutui-dialog-content-margin | 對話框內容 margin | `12px 0 16px 0` |
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
 | \--nutui-dialog-header-font-size | 對話框標題字體大小 | `$font-size-l` |
-| \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
-| \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
+| \--nutui-dialog-header-font-weight | 對話框標題字重 | `600` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `5px` |
-| \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `18px` |
-| \--nutui-dialog-close-height | 對話框關閉按鈕的高度 | `18px` |
-| \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#888B94` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排佈時的margin值 | `16px` |
+| \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `16px` |
+| \--nutui-dialog-close-height | 對話框關閉按鈕的高度 | `16px` |
+| \--nutui-dialog-bottom-close-icon-size | 對話框底部關閉按鈕的寬高 | `24px` |
+| \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#FFFFFF` |
 | \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
 | \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
 | \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |

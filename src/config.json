@@ -80,7 +80,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": ""
+          "author": "",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -92,7 +93,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -105,7 +107,8 @@
           "taro": true,
           "exportEmpty": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -118,7 +121,8 @@
           "exportEmpty": true,
           "taro": true,
           "v15": true,
-          "author": "hanyuxinting"
+          "author": "hanyuxinting",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -131,7 +135,8 @@
           "taro": true,
           "exclude": true,
           "v15": true,
-          "author": "oasis-cloud"
+          "author": "oasis-cloud",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -144,7 +149,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -156,7 +162,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "junjun"
+          "author": "junjun",
+          "dd": true
         }
       ]
     },
@@ -173,7 +180,8 @@
           "sort": 3,
           "show": false,
           "exportEmpty": true,
-          "author": "yushuang24"
+          "author": "yushuang24",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -185,7 +193,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -197,7 +206,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -210,7 +220,8 @@
           "taro": true,
           "exportEmpty": true,
           "v15": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -221,7 +232,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "author": "yushuang24"
+          "author": "yushuang24",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -232,7 +244,8 @@
           "sort": 2,
           "show": false,
           "exportEmpty": true,
-          "author": "yushuang24"
+          "author": "yushuang24",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -243,7 +256,8 @@
           "sort": 8,
           "show": true,
           "taro": true,
-          "author": "ivan"
+          "author": "ivan",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -254,7 +268,8 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "author": "hx"
+          "author": "hx",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -265,7 +280,8 @@
           "sort": 9,
           "show": true,
           "taro": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         }
       ]
     },
@@ -284,7 +300,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "vickyYe"
+          "author": "vickyYe",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -295,7 +312,8 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -306,7 +324,8 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -318,7 +337,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -331,7 +351,8 @@
           "show": false,
           "taro": true,
           "v15": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -343,7 +364,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -354,7 +376,32 @@
           "sort": 9,
           "show": true,
           "taro": true,
-          "author": "hx"
+          "author": "hx",
+          "dd": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "SideBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "用于侧边内容选择和切换",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "Alex.hxy",
+          "v15": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "SideBarItem",
+          "type": "component",
+          "cName": "侧边栏导航子组件",
+          "desc": "用于侧边内容选择和切换",
+          "sort": 10,
+          "show": false,
+          "taro": true,
+          "author": "Alex.hxy",
+          "v15": true
         },
         {
           "version": "2.0.0",
@@ -365,7 +412,8 @@
           "desc": "用于侧边栏导航子组件",
           "sort": 11,
           "show": false,
-          "author": "hx"
+          "author": "hx",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -376,7 +424,8 @@
           "exportEmpty": true,
           "sort": 10,
           "show": false,
-          "author": "hx"
+          "author": "hx",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -388,7 +437,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -401,7 +451,8 @@
           "v15": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -413,7 +464,8 @@
           "v15": true,
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
-          "author": "张晶发"
+          "author": "张晶发",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -425,7 +477,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         }
       ]
     },
@@ -442,7 +495,8 @@
           "sort": 3,
           "show": true,
           "taro": true,
-          "author": "yangxiaolu"
+          "author": "yangxiaolu",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -453,7 +507,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "szg2008"
+          "author": "szg2008",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -464,7 +519,8 @@
           "sort": 10,
           "show": false,
           "exportEmpty": true,
-          "author": "szg2008"
+          "author": "szg2008",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -475,7 +531,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "eiinu"
+          "author": "eiinu",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -486,7 +543,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "author": "ailululu"
+          "author": "ailululu",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -498,7 +556,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -510,7 +569,8 @@
           "show": false,
           "v15": true,
           "exportEmpty": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -521,7 +581,8 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -532,7 +593,8 @@
           "sort": 19,
           "show": true,
           "taro": true,
-          "author": "hanyuxinting"
+          "author": "hanyuxinting",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -544,7 +606,8 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
-          "author": "hanyuxinting"
+          "author": "hanyuxinting",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -556,7 +619,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "VickyYe"
+          "author": "VickyYe",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -568,7 +632,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         }
       ]
     },
@@ -585,7 +650,8 @@
           "sort": 13,
           "show": true,
           "taro": true,
-          "author": "oasis-cloud"
+          "author": "oasis-cloud",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -597,7 +663,8 @@
           "exportEmpty": true,
           "show": false,
           "taro": true,
-          "author": "oasis-cloud"
+          "author": "oasis-cloud",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -608,7 +675,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "Drjingfubo"
+          "author": "Drjingfubo",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -619,7 +687,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -631,7 +700,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -643,7 +713,8 @@
           "exportEmpty": true,
           "show": false,
           "v15": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -654,7 +725,8 @@
           "sort": 3,
           "show": true,
           "taro": true,
-          "author": "vickyYe"
+          "author": "vickyYe",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -666,7 +738,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -677,7 +750,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -688,7 +762,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "Drjingfubo"
+          "author": "Drjingfubo",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -699,7 +774,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -711,7 +787,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -723,7 +800,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "VickyYe"
+          "author": "VickyYe",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -735,7 +813,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         }
       ]
     },
@@ -752,7 +831,8 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "author": "dsj"
+          "author": "dsj",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -764,7 +844,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "lzz"
+          "author": "lzz",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -776,7 +857,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "yangjinjun3"
+          "author": "yangjinjun3",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -788,7 +870,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -800,7 +883,8 @@
           "show": true,
           "taro": true,
           "author": "liukun",
-          "v15": true
+          "v15": true,
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -812,7 +896,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -825,7 +910,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -837,7 +923,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "mike8625"
+          "author": "mike8625",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -848,7 +935,8 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "author": "vickyYe"
+          "author": "vickyYe",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -860,7 +948,8 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -872,7 +961,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "lzz"
+          "author": "lzz",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -885,7 +975,8 @@
           "v15": true,
           "rn": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008"
+          "author": "szg2008",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -897,7 +988,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "oasis"
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -908,7 +1000,8 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -919,7 +1012,8 @@
           "sort": 9,
           "show": true,
           "taro": true,
-          "author": "Ymm0008"
+          "author": "Ymm0008",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -932,7 +1026,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "VickyYe"
+          "author": "VickyYe",
+          "dd": true
         }
       ]
     },
@@ -949,7 +1044,8 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -960,7 +1056,8 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -971,7 +1068,8 @@
           "sort": 21,
           "show": true,
           "taro": false,
-          "author": "libin"
+          "author": "libin",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -982,7 +1080,8 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "author": "junjun"
+          "author": "junjun",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -993,7 +1092,8 @@
           "sort": 18,
           "show": false,
           "exportEmpty": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1004,7 +1104,8 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -1015,7 +1116,8 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "author": "zhenyulei"
+          "author": "zhenyulei",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -1026,7 +1128,8 @@
           "sort": 13,
           "show": false,
           "exportEmpty": true,
-          "author": "zhenyulei"
+          "author": "zhenyulei",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1038,7 +1141,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1049,7 +1153,8 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "author": "vickyYE"
+          "author": "vickyYE",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1060,7 +1165,8 @@
           "sort": 23,
           "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "yangjinjun3",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1072,7 +1178,21 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "liukun"
+          "author": "liukun",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "Lottie",
+          "type": "component",
+          "cName": "动画/动效",
+          "desc": "给子元素添加动画效果",
+          "sort": 27,
+          "show": true,
+          "taro": true,
+          "v15": true,
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1084,7 +1204,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "lkjh3214"
+          "author": "lkjh3214",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1096,7 +1217,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "lkjh3214"
+          "author": "lkjh3214",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1108,7 +1230,8 @@
           "show": true,
           "taro": true,
           "v15": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1119,7 +1242,8 @@
           "sort": 20,
           "show": true,
           "taro": true,
-          "author": "ailululu"
+          "author": "ailululu",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1130,7 +1254,8 @@
           "show": false,
           "exportEmpty": true,
           "desc": "步骤条子组件",
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -1141,7 +1266,8 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1152,7 +1278,8 @@
           "sort": 14,
           "show": true,
           "taro": true,
-          "author": "liukun"
+          "author": "liukun",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1163,7 +1290,8 @@
           "sort": 14,
           "show": false,
           "exportEmpty": true,
-          "author": "liukun"
+          "author": "liukun",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1174,7 +1302,8 @@
           "sort": 21,
           "show": true,
           "taro": true,
-          "author": "yangjinjun3"
+          "author": "yangjinjun3",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1185,7 +1314,8 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "author": "lzz"
+          "author": "lzz",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1196,7 +1326,8 @@
           "sort": 24,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1208,7 +1339,8 @@
           "sort": 20,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1220,7 +1352,8 @@
           "tarodoc": true,
           "show": true,
           "taro": true,
-          "author": "hx"
+          "author": "hx",
+          "dd": false
         }
       ]
     },
@@ -1237,7 +1370,8 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -1248,7 +1382,8 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1259,7 +1394,8 @@
           "sort": 8,
           "show": false,
           "exportEmpty": true,
-          "author": "zhaoqian16"
+          "author": "zhaoqian16",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1270,7 +1406,8 @@
           "sort": 20,
           "show": true,
           "taro": true,
-          "author": "zhaoqian16"
+          "author": "zhaoqian16",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1281,7 +1418,8 @@
           "sort": 25,
           "show": true,
           "taro": true,
-          "author": "songsong"
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -1292,7 +1430,8 @@
           "sort": 25,
           "show": true,
           "taro": true,
-          "author": "swag~jun"
+          "author": "swag~jun",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -1303,7 +1442,8 @@
           "sort": 26,
           "show": true,
           "taro": true,
-          "author": "Marvin"
+          "author": "Marvin",
+          "dd": false
         }
       ]
     }

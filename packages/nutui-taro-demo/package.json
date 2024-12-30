@@ -115,10 +115,5 @@
     "postcss": "^8.4.35",
     "stylelint": "^16.7.0",
     "typescript": "^5.3.3"
-  },
-  "resolutions": {
-    "sass": "1.77.6",
-    "@tarojs/api": "4.0.8-beta.1",
-    "@tarojs/components": "4.0.8-beta.1"
   }
 }

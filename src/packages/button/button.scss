@@ -17,7 +17,7 @@
   padding: 0;
   height: $button-default-height;
   font-size: $button-default-font-size;
-  font-weight: $button-default-font-weight;
+  font-weight: $font-weight;
   text-align: center;
   cursor: pointer;
   transition: $button-transition;
@@ -102,7 +102,10 @@
   &-round {
     border-radius: $button-border-radius;
 
-    &-xlarge,
+    &-xlarge {
+      border-radius: $button-xlarge-border-radius;
+    }
+
     &-large {
       border-radius: $button-large-border-radius;
     }
@@ -152,7 +155,6 @@
     height: $button-xlarge-height;
     padding: $button-xlarge-padding;
     font-size: $button-xlarge-font-size;
-    font-weight: $button-large-font-weight;
     border-radius: $radius-base;
 
     .nut-button-text {
@@ -169,7 +171,6 @@
     }
     &-children {
       font-size: $button-xlarge-font-size;
-      font-weight: $button-large-font-weight;
     }
   }
 
@@ -177,8 +178,7 @@
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
-    font-weight: $button-large-font-weight;
-    border-radius: $radius-base;
+    border-radius: $radius-s;
 
     .nut-button-text {
       margin-left: $button-xlarge-text-icon-margin;
@@ -195,7 +195,6 @@
 
     &-children {
       font-size: $button-large-font-size;
-      font-weight: $button-large-font-weight;
     }
   }
 
@@ -203,7 +202,7 @@
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
-    border-radius: $radius-s;
+    border-radius: $radius-xs;
 
     .nut-icon {
       font-size: $button-small-font-size;
@@ -220,7 +219,7 @@
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
-    border-radius: $radius-s;
+    border-radius: $radius-xs;
 
     .nut-icon {
       font-size: $button-mini-font-size;
@@ -246,6 +245,11 @@
       background: $button-primary-background-color;
       color: $button-primary-color;
       border-color: transparent;
+      font-weight: $font-weight-bold;
+      &.nut-button-small,
+      &.nut-button-mini {
+        font-weight: $font-weight;
+      }
     }
 
     &-disabled,
@@ -282,6 +286,9 @@
         border-color: $button-primary-disabled;
       }
     }
+  }
+  &-primary.nut-button-solid.nut-button-normal {
+    font-weight: $font-weight-bold;
   }
 
   &-success {

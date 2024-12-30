@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { createPortal } from 'react-dom'
+import { ArrowRadius } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import { PopupProps } from '@/packages/popup/popup'
 import { getRect } from '@/utils/use-client-rect'
@@ -43,7 +44,7 @@ const defaultProps = {
   theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: [0, 12],
+  offset: [0, 8],
   arrowOffset: 0,
   targetId: '',
   showArrow: true,
@@ -172,8 +173,7 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    const direction = location.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    return `${prefixCls} ${prefixCls}-${location.split('-')[0]} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
@@ -267,11 +267,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect?.(item, index)
+      onSelect && onSelect(item, index)
     }
     if (closeOnActionClick) {
-      onClick?.()
-      onClose?.()
+      onClick && onClick()
+      onClose && onClose()
     }
   }
   return (
@@ -281,11 +281,11 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            onClick?.()
+            onClick && onClick()
             if (!visible) {
-              onOpen?.()
+              onOpen && onOpen()
             } else {
-              onClose?.()
+              onClose && onClose()
             }
           }}
           style={style}
@@ -309,7 +309,9 @@ export const Popover: FunctionComponent<
                 ref={popoverContentRef}
               >
                 {showArrow && (
-                  <div className={popoverArrow()} style={arrowStyle()} />
+                  <div className={popoverArrow()} style={arrowStyle()}>
+                    <ArrowRadius width={8} height={4} />
+                  </div>
                 )}
                 {Array.isArray(children) ? children[1] : null}
                 {list.map((item, index) => {
@@ -325,22 +327,22 @@ export const Popover: FunctionComponent<
                       key={item.key || index}
                       onClick={() => handleSelect(item, index)}
                     >
-                      {item.icon ? (
+                      {item.icon && (
                         <div className="nut-popover-menu-item-icon">
                           {item.icon}
                         </div>
-                      ) : null}
+                      )}
                       <div className="nut-popover-menu-item-name">
                         {item.name}
                       </div>
-                      {item.action && item.action.icon ? (
+                      {item.action && item.action.icon && (
                         <div
                           className="nut-popover-menu-item-action-icon"
                           onClick={(e) => item.action?.onClick?.(e)}
                         >
                           {item.action.icon}
                         </div>
-                      ) : null}
+                      )}
                     </div>
                   )
                 })}

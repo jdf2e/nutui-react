@@ -1,10 +1,12 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useEffect } from 'react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { handleClick } from './utils'
 import { OffsetContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
+/**
+ * @deprecated Use SideBar instead.
+ */
 export interface SideNavBarProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,
     BasicComponent {
@@ -25,6 +27,11 @@ const defaultProps = {
 export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
   props
 ) => {
+  useEffect(() => {
+    console.warn(
+      'Warning: SideNavBar is deprecated and will be removed in future versions. Please use NewComponent SideBar instead.'
+    )
+  }, [])
   const classPrefix = 'nut-sidenavbar'
   const {
     title,

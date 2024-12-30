@@ -1,0 +1,62 @@
+@import '../../styles/mixins/index';
+@import '../sidebaritem/sidebaritem.scss';
+
+.nut-sidebar {
+  display: flex;
+  &-content {
+    flex-direction: column;
+    height: 100%;
+    &-wrap {
+      flex: 1;
+      overflow: hidden;
+    }
+  }
+  &-titles {
+    background: $sidebar-background-color;
+    flex-direction: column;
+    border-radius: $sidebar-border-radius;
+    height: 100%;
+    width: $sidebar-width;
+    max-width: $sidebar-max-width;
+    flex-shrink: 0;
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      background: transparent;
+    }
+    .nut-sidebar-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    &-scrollable {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    &-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $sidebar-title-height;
+      font-size: $sidebar-inactive-font-size;
+      color: $color-text;
+      &-text {
+        text-align: center;
+        white-space: normal;
+        width: $sidebar-width;
+      }
+      &-active .nut-sidebar-titles-item-text {
+        font-family: PingFangSC-Semibold;
+        color: $sidebar-active-color;
+        font-weight: $sidebar-active-font-weight;
+        font-size: $sidebar-active-font-size;
+      }
+      &-disabled {
+        color: $color-text-disabled;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
