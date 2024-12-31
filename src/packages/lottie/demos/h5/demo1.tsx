@@ -1,8 +1,8 @@
 import React from 'react'
 import { Cell, Lottie } from '@nutui/nutui-react'
-import lightLoading from '../../animation/light/loading.json'
-import lightGlobal from '../../animation/light/global.json'
-import lightPull from '../../animation/light/pulltorefresh.json'
+import lightLoading from '@nutui/nutui-react/dist/es/lottie/animation/light/loading.json'
+import lightGlobal from '@nutui/nutui-react/dist/es/lottie/animation/light/global.json'
+import lightPull from '@nutui/nutui-react/dist/es/lottie/animation/light/pulltorefresh.json'
 
 const Demo1 = () => {
   return (

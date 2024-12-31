@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cell, Lottie } from '@nutui/nutui-react-taro'
-import whitePull from '../../animation/dark/pulltorefresh-white.json'
+import whitePull from '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/pulltorefresh-white.json'
 
 const Demo3 = () => {
   return (

@@ -1194,7 +1194,7 @@
           "taro": true,
           "v15": true,
           "author": "swag~jun",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",

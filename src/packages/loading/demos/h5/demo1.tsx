@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cell, Loading } from '@nutui/nutui-react'
-import data from '../../../lottie/animation/light/loading.json'
+import data from '@nutui/nutui-react/dist/es/lottie/animation/light/loading.json'
 
 const Demo1 = () => {
   return (
