@@ -107,3 +107,4 @@ import { TextArea } from '@nutui/nutui-react-taro'
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
 | \--nutui-textarea-disabled-color | 禁用颜色 | `$color-text-disabled` |
+| \--nutui-textarea-limit-align | 对齐方式 | `right` |

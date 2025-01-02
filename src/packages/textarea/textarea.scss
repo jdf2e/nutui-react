@@ -1,8 +1,9 @@
 .nut-textarea {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
   background: $color-background-overlay;
   font-size: $textarea-font;
   padding: $textarea-padding;
@@ -16,11 +17,9 @@
   }
 
   &-limit {
-    position: absolute;
-    right: 15px;
-    bottom: 12px;
     font-size: $textarea-font;
     color: $textarea-limit-color;
+    text-align: $textarea-limit-align;
   }
 
   &-textarea {
