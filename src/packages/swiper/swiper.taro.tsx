@@ -51,7 +51,6 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     indicator,
     loop,
     autoPlay,
-    duration,
     direction,
     defaultValue,
     onChange,
