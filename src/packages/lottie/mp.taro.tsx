@@ -1,11 +1,11 @@
 import React, { useImperativeHandle, useRef } from 'react'
 import {
   createSelectorQuery,
+  getEnv,
   getSystemInfoSync,
   useReady,
   useUnload,
 } from '@tarojs/taro'
-import { Canvas } from '@tarojs/components'
 import lottie from 'lottie-miniprogram'
 import useUuid from '@/utils/use-uuid'
 import { LottieProps } from './types'
@@ -82,7 +82,28 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
       animation.current.removeEventListener('complete', onComplete)
     animation.current && animation.current.destroy()
   })
-  return <Canvas id={id} canvas-id={id} type="2d" style={style} />
+
+  return getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
+    <canvas
+      id={id}
+      // @ts-ignore
+      // eslint-disable-next-line react/no-unknown-property
+      canvasId={id}
+      // eslint-disable-next-line react/no-unknown-property
+      disalbeScroll
+      type="2d"
+      style={style}
+    />
+  ) : (
+    <canvas
+      id={id}
+      // eslint-disable-next-line react/no-unknown-property
+      canvas-id={id}
+      // eslint-disable-next-line react/no-unknown-property
+      disalbe-scroll
+      style={style}
+    />
+  )
 })
 
 Lottie.displayName = 'NutLottie'

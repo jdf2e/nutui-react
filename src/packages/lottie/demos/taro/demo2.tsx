@@ -1,8 +1,8 @@
 import React from 'react'
 import { Cell, Lottie } from '@nutui/nutui-react-taro'
-import darkLoading from '../../animation/dark/loading.json'
-import darkGlobal from '../../animation/dark/global.json'
-import darkPull from '../../animation/dark/pulltorefresh.json'
+import darkLoading from '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/loading.json'
+import darkGlobal from '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/global.json'
+import darkPull from '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/pulltorefresh.json'
 
 const Demo2 = () => {
   return (

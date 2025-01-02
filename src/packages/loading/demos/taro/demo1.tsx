@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cell, Loading } from '@nutui/nutui-react-taro'
-import data from '@/packages/lottie/animation/light/loading.json'
+import data from '@nutui/nutui-react-taro/dist/es/lottie/animation/light/loading.json'
 
 const Demo1 = () => {
   return (
@@ -25,7 +25,7 @@ const Demo1 = () => {
           type="lottie"
           jsonData={data}
           lottieProps={{
-            autoplay: false,
+            autoPlay: false,
             loop: false,
             style: { width: 56, height: 56 },
           }}
