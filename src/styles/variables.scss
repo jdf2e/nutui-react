@@ -1,6 +1,6 @@
 // ----------------------------------------------------
 // 主色调 // done
-$color-primary: var(--nutui-brand-6) !default;
+$color-primary: var(--nutui-color-primary, #ff0f23) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff475d) !default;
 $color-primary-stop-2: var(--nutui-color-primary-stop-2, #ff0f23) !default;
 $color-primary-pressed: var(--nutui-color-primary-pressed, #e53029) !default;
@@ -56,11 +56,11 @@ $color-success-light: var(
   --nutui-color-success-light,
   #ebfbeb
 ) !default; // done
-$color-success-background: var(--nutui-color-success, #00d900) !default; // done
-$color-success-text: var(
-  --nutui-color-success-pressed,
-  #2aa32a
+$color-success-background: var(
+  --nutui-color-success-background,
+  #00d900
 ) !default; // done
+$color-success-text: var(--nutui-color-success-text, #2aa32a) !default; // done
 
 // 警告色
 $color-warning: var(--nutui-color-warning, #ffbf00) !default; // done
@@ -73,11 +73,11 @@ $color-warning-light: var(
   --nutui-color-warning-light,
   #fff5cc
 ) !default; // done
-$color-warning-background: var(--nutui-color-warning, #ffbf00) !default; // done
-$color-warning-text: var(
-  --nutui-color-warning-pressed,
-  #c47600
+$color-warning-background: var(
+  --nutui-color-warning-background,
+  #ffbf00
 ) !default; // done
+$color-warning-text: var(--nutui-color-warning-text, #c47600) !default; // done
 
 // 危险色
 $color-danger: var(--nutui-color-danger, #ff0f23) !default; //done
@@ -91,7 +91,7 @@ $color-danger-background: var(
   --nutui-color-danger-background,
   #ff0f23
 ) !default; //done
-$color-danger-text: var(--nutui-color-danger, #ff0f23) !default; //done
+$color-danger-text: var(--nutui-color-danger-text, #ff0f23) !default; //done
 
 // 背景色
 $color-background: var(--nutui-color-background, #f2f3f5) !default; //done
@@ -122,12 +122,15 @@ $color-border: var(--nutui-color-border, rgba(0, 0, 0, 0.06)) !default;
 $color-border-disabled: var(--nutui-color-border-disabled, #c2c4cc) !default;
 
 // 文本色
-$color-title: var(--nutui-gray-7) !default;
-$color-text: var(--nutui-gray-6) !default;
-$color-text-help: var(--nutui-gray-5) !default;
-$color-text-disabled: var(--nutui-gray-4) !default;
-$color-text-dark: var(--nutui-white-12) !default;
-$color-text-link: var(--nutui-blue-2) !default;
+$color-title: var(--nutui-color-title, #1a1a1a) !default;
+$color-text: var(--nutui-color-text, #505259) !default;
+$color-text-help: var(--nutui-color-text-help, #888b94) !default;
+$color-text-disabled: var(--nutui-color-text-disabled, #c2c4cc) !default;
+$color-text-dark: var(
+  --nutui-color-text-dark,
+  rgba(255, 255, 255, 0.9)
+) !default;
+$color-text-link: var(--nutui-color-text-link, #0073ff) !default;
 
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
 $color-primary-text: #ffffff !default;
