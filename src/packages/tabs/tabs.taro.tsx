@@ -257,6 +257,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollY={direction === 'vertical'}
         scrollLeft={scrollLeft}
         scrollTop={scrollTop}
+        enhanced
         showScrollbar={false}
         scrollWithAnimation={
           rtl && Taro.getEnv() !== 'WEB' ? false : scrollWithAnimation.current
