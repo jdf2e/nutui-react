@@ -72,6 +72,9 @@ const Demo10 = () => {
   }
 
   const goDate = () => {
+    // setDate(['2024-10-01', '2024-10-01'])
+    // 该行用于京东小程序IDE下问题的修复。
+    // 京东小程序，真机可不需要。
     if (calendarRef.current) {
       calendarRef.current.scrollToDate('2024-10-01')
     }
