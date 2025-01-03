@@ -27,8 +27,6 @@ const Demo7 = () => {
       <Calendar
         visible={isVisible}
         defaultValue={date}
-        startDate=""
-        endDate=""
         autoBackfill
         onClose={closeSwitch}
         onConfirm={setChooseValue}

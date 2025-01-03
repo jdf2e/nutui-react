@@ -80,8 +80,8 @@ const Demo6 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2023-01-01"
-        endDate="2024-09-10"
+        startDate="2024-01-01"
+        endDate="2025-09-10"
         disableDate={disableDate}
         firstDayOfWeek={1}
         onDayClick={(date) => {

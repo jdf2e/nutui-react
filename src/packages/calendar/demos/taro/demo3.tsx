@@ -31,8 +31,8 @@ const Demo3 = () => {
         visible={isVisible}
         defaultValue={date}
         type="multiple"
-        startDate="2023-01-01"
-        endDate="2024-09-10"
+        startDate="2025-01-01"
+        endDate="2026-09-10"
         onClose={closeSwitch}
         onConfirm={setChooseValue}
       />

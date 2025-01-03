@@ -10,7 +10,7 @@ const padZero = (num: number | string, targetLength = 2) => {
 }
 
 const Demo9 = () => {
-  const [date, setDate] = useState<string[]>(['2023-06-12', '2023-06-16'])
+  const [date, setDate] = useState<string[]>(['2024-06-12', '2024-06-16'])
 
   const [isVisible, setIsVisible] = useState(false)
 
@@ -57,8 +57,8 @@ const Demo9 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2023-2-22"
-        endDate="2024-01-08"
+        startDate="2024-2-22"
+        endDate="2025-01-08"
         confirmText="submit"
         startText="enter"
         endText="leave"

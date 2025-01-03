@@ -53,7 +53,7 @@ function getDay(i: number): string {
 }
 
 const Demo10 = () => {
-  const [date, setDate] = useState<string[]>(['2023-07-10', '2023-07-19'])
+  const [date, setDate] = useState<string[]>(['2024-07-10', '2024-07-19'])
 
   const [isVisible, setIsVisible] = useState(false)
 
@@ -73,7 +73,7 @@ const Demo10 = () => {
 
   const goDate = () => {
     if (calendarRef.current) {
-      calendarRef.current.scrollToDate('2023-04-01')
+      calendarRef.current.scrollToDate('2024-10-01')
     }
   }
 
@@ -135,8 +135,7 @@ const Demo10 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2022-12-22"
-        endDate="2024-12-31"
+        startDate="2023-12-22"
         renderHeaderButtons={renderHeaderButtons}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
