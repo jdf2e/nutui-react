@@ -8,6 +8,7 @@ const plugin = replaceIcons({
   iconMappings: {
     Loading: 'Star',
   },
+  exclude: ['Loading1', 'ArrowSize6'],
 })
 
 const babelOptions = {
@@ -16,6 +17,7 @@ const babelOptions = {
 }
 const caseIns = `
 import { Loading } from '@nutui/icons-react'
+import { Loading1 } from '@nutui/icons-react'
 import { ArrowSize6 as Arrow } from '@nutui/icons-react'
 const ReplaceOne = () => {
   return <><Loading /> <Arrow /></>
