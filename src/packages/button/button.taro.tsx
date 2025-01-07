@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback } from 'react'
+import React, { CSSProperties, useCallback, useMemo } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import {
@@ -46,7 +46,7 @@ export interface ButtonProps
 
 const prefixCls = 'nut-button'
 
-const defaultProps = {
+const defaultProps: Partial<ButtonProps> = {
   ...ComponentDefaults,
   color: '',
   type: 'default',
@@ -59,7 +59,7 @@ const defaultProps = {
   icon: null,
   rightIcon: null,
   onClick: (e: MouseEvent<HTMLButtonElement>) => {},
-} as ButtonProps
+}
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (props, ref) => {
     const {
@@ -79,11 +79,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       nativeType,
       onClick,
       ...rest
-    } = {
-      ...defaultProps,
-      ...props,
-    }
-    const getStyle = useCallback(() => {
+    } = { ...defaultProps, ...props }
+
+    const getStyle = useMemo(() => {
       const style: CSSProperties = {}
       if (color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
@@ -103,7 +101,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       return style
     }, [color, props.fill])
 
-    const getContStyle = useCallback(() => {
+    const getContStyle = useMemo(() => {
       const style: CSSProperties = {}
       if (props.color) {
         if (props.fill === 'outline' || props.fill === 'dashed') {
@@ -115,13 +113,37 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         }
       }
       return style
-    }, [color])
+    }, [color, props.fill, props.color])
 
-    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-      if (!loading && !disabled && onClick) {
-        onClick(e)
-      }
-    }
+    const handleClick = useCallback(
+      (e: MouseEvent<HTMLButtonElement>) => {
+        if (!loading && !disabled && onClick) {
+          onClick(e)
+        }
+      },
+      [loading, disabled, onClick]
+    )
+
+    const buttonClassNames = classNames(
+      prefixCls,
+      `${prefixCls}-${type}`,
+      {
+        [`${prefixCls}-${type}-solid`]: type === 'primary' && !props.fill,
+        [`${prefixCls}-${fill}`]: props.fill,
+        [`${prefixCls}-${type}-${fill}`]: props.fill,
+        [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-${shape}`]: shape,
+        [`${prefixCls}-${shape}-${size}`]: shape && size,
+        [`${prefixCls}-block`]: block,
+        [`${prefixCls}-disabled`]: disabled || loading,
+        [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
+          disabled || loading,
+        [`${prefixCls}-loading`]: loading,
+        [`${prefixCls}-icononly`]: !children,
+      },
+      className
+    )
+
     if (getEnv() === 'WEB') {
       ;(rest as any).type = rest.formType
     }
@@ -133,44 +155,24 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         {...rest}
         ref={ref}
         formType={nativeType}
-        className={classNames(
-          prefixCls,
-          `${prefixCls}-${type}`,
-          type === 'primary' && !props.fill
-            ? `${prefixCls}-${type}-solid`
-            : null,
-          props.fill ? `${prefixCls}-${fill}` : null,
-          props.fill ? `${prefixCls}-${type}-${fill}` : null,
-          children ? '' : `${prefixCls}-icononly`,
-          {
-            [`${prefixCls}-${size}`]: size,
-            [`${prefixCls}-${shape}`]: shape,
-            [`${prefixCls}-${shape}-${size}`]: shape && size,
-            [`${prefixCls}-block`]: block,
-            [`${prefixCls}-disabled`]: disabled || loading,
-            [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
-              disabled || loading,
-            [`${prefixCls}-loading`]: loading,
-          },
-          className
-        )}
-        style={{ ...getStyle(), ...style }}
+        className={buttonClassNames}
+        style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
       >
         <View className="nut-button-wrap">
           {loading && <Loading className="nut-icon-loading" />}
-          {!loading && icon ? icon : null}
+          {!loading && icon}
           {children && (
             <View
               className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`}${icon || loading ? ` nut-button-text` : ''}${
-                rightIcon ? ` nut-button-text-right` : ''
+                rightIcon ? ' nut-button-text-right' : ''
               }`}
-              style={harmonyAndRn() ? getContStyle() : {}}
+              style={harmonyAndRn() ? getContStyle : {}}
             >
               {children}
             </View>
           )}
-          {rightIcon || null}
+          {rightIcon}
         </View>
       </TaroButton>
     )
