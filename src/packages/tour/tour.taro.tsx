@@ -7,7 +7,7 @@ import Popover from '@/packages/popover/index.taro'
 import { PopoverLocation } from '@/packages/popover/types'
 import { getTaroRectById } from '@/utils/use-taro-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 export interface TourList {
   target: Element | string

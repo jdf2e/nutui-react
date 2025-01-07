@@ -19,14 +19,16 @@
     position: relative;
 
     .nut-icon {
-      width: 24px;
-      height: 24px;
-      font-size: 24px;
+      width: 22px;
+      height: 22px;
+      font-size: 22px;
     }
 
     &-nav {
       display: block;
+      color: $color-text;
       font-size: $tabbar-text-font-size;
+      line-height: $tabbar-text-font-size;
       margin-top: $tabbar-text-margin-top;
     }
 

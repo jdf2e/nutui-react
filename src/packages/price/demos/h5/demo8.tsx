@@ -3,10 +3,10 @@ import { Cell, Price } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   return (
-    <Cell>
-      <Price price={1513.12} size="normal" thousands />
+    <Cell align="baseline">
+      <Price price={618.68} />
       <span>&nbsp;</span>
-      <Price price={1513.88} thousands line />
+      <Price price={1080.68} color="gray" size="small" line />
     </Cell>
   )
 }

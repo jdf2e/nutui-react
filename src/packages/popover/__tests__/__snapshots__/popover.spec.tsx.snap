@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`render popover content dark 1`] = `
+<div>
+  <div
+    class="nut-popover-wrapper"
+  >
+    <button
+      class="nut-button nut-button-primary nut-button-primary-solid nut-button-normal nut-button-round"
+      type="button"
+    >
+      <div
+        class="nut-button-wrap"
+      >
+        <div
+          class=""
+        >
+          基础用法
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`target id 1`] = `
+<div>
+  <button
+    class="nut-button nut-button-primary nut-button-primary-solid nut-button-normal nut-button-square"
+    id="popid"
+    type="button"
+  >
+    <div
+      class="nut-button-wrap"
+    >
+      <div
+        class=""
+      >
+        自定义目标元素
+      </div>
+    </div>
+  </button>
+</div>
+`;

@@ -1,6 +1,6 @@
 # Price 價格
 
-用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、仟位分隔符、設置小數點位數等功能。
+用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、千位分隔符、設置小數點位數等功能。
 
 ## 引入
 
@@ -10,11 +10,19 @@ import { Price } from '@nutui/nutui-react'
 
 ## 示例代碼
 
-### 基礎用法 small normal large
+### 支持尺寸：small、normal、large、xlarge
 
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+### 場域分類：原子級、模塊級、列表級、頁面級
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -26,7 +34,7 @@ import { Price } from '@nutui/nutui-react'
 
 :::
 
-### 有人民幣符號，無仟位分隔
+### 有人民幣符號，無千位分隔
 
 :::demo
 
@@ -34,7 +42,7 @@ import { Price } from '@nutui/nutui-react'
 
 :::
 
-### 帶人民幣符號，有仟位分隔，保留小數點後三位
+### 帶人民幣符號，有千位分隔，保留小數點後三位
 
 :::demo
 
@@ -80,15 +88,16 @@ import { Price } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| color | 價格類型 | `primary` \| `gray` \| `darkgray` | `primary` |
 | price | 價格數量 | `number` | `0` |
 | symbol | 符號類型 | `string` | `&yen;` |
 | digits | 小數位位數 | `number` | `2` |
-| thousands | 是否按照仟分號形式顯示 | `boolean` | `false` |
+| thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
 | position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
-| size | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| size | 價格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
 | line | 是否劃線價 | `boolean` | `false` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -96,15 +105,20 @@ import { Price } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-price-symbol-big-size | large 尺寸符號字體大小 | `18px` |
-| \--nutui-price-integer-big-size | large 尺寸整數部分字體大小 | `24px` |
-| \--nutui-price-decimal-big-size | large 尺寸小數部分字體大小 | `18px` |
-| \--nutui-price-symbol-medium-size | normal 尺寸符號字體大小 | `14px` |
-| \--nutui-price-integer-medium-size | normal 尺寸整數部分字體大小 | `16px` |
-| \--nutui-price-decimal-medium-size | normal 尺寸小數部分字體大小 | `14px` |
-| \--nutui-price-symbol-small-size | small 尺寸符號字體大小 | `10px` |
+| \--nutui-price-primary-color | type為primary時文字顏色 | `#ff0f23` |
+| \--nutui-price-color | type為gray時文字顏色 | `#888b94` |
+| \--nutui-price-darkgray-color | type為darkgray時文字顏色 | `#1a1a1a` |
+| \--nutui-price-line-color | 劃線價顏色 | `#888b94` |
+| \--nutui-price-symbol-padding-right | 符號的右內邊距 | `0px` |
+| \--nutui-price-symbol-xlarge-size | xlarge 尺寸符號字體大小 | `12px` |
+| \--nutui-price-integer-xlarge-size | xlarge 尺寸整數部分字體大小 | `24px` |
+| \--nutui-price-decimal-xlarge-size | xlarge 尺寸小數部分字體大小 | `12px` |
+| \--nutui-price-symbol-large-size | large 尺寸符號字體大小 | `12px` |
+| \--nutui-price-integer-large-size | large 尺寸整數部分字體大小 | `18px` |
+| \--nutui-price-decimal-large-size | large 尺寸小數部分字體大小 | `12px` |
+| \--nutui-price-symbol-normal-size | normal 尺寸符號字體大小 | `12px` |
+| \--nutui-price-integer-normal-size | normal 尺寸整數部分字體大小 | `16px` |
+| \--nutui-price-decimal-normal-size | normal 尺寸小數部分字體大小 | `12px` |
+| \--nutui-price-symbol-small-size | small 尺寸符號字體大小 | `12px` |
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
-| \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
-| \--nutui-price-line-font-size | 劃線價字體大小 | `10px` |
-| \--nutui-price-line-color | 劃線價顏色 | `#757575` |
-| \--nutui-price-symbol-padding-right | 符號的右內邊距 | `1px` |
+| \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `12px` |

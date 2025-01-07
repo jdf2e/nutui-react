@@ -3,25 +3,25 @@
 exports[`props digits test 1`] = `
 <div>
   <div
-    class="nut-price  "
+    class="nut-price nut-price-primary "
   >
     <div
-      class="nut-price-symbol nut-price-symbol-large"
+      class="nut-price-symbol nut-price-symbol-normal"
     >
       ¥
     </div>
     <div
-      class="nut-price-integer nut-price-integer-large "
+      class="nut-price-integer nut-price-integer-normal "
     >
       15213
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       .
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       122
     </div>
@@ -32,25 +32,25 @@ exports[`props digits test 1`] = `
 exports[`props symbol test 1`] = `
 <div>
   <div
-    class="nut-price  "
+    class="nut-price nut-price-primary "
   >
     <div
-      class="nut-price-symbol nut-price-symbol-large"
+      class="nut-price-symbol nut-price-symbol-normal"
     >
       $
     </div>
     <div
-      class="nut-price-integer nut-price-integer-large "
+      class="nut-price-integer nut-price-integer-normal "
     >
       10010
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       .
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       00
     </div>
@@ -61,20 +61,68 @@ exports[`props symbol test 1`] = `
 exports[`props test 1`] = `
 <div>
   <div
-    class="nut-price  "
+    class="nut-price nut-price-primary "
   >
     <div
-      class="nut-price-integer nut-price-integer-large "
+      class="nut-price-integer nut-price-integer-normal "
     >
       1,010
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       .
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props test 2`] = `
+<div>
+  <div
+    class="nut-price nut-price-primary "
+  >
+    <div
+      class="nut-price-integer nut-price-integer-normal "
+    >
+      1,010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props test 3`] = `
+<div>
+  <div
+    class="nut-price nut-price-primary "
+  >
+    <div
+      class="nut-price-integer nut-price-integer-normal "
+    >
+      1,010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       00
     </div>
@@ -85,27 +133,51 @@ exports[`props test 1`] = `
 exports[`props thousands test 1`] = `
 <div>
   <div
-    class="nut-price  "
+    class="nut-price nut-price-primary "
   >
     <div
-      class="nut-price-symbol nut-price-symbol-large"
+      class="nut-price-symbol nut-price-symbol-normal"
     >
       $
     </div>
     <div
-      class="nut-price-integer nut-price-integer-large "
+      class="nut-price-integer nut-price-integer-normal "
     >
       10010
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       .
     </div>
     <div
-      class="nut-price-decimal nut-price-decimal-large "
+      class="nut-price-decimal nut-price-decimal-normal "
     >
       01
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props type 1`] = `
+<div>
+  <div
+    class="nut-price nut-price-primary "
+  >
+    <div
+      class="nut-price-integer nut-price-integer-normal "
+    >
+      1,010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-normal "
+    >
+      00
     </div>
   </div>
 </div>

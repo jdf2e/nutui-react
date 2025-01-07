@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import TimeDetail from '@/packages/timedetail/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 export interface TimeType {
   value?: string

@@ -27,7 +27,6 @@ exports[`should match snapshot 1`] = `
           <path
             d="M153.81 362.67a10.67 10.67 0 0 0-7.68 18.13L512 746.67 877.87 380.8a10.67 10.67 0 0 0-7.68-18.13h-60.38a10.03 10.03 0 0 0-7.46 3.2L512 656.21 221.65 365.87a10.88 10.88 0 0 0-7.46-3.2z"
             fill="currentColor"
-            fill-opacity="0.9"
           />
         </svg>
       </div>
@@ -60,7 +59,6 @@ exports[`should match snapshot 1`] = `
                 <path
                   d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
                   fill="currentColor"
-                  fill-opacity="0.9"
                 />
               </svg>
             </i>
@@ -124,7 +122,6 @@ exports[`should match snapshot of two columns in one line 1`] = `
           <path
             d="M153.81 362.67a10.67 10.67 0 0 0-7.68 18.13L512 746.67 877.87 380.8a10.67 10.67 0 0 0-7.68-18.13h-60.38a10.03 10.03 0 0 0-7.46 3.2L512 656.21 221.65 365.87a10.88 10.88 0 0 0-7.46-3.2z"
             fill="currentColor"
-            fill-opacity="0.9"
           />
         </svg>
       </div>
@@ -157,7 +154,6 @@ exports[`should match snapshot of two columns in one line 1`] = `
                 <path
                   d="M45.121 16.121 47.243 14 43 9.757l-2.121 2.122L19 33.757 7.121 21.88 5 19.757.757 24l2.122 2.121L14.757 38l2.122 2.121L19 42.243l2.121-2.122L23.243 38z"
                   fill="currentColor"
-                  fill-opacity="0.9"
                 />
               </svg>
             </i>

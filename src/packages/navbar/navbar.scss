@@ -3,16 +3,14 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
-  background: $navbar-background;
-  box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
   color: $navbar-color;
-  margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
+  padding: 0 16px;
 
   &-fixed {
     position: fixed;
@@ -32,27 +30,24 @@
     padding-top: env(safe-area-inset-top);
   }
 
-  &-align-left {
-    padding-left: 14px;
+  &-title-wrapper {
+    justify-content: space-between;
   }
 
   &-title {
-    width: 50%;
     height: 100%;
     text-align: center;
     display: flex;
+    flex: 1;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     font-size: $navbar-title-font-size;
     font-weight: $navbar-title-font-weight;
     color: $navbar-title-font-color;
-    &-align-left {
-      min-width: 0;
-      flex: 1;
-      justify-content: flex-start;
-      padding: 0 8px;
-      text-align: left;
+
+    &-center {
+      max-width: 129px;
+      justify-content: center;
     }
   }
 
@@ -62,15 +57,12 @@
 
   &-left,
   &-right {
-    position: absolute;
-    top: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     flex-direction: row;
+    max-width: 124px;
     height: 100%;
     cursor: pointer;
-    padding: 0 14px;
     /* #ifndef rn harmony jd h5 weapp*/
     .nut-icon,
     .nutui-iconfont {
@@ -78,18 +70,21 @@
       height: 20px;
       font-size: 20px;
     }
+
     /* #endif */
+    &-maxwidth {
+      box-sizing: border-box;
+      width: calc(124px - 16px);
+    }
   }
 
   &-left {
-    left: 0;
+    padding-right: 16px;
+    gap: 16px;
+
     &-rtl {
-      left: auto;
-      right: 0;
-    }
-    &-align-left {
-      position: static;
-      padding: 0;
+      padding-right: 0;
+      padding-left: 16px;
     }
 
     &-back {
@@ -97,29 +92,26 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      &-children {
-        margin-right: 10px;
-        &-rtl {
-          margin-right: 0;
-          margin-left: 10px;
-        }
-      }
+      gap: 16px;
+    }
+
+    &-hidden {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
   &-right {
-    right: 0;
+    padding-left: 16px;
+    justify-content: flex-end;
+    gap: 16px;
+
     &-rtl {
-      right: auto;
-      left: 0;
-    }
-    &-align-left {
-      position: static;
-      display: inline-flex;
-      white-space: nowrap;
+      padding-right: 16px;
       padding-left: 0;
     }
   }
+
   &-rtl {
     .nut-icon-ArrowLeft {
       transform: rotateY(180deg);

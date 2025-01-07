@@ -4,7 +4,7 @@ import { ArrowDown } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
 

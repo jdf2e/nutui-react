@@ -22,7 +22,7 @@ const defaultProps = {
   dot: false,
   max: 99,
   top: '0',
-  right: '5',
+  right: '0',
 } as TabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (

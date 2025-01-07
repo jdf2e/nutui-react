@@ -1,7 +1,7 @@
 import React, { ForwardRefRenderFunction, forwardRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { Close } from '@nutui/icons-react'
+import { Failure, Close } from '@nutui/icons-react'
 import Button from '@/packages/button'
 import confirm from './confirm'
 import { DialogWrap } from './dialogwrap'
@@ -50,6 +50,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     cancelText,
     closeIconPosition,
     closeIcon,
+    footerDirection,
     onClose,
     onCancel,
     onConfirm,
@@ -63,7 +64,9 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleCancel = (
+      e: MouseEvent<HTMLButtonElement | HTMLDivElement>
+    ) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -83,22 +86,35 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
       }
     }
 
+    const btnClass =
+      hideCancelButton || hideConfirmButton ? `${classPrefix}-footer-block` : ''
+
     return (
       footer || (
         <>
-          {!hideCancelButton && (
-            <Button
-              type="default"
-              className={`${classPrefix}-footer-cancel`}
-              onClick={(e) => handleCancel(e)}
-            >
-              {cancelText || locale.cancel}
-            </Button>
-          )}
+          {!hideCancelButton &&
+            (footerDirection === 'vertical' ? (
+              <div
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </div>
+            ) : (
+              <Button
+                type="default"
+                size="large"
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </Button>
+            ))}
           {!hideConfirmButton && (
             <Button
               type="primary"
-              className={classNames(`${classPrefix}-footer-ok`, {
+              size="large"
+              className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
@@ -125,9 +141,10 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
+    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
       <div className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
     )
   }

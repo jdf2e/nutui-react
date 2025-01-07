@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Tips, Close } from '@nutui/icons-react'
 import Popover from '../index'
 import Button from '@/packages/button'
 
@@ -16,6 +17,17 @@ const itemList = [
   {
     key: 'key3',
     name: 'option3',
+  },
+]
+
+const itemListOne = [
+  {
+    key: 'key1',
+    name: 'option1',
+    icon: <Tips />,
+    action: {
+      icon: <Close />,
+    },
   },
 ]
 
@@ -50,8 +62,19 @@ test('render popover content', async () => {
   )
 })
 
-test('render popover position', async () => {
+test('render popover content dark', async () => {
   const { container } = render(
+    <Popover visible list={itemListOne} theme="dark" location="right">
+      <Button type="primary">基础用法</Button>
+    </Popover>
+  )
+  const content = document.querySelectorAll('.nut-popover')[0]
+  expect(content.className).toContain('nut-popover-dark')
+  expect(container).toMatchSnapshot()
+})
+
+test('render popover position', async () => {
+  render(
     <Popover visible list={itemList} location="bottom-start">
       <Button type="primary" shape="square">
         基础用法
@@ -156,7 +179,6 @@ test('render position fixed ', async () => {
   fireEvent.click(getByTestId('a'))
   await waitFor(() => {
     fireEvent.scroll(getByTestId('aa'), { target: { scrollTop: 10 } })
-
     const item1 = document.querySelectorAll('.nut-popover-menu-item-name')
     expect(item1.length).toBe(3)
   })
@@ -188,6 +210,22 @@ test('should not emit select event when the action is disabled', async () => {
   )
   const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
   fireEvent.click(contentItem)
-
   await waitFor(() => expect(choose).not.toBeCalled())
+})
+
+test('target id', async () => {
+  const choose = vi.fn()
+  const close = vi.fn()
+  const { container, getByTestId } = render(
+    <div>
+      <Popover visible targetId="popid" list={itemListOne} />
+      <Button type="primary" id="popid">
+        自定义目标元素
+      </Button>
+      <span data-testid="closeid" onClick={close}>
+        点击消失
+      </span>
+    </div>
+  )
+  fireEvent.click(getByTestId('closeid'))
 })

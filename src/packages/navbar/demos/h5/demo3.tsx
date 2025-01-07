@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { NavBar, Toast, Tabs, TabPane } from '@nutui/nutui-react'
-import { More, ArrowLeft } from '@nutui/icons-react'
+import { NavBar, TabPane, Tabs, Toast } from '@nutui/nutui-react'
+import { ArrowLeft, More } from '@nutui/icons-react'
 
 const Demo3 = () => {
   const [tab1value, setTab1value] = useState<string | number>('0')
@@ -11,12 +11,7 @@ const Demo3 = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span
-              onClick={(e) => Toast.show('编辑')}
-              style={{ marginRight: '5px' }}
-            >
-              编辑
-            </span>
+            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
@@ -36,21 +31,14 @@ const Demo3 = () => {
             <TabPane title="Tab 1"> Tab 1 </TabPane>
             <TabPane title="Tab 2"> Tab 2 </TabPane>
             <TabPane title="Tab 3"> Tab 3 </TabPane>
-            <TabPane title="Tab 4"> Tab 4 </TabPane>
           </Tabs>
         </div>
       </NavBar>
       <NavBar
-        titleAlign="left"
         back={<ArrowLeft />}
         right={
           <>
-            <span
-              onClick={(e) => Toast.show('编辑')}
-              style={{ marginRight: '5px' }}
-            >
-              编辑
-            </span>
+            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
@@ -68,7 +56,6 @@ const Demo3 = () => {
           >
             <TabPane title="Tab1"> Tab1 </TabPane>
             <TabPane title="Tab2"> Tab2 </TabPane>
-            <TabPane title="Tab3"> Tab3 </TabPane>
           </Tabs>
         </div>
       </NavBar>

@@ -22,7 +22,7 @@ import {
 } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 export interface CascaderProps
   extends Pick<

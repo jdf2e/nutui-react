@@ -39,7 +39,7 @@ const defaultProps = {
   completeText: '',
   completeDelay: 500,
   disabled: false,
-  headHeight: 50,
+  headHeight: 80,
   threshold: 60,
   scrollTop: 0,
   onRefresh: () => {},
@@ -176,6 +176,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     <View
       className={classes}
       style={props.style}
+      catchMove
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

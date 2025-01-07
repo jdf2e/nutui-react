@@ -3,7 +3,7 @@ import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
-import { Close } from '@nutui/icons-react-taro'
+import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import { DialogBasicProps } from './config'
 import { Content } from './content.taro'
@@ -115,22 +115,36 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       }
     }
 
+    const btnClass =
+      hideCancelButton || hideConfirmButton ? `${classPrefix}-footer-block` : ''
+
     return (
       footer || (
         <>
-          {!hideCancelButton && (
-            <Button
-              type="default"
-              className={`${classPrefix}-footer-cancel`}
-              onClick={(e) => handleCancel(e)}
-            >
-              {cancelText || locale.cancel}
-            </Button>
-          )}
+          {!hideCancelButton &&
+            (footerDirection === 'vertical' ? (
+              <View
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e as any)}
+              >
+                {cancelText || locale.cancel}
+              </View>
+            ) : (
+              <Button
+                type="default"
+                size="large"
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </Button>
+            ))}
+
           {!hideConfirmButton && (
             <Button
+              size="large"
               type="primary"
-              className={classNames(`${classPrefix}-footer-ok`, {
+              className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
@@ -157,9 +171,10 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
+    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
       <View className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </View>
     )
   }

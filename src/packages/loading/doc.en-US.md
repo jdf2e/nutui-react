@@ -1,7 +1,5 @@
 # Loading
 
-#
-
 A loading icon, Used to show the loading state
 
 ### Import

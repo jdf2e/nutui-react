@@ -18,6 +18,22 @@ import { Indicator } from '@nutui/nutui-react'
 
 :::
 
+### White
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### Type
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ### Custom Node
 
 :::demo
@@ -51,6 +67,8 @@ import { Indicator } from '@nutui/nutui-react'
 | current | current step | `number` | `0` |
 | total | step total size | `number` | `3` |
 | direction | display directory,default is horizontal | `horizontal` \| `vertical` | `horizontal` |
+| color | color | `primary` \| `white` | `primary` |
+| type | interactivity Type | `anchor` \| `slide` | `anchor` |
 
 ## Theming
 
@@ -62,7 +80,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-indicator-color | indicator active color | `$color-primary` |
 | \--nutui-indicator-dot-color | indicator default color | `$color-text-disabled` |
-| \--nutui-indicator-dot-size | indicator dot size | `5px` |
-| \--nutui-indicator-dot-active-size | indicator dot active size | `15px` |
-| \--nutui-indicator-border-radius | indicator active border size | `3px` |
-| \--nutui-indicator-dot-margin | when horizontal, indicator margin | `4px` |
+| \--nutui-indicator-dot-size | indicator dot size | `3px` |
+| \--nutui-indicator-dot-active-size | indicator dot active size | `6px` |
+| \--nutui-indicator-border-radius | indicator active border size | `$radius-xxs` |
+| \--nutui-indicator-dot-margin | when horizontal, indicator margin | `$spacing-xxxs` |

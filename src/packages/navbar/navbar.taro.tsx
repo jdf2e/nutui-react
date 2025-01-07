@@ -1,18 +1,15 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
-import { SafeArea } from '@/packages/safearea/safearea.taro'
+import SafeArea from '@/packages/safearea/index.taro'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
   back: React.ReactNode
   right: React.ReactNode
-  titleAlign: 'center' | 'left'
+  title: React.ReactNode
   fixed: boolean
   safeAreaInsetTop: boolean
   placeholder: boolean
@@ -25,7 +22,6 @@ const defaultProps = {
   ...ComponentDefaults,
   left: '',
   right: '',
-  titleAlign: 'center',
   back: '',
   fixed: false,
   safeAreaInsetTop: false,
@@ -36,7 +32,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
     right,
     left,
-    titleAlign,
+    title,
     className,
     style,
     back,
@@ -65,64 +61,20 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     }
   }
 
-  const leftRef = useRef<any>(null)
-  const rightRef = useRef<any>(null)
-  const wrapperRef = useRef<any>(null)
-  const [contentWidth, setContentWidth] = useState('50%')
-
-  const getNodeWidth = async (node: Element | null) => {
-    if (node) {
-      const refe = await getRectByTaro(node)
-      return refe.width
-    }
-    return 0
-  }
-
-  useEffect(() => {
-    if (titleAlign === 'left') {
-      return
-    }
-    if (!(back || left || right)) {
-      setContentWidth('100%')
-    }
-
-    const init = async () => {
-      const leftRectWidth = await getNodeWidth(leftRef?.current)
-      const rightRectWidth = await getNodeWidth(rightRef?.current)
-      const wrapperWidth = await getNodeWidth(wrapperRef?.current)
-      let centerWidth = wrapperWidth / 2
-
-      if (leftRectWidth && rightRectWidth) {
-        centerWidth =
-          wrapperWidth -
-          (leftRectWidth > rightRectWidth
-            ? leftRectWidth * 2
-            : rightRectWidth * 2)
-      } else {
-        centerWidth = wrapperWidth - leftRectWidth * 2 - rightRectWidth * 2
-      }
-      setContentWidth(centerWidth.toFixed(2))
-    }
-    setTimeout(() => {
-      init()
-    }, 0)
-  }, [left, right, back])
-
   const renderLeft = () => {
-    return back || left ? (
+    return (
       <View
         className={classNames({
           [`${classPrefix}-left`]: true,
-          [`${classPrefix}-left-align-${titleAlign}`]: true,
+          [`${classPrefix}-left-maxwidth`]: title,
+          [`${classPrefix}-left-hidden`]: !left && !back,
           [`${classPrefix}-left-rtl`]: rtl,
         })}
-        ref={leftRef}
       >
-        {back && (
+        {back ? (
           <View
             className={classNames({
               [`${classPrefix}-left-back`]: true,
-              [`${classPrefix}-left-back-align-${titleAlign}`]: true,
               [`${classPrefix}-left-back-children`]: left,
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
@@ -130,33 +82,21 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
           >
             {back}
           </View>
-        )}
+        ) : null}
         {left}
       </View>
-    ) : null
+    )
   }
 
   const renderContent = () => {
-    let titleStyle = {}
-    if (titleAlign === 'center') {
-      const width = harmonyAndRn()
-        ? pxTransform(Number(contentWidth))
-        : `${contentWidth}px`
-      const contentRealWidth = /%$/i.test(contentWidth) ? contentWidth : width
-      titleStyle = {
-        width: contentRealWidth,
-      }
-    }
-
     return (
       <View
         className={classNames({
           [`${classPrefix}-title`]: true,
-          [`${classPrefix}-title-align-${titleAlign}`]: true,
+          [`${classPrefix}-title-center`]: title,
         })}
-        style={titleStyle}
       >
-        {children}
+        {title || children}
       </View>
     )
   }
@@ -166,10 +106,9 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       <View
         className={classNames({
           [`${classPrefix}-right`]: true,
-          [`${classPrefix}-right-align-${titleAlign}`]: true,
+          [`${classPrefix}-right-maxwidth`]: title,
           [`${classPrefix}-right-rtl`]: rtl,
         })}
-        ref={rightRef}
       >
         {right}
       </View>
@@ -178,7 +117,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <View className={cls} style={styles()} ref={wrapperRef}>
+      <View className={cls} style={styles()}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
@@ -189,11 +128,12 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const classes = classNames({
     [`${classPrefix}-fixed`]: fixed,
     [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
-    [`${classPrefix}-align-${titleAlign}`]: true,
     [`${classPrefix}-rtl`]: rtl,
   })
 
-  const cls = classNames(classPrefix, classes, className)
+  const cls = classNames(classPrefix, classes, className, {
+    [`${classPrefix}-title-wrapper`]: title,
+  })
 
   return (
     <>

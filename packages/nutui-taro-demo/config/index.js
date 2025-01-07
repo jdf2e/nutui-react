@@ -80,41 +80,57 @@ const config = {
       exclude: ['@nutui/icons-react-taro'],
     },
   },
-  alias:
-    process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn'
-      ? {
-          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
-            __dirname,
-            '../nutui-react/locales/en-US.ts'
-          ),
-          '@/packages': path.resolve(__dirname, '../nutui-react/packages'),
-          '@/sites': path.resolve(__dirname, '../nutui-react/sites'),
-          '@/locales': path.resolve(__dirname, '../nutui-react/locales'),
-          '@/utils': path.resolve(__dirname, '../nutui-react/utils'),
-          '@nutui/nutui-react-taro': path.resolve(
-            __dirname,
-            '../nutui-react/packages/nutui.react.rn.ts'
-          ),
-          '@nutui/icons-react-taro': path.resolve(
-            __dirname,
-            '../nutui-react/packages/nutui.react.rn.ts'
-          ),
-          '@styles': path.resolve(__dirname, '../styles'),
-        }
-      : {
-          '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
-            __dirname,
-            '../../../src/locales/en-US.ts'
-          ),
-          '@/packages': path.resolve(__dirname, '../../../src/packages'),
-          '@/sites': path.resolve(__dirname, '../../../src/sites'),
-          '@/locales': path.resolve(__dirname, '../../../src/locales'),
-          '@/utils': path.resolve(__dirname, '../../../src/utils'),
-          '@nutui/nutui-react-taro': path.resolve(
-            __dirname,
-            '../../../src/packages/nutui.react.taro.ts'
-          ),
-        },
+  alias: {
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/light/loading.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/light/loading.json'
+      ),
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/light/global.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/light/global.json'
+      ),
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/light/pulltorefresh.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/light/pulltorefresh.json'
+      ),
+
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/loading.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/dark/loading.json'
+      ),
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/global.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/dark/global.json'
+      ),
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/pulltorefresh.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/dark/pulltorefresh.json'
+      ),
+    '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/pulltorefresh-white.json':
+      path.resolve(
+        __dirname,
+        '../../../src/packages/lottie/animation/dark/pulltorefresh-white.json'
+      ),
+
+    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+      __dirname,
+      '../../../src/locales/en-US.ts'
+    ),
+    '@/packages': path.resolve(__dirname, '../../../src/packages'),
+    '@/sites': path.resolve(__dirname, '../../../src/sites'),
+    '@/locales': path.resolve(__dirname, '../../../src/locales'),
+    '@/utils': path.resolve(__dirname, '../../../src/utils'),
+    '@nutui/nutui-react-taro': path.resolve(
+      __dirname,
+      '../../../src/packages/nutui.react.taro.ts'
+    ),
+  },
   sass: {
     resource: [
       path.resolve(__dirname, '../../../', fileStr),

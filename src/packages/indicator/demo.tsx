@@ -4,23 +4,31 @@ import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
 
 const IndicatorDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      white: '白色',
+      type: '类型',
       customNode: '自定义节点',
       custom: '自定义',
       vertical: '竖向展示',
     },
     'zh-TW': {
       basic: '基礎用法',
+      white: '白色',
+      type: '类型',
       customNode: '自定义节点',
       custom: '自定义',
       vertical: '豎向展示',
     },
     'en-US': {
       basic: 'Basic usage',
+      white: 'White',
+      type: 'Type',
       customNode: 'Custom Node',
       custom: 'Custom',
       vertical: 'Vertical display',
@@ -32,6 +40,12 @@ const IndicatorDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
+
+        <h2>{translated.white}</h2>
+        <Demo5 />
+
+        <h2>{translated.type}</h2>
+        <Demo6 />
 
         <h2>{translated.customNode}</h2>
         <Demo2 />

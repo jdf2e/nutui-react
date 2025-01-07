@@ -69,7 +69,7 @@ const Index = () => {
 
       <View className='index-components'>
         {process.env.NODE_ENV === 'development' ? <>
-          <SearchBar style={{ background: '#fff' }} placeholder='' value={search} onChange={(e) => {
+          <SearchBar style={{ background: '#fff',borderRadius:'8px' }} placeholder='' value={search} onChange={(e) => {
             setSearch(e)
           }} />
           <View style={{ height: 25 }}></View>
@@ -81,7 +81,7 @@ const Index = () => {
             )}
             <View className="index-components-sublist">
               {nav.packages.map((com) =>
-                com.show && com.taro && com.version === '3.0.0' && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
+                com.show && com.taro && com.dd && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className="index-components-sublist-item"

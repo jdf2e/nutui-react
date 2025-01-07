@@ -21,9 +21,15 @@
       font-size: $loading-icon-size;
     }
   }
+  .nut-loading-lottie-box {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-base;
+    background: $loading-lottie-background;
+  }
 
   .nut-loading-text {
-    padding: 8px;
+    padding-top: $spacing-base;
     color: $loading-color;
     font-size: $loading-font-size;
   }

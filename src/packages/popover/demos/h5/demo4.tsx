@@ -34,10 +34,6 @@ const Demo4 = () => {
       key: 'key1',
       name: 'option1',
     },
-    {
-      key: 'key2',
-      name: 'option2',
-    },
   ]
 
   const handlePicker = () => {
@@ -58,7 +54,6 @@ const Demo4 = () => {
         visible={showPicker}
         options={columns}
         duration="500"
-        title=""
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
