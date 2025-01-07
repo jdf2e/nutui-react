@@ -9,14 +9,10 @@ const modules = import.meta.glob('@/packages/**/demos/*/*.tsx', {
   import: 'default',
   eager: true,
 })
-// console.log('modules', modules)
 const CodeBlock: FunctionComponent = (props: { src?: string }) => {
   const ctx = useContext(APPContext)
-
   const originCode = modules[`${ctx.path}/demos/${props.src}`]
-
   const highlightedCode = hljs.highlightAuto(originCode, ['jsx']).value
-
   return (
     <DemoBlock text={originCode} scss="">
       <pre>
