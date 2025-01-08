@@ -25,11 +25,13 @@
     position: absolute;
     left: -0.8em;
   }
+
   .nut-form-item-labeltxt {
     font-size: $form-item-label-font-size;
     height: 10px;
     position: relative;
   }
+
   &-body {
     flex: 1;
     display: flex;
@@ -60,6 +62,7 @@
 
       .nut-textarea {
         padding: 0;
+
         .nut-textarea-textarea {
           font: inherit;
           text-align: $form-item-body-input-text-align;
@@ -71,6 +74,16 @@
       text-align: $form-item-tip-text-align;
       font-size: $form-item-tip-font-size;
       color: $form-item-error-message-color;
+    }
+  }
+}
+
+.nut-form {
+  .nut-cell-group {
+    .nut-cell-group-wrap-divider {
+      .nut-cell-divider {
+        border-top: $cell-divider-border-bottom;
+      }
     }
   }
 }
@@ -89,21 +102,26 @@
       }
     }
   }
+
   &-body {
     &-slots {
       text-align: right;
+
       .nut-icon-ArrowRight,
       .nut-icon-ArrowLeft {
         transform: rotateY(180deg);
       }
+
       .nut-input-text {
         text-align: right;
       }
+
       .nut-textarea-textarea {
         text-align: right;
       }
     }
   }
+
   &-tips {
     text-align: right;
   }
