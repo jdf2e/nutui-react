@@ -327,6 +327,7 @@ const InternalPicker: ForwardRefRenderFunction<
         afterClose={() => {
           afterClose?.(setSelectedOptions(), innerValue, pickerRef)
         }}
+        className={`${classPrefix}-popup`}
       >
         <div className={classes} style={style} {...rest}>
           {renderTitleBar()}
