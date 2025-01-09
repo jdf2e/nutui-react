@@ -259,7 +259,7 @@ class FormStore {
 
   private watchList: WatchCallback[] = []
 
-  private registerWatch = (callback) => {
+  private registerWatch = (callback: WatchCallback) => {
     this.watchList.push(callback)
 
     return () => {

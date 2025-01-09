@@ -4,7 +4,7 @@ import { Button, Form, Input, Radio, Space } from '@nutui/nutui-react-taro'
 type FieldType = { account?: string; loginMethod?: 'mobile' | 'email' }
 
 const Demo8 = () => {
-  const [form] = Form.useForm<FieldType>()
+  const [form] = Form.useForm()
   const account = Form.useWatch('account', form)
   const loginMethod = Form.useWatch('loginMethod', form)
 
