@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Schema from 'async-validator'
 import { merge } from '@/utils/merge'
 import {
@@ -11,6 +11,7 @@ import {
 
 export const SECRET = 'NUT_FORM_INTERNAL'
 type UpdateItem = { entity: FormFieldEntity; condition: any }
+type WatchCallback = (value: Store, namePath: NamePath[]) => void
 
 /**
  * 用于存储表单的数据
@@ -90,6 +91,7 @@ class FormStore {
     if (init) {
       const nextStore = merge(initialValues, this.store)
       this.updateStore(nextStore)
+      this.notifyWatch()
     }
   }
 
@@ -117,6 +119,7 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
+    this.notifyWatch()
   }
 
   setFieldValue = <T>(name: NamePath, value: T) => {
@@ -124,6 +127,7 @@ class FormStore {
       [name]: value,
     }
     this.setFieldsValue(store)
+    this.notifyWatch([name])
   }
 
   setCallback = (callback: Callbacks) => {
@@ -234,6 +238,7 @@ class FormStore {
         store: this.store,
         fieldEntities: this.fieldEntities,
         registerUpdate: this.registerUpdate,
+        registerWatch: this.registerWatch,
       }
     }
   }
@@ -251,6 +256,29 @@ class FormStore {
       getInternal: this.getInternal,
     }
   }
+
+  private watchList: WatchCallback[] = []
+
+  private registerWatch = (callback) => {
+    this.watchList.push(callback)
+
+    return () => {
+      this.watchList = this.watchList.filter((fn) => fn !== callback)
+    }
+  }
+
+  private notifyWatch = (namePath: NamePath[] = []) => {
+    if (this.watchList.length) {
+      let allValues = this.getFieldsValue(namePath)
+
+      if (!namePath || namePath.length === 0) {
+        allValues = this.getFieldsValue(true)
+      }
+      this.watchList.forEach((callback) => {
+        callback(allValues, namePath)
+      })
+    }
+  }
 }
 
 export const useForm = (form?: FormInstance): [FormInstance] => {
@@ -264,4 +292,14 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
     }
   }
   return [formRef.current as FormInstance]
+}
+
+export const useWatch = (path: NamePath, form: FormInstance) => {
+  const formInstance = form.getInternal(SECRET)
+  const [value, setValue] = useState<any>()
+  formInstance.registerWatch((data: any, namePath: NamePath) => {
+    const value = data[path]
+    setValue(value)
+  })
+  return value
 }

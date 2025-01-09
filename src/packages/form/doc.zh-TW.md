@@ -58,6 +58,14 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
+### useWatch
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 表單類型
 
 :::demo
@@ -120,7 +128,7 @@ import { Form } from '@nutui/nutui-react'
 
 ### FormInstance
 
-Form.useForm()創建 Form 實例，用於管理所有數據狀態。
+`Form.useForm()`創建 Form 實例，用於管理所有數據狀態。
 
 | 屬性 | 說明 | 類型 |
 | --- | --- | --- |
@@ -130,6 +138,8 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 | setFieldValue | 設定對應欄位名的值 | `<T>(name: NamePath, value: T) => void` |
 | resetFields | 重置錶單提示狀態 | `() => void` |
 | submit | 提交錶單進行校驗的方法 | `Promise` |
+
+`Form.useWatch()`此方法將監視指定的輸入並傳回其值。它對於呈現輸入值和確定根據條件呈現的內容很有用。
 
 ## 主題定制
 

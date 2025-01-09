@@ -58,6 +58,14 @@ import { Form } from '@nutui/nutui-react-taro'
 
 :::
 
+### useWatch
+
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 表单类型
 
 :::demo
@@ -120,7 +128,7 @@ import { Form } from '@nutui/nutui-react-taro'
 
 ### FormInstance
 
-Form.useForm()创建 Form 实例，用于管理所有数据状态。
+`Form.useForm()`创建 Form 实例，用于管理所有数据状态。
 
 | 属性 | 说明 | 类型 |
 | --- | --- | --- |
@@ -130,6 +138,8 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 | setFieldValue | 设置对应字段名的值 | `<T>(name: NamePath, value: T) => void` |
 | resetFields | 重置表单提示状态 | `() => void` |
 | submit | 提交表单进行校验的方法 | `Promise` |
+
+`Form.useWatch()`此方法将监视指定的输入并返回其值。它对于呈现输入值和确定根据条件呈现的内容很有用。
 
 ## 主题定制
 
