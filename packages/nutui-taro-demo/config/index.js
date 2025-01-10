@@ -10,18 +10,12 @@ if (projectID) {
   themeStr = `src/styles/theme-${projectID}.scss`
 }
 
-let plugins = !['harmony', 'jdharmony', 'rn', 'jdrn'].includes(
-  process.env.TARO_ENV
-)
+let plugins = !['harmony', 'jdharmony'].includes(process.env.TARO_ENV)
   ? ['@tarojs/plugin-html']
   : []
 
 if (process.env.TARO_ENV === 'harmony') {
   plugins.push('@tarojs/plugin-platform-harmony-ets')
-}
-
-if ((process.env.TARO_ENV === 'rn' || process.env.TARO_ENV === 'jdrn') && JD) {
-  plugins.push('@jdtaro/plugin-platform-jdrn')
 }
 
 // 小程序、jd H5 通过此插件覆盖
@@ -252,21 +246,6 @@ const config = {
     output: {
       environment: {
         asyncFunction: true,
-      },
-    },
-  },
-  rn: {
-    appName: 'JDReactAPIDemos',
-    postcss: {
-      'postcss-css-variables': {
-        enable: true,
-        config: {
-          // variables: {
-          //   '--nutui-color-primary': '#000',
-          //   '--nutui-color-primary-stop-1': '#000',
-          //   '--nutui-color-primary-stop-2': '#000',
-          // },
-        },
       },
     },
   },

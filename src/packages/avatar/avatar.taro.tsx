@@ -12,7 +12,7 @@ import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 // import Image from '@/packages/image/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
 import pxTransform from '@/utils/px-transform'
 
@@ -33,7 +33,7 @@ export type AvatarShape = 'round' | 'square'
 
 const defaultProps = {
   ...ComponentDefaults,
-  size: harmonyAndRn() ? '40' : '',
+  size: harmony() ? '40' : '',
   shape: 'round',
   icon: '',
   background: '#eee',
@@ -94,7 +94,7 @@ export const Avatar: FunctionComponent<
     height: sizeValue.indexOf(size) > -1 ? '' : pxTransform(parseInt(size)),
     backgroundColor: `${background}`,
     color,
-    [harmonyAndRn() ? 'marginRight' : 'marginLeft']:
+    [harmony() ? 'marginRight' : 'marginLeft']:
       avatarIndex !== 1 && propAvatarGroup?.gap
         ? `${propAvatarGroup?.gap}px`
         : '',

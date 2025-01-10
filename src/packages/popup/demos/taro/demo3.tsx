@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
 import { Heart } from '@nutui/icons-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo3 = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -23,7 +23,7 @@ const Demo3 = () => {
         }}
       />
 
-      {harmonyAndRn() ? null : (
+      {harmony() ? null : (
         <>
           <Cell
             title="自定义图标"

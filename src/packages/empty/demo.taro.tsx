@@ -38,8 +38,6 @@ const EmptyDemo = () => {
     },
   })
 
-  const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
-
   return (
     <>
       <Header />
@@ -50,13 +48,8 @@ const EmptyDemo = () => {
         <Demo2 />
         <View className="h2">{translated.c38a08ef}</View>
         <Demo3 />
-        {/* TODO: Tabs 适配 */}
-        {!isRN && (
-          <>
-            <View className="h2">{translated.b840c88f}</View>
-            <Demo4 />
-          </>
-        )}
+        <View className="h2">{translated.b840c88f}</View>
+        <Demo4 />
         <View className="h2">{translated.a74a1fd4}</View>
         <Demo5 />
         <View className="h2">{translated['8dab2f66']}</View>

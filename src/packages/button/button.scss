@@ -2,10 +2,10 @@
   position: relative;
   display: flex;
   display: inline-block;
-  /* #ifdef rn harmony*/
+  /* #ifdef harmony*/
   width: 80px;
   /* #endif */
-  /* #ifndef rn harmony*/
+  /* #ifndef harmony*/
   width: auto;
   /* #endif */
   flex-direction: row;
@@ -72,7 +72,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* #ifndef rn harmony */
+    /* #ifndef harmony */
     background: initial;
     /* #endif */
     .nut-icon {

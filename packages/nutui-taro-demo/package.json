@@ -37,7 +37,6 @@
     "dev:jdharmony": "pnpm exec taro build native-components --type jdharmony",
     "dev:jdharmonycpp": "pnpm exec taro build native-components --type jdharmony_cpp",
     "dev:jdhybrid": "npm run build:jdhybrid -- --watch",
-    "dev:jdrn": "node ./scripts/taro/generate-nutui-taro.js && taro build --type jdrn --watch  --reset-cache",
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "dev:weapp:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:weapp -- --watch ",
     "dev:swan:jmapp": "VITE_APP_PROJECT_ID=jmapp npm run build:swan -- --watch",
@@ -59,7 +58,6 @@
   "dependencies": {
     "@babel/runtime": "^7.23.9",
     "@dongdesign/inject-jd-platform-styles": "1.0.4",
-    "@jdreact/jdreact-jsbundle-commonpack": "1.0.425",
     "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
     "@jdtaro/taro-platform-jdharmony": "2.0.70",
     "@jdtaro/plugin-platform-jdharmony-cpp": "0.1.4-alpha.3",

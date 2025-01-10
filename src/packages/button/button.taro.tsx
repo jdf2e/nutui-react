@@ -9,7 +9,7 @@ import {
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -91,7 +91,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           }
         } else {
           style.color = '#fff'
-          if (harmonyAndRn()) {
+          if (harmony()) {
             style.backgroundColor = color
           }
           style.background = color
@@ -167,7 +167,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
               className={`nut-button-children nut-button-${size}-children nut-button-${type}-children ${!(props.fill || disabled || loading) ? '' : `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}`}${icon || loading ? ` nut-button-text` : ''}${
                 rightIcon ? ' nut-button-text-right' : ''
               }`}
-              style={harmonyAndRn() ? getContStyle : {}}
+              style={harmony() ? getContStyle : {}}
             >
               {children}
             </View>

@@ -11,10 +11,6 @@
     bottom: $hoverbutton-position-bottom;
     z-index: 10;
   }
-
-  &-container-rn {
-    position: absolute;
-  }
 }
 
 [dir='rtl'] .nut-hoverbutton-container,

@@ -33,16 +33,8 @@
   height: 100%;
   display: flex;
   position: relative;
-  &-horizontal {
-    /* #ifndef rn */
-    transform: translateX(var(--swiper-offset));
-    /* #ifndef rn */
-  }
 
   &-vertical {
-    /* #ifndef rn */
-    transform: translateY(var(--swiper-offset));
-    /* #ifndef rn */
     flex-direction: column;
   }
 }
@@ -64,9 +56,6 @@
   &-indicator {
     left: auto;
     right: 50%;
-    /* #ifndef rn */
-    transform: translateX(50%);
-    /* #endif */
   }
   &-indicator-vertical {
     left: auto;

@@ -51,11 +51,9 @@
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json --noEmit",
     "changelog": "node ./scripts/generate-changelog.js",
     "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
-    "clone:rn": "pnpm run update:taro:entry && node ./scripts/rn/copy-file.js",
     "dev": "vite --open --force",
     "dev:rtl": "VITE_RTL=rtl vite --open --force",
     "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf vite --open --force",
-    "dev:taro:jdrn": "pnpm run clone:rn && pnpm --dir ./packages/nutui-taro-demo dev:jdrn",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
     "dev:taro": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:taro:h5": "pnpm dev:taro h5",
@@ -93,7 +91,7 @@
     "e2e:open:h5": "start-server-and-test dev http://localhost:5173/ cypress:open",
     "e2e:run:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:run:taro",
     "e2e:open:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:open:taro",
-    "update:taro:entry": "node ./scripts/rn/update-taro-entry",
+    "update:taro:entry": "node ./scripts/harmony/update-taro-entry",
     "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro"
   },
   "lint-staged": {

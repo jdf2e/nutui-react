@@ -13,7 +13,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const SwiperDemo = () => {
   const [translated] = useTranslate({
@@ -70,7 +70,7 @@ const SwiperDemo = () => {
         <Demo6 />
         <View className="h2">{translated.horizontalCenter}</View>
         <Demo7 />
-        {!harmonyAndRn() ? (
+        {!harmony() ? (
           <>
             <View className="h2">{translated.verticalCenter}</View>
             <Demo8 />

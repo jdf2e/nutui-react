@@ -4,7 +4,6 @@ import { navigateTo, redirectTo } from '@tarojs/taro'
 import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   const onJumpclick = (
@@ -23,7 +22,7 @@ const Demo6 = () => {
           className="nutui-cell-clickable"
           title="链接"
           align="center"
-          extra={harmonyAndRn() ? null : <ArrowRight />}
+          extra={<ArrowRight />}
         />
         <Cell
           className="nutui-cell-clickable"
@@ -33,7 +32,7 @@ const Demo6 = () => {
               <View style={{ marginRight: pxTransform(5) }}>
                 /pages/index/index
               </View>
-              {harmonyAndRn() ? null : <ArrowRight />}
+              <ArrowRight />
             </>
           }
           align="center"
@@ -74,9 +73,7 @@ const Demo6 = () => {
               }}
             >
               More
-              {harmonyAndRn() ? null : (
-                <ArrowRight size={12} style={{ marginLeft: 5 }} />
-              )}
+              <ArrowRight size={12} style={{ marginLeft: 5 }} />
             </View>
           }
         />
@@ -113,11 +110,11 @@ const Demo6 = () => {
                 flexDirection: 'row',
               }}
             >
-              {harmonyAndRn() ? null : <User style={{ marginRight: 5 }} />}
+              <User style={{ marginRight: 5 }} />
               我是标题
             </View>
           }
-          extra={harmonyAndRn() ? null : <ArrowRight />}
+          extra={<ArrowRight />}
         />
         <Cell>
           <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>

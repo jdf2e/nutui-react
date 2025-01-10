@@ -19,7 +19,6 @@ import { ComponentDefaults } from '@/utils/typings'
 import HoverButton, {
   HoverButtonProps,
 } from '@/packages/hoverbutton/index.taro'
-import { rn } from '@/utils/platform-taro'
 
 export interface BackTopProps extends HoverButtonProps {
   threshold: number
@@ -62,7 +61,6 @@ export const BackTop: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-show`]: backTop,
-      [`${classPrefix}-rn`]: rn(),
     },
     className
   )

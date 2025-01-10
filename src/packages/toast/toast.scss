@@ -11,12 +11,7 @@
 }
 
 .nut-toast {
-  /* #ifdef rn */
-  position: absolute;
-  /* #endif */
-  /* #ifndef rn */
   position: fixed;
-  /* #endif */
   left: 0;
   top: 0;
   display: flex;
@@ -89,12 +84,7 @@
   }
 
   &-center {
-    /* #ifdef rn */
-    top: var(--nutui-toast-inner-top, 38%);
-    /* #endif */
-    /* #ifndef rn */
     top: var(--nutui-toast-inner-top, 48%);
-    /* #endif */
   }
 
   &-bottom {

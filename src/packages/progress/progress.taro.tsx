@@ -6,7 +6,7 @@ import pxTransform from '@/utils/px-transform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/utils/use-uuid'
-import { harmony, harmonyAndRn, rn, web } from '@/utils/platform-taro'
+import { harmony, web } from '@/utils/platform-taro'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -155,7 +155,7 @@ export const Progress: FunctionComponent<
   useEffect(() => {
     if (web()) {
       handleWebObserver()
-    } else if (!harmonyAndRn()) {
+    } else if (!harmony()) {
       handleOtherObserver()
     }
   }, [])
@@ -166,11 +166,8 @@ export const Progress: FunctionComponent<
     if (children) {
       return 0
     }
-    if (!harmonyAndRn()) {
+    if (!harmony()) {
       return Math.floor((`${percent}%`.length * 9) / 2)
-    }
-    if (rn()) {
-      return `${percent}%`.length * 9 + 4
     }
     return Math.floor((`${percent}%`.length * 9 + 4) / 2)
   }
@@ -178,7 +175,7 @@ export const Progress: FunctionComponent<
     const style: any = {
       backgroundColor: color || '#ff0f23',
     }
-    if (harmonyAndRn()) {
+    if (harmony()) {
       style.width = harmony()
         ? pxTransform(`${percent}%`.length * 9 + 4)
         : `${percent}%`.length * 9 + 4

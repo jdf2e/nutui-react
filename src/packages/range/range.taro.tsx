@@ -16,7 +16,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { RangeMark, RangeValue } from './types'
 import { useRtl } from '../configprovider/index.taro'
-import { harmony, harmonyAndRn, rn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 export interface RangeProps extends BasicComponent {
   value: RangeValue
@@ -47,9 +47,7 @@ const defaultProps = {
   marks: {},
 } as RangeProps
 
-const isRn = rn()
 const isHm = harmony()
-const isNative = harmonyAndRn()
 const classPrefix = 'nut-range'
 const verticalClassPrefix = `${classPrefix}-vertical`
 
@@ -147,12 +145,12 @@ export const Range: FunctionComponent<
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [verticalClassPrefix]: vertical,
-    [`${classPrefix}-native`]: isNative,
+    [`${classPrefix}-native`]: isHm,
   })
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
-      [`${classPrefix}-container-native`]: isNative,
+      [`${classPrefix}-container-native`]: isHm,
       [`${verticalClassPrefix}-container`]: vertical,
     },
     className
@@ -341,7 +339,7 @@ export const Range: FunctionComponent<
         onStart && onStart()
       }
 
-      touch.move(isRn ? event.nativeEvent : event)
+      touch.move(event)
       setDragStatus('draging')
       const rect = await getRectByTaro(root.current)
       if (!rect) return
@@ -410,13 +408,6 @@ export const Range: FunctionComponent<
       transform: 'translate(-50%, -50%)',
     }
 
-    if (isRn) {
-      // @TODO 支持变量
-      return {
-        ...borderRadis,
-        transform: [{ translateX: pxTransform(-12) }],
-      }
-    }
     if (isHm) {
       return {
         ...borderRadis,
@@ -428,14 +419,6 @@ export const Range: FunctionComponent<
     }
   }, [])
   const buttonNumberTransform = useMemo(() => {
-    if (isRn) {
-      // @TODO 支持变量
-      return [
-        { translateX: pxTransform(vertical ? 26 : -12) },
-        { translateY: pxTransform(vertical ? -12 : -26) },
-      ]
-    }
-
     return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
   }, [vertical])
 
@@ -540,20 +523,9 @@ export const Range: FunctionComponent<
     ]
     const wrapperTransform = 'translate(-50%, -50%)'
 
-    return isRn ? wrapperTransformRN : wrapperTransform
+    return wrapperTransform
   }, [vertical])
   const rangeWrapperTransform = useMemo(() => {
-    if (isRn) {
-      // @TODO 支持变量
-      return [
-        {
-          translateX: pxTransform(-12),
-        },
-        {
-          translateY: pxTransform(-13),
-        },
-      ]
-    }
     return 'translate(-50%, -50%)'
   }, [])
 
@@ -581,7 +553,7 @@ export const Range: FunctionComponent<
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
           onTouchCancel={onTouchEnd}
-          onClick={(e) => !isRn && e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
         >
           {renderButton(index)}
         </View>
@@ -613,7 +585,7 @@ export const Range: FunctionComponent<
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
-        onClick={(e) => !isRn && e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         {renderButton()}
       </View>

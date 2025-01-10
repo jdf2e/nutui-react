@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 export interface OverlayProps extends BasicComponent {
   zIndex: number
@@ -102,7 +102,7 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      {!harmonyAndRn() ? (
+      {!harmony() ? (
         <CSSTransition
           nodeRef={nodeRef}
           classNames={`${classPrefix}-slide`}
