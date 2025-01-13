@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import isEqual from 'lodash.isequal'
+import isEqual from 'react-fast-compare'
 import { Events, getCurrentInstance } from '@tarojs/taro'
 import { useForceUpdate } from '@/utils/use-force-update'
 

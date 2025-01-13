@@ -2,7 +2,7 @@ import React from 'react'
 import { Swipe } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const ViewNode = (text: string, style: any) => {
@@ -18,9 +18,7 @@ const ViewNode = (text: string, style: any) => {
         ...style,
       }}
     >
-      {!harmonyAndRn() ? (
-        <Del style={{ marginBottom: pxTransform(8) }} />
-      ) : null}
+      {!harmony() ? <Del style={{ marginBottom: pxTransform(8) }} /> : null}
       <Text style={{ fontSize: pxTransform(12), color: style.color }}>
         {text}
       </Text>

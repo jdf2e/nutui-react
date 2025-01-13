@@ -2,3 +2,4 @@ packages:
   - 'packages/nutui-codemod'
   - 'packages/nutui-auto-import'
   - 'packages/nutui-taro-demo'
+  - 'packages/nutui-replace-icons'

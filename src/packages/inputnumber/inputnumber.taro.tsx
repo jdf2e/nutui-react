@@ -6,17 +6,11 @@ import React, {
   ChangeEvent,
 } from 'react'
 import classNames from 'classnames'
-import {
-  ITouchEvent,
-  Input as TaroInput,
-  InputProps,
-  View,
-  Text,
-} from '@tarojs/components'
+import { ITouchEvent, InputProps, View, Text } from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmonyAndRn, rn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 export interface InputNumberProps extends BasicComponent {
   value: number | string
@@ -90,8 +84,7 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const isRnAndHarmony = harmonyAndRn()
-  const isRn = rn()
+  const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -252,7 +245,7 @@ export const InputNumber: FunctionComponent<
   return (
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
-        {isRnAndHarmony ? (
+        {isHarmony ? (
           <Text
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-minus`,
@@ -276,38 +269,23 @@ export const InputNumber: FunctionComponent<
           />
         )}
       </View>
-      {isRn ? (
-        <TaroInput
-          className={classNames(`${classPrefix}-input`, {
-            [`${classPrefix}-input-disabled`]: disabled,
-          })}
-          type={type}
-          ref={inputRef}
-          disabled={disabled || readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      ) : (
-        <input
-          className={classNames(`${classPrefix}-input`, {
-            [`${classPrefix}-input-disabled`]: disabled,
-          })}
-          type={type}
-          ref={inputRef}
-          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
-          disabled={disabled}
-          readOnly={readOnly}
-          value={inputValue}
-          onInput={handleInputChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-        />
-      )}
+      <input
+        className={classNames(`${classPrefix}-input`, {
+          [`${classPrefix}-input-disabled`]: disabled,
+        })}
+        type={type}
+        ref={inputRef}
+        inputMode={type === 'digit' ? 'decimal' : 'numeric'}
+        disabled={disabled}
+        readOnly={readOnly}
+        value={inputValue}
+        onInput={handleInputChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+      />
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
-        {isRnAndHarmony ? (
+        {isHarmony ? (
           <Text
             className={classNames(
               `${classPrefix}-icon ${classPrefix}-icon-plus`,

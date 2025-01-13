@@ -11,7 +11,6 @@ $doc-title-height: 137px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  //padding-top: $doc-header-height;
 }
 
 .doc {
@@ -25,12 +24,10 @@ $doc-title-height: 137px;
       align-items: center;
       justify-content: space-between;
       padding: 40px;
-      // line-height: 56px;
       border-bottom: 1px solid #eee;
       background: #fff;
       visibility: visible;
       opacity: 1;
-      // transition: opacity 0.8s linear, visibility 0.8s linear;
       transition: opacity 0.8s;
       &.fixed {
         width: calc(100% - 290px);
@@ -59,9 +56,6 @@ $doc-title-height: 137px;
     &-document {
       min-height: 800px;
       min-width: 1000px;
-      .markdown-body {
-        min-height: 600px;
-      }
     }
     &-tabs {
       position: absolute;

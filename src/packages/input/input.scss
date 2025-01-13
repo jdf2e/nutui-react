@@ -35,12 +35,6 @@
   background-color: transparent;
 }
 
-/* #ifndef rn */
-.nut-input-native::placeholder {
-  color: $color-text-help;
-}
-/* #endif */
-
 .nut-input-readonly {
   .nut-input-native {
     color: $color-text-help;

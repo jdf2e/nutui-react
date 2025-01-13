@@ -11,7 +11,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
-import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -58,7 +58,7 @@ const ImageDemo = () => {
         <Demo6 />
         <View className="h2">{translated.position}</View>
         <Demo7 />
-        {!harmonyAndRn() && (
+        {!harmony() && (
           <>
             <View className="h2">{translated.lazyload}</View>
             <Demo8 />

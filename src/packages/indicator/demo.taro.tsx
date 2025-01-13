@@ -55,7 +55,7 @@ const IndicatorDemo = () => {
         <Demo2 />
 
         <View className="h2">{translated.custom}</View>
-        {Taro.getEnv() === 'RN' ? null : <Demo3 />}
+        <Demo3 />
 
         <View className="h2">{translated.vertical}</View>
         <Demo4 />

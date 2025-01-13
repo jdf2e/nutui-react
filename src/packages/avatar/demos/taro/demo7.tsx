@@ -1,7 +1,7 @@
 import React from 'react'
 import { Avatar, Cell } from '@nutui/nutui-react-taro'
 import { User } from '@nutui/icons-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo7 = () => {
   return (
@@ -10,8 +10,8 @@ const Demo7 = () => {
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<User />} />
         <Avatar
-          color={`${harmonyAndRn() ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
-          background={`${harmonyAndRn() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
+          color={`${harmony() ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
+          background={`${harmony() ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
         >
           U
         </Avatar>

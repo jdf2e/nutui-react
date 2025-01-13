@@ -2,11 +2,11 @@ import React, { useState, useMemo } from 'react'
 import { View } from '@tarojs/components'
 import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo4 = () => {
   const cellStyle = useMemo(() => {
-    return harmonyAndRn()
+    return harmony()
       ? {
           paddingTop: pxTransform(40),
           paddingBottom: pxTransform(40),

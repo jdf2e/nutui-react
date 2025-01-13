@@ -75,11 +75,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       // eslint-disable-next-line no-nested-ternary
-      radius !== undefined && radius != null
-        ? Taro.getEnv() === 'RN'
-          ? radius
-          : pxCheck(radius)
-        : '',
+      radius !== undefined && radius != null ? pxCheck(radius) : '',
   }
 
   const imgStyle: any = {

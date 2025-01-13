@@ -10,7 +10,6 @@ import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
 import { PullToRefreshType } from './types'
 import pxTransform from '@/utils/px-transform'
-import { rn } from '@/utils/platform-taro'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -126,11 +125,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
     clearTimeout(timer.current)
-    if (rn()) {
-      timer.current = setTimeout(() => {
-        handleTouchEnd()
-      }, 300)
-    }
   }
 
   async function doRefresh() {

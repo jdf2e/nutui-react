@@ -10,7 +10,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
-import { harmonyAndRn, web } from '@/utils/platform-taro'
+import { harmony, web } from '@/utils/platform-taro'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -65,7 +65,7 @@ const ProgressDemo = () => {
 
         <View className="h2">{translated.dynamicChange}</View>
         <Demo7 />
-        {!harmonyAndRn() && (
+        {!harmony() && (
           <>
             <View className="h2">{translated.lazy}</View>
             <Demo8 />

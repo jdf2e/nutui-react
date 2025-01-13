@@ -12,7 +12,7 @@ import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 import { useRefState } from '@/utils/use-ref-state'
 
@@ -265,7 +265,7 @@ export const Swipe = forwardRef<
   }))
 
   useEffect(() => {
-    if (harmonyAndRn()) return
+    if (harmony()) return
 
     const handler: any = (event: { target: Node | null }) => {
       const targets = [root]
