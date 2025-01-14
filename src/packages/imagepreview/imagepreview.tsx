@@ -138,7 +138,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       store1.oriDistance = getDistance(events, events2)
     }
     // 取到开始两指操作时的放大（缩小比例），store.scale 存储的是当前的放缩比（相对于标准大小 scale 为 1 的情况的放大缩小比）
-    store1.originScale = store1.scale || 1
+    store1.originScale = store1.scale
   }
 
   const onTouchMove = (event: TouchEvent) => {
@@ -152,20 +152,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
     // 双指移动
     if (events2) {
-      // 获得当前两点间的距离
       const curDistance = getDistance(events, events2)
-
       /** 此处计算倍数，距离放大（缩小） k 倍则 scale 也 扩大（缩小） k 倍。距离放大（缩小）倍数 = 结束时两点距离 除以 开始时两点距离
        * 注意此处的 scale 变化是基于 store.scale 的。
        * store.scale 是一个暂存值，比如第一次放大 2 倍，则 store.scale 为 2。
        * 再次两指触碰的时候，store.originScale 就为 store.scale 的值，基于此时的 store.scale 继续放大缩小。 * */
       const curScale = curDistance / store1.oriDistance
-      store1.scale = store1.originScale * curScale
-
       // 最大放大 3 倍，缩小后松手要弹回原比例
-      if (store1.scale > 3) {
-        store1.scale = 3
-      }
+      store1.scale = Math.min(store1.originScale * curScale, 3)
       scaleNow()
     }
   }
