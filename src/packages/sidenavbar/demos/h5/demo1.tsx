@@ -6,8 +6,9 @@ import {
   SideNavBarItem,
   Toast,
 } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo1 = () => {
+const Demo1 = ({ t }: propsType) => {
   type Position = 'left' | 'right'
   type NavBarState = {
     visible: boolean
@@ -38,46 +39,43 @@ const Demo1 = () => {
   }
   return (
     <>
-      <Cell
-        title="左侧弹出"
-        onClick={() => {
-          changeNarBar(true, 'left')
-        }}
-      />
-      <Cell
-        title="右侧弹出"
-        onClick={() => {
-          changeNarBar(true, 'right')
-        }}
-      />
+      <Cell title={t.leftOpen} onClick={() => changeNarBar(true, 'left')} />
+      <Cell title={t.rightOpen} onClick={() => changeNarBar(true, 'right')} />
       <SideNavBar
-        title="首页"
+        title={t.home}
         visible={navBarState.visible}
         position={navBarState.position}
-        onClose={() => {
-          changeNarBar(false)
-        }}
+        onClose={() => changeNarBar(false)}
       >
-        <SubSideNavBar title="一级标题" value="1-0" onClick={clickTitle}>
-          <SideNavBarItem title="一级内容1" value="1-01" onClick={clickItem} />
-          <SideNavBarItem title="一级内容2" value="1-02" />
-          <SubSideNavBar title="二级标题" value="2-0">
-            <SideNavBarItem title="二级内容1" value="2-01" />
-            <SideNavBarItem title="二级内容2" value="2-02" />
+        <SubSideNavBar
+          title={t.firstLevelTitle}
+          value="1-0"
+          onClick={clickTitle}
+        >
+          <SideNavBarItem
+            title={t.firstLevelContent1}
+            value="1-01"
+            onClick={clickItem}
+          />
+          <SideNavBarItem title={t.firstLevelContent2} value="1-02" />
+          <SubSideNavBar title={t.secondLevelTitle} value="2-0">
+            <SideNavBarItem title={t.secondLevelContent1} value="2-01" />
+            <SideNavBarItem title={t.secondLevelContent2} value="2-02" />
             {showThird ? (
-              <SubSideNavBar title="三级标题" value="3-0">
-                <SideNavBarItem title="三级内容1" value="3-01" />
-                <SideNavBarItem title="三级内容2" value="3-02" />
+              <SubSideNavBar title={t.thirdLevelTitle} value="3-0">
+                <SideNavBarItem title={t.thirdLevelContent1} value="3-01" />
+                <SideNavBarItem title={t.thirdLevelContent2} value="3-02" />
               </SubSideNavBar>
             ) : null}
           </SubSideNavBar>
         </SubSideNavBar>
-        <SubSideNavBar open={false} title="一级标题-2" value="1-1">
-          <SideNavBarItem title="一级内容2-1" value="1-11" />
-          <SideNavBarItem title="一级内容2-2" value="1-12" />
+        <SubSideNavBar open={false} title={t.firstLevelTitle2} value="1-1">
+          <SideNavBarItem title={t.firstLevelContent21} value="1-11" />
+          <SideNavBarItem title={t.firstLevelContent22} value="1-12" />
         </SubSideNavBar>
       </SideNavBar>
     </>
   )
 }
-export default Demo1
+
+export default withTranslation(Demo1)

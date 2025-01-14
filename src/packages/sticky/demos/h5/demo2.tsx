@@ -1,13 +1,15 @@
 import React from 'react'
 import { Button, Sticky } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   return (
     <>
       <Sticky threshold={120}>
-        <Button type="primary">距离顶部120px</Button>
+        <Button type="primary">{t.distanceFromBottom} 120px</Button>
       </Sticky>
     </>
   )
 }
-export default Demo2
+
+export default withTranslation(Demo2)

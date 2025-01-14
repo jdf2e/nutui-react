@@ -1,23 +1,26 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
 import { User } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo3 = () => {
+const Demo3 = ({ t }: propsType) => {
   return (
     <Cell
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <User />
-          <span style={{ marginLeft: 5 }}>我是标题</span>
+          <span style={{ marginLeft: 5 }}>{t.title}</span>
         </div>
       }
       description={
         <span>
-          我是描述<b style={{ color: 'red' }}>1</b>
+          {t.description}
+          <b style={{ color: 'red' }}>1</b>
         </span>
       }
-      extra="描述文字"
+      extra={t.descriptionText}
     />
   )
 }
-export default Demo3
+
+export default withTranslation(Demo3)

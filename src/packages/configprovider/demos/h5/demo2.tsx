@@ -1,12 +1,14 @@
 import React from 'react'
 import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   const darkTheme = {
     nutuiColorPrimaryIcon: 'green',
     nutuiColorPrimaryStop1: 'green',
     nutuiColorPrimaryStop2: 'green',
   }
+
   return (
     <>
       <ConfigProvider theme={darkTheme}>
@@ -16,7 +18,7 @@ const Demo2 = () => {
           </Cell>
           <Cell>
             <Button type="primary" block>
-              提交
+              {t.submit}
             </Button>
           </Cell>
         </Cell.Group>
@@ -25,4 +27,4 @@ const Demo2 = () => {
   )
 }
 
-export default Demo2
+export default withTranslation(Demo2)

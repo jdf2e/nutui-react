@@ -1,13 +1,14 @@
 import React from 'react'
 import { Elevator } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo4 = () => {
+const Demo4 = ({ t }: propsType) => {
   const dataList = [
     {
       title: 'A',
       list: [
         {
-          name: '安徽',
+          name: t.anhui,
           id: 1,
         },
       ],
@@ -16,7 +17,7 @@ const Demo4 = () => {
       title: 'B',
       list: [
         {
-          name: '北京',
+          name: t.beijing,
           id: 2,
         },
       ],
@@ -25,7 +26,7 @@ const Demo4 = () => {
       title: 'C',
       list: [
         {
-          name: '重庆',
+          name: t.chongqing,
           id: 3,
         },
       ],
@@ -34,7 +35,7 @@ const Demo4 = () => {
       title: 'F',
       list: [
         {
-          name: '福建',
+          name: t.fujian,
           id: 4,
         },
       ],
@@ -43,19 +44,19 @@ const Demo4 = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: t.guangxi,
           id: 5,
         },
         {
-          name: '广东',
+          name: t.guangdong,
           id: 6,
         },
         {
-          name: '甘肃',
+          name: t.gansu,
           id: 7,
         },
         {
-          name: '贵州',
+          name: t.guizhou,
           id: 8,
         },
       ],
@@ -64,27 +65,27 @@ const Demo4 = () => {
       title: 'H',
       list: [
         {
-          name: '湖南',
+          name: t.hunan,
           id: 9,
         },
         {
-          name: '湖北',
+          name: t.hubei,
           id: 10,
         },
         {
-          name: '海南',
+          name: t.hainan,
           id: 11,
         },
         {
-          name: '河北',
+          name: t.hebei,
           id: 12,
         },
         {
-          name: '河南',
+          name: t.henan,
           id: 13,
         },
         {
-          name: '黑龙江',
+          name: t.heilongjiang,
           id: 14,
         },
       ],
@@ -93,15 +94,15 @@ const Demo4 = () => {
       title: 'J',
       list: [
         {
-          name: '吉林',
+          name: t.jilin,
           id: 15,
         },
         {
-          name: '江苏',
+          name: t.jiangsu,
           id: 16,
         },
         {
-          name: '江西',
+          name: t.jiangxi,
           id: 17,
         },
       ],
@@ -110,12 +111,13 @@ const Demo4 = () => {
       title: 'L',
       list: [
         {
-          name: '辽宁',
+          name: t.liaoning,
           id: 18,
         },
       ],
     },
   ]
+
   const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
@@ -123,14 +125,16 @@ const Demo4 = () => {
   const onIndexClick = (key: string) => {
     console.log(key)
   }
+
   return (
     <Elevator
       list={dataList}
       height="220"
       sticky
-      onItemClick={(key: string, item: any) => onItemClick(key, item)}
-      onIndexClick={(key: string) => onIndexClick(key)}
+      onItemClick={onItemClick}
+      onIndexClick={onIndexClick}
     />
   )
 }
-export default Demo4
+
+export default withTranslation(Demo4)

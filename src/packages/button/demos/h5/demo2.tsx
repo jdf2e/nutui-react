@@ -1,23 +1,25 @@
 import React from 'react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   const marginStyle = { margin: 8 }
   return (
     <>
       <Button type="primary" fill="solid" style={marginStyle}>
-        Solid
+        {t.solid}
       </Button>
       <Button type="primary" fill="outline" style={marginStyle}>
-        Outline
+        {t.outline}
       </Button>
       <Button type="primary" fill="dashed" style={marginStyle}>
-        Dashed
+        {t.dashed}
       </Button>
       <Button fill="none" style={marginStyle}>
-        None
+        {t.none}
       </Button>
     </>
   )
 }
-export default Demo2
+
+export default withTranslation(Demo2)

@@ -16,7 +16,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo1.tsx'></CodeBlock>
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -24,7 +24,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo2.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -32,7 +32,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -40,7 +40,7 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Cell, Overlay } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo5 = () => {
+const Demo5 = ({ t }: propsType) => {
   const [visible, setVisible] = useState(false)
   const wrapperStyle = {
     display: 'flex',
@@ -24,19 +25,21 @@ const Demo5 = () => {
   const onClose = () => {
     setVisible(false)
   }
+
   return (
     <>
       <Cell>
         <Button type="success" onClick={handleToggleShow}>
-          嵌套内容
+          {t.nestedConetnt}
         </Button>
       </Cell>
       <Overlay visible={visible} onClick={onClose}>
         <div style={wrapperStyle}>
-          <div style={contentStyle}>这里是正文</div>
+          <div style={contentStyle}>{t.customContent}</div>
         </div>
       </Overlay>
     </>
   )
 }
-export default Demo5
+
+export default withTranslation(Demo5)

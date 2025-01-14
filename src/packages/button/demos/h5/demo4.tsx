@@ -1,8 +1,9 @@
 import React from 'react'
 import { Star, Plus } from '@nutui/icons-react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo4 = () => {
+const Demo4 = ({ t }: propsType) => {
   const marginStyle = { margin: 8 }
   return (
     <>
@@ -13,7 +14,7 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -23,7 +24,7 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -33,7 +34,7 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -42,7 +43,7 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -56,7 +57,7 @@ const Demo4 = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -70,10 +71,10 @@ const Demo4 = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button disabled icon={<Star />} rightIcon={<Star />} style={marginStyle}>
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -82,7 +83,9 @@ const Demo4 = () => {
         type="primary"
         icon={<Plus />}
         style={marginStyle}
-      />
+      >
+        {t.disabled}
+      </Button>
       <Button disabled type="primary" icon={<Plus />} style={marginStyle} />
       <Button
         disabled
@@ -90,7 +93,9 @@ const Demo4 = () => {
         fill="dashed"
         icon={<Plus />}
         style={marginStyle}
-      />
+      >
+        {t.disabled}
+      </Button>
       <Button
         disabled
         type="primary"
@@ -99,7 +104,7 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
       <Button
         disabled
@@ -109,9 +114,10 @@ const Demo4 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        {t.disabled}
       </Button>
     </>
   )
 }
-export default Demo4
+
+export default withTranslation(Demo4)

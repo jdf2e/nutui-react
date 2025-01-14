@@ -1,12 +1,14 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo7 = () => {
+const Demo7 = ({ t }: propsType) => {
   return (
     <Cell.Group divider={false}>
-      <Cell title="我是标题" extra="描述文字" />
-      <Cell title="我是标题" extra="描述文字" />
+      <Cell title={t.title} extra={t.descriptionText} />
+      <Cell title={t.title} extra={t.descriptionText} />
     </Cell.Group>
   )
 }
-export default Demo7
+
+export default withTranslation(Demo7)

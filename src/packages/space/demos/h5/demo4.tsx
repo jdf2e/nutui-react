@@ -1,7 +1,8 @@
 import React from 'react'
 import { Space, Button, ConfigProvider, Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo4 = () => {
+const Demo4 = ({ t }: propsType) => {
   return (
     <Cell>
       <ConfigProvider
@@ -10,12 +11,13 @@ const Demo4 = () => {
         }}
       >
         <Space direction="vertical">
-          <Button>按钮1</Button>
-          <Button>按钮2</Button>
-          <Button>按钮3</Button>
+          <Button>{t.button}1</Button>
+          <Button>{t.button}2</Button>
+          <Button>{t.button}3</Button>
         </Space>
       </ConfigProvider>
     </Cell>
   )
 }
-export default Demo4
+
+export default withTranslation(Demo4)

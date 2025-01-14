@@ -1,22 +1,23 @@
 import React from 'react'
 import { ConfigProvider, Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo5 = () => {
+const Demo5 = ({ t }: propsType) => {
   return (
     <>
       <ConfigProvider direction="rtl">
         <Cell
           title={
             <div>
-              <span>我是标题</span>
+              <span>{t.title}</span>
             </div>
           }
-          description={<span>我是描述</span>}
-          extra="描述文字"
+          description={<span>{t.description}</span>}
+          extra={t.descriptionText}
         />
       </ConfigProvider>
     </>
   )
 }
 
-export default Demo5
+export default withTranslation(Demo5)

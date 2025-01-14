@@ -1,15 +1,16 @@
 import React from 'react'
 import { Tabbar } from '@nutui/nutui-react'
 import { Cart, Category, Hi, Home, User } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo7 = () => (
+const Demo7 = ({ t }: propsType) => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#0073ff">
-    <Tabbar.Item title="首页" icon={<Home />} />
-    <Tabbar.Item title="分类" icon={<Category />} />
-    <Tabbar.Item title="逛" icon={<Hi />} />
-    <Tabbar.Item title="购物车" icon={<Cart />} />
-    <Tabbar.Item title="我的" icon={<User />} />
+    <Tabbar.Item title={t.home} icon={<Home />} />
+    <Tabbar.Item title={t.category} icon={<Category />} />
+    <Tabbar.Item title={t.explore} icon={<Hi />} />
+    <Tabbar.Item title={t.cart} icon={<Cart />} />
+    <Tabbar.Item title={t.mine} icon={<User />} />
   </Tabbar>
 )
 
-export default Demo7
+export default withTranslation(Demo7)

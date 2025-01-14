@@ -1,14 +1,21 @@
 import React from 'react'
 import { BackTop, Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo1 = () => {
+const Demo1 = ({ t }: propsType) => {
   return (
     <>
       {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是测试数据{index}</Cell>
+        return (
+          <Cell key={index}>
+            {t.testData}
+            {index}
+          </Cell>
+        )
       })}
       <BackTop target="target" />
     </>
   )
 }
-export default Demo1
+
+export default withTranslation(Demo1)

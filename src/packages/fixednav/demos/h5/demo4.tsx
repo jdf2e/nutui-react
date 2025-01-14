@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { FixedNav } from '@nutui/nutui-react'
 import { Retweet } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo4 = () => {
+const Demo4 = ({ t }: propsType) => {
   const [visible, setVisible] = useState(false)
+
   const change = (value: boolean) => {
     setVisible(value)
   }
+
   const selected = (
     item: any,
     event: React.MouseEvent<Element, MouseEvent>
   ) => {
     console.log(item, event)
   }
+
   return (
     <>
       <FixedNav
@@ -24,7 +28,9 @@ const Demo4 = () => {
         content={
           <>
             <Retweet color="#fff" />
-            <span className="text">{visible ? '自定义开' : '自定义关'}</span>
+            <span className="text">
+              {visible ? t.customOpen : t.customClose}
+            </span>
           </>
         }
       >
@@ -39,4 +45,5 @@ const Demo4 = () => {
     </>
   )
 }
-export default Demo4
+
+export default withTranslation(Demo4)

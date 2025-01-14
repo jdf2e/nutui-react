@@ -1,11 +1,13 @@
 import React from 'react'
 import { Cell, Divider } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   return (
     <Cell>
-      <Divider>文本</Divider>
+      <Divider>{t.text}</Divider>
     </Cell>
   )
 }
-export default Demo2
+
+export default withTranslation(Demo2)

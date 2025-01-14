@@ -1,7 +1,8 @@
 import React from 'react'
 import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo1 = () => {
+const Demo1 = ({ t }: propsType) => {
   return (
     <>
       <ConfigProvider>
@@ -11,7 +12,7 @@ const Demo1 = () => {
           </Cell>
           <Cell>
             <Button type="primary" block>
-              提交
+              {t.submit}
             </Button>
           </Cell>
         </Cell.Group>
@@ -20,4 +21,4 @@ const Demo1 = () => {
   )
 }
 
-export default Demo1
+export default withTranslation(Demo1)

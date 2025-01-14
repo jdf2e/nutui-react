@@ -1,18 +1,20 @@
 import React from 'react'
 import { Space, Button, Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   return (
     <Cell>
       <Space wrap>
-        <Button>按钮1</Button>
-        <Button>按钮2</Button>
-        <Button>按钮3</Button>
-        <Button>按钮4</Button>
-        <Button>按钮5</Button>
-        <Button>按钮6</Button>
+        <Button>{t.button}1</Button>
+        <Button>{t.button}2</Button>
+        <Button>{t.button}3</Button>
+        <Button>{t.button}4</Button>
+        <Button>{t.button}5</Button>
+        <Button>{t.button}6</Button>
       </Space>
     </Cell>
   )
 }
-export default Demo2
+
+export default withTranslation(Demo2)

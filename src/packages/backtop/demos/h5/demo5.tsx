@@ -1,14 +1,21 @@
 import React from 'react'
 import { BackTop, Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo5 = () => {
+const Demo5 = ({ t }: propsType) => {
   const handleClick = () => {
     const ele = document.getElementsByClassName('backtop-button')[0]
   }
+
   return (
     <>
       {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是测试数据{index}</Cell>
+        return (
+          <Cell key={index}>
+            {t.testData}
+            {index}
+          </Cell>
+        )
       })}
       <BackTop
         onClick={() => {
@@ -20,4 +27,5 @@ const Demo5 = () => {
     </>
   )
 }
-export default Demo5
+
+export default withTranslation(Demo5)

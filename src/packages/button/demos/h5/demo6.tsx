@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo6 = () => {
+const Demo6 = ({ t }: propsType) => {
   const [loading, setLoading] = useState(false)
   const marginStyle = { margin: 8 }
   return (
     <>
       <Button loading type="warning" style={marginStyle}>
-        Loading
+        {t.loading}
       </Button>
       <Button
         loading={loading}
@@ -20,9 +21,10 @@ const Demo6 = () => {
         }}
         style={marginStyle}
       >
-        Click Me!
+        {t.clickMe}
       </Button>
     </>
   )
 }
-export default Demo6
+
+export default withTranslation(Demo6)

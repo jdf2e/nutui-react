@@ -1,16 +1,19 @@
 import React from 'react'
 import { Button, Sticky } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo1 = () => {
+const Demo1 = ({ t }: propsType) => {
   const handleChange = (val: boolean) => {
-    console.log('吸顶状态发生了改变,当前fixed为', val)
+    console.log(t.stickyChangeText, val)
   }
+
   return (
     <>
       <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
-        <Button type="primary">吸顶</Button>
+        <Button type="primary">{t.sticky}</Button>
       </Sticky>
     </>
   )
 }
-export default Demo1
+
+export default withTranslation(Demo1)

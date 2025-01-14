@@ -1,8 +1,9 @@
 import React from 'react'
 import { Cell, Button } from '@nutui/nutui-react'
 import { ArrowRight, User } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo6 = () => {
+const Demo6 = ({ t }: propsType) => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     url: string
@@ -17,13 +18,13 @@ const Demo6 = () => {
       <Cell.Group>
         <Cell
           className="nutui-cell-clickable"
-          title="链接"
+          title={t.link}
           align="center"
           extra={<ArrowRight />}
         />
         <Cell
           className="nutui-cell-clickable"
-          title="URL 跳转"
+          title={t.jump}
           extra={
             <>
               <span style={{ marginRight: '5px' }}>https://jd.com</span>
@@ -41,7 +42,7 @@ const Demo6 = () => {
         <Cell
           title={
             <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <span style={{ fontWeight: '500' }}>我是标题</span>
+              <span style={{ fontWeight: '500' }}>{t.title}</span>
               <span
                 style={{
                   color: '#888B94',
@@ -50,7 +51,7 @@ const Demo6 = () => {
                   lineHeight: 1.5,
                 }}
               >
-                我是描述
+                {t.description}
               </span>
             </div>
           }
@@ -66,7 +67,7 @@ const Demo6 = () => {
           }
         />
         <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
+          <div style={{ minHeight: '50px' }}>{t.customContent}</div>
         </Cell>
         <Cell
           align="center"
@@ -77,7 +78,7 @@ const Demo6 = () => {
                 fontSize: '12px',
               }}
             >
-              我是描述
+              {t.description}
             </div>
           }
           extra={
@@ -92,13 +93,13 @@ const Demo6 = () => {
         <Cell
           title={
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <User style={{ marginRight: '5px' }} /> 我是标题
+              <User style={{ marginRight: '5px' }} /> {t.title}
             </div>
           }
           extra={<ArrowRight />}
         />
         <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
+          <div style={{ minHeight: '50px' }}>{t.customContent}</div>
         </Cell>
         <Cell
           align="center"
@@ -116,15 +117,15 @@ const Demo6 = () => {
             <div
               style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
             >
-              我是标题
+              {t.title}
             </div>
           }
         />
         <Cell>
-          <div style={{ color: '#26bf26' }}>自定义内容</div>
+          <div style={{ color: '#26bf26' }}>{t.customContent}</div>
         </Cell>
       </Cell.Group>
     </>
   )
 }
-export default Demo6
+export default withTranslation(Demo6)

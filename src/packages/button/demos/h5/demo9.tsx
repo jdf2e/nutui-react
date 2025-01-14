@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const App = () => {
+const App = ({ t }: propsType) => {
   return (
     <>
       <Button
@@ -10,7 +11,7 @@ const App = () => {
           margin: 8,
         }}
       >
-        单色按钮
+        {t.simpleButton}
       </Button>
       <Button
         fill="outline"
@@ -19,7 +20,7 @@ const App = () => {
           margin: 8,
         }}
       >
-        单色按钮
+        {t.simpleButton}
       </Button>
       <Button
         color="rgba(10,101,208,0.75)"
@@ -27,7 +28,7 @@ const App = () => {
           margin: 8,
         }}
       >
-        单色按钮
+        {t.simpleButton}
       </Button>
       <Button
         type="primary"
@@ -36,9 +37,10 @@ const App = () => {
           margin: 8,
         }}
       >
-        渐变按钮
+        {t.gradientButton}
       </Button>
     </>
   )
 }
-export default App
+
+export default withTranslation(App)

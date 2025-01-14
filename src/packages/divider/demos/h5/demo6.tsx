@@ -1,19 +1,21 @@
 import React from 'react'
 import { Cell, Divider } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo6 = () => {
+const Demo6 = ({ t }: propsType) => {
   return (
     <Cell align="center">
-      文本
+      {t.text}
       <Divider direction="vertical" />
       <a href="#" style={{ color: '#0073ff', verticalAlign: 'middle' }}>
-        链接
+        {t.link}
       </a>
       <Divider direction="vertical" />
       <a href="#" style={{ color: '#0073ff', verticalAlign: 'middle' }}>
-        链接
+        {t.link}
       </a>
     </Cell>
   )
 }
-export default Demo6
+
+export default withTranslation(Demo6)

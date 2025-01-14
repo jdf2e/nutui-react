@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Cell, Overlay } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo1 = () => {
+const Demo1 = ({ t }: propsType) => {
   const [visible, setVisible] = useState(false)
   const handleToggleShow = () => {
     setVisible(true)
@@ -9,11 +10,12 @@ const Demo1 = () => {
   const onClose = () => {
     setVisible(false)
   }
+
   return (
     <>
       <Cell>
         <Button type="primary" onClick={handleToggleShow}>
-          显示遮罩层
+          {t.showOverlay}
         </Button>
       </Cell>
       <Overlay
@@ -30,4 +32,5 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+
+export default withTranslation(Demo1)

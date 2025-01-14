@@ -1,8 +1,9 @@
 import React from 'react'
 import { Star, Plus } from '@nutui/icons-react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo3 = () => {
+const Demo3 = ({ t }: propsType) => {
   const marginStyle = { margin: 8 }
   return (
     <>
@@ -12,7 +13,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="primary"
@@ -21,7 +22,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="primary"
@@ -30,7 +31,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         icon={<Star />}
@@ -42,7 +43,7 @@ const Demo3 = () => {
           color: `var(--nutui-color-primary)`,
         }}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="default"
@@ -55,7 +56,7 @@ const Demo3 = () => {
           color: `var(--nutui-gray-7)`,
         }}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="default"
@@ -68,7 +69,7 @@ const Demo3 = () => {
           color: `var(--nutui-gray-7)`,
         }}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="default"
@@ -76,7 +77,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         shape="square"
@@ -84,19 +85,15 @@ const Demo3 = () => {
         type="primary"
         icon={<Plus />}
         style={marginStyle}
-      />
-      <Button
-        fill="outline"
-        type="primary"
-        icon={<Plus />}
-        style={marginStyle}
-      />
-      <Button
-        type="primary"
-        fill="dashed"
-        icon={<Plus />}
-        style={marginStyle}
-      />
+      >
+        {t.button}
+      </Button>
+      <Button fill="outline" type="primary" icon={<Plus />} style={marginStyle}>
+        {t.button}
+      </Button>
+      <Button type="primary" fill="dashed" icon={<Plus />} style={marginStyle}>
+        {t.button}
+      </Button>
       <Button
         type="primary"
         size="large"
@@ -104,7 +101,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
       <Button
         type="primary"
@@ -113,9 +110,10 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Button
+        {t.button}
       </Button>
     </>
   )
 }
-export default Demo3
+
+export default withTranslation(Demo3)

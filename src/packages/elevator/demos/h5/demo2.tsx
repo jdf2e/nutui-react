@@ -1,29 +1,30 @@
 import React from 'react'
 import { Elevator } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo2 = () => {
+const Demo2 = ({ t }: propsType) => {
   const dataList = [
     {
       num: '一',
       list: [
         {
-          name: '北京',
+          name: t.beijing,
           id: 1,
         },
         {
-          name: '上海',
+          name: t.shanghai,
           id: 2,
         },
         {
-          name: '深圳',
+          name: t.shenzhen,
           id: 3,
         },
         {
-          name: '广州',
+          name: t.guangzhou,
           id: 4,
         },
         {
-          name: '杭州',
+          name: t.hangzhou,
           id: 5,
         },
       ],
@@ -32,35 +33,35 @@ const Demo2 = () => {
       num: '二',
       list: [
         {
-          name: '成都',
+          name: t.chengdu,
           id: 6,
         },
         {
-          name: '西安',
+          name: t.xian,
           id: 7,
         },
         {
-          name: '天津',
+          name: t.tianjin,
           id: 8,
         },
         {
-          name: '武汉',
+          name: t.wuhan,
           id: 9,
         },
         {
-          name: '长沙',
+          name: t.changsha,
           id: 10,
         },
         {
-          name: '重庆',
+          name: t.chongqing,
           id: 11,
         },
         {
-          name: '苏州',
+          name: t.suzhou,
           id: 12,
         },
         {
-          name: '南京',
+          name: t.nanjing,
           id: 13,
         },
       ],
@@ -69,40 +70,41 @@ const Demo2 = () => {
       num: '三',
       list: [
         {
-          name: '西宁',
+          name: t.xining,
           id: 14,
         },
         {
-          name: '兰州',
+          name: t.lanzhou,
           id: 15,
         },
         {
-          name: '石家庄',
+          name: t.shijiazhuang,
           id: 16,
         },
         {
-          name: '秦皇岛',
+          name: t.qinhuangdao,
           id: 17,
         },
         {
-          name: '大连',
+          name: t.dalian,
           id: 18,
         },
         {
-          name: '哈尔滨',
+          name: t.haerbin,
           id: 19,
         },
         {
-          name: '长春',
+          name: t.changchun,
           id: 20,
         },
         {
-          name: '太原',
+          name: t.taiyuan,
           id: 21,
         },
       ],
     },
   ]
+
   const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
@@ -110,14 +112,16 @@ const Demo2 = () => {
   const onIndexClick = (key: string) => {
     console.log(key)
   }
+
   return (
     <Elevator
       list={dataList}
       height="220"
       floorKey="num"
-      onItemClick={(key: string, item: any) => onItemClick(key, item)}
-      onIndexClick={(key: string) => onIndexClick(key)}
+      onItemClick={onItemClick}
+      onIndexClick={onIndexClick}
     />
   )
 }
-export default Demo2
+
+export default withTranslation(Demo2)

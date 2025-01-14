@@ -1,14 +1,16 @@
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo5 = () => {
+const Demo5 = ({ t }: propsType) => {
   return (
     <Cell
       align="center"
-      title="我是标题"
-      description="我是描述"
-      extra="描述文字"
+      title={t.title}
+      description={t.description}
+      extra={t.descriptionText}
     />
   )
 }
-export default Demo5
+
+export default withTranslation(Demo5)

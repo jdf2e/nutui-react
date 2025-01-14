@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import { NavBar, TabPane, Tabs, Toast } from '@nutui/nutui-react'
 import { ArrowLeft, More } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo3 = () => {
+const Demo3 = ({ t }: propsType) => {
   const [tab1value, setTab1value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
+
   return (
     <>
       <NavBar
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+            <span onClick={(e) => Toast.show(t.edit)}>Edit</span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show('返回')}
+        onBackClick={(e) => Toast.show(t.back)}
       >
         <div style={{ width: '100%' }}>
           <Tabs
@@ -28,9 +30,9 @@ const Demo3 = () => {
               background: 'transparent',
             }}
           >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-            <TabPane title="Tab 3"> Tab 3 </TabPane>
+            <TabPane title="Tab 1">Tab 1</TabPane>
+            <TabPane title="Tab 2">Tab 2</TabPane>
+            <TabPane title="Tab 3">Tab 3</TabPane>
           </Tabs>
         </div>
       </NavBar>
@@ -38,11 +40,11 @@ const Demo3 = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+            <span onClick={(e) => Toast.show(t.edit)}>Edit</span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show('返回')}
+        onBackClick={(e) => Toast.show(t.back)}
       >
         <div>
           <Tabs
@@ -54,12 +56,13 @@ const Demo3 = () => {
               setTab2value(paneKey)
             }}
           >
-            <TabPane title="Tab1"> Tab1 </TabPane>
-            <TabPane title="Tab2"> Tab2 </TabPane>
+            <TabPane title="Tab1">Tab1</TabPane>
+            <TabPane title="Tab2">Tab2</TabPane>
           </Tabs>
         </div>
       </NavBar>
     </>
   )
 }
-export default Demo3
+
+export default withTranslation(Demo3)

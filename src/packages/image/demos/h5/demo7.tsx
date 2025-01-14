@@ -1,7 +1,8 @@
 import React from 'react'
 import { Image } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo7 = () => {
+const Demo7 = ({ t }: propsType) => {
   return (
     <>
       <Image
@@ -13,8 +14,9 @@ const Demo7 = () => {
           console.log('image error')
         }}
       />
-      <div style={{ width: '220px' }}>雪纺衫女2021年春季新款洋气轻熟上衣</div>
+      <div style={{ width: '220px' }}>{t.imageText}</div>
     </>
   )
 }
-export default Demo7
+
+export default withTranslation(Demo7)

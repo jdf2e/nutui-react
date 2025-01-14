@@ -1,14 +1,15 @@
 import React from 'react'
 import { Elevator } from '@nutui/nutui-react'
 import { Fabulous } from '@nutui/icons-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo5 = () => {
+const Demo5 = ({ t }: propsType) => {
   const dataList = [
     {
       title: 'A',
       list: [
         {
-          name: '安徽',
+          name: t.anhui,
           id: 1,
         },
       ],
@@ -17,7 +18,7 @@ const Demo5 = () => {
       title: 'B',
       list: [
         {
-          name: '北京',
+          name: t.beijing,
           id: 2,
         },
       ],
@@ -26,11 +27,11 @@ const Demo5 = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: t.guangxi,
           id: 3,
         },
         {
-          name: '广东',
+          name: t.guangdong,
           id: 4,
         },
       ],
@@ -39,20 +40,21 @@ const Demo5 = () => {
       title: 'H',
       list: [
         {
-          name: '湖南',
+          name: t.hunan,
           id: 5,
         },
         {
-          name: '湖北',
+          name: t.hubei,
           id: 6,
         },
         {
-          name: '河南',
+          name: t.henan,
           id: 7,
         },
       ],
     },
   ]
+
   const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
@@ -60,12 +62,13 @@ const Demo5 = () => {
   const onIndexClick = (key: string) => {
     console.log(key)
   }
+
   return (
     <Elevator
       list={dataList}
       height="260"
-      onItemClick={(key: string, item: any) => onItemClick(key, item)}
-      onIndexClick={(key: string) => onIndexClick(key)}
+      onItemClick={onItemClick}
+      onIndexClick={onIndexClick}
     >
       <Elevator.Context.Consumer>
         {(value) => {
@@ -80,4 +83,5 @@ const Demo5 = () => {
     </Elevator>
   )
 }
-export default Demo5
+
+export default withTranslation(Demo5)

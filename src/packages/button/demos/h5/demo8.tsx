@@ -1,11 +1,13 @@
 import React from 'react'
 import { Button } from '@nutui/nutui-react'
+import { withTranslation, propsType } from '@/translation/demo.translation'
 
-const Demo8 = () => {
+const Demo8 = ({ t }: propsType) => {
   return (
     <Button block type="primary">
-      Block Button
+      {t.blockButton}
     </Button>
   )
 }
-export default Demo8
+
+export default withTranslation(Demo8)
