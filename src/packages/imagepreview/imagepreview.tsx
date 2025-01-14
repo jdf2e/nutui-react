@@ -43,19 +43,8 @@ export interface VideoOption {
 }
 
 export interface ImagePreviewProps extends BasicComponent {
-  images: Array<{
-    src: string
-  }>
-  videos: Array<{
-    source: {
-      src: string
-      type: string
-    }
-    options: {
-      muted: boolean
-      controls: boolean
-    }
-  }>
+  images: ImageOption[]
+  videos: VideoOption[]
   visible: boolean
   autoPlay: number | string
   value?: number
@@ -70,7 +59,7 @@ export interface ImagePreviewProps extends BasicComponent {
   onClose: () => void
 }
 
-const defaultProps = {
+const defaultProps: ImagePreviewProps = {
   ...ComponentDefaults,
   images: [],
   videos: [],
@@ -83,9 +72,9 @@ const defaultProps = {
   indicatorColor: '#fff',
   closeIcon: false,
   closeIconPosition: 'top-right',
-  onChange: (value: number) => {},
+  onChange: () => {},
   onClose: () => {},
-} as ImagePreviewProps
+}
 export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
@@ -108,86 +97,63 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     onChange,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
     value,
     defaultValue,
     finalValue: defaultValue,
-    onChange: (val: number) => {
-      onChange?.(val)
-    },
+    onChange,
   })
+
+  console.log('innner0', innerNo, value, defaultValue)
 
   const [showPop, setShowPop] = useState(visible)
   const [active, setActive] = useState(0)
-  const [maxNo, setMaxNo] = useState(
-    images?.length || 0 + (videos?.length || 0)
-  )
-  const [store, setStore] = useState({
+  const [maxNo, setMaxNo] = useState(images.length + videos.length)
+  const [store, setStore] = useState<Store>({
     scale: 1,
     moveable: false,
+    oriDistance: 0,
+    originScale: 1,
   })
   const [lastTouchEndTime, setLastTouchEndTime] = useState(0) // 用来辅助监听双击
   const onTouchStart = (event: TouchEvent) => {
-    const touches = event.touches
+    const { touches } = event
     const events = touches[0]
     const events2 = touches[1]
 
-    // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
-    const curTouchTime = new Date().getTime()
+    // 如果是原尺寸，双击放大；否则回到原尺寸。
+    const curTouchTime = Date.now()
     if (curTouchTime - lastTouchEndTime < 300) {
       const store1 = store
-      if (store1.scale > 1) {
-        store1.scale = 1
-      } else if (store1.scale === 1) {
-        store1.scale = 2
-      }
+      store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()
     }
 
-    const store1 = store as Store
+    const store1 = store
     store1.moveable = true
 
     if (events2) {
       // 如果开始两指操作，记录初始时刻两指间的距离
-      store1.oriDistance = getDistance(
-        {
-          x: events.pageX,
-          y: events.pageY,
-        },
-        {
-          x: events2.pageX,
-          y: events2.pageY,
-        }
-      )
+      store1.oriDistance = getDistance(events, events2)
     }
     // 取到开始两指操作时的放大（缩小比例），store.scale 存储的是当前的放缩比（相对于标准大小 scale 为 1 的情况的放大缩小比）
     store1.originScale = store1.scale || 1
   }
 
   const onTouchMove = (event: TouchEvent) => {
-    const touches = event.touches
+    if (!store.moveable) return
+
+    const { touches } = event
     const events = touches[0]
     const events2 = touches[1]
 
-    if (!store.moveable) {
-      return
-    }
-    const store1 = store as Store
+    const store1 = store
 
     // 双指移动
     if (events2) {
       // 获得当前两点间的距离
-      const curDistance = getDistance(
-        {
-          x: events.pageX,
-          y: events.pageY,
-        },
-        {
-          x: events2.pageX,
-          y: events2.pageY,
-        }
-      )
+      const curDistance = getDistance(events, events2)
 
       /** 此处计算倍数，距离放大（缩小） k 倍则 scale 也 扩大（缩小） k 倍。距离放大（缩小）倍数 = 结束时两点距离 除以 开始时两点距离
        * 注意此处的 scale 变化是基于 store.scale 的。
@@ -205,8 +171,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   const onTouchEnd = () => {
-    setLastTouchEndTime(new Date().getTime())
-    const store1 = store as Store
+    setLastTouchEndTime(Date.now())
+    const store1 = store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
       store1.scale = 1
@@ -237,28 +203,26 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }, [innerNo])
 
   useEffect(() => {
-    setMaxNo(images?.length || 0 + (videos?.length || 0))
+    setMaxNo(images.length + videos.length)
   }, [images, videos])
 
   const scaleNow = () => {
-    if (ref.current as any) {
-      ;(ref.current as any).style.transform = `scale(${store.scale})`
+    if (ref.current) {
+      ref.current.style.transform = `scale(${store.scale})`
     }
   }
 
-  // 计算两个点的距离
+  // 用于查找给定数字的斜边。起止两点间距离。
   const getDistance = (first: any, second: any) => {
-    // 计算两个点起始时刻的距离和终止时刻的距离，终止时刻距离变大了则放大，变小了则缩小
-    // 放大 k 倍则 scale 也 扩大 k 倍
     return Math.hypot(
-      Math.abs(second.x - first.x),
-      Math.abs(second.y - first.y)
+      Math.abs(second.pageX - first.pageX),
+      Math.abs(second.pageY - first.pageY)
     )
   }
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    onChange?.(page + 1)
+    onChange && onChange(page + 1)
   }
 
   const onCloseInner = (e: React.MouseEvent<Element, MouseEvent>) => {
@@ -276,16 +240,13 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   const closeOnImg = (e: any) => {
     e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
-    if (closeOnContentClick) {
-      onCloseInner(e)
-    }
+    if (closeOnContentClick) onCloseInner(e)
   }
   const duration = typeof autoPlay === 'string' ? parseInt(autoPlay) : autoPlay
   return (
     <Popup
       visible={showPop}
       className={`${classPrefix}-pop`}
-      style={{ width: '100%' }}
       onClick={onCloseInner}
     >
       <div
@@ -294,7 +255,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         ref={ref}
         onTouchStart={onTouchStart as any}
       >
-        {showPop ? (
+        {showPop && (
           <Swiper
             autoPlay={!!duration}
             duration={duration}
@@ -305,62 +266,47 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
             }}
             direction="horizontal"
             onChange={(page) => slideChangeEnd(page)}
-            defaultValue={
-              innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)
-            }
+            defaultValue={innerNo > maxNo ? maxNo - 1 : innerNo - 1}
             indicator={indicator}
           >
-            {(videos ?? [])
-              .map(
-                (item) =>
-                  ({ type: 'video', data: item }) as {
-                    type: 'video' | 'image'
-                    data: ImageOption | VideoOption
-                  }
-              )
-              .concat(
-                (images ?? []).map((item) => ({ type: 'image', data: item }))
-              )
-              .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
-              .map((item, index) => {
-                if (item.type === 'video') {
-                  const { source, options } = item.data as VideoOption
-                  return (
-                    <SwiperItem key={index}>
-                      <Video
-                        source={source}
-                        options={options}
-                        onClick={closeOnImg}
-                      />
-                    </SwiperItem>
-                  )
-                }
-                if (item.type === 'image') {
-                  const { src } = item.data as ImageOption
-                  return (
-                    <SwiperItem key={index}>
-                      <Image src={src} draggable={false} onClick={closeOnImg} />
-                    </SwiperItem>
-                  )
-                }
-                return null
-              })}
+            {[
+              ...videos.map((item) => ({ type: 'video', data: item })),
+              ...images.map((item) => ({ type: 'image', data: item })),
+            ]
+              .sort((a, b) => (a.data.index ?? 0) - (b.data.index ?? 0))
+              .map((item, index) => (
+                <SwiperItem key={index}>
+                  {item.type === 'video' ? (
+                    <Video
+                      source={(item.data as VideoOption).source}
+                      options={(item.data as VideoOption).options}
+                      onClick={closeOnImg}
+                    />
+                  ) : (
+                    <Image
+                      src={(item.data as ImageOption).src}
+                      draggable={false}
+                      onClick={closeOnImg}
+                    />
+                  )}
+                </SwiperItem>
+              ))}
           </Swiper>
-        ) : null}
+        )}
       </div>
-      {pagination ? (
+      {pagination && (
         <div className={`${classPrefix}-index`}>
-          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
+          {active}/{maxNo}
         </div>
-      ) : null}
-      {closeIcon !== false ? (
+      )}
+      {closeIcon !== false && (
         <div
           className={`${classPrefix}-close ${closeIconPosition}`}
           onClick={onCloseInner}
         >
           {closeIcon === true ? <Close /> : closeIcon}
         </div>
-      ) : null}
+      )}
     </Popup>
   )
 }

@@ -128,7 +128,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     const events2 = touches[1]
 
     // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
-    const curTouchTime = new Date().getTime()
+    const curTouchTime = Date.now()
     if (curTouchTime - lastTouchEndTime < 300) {
       const store1 = store
       if (store1.scale > 1) {
@@ -199,7 +199,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   const onTouchEnd = () => {
-    setLastTouchEndTime(new Date().getTime())
+    setLastTouchEndTime(Date.now())
     const store1 = store as Store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
@@ -275,7 +275,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     <Popup
       visible={showPop}
       className={`${classPrefix}-pop`}
-      style={{ width: '100%' }}
+      // style={{ width: '100%' }}
       onClick={onCloseInner}
     >
       <View
