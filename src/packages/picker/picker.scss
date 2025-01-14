@@ -3,9 +3,6 @@
 .nut-picker {
   background-color: $color-background-overlay;
   width: 100%;
-  &-popup {
-    min-height: calc($popup-title-height + $picker-list-height) !important;
-  }
 
   &-control {
     display: flex;
