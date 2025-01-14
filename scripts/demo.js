@@ -33,17 +33,17 @@ import { useTranslate } from '@/sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 
 const ${name}Demo = () => {
-    const [translated] = useTranslate({
-        'zh-CN': {
-            title: '基础用法',
-        },
-        'en-US': {
-            title: 'Basic Usage',
-        },
-        'zh-TW': {
-            title: '基礎用法',
-        },
-    })
+  const [translated] = useTranslate({
+    'zh-CN': {
+        title: '基础用法',
+    },
+    'en-US': {
+        title: 'Basic Usage',
+    },
+    'zh-TW': {
+        title: '基礎用法',
+    },
+  })
   return (
       <div className="demo">
         <h2>{translated.title}</h2>
@@ -62,17 +62,17 @@ import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 
 const ${name}Demo = () => {
-    const [translated] = useTranslate({
-        'zh-CN': {
-            title: '基础用法',
-        },
-        'en-US': {
-            title: 'Basic Usage',
-        },
-        'zh-TW': {
-            title: '基礎用法',
-        },
-    })
+  const [translated] = useTranslate({
+    'zh-CN': {
+        title: '基础用法',
+    },
+    'en-US': {
+        title: 'Basic Usage',
+    },
+    'zh-TW': {
+        title: '基礎用法',
+    },
+  })
   return (
     <>
       <Header />
@@ -179,6 +179,18 @@ import { name } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-${name.toLowerCase()}-height | badge 的高度 | \`14px\` |
+`,
+    test: `import React from 'react'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import { ${name} } from '../${name.toLowerCase()}'
+
+test('should match snapshot', () => {
+  const { container } = render(
+    <${name}></${name}>
+  )
+  expect(container).toMatchSnapshot()
+})
 `,
   }
 

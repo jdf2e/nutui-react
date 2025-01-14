@@ -278,6 +278,29 @@ function createDoc() {
     })
   })
 }
+function createTest() {
+  return new Promise((resolve, reject) => {
+    const nameLc = newCpt.name.toLowerCase()
+    const { name } = newCpt
+
+    let content = demoModel(name).test
+    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
+
+    const testFolderPath = path.join(dirPath, `__test__`)
+    const filePath = path.join(testFolderPath, `${nameLc}.spec.tsx`)
+
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath)
+    }
+    if (!fs.existsSync(testFolderPath)) {
+      fs.mkdirSync(testFolderPath)
+    }
+    fs.writeFile(filePath, content, (err) => {
+      if (err) throw err
+      resolve(`doc.md文件成功`)
+    })
+  })
+}
 function createNew() {
   createIndexJs()
     .then(() => {
@@ -298,6 +321,9 @@ function createNew() {
     })
     .then(() => {
       return createDoc()
+    })
+    .then(() => {
+      return createTest()
     })
     .then(() => {
       return addToPackageJson()
