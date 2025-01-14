@@ -1,33 +1,85 @@
-var demoModel = function (name) {
+var demoModel = function (name, cName, desc) {
   var temp = {
+    demoitem: `import React from 'react'
+import { Cell, ${name} } from '@nutui/nutui-react'
+import { Dongdong } from '@nutui/icons-react'
+
+const Demo1 = () => {
+  return (
+    <Cell>
+        <${name}></${name}>
+    </Cell>
+  )
+}
+
+export default Demo1
+`,
+    tarodemoitem: `import React from 'react'
+import { Cell, ${name} } from '@nutui/nutui-react-taro'
+import { Dongdong } from '@nutui/icons-react-taro'
+
+const Demo1 = () => {
+  return (
+    <Cell>
+        <${name}></${name}>
+    </Cell>
+  )
+}
+
+export default Demo1
+`,
     demo: `import React from 'react'
-import { ${name} } from './${name.toLowerCase()}'
+import { useTranslate } from '@/sites/assets/locale'
+import Demo1 from './demos/h5/demo1'
 
 const ${name}Demo = () => {
+    const [translated] = useTranslate({
+        'zh-CN': {
+            title: '基础用法',
+        },
+        'en-US': {
+            title: 'Basic Usage',
+        },
+        'zh-TW': {
+            title: '基礎用法',
+        },
+    })
   return (
-    <>
       <div className="demo">
-        <h2>基础用法</h2>
-        <${name}></${name}>
+        <h2>{translated.title}</h2>
+        <Demo1 />
       </div>
-    </>
   )
 }
 
 export default ${name}Demo
 `,
-
     tarodemo: `import React from 'react'
+import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { ${name} } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
 
 const ${name}Demo = () => {
+    const [translated] = useTranslate({
+        'zh-CN': {
+            title: '基础用法',
+        },
+        'en-US': {
+            title: 'Basic Usage',
+        },
+        'zh-TW': {
+            title: '基礎用法',
+        },
+    })
   return (
     <>
-      <div className="demo">
-        <h2>基础用法</h2>
-        <${name}></${name}>
-      </div>
+      <Header />
+      <ScrollView className={\`demo \${Taro.getEnv() === 'WEB' ? 'web' : ''}\`}>
+        <View className="h2">{translated.title}</View>
+        <Demo1 />
+        </ScrollView>
     </>
   )
 }
@@ -35,53 +87,98 @@ const ${name}Demo = () => {
 export default ${name}Demo
 `,
     index: `import {${name}} from './${name.toLowerCase()}'
+export type { ${name}Props } from './types'
 export default ${name}
 `,
 
     taroindex: `import {${name}} from './${name.toLowerCase()}.taro'
-export default ${name}
+export type { ${name}Props } from './types'
+export default  ${name}
 `,
-    react: `import React, { FunctionComponent } from 'react'
-import './${name.toLowerCase()}.scss'
-import { useConfig } from '@/packages/configprovider'
-
-export interface ${name}Props {
+    types: `import { BasicComponent } from '@/utils/typings'
+export interface ${name}Props extends BasicComponent {
 
 }
-const defaultProps = {} as ${name}Props
+`,
+    react: `import React, { FunctionComponent } from 'react'
+import { ComponentDefaults } from '@/utils/typings'
+import { ${name}Props } from './types'
+import classNames from 'classnames'
+import { useConfig } from '@/packages/configprovider'
+import { useRtl } from '@/packages/configprovider'
+
+const defaultProps = {
+    ...ComponentDefaults,
+} as ${name}Props
 export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>> = (props) => {
   const { locale } = useConfig()
-  const { children } = { ...defaultProps, ...props }
-  return <div className="nut-${name.toLowerCase()}">${name}</div>
+  const rtl = useRtl()
+  const { className, style } = { ...defaultProps, ...props }
+  const classPrefix = 'nut-${name.toLowerCase()}'
+  const cls = classNames(classPrefix, className)
+  return <div className={cls} style={style}>${name}</div>
 }
 
 ${name}.displayName = 'Nut${name}'
 `,
-    doc: `#  ${name}组件
+    taroreact: `import React, { FunctionComponent } from 'react'
+import { ComponentDefaults } from '@/utils/typings'
+import { ${name}Props } from './types'
+import { View } from '@tarojs/components'
+import classNames from 'classnames'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
-### 介绍
+const defaultProps = {
+    ...ComponentDefaults,
+} as ${name}Props
+export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>> = (props) => {
+  const { locale } = useConfig()
+  const rtl = useRtl()
+  const { className, style } = { ...defaultProps, ...props }
+  const classPrefix = 'nut-${name.toLowerCase()}'
+  const cls = classNames(classPrefix, className)
+  return <View className={cls} style={style}>${name}</View>
+}
 
-基于 xxxxxxx
+${name}.displayName = 'Nut${name}'
+`,
+    doc: `#  ${name} ${cName}
 
-### 安装
+${desc}
 
-${''}
+## 引入
 
-## 代码演示
+\`\`\`tsx
+import { name } from '@nutui/nutui-react'
+\`\`\`
 
-### 基础用法1
+## 示例代码
 
-## API
+### 基础用法
+
+:::demo
+
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+## ${name}
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| name | 图标名称或图片链接 | String | - |
-| color | 图标颜色 | String | - |
-| size | 图标大小，如 '20px' '2em' '2rem' | String | - |
-| class-prefix | 类名前缀，用于使用自定义图标 | String | 'nutui-iconfont' |
-| tag | HTML 标签 | String | 'i' |
+| name | 图标名 | String | - |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-${name.toLowerCase()}-height | badge 的高度 | \`14px\` |
 `,
   }
 

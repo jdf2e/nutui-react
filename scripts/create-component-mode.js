@@ -1,5 +1,5 @@
 // 创建模板
-const inquirer = require('inquirer')
+const prompts = require('@inquirer/prompts')
 const path = require('path')
 const fs = require('fs')
 const config = require('../src/config.json')
@@ -7,7 +7,7 @@ const demoModel = require('./demo')
 const nav = config.nav
 
 var newCpt = {
-  version: '1.0.0',
+  version: '3.0.0',
   name: '',
   type: '',
   cName: '',
@@ -15,102 +15,81 @@ var newCpt = {
   sort: '',
   show: true,
   taro: true,
+  v15: false,
+  dd: true,
   author: '',
 }
-function init() {
-  inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
-        validate(value) {
-          let repeat = false
-          for (var i = 0; i < nav.length; i++) {
-            for (var j = 0; j < nav[i].packages.length; j++) {
-              if (nav[i].packages[j].name === value) {
-                repeat = true
-              }
-            }
-          }
 
-          if (repeat) {
-            return '该组件名已存在！'
+async function init() {
+  const answers = {}
+  answers.name = await prompts.input({
+    message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
+    validate: (value) => {
+      let repeat = false
+      for (var i = 0; i < nav.length; i++) {
+        for (var j = 0; j < nav[i].packages.length; j++) {
+          if (nav[i].packages[j].name === value) {
+            repeat = true
           }
-          const pass = value && value.match(/^[A-Z]/)
-          if (pass) {
-            return true
-          }
-          return '不能为空，且每个单词的首字母都要大写，如TextBox'
-        },
-      },
-      {
-        type: 'input',
-        name: 'cName',
-        message: '组件中文名(十个字以内)：',
-        validate(value) {
-          const pass = value && value.length <= 10
-          if (pass) {
-            return true
-          }
-          return '不能为空，且不能超过十个字符'
-        },
-      },
-      {
-        type: 'input',
-        name: 'desc',
-        message: '组件描述(五十个字以内)：',
-      },
-      {
-        type: 'rawlist',
-        name: 'type',
-        message: '请选择组件类型(输入编号)：目前只支持组建模板',
-        choices: ['component'],
-        validate(value) {
-          const pass = value && /^[1-4]$/.test(value)
-          if (pass) {
-            return true
-          }
-          return '输入有误！请输入选项前编号'
-        },
-      },
-      {
-        type: 'input',
-        name: 'sort',
-        message:
-          '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
-        validate(value) {
-          const pass = /^[1-7]$/.test(value)
-          if (pass) {
-            return true
-          }
-          return '输入有误！请输入选项前编号'
-        },
-      },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showDemo',
-      //     message: '是否需要DEMO页面?',
-      //     default: true
-      //   },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showTest',
-      //     message: '是否需要单元测试页面?',
-      //     default: true
-      //   },
-      {
-        type: 'input',
-        name: 'author',
-        message: '组件作者(可署化名):',
-      },
-    ])
-    .then(function (answers) {
-      // answers.sort = String(sorts.indexOf(answers.sort));
-      newCpt = Object.assign(newCpt, answers)
-      createNew()
-    })
+        }
+      }
+
+      if (repeat) {
+        return '该组件名已存在！'
+      }
+      const pass = value && value.match(/^[A-Z]/)
+      if (pass) {
+        return true
+      }
+      return '不能为空，且每个单词的首字母都要大写，如TextBox'
+    },
+  })
+  answers.cName = await prompts.input({
+    message: '组件中文名(十个字以内)：',
+
+    validate: (value) => {
+      const pass = value && value.length <= 10
+
+      if (pass) {
+        return true
+      }
+      return '不能为空，且不能超过十个字符'
+    },
+  })
+  answers.desc = await prompts.input({
+    message: '组件描述(五十个字以内)：',
+  })
+  answers.type = await prompts.rawlist({
+    message: '请选择组件类型(输入编号)：目前只支持组建模板',
+    choices: ['component'],
+    validate: (value) => {
+      const pass = value && /^[1-4]$/.test(value)
+      if (pass) {
+        return true
+      }
+      return '输入有误！请输入选项前编号'
+    },
+  })
+  answers.sort = await prompts.input({
+    message:
+      '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
+
+    validate: (value) => {
+      const pass = /^[1-7]$/.test(value)
+      if (pass) {
+        return true
+      }
+      return '输入有误！请输入选项前编号'
+    },
+  })
+  answers.author = await prompts.input({
+    message: '组件作者(可署化名):',
+  })
+
+  newCpt = Object.assign(newCpt, answers)
+  createNew()
 }
+
 function createIndexJs() {
   const nameLc = newCpt.name.toLowerCase()
   const destPath = path.join('src/packages/' + nameLc)
@@ -130,15 +109,18 @@ function createReact() {
     const name = newCpt.name
     let content = demoModel(name).react
     let indexFileContent = demoModel(name).index
+    let typeFileContent = demoModel(name).types
     const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
     const filePath = path.join(dirPath, `${nameLc}.tsx`)
     const indexFilePath = path.join(dirPath, `index.ts`)
+    const typeFilePath = path.join(dirPath, `types.ts`)
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(filePath)
     }
     try {
       fs.writeFileSync(filePath, content)
       fs.writeFileSync(indexFilePath, indexFileContent)
+      fs.writeFileSync(typeFilePath, typeFileContent)
     } catch (e) {
       throw e
     }
@@ -150,7 +132,7 @@ function createReactTaro() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase()
     const name = newCpt.name
-    let content = demoModel(name).react
+    let content = demoModel(name).taroreact
     let indexFileContent = demoModel(name).taroindex
     const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
     const filePath = path.join(dirPath, `${nameLc}.taro.tsx`)
@@ -173,14 +155,31 @@ function createDemo() {
     const name = newCpt.name
     const nameLc = newCpt.name.toLowerCase()
     let content = demoModel(name).demo
+    let demoContent = demoModel(name).demoitem
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
     const filePath = path.join(dirPath, `demo.tsx`)
+    const demosPath = path.join(dirPath, 'demos')
+    const h5Path = path.join(demosPath, 'h5')
+    const demoPath = path.join(h5Path, 'demo1.tsx')
+
     if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
+      fs.mkdirSync(dirPath)
     }
+    if (!fs.existsSync(demosPath)) {
+      fs.mkdirSync(demosPath)
+    }
+    if (!fs.existsSync(h5Path)) {
+      fs.mkdirSync(h5Path)
+    }
+
     fs.writeFile(filePath, content, (err) => {
       if (err) throw err
       resolve(`生成demo.tsx文件成功`)
+    })
+
+    fs.writeFile(demoPath, demoContent, (err) => {
+      if (err) throw err
+      resolve(`生成demo1.tsx文件成功`)
     })
   })
 }
@@ -190,14 +189,30 @@ function createTaroDemo() {
     const name = newCpt.name
     const nameLc = newCpt.name.toLowerCase()
     let content = demoModel(name).tarodemo
+    let demoContent = demoModel(name).tarodemoitem
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
     const filePath = path.join(dirPath, `demo.taro.tsx`)
+    const demosPath = path.join(dirPath, 'demos')
+    const taroDirPath = path.join(demosPath, 'taro')
+    const demoPath = path.join(taroDirPath, 'demo1.tsx')
+
     if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
+      fs.mkdirSync(dirPath)
     }
+    if (!fs.existsSync(demosPath)) {
+      fs.mkdirSync(demosPath)
+    }
+    if (!fs.existsSync(taroDirPath)) {
+      fs.mkdirSync(taroDirPath)
+    }
+
     fs.writeFile(filePath, content, (err) => {
       if (err) throw err
       resolve(`生成demo.taro.tsx文件成功`)
+    })
+    fs.writeFile(demoPath, demoContent, (err) => {
+      if (err) throw err
+      resolve(`生成demo1.tsx文件成功`)
     })
   })
 }
@@ -249,9 +264,9 @@ function createScss() {
 function createDoc() {
   return new Promise((resolve, reject) => {
     const nameLc = newCpt.name.toLowerCase()
-    const name = newCpt.name
+    const { name, cName, desc } = newCpt
 
-    let content = demoModel(name).doc
+    let content = demoModel(name, cName, desc).doc
     const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
     const filePath = path.join(dirPath, `doc.md`)
     if (!fs.existsSync(dirPath)) {
