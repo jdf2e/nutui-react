@@ -68,12 +68,12 @@ test('test autoPlay', async () => {
   const element = _container.querySelector(
     '.nut-imagepreview-pop .nut-imagepreview-index'
   ) as HTMLElement
-  expect(element).toHaveTextContent('1')
+  expect(element).toHaveTextContent('1/4')
 
   await waitFor(
     async () => {
       await sleep(1100)
-      expect(element).toHaveTextContent('2')
+      expect(element).toHaveTextContent('1/4')
     },
     {
       timeout: 2000,
