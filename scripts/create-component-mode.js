@@ -220,17 +220,15 @@ async function createTest() {
 async function createNew() {
   const tasks = [
     createIndexJs(),
+    createReact(),
+    createReactTaro(),
+    createDemo(),
+    createTaroDemo(),
     createScss(),
     createDoc(),
     createTest(),
     addToPackageJson(),
   ]
-
-  if (newCpt.type === 'component' || newCpt.type === 'method') {
-    tasks.push(createReact(), createReactTaro())
-  }
-
-  tasks.push(createDemo(), createTaroDemo())
 
   try {
     await Promise.all(tasks)
