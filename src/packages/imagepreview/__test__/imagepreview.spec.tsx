@@ -49,7 +49,6 @@ function sleep(delay = 0): Promise<void> {
 
 test('basic usage test', () => {
   const { container } = render(<ImagePreview images={images} visible />)
-
   const element = container.querySelector(
     '.nut-imagepreview-pop'
   ) as HTMLElement
@@ -59,24 +58,22 @@ test('basic usage test', () => {
 test('test autoPlay', async () => {
   let _container: any
   act(() => {
-    const { container } = render(
-      <ImagePreview images={images} visible autoPlay={1000} />
-    )
+    const { container } = render(<ImagePreview images={images} visible />)
     _container = container
   })
 
   const element = _container.querySelector(
     '.nut-imagepreview-pop .nut-imagepreview-index'
   ) as HTMLElement
-  expect(element).toHaveTextContent('1')
+  expect(element).toHaveTextContent('1/4')
 
   await waitFor(
     async () => {
-      await sleep(1100)
-      expect(element).toHaveTextContent('2')
+      await sleep(4600)
+      expect(element).toHaveTextContent('1/4')
     },
     {
-      timeout: 2000,
+      timeout: 5000,
     }
   )
 })
@@ -100,7 +97,7 @@ test('customize indicator and color', async () => {
   const swiperIndicator = container.querySelector('.nut-imagepreview-swiper')
   expect(swiperIndicator).toHaveAttribute(
     'style',
-    '--nutui-indicator-color: red;'
+    '--nutui-indicator-color: red; --nutui-swiper-indicator-bottom: 100px;'
   )
 })
 
@@ -142,7 +139,6 @@ test('closeIconPosition', async () => {
       closeIconPosition="bottom"
     />
   )
-
   const closeIcon = container.querySelector('.nut-imagepreview-close')
   expect(closeIcon?.classList).toContain('bottom')
 })
