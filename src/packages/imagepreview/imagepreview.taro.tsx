@@ -7,10 +7,11 @@ import React, {
   ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { ITouchEvent, Video as TaroVideo, Image } from '@tarojs/components'
+import { ITouchEvent, Video as TaroVideo, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
+import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
@@ -75,7 +76,7 @@ const defaultProps = {
   closeIcon: false,
   closeIconPosition: 'top-right',
   showMenuByLongpress: false,
-  onChange: (value: number) => {},
+  onChange: () => {},
   onClose: () => {},
 } as ImagePreviewProps
 export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
@@ -101,24 +102,22 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     onChange,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
     value,
     defaultValue,
     finalValue: defaultValue,
-    onChange: (val: number) => {
-      onChange?.(val)
-    },
+    onChange,
   })
 
   const [showPop, setShowPop] = useState(visible)
   const [active, setActive] = useState(0)
-  const [maxNo, setMaxNo] = useState(
-    images?.length || 0 + (videos?.length || 0)
-  )
-  const [store, setStore] = useState({
+  const [maxNo, setMaxNo] = useState(images.length + videos.length)
+  const [store, setStore] = useState<Store>({
     scale: 1,
     moveable: false,
+    oriDistance: 0,
+    originScale: 1,
   })
   const [lastTouchEndTime, setLastTouchEndTime] = useState(0) // 用来辅助监听双击
   const onTouchStart = (event: TouchEvent) => {
@@ -127,79 +126,49 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     const events2 = touches[1]
 
     // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
-    const curTouchTime = new Date().getTime()
+    const curTouchTime = Date.now()
     if (curTouchTime - lastTouchEndTime < 300) {
       const store1 = store
-      if (store1.scale > 1) {
-        store1.scale = 1
-      } else if (store1.scale === 1) {
-        store1.scale = 2
-      }
+      store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()
     }
 
-    const store1 = store as Store
+    const store1 = store
     store1.moveable = true
 
     if (events2) {
       // 如果开始两指操作，记录初始时刻两指间的距离
-      store1.oriDistance = getDistance(
-        {
-          x: events.pageX,
-          y: events.pageY,
-        },
-        {
-          x: events2.pageX,
-          y: events2.pageY,
-        }
-      )
+      store1.oriDistance = getDistance(events, events2)
     }
     // 取到开始两指操作时的放大（缩小比例），store.scale 存储的是当前的放缩比（相对于标准大小 scale 为 1 的情况的放大缩小比）
-    store1.originScale = store1.scale || 1
+    store1.originScale = store1.scale
   }
 
   const onTouchMove = (event: TouchEvent) => {
+    if (!store.moveable) return
     const touches = event.touches
     const events = touches[0]
     const events2 = touches[1]
 
-    if (!store.moveable) {
-      return
-    }
-    const store1 = store as Store
+    const store1 = store
 
     // 双指移动
     if (events2) {
-      // 获得当前两点间的距离
-      const curDistance = getDistance(
-        {
-          x: events.pageX,
-          y: events.pageY,
-        },
-        {
-          x: events2.pageX,
-          y: events2.pageY,
-        }
-      )
-
+      const curDistance = getDistance(events, events2)
       /** 此处计算倍数，距离放大（缩小） k 倍则 scale 也 扩大（缩小） k 倍。距离放大（缩小）倍数 = 结束时两点距离 除以 开始时两点距离
        * 注意此处的 scale 变化是基于 store.scale 的。
        * store.scale 是一个暂存值，比如第一次放大 2 倍，则 store.scale 为 2。
        * 再次两指触碰的时候，store.originScale 就为 store.scale 的值，基于此时的 store.scale 继续放大缩小。 * */
       const curScale = curDistance / store1.oriDistance
-      store1.scale = store1.originScale * curScale
-
       // 最大放大 3 倍，缩小后松手要弹回原比例
-      if (store1.scale > 3) {
-        store1.scale = 3
-      }
+      store1.scale = Math.min(store1.originScale * curScale, 3)
       scaleNow()
     }
   }
 
   const onTouchEnd = () => {
-    setLastTouchEndTime(new Date().getTime())
-    const store1 = store as Store
+    setLastTouchEndTime(Date.now())
+    const store1 = store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
       store1.scale = 1
@@ -228,28 +197,25 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }, [innerNo])
 
   useEffect(() => {
-    setMaxNo(images?.length || 0 + (videos?.length || 0))
+    setMaxNo(images.length + videos.length)
   }, [images, videos])
 
   const scaleNow = () => {
-    if (ref.current as any) {
-      ;(ref.current as any).style.transform = `scale(${store.scale})`
+    if (ref.current) {
+      ref.current.style.transform = `scale(${store.scale})`
     }
   }
 
-  // 计算两个点的距离
   const getDistance = (first: any, second: any) => {
-    // 计算两个点起始时刻的距离和终止时刻的距离，终止时刻距离变大了则放大，变小了则缩小
-    // 放大 k 倍则 scale 也 扩大 k 倍
     return Math.hypot(
-      Math.abs(second.x - first.x),
-      Math.abs(second.y - first.y)
+      Math.abs(second.pageX - first.pageX),
+      Math.abs(second.pageY - first.pageY)
     )
   }
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    onChange?.(page + 1)
+    onChange && onChange(page + 1)
   }
   const onCloseInner = (e: ITouchEvent | React.MouseEvent) => {
     e.stopPropagation()
@@ -263,25 +229,25 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
   const closeOnImg = (e: ITouchEvent | React.MouseEvent) => {
-    // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     e.stopPropagation()
-    if (closeOnContentClick) {
-      onCloseInner(e)
-    }
+    // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
+    if (closeOnContentClick) onCloseInner(e)
   }
 
   return (
     <Popup
       visible={showPop}
       className={`${classPrefix}-pop`}
-      style={{ width: '100%' }}
       onClick={onCloseInner}
     >
-      <div
+      <View
         className={classNames(classPrefix, className)}
         style={style}
         ref={ref}
         onTouchStart={onTouchStart as any}
+        onTouchMove={onTouchMove as any}
+        onTouchEnd={onTouchEnd}
+        onTouchCancel={onTouchEnd}
       >
         <Swiper
           autoPlay={autoPlay}
@@ -291,6 +257,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           style={{
             display: showPop ? 'block' : 'none',
             '--nutui-indicator-color': indicatorColor,
+            '--nutui-swiper-indicator-bottom': '100px',
             width: '100%',
             height: '100%',
           }}
@@ -299,75 +266,50 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}
         >
-          {(videos ?? [])
-            .map(
-              (item) =>
-                ({ type: 'video', data: item }) as {
-                  type: 'video' | 'image'
-                  data: ImageOption | VideoOption
-                }
-            )
-            .concat(
-              (images ?? []).map((item) => ({ type: 'image', data: item }))
-            )
+          {[
+            ...videos.map((item) => ({ type: 'video', data: item })),
+            ...images.map((item) => ({ type: 'image', data: item })),
+          ]
             .sort((a, b) => (a.data?.index ?? 0) - (b.data?.index ?? 0))
-            .map((item, index) => {
-              if (item.type === 'video') {
-                const { source, options } = item.data as VideoOption
-                return (
-                  <SwiperItem
-                    key={index}
-                    className="nut-imagepreview-swiper-item"
-                  >
-                    <TaroVideo
-                      src={source.src}
-                      onClick={closeOnImg}
-                      controls={options.controls}
-                      autoplay={false}
-                      loop={false}
-                      muted={options.muted}
-                    />
-                  </SwiperItem>
-                )
-              }
-              if (item.type === 'image') {
-                const { src } = item.data as ImageOption
-                return (
-                  <SwiperItem
-                    key={index}
-                    className="nut-imagepreview-swiper-item"
-                  >
-                    (
-                    <Image
-                      src={src}
-                      mode="widthFix"
-                      onClick={closeOnImg}
-                      style={{ width: '100%' }}
-                      {...(Taro.getEnv() !== 'WEB' && {
-                        showMenuByLongpress,
-                      })}
-                    />
-                    )
-                  </SwiperItem>
-                )
-              }
-              return null
-            })}
+            .map((item, index) => (
+              <SwiperItem key={index} className="nut-imagepreview-swiper-item">
+                {item.type === 'video' ? (
+                  <TaroVideo
+                    src={(item.data as VideoOption).source.src}
+                    onClick={closeOnImg}
+                    controls={(item.data as VideoOption).options.controls}
+                    autoplay={false}
+                    loop={false}
+                    muted={(item.data as VideoOption).options.muted}
+                  />
+                ) : (
+                  <Image
+                    src={(item.data as ImageOption).src}
+                    mode="widthFix"
+                    onClick={closeOnImg}
+                    style={{ width: '100%' }}
+                    {...(Taro.getEnv() !== 'WEB' && {
+                      showMenuByLongpress,
+                    })}
+                  />
+                )}
+              </SwiperItem>
+            ))}
         </Swiper>
-      </div>
-      {pagination ? (
-        <div className={`${classPrefix}-index`}>
-          {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
-        </div>
-      ) : null}
-      {closeIcon !== false ? (
-        <div
+      </View>
+      {pagination && (
+        <View className={`${classPrefix}-index`}>
+          {active}/{maxNo}
+        </View>
+      )}
+      {closeIcon !== false && (
+        <View
           className={`${classPrefix}-close ${closeIconPosition}`}
           onClick={onCloseInner}
         >
           {closeIcon === true ? <Close /> : closeIcon}
-        </div>
-      ) : null}
+        </View>
+      )}
     </Popup>
   )
 }
