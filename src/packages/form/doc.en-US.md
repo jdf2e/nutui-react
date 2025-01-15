@@ -140,7 +140,7 @@ The rule validation process is based on [async-validator](https://github.com/yim
 | resetFields | Reset form prompt state | `() => void` |
 | submit | method to submit a form for validation | `Promise` |
 
-`Form.useWath()`, this method will watch specified inputs and return their values. It is useful to render input value and for determining what to render by condition.
+`Form.useWatch()`, this method will watch specified inputs and return their values. It is useful to render input value and for determining what to render by condition.
 
 ## Theming
 

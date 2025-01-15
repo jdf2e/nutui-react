@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Schema from 'async-validator'
 import { merge } from '@/utils/merge'
 import {
@@ -49,7 +49,12 @@ class FormStore {
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== field)
       if (this.store) {
-        delete this.store[field.props.name]
+        // 卸载后需要回复初始值
+        const namePath = field.props.name
+        delete this.store[namePath]
+        this.updateStore(
+          merge(this.store, { [namePath]: this.initialValues[namePath] })
+        )
       }
     }
   }
@@ -269,10 +274,11 @@ class FormStore {
 
   private notifyWatch = (namePath: NamePath[] = []) => {
     if (this.watchList.length) {
-      let allValues = this.getFieldsValue(namePath)
-
+      let allValues
       if (!namePath || namePath.length === 0) {
         allValues = this.getFieldsValue(true)
+      } else {
+        allValues = this.getFieldsValue(namePath)
       }
       this.watchList.forEach((callback) => {
         callback(allValues, namePath)
@@ -297,9 +303,18 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
 export const useWatch = (path: NamePath, form: FormInstance) => {
   const formInstance = form.getInternal(SECRET)
   const [value, setValue] = useState<any>()
-  formInstance.registerWatch((data: any, namePath: NamePath) => {
-    const value = data[path]
-    setValue(value)
-  })
+  useEffect(() => {
+    const unsubscribe = formInstance.registerWatch(
+      (data: any, namePath: NamePath) => {
+        const value = data[path]
+        setValue(value)
+      }
+    )
+    const initialValue = form.getFieldsValue(true)
+    if (value !== initialValue[path]) {
+      setValue(initialValue[path])
+    }
+    return () => unsubscribe()
+  }, [form])
   return value
 }
