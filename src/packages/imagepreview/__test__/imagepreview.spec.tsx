@@ -85,22 +85,28 @@ describe('ImagePreview Component', () => {
 
   test('calls onClose when close icon is clicked', async () => {
     const { container } = render(
-      <ImagePreview images={images} visible closeIcon />
+      <ImagePreview images={images} visible closeIcon onClose={mockOnClose} />
     )
     const closeIcon = container.querySelector('.nut-imagepreview-close')
     expect(closeIcon).toBeInTheDocument()
     expect(closeIcon?.classList).toContain('top-right')
     fireEvent.click(closeIcon as Element)
-    // await waitFor(() => expect(mockOnClose).toHaveBeenCalledOnce())
+    expect(mockOnClose).toHaveBeenCalledTimes(1)
   })
 
   test('closes on content click if closeOnContentClick is true', async () => {
     const { container } = render(
-      <ImagePreview images={images} visible closeIcon closeOnContentClick />
+      <ImagePreview
+        images={images}
+        visible
+        closeIcon
+        closeOnContentClick
+        onClose={mockOnClose}
+      />
     )
     const imageElement = container.querySelector('.nut-image-default')
     fireEvent.click(imageElement as Element)
-    // await waitFor(() => expect(mockOnClose).toHaveBeenCalledOnce())
+    expect(mockOnClose).toHaveBeenCalledTimes(1)
   })
 
   test('init page No.', async () => {
