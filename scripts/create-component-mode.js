@@ -25,7 +25,7 @@ async function init() {
   answers.name = await prompts.input({
     message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
     validate: (value) => {
-      const repeat = nav.some((category) =>
+      const repeat = nav?.some((category) =>
         category.packages.some((pkg) => pkg.name === value)
       )
       if (repeat) return '该组件名已存在！'
