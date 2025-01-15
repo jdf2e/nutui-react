@@ -10,7 +10,6 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { View, ITouchEvent } from '@tarojs/components'
 import {
   OverlayProps,
@@ -108,33 +107,20 @@ export const Popup: FunctionComponent<
   const [transitionName, setTransitionName] = useState('')
   const refObject = useLockScrollTaro(innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
-  const baseStyle = {
-    zIndex: index,
-  }
 
   const overlayStyles = {
     ...overlayStyle,
     '--nutui-overlay-zIndex': index,
   }
-
-  const popStyles = {
-    ...style,
-    ...baseStyle,
-  }
-
+  const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(
+    classPrefix,
     {
-      [`${classPrefix}`]: true,
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
     },
     className
   )
-
-  const closeClasses = classNames({
-    [`${classPrefix}-title-right`]: true,
-    [`${classPrefix}-title-right-${closeIconPosition}`]: true,
-  })
 
   const open = () => {
     if (!innerVisible) {
@@ -159,40 +145,26 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const onHandleClickOverlay = (e: ITouchEvent) => {
+  const handleOverlayClick = (e: ITouchEvent) => {
     e.stopPropagation()
-    if (closeOnOverlayClick) {
-      const closed = onOverlayClick && onOverlayClick(e)
-      closed && close()
+    if (closeOnOverlayClick && onOverlayClick(e)) {
+      close()
     }
   }
 
-  const onHandleClick = (e: ITouchEvent) => {
-    onClick && onClick(e)
-  }
-
-  const onHandleClickCloseIcon = (e: ITouchEvent) => {
-    const closed = onCloseIconClick && onCloseIconClick(e)
-    closed && close()
-  }
-
-  const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterShow && afterShow()
-  }
-
-  const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterClose && afterClose()
+  const handleCloseIconClick = (e: ITouchEvent) => {
+    onCloseIconClick(e) && close()
   }
 
   const renderCloseIcon = () => {
+    const closeClasses = classNames(
+      `${classPrefix}-title-right`,
+      `${classPrefix}-title-right-${closeIconPosition}`
+    )
     return (
       <>
         {closeable && (
-          <View className={closeClasses} onClick={onHandleClickCloseIcon}>
+          <View className={closeClasses} onClick={handleCloseIconClick}>
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>
         )}
@@ -244,18 +216,18 @@ export const Popup: FunctionComponent<
         unmountOnExit={destroyOnClose}
         timeout={duration}
         in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
+        onEntered={afterShow}
+        onExited={afterClose}
       >
         <View
           ref={refObject}
           style={popStyles}
           className={popClassName}
-          onClick={onHandleClick}
+          onClick={onClick}
           catchMove={lockScroll}
         >
           {renderTitle()}
-          {showChildren ? children : ''}
+          {showChildren ? children : null}
         </View>
       </CSSTransition>
     )
@@ -264,7 +236,7 @@ export const Popup: FunctionComponent<
   const renderNode = () => {
     return (
       <>
-        {overlay ? (
+        {overlay && (
           <Overlay
             style={overlayStyles}
             className={overlayClassName}
@@ -272,9 +244,9 @@ export const Popup: FunctionComponent<
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             duration={duration}
-            onClick={onHandleClickOverlay}
+            onClick={handleOverlayClick}
           />
-        ) : null}
+        )}
         {renderPop()}
       </>
     )
@@ -288,11 +260,9 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
 
-  const resolveContainer = (getContainer: Teleport | undefined) => {
-    const container =
-      typeof getContainer === 'function' ? getContainer() : getContainer
-    return container || document.body
-  }
+  const resolveContainer = (getContainer: Teleport | undefined) =>
+    (typeof getContainer === 'function' ? getContainer() : getContainer) ||
+    document.body
 
   const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
     if (getContainer) {
