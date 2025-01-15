@@ -167,34 +167,3 @@ describe('ImagePreview Component', () => {
     })
   })
 })
-
-// function sleep(delay = 0): Promise<void> {
-//   return new Promise((resolve) => {
-//     setTimeout(resolve, delay)
-//   })
-// }
-
-// test('test autoPlay', async () => {
-//   let _container: any
-//   act(() => {
-//     const { container } = render(
-//       <ImagePreview images={images} visible autoPlay={1000} />
-//     )
-//     _container = container
-//   })
-
-//   const element = _container.querySelector(
-//     '.nut-imagepreview-pop .nut-imagepreview-index'
-//   ) as HTMLElement
-//   expect(element).toHaveTextContent('1/4')
-
-//   await waitFor(
-//     async () => {
-//       await sleep(1100)
-//       expect(element).toHaveTextContent('1/4')
-//     },
-//     {
-//       timeout: 2000,
-//     }
-//   )
-// })
