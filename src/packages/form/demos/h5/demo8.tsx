@@ -26,8 +26,8 @@ const Demo8 = () => {
                 marginBottom: '20px',
               }}
             >
-              你将使用 {loginMethod === 'mobile' ? '手机号' : '邮箱'} {account}{' '}
-              登录
+              你将使用{loginMethod === 'mobile' ? '手机号' : '电子邮箱'}
+              {account}登录
             </div>
             <Button block type="primary" size="large" nativeType="submit">
               提交
@@ -40,7 +40,7 @@ const Demo8 = () => {
         <Radio.Group>
           <Space>
             <Radio value="mobile">手机号</Radio>
-            <Radio value="email">邮箱</Radio>
+            <Radio value="email">电子邮箱</Radio>
           </Space>
         </Radio.Group>
       </Form.Item>
@@ -52,7 +52,7 @@ const Demo8 = () => {
           </Form.Item>
         )}
         {loginMethod === 'email' && (
-          <Form.Item name="account" label="邮箱">
+          <Form.Item name="account" label="电子邮箱">
             <Input placeholder="请输入邮箱" />
           </Form.Item>
         )}

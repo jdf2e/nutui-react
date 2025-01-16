@@ -46,16 +46,10 @@ class FormStore {
    */
   registerField = (field: any) => {
     this.fieldEntities.push(field)
+    const namePath = field.props.name
+
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== field)
-      if (this.store) {
-        // 卸载后需要回复初始值
-        const namePath = field.props.name
-        delete this.store[namePath]
-        this.updateStore(
-          merge(this.store, { [namePath]: this.initialValues[namePath] })
-        )
-      }
     }
   }
 
