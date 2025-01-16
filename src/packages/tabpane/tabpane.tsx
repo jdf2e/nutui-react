@@ -37,7 +37,5 @@ export const TabPane: FunctionComponent<
     className
   )
 
-  return children ? (
-    <div className={classes}>{!disabled && children}</div>
-  ) : null
+  return children && <div className={classes}>{!disabled && children}</div>
 }

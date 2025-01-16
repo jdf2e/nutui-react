@@ -14,11 +14,11 @@ const Demo14 = () => {
           setTabvalue(value)
         }}
       >
-        <Tabs.TabPane title="Tab 1">
+        <Tabs.TabPane title="Tab longitem">
           {Array(8)
             .fill(null)
             .map((_, index) => (
-              <View key={index}>Tab 1</View>
+              <View key={index}>Tab longitem</View>
             ))}
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
