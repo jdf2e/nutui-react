@@ -7,7 +7,7 @@ import { TabPane } from '../../tabpane/tabpane'
 test('base Tabs', () => {
   const { getByTestId } = render(
     <Tabs data-testid="tabs1">
-      <TabPane title="Tab 1"> Tab 1 </TabPane>
+      <TabPane title="Tab longitem"> Tab longitem </TabPane>
     </Tabs>
   )
   expect(getByTestId('tabs1')).toHaveClass('nut-tabs')
@@ -16,8 +16,8 @@ test('base Tabs', () => {
 test('base tabs props', () => {
   const { container } = render(
     <Tabs value="0" direction="horizontal" activeType="smile">
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
     </Tabs>
   )
@@ -32,8 +32,8 @@ test('base tabs props', () => {
 test('base tabs props', () => {
   const { container } = render(
     <Tabs value="0" direction="horizontal" activeType="card">
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
     </Tabs>
   )
@@ -44,7 +44,7 @@ test('base tabs props', () => {
 test('base other props', async () => {
   const { container } = render(
     <Tabs duration={500}>
-      <TabPane title="Tab 1"> Tab 1 </TabPane>
+      <TabPane title="Tab longitem"> Tab longitem </TabPane>
       <TabPane title="Tab 2"> Tab 2 </TabPane>
     </Tabs>
   )
@@ -71,8 +71,8 @@ test('base other props', async () => {
 test('base Tabpane Props', () => {
   const { container } = render(
     <Tabs value="0">
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
       <TabPane title="Tab 2" value="1" disabled>
         Tab 2
@@ -87,14 +87,14 @@ test('base Tabpane Props', () => {
   expect(el.length === 3).toBe(true)
   expect(el[0]).toHaveClass('nut-tabs-titles-item-active')
   expect(el[1]).toHaveClass('nut-tabs-titles-item-disabled')
-  expect(el2[0]).toHaveTextContent('Tab 1')
+  expect(el2[0]).toHaveTextContent('Tab longitem')
 })
 
 test('base Tabpane autoHeight Props', () => {
   const { container } = render(
     <Tabs value="0" autoHeight>
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
       <TabPane title="Tab 2" value="1">
         Tab 2
@@ -120,8 +120,8 @@ test('base click', () => {
   const handleClick = vi.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick}>
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
       <TabPane title="Tab 2" value="1" disabled>
         Tab 2
@@ -145,8 +145,8 @@ test('click tab when have many tabs', async () => {
   const handleClick = vi.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick} direction="vertical">
-      <TabPane title="Tab 1" value="0">
-        Tab 1
+      <TabPane title="Tab longitem" value="0">
+        Tab longitem
       </TabPane>
       <TabPane title="Tab 2" value="1">
         Tab 2
@@ -154,8 +154,8 @@ test('click tab when have many tabs', async () => {
       <TabPane title="Tab 3" value="2">
         Tab 3
       </TabPane>
-      <TabPane title="Tab 11" value="01">
-        Tab 11
+      <TabPane title="Tab longitem1" value="01">
+        Tab longitem1
       </TabPane>
       <TabPane title="Tab 22" value="12">
         Tab 22

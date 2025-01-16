@@ -11,8 +11,8 @@ const Demo11 = () => {
           setTab2value(value)
         }}
       >
-        <Tabs.TabPane title="Tab 1" value="0">
-          Tab 1
+        <Tabs.TabPane title="Tab longitem" value="0">
+          Tab longitem
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2" value="1" disabled>
           Tab 2

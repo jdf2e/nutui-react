@@ -42,6 +42,7 @@ const defaultProps = {
 } as TabsProps
 
 const classPrefix = 'nut-tabs'
+
 export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
@@ -62,52 +63,43 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     value: outerValue,
     defaultValue: outerDefaultValue,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
 
   const [value, setValue] = usePropsValue<string | number>({
     value: outerValue,
     defaultValue: outerDefaultValue,
-    finalValue: 0,
     onChange,
   })
+
   const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
+
   const scrollDirection = (
-    nav: any,
+    nav: HTMLDivElement,
     to: number,
-    duration: number,
-    direction?: 'horizontal' | 'vertical'
+    duration: number
   ) => {
-    let count = 0
     const from = direction === 'horizontal' ? nav.scrollLeft : nav.scrollTop
     const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16)
+    let count = 0
 
-    function animate() {
-      if (direction === 'horizontal') {
-        nav.scrollLeft += (to - from) / frames
-      } else {
-        nav.scrollTop += (to - from) / frames
-      }
-
-      if (++count < frames) {
-        raf(animate)
-      }
+    const animate = () => {
+      if (direction === 'horizontal') nav.scrollLeft += (to - from) / frames
+      else nav.scrollTop += (to - from) / frames
+      if (++count < frames) raf(animate)
     }
     animate()
   }
+
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
     const titleItem = titleItemsRef.current
     const titlesLength = titles.current.length
-    const itemLength = titleItemsRef.current.length
+    const itemLength = titleItem.length
     if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
       return
     }
     const title = titleItem[itemLength - titlesLength + index]
-
     let to = 0
     if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
@@ -115,14 +107,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     } else {
       to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
     }
-    scrollDirection(nav, to, immediate ? 0 : 0.3, direction)
+    scrollDirection(nav, to, immediate ? 0 : 0.3)
   }
 
   const getTitles = () => {
     const titles: TabsTitle[] = []
-    React.Children.forEach(children, (child: any, idx) => {
+    React.Children.forEach(children, (child, idx) => {
       if (React.isValidElement(child)) {
-        const props: any = child?.props
+        const { props } = child
         if (props?.title || props?.value) {
           titles.push({
             title: props.title,
@@ -140,7 +132,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     titles.current = getTitles()
     let current: string | number = ''
     titles.current.forEach((title) => {
-      // eslint-disable-next-line eqeqeq
       if (title.value === value) {
         current = value
       }
@@ -159,29 +150,22 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
-    [`${classPrefix}-titles-scrollable`]: true,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
-  const tabsActiveStyle = {
-    color: activeType === 'smile' ? activeColor : '',
-    background: activeType === 'line' ? activeColor : '',
-  }
   const getContentStyle = () => {
-    // eslint-disable-next-line eqeqeq
-    let index = titles.current.findIndex((t) => t.value == value)
+    let index = titles.current.findIndex((t) => t.value === value)
     index = index < 0 ? 0 : index
     return {
       transform:
         direction === 'horizontal'
           ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
-          : `translate3d( 0,-${index * 100}%, 0)`,
+          : `translate3d( 0, -${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     }
   }
   useEffect(() => {
-    // eslint-disable-next-line eqeqeq
-    let index = titles.current.findIndex((t) => t.value == value)
+    let index = titles.current.findIndex((t) => t.value === value)
     index = index < 0 ? 0 : index
     setTimeout(() => {
       scrollIntoView(index)
@@ -190,52 +174,50 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   const tabChange = (item: TabsTitle) => {
     onClick && onClick(item.value)
-    if (item.disabled) {
-      return
+    if (!item.disabled) {
+      setValue(item.value)
     }
-    setValue(item.value)
   }
   return (
     <div className={classes} {...rest}>
-      <div className={classesTitle} style={{ ...tabStyle }} ref={navRef}>
+      <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
           : titles.current.map((item) => {
               return (
                 <div
-                  onClick={() => {
-                    tabChange(item)
-                  }}
+                  key={item.value}
+                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
+                  onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
                     [`nut-tabs-titles-item-active`]:
                       !item.disabled && String(item.value) === String(value),
                     [`nut-tabs-titles-item-disabled`]: item.disabled,
                     [`nut-tabs-titles-item-${align}`]: align,
                   })}
-                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
-                  key={item.value}
                 >
                   {activeType === 'line' && (
                     <div
-                      className={classNames(`${classPrefix}-titles-item-line`, {
-                        [`${classPrefix}-titles-item-line-${direction}`]: true,
-                      })}
-                      style={tabsActiveStyle}
+                      className={classNames(
+                        `${classPrefix}-titles-item-line`,
+                        `${classPrefix}-titles-item-line-${direction}`
+                      )}
+                      style={{ background: activeColor }}
                     />
                   )}
                   {activeType === 'smile' && (
-                    <div
-                      className={`${classPrefix}-titles-item-smile`}
-                      style={tabsActiveStyle}
-                    >
+                    <div className={`${classPrefix}-titles-item-smile`}>
                       <JoySmile color={activeColor} width={40} height={20} />
                     </div>
                   )}
                   <div
                     className={classNames(
-                      `${classPrefix}-ellipsis`,
+                      {
+                        [`${classPrefix}-ellipsis`]: direction === 'vertical',
+                      },
                       `${classPrefix}-titles-item-text`
                     )}
+                    style={{ color: activeColor }}
                   >
                     {item.title}
                   </div>
@@ -246,25 +228,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       <div className={`${classPrefix}-content-wrap`}>
         <div className={`${classPrefix}-content`} style={getContentStyle()}>
           {React.Children.map(children, (child, idx) => {
-            if (!React.isValidElement(child)) {
-              return null
-            }
-
-            let childProps = {
+            if (!React.isValidElement(child)) return null
+            return React.cloneElement(child, {
               ...child.props,
               active: value === child.props.value,
-            }
-
-            if (
-              String(value) !== String(child.props.value || idx) &&
-              autoHeight
-            ) {
-              childProps = {
-                ...childProps,
-                autoHeightClassName: 'inactive',
-              }
-            }
-            return React.cloneElement(child, childProps)
+              autoHeightClassName:
+                autoHeight && String(value) !== String(child.props.value || idx)
+                  ? 'inactive'
+                  : undefined,
+            })
           })}
         </div>
       </div>

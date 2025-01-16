@@ -11,6 +11,7 @@ const Demo16 = () => {
           setTab4value(value)
         }}
       >
+        <Tabs.TabPane title="第一名top1">第一名top1</Tabs.TabPane>
         <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>
         <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
         <Tabs.TabPane title="百亿补贴">百亿补贴</Tabs.TabPane>

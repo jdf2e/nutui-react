@@ -12,15 +12,15 @@ const Demo13 = () => {
           setTab2value(value)
         }}
       >
-        <Tabs.TabPane title="Tab 1">
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
+        <Tabs.TabPane title="Tab longitem">
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
+          <p>Tab longitem</p>
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2">
           <p>Tab 2</p>
