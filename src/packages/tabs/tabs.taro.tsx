@@ -123,10 +123,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     [`${classPrefix}-titles-${align}`]: align,
   })
 
-  const tabsActiveStyle = {
-    color: activeType === 'smile' ? activeColor : '',
-    background: activeType === 'line' ? activeColor : '',
-  }
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
       createSelectorQuery()
@@ -158,8 +154,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     width: number
   }
   const scrollWithAnimation = useRef(false)
-  const navRectRef = useRef<any>()
-  const titleRectRef = useRef<RectItem[]>([])
   const [scrollLeft, setScrollLeft] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
   const scrollDirection = (
@@ -182,9 +176,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         getRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-list`),
         getAllRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-titles-item`),
       ]).then(([navRect, titleRects]: any) => {
-        navRectRef.current = navRect
-        titleRectRef.current = titleRects
-        const titleRect: RectItem = titleRectRef.current[index]
+        const titleRect = titleRects[index]
         if (!titleRect) return
 
         let to = 0
@@ -192,12 +184,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           const top = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
-          to = top - (navRectRef.current.height - titleRect.height) / 2
+          to = top - (navRect.height - titleRect.height) / 2
         } else {
           const left = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
-          to = left - (navRectRef.current.width - titleRect.width) / 2
+          to = left - (navRect.width - titleRect.width) / 2
           // to < 0 说明不需要进行滚动，页面元素已全部显示出来
           if (to < 0) return
           to = rtl ? -to : to
