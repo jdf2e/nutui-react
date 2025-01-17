@@ -114,8 +114,9 @@ import { InputNumber } from '@nutui/nutui-react-taro'
 | digits | 设置保留的小数位 | `string` \| `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只读状态禁用输入框操作行为 | `boolean` | `false` |
-| async | 支持异步修改 | `boolean` | `false` |
+| ~~async~~`2.8.0` | 支持异步修改 | `boolean` | `false` |
 | formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
+| beforeChange`2.8.0` | 输入值变化前的回调函数，返回 false 可阻止输入，支持返回 Promise | `(value: number \| string) => boolean \| Promise<boolean>` | `-` |
 | onPlus | 点击增加按钮时触发 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 点击减少按钮时触发 | `(e: MouseEvent) => void` | `-` |
 | onOverlimit | 点击不可用的按钮时触发 | `(e: MouseEvent) => void` | `-` |

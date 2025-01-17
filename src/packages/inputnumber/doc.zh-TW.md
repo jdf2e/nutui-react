@@ -113,8 +113,10 @@ import { InputNumber } from '@nutui/nutui-react'
 | digits | 設置保留的小數位 | `string` \| `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只讀狀態禁用輸入框操作行為 | `boolean` | `false` |
-| async | 支持異步修改 | `boolean` | `false` |
+| ~~async~~`2.8.0` | 支持異步修改 | `boolean` | `false` |
+| select`2.7.0` | 支持取消文本全选中 | `boolean` | `true` |
 | formatter | 指定輸入框展示值的格式 | `function(value: number \| string): string` | `-` |
+| beforeChange`2.8.0` | 输入值变化前的回调函数，返回 false 可阻止输入，支持返回 Promise | `(value: number \| string) => boolean \| Promise<boolean>` | `-` |
 | onPlus | 點擊增加按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 點擊減少按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onOverlimit | 點擊不可用的按鈕時觸發 | `(e: MouseEvent) => void` | `-` |

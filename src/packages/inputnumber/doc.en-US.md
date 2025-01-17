@@ -121,9 +121,10 @@ Asynchronous modification through `change` event and `model-value`
 | digits | Set reserved decimal places | `string` \| `number` | `0` |
 | disabled | Disable all features | `boolean` | `false` |
 | readOnly | Read only status disables input box operation behavior | `boolean` | `false` |
-| async | Support for asynchronous modification | `boolean` | `false` |
-| select | Support deselect all text | `boolean` | `true` |
+| ~~async~~`2.8.0` | Support for asynchronous modification | `boolean` | `false` |
+| select`2.7.0` | Support deselect all text | `boolean` | `true` |
 | formatter | Specifies the format of the value displayed in the input box | `function(value: number \| string): string` | `-` |
+| beforeChange`2.8.0` | Callback function before the input value changes, return false to prevent input, support returning Promise | `(value: number \| string) => boolean \| Promise<boolean>` | `-` |
 | onPlus | Triggered when the Add button is clicked | `(e: MouseEvent) => void` | `-` |
 | onMinus | Triggered when the decrease button is clicked | `(e: MouseEvent) => void` | `-` |
 | onOverlimit | Triggered when an unavailable button is clicked | `(e: MouseEvent) => void` | `-` |
