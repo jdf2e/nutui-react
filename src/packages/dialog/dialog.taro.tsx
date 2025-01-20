@@ -30,7 +30,7 @@ const defaultProps: DialogBasicProps = {
   cancelText: '',
   overlay: true,
   overlayStyle: {},
-  overlayClassName: '',
+  overlayClassName: 'nut-dialog-overlay',
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,

@@ -10,7 +10,7 @@ export const defaultDialogWrapProps: DialogWrapProps = {
   ...defaultContentProps,
   overlay: true,
   overlayStyle: {},
-  overlayClassName: '',
+  overlayClassName: 'nut-dialog-overlay',
   onCancel: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
