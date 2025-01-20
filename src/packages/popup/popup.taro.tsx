@@ -4,45 +4,19 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
-  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
-import {
-  OverlayProps,
-  defaultOverlayProps,
-} from '@/packages/overlay/overlay.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { PopupProps, Teleport } from './types'
 
-type Teleport = HTMLElement | (() => HTMLElement) | null
-
-export interface PopupProps extends OverlayProps {
-  position: string
-  transition: string
-  overlayStyle: React.CSSProperties
-  overlayClassName: string
-  closeable: boolean
-  closeIconPosition: string
-  closeIcon: ReactNode
-  left: ReactNode
-  title: ReactNode
-  description: ReactNode
-  destroyOnClose: boolean
-  portal: Teleport
-  overlay: boolean
-  round: boolean
-  onOpen: () => void
-  onClose: () => void
-  onOverlayClick: (e: ITouchEvent) => boolean | void
-  onCloseIconClick: (e: ITouchEvent) => boolean | void
-}
-
-const defaultProps = {
+const defaultProps: PopupProps = {
   ...ComponentDefaults,
   position: 'center',
   transition: '',
@@ -57,10 +31,10 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onOverlayClick: (e: ITouchEvent) => true,
-  onCloseIconClick: (e: ITouchEvent) => true,
+  onOverlayClick: () => true,
+  onCloseIconClick: () => true,
   ...defaultOverlayProps,
-} as PopupProps
+}
 
 // 默认1000，参看variables
 const _zIndex = 1100
@@ -100,6 +74,7 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
+
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -110,7 +85,8 @@ export const Popup: FunctionComponent<
 
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index,
+    '--nutui-overlay-zIndex': index, // 逐步废弃掉，可直接使用 zIndex 替换
+    zIndex: index,
   }
   const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(

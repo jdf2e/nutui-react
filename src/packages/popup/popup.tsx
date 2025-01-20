@@ -2,7 +2,6 @@ import React, {
   FunctionComponent,
   MouseEvent,
   ReactElement,
-  ReactNode,
   ReactPortal,
   useEffect,
   useState,
@@ -11,35 +10,13 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
-import { defaultOverlayProps, OverlayProps } from '@/packages/overlay/overlay'
+import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/utils/use-lock-scroll'
+import { PopupProps, Teleport } from './types'
 
-type Teleport = HTMLElement | (() => HTMLElement) | null
-
-export interface PopupProps extends OverlayProps {
-  position: string
-  transition: string
-  overlayStyle: React.CSSProperties
-  overlayClassName: string
-  closeable: boolean
-  closeIconPosition: string
-  closeIcon: ReactNode
-  left: ReactNode
-  title: ReactNode
-  description: ReactNode
-  destroyOnClose: boolean
-  portal: Teleport
-  overlay: boolean
-  round: boolean
-  onOpen: () => void
-  onClose: () => void
-  onOverlayClick: (e: MouseEvent) => boolean | void
-  onCloseIconClick: (e: MouseEvent) => boolean | void
-}
-
-const defaultProps = {
+const defaultProps: PopupProps = {
   ...ComponentDefaults,
   position: 'center',
   transition: '',
@@ -54,10 +31,10 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onOverlayClick: (e: MouseEvent) => true,
-  onCloseIconClick: (e: MouseEvent) => true,
+  onOverlayClick: () => true,
+  onCloseIconClick: () => true,
   ...defaultOverlayProps,
-} as PopupProps
+}
 
 // 默认1000，参看variables
 const _zIndex = 1100
@@ -108,7 +85,8 @@ export const Popup: FunctionComponent<
   const classPrefix = 'nut-popup'
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index,
+    '--nutui-overlay-zIndex': index, // 逐步废弃掉，可直接使用 zIndex 替换
+    zIndex: index,
   }
   const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(

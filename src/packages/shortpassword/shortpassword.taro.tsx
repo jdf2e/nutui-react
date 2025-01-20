@@ -8,10 +8,9 @@ import React, {
 import { Tips } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import Popup from '@/packages/popup/index.taro'
+import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { PopupProps } from '@/packages/popup/popup.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { ShortPasswordActions } from '@/packages/shortpassword/types'
 

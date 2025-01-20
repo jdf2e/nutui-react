@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Check } from '@nutui/icons-react'
-import { Popup, PopupProps } from '@/packages/popup/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { Tabs } from '@/packages/tabs/tabs'
 import Tree, { convertListToOptions } from './utils'
 import {
