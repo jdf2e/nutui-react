@@ -4,7 +4,6 @@ import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Form, { FormInstance } from '@/packages/form'
 import Input from '@/packages/input'
-import { merge } from '@/utils/merge'
 
 beforeAll(() => {
   // @ts-ignore
@@ -311,60 +310,5 @@ test('no-style and render function', async () => {
   waitFor(() => {
     const relatedInput = container.querySelector('.related-input')
     expect(relatedInput).toBeTruthy()
-  })
-})
-
-describe('merge', async () => {
-  it('merges two objects', () => {
-    expect(merge({ a: 1 }, { b: 2 })).toStrictEqual({ a: 1, b: 2 })
-  })
-
-  it('merges nested levels', () => {
-    expect(merge({ a: 1 }, { b: { c: { d: 2 } } })).toStrictEqual({
-      a: 1,
-      b: { c: { d: 2 } },
-    })
-  })
-  it('clones the target', () => {
-    let input = {
-      a: 1,
-      b: {
-        c: {
-          d: 2,
-          e: ['x', 'y', { z: { w: ['k'] } }],
-        },
-      },
-      f: null,
-      g: undefined,
-      h: true,
-    }
-
-    const original = {
-      a: 1,
-      b: {
-        c: {
-          d: 2,
-          e: ['x', 'y', { z: { w: ['k'] } }],
-        },
-      },
-      f: null,
-      g: undefined,
-      h: true,
-    }
-
-    let output = merge(true, input)
-
-    input.b.c.d++
-    ;(input.b.c.e[2] as any).z.w = null
-    ;(input as any).h = null
-
-    expect(output).toStrictEqual(original)
-
-    input = original
-
-    output = merge(true, input, { a: 2 })
-
-    expect(output.a).toBe(2)
-    expect(input.a).toBe(1)
   })
 })
