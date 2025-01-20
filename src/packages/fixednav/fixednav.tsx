@@ -1,38 +1,26 @@
-import React, { FunctionComponent, MouseEvent } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react'
-import Overlay from '@/packages/overlay'
+import Overlay from '@/packages/overlay/index'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import {
-  FixedNavType,
-  FixedNavItem,
-  FixedNavPosition,
-} from '@/packages/fixednav/types'
+import { FixedNavProps } from '@/packages/fixednav/types'
+import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
-export interface FixedNavProps extends BasicComponent {
-  visible: boolean
-  overlay: boolean
-  list: Array<FixedNavItem>
-  activeText: string
-  inactiveText: string
-  position: FixedNavPosition
-  type: FixedNavType
-  onChange: (item: any) => void
-  onSelect: (item: any, event: MouseEvent) => void
-  content: React.ReactNode
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: FixedNavProps = {
+  ...defaultOverlayProps,
   activeText: '',
   inactiveText: '',
   type: 'right',
+  list: [],
+  overlay: true,
   position: {
     top: 'auto',
     bottom: 'auto',
   },
-} as FixedNavProps
+  zIndex: 200,
+  onChange: () => {},
+  onSelect: () => {},
+}
 
 export const FixedNav: FunctionComponent<
   Partial<FixedNavProps> &
@@ -43,27 +31,23 @@ export const FixedNav: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    className,
     overlay,
     visible,
     list,
     activeText,
     inactiveText,
     position,
-    onChange,
-    onSelect,
     type,
     children,
     style,
+    className,
     content,
-    ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+    zIndex,
+    onChange,
+    onSelect,
+  } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-fixednav'
-
   const classes = classNames(
     classPrefix,
     {
@@ -73,14 +57,6 @@ export const FixedNav: FunctionComponent<
     className
   )
 
-  const handleClick = (item: any, event: MouseEvent): void => {
-    onSelect(item, event)
-  }
-
-  const onUpdateValue = (value = !visible): void => {
-    onChange(value)
-  }
-
   return (
     <div
       className={classes}
@@ -88,13 +64,12 @@ export const FixedNav: FunctionComponent<
         ...position,
         ...style,
       }}
-      {...rest}
     >
       {overlay && (
         <Overlay
           visible={visible}
-          style={{ '--nutui-overlay-zIndex': 200 }}
-          onClick={() => onUpdateValue(false)}
+          zIndex={zIndex}
+          onClick={() => onChange(false)}
         />
       )}
       <div className="list">
@@ -104,7 +79,7 @@ export const FixedNav: FunctionComponent<
               return (
                 <div
                   className={`${classPrefix}-list-item`}
-                  onClick={(event) => handleClick(item, event)}
+                  onClick={(event) => onSelect(item, event)}
                   key={item.id || index}
                 >
                   {React.isValidElement(item.icon) ? (
@@ -121,7 +96,7 @@ export const FixedNav: FunctionComponent<
         )}
       </div>
 
-      <div className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
+      <div className={`${classPrefix}-btn`} onClick={() => onChange(!visible)}>
         {content || (
           <>
             <ArrowLeft color="#fff" />

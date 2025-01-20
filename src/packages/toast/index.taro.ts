@@ -1,11 +1,12 @@
 import { Toast } from './toast.taro'
 
+export type { ToastOptions } from './toast.taro'
+
 export type {
-  ToastProps,
   ToastPosition,
-  ToastOptions,
   ToastSize,
   ToastWordBreak,
-} from './toast.taro'
+  ToastProps,
+} from './types'
 
 export default Toast
