@@ -45,6 +45,7 @@ export const FixedNav: FunctionComponent<
     zIndex,
     onChange,
     onSelect,
+    ...rest
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-fixednav'
@@ -64,6 +65,7 @@ export const FixedNav: FunctionComponent<
         ...position,
         ...style,
       }}
+      {...rest}
     >
       {overlay && (
         <Overlay

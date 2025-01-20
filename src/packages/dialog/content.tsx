@@ -5,8 +5,8 @@ import { ContentProps } from './types'
 export const defaultContentProps: ContentProps = {
   visible: false,
   title: '',
-  header: null,
-  footer: null,
+  header: '',
+  footer: '',
   close: '',
   footerDirection: '',
   onClick: () => {},

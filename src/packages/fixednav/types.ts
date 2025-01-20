@@ -14,7 +14,7 @@ export interface FixedNavItem {
   icon: ReactNode
 }
 
-export interface FixedNavProps extends OverlayProps {
+export interface FixedNavProps extends Omit<OverlayProps, 'onClick'> {
   overlay: boolean
   activeText: string
   inactiveText: string

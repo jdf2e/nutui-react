@@ -154,6 +154,7 @@ const BaseDialog: ForwardRefRenderFunction<
         visible={visible}
         lockScroll={lockScroll}
         footer={renderFooter()}
+        footerDirection={footerDirection}
         close={renderCloseIcon()}
         onClose={onClose}
         onCancel={onCancel}

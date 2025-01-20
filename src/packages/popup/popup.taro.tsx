@@ -85,8 +85,6 @@ export const Popup: FunctionComponent<
 
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index, // 逐步废弃掉，可直接使用 zIndex 替换
-    zIndex: index,
   }
   const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(
@@ -214,6 +212,7 @@ export const Popup: FunctionComponent<
       <>
         {overlay && (
           <Overlay
+            zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}

@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  MouseEvent,
   ReactElement,
   ReactPortal,
   useEffect,
@@ -85,8 +84,6 @@ export const Popup: FunctionComponent<
   const classPrefix = 'nut-popup'
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index, // 逐步废弃掉，可直接使用 zIndex 替换
-    zIndex: index,
   }
   const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(
@@ -121,14 +118,14 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (e: MouseEvent) => {
+  const handleOverlayClick = (e: any) => {
     e.stopPropagation()
     if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: MouseEvent) => {
+  const handleCloseIconClick = (e: any) => {
     onCloseIconClick(e) && close()
   }
 
@@ -211,6 +208,7 @@ export const Popup: FunctionComponent<
       <>
         {overlay && (
           <Overlay
+            zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}
