@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, DialogConfirmProps, DialogReturnProps } from './config'
+import { destroyList, DialogConfirmProps, DialogReturnProps } from './types'
 import { render as reactRender, unmount } from '@/utils/render'
 
 function ConfirmDialog(props: DialogConfirmProps) {

@@ -1,16 +1,16 @@
-import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
+import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
-import { BasicComponent } from '@/utils/typings'
+import { View } from '@tarojs/components'
+import { ContentProps } from './types'
 
-interface ContentProps extends BasicComponent {
-  visible: boolean
-  title: ReactNode
-  header: ReactNode
-  footer: ReactNode
-  close: ReactNode
-  footerDirection: string
-  onClick: (event: ITouchEvent) => void
+export const defaultContentProps: ContentProps = {
+  visible: false,
+  title: '',
+  header: null,
+  footer: null,
+  close: '',
+  footerDirection: '',
+  onClick: () => {},
 }
 
 export const Content: FunctionComponent<
@@ -24,28 +24,28 @@ export const Content: FunctionComponent<
     footer,
     close,
     footerDirection,
-    onClick,
     children,
-  } = props
+    onClick,
+  } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title ? (
-      <View className={`${classPrefix}-header`}>{title}</View>
-    ) : null
+    return title && <View className={`${classPrefix}-header`}>{title}</View>
   }
 
   const renderFooter = () => {
-    return footer ? (
-      <View
-        className={classNames(`${classPrefix}-footer`, {
-          [footerDirection as any]: footerDirection,
-        })}
-      >
-        {footer}
-      </View>
-    ) : null
+    return (
+      footer && (
+        <View
+          className={classNames(`${classPrefix}-footer`, {
+            [footerDirection as any]: footerDirection,
+          })}
+        >
+          {footer}
+        </View>
+      )
+    )
   }
 
   const handleClick = (e: any) => {

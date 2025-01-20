@@ -314,7 +314,7 @@
           "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "FixedNav",
           "type": "component",
           "cName": "悬浮导航",
@@ -323,7 +323,7 @@
           "show": true,
           "taro": true,
           "author": "Ymm0008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",

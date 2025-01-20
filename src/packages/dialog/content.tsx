@@ -1,17 +1,20 @@
-import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
+import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
+import { ContentProps } from './types'
 
-interface ContentProps {
-  visible: boolean
-  title: ReactNode
-  header: ReactNode
-  footer: ReactNode
-  close: ReactNode
-  footerDirection: string
+export const defaultContentProps: ContentProps = {
+  visible: false,
+  title: '',
+  header: null,
+  footer: null,
+  close: '',
+  footerDirection: '',
+  onClick: () => {},
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ContentProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > = (props) => {
   const {
     visible,
@@ -22,7 +25,9 @@ export const Content: FunctionComponent<
     footerDirection,
     onClick,
     children,
-  } = props
+    style,
+    className,
+  } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
 
@@ -31,15 +36,17 @@ export const Content: FunctionComponent<
   }
 
   const renderFooter = () => {
-    return footer ? (
-      <div
-        className={classNames(`${classPrefix}-footer`, {
-          [footerDirection as any]: footerDirection,
-        })}
-      >
-        {footer}
-      </div>
-    ) : null
+    return (
+      footer && (
+        <div
+          className={classNames(`${classPrefix}-footer`, {
+            [footerDirection as any]: footerDirection,
+          })}
+        >
+          {footer}
+        </div>
+      )
+    )
   }
 
   const handleClick = (e: any) => {
@@ -48,8 +55,8 @@ export const Content: FunctionComponent<
 
   return (
     <div
-      className={classNames(`${classPrefix}-outer`, props.className)}
-      style={props.style}
+      className={classNames(`${classPrefix}-outer`, className)}
+      style={style}
       onClick={(e) => handleClick(e)}
     >
       {close}

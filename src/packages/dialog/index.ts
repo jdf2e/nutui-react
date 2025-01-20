@@ -6,7 +6,6 @@ export type {
   DialogBasicProps,
   DialogConfirmProps,
   DialogReturnProps,
-} from './config'
+} from './types'
 
-export type { DialogProps } from './dialog'
 export default Dialog
