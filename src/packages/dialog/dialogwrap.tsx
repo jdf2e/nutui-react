@@ -55,7 +55,7 @@ export const DialogWrap: FunctionComponent<
   }
   return (
     <>
-      {overlay ? (
+      {overlay && (
         <Overlay
           style={overlayStyle}
           className={classNames('nut-dialog-overlay', overlayClassName)}
@@ -64,7 +64,7 @@ export const DialogWrap: FunctionComponent<
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
         />
-      ) : null}
+      )}
 
       <CSSTransition
         in={visible}
