@@ -2,13 +2,19 @@ import React, { ReactNode } from 'react'
 import { OverlayProps } from '@/packages/overlay/types'
 
 export type Teleport = HTMLElement | (() => HTMLElement) | null
-export interface PopupProps extends OverlayProps {
-  position: string
+export type Position = 'top' | 'bottom' | 'left' | 'right' | 'center'
+export type CloseIconPosition =
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right'
+export interface PopupProps extends Omit<OverlayProps, 'onClick'> {
+  position: Position
   transition: string
   overlayStyle: React.CSSProperties
   overlayClassName: string
   closeable: boolean
-  closeIconPosition: string
+  closeIconPosition: CloseIconPosition
   closeIcon: ReactNode
   left?: ReactNode
   title?: ReactNode
@@ -19,6 +25,10 @@ export interface PopupProps extends OverlayProps {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onOverlayClick: (e: React.MouseEvent) => boolean | undefined
-  onCloseIconClick: (e: React.MouseEvent) => boolean | undefined
+  onOverlayClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => boolean | undefined
+  onCloseIconClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => boolean | undefined
 }

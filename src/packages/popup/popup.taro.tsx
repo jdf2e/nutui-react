@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
@@ -38,8 +38,7 @@ const defaultProps: PopupProps = {
 const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
+  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -117,14 +116,18 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (e: ITouchEvent) => {
-    e.stopPropagation()
-    if (closeOnOverlayClick && onOverlayClick(e)) {
+  const handleOverlayClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation()
+    if (closeOnOverlayClick && onOverlayClick(event)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: ITouchEvent) => {
+  const handleCloseIconClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     onCloseIconClick(e) && close()
   }
 
@@ -136,7 +139,14 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <View className={closeClasses} onClick={handleCloseIconClick}>
+          <View
+            className={closeClasses}
+            onClick={(e) =>
+              handleCloseIconClick(
+                e as unknown as React.MouseEvent<HTMLDivElement, MouseEvent>
+              )
+            }
+          >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>
         )}
@@ -195,7 +205,12 @@ export const Popup: FunctionComponent<
           ref={refObject}
           style={popStyles}
           className={popClassName}
-          onClick={onClick}
+          onClick={(e) =>
+            onClick &&
+            onClick(
+              e as unknown as React.MouseEvent<HTMLDivElement, MouseEvent>
+            )
+          }
           catchMove={lockScroll}
         >
           {renderTitle()}

@@ -116,14 +116,18 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
+  const handleOverlayClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     e.stopPropagation()
     if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: React.MouseEvent) => {
+  const handleCloseIconClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     onCloseIconClick(e) && close()
   }
 
@@ -195,7 +199,7 @@ export const Popup: FunctionComponent<
           onClick={onClick}
         >
           {renderTitle()}
-          {showChildren ? children : null}
+          {showChildren && children}
         </div>
       </CSSTransition>
     )
