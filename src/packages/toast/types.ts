@@ -14,7 +14,7 @@ export interface ToastProps extends OverlayProps {
   id: string
   position: ToastPosition
   title: string
-  size: string | number
+  size: ToastSize
   icon: ToastIcon
   content: React.ReactNode
   contentClassName: string

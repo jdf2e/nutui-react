@@ -12,12 +12,11 @@ import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 import { PopupProps, Teleport } from './types'
 
 const defaultProps: PopupProps = {
-  ...ComponentDefaults,
+  ...defaultOverlayProps,
   position: 'center',
   transition: '',
   overlayStyle: {},
@@ -33,7 +32,6 @@ const defaultProps: PopupProps = {
   onClose: () => {},
   onOverlayClick: () => true,
   onCloseIconClick: () => true,
-  ...defaultOverlayProps,
 }
 
 // 默认1000，参看variables

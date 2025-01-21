@@ -19,7 +19,7 @@ const defaultProps: FixedNavProps = {
     bottom: 'auto',
   },
   zIndex: 200,
-  onChange: () => {},
+  onChange: (value: boolean) => {},
   onSelect: () => {},
 }
 

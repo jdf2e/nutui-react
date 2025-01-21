@@ -19,7 +19,10 @@ export const defaultOverlayProps: OverlayProps = {
   afterClose: () => {},
 }
 export const Overlay: FunctionComponent<
-  Partial<OverlayProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<OverlayProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> & {
+      onClick: (event: React.MouseEvent | ITouchEvent) => void
+    }
 > = (props) => {
   const {
     children,

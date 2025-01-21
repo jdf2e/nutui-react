@@ -6,7 +6,7 @@ export interface OverlayProps extends BasicComponent {
   closeOnOverlayClick: boolean
   visible: boolean
   lockScroll: boolean
-  onClick: (event: TouchEvent) => void
+  onClick: (event: React.MouseEvent) => void
   afterShow: () => void
   afterClose: () => void
 }

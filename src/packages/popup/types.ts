@@ -19,6 +19,6 @@ export interface PopupProps extends OverlayProps {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onOverlayClick: (e: TouchEvent) => boolean | void
-  onCloseIconClick: (e: TouchEvent) => boolean | void
+  onOverlayClick: (e: React.MouseEvent) => boolean | undefined
+  onCloseIconClick: (e: React.MouseEvent) => boolean | undefined
 }

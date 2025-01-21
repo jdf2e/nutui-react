@@ -11,12 +11,11 @@ import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
-import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/utils/use-lock-scroll'
 import { PopupProps, Teleport } from './types'
 
 const defaultProps: PopupProps = {
-  ...ComponentDefaults,
+  ...defaultOverlayProps,
   position: 'center',
   transition: '',
   overlayStyle: {},
@@ -32,7 +31,6 @@ const defaultProps: PopupProps = {
   onClose: () => {},
   onOverlayClick: () => true,
   onCloseIconClick: () => true,
-  ...defaultOverlayProps,
 }
 
 // 默认1000，参看variables
@@ -118,14 +116,14 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (e: any) => {
+  const handleOverlayClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: any) => {
+  const handleCloseIconClick = (e: React.MouseEvent) => {
     onCloseIconClick(e) && close()
   }
 
