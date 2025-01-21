@@ -100,8 +100,8 @@ const confirm = (
   const update = (newConfig: DialogConfirmProps) => {
     dialogConfig = {
       ...dialogConfig,
-      title: config.title, // 避免 newConfig 未传递 title 时，icon 出现多个的问题
       ...newConfig,
+      title: config.title, // 避免 newConfig 未传递 title 时，icon 出现多个的问题
     }
 
     dialogConfig = normalizeConfig(dialogConfig)

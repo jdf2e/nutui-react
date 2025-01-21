@@ -31,7 +31,7 @@ const Demo1 = () => {
   }
   const selected = (
     item: FixedNavItem,
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    event: React.MouseEvent<Element, MouseEvent>
   ) => {
     console.log(item, event)
   }

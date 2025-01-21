@@ -116,18 +116,14 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     e.stopPropagation()
     if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleCloseIconClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     onCloseIconClick(e) && close()
   }
 

@@ -25,6 +25,6 @@ export interface FixedNavProps extends Omit<OverlayProps, 'onClick'> {
   onChange: (value: boolean) => void
   onSelect: (
     item: FixedNavItem,
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    event: React.MouseEvent<Element, MouseEvent>
   ) => void
 }

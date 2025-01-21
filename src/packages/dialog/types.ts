@@ -30,20 +30,19 @@ export type DialogWrapProps = OverlayProps &
     onOverlayClick: (e: MouseEvent<HTMLElement>) => boolean | void
   }
 
-export type DialogBasicProps = DialogWrapProps &
-  ContentProps & {
-    content?: ReactNode
-    confirmText?: ReactNode
-    cancelText?: ReactNode
-    hideConfirmButton?: boolean
-    hideCancelButton?: boolean
-    disableConfirmButton?: boolean
-    closeIconPosition?: DialogCloseIconPosition
-    closeIcon?: boolean | ReactNode
-    beforeClose?: () => boolean
-    beforeCancel?: () => boolean
-    onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
-  }
+export type DialogBasicProps = DialogWrapProps & {
+  content?: ReactNode
+  confirmText?: ReactNode
+  cancelText?: ReactNode
+  hideConfirmButton?: boolean
+  hideCancelButton?: boolean
+  disableConfirmButton?: boolean
+  closeIconPosition?: DialogCloseIconPosition
+  closeIcon?: boolean | ReactNode
+  beforeClose?: () => boolean
+  beforeCancel?: () => boolean
+  onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+}
 
 export interface DialogConfirmProps extends DialogBasicProps {
   content?: ReactNode
