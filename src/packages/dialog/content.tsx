@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ContentProps } from './types'
+import { ContentProps } from './index'
 
 export const defaultContentProps: ContentProps = {
   visible: false,
@@ -49,7 +49,7 @@ export const Content: FunctionComponent<
     )
   }
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     onClick && onClick(e)
   }
 
@@ -57,7 +57,7 @@ export const Content: FunctionComponent<
     <div
       className={classNames(`${classPrefix}-outer`, className)}
       style={style}
-      onClick={(e) => handleClick(e)}
+      onClick={handleClick}
     >
       {close}
       {header}

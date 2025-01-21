@@ -1,5 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import type { MouseEvent } from 'react'
 import { Content, defaultContentProps } from './content'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
@@ -34,7 +35,7 @@ export const DialogWrap: FunctionComponent<
     ...restProps
   } = { ...defaultDialogWrapProps, ...props }
 
-  const onHandleClickOverlay = (e: React.MouseEvent<HTMLElement>) => {
+  const onHandleClickOverlay = (e: React.MouseEvent<Element, MouseEvent>) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && onClose?.()
