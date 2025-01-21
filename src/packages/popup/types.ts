@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { OverlayProps } from '@/packages/overlay/types'
 
 export type Teleport = HTMLElement | (() => HTMLElement) | null
-export type Position = 'top' | 'bottom' | 'left' | 'right' | 'center'
+export type Position = 'top' | 'bottom' | 'left' | 'right' | 'center' | 'none'
 export type CloseIconPosition =
   | 'top-left'
   | 'top-right'

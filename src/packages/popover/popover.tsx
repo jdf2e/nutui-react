@@ -299,7 +299,7 @@ export const Popover: FunctionComponent<
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
               overlay={overlay}
-              position="default"
+              position="none"
               lockScroll={false}
               {...rest}
             >
