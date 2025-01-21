@@ -1,11 +1,11 @@
 import React, { useState, FunctionComponent, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 import { harmony } from '@/utils/platform-taro'
-import { OverlayProps } from './types'
+import { OverlayProps } from './index.taro'
 
 export const defaultOverlayProps: OverlayProps = {
   ...ComponentDefaults,
@@ -50,7 +50,7 @@ export const Overlay: FunctionComponent<
     zIndex,
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = (e: ITouchEvent) => {
     if (closeOnOverlayClick) {
       onClick && onClick(e)
     }

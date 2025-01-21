@@ -12,7 +12,7 @@ import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/utils/use-lock-scroll'
-import { PopupProps, Teleport } from './types'
+import { PopupProps, Teleport } from './index'
 
 const defaultProps: PopupProps = {
   ...defaultOverlayProps,

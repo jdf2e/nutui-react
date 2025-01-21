@@ -8,7 +8,8 @@ export type CloseIconPosition =
   | 'top-right'
   | 'bottom-left'
   | 'bottom-right'
-export interface PopupProps extends Omit<OverlayProps, 'onClick'> {
+
+export interface PopupProps extends OverlayProps {
   position: Position
   transition: string
   overlayStyle: React.CSSProperties

@@ -9,11 +9,11 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
-import { PopupProps, Teleport } from './types'
+import { PopupProps, Teleport } from './index.taro'
 
 const defaultProps: PopupProps = {
   ...defaultOverlayProps,
@@ -38,7 +38,8 @@ const defaultProps: PopupProps = {
 const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<PopupProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const {
     children,
@@ -116,14 +117,14 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.stopPropagation()
-    if (closeOnOverlayClick && onOverlayClick(event)) {
+  const handleOverlayClick = (e: ITouchEvent) => {
+    e.stopPropagation()
+    if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const handleCloseIconClick = (e: ITouchEvent) => {
     onCloseIconClick(e) && close()
   }
 

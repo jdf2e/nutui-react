@@ -98,7 +98,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleCancel = (e: React.MouseEvent<Element, MouseEvent>) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -106,7 +106,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       onCancel?.()
     }
 
-    const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
+    const handleOk = async (e: React.MouseEvent<Element, MouseEvent>) => {
       e.stopPropagation()
       setLoading(true)
       try {
@@ -182,7 +182,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     )
   }
 
-  const onHandleClickOverlay = (e: React.MouseEvent<HTMLElement>) => {
+  const onHandleClickOverlay = (
+    e: React.MouseEvent<Element, React.MouseEvent>
+  ) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && onClose && onClose()
