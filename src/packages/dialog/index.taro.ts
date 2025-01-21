@@ -19,8 +19,12 @@ export type ContentProps = Omit<ContentWebProps, 'onClick'> & {
   onClick: (event: ITouchEvent) => void
 }
 
-export type DialogBasicProps = Omit<DialogBasicWebProps, 'onOverlayClick'> & {
+export type DialogBasicProps = Omit<
+  DialogBasicWebProps,
+  'onOverlayClick' | 'onConfirm'
+> & {
   onOverlayClick: (event: ITouchEvent) => boolean | void
+  onConfirm?: (e?: ITouchEvent) => PromiseLike<any> | void
 }
 
 export default BaseDialog
