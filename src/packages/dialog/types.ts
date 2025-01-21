@@ -9,15 +9,15 @@ export type DialogConfigType = {
 }
 
 export type DialogCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
-
+export type DialogFooterDirection = 'horizontal' | 'vertical'
 export interface ContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
   header: ReactNode
   footer: ReactNode
   close: ReactNode
-  footerDirection: string
-  onClick: (event: any) => void
+  footerDirection: DialogFooterDirection
+  onClick: (event: MouseEvent<HTMLElement>) => void
 }
 export type DialogWrapProps = OverlayProps &
   ContentProps & {
@@ -27,7 +27,7 @@ export type DialogWrapProps = OverlayProps &
     overlayClassName: string
     onCancel: () => void
     onClose: () => void
-    onOverlayClick: (e: MouseEvent) => boolean | void
+    onOverlayClick: (e: MouseEvent<HTMLElement>) => boolean | void
   }
 
 export type DialogBasicProps = DialogWrapProps &

@@ -16,13 +16,13 @@ const Demo4 = () => {
     duration?: number,
     title?: string
   ) => {
-    const changeState = Object.assign(state, {
+    setState({
+      ...state,
       icon,
       content,
-      duration,
-      title,
+      duration: duration || 0,
+      title: title || '',
     })
-    setState(changeState)
   }
   return (
     <>

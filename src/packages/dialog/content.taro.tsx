@@ -9,7 +9,7 @@ export const defaultContentProps: ContentProps = {
   header: null,
   footer: null,
   close: '',
-  footerDirection: '',
+  footerDirection: 'horizontal',
   onClick: () => {},
 }
 
@@ -39,7 +39,7 @@ export const Content: FunctionComponent<
       footer && (
         <View
           className={classNames(`${classPrefix}-footer`, {
-            [footerDirection as any]: footerDirection,
+            [footerDirection]: footerDirection,
           })}
         >
           {footer}
@@ -65,9 +65,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <View className={`${classPrefix}-content`}>
-          <>{children}</>
-        </View>
+        <View className={`${classPrefix}-content`}>{children}</View>
         {renderFooter()}
       </View>
     </View>

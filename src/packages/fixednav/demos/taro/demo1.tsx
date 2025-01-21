@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FixedNav } from '@nutui/nutui-react-taro'
+import { FixedNav, FixedNavItem } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const list = [
@@ -29,7 +29,10 @@ const Demo1 = () => {
   const change = (value: boolean) => {
     setVisible(value)
   }
-  const selected = (item: any, event: any) => {
+  const selected = (
+    item: FixedNavItem,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     console.log(item, event)
   }
   return (

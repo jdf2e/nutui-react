@@ -182,7 +182,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     )
   }
 
-  const onHandleClickOverlay = (e: any) => {
+  const onHandleClickOverlay = (e: React.MouseEvent<HTMLElement>) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && onClose && onClose()
