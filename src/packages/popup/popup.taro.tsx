@@ -139,14 +139,7 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <View
-            className={closeClasses}
-            onClick={(e) =>
-              handleCloseIconClick(
-                e as unknown as React.MouseEvent<HTMLDivElement, MouseEvent>
-              )
-            }
-          >
+          <View className={closeClasses} onClick={handleCloseIconClick}>
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>
         )}
@@ -205,12 +198,7 @@ export const Popup: FunctionComponent<
           ref={refObject}
           style={popStyles}
           className={popClassName}
-          onClick={(e) =>
-            onClick &&
-            onClick(
-              e as unknown as React.MouseEvent<HTMLDivElement, MouseEvent>
-            )
-          }
+          onClick={onClick}
           catchMove={lockScroll}
         >
           {renderTitle()}

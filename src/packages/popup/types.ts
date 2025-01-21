@@ -27,8 +27,8 @@ export interface PopupProps extends Omit<OverlayProps, 'onClick'> {
   onClose: () => void
   onOverlayClick: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => boolean | undefined
+  ) => boolean | void
   onCloseIconClick: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => boolean | undefined
+  ) => boolean | void
 }

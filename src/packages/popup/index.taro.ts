@@ -1,4 +1,4 @@
 import { Popup } from './popup.taro'
 
-export type { PopupProps } from './types'
+export type { PopupProps, CloseIconPosition } from './types'
 export default Popup
