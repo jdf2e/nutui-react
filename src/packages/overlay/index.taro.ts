@@ -3,7 +3,7 @@ import { Overlay } from './overlay.taro'
 
 import { OverlayProps as OverlayWebProps } from './types'
 
-export type OverlayProps = OverlayWebProps & {
+export type OverlayProps = Omit<OverlayWebProps, 'onClick'> & {
   onClick: (event: ITouchEvent) => void
 }
 
