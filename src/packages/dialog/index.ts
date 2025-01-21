@@ -3,6 +3,9 @@ import { Dialog } from './dialog'
 export type {
   DialogConfigType,
   DialogCloseIconPosition,
+  DialogFooterDirection,
+  ContentProps,
+  DialogWrapProps,
   DialogBasicProps,
   DialogConfirmProps,
   DialogReturnProps,

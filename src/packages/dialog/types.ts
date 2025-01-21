@@ -17,20 +17,21 @@ export interface ContentProps extends BasicComponent {
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
-  onClick: (event: MouseEvent<HTMLElement>) => void
+  onClick: (event: React.MouseEvent<Element, MouseEvent>) => void
 }
-export type DialogWrapProps = OverlayProps &
-  ContentProps & {
-    visible: boolean
-    overlay: boolean
-    overlayStyle: React.CSSProperties
-    overlayClassName: string
-    onCancel: () => void
-    onClose: () => void
-    onOverlayClick: (e: MouseEvent<HTMLElement>) => boolean | void
-  }
+export interface DialogWrapProps
+  extends OverlayProps,
+    Omit<ContentProps, 'onClick'> {
+  visible: boolean
+  overlay: boolean
+  overlayStyle: React.CSSProperties
+  overlayClassName: string
+  onCancel: () => void
+  onClose: () => void
+  onOverlayClick: (e: React.MouseEvent<Element, MouseEvent>) => boolean | void
+}
 
-export type DialogBasicProps = DialogWrapProps & {
+export interface DialogBasicProps extends DialogWrapProps {
   content?: ReactNode
   confirmText?: ReactNode
   cancelText?: ReactNode

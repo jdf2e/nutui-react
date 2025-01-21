@@ -1,4 +1,26 @@
+import { ITouchEvent } from '@tarojs/components'
 import { BaseDialog } from './dialog.taro'
 
-export type { DialogBasicProps } from './types'
+import {
+  ContentProps as ContentWebProps,
+  DialogBasicProps as DialogBasicWebProps,
+} from './types'
+
+export type {
+  DialogConfigType,
+  DialogCloseIconPosition,
+  DialogFooterDirection,
+  DialogWrapProps,
+  DialogConfirmProps,
+  DialogReturnProps,
+} from './types'
+
+export type ContentProps = Omit<ContentWebProps, 'onClick'> & {
+  onClick: (event: ITouchEvent) => void
+}
+
+export type DialogBasicProps = Omit<DialogBasicWebProps, 'onOverlayClick'> & {
+  onOverlayClick: (event: ITouchEvent) => boolean | void
+}
+
 export default BaseDialog

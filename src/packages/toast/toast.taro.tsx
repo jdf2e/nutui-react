@@ -15,7 +15,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
 import { mergeProps } from '@/utils/merge-props'
-import { ToastProps } from './types'
+import { ToastProps } from './index.taro'
 
 const defaultProps: ToastProps = {
   ...defaultOverlayProps,
@@ -58,9 +58,9 @@ export const Toast: FunctionComponent<
       size,
       className,
       style,
-      onClose,
       wordBreak,
       zIndex,
+      onClose,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))

@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useState } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { DialogBasicProps } from './types'
+import { DialogBasicProps } from './index.taro'
 import { Content, defaultContentProps } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -70,7 +69,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       lockScroll,
       disableConfirmButton,
       closeOnOverlayClick,
-      onOverlayClick,
       confirmText,
       cancelText,
       overlay,
@@ -79,11 +77,12 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       closeIconPosition,
       closeIcon,
       zIndex,
+      beforeCancel,
+      beforeClose,
       onClose,
       onCancel,
       onConfirm,
-      beforeCancel,
-      beforeClose,
+      onOverlayClick,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -98,7 +97,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: React.MouseEvent<Element, MouseEvent>) => {
+    const handleCancel = (e: ITouchEvent) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -106,7 +105,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       onCancel?.()
     }
 
-    const handleOk = async (e: React.MouseEvent<Element, MouseEvent>) => {
+    const handleOk = async (e: ITouchEvent) => {
       e.stopPropagation()
       setLoading(true)
       try {
@@ -128,7 +127,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
             (footerDirection === 'vertical' ? (
               <View
                 className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e as any)}
+                onClick={(e: ITouchEvent) => handleCancel(e)}
               >
                 {cancelText || locale.cancel}
               </View>
@@ -137,7 +136,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
                 type="default"
                 size="large"
                 className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e)}
+                onClick={(e: ITouchEvent) => handleCancel(e)}
               >
                 {cancelText || locale.cancel}
               </Button>
@@ -151,7 +150,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
-              onClick={(e) => handleOk(e)}
+              onClick={(e: ITouchEvent) => handleOk(e)}
               loading={loading}
             >
               {confirmText || locale.confirm}
@@ -182,9 +181,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     )
   }
 
-  const onHandleClickOverlay = (
-    e: React.MouseEvent<Element, React.MouseEvent>
-  ) => {
+  const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && onClose && onClose()

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
-import { ContentProps } from './types'
+import { View, ITouchEvent } from '@tarojs/components'
+import { ContentProps } from './index.taro'
 
 export const defaultContentProps: ContentProps = {
   visible: false,
@@ -48,7 +48,7 @@ export const Content: FunctionComponent<
     )
   }
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: ITouchEvent) => {
     onClick && onClick(e)
   }
 
@@ -56,7 +56,7 @@ export const Content: FunctionComponent<
     <View
       className={classNames(`${classPrefix}-outer`, props.className)}
       style={props.style}
-      onClick={(e) => handleClick(e)}
+      onClick={(e: ITouchEvent) => handleClick(e)}
     >
       {close}
       {header}
