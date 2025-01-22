@@ -4,7 +4,6 @@
   display: flex;
   width: 100%;
   height: $picker-list-height;
-  border: 1px solid #000;
   $pickerview-top: calc(($picker-list-height - $picker-item-height) / 2);
   overflow: hidden;
 

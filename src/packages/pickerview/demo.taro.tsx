@@ -7,6 +7,7 @@ import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
 
 const PickerViewDemo = () => {
   const [translated] = useTranslate({
@@ -15,18 +16,21 @@ const PickerViewDemo = () => {
       adjustHeight: '自适应高度',
       multiColumn: '多列',
       controlled: '受控',
+      tiled: '平铺',
     },
     'en-US': {
       title: 'Basic Usage',
       adjustHeight: 'Adjust Height',
       multiColumn: 'Multi Column',
       controlled: 'Controlled',
+      tiled: 'Tiled',
     },
     'zh-TW': {
       title: '基礎用法',
       adjustHeight: '自適應高度',
       multiColumn: '多列',
       controlled: '受控',
+      tiled: '平鋪',
     },
   })
   return (
@@ -41,6 +45,8 @@ const PickerViewDemo = () => {
         <Demo2 />
         <View className="h2">{translated.multiColumn}</View>
         <Demo3 />
+        <View className="h2">{translated.tiled}</View>
+        <Demo5 />
       </ScrollView>
     </>
   )

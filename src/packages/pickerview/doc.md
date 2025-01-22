@@ -42,7 +42,15 @@ import { name } from '@nutui/nutui-react'
 
 :::
 
-## Picker
+### 平铺
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+## PickerView
 
 ### Props
 

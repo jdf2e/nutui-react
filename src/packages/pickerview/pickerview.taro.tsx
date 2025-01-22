@@ -78,7 +78,7 @@ const InternalPickerView: ForwardRefRenderFunction<
       const selectedOption = columnOptions.find(
         (item) => item.value === innerValue[index]
       )
-      return selectedOption || columnOptions[0] // Fallback to the first option if not found
+      return selectedOption || columnOptions[0]
     })
   }, [options, innerValue])
 
