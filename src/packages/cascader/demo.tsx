@@ -39,17 +39,17 @@ const CascaderDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Demo1 />
+        {/*<Demo1 />*/}
         <h2>{translated.title1}</h2>
-        <Demo2 />
+        {/*<Demo2 />*/}
         <h2>{translated.title2}</h2>
-        <Demo3 />
+        {/*<Demo3 />*/}
         <h2>{translated.title3}</h2>
-        <Demo4 />
+        {/*<Demo4 />*/}
         <h2>{translated.title4}</h2>
         <Demo5 />
         <h2>{translated.title5}</h2>
-        <Demo6 />
+        {/*<Demo6 />*/}
       </div>
     </>
   )

@@ -36,3 +36,8 @@ export interface CascaderFormat {
   pidKey?: string
   sortKey?: string
 }
+
+export type CascaderActions = {
+  open: () => void
+  close: () => void
+}

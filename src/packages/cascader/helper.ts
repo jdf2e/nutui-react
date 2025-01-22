@@ -1,36 +1,4 @@
-import { CascaderOption, CascaderConfig, CascaderFormat } from './types'
-
-export const formatTree = (
-  tree: CascaderOption[],
-  parent: CascaderOption | null,
-  config: CascaderConfig
-): CascaderOption[] =>
-  tree.map((node: any) => {
-    const {
-      value: valueKey = 'value',
-      text: textKey = 'text',
-      children: childrenKey = 'children',
-    } = config
-    const {
-      [valueKey]: value,
-      [textKey]: text,
-      [childrenKey]: children,
-      ...others
-    } = node
-    const newNode: CascaderOption = {
-      loading: false,
-      ...others,
-      level: parent ? ((parent && parent.level) || 0) + 1 : 0,
-      value,
-      text,
-      children,
-      _parent: parent,
-    }
-    if (newNode.children && newNode.children.length) {
-      newNode.children = formatTree(newNode.children, newNode, config)
-    }
-    return newNode
-  })
+import { CascaderOption, CascaderFormat, CascaderOptionKey } from './types'
 
 export const eachTree = (
   tree: CascaderOption[],
@@ -48,24 +16,24 @@ export const eachTree = (
   }
 }
 
-const defaultConvertConfig = {
-  topId: null,
-  idKey: 'id',
-  pidKey: 'pid',
-  sortKey: '',
-}
 export const convertListToOptions = (
-  list: CascaderOption[],
-  options: CascaderFormat
+  options: CascaderOption[],
+  format: CascaderFormat
 ): CascaderOption[] => {
-  const mergedOptions = {
-    ...defaultConvertConfig,
-    ...(options || {}),
+  const defaultConvertConfig = {
+    topId: null,
+    idKey: 'id',
+    pidKey: 'pid',
+    sortKey: '',
   }
-  const { topId, idKey, pidKey, sortKey } = mergedOptions
+  const mergedFormat = {
+    ...defaultConvertConfig,
+    ...format,
+  }
+  const { topId, idKey, pidKey, sortKey } = mergedFormat
   let result: CascaderOption[] = []
   let map: any = {}
-  list.forEach((node: any) => {
+  options.forEach((node: any) => {
     node = { ...node }
     const { [idKey]: id, [pidKey]: pid } = node
     const children = (map[pid] = map[pid] || [])
@@ -85,4 +53,25 @@ export const convertListToOptions = (
   }
   map = null
   return result
+}
+
+export const normalizeOptions = (
+  options: CascaderOption[],
+  keyMap: CascaderOptionKey
+): CascaderOption[] | undefined => {
+  if (!options) return undefined
+  return options.map((opt: any) => {
+    const {
+      [keyMap.textKey]: text,
+      [keyMap.valueKey]: value,
+      [keyMap.childrenKey]: children,
+      ...others
+    } = opt
+    return {
+      text,
+      value,
+      children: normalizeOptions(children, keyMap),
+      ...others,
+    } as CascaderOption
+  })
 }

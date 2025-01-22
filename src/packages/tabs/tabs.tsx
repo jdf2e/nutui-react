@@ -24,7 +24,7 @@ export interface TabsProps extends BasicComponent {
   activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
   duration: number | string
   align: 'left' | 'right'
-  title: () => JSX.Element[]
+  title: () => Element[]
   onChange: (index: string | number) => void
   onClick: (index: string | number) => void
   autoHeight: boolean

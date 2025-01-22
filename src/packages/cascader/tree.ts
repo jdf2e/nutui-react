@@ -78,6 +78,39 @@ class Tree {
     const { children } = node
     return Array.isArray(children) && Boolean(children.length)
   }
+
+  static convert2Tree = (
+    arr: any[],
+    format: Record<string, string | number | null>
+  ) => {
+    const defaultConvertConfig = {
+      topId: null,
+      idKey: 'id',
+      pidKey: 'pid',
+      sortKey: '',
+    }
+    const { topId, idKey, pidKey, sortKey } = {
+      ...defaultConvertConfig,
+      ...format,
+    }
+    const idMap: { [key: string]: any } = {}
+    const tree = []
+    arr.forEach((node) => {
+      idMap[pidKey] = { ...node }
+    })
+    arr.forEach((item) => {
+      const currentNode = idMap[item[idKey]]
+      if (item[pidKey] === null) {
+        tree.push(currentNode)
+      } else {
+        // 非根节点，添加到父节点的 children 数组中
+        const parentNode = idMap[item[pidKey]]
+        if (parentNode) {
+          parentNode.children.push(currentNode)
+        }
+      }
+    })
+  }
 }
 
 export default Tree
