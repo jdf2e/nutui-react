@@ -1,22 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { InputNumber, Toast } from '@nutui/nutui-react'
-
-type DebounceFunction<T extends any[]> = (...args: T) => void
-
-function useDebounce<T extends any[]>(
-  func: (...args: T) => void,
-  delay: number
-): DebounceFunction<T> {
-  const timeoutId: any = useRef()
-  return function (...args: T) {
-    if (timeoutId.current) {
-      clearTimeout(timeoutId.current)
-    }
-    timeoutId.current = setTimeout(() => {
-      func(...args)
-    }, delay)
-  }
-}
 
 const Demo8 = () => {
   const [inputValue, setInputValue] = useState(0)
@@ -24,19 +7,23 @@ const Demo8 = () => {
     console.log('超出限制事件触发', e)
   }
 
-  const onChange = useDebounce((value: string | number) => {
+  const beforeChange = (value: number | string): Promise<boolean> => {
     Toast.show({ icon: 'loading', content: '异步演示2秒后更改' })
-    setTimeout(() => {
-      setInputValue(Number(value))
-      Toast.clear()
-    }, 2000)
-  }, 300)
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        Toast.clear()
+        resolve(true)
+      }, 500)
+    })
+  }
 
   return (
     <InputNumber
       value={inputValue}
       min={-9999}
-      onChange={onChange}
+      beforeChange={beforeChange}
+      onChange={(value) => setInputValue(Number(value))}
       onOverlimit={overlimit}
     />
   )
