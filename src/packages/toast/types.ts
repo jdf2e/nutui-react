@@ -10,7 +10,7 @@ export type ToastIcon =
 export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 export type ToastSize = 'small' | 'base' | 'large'
 
-export interface ToastProps extends OverlayProps {
+export interface ToastProps extends Omit<OverlayProps, 'onClick'> {
   id: string
   position: ToastPosition
   title: string

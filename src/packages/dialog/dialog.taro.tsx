@@ -97,7 +97,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: ITouchEvent) => {
+    const handleCancel = (
+      e: ITouchEvent | React.MouseEvent<HTMLButtonElement>
+    ) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -105,7 +107,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       onCancel?.()
     }
 
-    const handleOk = async (e: ITouchEvent) => {
+    const handleOk = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       setLoading(true)
       try {
@@ -136,7 +138,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
                 type="default"
                 size="large"
                 className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e: ITouchEvent) => handleCancel(e)}
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                  handleCancel(e)
+                }
               >
                 {cancelText || locale.cancel}
               </Button>
@@ -150,7 +154,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
-              onClick={(e: ITouchEvent) => handleOk(e)}
+              onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOk(e)}
               loading={loading}
             >
               {confirmText || locale.confirm}

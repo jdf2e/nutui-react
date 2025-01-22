@@ -1,5 +1,5 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
-import type { MouseEvent } from 'react'
+import type { MouseEvent, CSSProperties } from 'react'
 import { OverlayProps } from '@/packages/overlay/types'
 import { BasicComponent } from '@/utils/typings'
 
@@ -17,18 +17,18 @@ export interface ContentProps extends BasicComponent {
   footer: ReactNode
   close: ReactNode
   footerDirection: DialogFooterDirection
-  onClick: (event: React.MouseEvent<Element, MouseEvent>) => void
+  onClick: (event: MouseEvent) => void
 }
 export interface DialogWrapProps
   extends OverlayProps,
     Omit<ContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean
-  overlayStyle: React.CSSProperties
+  overlayStyle: CSSProperties
   overlayClassName: string
   onCancel: () => void
   onClose: () => void
-  onOverlayClick: (e: React.MouseEvent<Element, MouseEvent>) => boolean | void
+  onOverlayClick: (e: MouseEvent) => boolean | void
 }
 
 export interface DialogBasicProps extends DialogWrapProps {
