@@ -12,7 +12,7 @@ import { Loading, Checklist } from '@nutui/icons-react-taro'
 import { ScrollView } from '@tarojs/components'
 import { Popup, PopupProps } from '@/packages/popup/popup.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
-import { convertListToOptions } from './helper'
+import { convertListToOptions } from './utils'
 import {
   CascaderPane,
   CascaderOption,

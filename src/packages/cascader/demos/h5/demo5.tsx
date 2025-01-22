@@ -6,8 +6,10 @@ const Demo5 = () => {
   const [value5, setValue5] = useState(['广东省', '广州市'])
   const [optionsDemo5] = useState([
     { value: '北京', text: '北京', id: 1, pidd: null },
-    { value: '通州区', text: '通州区', id: 11, pidd: 1 },
-    { value: '经海路', text: '经海路', id: 111, pidd: 11 },
+    { value: '通州区', text: '通州区', id: 11, pidd: 1, sortKey: 2 },
+    { value: '大兴区', text: '大兴区', id: 12, pidd: 1, sortKey: 1 },
+    { value: '经海路', text: '经海路', id: 111, pidd: 12, sortKey: 2 },
+    { value: '黄亦路', text: '黄亦路', id: 112, pidd: 12, sortKey: 1 },
     { value: '广东省', text: '广东省', id: 2, pidd: null },
     { value: '广州市', text: '广州市', id: 21, pidd: 2 },
   ])
@@ -15,7 +17,6 @@ const Demo5 = () => {
     topId: null,
     idKey: 'id',
     pidKey: 'pidd',
-    sortKey: '',
   })
   const change5 = (value: any, path: any) => {
     console.log('onChange', value, path)

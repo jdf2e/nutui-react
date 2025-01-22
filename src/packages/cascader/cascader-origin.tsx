@@ -11,7 +11,7 @@ import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react'
 import { Popup } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
-import { convertListToOptions } from './helper'
+import { convertListToOptions } from './utils'
 import {
   CascaderPane,
   CascaderOption,

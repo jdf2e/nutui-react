@@ -17,17 +17,19 @@ const Demo4 = () => {
     { value: 'C0', text: 'C0' },
   ])
 
-  const lazyLoadDemo4 = (node: any, resolve: (children: any) => void) => {
-    setTimeout(() => {
-      const { value, level } = node
-      const text = value.substring(0, 1)
-      const value1 = `${text}${level + 1}1`
-      const value2 = `${text}${level + 1}2`
-      resolve([
-        { value: value1, text: value1, leaf: level >= 2 },
-        { value: value2, text: value2, leaf: level >= 1 },
-      ])
-    }, 500)
+  const lazyLoadDemo4 = async (node: any, level: number) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const { value } = node
+        const text = value.substring(0, 1)
+        const value1 = `${text}${level + 1}1`
+        const value2 = `${text}${level + 1}2`
+        resolve([
+          { value: value1, text: value1, leaf: level >= 2 },
+          { value: value2, text: value2, leaf: level >= 1 },
+        ])
+      }, 500)
+    })
   }
   const change4 = (value: any, path: any) => {
     console.log('onChange', value, path)
