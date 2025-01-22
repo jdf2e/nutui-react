@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Schema from 'async-validator'
-import { merge } from '@/utils/merge'
+import { merge, recursive } from '@/utils/merge'
 import {
   Callbacks,
   FormFieldEntity,
@@ -11,6 +11,7 @@ import {
 
 export const SECRET = 'NUT_FORM_INTERNAL'
 type UpdateItem = { entity: FormFieldEntity; condition: any }
+type WatchCallback = (value: Store, namePath: NamePath[]) => void
 
 /**
  * 用于存储表单的数据
@@ -45,11 +46,9 @@ class FormStore {
    */
   registerField = (field: any) => {
     this.fieldEntities.push(field)
+
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== field)
-      if (this.store) {
-        delete this.store[field.props.name]
-      }
     }
   }
 
@@ -90,6 +89,7 @@ class FormStore {
     if (init) {
       const nextStore = merge(initialValues, this.store)
       this.updateStore(nextStore)
+      this.notifyWatch()
     }
   }
 
@@ -98,7 +98,7 @@ class FormStore {
    * @param newStore { [name]: newValue }
    */
   setFieldsValue = (newStore: any) => {
-    const nextStore = merge(this.store, newStore)
+    const nextStore = recursive(true, this.store, newStore)
     this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
@@ -117,6 +117,7 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
+    this.notifyWatch()
   }
 
   setFieldValue = <T>(name: NamePath, value: T) => {
@@ -124,6 +125,7 @@ class FormStore {
       [name]: value,
     }
     this.setFieldsValue(store)
+    this.notifyWatch([name])
   }
 
   setCallback = (callback: Callbacks) => {
@@ -250,6 +252,7 @@ class FormStore {
         store: this.store,
         fieldEntities: this.fieldEntities,
         registerUpdate: this.registerUpdate,
+        registerWatch: this.registerWatch,
       }
     }
   }
@@ -267,6 +270,30 @@ class FormStore {
       getInternal: this.getInternal,
     }
   }
+
+  private watchList: WatchCallback[] = []
+
+  private registerWatch = (callback: WatchCallback) => {
+    this.watchList.push(callback)
+
+    return () => {
+      this.watchList = this.watchList.filter((fn) => fn !== callback)
+    }
+  }
+
+  private notifyWatch = (namePath: NamePath[] = []) => {
+    if (this.watchList.length) {
+      let allValues
+      if (!namePath || namePath.length === 0) {
+        allValues = this.getFieldsValue(true)
+      } else {
+        allValues = this.getFieldsValue(namePath)
+      }
+      this.watchList.forEach((callback) => {
+        callback(allValues, namePath)
+      })
+    }
+  }
 }
 
 export const useForm = (form?: FormInstance): [FormInstance] => {
@@ -280,4 +307,23 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
     }
   }
   return [formRef.current as FormInstance]
+}
+
+export const useWatch = (path: NamePath, form: FormInstance) => {
+  const formInstance = form.getInternal(SECRET)
+  const [value, setValue] = useState<any>()
+  useEffect(() => {
+    const unsubscribe = formInstance.registerWatch(
+      (data: any, namePath: NamePath) => {
+        const value = data[path]
+        setValue(value)
+      }
+    )
+    const initialValue = form.getFieldsValue(true)
+    if (value !== initialValue[path]) {
+      setValue(initialValue[path])
+    }
+    return () => unsubscribe()
+  }, [form])
+  return value
 }
