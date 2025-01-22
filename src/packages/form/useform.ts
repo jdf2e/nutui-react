@@ -202,9 +202,7 @@ class FormStore {
 
   resetFields = () => {
     this.errors.length = 0
-    console.log('xxx', this.initialValues)
     const nextStore = merge({}, this.initialValues)
-    console.log(nextStore)
     this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')
