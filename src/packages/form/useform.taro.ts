@@ -46,7 +46,6 @@ class FormStore {
    */
   registerField = (field: any) => {
     this.fieldEntities.push(field)
-    const namePath = field.props.name
 
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== field)
