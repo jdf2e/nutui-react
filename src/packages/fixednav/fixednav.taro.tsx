@@ -4,7 +4,7 @@ import { ArrowLeft } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { FixedNavProps } from './types'
+import { FixedNavProps } from './index.taro'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 
 const defaultProps: FixedNavProps = {

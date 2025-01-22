@@ -3,22 +3,23 @@ import classNames from 'classnames'
 import { Success, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
-import { ToastProps } from './types'
+import { ToastProps } from './index'
 
 export interface NotificationState {
   show: boolean
 }
 const classPrefix = 'nut-toast'
+type ToastNativeProps = Partial<ToastProps>
 
 export default class Notification extends React.PureComponent<
-  ToastProps,
+  ToastNativeProps,
   NotificationState
 > {
-  static newInstance: (properties: ToastProps, callback: any) => void
+  static newInstance: (properties: ToastNativeProps, callback: any) => void
 
   private closeTimer: number | undefined
 
-  constructor(props: ToastProps) {
+  constructor(props: ToastNativeProps) {
     super(props)
     this.close = this.close.bind(this)
     this.startCloseTimer = this.startCloseTimer.bind(this)
@@ -38,7 +39,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClose()
+    this.props.onClose && this.props.onClose()
   }
 
   startCloseTimer() {

@@ -1,5 +1,5 @@
 import Notification from './Notification'
-import { ToastProps } from './types'
+import { ToastProps } from './index'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
 let messageInstance: any = null
@@ -22,7 +22,12 @@ let defaultProps: ToastProps = {
   onClose: () => {},
 }
 
-function getInstance(props: ToastProps, callback: (notification: any) => void) {
+type ToastNativeProps = Partial<ToastProps>
+
+function getInstance(
+  props: ToastNativeProps,
+  callback: (notification: any) => void
+) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null
@@ -52,7 +57,7 @@ const errorMsg = (msg: any) => {
   }
 }
 
-function show(option: ToastProps | string) {
+function show(option: ToastNativeProps | string) {
   if (typeof option === 'string') {
     errorMsg(option)
     return notice({ content: option })
@@ -63,7 +68,7 @@ function show(option: ToastProps | string) {
   })
 }
 
-function config(config: ToastProps) {
+function config(config: ToastNativeProps) {
   defaultProps = { ...defaultProps, ...config }
 }
 
