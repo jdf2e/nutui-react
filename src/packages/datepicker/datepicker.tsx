@@ -273,9 +273,7 @@ export const DatePicker: FunctionComponent<
 
       if (
         selectedOptions.length >= 2 &&
-        (rangeType === 'date' ||
-          rangeType === 'month-day' ||
-          rangeType === 'datetime')
+        ['date', 'datehour', 'datetime', 'month-day'].includes(rangeType)
       ) {
         const dayOption = formatOption('day', day)
         if (rangeType === 'month-day') {
