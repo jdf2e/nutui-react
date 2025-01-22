@@ -135,3 +135,7 @@ import { Popup } from '@nutui/nutui-react-taro'
 | \--nutui-popup-title-height | 标题栏的高度 | `50px` |
 | \--nutui-popup-title-border-bottom | 标题栏底部边框 | `0` |
 | \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |
+
+## FAQ
+
+在 iOS 下，有时候 `lockScroll` 可能不生效，此刻在打开 `popup` 时，可将宿主页面的样式增加 `overflow: hidden;`，关闭弹层时，再重置样式。

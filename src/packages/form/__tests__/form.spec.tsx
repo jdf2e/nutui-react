@@ -2,6 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Button, Radio, Space } from '@nutui/nutui-react'
 import Form, { FormInstance } from '@/packages/form'
 import Input from '@/packages/input'
 
@@ -311,4 +312,74 @@ test('no-style and render function', async () => {
     const relatedInput = container.querySelector('.related-input')
     expect(relatedInput).toBeTruthy()
   })
+})
+
+test('useWatch', async () => {
+  const Demo = () => {
+    const [form] = Form.useForm()
+    const account = Form.useWatch('account', form)
+    const loginMethod = Form.useWatch('loginMethod', form)
+    return (
+      <Form
+        form={form}
+        initialValues={{ loginMethod: 'mobile', account: '123' }}
+        footer={
+          <>
+            <div
+              style={{
+                width: '100%',
+              }}
+            >
+              <div
+                className="result"
+                style={{
+                  fontSize: '12px',
+                  textAlign: 'center',
+                  marginBottom: '20px',
+                }}
+              >
+                你将使用 {loginMethod === 'mobile' ? '手机号' : '邮箱'}{' '}
+                {account} 登录
+              </div>
+              <Button block type="primary" size="large" nativeType="submit">
+                提交
+              </Button>
+            </div>
+          </>
+        }
+      >
+        <Form.Item name="loginMethod" label="登录方式">
+          <Radio.Group>
+            <Space>
+              <Radio value="mobile">手机号</Radio>
+              <Radio className="clickTest" value="email">
+                邮箱
+              </Radio>
+            </Space>
+          </Radio.Group>
+        </Form.Item>
+
+        <>
+          {loginMethod === 'mobile' && (
+            <Form.Item name="account" label="手机号">
+              <Input placeholder="请输入手机号" />
+            </Form.Item>
+          )}
+          {loginMethod === 'email' && (
+            <Form.Item name="account" label="邮箱">
+              <Input placeholder="请输入邮箱" />
+            </Form.Item>
+          )}
+        </>
+      </Form>
+    )
+  }
+
+  const { container } = render(<Demo />)
+  const clickTest = container.querySelector('.clickTest')
+  if (clickTest) {
+    fireEvent.click(clickTest)
+    const result = container.querySelector('.result')
+    expect(result).toHaveTextContent('你将使用 邮箱 123 登录')
+  }
 })

@@ -69,7 +69,7 @@ export const Empty: FunctionComponent<
 
   useEffect(() => {
     setImgStyle(() => {
-      if (!imageSize) {
+      if (typeof imageSize !== 'number' && typeof imageSize !== 'string') {
         return {}
       }
       if (typeof imageSize === 'number') {
