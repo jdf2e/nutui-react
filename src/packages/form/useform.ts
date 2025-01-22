@@ -201,7 +201,7 @@ class FormStore {
   }
 
   resetFields = (namePaths?: NamePath[]) => {
-    if (namePaths) {
+    if (namePaths && namePaths.length) {
       namePaths.forEach((path) => {
         this.errors[path] = null
         this.fieldEntities.forEach((entity: FormFieldEntity) => {
