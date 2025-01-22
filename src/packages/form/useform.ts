@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import Schema from 'async-validator'
-import { merge } from '@/utils/merge'
+import { merge, recursive } from '@/utils/merge'
 import {
   Callbacks,
   FormFieldEntity,
@@ -98,7 +98,7 @@ class FormStore {
    * @param newStore { [name]: newValue }
    */
   setFieldsValue = (newStore: any) => {
-    const nextStore = merge(this.store, newStore)
+    const nextStore = recursive(true, this.store, newStore)
     this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
@@ -202,7 +202,9 @@ class FormStore {
 
   resetFields = () => {
     this.errors.length = 0
+    console.log('xxx', this.initialValues)
     const nextStore = merge({}, this.initialValues)
+    console.log(nextStore)
     this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')

@@ -226,10 +226,10 @@ test('form onFinishFailed', async () => {
   fireEvent.submit(form)
   await waitFor(() => {
     expect(handleFailed).toBeCalled()
-    expect(handleFailed).toBeCalledWith({ username: 'NutUI React Taro' }, [
+    expect(handleFailed).toBeCalledWith({ username: 'NutUI-React' }, [
       {
         field: 'username',
-        fieldValue: 'NutUI React Taro',
+        fieldValue: 'NutUI-React',
         message: 'min 50',
       },
     ])
