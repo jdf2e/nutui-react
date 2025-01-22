@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PickerView, Cell } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
@@ -16,14 +16,19 @@ const Demo1 = () => {
     ],
   ]
 
+  const [value, setValue] = useState([2])
+
   return (
     <>
       <Cell>
         <PickerView
-          defaultValue={[1]}
+          value={value}
           options={listData}
           onChange={(value, selectOptions) => {
             console.log('onChange', value, selectOptions)
+            if (value[0] === 3) {
+              setValue([1])
+            }
           }}
         />
       </Cell>

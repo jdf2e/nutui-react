@@ -1,5 +1,5 @@
 import React from 'react'
-import { PickerView, Cell } from '@nutui/nutui-react-taro'
+import { PickerView, Cell } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const listData = [
@@ -20,8 +20,9 @@ const Demo1 = () => {
     <>
       <Cell>
         <PickerView
-          defaultValue={[1]}
+          style={{ '--nutui-picker-item-height': '28px' }}
           options={listData}
+          defaultValue={[1]}
           onChange={(value, selectOptions) => {
             console.log('onChange', value, selectOptions)
           }}
