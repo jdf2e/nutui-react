@@ -47,6 +47,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     activeColor,
     activeIcon,
     popup,
+    popupProps = {},
     visible: outerVisible,
     options: outerOptions,
     value: outerValue,
@@ -261,6 +262,8 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
 
   return popup ? (
     <Popup
+      {...popupProps}
+      visible={visible}
       position="bottom"
       round
       closeIcon={closeIcon}
@@ -268,13 +271,8 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
       closeIconPosition={closeIconPosition}
       title={props.title}
       left={props.left}
-      visible={visible}
-      onOverlayClick={() => {
-        setVisible(false)
-      }}
-      onCloseIconClick={() => {
-        setVisible(false)
-      }}
+      onOverlayClick={() => setVisible(false)}
+      onCloseIconClick={() => setVisible(false)}
     >
       {renderTab()}
     </Popup>
