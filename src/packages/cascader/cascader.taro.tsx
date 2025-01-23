@@ -12,7 +12,6 @@ import { Checklist, Loading } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import Tabs from '@/packages/tabs/index.taro'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
-import { useConfig } from '@/packages/configprovider/index.taro'
 import {
   normalizeListOptions,
   normalizeOptions,
@@ -28,6 +27,7 @@ import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/utils/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { useConfig } from '@/packages/configprovider'
 
 export type CascaderPopupProps = Pick<
   PopupProps,
@@ -127,9 +127,11 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     finalValue: [],
     onChange: (value) => {
       props.onChange?.(value, pathNodes.current)
-      props.onPathChange?.(value, pathNodes.current)
+      // props.onPathChange?.(value, pathNodes.current)
     },
   })
+
+  const [innerValue, setInnerValue] = useState(value)
 
   const options = useMemo(() => {
     if (!isEmpty(format)) {
@@ -139,7 +141,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
       return normalizeOptions(innerOptions, optionKey)
     }
     return innerOptions
-  }, [innerOptions, optionKey, format, value])
+  }, [innerOptions, optionKey, format, innerValue])
 
   const pathNodes = useRef<CascaderOption[]>([])
 
@@ -147,7 +149,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     const next = []
     let end = false
     let currentOptions = options
-    for (const [index, val] of value.entries()) {
+    for (const [index, val] of innerValue.entries()) {
       const opt = currentOptions?.find((o: CascaderOption) => o.value === val)
       next.push({
         selected: val,
@@ -168,7 +170,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
       })
     }
     return next
-  }, [value, options, innerOptions])
+  }, [innerValue, options, innerOptions])
 
   const [visible, setVisible] = usePropsValue({
     value: outerVisible,
@@ -190,12 +192,18 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
   useImperativeHandle(ref, () => actions)
 
   useEffect(() => {
+    if (!visible) {
+      setInnerValue(value)
+    }
+  }, [visible, value])
+
+  useEffect(() => {
     setInnerOptions(outerOptions)
   }, [outerOptions])
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
-  }, [value, innerOptions, outerOptions])
+  }, [innerValue, innerOptions, outerOptions])
   useEffect(() => {
     const max = levels.length - 1
     if (tabActiveIndex > max) {
@@ -206,11 +214,11 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     const load = async () => {
       const parent = { children: [] }
       try {
-        await value.reduce(async (promise: Promise<any>, val, key) => {
+        await innerValue.reduce(async (promise: Promise<any>, val, key) => {
           const pane = await onLoad({ value: val }, key)
           const parent = await promise
           parent.children = pane
-          if (key === value.length - 1) {
+          if (key === innerValue.length - 1) {
             return Promise.resolve(parent)
           }
           if (pane) {
@@ -231,13 +239,14 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
 
   const chooseItem = async (pane: CascaderOption, levelIndex: number) => {
     if (pane.disabled) return
-    const nextValue = value.slice(0, levelIndex)
+    const nextValue = innerValue.slice(0, levelIndex)
     const nextPathNodes = pathNodes.current.slice(0, levelIndex)
     if (pane.value) {
       setLoading(!!onLoad && { [levelIndex]: pane.value })
       nextValue[levelIndex] = pane.value
       nextPathNodes[levelIndex] = pane
       pathNodes.current = nextPathNodes
+      props?.onPathChange?.(nextValue, pathNodes.current)
     }
     if (onLoad) {
       // 叶子节点不操作
@@ -247,12 +256,14 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
         if (asyncOptions) pane.children = asyncOptions
       } else {
         setVisible(false)
+        setValue(nextValue)
       }
     }
     if (!pane.children && !onLoad) {
       setVisible(false)
+      setValue(nextValue)
     }
-    setValue(nextValue)
+    setInnerValue(nextValue)
     setLoading({})
   }
 

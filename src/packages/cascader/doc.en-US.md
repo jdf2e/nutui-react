@@ -20,6 +20,16 @@ Pass in the `options` list
 
 :::
 
+### Basic Usage - Uncontroled
+
+Pass in the `options` list
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ### Custom attribute name
 
 use `optionKey` Specify the property name.

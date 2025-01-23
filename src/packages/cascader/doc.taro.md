@@ -20,6 +20,16 @@ import { Cascader } from '@nutui/nutui-react-taro'
 
 :::
 
+### 基础用法-非受控
+
+传入`options`列表
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
+
+::
+
 ### 自定义属性名称
 
 可通过`textKey`、`valueKey`、`childrenKey`指定属性名。

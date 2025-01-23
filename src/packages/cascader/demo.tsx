@@ -6,11 +6,13 @@ import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
 
 const CascaderDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      uncontrolled: '基础用法-非受控',
       title1: '自定义属性名称',
       title2: '动态加载',
       title3: '部分数据动态加载',
@@ -19,6 +21,7 @@ const CascaderDemo = () => {
     },
     'zh-TW': {
       basic: '基础用法',
+      uncontrolled: '基础用法-非受控',
       title1: '自定義屬性名稱',
       title2: '動態加載',
       title3: '部分數據動態加載',
@@ -27,6 +30,7 @@ const CascaderDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      uncontrolled: 'uncontrolled',
       title1: 'Custom Attribute Name',
       title2: 'Async Loading',
       title3: 'Async Loading Of Partial Data',
@@ -40,6 +44,8 @@ const CascaderDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
+        <h2>{translated.uncontrolled}</h2>
+        <Demo7 />
         <h2>{translated.title1}</h2>
         <Demo2 />
         <h2>{translated.title2}</h2>

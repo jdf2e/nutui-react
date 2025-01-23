@@ -20,6 +20,16 @@ import { Cascader } from '@nutui/nutui-react'
 
 :::
 
+### 基础用法-非受控
+
+传入`options`列表
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ### 自定義屬性名稱
 
 可通過`textKey`、`valueKey`、`childrenKey`指定屬性名。
