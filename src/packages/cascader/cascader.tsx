@@ -20,6 +20,7 @@ import {
   normalizeListOptions,
   normalizeOptions,
 } from '@/packages/cascader/utils'
+import { getRefValue, useRefState } from '@/utils/use-ref-state'
 
 export interface CascaderPorps extends PopupProps {
   visible: boolean
@@ -80,15 +81,19 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
 
+  const [optionsRef, setInnerOptions] = useRefState(outerOptions)
+  const innerOptions = getRefValue(optionsRef)
+
   const options = useMemo(() => {
+    console.log('change inner options', innerOptions)
     if (!isEmpty(format)) {
-      return normalizeListOptions(outerOptions, format)
+      return normalizeListOptions(innerOptions, format)
     }
     if (!isEmpty(optionKey)) {
-      return normalizeOptions(outerOptions, optionKey)
+      return normalizeOptions(innerOptions, optionKey)
     }
-    return outerOptions
-  }, [outerOptions, optionKey, format])
+    return innerOptions
+  }, [innerOptions, optionKey, format])
 
   const pathNodes = useRef<CascaderOption[]>([])
 
@@ -106,13 +111,13 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
     const next = []
     let end = false
     let currentOptions = options
-    for (const val of value) {
+    for (const [index, val] of value.entries()) {
       const opt = currentOptions.find((o) => o.value === val)
       next.push({
         selected: val,
         pane: currentOptions,
       })
-      pathNodes.current.push(currentOptions)
+      pathNodes.current[index] = opt
       if (opt?.children) {
         currentOptions = opt.children
       } else {
@@ -125,10 +130,9 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
         selected: null,
         pane: currentOptions,
       })
-      pathNodes.current.push(currentOptions)
     }
     return next
-  }, [value, options])
+  }, [value, options, innerOptions])
 
   const [visible, setVisible] = usePropsValue({
     value: outerVisible,
@@ -149,10 +153,9 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
       setTabActiveIndex(max)
     }
   }, [tabActiveIndex, levels])
-
   useEffect(() => {
     const load = async () => {
-      const parent = {}
+      const parent = { children: [] }
       try {
         await value.reduce(async (promise: Promise<any>, val, key) => {
           const pane = await onLoad({ value: val }, key)
@@ -168,8 +171,7 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
         }, Promise.resolve(parent))
 
         // 如果需要处理最终结果，可以在这里使用 last
-        console.log('Final result:', parent)
-        options = parent.children
+        setInnerOptions(parent.children)
       } catch (error) {
         console.error('Error loading data:', error)
       }
@@ -184,8 +186,9 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
     const nextPathNodes = pathNodes.current.slice(0, levelIndex)
     if (pane.value) {
       nextValue[levelIndex] = pane.value
+      nextPathNodes[levelIndex] = pane
+      pathNodes.current = nextPathNodes
     }
-    pathNodes.current[levelIndex] = pane
     if (onLoad) {
       // 叶子节点不操作
       if (!pane.leaf) {
@@ -222,7 +225,7 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
           }}
         >
           <div className="nut-cascader-item-title">{pane.text}</div>
-          {/*<Loading color="#969799" className="nut-cascader-item-icon-loading" />*/}
+          <Loading color="#969799" className="nut-cascader-item-icon-loading" />
           {active &&
             (isValidElement(activeIcon) ? (
               activeIcon
