@@ -21,6 +21,7 @@ import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/utils/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps: CascaderProps = {
   ...ComponentDefaults,
@@ -58,10 +59,12 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     lazy,
     onLoad,
   } = mergeProps(defaultProps, props)
+  const { locale } = useConfig()
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
   const [optionsRef, setInnerOptions] = useRefState(outerOptions)
   const innerOptions = getRefValue(optionsRef)
+  const [loading, setLoading] = useState<{ [key: string]: any }>({})
 
   const [value, setValue] = usePropsValue({
     value: outerValue,
@@ -176,6 +179,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     const nextValue = value.slice(0, levelIndex)
     const nextPathNodes = pathNodes.current.slice(0, levelIndex)
     if (pane.value) {
+      setLoading(!!onLoad && { [levelIndex]: pane.value })
       nextValue[levelIndex] = pane.value
       nextPathNodes[levelIndex] = pane
       pathNodes.current = nextPathNodes
@@ -194,6 +198,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
       setVisible(false)
     }
     setValue(nextValue)
+    setLoading({})
   }
 
   const renderCascaderItem = (item: any, levelIndex: number) => {
@@ -206,6 +211,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
         },
         'nut-cascader-item'
       )
+      const showLoadingIcon = loading[levelIndex] === pane.value
       return (
         <div
           className={classes}
@@ -216,7 +222,12 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
           }}
         >
           <div className="nut-cascader-item-title">{pane.text}</div>
-          <Loading color="#969799" className="nut-cascader-item-icon-loading" />
+          {showLoadingIcon && (
+            <Loading
+              color="#969799"
+              className="nut-cascader-item-icon-loading"
+            />
+          )}
           {active &&
             (isValidElement(activeIcon) ? (
               activeIcon
@@ -239,7 +250,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
           }}
         >
           {levels.map((pane, index) => (
-            <Tabs.TabPane title={pane.selected || '请选择'} key={index}>
+            <Tabs.TabPane title={pane.selected || locale.select} key={index}>
               <div className={classPane}>{renderCascaderItem(pane, index)}</div>
             </Tabs.TabPane>
           ))}
