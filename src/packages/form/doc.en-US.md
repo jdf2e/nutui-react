@@ -58,6 +58,14 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
+### useWatch
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### Form Type
 
 :::demo
@@ -121,7 +129,7 @@ The rule validation process is based on [async-validator](https://github.com/yim
 
 ### FormInstance
 
-Form.useForm() creates a Form instance, which is used to manage all data states.
+`Form.useForm()` creates a Form instance, which is used to manage all data states.
 
 | Property | Description | Type |
 | --- | --- | --- |
@@ -129,8 +137,10 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 | getFieldsValue | Get values by a set of field names. Return according to the corresponding structure. Default return mounted field value, but you can use getFieldsValue(true) to get all values | `(name: NamePath \| boolean) => any` |
 | setFieldsValue | Set the value of the form (the value will be passed directly to the form store. If you do not want the object passed in to be modified, please copy it and pass it in) | `(values) => void` |
 | setFieldValue | Set the value of the corresponding field name | `<T>(name: NamePath, value: T) => void` |
-| resetFields | Reset form prompt state | `() => void` |
+| resetFields | Reset form prompt state | `(namePaths?: NamePath[]) => void` |
 | submit | method to submit a form for validation | `Promise` |
+
+`Form.useWatch()`, this method will watch specified inputs and return their values. It is useful to render input value and for determining what to render by condition.
 
 ## Theming
 
