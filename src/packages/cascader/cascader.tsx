@@ -1,7 +1,8 @@
 import React, {
+  forwardRef,
   isValidElement,
-  ReactNode,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -9,40 +10,19 @@ import React, {
 import { Checklist, Loading } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Tabs from '@/packages/tabs'
-import Popup, { PopupProps } from '@/packages/popup'
-import { CascaderValue, CascaderOptionKey, CascaderOption } from './types'
-import { ComponentDefaults } from '@/utils/typings'
-import { CascaderProps } from '@/packages/cascader/cascader-origin'
-import { mergeProps } from '@/utils/merge-props'
-import { usePropsValue } from '@/utils/use-props-value'
-import { isEmpty } from '@/utils/is-empty'
+import Popup from '@/packages/popup'
 import {
   normalizeListOptions,
   normalizeOptions,
 } from '@/packages/cascader/utils'
+import { CascaderOption, CascaderActions, CascaderProps } from './types'
+import { ComponentDefaults } from '@/utils/typings'
+import { mergeProps } from '@/utils/merge-props'
+import { usePropsValue } from '@/utils/use-props-value'
+import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
 
-export interface CascaderPorps extends PopupProps {
-  visible: boolean
-  value: CascaderValue
-  defaultValue: CascaderValue
-  options: CascaderOption[]
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  closeable: boolean
-  closeIcon: ReactNode
-  closeIconPosition: string
-  onLoad: (
-    node: CascaderOption,
-    levelIndex: number
-  ) => Promise<CascaderOption[]>
-  onChange: (value: CascaderValue, pathNodes: any) => void
-  onPathChange: (value: CascaderValue, pathNodes: any) => void
-  onTabsChange: (index: number) => void
-  onClose: () => void
-}
-
-const defaultProps = {
+const defaultProps: CascaderProps = {
   ...ComponentDefaults,
   activeColor: '',
   activeIcon: 'checklist',
@@ -59,7 +39,7 @@ const defaultProps = {
   onPathChange: () => {},
 } as unknown as CascaderProps
 
-export const Cascader = (props: Partial<CascaderPorps>) => {
+export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
   const classPrefix = 'nut-cascader'
   const classPane = `${classPrefix}-pane`
   const {
@@ -80,22 +60,8 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
   } = mergeProps(defaultProps, props)
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
-
   const [optionsRef, setInnerOptions] = useRefState(outerOptions)
   const innerOptions = getRefValue(optionsRef)
-
-  const options = useMemo(() => {
-    console.log('change inner options', innerOptions)
-    if (!isEmpty(format)) {
-      return normalizeListOptions(innerOptions, format)
-    }
-    if (!isEmpty(optionKey)) {
-      return normalizeOptions(innerOptions, optionKey)
-    }
-    return innerOptions
-  }, [innerOptions, optionKey, format])
-
-  const pathNodes = useRef<CascaderOption[]>([])
 
   const [value, setValue] = usePropsValue({
     value: outerValue,
@@ -107,12 +73,24 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
     },
   })
 
+  const options = useMemo(() => {
+    if (!isEmpty(format)) {
+      return normalizeListOptions(innerOptions, format)
+    }
+    if (!isEmpty(optionKey)) {
+      return normalizeOptions(innerOptions, optionKey)
+    }
+    return innerOptions
+  }, [innerOptions, optionKey, format, value])
+
+  const pathNodes = useRef<CascaderOption[]>([])
+
   const levels: any[] = useMemo(() => {
     const next = []
     let end = false
     let currentOptions = options
     for (const [index, val] of value.entries()) {
-      const opt = currentOptions.find((o) => o.value === val)
+      const opt = currentOptions?.find((o: CascaderOption) => o.value === val)
       next.push({
         selected: val,
         pane: currentOptions,
@@ -143,16 +121,29 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
       }
     },
   })
+  const actions: CascaderActions = {
+    open: () => {
+      setVisible(true)
+    },
+    close: () => {
+      setVisible(false)
+    },
+  }
+  useImperativeHandle(ref, () => actions)
+
+  useEffect(() => {
+    setInnerOptions(outerOptions)
+  }, [outerOptions])
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
-  }, [value])
+  }, [value, innerOptions, outerOptions])
   useEffect(() => {
     const max = levels.length - 1
     if (tabActiveIndex > max) {
       setTabActiveIndex(max)
     }
-  }, [tabActiveIndex, levels])
+  }, [tabActiveIndex, levels, innerOptions, outerOptions])
   useEffect(() => {
     const load = async () => {
       const parent = { children: [] }
@@ -206,7 +197,7 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
   }
 
   const renderCascaderItem = (item: any, levelIndex: number) => {
-    return item.pane.map((pane: CascaderOption, index: number) => {
+    return item.pane?.map((pane: CascaderOption, index: number) => {
       const active = item.selected === pane.value
       const classes = classNames(
         {
@@ -279,6 +270,6 @@ export const Cascader = (props: Partial<CascaderPorps>) => {
   ) : (
     renderTab()
   )
-}
+})
 
 Cascader.displayName = 'NutCascader'

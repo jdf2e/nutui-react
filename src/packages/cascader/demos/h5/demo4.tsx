@@ -1,23 +1,31 @@
-import React, { useState } from 'react'
-import { Cascader, Cell } from '@nutui/nutui-react'
+import React, { useEffect, useState } from 'react'
+import { Cascader, Cell, CascaderOption } from '@nutui/nutui-react'
 
 const Demo4 = () => {
-  const [isVisibleDemo4, setIsVisibleDemo4] = useState(false)
-  const [value4, setValue4] = useState([])
-  const [optionsDemo4] = useState([
-    { value: 'A0', text: 'A0' },
-    {
-      value: 'B0',
-      text: 'B0',
-      children: [
-        { value: 'B11', text: 'B11', leaf: true },
-        { value: 'B12', text: 'B12' },
-      ],
-    },
-    { value: 'C0', text: 'C0' },
-  ])
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState([])
+  const [options, setOptions] = useState<CascaderOption[]>([])
+  useEffect(() => {
+    setTimeout(() => {
+      setOptions([
+        { value: 'A0', text: 'A0' },
+        {
+          value: 'B0',
+          text: 'B0',
+          children: [
+            { value: 'B11', text: 'B11', leaf: true },
+            { value: 'B12', text: 'B12' },
+          ],
+        },
+        { value: 'C0', text: 'C0' },
+      ])
+    }, 300)
+  }, [])
 
-  const lazyLoadDemo4 = async (node: any, level: number) => {
+  const lazyLoadDemo4 = async (
+    node: any,
+    level: number
+  ): Promise<CascaderOption[]> => {
     return new Promise((resolve) => {
       setTimeout(() => {
         const { value } = node
@@ -32,30 +40,28 @@ const Demo4 = () => {
     })
   }
   const change4 = (value: any, path: any) => {
-    console.log('onChange', value, path)
-    setValue4(value)
+    setValue(value)
   }
 
   return (
     <>
       <Cell
         title="选择地址"
-        description={value4.length ? value4 : '请选择地址'}
+        description={value.length ? value : '请选择地址'}
         onClick={() => {
-          setIsVisibleDemo4(true)
+          setVisible(true)
         }}
       />
       <Cascader
-        visible={isVisibleDemo4}
-        defaultValue={value4}
+        visible={visible}
+        defaultValue={value}
         title="选择地址"
-        options={optionsDemo4}
+        options={options}
         closeable
         onClose={() => {
-          setIsVisibleDemo4(false)
+          setVisible(false)
         }}
         onChange={change4}
-        lazy
         onLoad={lazyLoadDemo4}
       />
     </>

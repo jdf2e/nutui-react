@@ -9,24 +9,46 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react'
-import { Popup } from '@/packages/popup/popup'
+import { Popup, PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
-import { convertListToOptions } from './utils'
+import { convertListToOptions } from './helper'
 import {
   CascaderPane,
   CascaderOption,
   CascaderValue,
   CascaderOptionKey,
-  CascaderFormat, CascaderActions,
+  CascaderFormat,
 } from './types'
 import Tree from './tree'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useConfig } from '@/packages/configprovider'
 
-export interface CascaderProps {
+export interface CascaderProps
+  extends Pick<
+    PopupProps,
+    | 'className'
+    | 'style'
+    | 'closeIcon'
+    | 'closeable'
+    | 'title'
+    | 'left'
+    | 'closeIconPosition'
+    | 'onClose'
+  > {
   popup: boolean
-  visible: boolean
+  popupProps: Partial<
+    Omit<
+      PopupProps,
+      | 'closeIcon'
+      | 'closeable'
+      | 'title'
+      | 'left'
+      | 'closeIconPosition'
+      | 'onClose'
+    >
+  >
+  visible: boolean // popup visible
   activeColor: string
   activeIcon: string
   options: CascaderOption[]
@@ -41,6 +63,11 @@ export interface CascaderProps {
   onLoad: (node: any, resolve: any) => void
   onChange: (value: CascaderValue, params?: any) => void
   onPathChange: (value: CascaderValue, params: any) => void
+}
+
+export type CascaderActions = {
+  open: () => void
+  close: () => void
 }
 
 const defaultProps = {
@@ -349,7 +376,7 @@ const InternalCascader: ForwardRefRenderFunction<
   }
 
   const renderItem = (pane: any, node: any, index: number) => {
-    const nutCascaderItem = 'nut-cascader-item'
+    const classPrefix2 = 'nut-cascader-item'
     const checked = pane.selectedNode?.value === node.value
 
     const classes = classNames(
@@ -357,22 +384,25 @@ const InternalCascader: ForwardRefRenderFunction<
         active: checked,
         disabled: node.disabled,
       },
-      nutCascaderItem
+      classPrefix2
     )
 
     const classesTitle = classNames({
-      [`${nutCascaderItem}-title`]: true,
+      [`${classPrefix2}-title`]: true,
     })
 
     const renderIcon = () => {
-      if (!checked) return null
-      return isValidElement(activeIcon) ? (
-        activeIcon
-      ) : (
-        <Checklist
-          className={`${checked ? `${classPrefix}-icon-check` : ''}`}
-        />
-      )
+      if (checked) {
+        if (isValidElement(activeIcon)) {
+          return activeIcon
+        }
+        return (
+          <Checklist
+            className={`${checked ? `${classPrefix}-icon-check` : ''}`}
+          />
+        )
+      }
+      return null
     }
 
     return (
@@ -457,7 +487,7 @@ const InternalCascader: ForwardRefRenderFunction<
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
-          title={title}
+          title={popup && (title as ReactNode)}
           left={left}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onOverlayClick={closePopup}
@@ -472,6 +502,6 @@ const InternalCascader: ForwardRefRenderFunction<
   )
 }
 
-export const CascaderOrigin = React.forwardRef(InternalCascader)
+export const Cascader = React.forwardRef(InternalCascader)
 
-CascaderOrigin.displayName = 'NutCascader'
+Cascader.displayName = 'NutCascader'
