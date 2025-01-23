@@ -1,6 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ContentProps } from './index'
+import { ContentProps } from './types'
 
 export const defaultContentProps: ContentProps = {
   visible: false,
@@ -49,7 +49,7 @@ export const Content: FunctionComponent<
     )
   }
 
-  const handleClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 

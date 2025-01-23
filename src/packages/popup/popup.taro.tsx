@@ -13,7 +13,7 @@ import { View, ITouchEvent } from '@tarojs/components'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
-import { PopupProps, Teleport } from './index.taro'
+import { PopupProps, Teleport } from './types.taro'
 
 const defaultProps: PopupProps = {
   ...defaultOverlayProps,

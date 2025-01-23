@@ -165,11 +165,11 @@ const BaseDialog: ForwardRefRenderFunction<
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
 
-Dialog.confirm = (props: DialogConfirmProps): DialogReturnProps => {
+Dialog.confirm = (props: Partial<DialogConfirmProps>): DialogReturnProps => {
   return confirm(props)
 }
 ;['alert'].forEach((type) => {
-  ;(Dialog as any)[type] = (props: DialogConfirmProps) => {
+  ;(Dialog as any)[type] = (props: Partial<DialogConfirmProps>) => {
     return confirm({
       ...props,
       isNotice: false,

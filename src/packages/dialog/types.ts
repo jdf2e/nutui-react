@@ -46,21 +46,22 @@ export interface DialogBasicProps extends DialogWrapProps {
 }
 
 export interface DialogConfirmProps extends DialogBasicProps {
-  content?: ReactNode
-  icon?: ReactNode | null
-  isNotice?: boolean
-  noticeType?: string
+  content: ReactNode
+  isNotice: boolean
+  noticeType: string
 }
 
 export type DialogReturnProps = {
-  update: (newConfig: DialogConfirmProps) => void
+  update: (newConfig: Partial<DialogConfirmProps>) => void
   close: () => void
 }
 
 export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<DialogBasicProps>> {
-  confirm: (props: DialogConfirmProps) => DialogReturnProps
-  alert: (props: DialogConfirmProps) => DialogReturnProps
+  extends ForwardRefExoticComponent<
+    PropsWithChildren<Partial<DialogBasicProps>>
+  > {
+  confirm: (props: Partial<DialogConfirmProps>) => DialogReturnProps
+  alert: (props: Partial<DialogConfirmProps>) => DialogReturnProps
   config: (config: DialogConfigType) => void
   destroyAll: () => void
 }

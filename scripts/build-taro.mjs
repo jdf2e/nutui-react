@@ -19,6 +19,10 @@ import { generate } from './build-theme-typings.mjs'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+const isTypesTaro = (name, type) => {
+  return name.indexOf(type) > -1
+}
+
 // 写文件
 async function dest(file, content) {
   const dir = dirname(file)
@@ -31,7 +35,7 @@ async function dest(file, content) {
   await writeFile(file, content)
 }
 
-const transform = (file, api) => {
+const transform = (file, api, replace) => {
   const j = api.jscodeshift.withParser('ts')
   const ast = j(file.source)
   const imports = ast.find(j.ImportDeclaration)
@@ -45,7 +49,8 @@ const transform = (file, api) => {
         : ''
     if (!path.node.source) return
     if (!alias) {
-      path.node.source.value = path.node.source.value.replace('.taro', '')
+      // 处理这里，相对路径下的types的引入。
+      path.node.source.value = (!replace || replace && isTypesTaro(path.node.source.value, 'index.taro')) ? path.node.source.value.replace('.taro', '') : path.node.source.value
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
@@ -170,8 +175,12 @@ async function buildDeclaration() {
         path: join(__dirname, '../', file).replace('/dist/types', ''),
       },
       { jscodeshift: j },
+      true
     )
-    const to = file.replace('dist/types/src', '').replace('.taro', '')
+
+    // 修改文件名，除 index.taro 外其他不修改。
+    let to = file.replace('dist/types/src', '')
+    to = isTypesTaro(to, 'index.taro') ? to.replace('.taro', '') : to
     await dest(join('dist/es', to), result)
     await dest(join('dist/cjs', to), result)
   }

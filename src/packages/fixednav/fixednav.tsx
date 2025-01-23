@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay/index'
 import { useConfig } from '@/packages/configprovider'
-import { FixedNavProps } from './index'
+import { FixedNavProps } from './types'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
 const defaultProps: FixedNavProps = {

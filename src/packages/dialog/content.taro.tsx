@@ -1,13 +1,13 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
-import { ContentProps } from './index.taro'
+import { ContentProps } from './types.taro'
 
 export const defaultContentProps: ContentProps = {
   visible: false,
   title: '',
-  header: null,
-  footer: null,
+  header: '',
+  footer: '',
   close: '',
   footerDirection: 'horizontal',
   onClick: () => {},

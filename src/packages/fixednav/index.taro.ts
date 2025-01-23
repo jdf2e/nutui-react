@@ -5,6 +5,6 @@ export type {
   FixedNavPosition,
   FixedNavItem,
   FixedNavProps,
-} from './types'
+} from './types.taro'
 
 export default FixedNav

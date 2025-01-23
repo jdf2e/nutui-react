@@ -1,10 +1,5 @@
-import { ITouchEvent } from '@tarojs/components'
 import { Overlay } from './overlay.taro'
 
-import { OverlayProps as OverlayWebProps } from './types'
-
-export type OverlayProps = Omit<OverlayWebProps, 'onClick'> & {
-  onClick: (event: ITouchEvent) => void
-}
+export type { OverlayProps } from './types.taro'
 
 export default Overlay

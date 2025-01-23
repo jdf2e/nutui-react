@@ -5,7 +5,7 @@ import { View, ITouchEvent } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 import { harmony } from '@/utils/platform-taro'
-import { OverlayProps } from './index.taro'
+import { OverlayProps } from './types.taro'
 
 export const defaultOverlayProps: OverlayProps = {
   ...ComponentDefaults,
