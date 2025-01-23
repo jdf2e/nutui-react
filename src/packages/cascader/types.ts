@@ -1,6 +1,3 @@
-import { ReactNode } from 'react'
-import { PopupProps } from '@/packages/popup'
-
 export interface CascaderPane {
   nodes: []
   selectedNode: CascaderOption | null
@@ -43,51 +40,4 @@ export interface CascaderFormat {
 export type CascaderActions = {
   open: () => void
   close: () => void
-}
-export type CascaderPopupProps = Pick<
-  PopupProps,
-  | 'className'
-  | 'style'
-  | 'closeIcon'
-  | 'closeable'
-  | 'title'
-  | 'left'
-  | 'closeIconPosition'
-  | 'onClose'
->
-export type CascaderSupportPopupProps = Partial<
-  Omit<
-    PopupProps,
-    | 'closeIcon'
-    | 'closeable'
-    | 'title'
-    | 'left'
-    | 'closeIconPosition'
-    | 'onClose'
-  >
->
-
-export interface CascaderProps extends CascaderPopupProps {
-  visible: boolean
-  value: CascaderValue
-  activeColor: string
-  activeIcon: ReactNode
-  defaultValue: CascaderValue
-  options: CascaderOption[]
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  closeable: boolean
-  closeIcon: ReactNode
-  closeIconPosition: string
-  popup: boolean
-  popupProps: CascaderSupportPopupProps
-  lazy: boolean
-  onLoad: (
-    node: CascaderOption,
-    levelIndex: number
-  ) => Promise<CascaderOption[]>
-  onChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
-  onPathChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
-  onTabsChange: (index: number) => void
-  onClose: () => void
 }

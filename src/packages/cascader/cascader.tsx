@@ -1,6 +1,7 @@
 import React, {
   forwardRef,
   isValidElement,
+  ReactNode,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -10,18 +11,71 @@ import React, {
 import { Checklist, Loading } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Tabs from '@/packages/tabs'
-import Popup from '@/packages/popup'
+import Popup, { PopupProps } from '@/packages/popup'
 import {
   normalizeListOptions,
   normalizeOptions,
 } from '@/packages/cascader/utils'
-import { CascaderOption, CascaderActions, CascaderProps } from './types'
+import {
+  CascaderOption,
+  CascaderActions,
+  CascaderValue,
+  CascaderOptionKey,
+} from './types'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/utils/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
 import { useConfig } from '@/packages/configprovider'
+
+export type CascaderPopupProps = Pick<
+  PopupProps,
+  | 'className'
+  | 'style'
+  | 'closeIcon'
+  | 'closeable'
+  | 'title'
+  | 'left'
+  | 'closeIconPosition'
+  | 'onClose'
+>
+export type CascaderSupportPopupProps = Partial<
+  Omit<
+    PopupProps,
+    | 'closeIcon'
+    | 'closeable'
+    | 'title'
+    | 'left'
+    | 'closeIconPosition'
+    | 'onClose'
+  >
+>
+
+export interface CascaderProps extends CascaderPopupProps {
+  visible: boolean
+  value: CascaderValue
+  activeColor: string
+  activeIcon: ReactNode
+  defaultValue: CascaderValue
+  options: CascaderOption[]
+  optionKey: CascaderOptionKey
+  format: Record<string, string | number | null>
+  closeable: boolean
+  closeIcon: ReactNode
+  closeIconPosition: string
+  popup: boolean
+  popupProps: CascaderSupportPopupProps
+  lazy: boolean
+  onLoad: (
+    node: CascaderOption,
+    levelIndex: number
+  ) => Promise<CascaderOption[]>
+  onChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
+  onPathChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
+  onTabsChange: (index: number) => void
+  onClose: () => void
+}
 
 const defaultProps: CascaderProps = {
   ...ComponentDefaults,
