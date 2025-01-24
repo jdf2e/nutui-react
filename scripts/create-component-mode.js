@@ -1,13 +1,13 @@
-// 创建模板
-const inquirer = require('inquirer')
+// 创建组件模板
+const prompts = require('@inquirer/prompts')
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs').promises
 const config = require('../src/config.json')
 const demoModel = require('./demo')
 const nav = config.nav
 
-var newCpt = {
-  version: '1.0.0',
+const newCpt = {
+  version: '3.0.0',
   name: '',
   type: '',
   cName: '',
@@ -15,284 +15,236 @@ var newCpt = {
   sort: '',
   show: true,
   taro: true,
+  v15: false,
+  dd: true,
   author: '',
 }
-function init() {
-  inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
-        validate(value) {
-          let repeat = false
-          for (var i = 0; i < nav.length; i++) {
-            for (var j = 0; j < nav[i].packages.length; j++) {
-              if (nav[i].packages[j].name === value) {
-                repeat = true
-              }
-            }
-          }
 
-          if (repeat) {
-            return '该组件名已存在！'
-          }
-          const pass = value && value.match(/^[A-Z]/)
-          if (pass) {
-            return true
-          }
-          return '不能为空，且每个单词的首字母都要大写，如TextBox'
-        },
-      },
-      {
-        type: 'input',
-        name: 'cName',
-        message: '组件中文名(十个字以内)：',
-        validate(value) {
-          const pass = value && value.length <= 10
-          if (pass) {
-            return true
-          }
-          return '不能为空，且不能超过十个字符'
-        },
-      },
-      {
-        type: 'input',
-        name: 'desc',
-        message: '组件描述(五十个字以内)：',
-      },
-      {
-        type: 'rawlist',
-        name: 'type',
-        message: '请选择组件类型(输入编号)：目前只支持组建模板',
-        choices: ['component'],
-        validate(value) {
-          const pass = value && /^[1-4]$/.test(value)
-          if (pass) {
-            return true
-          }
-          return '输入有误！请输入选项前编号'
-        },
-      },
-      {
-        type: 'input',
-        name: 'sort',
-        message:
-          '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
-        validate(value) {
-          const pass = /^[1-7]$/.test(value)
-          if (pass) {
-            return true
-          }
-          return '输入有误！请输入选项前编号'
-        },
-      },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showDemo',
-      //     message: '是否需要DEMO页面?',
-      //     default: true
-      //   },
-      //   {
-      //     type: 'confirm',
-      //     name: 'showTest',
-      //     message: '是否需要单元测试页面?',
-      //     default: true
-      //   },
-      {
-        type: 'input',
-        name: 'author',
-        message: '组件作者(可署化名):',
-      },
-    ])
-    .then(function (answers) {
-      // answers.sort = String(sorts.indexOf(answers.sort));
-      newCpt = Object.assign(newCpt, answers)
-      createNew()
-    })
+async function init() {
+  const answers = {}
+  answers.name = await prompts.input({
+    message: '组件英文名(每个单词的首字母都大写，如TextBox)：',
+    validate: (value) => {
+      const repeat = nav?.some((category) =>
+        category.packages.some((pkg) => pkg.name === value)
+      )
+      if (repeat) return '该组件名已存在！'
+      const pass = value && value.match(/^[A-Z]/)
+      return pass ? true : '不能为空，且每个单词的首字母都要大写，如TextBox'
+    },
+  })
+  answers.cName = await prompts.input({
+    message: '组件中文名(十个字以内)：',
+    validate: (value) =>
+      value && value.length <= 10 ? true : '不能为空，且不能超过十个字符',
+  })
+  answers.desc = await prompts.input({
+    message: '组件描述(五十个字以内)：',
+  })
+  answers.type = await prompts.rawlist({
+    message: '请选择组件类型(输入编号)：目前只支持组建模板',
+    choices: ['component'],
+    validate: (value) =>
+      /^[1-4]$/.test(value) ? true : '输入有误！请输入选项前编号',
+  })
+  answers.sort = await prompts.input({
+    message:
+      '请选择组件分类(输入编号)：1基础组件，2布局组件，3导航组件，4数据录入，5操作反馈，6展示组件，7特色组件',
+    validate: (value) =>
+      /^[1-7]$/.test(value) ? true : '输入有误！请输入选项前编号',
+  })
+  answers.author = await prompts.input({
+    message: '组件作者(可署化名):',
+  })
+
+  Object.assign(newCpt, answers)
+  await createNew()
 }
-function createIndexJs() {
-  const nameLc = newCpt.name.toLowerCase()
-  const destPath = path.join('src/packages/' + nameLc)
-  if (!fs.existsSync(destPath)) {
-    fs.mkdirSync(destPath)
+
+async function ensureDir(dirPath) {
+  try {
+    await fs.mkdir(dirPath, { recursive: true })
+  } catch (err) {
+    console.error(`Error creating directory ${dirPath}:`, err)
+    throw err
   }
-
-  if (newCpt.type == 'method') return
-  return new Promise((resolve, reject) => {
-    resolve(`生成index.js文件成功`)
-  })
 }
 
-function createReact() {
-  return new Promise((resolve, reject) => {
-    const nameLc = newCpt.name.toLowerCase()
-    const name = newCpt.name
-    let content = demoModel(name).react
-    let indexFileContent = demoModel(name).index
-    const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
-    const filePath = path.join(dirPath, `${nameLc}.tsx`)
-    const indexFilePath = path.join(dirPath, `index.ts`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    try {
-      fs.writeFileSync(filePath, content)
-      fs.writeFileSync(indexFilePath, indexFileContent)
-    } catch (e) {
-      throw e
-    }
-    resolve(`生成index.ts文件成功`)
-  })
+async function createFile(filePath, content) {
+  try {
+    await fs.writeFile(filePath, content)
+    console.log(`Created file: ${filePath}`)
+  } catch (err) {
+    console.error(`Error writing file ${filePath}:`, err)
+    throw err
+  }
 }
 
-function createReactTaro() {
-  return new Promise((resolve, reject) => {
-    const nameLc = newCpt.name.toLowerCase()
-    const name = newCpt.name
-    let content = demoModel(name).react
-    let indexFileContent = demoModel(name).taroindex
-    const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
-    const filePath = path.join(dirPath, `${nameLc}.taro.tsx`)
-    const indexFilePath = path.join(dirPath, `index.taro.ts`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    try {
-      fs.writeFileSync(filePath, content)
-      fs.writeFileSync(indexFilePath, indexFileContent)
-    } catch (e) {
-      throw e
-    }
-    resolve(`生成index.taro.ts文件成功`)
-  })
+async function createIndexJs() {
+  const destPath = path.join('src/packages', newCpt.name.toLowerCase())
+  await ensureDir(destPath)
+  if (newCpt.type === 'method') return
+  console.log('Generated index.js file successfully')
 }
 
-function createDemo() {
-  return new Promise((resolve, reject) => {
-    const name = newCpt.name
-    const nameLc = newCpt.name.toLowerCase()
-    let content = demoModel(name).demo
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
-    const filePath = path.join(dirPath, `demo.tsx`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    fs.writeFile(filePath, content, (err) => {
-      if (err) throw err
-      resolve(`生成demo.tsx文件成功`)
-    })
-  })
+async function createReact() {
+  const nameLc = newCpt.name.toLowerCase()
+  const name = newCpt.name
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
+  await ensureDir(dirPath)
+
+  const files = [
+    { path: `${nameLc}.tsx`, content: demoModel(name).react },
+    { path: `index.ts`, content: demoModel(name).index },
+    { path: `types.ts`, content: demoModel(name).types },
+  ]
+
+  for (const file of files) {
+    const filePath = path.join(dirPath, file.path)
+    await createFile(filePath, file.content)
+  }
 }
 
-function createTaroDemo() {
-  return new Promise((resolve, reject) => {
-    const name = newCpt.name
-    const nameLc = newCpt.name.toLowerCase()
-    let content = demoModel(name).tarodemo
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
-    const filePath = path.join(dirPath, `demo.taro.tsx`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    fs.writeFile(filePath, content, (err) => {
-      if (err) throw err
-      resolve(`生成demo.taro.tsx文件成功`)
-    })
-  })
+async function createReactTaro() {
+  const nameLc = newCpt.name.toLowerCase()
+  const name = newCpt.name
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}/`)
+  await ensureDir(dirPath)
+
+  const files = [
+    { path: `${nameLc}.taro.tsx`, content: demoModel(name).taroreact },
+    { path: `index.taro.ts`, content: demoModel(name).taroindex },
+  ]
+
+  for (const file of files) {
+    const filePath = path.join(dirPath, file.path)
+    await createFile(filePath, file.content)
+  }
 }
 
-function addToPackageJson() {
-  return new Promise((resolve, reject) => {
-    let sort = newCpt.sort
-    newCpt.sort = nav[sort - 1].packages.length + 1
-    nav[sort - 1].packages.push(newCpt)
-    nav[sort - 1].packages = [
-      ...nav[sort - 1].packages.sort((a, b) => {
-        const nameA = a.name.toUpperCase()
-        const nameB = b.name.toUpperCase()
-        if (nameA < nameB) {
-          return -1
-        }
-        if (nameA > nameB) {
-          return 1
-        }
-        return 0
-      }),
-    ]
-    config.nav = nav
-    const dirPath = path.join(__dirname, `../`)
-    const filePath = path.join(dirPath, `src/config.json`)
+async function createDemo() {
+  const nameLc = newCpt.name.toLowerCase()
+  const name = newCpt.name
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}`)
+  const demosPath = path.join(dirPath, 'demos')
+  const h5Path = path.join(demosPath, 'h5')
 
-    var tempfile = JSON.stringify(config, null, 2)
-    fs.writeFile(filePath, tempfile, (err) => {
-      if (err) throw err
-      resolve(`修改config.json文件成功`)
-    })
-  })
-}
-function createScss() {
-  return new Promise((resolve, reject) => {
-    const nameLc = newCpt.name.toLowerCase()
-    let content = `.nut-${nameLc} {}`
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
-    const filePath = path.join(dirPath, `${nameLc}.scss`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    fs.writeFile(filePath, content, (err) => {
-      if (err) throw err
-      resolve(`${nameLc}.scss文件成功`)
-    })
-  })
-}
-function createDoc() {
-  return new Promise((resolve, reject) => {
-    const nameLc = newCpt.name.toLowerCase()
-    const name = newCpt.name
+  await ensureDir(h5Path)
 
-    let content = demoModel(name).doc
-    const dirPath = path.join(__dirname, '../src/packages/' + nameLc)
-    const filePath = path.join(dirPath, `doc.md`)
-    if (!fs.existsSync(dirPath)) {
-      fs.mkdirSync(filePath)
-    }
-    fs.writeFile(filePath, content, (err) => {
-      if (err) throw err
-      resolve(`doc.md文件成功`)
-    })
-  })
+  const files = [
+    { path: path.join(dirPath, `demo.tsx`), content: demoModel(name).demo },
+    { path: path.join(h5Path, `demo1.tsx`), content: demoModel(name).demoitem },
+  ]
+
+  for (const file of files) {
+    await createFile(file.path, file.content)
+  }
 }
-function createNew() {
-  createIndexJs()
-    .then(() => {
-      if (newCpt.type == 'component' || newCpt.type == 'method') {
-        return createReact() && createReactTaro()
-      } else {
-        return
-      }
-    })
-    .then(() => {
-      return createScss()
-    })
-    .then(() => {
-      return createDemo()
-    })
-    .then(() => {
-      return createTaroDemo()
-    })
-    .then(() => {
-      return createDoc()
-    })
-    .then(() => {
-      return addToPackageJson()
-    })
-    .then(() => {
-      console.log('组件模板生成完毕，请开始你的表演~')
-      process.exit()
-    })
+
+async function createTaroDemo() {
+  const nameLc = newCpt.name.toLowerCase()
+  const name = newCpt.name
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}`)
+  const demosPath = path.join(dirPath, 'demos')
+  const taroDirPath = path.join(demosPath, 'taro')
+
+  await ensureDir(taroDirPath)
+
+  const files = [
+    {
+      path: path.join(dirPath, `demo.taro.tsx`),
+      content: demoModel(name).tarodemo,
+    },
+    {
+      path: path.join(taroDirPath, `demo1.tsx`),
+      content: demoModel(name).tarodemoitem,
+    },
+  ]
+
+  for (const file of files) {
+    await createFile(file.path, file.content)
+  }
 }
+
+async function addToPackageJson() {
+  const sort = newCpt.sort
+  newCpt.sort = nav[sort - 1].packages.length + 1
+  nav[sort - 1].packages.push(newCpt)
+  nav[sort - 1].packages.sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+  )
+
+  config.nav = nav
+  const filePath = path.join(__dirname, `../src/config.json`)
+
+  await createFile(filePath, JSON.stringify(config, null, 2))
+}
+
+async function createScss() {
+  const nameLc = newCpt.name.toLowerCase()
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}`)
+  await ensureDir(dirPath)
+
+  const content = `.nut-${nameLc} {}`
+  const filePath = path.join(dirPath, `${nameLc}.scss`)
+
+  await createFile(filePath, content)
+}
+
+async function createDoc() {
+  const nameLc = newCpt.name.toLowerCase()
+  const { name, cName, desc } = newCpt
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}`)
+  await ensureDir(dirPath)
+
+  const content = demoModel(name, cName, desc).doc
+  const filePath = path.join(dirPath, `doc.md`)
+
+  await createFile(filePath, content)
+}
+
+async function createTest() {
+  const nameLc = newCpt.name.toLowerCase()
+  const { name } = newCpt
+  const dirPath = path.join(__dirname, `../src/packages/${nameLc}`)
+  const testFolderPath = path.join(dirPath, `__test__`)
+
+  await ensureDir(testFolderPath)
+
+  const content = demoModel(name).test
+  const filePath = path.join(testFolderPath, `${nameLc}.spec.tsx`)
+
+  await createFile(filePath, content)
+}
+
+async function createNew() {
+  const tasks = [
+    createIndexJs(),
+    createReact(),
+    createReactTaro(),
+    createDemo(),
+    createTaroDemo(),
+    createScss(),
+    createDoc(),
+    createTest(),
+    addToPackageJson(),
+  ]
+
+  try {
+    await Promise.all(tasks)
+    console.log('组件模板生成完毕，请开始你的表演~')
+    process.exit()
+  } catch (err) {
+    console.error('Error during component creation:', err)
+    process.exit(1)
+  }
+}
+
 function createComponent() {
-  init()
+  init().catch((err) => {
+    console.error('Error during component creation:', err)
+    process.exit(1)
+  })
 }
+
 createComponent()

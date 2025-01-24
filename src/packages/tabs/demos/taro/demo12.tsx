@@ -16,7 +16,7 @@ const Demo12 = () => {
           setTabIndex(page)
         }}
       >
-        <Tabs.TabPane title="Tab 1" />
+        <Tabs.TabPane title="Tab longitem" />
         <Tabs.TabPane title="Tab 2" />
         <Tabs.TabPane title="Tab 3" />
       </Tabs>
@@ -30,7 +30,7 @@ const Demo12 = () => {
         }}
       >
         <Swiper.Item>
-          <View style={contentStyle}>Tab 1</View>
+          <View style={contentStyle}>Tab longitem</View>
         </Swiper.Item>
         <Swiper.Item>
           <View style={contentStyle}>Tab 2</View>
