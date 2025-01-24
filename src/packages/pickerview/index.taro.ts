@@ -6,5 +6,6 @@ export type {
   PickerRollerProps,
   PickerValue,
   PickerOptions,
+  PickerOnChangeCallbackParameter,
 } from './types'
 export default PickerView

@@ -5,9 +5,7 @@ export type PickerValue = string | number | null
 export interface PickerOptionItem {
   label: string | number
   value: string | number
-  disabled?: boolean
   children?: PickerOptionItem[]
-  className?: string | number
 }
 
 export type PickerOptions = PickerOptionItem[]

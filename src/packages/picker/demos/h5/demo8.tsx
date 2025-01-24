@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { Picker, Cell, ConfigProvider } from '@nutui/nutui-react'
+import {
+  Picker,
+  Cell,
+  ConfigProvider,
+  PickerOptionItem,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react'
 
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo8 = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [baseDesc, setBaseDesc] = useState('')
   const options = [
     [
       { value: 1, label: '南京市' },
@@ -24,27 +25,23 @@ const Demo8 = () => {
     ],
   ]
 
-  const [baseDesc, setBaseDesc] = useState('')
-
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
-    console.log('demo 确定', options, values)
+    console.log('confirmPicker', selectedOptions, selectedValue)
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: PickerOptionItem) => {
+      description += ` ${option.label}`
     })
     setBaseDesc(description)
-    setIsVisible(false)
   }
-
   return (
     <>
       <Cell
         title="请选择城市"
         description={baseDesc}
-        onClick={() => setIsVisible(!isVisible)}
+        onClick={() => setVisible(!visible)}
       />
       <ConfigProvider
         theme={{
@@ -55,14 +52,12 @@ const Demo8 = () => {
         }}
       >
         <Picker
+          style={{ '--nutui-picker-item-height': '28px' }}
           title="请选择城市"
-          visible={isVisible}
+          visible={visible}
           options={options}
-          onConfirm={(list, values) => confirmPicker(list, values)}
-          onClose={() => {
-            setIsVisible(false)
-            console.log('onclose')
-          }}
+          onConfirm={confirmPicker}
+          onClose={() => setVisible(false)}
         />
       </ConfigProvider>
     </>

@@ -6,7 +6,7 @@ import { PickerOnChangeCallbackParameter } from '@/packages/pickerview/types'
 const Demo3 = () => {
   const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
-  const [value, setValue] = useState([])
+  const [value, setValue] = useState<PickerValue[]>([] as PickerValue[])
   const options = [
     [
       { value: 1, label: '南京市' },
@@ -33,9 +33,10 @@ const Demo3 = () => {
     selectedValue: PickerValue[]
   ) => {
     if (isEqual(selectedValue, [3])) {
-      selectedValue = [1]
+      setValue([1])
       setBaseDesc('南京市')
     } else {
+      setValue(selectedValue)
       let description = ''
       selectedOptions.forEach((option: any) => {
         description += ` ${option.label}`

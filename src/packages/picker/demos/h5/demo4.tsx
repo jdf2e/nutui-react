@@ -1,17 +1,11 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react'
+import { Picker, Cell, PickerOptions, PickerValue } from '@nutui/nutui-react'
 
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo4 = () => {
-  const [isVisible2, setIsVisible2] = useState(false)
-  const [mutilDesc, setMutilDesc] = useState('')
-  const listData2 = [
+  const [visible, setVisible] = useState(false)
+  const [mutilDesc, setMutilDesc] = useState('周三')
+  const [defaultValue] = useState(['Wednesday'])
+  const options = [
     // 第一列
     [
       { label: '周一', value: 'Monday' },
@@ -28,12 +22,13 @@ const Demo4 = () => {
     ],
   ]
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
+    console.log('confirmPicker', selectedOptions)
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: any) => {
+      option?.label && (description += ` ${option.label}`)
     })
     setMutilDesc(description)
   }
@@ -42,14 +37,14 @@ const Demo4 = () => {
       <Cell
         title="多列用法"
         description={mutilDesc}
-        onClick={() => setIsVisible2(!isVisible2)}
+        onClick={() => setVisible(!visible)}
       />
       <Picker
-        visible={isVisible2}
-        options={listData2}
-        onClose={() => setIsVisible2(false)}
-        defaultValue={['Wednesday']}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        visible={visible}
+        options={options}
+        onClose={() => setVisible(false)}
+        defaultValue={defaultValue}
+        onConfirm={confirmPicker}
       />
     </>
   )

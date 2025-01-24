@@ -206,7 +206,7 @@ const InternalPicker: ForwardRefRenderFunction<
       const selectedOption = columnOptions.find(
         (item) => item.value === innerValue[index]
       )
-      return selectedOption || columnOptions[0]
+      return selectedOption || {}
     })
   }, [innerOptions, innerValue])
 

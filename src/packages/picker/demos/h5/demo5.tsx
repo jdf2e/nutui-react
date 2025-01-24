@@ -1,18 +1,10 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react'
+import { Picker, Cell, PickerOptions, PickerValue } from '@nutui/nutui-react'
 
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo5 = () => {
-  const [tileDesc, settileDesc] = useState('')
   const [isVisible, setIsVisible] = useState(false)
-
-  const listData1 = [
+  const [tileDesc, settileDesc] = useState('无锡市')
+  const options = [
     [
       { value: 1, label: '南京市' },
       { value: 2, label: '无锡市' },
@@ -26,13 +18,10 @@ const Demo5 = () => {
     ],
   ]
 
-  const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
-  ) => {
+  const confirmPicker = (options: PickerOptions, values: PickerValue[]) => {
     let description = ''
     options.forEach((option: any) => {
-      description += ` ${option.text}`
+      description += ` ${option.label}`
     })
     settileDesc(description)
     setIsVisible(false)
@@ -46,8 +35,8 @@ const Demo5 = () => {
       />
       <Picker
         visible={isVisible}
-        options={listData1}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        options={options}
+        onConfirm={confirmPicker}
         defaultValue={[2]}
         threeDimensional={false}
         duration={1000}

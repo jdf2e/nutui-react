@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { Picker, Cell, PickerOptions, PickerValue } from '@nutui/nutui-react'
 import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
   PickerOnChangeCallbackParameter,
   PickerOptionItem,
-} from '@/packages/pickerview/types'
+} from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const [visible, setVisible] = useState(false)
