@@ -5,6 +5,7 @@ import { Cell, Toast } from '@nutui/nutui-react-taro'
 const Demo5 = () => {
   return (
     <>
+      <Toast id="test" />
       <Cell
         title="函数调用"
         onClick={() => {

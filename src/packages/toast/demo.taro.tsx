@@ -1,6 +1,5 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Toast } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
@@ -38,7 +37,6 @@ const ToastDemo = () => {
         <h2>{translated.basic}</h2>
         <Demo1 />
         <h2>{translated.toastFunction}</h2>
-        <Toast id="test" />
         <Demo2 />
 
         <h2>{translated.toastDuration}</h2>
