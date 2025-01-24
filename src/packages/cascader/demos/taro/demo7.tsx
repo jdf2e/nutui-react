@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Cascader, Cell, CascaderOption } from '@nutui/nutui-react'
+import { Cascader, Cell, CascaderOption } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [visible, setVisible] = useState(false)

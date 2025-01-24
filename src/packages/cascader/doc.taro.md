@@ -28,7 +28,7 @@ import { Cascader } from '@nutui/nutui-react-taro'
 
 <CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
-::
+:::
 
 ### 自定义属性名称
 

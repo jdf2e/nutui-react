@@ -21,7 +21,6 @@ const Demo6 = () => {
   const [options, setOptions] = useState<CascaderOption[]>([])
   useEffect(() => {
     setTimeout(() => {
-      // setValue(['浙江', '温州', '鹿城区'])
       setOptions([
         {
           value: '浙江',
