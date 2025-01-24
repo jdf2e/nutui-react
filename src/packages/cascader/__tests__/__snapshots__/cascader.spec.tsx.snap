@@ -25,7 +25,7 @@ exports[`Cascader > visible true 1`] = `
         class="nut-tabs nut-tabs-horizontal"
       >
         <div
-          class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
+          class="nut-tabs-titles nut-tabs-titles-line"
         >
           <div
             class="nut-tabs-titles-item "

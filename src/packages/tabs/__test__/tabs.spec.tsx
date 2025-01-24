@@ -26,7 +26,6 @@ test('base tabs props', () => {
 
   expect(el2.length > 0).toBe(true)
   expect(el3).toHaveClass('nut-tabs-titles-smile')
-  expect(el3).toHaveClass('nut-tabs-titles-scrollable')
 })
 
 test('base tabs props', () => {
