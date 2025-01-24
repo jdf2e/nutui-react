@@ -136,7 +136,7 @@ import { Form } from '@nutui/nutui-react'
 | getFieldsValue | 获取一组字段名对应的值，会按照对应结构返回。默认返回现存字段值，当调用 getFieldsValue(true) 时返回所有值 | `(name: NamePath \| boolean) => any` |
 | setFieldsValue | 設定表單的值（該值將直接傳入 form store 中。如果你不希望傳入物件被修改，請複製後傳入） | `(values) => void` |
 | setFieldValue | 設定對應欄位名的值 | `<T>(name: NamePath, value: T) => void` |
-| resetFields | 重置錶單提示狀態 | `() => void` |
+| resetFields | 重置錶單提示狀態 | `(namePaths?: NamePath[]) => void` |
 | submit | 提交錶單進行校驗的方法 | `Promise` |
 
 `Form.useWatch()`此方法將監視指定的輸入並傳回其值。它對於呈現輸入值和確定根據條件呈現的內容很有用。

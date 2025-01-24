@@ -136,7 +136,7 @@ import { Form } from '@nutui/nutui-react-taro'
 | getFieldsValue | 获取一组字段名对应的值，会按照对应结构返回。默认返回现存字段值，当调用 getFieldsValue(true) 时返回所有值 | `(name: NamePath \| boolean) => any` |
 | setFieldsValue | 设置表单的值（该值将直接传入 form store 中。如果你不希望传入对象被修改，请克隆后传入） | `(values) => void` |
 | setFieldValue | 设置对应字段名的值 | `<T>(name: NamePath, value: T) => void` |
-| resetFields | 重置表单提示状态 | `() => void` |
+| resetFields | 重置表单提示状态 | `(namePaths?: NamePath[]) => void` |
 | submit | 提交表单进行校验的方法 | `Promise` |
 
 `Form.useWatch()`此方法将监视指定的输入并返回其值。它对于呈现输入值和确定根据条件呈现的内容很有用。

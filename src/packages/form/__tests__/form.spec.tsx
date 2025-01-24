@@ -314,6 +314,59 @@ test('no-style and render function', async () => {
   })
 })
 
+test('reset usename filed', async () => {
+  const Demo1 = () => {
+    const [form] = Form.useForm()
+    return (
+      <>
+        <Form
+          form={form}
+          labelPosition="right"
+          footer={
+            <>
+              <div
+                id="reset"
+                onClick={() => {
+                  form.resetFields(['username'])
+                }}
+              >
+                Reset
+              </div>
+            </>
+          }
+        >
+          <Form.Item
+            align="center"
+            required
+            label="字段A"
+            name="username"
+            rules={[{ max: 5, message: '字段A不能超过5个字' }]}
+          >
+            <Input placeholder="请输入字段A" type="text" />
+          </Form.Item>
+        </Form>
+      </>
+    )
+  }
+  const { container } = render(<Demo1 />)
+  const input = container.querySelector('input')
+  const reset = container.querySelector('#reset')
+  if (input) {
+    fireEvent.change(input, { target: { value: 'NutUI React Taro' } })
+    await waitFor(() => {
+      expect(
+        container.querySelector('.nut-form-item-body-tips')
+      ).toHaveTextContent('字段A不能超过5个字')
+    })
+  }
+  if (reset) {
+    fireEvent.click(reset)
+    await waitFor(() => {
+      expect(container.querySelector('.nut-form-item-body-tips')).toBeNull()
+    })
+  }
+})
+
 test('useWatch', async () => {
   const Demo = () => {
     const [form] = Form.useForm()

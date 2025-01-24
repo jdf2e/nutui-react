@@ -176,7 +176,7 @@ class FormStore {
 
   validateFields = async (nameList?: NamePath[]) => {
     let filterEntities = []
-    this.errors.length = 0
+    // this.errors.length = 0
     if (!nameList || nameList.length === 0) {
       filterEntities = this.fieldEntities
     } else {
@@ -202,13 +202,29 @@ class FormStore {
     }
   }
 
-  resetFields = () => {
-    this.errors.length = 0
-    const nextStore = merge({}, this.initialValues)
-    this.updateStore(nextStore)
-    this.fieldEntities.forEach((entity: FormFieldEntity) => {
-      entity.onStoreChange('reset')
-    })
+  resetFields = (namePaths?: NamePath[]) => {
+    if (namePaths && namePaths.length) {
+      namePaths.forEach((path) => {
+        this.errors[path] = null
+        this.fieldEntities.forEach((entity: FormFieldEntity) => {
+          const name = entity.props.name
+          if (name === path) {
+            if (path in this.initialValues) {
+              this.updateStore({ [path]: this.initialValues[path] })
+            } else {
+              delete this.store[path]
+            }
+            entity.onStoreChange('reset')
+          }
+        })
+      })
+    } else {
+      const nextStore = merge({}, this.initialValues)
+      this.updateStore(nextStore)
+      this.fieldEntities.forEach((entity: FormFieldEntity) => {
+        entity.onStoreChange('reset')
+      })
+    }
   }
 
   // 监听事件

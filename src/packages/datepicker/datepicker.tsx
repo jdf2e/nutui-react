@@ -270,6 +270,18 @@ export const DatePicker: FunctionComponent<
         Number(formatDate[2]),
         getMonthEndDay(Number(formatDate[0]), Number(formatDate[1]))
       )
+
+      if (
+        selectedOptions.length >= 2 &&
+        ['date', 'datehour', 'datetime', 'month-day'].includes(rangeType)
+      ) {
+        const dayOption = formatOption('day', day)
+        if (rangeType === 'month-day') {
+          selectedOptions[1] = dayOption
+        } else {
+          selectedOptions[2] = dayOption
+        }
+      }
       let date: Date | null = null
       if (
         rangeType === 'date' ||
