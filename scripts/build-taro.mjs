@@ -49,8 +49,10 @@ const transform = (file, api, replace) => {
         : ''
     if (!path.node.source) return
     if (!alias) {
-      // 处理这里，相对路径下的types的引入。
-      path.node.source.value = (!replace || replace && isTypesTaro(path.node.source.value, 'index.taro')) ? path.node.source.value.replace('.taro', '') : path.node.source.value
+      // 处理这里，文件引入中的相对路径下的types的引入。
+      path.node.source.value = (!replace || replace && !isTypesTaro(path.node.source.value, 'types.taro')) 
+        ? path.node.source.value.replace('.taro', '') 
+        : path.node.source.value
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
@@ -178,9 +180,9 @@ async function buildDeclaration() {
       true
     )
 
-    // 修改文件名，除 index.taro 外其他不修改。
+    // 修改文件名，除 types.taro 不改之外，其他都修改。
     let to = file.replace('dist/types/src', '')
-    to = isTypesTaro(to, 'index.taro') ? to.replace('.taro', '') : to
+    to = isTypesTaro(to, 'types.taro') ? to : to.replace('.taro', '')
     await dest(join('dist/es', to), result)
     await dest(join('dist/cjs', to), result)
   }
