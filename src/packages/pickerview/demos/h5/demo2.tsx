@@ -23,8 +23,8 @@ const Demo1 = () => {
           style={{ '--nutui-picker-item-height': '28px' }}
           options={listData}
           defaultValue={[1]}
-          onChange={(value, selectOptions) => {
-            console.log('onChange', value, selectOptions)
+          onChange={({ value, selectedOptions }) => {
+            console.log('onChange', value, selectedOptions)
           }}
         />
       </Cell>

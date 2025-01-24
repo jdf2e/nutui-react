@@ -22,8 +22,8 @@ const Demo1 = () => {
         <PickerView
           defaultValue={[1]}
           options={listData}
-          onChange={(value, selectOptions) => {
-            console.log('onChange', value, selectOptions)
+          onChange={({ value, selectedOptions }) => {
+            console.log('onChange', value, selectedOptions)
           }}
         />
       </Cell>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Picker, Cell } from '@nutui/nutui-react'
 
 interface PickerOption {
-  text: string | number
+  label: string | number
   value: string | number
   disabled?: boolean
   children?: PickerOption[]
@@ -13,57 +13,57 @@ const Demo6 = () => {
   const customCityData = [
     {
       value: 1,
-      text: '北京',
+      label: '北京',
       children: [
         {
           value: 1,
-          text: '朝阳区',
+          label: '朝阳区',
         },
         {
           value: 2,
-          text: '海淀区',
+          label: '海淀区',
         },
         {
           value: 3,
-          text: '大兴区',
+          label: '大兴区',
         },
         {
           value: 4,
-          text: '东城区',
+          label: '东城区',
         },
         {
           value: 5,
-          text: '西城区',
+          label: '西城区',
         },
         {
           value: 6,
-          text: '丰台区',
+          label: '丰台区',
         },
       ],
     },
     {
       value: 2,
-      text: '上海',
+      label: '上海',
       children: [
         {
           value: 1,
-          text: '黄埔区',
+          label: '黄埔区',
         },
         {
           value: 2,
-          text: '长宁区',
+          label: '长宁区',
         },
         {
           value: 3,
-          text: '普陀区',
+          label: '普陀区',
         },
         {
           value: 4,
-          text: '杨浦区',
+          label: '杨浦区',
         },
         {
           value: 5,
-          text: '浦东新区',
+          label: '浦东新区',
         },
       ],
     },
@@ -71,19 +71,19 @@ const Demo6 = () => {
   const [asyncData] = useState([
     {
       value: 1,
-      text: '北京市',
+      label: '北京市',
       children: [
-        { value: 1, text: '朝阳区' },
-        { value: 2, text: '海淀区' },
-        { value: 3, text: '大兴区' },
-        { value: 4, text: '东城区' },
-        { value: 5, text: '西城区' },
-        { value: 6, text: '丰台区' },
+        { value: 1, label: '朝阳区' },
+        { value: 2, label: '海淀区' },
+        { value: 3, label: '大兴区' },
+        { value: 4, label: '东城区' },
+        { value: 5, label: '西城区' },
+        { value: 6, label: '丰台区' },
       ],
     },
     {
       value: 2,
-      text: '上海市',
+      label: '上海市',
       children: [],
     },
   ])

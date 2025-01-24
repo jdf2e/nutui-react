@@ -22,6 +22,12 @@ export interface PickerRollerProps {
   renderLabel: (item: PickerOptionItem) => React.ReactNode
 }
 
+export interface PickerOnChangeCallbackParameter {
+  value: PickerValue[]
+  index: number
+  selectedOptions: PickerOptionItem[]
+}
+
 export interface PickerViewProps extends BasicComponent {
   options: PickerOptions[]
   value?: PickerValue[]
@@ -29,5 +35,5 @@ export interface PickerViewProps extends BasicComponent {
   threeDimensional?: boolean
   duration?: number | string
   renderLabel: (item: PickerOptionItem) => React.ReactNode
-  onChange?: (value: PickerValue[], selectOptions: PickerOptionItem[]) => void
+  onChange?: (arg0: PickerOnChangeCallbackParameter) => void
 }

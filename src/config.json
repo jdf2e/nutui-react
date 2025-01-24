@@ -679,7 +679,7 @@
           "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Picker",
           "type": "component",
           "cName": "选择器",
@@ -688,7 +688,7 @@
           "show": true,
           "taro": true,
           "author": "dsj",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",

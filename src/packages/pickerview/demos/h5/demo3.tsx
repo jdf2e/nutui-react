@@ -25,8 +25,8 @@ const Demo3 = () => {
         <PickerView
           value={value}
           options={listData}
-          onChange={(value, selectOptions) => {
-            console.log('onChange', value, selectOptions)
+          onChange={({ value, selectedOptions }) => {
+            console.log('onChange', value, selectedOptions)
             if (isEqual(value, ['Tuesday', 'Afternoon'])) {
               setValue(['Monday', 'Evening'])
             }

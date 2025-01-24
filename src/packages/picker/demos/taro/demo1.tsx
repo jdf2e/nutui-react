@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Picker, Cell } from '@nutui/nutui-react-taro'
 
 interface PickerOption {
-  text: string | number
+  label: string | number
   value: string | number
   disabled?: boolean
   children?: PickerOption[]
@@ -14,15 +14,15 @@ const Demo1 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const listData1 = [
     [
-      { value: 1, text: '南京市' },
-      { value: 2, text: '无锡市' },
-      { value: 3, text: '海北藏族自治区' },
-      { value: 4, text: '北京市' },
-      { value: 5, text: '连云港市' },
-      { value: 8, text: '大庆市' },
-      { value: 9, text: '绥化市' },
-      { value: 10, text: '潍坊市' },
-      { value: 12, text: '乌鲁木齐市' },
+      { value: 1, label: '南京市' },
+      { value: 2, label: '无锡市' },
+      { value: 3, label: '海北藏族自治区' },
+      { value: 4, label: '北京市' },
+      { value: 5, label: '连云港市' },
+      { value: 8, label: '大庆市' },
+      { value: 9, label: '绥化市' },
+      { value: 10, label: '潍坊市' },
+      { value: 12, label: '乌鲁木齐市' },
     ],
   ]
   const changePicker = (list: any[], option: any, columnIndex: number) => {

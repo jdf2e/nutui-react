@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Picker, Cell } from '@nutui/nutui-react'
 
 interface PickerOption {
-  text: string | number
+  label: string | number
   value: string | number
   disabled?: boolean
   children?: PickerOption[]
@@ -14,17 +14,17 @@ const Demo4 = () => {
   const listData2 = [
     // 第一列
     [
-      { text: '周一', value: 'Monday' },
-      { text: '周二', value: 'Tuesday' },
-      { text: '周三', value: 'Wednesday' },
-      { text: '周四', value: 'Thursday' },
-      { text: '周五', value: 'Friday' },
+      { label: '周一', value: 'Monday' },
+      { label: '周二', value: 'Tuesday' },
+      { label: '周三', value: 'Wednesday' },
+      { label: '周四', value: 'Thursday' },
+      { label: '周五', value: 'Friday' },
     ],
     // 第二列
     [
-      { text: '上午', value: 'Morning' },
-      { text: '下午', value: 'Afternoon' },
-      { text: '晚上', value: 'Evening' },
+      { label: '上午', value: 'Morning' },
+      { label: '下午', value: 'Afternoon' },
+      { label: '晚上', value: 'Evening' },
     ],
   ]
   const confirmPicker = (

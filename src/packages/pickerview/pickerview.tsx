@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
@@ -45,6 +46,7 @@ const InternalPickerView: ForwardRefRenderFunction<
 
   const [innerValue, setInnerValue] = useState(selectedValue)
   const [innerOptions, setInnerOptions] = useState(options)
+  const changeIndex = useRef<number>(0)
 
   useEffect(() => {
     if (selectedValue !== innerValue) {
@@ -64,6 +66,7 @@ const InternalPickerView: ForwardRefRenderFunction<
       if (!newValue) return
       setInnerValue((prev) => {
         if (prev[index] === newValue) return prev
+        changeIndex.current = index
         const next = [...prev]
         next[index] = newValue
         return next
@@ -82,7 +85,16 @@ const InternalPickerView: ForwardRefRenderFunction<
   }, [options, innerValue])
 
   useEffect(() => {
-    onChange?.(innerValue, selectedOptions)
+    console.log('onChange', {
+      value: innerValue,
+      index: changeIndex.current,
+      selectedOptions,
+    })
+    onChange?.({
+      value: innerValue,
+      index: changeIndex.current,
+      selectedOptions,
+    })
   }, [innerValue, selectedOptions, onChange])
 
   return (
