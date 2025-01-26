@@ -27,7 +27,7 @@ import { PickerActions, PickerRef } from './types'
 export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
   title?: string
-  options: PickerOptions | PickerOptions[]
+  options: PickerOptions[]
   value?: PickerValue[]
   defaultValue?: PickerValue[]
   threeDimensional?: boolean
@@ -44,11 +44,11 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   ) => void
   onCancel?: () => void
   onClose?: (
-    selectedOptions: PickerOptions[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[]
   ) => void
   afterClose?: (
-    selectedOptions: PickerOptions[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerOptions[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
@@ -153,40 +153,11 @@ const InternalPicker: ForwardRefRenderFunction<
     return formatted
   }
 
-  /**
-   * 数据类型：多列、嵌套、单列
-   */
-  const columnsType = useMemo(() => {
-    const [firstColumn] = options
-    if (!firstColumn) return 'single'
-    if (Array.isArray(firstColumn)) return 'multiple'
-    if ('children' in firstColumn) return 'cascade'
-    return 'single'
-  }, [options])
-
-  const formatOptions = useMemo(
-    (value = null) => {
-      if (columnsType === 'multiple') {
-        return options
-      }
-
-      if (columnsType === 'cascade') {
-        return formatCascadeOptions(
-          options as PickerOptions,
-          value || innerValue
-        )
-      }
-
-      return [options]
-    },
-    [innerValue, options, columnsType]
-  )
-
   useEffect(() => {
     if (innerVisible) {
       console.log('selectedValue变更', selectedValue)
       setInnerValue(selectedValue)
-      setInnerOptions(formatOptions as PickerOptions[])
+      setInnerOptions(options as PickerOptions[])
     }
   }, [options, innerVisible, selectedValue, innerOptions])
 
@@ -202,12 +173,18 @@ const InternalPicker: ForwardRefRenderFunction<
   }, [innerValue, innerVisible])
 
   const selectedOptions = useMemo(() => {
-    return options.map((columnOptions, index) => {
-      const selectedOption = columnOptions.find(
+    console.log('selectedOptions', innerOptions)
+    const options: PickerOptions = []
+    let currOptions = []
+    innerOptions.forEach((columnOptions: PickerOptions, index: number) => {
+      currOptions = columnOptions.filter(
         (item) => item.value === innerValue[index]
       )
-      return selectedOption || {}
+      if (currOptions[0]) {
+        options.push(currOptions[0])
+      }
     })
+    return options
   }, [innerOptions, innerValue])
 
   //   确保value值变更再返回
@@ -216,30 +193,9 @@ const InternalPicker: ForwardRefRenderFunction<
     index,
     selectedOptions,
   }: PickerOnChangeCallbackParameter) => {
-    const values: any = []
-    const start = index
     if (isEqual(value, innerValue)) return
     console.log('onChangeItem', value, innerValue, index, selectedOptions)
-    if (columnsType === 'cascade') {
-      values[value] = value.value || ''
-      while (value?.children?.[0]) {
-        values[value + 1] = value.children[0].value
-        value++
-        value = value.children[0]
-      }
-      // 当前改变列的下一列 children 值为空
-      if (value?.children?.length) {
-        values[value + 1] = ''
-      }
-      const combineResult = [
-        ...innerValue.slice(0, start),
-        ...values.splice(start),
-      ]
-      setInnerValue(combineResult)
-      // setInnerOptions(formatOptions(combineResult))
-    } else {
-      setInnerValue(value)
-    }
+    setInnerValue(value)
     changeIndex.current = index
   }
 

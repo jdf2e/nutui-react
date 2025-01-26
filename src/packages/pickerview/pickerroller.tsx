@@ -108,7 +108,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       const minDeg = 0
 
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
-
       if (minDeg < deg && deg < maxDeg) {
         setTransform('', `${deg}deg`, undefined, updateMove)
         setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing.current)) + 1)
@@ -187,7 +186,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     setCurrIndex(index === -1 ? 1 : index + 1)
     const move = index * lineSpacing.current
     type && setChooseValue(-move)
-    console.log(index, move, 'props.value.index')
     setMove(-move)
   }
 
@@ -215,8 +213,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     setScrollDistance(0)
     transformY.current = 0
     modifyStatus(false)
-    console.log('modifyStatus', props.value)
-  }, [options])
+  }, [options, props.value])
 
   useImperativeHandle(ref, () => ({
     stopMomentum,
