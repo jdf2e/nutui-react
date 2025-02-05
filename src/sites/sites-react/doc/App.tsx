@@ -3,11 +3,11 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { MDXProvider } from '@mdx-js/react'
 import './App.scss'
 import APPContext from './context'
-import Nav from '@/sites/doc/components/nav'
-import Header from '@/sites/doc/components/header'
-import DemoPreview from '@/sites/doc/components/demo-preview'
-import Issue from '@/sites/doc/components/issue'
-import { getComponentName } from '@/sites/assets/util'
+import Nav from '../doc/components/nav'
+import Header from '../doc/components/header'
+import DemoPreview from '../doc/components/demo-preview'
+import Issue from '..//doc/components/issue'
+import { getComponentName } from '../../assets/util'
 import {
   routes as routers,
   guideEnRoutes,
@@ -17,7 +17,7 @@ import {
 } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
-import { BackTop } from '../../packages/backtop/backtop'
+import { BackTop } from '../../../packages/backtop/backtop'
 
 const Title = () => {
   let location = useLocation()
@@ -92,6 +92,7 @@ const Content = () => {
     ...guideTaroRoutes,
     ...guideEnTaroRoutes,
   ]
+  console.log(guideEnRoutes)
   return (
     <div className="doc-content">
       {!isGuide && (

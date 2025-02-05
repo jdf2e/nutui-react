@@ -102,25 +102,25 @@ import { Uploader } from '@nutui/nutui-react'
 | deletable | Whether or not to show the delete button | `boolean` | `true` |
 | method | The http method for the upload request | `string` | `post` | | previewType
 | previewType | The built-in style of the uploaded list, two basic styles are supported picture, list | `string`
-| capture | Picture [selection mode] (<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture>"), directly bring up the camera | `string` | `false` | maxFileSize
+| capture | Picture [selection mode](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture), directly bring up the camera | `string` | `false` | maxFileSize
 | maxFileSize | You can set the maximum file size (in bytes) for uploading | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | File upload count limit | `number` \| `string` | `1` |
 | fit | Picture fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | If or not you want to clear the `input` content, set it to `true` to support selecting the same file to upload over and over again | `boolean` | `true` |
-| accept | Allowed file types to be uploaded, [Details] ("<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%> B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
-| uploadIcon | uploadRegion <a href=“#/zh-CN/icon”>Icon Name</a> | `React.ReactNode` | `-` |
+| accept | Allowed file types to be uploaded, [Details](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| uploadIcon | uploadRegion <a href="#/zh-CN/icon">Icon Name</a> | `React.ReactNode` | `-` |
 | deleteIcon | Delete the icon name of the region | `React.ReactNode` | `-` |
 | uploadLabel | Text below the image in the upload area | `React.
 | multiple | Whether to support file multi-selection |`boolean`|`false`|
 | disabled | Whether to disable file uploading |`boolean`|`false`|
-| beforeUpload | The beforeUpload function needs to return a`Promise`object |`(file: File[]) => Promise<File[] \| boolean>`|`-`|
-| beforeDelete | Callback when deleting a file, does not remove it if the return value is false. Supports returning a`Promise`object, which is not removed when resolve(false) or reject |`(file: FileItem, files: FileItem[]) => boolean`|`-`|
-| onOversize | Triggered when file size exceeds limit |`(file: File[]) => void`|`-`|
+| beforeUpload | The beforeUpload function needs to return a`Promise`object |```(file: File[]) => Promise<File[] \| boolean>```|`-`|
+| beforeDelete | Callback when deleting a file, does not remove it if the return value is false. Supports returning a`Promise`object, which is not removed when resolve(false) or reject |```(file: FileItem, files: FileItem[]) => boolean```|`-`|
+| onOversize | Triggered when file size exceeds limit |```(file: File[]) => void```|`-`|
 | onOverCount | Triggered when the number of files exceeds the limit |`(count: number) => void`|`-`|
-| onChange | Triggered when the list of uploaded files changes |`(files: FileItem[]) => void`|`-`|
-| onDelete | Triggered when clicked to delete a file |`(file: FileItem, files: FileItem[]) => void`|`-`|
-| onFileItemClick | Triggered when a file is uploaded successfully |`(file: FileItem, index: number) => void`|`-`|
-| onUploadQueueChange | Triggered when the image upload queue changes |`(tasks: FileItem[]) => void`|`-` |
+| onChange | Triggered when the list of uploaded files changes |```(files: FileItem[]) => void```|`-`|
+| onDelete | Triggered when clicked to delete a file |```(file: FileItem, files: FileItem[]) => void```|`-`|
+| onFileItemClick | Triggered when a file is uploaded successfully |```(file: FileItem, index: number) => void```|`-`|
+| onUploadQueueChange | Triggered when the image upload queue changes |```(tasks: FileItem[]) => void```|`-` |
 
 > Note: accept, capture and multiple are the native attributes of the browser input tag, the support for these attributes varies among mobile models, so there may be some compatibility issues under different models and WebViews.
 

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 // @ts-ignore
 import { version } from '/package.json'
-import config from '../../../config/env'
+import config from '../../../../config/env'
 import './header.scss'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
 import Search from '../search/search'
 import {
-  SiteVueTaro,
   SiteReactTaro,
   header,
   versions,
@@ -20,7 +19,7 @@ import {
   moreGuide,
   businessGuide,
   products,
-} from '../../../config/index'
+} from '../../../../config/index'
 const Header = () => {
   const navigate = useNavigate()
   const location = useLocation()

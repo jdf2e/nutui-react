@@ -1,10 +1,9 @@
 /// <reference types="vitest" />
 import { defineConfig, UserConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react'
-import { join, resolve } from 'path'
+import { resolve, join } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
-import { readFileSync } from 'node:fs'
+import autoprefixer from 'autoprefixer'
 import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
@@ -13,27 +12,12 @@ let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/
 if (projectID) {
   fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/font-${projectID}/iconfont.css';\n@import '@/styles/theme-${projectID}.scss';\n`
 }
-const refRandom = Math.random().toString(36).slice(-8)
 
 // https://vitejs.dev/config/
 export default defineConfig(async (): Promise<UserConfig> => {
-  const mdx = await import('@mdx-js/rollup')
-  const remarkGfm = await import('remark-gfm')
-  const remarkDirective = await import('remark-directive')
   return {
-    base: '/h5/react/3x',
-    server: {
-      port: 2021,
-      host: '0.0.0.0',
-      open: '/h5/react/3x/index.react.html',
-      proxy: {
-        '/devServer': {
-          target: 'https://nutui.jd.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/devServer/, ''),
-        },
-      },
-    },
+    mode: 'production',
+    base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '3x'}`,
     resolve: {
       alias: [
         {
@@ -100,69 +84,41 @@ export default defineConfig(async (): Promise<UserConfig> => {
     css: {
       preprocessorOptions: {
         scss: {
-          // example : additionalData: `@import "./src/design/styles/variables";`
+          // example : additionalData: `@import "./src/dclearesign/styles/variables";`
+          // dont need include file extend .scss
           api: 'modern-compiler',
           additionalData: fileStr,
           // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
           silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
-          plugins: [atImport({ path: join(__dirname, 'src`') })],
+          plugins: [
+            atImport({ path: join(__dirname, 'src`') }),
+            autoprefixer({
+              overrideBrowserslist: [
+                '> 0.5%',
+                'last 2 versions',
+                'ie > 11',
+                'iOS >= 10',
+                'Android >= 5',
+              ],
+            }),
+          ],
         },
       },
-    },
-    plugins: [
-      {
-        enforce: 'pre',
-        ...mdx.default({
-          providerImportSource: '@mdx-js/react',
-          mdExtensions: [],
-          mdxExtensions: ['.md'],
-          remarkPlugins: [remarkGfm.default, remarkDirective.default],
-        }),
-      },
-      {
-        name: 'test',
-        apply: 'serve',
-        async load(id: string) {
-          if (id.endsWith('.scss')) {
-            // 移除 @import 语句
-            const filePath = resolve(process.cwd(), id)
-            const scssCode = await readFileSync(filePath, 'utf-8')
-            const modifiedCode = scssCode.replace(
-              /@import\s+['"](\.{2}?\/)[^'".]+(.s?css)['"];/g,
-              ''
-            )
-            return modifiedCode
-          }
-        },
-      },
-
-      reactRefresh(),
-    ],
-    test: {
-      setupFiles: ['./vitest.setup.ts'],
-      globals: true,
-      environment: 'happy-dom',
-      coverage: {
-        all: false,
-        provider: 'v8',
-      },
-      include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
-      reporters: ['default', 'html'],
     },
     build: {
-      outDir: './dist-site/h5',
-      assetsDir: `${config.version}-${refRandom}`,
+      target: 'es2015',
+      outDir: `./dist-demo/${projectID === 'jmapp' ? 'jdesign' : '3x'}/`,
       cssCodeSplit: true,
       rollupOptions: {
         input: {
-          react: resolve(__dirname, 'index.html'),
+          mobile: resolve(__dirname, 'demo.html'),
         },
         output: {
-          entryFileNames: `${config.version}-${refRandom}/[name].js`,
-          chunkFileNames: `${config.version}-${refRandom}/[name].js`,
-          assetFileNames: `${config.version}-${refRandom}/[name].[ext]`,
+          entryFileNames: `demo-${config.version}/[name].js`,
+          chunkFileNames: `demo-${config.version}/[name].js`,
+          assetFileNames: `demo-${config.version}/[name].[ext]`,
         },
       },
     },

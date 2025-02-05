@@ -12,7 +12,7 @@ type EnvConfig = {
 
 const config: EnvConfig = {
   baseUrl: '',
-  isPrd: true // 是否为线上
+  isPrd: true, // 是否为线上
 };
 switch ((import.meta as any).env.MODE) {
   case 'development':

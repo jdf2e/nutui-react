@@ -130,7 +130,7 @@
             bottom: 3px;
             left: 50%;
             margin-left: -17.5px;
-            background: url('../../../assets/images/item-active.png');
+            background: url('../../../../assets/images/item-active.png');
           }
         }
         &:last-of-type {
@@ -143,12 +143,12 @@
         height: 26px;
         vertical-align: middle;
         background-repeat: no-repeat;
-        background-image: url('../../../assets/images/icon-user.png');
+        background-image: url('../../../../assets/images/icon-user.png');
         background-size: 26px;
 
         &.gitee {
           margin-left: 8px;
-          background-image: url('../../../assets/images/icon-gitee.png');
+          background-image: url('../../../../assets/images/icon-gitee.png');
         }
       }
     }
@@ -207,10 +207,10 @@
     .header {
       &-logo {
         .logo-link {
-          background: url('../../../assets/images/logo-header-white.png')
+          background: url('../../../../assets/images/logo-header-white.png')
             no-repeat center/100%;
           &.react {
-            background: url('../../../assets/images/logo-header-white-react.png')
+            background: url('../../../../assets/images/logo-header-white-react.png')
               no-repeat center/100%;
           }
           &.jdb {
@@ -268,12 +268,12 @@
         position: relative;
         &.select-down {
           .header-select-hd {
-            background-image: url('../../../assets/images/icon-select-white-down.png');
+            background-image: url('../../../../assets/images/icon-select-white-down.png');
           }
         }
         &.select-up {
           .header-select-hd {
-            background-image: url('../../../assets/images/icon-select-white-up.png');
+            background-image: url('../../../../assets/images/icon-select-white-up.png');
           }
         }
         .guild-line {
@@ -673,7 +673,7 @@
       &-box {
         &.select-down {
           .header-select-hd {
-            background-image: url('../../../assets/images/icon-select-white-down.png');
+            background-image: url('../../../../assets/images/icon-select-white-down.png');
           }
         }
         &.select-up {

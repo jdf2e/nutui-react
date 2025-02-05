@@ -47,7 +47,7 @@ for (const path in modulesTaroPage) {
   })
 }
 
-const modulesDocs = import.meta.glob('/src/sites/doc/docs/react/*.md');
+const modulesDocs = import.meta.glob('/src/sites/sites-react/doc/docs/react/*.md');
 for (const path in modulesDocs) {
   let name = (/docs\/react\/(.*).md/.exec(path) as any[])[1];
   guideRoutes.push({
@@ -57,7 +57,7 @@ for (const path in modulesDocs) {
   });
 }
 
-const modulesEnDocs = import.meta.glob('/src/sites/doc/docs/react/*.en-US.md');
+const modulesEnDocs = import.meta.glob('/src/sites/sites-react/doc/docs/react/*.en-US.md');
 for (const path in modulesEnDocs) {
   let name = (/docs\/react\/(.*).en-US.md/.exec(path) as any[])[1];
   guideEnRoutes.push({

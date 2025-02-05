@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './search.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { nav } from '../../../config'
+import { nav } from '../../../../config'
 export default function Search() {
   const navList = nav.flatMap((item) => item.packages).filter((i) => i.show)
   const [searchVal, setSearchVal] = useState('')
