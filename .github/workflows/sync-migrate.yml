@@ -19,8 +19,8 @@ jobs:
 
       - name: Install pnpm
         run: |
-        corepack enable
-        corepack prepare pnpm@10.0.0 --activate
+          corepack enable
+          corepack prepare pnpm@10.0.0 --activate
 
       - uses: actions/setup-node@v4
         with:
