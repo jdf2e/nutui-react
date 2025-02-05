@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: corepack prepare pnpm@10.0.0 --activate
 
       - uses: actions/setup-node@v4
         with:
