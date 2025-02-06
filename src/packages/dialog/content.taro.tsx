@@ -1,16 +1,16 @@
-import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
+import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
-import { BasicComponent } from '@/utils/typings'
+import { View, ITouchEvent } from '@tarojs/components'
+import { ContentProps } from './types.taro'
 
-interface ContentProps extends BasicComponent {
-  visible: boolean
-  title: ReactNode
-  header: ReactNode
-  footer: ReactNode
-  close: ReactNode
-  footerDirection: string
-  onClick: (event: ITouchEvent) => void
+export const defaultContentProps: ContentProps = {
+  visible: false,
+  title: '',
+  header: '',
+  footer: '',
+  close: '',
+  footerDirection: 'horizontal',
+  onClick: () => {},
 }
 
 export const Content: FunctionComponent<
@@ -24,31 +24,31 @@ export const Content: FunctionComponent<
     footer,
     close,
     footerDirection,
-    onClick,
     children,
-  } = props
+    onClick,
+  } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title ? (
-      <View className={`${classPrefix}-header`}>{title}</View>
-    ) : null
+    return title && <View className={`${classPrefix}-header`}>{title}</View>
   }
 
   const renderFooter = () => {
-    return footer ? (
-      <View
-        className={classNames(`${classPrefix}-footer`, {
-          [footerDirection as any]: footerDirection,
-        })}
-      >
-        {footer}
-      </View>
-    ) : null
+    return (
+      footer && (
+        <View
+          className={classNames(`${classPrefix}-footer`, {
+            [footerDirection]: footerDirection,
+          })}
+        >
+          {footer}
+        </View>
+      )
+    )
   }
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: ITouchEvent) => {
     onClick && onClick(e)
   }
 
@@ -56,7 +56,7 @@ export const Content: FunctionComponent<
     <View
       className={classNames(`${classPrefix}-outer`, props.className)}
       style={props.style}
-      onClick={(e) => handleClick(e)}
+      onClick={(e: ITouchEvent) => handleClick(e)}
     >
       {close}
       {header}
@@ -65,9 +65,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <View className={`${classPrefix}-content`}>
-          <>{children}</>
-        </View>
+        <View className={`${classPrefix}-content`}>{children}</View>
         {renderFooter()}
       </View>
     </View>

@@ -1,8 +1,7 @@
 import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
-import Popup from '@/packages/popup'
-import { PopupProps } from '@/packages/popup/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 

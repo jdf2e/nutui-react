@@ -9,8 +9,7 @@ import classNames from 'classnames'
 import Taro, { createSelectorQuery } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
-import Popup from '@/packages/popup/index.taro'
-import { PopupProps } from '@/packages/popup/popup.taro'
+import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
@@ -294,7 +293,7 @@ export const Popover: FunctionComponent<
       <View className={classes} style={getRootPosition()}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
-          position="default"
+          position="none"
           overlay={overlay}
           visible={showPopup}
           {...rest}

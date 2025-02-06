@@ -3,32 +3,28 @@ import { Cell, Toast } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [state, setState] = useState<{
+    icon: string | React.ReactNode
     content?: string
-    type: string
     duration?: number
-    icon?: string
     title?: string
   }>({
+    icon: null,
     content: 'toast',
-    type: 'text',
     duration: 2,
-    icon: '',
     title: '',
   })
   const [showToast, setShowToast] = useState(false)
 
   const openToast = (
-    type: string,
+    icon: string | React.ReactNode,
     title?: string,
     duration?: number,
-    icon?: string,
     content?: string
   ) => {
     const changeState = Object.assign(state, {
-      type,
+      icon,
       content,
       duration,
-      icon,
       title,
     })
     setState(changeState)
@@ -36,7 +32,6 @@ const Demo1 = () => {
   return (
     <>
       <Toast
-        type={state.type}
         content={state.content}
         duration={state.duration}
         icon={state.icon}
@@ -50,7 +45,7 @@ const Demo1 = () => {
         title="文字提示"
         onClick={() => {
           setState({
-            type: 'text',
+            icon: 'text',
             content: '网络失败，请稍后再试~',
           })
           setShowToast(true)

@@ -1,39 +1,27 @@
-import React, { FunctionComponent, MouseEvent } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import {
-  FixedNavType,
-  FixedNavItem,
-  FixedNavPosition,
-} from '@/packages/fixednav/types'
+import { FixedNavProps } from './types.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 
-export interface FixedNavProps extends BasicComponent {
-  visible: boolean
-  overlay: boolean
-  list: Array<FixedNavItem>
-  activeText: string
-  inactiveText: string
-  position: FixedNavPosition
-  type: FixedNavType
-  onChange: (item: any) => void
-  onSelect: (item: any, event: MouseEvent) => void
-  content: React.ReactNode
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: FixedNavProps = {
+  ...defaultOverlayProps,
   activeText: '',
   inactiveText: '',
   type: 'right',
+  list: [],
+  overlay: true,
   position: {
     top: 'auto',
     bottom: 'auto',
   },
-} as FixedNavProps
+  zIndex: 200,
+  onChange: (value: boolean) => {},
+  onSelect: () => {},
+}
 
 export const FixedNav: FunctionComponent<
   Partial<FixedNavProps> &
@@ -51,20 +39,16 @@ export const FixedNav: FunctionComponent<
     activeText,
     inactiveText,
     position,
-    onChange,
-    onSelect,
     type,
     children,
     style,
     content,
-    ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+    zIndex,
+    onChange,
+    onSelect,
+  } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-fixednav'
-
   const classes = classNames(
     classPrefix,
     {
@@ -74,28 +58,19 @@ export const FixedNav: FunctionComponent<
     className
   )
 
-  const handleClick = (item: any, event: MouseEvent): void => {
-    onSelect(item, event)
-  }
-
-  const onUpdateValue = (value = !visible): void => {
-    onChange(value)
-  }
-
   return (
-    <div
+    <View
       className={classes}
       style={{
         ...position,
         ...style,
       }}
-      {...rest}
     >
       {overlay && (
         <Overlay
           visible={visible}
-          style={{ '--nutui-overlay-zIndex': 200 }}
-          onClick={() => onUpdateValue(false)}
+          zIndex={zIndex}
+          onClick={() => onChange(false)}
         />
       )}
       <View className="list">
@@ -105,7 +80,7 @@ export const FixedNav: FunctionComponent<
               return (
                 <View
                   className={`${classPrefix}-list-item`}
-                  onClick={(event) => handleClick(item, event as any)}
+                  onClick={(event) => onSelect(item, event as any)}
                   key={item.id || index}
                 >
                   {React.isValidElement(item.icon) ? (
@@ -124,7 +99,7 @@ export const FixedNav: FunctionComponent<
         )}
       </View>
 
-      <View className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
+      <View className={`${classPrefix}-btn`} onClick={() => onChange(!visible)}>
         {content || (
           <>
             <ArrowLeft color="#fff" />
@@ -136,7 +111,7 @@ export const FixedNav: FunctionComponent<
           </>
         )}
       </View>
-    </div>
+    </View>
   )
 }
 

@@ -1,58 +1,37 @@
-import * as React from 'react'
-import Notification, { NotificationProps } from './Notification'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import Notification from './Notification'
+import { ToastProps } from './index'
+import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
 let messageInstance: any = null
 
-export type ToastPosition = 'top' | 'bottom' | 'center'
-export type ToastIcon =
-  | 'success'
-  | 'fail'
-  | 'loading'
-  | 'warn'
-  | React.ReactNode
-export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
-
-export interface ToastProps extends BasicComponent {
-  id?: string
-  duration?: number
-  position?: ToastPosition
-  title?: string
-  closeOnOverlayClick?: boolean
-  lockScroll?: boolean
-  size?: string | number
-  icon?: ToastIcon
-  content?: React.ReactNode
-  onClose?: () => void
-  contentClassName?: string
-  contentStyle?: React.CSSProperties
-  wordBreak?: ToastWordBreak
-}
-
-let options: ToastProps = {
-  ...ComponentDefaults,
+let defaultProps: ToastProps = {
+  ...defaultOverlayProps,
   id: '',
-  duration: 2, // 时长,duration为0则一直展示
   position: 'center',
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
+  content: '',
+  contentClassName: '',
+  contentStyle: {},
+  wordBreak: 'break-all',
+  duration: 2, // 时长,duration为0则一直展示
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
   lockScroll: false,
-  contentClassName: '',
-  wordBreak: 'break-all',
+  zIndex: 1300,
   onClose: () => {},
 }
 
+type ToastNativeProps = Partial<ToastProps>
+
 function getInstance(
-  props: NotificationProps,
+  props: ToastNativeProps,
   callback: (notification: any) => void
 ) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null
   }
-
   Notification.newInstance(props, (notification: any) => {
     return callback && callback(notification)
   })
@@ -66,8 +45,7 @@ function notice(opts: any) {
       opts.onClose && opts.onClose()
     }
   }
-
-  const opts2 = { ...options, ...opts, onClose: close }
+  const opts2 = { ...defaultProps, ...opts, onClose: close }
   getInstance(opts2, (notification: any) => {
     messageInstance = notification
   })
@@ -79,7 +57,7 @@ const errorMsg = (msg: any) => {
   }
 }
 
-function show(option: ToastProps | string) {
+function show(option: ToastNativeProps | string) {
   if (typeof option === 'string') {
     errorMsg(option)
     return notice({ content: option })
@@ -90,8 +68,8 @@ function show(option: ToastProps | string) {
   })
 }
 
-function config(config: ToastProps) {
-  options = { ...options, ...config }
+function config(config: ToastNativeProps) {
+  defaultProps = { ...defaultProps, ...config }
 }
 
 export default {

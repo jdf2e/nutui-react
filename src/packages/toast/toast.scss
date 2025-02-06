@@ -25,17 +25,14 @@
 
   &-overlay-default {
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
-    --nutui-overlay-zIndex: 1300;
   }
 
   &-overlay-default-taro {
     /* #ifdef harmony */
     background-color: rgba(0, 0, 0, 0);
-    z-index: 1300;
     /* #endif */
     /* #ifndef harmony */
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
-    --nutui-overlay-zIndex: 1300;
     /* #endif */
   }
 

@@ -24,6 +24,8 @@ You can override these CSS variables directly in your code, and the styling of t
 /* After you add this style, the Primary Button turns green */
 :root {
   --nutui-color-primary: green;
+  --nutui-color-primary-stop1: green;
+  --nutui-color-primary-stop2: green;
 }
 ```
 
