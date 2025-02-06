@@ -18,6 +18,7 @@ import CodeBlock from '../doc/components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
 
 const Title = () => {
+  console.log(routers)
   let location = useLocation()
   const isTaro = window.location.pathname.includes('taro')
   const s = window.location.hash.split('/')

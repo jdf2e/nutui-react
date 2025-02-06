@@ -25,7 +25,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     server: {
       port: 2021,
       host: '0.0.0.0',
-      open: '/taro/react/3x/index.react.taro.html',
+      open: '/taro/react/3x/index.taro.html',
       proxy: {
         '/devServer': {
           target: 'https://nutui.jd.com',

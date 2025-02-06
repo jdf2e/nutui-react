@@ -37,9 +37,9 @@ const Nav = () => {
   }, [location])
   const changeNav = (_nav: any) => {
     setActiveName(_nav.name)
-    navigate(`${isZh ? '/zh-CN/' : '/en-US/'}guide/${_nav.name.toLowerCase()}${isTaro? '-taro' : ''}`)
+    navigate(`${isZh ? '/zh-CN/' : '/en-US/'}guide/${_nav.name.toLowerCase()}`)
   }
-  const isTaro = window.location.pathname.includes('-taro')
+  const isTaro = window.location.pathname.includes('taro')
   const isZh = lang === 'zh-CN'
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
@@ -86,7 +86,7 @@ const Nav = () => {
                           className={({ isActive, isPending }) =>
                             isPending ? '' : isActive ? 'active' : ''
                           }
-                          to={`${lang ? `/${lang}` : ''}/component/${cp.name}${isTaro ? '-taro' : ''}`}
+                          to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                         >
                           {cp.name}&nbsp;&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>

@@ -84,7 +84,6 @@ const Header = () => {
   //   window.location.href = link
   // }
   const isReactTaro = window.location.href.includes('taro')
-  console.log(window.location.href)
   const headerBck = SiteReactTaro.header
   const [isShowGuid, setIsShowGuid] = useState(false)
   const [isShowGuid4, setIsShowGuid4] = useState(false)
