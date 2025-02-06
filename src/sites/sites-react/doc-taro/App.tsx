@@ -12,7 +12,7 @@ import {
   routes as routers,
   guideEnTaroRoutes,
   guideTaroRoutes,
-} from '../doc/router'
+} from './router'
 import loadable from '@loadable/component'
 import CodeBlock from '../doc/components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'

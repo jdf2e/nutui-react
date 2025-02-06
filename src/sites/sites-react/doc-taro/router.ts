@@ -25,7 +25,7 @@ for (const path in modulesTaroPage) {
   })
 }
 
-const modulesTaroDocs = import.meta.glob('/src/sites/doc/docs/taro/*.md');
+const modulesTaroDocs = import.meta.glob('/src/sites/sites-react/doc/docs/taro/*.md');
 for (const path in modulesTaroDocs) {
   let name = (/docs\/taro\/(.*).md/.exec(path) as any[])[1];
   guideTaroRoutes.push({
@@ -34,13 +34,13 @@ for (const path in modulesTaroDocs) {
     name
   });
 }
-const modulesEnTaroDocs = import.meta.glob('/src/sites/doc/docs/taro/*.en-US.md');
+const modulesEnTaroDocs = import.meta.glob('/src/sites/sites-react/doc/docs/taro/*.en-US.md');
 for (const path in modulesEnTaroDocs) {
   let name = (/docs\/taro\/(.*).en-US.md/.exec(path) as any[])[1];
   guideEnTaroRoutes.push({
-    path: `/en-US/guide/${name}`,
+    path: `/en-US/guide/${name}-taro`,
     component: modulesEnTaroDocs[path],
     name
   });
 }
-export {routes,guideTaroRoutes, guideEnTaroRoutes}
+export {routes, guideRoutes, guideEnRoutes, guideTaroRoutes, guideEnTaroRoutes}

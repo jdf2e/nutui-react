@@ -11,9 +11,7 @@ import { getComponentName } from '../../assets/util'
 import {
   routes as routers,
   guideEnRoutes,
-  guideRoutes,
-  guideEnTaroRoutes,
-  guideTaroRoutes,
+  guideRoutes
 } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
@@ -89,8 +87,6 @@ const Content = () => {
     ...routers,
     ...guideRoutes,
     ...guideEnRoutes,
-    ...guideTaroRoutes,
-    ...guideEnTaroRoutes,
   ]
   return (
     <div className="doc-content">
