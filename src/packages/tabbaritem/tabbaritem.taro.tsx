@@ -71,6 +71,21 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     color: ctx?.activeColor,
   }
 
+  const renderTitleText = () => {
+    return (
+      title && (
+        <View
+          className={titleClass}
+          style={{
+            color: active ? ctx?.activeColor : ctx?.inactiveColor,
+          }}
+        >
+          {title}
+        </View>
+      )
+    )
+  }
+
   return (
     <View
       className={tabbarItemClass}
@@ -91,26 +106,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
               )}
             </View>
           </Badge>
-          <View
-            className={titleClass}
-            style={{
-              color: active ? ctx?.activeColor : ctx?.inactiveColor,
-            }}
-          >
-            {title}
-          </View>
+          {renderTitleText()}
         </>
       ) : (
-        <Badge {...badgeProps}>
-          <View
-            className={titleClass}
-            style={{
-              color: active ? ctx?.activeColor : ctx?.inactiveColor,
-            }}
-          >
-            {title}
-          </View>
-        </Badge>
+        <Badge {...badgeProps}>{renderTitleText()}</Badge>
       )}
     </View>
   )
