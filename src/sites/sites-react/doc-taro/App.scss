@@ -1,0 +1,254 @@
+$doc-title-height: 137px;
+
+.doc {
+  &-content {
+    margin-left: 290px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    &-document {
+      min-height: 800px;
+
+      .markdown-body {
+        min-height: 600px;
+      }
+    }
+
+    &-tabs {
+      position: absolute;
+      right: 475px;
+      top: 48px;
+      display: flex;
+      height: 40px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+      padding: 2px;
+      box-sizing: border-box;
+
+      border-radius: 2px;
+      background: #eee;
+      box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
+
+      &.single {
+        padding: 0;
+
+        .tab-item {
+          line-height: 40px;
+          cursor: auto;
+        }
+      }
+
+      .tab-item {
+        position: relative;
+        padding: 0 10px;
+        line-height: 36px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #323232;
+        text-align: center;
+        border-radius: 2px;
+        background: #eee;
+
+        &.cur {
+          font-weight: bold;
+          color: #323232;
+          background: #fff;
+        }
+      }
+
+      &.hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    &-contributors {
+      margin: 40px 0;
+
+      a {
+        position: relative;
+      }
+
+      img {
+        height: 26px;
+        height: 26px;
+        border-radius: 50%;
+        margin-left: 8px;
+      }
+
+      .contributors-hover {
+        display: none;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 12px;
+        background-color: #000;
+        border-radius: 5px;
+        position: absolute;
+        /* min-width:150px; */
+        white-space: nowrap;
+        top: -200%;
+        transform: translateX(-55%);
+      }
+
+      a:hover {
+        .contributors-hover {
+          display: inline-block;
+        }
+      }
+    }
+
+    &-contributors-gap {
+      padding-top: 20px;
+      border-top: 1px solid #eeeaea;
+    }
+
+    &-faq {
+      &-title {
+        margin: 38px 0 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      &-item {
+        margin: 0 8px 28px;
+      }
+
+      &-que {
+        font-size: 18px;
+        line-height: 30px;
+        color: #323232;
+        font-weight: 600;
+      }
+
+      &-aws {
+        margin-top: 8px;
+        color: #34495e;
+        font-size: 14px;
+        line-height: 26px;
+      }
+    }
+  }
+
+  &-title {
+    width: 100%;
+    height: $doc-title-height;
+    z-index: 2;
+
+    &-content {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
+      width: calc(100% - 408px);
+
+      .npm-package {
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &-position {
+      top: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px;
+      // line-height: 56px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      visibility: visible;
+      opacity: 1;
+      // transition: opacity 0.8s linear, visibility 0.8s linear;
+      transition: opacity 0.8s;
+
+      &.fixed {
+        width: calc(100% - 290px);
+        position: fixed;
+        padding: 24px 48px;
+        z-index: 999;
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .doc-content-tabs {
+          position: revert;
+        }
+      }
+
+      &.hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+::v-deep(.contributors-banner) {
+  display: flex;
+  width: 800px;
+
+  .banner-link {
+    position: relative;
+    flex: 1;
+    margin-right: 20px;
+
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: all linear 0.2s;
+    }
+
+    &:hover {
+      .shadow {
+        opacity: 1;
+      }
+
+      .img-icon {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 200px;
+  }
+
+  .img-icon {
+    position: absolute;
+    z-index: 999;
+    bottom: -10px;
+    right: 0;
+    width: 80px;
+    height: 70px;
+    transition: all linear 0.2s;
+  }
+
+  .img-icon-book {
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    right: 10px;
+  }
+}
+.doc-backtop {
+  position: fixed;
+  bottom: 14px;
+  right: 200px;
+}

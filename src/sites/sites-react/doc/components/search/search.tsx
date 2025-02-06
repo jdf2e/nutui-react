@@ -80,7 +80,6 @@ export default function Search() {
         style={{ display: searchList.length > 0 ? 'block' : 'none' }}
       >
         {searchList.map((item: any, index) => {
-          console.log(item)
           return (
             <li key={index} className={searchCurName === item.name ? 'cur' : ''} onClick={() => checklist()}>
               <Link to={`/zh-CN/component/${item.name.toLowerCase()}`}>

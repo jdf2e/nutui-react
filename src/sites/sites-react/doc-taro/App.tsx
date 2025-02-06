@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { MDXProvider } from '@mdx-js/react'
 import './App.scss'
-import APPContext from './context'
+import APPContext from '../doc/context'
 import Nav from '../doc/components/nav'
 import Header from '../doc/components/header'
 import DemoPreview from '../doc/components/demo-preview'
@@ -10,13 +10,11 @@ import Issue from '..//doc/components/issue'
 import { getComponentName } from '../../assets/util'
 import {
   routes as routers,
-  guideEnRoutes,
-  guideRoutes,
   guideEnTaroRoutes,
   guideTaroRoutes,
-} from './router'
+} from '../doc/router'
 import loadable from '@loadable/component'
-import CodeBlock from './components/demoblock/codeblock'
+import CodeBlock from '../doc/components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
 
 const Title = () => {
@@ -87,8 +85,6 @@ const Content = () => {
   }, [])
   const routes = [
     ...routers,
-    ...guideRoutes,
-    ...guideEnRoutes,
     ...guideTaroRoutes,
     ...guideEnTaroRoutes,
   ]

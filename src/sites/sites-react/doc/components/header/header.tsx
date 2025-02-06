@@ -83,7 +83,8 @@ const Header = () => {
   //   }
   //   window.location.href = link
   // }
-  const isReactTaro = location.pathname.includes('-taro')
+  const isReactTaro = window.location.href.includes('taro')
+  console.log(window.location.href)
   const headerBck = SiteReactTaro.header
   const [isShowGuid, setIsShowGuid] = useState(false)
   const [isShowGuid4, setIsShowGuid4] = useState(false)
@@ -98,12 +99,12 @@ const Header = () => {
     }
   }, [location])
   const toAnother = () => {
-    if (!location.pathname.includes('taro')) {
-      navigate(location.pathname + '-taro')
-    } else {
-      navigate(location.pathname.replace('-taro', ''))
+    if (window.location.href.includes('taro')) {
+      window.location.href = window.location.href.replace('taro', 'h5');
+    } else if (window.location.href.includes('h5')) {
+      window.location.href = window.location.href.replace('h5', 'taro');
     }
-  }
+  };
   const checkGuidTheme = (item: any, type: string) => {
     setIsShowGuid(false)
     window.open(item.link)

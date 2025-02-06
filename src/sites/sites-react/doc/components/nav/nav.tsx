@@ -39,7 +39,7 @@ const Nav = () => {
     setActiveName(_nav.name)
     navigate(`${isZh ? '/zh-CN/' : '/en-US/'}guide/${_nav.name.toLowerCase()}${isTaro? '-taro' : ''}`)
   }
-  const isTaro = location.pathname.includes('-taro')
+  const isTaro = window.location.pathname.includes('-taro')
   const isZh = lang === 'zh-CN'
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
