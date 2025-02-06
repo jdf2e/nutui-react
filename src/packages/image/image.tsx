@@ -44,14 +44,16 @@ export type ImageFit =
   | 'fill'
   | 'none'
   | 'scale-down'
-  | string
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | (string & {})
 export type ImagePosition =
   | 'center'
   | 'top'
   | 'right'
   | 'bottom'
   | 'left'
-  | string
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  | (string & {})
 
 const classPrefix = 'nut-image'
 

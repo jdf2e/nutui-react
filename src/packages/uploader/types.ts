@@ -9,7 +9,8 @@ export type FileItem = {
 
   url?: string
 
-  type?: 'image' | 'list' | string
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  type?: 'image' | 'list' | (string & {})
 
   path?: string
 

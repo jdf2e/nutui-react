@@ -22,7 +22,8 @@ export type TourType = 'step' | 'tile'
 export interface TourProps extends BasicComponent {
   visible: boolean
   type: TourType
-  location: PopoverLocation | string
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  location: PopoverLocation | (string & {})
   mask: boolean
   maskWidth: number | string
   maskHeight: number | string

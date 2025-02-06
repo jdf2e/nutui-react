@@ -21,8 +21,10 @@ import { useRtl } from '@/packages/configprovider'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
-  theme: PopoverTheme | string
-  location: PopoverLocation | string
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  theme: PopoverTheme | (string & {})
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  location: PopoverLocation | (string & {})
   visible: boolean
   offset: string[] | number[]
   arrowOffset: number
