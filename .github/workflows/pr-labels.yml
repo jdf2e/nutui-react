@@ -2,9 +2,11 @@ name: PR Review Labels
 
 on:
   pull_request_review:
-    types: [submitted, edited, dismissed]  # 添加更多触发类型
+    types: [submitted, edited, dismissed]
   pull_request:
-    types: [review_requested, review_request_removed]  # 添加 review 请求相关的触发
+    types: [opened, reopened, synchronize, ready_for_review, review_requested, review_request_removed]
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
 
 jobs:
   update-labels:
