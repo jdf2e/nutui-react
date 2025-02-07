@@ -1,30 +1,22 @@
 name: PR Review Labels
 
 on:
-  pull_request_review:
-    types: [submitted, edited, dismissed]
-  pull_request:
-    types: [opened, reopened, synchronize, ready_for_review, review_requested, review_request_removed]
   pull_request_target:
     types: [opened, reopened, synchronize, ready_for_review]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
 
-# 添加权限配置
 permissions:
+  contents: read
   pull-requests: write
-  issues: write
-  checks: write
 
 jobs:
   update-labels:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Update PR labels based on reviews
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
             const pr_number = context.payload.pull_request.number;
