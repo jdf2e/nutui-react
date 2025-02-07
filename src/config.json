@@ -499,7 +499,7 @@
           "dd": false
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -508,7 +508,7 @@
           "show": true,
           "taro": true,
           "author": "szg2008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "2.0.0",
