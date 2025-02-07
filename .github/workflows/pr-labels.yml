@@ -12,6 +12,7 @@ on:
 permissions:
   pull-requests: write
   issues: write
+  checks: write
 
 jobs:
   update-labels:
