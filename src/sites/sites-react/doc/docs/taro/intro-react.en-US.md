@@ -31,7 +31,7 @@ NutUI-React component library, based on Taro, uses React technology stack to dev
 Thanks to the following friends for their contributions to NutUI-React:
 
 <a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
-  <img src="https://opencollective.com/nutui-react/contributors.svg?width=890&button=false" alt="contributors">
+  <img src="https://opencollective.com/nutui-react/contributors.svg?width=890&button=false" alt="contributors"/>
 </a>
 
 ## LICENSE
