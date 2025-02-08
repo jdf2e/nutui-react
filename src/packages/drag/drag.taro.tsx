@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { getSystemInfoSync, createSelectorQuery } from '@tarojs/taro'
+import { getWindowInfo, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'
@@ -64,7 +64,7 @@ export const Drag: FunctionComponent<
     const el = myDrag.current
     if (el) {
       const { top, left, bottom, right } = boundary
-      const { screenWidth, windowHeight } = getSystemInfoSync()
+      const { screenWidth, windowHeight } = getWindowInfo()
 
       const { width, height } = await getRectByTaro(dragRef.current)
       dragRef.current?.getBoundingClientRect()

@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames'
 import {
   getEnv,
-  getSystemInfoSync,
+  getWindowInfo,
   PageScrollObject,
   usePageScroll,
 } from '@tarojs/taro'
@@ -129,7 +129,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         setFixed(threshold > curRootRect.top)
       }
     } else {
-      const windowHeight = getSystemInfoSync().windowHeight
+      const windowHeight = getWindowInfo().windowHeight
       setFixed(windowHeight - threshold < curRootRect.bottom)
     }
   }

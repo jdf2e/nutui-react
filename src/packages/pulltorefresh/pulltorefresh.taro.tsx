@@ -159,7 +159,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
   // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
   const isAndroidWeApp =
-    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
+    Taro.getDeviceInfo().platform === 'android' && Taro.getEnv() === 'WEAPP'
+
   const springStyles = {
     height: pxTransform(height),
     ...(!pullingRef.current || isAndroidWeApp

@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useRef } from 'react'
 import {
   createSelectorQuery,
   getEnv,
-  getSystemInfoSync,
+  getWindowInfo,
   useReady,
   useUnload,
 } from '@tarojs/taro'
@@ -31,7 +31,7 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
     }
   }
   useImperativeHandle(ref, () => animation.current || {})
-  const dpr = useRef(getSystemInfoSync().pixelRatio)
+  const dpr = useRef(getWindowInfo().pixelRatio)
   useReady(() => {
     createSelectorQuery()
       .select(`#${id}`)
