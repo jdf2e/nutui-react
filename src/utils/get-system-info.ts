@@ -7,7 +7,7 @@ interface IDeviceInfo
  * 获取设备基础信息，兼容新旧 API
  * @returns {IDeviceInfo} 设备基础信息
  */
-export function getDeviceInfo(): IDeviceInfo {
+export const getDeviceInfo = (): IDeviceInfo => {
   return Taro.canIUse('getDeviceInfo')
     ? Taro.getDeviceInfo()
     : Taro.getSystemInfoSync()
@@ -17,7 +17,7 @@ export function getDeviceInfo(): IDeviceInfo {
  * 获取窗口信息，兼容新旧 API
  * @returns {Taro.getWindowInfo.Result} 窗口信息
  */
-export function getWindowInfo(): Taro.getWindowInfo.Result {
+export const getWindowInfo = (): Taro.getWindowInfo.Result => {
   return Taro.canIUse('getWindowInfo')
     ? Taro.getWindowInfo()
     : Taro.getSystemInfoSync()
@@ -27,7 +27,7 @@ export function getWindowInfo(): Taro.getWindowInfo.Result {
  * 获取应用基础信息，兼容新旧 API
  * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
  */
-export function getAppBaseInfo(): Taro.getAppBaseInfo.Result {
+export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
   return Taro.canIUse('getAppBaseInfo')
     ? Taro.getAppBaseInfo()
     : Taro.getSystemInfoSync()
