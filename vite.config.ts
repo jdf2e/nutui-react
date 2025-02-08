@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
+let fileStr = `@use "@/styles/variables.scss" as *;@use '@/styles/theme-default.scss' as *;\n`
 if (projectID) {
   fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/font-${projectID}/iconfont.css';\n@import '@/styles/theme-${projectID}.scss';\n`
 }
@@ -93,7 +93,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           api: 'modern-compiler',
           additionalData: fileStr,
           // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
-          silenceDeprecations: ['import', 'global-builtin'],
+          // silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
           plugins: [atImport({ path: join(__dirname, 'src`') })],

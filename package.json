@@ -1,10 +1,11 @@
 {
   "name": "@nutui/nutui-react-taro",
   "version": "3.0.0-beta.12",
-  "style": "dist/style.css",
+  "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
   "typings": "dist/es/packages/nutui.react.build.d.ts",
+  "style": "dist/style.css",
   "sideEffects": [
     "*.scss",
     "dist/es/**/style/*",
@@ -13,7 +14,6 @@
     "dist/styles/font/*",
     "dist/styles/font-jmapp/*"
   ],
-  "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "keywords": [
     "nutui",
     "nutui2",
@@ -44,6 +44,10 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "lint-staged": {
+    "*.{scss,md}": "prettier --write",
+    "*.{ts,tsx,js}": "eslint --fix"
+  },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",
     "add:taro:config": "node scripts/taro/generate-taro-route.js",
@@ -52,11 +56,9 @@
     "changelog": "node ./scripts/generate-changelog.js",
     "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
     "dev": "vite --open --force",
-    "dev:rtl": "VITE_RTL=rtl vite --open --force",
-    "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf vite --open --force",
-    "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
+    "dev:rtl": "VITE_RTL=rtl npm run dev",
+    "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf npm run dev",
     "dev:taro": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev",
-    "dev:taro:h5": "pnpm dev:taro h5",
     "dev:jdtaro": "pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:jdtaro:jdharmonycpp": "pnpm run clone:jdharmony cpp &&pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmonycpp",
     "dev:jdtaro:jdharmony": "pnpm run clone:jdharmony  && pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
@@ -93,10 +95,6 @@
     "e2e:open:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:open:taro",
     "update:taro:entry": "node ./scripts/harmony/update-taro-entry",
     "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro"
-  },
-  "lint-staged": {
-    "*.{scss,md}": "prettier --write",
-    "*.{ts,tsx,js}": "eslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
@@ -228,7 +226,6 @@
   "resolutions": {
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
-    "sass": "1.77.6",
     "@tarojs/api": "4.0.8-beta.1",
     "@tarojs/components": "4.0.8-beta.1"
   }

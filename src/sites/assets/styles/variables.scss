@@ -8,6 +8,10 @@ $doc-default-primary-bg: linear-gradient(
   rgba(250, 63, 25, 1) 100%
 );
 
+$color-title: var(--nutui-gray-7, #1a1a1a) !default;
+$white: #ffffff !default;
+$black: $color-title !default;
+
 // color
 // 红色
 $theme-red: #ff0f23;
@@ -80,6 +84,7 @@ $doc-header-bg: url('../../assets/images/header-bg.png') no-repeat;
 // nav
 $doc-default-nav-bg: $white;
 $doc-default-nav-color: $color-title;
+
 // home
 $theme-black-content-bg: #060506;
 

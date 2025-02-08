@@ -3,6 +3,7 @@
 .nut-calendar {
   position: relative;
   display: flex;
+
   flex-direction: column;
   flex: 1;
   font-size: $calendar-base-font-size;

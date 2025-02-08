@@ -1,5 +1,5 @@
 @import '../progress/progress.scss';
-@import '../../styles/mixins/text-ellipsis.scss';
+@use '../../styles/mixins/text-ellipsis.scss' as *;
 
 .nut-uploader {
   position: relative;

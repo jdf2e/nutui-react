@@ -1,6 +1,6 @@
 @import '../price/price.scss';
 @import '../tag/tag.scss';
-@import '../../styles/mixins/text-ellipsis.scss';
+@use '../../styles/mixins/text-ellipsis.scss' as *;
 
 .nut-card {
   width: 100%;
