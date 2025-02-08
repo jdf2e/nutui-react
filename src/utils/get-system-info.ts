@@ -3,29 +3,32 @@ import Taro from '@tarojs/taro'
 interface IDeviceInfo
   extends Omit<Taro.getDeviceInfo.Result, 'deviceAbi' | 'CPUType'> {}
 
-// 获取设备基础信息，兼容新旧 API
+/**
+ * 获取设备基础信息，兼容新旧 API
+ * @returns {IDeviceInfo} 设备基础信息
+ */
 export function getDeviceInfo(): IDeviceInfo {
-  if (Taro.canIUse('getDeviceInfo')) {
-    return Taro.getDeviceInfo()
-  }
-
-  return Taro.getSystemInfoSync()
+  return Taro.canIUse('getDeviceInfo')
+    ? Taro.getDeviceInfo()
+    : Taro.getSystemInfoSync()
 }
 
-// 获取窗口信息，兼容新旧 API
+/**
+ * 获取窗口信息，兼容新旧 API
+ * @returns {Taro.getWindowInfo.Result} 窗口信息
+ */
 export function getWindowInfo(): Taro.getWindowInfo.Result {
-  if (Taro.canIUse('getWindowInfo')) {
-    return Taro.getWindowInfo()
-  }
-
-  return Taro.getSystemInfoSync()
+  return Taro.canIUse('getWindowInfo')
+    ? Taro.getWindowInfo()
+    : Taro.getSystemInfoSync()
 }
 
-// 获取应用基础信息，兼容新旧 API
+/**
+ * 获取应用基础信息，兼容新旧 API
+ * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
+ */
 export function getAppBaseInfo(): Taro.getAppBaseInfo.Result {
-  if (Taro.canIUse('getAppBaseInfo')) {
-    return Taro.getAppBaseInfo()
-  }
-
-  return Taro.getSystemInfoSync()
+  return Taro.canIUse('getAppBaseInfo')
+    ? Taro.getAppBaseInfo()
+    : Taro.getSystemInfoSync()
 }
