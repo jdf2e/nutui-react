@@ -5,13 +5,10 @@ import React, {
   useCallback,
   FunctionComponent,
 } from 'react'
-import Taro, {
-  useReady,
-  createSelectorQuery,
-  getWindowInfo,
-} from '@tarojs/taro'
+import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas, CommonEventFunction, View } from '@tarojs/components'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 

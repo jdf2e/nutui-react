@@ -8,13 +8,9 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import {
-  getEnv,
-  getWindowInfo,
-  PageScrollObject,
-  usePageScroll,
-} from '@tarojs/taro'
+import { getEnv, PageScrollObject, usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/utils/use-watch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { getWindowInfo, createSelectorQuery } from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'

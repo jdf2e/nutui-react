@@ -1,12 +1,7 @@
 import React, { useImperativeHandle, useRef } from 'react'
-import {
-  createSelectorQuery,
-  getEnv,
-  getWindowInfo,
-  useReady,
-  useUnload,
-} from '@tarojs/taro'
+import { createSelectorQuery, getEnv, useReady, useUnload } from '@tarojs/taro'
 import lottie from 'lottie-miniprogram'
+import { getWindowInfo } from '@/utils/get-system-info'
 import useUuid from '@/utils/use-uuid'
 import { LottieProps } from './types'
 

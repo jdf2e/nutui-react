@@ -9,10 +9,11 @@ import React, {
   useRef,
 } from 'react'
 import classNames from 'classnames'
-import { getWindowInfo, usePageScroll } from '@tarojs/taro'
+import { usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react-taro'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { Overlay } from '@/packages/overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
