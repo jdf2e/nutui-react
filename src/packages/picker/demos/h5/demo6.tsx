@@ -71,16 +71,15 @@ const Demo6 = () => {
     selectedValue: PickerValue[]
   ) => {
     console.log('onconfirm', selectedOptions, selectedValue)
-    const str = selectedOptions.map((item) => item.label).join('-')
-    setCityCustom(selectedValue.join('-'))
+    const city = selectedOptions.map((item) => item.label).join('-')
+    setCityCustom(city)
     setValue(selectedValue)
   }
 
-  console.log('demo6===>value', value)
   return (
     <>
       <Cell
-        title="多级联动"
+        title="请选择城市"
         description={cityCustom}
         onClick={() => setIsVisible(!isVisible)}
       />

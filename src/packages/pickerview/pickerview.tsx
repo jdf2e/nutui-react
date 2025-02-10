@@ -160,13 +160,16 @@ const InternalPickerView: ForwardRefRenderFunction<
   )
 
   const selectedOptions = useMemo(() => {
-    return options.map((columnOptions, index) => {
-      const selectedOption = columnOptions.find(
-        (item) => item.value === innerValue[index]
-      )
-      return selectedOption || columnOptions[0]
-    })
-  }, [options, innerValue])
+    return innerOptions
+      .map((columnOptions, index) => {
+        const selectedOption = columnOptions.find(
+          (item) => item.value === innerValue[index]
+        )
+        return selectedOption
+        // return selectedOption || columnOptions[0]
+      })
+      .filter(Boolean) as PickerOptionItem[]
+  }, [innerOptions, innerValue])
 
   useEffect(() => {
     console.log('onChange', {

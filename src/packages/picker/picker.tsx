@@ -5,7 +5,6 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
   useImperativeHandle,
-  useMemo,
 } from 'react'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
@@ -95,7 +94,7 @@ const InternalPicker: ForwardRefRenderFunction<
     defaultValue: [...defaultValue],
     finalValue: [...defaultValue],
     onChange: (value: PickerValue[]) => {
-      props.onConfirm?.(selectedOptions, value)
+      props.onConfirm?.(selectedOptionsRef.current, value)
     },
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
@@ -104,10 +103,11 @@ const InternalPicker: ForwardRefRenderFunction<
     finalValue: false,
     onChange: (v: boolean) => {
       if (!v) {
-        props.onClose?.(selectedOptions, innerValue)
+        props.onClose?.(selectedOptionsRef.current, innerValue)
       }
     },
   })
+
   const actions: PickerActions = {
     open: () => {
       setInnerVisible(true)
@@ -116,42 +116,15 @@ const InternalPicker: ForwardRefRenderFunction<
       setInnerVisible(false)
     },
   }
-
   useImperativeHandle(ref, () => actions)
 
   const [innerValue, setInnerValue] = useState(selectedValue)
   const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
+  const selectedOptionsRef = useRef([] as PickerOptionItem[])
   const changeIndex = useRef<number>(-1)
   const isConfirmEvent = useRef(false)
   const pickerRef = useRef<any>(null)
   const [refs, setRefs] = useRefs()
-
-  const formatCascadeOptions = (
-    options: PickerOptions,
-    values: PickerValue[]
-  ) => {
-    if (!options.length || !values.length) return []
-
-    const formatted: PickerOptions[] = []
-    let currentOptions: PickerOptions = options
-
-    for (let i = 0; i < values.length; i++) {
-      const value = values[i]
-      const foundItem = currentOptions.find((item) => item.value === value)
-
-      if (!foundItem) break // 如果未找到匹配项，终止循环
-
-      formatted.push(currentOptions) // 将当前层级的选项添加到结果中
-
-      if (foundItem.children) {
-        currentOptions = foundItem.children // 更新当前层级为子选项
-      } else {
-        break // 如果没有子选项，终止循环
-      }
-    }
-
-    return formatted
-  }
 
   useEffect(() => {
     if (innerVisible) {
@@ -162,37 +135,36 @@ const InternalPicker: ForwardRefRenderFunction<
   }, [options, innerVisible, selectedValue, innerOptions])
 
   useEffect(() => {
-    console.log('innerValue变更onChange', innerValue, innerVisible)
+    console.log(
+      'innerValue变更onChange',
+      innerValue,
+      innerVisible,
+      'innerVisible为false不执行'
+    )
     innerVisible &&
       onChange &&
       onChange({
-        selectedOptions,
+        selectedOptions: selectedOptionsRef.current,
         value: innerValue,
         index: changeIndex.current,
       })
   }, [innerValue, innerVisible])
 
-  const selectedOptions = useMemo(() => {
-    console.log('selectedOptions', innerOptions)
-    const options: PickerOptions = []
-    let currOptions = []
-    innerOptions.forEach((columnOptions: PickerOptions, index: number) => {
-      currOptions = columnOptions.filter(
-        (item) => item.value === innerValue[index]
-      )
-      if (currOptions[0]) {
-        options.push(currOptions[0])
-      }
-    })
-    return options
-  }, [innerOptions, innerValue])
+  //   const selectedOptions = useMemo(() => {
+  //     console.log('selectedOptions.current', selectedOptionsObj.current)
+  //     return selectedOptionsObj.current
+  //   }, [selectedOptionsObj.current])
 
-  //   确保value值变更再返回
   const onChangeItem = ({
     value,
     index,
     selectedOptions,
   }: PickerOnChangeCallbackParameter) => {
+    if (selectedOptions?.length) {
+      selectedOptionsRef.current = selectedOptions
+    }
+
+    console.log('selectedOptions', selectedOptions)
     if (isEqual(value, innerValue)) return
     console.log('onChangeItem', value, innerValue, index, selectedOptions)
     setInnerValue(value)
@@ -242,8 +214,6 @@ const InternalPicker: ForwardRefRenderFunction<
       </div>
     )
   }
-
-  console.log('innerValue渲染子组件', innerValue)
 
   const renderPickerElement = () => {
     return (

@@ -108,7 +108,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       const minDeg = 0
 
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
-      if (minDeg < deg && deg < maxDeg) {
+      if (minDeg <= deg && deg < maxDeg) {
         setTransform('', `${deg}deg`, undefined, updateMove)
         setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing.current)) + 1)
       }
