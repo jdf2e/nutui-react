@@ -1,6 +1,5 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -10,6 +9,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
 const FormDemo = () => {
   const [translated] = useTranslate({
@@ -21,6 +21,7 @@ const FormDemo = () => {
       title4: 'Form.useForm 对表单数据域进行交互。',
       title5: '表单类型',
       validateTrigger: '校验触发时机',
+      useWatch: 'useWatch',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -30,28 +31,31 @@ const FormDemo = () => {
       title4: 'Interact with form data fields via Form.useForm',
       title5: 'Form Type',
       validateTrigger: 'Validate Trigger',
+      useWatch: 'useWatch',
     },
   })
 
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View className="h2">{translated.basic}</View>
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <h2>{translated.basic}</h2>
         <Demo1 />
-        <View className="h2">{translated.title2}</View>
+        <h2>{translated.title2}</h2>
         <Demo2 />
-        <View className="h2">{translated.relatedDisplay}</View>
+        <h2>{translated.relatedDisplay}</h2>
         <Demo3 />
-        <View className="h2">{translated.title3}</View>
+        <h2>{translated.title3}</h2>
         <Demo4 />
-        <View className="h2">{translated.title4}</View>
+        <h2>{translated.title4}</h2>
         <Demo5 />
-        <View className="h2">{translated.validateTrigger}</View>
+        <h2>{translated.validateTrigger}</h2>
         <Demo6 />
-        <View className="h2">{translated.title5}</View>
+        <h2>{translated.title5}</h2>
         <Demo7 />
-      </ScrollView>
+        <h2>{translated.useWatch}</h2>
+        <Demo8 />
+      </div>
     </>
   )
 }

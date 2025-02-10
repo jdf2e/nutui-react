@@ -14,7 +14,6 @@ import {
   Range,
 } from '@nutui/nutui-react-taro'
 import { ArrowRight } from '@nutui/icons-react-taro'
-import { View } from '@tarojs/components'
 
 const Demo7 = () => {
   const pickerOptions = [
@@ -38,7 +37,7 @@ const Demo7 = () => {
       <Form
         style={{ '--nutui-form-item-label-width': '120px' }}
         footer={
-          <View
+          <div
             style={{
               display: 'flex',
               justifyContent: 'center',
@@ -51,7 +50,7 @@ const Demo7 = () => {
             <Button nativeType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
-          </View>
+          </div>
         }
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
@@ -59,7 +58,7 @@ const Demo7 = () => {
         <Form.Item label="Input" name="form_input">
           <Input placeholder="placeholder" />
         </Form.Item>
-        <Form.Item label="Switch" name="switch">
+        <Form.Item label="Switch" name="switch" valuePropName="checked">
           <Switch />
         </Form.Item>
         <Form.Item label="Checkbox" name="checkbox">

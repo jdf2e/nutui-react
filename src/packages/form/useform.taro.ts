@@ -1,15 +1,17 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Schema from 'async-validator'
+import { merge, recursive } from '@/utils/merge'
 import {
-  Store,
   Callbacks,
-  FormInstance,
   FormFieldEntity,
+  FormInstance,
   NamePath,
+  Store,
 } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
 type UpdateItem = { entity: FormFieldEntity; condition: any }
+type WatchCallback = (value: Store, namePath: NamePath[]) => void
 
 /**
  * 用于存储表单的数据
@@ -44,11 +46,9 @@ class FormStore {
    */
   registerField = (field: any) => {
     this.fieldEntities.push(field)
+
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item !== field)
-      if (this.store) {
-        delete this.store[field.props.name]
-      }
     }
   }
 
@@ -74,16 +74,22 @@ class FormStore {
     return fieldsValue
   }
 
+  updateStore(nextStore: Store) {
+    this.store = nextStore
+  }
+
   /**
    * 设置 form 的初始值，之后在 reset 的时候使用
    * @param values
    * @param init
    */
 
-  setInitialValues = (values: Store, init: boolean) => {
+  setInitialValues = (initialValues: Store, init: boolean) => {
+    this.initialValues = initialValues || {}
     if (init) {
-      this.initialValues = values
-      this.store = values
+      const nextStore = merge(initialValues, this.store)
+      this.updateStore(nextStore)
+      this.notifyWatch()
     }
   }
 
@@ -91,11 +97,9 @@ class FormStore {
    * 存储组件数据
    * @param newStore { [name]: newValue }
    */
-  setFieldsValue = (newStore: any, needValidate = true) => {
-    this.store = {
-      ...this.store,
-      ...newStore,
-    }
+  setFieldsValue = (newStore: any) => {
+    const nextStore = recursive(true, this.store, newStore)
+    this.updateStore(nextStore)
     this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
       Object.keys(newStore).forEach((key) => {
@@ -113,7 +117,15 @@ class FormStore {
         item.entity.onStoreChange('update')
       }
     })
-    needValidate && this.validateFields()
+    this.notifyWatch()
+  }
+
+  setFieldValue = <T>(name: NamePath, value: T) => {
+    const store = {
+      [name]: value,
+    }
+    this.setFieldsValue(store)
+    this.notifyWatch([name])
   }
 
   setCallback = (callback: Callbacks) => {
@@ -125,6 +137,12 @@ class FormStore {
 
   validateEntities = async (entity: FormFieldEntity, errs: any[]) => {
     const { name, rules = [] } = entity.props
+
+    if (!name) {
+      console.warn('Form field missing name property')
+      return
+    }
+
     const descriptor: any = {}
     if (rules.length) {
       // 多条校验规则
@@ -158,7 +176,7 @@ class FormStore {
 
   validateFields = async (nameList?: NamePath[]) => {
     let filterEntities = []
-    this.errors.length = 0
+    // this.errors.length = 0
     if (!nameList || nameList.length === 0) {
       filterEntities = this.fieldEntities
     } else {
@@ -184,12 +202,29 @@ class FormStore {
     }
   }
 
-  resetFields = () => {
-    this.errors.length = 0
-    this.store = this.initialValues
-    this.fieldEntities.forEach((entity: FormFieldEntity) => {
-      entity.onStoreChange('reset')
-    })
+  resetFields = (namePaths?: NamePath[]) => {
+    if (namePaths && namePaths.length) {
+      namePaths.forEach((path) => {
+        this.errors[path] = null
+        this.fieldEntities.forEach((entity: FormFieldEntity) => {
+          const name = entity.props.name
+          if (name === path) {
+            if (path in this.initialValues) {
+              this.updateStore({ [path]: this.initialValues[path] })
+            } else {
+              delete this.store[path]
+            }
+            entity.onStoreChange('reset')
+          }
+        })
+      })
+    } else {
+      const nextStore = merge({}, this.initialValues)
+      this.updateStore(nextStore)
+      this.fieldEntities.forEach((entity: FormFieldEntity) => {
+        entity.onStoreChange('reset')
+      })
+    }
   }
 
   // 监听事件
@@ -217,6 +252,7 @@ class FormStore {
         store: this.store,
         fieldEntities: this.fieldEntities,
         registerUpdate: this.registerUpdate,
+        registerWatch: this.registerWatch,
       }
     }
   }
@@ -226,11 +262,36 @@ class FormStore {
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
+      setFieldValue: this.setFieldValue,
       resetFields: this.resetFields,
       validateFields: this.validateFields,
       submit: this.submit,
       errors: this.errors,
       getInternal: this.getInternal,
+    }
+  }
+
+  private watchList: WatchCallback[] = []
+
+  private registerWatch = (callback: WatchCallback) => {
+    this.watchList.push(callback)
+
+    return () => {
+      this.watchList = this.watchList.filter((fn) => fn !== callback)
+    }
+  }
+
+  private notifyWatch = (namePath: NamePath[] = []) => {
+    if (this.watchList.length) {
+      let allValues
+      if (!namePath || namePath.length === 0) {
+        allValues = this.getFieldsValue(true)
+      } else {
+        allValues = this.getFieldsValue(namePath)
+      }
+      this.watchList.forEach((callback) => {
+        callback(allValues, namePath)
+      })
     }
   }
 }
@@ -245,5 +306,24 @@ export const useForm = (form?: FormInstance): [FormInstance] => {
       formRef.current = formStore.getForm() as FormInstance
     }
   }
-  return [formRef.current]
+  return [formRef.current as FormInstance]
+}
+
+export const useWatch = (path: NamePath, form: FormInstance) => {
+  const formInstance = form.getInternal(SECRET)
+  const [value, setValue] = useState<any>()
+  useEffect(() => {
+    const unsubscribe = formInstance.registerWatch(
+      (data: any, namePath: NamePath) => {
+        const value = data[path]
+        setValue(value)
+      }
+    )
+    const initialValue = form.getFieldsValue(true)
+    if (value !== initialValue[path]) {
+      setValue(initialValue[path])
+    }
+    return () => unsubscribe()
+  }, [form])
+  return value
 }
