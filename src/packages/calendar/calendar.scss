@@ -36,6 +36,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+
+    &-buttons {
+      height: $calendar-header-height;
+    }
   }
 
   &-title {
@@ -49,10 +53,6 @@
     padding: 7px 0;
     line-height: 22px;
     font-size: $calendar-sub-title-font-size;
-  }
-
-  &-header-buttons {
-    height: $calendar-header-height;
   }
 
   &-weeks {
@@ -103,12 +103,12 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-  }
 
-  &-month-title {
-    height: 23px;
-    line-height: 23px;
-    margin: 8px 0;
+    &-title {
+      height: 23px;
+      line-height: 23px;
+      margin: 8px 0;
+    }
   }
 
   &-days {
@@ -132,15 +132,8 @@
       color: $color-primary;
     }
 
+    &-info,
     &-info-curr {
-      position: absolute;
-      bottom: 5px;
-      width: 100%;
-      font-size: 12px;
-      line-height: 14px;
-    }
-
-    &-info {
       position: absolute;
       bottom: 5px;
       width: 100%;
@@ -190,18 +183,18 @@
       }
     }
 
-    &-choose-disabled {
-      background-color: $calendar-choose-disable-background-color;
-      color: $calendar-disable-color !important;
-
-      .nut-calendar-day-info-curr {
-        display: none;
-      }
-    }
-
     &-choose {
       background-color: $calendar-choose-background-color;
       color: $calendar-choose-color;
+
+      &-disabled {
+        background-color: $calendar-choose-disable-background-color;
+        color: $calendar-disable-color !important;
+
+        .nut-calendar-day-info-curr {
+          display: none;
+        }
+      }
     }
   }
 
@@ -213,13 +206,14 @@
     background-color: $white;
 
     .calendar-confirm-btn {
-      height: 44px;
-      margin: 10px 18px;
-      border-radius: 22px;
+      height: 40px;
+      line-height: 40px;
+      margin: 6px 16px;
+      text-align: center;
+      border-radius: $radius-base;
       background: $button-primary-background-color;
       color: $color-primary-text;
-      text-align: center;
-      line-height: 44px;
+      font-weight: $font-weight-bold;
     }
   }
 }
