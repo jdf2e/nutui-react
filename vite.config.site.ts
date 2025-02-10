@@ -97,6 +97,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
         },
       ],
     },
+    define: {
+      __DEMO_PATH__: JSON.stringify('/h5/react/3x/demo.html#'),
+    },
     css: {
       preprocessorOptions: {
         scss: {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './demo-preview.scss'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 const DemoPreview = (props: any) => {
   const location = useLocation()

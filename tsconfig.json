@@ -45,7 +45,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx"
-  ],
+, "global.d.ts"  ],
   "exclude": [
     "./node_modules/**",
     "src/sites/**",

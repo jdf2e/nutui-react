@@ -23,6 +23,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
       host: '0.0.0.0',
     },
     base: '/react/',
+    define: {
+      __DEMO_PATH__: JSON.stringify('/react/demo.html#'),
+    },
     resolve: {
       alias: [
         {
