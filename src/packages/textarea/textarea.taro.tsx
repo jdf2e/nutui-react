@@ -1,7 +1,13 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { Textarea, TextareaProps, View, Text } from '@tarojs/components'
+import {
+  BaseEventOrig,
+  Text,
+  Textarea,
+  TextareaProps,
+  View,
+} from '@tarojs/components'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -21,8 +27,8 @@ export interface TextAreaProps
   plain: boolean
   status: 'error' | 'default'
   onChange: (value: string) => void
-  onBlur: (event: Event) => void
-  onFocus: (event: Event) => void
+  onBlur: (event: BaseEventOrig) => void
+  onFocus: (event: BaseEventOrig) => void
 }
 
 const defaultProps = {
@@ -77,7 +83,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     onChange,
   })
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: BaseEventOrig) => {
     const text = event?.detail?.value
     if (text) {
       const value = compositionRef.current ? text : format(text)
@@ -87,16 +93,16 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     }
   }
 
-  const handleFocus = (event: Event) => {
-    if (disabled) return
-    if (readOnly) return
-    onFocus && onFocus(event)
+  const isDisabled = () => disabled || readOnly
+
+  const handleFocus = (event: BaseEventOrig) => {
+    if (isDisabled()) return
+    onFocus?.(event)
   }
 
-  const handleBlur = (event: Event) => {
-    if (disabled) return
-    if (readOnly) return
-    onBlur && onBlur(event)
+  const handleBlur = (event: BaseEventOrig) => {
+    if (isDisabled()) return
+    onBlur?.(event)
   }
 
   return (
@@ -104,15 +110,19 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
       <View
         className={classNames(
           classPrefix,
-          disabled ? `${classPrefix}-disabled` : '',
-          readOnly ? `${classPrefix}-readonly` : '',
-          rtl ? `${classPrefix}-rtl` : '',
-          plain ? `${classPrefix}-plain` : `${classPrefix}-container`,
-          status ? `${classPrefix}-${status}` : '',
+          {
+            [`${classPrefix}-disabled`]: disabled,
+            [`${classPrefix}-readonly`]: readOnly,
+            [`${classPrefix}-rtl`]: rtl,
+            [`${classPrefix}-plain`]: plain,
+            [`${classPrefix}-container`]: !plain,
+            [`${classPrefix}-${status}`]: status,
+          },
           className
         )}
       >
         <Textarea
+          {...rest}
           nativeProps={{
             style,
             readOnly,
@@ -124,22 +134,27 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
               compositionRef.current = false
             },
           }}
-          className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
+          className={classNames(`${classPrefix}-textarea`, {
+            [`${classPrefix}-textarea-disabled`]: disabled,
+          })}
           style={Taro.getEnv() === 'WEB' ? undefined : style}
           disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
           // @ts-ignore
           value={inputValue}
-          onInput={(e: any) => handleChange(e)}
-          onBlur={(e: any) => handleBlur(e)}
-          onFocus={(e: any) => handleFocus(e)}
+          onInput={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           autoHeight={autoSize}
           maxlength={maxLength}
-          placeholder={placeholder || locale.placeholder}
-          {...rest}
+          placeholder={
+            placeholder !== undefined ? placeholder : locale.placeholder
+          }
         />
         {showCount && (
           <Text
-            className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+            className={classNames(`${classPrefix}-limit`, {
+              [`${classPrefix}-limit-disabled`]: disabled,
+            })}
           >
             {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
           </Text>
