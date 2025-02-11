@@ -2,10 +2,8 @@ name: Release NPM Packages
 
 on:
   push:
-    branches:
-      - feat_v3.x.
-  pull_request:
-    types: [ opened, synchronize, reopened ]
+    tags:
+      - 'v3*'
   workflow_dispatch:
 
 jobs:
