@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run:  npm install -g pnpm@v9.
+        run:  npm install -g pnpm@v9
 
       - uses: actions/setup-node@v4
         with:
