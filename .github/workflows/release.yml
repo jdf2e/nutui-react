@@ -35,4 +35,4 @@ jobs:
         run: cd ./release/h5 && npm publish --dry-run
 
       - name: Run Releases @nutui/nutui-react-taro
-        run: cd ../../release/taro && npm publish --dry-run
+        run: cd ./release/taro && npm publish --dry-run
