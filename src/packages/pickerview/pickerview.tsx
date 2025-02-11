@@ -58,12 +58,12 @@ const InternalPickerView: ForwardRefRenderFunction<
    * 数据类型：级联、多列
    */
   const columnsType = useMemo(() => {
-    const [firstColumn] = options
+    const [firstColumn] = props.options as PickerOptions[]
     if (Array.isArray(firstColumn) && 'children' in firstColumn[0]) {
       return 'cascade'
     }
     return 'multiple'
-  }, [options])
+  }, [props.options])
 
   const formatCascadeOptions = (
     options: PickerOptions,
@@ -103,20 +103,20 @@ const InternalPickerView: ForwardRefRenderFunction<
   }
 
   const formatOptions = useMemo(() => {
-    if (columnsType === 'multiple') {
-      return options
-    }
     if (columnsType === 'cascade') {
-      return formatCascadeOptions(options[0] as PickerOptions, innerValue)
+      return formatCascadeOptions(
+        props?.options?.[0] as PickerOptions,
+        innerValue
+      )
     }
-    return options
+    return props.options
   }, [innerValue, options, columnsType])
 
   useEffect(() => {
-    if (options !== innerOptions) {
-      setInnerOptions(formatOptions)
+    if (props.options !== innerOptions) {
+      setInnerOptions(formatOptions as PickerOptions[])
     }
-  }, [options, innerValue])
+  }, [props.options, innerValue])
 
   useEffect(() => {
     if (selectedValue !== innerValue) {
@@ -126,7 +126,6 @@ const InternalPickerView: ForwardRefRenderFunction<
 
   const handleSelect = useCallback(
     (option: PickerOptionItem, index: number) => {
-      console.log(innerValue, options, columnsType, innerOptions)
       const newValue = option?.value
       if (!newValue || innerValue[index] === newValue) return
       changeIndex.current = index
@@ -153,20 +152,19 @@ const InternalPickerView: ForwardRefRenderFunction<
           ...innerValue.slice(0, startIndex),
           ...values.splice(startIndex),
         ]
-        console.log('combineResult', combineResult)
         setInnerValue([...combineResult])
-
+        const optionFirst = props?.options?.[0] as PickerOptionItem[]
         if (
           !isEqual(
-            formatCascadeOptions(options[0], combineResult),
+            formatCascadeOptions(optionFirst, combineResult),
             innerOptions
           )
         ) {
-          setInnerOptions(formatCascadeOptions(options[0], combineResult))
+          setInnerOptions(formatCascadeOptions(optionFirst, combineResult))
         }
       }
     },
-    [innerValue, options, columnsType, innerOptions]
+    [innerValue, props.options, columnsType, innerOptions]
   )
 
   const selectedOptions = useMemo(() => {
@@ -186,18 +184,20 @@ const InternalPickerView: ForwardRefRenderFunction<
       value: innerValue,
       index: changeIndex.current,
       selectedOptions,
+      innerOptions,
     })
     onChange?.({
       value: innerValue,
       index: changeIndex.current,
       selectedOptions,
     })
-  }, [innerValue, onChange])
+  }, [innerValue, selectedOptions, onChange])
 
   return (
     <div className={cls} style={style}>
       {innerOptions.map((item, index) => (
         <PickerRoller
+          ref={props?.setRefs?.(index)}
           key={index}
           keyIndex={index}
           value={innerValue[index] as PickerValue}

@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react-taro'
 
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo2 = () => {
   const [visible, setVisible] = useState(false)
-  const [baseDefault, setbaseDefault] = useState('')
+  const [baseDesc, setBaseDesc] = useState('无锡市')
   const [defaultValue] = useState([2])
-
-  const listData1 = [
+  const options = [
     [
       { value: 1, label: '南京市' },
       { value: 2, label: '无锡市' },
@@ -27,28 +24,28 @@ const Demo2 = () => {
     ],
   ]
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: any) => {
+      description += ` ${option.label}`
     })
-    setbaseDefault(description)
+    setBaseDesc(description)
   }
   return (
     <>
       <Cell
         title="请选择城市"
-        description={baseDefault}
+        description={baseDesc}
         onClick={() => setVisible(!visible)}
       />
       <Picker
         title="请选择城市"
         visible={visible}
-        options={listData1}
         defaultValue={defaultValue}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        options={options}
+        onConfirm={confirmPicker}
         onClose={() => setVisible(false)}
       />
     </>

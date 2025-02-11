@@ -27,6 +27,7 @@ export interface PickerOnChangeCallbackParameter {
 }
 
 export interface PickerViewProps extends BasicComponent {
+  setRefs?: (ref: any) => any
   options: PickerOptions[]
   value?: PickerValue[]
   defaultValue?: PickerValue[]

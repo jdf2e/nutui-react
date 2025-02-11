@@ -594,7 +594,7 @@
           "show": true,
           "taro": true,
           "author": "hanyuxinting",
-          "dd": false
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -607,7 +607,7 @@
           "taro": true,
           "exportEmpty": true,
           "author": "hanyuxinting",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -679,7 +679,7 @@
           "dd": true
         },
         {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "Picker",
           "type": "component",
           "cName": "选择器",
@@ -687,11 +687,11 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "dsj",
-          "dd": true
+          "dd": true,
+          "author": "songsong"
         },
         {
-          "version": "3.0.0",
+          "version": "2.0.0",
           "name": "PickerView",
           "type": "component",
           "cName": "选择器视图",
@@ -699,7 +699,6 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": false,
           "dd": true,
           "author": "songsong"
         },

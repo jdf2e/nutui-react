@@ -6,7 +6,7 @@ import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
-// import Demo7 from './demos/h5/demo7'
+import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 
 const PickerDemo = () => {
@@ -58,8 +58,8 @@ const PickerDemo = () => {
         <Demo5 />
         <h2>{translated.cascade}</h2>
         <Demo6 />
-        {/* <h2>{translated.async}</h2>
-        <Demo7 /> */}
+        <h2>{translated.async}</h2>
+        <Demo7 />
         <h2>{translated.theme}</h2>
         <Demo8 />
       </div>

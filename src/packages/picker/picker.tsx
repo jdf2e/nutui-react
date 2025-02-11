@@ -14,9 +14,10 @@ import {
   PickerValue,
   PickerOptionItem,
   PickerOnChangeCallbackParameter,
+  SafeArea,
+  Popup,
+  PopupProps,
 } from '@nutui/nutui-react'
-import { Popup, PopupProps } from '@/packages/popup/popup'
-import { SafeArea } from '@/packages/safearea/safearea'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -118,60 +119,49 @@ const InternalPicker: ForwardRefRenderFunction<
   }
   useImperativeHandle(ref, () => actions)
 
-  const [innerValue, setInnerValue] = useState(selectedValue)
+  const [innerValue, setInnerValue] = useState([...selectedValue])
   const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
   const selectedOptionsRef = useRef([] as PickerOptionItem[])
-  const changeIndex = useRef<number>(-1)
   const isConfirmEvent = useRef(false)
   const pickerRef = useRef<any>(null)
   const [refs, setRefs] = useRefs()
 
   useEffect(() => {
     if (innerVisible) {
-      console.log('selectedValue变更', selectedValue)
+      console.log('selectedValue变更', selectedValue, innerValue)
       setInnerValue(selectedValue)
       setInnerOptions(options as PickerOptions[])
     }
-  }, [options, innerVisible, selectedValue, innerOptions])
-
-  useEffect(() => {
-    console.log(
-      'innerValue变更onChange',
-      innerValue,
-      innerVisible,
-      'innerVisible为false不执行'
-    )
-    innerVisible &&
-      onChange &&
-      onChange({
-        selectedOptions: selectedOptionsRef.current,
-        value: innerValue,
-        index: changeIndex.current,
-      })
-  }, [innerValue, innerVisible])
-
-  //   const selectedOptions = useMemo(() => {
-  //     console.log('selectedOptions.current', selectedOptionsObj.current)
-  //     return selectedOptionsObj.current
-  //   }, [selectedOptionsObj.current])
+  }, [options, selectedValue, innerOptions, innerVisible])
 
   const onChangeItem = ({
     value,
     index,
     selectedOptions,
   }: PickerOnChangeCallbackParameter) => {
+    console.log('onChangeItem1', value, index, selectedOptions)
     if (selectedOptions?.length) {
       selectedOptionsRef.current = selectedOptions
     }
-
-    console.log('selectedOptions', selectedOptions)
     if (isEqual(value, innerValue)) return
-    console.log('onChangeItem', value, innerValue, index, selectedOptions)
+    console.log(
+      'onChangeItem2',
+      innerVisible,
+      innerValue,
+      value,
+      index,
+      selectedOptions
+    )
     setInnerValue(value)
-    changeIndex.current = index
+    innerVisible &&
+      onChange?.({
+        selectedOptions,
+        value,
+        index,
+      })
   }
 
-  const confirm = () => {
+  const onConfirmEvent = () => {
     let moving = false
     refs.forEach((ref: any) => {
       if (ref.moving) moving = true
@@ -188,6 +178,12 @@ const InternalPicker: ForwardRefRenderFunction<
     }, 0)
   }
 
+  const onCancelEvent = () => {
+    setInnerValue(selectedValue)
+    onCancel?.()
+    setInnerVisible(false)
+  }
+
   const renderTitleBar = () => {
     return (
       <div className={`${classPrefix}-control`}>
@@ -195,8 +191,7 @@ const InternalPicker: ForwardRefRenderFunction<
           className={`${classPrefix}-cancel-btn`}
           onClick={(e) => {
             e.stopPropagation()
-            onCancel?.()
-            setInnerVisible(false)
+            onCancelEvent()
           }}
         >
           {locale?.cancel}
@@ -206,7 +201,7 @@ const InternalPicker: ForwardRefRenderFunction<
           className={`${classPrefix}-confirm-btn`}
           onClick={(e) => {
             e.stopPropagation()
-            confirm()
+            onConfirmEvent()
           }}
         >
           {locale.confirm}
@@ -222,8 +217,9 @@ const InternalPicker: ForwardRefRenderFunction<
         {typeof children !== 'function' && children}
         <div className={`${classPrefix}-panel`} ref={pickerRef}>
           <PickerView
+            setRefs={setRefs}
             value={innerValue}
-            options={innerOptions}
+            options={props.options}
             threeDimensional={threeDimensional}
             duration={duration}
             onChange={({
@@ -238,26 +234,23 @@ const InternalPicker: ForwardRefRenderFunction<
       </div>
     )
   }
-
   return (
     <>
       {typeof children === 'function' && children(selectedValue)}
-      <Popup
-        {...popupProps}
-        visible={innerVisible}
-        position="bottom"
-        onOverlayClick={() => {
-          if (!closeOnOverlayClick) return
-          props.onCancel?.()
-          setInnerVisible(false)
-        }}
-        afterClose={() => {
-          // afterClose?.(setSelectedOptions(), innerValue, pickerRef)
-        }}
-      >
-        {renderPickerElement()}
-        <SafeArea position="bottom" />
-      </Popup>
+      {innerVisible ? (
+        <Popup
+          {...popupProps}
+          visible={innerVisible}
+          position="bottom"
+          onOverlayClick={() => {
+            if (!closeOnOverlayClick) return
+            onCancelEvent()
+          }}
+        >
+          {renderPickerElement()}
+          <SafeArea position="bottom" />
+        </Popup>
+      ) : null}
     </>
   )
 }

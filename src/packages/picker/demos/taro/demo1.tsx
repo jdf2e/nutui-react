@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
-
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+  PickerOnChangeCallbackParameter,
+  PickerOptionItem,
+} from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
-  const listData1 = [
+  const options = [
     [
       { value: 1, label: '南京市' },
       { value: 2, label: '无锡市' },
@@ -25,16 +24,21 @@ const Demo1 = () => {
       { value: 12, label: '乌鲁木齐市' },
     ],
   ]
-  const changePicker = (list: any[], option: any, columnIndex: number) => {
-    console.log(columnIndex, option)
+  const changePicker = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    console.log('changePicker', value, index, selectedOptions)
   }
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
+    console.log('confirmPicker', selectedOptions, selectedValue)
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: PickerOptionItem) => {
+      description += ` ${option.label}`
     })
     setBaseDesc(description)
   }
@@ -48,8 +52,8 @@ const Demo1 = () => {
       <Picker
         title="请选择城市"
         visible={visible}
-        options={listData1}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        options={options}
+        onConfirm={confirmPicker}
         onClose={() => setVisible(false)}
         onChange={changePicker}
       />

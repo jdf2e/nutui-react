@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react-taro'
+import isEqual from 'react-fast-compare'
+import { PickerOnChangeCallbackParameter } from '@/packages/pickerview/types'
 
-interface PickerOption {
-  label: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo3 = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
-  const [val, setVal] = useState<Array<number | string>>([])
+  const [value, setValue] = useState<PickerValue[]>([] as PickerValue[])
   const options = [
     [
       { value: 1, label: '南京市' },
@@ -25,35 +25,45 @@ const Demo3 = () => {
       { value: 12, label: '乌鲁木齐市' },
     ],
   ]
+
+  const changePicker = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    console.log('changePicker', value, index, selectedOptions)
+  }
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
-    })
-    setBaseDesc(description)
+    if (isEqual(selectedValue, [3])) {
+      setValue([1])
+      setBaseDesc('南京市')
+    } else {
+      setValue(selectedValue)
+      let description = ''
+      selectedOptions.forEach((option: any) => {
+        description += ` ${option.label}`
+      })
+      setBaseDesc(description)
+    }
   }
   return (
     <>
       <Cell
         title="请选择城市"
         description={baseDesc}
-        onClick={() => setIsVisible(!isVisible)}
+        onClick={() => setVisible(!visible)}
       />
       <Picker
         title="请选择城市"
-        visible={isVisible}
-        value={val}
+        visible={visible}
+        value={value}
         options={options}
-        onConfirm={(list, values) => {
-          confirmPicker(list, values)
-          setVal(values)
-        }}
-        onClose={() => {
-          setIsVisible(false)
-        }}
+        onChange={changePicker}
+        onConfirm={confirmPicker}
+        onClose={() => setVisible(false)}
       />
     </>
   )
