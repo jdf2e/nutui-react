@@ -1,6 +1,9 @@
 name: Release Beta NPM Packages
 
 on:
+  push:
+    branches:
+      - feat_v3.x
   workflow_dispatch:
     inputs:
       tags:
