@@ -1,6 +1,6 @@
 name: Release
 
-on: :
+on:
   push:
     branches:
       - feat_v3.x.
