@@ -1,16 +1,31 @@
-name: Release NPM Packages
+name: Release Beta NPM Packages
 
 on:
   push:
-    tags:
-      - v3.*
+    branches:
+      - feat_v3.x
   workflow_dispatch:
+    tags:
+      description: 'Publish release packages version'
+      required: true
+      default: 'beta'
+      type: choice
+      options:
+        - beta
+        - alpha
+    publish:
+      description: 'Test scenario tags'
+      required: false
+      type: boolean
 
 jobs:
   release:
+    if: ${{ inputs.publish }}
     env:
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       NPM_CONFIG_PROVENANCE: true
+      TAG: ${{ inputs.tags }}
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +45,7 @@ jobs:
         run: pnpm build & pnpm build:taro
 
       - name: Run Release @nutui/nutui-react
-        run: cd ./release/h5 && npm publish
+        run: cd ./release/h5 && npm publish --dry-run --tag $TAG
 
       - name: Run Releases @nutui/nutui-react-taro
-        run: cd ./release/taro && npm publish
+        run: cd ./release/taro && npm publish --dry-run --tag $TAG
