@@ -26,7 +26,7 @@ jobs:
         run: echo "$COMMIT_MESSAGE"
 
       - name: Commit message compliance verification
-        if: startsWith( env.COMMIT_MESSAGE , 'chore(release):' ) != true
+        if: startsWith( env.COMMIT_MESSAGE , 'chore(release):' ) != true && contains( env.COMMIT_MESSAGE , '-beta' ) != true
         run: echo "ABORT=true" >> $GITHUB_ENV
 
       - name: Get Tag message
