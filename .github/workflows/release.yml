@@ -1,4 +1,4 @@
-name: Release NPM Packages
+name: Release 3.x
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  release-3.x:
     env:
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       NPM_CONFIG_PROVENANCE: true

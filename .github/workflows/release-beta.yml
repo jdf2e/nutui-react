@@ -1,12 +1,13 @@
-name: Release 3x Beta NPM Packages
+name: Release 3x Beta
 
 on:
-  pull_request:
+#  pull_request:
+  push:
     branches:
       - feat_v3.x
 
 jobs:
-  release-beta:
+  release-3.x-beta:
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
@@ -16,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
+#          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Get commit message
         run: |
