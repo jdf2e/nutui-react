@@ -1,0 +1,636 @@
+import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import type { UIEvent } from 'react'
+import classNames from 'classnames'
+import { PopupProps } from '@/packages/popup/index'
+import { ComponentDefaults } from '@/utils/typings'
+import {
+  getDay,
+  getCurrMonthData,
+  getDaysStatus,
+  getPreMonthDates,
+  compareDate,
+  getMonthDays,
+  isEqual,
+  getNumTwoBit,
+  getWhatDay,
+  getTotalWeeksInYear,
+} from '@/utils/date'
+import requestAniFrame from '@/utils/raf'
+import { useConfig } from '@/packages/configprovider'
+import { usePropsValue } from '@/utils/use-props-value'
+import { splitDate, isMultiple, getCurrDate } from './utils'
+import {
+  CalendarDay,
+  CalendarMonthInfo,
+  CalendarValue,
+  CalendarType,
+} from './types'
+
+type CalendarRef = {
+  scrollToDate: (date: string) => void
+}
+
+interface CalendarState {
+  currDateArray: any
+}
+
+export interface CalendarViewModeItemProps extends PopupProps {
+  type: CalendarType
+  viewMode: 'week' | 'month' | 'quarter'
+  autoBackfill: boolean
+  popup: boolean
+  title: string
+  value?: CalendarValue
+  defaultValue?: CalendarValue
+  startDate: CalendarValue
+  endDate: CalendarValue
+  showToday: boolean
+  startText: ReactNode
+  endText: ReactNode
+  confirmText: ReactNode
+  showTitle: boolean
+  showSubTitle: boolean
+  scrollAnimation: boolean
+  firstDayOfWeek: number
+  disableDate: (date: CalendarDay) => boolean
+  renderHeaderButtons: () => string | JSX.Element
+  renderBottomButton: () => string | JSX.Element
+  renderDay: (date: CalendarDay) => string | JSX.Element
+  renderDayTop: (date: CalendarDay) => string | JSX.Element
+  renderDayBottom: (date: CalendarDay) => string | JSX.Element
+  onConfirm: (data: string) => void
+  onUpdate: () => void
+  onDayClick: (data: string) => void
+  onPageChange: (data: any) => void
+}
+const defaultProps = {
+  ...ComponentDefaults,
+  type: 'single',
+  viewMode: 'week',
+  autoBackfill: false,
+  popup: true,
+  title: '',
+  startDate: getDay(0),
+  endDate: getDay(365),
+  showToday: true,
+  startText: '',
+  endText: '',
+  confirmText: '',
+  showTitle: true,
+  showSubTitle: true,
+  scrollAnimation: true,
+  firstDayOfWeek: 0,
+  disableDate: (date: CalendarDay) => false,
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
+  onConfirm: (data: string) => {},
+  onUpdate: () => {},
+  onDayClick: (data: string) => {},
+  onPageChange: (data: any) => {},
+} as unknown as CalendarViewModeItemProps
+
+export const CalendarViewModeItem = React.forwardRef<
+  CalendarRef,
+  Partial<CalendarViewModeItemProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, ''>
+>((props, ref) => {
+  const { locale } = useConfig()
+  const {
+    style,
+    className,
+    children,
+    popup,
+    type,
+    viewMode,
+    autoBackfill,
+    title,
+    defaultValue,
+    startDate,
+    endDate,
+    showToday,
+    startText,
+    endText,
+    confirmText,
+    showTitle,
+    showSubTitle,
+    scrollAnimation,
+    firstDayOfWeek,
+    disableDate,
+    renderHeaderButtons,
+    renderBottomButton,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
+    value,
+    onConfirm,
+    onUpdate,
+    onDayClick,
+    onPageChange,
+  } = { ...defaultProps, ...props }
+
+  const classPrefix = 'nut-calendar-viewmode'
+  const itemPrefix = 'nut-calendar-viewmode-item'
+
+  const monthTitle = locale.calendaritem.monthTitle
+  const [yearMonthTitle, setYearMonthTitle] = useState('')
+  const [monthsData, setMonthsData] = useState<any[]>([])
+  const [monthsNum, setMonthsNum] = useState<number>(0)
+  const [translateY, setTranslateY] = useState(0)
+  const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
+
+  // 初始化开始结束数据
+  const propStartDate = (startDate || getDay(0)) as string
+  const propEndDate = (endDate || getDay(365)) as string
+
+  const startDates = splitDate(propStartDate)
+  const endDates = splitDate(propEndDate)
+  const [state] = useState<CalendarState>({
+    currDateArray: [],
+  })
+
+  const resetDefaultValue = () => {
+    if (
+      defaultValue ||
+      (Array.isArray(defaultValue) && defaultValue.length > 0)
+    ) {
+      return type !== 'single'
+        ? ([...(defaultValue as string[])] as string[])
+        : (defaultValue as string[])
+    }
+    return undefined
+  }
+
+  const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
+    value,
+    defaultValue: resetDefaultValue(),
+    finalValue: [],
+    onChange: (val) => {},
+  })
+
+  const monthsRef = useRef<HTMLDivElement>(null)
+  const monthsPanel = useRef<HTMLDivElement>(null)
+  const viewAreaRef = useRef<HTMLDivElement>(null)
+  const [avgHeight, setAvgHeight] = useState(0)
+  let viewHeight = 0
+
+  // 获取月数据
+  const getMonthData = (curData: string[], monthNum: number) => {
+    let i = 0
+    let date = curData
+    const monthData = monthsData
+    do {
+      const y = parseInt(date[0], 10)
+      const m = parseInt(date[1], 10)
+      console.log('y', date, getTotalWeeksInYear(y))
+      const days = [
+        ...getPreMonthDates('prev', y, m, firstDayOfWeek),
+        ...getDaysStatus('active', y, m),
+      ] as CalendarDay[]
+      const cssHeight = 39 + (days.length > 35 ? 384 : 320)
+      let scrollTop = 0
+      if (monthData.length > 0) {
+        const monthEle = monthData[monthData.length - 1]
+        scrollTop = monthEle.scrollTop + monthEle.cssHeight
+      }
+      const monthInfo: CalendarMonthInfo = {
+        curData: date,
+        title: monthTitle(y, m),
+        monthData: days,
+        cssHeight,
+        scrollTop,
+      }
+      if (
+        !endDates ||
+        !compareDate(
+          `${endDates[0]}/${endDates[1]}/${getMonthDays(
+            endDates[0],
+            endDates[1]
+          )}`,
+          `${curData[0]}/${curData[1]}/${curData[2]}`
+        )
+      ) {
+        monthData.push(monthInfo)
+      }
+      date = getCurrMonthData('next', y, m) as string[]
+    } while (i++ < monthNum)
+    setMonthsData(monthData)
+  }
+
+  const setReachedYearMonthInfo = (current: number) => {
+    const currentMonthsData = monthsData[current]
+    if (currentMonthsData.title === yearMonthTitle) return
+    const [year, month] = currentMonthsData.curData
+    onPageChange && onPageChange([year, month, `${year}-${month}`])
+    setYearMonthTitle(currentMonthsData.title)
+  }
+
+  // 设置默认的范围
+  const setDefaultRange = (monthNum: number, current: number) => {
+    let start = 0
+    let end = 0
+    if (monthNum >= 3) {
+      if (current > 0 && current < monthNum) {
+        start = current - 1
+        end = current + 3
+      } else if (current === 0) {
+        start = current
+        end = current + 4
+      } else if (current === monthNum) {
+        start = current - 2
+        end = current + 2
+      }
+    } else {
+      start = 0
+      end = monthNum + 2
+    }
+    setMonthDefaultRange([start, end])
+    setTranslateY(monthsData[start].scrollTop)
+    setReachedYearMonthInfo(current)
+  }
+
+  const setDefaultDate = () => {
+    let defaultData: CalendarValue = []
+    if (type === 'single' && typeof currentDate === 'string') {
+      if (!currentDate.length) {
+        return defaultData
+      }
+      if (compareDate(currentDate, propStartDate)) {
+        defaultData = [...splitDate(propStartDate)]
+      } else if (!compareDate(currentDate, propEndDate)) {
+        defaultData = [...splitDate(propEndDate)]
+      } else {
+        defaultData = [...splitDate(currentDate)]
+      }
+      return defaultData
+    }
+    return defaultData
+  }
+
+  const getCurrentIndex = (defaultData: CalendarValue) => {
+    // 设置默认可见区域
+    let current = 0
+    let lastCurrent = 0
+    if (defaultData.length > 0) {
+      monthsData.forEach((item, index) => {
+        if (item.title === monthTitle(defaultData[0], defaultData[1])) {
+          current = index
+        }
+        if (type === 'range' || type === 'week') {
+          if (item.title === monthTitle(defaultData[3], defaultData[4])) {
+            lastCurrent = index
+          }
+        }
+      })
+    } else {
+      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
+      const date = new Date()
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const index = monthsData.findIndex((item) => {
+        return +item.curData[0] === year && +item.curData[1] === month
+      })
+      if (index > -1) {
+        current = index
+      }
+    }
+    return {
+      current,
+      lastCurrent,
+    }
+  }
+
+  const renderCurrentDate = (defaultData: any, current: any) => {
+    if (!defaultData.length) return
+    const date = monthsData[current.current]
+    // 设置当前选中日期
+    if (type === 'range') {
+      handleDayClick({ day: defaultData[2], type: 'active' }, date)
+      handleDayClick(
+        { day: defaultData[5], type: 'active' },
+        monthsData[current.lastCurrent]
+      )
+    } else if (type === 'week') {
+      handleDayClick({ day: defaultData[2], type: 'curr' }, date)
+    } else if (type === 'multiple') {
+      ;[...currentDate].forEach((item: string) => {
+        const dateArr = splitDate(item)
+        let currentIndex = current.current
+        currentIndex = monthsData.findIndex(
+          (item) => item.title === monthTitle(dateArr[0], dateArr[1])
+        )
+        handleDayClick(
+          { day: dateArr[2], type: 'active' },
+          monthsData[currentIndex]
+        )
+      })
+    } else {
+      handleDayClick({ day: defaultData[2], type: 'active' }, date)
+    }
+  }
+
+  const getMonthsPanel = () => {
+    return monthsPanel.current as HTMLDivElement
+  }
+
+  const getMonthsRef = () => {
+    return monthsRef.current as HTMLDivElement
+  }
+
+  const requestAniFrameFunc = (current: number, monthNum: number) => {
+    const lastItem = monthsData[monthsData.length - 1]
+    const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+
+    requestAniFrame(() => {
+      // 初始化 日历位置
+      if (monthsRef && monthsPanel && viewAreaRef) {
+        viewHeight = getMonthsRef().clientHeight
+        getMonthsPanel().style.height = `${containerHeight}px`
+        getMonthsRef().scrollTop = monthsData[current].scrollTop
+      }
+    })
+    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+  }
+
+  const getMonthNum = () => {
+    let monthNum = Number(endDates[1]) - Number(startDates[1])
+    const yearNum = Number(endDates[0]) - Number(startDates[0])
+    if (yearNum > 0) {
+      monthNum += 12 * yearNum
+    }
+    if (monthNum <= 0) {
+      monthNum = 1
+    }
+    setMonthsNum(monthNum)
+    return monthNum
+  }
+
+  const initData = () => {
+    // 判断时间范围内存在多少个月
+    const monthNum = getMonthNum()
+
+    // 判断时间范围内
+    // 设置月份数据，获取包含月份的所有数据，只需要 set 一次即可。
+    getMonthData(startDates, monthNum)
+    // 获取当前默认值
+    const defaultData = setDefaultDate()
+    // 获取当前默认值在的月份
+    const current = getCurrentIndex(defaultData)
+    const currentIndex = current.current
+    // 渲染第一个默认数据
+    renderCurrentDate(defaultData, current)
+    setDefaultRange(monthNum, currentIndex)
+    requestAniFrameFunc(currentIndex, monthNum)
+  }
+
+  useEffect(() => {
+    initData()
+  }, [])
+
+  const resetRender = () => {
+    state.currDateArray.splice(0)
+    monthsData.splice(0)
+    initData()
+  }
+
+  useEffect(() => {
+    setCurrentDate(resetDefaultValue() || [])
+  }, [defaultValue])
+
+  useEffect(() => {
+    popup && resetRender()
+  }, [currentDate])
+
+  // 暴露出的API
+  const scrollToDate = (date: string) => {
+    if (compareDate(date, propStartDate)) {
+      date = propStartDate
+    } else if (!compareDate(date, propEndDate)) {
+      date = propEndDate
+    }
+    const dateArr = splitDate(date)
+    monthsData.forEach((item, index) => {
+      if (item.title === monthTitle(dateArr[0], dateArr[1])) {
+        const currTop = monthsData[index].scrollTop
+        if (monthsRef.current) {
+          const distance = currTop - monthsRef.current.scrollTop
+          if (scrollAnimation) {
+            let flag = 0
+            const interval = setInterval(() => {
+              flag++
+              if (monthsRef.current) {
+                const offset = distance / 10
+                monthsRef.current.scrollTop += offset
+              }
+              if (flag >= 10) {
+                clearInterval(interval)
+                if (monthsRef.current) {
+                  monthsRef.current.scrollTop = currTop
+                }
+              }
+            }, 40)
+          } else {
+            monthsRef.current.scrollTop = currTop
+          }
+        }
+      }
+    })
+  }
+
+  const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
+    if (monthsData.length <= 1) {
+      return
+    }
+    const scrollTop = (e.target as HTMLElement).scrollTop
+    let current = Math.floor(scrollTop / avgHeight)
+    if (current < 0) return
+    if (!monthsData[current + 1]) return
+    const nextTop = monthsData[current + 1].scrollTop
+    const nextHeight = monthsData[current + 1].cssHeight
+    if (current === 0) {
+      if (scrollTop >= nextTop) current += 1
+    } else if (current > 0 && current < monthsNum - 1) {
+      if (scrollTop >= nextTop) current += 1
+      if (scrollTop < monthsData[current].scrollTop) current -= 1
+    } else {
+      const viewPosition = Math.round(scrollTop + viewHeight)
+      if (current + 1 <= monthsNum && viewPosition >= nextTop + nextHeight) {
+        current += 1
+      }
+      if (current >= 1 && scrollTop < monthsData[current - 1].scrollTop) {
+        current -= 1
+      }
+    }
+    setDefaultRange(monthsNum, current)
+  }
+
+  React.useImperativeHandle(ref, () => ({
+    scrollToDate,
+  }))
+
+  const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
+    const dateStr = getCurrDate(day, month)
+    const activeCls = `${itemPrefix}-active`
+    if (
+      (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
+      (type === 'single' && isEqual(currentDate as string, dateStr))
+    ) {
+      return activeCls
+    }
+    return null
+  }
+
+  const handleDayClick = (
+    day: CalendarDay,
+    month: CalendarMonthInfo,
+    isFirst: boolean = true
+  ) => {
+    const days = [...month.curData]
+    days[2] = typeof day.day === 'number' ? getNumTwoBit(day.day) : day.day
+    days[3] = `${days[0]}/${days[1]}/${days[2]}`
+    days[4] = getWhatDay(+days[0], +days[1], +days[2])
+
+    setCurrentDate(days[3])
+    state.currDateArray = [...days]
+
+    if (!isFirst) {
+      onDayClick && onDayClick(state.currDateArray)
+      if (autoBackfill || !popup) {
+        confirm()
+      }
+    }
+    setMonthsData(monthsData.slice())
+  }
+
+  const confirm = () => {
+    const chooseData = state.currDateArray.slice(0)
+    onConfirm && onConfirm(chooseData)
+    if (popup) {
+      onUpdate && onUpdate()
+    }
+  }
+
+  const classes = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-title`]: !popup,
+      [`${classPrefix}-nofooter`]: !!autoBackfill,
+    },
+    className
+  )
+
+  const headerClasses = classNames({
+    [`${classPrefix}-header`]: true,
+    [`${classPrefix}-header-title`]: !popup,
+  })
+
+  const renderHeader = () => {
+    return (
+      <div className={headerClasses}>
+        {showTitle && <div className={`${classPrefix}-title`}>{title}</div>}
+      </div>
+    )
+  }
+
+  const renderItem = (item: any, index: number) => {
+    return (
+      <div
+        className={`${classPrefix}-item`}
+        // onClick={() => handleDayClick(day, month, false)}
+        key={index}
+      >
+        {renderDay ? renderDay(item) : `${item}`}
+      </div>
+    )
+  }
+  const date = {
+    weeks: [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ],
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    quarters: [1, 2, 3, 4],
+  }
+
+  const renderPanel = () => {
+    switch (viewMode) {
+      case 'week':
+        return (
+          <div className={`${classPrefix}-panel`} key={1}>
+            <div className={`${classPrefix}-panel-title`}>{2025}</div>
+            <div className={`${classPrefix}-content`}>
+              {date.weeks.map((item, i) => renderItem(`${item}周`, i))}
+            </div>
+          </div>
+        )
+      case 'month':
+        return (
+          <div className={`${classPrefix}-panel`} key={1}>
+            <div className={`${classPrefix}-panel-title`}>{2025}</div>
+            <div className={`${classPrefix}-content`}>
+              {date.months.map((item, i) => renderItem(`${item}月`, i))}
+            </div>
+          </div>
+        )
+      case 'quarter':
+        return (
+          <div className={`${classPrefix}-panel`} key={1}>
+            <div className={`${classPrefix}-panel-title`}>{2025}</div>
+            <div className={`${classPrefix}-content`}>
+              {date.quarters.map((item, i) => renderItem(`${item}季度`, i))}
+            </div>
+          </div>
+        )
+      default:
+        break
+    }
+  }
+
+  const renderContent = () => {
+    return (
+      <div
+        className={`${classPrefix}-content`}
+        onScroll={monthsViewScroll}
+        ref={monthsRef}
+      >
+        <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
+          <div
+            className="viewArea"
+            ref={viewAreaRef}
+            style={{ transform: `translateY(${translateY}px)` }}
+          >
+            {renderPanel()}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  const renderFooter = () => {
+    return (
+      <div className="nut-calendar-footer">
+        {children}
+        <div onClick={confirm}>
+          {renderBottomButton ? (
+            renderBottomButton()
+          ) : (
+            <div className="calendar-confirm-btn">
+              {confirmText || locale.confirm}
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className={classes} style={style}>
+      {renderHeader()}
+      {renderContent()}
+      {popup && !autoBackfill ? renderFooter() : ''}
+    </div>
+  )
+})
+
+CalendarViewModeItem.displayName = 'NutCalendarViewModeItem'
+export default CalendarViewModeItem

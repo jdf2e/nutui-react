@@ -1,6 +1,7 @@
 import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
+import CalendarViewModeItem from './calendarviewmodeitem'
 import { getDay } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
 import type { CalendarDay, CalendarType, CalendarRef } from './types'
@@ -8,6 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
+  viewMode: 'week' | 'month' | 'quarter'
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -39,6 +41,7 @@ export interface CalendarProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
+  viewMode: 'week',
   autoBackfill: false,
   popup: true,
   visible: false,
@@ -77,6 +80,7 @@ export const Calendar = React.forwardRef<
     popup,
     visible,
     type,
+    viewMode,
     autoBackfill,
     title,
     defaultValue,
@@ -135,36 +139,72 @@ export const Calendar = React.forwardRef<
 
   const renderItem = () => {
     return (
-      <CalendarItem
-        ref={calendarRef}
-        style={style}
-        className={className}
-        children={children}
-        type={type}
-        autoBackfill={autoBackfill}
-        renderBottomButton={renderBottomButton}
-        popup={popup}
-        title={title || locale.calendaritem.title}
-        defaultValue={defaultValue}
-        startDate={startDate}
-        endDate={endDate}
-        showToday={showToday}
-        startText={startText || locale.calendaritem.start}
-        endText={endText || locale.calendaritem.end}
-        confirmText={confirmText || locale.calendaritem.confirm}
-        showTitle={showTitle}
-        showSubTitle={showSubTitle}
-        scrollAnimation={scrollAnimation}
-        firstDayOfWeek={firstDayOfWeek}
-        disableDate={disableDate}
-        renderHeaderButtons={renderHeaderButtons}
-        renderDay={renderDay}
-        renderDayTop={renderDayTop}
-        renderDayBottom={renderDayBottom}
-        onConfirm={choose}
-        onDayClick={select}
-        onPageChange={yearMonthChange}
-      />
+      <>
+        {viewMode ? (
+          <CalendarViewModeItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            children={children}
+            type={type}
+            viewMode={viewMode}
+            autoBackfill={autoBackfill}
+            renderBottomButton={renderBottomButton}
+            popup={popup}
+            title={title || locale.calendaritem.title}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showToday={showToday}
+            startText={startText || locale.calendaritem.start}
+            endText={endText || locale.calendaritem.end}
+            confirmText={confirmText || locale.calendaritem.confirm}
+            showTitle={showTitle}
+            showSubTitle={showSubTitle}
+            scrollAnimation={scrollAnimation}
+            firstDayOfWeek={firstDayOfWeek}
+            disableDate={disableDate}
+            renderHeaderButtons={renderHeaderButtons}
+            renderDay={renderDay}
+            renderDayTop={renderDayTop}
+            renderDayBottom={renderDayBottom}
+            onConfirm={choose}
+            onDayClick={select}
+            onPageChange={yearMonthChange}
+          />
+        ) : (
+          <CalendarItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            children={children}
+            type={type}
+            autoBackfill={autoBackfill}
+            renderBottomButton={renderBottomButton}
+            popup={popup}
+            title={title || locale.calendaritem.title}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showToday={showToday}
+            startText={startText || locale.calendaritem.start}
+            endText={endText || locale.calendaritem.end}
+            confirmText={confirmText || locale.calendaritem.confirm}
+            showTitle={showTitle}
+            showSubTitle={showSubTitle}
+            scrollAnimation={scrollAnimation}
+            firstDayOfWeek={firstDayOfWeek}
+            disableDate={disableDate}
+            renderHeaderButtons={renderHeaderButtons}
+            renderDay={renderDay}
+            renderDayTop={renderDayTop}
+            renderDayBottom={renderDayBottom}
+            onConfirm={choose}
+            onDayClick={select}
+            onPageChange={yearMonthChange}
+          />
+        )}
+      </>
     )
   }
 

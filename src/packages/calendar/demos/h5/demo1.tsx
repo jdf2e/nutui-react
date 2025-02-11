@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
-import { Star } from '@nutui/icons-react'
 
 const Demo1 = () => {
   const d = new Date()
@@ -35,12 +34,10 @@ const Demo1 = () => {
       />
       <Calendar
         visible={isVisible}
-        showTitle={false}
         defaultValue={date}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
         onDayClick={select}
-        closeIcon={<Star />}
       />
     </>
   )

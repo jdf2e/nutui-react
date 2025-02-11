@@ -945,6 +945,11 @@ $calendar-day-active-border-radius: var(
   4px
 ) !default;
 
+$calendar-panel-item-width: var(
+  --nutui-calendar-panel-item-width,
+  24.28%
+) !default;
+
 //overlay（✅）
 $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
 $overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
