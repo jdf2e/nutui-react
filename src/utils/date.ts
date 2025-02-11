@@ -261,12 +261,46 @@ export const getPreMonthDates = (
   return months.slice(preDates - days)
 }
 
-// 获取当前年共有多少周
-export const getTotalWeeksInYear = (year: number) => {
-  const firstDayOfYear = new Date(year, 0, 1)
-  const firstDayOfWeek = firstDayOfYear.getDay() // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+// 获取当前年月前的月份
+export const getPreMonths = (type: string, year: number, month: number) => {
+  const preMonth = +month - 1
+  const months = Array.from(Array(preMonth), (v, k) => {
+    return {
+      year,
+      month: k + 1,
+      type,
+    }
+  })
+  return months
+}
 
-  // 计算第一周的起始日期
+// 获取当前年月前的月份
+export const getMonths = (
+  type: string,
+  year: number,
+  month: number,
+  endMonth: number = 12
+) => {
+  const nextMonth = endMonth - month + 1
+  const months = Array.from(Array(nextMonth), (v, k) => {
+    return {
+      year,
+      month: k + month,
+      type,
+    }
+  })
+  return months
+}
+
+// 获取当前年共有多少周
+export const getTotalWeeksInYear = (year: number, firstDayOfWeek?: number) => {
+  const weeks = []
+  const firstDayOfYear = new Date(year, 0, 1)
+  firstDayOfWeek = firstDayOfWeek || firstDayOfYear.getDay()
+
+  console.log('firstDayOfWeek', firstDayOfWeek, firstDayOfYear.getDay())
+
+  // 计算第一周的周一
   const daysUntilFirstMonday = (1 - firstDayOfWeek + 7) % 7
   const firstMonday = new Date(firstDayOfYear)
   firstMonday.setDate(firstMonday.getDate() + daysUntilFirstMonday)
@@ -275,20 +309,33 @@ export const getTotalWeeksInYear = (year: number) => {
   const lastDayOfYear = new Date(year, 11, 31)
   const lastDayOfWeek = lastDayOfYear.getDay()
 
-  // 计算最后一个周的起始日期
+  // 计算最后一个周的周一
   const lastMonday = new Date(lastDayOfYear)
   if (lastDayOfWeek !== 1) {
     const daysUntilLastMonday = (1 - lastDayOfWeek + 7) % 7
     lastMonday.setDate(lastMonday.getDate() - daysUntilLastMonday)
   }
 
-  // 计算总周数
-  const totalWeeks =
-    Math.ceil(
-      (lastMonday.valueOf() - firstMonday.valueOf()) / (7 * 24 * 60 * 60 * 1000)
-    ) + 1
-  return totalWeeks
+  // 计算每一周的起止时间
+  const currentMonday = new Date(firstMonday)
+  while (currentMonday <= lastMonday) {
+    const startOfWeek = new Date(currentMonday)
+    const endOfWeek = new Date(currentMonday)
+    endOfWeek.setDate(endOfWeek.getDate() + 6) // 结束日期是周一加6天
+
+    weeks.push({
+      start: startOfWeek,
+      end: endOfWeek,
+    })
+
+    // 移动到下一周的周一
+    currentMonday.setDate(currentMonday.getDate() + 7)
+  }
+
+  return weeks
 }
+
+export const getCurrMonth = () => {}
 
 // // 计算 2025 和 2026 年的总周数
 // const weeksIn2025 = getTotalWeeksInYear(2025);

@@ -6,19 +6,19 @@ import { ComponentDefaults } from '@/utils/typings'
 import {
   getDay,
   getCurrMonthData,
-  getDaysStatus,
-  getPreMonthDates,
   compareDate,
   getMonthDays,
   isEqual,
   getNumTwoBit,
   getWhatDay,
   getTotalWeeksInYear,
+  getPreMonths,
+  getMonths,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
-import { splitDate, isMultiple, getCurrDate } from './utils'
+import { splitDate, getCurrDate } from './utils'
 import {
   CalendarDay,
   CalendarMonthInfo,
@@ -66,7 +66,7 @@ export interface CalendarViewModeItemProps extends PopupProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'week',
+  viewMode: 'quarter',
   autoBackfill: false,
   popup: true,
   title: '',
@@ -133,6 +133,14 @@ export const CalendarViewModeItem = React.forwardRef<
   const classPrefix = 'nut-calendar-viewmode'
   const itemPrefix = 'nut-calendar-viewmode-item'
 
+  const [panelDate, setPanelDate] = useState({
+    weeks: [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ],
+    months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
+    quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
+  })
+
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
@@ -144,27 +152,16 @@ export const CalendarViewModeItem = React.forwardRef<
   const propStartDate = (startDate || getDay(0)) as string
   const propEndDate = (endDate || getDay(365)) as string
 
+  console.log('propStartDate', propStartDate, propEndDate, endDate)
+
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
   const [state] = useState<CalendarState>({
     currDateArray: [],
   })
-
-  const resetDefaultValue = () => {
-    if (
-      defaultValue ||
-      (Array.isArray(defaultValue) && defaultValue.length > 0)
-    ) {
-      return type !== 'single'
-        ? ([...(defaultValue as string[])] as string[])
-        : (defaultValue as string[])
-    }
-    return undefined
-  }
-
   const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
     value,
-    defaultValue: resetDefaultValue(),
+    defaultValue,
     finalValue: [],
     onChange: (val) => {},
   })
@@ -174,49 +171,6 @@ export const CalendarViewModeItem = React.forwardRef<
   const viewAreaRef = useRef<HTMLDivElement>(null)
   const [avgHeight, setAvgHeight] = useState(0)
   let viewHeight = 0
-
-  // 获取月数据
-  const getMonthData = (curData: string[], monthNum: number) => {
-    let i = 0
-    let date = curData
-    const monthData = monthsData
-    do {
-      const y = parseInt(date[0], 10)
-      const m = parseInt(date[1], 10)
-      console.log('y', date, getTotalWeeksInYear(y))
-      const days = [
-        ...getPreMonthDates('prev', y, m, firstDayOfWeek),
-        ...getDaysStatus('active', y, m),
-      ] as CalendarDay[]
-      const cssHeight = 39 + (days.length > 35 ? 384 : 320)
-      let scrollTop = 0
-      if (monthData.length > 0) {
-        const monthEle = monthData[monthData.length - 1]
-        scrollTop = monthEle.scrollTop + monthEle.cssHeight
-      }
-      const monthInfo: CalendarMonthInfo = {
-        curData: date,
-        title: monthTitle(y, m),
-        monthData: days,
-        cssHeight,
-        scrollTop,
-      }
-      if (
-        !endDates ||
-        !compareDate(
-          `${endDates[0]}/${endDates[1]}/${getMonthDays(
-            endDates[0],
-            endDates[1]
-          )}`,
-          `${curData[0]}/${curData[1]}/${curData[2]}`
-        )
-      ) {
-        monthData.push(monthInfo)
-      }
-      date = getCurrMonthData('next', y, m) as string[]
-    } while (i++ < monthNum)
-    setMonthsData(monthData)
-  }
 
   const setReachedYearMonthInfo = (current: number) => {
     const currentMonthsData = monthsData[current]
@@ -252,18 +206,15 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const setDefaultDate = () => {
     let defaultData: CalendarValue = []
-    if (type === 'single' && typeof currentDate === 'string') {
-      if (!currentDate.length) {
-        return defaultData
-      }
-      if (compareDate(currentDate, propStartDate)) {
-        defaultData = [...splitDate(propStartDate)]
-      } else if (!compareDate(currentDate, propEndDate)) {
-        defaultData = [...splitDate(propEndDate)]
-      } else {
-        defaultData = [...splitDate(currentDate)]
-      }
+    if (!currentDate.length) {
       return defaultData
+    }
+    if (compareDate(currentDate, propStartDate)) {
+      defaultData = [...splitDate(propStartDate)]
+    } else if (!compareDate(currentDate, propEndDate)) {
+      defaultData = [...splitDate(propEndDate)]
+    } else {
+      defaultData = [...splitDate(currentDate)]
     }
     return defaultData
   }
@@ -271,16 +222,11 @@ export const CalendarViewModeItem = React.forwardRef<
   const getCurrentIndex = (defaultData: CalendarValue) => {
     // 设置默认可见区域
     let current = 0
-    let lastCurrent = 0
+    const lastCurrent = 0
     if (defaultData.length > 0) {
       monthsData.forEach((item, index) => {
         if (item.title === monthTitle(defaultData[0], defaultData[1])) {
           current = index
-        }
-        if (type === 'range' || type === 'week') {
-          if (item.title === monthTitle(defaultData[3], defaultData[4])) {
-            lastCurrent = index
-          }
         }
       })
     } else {
@@ -305,29 +251,7 @@ export const CalendarViewModeItem = React.forwardRef<
     if (!defaultData.length) return
     const date = monthsData[current.current]
     // 设置当前选中日期
-    if (type === 'range') {
-      handleDayClick({ day: defaultData[2], type: 'active' }, date)
-      handleDayClick(
-        { day: defaultData[5], type: 'active' },
-        monthsData[current.lastCurrent]
-      )
-    } else if (type === 'week') {
-      handleDayClick({ day: defaultData[2], type: 'curr' }, date)
-    } else if (type === 'multiple') {
-      ;[...currentDate].forEach((item: string) => {
-        const dateArr = splitDate(item)
-        let currentIndex = current.current
-        currentIndex = monthsData.findIndex(
-          (item) => item.title === monthTitle(dateArr[0], dateArr[1])
-        )
-        handleDayClick(
-          { day: dateArr[2], type: 'active' },
-          monthsData[currentIndex]
-        )
-      })
-    } else {
-      handleDayClick({ day: defaultData[2], type: 'active' }, date)
-    }
+    handleDayClick({ day: defaultData[2], type: 'active' }, date)
   }
 
   const getMonthsPanel = () => {
@@ -353,35 +277,185 @@ export const CalendarViewModeItem = React.forwardRef<
     setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
   }
 
-  const getMonthNum = () => {
-    let monthNum = Number(endDates[1]) - Number(startDates[1])
-    const yearNum = Number(endDates[0]) - Number(startDates[0])
-    if (yearNum > 0) {
-      monthNum += 12 * yearNum
+  // 获取月数据
+  const getMonthData = (curData: string[], monthNum: number) => {
+    let i = 0
+    let date = curData
+    const monthData = monthsData
+    do {
+      const y = parseInt(date[0], 10)
+      const m = parseInt(date[1], 10)
+      const weeks = getTotalWeeksInYear(y)
+      const cssHeight = 39 + (weeks.length > 35 ? 384 : 320)
+      let scrollTop = 0
+      if (monthData.length > 0) {
+        const monthEle = monthData[monthData.length - 1]
+        scrollTop = monthEle.scrollTop + monthEle.cssHeight
+      }
+      const monthInfo = {
+        curData: date,
+        title: monthTitle(y, m),
+        weeks,
+        cssHeight,
+        scrollTop,
+      }
+      if (
+        !endDates ||
+        !compareDate(
+          `${endDates[0]}/${endDates[1]}/${getMonthDays(
+            endDates[0],
+            endDates[1]
+          )}`,
+          `${curData[0]}/${curData[1]}/${curData[2]}`
+        )
+      ) {
+        monthData.push(monthInfo)
+      }
+      date = getCurrMonthData('next', y, m) as string[]
+    } while (i++ < monthNum)
+    setMonthsData(monthData)
+  }
+
+  const getWeeksData = () => {
+    // 获取区间范围内可用的周数，包括边界值所在的周数
+    return []
+  }
+
+  const getMonthsData = () => {
+    // 获取区间范围内可用的月数，包括边界值所在的月份
+    const startYear = Number(startDates[0])
+    const startMonth = Number(startDates[1])
+    const endYear = Number(endDates[0])
+    const endMonth = Number(endDates[1])
+    let panelData = []
+    // 在同一年时。
+    if (startYear === endYear) {
+      const months = [
+        ...getPreMonths('prev', startYear, startMonth),
+        ...getMonths('curr', startYear, startMonth, endMonth),
+        ...getMonths('next', endYear, endMonth + 1),
+      ]
+      panelData.push({ year: startYear, months })
+    } else {
+      const startYearMonth = [
+        ...getPreMonths('prev', startYear, startMonth),
+        ...getMonths('curr', startYear, startMonth),
+      ]
+      panelData.push({ year: startYear, months: startYearMonth })
+      // 不同年份时，注意可能跨多个年
+      for (let i = startYear + 1; i < endYear; i++) {
+        const midMonths = [...getMonths('curr', i, 0)]
+        panelData = [...panelData, { year: i, months: midMonths }]
+      }
+      const lastMonths = [
+        ...getPreMonths('curr', endYear, endMonth + 1),
+        ...getMonths('next', endYear, endMonth + 1),
+      ]
+      panelData = [...panelData, { year: endYear, months: lastMonths }]
     }
-    if (monthNum <= 0) {
-      monthNum = 1
+    return panelData
+  }
+
+  const getQuarters = (
+    type: string,
+    year: number,
+    month: number,
+    endMonth: number = 11
+  ) => {
+    const quarters = []
+    console.log('getquarter', year, month, endMonth)
+    for (
+      let index = month + 3, j = Math.floor(index / 3);
+      index <= endMonth;
+      index += 3, j++
+    ) {
+      quarters.push({ year, quarter: j + 1, type })
     }
-    setMonthsNum(monthNum)
-    return monthNum
+    return quarters
+  }
+  const getPreQuarters = (type: string, year: number, month: number) => {
+    const quarters = []
+    for (let index = 0, j = 0; index < month; index += 3, j++) {
+      quarters.push({ year, quarter: j + 1, type })
+    }
+    return quarters
+  }
+
+  const getQuartersData = () => {
+    // 获取区间范围内可用的季度数，包括边界值所在的季度数
+    const startYear = Number(startDates[0])
+    const startMonth = Number(startDates[1])
+    const endYear = Number(endDates[0])
+    const endMonth = Number(endDates[1])
+    let panelData = []
+    // 在同一年时。
+    if (startYear === endYear) {
+      const months = [
+        ...getPreQuarters('prev', startYear, startMonth),
+        ...getQuarters('curr', startYear, startMonth, endMonth),
+        ...getQuarters('next', endYear, endMonth),
+      ]
+      panelData.push({ year: startYear, quarters: months })
+    } else {
+      const startYearMonth = [
+        ...getPreQuarters('prev', startYear, startMonth),
+        ...getQuarters('curr', startYear, startMonth),
+      ]
+      panelData.push({ year: startYear, quarters: startYearMonth })
+      // 不同年份时，注意可能跨多个年
+      for (let i = startYear + 1; i < endYear; i++) {
+        const midMonths = [...getQuarters('curr', i, 0)]
+        panelData = [...panelData, { year: i, quarters: midMonths }]
+      }
+      const lastMonths = [
+        ...getPreQuarters('curr', endYear, endMonth),
+        ...getQuarters('next', endYear, endMonth),
+      ]
+      panelData = [...panelData, { year: endYear, quarters: lastMonths }]
+    }
+    return panelData
   }
 
   const initData = () => {
     // 判断时间范围内存在多少个月
-    const monthNum = getMonthNum()
+    // const monthNum = getMonthNum()
 
     // 判断时间范围内
     // 设置月份数据，获取包含月份的所有数据，只需要 set 一次即可。
-    getMonthData(startDates, monthNum)
+    // getMonthData(startDates, monthNum)
+
+    // 获取起止时间内的所有的周、月、季
+    switch (viewMode) {
+      case 'week':
+        // eslint-disable-next-line no-case-declarations
+        const weeks = getWeeksData()
+        setPanelDate({ ...panelDate, weeks })
+        break
+      case 'month':
+        // eslint-disable-next-line no-case-declarations
+        const months = getMonthsData()
+        console.log('monthts', months, panelDate)
+        setPanelDate({ ...panelDate, months: months as any })
+        break
+      case 'quarter':
+        // eslint-disable-next-line no-case-declarations
+        const quarters = getQuartersData()
+        console.log('quarters', quarters, panelDate)
+        setPanelDate({ ...panelDate, quarters: quarters as any })
+        break
+      default:
+        break
+    }
+
     // 获取当前默认值
-    const defaultData = setDefaultDate()
+    // const defaultData = [] // setDefaultDate()
     // 获取当前默认值在的月份
-    const current = getCurrentIndex(defaultData)
+    const current = getCurrentIndex([])
     const currentIndex = current.current
     // 渲染第一个默认数据
-    renderCurrentDate(defaultData, current)
-    setDefaultRange(monthNum, currentIndex)
-    requestAniFrameFunc(currentIndex, monthNum)
+    renderCurrentDate([], current)
+    // setDefaultRange(monthNum, currentIndex)
+    // requestAniFrameFunc(currentIndex, monthNum)
   }
 
   useEffect(() => {
@@ -395,7 +469,7 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   useEffect(() => {
-    setCurrentDate(resetDefaultValue() || [])
+    setCurrentDate('')
   }, [defaultValue])
 
   useEffect(() => {
@@ -472,10 +546,7 @@ export const CalendarViewModeItem = React.forwardRef<
   const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
     const dateStr = getCurrDate(day, month)
     const activeCls = `${itemPrefix}-active`
-    if (
-      (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
-      (type === 'single' && isEqual(currentDate as string, dateStr))
-    ) {
+    if (type === 'single' && isEqual(currentDate as string, dateStr)) {
       return activeCls
     }
     return null
@@ -544,42 +615,53 @@ export const CalendarViewModeItem = React.forwardRef<
       </div>
     )
   }
-  const date = {
-    weeks: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    ],
-    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    quarters: [1, 2, 3, 4],
-  }
 
   const renderPanel = () => {
     switch (viewMode) {
       case 'week':
         return (
-          <div className={`${classPrefix}-panel`} key={1}>
-            <div className={`${classPrefix}-panel-title`}>{2025}</div>
-            <div className={`${classPrefix}-content`}>
-              {date.weeks.map((item, i) => renderItem(`${item}周`, i))}
-            </div>
-          </div>
+          <>
+            {panelDate.weeks.map((item: any, key: number) => (
+              <div className={`${classPrefix}-panel`} key={key}>
+                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+                <div className={`${classPrefix}-content`}>
+                  {item.weeks.map((week: any, i: number) =>
+                    renderItem(`${week.week}周`, i)
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
         )
       case 'month':
         return (
-          <div className={`${classPrefix}-panel`} key={1}>
-            <div className={`${classPrefix}-panel-title`}>{2025}</div>
-            <div className={`${classPrefix}-content`}>
-              {date.months.map((item, i) => renderItem(`${item}月`, i))}
-            </div>
-          </div>
+          <>
+            {panelDate.months.map((item: any, key: number) => (
+              <div className={`${classPrefix}-panel`} key={key}>
+                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+                <div className={`${classPrefix}-content`}>
+                  {item.months.map((month: any, i: number) =>
+                    renderItem(`${month.month}月`, i)
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
         )
       case 'quarter':
         return (
-          <div className={`${classPrefix}-panel`} key={1}>
-            <div className={`${classPrefix}-panel-title`}>{2025}</div>
-            <div className={`${classPrefix}-content`}>
-              {date.quarters.map((item, i) => renderItem(`${item}季度`, i))}
-            </div>
-          </div>
+          <>
+            {panelDate.quarters.map((item: any, key: number) => (
+              <div className={`${classPrefix}-panel`} key={key}>
+                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+                <div className={`${classPrefix}-content`}>
+                  {item.quarters.map((quarter: any, i: number) =>
+                    renderItem(`${quarter.quarter}季度`, i)
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
         )
       default:
         break
