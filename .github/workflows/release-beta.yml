@@ -8,10 +8,9 @@ on:
     branches:
       - feat_v3.x
 
-
 jobs:
   release-beta:
-    if: startsWith(github.event.head_commit.message, 'chore(release): ') && contains(github.event.head_commit.message, '-beta.')
+    if: ${{ startsWith(github.event.head_commit.message, 'chore(release): ') && contains(github.event.head_commit.message, '-beta.') }}
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
