@@ -1,7 +1,7 @@
 {
   "name": "@nutui/nutui-react-auto-import",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.15.5",
   "description": "NutUI React 组件的自动导入插件，支持多种构建工具如 Vite、Webpack、Rollup 等。",
   "type": "module",
   "keywords": [
@@ -87,30 +87,30 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.1",
+    "@rollup/pluginutils": "^5.1.4",
     "@types/babel__traverse": "^7.20.6",
     "estree-walker": "^3.0.3",
-    "magic-string": "^0.30.11",
-    "unplugin": "^1.14.1"
+    "magic-string": "^0.30.17",
+    "unplugin": "^1.16.1"
   },
   "devDependencies": {
-    "@nutui/nutui-react": "^2.6.22",
-    "@babel/core": "^7.25.8",
-    "@babel/preset-react": "^7.25.7",
+    "@nutui/nutui-react": "^2.7.7",
+    "@babel/core": "^7.26.8",
+    "@babel/preset-react": "^7.26.3",
     "@rollup/plugin-babel": "^6.0.4",
-    "@sxzz/eslint-config": "^4.2.0",
-    "@sxzz/prettier-config": "^2.0.2",
-    "@sxzz/test-utils": "^0.3.2",
-    "@types/node": "^22.5.5",
-    "bumpp": "^9.5.2",
-    "eslint": "^9.11.0",
-    "fast-glob": "^3.3.2",
-    "prettier": "^3.3.3",
-    "tsup": "^8.3.0",
-    "tsx": "^4.19.1",
+    "@sxzz/eslint-config": "^4.6.0",
+    "@sxzz/prettier-config": "^2.1.2",
+    "@sxzz/test-utils": "^0.5.1",
+    "@types/node": "^22.13.1",
+    "bumpp": "^9.11.1",
+    "eslint": "^9.20.1",
+    "fast-glob": "^3.3.3",
+    "prettier": "^3.5.0",
+    "tsup": "^8.3.6",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.2",
-    "vite": "^5.4.7",
-    "vitest": "^2.1.1"
+    "vite": "^5.4.14",
+    "vitest": "^2.1.9"
   },
   "engines": {
     "node": ">=18.12.0"
