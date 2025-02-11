@@ -10,22 +10,26 @@ on:
 
 jobs:
   release-beta:
-#    if: |
-#      startsWith(github.event.head_commit.message, 'chore(release):') &&
-#      contains(github.event.head_commit.message, '-beta.')
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
-      TAG: ${{ inputs.tags }}
 
     runs-on: ubuntu-latest
     steps:
-      - name: echo
+      - name: Get commit message
         run: |
-          echo "${{toJSON(github)}}"
-          echo "Message: ${{ github.event.head_commit.message }}"
-          echo "startsWith(github.event.head_commit.message, 'chore(release):') : ${{ startsWith(github.event.head_commit.message, 'chore(release):') }}"
-          echo "contains(github.event.head_commit.message, '-beta.') : ${{ contains(github.event.head_commit.message, '-beta.') }}"
+              COMMIT_MESSAGE=$(git log --format=%s -n 1)
+              echo "COMMIT_MESSAGE=${COMMIT_MESSAGE}" >> $GITHUB_ENV
+      - name: Show commit message
+        run: echo "$COMMIT_MESSAGE"
+
+      - name: Commit message compliance verification
+        if: startsWith( env.COMMIT_MESSAGE , 'chore(release):' ) != true
+        run: echo "ABORT=true" >> $GITHUB_ENV
+
+      - name: Get Tag message
+        if: contains( env.COMMIT_MESSAGE , '-beta')
+        run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
 
       - uses: actions/checkout@v4
 
@@ -38,13 +42,17 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
+        if: env.ABORT != 'true'
         run: pnpm install --no-frozen-lockfile
 
       - name: Run Build
+        if: env.ABORT != 'true'
         run: pnpm build && pnpm build:taro
 
       - name: Run Release @nutui/nutui-react
+        if: env.ABORT != 'true'
         run: cd ./release/h5 && npm publish --dry-run --tag beta
 
       - name: Run Releases @nutui/nutui-react-taro
+        if: env.ABORT != 'true'
         run: cd ./release/taro && npm publish --dry-run --tag beta
