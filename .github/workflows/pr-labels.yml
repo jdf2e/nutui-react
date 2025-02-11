@@ -6,7 +6,11 @@ on:
   pull_request_review:
     types: [submitted, edited, dismissed]
 
-permissions: write-all
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+  issues: write
 
 jobs:
   update-labels:
@@ -18,7 +22,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
-            const pr_number = context.payload.pull_request.number;
+            // 根据事件类型获取 PR number
+            const pr_number = context.payload.pull_request
+              ? context.payload.pull_request.number
+              : context.payload.review.pull_request_number;
 
             // 获取 PR 的所有 reviews
             const reviews = await github.rest.pulls.listReviews({
