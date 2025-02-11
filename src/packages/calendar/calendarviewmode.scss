@@ -128,6 +128,14 @@
         color: $color-primary-text;
       }
     }
+
+    &-prev,
+    &-next {
+      color: $calendar-disable-color !important;
+      .nut-calendar-day-info-curr {
+        display: none;
+      }
+    }
   }
 
   // 底部导航

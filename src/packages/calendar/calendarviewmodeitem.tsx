@@ -356,6 +356,7 @@ export const CalendarViewModeItem = React.forwardRef<
     return panelData
   }
 
+  // 当前年份包含的季度
   const getQuarters = (
     type: string,
     year: number,
@@ -363,9 +364,8 @@ export const CalendarViewModeItem = React.forwardRef<
     endMonth: number = 11
   ) => {
     const quarters = []
-    console.log('getquarter', year, month, endMonth)
     for (
-      let index = month + 3, j = Math.floor(index / 3);
+      let index = month - 1, j = Math.floor(index / 3);
       index <= endMonth;
       index += 3, j++
     ) {
@@ -373,9 +373,29 @@ export const CalendarViewModeItem = React.forwardRef<
     }
     return quarters
   }
+
+  // 当前月之前的季度
   const getPreQuarters = (type: string, year: number, month: number) => {
     const quarters = []
-    for (let index = 0, j = 0; index < month; index += 3, j++) {
+    for (let index = 0, j = 0; index < month - 3; index += 3, j++) {
+      quarters.push({ year, quarter: j + 1, type })
+    }
+    return quarters
+  }
+
+  const getNextQuarters = (
+    type: string,
+    year: number,
+    month: number,
+    endMonth: number = 12
+  ) => {
+    const quarters = []
+    console.log('month', month, endMonth)
+    for (
+      let index = month + 3, j = Math.floor(index / 3);
+      index <= endMonth - 1;
+      index += 3, j++
+    ) {
       quarters.push({ year, quarter: j + 1, type })
     }
     return quarters
@@ -404,12 +424,12 @@ export const CalendarViewModeItem = React.forwardRef<
       panelData.push({ year: startYear, quarters: startYearMonth })
       // 不同年份时，注意可能跨多个年
       for (let i = startYear + 1; i < endYear; i++) {
-        const midMonths = [...getQuarters('curr', i, 0)]
+        const midMonths = [...getQuarters('curr', i, 1)]
         panelData = [...panelData, { year: i, quarters: midMonths }]
       }
       const lastMonths = [
-        ...getPreQuarters('curr', endYear, endMonth),
-        ...getQuarters('next', endYear, endMonth),
+        ...getQuarters('curr', endYear, 1, endMonth),
+        ...getNextQuarters('next', endYear, endMonth),
       ]
       panelData = [...panelData, { year: endYear, quarters: lastMonths }]
     }
@@ -417,13 +437,6 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const initData = () => {
-    // 判断时间范围内存在多少个月
-    // const monthNum = getMonthNum()
-
-    // 判断时间范围内
-    // 设置月份数据，获取包含月份的所有数据，只需要 set 一次即可。
-    // getMonthData(startDates, monthNum)
-
     // 获取起止时间内的所有的周、月、季
     switch (viewMode) {
       case 'week':
@@ -605,13 +618,16 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderItem = (item: any, index: number) => {
+    const text = { week: '周', month: '月', quarter: '季度' }
     return (
       <div
         className={`${classPrefix}-item`}
         // onClick={() => handleDayClick(day, month, false)}
         key={index}
       >
-        {renderDay ? renderDay(item) : `${item}`}
+        <div className={`${classPrefix}-item-${item.type}`}>
+          {renderDay ? renderDay(item) : `${item[viewMode]}${text[viewMode]}`}
+        </div>
       </div>
     )
   }
@@ -626,7 +642,7 @@ export const CalendarViewModeItem = React.forwardRef<
                 <div className={`${classPrefix}-panel-title`}>{item.year}</div>
                 <div className={`${classPrefix}-content`}>
                   {item.weeks.map((week: any, i: number) =>
-                    renderItem(`${week.week}周`, i)
+                    renderItem(week, i)
                   )}
                 </div>
               </div>
@@ -641,7 +657,7 @@ export const CalendarViewModeItem = React.forwardRef<
                 <div className={`${classPrefix}-panel-title`}>{item.year}</div>
                 <div className={`${classPrefix}-content`}>
                   {item.months.map((month: any, i: number) =>
-                    renderItem(`${month.month}月`, i)
+                    renderItem(month, i)
                   )}
                 </div>
               </div>
@@ -656,7 +672,7 @@ export const CalendarViewModeItem = React.forwardRef<
                 <div className={`${classPrefix}-panel-title`}>{item.year}</div>
                 <div className={`${classPrefix}-content`}>
                   {item.quarters.map((quarter: any, i: number) =>
-                    renderItem(`${quarter.quarter}季度`, i)
+                    renderItem(quarter, i)
                   )}
                 </div>
               </div>
