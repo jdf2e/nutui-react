@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
@@ -47,11 +46,6 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
     selectedOptions: PickerOptions,
     selectedValue: PickerValue[]
   ) => void
-  afterClose?: (
-    selectedOptions: PickerOptions,
-    selectedValue: PickerOptions[],
-    pickerRef: RefObject<HTMLDivElement>
-  ) => void
   onChange?: (args0: PickerOnChangeCallbackParameter) => void
   children?: any
 }
@@ -84,7 +78,6 @@ const InternalPicker: ForwardRefRenderFunction<
     onConfirm,
     onCancel,
     onClose,
-    afterClose,
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
@@ -120,10 +113,9 @@ const InternalPicker: ForwardRefRenderFunction<
   useImperativeHandle(ref, () => actions)
 
   const [innerValue, setInnerValue] = useState([...selectedValue])
+  const innerValueRef = useRef(innerValue)
   const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
   const selectedOptionsRef = useRef([] as PickerOptionItem[])
-  const isConfirmEvent = useRef(false)
-  const pickerRef = useRef<any>(null)
   const [refs, setRefs] = useRefs()
 
   useEffect(() => {
@@ -143,7 +135,7 @@ const InternalPicker: ForwardRefRenderFunction<
     if (selectedOptions?.length) {
       selectedOptionsRef.current = selectedOptions
     }
-    if (isEqual(value, innerValue)) return
+    if (isEqual(value, innerValueRef.current)) return
     console.log(
       'onChangeItem2',
       innerVisible,
@@ -152,6 +144,7 @@ const InternalPicker: ForwardRefRenderFunction<
       index,
       selectedOptions
     )
+    innerValueRef.current = value
     setInnerValue(value)
     innerVisible &&
       onChange?.({
@@ -167,15 +160,10 @@ const InternalPicker: ForwardRefRenderFunction<
       if (ref.moving) moving = true
       ref.stopMomentum()
     })
-    if (moving) {
-      isConfirmEvent.current = true
-    } else {
+    if (!moving) {
       setSelectedValue(innerValue, true)
       setInnerVisible(false)
     }
-    setTimeout(() => {
-      isConfirmEvent.current = false
-    }, 0)
   }
 
   const onCancelEvent = () => {
@@ -215,7 +203,7 @@ const InternalPicker: ForwardRefRenderFunction<
       <div className={classes} style={style} {...rest}>
         {renderTitleBar()}
         {typeof children !== 'function' && children}
-        <div className={`${classPrefix}-panel`} ref={pickerRef}>
+        <div className={`${classPrefix}-panel`}>
           <PickerView
             setRefs={setRefs}
             value={innerValue}
