@@ -91,7 +91,7 @@
     "@types/babel__traverse": "^7.20.6",
     "estree-walker": "^3.0.3",
     "magic-string": "^0.30.11",
-    "unplugin": "^1.14.1"
+    "unplugin": "^2.2.0"
   },
   "devDependencies": {
     "@nutui/nutui-react": "^2.6.22",
