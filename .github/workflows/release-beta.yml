@@ -19,7 +19,7 @@ on:
           - alpha
       publish:
         description: 'Test scenario tags (true or false)'
-        required: false
+        required: true
         type: string
         default: 'false'
 
