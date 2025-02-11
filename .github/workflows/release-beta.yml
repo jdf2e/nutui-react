@@ -1,9 +1,6 @@
 name: Release 3x Beta NPM Packages
 
 on:
-  push:
-    branches:
-      - feat_v3.x
   pull_request:
     branches:
       - feat_v3.x
