@@ -16,10 +16,12 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Get commit message
         run: |
-              COMMIT_MESSAGE=$(git log --format=%s -n 1)
-              echo "COMMIT_MESSAGE=${COMMIT_MESSAGE}" >> $GITHUB_ENV
+          COMMIT_MESSAGE=$(git log --format=%s -n 1)
+          echo "COMMIT_MESSAGE=${COMMIT_MESSAGE}" >> $GITHUB_ENV
       - name: Show commit message
         run: echo "$COMMIT_MESSAGE"
 
@@ -30,8 +32,6 @@ jobs:
       - name: Get Tag message
         if: contains( env.COMMIT_MESSAGE , '-beta')
         run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
-
-      - uses: actions/checkout@v4
 
       - name: Install pnpm
         run: npm install -g pnpm@v9
