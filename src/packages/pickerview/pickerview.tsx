@@ -7,6 +7,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
+import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   PickerViewProps,
@@ -54,7 +55,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   const changeIndex = useRef<number>(0)
 
   /**
-   * 数据类型：多列、嵌套、单列
+   * 数据类型：级联、多列
    */
   const columnsType = useMemo(() => {
     const [firstColumn] = options
@@ -112,19 +113,20 @@ const InternalPickerView: ForwardRefRenderFunction<
   }, [innerValue, options, columnsType])
 
   useEffect(() => {
-    if (selectedValue !== innerValue) {
-      setInnerValue(selectedValue)
-    }
-  }, [selectedValue])
-
-  useEffect(() => {
     if (options !== innerOptions) {
       setInnerOptions(formatOptions)
     }
   }, [options, innerValue])
 
+  useEffect(() => {
+    if (selectedValue !== innerValue) {
+      setInnerValue(selectedValue)
+    }
+  }, [selectedValue])
+
   const handleSelect = useCallback(
     (option: PickerOptionItem, index: number) => {
+      console.log(innerValue, options, columnsType, innerOptions)
       const newValue = option?.value
       if (!newValue || innerValue[index] === newValue) return
       changeIndex.current = index
@@ -151,12 +153,20 @@ const InternalPickerView: ForwardRefRenderFunction<
           ...innerValue.slice(0, startIndex),
           ...values.splice(startIndex),
         ]
-        setInnerValue([...combineResult])
         console.log('combineResult', combineResult)
-        setInnerOptions(formatCascadeOptions(options[0], combineResult))
+        setInnerValue([...combineResult])
+
+        if (
+          !isEqual(
+            formatCascadeOptions(options[0], combineResult),
+            innerOptions
+          )
+        ) {
+          setInnerOptions(formatCascadeOptions(options[0], combineResult))
+        }
       }
     },
-    [innerValue, options, columnsType]
+    [innerValue, options, columnsType, innerOptions]
   )
 
   const selectedOptions = useMemo(() => {
@@ -182,7 +192,7 @@ const InternalPickerView: ForwardRefRenderFunction<
       index: changeIndex.current,
       selectedOptions,
     })
-  }, [innerValue, selectedOptions, onChange])
+  }, [innerValue, onChange])
 
   return (
     <div className={cls} style={style}>

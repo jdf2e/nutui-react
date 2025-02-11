@@ -24,8 +24,8 @@ const Demo1 = () => {
         <PickerView
           value={value}
           options={listData}
-          onChange={(value, selectOptions) => {
-            console.log('onChange', value, selectOptions)
+          onChange={({ value, selectedOptions }) => {
+            console.log('onChange', value, selectedOptions)
             if (value[0] === 3) {
               setValue([1])
             }
