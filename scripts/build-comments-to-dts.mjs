@@ -10,6 +10,7 @@ import { dirname } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const dist = 'release/h5/dist'
 
 /**
  * 通过 cofnig.json 获取所有组件的数据
@@ -135,7 +136,7 @@ function addComments(dtsPath, propsTable, componentName) {
   }
 }
 
-function getDtsPath(key) {
+function getDtsPath(key, outDir) {
   // Tabs.Tabpane -> tabpane
   let name
   if (key === 'Tabs.Tabpane') {
@@ -143,7 +144,7 @@ function getDtsPath(key) {
   } else {
     name = key.toLowerCase().replace('.', '')
   }
-  const file = path.join(__dirname, '../dist/es/packages', name, name + '.d.ts')
+  const file = path.join(__dirname, `../${outDir}/es/packages`, name, name + '.d.ts')
   return file
 }
 
@@ -170,14 +171,14 @@ export function codeShift(env) {
       __dirname,
       '../src/packages',
       name.toLowerCase(),
-      env === 'Taro' ? 'doc.taro.md' : 'doc.md'
+      env === 'taro' ? 'doc.taro.md' : 'doc.md'
     )
     if (fse.pathExistsSync(componentDocumentPath)) {
       const tables = extractPropsTable(
         readComponentDocument(componentDocumentPath)
       )
       Object.keys(tables).forEach((key) => {
-        const dtsPath = getDtsPath(key)
+        const dtsPath = getDtsPath(key, env !== 'taro' ? dist : dist.replace('h5', env))
         if (fse.pathExistsSync(dtsPath)) {
           const table = markdownTable2Json(tables[key])
           addComments(dtsPath, table, getComponentName(key))

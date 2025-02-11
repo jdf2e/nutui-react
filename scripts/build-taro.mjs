@@ -15,9 +15,11 @@ import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
+import packageJson from '../package.json' assert { type: 'json' }
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const dist = 'release/taro/dist'
 
 const isTypesTaro = (name, type) => {
   return name.indexOf(type) > -1
@@ -50,8 +52,8 @@ const transform = (file, api, replace) => {
     if (!path.node.source) return
     if (!alias) {
       // 处理这里，文件引入中的相对路径下的types的引入。
-      path.node.source.value = (!replace || replace && !isTypesTaro(path.node.source.value, 'types.taro')) 
-        ? path.node.source.value.replace('.taro', '') 
+      path.node.source.value = (!replace || replace && !isTypesTaro(path.node.source.value, 'types.taro'))
+        ? path.node.source.value.replace('.taro', '')
         : path.node.source.value
       return
     }
@@ -112,10 +114,10 @@ async function buildES(p) {
     const ext = extname(relativePath)
     const writePath = relativePath.replace(ext, '.js').replace('.taro', '')
 
-    await dest(join('dist/es', writePath.replace('../src/', '')), code.code)
+    await dest(join(`${dist}/es`, writePath.replace('../src/', '')), code.code)
   }
 
-  const files = await glob(['dist/es/packages/**/*.js'])
+  const files = await glob([`${dist}/es/packages/**/*.js`])
   for (const file of files) {
     const result = transform(
       {
@@ -131,7 +133,7 @@ async function buildES(p) {
 
 // 构建 CMD
 async function buildCJS(p) {
-  const esFiles = await glob(['dist/es/**/*.js'])
+  const esFiles = await glob([`${dist}/es/**/*.js`])
 
   for (const path of esFiles) {
     const code = await swc.transformFileSync(join(__dirname, '../', path), {
@@ -154,18 +156,18 @@ async function buildCJS(p) {
 
 async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.taro.json')
-  const dist = join(__dirname, '../dist/types')
+  const types = join(__dirname, `../${dist}/types`)
   await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`,
+    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
   )
 
   const files = await glob([
-    'dist/types/src/packages/**/*.taro.d.ts',
-    'dist/types/src/packages/**/types.d.ts',
-    'dist/types/src/packages/**/context.d.ts',
-    'dist/types/src/packages/**/utils.d.ts',
-    'dist/types/src/locales/*.d.ts',
-    'dist/types/src/utils/*.d.ts',
+    `${dist}/types/src/packages/**/*.taro.d.ts`,
+    `${dist}/types/src/packages/**/types.d.ts`,
+    `${dist}/types/src/packages/**/context.d.ts`,
+    `${dist}/types/src/packages/**/utils.d.ts`,
+    `${dist}/types/src/locales/*.d.ts`,
+    `${dist}/types/src/utils/*.d.ts`,
   ])
 
   for (const file of files) {
@@ -174,19 +176,19 @@ async function buildDeclaration() {
         source: readFileSync(join(__dirname, '../', file), {
           encoding: 'utf8',
         }),
-        path: join(__dirname, '../', file).replace('/dist/types', ''),
+        path: join(__dirname, '../', file).replace(`/${dist}/types`, ''),
       },
       { jscodeshift: j },
-      true
+      true,
     )
 
     // 修改文件名，除 types.taro 不改之外，其他都修改。
-    let to = file.replace('dist/types/src', '')
+    let to = file.replace(`${dist}/types/src`, '')
     to = isTypesTaro(to, 'types.taro') ? to : to.replace('.taro', '')
-    await dest(join('dist/es', to), result)
-    await dest(join('dist/cjs', to), result)
+    await dest(join(`${dist}/es`, to), result)
+    await dest(join(`${dist}/cjs`, to), result)
   }
-  deleteAsync('dist/types')
+  deleteAsync(`${dist}/types`)
 }
 
 // 构建 UMD
@@ -205,6 +207,7 @@ async function buildUMD() {
     build: {
       minify: false,
       emptyOutDir: false,
+      outDir: dist,
       rollupOptions: {
         external: ['react', 'react-dom', '@tarojs/taro', '@tarojs/components'],
         output: [
@@ -217,7 +220,7 @@ async function buildUMD() {
         ],
       },
       lib: {
-        entry: join(__dirname, '../dist/es/packages/nutui.react.build.js'),
+        entry: join(__dirname, `../${dist}/es/packages/nutui.react.build.js`),
       },
     },
   })
@@ -228,7 +231,7 @@ async function buildAllCSS() {
   async function copyStyles() {
     await copy(
       resolve(__dirname, '../src/styles'),
-      resolve(__dirname, '../dist/styles')
+      resolve(__dirname, `../${dist}/styles`),
     )
 
     const content = [
@@ -241,14 +244,15 @@ async function buildAllCSS() {
     if (projectID) {
       content[1] = `@import '../variables-${projectID}.scss';`
     }
-    const scssFiles = await glob(['dist/es/packages/**/*.scss'])
+    const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativeFilePath('/dist/style.scss', '/' + file)}';`
+        `@import '${relativeFilePath(`/${dist}/style.scss`, '/' + file)}';`,
       )
     })
-    dest('dist/style.scss', content.join('\n'))
+    dest(`${dist}/style.scss`, content.join('\n'))
   }
+
   await copyStyles()
   await vite.build({
     logLevel: 'error',
@@ -257,8 +261,9 @@ async function buildAllCSS() {
     },
     build: {
       emptyOutDir: false,
+      outDir: dist,
       lib: {
-        entry: './dist/style.scss',
+        entry: `./${dist}/style.scss`,
         formats: ['es'],
         name: 'style',
         fileName: 'style',
@@ -278,13 +283,13 @@ async function buildThemeCSS() {
       rollupOptions: {
         output: [
           {
-            dir: 'dist/styles/themes',
+            dir: `${dist}/styles/themes`,
             assetFileNames: 'default.css',
           },
         ],
       },
       lib: {
-        entry: './dist/styles/themes/default.scss',
+        entry: `./${dist}/styles/themes/default.scss`,
       },
     },
   })
@@ -294,7 +299,7 @@ async function buildThemeCSS() {
 async function copyStyles() {
   await copy(
     resolve(__dirname, '../src/styles'),
-    resolve(__dirname, '../dist/styles'),
+    resolve(__dirname, `../${dist}/styles`),
   )
 
   let content = [
@@ -310,7 +315,7 @@ async function copyStyles() {
     ]
   }
 
-  dest('dist/styles/themes/default.scss', content.join('\n'))
+  dest(`${dist}/styles/themes/default.scss`, content.join('\n'))
 }
 
 // 构建样式
@@ -338,19 +343,19 @@ async function buildCSS(p) {
     })
     const cssPath = relative('src', loadPath)
     // 写 css 文件
-    await dest(join('dist/es', cssPath, 'style/style.css'), code.css)
-    await dest(join('dist/es', cssPath, 'style/css.js'), `import './style.css'`)
+    await dest(join(`${dist}/es`, cssPath, 'style/style.css'), code.css)
+    await dest(join(`${dist}/es`, cssPath, 'style/css.js'), `import './style.css'`)
 
-    await dest(join('dist/cjs', cssPath, 'style/style.css'), code.css)
+    await dest(join(`${dist}/cjs`, cssPath, 'style/style.css'), code.css)
     await dest(
-      join('dist/cjs', cssPath, 'style/css.js'),
+      join(`${dist}/cjs`, cssPath, 'style/css.js'),
       `import './style.css'`,
     )
 
     // copy harmonycss
     if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
+      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
+      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
     }
 
     // 删除 import
@@ -376,8 +381,8 @@ async function buildCSS(p) {
     ])
       .process(button, { from: loadPath, syntax: scss })
       .then((result) => {
-        dest(join('dist/es', cssPath, `style/${base}`), result.css)
-        dest(join('dist/cjs', cssPath, `style/${base}`), result.css)
+        dest(join(`${dist}/es`, cssPath, `style/${base}`), result.css)
+        dest(join(`${dist}/cjs`, cssPath, `style/${base}`), result.css)
       })
 
     const jsContent = []
@@ -396,17 +401,45 @@ async function buildCSS(p) {
     jsContent.push(`import './${base}';`)
 
     await dest(
-      join('dist/cjs', cssPath, `style/index.js`),
+      join(`${dist}/cjs`, cssPath, `style/index.js`),
       jsContent.join('\n'),
     )
-    await dest(join('dist/es', cssPath, `style/index.js`), jsContent.join('\n'))
+    await dest(join(`${dist}/es`, cssPath, `style/index.js`), jsContent.join('\n'))
   }
 
 }
 
-console.time('clean dist')
-await deleteAsync('dist')
-console.timeEnd('clean dist')
+function generateReleasePackageJson() {
+  delete packageJson.dependencies['@nutui/icons-react']
+  return JSON.stringify({
+    name: '@nutui/nutui-react-taro',
+    version: packageJson.version,
+    style: packageJson.style,
+    main: packageJson.main,
+    module: packageJson.module,
+    typings: packageJson.typings,
+    sideEffects: packageJson.sideEffects,
+    description: packageJson.description,
+    keywords: packageJson.keywords,
+    author: packageJson.author,
+    license: packageJson.license,
+    repository: packageJson.repository,
+    files: packageJson.files,
+    publishConfig: packageJson.publishConfig,
+    dependencies: packageJson.dependencies,
+    peerDependencies: packageJson.peerDependencies,
+  })
+}
+async function copyReleaseFiles() {
+  const npmPublishDir = dist.replace('dist', '')
+  await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))
+  await copy(join(__dirname, '../CHANGELOG.md'), join(`${npmPublishDir}/CHANGELOG.md`))
+  await writeFile(join(__dirname, `../${npmPublishDir}/package.json`), generateReleasePackageJson())
+}
+
+console.time(`clean ${dist}`)
+await deleteAsync(dist)
+console.timeEnd(`clean ${dist}`)
 
 await generate()
 
@@ -445,12 +478,16 @@ console.timeEnd('Build Declaration')
 // await exportProps()
 
 await deleteAsync([
-  'dist/es/packages/nutui.react.js',
-  'dist/es/packages/nutui.react.d.ts',
-  'dist/es/packages/nutui.react.scss.d.ts',
-  'dist/es/packages/nutui.react.scss.js',
+  `${dist}/es/packages/nutui.react.js`,
+  `${dist}/es/packages/nutui.react.d.ts`,
+  `${dist}/es/packages/nutui.react.scss.d.ts`,
+  `${dist}/es/packages/nutui.react.scss.js`,
 ])
 
 console.time('Build JSDoc')
-codeShift()
+codeShift('taro')
 console.timeEnd('Build JSDoc')
+
+console.time('Copy package.json readme.md')
+await copyReleaseFiles()
+console.timeEnd('Copy package.json readme.md')

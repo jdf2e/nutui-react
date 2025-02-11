@@ -1,0 +1,38 @@
+name: Release
+
+on: :
+  push:
+    branches:
+      - feat_v3.x.
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      NPM_CONFIG_PROVENANCE: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run:  npm install -g pnpm@v9.
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Build
+        run: pnpm build & pnpm build:taro
+
+      - name: Run Release @nutui/nutui-react
+        run: cd ./release/h5 && npm publish --dry-run
+
+      - name: Run Releases @nutui/nutui-react-taro
+        run: cd ../../release/taro && npm publish --dry-run
