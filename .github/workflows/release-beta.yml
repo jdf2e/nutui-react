@@ -25,13 +25,13 @@ on:
 
 jobs:
   release:
-    if: ${{ inputs.publish == 'true' }}
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
       TAG: ${{ inputs.tags }}
 
     runs-on: ubuntu-latest
+    if: ${{ inputs.publish == 'true' }}
     steps:
       - uses: actions/checkout@v4
 
