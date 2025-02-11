@@ -10,9 +10,9 @@ on:
 
 jobs:
   release-beta:
-    if: |
-      startsWith(github.event.head_commit.message, 'chore(release):') &&
-      contains(github.event.head_commit.message, '-beta.')
+#    if: |
+#      startsWith(github.event.head_commit.message, 'chore(release):') &&
+#      contains(github.event.head_commit.message, '-beta.')
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
@@ -20,6 +20,12 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+      - name: echo
+        run: |
+          echo "Message: ${{ github.event.head_commit.message }}"
+          echo "startsWith(github.event.head_commit.message, 'chore(release):') : ${{ startsWith(github.event.head_commit.message, 'chore(release):') }}"
+          echo "contains(github.event.head_commit.message, '-beta.') : ${{ contains(github.event.head_commit.message, '-beta.') }}"
+
       - uses: actions/checkout@v4
 
       - name: Install pnpm
