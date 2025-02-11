@@ -1,4 +1,4 @@
-import { Utils } from '@/utils/date'
+import { getMonthPreDay, getMonthDays } from '@/utils/date'
 import { CalendarCardDay } from './types'
 
 export const convertDateToDay = (date: Date) => {
@@ -29,13 +29,13 @@ export const getPrevMonthDays = (
     prevMonth = 12
     prevYear -= 1
   }
-  let days = Utils.getMonthPreDay(year, month)
+  let days = getMonthPreDay(year, month)
   days -= firstDayOfWeek
   if (days >= 7) {
     days -= 7
   }
 
-  const preDates = Utils.getMonthDays(`${prevYear}`, `${prevMonth}`)
+  const preDates = getMonthDays(`${prevYear}`, `${prevMonth}`)
   const months = Array.from(Array(preDates), (_, k) => {
     return {
       type: 'prev',
@@ -51,7 +51,7 @@ export const getPrevMonthDays = (
  * 获取当前月的日期数据
  */
 export const getCurrentMonthDays = (year: number, month: number) => {
-  const days = Utils.getMonthDays(`${year}`, `${month}`)
+  const days = getMonthDays(`${year}`, `${month}`)
   return Array.from(Array(days), (_, k) => {
     return {
       type: 'current',
