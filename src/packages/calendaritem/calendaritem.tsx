@@ -161,14 +161,6 @@ export const CalendarItem = React.forwardRef<
     currDateArray: [],
   })
 
-  const getMonthsPanel = () => {
-    return monthsPanel.current as HTMLDivElement
-  }
-
-  const getMonthsRef = () => {
-    return monthsRef.current as HTMLDivElement
-  }
-
   const resetDefaultValue = () => {
     if (
       defaultValue ||
@@ -239,8 +231,8 @@ export const CalendarItem = React.forwardRef<
 
   const setReachedYearMonthInfo = (current: number) => {
     const currentMonthsData = monthsData[current]
-    const [year, month] = currentMonthsData.curData
     if (currentMonthsData.title === yearMonthTitle) return
+    const [year, month] = currentMonthsData.curData
     onPageChange && onPageChange([year, month, `${year}-${month}`])
     setYearMonthTitle(currentMonthsData.title)
   }
@@ -267,19 +259,6 @@ export const CalendarItem = React.forwardRef<
     setMonthDefaultRange([start, end])
     setTranslateY(monthsData[start].scrollTop)
     setReachedYearMonthInfo(current)
-  }
-
-  const getMonthNum = () => {
-    let monthNum = Number(endDates[1]) - Number(startDates[1])
-    const yearNum = Number(endDates[0]) - Number(startDates[0])
-    if (yearNum > 0) {
-      monthNum += 12 * yearNum
-    }
-    if (monthNum <= 0) {
-      monthNum = 1
-    }
-    setMonthsNum(monthNum)
-    return monthNum
   }
 
   const setDefaultDate = () => {
@@ -409,6 +388,14 @@ export const CalendarItem = React.forwardRef<
     }
   }
 
+  const getMonthsPanel = () => {
+    return monthsPanel.current as HTMLDivElement
+  }
+
+  const getMonthsRef = () => {
+    return monthsRef.current as HTMLDivElement
+  }
+
   const requestAniFrameFunc = (current: number, monthNum: number) => {
     const lastItem = monthsData[monthsData.length - 1]
     const containerHeight = lastItem.cssHeight + lastItem.scrollTop
@@ -421,8 +408,20 @@ export const CalendarItem = React.forwardRef<
         getMonthsRef().scrollTop = monthsData[current].scrollTop
       }
     })
-
     setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+  }
+
+  const getMonthNum = () => {
+    let monthNum = Number(endDates[1]) - Number(startDates[1])
+    const yearNum = Number(endDates[0]) - Number(startDates[0])
+    if (yearNum > 0) {
+      monthNum += 12 * yearNum
+    }
+    if (monthNum <= 0) {
+      monthNum = 1
+    }
+    setMonthsNum(monthNum)
+    return monthNum
   }
 
   const initData = () => {
@@ -506,16 +505,10 @@ export const CalendarItem = React.forwardRef<
     const nextTop = monthsData[current + 1].scrollTop
     const nextHeight = monthsData[current + 1].cssHeight
     if (current === 0) {
-      if (scrollTop >= nextTop) {
-        current += 1
-      }
+      if (scrollTop >= nextTop) current += 1
     } else if (current > 0 && current < monthsNum - 1) {
-      if (scrollTop >= nextTop) {
-        current += 1
-      }
-      if (scrollTop < monthsData[current].scrollTop) {
-        current -= 1
-      }
+      if (scrollTop >= nextTop) current += 1
+      if (scrollTop < monthsData[current].scrollTop) current -= 1
     } else {
       const viewPosition = Math.round(scrollTop + viewHeight)
       if (current + 1 <= monthsNum && viewPosition >= nextTop + nextHeight) {
@@ -561,7 +554,7 @@ export const CalendarItem = React.forwardRef<
       }
     } else if (
       (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
-      (!Array.isArray(currentDate) && isEqual(currentDate, dateStr))
+      (type === 'single' && isEqual(currentDate as string, dateStr))
     ) {
       return activeCls
     }
