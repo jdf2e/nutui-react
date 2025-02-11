@@ -279,7 +279,7 @@ export const CalendarItem = React.forwardRef<
       }
       return defaultData
     }
-    if (Array.isArray(currentDate) && currentDate.length > 0) {
+    if (Array.isArray(currentDate) && currentDate.length) {
       switch (type) {
         case 'range':
           if (compareDate(currentDate[0], propStartDate)) {
@@ -569,7 +569,7 @@ export const CalendarItem = React.forwardRef<
     ) {
       return activeCls
     }
-    if (disableDate && disableDate(day)) return `${dayPrefix}-disabled`
+    if (disableDate(day)) return `${dayPrefix}-disabled`
     return null
   }
 
