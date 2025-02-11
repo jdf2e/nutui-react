@@ -2,18 +2,19 @@ name: Release Beta NPM Packages
 
 on:
   workflow_dispatch:
-    tags:
-      description: 'Publish release packages version'
-      required: true
-      default: 'beta'
-      type: choice
-      options:
-        - beta
-        - alpha
-    publish:
-      description: 'Test scenario tags'
-      required: false
-      type: boolean
+    inputs:
+      tags:
+        description: 'Publish release packages version'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - beta
+          - alpha
+      publish:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
 
 jobs:
   release:
