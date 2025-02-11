@@ -3,14 +3,17 @@ name: Release 3x Beta NPM Packages
 on:
   push:
     branches:
-      - feat_v3.x:
+      - feat_v3.x
   pull_request:
     branches:
       - feat_v3.x
 
 jobs:
   release-beta:
-    if ${{ startsWith(github.event.head_commit.message, 'chore(release): ') && contains(github.event.head_commit.message, '-beta.') }}
+    if: |
+      github: release.event.head_commit_master != null &&
+      startsWith(github.event.head_commit.message, 'chore(release): ') &&
+      contains(github.event.head_commit.message, '-beta.')
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
