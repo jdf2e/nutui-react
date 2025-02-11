@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: echo
         run: |
-          echo "${{toJSON(github.event)}}"
+          echo "${{toJSON(github)}}"
           echo "Message: ${{ github.event.head_commit.message }}"
           echo "startsWith(github.event.head_commit.message, 'chore(release):') : ${{ startsWith(github.event.head_commit.message, 'chore(release):') }}"
           echo "contains(github.event.head_commit.message, '-beta.') : ${{ contains(github.event.head_commit.message, '-beta.') }}"
