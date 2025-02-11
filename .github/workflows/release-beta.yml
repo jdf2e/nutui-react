@@ -11,7 +11,6 @@ on:
 jobs:
   release-beta:
     if: |
-      github: release.event.head_commit_master != null &&
       startsWith(github.event.head_commit.message, 'chore(release): ') &&
       contains(github.event.head_commit.message, '-beta.')
     env:
