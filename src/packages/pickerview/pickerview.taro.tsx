@@ -181,12 +181,6 @@ const InternalPickerView: ForwardRefRenderFunction<
   }, [innerOptions, innerValue])
 
   useEffect(() => {
-    console.log('onChange', {
-      value: innerValue,
-      index: changeIndex.current,
-      selectedOptions,
-      innerOptions,
-    })
     onChange?.({
       value: innerValue,
       index: changeIndex.current,

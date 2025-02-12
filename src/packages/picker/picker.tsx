@@ -120,7 +120,6 @@ const InternalPicker: ForwardRefRenderFunction<
 
   useEffect(() => {
     if (innerVisible) {
-      console.log('selectedValue变更', selectedValue, innerValue)
       setInnerValue(selectedValue)
       setInnerOptions(options as PickerOptions[])
     }
@@ -131,19 +130,10 @@ const InternalPicker: ForwardRefRenderFunction<
     index,
     selectedOptions,
   }: PickerOnChangeCallbackParameter) => {
-    console.log('onChangeItem1', value, index, selectedOptions)
     if (selectedOptions?.length) {
       selectedOptionsRef.current = selectedOptions
     }
     if (isEqual(value, innerValueRef.current)) return
-    console.log(
-      'onChangeItem2',
-      innerVisible,
-      innerValue,
-      value,
-      index,
-      selectedOptions
-    )
     innerValueRef.current = value
     setInnerValue(value)
     innerVisible &&
