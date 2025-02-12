@@ -6,11 +6,12 @@
 
   &-control {
     display: flex;
-    height: $popup-title-height;
-    font-size: $popup-title-font-size;
     align-items: center;
     justify-content: space-between;
+    height: $popup-title-height;
     padding: $popup-title-padding;
+    box-sizing: border-box;
+    font-size: $popup-title-font-size;
   }
 
   &-cancel-btn {

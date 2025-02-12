@@ -80,7 +80,6 @@ const Demo7 = () => {
             label: '浦东新区',
           },
         ]
-        setValue(value)
         setAsyncData([...[...asyncData]])
       }, 0)
     }

@@ -123,7 +123,7 @@ const InternalPicker: ForwardRefRenderFunction<
       setInnerValue(selectedValue)
       setInnerOptions(options as PickerOptions[])
     }
-  }, [options, selectedValue, innerOptions, innerVisible])
+  }, [selectedValue, innerOptions, innerVisible])
 
   const onChangeItem = ({
     value,
