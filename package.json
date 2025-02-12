@@ -70,7 +70,7 @@
     "build:demo:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite build",
     "build:taro:demo": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:site": "vite build --config vite.config.site.ts",
-    "build:taro:site": "vite build --config vite.config.site.taro.ts",
+    "build:taro:site": "vite build --config vite.config.site.taro.ts && node ./scripts/rename.js",
     "build:jdtaro:demo": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:demo:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:jstaro:demo:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",

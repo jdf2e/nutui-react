@@ -34,6 +34,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
         },
       },
     },
+    define: {
+      __DEMO_PATH__: JSON.stringify('/taro/react/3x/demo/index.html#'),
+    },
     resolve: {
       alias: [
         {
