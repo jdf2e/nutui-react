@@ -5,10 +5,10 @@ import { JoySmile } from '@nutui/icons-react-taro'
 import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
-import { usePropsValue } from '@/utils/use-props-value'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
-import useUuid from '@/utils/use-uuid'
+import useUuid from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 
 export type TabsTitle = {

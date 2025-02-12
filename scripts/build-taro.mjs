@@ -50,8 +50,8 @@ const transform = (file, api, replace) => {
     if (!path.node.source) return
     if (!alias) {
       // 处理这里，文件引入中的相对路径下的types的引入。
-      path.node.source.value = (!replace || replace && !isTypesTaro(path.node.source.value, 'types.taro')) 
-        ? path.node.source.value.replace('.taro', '') 
+      path.node.source.value = (!replace || replace && !isTypesTaro(path.node.source.value, 'types.taro'))
+        ? path.node.source.value.replace('.taro', '')
         : path.node.source.value
       return
     }
@@ -78,6 +78,7 @@ async function buildES(p) {
       'src/packages/**/context.ts',
       'src/packages/**/utils.ts',
       'src/utils/**/*.{ts,tsx}',
+      'src/hooks/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
@@ -103,6 +104,7 @@ async function buildES(p) {
           '@/packages/*': ['src/packages/*'],
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
+          '@/hooks/*': ['src/hooks/*'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,
@@ -166,6 +168,7 @@ async function buildDeclaration() {
     'dist/types/src/packages/**/utils.d.ts',
     'dist/types/src/locales/*.d.ts',
     'dist/types/src/utils/*.d.ts',
+    'dist/types/src/hooks/*.d.ts',
   ])
 
   for (const file of files) {

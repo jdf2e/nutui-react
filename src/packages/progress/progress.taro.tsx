@@ -5,7 +5,7 @@ import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
-import useUuid from '@/utils/use-uuid'
+import useUuid from '@/hooks/use-uuid'
 import { harmony, web } from '@/utils/platform-taro'
 
 export interface ProgressProps extends BasicComponent {
