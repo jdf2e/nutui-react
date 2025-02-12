@@ -211,6 +211,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   }
 
   useEffect(() => {
+    moving.current = false
     setScrollDistance(0)
     transformY.current = 0
     modifyStatus(false)

@@ -22,7 +22,7 @@ const Demo1 = () => {
   }
   const change = (options: PickerOptionItem[], values: PickerValue[]) => {
     const v = values.join('/')
-    console.log('values', v, values, options)
+
     setValue(v)
     setDesc2(options.map((option) => option.label).join(' '))
   }
