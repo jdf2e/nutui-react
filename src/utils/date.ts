@@ -335,11 +335,18 @@ export const getTotalWeeksInYear = (year: number, firstDayOfWeek?: number) => {
   return weeks
 }
 
-export const getCurrMonth = () => {}
-
-// // 计算 2025 和 2026 年的总周数
-// const weeksIn2025 = getTotalWeeksInYear(2025);
-// const weeksIn2026 = getTotalWeeksInYear(2026);
-
-// // console.log(`2025 年有 ${weeksIn2025} 周`);
-// // console.log(`2026 年有 ${weeksIn2026} 周`);
+/**
+ * 判断某年某月某日属于哪一个季度
+ * @param year 年份
+ * @param month 月份（1-12）
+ * @param day 日期（1-31）
+ * @returns 季度编号（1、2、3、4）
+ */
+export const getQuarter = (month: number): number => {
+  if (month < 1 || month > 12) {
+    throw new Error('月份必须在 1 到 12 之间')
+  }
+  // 计算季度
+  const quarter = Math.floor((month - 1) / 3) + 1
+  return quarter
+}

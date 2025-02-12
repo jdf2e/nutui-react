@@ -14,6 +14,7 @@ import {
   getTotalWeeksInYear,
   getPreMonths,
   getMonths,
+  getQuarter,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -328,7 +329,7 @@ export const CalendarViewModeItem = React.forwardRef<
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
     let panelData = []
-    // 在同一年时。
+    // 在同一年时
     if (startYear === endYear) {
       const months = [
         ...getPreMonths('prev', startYear, startMonth),
@@ -361,15 +362,15 @@ export const CalendarViewModeItem = React.forwardRef<
     type: string,
     year: number,
     month: number,
-    endMonth: number = 11
+    endMonth: number = 12
   ) => {
     const quarters = []
-    for (
-      let index = month - 1, j = Math.floor(index / 3);
-      index <= endMonth;
-      index += 3, j++
-    ) {
-      quarters.push({ year, quarter: j + 1, type })
+    // 当前月区间数据所在的季度
+    const startIndex = month // 从1开始计算
+    const endIndex = endMonth
+    for (let index = startIndex; index <= endIndex; index += 3) {
+      const quarter = getQuarter(index)
+      quarters.push({ year, quarter, type })
     }
     return quarters
   }
@@ -377,8 +378,11 @@ export const CalendarViewModeItem = React.forwardRef<
   // 当前月之前的季度
   const getPreQuarters = (type: string, year: number, month: number) => {
     const quarters = []
-    for (let index = 0, j = 0; index < month - 3; index += 3, j++) {
-      quarters.push({ year, quarter: j + 1, type })
+    const startIndex = 1 // 从1开始计算
+    const endIndex = month - 3 // 当前月份不能算进之前的季度，-3 判断。
+    for (let index = startIndex; index < endIndex; index += 3) {
+      const quarter = getQuarter(index)
+      quarters.push({ year, quarter, type })
     }
     return quarters
   }
@@ -390,13 +394,11 @@ export const CalendarViewModeItem = React.forwardRef<
     endMonth: number = 12
   ) => {
     const quarters = []
-    console.log('month', month, endMonth)
-    for (
-      let index = month + 3, j = Math.floor(index / 3);
-      index <= endMonth - 1;
-      index += 3, j++
-    ) {
-      quarters.push({ year, quarter: j + 1, type })
+    const startIndex = month + 3
+    const endIndex = endMonth
+    for (let index = startIndex; index <= endIndex; index += 3) {
+      const quarter = getQuarter(index)
+      quarters.push({ year, quarter, type })
     }
     return quarters
   }
@@ -413,7 +415,7 @@ export const CalendarViewModeItem = React.forwardRef<
       const months = [
         ...getPreQuarters('prev', startYear, startMonth),
         ...getQuarters('curr', startYear, startMonth, endMonth),
-        ...getQuarters('next', endYear, endMonth),
+        ...getNextQuarters('next', endYear, endMonth),
       ]
       panelData.push({ year: startYear, quarters: months })
     } else {
