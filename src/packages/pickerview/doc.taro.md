@@ -5,7 +5,7 @@ PickerView 是 Picker 的内容区域。
 ## 引入
 
 ```tsx
-import { name } from '@nutui/nutui-react'
+import { name } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

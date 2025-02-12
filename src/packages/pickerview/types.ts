@@ -5,9 +5,7 @@ export type PickerValue = string | number | null
 export interface PickerOptionItem {
   label: string | number
   value: string | number
-  disabled?: boolean
   children?: PickerOptionItem[]
-  className?: string | number
 }
 
 export type PickerOptions = PickerOptionItem[]
@@ -22,12 +20,19 @@ export interface PickerRollerProps {
   renderLabel: (item: PickerOptionItem) => React.ReactNode
 }
 
+export interface PickerOnChangeCallbackParameter {
+  value: PickerValue[]
+  index: number
+  selectedOptions: PickerOptionItem[]
+}
+
 export interface PickerViewProps extends BasicComponent {
+  setRefs?: (ref: any) => any
   options: PickerOptions[]
   value?: PickerValue[]
   defaultValue?: PickerValue[]
   threeDimensional?: boolean
   duration?: number | string
   renderLabel: (item: PickerOptionItem) => React.ReactNode
-  onChange?: (value: PickerValue[], selectOptions: PickerOptionItem[]) => void
+  onChange?: (arg0: PickerOnChangeCallbackParameter) => void
 }

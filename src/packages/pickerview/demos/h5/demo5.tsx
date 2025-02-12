@@ -24,8 +24,8 @@ const Demo1 = () => {
           options={listData}
           threeDimensional={false}
           duration={500}
-          onChange={(value, selectOptions) => {
-            console.log('onChange', value, selectOptions)
+          onChange={({ value, selectedOptions }) => {
+            console.log('onChange', value, selectedOptions)
           }}
         />
       </Cell>
