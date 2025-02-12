@@ -58,8 +58,12 @@ const InternalPickerView: ForwardRefRenderFunction<
    * 数据类型：级联、多列
    */
   const columnsType = useMemo(() => {
-    const [firstColumn] = props.options as PickerOptions[]
-    if (Array.isArray(firstColumn) && 'children' in firstColumn[0]) {
+    const firstColumn = (props.options as PickerOptions[])[0] || []
+    if (
+      Array.isArray(firstColumn) &&
+      firstColumn.length > 0 &&
+      'children' in firstColumn[0]
+    ) {
       return 'cascade'
     }
     return 'multiple'

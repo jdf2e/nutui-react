@@ -51,7 +51,7 @@ const PickerViewDemo = () => {
         <Demo3 />
         <View className="h2">{translated.tiled}</View>
         <Demo5 />
-        <h2>{translated.cascade}</h2>
+        <View className="h2">{translated.cascade}</View>
         <Demo6 />
       </ScrollView>
     </>

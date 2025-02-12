@@ -257,7 +257,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         eventOptions
       )
     }
-  })
+  }, [])
 
   const touchRollerStyle = () => {
     return {
