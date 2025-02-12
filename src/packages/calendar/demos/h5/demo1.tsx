@@ -33,14 +33,14 @@ const Demo1 = () => {
         onClick={openSwitch}
       />
       <Calendar
-        viewMode="quarter"
+        viewMode="week"
         visible={isVisible}
         defaultValue={date}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
         onDayClick={select}
-        startDate="2024-12-21"
-        endDate="2025-01-30"
+        startDate="2025-1-1"
+        endDate="2025-3-2"
       />
     </>
   )

@@ -157,6 +157,14 @@ export const getYearWeek = (
   )
   return Math.ceil((dataNumber + (dateFirst.getDay() + 1 - 1)) / 7)
 }
+
+export const getWeekOfYear = (time: number) => {
+  const oneDayTime = 86400000 // 24 * 60 * 60 * 1000
+  const startOfYear = new Date(new Date(time).getFullYear(), 0, 1)
+  // 举例1/1共计多少天
+  const days = Math.round((time - startOfYear.valueOf()) / oneDayTime)
+  return Math.ceil((days + (startOfYear.getDay() + 1)) / 7)
+}
 export const getWeekDate = (
   year: string,
   month: string,

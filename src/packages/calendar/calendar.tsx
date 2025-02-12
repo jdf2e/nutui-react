@@ -41,7 +41,7 @@ export interface CalendarProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'quarter',
+  viewMode: 'week',
   autoBackfill: false,
   popup: true,
   visible: false,

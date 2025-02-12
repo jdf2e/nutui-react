@@ -17,6 +17,7 @@ import {
   getPreQuarters,
   getNextQuarters,
   getQuarters,
+  getWeekOfYear,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -69,7 +70,7 @@ export interface CalendarViewModeItemProps extends PopupProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'quarter',
+  viewMode: 'week',
   autoBackfill: false,
   popup: true,
   title: '',
@@ -137,9 +138,7 @@ export const CalendarViewModeItem = React.forwardRef<
   const itemPrefix = 'nut-calendar-viewmode-item'
 
   const [panelDate, setPanelDate] = useState({
-    weeks: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    ],
+    weeks: [{ year: 2025, weeks: [1, 2, 3] }],
     months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
     quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
   })
@@ -319,9 +318,106 @@ export const CalendarViewModeItem = React.forwardRef<
     setMonthsData(monthData)
   }
 
+  const getPreWeeks = (
+    type: string,
+    year: number,
+    month: number,
+    day: number,
+    firstDayOfWeek = 0
+  ) => {
+    // 当前日之前的所有的周
+    const startDate = new Date(year, 0, 1)
+    const endDate = new Date(year, month - 1, day)
+    const weeks = []
+    // 遍历日期范围
+    for (let d = startDate; d < endDate; d.setDate(d.getDate() + 1)) {
+      const week = getWeekOfYear(d.valueOf())
+      const lastItem = weeks[weeks.length - 1] as any
+      if (
+        !lastItem ||
+        lastItem.year !== d.getFullYear() ||
+        lastItem.week !== week
+      ) {
+        weeks.push({ year: d.getFullYear(), week, type })
+      }
+    }
+    return weeks
+  }
+
+  const getWeeks = (
+    type: string,
+    year: number,
+    month: number,
+    day: number,
+    endYear: number,
+    endMonth: number,
+    endDay: number
+  ) => {
+    const startDate = new Date(year, month - 1, day)
+    const endDate = new Date(endYear, endMonth - 1, endDay)
+    const weeks = []
+    // 遍历日期范围
+    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+      const week = getWeekOfYear(d.valueOf())
+      const lastItem = weeks[weeks.length - 1] as any
+      if (
+        !lastItem ||
+        lastItem.year !== d.getFullYear() ||
+        lastItem.week !== week
+      ) {
+        weeks.push({ year: d.getFullYear(), week, type })
+      }
+    }
+    return weeks
+  }
+
+  // console.log('3333', getWeeks('', 2025, 1, 1, 2025, 12, 12))
   const getWeeksData = () => {
     // 获取区间范围内可用的周数，包括边界值所在的周数
-    return []
+    // 展示起止时间内年份的所有周，根据起止区间区分是否可用
+    // 与其他类型不同的是，需要计算当前周包含的周起止日期。
+    const startYear = Number(startDates[0])
+    const startMonth = Number(startDates[1])
+    const startDay = Number(startDates[2])
+    const endYear = Number(endDates[0])
+    const endMonth = Number(endDates[1])
+    const endDay = Number(endDates[2])
+    const panelData = []
+
+    // 在同一年时
+    if (startYear === endYear) {
+      const weeks = [
+        ...getPreWeeks('prev', startYear, startMonth, startDay),
+        ...getWeeks(
+          'curr',
+          startYear,
+          startMonth,
+          startDay,
+          endYear,
+          endMonth,
+          endDay
+        ),
+        // ...getWeeks('next', endYear, endMonth + 1),
+      ]
+      panelData.push({ year: startYear, weeks })
+    } else {
+      // const startYearMonth = [
+      //   ...getPreWeeks('prev', startYear, startMonth),
+      //   ...getWeeks('curr', startYear, startMonth),
+      // ]
+      // panelData.push({ year: startYear, months: startYearMonth })
+      // // 不同年份时，注意可能跨多个年
+      // for (let i = startYear + 1; i < endYear; i++) {
+      //   const midMonths = [...getWeeks('curr', i, 0)]
+      //   panelData = [...panelData, { year: i, months: midMonths }]
+      // }
+      // const lastMonths = [
+      //   ...getPreMonths('curr', endYear, endMonth + 1),
+      //   ...getWeeks('next', endYear, endMonth + 1),
+      // ]
+      // panelData = [...panelData, { year: endYear, weeks: lastMonths }]
+    }
+    return panelData
   }
 
   const getMonthsData = () => {
@@ -366,7 +462,7 @@ export const CalendarViewModeItem = React.forwardRef<
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
     let panelData = []
-    // 在同一年时。
+    // 在同一年时
     if (startYear === endYear) {
       const months = [
         ...getPreQuarters('prev', startYear, startMonth),
@@ -394,13 +490,16 @@ export const CalendarViewModeItem = React.forwardRef<
     return panelData
   }
 
+  // 初始化面板数据
   const initData = () => {
     // 获取起止时间内的所有的周、月、季
     switch (viewMode) {
       case 'week':
+        console.log('initdata', viewMode)
         // eslint-disable-next-line no-case-declarations
         const weeks = getWeeksData()
-        setPanelDate({ ...panelDate, weeks })
+        console.log('weeks', weeks, panelDate)
+        setPanelDate({ ...panelDate, weeks: weeks as any })
         break
       case 'month':
         // eslint-disable-next-line no-case-declarations
