@@ -12,7 +12,7 @@ exports[`Cascader > visible true 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="--nutui-overlay-zIndex: 1000;"
+    style="z-index: 1000;"
   />
   <div
     class="nut-popup nut-popup-round nut-popup-bottom"

@@ -152,11 +152,7 @@
   }
 
   &-card {
-    padding: 0;
-    // background-color: $color-default-light;
-
     .nut-tabs-titles-item {
-      padding: 0;
       &-active {
         font-weight: $font-weight-bold;
         background-color: $white;
@@ -190,11 +186,9 @@
   }
 
   &-divider {
-    padding: 0;
     border-bottom: 1px solid $color-border;
 
     .nut-tabs-titles-item {
-      padding: 0;
       position: relative;
 
       &::after {
@@ -219,9 +213,10 @@
 
 .nut-tabs-vertical {
   .nut-tabs-ellipsis {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: break-spaces;
+    padding-left: 6px;
+    width: 90px;
+    line-height: $font-size-base;
   }
 
   .nut-tabs-titles {

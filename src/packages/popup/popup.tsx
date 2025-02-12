@@ -1,8 +1,6 @@
 import React, {
   FunctionComponent,
-  MouseEvent,
   ReactElement,
-  ReactNode,
   ReactPortal,
   useEffect,
   useState,
@@ -11,36 +9,13 @@ import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
-import { defaultOverlayProps, OverlayProps } from '@/packages/overlay/overlay'
+import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
-import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/utils/use-lock-scroll'
+import { PopupProps, Teleport } from './types'
 
-type Teleport = HTMLElement | (() => HTMLElement) | null
-
-export interface PopupProps extends OverlayProps {
-  position: string
-  transition: string
-  overlayStyle: React.CSSProperties
-  overlayClassName: string
-  closeable: boolean
-  closeIconPosition: string
-  closeIcon: ReactNode
-  left: ReactNode
-  title: ReactNode
-  description: ReactNode
-  destroyOnClose: boolean
-  portal: Teleport
-  overlay: boolean
-  round: boolean
-  onOpen: () => void
-  onClose: () => void
-  onOverlayClick: (e: MouseEvent) => boolean | void
-  onCloseIconClick: (e: MouseEvent) => boolean | void
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: PopupProps = {
+  ...defaultOverlayProps,
   position: 'center',
   transition: '',
   overlayStyle: {},
@@ -54,10 +29,9 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onOverlayClick: (e: MouseEvent) => true,
-  onCloseIconClick: (e: MouseEvent) => true,
-  ...defaultOverlayProps,
-} as PopupProps
+  onOverlayClick: () => true,
+  onCloseIconClick: () => true,
+}
 
 // 默认1000，参看variables
 const _zIndex = 1100
@@ -108,7 +82,6 @@ export const Popup: FunctionComponent<
   const classPrefix = 'nut-popup'
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index,
   }
   const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(
@@ -143,14 +116,14 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleOverlayClick = (e: MouseEvent) => {
+  const handleOverlayClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     e.stopPropagation()
     if (closeOnOverlayClick && onOverlayClick(e)) {
       close()
     }
   }
 
-  const handleCloseIconClick = (e: MouseEvent) => {
+  const handleCloseIconClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     onCloseIconClick(e) && close()
   }
 
@@ -222,7 +195,7 @@ export const Popup: FunctionComponent<
           onClick={onClick}
         >
           {renderTitle()}
-          {showChildren ? children : null}
+          {showChildren && children}
         </div>
       </CSSTransition>
     )
@@ -233,6 +206,7 @@ export const Popup: FunctionComponent<
       <>
         {overlay && (
           <Overlay
+            zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}

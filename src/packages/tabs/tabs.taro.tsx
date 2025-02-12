@@ -67,16 +67,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     value: outerValue,
     defaultValue: outerDefaultValue,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
+
   const uuid = useUuid()
 
   const [value, setValue] = usePropsValue<string | number>({
     value: outerValue,
     defaultValue: outerDefaultValue,
-    finalValue: 0,
     onChange,
   })
 
@@ -84,9 +81,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   const getTitles = () => {
     const titles: TabsTitle[] = []
-    React.Children.forEach(children, (child: any, idx) => {
+    React.Children.forEach(children, (child, idx) => {
       if (React.isValidElement(child)) {
-        const props: any = child?.props
+        const { props } = child
         if (props?.title || props?.value) {
           titles.push({
             title: props.title,
@@ -115,6 +112,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       forceUpdate()
     }
   }, [children])
+
   const classes = classNames(
     classPrefix,
     `${classPrefix}-${direction}`,
@@ -125,10 +123,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     [`${classPrefix}-titles-${align}`]: align,
   })
 
-  const tabsActiveStyle = {
-    color: activeType === 'smile' ? activeColor : '',
-    background: activeType === 'line' ? activeColor : '',
-  }
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
       createSelectorQuery()
@@ -160,8 +154,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     width: number
   }
   const scrollWithAnimation = useRef(false)
-  const navRectRef = useRef<any>()
-  const titleRectRef = useRef<RectItem[]>([])
   const [scrollLeft, setScrollLeft] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
   const scrollDirection = (
@@ -172,16 +164,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     const frames = 1
 
     function animate() {
-      if (direction === 'horizontal') {
-        setScrollLeft(to)
-      } else {
-        setScrollTop(to)
-      }
-      if (++count < frames) {
-        raf(animate)
-      }
+      if (direction === 'horizontal') setScrollLeft(to)
+      else setScrollTop(to)
+      if (++count < frames) raf(animate)
     }
-
     animate()
   }
   const scrollIntoView = (index: number) => {
@@ -190,10 +176,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         getRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-list`),
         getAllRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-titles-item`),
       ]).then(([navRect, titleRects]: any) => {
-        navRectRef.current = navRect
-        titleRectRef.current = titleRects
-        // @ts-ignore
-        const titleRect: RectItem = titleRectRef.current[index]
+        const titleRect = titleRects[index]
         if (!titleRect) return
 
         let to = 0
@@ -201,12 +184,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           const top = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
-          to = top - (navRectRef.current.height - titleRect.height) / 2
+          to = top - (navRect.height - titleRect.height) / 2
         } else {
           const left = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
-          to = left - (navRectRef.current.width - titleRect.width) / 2
+          to = left - (navRect.width - titleRect.width) / 2
           // to < 0 说明不需要进行滚动，页面元素已全部显示出来
           if (to < 0) return
           to = rtl ? -to : to
@@ -214,7 +197,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         nextTick(() => {
           scrollWithAnimation.current = true
         })
-
         scrollDirection(to, direction)
       })
     })
@@ -229,7 +211,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       transform:
         direction === 'horizontal'
           ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
-          : `translate3d( 0,-${index * 100}%, 0)`,
+          : `translate3d( 0, -${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     }
   }
@@ -242,12 +224,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     scrollIntoView(index)
   }, [value])
 
-  const tabChange = (item: TabsTitle, index: number) => {
+  const tabChange = (item: TabsTitle) => {
     onClick && onClick(item.value)
-    if (item.disabled) {
-      return
+    if (!item.disabled) {
+      setValue(item.value)
     }
-    setValue(item.value)
   }
 
   return (
@@ -264,7 +245,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         }
         id={`nut-tabs-titles-${name || uuid}`}
         className={classesTitle}
-        style={{ ...tabStyle }}
+        style={tabStyle}
       >
         <View className="nut-tabs-list">
           {!!title && typeof title === 'function'
@@ -272,46 +253,41 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             : titles.current.map((item, index) => {
                 return (
                   <View
+                    key={item.value}
                     ref={(ref: HTMLDivElement) =>
                       titleItemsRef.current.push(ref)
                     }
                     id={`scrollIntoView${index}`}
-                    onClick={(e) => {
-                      tabChange(item, index)
-                    }}
+                    onClick={() => tabChange(item)}
                     className={classNames(`${classPrefix}-titles-item`, {
                       [`nut-tabs-titles-item-active`]:
                         !item.disabled && String(item.value) === String(value),
                       [`nut-tabs-titles-item-disabled`]: item.disabled,
                       [`nut-tabs-titles-item-${align}`]: align,
                     })}
-                    key={item.value}
                   >
                     {activeType === 'line' && (
                       <View
                         className={classNames(
                           `${classPrefix}-titles-item-line`,
-                          {
-                            [`${classPrefix}-titles-item-line-${direction}`]:
-                              true,
-                          }
+                          `${classPrefix}-titles-item-line-${direction}`
                         )}
-                        style={tabsActiveStyle}
+                        style={{ background: activeColor }}
                       />
                     )}
                     {activeType === 'smile' && (
-                      <View
-                        className={`${classPrefix}-titles-item-smile`}
-                        style={tabsActiveStyle}
-                      >
+                      <View className={`${classPrefix}-titles-item-smile`}>
                         <JoySmile color={activeColor} />
                       </View>
                     )}
                     <View
                       className={classNames(
-                        `${classPrefix}-ellipsis`,
+                        {
+                          [`${classPrefix}-ellipsis`]: direction === 'vertical',
+                        },
                         `${classPrefix}-titles-item-text`
                       )}
+                      style={{ color: activeColor }}
                     >
                       {item.title}
                     </View>
@@ -323,25 +299,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       <View className={`${classPrefix}-content-wrap`}>
         <View className={`${classPrefix}-content`} style={getContentStyle()}>
           {React.Children.map(children, (child, idx) => {
-            if (!React.isValidElement(child)) {
-              return null
-            }
-
-            let childProps = {
+            if (!React.isValidElement(child)) return null
+            return React.cloneElement(child, {
               ...child.props,
               active: value === child.props.value,
-            }
-
-            if (
-              String(value) !== String(child.props.value || idx) &&
-              autoHeight
-            ) {
-              childProps = {
-                ...childProps,
-                autoHeightClassName: 'inactive',
-              }
-            }
-            return React.cloneElement(child, childProps)
+              autoHeightClassName:
+                autoHeight && String(value) !== String(child.props.value || idx)
+                  ? 'inactive'
+                  : '',
+            })
           })}
         </View>
       </View>

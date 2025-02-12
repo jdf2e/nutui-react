@@ -7,10 +7,9 @@ import React, {
 } from 'react'
 import { Tips } from '@nutui/icons-react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
-import { PopupProps } from '@/packages/popup/index'
 import { usePropsValue } from '@/utils/use-props-value'
 import { ShortPasswordActions } from '@/packages/shortpassword/types'
 

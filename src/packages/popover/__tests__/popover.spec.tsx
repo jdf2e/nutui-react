@@ -58,7 +58,7 @@ test('render popover content', async () => {
   )
   const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
-    'nut-popup-default nut-popover-content nut-popover-content-bottom'
+    'nut-popup-none nut-popover-content nut-popover-content-bottom'
   )
 })
 
@@ -83,7 +83,7 @@ test('render popover position', async () => {
   )
   const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
-    'nut-popup-default nut-popover-content nut-popover-content-bottom-start'
+    'nut-popup-none nut-popover-content nut-popover-content-bottom-start'
   )
 })
 
