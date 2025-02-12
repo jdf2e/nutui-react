@@ -230,7 +230,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       pickerRollerRef.current?.removeEventListener('touchmove', touchMove)
       pickerRollerRef.current?.removeEventListener('touchend', touchEnd)
     }
-  })
+  }, [pickerRollerRef.current, touchStart, touchMove, touchEnd])
 
   const touchRollerStyle = () => {
     return {

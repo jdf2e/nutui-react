@@ -6,6 +6,7 @@ import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
 
 const PickerViewDemo = () => {
   const [translated] = useTranslate({
@@ -16,6 +17,7 @@ const PickerViewDemo = () => {
       controlled: '受控',
       tiled: '平铺',
       cascade: '级联',
+      asynchronous: '异步数据',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -24,6 +26,7 @@ const PickerViewDemo = () => {
       controlled: 'Controlled',
       tiled: 'Tiled',
       cascade: 'Cascade',
+      asynchronous: 'Asynchronous',
     },
     'zh-TW': {
       title: '基礎用法',
@@ -32,6 +35,7 @@ const PickerViewDemo = () => {
       controlled: '受控',
       tiled: '平鋪',
       cascade: '級聯',
+      asynchronous: '異步數據',
     },
   })
   return (
@@ -48,6 +52,8 @@ const PickerViewDemo = () => {
       <Demo5 />
       <h2>{translated.cascade}</h2>
       <Demo6 />
+      <h2>{translated.asynchronous}</h2>
+      <Demo7 />
     </div>
   )
 }

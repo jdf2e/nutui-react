@@ -5,7 +5,7 @@ PickerView 是 Picker 的内容区域。
 ## 引入
 
 ```tsx
-import { name } from '@nutui/nutui-react-taro'
+import { PickerView } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -64,19 +64,20 @@ import { name } from '@nutui/nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| options | 列表数据 | `Array` | `[]` |
+| options | 列表数据 | `PickerOptionItem[][]` | `[]` |
 | value | 选中值，受控 | `Array` | `[]` |
 | defaultValue | 默认选中 | `Array` | `[]` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |
 | duration | 快速滑动时惯性滚动的时长，单位 ms | `string` \| `number` | `1000` |
 | onChange | 每一列值变更时调用 | `({value, index, selectedOptions}) => void` | `-` |
 
-### options 数据结构
+### PickerOptionItem
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | label | 选项的文字内容 | `string` \| `number` | `-` |
 | value | 选项对应的值，且唯一 | `string` \| `number` | `-` |
+| children | 用于级联选项 | `PickerOptionItem[]` | `-` |
 
 ## 主题定制
 

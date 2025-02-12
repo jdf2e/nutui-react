@@ -1,7 +1,7 @@
 import React from 'react'
 import { PickerView, Cell } from '@nutui/nutui-react'
 
-const Demo1 = () => {
+const Demo2 = () => {
   const listData = [
     [
       { value: 1, label: '南京市' },
@@ -31,4 +31,4 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+export default Demo2

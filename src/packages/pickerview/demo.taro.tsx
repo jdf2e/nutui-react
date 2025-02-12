@@ -9,6 +9,7 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const PickerViewDemo = () => {
   const [translated] = useTranslate({
@@ -19,6 +20,7 @@ const PickerViewDemo = () => {
       controlled: '受控',
       tiled: '平铺',
       cascade: '级联',
+      asynchronous: '异步数据',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -27,6 +29,7 @@ const PickerViewDemo = () => {
       controlled: 'Controlled',
       tiled: 'Tiled',
       cascade: 'Cascade',
+      asynchronous: 'Asynchronous',
     },
     'zh-TW': {
       title: '基礎用法',
@@ -35,6 +38,7 @@ const PickerViewDemo = () => {
       controlled: '受控',
       tiled: '平鋪',
       cascade: '級聯',
+      asynchronous: '異步數據',
     },
   })
   return (
@@ -51,8 +55,10 @@ const PickerViewDemo = () => {
         <Demo3 />
         <View className="h2">{translated.tiled}</View>
         <Demo5 />
-        <h2>{translated.cascade}</h2>
+        <View className="h2">{translated.cascade}</View>
         <Demo6 />
+        <View className="h2">{translated.asynchronous}</View>
+        <Demo7 />
       </ScrollView>
     </>
   )
