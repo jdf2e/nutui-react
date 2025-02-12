@@ -35,13 +35,14 @@ export interface CalendarProps {
   onClose?: () => void
   onConfirm?: (param: string) => void
   onDayClick?: (data: string) => void
+  onItemClick: (param: any, viewMode: string) => void
   onPageChange?: (param: string) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'week',
+  viewMode: 'month',
   autoBackfill: false,
   popup: true,
   visible: false,
@@ -65,6 +66,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: (param: string) => {},
   onDayClick: (data: string) => {},
+  onItemClick: () => {},
   onPageChange: (param: string) => {},
 } as CalendarProps
 
@@ -104,6 +106,7 @@ export const Calendar = React.forwardRef<
     onClose,
     onConfirm,
     onDayClick,
+    onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -119,10 +122,6 @@ export const Calendar = React.forwardRef<
   }
   const closePopup = () => {
     close()
-  }
-
-  const select = (param: string) => {
-    onDayClick && onDayClick(param)
   }
 
   const scrollToDate = (date: string) => {
@@ -169,7 +168,7 @@ export const Calendar = React.forwardRef<
             renderDayTop={renderDayTop}
             renderDayBottom={renderDayBottom}
             onConfirm={choose}
-            onDayClick={select}
+            onItemClick={(param) => onItemClick && onItemClick(param, viewMode)}
             onPageChange={yearMonthChange}
           />
         ) : (
@@ -200,7 +199,7 @@ export const Calendar = React.forwardRef<
             renderDayTop={renderDayTop}
             renderDayBottom={renderDayBottom}
             onConfirm={choose}
-            onDayClick={select}
+            onDayClick={(param) => onDayClick && onDayClick(param)}
             onPageChange={yearMonthChange}
           />
         )}

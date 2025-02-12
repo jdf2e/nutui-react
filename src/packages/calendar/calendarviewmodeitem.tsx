@@ -8,7 +8,6 @@ import {
   getCurrMonthData,
   compareDate,
   getMonthDays,
-  isEqual,
   getNumTwoBit,
   getWhatDay,
   getTotalWeeksInYear,
@@ -22,7 +21,7 @@ import {
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
-import { splitDate, getCurrDate } from './utils'
+import { splitDate } from './utils'
 import {
   CalendarDay,
   CalendarMonthInfo,
@@ -64,13 +63,13 @@ export interface CalendarViewModeItemProps extends PopupProps {
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
   onConfirm: (data: string) => void
   onUpdate: () => void
-  onDayClick: (data: string) => void
+  onItemClick: (data: any, viewMode: string) => void
   onPageChange: (data: any) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'week',
+  viewMode: 'month',
   autoBackfill: false,
   popup: true,
   title: '',
@@ -91,7 +90,7 @@ const defaultProps = {
   renderDayBottom: undefined,
   onConfirm: (data: string) => {},
   onUpdate: () => {},
-  onDayClick: (data: string) => {},
+  onItemClick: () => {},
   onPageChange: (data: any) => {},
 } as unknown as CalendarViewModeItemProps
 
@@ -130,7 +129,7 @@ export const CalendarViewModeItem = React.forwardRef<
     value,
     onConfirm,
     onUpdate,
-    onDayClick,
+    onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -371,7 +370,6 @@ export const CalendarViewModeItem = React.forwardRef<
     return weeks
   }
 
-  // console.log('3333', getWeeks('', 2025, 1, 1, 2025, 12, 12))
   const getWeeksData = () => {
     // 获取区间范围内可用的周数，包括边界值所在的周数
     // 展示起止时间内年份的所有周，根据起止区间区分是否可用
@@ -613,15 +611,6 @@ export const CalendarViewModeItem = React.forwardRef<
     scrollToDate,
   }))
 
-  const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
-    const dateStr = getCurrDate(day, month)
-    const activeCls = `${itemPrefix}-active`
-    if (type === 'single' && isEqual(currentDate as string, dateStr)) {
-      return activeCls
-    }
-    return null
-  }
-
   const handleDayClick = (
     day: CalendarDay,
     month: CalendarMonthInfo,
@@ -636,12 +625,33 @@ export const CalendarViewModeItem = React.forwardRef<
     state.currDateArray = [...days]
 
     if (!isFirst) {
-      onDayClick && onDayClick(state.currDateArray)
+      // onDayClick && onDayClick(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
       }
     }
     setMonthsData(monthsData.slice())
+  }
+
+  const [innerValue, setInnerValue] = usePropsValue({
+    value,
+    defaultValue,
+    finalValue: [],
+  })
+
+  const change = (v: []) => {
+    setInnerValue(v)
+    // onChange?.(date)
+  }
+
+  const handleItemClick = (viewMode: string, item: any) => {
+    // 点击事件，可以返回所点击元素的数据
+    console.log('item', item)
+    // 如果非可点击，则直接返回，不做处理
+    if (item.type !== 'curr') return
+    // 可点击时，需要关注当前元素是否已被选中，选中，取消选中，拿到数据
+    setInnerValue(item)
+    onItemClick && onItemClick(item, viewMode)
   }
 
   const confirm = () => {
@@ -666,6 +676,45 @@ export const CalendarViewModeItem = React.forwardRef<
     [`${classPrefix}-header-title`]: !popup,
   })
 
+  const isSameDay = (day1: any, day2: any) => {
+    return (
+      day1?.year === day2?.year && day1?.month === day2?.month
+      // &&
+      // day1?.date === day2?.date
+    )
+  }
+
+  const isDisable = (item: any) => {
+    return item.type === 'prev' || item.type === 'next'
+  }
+
+  const isActive = (item: any) => {
+    console.log('item', item, innerValue)
+    if (item.year === innerValue.year && item.month === innerValue.month) {
+      return true
+    }
+    return false
+  }
+
+  const getClasses = (item: any) => {
+    /**
+     * active: single、multiple 激活日期
+     * start: 范围开始日期
+     * end: 范围结束日期
+     * mid: 范围中间日期
+     */
+    if (isDisable(item)) {
+      return ['disabled']
+    }
+    const res = []
+    if (item.type === 'curr') {
+      if (isActive(item)) {
+        res.push('active')
+      }
+    }
+    return res
+  }
+
   const renderHeader = () => {
     return (
       <div className={headerClasses}>
@@ -678,8 +727,12 @@ export const CalendarViewModeItem = React.forwardRef<
     const text = { week: '周', month: '月', quarter: '季度' }
     return (
       <div
-        className={`${classPrefix}-item`}
-        // onClick={() => handleDayClick(day, month, false)}
+        className={classNames(
+          `${classPrefix}-item`,
+          item.type,
+          getClasses(item)
+        )}
+        onClick={() => handleItemClick(viewMode, item)}
         key={index}
       >
         <div className={`${classPrefix}-item-${item.type}`}>

@@ -116,7 +116,7 @@
       line-height: 14px;
     }
 
-    &-active {
+    &.active {
       background-color: $calendar-active-background-color;
       color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;

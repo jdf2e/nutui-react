@@ -22,7 +22,7 @@ const Demo1 = () => {
   }
 
   const select = (param: string) => {
-    console.log(param)
+    console.log('select', param)
   }
 
   return (
@@ -33,14 +33,14 @@ const Demo1 = () => {
         onClick={openSwitch}
       />
       <Calendar
-        viewMode="week"
+        viewMode="month"
         visible={isVisible}
         defaultValue={date}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
-        onDayClick={select}
-        startDate="2025-1-1"
-        endDate="2025-3-2"
+        onItemClick={select}
+        startDate="2025-3-15"
+        endDate="2028-3-2"
       />
     </>
   )
