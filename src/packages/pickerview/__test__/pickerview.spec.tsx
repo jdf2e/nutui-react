@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { render } from '@testing-library/react'
+import React, { useEffect, useState } from 'react'
+import { render, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import PickerView from '../pickerview'
 
@@ -98,6 +98,7 @@ test('should match snapshot', () => {
     <PickerView defaultValue={[1]} options={listData} />
   )
   expect(container).toMatchSnapshot()
+  expect(screen.getByText('南京市')).toBeInTheDocument()
 })
 
 test('should render tiled', () => {
@@ -115,7 +116,17 @@ test('should render with Multi Column', () => {
   const { container } = render(
     <PickerView defaultValue={[1, 1]} options={MultiColumnData} />
   )
-  expect(container.querySelectorAll('.nut-pickerview-list').length).toBe(2)
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  expect(columns.length).toBe(2)
+
+  // 检查列内容
+  const firstColumn = columns[0]
+  expect(firstColumn.textContent).toContain('周一')
+  expect(firstColumn.textContent).toContain('周二')
+
+  const secondColumn = columns[1]
+  expect(secondColumn.textContent).toContain('上午')
+  expect(secondColumn.textContent).toContain('下午')
   expect(container).toMatchSnapshot()
 })
 
@@ -123,15 +134,29 @@ test('should match onchange', async () => {
   const PenderContent = () => {
     const [value, setValue] = useState([1])
 
-    setTimeout(() => {
-      setValue([2])
-    }, 1000)
+    useEffect(() => {
+      setTimeout(() => {
+        setValue([3])
+      }, 1000)
+    }, [])
 
-    return <PickerView value={value} options={listData} />
+    return (
+      <PickerView
+        value={value}
+        options={listData}
+        onChange={({ value, selectedOptions }) => {
+          if (value[0] === 3) {
+            setValue([1])
+          }
+        }}
+      />
+    )
   }
   const container = render(<PenderContent />)
 
-  expect(container).toMatchSnapshot()
+  await waitFor(() => {
+    expect(container).toMatchSnapshot()
+  })
 })
 
 test('should match cascade', () => {

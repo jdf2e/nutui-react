@@ -117,7 +117,8 @@ const InternalPickerView: ForwardRefRenderFunction<
   }, [innerValue, options, columnsType])
 
   useEffect(() => {
-    if (props.options !== innerOptions) {
+    const options = props.options
+    if (Array.isArray(options) && options.length && options !== innerOptions) {
       setInnerOptions(formatOptions as PickerOptions[])
     }
   }, [props.options, innerValue])
@@ -206,8 +207,12 @@ const InternalPickerView: ForwardRefRenderFunction<
           threeDimensional={threeDimensional}
         />
       ))}
-      <div className="nut-pickerview-mask" />
-      <div className="nut-pickerview-indicator" />
+      {innerOptions?.length ? (
+        <>
+          <div className="nut-pickerview-mask" />
+          <div className="nut-pickerview-indicator" />
+        </>
+      ) : null}
     </div>
   )
 }
