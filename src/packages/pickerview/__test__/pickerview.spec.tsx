@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import PickerView from '../pickerview'
@@ -17,6 +17,82 @@ const listData = [
   ],
 ]
 
+const MultiColumnData = [
+  [
+    { label: '周一', value: 'Monday' },
+    { label: '周二', value: 'Tuesday' },
+    { label: '周三', value: 'Wednesday' },
+    { label: '周四', value: 'Thursday' },
+    { label: '周五', value: 'Friday' },
+  ],
+  [
+    { label: '上午', value: 'Morning' },
+    { label: '下午', value: 'Afternoon' },
+    { label: '晚上', value: 'Evening' },
+  ],
+]
+
+const cascadeData = [
+  [
+    {
+      value: 1,
+      label: '北京',
+      children: [
+        {
+          value: 1,
+          label: '朝阳区',
+        },
+        {
+          value: 2,
+          label: '海淀区',
+        },
+        {
+          value: 3,
+          label: '大兴区',
+        },
+        {
+          value: 4,
+          label: '东城区',
+        },
+        {
+          value: 5,
+          label: '西城区',
+        },
+        {
+          value: 6,
+          label: '丰台区',
+        },
+      ],
+    },
+    {
+      value: 2,
+      label: '上海',
+      children: [
+        {
+          value: 1,
+          label: '黄埔区',
+        },
+        {
+          value: 2,
+          label: '长宁区',
+        },
+        {
+          value: 3,
+          label: '普陀区',
+        },
+        {
+          value: 4,
+          label: '杨浦区',
+        },
+        {
+          value: 5,
+          label: '浦东新区',
+        },
+      ],
+    },
+  ],
+]
+
 test('should match snapshot', () => {
   const { container } = render(
     <PickerView defaultValue={[1]} options={listData} />
@@ -30,6 +106,41 @@ test('should render tiled', () => {
       defaultValue={[1]}
       options={listData}
       threeDimensional={false}
+    />
+  )
+  expect(container).toMatchSnapshot()
+})
+
+test('should render with Multi Column', () => {
+  const { container } = render(
+    <PickerView defaultValue={[1, 1]} options={MultiColumnData} />
+  )
+  expect(container.querySelectorAll('.nut-pickerview-list').length).toBe(2)
+  expect(container).toMatchSnapshot()
+})
+
+test('should match onchange', async () => {
+  const PenderContent = () => {
+    const [value, setValue] = useState([1])
+
+    setTimeout(() => {
+      setValue([2])
+    }, 1000)
+
+    return <PickerView value={value} options={listData} />
+  }
+  const container = render(<PenderContent />)
+
+  expect(container).toMatchSnapshot()
+})
+
+test('should match cascade', () => {
+  const { container } = render(
+    <PickerView
+      defaultValue={[1, 1]}
+      renderLabel={(item) => `${item.label} | 测试`}
+      options={cascadeData}
+      onChange={() => {}}
     />
   )
   expect(container).toMatchSnapshot()
