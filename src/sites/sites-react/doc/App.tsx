@@ -1,5 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import {
+  HashRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from 'react-router-dom'
 import { MDXProvider } from '@mdx-js/react'
 import './App.scss'
 import APPContext from './context'
@@ -8,11 +14,7 @@ import Header from '../doc/components/header'
 import DemoPreview from '../doc/components/demo-preview'
 import Issue from '..//doc/components/issue'
 import { getComponentName } from '../../assets/util'
-import {
-  routes as routers,
-  guideEnRoutes,
-  guideRoutes
-} from './router'
+import { routes as routers, guideEnRoutes, guideRoutes } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
@@ -83,11 +85,7 @@ const Content = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
-  const routes = [
-    ...routers,
-    ...guideRoutes,
-    ...guideEnRoutes,
-  ]
+  const routes = [...routers, ...guideRoutes, ...guideEnRoutes]
   return (
     <div className="doc-content">
       {!isGuide && (
@@ -101,6 +99,11 @@ const Content = () => {
         className={`doc-content-document ${isGuide ? 'full' : 'isComponent'}`}
       >
         <Routes>
+          <Route
+            path="/"
+            element={<Navigate to="/zh-CN/guide/intro-react" />}
+          />
+
           {routes.map((ru, k) => {
             const path = ru.component?.name?.substring(
               0,
@@ -126,7 +129,7 @@ const Content = () => {
       {!isGuide && (
         <>
           <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
-          <BackTop  className={`${fixed ? 'doc-backtop' : ''}`} />
+          <BackTop className={`${fixed ? 'doc-backtop' : ''}`} />
         </>
       )}
     </div>

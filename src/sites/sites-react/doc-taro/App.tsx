@@ -8,14 +8,11 @@ import Header from '../doc/components/header'
 import DemoPreview from '../doc/components/demo-preview'
 import Issue from '..//doc/components/issue'
 import { getComponentName } from '../../assets/util'
-import {
-  routes as routers,
-  guideEnTaroRoutes,
-  guideTaroRoutes,
-} from './router'
+import { routes as routers, guideEnTaroRoutes, guideTaroRoutes } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from '../doc/components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
+import { Navigate } from 'react-router-dom'
 
 const Title = () => {
   console.log(routers)
@@ -84,11 +81,7 @@ const Content = () => {
   useEffect(() => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
-  const routes = [
-    ...routers,
-    ...guideTaroRoutes,
-    ...guideEnTaroRoutes,
-  ]
+  const routes = [...routers, ...guideTaroRoutes, ...guideEnTaroRoutes]
   return (
     <div className="doc-content">
       {!isGuide && (
@@ -102,6 +95,10 @@ const Content = () => {
         className={`doc-content-document ${isGuide ? 'full' : 'isComponent'}`}
       >
         <Routes>
+          <Route
+            path="/"
+            element={<Navigate to="/zh-CN/guide/intro-react" />}
+          />
           {routes.map((ru, k) => {
             const path = ru.component?.name?.substring(
               0,
@@ -127,7 +124,7 @@ const Content = () => {
       {!isGuide && (
         <>
           <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
-          <BackTop  className={`${fixed ? 'doc-backtop' : ''}`} />
+          <BackTop className={`${fixed ? 'doc-backtop' : ''}`} />
         </>
       )}
     </div>
