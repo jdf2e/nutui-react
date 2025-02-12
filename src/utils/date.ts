@@ -350,3 +350,50 @@ export const getQuarter = (month: number): number => {
   const quarter = Math.floor((month - 1) / 3) + 1
   return quarter
 }
+
+// 当前年份包含的季度
+export const getQuarters = (
+  type: string,
+  year: number,
+  month: number,
+  endMonth: number = 12
+) => {
+  const quarters = []
+  // 当前月区间数据所在的季度
+  const startIndex = month // 从1开始计算
+  const endIndex = endMonth
+  for (let index = startIndex; index <= endIndex; index += 3) {
+    const quarter = getQuarter(index)
+    quarters.push({ year, quarter, type })
+  }
+  return quarters
+}
+
+// 当前月之前的在当年的月所在的季度
+export const getPreQuarters = (type: string, year: number, month: number) => {
+  const quarters = []
+  const startIndex = 1 // 从1开始计算
+  const endIndex = month - 3 // 当前月份不能算进之前的季度，-3 判断。
+  for (let index = startIndex; index < endIndex; index += 3) {
+    const quarter = getQuarter(index)
+    quarters.push({ year, quarter, type })
+  }
+  return quarters
+}
+
+// 当前月之后的当年内的月所在的季度
+export const getNextQuarters = (
+  type: string,
+  year: number,
+  month: number,
+  endMonth: number = 12
+) => {
+  const quarters = []
+  const startIndex = month + 3
+  const endIndex = endMonth
+  for (let index = startIndex; index <= endIndex; index += 3) {
+    const quarter = getQuarter(index)
+    quarters.push({ year, quarter, type })
+  }
+  return quarters
+}

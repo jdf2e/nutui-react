@@ -14,7 +14,9 @@ import {
   getTotalWeeksInYear,
   getPreMonths,
   getMonths,
-  getQuarter,
+  getPreQuarters,
+  getNextQuarters,
+  getQuarters,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -355,52 +357,6 @@ export const CalendarViewModeItem = React.forwardRef<
       panelData = [...panelData, { year: endYear, months: lastMonths }]
     }
     return panelData
-  }
-
-  // 当前年份包含的季度
-  const getQuarters = (
-    type: string,
-    year: number,
-    month: number,
-    endMonth: number = 12
-  ) => {
-    const quarters = []
-    // 当前月区间数据所在的季度
-    const startIndex = month // 从1开始计算
-    const endIndex = endMonth
-    for (let index = startIndex; index <= endIndex; index += 3) {
-      const quarter = getQuarter(index)
-      quarters.push({ year, quarter, type })
-    }
-    return quarters
-  }
-
-  // 当前月之前的季度
-  const getPreQuarters = (type: string, year: number, month: number) => {
-    const quarters = []
-    const startIndex = 1 // 从1开始计算
-    const endIndex = month - 3 // 当前月份不能算进之前的季度，-3 判断。
-    for (let index = startIndex; index < endIndex; index += 3) {
-      const quarter = getQuarter(index)
-      quarters.push({ year, quarter, type })
-    }
-    return quarters
-  }
-
-  const getNextQuarters = (
-    type: string,
-    year: number,
-    month: number,
-    endMonth: number = 12
-  ) => {
-    const quarters = []
-    const startIndex = month + 3
-    const endIndex = endMonth
-    for (let index = startIndex; index <= endIndex; index += 3) {
-      const quarter = getQuarter(index)
-      quarters.push({ year, quarter, type })
-    }
-    return quarters
   }
 
   const getQuartersData = () => {
