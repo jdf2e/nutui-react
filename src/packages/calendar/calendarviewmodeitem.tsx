@@ -76,7 +76,6 @@ export const CalendarViewModeItem = React.forwardRef<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-calendar-viewmode'
-
   const [panelDate, setPanelDate] = useState({
     weeks: [{ year: 2025, weeks: [1, 2, 3] }],
     months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],

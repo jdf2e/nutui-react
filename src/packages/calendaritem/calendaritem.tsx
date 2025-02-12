@@ -58,6 +58,7 @@ export interface CalendarItemProps extends PopupProps {
   confirmText: ReactNode
   showTitle: boolean
   showSubTitle: boolean
+  showMonthNumber: boolean
   scrollAnimation: boolean
   firstDayOfWeek: number
   disableDate: (date: CalendarDay) => boolean
@@ -85,6 +86,7 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
+  showMonthNumber: false,
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
@@ -120,6 +122,7 @@ export const CalendarItem = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
+    showMonthNumber,
     scrollAnimation,
     firstDayOfWeek,
     disableDate,
@@ -697,7 +700,10 @@ export const CalendarItem = React.forwardRef<
         {showSubTitle && (
           <div className={`${classPrefix}-sub-title`}>{yearMonthTitle}</div>
         )}
-        <div className={`${classPrefix}-weeks`} ref={weeksPanel}>
+        <div
+          className={`${classPrefix}-weeks ${showMonthNumber ? `${classPrefix}-weeks-shrink` : ''}`}
+          ref={weeksPanel}
+        >
           {weeks.map((item: string) => (
             <div className={`${classPrefix}-week-item`} key={item}>
               {item}
@@ -763,10 +769,21 @@ export const CalendarItem = React.forwardRef<
     return (
       <div className={`${classPrefix}-month`} key={key}>
         <div className={`${classPrefix}-month-title`}>{month.title}</div>
-        <div className={`${classPrefix}-days`}>
-          {month.monthData.map((day: CalendarDay, i: number) =>
-            renderItem(month, day, i)
+        <div className={`${showMonthNumber ? 'shrink' : ''}`}>
+          {showMonthNumber && (
+            <div className={`${classPrefix}-weeknumber`}>
+              {[1, 2, 3, 4, 5].map((item, index) => (
+                <div className={`${classPrefix}-weeknumber-index`} key={index}>
+                  {item}
+                </div>
+              ))}
+            </div>
           )}
+          <div className={`${classPrefix}-days`}>
+            {month.monthData.map((day: CalendarDay, i: number) =>
+              renderItem(month, day, i)
+            )}
+          </div>
         </div>
       </div>
     )

@@ -23,6 +23,7 @@ export interface CalendarProps {
   confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
+  showMonthNumber: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
   closeIcon?: ReactNode
@@ -56,6 +57,7 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
+  showMonthNumber: false,
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
@@ -94,6 +96,7 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
+    showMonthNumber,
     scrollAnimation,
     firstDayOfWeek,
     closeIcon,
@@ -147,7 +150,6 @@ export const Calendar = React.forwardRef<
             children={children}
             type={type}
             viewMode={viewMode}
-            autoBackfill={autoBackfill}
             title={title || locale.calendaritem.title}
             defaultValue={defaultValue}
             startDate={startDate}
@@ -178,6 +180,7 @@ export const Calendar = React.forwardRef<
             confirmText={confirmText || locale.calendaritem.confirm}
             showTitle={showTitle}
             showSubTitle={showSubTitle}
+            showMonthNumber={showMonthNumber}
             scrollAnimation={scrollAnimation}
             firstDayOfWeek={firstDayOfWeek}
             disableDate={disableDate}
@@ -196,7 +199,7 @@ export const Calendar = React.forwardRef<
 
   return (
     <>
-      {popup ? (
+      {popup && !viewMode ? (
         <Popup
           className="nut-calendar-popup"
           visible={visible}
