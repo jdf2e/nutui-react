@@ -36,19 +36,17 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     right,
     fill,
     size,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
+
   const classPrefix = 'nut-badge'
   const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const badgeRef = useRef(null)
   const [contentStyle, setContentStyle] = useState({})
 
-  function content() {
-    if (dot || typeof value === 'object' || value === 0) return null
-    if (typeof value === 'number' && typeof max === 'number') {
+  function getContent() {
+    if (dot || value === 0) return null
+    if (typeof value === 'number') {
       return max < value ? `${max}+` : `${value}`
     }
     return value
@@ -70,7 +68,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     [`${classPrefix}-sup`]: isNumber() || isString() || dot,
     [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-one`]:
-      typeof content() === 'string' && `${content()}`?.length === 1,
+      typeof getContent() === 'string' && `${getContent()}`?.length === 1,
     [`${classPrefix}-dot`]: dot,
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
@@ -82,13 +80,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       getPositionStyle()
     }
   }, [])
+
   const getPositionStyle = async () => {
-    const style: CSSProperties = {}
-    style.top = pxTransform(Number(top) || 0)
-    const dir = rtl ? 'left' : 'right'
-    style[dir] = isHarmony
-      ? pxTransform(Number(right))
-      : `${Number(right) || 0}px`
+    const style: CSSProperties = {
+      top: pxTransform(Number(top) || 0),
+      [rtl ? 'left' : 'right']: isHarmony
+        ? pxTransform(Number(right))
+        : `${Number(right) || 0}px`,
+    }
     setContentStyle(style)
   }
 
@@ -106,9 +105,9 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
         </View>
       )}
       {children}
-      {!isIcon() && (
+      {!isIcon() && (getContent() || dot) && (
         <View className={contentClasses} style={contentStyle}>
-          {content()}
+          {getContent()}
         </View>
       )}
     </View>

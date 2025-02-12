@@ -880,7 +880,7 @@ export const CalendarItem = React.forwardRef<
     return (
       <View className="nut-calendar-footer">
         {children}
-        <View className="calendar-confirm-btn" onClick={confirm}>
+        <View onClick={confirm}>
           {renderBottomButton ? (
             renderBottomButton()
           ) : (

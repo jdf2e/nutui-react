@@ -7,7 +7,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import { Popup, PopupProps } from '@/packages/popup/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { SafeArea } from '@/packages/safearea/safearea'
 import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'

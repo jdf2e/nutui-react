@@ -16,7 +16,7 @@ const Demo5 = () => {
       <Toast
         content={state.content}
         visible={show}
-        type="text"
+        icon="text"
         onClose={() => {
           setShow(false)
         }}

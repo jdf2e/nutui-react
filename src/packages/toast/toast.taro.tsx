@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
+
 import {
   customEvents,
   useCustomEvent,
@@ -14,32 +15,10 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
 import { mergeProps } from '@/utils/merge-props'
+import { ToastProps } from './index.taro'
 
-export type ToastPosition = 'top' | 'bottom' | 'center'
-export type ToastSize = 'small' | 'base' | 'large'
-export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
-
-export interface ToastProps extends BasicComponent {
-  id?: string
-  duration: number
-  position?: ToastPosition
-  title: string
-  closeOnOverlayClick: boolean
-  lockScroll: boolean
-  size: ToastSize
-  icon: React.ReactNode
-  maskClassName?: string
-  content: React.ReactNode
-  contentClassName?: string
-  contentStyle?: React.CSSProperties
-  type: string
-  visible: boolean
-  wordBreak?: ToastWordBreak
-  onClose: () => void
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: ToastProps = {
+  ...defaultOverlayProps,
   id: '',
   duration: 2, // 时长,duration为0则一直展示
   position: 'center',
@@ -47,18 +26,16 @@ const defaultProps = {
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
   content: '',
-  type: 'text',
+  contentClassName: '',
+  contentStyle: {},
   closeOnOverlayClick: false,
   lockScroll: false,
-  contentClassName: '', // 内容自定义样式名
   visible: false,
   wordBreak: 'break-all',
-  onClose: () => {}, // 未实现
-} as unknown as ToastProps
+  zIndex: 1300,
+  onClose: () => {},
+}
 
-const classPrefix = 'nut-toast'
-
-// export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
   Partial<ToastProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>
 > & {
@@ -73,7 +50,6 @@ export const Toast: FunctionComponent<
       icon,
       content,
       duration,
-      type,
       title,
       closeOnOverlayClick,
       lockScroll,
@@ -82,11 +58,13 @@ export const Toast: FunctionComponent<
       size,
       className,
       style,
-      onClose,
       wordBreak,
+      zIndex,
+      onClose,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
+  const classPrefix = 'nut-toast'
   const timer = useRef(-1)
   const rtl = useRtl()
 
@@ -146,21 +124,21 @@ export const Toast: FunctionComponent<
     }
   }
 
-  const hasIcon = () => {
-    return type !== 'text' || !!icon
-  }
-
-  const iconName = () => {
-    if (icon) {
-      return icon
+  const renderIcon = () => {
+    let iconNode = icon
+    if (typeof icon === 'string') {
+      iconNode = {
+        success: <Success />,
+        fail: <Failure />,
+        warn: <Tips />,
+        loading: <Loading className="nut-icon-loading" />,
+      }[icon]
     }
-
-    return {
-      success: <Success />,
-      fail: <Failure />,
-      warn: <Tips />,
-      loading: <Loading />,
-    }[type]
+    return (
+      iconNode && (
+        <View className={`${classPrefix}-icon-wrapper`}>{iconNode}</View>
+      )
+    )
   }
 
   const classes = classNames({
@@ -174,10 +152,11 @@ export const Toast: FunctionComponent<
 
   return (
     <>
-      {innerVisible ? (
+      {innerVisible && (
         <Overlay
           visible={innerVisible}
           style={style}
+          zIndex={zIndex}
           className={`${classPrefix}-overlay-default-taro ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
@@ -199,21 +178,15 @@ export const Toast: FunctionComponent<
               )}
               style={{ ...styles, ...contentStyle }}
             >
-              {hasIcon() ? (
-                <View className={`${classPrefix}-icon-wrapper`}>
-                  {iconName()}
-                </View>
-              ) : null}
-              {title ? (
-                <Text className={`${classPrefix}-title`}>{title}</Text>
-              ) : null}
-              {content ? (
+              {renderIcon()}
+              {title && <Text className={`${classPrefix}-title`}>{title}</Text>}
+              {content && (
                 <Text className={`${classPrefix}-text`}>{content}</Text>
-              ) : null}
+              )}
             </View>
           </View>
         </Overlay>
-      ) : null}
+      )}
     </>
   )
 }

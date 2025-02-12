@@ -2,12 +2,12 @@ var demoModel = function (name, cName, desc) {
   var temp = {
     demoitem: `import React from 'react'
 import { Cell, ${name} } from '@nutui/nutui-react'
-import { Dongdong } from '@nutui/icons-react'
+// import { Dongdong } from '@nutui/icons-react'
 
 const Demo1 = () => {
   return (
     <Cell>
-        <${name}></${name}>
+      <${name} />
     </Cell>
   )
 }
@@ -16,12 +16,12 @@ export default Demo1
 `,
     tarodemoitem: `import React from 'react'
 import { Cell, ${name} } from '@nutui/nutui-react-taro'
-import { Dongdong } from '@nutui/icons-react-taro'
+// import { Dongdong } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   return (
     <Cell>
-        <${name}></${name}>
+      <${name} />
     </Cell>
   )
 }
@@ -35,20 +35,20 @@ import Demo1 from './demos/h5/demo1'
 const ${name}Demo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-        title: '基础用法',
+      title: '基础用法',
     },
     'en-US': {
-        title: 'Basic Usage',
+      title: 'Basic Usage',
     },
     'zh-TW': {
-        title: '基礎用法',
+      title: '基礎用法',
     },
   })
   return (
-      <div className="demo">
-        <h2>{translated.title}</h2>
-        <Demo1 />
-      </div>
+    <div className="demo">
+      <h2>{translated.title}</h2>
+      <Demo1 />
+    </div>
   )
 }
 
@@ -64,13 +64,13 @@ import Demo1 from './demos/taro/demo1'
 const ${name}Demo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-        title: '基础用法',
+      title: '基础用法',
     },
     'en-US': {
-        title: 'Basic Usage',
+      title: 'Basic Usage',
     },
     'zh-TW': {
-        title: '基礎用法',
+      title: '基礎用法',
     },
   })
   return (
@@ -79,66 +79,80 @@ const ${name}Demo = () => {
       <ScrollView className={\`demo \${Taro.getEnv() === 'WEB' ? 'web' : ''}\`}>
         <View className="h2">{translated.title}</View>
         <Demo1 />
-        </ScrollView>
+      </ScrollView>
     </>
   )
 }
 
 export default ${name}Demo
 `,
-    index: `import {${name}} from './${name.toLowerCase()}'
+    index: `import { ${name} } from './${name.toLowerCase()}'
+
 export type { ${name}Props } from './types'
 export default ${name}
 `,
 
-    taroindex: `import {${name}} from './${name.toLowerCase()}.taro'
+    taroindex: `import { ${name} } from './${name.toLowerCase()}.taro'
+
 export type { ${name}Props } from './types'
-export default  ${name}
+export default ${name}
 `,
     types: `import { BasicComponent } from '@/utils/typings'
-export interface ${name}Props extends BasicComponent {
 
-}
+export interface ${name}Props extends BasicComponent {}
 `,
     react: `import React, { FunctionComponent } from 'react'
+import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { ${name}Props } from './types'
-import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
-import { useRtl } from '@/packages/configprovider'
+// import { useConfig } from '@/packages/configprovider'
+// import { useRtl } from '@/packages/configprovider'
 
 const defaultProps = {
-    ...ComponentDefaults,
+  ...ComponentDefaults,
 } as ${name}Props
-export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>> = (props) => {
-  const { locale } = useConfig()
-  const rtl = useRtl()
+export const ${name}: FunctionComponent<
+  Partial<PickerViewProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  //   const { locale } = useConfig()
+  //   const rtl = useRtl()
   const { className, style } = { ...defaultProps, ...props }
   const classPrefix = 'nut-${name.toLowerCase()}'
   const cls = classNames(classPrefix, className)
-  return <div className={cls} style={style}>${name}</div>
+  return (
+    <div className={cls} style={style}>
+      PickerView
+    </div>
+  )
 }
 
 ${name}.displayName = 'Nut${name}'
 `,
     taroreact: `import React, { FunctionComponent } from 'react'
+import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { ${name}Props } from './types'
-import { View } from '@tarojs/components'
-import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { useRtl } from '@/packages/configprovider/index.taro'
+
+// import { useConfig } from '@/packages/configprovider/configprovider.taro'
+// import { useRtl } from '@/packages/configprovider/index.taro'
 
 const defaultProps = {
-    ...ComponentDefaults,
+  ...ComponentDefaults,
 } as ${name}Props
-export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>> = (props) => {
-  const { locale } = useConfig()
-  const rtl = useRtl()
+export const ${name}: FunctionComponent<
+  Partial<PickerViewProps> & React.HTMLAttributes<HTMLDivElement>
+> = (props) => {
+  //   const { locale } = useConfig()
+  //   const rtl = useRtl()
   const { className, style } = { ...defaultProps, ...props }
   const classPrefix = 'nut-${name.toLowerCase()}'
   const cls = classNames(classPrefix, className)
-  return <View className={cls} style={style}>${name}</View>
+  return (
+    <View className={cls} style={style}>
+      PickerView
+    </View>
+  )
 }
 
 ${name}.displayName = 'Nut${name}'
@@ -186,9 +200,7 @@ import '@testing-library/jest-dom'
 import { ${name} } from '../${name.toLowerCase()}'
 
 test('should match snapshot', () => {
-  const { container } = render(
-    <${name}></${name}>
-  )
+  const { container } = render(<${name} />)
   expect(container).toMatchSnapshot()
 })
 `,

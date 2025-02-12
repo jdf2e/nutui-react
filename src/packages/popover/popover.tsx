@@ -10,8 +10,7 @@ import React, {
 import classNames from 'classnames'
 import { createPortal } from 'react-dom'
 import { ArrowRadius } from '@nutui/icons-react'
-import Popup from '@/packages/popup'
-import { PopupProps } from '@/packages/popup/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { getRect } from '@/utils/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
@@ -300,7 +299,7 @@ export const Popover: FunctionComponent<
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
               overlay={overlay}
-              position="default"
+              position="none"
               lockScroll={false}
               {...rest}
             >

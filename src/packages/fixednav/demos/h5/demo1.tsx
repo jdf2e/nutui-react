@@ -33,20 +33,20 @@ const Demo1 = () => {
     item: any,
     event: React.MouseEvent<Element, MouseEvent>
   ) => {
-    console.log(item, event)
+    console.log('select item', item, event)
+    setVisible(false)
   }
   return (
-    <>
-      <FixedNav
-        list={list}
-        activeText="基础用法"
-        overlay
-        position={{ top: '70px' }}
-        onChange={change}
-        visible={visible}
-        onSelect={selected}
-      />
-    </>
+    <FixedNav
+      list={list}
+      activeText="基础用法"
+      overlay
+      position={{ top: '70px' }}
+      zIndex={400}
+      onChange={change}
+      visible={visible}
+      onSelect={selected}
+    />
   )
 }
 export default Demo1

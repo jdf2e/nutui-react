@@ -1,12 +1,7 @@
 import React, { useImperativeHandle, useRef } from 'react'
-import {
-  createSelectorQuery,
-  getEnv,
-  getSystemInfoSync,
-  useReady,
-  useUnload,
-} from '@tarojs/taro'
+import { createSelectorQuery, getEnv, useReady, useUnload } from '@tarojs/taro'
 import lottie from 'lottie-miniprogram'
+import { getWindowInfo } from '@/utils/get-system-info'
 import useUuid from '@/utils/use-uuid'
 import { LottieProps } from './types'
 
@@ -31,7 +26,7 @@ export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
     }
   }
   useImperativeHandle(ref, () => animation.current || {})
-  const dpr = useRef(getSystemInfoSync().pixelRatio)
+  const dpr = useRef(getWindowInfo().pixelRatio)
   useReady(() => {
     createSelectorQuery()
       .select(`#${id}`)
