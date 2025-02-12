@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Cell, Calendar } from '@nutui/nutui-react'
+import { Calendar } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const d = new Date()
@@ -26,20 +26,27 @@ const Demo1 = () => {
   }
 
   return (
-    <>
-      <Cell
-        title="选择单个日期"
-        description={date ? `${date} ${dateWeek}` : '请选择'}
-        onClick={openSwitch}
-      />
+    <div
+      className="test-calendar-wrapper"
+      style={{
+        display: 'flex',
+        width: '100%',
+        height: '350px',
+        overflow: 'hidden',
+      }}
+    >
       <Calendar
-        visible={isVisible}
+        popup={false}
+        viewMode="quarter"
+        showTitle={false}
         defaultValue={date}
+        startDate="2023-09-12"
+        endDate="2028-09-19"
         onClose={closeSwitch}
         onConfirm={setChooseValue}
         onDayClick={select}
       />
-    </>
+    </div>
   )
 }
 export default Demo1

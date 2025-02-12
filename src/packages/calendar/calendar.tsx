@@ -9,7 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
-  viewMode: 'week' | 'month' | 'quarter'
+  viewMode: 'week' | 'month' | 'quarter' | string
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -42,7 +42,7 @@ export interface CalendarProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: 'month',
+  viewMode: '',
   autoBackfill: false,
   popup: true,
   visible: false,
@@ -148,26 +148,13 @@ export const Calendar = React.forwardRef<
             type={type}
             viewMode={viewMode}
             autoBackfill={autoBackfill}
-            renderBottomButton={renderBottomButton}
-            popup={popup}
             title={title || locale.calendaritem.title}
             defaultValue={defaultValue}
             startDate={startDate}
             endDate={endDate}
-            showToday={showToday}
-            startText={startText || locale.calendaritem.start}
-            endText={endText || locale.calendaritem.end}
-            confirmText={confirmText || locale.calendaritem.confirm}
             showTitle={showTitle}
-            showSubTitle={showSubTitle}
             scrollAnimation={scrollAnimation}
-            firstDayOfWeek={firstDayOfWeek}
-            disableDate={disableDate}
-            renderHeaderButtons={renderHeaderButtons}
             renderDay={renderDay}
-            renderDayTop={renderDayTop}
-            renderDayBottom={renderDayBottom}
-            onConfirm={choose}
             onItemClick={(param) => onItemClick && onItemClick(param, viewMode)}
             onPageChange={yearMonthChange}
           />

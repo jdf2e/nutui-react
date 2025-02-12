@@ -94,33 +94,19 @@ const CalendarDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
-
         <Demo1 />
-
         <Demo2 />
-
         <Demo3 />
-
         <Demo4 />
-
         <Demo5 />
-
         <Demo6 />
-
         <h2>{translated.cfbdc781}</h2>
-
         <Demo7 />
-
         <Demo8 />
-
         <h2>{translated.d04fcbda}</h2>
-
         <Demo9 />
-
         <Demo10 />
-
         <h2>{translated.e51e4582}</h2>
-
         <Demo11 />
       </div>
     </>

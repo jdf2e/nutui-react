@@ -382,7 +382,7 @@ export const getPreQuarters = (type: string, year: number, month: number) => {
   const quarters = []
   const startIndex = 1 // 从1开始计算
   const endIndex = month - 3 // 当前月份不能算进之前的季度，-3 判断。
-  for (let index = startIndex; index < endIndex; index += 3) {
+  for (let index = startIndex; index <= endIndex; index += 3) {
     const quarter = getQuarter(index)
     quarters.push({ year, quarter, type })
   }
