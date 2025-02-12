@@ -64,20 +64,20 @@ import { Picker } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| options | Tabular data | `Array` | `[]` |
+| options | Tabular data | `PickerOptionItem[][]` | `[]` |
 | value | Selected value, controlled | `Array` | `[]` |
 | defaultValue | Default value | `Array` | `[]` |
 | threeDimensional | Whether to enable 3D effect | `boolean` | `true` |
 | duration | The duration of inertial rolling during rapid sliding, in ms | `string` \| `number` | `1000` |
 | onChange | Called when the value of each column changes | `({value, index, selectedOptions}) => void` | `-` |
 
-### options
+### PickerOptionItem
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | label | Text of column | `string` \| `number` | `-` |
 | value | Value of column | `string` \| `number` | `-` |
-| children | Cascader Option | `Array` | `-` |
+| children | Cascader Option | `PickerOptionItem[]` | `-` |
 
 ## Theming
 
