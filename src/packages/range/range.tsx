@@ -9,10 +9,10 @@ import React, {
 } from 'react'
 import type { TouchEvent } from 'react'
 import classNames from 'classnames'
-import { useTouch } from '@/utils/use-touch'
-import { getRect } from '@/utils/use-client-rect'
+import { useTouch } from '@/hooks/use-touch'
+import { getRect } from '@/hooks/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { RangeMark, RangeValue } from './types'
 import { useRtl } from '../configprovider'
 

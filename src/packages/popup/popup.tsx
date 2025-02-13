@@ -11,7 +11,7 @@ import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
-import { useLockScroll } from '@/utils/use-lock-scroll'
+import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { PopupProps, Teleport } from './types'
 
 const defaultProps: PopupProps = {
