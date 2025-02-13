@@ -240,7 +240,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
             return (
               <View
                 className="nut-pickerview-roller-item-tiled"
-                key={item.value ?? item.value}
+                key={item.value ?? index}
               >
                 {renderLabel(item)}
               </View>
