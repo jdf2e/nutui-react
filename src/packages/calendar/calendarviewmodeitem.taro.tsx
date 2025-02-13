@@ -25,7 +25,7 @@ type CalendarRef = {
 
 export interface CalendarViewModeItemProps {
   type: CalendarType
-  viewMode: 'week' | 'month' | 'quarter' | string
+  viewMode: 'month' | 'quarter'
   title: string
   value?: any
   defaultValue?: any
@@ -40,7 +40,7 @@ export interface CalendarViewModeItemProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: '',
+  viewMode: 'month',
   title: '',
   startDate: getDay(0),
   endDate: getDay(365),
@@ -390,7 +390,7 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderItem = (item: any, index: number) => {
-    const text = { week: '周', month: '月', quarter: '季度' }
+    const units = { month: '月', quarter: '季度' }
     return (
       <div
         className={classNames(
@@ -402,7 +402,7 @@ export const CalendarViewModeItem = React.forwardRef<
         key={index}
       >
         <div className={`${classPrefix}-item-${item.type}`}>
-          {renderDay ? renderDay(item) : `${item[viewMode]}${text[viewMode]}`}
+          {renderDay ? renderDay(item) : `${item[viewMode]}${units[viewMode]}`}
         </div>
       </div>
     )

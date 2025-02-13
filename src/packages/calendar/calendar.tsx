@@ -9,7 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
-  viewMode: 'week' | 'month' | 'quarter' | string
+  viewMode: '' | 'month' | 'quarter'
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -145,7 +145,7 @@ export const Calendar = React.forwardRef<
   const renderItem = () => {
     return (
       <>
-        {viewMode ? (
+        {viewMode !== '' ? (
           <CalendarViewModeItem
             ref={calendarRef}
             style={style}

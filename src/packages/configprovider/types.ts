@@ -317,6 +317,7 @@ export type NutCSSVariables =
   | 'nutuiCalendarDayHeight'
   | 'nutuiCalendarDayFontWeight'
   | 'nutuiCalendarDayActiveBorderRadius'
+  | 'nutuiCalendarPanelItemWidth'
   | 'nutuiOverlayBgColor'
   | 'nutuiOverlayZIndex'
   | 'nutuiOverlayContentBgColor'
