@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { PopupProps } from '@/packages/popup/index'
 import { ComponentDefaults } from '@/utils/typings'
 import {
-  getDay,
+  getDateString,
   getCurrMonthData,
   getDaysStatus,
   getPreMonthDates,
@@ -78,8 +78,8 @@ const defaultProps = {
   autoBackfill: false,
   popup: true,
   title: '',
-  startDate: getDay(0),
-  endDate: getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   startText: '',
   endText: '',
@@ -155,8 +155,8 @@ export const CalendarItem = React.forwardRef<
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
 
   // 初始化开始结束数据
-  const propStartDate = (startDate || getDay(0)) as string
-  const propEndDate = (endDate || getDay(365)) as string
+  const propStartDate = (startDate || getDateString(0)) as string
+  const propEndDate = (endDate || getDateString(365)) as string
 
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)

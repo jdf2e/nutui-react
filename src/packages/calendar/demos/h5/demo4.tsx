@@ -16,6 +16,7 @@ const Demo4 = () => {
   const setChooseValue = (chooseData: any) => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
+    console.log('choosevalue', chooseData, [...dateArr])
   }
   return (
     <>

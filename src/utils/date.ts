@@ -1,5 +1,9 @@
 /**
- * 是否为闫年
+ * 判断是否为闰年
+ * 规则：
+ * 1. 能被4整除但不能被100整除，或
+ * 2. 能被400整除
+ * @param {number} y - 年份
  * @return {Boolse} true|false
  */
 export const isLeapYear = (y: number): boolean => {
@@ -15,8 +19,7 @@ export const getWhatDay = (
   month: number,
   day: number
 ): string => {
-  const date = new Date(`${year}/${month}/${day}`)
-  const index = date.getDay()
+  const date = new Date(year, month - 1, day) // 月份从0开始
   const dayNames = [
     '星期日',
     '星期一',
@@ -26,7 +29,7 @@ export const getWhatDay = (
     '星期五',
     '星期六',
   ]
-  return dayNames[index]
+  return dayNames[date.getDay()]
 }
 
 /**
@@ -34,12 +37,8 @@ export const getWhatDay = (
  * @return {Number}
  */
 export const getMonthPreDay = (year: number, month: number): number => {
-  const date = new Date(`${year}/${month}/01`)
-  let day = date.getDay()
-  if (day === 0) {
-    day = 7
-  }
-  return day
+  const day = new Date(year, month - 1, 1).getDay() // 月份从0开始
+  return day === 0 ? 7 : day // 将周日从0改为7
 }
 
 /**
@@ -74,16 +73,14 @@ export const getMonthDays = (year: string, month: string): number => {
  * @return {string}
  */
 export const getNumTwoBit = (n: number): string => {
-  n = Number(n)
-  return (n > 9 ? '' : '0') + n
+  return n > 9 ? `${n}` : `0${n}`
 }
 
 /**
  * 日期对象转成字符串
  * @return {string}
  */
-export const date2Str = (date: Date, split?: string): string => {
-  split = split || '-'
+export const date2Str = (date: Date, split: string = '-'): string => {
   const y = date.getFullYear()
   const m = getNumTwoBit(date.getMonth() + 1)
   const d = getNumTwoBit(date.getDate())
@@ -95,12 +92,10 @@ export const date2Str = (date: Date, split?: string): string => {
  * @param {Number} 0返回今天的日期、1返回明天的日期，2返回后天得日期，依次类推
  * @return {string} '2014-12-31'
  */
-export const getDay = (i: number): string => {
-  i = i || 0
-  let date = new Date()
-  const diff = i * (1000 * 60 * 60 * 24)
-  date = new Date(date.getTime() + diff)
-  return date2Str(date)
+export const getDateString = (offset: number = 0): string => {
+  const date = new Date()
+  date.setDate(date.getDate() + offset)
+  return date2Str(date, '-')
 }
 
 /**
@@ -110,10 +105,7 @@ export const getDay = (i: number): string => {
 export const compareDate = (date1: string, date2: string): boolean => {
   const startTime = new Date(date1.replace('-', '/').replace('-', '/'))
   const endTime = new Date(date2.replace('-', '/').replace('-', '/'))
-  if (startTime >= endTime) {
-    return false
-  }
-  return true
+  return startTime < endTime
 }
 
 /**
@@ -123,35 +115,32 @@ export const compareDate = (date1: string, date2: string): boolean => {
 export const isEqual = (date1: string, date2: string): boolean => {
   const startTime = new Date((date1 || '').replace(/-/g, '/')).getTime()
   const endTime = new Date(date2.replace(/-/g, '/')).getTime()
-  if (startTime === endTime) {
-    return true
-  }
-  return false
+  return startTime === endTime
 }
+
 export const getMonthWeek = (
-  year: string,
-  month: string,
-  date: string,
+  year: number,
+  month: number,
+  date: number,
   firstDayOfWeek = 0
 ): number => {
-  const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
+  const dateNow = new Date(year, month - 1, date)
   let w = dateNow.getDay() // 星期数
-  const d = dateNow.getDate()
   let remainder = 6 - w
   if (firstDayOfWeek !== 0) {
     w = w === 0 ? 7 : w
     remainder = 7 - w
   }
-  return Math.ceil((d + remainder) / 7)
+  return Math.ceil((date + remainder) / 7)
 }
 export const getYearWeek = (
-  year: string,
-  month: string,
-  date: string,
+  year: number,
+  month: number,
+  date: number,
   firstDayOfWeek = 0
 ): number => {
-  const dateNow = new Date(Number(year), parseInt(month) - 1, Number(date))
-  const dateFirst = new Date(Number(year), 0, 1)
+  const dateNow = new Date(year, month - 1, date)
+  const dateFirst = new Date(year, 0, 1)
   const dataNumber = Math.round(
     (dateNow.valueOf() - dateFirst.valueOf()) / 86400000
   )
@@ -165,6 +154,7 @@ export const getWeekOfYear = (time: number) => {
   const days = Math.round((time - startOfYear.valueOf()) / oneDayTime)
   return Math.ceil((days + (startOfYear.getDay() + 1)) / 7)
 }
+
 export const getWeekDate = (
   year: string,
   month: string,
@@ -196,26 +186,21 @@ export const getWeekDate = (
 }
 
 export const formatResultDate = (date: string) => {
-  const days = [...date.split('-')]
-  days[2] = getNumTwoBit(Number(days[2]))
-  days[3] = `${days[0]}-${days[1]}-${days[2]}`
-  days[4] = getWhatDay(+days[0], +days[1], +days[2])
-  return days
+  const [year, month, day] = [...date.split('-')]
+  const formatterDay = getNumTwoBit(Number(day))
+  const formatterDate = `${year}-${month}-${day}`
+  const dayOfWeek = getWhatDay(Number(year), Number(month), Number(day))
+  return [year, month, formatterDay, formatterDate, dayOfWeek]
 }
 
 // 获取当前月数据
 export const getCurrMonthData = (type: string, year: number, month: number) => {
-  switch (type) {
-    case 'prev':
-      month === 1 && (year -= 1)
-      month = month === 1 ? 12 : --month
-      break
-    case 'next':
-      month === 12 && (year += 1)
-      month = month === 12 ? 1 : ++month
-      break
-    default:
-      break
+  if (type === 'prev') {
+    month === 1 && (year -= 1)
+    month = month === 1 ? 12 : --month
+  } else if (type === 'next') {
+    month === 12 && (year += 1)
+    month = month === 12 ? 1 : ++month
   }
   return [year, getNumTwoBit(month), getMonthDays(String(year), String(month))]
 }

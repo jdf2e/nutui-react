@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
+import { date2Str, getDateString } from '@/utils/date'
 
 function isLeapYear(y: number): boolean {
   return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
@@ -28,35 +29,9 @@ function getMonthDays(year: string, month: string): number {
   )[month as any]
 }
 
-const padZero = (num: number | string, targetLength = 2) => {
-  let str = `${num}`
-  while (str.length < targetLength) {
-    str = `0${str}`
-  }
-  return str
-}
-
-function date2Str(date: Date, split?: string): string {
-  split = split || '-'
-  const y = date.getFullYear()
-  const m = padZero(date.getMonth() + 1)
-  const d = padZero(date.getDate())
-  return [y, m, d].join(split)
-}
-
-function getDay(i: number): string {
-  i = i || 0
-  let date = new Date()
-  const diff = i * (1000 * 60 * 60 * 24)
-  date = new Date(date.getTime() + diff)
-  return date2Str(date)
-}
-
 const Demo10 = () => {
   const [date, setDate] = useState<string[]>(['2024-07-10', '2024-07-19'])
-
   const [isVisible, setIsVisible] = useState(false)
-
   const calendarRef = useRef<any>(null)
 
   const openSwitch = () => {
@@ -78,7 +53,7 @@ const Demo10 = () => {
   }
 
   const clickBtn = () => {
-    const date = [date2Str(new Date()), getDay(6)]
+    const date = [date2Str(new Date()), getDateString(6)]
     setDate(date)
     if (calendarRef.current) {
       calendarRef.current.scrollToDate(date[0])
