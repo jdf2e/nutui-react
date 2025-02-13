@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { render, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import PickerView from '../pickerview'
+import { PickerOptions } from '../types'
 
 const listData = [
   [
@@ -93,7 +94,7 @@ const cascadeData = [
   ],
 ]
 
-test('should match snapshot', () => {
+test('should match base', () => {
   const { container } = render(
     <PickerView defaultValue={[1]} options={listData} />
   )
@@ -132,27 +133,32 @@ test('should render with Multi Column', () => {
 
 test('should match onchange', async () => {
   const PenderContent = () => {
-    const [value, setValue] = useState([1])
+    const [value, setValue] = useState([])
+    const [options, setInnerOptions] = useState<PickerOptions[]>([])
 
     useEffect(() => {
-      setTimeout(() => {
-        setValue([3])
+      const timer = setTimeout(() => {
+        setInnerOptions(listData)
+        setValue([1])
       }, 1000)
+
+      return () => clearTimeout(timer) // 清理定时器
     }, [])
 
     return (
       <PickerView
         value={value}
-        options={listData}
-        onChange={({ value, selectedOptions }) => {
-          if (value[0] === 3) {
-            setValue([1])
+        options={options}
+        onChange={({ value }) => {
+          if (value[0] === 1) {
+            setValue([3])
           }
         }}
       />
     )
   }
-  const container = render(<PenderContent />)
+
+  const { container } = render(<PenderContent />)
 
   await waitFor(() => {
     expect(container).toMatchSnapshot()
@@ -162,11 +168,50 @@ test('should match onchange', async () => {
 test('should match cascade', () => {
   const { container } = render(
     <PickerView
-      defaultValue={[1, 1]}
+      defaultValue={[1, 0]}
       renderLabel={(item) => `${item.label} | 测试`}
       options={cascadeData}
       onChange={() => {}}
     />
   )
   expect(container).toMatchSnapshot()
+})
+test('should match stopMomentum', async () => {
+  const PenderContent = () => {
+    function useRefs() {
+      const refs = React.useRef<HTMLDivElement[]>([])
+
+      const setRefs = React.useCallback(
+        (index: number) => (el: HTMLDivElement) => {
+          if (el) refs.current[index] = el
+        },
+        []
+      )
+
+      const reset = React.useCallback(() => {
+        refs.current = []
+      }, [])
+
+      return [refs.current, setRefs as any, reset]
+    }
+
+    const [refs, setRefs] = useRefs()
+    const first = useRef(true)
+
+    return (
+      <PickerView
+        value={[0, 3]}
+        options={cascadeData}
+        setRefs={setRefs}
+        onChange={() => {
+          if (!first.current) {
+            refs[0].stopMomentum()
+          } else {
+            first.current = false
+          }
+        }}
+      />
+    )
+  }
+  render(<PenderContent />)
 })

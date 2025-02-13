@@ -64,9 +64,9 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| options | 列錶數據 | `PickerOptionItem[][]` | `[]` |
-| value | 選中值，受控 | `Array` | `[]` |
-| defaultValue | 默認選中 | `Array` | `[]` |
+| options | 列錶數據 | `PickerOptions[]` | `[]` |
+| value | 選中值，受控 | `PickerValue[]` | `[]` |
+| defaultValue | 默認選中 | `PickerValue[]` | `[]` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
 | onChange | 每一列值變更時調用 | `({value, index, selectedOptions}) => void` | `-` |

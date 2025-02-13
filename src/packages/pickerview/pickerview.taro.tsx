@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/hooks/use-props-value'
 import {
   PickerViewProps,
   PickerOptionItem,
@@ -17,7 +18,6 @@ import {
   PickerOptions,
 } from './types'
 import PickerRoller from './pickerroller.taro'
-import { usePropsValue } from '@/hooks/use-props-value'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -210,8 +210,8 @@ const InternalPickerView: ForwardRefRenderFunction<
       ))}
       {innerOptions?.length ? (
         <>
-          <div className="nut-pickerview-mask" />
-          <div className="nut-pickerview-indicator" />
+          <View className="nut-pickerview-mask" />
+          <View className="nut-pickerview-indicator" />
         </>
       ) : null}
     </View>
