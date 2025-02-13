@@ -9,7 +9,7 @@ const Nav = () => {
   const [lang] = useLocale()
   const [fixed, setFixed] = useState(false)
   const [isGuide, setIsGuide] = useState(false)
-  const [activeName, setActiveName] = useState<string>('intro-react')
+  const [activeName, setActiveName] = useState<string>('')
   const scrollNav = () => {
     let top = document.documentElement.scrollTop
     if (top > 64) {
@@ -31,9 +31,7 @@ const Nav = () => {
     } else {
       setIsGuide(false)
     }
-    if(location.pathname.includes('/intro-react')) {
-      setActiveName('intro-react')
-    }
+    setActiveName(location.pathname.slice(location.pathname.lastIndexOf('/') + 1))
   }, [location])
   const changeNav = (_nav: any) => {
     setActiveName(_nav.name)
