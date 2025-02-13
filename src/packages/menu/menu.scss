@@ -1,4 +1,4 @@
-@import '../../styles/mixins/text-ellipsis.scss';
+@use '../../styles/mixins/text-ellipsis.scss' as *;
 @import '../menuitem/menuitem.scss';
 
 .nut-menu {

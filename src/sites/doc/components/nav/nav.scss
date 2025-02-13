@@ -1,11 +1,13 @@
+@use '../../../assets/styles/variables.scss' as variables;
+
 .doc {
   &-nav {
     position: absolute;
-    top: $doc-header-height;
+    top: variables.$doc-header-height;
     left: 0;
     bottom: 0;
     z-index: 1;
-    background: $white;
+    background: variables.$white;
     width: 290px;
     height: 100vh;
     border-right: 1px solid #eee;
@@ -25,7 +27,7 @@
           cursor: pointer;
 
           &:hover {
-            color: $doc-default-color;
+            color: variables.$doc-default-color;
           }
         }
       }
@@ -34,7 +36,7 @@
         height: 48px;
         line-height: 48px;
         font-size: 14px;
-        color: $doc-default-nav-color;
+        color: variables.$doc-default-nav-color;
         font-weight: bold;
         position: relative;
 
@@ -62,7 +64,7 @@
 
           &:hover {
             a {
-              color: $doc-default-color;
+              color: variables.$doc-default-color;
             }
           }
 
@@ -71,19 +73,19 @@
 
             &.router-link-active,
             &.active {
-              color: $doc-default-color !important;
+              color: variables.$doc-default-color !important;
             }
 
             &:link,
             &:visited {
-              color: $color-title;
+              color: variables.$color-title;
             }
 
             &:hover {
-              color: $doc-default-color;
+              color: variables.$doc-default-color;
 
               &:visited {
-                color: $doc-default-color;
+                color: variables.$doc-default-color;
               }
             }
 

@@ -1,4 +1,5 @@
-@import 'highlight.scss';
+@use 'sass:color';
+@use './variables.scss' as *;
 
 .doc-content-document {
   position: relative;
@@ -21,11 +22,11 @@
     -webkit-font-smoothing: auto;
 
     &:hover {
-      color: mix(black, $nutui-doc-blue, 10%);
+      color: color.adjust($nutui-doc-blue, $lightness: -10%);
     }
 
     &:active {
-      color: mix(black, $nutui-doc-blue, 20%);
+      color: color.adjust($nutui-doc-blue, $lightness: -20%);
     }
   }
 

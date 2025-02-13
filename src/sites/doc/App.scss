@@ -1,3 +1,5 @@
+@use '../assets/styles/variables.scss' as *;
+
 ::selection {
   background: $doc-default-color;
   color: #fff;

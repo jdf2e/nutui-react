@@ -1,3 +1,5 @@
+@use '../../../assets/styles/variables.scss' as variables;
+
 .doc {
   &-header {
     z-index: 2;
@@ -8,8 +10,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: $doc-header-height;
-    line-height: $doc-header-height;
+    height: variables.$doc-header-height;
+    line-height: variables.$doc-header-height;
     text-align: left;
     padding: 0 50px;
     font-size: 20px;
@@ -124,7 +126,7 @@
     padding: 0 30px 0 15px;
     line-height: 26px;
     font-size: 14px;
-    color: $theme-red-word;
+    color: variables.$theme-red-word;
     background-position: right 15px top 12px;
     background-size: 8px 5px;
     background-repeat: no-repeat;
@@ -155,8 +157,8 @@
 // 颜色
 .doc-header {
   &-red {
-    background-image: $theme-red-header-bg;
-    color: $theme-red-word;
+    background-image: variables.$theme-red-header-bg;
+    color: variables.$theme-red-word;
     .header {
       &-logo {
         .logo-link {
@@ -164,32 +166,32 @@
             no-repeat center/100%;
         }
         .logo-border {
-          background: $theme-red-border;
+          background: variables.$theme-red-border;
         }
       }
       &-nav {
         .search-box {
           .search-input {
-            color: $theme-red-word;
+            color: variables.$theme-red-word;
             background-position: 0 0;
             &::-webkit-input-placeholder {
-              color: $theme-red-input;
+              color: variables.$theme-red-input;
             }
           }
         }
         .nav-box {
           .nav-item {
-            color: $theme-red-word;
+            color: variables.$theme-red-word;
             a {
-              color: $theme-red-word;
+              color: variables.$theme-red-word;
             }
             &.active {
-              color: $theme-red-actice;
+              color: variables.$theme-red-actice;
               &:after {
                 background-position: 0 0;
               }
               a {
-                color: $theme-red-actice;
+                color: variables.$theme-red-actice;
               }
             }
           }
@@ -213,25 +215,25 @@
         }
       }
       &-hd {
-        color: $theme-red-word;
-        border: 1px solid $theme-white-select-border;
+        color: variables.$theme-red-word;
+        border: 1px solid variables.$theme-white-select-border;
       }
       &-bd {
-        color: $theme-white-select-word;
+        color: variables.$theme-white-select-word;
       }
       &-item {
-        border-color: $theme-red-select-border;
-        background-color: $theme-red-select-bg;
+        border-color: variables.$theme-red-select-border;
+        background-color: variables.$theme-red-select-bg;
         &:hover {
-          color: $theme-red;
+          color: variables.$theme-red;
         }
       }
     }
   }
   &-white {
-    background: $white;
-    color: $theme-white-word;
-    border-bottom: 1px solid $theme-white-box-border;
+    background: variables.$white;
+    color: variables.$theme-white-word;
+    border-bottom: 1px solid variables.$theme-white-box-border;
     .header {
       &-logo {
         .logo-link {
@@ -239,32 +241,32 @@
             center/100%;
         }
         .logo-border {
-          background: $theme-white-border;
+          background: variables.$theme-white-border;
         }
       }
       &-nav {
         .search-box {
           .search-input {
-            color: $theme-white-word;
+            color: variables.$theme-white-word;
             background-position: 0 -22px;
             &::-webkit-input-placeholder {
-              color: $theme-white-input;
+              color: variables.$theme-white-input;
             }
           }
         }
         .nav-box {
           .nav-item {
-            color: $theme-white-word;
+            color: variables.$theme-white-word;
             a {
-              color: $theme-white-word;
+              color: variables.$theme-white-word;
             }
             &.active {
-              color: $theme-white-actice;
+              color: variables.$theme-white-actice;
               &:after {
                 background-position: 0 -13px;
               }
               a {
-                color: $theme-white-actice;
+                color: variables.$theme-white-actice;
               }
             }
           }
@@ -288,25 +290,25 @@
         }
       }
       &-hd {
-        color: $theme-white-select-word;
-        border: 1px solid $theme-white-select-border;
+        color: variables.$theme-white-select-word;
+        border: 1px solid variables.$theme-white-select-border;
       }
       &-bd {
-        color: $theme-white-select-word;
+        color: variables.$theme-white-select-word;
       }
       &-item {
-        border-color: $theme-white-select-border;
-        background-color: $theme-white-select-bg;
+        border-color: variables.$theme-white-select-border;
+        background-color: variables.$theme-white-select-bg;
         &:hover {
-          color: $theme-white-actice;
+          color: variables.$theme-white-actice;
         }
       }
     }
   }
   &-black {
-    background: $black;
-    color: $theme-black-word;
-    border-bottom: 1px solid $theme-black-box-border;
+    background: variables.$black;
+    color: variables.$theme-black-word;
+    border-bottom: 1px solid variables.$theme-black-box-border;
     .header {
       &-logo {
         .logo-link {
@@ -314,32 +316,32 @@
             center/100%;
         }
         .logo-border {
-          background: $theme-black-border;
+          background: variables.$theme-black-border;
         }
       }
       &-nav {
         .search-box {
           .search-input {
-            color: $theme-black-word;
+            color: variables.$theme-black-word;
             background-position: 0 -44px;
             &::-webkit-input-placeholder {
-              color: $theme-black-input;
+              color: variables.$theme-black-input;
             }
           }
         }
         .nav-box {
           .nav-item {
-            color: $theme-black-word;
+            color: variables.$theme-black-word;
             a {
-              color: $theme-black-word;
+              color: variables.$theme-black-word;
             }
             &.active {
-              color: $theme-black-actice;
+              color: variables.$theme-black-actice;
               &:after {
                 background-position: 0 -13px;
               }
               a {
-                color: $theme-black-actice;
+                color: variables.$theme-black-actice;
               }
             }
           }
@@ -363,19 +365,19 @@
         }
       }
       &-hd {
-        color: $theme-black-select-word;
-        background-color: $theme-black-select-bg;
-        border: 1px solid $theme-black-select-border;
+        color: variables.$theme-black-select-word;
+        background-color: variables.$theme-black-select-bg;
+        border: 1px solid variables.$theme-black-select-border;
       }
       &-bd {
-        color: $theme-black-select-word;
+        color: variables.$theme-black-select-word;
       }
       &-item {
-        background-color: $theme-black-select-bg;
-        border-color: $theme-black-select-bg;
+        background-color: variables.$theme-black-select-bg;
+        border-color: variables.$theme-black-select-bg;
         &:hover {
-          background-color: $theme-black-select-hover;
-          border-color: $theme-black-select-hover;
+          background-color: variables.$theme-black-select-hover;
+          border-color: variables.$theme-black-select-hover;
         }
       }
     }
