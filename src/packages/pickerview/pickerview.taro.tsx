@@ -210,8 +210,8 @@ const InternalPickerView: ForwardRefRenderFunction<
       ))}
       {innerOptions?.length ? (
         <>
-          <div className="nut-pickerview-mask" />
-          <div className="nut-pickerview-indicator" />
+          <View className="nut-pickerview-mask" />
+          <View className="nut-pickerview-indicator" />
         </>
       ) : null}
     </View>
