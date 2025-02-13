@@ -19,62 +19,13 @@ jobs:
         run: echo "${{ toJSON(github.event.review) }}"
 
       - name: Update PR labels
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.FOR_PULL_REVIEW }}
-          script: |
-            try {
-              const { owner, repo } = context.repo;
+        run: |
+          LABEL_NAME="Test"  # 替换为你想要添加的标签名称
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
 
-              // 获取所有开放的 PRs
-              const { data: prs } = await github.rest.pulls.list({
-                owner,
-                repo,
-                state: 'open'
-              });
-
-              for (const pr of prs) {
-                // 获取 PR 的所有 reviews
-                const { data: reviews } = await github.rest.pulls.listReviews({
-                  owner,
-                  repo,
-                  pull_number: pr.number
-                });
-
-                // 计算最新的 approved 数量
-                const latestReviews = new Map();
-                reviews.forEach(review => {
-                  latestReviews.set(review.user.id, review);
-                });
-
-                const approvedCount = Array.from(latestReviews.values())
-                  .filter(review => review.state === 'APPROVED')
-                  .length;
-
-                console.log(`PR #${pr.number} - Approved count:`, approvedCount);
-
-                // 获取当前标签
-                const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
-                  owner,
-                  repo,
-                  issue_number: pr.number
-                });
-
-                // 保留非 action 标签
-                const labelsToKeep = currentLabels
-                  .filter(label => label.name !== 'action:merge' && label.name !== 'action:review')
-                  .map(label => label.name);
-
-                // 添加新标签
-                const newLabel = approvedCount >= 2 ? 'action:merge' : 'action:review';
-                await github.rest.issues.setLabels({
-                  owner,
-                  repo,
-                  issue_number: pr.number,
-                  labels: [...labelsToKeep, newLabel]
-                });
-              }
-            } catch (error) {
-              console.error('Error:', error);
-              throw error;
-            }
+          curl -X POST \
+               -H "Authorization: token ${{ secrets.FOR_PULL_REVIEW }}" \
+               -H "Accept: application/vnd.github.v3+json" \
+               -d "{\"labels\": [\"$LABEL_NAME\"]}" \
+               https://api.github.com/repos/$REPO/issues/$PR_NUMBER/labels
