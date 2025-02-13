@@ -3,7 +3,7 @@ import type { UIEvent } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import {
-  getDay,
+  getDateString,
   compareDate,
   getPreMonths,
   getMonths,
@@ -42,8 +42,8 @@ const defaultProps = {
   type: 'single',
   viewMode: 'month',
   title: '',
-  startDate: getDay(0),
-  endDate: getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   showTitle: true,
   scrollAnimation: true,
