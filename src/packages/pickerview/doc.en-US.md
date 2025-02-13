@@ -5,7 +5,7 @@ The PickerView is the content area of the Picker.
 ## Import
 
 ```tsx
-import { Picker } from '@nutui/nutui-react'
+import { PickerView } from '@nutui/nutui-react'
 ```
 
 ## Demo

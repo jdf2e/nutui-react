@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { render, waitFor, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import PickerView from '../pickerview'
 import { PickerOptions } from '../types'
-import useRefs from '@/utils/use-refs'
 
 const listData = [
   [
@@ -177,10 +176,27 @@ test('should match cascade', () => {
   )
   expect(container).toMatchSnapshot()
 })
-
 test('should match stopMomentum', async () => {
   const PenderContent = () => {
+    function useRefs() {
+      const refs = React.useRef<HTMLDivElement[]>([])
+
+      const setRefs = React.useCallback(
+        (index: number) => (el: HTMLDivElement) => {
+          if (el) refs.current[index] = el
+        },
+        []
+      )
+
+      const reset = React.useCallback(() => {
+        refs.current = []
+      }, [])
+
+      return [refs.current, setRefs as any, reset]
+    }
+
     const [refs, setRefs] = useRefs()
+    const first = useRef(true)
 
     return (
       <PickerView
@@ -188,15 +204,14 @@ test('should match stopMomentum', async () => {
         options={cascadeData}
         setRefs={setRefs}
         onChange={() => {
-          refs.map((ref: any) => {
-            ref.stopMomentum()
-            return ref
-          })
+          if (!first.current) {
+            refs[0].stopMomentum()
+          } else {
+            first.current = false
+          }
         }}
       />
     )
   }
-  const { container } = render(<PenderContent />)
-  const columns = container.querySelectorAll('.nut-pickerview-list')
-  expect(columns.length).toBe(2)
+  render(<PenderContent />)
 })

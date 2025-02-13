@@ -55,7 +55,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       const currentLineSpacing = computedStyle.getPropertyValue(
         '--nutui-picker-item-height'
       )
-      currentLineSpacing &&
+      !!currentLineSpacing &&
         (lineSpacing.current = parseFloat(currentLineSpacing))
     }
   }, [pickerRollerRef.current])
