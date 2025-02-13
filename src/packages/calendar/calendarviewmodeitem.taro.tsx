@@ -3,7 +3,7 @@ import type { UIEvent } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import {
-  getDay,
+  getDateString,
   compareDate,
   getPreMonths,
   getMonths,
@@ -25,10 +25,10 @@ type CalendarRef = {
 
 export interface CalendarViewModeItemProps {
   type: CalendarType
-  viewMode: 'month' | 'quarter'
+  viewMode?: 'month' | 'quarter'
   title: string
-  value?: any
-  defaultValue?: any
+  value?: CalendarValue
+  defaultValue?: CalendarValue
   startDate: CalendarValue
   endDate: CalendarValue
   showTitle: boolean
@@ -42,8 +42,8 @@ const defaultProps = {
   type: 'single',
   viewMode: 'month',
   title: '',
-  startDate: getDay(0),
-  endDate: getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   showTitle: true,
   scrollAnimation: true,
@@ -78,8 +78,13 @@ export const CalendarViewModeItem = React.forwardRef<
 
   // 为了便于区分，用'YYYY-MM'表示月，用'YYYY-QX'表示Q
   const [panelDate, setPanelDate] = useState({
-    months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
-    quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
+    months: [
+      {
+        year: new Date().getFullYear,
+        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      },
+    ],
+    quarters: [{ year: new Date().getFullYear, quarters: [1, 2, 3, 4] }],
   })
 
   const monthTitle = locale.calendaritem.monthTitle
@@ -89,8 +94,8 @@ export const CalendarViewModeItem = React.forwardRef<
   const [translateY, setTranslateY] = useState(0)
 
   // 初始化开始结束数据
-  const propStartDate = (startDate || getDay(0)) as string
-  const propEndDate = (endDate || getDay(365)) as string
+  const propStartDate = (startDate || getDateString(0)) as string
+  const propEndDate = (endDate || getDateString(365)) as string
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
 
@@ -239,18 +244,18 @@ export const CalendarViewModeItem = React.forwardRef<
   const initData = () => {
     // 获取起止时间内的所有的周、月、季
     switch (viewMode) {
-      case 'month':
-        // eslint-disable-next-line no-case-declarations
+      case 'month': {
         const months = getMonthsData()
         console.log('monthts', months, panelDate)
         setPanelDate({ ...panelDate, months: months as any })
         break
-      case 'quarter':
-        // eslint-disable-next-line no-case-declarations
+      }
+      case 'quarter': {
         const quarters = getQuartersData()
         console.log('quarters', quarters, panelDate)
         setPanelDate({ ...panelDate, quarters: quarters as any })
         break
+      }
       default:
         break
     }
@@ -299,9 +304,7 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
-    if (monthsData.length <= 1) {
-      return
-    }
+    if (monthsData.length <= 1) return
     const scrollTop = (e.target as HTMLElement).scrollTop
     let current = Math.floor(scrollTop / avgHeight)
     if (current < 0) return
@@ -356,10 +359,7 @@ export const CalendarViewModeItem = React.forwardRef<
       viewMode === 'month'
         ? formatMonth(item.year, item.month)
         : formatQuarter(item.year, item.quarter)
-    if (val === innerValue) {
-      return true
-    }
-    return false
+    return val === innerValue
   }
 
   const getClasses = (item: any) => {

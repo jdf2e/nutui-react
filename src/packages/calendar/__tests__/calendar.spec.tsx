@@ -84,6 +84,64 @@ test('range prop', async () => {
   expect(viewArea.innerHTML).toMatchSnapshot()
 })
 
+test('viewmode prop', async () => {
+  const onItemClick = vi.fn()
+  const { container } = render(
+    <Calendar
+      viewMode="quarter"
+      defaultValue="2025-Q1"
+      startDate="2025-01-01"
+      endDate="2025-3-31"
+      onItemClick={onItemClick}
+    />
+  )
+  const viewArea = container.querySelector('.viewArea') as HTMLElement
+  expect(viewArea.innerHTML).toMatchSnapshot()
+})
+
+test('viewmode prop', async () => {
+  const { container } = render(
+    <Calendar
+      viewMode="quarter"
+      defaultValue="2025-Q1"
+      startDate="2025-01-01"
+      endDate="2027-3-31"
+    />
+  )
+  const viewArea = container.querySelector('.viewArea') as HTMLElement
+  expect(viewArea.innerHTML).toMatchSnapshot()
+})
+
+test('viewmode prop', async () => {
+  const onItemClick = vi.fn()
+  const { container } = render(
+    <Calendar
+      viewMode="month"
+      defaultValue="2025-01"
+      startDate="2025-01-01"
+      endDate="2025-3-31"
+      onItemClick={onItemClick}
+    />
+  )
+  const viewArea = container.querySelector('.viewArea') as HTMLElement
+  expect(viewArea.innerHTML).toMatchSnapshot()
+})
+
+test('viewmode prop', async () => {
+  const onItemClick = vi.fn()
+  const { container } = render(
+    <Calendar
+      viewMode="month"
+      defaultValue="2025-01"
+      startDate="2025-01-01"
+      endDate="2027-3-31"
+      onItemClick={onItemClick}
+    />
+  )
+  const viewArea = container.querySelector('.viewArea') as HTMLElement
+  expect(viewArea.innerHTML).toMatchSnapshot()
+})
+
 test('popup prop', async () => {
   const { container } = render(
     <Calendar

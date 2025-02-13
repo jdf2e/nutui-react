@@ -9,7 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
-  viewMode: 'day' | 'month' | 'quarter'
+  viewMode?: 'day' | 'month' | 'quarter'
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -24,7 +24,7 @@ export interface CalendarProps {
   confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
-  showMonthNumber: boolean
+  showMonthNumber?: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
   closeIcon?: ReactNode
@@ -37,7 +37,7 @@ export interface CalendarProps {
   onClose?: () => void
   onConfirm?: (param: string) => void
   onDayClick?: (data: string) => void
-  onItemClick: (param: string) => void
+  onItemClick?: (param: string) => void
   onPageChange?: (param: string) => void
 }
 
@@ -150,7 +150,6 @@ export const Calendar = React.forwardRef<
             ref={calendarRef}
             style={style}
             className={className}
-            children={children}
             type={type}
             viewMode={viewMode}
             title={title || locale.calendaritem.title}

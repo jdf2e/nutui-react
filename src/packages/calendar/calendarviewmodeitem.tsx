@@ -25,10 +25,10 @@ type CalendarRef = {
 
 export interface CalendarViewModeItemProps {
   type: CalendarType
-  viewMode: 'month' | 'quarter'
+  viewMode?: 'month' | 'quarter'
   title: string
-  value?: any
-  defaultValue?: any
+  value?: CalendarValue
+  defaultValue?: CalendarValue
   startDate: CalendarValue
   endDate: CalendarValue
   showTitle: boolean
@@ -89,8 +89,8 @@ export const CalendarViewModeItem = React.forwardRef<
   const [translateY, setTranslateY] = useState(0)
 
   // 初始化开始结束数据
-  const propStartDate = (startDate || getDay(0)) as string
-  const propEndDate = (endDate || getDay(365)) as string
+  const propStartDate = (startDate || getDateString(0)) as string
+  const propEndDate = (endDate || getDateString(365)) as string
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
 
@@ -239,22 +239,21 @@ export const CalendarViewModeItem = React.forwardRef<
   const initData = () => {
     // 获取起止时间内的所有的周、月、季
     switch (viewMode) {
-      case 'month':
-        // eslint-disable-next-line no-case-declarations
+      case 'month': {
         const months = getMonthsData()
         console.log('monthts', months, panelDate)
         setPanelDate({ ...panelDate, months: months as any })
         break
-      case 'quarter':
-        // eslint-disable-next-line no-case-declarations
+      }
+      case 'quarter': {
         const quarters = getQuartersData()
         console.log('quarters', quarters, panelDate)
         setPanelDate({ ...panelDate, quarters: quarters as any })
         break
+      }
       default:
         break
     }
-
     // requestAniFrameFunc(currentIndex, monthNum)
   }
 
@@ -356,10 +355,7 @@ export const CalendarViewModeItem = React.forwardRef<
       viewMode === 'month'
         ? formatMonth(item.year, item.month)
         : formatQuarter(item.year, item.quarter)
-    if (val === innerValue) {
-      return true
-    }
-    return false
+    return val === innerValue
   }
 
   const getClasses = (item: any) => {

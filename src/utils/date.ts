@@ -290,9 +290,6 @@ export const getTotalWeeksInYear = (year: number, firstDayOfWeek?: number) => {
   const weeks = []
   const firstDayOfYear = new Date(year, 0, 1)
   firstDayOfWeek = firstDayOfWeek || firstDayOfYear.getDay()
-
-  console.log('firstDayOfWeek', firstDayOfWeek, firstDayOfYear.getDay())
-
   // 计算第一周的周一
   const daysUntilFirstMonday = (1 - firstDayOfWeek + 7) % 7
   const firstMonday = new Date(firstDayOfYear)
