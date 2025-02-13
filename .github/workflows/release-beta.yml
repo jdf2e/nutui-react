@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release-3.x-beta:
+  release-3x-beta:
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       NPM_CONFIG_PROVENANCE: true
