@@ -9,7 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
-  viewMode: '' | 'month' | 'quarter'
+  viewMode: 'day' | 'month' | 'quarter'
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -44,7 +44,7 @@ export interface CalendarProps {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  viewMode: '',
+  viewMode: 'day',
   autoBackfill: false,
   popup: true,
   visible: false,
@@ -145,7 +145,7 @@ export const Calendar = React.forwardRef<
   const renderItem = () => {
     return (
       <>
-        {viewMode !== '' ? (
+        {viewMode !== 'day' ? (
           <CalendarViewModeItem
             ref={calendarRef}
             style={style}
@@ -203,7 +203,7 @@ export const Calendar = React.forwardRef<
 
   return (
     <>
-      {popup && !viewMode ? (
+      {popup && viewMode === 'day' ? (
         <Popup
           className="nut-calendar-popup"
           visible={visible}

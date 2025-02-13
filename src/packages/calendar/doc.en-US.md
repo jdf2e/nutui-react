@@ -106,6 +106,7 @@ import { Calendar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Is it visible | `boolean` | `false` |
 | type | type, 'single' and 'range' | `string` | `single` |
+| viewMode `v2.7.9` | view mode | `day` \| `month` \| `quarter` | `day` |
 | popup | Whether to display the pop-up status | `boolean` | `true` |
 | autoBackfill | Automatic backfill | `boolean` | `false` |
 | title | show title | `string` | `日期选择` |

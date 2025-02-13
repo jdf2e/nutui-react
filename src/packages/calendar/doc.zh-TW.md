@@ -106,6 +106,7 @@ import { Calendar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
 | type | 類型，日期選擇'single'，區間選擇'range' | `string` | `single` |
+| viewMode `v2.7.9` | 面板模式，用於展示不一樣的面板 | `day` \| `month` \| `quarter` | `day` |
 | popup | 是否彈窗狀態展示 | `boolean` | `true` |
 | autoBackfill | 自動回填 | `boolean` | `false` |
 | title | 顯示標題 | `string` | `日期選擇` |
