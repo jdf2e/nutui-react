@@ -9,7 +9,7 @@ import React, {
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import {
   PickerViewProps,
   PickerOptionItem,
