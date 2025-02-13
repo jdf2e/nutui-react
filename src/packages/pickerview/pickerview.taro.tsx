@@ -17,7 +17,7 @@ import {
   PickerOptions,
 } from './types'
 import PickerRoller from './pickerroller.taro'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 const defaultProps = {
   ...ComponentDefaults,
