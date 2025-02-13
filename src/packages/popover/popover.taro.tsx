@@ -12,7 +12,7 @@ import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { getRect } from '@/utils/use-client-rect'
+import { getRect } from '@/hooks/use-client-rect'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 import { useRtl } from '@/packages/configprovider/index.taro'
 

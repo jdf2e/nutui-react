@@ -13,8 +13,8 @@ import {
   useCustomEvent,
   useCustomEventsPath,
   useParams,
-} from '@/utils/use-custom-event'
-import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+} from '@/hooks/use-custom-event'
+import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { mergeProps } from '@/utils/merge-props'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 

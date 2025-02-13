@@ -1,5 +1,5 @@
 import { createSelectorQuery } from '@tarojs/taro'
-import { getRect, inBrowser } from './use-client-rect'
+import { getRect, inBrowser } from '@/hooks/use-client-rect'
 
 export interface Rect {
   dataset: Record<string, any>

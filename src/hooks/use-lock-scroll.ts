@@ -1,7 +1,7 @@
 import { useEffect, RefObject } from 'react'
 import { useTouch } from './use-touch'
-import { getScrollParent } from './get-scroll-parent'
-import { passiveSupported } from './supports-passive'
+import { getScrollParent } from '../utils/get-scroll-parent'
+import { passiveSupported } from '../utils/supports-passive'
 
 let totalLockCount = 0
 

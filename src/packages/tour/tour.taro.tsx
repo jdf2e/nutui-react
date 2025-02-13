@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import Popover from '@/packages/popover/index.taro'
 import { PopoverLocation } from '@/packages/popover/types'
-import { getTaroRectById } from '@/utils/use-taro-rect'
+import { getTaroRectById } from '@/hooks/use-taro-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider/index.taro'
 
