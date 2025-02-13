@@ -16,7 +16,7 @@ import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 interface Store {
   scale: number

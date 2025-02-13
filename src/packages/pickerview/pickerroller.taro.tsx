@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 import { PickerRollerProps, PickerOptionItem } from './types'
 import { web } from '@/utils/platform-taro'

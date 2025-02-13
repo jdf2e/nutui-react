@@ -10,8 +10,8 @@ import {
   useCustomEvent,
   useCustomEventsPath,
   useParams,
-} from '@/utils/use-custom-event'
-import { usePropsValue } from '@/utils/use-props-value'
+} from '@/hooks/use-custom-event'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
 import { mergeProps } from '@/utils/merge-props'

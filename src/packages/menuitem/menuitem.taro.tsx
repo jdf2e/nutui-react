@@ -17,7 +17,7 @@ import { getWindowInfo } from '@/utils/get-system-info'
 import { Overlay } from '@/packages/overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface OptionItem {
   text: string

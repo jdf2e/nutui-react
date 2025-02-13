@@ -17,9 +17,9 @@ import {
   Popup,
   PopupProps,
 } from '@nutui/nutui-react'
-import useRefs from '@/utils/use-refs'
+import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { PickerActions, PickerRef } from './types'
 

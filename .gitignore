@@ -6,6 +6,7 @@ node_modules
 .npmrc
 /dist
 /dist-demo
+/release
 /libs
 /jd/upload.js
 # yarn.lock

@@ -31,7 +31,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdf2e/nutui-react.git"
+    "url": "git+https://github.com/jdf2e/nutui-react.git"
   },
   "files": [
     "dist",
@@ -77,9 +77,7 @@
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "lint": "eslint ./src/packages/*/",
     "lint:fix": "eslint --fix ./src/packages",
-    "postpublish": "node scripts/postpublish.js",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
-    "prepublishOnly": "node scripts/prepublish.js",
     "publish:beta": "npm publish --tag beta",
     "test": "vitest --coverage",
     "test:ui": "vitest --ui --coverage",

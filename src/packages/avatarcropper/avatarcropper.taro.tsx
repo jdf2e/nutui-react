@@ -13,7 +13,7 @@ import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { clamp, preventDefault } from '@/utils'
 
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'
