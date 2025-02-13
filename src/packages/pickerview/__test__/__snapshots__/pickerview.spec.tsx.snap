@@ -180,47 +180,47 @@ exports[`should render tiled 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: translate3d(0, 0px, 0);"
       >
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           南京市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           无锡市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           海北藏族自治区
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           北京市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           连云港市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           大庆市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           绥化市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           潍坊市
         </div>
         <div
-          class="nut-pickerview-roller-item-title"
+          class="nut-pickerview-roller-item-tiled"
         >
           乌鲁木齐市
         </div>
