@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Input, Radio, Space } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 type FieldType = { account?: string; loginMethod?: 'mobile' | 'email' }
 
@@ -14,12 +15,12 @@ const Demo8 = () => {
       initialValues={{ loginMethod: 'mobile', account: '123' }}
       footer={
         <>
-          <div
+          <View
             style={{
               width: '100%',
             }}
           >
-            <div
+            <View
               style={{
                 fontSize: '12px',
                 textAlign: 'center',
@@ -28,11 +29,11 @@ const Demo8 = () => {
             >
               你将使用{loginMethod === 'mobile' ? '手机号' : '电子邮箱'}
               {account}登录
-            </div>
+            </View>
             <Button block type="primary" size="large" nativeType="submit">
               提交
             </Button>
-          </div>
+          </View>
         </>
       }
     >
