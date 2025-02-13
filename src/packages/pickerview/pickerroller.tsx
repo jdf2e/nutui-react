@@ -45,7 +45,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const transformY = useRef(0)
   const [scrollDistance, setScrollDistance] = useState(0)
 
-  // 获取 lineSpacing.current CSS变量
+  // lineSpacing.current CSS variable
   useEffect(() => {
     const element = pickerRollerRef.current
     if (element) {
@@ -57,7 +57,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       !!currentLineSpacing &&
         (lineSpacing.current = parseFloat(currentLineSpacing))
     }
-  }, [])
+  }, [pickerRollerRef.current])
 
   const isHidden = (index: number) => {
     if (index >= currIndex + 8 || index <= currIndex - 8) {
@@ -84,7 +84,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const setMove = (move: number, type?: string, time?: number) => {
     let updateMove = move + transformY.current
     if (type === 'end') {
-      // 限定滚动距离
       if (updateMove > 0) {
         updateMove = 0
       }
@@ -105,7 +104,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       let deg = 0
       const currentDeg = (-updateMove / lineSpacing.current + 1) * rotation
 
-      // picker 滚动的最大角度
       const maxDeg = (options.length + 1) * rotation
       const minDeg = 0
 
@@ -121,7 +119,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     onSelect?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
   }
 
-  // 开始滚动
   const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touch.start(event)
     setStartY(touch.deltaY.current)
@@ -143,9 +140,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     if (!moving.current) return
     const move = touch.deltaY.current - startY
     const moveTime = Date.now() - startTime
-    // 区分是否为惯性滚动
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
-      // 惯性滚动
       const distance = momentum(move, moveTime)
       setMove(distance, 'end', +duration)
     } else {
@@ -156,12 +151,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     }, 0)
   }
 
-  // 惯性滚动 距离
+  // inertial rolling distance
   const momentum = (distance: number, duration: number) => {
     let nDistance = distance
-    // 惯性滚动的速度
     const speed = Math.abs(nDistance / duration)
-    // 惯性滚动的距离
     nDistance = (speed / 0.003) * (nDistance < 0 ? -1 : 1)
     return nDistance
   }
@@ -169,21 +162,13 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const modifyStatus = (type?: boolean, val?: string | number) => {
     const value = val || props.value
     let index = -1
-    if (value) {
-      options.some((item, idx) => {
-        if (item.value === value) {
-          index = idx
-          return true
-        }
-        return false
-      })
-    } else {
-      options.forEach((item, i) => {
-        if (item.value === props.value) {
-          index = i
-        }
-      })
-    }
+    options.some((item, idx) => {
+      if (item.value === value) {
+        index = idx
+        return true // Stop iterating once the match is found
+      }
+      return false
+    })
 
     setCurrIndex(index === -1 ? 1 : index + 1)
     const move = index * lineSpacing.current
@@ -191,13 +176,13 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     setMove(-move)
   }
 
-  // 惯性滚动结束
+  // stop inertial rolling
   const stopMomentum = () => {
     moving.current = false
     setTouchTime(0)
     setChooseValue(scrollDistance)
   }
-  // 阻止默认事件
+
   const preventDefault = (
     event: React.TouchEvent<HTMLElement>,
     isStopPropagation?: boolean
