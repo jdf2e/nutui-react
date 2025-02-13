@@ -11,5 +11,5 @@ jobs:
   approved:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.event.review.state }}"
+      - run: echo "${{ toJSON(github.event.review) }}"
 
