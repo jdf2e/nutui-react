@@ -14,23 +14,63 @@ jobs:
       - name: print
         run: echo "${{ toJSON(github.event.review) }}"
 
-      - name: Add label to PR
-        uses: actions/github-script@v5
+      - name: Update PR labels
+        uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const label = 'commented'; // 替换为你想要的标签名
-            const { context } = require('@actions/github');
+            try {
+              const { owner, repo } = context.repo;
 
-            // 检查标签是否已经存在
-            const existingLabels = context.payload.pull_request.labels.map(l => l.name);
-            if (!existingLabels.includes(label)) {
-              await github.issues.addLabels({
-                ...context.repo,
-                issue_number: context.payload.pull_request.number,
-                labels: [label],
+              // 获取所有开放的 PRs
+              const { data: prs } = await github.rest.pulls.list({
+                owner,
+                repo,
+                state: 'open'
               });
-              console.log(`Label "${label}" added to PR #${context.payload.pull_request.number}`);
-            } else {
-              console.log(`Label "${label}" already exists on PR #${context.payload.pull_request.number}`);
-            }
 
+              for (const pr of prs) {
+                // 获取 PR 的所有 reviews
+                const { data: reviews } = await github.rest.pulls.listReviews({
+                  owner,
+                  repo,
+                  pull_number: pr.number
+                });
+
+                // 计算最新的 approved 数量
+                const latestReviews = new Map();
+                reviews.forEach(review => {
+                  latestReviews.set(review.user.id, review);
+                });
+
+                const approvedCount = Array.from(latestReviews.values())
+                  .filter(review => review.state === 'APPROVED')
+                  .length;
+
+                console.log(`PR #${pr.number} - Approved count:`, approvedCount);
+
+                // 获取当前标签
+                const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
+                  owner,
+                  repo,
+                  issue_number: pr.number
+                });
+
+                // 保留非 action 标签
+                const labelsToKeep = currentLabels
+                  .filter(label => label.name !== 'action:merge' && label.name !== 'action:review')
+                  .map(label => label.name);
+
+                // 添加新标签
+                const newLabel = approvedCount >= 2 ? 'action:merge' : 'action:review';
+                await github.rest.issues.setLabels({
+                  owner,
+                  repo,
+                  issue_number: pr.number,
+                  labels: [...labelsToKeep, newLabel]
+                });
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              throw error;
+            }
