@@ -11,5 +11,26 @@ jobs:
   approved:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJSON(github.event.review) }}"
+      - name: print
+        run: echo "${{ toJSON(github.event.review) }}"
+
+      - name: Add label to PR
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const label = 'commented'; // 替换为你想要的标签名
+            const { context } = require('@actions/github');
+
+            // 检查标签是否已经存在
+            const existingLabels = context.payload.pull_request.labels.map(l => l.name);
+            if (!existingLabels.includes(label)) {
+              await github.issues.addLabels({
+                ...context.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: [label],
+              });
+              console.log(`Label "${label}" added to PR #${context.payload.pull_request.number}`);
+            } else {
+              console.log(`Label "${label}" already exists on PR #${context.payload.pull_request.number}`);
+            }
 
