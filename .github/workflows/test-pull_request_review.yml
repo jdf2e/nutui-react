@@ -21,7 +21,7 @@ jobs:
       - name: Update PR labels
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GIT_ACTION }}
+          github-token: ${{ secrets.FOR_PULL_REVIEW }}
           script: |
             try {
               const { owner, repo } = context.repo;
