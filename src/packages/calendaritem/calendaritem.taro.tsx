@@ -5,7 +5,7 @@ import Taro, { nextTick } from '@tarojs/taro'
 import { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import {
-  getDay,
+  getDateString,
   getCurrMonthData,
   getDaysStatus,
   getPreMonthDates,
@@ -78,8 +78,8 @@ const defaultProps = {
   autoBackfill: false,
   popup: true,
   title: '',
-  startDate: getDay(0),
-  endDate: getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   startText: '',
   endText: '',
@@ -155,8 +155,8 @@ export const CalendarItem = React.forwardRef<
   const [scrollWithAnimation, setScrollWithAnimation] = useState<boolean>(false)
 
   // 初始化开始结束数据
-  const propStartDate = (startDate || getDay(0)) as string
-  const propEndDate = (endDate || getDay(365)) as string
+  const propStartDate = (startDate || getDateString(0)) as string
+  const propEndDate = (endDate || getDateString(365)) as string
 
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
@@ -281,7 +281,7 @@ export const CalendarItem = React.forwardRef<
     }
     if (Array.isArray(currentDate) && currentDate.length) {
       switch (type) {
-        case 'range':
+        case 'range': {
           if (compareDate(currentDate[0], propStartDate)) {
             currentDate[0] = propStartDate
           }
@@ -293,10 +293,9 @@ export const CalendarItem = React.forwardRef<
             ...splitDate(currentDate[1]),
           ]
           break
-        case 'multiple':
-          // eslint-disable-next-line no-case-declarations
+        }
+        case 'multiple': {
           const defaultArr = [] as string[]
-          // eslint-disable-next-line no-case-declarations
           const obj: Record<string, unknown> = {}
           currentDate.forEach((item: string) => {
             if (
@@ -312,10 +311,9 @@ export const CalendarItem = React.forwardRef<
           currentDate.splice(0, currentDate.length, ...defaultArr)
           defaultData = [...splitDate(defaultArr[0])]
           break
-        case 'week':
-          // eslint-disable-next-line no-case-declarations
+        }
+        case 'week': {
           const [y, m, d] = splitDate(currentDate[0])
-          // eslint-disable-next-line no-case-declarations
           const weekArr = getWeekDate(y, m, d, firstDayOfWeek)
           currentDate.splice(0, currentDate.length, ...weekArr)
           if (compareDate(currentDate[0], propStartDate)) {
@@ -329,6 +327,7 @@ export const CalendarItem = React.forwardRef<
             ...splitDate(currentDate[1]),
           ]
           break
+        }
         default:
           break
       }
@@ -372,17 +371,19 @@ export const CalendarItem = React.forwardRef<
     // 设置当前选中日期
     const date = monthsData[current.current]
     switch (type) {
-      case 'range':
+      case 'range': {
         handleDayClick({ day: defaultData[2], type: 'active' }, date)
         handleDayClick(
           { day: defaultData[5], type: 'active' },
           monthsData[current.lastCurrent]
         )
         break
-      case 'week':
+      }
+      case 'week': {
         handleDayClick({ day: defaultData[2], type: 'curr' }, date)
         break
-      case 'multiple':
+      }
+      case 'multiple': {
         ;[...currentDate].forEach((item: string) => {
           const dateArr = splitDate(item)
           let currentIndex = current.current
@@ -395,9 +396,11 @@ export const CalendarItem = React.forwardRef<
           )
         })
         break
-      default:
+      }
+      default: {
         handleDayClick({ day: defaultData[2], type: 'active' }, date)
         break
+      }
     }
   }
 
@@ -587,7 +590,7 @@ export const CalendarItem = React.forwardRef<
     const newDate = days[3]
 
     switch (type) {
-      case 'multiple':
+      case 'multiple': {
         if (Array.isArray(currentDate)) {
           if (currentDate.length > 0) {
             const hasIndex = currentDate.findIndex((item) => item === newDate)
@@ -606,7 +609,8 @@ export const CalendarItem = React.forwardRef<
           }
         }
         break
-      case 'range':
+      }
+      case 'range': {
         if (Array.isArray(currentDate)) {
           if (currentDate.length === 2 || currentDate.length === 0) {
             currentDate.splice(0, currentDate.length, newDate)
@@ -620,8 +624,8 @@ export const CalendarItem = React.forwardRef<
           }
         }
         break
-      case 'week':
-        // eslint-disable-next-line no-case-declarations
+      }
+      case 'week': {
         const weekArr = getWeekDate(y, m, `${day.day}`, firstDayOfWeek)
         if (compareDate(weekArr[0], propStartDate)) {
           weekArr[0] = propStartDate
@@ -635,10 +639,12 @@ export const CalendarItem = React.forwardRef<
           formatResultDate(weekArr[1]),
         ]
         break
-      default:
+      }
+      default: {
         setCurrentDate(newDate)
         state.currDateArray = [...days]
         break
+      }
     }
     if (!isFirst) {
       onDayClick && onDayClick(state.currDateArray)
