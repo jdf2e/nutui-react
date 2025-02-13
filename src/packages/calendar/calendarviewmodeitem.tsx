@@ -63,13 +63,13 @@ export const CalendarViewModeItem = React.forwardRef<
     className,
     viewMode,
     title,
+    value,
     defaultValue,
     startDate,
     endDate,
     showTitle,
     scrollAnimation,
     renderDay,
-    value,
     onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
@@ -84,10 +84,9 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
-  const [monthsData, setMonthsData] = useState<any[]>([])
-  const [monthsNum, setMonthsNum] = useState<number>(0)
+  const [monthsData] = useState<any[]>([])
+  const [monthsNum] = useState<number>(0)
   const [translateY, setTranslateY] = useState(0)
-  const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
 
   // 初始化开始结束数据
   const propStartDate = (startDate || getDay(0)) as string
@@ -135,59 +134,8 @@ export const CalendarViewModeItem = React.forwardRef<
       start = 0
       end = monthNum + 2
     }
-    setMonthDefaultRange([start, end])
     setTranslateY(monthsData[start].scrollTop)
     setReachedYearMonthInfo(current)
-  }
-
-  const setDefaultDate = () => {
-    let defaultData: CalendarValue = []
-    if (!innerValue.length) {
-      return defaultData
-    }
-    if (compareDate(innerValue, propStartDate)) {
-      defaultData = [...splitDate(propStartDate)]
-    } else if (!compareDate(innerValue, propEndDate)) {
-      defaultData = [...splitDate(propEndDate)]
-    } else {
-      defaultData = [...splitDate(innerValue)]
-    }
-    return defaultData
-  }
-
-  const getCurrentIndex = (defaultData: CalendarValue) => {
-    // 设置默认可见区域
-    let current = 0
-    const lastCurrent = 0
-    if (defaultData.length > 0) {
-      monthsData.forEach((item, index) => {
-        if (item.title === monthTitle(defaultData[0], defaultData[1])) {
-          current = index
-        }
-      })
-    } else {
-      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
-      const date = new Date()
-      const year = date.getFullYear()
-      const month = date.getMonth() + 1
-      const index = monthsData.findIndex((item) => {
-        return +item.curData[0] === year && +item.curData[1] === month
-      })
-      if (index > -1) {
-        current = index
-      }
-    }
-    return {
-      current,
-      lastCurrent,
-    }
-  }
-
-  const renderCurrentDate = (defaultData: any, current: any) => {
-    if (!defaultData.length) return
-    const date = monthsData[current.current]
-    // 设置当前选中日期
-    // handleDayClick({ day: defaultData[2], type: 'active' }, date)
   }
 
   const getMonthsPanel = () => {
@@ -307,14 +255,6 @@ export const CalendarViewModeItem = React.forwardRef<
         break
     }
 
-    // 获取当前默认值
-    // const defaultData = [] // setDefaultDate()
-    // 获取当前默认值在的月份
-    // const current = getCurrentIndex([])
-    // const currentIndex = current.current
-    // 渲染第一个默认数据
-    // renderCurrentDate([], current)
-    // setDefaultRange(monthNum, currentIndex)
     // requestAniFrameFunc(currentIndex, monthNum)
   }
 

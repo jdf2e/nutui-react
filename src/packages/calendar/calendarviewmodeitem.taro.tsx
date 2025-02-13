@@ -1,236 +1,111 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import type { UIEvent } from 'react'
 import classNames from 'classnames'
-import { ScrollView } from '@tarojs/components'
-import Taro, { nextTick } from '@tarojs/taro'
-import { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   getDay,
-  getCurrMonthData,
-  getDaysStatus,
-  getPreMonthDates,
   compareDate,
-  getMonthDays,
-  getWeekDate,
-  formatResultDate,
-  isEqual,
-  getNumTwoBit,
-  getWhatDay,
+  getPreMonths,
+  getMonths,
+  getPreQuarters,
+  getNextQuarters,
+  getQuarters,
+  formatMonth,
+  formatQuarter,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
-import {
-  splitDate,
-  isMultiple,
-  isCurrDay,
-  getCurrDate,
-  isStart,
-  isEnd,
-  isStartAndEnd,
-} from './utils'
-import {
-  CalendarDay,
-  CalendarMonthInfo,
-  CalendarValue,
-  CalendarType,
-} from './types'
+import { splitDate } from './utils'
+import { CalendarDay, CalendarValue, CalendarType } from './types'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
 
-interface CalendarState {
-  currDateArray: any
-}
-
-export interface CalendarItemProps extends PopupProps {
+export interface CalendarViewModeItemProps {
   type: CalendarType
-  autoBackfill: boolean
-  popup: boolean
+  viewMode: 'week' | 'month' | 'quarter' | string
   title: string
-  value?: CalendarValue
-  defaultValue?: CalendarValue
+  value?: any
+  defaultValue?: any
   startDate: CalendarValue
   endDate: CalendarValue
-  showToday: boolean
-  startText: ReactNode
-  endText: ReactNode
-  confirmText: ReactNode
   showTitle: boolean
-  showSubTitle: boolean
   scrollAnimation: boolean
-  firstDayOfWeek: number
-  disableDate: (date: CalendarDay) => boolean
-  renderHeaderButtons: () => string | JSX.Element
-  renderBottomButton: () => string | JSX.Element
   renderDay: (date: CalendarDay) => string | JSX.Element
-  renderDayTop: (date: CalendarDay) => string | JSX.Element
-  renderDayBottom: (date: CalendarDay) => string | JSX.Element
-  onConfirm: (data: string) => void
-  onUpdate: () => void
-  onDayClick: (data: string) => void
+  onItemClick: (data: string) => void
   onPageChange: (data: any) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  autoBackfill: false,
-  popup: true,
+  viewMode: '',
   title: '',
   startDate: getDay(0),
   endDate: getDay(365),
   showToday: true,
-  startText: '',
-  endText: '',
-  confirmText: '',
   showTitle: true,
-  showSubTitle: true,
   scrollAnimation: true,
-  firstDayOfWeek: 0,
-  disableDate: (date: CalendarDay) => false,
-  renderHeaderButtons: undefined,
   renderDay: undefined,
-  renderDayTop: undefined,
-  renderDayBottom: undefined,
-  onConfirm: (data: string) => {},
-  onUpdate: () => {},
-  onDayClick: (data: string) => {},
+  onItemClick: () => {},
   onPageChange: (data: any) => {},
-} as unknown as CalendarItemProps
+} as unknown as CalendarViewModeItemProps
 
-export const CalendarItem = React.forwardRef<
+export const CalendarViewModeItem = React.forwardRef<
   CalendarRef,
-  Partial<CalendarItemProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<CalendarViewModeItemProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, ''>
 >((props, ref) => {
   const { locale } = useConfig()
   const {
     style,
     className,
-    children,
-    popup,
-    type,
-    autoBackfill,
+    viewMode,
     title,
     value,
     defaultValue,
     startDate,
     endDate,
-    showToday,
-    startText,
-    endText,
-    confirmText,
     showTitle,
-    showSubTitle,
     scrollAnimation,
-    firstDayOfWeek,
-    disableDate,
-    renderHeaderButtons,
     renderDay,
-    renderDayTop,
-    renderDayBottom,
-    renderBottomButton,
-    onConfirm,
-    onUpdate,
-    onDayClick,
+    onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
-  const classPrefix = 'nut-calendar'
-  const dayPrefix = 'nut-calendar-day'
+  const classPrefix = 'nut-calendar-viewmode'
 
-  const weekdays = locale.calendaritem.weekdays
-  const weeks = [
-    ...weekdays.slice(firstDayOfWeek, 7),
-    ...weekdays.slice(0, firstDayOfWeek),
-  ]
+  // 为了便于区分，用'YYYY-MM'表示月，用'YYYY-QX'表示Q
+  const [panelDate, setPanelDate] = useState({
+    months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
+    quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
+  })
+
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
-  const [monthsData, setMonthsData] = useState<any[]>([])
-  const [monthsNum, setMonthsNum] = useState<number>(0)
+  const [monthsData] = useState<any[]>([])
+  const [monthsNum] = useState<number>(0)
   const [translateY, setTranslateY] = useState(0)
-  const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
-  const [scrollTop, setScrollTop] = useState(0)
-  const [scrollWithAnimation, setScrollWithAnimation] = useState<boolean>(false)
 
   // 初始化开始结束数据
   const propStartDate = (startDate || getDay(0)) as string
   const propEndDate = (endDate || getDay(365)) as string
-
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
-  const [state] = useState<CalendarState>({
-    currDateArray: [],
-  })
 
-  const resetDefaultValue = () => {
-    if (
-      defaultValue ||
-      (Array.isArray(defaultValue) && defaultValue.length > 0)
-    ) {
-      return type !== 'single'
-        ? ([...(defaultValue as string[])] as string[])
-        : (defaultValue as string[])
-    }
-    return undefined
-  }
-
-  const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
+  const [innerValue, setInnerValue] = usePropsValue({
     value,
-    defaultValue: resetDefaultValue(),
+    defaultValue,
     finalValue: [],
     onChange: (val) => {},
   })
 
-  const weeksPanel = useRef<HTMLDivElement>(null)
   const monthsRef = useRef<HTMLDivElement>(null)
   const monthsPanel = useRef<HTMLDivElement>(null)
   const viewAreaRef = useRef<HTMLDivElement>(null)
   const [avgHeight, setAvgHeight] = useState(0)
   let viewHeight = 0
-
-  // 获取月数据
-  const getMonthData = (curData: string[], monthNum: number) => {
-    let i = 0
-    let date = curData
-    const monthData = monthsData
-    do {
-      const y = parseInt(date[0], 10)
-      const m = parseInt(date[1], 10)
-      const days = [
-        ...getPreMonthDates('prev', y, m, firstDayOfWeek),
-        ...getDaysStatus('active', y, m),
-      ] as CalendarDay[]
-      let scrollTop = 0
-      if (monthData.length > 0) {
-        const monthEle = monthData[monthData.length - 1]
-        scrollTop = monthEle.scrollTop + monthEle.cssHeight
-      }
-      const cssHeight = 39 + (days.length > 35 ? 384 : 320)
-      const monthInfo = {
-        curData: date,
-        title: monthTitle(y, m),
-        monthData: days,
-        cssHeight,
-        scrollTop,
-      }
-      if (
-        !endDates ||
-        !compareDate(
-          `${endDates[0]}/${endDates[1]}/${getMonthDays(
-            endDates[0],
-            endDates[1]
-          )}`,
-          `${curData[0]}/${curData[1]}/${curData[2]}`
-        )
-      ) {
-        monthData.push(monthInfo)
-      }
-      date = getCurrMonthData('next', y, m) as string[]
-    } while (i++ < monthNum)
-    setMonthsData(monthData)
-  }
 
   const setReachedYearMonthInfo = (current: number) => {
     const currentMonthsData = monthsData[current]
@@ -259,146 +134,8 @@ export const CalendarItem = React.forwardRef<
       start = 0
       end = monthNum + 2
     }
-    setMonthDefaultRange([start, end])
     setTranslateY(monthsData[start].scrollTop)
     setReachedYearMonthInfo(current)
-  }
-
-  const setDefaultDate = () => {
-    let defaultData: CalendarValue = []
-    if (type === 'single' && typeof currentDate === 'string') {
-      if (!currentDate.length) {
-        return defaultData
-      }
-      if (compareDate(currentDate, propStartDate)) {
-        defaultData = [...splitDate(propStartDate)]
-      } else if (!compareDate(currentDate, propEndDate)) {
-        defaultData = [...splitDate(propEndDate)]
-      } else {
-        defaultData = [...splitDate(currentDate)]
-      }
-      return defaultData
-    }
-    if (Array.isArray(currentDate) && currentDate.length) {
-      switch (type) {
-        case 'range':
-          if (compareDate(currentDate[0], propStartDate)) {
-            currentDate[0] = propStartDate
-          }
-          if (compareDate(propEndDate, currentDate[1])) {
-            currentDate[1] = propEndDate
-          }
-          defaultData = [
-            ...splitDate(currentDate[0]),
-            ...splitDate(currentDate[1]),
-          ]
-          break
-        case 'multiple':
-          // eslint-disable-next-line no-case-declarations
-          const defaultArr = [] as string[]
-          // eslint-disable-next-line no-case-declarations
-          const obj: Record<string, unknown> = {}
-          currentDate.forEach((item: string) => {
-            if (
-              !compareDate(item, propStartDate) &&
-              !compareDate(propEndDate, item)
-            ) {
-              if (!Object.hasOwnProperty.call(obj, item)) {
-                defaultArr.push(item)
-                obj[item] = item
-              }
-            }
-          })
-          currentDate.splice(0, currentDate.length, ...defaultArr)
-          defaultData = [...splitDate(defaultArr[0])]
-          break
-        case 'week':
-          // eslint-disable-next-line no-case-declarations
-          const [y, m, d] = splitDate(currentDate[0])
-          // eslint-disable-next-line no-case-declarations
-          const weekArr = getWeekDate(y, m, d, firstDayOfWeek)
-          currentDate.splice(0, currentDate.length, ...weekArr)
-          if (compareDate(currentDate[0], propStartDate)) {
-            currentDate.splice(0, 1, propStartDate)
-          }
-          if (compareDate(propEndDate, currentDate[1])) {
-            currentDate.splice(1, 1, propEndDate)
-          }
-          defaultData = [
-            ...splitDate(currentDate[0]),
-            ...splitDate(currentDate[1]),
-          ]
-          break
-        default:
-          break
-      }
-    }
-    return defaultData
-  }
-
-  const getCurrentIndex = (defaultData: CalendarValue) => {
-    // 设置默认可见区域
-    let current = 0
-    let lastCurrent = 0
-    if (defaultData.length > 0) {
-      monthsData.forEach((item, index) => {
-        if (item.title === monthTitle(defaultData[0], defaultData[1])) {
-          current = index
-        }
-        if (type === 'range' || type === 'week') {
-          if (item.title === monthTitle(defaultData[3], defaultData[4])) {
-            lastCurrent = index
-          }
-        }
-      })
-    } else {
-      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
-      const date = new Date()
-      const year = date.getFullYear()
-      const month = date.getMonth() + 1
-      const index = monthsData.findIndex(
-        (item) => +item.curData[0] === year && +item.curData[1] === month
-      )
-      if (index > -1) current = index
-    }
-    return {
-      current,
-      lastCurrent,
-    }
-  }
-
-  const renderCurrentDate = (defaultData: any, current: any) => {
-    if (!defaultData.length) return
-    // 设置当前选中日期
-    const date = monthsData[current.current]
-    switch (type) {
-      case 'range':
-        handleDayClick({ day: defaultData[2], type: 'active' }, date)
-        handleDayClick(
-          { day: defaultData[5], type: 'active' },
-          monthsData[current.lastCurrent]
-        )
-        break
-      case 'week':
-        handleDayClick({ day: defaultData[2], type: 'curr' }, date)
-        break
-      case 'multiple':
-        ;[...currentDate].forEach((item: string) => {
-          const dateArr = splitDate(item)
-          let currentIndex = current.current
-          currentIndex = monthsData.findIndex(
-            (item) => item.title === monthTitle(dateArr[0], dateArr[1])
-          )
-          handleDayClick(
-            { day: dateArr[2], type: 'active' },
-            monthsData[currentIndex]
-          )
-        })
-        break
-      default:
-        handleDayClick({ day: defaultData[2], type: 'active' }, date)
-        break
-    }
   }
 
   const getMonthsPanel = () => {
@@ -412,61 +149,118 @@ export const CalendarItem = React.forwardRef<
   const requestAniFrameFunc = (current: number, monthNum: number) => {
     const lastItem = monthsData[monthsData.length - 1]
     const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
         viewHeight = getMonthsRef().clientHeight
         getMonthsPanel().style.height = `${containerHeight}px`
-        const currTop = monthsData[current].scrollTop
-        getMonthsRef().scrollTop = currTop
-        setScrollTop(currTop)
-        nextTick(() => setScrollWithAnimation(true))
+        getMonthsRef().scrollTop = monthsData[current].scrollTop
       }
     })
     setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
   }
 
-  const getMonthNum = () => {
-    let monthNum = Number(endDates[1]) - Number(startDates[1])
-    const yearNum = Number(endDates[0]) - Number(startDates[0])
-    if (yearNum > 0) monthNum += 12 * yearNum
-    if (monthNum <= 0) monthNum = 1
-    setMonthsNum(monthNum)
-    return monthNum
+  const getMonthsData = () => {
+    // 获取区间范围内可用的月数，包括边界值所在的月份
+    const startYear = Number(startDates[0])
+    const startMonth = Number(startDates[1])
+    const endYear = Number(endDates[0])
+    const endMonth = Number(endDates[1])
+    let panelData = []
+    // 在同一年时
+    if (startYear === endYear) {
+      const months = [
+        ...getPreMonths('prev', startYear, startMonth),
+        ...getMonths('curr', startYear, startMonth, endMonth),
+        ...getMonths('next', endYear, endMonth + 1),
+      ]
+      panelData.push({ year: startYear, months })
+    } else {
+      const startYearMonth = [
+        ...getPreMonths('prev', startYear, startMonth),
+        ...getMonths('curr', startYear, startMonth),
+      ]
+      panelData.push({ year: startYear, months: startYearMonth })
+      // 不同年份时，注意可能跨多个年
+      for (let i = startYear + 1; i < endYear; i++) {
+        const midMonths = [...getMonths('curr', i, 1)]
+        panelData = [...panelData, { year: i, months: midMonths }]
+      }
+      const lastMonths = [
+        ...getPreMonths('curr', endYear, endMonth + 1),
+        ...getMonths('next', endYear, endMonth + 1),
+      ]
+      panelData = [...panelData, { year: endYear, months: lastMonths }]
+    }
+    return panelData
   }
 
+  const getQuartersData = () => {
+    // 获取区间范围内可用的季度数，包括边界值所在的季度数
+    const startYear = Number(startDates[0])
+    const startMonth = Number(startDates[1])
+    const endYear = Number(endDates[0])
+    const endMonth = Number(endDates[1])
+    let panelData = []
+    // 在同一年时
+    if (startYear === endYear) {
+      const months = [
+        ...getPreQuarters('prev', startYear, startMonth),
+        ...getQuarters('curr', startYear, startMonth, endMonth),
+        ...getNextQuarters('next', endYear, endMonth),
+      ]
+      panelData.push({ year: startYear, quarters: months })
+    } else {
+      const startYearMonth = [
+        ...getPreQuarters('prev', startYear, startMonth),
+        ...getQuarters('curr', startYear, startMonth),
+      ]
+      panelData.push({ year: startYear, quarters: startYearMonth })
+      // 不同年份时，注意可能跨多个年
+      for (let i = startYear + 1; i < endYear; i++) {
+        const midMonths = [...getQuarters('curr', i, 1)]
+        panelData = [...panelData, { year: i, quarters: midMonths }]
+      }
+      const lastMonths = [
+        ...getQuarters('curr', endYear, 1, endMonth),
+        ...getNextQuarters('next', endYear, endMonth),
+      ]
+      panelData = [...panelData, { year: endYear, quarters: lastMonths }]
+    }
+    return panelData
+  }
+
+  /*
+   * 初始化面板数据
+   * 获取总数据panelDate
+   * 根据当前默认值跳转到指定位置
+   */
   const initData = () => {
-    // 判断时间范围内存在多少个月
-    const monthNum = getMonthNum()
-    // 设置月份数据，获取包含月份的所有数据，只需要 set 一次即可。
-    getMonthData(startDates, monthNum)
-    // 获取当前默认值
-    const defaultData = setDefaultDate()
-    // 获取当前默认值在的月份
-    const current = getCurrentIndex(defaultData)
-    const currentIndex = current.current
-    // 渲染第一个默认数据
-    renderCurrentDate(defaultData, current)
-    setDefaultRange(monthNum, currentIndex)
-    requestAniFrameFunc(currentIndex, monthNum)
+    // 获取起止时间内的所有的周、月、季
+    switch (viewMode) {
+      case 'month':
+        // eslint-disable-next-line no-case-declarations
+        const months = getMonthsData()
+        console.log('monthts', months, panelDate)
+        setPanelDate({ ...panelDate, months: months as any })
+        break
+      case 'quarter':
+        // eslint-disable-next-line no-case-declarations
+        const quarters = getQuartersData()
+        console.log('quarters', quarters, panelDate)
+        setPanelDate({ ...panelDate, quarters: quarters as any })
+        break
+      default:
+        break
+    }
+
+    // requestAniFrameFunc(currentIndex, monthNum)
   }
 
   useEffect(() => {
     initData()
   }, [])
-
-  const resetRender = () => {
-    state.currDateArray.splice(0)
-    monthsData.splice(0)
-    initData()
-  }
-  useEffect(() => {
-    setCurrentDate(resetDefaultValue() || [])
-  }, [defaultValue])
-
-  useEffect(() => {
-    popup && resetRender()
-  }, [currentDate])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
@@ -493,23 +287,22 @@ export const CalendarItem = React.forwardRef<
                 clearInterval(interval)
                 if (monthsRef.current) {
                   monthsRef.current.scrollTop = currTop
-                  setScrollTop(currTop)
                 }
               }
             }, 40)
           } else {
             monthsRef.current.scrollTop = currTop
-            setScrollTop(currTop)
           }
         }
       }
     })
   }
 
-  const monthsViewScroll = (e: any) => {
-    if (monthsData.length <= 1) return
+  const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
+    if (monthsData.length <= 1) {
+      return
+    }
     const scrollTop = (e.target as HTMLElement).scrollTop
-    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
     let current = Math.floor(scrollTop / avgHeight)
     if (current < 0) return
     if (!monthsData[current + 1]) return
@@ -536,263 +329,125 @@ export const CalendarItem = React.forwardRef<
     scrollToDate,
   }))
 
-  const isDisable = (day: CalendarDay, month: CalendarMonthInfo) => {
-    if (day.type !== 'active') return true
-    const dateStr = getCurrDate(day, month)
-    if (compareDate(dateStr, propStartDate)) return true
-    if (compareDate(propEndDate, dateStr)) return true
+  const change = (v: []) => {
+    setInnerValue(v)
+    // onChange?.(date)
+  }
+
+  const handleItemClick = (viewMode: string, item: any) => {
+    // 点击事件，可以返回所点击元素的数据
+    // 如果非可点击，则直接返回，不做处理
+    if (item.type !== 'curr') return
+    // 可点击时，需要关注当前元素是否已被选中，选中，取消选中，拿到数据
+    const val =
+      viewMode === 'month'
+        ? formatMonth(item.year, item.month)
+        : formatQuarter(item.year, item.quarter)
+    setInnerValue(val)
+    onItemClick && onItemClick(val)
+  }
+
+  const isDisable = (item: any) => {
+    return item.type === 'prev' || item.type === 'next'
+  }
+
+  const isActive = (item: any) => {
+    const val =
+      viewMode === 'month'
+        ? formatMonth(item.year, item.month)
+        : formatQuarter(item.year, item.quarter)
+    if (val === innerValue) {
+      return true
+    }
     return false
   }
 
-  const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
-    const dateStr = getCurrDate(day, month)
-    if (isDisable(day, month)) return `${dayPrefix}-disabled`
-    const activeCls = `${dayPrefix}-active`
-    if (type === 'range' || type === 'week') {
-      if (isStart(dateStr, currentDate as string[]))
-        return `${activeCls} active-start`
-      if (isEnd(dateStr, currentDate as string[])) {
-        return `${activeCls} active-end`
-      }
-      if (
-        currentDate.length === 2 &&
-        compareDate(currentDate[0], dateStr) &&
-        compareDate(dateStr, currentDate[1])
-      ) {
-        return disableDate(day)
-          ? `${dayPrefix}-choose-disabled`
-          : `${dayPrefix}-choose`
-      }
-    } else if (
-      (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
-      (!Array.isArray(currentDate) && isEqual(currentDate, dateStr))
-    ) {
-      return activeCls
+  const getClasses = (item: any) => {
+    if (isDisable(item)) {
+      return ['disabled']
     }
-    if (disableDate(day)) return `${dayPrefix}-disabled`
-    return null
-  }
-
-  const handleDayClick = (
-    day: CalendarDay,
-    month: CalendarMonthInfo,
-    isFirst: boolean = true
-  ) => {
-    if (isDisable(day, month) || disableDate(day)) return
-    const days = [...month.curData]
-    const [y, m] = month.curData
-    days[2] = typeof day.day === 'number' ? getNumTwoBit(day.day) : day.day
-    days[3] = `${days[0]}/${days[1]}/${days[2]}`
-    days[4] = getWhatDay(+days[0], +days[1], +days[2])
-    const newDate = days[3]
-
-    switch (type) {
-      case 'multiple':
-        if (Array.isArray(currentDate)) {
-          if (currentDate.length > 0) {
-            const hasIndex = currentDate.findIndex((item) => item === newDate)
-            if (isFirst) {
-              state.currDateArray.push([...days])
-            } else if (hasIndex > -1) {
-              currentDate.splice(hasIndex, 1)
-              state.currDateArray.splice(hasIndex, 1)
-            } else {
-              currentDate.push(newDate)
-              state.currDateArray.push([...days])
-            }
-          } else {
-            currentDate.push(newDate)
-            state.currDateArray = [[...days]]
-          }
-        }
-        break
-      case 'range':
-        if (Array.isArray(currentDate)) {
-          if (currentDate.length === 2 || currentDate.length === 0) {
-            currentDate.splice(0, currentDate.length, newDate)
-            state.currDateArray = [[...days]]
-          } else if (compareDate(currentDate[0], newDate)) {
-            currentDate.push(newDate)
-            state.currDateArray = [...state.currDateArray, [...days]]
-          } else {
-            currentDate.unshift(newDate)
-            state.currDateArray = [[...days], ...state.currDateArray]
-          }
-        }
-        break
-      case 'week':
-        // eslint-disable-next-line no-case-declarations
-        const weekArr = getWeekDate(y, m, `${day.day}`, firstDayOfWeek)
-        if (compareDate(weekArr[0], propStartDate)) {
-          weekArr[0] = propStartDate
-        }
-        if (compareDate(propEndDate, weekArr[1])) {
-          weekArr[1] = propEndDate
-        }
-        ;(currentDate as string[]).splice(0, currentDate.length, ...weekArr)
-        state.currDateArray = [
-          formatResultDate(weekArr[0]),
-          formatResultDate(weekArr[1]),
-        ]
-        break
-      default:
-        setCurrentDate(newDate)
-        state.currDateArray = [...days]
-        break
-    }
-    if (!isFirst) {
-      onDayClick && onDayClick(state.currDateArray)
-      if (autoBackfill || !popup) {
-        confirm()
+    const res = []
+    if (item.type === 'curr') {
+      if (isActive(item)) {
+        res.push('active')
       }
     }
-    setMonthsData(monthsData.slice())
+    return res
   }
 
-  const confirm = () => {
-    if (
-      (type === 'range' && state.currDateArray.length === 2) ||
-      type !== 'range'
-    ) {
-      const chooseData = state.currDateArray.slice(0)
-      onConfirm && onConfirm(chooseData)
-      if (popup) {
-        onUpdate && onUpdate()
-      }
-    }
-  }
-
-  const classes = classNames(
-    classPrefix,
-    {
-      [`${classPrefix}-title`]: !popup,
-      [`${classPrefix}-nofooter`]: !!autoBackfill,
-    },
-    className
-  )
-
-  const headerClasses = classNames({
-    [`${classPrefix}-header`]: true,
-    [`${classPrefix}-header-title`]: !popup,
-  })
-
-  // 是否有开始提示
-  const isStartTip = (day: CalendarDay, month: CalendarMonthInfo) => {
-    return (
-      (type === 'range' || type === 'week') &&
-      day.type === 'active' &&
-      isStart(getCurrDate(day, month), currentDate as string[])
-    )
-  }
-
-  // 是否有结束提示
-  const isEndTip = (day: CalendarDay, month: CalendarMonthInfo) => {
-    return (
-      currentDate.length >= 2 &&
-      (type === 'range' || type === 'week') &&
-      day.type === 'active' &&
-      isEnd(getCurrDate(day, month), currentDate as string[])
-    )
-  }
+  const classes = classNames(classPrefix, className)
 
   const renderHeader = () => {
     return (
-      <div className={headerClasses}>
-        {showTitle && (
-          <div className={`${classPrefix}-title`}>
-            {title || locale.calendaritem.title}
-          </div>
-        )}
-        {renderHeaderButtons && (
-          <div className={`${classPrefix}-header-buttons`}>
-            {renderHeaderButtons()}
-          </div>
-        )}
-        {showSubTitle && (
-          <div className={`${classPrefix}-sub-title`}>{yearMonthTitle}</div>
-        )}
-        <div className={`${classPrefix}-weeks`} ref={weeksPanel}>
-          {weeks.map((item: string) => (
-            <div className={`${classPrefix}-week-item`} key={item}>
-              {item}
-            </div>
-          ))}
-        </div>
+      <div
+        className={classNames({
+          [`${classPrefix}-header`]: true,
+        })}
+      >
+        {showTitle && <div className={`${classPrefix}-title`}>{title}</div>}
       </div>
     )
   }
 
-  const renderItem = (month: any, day: any, index: number) => {
-    const startTip = isStartTip(day, month)
-    const endTip = isEndTip(day, month)
-    const noStartNorEnd = !startTip && !endTip
+  const renderItem = (item: any, index: number) => {
+    const text = { week: '周', month: '月', quarter: '季度' }
     return (
       <div
-        className={classNames('nut-calendar-day', getClasses(day, month))}
-        onClick={() => handleDayClick(day, month, false)}
+        className={classNames(
+          `${classPrefix}-item`,
+          item.type,
+          getClasses(item)
+        )}
+        onClick={() => handleItemClick(viewMode, item)}
         key={index}
       >
-        <div className={`${classPrefix}-day-day`}>
-          {renderDay ? renderDay(day) : day.day}
+        <div className={`${classPrefix}-item-${item.type}`}>
+          {renderDay ? renderDay(item) : `${item[viewMode]}${text[viewMode]}`}
         </div>
-        {!startTip && renderDayTop && (
-          <div className={`${classPrefix}-day-info-top`}>
-            {renderDayTop(day)}
-          </div>
-        )}
-        {noStartNorEnd && renderDayBottom && (
-          <div className={`${classPrefix}-day-info-bottom`}>
-            {renderDayBottom(day)}
-          </div>
-        )}
-        {noStartNorEnd &&
-          isCurrDay(month, day.day) &&
-          !renderDayBottom &&
-          showToday && (
-            <div className={`${classPrefix}-day-info-curr`}>
-              {locale.calendaritem.today}
-            </div>
-          )}
-        {startTip && (
-          <div
-            className={classNames('nut-calendar-day-info', {
-              'nut-calendar-day-info-top': isStartAndEnd(
-                currentDate as string[]
-              ),
-            })}
-          >
-            {startText || locale.calendaritem.start}
-          </div>
-        )}
-        {endTip && (
-          <div className={`${classPrefix}-day-info`}>
-            {endText || locale.calendaritem.end}
-          </div>
-        )}
       </div>
     )
   }
 
-  const renderPanel = (month: any, key: number) => {
-    return (
-      <div className={`${classPrefix}-month`} key={key}>
-        <div className={`${classPrefix}-month-title`}>{month.title}</div>
-        <div className={`${classPrefix}-days`}>
-          {month.monthData.map((day: CalendarDay, i: number) =>
-            renderItem(month, day, i)
-          )}
-        </div>
-      </div>
-    )
+  const renderPanel = () => {
+    switch (viewMode) {
+      case 'month':
+        return (
+          <>
+            {panelDate.months.map((item: any, key: number) => (
+              <div className={`${classPrefix}-panel`} key={key}>
+                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+                <div className={`${classPrefix}-content`}>
+                  {item.months.map((month: any, i: number) =>
+                    renderItem(month, i)
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
+        )
+      case 'quarter':
+        return (
+          <>
+            {panelDate.quarters.map((item: any, key: number) => (
+              <div className={`${classPrefix}-panel`} key={key}>
+                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+                <div className={`${classPrefix}-content`}>
+                  {item.quarters.map((quarter: any, i: number) =>
+                    renderItem(quarter, i)
+                  )}
+                </div>
+              </div>
+            ))}
+          </>
+        )
+      default:
+        break
+    }
   }
 
   const renderContent = () => {
     return (
-      <ScrollView
-        scrollTop={scrollTop}
-        scrollY
-        type="list"
-        scrollWithAnimation={scrollWithAnimation}
+      <div
         className={`${classPrefix}-content`}
         onScroll={monthsViewScroll}
         ref={monthsRef}
@@ -803,29 +458,8 @@ export const CalendarItem = React.forwardRef<
             ref={viewAreaRef}
             style={{ transform: `translateY(${translateY}px)` }}
           >
-            {monthsData
-              .slice(monthDefaultRange[0], monthDefaultRange[1])
-              .map((month: any, key: number) => {
-                return renderPanel(month, key)
-              })}
+            {renderPanel()}
           </div>
-        </div>
-      </ScrollView>
-    )
-  }
-
-  const renderFooter = () => {
-    return (
-      <div className="nut-calendar-footer">
-        {children}
-        <div onClick={confirm}>
-          {renderBottomButton ? (
-            renderBottomButton()
-          ) : (
-            <div className="calendar-confirm-btn">
-              {confirmText || locale.confirm}
-            </div>
-          )}
         </div>
       </div>
     )
@@ -835,9 +469,9 @@ export const CalendarItem = React.forwardRef<
     <div className={classes} style={style}>
       {renderHeader()}
       {renderContent()}
-      {popup && !autoBackfill ? renderFooter() : ''}
     </div>
   )
 })
 
-CalendarItem.displayName = 'NutCalendarItem'
+CalendarViewModeItem.displayName = 'NutCalendarViewModeItem'
+export default CalendarViewModeItem

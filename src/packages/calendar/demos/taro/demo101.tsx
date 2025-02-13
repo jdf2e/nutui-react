@@ -3,11 +3,11 @@ import { Calendar } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const d = new Date()
-  const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-  const [date, setDate] = useState(currDay)
+  const [date, setDate] = useState('2026-Q2')
 
   const select = (param: string) => {
-    console.log(param)
+    console.log('select quarter', param)
+    setDate(param)
   }
 
   return (
@@ -23,6 +23,7 @@ const Demo1 = () => {
       <Calendar
         viewMode="quarter"
         showTitle={false}
+        value={date}
         defaultValue={date}
         startDate="2023-09-12"
         endDate="2028-09-19"

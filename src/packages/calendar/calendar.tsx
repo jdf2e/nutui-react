@@ -14,6 +14,7 @@ export interface CalendarProps {
   popup?: boolean
   visible?: boolean
   title?: string
+  value?: string
   defaultValue?: string | string[]
   startDate?: string
   endDate?: string
@@ -48,6 +49,7 @@ const defaultProps = {
   popup: true,
   visible: false,
   title: '',
+  value: '',
   defaultValue: '',
   startDate: getDay(0),
   endDate: getDay(365),
@@ -87,6 +89,7 @@ export const Calendar = React.forwardRef<
     viewMode,
     autoBackfill,
     title,
+    value,
     defaultValue,
     startDate,
     endDate,
@@ -151,6 +154,7 @@ export const Calendar = React.forwardRef<
             type={type}
             viewMode={viewMode}
             title={title || locale.calendaritem.title}
+            value={value}
             defaultValue={defaultValue}
             startDate={startDate}
             endDate={endDate}

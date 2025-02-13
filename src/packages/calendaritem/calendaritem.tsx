@@ -113,6 +113,7 @@ export const CalendarItem = React.forwardRef<
     type,
     autoBackfill,
     title,
+    value,
     defaultValue,
     startDate,
     endDate,
@@ -131,7 +132,6 @@ export const CalendarItem = React.forwardRef<
     renderDay,
     renderDayTop,
     renderDayBottom,
-    value,
     onConfirm,
     onUpdate,
     onDayClick,
@@ -202,12 +202,12 @@ export const CalendarItem = React.forwardRef<
         ...getPreMonthDates('prev', y, m, firstDayOfWeek),
         ...getDaysStatus('active', y, m),
       ] as CalendarDay[]
-      const cssHeight = 39 + (days.length > 35 ? 384 : 320)
       let scrollTop = 0
       if (monthData.length > 0) {
         const monthEle = monthData[monthData.length - 1]
         scrollTop = monthEle.scrollTop + monthEle.cssHeight
       }
+      const cssHeight = 39 + (days.length > 35 ? 384 : 320)
       const monthInfo: CalendarMonthInfo = {
         curData: date,
         title: monthTitle(y, m),
@@ -720,7 +720,7 @@ export const CalendarItem = React.forwardRef<
     const noStartNorEnd = !startTip && !endTip
     return (
       <div
-        className={[`${classPrefix}-day`, getClasses(day, month)].join(' ')}
+        className={classNames('nut-calendar-day', getClasses(day, month))}
         onClick={() => handleDayClick(day, month, false)}
         key={index}
       >
@@ -747,11 +747,11 @@ export const CalendarItem = React.forwardRef<
           )}
         {startTip && (
           <div
-            className={`${classPrefix}-day-info ${
-              isStartAndEnd(currentDate as string[])
-                ? `${classPrefix}-day-info-top`
-                : ''
-            }`}
+            className={classNames('nut-calendar-day-info', {
+              'nut-calendar-day-info-top': isStartAndEnd(
+                currentDate as string[]
+              ),
+            })}
           >
             {startText || locale.calendaritem.start}
           </div>

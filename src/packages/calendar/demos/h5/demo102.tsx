@@ -6,7 +6,7 @@ const Demo2 = () => {
 
   const select = (param: string) => {
     console.log('select', param)
-    // setDate(param.item)
+    setDate(param)
   }
 
   return (
@@ -22,6 +22,7 @@ const Demo2 = () => {
       <Calendar
         viewMode="month"
         showTitle={false}
+        value={date}
         defaultValue={date}
         startDate="2023-09-12"
         endDate="2027-10-19"

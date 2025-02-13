@@ -1,6 +1,7 @@
 import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
+import CalendarViewModeItem from './calendarviewmodeitem.taro'
 import { getDay } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import type { CalendarDay, CalendarType, CalendarRef } from './types'
@@ -8,10 +9,12 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
+  viewMode: 'week' | 'month' | 'quarter' | string
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
   title?: string
+  value?: string
   defaultValue?: string | string[]
   startDate?: string
   endDate?: string
@@ -21,6 +24,7 @@ export interface CalendarProps {
   confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
+  showMonthNumber: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
   closeIcon?: ReactNode
@@ -33,16 +37,19 @@ export interface CalendarProps {
   onClose?: () => void
   onConfirm?: (param: string) => void
   onDayClick?: (data: string) => void
+  onItemClick: (param: string) => void
   onPageChange?: (param: string) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
+  viewMode: '',
   autoBackfill: false,
   popup: true,
   visible: false,
   title: '',
+  value: '',
   defaultValue: '',
   startDate: getDay(0),
   endDate: getDay(365),
@@ -52,6 +59,7 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
+  showMonthNumber: false,
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
@@ -62,6 +70,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: (param: string) => {},
   onDayClick: (data: string) => {},
+  onItemClick: () => {},
   onPageChange: (param: string) => {},
 } as CalendarProps
 
@@ -77,8 +86,10 @@ export const Calendar = React.forwardRef<
     popup,
     visible,
     type,
+    viewMode,
     autoBackfill,
     title,
+    value,
     defaultValue,
     startDate,
     endDate,
@@ -88,6 +99,7 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
+    showMonthNumber,
     scrollAnimation,
     firstDayOfWeek,
     closeIcon,
@@ -100,6 +112,7 @@ export const Calendar = React.forwardRef<
     onClose,
     onConfirm,
     onDayClick,
+    onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -117,10 +130,6 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string) => {
-    onDayClick && onDayClick(param)
-  }
-
   const scrollToDate = (date: string) => {
     calendarRef.current?.scrollToDate(date)
   }
@@ -135,53 +144,77 @@ export const Calendar = React.forwardRef<
 
   const renderItem = () => {
     return (
-      <CalendarItem
-        ref={calendarRef}
-        style={style}
-        className={className}
-        children={children}
-        type={type}
-        autoBackfill={autoBackfill}
-        popup={popup}
-        title={title || locale.calendaritem.title}
-        defaultValue={defaultValue}
-        startDate={startDate}
-        endDate={endDate}
-        showToday={showToday}
-        startText={startText || locale.calendaritem.start}
-        endText={endText || locale.calendaritem.end}
-        confirmText={confirmText || locale.calendaritem.confirm}
-        showTitle={showTitle}
-        showSubTitle={showSubTitle}
-        scrollAnimation={scrollAnimation}
-        firstDayOfWeek={firstDayOfWeek}
-        disableDate={disableDate}
-        renderHeaderButtons={renderHeaderButtons}
-        renderBottomButton={renderBottomButton}
-        renderDay={renderDay}
-        renderDayTop={renderDayTop}
-        renderDayBottom={renderDayBottom}
-        onConfirm={choose}
-        onDayClick={select}
-        onPageChange={yearMonthChange}
-      />
+      <>
+        {viewMode ? (
+          <CalendarViewModeItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            children={children}
+            type={type}
+            viewMode={viewMode}
+            title={title || locale.calendaritem.title}
+            value={value}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showTitle={showTitle}
+            scrollAnimation={scrollAnimation}
+            renderDay={renderDay}
+            onItemClick={onItemClick}
+            onPageChange={yearMonthChange}
+          />
+        ) : (
+          <CalendarItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            children={children}
+            type={type}
+            autoBackfill={autoBackfill}
+            popup={popup}
+            title={title || locale.calendaritem.title}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showToday={showToday}
+            startText={startText || locale.calendaritem.start}
+            endText={endText || locale.calendaritem.end}
+            confirmText={confirmText || locale.calendaritem.confirm}
+            showTitle={showTitle}
+            showSubTitle={showSubTitle}
+            showMonthNumber={showMonthNumber}
+            scrollAnimation={scrollAnimation}
+            firstDayOfWeek={firstDayOfWeek}
+            disableDate={disableDate}
+            renderHeaderButtons={renderHeaderButtons}
+            renderBottomButton={renderBottomButton}
+            renderDay={renderDay}
+            renderDayTop={renderDayTop}
+            renderDayBottom={renderDayBottom}
+            onConfirm={choose}
+            onDayClick={onDayClick}
+            onPageChange={yearMonthChange}
+          />
+        )}
+      </>
     )
   }
 
   return (
     <>
-      {popup ? (
+      {popup && !viewMode ? (
         <Popup
           className="nut-calendar-popup"
           visible={visible}
           position="bottom"
           round
           closeable
+          closeIcon={closeIcon}
           destroyOnClose
           onOverlayClick={closePopup}
           onCloseIconClick={closePopup}
           style={{ height: '83%' }}
-          closeIcon={closeIcon}
         >
           {renderItem()}
         </Popup>
