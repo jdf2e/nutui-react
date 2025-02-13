@@ -67,7 +67,7 @@ jobs:
         if: env.ABORT != 'true'
         run: |
           cd ./release/h5 || exit 1
-          if ! npm publish --dry-run --tag ${{ env.RELEASE_TAG }}; then
+          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
             echo "发布 @nutui/nutui-react 失败"
             exit 1
           fi
@@ -76,7 +76,7 @@ jobs:
         if: env.ABORT != 'true'
         run: |
           cd ./release/taro || exit 1
-          if ! npm publish --dry-run --tag ${{ env.RELEASE_TAG }}; then
+          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
             echo "发布 @nutui/nutui-react-taro 失败"
             exit 1
           fi
