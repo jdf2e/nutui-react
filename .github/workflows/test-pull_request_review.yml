@@ -25,7 +25,7 @@ jobs:
           REPO=${{ github.repository }}
 
           curl -X POST \
-               -H "Authorization: token ${{ secrets.FOR_PULL_REVIEW }}" \
+               -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                -H "Accept: application/vnd.github.v3+json" \
                -d "{\"labels\": [\"$LABEL_NAME\"]}" \
                https://api.github.com/repos/$REPO/issues/$PR_NUMBER/labels
