@@ -10,6 +10,9 @@ import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 import { PickerRollerProps, PickerOptionItem } from './types'
 import { web } from '@/utils/platform-taro'
+import { preventDefault } from '@/utils'
+import { momentum } from './utils'
+import { useStyles } from './hooks/useStyles'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
@@ -21,31 +24,127 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     threeDimensional = true,
     duration = 1000,
     onSelect,
-    renderLabel = (item: PickerOptionItem) => {
-      return item.label
-    },
+    renderLabel = (item: PickerOptionItem) => item.label,
   } = props
 
-  const touch = useTouch()
   const DEFAULT_DURATION = 200
-  // 触发惯性滑动条件: 在手指离开屏幕时，如果和上一次 move 时的间隔小于 `MOMENTUM_TIME` 且 move, 距离大于 `MOMENTUM_DISTANCE` 时，执行惯性滑动
   const INERTIA_TIME = 300
   const INERTIA_DISTANCE = 15
-  const [currIndex, setCurrIndex] = useState(1)
+  const ROTATION = 20
+  const touch = useTouch()
+  const [currentIndex, setCurrentIndex] = useState(1)
   const lineSpacing = useRef(36)
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
-  const rotation = 20
-  const moving = useRef(false)
-
+  const isMoving = useRef(false)
   const rollerRef = useRef<any>(null)
   const pickerRollerRef = useRef<any>(null)
-
   const [startTime, setStartTime] = useState(0)
   const [startY, setStartY] = useState(0)
-
   const transformY = useRef(0)
   const [scrollDistance, setScrollDistance] = useState(0)
+
+  const { touchRollerStyle, touchTiledStyle, rollerStyle } = useStyles(
+    touchTime,
+    touchDeg,
+    scrollDistance,
+    lineSpacing,
+    ROTATION
+  )
+
+  const isItemHidden = (index: number) =>
+    index >= currentIndex + 8 || index <= currentIndex - 8
+
+  const applyTransform = (
+    type: string,
+    deg: string,
+    time = DEFAULT_DURATION,
+    translateY = 0
+  ) => {
+    setTouchTime(type !== 'end' ? 0 : time)
+    setTouchDeg(deg)
+    setScrollDistance(translateY)
+  }
+
+  const handleMove = (move: number, type?: string, time?: number) => {
+    let updatedMove = move + transformY.current
+    if (type === 'end') {
+      updatedMove = Math.max(
+        Math.min(updatedMove, 0),
+        -(options.length - 1) * lineSpacing.current
+      )
+
+      // 滚动距离为lineSpacing.current的倍数值
+      const endMove =
+        Math.round(updatedMove / lineSpacing.current) * lineSpacing.current
+      const deg = `${(Math.abs(Math.round(endMove / lineSpacing.current)) + 1) * ROTATION}deg`
+      applyTransform(type, deg, time, endMove)
+      setCurrentIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
+    } else {
+      const currentDeg = (-updatedMove / lineSpacing.current + 1) * ROTATION
+      const deg = Math.min(
+        Math.max(currentDeg, 0),
+        (options.length + 1) * ROTATION
+      )
+      if (deg >= 0 && deg < (options.length + 1) * ROTATION) {
+        applyTransform('', `${deg}deg`, undefined, updatedMove)
+        setCurrentIndex(
+          Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
+        )
+      }
+    }
+  }
+
+  const selectValue = (move: number) => {
+    onSelect?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
+  }
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.start(event)
+    setStartY(touch.deltaY.current)
+    setStartTime(Date.now())
+    transformY.current = scrollDistance
+  }
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.move(event)
+    if ((touch as any).isVertical) {
+      isMoving.current = true
+      preventDefault(event, true)
+    }
+    const move = touch.deltaY.current - startY
+    handleMove(move)
+  }
+
+  const handleTouchEnd = () => {
+    if (!isMoving.current) return
+    const move = touch.deltaY.current - startY
+    const moveTime = Date.now() - startTime
+    if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
+      const distance = momentum(move, moveTime)
+      handleMove(distance, 'end', +duration)
+    } else {
+      handleMove(move, 'end')
+    }
+    setTimeout(() => {
+      touch.reset()
+    }, 0)
+  }
+
+  const updateStatus = (shouldSelect?: boolean, value?: string | number) => {
+    const selectedValue = value || props.value
+    const index = options.findIndex((item) => item.value === selectedValue)
+    setCurrentIndex(index === -1 ? 1 : index + 1)
+    const move = index * lineSpacing.current
+    shouldSelect && selectValue(-move)
+    handleMove(-move)
+  }
+
+  const stopMomentumScroll = () => {
+    isMoving.current = false
+    setTouchTime(0)
+    selectValue(scrollDistance)
+  }
 
   // lineSpacing.current CSS variable
   useEffect(() => {
@@ -55,157 +154,21 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       const currentLineSpacing = computedStyle.getPropertyValue(
         '--nutui-picker-item-height'
       )
-
       !!currentLineSpacing &&
         (lineSpacing.current = parseFloat(currentLineSpacing))
     }
   }, [pickerRollerRef.current])
 
-  const isHidden = (index: number) => {
-    if (index >= currIndex + 8 || index <= currIndex - 8) {
-      return true
-    }
-    return false
-  }
-
-  const setTransform = (
-    type: string,
-    deg: string,
-    time = DEFAULT_DURATION,
-    translateY = 0
-  ) => {
-    let nTime = time
-    if (type !== 'end') {
-      nTime = 0
-    }
-    setTouchTime(nTime)
-    setTouchDeg(deg)
-    setScrollDistance(translateY)
-  }
-
-  const setMove = (move: number, type?: string, time?: number) => {
-    let updateMove = move + transformY.current
-    if (type === 'end') {
-      if (updateMove > 0) {
-        updateMove = 0
-      }
-      if (updateMove < -(options.length - 1) * lineSpacing.current) {
-        updateMove = -(options.length - 1) * lineSpacing.current
-      }
-
-      // 设置滚动距离为lineSpacing.current的倍数值
-      const endMove =
-        Math.round(updateMove / lineSpacing.current) * lineSpacing.current
-      const deg = `${
-        (Math.abs(Math.round(endMove / lineSpacing.current)) + 1) * rotation
-      }deg`
-
-      setTransform(type, deg, time, endMove)
-      setCurrIndex(Math.abs(Math.round(endMove / lineSpacing.current)) + 1)
-    } else {
-      let deg = 0
-      const currentDeg = (-updateMove / lineSpacing.current + 1) * rotation
-
-      const maxDeg = (options.length + 1) * rotation
-      const minDeg = 0
-
-      deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
-      if (minDeg <= deg && deg < maxDeg) {
-        setTransform('', `${deg}deg`, undefined, updateMove)
-        setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing.current)) + 1)
-      }
-    }
-  }
-
-  const setChooseValue = (move: number) => {
-    onSelect?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
-  }
-
-  const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    touch.start(event)
-    setStartY(touch.deltaY.current)
-    setStartTime(Date.now())
-    transformY.current = scrollDistance
-  }
-
-  const touchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    touch.move(event)
-    if ((touch as any).isVertical) {
-      moving.current = true
-      preventDefault(event, true)
-    }
-    const move = touch.deltaY.current - startY
-    setMove(move)
-  }
-
-  const touchEnd = () => {
-    if (!moving.current) return
-    const move = touch.deltaY.current - startY
-    const moveTime = Date.now() - startTime
-    if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
-      const distance = momentum(move, moveTime)
-      setMove(distance, 'end', +duration)
-    } else {
-      setMove(move, 'end')
-    }
-    setTimeout(() => {
-      touch.reset()
-    }, 0)
-  }
-
-  // inertial rolling distance
-  const momentum = (distance: number, duration: number) => {
-    let nDistance = distance
-    const speed = Math.abs(nDistance / duration)
-    nDistance = (speed / 0.003) * (nDistance < 0 ? -1 : 1)
-    return nDistance
-  }
-
-  const modifyStatus = (type?: boolean, val?: string | number) => {
-    const value = val || props.value
-    let index = -1
-    options.some((item, idx) => {
-      if (item.value === value) {
-        index = idx
-        return true // Stop iterating once the match is found
-      }
-      return false
-    })
-
-    setCurrIndex(index === -1 ? 1 : index + 1)
-    const move = index * lineSpacing.current
-    type && setChooseValue(-move)
-    setMove(-move)
-  }
-
-  // stop inertial rolling
-  const stopMomentum = () => {
-    moving.current = false
-    setTouchTime(0)
-    setChooseValue(scrollDistance)
-  }
-
-  const preventDefault = (
-    event: React.TouchEvent<HTMLElement>,
-    isStopPropagation?: boolean
-  ) => {
-    event.preventDefault()
-
-    if (isStopPropagation) {
-      event.stopPropagation()
-    }
-  }
-
   useEffect(() => {
-    moving.current = false
+    isMoving.current = false
     setScrollDistance(0)
     transformY.current = 0
-    modifyStatus(false)
+    updateStatus(false)
   }, [options, props.value])
 
   useImperativeHandle(ref, () => ({
-    stopMomentum,
-    moving: moving.current,
+    stopMomentum: stopMomentumScroll,
+    moving: isMoving.current,
   }))
 
   useEffect(() => {
@@ -214,73 +177,57 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       : false
     pickerRollerRef.current?.addEventListener(
       'touchstart',
-      touchStart,
+      handleTouchStart,
       eventOptions
     )
     pickerRollerRef.current?.addEventListener(
       'touchmove',
-      touchMove,
+      handleTouchMove,
       eventOptions
     )
     pickerRollerRef.current?.addEventListener(
       'touchend',
-      touchEnd,
+      handleTouchEnd,
       eventOptions
     )
     return () => {
       pickerRollerRef.current?.removeEventListener(
         'touchstart',
-        touchStart,
+        handleTouchStart,
         eventOptions
       )
       pickerRollerRef.current?.removeEventListener(
         'touchmove',
-        touchMove,
+        handleTouchMove,
         eventOptions
       )
       pickerRollerRef.current?.removeEventListener(
         'touchend',
-        touchEnd,
+        handleTouchEnd,
         eventOptions
       )
     }
-  }, [pickerRollerRef.current, touchStart, touchMove, touchEnd])
-
-  const touchRollerStyle = () => {
-    return {
-      transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-      transform: `rotate3d(1, 0, 0, ${touchDeg})`,
-    }
-  }
-  const touchTileStyle = () => {
-    return {
-      transition: `transform ${touchTime}ms cubic-bezier(0.17, 0.89, 0.45, 1)`,
-      transform: `translate3d(0, ${scrollDistance}px, 0)`,
-    }
-  }
-
-  const rollerStyle = (index: number) => {
-    return {
-      transform: `rotate3d(1, 0, 0, ${
-        -rotation * (index + 1)
-      }deg) translate3d(0px, 0px, ${Math.round(lineSpacing.current * 3.2)}px)`,
-    }
-  }
+  }, [
+    pickerRollerRef.current,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  ])
 
   return (
     <View className="nut-pickerview-list" ref={pickerRollerRef}>
       <View
         className="nut-pickerview-roller"
         ref={rollerRef}
-        style={threeDimensional ? touchRollerStyle() : touchTileStyle()}
-        onTransitionEnd={stopMomentum}
+        style={threeDimensional ? touchRollerStyle() : touchTiledStyle()}
+        onTransitionEnd={stopMomentumScroll}
       >
         {/* 3D 效果 */}
         {threeDimensional &&
           options.map((item, index) => (
             <View
               className={`nut-pickerview-roller-item ${
-                isHidden(index + 1) && 'nut-pickerview-roller-item-hidden'
+                isItemHidden(index + 1) && 'nut-pickerview-roller-item-hidden'
               }`}
               style={rollerStyle(index)}
               key={item.value ?? index}
@@ -288,13 +235,13 @@ const InternalPickerRoller: ForwardRefRenderFunction<
               {renderLabel(item)}
             </View>
           ))}
-        {/* 平铺 */}
+        {/* Tiled */}
         {!threeDimensional &&
           options.map((item, index) => {
             return (
               <View
-                className="nut-pickerview-roller-item-title"
-                key={item.value ? item.value : index}
+                className="nut-pickerview-roller-item-tiled"
+                key={item.value ?? item.value}
               >
                 {renderLabel(item)}
               </View>
