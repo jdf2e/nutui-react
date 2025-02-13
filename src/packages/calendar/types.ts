@@ -3,6 +3,16 @@ export interface CalendarDay {
   type: string
 }
 
+export interface CalendarMonth {
+  year: number
+  month: number
+}
+
+export interface CalendarQuarter {
+  year: number
+  quarter: number
+}
+
 export interface CalendarMonthInfo {
   curData: string[] | string
   title: string

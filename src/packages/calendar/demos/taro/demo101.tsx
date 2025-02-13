@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Calendar } from '@nutui/nutui-react'
+import { Calendar } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const d = new Date()
-  const [date, setDate] = useState('2026-Q2')
+  const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+  const [date, setDate] = useState(currDay)
 
   const select = (param: string) => {
     console.log(param)

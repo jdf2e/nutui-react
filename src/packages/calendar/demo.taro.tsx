@@ -15,6 +15,9 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
+import Demo101 from './demos/taro/demo101'
+import Demo102 from './demos/taro/demo102'
+import Demo103 from './demos/taro/demo103'
 
 const CalendarDemo = () => {
   const [translated] = useTranslate({
@@ -29,6 +32,9 @@ const CalendarDemo = () => {
       cfbdc781: '快捷选择',
       c3a3a1d2: '选择日期',
       e51e4582: '平铺展示',
+      ees99933: '季度面板',
+      e2s99933: '月面板',
+      e4s99933: '展示周号',
       '7db1a8b2': '选择多个日期',
       '7db1a8b3': '选择周',
       '7db1a8b4': '日期不可选',
@@ -52,6 +58,9 @@ const CalendarDemo = () => {
       cfbdc781: '快捷選擇',
       c3a3a1d2: '選擇日期',
       e51e4582: '平鋪展示',
+      ees99933: '季度面板',
+      e2s99933: '月面板',
+      e4s99933: '展示周号',
       '7db1a8b2': '選擇多個日期',
       '7db1a8b3': '選擇周',
       '7db1a8b4': '日期不可選',
@@ -75,6 +84,9 @@ const CalendarDemo = () => {
       cfbdc781: 'quick selection',
       c3a3a1d2: 'select date',
       e51e4582: 'Tiled display',
+      ees99933: '季度面板',
+      e2s99933: '月面板',
+      e4s99933: '展示周号',
       '7db1a8b2': 'select multiple dates',
       '7db1a8b3': 'select week',
       '7db1a8b4': 'disable date',
@@ -108,6 +120,12 @@ const CalendarDemo = () => {
         <Demo10 />
         <h2>{translated.e51e4582}</h2>
         <Demo11 />
+        <h2>{translated.ees99933}</h2>
+        <Demo101 />
+        <h2>{translated.e2s99933}</h2>
+        <Demo102 />
+        <h2>{translated.e4s99933}</h2>
+        <Demo103 />
       </div>
     </>
   )

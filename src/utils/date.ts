@@ -343,6 +343,14 @@ export const getTotalWeeksInYear = (year: number, firstDayOfWeek?: number) => {
   return weeks
 }
 
+export const formatMonth = (year: number, month: number) => {
+  return `${year}-${String(month).padStart(2, '0')}`
+}
+
+export const formatQuarter = (year: number, quarter: number) => {
+  return `${year}-Q${quarter}`
+}
+
 /**
  * 判断某年某月某日属于哪一个季度
  * @param year 年份

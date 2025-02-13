@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { Calendar } from '@nutui/nutui-react'
+import { Calendar } from '@nutui/nutui-react-taro'
 
-const Demo1 = () => {
-  const d = new Date()
-  const [date, setDate] = useState('2026-Q2')
+const Demo2 = () => {
+  const [date, setDate] = useState([])
 
   const select = (param: string) => {
-    console.log(param)
+    console.log('select', param)
+    // setDate(param.item)
   }
 
   return (
@@ -20,14 +20,14 @@ const Demo1 = () => {
       }}
     >
       <Calendar
-        viewMode="quarter"
+        viewMode="month"
         showTitle={false}
         defaultValue={date}
         startDate="2023-09-12"
-        endDate="2028-09-19"
+        endDate="2027-10-19"
         onItemClick={select}
       />
     </div>
   )
 }
-export default Demo1
+export default Demo2

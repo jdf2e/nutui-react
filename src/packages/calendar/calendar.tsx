@@ -36,7 +36,7 @@ export interface CalendarProps {
   onClose?: () => void
   onConfirm?: (param: string) => void
   onDayClick?: (data: string) => void
-  onItemClick: (param: any, viewMode: string) => void
+  onItemClick: (param: string) => void
   onPageChange?: (param: string) => void
 }
 
@@ -157,7 +157,7 @@ export const Calendar = React.forwardRef<
             showTitle={showTitle}
             scrollAnimation={scrollAnimation}
             renderDay={renderDay}
-            onItemClick={(param) => onItemClick && onItemClick(param, viewMode)}
+            onItemClick={onItemClick}
             onPageChange={yearMonthChange}
           />
         ) : (

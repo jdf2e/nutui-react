@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react'
 
 const Demo2 = () => {
-  const [date, setDate] = useState([])
+  const [date, setDate] = useState('2025-02')
 
   const select = (param: string) => {
     console.log('select', param)

@@ -4,15 +4,14 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   getDay,
-  getCurrMonthData,
   compareDate,
-  getMonthDays,
-  getTotalWeeksInYear,
   getPreMonths,
   getMonths,
   getPreQuarters,
   getNextQuarters,
   getQuarters,
+  formatMonth,
+  formatQuarter,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -28,14 +27,14 @@ export interface CalendarViewModeItemProps {
   type: CalendarType
   viewMode: 'week' | 'month' | 'quarter' | string
   title: string
-  value?: CalendarValue
-  defaultValue?: CalendarValue
+  value?: any
+  defaultValue?: any
   startDate: CalendarValue
   endDate: CalendarValue
   showTitle: boolean
   scrollAnimation: boolean
   renderDay: (date: CalendarDay) => string | JSX.Element
-  onItemClick: (data: any, viewMode: string) => void
+  onItemClick: (data: string) => void
   onPageChange: (data: any) => void
 }
 const defaultProps = {
@@ -76,8 +75,9 @@ export const CalendarViewModeItem = React.forwardRef<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-calendar-viewmode'
+
+  // 为了便于区分，用'YYYY-MM'表示月，用'YYYY-QX'表示Q
   const [panelDate, setPanelDate] = useState({
-    weeks: [{ year: 2025, weeks: [1, 2, 3] }],
     months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
     quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
   })
@@ -92,13 +92,10 @@ export const CalendarViewModeItem = React.forwardRef<
   // 初始化开始结束数据
   const propStartDate = (startDate || getDay(0)) as string
   const propEndDate = (endDate || getDay(365)) as string
-
-  // console.log('propStartDate', propStartDate, propEndDate, endDate)
-
   const startDates = splitDate(propStartDate)
   const endDates = splitDate(propEndDate)
 
-  const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
+  const [innerValue, setInnerValue] = usePropsValue({
     value,
     defaultValue,
     finalValue: [],
@@ -145,15 +142,15 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const setDefaultDate = () => {
     let defaultData: CalendarValue = []
-    if (!currentDate.length) {
+    if (!innerValue.length) {
       return defaultData
     }
-    if (compareDate(currentDate, propStartDate)) {
+    if (compareDate(innerValue, propStartDate)) {
       defaultData = [...splitDate(propStartDate)]
-    } else if (!compareDate(currentDate, propEndDate)) {
+    } else if (!compareDate(innerValue, propEndDate)) {
       defaultData = [...splitDate(propEndDate)]
     } else {
-      defaultData = [...splitDate(currentDate)]
+      defaultData = [...splitDate(innerValue)]
     }
     return defaultData
   }
@@ -214,45 +211,6 @@ export const CalendarViewModeItem = React.forwardRef<
       }
     })
     setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
-  }
-
-  // 获取月数据
-  const getMonthData = (curData: string[], monthNum: number) => {
-    let i = 0
-    let date = curData
-    const monthData = monthsData
-    do {
-      const y = parseInt(date[0], 10)
-      const m = parseInt(date[1], 10)
-      const weeks = getTotalWeeksInYear(y)
-      const cssHeight = 39 + (weeks.length > 35 ? 384 : 320)
-      let scrollTop = 0
-      if (monthData.length > 0) {
-        const monthEle = monthData[monthData.length - 1]
-        scrollTop = monthEle.scrollTop + monthEle.cssHeight
-      }
-      const monthInfo = {
-        curData: date,
-        title: monthTitle(y, m),
-        weeks,
-        cssHeight,
-        scrollTop,
-      }
-      if (
-        !endDates ||
-        !compareDate(
-          `${endDates[0]}/${endDates[1]}/${getMonthDays(
-            endDates[0],
-            endDates[1]
-          )}`,
-          `${curData[0]}/${curData[1]}/${curData[2]}`
-        )
-      ) {
-        monthData.push(monthInfo)
-      }
-      date = getCurrMonthData('next', y, m) as string[]
-    } while (i++ < monthNum)
-    setMonthsData(monthData)
   }
 
   const getMonthsData = () => {
@@ -325,7 +283,11 @@ export const CalendarViewModeItem = React.forwardRef<
     return panelData
   }
 
-  // 初始化面板数据
+  /*
+   * 初始化面板数据
+   * 获取总数据panelDate
+   * 根据当前默认值跳转到指定位置
+   */
   const initData = () => {
     // 获取起止时间内的所有的周、月、季
     switch (viewMode) {
@@ -348,10 +310,10 @@ export const CalendarViewModeItem = React.forwardRef<
     // 获取当前默认值
     // const defaultData = [] // setDefaultDate()
     // 获取当前默认值在的月份
-    const current = getCurrentIndex([])
-    const currentIndex = current.current
+    // const current = getCurrentIndex([])
+    // const currentIndex = current.current
     // 渲染第一个默认数据
-    renderCurrentDate([], current)
+    // renderCurrentDate([], current)
     // setDefaultRange(monthNum, currentIndex)
     // requestAniFrameFunc(currentIndex, monthNum)
   }
@@ -359,10 +321,6 @@ export const CalendarViewModeItem = React.forwardRef<
   useEffect(() => {
     initData()
   }, [])
-
-  useEffect(() => {
-    setCurrentDate('')
-  }, [defaultValue])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
@@ -431,12 +389,6 @@ export const CalendarViewModeItem = React.forwardRef<
     scrollToDate,
   }))
 
-  const [innerValue, setInnerValue] = usePropsValue({
-    value,
-    defaultValue,
-    finalValue: [],
-  })
-
   const change = (v: []) => {
     setInnerValue(v)
     // onChange?.(date)
@@ -447,25 +399,24 @@ export const CalendarViewModeItem = React.forwardRef<
     // 如果非可点击，则直接返回，不做处理
     if (item.type !== 'curr') return
     // 可点击时，需要关注当前元素是否已被选中，选中，取消选中，拿到数据
-    setInnerValue(item)
-    onItemClick && onItemClick(item, viewMode)
+    const val =
+      viewMode === 'month'
+        ? formatMonth(item.year, item.month)
+        : formatQuarter(item.year, item.quarter)
+    setInnerValue(val)
+    onItemClick && onItemClick(val)
   }
-
-  const classes = classNames(classPrefix, className)
-
-  const headerClasses = classNames({
-    [`${classPrefix}-header`]: true,
-  })
 
   const isDisable = (item: any) => {
     return item.type === 'prev' || item.type === 'next'
   }
 
   const isActive = (item: any) => {
-    if (
-      item.year === innerValue.year &&
-      item[viewMode] === innerValue[viewMode]
-    ) {
+    const val =
+      viewMode === 'month'
+        ? formatMonth(item.year, item.month)
+        : formatQuarter(item.year, item.quarter)
+    if (val === innerValue) {
       return true
     }
     return false
@@ -484,9 +435,15 @@ export const CalendarViewModeItem = React.forwardRef<
     return res
   }
 
+  const classes = classNames(classPrefix, className)
+
   const renderHeader = () => {
     return (
-      <div className={headerClasses}>
+      <div
+        className={classNames({
+          [`${classPrefix}-header`]: true,
+        })}
+      >
         {showTitle && <div className={`${classPrefix}-title`}>{title}</div>}
       </div>
     )
