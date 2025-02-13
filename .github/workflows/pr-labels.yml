@@ -2,7 +2,7 @@ name: PR Review Labels
 
 on:
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '*/120 * * * *'
   pull_request_target:
     types:
       - opened
