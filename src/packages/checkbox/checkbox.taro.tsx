@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
 
 export type CheckboxShape = 'button' | 'round'

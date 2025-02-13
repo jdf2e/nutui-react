@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import { isObject } from '@/utils'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { useForceUpdate } from '@/hooks/use-force-update'
 
 export interface Color {
   [key: string]: string

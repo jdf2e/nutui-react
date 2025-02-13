@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { View } from '@tarojs/components'
 import { PickerOption } from './types'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { passiveSupported } from '@/utils/supports-passive'
 

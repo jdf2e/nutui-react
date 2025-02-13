@@ -5,7 +5,7 @@ import { View } from '@tarojs/components'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { useTableSticky } from './utils'
 
 export type TableProps = BasicTableProps

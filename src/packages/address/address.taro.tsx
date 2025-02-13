@@ -18,7 +18,7 @@ import {
   CascaderValue,
 } from '@/packages/cascader/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 type AddressRef = {
   open: () => void
