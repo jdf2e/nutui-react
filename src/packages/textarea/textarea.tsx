@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
 import type { ChangeEvent, FocusEvent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -83,9 +83,7 @@ export const TextArea: FunctionComponent<
   })
 
   useEffect(() => {
-    if (autoSize) {
-      setContentHeight()
-    }
+    if (autoSize) setContentHeight()
   }, [autoSize, defaultValue, inputValue])
 
   const setContentHeight = () => {
@@ -105,16 +103,16 @@ export const TextArea: FunctionComponent<
     setInputValue(value)
   }
 
+  const isDisabled = () => disabled || readOnly
+
   const handleFocus = (event: FocusEvent<HTMLTextAreaElement>) => {
-    if (disabled) return
-    if (readOnly) return
-    onFocus && onFocus(event)
+    if (isDisabled()) return
+    onFocus?.(event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLTextAreaElement>) => {
-    if (disabled) return
-    if (readOnly) return
-    onBlur && onBlur(event)
+    if (isDisabled()) return
+    onBlur?.(event)
   }
 
   return (
@@ -122,24 +120,30 @@ export const TextArea: FunctionComponent<
       <div
         className={classNames(
           classPrefix,
-          disabled ? `${classPrefix}-disabled` : '',
-          readOnly ? `${classPrefix}-readonly` : '',
-          rtl ? `${classPrefix}-rtl` : '',
-          plain ? `${classPrefix}-plain` : `${classPrefix}-container`,
-          status ? `${classPrefix}-${status}` : '',
+          {
+            [`${classPrefix}-disabled`]: disabled,
+            [`${classPrefix}-readonly`]: readOnly,
+            [`${classPrefix}-rtl`]: rtl,
+            [`${classPrefix}-plain`]: plain,
+            [`${classPrefix}-container`]: !plain,
+            [`${classPrefix}-${status}`]: status,
+          },
           className
         )}
       >
         <textarea
+          {...rest}
           ref={textareaRef}
-          className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
+          className={classNames(`${classPrefix}-textarea`, {
+            [`${classPrefix}-textarea-disabled`]: disabled,
+          })}
           style={style}
           disabled={disabled}
           readOnly={readOnly}
           value={inputValue}
-          onChange={(e) => handleChange(e)}
-          onBlur={(e) => handleBlur(e)}
-          onFocus={(e) => handleFocus(e)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           onCompositionEnd={() => {
             compositionRef.current = false
           }}
@@ -148,12 +152,15 @@ export const TextArea: FunctionComponent<
           }}
           rows={rows}
           maxLength={maxLength === -1 ? undefined : maxLength}
-          placeholder={placeholder || locale.placeholder}
-          {...rest}
+          placeholder={
+            placeholder !== undefined ? placeholder : locale.placeholder
+          }
         />
         {showCount && (
           <div
-            className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+            className={classNames(`${classPrefix}-limit`, {
+              [`${classPrefix}-limit-disabled`]: disabled,
+            })}
           >
             {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
           </div>

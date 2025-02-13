@@ -1,0 +1,82 @@
+name: Release 3x Beta
+
+on:
+#  pull_request:
+  push:
+    branches:
+      - feat_v3.x
+  workflow_dispatch:
+
+jobs:
+  release-3x-beta:
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_CONFIG_PROVENANCE: true
+      RELEASE_TAG: beta
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+#          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Get commit message
+        run: |
+          COMMIT_MESSAGE=$(git log --format=%s -n 1)
+          FILTERED_MESSAGE="${COMMIT_MESSAGE//[^a-zA-Z0-9.()_:, -]/}"
+          echo "COMMIT_MESSAGE=${FILTERED_MESSAGE}" >> $GITHUB_ENV
+      - name: Show commit message
+        run: echo "$COMMIT_MESSAGE"
+
+      - name: Commit message compliance verification
+        if: |
+          !startsWith( env.COMMIT_MESSAGE , 'chore(release):' ) ||
+          !contains( env.COMMIT_MESSAGE , '-beta' )
+        run: echo "ABORT=true" >> $GITHUB_ENV
+
+      - name: Get Tag message
+        if: contains( env.COMMIT_MESSAGE , '-beta')
+        run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
+
+      - name: Install pnpm
+        run: npm install -g pnpm@v9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        if: env.ABORT != 'true'
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run Build
+        if: env.ABORT != 'true'
+        run: |
+          if ! pnpm build; then
+            echo "构建 nutui-react 失败"
+            exit 1
+          fi
+          if ! pnpm build:taro; then
+            echo "构建 nutui-react-taro 失败"
+            exit 1
+          fi
+
+      - name: Run Release @nutui/nutui-react
+        if: env.ABORT != 'true'
+        run: |
+          cd ./release/h5 || exit 1
+          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
+            echo "发布 @nutui/nutui-react 失败"
+            exit 1
+          fi
+
+      - name: Run Releases @nutui/nutui-react-taro
+        if: env.ABORT != 'true'
+        run: |
+          cd ./release/taro || exit 1
+          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
+            echo "发布 @nutui/nutui-react-taro 失败"
+            exit 1
+          fi
