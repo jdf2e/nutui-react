@@ -18,6 +18,7 @@ const Demo3 = () => {
       return item[3]
     })
     setDate([...dateArr])
+    console.log('onconfirm', chooseData)
   }
 
   return (
