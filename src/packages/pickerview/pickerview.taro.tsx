@@ -10,6 +10,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 import {
   PickerViewProps,
   PickerOptionItem,
@@ -17,7 +18,6 @@ import {
   PickerOptions,
 } from './types'
 import PickerRoller from './pickerroller.taro'
-import { usePropsValue } from '@/utils/use-props-value'
 
 const defaultProps = {
   ...ComponentDefaults,
