@@ -6,8 +6,6 @@ on:
     branches:
       - feat_v3.x
   workflow_dispatch:
-permissions:
-  id-token: write
 
 jobs:
   release-3x-beta:
@@ -17,6 +15,9 @@ jobs:
       NPM_CONFIG_PROVENANCE: true
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
