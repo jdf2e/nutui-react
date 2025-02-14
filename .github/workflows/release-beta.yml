@@ -68,9 +68,11 @@ jobs:
 
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
-        run: cd ./release/h5 && npm publish --tag ${{ env.RELEASE_TAG }} --access public
+        working-directory: ./release/h5
+        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
-        run: cd ./release/taro && npm publish --tag ${{ env.RELEASE_TAG }} --access public
+        working-directory: ./release/taro
+        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
 
