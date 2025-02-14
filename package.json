@@ -44,6 +44,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "engines": {
+    "pnpm": ">=10.0.0"
+  },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",
     "add:taro:config": "node scripts/taro/generate-taro-route.js",
