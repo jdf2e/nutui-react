@@ -41,7 +41,7 @@ test('Min date & Max date', async () => {
   )
 
   const columns = container.querySelectorAll('.nut-pickerview-list')[0]
-  const lists = columns.querySelectorAll('.nut-pickerview-roller-item-title')
+  const lists = columns.querySelectorAll('.nut-pickerview-roller-item-tiled')
   expect(lists.length).toBe(3)
   rerender(
     <DatePicker
