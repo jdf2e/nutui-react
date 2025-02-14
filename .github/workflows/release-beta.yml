@@ -6,6 +6,8 @@ on:
     branches:
       - feat_v3.x
   workflow_dispatch:
+permissions:
+  id-token: write
 
 jobs:
   release-3x-beta:
