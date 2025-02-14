@@ -69,7 +69,7 @@
     "build:taro:site": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:jdtaro:site": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
-    "build:jstaro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
+    "build:jdtaro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
     "generate:file": "node scripts/generate-nutui.js",
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
