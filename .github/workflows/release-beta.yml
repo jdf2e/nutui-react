@@ -11,7 +11,7 @@ jobs:
   release-3x-beta:
     env:
       RELEASE_TAG: beta
-
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -70,8 +70,6 @@ jobs:
             echo "发布 @nutui/nutui-react 失败"
             exit 1
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
@@ -81,5 +79,4 @@ jobs:
             echo "发布 @nutui/nutui-react-taro 失败"
             exit 1
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
