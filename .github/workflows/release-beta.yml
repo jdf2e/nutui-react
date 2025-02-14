@@ -15,7 +15,7 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v4
@@ -68,19 +68,9 @@ jobs:
 
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
-        run: |
-          cd ./release/h5 || exit 1
-          if ! npm publish --tag ${{ env.RELEASE_TAG }} --access public; then
-            echo "发布 @nutui/nutui-react 失败"
-            exit 1
-          fi
+        run: cd ./release/h5 && npm publish --tag ${{ env.RELEASE_TAG }} --access public
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
-        run: |
-          cd ./release/taro || exit 1
-          if ! npm publish --tag ${{ env.RELEASE_TAG }} --access public; then
-            echo "发布 @nutui/nutui-react-taro 失败"
-            exit 1
-          fi
+        run: cd ./release/taro && npm publish --tag ${{ env.RELEASE_TAG }} --access public
 
