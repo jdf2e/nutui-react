@@ -1,3 +1,5 @@
+import { FixAutoComplete } from '@/types/fix-string-literal-union'
+
 export type FileItem = {
   status?: FileItemStatus
 
@@ -9,8 +11,7 @@ export type FileItem = {
 
   url?: string
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  type?: 'image' | 'list' | (string & {})
+  type?: FixAutoComplete<'image' | 'list'>
 
   path?: string
 
