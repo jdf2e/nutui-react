@@ -11,8 +11,7 @@ import { passiveSupported } from '@/utils/supports-passive'
 import { PickerRollerProps, PickerOptionItem } from './types'
 import { web } from '@/utils/platform-taro'
 import { preventDefault } from '@/utils'
-import { momentum } from './utils'
-import { useStyles } from './hooks/useStyles'
+import { momentum, useStyles } from './utils'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
@@ -241,7 +240,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
             return (
               <View
                 className="nut-pickerview-roller-item-tiled"
-                key={item.value ?? item.value}
+                key={item.value ?? index}
               >
                 {renderLabel(item)}
               </View>

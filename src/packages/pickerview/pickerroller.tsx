@@ -9,8 +9,7 @@ import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 import { PickerRollerProps, PickerOptionItem } from './types'
 import { preventDefault } from '@/utils'
-import { momentum } from './utils'
-import { useStyles } from './hooks/useStyles'
+import { momentum, useStyles } from './utils'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
