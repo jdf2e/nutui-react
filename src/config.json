@@ -582,7 +582,7 @@
           "show": true,
           "taro": true,
           "author": "dsj",
-          "dd": true
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -594,7 +594,7 @@
           "show": true,
           "taro": true,
           "author": "hanyuxinting",
-          "dd": true
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -607,7 +607,7 @@
           "taro": true,
           "exportEmpty": true,
           "author": "hanyuxinting",
-          "dd": true
+          "dd": false
         },
         {
           "version": "3.0.0",
@@ -687,7 +687,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "dd": true,
+          "dd": false,
           "author": "songsong"
         },
         {
@@ -699,7 +699,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "dd": true,
+          "dd": false,
           "author": "songsong"
         },
         {
