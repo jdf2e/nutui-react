@@ -7,15 +7,17 @@ on:
       - feat_v3.x
   workflow_dispatch:
 
+permissions:
+    contents: read
+    id-token: write
+
 jobs:
   release-3x-beta:
     runs-on: ubuntu-latest
     env:
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       NPM_CONFIG_PROVENANCE: true
-    permissions:
-      contents: read
-      id-token: write
+
     steps:
       - uses: actions/checkout@v4
         with:
