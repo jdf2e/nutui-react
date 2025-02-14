@@ -44,6 +44,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         if: env.ABORT != 'true'
@@ -63,24 +64,25 @@ jobs:
 
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
         run: |
           cd ./release/h5 || exit 1
           if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
             echo "发布 @nutui/nutui-react 失败"
             exit 1
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
+
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
         run: |
           cd ./release/taro || exit 1
           if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
             echo "发布 @nutui/nutui-react-taro 失败"
             exit 1
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
