@@ -63,8 +63,6 @@ jobs:
           fi
 
       - name: Run Release @nutui/nutui-react
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: env.ABORT != 'true'
         run: |
           cd ./release/h5 || exit 1
@@ -72,11 +70,10 @@ jobs:
             echo "发布 @nutui/nutui-react 失败"
             exit 1
           fi
-
-
-      - name: Run Releases @nutui/nutui-react-taro
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
         run: |
           cd ./release/taro || exit 1
@@ -84,3 +81,5 @@ jobs:
             echo "发布 @nutui/nutui-react-taro 失败"
             exit 1
           fi
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
