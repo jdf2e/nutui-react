@@ -66,16 +66,14 @@ jobs:
 
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
-        working-directory: ./release/h5
-        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
+        run: pnpm --dir ./release/h5 publish:beta --access public --no-git-checks
         env:
-          RELEASE_TAG: beta
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
-        working-directory: ./release/taro
-        run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
+        run: pnpm --dir ./release/taro publish:beta --access public --no-git-checks
         env:
-          RELEASE_TAG: beta
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true

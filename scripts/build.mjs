@@ -360,6 +360,10 @@ function generateReleasePackageJson() {
     main: packageJson.main,
     module: packageJson.module,
     typings: packageJson.typings,
+    scripts: {
+      "publish:beta": "npm publish --tag=beta",
+      "publish:latest": "npm publish"
+    },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
     keywords: packageJson.keywords,
