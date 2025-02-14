@@ -12,6 +12,8 @@ jobs:
     env:
       RELEASE_TAG: beta
       NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      NPM_CONFIG_PROVENANCE: true
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
