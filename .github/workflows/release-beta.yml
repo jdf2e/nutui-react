@@ -9,9 +9,7 @@ on:
 
 jobs:
   release-3x-beta:
-    env:
-      RELEASE_TAG: beta
-      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
 
     runs-on: ubuntu-latest
     permissions:
@@ -70,9 +68,14 @@ jobs:
         if: env.ABORT != 'true'
         working-directory: ./release/h5
         run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
+        env:
+          RELEASE_TAG: beta
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
         working-directory: ./release/taro
         run: npm publish --tag ${{ env.RELEASE_TAG }} --access public
-
+        env:
+          RELEASE_TAG: beta
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
