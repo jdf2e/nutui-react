@@ -9,9 +9,10 @@ on:
 
 jobs:
   release-3x-beta:
-
-
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      NPM_CONFIG_PROVENANCE: true
     permissions:
       contents: read
       id-token: write
@@ -67,13 +68,7 @@ jobs:
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
         run: pnpm --dir ./release/h5 publish:beta --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
 
       - name: Run Releases @nutui/nutui-react-taro
         if: env.ABORT != 'true'
         run: pnpm --dir ./release/taro publish:beta --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
