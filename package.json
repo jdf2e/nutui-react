@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.0-beta.12",
+  "version": "3.0.0-beta.13",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -43,6 +43,9 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "pnpm": ">=10.0.0"
   },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",
