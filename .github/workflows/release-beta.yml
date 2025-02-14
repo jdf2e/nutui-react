@@ -42,9 +42,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
+          registry-url: 'https://registry.npmjs.org'
           node-version: '20'
           cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         if: env.ABORT != 'true'
@@ -63,10 +63,9 @@ jobs:
           fi
 
       - name: Run Release @nutui/nutui-react
-        if: env.ABORT != 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: env.ABORT != 'true'
         run: |
           cd ./release/h5 || exit 1
           if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
@@ -76,10 +75,9 @@ jobs:
 
 
       - name: Run Releases @nutui/nutui-react-taro
-        if: env.ABORT != 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: env.ABORT != 'true'
         run: |
           cd ./release/taro || exit 1
           if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
