@@ -691,7 +691,7 @@
           "author": "songsong"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "PickerView",
           "type": "component",
           "cName": "选择器视图",
@@ -699,6 +699,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": false,
           "dd": false,
           "author": "songsong"
         },
