@@ -190,18 +190,18 @@
       }
     }
 
-    &-choose-disabled {
-      background-color: $calendar-choose-disable-background-color;
-      color: $calendar-disable-color !important;
-
-      .nut-calendar-day-info-curr {
-        display: none;
-      }
-    }
-
     &-choose {
       background-color: $calendar-choose-background-color;
       color: $calendar-choose-color;
+
+      &-disabled {
+        background-color: $calendar-choose-disable-background-color;
+        color: $calendar-disable-color !important;
+
+        .nut-calendar-day-info-curr {
+          display: none;
+        }
+      }
     }
   }
 

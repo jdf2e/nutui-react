@@ -1,7 +1,7 @@
 import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
-import { Utils } from '@/utils/date'
+import { getDateString } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import type { CalendarDay, CalendarType, CalendarRef } from './types'
 import { ComponentDefaults } from '@/utils/typings'
@@ -44,8 +44,8 @@ const defaultProps = {
   visible: false,
   title: '',
   defaultValue: '',
-  startDate: Utils.getDay(0),
-  endDate: Utils.getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   startText: '',
   endText: '',

@@ -1,3 +1,12 @@
+# v2.7.8
+
+`2025-02-14`
+
+- 📖 docs(configprovider): 优化文档中的主题配置描述 (#2959)
+- :bug: fix: next ci failed (#2970)
+- zap: perf: animate (#2969)
+- 🪵 refactor: calendar (#2983)
+
 # v2.7.7
 
 `2025-01-24`

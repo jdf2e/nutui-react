@@ -1,4 +1,4 @@
-import { Utils } from '@/utils/date'
+import { isEqual, date2Str, getNumTwoBit } from '@/utils/date'
 import { CalendarDay, CalendarMonthInfo } from './types'
 
 export const splitDate = (date: string) => {
@@ -9,7 +9,7 @@ export const splitDate = (date: string) => {
 export const isMultiple = (day: string, days: string[]) => {
   if (days.length > 0) {
     return days.some((item: string) => {
-      return Utils.isEqual(item, day)
+      return isEqual(item, day)
     })
   }
   return false
@@ -17,24 +17,22 @@ export const isMultiple = (day: string, days: string[]) => {
 
 export const isCurrDay = (month: CalendarMonthInfo, day: string | number) => {
   const date = `${month.curData[0]}/${month.curData[1]}/${day}`
-  return Utils.isEqual(date, Utils.date2Str(new Date(), '/'))
+  return isEqual(date, date2Str(new Date(), '/'))
 }
 
 export const getCurrDate = (day: CalendarDay, month: CalendarMonthInfo) => {
-  return `${month.curData[0]}/${month.curData[1]}/${Utils.getNumTwoBit(
-    +day.day
-  )}`
+  return `${month.curData[0]}/${month.curData[1]}/${getNumTwoBit(+day.day)}`
 }
 
 export const isStart = (day: string, days: string[]) => {
-  return Utils.isEqual(days[0], day)
+  return isEqual(days[0], day)
 }
 
 export const isEnd = (day: string, days: string[]) => {
-  return Utils.isEqual(days[1], day)
+  return isEqual(days[1], day)
 }
 
 // 开始结束时间是否相等
 export const isStartAndEnd = (days: string[]) => {
-  return days.length >= 2 && Utils.isEqual(days[0], days[1])
+  return days.length >= 2 && isEqual(days[0], days[1])
 }
