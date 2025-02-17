@@ -8,7 +8,7 @@ const param = process.env.C
 
 // C=radio pnpm dev:taro:jdharmonycpp or C=radio,button,cell pnpm dev:taro:jdharmonycpp
 function specialComponent(name) {
-  if(!param) return true
+  if (!param) return true
   const entries = param.split(',').map((i) => i.toLowerCase())
   return entries.includes(name.toLowerCase())
 }
@@ -89,33 +89,3 @@ export default defineAppConfig({
 }
 
 create()
-
-// 更新pages下面的入口文件
-const updatePages = (componentBaseUrl, item) => {
-  fse.writeFileSync(
-    `${componentBaseUrl}/index.tsx`,
-    `import Demo from '@/packages/${item.lowercaseName}/demo.taro';\nexport default Demo;`
-  )
-  fse.writeFileSync(
-    `${componentBaseUrl}/index.config.ts`,
-    `export default {\n  navigationBarTitleText: '${item.name}',\n}`
-  )
-}
-
-adaptedArray.map((item) => {
-  if (childAdaptedArray.includes(item.lowercaseName)) return
-  const componentBaseUrl = `${process.cwd()}/packages/nutui-taro-demo/src/${item.enName}/pages/${item.lowercaseName}`
-  // 判断文件夹是否存在
-  fse.access(componentBaseUrl, fse.constants.F_OK, (err) => {
-    if (err) {
-      // 文件夹不存在，创建文件夹
-      fse.mkdir(componentBaseUrl, { recursive: true }, (err) => {
-        if (err) throw err
-        console.log('文件夹创建成功！')
-        updatePages(componentBaseUrl, item)
-      })
-    } else {
-      updatePages(componentBaseUrl, item)
-    }
-  })
-})
