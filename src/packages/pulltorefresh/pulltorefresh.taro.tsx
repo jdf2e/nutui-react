@@ -9,6 +9,7 @@ import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { PullToRefreshType } from './types'
+import { getDeviceInfo } from '@/utils/get-system-info'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -153,7 +154,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
   // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
   const isAndroidWeApp =
-    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
+    getDeviceInfo().platform === 'android' && Taro.getEnv() === 'WEAPP'
   const springStyles = {
     height: `${height}px`,
     ...(!pullingRef.current || isAndroidWeApp

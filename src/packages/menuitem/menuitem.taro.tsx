@@ -9,10 +9,11 @@ import React, {
   useRef,
 } from 'react'
 import classNames from 'classnames'
-import { getSystemInfoSync, usePageScroll } from '@tarojs/taro'
+import { usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react-taro'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { Overlay } from '@/packages/overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -106,7 +107,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     getParentOffset()
   }, [showPopup, getParentOffset])
 
-  const windowHeight = useMemo(() => getSystemInfoSync().windowHeight, [])
+  const windowHeight = useMemo(() => getWindowInfo().windowHeight, [])
   const updateItemOffset = useCallback(() => {
     if (!parent.lockScroll) return
     const p = parent.menuRef.current
@@ -163,7 +164,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           height: 'initial',
         }
       : {
-          bottom: `${getSystemInfoSync().windowHeight - position.top}px`,
+          bottom: `${getWindowInfo().windowHeight - position.top}px`,
           top: '0',
           height: 'initial',
         }
@@ -177,7 +178,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       }
     }
     return {
-      height: `${getSystemInfoSync().windowHeight - position.top}px`,
+      height: `${getWindowInfo().windowHeight - position.top}px`,
       top: 'auto',
       ...isShow(),
     }

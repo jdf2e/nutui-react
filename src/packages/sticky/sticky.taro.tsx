@@ -8,13 +8,9 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import {
-  getEnv,
-  getSystemInfoSync,
-  PageScrollObject,
-  usePageScroll,
-} from '@tarojs/taro'
+import { getEnv, PageScrollObject, usePageScroll } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getWindowInfo } from '@/utils/get-system-info'
 import useWatch from '@/utils/use-watch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { getScrollParent } from '@/utils/get-scroll-parent'
@@ -128,7 +124,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         setFixed(threshold > curRootRect.top)
       }
     } else {
-      const windowHeight = getSystemInfoSync().windowHeight
+      const windowHeight = getWindowInfo().windowHeight
       setFixed(windowHeight - threshold < curRootRect.bottom)
     }
   }

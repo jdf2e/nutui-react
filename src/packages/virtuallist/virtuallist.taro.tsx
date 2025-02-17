@@ -8,10 +8,10 @@ import React, {
   useState,
 } from 'react'
 import { ScrollView, View } from '@tarojs/components'
-import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Data, PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface VirtualListProps extends BasicComponent {
@@ -56,7 +56,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const clientHeight = useMemo(
-    () => getSystemInfoSync().windowHeight - 5 || 667,
+    () => getWindowInfo().windowHeight - 5 || 667,
     []
   )
 
