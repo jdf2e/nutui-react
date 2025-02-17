@@ -38,8 +38,8 @@ jobs:
 #        if: contains( env.COMMIT_MESSAGE , '-beta')
 #        run: echo "RELEASE_TAG=beta" >> $GITHUB_ENV
 #
-#      - name: Install pnpm
-#        run: npm i -g pnpm@10
+      - name: Install pnpm
+        run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v4
         with:
