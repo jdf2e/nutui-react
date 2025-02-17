@@ -21,6 +21,9 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
+          registry-url: https://registry.npmjs.org
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Get commit message
         run: |
@@ -60,15 +63,17 @@ jobs:
             echo "构建 nutui-react 失败"
             exit 1
           fi
-          if ! pnpm build:taro; then
-            echo "构建 nutui-react-taro 失败"
-            exit 1
-          fi
+#          if ! pnpm build:taro; then
+#            echo "构建 nutui-react-taro 失败"
+#            exit 1
+#          fi
 
       - name: Run Release @nutui/nutui-react
         if: env.ABORT != 'true'
         run: pnpm --dir ./release/h5 publish:beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Run Releases @nutui/nutui-react-taro
-        if: env.ABORT != 'true'
-        run: pnpm --dir ./release/taro publish:beta
+#      - name: Run Releases @nutui/nutui-react-taro
+#        if: env.ABORT != 'true'
+#        run: pnpm --dir ./release/taro publish:beta
