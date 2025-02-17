@@ -64,9 +64,9 @@ jobs:
 #          fi
 
       - name: Run Release @nutui/nutui-react
-        run: pnpm --dir ./release/h5 publish:beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --dir ./release/h5 publish:beta
 
 #      - name: Run Releases @nutui/nutui-react-taro
 #        if: env.ABORT != 'true'
