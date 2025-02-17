@@ -8,18 +8,22 @@ on:
 
 jobs:
   release-3x:
-    env:
-      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      NPM_CONFIG_PROVENANCE: true
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v4
         with:
+          registry-url: 'https://registry.npmjs.org'
           node-version: '20'
           cache: 'pnpm'
 
@@ -39,19 +43,13 @@ jobs:
           fi
 
       - name: Run Release @nutui/nutui-react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
-        run: |
-          cd ./release/h5 || exit 1
-          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
-            echo "发布 @nutui/nutui-react 失败"
-            exit 1
-          fi
+        run: pnpm --dir ./release/h5 publish
 
       - name: Run Releases @nutui/nutui-react-taro
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
-        run: |
-          cd ./release/taro || exit 1
-          if ! npm publish --tag ${{ env.RELEASE_TAG }}; then
-            echo "发布 @nutui/nutui-react-taro 失败"
-            exit 1
-          fi
+        run: pnpm --dir ./release/taro publish
