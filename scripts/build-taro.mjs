@@ -422,8 +422,8 @@ function generateReleasePackageJson() {
     module: packageJson.module,
     typings: packageJson.typings,
     scripts: {
-      "publish:beta": "npm publish --tag=beta",
-      "publish:latest": "npm publish"
+      "publish:beta": "npm publish --tag=beta --access public --no-git-checks",
+      "publish:latest": "npm publish --access public --no-git-checks"
     },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
