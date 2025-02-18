@@ -8,7 +8,7 @@ exports[`props digits test 1`] = `
     <div
       class="nut-price-symbol nut-price-symbol-normal"
     >
-      &yen;
+      ¥
     </div>
     <div
       class="nut-price-integer nut-price-integer-normal "
