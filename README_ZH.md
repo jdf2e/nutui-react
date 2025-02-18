@@ -73,7 +73,7 @@ pnpm run dev
 
 ### 本地运行 Taro 环境
 
-**注意：在 Taro 环境中增加了 pnpm pre 钩子。其目的是在 H5 或小程序预览的时候展示出未适配鸿蒙的组件。环境变量可以查看 predev:taro 命令。**
+**注意：在 Taro 环境新增 pnpm pre 钩子，用于 H5 或小程序预览时显示未适配鸿蒙的组件，环境变量可通过 predev:taro 命令查看。**
 
 #### 本地运行 Taro 相关的预览
 
