@@ -244,7 +244,7 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       happy-dom:
-        specifier: ^14.2.0
+        specifier: ^14.12.3
         version: 14.12.3
       highlight.js:
         specifier: ^11.9.0
