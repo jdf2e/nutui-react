@@ -20,7 +20,7 @@ import {
   CascaderFormat,
 } from './types'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider'
 
 export interface CascaderProps

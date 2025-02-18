@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v4
         with:
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v4
         with:
@@ -50,7 +50,7 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         if: ${{ always() }}
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
@@ -60,7 +60,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm i -g pnpm@10
 
       - uses: actions/setup-node@v4
         with:

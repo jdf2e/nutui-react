@@ -12,7 +12,7 @@ import {
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import {
   splitDate,
   isMultiple,

@@ -11,9 +11,9 @@ import classNames from 'classnames'
 import { createPortal } from 'react-dom'
 import { ArrowRadius } from '@nutui/icons-react'
 import Popup, { PopupProps } from '@/packages/popup/index'
-import { getRect } from '@/utils/use-client-rect'
+import { getRect } from '@/hooks/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import useClickAway from '@/utils/use-click-away'
+import useClickAway from '@/hooks/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
@@ -21,8 +21,8 @@ import { useRtl } from '@/packages/configprovider'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
-  theme: PopoverTheme | string
-  location: PopoverLocation | string
+  theme: PopoverTheme
+  location: PopoverLocation
   visible: boolean
   offset: string[] | number[]
   arrowOffset: number

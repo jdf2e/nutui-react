@@ -11,7 +11,7 @@ import { ScrollView, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
-import useUuid from '@/utils/use-uuid'
+import useUuid from '@/hooks/use-uuid'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
