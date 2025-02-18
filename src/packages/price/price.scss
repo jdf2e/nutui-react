@@ -8,15 +8,45 @@
   &-symbol,
   &-integer,
   &-decimal {
-    color: $color-primary;
+    color: $price-color;
+    font-family: 'JD';
+    line-height: 1;
+  }
+
+  &-darkgray {
+    .nut-price {
+      &-symbol,
+      &-integer,
+      &-decimal {
+        font-family: 'JD-Bold';
+        color: $price-darkgray-color;
+      }
+    }
+  }
+
+  &-primary {
+    .nut-price {
+      &-symbol,
+      &-integer,
+      &-decimal {
+        font-family: 'JD-Bold';
+        color: $price-primary-color;
+      }
+    }
   }
 
   &-symbol {
-    font-size: $price-symbol-medium-size;
     padding-right: $price-symbol-padding-right;
+    &-xlarge {
+      font-size: $price-symbol-xlarge-size;
+    }
 
     &-large {
-      font-size: $price-symbol-big-size;
+      font-size: $price-symbol-large-size;
+    }
+
+    &-normal {
+      font-size: $price-symbol-normal-size;
     }
 
     &-small {
@@ -30,10 +60,16 @@
   }
 
   &-integer {
-    font-size: $price-integer-medium-size;
+    &-xlarge {
+      font-size: $price-integer-xlarge-size;
+    }
 
     &-large {
-      font-size: $price-integer-big-size;
+      font-size: $price-integer-large-size;
+    }
+
+    &-normal {
+      font-size: $price-integer-normal-size;
     }
 
     &-small {
@@ -42,10 +78,16 @@
   }
 
   &-decimal {
-    font-size: $price-decimal-medium-size;
+    &-xlarge {
+      font-size: $price-decimal-xlarge-size;
+    }
 
     &-large {
-      font-size: $price-decimal-big-size;
+      font-size: $price-decimal-large-size;
+    }
+
+    &-normal {
+      font-size: $price-decimal-normal-size;
     }
 
     &-small {
@@ -55,7 +97,5 @@
 
   &-line {
     text-decoration: line-through $price-line-color;
-    font-size: $price-line-font-size;
-    color: $price-line-color;
   }
 }

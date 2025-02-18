@@ -1,6 +1,6 @@
 import React from 'react'
 import { Collapse } from '@nutui/nutui-react'
-import { ArrowDown, Checked } from '@nutui/icons-react'
+import { ArrowDown, Check } from '@nutui/icons-react'
 
 const Demo6 = () => {
   return (
@@ -13,7 +13,7 @@ const Demo6 = () => {
               alignItems: 'center',
             }}
           >
-            <Checked />
+            <Check />
             标题1
           </div>
         }
@@ -29,10 +29,11 @@ const Demo6 = () => {
             style={{
               display: 'flex',
               alignItems: 'center',
+              color: '#999',
             }}
           >
-            标题2
-            <Checked color="red" />
+            描述
+            <Check color="#999" width={12} />
           </div>
         }
       >

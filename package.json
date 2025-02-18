@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.0-beta.7",
+  "version": "3.0.0-beta.14",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -31,7 +31,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdf2e/nutui-react.git"
+    "url": "git+https://github.com/jdf2e/nutui-react.git"
   },
   "files": [
     "dist",
@@ -44,6 +44,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "engines": {
+    "pnpm": ">=10.0.0"
+  },
   "scripts": {
     "add": "node scripts/create-component-mode.js && npm run prepare",
     "add:taro:config": "node scripts/taro/generate-taro-route.js",
@@ -51,11 +54,9 @@
     "checked:taro": "npm run generate:file:taro && tsc --project ./tsconfig.taro.json --noEmit",
     "changelog": "node ./scripts/generate-changelog.js",
     "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
-    "clone:rn": "pnpm run update:taro:entry && node ./scripts/rn/copy-file.js",
     "dev": "vite --open --force",
     "dev:rtl": "VITE_RTL=rtl vite --open --force",
     "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf vite --open --force",
-    "dev:taro:jdrn": "pnpm run clone:rn && pnpm --dir ./packages/nutui-taro-demo dev:jdrn",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
     "dev:taro": "pnpm run update:taro:entry && pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:taro:h5": "pnpm dev:taro h5",
@@ -63,15 +64,15 @@
     "dev:jdtaro:jdharmonycpp": "pnpm run clone:jdharmony cpp &&pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmonycpp",
     "dev:jdtaro:jdharmony": "pnpm run clone:jdharmony  && pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmony",
     "dev:taro:jmapp": "pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jmapp",
-    "build": "npm run checked && node scripts/build.mjs",
-    "build:taro": "npm run checked:taro && node scripts/build-taro.mjs",
+    "build": "node ./scripts/replace-css-var.js && npm run checked && node scripts/build.mjs",
+    "build:taro": "node ./scripts/replace-css-var.js && npm run checked:taro && node scripts/build-taro.mjs",
     "build:taro:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp node scripts/build-taro.mjs",
     "build:site": "npm run checked && vite build --config vite.config.site.ts",
     "build:site:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite build",
     "build:taro:site": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:jdtaro:site": "pnpm update:taro:entry && npm run checked:taro && npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:taro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
-    "build:jstaro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
+    "build:jdtaro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && JD=1 pnpm --dir ./packages/nutui-taro-demo build:h5",
     "generate:file": "node scripts/generate-nutui.js",
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
@@ -79,9 +80,7 @@
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
     "lint": "eslint ./src/packages/*/",
     "lint:fix": "eslint --fix ./src/packages",
-    "postpublish": "node scripts/postpublish.js",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",
-    "prepublishOnly": "node scripts/prepublish.js",
     "publish:beta": "npm publish --tag beta",
     "test": "vitest --coverage",
     "test:ui": "vitest --ui --coverage",
@@ -93,7 +92,7 @@
     "e2e:open:h5": "start-server-and-test dev http://localhost:5173/ cypress:open",
     "e2e:run:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:run:taro",
     "e2e:open:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:open:taro",
-    "update:taro:entry": "node ./scripts/rn/update-taro-entry",
+    "update:taro:entry": "node ./scripts/harmony/update-taro-entry",
     "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro"
   },
   "lint-staged": {
@@ -102,8 +101,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^2.0.1",
-    "@nutui/icons-react-taro": "^2.0.1",
+    "@nutui/icons-react": "^3.0.0-beta.2",
+    "@nutui/icons-react-taro": "^3.0.0-beta.2",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
@@ -111,8 +110,10 @@
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
     "classnames": "^2.5.1",
-    "lodash.isequal": "^4.5.0",
+    "react-fast-compare": "^3.2.2",
     "lodash.kebabcase": "^4.1.1",
+    "lottie-miniprogram": "^1.0.12",
+    "lottie-react": "^2.4.0",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -131,15 +132,14 @@
     "@swc/core": "^1.4.8",
     "@tarojs/components": "4.0.8-beta.1",
     "@tarojs/plugin-platform-alipay": "4.0.8-beta.1",
-    "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
     "@tarojs/plugin-platform-jd": "4.0.8-beta.1",
+    "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
     "@tarojs/react": "4.0.8-beta.1",
     "@tarojs/taro": "4.0.8-beta.1",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^16.0.0",
     "@types/fs-extra": "^11.0.4",
     "@types/loadable__component": "^5.13.8",
-    "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.kebabcase": "^4.1.9",
     "@types/node": "^20.11.19",
     "@types/postcss-import": "^14.0.3",
@@ -154,10 +154,11 @@
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^2.0.4",
     "@vitest/ui": "^2.0.4",
+    "@inquirer/prompts":"^7.2.3",
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "cypress": "^13.15.0",
-    "del": "^7.1.0",
+    "del": "^8.0.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -179,7 +180,6 @@
     "happy-dom": "^14.2.0",
     "highlight.js": "^11.9.0",
     "husky": "^9.0.11",
-    "inquirer": "^10.1.4",
     "jscodeshift": "^17.0.0",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
@@ -228,6 +228,9 @@
   },
   "resolutions": {
     "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19"
+    "@types/react-dom": "^18.2.19",
+    "sass": "1.77.6",
+    "@tarojs/api": "4.0.8-beta.1",
+    "@tarojs/components": "4.0.8-beta.1"
   }
 }

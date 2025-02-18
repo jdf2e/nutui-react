@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem'
 import TabbarContext from './context'
 

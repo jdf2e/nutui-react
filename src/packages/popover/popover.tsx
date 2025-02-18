@@ -9,11 +9,11 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { createPortal } from 'react-dom'
-import Popup from '@/packages/popup'
-import { PopupProps } from '@/packages/popup/popup'
-import { getRect } from '@/utils/use-client-rect'
+import { ArrowRadius } from '@nutui/icons-react'
+import Popup, { PopupProps } from '@/packages/popup/index'
+import { getRect } from '@/hooks/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import useClickAway from '@/utils/use-click-away'
+import useClickAway from '@/hooks/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
@@ -21,8 +21,8 @@ import { useRtl } from '@/packages/configprovider'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
-  theme: PopoverTheme | string
-  location: PopoverLocation | string
+  theme: PopoverTheme
+  location: PopoverLocation
   visible: boolean
   offset: string[] | number[]
   arrowOffset: number
@@ -43,7 +43,7 @@ const defaultProps = {
   theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: [0, 12],
+  offset: [0, 8],
   arrowOffset: 0,
   targetId: '',
   showArrow: true,
@@ -172,8 +172,7 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    const direction = location.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    return `${prefixCls} ${prefixCls}-${location.split('-')[0]} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
@@ -267,11 +266,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect?.(item, index)
+      onSelect && onSelect(item, index)
     }
     if (closeOnActionClick) {
-      onClick?.()
-      onClose?.()
+      onClick && onClick()
+      onClose && onClose()
     }
   }
   return (
@@ -281,11 +280,11 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            onClick?.()
+            onClick && onClick()
             if (!visible) {
-              onOpen?.()
+              onOpen && onOpen()
             } else {
-              onClose?.()
+              onClose && onClose()
             }
           }}
           style={style}
@@ -300,7 +299,7 @@ export const Popover: FunctionComponent<
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
               overlay={overlay}
-              position="default"
+              position="none"
               lockScroll={false}
               {...rest}
             >
@@ -309,7 +308,9 @@ export const Popover: FunctionComponent<
                 ref={popoverContentRef}
               >
                 {showArrow && (
-                  <div className={popoverArrow()} style={arrowStyle()} />
+                  <div className={popoverArrow()} style={arrowStyle()}>
+                    <ArrowRadius width={8} height={4} />
+                  </div>
                 )}
                 {Array.isArray(children) ? children[1] : null}
                 {list.map((item, index) => {
@@ -325,22 +326,22 @@ export const Popover: FunctionComponent<
                       key={item.key || index}
                       onClick={() => handleSelect(item, index)}
                     >
-                      {item.icon ? (
+                      {item.icon && (
                         <div className="nut-popover-menu-item-icon">
                           {item.icon}
                         </div>
-                      ) : null}
+                      )}
                       <div className="nut-popover-menu-item-name">
                         {item.name}
                       </div>
-                      {item.action && item.action.icon ? (
+                      {item.action && item.action.icon && (
                         <div
                           className="nut-popover-menu-item-action-icon"
                           onClick={(e) => item.action?.onClick?.(e)}
                         >
                           {item.action.icon}
                         </div>
-                      ) : null}
+                      )}
                     </div>
                   )
                 })}

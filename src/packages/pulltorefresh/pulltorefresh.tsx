@@ -43,7 +43,7 @@ const defaultProps = {
   completeText: '',
   completeDelay: 500,
   disabled: false,
-  headHeight: 50,
+  headHeight: 80,
   threshold: 60,
   onRefresh: () => {},
 } as PullToRefreshProps

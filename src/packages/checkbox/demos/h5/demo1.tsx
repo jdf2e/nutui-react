@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Checklist } from '@nutui/icons-react'
+import { Check } from '@nutui/icons-react'
 import { Cell, Checkbox } from '@nutui/nutui-react'
 
 const Demo1 = () => {
@@ -31,9 +31,7 @@ const Demo1 = () => {
         <Checkbox
           style={{ marginInlineEnd: '8px' }}
           shape="button"
-          activeIcon={
-            <Checklist className="nut-checkbox-button-icon-checked" />
-          }
+          activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
           className="test"
           label={
             <div

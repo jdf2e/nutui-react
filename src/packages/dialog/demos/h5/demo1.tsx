@@ -69,6 +69,7 @@ const Demo1 = () => {
           })
           setTimeout(() => {
             dialog.update({
+              title: '更新标题',
               content: '打开弹框 3s 后更新弹框内容 我是更新',
             })
           }, 3000)

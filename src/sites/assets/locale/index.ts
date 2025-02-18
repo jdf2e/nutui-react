@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import useLocale from './uselocale'
 import { BaseLang } from '../../../locales/base'
 
@@ -11,7 +11,7 @@ interface LanguagesPackage<A = {}> {
 
 export const useTranslate = <T>(languagesPackage: LanguagesPackage<T>) => {
   const [locale] = useLocale()
-  const [translated, setLanguagesPackage] = useState<BaseLang & T>(
+  const [translated] = useState<BaseLang & T>(
     languagesPackage[locale || 'zh-CN'] as any
   )
   return [translated]

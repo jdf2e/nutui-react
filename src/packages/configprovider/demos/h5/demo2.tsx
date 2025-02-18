@@ -3,7 +3,7 @@ import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const darkTheme = {
-    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryIcon: 'green',
     nutuiColorPrimaryStop1: 'green',
     nutuiColorPrimaryStop2: 'green',
   }

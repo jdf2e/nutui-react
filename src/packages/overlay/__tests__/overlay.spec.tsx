@@ -6,18 +6,14 @@ import { Overlay } from '../overlay'
 
 test('should change z-index when using z-index prop', () => {
   const { getByTestId } = render(
-    <Overlay
-      data-testid="overlay-zindex"
-      visible
-      style={{ '--nutui-overlay-zIndex': 99 }}
-    />
+    <Overlay data-testid="overlay-zindex" visible zIndex={99} />
   )
   // @ts-ignore
   expect(getByTestId('overlay-zindex')).toMatchInlineSnapshot(`
     <div
       class="nut-overlay"
       data-testid="overlay-zindex"
-      style="--nutui-overlay-zIndex: 99;"
+      style="z-index: 99;"
     />
   `)
 })

@@ -15,12 +15,7 @@ const Demo7 = () => {
         backgroundColor: '#ffffff',
       }}
     >
-      <Input
-        placeholder="受控下的清除"
-        value={keyword}
-        onChange={setKeyword}
-        placeholderTextColor="#757575"
-      />
+      <Input placeholder="受控下的清除" value={keyword} onChange={setKeyword} />
       <Button
         type="primary"
         size="small"

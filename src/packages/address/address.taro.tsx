@@ -9,7 +9,7 @@ import { ArrowLeft } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { AddressList } from './types'
 import {
   CascaderOption,
@@ -18,7 +18,7 @@ import {
   CascaderValue,
 } from '@/packages/cascader/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 type AddressRef = {
   open: () => void

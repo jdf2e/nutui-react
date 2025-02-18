@@ -24,6 +24,8 @@ NutUI-React 可以通過 \[CSS 變數\]（<https://developer.mozilla.org/zh-CN/d
 /* 添加這段樣式后，Primary Button 會變成綠色 */
 :root {
   --nutui-color-primary: green;
+  --nutui-color-primary-stop1: green;
+  --nutui-color-primary-stop2: green;
 }
 ```
 

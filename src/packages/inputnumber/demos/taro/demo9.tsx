@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
-import { Cell, InputNumber, Toast } from '@nutui/nutui-react-taro'
-import ConfigProvider from '@/packages/configprovider'
+import {
+  Cell,
+  InputNumber,
+  Toast,
+  ConfigProvider,
+} from '@nutui/nutui-react-taro'
 
 const Demo9 = () => {
   const customTheme3 = {

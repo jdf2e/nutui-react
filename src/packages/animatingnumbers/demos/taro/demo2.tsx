@@ -7,6 +7,7 @@ const Demo2 = () => {
     nutuiCountupBgColor: `var(--nutui-color-primary)`,
     nutuiCountupColor: `#fff`,
     nutuiCountupLrMargin: `1px`,
+    nutuiCountupSeparatorColor: `var(--nutui-color-primary)`,
   }
   const [value, setEndNumer] = useState('1570.99')
   useEffect(() => {

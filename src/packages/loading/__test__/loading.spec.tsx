@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
 import { Star } from '@nutui/icons-react'
 import { Loading } from '../loading'
+import data from '@/packages/lottie/animation/light/loading.json'
 
 test('type test', () => {
   const { container } = render(<Loading type="circular" />)
@@ -29,4 +29,20 @@ test('custom icon test', () => {
     <Loading icon={<Star width="30" height="30" color="red" />} />
   )
   expect(container.querySelector('svg')).toHaveClass('nut-icon-Star')
+})
+
+test('use lottie', () => {
+  const { container } = render(
+    <Loading
+      direction="vertical"
+      type="lottie"
+      jsonData={data}
+      lottieProps={{ autoplay: false, loop: false }}
+    >
+      正在奋力加载中，感谢您的等待
+    </Loading>
+  )
+  expect(container.querySelectorAll('g')[0].getAttribute('id')).toContain(
+    'lottie'
+  )
 })

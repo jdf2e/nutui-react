@@ -83,9 +83,10 @@ import { Badge } from '@nutui/nutui-react'
 | value | value to show, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Is dotted, When `value` is a custom content, dot does not take effect | `boolean` | `false` |
-| top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
-| right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
-| color | background color,the default value is the theme primary color | `string` | `-` |
+
+| size | dot size, effective when dot is equal to `true` | `small` \| `normal` \| `large` | `large` |
+| top | Up and down offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
+| right | Left and right offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
 | fill | Fill Mode | `solid` \| `outline` | `solid` |
 
 ## Theming
@@ -96,17 +97,21 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-badge-height | badge height | `14px` |
-| \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
-| \--nutui-badge-color | badge content color | `#fff` |
-| \--nutui-badge-font-size | badge content font size | `$font-size-s` |
-| \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
-| \--nutui-badge-border-radius | badge border-radius | `14px` |
-| \--nutui-badge-min-width | badge min-width | `5px` |
-| \--nutui-badge-padding | badge padding value | `0 5px` |
-| \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
-| \--nutui-badge-icon-size | when badge is icon,badge size | `12px` |
-| \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
-| \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
-| \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |
-| \--nutui-badge-dot-border | when badge is dot, the dot border | `0px solid $color-primary-text` |
+| \--nutui-badge-height | The height of the badge | `14px` |
+| \--nutui-badge-background-color | badge background color | `$color-primary` |
+| \--nutui-badge-color | badge content color value | `$color-primary-text)` |
+| \--nutui-badge-font-size | badge content font size | `$font-size-xxs` |
+| \--nutui-badge-border | badge border | `1px solid $color-primary-text` |
+| \--nutui-badge-border-radius | badge border rounded corners | `14px` |
+| \--nutui-badge-min-width | badge minimum width | `6px` |
+| \--nutui-badge-padding | badge’s padding value | `1px 4px` |
+| \--nutui-badge-icon-padding | The padding value when badge is a custom icon | `2px` |
+| \--nutui-badge-icon-size | The size of badge when it is a custom icon | `10px` |
+| \--nutui-badge-content-transform | badge content position | `translate(50%, -50%)` |
+| \--nutui-badge-z-index | badge z-index when customizing the icon | `1` |
+| \--nutui-badge-dot-width | When the badge is a dot, the size is equal to the width and height of normal | `6px` |
+| \--nutui-badge-dot-small-width | When badge is a dot, size is equal to the width and height of small | `4px` |
+| \--nutui-badge-dot-large-width | When the badge is a dot, size is equal to the width and height of large | `8px` |
+| \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
+| \--nutui-badge-outline-color | The border when badge is outline text color value | `$color-primary` |
+| \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |

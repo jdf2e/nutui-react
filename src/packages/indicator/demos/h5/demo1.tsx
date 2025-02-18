@@ -1,5 +1,5 @@
 import React from 'react'
-import { Indicator, Cell } from '@nutui/nutui-react'
+import { Cell, Indicator } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   return (
@@ -8,10 +8,13 @@ const Demo1 = () => {
         <Indicator total={3} current={0} />
       </Cell>
       <Cell>
-        <Indicator total={3} current={1} />
+        <Indicator total={2} current={0} />
       </Cell>
       <Cell>
-        <Indicator total={3} current={2} />
+        <Indicator total={2} current={0} direction="vertical" />
+      </Cell>
+      <Cell style={{ background: '#C2C4CC' }}>
+        <Indicator total={2} current={1} direction="vertical" color="white" />
       </Cell>
     </>
   )

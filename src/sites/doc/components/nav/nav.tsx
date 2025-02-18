@@ -28,7 +28,6 @@ const Nav = () => {
               {cn.enName === 'dataentry' ? null : (
                 <li>{lang === 'zh-CN' ? cn.name : cn.enName}</li>
               )}
-
               <ul>
                 {cn.packages.map((cp: any) => {
                   if (!cp.show) return null

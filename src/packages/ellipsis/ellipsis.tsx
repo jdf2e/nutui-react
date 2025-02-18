@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useIsomorphicLayoutEffect } from '@/utils/use-isomprphic-layout-effect'
+import { useIsomorphicLayoutEffect } from '@/hooks/use-isomprphic-layout-effect'
 import { useRtl } from '../configprovider'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'

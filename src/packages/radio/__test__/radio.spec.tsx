@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useState } from 'react'
-import { Checklist } from '@nutui/icons-react'
+import { Check } from '@nutui/icons-react'
 import Radio from '@/packages/radio'
 import RadioGroup from '@/packages/radiogroup'
 
@@ -30,13 +30,11 @@ describe('radio', () => {
 
   test('radio custom icon', () => {
     const { container } = render(
-      <Radio icon={<Checklist />} activeIcon={<Checklist />}>
+      <Radio icon={<Check />} activeIcon={<Check />}>
         自定义图标
       </Radio>
     )
-    expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-icon-Checklist'
-    )
+    expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-Check')
   })
 
   test('radioGroup onChange toBeCalled', () => {

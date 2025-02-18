@@ -50,7 +50,7 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
-### RN, HarmonyOS version usage
+### HarmonyOS version usage
 
 Due to the lack of support for fixed positioning, it needs to be used in conjunction with ScrollView.
 
@@ -70,7 +70,7 @@ Due to the lack of support for fixed positioning, it needs to be used in conjunc
 | threshold | How high to scroll the page vertically | `number` | `200` |
 | zIndex | Set the component z-index | `number` | `900` |
 | duration | Set animation duration | `number` | `1000` |
-| scrollRes | Callback parameters of a ScrollView listener, mainly used for RN and HarmonyOS | `PageScrollObejct` | `-` |
+| scrollRes | Callback parameters of a ScrollView listener, mainly used for HarmonyOS | `PageScrollObejct` | `-` |
 | onClick | Emitted when component is clicked | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming

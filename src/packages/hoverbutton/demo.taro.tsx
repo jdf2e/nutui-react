@@ -9,10 +9,10 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo6 from './demos/taro/demo6'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import Demo5 from './demos/taro/demo5'
 
-const isNative = harmonyAndRn()
+const isNative = harmony()
 
 const HoverDemo = () => {
   const [translated] = useTranslate({
@@ -85,7 +85,7 @@ const HoverDemo = () => {
           }}
         />
 
-        {/* @TODO RN、鸿蒙端暂不支持 ConfigProvider */}
+        {/* @TODO 鸿蒙端暂不支持 ConfigProvider */}
         <View className="h2">{translated.customSpacing}</View>
         <Cell
           title={`${translated.show}${translated.customSpacing}`}

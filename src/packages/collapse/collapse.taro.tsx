@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseItem from '../collapseitem/index.taro'
 import CollapseContext from './context'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export type CollapseActiveName = Array<string> | string
 

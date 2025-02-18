@@ -4,13 +4,13 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { Loading, More } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
 import { PullToRefreshType } from './types'
 import pxTransform from '@/utils/px-transform'
-import { rn } from '@/utils/platform-taro'
+import { getDeviceInfo } from '@/utils/get-system-info'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
@@ -39,7 +39,7 @@ const defaultProps = {
   completeText: '',
   completeDelay: 500,
   disabled: false,
-  headHeight: 50,
+  headHeight: 80,
   threshold: 60,
   scrollTop: 0,
   onRefresh: () => {},
@@ -126,11 +126,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
     clearTimeout(timer.current)
-    if (rn()) {
-      timer.current = setTimeout(() => {
-        handleTouchEnd()
-      }, 300)
-    }
   }
 
   async function doRefresh() {
@@ -165,7 +160,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
   // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
   const isAndroidWeApp =
-    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
+    getDeviceInfo().platform === 'android' && Taro.getEnv() === 'WEAPP'
+
   const springStyles = {
     height: pxTransform(height),
     ...(!pullingRef.current || isAndroidWeApp
@@ -176,6 +172,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     <View
       className={classes}
       style={props.style}
+      catchMove
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

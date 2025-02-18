@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
 import { View, ITouchEvent, Input as TaroInput } from '@tarojs/components'
 import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface SearchBarProps extends BasicComponent {

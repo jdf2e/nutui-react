@@ -1,22 +1,31 @@
 .nut-textarea {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  background-color: $color-background-overlay;
-  font-size: $textarea-font;
-  padding: $textarea-padding;
+  font-size: $font-size-base;
+  border-radius: $radius-s;
+
+  &-container {
+    padding: $textarea-padding;
+    background-color: $color-background-overlay;
+  }
+
+  &-error {
+    border: 0.5px solid $color-danger;
+    background-color: $color-danger-light;
+  }
 
   &-limit {
-    position: absolute;
-    right: 15px;
-    bottom: 12px;
-    font-size: $textarea-font;
-    color: $textarea-limit-color;
+    text-align: right;
+    font-size: $font-size-base;
+    line-height: $font-size-base;
+    margin-top: $spacing-base;
+    color: $color-text-help;
     &-disabled {
       cursor: not-allowed;
-      color: $textarea-disabled-color;
+      color: $color-text-disabled;
     }
   }
 
@@ -25,10 +34,11 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
+    height: 40px;
     min-width: 0;
     margin: 0;
     padding: 0;
-    font-size: $textarea-font;
+    font-size: $font-size-base;
     color: $textarea-text-color;
     caret-color: $textarea-text-curror-color;
     text-align: left;
@@ -36,22 +46,39 @@
     border: 0;
     resize: none;
 
+    // &::after{
+    //   content: '';
+    //   position: absolute;
+    //   width: 2px;
+    //   height: 14px;
+    //   background-color: red;
+    //   // left: 10px;
+    //   // top: 50%;
+    //   transform: translateY(-50%);
+    //   z-index: 1;
+    //   pointer-events: none;
+    // }
+
     .taro-textarea {
       color: $textarea-text-color;
       background-color: transparent;
       resize: none;
     }
 
+    &::placeholder {
+      color: $color-text-help;
+    }
+
     &-disabled {
       cursor: not-allowed;
-      color: $textarea-disabled-color;
+      color: $color-text-disabled;
       &::placeholder {
-        color: $textarea-disabled-color;
+        color: $color-text-disabled;
       }
       .taro-textarea {
-        color: $textarea-disabled-color;
+        color: $color-text-disabled;
         &::placeholder {
-          color: $textarea-disabled-color;
+          color: $color-text-disabled;
         }
       }
     }

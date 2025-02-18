@@ -1,0 +1,79 @@
+.nut-pickerview {
+  --nutui-picker-item-height: 36px;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: $picker-list-height;
+  $pickerview-top: calc(($picker-list-height - $picker-item-height) / 2);
+  overflow: hidden;
+
+  &-mask,
+  &-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  &-mask {
+    top: 0;
+    bottom: 0;
+    background-image: $picker-mask-background;
+    background-position: top, bottom;
+    background-size: 100% $pickerview-top;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+  }
+
+  &-indicator {
+    top: $pickerview-top;
+    height: $picker-item-height;
+    border: $picker-item-active-line-border;
+    border-left: 0;
+    border-right: 0;
+    box-sizing: border-box;
+  }
+
+  &-list {
+    position: relative;
+    flex: 1;
+    height: $picker-list-height;
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  &-roller {
+    position: absolute;
+    top: $pickerview-top;
+    width: 100%;
+    height: $picker-item-height;
+    z-index: 1;
+    transform-style: preserve-3d;
+  }
+
+  &-roller-item {
+    position: absolute;
+    top: 0;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    &-hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  &-roller-item,
+  &-roller-item-tiled {
+    width: 100%;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
+    color: $picker-item-text-color;
+    font-size: $picker-item-text-font-size;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

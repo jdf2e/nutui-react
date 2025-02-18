@@ -1,6 +1,6 @@
 import React from 'react'
 import { Steps, Step, ConfigProvider } from '@nutui/nutui-react'
-import { People } from '@nutui/icons-react'
+import { Transit } from '@nutui/icons-react'
 
 const customTheme = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
@@ -28,7 +28,7 @@ const Demo6 = () => {
             value={2}
             title="进行中"
             icon={
-              <People
+              <Transit
                 width={20}
                 height={20}
                 style={{ color: 'red', flex: 'none' }}

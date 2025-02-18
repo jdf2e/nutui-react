@@ -1,45 +1,51 @@
-import React from 'react'
-import { Uploader } from '@nutui/nutui-react'
+import React, { useRef } from 'react'
+import { Uploader, Button, Cell, Space } from '@nutui/nutui-react'
+
+interface uploadRefState {
+  submit: () => void
+  clear: () => void
+}
 
 const Demo9 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const canvastoFile = (
-    canvas: HTMLCanvasElement,
-    type: string,
-    quality: number
-  ): Promise<Blob | null> => {
-    return new Promise((resolve) => {
-      canvas.toBlob((blob) => resolve(blob), type, quality)
+  const uploadRef = useRef<uploadRefState>(null)
+  function sleep(time: number) {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, time)
     })
   }
-  const fileToDataURL = (file: Blob): Promise<any> => {
-    return new Promise((resolve) => {
-      const reader = new FileReader()
-      reader.onloadend = (e) => resolve((e.target as FileReader).result)
-      reader.readAsDataURL(file)
-    })
+  async function upload(file: File) {
+    await sleep(2000)
+    return {
+      url: URL.createObjectURL(file),
+    }
   }
-  const dataURLToImage = (dataURL: string): Promise<HTMLImageElement> => {
-    return new Promise((resolve) => {
-      const img = new Image()
-      img.onload = () => resolve(img)
-      img.src = dataURL
-    })
+  const submitUpload = () => {
+    ;(uploadRef.current as uploadRefState).submit()
   }
-  const beforeUpload = async (files: File[]) => {
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    const base64 = await fileToDataURL(files[0])
-    const img = await dataURLToImage(base64)
-    canvas.width = img.width
-    canvas.height = img.height
-    context.clearRect(0, 0, img.width, img.height)
-    context.drawImage(img, 0, 0, img.width, img.height)
-    const blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob
-    const f = await new File([blob], files[0].name, { type: files[0].type })
-    return [f]
+  const clearUpload = () => {
+    ;(uploadRef.current as uploadRefState).clear()
   }
-
-  return <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
+  return (
+    <Cell style={{ display: 'flex', flexDirection: 'column' }}>
+      <Uploader
+        maxCount="5"
+        multiple
+        autoUpload={false}
+        ref={uploadRef}
+        upload={(file: File) => upload(file)}
+        style={{ marginBottom: 10 }}
+      />
+      <Space wrap>
+        <Button type="success" size="small" onClick={submitUpload}>
+          执行上传
+        </Button>
+        <Button type="primary" size="small" onClick={clearUpload}>
+          手动清空上传
+        </Button>
+      </Space>
+    </Cell>
+  )
 }
 export default Demo9

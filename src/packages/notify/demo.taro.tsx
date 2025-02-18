@@ -7,7 +7,6 @@ import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
-import { rn } from '@/utils/platform-taro'
 
 const NotifyDemo = () => {
   const [translated] = useTranslate({
@@ -28,7 +27,7 @@ const NotifyDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView style={rn() ? { position: 'relative' } : {}}>
+      <ScrollView>
         <View
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
           style={{ paddingBottom: '30px' }}

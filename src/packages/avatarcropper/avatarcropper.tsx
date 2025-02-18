@@ -9,9 +9,9 @@ import React, {
 import classNames from 'classnames'
 import Button from '@/packages/button'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { clamp, preventDefault } from '@/utils'
-import { getRect } from '@/utils/use-client-rect'
+import { getRect } from '@/hooks/use-client-rect'
 import { useConfig } from '@/packages/configprovider'
 
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'

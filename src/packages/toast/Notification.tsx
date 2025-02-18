@@ -3,38 +3,23 @@ import classNames from 'classnames'
 import { Success, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
-import { BasicComponent } from '@/utils/typings'
-import { ToastWordBreak } from './toast'
+import { ToastProps } from './index'
 
-export interface NotificationProps extends BasicComponent {
-  id?: string
-  icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
-  content: string | React.ReactNode
-  duration: number
-  position?: 'top' | 'center' | 'bottom'
-  title: string
-  size: string | number
-  closeOnOverlayClick: boolean
-  lockScroll: boolean
-  contentClassName?: string
-  contentStyle?: React.CSSProperties
-  wordBreak?: ToastWordBreak
-  onClose: () => void
-}
 export interface NotificationState {
   show: boolean
 }
 const classPrefix = 'nut-toast'
+type ToastNativeProps = Partial<ToastProps>
 
 export default class Notification extends React.PureComponent<
-  NotificationProps,
+  ToastNativeProps,
   NotificationState
 > {
-  static newInstance: (properties: NotificationProps, callback: any) => void
+  static newInstance: (properties: ToastNativeProps, callback: any) => void
 
   private closeTimer: number | undefined
 
-  constructor(props: NotificationProps) {
+  constructor(props: ToastNativeProps) {
     super(props)
     this.close = this.close.bind(this)
     this.startCloseTimer = this.startCloseTimer.bind(this)
@@ -54,7 +39,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClose()
+    this.props.onClose && this.props.onClose()
   }
 
   startCloseTimer() {
@@ -117,52 +102,46 @@ export default class Notification extends React.PureComponent<
       contentClassName,
       contentStyle,
       wordBreak,
+      zIndex,
     } = this.props
-
     const { show } = this.state
-
     const classes = classNames({
       'nut-toast-has-icon': icon,
     })
     return (
-      <>
-        <Overlay
-          visible={show}
-          style={style}
-          className={`${classPrefix}-overlay-default ${className}`}
-          onClick={() => {
-            this.clickCover()
-          }}
-          closeOnOverlayClick={closeOnOverlayClick}
-          lockScroll={lockScroll}
-        >
-          <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
-            <div
-              className={classNames(
-                `${classPrefix}-inner`,
-                `${classPrefix}-${position}`,
-                contentClassName,
-                `${classPrefix}-inner-${size}`,
-                `${classPrefix}-inner-${wordBreak}`,
-                {
-                  [`${classPrefix}-inner-descrption`]: content,
-                }
-              )}
-              style={{
-                ...contentStyle,
-              }}
-            >
-              {this.renderIcon()}
-              {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
-              ) : null}
-              {content ? (
-                <span className={`${classPrefix}-text`}>{content}</span>
-              ) : null}
-            </div>
+      <Overlay
+        visible={show}
+        style={style}
+        zIndex={zIndex}
+        className={`${classPrefix}-overlay-default ${className}`}
+        onClick={() => this.clickCover()}
+        closeOnOverlayClick={closeOnOverlayClick}
+        lockScroll={lockScroll}
+      >
+        <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
+          <div
+            className={classNames(
+              `${classPrefix}-inner`,
+              `${classPrefix}-${position}`,
+              contentClassName,
+              `${classPrefix}-inner-${size}`,
+              `${classPrefix}-inner-${wordBreak}`,
+              {
+                [`${classPrefix}-inner-descrption`]: content,
+              }
+            )}
+            style={{
+              ...contentStyle,
+            }}
+          >
+            {this.renderIcon()}
+            {title && <div className={`${classPrefix}-title`}>{title}</div>}
+            {content && (
+              <span className={`${classPrefix}-text`}>{content}</span>
+            )}
           </div>
-        </Overlay>
-      </>
+        </div>
+      </Overlay>
     )
   }
 }

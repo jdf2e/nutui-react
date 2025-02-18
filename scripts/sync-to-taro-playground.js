@@ -68,7 +68,7 @@ function main() {
       pages: [],
     })
     nav.packages.forEach((package) => {
-      if (package.version === '3.0.0' && package.show) {
+      if (package.dd && package.show) {
         const name = package.name.toLowerCase()
         v3.push(name)
         subPackages[subPackages.length - 1].pages.push(`pages/${name}/index`)

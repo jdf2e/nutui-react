@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, Image } from '@tarojs/components'
-import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   Button,
@@ -89,12 +88,11 @@ export const Empty: FunctionComponent<
     )
 
   useEffect(() => {
-    const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
     setImgStyle(() => {
       if (!imageSize) {
         return {}
       }
-      if (isRN || typeof imageSize !== 'number') {
+      if (typeof imageSize !== 'number') {
         return {
           width: imageSize,
           height: imageSize,

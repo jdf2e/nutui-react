@@ -1,14 +1,12 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
 import { Plus, Star } from '@nutui/icons-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo5 = () => {
   const marginStyle = {
-    marginRight: pxTransform(8),
-    marginTop: pxTransform(8),
-    marginLeft: pxTransform(8),
-    marginBottom: pxTransform(8),
+    width: harmony() ? 140 : 'auto',
+    margin: 8,
   }
   return (
     <>
@@ -59,6 +57,7 @@ const Demo5 = () => {
           rightIcon={<Star />}
           style={{
             margin: 8,
+            width: harmony() ? 140 : 'auto',
             backgroundColor: `var(--nutui-gray-3)`,
             color: `var(--nutui-gray-5)`,
           }}
@@ -73,6 +72,7 @@ const Demo5 = () => {
           rightIcon={<Star />}
           style={{
             margin: 8,
+            width: harmony() ? 140 : 'auto',
             backgroundColor: `var(--nutui-gray-1)`,
             color: `var(--nutui-gray-5)`,
           }}
@@ -83,9 +83,7 @@ const Demo5 = () => {
           disabled
           icon={<Star />}
           rightIcon={<Star />}
-          style={{
-            margin: 8,
-          }}
+          style={marginStyle}
         >
           Disabled
         </Button>
@@ -94,21 +92,27 @@ const Demo5 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus size="20" />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           disabled
           type="primary"
-          icon={<Plus size="20" />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           disabled
           type="primary"
           fill="dashed"
-          icon={<Plus />}
-          style={marginStyle}
+          icon={<Plus size={10} />}
+          style={{
+            margin: 8,
+          }}
         />
         <Button
           disabled

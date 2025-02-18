@@ -9,6 +9,7 @@ import React, {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { FixAutoComplete } from '@/types/fix-string-literal-union'
 
 export interface ImageProps extends BasicComponent {
   src: string
@@ -38,20 +39,12 @@ const defaultProps: Partial<ImageProps> = {
   lazy: false,
 }
 
-export type ImageFit =
-  | 'contain'
-  | 'cover'
-  | 'fill'
-  | 'none'
-  | 'scale-down'
-  | string
-export type ImagePosition =
-  | 'center'
-  | 'top'
-  | 'right'
-  | 'bottom'
-  | 'left'
-  | string
+export type ImageFit = FixAutoComplete<
+  'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+>
+export type ImagePosition = FixAutoComplete<
+  'center' | 'top' | 'right' | 'bottom' | 'left'
+>
 
 const classPrefix = 'nut-image'
 

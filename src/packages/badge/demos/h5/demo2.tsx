@@ -4,14 +4,14 @@ import { User } from '@nutui/icons-react'
 
 const Demo2 = () => {
   return (
-    <Cell>
-      <Badge style={{ marginInlineEnd: '40px' }} value={200} max={9}>
+    <Cell style={{ justifyContent: 'space-around' }}>
+      <Badge value={200} max={9}>
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value={200} max={20}>
+      <Badge value={200} max={20}>
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge style={{ marginInlineEnd: '40px' }} value={200} max={99}>
+      <Badge value={200} max={99}>
         <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>

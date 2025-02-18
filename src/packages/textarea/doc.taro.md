@@ -89,6 +89,8 @@ import { TextArea } from '@nutui/nutui-react-taro'
 | autoSize | 高度是否可拉伸 | `boolean` | `false` |
 | readOnly | 只读属性 | `boolean` | `false` |
 | disabled | 禁用属性 | `boolean` | `false` |
+| plain | 标记文本域的容器类型，false 为容器型 `container`, true 为 `纯文本型` | `boolean` | `false` |
+| status | 文本域状态，可标记为 默认状态 和 错误状态 | `default /\ error` | `default` |
 | onChange | 输入内容时触发 | `(value) => void` | `-` |
 | onFocus | 聚焦时触发 | `(event) => void` | `-` |
 | onBlur | 失焦时触发 | `(event) => void` | `-` |
@@ -101,9 +103,6 @@ import { TextArea } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-textarea-font | 字体大小 | `$font-size-base` |
 | \--nutui-textarea-padding | 内边距 | `10px 25px` |
-| \--nutui-textarea-limit-color | 字数统计颜色 | `$color-text` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
-| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-text-disabled` |

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import addColorForHarmony from '@/utils/add-color-for-harmony'
 

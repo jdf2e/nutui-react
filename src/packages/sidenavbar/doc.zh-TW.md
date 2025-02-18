@@ -1,5 +1,7 @@
 # SideNavBar組件
 
+> **⚠️ 注意：** 該組件即將被廢棄。請使用 [SideBar](#/zh-CN/component/sidebar) 代替。
+
 用於內容選擇和切換
 
 ## 引入

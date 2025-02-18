@@ -22,7 +22,6 @@
   }
 }
 
-// RN 不支持 calc
 // dart-sass: math.div -> round & *
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {

@@ -42,7 +42,7 @@ import { BackTop } from '@nutui/nutui-react-taro'
 
 :::
 
-### RN、鸿蒙端使用
+### 鸿蒙端使用
 
 由于不支持 fixed 定位，需配合 ScrollView 进行使用。
 

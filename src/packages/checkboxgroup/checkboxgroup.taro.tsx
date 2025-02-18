@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox.taro'
 import Context from './context'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import {
   CheckboxDirection,
   CheckboxLabelPosition,

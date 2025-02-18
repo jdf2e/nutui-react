@@ -1,13 +1,16 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { Textarea, TextareaProps, View, Text } from '@tarojs/components'
 import {
-  useConfig,
-  useRtl,
-} from '@/packages/configprovider/configprovider.taro'
+  BaseEventOrig,
+  Text,
+  Textarea,
+  TextareaProps,
+  View,
+} from '@tarojs/components'
+import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface TextAreaProps
   extends Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>,
@@ -21,9 +24,11 @@ export interface TextAreaProps
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
+  plain: boolean
+  status: 'error' | 'default'
   onChange: (value: string) => void
-  onBlur: (event: Event) => void
-  onFocus: (event: Event) => void
+  onBlur: (event: BaseEventOrig) => void
+  onFocus: (event: BaseEventOrig) => void
 }
 
 const defaultProps = {
@@ -35,6 +40,8 @@ const defaultProps = {
   readOnly: false,
   disabled: false,
   autoSize: false,
+  plain: false,
+  status: 'default',
 } as TextAreaProps
 export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   const { locale } = useConfig()
@@ -50,6 +57,8 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     disabled,
     autoSize,
     style,
+    plain,
+    status,
     onChange,
     onBlur,
     onFocus,
@@ -74,7 +83,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     onChange,
   })
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: BaseEventOrig) => {
     const text = event?.detail?.value
     if (text) {
       const value = compositionRef.current ? text : format(text)
@@ -84,62 +93,74 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
     }
   }
 
-  const handleFocus = (event: Event) => {
-    if (disabled) return
-    if (readOnly) return
-    onFocus && onFocus(event)
+  const isDisabled = () => disabled || readOnly
+
+  const handleFocus = (event: BaseEventOrig) => {
+    if (isDisabled()) return
+    onFocus?.(event)
   }
 
-  const handleBlur = (event: Event) => {
-    if (disabled) return
-    if (readOnly) return
-    onBlur && onBlur(event)
+  const handleBlur = (event: BaseEventOrig) => {
+    if (isDisabled()) return
+    onBlur?.(event)
   }
 
   return (
-    <View
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-disabled`]: disabled,
-          [`${classPrefix}-rtl`]: rtl,
-        },
-        className
-      )}
-    >
-      <Textarea
-        nativeProps={{
-          style,
-          readOnly,
-          rows,
-          onCompositionStart: () => {
-            compositionRef.current = true
+    <>
+      <View
+        className={classNames(
+          classPrefix,
+          {
+            [`${classPrefix}-disabled`]: disabled,
+            [`${classPrefix}-readonly`]: readOnly,
+            [`${classPrefix}-rtl`]: rtl,
+            [`${classPrefix}-plain`]: plain,
+            [`${classPrefix}-container`]: !plain,
+            [`${classPrefix}-${status}`]: status,
           },
-          onCompositionEnd: () => {
-            compositionRef.current = false
-          },
-        }}
-        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
-        style={Taro.getEnv() === 'WEB' ? undefined : style}
-        disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
-        // @ts-ignore
-        value={inputValue}
-        onInput={(e: any) => handleChange(e)}
-        onBlur={(e: any) => handleBlur(e)}
-        onFocus={(e: any) => handleFocus(e)}
-        autoHeight={autoSize}
-        maxlength={maxLength}
-        placeholder={placeholder || locale.placeholder}
-        {...rest}
-      />
-      {showCount && (
-        <Text
-          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
-        >
-          {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-        </Text>
-      )}
-    </View>
+          className
+        )}
+      >
+        <Textarea
+          {...rest}
+          nativeProps={{
+            style,
+            readOnly,
+            rows,
+            onCompositionStart: () => {
+              compositionRef.current = true
+            },
+            onCompositionEnd: () => {
+              compositionRef.current = false
+            },
+          }}
+          className={classNames(`${classPrefix}-textarea`, {
+            [`${classPrefix}-textarea-disabled`]: disabled,
+          })}
+          style={Taro.getEnv() === 'WEB' ? undefined : style}
+          disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
+          // @ts-ignore
+          value={inputValue}
+          onInput={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          autoHeight={autoSize}
+          maxlength={maxLength}
+          placeholder={
+            placeholder !== undefined ? placeholder : locale.placeholder
+          }
+        />
+        {showCount && (
+          <Text
+            className={classNames(`${classPrefix}-limit`, {
+              [`${classPrefix}-limit-disabled`]: disabled,
+            })}
+          >
+            {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
+          </Text>
+        )}
+      </View>
+    </>
   )
 }
 

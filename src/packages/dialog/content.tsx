@@ -1,17 +1,20 @@
-import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
+import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
+import { ContentProps } from './types'
 
-interface ContentProps {
-  visible: boolean
-  title: ReactNode
-  header: ReactNode
-  footer: ReactNode
-  close: ReactNode
-  footerDirection: string
+export const defaultContentProps: ContentProps = {
+  visible: false,
+  title: '',
+  header: '',
+  footer: '',
+  close: '',
+  footerDirection: 'horizontal',
+  onClick: () => {},
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
+  Partial<ContentProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > = (props) => {
   const {
     visible,
@@ -20,37 +23,41 @@ export const Content: FunctionComponent<
     footer,
     close,
     footerDirection,
-    onClick,
     children,
-  } = props
+    style,
+    className,
+    onClick,
+  } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title ? <div className={`${classPrefix}-header`}>{title}</div> : null
+    return title && <div className={`${classPrefix}-header`}>{title}</div>
   }
 
   const renderFooter = () => {
-    return footer ? (
-      <div
-        className={classNames(`${classPrefix}-footer`, {
-          [footerDirection as any]: footerDirection,
-        })}
-      >
-        {footer}
-      </div>
-    ) : null
+    return (
+      footer && (
+        <div
+          className={classNames(`${classPrefix}-footer`, {
+            [footerDirection]: footerDirection,
+          })}
+        >
+          {footer}
+        </div>
+      )
+    )
   }
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 
   return (
     <div
-      className={classNames(`${classPrefix}-outer`, props.className)}
-      style={props.style}
-      onClick={(e) => handleClick(e)}
+      className={classNames(`${classPrefix}-outer`, className)}
+      style={style}
+      onClick={handleClick}
     >
       {close}
       {header}
@@ -59,9 +66,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <div className={`${classPrefix}-content`}>
-          <>{children}</>
-        </div>
+        <div className={`${classPrefix}-content`}>{children}</div>
         {renderFooter()}
       </div>
     </div>
