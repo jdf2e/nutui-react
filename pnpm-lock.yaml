@@ -154,8 +154,8 @@ importers:
         specifier: ^15.5.11
         version: 15.5.13
       '@types/react-test-renderer':
-        specifier: ^18.0.7
-        version: 18.3.1
+        specifier: ^19.0.0
+        version: 19.0.0
       '@types/react-transition-group':
         specifier: ^4.4.10
         version: 4.4.12(@types/react@18.3.18)
@@ -641,8 +641,8 @@ importers:
         specifier: ^15.5.11
         version: 15.5.13
       '@types/react-test-renderer':
-        specifier: ^18.0.7
-        version: 18.3.1
+        specifier: ^19.0.0
+        version: 19.0.0
       '@types/react-transition-group':
         specifier: ^4.4.10
         version: 4.4.12(@types/react@18.3.18)
@@ -3550,8 +3550,8 @@ packages:
   '@types/react-syntax-highlighter@15.5.13':
     resolution: {integrity: sha512-uLGJ87j6Sz8UaBAooU0T6lWJ0dBmjZgN1PZTrj05TNql2/XpC6+4HhMT5syIdFUUt+FASfCeLLv4kBygNU+8qA==}
 
-  '@types/react-test-renderer@18.3.1':
-    resolution: {integrity: sha512-vAhnk0tG2eGa37lkU9+s5SoroCsRI08xnsWFiAXOuPH2jqzMbcXvKExXViPi1P5fIklDeCvXqyrdmipFaSkZrA==}
+  '@types/react-test-renderer@19.0.0':
+    resolution: {integrity: sha512-qDVnNybqFm2eZKJ4jD34EvRd6VHD67KjgnWaEMM0Id9L22EpWe3nOSVKHWL1XWRCxUWe3lhXwlEeCKD1BlJCQA==, tarball: https://registry.npmjs.org/@types/react-test-renderer/-/react-test-renderer-19.0.0.tgz}
 
   '@types/react-transition-group@4.4.12':
     resolution: {integrity: sha512-8TV6R3h2j7a91c+1DXdJi3Syo69zzIZbz7Lg5tORM5LEJG7X/E6a1V3drRyBRZq7/utz7A+c4OgYLiLcYGHG6w==}
@@ -8355,7 +8355,7 @@ packages:
     engines: {node: '>= 0.6'}
 
   mime@1.6.0:
-    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==}
+    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==, tarball: https://registry.npmjs.org/mime/-/mime-1.6.0.tgz}
     engines: {node: '>=4'}
     hasBin: true
 
@@ -15012,7 +15012,7 @@ snapshots:
     dependencies:
       '@types/react': 18.3.18
 
-  '@types/react-test-renderer@18.3.1':
+  '@types/react-test-renderer@19.0.0':
     dependencies:
       '@types/react': 18.3.18
 
