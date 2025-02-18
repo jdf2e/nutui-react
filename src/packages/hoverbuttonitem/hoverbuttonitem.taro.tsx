@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { BaseEventOrig, ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony, harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 import { getIcon } from '@/packages/hoverbuttonitem/utils'
 
 export interface HoverButtonItemProps extends BasicComponent {
@@ -22,7 +22,6 @@ const defaultProps = {
 
 const classPrefix = 'nut-hoverbutton-item'
 const isHarmony = harmony()
-const isNative = harmonyAndRn()
 
 export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   const { className, style, icon, onClick, children } = {
@@ -32,7 +31,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   const [isTouchStart, setTouchStart] = useState(false)
   // @TODO 待添加暗黑模式及样式变量功能
   const nativeProps = useMemo(
-    () => (isNative ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
+    () => (isHarmony ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
     [isTouchStart]
   )
 
@@ -43,11 +42,11 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   }
 
   const handleActiveStart = (event: BaseEventOrig) => {
-    isNative && setTouchStart(true)
+    isHarmony && setTouchStart(true)
   }
 
   const handleActiveEnd = (event: BaseEventOrig) => {
-    isNative && setTouchStart(false)
+    isHarmony && setTouchStart(false)
   }
 
   const renderBody = () => {
@@ -77,7 +76,7 @@ export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
   return (
     <View
       className={classNames([`${classPrefix}-container`, className], {
-        [`${classPrefix}-container-active`]: isNative && isTouchStart,
+        [`${classPrefix}-container-active`]: isHarmony && isTouchStart,
         [`${classPrefix}-container-harmony`]: isHarmony,
         [`${classPrefix}-container-icontext`]: icon && children,
       })}

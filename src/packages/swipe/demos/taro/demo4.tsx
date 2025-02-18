@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Button, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
+import { Button, Space, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
@@ -36,7 +36,7 @@ const App = () => {
           </View>
         </View>
       </Swipe>
-      <View style={{ display: 'flex', flexDirection: 'row' }}>
+      <Space style={{ marginTop: 10, marginLeft: 10 }}>
         <Button
           onClick={() => openRef.current?.open('right')}
           type="primary"
@@ -47,7 +47,7 @@ const App = () => {
         <Button size="small" onClick={() => openRef.current?.close()}>
           关闭
         </Button>
-      </View>
+      </Space>
     </>
   )
 }

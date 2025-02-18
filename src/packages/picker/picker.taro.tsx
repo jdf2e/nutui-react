@@ -9,12 +9,12 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
-import { Popup, PopupProps } from '@/packages/popup/popup.taro'
+import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import PickerPanel from './pickerpanel.taro'
-import useRefs from '@/utils/use-refs'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import useRefs from '@/hooks/use-refs'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { PickerOption } from './types'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PickerActions = {

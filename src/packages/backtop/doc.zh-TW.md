@@ -50,7 +50,7 @@ import { BackTop } from '@nutui/nutui-react'
 
 :::
 
-### RN、鴻蒙端使用
+### 鴻蒙端使用
 
 由於不支援固定定位，需配合 ScrollView 進行使用。
 

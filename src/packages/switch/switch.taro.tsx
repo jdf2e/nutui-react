@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface SwitchProps extends BasicComponent {

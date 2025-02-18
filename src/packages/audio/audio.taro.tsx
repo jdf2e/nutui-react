@@ -10,7 +10,7 @@ import { Service } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AudioProps extends BasicComponent {

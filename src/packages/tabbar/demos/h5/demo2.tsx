@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Tabbar } from '@nutui/nutui-react'
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react'
+import { Cart, Category, Hi, Home, User } from '@nutui/icons-react'
 
 const Demo2 = () => {
   const [activeIndex, setActiveIndex] = useState(2)
@@ -13,11 +13,11 @@ const Demo2 = () => {
         setActiveIndex(value)
       }}
     >
-      <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
-      <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-      <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-      <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-      <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+      <Tabbar.Item title="首页" icon={<Home />} />
+      <Tabbar.Item title="分类" icon={<Category />} />
+      <Tabbar.Item title="逛" icon={<Hi />} />
+      <Tabbar.Item title="购物车" icon={<Cart />} />
+      <Tabbar.Item title="我的" icon={<User />} />
     </Tabbar>
   )
 }

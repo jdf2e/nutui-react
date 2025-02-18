@@ -4,7 +4,7 @@ import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Popover from '@/packages/popover'
 import { PopoverLocation } from '@/packages/popover/types'
-import { getRect } from '@/utils/use-client-rect'
+import { getRect } from '@/hooks/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider'
 
@@ -21,7 +21,7 @@ export type TourType = 'step' | 'tile'
 export interface TourProps extends BasicComponent {
   visible: boolean
   type: TourType
-  location: PopoverLocation | string
+  location: PopoverLocation
   mask: boolean
   maskWidth: number | string
   maskHeight: number | string

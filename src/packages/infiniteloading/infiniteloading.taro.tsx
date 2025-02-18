@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { ScrollView, ScrollViewProps, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { InfiniteLoadingType } from './types'

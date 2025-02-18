@@ -3,10 +3,12 @@ import { Dialog } from './dialog'
 export type {
   DialogConfigType,
   DialogCloseIconPosition,
+  DialogFooterDirection,
+  ContentProps,
+  DialogWrapProps,
   DialogBasicProps,
   DialogConfirmProps,
   DialogReturnProps,
-} from './config'
+} from './types'
 
-export type { DialogProps } from './dialog'
 export default Dialog

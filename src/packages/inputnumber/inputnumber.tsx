@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputNumberProps extends BasicComponent {

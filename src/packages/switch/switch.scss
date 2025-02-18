@@ -1,7 +1,7 @@
 .nut-switch {
   cursor: pointer;
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   min-width: $switch-width;

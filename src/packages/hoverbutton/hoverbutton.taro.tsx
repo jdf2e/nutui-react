@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import HoverButtonItem, {
@@ -49,7 +48,6 @@ export const HoverButton: FunctionComponent<
     <View
       className={classNames([`${classPrefix}-container`, className], {
         [`${classPrefix}-container-rtl`]: rtl,
-        [`${classPrefix}-container-rn`]: Taro.getEnv() === 'RN',
       })}
       style={baseStyle}
     >

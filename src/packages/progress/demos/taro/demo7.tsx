@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Cell, Button, Toast, Progress } from '@nutui/nutui-react-taro'
 import { Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState(0)
@@ -10,7 +10,7 @@ const Demo7 = () => {
   const [toastMsg, setToastMsg] = useState('')
   return (
     <Cell.Group>
-      {!harmonyAndRn() && (
+      {!harmony() && (
         <Toast
           type="text"
           visible={show}

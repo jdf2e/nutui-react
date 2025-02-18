@@ -3,26 +3,23 @@ import { Cell, Toast } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const [state, setState] = useState({
-    content: 'toast',
-    type: 'text',
-    duration: 2,
     icon: '',
+    content: 'toast',
+    duration: 2,
     title: '',
   })
   const [showToast, setShowToast] = useState(false)
 
   const openToast = (
-    type: string,
+    icon: string,
     content: string,
     duration?: number,
-    icon?: string,
     title?: string
   ) => {
     const changeState = Object.assign(state, {
-      type,
+      icon,
       content,
       duration,
-      icon,
       title,
     })
     setState(changeState)
@@ -30,7 +27,6 @@ const Demo3 = () => {
   return (
     <>
       <Toast
-        type={state.type}
         content={state.content}
         duration={state.duration}
         icon={state.icon}

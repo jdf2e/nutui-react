@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Audio } from '@nutui/nutui-react'
-import { PlayCircleFill, PoweroffCircleFill } from '@nutui/icons-react'
+import { PlayStart, PlayStop } from '@nutui/icons-react'
 
 const Demo3 = () => {
   const [duration, setDuration] = useState(0)
-  const [voiceIcon, setVoiceIcon] = useState<any>(<PlayCircleFill />)
+  const [voiceIcon, setVoiceIcon] = useState<any>(<PlayStart />)
   const audioElement = document.querySelectorAll('audio')[2]
   if (audioElement) {
     audioElement.addEventListener('playing', (e) => {
-      setVoiceIcon(<PoweroffCircleFill />)
+      setVoiceIcon(<PlayStop />)
     })
     audioElement.addEventListener('pause', (e) => {
-      setVoiceIcon(<PlayCircleFill />)
+      setVoiceIcon(<PlayStart />)
     })
   }
   return (

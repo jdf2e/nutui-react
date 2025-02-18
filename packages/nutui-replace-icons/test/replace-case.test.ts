@@ -4,6 +4,7 @@ import { replaceIcons } from '../src/replace-icons'
 
 const plugin = replaceIcons({
   targetLibrary: '@test/aa',
+  sourceLibrary: ['@nutui/icons-react'],
   iconMappings: {
     Loading: 'Star',
   },

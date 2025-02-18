@@ -4,47 +4,19 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
-  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { View, ITouchEvent } from '@tarojs/components'
-import {
-  OverlayProps,
-  defaultOverlayProps,
-} from '@/packages/overlay/overlay.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { ComponentDefaults } from '@/utils/typings'
-import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
+import { PopupProps, Teleport } from './types.taro'
 
-type Teleport = HTMLElement | (() => HTMLElement) | null
-
-export interface PopupProps extends OverlayProps {
-  position: string
-  transition: string
-  overlayStyle: React.CSSProperties
-  overlayClassName: string
-  closeable: boolean
-  closeIconPosition: string
-  closeIcon: ReactNode
-  left: ReactNode
-  title: ReactNode
-  description: ReactNode
-  destroyOnClose: boolean
-  portal: Teleport
-  overlay: boolean
-  round: boolean
-  onOpen: () => void
-  onClose: () => void
-  onOverlayClick: (e: ITouchEvent) => boolean | void
-  onCloseIconClick: (e: ITouchEvent) => boolean | void
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: PopupProps = {
+  ...defaultOverlayProps,
   position: 'center',
   transition: '',
   overlayStyle: {},
@@ -58,10 +30,9 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onOverlayClick: (e: ITouchEvent) => true,
-  onCloseIconClick: (e: ITouchEvent) => true,
-  ...defaultOverlayProps,
-} as PopupProps
+  onOverlayClick: () => true,
+  onCloseIconClick: () => true,
+}
 
 // 默认1000，参看variables
 const _zIndex = 1100
@@ -101,6 +72,7 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
+
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -108,33 +80,19 @@ export const Popup: FunctionComponent<
   const [transitionName, setTransitionName] = useState('')
   const refObject = useLockScrollTaro(innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
-  const baseStyle = {
-    zIndex: index,
-  }
 
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index,
   }
-
-  const popStyles = {
-    ...style,
-    ...baseStyle,
-  }
-
+  const popStyles = { ...style, zIndex: index }
   const popClassName = classNames(
+    classPrefix,
     {
-      [`${classPrefix}`]: true,
       [`${classPrefix}-round`]: round || position === 'bottom',
       [`${classPrefix}-${position}`]: true,
     },
     className
   )
-
-  const closeClasses = classNames({
-    [`${classPrefix}-title-right`]: true,
-    [`${classPrefix}-title-right-${closeIconPosition}`]: true,
-  })
 
   const open = () => {
     if (!innerVisible) {
@@ -159,47 +117,31 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const onHandleClickOverlay = (e: ITouchEvent) => {
+  const handleOverlayClick = (e: ITouchEvent) => {
     e.stopPropagation()
-    if (closeOnOverlayClick) {
-      const closed = onOverlayClick && onOverlayClick(e)
-      closed && close()
+    if (closeOnOverlayClick && onOverlayClick(e)) {
+      close()
     }
   }
 
-  const onHandleClick = (e: ITouchEvent) => {
-    onClick && onClick(e)
+  const handleCloseIconClick = (e: ITouchEvent) => {
+    onCloseIconClick(e) && close()
   }
 
-  const onHandleClickCloseIcon = (e: ITouchEvent) => {
-    const closed = onCloseIconClick && onCloseIconClick(e)
-    closed && close()
-  }
-
-  const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterShow && afterShow()
-  }
-
-  const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
-    e: HTMLElement
-  ) => {
-    afterClose && afterClose()
-  }
-
-  const resolveContainer = (getContainer: Teleport | undefined) => {
-    const container =
-      typeof getContainer === 'function' ? getContainer() : getContainer
-    return container || document.body
-  }
-
-  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
-    if (getContainer) {
-      const container = resolveContainer(getContainer)
-      return createPortal(node, container) as ReactPortal
-    }
-    return node
+  const renderCloseIcon = () => {
+    const closeClasses = classNames(
+      `${classPrefix}-title-right`,
+      `${classPrefix}-title-right-${closeIconPosition}`
+    )
+    return (
+      <>
+        {closeable && (
+          <View className={closeClasses} onClick={handleCloseIconClick}>
+            {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+          </View>
+        )}
+      </>
+    )
   }
 
   const renderTitle = () => {
@@ -212,10 +154,16 @@ export const Popup: FunctionComponent<
                 <View className={`${classPrefix}-title-left`}>{left}</View>
               )}
               {(title || description) && (
-                <View className={`${classPrefix}-title-title`}>
-                  {title}
+                <View className={`${classPrefix}-title-wrapper`}>
+                  {title && (
+                    <View className={`${classPrefix}-title-title`}>
+                      {title}
+                    </View>
+                  )}
                   {description && (
-                    <View className={`${classPrefix}-title-description`}>
+                    <View
+                      className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
+                    >
                       {description}
                     </View>
                   )}
@@ -223,24 +171,12 @@ export const Popup: FunctionComponent<
               )}
             </>
           )}
-          {closeable && (
-            <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-            </View>
-          )}
+          {renderCloseIcon()}
         </View>
       )
     }
     if (closeable) {
-      return (
-        <>
-          {closeable && (
-            <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-            </View>
-          )}
-        </>
-      )
+      return renderCloseIcon()
     }
   }
   const renderPop = () => {
@@ -252,18 +188,18 @@ export const Popup: FunctionComponent<
         unmountOnExit={destroyOnClose}
         timeout={duration}
         in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
+        onEntered={afterShow}
+        onExited={afterClose}
       >
         <View
           ref={refObject}
           style={popStyles}
           className={popClassName}
-          onClick={onHandleClick}
+          onClick={onClick}
           catchMove={lockScroll}
         >
           {renderTitle()}
-          {showChildren ? children : ''}
+          {showChildren ? children : null}
         </View>
       </CSSTransition>
     )
@@ -272,30 +208,42 @@ export const Popup: FunctionComponent<
   const renderNode = () => {
     return (
       <>
-        {overlay ? (
+        {overlay && (
           <Overlay
+            zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             duration={duration}
-            onClick={onHandleClickOverlay}
+            onClick={handleOverlayClick}
           />
-        ) : null}
-        <>{renderPop()}</>
+        )}
+        {renderPop()}
       </>
     )
   }
 
   useEffect(() => {
-    visible && open()
-    !visible && close()
+    visible ? open() : close()
   }, [visible])
 
   useEffect(() => {
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
+
+  const resolveContainer = (getContainer: Teleport | undefined) =>
+    (typeof getContainer === 'function' ? getContainer() : getContainer) ||
+    document.body
+
+  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
+    if (getContainer) {
+      const container = resolveContainer(getContainer)
+      return createPortal(node, container) as ReactPortal
+    }
+    return node
+  }
 
   return <>{renderToContainer(portal as Teleport, renderNode())}</>
 }

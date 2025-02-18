@@ -21,6 +21,48 @@ export default defineConfig(async (): Promise<UserConfig> => {
     resolve: {
       alias: [
         {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/light/loading.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/light/loading.json'
+          ),
+        },
+        {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/light/global.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/light/global.json'
+          ),
+        },
+        {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/light/pulltorefresh.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/light/pulltorefresh.json'
+          ),
+        },
+        {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/loading.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/dark/loading.json'
+          ),
+        },
+        {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/global.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/dark/global.json'
+          ),
+        },
+        {
+          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/pulltorefresh.json',
+          replacement: resolve(
+            __dirname,
+            './src/packages/lottie/animation/dark/pulltorefresh.json'
+          ),
+        },
+        {
           find: '@nutui/nutui-react/dist/locale/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Loading, Cell, Button, Overlay } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
+import { Button, Cell, Loading, Overlay } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [visible, setVisible] = useState(false)
@@ -26,9 +27,9 @@ const Demo8 = () => {
         </Button>
       </Cell>
       <Overlay visible={visible}>
-        <div className="wrapper" style={WrapperStyle}>
+        <View className="wrapper" style={WrapperStyle}>
           <Loading direction="vertical">加载中</Loading>
-        </div>
+        </View>
       </Overlay>
     </>
   )

@@ -4,7 +4,7 @@ import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 import Indicator from '@/packages/indicator'
-import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { getRefValue, useRefState } from '@/hooks/use-ref-state'
 import { defaultEffect } from '@/packages/swiper/effects/default'
 import {
   focusEffect,

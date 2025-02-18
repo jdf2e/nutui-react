@@ -1,38 +1,27 @@
 import React, {
   CSSProperties,
   FunctionComponent,
-  ReactNode,
   useEffect,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { harmony, rn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
+import { BadgeProps } from './types'
 
-export type BadgeFill = 'solid' | 'outline'
-export interface BadgeProps extends BasicComponent {
-  value: ReactNode
-  dot: boolean
-  max: number
-  top: string | number
-  right: string | number
-  color: string
-  fill: BadgeFill
-}
 const defaultProps = {
   ...ComponentDefaults,
   value: '',
   dot: false,
   max: 99,
-  top: '4',
-  right: '8',
-  color: '',
+  top: 0,
+  right: 0,
   fill: 'solid',
+  size: 'large',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const rtl = useRtl()
@@ -45,21 +34,19 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     dot,
     top,
     right,
-    color,
     fill,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+    size,
+  } = { ...defaultProps, ...props }
+
   const classPrefix = 'nut-badge'
   const isHarmony = harmony()
   const classes = classNames(classPrefix, className)
   const badgeRef = useRef(null)
   const [contentStyle, setContentStyle] = useState({})
 
-  function content() {
-    if (dot || typeof value === 'object' || value === 0) return null
-    if (typeof value === 'number' && typeof max === 'number') {
+  function getContent() {
+    if (dot || value === 0) return null
+    if (typeof value === 'number') {
       return max < value ? `${max}+` : `${value}`
     }
     return value
@@ -77,12 +64,15 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     if (typeof value === 'string' && value) return value
   }
 
-  const contentClasses = classNames(`${classPrefix}-content`, {
+  const contentClasses = classNames({
     [`${classPrefix}-sup`]: isNumber() || isString() || dot,
+    [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-one`]:
-      typeof content() === 'string' && `${content()}`?.length === 1,
+      typeof getContent() === 'string' && `${getContent()}`?.length === 1,
     [`${classPrefix}-dot`]: dot,
+    [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
+    [`${classPrefix}-content`]: children,
   })
 
   useEffect(() => {
@@ -90,41 +80,15 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
       getPositionStyle()
     }
   }, [])
+
   const getPositionStyle = async () => {
-    const style: CSSProperties = {}
-    style.top = pxTransform(-Number(top) || 0)
-    if (rn()) {
-      const reacts = await getRectByTaro(badgeRef.current)
-      style.left =
-        reacts?.width && reacts?.width > Number(right)
-          ? pxTransform(reacts.width - Number(right))
-          : 0
-    } else {
-      const dir = rtl ? 'left' : 'right'
-      style[dir] = isHarmony
+    const style: CSSProperties = {
+      top: pxTransform(Number(top) || 0),
+      [rtl ? 'left' : 'right']: isHarmony
         ? pxTransform(Number(right))
-        : `${Number(right) || parseFloat(String(right)) || 0}px`
+        : `${Number(right) || 0}px`,
     }
     setContentStyle(style)
-  }
-
-  const getStyle = () => {
-    const style: CSSProperties = {}
-    if (color) {
-      if (fill === 'outline') {
-        style.color = color
-        isHarmony
-          ? (style.backgroundColor = '#fff')
-          : (style.background = '#fff')
-        if (!color?.includes('gradient')) {
-          style.borderColor = color
-        }
-      } else {
-        style.color = '#fff'
-        isHarmony ? (style.backgroundColor = color) : (style.background = color)
-      }
-    }
-    return style
   }
 
   return (
@@ -141,12 +105,9 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
         </View>
       )}
       {children}
-      {!isIcon() && (
-        <View
-          className={contentClasses}
-          style={{ ...contentStyle, ...getStyle() }}
-        >
-          {content()}
+      {!isIcon() && (getContent() || dot) && (
+        <View className={contentClasses} style={contentStyle}>
+          {getContent()}
         </View>
       )}
     </View>

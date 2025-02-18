@@ -18,6 +18,22 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 :::
 
+### 白色
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 类型
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ### 自定义节点
 
 :::demo
@@ -48,9 +64,11 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| current | 当前步骤 | `number` | `0` |
-| total | 步骤长度 | `number` | `3` |
-| direction | 展示方向，默认为水平方向 | `horizontal` \| `vertical` | `horizontal` |
+| current | 当前页 | `number` | `0` |
+| total | 总页数 | `number` | `2` |
+| direction | 方向，默认为水平方向 | `horizontal` \| `vertical` | `horizontal` |
+| color | 颜色 | `primary` \| `white` | `primary` |
+| type | 交互类型 | `anchor` \| `slide` | `anchor` |
 
 ## 主题定制
 
@@ -62,7 +80,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-indicator-color | 指示器焦点时色值 | `$color-primary` |
 | \--nutui-indicator-dot-color | 指示器默认色值 | `$color-text-disabled` |
-| \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
-| \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `15px` |
-| \--nutui-indicator-border-radius | 指示器焦点时的border值 | `3px` |
-| \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `4px` |
+| \--nutui-indicator-dot-size | 指示器尺寸 | `3px` |
+| \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `6px` |
+| \--nutui-indicator-border-radius | 指示器焦点时的border值 | `$radius-xxs` |
+| \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `$spacing-xxxs` |

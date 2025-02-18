@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
 import type { ChangeEvent, FocusEvent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface TextAreaProps extends BasicComponent {
   value: string
@@ -15,6 +15,8 @@ export interface TextAreaProps extends BasicComponent {
   readOnly: boolean
   disabled: boolean
   autoSize: boolean
+  plain: boolean
+  status: 'error' | 'default'
   onChange: (value: string) => void
   onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
   onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
@@ -30,6 +32,8 @@ const defaultProps = {
   readOnly: false,
   disabled: false,
   autoSize: false,
+  plain: false,
+  status: 'default',
 } as TextAreaProps
 export const TextArea: FunctionComponent<
   Partial<TextAreaProps> &
@@ -51,6 +55,8 @@ export const TextArea: FunctionComponent<
     disabled,
     autoSize,
     style,
+    plain,
+    status,
     onChange,
     onBlur,
     onFocus,
@@ -77,9 +83,7 @@ export const TextArea: FunctionComponent<
   })
 
   useEffect(() => {
-    if (autoSize) {
-      setContentHeight()
-    }
+    if (autoSize) setContentHeight()
   }, [autoSize, defaultValue, inputValue])
 
   const setContentHeight = () => {
@@ -99,58 +103,70 @@ export const TextArea: FunctionComponent<
     setInputValue(value)
   }
 
+  const isDisabled = () => disabled || readOnly
+
   const handleFocus = (event: FocusEvent<HTMLTextAreaElement>) => {
-    if (disabled) return
-    if (readOnly) return
-    onFocus && onFocus(event)
+    if (isDisabled()) return
+    onFocus?.(event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLTextAreaElement>) => {
-    if (disabled) return
-    if (readOnly) return
-    onBlur && onBlur(event)
+    if (isDisabled()) return
+    onBlur?.(event)
   }
 
   return (
-    <div
-      className={classNames(
-        classPrefix,
-        {
-          [`${classPrefix}-disabled`]: disabled,
-          [`${classPrefix}-rtl`]: rtl,
-        },
-        className
-      )}
-    >
-      <textarea
-        ref={textareaRef}
-        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
-        style={style}
-        disabled={disabled}
-        readOnly={readOnly}
-        value={inputValue}
-        onChange={(e) => handleChange(e)}
-        onBlur={(e) => handleBlur(e)}
-        onFocus={(e) => handleFocus(e)}
-        onCompositionEnd={() => {
-          compositionRef.current = false
-        }}
-        onCompositionStart={() => {
-          compositionRef.current = true
-        }}
-        rows={rows}
-        maxLength={maxLength === -1 ? undefined : maxLength}
-        placeholder={placeholder || locale.placeholder}
-        {...rest}
-      />
-      {showCount && (
-        <div
-          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
-        >
-          {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-        </div>
-      )}
-    </div>
+    <>
+      <div
+        className={classNames(
+          classPrefix,
+          {
+            [`${classPrefix}-disabled`]: disabled,
+            [`${classPrefix}-readonly`]: readOnly,
+            [`${classPrefix}-rtl`]: rtl,
+            [`${classPrefix}-plain`]: plain,
+            [`${classPrefix}-container`]: !plain,
+            [`${classPrefix}-${status}`]: status,
+          },
+          className
+        )}
+      >
+        <textarea
+          {...rest}
+          ref={textareaRef}
+          className={classNames(`${classPrefix}-textarea`, {
+            [`${classPrefix}-textarea-disabled`]: disabled,
+          })}
+          style={style}
+          disabled={disabled}
+          readOnly={readOnly}
+          value={inputValue}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          onCompositionEnd={() => {
+            compositionRef.current = false
+          }}
+          onCompositionStart={() => {
+            compositionRef.current = true
+          }}
+          rows={rows}
+          maxLength={maxLength === -1 ? undefined : maxLength}
+          placeholder={
+            placeholder !== undefined ? placeholder : locale.placeholder
+          }
+        />
+        {showCount && (
+          <div
+            className={classNames(`${classPrefix}-limit`, {
+              [`${classPrefix}-limit-disabled`]: disabled,
+            })}
+          >
+            {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
+          </div>
+        )}
+      </div>
+    </>
   )
 }
 

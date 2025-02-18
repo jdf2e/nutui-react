@@ -1,6 +1,6 @@
 import React from 'react'
 import { Radio } from '@nutui/nutui-react-taro'
-import { Checklist } from '@nutui/icons-react-taro'
+import { Check } from '@nutui/icons-react-taro'
 
 const Demo9 = () => {
   return (
@@ -9,18 +9,10 @@ const Demo9 = () => {
       labelPosition="left"
       style={{ width: '100%' }}
     >
-      <Radio
-        icon={<Checklist />}
-        activeIcon={<Checklist color="red" />}
-        value="1"
-      >
+      <Radio icon={<Check />} activeIcon={<Check color="red" />} value="1">
         自定义图标
       </Radio>
-      <Radio
-        icon={<Checklist />}
-        activeIcon={<Checklist color="red" />}
-        value="2"
-      >
+      <Radio icon={<Check />} activeIcon={<Check color="red" />} value="2">
         自定义图标
       </Radio>
     </Radio.Group>

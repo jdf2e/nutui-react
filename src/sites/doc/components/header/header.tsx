@@ -5,12 +5,10 @@ import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
 import { useNavigate, useLocation } from 'react-router-dom'
-import '@/packages/popover/popover.scss'
 
 const Header = () => {
   const navigate = useNavigate()
   const location = useLocation()
-
   const [currLang, setCurrLang] = useState({})
 
   const toHome = () => {

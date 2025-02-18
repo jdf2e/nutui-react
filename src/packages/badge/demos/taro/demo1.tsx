@@ -1,32 +1,53 @@
-import { User } from '@nutui/icons-react-taro'
-import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
 import React from 'react'
+import { Dongdong, User } from '@nutui/icons-react-taro'
+import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
+import { Text } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo1 = () => {
-  const isRnAndHarmony = harmonyAndRn()
-  const renderChildren = () => {
-    return <Avatar icon={<User />} shape="square" />
+  const renderText = () => {
+    return (
+      <Text
+        style={{
+          lineHeight: pxTransform(16),
+        }}
+      >
+        文字内容
+      </Text>
+    )
   }
-  const marginStyles = isRnAndHarmony
-    ? { marginRight: pxTransform(40) }
-    : { marginInlineEnd: '40px' }
   return (
-    <Cell>
-      <Badge style={marginStyles} value={8}>
-        {renderChildren()}
-      </Badge>
-      <Badge style={marginStyles} value={76}>
-        {renderChildren()}
-      </Badge>
-      <Badge style={marginStyles} value="NEW">
-        {renderChildren()}
-      </Badge>
-      <Badge style={marginStyles} dot top="2" right="4">
-        {renderChildren()}
-      </Badge>
-    </Cell>
+    <>
+      <Cell align="center" style={{ justifyContent: 'space-around' }}>
+        <Badge dot>{renderText()}</Badge>
+        <Badge dot>
+          <Dongdong height={22} width={22} />
+        </Badge>
+        <Badge dot>
+          <Avatar icon={<User />} shape="square" />
+        </Badge>
+      </Cell>
+      <Cell align="center" style={{ justifyContent: 'space-around' }}>
+        <Badge value={8}>{renderText()}</Badge>
+        <Badge value={8}>
+          <Dongdong height={22} width={22} />
+        </Badge>
+        <Badge value={8}>
+          <Avatar icon={<User />} shape="square" />
+        </Badge>
+      </Cell>
+      <Cell align="center" style={{ justifyContent: 'space-around' }}>
+        <Badge value="内容" right={-2}>
+          {renderText()}
+        </Badge>
+        <Badge value="内容">
+          <Dongdong height={22} width={22} />
+        </Badge>
+        <Badge value="内容">
+          <Avatar icon={<User />} shape="square" />
+        </Badge>
+      </Cell>
+    </>
   )
 }
 export default Demo1

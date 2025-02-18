@@ -148,7 +148,6 @@ import { Button } from '@nutui/nutui-react-taro'
 | \--nutui-button-default-disabled-color | type 为 default 的按钮的禁用文本色 | `$color-text-help` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 12px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-s` |
-| \--nutui-button-default-font-weight | type 为 default 的按钮的字重 | `$font-weight` |
 | \--nutui-button-large-height | size 为 large 的按钮的高度 | `40px` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$font-size-base` |
 | \--nutui-button-large-border-radius | size 为 large 的按钮的圆角 | `12px` |

@@ -17,7 +17,7 @@ import {
   CascaderValue,
 } from '@/packages/cascader/index'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 type AddressRef = {
   open: () => void
@@ -121,19 +121,18 @@ export const InternalAddress: ForwardRefRenderFunction<
   }
 
   const renderLeftOnCustomSwitch = () => {
-    return (
-      <>
-        {custom && (
-          <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
-            {React.isValidElement(backIcon) ? (
-              backIcon
-            ) : (
-              <ArrowLeft color="#cccccc" />
-            )}
-          </div>
-        )}
-      </>
-    )
+    if (custom) {
+      return (
+        <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
+          {React.isValidElement(backIcon) ? (
+            backIcon
+          ) : (
+            <ArrowLeft color="#cccccc" />
+          )}
+        </div>
+      )
+    }
+    return null
   }
 
   const selectedExistItem = (data: AddressList) => {

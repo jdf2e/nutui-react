@@ -4,7 +4,7 @@ import { Cell, Price } from '@nutui/nutui-react-taro'
 const Demo3 = () => {
   return (
     <Cell>
-      <Price price={10010.01} size="normal" thousands={false} />
+      <Price price={10010.01} thousands={false} />
     </Cell>
   )
 }
