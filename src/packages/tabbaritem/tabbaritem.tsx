@@ -69,6 +69,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     color: ctx?.activeColor,
   }
 
+  const renderTitleText = () => {
+    return title && <div className={titleClass}>{title}</div>
+  }
+
   return (
     <div
       className={tabbarItemClass}
@@ -84,12 +88,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
           <Badge {...badgeProps}>
             <div className={boxPrefix}>{icon}</div>
           </Badge>
-          <div className={titleClass}>{title}</div>
+          {renderTitleText()}
         </>
       ) : (
-        <Badge {...badgeProps}>
-          <div className={titleClass}>{title}</div>
-        </Badge>
+        <Badge {...badgeProps}>{renderTitleText()}</Badge>
       )}
     </div>
   )

@@ -499,7 +499,7 @@
           "dd": false
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -508,7 +508,7 @@
           "show": true,
           "taro": true,
           "author": "szg2008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -689,6 +689,19 @@
           "taro": true,
           "author": "dsj",
           "dd": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "PickerView",
+          "type": "component",
+          "cName": "选择器视图",
+          "desc": "PickerView 是 Picker 的内容区域。",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "v15": false,
+          "dd": true,
+          "author": "songsong"
         },
         {
           "version": "3.0.0",

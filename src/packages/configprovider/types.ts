@@ -189,7 +189,6 @@ export type NutCSSVariables =
   | 'nutuiPickerTitleCancelFontSize'
   | 'nutuiPickerTitleOkColor'
   | 'nutuiPickerTitleOkFontSize'
-  | 'nutuiPickerListHeight'
   | 'nutuiPickerItemHeight'
   | 'nutuiPickerItemTextColor'
   | 'nutuiPickerItemTextFontSize'

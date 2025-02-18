@@ -14,6 +14,7 @@ const defaultProps = {
   fill: 'solid',
   size: 'large',
 } as BadgeProps
+
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const rtl = useRtl()
   const {
@@ -27,16 +28,14 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     right,
     fill,
     size,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
+
   const classPrefix = 'nut-badge'
   const classes = classNames(classPrefix, className)
 
-  function content() {
-    if (dot || typeof value === 'object' || value === 0) return null
-    if (typeof value === 'number' && typeof max === 'number') {
+  const getContent = () => {
+    if (dot || value === 0) return null
+    if (typeof value === 'number') {
       return max < value ? `${max}+` : `${value}`
     }
     return value
@@ -58,19 +57,17 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     [`${classPrefix}-sup`]: isNumber() || isString() || dot,
     [`${classPrefix}-number`]: isNumber(),
     [`${classPrefix}-one`]:
-      typeof content() === 'string' && `${content()}`?.length === 1,
+      typeof getContent() === 'string' && `${getContent()}`?.length === 1,
     [`${classPrefix}-dot`]: dot,
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
     [`${classPrefix}-content`]: children,
   })
-  const getPositionStyle = () => {
-    const style: CSSProperties = {}
-    style.top = `${Number(top) || 0}px`
-    const dir = rtl ? 'left' : 'right'
-    style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
-    return style
-  }
+
+  const getPositionStyle = (): CSSProperties => ({
+    top: `${Number(top) || 0}px`,
+    [rtl ? 'left' : 'right']: `${Number(right) || 0}px`,
+  })
 
   return (
     <div className={classes} style={style}>
@@ -86,9 +83,9 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
         </div>
       )}
       {children}
-      {!isIcon() && (
+      {!isIcon() && (getContent() || dot) && (
         <div className={contentClasses} style={getPositionStyle()}>
-          {content()}
+          {getContent()}
         </div>
       )}
     </div>

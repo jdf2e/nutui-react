@@ -3,6 +3,7 @@
   "include": [
     "./src/packages",
     "./src/utils",
+    "./src/hooks",
     "./src/locales",
     "./src/vite-env.d.ts"
   ],

@@ -1,5 +1,5 @@
 import { useRef, useCallback } from 'react'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { useForceUpdate } from '@/hooks/use-force-update'
 
 interface UsePropsValue<T> {
   value?: T
