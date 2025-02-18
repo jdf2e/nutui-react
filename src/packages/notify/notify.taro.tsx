@@ -7,7 +7,7 @@ import {
   customEvents,
   useCustomEvent,
   useCustomEventsPath,
-} from '@/utils/use-custom-event'
+} from '@/hooks/use-custom-event'
 import { mergeProps } from '@/utils/merge-props'
 
 export type NotifyPosition = 'top' | 'bottom'

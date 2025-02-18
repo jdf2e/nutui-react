@@ -4,8 +4,8 @@ import { JoySmile } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
-import { usePropsValue } from '@/utils/use-props-value'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
 
 export type TabsTitle = {

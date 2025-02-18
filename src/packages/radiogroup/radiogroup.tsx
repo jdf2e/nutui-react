@@ -8,7 +8,7 @@ import {
 } from './types'
 import RadioContext from './context'
 import Radio from '@/packages/radio/index'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface RadioGroupProps {
   value?: string | number

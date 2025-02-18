@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { SegmentedItem, SegmentedProps } from './types'
-import { usePropsValue } from '../../utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {

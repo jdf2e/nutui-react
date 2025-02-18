@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { ITouchEvent, InputProps, View, Text } from '@tarojs/components'
 import { Minus, Plus } from '@nutui/icons-react-taro'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
 

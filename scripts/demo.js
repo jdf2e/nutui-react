@@ -112,7 +112,7 @@ const defaultProps = {
   ...ComponentDefaults,
 } as ${name}Props
 export const ${name}: FunctionComponent<
-  Partial<PickerViewProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   //   const { locale } = useConfig()
   //   const rtl = useRtl()
@@ -121,7 +121,7 @@ export const ${name}: FunctionComponent<
   const cls = classNames(classPrefix, className)
   return (
     <div className={cls} style={style}>
-      PickerView
+      ${name}
     </div>
   )
 }
@@ -141,7 +141,7 @@ const defaultProps = {
   ...ComponentDefaults,
 } as ${name}Props
 export const ${name}: FunctionComponent<
-  Partial<PickerViewProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<${name}Props> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   //   const { locale } = useConfig()
   //   const rtl = useRtl()
@@ -150,7 +150,7 @@ export const ${name}: FunctionComponent<
   const cls = classNames(classPrefix, className)
   return (
     <View className={cls} style={style}>
-      PickerView
+      ${name}
     </View>
   )
 }
