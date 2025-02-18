@@ -7,6 +7,7 @@
   &-icon {
     color: $color-text-disabled;
     font-size: $checkbox-icon-font-size;
+    flex-shrink: 0;
   }
 
   &-icon-checked {
@@ -25,6 +26,7 @@
     margin-left: $checkbox-label-margin-left;
     font-size: $checkbox-label-font-size;
     color: $checkbox-label-color;
+    flex-shrink: 0;
 
     &-disabled {
       color: $color-text-disabled;
