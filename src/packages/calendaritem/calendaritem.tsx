@@ -454,15 +454,9 @@ export const CalendarItem = React.forwardRef<
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = getMonthsRef()?.clientHeight
-        const monthsPanel = getMonthsPanel()
-        const monthsRef = getMonthsRef()
-        if (monthsPanel) {
-          monthsPanel.style.height = `${containerHeight}px`
-        }
-        if (monthsRef) {
-          monthsRef.scrollTop = monthsData[current].scrollTop
-        }
+        viewHeight = getMonthsRef().clientHeight
+        getMonthsPanel().style.height = `${containerHeight}px`
+        getMonthsRef().scrollTop = monthsData[current].scrollTop
       }
     })
 
