@@ -49,7 +49,7 @@ exports[`description slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -73,7 +73,7 @@ exports[`description slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -158,7 +158,7 @@ exports[`extra slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -182,7 +182,7 @@ exports[`extra slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -272,7 +272,7 @@ exports[`priceTag slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -361,7 +361,7 @@ exports[`props test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -385,7 +385,7 @@ exports[`props test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -470,7 +470,7 @@ exports[`tag slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "
@@ -494,7 +494,7 @@ exports[`tag slot test 1`] = `
           <div
             class="nut-price-symbol nut-price-symbol-normal"
           >
-            ¥
+            &yen;
           </div>
           <div
             class="nut-price-integer nut-price-integer-normal "

@@ -59,7 +59,6 @@ exports[`render with column num 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      style=""
     >
       <div
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
@@ -260,7 +259,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      style=""
     >
       <div
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-horizontal"

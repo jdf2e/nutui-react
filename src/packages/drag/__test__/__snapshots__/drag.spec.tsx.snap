@@ -3,7 +3,7 @@
 exports[`Drag > should render default slot correctly 1`] = `
 <span
   class="custom-inner"
-  style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px;"
+  style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px; background: linear-gradient(135deg, #FF0F23 0, #fa6419 100%);"
 >
   自定义内容
 </span>
@@ -16,7 +16,7 @@ exports[`Drag > touch move 1`] = `
 >
   <span
     class="custom-inner"
-    style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px;"
+    style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px; background: linear-gradient(135deg, #FF0F23 0, #fa6419 100%);"
   >
     按钮
   </span>
