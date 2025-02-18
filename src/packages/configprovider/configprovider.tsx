@@ -1,8 +1,8 @@
 import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
-import isequal from 'lodash.isequal'
-import useMemo from '@/utils/use-memo'
+import isEqual from 'react-fast-compare'
+import useMemo from '@/hooks/use-memo'
 import { BasicComponent } from '@/utils/typings'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
@@ -74,7 +74,7 @@ export const ConfigProvider: FunctionComponent<
     (prev, next) =>
       prev.some((prevTheme, index) => {
         const nextTheme = next[index]
-        return !isequal(prevTheme, nextTheme)
+        return !isEqual(prevTheme, nextTheme)
       })
   ) as ConfigProviderProps
 

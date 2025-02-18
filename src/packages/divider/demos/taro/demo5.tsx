@@ -1,6 +1,5 @@
 import React from 'react'
 import { Cell, Divider } from '@nutui/nutui-react-taro'
-import { rn } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
@@ -12,7 +11,7 @@ const Demo5 = () => {
           paddingLeft: pxTransform(16),
           paddingRight: pxTransform(16),
           borderColor: '#0073ff',
-          borderStyle: rn() ? 'solid' : 'dashed',
+          borderStyle: 'dashed',
         }}
       >
         文本

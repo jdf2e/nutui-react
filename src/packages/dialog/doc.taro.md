@@ -127,23 +127,25 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | --- | --- | --- |
 | \--nutui-dialog-z-index | 对话框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-width | 对话框宽度 | `295px` |
+| \--nutui-dialog-min-width | 对话框最小宽度 | `240px` |
 | \--nutui-dialog-padding | 对话框padding | `24px` |
-| \--nutui-dialog-min-height | 对话框最小高度 | `156px` |
+| \--nutui-dialog-max-height | 对话框最大高度 | `420px` |
+| \--nutui-dialog-min-height | 对话框最小高度 | `124px` |
 | \--nutui-dialog-border-radius | 对话框圆角 | `16px` |
-| \--nutui-dialog-content-margin | 对话框内容 margin | `5px 0 24px 0` |
+| \--nutui-dialog-content-margin | 对话框内容 margin | `12px 0 16px 0` |
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 对话框内容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 对话框内容文本对齐方式 | `left` |
 | \--nutui-dialog-header-font-size | 对话框标题字体大小 | `$font-size-l` |
-| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
-| \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
+| \--nutui-dialog-header-font-weight | 对话框标题字重 | `600` |
 | \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
-| \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `18px` |
-| \--nutui-dialog-close-height | 对话框关闭按钮的高度 | `18px` |
-| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#888B94` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `16px` |
+| \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `16px` |
+| \--nutui-dialog-close-height | 对话框关闭按钮的高度 | `16px` |
+| \--nutui-dialog-bottom-close-icon-size | 对话框底部关闭按钮的宽高 | `24px` |
+| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#FFFFFF` |
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |

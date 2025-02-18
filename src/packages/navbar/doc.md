@@ -43,7 +43,7 @@ import { NavBar } from '@nutui/nutui-react'
 | right | 右侧内容 | `ReactNode` | `-` |
 | left | 左侧内容，渲染在返回区域的右侧 | `ReactNode` | `-` |
 | back | 返回区域的文字 | `ReactNode` | `-` |
-| titleAlign | 标题位置,可选值center left | `string` | `center` |
+| title | 标题 | `ReactNode` | `-` |
 | fixed | 是否固定 | `boolean` | `false` |
 | safeAreaInsetTop | 是否适配安全区 | `boolean` | `false` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | `boolean` | `false` |

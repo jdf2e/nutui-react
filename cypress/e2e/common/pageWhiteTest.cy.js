@@ -20,7 +20,7 @@ export const checkTaroBlank = () => {
     nav.forEach((item) => {
       const path = item.enName
       item.packages
-        .filter((i) => i.show && i.taro && i.version === '3.0.0')
+        .filter((i) => i.show && i.taro && i.dd)
         .forEach((i) => {
           visitTaroDemo(path, i.name)
         })

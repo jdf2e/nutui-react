@@ -1,35 +1,28 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
-import { ScrollView, Text } from '@tarojs/components'
 
-const Demo1 = () => {
-  const [showBasic, setShowBasic] = useState(false)
+const Demo = () => {
+  const [showIcon, setShowIcon] = useState(false)
+
   return (
     <>
       <Cell
-        title="展示弹出层"
+        title="基础弹框"
         onClick={() => {
-          setShowBasic(true)
+          setShowIcon(true)
         }}
       />
       <Popup
-        visible={showBasic}
-        style={{ padding: '30px 50px' }}
+        closeable
+        visible={showIcon}
+        title="标题"
+        description="这里是副标题这是副标题"
+        position="bottom"
         onClose={() => {
-          setShowBasic(false)
+          setShowIcon(false)
         }}
-      >
-        <ScrollView style={{ height: '200px', overflowY: 'scroll' }}>
-          {Array.from({ length: 1 })
-            .fill('')
-            .map((_, i) => (
-              <Cell key={i}>
-                <Text>正文</Text>
-              </Cell>
-            ))}
-        </ScrollView>
-      </Popup>
+      />
     </>
   )
 }
-export default Demo1
+export default Demo

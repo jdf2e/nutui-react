@@ -1,19 +1,24 @@
 .nut-indicator {
   display: flex;
-  flex-direction: row;
   width: auto;
+  flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
 
-  &-dot {
+  &-fixed-width {
+    width: 21px;
+  }
+
+  &-dot,
+  &-line {
     display: inline-block;
     vertical-align: middle;
     width: $indicator-dot-size;
     height: $indicator-dot-size;
     border-radius: 50%;
-    background-color: $indicator-dot-color;
+    background-color: $color-border-disabled;
     margin: 0 $indicator-dot-margin;
+    opacity: 0.4;
 
     &:first-child {
       margin-left: 0px;
@@ -22,20 +27,119 @@
     &:last-child {
       margin-right: 0px;
     }
+
+    &-active {
+      width: $indicator-dot-active-size;
+      border-radius: $indicator-border-radius;
+      background: $indicator-color;
+      opacity: 1;
+    }
   }
 
-  &-active {
-    width: $indicator-dot-active-size;
-    border-radius: $indicator-border-radius;
-    background: $indicator-color;
+  // 固定宽度
+  &-fixed-width {
+    // 两个页码的时候
+    .nut-indicator-dot {
+      width: 12px;
+      border-radius: $indicator-border-radius;
+
+      &-active {
+        width: 6px;
+      }
+    }
   }
 
   &-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // 竖向固定高度
+    &.nut-indicator-fixed-width {
+      justify-content: flex-start;
+      height: 21px;
+      width: auto;
 
+      // 竖向两个页码
+      .nut-indicator-dot {
+        width: 3px;
+        height: 12px;
+        border-radius: $indicator-border-radius;
+
+        &-active {
+          height: 6px;
+        }
+      }
+    }
+  }
+
+  &-line {
+    width: $indicator-dot-active-size;
+    margin: 0;
+
+    border-radius: $indicator-border-radius;
+    background-color: transparent;
+
+    &-active {
+      transition: transform 0.3s ease-in-out;
+      background: $indicator-color;
+    }
+  }
+}
+
+.nut-indicator-track {
+  position: relative;
+
+  &:after {
+    display: block;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: $indicator-border-radius;
+    background-color: $color-border-disabled;
+    opacity: 0.4;
+  }
+}
+
+.nut-indicator-white {
+  .nut-indicator {
+    &-dot,
+    &-line {
+      position: relative;
+      box-sizing: content-box;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      opacity: 1;
+    }
+
+    &-line {
+      opacity: 0;
+
+      &-active {
+        opacity: 1;
+        background: rgba(255, 255, 255, 1);
+      }
+    }
+    &-dot {
+      &-active {
+        background: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+}
+
+.nut-indicator-track.nut-indicator-white {
+  &:after {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.nut-indicator-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .nut-indicator {
     &-dot {
       margin: $indicator-dot-margin 0;
 
@@ -46,11 +150,20 @@
       &:last-child {
         margin-bottom: 0px;
       }
-    }
 
-    &-active {
-      width: $indicator-dot-size;
-      height: $indicator-dot-active-size;
+      &-active {
+        width: $indicator-dot-size;
+        height: $indicator-dot-active-size;
+      }
+    }
+  }
+
+  &.nut-indicator-track {
+    .nut-indicator {
+      &-line {
+        width: $indicator-dot-size;
+        height: $indicator-dot-active-size;
+      }
     }
   }
 }

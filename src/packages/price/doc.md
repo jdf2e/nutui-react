@@ -10,11 +10,19 @@ import { Price } from '@nutui/nutui-react'
 
 ## 示例代码
 
-### 基础用法 small normal large
+### 支持尺寸：small、normal、large、xlarge
 
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+### 场域分类：原子级、模块级、列表级、页面级
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -80,12 +88,13 @@ import { Price } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| color | 价格类型 | `primary` \| `gray` \| `darkgray` | `primary` |
 | price | 价格数量 | `number` | `0` |
 | symbol | 符号类型 | `string` | `&yen;` |
 | digits | 小数位位数 | `number` | `2` |
 | thousands | 是否按照千分号形式显示 | `boolean` | `false` |
 | position | 符号显示在价格前或者后，`before`、`after` | `string` | `before` |
-| size | 价格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| size | 价格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
 | line | 是否划线价 | `boolean` | `false` |
 
 ## 主题定制
@@ -96,15 +105,20 @@ import { Price } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-price-symbol-big-size | large 尺寸符号字体大小 | `18px` |
-| \--nutui-price-integer-big-size | large 尺寸整数部分字体大小 | `24px` |
-| \--nutui-price-decimal-big-size | large 尺寸小数部分字体大小 | `18px` |
-| \--nutui-price-symbol-medium-size | normal 尺寸符号字体大小 | `14px` |
-| \--nutui-price-integer-medium-size | normal 尺寸整数部分字体大小 | `16px` |
-| \--nutui-price-decimal-medium-size | normal 尺寸小数部分字体大小 | `14px` |
-| \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `10px` |
+| \--nutui-price-primary-color | type为primary时文字颜色 | `#ff0f23` |
+| \--nutui-price-color | type为gray时文字颜色 | `#888b94` |
+| \--nutui-price-darkgray-color | type为darkgray时文字颜色 | `#1a1a1a` |
+| \--nutui-price-line-color | 划线价颜色 | `#888b94` |
+| \--nutui-price-symbol-padding-right | 符号的右内边距 | `0px` |
+| \--nutui-price-symbol-xlarge-size | xlarge 尺寸符号字体大小 | `12px` |
+| \--nutui-price-integer-xlarge-size | xlarge 尺寸整数部分字体大小 | `24px` |
+| \--nutui-price-decimal-xlarge-size | xlarge 尺寸小数部分字体大小 | `12px` |
+| \--nutui-price-symbol-large-size | large 尺寸符号字体大小 | `12px` |
+| \--nutui-price-integer-large-size | large 尺寸整数部分字体大小 | `18px` |
+| \--nutui-price-decimal-large-size | large 尺寸小数部分字体大小 | `12px` |
+| \--nutui-price-symbol-normal-size | normal 尺寸符号字体大小 | `12px` |
+| \--nutui-price-integer-normal-size | normal 尺寸整数部分字体大小 | `16px` |
+| \--nutui-price-decimal-normal-size | normal 尺寸小数部分字体大小 | `12px` |
+| \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `12px` |
 | \--nutui-price-integer-small-size | small 尺寸整数部分字体大小 | `12px` |
-| \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `10px` |
-| \--nutui-price-line-font-size | 划线价字体大小 | `10px` |
-| \--nutui-price-line-color | 划线价颜色 | `#757575` |
-| \--nutui-price-symbol-padding-right | 符号的右内边距 | `1px` |
+| \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `12px` |

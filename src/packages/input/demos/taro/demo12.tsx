@@ -4,7 +4,7 @@ import { Input } from '@nutui/nutui-react-taro'
 const Demo12 = () => {
   return (
     <>
-      <Input placeholder="事件" placeholderTextColor="#757575" />
+      <Input placeholder="事件" />
     </>
   )
 }

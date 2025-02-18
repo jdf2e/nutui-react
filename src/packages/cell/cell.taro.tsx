@@ -1,20 +1,14 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
+import { CellProps } from './types'
 
-export interface CellProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  extra: ReactNode
-  radius: string | number
-  align: 'flex-start' | 'center' | 'flex-end'
-  clickable: boolean
-  isLast: boolean
+interface CellTaroProps extends CellProps {
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => void
@@ -32,12 +26,12 @@ const defaultProps = {
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {},
-} as CellProps
+} as CellTaroProps
 
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<CellTaroProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {

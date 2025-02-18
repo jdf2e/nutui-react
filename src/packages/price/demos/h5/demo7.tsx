@@ -14,7 +14,7 @@ const Demo7 = () => {
   }, [])
   return (
     <Cell>
-      <Price price={price} digits={3} size="normal" thousands />
+      <Price price={price} digits={3} thousands />
     </Cell>
   )
 }

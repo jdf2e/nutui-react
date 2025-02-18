@@ -66,9 +66,6 @@ const Demo2 = () => {
         optionKey={optionKey}
         defaultValue={defaultValue}
         visible={visible}
-        style={{
-          height: '30%',
-        }}
         onSelect={handleSelect}
         onDateChange={handleDateChange}
         onTimeChange={handleTimeChange}

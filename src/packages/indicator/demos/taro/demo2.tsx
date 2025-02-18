@@ -2,7 +2,7 @@ import React from 'react'
 import { Cell, Indicator } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo2 = () => {
   return (
@@ -10,7 +10,7 @@ const Demo2 = () => {
       <Indicator total={6} current={5}>
         <View
           style={
-            !harmonyAndRn()
+            !harmony()
               ? {
                   display: 'inline-block',
                   width: '14px',

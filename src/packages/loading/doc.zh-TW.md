@@ -1,7 +1,5 @@
 # Loading 加載中
 
-#
-
 加載圖標，用於顯示正在加載中的狀態
 
 ### 引入
@@ -80,7 +78,7 @@ import { Loading } from '@nutui/nutui-react'
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | loading图标的样式 | `circular \| spinner` | `circular` |
 | direction | loading图标和文字的排列方式 | `horizontal \| vertical` | `horizontal` |

@@ -5,7 +5,7 @@ import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
 import { View, Text } from '@tarojs/components'
 import { Cart } from '@nutui/icons-react-taro'
-import Taro, { pxTransform } from '@tarojs/taro'
+import { pxTransform } from '@tarojs/taro'
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
       <View
         style={{
           zIndex: 100,
-          position: Taro.getEnv() === 'RN' ? 'absolute' : 'fixed',
+          position: 'fixed',
           width: '100%',
           left: 0,
           bottom: 0,
@@ -31,7 +31,6 @@ const App = () => {
         >
           <Text style={{ color: '#FFFFFF' }}>这个图层层级为 1000</Text>
         </View>
-        {/* <SafeArea position="bottom" /> */}
       </View>
     </View>
   )

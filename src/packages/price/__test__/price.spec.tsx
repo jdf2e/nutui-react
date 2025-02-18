@@ -39,3 +39,15 @@ test('props digits test', () => {
   )
   expect(container).toMatchSnapshot()
 })
+
+test('props size', () => {
+  const { container } = render(<Price price={1010} size="large" />)
+  expect(container.querySelector('.nut-price-integer')).toHaveClass(
+    'nut-price-integer-large'
+  )
+})
+
+test('props color', () => {
+  const { container } = render(<Price price={1010} color="primary" />)
+  expect(container.querySelector('.nut-price')).toHaveClass('nut-price-primary')
+})

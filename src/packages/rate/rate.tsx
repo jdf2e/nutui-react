@@ -8,9 +8,9 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
-import { getRect } from '@/utils/use-client-rect'
-import useRefs from '@/utils/use-refs'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { getRect } from '@/hooks/use-client-rect'
+import useRefs from '@/hooks/use-refs'
 import { RateProps } from './types'
 
 const defaultProps = {

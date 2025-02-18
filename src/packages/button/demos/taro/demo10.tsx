@@ -1,23 +1,13 @@
 import React from 'react'
 import { Button, Cell } from '@nutui/nutui-react-taro'
-import { harmonyAndRn } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
+import { harmony } from '@/utils/platform-taro'
 
 const App = () => {
-  const marginStyle = harmonyAndRn()
-    ? {
-        width: pxTransform(120),
-        marginRight: pxTransform(8),
-        marginTop: pxTransform(8),
-        marginLeft: pxTransform(8),
-        marginBottom: pxTransform(8),
-      }
-    : {
-        marginRight: 8,
-        marginTop: 8,
-        marginLeft: 8,
-        marginBottom: 8,
-      }
+  const marginStyle = {
+    width: harmony() ? 120 : 'auto',
+    margin: 8,
+  }
+
   return (
     <Cell style={{ flexWrap: 'wrap' }}>
       <Button color="blue" style={marginStyle}>

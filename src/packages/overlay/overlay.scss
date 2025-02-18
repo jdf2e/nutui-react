@@ -1,10 +1,5 @@
 .nut-overlay {
-  /* #ifdef rn */
-  position: absolute;
-  /* #endif */
-  /* #ifndef rn */
   position: fixed;
-  /* #endif */
   top: 0;
   left: 0;
   bottom: 0;
@@ -13,12 +8,6 @@
   height: 100%;
   background-color: $overlay-bg-color;
   z-index: $overlay-zIndex;
-}
-
-[dir='rtl'] .nut-overlay,
-.nut-rtl .nut-overlay {
-  left: auto;
-  right: 0;
 }
 
 .nut-overflow-hidden {
@@ -66,4 +55,10 @@
     animation-name: nut-fade-out;
     animation-duration: $overlay-animation-duration;
   }
+}
+
+[dir='rtl'] .nut-overlay,
+.nut-rtl .nut-overlay {
+  left: auto;
+  right: 0;
 }

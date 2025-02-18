@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { getRect } from '@/utils/use-client-rect'
+import { getRect } from '@/hooks/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { NoticeBarAlign } from './types'
 import { useRtl } from '@/packages/configprovider'

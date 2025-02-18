@@ -7,13 +7,13 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import { Popup, PopupProps } from '@/packages/popup/popup'
+import Popup, { PopupProps } from '@/packages/popup/index'
 import { SafeArea } from '@/packages/safearea/safearea'
 import PickerPanel from './pickerpanel'
-import useRefs from '@/utils/use-refs'
+import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { PickerOption } from './types'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PickerActions = {

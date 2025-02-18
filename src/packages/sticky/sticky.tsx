@@ -8,8 +8,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-import { getRect } from '@/utils/use-client-rect'
-import useWatch from '@/utils/use-watch'
+import { getRect } from '@/hooks/use-client-rect'
+import useWatch from '@/hooks/use-watch'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface StickyProps extends BasicComponent {

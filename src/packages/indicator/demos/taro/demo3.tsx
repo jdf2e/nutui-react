@@ -1,7 +1,7 @@
 import React from 'react'
 import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
 
-// rn 下直接报错、鸿蒙下没生效。
+// 鸿蒙下没生效
 const customTheme = {
   nutuiIndicatorColor: '#3768fa',
   nutuiIndicatorDotColor: '#ddd',

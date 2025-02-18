@@ -2,7 +2,7 @@ import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { useConfig } from '@/packages/configprovider/index.taro'
 import type { CalendarDay, CalendarType, CalendarRef } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 

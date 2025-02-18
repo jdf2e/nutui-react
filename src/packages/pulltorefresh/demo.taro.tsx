@@ -7,7 +7,7 @@ import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
-import { harmonyAndRn } from '@/utils/platform-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
@@ -40,7 +40,7 @@ const PullToRefreshDemo = () => {
         <Demo2 />
         <View className="h2">{translated.primary}</View>
         <Demo3 />
-        {!harmonyAndRn() && (
+        {!harmony() && (
           <>
             <View className="h2">{translated.disabled}</View>
             <Demo4 />

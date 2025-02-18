@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, Text } from '@tarojs/components'
 
 const Demo2 = () => {
   const [showTop, setShowTop] = useState(false)
   const [showBottom, setShowBottom] = useState(false)
   const [showLeft, setShowLeft] = useState(false)
   const [showRight, setShowRight] = useState(false)
+  const [showText, setShowText] = useState(false)
 
   return (
     <>
@@ -34,6 +35,12 @@ const Demo2 = () => {
           setShowRight(true)
         }}
       />
+      <Cell
+        title="居中弹出"
+        onClick={() => {
+          setShowText(true)
+        }}
+      />
       <Popup
         visible={showTop}
         destroyOnClose
@@ -45,24 +52,16 @@ const Demo2 = () => {
       <Popup
         visible={showBottom}
         position="bottom"
+        title="底部弹层"
+        style={{ height: '300px' }}
         onClose={() => {
           setShowBottom(false)
         }}
         lockScroll
-      >
-        <ScrollView scrollY style={{ height: '200px' }}>
-          {Array.from({ length: 200 })
-            .fill('')
-            .map((_, i) => (
-              <View key={i}>
-                <Cell>底部弹出-{i}</Cell>
-              </View>
-            ))}
-        </ScrollView>
-      </Popup>
+      />
       <Popup
         visible={showLeft}
-        style={{ width: '20%', height: '100%' }}
+        style={{ width: '20%' }}
         position="left"
         onClose={() => {
           setShowLeft(false)
@@ -70,12 +69,28 @@ const Demo2 = () => {
       />
       <Popup
         visible={showRight}
-        style={{ width: '20%', height: '100%' }}
         position="right"
         onClose={() => {
           setShowRight(false)
         }}
       />
+      <Popup
+        visible={showText}
+        style={{ padding: '30px 50px' }}
+        onClose={() => {
+          setShowText(false)
+        }}
+      >
+        <ScrollView style={{ height: 200 }} scrollY>
+          {Array.from({ length: 10 })
+            .fill('')
+            .map((_, i) => (
+              <Cell key={i}>
+                <Text>正文</Text>
+              </Cell>
+            ))}
+        </ScrollView>
+      </Popup>
     </>
   )
 }

@@ -17,7 +17,9 @@ test('should be shown when passing size and current', () => {
     </Cell>
   )
   expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(3)
-  expect(container.querySelectorAll('.nut-indicator-active')).toHaveLength(1)
+  expect(container.querySelectorAll('.nut-indicator-dot-active')).toHaveLength(
+    1
+  )
 })
 
 test('should be shown when custom node', () => {
@@ -40,4 +42,15 @@ test('should be shown when custom node', () => {
     </Cell>
   )
   expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(5)
+})
+
+test('should be shown when slide', () => {
+  const { container } = render(
+    <Cell>
+      <Indicator type="slide" total={6} current={5} />
+    </Cell>
+  )
+  expect(container.querySelectorAll('.nut-indicator-line-active')).toHaveLength(
+    1
+  )
 })

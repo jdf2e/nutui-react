@@ -19,9 +19,9 @@ const Demo2 = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
+        zIndex={2000}
         style={{
           backgroundColor: 'rgba(0, 0, 0, .4)',
-          '--nutui-overlay-zIndex': 2000,
         }}
       />
     </>

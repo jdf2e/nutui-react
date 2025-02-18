@@ -11,7 +11,7 @@ import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export type InputAlign = 'left' | 'center' | 'right'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
@@ -33,6 +33,7 @@ export interface InputProps extends BasicComponent {
   formatTrigger: InputFormatTrigger
   autoFocus: boolean
   confirmType: InputConfirmType
+  plain: boolean
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
@@ -56,6 +57,7 @@ const defaultProps = {
   clearIcon: null,
   formatTrigger: 'onChange',
   autoFocus: false,
+  plain: false,
 } as InputProps
 
 export const Input = forwardRef(
@@ -89,6 +91,7 @@ export const Input = forwardRef(
       formatter,
       onClick,
       confirmType,
+      plain,
       defaultValue,
       value: _value,
       onCompositionStart,
@@ -127,7 +130,12 @@ export const Input = forwardRef(
 
     const inputClass = useCallback(() => {
       const classPrefix = 'nut-input'
-      return [classPrefix, `${disabled ? `${classPrefix}-disabled` : ''}`]
+      return [
+        classPrefix,
+        disabled ? `${classPrefix}-disabled` : '',
+        readOnly ? `${classPrefix}-readonly` : '',
+        plain ? `${classPrefix}-plain` : `${classPrefix}-container`,
+      ]
         .filter(Boolean)
         .join(' ')
     }, [disabled])

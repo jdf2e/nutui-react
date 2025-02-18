@@ -8,8 +8,8 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import { Loading, Checklist } from '@nutui/icons-react'
-import { Popup, PopupProps } from '@/packages/popup/popup'
+import { Loading, Check } from '@nutui/icons-react'
+import Popup, { PopupProps, CloseIconPosition } from '@/packages/popup/index'
 import { Tabs } from '@/packages/tabs/tabs'
 import Tree, { convertListToOptions } from './utils'
 import {
@@ -20,7 +20,7 @@ import {
   CascaderFormat,
 } from './types'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider'
 
 export interface CascaderProps
@@ -56,7 +56,7 @@ export interface CascaderProps
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
-  closeIconPosition: string
+  closeIconPosition: CloseIconPosition
   closeIcon: ReactNode
   lazy: boolean
   onLoad: (node: any, resolve: any) => void
@@ -396,9 +396,7 @@ const InternalCascader: ForwardRefRenderFunction<
           return activeIcon
         }
         return (
-          <Checklist
-            className={`${checked ? `${classPrefix}-icon-check` : ''}`}
-          />
+          <Check className={`${checked ? `${classPrefix}-icon-check` : ''}`} />
         )
       }
       return null

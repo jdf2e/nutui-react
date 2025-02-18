@@ -8,9 +8,12 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import { Loading, Checklist } from '@nutui/icons-react-taro'
+import { Loading, Check } from '@nutui/icons-react-taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Popup, PopupProps } from '@/packages/popup/popup.taro'
+import Popup, {
+  PopupProps,
+  CloseIconPosition,
+} from '@/packages/popup/index.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import Tree, { convertListToOptions } from './utils'
 import {
@@ -21,8 +24,8 @@ import {
   CascaderFormat,
 } from './types'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 export interface CascaderProps
   extends Pick<
@@ -57,7 +60,7 @@ export interface CascaderProps
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
-  closeIconPosition: string
+  closeIconPosition: CloseIconPosition
   closeIcon: ReactNode
   lazy: boolean
   onLoad: (node: any, resolve: any) => void
@@ -397,9 +400,7 @@ const InternalCascader: ForwardRefRenderFunction<
           return activeIcon
         }
         return (
-          <Checklist
-            className={`${checked ? `${classPrefix}-icon-check` : ''}`}
-          />
+          <Check className={`${checked ? `${classPrefix}-icon-check` : ''}`} />
         )
       }
       return null
@@ -483,7 +484,6 @@ const InternalCascader: ForwardRefRenderFunction<
           {...popupProps}
           visible={innerVisible}
           position="bottom"
-          style={{ overflowY: 'hidden' }}
           round
           closeIcon={closeIcon}
           closeable={closeable}

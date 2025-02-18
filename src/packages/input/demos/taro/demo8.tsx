@@ -6,38 +6,35 @@ import pxTransform from '@/utils/px-transform'
 const Demo8 = () => {
   const [currentLength, setCurrentLength] = useState(0)
   return (
-    <>
+    <View
+      style={{
+        display: 'flex',
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#ffffff',
+      }}
+    >
+      <Input
+        type="text"
+        maxLength={20}
+        onChange={(val) => setCurrentLength(val.length)}
+      />
       <View
         style={{
-          display: 'flex',
-          flexWrap: 'nowrap',
-          alignItems: 'center',
-          flexDirection: 'row',
-          backgroundColor: '#ffffff',
+          marginRight: pxTransform(10),
         }}
       >
-        <Input
-          type="text"
-          maxLength={20}
-          onChange={(val) => setCurrentLength(val.length)}
-          placeholderTextColor="#757575"
-        />
-        <View
+        <Text
           style={{
-            marginRight: pxTransform(10),
+            width: pxTransform(40),
+            fontSize: pxTransform(12),
           }}
         >
-          <Text
-            style={{
-              width: pxTransform(40),
-              fontSize: pxTransform(12),
-            }}
-          >
-            {currentLength} / 20
-          </Text>
-        </View>
+          {currentLength} / 20
+        </Text>
       </View>
-    </>
+    </View>
   )
 }
 export default Demo8

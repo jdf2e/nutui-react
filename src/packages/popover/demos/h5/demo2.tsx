@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Popover, Button } from '@nutui/nutui-react'
-import { Home, Cart, Location, Checklist } from '@nutui/icons-react'
+import { Popover, Button, Space } from '@nutui/nutui-react'
+import { Home, Cart, Location, Check } from '@nutui/icons-react'
 
 interface List {
   key?: string
@@ -18,7 +18,7 @@ const Demo2 = () => {
       name: 'option1',
       icon: <Home />,
       action: {
-        icon: <Checklist color="rgba(250, 44, 25, 1)" />,
+        icon: <Check color="rgba(250, 44, 25, 1)" />,
         onClick: (e: any) => {
           console.log('onclick 1')
           e.stopPropagation()
@@ -56,7 +56,7 @@ const Demo2 = () => {
     console.log('选择')
   }
   return (
-    <>
+    <Space>
       <Popover
         className="demo-popover"
         visible={showIcon}
@@ -65,7 +65,7 @@ const Demo2 = () => {
           showIcon ? setShowIcon(false) : setShowIcon(true)
         }}
         list={iconItemList}
-        style={{ marginInlineEnd: '30px' }}
+        style={{ marginInlineEnd: 30 }}
       >
         <Button type="primary" shape="square">
           展示图标
@@ -84,7 +84,7 @@ const Demo2 = () => {
           禁用选项
         </Button>
       </Popover>
-    </>
+    </Space>
   )
 }
 

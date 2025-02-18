@@ -1,6 +1,6 @@
 import React from 'react'
 import { Steps, Step } from '@nutui/nutui-react'
-import { Service, People, Checklist } from '@nutui/icons-react'
+import { Service, Transit, Check } from '@nutui/icons-react'
 
 const Demo7 = () => {
   return (
@@ -14,12 +14,12 @@ const Demo7 = () => {
         <Step
           value={2}
           title="进行中"
-          icon={<People width={14} height={14} />}
+          icon={<Transit width={14} height={14} />}
         />
         <Step
           value={3}
           title="未开始"
-          icon={<Checklist width={14} height={14} />}
+          icon={<Check width={14} height={14} />}
         />
       </Steps>
     </>

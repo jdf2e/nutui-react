@@ -4,26 +4,28 @@ import APPContext from '../../context'
 import DemoBlock from './demoblock'
 import './demoblock.scss'
 
-const modules = import.meta.glob('@/packages/**/demos/*/*.tsx', {
+const modules = import.meta.glob(`@/packages/**/demos/h5/*.tsx`, {
   query: '?raw',
   import: 'default',
   eager: true,
 })
-// console.log('modules', modules)
+
 const CodeBlock: FunctionComponent = (props: { src?: string }) => {
   const ctx = useContext(APPContext)
-
   const originCode = modules[`${ctx.path}/demos/${props.src}`]
-
-  const highlightedCode = hljs.highlightAuto(originCode, ['jsx']).value
-
-  return (
-    <DemoBlock text={originCode} scss="">
-      <pre>
-        <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-      </pre>
-    </DemoBlock>
-  )
+  try {
+    const highlightedCode = hljs.highlightAuto(originCode, ['jsx']).value
+    return (
+      <DemoBlock text={originCode} scss="">
+        <pre>
+          <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+        </pre>
+      </DemoBlock>
+    )
+  } catch(e) {
+    console.log('e', e)
+    return <></>
+  }
 }
 
 export default CodeBlock

@@ -144,8 +144,6 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       position="bottom"
       title={title || locale.timeselect.pickupTime}
       style={{
-        width: '100%',
-        height: '20%',
         ...style,
       }}
       onClose={closeFun}

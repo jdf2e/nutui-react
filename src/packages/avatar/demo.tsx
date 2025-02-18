@@ -51,7 +51,7 @@ const AvatarDemo = () => {
 
   return (
     <>
-      <div className="demo full avatar-demo">
+      <div className="demo avatar-demo">
         <h2>{translated['67f78db5']}</h2>
         <Demo1 />
 

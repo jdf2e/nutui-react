@@ -14,7 +14,7 @@ const Demo20 = () => {
         }}
         direction="vertical"
       >
-        <Tabs.TabPane title="Tab 1">
+        <Tabs.TabPane title="Tab longitem">
           <Tabs
             value={tabvalue1}
             onChange={(value) => {
@@ -22,7 +22,7 @@ const Demo20 = () => {
             }}
             direction="horizontal"
           >
-            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
             <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
             <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
           </Tabs>
