@@ -1,11 +1,7 @@
-import React, { CSSProperties, useCallback, useMemo } from 'react'
 import type { MouseEvent } from 'react'
+import React, { CSSProperties, useCallback, useMemo } from 'react'
 import classNames from 'classnames'
-import {
-  ButtonProps as MiniProgramButtonProps,
-  View,
-  Button as TaroButton,
-} from '@tarojs/components'
+import { ButtonProps as MiniProgramButtonProps, View } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -148,13 +144,14 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       ;(rest as any).type = rest.formType
     }
     return (
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
-      <TaroButton
+      <button
         {...rest}
         ref={ref}
-        formType={nativeType}
+        /* eslint-disable-next-line react/no-unknown-property */
+        form-type={nativeType}
+        type={nativeType}
         className={buttonClassNames}
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
@@ -174,7 +171,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           )}
           {rightIcon}
         </View>
-      </TaroButton>
+      </button>
     )
   }
 )
