@@ -2,9 +2,9 @@ import React from 'react'
 import { SearchBar } from '@nutui/nutui-react-taro'
 import {
   ArrowLeft,
-  Photograph,
-  More,
   Close,
+  More,
+  Photograph,
   Star,
 } from '@nutui/icons-react-taro'
 
@@ -20,12 +20,7 @@ const Demo5 = () => {
         }
         right={
           <>
-            <Star
-              size={20}
-              style={{
-                color: 'var(--nutui-color-primary)',
-              }}
-            />
+            <Star size={20} color="#ff0f23" />
             <More size={20} />
           </>
         }

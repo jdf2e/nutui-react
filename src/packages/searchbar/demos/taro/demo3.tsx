@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar, ConfigProvider, Toast } from '@nutui/nutui-react-taro'
+import { ConfigProvider, SearchBar, Toast } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const [show, SetShow] = useState(false)
@@ -10,12 +10,14 @@ const Demo3 = () => {
     <>
       <ConfigProvider
         theme={{
-          nutuiSearchbarBackground: 'var(--nutui-color-primary)',
           nutuiSearchbarInputBackground: '#eee',
           nutuiSearchbarInputTextAlign: 'right',
         }}
       >
-        <SearchBar onSearch={() => toastShow()} />
+        <SearchBar
+          onSearch={() => toastShow()}
+          style={{ backgroundColor: '#ff0f23' }}
+        />
       </ConfigProvider>
       <Toast
         type="text"
