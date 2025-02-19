@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import './demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -42,29 +41,19 @@ const SkeletonDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated['84aa6bce']}</View>
-        <Cell style={{ display: 'block', paddingTop: '3px' }}>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated.ea3bc18a}</View>
-        <Cell style={{ display: 'block' }}>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated['02a53df5']}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         {harmony() ? null : (
           <>
             <View className="h2">{translated['0a001122']}</View>
-            <Cell style={{ display: 'block' }}>
-              <Demo4 />
-            </Cell>
+            <Demo4 />
           </>
         )}
         <View className="h2">{translated['07d62d5c']}</View>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
       </ScrollView>
     </>
   )

@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const partItemStyle = {
   display: 'flex',
@@ -10,15 +9,15 @@ const partItemStyle = {
   backgroundColor: '#fa2c19',
   color: '#fff',
   ...{
-    width: pxTransform(20),
-    height: pxTransform(25),
-    fontSize: pxTransform(14),
-    borderRadius: pxTransform(6),
+    width: 20,
+    height: 25,
+    fontSize: 14,
+    borderRadius: 6,
   },
 }
 const partItemSymbolStyle = {
-  marginLeft: pxTransform(5),
-  marginRight: pxTransform(5),
+  marginLeft: 5,
+  marginRight: 5,
 }
 
 const Demo8 = () => {

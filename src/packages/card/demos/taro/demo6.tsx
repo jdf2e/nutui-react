@@ -17,7 +17,7 @@ const Demo6 = () => {
       description={
         <View
           style={{
-            fontSize: pxTransform(14),
+            fontSize: 12,
             padding: `${pxTransform(10)} 0`,
             color: '#999',
           }}

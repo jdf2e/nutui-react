@@ -1,5 +1,4 @@
 import React from 'react'
-import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
 import './demo.scss'
 import Demo1 from './demos/h5/demo1'
@@ -37,25 +36,15 @@ const SkeletonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell style={{ display: 'block' }}>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <h2>{translated.ea3bc18a}</h2>
-        <Cell style={{ display: 'block', paddingTop: '3px' }}>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated['02a53df5']}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <h2>{translated['0a001122']}</h2>
-        <Cell style={{ display: 'block' }}>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated['07d62d5c']}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
       </div>
     </>
   )

@@ -1,7 +1,6 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 import { Card } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const state = {
@@ -24,7 +23,7 @@ const Demo5 = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-      extra={<View style={{ fontSize: pxTransform(12) }}>自定义</View>}
+      extra={<View style={{ fontSize: 12 }}>自定义</View>}
     />
   )
 }
