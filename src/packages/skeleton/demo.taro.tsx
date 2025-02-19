@@ -9,7 +9,6 @@ import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
-import { harmony } from '@/utils/platform-taro'
 
 const SkeletonDemo = () => {
   const [translated] = useTranslate({
@@ -46,12 +45,8 @@ const SkeletonDemo = () => {
         <Demo2 />
         <View className="h2">{translated['02a53df5']}</View>
         <Demo3 />
-        {harmony() ? null : (
-          <>
-            <View className="h2">{translated['0a001122']}</View>
-            <Demo4 />
-          </>
-        )}
+        <View className="h2">{translated['0a001122']}</View>
+        <Demo4 />
         <View className="h2">{translated['07d62d5c']}</View>
         <Demo5 />
       </ScrollView>
