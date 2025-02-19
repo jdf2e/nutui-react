@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Image } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo3 = () => {
   const state = {
@@ -14,8 +15,8 @@ const Demo3 = () => {
   }
   const tagStyles = {
     display: 'inline-flex',
-    marginRight: 5,
-    marginLeft: 2,
+    marginRight: pxTransform(5),
+    marginLeft: pxTransform(2),
   }
   return (
     <Card
@@ -29,8 +30,8 @@ const Demo3 = () => {
       priceTag={
         <Image
           style={tagStyles}
-          height={14}
-          width={29}
+          height={pxTransform(14)}
+          width={pxTransform(29)}
           src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
         />
       }

@@ -3,7 +3,6 @@ import { Cell } from '@nutui/nutui-react-taro'
 import { Add, Dongdong, UserAdd, Minus } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
-  console.log('dddd')
   return (
     <Cell>
       <Add color="red" style={{ marginRight: 10 }} />

@@ -3,6 +3,7 @@ import { Button, Cell } from '@nutui/nutui-react-taro'
 import { navigateTo, redirectTo } from '@tarojs/taro'
 import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
+import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const onJumpclick = (
@@ -28,7 +29,9 @@ const Demo6 = () => {
           title="URL 跳转"
           extra={
             <>
-              <View style={{ marginRight: 5 }}>/pages/index/index</View>
+              <View style={{ marginRight: pxTransform(5) }}>
+                /pages/index/index
+              </View>
               <ArrowRight />
             </>
           }
@@ -49,12 +52,12 @@ const Demo6 = () => {
                 flexDirection: 'row',
               }}
             >
-              <View style={{ fontWeight: 500 }}>我是标题</View>
+              <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
               <View
                 style={{
                   color: '#888B94',
-                  fontSize: 10,
-                  marginLeft: 5,
+                  fontSize: pxTransform(10),
+                  marginLeft: pxTransform(5),
                 }}
               >
                 我是描述
@@ -75,7 +78,7 @@ const Demo6 = () => {
           }
         />
         <Cell>
-          <View style={{ minHeight: 50 }}>自定义内容</View>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"
@@ -83,7 +86,7 @@ const Demo6 = () => {
             <Text
               style={{
                 color: '#888B94',
-                fontSize: 12,
+                fontSize: pxTransform(12),
               }}
             >
               我是描述
@@ -114,7 +117,7 @@ const Demo6 = () => {
           extra={<ArrowRight />}
         />
         <Cell>
-          <View style={{ minHeight: 50 }}>自定义内容</View>
+          <View style={{ minHeight: pxTransform(50) }}>自定义内容</View>
         </Cell>
         <Cell
           align="center"

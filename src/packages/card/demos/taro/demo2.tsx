@@ -15,7 +15,7 @@ const Demo2 = () => {
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const wordStyles = {
-    marginRight: 5,
+    marginRight: pxTransform(5),
   }
   return (
     <Card

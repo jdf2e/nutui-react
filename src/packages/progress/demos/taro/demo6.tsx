@@ -2,12 +2,13 @@ import React from 'react'
 import { Progress, Cell } from '@nutui/nutui-react-taro'
 import { Checked, Tips } from '@nutui/icons-react-taro'
 import { harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const iconStyle = {
     marginTop: 0,
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: pxTransform(5),
+    marginRight: pxTransform(5),
   }
   const progressStyle = {
     width: harmony() ? '95%' : '100%',
