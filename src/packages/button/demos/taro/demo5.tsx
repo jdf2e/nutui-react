@@ -14,8 +14,8 @@ const Demo5 = () => {
         <Button
           disabled
           type="primary"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Disabled
@@ -24,8 +24,8 @@ const Demo5 = () => {
           disabled
           type="primary"
           fill="outline"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffadbe" />}
+          rightIcon={<Star color="#ffadbe" />}
           style={marginStyle}
         >
           Disabled
@@ -34,8 +34,8 @@ const Demo5 = () => {
           disabled
           type="primary"
           fill="dashed"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffadbe" />}
+          rightIcon={<Star color="#ffadbe" />}
           style={marginStyle}
         >
           Disabled
@@ -43,8 +43,8 @@ const Demo5 = () => {
         <Button
           disabled
           fill="solid"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Disabled
@@ -53,13 +53,13 @@ const Demo5 = () => {
           disabled
           type="default"
           fill="none"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#888b94" />}
+          rightIcon={<Star color="#888b94" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `var(--nutui-gray-3)`,
-            color: `var(--nutui-gray-5)`,
+            backgroundColor: `#f2f3f5`,
+            color: `#888b94`,
           }}
         >
           Disabled
@@ -68,21 +68,21 @@ const Demo5 = () => {
           disabled
           type="default"
           fill="none"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#888b94" />}
+          rightIcon={<Star color="#888b94" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `var(--nutui-gray-1)`,
-            color: `var(--nutui-gray-5)`,
+            backgroundColor: `#ffffff`,
+            color: `#888b94`,
           }}
         >
           Disabled
         </Button>
         <Button
           disabled
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Disabled
@@ -92,7 +92,7 @@ const Demo5 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="rgb(255, 173, 190)" />}
           style={{
             margin: 8,
           }}
@@ -100,16 +100,18 @@ const Demo5 = () => {
         <Button
           disabled
           type="primary"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="#ffffff" />}
           style={{
             margin: 8,
+            backgroundColor: '#ffadbe',
+            borderColor: '#ffadbe',
           }}
         />
         <Button
           disabled
           type="primary"
           fill="dashed"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="#ffadbe" />}
           style={{
             margin: 8,
           }}
@@ -119,8 +121,8 @@ const Demo5 = () => {
           shape="round"
           type="primary"
           size="large"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Disabled
@@ -130,8 +132,8 @@ const Demo5 = () => {
           shape="round"
           type="primary"
           size="xlarge"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Disabled

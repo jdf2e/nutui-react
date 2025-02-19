@@ -253,6 +253,7 @@
     }
 
     &-disabled,
+    &-disabled.nut-button-icononly,
     &-solid-disabled {
       color: $button-primary-color;
       background: $button-primary-disabled;
