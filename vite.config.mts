@@ -99,7 +99,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           // silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
-          plugins: [atImport({ path: join(__dirname, 'src`') })],
+          plugins: [atImport({ path: join(__dirname, 'src') })],
         },
       },
     },
