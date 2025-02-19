@@ -8,18 +8,19 @@ import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
-import { readFile, access, writeFile, mkdir } from 'fs/promises'
-import { dirname, join, basename, extname, resolve, relative } from 'path'
+import { access, mkdir, readFile, writeFile } from 'fs/promises'
+import { basename, dirname, extname, join, relative, resolve } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
-import packageJson from '../package.json' assert { type: 'json' }
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const dist = 'release/h5/dist'
+const filePath = resolve(__dirname, '../package.json')
+const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
 
 // 写文件
 async function dest(file, content) {
@@ -49,7 +50,7 @@ async function buildES(p) {
         'src/packages/**/*.spec.tsx',
         'src/packages/**/demos/**/*',
       ],
-    }
+    },
   )
 
   for (const path of soruceFiels) {
@@ -106,7 +107,7 @@ async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.h5.json')
   const types = join(__dirname, `../${dist}/types`)
   await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`
+    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
   )
   const transform = (file, api) => {
     const j = api.jscodeshift.withParser('ts')
@@ -136,7 +137,7 @@ async function buildDeclaration() {
         }),
         path: join(__dirname, '../', file).replace(`${dist}/types`, ''),
       },
-      { jscodeshift: j }
+      { jscodeshift: j },
     )
     await dest(join(dist, 'es', file.replace(`${dist}/types/src`, '')), result)
     await dest(join(dist, 'cjs', file.replace(`${dist}/types/src`, '')), result)
@@ -182,7 +183,7 @@ async function buildAllCSS() {
   async function copyStyles() {
     await copy(
       resolve(__dirname, '../src/styles'),
-      resolve(__dirname, `../${dist}/styles`)
+      resolve(__dirname, `../${dist}/styles`),
     )
 
     const content = [
@@ -198,11 +199,12 @@ async function buildAllCSS() {
     const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativeFilePath(`/${dist}/style.scss`, '/' + file)}';`
+        `@import '${relativeFilePath(`/${dist}/style.scss`, '/' + file)}';`,
       )
     })
     dest(`${dist}/style.scss`, content.join('\n'))
   }
+
   await copyStyles()
   await vite.build({
     logLevel: 'error',
@@ -249,7 +251,7 @@ async function buildThemeCSS() {
 async function copyStyles() {
   await copy(
     resolve(__dirname, '../src/styles'),
-    resolve(__dirname, `../${dist}/styles`)
+    resolve(__dirname, `../${dist}/styles`),
   )
 
   let content = [
@@ -275,7 +277,7 @@ async function buildCSS(p) {
   })
 
   const variables = await readFile(
-    join(__dirname, '../src/styles/variables.scss')
+    join(__dirname, '../src/styles/variables.scss'),
   )
   for (const file of cssFiles) {
     const button = await readFile(join(__dirname, '../', file), {
@@ -286,7 +288,7 @@ async function buildCSS(p) {
     const loadPath = join(
       __dirname,
       '../src/packages',
-      base.replace('.scss', '')
+      base.replace('.scss', ''),
     )
     const code = sass.compileString(variables + '\n' + button, {
       loadPaths: [loadPath],
@@ -299,7 +301,7 @@ async function buildCSS(p) {
     await dest(join(`${dist}/cjs`, cssPath, 'style/style.css'), code.css)
     await dest(
       join(`${dist}/cjs`, cssPath, 'style/css.js'),
-      `import './style.css'`
+      `import './style.css'`,
     )
 
     // 删除 import
@@ -310,7 +312,7 @@ async function buildCSS(p) {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
           if (root.name === 'import') {
-            if (root.params.indexOf("'../../styles") > -1) {
+            if (root.params.indexOf('\'../../styles') > -1) {
               atRules.push(root.params)
               root.params = root.params.replace('../../', '../../../../')
               return
@@ -331,7 +333,7 @@ async function buildCSS(p) {
 
     const jsContent = []
     atRules.forEach((rule) => {
-      rule = rule.replaceAll("'", '')
+      rule = rule.replaceAll('\'', '')
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
         jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
@@ -346,11 +348,12 @@ async function buildCSS(p) {
 
     await dest(
       join(`${dist}/cjs`, cssPath, `style/index.js`),
-      jsContent.join('\n')
+      jsContent.join('\n'),
     )
     await dest(join(`${dist}/es`, cssPath, `style/index.js`), jsContent.join('\n'))
   }
 }
+
 function generateReleasePackageJson() {
   delete packageJson.dependencies['@nutui/icons-react-taro']
   return JSON.stringify({
@@ -361,8 +364,8 @@ function generateReleasePackageJson() {
     module: packageJson.module,
     typings: packageJson.typings,
     scripts: {
-      "publish:beta": "npm publish --tag=beta --access public --no-git-checks",
-      "publish:latest": "npm publish --access public --no-git-checks"
+      'publish:beta': 'npm publish --tag=beta --access public --no-git-checks',
+      'publish:latest': 'npm publish --access public --no-git-checks',
     },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
@@ -376,6 +379,7 @@ function generateReleasePackageJson() {
     peerDependencies: packageJson.peerDependencies,
   })
 }
+
 async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))

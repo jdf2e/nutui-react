@@ -15,11 +15,12 @@ import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
-import packageJson from '../package.json' assert { type: 'json' }
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const dist = 'release/taro/dist'
+const filePath = resolve(__dirname, '../package.json')
+const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
 
 const isTypesTaro = (name, type) => {
   return name.indexOf(type) > -1
@@ -422,8 +423,8 @@ function generateReleasePackageJson() {
     module: packageJson.module,
     typings: packageJson.typings,
     scripts: {
-      "publish:beta": "npm publish --tag=beta --access public --no-git-checks",
-      "publish:latest": "npm publish --access public --no-git-checks"
+      'publish:beta': 'npm publish --tag=beta --access public --no-git-checks',
+      'publish:latest': 'npm publish --access public --no-git-checks',
     },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
@@ -437,6 +438,7 @@ function generateReleasePackageJson() {
     peerDependencies: packageJson.peerDependencies,
   })
 }
+
 async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))

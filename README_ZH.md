@@ -71,7 +71,11 @@ pnpm run dev
 
 ```
 
-### 本地运行 Taro 相关的预览
+### 本地运行 Taro 环境
+
+**注意：在 Taro 环境新增 pnpm pre 钩子，用于 H5 或小程序预览时显示未适配鸿蒙的组件，环境变量可通过 predev:taro 命令查看。**
+
+#### 本地运行 Taro 相关的预览
 
 ````sh
 # 克隆仓库
@@ -94,7 +98,7 @@ pnpm dev:taro jd
 # 其他平台 参考 demo 目录中 package.json 的 script
 ````
 
-### 本地运行 JDTaro 相关的预览
+#### 本地运行 JDTaro 相关的预览
 
 1. 仓库根目录下增加 .npmrc 文件，增加如下配置:
 
