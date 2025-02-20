@@ -118,41 +118,99 @@ export const isEqual = (date1: string, date2: string): boolean => {
   return startTime === endTime
 }
 
-export const getMonthWeek = (
+export const getWeekOfMonth = (
   year: number,
-  month: number,
-  date: number,
+  month: number, // 自然月
+  date: number = 0,
   firstDayOfWeek = 0
 ): number => {
   const dateNow = new Date(year, month - 1, date)
-  let w = dateNow.getDay() // 星期数
-  let remainder = 6 - w
+  let dayOfWeek = dateNow.getDay() // 星期数
+  let remainder = 6 - dayOfWeek
   if (firstDayOfWeek !== 0) {
-    w = w === 0 ? 7 : w
-    remainder = 7 - w
+    dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
+    remainder = 7 - dayOfWeek
   }
   return Math.ceil((date + remainder) / 7)
 }
-export const getYearWeek = (
+
+// 获取某一天所在的周，按国标 8601 处理。第一周至少包含4天。
+export const getWeekOfYearByYMD = (
   year: number,
-  month: number,
+  month: number, // 自然月
   date: number,
   firstDayOfWeek = 0
 ): number => {
+  // 一天的秒
+  const MILLISECONDS_PER_DAY = 86400000
+
   const dateNow = new Date(year, month - 1, date)
+  // 一年内第一天
   const dateFirst = new Date(year, 0, 1)
-  const dataNumber = Math.round(
-    (dateNow.valueOf() - dateFirst.valueOf()) / 86400000
+  // 一年内第几天
+  const dayOfYear = Math.round(
+    (dateNow.valueOf() - dateFirst.valueOf()) / MILLISECONDS_PER_DAY
   )
-  return Math.ceil((dataNumber + (dateFirst.getDay() + 1 - 1)) / 7)
+
+  // ISO 8601 标准：第一个星期至少包含 4 天
+  // 同时，需要兼顾 firstDayOfWeek 一起判断
+  const DAYS_OF_FIRST_WEEK = 3
+  let dayOfWeek = dateNow.getDay()
+  let remainder = 6 - dayOfWeek - DAYS_OF_FIRST_WEEK
+  if (firstDayOfWeek !== 0) {
+    dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // 周日转化为 7
+    remainder = 7 - dayOfWeek - DAYS_OF_FIRST_WEEK
+  }
+
+  // 周号可以出现0，标识当前1月1日不在本年度的第一周，为上一年的最后一周。
+  let weekNo = Math.ceil((dayOfYear + remainder + 1) / 7)
+  // 需要处理第一周为0的的情况，需延续上一年的周数，上一年有可能是53或52。
+  // 需要判断最后一周为53的情况，因为一年至少有52周，但是会有53周的情况，这时需要判断：
+  // 如果最后一周少于4天，则为下一年的第一周。
+  if (weekNo === 0) {
+    // 测试：2010/2011/2012/2017/2023/
+    weekNo = getWeekOfYearByYMD(year - 1, 12, 31, firstDayOfWeek)
+  } else if (weekNo === 53) {
+    // 测试：2024/2021
+    const remainder = 7 - dayOfWeek - DAYS_OF_FIRST_WEEK
+    weekNo = remainder > 0 ? 1 : weekNo
+  }
+
+  return weekNo
 }
 
-export const getWeekOfYear = (time: number) => {
-  const oneDayTime = 86400000 // 24 * 60 * 60 * 1000
+export const getWeekOfYearByTime = (time: number) => {
+  const MILLISECONDS_PER_DAY = 86400000 // 24 * 60 * 60 * 1000
   const startOfYear = new Date(new Date(time).getFullYear(), 0, 1)
   // 举例1/1共计多少天
-  const days = Math.round((time - startOfYear.valueOf()) / oneDayTime)
+  const days = Math.round((time - startOfYear.valueOf()) / MILLISECONDS_PER_DAY)
   return Math.ceil((days + (startOfYear.getDay() + 1)) / 7)
+}
+
+export const getWeekNosOfYear = (
+  year: number,
+  month: number,
+  firstDayOfWeek: number
+) => {
+  const startWeekNo = getWeekOfYearByYMD(year, month, 1, firstDayOfWeek)
+  const endWeekNo = getWeekOfYearByYMD(
+    year,
+    month,
+    getMonthDays(`${year}`, `${month}`),
+    firstDayOfWeek
+  )
+  return Array.from(
+    {
+      length:
+        (endWeekNo === 1 ? 53 : endWeekNo) -
+        (startWeekNo === 53 || startWeekNo === 52 ? 0 : startWeekNo) +
+        1,
+    },
+    (_, i) => {
+      const lastIndex = (endWeekNo === 1 ? 53 : endWeekNo) - startWeekNo
+      return `${endWeekNo === 1 && i === lastIndex ? 1 : ((startWeekNo === 53 || startWeekNo === 52) && i !== 0 ? 0 : startWeekNo) + i}`
+    }
+  )
 }
 
 export const getWeekDate = (

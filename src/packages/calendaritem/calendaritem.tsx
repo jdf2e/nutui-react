@@ -15,6 +15,7 @@ import {
   isEqual,
   getNumTwoBit,
   getWhatDay,
+  getWeekNosOfYear,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -146,7 +147,6 @@ export const CalendarItem = React.forwardRef<
     ...weekdays.slice(firstDayOfWeek, 7),
     ...weekdays.slice(0, firstDayOfWeek),
   ]
-
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
@@ -208,9 +208,10 @@ export const CalendarItem = React.forwardRef<
         scrollTop = monthEle.scrollTop + monthEle.cssHeight
       }
       const cssHeight = 39 + (days.length > 35 ? 384 : 320)
-      const monthInfo: CalendarMonthInfo = {
+      const monthInfo = {
         curData: date,
         title: monthTitle(y, m),
+        weekNo: getWeekNosOfYear(y, m, firstDayOfWeek),
         monthData: days,
         cssHeight,
         scrollTop,
@@ -279,7 +280,6 @@ export const CalendarItem = React.forwardRef<
       }
       return defaultData
     }
-
     if (Array.isArray(currentDate) && currentDate.length) {
       // 日期转化为数组，限制初始日期。判断时间范围
       if (type === 'range') {
@@ -352,9 +352,7 @@ export const CalendarItem = React.forwardRef<
       const index = monthsData.findIndex((item) => {
         return +item.curData[0] === year && +item.curData[1] === month
       })
-      if (index > -1) {
-        current = index
-      }
+      if (index > -1) current = index
     }
     return {
       current,
@@ -402,7 +400,6 @@ export const CalendarItem = React.forwardRef<
   const requestAniFrameFunc = (current: number, monthNum: number) => {
     const lastItem = monthsData[monthsData.length - 1]
     const containerHeight = lastItem.cssHeight + lastItem.scrollTop
-
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
@@ -417,12 +414,8 @@ export const CalendarItem = React.forwardRef<
   const getMonthNum = () => {
     let monthNum = Number(endDates[1]) - Number(startDates[1])
     const yearNum = Number(endDates[0]) - Number(startDates[0])
-    if (yearNum > 0) {
-      monthNum += 12 * yearNum
-    }
-    if (monthNum <= 0) {
-      monthNum = 1
-    }
+    if (yearNum > 0) monthNum += 12 * yearNum
+    if (monthNum <= 0) monthNum = 1
     setMonthsNum(monthNum)
     return monthNum
   }
@@ -452,7 +445,6 @@ export const CalendarItem = React.forwardRef<
     monthsData.splice(0)
     initData()
   }
-
   useEffect(() => {
     setCurrentDate(resetDefaultValue() || [])
   }, [defaultValue])
@@ -772,7 +764,7 @@ export const CalendarItem = React.forwardRef<
         <div className={`${showMonthNumber ? 'shrink' : ''}`}>
           {showMonthNumber && (
             <div className={`${classPrefix}-weeknumber`}>
-              {[1, 2, 3, 4, 5].map((item, index) => (
+              {month.weekNo.map((item: string, index: number) => (
                 <div className={`${classPrefix}-weeknumber-index`} key={index}>
                   {item}
                 </div>

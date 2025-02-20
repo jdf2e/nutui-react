@@ -16,6 +16,7 @@ import {
   isEqual,
   getNumTwoBit,
   getWhatDay,
+  getWeekNosOfYear,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -214,6 +215,7 @@ export const CalendarItem = React.forwardRef<
       const monthInfo = {
         curData: date,
         title: monthTitle(y, m),
+        weekNo: getWeekNosOfYear(y, m, firstDayOfWeek),
         monthData: days,
         cssHeight,
         scrollTop,
@@ -792,7 +794,7 @@ export const CalendarItem = React.forwardRef<
         <div className={`${showMonthNumber ? 'shrink' : ''}`}>
           {showMonthNumber && (
             <div className={`${classPrefix}-weeknumber`}>
-              {[1, 2, 3, 4, 5].map((item, index) => (
+              {month.weekNo.map((item: string, index: number) => (
                 <div className={`${classPrefix}-weeknumber-index`} key={index}>
                   {item}
                 </div>

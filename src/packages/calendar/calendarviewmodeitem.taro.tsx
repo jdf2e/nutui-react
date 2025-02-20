@@ -25,7 +25,7 @@ type CalendarRef = {
 
 export interface CalendarViewModeItemProps {
   type: CalendarType
-  viewMode?: 'month' | 'quarter'
+  viewMode: 'month' | 'quarter'
   title: string
   value?: CalendarValue
   defaultValue?: CalendarValue

@@ -9,7 +9,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface CalendarProps {
   type?: CalendarType
-  viewMode?: 'day' | 'month' | 'quarter'
+  viewMode: 'day' | 'month' | 'quarter'
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean

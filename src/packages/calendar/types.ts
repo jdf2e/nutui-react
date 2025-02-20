@@ -17,6 +17,7 @@ export interface CalendarMonthInfo {
   curData: string[] | string
   title: string
   monthData: CalendarDay[]
+  weekNo?: string[]
   cssHeight?: number
   scrollTop?: number
 }
