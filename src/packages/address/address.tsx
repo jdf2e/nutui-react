@@ -27,8 +27,8 @@ type AddressRef = {
 export interface AddressProps extends CascaderProps {
   visible: boolean
   defaultVisible: boolean
-  value?: CascaderValue
-  defaultValue?: CascaderValue
+  value: CascaderValue
+  defaultValue: CascaderValue
   type: string
   options: CascaderOption[]
   optionKey: CascaderOptionKey
