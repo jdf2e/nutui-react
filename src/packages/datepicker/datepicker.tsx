@@ -6,12 +6,12 @@ import { usePropsValue } from '@/hooks/use-props-value' // 导入自定义钩子
 import { BasicComponent, ComponentDefaults } from '@/utils/typings' // 导入基础组件类型和默认值
 import { isDate } from '@/utils/is-date' // 导入日期验证工具函数
 import {
+  formatValue,
   generateDatePickerRanges,
   generatePickerColumnWithCallback,
   getDatePartValue,
-  getLastDayOfMonth,
+  handlePickerValueChange,
 } from './utils'
-import { PickerValue } from '../pickerview/types'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date // 当前选中的日期
@@ -125,21 +125,11 @@ export const DatePicker: FunctionComponent<
   const [pickerValue, setPickerValue] = useState<(string | number)[]>([])
   const [pickerOptions, setPickerOptions] = useState<PickerOption[][]>([])
 
-  // 格式化日期值，确保其在 startDate 和 endDate 之间
-  const formatValue = (value: Date | null) => {
-    if (!value || (value && !isDate(value))) {
-      value = startDate // 如果值无效，使用 startDate
-    }
-    return Math.min(
-      Math.max(value.getTime(), startDate.getTime()),
-      endDate.getTime()
-    ) // 确保日期在范围内
-  }
-
   // 使用 usePropsValue 管理选中的日期值
   const [selectedDate, setSelectedDate] = usePropsValue<number>({
-    value: props.value && formatValue(props.value), // 当前值
-    defaultValue: props.defaultValue && formatValue(props.defaultValue), // 默认值
+    value: props.value && formatValue(props.value, startDate, endDate), // 当前值
+    defaultValue:
+      props.defaultValue && formatValue(props.defaultValue, startDate, endDate), // 默认值
     finalValue: 0, // 最终值
   })
 
@@ -151,19 +141,18 @@ export const DatePicker: FunctionComponent<
    * @param index 当前列的索引
    */
   const handleDateComparison = (
-    currentDate: number,
     newDate: Date | null,
     selectedOptions: PickerOption[],
     index: number
   ) => {
     // 比较当前日期和新日期的时间戳是否相同
-    const isEqual = new Date(currentDate)?.getTime() === newDate?.getTime()
+    const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
 
     // 如果新日期有效且与当前日期不同
     if (newDate && isDate(newDate)) {
       if (!isEqual) {
         // 更新选中的日期
-        setSelectedDate(formatValue(newDate))
+        setSelectedDate(formatValue(newDate, startDate, endDate))
       }
 
       // 触发 onChange 回调，传递选中的选项和日期信息
@@ -179,100 +168,19 @@ export const DatePicker: FunctionComponent<
     }
   }
 
-  /**
-   * 处理 Picker 值变化的逻辑
-   * @param selectedOptions 选中的选项数组
-   * @param selectedValue 选中的值数组
-   * @param index 当前列的索引
-   */
-  const handlePickerValueChange = (
+  const handleChange = (
     selectedOptions: PickerOption[],
     selectedValue: (number | string)[],
     index: number
   ) => {
-    const rangeType = type.toLocaleLowerCase() // 获取日期选择器的类型并转换为小写
-
-    // 处理日期相关的类型（如 'date', 'datetime', 'datehour' 等）
-    if (
-      ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
-        rangeType
-      )
-    ) {
-      const formattedDate: PickerValue[] = []
-
-      // 将选中的值转换为数组
-      selectedValue.forEach((item) => {
-        formattedDate.push(item)
-      })
-
-      // 如果类型是 'month-day' 且缺少年份，补充当前年份
-      if (rangeType === 'month-day' && formattedDate.length < 3) {
-        formattedDate.unshift(
-          new Date(defaultValue || startDate || endDate).getFullYear()
-        )
-      }
-
-      // 如果类型是 'year-month' 且缺少日期，补充当前日期
-      if (rangeType === 'year-month' && formattedDate.length < 3) {
-        formattedDate.push(
-          new Date(defaultValue || startDate || endDate).getDate()
-        )
-      }
-
-      // 解析年、月、日
-      const year = Number(formattedDate[0])
-      const month = Number(formattedDate[1]) - 1 // 月份从 0 开始
-      const day = Math.min(
-        Number(formattedDate[2]),
-        getLastDayOfMonth(year, month + 1) // 获取当前月份的最后一天
-      )
-
-      let date: Date | null = null
-
-      // 根据类型创建日期对象
-      if (
-        rangeType === 'date' ||
-        rangeType === 'month-day' ||
-        rangeType === 'year-month'
-      ) {
-        date = new Date(year, month, day) // 仅包含年、月、日
-      } else if (rangeType === 'datetime') {
-        date = new Date(
-          year,
-          month,
-          day,
-          Number(formattedDate[3]),
-          Number(formattedDate[4])
-        ) // 包含年、月、日、时、分
-      } else if (rangeType === 'datehour') {
-        date = new Date(year, month, day, Number(formattedDate[3])) // 包含年、月、日、时
-      }
-
-      // 比较并处理日期变化
-      handleDateComparison(selectedDate, date, selectedOptions, index)
-    } else {
-      // 处理时间相关的类型（如 'hour-minutes', 'time'）
-      const [hour, minute, seconds] = selectedValue
-
-      // 获取当前日期的年、月、日
-      const currentDate = new Date(selectedDate)
-      const year = currentDate.getFullYear()
-      const month = currentDate.getMonth()
-      const day = currentDate.getDate()
-
-      // 创建日期对象
-      const date = new Date(
-        year,
-        month,
-        day,
-        Number(hour),
-        Number(minute),
-        rangeType === 'time' ? Number(seconds) : 0 // 如果是 'time' 类型，包含秒数
-      )
-
-      // 比较并处理日期变化
-      handleDateComparison(selectedDate, date, selectedOptions, index)
-    }
+    handlePickerValueChange(
+      selectedOptions,
+      selectedValue,
+      index,
+      type,
+      defaultValue || startDate || endDate,
+      handleDateComparison
+    )
   }
 
   /**
@@ -347,7 +255,7 @@ export const DatePicker: FunctionComponent<
             options: PickerOption[],
             value: (number | string)[],
             index: number
-          ) => handlePickerValueChange(options, value, index)}
+          ) => handleChange(options, value, index)}
           threeDimensional={threeDimensional}
         />
       )}

@@ -1,5 +1,7 @@
 import { padZero } from '@/utils/pad-zero'
+import { isDate } from '@/utils/is-date'
 import { PickerOption } from '../picker/types'
+import { PickerValue } from '../pickerview/types'
 
 /**
  * 获取指定年份和月份的最后一天
@@ -243,5 +245,121 @@ export const formatPickerOption = (
   return {
     text: paddedValue + chineseText, // 文本 = 补零后的值 + 中文文本
     value: paddedValue, // 值 = 补零后的值
+  }
+}
+
+/**
+ * 格式化日期值，确保其在 startDate 和 endDate 之间
+ */
+export const formatValue = (
+  value: Date | null,
+  startDate: Date,
+  endDate: Date
+) => {
+  if (!value || (value && !isDate(value))) {
+    value = startDate // 如果值无效，使用 startDate
+  }
+  return Math.min(
+    Math.max(value.getTime(), startDate.getTime()),
+    endDate.getTime()
+  ) // 确保日期在范围内
+}
+
+/**
+ * 处理 Picker 值变化的逻辑
+ * @param selectedOptions 选中的选项数组
+ * @param selectedValue 选中的值数组
+ * @param index 当前列的索引
+ */
+export const handlePickerValueChange = (
+  selectedOptions: PickerOption[],
+  selectedValue: PickerValue[],
+  index: number,
+  type: string,
+  defaultDate: Date,
+  handleDateComparison: (
+    newDate: Date | null,
+    selectedOptions: PickerOption[],
+    index: number
+  ) => void
+) => {
+  const rangeType = type.toLocaleLowerCase() // 获取日期选择器的类型并转换为小写
+
+  // 处理日期相关的类型（如 'date', 'datetime', 'datehour' 等）
+  if (
+    ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
+      rangeType
+    )
+  ) {
+    const formattedDate: PickerValue[] = []
+
+    // 将选中的值转换为数组
+    selectedValue.forEach((item) => {
+      formattedDate.push(item)
+    })
+
+    // 如果类型是 'month-day' 且缺少年份，补充当前年份
+    if (rangeType === 'month-day' && formattedDate.length < 3) {
+      formattedDate.unshift(new Date(defaultDate).getFullYear())
+    }
+
+    // 如果类型是 'year-month' 且缺少日期，补充当前日期
+    if (rangeType === 'year-month' && formattedDate.length < 3) {
+      formattedDate.push(new Date(defaultDate).getDate())
+    }
+
+    // 解析年、月、日
+    const year = Number(formattedDate[0])
+    const month = Number(formattedDate[1]) - 1 // 月份从 0 开始
+    const day = Math.min(
+      Number(formattedDate[2]),
+      getLastDayOfMonth(year, month + 1) // 获取当前月份的最后一天
+    )
+
+    let date: Date | null = null
+
+    // 根据类型创建日期对象
+    if (
+      rangeType === 'date' ||
+      rangeType === 'month-day' ||
+      rangeType === 'year-month'
+    ) {
+      date = new Date(year, month, day) // 仅包含年、月、日
+    } else if (rangeType === 'datetime') {
+      date = new Date(
+        year,
+        month,
+        day,
+        Number(formattedDate[3]),
+        Number(formattedDate[4])
+      ) // 包含年、月、日、时、分
+    } else if (rangeType === 'datehour') {
+      date = new Date(year, month, day, Number(formattedDate[3])) // 包含年、月、日、时
+    }
+
+    // 比较并处理日期变化
+    handleDateComparison(date, selectedOptions, index)
+  } else {
+    // 处理时间相关的类型（如 'hour-minutes', 'time'）
+    const [hour, minute, seconds] = selectedValue
+
+    // 获取当前日期的年、月、日
+    const currentDate = new Date(defaultDate)
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
+    const day = currentDate.getDate()
+
+    // 创建日期对象
+    const date = new Date(
+      year,
+      month,
+      day,
+      Number(hour),
+      Number(minute),
+      rangeType === 'time' ? Number(seconds) : 0 // 如果是 'time' 类型，包含秒数
+    )
+
+    // 比较并处理日期变化
+    handleDateComparison(date, selectedOptions, index)
   }
 }
