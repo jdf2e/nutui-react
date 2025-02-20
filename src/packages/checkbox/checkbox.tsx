@@ -9,7 +9,7 @@ import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
 
 export type CheckboxShape = 'button' | 'round'

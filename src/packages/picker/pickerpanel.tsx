@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './types'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 
 interface PickerPanelProps {

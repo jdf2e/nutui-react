@@ -56,7 +56,7 @@ components.forEach((component) => {
   postcss([
     cssvariables(/*options*/),
   ])
-    .process(res.css, { to })
+    .process(res.css, { from: undefined, to })
     .then((result) => {
       fs.writeFile(to, result.css, () => {
       })

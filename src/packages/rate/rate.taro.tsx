@@ -10,9 +10,9 @@ import { StarFill } from '@nutui/icons-react-taro'
 import { useReady } from '@tarojs/taro'
 import { View, Text, ITouchEvent } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import useRefs from '@/utils/use-refs'
+import useRefs from '@/hooks/use-refs'
 import { RateProps } from './types'
 
 const defaultProps = {

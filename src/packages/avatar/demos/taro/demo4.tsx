@@ -4,12 +4,14 @@ import { User } from '@nutui/icons-react-taro'
 import { harmony } from '@/utils/platform-taro'
 
 const Demo4 = () => {
+  const styles = { marginRight: 30 }
   return (
     <Cell className="cell-avatar">
       <Avatar
         color="#ffffff"
         background={`${harmony() ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
         icon={<User />}
+        style={styles}
       />
       <Avatar
         color={`${harmony() ? '#ff0f23' : 'var(--nutui-color-primary)'}`}

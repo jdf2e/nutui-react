@@ -15,7 +15,7 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FileItem } from './types'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
 
 interface sizeType {

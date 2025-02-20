@@ -3,17 +3,24 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { NavBar, TabPane, Tabs } from '@nutui/nutui-react-taro'
 import { ArrowLeft, More } from '@nutui/icons-react-taro'
+import { harmony } from '@/utils/platform-taro'
 
 const Demo3 = () => {
   const [tab1value, setTab1value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
+  const marginStyle = harmony() ? { marginRight: 16 } : {}
   return (
     <>
       <NavBar
         back={<ArrowLeft />}
         right={
           <>
-            <View onClick={(e) => Taro.showToast({ title: '编辑' })}>编辑</View>
+            <View
+              onClick={(e) => Taro.showToast({ title: '编辑' })}
+              style={marginStyle}
+            >
+              编辑
+            </View>
             <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
           </>
         }
@@ -39,7 +46,12 @@ const Demo3 = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <View onClick={(e) => Taro.showToast({ title: '编辑' })}>编辑</View>
+            <View
+              onClick={(e) => Taro.showToast({ title: '编辑' })}
+              style={marginStyle}
+            >
+              编辑
+            </View>
             <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
           </>
         }
