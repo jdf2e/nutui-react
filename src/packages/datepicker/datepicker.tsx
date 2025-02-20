@@ -12,6 +12,7 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from './utils'
+import { PickerValue } from '../nutui.react.build.taro'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date // 当前选中的日期
@@ -51,12 +52,12 @@ export interface DatePickerProps extends BasicComponent {
   onConfirm: (
     // Picker 确认时的回调
     selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
+    selectedValue: PickerValue[]
   ) => void
   onChange?: (
     // Picker 值变化时的回调
     selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
+    selectedValue: PickerValue[],
     columnIndex: number
   ) => void
 }
@@ -133,6 +134,11 @@ export const DatePicker: FunctionComponent<
     finalValue: 0, // 最终值
   })
 
+  const [innerDate, setInnerDate] = useState<number>(selectedDate)
+  useEffect(() => {
+    setInnerDate(selectedDate)
+  }, [selectedDate])
+
   /**
    * 比较新旧日期，如果不同则更新选中日期并触发 onChange 回调
    * @param currentDate 当前选中的日期时间戳
@@ -146,13 +152,13 @@ export const DatePicker: FunctionComponent<
     index: number
   ) => {
     // 比较当前日期和新日期的时间戳是否相同
-    const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
+    const isEqual = new Date(innerDate)?.getTime() === newDate?.getTime()
 
     // 如果新日期有效且与当前日期不同
     if (newDate && isDate(newDate)) {
       if (!isEqual) {
         // 更新选中的日期
-        setSelectedDate(formatValue(newDate, startDate, endDate))
+        setInnerDate(formatValue(newDate, startDate, endDate))
       }
 
       // 触发 onChange 回调，传递选中的选项和日期信息
@@ -165,6 +171,20 @@ export const DatePicker: FunctionComponent<
         ],
         index // 当前列的索引
       )
+    }
+  }
+
+  const handleDateComparison1 = (
+    newDate: Date | null,
+    selectedOptions: PickerOption[],
+    index: number
+  ) => {
+    if (newDate && isDate(newDate)) {
+      const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
+      if (!isEqual) {
+        console.log('确认时修改值', formatValue(newDate, startDate, endDate))
+        setSelectedDate(formatValue(newDate, startDate, endDate))
+      }
     }
   }
 
@@ -191,7 +211,7 @@ export const DatePicker: FunctionComponent<
     // 生成日期选择器的范围配置
     const dateRanges = generateDatePickerRanges(
       type,
-      selectedDate,
+      innerDate,
       startDate,
       endDate
     )
@@ -200,7 +220,7 @@ export const DatePicker: FunctionComponent<
     const columns = dateRanges.map((rangeConfig, columnIndex) => {
       // 获取当前列的类型和选中值
       const { type: columnType, range } = rangeConfig
-      const selectedValue = getDatePartValue(columnType, selectedDate)
+      const selectedValue = getDatePartValue(columnType, innerDate)
 
       // 生成当前列的选项，并设置选中值
       const pickerColumn = generatePickerColumnWithCallback(
@@ -235,7 +255,24 @@ export const DatePicker: FunctionComponent<
   // 当 selectedDate、startDate 或 endDate 变化时，重新生成 Picker 列数据
   useEffect(() => {
     setPickerOptions(generatePickerColumns())
-  }, [selectedDate, startDate, endDate])
+  }, [innerDate, startDate, endDate])
+
+  const handleCancel = () => {
+    setInnerDate(selectedDate)
+    onCancel?.()
+  }
+
+  const handleConfirm = (options: PickerOption[], value: PickerValue[]) => {
+    handlePickerValueChange(
+      options,
+      value,
+      0,
+      type,
+      defaultValue || startDate || endDate,
+      handleDateComparison1
+    )
+    onConfirm?.(options, value)
+  }
 
   return (
     <div className={`nut-datepicker ${className}`} style={style} {...rest}>
@@ -246,11 +283,9 @@ export const DatePicker: FunctionComponent<
           visible={visible}
           options={pickerOptions}
           onClose={onClose}
-          onCancel={onCancel}
+          onCancel={handleCancel}
           value={pickerValue}
-          onConfirm={(options: PickerOption[], value: (string | number)[]) =>
-            onConfirm && onConfirm(options, value)
-          }
+          onConfirm={handleConfirm}
           onChange={(
             options: PickerOption[],
             value: (number | string)[],
