@@ -3,7 +3,7 @@ import { CheckChecked, CheckNormal, CheckDisabled } from '@nutui/icons-react'
 import classNames from 'classnames'
 import RadioContext from '../radiogroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { RadioPosition, RadioShape } from '@/packages/radio/types'
 
 export interface RadioProps extends BasicComponent {

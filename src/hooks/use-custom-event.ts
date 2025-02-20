@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import isEqual from 'react-fast-compare'
 import { Events, getCurrentInstance } from '@tarojs/taro'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { useForceUpdate } from '@/hooks/use-force-update'
 
 export const customEvents = new Events()
 

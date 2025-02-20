@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 // TODO：鸿蒙支持的不好：自定义变量
 const Demo22 = () => {
@@ -11,7 +12,7 @@ const Demo22 = () => {
         onChange={(value) => {
           setTabvalue(value)
         }}
-        style={{ '--nutui-tabs-titles-font-size': '20px' }}
+        style={{ '--nutui-tabs-titles-font-size': pxTransform(20) }}
       >
         <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -22,7 +23,7 @@ const Demo22 = () => {
         onChange={(value) => {
           setTabvalue(value)
         }}
-        style={{ '--nutui-tabs-titles-font-size': '12px' }}
+        style={{ '--nutui-tabs-titles-font-size': pxTransform(12) }}
       >
         <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>

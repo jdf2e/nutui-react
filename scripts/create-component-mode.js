@@ -16,7 +16,7 @@ const newCpt = {
   show: true,
   taro: true,
   v15: false,
-  dd: true,
+  dd: false,
   author: '',
 }
 

@@ -8,8 +8,8 @@ import React, {
 } from 'react'
 import type { TouchEvent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { useTouch } from '@/utils/use-touch'
-import { getRect } from '@/utils/use-client-rect'
+import { useTouch } from '@/hooks/use-touch'
+import { getRect } from '@/hooks/use-client-rect'
 import { BasicComponent } from '@/utils/typings'
 
 export type SwipeSide = 'left' | 'right'

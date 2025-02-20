@@ -8,7 +8,7 @@ import React, {
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
-import { useLockScroll } from '@/utils/use-lock-scroll'
+import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { OverlayProps } from './types'
 
 export const defaultOverlayProps: OverlayProps = {

@@ -3,7 +3,6 @@ import { Swiper } from '@nutui/nutui-react-taro'
 import { Image, Text, View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
 
 function Demo5() {
   const swiperRef = React.useRef<any>(null)
@@ -63,10 +62,10 @@ function Demo5() {
       </Swiper>
       <View style={btnsStyle as any}>
         <View style={spanStyle} onClick={(e) => swiperRef.current?.prev()}>
-          {!harmony() ? <ArrowLeft /> : null}
+          <ArrowLeft />
         </View>
         <View style={spanStyle} onClick={(e) => swiperRef.current?.next()}>
-          {!harmony() ? <ArrowRight /> : null}
+          <ArrowRight />
         </View>
       </View>
     </View>

@@ -4,7 +4,6 @@
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   return (
@@ -42,7 +41,6 @@ const Demo1 = () => {
           <View
             style={{
               fontSize: 10,
-              lineHeight: pxTransform(9),
               fontFamily: 'JD',
             }}
           >

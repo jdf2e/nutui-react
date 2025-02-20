@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-// import '@nutui/icons-react-taro/dist/style_iconfont.css'
 import { Toast } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'

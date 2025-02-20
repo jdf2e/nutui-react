@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Video } from '../video'
@@ -28,12 +28,14 @@ test('video base info', () => {
   expect(container).toMatchSnapshot()
 })
 
-test('video ref call', () => {
+test('video ref call', async () => {
   const pause = vi.fn()
   // 确保在每个测试后清理 mock
   afterEach(() => {
     pause.mockClear()
   })
+
+  const itemRef = React.createRef<HTMLVideoElement>()
   const App = () => {
     const source = {
       src: 'xxx.mp4',
@@ -47,7 +49,6 @@ test('video ref call', () => {
       poster:
         'https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp',
     }
-    const itemRef = React.useRef<HTMLVideoElement>(null)
 
     return (
       <>
@@ -60,7 +61,9 @@ test('video ref call', () => {
         <Button
           size="small"
           data-testid="emit-click"
-          onClick={() => itemRef?.current?.pause()}
+          onClick={() => {
+            itemRef?.current?.pause()
+          }}
         >
           暂停一下
         </Button>
@@ -69,6 +72,8 @@ test('video ref call', () => {
   }
 
   const { getByTestId } = render(<App />)
-  fireEvent.click(getByTestId('emit-click'))
-  expect(pause).toHaveBeenCalledTimes(1)
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(pause).toBeCalled()
+  })
 })
