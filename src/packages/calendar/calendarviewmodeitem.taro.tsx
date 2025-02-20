@@ -80,11 +80,11 @@ export const CalendarViewModeItem = React.forwardRef<
   const [panelDate, setPanelDate] = useState({
     months: [
       {
-        year: new Date().getFullYear,
+        year: new Date().getFullYear(),
         months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       },
     ],
-    quarters: [{ year: new Date().getFullYear, quarters: [1, 2, 3, 4] }],
+    quarters: [{ year: new Date().getFullYear(), quarters: [1, 2, 3, 4] }],
   })
 
   const monthTitle = locale.calendaritem.monthTitle
@@ -390,7 +390,10 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderItem = (item: any, index: number) => {
-    const units = { month: '月', quarter: '季度' }
+    const units = {
+      month: locale.calendaritem.month,
+      quarter: locale.calendaritem.quarter,
+    }
     return (
       <div
         className={classNames(

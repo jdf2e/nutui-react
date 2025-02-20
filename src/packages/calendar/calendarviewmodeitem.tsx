@@ -78,8 +78,13 @@ export const CalendarViewModeItem = React.forwardRef<
 
   // 为了便于区分，用'YYYY-MM'表示月，用'YYYY-QX'表示Q
   const [panelDate, setPanelDate] = useState({
-    months: [{ year: 2025, months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }],
-    quarters: [{ year: 2025, quarters: [1, 2, 3, 4] }],
+    months: [
+      {
+        year: new Date().getFullYear(),
+        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      },
+    ],
+    quarters: [{ year: new Date().getFullYear(), quarters: [1, 2, 3, 4] }],
   })
 
   const monthTitle = locale.calendaritem.monthTitle
@@ -386,7 +391,10 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderItem = (item: any, index: number) => {
-    const units = { week: '周', month: '月', quarter: '季度' }
+    const units = {
+      month: locale.calendaritem.month,
+      quarter: locale.calendaritem.quarter,
+    }
     return (
       <div
         className={classNames(

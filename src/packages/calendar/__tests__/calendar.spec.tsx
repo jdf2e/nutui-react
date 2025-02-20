@@ -99,7 +99,7 @@ test('viewmode prop', async () => {
   expect(viewArea.innerHTML).toMatchSnapshot()
 })
 
-test('viewmode prop', async () => {
+test('should render calendar in quarter view with extended date range', async () => {
   const { container } = render(
     <Calendar
       viewMode="quarter"
@@ -112,7 +112,7 @@ test('viewmode prop', async () => {
   expect(viewArea.innerHTML).toMatchSnapshot()
 })
 
-test('viewmode prop', async () => {
+test('should render calendar in month view with onItemClick', async () => {
   const onItemClick = vi.fn()
   const { container } = render(
     <Calendar
@@ -127,7 +127,7 @@ test('viewmode prop', async () => {
   expect(viewArea.innerHTML).toMatchSnapshot()
 })
 
-test('viewmode prop', async () => {
+test('should render calendar in month view with extended date range', async () => {
   const onItemClick = vi.fn()
   const { container } = render(
     <Calendar
