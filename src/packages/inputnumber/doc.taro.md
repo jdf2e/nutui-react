@@ -114,12 +114,12 @@ import { InputNumber } from '@nutui/nutui-react-taro'
 | digits | 设置保留的小数位 | `string` \| `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只读状态禁用输入框操作行为 | `boolean` | `false` |
-| async | 支持异步修改 | `boolean` | `false` |
 | formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
-| onPlus | 点击增加按钮时触发 | `(e: MouseEvent) => void` | `-` |
-| onMinus | 点击减少按钮时触发 | `(e: MouseEvent) => void` | `-` |
-| onOverlimit | 点击不可用的按钮时触发 | `(e: MouseEvent) => void` | `-` |
-| onChange | 值改变时触发 | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
+| beforeChange | 输入值变化前的回调函数，返回 false 可阻止输入，支持返回 Promise | `(value: number \| string) => boolean \| Promise<boolean>` | `-` |
+| onPlus | 点击增加按钮时触发 | `(e: ITouchEvent) => void` | `-` |
+| onMinus | 点击减少按钮时触发 | `(e: ITouchEvent) => void` | `-` |
+| onOverlimit | 点击不可用的按钮时触发 | `(e: ITouchEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
+| onChange | 值改变时触发 | `(param: string \| number, e: ITouchEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 输入框获得焦点时触发 | `(e: FocusEvent<HTMLInputElement>) => void` | `-` |
 | onBlur | 输入框失去焦点时触发 | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |
 
@@ -131,16 +131,17 @@ import { InputNumber } from '@nutui/nutui-react-taro'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-inputnumber-input-width | 数字输入框中input的宽度 | `26px` |
-| \--nutui-inputnumber-input-height | 数字输入框中input的高度 | `20px` |
+| \--nutui-inputnumber-input-width | 数字输入框中input的宽度 | `40px` |
+| \--nutui-inputnumber-input-height | 数字输入框中input的高度 | `24px` |
 | \--nutui-inputnumber-input-background-color | 数字输入框中input的背景颜色 | `$color-background` |
 | \--nutui-inputnumber-input-font-color | 数字输入框中input的字号颜色 | `$color-title` |
-| \--nutui-inputnumber-input-font-size | 数字输入框中input的字号大小 | `12px` |
+| \--nutui-inputnumber-input-font-size | 数字输入框中input的字号大小 | `14px` |
 | \--nutui-inputnumber-input-border | 数字输入框中input的border值 | `0` |
-| \--nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `4px` |
-| \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0px` |
-| \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `20px` |
-| \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `20px` |
+| \--nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `6px` |
+| \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0` |
+| \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `14px` |
+| \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `16px` |
+| \--nutui-inputnumber-button-border-radius | 数字输入框左右按钮的圆角 | `30px` |
 | \--nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | `transparent` |
 | \--nutui-inputnumber-icon-color | 数字输入框中icon的颜色 | `$color-text` |
 | \--nutui-inputnumber-icon-size | 数字输入框中icon的大小 | `8px` |
