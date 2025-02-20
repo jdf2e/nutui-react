@@ -11,7 +11,7 @@ overrides:
   '@tarojs/api': 4.0.8-beta.1
   '@tarojs/components': 4.0.8-beta.1
 
-pnpmfileChecksum: sha256-W+YZgjRoxO8+nFLc7H7oEtki1LyvGnYKoepS0uD5l2E=
+pnpmfileChecksum: sha256-vdRRyq/guBwoPc79ya+CONxRFdBJFDCi90LApD+jwA8=
 
 importers:
 
