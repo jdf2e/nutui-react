@@ -82,54 +82,6 @@ exports[`props test 1`] = `
 </div>
 `;
 
-exports[`props test 2`] = `
-<div>
-  <div
-    class="nut-price nut-price-primary "
-  >
-    <div
-      class="nut-price-integer nut-price-integer-normal "
-    >
-      1,010
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      .
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      00
-    </div>
-  </div>
-</div>
-`;
-
-exports[`props test 3`] = `
-<div>
-  <div
-    class="nut-price nut-price-primary "
-  >
-    <div
-      class="nut-price-integer nut-price-integer-normal "
-    >
-      1,010
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      .
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      00
-    </div>
-  </div>
-</div>
-`;
-
 exports[`props thousands test 1`] = `
 <div>
   <div
@@ -154,30 +106,6 @@ exports[`props thousands test 1`] = `
       class="nut-price-decimal nut-price-decimal-normal "
     >
       01
-    </div>
-  </div>
-</div>
-`;
-
-exports[`props type 1`] = `
-<div>
-  <div
-    class="nut-price nut-price-primary "
-  >
-    <div
-      class="nut-price-integer nut-price-integer-normal "
-    >
-      1,010
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      .
-    </div>
-    <div
-      class="nut-price-decimal nut-price-decimal-normal "
-    >
-      00
     </div>
   </div>
 </div>

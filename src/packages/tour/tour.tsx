@@ -21,7 +21,7 @@ export type TourType = 'step' | 'tile'
 export interface TourProps extends BasicComponent {
   visible: boolean
   type: TourType
-  location: PopoverLocation | string
+  location: PopoverLocation
   mask: boolean
   maskWidth: number | string
   maskHeight: number | string

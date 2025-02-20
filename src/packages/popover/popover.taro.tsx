@@ -18,8 +18,8 @@ import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
-  theme: PopoverTheme | string
-  location: PopoverLocation | string
+  theme: PopoverTheme
+  location: PopoverLocation
   visible: boolean
   offset: string[] | number[]
   arrowOffset: number

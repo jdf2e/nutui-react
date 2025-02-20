@@ -559,8 +559,10 @@ $picker-title-ok-font-size: var(
   --nutui-picker-title-ok-font-size,
   $font-size-base
 ) !default;
-$picker-list-height: var(--nutui-picker-list-height, 252px) !default;
+
+// picker-view（✅）
 $picker-item-height: var(--nutui-picker-item-height, 36px) !default;
+$picker-list-height: calc($picker-item-height * 7) !default;
 $picker-item-text-color: var(
   --nutui-picker-item-text-color,
   $color-title

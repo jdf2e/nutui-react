@@ -3,16 +3,6 @@ const path = require('path')
 const fs = require('fs')
 const config = require('../../src/config.json')
 
-// 已适配组件对象
-const adaptedArray = []
-config.nav.map((item) => {
-  item.packages.forEach((element) => {
-    const { dd } = element
-    if (!dd) return // 未适配不导出
-    adaptedArray.push(element.name.toLowerCase())
-  })
-})
-
 const navs = config.nav
 
 // let fileStr = `@import '../../../styles/font/iconfont.css';`
@@ -50,10 +40,8 @@ const createIndexConfig = (enName, package) => {
       })
 
       // 生成 demo
-      const demoContent = adaptedArray.includes(nameLc)
-        ? `import Demo from '@/packages/${nameLc}/demo.taro';
+      const demoContent = `import Demo from '@/packages/${nameLc}/demo.taro';
 export default Demo;`
-        : `export default <></>;`
       const demoDirPath = path.join(
         __dirname,
         `../../packages/nutui-taro-demo/src/${enName}/pages/${nameLc}`
