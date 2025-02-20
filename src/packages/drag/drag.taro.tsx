@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { getSystemInfoSync } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'
+import { getWindowInfo } from '@/utils/get-system-info'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -64,7 +64,7 @@ export const Drag: FunctionComponent<
     const el = myDrag.current
     if (el) {
       const { top, left, bottom, right } = boundary
-      const { screenWidth, windowHeight } = getSystemInfoSync()
+      const { screenWidth, windowHeight } = getWindowInfo()
 
       const {
         width,

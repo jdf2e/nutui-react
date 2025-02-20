@@ -8,6 +8,7 @@ import React, {
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas } from '@tarojs/components'
+import { getWindowInfo } from '@/utils/get-system-info'
 import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
@@ -118,7 +119,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   const [moving, setMoving] = useState(false)
   const [zooming, setZooming] = useState(false)
 
-  const systemInfo: Taro.getSystemInfoSync.Result = Taro.getSystemInfoSync()
+  const systemInfo = getWindowInfo()
   // 支付宝基础库2.7.0以上支持，需要开启支付宝小程序canvas2d
   const showAlipayCanvas2D = useMemo(() => {
     return (
