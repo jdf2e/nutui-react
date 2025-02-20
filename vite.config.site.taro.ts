@@ -4,6 +4,7 @@ import reactRefresh from '@vitejs/plugin-react'
 import { join, resolve } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
+import rehypeHighlight from 'rehype-highlight'
 import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
@@ -59,6 +60,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           mdExtensions: [],
           mdxExtensions: ['.md'],
           remarkPlugins: [remarkGfm.default, remarkDirective.default],
+          rehypePlugins: [rehypeHighlight],
         }),
       },
       reactRefresh(),

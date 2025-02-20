@@ -5,6 +5,7 @@ import { join, resolve } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
+import rehypeHighlight from 'rehype-highlight'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
@@ -111,6 +112,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           mdExtensions: [],
           mdxExtensions: ['.md'],
           remarkPlugins: [remarkGfm.default, remarkDirective.default],
+          rehypePlugins: [rehypeHighlight],
         }),
       },
       {
