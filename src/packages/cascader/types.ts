@@ -11,9 +11,9 @@ export interface CascaderOption {
   disabled?: boolean
   children?: CascaderOption[]
   leaf?: boolean
-  level?: number
   loading?: boolean
-  root?: boolean
+
+  [key: string]: any
 }
 
 export interface CascaderConfig {
@@ -35,4 +35,9 @@ export interface CascaderFormat {
   idKey?: string
   pidKey?: string
   sortKey?: string
+}
+
+export type CascaderActions = {
+  open: () => void
+  close: () => void
 }

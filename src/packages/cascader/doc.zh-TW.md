@@ -20,6 +20,16 @@ import { Cascader } from '@nutui/nutui-react'
 
 :::
 
+### 基础用法-非受控
+
+传入`options`列表
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ### 自定義屬性名稱
 
 可通過`textKey`、`valueKey`、`childrenKey`指定屬性名。
@@ -32,7 +42,8 @@ import { Cascader } from '@nutui/nutui-react'
 
 ### 動態加載
 
-使用`lazy`標識是否需要動態獲取數據，此時不傳`options`代表所有數據都需要通過`onLoad`加載，首次加載通過`root`屬性區分，當遇到非葉子節點時會調用`onLoad`方法，參數為當前節點和`resolve`方法，註意`resolve`方法必須調用，不傳子節點時會被當做葉子節點處理。
+`lazy` 屬性表示開啟資料的自動加載，Cascader 內部透過 `value` 和 `onLoad` 實作了自動載入資料的邏輯。 `lazy` 屬性必須同時和 `onLoad` 屬性設定。
+`onLoad`方法傳回的資料類型為 `CascaderOption[]`
 
 :::demo
 
@@ -41,6 +52,9 @@ import { Cascader } from '@nutui/nutui-react'
 :::
 
 ### 部分數據動態加載
+
+部分數據動態載入是指已經設定了初始的 `options`，例如，首先獲取了用戶當前地址的數據，並賦值給 `options`，用戶切換省份或地區的數據加載則透過 `onLoad` 方法實現。
+**無需設定 `lazy` 屬性。 **
 
 :::demo
 
@@ -88,9 +102,9 @@ import { Cascader } from '@nutui/nutui-react'
 | closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | `string` | `top-right` |
 | closeIcon | 自定義關閉按鈕，繼承 Popup 組件 | `ReactNode` | `close` |
 | closeable | 是否顯示關閉按鈕，繼承 Popup 組件 | `boolean` | `true` |
-| onLoad | 動態加載回調，開啟動態加載時生效 | `(node: any, resolve: any) => void` | `-` |
-| onChange | 選中值改變時觸發 | `(value: CascaderValue, params?: any) => void` | `-` |
-| onPathChange | 選中項改變時觸發 | `(value: CascaderValue, params: any) => void` | `-` |
+| onLoad | 動態加載回調，開啟動態加載時生效 | `(node: any) => void` | `-` |
+| onChange | 選中值改變時觸發 | `(value: CascaderValue, pathNodes?: any) => void` | `-` |
+| onPathChange | 選中項改變時觸發 | `(value: CascaderValue, pathNodes: any) => void` | `-` |
 
 ### Ref
 

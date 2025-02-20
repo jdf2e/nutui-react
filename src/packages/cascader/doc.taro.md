@@ -20,6 +20,16 @@ import { Cascader } from '@nutui/nutui-react-taro'
 
 :::
 
+### 基础用法-非受控
+
+传入`options`列表
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
+
+:::
+
 ### 自定义属性名称
 
 可通过`textKey`、`valueKey`、`childrenKey`指定属性名。
@@ -32,7 +42,8 @@ import { Cascader } from '@nutui/nutui-react-taro'
 
 ### 动态加载
 
-使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`onLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`onLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
+`lazy` 属性表示开启数据的自动加载，Cascader 内部通过 `value` 和 `onLoad` 实现了自动加载数据的逻辑。`lazy` 属性必须和 `onLoad` 属性同时设置。
+`onLoad`方法返回的数据类型为 `CascaderOption[]`
 
 :::demo
 
@@ -41,6 +52,9 @@ import { Cascader } from '@nutui/nutui-react-taro'
 :::
 
 ### 部分数据动态加载
+
+部分数据动态加载是指已经设置了初始的 `options`，例如，首先获取了用户当前地址的数据，并赋值给 `options`，用户切换省份或地区的数据加载则通过 `onLoad` 方法实现。
+**无需设置 `lazy` 属性。**
 
 :::demo
 
@@ -88,9 +102,9 @@ import { Cascader } from '@nutui/nutui-react-taro'
 | closeIconPosition | 取消按钮位置，继承 Popup 组件 | `string` | `top-right` |
 | closeIcon | 自定义关闭按钮，继承 Popup 组件 | `ReactNode` | `close` |
 | closeable | 是否显示关闭按钮，继承 Popup 组件 | `boolean` | `true` |
-| onLoad | 动态加载回调，开启动态加载时生效 | `(node: any, resolve: any) => void` | `-` |
-| onChange | 选中值改变时触发 | `(value: CascaderValue, params?: any) => void` | `-` |
-| onPathChange | 选中项改变时触发 | `(value: CascaderValue, params: any) => void` | `-` |
+| onLoad | 动态加载回调，开启动态加载时生效 | `(node: any) => void` | `-` |
+| onChange | 选中值改变时触发 | `(value: CascaderValue, pathNodes?: any) => void` | `-` |
+| onPathChange | 选中项改变时触发 | `(value: CascaderValue, pathNodes: any) => void` | `-` |
 
 ### Ref
 

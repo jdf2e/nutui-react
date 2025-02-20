@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Cascader, Cell, CascaderOption } from '@nutui/nutui-react-taro'
 
-const Demo1 = () => {
+const Demo7 = () => {
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState([])
+  const [value, setValue] = useState<string[]>([])
   const [options, setOptions] = useState<CascaderOption[]>([])
   const onChange = (value: any, path: any) => {
+    console.log('onchange', value, path)
     setValue(value)
   }
   useEffect(() => {
     setTimeout(() => {
+      setValue(['浙江', '温州', '鹿城区'])
       setOptions([
         {
           value: '浙江',
@@ -89,7 +91,7 @@ const Demo1 = () => {
           className: 'cascader-popup',
         }}
         visible={visible}
-        value={value}
+        defaultValue={value}
         title="选择地址"
         options={options}
         closeable
@@ -97,8 +99,11 @@ const Demo1 = () => {
           setVisible(false)
         }}
         onChange={onChange}
+        onPathChange={(value, path) => {
+          console.log(value, path)
+        }}
       />
     </>
   )
 }
-export default Demo1
+export default Demo7

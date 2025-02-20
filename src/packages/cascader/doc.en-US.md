@@ -20,6 +20,16 @@ Pass in the `options` list
 
 :::
 
+### Basic Usage - Uncontroled
+
+Pass in the `options` list
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ### Custom attribute name
 
 use `optionKey` Specify the property name.
@@ -32,7 +42,8 @@ use `optionKey` Specify the property name.
 
 ### Async loading
 
-Use `lazy` to identify whether data needs to be obtained dynamically. At this time, not transmitting `options` means that all data needs to be loaded through `lazyload` . The first loading is distinguished by the `root` attribute. When a non leaf node is encountered, the `lazyload` method will be called. The parameters are the current node and the `resolve` method. Note that the `resolve` method must be called. If it is not transmitted to a child node, it will be treated as a leaf node.
+The `lazy` attribute indicates that automatic data loading is enabled. Cascader implements the logic of automatic data loading through `value` and `onLoad`. The `lazy` attribute must be set at the same time as the `onLoad` attribute.
+The data type returned by the `onLoad` method is `CascaderOption[]`
 
 :::demo
 
@@ -41,6 +52,9 @@ Use `lazy` to identify whether data needs to be obtained dynamically. At this ti
 :::
 
 ### Async loading of partial data
+
+Dynamic loading of some data means that the initial `options` has been set. For example, the data of the user's current address is first obtained and assigned to `options`. The data loading when the user switches provinces or regions is implemented through the `onLoad` method.
+**No need to set the `lazy` attribute. **
 
 :::demo
 
@@ -88,9 +102,9 @@ Use configprovider to set custom CSS
 | closeIconPosition | Cancel the button position and inherit the popup component | `string` | `top-right` |
 | closeIcon | Customize the close button and inherit the popup component | `ReactNode` | `close` |
 | closeable | Whether to display the close button and inherit the popup component | `boolean` | `true` |
-| onLoad | Dynamic loading callback, which takes effect when dynamic loading is enabled | `(node: any, resolve: any) => void` | `-` |
-| onChange | Triggered when the selected value changes | `(value: CascaderValue, params?: any) => void` | `-` |
-| onPathChange | Triggered when the selected item changes | `(value: CascaderValue, params: any) => void` | `-` |
+| onLoad | Dynamic loading callback, which takes effect when dynamic loading is enabled | `(node: any) => void` | `-` |
+| onChange | Triggered when the selected value changes | `(value: CascaderValue, pathNodes?: any) => void` | `-` |
+| onPathChange | Triggered when the selected item changes | `(value: CascaderValue, pathNodes: any) => void` | `-` |
 
 ### Ref
 
