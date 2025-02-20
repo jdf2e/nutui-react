@@ -4,7 +4,6 @@ import reactRefresh from '@vitejs/plugin-react'
 import { join, resolve } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
-import { readFileSync } from 'node:fs'
 import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
@@ -39,76 +38,13 @@ export default defineConfig(async (): Promise<UserConfig> => {
       __DEMO_PATH__: JSON.stringify('/taro/react/3x/demo/index.html#'),
     },
     resolve: {
-      alias: [
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/light/loading.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/light/loading.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/light/global.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/light/global.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/light/pulltorefresh.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/light/pulltorefresh.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/loading.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/dark/loading.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/global.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/dark/global.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/es/lottie/animation/dark/pulltorefresh.json',
-          replacement: resolve(
-            __dirname,
-            './src/packages/lottie/animation/dark/pulltorefresh.json'
-          ),
-        },
-        {
-          find: '@nutui/nutui-react/dist/locale/en-US',
-          replacement: resolve(__dirname, './src/locales/en-US.ts'),
-        },
-        {
-          find: '@nutui/nutui-react-taro/dist/locales/en-US',
-          replacement: resolve(__dirname, './src/locales/en-US.ts'),
-        },
-        { find: '@', replacement: resolve(__dirname, './src') },
-        {
-          find: '@nutui/nutui-react',
-          replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
-        },
-        {
-          find: '@nutui/nutui-react-taro',
-          replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
-        },
-      ],
+      alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
     },
     css: {
       preprocessorOptions: {
         scss: {
-          // example : additionalData: `@import "./src/design/styles/variables";`
           api: 'modern-compiler',
           additionalData: fileStr,
-          // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
-          // silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
           plugins: [atImport({ path: join(__dirname, 'src`') })],
@@ -125,36 +61,8 @@ export default defineConfig(async (): Promise<UserConfig> => {
           remarkPlugins: [remarkGfm.default, remarkDirective.default],
         }),
       },
-      {
-        name: 'test',
-        apply: 'serve',
-        async load(id: string) {
-          if (id.endsWith('.scss')) {
-            // 移除 @import 语句
-            const filePath = resolve(process.cwd(), id)
-            const scssCode = await readFileSync(filePath, 'utf-8')
-            const modifiedCode = scssCode.replace(
-              /@import\s+['"](\.{2}?\/)[^'".]+(.s?css)['"];/g,
-              ''
-            )
-            return modifiedCode
-          }
-        },
-      },
-
       reactRefresh(),
     ],
-    test: {
-      setupFiles: ['./vitest.setup.ts'],
-      globals: true,
-      environment: 'happy-dom',
-      coverage: {
-        all: false,
-        provider: 'v8',
-      },
-      include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
-      reporters: ['default', 'html'],
-    },
     build: {
       outDir: './dist-site/taro',
       assetsDir: `${config.version}-${refRandom}`,

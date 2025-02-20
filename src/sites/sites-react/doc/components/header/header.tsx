@@ -98,6 +98,16 @@ const Header = () => {
     }
   }, [location])
   const toAnother = () => {
+    // 开发环境
+    if(process.env.NODE_ENV === 'development') {
+      if(window.location.href.includes('/react/#')) {
+        window.location.href = window.location.href.replace('/react/#', '/react/index.taro.html#');
+      } else if (window.location.href.includes('/react/index.taro.html#')) {
+        window.location.href = window.location.href.replace('/react/index.taro.html#', '/react/#');
+      }
+      return
+    }
+    // 生产环境
     if (window.location.href.includes('taro')) {
       window.location.href = window.location.href.replace('taro', 'h5');
     } else if (window.location.href.includes('h5')) {
