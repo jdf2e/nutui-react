@@ -2,12 +2,6 @@ import reactConfig from '../../config.json';
 import {
   SiteReact,
   SiteReactTaro,
-  SiteVue,
-  SiteVueTaro,
-  SiteJDB,
-  SiteJDT,
-  SiteJDDKH,
-  SiteReactNative
 } from './baseConfig';
 import ReactConfig from '../../config.json';
 
@@ -31,19 +25,6 @@ const guide = [
       }
     ]
   }
-
-  // {
-  //   type: 'React',
-  //   icon: 'https://img10.360buyimg.com/imagetools/jfs/t1/93992/33/35657/10303/63c0fddbFa8977e27/8d099681ad788fc8.png',
-  //   data: [
-  //     {
-  //       name: '1.x',
-  //       link: 'https://nutui.jd.com/react',
-  //       language: ['React18'],
-  //       app: 'App 10.0'
-  //     }
-  //   ]
-  // }
 ];
 
 
@@ -298,14 +279,7 @@ if ((import.meta as any).env.BASE_URL.includes('react')) {
     ...reactConfig,
     ...SiteReact
   };
-} else {
-  let siteconfig = SiteVue;
-
-
-  config = {
-    ...siteconfig
-  };
-}
+} 
 
 export const {
   nav,
@@ -328,7 +302,5 @@ export {
   reactNativeGuide,
   businessGuide,
   products,
-  SiteVueTaro,
   SiteReactTaro,
-  SiteReactNative,
 };
