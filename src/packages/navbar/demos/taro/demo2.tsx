@@ -15,13 +15,13 @@ const Demo2 = () => {
     title: {
       fontSize: pxTransform(18),
       fontWeight: 'bold',
-      lineHeight: pxTransform(26),
+      height: pxTransform(26),
     },
     description: {
       fontSize: pxTransform(12),
       fontWeight: 400,
       color: 'rgba(0,0,0, 0.5)',
-      lineHeight: pxTransform(16),
+      height: pxTransform(16),
     },
   }
   return (
