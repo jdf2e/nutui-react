@@ -1,7 +1,6 @@
 import { padZero } from '@/utils/pad-zero'
 import { isDate } from '@/utils/is-date'
 import { PickerOption } from '../picker/types'
-import { PickerValue } from '../pickerview/types'
 
 /**
  * 获取指定年份和月份的最后一天
@@ -273,7 +272,7 @@ export const formatValue = (
  */
 export const handlePickerValueChange = (
   selectedOptions: PickerOption[],
-  selectedValue: PickerValue[],
+  selectedValue: (string | number)[],
   index: number,
   type: string,
   defaultDate: Date,
@@ -291,7 +290,7 @@ export const handlePickerValueChange = (
       rangeType
     )
   ) {
-    const formattedDate: PickerValue[] = []
+    const formattedDate: (string | number)[] = []
 
     // 将选中的值转换为数组
     selectedValue.forEach((item) => {
