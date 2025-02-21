@@ -9,7 +9,8 @@ const Demo1 = () => {
     return (
       <Text
         style={{
-          lineHeight: pxTransform(16),
+          height: pxTransform(16),
+          lineHeight: 1.15,
         }}
       >
         文字内容

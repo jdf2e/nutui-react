@@ -5,8 +5,8 @@ import { IconFont } from '@nutui/icons-react-taro'
 const Demo2 = () => {
   return (
     <Cell>
-      <IconFont name="dongdong" style={{ marginRight: '10px' }} />
-      <IconFont name="add" style={{ marginRight: '10px' }} />
+      <IconFont name="dongdong" style={{ marginRight: 10 }} />
+      <IconFont name="add" style={{ marginRight: 10 }} />
       <IconFont name="minus" />
     </Cell>
   )

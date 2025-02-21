@@ -1,7 +1,11 @@
 import React from 'react'
-import { Skeleton } from '@nutui/nutui-react'
+import { Cell, Skeleton } from '@nutui/nutui-react'
 
 const Demo1 = () => {
-  return <Skeleton animated />
+  return (
+    <Cell style={{ display: 'block' }}>
+      <Skeleton animated />
+    </Cell>
+  )
 }
 export default Demo1

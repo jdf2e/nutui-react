@@ -1,6 +1,3 @@
-/**
- * JDRN 端最佳实践
- */
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'

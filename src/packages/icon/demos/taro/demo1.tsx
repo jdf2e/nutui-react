@@ -5,9 +5,9 @@ import { Add, Dongdong, UserAdd, Minus } from '@nutui/icons-react-taro'
 const Demo1 = () => {
   return (
     <Cell>
-      <Add color="red" style={{ marginRight: '10px' }} />
-      <UserAdd style={{ marginRight: '10px' }} />
-      <Dongdong style={{ marginRight: '10px' }} />
+      <Add color="red" style={{ marginRight: 10 }} />
+      <UserAdd style={{ marginRight: 10 }} />
+      <Dongdong style={{ marginRight: 10 }} />
       <Minus />
     </Cell>
   )
