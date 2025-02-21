@@ -52,4 +52,5 @@ export interface DatePickerProps extends BasicComponent {
     selectedValue: (string | number)[],
     columnIndex: number
   ) => void
+  children?: any
 }

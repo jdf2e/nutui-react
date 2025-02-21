@@ -55,6 +55,7 @@ const InternalPicker: ForwardRefRenderFunction<
     threeDimensional,
     className,
     style,
+    children,
     ...rest
   } = {
     ...defaultProps,
@@ -219,26 +220,29 @@ const InternalPicker: ForwardRefRenderFunction<
   }, [innerDate, startDate, endDate])
 
   return (
-    <div className={`nut-datepicker ${className}`} style={style} {...rest}>
-      {pickerOptions.length && innerVisible && (
-        <Picker
-          {...pickerProps}
-          title={title}
-          visible={innerVisible}
-          value={pickerValue}
-          options={pickerOptions}
-          onClose={handleClose}
-          onCancel={handleCancel}
-          onConfirm={handleConfirm}
-          onChange={(
-            options: PickerOption[],
-            value: (string | number)[],
-            index: number
-          ) => handleChange(options, value, index)}
-          threeDimensional={threeDimensional}
-        />
-      )}
-    </div>
+    <>
+      {typeof children === 'function' && children(selectedDate)}
+      <div className={`nut-datepicker ${className}`} style={style} {...rest}>
+        {pickerOptions.length && innerVisible && (
+          <Picker
+            {...pickerProps}
+            title={title}
+            visible={innerVisible}
+            value={pickerValue}
+            options={pickerOptions}
+            onClose={handleClose}
+            onCancel={handleCancel}
+            onConfirm={handleConfirm}
+            onChange={(
+              options: PickerOption[],
+              value: (string | number)[],
+              index: number
+            ) => handleChange(options, value, index)}
+            threeDimensional={threeDimensional}
+          />
+        )}
+      </div>
+    </>
   )
 }
 
