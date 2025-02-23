@@ -68,6 +68,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | onRefresh | 下拉刷新事件回调 | `() => Promise<void>` | `-` |
 | onLoadMore | 继续加载的回调函数 | `() => Promise<void>` | `-` |
 | onScroll | 实时监听滚动高度 | `(param: number) => void` | `-` |
+| defaultScrollTop | 默认滚动距离 | `number` | `-` |
 
 ## 主题定制
 
