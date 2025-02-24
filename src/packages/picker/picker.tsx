@@ -2,57 +2,22 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import Popup, { PopupProps } from '@/packages/popup/index'
+import Popup from '@/packages/popup/index'
 import { SafeArea } from '@/packages/safearea/safearea'
 import PickerPanel from './pickerpanel'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
-import { PickerOption } from './types'
+import { PickerOption, PickerProps } from './types'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type PickerActions = {
   open: () => void
   close: () => void
-}
-
-export interface PickerProps extends Omit<BasicComponent, 'children'> {
-  visible?: boolean | undefined
-  title?: string
-  options: (PickerOption | PickerOption[])[]
-  value?: (number | string)[]
-  defaultValue?: (number | string)[]
-  threeDimensional?: boolean
-  duration: number | string
-  closeOnOverlayClick: boolean
-  popupProps: Partial<
-    Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
-  >
-  onConfirm?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
-  ) => void
-  onCancel?: () => void
-  onClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
-  ) => void
-  afterClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    pickerRef: RefObject<HTMLDivElement>
-  ) => void
-  onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    columnIndex: number
-  ) => void
-  children?: any
 }
 
 const defaultProps = {

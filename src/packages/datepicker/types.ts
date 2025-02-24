@@ -1,6 +1,5 @@
 import { BasicComponent } from '@/utils/typings'
-import { PickerProps } from '../picker'
-import { PickerOption } from '../picker/types'
+import { PickerOption, PickerProps } from '../picker/types'
 
 export type DatePickerRef = DatePickerActions
 export type DatePickerActions = {
