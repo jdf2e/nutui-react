@@ -17,7 +17,8 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from './utils'
-import { DatePickerActions, DatePickerProps, DatePickerRef } from './types'
+import { DatePickerActions, DatePickerRef } from './types'
+import { DatePickerProps } from './types.taro'
 
 const currentYear = new Date().getFullYear()
 

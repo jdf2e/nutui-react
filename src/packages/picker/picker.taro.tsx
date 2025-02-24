@@ -12,9 +12,10 @@ import Popup from '@/packages/popup/index.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { PickerOption, PickerProps } from './types'
+import { PickerOption } from './types'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
+import { PickerProps } from './types.taro'
 
 export type PickerActions = {
   open: () => void
