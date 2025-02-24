@@ -160,15 +160,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     to: number,
     direction: 'horizontal' | 'vertical'
   ) => {
-    let count = 0
-    const frames = 1
-
-    function animate() {
-      if (direction === 'horizontal') setScrollLeft(to)
-      else setScrollTop(to)
-      if (++count < frames) raf(animate)
-    }
-    animate()
+    // 使用ScrollView组件此处不需要手动raf scrollLeft
+    if (direction === 'horizontal') setScrollLeft(to)
+    else setScrollTop(to)
   }
   const scrollIntoView = (index: number) => {
     raf(() => {
@@ -190,14 +184,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
           to = left - (navRect.width - titleRect.width) / 2
-          // to < 0 说明不需要进行滚动，页面元素已全部显示出来
-          if (to < 0) return
-          to = rtl ? -to : to
         }
+        scrollDirection(to, direction)
+
         nextTick(() => {
           scrollWithAnimation.current = true
         })
-        scrollDirection(to, direction)
       })
     })
   }
