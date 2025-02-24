@@ -26,36 +26,27 @@ export const calculateDateBoundary = (
   startDate: Date,
   endDate: Date
 ) => {
-  // 根据类型选择边界日期：'min' 使用 startDate，'max' 使用 endDate
   const boundary = type === 'min' ? startDate : endDate
-
-  // 获取边界日期的年份
   const year = boundary.getFullYear()
-
-  // 初始化月份、日期、小时和分钟
-  const isMax = type === 'max' // 是否为 'max' 类型
-  let month = isMax ? 12 : 1 // 'max' 时月份为 12，否则为 1
+  const isMax = type === 'max'
+  let month = isMax ? 12 : 1
   let date = isMax
     ? getLastDayOfMonth(value.getFullYear(), value.getMonth() + 1)
-    : 1 // 'max' 时日期为当前月份的最后一天，否则为 1
-  let hour = isMax ? 23 : 0 // 'max' 时小时为 23，否则为 0
-  let minute = isMax ? 59 : 0 // 'max' 时分钟为 59，否则为 0
+    : 1
+  let hour = isMax ? 23 : 0
+  let minute = isMax ? 59 : 0
 
-  // 如果传入日期的年份与边界日期的年份相同
   if (value.getFullYear() === year) {
-    month = boundary.getMonth() + 1 // 使用边界日期的月份
+    month = boundary.getMonth() + 1
 
-    // 如果传入日期的月份与边界日期的月份相同
     if (value.getMonth() + 1 === month) {
-      date = boundary.getDate() // 使用边界日期的日期
+      date = boundary.getDate()
 
-      // 如果传入日期的日期与边界日期的日期相同
       if (value.getDate() === date) {
-        hour = boundary.getHours() // 使用边界日期的小时
+        hour = boundary.getHours()
 
-        // 如果传入日期的小时与边界日期的小时相同
         if (value.getHours() === hour) {
-          minute = boundary.getMinutes() // 使用边界日期的分钟
+          minute = boundary.getMinutes()
         }
       }
     }
@@ -63,11 +54,11 @@ export const calculateDateBoundary = (
 
   // 返回边界值的对象
   return {
-    [`${type}Year`]: year, // 返回年份
-    [`${type}Month`]: month, // 返回月份
-    [`${type}Date`]: date, // 返回日期
-    [`${type}Hour`]: hour, // 返回小时
-    [`${type}Minute`]: minute, // 返回分钟
+    [`${type}Year`]: year,
+    [`${type}Month`]: month,
+    [`${type}Date`]: date,
+    [`${type}Hour`]: hour,
+    [`${type}Minute`]: minute,
     [`${type}Seconds`]: minute, // 返回秒数（与分钟相同）
   }
 }
@@ -82,9 +73,8 @@ export const generateDatePickerRanges = (
   startDate: Date,
   endDate: Date
 ) => {
-  // 将选中的日期转换为 Date 对象
   const selected = new Date(selectedDate)
-  if (!selected) return [] // 如果选中的日期无效，返回空数组
+  if (!selected) return []
 
   // 获取最大和最小边界值
   const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
@@ -92,34 +82,33 @@ export const generateDatePickerRanges = (
   const { minYear, minDate, minMonth, minHour, minMinute, minSeconds } =
     calculateDateBoundary('min', selected, startDate, endDate)
 
-  // 定义完整的日期范围配置
   const fullRanges = [
-    { type: 'year', range: [minYear, maxYear] }, // 年份范围
-    { type: 'month', range: [minMonth, maxMonth] }, // 月份范围
-    { type: 'day', range: [minDate, maxDate] }, // 日期范围
-    { type: 'hour', range: [minHour, maxHour] }, // 小时范围
-    { type: 'minute', range: [minMinute, maxMinute] }, // 分钟范围
-    { type: 'seconds', range: [minSeconds, maxSeconds] }, // 秒数范围
+    { type: 'year', range: [minYear, maxYear] },
+    { type: 'month', range: [minMonth, maxMonth] },
+    { type: 'day', range: [minDate, maxDate] },
+    { type: 'hour', range: [minHour, maxHour] },
+    { type: 'minute', range: [minMinute, maxMinute] },
+    { type: 'seconds', range: [minSeconds, maxSeconds] },
   ]
 
   // 根据类型返回对应的范围配置
   switch (type.toLocaleLowerCase()) {
     case 'date':
-      return fullRanges.slice(0, 3) // 返回年、月、日
+      return fullRanges.slice(0, 3)
     case 'datetime':
-      return fullRanges.slice(0, 5) // 返回年、月、日、时、分
+      return fullRanges.slice(0, 5)
     case 'time':
-      return fullRanges.slice(3, 6) // 返回时、分、秒
+      return fullRanges.slice(3, 6)
     case 'year-month':
-      return fullRanges.slice(0, 2) // 返回年、月
+      return fullRanges.slice(0, 2)
     case 'hour-minutes':
-      return fullRanges.slice(3, 5) // 返回时、分
+      return fullRanges.slice(3, 5)
     case 'month-day':
-      return fullRanges.slice(1, 3) // 返回月、日
+      return fullRanges.slice(1, 3)
     case 'datehour':
-      return fullRanges.slice(0, 4) // 返回年、月、日、时
+      return fullRanges.slice(0, 4)
     default:
-      return fullRanges // 返回完整范围
+      return fullRanges
   }
 }
 
@@ -133,28 +122,25 @@ export const getDatePartValue = (
   type: string,
   selectedDate: number
 ): number => {
-  // 将时间戳转换为 Date 对象
   const date = new Date(selectedDate)
 
-  // 如果选中的日期无效，返回 0
   if (!selectedDate) return 0
 
-  // 根据类型返回对应的日期部分值
   switch (type) {
     case 'year':
-      return date.getFullYear() // 返回年份
+      return date.getFullYear()
     case 'month':
-      return date.getMonth() + 1 // 返回月份（注意：getMonth() 返回 0-11，需要加 1）
+      return date.getMonth() + 1
     case 'day':
-      return date.getDate() // 返回日期
+      return date.getDate()
     case 'hour':
-      return date.getHours() // 返回小时
+      return date.getHours()
     case 'minute':
-      return date.getMinutes() // 返回分钟
+      return date.getMinutes()
     case 'seconds':
-      return date.getSeconds() // 返回秒数
+      return date.getSeconds()
     default:
-      return 0 // 如果类型无效，返回 0
+      return 0
   }
 }
 
@@ -179,9 +165,9 @@ export const generatePickerColumnWithCallback = (
   zhCNType: { [key: string]: string },
   formatter?: (type: string, option: PickerOption) => PickerOption
 ): PickerOption[] => {
-  let currentMin = min // 当前最小值
-  const options: PickerOption[] = [] // 存储生成的选项
-  let selectedIndex = 0 // 当前选中值的索引
+  let currentMin = min
+  const options: PickerOption[] = []
+  let selectedIndex = 0
 
   // 遍历从最小值到最大值的范围
   while (currentMin <= max) {
@@ -203,10 +189,8 @@ export const generatePickerColumnWithCallback = (
     }
   }
 
-  // 触发回调函数，返回选中索引
   callback(selectedIndex, options)
 
-  // 返回生成的选项数组
   return options
 }
 
@@ -226,24 +210,20 @@ export const formatPickerOption = (
   zhCNType: { [key: string]: string },
   formatter?: (type: string, option: PickerOption) => PickerOption
 ): PickerOption => {
-  // 如果提供了自定义格式化函数，则使用该函数格式化选项
   if (formatter) {
     return formatter(type, {
-      text: padZero(value, 2), // 补零后的文本
-      value: padZero(value, 2), // 补零后的值
+      text: padZero(value, 2),
+      value: padZero(value, 2),
     })
   }
 
-  // 补零后的值
   const paddedValue = padZero(value, 2)
 
-  // 如果需要显示中文，添加对应的中文文本
   const chineseText = showChinese ? zhCNType[type] : ''
 
-  // 返回格式化后的选项
   return {
-    text: paddedValue + chineseText, // 文本 = 补零后的值 + 中文文本
-    value: paddedValue, // 值 = 补零后的值
+    text: paddedValue + chineseText,
+    value: paddedValue,
   }
 }
 
@@ -256,12 +236,12 @@ export const formatValue = (
   endDate: Date
 ) => {
   if (!value || (value && !isDate(value))) {
-    value = startDate // 如果值无效，使用 startDate
+    value = startDate
   }
   return Math.min(
     Math.max(value.getTime(), startDate.getTime()),
     endDate.getTime()
-  ) // 确保日期在范围内
+  )
 }
 
 /**
@@ -282,9 +262,8 @@ export const handlePickerValueChange = (
     index: number
   ) => void
 ) => {
-  const rangeType = type.toLocaleLowerCase() // 获取日期选择器的类型并转换为小写
+  const rangeType = type.toLocaleLowerCase()
 
-  // 处理日期相关的类型（如 'date', 'datetime', 'datehour' 等）
   if (
     ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
       rangeType
@@ -292,38 +271,33 @@ export const handlePickerValueChange = (
   ) {
     const formattedDate: (string | number)[] = []
 
-    // 将选中的值转换为数组
     selectedValue.forEach((item) => {
       formattedDate.push(item)
     })
 
-    // 如果类型是 'month-day' 且缺少年份，补充当前年份
     if (rangeType === 'month-day' && formattedDate.length < 3) {
       formattedDate.unshift(new Date(defaultDate).getFullYear())
     }
 
-    // 如果类型是 'year-month' 且缺少日期，补充当前日期
     if (rangeType === 'year-month' && formattedDate.length < 3) {
       formattedDate.push(new Date(defaultDate).getDate())
     }
 
-    // 解析年、月、日
     const year = Number(formattedDate[0])
-    const month = Number(formattedDate[1]) - 1 // 月份从 0 开始
+    const month = Number(formattedDate[1]) - 1
     const day = Math.min(
       Number(formattedDate[2]),
-      getLastDayOfMonth(year, month + 1) // 获取当前月份的最后一天
+      getLastDayOfMonth(year, month + 1)
     )
 
     let date: Date | null = null
 
-    // 根据类型创建日期对象
     if (
       rangeType === 'date' ||
       rangeType === 'month-day' ||
       rangeType === 'year-month'
     ) {
-      date = new Date(year, month, day) // 仅包含年、月、日
+      date = new Date(year, month, day)
     } else if (rangeType === 'datetime') {
       date = new Date(
         year,
@@ -331,34 +305,28 @@ export const handlePickerValueChange = (
         day,
         Number(formattedDate[3]),
         Number(formattedDate[4])
-      ) // 包含年、月、日、时、分
+      )
     } else if (rangeType === 'datehour') {
-      date = new Date(year, month, day, Number(formattedDate[3])) // 包含年、月、日、时
+      date = new Date(year, month, day, Number(formattedDate[3]))
     }
 
-    // 比较并处理日期变化
     handleDateComparison(date, selectedOptions, index)
   } else {
-    // 处理时间相关的类型（如 'hour-minutes', 'time'）
     const [hour, minute, seconds] = selectedValue
-
-    // 获取当前日期的年、月、日
     const currentDate = new Date(defaultDate)
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
     const day = currentDate.getDate()
 
-    // 创建日期对象
     const date = new Date(
       year,
       month,
       day,
       Number(hour),
       Number(minute),
-      rangeType === 'time' ? Number(seconds) : 0 // 如果是 'time' 类型，包含秒数
+      rangeType === 'time' ? Number(seconds) : 0
     )
 
-    // 比较并处理日期变化
     handleDateComparison(date, selectedOptions, index)
   }
 }
