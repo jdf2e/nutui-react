@@ -246,13 +246,11 @@ export const CalendarViewModeItem = React.forwardRef<
     switch (viewMode) {
       case 'month': {
         const months = getMonthsData()
-        console.log('monthts', months, panelDate)
         setPanelDate({ ...panelDate, months: months as any })
         break
       }
       case 'quarter': {
         const quarters = getQuartersData()
-        console.log('quarters', quarters, panelDate)
         setPanelDate({ ...panelDate, quarters: quarters as any })
         break
       }

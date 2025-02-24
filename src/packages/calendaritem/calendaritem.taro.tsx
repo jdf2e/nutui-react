@@ -177,7 +177,7 @@ export const CalendarItem = React.forwardRef<
         ? ([...(defaultValue as string[])] as string[])
         : (defaultValue as string[])
     }
-    return undefined
+    return type === 'single' ? '' : []
   }
 
   const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
@@ -469,7 +469,7 @@ export const CalendarItem = React.forwardRef<
     initData()
   }
   useEffect(() => {
-    setCurrentDate(resetDefaultValue() || [])
+    setCurrentDate(resetDefaultValue())
   }, [defaultValue])
 
   useEffect(() => {

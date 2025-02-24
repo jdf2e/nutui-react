@@ -26,8 +26,8 @@ const Demo3 = () => {
         popup={false}
         defaultValue={date}
         type="multiple"
-        startDate="2011-12-01"
-        endDate="2024-12-31"
+        startDate="2023-12-01"
+        endDate="2025-12-31"
         firstDayOfWeek={1}
         onConfirm={setChooseValue}
       />
