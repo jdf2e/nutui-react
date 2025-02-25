@@ -192,10 +192,10 @@ export const Checkbox: FunctionComponent<
 
   const renderListItem = () => {
     return (
-      <div className={`${classPrefix}-list-item`}>
-        {renderLabel()}
+      <>
         {renderIcon()}
-      </div>
+        {renderLabel()}
+      </>
     )
   }
 
@@ -220,6 +220,7 @@ export const Checkbox: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
+          'nut-checkbox-list-item': ctx?.list,
         },
         className
       )}

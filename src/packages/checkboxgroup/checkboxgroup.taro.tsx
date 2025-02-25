@@ -1,5 +1,6 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox.taro'
 import Context from './context'
@@ -9,8 +10,9 @@ import {
   CheckboxLabelPosition,
   CheckboxLimit,
 } from '@/packages/checkboxgroup/types'
+import { BasicComponent } from '@/utils/typings'
 
-export interface CheckboxGroupProps {
+export interface CheckboxGroupProps extends BasicComponent {
   disabled?: boolean
   value?: string[]
   defaultValue?: string[]
@@ -37,11 +39,7 @@ const defaultProps = {
 
 const classPrefix = 'nut-checkboxgroup'
 export const CheckboxGroup = React.forwardRef(
-  (
-    props: Partial<CheckboxGroupProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
-    ref
-  ) => {
+  (props: Partial<CheckboxGroupProps>, ref) => {
     const {
       children,
       className,
@@ -133,7 +131,7 @@ export const CheckboxGroup = React.forwardRef(
           },
         }}
       >
-        <div
+        <View
           className={classNames(
             classPrefix,
             {
@@ -145,7 +143,7 @@ export const CheckboxGroup = React.forwardRef(
           {...rest}
         >
           {options?.length ? renderOptions() : children}
-        </div>
+        </View>
       </Context.Provider>
     )
   }

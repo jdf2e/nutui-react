@@ -131,15 +131,13 @@
   }
 
   &-list-item {
-    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
     padding: $checkbox-list-item-padding;
     border-top: $checkbox-list-item-border;
 
     .nut-checkbox-label {
-      flex: auto;
+      flex: none;
     }
 
     .nut-icon {
