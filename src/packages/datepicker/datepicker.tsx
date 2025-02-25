@@ -164,14 +164,15 @@ const InternalPicker: ForwardRefRenderFunction<
     selectedValue: (string | number)[],
     index: number
   ) => {
-    handlePickerValueChange(
-      selectedOptions,
-      selectedValue,
-      index,
-      type,
-      defaultValue || startDate || endDate,
-      handleDateComparison
-    )
+    innerVisible &&
+      handlePickerValueChange(
+        selectedOptions,
+        selectedValue,
+        index,
+        type,
+        defaultValue || startDate || endDate,
+        handleDateComparison
+      )
   }
 
   const generatePickerColumns = (): PickerOption[][] => {
@@ -223,7 +224,7 @@ const InternalPicker: ForwardRefRenderFunction<
     <>
       {typeof children === 'function' && children(selectedDate)}
       <div className={`nut-datepicker ${className}`} style={style} {...rest}>
-        {pickerOptions.length && innerVisible && (
+        {pickerOptions.length && (
           <Picker
             {...pickerProps}
             title={title}
