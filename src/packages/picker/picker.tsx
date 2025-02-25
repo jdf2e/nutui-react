@@ -8,15 +8,14 @@ import React, {
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
 import {
-  PickerView,
   PickerOptions,
   PickerValue,
   PickerOptionItem,
   PickerOnChangeCallbackParameter,
-  SafeArea,
-  Popup,
-  PopupProps,
-} from '@nutui/nutui-react'
+} from '@/packages/pickerview/types'
+import PickerView from '@/packages/pickerview/index'
+import Popup, { PopupProps } from '@/packages/popup/index'
+import SafeArea from '@/packages/safearea/index'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'

@@ -9,15 +9,14 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
 import {
-  PickerView,
   PickerOptions,
   PickerValue,
   PickerOptionItem,
   PickerOnChangeCallbackParameter,
-  SafeArea,
-  Popup,
-  PopupProps,
-} from '@nutui/nutui-react-taro'
+} from '@/packages/pickerview/types'
+import PickerView from '@/packages/pickerview/index.taro'
+import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import SafeArea from '@/packages/safearea/index.taro'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
