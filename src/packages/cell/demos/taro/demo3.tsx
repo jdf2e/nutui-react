@@ -13,7 +13,7 @@ const Demo3 = () => {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'row',
-            lineHeight: pxTransform(20),
+            height: pxTransform(20),
           }}
         >
           <User size={16} />
@@ -28,6 +28,7 @@ const Demo3 = () => {
             alignItems: 'center',
             fontSize: pxTransform(12),
             color: '#505259',
+            height: pxTransform(20),
           }}
         >
           我是描述

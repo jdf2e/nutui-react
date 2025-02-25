@@ -11,7 +11,7 @@ import { View } from '@tarojs/components'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import { ShortPasswordActions } from '@/packages/shortpassword/types'
 
 export interface ShortPasswordProps extends PopupProps {

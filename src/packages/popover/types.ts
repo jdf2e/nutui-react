@@ -1,5 +1,7 @@
-export type PopoverTheme = 'light' | 'dark'
-export type PopoverLocation =
+import { FixAutoComplete } from '@/types/fix-string-literal-union'
+
+export type PopoverTheme = FixAutoComplete<'light' | 'dark'>
+export type PopoverLocation = FixAutoComplete<
   | 'bottom'
   | 'top'
   | 'left'
@@ -12,6 +14,7 @@ export type PopoverLocation =
   | 'left-end'
   | 'right-start'
   | 'right-end'
+>
 
 export interface PopoverList {
   key?: string
