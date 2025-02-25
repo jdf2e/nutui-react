@@ -142,6 +142,7 @@ const InternalPicker: ForwardRefRenderFunction<
         value,
         index,
       })
+    console.log('sss')
   }
 
   const onConfirmEvent = () => {
@@ -216,20 +217,18 @@ const InternalPicker: ForwardRefRenderFunction<
   return (
     <>
       {typeof children === 'function' && children(selectedValue)}
-      {innerVisible ? (
-        <Popup
-          {...popupProps}
-          visible={innerVisible}
-          position="bottom"
-          onOverlayClick={() => {
-            if (!closeOnOverlayClick) return
-            onCancelEvent()
-          }}
-        >
-          {renderPickerElement()}
-          <SafeArea position="bottom" />
-        </Popup>
-      ) : null}
+      <Popup
+        {...popupProps}
+        visible={innerVisible}
+        position="bottom"
+        onOverlayClick={() => {
+          if (!closeOnOverlayClick) return
+          onCancelEvent()
+        }}
+      >
+        {innerVisible ? <>{renderPickerElement()} </> : null}
+        <SafeArea position="bottom" />
+      </Popup>
     </>
   )
 }
