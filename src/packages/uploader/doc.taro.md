@@ -102,7 +102,7 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | maxCount | 文件上传数量限制 | `number` \| `string` | `1` |
 | fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件 | `boolean` | `true` |
-| uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `React.ReactNode` | `-` |
+| uploadIcon | 上传区域<a href="#/zh-CN/component/icon">图标名称</a> | `React.ReactNode` | `-` |
 | deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
