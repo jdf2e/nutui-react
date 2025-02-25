@@ -117,8 +117,8 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | onUploadQueueChange | 图片上传队列变化时触发 | `(tasks: FileItem[]) => void` | `-` |
 | sourceType | [选择文件的来源]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['album','camera']` |
 | camera`仅支持WEAPP` | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头 | `String` | `back` |
-| sizeType | [是否压缩所选文件]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['original','compressed']` |
-| mediaType`仅支持WEAPP` | [选择文件类型]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['image', 'video', 'mix']` |
+| sizeType | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | `Array` | `['original','compressed']` |
+| mediaType`仅支持WEAPP` | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | `Array` | `['image', 'video', 'mix']` |
 | maxDuration`仅支持WEAPP` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。 | `number` | `10` |
 
 ### FileItem
