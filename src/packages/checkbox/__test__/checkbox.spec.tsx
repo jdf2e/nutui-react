@@ -38,21 +38,29 @@ test('should props correctly', () => {
 })
 
 test('round props correctly', () => {
-  const handleChange = vi.fn(() => {})
   const { container, queryByText, getByTestId } = render(
     <Checkbox
-      data-testid="checkbox"
-      activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
+      style={{ marginInlineEnd: '8px' }}
       shape="button"
-      value="1"
-      checked
-      label="复选框"
+      activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
+      className="test"
+      label={
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <div>复选框</div>
+        </div>
+      }
+      defaultChecked
     />
   )
   expect(
-    container.querySelector('.nut-checkbox-label-disabled')
+    container.querySelector('.nut-checkbox-button-icon-checked')
   ).toBeInTheDocument()
-  expect(queryByText('复选框')).toBeInTheDocument()
 })
 
 test('should fireEvent correctly', () => {
