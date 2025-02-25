@@ -142,7 +142,6 @@ const InternalPicker: ForwardRefRenderFunction<
         value,
         index,
       })
-    console.log('sss')
   }
 
   const onConfirmEvent = () => {
