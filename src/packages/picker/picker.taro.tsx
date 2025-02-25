@@ -2,58 +2,24 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
-import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { PickerOption } from './types'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { PickerProps } from './types.taro'
 
 export type PickerActions = {
   open: () => void
   close: () => void
-}
-
-export interface PickerProps extends Omit<BasicComponent, 'children'> {
-  visible?: boolean | undefined
-  title?: string
-  options: (PickerOption | PickerOption[])[]
-  value?: (number | string)[]
-  defaultValue?: (number | string)[]
-  threeDimensional?: boolean
-  duration: number | string
-  closeOnOverlayClick: boolean
-  popupProps: Partial<
-    Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
-  >
-  onConfirm?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
-  ) => void
-  onCancel?: () => void
-  onClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
-  ) => void
-  afterClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    pickerRef: RefObject<HTMLDivElement>
-  ) => void
-  onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    columnIndex: number
-  ) => void
-  children?: any
 }
 
 const defaultProps = {
