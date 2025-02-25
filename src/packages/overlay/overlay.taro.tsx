@@ -47,7 +47,7 @@ export const Overlay: FunctionComponent<
   const classes = classNames(classPrefix, className)
   const styles = {
     ...style,
-    zIndex,
+    // zIndex,
   }
 
   const handleClick = (e: ITouchEvent) => {
