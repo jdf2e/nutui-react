@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect, useState, FC } from 'react'
+import React, { FC, ReactNode, useContext, useEffect, useState } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
@@ -121,7 +121,9 @@ export const Checkbox: FC<
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked className={color()} />
+      <View className={`${classPrefix}-icon-wrap`}>
+        <Checked className={color()} />
+      </View>
     )
   }
   const color = () => {
@@ -174,9 +176,10 @@ export const Checkbox: FC<
       >
         {children || label}
         {innerChecked && activeIcon ? (
-          <View className={classNames(`${classPrefix}-button-icon`)}>
+          <>
+            <View className={classNames(`${classPrefix}-button-icon`)} />
             {activeIcon}
-          </View>
+          </>
         ) : null}
       </View>
     )
