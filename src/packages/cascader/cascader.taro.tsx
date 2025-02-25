@@ -10,6 +10,7 @@ import React, {
 } from 'react'
 import { Check, Loading } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import Tabs from '@/packages/tabs/index.taro'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import {
@@ -275,7 +276,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
       )
       const showLoadingIcon = loading[levelIndex] === pane.value
       return (
-        <div
+        <View
           className={classes}
           style={{ color: active ? activeColor : '' }}
           key={pane.value}
@@ -283,7 +284,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
             chooseItem(pane, levelIndex)
           }}
         >
-          <div className="nut-cascader-item-title">{pane.text}</div>
+          <View className="nut-cascader-item-title">{pane.text}</View>
           {showLoadingIcon && (
             <Loading
               color="#969799"
@@ -294,16 +295,16 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
             (isValidElement(activeIcon) ? (
               activeIcon
             ) : (
-              <Check className={`${classPrefix}-icon-check`} />
+              <Check className={`${classPrefix}-icon-check`} color="#ff0f23" />
             ))}
-        </div>
+        </View>
       )
     })
   }
 
   const renderTab = () => {
     return (
-      <div className={`${classPrefix} ${props.className}`} style={props.style}>
+      <View className={`${classPrefix} ${props.className}`} style={props.style}>
         <Tabs
           value={tabActiveIndex}
           onChange={(index) => {
@@ -313,11 +314,13 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
         >
           {levels.map((pane, index) => (
             <Tabs.TabPane title={pane.selected || locale.select} key={index}>
-              <div className={classPane}>{renderCascaderItem(pane, index)}</div>
+              <View className={classPane}>
+                {renderCascaderItem(pane, index)}
+              </View>
             </Tabs.TabPane>
           ))}
         </Tabs>
-      </div>
+      </View>
     )
   }
 
