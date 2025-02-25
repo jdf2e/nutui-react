@@ -121,12 +121,12 @@ export const Input = forwardRef(
     }))
 
     const getInputClass = useCallback(() => {
-      const base = 'nut-input'
+      const classPrefix = 'nut-input'
       return [
-        base,
-        disabled ? `${base}-disabled` : '',
-        readOnly ? `${base}-readonly` : '',
-        plain ? `${base}-plain` : `${base}-container`,
+        classPrefix,
+        `${disabled ? `${classPrefix}-disabled` : ''}`,
+        readOnly ? `${classPrefix}-readonly` : '',
+        `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
       ]
         .filter(Boolean)
         .join(' ')

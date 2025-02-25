@@ -159,8 +159,8 @@ export const Input = forwardRef(
       if (formatter && trigger === formatTrigger) val = formatter(val)
 
       setValue(val)
-      const eventHandler = props[trigger]
       if (trigger !== 'onChange') {
+        const eventHandler = props[trigger]
         eventHandler?.(val)
       }
       forceUpdate()
