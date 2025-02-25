@@ -81,7 +81,7 @@ const Demo7 = () => {
     <>
       <Cell
         title="选择地址"
-        description={value.length ? value : '请选择地址'}
+        description={value.length ? value.join(',') : '请选择地址'}
         onClick={() => {
           setVisible(true)
         }}
