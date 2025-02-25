@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { Picker, Cell, PickerOptions, PickerValue } from '@nutui/nutui-react'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+  PickerOption,
+} from '@nutui/nutui-react'
 
 const Demo6 = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -71,7 +77,9 @@ const Demo6 = () => {
     selectedValue: PickerValue[]
   ) => {
     console.log('onconfirm', selectedOptions, selectedValue)
-    const city = selectedOptions.map((item) => item.label).join('-')
+    const city = selectedOptions
+      .map((item: PickerOption) => item.label)
+      .join('-')
     setCityCustom(city)
     setValue(selectedValue)
   }

@@ -11,7 +11,7 @@ import isEqual from 'react-fast-compare'
 import {
   PickerOptions,
   PickerValue,
-  PickerOptionItem,
+  PickerOption,
   PickerOnChangeCallbackParameter,
 } from '@/packages/pickerview/types'
 import PickerView from '@/packages/pickerview/index.taro'
@@ -32,7 +32,7 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   threeDimensional?: boolean
   duration: number | string
   closeOnOverlayClick: boolean
-  renderLabel?: (item: PickerOptionItem) => React.ReactNode
+  renderLabel?: (item: PickerOption) => React.ReactNode
 
   popupProps: Partial<
     Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
@@ -115,7 +115,7 @@ const InternalPicker: ForwardRefRenderFunction<
   const [innerValue, setInnerValue] = useState([...selectedValue])
   const innerValueRef = useRef(innerValue)
   const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
-  const selectedOptionsRef = useRef([] as PickerOptionItem[])
+  const selectedOptionsRef = useRef([] as PickerOptions)
   const [refs, setRefs] = useRefs()
 
   useEffect(() => {

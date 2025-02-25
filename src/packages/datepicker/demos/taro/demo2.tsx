@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
   DatePicker,
   Cell,
-  PickerOptionItem,
+  PickerOptions,
   PickerValue,
 } from '@nutui/nutui-react-taro'
 
@@ -12,7 +12,7 @@ const Demo2 = () => {
   const [desc, setDesc] = useState(
     `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
   )
-  const confirm = (values: PickerValue[], options: PickerOptionItem[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     setDesc(options.map((option) => option.label).join('-'))
   }
   return (

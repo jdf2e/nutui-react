@@ -1,12 +1,15 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import Picker from '@/packages/picker'
-import { PickerProps } from '@/packages/picker/index'
+import Picker, { PickerProps } from '@/packages/picker/index'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isDate } from '@/utils/is-date'
 import { padZero } from '@/utils/pad-zero'
-import { PickerOptionItem, PickerValue } from '@/packages/pickerview/index'
+import {
+  PickerOption,
+  PickerOptions,
+  PickerValue,
+} from '@/packages/pickerview/types'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date
@@ -39,16 +42,16 @@ export interface DatePickerProps extends BasicComponent {
       | 'onChange'
     >
   >
-  formatter: (type: string, option: PickerOptionItem) => PickerOptionItem
-  filter: (type: string, option: PickerOptionItem[]) => PickerOptionItem[]
+  formatter: (type: string, option: PickerOption) => PickerOption
+  filter: (type: string, options: PickerOptions) => PickerOptions
   onClose: () => void
   onCancel: () => void
   onConfirm: (
-    selectedOptions: PickerOptionItem[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[]
   ) => void
   onChange?: (
-    selectedOptions: PickerOptionItem[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[],
     columnIndex: number
   ) => void
@@ -106,7 +109,7 @@ export const DatePicker: FunctionComponent<
     seconds: lang.seconds,
   }
   const [pickerValue, setPickerValue] = useState<PickerValue[]>([])
-  const [pickerOptions, setPickerOptions] = useState<PickerOptionItem[][]>([])
+  const [pickerOptions, setPickerOptions] = useState<PickerOptions[]>([])
   const formatValue = (value: Date | null) => {
     if (!value || (value && !isDate(value))) {
       value = startDate
@@ -219,7 +222,7 @@ export const DatePicker: FunctionComponent<
   const compareDateChange = (
     currentDate: number,
     newDate: Date | null,
-    selectedOptions: PickerOptionItem[],
+    selectedOptions: PickerOptions,
     index: number
   ) => {
     const isEqual = new Date(currentDate)?.getTime() === newDate?.getTime()
@@ -239,7 +242,7 @@ export const DatePicker: FunctionComponent<
     }
   }
   const handlePickerChange = (
-    selectedOptions: PickerOptionItem[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[],
     index: number
   ) => {
@@ -331,7 +334,7 @@ export const DatePicker: FunctionComponent<
     columnIndex: number
   ) => {
     let cmin = min
-    const arr: Array<PickerOptionItem> = []
+    const arr: Array<PickerOption> = []
     let index = 0
     while (cmin <= max) {
       arr.push(formatOption(type, cmin))
@@ -409,7 +412,7 @@ export const DatePicker: FunctionComponent<
           onCancel={onCancel}
           value={pickerValue}
           onConfirm={(
-            selectedOptions: PickerOptionItem[],
+            selectedOptions: PickerOptions,
             selectedValue: PickerValue[]
           ) => onConfirm && onConfirm(selectedOptions, selectedValue)}
           onChange={({ value, index, selectedOptions }) => {

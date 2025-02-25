@@ -5,7 +5,7 @@ import {
   PickerOptions,
   PickerValue,
   PickerOnChangeCallbackParameter,
-  PickerOptionItem,
+  PickerOption,
 } from '@nutui/nutui-react'
 
 const Demo1 = () => {
@@ -37,7 +37,7 @@ const Demo1 = () => {
   ) => {
     console.log('confirmPicker', selectedOptions, selectedValue)
     let description = ''
-    selectedOptions.forEach((option: PickerOptionItem) => {
+    selectedOptions.forEach((option: PickerOption) => {
       description += ` ${option.label}`
     })
     setBaseDesc(description)

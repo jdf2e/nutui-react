@@ -3,7 +3,7 @@ import {
   Picker,
   Cell,
   ConfigProvider,
-  PickerOptionItem,
+  PickerOption,
   PickerOptions,
   PickerValue,
 } from '@nutui/nutui-react-taro'
@@ -31,7 +31,7 @@ const Demo8 = () => {
   ) => {
     console.log('confirmPicker', selectedOptions, selectedValue)
     let description = ''
-    selectedOptions.forEach((option: PickerOptionItem) => {
+    selectedOptions.forEach((option: PickerOption) => {
       description += ` ${option.label}`
     })
     setBaseDesc(description)

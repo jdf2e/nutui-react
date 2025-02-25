@@ -4,6 +4,7 @@ import {
   Cell,
   PickerOptions,
   PickerValue,
+  PickerOption,
 } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
@@ -76,7 +77,9 @@ const Demo6 = () => {
     selectedValue: PickerValue[]
   ) => {
     console.log('onconfirm', selectedOptions, selectedValue)
-    const city = selectedOptions.map((item) => item.label).join('-')
+    const city = selectedOptions
+      .map((item: PickerOption) => item.label)
+      .join('-')
     setCityCustom(city)
     setValue(selectedValue)
   }

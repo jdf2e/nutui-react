@@ -3,7 +3,8 @@ import {
   DatePicker,
   Cell,
   PickerValue,
-  PickerOptionItem,
+  PickerOption,
+  PickerOptions,
 } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
@@ -14,7 +15,7 @@ const Demo6 = () => {
   const [show, setShow] = useState(false)
   const [desc, setDesc] = useState(`${defaultDescription} 10:10`)
 
-  const confirm = (values: PickerValue[], options: PickerOptionItem[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     const date = options
       .slice(1, 3)
       .map((op) => op.label)
@@ -25,7 +26,7 @@ const Demo6 = () => {
       .join(':')
     setDesc(`${options[0].label}年${date} ${time}`)
   }
-  const formatter = (type: string, option: PickerOptionItem) => {
+  const formatter = (type: string, option: PickerOption) => {
     switch (type) {
       case 'year':
         option.label += ''

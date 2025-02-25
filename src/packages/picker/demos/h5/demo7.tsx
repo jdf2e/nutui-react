@@ -5,6 +5,7 @@ import {
   PickerOptions,
   PickerValue,
   PickerOnChangeCallbackParameter,
+  PickerOption,
 } from '@nutui/nutui-react'
 
 const Demo7 = () => {
@@ -89,7 +90,9 @@ const Demo7 = () => {
     selectedValue: PickerValue[]
   ) => {
     console.log('onconfirm', selectedOptions, selectedValue)
-    const city = selectedOptions.map((item) => item.label).join('-')
+    const city = selectedOptions
+      .map((item: PickerOption) => item.label)
+      .join('-')
     setasyncDesc(city)
     setValue(selectedValue)
   }

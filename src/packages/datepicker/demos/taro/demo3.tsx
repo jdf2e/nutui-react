@@ -3,7 +3,7 @@ import {
   DatePicker,
   Cell,
   PickerValue,
-  PickerOptionItem,
+  PickerOptions,
 } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
@@ -16,7 +16,7 @@ const Demo3 = () => {
   const endDate = new Date(2025, 10, 1)
   const [show, setShow] = useState(false)
   const [desc, setDesc] = useState(`${defaultDescription} 11:08`)
-  const confirm = (values: PickerValue[], options: PickerOptionItem[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     const date = values.slice(0, 3).join('-')
     const time = values.slice(3).join(':')
     setDesc(`${date} ${time}`)

@@ -40,8 +40,8 @@ test('Min date & Max date', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-pickerview-list')[0]
-  const lists = columns.querySelectorAll('.nut-pickerview-roller-item-tiled')
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[0].querySelectorAll('.nut-pickerview-roller-item-tiled')
   expect(lists.length).toBe(3)
   rerender(
     <DatePicker
@@ -162,8 +162,8 @@ test('Increment step setting', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-pickerview-list')[1]
-  const lists = columns.querySelectorAll('.nut-pickerview-roller-item')
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[1].querySelectorAll('.nut-pickerview-roller-item')
   expect(lists.length).toBe(12)
 })
 
@@ -185,7 +185,7 @@ test('Filter Time', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-pickerview-list')[3]
-  const lists = columns.querySelectorAll('.nut-pickerview-roller-item')
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[3].querySelectorAll('.nut-pickerview-roller-item')
   expect(lists.length).toBe(4)
 })
