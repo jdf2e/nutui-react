@@ -40,7 +40,7 @@ export interface InputProps extends BasicComponent {
   autoFocus: boolean
   confirmType: InputConfirmType
   plain: boolean
-  formatter?: (value: string) => void
+  formatter?: (value: string) => string
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
   onFocus?: (value: string, height?: number) => void
