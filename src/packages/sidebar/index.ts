@@ -1,4 +1,4 @@
 import { SideBar } from './sidebar'
 
-export type { SideBarProps, SideBarItemProps } from './types'
+export type { SideBarProps } from './types'
 export default SideBar
