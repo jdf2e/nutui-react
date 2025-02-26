@@ -4,6 +4,7 @@ import {
   Cell,
   PickerValue,
   PickerOptions,
+  CellGroup,
 } from '@nutui/nutui-react'
 import isEqual from 'react-fast-compare'
 
@@ -34,33 +35,43 @@ const Demo1 = () => {
 
   const handleChange =
     (setDesc: (desc: string) => void, setValue?: (value: string) => void) =>
-    (options: PickerOptions, values: PickerValue[]) => {
+    (selectedOptions: PickerOptions, value: PickerValue[]) => {
+      console.log('demo-onChange-value', value)
       if (setValue) {
-        if (isEqual(values, ['2026', '02', '21'])) {
+        if (isEqual(value, ['2026', '02', '26'])) {
           setValue('2026/03/22')
           setDesc('2026年03月22日')
         } else {
-          setValue(values.join('/'))
-          setDesc(options.map((option) => option.label).join(''))
+          setValue(value.join('/'))
+          setDesc(selectedOptions.map((option) => option.label).join(''))
         }
       } else {
-        setDesc(options.map((option) => option.label).join(''))
+        setDesc(selectedOptions.map((option) => option.label).join(''))
       }
     }
 
   return (
     <>
-      <Cell title="显示中文-非受控" description={desc1}>
-        <DatePickerView defaultValue={new Date(defaultValue1)} showChinese />
-      </Cell>
-
-      <Cell title="显示中文-受控" description={desc2}>
-        <DatePickerView
-          value={new Date(value)}
-          showChinese
-          onChange={handleChange(setDesc2, setValue)}
-        />
-      </Cell>
+      <CellGroup>
+        <Cell title="显示中文-非受控" description={desc1} />
+        <Cell>
+          <DatePickerView
+            defaultValue={new Date(defaultValue1)}
+            showChinese
+            onChange={handleChange(setDesc1)}
+          />
+        </Cell>
+      </CellGroup>
+      <CellGroup>
+        <Cell title="显示中文-受控" description={desc2} />
+        <Cell>
+          <DatePickerView
+            value={new Date(value)}
+            showChinese
+            onChange={handleChange(setDesc2, setValue)}
+          />
+        </Cell>
+      </CellGroup>
     </>
   )
 }

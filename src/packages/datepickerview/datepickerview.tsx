@@ -1,5 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
+import isEqual from 'react-fast-compare'
+import { padZero } from '@/utils/pad-zero'
 import PickerView, {
   PickerOptions,
   PickerValue,
@@ -70,32 +72,29 @@ export const DatePickerView: FunctionComponent<
 
   const [selectedDate, setSelectedDate] = usePropsValue<number>({
     value: props.value && formatValue(props.value, startDate, endDate),
-    defaultValue:
-      props.defaultValue && formatValue(props.defaultValue, startDate, endDate),
+    defaultValue: defaultValue && formatValue(defaultValue, startDate, endDate),
     finalValue: 0,
   })
-
-  const [innerDate, setInnerDate] = useState<number>(selectedDate)
 
   const handleDateComparison = (
     newDate: Date | null,
     selectedOptions: PickerOptions,
     index: number
   ) => {
-    const isEqual = new Date(innerDate)?.getTime() === newDate?.getTime()
+    const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
     if (newDate && isDate(newDate)) {
       if (!isEqual) {
-        setInnerDate(formatValue(newDate, startDate, endDate))
+        setSelectedDate(formatValue(newDate, startDate, endDate))
+        onChange?.(
+          selectedOptions,
+          [
+            String(newDate.getFullYear()),
+            padZero(newDate.getMonth() + 1),
+            padZero(newDate.getDate()),
+          ],
+          index
+        )
       }
-      onChange?.(
-        selectedOptions,
-        [
-          String(newDate.getFullYear()),
-          String(newDate.getMonth() + 1),
-          String(newDate.getDate()),
-        ],
-        index
-      )
     }
   }
 
@@ -117,14 +116,14 @@ export const DatePickerView: FunctionComponent<
   const generatePickerColumns = (): PickerOptions[] => {
     const dateRanges = generateDatePickerRanges(
       type,
-      innerDate,
+      selectedDate,
       startDate,
       endDate
     )
 
     const columns = dateRanges.map((rangeConfig, columnIndex) => {
       const { type: columnType, range } = rangeConfig
-      const selectedValue = getDatePartValue(columnType, innerDate)
+      const selectedValue = getDatePartValue(columnType, selectedDate)
 
       const pickerColumn = generatePickerColumnWithCallback(
         range[0],
@@ -151,30 +150,35 @@ export const DatePickerView: FunctionComponent<
     return columns || []
   }
 
-  //   useEffect(() => {
-  //     setInnerDate(selectedDate)
-  //   }, [selectedDate])
+  useEffect(() => {
+    console.log(new Date(selectedDate).toLocaleDateString())
+    if (
+      !isEqual(
+        new Date(selectedDate)?.getTime(),
+        new Date(selectedDate)?.getTime()
+      )
+    ) {
+      setSelectedDate(selectedDate)
+    }
+  }, [selectedDate])
 
   useEffect(() => {
-    console.log('ssss', innerDate)
     setPickerOptions(generatePickerColumns())
-  }, [innerDate, startDate, endDate])
-  console.log('pickerValue', pickerValue, pickerOptions)
+  }, [selectedDate, startDate, endDate])
+
   return (
-    <>
-      <div className={cls} style={style}>
-        {pickerOptions.length && (
-          <PickerView
-            value={pickerValue}
-            options={pickerOptions}
-            onChange={({ value, index, selectedOptions }) => {
-              handleChange(selectedOptions, value, index)
-            }}
-            threeDimensional={threeDimensional}
-          />
-        )}
-      </div>
-    </>
+    <div className={cls} style={style}>
+      {pickerOptions.length && (
+        <PickerView
+          value={pickerValue}
+          options={pickerOptions}
+          onChange={({ selectedOptions, value, index }) => {
+            handleChange(selectedOptions, value, index)
+          }}
+          threeDimensional={threeDimensional}
+        />
+      )}
+    </div>
   )
 }
 

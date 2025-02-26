@@ -23,8 +23,7 @@ export interface DatePickerViewProps extends BasicComponent {
   threeDimensional: boolean
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, options: PickerOptions) => PickerOptions
-
-  onChange?: (
+  onChange: (
     selectedOptions: PickerOptions,
     selectedValue: PickerValue[],
     columnIndex: number
