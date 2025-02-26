@@ -1,6 +1,10 @@
 import { padZero } from '@/utils/pad-zero'
 import { isDate } from '@/utils/is-date'
-import { PickerOption, PickerOptions, PickerValue } from '../pickerview/types'
+import {
+  PickerOption,
+  PickerOptions,
+  PickerValue,
+} from '@/packages/pickerview/types'
 
 /**
  * 获取指定年份和月份的最后一天
@@ -208,7 +212,7 @@ export const formatPickerOption = (
   value: string | number,
   showChinese: boolean,
   zhCNType: { [key: string]: string },
-  formatter?: (type: string, options: PickerOption) => PickerOption
+  formatter?: (type: string, option: PickerOption) => PickerOption
 ): PickerOption => {
   if (formatter) {
     return formatter(type, {

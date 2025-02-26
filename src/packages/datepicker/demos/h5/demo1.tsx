@@ -52,10 +52,22 @@ const Demo1 = () => {
 
   return (
     <>
-      <Cell title="显示中文-非受控" description={desc1}>
-        <DatePicker defaultValue={new Date(defaultValue1)} showChinese />
-      </Cell>
-
+      <Cell
+        title="显示中文-非受控"
+        description={desc1}
+        onClick={() => setShow1(true)}
+      />
+      <DatePicker
+        title="日期选择"
+        visible={show1}
+        pickerProps={{
+          popupProps: { zIndex: 1220 },
+        }}
+        defaultValue={new Date(defaultValue1)}
+        showChinese
+        onClose={() => setShow1(false)}
+        onConfirm={handleConfirm(setDesc1)}
+      />
       <Cell
         title="显示中文-受控"
         description={desc2}

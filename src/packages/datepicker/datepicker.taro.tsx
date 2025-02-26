@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import Picker from '@/packages/picker/index'
+import Picker from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
@@ -17,7 +17,8 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from './utils'
-import { DatePickerActions, DatePickerProps, DatePickerRef } from './types'
+import { DatePickerProps } from './types.taro'
+import { DatePickerActions, DatePickerRef } from './types'
 import { PickerOptions, PickerValue } from '@/packages/pickerview/types'
 
 const currentYear = new Date().getFullYear()
