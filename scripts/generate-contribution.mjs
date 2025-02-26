@@ -11,6 +11,7 @@ const GITHUB_API = {
   BASE_URL: 'https://api.github.com/repos/jdf2e/nutui-react',
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
+    Authorization: `Bearer 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`,
   },
 }
 
@@ -42,16 +43,20 @@ async function generateContribution(componentName, componentNameCN) {
     const issues = issuesResponse.data
       .filter(
         (issue) =>
-          // 确保是 issue 而不是 PR
           !issue.pull_request &&
           (issue.title.toLowerCase().includes(componentName.toLowerCase()) ||
             issue.title.includes(componentNameCN))
       )
       .slice(0, 5)
-      .map((issue) => ({
-        title: issue.title,
-        url: issue.html_url,
-      }))
+      .map((issue) => {
+        // 获取 issue 编号
+        const issueNumber = issue.number
+        return {
+          title: issue.title,
+          url: issue.html_url,
+          number: issueNumber
+        }
+      })
 
     // 获取 Releases
     const releasesResponse = await axios.get(
@@ -125,7 +130,7 @@ async function generateContribution(componentName, componentNameCN) {
     // 生成不同语言版本的内容
     const contentZH = `## 贡献记录\n
 ### Issues\n
-${issues.map((issue) => `- [${issue.title}](${issue.url})`).join('\n')}
+${issues.map((issue) => `- ${issue.title} [#${issue.number}](${issue.url})`).join('\n')}
 
 > 更多已解决问题请查看 [Issues](${GITHUB_API.BASE_URL}/issues?q=is%3Aissue+state%3Aclosed+label%3A${componentName})
 

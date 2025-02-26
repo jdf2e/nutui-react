@@ -133,7 +133,7 @@ import { Swiper } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-- [h5和小程序中，轮播图loop为true时，最后一张到第一张，第一张到最后一张，均白屏](https://github.com/jdf2e/nutui-react/issues/1432)
+- h5和小程序中，轮播图loop为true时，最后一张到第一张，第一张到最后一张，均白屏 [#1432](https://github.com/jdf2e/nutui-react/issues/1432)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwiper)
 

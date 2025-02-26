@@ -110,7 +110,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 
 ### Issues
 
-- [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
+- DatePicker受控情况下，2月切换存在问题 [#2924](https://github.com/jdf2e/nutui-react/issues/2924)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADatePicker)
 

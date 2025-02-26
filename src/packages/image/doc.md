@@ -134,7 +134,7 @@ import { Image } from '@nutui/nutui-react'
 
 ### Issues
 
-- [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
+- Iconfont 设置 name 为图片地址时，修改颜色不生效 [#2333](https://github.com/jdf2e/nutui-react/issues/2333)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AImage)
 

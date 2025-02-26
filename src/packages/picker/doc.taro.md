@@ -127,8 +127,8 @@ import { Picker } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-- [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
-- [[FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少](https://github.com/jdf2e/nutui-react/issues/2945)
+- DatePicker受控情况下，2月切换存在问题 [#2924](https://github.com/jdf2e/nutui-react/issues/2924)
+- [FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少 [#2945](https://github.com/jdf2e/nutui-react/issues/2945)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APicker)
 

@@ -96,7 +96,7 @@ import { Divider } from '@nutui/nutui-react'
 
 ### Issues
 
-- [更新版本后Form组件设置divider后看不见分割线了](https://github.com/jdf2e/nutui-react/issues/2895)
+- 更新版本后Form组件设置divider后看不见分割线了 [#2895](https://github.com/jdf2e/nutui-react/issues/2895)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADivider)
 

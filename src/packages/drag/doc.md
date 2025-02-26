@@ -59,7 +59,7 @@ import { Drag } from '@nutui/nutui-react'
 
 ### Issues
 
-- [Drag 微信小程序运行报错 TypeError: \_a2.getBoundingClientRect is not a function](https://github.com/jdf2e/nutui-react/issues/2738)
+- Drag 微信小程序运行报错 TypeError: \_a2.getBoundingClientRect is not a function [#2738](https://github.com/jdf2e/nutui-react/issues/2738)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADrag)
 

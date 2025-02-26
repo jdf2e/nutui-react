@@ -175,7 +175,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-- [可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗](https://github.com/jdf2e/nutui-react/issues/1948)
+- 可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗 [#1948](https://github.com/jdf2e/nutui-react/issues/1948)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACalendar)
 

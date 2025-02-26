@@ -103,7 +103,7 @@ ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, d
 
 ### Issues
 
-- [在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出](https://github.com/jdf2e/nutui-react/issues/2584)
+- 在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出 [#2584](https://github.com/jdf2e/nutui-react/issues/2584)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AToast)
 

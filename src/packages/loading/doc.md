@@ -101,7 +101,7 @@ import { Loading } from '@nutui/nutui-react'
 
 ### Issues
 
-- [希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading](https://github.com/jdf2e/nutui-react/issues/1202)
+- 希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading [#1202](https://github.com/jdf2e/nutui-react/issues/1202)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALoading)
 

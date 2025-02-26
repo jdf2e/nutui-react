@@ -134,7 +134,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-- [Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步](https://github.com/jdf2e/nutui-react/issues/2170)
+- Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步 [#2170](https://github.com/jdf2e/nutui-react/issues/2170)
 
 > 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATabbar)
 
