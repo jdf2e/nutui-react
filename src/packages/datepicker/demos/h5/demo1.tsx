@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import {
   DatePicker,
   Cell,
-  type PickerOption,
   PickerValue,
+  PickerOptions,
 } from '@nutui/nutui-react'
 import isEqual from 'react-fast-compare'
 
@@ -36,7 +36,7 @@ const Demo1 = () => {
 
   const handleConfirm =
     (setDesc: (desc: string) => void, setValue?: (value: string) => void) =>
-    (options: PickerOption[], values: PickerValue[]) => {
+    (options: PickerOptions, values: PickerValue[]) => {
       if (setValue) {
         if (isEqual(values, ['2026', '02', '21'])) {
           setValue('2026/03/22')

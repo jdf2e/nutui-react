@@ -1,6 +1,9 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { PickerOptions, PickerValue } from '@/packages/pickerview/index'
+import PickerView, {
+  PickerOptions,
+  PickerValue,
+} from '@/packages/pickerview/index'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
@@ -98,7 +101,7 @@ export const DatePickerView: FunctionComponent<
 
   const handleChange = (
     selectedOptions: PickerOptions,
-    selectedValue: (string | number)[],
+    selectedValue: PickerValue[],
     index: number
   ) => {
     handlePickerValueChange(
@@ -161,14 +164,12 @@ export const DatePickerView: FunctionComponent<
     <>
       <div className={cls} style={style}>
         {pickerOptions.length && (
-          <DatePickerView
+          <PickerView
             value={pickerValue}
             options={pickerOptions}
-            // onChange={(
-            //   options: PickerOptions,
-            //   value: (string | number)[],
-            //   index: number
-            // ) => handleChange(options, value, index)}
+            onChange={({ value, index, selectedOptions }) => {
+              handleChange(selectedOptions, value, index)
+            }}
             threeDimensional={threeDimensional}
           />
         )}

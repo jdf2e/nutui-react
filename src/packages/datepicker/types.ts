@@ -44,11 +44,11 @@ export interface DatePickerProps extends BasicComponent {
   onClose: () => void
   onCancel: () => void
   onConfirm: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[]
   ) => void
   onChange?: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: PickerValue[],
     columnIndex: number
   ) => void
