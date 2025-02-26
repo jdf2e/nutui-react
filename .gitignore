@@ -55,3 +55,6 @@ pnpm-lock.*.yaml
 
 # vitest
 /html
+
+# Harmony CSS files
+src/packages/**/*.harmony.css
