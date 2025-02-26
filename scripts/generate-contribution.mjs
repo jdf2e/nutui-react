@@ -11,7 +11,7 @@ const GITHUB_API = {
   BASE_URL: 'https://api.github.com/repos/jdf2e/nutui-react',
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
-    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, // 个人PAT Github token
+    // Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, // 个人PAT Github token
   },
 }
 
