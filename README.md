@@ -109,7 +109,7 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # Install dependencies
-pnpm install
+pnpm install --ignore-pnpmfile
 
 # Enter mini-program development mode
 # Taro H5
