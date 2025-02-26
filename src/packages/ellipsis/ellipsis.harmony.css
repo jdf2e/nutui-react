@@ -1,0 +1,24 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-ellipsis {
+  display: flex;
+}
+.nut-ellipsis .nut-ellipsis-text {
+  cursor: pointer;
+  color: #0073ff;
+  display: inline-block;
+}
+.nut-ellipsis .nut-ellipsis-wordbreak {
+  word-break: break-all;
+}
+
+.nut-ellipsis-copy {
+  position: absolute;
+  top: -999999px;
+}
+
+.nut-ellipsis-width {
+  width: fit-content;
+}

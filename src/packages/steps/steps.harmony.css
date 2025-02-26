@@ -1,0 +1,12 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-steps {
+  display: flex;
+}
+
+.nut-steps-vertical {
+  height: 100%;
+  flex-flow: column;
+}

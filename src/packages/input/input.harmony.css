@@ -1,0 +1,54 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex: 1;
+  align-items: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.nut-input .nut-icon {
+  color: #c2c4cc;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+}
+.nut-input-container {
+  height: 38px;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  border-bottom: 0px solid rgba(0, 0, 0, 0.06);
+}
+
+.nut-input-native {
+  flex: 1;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 0;
+  border: 0;
+  outline: 0 none;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nut-input-readonly .nut-input-native {
+  color: #888b94;
+}
+
+.nut-input-disabled {
+  color: #c2c4cc !important;
+}
+.nut-input-disabled input:disabled {
+  color: #c2c4cc;
+  cursor: not-allowed;
+  background: none;
+  opacity: 1;
+  -webkit-text-fill-color: #c2c4cc;
+}

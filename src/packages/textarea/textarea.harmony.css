@@ -1,0 +1,79 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-textarea {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 6px;
+}
+.nut-textarea-container {
+  padding: 12px;
+  background-color: #ffffff;
+}
+.nut-textarea-error {
+  border: 0.5px solid #ff0f23;
+  background-color: #ffebef;
+}
+.nut-textarea-limit {
+  text-align: right;
+  font-size: 14px;
+  line-height: 14px;
+  margin-top: 8px;
+  color: #888b94;
+}
+.nut-textarea-limit-disabled {
+  cursor: not-allowed;
+  color: #c2c4cc;
+}
+.nut-textarea-textarea {
+  outline: none;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #1a1a1a;
+  caret-color: #ff0f23;
+  text-align: left;
+  background-color: transparent;
+  border: 0;
+  resize: none;
+}
+.nut-textarea-textarea .taro-textarea {
+  color: #1a1a1a;
+  background-color: transparent;
+  resize: none;
+}
+.nut-textarea-textarea::placeholder {
+  color: #888b94;
+}
+.nut-textarea-textarea-disabled {
+  cursor: not-allowed;
+  color: #c2c4cc;
+}
+.nut-textarea-textarea-disabled::placeholder {
+  color: #c2c4cc;
+}
+.nut-textarea-textarea-disabled .taro-textarea {
+  color: #c2c4cc;
+}
+.nut-textarea-textarea-disabled .taro-textarea::placeholder {
+  color: #c2c4cc;
+}
+.nut-textarea.nut-textarea-rtl-limit {
+  right: auto;
+  left: 15px;
+}
+
+.taro-textarea {
+  background-color: transparent;
+  resize: none;
+}

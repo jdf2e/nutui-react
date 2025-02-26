@@ -1,0 +1,59 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-empty {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 40px;
+  background-color: #ffffff;
+}
+.nut-empty-base {
+  width: 160px;
+  height: 160px;
+}
+.nut-empty-base img,
+.nut-empty-base image {
+  width: 100%;
+  height: 100%;
+}
+.nut-empty-small {
+  width: 120px;
+  height: 120px;
+}
+.nut-empty-small img,
+.nut-empty-small image {
+  width: 100%;
+  height: 100%;
+}
+.nut-empty-title {
+  margin-top: 0px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 16px;
+}
+.nut-empty-description {
+  color: #505259;
+  font-size: 12px;
+  line-height: 1;
+}
+.nut-empty-actions-base {
+  display: flex;
+  flex-direction: row;
+  margin-top: 24px;
+}
+.nut-empty-actions-small {
+  display: flex;
+  flex-direction: row;
+  margin-top: 16px;
+}
+.nut-empty-action {
+  margin-right: 6px;
+  margin-left: 6px;
+}

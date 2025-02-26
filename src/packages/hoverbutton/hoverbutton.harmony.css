@@ -1,0 +1,25 @@
+/* #ifdef harmony */
+/* #endif */
+/* #ifndef harmony */
+/* #endif */
+.nut-hoverbutton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nut-hoverbutton-container {
+  position: fixed;
+  right: 8px;
+  bottom: 60px;
+  z-index: 10;
+}
+
+[dir=rtl] .nut-hoverbutton-container {
+  right: auto;
+  left: 8px;
+}
+
+.nut-hoverbutton-container-rtl {
+  right: auto;
+  left: 8px;
+}
