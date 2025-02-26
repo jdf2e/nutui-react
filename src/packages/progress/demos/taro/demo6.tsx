@@ -1,6 +1,7 @@
 import React from 'react'
 import { Progress, Cell } from '@nutui/nutui-react-taro'
 import { Checked, Tips } from '@nutui/icons-react-taro'
+import { harmony } from '@/utils/platform-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
@@ -8,6 +9,9 @@ const Demo6 = () => {
     marginTop: 0,
     marginLeft: pxTransform(5),
     marginRight: pxTransform(5),
+  }
+  const progressStyle = {
+    width: harmony() ? '95%' : '100%',
   }
   return (
     <>
@@ -19,7 +23,7 @@ const Demo6 = () => {
         />
       </Cell>
       <Cell align="center">
-        <Progress percent={100} />
+        <Progress percent={100} style={progressStyle} />
         <Checked color="green" style={iconStyle} />
       </Cell>
       <Cell align="center">
@@ -27,6 +31,7 @@ const Demo6 = () => {
           percent={100}
           color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           strokeWidth="15"
+          style={progressStyle}
         />
         <Tips color="#FF0000" style={iconStyle} />
       </Cell>
