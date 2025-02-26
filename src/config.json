@@ -170,7 +170,6 @@
       "name": "布局组件",
       "enName": "layout",
       "packages": [
-        
         {
           "version": "3.0.0",
           "name": "Divider",
@@ -224,17 +223,17 @@
           "dd": true
         },
         {
-            "version": "3.0.0",
-            "name": "Col",
-            "type": "component",
-            "cName": "列",
-            "desc": "布局组件中的列",
-            "sort": 3,
-            "show": false,
-            "exportEmpty": true,
-            "author": "yushuang24",
-            "dd": true
-          },
+          "version": "3.0.0",
+          "name": "Col",
+          "type": "component",
+          "cName": "列",
+          "desc": "布局组件中的列",
+          "sort": 3,
+          "show": false,
+          "exportEmpty": true,
+          "author": "yushuang24",
+          "dd": true
+        },
         {
           "version": "3.0.0",
           "name": "Row",
@@ -642,6 +641,19 @@
       "name": "数据录入",
       "enName": "dataentry",
       "packages": [
+        {
+          "version": "3.0.0",
+          "name": "DatePickerView",
+          "type": "component",
+          "cName": "选择器视图",
+          "desc": "DatePickerView 是 DatePicker 的内容区域",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "v15": false,
+          "dd": false,
+          "author": "songsong"
+        },
         {
           "version": "2.0.0",
           "name": "Menu",
