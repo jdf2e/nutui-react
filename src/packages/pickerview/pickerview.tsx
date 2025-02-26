@@ -12,7 +12,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import {
   PickerViewProps,
-  PickerOptionItem,
+  PickerOption,
   PickerValue,
   PickerOptions,
 } from './types'
@@ -23,7 +23,7 @@ const defaultProps = {
   options: [],
   defaultValue: [],
   value: undefined,
-  renderLabel: (item: PickerOptionItem) => item.label,
+  renderLabel: (item: PickerOption) => item.label,
 } as PickerViewProps
 
 const InternalPickerView: ForwardRefRenderFunction<
@@ -76,7 +76,7 @@ const InternalPickerView: ForwardRefRenderFunction<
     if (!options.length) return [] // 如果 options 为空，直接返回空数组
 
     const formatted: PickerOptions[] = []
-    let columnOptions: PickerOptionItem = {
+    let columnOptions: PickerOption = {
       label: '',
       value: '',
       children: options,
@@ -94,7 +94,7 @@ const InternalPickerView: ForwardRefRenderFunction<
       } else if (currentValue) {
         // 如果 currentValue 存在，查找匹配的项
         const index = currentOptions.findIndex(
-          (columnItem) => columnItem.value === currentValue
+          (columnItem: PickerOption) => columnItem.value === currentValue
         )
         columnOptions = currentOptions[index === -1 ? 0 : index] // 如果未找到，默认取第一个
       } else {
@@ -130,7 +130,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   }, [selectedValue])
 
   const handleSelect = useCallback(
-    (option: PickerOptionItem, index: number) => {
+    (option: PickerOption, index: number) => {
       const newValue = option?.value
       if (!newValue || innerValue[index] === newValue) return
       changeIndex.current = index
@@ -158,7 +158,7 @@ const InternalPickerView: ForwardRefRenderFunction<
           ...values.splice(startIndex),
         ]
         setInnerValue([...combineResult])
-        const optionFirst = props?.options?.[0] as PickerOptionItem[]
+        const optionFirst = props?.options?.[0] as PickerOptions
         if (
           !isEqual(
             formatCascadeOptions(optionFirst, combineResult),
@@ -176,12 +176,12 @@ const InternalPickerView: ForwardRefRenderFunction<
     return innerOptions
       .map((columnOptions, index) => {
         const selectedOption = columnOptions.find(
-          (item) => item.value === innerValue[index]
+          (item: PickerOption) => item.value === innerValue[index]
         )
         return selectedOption
         // return selectedOption || columnOptions[0]
       })
-      .filter(Boolean) as PickerOptionItem[]
+      .filter(Boolean) as PickerOptions
   }, [innerOptions, innerValue])
 
   useEffect(() => {

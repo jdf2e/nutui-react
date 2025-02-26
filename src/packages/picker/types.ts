@@ -1,6 +1,13 @@
 import { RefObject } from 'react'
-import { PopupProps } from '../popup/types'
+import { PopupProps } from '@/packages/popup/types'
 import { BasicComponent } from '@/utils/typings'
+
+export type PickerRef = PickerActions
+export type PickerActions = {
+  open: () => void
+  close: () => void
+}
+export type ColumnsType = 'single' | 'multiple' | 'cascade'
 
 export interface PickerOption {
   text: string | number

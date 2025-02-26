@@ -1,59 +1,55 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react-taro'
 
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo4 = () => {
-  const [isVisible2, setIsVisible2] = useState(false)
-  const [mutilDesc, setMutilDesc] = useState('')
-  const listData2 = [
+  const [visible, setVisible] = useState(false)
+  const [mutilDesc, setMutilDesc] = useState('周三')
+  const [defaultValue] = useState(['Wednesday'])
+  const options = [
     // 第一列
     [
-      { text: '周一', value: 'Monday' },
-      { text: '周二', value: 'Tuesday' },
-      { text: '周三', value: 'Wednesday' },
-      { text: '周四', value: 'Thursday' },
-      { text: '周五', value: 'Friday' },
+      { label: '周一', value: 'Monday' },
+      { label: '周二', value: 'Tuesday' },
+      { label: '周三', value: 'Wednesday' },
+      { label: '周四', value: 'Thursday' },
+      { label: '周五', value: 'Friday' },
     ],
     // 第二列
     [
-      { text: '上午', value: 'Morning' },
-      { text: '下午', value: 'Afternoon' },
-      { text: '晚上', value: 'Evening' },
+      { label: '上午', value: 'Morning' },
+      { label: '下午', value: 'Afternoon' },
+      { label: '晚上', value: 'Evening' },
     ],
   ]
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
+    console.log('confirmPicker', selectedOptions)
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: any) => {
+      option?.label && (description += ` ${option.label}`)
     })
     setMutilDesc(description)
-  }
-  const changePicker = (options: any[], values: any, columnIndex: number) => {
-    console.log('picker onChange', columnIndex, values, options)
   }
   return (
     <>
       <Cell
         title="多列用法"
         description={mutilDesc}
-        onClick={() => setIsVisible2(!isVisible2)}
+        onClick={() => setVisible(!visible)}
       />
       <Picker
-        visible={isVisible2}
-        options={listData2}
-        onClose={() => setIsVisible2(false)}
-        defaultValue={['Wednesday']}
-        onChange={changePicker}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        visible={visible}
+        options={options}
+        onClose={() => setVisible(false)}
+        defaultValue={defaultValue}
+        onConfirm={confirmPicker}
       />
     </>
   )

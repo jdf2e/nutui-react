@@ -38,10 +38,10 @@ const Demo1 = () => {
           setDesc('2026年03月22日')
         } else {
           setValue(values.join('/'))
-          setDesc(options.map((option) => option.text).join(''))
+          setDesc(options.map((option) => option.label).join(''))
         }
       } else {
-        setDesc(options.map((option) => option.text).join(''))
+        setDesc(options.map((option) => option.label).join(''))
       }
     }
 
