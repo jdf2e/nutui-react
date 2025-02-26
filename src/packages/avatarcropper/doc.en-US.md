@@ -56,3 +56,19 @@ Set the shape of the crop display, which is still square after the crop, and nee
 | shape | Crop shape, optional value is：`square` `round` | `string` | `square` |
 | onConfirm | Click Confirm to trigger after cropping | `(url: string) => void` | `-` |
 | onCancel | Click cancel trigger | `-` | `-` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAvatarCropper)
+
+### Component Logs
+
+- 🐛 fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666)) `v2.7.0`
+- 🐛 fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang `v2.6.12`
+- 🐛 fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu `v2.5.0`
+- ✨ feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui `v2.3.5`
+- 🐛 fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong `v2.3.5`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=avatarcropper&expanded=true)

@@ -96,3 +96,21 @@ import { Loading } from '@nutui/nutui-react'
 | \--nutui-loading-icon-size | icon大小 | `$font-size-s` |
 | \--nutui-loading-color | 文本色值 | `$color-text-help` |
 | \--nutui-loading-font-size | 文本字號 | `$font-size-s` |
+
+## 貢獻記錄
+
+### Issues
+
+- [希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading](https://github.com/jdf2e/nutui-react/issues/1202)
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALoading)
+
+### Component Logs
+
+- 💡 📖 docs(loading): 主题变量修正 ([#3008](https://github.com/jdf2e/nutui-react/pull/3008)) `v2.7.9`
+- 💡 📖 docs(infiniteloading): remove deprecated usage ([#2801](https://github.com/jdf2e/nutui-react/pull/2801)) `v2.7.2`
+- 💡 📖 docs(infiniteLoading): optimize target description ([#2770](https://github.com/jdf2e/nutui-react/pull/2770)) `v2.7.1`
+- 🐛 fix(uploader): beforeUpload should trigger every time before uploading ([#2553](https://github.com/jdf2e/nutui-react/pull/2553)) `v2.6.17`
+- 🐛 fix(infiniteLoading): rest 导致事件无法触发 ([#2474](https://github.com/jdf2e/nutui-react/pull/2474)) @oasis-cloud `v2.6.15`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=loading&expanded=true)

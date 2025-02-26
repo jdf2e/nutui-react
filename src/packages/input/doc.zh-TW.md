@@ -164,3 +164,19 @@ import { Input } from '@nutui/nutui-react'
 | \--nutui-input-border-radius | 输入框圆角 | `0` |
 | \--nutui-input-font-size | 文本字号 | `$font-size-base` |
 | \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInput)
+
+### Component Logs
+
+- 🐛 fix(textarea): 字数限制文本遮挡输入框的内容 ([#2910](https://github.com/jdf2e/nutui-react/pull/2910)) `v2.7.5`
+- 🐛 fix(input): type props didnot work when equals number|digit ([#2563](https://github.com/jdf2e/nutui-react/pull/2563)) `v2.6.18`
+- 🐛 fix(InputNumber): 扩大点击区域 ([#2302](https://github.com/jdf2e/nutui-react/pull/2302)) @xiaoyatong `v2.6.8`
+- 🐛 fix(input): placeholder 无法设置空字符串 ([#2282](https://github.com/jdf2e/nutui-react/pull/2282)) @oasis-cloud `v2.6.6`
+- 🐛 fix(input): 修复特殊场景下自动清除失效问题 ([#2240](https://github.com/jdf2e/nutui-react/pull/2240)) @eiinu `v2.6.5`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=input&expanded=true)

@@ -72,3 +72,13 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-segmented-item-color | Text color for options in the segmented selector | `$color-primary-text` |
 | \--nutui-segmented-active-background | Background color for selected options in the segmented selector | `$color-mask-part` |
 | \--nutui-segmented-icon-margin-right | Spacing between options in the segmented selector | `$color-mask-part` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASegmented)
+
+### Component Logs
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=segmented&expanded=true)

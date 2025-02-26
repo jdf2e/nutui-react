@@ -127,3 +127,19 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-group-description-line-height | 单元格分组的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |
 | \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACell)
+
+### Component Logs
+
+- ✨ feat(cell): add clickable prop to support click style feedback ([#2527](https://github.com/jdf2e/nutui-react/pull/2527)) `v2.6.17`
+- 💡 :art: style(CellGroup): 给`CellGroup`组件新增外边距样式变量，使得使用者可以自由控制该外边距。 ([#2189](https://github.com/jdf2e/nutui-react/pull/2189)) @kurisu994 `v2.6.2`
+- 🐛 fix(cellgroup): 去掉 cellgroup 未单独使用的 style 属性 ([#2176](https://github.com/jdf2e/nutui-react/pull/2176)) @kurisu994 `v2.6.1`
+- 🐛 fix(cell): unify the demos of Cell ([#1998](https://github.com/jdf2e/nutui-react/pull/1998)) @Alex.huxiyang `v2.4.0`
+- 🐛 fix(cell): doc、demo一致化改进 ([#1877](https://github.com/jdf2e/nutui-react/pull/1877)) @Alex.huxiyang `v2.3.7`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cell&expanded=true)

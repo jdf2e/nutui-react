@@ -196,3 +196,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-checkbox-list-item-border | List item border | `15px` |
 | \--nutui-checkbox-list-padding | list padding | `15px` |
 | \--nutui-checkbox-list-item-padding | padding of list items | `15px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACheckbox)
+
+### Component Logs
+
+- 🐛 关于checkbox&tabs的doc与demo修改 ([#2253](https://github.com/jdf2e/nutui-react/pull/2253)) @Alex-huxiyang `v2.6.5`
+- 💡 🏡 chore(checkbox): demo拆解与规范 ([#2146](https://github.com/jdf2e/nutui-react/pull/2146)) @Alex.huxiyang `v2.5.2`
+- ✨ feat(checkbox): list model ([#1957](https://github.com/jdf2e/nutui-react/pull/1957)) @oasis-cloud `v2.4.0`
+- ✨ feat(checkbox): 增加至少选择项数量的设置功能 ([#1859](https://github.com/jdf2e/nutui-react/pull/1859)) @oasis-cloud `v2.3.7`
+- 💡 📖 docs(checkbox): checkedIcon 改为 activeIcon ([#1724](https://github.com/jdf2e/nutui-react/pull/1724)) @oasis-cloud `v2.3.0`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=checkbox&expanded=true)

@@ -81,3 +81,19 @@ import { Tag } from '@nutui/nutui-react-taro'
 | \--nutui-tag-danger-background-color | 危险背景色 | `$color-primary` |
 | \--nutui-tag-round-border-radius | round模式下的圆角 | `8px` |
 | \--nutui-tag-mark-border-radius | mark模式下的圆角 | `0 8px 8px 0` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATag)
+
+### Component Logs
+
+- 💡 📖 docs: 文档构建出现未闭合标签的错误提示 `v2.6.22`
+- 💡 🏡 chore(tag): css样式变量修复 ([#2279](https://github.com/jdf2e/nutui-react/pull/2279)) @Alex-huxiyang `v2.6.6`
+- 💡 📖 docs(tag):修复demo描述错误 ([#2204](https://github.com/jdf2e/nutui-react/pull/2204)) @jianhuagao `v2.6.2`
+- 🐛 fix(tag): taro 下自定义icon无法展示 ([#2088](https://github.com/jdf2e/nutui-react/pull/2088)) @eiinu `v2.5.0`
+- 🐛 fix(form): 组件更新时，标签结构变化，会导致失去焦点 ([#1973](https://github.com/jdf2e/nutui-react/pull/1973)) @oasis-cloud `v2.3.12`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tag&expanded=true)

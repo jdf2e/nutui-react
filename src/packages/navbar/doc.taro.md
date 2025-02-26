@@ -68,3 +68,19 @@ import { NavBar } from '@nutui/nutui-react-taro'
 | \--nutui-navbar-title-font-size | 头部导航标题的字体大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | 头部导航标题的字体粗细 | `0` |
 | \--nutui-navbar-title-font-color | 头部导航标题的字体颜色 | `$color-title` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ANavBar)
+
+### Component Logs
+
+- 🐛 fix(navbar): safearea displays abnormal when safeAreaInsetTop has been set true ([#2632](https://github.com/jdf2e/nutui-react/pull/2632)) `v2.6.22`
+- 🐛 fix(navbar): demo拆解与规范 ([#2055](https://github.com/jdf2e/nutui-react/pull/2055)) @Alex-huxiyang `v2.4.2`
+- 🐛 fix(sideNavBar): demo拆解与规范 ([#2058](https://github.com/jdf2e/nutui-react/pull/2058)) @Alex-huxiyang `v2.4.2`
+- 💡 📖 docs(navbar): 文档可读性优化 ([#1915](https://github.com/jdf2e/nutui-react/pull/1915)) @Alex.huxiyang `v2.3.9`
+- 💡 📖 docs(sidenavbar): 文档可读性优化 ([#1920](https://github.com/jdf2e/nutui-react/pull/1920)) @Alex.huxiyang `v2.3.9`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=navbar&expanded=true)

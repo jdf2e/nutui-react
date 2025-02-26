@@ -84,3 +84,19 @@ import { Indicator } from '@nutui/nutui-react'
 | \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `6px` |
 | \--nutui-indicator-border-radius | 指示器焦點時的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器橫向時的margin值 | `$spacing-xxxs` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AIndicator)
+
+### Component Logs
+
+- 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
+- 🐛 fix(indicator): demo拆解与规范 ([#2090](https://github.com/jdf2e/nutui-react/pull/2090)) @eiinu `v2.4.2`
+- 🐛 fix(indicator): 修订样式名称和样式变量 ([#1712](https://github.com/jdf2e/nutui-react/pull/1712)) @xiaoyatong `v2.3.0`
+- 🐛 picker and datepicker theme config at taro and indicator css at taro ([#1615](https://github.com/jdf2e/nutui-react/pull/1615)) @xiaoyatong `v2.1.0`
+- 🐛 swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong `v2.0.24`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=indicator&expanded=true)

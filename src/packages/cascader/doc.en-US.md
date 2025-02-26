@@ -117,3 +117,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cascader-item-color | cascader item color | `$color-title` |
 | \--nutui-cascader-item-font-size | cascader item font size | `$font-size-base` |
 | \--nutui-cascader-item-active-color | cascader item active color | `$color-primary` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACascader)
+
+### Component Logs
+
+- 🐛 fix(cascader): 受控状态下 value 变化时同步组件选中状态 ([#2591](https://github.com/jdf2e/nutui-react/pull/2591)) `v2.6.19`
+- 🐛 fix(cascader): 初始化设置value未成功选中 ([#2435](https://github.com/jdf2e/nutui-react/pull/2435)) @Alex-huxiyang `v2.6.14`
+- 🐛 fix(cascader): onPathChange is not a function ([#2308](https://github.com/jdf2e/nutui-react/pull/2308)) @oasis-cloud `v2.6.8`
+- 💡 🏡 chore(cascader): demo拆解与规范 ([#2144](https://github.com/jdf2e/nutui-react/pull/2144)) @Alex.huxiyang `v2.5.2`
+- 🐛 fix(cascader): 增加 ref 上的 open 和 close 方法，支持 form 中使用 ([#1799](https://github.com/jdf2e/nutui-react/pull/1799)) @oasis-cloud `v2.3.3`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cascader&expanded=true)

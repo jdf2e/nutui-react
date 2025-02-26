@@ -126,3 +126,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-group-description-line-height | The description row height of cell group | `16px` |
 | \--nutui-cell-group-background-color | The background color of the cell group | `$white` |
 | \--nutui-cell-group-wrap-margin | The margin of the cell group wrap | `10px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACell)
+
+### Component Logs
+
+- ✨ feat(cell): add clickable prop to support click style feedback ([#2527](https://github.com/jdf2e/nutui-react/pull/2527)) `v2.6.17`
+- 💡 :art: style(CellGroup): 给`CellGroup`组件新增外边距样式变量，使得使用者可以自由控制该外边距。 ([#2189](https://github.com/jdf2e/nutui-react/pull/2189)) @kurisu994 `v2.6.2`
+- 🐛 fix(cellgroup): 去掉 cellgroup 未单独使用的 style 属性 ([#2176](https://github.com/jdf2e/nutui-react/pull/2176)) @kurisu994 `v2.6.1`
+- 🐛 fix(cell): unify the demos of Cell ([#1998](https://github.com/jdf2e/nutui-react/pull/1998)) @Alex.huxiyang `v2.4.0`
+- 🐛 fix(cell): doc、demo一致化改进 ([#1877](https://github.com/jdf2e/nutui-react/pull/1877)) @Alex.huxiyang `v2.3.7`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cell&expanded=true)

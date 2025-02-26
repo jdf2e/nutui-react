@@ -129,3 +129,18 @@ import { Grid } from '@nutui/nutui-react-taro'
 | \--nutui-grid-item-text-margin | 外边距 | `8px` |
 | \--nutui-grid-item-text-color | 文字颜色 | `$color-title` |
 | \--nutui-grid-item-text-font-size | 文字字体大小 | `$font-size-s` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AGrid)
+
+### Component Logs
+
+- 🐛 fix(grid): demo拆解与规范 ([#2014](https://github.com/jdf2e/nutui-react/pull/2014)) @Alex-huxiyang `v2.4.1`
+- 💡 📖 docs(grid): 文档可读性优化 ([#1903](https://github.com/jdf2e/nutui-react/pull/1903)) @Alex.huxiyang `v2.3.8`
+- ✨ feat(grid): 增加 demo ([#1660](https://github.com/jdf2e/nutui-react/pull/1660)) @xiaoyatong `v2.2.0`
+- 🐛 修复gridItem组件外部传入样式为空时冲掉组件内置样式问题 ([#1214](https://github.com/jdf2e/nutui-react/pull/1214)) @cuicuiworld `v1.5.12`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=grid&expanded=true)

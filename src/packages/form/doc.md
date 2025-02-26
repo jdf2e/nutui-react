@@ -149,3 +149,25 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 | \--nutui-form-item-body-input-text-align | 表单项输入框的文本对齐方式 | `left` |
 | \--nutui-form-item-tip-font-size | 错误信息的字号 | `10px` |
 | \--nutui-form-item-tip-text-align | 错误信息的文本对齐方式 | `left` |
+
+## 贡献记录
+
+### Issues
+
+- [[FR]: 你们的Native版本怎么不维护了？ 还缺少很多基础组件类似Form表单](https://github.com/jdf2e/nutui-react/issues/2942)
+- [可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗](https://github.com/jdf2e/nutui-react/issues/1948)
+- [nutui-react-taro@2.7.2 FormItem的值如果是对象（如 {label:是，value:1} ），会自动重置成 {}](https://github.com/jdf2e/nutui-react/issues/2870)
+- [[FR]: Form 表单组件Form.Item不支持复杂类型的字段](https://github.com/jdf2e/nutui-react/issues/2947)
+- [[FR]: Form增加对象结构](https://github.com/jdf2e/nutui-react/issues/2650)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AForm)
+
+### Component Logs
+
+- ✨ feat(form): resetFields 增加 namepath 参数，用于重置指定的字段 ([#2953](https://github.com/jdf2e/nutui-react/pull/2953)) `v2.7.7`
+- ✨ feat(form): add useWatch ([#2932](https://github.com/jdf2e/nutui-react/pull/2932)) `v2.7.7`
+- 🐛 fix(form): 修复 formitem 的值如果是对象会自动重置为空对象的问题 ([#2952](https://github.com/jdf2e/nutui-react/pull/2952)) `v2.7.7`
+- 🐛 fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931)) `v2.7.6`
+- 🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927)) `v2.7.6`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=form&expanded=true)

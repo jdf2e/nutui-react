@@ -174,3 +174,19 @@ import { Uploader } from '@nutui/nutui-react'
 | \--nutui-uploader-preview-tips-padding | 上傳圖片預覽tips下的padding值 | `0 5px` |
 | \--nutui-uploader-preview-close-right | 上傳圖片關閉按鈕的right值 | `0px` |
 | \--nutui-uploader-preview-close-top | 上傳圖片關閉按鈕的top值 | `0px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AUploader)
+
+### Component Logs
+
+- ✨ feat(uploader): suppport chooseMedia in web ([#2902](https://github.com/jdf2e/nutui-react/pull/2902)) `v2.7.5`
+- 💡 🏡 chore(uploader): use scss variable ([#2825](https://github.com/jdf2e/nutui-react/pull/2825)) `v2.7.2`
+- 🐛 fix(uploader): 修复选择多个文件上传只会上传一个文件的问题 ([#2807](https://github.com/jdf2e/nutui-react/pull/2807)) `v2.7.2`
+- ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
+- 🐛 fix(uploader): beforeUpload should trigger every time before uploading ([#2553](https://github.com/jdf2e/nutui-react/pull/2553)) `v2.6.17`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=uploader&expanded=true)

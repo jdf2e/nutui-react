@@ -154,3 +154,19 @@ import { Range } from '@nutui/nutui-react-taro'
 | \--nutui-range-button-width | 按钮宽度 | `24px` |
 | \--nutui-range-button-height | 按钮高度 | `24px` |
 | \--nutui-range-button-border | 按钮边框 | `1px solid $color-primary` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ARange)
+
+### Component Logs
+
+- 🐛 fix(range): usememo ([#2638](https://github.com/jdf2e/nutui-react/pull/2638)) `v2.6.22`
+- 🐛 fix(range): refactor & lint fixed ([#2637](https://github.com/jdf2e/nutui-react/pull/2637)) `v2.6.22`
+- 🐛 fix(range): demo拆解与规范 ([#2139](https://github.com/jdf2e/nutui-react/pull/2139)) @ShuchenEason `v2.5.1`
+- 🐛 fix(range): touchmove 回调中 rect 获取失败时终止 ([#2029](https://github.com/jdf2e/nutui-react/pull/2029)) @eiinu `v2.4.1`
+- ✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu `v2.3.12`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=range&expanded=true)

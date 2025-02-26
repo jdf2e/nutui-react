@@ -92,3 +92,13 @@ import { SideBar } from '@nutui/nutui-react'
 | \--nutui-sidebar-active-color | 激活狀態下的字體顏色 | `$color-primary` |
 | \--nutui-sidebar-item-background | 內容區域的背景色 | `$white` |
 | \--nutui-sidebar-item-padding | 內容區域的內邊距 | `24px 20px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASideBar)
+
+### Component Logs
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sidebar&expanded=true)

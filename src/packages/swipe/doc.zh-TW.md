@@ -366,3 +366,19 @@ export default App
 | --- | --- | --- |
 | open | 打開單元格側邊欄，`side`參數默認為`right` | `(side?: 'left' \| 'right') => void` |
 | close | 收起單元格側邊欄 | `() => void` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwipe)
+
+### Component Logs
+
+- 🐛 fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3003](https://github.com/jdf2e/nutui-react/pull/3003)) `v2.7.9`
+- 🐛 fix(swiper): 修复duration不生效 ([#2913](https://github.com/jdf2e/nutui-react/pull/2913)) `v2.7.6`
+- 💡 📖 docs: swiper 可通过 css 的 touch-action 设置用户操作行为 ([#2630](https://github.com/jdf2e/nutui-react/pull/2630)) `v2.6.22`
+- 🐛 fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang `v2.6.14`
+- 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=swipe&expanded=true)

@@ -102,3 +102,18 @@ import { TrendArrow } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-trendarrow-font-size | 指标趋势的文字大小 | `14px` |
 | \--nutui-trendarrow-icon-margin | 指标趋势的文字与图标间距 | `4px` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATrendArrow)
+
+### Component Logs
+
+- 🐛 fix(trendarrow): demo拆解与规范 ([#2075](https://github.com/jdf2e/nutui-react/pull/2075)) @sunlanda `v2.4.2`
+- 💡 style(trendarrow): 修订className类名 ([#1716](https://github.com/jdf2e/nutui-react/pull/1716)) @xiaoyatong `v2.3.0`
+- 🐛 优化 TrendArrow 组件 props ([#1150](https://github.com/jdf2e/nutui-react/pull/1150)) @songsong `v2.0.0-beta.2`
+- 💡 🛠 refactor: trendArrow ([#1066](https://github.com/jdf2e/nutui-react/pull/1066)) @拧巴的猫 `v2.0.0-alpha.13`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=trendarrow&expanded=true)

@@ -102,3 +102,20 @@ import { Switch } from '@nutui/nutui-react-taro'
 | \--nutui-switch-label-text-color | 开关内部文字颜色 | `$color-primary-text` |
 | \--nutui-switch-label-font-size | 开关内部文字大小 | `$font-size-s` |
 | \--nutui-switch-inactive-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |
+
+## 贡献记录
+
+### Issues
+
+- [Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步](https://github.com/jdf2e/nutui-react/issues/2170)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwitch)
+
+### Component Logs
+
+- 🐛 fix(Form): Form 组件文档 demo 中 Switch 组件使用问题 ([#2774](https://github.com/jdf2e/nutui-react/pull/2774)) `v2.7.1`
+- 🐛 fix(switch):switch组件demo代码重构 ([#2033](https://github.com/jdf2e/nutui-react/pull/2033)) @jiangjin3323 `v2.4.1`
+- 💡 🛠 refactor(switch): 修改样式名称及样式变量，添加相应demo ([#1714](https://github.com/jdf2e/nutui-react/pull/1714)) @xiaoyatong `v2.3.0`
+- ✨ menu 展开关闭事件增加参数 ([#1447](https://github.com/jdf2e/nutui-react/pull/1447)) @oasis-cloud `v2.0.18`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=switch&expanded=true)

@@ -92,3 +92,17 @@ import { TimeSelect } from '@nutui/nutui-react-taro'
 | \--nutui-timeselect-time-height | time 高度 | `50px` |
 | \--nutui-timeselect-time-margin | time 外边距 | `0 10px 10px 0` |
 | \--nutui-timeselect-time-background | time 背景 | `$color-background` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATimeSelect)
+
+### Component Logs
+
+- 🐛 fix(timeselect): demo拆解与规范 ([#2087](https://github.com/jdf2e/nutui-react/pull/2087)) @Alex-huxiyang `v2.5.0`
+- 💡 🛠 refactor(timeselect): 优化结构,简化css变量 ([#1732](https://github.com/jdf2e/nutui-react/pull/1732)) @xiaoyatong `v2.3.0`
+- 💡 🛠 refactor: TimeSelect ([#1088](https://github.com/jdf2e/nutui-react/pull/1088)) @Eiinu `v2.0.0-alpha.15`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=timeselect&expanded=true)

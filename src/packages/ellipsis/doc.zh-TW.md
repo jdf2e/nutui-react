@@ -75,3 +75,19 @@ import { Ellipsis } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-ellipsis-expand-collapse-color | 展示和收起的按鈕顏色 | `#3460fa` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AEllipsis)
+
+### Component Logs
+
+- 🐛 fix(ellipsis): 部分场景下的ref报错 ([#2200](https://github.com/jdf2e/nutui-react/pull/2200)) @Alex-huxiyang `v2.6.2`
+- ✨ feat(ellipsis): rtl ([#2128](https://github.com/jdf2e/nutui-react/pull/2128)) @irisSong `v2.5.1`
+- 🐛 fix(Ellipsis): 修复小程序环境下给Ellipsis设置字号后工作不正常的问题 ([#2078](https://github.com/jdf2e/nutui-react/pull/2078)) @FPG-Alan `v2.5.0`
+- 🐛 fix(ellipsis): 修复设置行数超过内容高度时只显示一行内容的问题 ([#2028](https://github.com/jdf2e/nutui-react/pull/2028)) @boiboif `v2.4.1`
+- 🐛 fix(ellipsis): 修复小程序文本省略问题 ([#1888](https://github.com/jdf2e/nutui-react/pull/1888)) @Eiinu `v2.3.8`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=ellipsis&expanded=true)

@@ -68,3 +68,13 @@ import { Lottie } from '@nutui/nutui-react-taro'
 详细可以参考 [https://lottiereact.com/](https://lottiereact.com/)
 
 | 方法名 | 说明 | 参数 |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALottie)
+
+### Component Logs
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=lottie&expanded=true)

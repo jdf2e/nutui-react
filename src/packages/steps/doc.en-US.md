@@ -144,3 +144,18 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | The color of the outer border of the dot progress bar in progress | `$color-primary-stop-2` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASteps)
+
+### Component Logs
+
+- 🐛 fix(steps): demo拆解与规范 ([#2105](https://github.com/jdf2e/nutui-react/pull/2105)) @eiinu `v2.5.0`
+- 🐛 fix(steps): 小程序的真机情况下出现的换行的情况 ([#1899](https://github.com/jdf2e/nutui-react/pull/1899)) @xiaoyatong `v2.3.8`
+- 💡 style(steps): 优化steps样式结构,改进css变量名 ([#1741](https://github.com/jdf2e/nutui-react/pull/1741)) @xiaoyatong `v2.3.0`
+- 💡 🛠 refactor: steps ([#1021](https://github.com/jdf2e/nutui-react/pull/1021)) @oasis-cloud `v2.0.0-alpha.10`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=steps&expanded=true)

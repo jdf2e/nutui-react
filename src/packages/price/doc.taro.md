@@ -121,3 +121,17 @@ import { Price } from '@nutui/nutui-react-taro'
 | \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `12px` |
 | \--nutui-price-integer-small-size | small 尺寸整数部分字体大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `12px` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APrice)
+
+### Component Logs
+
+- ✨ feat(card): add card hide price and shop usage ([#2292](https://github.com/jdf2e/nutui-react/pull/2292)) @wenlingang `v2.6.8`
+- 🐛 fix(price): demo拆解与规范 ([#2082](https://github.com/jdf2e/nutui-react/pull/2082)) @Alex-huxiyang `v2.4.2`
+- 💡 🛠 refactor: price ([#989](https://github.com/jdf2e/nutui-react/pull/989)) @拧巴的猫 `v2.0.0-alpha.9`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=price&expanded=true)

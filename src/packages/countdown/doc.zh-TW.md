@@ -148,3 +148,19 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-number-primary-color | type爲`primary`時，倒計時的時間區域的文字顏色 | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | type爲`primary`時，倒計時的時間區域的背景顏色 | `$color-primary` |
 | \--nutui-countdown-primary-border-color | type爲`primary`時，倒計時的時間區域的邊框顏色顏色 | `$color-primary` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACountDown)
+
+### Component Logs
+
+- 💡 🏡 chore(countdown): demo拆解与规范 ([#2147](https://github.com/jdf2e/nutui-react/pull/2147)) @Alex.huxiyang `v2.5.2`
+- 💡 📖 docs(countdown): 修复文档中的文案多语言化 ([#1723](https://github.com/jdf2e/nutui-react/pull/1723)) @xiaoyatong `v2.3.0`
+- 🐛 countdown手动控制demo展示样式优化 ([#1229](https://github.com/jdf2e/nutui-react/pull/1229)) @songsong `v2.0.4`
+- ✨ countdown 支持剩余时间 ([#1120](https://github.com/jdf2e/nutui-react/pull/1120)) @xiaoyatong `v1.5.9`
+- 💡 🛠 refactor: countdown ([#1040](https://github.com/jdf2e/nutui-react/pull/1040)) @拧巴的猫 `v2.0.0-alpha.12`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=countdown&expanded=true)

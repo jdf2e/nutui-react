@@ -108,3 +108,19 @@ import { Pagination } from '@nutui/nutui-react'
 | \--nutui-pagination-lite-radius | lite模式下的圆角 | `12px` |
 | \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APagination)
+
+### Component Logs
+
+- ✨ add pagination whether to show pages in imagepreview ([#2411](https://github.com/jdf2e/nutui-react/pull/2411)) @xiaoyatong `v2.6.12`
+- 🐛 fix(pagination): demo拆解与规范 ([#2079](https://github.com/jdf2e/nutui-react/pull/2079)) @Alex-huxiyang `v2.4.2`
+- 💡 📖 docs(swiper): customize pagination controls ([#1892](https://github.com/jdf2e/nutui-react/pull/1892)) @oasis-cloud `v2.3.8`
+- ✨ feat(pagination): add lite mode and css variable ([#1743](https://github.com/jdf2e/nutui-react/pull/1743)) @xiaoyatong `v2.3.0`
+- 🐛 fix(swiper): demo 中分页器样式显示错误 ([#1703](https://github.com/jdf2e/nutui-react/pull/1703)) @xiaoyatong `v2.3.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pagination&expanded=true)

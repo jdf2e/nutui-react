@@ -117,3 +117,19 @@ import { Popup } from '@nutui/nutui-react'
 | \--nutui-popup-title-height | 標題欄的高度 | `50px` |
 | \--nutui-popup-title-border-bottom | 標題欄底部邊框 | `0` |
 | \--nutui-popup-animation-duration | 彈框動畫的延時 | `0.3s` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APopup)
+
+### Component Logs
+
+- 💡 📖 docs: popup 使用说明描述优化([#2943](https://github.com/jdf2e/nutui-react/pull/2943)) `v2.7.7`
+- 🐛 fix(popup): display should not trigger the scrollview to update ([#2773](https://github.com/jdf2e/nutui-react/pull/2773)) `v2.7.1`
+- ✨ feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 ([#2629](https://github.com/jdf2e/nutui-react/pull/2629)) `v2.6.22`
+- ✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574)) `v2.6.18`
+- 🐛 fix(actionsheet): 去掉无意义的 padding，popup 已不再暴露 ([#2285](https://github.com/jdf2e/nutui-react/pull/2285)) @xiaoyatong `v2.6.7`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popup&expanded=true)

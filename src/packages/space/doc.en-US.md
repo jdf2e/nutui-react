@@ -79,3 +79,19 @@ to [ConfigProvider component](#/en-US/component/configprovider).
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-space-gap | `8px` | spacing size |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASpace)
+
+### Component Logs
+
+- 🐛 fix(space): demo拆解与规范 ([#2021](https://github.com/jdf2e/nutui-react/pull/2021)) @Alex-huxiyang `v2.4.1`
+- 🐛 fix(space): 主/交叉轴的 demo 与国际化改进 ([#1867](https://github.com/jdf2e/nutui-react/pull/1867)) @Alex.huxiyang `v2.3.7`
+- ✨ feat(space): update demos and docs of justify and align ([#1856](https://github.com/jdf2e/nutui-react/pull/1856)) @Alex.huxiyang `v2.3.6`
+- ✨ 提取 Taro 的 Demo 到 workspace ([#1302](https://github.com/jdf2e/nutui-react/pull/1302)) @oasis-cloud `v2.0.13`
+- 🐛 space 版本号修改为 2.0 ([#1265](https://github.com/jdf2e/nutui-react/pull/1265)) @oasis-cloud `v2.0.9`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=space&expanded=true)

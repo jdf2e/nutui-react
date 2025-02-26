@@ -100,3 +100,21 @@ import { Image } from '@nutui/nutui-react-taro'
 | onError | 图片加载失败后触发 | `() => void` | `-` |
 
 ### 直接使用 Taro 现有 Image 组件开发 [参考文档](https://taro-docs.jd.com/docs/components/media/image)
+
+## 贡献记录
+
+### Issues
+
+- [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AImage)
+
+### Component Logs
+
+- 🐛 imageSize=0无效 ([#2937](https://github.com/jdf2e/nutui-react/pull/2937)) `v2.7.7`
+- 🐛 Uploade 组件无法预览图片 ([#2822](https://github.com/jdf2e/nutui-react/pull/2822)) `v2.7.2`
+- ✨ feat(image-preview): 增加索引字段，用于预览内容排序 ([#2519](https://github.com/jdf2e/nutui-react/pull/2519)) `v2.6.17`
+- 🐛 fix(uploader): image 居中展示 ([#2475](https://github.com/jdf2e/nutui-react/pull/2475)) @xiaoyatong `v2.6.15`
+- 🐛 fix(uploader): images should display when they've been successfully uploaded ([#2448](https://github.com/jdf2e/nutui-react/pull/2448)) @Alex-huxiyang `v2.6.15`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=image&expanded=true)

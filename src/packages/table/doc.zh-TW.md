@@ -156,3 +156,19 @@ import { Table } from '@nutui/nutui-react'
 | \--nutui-table-tr-odd-background-color | 表格奇數行的背景色 | `$white` |
 | \--nutui-table-sticky-left-shadow | 表格左側固定陰影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-table-sticky-right-shadow | 表格右側固定陰影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATable)
+
+### Component Logs
+
+- 🐛 fix(Table): 给个默认背景色，解决在小程序中固定列与滚动内列混合 ([#2789](https://github.com/jdf2e/nutui-react/pull/2789)) `v2.7.2`
+- 💡 🏡 chore(demo): display bound dispatchSetState in demo8 of table demos ([#2626](https://github.com/jdf2e/nutui-react/pull/2626)) `v2.6.22`
+- 💡 🏡 chore: run md-table-format when git commit changes ([#2484](https://github.com/jdf2e/nutui-react/pull/2484)) @Alex-huxiyang `v2.6.15`
+- 💡 🪵 refactor: table ([#2473](https://github.com/jdf2e/nutui-react/pull/2473)) @zanyuki-jd `v2.6.15`
+- ✨ feat(table): table新增自定义行 ([#2390](https://github.com/jdf2e/nutui-react/pull/2390)) @zanyuki-jd `v2.6.11`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=table&expanded=true)

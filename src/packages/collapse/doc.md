@@ -113,3 +113,19 @@ import { Collapse } from 'nutui-react'
 | \--nutui-collapse-wrapper-content-font-size | 内容字体大小 | `$font-size-base` |
 | \--nutui-collapse-wrapper-content-line-height | 内容行高 | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | 内容内边距 | `12px 26px` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACollapse)
+
+### Component Logs
+
+- 🐛 fix(collapse): demo拆解与规范 ([#2094](https://github.com/jdf2e/nutui-react/pull/2094)) @eiinu `v2.5.0`
+- ✨ feat(rtl): collapse ([#1981](https://github.com/jdf2e/nutui-react/pull/1981)) @Eiinu `v2.4.0`
+- 💡 📖 docs: address and collapse doc icons ([#1692](https://github.com/jdf2e/nutui-react/pull/1692)) @xiaoyatong `v2.3.0`
+- 💡 style(collapse): add border-bottom as an item ([#1698](https://github.com/jdf2e/nutui-react/pull/1698)) @xiaoyatong `v2.3.0`
+- 🐛 fix(collapse): 测试问题修复 ([#1132](https://github.com/jdf2e/nutui-react/pull/1132)) @Eiinu `v2.0.0-beta.1`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=collapse&expanded=true)

@@ -106,3 +106,19 @@ import { TextArea } from '@nutui/nutui-react'
 | \--nutui-textarea-padding | 内边距 | `10px 25px` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-primary` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATextArea)
+
+### Component Logs
+
+- 🐛 fix(textarea): 字数限制文本遮挡输入框的内容 ([#2910](https://github.com/jdf2e/nutui-react/pull/2910)) `v2.7.5`
+- 🐛 fix(textarea): handle undefined placeholder explicitly ([#2748](https://github.com/jdf2e/nutui-react/pull/2748)) `v2.7.1`
+- 🐛 fix(textarea): demo拆解与规范 ([#2132](https://github.com/jdf2e/nutui-react/pull/2132)) @Amylee9712 `v2.5.1`
+- 🐛 fix(textarea): 修复maxlength=-1时无法输入字符的情况 ([#1910](https://github.com/jdf2e/nutui-react/pull/1910)) @xiaoyatong `v2.3.9`
+- 🐛 fix(Textarea): 文档demo中props拼写错误修改 ([#1874](https://github.com/jdf2e/nutui-react/pull/1874)) @songsong `v2.3.7`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=textarea&expanded=true)

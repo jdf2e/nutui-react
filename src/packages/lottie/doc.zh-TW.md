@@ -62,3 +62,13 @@ import { Lottie } from '@nutui/nutui-react-taro'
 | playSegments | 播放區間訊框 | `(segments: AnimationSegment \| AnimationSegment[], forceFlag?: boolean) => void` |
 | destroy | 銷毀 | `() => void` |
 | getDuration | inFrames 若為真，則以幀為單位傳回持續時間；inFrames 若為假，則以秒為單位傳回。 | `(inFrames?: boolean) => number` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALottie)
+
+### Component Logs
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=lottie&expanded=true)

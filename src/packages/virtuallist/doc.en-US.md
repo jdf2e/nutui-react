@@ -57,3 +57,19 @@ import { Virtuallist } from '@nutui/nutui-react'
 | key | the key name of item in list, index as default | `string` | `-` |
 | direction | horizontal or vertical | `string` | `vertical` |
 | onScroll | scroll to end | `() => void` | `-` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AVirtualList)
+
+### Component Logs
+
+- 🐛 fix(virtualList): 修复部分场景onScroll不触发 ([#2221](https://github.com/jdf2e/nutui-react/pull/2221)) @Alex-huxiyang `v2.6.4`
+- 🐛 fix(virtuallist): demo拆解与规范 ([#2116](https://github.com/jdf2e/nutui-react/pull/2116)) @eiinu `v2.5.0`
+- 🐛 fix(virtuallist): 修复 vitrual list 组件 Taro 下获取窗口高度不正确的问题 ([#1993](https://github.com/jdf2e/nutui-react/pull/1993)) @CDog34 `v2.4.0`
+- 💡 🐛 fix(virtualList): 等高模式下的抖动处理, 不定高模式快速滑动白屏 ([#1825](https://github.com/jdf2e/nutui-react/pull/1825)) @oasis-cloud `v2.3.4`
+- 🐛 virtuallist key at taro ([#1584](https://github.com/jdf2e/nutui-react/pull/1584)) @xiaoyatong `v2.0.24`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=virtuallist&expanded=true)

@@ -92,3 +92,13 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidebar-active-color | Font color in active state | `$color-primary` |
 | \--nutui-sidebar-item-background | The background color of the content area | `$white` |
 | \--nutui-sidebar-item-padding | Padding of the content area | `24px 20px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASideBar)
+
+### Component Logs
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sidebar&expanded=true)

@@ -175,3 +175,21 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-icon-height | height of iconfont container | `16px` |
 | \--nutui-icon-width | width of iconfont container | `16px` |
 | \--nutui-icon-line-height | iconfont line height | `16px` |
+
+## Contribution
+
+### Issues
+
+- [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AIcon)
+
+### Component Logs
+
+- ✨ feat(replace icon): jmapp icon ([#2672](https://github.com/jdf2e/nutui-react/pull/2672)) `v2.7.0`
+- ✨ add plugin to replace icons ([#2671](https://github.com/jdf2e/nutui-react/pull/2671)) `v2.7.0`
+- 🐛 @nutui/icons-react changed to @nutui/icons-react-taro ([#2651](https://github.com/jdf2e/nutui-react/pull/2651)) `v2.7.0`
+- ✨ feat(calendar): support deleteIcon props ([#2644](https://github.com/jdf2e/nutui-react/pull/2644)) `v2.6.23`
+- ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=icon&expanded=true)

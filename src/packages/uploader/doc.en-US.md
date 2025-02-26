@@ -169,3 +169,19 @@ The component provides the following CSS variables that can be used to customize
 | \--nutui-uploader-preview-tips-padding | Padding value under uploaded image preview tips | `0 5px` |
 | \--nutui-uploader-preview-close-right | The right value under the upload image's close button | `0px` |
 | \--nutui-uploader-preview-close-top | The top value of the uploader's close button | `0px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AUploader)
+
+### Component Logs
+
+- ✨ feat(uploader): suppport chooseMedia in web ([#2902](https://github.com/jdf2e/nutui-react/pull/2902)) `v2.7.5`
+- 💡 🏡 chore(uploader): use scss variable ([#2825](https://github.com/jdf2e/nutui-react/pull/2825)) `v2.7.2`
+- 🐛 fix(uploader): 修复选择多个文件上传只会上传一个文件的问题 ([#2807](https://github.com/jdf2e/nutui-react/pull/2807)) `v2.7.2`
+- ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
+- 🐛 fix(uploader): beforeUpload should trigger every time before uploading ([#2553](https://github.com/jdf2e/nutui-react/pull/2553)) `v2.6.17`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=uploader&expanded=true)

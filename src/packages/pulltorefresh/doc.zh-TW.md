@@ -55,3 +55,19 @@ import { PullToRefresh } from '@nutui/nutui-react'
 | \--nutui-pulltorefresh-icon-width | 下拉時icon寬度 | `36px` |
 | \--nutui-pulltorefresh-icon-height | 下拉時icon高度 | `26px` |
 | \--nutui-pulltorefresh-color-primary | 深色背景模式 | `$color-primay` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APullToRefresh)
+
+### Component Logs
+
+- 🐛 fix(PullToRefresh): 修复PullToRefresh组件disabled属性在taro中无效的问题 ([#2538](https://github.com/jdf2e/nutui-react/pull/2538)) `v2.6.17`
+- 🐛 fix(pulltorefresh): demo中下拉图标修改为joy logo ([#2084](https://github.com/jdf2e/nutui-react/pull/2084)) @irisSong `v2.4.2`
+- ✨ feat(pulltorefresh): 增加 type 属性，支持深色背景设置 ([#2044](https://github.com/jdf2e/nutui-react/pull/2044)) @xiaoyatong `v2.4.1`
+- 🐛 fix(pulltorefresh): 修复安卓小程序下拉卡顿问题 ([#1830](https://github.com/jdf2e/nutui-react/pull/1830)) @NickH `v2.3.5`
+- 🐛 fix(pulltorefresh): icon 部分拆到demo中 ([#1812](https://github.com/jdf2e/nutui-react/pull/1812)) @xiaoyatong `v2.3.3`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pulltorefresh&expanded=true)

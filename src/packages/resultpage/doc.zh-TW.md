@@ -82,3 +82,13 @@ import { ResultPage } from '@nutui/nutui-react'
 | \--nutui-resultpage-description-color | 描述的文字顏色 | `$color-text` |
 | \--nutui-resultpage-description-line-height | 描述的行高 | `20px` |
 | \--nutui-resultpage-actions-margin-topt | 操作區域的margin-top值 | `16px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AResultPage)
+
+### Component Logs
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=resultpage&expanded=true)

@@ -53,3 +53,19 @@ import { Sticky } from '@nutui/nutui-react'
 | zIndex | 吸附时的层级 | `number` | `2000` |
 | container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
 | onChange | 吸附状态改变时触发 | `(val: boolean) => void` | `-` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASticky)
+
+### Component Logs
+
+- 🐛 fix(sticky): should rerender when zIndex changes ([#2572](https://github.com/jdf2e/nutui-react/pull/2572)) `v2.6.18`
+- 🐛 fix(sticky): rerender sticky when threshold change ([#2564](https://github.com/jdf2e/nutui-react/pull/2564)) `v2.6.18`
+- 🐛 sticky 构建时类型错误 @oasis-cloud `v2.6.15`
+- 💡 🪵 refactor: sticky ([#2468](https://github.com/jdf2e/nutui-react/pull/2468)) @oasis-cloud `v2.6.15`
+- 🐛 fix(sticky): demo拆解与规范 ([#2024](https://github.com/jdf2e/nutui-react/pull/2024)) @Alex-huxiyang `v2.4.2`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sticky&expanded=true)

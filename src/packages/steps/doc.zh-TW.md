@@ -145,3 +145,18 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-dot-icon-border | 點狀進度條點的邊框 | `2px solid $white` |
 | \--nutui-steps-dot-head-margin | 點狀進度條點的外邊距 | `7px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | 進行中點狀進度條點的外邊顏色 | `$color-primary-stop-2` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASteps)
+
+### Component Logs
+
+- 🐛 fix(steps): demo拆解与规范 ([#2105](https://github.com/jdf2e/nutui-react/pull/2105)) @eiinu `v2.5.0`
+- 🐛 fix(steps): 小程序的真机情况下出现的换行的情况 ([#1899](https://github.com/jdf2e/nutui-react/pull/1899)) @xiaoyatong `v2.3.8`
+- 💡 style(steps): 优化steps样式结构,改进css变量名 ([#1741](https://github.com/jdf2e/nutui-react/pull/1741)) @xiaoyatong `v2.3.0`
+- 💡 🛠 refactor: steps ([#1021](https://github.com/jdf2e/nutui-react/pull/1021)) @oasis-cloud `v2.0.0-alpha.10`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=steps&expanded=true)

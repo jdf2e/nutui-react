@@ -83,3 +83,18 @@ import {
 | \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$color-title` |
 | \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$color-title` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASideNavBar)
+
+### Component Logs
+
+- 🐛 fix(sideNavBar): demo拆解与规范 ([#2058](https://github.com/jdf2e/nutui-react/pull/2058)) @Alex-huxiyang `v2.4.2`
+- 💡 📖 docs(sidenavbar): 文档可读性优化 ([#1920](https://github.com/jdf2e/nutui-react/pull/1920)) @Alex.huxiyang `v2.3.9`
+- 💡 📖 docs(sideNavBar): handleClose 改为 onClose ([#1635](https://github.com/jdf2e/nutui-react/pull/1635)) @haitao `v2.1.0`
+- 💡 🛠 refactor: sidenavbar ([#1057](https://github.com/jdf2e/nutui-react/pull/1057)) @oasis-cloud `v2.0.0-alpha.14`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sidenavbar&expanded=true)

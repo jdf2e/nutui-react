@@ -137,3 +137,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-avatar-small-height | The height of small avatars | `32px` |
 | \--nutui-avatar-normal-width | The width of a normal size avatar | `40px` |
 | \--nutui-avatar-normal-height | Height of normal size avatar | `40px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAvatar)
+
+### Component Logs
+
+- 🐛 fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666)) `v2.7.0`
+- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
+- 🐛 fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang `v2.6.12`
+- 🐛 fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu `v2.5.0`
+- 🐛 fix(avatar): demo规范与调整 ([#2071](https://github.com/jdf2e/nutui-react/pull/2071)) @Alex-huxiyang `v2.4.2`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=avatar&expanded=true)

@@ -103,3 +103,18 @@ import { Tour } from '@nutui/nutui-react'
 | \--nutui-tour-content-bottom-btn-padding | 內容區底部按鈕的padding值 | `2px 4px` |
 | \--nutui-tour-content-bottom-btn-font-size | 內容區底部按鈕的font-size值 | `12px` |
 | \--nutui-tour-content-bottom-btn-border-radius | 內容區底部按鈕的border-radius值 | `4px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATour)
+
+### Component Logs
+
+- 🐛 fix(overlay): tour position offset in tour.taro ([#2631](https://github.com/jdf2e/nutui-react/pull/2631)) `v2.6.23`
+- 🐛 fix(tour): demo拆解与规范 ([#2130](https://github.com/jdf2e/nutui-react/pull/2130)) @Alex-huxiyang `v2.5.1`
+- 💡 📖 docs(tour): fix tour demo ([#1759](https://github.com/jdf2e/nutui-react/pull/1759)) @xiaoyatong `v2.3.0`
+- ✨ 新增 tour 引导组件 ([#1279](https://github.com/jdf2e/nutui-react/pull/1279)) @junjun666 `v2.0.11`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tour&expanded=true)

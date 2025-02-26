@@ -169,3 +169,22 @@ export default function App() {
 | \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
 | \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
 | \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |
+
+## 貢獻記錄
+
+### Issues
+
+- [在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出](https://github.com/jdf2e/nutui-react/issues/2584)
+- [希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading](https://github.com/jdf2e/nutui-react/issues/1202)
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADialog)
+
+### Component Logs
+
+- 🐛 fix(dialog): remove defaultprops ([#2639](https://github.com/jdf2e/nutui-react/pull/2639)) `v2.6.23`
+- 🐛 fix(dialog): revert defaultprops `v2.6.22`
+- ✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574)) `v2.6.18`
+- 🐛 dialog `v2.6.18`
+- 🐛 fix(dialog): 关闭按钮默认在底部，24px白色图标 ([#2118](https://github.com/jdf2e/nutui-react/pull/2118)) @irisSong `v2.5.0`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=dialog&expanded=true)

@@ -72,3 +72,13 @@ import { Segmented } from '@nutui/nutui-react-taro'
 | \--nutui-segmented-item-color | 分段选择器选项文本颜色 | `$color-primary-text` |
 | \--nutui-segmented-active-background | 分段选择器选项选中的背景颜色 | `$color-mask-part` |
 | \--nutui-segmented-icon-margin-right | 分段选择器选项选间距 | `$color-mask-part` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASegmented)
+
+### Component Logs
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=segmented&expanded=true)

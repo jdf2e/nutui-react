@@ -35,3 +35,18 @@ import { SafeArea } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-safe-area-multiple | 显示的倍数 | `1` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASafeArea)
+
+### Component Logs
+
+- 🐛 fix(navbar): safearea displays abnormal when safeAreaInsetTop has been set true ([#2632](https://github.com/jdf2e/nutui-react/pull/2632)) `v2.6.22`
+- 🐛 safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong `v2.6.8`
+- 🐛 ActionSheet 增加安全区处理 ([#2286](https://github.com/jdf2e/nutui-react/pull/2286)) @xiaoyatong `v2.6.7`
+- ✨ feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud `v2.1.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=safearea&expanded=true)

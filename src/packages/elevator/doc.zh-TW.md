@@ -108,3 +108,19 @@ import { Elevator } from '@nutui/nutui-react'
 | \--nutui-elevator-list-fixed-color | 吸頂樓層文字顏色 | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | 吸頂樓層背景顏色 | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | 吸頂樓層陰影 | `0 0 10px #eee` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AElevator)
+
+### Component Logs
+
+- ✨ feat(elevator): 采用唯一ID，避免未传入 className 导致的报错 ([#2834](https://github.com/jdf2e/nutui-react/pull/2834)) `v2.7.2`
+- 🐛 fix(elevator): demo拆解与规范 ([#2030](https://github.com/jdf2e/nutui-react/pull/2030)) @Alex-huxiyang `v2.4.1`
+- 🐛 fix(elevator): 修复增加页码的逻辑 ([#1960](https://github.com/jdf2e/nutui-react/pull/1960)) @oasis-cloud `v2.3.12`
+- 🐛 fix(elevator): 解决部分安卓手机右侧导航高亮偏差问题 ([#1966](https://github.com/jdf2e/nutui-react/pull/1966)) @songsong `v2.3.12`
+- 🐛 fix(elevator): 索引定位不准 ([#1667](https://github.com/jdf2e/nutui-react/pull/1667)) @oasis-cloud `v2.2.0`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=elevator&expanded=true)

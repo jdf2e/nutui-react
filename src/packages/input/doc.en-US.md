@@ -164,3 +164,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-input-border-radius | border radius | `0` |
 | \--nutui-input-font-size | font size | `$font-size-base` |
 | \--nutui-input-padding | input padding | `10px 25px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInput)
+
+### Component Logs
+
+- 🐛 fix(textarea): 字数限制文本遮挡输入框的内容 ([#2910](https://github.com/jdf2e/nutui-react/pull/2910)) `v2.7.5`
+- 🐛 fix(input): type props didnot work when equals number|digit ([#2563](https://github.com/jdf2e/nutui-react/pull/2563)) `v2.6.18`
+- 🐛 fix(InputNumber): 扩大点击区域 ([#2302](https://github.com/jdf2e/nutui-react/pull/2302)) @xiaoyatong `v2.6.8`
+- 🐛 fix(input): placeholder 无法设置空字符串 ([#2282](https://github.com/jdf2e/nutui-react/pull/2282)) @oasis-cloud `v2.6.6`
+- 🐛 fix(input): 修复特殊场景下自动清除失效问题 ([#2240](https://github.com/jdf2e/nutui-react/pull/2240)) @eiinu `v2.6.5`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=input&expanded=true)

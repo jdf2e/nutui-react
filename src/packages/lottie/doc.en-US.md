@@ -60,3 +60,13 @@ import { Lottie } from '@nutui/nutui-react'
 | playSegments | Play interval frame | `(segments: AnimationSegment \| AnimationSegment[], forceFlag?: boolean) => void` |
 | destroy | destroy | `() => void` |
 | getDuration | inFrames If true, returns the duration in frames; inFrames if false, returns the duration in seconds. | `(inFrames?: boolean) => number` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALottie)
+
+### Component Logs
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=lottie&expanded=true)

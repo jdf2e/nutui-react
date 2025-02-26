@@ -122,3 +122,22 @@ import { Picker } from '@nutui/nutui-react'
 | \--nutui-picker-item-text-color | 面板每一条数据的字色 | `$color-title` |
 | \--nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
+
+## 贡献记录
+
+### Issues
+
+- [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
+- [[FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少](https://github.com/jdf2e/nutui-react/issues/2945)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APicker)
+
+### Component Logs
+
+- 🐛 fix(datepicker): show zero on page ([#2582](https://github.com/jdf2e/nutui-react/pull/2582)) `v2.6.19`
+- 🐛 fix(picker): 函数调用之前检查 locale 是否已经定义 ([#2259](https://github.com/jdf2e/nutui-react/pull/2259)) @Alex-huxiyang `v2.6.8`
+- 🐛 fix(picker): 修复连续多次打开 picker 时显示值错误 ([#2222](https://github.com/jdf2e/nutui-react/pull/2222)) @eiinu `v2.6.4`
+- 🐛 fix(datepicker): 修复受控方式下选项联动更新问题 ([#2201](https://github.com/jdf2e/nutui-react/pull/2201)) @eiinu `v2.6.2`
+- 💡 🏡 chore(picker): demo拆解与规范 ([#2157](https://github.com/jdf2e/nutui-react/pull/2157)) @Alex-huxiyang `v2.6.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=picker&expanded=true)

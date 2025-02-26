@@ -84,3 +84,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$color-title` |
 | \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-l` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACircleProgress)
+
+### Component Logs
+
+- 🐛 fix(circleprogress): update demo ([#2260](https://github.com/jdf2e/nutui-react/pull/2260)) @eiinu `v2.6.5`
+- 🐛 fix(circleprogress): demo拆解与规范 ([#2091](https://github.com/jdf2e/nutui-react/pull/2091)) @Alex-huxiyang `v2.5.0`
+- 💡 🛠 refactor(circleprogress): optimize animation duration ([#1861](https://github.com/jdf2e/nutui-react/pull/1861)) @oasis-cloud `v2.3.7`
+- 💡 style(circleprogress): docs 优化，修订 css 变量 ([#1699](https://github.com/jdf2e/nutui-react/pull/1699)) @xiaoyatong `v2.3.0`
+- 🐛 fix(circleprogress): 计算出现 NaN 导致组件展示为 100% 的情况 ([#1602](https://github.com/jdf2e/nutui-react/pull/1602)) @oasis-cloud `v2.0.24`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=circleprogress&expanded=true)

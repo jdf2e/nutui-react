@@ -170,3 +170,21 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-day-height | calendar day height | `60px` |
 | \--nutui-calendar-day-font-weight | calendar day font weight | `500` |
 | \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |
+
+## Contribution
+
+### Issues
+
+- [可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗](https://github.com/jdf2e/nutui-react/issues/1948)
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACalendar)
+
+### Component Logs
+
+- 💡 🪵 refactor: calendar ([#2983](https://github.com/jdf2e/nutui-react/pull/2983)) `v2.7.8`
+- 🐛 调整日历日期 ([#2914](https://github.com/jdf2e/nutui-react/pull/2914)) `v2.7.5`
+- ✨ feat(calendar): support renderBottomButton props ([#2645](https://github.com/jdf2e/nutui-react/pull/2645)) `v2.6.23`
+- ✨ feat(calendar): support deleteIcon props ([#2644](https://github.com/jdf2e/nutui-react/pull/2644)) `v2.6.23`
+- 🐛 修复日历进行快捷选择日期时 点击确认获取的是上一次的日期 ([#2436](https://github.com/jdf2e/nutui-react/pull/2436)) @yangqianlu `v2.6.15`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=calendar&expanded=true)

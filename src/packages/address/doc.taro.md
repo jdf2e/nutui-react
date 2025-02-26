@@ -89,3 +89,21 @@ import { Address } from '@nutui/nutui-react-taro'
 | close | 关闭地址选择 | `-` |
 
 更多参数可参考 `Cascader` 组件。
+
+## 贡献记录
+
+### Issues
+
+- [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAddress)
+
+### Component Logs
+
+- 🐛 修复address组件onChange参数透传问题 ([#2110](https://github.com/jdf2e/nutui-react/pull/2110)) @DreamSeeker321 `v2.5.0`
+- 🐛 fix(address): demo拆解与规范 ([#2068](https://github.com/jdf2e/nutui-react/pull/2068)) @Alex-huxiyang `v2.4.2`
+- 💡 📖 docs: address and collapse doc icons ([#1692](https://github.com/jdf2e/nutui-react/pull/1692)) @xiaoyatong `v2.3.0`
+- 🐛 address close icon cannot be customed ([#1685](https://github.com/jdf2e/nutui-react/pull/1685)) @xiaoyatong `v2.3.0`
+- 🐛 picker 和 address 在 form 中使用，未阻止冒泡，导致取消和确认无法关闭 ([#1710](https://github.com/jdf2e/nutui-react/pull/1710)) @oasis-cloud `v2.3.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=address&expanded=true)

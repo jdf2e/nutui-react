@@ -166,3 +166,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
 | \--nutui-popover-menu-item-width | The width value of each item in the options | `160px` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APopover)
+
+### Component Logs
+
+- ✨ feat(popover): 增加最大宽度设置，支持文本超过最大宽度时，换行展示 ([#2851](https://github.com/jdf2e/nutui-react/pull/2851)) `v2.7.3`
+- ✨ feat(popover): rtl ([#2121](https://github.com/jdf2e/nutui-react/pull/2121)) @xiaoyatong `v2.5.1`
+- ✨ feat(Popover): 新增单条数据的demo展示 ([#2117](https://github.com/jdf2e/nutui-react/pull/2117)) @xiaoyatong `v2.5.0`
+- 🐛 fix(popover): 调整demo ([#2043](https://github.com/jdf2e/nutui-react/pull/2043)) @xiaoyatong `v2.4.1`
+- ✨ feat(popover): 增加 light 和 dark 模式的区分 ([#1977](https://github.com/jdf2e/nutui-react/pull/1977)) @xiaoyatong `v2.4.0`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popover&expanded=true)

@@ -137,3 +137,19 @@ import { Menu } from '@nutui/nutui-react'
 | \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `$color-text-disabled` |
 | \--nutui-menu-item-padding | 菜單選項的內邊距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜單選項文本與icon的距離 | `8px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AMenu)
+
+### Component Logs
+
+- 🐛 fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed ([#2633](https://github.com/jdf2e/nutui-react/pull/2633)) `v2.6.22`
+- ✨ feat(menu): allow custom classnames for Menu and dynamic titles ([#2480](https://github.com/jdf2e/nutui-react/pull/2480)) @Alex-huxiyang `v2.6.15`
+- ✨ feat(menuitem): 新增css类名，增强自定义样式能力 ([#2443](https://github.com/jdf2e/nutui-react/pull/2443)) @Alex-huxiyang `v2.6.14`
+- 🐛 fix(menu): 选项文字很多时右侧箭头展示异常 ([#2252](https://github.com/jdf2e/nutui-react/pull/2252)) @Alex-huxiyang `v2.6.5`
+- 💡 🏡 chore(menu): demo拆解与规范 ([#2153](https://github.com/jdf2e/nutui-react/pull/2153)) @Alex-huxiyang `v2.6.0`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=menu&expanded=true)

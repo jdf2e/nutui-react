@@ -60,3 +60,16 @@ import { Audio } from '@nutui/nutui-react'
 | onEnd | 語音播放完成，loop = false 時生效 | `(event：HTMLAudioElement) => void` | `-` |
 | onMute | 靜音回調 | `(event：HTMLAudioElement) => void` | `-` |
 | onCanPlay | 可以播放媒體時觸發 | `(event：HTMLAudioElement) => void` | `-` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAudio)
+
+### Component Logs
+
+- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
+- 🐛 fix(audio): demo拆解与规范 ([#2111](https://github.com/jdf2e/nutui-react/pull/2111)) @Alex-huxiyang `v2.5.0`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=audio&expanded=true)

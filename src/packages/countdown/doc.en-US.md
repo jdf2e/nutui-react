@@ -147,3 +147,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-countdown-number-primary-color | When type is `primary`, the text color of the countdown time area | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | When type is `primary`, the background color of the countdown time area | `$color-primary` |
 | \--nutui-countdown-primary-border-color | When type is `primary`, the border color of the countdown time area | `$color-primary` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACountDown)
+
+### Component Logs
+
+- 💡 🏡 chore(countdown): demo拆解与规范 ([#2147](https://github.com/jdf2e/nutui-react/pull/2147)) @Alex.huxiyang `v2.5.2`
+- 💡 📖 docs(countdown): 修复文档中的文案多语言化 ([#1723](https://github.com/jdf2e/nutui-react/pull/1723)) @xiaoyatong `v2.3.0`
+- 🐛 countdown手动控制demo展示样式优化 ([#1229](https://github.com/jdf2e/nutui-react/pull/1229)) @songsong `v2.0.4`
+- ✨ countdown 支持剩余时间 ([#1120](https://github.com/jdf2e/nutui-react/pull/1120)) @xiaoyatong `v1.5.9`
+- 💡 🛠 refactor: countdown ([#1040](https://github.com/jdf2e/nutui-react/pull/1040)) @拧巴的猫 `v2.0.0-alpha.12`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=countdown&expanded=true)

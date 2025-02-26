@@ -108,3 +108,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-progress-text-position-bottom | text bottom | `-4px` |
 | \--nutui-progress-text-border-radius | text borderRadius | `5px` |
 | \--nutui-progress-text-background | text background | `$progress-color` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AProgress)
+
+### Component Logs
+
+- 🐛 fix(circleprogress): update demo ([#2260](https://github.com/jdf2e/nutui-react/pull/2260)) @eiinu `v2.6.5`
+- ✨ feat(progress): Taro新增lazy属性 ([#2108](https://github.com/jdf2e/nutui-react/pull/2108)) @Alex-huxiyang `v2.5.1`
+- ✨ feat(progress): 支持taro的lazy属性 & demo拆解与规范 ([#2086](https://github.com/jdf2e/nutui-react/pull/2086)) @Alex-huxiyang `v2.5.0`
+- 🐛 fix(circleprogress): demo拆解与规范 ([#2091](https://github.com/jdf2e/nutui-react/pull/2091)) @Alex-huxiyang `v2.5.0`
+- 💡 🚦 Revert "feat(progress): 支持taro的lazy属性 & demo拆解与规范 ([#2086](https://github.com/jdf2e/nutui-react/pull/2086))" @oasis-cloud `v2.5.0`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=progress&expanded=true)

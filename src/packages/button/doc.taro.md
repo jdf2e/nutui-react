@@ -160,3 +160,21 @@ import { Button } from '@nutui/nutui-react-taro'
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-xs` |
 | \--nutui-button-mini-border-radius | size 为 mini 的按钮的圆角 | `6px` |
 | \--nutui-button-text-icon-margin | 带 icon按钮的文本的边距 | `4px` |
+
+## 贡献记录
+
+### Issues
+
+- [希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading](https://github.com/jdf2e/nutui-react/issues/1202)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AButton)
+
+### Component Logs
+
+- 🐛 支持 button block ([#2853](https://github.com/jdf2e/nutui-react/pull/2853)) `v2.7.3`
+- ✨ feat(calendar): support renderBottomButton props ([#2645](https://github.com/jdf2e/nutui-react/pull/2645)) `v2.6.23`
+- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
+- ✨ feat(button): 新增 button 原始类型属性 ([#2195](https://github.com/jdf2e/nutui-react/pull/2195)) @Jiankian `v2.6.8`
+- 🐛 fix(dialog): 关闭按钮默认在底部，24px白色图标 ([#2118](https://github.com/jdf2e/nutui-react/pull/2118)) @irisSong `v2.5.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=button&expanded=true)

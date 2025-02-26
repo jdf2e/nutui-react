@@ -258,3 +258,19 @@ import { Tabs } from '@nutui/nutui-react-taro'
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
 | \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色 | `#fff` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATabs)
+
+### Component Logs
+
+- 🐛 tabs 代码简化,调整部分样式 ([#2949](https://github.com/jdf2e/nutui-react/pull/2949)) `v2.7.7`
+- 🐛 fix(tabs): 修复意外地出现了滚动条 ([#2912](https://github.com/jdf2e/nutui-react/pull/2912)) `v2.7.6`
+- 🐛 fix(tabs): clicked tabs should be entirely visible ([#2685](https://github.com/jdf2e/nutui-react/pull/2685)) `v2.7.0`
+- 🐛 fix(tabs.taro.tsx): 解决在不需要滚动的时候，切换tab产生tab位置错乱的问题 ([#2554](https://github.com/jdf2e/nutui-react/pull/2554)) `v2.6.17`
+- ✨ tabs滚动条兼容火狐浏览器 ([#2431](https://github.com/jdf2e/nutui-react/pull/2431)) @JoanneXu6677 `v2.6.13`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tabs&expanded=true)

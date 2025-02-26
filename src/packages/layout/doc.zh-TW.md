@@ -66,3 +66,19 @@ import { Row, Col } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-col-default-margin-bottom | col 組件的下邊距 | `15px` |
+
+## 貢獻記錄
+
+### Issues
+
+> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALayout)
+
+### Component Logs
+
+- 🐛 fix(layout): demo拆解与规范 & 修复脚本在不同操作系统的正则匹配出错 ([#2016](https://github.com/jdf2e/nutui-react/pull/2016)) @Alex-huxiyang `v2.4.1`
+- ✨ feat(noticebar): supports the center layout ([#1972](https://github.com/jdf2e/nutui-react/pull/1972)) @irisSong `v2.4.0`
+- 💡 📖 docs(layout): 文档可读性优化 ([#1904](https://github.com/jdf2e/nutui-react/pull/1904)) @Alex.huxiyang `v2.3.9`
+- ✨ feat(infiniteloading): 优化布局,添加css变量,增加demo ([#1760](https://github.com/jdf2e/nutui-react/pull/1760)) @xiaoyatong `v2.3.0`
+- ✨ feat(navbar): 增加标题左对齐方式,优化左侧icon的布局,调整className类 名和css 变量 ([#1750](https://github.com/jdf2e/nutui-react/pull/1750)) @xiaoyatong `v2.3.0`
+
+> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=layout&expanded=true)

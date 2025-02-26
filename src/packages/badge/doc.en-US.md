@@ -115,3 +115,19 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
 | \--nutui-badge-outline-color | The border when badge is outline text color value | `$color-primary` |
 | \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |
+
+## Contribution
+
+### Issues
+
+> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ABadge)
+
+### Component Logs
+
+- 💡 :art: style(badge): jdesign badge 样式 ([#2164](https://github.com/jdf2e/nutui-react/pull/2164)) @zhehu1 `v2.6.2`
+- 🐛 fix(badge): demo拆解与规范 ([#2060](https://github.com/jdf2e/nutui-react/pull/2060)) @wanglihuaya `v2.4.2`
+- ✨ feat(badge): 新增 fill 属性 ([#2042](https://github.com/jdf2e/nutui-react/pull/2042)) @eiinu `v2.4.1`
+- 🐛 fix(badge): 修复value传入0时显示不正确的问题 ([#2006](https://github.com/jdf2e/nutui-react/pull/2006)) @boiboif `v2.4.1`
+- ✨ feat(rtl): badge ([#1986](https://github.com/jdf2e/nutui-react/pull/1986)) @Eiinu `v2.4.0`
+
+> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=badge&expanded=true)

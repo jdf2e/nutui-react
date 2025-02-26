@@ -80,3 +80,19 @@ import { FixedNav } from '@nutui/nutui-react-taro'
 | \--nutui-fixednav-button-background | button 的背景颜色 | `$color-primary-gradient-1` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | 激活颜色 | `$color-primary` |
+
+## 贡献记录
+
+### Issues
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AFixedNav)
+
+### Component Logs
+
+- 🐛 fix(fixednav): 可拖拽元素样式缺失 ([#2391](https://github.com/jdf2e/nutui-react/pull/2391)) @oasis-cloud `v2.6.11`
+- 🐛 fix(fixedNav): demo拆解与规范 ([#2048](https://github.com/jdf2e/nutui-react/pull/2048)) @Alex-huxiyang `v2.4.2`
+- ✨ feat(fixednav): add the list icon for ReactNode ([#1786](https://github.com/jdf2e/nutui-react/pull/1786)) @sunsunmonkey `v2.3.2`
+- 💡 🛠 refactor: 类型文件统一为 types，增加 fixednavitem 类型 ([#1789](https://github.com/jdf2e/nutui-react/pull/1789)) @oasis-cloud `v2.3.2`
+- 💡 style(fixednav): 废弃 bem 规范, 修订 css 变量 ([#1702](https://github.com/jdf2e/nutui-react/pull/1702)) @xiaoyatong `v2.3.0`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=fixednav&expanded=true)

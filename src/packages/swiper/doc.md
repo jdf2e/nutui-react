@@ -450,3 +450,21 @@ export default App
 | --- | --- | --- |
 | \--nutui-swiper-pagination-bottom | 分页器距离底部的距离 | `12px` |
 | \--swiper-offset | 轮播容器的偏移 | `0` |
+
+## 贡献记录
+
+### Issues
+
+- [h5和小程序中，轮播图loop为true时，最后一张到第一张，第一张到最后一张，均白屏](https://github.com/jdf2e/nutui-react/issues/1432)
+
+> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwiper)
+
+### Component Logs
+
+- 🐛 fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3003](https://github.com/jdf2e/nutui-react/pull/3003)) `v2.7.9`
+- 🐛 fix(swiper): 修复duration不生效 ([#2913](https://github.com/jdf2e/nutui-react/pull/2913)) `v2.7.6`
+- 💡 📖 docs: swiper 可通过 css 的 touch-action 设置用户操作行为 ([#2630](https://github.com/jdf2e/nutui-react/pull/2630)) `v2.6.22`
+- 🐛 fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang `v2.6.14`
+- 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
+
+> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=swiper&expanded=true)
