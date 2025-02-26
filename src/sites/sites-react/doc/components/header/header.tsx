@@ -8,17 +8,10 @@ import { CSSTransition } from 'react-transition-group'
 import Search from '../search/search'
 import {
   SiteReactTaro,
-  header,
-  versions,
   nav,
   repository,
-  language,
-  guide as vueGuide,
   reactGuide,
-  reactTaroGuide,
   moreGuide,
-  businessGuide,
-  products,
 } from '../../../../config/index'
 const Header = () => {
   const navigate = useNavigate()
@@ -87,33 +80,39 @@ const Header = () => {
   const headerBck = SiteReactTaro.header
   const [isShowGuid, setIsShowGuid] = useState(false)
   const [isShowGuid4, setIsShowGuid4] = useState(false)
-  const [selectedVersion, setSelectedVersion] = useState('3.0.0-beta.11')
+  const [selectedVersion, setSelectedVersion] = useState(version)
   const [selectedLanguage, setSelectedLanguage] = useState('')
   const handleMouseHover = (isHovered) => {
     setIsShowGuid(isHovered)
   }
   useEffect(() => {
-    if(location.pathname.includes('/component')) {
+    if (location.pathname.includes('/component')) {
       setActiveLink('组件')
     }
   }, [location])
   const toAnother = () => {
     // 开发环境
-    if(process.env.NODE_ENV === 'development') {
-      if(window.location.href.includes('/react/#')) {
-        window.location.href = window.location.href.replace('/react/#', '/react/index.taro.html#');
+    if (process.env.NODE_ENV === 'development') {
+      if (window.location.href.includes('/react/#')) {
+        window.location.href = window.location.href.replace(
+          '/react/#',
+          '/react/index.taro.html#'
+        )
       } else if (window.location.href.includes('/react/index.taro.html#')) {
-        window.location.href = window.location.href.replace('/react/index.taro.html#', '/react/#');
+        window.location.href = window.location.href.replace(
+          '/react/index.taro.html#',
+          '/react/#'
+        )
       }
       return
     }
     // 生产环境
     if (window.location.href.includes('taro')) {
-      window.location.href = window.location.href.replace('taro', 'h5');
+      window.location.href = window.location.href.replace('taro', 'h5')
     } else if (window.location.href.includes('h5')) {
-      window.location.href = window.location.href.replace('h5', 'taro');
+      window.location.href = window.location.href.replace('h5', 'taro')
     }
-  };
+  }
   const checkGuidTheme = (item: any, type: string) => {
     setIsShowGuid(false)
     window.open(item.link)
