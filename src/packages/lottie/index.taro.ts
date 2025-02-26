@@ -3,6 +3,8 @@ import { Lottie as LottieWeb } from './web.taro'
 import { Lottie as LottieMp } from './mp.taro'
 import { LottieProps } from './types'
 
+export type { LottieProps } from './types'
+
 let implementation
 if (process.env.TARO_ENV === 'h5') {
   // @ts-ignore

@@ -13,6 +13,11 @@ export interface CloseCallBackData extends Regions {
   addressStr: string
 }
 
+export type AddressRef = {
+  open: () => void
+  close: () => void
+}
+
 export interface ResultData {
   data: CloseCallBackData | AddressList
   type: string

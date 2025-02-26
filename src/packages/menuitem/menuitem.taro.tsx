@@ -19,7 +19,7 @@ import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 
-export interface OptionItem {
+export interface MenuOptionItem {
   text: string
   value: string | number
 }
@@ -27,7 +27,7 @@ export interface OptionItem {
 export interface MenuItemProps extends BasicComponent {
   title: React.ReactNode
   titleIcon: React.ReactNode
-  options: OptionItem[]
+  options: MenuOptionItem[]
   disabled: boolean
   columns: number
   icon: React.ReactNode
@@ -50,7 +50,7 @@ const defaultProps = {
   closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
-  onChange: (value: OptionItem) => undefined,
+  onChange: (value: MenuOptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const {
@@ -141,7 +141,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       parent.updateTitle(text, index)
     }
   }
-  const handleClick = (item: OptionItem) => {
+  const handleClick = (item: MenuOptionItem) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)

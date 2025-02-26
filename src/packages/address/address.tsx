@@ -9,7 +9,7 @@ import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
-import { AddressList } from './types'
+import { AddressList, AddressRef } from './types'
 import {
   CascaderOption,
   CascaderOptionKey,
@@ -18,11 +18,6 @@ import {
 } from '@/packages/cascader/index'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-type AddressRef = {
-  open: () => void
-  close: () => void
-}
 
 export interface AddressProps extends CascaderProps {
   visible: boolean

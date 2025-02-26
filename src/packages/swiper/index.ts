@@ -4,7 +4,7 @@ import SwiperItem from '@/packages/swiperitem'
 import { SwiperRef } from '@/packages/swiper/types'
 
 export type { SwiperProps } from './swiper'
-export type { SwiperRef } from './types'
+export type { SwiperRef, SwiperDirection } from './types'
 type CompoundedComponent = React.ForwardRefExoticComponent<
   Partial<SwiperProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &

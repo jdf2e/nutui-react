@@ -10,7 +10,7 @@ import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { AddressList } from './types'
+import { AddressList, AddressRef } from './types'
 import {
   CascaderOption,
   CascaderOptionKey,
@@ -19,11 +19,6 @@ import {
 } from '@/packages/cascader/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-type AddressRef = {
-  open: () => void
-  close: () => void
-}
 
 export interface AddressProps extends CascaderProps {
   visible: boolean

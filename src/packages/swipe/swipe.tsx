@@ -25,7 +25,7 @@ function preventDefault(
     event.stopPropagation()
   }
 }
-export interface SwipeInstance {
+export interface SwipeRef {
   open: (side: SwipeSide) => void
   close: () => void
 }
@@ -62,7 +62,7 @@ const defaultProps = {
   name: '',
 } as SwipeProps
 export const Swipe = forwardRef<
-  SwipeInstance,
+  SwipeRef,
   Partial<SwipeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,

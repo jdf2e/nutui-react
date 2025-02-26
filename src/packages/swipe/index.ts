@@ -1,4 +1,4 @@
 import { Swipe } from './swipe'
 
-export type { SwipeProps, SwipeInstance, SwipeSide } from './swipe'
+export type { SwipeProps, SwipeRef, SwipeSide } from './swipe'
 export default Swipe

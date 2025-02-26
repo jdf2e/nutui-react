@@ -5,5 +5,6 @@ export type {
   InputAlign,
   InputProps,
   InputConfirmType,
+  InputFormatTrigger,
 } from './input'
 export default Input

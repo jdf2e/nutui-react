@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react'
-import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem'
+import { MenuOptionItem, MenuItem } from '@/packages/menuitem/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type MenuTriggerType = 'NORMAL' | 'REF'
@@ -140,7 +140,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
           direction,
         } = child.props
         const selected = options?.filter(
-          (option: OptionItem) =>
+          (option: MenuOptionItem) =>
             option.value === (value !== undefined ? value : defaultValue)
         )
         const finallyTitle = () => {
