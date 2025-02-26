@@ -1,5 +1,9 @@
 import { BasicComponent } from '@/utils/typings'
-import { PickerOption } from '@/packages/picker/types'
+import {
+  PickerOptions,
+  PickerValue,
+  PickerOption,
+} from '@/packages/pickerview/types'
 
 export interface DatePickerViewProps extends BasicComponent {
   value?: Date
@@ -18,10 +22,11 @@ export interface DatePickerViewProps extends BasicComponent {
   endDate: Date
   threeDimensional: boolean
   formatter: (type: string, option: PickerOption) => PickerOption
-  filter: (type: string, option: PickerOption[]) => PickerOption[]
+  filter: (type: string, options: PickerOptions) => PickerOptions
+
   onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[],
     columnIndex: number
   ) => void
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { PickerOptionItem, PickerValue } from '@/packages/pickerview/index'
+import { PickerOptions, PickerValue } from '@/packages/pickerview/index'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
@@ -63,7 +63,7 @@ export const DatePickerView: FunctionComponent<
   }
 
   const [pickerValue, setPickerValue] = useState<PickerValue[]>([])
-  const [pickerOptions, setPickerOptions] = useState<PickerOptionItem[][]>([])
+  const [pickerOptions, setPickerOptions] = useState<PickerOptions[]>([])
 
   const [selectedDate, setSelectedDate] = usePropsValue<number>({
     value: props.value && formatValue(props.value, startDate, endDate),
@@ -76,7 +76,7 @@ export const DatePickerView: FunctionComponent<
 
   const handleDateComparison = (
     newDate: Date | null,
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     index: number
   ) => {
     const isEqual = new Date(innerDate)?.getTime() === newDate?.getTime()
@@ -97,7 +97,7 @@ export const DatePickerView: FunctionComponent<
   }
 
   const handleChange = (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: (string | number)[],
     index: number
   ) => {
@@ -111,7 +111,7 @@ export const DatePickerView: FunctionComponent<
     )
   }
 
-  const generatePickerColumns = (): PickerOption[][] => {
+  const generatePickerColumns = (): PickerOptions[] => {
     const dateRanges = generateDatePickerRanges(
       type,
       innerDate,
@@ -165,7 +165,7 @@ export const DatePickerView: FunctionComponent<
             value={pickerValue}
             options={pickerOptions}
             // onChange={(
-            //   options: PickerOption[],
+            //   options: PickerOptions,
             //   value: (string | number)[],
             //   index: number
             // ) => handleChange(options, value, index)}
