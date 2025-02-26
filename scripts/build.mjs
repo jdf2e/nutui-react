@@ -177,25 +177,16 @@ async function buildUMD(p) {
     },
   })
 }
-
+// 针对不同包构建全量的 style
 async function buildAllCSS() {
   // 拷贝styles
-  async function copyStyles() {
-    await copy(
-      resolve(__dirname, '../src/styles'),
-      resolve(__dirname, `../${dist}/styles`),
-    )
-
+  async function generateAllStyles() {
+    const projectID = process.env.VITE_APP_PROJECT_ID
     const content = [
-      `@import './styles/theme-default.scss';`,
-      `@import './styles/variables.scss';`,
+      `@import './styles/variables${projectID ? `-${projectID}` : ''}.scss';`,
       `@import './styles/mixins/index.scss';`,
       `@import './styles/animation/index.scss';`,
     ]
-    const projectID = process.env.VITE_APP_PROJECT_ID
-    if (projectID) {
-      content[1] = `@import '../variables-${projectID}.scss';`
-    }
     const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
@@ -205,7 +196,7 @@ async function buildAllCSS() {
     dest(`${dist}/style.scss`, content.join('\n'))
   }
 
-  await copyStyles()
+  await generateAllStyles()
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -225,6 +216,30 @@ async function buildAllCSS() {
 }
 
 async function buildThemeCSS() {
+  const files = await glob([`${dist}/styles/theme-*.scss`], {
+    ignore: [`${dist}/types/src/**/*.taro.d.ts`],
+  })
+  const projectID = process.env.VITE_APP_PROJECT_ID
+  const inputFiles = {}
+  // nuitui 官方包包含全部主题文件，包括：
+  // default.css 默认明亮主题
+  // dark.css 默认暗黑主题
+  // jmapp.css、jrkf.css 主题
+  // 例如：jmapp 包只包含 jmapp 的主题文件，且是默认主题文件。
+  files.forEach(filePath => {
+    const themeName = basename(filePath, 'scss').replace('theme-', '')
+    if (!projectID) {
+      inputFiles[themeName] = `./${filePath}`
+    } else {
+      if (themeName === projectID) {
+        inputFiles['default'] = `./${filePath}`
+      }
+      if (themeName === `${projectID}-dark`) {
+        inputFiles['dark'] = `./${filePath}`
+      }
+    }
+  })
+
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -233,41 +248,23 @@ async function buildThemeCSS() {
     build: {
       emptyOutDir: false,
       rollupOptions: {
+        input: inputFiles,
         output: [
           {
             dir: `${dist}/styles/themes`,
-            assetFileNames: 'default.css',
+            assetFileNames: '[name].css',
           },
         ],
-      },
-      lib: {
-        entry: `./${dist}/styles/themes/default.scss`,
       },
     },
   })
 }
 
-// 拷贝styles
 async function copyStyles() {
   await copy(
     resolve(__dirname, '../src/styles'),
     resolve(__dirname, `../${dist}/styles`),
   )
-
-  let content = [
-    `@import '../theme-default.scss';`,
-    `@import '../theme-dark.scss';`,
-    `@import '../jd-font';`,
-  ]
-  const projectID = process.env.VITE_APP_PROJECT_ID
-  if (projectID) {
-    content = [
-      `@import '../theme-${projectID}.scss';`,
-      `@import '../jd-font';`,
-    ]
-  }
-
-  dest(`${dist}/styles/themes/default.scss`, content.join('\n'))
 }
 
 // 构建样式
@@ -384,6 +381,8 @@ async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))
   await copy(join(__dirname, '../CHANGELOG.md'), join(`${npmPublishDir}/CHANGELOG.md`))
+  await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/es/packages/lottie/animation`))
+  await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/cjs/packages/lottie/animation`))
   await writeFile(join(__dirname, `../${npmPublishDir}/package.json`), generateReleasePackageJson())
 }
 
