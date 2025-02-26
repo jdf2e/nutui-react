@@ -1,3 +1,11 @@
+# v2.7.9
+
+`2025-02-21`
+
+- :bug: fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 (#3003)
+- 🪵 refactor: use compatible systemInfo util API (#2995)
+- 📖 docs(loading): 主题变量修正 (#3008)
+
 # v2.7.8
 
 `2025-02-14`

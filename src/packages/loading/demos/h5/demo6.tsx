@@ -7,7 +7,7 @@ const Demo6 = () => {
       <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
         <Loading>加载中</Loading>
       </ConfigProvider>
-      <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
+      <ConfigProvider theme={{ nutuiLoadingFontSize: '20px' }}>
         <Loading>加载中</Loading>
       </ConfigProvider>
     </Cell>
