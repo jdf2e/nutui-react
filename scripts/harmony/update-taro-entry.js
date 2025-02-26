@@ -2,7 +2,6 @@
  * 更新nutui-taro-demo入口文件
  */
 const fse = require('fs-extra')
-const path = require('path')
 const config = require('../../src/config.json')
 const param = process.env.C
 
@@ -12,33 +11,6 @@ function specialComponent(name) {
   const entries = param.split(',').map((i) => i.toLowerCase())
   return entries.includes(name.toLowerCase())
 }
-
-// 已适配组件对象
-const adaptedArray = []
-config.nav.map((item) => {
-  item.packages.forEach((element) => {
-    const { name, version, dd } = element
-    if (!dd) return // 未适配不导出
-    if (specialComponent(name)) return
-    adaptedArray.push({
-      ...element,
-      lowercaseName: element.name.toLowerCase(),
-      enName: item.enName,
-    })
-  })
-})
-// 子组件
-const childAdaptedArray = [
-  'cellgroup',
-  'row',
-  'col',
-  'griditem',
-  'swiperitem',
-  'hoverbuttonitem',
-  'avatargroup',
-  'icon',
-  'tabpane',
-]
 
 // 更新 app.config.ts 文件
 const createConfig = async () => {

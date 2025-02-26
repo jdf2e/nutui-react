@@ -35,6 +35,9 @@
     display: flex;
     flex-direction: row;
     margin-top: $resultpage-actions-margin-top;
+    .nut-button-children {
+      white-space: nowrap;
+    }
   }
   &-action {
     margin-left: 6px;
