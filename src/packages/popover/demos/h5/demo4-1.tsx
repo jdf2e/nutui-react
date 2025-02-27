@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { Popover, Cell, Picker, Toast } from '@nutui/nutui-react'
+import {
+  Popover,
+  Cell,
+  Picker,
+  Toast,
+  PickerOnChangeCallbackParameter,
+} from '@nutui/nutui-react'
 import { Tips, Close } from '@nutui/icons-react'
-
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 
 const Demo41 = () => {
   const [baseDesc, setBaseDesc] = useState('')
@@ -17,12 +15,14 @@ const Demo41 = () => {
   const [curPostion, setCurPostion] = useState('')
 
   const columns = [
-    { text: 'top', value: 'top' },
-    { text: 'top-start', value: 'top-start' },
-    { text: 'top-end', value: 'top-end' },
-    { text: 'bottom', value: 'bottom' },
-    { text: 'bottom-start', value: 'bottom-start' },
-    { text: 'bottom-end', value: 'bottom-end' },
+    [
+      { label: 'top', value: 'top' },
+      { label: 'top-start', value: 'top-start' },
+      { label: 'top-end', value: 'top-end' },
+      { label: 'bottom', value: 'bottom' },
+      { label: 'bottom-start', value: 'bottom-start' },
+      { label: 'bottom-end', value: 'bottom-end' },
+    ],
   ]
   const positionList = [
     {
@@ -60,13 +60,13 @@ const Demo41 = () => {
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
-            description += ` ${option.text}`
+            description += ` ${option.label}`
           })
           setBaseDesc(description)
         }}
-        onChange={(options: PickerOption[]) => {
-          if (options[0]?.value) {
-            setCurPostion(options[0].value as string)
+        onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
+          if (selectedOptions[0]?.value) {
+            setCurPostion(selectedOptions[0].value as string)
           }
         }}
         onClose={() => {
