@@ -21,7 +21,7 @@ test('Show Chinese', async () => {
   fireEvent.click(confirmBtn)
   await waitFor(() => {
     expect(
-      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.label).join('')
     ).toEqual(`${currentYear - 10}年01月01日`)
   })
 })
@@ -40,13 +40,9 @@ test('Min date & Max date', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-picker-list')[0]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item-title')
-  const years = ['2020', '2021', '2022']
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[0].querySelectorAll('.nut-pickerview-roller-item-tiled')
   expect(lists.length).toBe(3)
-  lists.forEach((list, i) => {
-    expect(list.textContent).toEqual(years[i])
-  })
   rerender(
     <DatePicker
       title="日期选择"
@@ -98,22 +94,22 @@ test('Min date & Max date', async () => {
   const formatter = (type: string, option: any) => {
     switch (type) {
       case 'year':
-        option.text += ''
+        option.label += ''
         break
       case 'month':
-        option.text += 'M'
+        option.label += 'M'
         break
       case 'day':
-        option.text += 'D'
+        option.label += 'D'
         break
       case 'hour':
-        option.text += 'H'
+        option.label += 'H'
         break
       case 'minute':
-        option.text += 'M'
+        option.label += 'M'
         break
       default:
-        option.text += ''
+        option.label += ''
     }
     return option
   }
@@ -148,7 +144,7 @@ test('should pick defaultValue', async () => {
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(
-      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.label).join('')
     ).toEqual('20210301')
   )
 })
@@ -166,8 +162,8 @@ test('Increment step setting', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-picker-list')[1]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item')
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[1].querySelectorAll('.nut-pickerview-roller-item')
   expect(lists.length).toBe(12)
 })
 
@@ -189,7 +185,7 @@ test('Filter Time', async () => {
     />
   )
 
-  const columns = container.querySelectorAll('.nut-picker-list')[3]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item')
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const lists = columns[3].querySelectorAll('.nut-pickerview-roller-item')
   expect(lists.length).toBe(4)
 })

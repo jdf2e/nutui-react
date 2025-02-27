@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { View } from '@tarojs/components'
-import Picker, { PickerOption } from '@/packages/picker/index.taro'
+import Picker from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
@@ -17,8 +17,9 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from './utils'
-import { DatePickerActions, DatePickerRef } from './types'
 import { DatePickerProps } from './types.taro'
+import { DatePickerActions, DatePickerRef } from './types'
+import { PickerOptions, PickerValue } from '@/packages/pickerview/types'
 
 const currentYear = new Date().getFullYear()
 
@@ -76,8 +77,8 @@ const InternalPicker: ForwardRefRenderFunction<
     seconds: lang.seconds,
   }
 
-  const [pickerValue, setPickerValue] = useState<(string | number)[]>([])
-  const [pickerOptions, setPickerOptions] = useState<PickerOption[][]>([])
+  const [pickerValue, setPickerValue] = useState<PickerValue[]>([])
+  const [pickerOptions, setPickerOptions] = useState<PickerOptions[]>([])
 
   const [selectedDate, setSelectedDate] = usePropsValue<number>({
     value: props.value && formatValue(props.value, startDate, endDate),
@@ -107,7 +108,7 @@ const InternalPicker: ForwardRefRenderFunction<
 
   const handleDateComparison = (
     newDate: Date | null,
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     index: number
   ) => {
     const isEqual = new Date(innerDate)?.getTime() === newDate?.getTime()
@@ -146,10 +147,7 @@ const InternalPicker: ForwardRefRenderFunction<
     onClose?.()
   }
 
-  const handleConfirm = (
-    options: PickerOption[],
-    value: (string | number)[]
-  ) => {
+  const handleConfirm = (options: PickerOptions, value: PickerValue[]) => {
     handlePickerValueChange(
       options,
       value,
@@ -162,8 +160,8 @@ const InternalPicker: ForwardRefRenderFunction<
   }
 
   const handleChange = (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[],
     index: number
   ) => {
     innerVisible &&
@@ -177,7 +175,7 @@ const InternalPicker: ForwardRefRenderFunction<
       )
   }
 
-  const generatePickerColumns = (): PickerOption[][] => {
+  const generatePickerColumns = (): PickerOptions[] => {
     const dateRanges = generateDatePickerRanges(
       type,
       innerDate,
@@ -236,11 +234,9 @@ const InternalPicker: ForwardRefRenderFunction<
             onClose={handleClose}
             onCancel={handleCancel}
             onConfirm={handleConfirm}
-            onChange={(
-              options: PickerOption[],
-              value: (string | number)[],
-              index: number
-            ) => handleChange(options, value, index)}
+            onChange={({ value, index, selectedOptions }) => {
+              handleChange(selectedOptions, value, index)
+            }}
             threeDimensional={threeDimensional}
           />
         )}

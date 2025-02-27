@@ -1,6 +1,10 @@
 import { padZero } from '@/utils/pad-zero'
 import { isDate } from '@/utils/is-date'
-import { PickerOption } from '../picker/types'
+import {
+  PickerOption,
+  PickerOptions,
+  PickerValue,
+} from '@/packages/pickerview/types'
 
 /**
  * 获取指定年份和月份的最后一天
@@ -160,13 +164,13 @@ export const generatePickerColumnWithCallback = (
   currentValue: number | string,
   type: string,
   minuteStep: number,
-  callback: (selectedIndex: number, options: PickerOption[]) => void,
+  callback: (selectedIndex: number, options: PickerOptions) => void,
   showChinese: boolean,
   zhCNType: { [key: string]: string },
   formatter?: (type: string, option: PickerOption) => PickerOption
-): PickerOption[] => {
+): PickerOptions => {
   let currentMin = min
-  const options: PickerOption[] = []
+  const options: PickerOptions = []
   let selectedIndex = 0
 
   // 遍历从最小值到最大值的范围
@@ -212,7 +216,7 @@ export const formatPickerOption = (
 ): PickerOption => {
   if (formatter) {
     return formatter(type, {
-      text: padZero(value, 2),
+      label: padZero(value, 2),
       value: padZero(value, 2),
     })
   }
@@ -222,7 +226,7 @@ export const formatPickerOption = (
   const chineseText = showChinese ? zhCNType[type] : ''
 
   return {
-    text: paddedValue + chineseText,
+    label: paddedValue + chineseText,
     value: paddedValue,
   }
 }
@@ -251,14 +255,14 @@ export const formatValue = (
  * @param index 当前列的索引
  */
 export const handlePickerValueChange = (
-  selectedOptions: PickerOption[],
-  selectedValue: (string | number)[],
+  selectedOptions: PickerOptions,
+  selectedValue: PickerValue[],
   index: number,
   type: string,
   defaultDate: Date,
   handleDateComparison: (
     newDate: Date | null,
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     index: number
   ) => void
 ) => {
@@ -269,7 +273,7 @@ export const handlePickerValueChange = (
       rangeType
     )
   ) {
-    const formattedDate: (string | number)[] = []
+    const formattedDate: PickerValue[] = []
 
     selectedValue.forEach((item) => {
       formattedDate.push(item)

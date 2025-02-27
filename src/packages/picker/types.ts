@@ -1,19 +1,19 @@
 import { RefObject } from 'react'
-import { PopupProps } from '../popup/types'
+import { PopupProps } from '@/packages/popup/types'
 import { BasicComponent } from '@/utils/typings'
+import { PickerOption, PickerOptions } from '@/packages/pickerview/types'
 
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
+export type PickerRef = PickerActions
+export type PickerActions = {
+  open: () => void
+  close: () => void
 }
+export type ColumnsType = 'single' | 'multiple' | 'cascade'
 
 export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
   title?: string
-  options: (PickerOption | PickerOption[])[]
+  options: (PickerOption | PickerOptions)[]
   value?: (number | string)[]
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
@@ -23,21 +23,21 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
     Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
   >
   onConfirm?: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: (string | number)[]
   ) => void
   onCancel?: () => void
   onClose?: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: (string | number)[]
   ) => void
   afterClose?: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: (string | number)[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
   onChange?: (
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     selectedValue: (string | number)[],
     columnIndex: number
   ) => void

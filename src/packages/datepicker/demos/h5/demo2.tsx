@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react'
+import {
+  DatePicker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const defaultValue = new Date()
@@ -8,8 +13,9 @@ const Demo2 = () => {
     `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
   )
 
-  const confirm = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc(options.map((option) => option.text).join('-'))
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
+    console.log('values', values, options)
+    setDesc(options.map((option) => option.label).join('-'))
   }
   return (
     <>

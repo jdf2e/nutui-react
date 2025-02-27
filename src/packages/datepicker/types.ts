@@ -1,5 +1,6 @@
 import { BasicComponent } from '@/utils/typings'
-import { PickerOption, PickerProps } from '../picker/types'
+import { PickerProps } from '@/packages/picker/types'
+import { PickerOptions, PickerValue, PickerOption } from '@/packages/pickerview'
 
 export type DatePickerRef = DatePickerActions
 export type DatePickerActions = {
@@ -39,16 +40,16 @@ export interface DatePickerProps extends BasicComponent {
     >
   >
   formatter: (type: string, option: PickerOption) => PickerOption
-  filter: (type: string, option: PickerOption[]) => PickerOption[]
+  filter: (type: string, options: PickerOptions) => PickerOptions
   onClose: () => void
   onCancel: () => void
   onConfirm: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => void
   onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[],
     columnIndex: number
   ) => void
   children?: any

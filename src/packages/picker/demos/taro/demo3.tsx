@@ -1,59 +1,69 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react-taro'
+import isEqual from 'react-fast-compare'
+import { PickerOnChangeCallbackParameter } from '@/packages/pickerview/types'
 
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo3 = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
-  const [val, setVal] = useState<Array<number | string>>([])
+  const [value, setValue] = useState<PickerValue[]>([] as PickerValue[])
   const options = [
     [
-      { value: 1, text: '南京市' },
-      { value: 2, text: '无锡市' },
-      { value: 3, text: '海北藏族自治区' },
-      { value: 4, text: '北京市' },
-      { value: 5, text: '连云港市' },
-      { value: 8, text: '大庆市' },
-      { value: 9, text: '绥化市' },
-      { value: 10, text: '潍坊市' },
-      { value: 12, text: '乌鲁木齐市' },
+      { value: 1, label: '南京市' },
+      { value: 2, label: '无锡市' },
+      { value: 3, label: '海北藏族自治区' },
+      { value: 4, label: '北京市' },
+      { value: 5, label: '连云港市' },
+      { value: 8, label: '大庆市' },
+      { value: 9, label: '绥化市' },
+      { value: 10, label: '潍坊市' },
+      { value: 12, label: '乌鲁木齐市' },
     ],
   ]
+
+  const changePicker = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    console.log('changePicker', value, index, selectedOptions)
+  }
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
-    })
-    setBaseDesc(description)
+    if (isEqual(selectedValue, [3])) {
+      setValue([1])
+      setBaseDesc('南京市')
+    } else {
+      setValue(selectedValue)
+      let description = ''
+      selectedOptions.forEach((option: any) => {
+        description += ` ${option.label}`
+      })
+      setBaseDesc(description)
+    }
   }
   return (
     <>
       <Cell
         title="请选择城市"
         description={baseDesc}
-        onClick={() => setIsVisible(!isVisible)}
+        onClick={() => setVisible(!visible)}
       />
       <Picker
         title="请选择城市"
-        visible={isVisible}
-        value={val}
+        visible={visible}
+        value={value}
         options={options}
-        onConfirm={(list, values) => {
-          confirmPicker(list, values)
-          setVal(values)
-        }}
-        onClose={() => {
-          setIsVisible(false)
-        }}
+        onChange={changePicker}
+        onConfirm={confirmPicker}
+        onClose={() => setVisible(false)}
       />
     </>
   )

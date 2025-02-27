@@ -32,7 +32,7 @@ const Demo6 = () => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }
-  const confirm = (values: (string | number)[], options: any[]) => {
+  const confirm = (values: PickerValue[], options: any[]) => {
     if (desc.current === 1) {
       setDesc1(
         options.map((option) => padZero(parseInt(option.text))).join(':')
