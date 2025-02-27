@@ -14,7 +14,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -22,7 +22,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -30,7 +30,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -38,7 +38,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -46,7 +46,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -54,7 +54,7 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
