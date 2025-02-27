@@ -13,7 +13,6 @@ const GITHUB_API = {
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
     // Authorization: `Bearer ${TOKEN}`,
-    Authorization: `Bearer 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`,
   },
 }
 
