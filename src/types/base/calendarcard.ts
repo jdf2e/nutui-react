@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '@/types/base/baseprops'
+import { BaseProps } from './baseprops'
 
 export interface CalendarCardDay {
   // 上个月 | 当月 | 下个月

@@ -1,12 +1,11 @@
+import { ReactNode } from 'react'
 import { BaseProps } from './baseprops'
-import { PositionX } from './baseatom'
-
-export type AvatarShape = 'round' | 'square'
+import { PositionX, UIRound } from './baseatom'
 
 export interface BaseAvatar extends BaseProps {
   size: string
-  icon: React.ReactNode
-  shape: AvatarShape
+  icon: ReactNode
+  shape: UIRound
   background: string
   color: string
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
@@ -22,7 +21,7 @@ export interface BaseAvatarGroup extends BaseProps {
   maxBackground: string
   maxColor: string
   size: 'large' | 'normal' | 'small'
-  shape: AvatarShape
+  shape: UIRound
   gap: string
   level: PositionX
 }

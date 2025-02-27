@@ -1,8 +1,8 @@
 import { Indicator } from './indicator.taro'
 
 export type {
-  IndicatorProps,
+  TaroIndicatorProps as IndicatorProps,
   IndicatorColor,
   IndicatorType,
-} from './indicator.taro'
+} from '@/types'
 export default Indicator

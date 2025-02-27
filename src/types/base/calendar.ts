@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { SimpleValue } from '@/types/base/baseatom'
-import { BaseProps } from '@/types/base/baseprops'
+import { SimpleValue } from './baseatom'
+import { BaseProps } from './baseprops'
 
 export interface CalendarDay {
   day: SimpleValue

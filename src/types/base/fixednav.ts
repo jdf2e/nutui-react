@@ -1,0 +1,27 @@
+import { Key, ReactNode } from 'react'
+import { BaseProps } from './baseprops'
+import { PositionX } from './baseatom'
+
+export type FixedNavPosition = {
+  top: 'auto'
+  bottom: 'auto'
+}
+
+export interface FixedNavItem {
+  id: Key
+  num: number
+  text: ReactNode
+  icon: ReactNode
+}
+
+export interface BaseFixedNav extends BaseProps {
+  overlay: boolean
+  activeText: string
+  inactiveText: string
+  position: FixedNavPosition
+  type: PositionX
+  content: ReactNode
+  list: Array<FixedNavItem>
+  onChange: (value: boolean) => void
+  onSelect: (item: FixedNavItem, event: any) => void
+}

@@ -1,24 +1,17 @@
+import type { MouseEvent } from 'react'
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
   useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Top } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
 import requestAniFrame, { cancelRaf } from '@/utils/raf'
-import HoverButton, { HoverButtonProps } from '@/packages/hoverbutton/index'
-
-export interface BackTopProps extends HoverButtonProps {
-  target: string
-  threshold: number
-  zIndex: number
-  duration: number
-  onClick?: (event: MouseEvent<HTMLDivElement>) => void
-}
+import HoverButton from '@/packages/hoverbutton/index'
+import { WebBackTopProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -26,11 +19,9 @@ const defaultProps = {
   threshold: 200,
   zIndex: 900,
   duration: 1000,
-} as BackTopProps
+} as WebBackTopProps
 
-export const BackTop: FunctionComponent<
-  Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+export const BackTop: FunctionComponent<Partial<WebBackTopProps>> = (props) => {
   const {
     children,
     target,

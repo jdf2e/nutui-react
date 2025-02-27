@@ -20,7 +20,7 @@ import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { PickerActions, PickerRef } from './types'
+import { WebPickerProps, PickerActions, PickerRef } from '@/types'
 
 export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
@@ -56,10 +56,10 @@ const defaultProps = {
   value: undefined,
   defaultValue: [],
   closeOnOverlayClick: true,
-} as unknown as PickerProps
+} as unknown as WebPickerProps
 const InternalPicker: ForwardRefRenderFunction<
   PickerRef,
-  Partial<PickerProps>
+  Partial<WebPickerProps>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -114,7 +114,7 @@ const InternalPicker: ForwardRefRenderFunction<
   const [innerValue, setInnerValue] = useState([...selectedValue])
   const innerValueRef = useRef(innerValue)
   const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
-  const selectedOptionsRef = useRef([] as PickerOptions)
+  const selectedOptionsRef = useRef<PickerOptions>([])
   const [refs, setRefs] = useRefs()
 
   useEffect(() => {

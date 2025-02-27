@@ -67,7 +67,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 | current | 当前页 | `number` | `0` |
 | total | 总页数 | `number` | `2` |
 | direction | 方向，默认为水平方向 | `horizontal` \| `vertical` | `horizontal` |
-| color | 颜色 | `primary` \| `white` | `primary` |
+| color | 颜色 | `primary` \| `default` | `primary` |
 | type | 交互类型 | `anchor` \| `slide` | `anchor` |
 
 ## 主题定制

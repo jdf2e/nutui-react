@@ -1,35 +1,20 @@
+import type { MouseEvent } from 'react'
 import React, {
-  useState,
-  useEffect,
-  useRef,
   FunctionComponent,
   useContext,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
-import type { MouseEvent } from 'react'
-import { View, ITouchEvent, Image } from '@tarojs/components'
+import { Image, ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
-// import Image from '@/packages/image/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
 import pxTransform from '@/utils/px-transform'
-
-export interface AvatarProps extends BasicComponent {
-  size: string
-  icon: React.ReactNode
-  shape: AvatarShape
-  background: string
-  color: string
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  src: string
-  avatarIndex: number
-  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  onError: () => void
-}
-
-export type AvatarShape = 'round' | 'square'
+import { TaroAvatarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -40,13 +25,14 @@ const defaultProps = {
   color: '#666',
   fit: 'cover',
   src: '',
+  alt: '',
   avatarIndex: 0,
-} as AvatarProps
+} as TaroAvatarProps
 
 const classPrefix = `nut-avatar`
-export const Avatar: FunctionComponent<
-  Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> & { Group: typeof AvatarGroup } = (props) => {
+export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
+  Group: typeof AvatarGroup
+} = (props) => {
   const {
     children,
     size,

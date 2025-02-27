@@ -1,4 +1,4 @@
 import { NavBar } from './navbar.taro'
 
-export type { NavBarProps } from './navbar.taro'
+export type { TaroNavBarProps } from '@/types'
 export default NavBar

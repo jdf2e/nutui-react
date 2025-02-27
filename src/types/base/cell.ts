@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '@/types/base/baseprops'
-import { FlexAlign } from '@/types/base/baseatom'
+import { BaseProps } from './baseprops'
+import { FlexAlign } from './baseatom'
 
 export interface BaseCell extends BaseProps {
   title: ReactNode

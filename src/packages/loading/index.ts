@@ -1,9 +1,8 @@
 import { Loading } from './loading'
 
 export type {
-  LoadingProps,
+  WebLoadingProps as LoadingProps,
   LoadingType,
-  LoadingDirection,
   LoadingRef,
-} from './types'
+} from '@/types'
 export default Loading

@@ -1,4 +1,5 @@
-import { BaseProps } from '@/types/base/baseprops'
+import { ReactNode } from 'react'
+import { BaseProps } from './baseprops'
 
 export type CountDownType = 'default' | 'primary' | 'text'
 
@@ -10,7 +11,7 @@ export interface CountDownTime {
   ms: number
 }
 
-export interface CountDownProps extends BaseProps {
+export interface BaseCountDown extends BaseProps {
   type: CountDownType
   paused: boolean
   startTime: number
@@ -25,5 +26,5 @@ export interface CountDownProps extends BaseProps {
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
   onUpdate: (restTime: string | CountDownTime) => void
-  children: React.ReactNode
+  children: ReactNode
 }

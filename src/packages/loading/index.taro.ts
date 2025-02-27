@@ -1,9 +1,8 @@
 import { Loading } from './loading.taro'
 
 export type {
-  LoadingRef,
-  LoadingProps,
+  TaroLoadingProps as LoadingProps,
   LoadingType,
-  LoadingDirection,
-} from './types'
+  LoadingRef,
+} from '@/types'
 export default Loading

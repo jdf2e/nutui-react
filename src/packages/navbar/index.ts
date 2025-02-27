@@ -1,4 +1,4 @@
 import { NavBar } from './navbar'
 
-export type { NavBarProps } from './navbar'
+export type { WebNavBarProps } from '@/types'
 export default NavBar

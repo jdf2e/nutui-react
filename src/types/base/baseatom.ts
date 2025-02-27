@@ -11,8 +11,19 @@ export type UIType =
 export type UISize = 'xlarge' | 'large' | 'normal' | 'small' | 'mini'
 export type UIRound = 'square' | 'round'
 export type UIFill = 'solid' | 'outline' | 'dashed' | 'none'
-export type FlexAlign = 'flex-start' | 'center' | 'flex-end' | 'baseline'
 export type UILayout = 'row' | 'col'
+export type UITheme = 'light' | 'dark'
+
+export type FlexAlign = 'flex-start' | 'center' | 'flex-end' | 'baseline'
+
+export type FlexJustify =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch'
 
 export type Align = 'left' | 'center' | 'right'
 export type VAlign = 'top' | 'middle' | 'bottom'
@@ -31,4 +42,5 @@ export type EdgePosition =
   | 'left-bottom'
   | 'right-top'
   | 'right-bottom'
+
 export type FullPosition = Position | EdgePosition

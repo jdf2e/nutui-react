@@ -1,0 +1,31 @@
+import { CSSProperties } from 'react'
+import { BaseProps } from './baseprops'
+import { Direction, PositionX, SimpleValue } from './baseatom'
+
+export type TabsTitle = {
+  title: string
+  disabled: boolean
+  active?: boolean
+  value: SimpleValue
+}
+
+export interface BaseTabs extends BaseProps {
+  tabStyle: CSSProperties
+  value: SimpleValue
+  defaultValue: SimpleValue
+  activeColor: string
+  direction: Direction
+  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
+  duration: number | string
+  align: PositionX
+  title: () => Element[]
+  onChange: (index: SimpleValue) => void
+  onClick: (index: SimpleValue) => void
+  autoHeight: boolean
+}
+
+export interface BaseTabPane extends BaseProps {
+  title: SimpleValue
+  value: SimpleValue
+  disabled: boolean
+}

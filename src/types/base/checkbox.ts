@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '@/types/base/baseprops'
-import { PositionX } from '@/types/base/baseatom'
+import { BaseProps } from './baseprops'
+import { PositionX } from './baseatom'
 
 export type CheckboxLimit = 'max' | 'min'
 export type CheckboxDirection = 'horizontal' | 'vertical'

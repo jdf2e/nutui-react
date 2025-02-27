@@ -1,9 +1,8 @@
 import { Popup } from './popup'
 
 export type {
-  PopupProps,
-  CloseIconPosition,
-  Teleport,
+  TaroPopupProps as PopupProps,
+  PopupCloseIconPosition,
   PopupPosition,
-} from './types'
+} from '@/types'
 export default Popup

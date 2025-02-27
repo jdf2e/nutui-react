@@ -1,6 +1,6 @@
 import { BaseProps } from './baseprops'
 
-export interface BaseBacktop extends BaseProps {
+export interface BaseBackTop extends BaseProps {
   zIndex: number
   tabbarHeight: number
   target: string

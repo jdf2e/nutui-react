@@ -1,24 +1,13 @@
-import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
+import { TaroNumberKeyboardProps } from '@/types'
 
-export interface NumberKeyboardProps extends PopupProps {
-  visible: boolean
-  rightActions: ReactNode
-  confirmText?: string
-  type: 'default' | 'rightColumn'
-  custom: Array<string>
-  random: boolean
-  onChange?: (value: string) => void
-  onDelete?: () => void
-  onClose: () => void
-  onConfirm?: () => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -27,10 +16,10 @@ const defaultProps = {
   custom: [],
   random: false,
   onClose: () => {},
-} as unknown as NumberKeyboardProps
+} as unknown as TaroNumberKeyboardProps
 
 export const NumberKeyboard: FunctionComponent<
-  Partial<NumberKeyboardProps> &
+  Partial<TaroNumberKeyboardProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onClick' | 'title'>
 > = (props) => {
   const { locale } = useConfig()

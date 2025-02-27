@@ -1,21 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { useRtl } from '@/packages/configprovider/index'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea'
-
-export interface NavBarProps extends BasicComponent {
-  left: React.ReactNode
-  back: React.ReactNode
-  right: React.ReactNode
-  title: React.ReactNode
-  fixed: boolean
-  safeAreaInsetTop: boolean
-  placeholder: boolean
-  zIndex: number | string
-  onBackClick: (e: React.MouseEvent<HTMLElement>) => void
-  children?: React.ReactNode
-}
+import { WebNavBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -26,8 +14,8 @@ const defaultProps = {
   safeAreaInsetTop: false,
   placeholder: false,
   zIndex: 10,
-} as NavBarProps
-export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
+} as WebNavBarProps
+export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
   const {
     right,
     left,

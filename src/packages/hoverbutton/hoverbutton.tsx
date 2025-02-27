@@ -1,28 +1,19 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import HoverButtonItem, {
-  HoverButtonItemProps,
-} from '@/packages/hoverbuttonitem/index'
+import HoverButtonItem from '@/packages/hoverbuttonitem/index'
 import SafeArea from '@/packages/safearea/index'
 import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
-
-export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
-  zIndex: number
-  tabbarHeight?: number
-}
+import { WebHoverButtonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-} as HoverButtonProps
+} as WebHoverButtonProps
 
 const classPrefix = 'nut-hoverbutton'
 
-export const HoverButton: FunctionComponent<
-  Partial<HoverButtonProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
-> & {
+export const HoverButton: FunctionComponent<Partial<WebHoverButtonProps>> & {
   Item: typeof HoverButtonItem
 } = (props) => {
   const { children, zIndex, tabbarHeight, className, style, icon, onClick } = {

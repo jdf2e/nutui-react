@@ -13,31 +13,10 @@ import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react'
 import { Overlay } from '@/packages/overlay/overlay'
 import useClickAway from '@/hooks/use-click-away'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-
-export interface MenuOptionItem {
-  text: string
-  value: string | number
-}
-
-export interface MenuItemProps extends BasicComponent {
-  title: React.ReactNode
-  titleIcon: React.ReactNode
-  options: MenuOptionItem[]
-  disabled: boolean
-  columns: number
-  icon: React.ReactNode
-  closeOnClickAway: boolean
-  direction: string
-  activeTitleClass: string
-  inactiveTitleClass: string
-  value: string | number
-  defaultValue: string | number
-  onChange: (event: any) => void
-  children: React.ReactNode
-}
+import { MenuOptionItem, TaroMenuItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -49,8 +28,8 @@ const defaultProps = {
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: MenuOptionItem) => undefined,
-} as MenuItemProps
-export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
+} as TaroMenuItemProps
+export const MenuItem = forwardRef((props: Partial<TaroMenuItemProps>, ref) => {
   const {
     className,
     style,

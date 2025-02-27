@@ -1,4 +1,8 @@
+import { CSSProperties, ReactNode } from 'react'
+
 export interface BaseProps {
-  className: string
-  style: string
+  className?: string
+  style?: CSSProperties
+  children?: ReactNode
+  id?: string
 }

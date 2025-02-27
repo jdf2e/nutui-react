@@ -1,31 +1,19 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
   FunctionComponent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/hooks/use-touch'
 import { clamp, preventDefault } from '@/utils'
 import { getRect } from '@/hooks/use-client-rect'
 import { useConfig } from '@/packages/configprovider'
-
-export type AvatarCropperToolbarPosition = 'top' | 'bottom'
-export type AvatarCropperShape = 'square' | 'round'
-export interface AvatarCropperProps extends BasicComponent {
-  maxZoom: number
-  space: number
-  toolbar: React.ReactNode[]
-  toolbarPosition: AvatarCropperToolbarPosition
-  editText: React.ReactNode | string
-  shape: AvatarCropperShape
-  onConfirm: (e: string) => void
-  onCancel: () => void
-}
+import { WebAvatarCropperProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -44,12 +32,12 @@ const defaultProps = {
   toolbarPosition: 'bottom',
   editText: 'Edit',
   shape: 'square',
-} as AvatarCropperProps
+} as WebAvatarCropperProps
 
 const classPrefix = `nut-avatar-cropper`
-export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
-  props
-) => {
+export const AvatarCropper: FunctionComponent<
+  Partial<WebAvatarCropperProps>
+> = (props) => {
   const { locale } = useConfig()
   defaultProps.toolbar = [
     <Button type="danger" key="cancel">

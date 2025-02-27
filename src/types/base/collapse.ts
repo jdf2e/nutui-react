@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '@/types/base/baseprops'
+import { BaseProps } from './baseprops'
 
 export type CollapseActiveName = Array<string> | string
 

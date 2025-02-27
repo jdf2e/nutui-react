@@ -7,13 +7,13 @@ import React, {
 } from 'react'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
-import { PickerRollerProps, PickerOption } from './types'
+import { WebPickerRollerProps, PickerOption } from '@/types'
 import { preventDefault } from '@/utils'
 import { momentum, useStyles } from './utils'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
-  Partial<PickerRollerProps>
+  Partial<WebPickerRollerProps>
 > = (props, ref) => {
   const {
     keyIndex = 0,
@@ -240,7 +240,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
 
 const PickerRoller = React.forwardRef<
   { stopMomentum: () => void; moving: boolean },
-  Partial<PickerRollerProps>
+  Partial<WebPickerRollerProps>
 >(InternalPickerRoller)
 
 export default PickerRoller

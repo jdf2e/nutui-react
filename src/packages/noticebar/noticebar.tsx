@@ -1,40 +1,17 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   FunctionComponent,
   MouseEvent,
+  useEffect,
   useMemo,
-  ReactNode,
+  useRef,
+  useState,
 } from 'react'
 import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/hooks/use-client-rect'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { NoticeBarAlign } from './types'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
-
-export interface NoticeBarProps extends BasicComponent {
-  align: NoticeBarAlign
-  direction: string
-  list: any
-  duration: number
-  height: number
-  content: string
-  closeable: boolean
-  wrap: boolean
-  leftIcon: ReactNode
-  rightIcon: ReactNode
-  right: ReactNode
-  delay: string | number
-  scrollable: boolean | null
-  speed: number
-  close?: (event: any) => void
-  click?: (event: any) => void
-  onClose?: (event: any) => void
-  onClick?: (event: any) => void
-  onItemClick?: (event: any, value: any) => void
-}
+import { WebNoticeBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -52,9 +29,9 @@ const defaultProps = {
   delay: 1,
   scrollable: null,
   speed: 50,
-} as NoticeBarProps
+} as WebNoticeBarProps
 export const NoticeBar: FunctionComponent<
-  Partial<NoticeBarProps> &
+  Partial<WebNoticeBarProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const rtl = useRtl()

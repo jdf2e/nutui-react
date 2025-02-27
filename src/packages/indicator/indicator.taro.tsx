@@ -1,17 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, ViewProps } from '@tarojs/components'
-
-export type IndicatorType = 'anchor' | 'slide'
-export type IndicatorColor = 'primary' | 'white'
-
-export interface IndicatorProps {
-  total: number
-  current: number
-  direction: string
-  color: IndicatorColor
-  type: IndicatorType
-}
+import { IndicatorType, TaroIndicatorProps } from '@/types'
 
 const defaultProps = {
   total: 2,
@@ -19,12 +9,12 @@ const defaultProps = {
   direction: 'horizontal',
   color: 'primary',
   type: 'anchor',
-} as IndicatorProps
+} as TaroIndicatorProps
 
 const classPrefix = `nut-indicator`
 
 export const Indicator: FunctionComponent<
-  Partial<IndicatorProps> & ViewProps
+  Partial<TaroIndicatorProps> & ViewProps
 > = (props) => {
   const {
     color,
@@ -41,7 +31,7 @@ export const Indicator: FunctionComponent<
   }
   const classes = classNames({
     [`${classPrefix}-vertical`]: direction === 'vertical',
-    [`${classPrefix}-white`]: color === 'white',
+    [`${classPrefix}-white`]: color === 'default',
     [`${classPrefix}-track`]: type === 'slide',
   })
 

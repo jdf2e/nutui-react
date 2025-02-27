@@ -1,5 +1,5 @@
-import { BaseProps } from '@/types/base/baseprops'
-import { SimpleValue } from '@/types/base/baseatom'
+import { BaseProps } from './baseprops'
+import { SimpleValue } from './baseatom'
 
 export interface BaseCircleProgress extends BaseProps {
   percent: SimpleValue

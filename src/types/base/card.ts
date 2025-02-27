@@ -1,4 +1,5 @@
-import { BaseProps } from '@/types/base/baseprops'
+import { ReactNode } from 'react'
+import { BaseProps } from './baseprops'
 
 export interface BaseCard extends BaseProps {
   src: string
@@ -8,8 +9,8 @@ export interface BaseCard extends BaseProps {
   shopDescription: string
   delivery: string
   shopName: string
-  description: React.ReactNode
-  tag: React.ReactNode
-  priceTag: React.ReactNode
-  extra: React.ReactNode
+  description: ReactNode
+  tag: ReactNode
+  priceTag: ReactNode
+  extra: ReactNode
 }
