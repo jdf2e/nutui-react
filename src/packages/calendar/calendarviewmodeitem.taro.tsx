@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import type { UIEvent } from 'react'
 import classNames from 'classnames'
+import { ScrollView } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   getDateString,
@@ -82,16 +82,26 @@ export const CalendarViewModeItem = React.forwardRef<
       {
         year: new Date().getFullYear(),
         months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        cssHeight: 0,
+        scrollTop: 0,
+        currYear: false,
       },
     ],
-    quarters: [{ year: new Date().getFullYear(), quarters: [1, 2, 3, 4] }],
+    quarters: [
+      {
+        year: new Date().getFullYear(),
+        quarters: [1, 2, 3, 4],
+        cssHeight: 0,
+        scrollTop: 0,
+        currYear: false,
+      },
+    ],
   })
 
   const monthTitle = locale.calendaritem.monthTitle
-  const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData] = useState<any[]>([])
-  const [monthsNum] = useState<number>(0)
   const [translateY, setTranslateY] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0)
 
   // 初始化开始结束数据
   const propStartDate = (startDate || getDateString(0)) as string
@@ -109,39 +119,7 @@ export const CalendarViewModeItem = React.forwardRef<
   const monthsRef = useRef<HTMLDivElement>(null)
   const monthsPanel = useRef<HTMLDivElement>(null)
   const viewAreaRef = useRef<HTMLDivElement>(null)
-  const [avgHeight, setAvgHeight] = useState(0)
   let viewHeight = 0
-
-  const setReachedYearMonthInfo = (current: number) => {
-    const currentMonthsData = monthsData[current]
-    if (currentMonthsData.title === yearMonthTitle) return
-    const [year, month] = currentMonthsData.curData
-    onPageChange && onPageChange([year, month, `${year}-${month}`])
-    setYearMonthTitle(currentMonthsData.title)
-  }
-
-  // 设置默认的范围
-  const setDefaultRange = (monthNum: number, current: number) => {
-    let start = 0
-    let end = 0
-    if (monthNum >= 3) {
-      if (current > 0 && current < monthNum) {
-        start = current - 1
-        end = current + 3
-      } else if (current === 0) {
-        start = current
-        end = current + 4
-      } else if (current === monthNum) {
-        start = current - 2
-        end = current + 2
-      }
-    } else {
-      start = 0
-      end = monthNum + 2
-    }
-    setTranslateY(monthsData[start].scrollTop)
-    setReachedYearMonthInfo(current)
-  }
 
   const getMonthsPanel = () => {
     return monthsPanel.current as HTMLDivElement
@@ -150,20 +128,69 @@ export const CalendarViewModeItem = React.forwardRef<
   const getMonthsRef = () => {
     return monthsRef.current as HTMLDivElement
   }
+  const requestAniFrameFunc = (viewMode: string) => {
+    switch (viewMode) {
+      case 'month':
+        {
+          const lastItem = panelDate.months[panelDate.months.length - 1]
+          const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+          const currentIndex = panelDate.months.findIndex(
+            (item) => item.currYear === true
+          )
 
-  const requestAniFrameFunc = (current: number, monthNum: number) => {
-    const lastItem = monthsData[monthsData.length - 1]
-    const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+          console.log(
+            'containerHeight',
+            containerHeight,
+            currentIndex,
+            panelDate.months.length,
+            panelDate.months
+          )
+          requestAniFrame(() => {
+            // 初始化 日历位置
+            if (monthsRef && monthsPanel && viewAreaRef) {
+              viewHeight = getMonthsRef().clientHeight
+              getMonthsPanel().style.height = `${containerHeight}px`
+              const currTop = panelDate.months[currentIndex]?.scrollTop || 0
+              getMonthsRef().scrollTop = currTop
+              setScrollTop(currTop)
+            }
+          })
+        }
+        break
+      case 'quarter':
+        {
+          const lastItem = panelDate.quarters[panelDate.quarters.length - 1]
+          const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+          const currentIndex = panelDate.quarters.findIndex(
+            (item) => item.currYear === true
+          )
 
-    requestAniFrame(() => {
-      // 初始化 日历位置
-      if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = getMonthsRef().clientHeight
-        getMonthsPanel().style.height = `${containerHeight}px`
-        getMonthsRef().scrollTop = monthsData[current].scrollTop
-      }
-    })
-    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+          console.log(
+            'containerHeight',
+            containerHeight,
+            currentIndex,
+            panelDate.quarters.length,
+            panelDate.quarters
+          )
+          requestAniFrame(() => {
+            // 初始化 日历位置
+            if (monthsRef && monthsPanel && viewAreaRef) {
+              viewHeight = getMonthsRef().clientHeight
+              getMonthsPanel().style.height = `${containerHeight}px`
+              const currTop = panelDate.quarters[currentIndex]?.scrollTop || 0
+              getMonthsRef().scrollTop = currTop
+              setScrollTop(currTop)
+            }
+          })
+        }
+        break
+      default:
+        break
+    }
+  }
+
+  const isCurrYear = (year: number) => {
+    return (innerValue as string).split('-')[0] === `${year}`
   }
 
   const getMonthsData = () => {
@@ -173,6 +200,7 @@ export const CalendarViewModeItem = React.forwardRef<
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
     let panelData = []
+    const YearMonthPanelHeight = 231
     // 在同一年时
     if (startYear === endYear) {
       const months = [
@@ -180,23 +208,58 @@ export const CalendarViewModeItem = React.forwardRef<
         ...getMonths('curr', startYear, startMonth, endMonth),
         ...getMonths('next', endYear, endMonth + 1),
       ]
-      panelData.push({ year: startYear, months })
+      panelData.push({
+        year: startYear,
+        months,
+        scrollTop: 0,
+        cssHeight: YearMonthPanelHeight,
+        currYear: isCurrYear(startYear),
+      })
     } else {
-      const startYearMonth = [
+      let scrollTop = panelData.length * YearMonthPanelHeight
+      const startMonths = [
         ...getPreMonths('prev', startYear, startMonth),
         ...getMonths('curr', startYear, startMonth),
       ]
-      panelData.push({ year: startYear, months: startYearMonth })
+      panelData.push({
+        year: startYear,
+        months: startMonths,
+        scrollTop,
+        cssHeight: YearMonthPanelHeight,
+        currYear: isCurrYear(startYear),
+      })
       // 不同年份时，注意可能跨多个年
       for (let i = startYear + 1; i < endYear; i++) {
+        scrollTop = panelData.length * YearMonthPanelHeight
         const midMonths = [...getMonths('curr', i, 1)]
-        panelData = [...panelData, { year: i, months: midMonths }]
+        panelData = [
+          ...panelData,
+          {
+            year: i,
+            months: midMonths,
+            scrollTop,
+            cssHeight: YearMonthPanelHeight,
+            currYear: isCurrYear(i),
+          },
+        ]
       }
       const lastMonths = [
         ...getPreMonths('curr', endYear, endMonth + 1),
         ...getMonths('next', endYear, endMonth + 1),
       ]
-      panelData = [...panelData, { year: endYear, months: lastMonths }]
+      // 年面板的高度：cssHeight 231
+      // 第某年的scrollTop：年面板高度 * （第某年数-1）
+      scrollTop = panelData.length * YearMonthPanelHeight
+      panelData = [
+        ...panelData,
+        {
+          year: endYear,
+          months: lastMonths,
+          scrollTop,
+          cssHeight: YearMonthPanelHeight,
+          currYear: isCurrYear(endYear),
+        },
+      ]
     }
     return panelData
   }
@@ -208,6 +271,7 @@ export const CalendarViewModeItem = React.forwardRef<
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
     let panelData = []
+    const YearQuarterPanelHeight = 103
     // 在同一年时
     if (startYear === endYear) {
       const months = [
@@ -215,23 +279,56 @@ export const CalendarViewModeItem = React.forwardRef<
         ...getQuarters('curr', startYear, startMonth, endMonth),
         ...getNextQuarters('next', endYear, endMonth),
       ]
-      panelData.push({ year: startYear, quarters: months })
+      panelData.push({
+        year: startYear,
+        quarters: months,
+        scrollTop: 0,
+        cssHeight: YearQuarterPanelHeight,
+        currYear: isCurrYear(startYear),
+      })
     } else {
-      const startYearMonth = [
+      let scrollTop = panelData.length * YearQuarterPanelHeight
+      const startQuarters = [
         ...getPreQuarters('prev', startYear, startMonth),
         ...getQuarters('curr', startYear, startMonth),
       ]
-      panelData.push({ year: startYear, quarters: startYearMonth })
+      panelData.push({
+        year: startYear,
+        quarters: startQuarters,
+        scrollTop,
+        cssHeight: YearQuarterPanelHeight,
+        currYear: isCurrYear(startYear),
+      })
       // 不同年份时，注意可能跨多个年
       for (let i = startYear + 1; i < endYear; i++) {
+        scrollTop = panelData.length * YearQuarterPanelHeight
         const midMonths = [...getQuarters('curr', i, 1)]
-        panelData = [...panelData, { year: i, quarters: midMonths }]
+        panelData = [
+          ...panelData,
+          {
+            year: i,
+            quarters: midMonths,
+            scrollTop,
+            cssHeight: YearQuarterPanelHeight,
+            currYear: isCurrYear(i),
+          },
+        ]
       }
       const lastMonths = [
         ...getQuarters('curr', endYear, 1, endMonth),
         ...getNextQuarters('next', endYear, endMonth),
       ]
-      panelData = [...panelData, { year: endYear, quarters: lastMonths }]
+      scrollTop = panelData.length * YearQuarterPanelHeight
+      panelData = [
+        ...panelData,
+        {
+          year: endYear,
+          quarters: lastMonths,
+          scrollTop,
+          cssHeight: YearQuarterPanelHeight,
+          currYear: isCurrYear(endYear),
+        },
+      ]
     }
     return panelData
   }
@@ -259,9 +356,11 @@ export const CalendarViewModeItem = React.forwardRef<
       default:
         break
     }
-
-    // requestAniFrameFunc(currentIndex, monthNum)
   }
+
+  useEffect(() => {
+    requestAniFrameFunc(viewMode)
+  }, [panelDate])
 
   useEffect(() => {
     initData()
@@ -303,39 +402,9 @@ export const CalendarViewModeItem = React.forwardRef<
     })
   }
 
-  const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
-    if (monthsData.length <= 1) return
-    const scrollTop = (e.target as HTMLElement).scrollTop
-    let current = Math.floor(scrollTop / avgHeight)
-    if (current < 0) return
-    if (!monthsData[current + 1]) return
-    const nextTop = monthsData[current + 1].scrollTop
-    const nextHeight = monthsData[current + 1].cssHeight
-    if (current === 0) {
-      if (scrollTop >= nextTop) current += 1
-    } else if (current > 0 && current < monthsNum - 1) {
-      if (scrollTop >= nextTop) current += 1
-      if (scrollTop < monthsData[current].scrollTop) current -= 1
-    } else {
-      const viewPosition = Math.round(scrollTop + viewHeight)
-      if (current + 1 <= monthsNum && viewPosition >= nextTop + nextHeight) {
-        current += 1
-      }
-      if (current >= 1 && scrollTop < monthsData[current - 1].scrollTop) {
-        current -= 1
-      }
-    }
-    setDefaultRange(monthsNum, current)
-  }
-
   React.useImperativeHandle(ref, () => ({
     scrollToDate,
   }))
-
-  const change = (v: []) => {
-    setInnerValue(v)
-    // onChange?.(date)
-  }
 
   const handleItemClick = (viewMode: string, item: any) => {
     // 点击事件，可以返回所点击元素的数据
@@ -450,9 +519,11 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const renderContent = () => {
     return (
-      <div
+      <ScrollView
+        scrollTop={scrollTop}
+        scrollY
         className={`${classPrefix}-content`}
-        onScroll={monthsViewScroll}
+        // onScroll={monthsViewScroll}
         ref={monthsRef}
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
@@ -464,7 +535,7 @@ export const CalendarViewModeItem = React.forwardRef<
             {renderPanel()}
           </div>
         </div>
-      </div>
+      </ScrollView>
     )
   }
 
