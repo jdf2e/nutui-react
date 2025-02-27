@@ -81,9 +81,8 @@ export const DatePickerView: FunctionComponent<
     selectedOptions: PickerOptions,
     index: number
   ) => {
-    const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
     if (newDate && isDate(newDate)) {
-      if (!isEqual) {
+      if (!isEqual(new Date(selectedDate)?.getTime(), newDate?.getTime())) {
         setSelectedDate(formatValue(newDate, startDate, endDate))
         onChange?.(
           selectedOptions,
@@ -151,7 +150,6 @@ export const DatePickerView: FunctionComponent<
   }
 
   useEffect(() => {
-    console.log(new Date(selectedDate).toLocaleDateString())
     if (
       !isEqual(
         new Date(selectedDate)?.getTime(),
