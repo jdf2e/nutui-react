@@ -1,5 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Cell, Calendar, DatePicker, CalendarDay } from '@nutui/nutui-react'
+import {
+  Cell,
+  Calendar,
+  DatePicker,
+  CalendarDay,
+  PickerValue,
+} from '@nutui/nutui-react'
 
 const padZero = (num: number | string, targetLength = 2) => {
   let str = `${num}`
@@ -35,11 +41,11 @@ const Demo6 = () => {
   const confirm = (values: PickerValue[], options: any[]) => {
     if (desc.current === 1) {
       setDesc1(
-        options.map((option) => padZero(parseInt(option.text))).join(':')
+        options.map((option) => padZero(parseInt(option.label))).join(':')
       )
     } else {
       setDesc2(
-        options.map((option) => padZero(parseInt(option.text))).join(':')
+        options.map((option) => padZero(parseInt(option.label))).join(':')
       )
     }
   }
