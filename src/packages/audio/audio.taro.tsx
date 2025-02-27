@@ -24,7 +24,7 @@ const defaultProps = {
   onCanPlay: (ctx: InnerAudioContext) => {},
 } as TaroAudioProps
 export const Audio: FunctionComponent<
-  Partial<AudioProps> &
+  Partial<TaroAudioProps> &
     (React.HTMLAttributes<HTMLDivElement> | InnerAudioContext)
 > = (props) => {
   const classPrefix = 'nut-audio'
