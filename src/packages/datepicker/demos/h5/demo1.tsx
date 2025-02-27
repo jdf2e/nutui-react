@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react'
+import {
+  DatePicker,
+  Cell,
+  PickerValue,
+  PickerOptions,
+} from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const defaultValue = new Date()
@@ -12,13 +17,14 @@ const Demo1 = () => {
   const [value, setValue] = useState('2023/01/01')
   const [show2, setShow2] = useState(false)
   const [desc2, setDesc2] = useState('')
-  const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc1(options.map((option) => option.text).join(' '))
+  const confirm1 = (values: PickerValue[], options: PickerOptions) => {
+    setDesc1(options.map((option) => option.label).join(' '))
   }
-  const change = (options: PickerOption[], values: (string | number)[]) => {
+  const change = (options: PickerOptions, values: PickerValue[]) => {
     const v = values.join('/')
+
     setValue(v)
-    setDesc2(options.map((option) => option.text).join(' '))
+    setDesc2(options.map((option) => option.label).join(' '))
   }
   return (
     <>
@@ -39,7 +45,7 @@ const Demo1 = () => {
         onConfirm={(options, values) => {
           setShow1(false)
           confirm1(values, options)
-          console.log('onconfirm')
+          console.log('onconfirm', values, options)
         }}
       />
       <Cell

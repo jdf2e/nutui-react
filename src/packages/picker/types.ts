@@ -1,7 +1,6 @@
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
+export type PickerRef = PickerActions
+export type PickerActions = {
+  open: () => void
+  close: () => void
 }
+export type ColumnsType = 'single' | 'multiple' | 'cascade'
