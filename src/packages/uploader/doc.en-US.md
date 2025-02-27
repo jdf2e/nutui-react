@@ -174,6 +174,8 @@ The component provides the following CSS variables that can be used to customize
 
 ### Issues
 
+- [ Uploader 上传组件上传成功后 onSuccess 参数里面放files 数组是空的，没有对应上传后的文件列表，从12-15测试都有这个问题 ](https://github.com/jdf2e/nutui-react/issues/2506)
+
 > View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AUploader)
 
 ### Component Logs

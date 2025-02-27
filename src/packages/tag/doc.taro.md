@@ -94,6 +94,6 @@ import { Tag } from '@nutui/nutui-react-taro'
 - 💡 🏡 chore(tag): css样式变量修复 ([#2279](https://github.com/jdf2e/nutui-react/pull/2279)) @Alex-huxiyang `v2.6.6`
 - 💡 📖 docs(tag):修复demo描述错误 ([#2204](https://github.com/jdf2e/nutui-react/pull/2204)) @jianhuagao `v2.6.2`
 - 🐛 fix(tag): taro 下自定义icon无法展示 ([#2088](https://github.com/jdf2e/nutui-react/pull/2088)) @eiinu `v2.5.0`
-- 🐛 fix(form): 组件更新时，标签结构变化，会导致失去焦点 ([#1973](https://github.com/jdf2e/nutui-react/pull/1973)) @oasis-cloud `v2.3.12`
+- 💡 🛠 refactor(docs): 文档支持通过标签使用已有的 demo 代码 ([#1950](https://github.com/jdf2e/nutui-react/pull/1950)) @Alex.huxiyang `v2.3.12`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tag&expanded=true)

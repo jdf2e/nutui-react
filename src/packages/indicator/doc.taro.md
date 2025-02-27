@@ -93,10 +93,10 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 ### Component Logs
 
-- 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
 - 🐛 fix(indicator): demo拆解与规范 ([#2090](https://github.com/jdf2e/nutui-react/pull/2090)) @eiinu `v2.4.2`
 - 🐛 fix(indicator): 修订样式名称和样式变量 ([#1712](https://github.com/jdf2e/nutui-react/pull/1712)) @xiaoyatong `v2.3.0`
 - 🐛 picker and datepicker theme config at taro and indicator css at taro ([#1615](https://github.com/jdf2e/nutui-react/pull/1615)) @xiaoyatong `v2.1.0`
 - 🐛 swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong `v2.0.24`
+- 🐛 indicator 超长换行 ([#1486](https://github.com/jdf2e/nutui-react/pull/1486)) @oasis-cloud `v2.0.19`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=indicator&expanded=true)

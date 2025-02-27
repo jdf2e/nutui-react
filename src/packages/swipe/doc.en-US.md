@@ -380,10 +380,10 @@ export default App
 
 ### Component Logs
 
-- 🐛 fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3003](https://github.com/jdf2e/nutui-react/pull/3003)) `v2.7.9`
-- 🐛 fix(swiper): 修复duration不生效 ([#2913](https://github.com/jdf2e/nutui-react/pull/2913)) `v2.7.6`
-- 💡 📖 docs: swiper 可通过 css 的 touch-action 设置用户操作行为 ([#2630](https://github.com/jdf2e/nutui-react/pull/2630)) `v2.6.22`
-- 🐛 fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang `v2.6.14`
-- 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
+- 🐛 fix(swipe): 修改demo文案 ([#2106](https://github.com/jdf2e/nutui-react/pull/2106)) @xiaoyatong `v2.5.0`
+- 🐛 fix swipe slide element get rect width error ([#2017](https://github.com/jdf2e/nutui-react/pull/2017)) @awefeng `v2.4.1`
+- ✨ feat(swipe): 增加自定义高度的demo ([#1996](https://github.com/jdf2e/nutui-react/pull/1996)) @xiaoyatong `v2.4.0`
+- 💡 🛠 refactor(swipe): 修订className类名 ([#1715](https://github.com/jdf2e/nutui-react/pull/1715)) @xiaoyatong `v2.3.0`
+- 🐛 🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 ([#1608](https://github.com/jdf2e/nutui-react/pull/1608)) @Levidcd `v2.1.0`
 
 > View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=swipe&expanded=true)

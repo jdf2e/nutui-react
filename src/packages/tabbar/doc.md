@@ -143,7 +143,7 @@ import { Tabbar } from '@nutui/nutui-react'
 - 🐛 fix(tabbar): demo拆解与规范&脚本增强 ([#2059](https://github.com/jdf2e/nutui-react/pull/2059)) @Alex-huxiyang `v2.4.2`
 - 💡 📖 docs(tabbar): 文档可读性优化 ([#1921](https://github.com/jdf2e/nutui-react/pull/1921)) @Alex.huxiyang `v2.3.9`
 - 💡 🐛 fix(tabbar): fix icon color ([#1816](https://github.com/jdf2e/nutui-react/pull/1816)) @xiaoyatong `v2.3.4`
-- 🐛 fix(tabbaritem): 将 clone 子元素的方法，改为 context 的方式，隐藏内部使用的 props，精简对外暴露的 props 类型 ([#1811](https://github.com/jdf2e/nutui-react/pull/1811)) @oasis-cloud `v2.3.3`
 - 💡 style(tabbar): add css variable ([#1742](https://github.com/jdf2e/nutui-react/pull/1742)) @xiaoyatong `v2.3.0`
+- 💡 📖 docs(tabbar): Correct module names of tabbar component ([#1539](https://github.com/jdf2e/nutui-react/pull/1539)) @HUMORCE `v2.0.21`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tabbar&expanded=true)

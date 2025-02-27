@@ -123,7 +123,7 @@ import { Badge } from '@nutui/nutui-react'
 
 ### Component Logs
 
-- 💡 :art: style(badge): jdesign badge 样式 ([#2164](https://github.com/jdf2e/nutui-react/pull/2164)) @zhehu1 `v2.6.2`
+- 💡 undefined: style(badge): jdesign badge 样式 ([#2164](https://github.com/jdf2e/nutui-react/pull/2164)) @zhehu1 `v2.6.2`
 - 🐛 fix(badge): demo拆解与规范 ([#2060](https://github.com/jdf2e/nutui-react/pull/2060)) @wanglihuaya `v2.4.2`
 - ✨ feat(badge): 新增 fill 属性 ([#2042](https://github.com/jdf2e/nutui-react/pull/2042)) @eiinu `v2.4.1`
 - 🐛 fix(badge): 修复value传入0时显示不正确的问题 ([#2006](https://github.com/jdf2e/nutui-react/pull/2006)) @boiboif `v2.4.1`

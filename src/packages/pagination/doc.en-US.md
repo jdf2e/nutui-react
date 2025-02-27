@@ -119,8 +119,6 @@ The component provides the following CSS variables, which can be used to customi
 
 - ✨ add pagination whether to show pages in imagepreview ([#2411](https://github.com/jdf2e/nutui-react/pull/2411)) @xiaoyatong `v2.6.12`
 - 🐛 fix(pagination): demo拆解与规范 ([#2079](https://github.com/jdf2e/nutui-react/pull/2079)) @Alex-huxiyang `v2.4.2`
-- 💡 📖 docs(swiper): customize pagination controls ([#1892](https://github.com/jdf2e/nutui-react/pull/1892)) @oasis-cloud `v2.3.8`
 - ✨ feat(pagination): add lite mode and css variable ([#1743](https://github.com/jdf2e/nutui-react/pull/1743)) @xiaoyatong `v2.3.0`
-- 🐛 fix(swiper): demo 中分页器样式显示错误 ([#1703](https://github.com/jdf2e/nutui-react/pull/1703)) @xiaoyatong `v2.3.0`
 
 > View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pagination&expanded=true)

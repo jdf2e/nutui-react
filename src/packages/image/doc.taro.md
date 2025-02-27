@@ -114,7 +114,7 @@ import { Image } from '@nutui/nutui-react-taro'
 - 🐛 imageSize=0无效 ([#2937](https://github.com/jdf2e/nutui-react/pull/2937)) `v2.7.7`
 - 🐛 Uploade 组件无法预览图片 ([#2822](https://github.com/jdf2e/nutui-react/pull/2822)) `v2.7.2`
 - ✨ feat(image-preview): 增加索引字段，用于预览内容排序 ([#2519](https://github.com/jdf2e/nutui-react/pull/2519)) `v2.6.17`
-- 🐛 fix(uploader): image 居中展示 ([#2475](https://github.com/jdf2e/nutui-react/pull/2475)) @xiaoyatong `v2.6.15`
-- 🐛 fix(uploader): images should display when they've been successfully uploaded ([#2448](https://github.com/jdf2e/nutui-react/pull/2448)) @Alex-huxiyang `v2.6.15`
+- 💡 🏡 chore(image): 官网taro的demo显示与h5不一致 ([#2244](https://github.com/jdf2e/nutui-react/pull/2244)) @Alex-huxiyang `v2.6.5`
+- 💡 🏡 chore(image): demo代码风格优化 ([#2220](https://github.com/jdf2e/nutui-react/pull/2220)) @Alex-huxiyang `v2.6.4`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=image&expanded=true)

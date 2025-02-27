@@ -130,6 +130,6 @@ import { Popup } from '@nutui/nutui-react'
 - 🐛 fix(popup): display should not trigger the scrollview to update ([#2773](https://github.com/jdf2e/nutui-react/pull/2773)) `v2.7.1`
 - ✨ feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 ([#2629](https://github.com/jdf2e/nutui-react/pull/2629)) `v2.6.22`
 - ✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574)) `v2.6.18`
-- 🐛 fix(actionsheet): 去掉无意义的 padding，popup 已不再暴露 ([#2285](https://github.com/jdf2e/nutui-react/pull/2285)) @xiaoyatong `v2.6.7`
+- 🐛 fix(popup): demo拆解与规范 ([#2122](https://github.com/jdf2e/nutui-react/pull/2122)) @ZissyW `v2.5.1`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popup&expanded=true)

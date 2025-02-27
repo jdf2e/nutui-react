@@ -102,6 +102,6 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(empty): add css variable nutui-empty-background-color ([#2451](https://github.com/jdf2e/nutui-react/pull/2451)) @Alex-huxiyang `v2.6.14`
 - 🐛 fix(Empty): 调整默认图片为jd图片 ([#2032](https://github.com/jdf2e/nutui-react/pull/2032)) @xiaoyatong `v2.4.1`
 - ✨ feat(empty): 图片变更 ([#1988](https://github.com/jdf2e/nutui-react/pull/1988)) @xiaoyatong `v2.4.0`
-- ✨ feat(inputnumber): support allow empty ([#1943](https://github.com/jdf2e/nutui-react/pull/1943)) @oasis-cloud `v2.3.11`
+- 🐛 fix(empty): fix import at taro ([#1839](https://github.com/jdf2e/nutui-react/pull/1839)) @xiaoyatong `v2.3.5`
 
 > View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=empty&expanded=true)

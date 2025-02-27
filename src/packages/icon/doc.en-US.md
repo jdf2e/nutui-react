@@ -189,7 +189,7 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(replace icon): jmapp icon ([#2672](https://github.com/jdf2e/nutui-react/pull/2672)) `v2.7.0`
 - ✨ add plugin to replace icons ([#2671](https://github.com/jdf2e/nutui-react/pull/2671)) `v2.7.0`
 - 🐛 @nutui/icons-react changed to @nutui/icons-react-taro ([#2651](https://github.com/jdf2e/nutui-react/pull/2651)) `v2.7.0`
-- ✨ feat(calendar): support deleteIcon props ([#2644](https://github.com/jdf2e/nutui-react/pull/2644)) `v2.6.23`
-- ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
+- 🐛 remove icons defaultprops ([#2571](https://github.com/jdf2e/nutui-react/pull/2571)) `v2.6.18`
+- 💡 🏡 chore(icon): update demo ([#2214](https://github.com/jdf2e/nutui-react/pull/2214)) @eiinu `v2.6.3`
 
 > View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=icon&expanded=true)

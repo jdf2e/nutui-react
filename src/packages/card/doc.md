@@ -95,9 +95,8 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 ### Component Logs
 
 - ✨ feat(card): add card hide price and shop usage ([#2292](https://github.com/jdf2e/nutui-react/pull/2292)) @wenlingang `v2.6.8`
-- 🐛 fix(calendarcard): 直接抛出ondayclick ([#2150](https://github.com/jdf2e/nutui-react/pull/2150)) @oasis-cloud `v2.5.2`
-- 💡 🏡 chore(calendarcard): demo 拆解与规范 ([#2026](https://github.com/jdf2e/nutui-react/pull/2026)) @eiinu `v2.5.0`
-- 🐛 fix(calendarcard): 修复受控模式 ([#2063](https://github.com/jdf2e/nutui-react/pull/2063)) @eiinu `v2.4.2`
 - 🐛 fix(Card): demo拆解与规范 ([#2072](https://github.com/jdf2e/nutui-react/pull/2072)) @joyfully-W `v2.4.2`
+- 💡 🛠 refactor: rename card classname ([#1700](https://github.com/jdf2e/nutui-react/pull/1700)) @xiaoyatong `v2.3.0`
+- 💡 🛠 refactor: card ([#1069](https://github.com/jdf2e/nutui-react/pull/1069)) @拧巴的猫 `v2.0.0-alpha.15`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=card&expanded=true)

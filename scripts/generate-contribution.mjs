@@ -1,6 +1,7 @@
 import axios from 'axios'
 import * as fs from 'fs'
 import * as path from 'path'
+import { findMostRelevantComponents } from './analyze-title-relevance.mjs'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import config from '../src/config.json' assert { type: 'json' }
@@ -12,6 +13,7 @@ const GITHUB_API = {
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
     // Authorization: `Bearer ${TOKEN}`,
+    Authorization: `Bearer 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`,
   },
 }
 
@@ -44,8 +46,7 @@ async function generateContribution(componentName, componentNameCN) {
       .filter(
         (issue) =>
           !issue.pull_request &&
-          (issue.title.toLowerCase().includes(componentName.toLowerCase()) ||
-            issue.title.includes(componentNameCN))
+          findMostRelevantComponents(issue.title).includes(componentName)
       )
       .slice(0, 5)
       .map((issue) => {
@@ -75,12 +76,13 @@ async function generateContribution(componentName, componentNameCN) {
           .split('\n')
           .filter(
             (line) =>
-              line.toLowerCase().includes(componentName.toLowerCase()) ||
-              line.includes(componentNameCN)
+            {
+              return findMostRelevantComponents(line).includes(componentName)
+            }
           )
           .map((line) => {
             // 移除前面的 * 和空格
-            let processedLine = line.replace(/^[*\s-]*/, '')
+            let processedLine = line.replace(/^[*\s-]*/, '').replace(':art')
 
             // 识别提交类型并移除原始 emoji 文本
             let type = 'others'
@@ -201,7 +203,6 @@ ${releases.map((item) => item.content).join('\n')}
   }
 }
 
-// generateContribution('Button', '按钮')
 Promise.all(coms.map((i) => generateContribution(i.name, i.cName)))
   .then(() => console.log('所有组件文档更新完成！'))
   .catch((error) => console.error('部分组件更新失败：', error))

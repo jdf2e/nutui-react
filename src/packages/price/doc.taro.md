@@ -130,7 +130,6 @@ import { Price } from '@nutui/nutui-react-taro'
 
 ### Component Logs
 
-- ✨ feat(card): add card hide price and shop usage ([#2292](https://github.com/jdf2e/nutui-react/pull/2292)) @wenlingang `v2.6.8`
 - 🐛 fix(price): demo拆解与规范 ([#2082](https://github.com/jdf2e/nutui-react/pull/2082)) @Alex-huxiyang `v2.4.2`
 - 💡 🛠 refactor: price ([#989](https://github.com/jdf2e/nutui-react/pull/989)) @拧巴的猫 `v2.0.0-alpha.9`
 

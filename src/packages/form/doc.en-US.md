@@ -156,10 +156,10 @@ The component provides the following CSS Variables, which can be used for custom
 ### Issues
 
 - [[FR]: 你们的Native版本怎么不维护了？ 还缺少很多基础组件类似Form表单](https://github.com/jdf2e/nutui-react/issues/2942)
-- [可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗](https://github.com/jdf2e/nutui-react/issues/1948)
 - [nutui-react-taro@2.7.2 FormItem的值如果是对象（如 {label:是，value:1} ），会自动重置成 {}](https://github.com/jdf2e/nutui-react/issues/2870)
 - [[FR]: Form 表单组件Form.Item不支持复杂类型的字段](https://github.com/jdf2e/nutui-react/issues/2947)
 - [[FR]: Form增加对象结构](https://github.com/jdf2e/nutui-react/issues/2650)
+- [form item label未对齐](https://github.com/jdf2e/nutui-react/issues/2928)
 
 > View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AForm)
 

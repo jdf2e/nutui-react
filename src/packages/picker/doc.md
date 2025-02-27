@@ -134,10 +134,10 @@ import { Picker } from '@nutui/nutui-react'
 
 ### Component Logs
 
-- 🐛 fix(datepicker): show zero on page ([#2582](https://github.com/jdf2e/nutui-react/pull/2582)) `v2.6.19`
 - 🐛 fix(picker): 函数调用之前检查 locale 是否已经定义 ([#2259](https://github.com/jdf2e/nutui-react/pull/2259)) @Alex-huxiyang `v2.6.8`
 - 🐛 fix(picker): 修复连续多次打开 picker 时显示值错误 ([#2222](https://github.com/jdf2e/nutui-react/pull/2222)) @eiinu `v2.6.4`
-- 🐛 fix(datepicker): 修复受控方式下选项联动更新问题 ([#2201](https://github.com/jdf2e/nutui-react/pull/2201)) @eiinu `v2.6.2`
 - 💡 🏡 chore(picker): demo拆解与规范 ([#2157](https://github.com/jdf2e/nutui-react/pull/2157)) @Alex-huxiyang `v2.6.0`
+- 🐛 fix(picker): 优化 options 的 text 属性的判空逻辑 ([#1837](https://github.com/jdf2e/nutui-react/pull/1837)) @oasis-cloud `v2.3.5`
+- 🐛 fix(picker): 修复 safari 下 mask 样式问题 ([#1843](https://github.com/jdf2e/nutui-react/pull/1843)) @Eiinu `v2.3.5`
 
 > 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=picker&expanded=true)

@@ -66,7 +66,6 @@ import { Drag } from '@nutui/nutui-react'
 ### Component Logs
 
 - ✨ feat(drag): add the ability to support onDrag, onDragStart, onDragEnd callbacks ([#2418](https://github.com/jdf2e/nutui-react/pull/2418)) @Alex-huxiyang `v2.6.13`
-- 🐛 fix(fixednav): 可拖拽元素样式缺失 ([#2391](https://github.com/jdf2e/nutui-react/pull/2391)) @oasis-cloud `v2.6.11`
 - 🐛 解决Drag组件拖拽后会在原地留一个遮挡元素问题+解决weapp/taro-h5多个demo拖拽位置不正确问题 ([#2330](https://github.com/jdf2e/nutui-react/pull/2330)) @irisSong `v2.6.9`
 - 🐛 fix(drag): demo拆解与规范 ([#2163](https://github.com/jdf2e/nutui-react/pull/2163)) @eiinu `v2.6.0`
 - 🐛 change drag demo radius value of button ([#1701](https://github.com/jdf2e/nutui-react/pull/1701)) @xiaoyatong `v2.3.0`

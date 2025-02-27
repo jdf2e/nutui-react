@@ -112,7 +112,6 @@ import { Tour } from '@nutui/nutui-react-taro'
 
 ### Component Logs
 
-- 🐛 fix(overlay): tour position offset in tour.taro ([#2631](https://github.com/jdf2e/nutui-react/pull/2631)) `v2.6.23`
 - 🐛 fix(tour): demo拆解与规范 ([#2130](https://github.com/jdf2e/nutui-react/pull/2130)) @Alex-huxiyang `v2.5.1`
 - 💡 📖 docs(tour): fix tour demo ([#1759](https://github.com/jdf2e/nutui-react/pull/1759)) @xiaoyatong `v2.3.0`
 - ✨ 新增 tour 引导组件 ([#1279](https://github.com/jdf2e/nutui-react/pull/1279)) @junjun666 `v2.0.11`

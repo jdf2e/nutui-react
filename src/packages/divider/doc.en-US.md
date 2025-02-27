@@ -96,16 +96,13 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-- [更新版本后Form组件设置divider后看不见分割线了](https://github.com/jdf2e/nutui-react/issues/2895)
-
 > View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADivider)
 
 ### Component Logs
 
-- 🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927)) `v2.7.6`
 - 🐛 optimize vertical type syntax for divider ([#2664](https://github.com/jdf2e/nutui-react/pull/2664)) `v2.7.0`
 - 🐛 fix(divider): demo拆解与规范 ([#2013](https://github.com/jdf2e/nutui-react/pull/2013)) @Alex-huxiyang `v2.4.1`
-- ✨ feat(tabs): 新增模式 divider 及 demo ([#1761](https://github.com/jdf2e/nutui-react/pull/1761)) @xiaoyatong `v2.3.0`
 - 💡 🌈 style: divider css 修改, 修改部分css变量 ([#1669](https://github.com/jdf2e/nutui-react/pull/1669)) @xiaoyatong `v2.2.0`
+- 💡 📖 docs: divider 组件的 styles 属性示例改为 style ([#1290](https://github.com/jdf2e/nutui-react/pull/1290)) @oasis-cloud `v2.0.11`
 
 > View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=divider&expanded=true)
