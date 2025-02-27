@@ -59,7 +59,7 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAnimatingNumbers)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20AnimatingNumbers)
 
 ### Component Logs
 
@@ -69,4 +69,4 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 - 🐛 fix(animatingnumbers): 修复单元测试问题 ([#1878](https://github.com/jdf2e/nutui-react/pull/1878)) @Eiinu `v2.3.7`
 - 💡 🛠 refactor: animatingNumbers ([#1048](https://github.com/jdf2e/nutui-react/pull/1048)) @拧巴的猫 `v2.0.0-alpha.13`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=animatingnumbers&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=animatingnumbers&expanded=true)

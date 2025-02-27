@@ -107,7 +107,7 @@ Reset the video when the video address changes
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AVideo)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Video)
 
 ### Component Logs
 
@@ -117,4 +117,4 @@ Reset the video when the video address changes
 - ✨ uploader taro h5 支持 video ([#1605](https://github.com/jdf2e/nutui-react/pull/1605)) @xiaoyatong `v2.1.0`
 - 💡 🛠 refactor: video ([#1034](https://github.com/jdf2e/nutui-react/pull/1034)) @junjun666 `v2.0.0-alpha.13`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=video&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=video&expanded=true)

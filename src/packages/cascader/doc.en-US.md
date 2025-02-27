@@ -122,7 +122,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACascader)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Cascader)
 
 ### Component Logs
 
@@ -132,4 +132,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 🏡 chore(cascader): demo拆解与规范 ([#2144](https://github.com/jdf2e/nutui-react/pull/2144)) @Alex.huxiyang `v2.5.2`
 - 🐛 fix(cascader): 增加 ref 上的 open 和 close 方法，支持 form 中使用 ([#1799](https://github.com/jdf2e/nutui-react/pull/1799)) @oasis-cloud `v2.3.3`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cascader&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=cascader&expanded=true)

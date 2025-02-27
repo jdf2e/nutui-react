@@ -127,11 +127,11 @@ import { Price } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APrice)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Price)
 
 ### Component Logs
 
 - 🐛 fix(price): demo拆解与规范 ([#2082](https://github.com/jdf2e/nutui-react/pull/2082)) @Alex-huxiyang `v2.4.2`
 - 💡 🛠 refactor: price ([#989](https://github.com/jdf2e/nutui-react/pull/989)) @拧巴的猫 `v2.0.0-alpha.9`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=price&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=price&expanded=true)

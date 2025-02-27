@@ -182,7 +182,7 @@ export default App
 
 - [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AIcon)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Icon)
 
 ### Component Logs
 
@@ -192,4 +192,4 @@ export default App
 - 🐛 remove icons defaultprops ([#2571](https://github.com/jdf2e/nutui-react/pull/2571)) `v2.6.18`
 - 💡 🏡 chore(icon): update demo ([#2214](https://github.com/jdf2e/nutui-react/pull/2214)) @eiinu `v2.6.3`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=icon&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=icon&expanded=true)

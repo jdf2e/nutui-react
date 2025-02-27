@@ -40,11 +40,11 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASafeArea)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SafeArea)
 
 ### Component Logs
 
 - 🐛 safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong `v2.6.8`
 - ✨ feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud `v2.1.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=safearea&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=safearea&expanded=true)

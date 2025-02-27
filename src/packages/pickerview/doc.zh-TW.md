@@ -97,8 +97,8 @@ import { PickerView } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APickerView)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20PickerView)
 
 ### Component Logs
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pickerview&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=pickerview&expanded=true)

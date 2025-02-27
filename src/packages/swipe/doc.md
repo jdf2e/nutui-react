@@ -371,7 +371,7 @@ export default App
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwipe)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Swipe)
 
 ### Component Logs
 
@@ -381,4 +381,4 @@ export default App
 - 💡 🛠 refactor(swipe): 修订className类名 ([#1715](https://github.com/jdf2e/nutui-react/pull/1715)) @xiaoyatong `v2.3.0`
 - 🐛 🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 ([#1608](https://github.com/jdf2e/nutui-react/pull/1608)) @Levidcd `v2.1.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=swipe&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=swipe&expanded=true)

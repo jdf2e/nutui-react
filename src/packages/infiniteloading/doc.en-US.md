@@ -84,7 +84,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInfiniteLoading)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20InfiniteLoading)
 
 ### Component Logs
 
@@ -94,4 +94,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(infiniteLoading): 继承 scrollView 的 props 类型 ([#2441](https://github.com/jdf2e/nutui-react/pull/2441)) @oasis-cloud `v2.6.14`
 - 🐛 fix(infiniteLoading): demo拆解与规范+增加joy logo的demo ([#2081](https://github.com/jdf2e/nutui-react/pull/2081)) @irisSong `v2.4.2`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=infiniteloading&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=infiniteloading&expanded=true)

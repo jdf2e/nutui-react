@@ -107,7 +107,7 @@ playsinline 屬性設置移動端視頻行內播放，阻止新打開頁面播�
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AVideo)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Video)
 
 ### Component Logs
 
@@ -117,4 +117,4 @@ playsinline 屬性設置移動端視頻行內播放，阻止新打開頁面播�
 - ✨ uploader taro h5 支持 video ([#1605](https://github.com/jdf2e/nutui-react/pull/1605)) @xiaoyatong `v2.1.0`
 - 💡 🛠 refactor: video ([#1034](https://github.com/jdf2e/nutui-react/pull/1034)) @junjun666 `v2.0.0-alpha.13`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=video&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=video&expanded=true)

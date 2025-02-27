@@ -102,7 +102,7 @@ import { DatePicker } from '@nutui/nutui'
 
 - [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADatePicker)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20DatePicker)
 
 ### Component Logs
 
@@ -112,4 +112,4 @@ import { DatePicker } from '@nutui/nutui'
 - 🐛 fix(DatePicker): demo拆解与规范 ([#2133](https://github.com/jdf2e/nutui-react/pull/2133)) @yeyu98 `v2.5.1`
 - 💡 🐛 fix(datepicker): 未设置 value/defaultValue 时渲染 0 ([#1819](https://github.com/jdf2e/nutui-react/pull/1819)) @Ryan-CW-Code `v2.3.4`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=datepicker&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=datepicker&expanded=true)

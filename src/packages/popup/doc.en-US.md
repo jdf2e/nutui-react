@@ -122,7 +122,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APopup)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Popup)
 
 ### Component Logs
 
@@ -132,4 +132,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574)) `v2.6.18`
 - 🐛 fix(popup): demo拆解与规范 ([#2122](https://github.com/jdf2e/nutui-react/pull/2122)) @ZissyW `v2.5.1`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popup&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=popup&expanded=true)

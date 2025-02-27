@@ -85,7 +85,7 @@ import { Space } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASpace)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Space)
 
 ### Component Logs
 
@@ -95,4 +95,4 @@ import { Space } from '@nutui/nutui-react'
 - ✨ 提取 Taro 的 Demo 到 workspace ([#1302](https://github.com/jdf2e/nutui-react/pull/1302)) @oasis-cloud `v2.0.13`
 - 🐛 space 版本号修改为 2.0 ([#1265](https://github.com/jdf2e/nutui-react/pull/1265)) @oasis-cloud `v2.0.9`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=space&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=space&expanded=true)

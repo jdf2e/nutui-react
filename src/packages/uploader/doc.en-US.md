@@ -176,7 +176,7 @@ The component provides the following CSS variables that can be used to customize
 
 - [ Uploader 上传组件上传成功后 onSuccess 参数里面放files 数组是空的，没有对应上传后的文件列表，从12-15测试都有这个问题 ](https://github.com/jdf2e/nutui-react/issues/2506)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AUploader)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Uploader)
 
 ### Component Logs
 
@@ -186,4 +186,4 @@ The component provides the following CSS variables that can be used to customize
 - ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
 - 🐛 fix(uploader): beforeUpload should trigger every time before uploading ([#2553](https://github.com/jdf2e/nutui-react/pull/2553)) `v2.6.17`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=uploader&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=uploader&expanded=true)

@@ -119,7 +119,7 @@ import { Badge } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ABadge)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Badge)
 
 ### Component Logs
 
@@ -129,4 +129,4 @@ import { Badge } from '@nutui/nutui-react-taro'
 - 🐛 fix(badge): 修复value传入0时显示不正确的问题 ([#2006](https://github.com/jdf2e/nutui-react/pull/2006)) @boiboif `v2.4.1`
 - ✨ feat(rtl): badge ([#1986](https://github.com/jdf2e/nutui-react/pull/1986)) @Eiinu `v2.4.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=badge&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=badge&expanded=true)

@@ -109,7 +109,7 @@ import { NumberKeyboard } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ANumberKeyboard)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NumberKeyboard)
 
 ### Component Logs
 
@@ -119,4 +119,4 @@ import { NumberKeyboard } from '@nutui/nutui-react'
 - 🐛 numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 ([#1285](https://github.com/jdf2e/nutui-react/pull/1285)) @oasis-cloud `v2.0.11`
 - 💡 📖 docs: numberkeyboard 的 type 属性类型更新 ([#1284](https://github.com/jdf2e/nutui-react/pull/1284)) @oasis-cloud `v2.0.11`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=numberkeyboard&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=numberkeyboard&expanded=true)

@@ -182,7 +182,7 @@ The component provides the following CSS variables, which can be used to customi
 
 - [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AIcon)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Icon)
 
 ### Component Logs
 
@@ -192,4 +192,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 remove icons defaultprops ([#2571](https://github.com/jdf2e/nutui-react/pull/2571)) `v2.6.18`
 - 💡 🏡 chore(icon): update demo ([#2214](https://github.com/jdf2e/nutui-react/pull/2214)) @eiinu `v2.6.3`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=icon&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=icon&expanded=true)

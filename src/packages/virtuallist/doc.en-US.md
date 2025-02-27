@@ -62,7 +62,7 @@ import { Virtuallist } from '@nutui/nutui-react'
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AVirtualList)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20VirtualList)
 
 ### Component Logs
 
@@ -72,4 +72,4 @@ import { Virtuallist } from '@nutui/nutui-react'
 - 💡 🐛 fix(virtualList): 等高模式下的抖动处理, 不定高模式快速滑动白屏 ([#1825](https://github.com/jdf2e/nutui-react/pull/1825)) @oasis-cloud `v2.3.4`
 - 🐛 virtuallist key at taro ([#1584](https://github.com/jdf2e/nutui-react/pull/1584)) @xiaoyatong `v2.0.24`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=virtuallist&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=virtuallist&expanded=true)

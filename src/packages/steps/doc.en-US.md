@@ -149,7 +149,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASteps)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Steps)
 
 ### Component Logs
 
@@ -158,4 +158,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 style(steps): 优化steps样式结构,改进css变量名 ([#1741](https://github.com/jdf2e/nutui-react/pull/1741)) @xiaoyatong `v2.3.0`
 - 💡 🛠 refactor: steps ([#1021](https://github.com/jdf2e/nutui-react/pull/1021)) @oasis-cloud `v2.0.0-alpha.10`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=steps&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=steps&expanded=true)

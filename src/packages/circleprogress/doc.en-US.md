@@ -89,7 +89,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACircleProgress)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20CircleProgress)
 
 ### Component Logs
 
@@ -99,4 +99,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 style(circleprogress): docs 优化，修订 css 变量 ([#1699](https://github.com/jdf2e/nutui-react/pull/1699)) @xiaoyatong `v2.3.0`
 - 🐛 fix(circleprogress): 计算出现 NaN 导致组件展示为 100% 的情况 ([#1602](https://github.com/jdf2e/nutui-react/pull/1602)) @oasis-cloud `v2.0.24`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=circleprogress&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=circleprogress&expanded=true)

@@ -113,7 +113,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APagination)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Pagination)
 
 ### Component Logs
 
@@ -121,4 +121,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(pagination): demo拆解与规范 ([#2079](https://github.com/jdf2e/nutui-react/pull/2079)) @Alex-huxiyang `v2.4.2`
 - ✨ feat(pagination): add lite mode and css variable ([#1743](https://github.com/jdf2e/nutui-react/pull/1743)) @xiaoyatong `v2.3.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pagination&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=pagination&expanded=true)

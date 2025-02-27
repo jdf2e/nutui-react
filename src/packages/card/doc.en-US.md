@@ -90,7 +90,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACard)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Card)
 
 ### Component Logs
 
@@ -99,4 +99,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 🛠 refactor: rename card classname ([#1700](https://github.com/jdf2e/nutui-react/pull/1700)) @xiaoyatong `v2.3.0`
 - 💡 🛠 refactor: card ([#1069](https://github.com/jdf2e/nutui-react/pull/1069)) @拧巴的猫 `v2.0.0-alpha.15`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=card&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=card&expanded=true)

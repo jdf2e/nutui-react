@@ -127,11 +127,11 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APrice)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Price)
 
 ### Component Logs
 
 - 🐛 fix(price): demo拆解与规范 ([#2082](https://github.com/jdf2e/nutui-react/pull/2082)) @Alex-huxiyang `v2.4.2`
 - 💡 🛠 refactor: price ([#989](https://github.com/jdf2e/nutui-react/pull/989)) @拧巴的猫 `v2.0.0-alpha.9`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=price&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=price&expanded=true)

@@ -161,7 +161,7 @@ The component provides the following CSS variables, which can be used for custom
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATable)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Table)
 
 ### Component Logs
 
@@ -171,4 +171,4 @@ The component provides the following CSS variables, which can be used for custom
 - 💡 🪵 refactor: table ([#2473](https://github.com/jdf2e/nutui-react/pull/2473)) @zanyuki-jd `v2.6.15`
 - ✨ feat(table): table新增自定义行 ([#2390](https://github.com/jdf2e/nutui-react/pull/2390)) @zanyuki-jd `v2.6.11`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=table&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=table&expanded=true)

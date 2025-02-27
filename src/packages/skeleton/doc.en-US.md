@@ -81,7 +81,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASkeleton)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Skeleton)
 
 ### Component Logs
 
@@ -89,4 +89,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 📖 docs: 删除了skeleton文档中无用的props(width,height) ([#1303](https://github.com/jdf2e/nutui-react/pull/1303)) @ivan-My `v2.0.13`
 - 💡 🛠 refactor: Skeleton ([#1036](https://github.com/jdf2e/nutui-react/pull/1036)) @Eiinu `v2.0.0-alpha.11`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=skeleton&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=skeleton&expanded=true)

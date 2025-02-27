@@ -87,7 +87,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ABackTop)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20BackTop)
 
 ### Component Logs
 
@@ -97,4 +97,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang `v2.4.1`
 - 💡 📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang `v2.3.9`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=backtop&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=backtop&expanded=true)

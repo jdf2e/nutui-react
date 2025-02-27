@@ -10,9 +10,10 @@ const __dirname = dirname(__filename)
 // 添加 GitHub API 配置
 const GITHUB_API = {
   BASE_URL: 'https://api.github.com/repos/jdf2e/nutui-react',
+  REPO_URL: 'https://github.com/jdf2e/nutui-react/',
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
-    // Authorization: `Bearer ${TOKEN}`,
+    // Authorization: `Bearer ${PAT_TOKEN}`,
   },
 }
 
@@ -133,12 +134,12 @@ async function generateContribution(componentName, componentNameCN) {
 ### Issues\n
 ${issues.map((issue) => `- ${issue.title} [#${issue.number}](${issue.url})`).join('\n')}
 
-> 更多已解决问题请查看 [Issues](${GITHUB_API.BASE_URL}/issues?q=is%3Aissue+state%3Aclosed+label%3A${componentName})
+> 更多已解决问题请查看 [Issues](${GITHUB_API.REPO_URL}issues?q=is%3Aissue%20state%3Aclosed%20${componentName})
 
 ### Component Logs\n
 ${releases.map((item) => item.content).join('\n')}
 
-> 更多版本更新记录请查看 [Releases](${GITHUB_API.BASE_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
+> 更多版本更新记录请查看 [Releases](${GITHUB_API.REPO_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
 `
 
 const contentEN = `## Contribution
@@ -146,12 +147,12 @@ const contentEN = `## Contribution
 ### Issues\n
 ${issues.map((issue) => `- [${issue.title}](${issue.url})`).join('\n')}
 
-> View more [Issues](${GITHUB_API.BASE_URL}/issues?q=is%3Aissue+state%3Aclosed+label%3A${componentName})
+> View more [Issues](${GITHUB_API.REPO_URL}issues?q=is%3Aissue%20state%3Aclosed%20${componentName})
 
 ### Component Logs\n
 ${releases.map((item) => item.content).join('\n')}
 
-> View more [Releases](${GITHUB_API.BASE_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
+> View more [Releases](${GITHUB_API.REPO_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
 `
 
 const contentZHTW = `## 貢獻記錄
@@ -159,12 +160,12 @@ const contentZHTW = `## 貢獻記錄
 ### Issues\n
 ${issues.map((issue) => `- [${issue.title}](${issue.url})`).join('\n')}
 
-> 更多已解決問題請查看 [Issues](${GITHUB_API.BASE_URL}/issues?q=is%3Aissue+state%3Aclosed+label%3A${componentName})
+> 更多已解決問題請查看 [Issues](${GITHUB_API.REPO_URL}issues?q=is%3Aissue%20state%3Aclosed%20${componentName})
 
 ### Component Logs\n
 ${releases.map((item) => item.content).join('\n')}
 
-> 更多版本更新記錄請查看 [Releases](${GITHUB_API.BASE_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
+> 更多版本更新記錄請查看 [Releases](${GITHUB_API.REPO_URL}/releases?q=${componentName.toLowerCase()}&expanded=true)
   `
 
   // 写入不同语言版本的文件

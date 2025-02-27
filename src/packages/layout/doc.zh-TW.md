@@ -71,7 +71,7 @@ import { Row, Col } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALayout)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Layout)
 
 ### Component Logs
 
@@ -80,4 +80,4 @@ import { Row, Col } from '@nutui/nutui-react'
 - 💡 📖 docs: 修改布局文档相关 @hanyuxinting `v2.0.0-alpha.17`
 - 💡 📖 docs: 文档走查及问题修复-基础&布局组件([#1117](https://github.com/jdf2e/nutui-react/pull/1117)) @Eiinu `v2.0.0-alpha.17`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=layout&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=layout&expanded=true)

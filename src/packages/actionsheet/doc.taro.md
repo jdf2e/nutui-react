@@ -103,7 +103,7 @@ import { ActionSheet } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AActionSheet)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ActionSheet)
 
 ### Component Logs
 
@@ -113,4 +113,4 @@ import { ActionSheet } from '@nutui/nutui-react-taro'
 - 🐛 fix(actionsheet): 关闭弹窗后内容显示在页面，优化 popup 相关属性传递 ([#1954](https://github.com/jdf2e/nutui-react/pull/1954)) @onlyling `v2.3.11`
 - 💡 🛠 refactor: actionSheet ([#1053](https://github.com/jdf2e/nutui-react/pull/1053)) @xiaoyatong `v2.0.0-alpha.12`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=actionsheet&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=actionsheet&expanded=true)

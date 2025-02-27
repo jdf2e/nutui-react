@@ -107,7 +107,7 @@ import { TrendArrow } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATrendArrow)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20TrendArrow)
 
 ### Component Logs
 
@@ -116,4 +116,4 @@ import { TrendArrow } from '@nutui/nutui-react-taro'
 - 🐛 优化 TrendArrow 组件 props ([#1150](https://github.com/jdf2e/nutui-react/pull/1150)) @songsong `v2.0.0-beta.2`
 - 💡 🛠 refactor: trendArrow ([#1066](https://github.com/jdf2e/nutui-react/pull/1066)) @拧巴的猫 `v2.0.0-alpha.13`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=trendarrow&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=trendarrow&expanded=true)

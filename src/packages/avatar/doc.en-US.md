@@ -142,7 +142,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAvatar)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Avatar)
 
 ### Component Logs
 
@@ -152,4 +152,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 📖 docs(avatar): 修改demo值,改为可支持变量 ([#1752](https://github.com/jdf2e/nutui-react/pull/1752)) @xiaoyatong `v2.3.0`
 - 🐛 fix(Avatar): 解决在小程序环境下，使用Avatar.Group无法正常展示头像问题 ([#1296](https://github.com/jdf2e/nutui-react/pull/1296)) @Tralafalgar Wang `v2.0.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=avatar&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=avatar&expanded=true)

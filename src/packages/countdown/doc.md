@@ -153,7 +153,7 @@ import { CountDown } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACountDown)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20CountDown)
 
 ### Component Logs
 
@@ -163,4 +163,4 @@ import { CountDown } from '@nutui/nutui-react'
 - ✨ countdown 支持剩余时间 ([#1120](https://github.com/jdf2e/nutui-react/pull/1120)) @xiaoyatong `v1.5.9`
 - 💡 🛠 refactor: countdown ([#1040](https://github.com/jdf2e/nutui-react/pull/1040)) @拧巴的猫 `v2.0.0-alpha.12`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=countdown&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=countdown&expanded=true)

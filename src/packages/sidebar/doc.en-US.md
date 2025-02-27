@@ -97,8 +97,8 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASideBar)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SideBar)
 
 ### Component Logs
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sidebar&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=sidebar&expanded=true)

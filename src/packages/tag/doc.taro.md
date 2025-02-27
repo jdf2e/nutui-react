@@ -86,7 +86,7 @@ import { Tag } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATag)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tag)
 
 ### Component Logs
 
@@ -96,4 +96,4 @@ import { Tag } from '@nutui/nutui-react-taro'
 - 🐛 fix(tag): taro 下自定义icon无法展示 ([#2088](https://github.com/jdf2e/nutui-react/pull/2088)) @eiinu `v2.5.0`
 - 💡 🛠 refactor(docs): 文档支持通过标签使用已有的 demo 代码 ([#1950](https://github.com/jdf2e/nutui-react/pull/1950)) @Alex.huxiyang `v2.3.12`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tag&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=tag&expanded=true)

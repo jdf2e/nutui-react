@@ -60,7 +60,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APullToRefresh)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20PullToRefresh)
 
 ### Component Logs
 
@@ -70,4 +70,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(pulltorefresh): 修复安卓小程序下拉卡顿问题 ([#1830](https://github.com/jdf2e/nutui-react/pull/1830)) @NickH `v2.3.5`
 - 🐛 fix(pulltorefresh): icon 部分拆到demo中 ([#1812](https://github.com/jdf2e/nutui-react/pull/1812)) @xiaoyatong `v2.3.3`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=pulltorefresh&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=pulltorefresh&expanded=true)

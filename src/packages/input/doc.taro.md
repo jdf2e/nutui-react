@@ -172,7 +172,7 @@ import { Input } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInput)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Input)
 
 ### Component Logs
 
@@ -182,4 +182,4 @@ import { Input } from '@nutui/nutui-react-taro'
 - ✨ input 的 onFocus 增加 height 键盘高度参数 ([#2154](https://github.com/jdf2e/nutui-react/pull/2154)) @alexxyzeng `v2.6.0`
 - 🐛 fix(input): demo拆解与规范 ([#2035](https://github.com/jdf2e/nutui-react/pull/2035)) @yeyu98 `v2.4.2`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=input&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=input&expanded=true)

@@ -458,7 +458,7 @@ The component provides the following CSS variables, which can be used to customi
 
 - [h5和小程序中，轮播图loop为true时，最后一张到第一张，第一张到最后一张，均白屏](https://github.com/jdf2e/nutui-react/issues/1432)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwiper)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Swiper)
 
 ### Component Logs
 
@@ -468,4 +468,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang `v2.6.14`
 - 🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang `v2.6.1`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=swiper&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=swiper&expanded=true)

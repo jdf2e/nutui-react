@@ -59,7 +59,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAnimatingNumbers)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20AnimatingNumbers)
 
 ### Component Logs
 
@@ -69,4 +69,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(animatingnumbers): 修复单元测试问题 ([#1878](https://github.com/jdf2e/nutui-react/pull/1878)) @Eiinu `v2.3.7`
 - 💡 🛠 refactor: animatingNumbers ([#1048](https://github.com/jdf2e/nutui-react/pull/1048)) @拧巴的猫 `v2.0.0-alpha.13`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=animatingnumbers&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=animatingnumbers&expanded=true)

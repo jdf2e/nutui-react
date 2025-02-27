@@ -76,7 +76,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ANotify)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Notify)
 
 ### Component Logs
 
@@ -86,4 +86,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(notify): 支持函数调用的展开和关闭 ([#1271](https://github.com/jdf2e/nutui-react/pull/1271)) @oasis-cloud `v2.0.9`
 - 💡 🛠 refactor: notify ([#983](https://github.com/jdf2e/nutui-react/pull/983)) @拧巴的猫 `v2.0.0-alpha.9`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=notify&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=notify&expanded=true)

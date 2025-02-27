@@ -160,7 +160,7 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 - [[FR]: Form增加对象结构](https://github.com/jdf2e/nutui-react/issues/2650)
 - [form item label未对齐](https://github.com/jdf2e/nutui-react/issues/2928)
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AForm)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Form)
 
 ### Component Logs
 
@@ -170,4 +170,4 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 - 🐛 fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931)) `v2.7.6`
 - 🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927)) `v2.7.6`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=form&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=form&expanded=true)

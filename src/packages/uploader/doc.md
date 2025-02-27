@@ -181,7 +181,7 @@ import { Uploader } from '@nutui/nutui-react'
 
 - Uploader 上传组件上传成功后 onSuccess 参数里面放files 数组是空的，没有对应上传后的文件列表，从12-15测试都有这个问题 [#2506](https://github.com/jdf2e/nutui-react/issues/2506)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AUploader)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Uploader)
 
 ### Component Logs
 
@@ -191,4 +191,4 @@ import { Uploader } from '@nutui/nutui-react'
 - ✨ feat(Uploader): add support for deleteIcon prop customization ([#2618](https://github.com/jdf2e/nutui-react/pull/2618)) `v2.6.21`
 - 🐛 fix(uploader): beforeUpload should trigger every time before uploading ([#2553](https://github.com/jdf2e/nutui-react/pull/2553)) `v2.6.17`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=uploader&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=uploader&expanded=true)

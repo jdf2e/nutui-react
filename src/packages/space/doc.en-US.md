@@ -84,7 +84,7 @@ to [ConfigProvider component](#/en-US/component/configprovider).
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASpace)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Space)
 
 ### Component Logs
 
@@ -94,4 +94,4 @@ to [ConfigProvider component](#/en-US/component/configprovider).
 - ✨ 提取 Taro 的 Demo 到 workspace ([#1302](https://github.com/jdf2e/nutui-react/pull/1302)) @oasis-cloud `v2.0.13`
 - 🐛 space 版本号修改为 2.0 ([#1265](https://github.com/jdf2e/nutui-react/pull/1265)) @oasis-cloud `v2.0.9`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=space&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=space&expanded=true)

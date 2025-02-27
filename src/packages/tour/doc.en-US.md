@@ -108,7 +108,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATour)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tour)
 
 ### Component Logs
 
@@ -116,4 +116,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 📖 docs(tour): fix tour demo ([#1759](https://github.com/jdf2e/nutui-react/pull/1759)) @xiaoyatong `v2.3.0`
 - ✨ 新增 tour 引导组件 ([#1279](https://github.com/jdf2e/nutui-react/pull/1279)) @junjun666 `v2.0.11`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tour&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=tour&expanded=true)

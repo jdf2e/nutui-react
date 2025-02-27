@@ -78,7 +78,7 @@ import { BackTop } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ABackTop)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20BackTop)
 
 ### Component Logs
 
@@ -88,4 +88,4 @@ import { BackTop } from '@nutui/nutui-react-taro'
 - 🐛 fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang `v2.4.1`
 - 💡 📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang `v2.3.9`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=backtop&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=backtop&expanded=true)

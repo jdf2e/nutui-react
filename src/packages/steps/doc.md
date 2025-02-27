@@ -151,7 +151,7 @@ import { Steps } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASteps)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Steps)
 
 ### Component Logs
 
@@ -160,4 +160,4 @@ import { Steps } from '@nutui/nutui-react'
 - 💡 style(steps): 优化steps样式结构,改进css变量名 ([#1741](https://github.com/jdf2e/nutui-react/pull/1741)) @xiaoyatong `v2.3.0`
 - 💡 🛠 refactor: steps ([#1021](https://github.com/jdf2e/nutui-react/pull/1021)) @oasis-cloud `v2.0.0-alpha.10`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=steps&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=steps&expanded=true)

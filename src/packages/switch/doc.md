@@ -109,11 +109,11 @@ import { Switch } from '@nutui/nutui-react'
 
 - Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步 [#2170](https://github.com/jdf2e/nutui-react/issues/2170)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASwitch)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Switch)
 
 ### Component Logs
 
 - 🐛 fix(switch):switch组件demo代码重构 ([#2033](https://github.com/jdf2e/nutui-react/pull/2033)) @jiangjin3323 `v2.4.1`
 - 💡 🛠 refactor(switch): 修改样式名称及样式变量，添加相应demo ([#1714](https://github.com/jdf2e/nutui-react/pull/1714)) @xiaoyatong `v2.3.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=switch&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=switch&expanded=true)

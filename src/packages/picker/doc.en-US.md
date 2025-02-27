@@ -130,7 +130,7 @@ The component provides the following CSS variables, which can be used to customi
 - [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
 - [[FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少](https://github.com/jdf2e/nutui-react/issues/2945)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APicker)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Picker)
 
 ### Component Logs
 
@@ -140,4 +140,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(picker): 优化 options 的 text 属性的判空逻辑 ([#1837](https://github.com/jdf2e/nutui-react/pull/1837)) @oasis-cloud `v2.3.5`
 - 🐛 fix(picker): 修复 safari 下 mask 样式问题 ([#1843](https://github.com/jdf2e/nutui-react/pull/1843)) @Eiinu `v2.3.5`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=picker&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=picker&expanded=true)

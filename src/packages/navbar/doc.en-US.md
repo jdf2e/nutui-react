@@ -73,7 +73,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ANavBar)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NavBar)
 
 ### Component Logs
 
@@ -83,4 +83,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(navbar): title区域自适应宽度 ([#1891](https://github.com/jdf2e/nutui-react/pull/1891)) @songsong `v2.3.8`
 - 💡 📖 docs(navbar): showtoas 改为 showToast ([#1826](https://github.com/jdf2e/nutui-react/pull/1826)) @minghui `v2.3.4`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=navbar&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=navbar&expanded=true)

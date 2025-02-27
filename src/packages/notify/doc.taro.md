@@ -120,7 +120,7 @@ export default App
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ANotify)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Notify)
 
 ### Component Logs
 
@@ -130,4 +130,4 @@ export default App
 - ✨ feat(notify): 支持函数调用的展开和关闭 ([#1271](https://github.com/jdf2e/nutui-react/pull/1271)) @oasis-cloud `v2.0.9`
 - 💡 🛠 refactor: notify ([#983](https://github.com/jdf2e/nutui-react/pull/983)) @拧巴的猫 `v2.0.0-alpha.9`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=notify&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=notify&expanded=true)

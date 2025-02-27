@@ -158,7 +158,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInputNumber)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20InputNumber)
 
 ### Component Logs
 
@@ -168,4 +168,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(inputnumber): taro 环境下增加 number类型的键盘 ([#1965](https://github.com/jdf2e/nutui-react/pull/1965)) @onlyling `v2.3.12`
 - 🐛 fix(inputnumber): provide finalValue ([#1959](https://github.com/jdf2e/nutui-react/pull/1959)) @oasis-cloud `v2.3.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=inputnumber&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=inputnumber&expanded=true)

@@ -96,7 +96,7 @@ import { Address } from '@nutui/nutui-react'
 
 - Iconfont 设置 name 为图片地址时，修改颜色不生效 [#2333](https://github.com/jdf2e/nutui-react/issues/2333)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAddress)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Address)
 
 ### Component Logs
 
@@ -106,4 +106,4 @@ import { Address } from '@nutui/nutui-react'
 - 🐛 address close icon cannot be customed ([#1685](https://github.com/jdf2e/nutui-react/pull/1685)) @xiaoyatong `v2.3.0`
 - 🐛 picker 和 address 在 form 中使用，未阻止冒泡，导致取消和确认无法关闭 ([#1710](https://github.com/jdf2e/nutui-react/pull/1710)) @oasis-cloud `v2.3.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=address&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=address&expanded=true)

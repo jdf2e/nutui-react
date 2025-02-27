@@ -99,7 +99,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AShortPassword)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ShortPassword)
 
 ### Component Logs
 
@@ -108,4 +108,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 📖 docs(shortpassword): 增加onComplete的demo及文档 ([#1860](https://github.com/jdf2e/nutui-react/pull/1860)) @xiaoyatong `v2.3.7`
 - 💡 🛠 refactor: shortPassword ([#1046](https://github.com/jdf2e/nutui-react/pull/1046)) @Eiinu `v2.0.0-alpha.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=shortpassword&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=shortpassword&expanded=true)

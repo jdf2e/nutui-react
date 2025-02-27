@@ -65,7 +65,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AWaterMark)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20WaterMark)
 
 ### Component Logs
 
@@ -75,4 +75,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(watermark): 修复小程序下画布尺寸问题 ([#1073](https://github.com/jdf2e/nutui-react/pull/1073)) @Eiinu `v1.5.8`
 - 💡 🛠 refactor: watermark ([#1071](https://github.com/jdf2e/nutui-react/pull/1071)) @Eiinu `v2.0.0-alpha.13`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=watermark&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=watermark&expanded=true)

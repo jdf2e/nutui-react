@@ -173,7 +173,7 @@ PopoverList 屬性是一個由對象構成的數組，數組中的每個對象�
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APopover)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Popover)
 
 ### Component Logs
 
@@ -183,4 +183,4 @@ PopoverList 屬性是一個由對象構成的數組，數組中的每個對象�
 - 🐛 fix(popover): 调整demo ([#2043](https://github.com/jdf2e/nutui-react/pull/2043)) @xiaoyatong `v2.4.1`
 - ✨ feat(popover): 增加 light 和 dark 模式的区分 ([#1977](https://github.com/jdf2e/nutui-react/pull/1977)) @xiaoyatong `v2.4.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popover&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=popover&expanded=true)

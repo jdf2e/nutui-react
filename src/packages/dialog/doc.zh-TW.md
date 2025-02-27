@@ -177,7 +177,7 @@ export default function App() {
 - [在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出](https://github.com/jdf2e/nutui-react/issues/2584)
 - [希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading](https://github.com/jdf2e/nutui-react/issues/1202)
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADialog)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Dialog)
 
 ### Component Logs
 
@@ -187,4 +187,4 @@ export default function App() {
 - 🐛 dialog `v2.6.18`
 - 🐛 fix(dialog): 关闭按钮默认在底部，24px白色图标 ([#2118](https://github.com/jdf2e/nutui-react/pull/2118)) @irisSong `v2.5.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=dialog&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=dialog&expanded=true)

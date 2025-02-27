@@ -65,7 +65,7 @@ import { WaterMark } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AWaterMark)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20WaterMark)
 
 ### Component Logs
 
@@ -75,4 +75,4 @@ import { WaterMark } from '@nutui/nutui-react'
 - 🐛 fix(watermark): 修复小程序下画布尺寸问题 ([#1073](https://github.com/jdf2e/nutui-react/pull/1073)) @Eiinu `v1.5.8`
 - 💡 🛠 refactor: watermark ([#1071](https://github.com/jdf2e/nutui-react/pull/1071)) @Eiinu `v2.0.0-alpha.13`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=watermark&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=watermark&expanded=true)

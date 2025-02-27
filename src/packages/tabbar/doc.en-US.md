@@ -136,7 +136,7 @@ The component provides the following CSS variables, which can be used to customi
 
 - [Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步](https://github.com/jdf2e/nutui-react/issues/2170)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATabbar)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tabbar)
 
 ### Component Logs
 
@@ -146,4 +146,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 style(tabbar): add css variable ([#1742](https://github.com/jdf2e/nutui-react/pull/1742)) @xiaoyatong `v2.3.0`
 - 💡 📖 docs(tabbar): Correct module names of tabbar component ([#1539](https://github.com/jdf2e/nutui-react/pull/1539)) @HUMORCE `v2.0.21`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tabbar&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=tabbar&expanded=true)

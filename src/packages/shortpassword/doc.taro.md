@@ -99,7 +99,7 @@ import { ShortPassword } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AShortPassword)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ShortPassword)
 
 ### Component Logs
 
@@ -108,4 +108,4 @@ import { ShortPassword } from '@nutui/nutui-react-taro'
 - 💡 📖 docs(shortpassword): 增加onComplete的demo及文档 ([#1860](https://github.com/jdf2e/nutui-react/pull/1860)) @xiaoyatong `v2.3.7`
 - 💡 🛠 refactor: shortPassword ([#1046](https://github.com/jdf2e/nutui-react/pull/1046)) @Eiinu `v2.0.0-alpha.12`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=shortpassword&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=shortpassword&expanded=true)

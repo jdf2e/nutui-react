@@ -101,7 +101,7 @@ import { Loading } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ALoading)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Loading)
 
 ### Component Logs
 
@@ -111,4 +111,4 @@ import { Loading } from '@nutui/nutui-react'
 - ✨ loading 组件 ([#1204](https://github.com/jdf2e/nutui-react/pull/1204)) @mike8625 `v2.0.10`
 - 🐛 loading 组件导出 props 类型 ([#1278](https://github.com/jdf2e/nutui-react/pull/1278)) @oasis-cloud `v2.0.10`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=loading&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=loading&expanded=true)

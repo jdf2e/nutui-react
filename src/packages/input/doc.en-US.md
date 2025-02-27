@@ -169,7 +169,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInput)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Input)
 
 ### Component Logs
 
@@ -179,4 +179,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ input 的 onFocus 增加 height 键盘高度参数 ([#2154](https://github.com/jdf2e/nutui-react/pull/2154)) @alexxyzeng `v2.6.0`
 - 🐛 fix(input): demo拆解与规范 ([#2035](https://github.com/jdf2e/nutui-react/pull/2035)) @yeyu98 `v2.4.2`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=input&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=input&expanded=true)

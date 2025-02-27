@@ -89,7 +89,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AIndicator)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Indicator)
 
 ### Component Logs
 
@@ -99,4 +99,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong `v2.0.24`
 - 🐛 indicator 超长换行 ([#1486](https://github.com/jdf2e/nutui-react/pull/1486)) @oasis-cloud `v2.0.19`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=indicator&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=indicator&expanded=true)

@@ -159,7 +159,7 @@ import { Range } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ARange)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Range)
 
 ### Component Logs
 
@@ -169,4 +169,4 @@ import { Range } from '@nutui/nutui-react'
 - 🐛 fix(range): touchmove 回调中 rect 获取失败时终止 ([#2029](https://github.com/jdf2e/nutui-react/pull/2029)) @eiinu `v2.4.1`
 - ✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu `v2.3.12`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=range&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=range&expanded=true)

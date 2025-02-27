@@ -113,7 +113,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AElevator)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Elevator)
 
 ### Component Logs
 
@@ -123,4 +123,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(elevator): 解决部分安卓手机右侧导航高亮偏差问题 ([#1966](https://github.com/jdf2e/nutui-react/pull/1966)) @songsong `v2.3.12`
 - 🐛 fix(elevator): 索引定位不准 ([#1667](https://github.com/jdf2e/nutui-react/pull/1667)) @oasis-cloud `v2.2.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=elevator&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=elevator&expanded=true)

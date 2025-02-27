@@ -128,7 +128,7 @@ If you can't find the language pack you need, you are welcome to create a new la
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AConfigProvider)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ConfigProvider)
 
 ### Component Logs
 
@@ -138,4 +138,4 @@ If you can't find the language pack you need, you are welcome to create a new la
 - 💡 📖 docs(configprovider): 文档可读性优化 ([#1882](https://github.com/jdf2e/nutui-react/pull/1882)) @Alex.huxiyang `v2.3.8`
 - ✨ configProvider 组件性能优化 ([#1230](https://github.com/jdf2e/nutui-react/pull/1230)) @大喵 `v2.0.5`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=configprovider&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=configprovider&expanded=true)

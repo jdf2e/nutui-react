@@ -156,7 +156,7 @@ import { CalendarCard } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACalendarCard)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20CalendarCard)
 
 ### Component Logs
 
@@ -166,4 +166,4 @@ import { CalendarCard } from '@nutui/nutui-react'
 - 🐛 fix(calendarcard): 选择范围时支持仅选择单个日期 ([#2009](https://github.com/jdf2e/nutui-react/pull/2009)) @eiinu `v2.4.1`
 - ✨ feat(calendarcard): 限制范围时禁止面板切换 ([#1688](https://github.com/jdf2e/nutui-react/pull/1688)) @Eiinu `v2.3.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=calendarcard&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=calendarcard&expanded=true)

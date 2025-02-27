@@ -61,7 +61,7 @@ Set the shape of the crop display, which is still square after the crop, and nee
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAvatarCropper)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20AvatarCropper)
 
 ### Component Logs
 
@@ -71,4 +71,4 @@ Set the shape of the crop display, which is still square after the crop, and nee
 - ✨ feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui `v2.3.5`
 - 🐛 fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong `v2.3.5`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=avatarcropper&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=avatarcropper&expanded=true)

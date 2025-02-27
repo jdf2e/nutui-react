@@ -136,7 +136,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 - Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步 [#2170](https://github.com/jdf2e/nutui-react/issues/2170)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATabbar)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tabbar)
 
 ### Component Logs
 
@@ -146,4 +146,4 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 - 💡 style(tabbar): add css variable ([#1742](https://github.com/jdf2e/nutui-react/pull/1742)) @xiaoyatong `v2.3.0`
 - 💡 📖 docs(tabbar): Correct module names of tabbar component ([#1539](https://github.com/jdf2e/nutui-react/pull/1539)) @HUMORCE `v2.0.21`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tabbar&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=tabbar&expanded=true)

@@ -109,7 +109,7 @@ Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 
 - 在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出 [#2584](https://github.com/jdf2e/nutui-react/issues/2584)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AToast)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Toast)
 
 ### Component Logs
 
@@ -119,4 +119,4 @@ Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 - 🐛 fix(toast): add deprecated prop msg ([#1999](https://github.com/jdf2e/nutui-react/pull/1999)) @Eiinu `v2.4.0`
 - 🐛 fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo ([#1994](https://github.com/jdf2e/nutui-react/pull/1994)) @xiaoyatong `v2.4.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=toast&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=toast&expanded=true)

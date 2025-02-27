@@ -128,7 +128,7 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AConfigProvider)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ConfigProvider)
 
 ### Component Logs
 
@@ -138,4 +138,4 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 - 💡 📖 docs(configprovider): 文档可读性优化 ([#1882](https://github.com/jdf2e/nutui-react/pull/1882)) @Alex.huxiyang `v2.3.8`
 - ✨ configProvider 组件性能优化 ([#1230](https://github.com/jdf2e/nutui-react/pull/1230)) @大喵 `v2.0.5`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=configprovider&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=configprovider&expanded=true)

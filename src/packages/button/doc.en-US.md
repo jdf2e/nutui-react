@@ -153,7 +153,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AButton)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Button)
 
 ### Component Logs
 
@@ -163,4 +163,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(button): 增加xlarge,按钮内图标大小追随按钮当前字号 ([#2037](https://github.com/jdf2e/nutui-react/pull/2037)) @xiaoyatong `v2.4.1`
 - 💡 🌈 style(button): jmapp style ([#2019](https://github.com/jdf2e/nutui-react/pull/2019)) @zhehu1 `v2.4.1`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=button&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=button&expanded=true)

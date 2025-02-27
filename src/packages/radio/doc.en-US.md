@@ -166,7 +166,7 @@ The component provides the following CSS Variables, which can be used for custom
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ARadio)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Radio)
 
 ### Component Logs
 
@@ -176,4 +176,4 @@ The component provides the following CSS Variables, which can be used for custom
 - 💡 style(radio): 优化css变量和样式 ([#1756](https://github.com/jdf2e/nutui-react/pull/1756)) @xiaoyatong `v2.3.0`
 - 💡 🚀 perf: radio reverse and demos ([#1631](https://github.com/jdf2e/nutui-react/pull/1631)) @xiaoyatong `v2.1.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=radio&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=radio&expanded=true)

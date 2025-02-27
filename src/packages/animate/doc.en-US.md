@@ -57,7 +57,7 @@ import { Animate } from '@nutui/nutui-react'
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AAnimate)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Animate)
 
 ### Component Logs
 
@@ -65,4 +65,4 @@ import { Animate } from '@nutui/nutui-react'
 - 🐛 fix(animate): demo拆解与规范 ([#2085](https://github.com/jdf2e/nutui-react/pull/2085)) @eiinu `v2.5.0`
 - 💡 animatenumbers number css ([#1681](https://github.com/jdf2e/nutui-react/pull/1681)) @xiaoyatong `v2.3.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=animate&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=animate&expanded=true)

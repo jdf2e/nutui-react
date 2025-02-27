@@ -85,7 +85,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AFixedNav)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20FixedNav)
 
 ### Component Logs
 
@@ -95,4 +95,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 🛠 refactor: 类型文件统一为 types，增加 fixednavitem 类型 ([#1789](https://github.com/jdf2e/nutui-react/pull/1789)) @oasis-cloud `v2.3.2`
 - 💡 style(fixednav): 废弃 bem 规范, 修订 css 变量 ([#1702](https://github.com/jdf2e/nutui-react/pull/1702)) @xiaoyatong `v2.3.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=fixednav&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=fixednav&expanded=true)

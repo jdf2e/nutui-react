@@ -177,7 +177,7 @@ import { Calendar } from '@nutui/nutui-react'
 
 - 可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗 [#1948](https://github.com/jdf2e/nutui-react/issues/1948)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACalendar)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Calendar)
 
 ### Component Logs
 
@@ -187,4 +187,4 @@ import { Calendar } from '@nutui/nutui-react'
 - ✨ feat(calendar): support deleteIcon props ([#2644](https://github.com/jdf2e/nutui-react/pull/2644)) `v2.6.23`
 - 🐛 修复日历进行快捷选择日期时 点击确认获取的是上一次的日期 ([#2436](https://github.com/jdf2e/nutui-react/pull/2436)) @yangqianlu `v2.6.15`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=calendar&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=calendar&expanded=true)

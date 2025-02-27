@@ -265,7 +265,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATabs)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tabs)
 
 ### Component Logs
 
@@ -275,4 +275,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(tabs.taro.tsx): 解决在不需要滚动的时候，切换tab产生tab位置错乱的问题 ([#2554](https://github.com/jdf2e/nutui-react/pull/2554)) `v2.6.17`
 - ✨ tabs滚动条兼容火狐浏览器 ([#2431](https://github.com/jdf2e/nutui-react/pull/2431)) @JoanneXu6677 `v2.6.13`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=tabs&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=tabs&expanded=true)

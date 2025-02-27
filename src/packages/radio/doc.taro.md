@@ -166,7 +166,7 @@ import { Radio } from '@nutui/nutui-react-taro'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ARadio)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Radio)
 
 ### Component Logs
 
@@ -176,4 +176,4 @@ import { Radio } from '@nutui/nutui-react-taro'
 - 💡 style(radio): 优化css变量和样式 ([#1756](https://github.com/jdf2e/nutui-react/pull/1756)) @xiaoyatong `v2.3.0`
 - 💡 🚀 perf: radio reverse and demos ([#1631](https://github.com/jdf2e/nutui-react/pull/1631)) @xiaoyatong `v2.1.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=radio&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=radio&expanded=true)

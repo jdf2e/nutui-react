@@ -91,7 +91,7 @@ import { Overlay } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AOverlay)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Overlay)
 
 ### Component Logs
 
@@ -101,4 +101,4 @@ import { Overlay } from '@nutui/nutui-react'
 - 🐛 fix(overlay): 文档可读性优化 ([#1894](https://github.com/jdf2e/nutui-react/pull/1894)) @Alex.huxiyang `v2.3.8`
 - 💡 📖 docs(overlay): 文档优化 ([#1706](https://github.com/jdf2e/nutui-react/pull/1706)) @xiaoyatong `v2.3.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=overlay&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=overlay&expanded=true)

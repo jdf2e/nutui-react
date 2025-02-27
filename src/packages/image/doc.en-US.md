@@ -136,7 +136,7 @@ The Image component provides lazy loading of images, which can be realized by co
 
 - [Iconfont 设置 name 为图片地址时，修改颜色不生效](https://github.com/jdf2e/nutui-react/issues/2333)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AImage)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Image)
 
 ### Component Logs
 
@@ -146,4 +146,4 @@ The Image component provides lazy loading of images, which can be realized by co
 - 💡 🏡 chore(image): 官网taro的demo显示与h5不一致 ([#2244](https://github.com/jdf2e/nutui-react/pull/2244)) @Alex-huxiyang `v2.6.5`
 - 💡 🏡 chore(image): demo代码风格优化 ([#2220](https://github.com/jdf2e/nutui-react/pull/2220)) @Alex-huxiyang `v2.6.4`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=image&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=image&expanded=true)

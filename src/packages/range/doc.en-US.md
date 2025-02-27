@@ -159,7 +159,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ARange)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Range)
 
 ### Component Logs
 
@@ -169,4 +169,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(range): touchmove 回调中 rect 获取失败时终止 ([#2029](https://github.com/jdf2e/nutui-react/pull/2029)) @eiinu `v2.4.1`
 - ✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu `v2.3.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=range&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=range&expanded=true)

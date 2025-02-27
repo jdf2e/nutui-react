@@ -41,7 +41,7 @@ import { Barrage } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ABarrage)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Barrage)
 
 ### Component Logs
 
@@ -51,4 +51,4 @@ import { Barrage } from '@nutui/nutui-react'
 - 🐛 fix(barrage): 解决新增弹幕重叠问题+不同宽度弹幕滚动速度不一致问题+重构taro版本 ([#1942](https://github.com/jdf2e/nutui-react/pull/1942)) @songsong `v2.3.10`
 - 🐛 日历close样式，可自定义样式；修改弹幕样式；更名CircleClose为Failure、Issue 为 Tips ([#1648](https://github.com/jdf2e/nutui-react/pull/1648)) @xiaoyatong `v2.1.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=barrage&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=barrage&expanded=true)

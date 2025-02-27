@@ -61,7 +61,7 @@ import { Drag } from '@nutui/nutui-react-taro'
 
 - Drag 微信小程序运行报错 TypeError: \_a2.getBoundingClientRect is not a function [#2738](https://github.com/jdf2e/nutui-react/issues/2738)
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ADrag)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Drag)
 
 ### Component Logs
 
@@ -70,4 +70,4 @@ import { Drag } from '@nutui/nutui-react-taro'
 - 🐛 fix(drag): demo拆解与规范 ([#2163](https://github.com/jdf2e/nutui-react/pull/2163)) @eiinu `v2.6.0`
 - 🐛 change drag demo radius value of button ([#1701](https://github.com/jdf2e/nutui-react/pull/1701)) @xiaoyatong `v2.3.0`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=drag&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=drag&expanded=true)

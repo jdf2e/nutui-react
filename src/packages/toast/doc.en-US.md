@@ -111,7 +111,7 @@ The component provides the following CSS variables, which can be used to customi
 
 - [在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出](https://github.com/jdf2e/nutui-react/issues/2584)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AToast)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Toast)
 
 ### Component Logs
 
@@ -121,4 +121,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(toast): add deprecated prop msg ([#1999](https://github.com/jdf2e/nutui-react/pull/1999)) @Eiinu `v2.4.0`
 - 🐛 fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo ([#1994](https://github.com/jdf2e/nutui-react/pull/1994)) @xiaoyatong `v2.4.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=toast&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=toast&expanded=true)

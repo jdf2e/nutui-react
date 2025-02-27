@@ -91,7 +91,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AOverlay)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Overlay)
 
 ### Component Logs
 
@@ -101,4 +101,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(overlay): 文档可读性优化 ([#1894](https://github.com/jdf2e/nutui-react/pull/1894)) @Alex.huxiyang `v2.3.8`
 - 💡 📖 docs(overlay): 文档优化 ([#1706](https://github.com/jdf2e/nutui-react/pull/1706)) @xiaoyatong `v2.3.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=overlay&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=overlay&expanded=true)

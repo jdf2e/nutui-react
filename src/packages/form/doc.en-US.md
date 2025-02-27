@@ -161,7 +161,7 @@ The component provides the following CSS Variables, which can be used for custom
 - [[FR]: Form增加对象结构](https://github.com/jdf2e/nutui-react/issues/2650)
 - [form item label未对齐](https://github.com/jdf2e/nutui-react/issues/2928)
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AForm)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Form)
 
 ### Component Logs
 
@@ -171,4 +171,4 @@ The component provides the following CSS Variables, which can be used for custom
 - 🐛 fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931)) `v2.7.6`
 - 🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927)) `v2.7.6`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=form&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=form&expanded=true)

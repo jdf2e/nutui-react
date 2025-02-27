@@ -149,7 +149,7 @@ import { InputNumber } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AInputNumber)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20InputNumber)
 
 ### Component Logs
 
@@ -159,4 +159,4 @@ import { InputNumber } from '@nutui/nutui-react'
 - ✨ feat(inputnumber): taro 环境下增加 number类型的键盘 ([#1965](https://github.com/jdf2e/nutui-react/pull/1965)) @onlyling `v2.3.12`
 - 🐛 fix(inputnumber): provide finalValue ([#1959](https://github.com/jdf2e/nutui-react/pull/1959)) @oasis-cloud `v2.3.12`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=inputnumber&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=inputnumber&expanded=true)

@@ -136,7 +136,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AGrid)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Grid)
 
 ### Component Logs
 
@@ -145,4 +145,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(grid): 增加 demo ([#1660](https://github.com/jdf2e/nutui-react/pull/1660)) @xiaoyatong `v2.2.0`
 - 🐛 修复gridItem组件外部传入样式为空时冲掉组件内置样式问题 ([#1214](https://github.com/jdf2e/nutui-react/pull/1214)) @cuicuiworld `v1.5.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=grid&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=grid&expanded=true)

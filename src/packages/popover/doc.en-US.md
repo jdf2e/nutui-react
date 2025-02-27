@@ -171,7 +171,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3APopover)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Popover)
 
 ### Component Logs
 
@@ -181,4 +181,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(popover): 调整demo ([#2043](https://github.com/jdf2e/nutui-react/pull/2043)) @xiaoyatong `v2.4.1`
 - ✨ feat(popover): 增加 light 和 dark 模式的区分 ([#1977](https://github.com/jdf2e/nutui-react/pull/1977)) @xiaoyatong `v2.4.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=popover&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=popover&expanded=true)

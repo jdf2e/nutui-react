@@ -112,13 +112,13 @@ export function findMostRelevantComponents(title) {
   return []
 }
 
-// const testTitles = [
-//   'fix: usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize (#2628) ',
-//   'fix(dialog): 关闭按钮默认在底部，24px白色图标 (#2118) @irisSong',
-//   'feat(calendar): support renderBottomButton props (#2645) ',
-//   '希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading #1202',
-//   '[FR]: getSystemInfoSync 微信小程序从基础库 2.20.1 开始，本接口停止维护，需要兼容新老接口',
-// ]
+const testTitles = [
+  'fix: usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize (#2628) ',
+  'fix(dialog): 关闭按钮默认在底部，24px白色图标 (#2118) @irisSong',
+  'feat(calendar): support renderBottomButton props (#2645) ',
+  '希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading #1202',
+  '[FR]: getSystemInfoSync 微信小程序从基础库 2.20.1 开始，本接口停止维护，需要兼容新老接口',
+]
 
 // console.log('\n相关性分析结果:')
 // testTitles.forEach((title) => {

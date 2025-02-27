@@ -131,7 +131,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACell)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Cell)
 
 ### Component Logs
 
@@ -141,4 +141,4 @@ The component provides the following CSS variables, which can be used to customi
 - 💡 🛠 refactor(cell): 修订类名 ([#1722](https://github.com/jdf2e/nutui-react/pull/1722)) @xiaoyatong `v2.3.0`
 - 💡 📖 docs(cell): 增加卡片类型的 demo ([#1639](https://github.com/jdf2e/nutui-react/pull/1639)) @oasis-cloud `v2.1.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cell&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=cell&expanded=true)

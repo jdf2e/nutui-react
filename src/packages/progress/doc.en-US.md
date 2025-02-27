@@ -113,7 +113,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AProgress)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Progress)
 
 ### Component Logs
 
@@ -123,4 +123,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu `v2.3.12`
 - 💡 🔨 chore(progress): update demo ([#1192](https://github.com/jdf2e/nutui-react/pull/1192)) @Eiinu `v2.0.2`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=progress&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=progress&expanded=true)

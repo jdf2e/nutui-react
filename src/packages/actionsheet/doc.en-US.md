@@ -94,7 +94,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3AActionSheet)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ActionSheet)
 
 ### Component Logs
 
@@ -104,4 +104,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 fix(actionsheet): 关闭弹窗后内容显示在页面，优化 popup 相关属性传递 ([#1954](https://github.com/jdf2e/nutui-react/pull/1954)) @onlyling `v2.3.11`
 - 💡 🛠 refactor: actionSheet ([#1053](https://github.com/jdf2e/nutui-react/pull/1053)) @xiaoyatong `v2.0.0-alpha.12`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=actionsheet&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=actionsheet&expanded=true)

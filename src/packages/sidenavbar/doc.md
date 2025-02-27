@@ -85,7 +85,7 @@ import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解决问题请查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASideNavBar)
+> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SideNavBar)
 
 ### Component Logs
 
@@ -94,4 +94,4 @@ import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 - 💡 📖 docs(sideNavBar): handleClose 改为 onClose ([#1635](https://github.com/jdf2e/nutui-react/pull/1635)) @haitao `v2.1.0`
 - 💡 🛠 refactor: sidenavbar ([#1057](https://github.com/jdf2e/nutui-react/pull/1057)) @oasis-cloud `v2.0.0-alpha.14`
 
-> 更多版本更新记录请查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=sidenavbar&expanded=true)
+> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=sidenavbar&expanded=true)

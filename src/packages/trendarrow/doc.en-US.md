@@ -107,7 +107,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ATrendArrow)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20TrendArrow)
 
 ### Component Logs
 
@@ -116,4 +116,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 优化 TrendArrow 组件 props ([#1150](https://github.com/jdf2e/nutui-react/pull/1150)) @songsong `v2.0.0-beta.2`
 - 💡 🛠 refactor: trendArrow ([#1066](https://github.com/jdf2e/nutui-react/pull/1066)) @拧巴的猫 `v2.0.0-alpha.13`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=trendarrow&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=trendarrow&expanded=true)

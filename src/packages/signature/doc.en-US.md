@@ -62,7 +62,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ASignature)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Signature)
 
 ### Component Logs
 
@@ -72,4 +72,4 @@ The component provides the following CSS variables, which can be used to customi
 - 🐛 signature组件提取样式变量+修复taro h5 demo签字时滚动问题 ([#1220](https://github.com/jdf2e/nutui-react/pull/1220)) @songsong `v2.0.4`
 - 🐛 修复signature小程序下demo签字时页面跟随滚动问题 ([#1225](https://github.com/jdf2e/nutui-react/pull/1225)) @songsong `v2.0.4`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=signature&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=signature&expanded=true)

@@ -201,7 +201,7 @@ The component provides the following CSS variables, which can be used to customi
 
 ### Issues
 
-> View more [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACheckbox)
+> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Checkbox)
 
 ### Component Logs
 
@@ -211,4 +211,4 @@ The component provides the following CSS variables, which can be used to customi
 - ✨ feat(checkbox): 增加至少选择项数量的设置功能 ([#1859](https://github.com/jdf2e/nutui-react/pull/1859)) @oasis-cloud `v2.3.7`
 - 💡 📖 docs(checkbox): checkedIcon 改为 activeIcon ([#1724](https://github.com/jdf2e/nutui-react/pull/1724)) @oasis-cloud `v2.3.0`
 
-> View more [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=checkbox&expanded=true)
+> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=checkbox&expanded=true)

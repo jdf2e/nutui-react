@@ -133,7 +133,7 @@ import { Cell } from '@nutui/nutui-react'
 
 ### Issues
 
-> 更多已解決問題請查看 [Issues](https://api.github.com/repos/jdf2e/nutui-react/issues?q=is%3Aissue+state%3Aclosed+label%3ACell)
+> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Cell)
 
 ### Component Logs
 
@@ -143,4 +143,4 @@ import { Cell } from '@nutui/nutui-react'
 - 💡 🛠 refactor(cell): 修订类名 ([#1722](https://github.com/jdf2e/nutui-react/pull/1722)) @xiaoyatong `v2.3.0`
 - 💡 📖 docs(cell): 增加卡片类型的 demo ([#1639](https://github.com/jdf2e/nutui-react/pull/1639)) @oasis-cloud `v2.1.0`
 
-> 更多版本更新記錄請查看 [Releases](https://api.github.com/repos/jdf2e/nutui-react/releases?q=cell&expanded=true)
+> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=cell&expanded=true)
