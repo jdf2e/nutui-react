@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { DatePickerView } from '@nutui/nutui'
+import { DatePickerView } from '@nutui/nutui-taro'
 ```
 
 ## 示例代码
@@ -14,7 +14,7 @@ import { DatePickerView } from '@nutui/nutui'
 
 :::demo
 
-<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -24,7 +24,7 @@ import { DatePickerView } from '@nutui/nutui'
 
 :::demo
 
-<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 

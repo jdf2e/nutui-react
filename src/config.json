@@ -645,7 +645,7 @@
           "version": "3.0.0",
           "name": "DatePickerView",
           "type": "component",
-          "cName": "选择器视图",
+          "cName": "日期选择器视图",
           "desc": "DatePickerView 是 DatePicker 的内容区域",
           "sort": 16,
           "show": true,
