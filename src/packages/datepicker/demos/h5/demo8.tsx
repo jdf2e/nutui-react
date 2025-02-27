@@ -30,7 +30,7 @@ const Demo8 = () => {
     }
     return options
   }
-  const formatter1 = (type: string, option: PickerOption) => {
+  const formatter = (type: string, option: PickerOption) => {
     switch (type) {
       case 'year':
         option.label += `年`
@@ -63,7 +63,7 @@ const Demo8 = () => {
         endDate={endDate}
         visible={show}
         defaultValue={new Date(`${defaultDescription}`)}
-        formatter={formatter1}
+        formatter={formatter}
         minuteStep={5}
         filter={filter}
         onClose={() => setShow(false)}
