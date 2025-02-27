@@ -123,7 +123,6 @@ const Demo7 = () => {
           name="DatePicker"
           trigger="onConfirm"
           getValueFromEvent={(...args) => {
-            console.log('sssss', args[0])
             return new Date(args[1].join('/'))
           }}
           onClick={(event, ref: any) => {
