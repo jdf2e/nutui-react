@@ -1,13 +1,9 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
-
-export interface SafeAreaProps extends BasicComponent {
-  position: 'top' | 'bottom'
-}
+import { WebSafeAreaProps } from '@/types'
 
 const classPrefix = 'nut-safe-area'
-export const SafeArea: FC<SafeAreaProps> = (props) => {
+export const SafeArea: FC<WebSafeAreaProps> = (props) => {
   return (
     <div
       className={classNames(

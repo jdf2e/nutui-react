@@ -3,7 +3,7 @@ import { UIRound } from './baseatom'
 import { BaseProps } from './baseprops'
 
 export interface BaseSearchBar extends BaseProps {
-  value: number | string
+  value: string
   placeholder: string
   shape: UIRound
   disabled: boolean

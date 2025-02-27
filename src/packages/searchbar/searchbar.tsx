@@ -1,30 +1,9 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { ArrowLeft, MaskClose, Search } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface SearchBarProps extends BasicComponent {
-  value?: number | string
-  placeholder?: string
-  shape?: 'square' | 'round'
-  disabled?: boolean
-  maxLength?: number
-  clearable?: boolean
-  readOnly?: boolean
-  autoFocus?: boolean
-  backable: boolean
-  left: React.ReactNode
-  right: React.ReactNode
-  leftIn: React.ReactNode
-  rightIn: React.ReactNode
-  onSearch?: (val: string) => void
-  onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onClear?: (event: MouseEvent<HTMLDivElement>) => void
-  onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebSearchBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -40,9 +19,9 @@ const defaultProps = {
   right: '',
   rightIn: '',
   leftIn: <Search width="16" height="16" />,
-} as SearchBarProps
+} as WebSearchBarProps
 export const SearchBar: FunctionComponent<
-  Partial<SearchBarProps> &
+  Partial<WebSearchBarProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onFocus' | 'onBlur'

@@ -1,5 +1,8 @@
 import { PullToRefresh } from './pulltorefresh'
 
-export type { PullToRefreshType } from './types'
-export type { PullToRefreshProps, PullStatus } from './pulltorefresh'
+export type {
+  PullToRefreshType,
+  WebPullToRefreshProps,
+  PullStatus,
+} from '@/types'
 export default PullToRefresh

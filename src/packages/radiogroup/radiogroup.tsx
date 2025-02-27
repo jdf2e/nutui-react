@@ -1,38 +1,22 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
-import {
-  RadioGroupDirection,
-  RadioGroupOption,
-  RadioGroupPosition,
-  RadioGroupShape,
-} from './types'
 import RadioContext from './context'
 import Radio from '@/packages/radio/index'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface RadioGroupProps {
-  value?: string | number
-  defaultValue?: string | number
-  labelPosition: RadioGroupPosition
-  direction: RadioGroupDirection
-  shape?: RadioGroupShape
-  disabled?: boolean
-  options: RadioGroupOption[]
-  onChange: (value: string | number) => void
-}
+import { WebRadioGroupProps } from '@/types'
 
 const defaultProps = {
   labelPosition: 'right',
   onChange: (value: string | number) => {},
   direction: 'vertical',
   options: [],
-} as RadioGroupProps
+} as WebRadioGroupProps
 
 const classPrefix = 'nut-radiogroup'
 
 export const RadioGroup = React.forwardRef(
   (
-    props: Partial<RadioGroupProps> &
+    props: Partial<WebRadioGroupProps> &
       Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {

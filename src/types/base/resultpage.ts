@@ -2,6 +2,9 @@ import { ReactNode } from 'react'
 import { UIFill, UISize, UIType } from './baseatom'
 import { BaseProps } from './baseprops'
 
+export type ResultPageStatusOptions = {
+  [key: string]: React.ReactNode
+}
 export type ResultPageStatus =
   | 'success'
   | 'error'

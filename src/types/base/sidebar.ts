@@ -9,7 +9,7 @@ export interface BaseSideBarItem extends BaseProps {
   value: SimpleValue
 }
 
-export interface BaseSideBarProps extends BaseProps {
+export interface BaseSideBar extends BaseProps {
   value: SimpleValue
   defaultValue: SimpleValue
   contentDuration: number

@@ -1,3 +1,11 @@
-import { BaseLayout } from '../base/layout'
+import { ITouchEvent } from '@tarojs/components'
+import { BaseCol, BaseRow } from '../base/layout'
+import { UILayout } from '../base/baseatom'
 
-export interface TaroLayoutProps extends BaseLayout {}
+export interface TaroColProps extends BaseCol {}
+export interface TaroRowProps extends BaseRow {
+  onClick: (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
+    type: UILayout
+  ) => void
+}

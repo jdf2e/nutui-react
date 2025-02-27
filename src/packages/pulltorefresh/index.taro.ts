@@ -1,5 +1,8 @@
 import { PullToRefresh } from './pulltorefresh.taro'
 
-export type { PullToRefreshType } from './types'
-export type { PullToRefreshProps, PullStatus } from './pulltorefresh.taro'
+export type {
+  PullToRefreshType,
+  TaroPullToRefreshProps,
+  PullStatus,
+} from '@/types'
 export default PullToRefresh
