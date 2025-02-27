@@ -10,7 +10,7 @@ function sleep(delay = 0): Promise<void> {
 }
 
 interface PickerOption {
-  text: string | number
+  label: string | number
   value: string | number
   disabled?: boolean
   children?: PickerOption[]
@@ -18,72 +18,76 @@ interface PickerOption {
 }
 
 const simpleColumns = [
-  { text: '南京市', value: 'NanJing' },
-  { text: '无锡市', value: 'WuXi' },
-  { text: '海北藏族自治区', value: 'ZangZu' },
-  { text: '北京市', value: 'BeiJing' },
-  { text: '连云港市', value: 'LianYunGang' },
+  [
+    { label: '南京市', value: 'NanJing' },
+    { label: '无锡市', value: 'WuXi' },
+    { label: '海北藏族自治区', value: 'ZangZu' },
+    { label: '北京市', value: 'BeiJing' },
+    { label: '连云港市', value: 'LianYunGang' },
+  ],
 ]
 const multipleColumns = [
   [
-    { text: '周一', value: 'Monday' },
-    { text: '周二', value: 'Tuesday' },
-    { text: '周三', value: 'Wednesday' },
-    { text: '周四', value: 'Thursday' },
-    { text: '周五', value: 'Friday' },
+    { label: '周一', value: 'Monday' },
+    { label: '周二', value: 'Tuesday' },
+    { label: '周三', value: 'Wednesday' },
+    { label: '周四', value: 'Thursday' },
+    { label: '周五', value: 'Friday' },
   ],
   // 第二列
   [
-    { text: '上午', value: 'Morning' },
-    { text: '下午', value: 'Afternoon' },
-    { text: '晚上', value: 'Evening' },
+    { label: '上午', value: 'Morning' },
+    { label: '下午', value: 'Afternoon' },
+    { label: '晚上', value: 'Evening' },
   ],
 ]
 const multistageColumns = [
-  {
-    text: '浙江',
-    value: 'ZheJiang',
-    children: [
-      {
-        text: '杭州',
-        value: 'HangZhou',
-        children: [
-          { text: '西湖区', value: 'XiHu' },
-          { text: '余杭区', value: 'YuHang' },
-        ],
-      },
-      {
-        text: '温州',
-        value: 'WenZhou',
-        children: [
-          { text: '鹿城区', value: 'LuCheng' },
-          { text: '瓯海区', value: 'OuHai' },
-        ],
-      },
-    ],
-  },
-  {
-    text: '福建',
-    value: 'FuJian',
-    children: [
-      {
-        text: '福州',
-        value: 'FuZhou',
-        children: [
-          { text: '鼓楼区', value: 'GuLou' },
-          { text: '台江区', value: 'TaiJiang' },
-        ],
-      },
-      {
-        text: '厦门',
-        value: 'XiaMen',
-        children: [
-          { text: '思明区', value: 'SiMing' },
-          { text: '海沧区', value: 'HaiCang' },
-        ],
-      },
-    ],
-  },
+  [
+    {
+      label: '浙江',
+      value: 'ZheJiang',
+      children: [
+        {
+          label: '杭州',
+          value: 'HangZhou',
+          children: [
+            { label: '西湖区', value: 'XiHu' },
+            { label: '余杭区', value: 'YuHang' },
+          ],
+        },
+        {
+          label: '温州',
+          value: 'WenZhou',
+          children: [
+            { label: '鹿城区', value: 'LuCheng' },
+            { label: '瓯海区', value: 'OuHai' },
+          ],
+        },
+      ],
+    },
+    {
+      label: '福建',
+      value: 'FuJian',
+      children: [
+        {
+          label: '福州',
+          value: 'FuZhou',
+          children: [
+            { label: '鼓楼区', value: 'GuLou' },
+            { label: '台江区', value: 'TaiJiang' },
+          ],
+        },
+        {
+          label: '厦门',
+          value: 'XiaMen',
+          children: [
+            { label: '思明区', value: 'SiMing' },
+            { label: '海沧区', value: 'HaiCang' },
+          ],
+        },
+      ],
+    },
+  ],
 ]
 
 test('renderLabel works', async () => {
@@ -98,8 +102,9 @@ test('simple list-data confirm  event', async () => {
   const { container } = render(
     <Picker
       visible
+      defaultValue={['NanJing']}
       options={simpleColumns}
-      onConfirm={(options, value) => confirm(value)}
+      onConfirm={(selectedOptions, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
@@ -137,6 +142,7 @@ test('multiple list-data render', async () => {
   const { container } = render(
     <Picker
       visible
+      defaultValue={['Monday', 'Morning']}
       options={multipleColumns}
       onConfirm={(options, value) => confirm(value)}
     />
@@ -154,6 +160,7 @@ test('multistageColumns list-data render', async () => {
     <Picker
       visible
       options={multistageColumns}
+      defaultValue={['ZheJiang', 'HangZhou', 'XiHu']}
       onConfirm={(options, value) => confirm(value)}
     />
   )
@@ -167,7 +174,7 @@ test('multistageColumns list-data render', async () => {
 test('async list-data render', async () => {
   const confirm = vi.fn()
   const PenderContent = () => {
-    const [asyncColumns, setasyncColumns] = useState<PickerOption[] | []>([])
+    const [asyncColumns, setasyncColumns] = useState([])
 
     setTimeout(() => {
       setasyncColumns(simpleColumns)
@@ -176,6 +183,7 @@ test('async list-data render', async () => {
     return (
       <Picker
         visible
+        defaultValue={['NanJing']}
         options={asyncColumns}
         onConfirm={(options, value) => confirm(value)}
       />

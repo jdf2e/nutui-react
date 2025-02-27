@@ -133,7 +133,7 @@ test('should render with Multi Column', () => {
 
 test('should match onchange', async () => {
   const PenderContent = () => {
-    const [value, setValue] = useState([])
+    const [value, setValue] = useState([] as number[])
     const [options, setInnerOptions] = useState<PickerOptions[]>([])
 
     useEffect(() => {

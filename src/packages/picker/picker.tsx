@@ -2,56 +2,50 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
+import isEqual from 'react-fast-compare'
+import {
+  PickerOptions,
+  PickerValue,
+  PickerOption,
+  PickerOnChangeCallbackParameter,
+} from '@/packages/pickerview/types'
+import PickerView from '@/packages/pickerview/index'
 import Popup, { PopupProps } from '@/packages/popup/index'
-import { SafeArea } from '@/packages/safearea/safearea'
-import PickerPanel from './pickerpanel'
+import SafeArea from '@/packages/safearea/index'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
-import { PickerOption } from './types'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type PickerActions = {
-  open: () => void
-  close: () => void
-}
+import { PickerActions, PickerRef } from './types'
 
 export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
   title?: string
-  options: (PickerOption | PickerOption[])[]
-  value?: (number | string)[]
-  defaultValue?: (number | string)[]
+  options: PickerOptions[]
+  value?: PickerValue[]
+  defaultValue?: PickerValue[]
   threeDimensional?: boolean
   duration: number | string
   closeOnOverlayClick: boolean
+  renderLabel?: (item: PickerOption) => React.ReactNode
+
   popupProps: Partial<
     Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
   >
   onConfirm?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => void
   onCancel?: () => void
   onClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => void
-  afterClose?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    pickerRef: RefObject<HTMLDivElement>
-  ) => void
-  onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
-    columnIndex: number
-  ) => void
+  onChange?: (args0: PickerOnChangeCallbackParameter) => void
   children?: any
 }
 
@@ -59,14 +53,12 @@ const defaultProps = {
   ...ComponentDefaults,
   title: '',
   options: [],
-  value: [],
+  value: undefined,
   defaultValue: [],
-  threeDimensional: true,
   closeOnOverlayClick: true,
-  duration: 1000,
 } as unknown as PickerProps
 const InternalPicker: ForwardRefRenderFunction<
-  unknown,
+  PickerRef,
   Partial<PickerProps>
 > = (props, ref) => {
   const { locale } = useConfig()
@@ -85,36 +77,29 @@ const InternalPicker: ForwardRefRenderFunction<
     onConfirm,
     onCancel,
     onClose,
-    afterClose,
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-picker'
   const classes = classNames(classPrefix, className)
-  const [selectedValue, setSelectedValue] = usePropsValue<
-    Array<string | number>
-  >({
+  const [selectedValue, setSelectedValue] = usePropsValue<PickerValue[]>({
     value: props.value,
     defaultValue: [...defaultValue],
     finalValue: [...defaultValue],
-    onChange: (val: (string | number)[]) => {
-      props.onConfirm?.(setSelectedOptions(), val)
+    onChange: (value: PickerValue[]) => {
+      props.onConfirm?.(selectedOptionsRef.current, value)
     },
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
     value: props.visible,
     defaultValue: false,
     finalValue: false,
-    onChange: (val: boolean) => {
-      props.onClose?.(setSelectedOptions(), innerValue)
+    onChange: (v: boolean) => {
+      if (!v) {
+        props.onClose?.(selectedOptionsRef.current, innerValue)
+      }
     },
   })
-  const [innerValue, setInnerValue] = useState(selectedValue)
-  const [columnIndex, setColumnIndex] = useState(0) // 选中列
-  const pickerRef = useRef<any>(null)
-  const [refs, setRefs] = useRefs()
-  const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
-  const isConfirmEvent = useRef(false)
 
   const actions: PickerActions = {
     open: () => {
@@ -124,164 +109,56 @@ const InternalPicker: ForwardRefRenderFunction<
       setInnerVisible(false)
     },
   }
-
   useImperativeHandle(ref, () => actions)
 
-  // 级联数据格式化
-  const formatCascade = (
-    columns: PickerOption[],
-    values: (number | string)[]
-  ) => {
-    const formatted: PickerOption[][] = []
-    let columnOptions: PickerOption = {
-      text: '',
-      value: '',
-      children: columns,
-    }
-
-    let columnIndex = 0
-    while (columnOptions && columnOptions.children) {
-      const options: PickerOption[] = columnOptions.children
-      const value = values[columnIndex]
-      let index = options.findIndex((columnItem) => columnItem.value === value)
-      if (index === -1) index = 0
-      columnOptions = columnOptions.children[index]
-      columnIndex++
-      formatted.push(options)
-    }
-    return formatted
-  }
-
-  // 数据类型：多列、嵌套、单列
-  const columnsType = () => {
-    const firstColumn: PickerOption | PickerOption[] = options[0]
-    if (firstColumn) {
-      if (Array.isArray(firstColumn)) {
-        return 'multiple'
-      }
-      if ('children' in firstColumn) {
-        return 'cascade'
-      }
-    }
-    return 'single'
-  }
-
-  // 传入的数据格式化
-  const normalListData = (innerValue: any) => {
-    const type = columnsType()
-    switch (type) {
-      case 'multiple':
-        return options
-      case 'cascade':
-        // 级联数据处理
-        return formatCascade(options as PickerOption[], innerValue)
-      default:
-        return [options]
-    }
-  }
-  const init = () => {
-    const normalData: PickerOption[][] = normalListData(
-      innerValue
-    ) as PickerOption[][]
-    setColumnsList(normalData)
-    // 初始化默认选中数据
-    const data: (string | number)[] = []
-    normalData.length > 0 &&
-      normalData.map((item) => {
-        item[0] && data.push(item[0].value)
-        return item
-      })
-    if (!innerValue.length && innerValue.length === 0) {
-      setInnerValue([...data])
-    }
-  }
-
-  useEffect(() => {
-    setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
-  }, [innerVisible, selectedValue])
+  const [innerValue, setInnerValue] = useState([...selectedValue])
+  const innerValueRef = useRef(innerValue)
+  const [innerOptions, setInnerOptions] = useState<PickerOptions[]>([])
+  const selectedOptionsRef = useRef([] as PickerOptions)
+  const [refs, setRefs] = useRefs()
 
   useEffect(() => {
     if (innerVisible) {
-      init()
+      setInnerValue(selectedValue)
+      setInnerOptions(options as PickerOptions[])
     }
-  }, [options, innerVisible])
+  }, [selectedValue, innerOptions, innerVisible])
 
-  // 选中值进行修改
-  useEffect(() => {
-    onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-  }, [innerValue, columnsList])
-
-  const setSelectedOptions = () => {
-    const options: PickerOption[] = []
-    let currOptions = []
-    columnsList.forEach((columnOptions: PickerOption[], index: number) => {
-      currOptions = columnOptions.filter(
-        (item) => item.value === innerValue[index]
-      )
-      if (currOptions[0]) {
-        options.push(currOptions[0])
-      } else {
-        columnOptions[0] && options.push(columnOptions[0])
-      }
-    })
-    return options
+  const onChangeItem = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    if (selectedOptions?.length) {
+      selectedOptionsRef.current = selectedOptions
+    }
+    if (isEqual(value, innerValueRef.current)) return
+    innerValueRef.current = value
+    setInnerValue(value)
+    innerVisible &&
+      onChange?.({
+        selectedOptions,
+        value,
+        index,
+      })
   }
 
-  // 更新已选择数据
-  const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
-    const values: any = []
-    const start = columnIndex
-    if (columnOptions && Object.keys(columnOptions).length) {
-      // 切换数据后，数据有变动才触发。
-      if (values[columnIndex] !== columnOptions.value) {
-        if (columnsType() === 'cascade') {
-          values[columnIndex] = columnOptions.value || ''
-          while (columnOptions?.children?.[0]) {
-            values[columnIndex + 1] = columnOptions.children[0].value
-            columnIndex++
-            columnOptions = columnOptions.children[0]
-          }
-          // 当前改变列的下一列 children 值为空
-          if (columnOptions?.children?.length) {
-            values[columnIndex + 1] = ''
-          }
-          const combineResult = [
-            ...innerValue.slice(0, start),
-            ...values.splice(start),
-          ]
-          setInnerValue(combineResult)
-          setColumnsList(normalListData(combineResult) as PickerOption[][])
-        } else {
-          setInnerValue((data: (number | string)[]) => {
-            const cdata: (number | string)[] = [...data]
-            cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
-              columnOptions,
-              'value'
-            )
-              ? columnOptions.value
-              : ''
-            return cdata
-          })
-        }
-        setColumnIndex(columnIndex)
-      }
-    }
-  }
-  const confirm = () => {
+  const onConfirmEvent = () => {
     let moving = false
     refs.forEach((ref: any) => {
       if (ref.moving) moving = true
       ref.stopMomentum()
     })
-    if (moving) {
-      isConfirmEvent.current = true
-    } else {
+    if (!moving) {
       setSelectedValue(innerValue, true)
       setInnerVisible(false)
     }
-    setTimeout(() => {
-      isConfirmEvent.current = false
-    }, 0)
+  }
+
+  const onCancelEvent = () => {
+    setInnerValue(selectedValue)
+    onCancel?.()
+    setInnerVisible(false)
   }
 
   const renderTitleBar = () => {
@@ -291,8 +168,7 @@ const InternalPicker: ForwardRefRenderFunction<
           className={`${classPrefix}-cancel-btn`}
           onClick={(e) => {
             e.stopPropagation()
-            onCancel?.()
-            setInnerVisible(false)
+            onCancelEvent()
           }}
         >
           {locale?.cancel}
@@ -302,7 +178,7 @@ const InternalPicker: ForwardRefRenderFunction<
           className={`${classPrefix}-confirm-btn`}
           onClick={(e) => {
             e.stopPropagation()
-            confirm()
+            onConfirmEvent()
           }}
         >
           {locale.confirm}
@@ -311,50 +187,49 @@ const InternalPicker: ForwardRefRenderFunction<
     )
   }
 
+  const renderPickerElement = () => {
+    return (
+      <div className={classes} style={style} {...rest}>
+        {renderTitleBar()}
+        {typeof children !== 'function' && children}
+        <div className={`${classPrefix}-panel`}>
+          <PickerView
+            setRefs={setRefs}
+            value={innerValue}
+            options={props.options}
+            threeDimensional={threeDimensional}
+            duration={duration}
+            onChange={({
+              value,
+              index,
+              selectedOptions,
+            }: PickerOnChangeCallbackParameter) => {
+              onChangeItem({ value, index, selectedOptions })
+            }}
+          />
+        </div>
+      </div>
+    )
+  }
   return (
     <>
       {typeof children === 'function' && children(selectedValue)}
+
       <Popup
         {...popupProps}
         visible={innerVisible}
         position="bottom"
         onOverlayClick={() => {
-          if (closeOnOverlayClick) {
-            props.onCancel?.()
-            setInnerVisible(false)
-          }
-        }}
-        afterClose={() => {
-          afterClose?.(setSelectedOptions(), innerValue, pickerRef)
+          if (!closeOnOverlayClick) return
+          onCancelEvent()
         }}
       >
-        <div className={classes} style={style} {...rest}>
-          {renderTitleBar()}
-          {typeof children !== 'function' && children}
-          <div className={`${classPrefix}-panel`} ref={pickerRef}>
-            {columnsList?.map((item, index) => {
-              return (
-                <PickerPanel
-                  ref={setRefs(index)}
-                  defaultValue={innerValue?.[index]}
-                  options={item}
-                  threeDimensional={threeDimensional}
-                  chooseItem={(value: PickerOption, index: number) =>
-                    chooseItem(value, index)
-                  }
-                  duration={duration}
-                  key={index}
-                  keyIndex={index}
-                />
-              )
-            })}
-          </div>
-        </div>
+        {innerVisible ? <>{renderPickerElement()} </> : null}
         <SafeArea position="bottom" />
       </Popup>
     </>
   )
 }
 
-const Picker = React.forwardRef<unknown, Partial<PickerProps>>(InternalPicker)
+const Picker = React.forwardRef<PickerRef, Partial<PickerProps>>(InternalPicker)
 export default Picker

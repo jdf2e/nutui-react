@@ -18,13 +18,13 @@ import { View } from '@tarojs/components'
 
 const Demo7 = () => {
   const pickerOptions = [
-    { value: 4, text: 'BeiJing' },
-    { value: 1, text: 'NanJing' },
-    { value: 2, text: 'WuXi' },
-    { value: 8, text: 'DaQing' },
-    { value: 9, text: 'SuiHua' },
-    { value: 10, text: 'WeiFang' },
-    { value: 12, text: 'ShiJiaZhuang' },
+    { value: 1, label: 'BeiJing' },
+    { value: 2, label: 'NanJing' },
+    { value: 3, label: 'WuXi' },
+    { value: 4, label: 'DaQing' },
+    { value: 5, label: 'SuiHua' },
+    { value: 6, label: 'WeiFang' },
+    { value: 7, label: 'ShiJiaZhuang' },
   ]
   const submitFailed = (error: any) => {
     Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
@@ -107,7 +107,7 @@ const Demo7 = () => {
                   title={
                     value.length
                       ? pickerOptions.filter((po) => po.value === value[0])[0]
-                          ?.text
+                          ?.label
                       : 'Please select'
                   }
                   extra={<ArrowRight />}

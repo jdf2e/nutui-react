@@ -1,11 +1,16 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
-import Picker, { PickerOption, PickerProps } from '@/packages/picker/index.taro'
+import Picker, { PickerProps } from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isDate } from '@/utils/is-date'
 import { padZero } from '@/utils/pad-zero'
+import {
+  PickerOption,
+  PickerOptions,
+  PickerValue,
+} from '@/packages/pickerview/types'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date
@@ -39,16 +44,16 @@ export interface DatePickerProps extends BasicComponent {
     >
   >
   formatter: (type: string, option: PickerOption) => PickerOption
-  filter: (type: string, option: PickerOption[]) => PickerOption[]
+  filter: (type: string, options: PickerOptions) => PickerOptions
   onClose: () => void
   onCancel: () => void
   onConfirm: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => void
   onChange?: (
-    selectedOptions: PickerOption[],
-    selectedValue: (string | number)[],
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[],
     columnIndex: number
   ) => void
 }
@@ -104,8 +109,8 @@ export const DatePicker: FunctionComponent<
     minute: lang.min,
     seconds: lang.seconds,
   }
-  const [pickerValue, setPickerValue] = useState<(string | number)[]>([])
-  const [pickerOptions, setPickerOptions] = useState<PickerOption[][]>([])
+  const [pickerValue, setPickerValue] = useState<PickerValue[]>([])
+  const [pickerOptions, setPickerOptions] = useState<PickerOptions[]>([])
   const formatValue = (value: Date | null) => {
     if (!value || (value && !isDate(value))) {
       value = startDate
@@ -218,7 +223,7 @@ export const DatePicker: FunctionComponent<
   const compareDateChange = (
     currentDate: number,
     newDate: Date | null,
-    selectedOptions: PickerOption[],
+    selectedOptions: PickerOptions,
     index: number
   ) => {
     const isEqual = new Date(currentDate)?.getTime() === newDate?.getTime()
@@ -238,8 +243,8 @@ export const DatePicker: FunctionComponent<
     }
   }
   const handlePickerChange = (
-    selectedOptions: PickerOption[],
-    selectedValue: (number | string)[],
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[],
     index: number
   ) => {
     const rangeType = type.toLocaleLowerCase()
@@ -248,7 +253,7 @@ export const DatePicker: FunctionComponent<
         rangeType
       )
     ) {
-      const formatDate: (number | string)[] = []
+      const formatDate: PickerValue[] = []
       selectedValue.forEach((item) => {
         formatDate.push(item)
       })
@@ -313,13 +318,13 @@ export const DatePicker: FunctionComponent<
   const formatOption = (type: string, value: string | number) => {
     if (formatter) {
       return formatter(type, {
-        text: padZero(value, 2),
+        label: padZero(value, 2),
         value: padZero(value, 2),
       })
     }
     const padMin = padZero(value, 2)
     const fatter = showChinese ? zhCNType[type] : ''
-    return { text: padMin + fatter, value: padMin }
+    return { label: padMin + fatter, value: padMin }
   }
 
   const generateColumn = (
@@ -412,14 +417,13 @@ export const DatePicker: FunctionComponent<
           onClose={onClose}
           onCancel={onCancel}
           value={pickerValue}
-          onConfirm={(options: PickerOption[], value: (string | number)[]) =>
-            onConfirm && onConfirm(options, value)
-          }
-          onChange={(
-            options: PickerOption[],
-            value: (number | string)[],
-            index: number
-          ) => handlePickerChange(options, value, index)}
+          onConfirm={(
+            selectedOptions: PickerOptions,
+            selectedValue: PickerValue[]
+          ) => onConfirm && onConfirm(selectedOptions, selectedValue)}
+          onChange={({ value, index, selectedOptions }) => {
+            handlePickerChange(selectedOptions, value, index)
+          }}
           threeDimensional={threeDimensional}
         />
       )}
