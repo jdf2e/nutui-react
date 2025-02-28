@@ -5,6 +5,7 @@ import {
   DatePicker,
   CalendarDay,
   PickerValue,
+  PickerOptions,
 } from '@nutui/nutui-react'
 
 const padZero = (num: number | string, targetLength = 2) => {
@@ -38,14 +39,18 @@ const Demo6 = () => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }
-  const confirm = (values: PickerValue[], options: any[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     if (desc.current === 1) {
       setDesc1(
-        options.map((option) => padZero(parseInt(option.label))).join(':')
+        options
+          .map((option) => padZero(parseInt(option.label as string)))
+          .join(':')
       )
     } else {
       setDesc2(
-        options.map((option) => padZero(parseInt(option.label))).join(':')
+        options
+          .map((option) => padZero(parseInt(option.label as string)))
+          .join(':')
       )
     }
   }
