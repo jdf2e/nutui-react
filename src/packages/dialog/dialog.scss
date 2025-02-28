@@ -8,7 +8,9 @@
   align-items: center;
   width: $dialog-width;
   min-width: $dialog-min-width;
+  /* #ifndef harmony*/
   max-height: 67%;
+  /* #endif */
   min-height: $dialog-min-height;
   padding: $dialog-padding;
   box-sizing: border-box;
@@ -112,15 +114,10 @@
         min-width: 100%;
       }
 
-      .nut-dialog-footer-ok {
-        order: 1;
-      }
-
       .nut-dialog-footer-cancel {
         margin: 0;
         color: $color-text;
         font-size: $font-size-base;
-        order: 2;
         display: flex;
         justify-content: center;
         margin-top: $dialog-vertical-footer-ok-margin-top;
