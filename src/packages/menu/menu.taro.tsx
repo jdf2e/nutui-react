@@ -8,9 +8,9 @@ import React, {
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { MenuItem, MenuOptionItem } from '@/packages/menuitem/menuitem.taro'
+import { MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { MenuCallBack, WebMenuProps } from '@/types'
+import { MenuCallBack, MenuOptionItem, TaroMenuProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -22,8 +22,8 @@ const defaultProps = {
   icon: null,
   onOpen: (index: number, from: 'NORMAL' | 'REF') => {},
   onClose: (index: number, from: 'NORMAL' | 'REF') => {},
-} as WebMenuProps
-export const Menu: FunctionComponent<Partial<WebMenuProps>> & {
+} as TaroMenuProps
+export const Menu: FunctionComponent<Partial<TaroMenuProps>> & {
   Item: typeof MenuItem
 } = (props) => {
   const {

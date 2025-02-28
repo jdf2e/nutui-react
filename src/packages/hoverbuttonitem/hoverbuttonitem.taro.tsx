@@ -4,7 +4,7 @@ import { BaseEventOrig, ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
 import { getIcon } from '@/packages/hoverbuttonitem/utils'
-import { TaroTaroHoverButtonItemProps } from '@/types'
+import { TaroHoverButtonItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -12,14 +12,12 @@ const defaultProps = {
   onClick: (
     value: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {},
-} as TaroTaroHoverButtonItemProps
+} as TaroHoverButtonItemProps
 
 const classPrefix = 'nut-hoverbutton-item'
 const isHarmony = harmony()
 
-export const HoverButtonItem = (
-  props: Partial<TaroTaroHoverButtonItemProps>
-) => {
+export const HoverButtonItem = (props: Partial<TaroHoverButtonItemProps>) => {
   const { className, style, icon, onClick, children } = {
     ...defaultProps,
     ...props,

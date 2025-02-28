@@ -1,6 +1,4 @@
 import { Popover } from './popover.taro'
 
-export type { PopoverProps } from './popover.taro'
-export type { PopoverLocation, PopoverTheme, PopoverList } from './types'
-
+export type { PopoverList, TaroPopoverProps as PopoverProps } from '@/types'
 export default Popover

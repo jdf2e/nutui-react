@@ -4,8 +4,7 @@ import classNames from 'classnames'
 import RadioContext from '../radiogroup/context'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { RadioShape } from '@/packages/radio/types'
-import { WebRadioProps } from '@/types'
+import { WebRadioProps, RadioShape } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,

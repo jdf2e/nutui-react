@@ -9,7 +9,10 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Check } from '@nutui/icons-react'
-import Popup, { PopupProps, CloseIconPosition } from '@/packages/popup/index'
+import Popup, {
+  PopupProps,
+  PopupCloseIconPosition,
+} from '@/packages/popup/index'
 import { Tabs } from '@/packages/tabs/tabs'
 import Tree, { convertListToOptions } from './utils'
 import {
@@ -56,7 +59,7 @@ export interface CascaderProps
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
-  closeIconPosition: CloseIconPosition
+  closeIconPosition: PopupCloseIconPosition
   closeIcon: ReactNode
   lazy: boolean
   onLoad: (node: any, resolve: any) => void

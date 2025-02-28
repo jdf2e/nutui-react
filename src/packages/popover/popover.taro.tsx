@@ -13,9 +13,8 @@ import Popup from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/hooks/use-client-rect'
-import { PopoverList } from './types'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPopoverProps } from '@/types'
+import { TaroPopoverProps, PopoverList } from '@/types'
 
 export interface RootPosition {
   width: number

@@ -5,11 +5,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isDate } from '@/utils/is-date'
 import { padZero } from '@/utils/pad-zero'
-import {
-  PickerOption,
-  PickerOptions,
-  PickerValue,
-} from '@/packages/pickerview/types'
+import { PickerOption, PickerOptions, PickerValue } from '@/types'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date

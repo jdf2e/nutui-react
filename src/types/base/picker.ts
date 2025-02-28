@@ -12,7 +12,7 @@ export type PickerValue = string | number | null
 export interface PickerOption {
   label: string | number
   value: string | number
-  children: PickerOptions
+  children?: PickerOptions
 }
 
 export type PickerOptions = PickerOption[]

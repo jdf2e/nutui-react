@@ -7,9 +7,9 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react'
-import { MenuItem, MenuOptionItem } from '@/packages/menuitem/menuitem'
+import { MenuItem } from '@/packages/menuitem/menuitem'
 import { ComponentDefaults } from '@/utils/typings'
-import { MenuCallBack, TaroMenuProps } from '@/types'
+import { MenuCallBack, MenuOptionItem, WebMenuProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,8 +21,8 @@ const defaultProps = {
   icon: null,
   onOpen: (index: number, from: 'NORMAL' | 'REF') => {},
   onClose: (index: number, from: 'NORMAL' | 'REF') => {},
-} as TaroMenuProps
-export const Menu: FunctionComponent<Partial<TaroMenuProps>> & {
+} as WebMenuProps
+export const Menu: FunctionComponent<Partial<WebMenuProps>> & {
   Item: typeof MenuItem
 } = (props) => {
   const {

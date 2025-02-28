@@ -1,4 +1,3 @@
-import type { MouseEvent } from 'react'
 import React, {
   FunctionComponent,
   useContext,
@@ -111,9 +110,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     onError && onError()
   }
 
-  const clickAvatar = (
-    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
+  const clickAvatar = (e: ITouchEvent) => {
     onClick && onClick(e)
   }
 

@@ -16,9 +16,8 @@ import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/hooks/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
-import { PopoverList } from './types'
 import { useRtl } from '@/packages/configprovider'
-import { WebPopoverProps } from '@/types'
+import { WebPopoverProps, PopoverList } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,

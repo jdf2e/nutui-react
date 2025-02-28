@@ -14,9 +14,8 @@ import { ComponentDefaults } from '@/utils/typings'
 import Button from '@/packages/button'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
-import { FileItem } from './types'
 import { mergeProps } from '@/utils/merge-props'
-import { WebUploaderProps } from '@/types'
+import { WebUploaderProps, UploaderFileItem } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -35,7 +34,7 @@ const defaultProps = {
   capture: false,
   uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
   deleteIcon: <Failure color="rgba(0,0,0,0.6)" />,
-  beforeDelete: (file: FileItem, files: FileItem[]) => {
+  beforeDelete: (file: UploaderFileItem, files: UploaderFileItem[]) => {
     return true
   },
 } as WebUploaderProps
@@ -45,7 +44,7 @@ const InternalUploader: ForwardRefRenderFunction<
   PropsWithChildren<Partial<WebUploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
-  const fileListRef = useRef<FileItem[]>([])
+  const fileListRef = useRef<UploaderFileItem[]>([])
   const {
     children,
     uploadIcon,
@@ -87,7 +86,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
+  const [uploadQueue, setUploadQueue] = useState<UploaderFileItem[]>([])
 
   const classes = classNames(className, 'nut-uploader')
   useEffect(() => {
@@ -139,7 +138,7 @@ const InternalUploader: ForwardRefRenderFunction<
     return filterFile
   }
 
-  const deleted = (file: FileItem, index: number) => {
+  const deleted = (file: UploaderFileItem, index: number) => {
     const deletedFileList = fileListRef.current.filter(
       (file, idx) => idx !== index
     )
@@ -147,7 +146,7 @@ const InternalUploader: ForwardRefRenderFunction<
     setFileList(deletedFileList)
   }
 
-  const onDeleteItem = (file: FileItem, index: number) => {
+  const onDeleteItem = (file: UploaderFileItem, index: number) => {
     clearUploadQueue(index)
     funcInterceptor(beforeDelete, {
       args: [file, fileList],
@@ -203,10 +202,10 @@ const InternalUploader: ForwardRefRenderFunction<
       $el.value = ''
     }
   }
-  const uploadAction = async (tasks: FileItem[]) => {
+  const uploadAction = async (tasks: UploaderFileItem[]) => {
     const taskIds = tasks.map((task) => task.uid)
     setFileList(
-      fileList.map((file: FileItem) => {
+      fileList.map((file: UploaderFileItem) => {
         if (taskIds.includes(file.uid)) {
           return {
             ...file,
@@ -244,7 +243,7 @@ const InternalUploader: ForwardRefRenderFunction<
       })
     ).catch((errs) => console.error(errs))
   }
-  const handleItemClick = (file: FileItem, index: number) => {
+  const handleItemClick = (file: UploaderFileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
   const renderImageUploader = () => {

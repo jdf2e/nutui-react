@@ -1,18 +1,12 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   ForwardRefRenderFunction,
+  useEffect,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
-import {
-  PickerOptions,
-  PickerValue,
-  PickerOption,
-  PickerOnChangeCallbackParameter,
-} from '@/packages/pickerview/types'
 import PickerView from '@/packages/pickerview/index'
 import Popup, { PopupProps } from '@/packages/popup/index'
 import SafeArea from '@/packages/safearea/index'
@@ -20,7 +14,15 @@ import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { WebPickerProps, PickerActions, PickerRef } from '@/types'
+import {
+  PickerActions,
+  PickerOnChangeCallbackParameter,
+  PickerOption,
+  PickerOptions,
+  PickerRef,
+  PickerValue,
+  WebPickerProps,
+} from '@/types'
 
 export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
@@ -231,5 +233,7 @@ const InternalPicker: ForwardRefRenderFunction<
   )
 }
 
-const Picker = React.forwardRef<PickerRef, Partial<PickerProps>>(InternalPicker)
+const Picker = React.forwardRef<PickerRef, Partial<WebPickerProps>>(
+  InternalPicker
+)
 export default Picker

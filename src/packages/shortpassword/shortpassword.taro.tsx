@@ -11,8 +11,7 @@ import Popup from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { ShortPasswordActions } from '@/packages/shortpassword/types'
-import { TaroShortPasswordProps } from '@/types'
+import { TaroShortPasswordProps, ShortPasswordRef } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -73,7 +72,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     onClose?.()
     setVisible(false)
   }
-  const actions: ShortPasswordActions = {
+  const actions: ShortPasswordRef = {
     open: () => {
       setVisible(true)
     },

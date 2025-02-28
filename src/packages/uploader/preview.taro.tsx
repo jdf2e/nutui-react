@@ -6,7 +6,7 @@ import {
   Loading,
 } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { FileItem } from '../uploader'
+import { UploaderFileItem } from '@/types'
 import { Image } from '@/packages/image/image.taro'
 import { Progress } from '../progress/progress.taro'
 
@@ -20,7 +20,7 @@ export const Preview: React.FunctionComponent<any> = ({
   deleteIcon,
   children,
 }) => {
-  const renderIcon = (item: FileItem) => {
+  const renderIcon = (item: UploaderFileItem) => {
     if (item.status === 'error') {
       return item.failIcon || <Failure color="#fff" />
     }
@@ -31,7 +31,7 @@ export const Preview: React.FunctionComponent<any> = ({
   return (
     <>
       {fileList.length !== 0 &&
-        fileList.map((item: FileItem, index: number) => {
+        fileList.map((item: UploaderFileItem, index: number) => {
           const {
             status = 'success',
             uid = index,

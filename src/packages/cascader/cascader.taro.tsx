@@ -1,27 +1,27 @@
 import React, {
   ForwardRefRenderFunction,
-  PropsWithChildren,
   isValidElement,
-  useState,
-  useEffect,
+  PropsWithChildren,
   ReactNode,
+  useEffect,
   useImperativeHandle,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import { Loading, Check } from '@nutui/icons-react-taro'
+import { Check, Loading } from '@nutui/icons-react-taro'
 import { ScrollView, View } from '@tarojs/components'
 import Popup, {
   PopupProps,
-  CloseIconPosition,
+  PopupCloseIconPosition,
 } from '@/packages/popup/index.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import Tree, { convertListToOptions } from './utils'
 import {
-  CascaderPane,
-  CascaderOption,
-  CascaderValue,
-  CascaderOptionKey,
   CascaderFormat,
+  CascaderOption,
+  CascaderOptionKey,
+  CascaderPane,
+  CascaderValue,
 } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -60,7 +60,7 @@ export interface CascaderProps
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
-  closeIconPosition: CloseIconPosition
+  closeIconPosition: PopupCloseIconPosition
   closeIcon: ReactNode
   lazy: boolean
   onLoad: (node: any, resolve: any) => void

@@ -9,8 +9,7 @@ import { ITouchEvent, View } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { RadioShape } from '@/packages/radio/types'
-import { TaroRadioProps } from '@/types'
+import { TaroRadioProps, RadioShape } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,

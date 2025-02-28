@@ -10,8 +10,7 @@ import Popup from '@/packages/popup/index'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { ShortPasswordActions } from '@/packages/shortpassword/types'
-import { WebShortPasswordProps } from '@/types'
+import { WebShortPasswordProps, ShortPasswordRef } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -72,7 +71,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     onClose?.()
     setVisible(false)
   }
-  const actions: ShortPasswordActions = {
+  const actions: ShortPasswordRef = {
     open: () => {
       setVisible(true)
     },

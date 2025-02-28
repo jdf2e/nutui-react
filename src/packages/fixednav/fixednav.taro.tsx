@@ -4,10 +4,10 @@ import { ArrowLeft } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { FixedNavProps } from './types.taro'
+import { TaroFixedNavProps } from '@/types'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 
-const defaultProps: FixedNavProps = {
+const defaultProps: TaroFixedNavProps = {
   ...defaultOverlayProps,
   activeText: '',
   inactiveText: '',
@@ -24,7 +24,7 @@ const defaultProps: FixedNavProps = {
 }
 
 export const FixedNav: FunctionComponent<
-  Partial<FixedNavProps> &
+  Partial<TaroFixedNavProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onSelect' | 'content'

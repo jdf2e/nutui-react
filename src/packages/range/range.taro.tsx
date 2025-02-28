@@ -13,10 +13,9 @@ import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { RangeValue } from './types'
 import { useRtl } from '../configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
-import { TaroRangeProps } from '@/types'
+import { TaroRangeProps, RangeValue } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
