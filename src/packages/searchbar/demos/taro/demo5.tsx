@@ -20,7 +20,12 @@ const Demo5 = () => {
         }
         right={
           <>
-            <Star size={20} color="#ff0f23" />
+            <Star
+              size={20}
+              style={{
+                color: 'var(--nutui-color-primary)',
+              }}
+            />
             <More size={20} />
           </>
         }

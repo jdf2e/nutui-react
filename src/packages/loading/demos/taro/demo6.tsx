@@ -4,8 +4,8 @@ import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
 const Demo6 = () => {
   return (
     <Cell>
-      <ConfigProvider>
-        <Loading color="#396aca">加载中</Loading>
+      <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
+        <Loading>加载中</Loading>
       </ConfigProvider>
       <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
         <Loading>加载中</Loading>

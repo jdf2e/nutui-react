@@ -10,14 +10,12 @@ const Demo3 = () => {
     <>
       <ConfigProvider
         theme={{
+          nutuiSearchbarBackground: 'var(--nutui-color-primary)',
           nutuiSearchbarInputBackground: '#eee',
           nutuiSearchbarInputTextAlign: 'right',
         }}
       >
-        <SearchBar
-          onSearch={() => toastShow()}
-          style={{ backgroundColor: '#ff0f23' }}
-        />
+        <SearchBar onSearch={() => toastShow()} />
       </ConfigProvider>
       <Toast
         type="text"
