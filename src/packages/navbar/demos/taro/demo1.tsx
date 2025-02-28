@@ -13,9 +13,11 @@ const Demo1 = () => {
       alignItems: 'center',
     },
     title: {
+      display: 'flex',
+      alignItems: 'center',
+      flex: 1,
       fontSize: pxTransform(18),
       fontWeight: 'bold',
-      height: pxTransform(26),
     },
     description: {
       fontSize: pxTransform(12),
