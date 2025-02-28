@@ -174,4 +174,4 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nut-icon-height | height of iconfont container | `16px` |
 | \--nut-icon-width | width of iconfont container | `16px` |
-| \--nutui-icon-line-height | iconfont line height | `16px` |
+| \--nut-icon-line-height | iconfont line height | `16px` |
