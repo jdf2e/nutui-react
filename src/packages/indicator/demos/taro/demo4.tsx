@@ -14,7 +14,8 @@ const Demo4 = () => {
               width: pxTransform(14),
               height: pxTransform(14),
               justifyContent: 'center',
-              fontSize: pxTransform(12),
+              alignItems: 'center',
+              fontSize: pxTransform(11),
               color: '#FFFFFF',
               borderWidth: pxTransform(1),
               borderColor: '#FFFFFF',
@@ -31,7 +32,7 @@ const Demo4 = () => {
           current={2}
           direction="vertical"
           style={{
-            marginLeft: 50,
+            marginLeft: pxTransform(50),
           }}
         />
 
@@ -41,7 +42,7 @@ const Demo4 = () => {
           direction="vertical"
           type="slide"
           style={{
-            marginLeft: '50px',
+            marginLeft: pxTransform(50),
           }}
         />
       </Cell>
@@ -52,7 +53,7 @@ const Demo4 = () => {
           direction="vertical"
           color="white"
           style={{
-            marginLeft: '50px',
+            marginLeft: pxTransform(50),
           }}
         />
       </Cell>
