@@ -1,20 +1,11 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index.taro'
 import TabbarContext from '@/packages/tabbar/context'
 import addColorForHarmony from '@/utils/add-color-for-harmony'
-
-export interface TabbarItemProps extends BasicComponent {
-  title: ReactNode
-  icon: ReactNode
-  value: ReactNode
-  dot: boolean
-  max: number
-  top: string
-  right: string
-}
+import { TaroTabbarItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -25,9 +16,9 @@ const defaultProps = {
   max: 99,
   top: '0',
   right: '0',
-} as TabbarItemProps
+} as TaroTabbarItemProps
 
-export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
+export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   props
 ) => {
   const ctx = useContext(TabbarContext)

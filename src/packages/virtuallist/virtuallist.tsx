@@ -1,44 +1,32 @@
 import React, {
   FunctionComponent,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
-import type { Data, VirtualListState, PositionType } from './types'
+import type { PositionType, VirtualListState } from './types'
 import {
-  initPositinoCache,
-  getListTotalSize,
   binarySearch,
   getEndIndex,
+  getListTotalSize,
+  initPositinoCache,
   updateItemSize,
 } from './utils'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface VirtualListProps extends BasicComponent {
-  list: Array<Data>
-  containerHeight: number
-  itemRender: (data: any, dataIndex: number, index: number) => ReactNode
-  itemHeight: number
-  itemEqual: boolean
-  direction: 'vertical' | 'horizontal'
-  overscan: number
-  onScroll: () => void
-  key: string
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebVirtualListProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-  list: [] as Array<Data>,
+  list: [] as Array<any>,
   itemHeight: 66,
   itemEqual: true,
   direction: 'vertical',
   overscan: 2,
-} as VirtualListProps
+} as WebVirtualListProps
 
-export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+export const VirtualList: FunctionComponent<Partial<WebVirtualListProps>> = (
   props
 ) => {
   const {

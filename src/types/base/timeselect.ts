@@ -32,7 +32,7 @@ export interface BaseTimeSelect extends BaseProps {
   onTimeChange?: (time: TimeType, value: TimeSelectDateType[]) => void
 }
 
-export interface BaseTimeDetail extends BaseProps {
+export interface BaseTimeSelectDetail extends BaseProps {
   activeDate: string
   activeTime: TimeSelectDateType[]
   options: TimeSelectDateType[]

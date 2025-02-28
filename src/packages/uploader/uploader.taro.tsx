@@ -13,31 +13,11 @@ import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { funcInterceptor } from '@/utils/interceptor'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { FileItem } from './types'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
-
-interface sizeType {
-  /** 原图 */
-  original: string
-  /** compressed */
-  compressed: string
-}
-
-interface sourceType {
-  /** 从相册选图 */
-  album: string
-  /** 使用相机 */
-  camera: string
-}
-
-interface mediaType {
-  /** 只能拍摄图片或从相册选择图片 */
-  image: string
-  /** 只能拍摄视频或从相册选择视频 */
-  video: string
-}
+import { TaroUploaderProps } from '@/types'
 
 interface TFileType {
   size: number
@@ -47,48 +27,6 @@ interface TFileType {
   tempFilePath?: string
   thumbTempFilePath?: string
   path?: string
-}
-
-export interface UploaderProps extends BasicComponent {
-  maxCount: string | number
-  sizeType: (keyof sizeType)[]
-  sourceType: (keyof sourceType)[]
-  mediaType: (keyof mediaType)[]
-  camera: string
-  maxFileSize: number
-  defaultValue?: FileItem[]
-  value?: FileItem[]
-  previewType: 'picture' | 'list'
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  uploadIcon?: React.ReactNode
-  deleteIcon?: React.ReactNode
-  uploadLabel?: React.ReactNode
-  name: string
-  accept: string
-  disabled: boolean
-  autoUpload: boolean
-  multiple: boolean
-  preview: boolean
-  deletable: boolean
-  className: string
-  previewUrl?: string
-  maxDuration: number
-  style: React.CSSProperties
-  onDelete?: (file: FileItem, files: FileItem[]) => void
-  onOversize?: (
-    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
-  ) => void
-  onOverCount?: (count: number) => void
-  onChange?: (files: FileItem[]) => void
-  upload: (
-    files: Taro.chooseImage.ImageFile | Taro.chooseMedia.ChooseMedia | any
-  ) => Promise<FileItem>
-  beforeUpload?: (
-    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
-  ) => Promise<File[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem, index: number) => void
-  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
@@ -116,11 +54,11 @@ const defaultProps = {
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
-} as UploaderProps
+} as TaroUploaderProps
 
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<UploaderProps>>
+  PropsWithChildren<Partial<TaroUploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {

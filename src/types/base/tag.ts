@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { BaseProps } from './baseprops'
 import { UIType } from './baseatom'
 
-export interface BaseTag extends BaseProps {
+export interface BaseTag<EVENT = any> extends BaseProps {
   type: UIType
   background: string
   color: string
@@ -11,6 +11,6 @@ export interface BaseTag extends BaseProps {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: any) => void
-  onClose: (e: any) => void
+  onClick: (e: EVENT) => void
+  onClose: (e: EVENT) => void
 }

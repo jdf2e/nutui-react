@@ -5,7 +5,7 @@ import { FullPosition, SimpleValue } from './baseatom'
 export interface TourList {
   target: Element | string
   content?: string
-  location?: string
+  location?: FullPosition
   popoverOffset?: number[]
   arrowOffset?: number
 }

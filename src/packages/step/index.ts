@@ -1,4 +1,4 @@
 import { Step } from './step'
 
-export type { StepProps } from './step'
+export type { WebStepProps } from '@/types'
 export default Step

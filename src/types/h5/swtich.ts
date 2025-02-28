@@ -1,3 +1,3 @@
-import { Baseundefined } from '../base/swtich'
+import { BaseSwitch } from '../base/swtich'
 
-export interface WebundefinedProps extends Baseundefined {}
+export interface WebSwitchProps extends BaseSwitch<React.MouseEvent> {}

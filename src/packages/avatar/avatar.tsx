@@ -15,8 +15,6 @@ import { ComponentDefaults } from '@/utils/typings'
 import AvatarGroup from '@/packages/avatargroup'
 import { WebAvatarProps } from '@/types'
 
-export type AvatarShape = 'round' | 'square'
-
 const defaultProps = {
   ...ComponentDefaults,
   size: '',

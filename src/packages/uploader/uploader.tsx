@@ -1,54 +1,22 @@
 import React, {
-  useState,
-  useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import { Photograph, Failure } from '@nutui/icons-react'
+import { Failure, Photograph } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Button from '@/packages/button'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
 import { FileItem } from './types'
 import { mergeProps } from '@/utils/merge-props'
-
-export interface UploaderProps extends BasicComponent {
-  maxCount: string | number
-  maxFileSize: number
-  defaultValue?: FileItem[]
-  value?: FileItem[]
-  previewType: 'picture' | 'list'
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  upload: (file: File) => Promise<FileItem>
-  uploadIcon?: React.ReactNode
-  deleteIcon?: React.ReactNode
-  uploadLabel?: React.ReactNode
-  name: string
-  accept: string
-  disabled: boolean
-  autoUpload: boolean
-  multiple: boolean
-  clearInput: boolean
-  preview: boolean
-  deletable: boolean
-  capture: boolean | 'user' | 'environment'
-  className: string
-  previewUrl?: string
-  style: React.CSSProperties
-  onDelete?: (file: FileItem, files: FileItem[]) => void
-  onOversize?: (files: File[]) => void
-  onOverCount?: (count: number) => void
-  onChange?: (files: FileItem[]) => void
-  beforeUpload?: (files: File[]) => Promise<File[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem, index: number) => void
-  onUploadQueueChange?: (tasks: FileItem[]) => void
-}
+import { WebUploaderProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -70,11 +38,11 @@ const defaultProps = {
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
-} as UploaderProps
+} as WebUploaderProps
 
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<UploaderProps>>
+  PropsWithChildren<Partial<WebUploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const fileListRef = useRef<FileItem[]>([])

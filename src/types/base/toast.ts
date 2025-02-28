@@ -3,7 +3,7 @@ import { UISize, VAlign } from './baseatom'
 
 export type ToastIcon = 'success' | 'fail' | 'loading' | 'warn' | ReactNode
 export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
-export type ToastSize = Extract<UISize, 'large' | 'normal' | 'small'>
+export type ToastSize = Extract<UISize, 'large' | 'small'> | 'base'
 
 export type BaseToast<OVERLAY_PROPS> = OVERLAY_PROPS & {
   id: string

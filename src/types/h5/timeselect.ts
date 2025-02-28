@@ -1,3 +1,4 @@
-import { BaseTimeSelect } from '../base/timeselect'
+import { BaseTimeSelect, BaseTimeSelectDetail } from '../base/timeselect'
 
 export interface WebTimeSelectProps extends BaseTimeSelect {}
+export interface WebTimeSelectDetailProps extends BaseTimeSelectDetail {}

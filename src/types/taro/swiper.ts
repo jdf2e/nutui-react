@@ -1,3 +1,24 @@
-import { BaseSwiper } from '../base/swiper'
+import { SwiperProps } from '@tarojs/components'
+import { ReactNode } from 'react'
+import { BaseSwiper, BaseSwiperItem } from '../base/swiper'
+import { Direction, SimpleValue } from '../base/baseatom'
+import { BaseProps } from '@/types'
 
-export interface TaroSwiperProps extends BaseSwiper {}
+type OmittedSwiperProps = Omit<SwiperProps, 'ref' | 'style'>
+type OmittedKeys = keyof BaseSwiper
+export type TaroSwiperProps = Omit<BaseSwiper, OmittedKeys> &
+  OmittedSwiperProps &
+  BaseProps & {
+    width?: SimpleValue
+    height?: SimpleValue
+    direction: Direction
+    indicator: ReactNode
+    autoPlay: boolean
+    loop: boolean
+    defaultValue: number
+  }
+
+export interface TaroSwiperItemProps extends Omit<BaseSwiperItem, 'onClick'> {
+  itemId?: string
+  skipHiddenItemLayout?: boolean
+}

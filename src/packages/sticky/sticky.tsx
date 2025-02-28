@@ -10,26 +10,19 @@ import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { getRect } from '@/hooks/use-client-rect'
 import useWatch from '@/hooks/use-watch'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface StickyProps extends BasicComponent {
-  container: React.RefObject<HTMLElement>
-  position: 'top' | 'bottom'
-  threshold: number
-  zIndex: number
-  onChange: (val: boolean) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroStickyProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
   threshold: 0,
   zIndex: 900,
-} as StickyProps
+} as TaroStickyProps
 
 const classPrefix = 'nut-sticky'
 
-export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
+export const Sticky: FunctionComponent<Partial<TaroStickyProps>> = (props) => {
   const {
     position,
     zIndex,

@@ -1,3 +1,4 @@
 import { BaseTextArea } from '../base/textarea'
 
-export interface WebTextAreaProps extends BaseTextArea {}
+export interface WebTextAreaProps
+  extends BaseTextArea<React.FocusEvent<HTMLTextAreaElement>> {}

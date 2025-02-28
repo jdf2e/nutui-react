@@ -12,7 +12,7 @@ export interface TableColumnProps {
   width?: number
 }
 
-export interface BasicTableProps extends BaseProps {
+export interface BaseTable extends BaseProps {
   columns: Array<TableColumnProps>
   data: Array<any>
   bordered: boolean

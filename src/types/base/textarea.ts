@@ -1,6 +1,6 @@
 import { BaseProps } from './baseprops'
 
-export interface BaseTextArea extends BaseProps {
+export interface BaseTextArea<EVENT = any> extends BaseProps {
   value: string
   defaultValue: string
   showCount: boolean
@@ -13,6 +13,6 @@ export interface BaseTextArea extends BaseProps {
   plain: boolean
   status: 'error' | 'default'
   onChange: (value: string) => void
-  onBlur: (event: any) => void
-  onFocus: (event: any) => void
+  onBlur: (event: EVENT) => void
+  onFocus: (event: EVENT) => void
 }

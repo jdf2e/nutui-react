@@ -1,3 +1,5 @@
-import { Baseundefined } from '../base/swtich'
+import { ITouchEvent } from '@tarojs/components'
+import { BaseSwitch } from '../base/swtich'
 
-export interface TaroundefinedProps extends Baseundefined {}
+type UnionEvent = React.MouseEvent<Element, MouseEvent> | ITouchEvent
+export interface TaroSwitchProps extends BaseSwitch<UnionEvent> {}

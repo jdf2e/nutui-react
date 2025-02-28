@@ -15,13 +15,13 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
 import { mergeProps } from '@/utils/merge-props'
-import { ToastProps } from './index.taro'
+import { TaroToastProps } from '@/types'
 
-const defaultProps: ToastProps = {
+const defaultProps: TaroToastProps = {
   ...defaultOverlayProps,
   id: '',
   duration: 2, // 时长,duration为0则一直展示
-  position: 'center',
+  position: 'middle',
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
@@ -37,7 +37,8 @@ const defaultProps: ToastProps = {
 }
 
 export const Toast: FunctionComponent<
-  Partial<ToastProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>
+  Partial<TaroToastProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>
 > & {
   show: typeof show
   hide: typeof hide
@@ -191,7 +192,8 @@ export const Toast: FunctionComponent<
   )
 }
 
-export interface ToastOptions extends Partial<Omit<ToastProps, 'visible'>> {}
+export interface ToastOptions
+  extends Partial<Omit<TaroToastProps, 'visible'>> {}
 
 export function show(selector: string, options: ToastOptions) {
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -11,18 +11,11 @@ import classNames from 'classnames'
 import { getEnv, PageScrollObject, usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { getWindowInfo } from '@/utils/get-system-info'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/hooks/use-watch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-
-export interface StickyProps extends BasicComponent {
-  container: React.RefObject<HTMLElement>
-  position: 'top' | 'bottom'
-  threshold: number
-  zIndex: number
-  onChange: (val: boolean) => void
-}
+import { TaroStickyProps } from '@/types'
 
 interface StickyRect {
   top: number
@@ -37,11 +30,11 @@ const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
   zIndex: 900,
-} as StickyProps
+} as TaroStickyProps
 
 const classPrefix = 'nut-sticky'
 
-export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
+export const Sticky: FunctionComponent<Partial<TaroStickyProps>> = (props) => {
   const {
     position,
     zIndex,

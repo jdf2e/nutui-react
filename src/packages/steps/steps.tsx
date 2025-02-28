@@ -1,24 +1,18 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface StepsProps extends BasicComponent {
-  value: number
-  direction: string
-  dot: boolean
-  onStepClick: (index: number) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebStepsProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   value: 0,
   direction: 'horizontal',
   dot: false,
-} as StepsProps
+} as WebStepsProps
 
 export const Steps: FunctionComponent<
-  Partial<StepsProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebStepsProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const propSteps = { ...defaultProps, ...props }
   const {

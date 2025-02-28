@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { BaseProps } from './baseprops'
 import { Direction, PositionX, SimpleValue } from './baseatom'
 
@@ -18,7 +18,7 @@ export interface BaseTabs extends BaseProps {
   activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
   duration: number | string
   align: PositionX
-  title: () => Element[]
+  title: () => ReactNode[]
   onChange: (index: SimpleValue) => void
   onClick: (index: SimpleValue) => void
   autoHeight: boolean

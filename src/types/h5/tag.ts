@@ -1,3 +1,3 @@
 import { BaseTag } from '../base/tag'
 
-export interface WebTagProps extends BaseTag {}
+export interface WebTagProps extends BaseTag<React.MouseEvent> {}

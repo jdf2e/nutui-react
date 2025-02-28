@@ -1,3 +1,5 @@
+import { TextareaProps } from '@tarojs/components'
 import { BaseTextArea } from '../base/textarea'
 
-export interface TaroTextAreaProps extends BaseTextArea {}
+export type TaroTextAreaProps = Omit<BaseTextArea, 'style'> &
+  Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>

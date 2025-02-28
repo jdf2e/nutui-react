@@ -1,6 +1,6 @@
 import { BaseProps } from './baseprops'
-import { UIRound } from './baseatom'
 
+export type avatarShape = 'round' | 'square'
 export interface BaseSkeleton extends BaseProps {
   animated: boolean
   rows: number
@@ -8,5 +8,5 @@ export interface BaseSkeleton extends BaseProps {
   avatar: boolean
   avatarSize: string
   visible: boolean
-  avatarShape: UIRound
+  avatarShape: avatarShape
 }

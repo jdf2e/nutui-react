@@ -2,6 +2,12 @@ import { ReactNode } from 'react'
 import { BaseProps } from './baseprops'
 import { Direction, SimpleValue } from './baseatom'
 
+export type SwiperRef = {
+  to: (index: number) => void
+  next: () => void
+  prev: () => void
+}
+
 export interface FocusEffect {
   name: 'focus'
   scale: number
@@ -20,6 +26,6 @@ export interface BaseSwiper extends BaseProps {
   onChange?: (index: number) => void
 }
 
-export interface BaseSwiperItem extends BaseProps {
-  onClick?: (e: any) => void
+export interface BaseSwiperItem<Event = any> extends BaseProps {
+  onClick?: (e: Event) => void
 }

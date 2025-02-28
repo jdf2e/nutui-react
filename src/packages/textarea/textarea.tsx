@@ -2,25 +2,9 @@ import type { ChangeEvent, FocusEvent } from 'react'
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { useConfig, useRtl } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface TextAreaProps extends BasicComponent {
-  value: string
-  defaultValue: string
-  showCount: boolean
-  maxLength: number
-  rows: number
-  placeholder: string
-  readOnly: boolean
-  disabled: boolean
-  autoSize: boolean
-  plain: boolean
-  status: 'error' | 'default'
-  onChange: (value: string) => void
-  onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
-  onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
-}
+import { WebTextAreaProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -34,9 +18,9 @@ const defaultProps = {
   autoSize: false,
   plain: false,
   status: 'default',
-} as TextAreaProps
+} as WebTextAreaProps
 export const TextArea: FunctionComponent<
-  Partial<TextAreaProps> &
+  Partial<WebTextAreaProps> &
     Omit<
       React.HTMLAttributes<HTMLTextAreaElement>,
       'onChange' | 'onBlur' | 'onFocus'

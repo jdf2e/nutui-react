@@ -1,3 +1,4 @@
 import { BaseSticky } from '../base/sticky'
 
-export interface WebStickyProps extends BaseSticky {}
+export interface WebStickyProps
+  extends BaseSticky<React.RefObject<HTMLElement>> {}
