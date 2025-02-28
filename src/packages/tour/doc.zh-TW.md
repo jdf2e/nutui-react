@@ -62,14 +62,14 @@ import { Tour } from '@nutui/nutui-react'
 | type | 引導類型 | `step` \| `tile` | `step` |
 | list | 引導步驟內容 | `TourList[]` | `-` |
 | offset | 鏤空遮罩相對於目標元素的偏移量 | `number[]` | `[8, 10]` |
-| location | 彈出層位置,同 Popopver 的[location 屬性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
+| location | 彈出層位置,同 Popopver 的[location 屬性](#/zh-CN/component/popover) | `string` | `bottom` |
 | next | 下一步按鈕文案 | `ReactNode` | `''` |
 | prev | 上一步按鈕文案 | `ReactNode` | `''` |
 | complete | 完成按鈕文案 | `ReactNode` | `''` |
 | mask | 是否顯示鏤空遮罩 | `boolean` | `true` |
 | maskWidth | 鏤空遮罩層寬度 | `number` \| `string` | `''` |
 | maskHeight | 鏤空遮罩層高度 | `number` \| `string` | `''` |
-| closeOnOverlayClick | 是否在點擊鏤空遮罩層後關閉,同 Popopver 的[closeOnClickOverlay 屬性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `boolean` | `true` |
+| closeOnOverlayClick | 是否在點擊鏤空遮罩層後關閉,同 Popopver 的[closeOnClickOverlay 屬性](#/zh-CN/component/popover) | `boolean` | `true` |
 | showPrev | 是否展示上一步按鈕 | `boolean` | `true` |
 | title | 是否展示標題欄 | `ReactNode` | `''` |
 | onClose | 氣泡層關閉時觸發 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
