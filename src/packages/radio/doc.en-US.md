@@ -162,18 +162,4 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radiogroup-radio-margin-bottom | Margin Bottom of each radio in Group mode | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Radio)
-
-### Component Logs
-
-- 🐛 fix(radio): lint fixed ([#2635](https://github.com/jdf2e/nutui-react/pull/2635)) `v2.6.22`
-- 💡 🏡 chore(radio): demo拆解与规范 ([#2158](https://github.com/jdf2e/nutui-react/pull/2158)) @3042503122 `v2.6.0`
-- 🐛 fix(radio): 样式变量修复(issue) ([#2149](https://github.com/jdf2e/nutui-react/pull/2149)) @Alex.huxiyang `v2.5.2`
-- 💡 style(radio): 优化css变量和样式 ([#1756](https://github.com/jdf2e/nutui-react/pull/1756)) @xiaoyatong `v2.3.0`
-- 💡 🚀 perf: radio reverse and demos ([#1631](https://github.com/jdf2e/nutui-react/pull/1631)) @xiaoyatong `v2.1.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=radio&expanded=true)
+<Contribution name="Radio" />

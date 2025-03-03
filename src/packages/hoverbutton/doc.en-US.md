@@ -89,12 +89,4 @@ The component provides the following CSS variables that can be used for custom s
 | \--nutui-hoverbutton-item-icon-color | Icon normal color | `#1A1A1A` |
 | \--nutui-hoverbutton-item-icon-color-active | Icon active color | `#595959` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20HoverButton)
-
-### Component Logs
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=hoverbutton&expanded=true)
+<Contribution name="HoverButton" />

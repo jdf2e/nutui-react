@@ -85,18 +85,4 @@ import { CircleProgress } from '@nutui/nutui-react'
 | \--nutui-circleprogress-text-color | 环形进度条轨道内容区的颜色 | `$color-title` |
 | \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-l` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20CircleProgress)
-
-### Component Logs
-
-- 🐛 fix(circleprogress): update demo ([#2260](https://github.com/jdf2e/nutui-react/pull/2260)) @eiinu `v2.6.5`
-- 🐛 fix(circleprogress): demo拆解与规范 ([#2091](https://github.com/jdf2e/nutui-react/pull/2091)) @Alex-huxiyang `v2.5.0`
-- 💡 🛠 refactor(circleprogress): optimize animation duration ([#1861](https://github.com/jdf2e/nutui-react/pull/1861)) @oasis-cloud `v2.3.7`
-- 💡 style(circleprogress): docs 优化，修订 css 变量 ([#1699](https://github.com/jdf2e/nutui-react/pull/1699)) @xiaoyatong `v2.3.0`
-- 🐛 fix(circleprogress): 计算出现 NaN 导致组件展示为 100% 的情况 ([#1602](https://github.com/jdf2e/nutui-react/pull/1602)) @oasis-cloud `v2.0.24`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=circleprogress&expanded=true)
+<Contribution name="CircleProgress" />

@@ -149,18 +149,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-mini-border-radius | The rounded corners of the button with size mini | `6px` |
 | \--nutui-button-text-icon-margin | Margin of text with icon button | `4px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Button)
-
-### Component Logs
-
-- 🐛 支持 button block ([#2853](https://github.com/jdf2e/nutui-react/pull/2853)) `v2.7.3`
-- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
-- ✨ feat(button): 新增 button 原始类型属性 ([#2195](https://github.com/jdf2e/nutui-react/pull/2195)) @Jiankian `v2.6.8`
-- ✨ feat(button): 增加xlarge,按钮内图标大小追随按钮当前字号 ([#2037](https://github.com/jdf2e/nutui-react/pull/2037)) @xiaoyatong `v2.4.1`
-- 💡 🌈 style(button): jmapp style ([#2019](https://github.com/jdf2e/nutui-react/pull/2019)) @zhehu1 `v2.4.1`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=button&expanded=true)
+<Contribution name="Button" />

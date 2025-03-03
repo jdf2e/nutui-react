@@ -168,18 +168,4 @@ import { Input } from '@nutui/nutui-react-taro'
 | \--nutui-input-font-size | 文本字号 | `$font-size-base` |
 | \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Input)
-
-### Component Logs
-
-- 🐛 fix(input): type props didnot work when equals number|digit ([#2563](https://github.com/jdf2e/nutui-react/pull/2563)) `v2.6.18`
-- 🐛 fix(input): placeholder 无法设置空字符串 ([#2282](https://github.com/jdf2e/nutui-react/pull/2282)) @oasis-cloud `v2.6.6`
-- 🐛 fix(input): 修复特殊场景下自动清除失效问题 ([#2240](https://github.com/jdf2e/nutui-react/pull/2240)) @eiinu `v2.6.5`
-- ✨ input 的 onFocus 增加 height 键盘高度参数 ([#2154](https://github.com/jdf2e/nutui-react/pull/2154)) @alexxyzeng `v2.6.0`
-- 🐛 fix(input): demo拆解与规范 ([#2035](https://github.com/jdf2e/nutui-react/pull/2035)) @yeyu98 `v2.4.2`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=input&expanded=true)
+<Contribution name="Input" />

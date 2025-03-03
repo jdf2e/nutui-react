@@ -138,18 +138,4 @@ Icon 和字符型可以自定义图标颜色及背景色
 | \--nutui-avatar-normal-width | 正常尺寸头像的宽度 | `40px` |
 | \--nutui-avatar-normal-height | 正常尺寸头像的高度 | `40px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Avatar)
-
-### Component Logs
-
-- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
-- 🐛 fix(avatar): demo规范与调整 ([#2071](https://github.com/jdf2e/nutui-react/pull/2071)) @Alex-huxiyang `v2.4.2`
-- 💡 📖 docs(avatar): add list display mode ([#1862](https://github.com/jdf2e/nutui-react/pull/1862)) @oasis-cloud `v2.3.7`
-- 💡 📖 docs(avatar): 修改demo值,改为可支持变量 ([#1752](https://github.com/jdf2e/nutui-react/pull/1752)) @xiaoyatong `v2.3.0`
-- 🐛 fix(Avatar): 解决在小程序环境下，使用Avatar.Group无法正常展示头像问题 ([#1296](https://github.com/jdf2e/nutui-react/pull/1296)) @Tralafalgar Wang `v2.0.12`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=avatar&expanded=true)
+<Contribution name="Avatar" />

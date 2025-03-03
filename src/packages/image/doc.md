@@ -130,20 +130,4 @@ import { Image } from '@nutui/nutui-react'
 | bottom | 底部对齐 |
 | left | 左侧对齐 |
 
-## 贡献记录
-
-### Issues
-
-- Iconfont 设置 name 为图片地址时，修改颜色不生效 [#2333](https://github.com/jdf2e/nutui-react/issues/2333)
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Image)
-
-### Component Logs
-
-- 🐛 imageSize=0无效 ([#2937](https://github.com/jdf2e/nutui-react/pull/2937)) `v2.7.7`
-- 🐛 Uploade 组件无法预览图片 ([#2822](https://github.com/jdf2e/nutui-react/pull/2822)) `v2.7.2`
-- ✨ feat(image-preview): 增加索引字段，用于预览内容排序 ([#2519](https://github.com/jdf2e/nutui-react/pull/2519)) `v2.6.17`
-- 💡 🏡 chore(image): 官网taro的demo显示与h5不一致 ([#2244](https://github.com/jdf2e/nutui-react/pull/2244)) @Alex-huxiyang `v2.6.5`
-- 💡 🏡 chore(image): demo代码风格优化 ([#2220](https://github.com/jdf2e/nutui-react/pull/2220)) @Alex-huxiyang `v2.6.4`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=image&expanded=true)
+<Contribution name="Image" />

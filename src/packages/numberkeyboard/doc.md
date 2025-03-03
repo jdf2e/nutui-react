@@ -105,18 +105,4 @@ import { NumberKeyboard } from '@nutui/nutui-react'
 | \--nutui-numberkeyboard-key-confirm-background-color | 确认按键背景颜色 | `$color-primary` |
 | \--nutui-numberkeyboard-background-color | 键盘容器背景色 | `$color-background` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NumberKeyboard)
-
-### Component Logs
-
-- 🐛 fix(numberkeyboard): demo拆解与规范 ([#2123](https://github.com/jdf2e/nutui-react/pull/2123)) @ZissyW `v2.5.1`
-- ✨ feat(numberkeyboard): add title right actions ([#1881](https://github.com/jdf2e/nutui-react/pull/1881)) @xiaoyatong `v2.3.7`
-- 💡 🛠 refactor(numberkeyboard): 修订类名和样式变量 ([#1719](https://github.com/jdf2e/nutui-react/pull/1719)) @xiaoyatong `v2.3.0`
-- 🐛 numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 ([#1285](https://github.com/jdf2e/nutui-react/pull/1285)) @oasis-cloud `v2.0.11`
-- 💡 📖 docs: numberkeyboard 的 type 属性类型更新 ([#1284](https://github.com/jdf2e/nutui-react/pull/1284)) @oasis-cloud `v2.0.11`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=numberkeyboard&expanded=true)
+<Contribution name="NumberKeyboard" />

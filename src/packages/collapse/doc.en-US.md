@@ -114,18 +114,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-collapse-wrapper-content-line-height | content lineHeight | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | content padding | `12px 26px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Collapse)
-
-### Component Logs
-
-- 🐛 fix(collapse): demo拆解与规范 ([#2094](https://github.com/jdf2e/nutui-react/pull/2094)) @eiinu `v2.5.0`
-- ✨ feat(rtl): collapse ([#1981](https://github.com/jdf2e/nutui-react/pull/1981)) @Eiinu `v2.4.0`
-- 💡 📖 docs: address and collapse doc icons ([#1692](https://github.com/jdf2e/nutui-react/pull/1692)) @xiaoyatong `v2.3.0`
-- 💡 style(collapse): add border-bottom as an item ([#1698](https://github.com/jdf2e/nutui-react/pull/1698)) @xiaoyatong `v2.3.0`
-- 🐛 fix(collapse): 测试问题修复 ([#1132](https://github.com/jdf2e/nutui-react/pull/1132)) @Eiinu `v2.0.0-beta.1`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=collapse&expanded=true)
+<Contribution name="Collapse" />

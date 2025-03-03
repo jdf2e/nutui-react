@@ -61,12 +61,4 @@ import { Lottie } from '@nutui/nutui-react'
 | destroy | destroy | `() => void` |
 | getDuration | inFrames If true, returns the duration in frames; inFrames if false, returns the duration in seconds. | `(inFrames?: boolean) => number` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Lottie)
-
-### Component Logs
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=lottie&expanded=true)
+<Contribution name="Lottie" />

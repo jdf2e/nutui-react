@@ -67,17 +67,4 @@ import { Row, Col } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-col-default-margin-bottom | col 组件的下边距 | `15px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Layout)
-
-### Component Logs
-
-- 🐛 fix(layout): demo拆解与规范 & 修复脚本在不同操作系统的正则匹配出错 ([#2016](https://github.com/jdf2e/nutui-react/pull/2016)) @Alex-huxiyang `v2.4.1`
-- 💡 📖 docs(layout): 文档可读性优化 ([#1904](https://github.com/jdf2e/nutui-react/pull/1904)) @Alex.huxiyang `v2.3.9`
-- 💡 📖 docs: 修改布局文档相关 @hanyuxinting `v2.0.0-alpha.17`
-- 💡 📖 docs: 文档走查及问题修复-基础&布局组件([#1117](https://github.com/jdf2e/nutui-react/pull/1117)) @Eiinu `v2.0.0-alpha.17`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=layout&expanded=true)
+<Contribution name="Layout" />

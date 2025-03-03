@@ -130,20 +130,4 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |
 
-## 贡献记录
-
-### Issues
-
-- Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步 [#2170](https://github.com/jdf2e/nutui-react/issues/2170)
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tabbar)
-
-### Component Logs
-
-- 🐛 fix(tabbar): demo拆解与规范&脚本增强 ([#2059](https://github.com/jdf2e/nutui-react/pull/2059)) @Alex-huxiyang `v2.4.2`
-- 💡 📖 docs(tabbar): 文档可读性优化 ([#1921](https://github.com/jdf2e/nutui-react/pull/1921)) @Alex.huxiyang `v2.3.9`
-- 💡 🐛 fix(tabbar): fix icon color ([#1816](https://github.com/jdf2e/nutui-react/pull/1816)) @xiaoyatong `v2.3.4`
-- 💡 style(tabbar): add css variable ([#1742](https://github.com/jdf2e/nutui-react/pull/1742)) @xiaoyatong `v2.3.0`
-- 💡 📖 docs(tabbar): Correct module names of tabbar component ([#1539](https://github.com/jdf2e/nutui-react/pull/1539)) @HUMORCE `v2.0.21`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=tabbar&expanded=true)
+<Contribution name="Tabbar" />

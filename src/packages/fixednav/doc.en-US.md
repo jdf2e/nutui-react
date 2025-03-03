@@ -81,18 +81,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | active color | `$color-primary` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20FixedNav)
-
-### Component Logs
-
-- 🐛 fix(fixednav): 可拖拽元素样式缺失 ([#2391](https://github.com/jdf2e/nutui-react/pull/2391)) @oasis-cloud `v2.6.11`
-- 🐛 fix(fixedNav): demo拆解与规范 ([#2048](https://github.com/jdf2e/nutui-react/pull/2048)) @Alex-huxiyang `v2.4.2`
-- ✨ feat(fixednav): add the list icon for ReactNode ([#1786](https://github.com/jdf2e/nutui-react/pull/1786)) @sunsunmonkey `v2.3.2`
-- 💡 🛠 refactor: 类型文件统一为 types，增加 fixednavitem 类型 ([#1789](https://github.com/jdf2e/nutui-react/pull/1789)) @oasis-cloud `v2.3.2`
-- 💡 style(fixednav): 废弃 bem 规范, 修订 css 变量 ([#1702](https://github.com/jdf2e/nutui-react/pull/1702)) @xiaoyatong `v2.3.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=fixednav&expanded=true)
+<Contribution name="FixedNav" />

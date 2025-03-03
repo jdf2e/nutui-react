@@ -82,18 +82,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tag-round-border-radius | round border radius | `8px` |
 | \--nutui-tag-mark-border-radius | mark border radius | `0 8px 8px 0` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tag)
-
-### Component Logs
-
-- 💡 📖 docs: 文档构建出现未闭合标签的错误提示 `v2.6.22`
-- 💡 🏡 chore(tag): css样式变量修复 ([#2279](https://github.com/jdf2e/nutui-react/pull/2279)) @Alex-huxiyang `v2.6.6`
-- 💡 📖 docs(tag):修复demo描述错误 ([#2204](https://github.com/jdf2e/nutui-react/pull/2204)) @jianhuagao `v2.6.2`
-- 🐛 fix(tag): taro 下自定义icon无法展示 ([#2088](https://github.com/jdf2e/nutui-react/pull/2088)) @eiinu `v2.5.0`
-- 💡 🛠 refactor(docs): 文档支持通过标签使用已有的 demo 代码 ([#1950](https://github.com/jdf2e/nutui-react/pull/1950)) @Alex.huxiyang `v2.3.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=tag&expanded=true)
+<Contribution name="Tag" />

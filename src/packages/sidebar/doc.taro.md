@@ -93,12 +93,4 @@ import { SideBar } from '@nutui/nutui-react-taro'
 | \--nutui-sidebar-item-background | 内容区域的背景色 | `$white` |
 | \--nutui-sidebar-item-padding | 内容区域的内边距 | `24px 20px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SideBar)
-
-### Component Logs
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=sidebar&expanded=true)
+<Contribution name="SideBar" />

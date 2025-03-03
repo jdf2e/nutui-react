@@ -80,18 +80,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-infiniteloading-color | Swipe to bottom text color | `$color-text-help` |
 | \--nutui-infiniteloading-icon-size | Swipe to bottom icon size | `24px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20InfiniteLoading)
-
-### Component Logs
-
-- 💡 📖 docs(infiniteloading): remove deprecated usage ([#2801](https://github.com/jdf2e/nutui-react/pull/2801)) `v2.7.2`
-- 💡 📖 docs(infiniteLoading): optimize target description ([#2770](https://github.com/jdf2e/nutui-react/pull/2770)) `v2.7.1`
-- 🐛 fix(infiniteLoading): rest 导致事件无法触发 ([#2474](https://github.com/jdf2e/nutui-react/pull/2474)) @oasis-cloud `v2.6.15`
-- ✨ feat(infiniteLoading): 继承 scrollView 的 props 类型 ([#2441](https://github.com/jdf2e/nutui-react/pull/2441)) @oasis-cloud `v2.6.14`
-- 🐛 fix(infiniteLoading): demo拆解与规范+增加joy logo的demo ([#2081](https://github.com/jdf2e/nutui-react/pull/2081)) @irisSong `v2.4.2`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=infiniteloading&expanded=true)
+<Contribution name="InfiniteLoading" />

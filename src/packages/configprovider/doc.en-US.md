@@ -124,18 +124,4 @@ If you can't find the language pack you need, you are welcome to create a new la
 | locale | set the language | `BaseLang` | `zhCN` |
 | theme | set the theme | `Record<string, string>` | `-` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ConfigProvider)
-
-### Component Logs
-
-- 💡 📖 docs(configprovider): 优化文档中的主题配置描述 ([#2959](https://github.com/jdf2e/nutui-react/pull/2959)) `v2.7.8`
-- 🐛 fix(configProvidder): demo拆解与自动替换脚本&configProvider规范统一 ([#2005](https://github.com/jdf2e/nutui-react/pull/2005)) @Alex-huxiyang `v2.4.1`
-- 💡 🛠 refactor: adjust build target to ES6, reduce size of configprovider ([#1949](https://github.com/jdf2e/nutui-react/pull/1949)) @oasis-cloud `v2.3.12`
-- 💡 📖 docs(configprovider): 文档可读性优化 ([#1882](https://github.com/jdf2e/nutui-react/pull/1882)) @Alex.huxiyang `v2.3.8`
-- ✨ configProvider 组件性能优化 ([#1230](https://github.com/jdf2e/nutui-react/pull/1230)) @大喵 `v2.0.5`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=configprovider&expanded=true)
+<Contribution name="ConfigProvider" />

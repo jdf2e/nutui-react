@@ -36,15 +36,4 @@ import { SafeArea } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-safe-area-multiple | 显示的倍数 | `1` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SafeArea)
-
-### Component Logs
-
-- 🐛 safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong `v2.6.8`
-- ✨ feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud `v2.1.0`
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=safearea&expanded=true)
+<Contribution name="SafeArea" />

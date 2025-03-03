@@ -93,12 +93,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidebar-item-background | The background color of the content area | `$white` |
 | \--nutui-sidebar-item-padding | Padding of the content area | `24px 20px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SideBar)
-
-### Component Logs
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=sidebar&expanded=true)
+<Contribution name="SideBar" />

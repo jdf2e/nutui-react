@@ -53,16 +53,4 @@ import { Animate } from '@nutui/nutui-react'
 | 10 | twinkle | 水波，建议loop为true |
 | 11 | flicker | 擦亮按钮，建议loop为true |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Animate)
-
-### Component Logs
-
-- 💡 zap: perf: animate ([#2969](https://github.com/jdf2e/nutui-react/pull/2969)) `v2.7.8`
-- 🐛 fix(animate): demo拆解与规范 ([#2085](https://github.com/jdf2e/nutui-react/pull/2085)) @eiinu `v2.5.0`
-- 💡 animatenumbers number css ([#1681](https://github.com/jdf2e/nutui-react/pull/1681)) @xiaoyatong `v2.3.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=animate&expanded=true)
+<Contribution name="Animate" />

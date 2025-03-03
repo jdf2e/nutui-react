@@ -11,7 +11,7 @@ import { getComponentName } from '@/sites/assets/util'
 import routers from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
-
+import Contribution from './components/contribution'
 const Title = () => {
   let location = useLocation()
   const s = window.location.hash.split('/')
@@ -28,6 +28,7 @@ const Title = () => {
 }
 const components = {
   CodeBlock,
+  Contribution
 }
 const App = () => {
   const [fixed, setFixed] = useState(false)

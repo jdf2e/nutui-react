@@ -142,18 +142,4 @@ import { Rate } from '@nutui/nutui-react-taro'
 | \--nutui-rate-font-color | 评分字体颜色 | `$color-primary-icon` |
 | \--nutui-rate-font-size | 评分字体大小 | `12px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Rate)
-
-### Component Logs
-
-- 💡 🏡 chore: migrate to v3 `v2.7.2`
-- 🐛 fix(rate): demo拆解与规范 ([#2045](https://github.com/jdf2e/nutui-react/pull/2045)) @sandra66888 `v2.4.2`
-- 💡 test: migrate jest to vitest ([#2057](https://github.com/jdf2e/nutui-react/pull/2057)) @eiinu `v2.4.2`
-- ✨ generate stylesheets containing RTL-related styles ([#1889](https://github.com/jdf2e/nutui-react/pull/1889)) @oasis-cloud `v2.3.9`
-- ✨ feat(rate): 新增 touchable 属性支持滑动选择 ([#1880](https://github.com/jdf2e/nutui-react/pull/1880)) @Eiinu `v2.3.8`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=rate&expanded=true)
+<Contribution name="Rate" />

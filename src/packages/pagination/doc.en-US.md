@@ -109,16 +109,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-pagination-lite-background-color | lite mode background color | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite mode background color of current page | `var(--nutui-black-5)` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Pagination)
-
-### Component Logs
-
-- ✨ add pagination whether to show pages in imagepreview ([#2411](https://github.com/jdf2e/nutui-react/pull/2411)) @xiaoyatong `v2.6.12`
-- 🐛 fix(pagination): demo拆解与规范 ([#2079](https://github.com/jdf2e/nutui-react/pull/2079)) @Alex-huxiyang `v2.4.2`
-- ✨ feat(pagination): add lite mode and css variable ([#1743](https://github.com/jdf2e/nutui-react/pull/1743)) @xiaoyatong `v2.3.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=pagination&expanded=true)
+<Contribution name="Pagination" />

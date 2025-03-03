@@ -129,18 +129,4 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |
 | \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Cell)
-
-### Component Logs
-
-- ✨ feat(cell): add clickable prop to support click style feedback ([#2527](https://github.com/jdf2e/nutui-react/pull/2527)) `v2.6.17`
-- 🐛 fix(cell): unify the demos of Cell ([#1998](https://github.com/jdf2e/nutui-react/pull/1998)) @Alex.huxiyang `v2.4.0`
-- 🐛 fix(cell): doc、demo一致化改进 ([#1877](https://github.com/jdf2e/nutui-react/pull/1877)) @Alex.huxiyang `v2.3.7`
-- 💡 🛠 refactor(cell): 修订类名 ([#1722](https://github.com/jdf2e/nutui-react/pull/1722)) @xiaoyatong `v2.3.0`
-- 💡 📖 docs(cell): 增加卡片类型的 demo ([#1639](https://github.com/jdf2e/nutui-react/pull/1639)) @oasis-cloud `v2.1.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=cell&expanded=true)
+<Contribution name="Cell" />

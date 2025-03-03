@@ -77,16 +77,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-skeleton-line-height | line height | `15px` |
 | \--nutui-skeleton-line-border-radius | line borderRadius | `0` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Skeleton)
-
-### Component Logs
-
-- 🐛 fix(skeleton): demo拆解与规范 ([#2047](https://github.com/jdf2e/nutui-react/pull/2047)) @wanglihuaya `v2.4.2`
-- 💡 📖 docs: 删除了skeleton文档中无用的props(width,height) ([#1303](https://github.com/jdf2e/nutui-react/pull/1303)) @ivan-My `v2.0.13`
-- 💡 🛠 refactor: Skeleton ([#1036](https://github.com/jdf2e/nutui-react/pull/1036)) @Eiinu `v2.0.0-alpha.11`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=skeleton&expanded=true)
+<Contribution name="Skeleton" />

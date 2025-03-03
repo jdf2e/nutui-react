@@ -372,18 +372,4 @@ export default App
 | open | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
 | close | collapse the cell sidebar | `() => void` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Swipe)
-
-### Component Logs
-
-- 🐛 fix(swipe): 修改demo文案 ([#2106](https://github.com/jdf2e/nutui-react/pull/2106)) @xiaoyatong `v2.5.0`
-- 🐛 fix swipe slide element get rect width error ([#2017](https://github.com/jdf2e/nutui-react/pull/2017)) @awefeng `v2.4.1`
-- ✨ feat(swipe): 增加自定义高度的demo ([#1996](https://github.com/jdf2e/nutui-react/pull/1996)) @xiaoyatong `v2.4.0`
-- 💡 🛠 refactor(swipe): 修订className类名 ([#1715](https://github.com/jdf2e/nutui-react/pull/1715)) @xiaoyatong `v2.3.0`
-- 🐛 🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 ([#1608](https://github.com/jdf2e/nutui-react/pull/1608)) @Levidcd `v2.1.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=swipe&expanded=true)
+<Contribution name="Swipe" />

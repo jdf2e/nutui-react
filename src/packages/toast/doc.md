@@ -103,20 +103,4 @@ Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `$radius-xl` |
 | \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |
 
-## 贡献记录
-
-### Issues
-
-- 在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出 [#2584](https://github.com/jdf2e/nutui-react/issues/2584)
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Toast)
-
-### Component Logs
-
-- 💡 📖 docs(toast): 修复文档中的函数式例子 ([#2957](https://github.com/jdf2e/nutui-react/pull/2957)) `v2.7.7`
-- 🐛 fix(toast): load dependent CSS ([#2776](https://github.com/jdf2e/nutui-react/pull/2776)) `v2.7.1`
-- 🐛 fix(Toast): demo拆解与规范 ([#2073](https://github.com/jdf2e/nutui-react/pull/2073)) @OrdinarySF `v2.5.1`
-- 🐛 fix(toast): add deprecated prop msg ([#1999](https://github.com/jdf2e/nutui-react/pull/1999)) @Eiinu `v2.4.0`
-- 🐛 fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo ([#1994](https://github.com/jdf2e/nutui-react/pull/1994)) @xiaoyatong `v2.4.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=toast&expanded=true)
+<Contribution name="Toast" />

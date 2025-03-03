@@ -103,18 +103,4 @@ Reset the video when the video address changes
 | play | play | `-` |
 | pause | pause | `-` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Video)
-
-### Component Logs
-
-- ✨ feat(Video): web h5 下支持 ref 调用 ([#2852](https://github.com/jdf2e/nutui-react/pull/2852)) `v2.7.3`
-- 🐛 fix(video): demo拆解与规范 ([#2104](https://github.com/jdf2e/nutui-react/pull/2104)) @eiinu `v2.5.0`
-- ✨ feat(video): support passing through attributes for Taro Video ([#1890](https://github.com/jdf2e/nutui-react/pull/1890)) @xiaoyatong `v2.3.8`
-- ✨ uploader taro h5 支持 video ([#1605](https://github.com/jdf2e/nutui-react/pull/1605)) @xiaoyatong `v2.1.0`
-- 💡 🛠 refactor: video ([#1034](https://github.com/jdf2e/nutui-react/pull/1034)) @junjun666 `v2.0.0-alpha.13`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=video&expanded=true)
+<Contribution name="Video" />

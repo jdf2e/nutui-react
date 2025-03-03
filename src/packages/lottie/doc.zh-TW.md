@@ -63,12 +63,4 @@ import { Lottie } from '@nutui/nutui-react-taro'
 | destroy | 銷毀 | `() => void` |
 | getDuration | inFrames 若為真，則以幀為單位傳回持續時間；inFrames 若為假，則以秒為單位傳回。 | `(inFrames?: boolean) => number` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Lottie)
-
-### Component Logs
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=lottie&expanded=true)
+<Contribution name="Lottie" />

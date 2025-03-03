@@ -87,18 +87,4 @@ import { Overlay } from '@nutui/nutui-react'
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$color-title` |
 | \--nutui-overlay-animation-duration | 遮罩层动画延时的时长 | `0.3s` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Overlay)
-
-### Component Logs
-
-- 🐛 fix(overlay): tour position offset in tour.taro ([#2631](https://github.com/jdf2e/nutui-react/pull/2631)) `v2.6.23`
-- 💡 📖 docs(overlay): fix typo @eiinu `v2.5.0`
-- 🐛 fix(overlay): demo拆解与规范 ([#2012](https://github.com/jdf2e/nutui-react/pull/2012)) @Alex-huxiyang `v2.4.1`
-- 🐛 fix(overlay): 文档可读性优化 ([#1894](https://github.com/jdf2e/nutui-react/pull/1894)) @Alex.huxiyang `v2.3.8`
-- 💡 📖 docs(overlay): 文档优化 ([#1706](https://github.com/jdf2e/nutui-react/pull/1706)) @xiaoyatong `v2.3.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=overlay&expanded=true)
+<Contribution name="Overlay" />

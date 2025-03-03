@@ -1,5 +1,5 @@
 /**
- * @description 用于分析issue标题或日志与组件的相关性
+ * @description 用于分析标题或日志与组件的相关性
  */
 import config from '../src/config.json' assert { type: 'json' }
 
@@ -64,7 +64,7 @@ export function analyzeTitleRelevance(title, componentName, componentNameCN) {
   }
 
   // 相关性阈值
-  const RELEVANCE_THRESHOLD = 15
+  const RELEVANCE_THRESHOLD = 3
 
   return {
     score: relevanceScore,

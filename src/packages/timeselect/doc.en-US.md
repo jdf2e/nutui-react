@@ -93,16 +93,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-time-margin | time margin | `0 10px 10px 0` |
 | \--nutui-timeselect-time-background | time background | `$color-background` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20TimeSelect)
-
-### Component Logs
-
-- 🐛 fix(timeselect): demo拆解与规范 ([#2087](https://github.com/jdf2e/nutui-react/pull/2087)) @Alex-huxiyang `v2.5.0`
-- 💡 🛠 refactor(timeselect): 优化结构,简化css变量 ([#1732](https://github.com/jdf2e/nutui-react/pull/1732)) @xiaoyatong `v2.3.0`
-- 💡 🛠 refactor: TimeSelect ([#1088](https://github.com/jdf2e/nutui-react/pull/1088)) @Eiinu `v2.0.0-alpha.15`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=timeselect&expanded=true)
+<Contribution name="TimeSelect" />

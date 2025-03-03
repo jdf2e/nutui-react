@@ -106,20 +106,4 @@ DatetimePicker 通過 type 屬性來定義需要選擇的時間類型。將 type
 | onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |
 | onChange | 選項改變時觸發 | `(options, value, index) => void` | `-` |
 
-## 貢獻記錄
-
-### Issues
-
-- [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20DatePicker)
-
-### Component Logs
-
-- 🐛 fix(datepicker): show zero on page ([#2582](https://github.com/jdf2e/nutui-react/pull/2582)) `v2.6.19`
-- 🐛 fix(datepicker): 修复受控方式下选项联动更新问题 ([#2201](https://github.com/jdf2e/nutui-react/pull/2201)) @eiinu `v2.6.2`
-- 🐛 fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 ([#2141](https://github.com/jdf2e/nutui-react/pull/2141)) @yeyu98 `v2.5.1`
-- 🐛 fix(DatePicker): demo拆解与规范 ([#2133](https://github.com/jdf2e/nutui-react/pull/2133)) @yeyu98 `v2.5.1`
-- 💡 🐛 fix(datepicker): 未设置 value/defaultValue 时渲染 0 ([#1819](https://github.com/jdf2e/nutui-react/pull/1819)) @Ryan-CW-Code `v2.3.4`
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=datepicker&expanded=true)
+<Contribution name="DatePicker" />

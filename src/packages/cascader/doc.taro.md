@@ -118,18 +118,4 @@ import { Cascader } from '@nutui/nutui-react-taro'
 | \--nutui-cascader-item-font-size | 级联数据每一条的字号 | `$font-size-base` |
 | \--nutui-cascader-item-active-color | 级联数据每一条的选中色值 | `$color-primary` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Cascader)
-
-### Component Logs
-
-- 🐛 fix(cascader): 受控状态下 value 变化时同步组件选中状态 ([#2591](https://github.com/jdf2e/nutui-react/pull/2591)) `v2.6.19`
-- 🐛 fix(cascader): 初始化设置value未成功选中 ([#2435](https://github.com/jdf2e/nutui-react/pull/2435)) @Alex-huxiyang `v2.6.14`
-- 🐛 fix(cascader): onPathChange is not a function ([#2308](https://github.com/jdf2e/nutui-react/pull/2308)) @oasis-cloud `v2.6.8`
-- 💡 🏡 chore(cascader): demo拆解与规范 ([#2144](https://github.com/jdf2e/nutui-react/pull/2144)) @Alex.huxiyang `v2.5.2`
-- 🐛 fix(cascader): 增加 ref 上的 open 和 close 方法，支持 form 中使用 ([#1799](https://github.com/jdf2e/nutui-react/pull/1799)) @oasis-cloud `v2.3.3`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=cascader&expanded=true)
+<Contribution name="Cascader" />

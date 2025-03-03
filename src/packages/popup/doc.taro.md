@@ -140,18 +140,4 @@ import { Popup } from '@nutui/nutui-react-taro'
 
 在 iOS 下，有时候 `lockScroll` 可能不生效，此刻在打开 `popup` 时，可将宿主页面的样式增加 `overflow: hidden;`，关闭弹层时，再重置样式。
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Popup)
-
-### Component Logs
-
-- 💡 📖 docs: popup 使用说明描述优化([#2943](https://github.com/jdf2e/nutui-react/pull/2943)) `v2.7.7`
-- 🐛 fix(popup): display should not trigger the scrollview to update ([#2773](https://github.com/jdf2e/nutui-react/pull/2773)) `v2.7.1`
-- ✨ feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 ([#2629](https://github.com/jdf2e/nutui-react/pull/2629)) `v2.6.22`
-- ✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574)) `v2.6.18`
-- 🐛 fix(popup): demo拆解与规范 ([#2122](https://github.com/jdf2e/nutui-react/pull/2122)) @ZissyW `v2.5.1`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=popup&expanded=true)
+<Contribution name="Popup" />

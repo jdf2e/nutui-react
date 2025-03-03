@@ -96,20 +96,4 @@ import { DatePicker } from '@nutui/nutui'
 | onClose | Emitted when click confirm and cancel button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value, index) => void` | `-` |
 
-## Contribution
-
-### Issues
-
-- [DatePicker受控情况下，2月切换存在问题](https://github.com/jdf2e/nutui-react/issues/2924)
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20DatePicker)
-
-### Component Logs
-
-- 🐛 fix(datepicker): show zero on page ([#2582](https://github.com/jdf2e/nutui-react/pull/2582)) `v2.6.19`
-- 🐛 fix(datepicker): 修复受控方式下选项联动更新问题 ([#2201](https://github.com/jdf2e/nutui-react/pull/2201)) @eiinu `v2.6.2`
-- 🐛 fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 ([#2141](https://github.com/jdf2e/nutui-react/pull/2141)) @yeyu98 `v2.5.1`
-- 🐛 fix(DatePicker): demo拆解与规范 ([#2133](https://github.com/jdf2e/nutui-react/pull/2133)) @yeyu98 `v2.5.1`
-- 💡 🐛 fix(datepicker): 未设置 value/defaultValue 时渲染 0 ([#1819](https://github.com/jdf2e/nutui-react/pull/1819)) @Ryan-CW-Code `v2.3.4`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=datepicker&expanded=true)
+<Contribution name="DatePicker" />

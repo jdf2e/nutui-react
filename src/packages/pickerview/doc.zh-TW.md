@@ -93,12 +93,4 @@ import { PickerView } from '@nutui/nutui-react-taro'
 | \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid $color-border` |
 | \--nut-picker-mask-background | 面闆遮擋區漸變值 | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20PickerView)
-
-### Component Logs
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=pickerview&expanded=true)
+<Contribution name="PickerView" />

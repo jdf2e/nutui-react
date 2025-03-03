@@ -97,18 +97,4 @@ import { Loading } from '@nutui/nutui-react'
 | \--nutui-loading-color | 文本色值 | `$color-text-help` |
 | \--nutui-loading-font-size | 文本字号 | `$font-size-s` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Loading)
-
-### Component Logs
-
-- 💡 📖 docs(loading): 主题变量修正 ([#3008](https://github.com/jdf2e/nutui-react/pull/3008)) `v2.7.9`
-- 💡 🏡 chore(loading): demo拆解与规范 ([#2155](https://github.com/jdf2e/nutui-react/pull/2155)) @Alex-huxiyang `v2.6.0`
-- 💡 style(loading): 修订css变量名,补充css变量文档 ([#1721](https://github.com/jdf2e/nutui-react/pull/1721)) @xiaoyatong `v2.3.0`
-- ✨ loading 组件 ([#1204](https://github.com/jdf2e/nutui-react/pull/1204)) @mike8625 `v2.0.10`
-- 🐛 loading 组件导出 props 类型 ([#1278](https://github.com/jdf2e/nutui-react/pull/1278)) @oasis-cloud `v2.0.10`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=loading&expanded=true)
+<Contribution name="Loading" />

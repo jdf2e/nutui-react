@@ -73,12 +73,4 @@ import { Segmented } from '@nutui/nutui-react'
 | \--nutui-segmented-active-background | 分段选择器选项选中的背景颜色 | `$color-mask-part` |
 | \--nutui-segmented-icon-margin-right | 分段选择器选项选间距 | `$color-mask-part` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Segmented)
-
-### Component Logs
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=segmented&expanded=true)
+<Contribution name="Segmented" />

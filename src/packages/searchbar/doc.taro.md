@@ -130,18 +130,4 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |
 | \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `left` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SearchBar)
-
-### Component Logs
-
-- 🐛 fix(searchbar): 修复 clear 时未触发 change 的问题 ([#2262](https://github.com/jdf2e/nutui-react/pull/2262)) @eiinu `v2.6.9`
-- 🐛 fix(SearchBar): demo拆解与规范 ([#2064](https://github.com/jdf2e/nutui-react/pull/2064)) @joyfully-W `v2.4.2`
-- 🐛 fix(searchbar): 小程序环境不支持 _ 选择器，将 _ 展开为 div、span、svg ([#1777](https://github.com/jdf2e/nutui-react/pull/1777)) @oasis-cloud `v2.3.1`
-- ✨ feat(searchbar): 增加属性 backable 可返回，简化css变量 ([#1736](https://github.com/jdf2e/nutui-react/pull/1736)) @xiaoyatong `v2.3.0`
-- 🐛 searchbar lose focus when input nothing but input the delete ([#1577](https://github.com/jdf2e/nutui-react/pull/1577)) @xiaoyatong `v2.0.23`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=searchbar&expanded=true)
+<Contribution name="SearchBar" />

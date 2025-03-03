@@ -69,18 +69,4 @@ import { NavBar } from '@nutui/nutui-react-taro'
 | \--nutui-navbar-title-font-weight | 头部导航标题的字体粗细 | `0` |
 | \--nutui-navbar-title-font-color | 头部导航标题的字体颜色 | `$color-title` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NavBar)
-
-### Component Logs
-
-- 🐛 fix(navbar): safearea displays abnormal when safeAreaInsetTop has been set true ([#2632](https://github.com/jdf2e/nutui-react/pull/2632)) `v2.6.22`
-- 🐛 fix(navbar): demo拆解与规范 ([#2055](https://github.com/jdf2e/nutui-react/pull/2055)) @Alex-huxiyang `v2.4.2`
-- 💡 📖 docs(navbar): 文档可读性优化 ([#1915](https://github.com/jdf2e/nutui-react/pull/1915)) @Alex.huxiyang `v2.3.9`
-- ✨ feat(navbar): title区域自适应宽度 ([#1891](https://github.com/jdf2e/nutui-react/pull/1891)) @songsong `v2.3.8`
-- 💡 📖 docs(navbar): showtoas 改为 showToast ([#1826](https://github.com/jdf2e/nutui-react/pull/1826)) @minghui `v2.3.4`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=navbar&expanded=true)
+<Contribution name="NavBar" />

@@ -123,21 +123,4 @@ import { Picker } from '@nutui/nutui-react'
 | \--nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
 
-## 贡献记录
-
-### Issues
-
-- DatePicker受控情况下，2月切换存在问题 [#2924](https://github.com/jdf2e/nutui-react/issues/2924)
-- [FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少 [#2945](https://github.com/jdf2e/nutui-react/issues/2945)
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Picker)
-
-### Component Logs
-
-- 🐛 fix(picker): 函数调用之前检查 locale 是否已经定义 ([#2259](https://github.com/jdf2e/nutui-react/pull/2259)) @Alex-huxiyang `v2.6.8`
-- 🐛 fix(picker): 修复连续多次打开 picker 时显示值错误 ([#2222](https://github.com/jdf2e/nutui-react/pull/2222)) @eiinu `v2.6.4`
-- 💡 🏡 chore(picker): demo拆解与规范 ([#2157](https://github.com/jdf2e/nutui-react/pull/2157)) @Alex-huxiyang `v2.6.0`
-- 🐛 fix(picker): 优化 options 的 text 属性的判空逻辑 ([#1837](https://github.com/jdf2e/nutui-react/pull/1837)) @oasis-cloud `v2.3.5`
-- 🐛 fix(picker): 修复 safari 下 mask 样式问题 ([#1843](https://github.com/jdf2e/nutui-react/pull/1843)) @Eiinu `v2.3.5`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=picker&expanded=true)
+<Contribution name="Picker" />

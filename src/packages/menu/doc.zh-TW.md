@@ -138,18 +138,4 @@ import { Menu } from '@nutui/nutui-react'
 | \--nutui-menu-item-padding | 菜單選項的內邊距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜單選項文本與icon的距離 | `8px` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Menu)
-
-### Component Logs
-
-- 🐛 fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed ([#2633](https://github.com/jdf2e/nutui-react/pull/2633)) `v2.6.22`
-- ✨ feat(menu): allow custom classnames for Menu and dynamic titles ([#2480](https://github.com/jdf2e/nutui-react/pull/2480)) @Alex-huxiyang `v2.6.15`
-- 🐛 fix(menu): 选项文字很多时右侧箭头展示异常 ([#2252](https://github.com/jdf2e/nutui-react/pull/2252)) @Alex-huxiyang `v2.6.5`
-- 💡 🏡 chore(menu): demo拆解与规范 ([#2153](https://github.com/jdf2e/nutui-react/pull/2153)) @Alex-huxiyang `v2.6.0`
-- 💡 style(menu): 优化css变量命名,修改className 类名 ([#1746](https://github.com/jdf2e/nutui-react/pull/1746)) @xiaoyatong `v2.3.0`
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=menu&expanded=true)
+<Contribution name="Menu" />

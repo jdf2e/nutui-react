@@ -61,18 +61,4 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-watermark-z-index | zIndex | `$mask-content-z-index` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20WaterMark)
-
-### Component Logs
-
-- ✨ feat(watermark): support multi-line text ([#2477](https://github.com/jdf2e/nutui-react/pull/2477)) @xiaoyatong `v2.6.15`
-- 🐛 fix(watermark): demo拆解与规范 ([#2083](https://github.com/jdf2e/nutui-react/pull/2083)) @eiinu `v2.4.2`
-- 💡 🐛 fix(watermark): fix demos ([#1817](https://github.com/jdf2e/nutui-react/pull/1817)) @xiaoyatong `v2.3.4`
-- 🐛 fix(watermark): 修复小程序下画布尺寸问题 ([#1073](https://github.com/jdf2e/nutui-react/pull/1073)) @Eiinu `v1.5.8`
-- 💡 🛠 refactor: watermark ([#1071](https://github.com/jdf2e/nutui-react/pull/1071)) @Eiinu `v2.0.0-alpha.13`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=watermark&expanded=true)
+<Contribution name="WaterMark" />

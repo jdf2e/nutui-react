@@ -155,18 +155,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-range-button-height | button height | `24px` |
 | \--nutui-range-button-border | button border | `1px solid $color-primary` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Range)
-
-### Component Logs
-
-- 🐛 fix(range): usememo ([#2638](https://github.com/jdf2e/nutui-react/pull/2638)) `v2.6.22`
-- 🐛 fix(range): refactor & lint fixed ([#2637](https://github.com/jdf2e/nutui-react/pull/2637)) `v2.6.22`
-- 🐛 fix(range): demo拆解与规范 ([#2139](https://github.com/jdf2e/nutui-react/pull/2139)) @ShuchenEason `v2.5.1`
-- 🐛 fix(range): touchmove 回调中 rect 获取失败时终止 ([#2029](https://github.com/jdf2e/nutui-react/pull/2029)) @eiinu `v2.4.1`
-- ✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu `v2.3.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=range&expanded=true)
+<Contribution name="Range" />

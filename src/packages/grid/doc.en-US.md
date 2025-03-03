@@ -132,17 +132,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-grid-item-text-color | text color | `$color-title` |
 | \--nutui-grid-item-text-font-size | text font size | `$font-size-s` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Grid)
-
-### Component Logs
-
-- 🐛 fix(grid): demo拆解与规范 ([#2014](https://github.com/jdf2e/nutui-react/pull/2014)) @Alex-huxiyang `v2.4.1`
-- 💡 📖 docs(grid): 文档可读性优化 ([#1903](https://github.com/jdf2e/nutui-react/pull/1903)) @Alex.huxiyang `v2.3.8`
-- ✨ feat(grid): 增加 demo ([#1660](https://github.com/jdf2e/nutui-react/pull/1660)) @xiaoyatong `v2.2.0`
-- 🐛 修复gridItem组件外部传入样式为空时冲掉组件内置样式问题 ([#1214](https://github.com/jdf2e/nutui-react/pull/1214)) @cuicuiworld `v1.5.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=grid&expanded=true)
+<Contribution name="Grid" />

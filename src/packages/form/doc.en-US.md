@@ -151,24 +151,4 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-form-item-tip-font-size | Font size for error messages | `10px` |
 | \--nutui-form-item-tip-text-align | Text alignment for error messages | `left` |
 
-## Contribution
-
-### Issues
-
-- [[FR]: 你们的Native版本怎么不维护了？ 还缺少很多基础组件类似Form表单](https://github.com/jdf2e/nutui-react/issues/2942)
-- [nutui-react-taro@2.7.2 FormItem的值如果是对象（如 `{label:是，value:1}` ），会自动重置成 {}](https://github.com/jdf2e/nutui-react/issues/2870)
-- [[FR]: Form 表单组件Form.Item不支持复杂类型的字段](https://github.com/jdf2e/nutui-react/issues/2947)
-- [[FR]: Form增加对象结构](https://github.com/jdf2e/nutui-react/issues/2650)
-- [form item label未对齐](https://github.com/jdf2e/nutui-react/issues/2928)
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Form)
-
-### Component Logs
-
-- ✨ feat(form): resetFields 增加 namepath 参数，用于重置指定的字段 ([#2953](https://github.com/jdf2e/nutui-react/pull/2953)) `v2.7.7`
-- ✨ feat(form): add useWatch ([#2932](https://github.com/jdf2e/nutui-react/pull/2932)) `v2.7.7`
-- 🐛 fix(form): 修复 formitem 的值如果是对象会自动重置为空对象的问题 ([#2952](https://github.com/jdf2e/nutui-react/pull/2952)) `v2.7.7`
-- 🐛 fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931)) `v2.7.6`
-- 🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927)) `v2.7.6`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=form&expanded=true)
+<Contribution name="Form" />

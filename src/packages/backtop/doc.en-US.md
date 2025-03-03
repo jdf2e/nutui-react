@@ -83,18 +83,4 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-backtop-border-color | border color | `#e0e0e0` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20BackTop)
-
-### Component Logs
-
-- 🐛 update backtop demos ([#2865](https://github.com/jdf2e/nutui-react/pull/2865)) `v2.7.5`
-- 🐛 fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed ([#2633](https://github.com/jdf2e/nutui-react/pull/2633)) `v2.6.22`
-- ✨ feat(backtop): rtl ([#2051](https://github.com/jdf2e/nutui-react/pull/2051)) @xiaoyatong `v2.4.2`
-- 🐛 fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang `v2.4.1`
-- 💡 📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang `v2.3.9`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=backtop&expanded=true)
+<Contribution name="BackTop" />

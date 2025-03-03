@@ -61,15 +61,4 @@ import { Audio } from '@nutui/nutui-react'
 | onMute | Mute | `(event：HTMLAudioElement) => void` | `-` |
 | onCanPlay | Can be triggered when the media can be played | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Audio)
-
-### Component Logs
-
-- 🐛 usecallback to fix render too many times, button,animatingnumbers,avatar,audio; and fix avatargroup when length > maxsize ([#2628](https://github.com/jdf2e/nutui-react/pull/2628)) `v2.6.22`
-- 🐛 fix(audio): demo拆解与规范 ([#2111](https://github.com/jdf2e/nutui-react/pull/2111)) @Alex-huxiyang `v2.5.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=audio&expanded=true)
+<Contribution name="Audio" />

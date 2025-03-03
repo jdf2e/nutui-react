@@ -92,17 +92,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-divider-vertical-height | The height of the vertical split line | `12px` |
 | \--nutui-divider-vertical-margin | The margin value of the vertical split line | `0 8px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Divider)
-
-### Component Logs
-
-- 🐛 optimize vertical type syntax for divider ([#2664](https://github.com/jdf2e/nutui-react/pull/2664)) `v2.7.0`
-- 🐛 fix(divider): demo拆解与规范 ([#2013](https://github.com/jdf2e/nutui-react/pull/2013)) @Alex-huxiyang `v2.4.1`
-- 💡 🌈 style: divider css 修改, 修改部分css变量 ([#1669](https://github.com/jdf2e/nutui-react/pull/1669)) @xiaoyatong `v2.2.0`
-- 💡 📖 docs: divider 组件的 styles 属性示例改为 style ([#1290](https://github.com/jdf2e/nutui-react/pull/1290)) @oasis-cloud `v2.0.11`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=divider&expanded=true)
+<Contribution name="Divider" />

@@ -95,17 +95,4 @@ import { ShortPassword } from '@nutui/nutui-react-taro'
 | \--nutui-shortpassword-error | 错误提示字体颜色 | `$color-primary` |
 | \--nutui-shortpassword-forget | 忘记密码字体颜色 | `rgba(128, 128, 128, 1)` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ShortPassword)
-
-### Component Logs
-
-- 🐛 fix(shortpassword): demo拆解与规范 ([#2102](https://github.com/jdf2e/nutui-react/pull/2102)) @Alex-huxiyang `v2.5.0`
-- ✨ feat(shortpassword): support ref for form ([#1930](https://github.com/jdf2e/nutui-react/pull/1930)) @oasis-cloud `v2.3.10`
-- 💡 📖 docs(shortpassword): 增加onComplete的demo及文档 ([#1860](https://github.com/jdf2e/nutui-react/pull/1860)) @xiaoyatong `v2.3.7`
-- 💡 🛠 refactor: shortPassword ([#1046](https://github.com/jdf2e/nutui-react/pull/1046)) @Eiinu `v2.0.0-alpha.12`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=shortpassword&expanded=true)
+<Contribution name="ShortPassword" />

@@ -154,18 +154,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-inputnumber-icon-size | The size of the icon in the number input box | `8px` |
 | \--nutui-inputnumber-disabled-color | The color of the disabled status of inputnumber | `$color-text-disabled` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20InputNumber)
-
-### Component Logs
-
-- 🐛 fix(InputNumber): 扩大点击区域 ([#2302](https://github.com/jdf2e/nutui-react/pull/2302)) @xiaoyatong `v2.6.8`
-- 🐛 fix(inputnumber): 修复设置`InputNumber`组件className不生效的问题 ([#2188](https://github.com/jdf2e/nutui-react/pull/2188)) @kurisu994 `v2.6.2`
-- ✨ feat(inputnumber): update UI ([#1989](https://github.com/jdf2e/nutui-react/pull/1989)) @oasis-cloud `v2.4.0`
-- ✨ feat(inputnumber): taro 环境下增加 number类型的键盘 ([#1965](https://github.com/jdf2e/nutui-react/pull/1965)) @onlyling `v2.3.12`
-- 🐛 fix(inputnumber): provide finalValue ([#1959](https://github.com/jdf2e/nutui-react/pull/1959)) @oasis-cloud `v2.3.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=inputnumber&expanded=true)
+<Contribution name="InputNumber" />

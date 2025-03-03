@@ -93,12 +93,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-picker-item-active-line-border | The border value currently selected by the panel | `1px solid $color-border` |
 | \--nut-picker-mask-background | Panel shade gradient value | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20PickerView)
-
-### Component Logs
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=pickerview&expanded=true)
+<Contribution name="PickerView" />

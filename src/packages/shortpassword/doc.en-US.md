@@ -95,17 +95,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-shortpassword-error | error color | `$color-primary` |
 | \--nutui-shortpassword-forget | forget color | `rgba(128, 128, 128, 1)` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ShortPassword)
-
-### Component Logs
-
-- 🐛 fix(shortpassword): demo拆解与规范 ([#2102](https://github.com/jdf2e/nutui-react/pull/2102)) @Alex-huxiyang `v2.5.0`
-- ✨ feat(shortpassword): support ref for form ([#1930](https://github.com/jdf2e/nutui-react/pull/1930)) @oasis-cloud `v2.3.10`
-- 💡 📖 docs(shortpassword): 增加onComplete的demo及文档 ([#1860](https://github.com/jdf2e/nutui-react/pull/1860)) @xiaoyatong `v2.3.7`
-- 💡 🛠 refactor: shortPassword ([#1046](https://github.com/jdf2e/nutui-react/pull/1046)) @Eiinu `v2.0.0-alpha.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=shortpassword&expanded=true)
+<Contribution name="ShortPassword" />

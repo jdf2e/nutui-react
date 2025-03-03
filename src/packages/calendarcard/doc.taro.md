@@ -152,18 +152,4 @@ import { CalendarCard } from '@nutui/nutui-react-taro'
 | \--nutui-calendar-choose-color | 日历选中元素的字色 | `$color-primary` |
 | \--nutui-calendar-day-active-border-radius | 日历选中元素的圆角 | `4px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20CalendarCard)
-
-### Component Logs
-
-- 🐛 fix(calendarcard): 直接抛出ondayclick ([#2150](https://github.com/jdf2e/nutui-react/pull/2150)) @oasis-cloud `v2.5.2`
-- 💡 🏡 chore(calendarcard): demo 拆解与规范 ([#2026](https://github.com/jdf2e/nutui-react/pull/2026)) @eiinu `v2.5.0`
-- 🐛 fix(calendarcard): 修复受控模式 ([#2063](https://github.com/jdf2e/nutui-react/pull/2063)) @eiinu `v2.4.2`
-- 🐛 fix(calendarcard): 选择范围时支持仅选择单个日期 ([#2009](https://github.com/jdf2e/nutui-react/pull/2009)) @eiinu `v2.4.1`
-- ✨ feat(calendarcard): 限制范围时禁止面板切换 ([#1688](https://github.com/jdf2e/nutui-react/pull/1688)) @Eiinu `v2.3.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=calendarcard&expanded=true)
+<Contribution name="CalendarCard" />

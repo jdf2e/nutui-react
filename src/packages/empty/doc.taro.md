@@ -90,18 +90,4 @@ import { Empty } from '@nutui/nutui-react-taro'
 | \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1` |
 | \--nutui-empty-background-color | Empty组件背景色 | `#fff` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Empty)
-
-### Component Logs
-
-- 🐛 fix(empty): actions add support for events ([#2854](https://github.com/jdf2e/nutui-react/pull/2854)) `v2.7.3`
-- ✨ feat(empty): add css variable nutui-empty-background-color ([#2451](https://github.com/jdf2e/nutui-react/pull/2451)) @Alex-huxiyang `v2.6.14`
-- 🐛 fix(Empty): 调整默认图片为jd图片 ([#2032](https://github.com/jdf2e/nutui-react/pull/2032)) @xiaoyatong `v2.4.1`
-- ✨ feat(empty): 图片变更 ([#1988](https://github.com/jdf2e/nutui-react/pull/1988)) @xiaoyatong `v2.4.0`
-- 🐛 fix(empty): fix import at taro ([#1839](https://github.com/jdf2e/nutui-react/pull/1839)) @xiaoyatong `v2.3.5`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=empty&expanded=true)
+<Contribution name="Empty" />

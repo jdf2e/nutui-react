@@ -142,18 +142,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-rate-font-color | Rating font color | `$color-primary-icon` |
 | \--nutui-rate-font-size | Rating font size | `12px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Rate)
-
-### Component Logs
-
-- 💡 🏡 chore: migrate to v3 `v2.7.2`
-- 🐛 fix(rate): demo拆解与规范 ([#2045](https://github.com/jdf2e/nutui-react/pull/2045)) @sandra66888 `v2.4.2`
-- 💡 test: migrate jest to vitest ([#2057](https://github.com/jdf2e/nutui-react/pull/2057)) @eiinu `v2.4.2`
-- ✨ generate stylesheets containing RTL-related styles ([#1889](https://github.com/jdf2e/nutui-react/pull/1889)) @oasis-cloud `v2.3.9`
-- ✨ feat(rate): 新增 touchable 属性支持滑动选择 ([#1880](https://github.com/jdf2e/nutui-react/pull/1880)) @Eiinu `v2.3.8`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=rate&expanded=true)
+<Contribution name="Rate" />

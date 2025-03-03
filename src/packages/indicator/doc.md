@@ -85,18 +85,4 @@ import { Indicator } from '@nutui/nutui-react'
 | \--nutui-indicator-border-radius | 指示器焦点时的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `$spacing-xxxs` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Indicator)
-
-### Component Logs
-
-- 🐛 fix(indicator): demo拆解与规范 ([#2090](https://github.com/jdf2e/nutui-react/pull/2090)) @eiinu `v2.4.2`
-- 🐛 fix(indicator): 修订样式名称和样式变量 ([#1712](https://github.com/jdf2e/nutui-react/pull/1712)) @xiaoyatong `v2.3.0`
-- 🐛 picker and datepicker theme config at taro and indicator css at taro ([#1615](https://github.com/jdf2e/nutui-react/pull/1615)) @xiaoyatong `v2.1.0`
-- 🐛 swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong `v2.0.24`
-- 🐛 indicator 超长换行 ([#1486](https://github.com/jdf2e/nutui-react/pull/1486)) @oasis-cloud `v2.0.19`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=indicator&expanded=true)
+<Contribution name="Indicator" />

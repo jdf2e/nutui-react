@@ -90,18 +90,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-actionsheet-item-color | item color | `$color-title` |
 | \--nutui-actionsheet-item-danger | item danger color | `$color-primary` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20ActionSheet)
-
-### Component Logs
-
-- 🐛 ActionSheet 增加安全区处理 ([#2286](https://github.com/jdf2e/nutui-react/pull/2286)) @xiaoyatong `v2.6.7`
-- 🐛 fix(actionsheet): 去掉无意义的 padding，popup 已不再暴露 ([#2285](https://github.com/jdf2e/nutui-react/pull/2285)) @xiaoyatong `v2.6.7`
-- 🐛 fix(actionsheet): demo拆解与规范 ([#2124](https://github.com/jdf2e/nutui-react/pull/2124)) @ZissyW `v2.5.1`
-- 🐛 fix(actionsheet): 关闭弹窗后内容显示在页面，优化 popup 相关属性传递 ([#1954](https://github.com/jdf2e/nutui-react/pull/1954)) @onlyling `v2.3.11`
-- 💡 🛠 refactor: actionSheet ([#1053](https://github.com/jdf2e/nutui-react/pull/1053)) @xiaoyatong `v2.0.0-alpha.12`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=actionsheet&expanded=true)
+<Contribution name="ActionSheet" />

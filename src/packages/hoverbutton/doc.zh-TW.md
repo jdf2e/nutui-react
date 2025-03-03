@@ -97,12 +97,4 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 | \--nutui-hoverbutton-item-icon-color | 圖標色-正常態 | `#1A1A1A` |
 | \--nutui-hoverbutton-item-icon-color-active | 圖標色-點擊態 | `#595959` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20HoverButton)
-
-### Component Logs
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=hoverbutton&expanded=true)
+<Contribution name="HoverButton" />

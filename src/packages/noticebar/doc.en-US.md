@@ -155,18 +155,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
 | \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NoticeBar)
-
-### Component Logs
-
-- 🐛 fix(noticebar): fix docs ([#2119](https://github.com/jdf2e/nutui-react/pull/2119)) @xiaoyatong `v2.5.0`
-- ✨ feat(NoticeBar): 增加right 属性,支持更多可自定义内容 @xiaoyatong `v2.4.2`
-- ✨ feat(noticebar): supports the center layout ([#1972](https://github.com/jdf2e/nutui-react/pull/1972)) @irisSong `v2.4.0`
-- ✨ feat(rtl): noticebar ([#1984](https://github.com/jdf2e/nutui-react/pull/1984)) @Eiinu `v2.4.0`
-- 💡 style(noticebar): 修订类名和css变量 ([#1751](https://github.com/jdf2e/nutui-react/pull/1751)) @xiaoyatong `v2.3.0`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=noticebar&expanded=true)
+<Contribution name="NoticeBar" />

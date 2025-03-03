@@ -81,17 +81,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidenavbar-sub-list-background | option list background color | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | option list font color | `$color-title` |
 
-## Contribution
-
-### Issues
-
-> View more [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20SideNavBar)
-
-### Component Logs
-
-- 🐛 fix(sideNavBar): demo拆解与规范 ([#2058](https://github.com/jdf2e/nutui-react/pull/2058)) @Alex-huxiyang `v2.4.2`
-- 💡 📖 docs(sidenavbar): 文档可读性优化 ([#1920](https://github.com/jdf2e/nutui-react/pull/1920)) @Alex.huxiyang `v2.3.9`
-- 💡 📖 docs(sideNavBar): handleClose 改为 onClose ([#1635](https://github.com/jdf2e/nutui-react/pull/1635)) @haitao `v2.1.0`
-- 💡 🛠 refactor: sidenavbar ([#1057](https://github.com/jdf2e/nutui-react/pull/1057)) @oasis-cloud `v2.0.0-alpha.14`
-
-> View more [Releases](https://github.com/jdf2e/nutui-react//releases?q=sidenavbar&expanded=true)
+<Contribution name="SideNavBar" />

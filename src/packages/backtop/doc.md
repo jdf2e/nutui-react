@@ -72,18 +72,4 @@ import { BackTop } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20BackTop)
-
-### Component Logs
-
-- 🐛 update backtop demos ([#2865](https://github.com/jdf2e/nutui-react/pull/2865)) `v2.7.5`
-- 🐛 fix(backtop & menu): lint, code simplification, deprecated pageYOffset removed ([#2633](https://github.com/jdf2e/nutui-react/pull/2633)) `v2.6.22`
-- ✨ feat(backtop): rtl ([#2051](https://github.com/jdf2e/nutui-react/pull/2051)) @xiaoyatong `v2.4.2`
-- 🐛 fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang `v2.4.1`
-- 💡 📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang `v2.3.9`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=backtop&expanded=true)
+<Contribution name="BackTop" />

@@ -104,16 +104,4 @@ import { Tour } from '@nutui/nutui-react'
 | \--nutui-tour-content-bottom-btn-font-size | 內容區底部按鈕的font-size值 | `12px` |
 | \--nutui-tour-content-bottom-btn-border-radius | 內容區底部按鈕的border-radius值 | `4px` |
 
-## 貢獻記錄
-
-### Issues
-
-> 更多已解決問題請查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20Tour)
-
-### Component Logs
-
-- 🐛 fix(tour): demo拆解与规范 ([#2130](https://github.com/jdf2e/nutui-react/pull/2130)) @Alex-huxiyang `v2.5.1`
-- 💡 📖 docs(tour): fix tour demo ([#1759](https://github.com/jdf2e/nutui-react/pull/1759)) @xiaoyatong `v2.3.0`
-- ✨ 新增 tour 引导组件 ([#1279](https://github.com/jdf2e/nutui-react/pull/1279)) @junjun666 `v2.0.11`
-
-> 更多版本更新記錄請查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=tour&expanded=true)
+<Contribution name="Tour" />

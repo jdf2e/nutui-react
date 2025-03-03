@@ -155,18 +155,4 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `16px` |
 | \--nutui-noticebar-right-icon-width | 右侧icon的宽度和高度的设定 | `16px` |
 
-## 贡献记录
-
-### Issues
-
-> 更多已解决问题请查看 [Issues](https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20NoticeBar)
-
-### Component Logs
-
-- 🐛 fix(noticebar): fix docs ([#2119](https://github.com/jdf2e/nutui-react/pull/2119)) @xiaoyatong `v2.5.0`
-- ✨ feat(NoticeBar): 增加right 属性,支持更多可自定义内容 @xiaoyatong `v2.4.2`
-- ✨ feat(noticebar): supports the center layout ([#1972](https://github.com/jdf2e/nutui-react/pull/1972)) @irisSong `v2.4.0`
-- ✨ feat(rtl): noticebar ([#1984](https://github.com/jdf2e/nutui-react/pull/1984)) @Eiinu `v2.4.0`
-- 💡 style(noticebar): 修订类名和css变量 ([#1751](https://github.com/jdf2e/nutui-react/pull/1751)) @xiaoyatong `v2.3.0`
-
-> 更多版本更新记录请查看 [Releases](https://github.com/jdf2e/nutui-react//releases?q=noticebar&expanded=true)
+<Contribution name="NoticeBar" />
