@@ -14,6 +14,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { PopupProps, Teleport } from './types.taro'
+import { harmony } from '@/utils/platform-taro'
 
 const defaultProps: PopupProps = {
   ...defaultOverlayProps,
@@ -84,7 +85,7 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
-  const popStyles = { ...style, zIndex: index }
+  const popStyles = { ...style, zIndex: index + 1 }
   const popClassName = classNames(
     classPrefix,
     {
@@ -179,18 +180,10 @@ export const Popup: FunctionComponent<
       return renderCloseIcon()
     }
   }
-  const renderPop = () => {
+
+  const renderContent = () => {
     return (
-      <CSSTransition
-        nodeRef={refObject}
-        classNames={transitionName}
-        mountOnEnter
-        unmountOnExit={destroyOnClose}
-        timeout={duration}
-        in={innerVisible}
-        onEntered={afterShow}
-        onExited={afterClose}
-      >
+      <>
         <View
           ref={refObject}
           style={popStyles}
@@ -201,7 +194,29 @@ export const Popup: FunctionComponent<
           {renderTitle()}
           {showChildren ? children : null}
         </View>
-      </CSSTransition>
+      </>
+    )
+  }
+  const renderPop = () => {
+    return (
+      <>
+        {!harmony() ? (
+          <CSSTransition
+            nodeRef={refObject}
+            classNames={transitionName}
+            mountOnEnter
+            unmountOnExit={destroyOnClose}
+            timeout={duration}
+            in={innerVisible}
+            onEntered={afterShow}
+            onExited={afterClose}
+          >
+            {renderContent()}
+          </CSSTransition>
+        ) : (
+          innerVisible && renderContent()
+        )}
+      </>
     )
   }
 
@@ -218,12 +233,9 @@ export const Popup: FunctionComponent<
             lockScroll={lockScroll}
             duration={duration}
             onClick={handleOverlayClick}
-          >
-            {renderPop()}
-          </Overlay>
-        ) : (
-          renderPop()
-        )}
+          />
+        ) : null}
+        {renderPop()}
       </>
     )
   }

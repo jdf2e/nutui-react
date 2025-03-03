@@ -229,7 +229,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       >
         <Content
           className={className}
-          style={style}
+          style={{ ...style, zIndex: zIndex + 1 }} // zIndex: zIndex + 1;解决harmony层级问题
           title={title}
           header={header}
           close={renderCloseIcon()}
@@ -249,7 +249,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       ref={refObject}
       catchMove={lockScroll}
     >
-      {overlay ? (
+      {overlay && (
         <Overlay
           zIndex={zIndex}
           visible={visible}
@@ -258,12 +258,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
-        >
-          {renderContent()}
-        </Overlay>
-      ) : (
-        renderContent()
+        />
       )}
+      {renderContent()}
     </View>
   )
 }
