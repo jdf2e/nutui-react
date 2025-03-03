@@ -1,7 +1,7 @@
 import React from 'react'
 import { Space, TextArea } from '@nutui/nutui-react-taro'
 
-const Demo1 = () => {
+const Demo = () => {
   return (
     <Space direction="vertical">
       <TextArea
@@ -20,4 +20,4 @@ const Demo1 = () => {
     </Space>
   )
 }
-export default Demo1
+export default Demo
