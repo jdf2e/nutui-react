@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { render, waitFor, fireEvent, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Picker from '../picker'
+import { PickerOptions } from '@/packages/pickerview'
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {
@@ -13,7 +14,7 @@ interface PickerOption {
   label: string | number
   value: string | number
   disabled?: boolean
-  children?: PickerOption[]
+  children?: PickerOptions
   className?: string | number
 }
 

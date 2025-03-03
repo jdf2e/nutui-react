@@ -150,6 +150,7 @@ export const NumberKeyboard: FunctionComponent<
       onOverlayClick={onClose}
       onCloseIconClick={onClose}
       zIndex={9999}
+      style={{ minHeight: 0 }}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
     >
       <View className={classNames(classPrefix, className)} style={style}>

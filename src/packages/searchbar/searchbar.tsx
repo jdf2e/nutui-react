@@ -93,7 +93,6 @@ export const SearchBar: FunctionComponent<
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
-        style={style}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}

@@ -595,6 +595,7 @@ $input-disabled-color: var(
   $color-text-disabled
 ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-lineheight: var(--nutui-input-lineheight, $font-size-l) !default;
 $input-border-radius: var(--nutui-input-border-radius, $radius-xs) !default;
 $input-color: var(--nutui-input-color, $color-text) !default;
 $input-background-color: var(--nutui-input-background-color, $white) !default;

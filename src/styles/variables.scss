@@ -592,6 +592,7 @@ $input-border-bottom-width: var(
 //   $color-text-disabled
 // ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-lineheight: var(--nutui-input-lineheight, $font-size-l) !default;
 $input-border-radius: var(--nutui-input-border-radius, $radius-s) !default;
 // $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(
@@ -1854,10 +1855,7 @@ $indicator-border-radius: var(
   --nutui-indicator-border-radius,
   $radius-xxs
 ) !default;
-$indicator-dot-margin: var(
-  --nutui-indicator-dot-margin,
-  $spacing-xxxs
-) !default;
+$indicator-dot-margin: var(--nutui-indicator-dot-margin, $spacing-xxs) !default;
 
 // menu（✅）
 $menu-scroll-fixed-top: var(--nutui-menu-scroll-fixed-top, 0) !default;

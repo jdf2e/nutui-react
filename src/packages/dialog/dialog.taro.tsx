@@ -122,43 +122,68 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     const btnClass =
       hideCancelButton || hideConfirmButton ? `${classPrefix}-footer-block` : ''
 
+    const renderCancelOfVertical = () => {
+      return (
+        !hideCancelButton && (
+          <View
+            className={`${classPrefix}-footer-cancel ${btnClass}`}
+            onClick={(e: ITouchEvent) => handleCancel(e)}
+          >
+            {cancelText || locale.cancel}
+          </View>
+        )
+      )
+    }
+
+    const renderCancel = () => {
+      return (
+        !hideCancelButton && (
+          <Button
+            type="default"
+            size="large"
+            className={`${classPrefix}-footer-cancel ${btnClass}`}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              handleCancel(e)
+            }
+          >
+            {cancelText || locale.cancel}
+          </Button>
+        )
+      )
+    }
+
+    const renderConfirm = () => {
+      return (
+        !hideConfirmButton && (
+          <Button
+            size="large"
+            type="primary"
+            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
+              disabled: disableConfirmButton,
+            })}
+            disabled={disableConfirmButton}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOk(e)}
+            loading={loading}
+          >
+            {confirmText || locale.confirm}
+          </Button>
+        )
+      )
+    }
+
     return (
       footer || (
         <>
-          {!hideCancelButton &&
-            (footerDirection === 'vertical' ? (
-              <View
-                className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e: ITouchEvent) => handleCancel(e)}
-              >
-                {cancelText || locale.cancel}
-              </View>
-            ) : (
-              <Button
-                type="default"
-                size="large"
-                className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-                  handleCancel(e)
-                }
-              >
-                {cancelText || locale.cancel}
-              </Button>
-            ))}
-
-          {!hideConfirmButton && (
-            <Button
-              size="large"
-              type="primary"
-              className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-                disabled: disableConfirmButton,
-              })}
-              disabled={disableConfirmButton}
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOk(e)}
-              loading={loading}
-            >
-              {confirmText || locale.confirm}
-            </Button>
+          {footerDirection === 'vertical' ? (
+            <>
+              {renderConfirm()}
+              {renderCancelOfVertical()}
+            </>
+          ) : (
+            <>
+              {renderCancel()}
+              {renderConfirm()}
+            </>
           )}
         </>
       )
@@ -193,46 +218,52 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     }
   }
 
+  const renderContent = () => {
+    return (
+      <CSSTransition
+        in={visible}
+        timeout={300}
+        classNames="fadeDialog"
+        unmountOnExit
+        appear
+      >
+        <Content
+          className={className}
+          style={style}
+          title={title}
+          header={header}
+          close={renderCloseIcon()}
+          footer={renderFooter()}
+          footerDirection={footerDirection}
+          visible={visible}
+        >
+          {content || children}
+        </Content>
+      </CSSTransition>
+    )
+  }
+
   return (
     <View
       style={{ display: visible ? 'block' : 'none' }}
       ref={refObject}
       catchMove={lockScroll}
     >
-      <>
-        {overlay && (
-          <Overlay
-            zIndex={zIndex}
-            visible={visible}
-            style={overlayStyle}
-            className={overlayClassName}
-            closeOnOverlayClick={closeOnOverlayClick}
-            lockScroll={lockScroll}
-            onClick={onHandleClickOverlay}
-          />
-        )}
-
-        <CSSTransition
-          in={visible}
-          timeout={300}
-          classNames="fadeDialog"
-          unmountOnExit
-          appear
+      {overlay ? (
+        <Overlay
+          zIndex={zIndex}
+          visible={visible}
+          style={overlayStyle}
+          className={overlayClassName}
+          closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
+          onClick={onHandleClickOverlay}
         >
-          <Content
-            className={className}
-            style={style}
-            title={title}
-            header={header}
-            close={renderCloseIcon()}
-            footer={renderFooter()}
-            footerDirection={footerDirection}
-            visible={visible}
-          >
-            {content || children}
-          </Content>
-        </CSSTransition>
-      </>
+          {renderContent()}
+        </Overlay>
+      ) : (
+        renderContent()
+      )}
     </View>
   )
 }

@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { Card } from '@nutui/nutui-react'
 ```
 
 ## 示例代码

@@ -13,9 +13,13 @@ const Demo8 = () => {
   const defaultValue = new Date()
   const defaultDescription = `${defaultValue.getFullYear()}-${
     defaultValue.getMonth() + 1
-  }-${defaultValue.getDate()}`
+  }-${defaultValue.getDate()} 06:00`
   const [show, setShow] = useState(false)
-  const [desc, setDesc] = useState(`${defaultDescription} 00`)
+  const [desc, setDesc] = useState(
+    `${defaultValue.getFullYear()}年${
+      defaultValue.getMonth() + 1
+    }月${defaultValue.getDate()}日 06时`
+  )
 
   const confirm = (values: PickerValue[], options: PickerOptions) => {
     setDesc(options.map((option) => option.label).join(' '))
@@ -48,7 +52,7 @@ const Demo8 = () => {
   return (
     <>
       <Cell
-        title="选择时分秒"
+        title="选择年月日时"
         description={desc}
         onClick={() => setShow(true)}
       />

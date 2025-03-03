@@ -1,7 +1,7 @@
-import React, { ReactNode, useContext, useEffect, useState, FC } from 'react'
+import React, { FC, ReactNode, useContext, useEffect, useState } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { CheckboxProps as TCheckboxProps, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -37,8 +37,7 @@ const defaultProps = {
 
 const classPrefix = 'nut-checkbox'
 export const Checkbox: FC<
-  Partial<CheckboxProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<CheckboxProps & Pick<TCheckboxProps, 'nativeProps' | 'ariaLabel'>>
 > = (props) => {
   const { children } = {
     ...defaultProps,
@@ -121,7 +120,9 @@ export const Checkbox: FC<
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked className={color()} />
+      <View className={`${classPrefix}-icon-wrap`}>
+        <Checked className={color()} />
+      </View>
     )
   }
   const color = () => {
@@ -174,9 +175,10 @@ export const Checkbox: FC<
       >
         {children || label}
         {innerChecked && activeIcon ? (
-          <View className={classNames(`${classPrefix}-button-icon`)}>
+          <>
+            <View className={classNames(`${classPrefix}-button-icon`)} />
             {activeIcon}
-          </View>
+          </>
         ) : null}
       </View>
     )
@@ -184,10 +186,10 @@ export const Checkbox: FC<
 
   const renderListItem = () => {
     return (
-      <View className="nut-checkbox-list-item">
-        {renderLabel()}
+      <>
         {renderIcon()}
-      </View>
+        {renderLabel()}
+      </>
     )
   }
 
@@ -212,6 +214,7 @@ export const Checkbox: FC<
         classPrefix,
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
+          'nut-checkbox-list-item': ctx?.list,
         },
         className
       )}

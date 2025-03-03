@@ -208,7 +208,7 @@ export const Popup: FunctionComponent<
   const renderNode = () => {
     return (
       <>
-        {overlay && (
+        {overlay ? (
           <Overlay
             zIndex={index}
             style={overlayStyles}
@@ -218,9 +218,12 @@ export const Popup: FunctionComponent<
             lockScroll={lockScroll}
             duration={duration}
             onClick={handleOverlayClick}
-          />
+          >
+            {renderPop()}
+          </Overlay>
+        ) : (
+          renderPop()
         )}
-        {renderPop()}
       </>
     )
   }

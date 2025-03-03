@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import { Popover, Cell, Picker } from '@nutui/nutui-react'
-
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
+import {
+  Popover,
+  Cell,
+  Picker,
+  PickerOnChangeCallbackParameter,
+} from '@nutui/nutui-react'
 
 const Demo4 = () => {
   const [baseDesc, setBaseDesc] = useState('')
@@ -16,18 +13,20 @@ const Demo4 = () => {
   const [curPostion, setCurPostion] = useState('')
 
   const columns = [
-    { text: 'top', value: 'top' },
-    { text: 'top-start', value: 'top-start' },
-    { text: 'top-end', value: 'top-end' },
-    { text: 'right', value: 'right' },
-    { text: 'right-start', value: 'right-start' },
-    { text: 'right-end', value: 'right-end' },
-    { text: 'bottom', value: 'bottom' },
-    { text: 'bottom-start', value: 'bottom-start' },
-    { text: 'bottom-end', value: 'bottom-end' },
-    { text: 'left', value: 'left' },
-    { text: 'left-start', value: 'left-start' },
-    { text: 'left-end', value: 'left-end' },
+    [
+      { label: 'top', value: 'top' },
+      { label: 'top-start', value: 'top-start' },
+      { label: 'top-end', value: 'top-end' },
+      { label: 'right', value: 'right' },
+      { label: 'right-start', value: 'right-start' },
+      { label: 'right-end', value: 'right-end' },
+      { label: 'bottom', value: 'bottom' },
+      { label: 'bottom-start', value: 'bottom-start' },
+      { label: 'bottom-end', value: 'bottom-end' },
+      { label: 'left', value: 'left' },
+      { label: 'left-start', value: 'left-start' },
+      { label: 'left-end', value: 'left-end' },
+    ],
   ]
   const positionList = [
     {
@@ -57,13 +56,13 @@ const Demo4 = () => {
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
-            description += ` ${option.text}`
+            description += ` ${option.label}`
           })
           setBaseDesc(description)
         }}
-        onChange={(options: PickerOption[]) => {
-          if (options[0]?.value) {
-            setCurPostion(options[0].value as string)
+        onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
+          if (selectedOptions[0]?.value) {
+            setCurPostion(selectedOptions[0].value as string)
           }
         }}
         onClose={() => {

@@ -1,7 +1,18 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, ViewProps } from '@tarojs/components'
-import { IndicatorType, TaroIndicatorProps } from '@/types'
+import pxTransform from '@/utils/px-transform'
+
+export type IndicatorType = 'anchor' | 'slide'
+export type IndicatorColor = 'primary' | 'white'
+
+export interface IndicatorProps {
+  total: number
+  current: number
+  direction: string
+  color: IndicatorColor
+  type: IndicatorType
+}
 
 const defaultProps = {
   total: 2,
@@ -9,12 +20,12 @@ const defaultProps = {
   direction: 'horizontal',
   color: 'primary',
   type: 'anchor',
-} as TaroIndicatorProps
+} as IndicatorProps
 
 const classPrefix = `nut-indicator`
 
 export const Indicator: FunctionComponent<
-  Partial<TaroIndicatorProps> & ViewProps
+  Partial<IndicatorProps> & ViewProps
 > = (props) => {
   const {
     color,
@@ -31,7 +42,7 @@ export const Indicator: FunctionComponent<
   }
   const classes = classNames({
     [`${classPrefix}-vertical`]: direction === 'vertical',
-    [`${classPrefix}-white`]: color === 'default',
+    [`${classPrefix}-white`]: color === 'white',
     [`${classPrefix}-track`]: type === 'slide',
   })
 
@@ -43,11 +54,14 @@ export const Indicator: FunctionComponent<
           children || (
             <View
               key={item}
-              className={`${classPrefix}-dot ${classPrefix}-dot-active`}
+              className={`${classPrefix}-dot ${classPrefix}-dot-${item} ${classPrefix}-dot-active`}
             />
           )
         ) : (
-          <View key={item} className={`${classPrefix}-dot`} />
+          <View
+            key={item}
+            className={`${classPrefix}-dot ${classPrefix}-dot-${item}`}
+          />
         )
       )
     }
@@ -60,7 +74,7 @@ export const Indicator: FunctionComponent<
     return (
       <View
         style={{
-          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * stride}px)`,
+          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${pxTransform(current * stride)})`,
         }}
         className={`${classPrefix}-line ${classPrefix}-line-active`}
       />
