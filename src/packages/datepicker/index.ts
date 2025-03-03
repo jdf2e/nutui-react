@@ -1,4 +1,4 @@
 import DatePicker from './datepicker'
 
-export type { DatePickerProps } from './types'
+export type { WebDatePickerProps as DatePickerProps } from '@/types'
 export default DatePicker

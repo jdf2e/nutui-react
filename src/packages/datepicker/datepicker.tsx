@@ -16,8 +16,13 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from './utils'
-import { DatePickerActions, DatePickerProps, DatePickerRef } from './types'
-import { PickerOptions, PickerValue } from '@/packages/pickerview/types'
+import {
+  PickerOptions,
+  PickerValue,
+  PickerActions,
+  WebDatePickerProps,
+  PickerRef,
+} from '@/types'
 
 const currentYear = new Date().getFullYear()
 
@@ -31,11 +36,11 @@ const defaultProps = {
   minuteStep: 1,
   startDate: new Date(currentYear - 10, 0, 1),
   endDate: new Date(currentYear + 10, 11, 31),
-} as DatePickerProps
+} as WebDatePickerProps
 
 const InternalPicker: ForwardRefRenderFunction<
-  DatePickerRef,
-  Partial<DatePickerProps>
+  PickerRef,
+  Partial<WebDatePickerProps>
 > = (props, ref) => {
   const {
     startDate,
@@ -93,7 +98,7 @@ const InternalPicker: ForwardRefRenderFunction<
     finalValue: false,
   })
 
-  const actions: DatePickerActions = {
+  const actions: PickerActions = {
     open: () => {
       setInnerVisible(true)
     },
@@ -243,7 +248,7 @@ const InternalPicker: ForwardRefRenderFunction<
   )
 }
 
-const DatePicker = React.forwardRef<DatePickerRef, Partial<DatePickerProps>>(
+const DatePicker = React.forwardRef<PickerRef, Partial<WebDatePickerProps>>(
   InternalPicker
 )
 export default DatePicker

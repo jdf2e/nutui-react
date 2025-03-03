@@ -35,7 +35,7 @@ export interface PickerOnChangeCallbackParameter {
 
 export type PickerColumnsType = 'single' | 'multiple' | 'cascade'
 
-export interface BasePicker<POPUP_PROPS> extends BaseProps {
+export interface BasePicker<POPUP_PROPS = any> extends BaseProps {
   visible?: boolean | undefined
   title?: string
   options: PickerOptions[]
