@@ -1,40 +1,44 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
-
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+  PickerOnChangeCallbackParameter,
+  PickerOption,
+} from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
-  const listData1 = [
+  const options = [
     [
-      { value: 1, text: '南京市' },
-      { value: 2, text: '无锡市' },
-      { value: 3, text: '海北藏族自治区' },
-      { value: 4, text: '北京市' },
-      { value: 5, text: '连云港市' },
-      { value: 8, text: '大庆市' },
-      { value: 9, text: '绥化市' },
-      { value: 10, text: '潍坊市' },
-      { value: 12, text: '乌鲁木齐市' },
+      { value: 1, label: '南京市' },
+      { value: 2, label: '无锡市' },
+      { value: 3, label: '海北藏族自治区' },
+      { value: 4, label: '北京市' },
+      { value: 5, label: '连云港市' },
+      { value: 8, label: '大庆市' },
+      { value: 9, label: '绥化市' },
+      { value: 10, label: '潍坊市' },
+      { value: 12, label: '乌鲁木齐市' },
     ],
   ]
-  const changePicker = (list: any[], option: any, columnIndex: number) => {
-    console.log(columnIndex, option)
+  const changePicker = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    console.log('changePicker', value, index, selectedOptions)
   }
   const confirmPicker = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
+    console.log('confirmPicker', selectedOptions, selectedValue)
     let description = ''
-    options.forEach((option: any) => {
-      description += ` ${option.text}`
+    selectedOptions.forEach((option: PickerOption) => {
+      description += ` ${option.label}`
     })
     setBaseDesc(description)
   }
@@ -48,8 +52,8 @@ const Demo1 = () => {
       <Picker
         title="请选择城市"
         visible={visible}
-        options={listData1}
-        onConfirm={(list, values) => confirmPicker(list, values)}
+        options={options}
+        onConfirm={confirmPicker}
         onClose={() => setVisible(false)}
         onChange={changePicker}
       />

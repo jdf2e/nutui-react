@@ -9,6 +9,10 @@
     &-button {
       background-color: $radio-button-background;
     }
+
+    &:last-child {
+      margin: 0;
+    }
   }
 
   &-vertical {
@@ -30,9 +34,9 @@
   }
 
   &-horizontal {
-    .nut-radio {
-      display: inline-flex;
+    display: flex;
 
+    .nut-radio {
       &-button {
         border: 1px solid $white;
       }
@@ -40,6 +44,10 @@
       &-button-active {
         border: $radio-button-active-border;
         background-color: $color-primary-light-pressed;
+      }
+
+      &:last-child {
+        margin: 0 $radiogroup-radio-margin $radiogroup-radio-margin-bottom 0;
       }
     }
   }

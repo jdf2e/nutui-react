@@ -93,6 +93,7 @@ const BaseDialog: ForwardRefRenderFunction<
           {!hideCancelButton &&
             (footerDirection === 'vertical' ? (
               <div
+                style={{ order: 2 }}
                 className={`${classPrefix}-footer-cancel ${btnClass}`}
                 onClick={(e) => handleCancel(e)}
               >

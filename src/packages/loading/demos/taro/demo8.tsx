@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Button, Cell, Loading, Overlay } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo8 = () => {
   const [visible, setVisible] = useState(false)
@@ -22,7 +23,11 @@ const Demo8 = () => {
   return (
     <>
       <Cell>
-        <Button type="success" onClick={() => showOverlay()}>
+        <Button
+          type="success"
+          onClick={() => showOverlay()}
+          style={{ width: pxTransform(250) }}
+        >
           遮罩层loading(两秒后关闭)
         </Button>
       </Cell>

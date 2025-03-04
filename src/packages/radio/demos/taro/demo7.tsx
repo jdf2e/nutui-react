@@ -6,7 +6,7 @@ const Demo7 = () => {
     <Radio
       style={{
         '--nut-icon-width': '12px',
-        '--nutui-icon-height': '12px',
+        '--nut-icon-height': '12px',
       }}
     >
       自定义尺寸

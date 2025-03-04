@@ -2,28 +2,28 @@ import { BasicComponent } from '@/utils/typings'
 
 export type PickerValue = string | number | null
 
-export interface PickerOptionItem {
+export interface PickerOption {
   label: string | number
   value: string | number
-  children?: PickerOptionItem[]
+  children?: PickerOptions
 }
 
-export type PickerOptions = PickerOptionItem[]
+export type PickerOptions = PickerOption[]
 
 export interface PickerRollerProps {
-  options: PickerOptionItem[]
+  options: PickerOptions
   keyIndex: number
   value: PickerValue
   threeDimensional?: boolean
   duration?: number | string
-  onSelect: (option: PickerOptionItem, index: number) => void
-  renderLabel: (item: PickerOptionItem) => React.ReactNode
+  onSelect: (option: PickerOption, index: number) => void
+  renderLabel: (item: PickerOption) => React.ReactNode
 }
 
 export interface PickerOnChangeCallbackParameter {
   value: PickerValue[]
   index: number
-  selectedOptions: PickerOptionItem[]
+  selectedOptions: PickerOptions
 }
 
 export interface PickerViewProps extends BasicComponent {
@@ -33,6 +33,6 @@ export interface PickerViewProps extends BasicComponent {
   defaultValue?: PickerValue[]
   threeDimensional?: boolean
   duration?: number | string
-  renderLabel: (item: PickerOptionItem) => React.ReactNode
+  renderLabel: (item: PickerOption) => React.ReactNode
   onChange?: (arg0: PickerOnChangeCallbackParameter) => void
 }

@@ -11,7 +11,7 @@ const Demo1 = () => {
         <Indicator total={2} current={0} />
       </Cell>
       <Cell>
-        <Indicator total={2} current={0} direction="vertical" />
+        <Indicator total={2} current={1} direction="vertical" />
       </Cell>
       <Cell style={{ background: '#C2C4CC' }}>
         <Indicator total={2} current={1} direction="vertical" color="white" />

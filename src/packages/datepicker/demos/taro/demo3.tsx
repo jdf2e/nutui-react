@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react-taro'
+import {
+  DatePicker,
+  Cell,
+  PickerValue,
+  PickerOptions,
+} from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const defaultValue = new Date()
@@ -11,7 +16,7 @@ const Demo3 = () => {
   const endDate = new Date(2025, 10, 1)
   const [show, setShow] = useState(false)
   const [desc, setDesc] = useState(`${defaultDescription} 11:08`)
-  const confirm = (values: (string | number)[], options: PickerOption[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     const date = values.slice(0, 3).join('-')
     const time = values.slice(3).join(':')
     setDesc(`${date} ${time}`)

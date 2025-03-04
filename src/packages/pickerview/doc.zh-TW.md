@@ -71,13 +71,13 @@ import { PickerView } from '@nutui/nutui-react-taro'
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
 | onChange | 每一列值變更時調用 | `({value, index, selectedOptions}) => void` | `-` |
 
-### PickerOptionItem
+### PickerOption
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | label | 選項的文字內容 | `string` \| `number` | `-` |
 | value | 選項對應的值，且唯一 | `string` \| `number` | `-` |
-| children | 用於級聯選項 | `PickerOptionItem[]` | `-` |
+| children | 用於級聯選項 | `PickerOptions` | `-` |
 
 ## 主題定制
 

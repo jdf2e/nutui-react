@@ -170,7 +170,6 @@
       "name": "布局组件",
       "enName": "layout",
       "packages": [
-
         {
           "version": "3.0.0",
           "name": "Divider",
@@ -688,8 +687,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "dsj",
-          "dd": false
+          "dd": false,
+          "author": "songsong"
         },
         {
           "version": "3.0.0",
