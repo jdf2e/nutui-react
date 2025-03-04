@@ -226,7 +226,7 @@ const InternalPicker: ForwardRefRenderFunction<
   return (
     <>
       {typeof children === 'function' && children(selectedDate)}
-      <View className={`nut-datepicker ${className}`} style={style} {...rest}>
+      <View className={cls} style={style} {...rest}>
         {pickerOptions.length && (
           <Picker
             {...pickerProps}

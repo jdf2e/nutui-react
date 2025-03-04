@@ -585,6 +585,19 @@
           "dd": false
         },
         {
+          "version": "3.0.0",
+          "name": "DatePickerView",
+          "type": "component",
+          "cName": "日期选择器视图",
+          "desc": "DatePickerView 是 DatePicker 的内容区域",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "v15": false,
+          "dd": false,
+          "author": "songsong"
+        },
+        {
           "version": "2.0.0",
           "name": "Form",
           "type": "component",
@@ -641,19 +654,6 @@
       "name": "数据录入",
       "enName": "dataentry",
       "packages": [
-        {
-          "version": "3.0.0",
-          "name": "DatePickerView",
-          "type": "component",
-          "cName": "日期选择器视图",
-          "desc": "DatePickerView 是 DatePicker 的内容区域",
-          "sort": 16,
-          "show": true,
-          "taro": true,
-          "v15": false,
-          "dd": false,
-          "author": "songsong"
-        },
         {
           "version": "2.0.0",
           "name": "Menu",
