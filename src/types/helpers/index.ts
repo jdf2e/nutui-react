@@ -1,2 +1,2 @@
 export * from './override'
-export * from './fixstringliteralunion'
+export * from './fix-string-literal-union'
