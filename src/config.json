@@ -248,6 +248,18 @@
         },
         {
           "version": "3.0.0",
+          "name": "SafeArea",
+          "type": "component",
+          "cName": "安全区",
+          "desc": "在全面屏下提供自适应的边距调整。",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "oasis",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
           "name": "Space",
           "type": "component",
           "cName": "间距",
@@ -269,18 +281,6 @@
           "taro": true,
           "author": "hx",
           "dd": false
-        },
-        {
-          "version": "3.0.0",
-          "name": "SafeArea",
-          "type": "component",
-          "cName": "安全区",
-          "desc": "在全面屏下提供自适应的边距调整。",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "oasis",
-          "dd": true
         }
       ]
     },
@@ -366,18 +366,6 @@
           "dd": true
         },
         {
-          "version": "2.0.0",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "用于内容选择和切换",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "hx",
-          "dd": false
-        },
-        {
           "version": "3.0.0",
           "name": "SideBar",
           "type": "component",
@@ -402,6 +390,18 @@
           "author": "Alex.hxy",
           "v15": true,
           "dd": true
+        },
+        {
+          "version": "2.0.0",
+          "name": "SideNavBar",
+          "type": "component",
+          "cName": "侧边栏导航",
+          "desc": "用于内容选择和切换",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "hx",
+          "dd": false
         },
         {
           "version": "2.0.0",
@@ -900,19 +900,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "ResultPage",
-          "type": "component",
-          "cName": "结果反馈",
-          "desc": "以页面的形式向用户反馈操作结果",
-          "sort": 15,
-          "show": true,
-          "taro": true,
-          "v15": true,
-          "author": "songsong",
-          "dd": true
-        },
-        {
-          "version": "3.0.0",
           "name": "InfiniteLoading",
           "type": "component",
           "cName": "滚动加载",
@@ -1000,6 +987,19 @@
           "v15": true,
           "author": "oasis",
           "dd": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "ResultPage",
+          "type": "component",
+          "cName": "结果反馈",
+          "desc": "以页面的形式向用户反馈操作结果",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "v15": true,
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1218,19 +1218,6 @@
         },
         {
           "version": "3.0.0",
-          "name": "Segmented",
-          "type": "component",
-          "cName": "分段选择器",
-          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
-          "sort": 6,
-          "show": true,
-          "taro": true,
-          "v15": true,
-          "author": "lkjh3214",
-          "dd": true
-        },
-        {
-          "version": "3.0.0",
           "name": "Price",
           "type": "component",
           "cName": "价格",
@@ -1252,6 +1239,19 @@
           "show": true,
           "taro": true,
           "author": "ailululu",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v15": true,
+          "author": "lkjh3214",
           "dd": true
         },
         {
@@ -1370,6 +1370,18 @@
       "packages": [
         {
           "version": "2.0.0",
+          "name": "AvatarCropper",
+          "type": "component",
+          "cName": "头像裁剪",
+          "desc": "仿微信头像裁剪功能",
+          "sort": 26,
+          "show": true,
+          "taro": true,
+          "author": "Marvin",
+          "dd": false
+        },
+        {
+          "version": "2.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",
@@ -1438,18 +1450,6 @@
           "show": true,
           "taro": true,
           "author": "swag~jun",
-          "dd": false
-        },
-        {
-          "version": "2.0.0",
-          "name": "AvatarCropper",
-          "type": "component",
-          "cName": "头像裁剪",
-          "desc": "仿微信头像裁剪功能",
-          "sort": 26,
-          "show": true,
-          "taro": true,
-          "author": "Marvin",
           "dd": false
         }
       ]
