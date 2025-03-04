@@ -42,24 +42,25 @@
   }
 
   &-list {
-    width: 100%;
+    flex-grow: 1;
     border-bottom: $checkbox-list-item-border;
     border-top: $checkbox-list-item-border;
     padding: $checkbox-list-padding;
     background: $checkbox-list-background-color;
+    box-sizing: border-box;
 
     .nut-checkbox {
       margin-bottom: 5px;
 
-      &:first-child {
-        .nut-checkbox-list-item {
-          border-top: none;
-        }
-      }
-
       &.nut-checkbox-reverse {
-        width: 100%;
+        width: auto;
+        flex-grow: 1;
         justify-content: space-between;
+      }
+    }
+    .nut-checkbox-list-item {
+      &:first-child {
+        border-top: none;
       }
     }
   }

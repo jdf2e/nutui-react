@@ -62,14 +62,14 @@ import { Tour } from '@nutui/nutui-react'
 | type | Tour type | `step` \| `tile` | `step` |
 | list | Boot Step Content | `TourList[]` | `-` |
 | offset | The offset of the hollow mask relative to the target element | `number[]` | `[8, 10]` |
-| location | Location of popover[location](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
+| location | Location of popover[location](#/zh-CN/component/popover) | `string` | `bottom` |
 | next | Next step text | `ReactNode` | `''` |
 | prev | Next step text | `ReactNode` | `''` |
 | complete | Complete text | `ReactNode` | `''` |
 | mask | Whether to display cutout mask | `boolean` | `true` |
 | maskWidth | Width of hollow mask | `number` \| `string` | `''` |
 | maskHeight | Hollow mask height | `number` \| `string` | `''` |
-| closeOnOverlayClick | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `boolean` | `true` |
+| closeOnOverlayClick | Whether to close when clicking overlay,[closeOnClickOverlay](#/en-US/component/popover) | `boolean` | `true` |
 | showPrev | Whether to show prev button | `boolean` | `true` |
 | title | Whether to show title bar | `ReactNode` | `''` |
 | onClose | Emit when popover close | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |

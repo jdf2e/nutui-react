@@ -1,33 +1,21 @@
-import * as path from 'path'
+import { resolve } from 'path'
 
-export function relativeFilePath(from, to) {
-  if (
-    (from[0] === path.sep && to[0] !== path.sep) ||
-    (from[0] !== path.sep && to[0] === path.sep)
-  ) {
-    return ''
+export function relativePath(target, source) {
+  const resolveSource = resolve(source)
+  const resolveTarget = resolve(target)
+
+  let str = resolveTarget.substr(0, resolve(resolveTarget).lastIndexOf('/'))
+  while (resolveSource.indexOf(str) == -1) {
+    str = str.substr(0, str.lastIndexOf('/'))
   }
 
-  if (from[from.length - 1] === path.sep || to[to.length - 1] === path.sep) {
-    return ''
+  const remain = resolveSource.replace(str+'/', '')
+  const matchedSlash = remain.match(/\//g)
+  let res = ''
+  if (!matchedSlash) {
+    res = resolveTarget.replace(str+'/', './')
+  } else {
+    res = resolveTarget.replace(str+'/', '../'.repeat(matchedSlash.length))
   }
-
-  const fromPath = from.split(path.sep)
-  const toPath = to.split(path.sep)
-
-  let i = 0
-  while (i < fromPath.length - 1) {
-    if (toPath[i] === undefined || fromPath[i] !== toPath[i]) {
-      break
-    }
-    ++i
-  }
-
-  const val = toPath.slice(i).join(path.sep)
-
-  if (i === fromPath.length - 1) {
-    return '.' + path.sep + val
-  }
-
-  return `..${path.sep}`.repeat(fromPath.length - 1 - i) + val
+  return res
 }

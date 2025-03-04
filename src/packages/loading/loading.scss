@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
 
-  &.nut-loading-vertical {
+  &-vertical {
     flex-direction: column;
   }
 
@@ -21,6 +21,7 @@
       font-size: $loading-icon-size;
     }
   }
+
   .nut-loading-lottie-box {
     width: 56px;
     height: 56px;
@@ -29,9 +30,14 @@
   }
 
   .nut-loading-text {
-    padding-top: $spacing-base;
     color: $loading-color;
     font-size: $loading-font-size;
+  }
+
+  &-vertical {
+    .nut-loading-text {
+      padding-top: $spacing-base;
+    }
   }
 }
 
