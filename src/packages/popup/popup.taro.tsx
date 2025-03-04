@@ -85,7 +85,8 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
-  const popStyles = { ...style, zIndex: index + 1 }
+  const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
+  const popStyles = { zIndex: contentZIndex, ...style }
   const popClassName = classNames(
     classPrefix,
     {
@@ -199,24 +200,18 @@ export const Popup: FunctionComponent<
   }
   const renderPop = () => {
     return (
-      <>
-        {!harmony() ? (
-          <CSSTransition
-            nodeRef={refObject}
-            classNames={transitionName}
-            mountOnEnter
-            unmountOnExit={destroyOnClose}
-            timeout={duration}
-            in={innerVisible}
-            onEntered={afterShow}
-            onExited={afterClose}
-          >
-            {renderContent()}
-          </CSSTransition>
-        ) : (
-          innerVisible && renderContent()
-        )}
-      </>
+      <CSSTransition
+        nodeRef={refObject}
+        classNames={transitionName}
+        mountOnEnter
+        unmountOnExit={destroyOnClose}
+        timeout={duration}
+        in={innerVisible}
+        onEntered={afterShow}
+        onExited={afterClose}
+      >
+        {renderContent()}
+      </CSSTransition>
     )
   }
 
