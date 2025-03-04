@@ -4,11 +4,11 @@
 const fse = require('fs-extra')
 const config = require('../../src/config.json')
 const param = process.env.C
-// G=nav pnmp dev:taro:jdharmonycpp 
+// G=nav pnpm dev:jdtaro:jdharmonycpp 
 // base | layout | nav | dentry | dataentry | feedback | exhibition | business 
 const paramG = process.env.G
    
-// C=radio pnpm dev:taro:jdharmonycpp or C=radio,button,cell pnpm dev:taro:jdharmonycpp
+// C=radio pnpm dev:jdtaro:jdharmonycpp or C=radio,button,cell pnpm dev:jdtaro:jdharmonycpp
 const specialComponent = (name) => {
   if (!param) return true
   const entries = param.split(',').map((i) => i.toLowerCase())
