@@ -111,8 +111,8 @@ import { Uploader } from '@nutui/nutui-react'
 | maxCount | 文件上傳數量限製 | `number` \| `string` | `1` |
 | fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`內容，設為`true`支持重復選擇上傳同一個文件 | `boolean` | `true` |
-| accept | 允許上傳的文件類型，[詳細說明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
-| uploadIcon | 上傳區域<a href="#/zh-CN/icon">圖標名稱</a> | `React.ReactNode` | `-` |
+| accept | 允許上傳的文件類型，[詳細說明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| uploadIcon | 上傳區域<a href="#/zh-CN/component/icon">圖標名稱</a> | `React.ReactNode` | `-` |
 | deleteIcon | 刪除區域的圖標名稱 | `React.ReactNode` | `-` |
 | uploadLabel | 上傳區域圖片下方文字 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多選 | `boolean` | `false` |

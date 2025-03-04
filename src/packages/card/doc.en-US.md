@@ -5,7 +5,7 @@ Used to display product pictures, prices and other information.
 ## Import
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { Card } from '@nutui/nutui-react'
 ```
 
 ## Demo

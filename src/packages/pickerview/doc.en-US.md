@@ -71,13 +71,13 @@ import { PickerView } from '@nutui/nutui-react'
 | duration | The duration of inertial rolling during rapid sliding, in ms | `string` \| `number` | `1000` |
 | onChange | Called when the value of each column changes | `({value, index, selectedOptions}) => void` | `-` |
 
-### PickerOptionItem
+### PickerOption
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | label | Text of column | `string` \| `number` | `-` |
 | value | Value of column | `string` \| `number` | `-` |
-| children | Cascader Option | `PickerOptionItem[]` | `-` |
+| children | Cascader Option | `PickerOptions` | `-` |
 
 ## Theming
 

@@ -126,7 +126,9 @@ export const Checkbox: FunctionComponent<
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <Checked className={color()} />
+      <div className={`${classPrefix}-icon-wrap`}>
+        <Checked className={color()} />
+      </div>
     )
   }
   const color = () => {
@@ -179,9 +181,10 @@ export const Checkbox: FunctionComponent<
       >
         {children || label}
         {innerChecked && activeIcon ? (
-          <div className={classNames(`${classPrefix}-button-icon`)}>
+          <>
+            <div className={classNames(`${classPrefix}-button-icon`)} />
             {activeIcon}
-          </div>
+          </>
         ) : null}
       </div>
     )
@@ -189,10 +192,10 @@ export const Checkbox: FunctionComponent<
 
   const renderListItem = () => {
     return (
-      <div className={`${classPrefix}-list-item`}>
-        {renderLabel()}
+      <>
         {renderIcon()}
-      </div>
+        {renderLabel()}
+      </>
     )
   }
 
@@ -217,6 +220,7 @@ export const Checkbox: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
+          'nut-checkbox-list-item': ctx?.list,
         },
         className
       )}

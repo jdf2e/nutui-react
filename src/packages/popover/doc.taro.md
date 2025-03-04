@@ -84,7 +84,7 @@ bottom-end    # 底部右侧位置
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 

@@ -2,7 +2,7 @@ import PickerView from './pickerview.taro'
 
 export type {
   PickerViewProps,
-  PickerOptionItem,
+  PickerOption,
   PickerRollerProps,
   PickerValue,
   PickerOptions,

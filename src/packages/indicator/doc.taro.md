@@ -22,7 +22,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -30,7 +30,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

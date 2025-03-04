@@ -199,6 +199,7 @@ export type NutCSSVariables =
   | 'nutuiInputBorderBottomWidth'
   | 'nutuiInputDisabledColor'
   | 'nutuiInputFontSize'
+  | 'nutuiInputLineheight'
   | 'nutuiInputBorderRadius'
   | 'nutuiInputColor'
   | 'nutuiInputBackgroundColor'

@@ -102,7 +102,7 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | maxCount | 文件上传数量限制 | `number` \| `string` | `1` |
 | fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件 | `boolean` | `true` |
-| uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `React.ReactNode` | `-` |
+| uploadIcon | 上传区域<a href="#/zh-CN/component/icon">图标名称</a> | `React.ReactNode` | `-` |
 | deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
@@ -117,8 +117,8 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | onUploadQueueChange | 图片上传队列变化时触发 | `(tasks: FileItem[]) => void` | `-` |
 | sourceType | [选择文件的来源]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['album','camera']` |
 | camera`仅支持WEAPP` | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头 | `String` | `back` |
-| sizeType | [是否压缩所选文件]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['original','compressed']` |
-| mediaType`仅支持WEAPP` | [选择文件类型]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['image', 'video', 'mix']` |
+| sizeType | [是否压缩所选文件](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | `Array` | `['original','compressed']` |
+| mediaType`仅支持WEAPP` | [选择文件类型](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | `Array` | `['image', 'video', 'mix']` |
 | maxDuration`仅支持WEAPP` | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。 | `number` | `10` |
 
 ### FileItem

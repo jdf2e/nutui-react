@@ -5,7 +5,7 @@ import { Star } from '@nutui/icons-react-taro'
 const Demo7 = () => {
   return (
     <Cell>
-      <Loading direction="vertical" icon={<Star size={24} color="red" />} />
+      <Loading direction="vertical" icon={<Star size={24} color="#ff0f23" />} />
     </Cell>
   )
 }

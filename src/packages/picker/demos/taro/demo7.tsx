@@ -1,77 +1,100 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react-taro'
+import {
+  Picker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+  PickerOnChangeCallbackParameter,
+  PickerOption,
+} from '@nutui/nutui-react-taro'
 
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo7 = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const [asyncDesc, setasyncDesc] = useState('')
+  const [value, setValue] = useState<PickerValue[]>([1])
+  const [asyncDesc, setasyncDesc] = useState('北京')
   const [asyncData, setAsyncData] = useState([
-    {
-      value: 1,
-      text: '北京市',
-      children: [
-        { value: 1, text: '朝阳区' },
-        { value: 2, text: '海淀区' },
-        { value: 3, text: '大兴区' },
-        { value: 4, text: '东城区' },
-        { value: 5, text: '西城区' },
-        { value: 6, text: '丰台区' },
-      ],
-    },
-    {
-      value: 2,
-      text: '上海市',
-      children: [],
-    },
+    [
+      {
+        value: 1,
+        label: '北京',
+        children: [
+          {
+            value: 1,
+            label: '朝阳区',
+          },
+          {
+            value: 2,
+            label: '海淀区',
+          },
+          {
+            value: 3,
+            label: '大兴区',
+          },
+          {
+            value: 4,
+            label: '东城区',
+          },
+          {
+            value: 5,
+            label: '西城区',
+          },
+          {
+            value: 6,
+            label: '丰台区',
+          },
+        ],
+      },
+      {
+        value: 2,
+        label: '上海',
+        children: [],
+      },
+    ],
   ])
-  const updateChooseValueCustmer = (
-    options: PickerOption[],
-    values: (string | number)[],
-    columnIndex: number
-  ) => {
-    console.log('updateChooseValueCustmer', columnIndex, values, options)
-    if (columnIndex === 0 && values[0] === 2) {
+  const updateChooseValueCustmer = ({
+    value,
+    index,
+    selectedOptions,
+  }: PickerOnChangeCallbackParameter) => {
+    if (value[0] === 2 && asyncData[0]?.[1].children.length === 0) {
+      console.log('updateChooseValueCustmer', index, value, selectedOptions)
       setTimeout(() => {
-        if (asyncData[1].children.length === 0) {
-          asyncData[1].children = [
-            {
-              value: 1,
-              text: '黄埔区',
-            },
-            {
-              value: 2,
-              text: '长宁区',
-            },
-            {
-              value: 3,
-              text: '普陀区',
-            },
-            {
-              value: 4,
-              text: '杨浦区',
-            },
-            {
-              value: 5,
-              text: '浦东新区',
-            },
-          ]
-          setAsyncData([...asyncData])
-        }
-      }, 100)
+        asyncData[0][1].children = [
+          {
+            value: 1,
+            label: '黄埔区',
+          },
+          {
+            value: 2,
+            label: '长宁区',
+          },
+          {
+            value: 3,
+            label: '普陀区',
+          },
+          {
+            value: 4,
+            label: '杨浦区',
+          },
+          {
+            value: 5,
+            label: '浦东新区',
+          },
+        ]
+        setAsyncData([...[...asyncData]])
+      }, 0)
     }
   }
   const setAsyncConfirm = (
-    options: PickerOption[],
-    values: (string | number)[]
+    selectedOptions: PickerOptions,
+    selectedValue: PickerValue[]
   ) => {
-    const str = options.map((item) => item.text).join('-')
-    setasyncDesc(str)
+    console.log('onconfirm', selectedOptions, selectedValue)
+    const city = selectedOptions
+      .map((item: PickerOption) => item.label)
+      .join('-')
+    setasyncDesc(city)
+    setValue(selectedValue)
   }
 
   return (
@@ -81,18 +104,14 @@ const Demo7 = () => {
         description={asyncDesc}
         onClick={() => setIsVisible(!isVisible)}
       />
+
       <Picker
         visible={isVisible}
         options={asyncData}
+        value={value}
         onClose={() => setIsVisible(false)}
-        onConfirm={(list, values) => setAsyncConfirm(list, values)}
-        onChange={(
-          selectedOptions: PickerOption[],
-          selectedValue: (string | number)[],
-          columnIndex: number
-        ) =>
-          updateChooseValueCustmer(selectedOptions, selectedValue, columnIndex)
-        }
+        onConfirm={setAsyncConfirm}
+        onChange={updateChooseValueCustmer}
       />
     </>
   )

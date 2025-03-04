@@ -99,7 +99,7 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | endDate | 结束日期 | `Date` | `十年后` |
 | pickerProps | 透传picker属性 | `object` | `-` |
 | formatter | 选项格式化函数 | `(type: string, option: PickerOption) => PickerOption` | `-` |
-| filter | 选项过滤函数 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
+| filter | 选项过滤函数 | `(type: string, options: PickerOptions) => PickerOptions` | `-` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |
 | onConfirm | 点击确定按钮时触发 | `(options, value) => void` | `-` |
 | onCancel | 点击取消按钮时触发 | `() => void` | `-` |

@@ -107,8 +107,8 @@ import { Uploader } from '@nutui/nutui-react'
 | maxCount | File upload count limit | `number` \| `string` | `1` |
 | fit | Picture fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | If or not you want to clear the `input` content, set it to `true` to support selecting the same file to upload over and over again | `boolean` | `true` |
-| accept | Allowed file types to be uploaded, [Details] ("<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%> B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
-| uploadIcon | uploadRegion <a href=“#/zh-CN/icon”>Icon Name</a> | `React.ReactNode` | `-` |
+| accept | Allowed file types to be uploaded, [Details] (https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| uploadIcon | uploadRegion <a href="#/en-US/component/icon">Icon Name</a> | `React.ReactNode` | `-` |
 | deleteIcon | Delete the icon name of the region | `React.ReactNode` | `-` |
 | uploadLabel | Text below the image in the upload area | `React.
 | multiple | Whether to support file multi-selection |`boolean`|`false`|

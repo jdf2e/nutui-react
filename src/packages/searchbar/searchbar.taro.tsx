@@ -115,13 +115,10 @@ export const SearchBar: FunctionComponent<
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
-        style={style}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled || readOnly}
         maxlength={maxLength}
-        // @ts-ignore
-        // onKeyDown={onKeypress}
         onInput={onInput}
         onFocus={focus}
         onBlur={blur}

@@ -5,7 +5,7 @@ Place the content in multiple folded panels, and click the panel title to expand
 ## Import
 
 ```tsx
-import { Collapse } from 'nutui-react'
+import { Collapse } from '@nutui/nutui-react'
 ```
 
 ## Code demonstration

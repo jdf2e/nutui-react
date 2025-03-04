@@ -29,7 +29,7 @@ You can override these CSS variables directly in your code, and the styling of t
 }
 ```
 
-> @nutui/nutui-react comes with two theme files default：@nutui/nutui-react/dist/styles/theme-default.scss; dark：@nutui/nutui-react/dist/styles/theme-dark.scss; If you want to use the dark theme, you can import the dark theme file in your project.
+> @nutui/nutui-react comes with two theme files default：@nutui/nutui-react/dist/styles/themes/default.css; dark：@nutui/nutui-react/dist/styles/themes/dark.css; If you want to use the dark theme, you can import the dark theme file in your project.
 
 #### Overrides via ConfigProvider
 
