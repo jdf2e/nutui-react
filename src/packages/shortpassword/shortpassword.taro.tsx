@@ -37,7 +37,6 @@ export interface ShortPasswordProps extends PopupProps {
 const defaultProps = {
   ...ComponentDefaults,
   value: '',
-  zIndex: 1002,
   visible: false,
   plain: false,
   hideFooter: true,
@@ -63,7 +62,6 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     className,
     closeable,
     autoFocus,
-    zIndex,
     round,
     onFocus,
     onChange,
@@ -130,7 +128,6 @@ export const InternalShortPassword: ForwardRefRenderFunction<
       closeable
       onOverlayClick={onClose}
       onCloseIconClick={onClose}
-      zIndex={zIndex}
       round
       {...rest}
     >
