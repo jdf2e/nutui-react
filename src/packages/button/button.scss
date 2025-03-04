@@ -20,6 +20,7 @@
   font-weight: $font-weight;
   text-align: center;
   cursor: pointer;
+  white-space: nowrap;
   transition: $button-transition;
   user-select: none;
   touch-action: manipulation;
