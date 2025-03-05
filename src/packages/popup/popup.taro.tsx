@@ -14,6 +14,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { PopupProps, Teleport } from './types.taro'
+import { harmony } from '@/utils/platform-taro'
 
 const defaultProps: PopupProps = {
   ...defaultOverlayProps,
@@ -84,7 +85,8 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
-  const popStyles = { ...style, zIndex: index }
+  const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
+  const popStyles = { zIndex: contentZIndex, ...style }
   const popClassName = classNames(
     classPrefix,
     {
@@ -179,6 +181,23 @@ export const Popup: FunctionComponent<
       return renderCloseIcon()
     }
   }
+
+  const renderContent = () => {
+    return (
+      <>
+        <View
+          ref={refObject}
+          style={popStyles}
+          className={popClassName}
+          onClick={onClick}
+          catchMove={lockScroll}
+        >
+          {renderTitle()}
+          {showChildren ? children : null}
+        </View>
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -191,16 +210,7 @@ export const Popup: FunctionComponent<
         onEntered={afterShow}
         onExited={afterClose}
       >
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : null}
-        </View>
+        {renderContent()}
       </CSSTransition>
     )
   }
@@ -218,12 +228,9 @@ export const Popup: FunctionComponent<
             lockScroll={lockScroll}
             duration={duration}
             onClick={handleOverlayClick}
-          >
-            {renderPop()}
-          </Overlay>
-        ) : (
-          renderPop()
-        )}
+          />
+        ) : null}
+        {renderPop()}
       </>
     )
   }

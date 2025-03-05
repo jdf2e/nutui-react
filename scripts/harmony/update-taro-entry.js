@@ -4,12 +4,19 @@
 const fse = require('fs-extra')
 const config = require('../../src/config.json')
 const param = process.env.C
-
-// C=radio pnpm dev:taro:jdharmonycpp or C=radio,button,cell pnpm dev:taro:jdharmonycpp
-function specialComponent(name) {
+// G=nav pnpm dev:jdtaro:jdharmonycpp 
+// base | layout | nav | dentry | dataentry | feedback | exhibition | business 
+const paramG = process.env.G
+   
+// C=radio pnpm dev:jdtaro:jdharmonycpp or C=radio,button,cell pnpm dev:jdtaro:jdharmonycpp
+const specialComponent = (name) => {
   if (!param) return true
   const entries = param.split(',').map((i) => i.toLowerCase())
   return entries.includes(name.toLowerCase())
+}
+
+const isShow = (item) => {
+  return !(item.exportEmpty == false) && item.show && item.taro
 }
 
 // 更新 app.config.ts 文件
@@ -22,14 +29,23 @@ const createConfig = async () => {
         root: item.enName,
         pages: [],
       }
-
-      item.packages.map((it) => {
-        if (!(it.exportEmpty == false) && it.show && it.taro) {
-          if (!param || specialComponent(it.name)) {
-            co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+      if(paramG) {
+        if(paramG === item.enName){
+          item.packages.map((it) => {
+            if (isShow(it)) {
+              co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+            }
+          })
+        } 
+      } else {
+        item.packages.map((it) => {
+          if (isShow(it)) {
+            if (!param || specialComponent(it.name)) {
+              co.pages.push(`pages/${it.name.toLowerCase()}/index`)
+            }
           }
-        }
-      })
+        })
+      }
       co = { ...co, pages: co.pages.sort() }
       configRef.push(co)
     })

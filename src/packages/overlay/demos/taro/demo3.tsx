@@ -15,7 +15,6 @@ const Demo3 = () => {
       <Cell>
         <View onClick={handleToggleShow}>设置动画时间</View>
       </Cell>
-
       <Overlay
         visible={visible}
         onClick={onClose}

@@ -29,7 +29,7 @@ const Demo10 = () => {
           value={date}
           onChange={(d: CalendarCardValue) => setDate(d as Date)}
         />
-        <View style={{ padding: '10px' }}>
+        <View style={{ padding: 10 }}>
           <Button block type="danger" onClick={() => setVisible(false)}>
             确定
           </Button>
