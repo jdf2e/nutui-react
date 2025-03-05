@@ -1,6 +1,3 @@
-/**
- * 有底部导航栏的情况
- */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react'
 import { Cart } from '@nutui/icons-react'

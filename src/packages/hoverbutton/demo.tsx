@@ -41,62 +41,60 @@ const HoverButtonDemo = () => {
   const [curDemo, setCurDemo] = useState('customNode')
 
   return (
-    <>
-      <div className="demo" style={{ paddingBottom: '100px' }}>
-        <h2>{translated.basic}</h2>
-        <Cell
-          title={`${translated.show}${translated.basic}`}
-          onClick={() => {
-            setCurDemo('basic')
-          }}
-        />
-        {curDemo === 'basic' && <Demo1 />}
+    <div className="demo" style={{ paddingBottom: '100px' }}>
+      <h2>{translated.basic}</h2>
+      <Cell
+        title={`${translated.show}${translated.basic}`}
+        onClick={() => {
+          setCurDemo('basic')
+        }}
+      />
+      {curDemo === 'basic' && <Demo1 />}
 
-        <h2>{translated.multiButtons}</h2>
-        <Cell
-          title={`${translated.show}${translated.multiButtons}`}
-          onClick={() => {
-            setCurDemo('multiButtons')
-          }}
-        />
-        {curDemo === 'multiButtons' && <Demo2 />}
+      <h2>{translated.multiButtons}</h2>
+      <Cell
+        title={`${translated.show}${translated.multiButtons}`}
+        onClick={() => {
+          setCurDemo('multiButtons')
+        }}
+      />
+      {curDemo === 'multiButtons' && <Demo2 />}
 
-        <h2>{translated.hasTabbar}</h2>
-        <Cell
-          title={`${translated.show}${translated.hasTabbar}`}
-          onClick={() => {
-            setCurDemo('hasTabbar')
-          }}
-        />
-        {curDemo === 'hasTabbar' && <Demo3 />}
+      <h2>{translated.hasTabbar}</h2>
+      <Cell
+        title={`${translated.show}${translated.hasTabbar}`}
+        onClick={() => {
+          setCurDemo('hasTabbar')
+        }}
+      />
+      {curDemo === 'hasTabbar' && <Demo3 />}
 
-        <h2>{translated.customZIndex}</h2>
-        <Cell
-          title={`${translated.show}${translated.customZIndex}`}
-          onClick={() => {
-            setCurDemo('customZIndex')
-          }}
-        />
-        {curDemo === 'customZIndex' && <Demo4 />}
+      <h2>{translated.customZIndex}</h2>
+      <Cell
+        title={`${translated.show}${translated.customZIndex}`}
+        onClick={() => {
+          setCurDemo('customZIndex')
+        }}
+      />
+      {curDemo === 'customZIndex' && <Demo4 />}
 
-        <h2>{translated.customSpacing}</h2>
-        <Cell
-          title={`${translated.show}${translated.customSpacing}`}
-          onClick={() => {
-            setCurDemo('customSpacing')
-          }}
-        />
-        {curDemo === 'customSpacing' && <Demo5 />}
-        <h2>{translated.customNode}</h2>
-        <Cell
-          title={`${translated.show}${translated.customNode}`}
-          onClick={() => {
-            setCurDemo('customNode')
-          }}
-        />
-        {curDemo === 'customNode' && <Demo6 />}
-      </div>
-    </>
+      <h2>{translated.customSpacing}</h2>
+      <Cell
+        title={`${translated.show}${translated.customSpacing}`}
+        onClick={() => {
+          setCurDemo('customSpacing')
+        }}
+      />
+      {curDemo === 'customSpacing' && <Demo5 />}
+      <h2>{translated.customNode}</h2>
+      <Cell
+        title={`${translated.show}${translated.customNode}`}
+        onClick={() => {
+          setCurDemo('customNode')
+        }}
+      />
+      {curDemo === 'customNode' && <Demo6 />}
+    </div>
   )
 }
 

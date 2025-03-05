@@ -281,7 +281,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "hx",
           "dd": false
         }
@@ -353,7 +353,6 @@
           "sort": 5,
           "show": false,
           "taro": true,
-          "v15": 1,
           "author": "Ymm0008",
           "dd": true
         },
@@ -394,42 +393,6 @@
           "taro": true,
           "author": "Alex.hxy",
           "dd": true
-        },
-        {
-          "version": "2.0.0",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "用于内容选择和切换",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "hx",
-          "dd": false
-        },
-        {
-          "version": "2.0.0",
-          "name": "SideNavBarItem",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "exportEmpty": true,
-          "desc": "用于侧边栏导航子组件",
-          "sort": 11,
-          "show": false,
-          "author": "hx",
-          "dd": false
-        },
-        {
-          "version": "2.0.0",
-          "name": "SubSideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "用于侧边栏导航的子组件",
-          "exportEmpty": true,
-          "sort": 10,
-          "show": false,
-          "author": "hx",
-          "dd": false
         },
         {
           "version": "3.0.0",
@@ -599,7 +562,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "v15": false,
+          "v15": -1,
           "dd": false,
           "author": "songsong"
         },
@@ -813,7 +776,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "songsong",
           "dd": false
         },
@@ -853,7 +816,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": 100,
+          "v15": 1000,
           "author": "swag~jun",
           "dd": false
         }
@@ -911,7 +874,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "songsong",
           "dd": false
         },
@@ -1087,7 +1050,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "swag~jun",
           "dd": false
         },
@@ -1100,7 +1063,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "songsong",
           "dd": true
         },
@@ -1113,6 +1076,7 @@
           "sort": 21,
           "show": true,
           "taro": false,
+          "v15": -1,
           "author": "libin",
           "dd": false
         },
@@ -1201,7 +1165,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "vickyYE",
           "dd": false
         },
@@ -1406,7 +1370,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
-          "v15": 100,
+          "v15": 1000,
           "author": "hx",
           "dd": false
         }
@@ -1489,7 +1453,7 @@
           "sort": 25,
           "show": true,
           "taro": true,
-          "v15": 100,
+          "v15": 1000,
           "author": "songsong",
           "dd": true
         },
@@ -1502,7 +1466,7 @@
           "sort": 25,
           "show": true,
           "taro": true,
-          "v15": 99,
+          "v15": 990,
           "author": "swag~jun",
           "dd": false
         }
