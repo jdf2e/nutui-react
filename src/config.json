@@ -79,7 +79,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "",
           "dd": true
         },
@@ -92,7 +92,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "songsong",
           "dd": true
         },
@@ -105,8 +105,8 @@
           "sort": 2,
           "show": false,
           "taro": true,
+          "v15": 100,
           "exportEmpty": true,
-          "v15": true,
           "author": "songsong",
           "dd": true
         },
@@ -120,7 +120,7 @@
           "show": true,
           "exportEmpty": true,
           "taro": true,
-          "v15": true,
+          "v15": 99,
           "author": "hanyuxinting",
           "dd": true
         },
@@ -134,7 +134,7 @@
           "show": true,
           "taro": true,
           "exclude": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis-cloud",
           "dd": true
         },
@@ -147,7 +147,7 @@
           "sort": 8,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 99,
           "author": "vickyYE",
           "dd": true
         },
@@ -160,7 +160,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "junjun",
           "dd": true
         }
@@ -179,7 +179,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "vickyYE",
           "dd": true
         },
@@ -192,7 +192,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "yangxiaolu",
           "dd": true
         },
@@ -206,7 +206,6 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
-          "v15": true,
           "author": "yangxiaolu",
           "dd": true
         },
@@ -219,6 +218,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "yushuang24",
           "dd": true
         },
@@ -255,6 +255,7 @@
           "sort": 9,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "oasis",
           "dd": true
         },
@@ -267,6 +268,7 @@
           "sort": 8,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "ivan",
           "dd": true
         },
@@ -279,6 +281,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "hx",
           "dd": false
         }
@@ -297,7 +300,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "vickyYe",
           "dd": false
         },
@@ -310,6 +313,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "songsong",
           "dd": false
         },
@@ -322,6 +326,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "Ymm0008",
           "dd": false
         },
@@ -334,7 +339,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "Ymm0008",
           "dd": true
         },
@@ -348,7 +353,7 @@
           "sort": 5,
           "show": false,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "Ymm0008",
           "dd": true
         },
@@ -361,7 +366,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -374,8 +379,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": 1,
           "author": "Alex.hxy",
-          "v15": true,
           "dd": true
         },
         {
@@ -388,7 +393,6 @@
           "show": false,
           "taro": true,
           "author": "Alex.hxy",
-          "v15": true,
           "dd": true
         },
         {
@@ -436,7 +440,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 2,
           "author": "dsj",
           "dd": true
         },
@@ -448,7 +452,6 @@
           "type": "component",
           "show": false,
           "taro": true,
-          "v15": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "dsj",
@@ -461,7 +464,6 @@
           "cName": "选项卡切换子组件",
           "type": "component",
           "show": false,
-          "v15": true,
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发",
@@ -476,7 +478,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 2,
           "author": "oasis",
           "dd": true
         }
@@ -495,6 +497,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "yangxiaolu",
           "dd": false
         },
@@ -507,6 +510,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "szg2008",
           "dd": false
         },
@@ -531,6 +535,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "eiinu",
           "dd": true
         },
@@ -543,6 +548,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "ailululu",
           "dd": false
         },
@@ -555,7 +561,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -567,7 +573,6 @@
           "desc": "多选按钮组",
           "sort": 11,
           "show": false,
-          "v15": true,
           "exportEmpty": true,
           "author": "oasis",
           "dd": true
@@ -581,6 +586,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "dsj",
           "dd": false
         },
@@ -593,6 +599,7 @@
           "sort": 19,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "hanyuxinting",
           "dd": false
         },
@@ -618,7 +625,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "VickyYe",
           "dd": true
         },
@@ -631,7 +638,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": true
         }
@@ -650,6 +657,7 @@
           "sort": 13,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "oasis-cloud",
           "dd": false
         },
@@ -675,6 +683,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "Drjingfubo",
           "dd": true
         },
@@ -687,6 +696,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": -1,
           "dd": false,
           "author": "songsong"
         },
@@ -699,7 +709,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": false,
+          "v15": -1,
           "dd": false,
           "author": "songsong"
         },
@@ -712,7 +722,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -725,7 +735,7 @@
           "sort": 10,
           "exportEmpty": true,
           "show": false,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -738,6 +748,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "vickyYe",
           "dd": false
         },
@@ -750,7 +761,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -763,6 +774,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "Ymm0008",
           "dd": true
         },
@@ -775,6 +787,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "Drjingfubo",
           "dd": false
         },
@@ -787,6 +800,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "songsong",
           "dd": false
         },
@@ -799,7 +813,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -812,7 +826,8 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
+          
           "author": "VickyYe",
           "dd": true
         },
@@ -825,6 +840,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "swag~jun",
           "dd": false
         }
@@ -843,6 +859,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "dsj",
           "dd": true
         },
@@ -855,7 +872,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lzz",
           "dd": true
         },
@@ -868,7 +885,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "yangjinjun3",
           "dd": true
         },
@@ -881,7 +898,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 99,
           "author": "songsong",
           "dd": false
         },
@@ -894,8 +911,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": 1,
           "author": "liukun",
-          "v15": true,
           "dd": true
         },
         {
@@ -907,7 +924,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": false
         },
@@ -920,7 +937,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "mike8625",
           "dd": true
         },
@@ -933,6 +950,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "vickyYe",
           "dd": false
         },
@@ -945,6 +963,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "vickyYE",
           "dd": true
         },
@@ -957,7 +976,7 @@
           "sort": 19,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lzz",
           "dd": false
         },
@@ -969,7 +988,7 @@
           "type": "component",
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "rn": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
@@ -984,7 +1003,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": false
         },
@@ -997,7 +1016,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "songsong",
           "dd": true
         },
@@ -1010,6 +1029,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "swag~jun",
           "dd": true
         },
@@ -1022,6 +1042,7 @@
           "sort": 9,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "Ymm0008",
           "dd": false
         },
@@ -1034,7 +1055,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "VickyYe",
           "dd": true
         }
@@ -1053,6 +1074,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "swag~jun",
           "dd": false
         },
@@ -1065,6 +1087,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "songsong",
           "dd": true
         },
@@ -1089,6 +1112,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "junjun",
           "dd": true
         },
@@ -1113,6 +1137,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1125,6 +1150,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "zhenyulei",
           "dd": false
         },
@@ -1149,7 +1175,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "songsong",
           "dd": true
         },
@@ -1162,6 +1188,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "vickyYE",
           "dd": false
         },
@@ -1174,6 +1201,7 @@
           "sort": 23,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "yangjinjun3",
           "dd": true
         },
@@ -1186,7 +1214,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "liukun",
           "dd": true
         },
@@ -1199,7 +1227,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1212,7 +1240,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lkjh3214",
           "dd": true
         },
@@ -1225,7 +1253,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "songsong",
           "dd": true
         },
@@ -1238,6 +1266,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "ailululu",
           "dd": true
         },
@@ -1250,7 +1279,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lkjh3214",
           "dd": true
         },
@@ -1263,8 +1292,7 @@
           "show": false,
           "exportEmpty": true,
           "desc": "步骤条子组件",
-          "author": "swag~jun",
-          "dd": false
+          "author": "swag~jun"
         },
         {
           "version": "2.0.0",
@@ -1275,6 +1303,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "swag~jun",
           "dd": false
         },
@@ -1287,6 +1316,7 @@
           "sort": 14,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "liukun",
           "dd": true
         },
@@ -1311,6 +1341,7 @@
           "sort": 21,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "yangjinjun3",
           "dd": false
         },
@@ -1323,6 +1354,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "lzz",
           "dd": true
         },
@@ -1335,6 +1367,7 @@
           "sort": 24,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1347,6 +1380,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": true
         },
@@ -1359,6 +1393,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "hx",
           "dd": false
         }
@@ -1377,6 +1412,7 @@
           "sort": 26,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "Marvin",
           "dd": false
         },
@@ -1389,6 +1425,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1401,6 +1438,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "songsong",
           "dd": true
         },
@@ -1425,6 +1463,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "zhaoqian16",
           "dd": true
         },
@@ -1437,6 +1476,7 @@
           "sort": 25,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "songsong",
           "dd": true
         },
@@ -1449,6 +1489,7 @@
           "sort": 25,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "swag~jun",
           "dd": false
         }
