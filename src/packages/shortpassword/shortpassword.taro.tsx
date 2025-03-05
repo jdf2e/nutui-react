@@ -128,7 +128,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
       closeable
       onOverlayClick={onClose}
       onCloseIconClick={onClose}
-      round
+      round={round}
       {...rest}
     >
       <View className={classNames(classPrefix, className)} style={style}>
