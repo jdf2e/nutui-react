@@ -8,7 +8,7 @@
   font-size: $input-font-size;
   box-sizing: border-box;
 
-  .nut-input-native::placeholder,
+  .nut-input-native .weui-input::placeholder,
   &-placeholder {
     color: rgb(117, 117, 117);
     font-size: $input-font-size;
