@@ -36,7 +36,6 @@ const Demo1 = () => {
   const handleChange =
     (setDesc: (desc: string) => void, setValue?: (value: string) => void) =>
     (selectedOptions: PickerOptions, value: PickerValue[]) => {
-      console.log('demo-onChange-value', value)
       if (setValue) {
         if (isEqual(value, ['2026', '02', '26'])) {
           setValue('2026/03/22')

@@ -20,7 +20,6 @@ const Demo2 = () => {
       <Cell title="限制开始结束时间" description={desc} />
       <Cell>
         <DatePickerView
-          title="选择日期"
           startDate={new Date()}
           endDate={new Date(`${defaultValue.getFullYear()}-07-01`)}
           defaultValue={defaultValue}

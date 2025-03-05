@@ -31,9 +31,9 @@ const defaultProps = {
   endDate: new Date(currentYear + 10, 11, 31),
 } as DatePickerViewProps
 
-export const DatePickerView: FunctionComponent<
-  Partial<DatePickerViewProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const DatePickerView: FunctionComponent<Partial<DatePickerViewProps>> = (
+  props
+) => {
   const {
     startDate,
     endDate,
