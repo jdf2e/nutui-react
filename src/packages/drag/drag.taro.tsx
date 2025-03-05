@@ -4,6 +4,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'
 import { getWindowInfo } from '@/utils/get-system-info'
+import { web } from '@/utils/platform-taro'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -141,9 +142,13 @@ export const Drag: FunctionComponent<
 
   useEffect(() => {
     if (dragRef.current) {
-      timer.current = window.setTimeout(() => {
+      if (web()) {
+        timer.current = window.setTimeout(() => {
+          getInfo()
+        }, 300)
+      } else {
         getInfo()
-      }, 300)
+      }
     }
     return () => {
       clearTimeout(timer.current)
