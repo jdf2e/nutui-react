@@ -26,7 +26,6 @@ body {
 
   &.full {
     padding: 0 0 0 0;
-
     .h2 {
       padding-left: 17px;
     }
@@ -34,6 +33,10 @@ body {
 
   &.drag-full {
     padding: 57px 0 0 0;
+    min-height: 100vh;
+    .jd-scroll-view {
+      min-height: calc(100vh - 57px);
+    }
   }
 
   &-full {

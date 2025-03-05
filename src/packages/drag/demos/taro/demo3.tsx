@@ -10,7 +10,6 @@ const Demo3 = () => {
         top: '275px',
         left: '0px',
       }}
-      className="drag-demo3"
     >
       <Button type="primary">attract</Button>
     </Drag>
