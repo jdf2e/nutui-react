@@ -1,6 +1,3 @@
-/**
- * 多个按钮
- */
 import React from 'react'
 import { HoverButton, Toast } from '@nutui/nutui-react'
 import { Cart } from '@nutui/icons-react'
