@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { DatePicker } from '../datepicker'
+import DatePicker from '../datepicker'
 
 const currentYear = new Date().getFullYear()
 test('Show Chinese', async () => {

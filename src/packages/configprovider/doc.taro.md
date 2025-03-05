@@ -29,7 +29,7 @@ NutUI-React 可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/W
 }
 ```
 
-> @nutui/nutui-react 中带了两个主题文件 默认主题：@nutui/nutui-react/dist/styles/themes/default.css; 暗黑主题：@nutui/nutui-react/dist/styles/themes/dark.css; 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
+> @nutui/nutui-react-taro 中带了两个主题文件 默认主题：@nutui/nutui-react-taro/dist/styles/themes/default.css; 暗黑主题：@nutui/nutui-react-taro/dist/styles/themes/dark.css; 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
 
 #### 通过 ConfigProvider 覆盖
 

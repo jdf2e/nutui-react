@@ -10,44 +10,16 @@ import isEqual from 'react-fast-compare'
 import {
   PickerOptions,
   PickerValue,
-  PickerOption,
   PickerOnChangeCallbackParameter,
 } from '@/packages/pickerview/types'
 import PickerView from '@/packages/pickerview/index'
-import Popup, { PopupProps } from '@/packages/popup/index'
+import Popup from '@/packages/popup/index'
 import SafeArea from '@/packages/safearea/index'
 import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { PickerActions, PickerRef } from './types'
-
-export interface PickerProps extends Omit<BasicComponent, 'children'> {
-  visible?: boolean | undefined
-  title?: string
-  options: PickerOptions[]
-  value?: PickerValue[]
-  defaultValue?: PickerValue[]
-  threeDimensional?: boolean
-  duration: number | string
-  closeOnOverlayClick: boolean
-  renderLabel?: (item: PickerOption) => React.ReactNode
-
-  popupProps: Partial<
-    Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
-  >
-  onConfirm?: (
-    selectedOptions: PickerOptions,
-    selectedValue: PickerValue[]
-  ) => void
-  onCancel?: () => void
-  onClose?: (
-    selectedOptions: PickerOptions,
-    selectedValue: PickerValue[]
-  ) => void
-  onChange?: (args0: PickerOnChangeCallbackParameter) => void
-  children?: any
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { PickerActions, PickerProps, PickerRef } from './types'
 
 const defaultProps = {
   ...ComponentDefaults,

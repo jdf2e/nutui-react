@@ -12,7 +12,7 @@ import { access, mkdir, readFile, writeFile } from 'fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
-import { relativeFilePath } from './relative-path.mjs'
+import { relativePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
 
@@ -59,7 +59,7 @@ const transform = (file, api, replace) => {
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
-    path.node.source.value = relativeFilePath(file.path, dir)?.replace(
+    path.node.source.value = relativePath(dir, file.path)?.replace(
       '.taro',
       '',
     )
@@ -242,7 +242,7 @@ async function buildAllCSS() {
     const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativeFilePath(`/${dist}/style.scss`, '/' + file)}';`,
+        `@import '${relativePath('/' + file, `/${dist}/style.scss`)}';`,
       )
     })
     dest(`${dist}/style.scss`, content.join('\n'))

@@ -12,6 +12,7 @@ import {
   Rate,
   Range,
   Toast,
+  DatePicker,
 } from '@nutui/nutui-react'
 import { ArrowRight } from '@nutui/icons-react'
 
@@ -116,6 +117,39 @@ const Demo7 = () => {
               )
             }}
           </Picker>
+        </Form.Item>
+        <Form.Item
+          label="DatePicker"
+          name="DatePicker"
+          trigger="onConfirm"
+          getValueFromEvent={(...args) => {
+            return new Date(args[1].join('/'))
+          }}
+          onClick={(event, ref: any) => {
+            ref.open()
+          }}
+          initialValue={new Date()}
+        >
+          <DatePicker>
+            {(value: any) => {
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value
+                      ? new Date(value).toLocaleDateString()
+                      : 'Please select'
+                  }
+                  extra={<ArrowRight />}
+                  align="center"
+                />
+              )
+            }}
+          </DatePicker>
         </Form.Item>
         <Form.Item
           label="Uploader"

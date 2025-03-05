@@ -3,11 +3,11 @@ import { CalendarCard, type CalendarCardValue } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   const onChange = (val: CalendarCardValue) => {
-    console.log(val)
+    console.log('onChange', val)
   }
   return (
     <CalendarCard
-      startDate={new Date('2023-08-01')}
+      startDate={new Date('2025-08-01')}
       endDate={new Date('2025-11-11')}
       onChange={onChange}
     />

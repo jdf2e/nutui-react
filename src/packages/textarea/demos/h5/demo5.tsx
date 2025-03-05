@@ -1,7 +1,7 @@
 import React from 'react'
 import { ConfigProvider, TextArea } from '@nutui/nutui-react'
 
-const Demo5 = () => {
+const Demo = () => {
   const customTheme = {
     nutuiTextareaTextCurrorColor: `red`,
     nutuiTextareaLimitColor: `red`,
@@ -12,4 +12,4 @@ const Demo5 = () => {
     </ConfigProvider>
   )
 }
-export default Demo5
+export default Demo
