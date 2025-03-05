@@ -73,7 +73,13 @@ const Demo2 = () => {
             onBackClick={(e) => Taro.showToast({ title: '返回' })}
           >
             <View>
-              <View style={{ ...styles.flexCenter, flexDirection: 'column' }}>
+              <View
+                style={{
+                  ...styles.flexCenter,
+                  alignItems: 'flex-start',
+                  flexDirection: 'column',
+                }}
+              >
                 <View
                   style={styles.title}
                   onClick={(e) => Taro.showToast({ title: '标题' })}
