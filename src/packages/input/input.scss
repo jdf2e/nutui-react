@@ -8,6 +8,12 @@
   font-size: $input-font-size;
   box-sizing: border-box;
 
+  .nut-input-native .weui-input::placeholder,
+  &-placeholder {
+    color: rgb(117, 117, 117);
+    font-size: $input-font-size;
+  }
+
   .nut-icon {
     color: $color-text-disabled;
     width: 14px;
@@ -51,8 +57,4 @@
     opacity: 1;
     -webkit-text-fill-color: $color-text-disabled;
   }
-}
-
-.nut-input-clear {
-  // flex: 0;
 }
