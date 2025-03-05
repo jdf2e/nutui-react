@@ -88,22 +88,6 @@ const Nav = () => {
                         >
                           {cp.name}&nbsp;&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>
-                          {cp.version !== '2.0.0' ? (
-                            <b
-                              style={{
-                                background: 'rgb(250, 205, 205)',
-                                padding: '0px 5px',
-                                borderRadius: '5px',
-                                color: 'rgb(255, 255, 255)',
-                                transform: 'scale(0.8)',
-                                height: '20px',
-                                lineHeight: '20px',
-                                display: 'inline-block',
-                              }}
-                            >
-                              🛠
-                            </b>
-                          ) : null}
                         </NavLink>
                       </li>
                     )
