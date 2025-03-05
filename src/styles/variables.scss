@@ -2229,54 +2229,6 @@ $sidebar-active-color: var(
 ) !default;
 $sidebar-item-background: var(--nutui-sidebar-item-background, $white) !default;
 $sidebar-item-padding: var(--nutui-sidebar-item-padding, 24px 20px) !default;
-// sidenavbar（✅）
-$sidenavbar-content-bg-color: var(
-  --nutui-sidenavbar-content-bg-color,
-  $white
-) !default;
-$sidenavbar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
-$sidenavbar-title-padding: var(
-  --nutui-sidenavbar-title-padding,
-  10px 8px 10px 20px
-) !default;
-$sidenavbar-title-background: var(
-  --nutui-sidenavbar-title-background,
-  $color-background
-) !default;
-$sidenavbar-title-color: var(
-  --nutui-sidenavbar-title-color,
-  $color-title
-) !default;
-// subsidenavbar（✅）
-$sidenavbar-sub-title-padding: var(
-  --nutui-sidenavbar-sub-title-padding,
-  10px 8px 10px 35px
-) !default;
-$sidenavbar-sub-title-background: var(
-  --nutui-sidenavbar-sub-title-background,
-  $color-background-sunken
-) !default;
-$sidenavbar-sub-title-color: var(
-  --nutui-sidenavbar-sub-title-color,
-  $color-title
-) !default;
-// sidenavbaritem（✅）
-$sidenavbar-sub-item-color: var(
-  --nutui-sidenavbar-sub-item-color,
-  $color-text
-) !default;
-$sidenavbar-sub-item-padding: var(
-  --nutui-sidenavbar-sub-item-padding,
-  10px 8px 10px 55px
-) !default;
-$sidenavbar-sub-list-background: var(
-  --nutui-sidenavbar-sub-list-background,
-  $white
-) !default;
-$sidenavbar-sub-list-color: var(
-  --nutui-sidenavbar-sub-list-background,
-  $color-text
-) !default;
 
 // elevator（✅）
 $elevator-list-bg-color: var(--nutui-elevator-list-bg-color, $white) !default;
