@@ -173,7 +173,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         name={name}
         className="nut-input-native"
         ref={inputRef}
-        style={getTextAlign()}
+        style={{ textAlign: getTextAlign() }}
         type={inputType(type) as any}
         password={type === 'password'}
         maxlength={maxLength}
