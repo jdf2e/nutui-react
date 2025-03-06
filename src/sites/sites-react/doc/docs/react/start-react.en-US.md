@@ -17,54 +17,22 @@ yarn add @nutui/nutui-react
 npm install @nutui/nutui-react
 ```
 
-#### 2. Install and use via CDN
+#### 2. Manual On-Demand Loading
 
-> NutUI is available on public CDNs like **jsdelivr** and **unpkg**.
-> It is not recommended to use the component library CDN in the production environment. If this method is required, it is recommended to download the specific version of the CDN file to the local project directory for use.
+You can manually import individual components.
 
-:::demo
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- import style -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/style.css"
-    />
-    <!-- import React -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-    ></script>
-    <!-- Import NutUI component library -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/nutui.react.umd.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script>
-      // Render a button component under the #app tag
-      ReactDOM.render(
-        React.createElement(
-          nutui.react.Button,
-          null,
-          React.createElement('div', null, 'Primary button')
-        ),
-        document.querySelector('#app')
-      )
-    </script>
-  </body>
-</html>
+```js
+import '@nutui/nutui-react/dist/es/packages/button/style'
+import Button from '@nutui/nutui-react/dist/es/packages/button'
 ```
 
-:::
+Note that when manually loading components on demand, you also need to import the global class file in the entry file to load some of NutUI React's global logic and styles:
+
+```js
+import '@nutui/nutui-react/dist/styles/themes/default.scss'
+```
+
+If you find the above method cumbersome, you can use the automatic on-demand loading provided by Method 3. However, when using automatic on-demand loading, you still need to import the global class file.
 
 ## Component usage
 
@@ -123,7 +91,7 @@ export default defineConfig({
         {
           libName: '@nutui/nutui-react',
           style: (name) => {
-            return `@nutui/nutui-react/dist/esm/${name}/style/css`
+            return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
           },
           replaceOldImport: false,
           camel2DashComponentName: false,
@@ -136,7 +104,7 @@ export default defineConfig({
 
 :::
 
-</details><br/>
+</details><br>
 
 <details>
 <summary>webpack</summary>
@@ -164,9 +132,11 @@ Babel configuration:
       'import',
       {
         libraryName: '@nutui/nutui-react',
-        libraryDirectory: 'dist/esm',
         style: 'css',
         camel2DashComponentName: false,
+        customName: (name, file) => {
+          return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
+        },
       },
       'nutui-react',
     ],

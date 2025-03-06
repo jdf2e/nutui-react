@@ -4,7 +4,7 @@ NutUI-React component library, based on Taro, uses React technology stack to dev
 
 ## Features
 
-- 🚀 70+ high-quality components covering mainstream mobile scenarios
+- 🚀 80+ high-quality components covering mainstream mobile scenarios
 - 💪 Supports a set of code to develop multi-terminal Mini Programs +H5 at the same time
 - 📖 Based on JD APP 10.0 visual specification
 - 🍭 Support on-demand reference
