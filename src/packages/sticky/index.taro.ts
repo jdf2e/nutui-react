@@ -1,4 +1,4 @@
 import { Sticky } from './sticky.taro'
 
-export type { TaroStickyProps } from '@/types'
+export type { TaroStickyProps as StickyProps } from '@/types'
 export default Sticky

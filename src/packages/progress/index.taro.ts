@@ -1,4 +1,4 @@
 import { Progress } from './progress.taro'
 
-export type { TaroProgressProps } from '@/types'
+export type { TaroProgressProps as ProgressProps } from '@/types'
 export default Progress
