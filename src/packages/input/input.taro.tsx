@@ -216,7 +216,7 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={getTextAlign()}
+          style={{ textAlign: getTextAlign() }}
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}
