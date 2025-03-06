@@ -13,7 +13,7 @@ import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { TaroInputProps, InputFormatTrigger } from '@/types'
+import { InputFormatTrigger, TaroInputProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -34,6 +34,8 @@ const defaultProps = {
 } as TaroInputProps
 
 export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
+  const classPrefix = 'nut-input'
+
   const rtl = useRtl()
   const { locale } = useConfig()
   const {
@@ -92,7 +94,6 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   })
 
   const inputClass = useCallback(() => {
-    const classPrefix = 'nut-input'
     return [
       classPrefix,
       `${disabled ? `${classPrefix}-disabled` : ''}`,
@@ -179,6 +180,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         placeholder={
           placeholder === undefined ? locale.placeholder : placeholder
         }
+        placeholderClass={`${classPrefix}-placeholder`}
         disabled={disabled || readOnly}
         value={value}
         focus={autoFocus}

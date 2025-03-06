@@ -4,7 +4,7 @@ import { WaterMark, Cell, Button } from '@nutui/nutui-react-taro'
 const Demo1 = () => {
   const [flag, setFlag] = useState(0)
   const imgSrc = useRef(
-    '//m.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
+    'https://m.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
   )
   return (
     <Cell>

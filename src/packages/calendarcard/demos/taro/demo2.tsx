@@ -8,8 +8,7 @@ import {
 
 const Demo2 = () => {
   const [val, setVal] = useState(() => {
-    // return [];
-    return [new Date('2023-01-01'), new Date('2023-01-03')]
+    return [new Date('2023-01-01'), new Date('2025-01-03')]
   })
   const onChange = (val: CalendarCardValue) => {
     setVal(val as Date[])
@@ -17,7 +16,7 @@ const Demo2 = () => {
   }
   return (
     <>
-      <Space wrap>
+      <Space wrap style={{ marginBottom: 10 }}>
         {val.map((d) => {
           return (
             <Tag key={d.getTime()} type="info">

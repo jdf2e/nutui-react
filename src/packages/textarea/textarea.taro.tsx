@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { BaseEventOrig, Text, Textarea, View } from '@tarojs/components'
+import { BaseEventOrig, Textarea, View } from '@tarojs/components'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -129,13 +129,13 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
           }
         />
         {showCount && (
-          <Text
+          <View
             className={classNames(`${classPrefix}-limit`, {
               [`${classPrefix}-limit-disabled`]: disabled,
             })}
           >
             {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-          </Text>
+          </View>
         )}
       </View>
     </>

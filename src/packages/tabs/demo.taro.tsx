@@ -87,7 +87,7 @@ const TabsDemo = () => {
     <>
       <Header />
       <ScrollView
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web  full' : ''}`}
+        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
       >
         <View className="h2">{translated.basic}</View>
         <Demo1 />

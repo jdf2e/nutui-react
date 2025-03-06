@@ -42,6 +42,7 @@ const Demo4 = () => {
         position="bottom"
         onCloseIconClick={() => {
           console.log('onCloseIconClick')
+          setShowCloseIconStop(false)
         }}
       />
     </>

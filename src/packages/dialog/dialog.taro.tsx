@@ -17,6 +17,7 @@ import {
 import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { mergeProps } from '@/utils/merge-props'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
+import { harmony } from '@/utils/platform-taro'
 
 const defaultProps: DialogBasicProps = {
   ...defaultOverlayProps,
@@ -219,6 +220,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   }
 
   const renderContent = () => {
+    const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
     return (
       <CSSTransition
         in={visible}
@@ -229,7 +231,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       >
         <Content
           className={className}
-          style={style}
+          style={{ zIndex: contentZIndex, ...style }}
           title={title}
           header={header}
           close={renderCloseIcon()}
@@ -249,7 +251,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       ref={refObject}
       catchMove={lockScroll}
     >
-      {overlay ? (
+      {overlay && (
         <Overlay
           zIndex={zIndex}
           visible={visible}
@@ -258,12 +260,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
-        >
-          {renderContent()}
-        </Overlay>
-      ) : (
-        renderContent()
+        />
       )}
+      {renderContent()}
     </View>
   )
 }
