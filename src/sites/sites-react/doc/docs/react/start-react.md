@@ -146,7 +146,7 @@ babel 配置：
 
 :::
 
-</details><br>
+</details><br />
 
 ## 使用注意事项
 

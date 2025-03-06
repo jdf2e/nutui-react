@@ -104,7 +104,7 @@ export default defineConfig({
 
 :::
 
-</details><br>
+</details><br/>
 
 <details>
 <summary>webpack</summary>
