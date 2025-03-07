@@ -69,7 +69,7 @@ const TabbarDemo = () => {
         <Demo7 />
         <View className="h2">{translated['8dab2f66']}</View>
         <Demo8 />
-        <View className="h2" style={{ marginBottom: '100px' }}>
+        <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}
         </View>
         <Demo9 />

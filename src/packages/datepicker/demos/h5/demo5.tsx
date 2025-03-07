@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react'
+import {
+  DatePicker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react'
 
 const Demo5 = () => {
   const defaultValue = new Date()
@@ -10,8 +15,8 @@ const Demo5 = () => {
   const endDate = new Date(2025, 10, 1)
   const [show, setShow] = useState(false)
   const [desc, setDesc] = useState('10:10')
-  const confirm8 = (options: PickerOption[], values: (string | number)[]) => {
-    setDesc(options.map((option) => option.text).join(':'))
+  const confirm8 = (options: PickerOptions, values: PickerValue[]) => {
+    setDesc(options.map((option) => option.label).join(':'))
   }
 
   return (

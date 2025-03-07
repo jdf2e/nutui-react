@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { CalendarCard, type CalendarCardValue } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
-  const [date, setDate] = useState(() => new Date('2023-01-01'))
+  const [date, setDate] = useState(() => new Date('2025-01-01'))
   const onChange = (val: CalendarCardValue) => {
-    console.log(val)
+    console.log('onChange', val)
     setDate(val as Date)
   }
   return <CalendarCard value={date} onChange={onChange} />

@@ -52,7 +52,13 @@ const Demo2 = () => {
             back={<ArrowLeft />}
             onBackClick={(e) => Toast.show('返回')}
           >
-            <div style={{ ...styles.flexCenter, flexDirection: 'column' }}>
+            <div
+              style={{
+                ...styles.flexCenter,
+                alignItems: 'flex-start',
+                flexDirection: 'column',
+              }}
+            >
               <span style={styles.title} onClick={(e) => Toast.show('标题')}>
                 页面标题
               </span>

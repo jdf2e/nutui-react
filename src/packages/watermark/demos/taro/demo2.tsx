@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { WaterMark, Cell } from '@nutui/nutui-react-taro'
+import { WaterMark, Cell, Image } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const src = useRef(
@@ -7,7 +7,7 @@ const Demo2 = () => {
   )
   return (
     <Cell>
-      <img src={src.current} alt="" width="100%" height="100%" />
+      <Image src={src.current} width="100%" height={200} mode="aspectFit" />
       <WaterMark fullPage={false} color="red" content="nutui" />
     </Cell>
   )

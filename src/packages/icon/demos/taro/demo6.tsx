@@ -53,7 +53,7 @@ const Demo6 = () => {
                       }}
                       style={{
                         maxWidth: '25%',
-                        height: '60px',
+                        height: 60,
                         display: 'flex',
                         flex: '0 0 25%',
                         flexDirection: 'column',

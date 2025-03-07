@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, InputNumber, Swipe } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
 
 const App = () => {
   return (
@@ -15,7 +14,13 @@ const App = () => {
               type="danger"
               style={{ alignSelf: 'stretch', height: pxTransform(46) }}
             >
-              <Text style={{ fontSize: pxTransform(12), color: '#ffffff' }}>
+              <Text
+                style={{
+                  fontSize: pxTransform(12),
+                  color: '#ffffff',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 加入购物车
               </Text>
             </Button>
@@ -41,7 +46,7 @@ const App = () => {
               }}
             >
               <Text>商品</Text>
-              {!harmony() ? <InputNumber /> : null}
+              <InputNumber />
             </View>
           </View>
         </View>

@@ -1,1 +1,0 @@
-import '@jdtaro/plugin-platform-jdrn/entry-file.js'

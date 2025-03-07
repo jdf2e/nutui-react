@@ -62,7 +62,7 @@ export const DialogWrap: FunctionComponent<
         unmountOnExit
         appear
       >
-        <Content {...restProps} visible={visible} />
+        <Content {...restProps} style={{ zIndex }} visible={visible} />
       </CSSTransition>
     </>
   )

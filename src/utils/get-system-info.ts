@@ -1,4 +1,10 @@
-import Taro from '@tarojs/taro'
+import Taro, {
+  canIUse,
+  getAppBaseInfo as taroGetAppBaseInfo,
+  getDeviceInfo as taroGetDeviceInfo,
+  getSystemInfoSync,
+  getWindowInfo as taroGetWindowInfo,
+} from '@tarojs/taro'
 
 interface IDeviceInfo
   extends Omit<Taro.getDeviceInfo.Result, 'deviceAbi' | 'CPUType'> {}
@@ -8,9 +14,7 @@ interface IDeviceInfo
  * @returns {IDeviceInfo} 设备基础信息
  */
 export const getDeviceInfo = (): IDeviceInfo => {
-  return Taro.canIUse('getDeviceInfo')
-    ? Taro.getDeviceInfo()
-    : Taro.getSystemInfoSync()
+  return canIUse('getDeviceInfo') ? taroGetDeviceInfo() : getSystemInfoSync()
 }
 
 /**
@@ -18,9 +22,7 @@ export const getDeviceInfo = (): IDeviceInfo => {
  * @returns {Taro.getWindowInfo.Result} 窗口信息
  */
 export const getWindowInfo = (): Taro.getWindowInfo.Result => {
-  return Taro.canIUse('getWindowInfo')
-    ? Taro.getWindowInfo()
-    : Taro.getSystemInfoSync()
+  return canIUse('getWindowInfo') ? taroGetWindowInfo() : getSystemInfoSync()
 }
 
 /**
@@ -28,7 +30,5 @@ export const getWindowInfo = (): Taro.getWindowInfo.Result => {
  * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
  */
 export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
-  return Taro.canIUse('getAppBaseInfo')
-    ? Taro.getAppBaseInfo()
-    : Taro.getSystemInfoSync()
+  return canIUse('getAppBaseInfo') ? taroGetAppBaseInfo() : getSystemInfoSync()
 }

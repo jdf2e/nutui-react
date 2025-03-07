@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { Popover, Cell, Picker, Toast } from '@nutui/nutui-react-taro'
+import {
+  Popover,
+  Cell,
+  Picker,
+  Toast,
+  PickerOnChangeCallbackParameter,
+} from '@nutui/nutui-react-taro'
 import { Tips, Close } from '@nutui/icons-react-taro'
 
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo4 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
@@ -18,14 +17,16 @@ const Demo4 = () => {
   const [showToast, SetShowToast] = useState(false)
 
   const columns = [
-    { text: 'top', value: 'top' },
-    { text: 'top-start', value: 'top-start' },
-    { text: 'top-end', value: 'top-end' },
-    { text: 'right', value: 'right' },
-    { text: 'bottom', value: 'bottom' },
-    { text: 'bottom-start', value: 'bottom-start' },
-    { text: 'bottom-end', value: 'bottom-end' },
-    { text: 'left', value: 'left' },
+    [
+      { label: 'top', value: 'top' },
+      { label: 'top-start', value: 'top-start' },
+      { label: 'top-end', value: 'top-end' },
+      { label: 'right', value: 'right' },
+      { label: 'bottom', value: 'bottom' },
+      { label: 'bottom-start', value: 'bottom-start' },
+      { label: 'bottom-end', value: 'bottom-end' },
+      { label: 'left', value: 'left' },
+    ],
   ]
   const positionList = [
     {
@@ -63,13 +64,13 @@ const Demo4 = () => {
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
-            description += ` ${option.text}`
+            description += ` ${option.label}`
           })
           setBaseDesc(description)
         }}
-        onChange={(options: PickerOption[]) => {
-          if (options[0]?.value) {
-            setCurPostion(options[0].value as string)
+        onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
+          if (selectedOptions[0]?.value) {
+            setCurPostion(selectedOptions[0].value as string)
           }
         }}
         onClose={() => {

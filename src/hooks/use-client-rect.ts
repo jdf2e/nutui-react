@@ -33,6 +33,7 @@ export const getRect = (
   }
 
   if (element && element.getBoundingClientRect) {
+    console.log(element, element.getBoundingClientRect())
     return element.getBoundingClientRect()
   }
 

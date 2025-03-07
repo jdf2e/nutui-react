@@ -4,6 +4,8 @@ import {
   Calendar,
   DatePicker,
   CalendarDay,
+  PickerValue,
+  PickerOptions,
 } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
@@ -33,14 +35,18 @@ const Demo6 = () => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }
-  const confirm = (values: (string | number)[], options: any[]) => {
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
     if (desc.current === 1) {
       setDesc1(
-        options.map((option) => padZero(parseInt(option.text))).join(':')
+        options
+          .map((option) => padZero(parseInt(option.label as string)))
+          .join(':')
       )
     } else {
       setDesc2(
-        options.map((option) => padZero(parseInt(option.text))).join(':')
+        options
+          .map((option) => padZero(parseInt(option.label as string)))
+          .join(':')
       )
     }
   }

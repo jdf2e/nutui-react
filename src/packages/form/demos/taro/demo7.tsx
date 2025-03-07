@@ -12,19 +12,20 @@ import {
   Button,
   Rate,
   Range,
+  DatePicker,
 } from '@nutui/nutui-react-taro'
 import { ArrowRight } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 
 const Demo7 = () => {
   const pickerOptions = [
-    { value: 4, text: 'BeiJing' },
-    { value: 1, text: 'NanJing' },
-    { value: 2, text: 'WuXi' },
-    { value: 8, text: 'DaQing' },
-    { value: 9, text: 'SuiHua' },
-    { value: 10, text: 'WeiFang' },
-    { value: 12, text: 'ShiJiaZhuang' },
+    { value: 1, label: 'BeiJing' },
+    { value: 2, label: 'NanJing' },
+    { value: 3, label: 'WuXi' },
+    { value: 4, label: 'DaQing' },
+    { value: 5, label: 'SuiHua' },
+    { value: 6, label: 'WeiFang' },
+    { value: 7, label: 'ShiJiaZhuang' },
   ]
   const submitFailed = (error: any) => {
     Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
@@ -59,7 +60,7 @@ const Demo7 = () => {
         <Form.Item label="Input" name="form_input">
           <Input placeholder="placeholder" />
         </Form.Item>
-        <Form.Item label="Switch" name="switch">
+        <Form.Item label="Switch" name="switch" valuePropName="checked">
           <Switch />
         </Form.Item>
         <Form.Item label="Checkbox" name="checkbox">
@@ -107,7 +108,7 @@ const Demo7 = () => {
                   title={
                     value.length
                       ? pickerOptions.filter((po) => po.value === value[0])[0]
-                          ?.text
+                          ?.label
                       : 'Please select'
                   }
                   extra={<ArrowRight />}
@@ -116,6 +117,39 @@ const Demo7 = () => {
               )
             }}
           </Picker>
+        </Form.Item>
+        <Form.Item
+          label="DatePicker"
+          name="DatePicker"
+          trigger="onConfirm"
+          getValueFromEvent={(...args) => {
+            return new Date(args[1].join('/'))
+          }}
+          onClick={(event, ref: any) => {
+            ref.open()
+          }}
+          initialValue={new Date()}
+        >
+          <DatePicker>
+            {(value: any) => {
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value
+                      ? new Date(value).toLocaleDateString()
+                      : 'Please select'
+                  }
+                  extra={<ArrowRight />}
+                  align="center"
+                />
+              )
+            }}
+          </DatePicker>
         </Form.Item>
         <Form.Item
           label="Uploader"

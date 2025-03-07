@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextArea } from '@nutui/nutui-react'
 
-const Demo8 = () => {
+const Demo = () => {
   return <TextArea status="error" defaultValue="输入内容错误" />
 }
-export default Demo8
+export default Demo

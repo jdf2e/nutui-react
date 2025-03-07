@@ -2,9 +2,9 @@ import React from 'react'
 import { SearchBar } from '@nutui/nutui-react-taro'
 import {
   ArrowLeft,
-  Photograph,
-  More,
   Close,
+  More,
+  Photograph,
   Star,
 } from '@nutui/icons-react-taro'
 
