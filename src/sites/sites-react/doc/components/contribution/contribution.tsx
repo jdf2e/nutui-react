@@ -13,12 +13,8 @@ interface ContributionMDXProps {
 }
 
 const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
-  const ctx = useContext(APPContext)
   const name = props.name
   const { issues, logs } = data
-  const issuesList = issues[name]
-  console.log(issues['Form'])
-  const logsList = logs[name]
   return (
     <>
       <h2>Contribution Records</h2>
