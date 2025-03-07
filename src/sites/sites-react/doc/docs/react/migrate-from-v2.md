@@ -145,7 +145,13 @@ plugins: [
 ### 数据录入
 
 [//]: # '#### Calendar'
-[//]: # '#### Cascader'
+
+#### Cascader
+
+- `lazy` 属性表示开启数据的自动加载，Cascader 内部通过 `value` 和 `onLoad` 实现了自动加载数据的逻辑。`lazy` 属性必须和 `onLoad` 属性同时设置。
+- `onLoad`方法返回的数据类型为 `CascaderOption[]`, 默认支持 promise
+- 移除内置构建的树结构
+
 [//]: # '#### Checkbox'
 [//]: # '#### Checkbox.Group'
 [//]: # '#### DatePicker'

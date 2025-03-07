@@ -145,19 +145,24 @@ If your project uses these components, please read the documentation carefully a
 ### Data
 
 [//]: # '#### Calendar'
-[//]: # '#### Cascader'
-[//]: # '#### Checkbox'
-[//]: # '#### Checkbox.Group'
-[//]: # '#### DatePicker'
-[//]: # '#### Form'
-[//]: # '#### Form.Item'
-[//]: # '#### Input'
-[//]: # '#### InputNumber'
-[//]: # '#### NumberKeyboard'
-[//]: # '#### Picker'
-[//]: # '#### Radio'
-[//]: # '### Radio.Group'
-[//]: # '#### Range'
+
+#### Cascader
+
+- The lazy property indicates that automatic data loading is enabled. The Cascader internally implements the logic for automatic data loading through value and onLoad. The lazy property must be set together with the onLoad property.
+- The data type returned by the onLoad method is CascaderOption[], which by default supports promises.
+- Remove the built-in tree structure.
+  [//]: # '#### Checkbox'
+  [//]: # '#### Checkbox.Group'
+  [//]: # '#### DatePicker'
+  [//]: # '#### Form'
+  [//]: # '#### Form.Item'
+  [//]: # '#### Input'
+  [//]: # '#### InputNumber'
+  [//]: # '#### NumberKeyboard'
+  [//]: # '#### Picker'
+  [//]: # '#### Radio'
+  [//]: # '### Radio.Group'
+  [//]: # '#### Range'
 
 #### Rate
 
