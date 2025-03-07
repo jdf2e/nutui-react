@@ -137,7 +137,7 @@ export const InputNumber: FunctionComponent<
     negative ? onMinus?.(e) : onPlus?.(e)
 
     const shouldOverBoundary = calcNextValue(
-      shadowValue,
+      bound(Number(shadowValue), Number(min), Number(max)),
       step,
       negative ? -1 : 1
     )
