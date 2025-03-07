@@ -79,6 +79,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
           "author": "",
           "dd": true
@@ -148,6 +149,7 @@
           "show": true,
           "taro": true,
           "v15": 99,
+          "jdtaro": 2,
           "author": "vickyYE",
           "dd": true
         },
@@ -576,6 +578,7 @@
           "show": true,
           "taro": true,
           "v15": 2,
+          "jdtaro": 2,
           "author": "hanyuxinting",
           "dd": false
         },
@@ -588,6 +591,7 @@
           "sort": 19,
           "show": false,
           "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "hanyuxinting",
           "dd": false
@@ -602,6 +606,7 @@
           "show": true,
           "taro": true,
           "v15": 1,
+          "jdtaro": 2,
           "author": "VickyYe",
           "dd": true
         },
@@ -789,6 +794,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
           "author": "dsj",
           "dd": true
@@ -802,8 +808,9 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
-          
+
           "author": "VickyYe",
           "dd": true
         },
@@ -1293,6 +1300,7 @@
           "sort": 14,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 2,
           "author": "liukun",
           "dd": true
@@ -1305,6 +1313,8 @@
           "desc": "轮播子组件",
           "sort": 14,
           "show": false,
+          "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "liukun",
           "dd": true
