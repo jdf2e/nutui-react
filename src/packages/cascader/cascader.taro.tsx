@@ -304,7 +304,10 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
 
   const renderTab = () => {
     return (
-      <View className={`${classPrefix} ${props.className}`} style={props.style}>
+      <View
+        className={classNames(classPrefix, props.className)}
+        style={props.style}
+      >
         <Tabs
           align="left"
           value={tabActiveIndex}

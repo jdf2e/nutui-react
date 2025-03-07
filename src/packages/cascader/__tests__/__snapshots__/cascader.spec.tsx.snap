@@ -19,7 +19,7 @@ exports[`Cascader > visible true 1`] = `
     style="z-index: 1000;"
   >
     <div
-      class="nut-cascader undefined"
+      class="nut-cascader"
     >
       <div
         class="nut-tabs nut-tabs-horizontal"

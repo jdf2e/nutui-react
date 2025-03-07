@@ -303,7 +303,10 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
 
   const renderTab = () => {
     return (
-      <div className={`${classPrefix} ${props.className}`} style={props.style}>
+      <div
+        className={classNames(classPrefix, props.className)}
+        style={props.style}
+      >
         <Tabs
           value={tabActiveIndex}
           onChange={(index) => {
