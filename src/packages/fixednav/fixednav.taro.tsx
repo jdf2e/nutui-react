@@ -6,6 +6,7 @@ import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { FixedNavProps } from './types.taro'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
+import Badge from '@/packages/badge/index.taro'
 
 const defaultProps: FixedNavProps = {
   ...defaultOverlayProps,
@@ -58,6 +59,23 @@ export const FixedNav: FunctionComponent<
     className
   )
 
+  const renderListItem = (item: any, index: number) => {
+    return (
+      <View
+        className={`${classPrefix}-list-item`}
+        onClick={(event) => onSelect(item, event as any)}
+        key={item.id || index}
+      >
+        {React.isValidElement(item.icon) ? (
+          item.icon
+        ) : (
+          <img src={item.icon} alt="" />
+        )}
+        <View className={`${classPrefix}-list-text`}>{item.text}</View>
+      </View>
+    )
+  }
+
   return (
     <View
       className={classes}
@@ -78,21 +96,15 @@ export const FixedNav: FunctionComponent<
           <View className={`${classPrefix}-list`}>
             {list.map((item: any, index) => {
               return (
-                <View
-                  className={`${classPrefix}-list-item`}
-                  onClick={(event) => onSelect(item, event as any)}
-                  key={item.id || index}
-                >
-                  {React.isValidElement(item.icon) ? (
-                    item.icon
+                <>
+                  {item.num ? (
+                    <Badge value={item.num} top={8} right={6}>
+                      {renderListItem(item, index)}
+                    </Badge>
                   ) : (
-                    <img src={item.icon} alt="" />
+                    <>{renderListItem(item, index)}</>
                   )}
-                  <View className={`${classPrefix}-list-text`}>
-                    {item.text}
-                  </View>
-                  {item.num && <View className="b">{item.num}</View>}
-                </View>
+                </>
               )
             })}
           </View>

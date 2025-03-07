@@ -60,7 +60,7 @@
     "@dongdesign/inject-jd-platform-styles": "1.0.4",
     "@jdtaro/plugin-platform-jdhybrid": "0.2.1",
     "@jdtaro/taro-platform-jdharmony": "2.0.70",
-    "@jdtaro/plugin-platform-jdharmony-cpp": "0.1.27",
+    "@jdtaro/plugin-platform-jdharmony-cpp": "0.1.29-beta.0",
     "@nutui/replace-icons": "^1.0.0",
     "@nutui/touch-emulator": "^1.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",

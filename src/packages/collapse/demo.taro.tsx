@@ -45,9 +45,7 @@ const CollapseDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView
-        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-      >
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.header1}</View>
         <Demo1 />
 

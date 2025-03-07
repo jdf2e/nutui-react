@@ -1,0 +1,431 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<div>
+  <div
+    class="nut-datepickerview"
+  >
+    <div
+      class="nut-pickerview"
+    >
+      <div
+        class="nut-pickerview-list"
+      >
+        <div
+          class="nut-pickerview-roller"
+          style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 20deg);"
+        >
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
+          >
+            2015
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
+          >
+            2016
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
+          >
+            2017
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
+          >
+            2018
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
+          >
+            2019
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -120deg) translate3d(0px, 0px, 115px);"
+          >
+            2020
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -140deg) translate3d(0px, 0px, 115px);"
+          >
+            2021
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -160deg) translate3d(0px, 0px, 115px);"
+          >
+            2022
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -180deg) translate3d(0px, 0px, 115px);"
+          >
+            2023
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -200deg) translate3d(0px, 0px, 115px);"
+          >
+            2024
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -220deg) translate3d(0px, 0px, 115px);"
+          >
+            2025
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -240deg) translate3d(0px, 0px, 115px);"
+          >
+            2026
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -260deg) translate3d(0px, 0px, 115px);"
+          >
+            2027
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -280deg) translate3d(0px, 0px, 115px);"
+          >
+            2028
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -300deg) translate3d(0px, 0px, 115px);"
+          >
+            2029
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -320deg) translate3d(0px, 0px, 115px);"
+          >
+            2030
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -340deg) translate3d(0px, 0px, 115px);"
+          >
+            2031
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -360deg) translate3d(0px, 0px, 115px);"
+          >
+            2032
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -380deg) translate3d(0px, 0px, 115px);"
+          >
+            2033
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -400deg) translate3d(0px, 0px, 115px);"
+          >
+            2034
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -420deg) translate3d(0px, 0px, 115px);"
+          >
+            2035
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-pickerview-list"
+      >
+        <div
+          class="nut-pickerview-roller"
+          style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 20deg);"
+        >
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
+          >
+            01
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
+          >
+            02
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
+          >
+            03
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
+          >
+            04
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
+          >
+            05
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -120deg) translate3d(0px, 0px, 115px);"
+          >
+            06
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -140deg) translate3d(0px, 0px, 115px);"
+          >
+            07
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -160deg) translate3d(0px, 0px, 115px);"
+          >
+            08
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -180deg) translate3d(0px, 0px, 115px);"
+          >
+            09
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -200deg) translate3d(0px, 0px, 115px);"
+          >
+            10
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -220deg) translate3d(0px, 0px, 115px);"
+          >
+            11
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -240deg) translate3d(0px, 0px, 115px);"
+          >
+            12
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-pickerview-list"
+      >
+        <div
+          class="nut-pickerview-roller"
+          style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 20deg);"
+        >
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
+          >
+            01
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
+          >
+            02
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
+          >
+            03
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
+          >
+            04
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
+          >
+            05
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -120deg) translate3d(0px, 0px, 115px);"
+          >
+            06
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -140deg) translate3d(0px, 0px, 115px);"
+          >
+            07
+          </div>
+          <div
+            class="nut-pickerview-roller-item false"
+            style="transform: rotate3d(1, 0, 0, -160deg) translate3d(0px, 0px, 115px);"
+          >
+            08
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -180deg) translate3d(0px, 0px, 115px);"
+          >
+            09
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -200deg) translate3d(0px, 0px, 115px);"
+          >
+            10
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -220deg) translate3d(0px, 0px, 115px);"
+          >
+            11
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -240deg) translate3d(0px, 0px, 115px);"
+          >
+            12
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -260deg) translate3d(0px, 0px, 115px);"
+          >
+            13
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -280deg) translate3d(0px, 0px, 115px);"
+          >
+            14
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -300deg) translate3d(0px, 0px, 115px);"
+          >
+            15
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -320deg) translate3d(0px, 0px, 115px);"
+          >
+            16
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -340deg) translate3d(0px, 0px, 115px);"
+          >
+            17
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -360deg) translate3d(0px, 0px, 115px);"
+          >
+            18
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -380deg) translate3d(0px, 0px, 115px);"
+          >
+            19
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -400deg) translate3d(0px, 0px, 115px);"
+          >
+            20
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -420deg) translate3d(0px, 0px, 115px);"
+          >
+            21
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -440deg) translate3d(0px, 0px, 115px);"
+          >
+            22
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -460deg) translate3d(0px, 0px, 115px);"
+          >
+            23
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -480deg) translate3d(0px, 0px, 115px);"
+          >
+            24
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -500deg) translate3d(0px, 0px, 115px);"
+          >
+            25
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -520deg) translate3d(0px, 0px, 115px);"
+          >
+            26
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -540deg) translate3d(0px, 0px, 115px);"
+          >
+            27
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -560deg) translate3d(0px, 0px, 115px);"
+          >
+            28
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -580deg) translate3d(0px, 0px, 115px);"
+          >
+            29
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -600deg) translate3d(0px, 0px, 115px);"
+          >
+            30
+          </div>
+          <div
+            class="nut-pickerview-roller-item nut-pickerview-roller-item-hidden"
+            style="transform: rotate3d(1, 0, 0, -620deg) translate3d(0px, 0px, 115px);"
+          >
+            31
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-pickerview-mask"
+      />
+      <div
+        class="nut-pickerview-indicator"
+      />
+    </div>
+  </div>
+</div>
+`;

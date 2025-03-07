@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Popover } from '@nutui/nutui-react'
+import { Popover } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

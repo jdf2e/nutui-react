@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextArea } from '@nutui/nutui-react'
 
-const Demo8 = () => {
+const Demo = () => {
   return (
     <TextArea
       defaultValue="文本居右"
@@ -11,4 +11,4 @@ const Demo8 = () => {
     />
   )
 }
-export default Demo8
+export default Demo

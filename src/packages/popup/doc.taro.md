@@ -52,14 +52,6 @@ import { Popup } from '@nutui/nutui-react-taro'
 
 :::
 
-<!-- ### 指定节点挂载
-
-:::demo
-
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
-
-::: -->
-
 ### 多层堆叠
 
 :::demo
@@ -110,7 +102,7 @@ import { Popup } from '@nutui/nutui-react-taro'
 | description | 子标题/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否显示圆角 | `boolean` | `false` |
-| portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| portal | 指定节点挂载 | ``HTMLElement` \| `(() => HTMLElement)` \| null`` | `null` |
 | onClick | 点击弹框时触发 | `event: MouseEvent` | `-` |
 | onCloseIconClick | 点击关闭图标时触发 | `event: MouseEvent` | `-` |
 | onOpen | 打开弹框时触发 | `-` | `-` |

@@ -1,5 +1,6 @@
 export const visitH5Demo = (componentName, delay = 500) => {
-  const getPath = () => `${Cypress.env('baseUrl')}${componentName}`
+  const getPath = () =>
+    `http://localhost:5173/react/demo.html#/zh-CN/component/${componentName.toLowerCase()}`
   cy.visit(getPath(componentName), {
     onBeforeLoad: (win) => {
       Object.defineProperty(win.navigator, 'userAgent', {

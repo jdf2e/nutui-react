@@ -4,6 +4,8 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import isEqual from 'react-fast-compare'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Picker from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
@@ -77,6 +79,9 @@ const InternalPicker: ForwardRefRenderFunction<
     seconds: lang.seconds,
   }
 
+  const classPrefix = 'nut-datepicker'
+  const cls = classNames(classPrefix, className)
+
   const [pickerValue, setPickerValue] = useState<PickerValue[]>([])
   const [pickerOptions, setPickerOptions] = useState<PickerOptions[]>([])
 
@@ -111,9 +116,8 @@ const InternalPicker: ForwardRefRenderFunction<
     selectedOptions: PickerOptions,
     index: number
   ) => {
-    const isEqual = new Date(innerDate)?.getTime() === newDate?.getTime()
     if (newDate && isDate(newDate)) {
-      if (!isEqual) {
+      if (!isEqual(new Date(selectedDate)?.getTime(), newDate?.getTime())) {
         setInnerDate(formatValue(newDate, startDate, endDate))
       }
       onChange?.(
@@ -130,8 +134,7 @@ const InternalPicker: ForwardRefRenderFunction<
 
   const handleConfirmDateComparison = (newDate: Date | null) => {
     if (newDate && isDate(newDate)) {
-      const isEqual = new Date(selectedDate)?.getTime() === newDate?.getTime()
-      if (!isEqual) {
+      if (!isEqual(new Date(selectedDate)?.getTime(), newDate?.getTime())) {
         setSelectedDate(formatValue(newDate, startDate, endDate))
       }
     }
@@ -223,7 +226,7 @@ const InternalPicker: ForwardRefRenderFunction<
   return (
     <>
       {typeof children === 'function' && children(selectedDate)}
-      <View className={`nut-datepicker ${className}`} style={style} {...rest}>
+      <View className={cls} style={style} {...rest}>
         {pickerOptions.length && (
           <Picker
             {...pickerProps}

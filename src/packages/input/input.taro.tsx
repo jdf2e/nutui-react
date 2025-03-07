@@ -77,6 +77,8 @@ export const Input = forwardRef(
       >,
     ref
   ) => {
+    const classPrefix = 'nut-input'
+
     const rtl = useRtl()
     const { locale } = useConfig()
     const {
@@ -135,7 +137,6 @@ export const Input = forwardRef(
     })
 
     const inputClass = useCallback(() => {
-      const classPrefix = 'nut-input'
       return [
         classPrefix,
         `${disabled ? `${classPrefix}-disabled` : ''}`,
@@ -215,13 +216,14 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={getTextAlign()}
+          style={{ textAlign: getTextAlign() }}
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}
           placeholder={
             placeholder === undefined ? locale.placeholder : placeholder
           }
+          placeholderClass={`${classPrefix}-placeholder`}
           disabled={disabled || readOnly}
           value={value}
           focus={autoFocus}
