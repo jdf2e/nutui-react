@@ -295,7 +295,10 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
             (isValidElement(activeIcon) ? (
               activeIcon
             ) : (
-              <Check className={`${classPrefix}-icon-check`} color="#ff0f23" />
+              <Check
+                className={`${classPrefix}-icon-check`}
+                color={activeColor || '#ff0f23'}
+              />
             ))}
         </View>
       )
