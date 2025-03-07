@@ -13,10 +13,10 @@ code {
   -webkit-font-smoothing: auto;
   background-color: #fafafa;
   border-radius: 16px;
-}
 
-code span {
-  font-family: $nutui-doc-code-font-family;
+  span {
+    font-family: $nutui-doc-code-font-family;
+  }
 }
 
 pre {

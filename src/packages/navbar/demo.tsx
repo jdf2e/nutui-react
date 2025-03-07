@@ -25,7 +25,7 @@ const NavBarDemo = () => {
   })
   return (
     <>
-      <div className="demo">
+      <div className="demo navbar-demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
         <h2>{translated.title1}</h2>

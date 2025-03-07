@@ -145,7 +145,6 @@ export default function App() {
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-dialog-z-index | 對話框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-width | 對話框寬度 | `295px` |
 | \--nutui-dialog-min-width | 對話框最小寬度 | `240px` |
 | \--nutui-dialog-padding | 對話框padding | `24px` |

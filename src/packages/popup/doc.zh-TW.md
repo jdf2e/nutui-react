@@ -92,7 +92,7 @@ import { Popup } from '@nutui/nutui-react'
 | description | 子標題/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否顯示圓角 | `boolean` | `false` |
-| portal | 指定節點掛載 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| portal | 指定節點掛載 | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
 | onClick | 點擊彈框時觸發 | `event: MouseEvent` | `-` |
 | onCloseIconClick | 點擊關閉圖標時觸發 | `event: MouseEvent` | `-` |
 | onOpen | 打開彈框時觸發 | `-` | `-` |

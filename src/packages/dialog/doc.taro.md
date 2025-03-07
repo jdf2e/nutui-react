@@ -125,7 +125,6 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-dialog-z-index | 对话框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-width | 对话框宽度 | `295px` |
 | \--nutui-dialog-min-width | 对话框最小宽度 | `240px` |
 | \--nutui-dialog-padding | 对话框padding | `24px` |

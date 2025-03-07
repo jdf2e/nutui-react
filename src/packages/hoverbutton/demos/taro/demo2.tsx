@@ -1,6 +1,3 @@
-/**
- * 多个按钮
- */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
 import { Cart } from '@nutui/icons-react-taro'
