@@ -8,6 +8,6 @@ import { checkH5Blank } from '../common/pageWhiteTest.cy'
 // import './exhibition.cy'
 // import './feedback.cy'
 
-describe('All Taro Demos White Page Test', () => {
+describe('All H5 Demos White Page Test', () => {
   checkH5Blank()
 })

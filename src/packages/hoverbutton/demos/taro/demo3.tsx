@@ -1,6 +1,3 @@
-/**
- * 有底部导航栏的情况
- */
 import React from 'react'
 import { HoverButton, Tabbar } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'

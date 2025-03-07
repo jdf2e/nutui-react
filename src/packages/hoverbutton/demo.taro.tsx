@@ -8,11 +8,9 @@ import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import { harmony } from '@/utils/platform-taro'
-import Demo5 from './demos/taro/demo5'
-
-const isNative = harmony()
 
 const HoverDemo = () => {
   const [translated] = useTranslate({
@@ -51,7 +49,7 @@ const HoverDemo = () => {
       <Header />
       <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-        style={isNative ? { minHeight: 420 } : {}}
+        style={harmony() ? { minHeight: 420 } : {}}
       >
         <View className="h2">{translated.basic}</View>
         <Cell

@@ -1,3 +1,27 @@
+# v3.0.1
+
+`2025-03-05`
+
+- feat: 增加一个以组为单位的编译逻辑 (#3042)
+- feat(shortpassword): harmony (#3017)
+- feat: datepickerview (#3026)
+- fix(drag): 解决 taro 不能滑动问题 (#3054)
+- fix(input): 显示设置 placeholder 字体颜色 (#3050)
+- fix: hoverbutton h5 border (#3053)
+- fix(navbar): 居左展示时，副标题居左 (#3049)
+- fix: demos full css (#3051)
+- fix: 调整 dd 展示 (#3052)
+- fix: H5 小程序走查中遇到的问题修复 (#3047)
+- fix(navbar): tabpane 展示控制只限于 navbar (#3048)
+- fix: config v15 调整 (#3046)
+- fix: change index (#3045)
+- fix: inactive color (#3044)
+- fix: merge tabs 2.x, 修复第一个项目无法滚动到视图的问题 (#3043)
+- fix: popup 鸿蒙下层级问题修复，dialog 的适配做了调整，日历卡片调整了 demo (#3038)
+- fix(watermark): 小程序图片高度未撑开 (#3040)
+- fix(collapse): 去掉 demo 顶部留白 (#3041)
+- fix: textarea 鸿蒙适配 (#3037)
+
 # v3.0.0
 
 `2025-02-28`

@@ -61,6 +61,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     className,
     closeable,
     autoFocus,
+    round,
     onFocus,
     onChange,
     onConfirm,
@@ -121,15 +122,12 @@ export const InternalShortPassword: ForwardRefRenderFunction<
 
   return (
     <Popup
-      style={{
-        padding: '32px 24px 28px 24px',
-        borderRadius: '12px',
-        textAlign: 'center',
-      }}
+      className={`${classPrefix}-popup`}
       visible={visible}
       closeable
       onOverlayClick={handleClose}
       onCloseIconClick={handleClose}
+      round={round}
       {...rest}
     >
       <div className={classNames(classPrefix, className)} style={style}>

@@ -92,7 +92,7 @@ import { Popup } from '@nutui/nutui-react'
 | description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
-| portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
 | onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
 | onCloseIconClick | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
 | onOpen | Triggered when the popup is opened | `-` | `-` |

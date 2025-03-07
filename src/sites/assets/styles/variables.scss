@@ -1,5 +1,8 @@
 // doc
-$doc-default-color: #ff0f23;
+$doc-default-color: #fa2c19 !default;
+$doc-smile-curve: url('https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png') !default;
+$doc-footer-theme-icon: url('@/assets/images/icon-color.png') no-repeat
+  center/100% !default;
 $doc-default-primary-bg: linear-gradient(
   135deg,
   rgba(250, 25, 44, 1) 0%,
@@ -8,9 +11,14 @@ $doc-default-primary-bg: linear-gradient(
   rgba(250, 63, 25, 1) 100%
 );
 
-// color
+$white: #fff;
+$black: #000;
+// 标题常规文字
+$title-color: #1a1a1a;
+
+// clolr
 // 红色
-$theme-red: #ff0f23;
+$theme-red: #fa2c19;
 $theme-red-word: #fff;
 $theme-red-border: #fff;
 $theme-red-input: #fff;
@@ -18,7 +26,7 @@ $theme-red-actice: #fff;
 $theme-red-select-border: #f0f2f5;
 $theme-red-select-word: #666;
 $theme-red-select-bg: #fff;
-$theme-red-header-bg: url('../../assets/images/header-bg.png');
+$theme-red-header-bg: url('@/sites/assets/images/header-bg.png');
 $theme-red-footer-word1: #1a1a1a;
 $theme-red-footer-word2: #666;
 $theme-red-footer-word3: #1d1d21;
@@ -37,22 +45,24 @@ $theme-white: #fff;
 $theme-white-word: #1a1a1a;
 $theme-white-input: #ccc;
 $theme-white-border: #d8d8d8;
-$theme-white-actice: #ff0f23;
+$theme-white-actice: #fa2c19;
 $theme-white-select-border: #f0f2f5;
 $theme-white-select-word: #666;
 $theme-white-select-bg: #fff;
+$theme-white-select-hover: rgba(0, 0, 0, 0.02);
+$theme-white-select-active: rgba(0, 0, 0, 0.06);
 $theme-white-box-border: #f5f5f5;
 $theme-white-footer-word1: #1a1a1a;
 $theme-white-footer-word2: #666;
 $theme-white-footer-word3: #1d1d21;
 $theme-white-footer-word4: #808080;
-$theme-white-footer-hover: #ff0f23;
+$theme-white-footer-hover: #fa2c19;
 $theme-white-footer-bg: #fff;
 $theme-white-footer-border: #eaf0fb;
 $theme-white-theme-border: #f5f6f7;
 $theme-white-circle: #fff;
 $theme-white-circle-border: #e5e5e5;
-$theme-white-index-description: #959fb1;
+$theme-white-index-desc: #959fb1;
 
 // 黑色
 $theme-black-word: #ccc;
@@ -60,6 +70,10 @@ $theme-black-input: #ccc;
 $theme-black-border: #d8d8d8;
 $theme-black-actice: #fff;
 $theme-black-select-bg: #1d1d1d;
+$theme-black-nav-select-bg: #2c2c2c;
+$theme-black-nav-select-border: #5e5e5e;
+$theme-black-nav-select-active-bg: rgba(255, 255, 255, 0.2);
+$theme-black-nav-select-hover-bg: rgba(255, 255, 255, 0.06);
 $theme-black-select-border: #c1c1c3;
 $theme-black-select-hover: #797a7b;
 $theme-black-select-word: #fff;
@@ -67,8 +81,8 @@ $theme-black-box-border: #6b5554;
 $theme-black-footer-word1: #fff;
 $theme-black-footer-word2: #f5f5f5;
 $theme-black-footer-word3: #f5f5f5;
-$theme-black-footer-word4: #808080;
-$theme-black-footer-hover: #ff0f23;
+$theme-black-footer-word4: #fff;
+$theme-black-footer-hover: $doc-default-color;
 $theme-black-footer-bg: #1d1d21;
 $theme-black-footer-border: transparent;
 $theme-black-theme-border: #666;
@@ -76,27 +90,34 @@ $theme-black-circle: #1a1a1a;
 // header
 $doc-default-header-color: $white;
 $doc-header-height: 64px;
-$doc-header-bg: url('../../assets/images/header-bg.png') no-repeat;
+$doc-header-bg: url('@/assets/images/header-bg.png') no-repeat;
 // nav
 $doc-default-nav-bg: $white;
-$doc-default-nav-color: $color-title;
+$doc-default-nav-color: $title-color;
+$doc-nav-icon-color1: #41b883;
+$doc-nav-icon-color2: #74c9ff;
+$doc-nav-icon-bg1: rgba(65, 184, 131, 0.16);
+$doc-nav-icon-bg2: rgba(116, 201, 255, 0.16);
+// footer
+// $doc-default-header-color: $white;
+// $doc-footer-height: 73px;
 // home
 $theme-black-content-bg: #060506;
 
 //markdown-add-style
 $nutui-doc-black: #323233;
-$nutui-doc-blue: #0073ff;
+$nutui-doc-blue: #1989fa;
 $nutui-doc-purple: #8080ff;
 $nutui-doc-fuchsia: #a7419e;
 $nutui-doc-red: #fa2400;
-$nutui-doc-text-color: #666666;
+$nutui-doc-text-color: rgba(0, 0, 0, 0.88);
 $nutui-doc-text-light-blue: rgba(69, 90, 100, 0.6);
 $nutui-doc-background-color: #f7f8fa;
 $nutui-doc-grey: #999;
 $nutui-doc-dark-grey: #666;
 $nutui-doc-light-grey: #ccc;
 $nutui-doc-border-color: #f1f4f8;
-$nutui-doc-code-color: #58727e;
+$nutui-doc-code-color: rgba(0, 0, 0, 0.88);
 $nutui-doc-code-background-color: #f1f4f8;
 $nutui-doc-code-font-family: 'Source Code Pro', 'Monaco', 'Inconsolata',
   monospace;
