@@ -61,9 +61,9 @@ export const FixedNav: FunctionComponent<
 
   const renderListItem = (item: any, index: number) => {
     return (
-      <div
+      <View
         className={`${classPrefix}-list-item`}
-        onClick={(event) => onSelect(item, event)}
+        onClick={(event) => onSelect(item, event as any)}
         key={item.id || index}
       >
         {React.isValidElement(item.icon) ? (
@@ -71,8 +71,8 @@ export const FixedNav: FunctionComponent<
         ) : (
           <img src={item.icon} alt="" />
         )}
-        <div className={`${classPrefix}-list-text`}>{item.text}</div>
-      </div>
+        <View className={`${classPrefix}-list-text`}>{item.text}</View>
+      </View>
     )
   }
 
