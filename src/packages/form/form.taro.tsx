@@ -1,17 +1,20 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
+import { Form as TForm, FormProps as TFormProps } from '@tarojs/components'
 import { Context } from './context'
 import { SECRET, useForm } from './useform.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Cell from '@/packages/cell/index.taro'
 import { FormInstance } from '@/packages/form/types'
 
-export interface FormProps extends BasicComponent {
+export interface FormProps extends TFormProps {
   footer: ReactNode
   initialValues: any
   name: string
   form: any
+  disabled: boolean
   divider: boolean
+  validateTrigger: string | string[] | false
   labelPosition: 'top' | 'left' | 'right'
   starPosition: 'left' | 'right'
   onFinish: (values: any) => void
@@ -22,7 +25,9 @@ const defaultProps = {
   ...ComponentDefaults,
   labelPosition: 'right',
   starPosition: 'left',
+  disabled: false,
   divider: false,
+  validateTrigger: 'onChange',
   onFinish: (values) => {},
   onFinishFailed: (values, errorFields) => {},
 } as FormProps
@@ -43,11 +48,14 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       children,
       initialValues,
       divider,
+      disabled,
       onFinish,
       onFinishFailed,
+      validateTrigger,
       labelPosition,
       starPosition,
       form,
+      ...rest
     } = {
       ...defaultProps,
       ...props,
@@ -77,7 +85,8 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
     }
 
     return (
-      <form
+      <TForm
+        {...rest}
         className={classNames(
           classPrefix,
           PositionInfo[labelPosition],
@@ -96,12 +105,16 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
         }}
       >
         <Cell.Group divider={divider}>
-          <Context.Provider value={formInstance}>{children}</Context.Provider>
+          <Context.Provider
+            value={{ formInstance, labelPosition, disabled, validateTrigger }}
+          >
+            {children}
+          </Context.Provider>
           {footer ? (
             <Cell className={`${classPrefix}-footer`}>{footer}</Cell>
           ) : null}
         </Cell.Group>
-      </form>
+      </TForm>
     )
   }
 )

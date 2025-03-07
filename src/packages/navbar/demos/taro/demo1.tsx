@@ -13,15 +13,17 @@ const Demo1 = () => {
       alignItems: 'center',
     },
     title: {
+      display: 'flex',
+      alignItems: 'center',
+      flex: 1,
       fontSize: pxTransform(18),
       fontWeight: 'bold',
-      lineHeight: pxTransform(26),
     },
     description: {
       fontSize: pxTransform(12),
       fontWeight: 400,
       color: 'rgba(0,0,0, 0.5)',
-      lineHeight: pxTransform(16),
+      height: pxTransform(16),
     },
   }
   return (

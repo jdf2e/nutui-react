@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import {
   BaseEventOrig,
-  Text,
   Textarea,
   TextareaProps,
   View,
@@ -151,13 +150,13 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
           }
         />
         {showCount && (
-          <Text
+          <View
             className={classNames(`${classPrefix}-limit`, {
               [`${classPrefix}-limit-disabled`]: disabled,
             })}
           >
             {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-          </Text>
+          </View>
         )}
       </View>
     </>

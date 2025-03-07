@@ -2,11 +2,17 @@
 
 .doc-content-document {
   position: relative;
+  min-width: 1000px;
   background: #fff;
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 40px;
   padding-right: 445px;
+
+  &.full {
+    padding-right: 100px;
+  }
+
   .card {
     margin-bottom: 24px;
     padding: 24px;
@@ -21,11 +27,11 @@
     -webkit-font-smoothing: auto;
 
     &:hover {
-      color: mix(black, $nutui-doc-blue, 10%);
+      color: darken($nutui-doc-blue, 10%);
     }
 
     &:active {
-      color: mix(black, $nutui-doc-blue, 20%);
+      color: darken($nutui-doc-blue, 20%);
     }
   }
 
@@ -38,13 +44,11 @@
     color: $nutui-doc-black;
     font-weight: bold;
     line-height: 1.5;
-
-    &[id] {
-      cursor: pointer;
-    }
   }
 
   &.isComponent {
+    padding-top: 0;
+
     h1 {
       display: none;
     }
@@ -65,20 +69,20 @@
       left: 16px;
       width: 44px;
       height: 17px;
-      background: url('https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png');
+      background: $doc-smile-curve;
       background-size: 100% 100%;
     }
   }
 
   h2 {
-    margin: 45px 0 20px;
-    font-size: 24px;
+    margin: 16px 0;
+    font-size: 20px;
   }
 
   h3 {
     margin: 16px 0px;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 18px;
   }
 
   h4 {
@@ -98,12 +102,14 @@
     font-size: 14px;
     line-height: 22px;
   }
+
   strong {
     margin: 24px 0 12px;
     font-weight: bold;
     font-size: 14px;
     color: #333;
   }
+
   table {
     width: 100%;
     margin-top: 12px;
@@ -112,12 +118,16 @@
     line-height: 1.5;
     border-collapse: collapse;
     border: 1px solid #eee;
+
     th {
       padding: 8px 20px;
       font-weight: 600;
       text-align: left;
       border-left: 1px solid #e9e9e9;
       background-color: #f7f8fa;
+      // &:first-child {
+      //   padding-left: 0;
+      // }
 
       &:last-child {
         padding-right: 0;
@@ -128,6 +138,7 @@
       padding: 8px 20px;
       border-top: 1px solid $nutui-doc-code-background-color;
       border-left: 1px solid #e9e9e9;
+
       &:first-child {
         // padding-left: 0;
         border-left: 0px;
@@ -155,6 +166,11 @@
       font-style: normal;
       -webkit-font-smoothing: auto;
     }
+  }
+
+  ul,
+  ol {
+    margin: 16px 0;
   }
 
   ul li,
@@ -212,12 +228,19 @@
   blockquote {
     margin: 16px 0px;
     padding: 16px;
-    background-color: #fff4f0;
-    border-left: 6px solid #fa192c;
+    background-color: rgba($doc-default-color, 0.06);
+    border-left: 6px solid $doc-default-color;
     border-radius: 3px;
+
     p {
       color: #1a1a1a;
     }
+  }
+
+  img {
+    max-width: 100%;
+    // margin: 16px 0;
+    // border-radius: $nutui-doc-border-radius;
   }
 
   &--changelog,
@@ -240,20 +263,68 @@
       }
     }
   }
+
   .handle-part {
     height: 50px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     .online-btn {
       display: block;
       color: #5555e2;
       background-color: #fff;
       font-size: 14px;
       cursor: pointer;
+
       &:hover {
         color: blue;
         text-decoration: underline;
+      }
+    }
+  }
+
+  .contributor {
+    display: table;
+    width: 1120px;
+    margin-top: 12px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    border-collapse: collapse;
+    border: 0;
+    table-layout: fixed;
+
+    .contributor-head {
+      display: table-row;
+
+      .contributor-head-item {
+        display: table-cell;
+        padding: 10px 15px;
+        font-weight: 600;
+        text-align: center;
+        background-color: transparent;
+        border: 0;
+
+        a {
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+    }
+
+    .contributor-body {
+      display: table-row;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+
+      .contributor-body-item {
+        display: table-cell;
+        padding: 10px 15px;
+        border: 0;
+        text-align: center;
       }
     }
   }

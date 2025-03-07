@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
-import { PickerRollerProps, PickerOptionItem } from './types'
+import { PickerRollerProps, PickerOption } from './types'
 import { preventDefault } from '@/utils'
 import { momentum, useStyles } from './utils'
 
@@ -21,7 +21,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     threeDimensional = true,
     duration = 1000,
     onSelect,
-    renderLabel = (item: PickerOptionItem) => item.label,
+    renderLabel = (item: PickerOption) => item.label,
   } = props
 
   const DEFAULT_DURATION = 200
@@ -130,7 +130,9 @@ const InternalPickerRoller: ForwardRefRenderFunction<
 
   const updateStatus = (shouldSelect?: boolean, value?: string | number) => {
     const selectedValue = value || props.value
-    const index = options.findIndex((item) => item.value === selectedValue)
+    const index = options.findIndex(
+      (item: PickerOption) => item.value === selectedValue
+    )
     setCurrentIndex(index === -1 ? 1 : index + 1)
     const move = index * lineSpacing.current
     shouldSelect && selectValue(-move)
@@ -210,7 +212,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       >
         {/* 3D */}
         {threeDimensional &&
-          options.map((item, index) => (
+          options.map((item: PickerOption, index: number) => (
             <div
               className={`nut-pickerview-roller-item ${
                 isItemHidden(index + 1) && 'nut-pickerview-roller-item-hidden'
@@ -223,7 +225,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
           ))}
         {/* Tiled */}
         {!threeDimensional &&
-          options.map((item, index) => (
+          options.map((item: PickerOption, index: number) => (
             <div
               className="nut-pickerview-roller-item-tiled"
               key={item.value ?? index}

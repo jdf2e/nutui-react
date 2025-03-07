@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Collapse } from 'nutui-react-taro'
+import { Collapse } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码

@@ -22,6 +22,12 @@
       width: 22px;
       height: 22px;
       font-size: 22px;
+      /* #ifdef harmony*/
+      color: $tabbar-inactive-color;
+      /* #endif*/
+      /* #ifndef harmony*/
+      color: inherit;
+      /* #endif*/
     }
 
     &-nav {

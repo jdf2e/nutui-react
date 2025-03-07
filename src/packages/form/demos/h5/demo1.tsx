@@ -52,6 +52,10 @@ const Demo1 = () => {
         <Form.Item
           label="数量"
           name="num"
+          rules={[
+            { max: 15, message: '字段D不能超过15个字' },
+            { required: true, message: '请输入字段D' },
+          ]}
           getValueFromEvent={(...args) => args[0]}
         >
           <InputNumber />

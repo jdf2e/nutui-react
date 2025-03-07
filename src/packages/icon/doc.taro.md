@@ -174,6 +174,6 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-icon-height | iconfont 容器的高度 | `16px` |
-| \--nutui-icon-width | iconfont 容器的宽度 | `16px` |
-| \--nutui-icon-line-height | iconfont 的行高 | `16px` |
+| \--nut-icon-height | iconfont 容器的高度 | `16px` |
+| \--nut-icon-width | iconfont 容器的宽度 | `16px` |
+| \--nut-icon-line-height | iconfont 的行高 | `16px` |

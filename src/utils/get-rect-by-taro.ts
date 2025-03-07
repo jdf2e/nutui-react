@@ -23,7 +23,10 @@ export function makeRect(width: number, height: number) {
   } as Rect
 }
 
-export const getRectByTaro = async (element: any): Promise<Rect> => {
+export const getRectByTaro = async (
+  element: any,
+  harmonyId = ''
+): Promise<Rect> => {
   if (element) {
     if (inBrowser) {
       return Promise.resolve(getRect(element))
@@ -31,7 +34,7 @@ export const getRectByTaro = async (element: any): Promise<Rect> => {
     // 小程序下的逻辑
     return new Promise((resolve, reject) => {
       createSelectorQuery()
-        .select(`#${element.uid}`)
+        .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
           resolve(rects)
