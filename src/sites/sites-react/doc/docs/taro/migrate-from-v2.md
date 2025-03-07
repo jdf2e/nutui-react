@@ -152,12 +152,16 @@ plugins: [
 [//]: # '#### Form'
 [//]: # '#### Form.Item'
 [//]: # '#### Input'
-[//]: # '#### InputNumber'
-[//]: # '#### NumberKeyboard'
-[//]: # '#### Picker'
-[//]: # '#### Radio'
-[//]: # '### Radio.Group'
-[//]: # '#### Range'
+
+#### InputNumber
+
+- 移除 `async`, 可通过 `beforeChange` 替代
+- 增加 `beforeChange`, 处理异步调用
+  [//]: # '#### NumberKeyboard'
+  [//]: # '#### Picker'
+  [//]: # '#### Radio'
+  [//]: # '### Radio.Group'
+  [//]: # '#### Range'
 
 #### Rate
 

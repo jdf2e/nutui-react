@@ -152,12 +152,16 @@ If your project uses these components, please read the documentation carefully a
 [//]: # '#### Form'
 [//]: # '#### Form.Item'
 [//]: # '#### Input'
-[//]: # '#### InputNumber'
-[//]: # '#### NumberKeyboard'
-[//]: # '#### Picker'
-[//]: # '#### Radio'
-[//]: # '### Radio.Group'
-[//]: # '#### Range'
+
+#### InputNumber
+
+- Remove async, which can be replaced by beforeChange
+- Add beforeChange to handle asynchronous calls
+  [//]: # '#### NumberKeyboard'
+  [//]: # '#### Picker'
+  [//]: # '#### Radio'
+  [//]: # '### Radio.Group'
+  [//]: # '#### Range'
 
 #### Rate
 
