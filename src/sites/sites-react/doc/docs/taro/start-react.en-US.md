@@ -110,6 +110,14 @@ import '@nutui/nutui-react-taro/dist/style.css'
 
 You can also implement on-demand import of styles in the following ways:
 
+#### 3.1、Implement On-Demand Import with Plugins
+
+Note that when manually loading components on demand, you also need to import the global class file in the entry file to load some of NutUI React Taro's global logic and styles:
+
+```js
+import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+```
+
 Install `babel-plugin-import`.
 
 ```sh
@@ -132,9 +140,11 @@ plugins: [
     'import',
     {
       libraryName: '@nutui/nutui-react-taro',
-      libraryDirectory: 'dist/esm',
       style: 'css',
       camel2DashComponentName: false,
+      customName: (name, file) => {
+        return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+      },
     },
     'nutui-react-taro',
   ],

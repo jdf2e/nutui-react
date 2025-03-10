@@ -113,7 +113,13 @@ config = {
 import '@nutui/nutui-react-taro/dist/style.css'
 ```
 
-也可以通过下面的方式实现样式的按需引入：
+#### 3.1、通过插件实现按需引入
+
+需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React Taro 的全局性逻辑和样式：`
+
+```js
+import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+```
 
 首先安装 `babel-plugin-import` 插件
 
@@ -139,9 +145,11 @@ module.exports = {
       'import',
       {
         libraryName: '@nutui/nutui-react-taro',
-        libraryDirectory: 'dist/esm',
         style: 'css',
         camel2DashComponentName: false,
+        customName: (name, file) => {
+          return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        },
       },
       'nutui-react-taro',
     ],

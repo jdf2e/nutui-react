@@ -5,7 +5,7 @@
 NutUI-React supports flexible style customization to meet multiple visual business and brand needs, including but not limited to support for global master tone and component-specific visual customization.
 <br />
 <br />
-In NutUI-React version 1.4.0, the Sass theme customization function of 1.x can still be used. We added CSS variables to the original theme customization function, so that the new theme customization function can be used without introducing additional SCSS style files.
+In NutUI-React, the Sass theme customization function can still be used. We added CSS variables to the original theme customization function, so that the new theme customization function can be used without introducing additional SCSS style files.
 
 ## Method 1: Use CSS Variables to configure topics
 
@@ -34,25 +34,35 @@ $color-primary-end: #fa6419;
 
 Modify the ** ass-loader** configuration in the 'vite' or 'webpack' configuration file. The following example
 
-#### taro
-
-Configure `scss` file global cover in `config/index.js`:
+#### vite
 
 ```javascript
-const path = require('path');
-const config = {
-  deviceRatio: {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2,
-    375: 2 / 1
+// https://vitejs.dev/config/
+export default defineConfig({
+  //...
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";@import "./your/custom_theme.scss";`,
+      },
+    },
   },
-  sass: {
-    resource: [
-      path.resolve(__dirname, '..', 'src/assets/styles/custom_theme.scss')
-    ],
-    // 默认京东 APP 10.0主题 > @import "@nutui/nutui-react-taro/dist/styles/variables.scss";
-    data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`
-	},
-  // ...
+})
+```
+
+#### webpack
+
+```javascript
+{
+    test: /\.(sa|sc)ss$/,
+    use: [
+        {
+            loader: 'sass-loader',
+            options: {
+                // Note: The option name is different for different versions of ass-loader. For details, see the corresponding version document of ass-loader
+                data: `@import "./assets/custom_theme.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+            }
+        }
+    ]
+}
 ```

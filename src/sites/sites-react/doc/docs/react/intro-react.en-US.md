@@ -5,7 +5,7 @@ The NutUI-React component library is suitable for H5 applications of the React t
 ## Features
 
 - 🚀 80+ high-quality components covering mainstream mobile scenarios
-- 📖 Based on JD APP 10.0 visual specification
+- 📖 Based on JD APP 15.0 visual specification
 - 🍭 Support on-demand reference
 - 📖 Detailed documentation and examples
 - 💪 Supports TypeScript
@@ -23,7 +23,7 @@ The NutUI-React component library is suitable for H5 applications of the React t
 
 | Version | Supported Frameworks | Visual Specifications | Compatibility |
 | --- | --- | --- | --- |
-| @nutui/nutui-react <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | Jingdong [APP 10.0](#/resource) | Modern browsers start with Chrome >= 51、iOS >= 10.0 |
+| @nutui/nutui-react <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | Jingdong APP 15.0 | Modern browsers start with Chrome >= 51、iOS >= 10.0 |
 
 For some older versions of browsers, corresponding polyfills are needed. It is recommended to use @babel/preset-env to address browser compatibility issues. The package provided by NutUI-React has not undergone extensive syntax transformation, so it is necessary to include the NutUI-React package in the compilation phase.
 

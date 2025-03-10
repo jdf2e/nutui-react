@@ -6,7 +6,7 @@
 
 ## 安装
 
-#### 1. 通过 NPM 安装
+#### 1. 安装
 
 ```sh
 # pnpm
@@ -16,55 +16,6 @@ yarn add @nutui/nutui-react
 # npm
 npm install @nutui/nutui-react
 ```
-
-#### 2. 通过 CDN 安装及使用
-
-> 可以在 **jsdelivr** 和 **unpkg** 等公共 CDN 上获取到 NutUI。
-> 不推荐在生产环境使用组件库 CDN，如果需要这种使用方式，建议将特定版本的 CDN 文件下载至本地项目目录中使用。
-
-:::demo
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 引入样式 -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/style.css"
-    />
-    <!-- 引入React -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-    ></script>
-    <!-- 引入NutUI组件库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@nutui/nutui-react/dist/nutui.react.umd.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script>
-      // 在 #app 标签下渲染一个按钮组件
-      ReactDOM.render(
-        React.createElement(
-          nutui.react.Button,
-          null,
-          React.createElement('div', null, '主要按钮')
-        ),
-        document.querySelector('#app')
-      )
-    </script>
-  </body>
-</html>
-```
-
-:::
 
 ## 组件使用
 
@@ -90,7 +41,24 @@ ReactDOM.render(
 
 :::
 
-#### 方法二、按需引入样式
+#### 方法二、手动按需加载
+
+可以手动引入部分组件。
+
+```js
+import '@nutui/nutui-react/dist/es/packages/button/style'
+import Button from '@nutui/nutui-react/dist/es/packages/button'
+```
+
+需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React 的全局性逻辑和样式：`
+
+```js
+import '@nutui/nutui-react/dist/styles/themes/default.scss'
+```
+
+#### 方法三、自动的按需加载
+
+如果你认为上面的写法比较繁琐，你可以使用方法三提供的自动按需加载，**但是使用自动按需加载时扔需引入 global 类的文件**。
 
 <details>
 <summary>vite</summary>
@@ -123,7 +91,7 @@ export default defineConfig({
         {
           libName: '@nutui/nutui-react',
           style: (name) => {
-            return `@nutui/nutui-react/dist/esm/${name}/style/css`
+            return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
           },
           replaceOldImport: false,
           camel2DashComponentName: false,
@@ -164,9 +132,11 @@ babel 配置：
       'import',
       {
         libraryName: '@nutui/nutui-react',
-        libraryDirectory: 'dist/esm',
         style: 'css',
         camel2DashComponentName: false,
+        customName: (name, file) => {
+          return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
+        },
       },
       'nutui-react',
     ],
@@ -176,7 +146,7 @@ babel 配置：
 
 :::
 
-</details><br/>
+</details><br />
 
 ## 使用注意事项
 

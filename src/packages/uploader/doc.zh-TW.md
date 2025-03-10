@@ -106,7 +106,7 @@ import { Uploader } from '@nutui/nutui-react'
 | deletable | 是否展示刪除按鈕 | `boolean` | `true` |
 | method | 上傳請求的 http method | `string` | `post` |
 | previewType | 上傳列表的內建樣式，支持兩種基本樣式 picture、list | `string` | `picture` |
-| capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接調起攝像頭 | `string` | `false` |
+| capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接調起攝像頭 | `string` | `false` |
 | maxFileSize | 可以設定最大上傳文件的大小（字節） | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | 文件上傳數量限製 | `number` \| `string` | `1` |
 | fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |

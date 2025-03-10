@@ -13,7 +13,7 @@ import {
   canvasToTempFilePath,
   CanvasContext,
 } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { Canvas, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type SignatureType = 'jpg' | 'png'
@@ -210,7 +210,7 @@ const InternalSignature: ForwardRefRenderFunction<
             onTouchEnd={endEventHandler}
           />
         ) : (
-          <canvas
+          <Canvas
             id={canvasId}
             ref={canvasRef}
             canvas-id={canvasId}
