@@ -264,6 +264,10 @@ export * from './spec/datepicker/base'
 export * from './spec/datepicker/h5'
 export * from './spec/datepicker/taro'
 
+export * from './spec/datepickerview/base'
+export * from './spec/datepickerview/h5'
+export * from './spec/datepickerview/taro'
+
 export * from './spec/cell/base'
 export * from './spec/cell/h5'
 export * from './spec/cell/taro'
