@@ -21,7 +21,7 @@ import {
   CascaderValue,
   CascaderOptionKey,
   CascaderFormat,
-} from './types'
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider'

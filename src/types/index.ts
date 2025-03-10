@@ -2,6 +2,10 @@ export * from './spec/watermark/base'
 export * from './spec/watermark/h5'
 export * from './spec/watermark/taro'
 
+export * from './spec/address/base'
+export * from './spec/address/h5'
+export * from './spec/address/taro'
+
 export * from './spec/video/base'
 export * from './spec/video/h5'
 export * from './spec/video/taro'

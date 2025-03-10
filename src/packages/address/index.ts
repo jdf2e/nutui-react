@@ -1,6 +1,9 @@
 import { Address } from './address'
 
-export type { AddressProps } from './address'
-export type { AddressList, AddressRef } from './types'
+export type {
+  AddressList,
+  AddressRef,
+  WebAddressProps as AddressProps,
+} from '@/types'
 
 export default Address

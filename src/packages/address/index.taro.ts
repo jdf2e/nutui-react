@@ -1,5 +1,8 @@
 import { Address } from './address.taro'
 
-export type { AddressProps } from './address.taro'
-export type { AddressList, AddressRef } from './types'
+export type {
+  AddressList,
+  AddressRef,
+  TaroAddressProps as AddressProps,
+} from '@/types'
 export default Address
