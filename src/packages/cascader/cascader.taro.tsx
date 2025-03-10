@@ -10,68 +10,20 @@ import React, {
 import classNames from 'classnames'
 import { Check, Loading } from '@nutui/icons-react-taro'
 import { ScrollView, View } from '@tarojs/components'
-import Popup, {
-  PopupProps,
-  PopupCloseIconPosition,
-} from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import Tree, { convertListToOptions } from './utils'
 import {
   CascaderFormat,
+  CascaderActions,
   CascaderOption,
-  CascaderOptionKey,
   CascaderPane,
   CascaderValue,
-} from './types'
+  TaroCascaderProps,
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider/index.taro'
-
-export interface CascaderProps
-  extends Pick<
-    PopupProps,
-    | 'className'
-    | 'style'
-    | 'closeIcon'
-    | 'closeable'
-    | 'title'
-    | 'left'
-    | 'closeIconPosition'
-    | 'onClose'
-  > {
-  popup: boolean
-  popupProps: Partial<
-    Omit<
-      PopupProps,
-      | 'closeIcon'
-      | 'closeable'
-      | 'title'
-      | 'left'
-      | 'closeIconPosition'
-      | 'onClose'
-    >
-  >
-  visible: boolean // popup visible
-  activeColor: string
-  activeIcon: string
-  options: CascaderOption[]
-  value?: CascaderValue
-  defaultValue?: CascaderValue
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  closeable: boolean
-  closeIconPosition: PopupCloseIconPosition
-  closeIcon: ReactNode
-  lazy: boolean
-  onLoad: (node: any, resolve: any) => void
-  onChange: (value: CascaderValue, params?: any) => void
-  onPathChange: (value: CascaderValue, params: any) => void
-}
-
-export type CascaderActions = {
-  open: () => void
-  close: () => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -89,10 +41,10 @@ const defaultProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as unknown as CascaderProps
+} as unknown as TaroCascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<CascaderProps>>
+  PropsWithChildren<Partial<TaroCascaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {

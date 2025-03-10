@@ -1,5 +1,5 @@
 import { Utils } from '@/utils/date'
-import { CalendarDay, CalendarMonthInfo } from './types'
+import { CalendarDay, CalendarMonthInfo } from '@/types'
 
 export const splitDate = (date: string) => {
   const split = date.indexOf('-') !== -1 ? '-' : '/'

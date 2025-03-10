@@ -3,7 +3,7 @@ import {
   CascaderConfig,
   CascaderFormat,
   CascaderValue,
-} from './types'
+} from '@/types'
 
 export const formatTree = (
   tree: CascaderOption[],

@@ -1,30 +1,10 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox.taro'
 import Context from './context'
 import { usePropsValue } from '@/hooks/use-props-value'
-import {
-  CheckboxDirection,
-  CheckboxLabelPosition,
-  CheckboxLimit,
-} from '@/packages/checkboxgroup/types'
-import { BasicComponent } from '@/utils/typings'
-
-export interface CheckboxGroupProps extends BasicComponent {
-  disabled?: boolean
-  value?: string[]
-  defaultValue?: string[]
-  list: boolean
-  max: number | undefined
-  min: number | undefined
-  labelPosition: CheckboxLabelPosition
-  direction: CheckboxDirection
-  options: RadioGroupOption[]
-  onChange: (value: string[]) => void
-  onLimit: (type: CheckboxLimit) => void
-}
+import { TaroCheckboxGroupProps } from '@/types'
 
 const defaultProps = {
   max: undefined,
@@ -35,11 +15,11 @@ const defaultProps = {
   onChange: (value: string[]) => {},
   onLimit: (type: 'max' | 'min') => {},
   options: [],
-} as CheckboxGroupProps
+} as TaroCheckboxGroupProps
 
 const classPrefix = 'nut-checkboxgroup'
 export const CheckboxGroup = React.forwardRef(
-  (props: Partial<CheckboxGroupProps>, ref) => {
+  (props: Partial<TaroCheckboxGroupProps>, ref) => {
     const {
       children,
       className,

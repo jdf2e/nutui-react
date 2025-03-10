@@ -10,7 +10,7 @@ import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
 import { web } from '@/utils/platform-taro'
-import { CountDownProps, CountDownTimeProps } from './types'
+import { TaroCountDownProps, CountDownTime } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -24,11 +24,11 @@ const defaultProps = {
   autoStart: true,
   time: 0,
   destroy: false,
-} as CountDownProps
+} as TaroCountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
   unknown,
-  Partial<CountDownProps>
+  Partial<TaroCountDownProps>
 > = (props, ref) => {
   const {
     type,
@@ -136,7 +136,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     return type === 'custom' ? rest : parseFormat({ ...rest })
   }
 
-  const parseFormat = (time: CountDownTimeProps) => {
+  const parseFormat = (time: CountDownTime) => {
     const { d } = time
     let { h, m, s, ms } = time
     let formatCache = format
@@ -212,7 +212,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   // 监听值变更
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
-    onUpdate && onUpdate(tranTime as CountDownTimeProps)
+    onUpdate && onUpdate(tranTime as CountDownTime)
   }, [restTimeStamp])
 
   // 监听暂停
@@ -294,7 +294,7 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   const renderTaroTime = () => {
     const formatCache = formatRemainTime(stateRef.current.restTime, 'custom')
-    const { d, h, m, s, ms } = formatCache as CountDownTimeProps
+    const { d, h, m, s, ms } = formatCache as CountDownTime
     const digit = format.match(/S/g)?.length
     // format可能是DD天HH时mm分SSS秒或者DD天HH时mm分S秒或是DD：HH：mm：ss
 
@@ -334,7 +334,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   )
 }
 
-export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
+export const CountDown = React.forwardRef<unknown, Partial<TaroCountDownProps>>(
   InternalCountDown
 )
 

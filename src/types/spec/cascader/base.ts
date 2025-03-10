@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { PopupCloseIconPosition } from '@/types'
+import { PopupCloseIconPosition } from '../popup/base'
 
 export interface CascaderPane {
   nodes: []
@@ -32,7 +32,10 @@ export interface CascaderOptionKey {
   valueKey: string
   childrenKey: string
 }
-
+export type CascaderActions = {
+  open: () => void
+  close: () => void
+}
 export interface CascaderFormat {
   topId?: string | number | null
   idKey?: string

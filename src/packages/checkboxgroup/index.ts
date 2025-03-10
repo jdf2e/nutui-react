@@ -1,10 +1,4 @@
 import { CheckboxGroup } from './checkboxgroup'
 
-export type {
-  CheckboxLimit,
-  CheckboxGroupOptionType,
-  CheckboxLabelPosition,
-  CheckboxDirection,
-} from './types'
-export type { CheckboxGroupProps } from './checkboxgroup'
+export type { WebCheckboxGroupProps as CheckboxGroupProps } from '@/types'
 export default CheckboxGroup

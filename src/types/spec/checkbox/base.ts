@@ -29,9 +29,9 @@ export interface BaseCheckbox extends BaseProps {
 }
 
 export interface BaseCheckboxGroup extends BaseProps {
-  disabled: boolean
-  value: string[]
-  defaultValue: string[]
+  disabled?: boolean
+  value?: string[]
+  defaultValue?: string[]
   list: boolean
   max: number | undefined
   min: number | undefined

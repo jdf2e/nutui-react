@@ -59,10 +59,14 @@ const transform = (file, api, replace) => {
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
-    path.node.source.value = relativePath(dir, file.path)?.replace(
-      '.taro',
-      '',
-    )
+    console.log(alias, file)
+    if (file.path) {
+      path.node.source.value = relativePath(dir, file.path)?.replace(
+        '.taro',
+        '',
+      )
+    }
+
   }
 
   imports.forEach(reNameAlias)

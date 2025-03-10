@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react'
-import Cascader, {
-  CascaderProps,
+import {
+  TaroCascaderProps,
   CascaderOption,
   CascaderValue,
   CascaderOptionKey,
-} from '@/packages/cascader/index.taro'
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
+import Cascader from '@/packages/cascader/index.taro'
 
-export interface AddressProps extends CascaderProps {
+export interface AddressProps extends TaroCascaderProps {
   visible: boolean // popup visible
   type: string
   options: CascaderOption[]

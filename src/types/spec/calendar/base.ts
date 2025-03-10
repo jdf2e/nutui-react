@@ -40,13 +40,13 @@ export interface BaseCalendar {
   showSubTitle: boolean
   scrollAnimation: boolean
   firstDayOfWeek: number
-  closeIcon: ReactNode
+  closeIcon?: ReactNode
   disableDate: (date: CalendarDay) => boolean
-  renderHeaderButtons: () => string | JSX.Element
-  renderBottomButton: () => string | JSX.Element
-  renderDay: (date: CalendarDay) => string | JSX.Element
-  renderDayTop: (date: CalendarDay) => string | JSX.Element
-  renderDayBottom: (date: CalendarDay) => string | JSX.Element
+  renderHeaderButtons?: () => string | JSX.Element
+  renderBottomButton?: () => string | JSX.Element
+  renderDay?: (date: CalendarDay) => string | JSX.Element
+  renderDayTop?: (date: CalendarDay) => string | JSX.Element
+  renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onClose: () => void
   onConfirm: (param: string) => void
   onDayClick: (data: string) => void
