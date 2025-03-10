@@ -9,12 +9,13 @@ import React, {
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
+import { useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 import { useRefState } from '@/hooks/use-ref-state'
+import useUuid from '@/hooks/use-uuid'
 import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
 
 function preventDefault(event: any, isStopPropagation?: boolean): void {
@@ -40,23 +41,25 @@ export const Swipe = forwardRef<
 >((props, instanceRef) => {
   const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
+  const uid = useUuid()
+  const leftId = `swipe-left-${uid}`
+  const rightId = `swipe-right-${uid}`
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
-  useEffect(() => {
+  useReady(() => {
     const getWidth = async () => {
       if (leftWrapper.current) {
-        const leftRect = await getRectByTaro(leftWrapper.current)
+        const leftRect = await getRectByTaro(leftWrapper.current, leftId)
         leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
       }
       if (rightWrapper.current) {
-        const rightRect = await getRectByTaro(rightWrapper.current)
-        console.log('actionWidth.current.left', rightRect.width)
+        const rightRect = await getRectByTaro(rightWrapper.current, rightId)
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
     setTimeout(() => getWidth())
-  }, [])
+  })
 
   const { children, className, style } = { ...defaultProps, ...props }
 
@@ -90,18 +93,16 @@ export const Swipe = forwardRef<
     }
   }
   const wrapperStyle = {
-    transform: `translate(${state.offset}px, 0)`,
+    transform: `translate(${state.offset}${!harmony() ? 'px' : ''}, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
-
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
-    console.log('ontouchstart')
     if (leftWrapper.current) {
-      const leftRect = await getRectByTaro(leftWrapper.current)
+      const leftRect = await getRectByTaro(leftWrapper.current, leftId)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
-      const rightRect = await getRectByTaro(rightWrapper.current)
+      const rightRect = await getRectByTaro(rightWrapper.current, rightId)
       rightRect &&
         setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
     }
@@ -128,9 +129,7 @@ export const Swipe = forwardRef<
       }
 
       newState.offset = rangeCalculation(
-        (harmony()
-          ? parseFloat(pxTransform(touch.deltaX.current))
-          : touch.deltaX.current) + startOffset.current,
+        touch.deltaX.current + startOffset.current,
         -actionWidth.current.right || 0,
         actionWidth.current.left || 0
       )
@@ -193,16 +192,11 @@ export const Swipe = forwardRef<
   const rightWrapper = useRef(null)
   const renderActionContent = (side: PositionX) => {
     if (props[`${side}Action`]) {
-      console.log('actionWidth xxx', actionWidth.current.left)
       return (
         <View
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}-${side}`}
-          style={{
-            ...(side === 'left'
-              ? { left: Number(`${-actionWidth.current.left}`) }
-              : {}),
-          }}
+          id={side === 'left' ? leftId : rightId}
           onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}

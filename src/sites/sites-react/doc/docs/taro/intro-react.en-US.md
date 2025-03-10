@@ -1,16 +1,15 @@
 # NutUI-React
 
-NutUI-React component library, based on Taro, uses React technology stack to develop applet applications, out of the box, helps R&D to quickly develop user interface, improve development efficiency, and improve development experience.
+The NutUI-React component library is suitable for H5 applications of the React technology stack. It can be used out of the box to help developers quickly develop user interfaces, improve development efficiency, and improve development experience.
 
 ## Features
 
 - 🚀 80+ high-quality components covering mainstream mobile scenarios
-- 💪 Supports a set of code to develop multi-terminal Mini Programs +H5 at the same time
-- 📖 Based on JD APP 10.0 visual specification
+- 📖 Based on JD APP 15.0 visual specification
 - 🍭 Support on-demand reference
 - 📖 Detailed documentation and examples
 - 💪 Supports TypeScript
-- 💪 Support for server-side rendering (test phase)
+- 💪 Support for server-side rendering (Next.js)
 - 🍭 Support custom themes
 - 🌍 Internationalization support
 - 🍭 Unit test coverage exceeds 80% to ensure stability
@@ -18,13 +17,17 @@ NutUI-React component library, based on Taro, uses React technology stack to dev
 
 ## Examples
 
-<img src="https://img13.360buyimg.com/imagetools/jfs/t1/102323/22/33163/27773/632a7855E75c9fa02/8c351778f47d24f5.jpg" width="200" alt="NutUI-React" />
+<img src="https://storage.360buyimg.com/imgtools/cc08cb2760-d70f19c0-0a95-11ee-808d-b1254110adba.png" width="200" alt="NutUI-React" />
 
-## Version
+## Compatibility Environment
 
 | Version | Supported Frameworks | Visual Specifications | Compatibility |
 | --- | --- | --- | --- |
-| @nutui/nutui-react-taro <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | Jingdong [APP 10.0](/next#/resource) | Modern browsers start with Chrome >= 51、iOS >= 10.0、Android >= 6 |
+| @nutui/nutui-react <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | Jingdong APP 15.0 | Modern browsers start with Chrome >= 51、iOS >= 10.0 |
+
+For some older versions of browsers, corresponding polyfills are needed. It is recommended to use @babel/preset-env to address browser compatibility issues. The package provided by NutUI-React has not undergone extensive syntax transformation, so it is necessary to include the NutUI-React package in the compilation phase.
+
+For browsers that do not support CSS variables, it is recommended to use [postcss-var-replace](https://www.npmjs.com/package/postcss-var-replace) to resolve compatibility issues.
 
 ## All Contributors
 

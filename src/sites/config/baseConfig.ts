@@ -1,10 +1,3 @@
-// 抽象配置中心
-
-import homefeatures1 from '../assets/images/img-home-features1.png';
-import homefeatures2 from '../assets/images/img-home-features2.png';
-import homefeatures3 from '../assets/images/img-home-features3.png';
-import homefeatures5 from '../assets/images/img-home-features5.png';
-
 // React 官网配置
 export const SiteReact = {
   repository: {
@@ -50,42 +43,6 @@ export const SiteReact = {
       pathName: '/zh-CN/component/button'
     }
   ],
-  homePage: {
-    gitstar: 'https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui-react&type=star&count=true&size=large',
-    platform: [
-      {
-        title: '京东风格',
-        desc: '遵循京东 App 10.0 设计规范',
-        url: homefeatures1
-      },
-      {
-        title: '前沿技术',
-        desc: 'React Vite 2.x TypeScript',
-        url: homefeatures3
-      },
-      {
-        title: '适配多端',
-        desc: '基于 Taro 轻松开发多端小程序',
-        url: homefeatures5
-      },
-      {
-        title: '组件丰富',
-        desc: '60+ 组件，覆盖多数业务场景',
-        url: homefeatures2
-      }
-    ],
-    // 是否展示taro楼层
-    taroShow: true,
-    bizComponent: [],
-    cases: {
-      show: false
-    },
-    // 学习资源
-    article: {
-      show: true,
-      moreRouter: '#/zh-CN/resource'
-    }
-  },
   language: 'react'
 };
 // React Taro 官网配置
@@ -133,42 +90,6 @@ export const SiteReactTaro = {
       pathName: '/zh-CN/component/button'
     }
   ],
-  homePage: {
-    gitstar: 'https://ghbtns.com/github-btn.html?user=jdf2e&repo=nutui-react&type=star&count=true&size=large',
-    platform: [
-      {
-        title: '京东风格',
-        desc: '遵循京东 App 10.0 设计规范',
-        url: homefeatures1
-      },
-      {
-        title: '前沿技术',
-        desc: 'React Vite 2.x TypeScript',
-        url: homefeatures3
-      },
-      {
-        title: '适配多端',
-        desc: '基于 Taro 轻松开发多端小程序',
-        url: homefeatures5
-      },
-      {
-        title: '组件丰富',
-        desc: '60+ 组件，覆盖多数业务场景',
-        url: homefeatures2
-      }
-    ],
-    // 是否展示taro楼层
-    taroShow: true,
-    bizComponent: [],
-    cases: {
-      show: false
-    },
-    // 学习资源
-    article: {
-      show: true,
-      moreRouter: '#/zh-CN/resource'
-    }
-  },
   language: 'react'
 };
 

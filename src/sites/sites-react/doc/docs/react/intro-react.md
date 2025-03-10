@@ -5,7 +5,7 @@ NutUI-React 组件库，适用于 React 技术栈的 H5 应用，开箱即用，
 ## 特性
 
 - 🚀 80+ 高质量组件，覆盖移动端主流场景
-- 📖 基于京东APP 10.0 视觉规范
+- 📖 基于京东APP 15.0 视觉规范
 - 🍭 支持按需引用
 - 📖 详尽的文档和示例
 - 💪 支持 TypeScript
@@ -23,7 +23,7 @@ NutUI-React 组件库，适用于 React 技术栈的 H5 应用，开箱即用，
 
 | 版本 | 支持的框架 | 视觉规范 | 兼容 |
 | --- | --- | --- | --- |
-| @nutui/nutui-react <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | 京东 [APP 10.0](#/resource) 规范 | 现代浏览器以 Chrome >= 51、iOS >= 10.0 |
+| @nutui/nutui-react <img src="https://img.shields.io/npm/v/@nutui/nutui-react" /> | React 17\18 | 京东 APP 15.0 规范 | 现代浏览器以 Chrome >= 51、iOS >= 10.0 |
 
 对于一些低版本的浏览器，需要相应的 Ployfill，建议使用 @babel/preset-environment 来解决浏览器兼容问题。NutUI-React 提供的包并未进行过多的语法转换，所以需要将 NutUI-React 包含到编译阶段。
 

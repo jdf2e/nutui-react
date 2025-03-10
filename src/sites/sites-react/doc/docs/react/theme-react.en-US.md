@@ -5,7 +5,7 @@
 NutUI-React supports flexible style customization to meet multiple visual business and brand needs, including but not limited to support for global master tone and component-specific visual customization.
 <br />
 <br />
-In NutUI-React version 2.0, the Sass theme customization function of 1.x can still be used. We added CSS variables to the original theme customization function, so that the new theme customization function can be used without introducing additional SCSS style files.
+In NutUI-React, the Sass theme customization function can still be used. We added CSS variables to the original theme customization function, so that the new theme customization function can be used without introducing additional SCSS style files.
 
 ## Method 1: Use CSS Variables to configure topics
 
