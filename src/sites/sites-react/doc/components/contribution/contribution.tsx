@@ -17,40 +17,65 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
   const { issues, logs } = data
   return (
     <>
-      <h2>Contribution Records</h2>
-      <h3>Issues</h3>
+      <h3>Bugs & Tips</h3>
+      {issues[name].length > 0 && <h4>Issues</h4>}
       <ul>
         {issues[name].map((item) => (
-          <li key={item.number}>
-            {item.title} (<a href={item.url}>#{item.number}</a>)
+          <li key={item.number} style={{ cursor: 'pointer' }}>
+            <a
+              href={item.url}
+              target='_blank'
+              style={{
+                display: 'block',
+                textDecoration: 'none',
+                color: '#576b95',
+                fontSize: 14
+              }}
+            >
+              {item.title}
+            </a>
           </li>
         ))}
       </ul>
-      <blockquote>
-        <p>
-          View more resolved{' '}
-          <a href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}>
-            issues
-          </a>
-        </p>
-      </blockquote>
 
-      <h3>Component Logs</h3>
+      {logs[name].length > 0 && <h4>Component Logs</h4>}
       <ul>
         {logs[name].map((item) => (
           <li key={item.version}>
-            <div style={{ display: 'inline' }} dangerouslySetInnerHTML={{ __html: item.content.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2">$1</a>') }} /> <code style={{ marginLeft: '4px' }}>{item.version}</code>
+            <a
+              href={item.content.match(/\(\[(#\d+)\]\(([^)]+)\)\)/)?.[2]}
+              style={{
+                display: 'inline',
+                textDecoration: 'none',
+                color: '#576b95',
+                fontSize: 14
+              }}
+            >
+              {item.content
+                .replace(/@[^\s]+$/, '')
+                .replace(/\(\[(#\d+)\]\([^)]+\)\)/, '$1')}
+            </a>
+            <code style={{fontSize: 14, color: '#666'}}>{item.version}</code>
           </li>
         ))}
       </ul>
-      <blockquote>
-        <p>
-          View more component{' '}
-          <a href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}>
-            releases
-          </a>
-        </p>
-      </blockquote>
+      <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
+        <span>View more resolved </span>
+        <a
+          href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
+          style={{ color: '#1677ff', textDecoration: 'none' }}
+        >
+          issues
+        </a>
+        <span> and </span>
+        <a
+          href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}
+          style={{ color: '#1677ff', textDecoration: 'none' }}
+        >
+          releases
+        </a>
+        <span> for {name}</span>
+      </div>
     </>
   )
 }
