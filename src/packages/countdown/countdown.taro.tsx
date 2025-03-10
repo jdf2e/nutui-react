@@ -281,7 +281,9 @@ const InternalCountDown: ForwardRefRenderFunction<
                 [`${classPrefix}-number-text`]: type === 'text',
               })}
             >
-              {unit && unit !== 'DD' ? padZero(time) : time}
+              {(unit && unit !== 'DD') || (!unit && formatUnit === 'ss')
+                ? padZero(time)
+                : time}
             </View>
             {unit ? (
               <View className={`${classPrefix}-unit`}>{getUnit(unit)}</View>
