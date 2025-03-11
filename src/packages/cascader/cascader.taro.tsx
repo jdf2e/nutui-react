@@ -1,7 +1,6 @@
 import React, {
   forwardRef,
   isValidElement,
-  ReactNode,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -12,17 +11,12 @@ import { Check, Loading } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Tabs from '@/packages/tabs/index.taro'
-import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import {
   normalizeListOptions,
   normalizeOptions,
 } from '@/packages/cascader/utils'
-import {
-  CascaderOption,
-  CascaderActions,
-  CascaderValue,
-  CascaderOptionKey,
-} from './types'
+import { CascaderOption, CascaderActions, TaroCascaderProps } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -30,51 +24,7 @@ import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/hooks/use-ref-state'
 import { useConfig } from '@/packages/configprovider'
 
-export type CascaderPopupProps = Pick<
-  PopupProps,
-  | 'className'
-  | 'style'
-  | 'closeIcon'
-  | 'closeable'
-  | 'title'
-  | 'left'
-  | 'closeIconPosition'
-  | 'onClose'
->
-export type CascaderSupportPopupProps = Partial<
-  Omit<
-    PopupProps,
-    | 'closeIcon'
-    | 'closeable'
-    | 'title'
-    | 'left'
-    | 'closeIconPosition'
-    | 'onClose'
-  >
->
-
-export interface CascaderProps extends CascaderPopupProps {
-  visible: boolean
-  value: CascaderValue
-  activeColor: string
-  activeIcon: ReactNode
-  defaultValue: CascaderValue
-  options: CascaderOption[]
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  popup: boolean
-  popupProps: CascaderSupportPopupProps
-  lazy: boolean
-  onLoad: (
-    node: CascaderOption,
-    levelIndex: number
-  ) => Promise<CascaderOption[]>
-  onChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
-  onPathChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
-  onTabsChange: (index: number) => void
-}
-
-const defaultProps: CascaderProps = {
+const defaultProps: TaroCascaderProps = {
   ...ComponentDefaults,
   activeColor: '',
   activeIcon: 'checklist',
@@ -89,9 +39,9 @@ const defaultProps: CascaderProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as unknown as CascaderProps
+} as unknown as TaroCascaderProps
 
-export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
+export const Cascader = forwardRef((props: Partial<TaroCascaderProps>, ref) => {
   const classPrefix = 'nut-cascader'
   const classPane = `${classPrefix}-pane`
   const {
@@ -124,7 +74,7 @@ export const Cascader = forwardRef((props: Partial<CascaderProps>, ref) => {
     finalValue: [],
     onChange: (value) => {
       props.onChange?.(value, pathNodes.current)
-      // props.onPathChange?.(value, pathNodes.current)
+      props.onPathChange?.(value, pathNodes.current)
     },
   })
 
