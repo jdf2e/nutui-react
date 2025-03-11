@@ -2,32 +2,9 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Minus, Plus } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { bound } from '@/utils/bound'
-
-export interface InputNumberProps extends BasicComponent {
-  value: number | string
-  defaultValue: number | string
-  allowEmpty: boolean
-  min: number | string
-  max: number | string
-  disabled: boolean
-  readOnly: boolean
-  step: number
-  digits: number
-  select: boolean
-  formatter?: (value?: string | number) => string
-  onPlus: (e: React.MouseEvent) => void
-  onMinus: (e: React.MouseEvent) => void
-  onOverlimit: (e: React.MouseEvent | ChangeEvent<HTMLInputElement>) => void
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
-  onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
-  beforeChange: (value: number | string) => boolean | Promise<boolean>
-  onChange: (
-    param: string | number,
-    e: React.MouseEvent | ChangeEvent<HTMLInputElement>
-  ) => void
-}
+import { WebInputNumberProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -40,11 +17,11 @@ const defaultProps = {
   digits: 0,
   select: true,
   beforeChange: (value) => Promise.resolve(true),
-} as InputNumberProps
+} as WebInputNumberProps
 
 const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
-  Partial<InputNumberProps> &
+  Partial<WebInputNumberProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
 > = (props) => {
   const {

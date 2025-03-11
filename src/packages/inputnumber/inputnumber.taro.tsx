@@ -1,41 +1,11 @@
-import React, {
-  ChangeEvent,
-  FunctionComponent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { InputProps, ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { bound } from '@/utils/bound'
-
-export interface InputNumberProps extends BasicComponent {
-  value: number | string
-  defaultValue: number | string
-  allowEmpty: boolean
-  min: number | string
-  max: number | string
-  type?: Extract<InputProps['type'], 'number' | 'digit'>
-  disabled: boolean
-  readOnly: boolean
-  step: number
-  digits: number
-  select: boolean
-  formatter?: (value?: string | number) => string
-  onPlus: (e: ITouchEvent) => void
-  onMinus: (e: ITouchEvent) => void
-  onOverlimit: (e: ITouchEvent | ChangeEvent<HTMLInputElement>) => void
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
-  onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
-  beforeChange: (value: number | string) => boolean | Promise<boolean>
-  onChange: (
-    param: string | number,
-    e: ITouchEvent | React.MouseEvent | ChangeEvent<HTMLInputElement>
-  ) => void
-}
+import { TaroInputNumberProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -48,11 +18,11 @@ const defaultProps = {
   digits: 0,
   select: true,
   beforeChange: (value) => Promise.resolve(true),
-} as InputNumberProps
+} as TaroInputNumberProps
 
 const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
-  Partial<InputNumberProps> &
+  Partial<TaroInputNumberProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
 > = (props) => {
   const {
@@ -214,6 +184,7 @@ export const InputNumber: FunctionComponent<
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
+          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
             {
@@ -239,6 +210,7 @@ export const InputNumber: FunctionComponent<
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
+          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
             {
