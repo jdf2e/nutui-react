@@ -59,10 +59,14 @@ const transform = (file, api, replace) => {
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
-    path.node.source.value = relativePath(dir, file.path)?.replace(
-      '.taro',
-      '',
-    )
+    console.log(alias, file)
+    if (file.path) {
+      path.node.source.value = relativePath(dir, file.path)?.replace(
+        '.taro',
+        '',
+      )
+    }
+
   }
 
   imports.forEach(reNameAlias)
@@ -82,6 +86,7 @@ async function buildES(p) {
       'src/packages/**/utils.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/hooks/**/*.{ts,tsx}',
+      'src/types/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
@@ -108,6 +113,7 @@ async function buildES(p) {
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
+          '@/types/*': ['src/types/*'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,
@@ -172,6 +178,7 @@ async function buildDeclaration() {
     `${dist}/types/src/locales/*.d.ts`,
     `${dist}/types/src/utils/*.d.ts`,
     `${dist}/types/src/hooks/*.d.ts`,
+    `${dist}/types/src/types/**/*.d.ts`,
   ])
 
   for (const file of files) {

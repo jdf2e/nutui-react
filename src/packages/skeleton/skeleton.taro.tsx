@@ -2,20 +2,9 @@ import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import pxTransform from '@/utils/px-transform'
-
-type avatarShape = 'round' | 'square'
-
-export interface SkeletonProps extends BasicComponent {
-  animated: boolean
-  rows: number
-  title: boolean
-  avatar: boolean
-  avatarSize: string
-  visible: boolean
-  avatarShape: avatarShape
-}
+import { TaroSkeletonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -26,8 +15,10 @@ const defaultProps = {
   avatarSize: '50px',
   visible: false,
   avatarShape: 'round',
-} as SkeletonProps
-export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
+} as TaroSkeletonProps
+export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
+  props
+) => {
   const {
     className,
     animated,

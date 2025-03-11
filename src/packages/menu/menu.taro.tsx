@@ -8,26 +8,9 @@ import React, {
 import classNames from 'classnames'
 import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
-import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type MenuTriggerType = 'NORMAL' | 'REF'
-export type MenuCallBackFunction = (
-  index: number,
-  from?: MenuTriggerType
-) => void
-
-export interface MenuProps extends BasicComponent {
-  activeColor: string
-  overlay: boolean
-  closeOnOverlayClick: boolean
-  scrollFixed: boolean | string | number
-  lockScroll: boolean
-  icon: React.ReactNode
-  children: React.ReactNode
-  onOpen: MenuCallBackFunction
-  onClose: MenuCallBackFunction
-}
+import { MenuItem } from '@/packages/menuitem/menuitem.taro'
+import { ComponentDefaults } from '@/utils/typings'
+import { MenuCallBack, MenuOptionItem, TaroMenuProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -39,8 +22,8 @@ const defaultProps = {
   icon: null,
   onOpen: (index: number, from: 'NORMAL' | 'REF') => {},
   onClose: (index: number, from: 'NORMAL' | 'REF') => {},
-} as MenuProps
-export const Menu: FunctionComponent<Partial<MenuProps>> & {
+} as TaroMenuProps
+export const Menu: FunctionComponent<Partial<TaroMenuProps>> & {
   Item: typeof MenuItem
 } = (props) => {
   const {
@@ -87,7 +70,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     return () => window.removeEventListener('scroll', onScroll)
   }, [scrollFixed, onScroll])
 
-  const toggleMenuItem: MenuCallBackFunction = (index, from = 'NORMAL') => {
+  const toggleMenuItem: MenuCallBack = (index, from = 'NORMAL') => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
       onOpen && onOpen(index, from)
@@ -99,7 +82,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     )
     setShowMenuItem([...temp])
   }
-  const hideMenuItem: MenuCallBackFunction = (index, from = 'NORMAL') => {
+  const hideMenuItem: MenuCallBack = (index, from = 'NORMAL') => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
     onClose && onClose(index, from)
@@ -140,7 +123,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
           direction,
         } = child.props
         const selected = options?.filter(
-          (option: OptionItem) =>
+          (option: MenuOptionItem) =>
             option.value === (value !== undefined ? value : defaultValue)
         )
         const finallyTitle = () => {

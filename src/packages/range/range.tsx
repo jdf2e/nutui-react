@@ -1,39 +1,19 @@
+import type { TouchEvent } from 'react'
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
-  ReactNode,
+  useState,
 } from 'react'
-import type { TouchEvent } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '@/hooks/use-touch'
 import { getRect } from '@/hooks/use-client-rect'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { RangeMark, RangeValue } from './types'
 import { useRtl } from '../configprovider'
-
-export interface RangeProps extends BasicComponent {
-  value: RangeValue
-  defaultValue: RangeValue
-  range: boolean
-  disabled: boolean
-  min: number
-  max: number
-  step: number
-  minDescription: ReactNode
-  maxDescription: ReactNode
-  button: ReactNode
-  vertical: boolean
-  marks: Record<string, ReactNode> | RangeMark[]
-  currentDescription: ((value: RangeValue) => ReactNode) | null
-  onChange: (value: RangeValue) => void
-  onStart: () => void
-  onEnd: (value: RangeValue) => void
-}
+import { WebRangeProps, RangeValue } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -43,7 +23,7 @@ const defaultProps = {
   step: 1,
   vertical: false,
   marks: {},
-} as RangeProps
+} as WebRangeProps
 
 const classPrefix = 'nut-range'
 const verticalClassPrefix = `${classPrefix}-vertical`
@@ -60,7 +40,7 @@ const handleOverlap = (value: number[]) => {
 }
 
 export const Range: FunctionComponent<
-  Partial<RangeProps> &
+  Partial<WebRangeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onClick' | 'onChange' | 'defaultValue'

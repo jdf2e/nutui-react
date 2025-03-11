@@ -1,22 +1,9 @@
-import React, { FunctionComponent, useMemo, ReactNode } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface PaginationProps extends BasicComponent {
-  defaultValue: number
-  value: number
-  mode: 'multi' | 'simple' | 'lite'
-  prev: ReactNode
-  next: ReactNode
-  total: number
-  pageSize: number
-  itemSize: number
-  ellipse: boolean
-  itemRender: (page: any, index: number) => ReactNode
-  onChange: (currPage: number) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroPaginationProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -28,9 +15,9 @@ const defaultProps = {
   pageSize: 10,
   itemSize: 5,
   ellipse: false,
-} as PaginationProps
+} as TaroPaginationProps
 export const Pagination: FunctionComponent<
-  Partial<PaginationProps> &
+  Partial<TaroPaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()

@@ -3,21 +3,11 @@ import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/hooks/use-uuid'
 import { harmony, web } from '@/utils/platform-taro'
-
-export interface ProgressProps extends BasicComponent {
-  percent: number
-  background: string
-  color: string
-  strokeWidth: string
-  showText: boolean
-  animated: boolean
-  lazy: boolean
-  delay: number
-}
+import { TaroProgressProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -26,10 +16,10 @@ const defaultProps = {
   animated: false,
   lazy: false,
   delay: 0,
-} as ProgressProps
+} as TaroProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<ProgressProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {

@@ -1,77 +1,29 @@
 import React, {
   ForwardRefRenderFunction,
-  PropsWithChildren,
   isValidElement,
-  useState,
-  useEffect,
+  PropsWithChildren,
   ReactNode,
+  useEffect,
   useImperativeHandle,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import { Loading, Check } from '@nutui/icons-react-taro'
+import { Check, Loading } from '@nutui/icons-react-taro'
 import { ScrollView, View } from '@tarojs/components'
-import Popup, {
-  PopupProps,
-  CloseIconPosition,
-} from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import Tree, { convertListToOptions } from './utils'
 import {
-  CascaderPane,
-  CascaderOption,
-  CascaderValue,
-  CascaderOptionKey,
   CascaderFormat,
-} from './types'
+  CascaderActions,
+  CascaderOption,
+  CascaderPane,
+  CascaderValue,
+  TaroCascaderProps,
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider/index.taro'
-
-export interface CascaderProps
-  extends Pick<
-    PopupProps,
-    | 'className'
-    | 'style'
-    | 'closeIcon'
-    | 'closeable'
-    | 'title'
-    | 'left'
-    | 'closeIconPosition'
-    | 'onClose'
-  > {
-  popup: boolean
-  popupProps: Partial<
-    Omit<
-      PopupProps,
-      | 'closeIcon'
-      | 'closeable'
-      | 'title'
-      | 'left'
-      | 'closeIconPosition'
-      | 'onClose'
-    >
-  >
-  visible: boolean // popup visible
-  activeColor: string
-  activeIcon: string
-  options: CascaderOption[]
-  value?: CascaderValue
-  defaultValue?: CascaderValue
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  closeable: boolean
-  closeIconPosition: CloseIconPosition
-  closeIcon: ReactNode
-  lazy: boolean
-  onLoad: (node: any, resolve: any) => void
-  onChange: (value: CascaderValue, params?: any) => void
-  onPathChange: (value: CascaderValue, params: any) => void
-}
-
-export type CascaderActions = {
-  open: () => void
-  close: () => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -89,10 +41,10 @@ const defaultProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as unknown as CascaderProps
+} as unknown as TaroCascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<CascaderProps>>
+  PropsWithChildren<Partial<TaroCascaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {

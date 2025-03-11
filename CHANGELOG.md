@@ -1,3 +1,22 @@
+# v3.0.2
+
+`2025-03-07`
+
+- feat(form): 同步 2.x 的功能 (#2976)
+- feat(swipe): harmony (#3039)
+- fix: sync v15 sign (#3067)
+- fix: 解决按需引入picker和datepicker没有样式问题 (#3064)
+- fix(signature): 解决taro h5不能绘制问题 (#3060)
+- fix(input): style 属性设置为 CSSProperties 类型的值 (#3059)
+- fix: taro default import error (#3057)
+- fix(docs): 快速上手文件 (#3058)
+- docs(site): 删除无用的代码，更新视觉版本号 (#3063)
+- docs: update common docs
+- docs: fix some mistakes in the documentation (#3056)
+- chore: add jdtaro. True means that will repeat (#3065)
+- chore: update site style (#3055)
+- refactor: migrate site to nutui-react (#2955)
+
 # v3.0.1
 
 `2025-03-05`

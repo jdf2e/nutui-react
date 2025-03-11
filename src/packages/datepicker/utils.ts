@@ -1,10 +1,6 @@
 import { padZero } from '@/utils/pad-zero'
 import { isDate } from '@/utils/is-date'
-import {
-  PickerOption,
-  PickerOptions,
-  PickerValue,
-} from '@/packages/pickerview/types'
+import { PickerOption, PickerOptions, PickerValue } from '@/types'
 
 /**
  * 获取指定年份和月份的最后一天

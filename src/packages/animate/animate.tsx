@@ -1,26 +1,19 @@
 import React, { useState, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { AnimateType, AnimateAction } from './types'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebAnimateProps } from '@/types'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface AnimateProps extends BasicComponent {
-  type: AnimateType
-  action: AnimateAction
-  loop: boolean
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   type: 'shake',
   action: 'initial',
   loop: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
-} as AnimateProps
+} as WebAnimateProps
 
 const classPrefix = 'nut-animate'
 export const Animate: FunctionComponent<
-  Partial<AnimateProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebAnimateProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { className, type, action, loop, onClick, children, ...rest } = {
     ...defaultProps,

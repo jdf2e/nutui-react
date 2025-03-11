@@ -1,16 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
-
-export interface SwiperItemProps extends BasicComponent {
-  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-}
+import { WebSwiperItemProps } from '@/types'
 
 const defaultProps = {
   onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => undefined,
-} as SwiperItemProps
+} as WebSwiperItemProps
 
-export const SwiperItem = (props: SwiperItemProps) => {
+export const SwiperItem = (props: WebSwiperItemProps) => {
   const classPrefix = 'nut-swiper-item'
   const { className, style, children } = { ...defaultProps, ...props }
   const classes = classNames(classPrefix, className)

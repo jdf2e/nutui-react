@@ -1,10 +1,11 @@
-import { Checkbox, CheckboxProps } from './checkbox'
+import { Checkbox } from './checkbox'
 import { CheckboxGroup } from '../checkboxgroup/checkboxgroup'
+import { WebCheckboxProps } from '@/types'
 
-export type { CheckboxProps, CheckboxShape } from './checkbox'
+export type { WebCheckboxProps as CheckboxProps } from '@/types'
 
 type CompoundedComponent = React.FC<
-  Partial<CheckboxProps> &
+  Partial<WebCheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & {
   Group: typeof CheckboxGroup

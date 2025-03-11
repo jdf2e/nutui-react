@@ -23,7 +23,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
         preload="auto"
@@ -55,7 +55,7 @@ const App = () => {
         className="custom-voice-audio"
         id="custom-voice-audio"
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="none"
         preload="auto"
         onCanPlay={(e: any) => {
@@ -89,7 +89,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
         muted={false}
@@ -123,7 +123,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
         muted={false}
@@ -148,7 +148,7 @@ export default App
 | --- | --- | --- | --- |
 | className | 类名 | `string` | `-` |
 | style | css样式 | `CSSProperties` | `{}` |
-| url | 语音资源链接 | `string` | `-` |
+| src | 语音资源链接 | `string` | `-` |
 | muted | 是否静音 | `boolean` | `false` |
 | autoPlay | 是否自动播放 | `boolean` | `false` |
 | loop | 是否循环播放 | `boolean` | `false` |

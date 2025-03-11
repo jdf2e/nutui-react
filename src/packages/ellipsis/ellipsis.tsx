@@ -1,25 +1,13 @@
 import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useIsomorphicLayoutEffect } from '@/hooks/use-isomprphic-layout-effect'
 import { useRtl } from '../configprovider'
+import { WebEllipsisProps } from '@/types'
 
-export type EllipsisDirection = 'start' | 'end' | 'middle'
 type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
-}
-
-export interface EllipsisProps extends BasicComponent {
-  content: string
-  direction: EllipsisDirection
-  rows: number | string
-  expandText: string
-  collapseText: string
-  symbol: string
-  lineHeight: number | string
-  onClick: () => void
-  onChange: (type: string) => void
 }
 
 const defaultProps = {
@@ -31,11 +19,11 @@ const defaultProps = {
   collapseText: '',
   symbol: '...',
   lineHeight: '20',
-} as EllipsisProps
+} as WebEllipsisProps
 
 const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
-  Partial<EllipsisProps> &
+  Partial<WebEllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
   const {

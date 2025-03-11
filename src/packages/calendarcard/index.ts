@@ -5,5 +5,6 @@ export type {
   CalendarCardMonth,
   CalendarCardValue,
   CalendarCardRef,
-} from './types'
+  WebCalendarCardProps as CalendarCardProp,
+} from '@/types'
 export default CalendarCard

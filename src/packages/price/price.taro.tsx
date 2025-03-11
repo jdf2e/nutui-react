@@ -3,7 +3,7 @@ import { Text, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { PriceProps } from './types'
+import { TaroPriceProps } from '@/types'
 import { harmony } from '@/utils/platform-taro'
 
 const defaultProps = {
@@ -16,8 +16,8 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
-} as PriceProps
-export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
+} as TaroPriceProps
+export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const {
     color,
     price,

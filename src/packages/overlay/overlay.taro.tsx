@@ -1,12 +1,12 @@
-import React, { useState, FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
-import { OverlayProps } from './types.taro'
+import { TaroOverlayProps } from '@/types'
 
-export const defaultOverlayProps: OverlayProps = {
+export const defaultOverlayProps: TaroOverlayProps = {
   ...ComponentDefaults,
   zIndex: 1000,
   duration: 300,
@@ -18,7 +18,8 @@ export const defaultOverlayProps: OverlayProps = {
   afterClose: () => {},
 }
 export const Overlay: FunctionComponent<
-  Partial<OverlayProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<TaroOverlayProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,

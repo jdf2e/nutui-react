@@ -1,10 +1,4 @@
 import { CheckboxGroup } from './checkboxgroup.taro'
 
-export type {
-  CheckboxLimit,
-  CheckboxGroupOptionType,
-  CheckboxLabelPosition,
-  CheckboxDirection,
-} from './types'
-export type { CheckboxGroupProps } from './checkboxgroup.taro'
+export type { TaroCheckboxGroupProps as CheckboxGroupProps } from '@/types'
 export default CheckboxGroup

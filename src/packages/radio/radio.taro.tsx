@@ -7,21 +7,9 @@ import {
 import classNames, { Mapping } from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { RadioPosition, RadioShape } from '@/packages/radio/types'
-
-export interface RadioProps extends BasicComponent {
-  disabled: boolean
-  checked: boolean
-  defaultChecked: boolean
-  shape: RadioShape
-  labelPosition: RadioPosition
-  icon: React.ReactNode
-  activeIcon: React.ReactNode
-  value: string | number
-  onChange: (checked: boolean) => void
-}
+import { TaroRadioProps, RadioShape } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -32,9 +20,10 @@ const defaultProps = {
   icon: null,
   activeIcon: null,
   onChange: (checked: boolean) => {},
-} as RadioProps
+} as TaroRadioProps
 export const Radio: FC<
-  Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<TaroRadioProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const classPrefix = 'nut-radio'
   const {

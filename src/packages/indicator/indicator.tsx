@@ -1,16 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-
-export type IndicatorType = 'anchor' | 'slide'
-export type IndicatorColor = 'primary' | 'white'
-
-export interface IndicatorProps {
-  total: number
-  current: number
-  direction: string
-  color: IndicatorColor
-  type: IndicatorType
-}
+import { IndicatorType, WebIndicatorProps } from '@/types'
 
 const defaultProps = {
   total: 2,
@@ -18,13 +8,13 @@ const defaultProps = {
   direction: 'horizontal',
   color: 'primary',
   type: 'anchor',
-} as IndicatorProps
+} as WebIndicatorProps
 
 const classPrefix = `nut-indicator`
 
-export const Indicator: FunctionComponent<
-  Partial<IndicatorProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
+  props
+) => {
   const {
     color,
     type,
@@ -40,7 +30,7 @@ export const Indicator: FunctionComponent<
   }
   const classes = classNames({
     [`${classPrefix}-vertical`]: direction === 'vertical',
-    [`${classPrefix}-white`]: color === 'white',
+    [`${classPrefix}-white`]: color === 'default',
     [`${classPrefix}-track`]: type === 'slide',
   })
 

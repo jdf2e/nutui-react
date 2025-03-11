@@ -12,9 +12,9 @@ import { Close } from '@nutui/icons-react'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
-import { PopupProps, Teleport } from './types'
+import { WebPopupProps } from '@/types'
 
-const defaultProps: PopupProps = {
+const defaultProps: WebPopupProps = {
   ...defaultOverlayProps,
   position: 'center',
   transition: '',
@@ -37,7 +37,7 @@ const defaultProps: PopupProps = {
 const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<WebPopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -229,11 +229,11 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
 
-  const resolveContainer = (getContainer: Teleport | undefined) =>
+  const resolveContainer = (getContainer: any) =>
     (typeof getContainer === 'function' ? getContainer() : getContainer) ||
     document.body
 
-  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
+  const renderToContainer = (getContainer: any, node: ReactElement) => {
     if (getContainer) {
       const container = resolveContainer(getContainer)
       return createPortal(node, container) as ReactPortal
@@ -241,7 +241,7 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  return <>{renderToContainer(portal as Teleport, renderNode())}</>
+  return <>{renderToContainer(portal as any, renderNode())}</>
 }
 
 Popup.displayName = 'NutPopup'

@@ -1,4 +1,8 @@
 import { CountDown } from './countdown.taro'
 
-export type { CountDownProps, CountDownType, CountDownTimeProps } from './types'
+export type {
+  TaroCountDownProps as CountDownProps,
+  CountDownType,
+  CountDownTime,
+} from '@/types'
 export default CountDown

@@ -1,35 +1,13 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import { useRtl } from '../configprovider'
-
-export type TabsTitle = {
-  title: string
-  disabled: boolean
-  active?: boolean
-  value: string | number
-}
-
-export interface TabsProps extends BasicComponent {
-  tabStyle: React.CSSProperties
-  value: string | number
-  defaultValue: string | number
-  activeColor: string
-  direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
-  duration: number | string
-  align: 'left' | 'right'
-  title: () => JSX.Element[]
-  onChange: (index: string | number) => void
-  onClick: (index: string | number) => void
-  autoHeight: boolean
-  children?: React.ReactNode
-}
+import { TabsTitle, WebTabsProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -39,11 +17,11 @@ const defaultProps = {
   activeType: 'line',
   duration: 300,
   autoHeight: false,
-} as TabsProps
+} as WebTabsProps
 
 const classPrefix = 'nut-tabs'
 
-export const Tabs: FunctionComponent<Partial<TabsProps>> & {
+export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
   const rtl = useRtl()

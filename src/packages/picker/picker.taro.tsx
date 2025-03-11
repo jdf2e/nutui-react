@@ -1,18 +1,14 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   ForwardRefRenderFunction,
+  useEffect,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
-import {
-  PickerOptions,
-  PickerValue,
-  PickerOnChangeCallbackParameter,
-} from '@/packages/pickerview/types'
+
 import PickerView from '@/packages/pickerview/index.taro'
 import Popup from '@/packages/popup/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
@@ -20,8 +16,14 @@ import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
-import { PickerActions, PickerRef } from './types'
-import { PickerProps } from './types.taro'
+import {
+  PickerActions,
+  PickerOnChangeCallbackParameter,
+  PickerOptions,
+  PickerRef,
+  PickerValue,
+  TaroPickerProps,
+} from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -30,10 +32,10 @@ const defaultProps = {
   value: undefined,
   defaultValue: [],
   closeOnOverlayClick: true,
-} as unknown as PickerProps
+} as unknown as TaroPickerProps
 const InternalPicker: ForwardRefRenderFunction<
   PickerRef,
-  Partial<PickerProps>
+  Partial<TaroPickerProps>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -205,5 +207,7 @@ const InternalPicker: ForwardRefRenderFunction<
   )
 }
 
-const Picker = React.forwardRef<PickerRef, Partial<PickerProps>>(InternalPicker)
+const Picker = React.forwardRef<PickerRef, Partial<TaroPickerProps>>(
+  InternalPicker
+)
 export default Picker

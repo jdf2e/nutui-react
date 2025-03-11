@@ -1,19 +1,10 @@
-import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebRowProps } from '@/types'
 
-export type RowEventType = 'row' | 'col'
-
-export interface RowProps extends BasicComponent {
-  type: string
-  justify: string
-  align: string
-  wrap: string
-  gutter: string | number
-  onClick: (e: MouseEvent<HTMLDivElement>, type: RowEventType) => void
-}
 const classPrefix = 'nut-row'
 
 const defaultProps = {
@@ -23,9 +14,9 @@ const defaultProps = {
   align: 'flex-start',
   wrap: 'nowrap',
   gutter: '0',
-} as RowProps
+} as WebRowProps
 export const Row: FunctionComponent<
-  Partial<RowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<WebRowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     className,

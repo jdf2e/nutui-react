@@ -1,4 +1,4 @@
 import { Pagination } from './pagination'
 
-export type { PaginationProps } from './pagination'
+export type { WebPaginationProps as PaginationProps } from '@/types'
 export default Pagination

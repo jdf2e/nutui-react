@@ -1,4 +1,4 @@
 import Picker from './picker'
 
-export type { PickerProps } from './types'
+export type { WebPickerProps as PickerProps } from '@/types'
 export default Picker

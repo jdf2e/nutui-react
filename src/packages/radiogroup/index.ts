@@ -2,8 +2,6 @@ import { RadioGroup } from './radiogroup'
 
 export type {
   RadioGroupOption,
-  RadioGroupPosition,
-  RadioGroupDirection,
-  RadioGroupShape,
-} from './types'
+  WebRadioGroupProps as RadioGroupProps,
+} from '@/types'
 export default RadioGroup

@@ -1,33 +1,15 @@
 import React, {
   FunctionComponent,
-  ReactNode,
   useContext,
   useEffect,
   useState,
 } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
-
-export type CheckboxShape = 'button' | 'round'
-
-export interface CheckboxProps extends BasicComponent {
-  checked: boolean
-  disabled: boolean
-  defaultChecked: boolean
-  shape: CheckboxShape
-  labelPosition: CheckboxLabelPosition
-  icon: ReactNode
-  activeIcon: ReactNode
-  indeterminateIcon: ReactNode
-  value: string | number
-  indeterminate: boolean
-  label: ReactNode
-  onChange: (value: boolean) => void
-}
+import { WebCheckboxProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -38,11 +20,11 @@ const defaultProps = {
   activeIcon: null,
   indeterminateIcon: null,
   onChange: (value) => {},
-} as CheckboxProps
+} as WebCheckboxProps
 
 const classPrefix = 'nut-checkbox'
 export const Checkbox: FunctionComponent<
-  Partial<CheckboxProps> &
+  Partial<WebCheckboxProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { children } = {

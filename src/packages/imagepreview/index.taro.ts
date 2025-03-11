@@ -1,7 +1,7 @@
 import { ImagePreview } from './imagepreview.taro'
 
 export type {
-  ImagePreviewProps,
+  TaroImagePreviewProps as ImagePreviewProps,
   ImagePreviewCloseIconPosition,
-} from './imagepreview.taro'
+} from '@/types'
 export default ImagePreview

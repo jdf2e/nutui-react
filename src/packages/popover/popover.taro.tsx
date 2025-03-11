@@ -9,30 +9,13 @@ import classNames from 'classnames'
 import Taro, { createSelectorQuery } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
-import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/hooks/use-client-rect'
-import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import { TaroPopoverProps, PopoverList } from '@/types'
 
-export interface PopoverProps extends PopupProps {
-  list: PopoverList[]
-  theme: PopoverTheme
-  location: PopoverLocation
-  visible: boolean
-  offset: string[] | number[]
-  arrowOffset: number
-  targetId: string
-  showArrow: boolean
-  closeOnOutsideClick: boolean
-  closeOnActionClick: boolean
-  children?: React.ReactNode
-  onClick: () => void
-  onOpen: () => void
-  onClose: () => void
-  onSelect: (item: PopoverList, index: number) => void
-}
 export interface RootPosition {
   width: number
   height: number
@@ -40,6 +23,7 @@ export interface RootPosition {
   top: number
   right: number
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
@@ -61,7 +45,8 @@ const defaultProps = {
 
 const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
-  Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
+  Partial<TaroPopoverProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
   const rtl = useRtl()
   const {

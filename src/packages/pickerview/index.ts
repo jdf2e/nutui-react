@@ -1,11 +1,11 @@
 import PickerView from './pickerview'
 
 export type {
-  PickerViewProps,
+  WebPickerViewProps as PickerViewProps,
   PickerOption,
-  PickerRollerProps,
+  WebPickerRollerProps as PickerRollerProps,
   PickerValue,
   PickerOptions,
   PickerOnChangeCallbackParameter,
-} from './types'
+} from '@/types'
 export default PickerView

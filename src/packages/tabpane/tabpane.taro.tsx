@@ -1,27 +1,20 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import { TaroTabPaneProps } from '@/types'
 
 interface TabPanelInnerProps {
   autoHeightClassName: string
-}
-
-export interface TabPaneProps {
-  title: string | number
-  value: string | number
-  disabled: boolean
-  className: string
-  children?: React.ReactNode
 }
 
 const defaultProps = {
   title: '',
   value: '',
   disabled: false,
-} as TabPaneProps
+} as TaroTabPaneProps
 
 export const TabPane: FunctionComponent<
-  Partial<TabPaneProps & TabPanelInnerProps>
+  Partial<TaroTabPaneProps & TabPanelInnerProps>
 > = (props) => {
   const { children, autoHeightClassName, className, disabled } = {
     ...defaultProps,

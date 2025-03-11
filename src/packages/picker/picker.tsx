@@ -1,17 +1,12 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   ForwardRefRenderFunction,
+  useEffect,
   useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
-import {
-  PickerOptions,
-  PickerValue,
-  PickerOnChangeCallbackParameter,
-} from '@/packages/pickerview/types'
 import PickerView from '@/packages/pickerview/index'
 import Popup from '@/packages/popup/index'
 import SafeArea from '@/packages/safearea/index'
@@ -19,7 +14,14 @@ import useRefs from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
-import { PickerActions, PickerProps, PickerRef } from './types'
+import {
+  PickerActions,
+  PickerOnChangeCallbackParameter,
+  PickerOptions,
+  PickerRef,
+  PickerValue,
+  WebPickerProps,
+} from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -28,10 +30,10 @@ const defaultProps = {
   value: undefined,
   defaultValue: [],
   closeOnOverlayClick: true,
-} as unknown as PickerProps
+} as unknown as WebPickerProps
 const InternalPicker: ForwardRefRenderFunction<
   PickerRef,
-  Partial<PickerProps>
+  Partial<WebPickerProps>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -203,5 +205,7 @@ const InternalPicker: ForwardRefRenderFunction<
   )
 }
 
-const Picker = React.forwardRef<PickerRef, Partial<PickerProps>>(InternalPicker)
+const Picker = React.forwardRef<PickerRef, Partial<WebPickerProps>>(
+  InternalPicker
+)
 export default Picker

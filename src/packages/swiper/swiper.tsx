@@ -1,8 +1,7 @@
-import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
 import Indicator from '@/packages/indicator'
 import { getRefValue, useRefState } from '@/hooks/use-ref-state'
 import { defaultEffect } from '@/packages/swiper/effects/default'
@@ -11,25 +10,7 @@ import {
   updateTransform,
   useList,
 } from '@/packages/swiper/effects/focus'
-import { SwiperRef } from '@/packages/swiper/types'
-
-export interface FocusEffect {
-  name: 'focus'
-  scale: number
-}
-
-export interface SwiperProps extends BasicComponent {
-  direction: 'horizontal' | 'vertical'
-  indicator: ReactNode
-  loop: boolean
-  duration: number | string
-  autoPlay: boolean | number
-  defaultValue: number
-  touchable: boolean
-  effect: FocusEffect | undefined
-  slideSize?: number
-  onChange?: (index: number) => void
-}
+import { SwiperRef, WebSwiperProps } from '@/types'
 
 const defaultProps = {
   direction: 'horizontal',
@@ -40,9 +21,9 @@ const defaultProps = {
   defaultValue: 0,
   touchable: true,
   effect: undefined,
-} as SwiperProps
+} as WebSwiperProps
 
-export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
+export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
   (props, ref) => {
     const classPrefix = 'nut-swiper'
     const {

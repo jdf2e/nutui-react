@@ -1,19 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-type avatarShape = 'round' | 'square'
-
-export interface SkeletonProps extends BasicComponent {
-  animated: boolean
-  rows: number
-  title: boolean
-  avatar: boolean
-  avatarSize: string
-  visible: boolean
-  avatarShape: avatarShape
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebSkeletonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -24,8 +13,10 @@ const defaultProps = {
   avatarSize: '50px',
   visible: false,
   avatarShape: 'round',
-} as SkeletonProps
-export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
+} as WebSkeletonProps
+export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
+  props
+) => {
   const {
     className,
     animated,

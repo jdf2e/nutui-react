@@ -1,18 +1,16 @@
+import type { MouseEvent, TouchEvent } from 'react'
 import React, {
-  useRef,
   forwardRef,
-  useState,
   useCallback,
-  useImperativeHandle,
   useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
-import type { TouchEvent, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '@/hooks/use-touch'
 import { getRect } from '@/hooks/use-client-rect'
-import { BasicComponent } from '@/utils/typings'
-
-export type SwipeSide = 'left' | 'right'
+import { PositionX, SwipeRef, WebSwipeProps } from '@/types'
 
 function preventDefault(
   event: TouchEvent | Event,
@@ -25,45 +23,13 @@ function preventDefault(
     event.stopPropagation()
   }
 }
-export interface SwipeInstance {
-  open: (side: SwipeSide) => void
-  close: () => void
-}
-export interface SwipeProps extends BasicComponent {
-  name?: string | number
-  leftAction?: React.ReactNode
-  rightAction?: React.ReactNode
-  /** 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise */
-  beforeClose?: (position: string) => void
-  disabled?: boolean
-  onOpen?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onClose?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onActionClick?: (
-    event: MouseEvent<HTMLDivElement>,
-    position: SwipeSide
-  ) => void
-  onTouchStart?: (event: TouchEvent<HTMLDivElement>) => void
-  onTouchEnd?: (event: TouchEvent<HTMLDivElement>) => void
-  onTouchMove?: (event: TouchEvent<HTMLDivElement>) => void
-}
+
 const defaultProps = {
   name: '',
-} as SwipeProps
+} as WebSwipeProps
 export const Swipe = forwardRef<
-  SwipeInstance,
-  Partial<SwipeProps> &
+  SwipeRef,
+  Partial<WebSwipeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
@@ -139,7 +105,7 @@ export const Swipe = forwardRef<
     }
   }
 
-  const toggle = (side: SwipeSide) => {
+  const toggle = (side: PositionX) => {
     const offset = Math.abs(state.offset)
     const base = 0.3
     const baseNum = opened ? 1 - base : base
@@ -151,7 +117,7 @@ export const Swipe = forwardRef<
       close(side)
     }
   }
-  const open = (side: SwipeSide) => {
+  const open = (side: PositionX) => {
     opened.current = true
     const offset = side === 'left' ? leftWidth : -rightWidth
     const name = props.name as number | string
@@ -159,7 +125,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipeSide) => {
+  const close = (position?: PositionX) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -201,7 +167,7 @@ export const Swipe = forwardRef<
     },
     [props.rightAction]
   )
-  const renderActionContent = (side: SwipeSide, measuredRef: any) => {
+  const renderActionContent = (side: PositionX, measuredRef: any) => {
     if (props[`${side}Action`]) {
       return (
         <div
@@ -217,7 +183,7 @@ export const Swipe = forwardRef<
   }
   const handleOperate = (
     event: MouseEvent<HTMLDivElement>,
-    position: SwipeSide
+    position: PositionX
   ) => {
     event.stopPropagation()
     if (props.beforeClose) {

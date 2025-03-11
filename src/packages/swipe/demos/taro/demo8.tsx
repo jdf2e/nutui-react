@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Button, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
+import { Button, Swipe, SwipeRef } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   const [showDialog, setShowDialog] = useState(false)
-  const refDom = useRef<SwipeInstance>(null)
+  const refDom = useRef<SwipeRef>(null)
   const pRef = useRef('left')
   const beforeClose = (postion: string) => {
     pRef.current = postion

@@ -4,26 +4,11 @@ import React, {
   useEffect,
   ForwardRefRenderFunction,
   useImperativeHandle,
-  ReactNode,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { canUseDom } from '@/utils/can-use-dom'
-
-export type SignatureType = 'jpg' | 'png'
-
-export interface SignatureProps extends BasicComponent {
-  type: SignatureType
-  lineWidth: number
-  strokeStyle: string
-  unsupported: ReactNode
-  onConfirm?: (
-    canvas: HTMLCanvasElement,
-    dataurl: string,
-    isSigned?: boolean
-  ) => void
-  onClear?: () => void
-}
+import { WebSignatureProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -31,10 +16,10 @@ const defaultProps = {
   lineWidth: 2,
   strokeStyle: '#1A1A1A',
   unsupported: '',
-} as SignatureProps
+} as WebSignatureProps
 const InternalSignature: ForwardRefRenderFunction<
   unknown,
-  Partial<SignatureProps>
+  Partial<WebSignatureProps>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -186,7 +171,7 @@ const InternalSignature: ForwardRefRenderFunction<
   )
 }
 
-export const Signature = React.forwardRef<unknown, Partial<SignatureProps>>(
+export const Signature = React.forwardRef<unknown, Partial<WebSignatureProps>>(
   InternalSignature
 )
 Signature.displayName = 'NutSignature'
