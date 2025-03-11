@@ -1,4 +1,4 @@
-import { CascaderOption, CascaderFormat, CascaderOptionKey } from './types'
+import { CascaderOption, CascaderFormat, CascaderOptionKey } from '@/types'
 
 export const normalizeOptions = (
   options: CascaderOption[],
