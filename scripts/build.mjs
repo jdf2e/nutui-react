@@ -443,10 +443,6 @@ await deleteAsync([
   `${dist}/es/packages/nutui.react.scss.js`,
 ])
 
-console.time('Build JSDoc')
-codeShift('h5')
-console.timeEnd('Build JSDoc')
-
 console.time('Copy package.json readme.md')
 await copyReleaseFiles()
 console.timeEnd('Copy package.json readme.md')

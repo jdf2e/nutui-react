@@ -28,7 +28,7 @@ import { DatePickerView } from '@nutui/nutui'
 
 :::
 
-## DatePicker
+## DatePickerView
 
 ### Props
 

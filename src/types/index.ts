@@ -158,6 +158,10 @@ export * from './spec/picker/base'
 export * from './spec/picker/h5'
 export * from './spec/picker/taro'
 
+export * from './spec/pickerview/base'
+export * from './spec/pickerview/h5'
+export * from './spec/pickerview/taro'
+
 export * from './spec/noticebar/base'
 export * from './spec/noticebar/h5'
 export * from './spec/noticebar/taro'

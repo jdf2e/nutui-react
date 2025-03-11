@@ -394,6 +394,7 @@
           "show": false,
           "taro": true,
           "author": "Alex.hxy",
+          "exportEmpty": true,
           "dd": true
         },
         {
