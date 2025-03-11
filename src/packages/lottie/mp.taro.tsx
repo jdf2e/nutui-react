@@ -3,9 +3,9 @@ import { createSelectorQuery, getEnv, useReady, useUnload } from '@tarojs/taro'
 import lottie from 'lottie-miniprogram'
 import { getWindowInfo } from '@/utils/get-system-info'
 import useUuid from '@/hooks/use-uuid'
-import { LottieProps } from './types'
+import { TaroLottieProps } from '@/types'
 
-export const Lottie = React.forwardRef((props: LottieProps, ref: any) => {
+export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
   const uuid = useUuid()
   const id = `nutLottie-${uuid}`
   const animation = useRef<any>()

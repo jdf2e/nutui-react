@@ -11,11 +11,11 @@ import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import {
-  PickerViewProps,
+  WebPickerViewProps,
   PickerOption,
   PickerValue,
   PickerOptions,
-} from './types'
+} from '@/types'
 import PickerRoller from './pickerroller'
 
 const defaultProps = {
@@ -24,11 +24,11 @@ const defaultProps = {
   defaultValue: [],
   value: undefined,
   renderLabel: (item: PickerOption) => item.label,
-} as PickerViewProps
+} as WebPickerViewProps
 
 const InternalPickerView: ForwardRefRenderFunction<
   unknown,
-  Partial<PickerViewProps>
+  Partial<WebPickerViewProps>
 > = (props, ref) => {
   const {
     options,
@@ -217,7 +217,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   )
 }
 
-const PickerView = React.forwardRef<unknown, Partial<PickerViewProps>>(
+const PickerView = React.forwardRef<unknown, Partial<WebPickerViewProps>>(
   InternalPickerView
 )
 

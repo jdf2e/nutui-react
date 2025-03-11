@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
-import { BadgeProps } from './types'
+import { WebBadgeProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -13,9 +13,9 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
-} as BadgeProps
+} as WebBadgeProps
 
-export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
+export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
   const rtl = useRtl()
   const {
     className,

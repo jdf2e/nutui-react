@@ -34,6 +34,30 @@ async function dest(file, content) {
   await writeFile(file, content)
 }
 
+const transform = (file, api) => {
+  const j = api.jscodeshift.withParser('ts')
+  const ast = j(file.source)
+  const imports = ast.find(j.ImportDeclaration)
+  const exps = ast.find(j.ExportAllDeclaration)
+  const exportNameDeclaration = ast.find(j.ExportNamedDeclaration)
+
+  function reNameAlias(path) {
+    const importAlias =
+      path.node.source?.value?.indexOf('@/') > -1
+        ? path.node.source.value
+        : ''
+    if (!importAlias) return
+    const dir = join(__dirname, importAlias.replace('@/', '../src/'))
+    path.node.source.value = relativePath(dir, file.path)
+  }
+
+  imports.forEach(reNameAlias)
+  exps.forEach(reNameAlias)
+  exportNameDeclaration.forEach(reNameAlias)
+
+  return ast.toSource()
+}
+
 // 构建 ES
 async function buildES(p) {
   const soruceFiels = await glob(
@@ -41,6 +65,7 @@ async function buildES(p) {
       'src/packages/**/*.{ts,tsx}',
       'src/utils/**/*.{ts,tsx}',
       'src/hooks/**/*.{ts,tsx}',
+      'src/types/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
@@ -67,6 +92,7 @@ async function buildES(p) {
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
+          '@/types/*': ['src/types/*'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,
@@ -109,21 +135,7 @@ async function buildDeclaration() {
   await execSync(
     `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
   )
-  const transform = (file, api) => {
-    const j = api.jscodeshift.withParser('ts')
-    return j(file.source)
-      .find(j.ImportDeclaration)
-      .forEach((path) => {
-        const importAlias =
-          path.node.source.value?.indexOf('@/') > -1
-            ? path.node.source.value
-            : ''
-        if (!importAlias) return
-        const dir = join(__dirname, importAlias.replace('@/', '../src/'))
-        path.node.source.value = relativePath(dir, file.path)
-      })
-      .toSource()
-  }
+
 
   const files = await glob([`${dist}/types/src/**/*.d.ts`], {
     ignore: [`${dist}/types/src/**/*.taro.d.ts`],

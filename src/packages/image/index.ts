@@ -1,4 +1,4 @@
 import { Image } from './image'
 
-export type { ImageFit, ImagePosition, ImageProps } from './image'
+export type { WebImageProps as ImageProps } from '@/types'
 export default Image

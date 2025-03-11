@@ -7,7 +7,7 @@ import {
 import { View } from '@tarojs/components'
 import Lottie from '../lottie/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { LoadingProps, LoadingRef, LoadingType } from './types'
+import { TaroLoadingProps, LoadingRef, LoadingType } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
 import { LottieProps } from '@/packages/lottie' // 方便以后扩展设置为键值对形式
 
@@ -23,12 +23,12 @@ const defaultProps = {
   type: 'circular',
   direction: 'horizontal',
   lottieProps: {},
-} as LoadingProps
+} as TaroLoadingProps
 const defaultLottieProps = {
   loop: true,
   autoplay: true,
 }
-export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
+export const Loading = React.forwardRef<LoadingRef, Partial<TaroLoadingProps>>(
   (props, ref) => {
     const {
       className,

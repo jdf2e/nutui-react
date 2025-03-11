@@ -3,11 +3,11 @@ import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay/index'
 import { useConfig } from '@/packages/configprovider'
-import { FixedNavProps } from './types'
+import { WebFixedNavProps } from '@/types'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Badge from '@/packages/badge/index'
 
-const defaultProps: FixedNavProps = {
+const defaultProps: WebFixedNavProps = {
   ...defaultOverlayProps,
   activeText: '',
   inactiveText: '',
@@ -24,7 +24,7 @@ const defaultProps: FixedNavProps = {
 }
 
 export const FixedNav: FunctionComponent<
-  Partial<FixedNavProps> &
+  Partial<WebFixedNavProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onSelect' | 'content'

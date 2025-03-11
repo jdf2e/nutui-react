@@ -5,8 +5,8 @@ import React, {
   useEffect,
   useImperativeHandle,
   useMemo,
-  useState,
   useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import { usePageScroll } from '@tarojs/taro'
@@ -16,30 +16,9 @@ import { Check } from '@nutui/icons-react-taro'
 import { getWindowInfo } from '@/utils/get-system-info'
 import { Overlay } from '@/packages/overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface OptionItem {
-  text: string
-  value: string | number
-}
-
-export interface MenuItemProps extends BasicComponent {
-  title: React.ReactNode
-  titleIcon: React.ReactNode
-  options: OptionItem[]
-  disabled: boolean
-  columns: number
-  icon: React.ReactNode
-  closeOnClickAway: boolean
-  direction: string
-  activeTitleClass: string
-  inactiveTitleClass: string
-  value: string | number
-  defaultValue: string | number
-  onChange: (event: any) => void
-  children: React.ReactNode
-}
+import { MenuOptionItem, WebMenuItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -50,9 +29,9 @@ const defaultProps = {
   closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
-  onChange: (value: OptionItem) => undefined,
-} as MenuItemProps
-export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
+  onChange: (value: MenuOptionItem) => undefined,
+} as WebMenuItemProps
+export const MenuItem = forwardRef((props: Partial<WebMenuItemProps>, ref) => {
   const {
     className,
     style,
@@ -141,7 +120,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       parent.updateTitle(text, index)
     }
   }
-  const handleClick = (item: OptionItem) => {
+  const handleClick = (item: MenuOptionItem) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)

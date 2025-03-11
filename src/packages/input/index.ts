@@ -1,9 +1,9 @@
 import { Input } from './input'
 
 export type {
-  InputType,
-  InputAlign,
-  InputProps,
+  WebInputType as InputType,
+  WebInputProps as InputProps,
   InputConfirmType,
-} from './input'
+  InputFormatTrigger,
+} from '@/types'
 export default Input

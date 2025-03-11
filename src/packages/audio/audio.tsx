@@ -5,23 +5,8 @@ import classNames from 'classnames'
 import Range from '@/packages/range'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface AudioProps extends BasicComponent {
-  src: string
-  muted: boolean
-  autoPlay: boolean
-  loop: boolean
-  preload: string
-  type: string
-  onBack: (e: HTMLAudioElement) => void
-  onForward: (e: HTMLAudioElement) => void
-  onPause: (e: SyntheticEvent<HTMLAudioElement>) => void
-  onEnd: (e: SyntheticEvent<HTMLAudioElement>) => void
-  onMute: (e: HTMLAudioElement) => void
-  onCanPlay: (e: SyntheticEvent<HTMLAudioElement>) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebAudioProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -37,9 +22,9 @@ const defaultProps = {
   onEnd: (e: SyntheticEvent<HTMLAudioElement>) => {},
   onMute: (e: HTMLAudioElement) => {},
   onCanPlay: (e: SyntheticEvent<HTMLAudioElement>) => {},
-} as AudioProps
+} as WebAudioProps
 export const Audio: FunctionComponent<
-  Partial<AudioProps> & React.HTMLAttributes<HTMLElement>
+  Partial<WebAudioProps> & React.HTMLAttributes<HTMLElement>
 > = (props) => {
   const { locale } = useConfig()
   const {

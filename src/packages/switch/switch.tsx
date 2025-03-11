@@ -1,24 +1,17 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider'
+import { WebSwitchProps } from '@/types'
 
-export interface SwitchProps extends BasicComponent {
-  checked: boolean
-  defaultChecked: boolean
-  disabled: boolean
-  activeText: React.ReactNode
-  inactiveText: React.ReactNode
-  onChange: (val: boolean, event: React.MouseEvent) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
   activeText: '',
   inactiveText: '',
-} as SwitchProps
-export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
+} as WebSwitchProps
+export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   const {
     checked,
     defaultChecked,

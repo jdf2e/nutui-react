@@ -12,12 +12,11 @@ import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
 import { useRefState } from '@/hooks/use-ref-state'
 import useUuid from '@/hooks/use-uuid'
-
-export type SwipeSide = 'left' | 'right'
+import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
 
 function preventDefault(event: any, isStopPropagation?: boolean): void {
   if (typeof event.cancelable !== 'boolean' || event.cancelable) {
@@ -28,48 +27,13 @@ function preventDefault(event: any, isStopPropagation?: boolean): void {
   }
 }
 
-export interface SwipeInstance {
-  open: (side: SwipeSide) => void
-  close: () => void
-}
-
-export interface SwipeProps extends BasicComponent {
-  name?: string | number
-  leftAction?: React.ReactNode
-  rightAction?: React.ReactNode
-  /** 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise */
-  beforeClose?: (position: string) => void
-  disabled?: boolean
-  onOpen?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onClose?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onActionClick?: (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
-    position: SwipeSide
-  ) => void
-  onTouchStart?: (event: BaseEventOrig<HTMLDivElement>) => void
-  onTouchEnd?: (event: BaseEventOrig<HTMLDivElement>) => void
-  onTouchMove?: (event: BaseEventOrig<HTMLDivElement>) => void
-}
-
 const defaultProps = {
   ...ComponentDefaults,
   name: '',
-} as SwipeProps
+} as TaroSwipeProps
 export const Swipe = forwardRef<
-  SwipeInstance,
-  Partial<SwipeProps> &
+  SwipeRef,
+  Partial<TaroSwipeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
@@ -184,7 +148,7 @@ export const Swipe = forwardRef<
     }
   }
 
-  const toggle = (side: SwipeSide) => {
+  const toggle = (side: PositionX) => {
     const offset = Math.abs(state.offset)
     const base = 0.3
     const baseNum = opened ? 1 - base : base
@@ -196,7 +160,7 @@ export const Swipe = forwardRef<
       close(side)
     }
   }
-  const open = (side: SwipeSide) => {
+  const open = (side: PositionX) => {
     opened.current = true
     const offset =
       side === 'left' ? actionWidth.current.left : -actionWidth.current.right
@@ -205,7 +169,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipeSide) => {
+  const close = (position?: PositionX) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -226,7 +190,7 @@ export const Swipe = forwardRef<
 
   const leftWrapper = useRef(null)
   const rightWrapper = useRef(null)
-  const renderActionContent = (side: SwipeSide) => {
+  const renderActionContent = (side: PositionX) => {
     if (props[`${side}Action`]) {
       return (
         <View
@@ -243,7 +207,7 @@ export const Swipe = forwardRef<
   }
   const handleOperate = (
     event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
-    position: SwipeSide
+    position: PositionX
   ) => {
     event.stopPropagation()
     if (props.beforeClose) {

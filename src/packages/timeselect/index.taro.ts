@@ -1,9 +1,9 @@
 import { TimeSelect } from './timeselect.taro'
 
 export type {
-  TimeSelectProps,
-  DateType,
-  OptionKeyType,
+  TaroTimeSelectProps as TimeSelectProps,
+  TimeSelectDateType,
+  TimeSelectOptionKeyType,
   TimeType,
-} from './timeselect.taro'
+} from '@/types'
 export default TimeSelect

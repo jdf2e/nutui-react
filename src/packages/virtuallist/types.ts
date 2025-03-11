@@ -1,5 +1,3 @@
-export type Data = any
-
 export interface VirtualListState {
   startOffset: number // 可视区域距离顶部的偏移量
   startIndex: number // 可视区域开始索引

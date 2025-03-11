@@ -1,20 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
-import Popup, { PopupProps } from '@/packages/popup/index.taro'
+import Popup from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
+import { ActionSheetOption, TaroActionSheetProps } from '@/types'
 
-export type ActionSheetOption<T> = { [key: string]: T }
-
-export interface ActionSheetProps extends PopupProps {
-  visible: boolean
-  description: ReactNode
-  options: ActionSheetOption<string | boolean>[]
-  optionKey: ActionSheetOption<string>
-  cancelText: ReactNode
-  onCancel: () => void
-  onSelect: (item: ActionSheetOption<string | boolean>, index: number) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -24,9 +14,9 @@ const defaultProps = {
   cancelText: '',
   onCancel: () => {},
   onSelect: () => {},
-} as unknown as ActionSheetProps
+} as unknown as TaroActionSheetProps
 export const ActionSheet: FunctionComponent<
-  Partial<ActionSheetProps> &
+  Partial<TaroActionSheetProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'onSelect' | 'onClick'>
 > = (props) => {
   const {

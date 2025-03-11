@@ -12,11 +12,11 @@ import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import {
-  PickerViewProps,
+  TaroPickerViewProps,
   PickerOption,
   PickerValue,
   PickerOptions,
-} from './types'
+} from '@/types'
 import PickerRoller from './pickerroller.taro'
 
 const defaultProps = {
@@ -25,11 +25,11 @@ const defaultProps = {
   defaultValue: [],
   value: undefined,
   renderLabel: (item: PickerOption) => item.label,
-} as PickerViewProps
+} as TaroPickerViewProps
 
 const InternalPickerView: ForwardRefRenderFunction<
   unknown,
-  Partial<PickerViewProps>
+  Partial<TaroPickerViewProps>
 > = (props, ref) => {
   const {
     options,
@@ -218,7 +218,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   )
 }
 
-const PickerView = React.forwardRef<unknown, Partial<PickerViewProps>>(
+const PickerView = React.forwardRef<unknown, Partial<TaroPickerViewProps>>(
   InternalPickerView
 )
 

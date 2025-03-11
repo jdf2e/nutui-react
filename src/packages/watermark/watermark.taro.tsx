@@ -1,30 +1,11 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
-import { getSystemInfo, createOffscreenCanvas } from '@tarojs/taro'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import { createOffscreenCanvas, getSystemInfo } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroWaterMarkProps } from '@/types'
 
-export interface WaterMarkProps extends BasicComponent {
-  content: string
-  fullPage: boolean
-  zIndex: number
-  gapX: number
-  gapY: number
-  startX: number
-  startY: number
-  width: number
-  height: number
-  image: string
-  imageWidth: number
-  imageHeight: number
-  rotate: number
-  color: string
-  fontStyle: string
-  fontFamily: string
-  fontWeight: string
-  fontSize: string | number
-}
 const defaultProps = {
   ...ComponentDefaults,
   content: '',
@@ -44,9 +25,9 @@ const defaultProps = {
   fontStyle: 'normal',
   fontWeight: 'normal',
   fontSize: 14,
-} as WaterMarkProps
+} as TaroWaterMarkProps
 export const WaterMark: FunctionComponent<
-  Partial<WaterMarkProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroWaterMarkProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
   const {

@@ -1,7 +1,9 @@
 import { ComponentType } from 'react'
 import { Lottie as LottieWeb } from './web.taro'
 import { Lottie as LottieMp } from './mp.taro'
-import { LottieProps } from './types'
+import { TaroLottieProps } from '@/types'
+
+export type { TaroLottieProps as LottieProps } from '@/types'
 
 let implementation
 if (process.env.TARO_ENV === 'h5') {
@@ -16,5 +18,5 @@ if (process.env.TARO_ENV === 'h5') {
     return props.children
   }
 }
-const Lottie: ComponentType<Partial<LottieProps>> = implementation as any
+const Lottie: ComponentType<Partial<TaroLottieProps>> = implementation as any
 export default Lottie

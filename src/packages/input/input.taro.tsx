@@ -1,52 +1,19 @@
 import React, {
   forwardRef,
-  HTMLInputTypeAttribute,
   useCallback,
   useImperativeHandle,
   useRef,
   useState,
 } from 'react'
-import {
-  Input as TaroInput,
-  InputProps as TaroInputProps,
-  ITouchEvent,
-  View,
-} from '@tarojs/components'
+import { Input as TaroInput, View } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
 import Taro, { ENV_TYPE, getEnv } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export type InputAlign = 'left' | 'center' | 'right'
-export type InputFormatTrigger = 'onChange' | 'onBlur'
-export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
-
-export interface InputProps extends BasicComponent {
-  type: keyof TaroInputProps.Type | HTMLInputTypeAttribute
-  name: string
-  defaultValue?: string
-  value?: string
-  placeholder?: string
-  align: InputAlign
-  disabled: boolean
-  readOnly: boolean
-  maxLength: number
-  clearable: boolean
-  clearIcon: React.ReactNode
-  formatTrigger: InputFormatTrigger
-  autoFocus: boolean
-  confirmType: InputConfirmType
-  plain: boolean
-  formatter?: (value: string) => string
-  onChange?: (value: string) => void
-  onBlur?: (value: string) => void
-  onFocus?: (value: string, height?: number) => void
-  onClear?: (value: string) => void
-  onClick?: (e: ITouchEvent) => void
-}
+import { InputFormatTrigger, TaroInputProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -64,196 +31,185 @@ const defaultProps = {
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
-} as InputProps
+} as TaroInputProps
 
-export const Input = forwardRef(
-  (
-    props: Partial<InputProps> &
-      Partial<
-        Omit<
-          TaroInputProps,
-          'type' | 'ref' | 'onBlur' | 'onFocus' | 'maxlength' | 'password'
-        >
-      >,
-    ref
+export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
+  const classPrefix = 'nut-input'
+
+  const rtl = useRtl()
+  const { locale } = useConfig()
+  const {
+    type,
+    name,
+    placeholder,
+    align,
+    disabled,
+    readOnly,
+    maxLength,
+    clearable,
+    clearIcon,
+    formatTrigger,
+    autoFocus,
+    style,
+    className,
+    plain,
+    onChange,
+    onFocus,
+    onBlur,
+    onClear,
+    formatter,
+    onClick,
+    confirmType,
+    defaultValue,
+    value: _value,
+    ...rest
+  } = {
+    ...defaultProps,
+    ...props,
+  }
+  const [value, setValue] = usePropsValue<string>({
+    value: _value,
+    defaultValue,
+    finalValue: '',
+    onChange,
+  })
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [active, setActive] = useState(false)
+
+  useImperativeHandle(ref, () => {
+    return {
+      clear: () => {
+        setValue('')
+      },
+      focus: () => {
+        inputRef.current?.focus()
+      },
+      blur: () => {
+        inputRef.current?.blur()
+      },
+      get nativeElement() {
+        return inputRef.current
+      },
+    }
+  })
+
+  const inputClass = useCallback(() => {
+    return [
+      classPrefix,
+      `${disabled ? `${classPrefix}-disabled` : ''}`,
+      readOnly ? `${classPrefix}-readonly` : '',
+      `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
+    ]
+      .filter(Boolean)
+      .join(' ')
+  }, [disabled])
+
+  const [, updateState] = React.useState()
+  const forceUpdate = React.useCallback(() => updateState({} as any), [])
+
+  const updateValue = (
+    value: any,
+    trigger: InputFormatTrigger = 'onChange'
   ) => {
-    const classPrefix = 'nut-input'
+    let val = value
+    if (type === 'number') val = formatNumber(val, false, true)
+    if (type === 'digit') val = formatNumber(val, true, true)
+    if (formatter && trigger === formatTrigger) val = formatter(val)
 
-    const rtl = useRtl()
-    const { locale } = useConfig()
-    const {
-      type,
-      name,
-      placeholder,
-      align,
-      disabled,
-      readOnly,
-      maxLength,
-      clearable,
-      clearIcon,
-      formatTrigger,
-      autoFocus,
-      style,
-      className,
-      plain,
-      onChange,
-      onFocus,
-      onBlur,
-      onClear,
-      formatter,
-      onClick,
-      confirmType,
-      defaultValue,
-      value: _value,
-      ...rest
-    } = {
-      ...defaultProps,
-      ...props,
+    setValue(val)
+    if (trigger !== 'onChange') {
+      const eventHandler = props[trigger]
+      eventHandler?.(val)
     }
-    const [value, setValue] = usePropsValue<string>({
-      value: _value,
-      defaultValue,
-      finalValue: '',
-      onChange,
-    })
-    const inputRef = useRef<HTMLInputElement>(null)
-    const [active, setActive] = useState(false)
+    forceUpdate()
+  }
 
-    useImperativeHandle(ref, () => {
-      return {
-        clear: () => {
-          setValue('')
-        },
-        focus: () => {
-          inputRef.current?.focus()
-        },
-        blur: () => {
-          inputRef.current?.blur()
-        },
-        get nativeElement() {
-          return inputRef.current
-        },
-      }
-    })
-
-    const inputClass = useCallback(() => {
-      return [
-        classPrefix,
-        `${disabled ? `${classPrefix}-disabled` : ''}`,
-        readOnly ? `${classPrefix}-readonly` : '',
-        `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
-      ]
-        .filter(Boolean)
-        .join(' ')
-    }, [disabled])
-
-    const [, updateState] = React.useState()
-    const forceUpdate = React.useCallback(() => updateState({} as any), [])
-
-    const updateValue = (
-      value: any,
-      trigger: InputFormatTrigger = 'onChange'
-    ) => {
-      let val = value
-      if (type === 'number') val = formatNumber(val, false, true)
-      if (type === 'digit') val = formatNumber(val, true, true)
-      if (formatter && trigger === formatTrigger) val = formatter(val)
-
-      setValue(val)
-      if (trigger !== 'onChange') {
-        const eventHandler = props[trigger]
-        eventHandler?.(val)
-      }
-      forceUpdate()
+  const handleFocus = (event: any) => {
+    if (Taro.getEnv() === 'WEB') {
+      const val: any = (event.target as any).value
+      onFocus && onFocus(val)
+    } else {
+      const height = (event.detail || {}).height
+      onFocus?.(value, height)
     }
+    setActive(true)
+  }
 
-    const handleFocus = (event: any) => {
-      if (Taro.getEnv() === 'WEB') {
-        const val: any = (event.target as any).value
-        onFocus && onFocus(val)
-      } else {
-        const height = (event.detail || {}).height
-        onFocus?.(value, height)
-      }
-      setActive(true)
-    }
+  const handleInput = (event: BaseEventOrig) => {
+    updateValue((event.detail || event.currentTarget).value, 'onChange')
+  }
 
-    const handleInput = (event: BaseEventOrig) => {
-      updateValue((event.detail || event.currentTarget).value, 'onChange')
+  const handleBlur = (event: any) => {
+    const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+    updateValue(val, 'onBlur')
+    setTimeout(() => setActive(false), 200)
+  }
+  const inputType = (type: any) => {
+    if (getEnv() === ENV_TYPE.WEB) {
+      if (type === 'digit') return 'text'
+      if (type === 'number') return 'tel'
+    } else if (type === 'password') {
+      return 'text'
     }
-
-    const handleBlur = (event: any) => {
-      const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
-      updateValue(val, 'onBlur')
-      setTimeout(() => setActive(false), 200)
+    return type
+  }
+  const getTextAlign = () => {
+    if (rtl) {
+      if (align === 'right') return 'left'
+      if (align === 'left') return 'right'
     }
-    const inputType = (type: any) => {
-      if (getEnv() === ENV_TYPE.WEB) {
-        if (type === 'digit') return 'text'
-        if (type === 'number') return 'tel'
-      } else if (type === 'password') {
-        return 'text'
-      }
-      return type
-    }
-    const getTextAlign = () => {
-      if (rtl) {
-        if (align === 'right') return 'left'
-        if (align === 'left') return 'right'
-      }
-      return align
-    }
-    return (
+    return align
+  }
+  return (
+    <View
+      className={`${inputClass()}  ${className || ''}`}
+      style={style}
+      onClick={(e) => {
+        onClick && onClick(e)
+      }}
+    >
+      <TaroInput
+        {...rest}
+        name={name}
+        className="nut-input-native"
+        ref={inputRef}
+        style={{ textAlign: getTextAlign() }}
+        type={inputType(type) as any}
+        password={type === 'password'}
+        maxlength={maxLength}
+        placeholder={
+          placeholder === undefined ? locale.placeholder : placeholder
+        }
+        placeholderClass={`${classPrefix}-placeholder`}
+        disabled={disabled || readOnly}
+        value={value}
+        focus={autoFocus}
+        confirmType={confirmType}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        onInput={handleInput}
+      />
       <View
-        className={`${inputClass()}  ${className || ''}`}
-        style={style}
+        style={{
+          display:
+            clearable && !readOnly && active && value.length > 0
+              ? 'flex'
+              : 'none',
+          alignItems: 'center',
+          cursor: 'pointer',
+        }}
         onClick={(e) => {
-          onClick && onClick(e)
+          e.stopPropagation()
+          if (!disabled) {
+            setValue('')
+            onClear?.('')
+          }
         }}
       >
-        <TaroInput
-          {...rest}
-          name={name}
-          className="nut-input-native"
-          ref={inputRef}
-          style={{ textAlign: getTextAlign() }}
-          type={inputType(type) as any}
-          password={type === 'password'}
-          maxlength={maxLength}
-          placeholder={
-            placeholder === undefined ? locale.placeholder : placeholder
-          }
-          placeholderClass={`${classPrefix}-placeholder`}
-          disabled={disabled || readOnly}
-          value={value}
-          focus={autoFocus}
-          confirmType={confirmType}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          onInput={handleInput}
-        />
-        <View
-          style={{
-            display:
-              clearable && !readOnly && active && value.length > 0
-                ? 'flex'
-                : 'none',
-            alignItems: 'center',
-            cursor: 'pointer',
-          }}
-          onClick={(e) => {
-            e.stopPropagation()
-            if (!disabled) {
-              setValue('')
-              onClear?.('')
-            }
-          }}
-        >
-          {clearIcon || <MaskClose className="nut-input-clear" />}
-        </View>
+        {clearIcon || <MaskClose className="nut-input-clear" />}
       </View>
-    )
-  }
-)
+    </View>
+  )
+})
 
 Input.displayName = 'NutInput'

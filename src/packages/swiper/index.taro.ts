@@ -1,10 +1,11 @@
 import React from 'react'
-import { Swiper, SwiperProps } from './swiper.taro'
+import { Swiper } from './swiper.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
+import { TaroSwiperProps } from '@/types'
 
-export type { SwiperProps } from './swiper.taro'
+export type { TaroSwiperProps as SwiperProps } from '@/types'
 type CompoundedComponent = React.ForwardRefExoticComponent<
-  Partial<SwiperProps> &
+  Partial<TaroSwiperProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
     React.RefAttributes<any>
 > & {

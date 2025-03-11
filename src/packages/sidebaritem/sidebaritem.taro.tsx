@@ -2,22 +2,15 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { mergeProps } from '@/utils/merge-props'
-
-export interface SideBarItemProps {
-  title: string | number
-  value: string | number
-  disabled: boolean
-  className: string
-  children?: React.ReactNode
-}
+import { TaroSideBarItemProps } from '@/types'
 
 const defaultProps = {
   title: '',
   value: '',
   disabled: false,
-} as SideBarItemProps
+} as TaroSideBarItemProps
 
-export const SideBarItem: FunctionComponent<Partial<SideBarItemProps>> = (
+export const SideBarItem: FunctionComponent<Partial<TaroSideBarItemProps>> = (
   props
 ) => {
   const { children, className, disabled } = mergeProps(defaultProps, props)

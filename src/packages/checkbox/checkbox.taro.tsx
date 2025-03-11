@@ -1,28 +1,11 @@
-import React, { FC, ReactNode, useContext, useEffect, useState } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { CheckboxProps as TCheckboxProps, View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
-
-export type CheckboxShape = 'button' | 'round'
-
-export interface CheckboxProps extends BasicComponent {
-  checked: boolean
-  disabled: boolean
-  defaultChecked: boolean
-  shape: CheckboxShape
-  labelPosition: CheckboxLabelPosition
-  icon: ReactNode
-  activeIcon: ReactNode
-  indeterminateIcon: ReactNode
-  value: string | number
-  indeterminate: boolean
-  label: ReactNode
-  onChange: (value: boolean) => void
-}
+import { TaroCheckboxProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -33,11 +16,11 @@ const defaultProps = {
   activeIcon: null,
   indeterminateIcon: null,
   onChange: (value) => {},
-} as CheckboxProps
+} as TaroCheckboxProps
 
 const classPrefix = 'nut-checkbox'
 export const Checkbox: FC<
-  Partial<CheckboxProps & Pick<TCheckboxProps, 'nativeProps' | 'ariaLabel'>>
+  Partial<TaroCheckboxProps & Pick<TCheckboxProps, 'nativeProps' | 'ariaLabel'>>
 > = (props) => {
   const { children } = {
     ...defaultProps,

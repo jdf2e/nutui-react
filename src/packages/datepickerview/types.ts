@@ -1,9 +1,5 @@
 import { BasicComponent } from '@/utils/typings'
-import {
-  PickerOptions,
-  PickerValue,
-  PickerOption,
-} from '@/packages/pickerview/types'
+import { PickerOptions, PickerValue, PickerOption } from '@/types'
 
 export interface DatePickerViewProps extends BasicComponent {
   value?: Date

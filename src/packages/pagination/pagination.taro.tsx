@@ -1,24 +1,11 @@
-import React, { FunctionComponent, ReactNode, useMemo } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import addColorForHarmony from '@/utils/add-color-for-harmony'
-
-export interface PaginationProps extends BasicComponent {
-  defaultValue: number
-  value: number
-  mode: 'multi' | 'simple' | 'lite'
-  prev: ReactNode
-  next: ReactNode
-  total: number
-  pageSize: number
-  itemSize: number
-  ellipse: boolean
-  itemRender: (page: any, index: number) => ReactNode
-  onChange: (currPage: number) => void
-}
+import { WebPaginationProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -30,9 +17,9 @@ const defaultProps = {
   pageSize: 10,
   itemSize: 5,
   ellipse: false,
-} as PaginationProps
+} as WebPaginationProps
 export const Pagination: FunctionComponent<
-  Partial<PaginationProps> &
+  Partial<WebPaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()

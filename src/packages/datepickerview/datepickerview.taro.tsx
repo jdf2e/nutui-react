@@ -18,7 +18,7 @@ import {
   getDatePartValue,
   handlePickerValueChange,
 } from '@/packages/datepicker/utils'
-import { DatePickerViewProps } from './types'
+import { TaroDatePickerViewProps } from '@/types'
 
 const currentYear = new Date().getFullYear()
 
@@ -30,11 +30,11 @@ const defaultProps = {
   minuteStep: 1,
   startDate: new Date(currentYear - 10, 0, 1),
   endDate: new Date(currentYear + 10, 11, 31),
-} as DatePickerViewProps
+} as TaroDatePickerViewProps
 
-export const DatePickerView: FunctionComponent<Partial<DatePickerViewProps>> = (
-  props
-) => {
+export const DatePickerView: FunctionComponent<
+  Partial<TaroDatePickerViewProps>
+> = (props) => {
   const {
     startDate,
     endDate,

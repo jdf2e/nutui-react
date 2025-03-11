@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import { CountDownProps, CountDownTimeProps } from './types'
+import { WebCountDownProps, CountDownTime } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,11 +21,11 @@ const defaultProps = {
   autoStart: true,
   time: 0,
   destroy: false,
-} as CountDownProps
+} as WebCountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
   unknown,
-  Partial<CountDownProps>
+  Partial<WebCountDownProps>
 > = (props, ref) => {
   const {
     type,
@@ -225,7 +225,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   useEffect(() => {
     const tranTime = formatRemainTime(stateRef.current.restTime, 'custom')
 
-    onUpdate && onUpdate(tranTime as CountDownTimeProps)
+    onUpdate && onUpdate(tranTime as CountDownTime)
   }, [restTimeStamp])
 
   // 监听暂停
@@ -292,7 +292,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   )
 }
 
-export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
+export const CountDown = React.forwardRef<unknown, Partial<WebCountDownProps>>(
   InternalCountDown
 )
 

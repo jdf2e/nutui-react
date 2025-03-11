@@ -1,34 +1,11 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import {
-  BaseEventOrig,
-  Textarea,
-  TextareaProps,
-  View,
-} from '@tarojs/components'
+import { BaseEventOrig, Textarea, View } from '@tarojs/components'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface TextAreaProps
-  extends Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>,
-    Omit<BasicComponent, 'style'> {
-  value: string
-  defaultValue: string
-  showCount: boolean
-  maxLength: number
-  rows: number
-  placeholder: string
-  readOnly: boolean
-  disabled: boolean
-  autoSize: boolean
-  plain: boolean
-  status: 'error' | 'default'
-  onChange: (value: string) => void
-  onBlur: (event: BaseEventOrig) => void
-  onFocus: (event: BaseEventOrig) => void
-}
+import { TaroTextAreaProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -41,8 +18,10 @@ const defaultProps = {
   autoSize: false,
   plain: false,
   status: 'default',
-} as TextAreaProps
-export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
+} as TaroTextAreaProps
+export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
+  props
+) => {
   const { locale } = useConfig()
   const {
     className,

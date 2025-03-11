@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Loading, More } from '@nutui/icons-react-taro'
@@ -7,28 +7,10 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
-import { PullToRefreshType } from './types'
+import { ComponentDefaults, Timeout } from '@/utils/typings'
 import pxTransform from '@/utils/px-transform'
 import { getDeviceInfo } from '@/utils/get-system-info'
-
-export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
-
-export interface PullToRefreshProps extends BasicComponent {
-  onRefresh: () => Promise<any>
-  type: PullToRefreshType
-  pullingText: ReactNode
-  canReleaseText: ReactNode
-  refreshingText: ReactNode
-  completeText: ReactNode
-  completeDelay: number
-  headHeight: number
-  threshold: number
-  disabled: boolean
-  scrollTop: number
-  renderIcon: (status: PullStatus) => ReactNode
-  renderText: (status: PullStatus) => ReactNode
-}
+import { PullStatus, TaroPullToRefreshProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -43,15 +25,15 @@ const defaultProps = {
   threshold: 60,
   scrollTop: 0,
   onRefresh: () => {},
-} as PullToRefreshProps
+} as TaroPullToRefreshProps
 
-export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
-  p
-) => {
+export const PullToRefresh: FunctionComponent<
+  Partial<TaroPullToRefreshProps>
+> = (p) => {
   const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
   const touch = useTouch()
-  const props: PullToRefreshProps = {
+  const props: TaroPullToRefreshProps = {
     ...defaultProps,
     ...p,
     ...{

@@ -2,28 +2,18 @@ import React, { FunctionComponent } from 'react'
 
 import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import { TaroSwitchProps } from '@/types'
 
-export interface SwitchProps extends BasicComponent {
-  checked: boolean
-  defaultChecked: boolean
-  disabled: boolean
-  activeText: React.ReactNode
-  inactiveText: React.ReactNode
-  onChange: (
-    val: boolean,
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
   activeText: '',
   inactiveText: '',
-} as SwitchProps
-export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
+} as TaroSwitchProps
+export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
     checked,
     defaultChecked,

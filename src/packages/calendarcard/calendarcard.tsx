@@ -1,7 +1,7 @@
-import React, { ReactNode, useEffect, useState, useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import {
   convertDateToDay,
   convertDayToDate,
@@ -15,25 +15,9 @@ import type {
   CalendarCardMonth,
   CalendarCardRef,
   CalendarCardValue,
-} from './types'
+  WebCalendarCardProps,
+} from '@/types'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface CalendarCardProps extends BasicComponent {
-  // 日视图-选择一个日期 | 日视图-选择多个日期 | 日视图-选择范围 | 周视图-选择某一周
-  type: 'single' | 'multiple' | 'range' | 'week'
-  value?: CalendarCardValue
-  defaultValue?: CalendarCardValue
-  firstDayOfWeek?: number // 0-6
-  startDate?: Date
-  endDate?: Date
-  disableDay?: (day: CalendarCardDay) => boolean
-  renderDay?: (day: CalendarCardDay) => ReactNode
-  renderDayTop?: (day: CalendarCardDay) => ReactNode
-  renderDayBottom?: (day: CalendarCardDay) => ReactNode
-  onDayClick?: (day: CalendarCardDay) => void
-  onPageChange: (data: CalendarCardMonth) => void
-  onChange: (value: CalendarCardValue) => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -45,7 +29,7 @@ const prefixCls = 'nut-calendarcard'
 
 export const CalendarCard = React.forwardRef<
   CalendarCardRef,
-  Partial<CalendarCardProps>
+  Partial<WebCalendarCardProps>
 >((props, ref) => {
   const { locale } = useConfig()
   const {

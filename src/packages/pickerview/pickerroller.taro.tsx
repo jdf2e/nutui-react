@@ -8,14 +8,14 @@ import React, {
 import { View } from '@tarojs/components'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
-import { PickerRollerProps, PickerOption } from './types'
+import { TaroPickerRollerProps, PickerOption } from '@/types'
 import { web } from '@/utils/platform-taro'
 import { preventDefault } from '@/utils'
 import { momentum, useStyles } from './utils'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
-  Partial<PickerRollerProps>
+  Partial<TaroPickerRollerProps>
 > = (props, ref) => {
   const {
     keyIndex = 0,
@@ -255,7 +255,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
 
 const PickerRoller = React.forwardRef<
   { stopMomentum: () => void; moving: boolean },
-  Partial<PickerRollerProps>
+  Partial<TaroPickerRollerProps>
 >(InternalPickerRoller)
 
 export default PickerRoller

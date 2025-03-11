@@ -4,10 +4,13 @@ import { FormItem } from '../formitem/formitem.taro'
 import { FormInstance } from './types'
 import { useForm, useWatch } from '@/packages/form/useform.taro'
 
+export type { FormProps } from './form.taro'
 export type {
   FormItemRuleWithoutValidator,
   FormInstance,
   FormFieldEntity,
+  NamePath,
+  Store,
 } from './types'
 
 type CompoundedComponent = React.ForwardRefExoticComponent<

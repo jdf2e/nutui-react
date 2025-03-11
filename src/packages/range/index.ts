@@ -1,5 +1,8 @@
 import { Range } from './range'
 
-export type { RangeMark, RangeValue } from './types'
-export type { RangeProps } from './range'
+export type {
+  RangeMark,
+  RangeValue,
+  WebRangeProps as RangeProps,
+} from '@/types'
 export default Range

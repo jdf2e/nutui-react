@@ -1,31 +1,10 @@
+import type { MouseEvent } from 'react'
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { View, ITouchEvent, Input as TaroInput } from '@tarojs/components'
-import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
+import { Input as TaroInput, ITouchEvent, View } from '@tarojs/components'
+import { ArrowLeft, MaskClose, Search } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface SearchBarProps extends BasicComponent {
-  value?: string
-  placeholder?: string
-  shape?: 'square' | 'round'
-  disabled?: boolean
-  maxLength?: number
-  clearable?: boolean
-  readOnly?: boolean
-  autoFocus?: boolean
-  backable: boolean
-  left: React.ReactNode
-  right: React.ReactNode
-  leftIn: React.ReactNode
-  rightIn: React.ReactNode
-  onSearch?: (val: string) => void
-  onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onClear?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroSearchBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -41,9 +20,9 @@ const defaultProps = {
   right: '',
   rightIn: '',
   leftIn: <Search size="16" />,
-} as SearchBarProps
+} as TaroSearchBarProps
 export const SearchBar: FunctionComponent<
-  Partial<SearchBarProps> &
+  Partial<TaroSearchBarProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onFocus' | 'onBlur'
@@ -179,14 +158,6 @@ export const SearchBar: FunctionComponent<
     onChange && onChange?.('')
     onClear && onClear(event)
   }
-  //   const onKeypress = (event: any) => {
-  //     if (event?.detail?.keyCode === 13) {
-  //       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-  //         event.preventDefault()
-  //       }
-  //       onSearch && onSearch(value as string)
-  //     }
-  //   }
   const onConfirm = () => {
     onSearch && onSearch(value as string)
   }

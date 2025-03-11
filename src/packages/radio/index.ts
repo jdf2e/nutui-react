@@ -1,11 +1,12 @@
 import React from 'react'
-import { Radio, RadioProps } from './radio'
+import { Radio } from './radio'
 import { RadioGroup } from '../radiogroup/radiogroup'
+import { WebRadioProps } from '@/types'
 
-export type { RadioProps } from './radio'
-export type { RadioShape, RadioPosition } from './types'
+export type { RadioShape, WebRadioProps as RadioProps } from '@/types'
 type CompoundedComponent = React.FC<
-  Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<WebRadioProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > & {
   Group: typeof RadioGroup
 }

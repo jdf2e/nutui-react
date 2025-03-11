@@ -1,22 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea/index.taro'
-
-export interface NavBarProps extends BasicComponent {
-  left: React.ReactNode
-  back: React.ReactNode
-  right: React.ReactNode
-  title: React.ReactNode
-  fixed: boolean
-  safeAreaInsetTop: boolean
-  placeholder: boolean
-  zIndex: number | string
-  onBackClick: (e: ITouchEvent) => void
-  children?: React.ReactNode
-}
+import { TaroNavBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -27,8 +15,8 @@ const defaultProps = {
   safeAreaInsetTop: false,
   placeholder: false,
   zIndex: 10,
-} as NavBarProps
-export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
+} as TaroNavBarProps
+export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
   const {
     right,
     left,

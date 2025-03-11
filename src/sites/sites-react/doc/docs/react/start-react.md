@@ -56,9 +56,9 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 import '@nutui/nutui-react/dist/styles/themes/default.scss'
 ```
 
-如果你认为上面的写法比较繁琐，你可以使用方法三提供的自动按需加载，`但是使用自动按需加载时扔需引入 global 类的文件`。
-
 #### 方法三、自动的按需加载
+
+如果你认为上面的写法比较繁琐，你可以使用方法三提供的自动按需加载，**但是使用自动按需加载时扔需引入 global 类的文件**。
 
 <details>
 <summary>vite</summary>

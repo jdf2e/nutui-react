@@ -2,38 +2,15 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
-import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import Taro, { createSelectorQuery, nextTick } from '@tarojs/taro'
+import { ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
 import useUuid from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
-
-export type TabsTitle = {
-  title: string
-  disabled: boolean
-  active?: boolean
-  value: string | number
-}
-
-export interface TabsProps extends BasicComponent {
-  tabStyle: React.CSSProperties
-  value: string | number
-  defaultValue: string | number
-  activeColor: string
-  name: string
-  direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
-  duration: number | string
-  align: 'left' | 'right'
-  title: () => JSX.Element[]
-  onChange: (index: string | number) => void
-  onClick: (index: string | number) => void
-  autoHeight: boolean
-  children?: React.ReactNode
-}
+import { TabsTitle, TaroTabsProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -43,10 +20,10 @@ const defaultProps = {
   activeType: 'line',
   duration: 300,
   autoHeight: false,
-} as TabsProps
+} as TaroTabsProps
 
 const classPrefix = 'nut-tabs'
-export const Tabs: FunctionComponent<Partial<TabsProps>> & {
+export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
   const rtl = useRtl()

@@ -1,7 +1,5 @@
 import React, {
   forwardRef,
-  HTMLInputTypeAttribute,
-  MouseEvent,
   useCallback,
   useImperativeHandle,
   useRef,
@@ -10,39 +8,11 @@ import React, {
 import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
+import { InputFormatTrigger, WebInputProps, WebInputType } from '@/types'
 
-export type InputAlign = 'left' | 'center' | 'right'
-export type InputFormatTrigger = 'onChange' | 'onBlur'
-export type InputType = HTMLInputTypeAttribute
-export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
-
-export interface InputProps extends BasicComponent {
-  type: InputType
-  name: string
-  defaultValue?: string
-  value?: string
-  placeholder?: string
-  align: InputAlign
-  disabled: boolean
-  readOnly: boolean
-  maxLength: number
-  clearable: boolean
-  clearIcon: React.ReactNode
-  formatTrigger: InputFormatTrigger
-  autoFocus: boolean
-  confirmType: InputConfirmType
-  plain: boolean
-  formatter?: (value: string) => string
-  onChange?: (value: string) => void
-  onBlur?: (value: string) => void
-  onFocus?: (value: string) => void
-  onClear?: (value: string) => void
-  onClick?: (event: MouseEvent<HTMLDivElement>) => void
-}
-
-const defaultProps: InputProps = {
+const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
   name: '',
@@ -58,11 +28,11 @@ const defaultProps: InputProps = {
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
-} as InputProps
+} as WebInputProps
 
 export const Input = forwardRef(
   (
-    props: Partial<InputProps> &
+    props: Partial<WebInputProps> &
       Omit<
         React.HTMLAttributes<HTMLDivElement>,
         'onChange' | 'onBlur' | 'onFocus' | 'onClick'
@@ -167,7 +137,7 @@ export const Input = forwardRef(
       handleValueUpdate(event.target.value, 'onChange')
     }
 
-    const getInputType = (inputType: InputType) => {
+    const getInputType = (inputType: WebInputType) => {
       if (inputType === 'digit') return 'text'
       if (inputType === 'number') return 'tel'
       return inputType

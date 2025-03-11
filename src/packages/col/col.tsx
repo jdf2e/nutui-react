@@ -1,24 +1,15 @@
 import React, {
+  CSSProperties,
   FunctionComponent,
+  useContext,
   useEffect,
   useState,
-  CSSProperties,
-  useContext,
 } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/row/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebColProps } from '@/types'
 
-export type ColEventType = 'row' | 'col'
-export interface ColProps extends BasicComponent {
-  span: string | number
-  offset: string | number
-  gutter: string | number
-  isFirst: boolean
-  isLast: boolean
-  onClick: (e: MouseEvent<HTMLDivElement>, type: ColEventType) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   span: '24',
@@ -26,10 +17,10 @@ const defaultProps = {
   gutter: '0',
   isFirst: false,
   isLast: false,
-} as ColProps
+} as WebColProps
 
 export const Col: FunctionComponent<
-  Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<WebColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const { className, style, span, offset, children, isFirst, isLast, onClick } =
     {

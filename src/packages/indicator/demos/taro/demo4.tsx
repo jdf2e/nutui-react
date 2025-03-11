@@ -51,7 +51,7 @@ const Demo4 = () => {
           total={6}
           current={2}
           direction="vertical"
-          color="white"
+          color="default"
           style={{
             marginLeft: pxTransform(50),
           }}

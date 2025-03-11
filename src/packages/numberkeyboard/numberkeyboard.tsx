@@ -1,22 +1,11 @@
-import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
-import Popup, { PopupProps } from '@/packages/popup/index'
+import Popup from '@/packages/popup/index'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
+import { WebNumberKeyboardProps } from '@/types'
 
-export interface NumberKeyboardProps extends PopupProps {
-  visible: boolean
-  rightActions: ReactNode
-  confirmText?: string
-  type: 'default' | 'rightColumn'
-  custom: Array<string>
-  random: boolean
-  onChange?: (value: string) => void
-  onDelete?: () => void
-  onClose: () => void
-  onConfirm?: () => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -25,10 +14,10 @@ const defaultProps = {
   custom: [],
   random: false,
   onClose: () => {},
-} as unknown as NumberKeyboardProps
+} as unknown as WebNumberKeyboardProps
 
 export const NumberKeyboard: FunctionComponent<
-  Partial<NumberKeyboardProps> &
+  Partial<WebNumberKeyboardProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onClick' | 'title'>
 > = (props) => {
   const { locale } = useConfig()

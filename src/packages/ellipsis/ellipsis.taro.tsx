@@ -3,27 +3,13 @@ import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
-
-export type EllipsisDirection = 'start' | 'end' | 'middle'
+import { TaroEllipsisProps } from '@/types'
 
 type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
-}
-
-export interface EllipsisProps extends BasicComponent {
-  content: string
-  direction: EllipsisDirection
-  rows: number | string
-  expandText: string
-  collapseText: string
-  symbol: string
-  lineHeight: number | string
-  width: number | string
-  onClick: () => void
-  onChange: (type: string) => void
 }
 
 const defaultProps = {
@@ -36,11 +22,11 @@ const defaultProps = {
   symbol: '...',
   lineHeight: '20',
   width: 'auto',
-} as EllipsisProps
+} as TaroEllipsisProps
 
 const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
-  Partial<EllipsisProps> &
+  Partial<TaroEllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
   const {

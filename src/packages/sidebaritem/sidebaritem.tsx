@@ -1,22 +1,15 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { mergeProps } from '@/utils/merge-props'
-
-export interface SideBarItemProps {
-  title: string | number
-  value: string | number
-  disabled: boolean
-  className: string
-  children?: React.ReactNode
-}
+import { WebSideBarItemProps } from '@/types'
 
 const defaultProps = {
   title: '',
   value: '',
   disabled: false,
-} as SideBarItemProps
+} as WebSideBarItemProps
 
-export const SideBarItem: FunctionComponent<Partial<SideBarItemProps>> = (
+export const SideBarItem: FunctionComponent<Partial<WebSideBarItemProps>> = (
   props
 ) => {
   const { children, className, disabled } = mergeProps(defaultProps, props)

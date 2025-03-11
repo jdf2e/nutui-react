@@ -1,34 +1,21 @@
-import React, { FunctionComponent, ReactNode, useCallback } from 'react'
+import React, { FunctionComponent, useCallback } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import CollapseItem from '../collapseitem/index.taro'
 import CollapseContext from './context'
 import { usePropsValue } from '@/hooks/use-props-value'
+import { CollapseActiveName, TaroCollapseProps } from '@/types'
 
-export type CollapseActiveName = Array<string> | string
-
-export interface CollapseProps extends BasicComponent {
-  activeName: CollapseActiveName
-  defaultActiveName: CollapseActiveName
-  accordion: boolean
-  expandIcon: ReactNode
-  rotate: number
-  onChange: (
-    activeName: CollapseActiveName,
-    name: string,
-    isOpen: boolean
-  ) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   defaultActiveName: [] as CollapseActiveName,
   accordion: false,
   expandIcon: null,
   rotate: 180,
-} as CollapseProps
+} as TaroCollapseProps
 
-export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
+export const Collapse: FunctionComponent<Partial<TaroCollapseProps>> & {
   Item: typeof CollapseItem
 } = (props) => {
   const {

@@ -45,6 +45,7 @@ config.nav.map((item) => {
 })
 
 let fileStrBuild = `${importStr}
+export * from '@/types';
 export { ${packages.join(',')} };`
 
 fs.outputFile(

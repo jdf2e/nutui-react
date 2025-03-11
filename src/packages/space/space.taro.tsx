@@ -1,30 +1,17 @@
 import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
+import { TaroSpaceProps } from '@/types'
 
 const prefixCls = 'nut-space'
 
-export interface SpaceProps extends BasicComponent {
-  direction: 'horizontal' | 'vertical'
-  align: 'start' | 'end' | 'center' | 'baseline'
-  justify:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'between'
-    | 'around'
-    | 'evenly'
-    | 'stretch'
-  wrap: boolean
-}
 const defaultProps = {
   direction: 'horizontal',
-} as SpaceProps
+} as TaroSpaceProps
 
 export const Space: FunctionComponent<
-  Partial<SpaceProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroSpaceProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { className, style, children, wrap, align, direction, justify } = {
     ...defaultProps,
