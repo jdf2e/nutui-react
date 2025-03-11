@@ -82,6 +82,7 @@
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "generate:file:taro": "node scripts/taro/generate-nutui-taro.js",
     "generate:file:taro:pages": "node scripts/taro/generate-taro-pages.js",
+    "generate:props_json": "PROPS_JSON=true node scripts/build-comments-to-dts.mjs",
     "lint": "eslint ./src/packages/*/",
     "lint:fix": "eslint --fix ./src/packages",
     "prepare": "husky && npm run generate:file && npm run generate:file:taro && npm run generate:file:taro:pages",

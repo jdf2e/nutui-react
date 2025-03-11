@@ -1,5 +1,6 @@
 /**
- * 向生成的组件类型文件中注入注释
+ * 通过在其他脚本 import codeShift 方法，可以向生成的组件类型文件中增加 JSDoc
+ * 通过npm scripts 触发，可在 src/types 下生成 props.json 文件
  */
 import * as path from 'path'
 import { dirname } from 'path'
@@ -10,7 +11,8 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const dist = 'release/h5/dist'
+
+const PROPS_JSON = process.env.PROPS_JSON
 
 /**
  * 通过 cofnig.json 获取所有组件的数据
@@ -105,7 +107,7 @@ function markdownTable2Json(table) {
  *    step b: 提取文档中的 Props 相关的表格，并转换为 JSON 数据
  *    step c: 添加注释
  */
-export function codeShift(env = '') {
+export function codeShift(platform) {
   const components = readAllComponents()
   const componentsProps = {}
   components.forEach((component) => {
@@ -114,7 +116,7 @@ export function codeShift(env = '') {
       __dirname,
       '../src/packages',
       name.toLowerCase(),
-      env === 'taro' ? 'doc.taro.md' : 'doc.md',
+      platform === 'taro' ? 'doc.taro.md' : 'doc.md',
     )
     if (fse.pathExistsSync(componentDocumentPath)) {
       const tables = extractPropsTable(
@@ -134,14 +136,17 @@ export function codeShift(env = '') {
     } else {
       // console.warn(name + ' document file does not exist')
     }
-    if (!component.exportEmpty) addJSDoc(componentsProps, name)
+    if (!PROPS_JSON) {
+      if (!component.exportEmpty) addJSDoc(componentsProps, name, platform)
+    }
   })
-
-  // const jsonContent = JSON.stringify(componentsProps, ' ', 2)
-  // fse.writeFileSync(path.join(__dirname, '../src/types', `props.json`), jsonContent)
+  if (PROPS_JSON) {
+    const jsonContent = JSON.stringify(componentsProps, ' ', 2)
+    fse.writeFileSync(path.join(__dirname, '../src/types', `props.json`), jsonContent)
+  }
 }
 
-function addJSDoc(propsJson, componentName) {
+function addJSDoc(propsJson, componentName, platform) {
   const transform = (file, api) => {
     const j = api.jscodeshift.withParser('ts')
     return j(file.source)
@@ -163,11 +168,10 @@ function addJSDoc(propsJson, componentName) {
       })
       .toSource()
   }
-  const baseType = path.join(__dirname, `../src/types/spec/${componentName.toLowerCase()}/base.ts`)
-  console.log(baseType)
+  const baseType = path.join(__dirname, `../release/${platform || 'h5'}/dist/es/types/spec/${componentName.toLowerCase()}/base.d.ts`)
   const source = fse.readFileSync(baseType, { encoding: 'utf8' })
   const result = transform({ source }, { jscodeshift: j })
-  console.log(result)
+  fse.writeFileSync(baseType, result)
 }
 
-codeShift()
+PROPS_JSON && codeShift('h5')
