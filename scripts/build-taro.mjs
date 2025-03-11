@@ -13,6 +13,7 @@ import { basename, dirname, extname, join, relative, resolve } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
 import { relativePath } from './relative-path.mjs'
+import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -491,6 +492,10 @@ await deleteAsync([
   `${dist}/es/packages/nutui.react.scss.d.ts`,
   `${dist}/es/packages/nutui.react.scss.js`,
 ])
+
+console.time('Build JSDoc')
+codeShift('taro')
+console.timeEnd('Build JSDoc')
 
 console.time('Copy package.json readme.md')
 await copyReleaseFiles()
