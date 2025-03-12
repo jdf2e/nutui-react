@@ -112,7 +112,6 @@ export function codeShift(platform) {
   const componentsProps = {}
   components.forEach((component) => {
     const { name } = component
-    if(name.toLowerCase() !== 'actionsheet') return
     const componentDocumentPath = path.join(
       __dirname,
       '../src/packages',
