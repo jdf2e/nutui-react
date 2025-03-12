@@ -66,7 +66,7 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
           </li>
         ))}
       </ul>
-      {issues[name].length > 0 && logs[name].length > 0 && (
+      {issues[name].length > 0 || logs[name].length > 0 && (
         <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
           <span>View more resolved </span>
           <a
