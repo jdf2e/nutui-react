@@ -15,6 +15,7 @@ import { TaroNotifyProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
+  position: 'top',
   visible: false,
   closeable: false,
   leftIcon: null,

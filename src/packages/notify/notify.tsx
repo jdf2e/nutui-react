@@ -8,9 +8,12 @@ let messageInstance: any = null
 const options: WebNotifyProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000,
-  type: 'danger',
   position: 'top',
+  visible: false,
+  closeable: false,
+  leftIcon: null,
+  rightIcon: null,
+  duration: 3000,
   onClose: () => {},
   onClick: () => {},
 }
@@ -46,22 +49,6 @@ export default {
   text(message: string | React.ReactNode, option = {}) {
     errorMsg(message)
     return notice({ message, type: 'base', ...option })
-  },
-  success(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'success', ...option })
-  },
-  primary(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'primary', ...option })
-  },
-  danger(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'danger', ...option })
-  },
-  warn(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'warning', ...option })
   },
   hide() {
     if (messageInstance) {
