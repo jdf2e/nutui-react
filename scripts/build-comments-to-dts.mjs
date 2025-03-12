@@ -112,6 +112,7 @@ export function codeShift(platform) {
   const componentsProps = {}
   components.forEach((component) => {
     const { name } = component
+    if(name.toLowerCase() !== 'actionsheet') return
     const componentDocumentPath = path.join(
       __dirname,
       '../src/packages',
@@ -149,8 +150,25 @@ export function codeShift(platform) {
 function addJSDoc(propsJson, componentName, platform) {
   const transform = (file, api) => {
     const j = api.jscodeshift.withParser('ts')
-    return j(file.source)
-      .find(j.TSInterfaceDeclaration, {
+    const ast = j(file.source)
+    function addComment(item) {
+      if (!item.key) return
+      const description = propsJson[componentName.toLowerCase()][item.key.name]
+      if (!description) return
+      item['comments'] = [
+        j.commentBlock(`*\n* ${description['desc']}\n`),
+      ]
+    }
+    ast
+      .find(j.TSTypeAliasDeclaration).forEach((path) => {
+        const annotationTypes = path.value.typeAnnotation.types
+        if (!annotationTypes) return
+        const typeLiteral = annotationTypes[annotationTypes.length - 1]
+        typeLiteral.members.forEach((item) => {
+          addComment(item)
+        })
+      })
+    ast.find(j.TSInterfaceDeclaration, {
         id: {
           name: `Base${componentName}`,
           type: 'Identifier',
@@ -158,15 +176,11 @@ function addJSDoc(propsJson, componentName, platform) {
       })
       .forEach((path) => {
         path.value?.body?.body?.forEach((item) => {
-          if (!item.key) return
-          const info = propsJson[componentName.toLowerCase()][item.key.name]
-          if (!info) return
-          item['comments'] = [
-            j.commentBlock(`*\n* ${info['desc']}\n`),
-          ]
+          addComment(item)
         })
       })
-      .toSource()
+
+      return ast.toSource()
   }
   const baseType = path.join(__dirname, `../release/${platform || 'h5'}/dist/es/types/spec/${componentName.toLowerCase()}/base.d.ts`)
   const source = fse.readFileSync(baseType, { encoding: 'utf8' })
