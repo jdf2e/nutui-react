@@ -83,3 +83,5 @@ import {
 | \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$color-title` |
 | \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$color-title` |
+
+<Contribution name="SideNavBar" />

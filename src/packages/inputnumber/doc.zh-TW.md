@@ -144,3 +144,5 @@ import { InputNumber } from '@nutui/nutui-react'
 | \--nutui-inputnumber-icon-color | 數字輸入框中icon的顏色 | `$color-text` |
 | \--nutui-inputnumber-icon-size | 數字輸入框中icon的大小 | `8px` |
 | \--nutui-inputnumber-disabled-color | 數字輸入框禁用色 | `$color-text-disabled` |
+
+<Contribution name="InputNumber" />

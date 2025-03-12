@@ -1,33 +1,19 @@
+import type { MouseEvent } from 'react'
 import React, {
-  useState,
+  FunctionComponent,
+  useCallback,
+  useContext,
   useEffect,
   useRef,
-  FunctionComponent,
-  useContext,
-  useCallback,
+  useState,
 } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import Image from '@/packages/image'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import AvatarGroup from '@/packages/avatargroup'
-
-export interface AvatarProps extends BasicComponent {
-  size: string
-  icon: React.ReactNode
-  shape: AvatarShape
-  background: string
-  color: string
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  src: string
-  alt: string
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
-  onError: () => void
-}
-
-export type AvatarShape = 'round' | 'square'
+import { WebAvatarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -39,12 +25,12 @@ const defaultProps = {
   fit: 'cover',
   src: '',
   alt: '',
-} as AvatarProps
+} as WebAvatarProps
 
 const classPrefix = `nut-avatar`
-export const Avatar: FunctionComponent<
-  Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> & { Group: typeof AvatarGroup } = (props) => {
+export const Avatar: FunctionComponent<Partial<WebAvatarProps>> & {
+  Group: typeof AvatarGroup
+} = (props) => {
   const {
     children,
     size,

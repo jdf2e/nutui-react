@@ -5,7 +5,7 @@ const Demo5 = () => {
   return (
     <>
       <Cell style={{ background: '#C2C4CC' }}>
-        <Indicator total={3} current={0} color="white" />
+        <Indicator total={3} current={0} color="default" />
       </Cell>
     </>
   )

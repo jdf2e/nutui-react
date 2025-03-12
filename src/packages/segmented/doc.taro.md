@@ -14,7 +14,7 @@ import { Segmented } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -22,7 +22,7 @@ import { Segmented } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -30,7 +30,7 @@ import { Segmented } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -72,3 +72,5 @@ import { Segmented } from '@nutui/nutui-react-taro'
 | \--nutui-segmented-item-color | 分段选择器选项文本颜色 | `$color-primary-text` |
 | \--nutui-segmented-active-background | 分段选择器选项选中的背景颜色 | `$color-mask-part` |
 | \--nutui-segmented-icon-margin-right | 分段选择器选项选间距 | `$color-mask-part` |
+
+<Contribution name="Segmented" />

@@ -1,36 +1,10 @@
-import type { MouseEvent } from 'react'
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  ReactNode,
-  useState,
-} from 'react'
+import React, { CSSProperties, FunctionComponent, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type TagType =
-  | 'default'
-  | 'primary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-
-export interface TagProps extends BasicComponent {
-  type: TagType
-  background: string
-  color: string
-  plain: boolean
-  round: boolean
-  mark: boolean
-  closeable: boolean
-  closeIcon: ReactNode
-  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  onClose: (e?: any) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroTagProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -42,10 +16,10 @@ const defaultProps = {
   mark: false,
   closeable: false,
   closeIcon: null,
-  onClose: (e: any) => {},
-  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
-} as TagProps
-export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
+  onClose: (e: ITouchEvent) => {},
+  onClick: (e: ITouchEvent) => {},
+} as TaroTagProps
+export const Tag: FunctionComponent<Partial<TaroTagProps>> = (props) => {
   const {
     className,
     style,
@@ -76,9 +50,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     [`${className}`]: className,
   })
 
-  const handleClick = (
-    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
+  const handleClick = (e: ITouchEvent) => {
     onClick && onClick(e)
   }
   // 综合考虑 color、background、plain 组合使用时的效果
@@ -136,7 +108,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 size={8}
                 onClick={(e) => {
                   setVisible(false)
-                  onClose && onClose(e)
+                  onClose && onClose(e as any)
                 }}
               />
             )}

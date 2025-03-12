@@ -154,3 +154,5 @@ import { Range } from '@nutui/nutui-react'
 | \--nutui-range-button-width | 按鈕寬度 | `24px` |
 | \--nutui-range-button-height | 按鈕高度 | `24px` |
 | \--nutui-range-button-border | 按鈕邊框 | `1px solid $color-primary` |
+
+<Contribution name="Range" />

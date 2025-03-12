@@ -8,26 +8,30 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import { harmony } from '@/utils/platform-taro'
 
 const ConfigProviderDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      title1: 'Textarea 默认',
-      title2: 'Textarea 英文',
+      title1: 'Textarea 默认-禁用',
+      title2: 'Textarea 英文-禁用',
       defaultTheme: '默认主题',
-      customTheme: '定制主题',
+      customTheme: `定制主题${harmony() ? '【暂不支持】' : ''}`,
+      RTL: harmony() ? 'RTL【暂不支持】' : 'RTL',
     },
     'zh-TW': {
-      title1: '默認用法',
-      title2: 'Textarea 英文',
+      title1: 'Textarea 默認用法-禁用',
+      title2: 'Textarea 英文-禁用',
       defaultTheme: '默認主題',
-      customTheme: '定制主題',
+      customTheme: `定制主題${harmony() ? '【暂不支持】' : ''}`,
+      RTL: harmony() ? 'RTL【暂不支持】' : 'RTL',
     },
     'en-US': {
-      title1: 'Textarea default',
-      title2: 'Textarea en-US',
+      title1: 'Textarea default + disabled',
+      title2: 'Textarea en-US + disabled',
       customTheme: 'Custom Theme',
-      defaultTheme: 'Default Theme',
+      defaultTheme: `Default Theme ${harmony() ? '[Pendding]' : ''}`,
+      RTL: harmony() ? 'RTL[Pendding]' : 'RTL',
     },
   })
   return (
@@ -42,7 +46,7 @@ const ConfigProviderDemo = () => {
         <Demo3 />
         <View className="h2">{translated.title2}</View>
         <Demo4 />
-        <View className="h2">RTL</View>
+        <View className="h2">{translated.RTL}</View>
         <Demo5 />
       </ScrollView>
     </>

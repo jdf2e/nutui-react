@@ -371,3 +371,5 @@ export default App
 | --- | --- | --- |
 | open | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
 | close | collapse the cell sidebar | `() => void` |
+
+<Contribution name="Swipe" />

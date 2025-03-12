@@ -17,15 +17,11 @@
     height: $indicator-dot-size;
     border-radius: 50%;
     background-color: $color-border-disabled;
-    margin: 0 $indicator-dot-margin;
+    margin-left: $indicator-dot-margin;
     opacity: 0.4;
 
-    &:first-child {
+    &-0 {
       margin-left: 0px;
-    }
-
-    &:last-child {
-      margin-right: 0px;
     }
 
     &-active {
@@ -64,6 +60,16 @@
 
         &-active {
           height: 6px;
+        }
+      }
+
+      &.nut-indicator-fixed-width {
+        &.nut-indicator-white {
+          .nut-indicator-dot {
+            &-active {
+              height: 6px;
+            }
+          }
         }
       }
     }
@@ -106,7 +112,6 @@
       position: relative;
       box-sizing: content-box;
       background: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(0, 0, 0, 0.06);
       opacity: 1;
     }
 
@@ -118,6 +123,7 @@
         background: rgba(255, 255, 255, 1);
       }
     }
+
     &-dot {
       &-active {
         background: rgba(255, 255, 255, 1);
@@ -141,14 +147,11 @@
 
   .nut-indicator {
     &-dot {
-      margin: $indicator-dot-margin 0;
+      margin: 0px;
+      margin-top: $indicator-dot-margin;
 
-      &:first-child {
+      &-0 {
         margin-top: 0px;
-      }
-
-      &:last-child {
-        margin-bottom: 0px;
       }
 
       &-active {
@@ -171,12 +174,7 @@
 [dir='rtl'] .nut-indicator,
 .nut-rtl .nut-indicator {
   &-dot {
-    &:first-child {
-      margin-left: $indicator-dot-margin;
-      margin-right: 0px;
-    }
-
-    &:last-child {
+    &-0 {
       margin-right: $indicator-dot-margin;
       margin-left: 0px;
     }

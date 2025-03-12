@@ -108,3 +108,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-elevator-list-fixed-color | Ceiling floor text color | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | Ceiling floor background color | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | Ceiling floor shadow | `0 0 10px #eee` |
+
+<Contribution name="Elevator" />

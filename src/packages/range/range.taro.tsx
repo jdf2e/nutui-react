@@ -1,41 +1,21 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
-  ReactNode,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import { View, Text } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { useTouch } from '@/hooks/use-touch'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { RangeMark, RangeValue } from './types'
 import { useRtl } from '../configprovider/index.taro'
 import { harmony } from '@/utils/platform-taro'
-
-export interface RangeProps extends BasicComponent {
-  value: RangeValue
-  defaultValue: RangeValue
-  range: boolean
-  disabled: boolean
-  min: number
-  max: number
-  step: number
-  minDescription: ReactNode
-  maxDescription: ReactNode
-  button: ReactNode
-  vertical: boolean
-  marks: Record<string, ReactNode> | RangeMark[]
-  currentDescription: ((value: RangeValue) => ReactNode) | null
-  onChange: (value: RangeValue) => void
-  onStart: () => void
-  onEnd: (value: RangeValue) => void
-}
+import { TaroRangeProps, RangeValue } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -45,7 +25,7 @@ const defaultProps = {
   step: 1,
   vertical: false,
   marks: {},
-} as RangeProps
+} as TaroRangeProps
 
 const isHm = harmony()
 const classPrefix = 'nut-range'
@@ -63,7 +43,7 @@ const handleOverlap = (value: number[]) => {
 }
 
 export const Range: FunctionComponent<
-  Partial<RangeProps> &
+  Partial<TaroRangeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onClick' | 'onChange' | 'defaultValue'

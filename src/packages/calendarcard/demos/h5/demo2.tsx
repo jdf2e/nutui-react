@@ -8,12 +8,11 @@ import {
 
 const Demo2 = () => {
   const [val, setVal] = useState(() => {
-    // return [];
-    return [new Date('2023-01-01'), new Date('2023-01-03')]
+    return [new Date('2025-01-01'), new Date('2025-01-03')]
   })
   const onChange = (val: CalendarCardValue) => {
     setVal(val as Date[])
-    console.log(val)
+    console.log('onChange', val)
   }
   return (
     <>

@@ -115,3 +115,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-dot-border | The border when the badge is a dot | `1px solid $color-primary-text` |
 | \--nutui-badge-outline-color | The border when badge is outline text color value | `$color-primary` |
 | \--nutui-badge-outline-border | The border when badge is outline fill mode | `1px solid $color-primary-text` |
+
+<Contribution name="Badge" />

@@ -29,7 +29,7 @@ NutUI-React 可以通過 \[CSS 變數\]（<https://developer.mozilla.org/zh-CN/d
 }
 ```
 
-> @nutui/nutui-react 中帶了兩個主題檔 默認主題：@nutui/nutui-react/dist/styles/theme-default.scss; 暗黑主題：@nutui/nutui-react/dist/styles/theme-dark.scss; 如果想使用暗黑主題，可以在專案中導入暗黑主題檔。
+> @nutui/nutui-react 中帶了兩個主題檔 默認主題：@nutui/nutui-react/dist/styles/themes/default.css; 暗黑主題：@nutui/nutui-react/dist/styles/themes/dark.css; 如果想使用暗黑主題，可以在專案中導入暗黑主題檔。
 
 #### 通過 ConfigProvider 覆蓋
 
@@ -123,3 +123,5 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 | --- | --- | --- | --- |
 | locale | 設置多語言包 | `BaseLang` | zhCN |
 | theme | 設置主題 | `Record<string, string>` | \- |
+
+<Contribution name="ConfigProvider" />

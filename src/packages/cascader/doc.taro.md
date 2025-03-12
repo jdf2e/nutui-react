@@ -117,3 +117,5 @@ import { Cascader } from '@nutui/nutui-react-taro'
 | \--nutui-cascader-item-color | 级联数据每一条的色值 | `$color-title` |
 | \--nutui-cascader-item-font-size | 级联数据每一条的字号 | `$font-size-base` |
 | \--nutui-cascader-item-active-color | 级联数据每一条的选中色值 | `$color-primary` |
+
+<Contribution name="Cascader" />

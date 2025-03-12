@@ -98,3 +98,5 @@ import { ActionSheet } from '@nutui/nutui-react'
 | \--nutui-actionsheet-item-line-height | 列表项行高 | `24px` |
 | \--nutui-actionsheet-item-color | 列表项字色 | `$color-title` |
 | \--nutui-actionsheet-item-danger | 列表项danger字色 | `$color-primary` |
+
+<Contribution name="ActionSheet" />

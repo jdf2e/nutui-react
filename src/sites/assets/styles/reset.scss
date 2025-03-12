@@ -54,7 +54,12 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+  font-family:
+    PingFang SC,
+    Microsoft YaHei,
+    Helvetica,
+    Hiragino Sans GB,
+    SimSun,
     sans-serif;
   -webkit-overflow-scrolling: touch;
 }
@@ -94,6 +99,9 @@ table {
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 html,
@@ -118,5 +126,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background: #fff;
+}
+#doc {
+  overflow-x: hidden;
 }

@@ -1,43 +1,22 @@
 import React, {
-  useState,
-  useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
-import Taro, { chooseImage, getEnv, chooseMedia } from '@tarojs/taro'
+import Taro, { chooseImage, chooseMedia, getEnv } from '@tarojs/taro'
 import { Failure, Photograph } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { funcInterceptor } from '@/utils/interceptor'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { FileItem } from './types'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { Preview } from '@/packages/uploader/preview.taro'
-
-interface sizeType {
-  /** 原图 */
-  original: string
-  /** compressed */
-  compressed: string
-}
-
-interface sourceType {
-  /** 从相册选图 */
-  album: string
-  /** 使用相机 */
-  camera: string
-}
-
-interface mediaType {
-  /** 只能拍摄图片或从相册选择图片 */
-  image: string
-  /** 只能拍摄视频或从相册选择视频 */
-  video: string
-}
+import { TaroUploaderProps, UploaderFileItem } from '@/types'
 
 interface TFileType {
   size: number
@@ -47,48 +26,6 @@ interface TFileType {
   tempFilePath?: string
   thumbTempFilePath?: string
   path?: string
-}
-
-export interface UploaderProps extends BasicComponent {
-  maxCount: string | number
-  sizeType: (keyof sizeType)[]
-  sourceType: (keyof sourceType)[]
-  mediaType: (keyof mediaType)[]
-  camera: string
-  maxFileSize: number
-  defaultValue?: FileItem[]
-  value?: FileItem[]
-  previewType: 'picture' | 'list'
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
-  uploadIcon?: React.ReactNode
-  deleteIcon?: React.ReactNode
-  uploadLabel?: React.ReactNode
-  name: string
-  accept: string
-  disabled: boolean
-  autoUpload: boolean
-  multiple: boolean
-  preview: boolean
-  deletable: boolean
-  className: string
-  previewUrl?: string
-  maxDuration: number
-  style: React.CSSProperties
-  onDelete?: (file: FileItem, files: FileItem[]) => void
-  onOversize?: (
-    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
-  ) => void
-  onOverCount?: (count: number) => void
-  onChange?: (files: FileItem[]) => void
-  upload: (
-    files: Taro.chooseImage.ImageFile | Taro.chooseMedia.ChooseMedia | any
-  ) => Promise<FileItem>
-  beforeUpload?: (
-    files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
-  ) => Promise<File[]>
-  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem, index: number) => void
-  onUploadQueueChange?: (tasks: FileItem[]) => void
 }
 
 const defaultProps = {
@@ -113,14 +50,14 @@ const defaultProps = {
   preview: true,
   deletable: true,
   maxDuration: 10,
-  beforeDelete: (file: FileItem, files: FileItem[]) => {
+  beforeDelete: (file: UploaderFileItem, files: UploaderFileItem[]) => {
     return true
   },
-} as UploaderProps
+} as TaroUploaderProps
 
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<UploaderProps>>
+  PropsWithChildren<Partial<TaroUploaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -167,8 +104,8 @@ const InternalUploader: ForwardRefRenderFunction<
       onChange?.(v)
     },
   })
-  const [uploadQueue, setUploadQueue] = useState<FileItem[]>([])
-  const fileListRef = useRef<FileItem[]>([])
+  const [uploadQueue, setUploadQueue] = useState<UploaderFileItem[]>([])
+  const fileListRef = useRef<UploaderFileItem[]>([])
   const classes = classNames(className, 'nut-uploader')
   useImperativeHandle(ref, () => ({
     submit: async () => {
@@ -239,18 +176,20 @@ const InternalUploader: ForwardRefRenderFunction<
       })
     }
   }
-  const uploadAction = async (tasks: FileItem[]) => {
+  const uploadAction = async (tasks: UploaderFileItem[]) => {
     const taskIds = tasks.map((task) => task.uid)
-    const list: FileItem[] = fileListRef.current.map((file: FileItem) => {
-      if (taskIds.includes(file.uid)) {
-        return {
-          ...file,
-          status: 'uploading',
-          message: locale.uploader.uploading,
+    const list: UploaderFileItem[] = fileListRef.current.map(
+      (file: UploaderFileItem) => {
+        if (taskIds.includes(file.uid)) {
+          return {
+            ...file,
+            status: 'uploading',
+            message: locale.uploader.uploading,
+          }
         }
+        return file
       }
-      return file
-    })
+    )
     setFileList(list)
     await Promise.all(
       tasks.map(async (currentTask, index) => {
@@ -341,13 +280,13 @@ const InternalUploader: ForwardRefRenderFunction<
     return filterFile
   }
 
-  const deleted = (file: FileItem, index: number) => {
+  const deleted = (file: UploaderFileItem, index: number) => {
     const deletedFileList = fileList.filter((file, idx) => idx !== index)
     onDelete?.(file, deletedFileList)
     setFileList(deletedFileList)
   }
 
-  const onDeleteItem = (file: FileItem, index: number) => {
+  const onDeleteItem = (file: UploaderFileItem, index: number) => {
     clearUploadQueue(index)
     funcInterceptor(beforeDelete, {
       args: [file, fileList],
@@ -385,7 +324,7 @@ const InternalUploader: ForwardRefRenderFunction<
     readFile(_files)
   }
 
-  const handleItemClick = (file: FileItem, index: number) => {
+  const handleItemClick = (file: UploaderFileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
   const renderListUploader = () => {

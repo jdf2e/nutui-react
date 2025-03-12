@@ -25,10 +25,17 @@ body {
   padding: 0px 17px 10px 17px;
 
   &.full {
-    padding: 57px 0 0 0;
-
+    padding: 0 0 0 0;
     .h2 {
       padding-left: 17px;
+    }
+  }
+
+  &.drag-full {
+    padding: 57px 0 0 0;
+    min-height: 100vh;
+    .jd-scroll-view {
+      min-height: calc(100vh - 57px);
     }
   }
 

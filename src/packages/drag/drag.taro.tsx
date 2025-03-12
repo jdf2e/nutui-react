@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
-import { createSelectorQuery } from '@tarojs/taro'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { DragState } from './drag'
+import { getWindowInfo } from '@/utils/get-system-info'
+import { web } from '@/utils/platform-taro'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -43,7 +44,6 @@ export const Drag: FunctionComponent<
     children,
     className,
     style,
-    ...reset
   } = {
     ...defaultProps,
     ...props,
@@ -67,22 +67,22 @@ export const Drag: FunctionComponent<
       const { top, left, bottom, right } = boundary
       const { screenWidth, windowHeight } = getWindowInfo()
 
-      const { width, height } = await getRectByTaro(dragRef.current)
-      dragRef.current?.getBoundingClientRect()
-      createSelectorQuery()
-        .select(`.${className}`)
-        .boundingClientRect((rec: any) => {
-          setBoundaryState({
-            top: -rec.top + top,
-            left: -rec.left + left,
-            bottom: windowHeight - rec.top - bottom - Math.ceil(height),
-            right: screenWidth - rec.left - right - Math.ceil(width),
-          })
+      const {
+        width,
+        height,
+        top: dragTop,
+        left: dragLeft,
+      } = await getRectByTaro(dragRef.current)
 
-          middleLine.current =
-            screenWidth - rec.width - rec.left - (screenWidth - rec.width) / 2
-        })
-        .exec()
+      setBoundaryState({
+        top: -dragTop + top,
+        left: -dragLeft + left,
+        bottom: windowHeight - dragTop - bottom - Math.ceil(height),
+        right: screenWidth - dragLeft - right - Math.ceil(width),
+      })
+
+      middleLine.current =
+        screenWidth - width - dragLeft - (screenWidth - width) / 2
     }
   }
 
@@ -123,7 +123,7 @@ export const Drag: FunctionComponent<
     }
   }
 
-  const touchEnd = (e: React.TouchEvent) => {
+  const touchEnd = () => {
     onDragEnd?.({
       offset: [translateX.current, translateY.current],
     })
@@ -141,34 +141,36 @@ export const Drag: FunctionComponent<
   }
 
   useEffect(() => {
-    timer.current = window.setTimeout(() => {
-      getInfo()
-    }, 300)
-
+    if (dragRef.current) {
+      if (web()) {
+        timer.current = window.setTimeout(() => {
+          getInfo()
+        }, 300)
+      } else {
+        getInfo()
+      }
+    }
     return () => {
       clearTimeout(timer.current)
     }
-  }, [])
+  }, [dragRef.current])
 
   return (
-    <div
-      style={style}
-      className={`${classPrefix} ${className}`}
-      {...reset}
-      ref={myDrag}
-    >
-      <div
+    <View style={style} className={`${classPrefix} ${className}`} ref={myDrag}>
+      <View
         className={`${classPrefix}-inner`}
-        onTouchStart={(event) => touchStart(event)}
         ref={dragRef}
+        catchMove
+        // @ts-ignore
+        onTouchStart={touchStart}
+        // @ts-ignore
         onTouchMove={touchMove}
         onTouchEnd={touchEnd}
-        // eslint-disable-next-line react/no-unknown-property
         style={currstyle}
       >
         {children}
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

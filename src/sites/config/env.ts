@@ -1,9 +1,7 @@
 type EnvConfig = {
-  baseUrl: string
-  themeUrl: string
-  isPrd: boolean
-  locales: string[]
-}
+  baseUrl: string;
+  isPrd: boolean;
+};
 
 /**
  * 配置编译环境和线上环境之间的切换
@@ -14,26 +12,22 @@ type EnvConfig = {
 
 const config: EnvConfig = {
   baseUrl: '',
-  themeUrl: '',
   isPrd: true, // 是否为线上
-  locales: ['zh-CN', 'zh-TW', 'en-US', 'th'],
-}
-switch (import.meta.env.MODE) {
+};
+switch ((import.meta as any).env.MODE) {
   case 'development':
     /*
      * 开发环境    => npm run dev
      */
-    config.isPrd = false
-    config.baseUrl = '/devServer'
-    config.themeUrl = '/theme-react/dist/theme-react/source'
-    break
+    config.isPrd = false;
+    config.baseUrl = '/devServer';
+    break;
   case 'production':
     /*
      * 线上环境 => npm run build
      */
-    config.isPrd = true
-    config.baseUrl = 'https://nutui.jd.com'
-    config.themeUrl = './source'
-    break
+    config.isPrd = true;
+    config.baseUrl = 'https://nutui.jd.com';
+    break;
 }
-export default config
+export default config;

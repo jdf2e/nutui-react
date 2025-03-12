@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react-taro'
+import {
+  DatePicker,
+  Cell,
+  PickerOptions,
+  PickerValue,
+} from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const defaultValue = new Date()
@@ -7,8 +12,8 @@ const Demo2 = () => {
   const [desc, setDesc] = useState(
     `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
   )
-  const confirm = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc(options.map((option) => option.text).join('-'))
+  const confirm = (values: PickerValue[], options: PickerOptions) => {
+    setDesc(options.map((option) => option.label).join('-'))
   }
   return (
     <>
@@ -19,9 +24,9 @@ const Demo2 = () => {
       />
       <DatePicker
         title="选择日期"
-        startDate={new Date(2023, 6, 4)}
-        endDate={new Date(2025, 7, 1)}
-        defaultValue={new Date()}
+        startDate={new Date()}
+        endDate={new Date(`${defaultValue.getFullYear()}-07-01`)}
+        defaultValue={defaultValue}
         type="month-day"
         visible={show}
         onClose={() => setShow(false)}

@@ -108,3 +108,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-progress-text-position-bottom | text bottom | `-4px` |
 | \--nutui-progress-text-border-radius | text borderRadius | `5px` |
 | \--nutui-progress-text-background | text background | `$progress-color` |
+
+<Contribution name="Progress" />

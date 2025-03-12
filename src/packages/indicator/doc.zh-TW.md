@@ -67,7 +67,7 @@ import { Indicator } from '@nutui/nutui-react'
 | current | 目前頁 | `number` | `0` |
 | total | 總頁數 | `number` | `2` |
 | direction | 方向，預設為水平方向 | `horizontal` \| `vertical` | `horizontal` |
-| color | 顏色 | `primary` \| `white` | `primary` |
+| color | 顏色 | `primary` \| `default` | `primary` |
 | type | 互動類型 | `anchor` \| `slide` | `anchor` |
 
 ## 主題定製
@@ -84,3 +84,5 @@ import { Indicator } from '@nutui/nutui-react'
 | \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `6px` |
 | \--nutui-indicator-border-radius | 指示器焦點時的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器橫向時的margin值 | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

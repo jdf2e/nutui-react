@@ -79,3 +79,5 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-infiniteloading-color | 滑動到底部的文字顏色 | `$color-text-help` |
 | \--nutui-infiniteloading-icon-size | 滑動到底部的文字顏色 | `24px` |
+
+<Contribution name="InfiniteLoading" />

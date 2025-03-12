@@ -2,26 +2,14 @@ import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
   useCustomEvent,
   useCustomEventsPath,
 } from '@/hooks/use-custom-event'
 import { mergeProps } from '@/utils/merge-props'
-
-export type NotifyPosition = 'top' | 'bottom'
-export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
-
-export interface NotifyProps extends BasicComponent {
-  id?: string
-  duration: number
-  type: NotifyType
-  position: NotifyPosition
-  visible: boolean
-  onClose: () => void
-  onClick: () => void
-}
+import { TaroNotifyProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -32,14 +20,14 @@ const defaultProps = {
   visible: false,
   onClose: () => {},
   onClick: () => {},
-} as NotifyProps
+} as TaroNotifyProps
 
 const classPrefix = 'nut-notify'
 
-export const Notify: FunctionComponent<Partial<NotifyProps>> & {
+export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
   open: typeof open
   close: typeof close
-} = (props: Partial<NotifyProps>) => {
+} = (props: Partial<TaroNotifyProps>) => {
   const {
     id,
     children,

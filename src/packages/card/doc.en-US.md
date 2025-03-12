@@ -5,7 +5,7 @@ Used to display product pictures, prices and other information.
 ## Import
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { Card } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -85,3 +85,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-card-border-radius | The size of the rounded corners of the card picture and card | `4px` |
+
+<Contribution name="Card" />

@@ -1,18 +1,11 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebNotifyProps } from '@/types'
 
 let messageInstance: any = null
-export interface NotifyProps extends BasicComponent {
-  id: string
-  duration: number
-  type: string
-  position: string
-  onClick: () => void
-  onClose: () => void
-}
 
-const options: NotifyProps = {
+const options: WebNotifyProps = {
   ...ComponentDefaults,
   id: '',
   duration: 3000,
@@ -42,6 +35,7 @@ function notice(opts: any) {
     messageInstance = notification
   })
 }
+
 const errorMsg = (message: any) => {
   if (!message) {
     console.warn('[NutUI Notify]: message不能为空')

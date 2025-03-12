@@ -60,3 +60,5 @@ import { WaterMark } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-watermark-z-index | zIndex | `$mask-content-z-index` |
+
+<Contribution name="WaterMark" />

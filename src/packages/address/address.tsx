@@ -9,39 +9,14 @@ import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
-import { AddressList } from './types'
 import {
-  CascaderOption,
-  CascaderOptionKey,
-  CascaderProps,
+  AddressList,
+  AddressRef,
   CascaderValue,
-} from '@/packages/cascader/index'
+  WebAddressProps,
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-type AddressRef = {
-  open: () => void
-  close: () => void
-}
-
-export interface AddressProps extends CascaderProps {
-  visible: boolean
-  defaultVisible: boolean
-  value?: CascaderValue
-  defaultValue?: CascaderValue
-  type: string
-  options: CascaderOption[]
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  custom: boolean | string
-  existList: AddressList[]
-  height: string | number
-  defaultIcon: React.ReactNode
-  selectIcon: React.ReactNode
-  backIcon: React.ReactNode
-  onSwitch?: (data: { type: string }) => void
-  onExistSelect?: (data: AddressList) => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -57,11 +32,11 @@ const defaultProps = {
   selectIcon: null,
   closeIcon: null,
   backIcon: null,
-} as unknown as AddressProps
+} as unknown as WebAddressProps
 
 export const InternalAddress: ForwardRefRenderFunction<
   AddressRef,
-  Partial<AddressProps> &
+  Partial<WebAddressProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'defaultValue' | 'onLoad' | 'title'

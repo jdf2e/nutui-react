@@ -27,7 +27,7 @@ import {
   CalendarMonthInfo,
   CalendarValue,
   CalendarType,
-} from '../calendar/types'
+} from '@/types'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void

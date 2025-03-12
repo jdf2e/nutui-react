@@ -1,19 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem'
 import TabbarContext from './context'
-
-export interface TabbarProps extends BasicComponent {
-  defaultValue: number
-  value?: number
-  fixed: boolean
-  inactiveColor: string
-  activeColor: string
-  safeArea: boolean
-  onSwitch: (value: number) => void
-}
+import { WebTabbarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -23,9 +14,9 @@ const defaultProps = {
   activeColor: '',
   safeArea: false,
   onSwitch: (value) => {},
-} as TabbarProps
+} as WebTabbarProps
 
-export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
+export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
   Item: typeof TabbarItem
 } = (props) => {
   const {

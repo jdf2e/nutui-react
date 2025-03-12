@@ -89,3 +89,5 @@ import { Address } from '@nutui/nutui-react'
 | close | 关闭地址选择 | `-` |
 
 更多参数可参考 `Cascader` 组件。
+
+<Contribution name="Address" />

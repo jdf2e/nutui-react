@@ -79,7 +79,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "jdtaro": 2,
+          "v15": 1,
           "author": "",
           "dd": true
         },
@@ -92,7 +93,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "songsong",
           "dd": true
         },
@@ -105,8 +106,8 @@
           "sort": 2,
           "show": false,
           "taro": true,
+          "v15": 100,
           "exportEmpty": true,
-          "v15": true,
           "author": "songsong",
           "dd": true
         },
@@ -120,7 +121,7 @@
           "show": true,
           "exportEmpty": true,
           "taro": true,
-          "v15": true,
+          "v15": 99,
           "author": "hanyuxinting",
           "dd": true
         },
@@ -134,7 +135,7 @@
           "show": true,
           "taro": true,
           "exclude": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis-cloud",
           "dd": true
         },
@@ -147,7 +148,8 @@
           "sort": 8,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 99,
+          "jdtaro": 2,
           "author": "vickyYE",
           "dd": true
         },
@@ -160,7 +162,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "junjun",
           "dd": true
         }
@@ -170,7 +172,6 @@
       "name": "布局组件",
       "enName": "layout",
       "packages": [
-        
         {
           "version": "3.0.0",
           "name": "Divider",
@@ -180,7 +181,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 100,
           "author": "vickyYE",
           "dd": true
         },
@@ -193,7 +194,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "yangxiaolu",
           "dd": true
         },
@@ -207,7 +208,6 @@
           "show": false,
           "taro": true,
           "exportEmpty": true,
-          "v15": true,
           "author": "yangxiaolu",
           "dd": true
         },
@@ -220,21 +220,22 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 99,
           "author": "yushuang24",
           "dd": true
         },
         {
-            "version": "3.0.0",
-            "name": "Col",
-            "type": "component",
-            "cName": "列",
-            "desc": "布局组件中的列",
-            "sort": 3,
-            "show": false,
-            "exportEmpty": true,
-            "author": "yushuang24",
-            "dd": true
-          },
+          "version": "3.0.0",
+          "name": "Col",
+          "type": "component",
+          "cName": "列",
+          "desc": "布局组件中的列",
+          "sort": 3,
+          "show": false,
+          "exportEmpty": true,
+          "author": "yushuang24",
+          "dd": true
+        },
         {
           "version": "3.0.0",
           "name": "Row",
@@ -249,6 +250,19 @@
         },
         {
           "version": "3.0.0",
+          "name": "SafeArea",
+          "type": "component",
+          "cName": "安全区",
+          "desc": "在全面屏下提供自适应的边距调整。",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "v15": 99,
+          "author": "oasis",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
           "name": "Space",
           "type": "component",
           "cName": "间距",
@@ -256,6 +270,7 @@
           "sort": 8,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "ivan",
           "dd": true
         },
@@ -268,20 +283,9 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "hx",
           "dd": false
-        },
-        {
-          "version": "3.0.0",
-          "name": "SafeArea",
-          "type": "component",
-          "cName": "安全区",
-          "desc": "在全面屏下提供自适应的边距调整。",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "oasis",
-          "dd": true
         }
       ]
     },
@@ -298,7 +302,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "vickyYe",
           "dd": false
         },
@@ -311,6 +315,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "songsong",
           "dd": false
         },
@@ -323,6 +328,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "Ymm0008",
           "dd": false
         },
@@ -335,7 +341,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "Ymm0008",
           "dd": true
         },
@@ -349,7 +355,6 @@
           "sort": 5,
           "show": false,
           "taro": true,
-          "v15": true,
           "author": "Ymm0008",
           "dd": true
         },
@@ -362,21 +367,9 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "dsj",
           "dd": true
-        },
-        {
-          "version": "2.0.0",
-          "name": "SideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航",
-          "desc": "用于内容选择和切换",
-          "sort": 9,
-          "show": true,
-          "taro": true,
-          "author": "hx",
-          "dd": false
         },
         {
           "version": "3.0.0",
@@ -387,8 +380,8 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": 1,
           "author": "Alex.hxy",
-          "v15": true,
           "dd": true
         },
         {
@@ -401,32 +394,8 @@
           "show": false,
           "taro": true,
           "author": "Alex.hxy",
-          "v15": true,
+          "exportEmpty": true,
           "dd": true
-        },
-        {
-          "version": "2.0.0",
-          "name": "SideNavBarItem",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "exportEmpty": true,
-          "desc": "用于侧边栏导航子组件",
-          "sort": 11,
-          "show": false,
-          "author": "hx",
-          "dd": false
-        },
-        {
-          "version": "2.0.0",
-          "name": "SubSideNavBar",
-          "type": "component",
-          "cName": "侧边栏导航子组件",
-          "desc": "用于侧边栏导航的子组件",
-          "exportEmpty": true,
-          "sort": 10,
-          "show": false,
-          "author": "hx",
-          "dd": false
         },
         {
           "version": "3.0.0",
@@ -437,7 +406,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 2,
           "author": "dsj",
           "dd": true
         },
@@ -449,7 +418,6 @@
           "type": "component",
           "show": false,
           "taro": true,
-          "v15": true,
           "exportEmpty": true,
           "desc": "标签栏子组件",
           "author": "dsj",
@@ -462,7 +430,6 @@
           "cName": "选项卡切换子组件",
           "type": "component",
           "show": false,
-          "v15": true,
           "exportEmpty": true,
           "desc": "选项卡切换子组件",
           "author": "张晶发",
@@ -477,7 +444,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 2,
           "author": "oasis",
           "dd": true
         }
@@ -496,6 +463,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "yangxiaolu",
           "dd": false
         },
@@ -508,6 +476,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "szg2008",
           "dd": false
         },
@@ -532,6 +501,7 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "eiinu",
           "dd": true
         },
@@ -544,6 +514,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "ailululu",
           "dd": false
         },
@@ -556,7 +527,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -568,7 +539,6 @@
           "desc": "多选按钮组",
           "sort": 11,
           "show": false,
-          "v15": true,
           "exportEmpty": true,
           "author": "oasis",
           "dd": true
@@ -582,8 +552,22 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "dsj",
           "dd": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "DatePickerView",
+          "type": "component",
+          "cName": "日期选择器视图",
+          "desc": "DatePickerView 是 DatePicker 的内容区域",
+          "sort": 16,
+          "show": true,
+          "taro": true,
+          "v15": -1,
+          "dd": false,
+          "author": "songsong"
         },
         {
           "version": "2.0.0",
@@ -594,6 +578,8 @@
           "sort": 19,
           "show": true,
           "taro": true,
+          "v15": 2,
+          "jdtaro": 2,
           "author": "hanyuxinting",
           "dd": false
         },
@@ -606,6 +592,7 @@
           "sort": 19,
           "show": false,
           "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "hanyuxinting",
           "dd": false
@@ -619,7 +606,8 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
+          "jdtaro": 2,
           "author": "VickyYe",
           "dd": true
         },
@@ -632,7 +620,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": true
         }
@@ -651,6 +639,7 @@
           "sort": 13,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "oasis-cloud",
           "dd": false
         },
@@ -676,6 +665,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "Drjingfubo",
           "dd": true
         },
@@ -688,8 +678,9 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "author": "dsj",
-          "dd": false
+          "v15": -1,
+          "dd": false,
+          "author": "songsong"
         },
         {
           "version": "3.0.0",
@@ -700,7 +691,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": false,
+          "v15": -1,
           "dd": false,
           "author": "songsong"
         },
@@ -713,7 +704,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -726,7 +717,7 @@
           "sort": 10,
           "exportEmpty": true,
           "show": false,
-          "v15": true,
+          "v15": 1,
           "author": "oasis",
           "dd": true
         },
@@ -739,6 +730,7 @@
           "sort": 3,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "vickyYe",
           "dd": false
         },
@@ -751,7 +743,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -764,6 +756,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "Ymm0008",
           "dd": true
         },
@@ -776,8 +769,9 @@
           "sort": 10,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "Drjingfubo",
-          "dd": false
+          "dd": true
         },
         {
           "version": "2.0.0",
@@ -788,6 +782,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "songsong",
           "dd": false
         },
@@ -800,7 +795,8 @@
           "sort": 11,
           "show": true,
           "taro": true,
-          "v15": true,
+          "jdtaro": 2,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -813,7 +809,9 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": true,
+          "jdtaro": 2,
+          "v15": 1,
+
           "author": "VickyYe",
           "dd": true
         },
@@ -826,6 +824,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "v15": 1000,
           "author": "swag~jun",
           "dd": false
         }
@@ -844,6 +843,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "dsj",
           "dd": true
         },
@@ -856,7 +856,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lzz",
           "dd": true
         },
@@ -869,7 +869,7 @@
           "sort": 12,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "yangjinjun3",
           "dd": true
         },
@@ -882,7 +882,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 990,
           "author": "songsong",
           "dd": false
         },
@@ -895,21 +895,8 @@
           "sort": 16,
           "show": true,
           "taro": true,
+          "v15": 1,
           "author": "liukun",
-          "v15": true,
-          "dd": true
-        },
-        {
-          "version": "3.0.0",
-          "name": "ResultPage",
-          "type": "component",
-          "cName": "结果反馈",
-          "desc": "以页面的形式向用户反馈操作结果",
-          "sort": 15,
-          "show": true,
-          "taro": true,
-          "v15": true,
-          "author": "songsong",
           "dd": true
         },
         {
@@ -921,7 +908,7 @@
           "sort": 5,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": false
         },
@@ -934,7 +921,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "mike8625",
           "dd": true
         },
@@ -947,6 +934,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "vickyYe",
           "dd": false
         },
@@ -959,6 +947,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "vickyYE",
           "dd": true
         },
@@ -971,7 +960,7 @@
           "sort": 19,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 10,
           "author": "lzz",
           "dd": false
         },
@@ -983,7 +972,7 @@
           "type": "component",
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "rn": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008",
@@ -998,9 +987,22 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 10,
           "author": "oasis",
           "dd": false
+        },
+        {
+          "version": "3.0.0",
+          "name": "ResultPage",
+          "type": "component",
+          "cName": "结果反馈",
+          "desc": "以页面的形式向用户反馈操作结果",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1011,6 +1013,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "swag~jun",
           "dd": true
         },
@@ -1023,8 +1026,9 @@
           "sort": 9,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "Ymm0008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1035,7 +1039,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "VickyYe",
           "dd": true
         }
@@ -1054,6 +1058,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "swag~jun",
           "dd": false
         },
@@ -1066,6 +1071,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "songsong",
           "dd": true
         },
@@ -1078,6 +1084,7 @@
           "sort": 21,
           "show": true,
           "taro": false,
+          "v15": -1,
           "author": "libin",
           "dd": false
         },
@@ -1090,6 +1097,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "junjun",
           "dd": true
         },
@@ -1114,6 +1122,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1126,6 +1135,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "zhenyulei",
           "dd": false
         },
@@ -1150,7 +1160,7 @@
           "sort": 17,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "songsong",
           "dd": true
         },
@@ -1163,6 +1173,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "vickyYE",
           "dd": false
         },
@@ -1175,6 +1186,7 @@
           "sort": 23,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "yangjinjun3",
           "dd": true
         },
@@ -1187,7 +1199,7 @@
           "sort": 16,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "liukun",
           "dd": true
         },
@@ -1200,7 +1212,7 @@
           "sort": 27,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1213,20 +1225,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
-          "v15": true,
-          "author": "lkjh3214",
-          "dd": true
-        },
-        {
-          "version": "3.0.0",
-          "name": "Segmented",
-          "type": "component",
-          "cName": "分段选择器",
-          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
-          "sort": 6,
-          "show": true,
-          "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "lkjh3214",
           "dd": true
         },
@@ -1239,7 +1238,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
-          "v15": true,
+          "v15": 1,
           "author": "songsong",
           "dd": true
         },
@@ -1252,7 +1251,21 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "ailululu",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "Segmented",
+          "type": "component",
+          "cName": "分段选择器",
+          "desc": "用于带页面类型区分的内容型卡片切换，如主图视频、图文切换。",
+          "sort": 6,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "lkjh3214",
           "dd": true
         },
         {
@@ -1264,8 +1277,7 @@
           "show": false,
           "exportEmpty": true,
           "desc": "步骤条子组件",
-          "author": "swag~jun",
-          "dd": false
+          "author": "swag~jun"
         },
         {
           "version": "2.0.0",
@@ -1276,6 +1288,7 @@
           "sort": 7,
           "show": true,
           "taro": true,
+          "v15": 2,
           "author": "swag~jun",
           "dd": false
         },
@@ -1288,6 +1301,8 @@
           "sort": 14,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
+          "v15": 2,
           "author": "liukun",
           "dd": true
         },
@@ -1299,6 +1314,8 @@
           "desc": "轮播子组件",
           "sort": 14,
           "show": false,
+          "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "liukun",
           "dd": true
@@ -1312,6 +1329,7 @@
           "sort": 21,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "yangjinjun3",
           "dd": false
         },
@@ -1324,6 +1342,7 @@
           "sort": 4,
           "show": true,
           "taro": true,
+          "v15": 100,
           "author": "lzz",
           "dd": true
         },
@@ -1336,6 +1355,7 @@
           "sort": 24,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1348,6 +1368,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": true
         },
@@ -1360,6 +1381,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": 1000,
           "author": "hx",
           "dd": false
         }
@@ -1371,6 +1393,19 @@
       "packages": [
         {
           "version": "2.0.0",
+          "name": "AvatarCropper",
+          "type": "component",
+          "cName": "头像裁剪",
+          "desc": "仿微信头像裁剪功能",
+          "sort": 26,
+          "show": true,
+          "taro": true,
+          "v15": -1,
+          "author": "Marvin",
+          "dd": false
+        },
+        {
+          "version": "2.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",
@@ -1378,6 +1413,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "swag~jun",
           "dd": false
         },
@@ -1390,6 +1426,7 @@
           "sort": 6,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "songsong",
           "dd": true
         },
@@ -1414,6 +1451,7 @@
           "sort": 20,
           "show": true,
           "taro": true,
+          "v15": -1,
           "author": "zhaoqian16",
           "dd": true
         },
@@ -1426,6 +1464,7 @@
           "sort": 25,
           "show": true,
           "taro": true,
+          "v15": 1000,
           "author": "songsong",
           "dd": true
         },
@@ -1438,19 +1477,8 @@
           "sort": 25,
           "show": true,
           "taro": true,
+          "v15": 990,
           "author": "swag~jun",
-          "dd": false
-        },
-        {
-          "version": "2.0.0",
-          "name": "AvatarCropper",
-          "type": "component",
-          "cName": "头像裁剪",
-          "desc": "仿微信头像裁剪功能",
-          "sort": 26,
-          "show": true,
-          "taro": true,
-          "author": "Marvin",
           "dd": false
         }
       ]

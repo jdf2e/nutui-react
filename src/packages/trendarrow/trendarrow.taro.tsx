@@ -1,22 +1,10 @@
 import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
-import { View, Text } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { Text, View } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/platform-taro'
+import { TaroTrendArrowProps } from '@/types'
 
-export interface TrendArrowProps extends BasicComponent {
-  value: number
-  digits: number
-  symbol: boolean
-  zero: boolean
-  left: boolean
-  sync: boolean
-  color: string
-  riseColor: string
-  dropColor: string
-  riseIcon: React.ReactNode
-  dropIcon: React.ReactNode
-}
 const defaultProps = {
   ...ComponentDefaults,
   value: 0,
@@ -30,10 +18,10 @@ const defaultProps = {
   dropColor: harmony() ? '#14cc33' : 'var(--nutui-secondary-1)',
   riseIcon: null,
   dropIcon: null,
-} as TrendArrowProps
+} as TaroTrendArrowProps
 
 export const TrendArrow: FunctionComponent<
-  Partial<TrendArrowProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroTrendArrowProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     value,

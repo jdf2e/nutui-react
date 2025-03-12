@@ -11,7 +11,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import pxTransform from '@/utils/px-transform'
 import { harmony } from '@/utils/platform-taro'
-import { BadgeProps } from './types'
+import { TaroBadgeProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -22,8 +22,8 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
-} as BadgeProps
-export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
+} as TaroBadgeProps
+export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
   const rtl = useRtl()
   const {
     className,

@@ -86,3 +86,5 @@ import { ImagePreview } from '@nutui/nutui-react'
 | closeIconPosition | Close Icon Position | `top-right` \| `top-left` \| `bottom` | `top-right` |
 | onChange | Emitted when swiper changes | `(value:number) => void` | `-` |
 | onClose | Emitted when closing ImagePreview | `() => void` | `-` |
+
+<Contribution name="ImagePreview" />

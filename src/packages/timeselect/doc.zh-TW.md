@@ -92,3 +92,5 @@ import { TimeSelect } from '@nutui/nutui-react'
 | \--nutui-timeselect-time-height | time 高度 | `50px` |
 | \--nutui-timeselect-time-margin | time 外边距 | `0 10px 10px 0` |
 | \--nutui-timeselect-time-background | time 背景 | `$color-background` |
+
+<Contribution name="TimeSelect" />

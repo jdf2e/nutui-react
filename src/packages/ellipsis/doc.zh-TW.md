@@ -75,3 +75,5 @@ import { Ellipsis } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-ellipsis-expand-collapse-color | 展示和收起的按鈕顏色 | `#3460fa` |
+
+<Contribution name="Ellipsis" />

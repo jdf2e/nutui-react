@@ -16,6 +16,7 @@ import { SearchBar } from '@/packages/searchbar/searchbar.taro'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
+import { harmony } from '../../../../../src/utils/platform-taro'
 
 const navs = pkg.nav
 
@@ -81,7 +82,7 @@ const Index = () => {
             )}
             <View className="index-components-sublist">
               {nav.packages.map((com) =>
-                com.show && com.taro && com.dd && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
+                com.show && com.taro && (harmony() ? com.dd : true) && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className="index-components-sublist-item"

@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react-taro'
 import { ScrollView, View, ITouchEvent } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { AddressList } from './types'
+import { AddressList } from '@/types'
 
 export interface ExistRenderProps {
   type: string

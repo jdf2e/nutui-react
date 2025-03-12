@@ -1,28 +1,10 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOption } from '@/packages/radiogroup/types'
+import { View } from '@tarojs/components'
 import { Checkbox } from '../checkbox/checkbox.taro'
 import Context from './context'
 import { usePropsValue } from '@/hooks/use-props-value'
-import {
-  CheckboxDirection,
-  CheckboxLabelPosition,
-  CheckboxLimit,
-} from '@/packages/checkboxgroup/types'
-
-export interface CheckboxGroupProps {
-  disabled?: boolean
-  value?: string[]
-  defaultValue?: string[]
-  list: boolean
-  max: number | undefined
-  min: number | undefined
-  labelPosition: CheckboxLabelPosition
-  direction: CheckboxDirection
-  options: RadioGroupOption[]
-  onChange: (value: string[]) => void
-  onLimit: (type: CheckboxLimit) => void
-}
+import { TaroCheckboxGroupProps } from '@/types'
 
 const defaultProps = {
   max: undefined,
@@ -33,15 +15,11 @@ const defaultProps = {
   onChange: (value: string[]) => {},
   onLimit: (type: 'max' | 'min') => {},
   options: [],
-} as CheckboxGroupProps
+} as TaroCheckboxGroupProps
 
 const classPrefix = 'nut-checkboxgroup'
 export const CheckboxGroup = React.forwardRef(
-  (
-    props: Partial<CheckboxGroupProps> &
-      Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
-    ref
-  ) => {
+  (props: Partial<TaroCheckboxGroupProps>, ref) => {
     const {
       children,
       className,
@@ -133,7 +111,7 @@ export const CheckboxGroup = React.forwardRef(
           },
         }}
       >
-        <div
+        <View
           className={classNames(
             classPrefix,
             {
@@ -145,7 +123,7 @@ export const CheckboxGroup = React.forwardRef(
           {...rest}
         >
           {options?.length ? renderOptions() : children}
-        </div>
+        </View>
       </Context.Provider>
     )
   }

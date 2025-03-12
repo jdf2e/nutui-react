@@ -156,3 +156,5 @@ import { Table } from '@nutui/nutui-react'
 | \--nutui-table-tr-odd-background-color | 表格奇数行的背景色 | `$white` |
 | \--nutui-table-sticky-left-shadow | 表格左侧固定阴影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-table-sticky-right-shadow | 表格右侧固定阴影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+
+<Contribution name="Table" />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Check } from '@nutui/icons-react'
 import { Checkbox } from '../checkbox'
 import { CheckboxGroup } from '../../checkboxgroup/checkboxgroup'
 
@@ -34,6 +35,32 @@ test('should props correctly', () => {
   fireEvent.click(getByTestId('checkbox'))
 
   expect(handleChange).not.toBeCalled()
+})
+
+test('round props correctly', () => {
+  const { container, queryByText, getByTestId } = render(
+    <Checkbox
+      style={{ marginInlineEnd: '8px' }}
+      shape="button"
+      activeIcon={<Check className="nut-checkbox-button-icon-checked" />}
+      className="test"
+      label={
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <div>复选框</div>
+        </div>
+      }
+      defaultChecked
+    />
+  )
+  expect(
+    container.querySelector('.nut-checkbox-button-icon-checked')
+  ).toBeInTheDocument()
 })
 
 test('should fireEvent correctly', () => {

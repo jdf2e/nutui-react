@@ -5,6 +5,7 @@ import { join, resolve } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
+import rehypeHighlight from 'rehype-highlight'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
@@ -23,6 +24,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
       host: '0.0.0.0',
     },
     base: '/react/',
+    define: {
+      __DEMO_PATH__: JSON.stringify('/react/demo.html#'),
+    },
     resolve: {
       alias: [
         {
@@ -96,7 +100,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           // silenceDeprecations: ['import', 'global-builtin'],
         },
         postcss: {
-          plugins: [atImport({ path: join(__dirname, 'src`') })],
+          plugins: [atImport({ path: join(__dirname, 'src') })],
         },
       },
     },
@@ -108,6 +112,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           mdExtensions: [],
           mdxExtensions: ['.md'],
           remarkPlugins: [remarkGfm.default, remarkDirective.default],
+          rehypePlugins: [rehypeHighlight],
         }),
       },
       {

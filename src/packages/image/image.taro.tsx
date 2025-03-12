@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useState,
-  ReactNode,
-  useCallback,
-  CSSProperties,
-} from 'react'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import Taro from '@tarojs/taro'
 import {
   Image as TImage,
@@ -15,23 +9,15 @@ import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import pxTransform from '@/utils/px-transform'
-
-export interface ImageProps extends Omit<TImageProps, 'style'> {
-  style?: CSSProperties
-  width: string | number
-  height: string | number
-  radius: string | number
-  error: boolean | ReactNode
-  loading: boolean | ReactNode
-}
+import { TaroImageProps } from '@/types'
 
 const defaultProps = {
   src: '',
   error: true,
   loading: true,
-} as ImageProps
+} as TaroImageProps
 
-export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
+export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
   const classPrefix = 'nut-image'
   const {
     className,
@@ -79,7 +65,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   }
 
   const imgStyle: any = {
-    ...style,
+    ...(style as any),
     width,
     height,
   }

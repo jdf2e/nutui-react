@@ -66,3 +66,5 @@ import { PullToRefresh } from '@nutui/nutui-react-taro'
 | \--nutui-pulltorefresh-icon-width | 下拉时icon宽度 | `36px` |
 | \--nutui-pulltorefresh-icon-height | 下拉时icon高度 | `26px` |
 | \--nutui-pulltorefresh-color-primary | 深色背景模式 | `$color-primay` |
+
+<Contribution name="PullToRefresh" />

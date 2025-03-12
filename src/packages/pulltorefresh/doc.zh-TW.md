@@ -55,3 +55,5 @@ import { PullToRefresh } from '@nutui/nutui-react'
 | \--nutui-pulltorefresh-icon-width | 下拉時icon寬度 | `36px` |
 | \--nutui-pulltorefresh-icon-height | 下拉時icon高度 | `26px` |
 | \--nutui-pulltorefresh-color-primary | 深色背景模式 | `$color-primay` |
+
+<Contribution name="PullToRefresh" />

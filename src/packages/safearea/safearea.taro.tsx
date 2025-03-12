@@ -1,14 +1,10 @@
 import React, { FC } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent } from '@/utils/typings'
-
-export interface SafeAreaProps extends BasicComponent {
-  position: 'top' | 'bottom'
-}
+import { TaroSafeAreaProps } from '@/types'
 
 const classPrefix = 'nut-safe-area'
-export const SafeArea: FC<SafeAreaProps> = (props) => {
+export const SafeArea: FC<TaroSafeAreaProps> = (props) => {
   return (
     <View
       className={classNames(

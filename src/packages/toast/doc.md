@@ -102,3 +102,5 @@ Toast.config({ className: 'demo', contentClassName: 'content-demo' })
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `$radius-xl` |
 | \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |
+
+<Contribution name="Toast" />

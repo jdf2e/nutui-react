@@ -9,65 +9,20 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Check } from '@nutui/icons-react'
-import Popup, { PopupProps, CloseIconPosition } from '@/packages/popup/index'
 import { Tabs } from '@/packages/tabs/tabs'
 import Tree, { convertListToOptions } from './utils'
 import {
   CascaderPane,
+  CascaderActions,
   CascaderOption,
   CascaderValue,
-  CascaderOptionKey,
   CascaderFormat,
-} from './types'
+  WebCascaderProps,
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useConfig } from '@/packages/configprovider'
-
-export interface CascaderProps
-  extends Pick<
-    PopupProps,
-    | 'className'
-    | 'style'
-    | 'closeIcon'
-    | 'closeable'
-    | 'title'
-    | 'left'
-    | 'closeIconPosition'
-    | 'onClose'
-  > {
-  popup: boolean
-  popupProps: Partial<
-    Omit<
-      PopupProps,
-      | 'closeIcon'
-      | 'closeable'
-      | 'title'
-      | 'left'
-      | 'closeIconPosition'
-      | 'onClose'
-    >
-  >
-  visible: boolean // popup visible
-  activeColor: string
-  activeIcon: string
-  options: CascaderOption[]
-  value?: CascaderValue
-  defaultValue?: CascaderValue
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  closeable: boolean
-  closeIconPosition: CloseIconPosition
-  closeIcon: ReactNode
-  lazy: boolean
-  onLoad: (node: any, resolve: any) => void
-  onChange: (value: CascaderValue, params?: any) => void
-  onPathChange: (value: CascaderValue, params: any) => void
-}
-
-export type CascaderActions = {
-  open: () => void
-  close: () => void
-}
+import Popup from '@/packages/popup'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -85,10 +40,10 @@ const defaultProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as unknown as CascaderProps
+} as unknown as WebCascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
-  PropsWithChildren<Partial<CascaderProps>>
+  PropsWithChildren<Partial<WebCascaderProps>>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {

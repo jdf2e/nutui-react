@@ -10,39 +10,14 @@ import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { AddressList } from './types'
-import {
-  CascaderOption,
-  CascaderOptionKey,
-  CascaderProps,
-  CascaderValue,
-} from '@/packages/cascader/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-type AddressRef = {
-  open: () => void
-  close: () => void
-}
-
-export interface AddressProps extends CascaderProps {
-  visible: boolean
-  defaultVisible: boolean
-  value?: CascaderValue
-  defaultValue?: CascaderValue
-  type: string
-  options: CascaderOption[]
-  optionKey: CascaderOptionKey
-  format: Record<string, string | number | null>
-  custom: boolean | string
-  existList: AddressList[]
-  height: string | number
-  defaultIcon: React.ReactNode
-  selectIcon: React.ReactNode
-  backIcon: React.ReactNode
-  onSwitch?: (data: { type: string }) => void
-  onExistSelect?: (data: AddressList) => void
-}
+import {
+  AddressList,
+  AddressRef,
+  CascaderValue,
+  TaroAddressProps,
+} from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -58,11 +33,11 @@ const defaultProps = {
   selectIcon: null,
   closeIcon: null,
   backIcon: null,
-} as unknown as AddressProps
+} as unknown as TaroAddressProps
 
 const InternalAddress: ForwardRefRenderFunction<
   AddressRef,
-  Partial<AddressProps> &
+  Partial<TaroAddressProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'defaultValue' | 'onLoad' | 'title' | 'onClick'

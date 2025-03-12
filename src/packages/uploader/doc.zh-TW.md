@@ -106,13 +106,13 @@ import { Uploader } from '@nutui/nutui-react'
 | deletable | 是否展示刪除按鈕 | `boolean` | `true` |
 | method | 上傳請求的 http method | `string` | `post` |
 | previewType | 上傳列表的內建樣式，支持兩種基本樣式 picture、list | `string` | `picture` |
-| capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接調起攝像頭 | `string` | `false` |
+| capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接調起攝像頭 | `string` | `false` |
 | maxFileSize | 可以設定最大上傳文件的大小（字節） | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | 文件上傳數量限製 | `number` \| `string` | `1` |
 | fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`內容，設為`true`支持重復選擇上傳同一個文件 | `boolean` | `true` |
-| accept | 允許上傳的文件類型，[詳細說明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
-| uploadIcon | 上傳區域<a href="#/zh-CN/icon">圖標名稱</a> | `React.ReactNode` | `-` |
+| accept | 允許上傳的文件類型，[詳細說明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| uploadIcon | 上傳區域<a href="#/zh-CN/component/icon">圖標名稱</a> | `React.ReactNode` | `-` |
 | deleteIcon | 刪除區域的圖標名稱 | `React.ReactNode` | `-` |
 | uploadLabel | 上傳區域圖片下方文字 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多選 | `boolean` | `false` |
@@ -174,3 +174,5 @@ import { Uploader } from '@nutui/nutui-react'
 | \--nutui-uploader-preview-tips-padding | 上傳圖片預覽tips下的padding值 | `0 5px` |
 | \--nutui-uploader-preview-close-right | 上傳圖片關閉按鈕的right值 | `0px` |
 | \--nutui-uploader-preview-close-top | 上傳圖片關閉按鈕的top值 | `0px` |
+
+<Contribution name="Uploader" />

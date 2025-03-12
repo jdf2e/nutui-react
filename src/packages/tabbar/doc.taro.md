@@ -129,3 +129,5 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |
+
+<Contribution name="Tabbar" />

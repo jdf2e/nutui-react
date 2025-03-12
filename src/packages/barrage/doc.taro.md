@@ -36,3 +36,5 @@ import { Barrage } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 |
 | --- | --- | --- |
 | add | 添加数据 | `(word: string) => void` |
+
+<Contribution name="Barrage" />

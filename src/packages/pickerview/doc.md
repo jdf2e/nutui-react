@@ -71,13 +71,13 @@ import { PickerView } from '@nutui/nutui-react'
 | duration | 快速滑动时惯性滚动的时长，单位 ms | `string` \| `number` | `1000` |
 | onChange | 每一列值变更时调用 | `({value, index, selectedOptions}) => void` | `-` |
 
-### PickerOptionItem
+### PickerOption
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | label | 选项的文字内容 | `string` \| `number` | `-` |
 | value | 选项对应的值，且唯一 | `string` \| `number` | `-` |
-| children | 用于级联选项 | `PickerOptionItem[]` | `-` |
+| children | 用于级联选项 | `PickerOptions` | `-` |
 
 ## 主题定制
 
@@ -92,3 +92,5 @@ import { PickerView } from '@nutui/nutui-react'
 | \--nutui-picker-item-text-font-size | 面板每条数据的字号 | `$font-size-base` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid $color-border` |
 | \--nut-picker-mask-background | 面板遮挡区渐变值 | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
+
+<Contribution name="PickerView" />

@@ -100,3 +100,5 @@ import { Image } from '@nutui/nutui-react-taro'
 | onError | 图片加载失败后触发 | `() => void` | `-` |
 
 ### 直接使用 Taro 现有 Image 组件开发 [参考文档](https://taro-docs.jd.com/docs/components/media/image)
+
+<Contribution name="Image" />

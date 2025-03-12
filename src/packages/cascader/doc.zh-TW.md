@@ -117,3 +117,5 @@ import { Cascader } from '@nutui/nutui-react'
 | \--nutui-cascader-item-color | 級聯數據每一條的色值 | `$color-title` |
 | \--nutui-cascader-item-font-size | 級聯數據每一條的字號 | `$font-size-base` |
 | \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$color-primary` |
+
+<Contribution name="Cascader" />

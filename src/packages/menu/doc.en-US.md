@@ -137,3 +137,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-menu-item-disabled-color | Disabled state color | `$color-text-disabled` |
 | \--nutui-menu-item-padding | padding for menu options | `12px 0` |
 | \--nutui-menu-item-option-icon-margin | Distance between menu item text and icon | `6px` |
+
+<Contribution name="Menu" />

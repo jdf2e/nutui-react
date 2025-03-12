@@ -1,26 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { Tips, Warning, Failure, Ask, Success } from '@nutui/icons-react'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { Button, ButtonFill, ButtonSize, ButtonType } from '../button/button'
-import { ResultPageStatus, ResultPageStatusOptions } from './types'
+import { Ask, Failure, Success, Tips, Warning } from '@nutui/icons-react'
+import { ComponentDefaults } from '@/utils/typings'
+import { Button } from '../button/button'
+import { ResultPageStatusOptions, WebResultPageProps } from '@/types'
 
-export type ResultPageAction = {
-  text: React.ReactNode
-  type?: ButtonType
-  size?: ButtonSize
-  fill?: ButtonFill
-  disabled?: boolean
-  onClick?: () => () => void
-}
-
-export interface ResultPageProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  icon: ReactNode
-  status: ResultPageStatus
-  actions: ResultPageAction[]
-}
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
@@ -28,9 +12,9 @@ const defaultProps = {
   icon: '',
   status: 'info',
   actions: [],
-} as ResultPageProps
+} as WebResultPageProps
 export const ResultPage: FunctionComponent<
-  Partial<ResultPageProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebResultPageProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     className,

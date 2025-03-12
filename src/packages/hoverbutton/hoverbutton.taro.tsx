@@ -1,30 +1,21 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import HoverButtonItem, {
-  HoverButtonItemProps,
-} from '@/packages/hoverbuttonitem/index.taro'
+import HoverButtonItem from '@/packages/hoverbuttonitem/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
 import pxTransform from '@/utils/px-transform'
 import { UI_BOTTOM_DISTANCE } from '@/packages/hoverbutton/utils'
-
-export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
-  zIndex: number
-  tabbarHeight?: number
-}
+import { TaroHoverButtonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-} as HoverButtonProps
+} as TaroHoverButtonProps
 
 const classPrefix = 'nut-hoverbutton'
 
-export const HoverButton: FunctionComponent<
-  Partial<HoverButtonProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
-> & {
+export const HoverButton: FunctionComponent<Partial<TaroHoverButtonProps>> & {
   Item: typeof HoverButtonItem
 } = (props) => {
   const { children, zIndex, tabbarHeight, className, style, icon, onClick } = {

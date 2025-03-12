@@ -60,3 +60,5 @@ import { Audio } from '@nutui/nutui-react'
 | onEnd | 语音播放完成，loop = false 时生效 | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
 | onMute | 静音回调 | `(event：HTMLAudioElement) => void` | `-` |
 | onCanPlay | 可以播放媒体时触发 | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
+
+<Contribution name="Audio" />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text } from '@tarojs/components'
 import { Button, Cell } from '@nutui/nutui-react-taro'
 import { Plus, Star } from '@nutui/icons-react-taro'
 import { harmony } from '@/utils/platform-taro'
@@ -13,8 +14,8 @@ const Demo4 = () => {
       <Cell style={{ flexWrap: 'wrap' }}>
         <Button
           type="primary"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Button
@@ -22,8 +23,8 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="outline"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ff0f23" />}
+          rightIcon={<Star color="#ff0f23" />}
           style={marginStyle}
         >
           Button
@@ -31,21 +32,35 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ff0f23" />}
+          rightIcon={<Star color="#ff0f23" />}
           style={marginStyle}
         >
           Button
         </Button>
         <Button
+          icon={<Star color="#ff0f23" />}
+          rightIcon={<Star color="#ff0f23" />}
+          style={{
+            margin: 8,
+            width: harmony() ? 140 : 'auto',
+            backgroundColor: `#ffebf1`,
+            borderColor: `#ff0f23`,
+            color: `#ff0f23`,
+          }}
+        >
+          <Text style={{ color: '#ff0f23' }}>Button</Text>
+        </Button>
+        <Button
+          type="default"
+          fill="none"
           icon={<Star />}
           rightIcon={<Star />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `var(--nutui-color-primary-light-pressed)`,
-            borderColor: `var(--nutui-color-primary)`,
-            color: `var(--nutui-color-primary)`,
+            backgroundColor: `#f2f3f5`,
+            color: `#1a1a1a`,
           }}
         >
           Button
@@ -58,22 +73,8 @@ const Demo4 = () => {
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `var(--nutui-gray-3)`,
-            color: `var(--nutui-gray-7)`,
-          }}
-        >
-          Button
-        </Button>
-        <Button
-          type="default"
-          fill="none"
-          icon={<Star />}
-          rightIcon={<Star />}
-          style={{
-            margin: 8,
-            width: harmony() ? 140 : 'auto',
-            backgroundColor: `var(--nutui-gray-1)`,
-            color: `var(--nutui-gray-7)`,
+            backgroundColor: `#ffffff`,
+            color: `#1a1a1a`,
           }}
         >
           Button
@@ -90,7 +91,7 @@ const Demo4 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -98,7 +99,7 @@ const Demo4 = () => {
         <Button
           fill="outline"
           type="primary"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -106,7 +107,7 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Plus size={10} />}
+          icon={<Plus size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -115,8 +116,8 @@ const Demo4 = () => {
           shape="round"
           type="primary"
           size="large"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Button
@@ -125,8 +126,8 @@ const Demo4 = () => {
           shape="round"
           type="primary"
           size="xlarge"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star color="#ffffff" />}
+          rightIcon={<Star color="#ffffff" />}
           style={marginStyle}
         >
           Button

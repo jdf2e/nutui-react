@@ -82,3 +82,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-backtop-border-color | border color | `#e0e0e0` |
+
+<Contribution name="BackTop" />

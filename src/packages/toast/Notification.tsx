@@ -1,15 +1,16 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Success, Loading, Failure, Tips } from '@nutui/icons-react'
+import { Failure, Loading, Success, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
-import { ToastProps } from './index'
+import { WebToastProps } from '@/types'
 
 export interface NotificationState {
   show: boolean
 }
+
 const classPrefix = 'nut-toast'
-type ToastNativeProps = Partial<ToastProps>
+type ToastNativeProps = Partial<WebToastProps>
 
 export default class Notification extends React.PureComponent<
   ToastNativeProps,
@@ -154,6 +155,7 @@ Notification.newInstance = (properties, callback) => {
   document.body.appendChild(element)
 
   let called = false
+
   function ref(instance: any) {
     if (called) {
       return

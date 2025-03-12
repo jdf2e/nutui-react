@@ -117,3 +117,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cascader-item-color | cascader item color | `$color-title` |
 | \--nutui-cascader-item-font-size | cascader item font size | `$font-size-base` |
 | \--nutui-cascader-item-active-color | cascader item active color | `$color-primary` |
+
+<Contribution name="Cascader" />

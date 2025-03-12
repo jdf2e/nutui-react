@@ -96,3 +96,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-loading-icon-size | icon size | `$font-size-s` |
 | \--nutui-loading-color | font color | `$color-text-help` |
 | \--nutui-loading-font-size | font size | `$font-size-s` |
+
+<Contribution name="Loading" />

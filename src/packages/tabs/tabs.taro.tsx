@@ -2,38 +2,15 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
-import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import Taro, { createSelectorQuery, nextTick } from '@tarojs/taro'
+import { ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
 import useUuid from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
-
-export type TabsTitle = {
-  title: string
-  disabled: boolean
-  active?: boolean
-  value: string | number
-}
-
-export interface TabsProps extends BasicComponent {
-  tabStyle: React.CSSProperties
-  value: string | number
-  defaultValue: string | number
-  activeColor: string
-  name: string
-  direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
-  duration: number | string
-  align: 'left' | 'right'
-  title: () => JSX.Element[]
-  onChange: (index: string | number) => void
-  onClick: (index: string | number) => void
-  autoHeight: boolean
-  children?: React.ReactNode
-}
+import { TabsTitle, TaroTabsProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -43,10 +20,10 @@ const defaultProps = {
   activeType: 'line',
   duration: 300,
   autoHeight: false,
-} as TabsProps
+} as TaroTabsProps
 
 const classPrefix = 'nut-tabs'
-export const Tabs: FunctionComponent<Partial<TabsProps>> & {
+export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
   const rtl = useRtl()
@@ -160,15 +137,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     to: number,
     direction: 'horizontal' | 'vertical'
   ) => {
-    let count = 0
-    const frames = 1
-
-    function animate() {
-      if (direction === 'horizontal') setScrollLeft(to)
-      else setScrollTop(to)
-      if (++count < frames) raf(animate)
-    }
-    animate()
+    // 使用ScrollView组件此处不需要手动raf scrollLeft
+    if (direction === 'horizontal') setScrollLeft(to)
+    else setScrollTop(to)
   }
   const scrollIntoView = (index: number) => {
     raf(() => {
@@ -190,14 +161,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
           to = left - (navRect.width - titleRect.width) / 2
-          // to < 0 说明不需要进行滚动，页面元素已全部显示出来
-          if (to < 0) return
-          to = rtl ? -to : to
         }
+        scrollDirection(to, direction)
+
         nextTick(() => {
           scrollWithAnimation.current = true
         })
-        scrollDirection(to, direction)
       })
     })
   }
@@ -239,6 +208,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollY={direction === 'vertical'}
         scrollLeft={scrollLeft}
         scrollTop={scrollTop}
+        enhanced
         showScrollbar={false}
         scrollWithAnimation={
           rtl && Taro.getEnv() !== 'WEB' ? false : scrollWithAnimation.current
@@ -306,7 +276,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               autoHeightClassName:
                 autoHeight && String(value) !== String(child.props.value || idx)
                   ? 'inactive'
-                  : '',
+                  : undefined,
             })
           })}
         </View>

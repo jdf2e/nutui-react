@@ -2,8 +2,6 @@ import { RadioGroup } from './radiogroup.taro'
 
 export type {
   RadioGroupOption,
-  RadioGroupPosition,
-  RadioGroupDirection,
-  RadioGroupShape,
-} from './types'
+  TaroRadioGroupProps as RadioGroupProps,
+} from '@/types'
 export default RadioGroup

@@ -76,3 +76,5 @@ import { Skeleton } from '@nutui/nutui-react'
 | \--nutui-skeleton-line-width | 線條寬度 | `100%` |
 | \--nutui-skeleton-line-height | 線條高度 | `15px` |
 | \--nutui-skeleton-line-border-radius | 線條邊框圓角 | `0` |
+
+<Contribution name="Skeleton" />

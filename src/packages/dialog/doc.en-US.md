@@ -145,7 +145,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-dialog-z-index | dialog z index | `$mask-content-z-index` |
 | \--nutui-dialog-width | dialog width | `295px` |
 | \--nutui-dialog-min-width | dialog min width | `240px` |
 | \--nutui-dialog-padding | dialog padding | `24px` |
@@ -169,3 +168,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-close-top | dialog Closes the top value of the button | `16px` |
 | \--nutui-dialog-close-left | dialog Closes the left value of the button | `16px` |
 | \--nutui-dialog-close-right | dialog Closes the right value of the button | `16px` |
+
+<Contribution name="Dialog" />

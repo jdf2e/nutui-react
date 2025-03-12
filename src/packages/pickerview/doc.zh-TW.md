@@ -71,13 +71,13 @@ import { PickerView } from '@nutui/nutui-react-taro'
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
 | onChange | 每一列值變更時調用 | `({value, index, selectedOptions}) => void` | `-` |
 
-### PickerOptionItem
+### PickerOption
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | label | 選項的文字內容 | `string` \| `number` | `-` |
 | value | 選項對應的值，且唯一 | `string` \| `number` | `-` |
-| children | 用於級聯選項 | `PickerOptionItem[]` | `-` |
+| children | 用於級聯選項 | `PickerOptions` | `-` |
 
 ## 主題定制
 
@@ -92,3 +92,5 @@ import { PickerView } from '@nutui/nutui-react-taro'
 | \--nutui-picker-item-text-font-size | 面闆每條數據的字號 | `$font-size-base` |
 | \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid $color-border` |
 | \--nut-picker-mask-background | 面闆遮擋區漸變值 | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
+
+<Contribution name="PickerView" />

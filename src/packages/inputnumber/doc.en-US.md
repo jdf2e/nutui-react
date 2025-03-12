@@ -153,3 +153,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-inputnumber-icon-color | The color of the icon in the number input box | `$color-text` |
 | \--nutui-inputnumber-icon-size | The size of the icon in the number input box | `8px` |
 | \--nutui-inputnumber-disabled-color | The color of the disabled status of inputnumber | `$color-text-disabled` |
+
+<Contribution name="InputNumber" />

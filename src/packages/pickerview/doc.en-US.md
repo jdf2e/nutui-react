@@ -71,13 +71,13 @@ import { PickerView } from '@nutui/nutui-react'
 | duration | The duration of inertial rolling during rapid sliding, in ms | `string` \| `number` | `1000` |
 | onChange | Called when the value of each column changes | `({value, index, selectedOptions}) => void` | `-` |
 
-### PickerOptionItem
+### PickerOption
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | label | Text of column | `string` \| `number` | `-` |
 | value | Value of column | `string` \| `number` | `-` |
-| children | Cascader Option | `PickerOptionItem[]` | `-` |
+| children | Cascader Option | `PickerOptions` | `-` |
 
 ## Theming
 
@@ -92,3 +92,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-picker-item-text-font-size | The font size of each piece of data in the panel | `$font-size-base` |
 | \--nutui-picker-item-active-line-border | The border value currently selected by the panel | `1px solid $color-border` |
 | \--nut-picker-mask-background | Panel shade gradient value | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
+
+<Contribution name="PickerView" />

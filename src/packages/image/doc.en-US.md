@@ -129,3 +129,5 @@ The Image component provides lazy loading of images, which can be realized by co
 | right | Align Right |
 | bottom | Align Bottom |
 | left | Align Left |
+
+<Contribution name="Image" />

@@ -1,4 +1,4 @@
 import { Row } from './row.taro'
 
-export type { RowEventType, RowProps } from './row.taro'
+export type { TaroRowProps as RowProps } from '@/types'
 export default Row

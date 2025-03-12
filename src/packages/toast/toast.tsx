@@ -1,13 +1,13 @@
 import Notification from './Notification'
-import { ToastProps } from './index'
+import { WebToastProps } from '@/types'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
 
 let messageInstance: any = null
 
-let defaultProps: ToastProps = {
+let defaultProps: WebToastProps = {
   ...defaultOverlayProps,
   id: '',
-  position: 'center',
+  position: 'middle',
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
@@ -22,7 +22,7 @@ let defaultProps: ToastProps = {
   onClose: () => {},
 }
 
-type ToastNativeProps = Partial<ToastProps>
+type ToastNativeProps = Partial<WebToastProps>
 
 function getInstance(
   props: ToastNativeProps,

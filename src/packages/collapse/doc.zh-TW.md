@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Collapse } from 'nutui-react'
+import { Collapse } from '@nutui/nutui-react'
 ```
 
 ## 示例代碼
@@ -113,3 +113,5 @@ import { Collapse } from 'nutui-react'
 | \--nutui-collapse-wrapper-content-font-size | 內容字體大小 | `$font-size-base` |
 | \--nutui-collapse-wrapper-content-line-height | 內容行高 | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | 內容內邊距 | `12px 26px` |
+
+<Contribution name="Collapse" />

@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
@@ -14,25 +8,8 @@ import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { passiveSupported } from '@/utils/supports-passive'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { PullToRefreshType } from './types'
-
-export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
-
-export interface PullToRefreshProps extends BasicComponent {
-  onRefresh: () => Promise<any>
-  type: PullToRefreshType
-  pullingText: ReactNode
-  canReleaseText: ReactNode
-  refreshingText: ReactNode
-  completeText: ReactNode
-  completeDelay: number
-  headHeight: number
-  threshold: number
-  disabled: boolean
-  renderIcon: (status: PullStatus) => ReactNode
-  renderText: (status: PullStatus) => ReactNode
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { PullStatus, WebPullToRefreshProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -46,13 +23,13 @@ const defaultProps = {
   headHeight: 80,
   threshold: 60,
   onRefresh: () => {},
-} as PullToRefreshProps
-export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
-  p
-) => {
+} as WebPullToRefreshProps
+export const PullToRefresh: FunctionComponent<
+  Partial<WebPullToRefreshProps>
+> = (p) => {
   const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
-  const props: PullToRefreshProps = {
+  const props: WebPullToRefreshProps = {
     ...defaultProps,
     ...p,
     ...{

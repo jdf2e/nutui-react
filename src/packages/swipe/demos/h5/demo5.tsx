@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
-import { Button, Cell, Swipe, SwipeInstance } from '@nutui/nutui-react'
+import { Button, Cell, Swipe, SwipeRef } from '@nutui/nutui-react'
 
 const App = () => {
-  const closeRef = useRef<SwipeInstance>(null)
+  const closeRef = useRef<SwipeRef>(null)
   return (
     <>
       <Swipe

@@ -156,3 +156,5 @@ The component provides the following CSS variables, which can be used for custom
 | \--nutui-table-tr-odd-background-color | Background color of odd table rows | `$white` |
 | \--nutui-table-sticky-left-shadow | Shadow on the fixed left side of the table | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
 | \--nutui-table-sticky-right-shadow | Shadow on the fixed right side of the table | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+
+<Contribution name="Table" />

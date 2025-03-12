@@ -1,46 +1,16 @@
 import React, {
-  useCallback,
-  useRef,
-  HTMLInputTypeAttribute,
   forwardRef,
+  useCallback,
   useImperativeHandle,
+  useRef,
   useState,
-  MouseEvent,
 } from 'react'
 import { MaskClose } from '@nutui/icons-react'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export type InputAlign = 'left' | 'center' | 'right'
-export type InputFormatTrigger = 'onChange' | 'onBlur'
-export type InputType = HTMLInputTypeAttribute
-export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
-
-export interface InputProps extends BasicComponent {
-  type: InputType
-  name: string
-  defaultValue?: string
-  value?: string
-  placeholder?: string
-  align: InputAlign
-  disabled: boolean
-  readOnly: boolean
-  maxLength: number
-  clearable: boolean
-  clearIcon: React.ReactNode
-  formatTrigger: InputFormatTrigger
-  autoFocus: boolean
-  confirmType: InputConfirmType
-  plain: boolean
-  formatter?: (value: string) => void
-  onChange?: (value: string) => void
-  onBlur?: (value: string) => void
-  onFocus?: (value: string) => void
-  onClear?: (value: string) => void
-  onClick?: (value: MouseEvent<HTMLDivElement>) => void
-}
+import { InputFormatTrigger, WebInputProps, WebInputType } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -58,11 +28,11 @@ const defaultProps = {
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
-} as InputProps
+} as WebInputProps
 
 export const Input = forwardRef(
   (
-    props: Partial<InputProps> &
+    props: Partial<WebInputProps> &
       Omit<
         React.HTMLAttributes<HTMLDivElement>,
         'onChange' | 'onBlur' | 'onFocus' | 'onClick'
@@ -71,6 +41,7 @@ export const Input = forwardRef(
   ) => {
     const rtl = useRtl()
     const { locale } = useConfig()
+
     const {
       type,
       name,
@@ -97,129 +68,102 @@ export const Input = forwardRef(
       onCompositionStart,
       onCompositionEnd,
       ...rest
-    } = {
-      ...defaultProps,
-      ...props,
-    }
+    } = { ...defaultProps, ...props }
+
     const [value, setValue] = usePropsValue<string>({
       value: _value,
       defaultValue,
       finalValue: '',
       onChange,
     })
+
     const inputRef = useRef<HTMLInputElement>(null)
     const composingRef = useRef(false)
     const [active, setActive] = useState(false)
 
-    useImperativeHandle(ref, () => {
-      return {
-        clear: () => {
-          setValue('')
-        },
-        focus: () => {
-          inputRef.current?.focus()
-        },
-        blur: () => {
-          inputRef.current?.blur()
-        },
-        get nativeElement() {
-          return inputRef.current
-        },
-      }
-    })
+    useImperativeHandle(ref, () => ({
+      clear: () => setValue(''),
+      focus: () => inputRef.current?.focus(),
+      blur: () => inputRef.current?.blur(),
+      get nativeElement() {
+        return inputRef.current
+      },
+    }))
 
-    const inputClass = useCallback(() => {
+    const getInputClass = useCallback(() => {
       const classPrefix = 'nut-input'
       return [
         classPrefix,
-        disabled ? `${classPrefix}-disabled` : '',
+        `${disabled ? `${classPrefix}-disabled` : ''}`,
         readOnly ? `${classPrefix}-readonly` : '',
-        plain ? `${classPrefix}-plain` : `${classPrefix}-container`,
+        `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
       ]
         .filter(Boolean)
         .join(' ')
-    }, [disabled])
+    }, [disabled, readOnly, plain])
 
-    const updateValue = (
-      value: any,
-      trigger: InputFormatTrigger = 'onChange'
+    const handleValueUpdate = (
+      inputValue: string,
+      trigger: InputFormatTrigger
     ) => {
-      let val = value
+      let updatedValue = inputValue
 
-      if (type === 'number') {
-        val = formatNumber(val, false, true)
-      }
-      if (type === 'digit') {
-        val = formatNumber(val, true, true)
-      }
-      if (formatter && trigger === formatTrigger) {
-        val = formatter(val)
-      }
-      setValue(val)
-      const eventHandler = props[trigger]
-      if (
-        eventHandler &&
-        typeof eventHandler === 'function' &&
-        trigger !== 'onChange'
-      ) {
-        eventHandler(val)
+      if (type === 'number')
+        updatedValue = formatNumber(updatedValue, false, true)
+      if (type === 'digit')
+        updatedValue = formatNumber(updatedValue, true, true)
+      if (formatter && trigger === formatTrigger)
+        updatedValue = formatter(updatedValue)
+
+      setValue(updatedValue)
+
+      if (trigger !== 'onChange') {
+        const eventHandler = props[trigger]
+        eventHandler?.(updatedValue)
       }
     }
 
-    const handleFocus = (event: Event) => {
-      const val: any = (event.target as any).value
-      onFocus && onFocus(val)
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+      onFocus?.(event.target.value)
       setActive(true)
     }
 
-    const handleInput = (value: string) => {
-      updateValue(value, 'onChange')
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+      handleValueUpdate(event.target.value, 'onBlur')
+      setTimeout(() => setActive(false), 200)
     }
 
-    const handleBlur = (event: Event) => {
-      const val: any = (event.target as any).value
-      updateValue(val, 'onBlur')
-      setTimeout(() => {
-        setActive(false)
-      }, 200)
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      handleValueUpdate(event.target.value, 'onChange')
     }
 
-    const inputType = (type: string) => {
-      if (type === 'digit') {
-        return 'text'
+    const getInputType = (inputType: WebInputType) => {
+      if (inputType === 'digit') return 'text'
+      if (inputType === 'number') return 'tel'
+      return inputType
+    }
+
+    const getTextAlign = () => {
+      if (rtl) {
+        if (align === 'right') return 'left'
+        if (align === 'left') return 'right'
       }
-      if (type === 'number') {
-        return 'tel'
-      }
-      return type
+      return align
     }
 
     return (
       <div
-        className={`${inputClass()}  ${className || ''}`}
+        className={`${getInputClass()} ${className || ''}`}
         style={style}
-        onClick={(e) => {
-          onClick && onClick(e)
-        }}
+        onClick={onClick}
       >
         <input
           {...rest}
+          ref={inputRef}
           name={name}
           className="nut-input-native"
-          ref={inputRef}
-          style={{
-            // eslint-disable-next-line no-nested-ternary
-            textAlign: rtl
-              ? // eslint-disable-next-line no-nested-ternary
-                align === 'right'
-                ? // eslint-disable-next-line no-nested-ternary
-                  'left'
-                : align === 'left'
-                  ? 'right'
-                  : 'center'
-              : align,
-          }}
-          type={inputType(type)}
+          style={{ textAlign: getTextAlign() }}
+          type={getInputType(type)}
           maxLength={maxLength}
           placeholder={
             placeholder === undefined ? locale.placeholder : placeholder
@@ -229,15 +173,9 @@ export const Input = forwardRef(
           value={value}
           autoFocus={autoFocus}
           enterKeyHint={confirmType}
-          onBlur={(e: any) => {
-            handleBlur(e)
-          }}
-          onFocus={(e: any) => {
-            handleFocus(e)
-          }}
-          onChange={(e: any) => {
-            handleInput(e.currentTarget.value)
-          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleInputChange}
           onCompositionStart={(e) => {
             composingRef.current = true
             onCompositionStart?.(e)
@@ -247,19 +185,19 @@ export const Input = forwardRef(
             onCompositionEnd?.(e)
           }}
         />
-        {clearable && !readOnly && active && value.length > 0 ? (
+        {clearable && !readOnly && active && value.length > 0 && (
           <span
             style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             onClick={() => {
               if (!disabled) {
                 setValue('')
-                onClear && onClear('')
+                onClear?.('')
               }
             }}
           >
             {clearIcon || <MaskClose className="nut-input-clear" />}
           </span>
-        ) : null}
+        )}
       </div>
     )
   }

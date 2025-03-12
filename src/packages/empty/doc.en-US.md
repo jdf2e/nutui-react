@@ -89,3 +89,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-empty-title-line-height | Empty component image title line height | `$font-size-l` |
 | \--nutui-empty-description-line-height | Empty component image description line height | `1` |
 | \--nutui-empty-background-color | Empty component background color | `#fff` |
+
+<Contribution name="Empty" />

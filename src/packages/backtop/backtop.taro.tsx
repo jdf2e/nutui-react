@@ -1,45 +1,33 @@
 import React, {
   FunctionComponent,
   useCallback,
-  useState,
   useEffect,
   useRef,
+  useState,
 } from 'react'
-import type { MouseEvent } from 'react'
 import {
-  usePageScroll,
-  pageScrollTo,
-  PageScrollObject,
   getSystemInfo,
+  PageScrollObject,
+  pageScrollTo,
+  usePageScroll,
 } from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Top } from '@nutui/icons-react-taro'
 import { ComponentDefaults } from '@/utils/typings'
-import HoverButton, {
-  HoverButtonProps,
-} from '@/packages/hoverbutton/index.taro'
-
-export interface BackTopProps extends HoverButtonProps {
-  threshold: number
-  zIndex: number
-  duration: number
-  /**
-   * 容器滚动时的回调参数，主要用于 rn、鸿蒙端
-   */
-  scrollRes?: PageScrollObject
-  onClick?: (event: React.MouseEvent<HTMLDivElement> | ITouchEvent) => void
-}
+import HoverButton from '@/packages/hoverbutton/index.taro'
+import { TaroBackTopProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   threshold: 200,
   zIndex: 900,
   duration: 1000,
-} as BackTopProps
+} as TaroBackTopProps
 
 export const BackTop: FunctionComponent<
-  Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<TaroBackTopProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
@@ -89,7 +77,7 @@ export const BackTop: FunctionComponent<
 
   // 返回顶部点击事件
   const goTop = useCallback(
-    (e: MouseEvent<HTMLDivElement> | ITouchEvent) => {
+    (e: ITouchEvent) => {
       onClick?.(e)
       pageScrollTo({
         scrollTop: 0,

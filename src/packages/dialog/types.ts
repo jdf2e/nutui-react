@@ -1,6 +1,6 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
 import type { MouseEvent, CSSProperties } from 'react'
-import { OverlayProps } from '@/packages/overlay/types'
+import { WebOverlayProps } from '@/types'
 import { BasicComponent } from '@/utils/typings'
 
 export type DialogConfigType = {
@@ -20,7 +20,7 @@ export interface ContentProps extends BasicComponent {
   onClick: (event: MouseEvent) => void
 }
 export interface DialogWrapProps
-  extends OverlayProps,
+  extends WebOverlayProps,
     Omit<ContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean

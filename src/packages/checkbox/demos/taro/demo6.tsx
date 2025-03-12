@@ -8,6 +8,7 @@ const Demo6 = () => {
         <Checkbox
           style={{
             '--nut-icon-width': '24px',
+            '--nut-icon-height': '24px',
           }}
           label="自定义尺寸24"
         />
@@ -16,6 +17,7 @@ const Demo6 = () => {
         <Checkbox
           style={{
             '--nut-icon-width': '12px',
+            '--nut-icon-height': '12px',
           }}
           label="自定义尺寸12"
         />

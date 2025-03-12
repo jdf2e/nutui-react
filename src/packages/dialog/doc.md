@@ -145,7 +145,6 @@ export default function App() {
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-dialog-z-index | 对话框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-width | 对话框宽度 | `295px` |
 | \--nutui-dialog-min-width | 对话框最小宽度 | `240px` |
 | \--nutui-dialog-padding | 对话框padding | `24px` |
@@ -169,3 +168,5 @@ export default function App() {
 | \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
 | \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
 | \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
+
+<Contribution name="Dialog" />

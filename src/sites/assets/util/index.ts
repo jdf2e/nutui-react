@@ -5,7 +5,7 @@ const isMobile = /ios|iphone|ipod|ipad|android/.test(ua)
 
 const getComponentName = () => {
   const s = window.location.hash.split('/')
-  const cname = s[s.length - 1].toLowerCase()
+  const cname = s[s.length - 1].toLowerCase().replace('-taro', '')
   const component: any = {}
   nav.forEach((item: any) => {
     item.packages.forEach((sItem: any) => {

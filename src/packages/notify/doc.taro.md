@@ -115,3 +115,5 @@ export default App
 | \--nutui-notify-success-background-color | 成功通知的背景颜色 | `$color-success` |
 | \--nutui-notify-danger-background-color | 危险通知的背景颜色 | `$color-primary` |
 | \--nutui-notify-warning-background-color | 警告通知的背景颜色 | `$color-warning` |
+
+<Contribution name="Notify" />

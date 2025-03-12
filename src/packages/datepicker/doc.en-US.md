@@ -89,9 +89,11 @@ import { DatePicker } from '@nutui/nutui'
 | endDate | End date | `Date` | `Ten years later on December 31` |
 | pickerProps | picker props | `object` | `-` |
 | formatter | Option text formatter | `(type: string, option: PickerOption) => PickerOption` | `-` |
-| filter | Option filter | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
+| filter | Option filter | `(type: string, options: PickerOptions) => PickerOptions` | `-` |
 | threeDimensional | Turn on 3D effects | `boolean` | `true` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
 | onCancel | Emitted when click cancel button. | `() => void` | `-` |
 | onClose | Emitted when click confirm and cancel button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value, index) => void` | `-` |
+
+<Contribution name="DatePicker" />

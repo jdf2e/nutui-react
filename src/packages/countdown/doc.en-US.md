@@ -147,3 +147,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-countdown-number-primary-color | When type is `primary`, the text color of the countdown time area | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | When type is `primary`, the background color of the countdown time area | `$color-primary` |
 | \--nutui-countdown-primary-border-color | When type is `primary`, the border color of the countdown time area | `$color-primary` |
+
+<Contribution name="CountDown" />

@@ -137,3 +137,5 @@ import { Menu } from '@nutui/nutui-react-taro'
 | \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `$color-text-disabled` |
 | \--nutui-menu-item-padding | 菜单选项的内边距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜单选项文本与icon的距离 | `8px` |
+
+<Contribution name="Menu" />

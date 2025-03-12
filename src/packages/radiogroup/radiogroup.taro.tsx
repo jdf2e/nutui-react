@@ -2,38 +2,22 @@ import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ViewProps } from '@tarojs/components/types/View'
-import {
-  RadioGroupDirection,
-  RadioGroupOption,
-  RadioGroupPosition,
-  RadioGroupShape,
-} from './types'
 import RadioContext from './context'
 import Radio from '@/packages/radio/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
-
-export interface RadioGroupProps {
-  value?: string | number
-  defaultValue?: string | number
-  labelPosition: RadioGroupPosition
-  direction: RadioGroupDirection
-  shape?: RadioGroupShape
-  disabled?: boolean
-  options: RadioGroupOption[]
-  onChange: (value: string | number) => void
-}
+import { TaroRadioGroupProps } from '@/types'
 
 const defaultProps = {
   labelPosition: 'right',
   onChange: (value: string | number) => {},
   direction: 'vertical',
   options: [],
-} as RadioGroupProps
+} as TaroRadioGroupProps
 
 const classPrefix = 'nut-radiogroup'
 
 export const RadioGroup = React.forwardRef(
-  (props: Partial<RadioGroupProps> & Omit<ViewProps, 'onChange'>, ref) => {
+  (props: Partial<TaroRadioGroupProps> & Omit<ViewProps, 'onChange'>, ref) => {
     const {
       children,
       className,

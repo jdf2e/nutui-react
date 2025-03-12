@@ -3,7 +3,7 @@ import { CalendarCard, type CalendarCardValue } from '@nutui/nutui-react-taro'
 
 const Demo9 = () => {
   const onChange = (val: CalendarCardValue) => {
-    console.log(val)
+    console.log('onChange', val)
   }
   return (
     <CalendarCard

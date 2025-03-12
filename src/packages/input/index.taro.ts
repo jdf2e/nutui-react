@@ -1,9 +1,9 @@
 import { Input } from './input.taro'
 
 export type {
-  InputProps,
-  InputAlign,
-  InputFormatTrigger,
+  TaroInputType as InputType,
+  TaroInputProps as InputProps,
   InputConfirmType,
-} from './input.taro'
+  InputFormatTrigger,
+} from '@/types'
 export default Input

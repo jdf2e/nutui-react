@@ -12,7 +12,7 @@ import { access, mkdir, readFile, writeFile } from 'fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
-import { relativeFilePath } from './relative-path.mjs'
+import { relativePath } from './relative-path.mjs'
 import { codeShift } from './build-comments-to-dts.mjs'
 import { generate } from './build-theme-typings.mjs'
 
@@ -59,10 +59,13 @@ const transform = (file, api, replace) => {
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
-    path.node.source.value = relativeFilePath(file.path, dir)?.replace(
-      '.taro',
-      '',
-    )
+    if (file.path) {
+      path.node.source.value = relativePath(dir, file.path)?.replace(
+        '.taro',
+        '',
+      )
+    }
+
   }
 
   imports.forEach(reNameAlias)
@@ -82,6 +85,7 @@ async function buildES(p) {
       'src/packages/**/utils.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/hooks/**/*.{ts,tsx}',
+      'src/types/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
@@ -108,6 +112,7 @@ async function buildES(p) {
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
+          '@/types/*': ['src/types/*'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,
@@ -172,6 +177,7 @@ async function buildDeclaration() {
     `${dist}/types/src/locales/*.d.ts`,
     `${dist}/types/src/utils/*.d.ts`,
     `${dist}/types/src/hooks/*.d.ts`,
+    `${dist}/types/src/types/**/*.d.ts`,
   ])
 
   for (const file of files) {
@@ -232,32 +238,23 @@ async function buildUMD() {
 
 async function buildAllCSS() {
   // 拷贝styles
-  async function copyStyles() {
-    await copy(
-      resolve(__dirname, '../src/styles'),
-      resolve(__dirname, `../${dist}/styles`),
-    )
-
+  async function generateAllStyles() {
+    const projectID = process.env.VITE_APP_PROJECT_ID
     const content = [
-      `@import './styles/theme-default.scss';`,
-      `@import './styles/variables.scss';`,
+      `@import './styles/variables${projectID ? `-${projectID}` : ''}.scss';`,
       `@import './styles/mixins/index.scss';`,
       `@import './styles/animation/index.scss';`,
     ]
-    const projectID = process.env.VITE_APP_PROJECT_ID
-    if (projectID) {
-      content[1] = `@import '../variables-${projectID}.scss';`
-    }
     const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativeFilePath(`/${dist}/style.scss`, '/' + file)}';`,
+        `@import '${relativePath('/' + file, `/${dist}/style.scss`)}';`,
       )
     })
     dest(`${dist}/style.scss`, content.join('\n'))
   }
 
-  await copyStyles()
+  await generateAllStyles()
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -277,6 +274,25 @@ async function buildAllCSS() {
 }
 
 async function buildThemeCSS() {
+  const files = await glob([`${dist}/styles/theme-*.scss`], {
+    ignore: [`${dist}/types/src/**/*.taro.d.ts`],
+  })
+  const projectID = process.env.VITE_APP_PROJECT_ID
+  const inputFiles = {}
+  files.forEach(filePath => {
+    const themeName = basename(filePath, 'scss').replace('theme-', '')
+    if (!projectID) {
+      inputFiles[themeName] = `./${filePath}`
+    } else {
+      if (themeName === projectID) {
+        inputFiles['default'] = `./${filePath}`
+      }
+      if (themeName === `${projectID}-dark`) {
+        inputFiles['dark'] = `./${filePath}`
+      }
+    }
+  })
+
   await vite.build({
     logLevel: 'error',
     resolve: {
@@ -285,15 +301,13 @@ async function buildThemeCSS() {
     build: {
       emptyOutDir: false,
       rollupOptions: {
+        input: inputFiles,
         output: [
           {
             dir: `${dist}/styles/themes`,
-            assetFileNames: 'default.css',
+            assetFileNames: '[name].css',
           },
         ],
-      },
-      lib: {
-        entry: `./${dist}/styles/themes/default.scss`,
       },
     },
   })
@@ -305,21 +319,6 @@ async function copyStyles() {
     resolve(__dirname, '../src/styles'),
     resolve(__dirname, `../${dist}/styles`),
   )
-
-  let content = [
-    `@import '../theme-default.scss';`,
-    `@import '../theme-dark.scss';`,
-    `@import '../jd-font';`,
-  ]
-  const projectID = process.env.VITE_APP_PROJECT_ID
-  if (projectID) {
-    content = [
-      `@import '../theme-${projectID}.scss';`,
-      `@import '../jd-font';`,
-    ]
-  }
-
-  dest(`${dist}/styles/themes/default.scss`, content.join('\n'))
 }
 
 // 构建样式
@@ -443,6 +442,8 @@ async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))
   await copy(join(__dirname, '../CHANGELOG.md'), join(`${npmPublishDir}/CHANGELOG.md`))
+  await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/es/packages/lottie/animation`))
+  await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/cjs/packages/lottie/animation`))
   await writeFile(join(__dirname, `../${npmPublishDir}/package.json`), generateReleasePackageJson())
 }
 
@@ -483,8 +484,6 @@ console.timeEnd('Build Theme CSS')
 console.time('Build Declaration')
 await buildDeclaration()
 console.timeEnd('Build Declaration')
-
-// await exportProps()
 
 await deleteAsync([
   `${dist}/es/packages/nutui.react.js`,

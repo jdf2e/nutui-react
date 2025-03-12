@@ -129,3 +129,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
 | \--nutui-tabbar-text-line-height | title lineHeight | `initial` |
 | \--nutui-tabbar-text-margin-top | title marginTop | `3px` |
+
+<Contribution name="Tabbar" />

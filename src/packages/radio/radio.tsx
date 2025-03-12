@@ -1,22 +1,10 @@
 import React, { FunctionComponent, MouseEventHandler, useContext } from 'react'
-import { CheckChecked, CheckNormal, CheckDisabled } from '@nutui/icons-react'
+import { CheckChecked, CheckDisabled, CheckNormal } from '@nutui/icons-react'
 import classNames from 'classnames'
 import RadioContext from '../radiogroup/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { RadioPosition, RadioShape } from '@/packages/radio/types'
-
-export interface RadioProps extends BasicComponent {
-  disabled: boolean
-  checked: boolean
-  defaultChecked: boolean
-  shape: RadioShape
-  labelPosition: RadioPosition
-  icon: React.ReactNode
-  activeIcon: React.ReactNode
-  value: string | number
-  onChange: (checked: boolean) => void
-}
+import { WebRadioProps, RadioShape } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -27,9 +15,10 @@ const defaultProps = {
   icon: null,
   activeIcon: null,
   onChange: (checked: boolean) => {},
-} as RadioProps
+} as WebRadioProps
 export const Radio: FunctionComponent<
-  Partial<RadioProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<WebRadioProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const classPrefix = 'nut-radio'
   const {
