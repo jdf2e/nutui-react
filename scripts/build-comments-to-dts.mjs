@@ -163,6 +163,7 @@ function addJSDoc(propsJson, componentName, platform) {
         const annotationTypes = path.value.typeAnnotation.types
         if (!annotationTypes) return
         const typeLiteral = annotationTypes[annotationTypes.length - 1]
+        if (!typeLiteral.members) return
         typeLiteral.members.forEach((item) => {
           addComment(item)
         })
