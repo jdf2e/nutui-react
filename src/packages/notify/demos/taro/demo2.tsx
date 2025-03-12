@@ -1,57 +1,38 @@
 import React, { useState } from 'react'
-import { Cell, Notify } from '@nutui/nutui-react-taro'
+import { Notify, Cell } from '@nutui/nutui-react-taro'
+import { ArrowRight, NetworkError } from '@nutui/icons-react-taro'
+import { navigateTo, redirectTo } from '@tarojs/taro'
 
 const Demo2 = () => {
   const [showNotify, setShowNotify] = useState(false)
-  const [states, setStates] = useState({
-    message: '',
-    type: 'danger',
-  })
-  const changeNotify = (message: string, type: string) => {
-    const change = Object.assign(states, { message, type })
-    setStates(change)
+  const [content] = useState('网络请求失败，请检查您的网络设置')
+  const onJumpclick = (link: string) => {
+    const replace = false
+    if (link) {
+      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
+    }
   }
   return (
     <>
       <Notify
         visible={showNotify}
-        type={states.type as any}
+        leftIcon={<NetworkError />}
+        rightIcon={<ArrowRight />}
+        onClick={() => {
+          onJumpclick('/pages/index/index')
+        }}
         onClose={() => {
           setShowNotify(false)
         }}
       >
-        {states.message}
+        {content}
       </Notify>
-      <Cell.Group>
-        <Cell
-          title="主要通知"
-          onClick={(event: React.MouseEvent) => {
-            changeNotify('主要通知', 'primary')
-            setShowNotify(true)
-          }}
-        />
-        <Cell
-          title="成功通知"
-          onClick={(event: React.MouseEvent) => {
-            changeNotify('成功通知', 'success')
-            setShowNotify(true)
-          }}
-        />
-        <Cell
-          title="危险通知"
-          onClick={(event: React.MouseEvent) => {
-            changeNotify('危险通知', 'danger')
-            setShowNotify(true)
-          }}
-        />
-        <Cell
-          title="警告通知"
-          onClick={(event: React.MouseEvent) => {
-            changeNotify('警告通知', 'warning')
-            setShowNotify(true)
-          }}
-        />
-      </Cell.Group>
+      <Cell
+        title="支持跳转"
+        onClick={() => {
+          setShowNotify(true)
+        }}
+      />
     </>
   )
 }
