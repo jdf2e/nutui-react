@@ -3,99 +3,64 @@
     "Button": [],
     "Cell": [],
     "ConfigProvider": [],
-    "Icon": [
-      {
-        "title": "Iconfont 设置 name 为图片地址时，修改颜色不生效",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2333",
-        "number": 2333
-      }
-    ],
-    "Image": [
-      {
-        "title": "Iconfont 设置 name 为图片地址时，修改颜色不生效",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2333",
-        "number": 2333
-      }
-    ],
+    "Icon": [],
+    "Image": [],
     "Overlay": [],
     "Divider": [],
     "Grid": [],
     "Layout": [],
+    "SafeArea": [],
     "Space": [],
     "Sticky": [],
-    "SafeArea": [],
     "BackTop": [],
     "Elevator": [],
     "FixedNav": [],
     "HoverButton": [],
     "NavBar": [],
-    "SideNavBar": [],
     "SideBar": [],
-    "Tabbar": [
+    "Tabbar": [],
+    "Tabs": [
       {
-        "title": "Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2170",
-        "number": 2170
+        "title": "Tabs 数量多,滚动操作时有bug",
+        "url": "https://github.com/jdf2e/nutui-react/issues/2653",
+        "number": 2653
+      },
+      {
+        "title": "[FR]: Tabs增加控制自定义内部ScrollIntoView的方法",
+        "url": "https://github.com/jdf2e/nutui-react/issues/2923",
+        "number": 2923
+      },
+      {
+        "title": "Tabs 选项卡 数量多横向切换滚动位置bug",
+        "url": "https://github.com/jdf2e/nutui-react/issues/2930",
+        "number": 2930
       }
     ],
-    "Tabs": [],
-    "Address": [
-      {
-        "title": "Iconfont 设置 name 为图片地址时，修改颜色不生效",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2333",
-        "number": 2333
-      }
-    ],
+    "Address": [],
     "Calendar": [
       {
-        "title": "可以增加个在form里面对日历组件的使用方法吗，rules=[{required:true}]这种，还有目前只有重置全部表单，可以添加对单个item重置状态吗",
-        "url": "https://github.com/jdf2e/nutui-react/issues/1948",
-        "number": 1948
+        "title": "Calendar 底部确认按钮样式错位",
+        "url": "https://github.com/jdf2e/nutui-react/issues/2909",
+        "number": 2909
       }
     ],
     "CalendarCard": [],
     "Cascader": [],
     "Checkbox": [],
-    "DatePicker": [
+    "DatePicker": [],
+    "DatePickerView": [],
+    "Form": [],
+    "Input": [
       {
-        "title": "DatePicker受控情况下，2月切换存在问题",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2924",
-        "number": 2924
+        "title": "iOS端，Input在有值的情况下点击聚焦，光标会置于最左边，而不是最右边",
+        "url": "https://github.com/jdf2e/nutui-react/issues/1240",
+        "number": 1240
       }
     ],
-    "Form": [
-      {
-        "title": "[FR]: 你们的Native版本怎么不维护了？ 还缺少很多基础组件类似Form表单",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2942",
-        "number": 2942
-      },
-      {
-        "title": "nutui-react-taro@2.7.2 FormItem的值如果是对象（如 {label:是，value:1} ），会自动重置成 {}",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2870",
-        "number": 2870
-      },
-      {
-        "title": "[FR]: Form 表单组件Form.Item不支持复杂类型的字段",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2947",
-        "number": 2947
-      }
-    ],
-    "Input": [],
     "InputNumber": [],
     "Menu": [],
     "NumberKeyboard": [],
-    "Picker": [
-      {
-        "title": "DatePicker受控情况下，2月切换存在问题",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2924",
-        "number": 2924
-      },
-      {
-        "title": "[FR]: 缺少Indexes 索引选择器组件。 TaroUI有，NutUI缺少",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2945",
-        "number": 2945
-      }
-    ],
+    "Picker": [],
     "PickerView": [],
     "Radio": [],
     "Range": [],
@@ -103,13 +68,7 @@
     "SearchBar": [],
     "ShortPassword": [],
     "Signature": [],
-    "Switch": [
-      {
-        "title": "Tabbar增加onSwitch调用函数，switchTab时跳转与Tabbar.Item选中不同步",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2170",
-        "number": 2170
-      }
-    ],
+    "Switch": [],
     "TextArea": [],
     "Uploader": [
       {
@@ -125,22 +84,10 @@
         "title": "在taro4版本中用函数方式调用toast和Dialog等没有反应也不出弹出",
         "url": "https://github.com/jdf2e/nutui-react/issues/2584",
         "number": 2584
-      },
-      {
-        "title": "希望Dialog组件内置的确认以及取消按钮对异步自带loading或者可以手动设置loading",
-        "url": "https://github.com/jdf2e/nutui-react/issues/1202",
-        "number": 1202
       }
     ],
-    "Drag": [
-      {
-        "title": "Drag 微信小程序运行报错 TypeError: _a2.getBoundingClientRect is not a function",
-        "url": "https://github.com/jdf2e/nutui-react/issues/2738",
-        "number": 2738
-      }
-    ],
+    "Drag": [],
     "Empty": [],
-    "ResultPage": [],
     "InfiniteLoading": [],
     "Loading": [],
     "NoticeBar": [],
@@ -148,6 +95,7 @@
     "Popover": [],
     "Popup": [],
     "PullToRefresh": [],
+    "ResultPage": [],
     "Skeleton": [],
     "Swipe": [],
     "Toast": [
@@ -169,31 +117,39 @@
     "Indicator": [],
     "Lottie": [],
     "Pagination": [],
-    "Segmented": [],
     "Price": [],
     "Progress": [],
+    "Segmented": [],
     "Steps": [],
-    "Swiper": [
-      {
-        "title": "h5和小程序中，轮播图loop为true时，最后一张到第一张，第一张到最后一张，均白屏",
-        "url": "https://github.com/jdf2e/nutui-react/issues/1432",
-        "number": 1432
-      }
-    ],
+    "Swiper": [],
     "Table": [],
     "Tag": [],
     "Tour": [],
     "Video": [],
     "VirtualList": [],
+    "AvatarCropper": [],
     "Barrage": [],
     "Card": [],
     "TimeSelect": [],
     "TrendArrow": [],
-    "WaterMark": [],
-    "AvatarCropper": []
+    "WaterMark": []
   },
   "logs": {
     "Button": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: calender footer button css ([#2971](https://github.com/jdf2e/nutui-react/pull/2971))`",
+        "rawContent": "`fix: calender footer button css ([#2971](https://github.com/jdf2e/nutui-react/pull/2971))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(button): v15 ([#2737](https://github.com/jdf2e/nutui-react/pull/2737))`",
+        "rawContent": "`feat(button): v15 ([#2737](https://github.com/jdf2e/nutui-react/pull/2737))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.3",
         "type": "fix",
@@ -214,23 +170,16 @@
         "content": "✨ feat(button): 新增 button 原始类型属性 ([#2195](https://github.com/jdf2e/nutui-react/pull/2195)) @Jiankian",
         "rawContent": "feat(button): 新增 button 原始类型属性 ([#2195](https://github.com/jdf2e/nutui-react/pull/2195)) @Jiankian",
         "tagName": "v2.6.8"
-      },
-      {
-        "version": "v2.4.1",
-        "type": "feat",
-        "content": "✨ feat(button): 增加xlarge,按钮内图标大小追随按钮当前字号 ([#2037](https://github.com/jdf2e/nutui-react/pull/2037)) @xiaoyatong",
-        "rawContent": "feat(button): 增加xlarge,按钮内图标大小追随按钮当前字号 ([#2037](https://github.com/jdf2e/nutui-react/pull/2037)) @xiaoyatong",
-        "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.4.1",
-        "type": "others",
-        "content": "🌈 style(button): jmapp style ([#2019](https://github.com/jdf2e/nutui-react/pull/2019)) @zhehu1",
-        "rawContent": "🌈 style(button): jmapp style ([#2019](https://github.com/jdf2e/nutui-react/pull/2019)) @zhehu1",
-        "tagName": "v2.4.1"
       }
     ],
     "Cell": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(cell): update Icon ([#2716](https://github.com/jdf2e/nutui-react/pull/2716))`",
+        "rawContent": "`fix(cell): update Icon ([#2716](https://github.com/jdf2e/nutui-react/pull/2716))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.17",
         "type": "feat",
@@ -258,13 +207,6 @@
         "content": "🛠 refactor(cell): 修订类名 ([#1722](https://github.com/jdf2e/nutui-react/pull/1722)) @xiaoyatong",
         "rawContent": "🛠 refactor(cell): 修订类名 ([#1722](https://github.com/jdf2e/nutui-react/pull/1722)) @xiaoyatong",
         "tagName": "v2.3.0"
-      },
-      {
-        "version": "v2.1.0",
-        "type": "others",
-        "content": "📖 docs(cell): 增加卡片类型的 demo ([#1639](https://github.com/jdf2e/nutui-react/pull/1639)) @oasis-cloud",
-        "rawContent": "📖 docs(cell): 增加卡片类型的 demo ([#1639](https://github.com/jdf2e/nutui-react/pull/1639)) @oasis-cloud",
-        "tagName": "v2.1.0"
       }
     ],
     "ConfigProvider": [
@@ -306,6 +248,27 @@
     ],
     "Icon": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: 恢复icon,简化demo ([#2725](https://github.com/jdf2e/nutui-react/pull/2725))`",
+        "rawContent": "`fix: 恢复icon,简化demo ([#2725](https://github.com/jdf2e/nutui-react/pull/2725))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: fix icon svg ([#2742](https://github.com/jdf2e/nutui-react/pull/2742))`",
+        "rawContent": "`refactor: fix icon svg ([#2742](https://github.com/jdf2e/nutui-react/pull/2742))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat: icons 的替换方案优化，支持无法可用 icon 映射的情况 ([#2922](https://github.com/jdf2e/nutui-react/pull/2922))`",
+        "rawContent": "`feat: icons 的替换方案优化，支持无法可用 icon 映射的情况 ([#2922](https://github.com/jdf2e/nutui-react/pull/2922))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.0",
         "type": "feat",
         "content": "✨ feat(replace icon): jmapp icon ([#2672](https://github.com/jdf2e/nutui-react/pull/2672))",
@@ -318,27 +281,6 @@
         "content": "✨ add plugin to replace icons ([#2671](https://github.com/jdf2e/nutui-react/pull/2671))",
         "rawContent": "add plugin to replace icons ([#2671](https://github.com/jdf2e/nutui-react/pull/2671))",
         "tagName": "v2.7.0"
-      },
-      {
-        "version": "v2.7.0",
-        "type": "fix",
-        "content": "🐛 @nutui/icons-react changed to @nutui/icons-react-taro ([#2651](https://github.com/jdf2e/nutui-react/pull/2651))",
-        "rawContent": "@nutui/icons-react changed to @nutui/icons-react-taro ([#2651](https://github.com/jdf2e/nutui-react/pull/2651))",
-        "tagName": "v2.7.0"
-      },
-      {
-        "version": "v2.6.18",
-        "type": "fix",
-        "content": "🐛 remove icons defaultprops ([#2571](https://github.com/jdf2e/nutui-react/pull/2571))",
-        "rawContent": "remove icons defaultprops ([#2571](https://github.com/jdf2e/nutui-react/pull/2571))",
-        "tagName": "v2.6.18"
-      },
-      {
-        "version": "v2.6.3",
-        "type": "others",
-        "content": "🏡 chore(icon): update demo ([#2214](https://github.com/jdf2e/nutui-react/pull/2214)) @eiinu",
-        "rawContent": "🏡 chore(icon): update demo ([#2214](https://github.com/jdf2e/nutui-react/pull/2214)) @eiinu",
-        "tagName": "v2.6.3"
       }
     ],
     "Image": [
@@ -380,6 +322,13 @@
     ],
     "Overlay": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: fixed overlay zIndex is not effective, and extract types of compnoents ([#2954](https://github.com/jdf2e/nutui-react/pull/2954))`",
+        "rawContent": "`refactor: fixed overlay zIndex is not effective, and extract types of compnoents ([#2954](https://github.com/jdf2e/nutui-react/pull/2954))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.6.23",
         "type": "fix",
         "content": "🐛 fix(overlay): tour position offset in tour.taro ([#2631](https://github.com/jdf2e/nutui-react/pull/2631))",
@@ -406,13 +355,6 @@
         "content": "🐛 fix(overlay): 文档可读性优化 ([#1894](https://github.com/jdf2e/nutui-react/pull/1894)) @Alex.huxiyang",
         "rawContent": "fix(overlay): 文档可读性优化 ([#1894](https://github.com/jdf2e/nutui-react/pull/1894)) @Alex.huxiyang",
         "tagName": "v2.3.8"
-      },
-      {
-        "version": "v2.3.0",
-        "type": "others",
-        "content": "📖 docs(overlay): 文档优化 ([#1706](https://github.com/jdf2e/nutui-react/pull/1706)) @xiaoyatong",
-        "rawContent": "📖 docs(overlay): 文档优化 ([#1706](https://github.com/jdf2e/nutui-react/pull/1706)) @xiaoyatong",
-        "tagName": "v2.3.0"
       }
     ],
     "Divider": [
@@ -505,7 +447,30 @@
         "tagName": "v2.0.0-alpha.17"
       }
     ],
+    "SafeArea": [
+      {
+        "version": "v2.6.8",
+        "type": "fix",
+        "content": "🐛 safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong",
+        "rawContent": "safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong",
+        "tagName": "v2.6.8"
+      },
+      {
+        "version": "v2.1.0",
+        "type": "feat",
+        "content": "✨ feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud",
+        "rawContent": "feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud",
+        "tagName": "v2.1.0"
+      }
+    ],
     "Space": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: space harmony ([#2817](https://github.com/jdf2e/nutui-react/pull/2817))`",
+        "rawContent": "`fix: space harmony ([#2817](https://github.com/jdf2e/nutui-react/pull/2817))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.4.1",
         "type": "fix",
@@ -533,13 +498,6 @@
         "content": "✨ 提取 Taro 的 Demo 到 workspace ([#1302](https://github.com/jdf2e/nutui-react/pull/1302)) @oasis-cloud",
         "rawContent": "提取 Taro 的 Demo 到 workspace ([#1302](https://github.com/jdf2e/nutui-react/pull/1302)) @oasis-cloud",
         "tagName": "v2.0.13"
-      },
-      {
-        "version": "v2.0.9",
-        "type": "fix",
-        "content": "🐛 space 版本号修改为 2.0 ([#1265](https://github.com/jdf2e/nutui-react/pull/1265)) @oasis-cloud",
-        "rawContent": "space 版本号修改为 2.0 ([#1265](https://github.com/jdf2e/nutui-react/pull/1265)) @oasis-cloud",
-        "tagName": "v2.0.9"
       }
     ],
     "Sticky": [
@@ -579,23 +537,21 @@
         "tagName": "v2.4.2"
       }
     ],
-    "SafeArea": [
+    "BackTop": [
       {
-        "version": "v2.6.8",
-        "type": "fix",
-        "content": "🐛 safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong",
-        "rawContent": "safearea for ac ([#2293](https://github.com/jdf2e/nutui-react/pull/2293)) @xiaoyatong",
-        "tagName": "v2.6.8"
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: backtop using hoverbutton and v15 adaption ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "rawContent": "`refactor: backtop using hoverbutton and v15 adaption ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "tagName": "v3.0.0"
       },
       {
-        "version": "v2.1.0",
-        "type": "feat",
-        "content": "✨ feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud",
-        "rawContent": "feat(safearea): 新增安全区组件 ([#1642](https://github.com/jdf2e/nutui-react/pull/1642)) @oasis-cloud",
-        "tagName": "v2.1.0"
-      }
-    ],
-    "BackTop": [
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(backtop): v15 ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "rawContent": "`feat(backtop): v15 ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.5",
         "type": "fix",
@@ -616,23 +572,16 @@
         "content": "✨ feat(backtop): rtl ([#2051](https://github.com/jdf2e/nutui-react/pull/2051)) @xiaoyatong",
         "rawContent": "feat(backtop): rtl ([#2051](https://github.com/jdf2e/nutui-react/pull/2051)) @xiaoyatong",
         "tagName": "v2.4.2"
-      },
-      {
-        "version": "v2.4.1",
-        "type": "fix",
-        "content": "🐛 fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang",
-        "rawContent": "fix(backtop): demo拆解与规范 ([#2025](https://github.com/jdf2e/nutui-react/pull/2025)) @Alex-huxiyang",
-        "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.3.9",
-        "type": "others",
-        "content": "📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang",
-        "rawContent": "📖 docs(backtop): 文档可读性优化 ([#1909](https://github.com/jdf2e/nutui-react/pull/1909)) @Alex.huxiyang",
-        "tagName": "v2.3.9"
       }
     ],
     "Elevator": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(elevator): harmony适配 ([#2836](https://github.com/jdf2e/nutui-react/pull/2836))`",
+        "rawContent": "`fix(elevator): harmony适配 ([#2836](https://github.com/jdf2e/nutui-react/pull/2836))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.2",
         "type": "feat",
@@ -660,13 +609,6 @@
         "content": "🐛 fix(elevator): 解决部分安卓手机右侧导航高亮偏差问题 ([#1966](https://github.com/jdf2e/nutui-react/pull/1966)) @songsong",
         "rawContent": "fix(elevator): 解决部分安卓手机右侧导航高亮偏差问题 ([#1966](https://github.com/jdf2e/nutui-react/pull/1966)) @songsong",
         "tagName": "v2.3.12"
-      },
-      {
-        "version": "v2.2.0",
-        "type": "fix",
-        "content": "🐛 fix(elevator): 索引定位不准 ([#1667](https://github.com/jdf2e/nutui-react/pull/1667)) @oasis-cloud",
-        "rawContent": "fix(elevator): 索引定位不准 ([#1667](https://github.com/jdf2e/nutui-react/pull/1667)) @oasis-cloud",
-        "tagName": "v2.2.0"
       }
     ],
     "FixedNav": [
@@ -706,8 +648,44 @@
         "tagName": "v2.3.0"
       }
     ],
-    "HoverButton": [],
+    "HoverButton": [
+      {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 hoverbutton h5 border ([#3053](https://github.com/jdf2e/nutui-react/pull/3053))",
+        "rawContent": "hoverbutton h5 border ([#3053](https://github.com/jdf2e/nutui-react/pull/3053))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: backtop using hoverbutton and v15 adaption ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "rawContent": "`refactor: backtop using hoverbutton and v15 adaption ([#2866](https://github.com/jdf2e/nutui-react/pull/2866))`",
+        "tagName": "v3.0.0"
+      }
+    ],
     "NavBar": [
+      {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(navbar): 居左展示时，副标题居左 ([#3049](https://github.com/jdf2e/nutui-react/pull/3049))",
+        "rawContent": "fix(navbar): 居左展示时，副标题居左 ([#3049](https://github.com/jdf2e/nutui-react/pull/3049))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(navbar): tabpane 展示控制只限于 navbar ([#3048](https://github.com/jdf2e/nutui-react/pull/3048))",
+        "rawContent": "fix(navbar): tabpane 展示控制只限于 navbar ([#3048](https://github.com/jdf2e/nutui-react/pull/3048))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(navbar): v15 ([#2881](https://github.com/jdf2e/nutui-react/pull/2881))`",
+        "rawContent": "`feat(navbar): v15 ([#2881](https://github.com/jdf2e/nutui-react/pull/2881))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.22",
         "type": "fix",
@@ -721,60 +699,17 @@
         "content": "🐛 fix(navbar): demo拆解与规范 ([#2055](https://github.com/jdf2e/nutui-react/pull/2055)) @Alex-huxiyang",
         "rawContent": "fix(navbar): demo拆解与规范 ([#2055](https://github.com/jdf2e/nutui-react/pull/2055)) @Alex-huxiyang",
         "tagName": "v2.4.2"
-      },
-      {
-        "version": "v2.3.9",
-        "type": "others",
-        "content": "📖 docs(navbar): 文档可读性优化 ([#1915](https://github.com/jdf2e/nutui-react/pull/1915)) @Alex.huxiyang",
-        "rawContent": "📖 docs(navbar): 文档可读性优化 ([#1915](https://github.com/jdf2e/nutui-react/pull/1915)) @Alex.huxiyang",
-        "tagName": "v2.3.9"
-      },
-      {
-        "version": "v2.3.8",
-        "type": "feat",
-        "content": "✨ feat(navbar): title区域自适应宽度 ([#1891](https://github.com/jdf2e/nutui-react/pull/1891)) @songsong",
-        "rawContent": "feat(navbar): title区域自适应宽度 ([#1891](https://github.com/jdf2e/nutui-react/pull/1891)) @songsong",
-        "tagName": "v2.3.8"
-      },
-      {
-        "version": "v2.3.4",
-        "type": "others",
-        "content": "📖 docs(navbar): showtoas 改为 showToast ([#1826](https://github.com/jdf2e/nutui-react/pull/1826)) @minghui",
-        "rawContent": "📖 docs(navbar): showtoas 改为 showToast ([#1826](https://github.com/jdf2e/nutui-react/pull/1826)) @minghui",
-        "tagName": "v2.3.4"
       }
     ],
-    "SideNavBar": [
+    "SideBar": [
       {
-        "version": "v2.4.2",
-        "type": "fix",
-        "content": "🐛 fix(sideNavBar): demo拆解与规范 ([#2058](https://github.com/jdf2e/nutui-react/pull/2058)) @Alex-huxiyang",
-        "rawContent": "fix(sideNavBar): demo拆解与规范 ([#2058](https://github.com/jdf2e/nutui-react/pull/2058)) @Alex-huxiyang",
-        "tagName": "v2.4.2"
-      },
-      {
-        "version": "v2.3.9",
+        "version": "v3.0.0",
         "type": "others",
-        "content": "📖 docs(sidenavbar): 文档可读性优化 ([#1920](https://github.com/jdf2e/nutui-react/pull/1920)) @Alex.huxiyang",
-        "rawContent": "📖 docs(sidenavbar): 文档可读性优化 ([#1920](https://github.com/jdf2e/nutui-react/pull/1920)) @Alex.huxiyang",
-        "tagName": "v2.3.9"
-      },
-      {
-        "version": "v2.1.0",
-        "type": "others",
-        "content": "📖 docs(sideNavBar): handleClose 改为 onClose ([#1635](https://github.com/jdf2e/nutui-react/pull/1635)) @haitao",
-        "rawContent": "📖 docs(sideNavBar): handleClose 改为 onClose ([#1635](https://github.com/jdf2e/nutui-react/pull/1635)) @haitao",
-        "tagName": "v2.1.0"
-      },
-      {
-        "version": "v2.0.0-alpha.14",
-        "type": "others",
-        "content": "🛠 refactor: sidenavbar ([#1057](https://github.com/jdf2e/nutui-react/pull/1057)) @oasis-cloud",
-        "rawContent": "🛠 refactor: sidenavbar ([#1057](https://github.com/jdf2e/nutui-react/pull/1057)) @oasis-cloud",
-        "tagName": "v2.0.0-alpha.14"
+        "content": "💡 `feat: sidebar 组件 ([#2868](https://github.com/jdf2e/nutui-react/pull/2868))`",
+        "rawContent": "`feat: sidebar 组件 ([#2868](https://github.com/jdf2e/nutui-react/pull/2868))`",
+        "tagName": "v3.0.0"
       }
     ],
-    "SideBar": [],
     "Tabbar": [
       {
         "version": "v2.4.2",
@@ -814,6 +749,27 @@
     ],
     "Tabs": [
       {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 merge tabs 2.x, 修复第一个项目无法滚动到视图的问题 ([#3043](https://github.com/jdf2e/nutui-react/pull/3043))",
+        "rawContent": "merge tabs 2.x, 修复第一个项目无法滚动到视图的问题 ([#3043](https://github.com/jdf2e/nutui-react/pull/3043))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: tabs 适配鸿蒙 ([#2820](https://github.com/jdf2e/nutui-react/pull/2820))`",
+        "rawContent": "`refactor: tabs 适配鸿蒙 ([#2820](https://github.com/jdf2e/nutui-react/pull/2820))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(tabs): v15 ([#2820](https://github.com/jdf2e/nutui-react/pull/2820))`",
+        "rawContent": "`feat(tabs): v15 ([#2820](https://github.com/jdf2e/nutui-react/pull/2820))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.7",
         "type": "fix",
         "content": "🐛 tabs 代码简化,调整部分样式 ([#2949](https://github.com/jdf2e/nutui-react/pull/2949))",
@@ -826,27 +782,6 @@
         "content": "🐛 fix(tabs): 修复意外地出现了滚动条 ([#2912](https://github.com/jdf2e/nutui-react/pull/2912))",
         "rawContent": "fix(tabs): 修复意外地出现了滚动条 ([#2912](https://github.com/jdf2e/nutui-react/pull/2912))",
         "tagName": "v2.7.6"
-      },
-      {
-        "version": "v2.7.0",
-        "type": "fix",
-        "content": "🐛 fix(tabs): clicked tabs should be entirely visible ([#2685](https://github.com/jdf2e/nutui-react/pull/2685))",
-        "rawContent": "fix(tabs): clicked tabs should be entirely visible ([#2685](https://github.com/jdf2e/nutui-react/pull/2685))",
-        "tagName": "v2.7.0"
-      },
-      {
-        "version": "v2.6.17",
-        "type": "fix",
-        "content": "🐛 fix(tabs.taro.tsx): 解决在不需要滚动的时候，切换tab产生tab位置错乱的问题 ([#2554](https://github.com/jdf2e/nutui-react/pull/2554))",
-        "rawContent": "fix(tabs.taro.tsx): 解决在不需要滚动的时候，切换tab产生tab位置错乱的问题 ([#2554](https://github.com/jdf2e/nutui-react/pull/2554))",
-        "tagName": "v2.6.17"
-      },
-      {
-        "version": "v2.6.13",
-        "type": "feat",
-        "content": "✨ tabs滚动条兼容火狐浏览器 ([#2431](https://github.com/jdf2e/nutui-react/pull/2431)) @JoanneXu6677",
-        "rawContent": "tabs滚动条兼容火狐浏览器 ([#2431](https://github.com/jdf2e/nutui-react/pull/2431)) @JoanneXu6677",
-        "tagName": "v2.6.13"
       }
     ],
     "Address": [
@@ -925,6 +860,13 @@
     ],
     "CalendarCard": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(calendarcard): v15 ([#2732](https://github.com/jdf2e/nutui-react/pull/2732))`",
+        "rawContent": "`feat(calendarcard): v15 ([#2732](https://github.com/jdf2e/nutui-react/pull/2732))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.5.2",
         "type": "fix",
         "content": "🐛 fix(calendarcard):  直接抛出ondayclick ([#2150](https://github.com/jdf2e/nutui-react/pull/2150)) @oasis-cloud",
@@ -951,13 +893,6 @@
         "content": "🐛 fix(calendarcard): 选择范围时支持仅选择单个日期 ([#2009](https://github.com/jdf2e/nutui-react/pull/2009)) @eiinu",
         "rawContent": "fix(calendarcard): 选择范围时支持仅选择单个日期 ([#2009](https://github.com/jdf2e/nutui-react/pull/2009)) @eiinu",
         "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.3.0",
-        "type": "feat",
-        "content": "✨ feat(calendarcard): 限制范围时禁止面板切换 ([#1688](https://github.com/jdf2e/nutui-react/pull/1688)) @Eiinu",
-        "rawContent": "feat(calendarcard): 限制范围时禁止面板切换 ([#1688](https://github.com/jdf2e/nutui-react/pull/1688)) @Eiinu",
-        "tagName": "v2.3.0"
       }
     ],
     "Cascader": [
@@ -999,6 +934,13 @@
     ],
     "Checkbox": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(checkbox): v15 ([#2730](https://github.com/jdf2e/nutui-react/pull/2730))`",
+        "rawContent": "`feat(checkbox): v15 ([#2730](https://github.com/jdf2e/nutui-react/pull/2730))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.6.5",
         "type": "fix",
         "content": "🐛 关于checkbox&tabs的doc与demo修改 ([#2253](https://github.com/jdf2e/nutui-react/pull/2253)) @Alex-huxiyang",
@@ -1025,16 +967,23 @@
         "content": "✨ feat(checkbox): 增加至少选择项数量的设置功能 ([#1859](https://github.com/jdf2e/nutui-react/pull/1859)) @oasis-cloud",
         "rawContent": "feat(checkbox): 增加至少选择项数量的设置功能 ([#1859](https://github.com/jdf2e/nutui-react/pull/1859)) @oasis-cloud",
         "tagName": "v2.3.7"
-      },
-      {
-        "version": "v2.3.0",
-        "type": "others",
-        "content": "📖 docs(checkbox): checkedIcon 改为 activeIcon ([#1724](https://github.com/jdf2e/nutui-react/pull/1724)) @oasis-cloud",
-        "rawContent": "📖 docs(checkbox): checkedIcon 改为 activeIcon ([#1724](https://github.com/jdf2e/nutui-react/pull/1724)) @oasis-cloud",
-        "tagName": "v2.3.0"
       }
     ],
     "DatePicker": [
+      {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 解决按需引入picker和datepicker没有样式问题 ([#3064](https://github.com/jdf2e/nutui-react/pull/3064))",
+        "rawContent": "解决按需引入picker和datepicker没有样式问题 ([#3064](https://github.com/jdf2e/nutui-react/pull/3064))",
+        "tagName": "v3.0.2"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: datepicker ([#3023](https://github.com/jdf2e/nutui-react/pull/3023))`",
+        "rawContent": "`refactor: datepicker ([#3023](https://github.com/jdf2e/nutui-react/pull/3023))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.19",
         "type": "fix",
@@ -1055,23 +1004,32 @@
         "content": "🐛 fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 ([#2141](https://github.com/jdf2e/nutui-react/pull/2141)) @yeyu98",
         "rawContent": "fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 ([#2141](https://github.com/jdf2e/nutui-react/pull/2141)) @yeyu98",
         "tagName": "v2.5.1"
-      },
+      }
+    ],
+    "DatePickerView": [
       {
-        "version": "v2.5.1",
-        "type": "fix",
-        "content": "🐛 fix(DatePicker): demo拆解与规范 ([#2133](https://github.com/jdf2e/nutui-react/pull/2133)) @yeyu98",
-        "rawContent": "fix(DatePicker): demo拆解与规范 ([#2133](https://github.com/jdf2e/nutui-react/pull/2133)) @yeyu98",
-        "tagName": "v2.5.1"
-      },
-      {
-        "version": "v2.3.4",
+        "version": "v3.0.1",
         "type": "others",
-        "content": "🐛 fix(datepicker): 未设置 value/defaultValue 时渲染 0 ([#1819](https://github.com/jdf2e/nutui-react/pull/1819)) @Ryan-CW-Code",
-        "rawContent": "🐛 fix(datepicker): 未设置 value/defaultValue 时渲染 0 ([#1819](https://github.com/jdf2e/nutui-react/pull/1819)) @Ryan-CW-Code",
-        "tagName": "v2.3.4"
+        "content": "💡 datepickerview ([#3026](https://github.com/jdf2e/nutui-react/pull/3026))",
+        "rawContent": "datepickerview ([#3026](https://github.com/jdf2e/nutui-react/pull/3026))",
+        "tagName": "v3.0.1"
       }
     ],
     "Form": [
+      {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 feat(form): 同步 2.x 的功能 ([#2976](https://github.com/jdf2e/nutui-react/pull/2976))",
+        "rawContent": "feat(form): 同步 2.x 的功能 ([#2976](https://github.com/jdf2e/nutui-react/pull/2976))",
+        "tagName": "v3.0.2"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(form): replace with Taro Form and add the rest property for passt… ([#3016](https://github.com/jdf2e/nutui-react/pull/3016))`",
+        "rawContent": "`fix(form): replace with Taro Form and add the rest property for passt… ([#3016](https://github.com/jdf2e/nutui-react/pull/3016))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.7",
         "type": "feat",
@@ -1092,60 +1050,60 @@
         "content": "🐛 fix(form): 修复 formitem 的值如果是对象会自动重置为空对象的问题 ([#2952](https://github.com/jdf2e/nutui-react/pull/2952))",
         "rawContent": "fix(form): 修复 formitem 的值如果是对象会自动重置为空对象的问题 ([#2952](https://github.com/jdf2e/nutui-react/pull/2952))",
         "tagName": "v2.7.7"
-      },
-      {
-        "version": "v2.7.6",
-        "type": "fix",
-        "content": "🐛 fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931))",
-        "rawContent": "fix(form): item label 未对齐 ([#2931](https://github.com/jdf2e/nutui-react/pull/2931))",
-        "tagName": "v2.7.6"
-      },
-      {
-        "version": "v2.7.6",
-        "type": "fix",
-        "content": "🐛 fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927))",
-        "rawContent": "fix(form): 分割线未生效 ([#2927](https://github.com/jdf2e/nutui-react/pull/2927))",
-        "tagName": "v2.7.6"
       }
     ],
     "Input": [
       {
-        "version": "v2.6.18",
-        "type": "fix",
-        "content": "🐛 fix(input): type props didnot work when equals number|digit ([#2563](https://github.com/jdf2e/nutui-react/pull/2563))",
-        "rawContent": "fix(input): type props didnot work when equals number|digit ([#2563](https://github.com/jdf2e/nutui-react/pull/2563))",
-        "tagName": "v2.6.18"
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 fix(input): style 属性设置为 CSSProperties 类型的值 ([#3059](https://github.com/jdf2e/nutui-react/pull/3059))",
+        "rawContent": "fix(input): style 属性设置为 CSSProperties 类型的值 ([#3059](https://github.com/jdf2e/nutui-react/pull/3059))",
+        "tagName": "v3.0.2"
       },
       {
-        "version": "v2.6.6",
-        "type": "fix",
-        "content": "🐛 fix(input): placeholder 无法设置空字符串 ([#2282](https://github.com/jdf2e/nutui-react/pull/2282)) @oasis-cloud",
-        "rawContent": "fix(input): placeholder 无法设置空字符串 ([#2282](https://github.com/jdf2e/nutui-react/pull/2282)) @oasis-cloud",
-        "tagName": "v2.6.6"
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(input): 显示设置 placeholder 字体颜色 ([#3050](https://github.com/jdf2e/nutui-react/pull/3050))",
+        "rawContent": "fix(input): 显示设置 placeholder 字体颜色 ([#3050](https://github.com/jdf2e/nutui-react/pull/3050))",
+        "tagName": "v3.0.1"
       },
       {
-        "version": "v2.6.5",
-        "type": "fix",
-        "content": "🐛 fix(input): 修复特殊场景下自动清除失效问题 ([#2240](https://github.com/jdf2e/nutui-react/pull/2240)) @eiinu",
-        "rawContent": "fix(input): 修复特殊场景下自动清除失效问题 ([#2240](https://github.com/jdf2e/nutui-react/pull/2240)) @eiinu",
-        "tagName": "v2.6.5"
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(input): v15 ([#2889](https://github.com/jdf2e/nutui-react/pull/2889))`",
+        "rawContent": "`feat(input): v15 ([#2889](https://github.com/jdf2e/nutui-react/pull/2889))`",
+        "tagName": "v3.0.0"
       },
       {
-        "version": "v2.6.0",
-        "type": "feat",
-        "content": "✨ input 的 onFocus 增加 height 键盘高度参数 ([#2154](https://github.com/jdf2e/nutui-react/pull/2154)) @alexxyzeng",
-        "rawContent": "input 的 onFocus 增加 height 键盘高度参数 ([#2154](https://github.com/jdf2e/nutui-react/pull/2154)) @alexxyzeng",
-        "tagName": "v2.6.0"
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(input): v15 ([#2711](https://github.com/jdf2e/nutui-react/pull/2711))`",
+        "rawContent": "`feat(input): v15 ([#2711](https://github.com/jdf2e/nutui-react/pull/2711))`",
+        "tagName": "v3.0.0"
       },
       {
-        "version": "v2.4.2",
-        "type": "fix",
-        "content": "🐛 fix(input): demo拆解与规范 ([#2035](https://github.com/jdf2e/nutui-react/pull/2035)) @yeyu98",
-        "rawContent": "fix(input): demo拆解与规范 ([#2035](https://github.com/jdf2e/nutui-react/pull/2035)) @yeyu98",
-        "tagName": "v2.4.2"
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `perf: input ([#2978](https://github.com/jdf2e/nutui-react/pull/2978))`",
+        "rawContent": "`perf: input ([#2978](https://github.com/jdf2e/nutui-react/pull/2978))`",
+        "tagName": "v3.0.0"
       }
     ],
     "InputNumber": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(inputnumber): icon 适配 && 修改icon宽度和设定的--nut-icon-width一致 ([#2707](https://github.com/jdf2e/nutui-react/pull/2707))`",
+        "rawContent": "`fix(inputnumber): icon 适配 && 修改icon宽度和设定的--nut-icon-width一致 ([#2707](https://github.com/jdf2e/nutui-react/pull/2707))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(inputNumber): v15 ([#2823](https://github.com/jdf2e/nutui-react/pull/2823))`",
+        "rawContent": "`feat(inputNumber): v15 ([#2823](https://github.com/jdf2e/nutui-react/pull/2823))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.8",
         "type": "fix",
@@ -1166,20 +1124,6 @@
         "content": "✨ feat(inputnumber): update UI ([#1989](https://github.com/jdf2e/nutui-react/pull/1989)) @oasis-cloud",
         "rawContent": "feat(inputnumber): update UI ([#1989](https://github.com/jdf2e/nutui-react/pull/1989)) @oasis-cloud",
         "tagName": "v2.4.0"
-      },
-      {
-        "version": "v2.3.12",
-        "type": "feat",
-        "content": "✨ feat(inputnumber): taro 环境下增加 number类型的键盘 ([#1965](https://github.com/jdf2e/nutui-react/pull/1965)) @onlyling",
-        "rawContent": "feat(inputnumber): taro 环境下增加 number类型的键盘 ([#1965](https://github.com/jdf2e/nutui-react/pull/1965)) @onlyling",
-        "tagName": "v2.3.12"
-      },
-      {
-        "version": "v2.3.12",
-        "type": "fix",
-        "content": "🐛 fix(inputnumber): provide finalValue ([#1959](https://github.com/jdf2e/nutui-react/pull/1959)) @oasis-cloud",
-        "rawContent": "fix(inputnumber): provide finalValue ([#1959](https://github.com/jdf2e/nutui-react/pull/1959)) @oasis-cloud",
-        "tagName": "v2.3.12"
       }
     ],
     "Menu": [
@@ -1221,6 +1165,13 @@
     ],
     "NumberKeyboard": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(numberkeyboard): v15 ([#2799](https://github.com/jdf2e/nutui-react/pull/2799))`",
+        "rawContent": "`feat(numberkeyboard): v15 ([#2799](https://github.com/jdf2e/nutui-react/pull/2799))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.5.1",
         "type": "fix",
         "content": "🐛 fix(numberkeyboard): demo拆解与规范 ([#2123](https://github.com/jdf2e/nutui-react/pull/2123)) @ZissyW",
@@ -1247,16 +1198,23 @@
         "content": "🐛 numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 ([#1285](https://github.com/jdf2e/nutui-react/pull/1285)) @oasis-cloud",
         "rawContent": "numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 ([#1285](https://github.com/jdf2e/nutui-react/pull/1285)) @oasis-cloud",
         "tagName": "v2.0.11"
-      },
-      {
-        "version": "v2.0.11",
-        "type": "others",
-        "content": "📖 docs: numberkeyboard 的 type 属性类型更新 ([#1284](https://github.com/jdf2e/nutui-react/pull/1284)) @oasis-cloud",
-        "rawContent": "📖 docs: numberkeyboard 的 type 属性类型更新 ([#1284](https://github.com/jdf2e/nutui-react/pull/1284)) @oasis-cloud",
-        "tagName": "v2.0.11"
       }
     ],
     "Picker": [
+      {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 解决按需引入picker和datepicker没有样式问题 ([#3064](https://github.com/jdf2e/nutui-react/pull/3064))",
+        "rawContent": "解决按需引入picker和datepicker没有样式问题 ([#3064](https://github.com/jdf2e/nutui-react/pull/3064))",
+        "tagName": "v3.0.2"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: picker ([#2990](https://github.com/jdf2e/nutui-react/pull/2990))`",
+        "rawContent": "`refactor: picker ([#2990](https://github.com/jdf2e/nutui-react/pull/2990))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.8",
         "type": "fix",
@@ -1277,24 +1235,32 @@
         "content": "🏡 chore(picker): demo拆解与规范 ([#2157](https://github.com/jdf2e/nutui-react/pull/2157)) @Alex-huxiyang",
         "rawContent": "🏡 chore(picker): demo拆解与规范 ([#2157](https://github.com/jdf2e/nutui-react/pull/2157)) @Alex-huxiyang",
         "tagName": "v2.6.0"
-      },
-      {
-        "version": "v2.3.5",
-        "type": "fix",
-        "content": "🐛 fix(picker): 优化 options 的 text 属性的判空逻辑 ([#1837](https://github.com/jdf2e/nutui-react/pull/1837)) @oasis-cloud",
-        "rawContent": "fix(picker): 优化 options 的 text 属性的判空逻辑 ([#1837](https://github.com/jdf2e/nutui-react/pull/1837)) @oasis-cloud",
-        "tagName": "v2.3.5"
-      },
-      {
-        "version": "v2.3.5",
-        "type": "fix",
-        "content": "🐛 fix(picker): 修复 safari 下 mask 样式问题 ([#1843](https://github.com/jdf2e/nutui-react/pull/1843)) @Eiinu",
-        "rawContent": "fix(picker): 修复 safari 下 mask 样式问题 ([#1843](https://github.com/jdf2e/nutui-react/pull/1843)) @Eiinu",
-        "tagName": "v2.3.5"
       }
     ],
-    "PickerView": [],
+    "PickerView": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat: pickerview 组件 ([#2986](https://github.com/jdf2e/nutui-react/pull/2986))`",
+        "rawContent": "`feat: pickerview 组件 ([#2986](https://github.com/jdf2e/nutui-react/pull/2986))`",
+        "tagName": "v3.0.0"
+      }
+    ],
     "Radio": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: radio type ([#2735](https://github.com/jdf2e/nutui-react/pull/2735))`",
+        "rawContent": "`fix: radio type ([#2735](https://github.com/jdf2e/nutui-react/pull/2735))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(radio): v15 ([#2721](https://github.com/jdf2e/nutui-react/pull/2721))`",
+        "rawContent": "`feat(radio): v15 ([#2721](https://github.com/jdf2e/nutui-react/pull/2721))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.22",
         "type": "fix",
@@ -1315,20 +1281,6 @@
         "content": "🐛 fix(radio): 样式变量修复(issue) ([#2149](https://github.com/jdf2e/nutui-react/pull/2149)) @Alex.huxiyang",
         "rawContent": "fix(radio): 样式变量修复(issue) ([#2149](https://github.com/jdf2e/nutui-react/pull/2149)) @Alex.huxiyang",
         "tagName": "v2.5.2"
-      },
-      {
-        "version": "v2.3.0",
-        "type": "others",
-        "content": "💡 style(radio): 优化css变量和样式 ([#1756](https://github.com/jdf2e/nutui-react/pull/1756)) @xiaoyatong",
-        "rawContent": "style(radio): 优化css变量和样式 ([#1756](https://github.com/jdf2e/nutui-react/pull/1756)) @xiaoyatong",
-        "tagName": "v2.3.0"
-      },
-      {
-        "version": "v2.1.0",
-        "type": "others",
-        "content": "🚀 perf: radio reverse and demos ([#1631](https://github.com/jdf2e/nutui-react/pull/1631)) @xiaoyatong",
-        "rawContent": "🚀 perf: radio reverse and demos ([#1631](https://github.com/jdf2e/nutui-react/pull/1631)) @xiaoyatong",
-        "tagName": "v2.1.0"
       }
     ],
     "Range": [
@@ -1370,6 +1322,27 @@
     ],
     "Rate": [
       {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 refactor: migrate site to nutui-react ([#2955](https://github.com/jdf2e/nutui-react/pull/2955))",
+        "rawContent": "refactor: migrate site to nutui-react ([#2955](https://github.com/jdf2e/nutui-react/pull/2955))",
+        "tagName": "v3.0.2"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: adjust pr-label strategy ([#2984](https://github.com/jdf2e/nutui-react/pull/2984))`",
+        "rawContent": "`fix: adjust pr-label strategy ([#2984](https://github.com/jdf2e/nutui-react/pull/2984))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: new components are generated automatically ([#2940](https://github.com/jdf2e/nutui-react/pull/2940))`",
+        "rawContent": "`refactor: new components are generated automatically ([#2940](https://github.com/jdf2e/nutui-react/pull/2940))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.2",
         "type": "others",
         "content": "🏡 chore: migrate to v3",
@@ -1382,30 +1355,16 @@
         "content": "🐛 fix(rate): demo拆解与规范 ([#2045](https://github.com/jdf2e/nutui-react/pull/2045)) @sandra66888",
         "rawContent": "fix(rate): demo拆解与规范 ([#2045](https://github.com/jdf2e/nutui-react/pull/2045)) @sandra66888",
         "tagName": "v2.4.2"
-      },
-      {
-        "version": "v2.4.2",
-        "type": "others",
-        "content": "💡 test: migrate jest to vitest ([#2057](https://github.com/jdf2e/nutui-react/pull/2057)) @eiinu",
-        "rawContent": "test: migrate jest to vitest ([#2057](https://github.com/jdf2e/nutui-react/pull/2057)) @eiinu",
-        "tagName": "v2.4.2"
-      },
-      {
-        "version": "v2.3.9",
-        "type": "feat",
-        "content": "✨ generate stylesheets containing RTL-related styles ([#1889](https://github.com/jdf2e/nutui-react/pull/1889)) @oasis-cloud",
-        "rawContent": "generate stylesheets containing RTL-related styles ([#1889](https://github.com/jdf2e/nutui-react/pull/1889)) @oasis-cloud",
-        "tagName": "v2.3.9"
-      },
-      {
-        "version": "v2.3.8",
-        "type": "feat",
-        "content": "✨ feat(rate): 新增 touchable 属性支持滑动选择 ([#1880](https://github.com/jdf2e/nutui-react/pull/1880)) @Eiinu",
-        "rawContent": "feat(rate): 新增 touchable 属性支持滑动选择 ([#1880](https://github.com/jdf2e/nutui-react/pull/1880)) @Eiinu",
-        "tagName": "v2.3.8"
       }
     ],
     "SearchBar": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(searchbar): 多端适配 ([#2657](https://github.com/jdf2e/nutui-react/pull/2657))`",
+        "rawContent": "`fix(searchbar): 多端适配 ([#2657](https://github.com/jdf2e/nutui-react/pull/2657))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.9",
         "type": "fix",
@@ -1433,16 +1392,16 @@
         "content": "✨ feat(searchbar): 增加属性 backable 可返回，简化css变量 ([#1736](https://github.com/jdf2e/nutui-react/pull/1736)) @xiaoyatong",
         "rawContent": "feat(searchbar): 增加属性 backable 可返回，简化css变量 ([#1736](https://github.com/jdf2e/nutui-react/pull/1736)) @xiaoyatong",
         "tagName": "v2.3.0"
-      },
-      {
-        "version": "v2.0.23",
-        "type": "fix",
-        "content": "🐛 searchbar lose focus when input nothing but input the delete ([#1577](https://github.com/jdf2e/nutui-react/pull/1577)) @xiaoyatong",
-        "rawContent": "searchbar lose focus when input nothing but input the delete ([#1577](https://github.com/jdf2e/nutui-react/pull/1577)) @xiaoyatong",
-        "tagName": "v2.0.23"
       }
     ],
     "ShortPassword": [
+      {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 feat(shortpassword): harmony ([#3017](https://github.com/jdf2e/nutui-react/pull/3017))",
+        "rawContent": "feat(shortpassword): harmony ([#3017](https://github.com/jdf2e/nutui-react/pull/3017))",
+        "tagName": "v3.0.1"
+      },
       {
         "version": "v2.5.0",
         "type": "fix",
@@ -1474,6 +1433,13 @@
     ],
     "Signature": [
       {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 fix(signature): 解决taro h5不能绘制问题 ([#3060](https://github.com/jdf2e/nutui-react/pull/3060))",
+        "rawContent": "fix(signature): 解决taro h5不能绘制问题 ([#3060](https://github.com/jdf2e/nutui-react/pull/3060))",
+        "tagName": "v3.0.2"
+      },
+      {
         "version": "v2.6.7",
         "type": "feat",
         "content": "✨ 签名组件增加当没有签名或已清空的情况下的参数暴露 ([#2288](https://github.com/jdf2e/nutui-react/pull/2288)) @xiaoyatong",
@@ -1500,13 +1466,6 @@
         "content": "🐛 signature组件提取样式变量+修复taro h5 demo签字时滚动问题 ([#1220](https://github.com/jdf2e/nutui-react/pull/1220)) @songsong",
         "rawContent": "signature组件提取样式变量+修复taro h5 demo签字时滚动问题 ([#1220](https://github.com/jdf2e/nutui-react/pull/1220)) @songsong",
         "tagName": "v2.0.4"
-      },
-      {
-        "version": "v2.0.4",
-        "type": "fix",
-        "content": "🐛 修复signature小程序下demo签字时页面跟随滚动问题 ([#1225](https://github.com/jdf2e/nutui-react/pull/1225)) @songsong",
-        "rawContent": "修复signature小程序下demo签字时页面跟随滚动问题 ([#1225](https://github.com/jdf2e/nutui-react/pull/1225)) @songsong",
-        "tagName": "v2.0.4"
       }
     ],
     "Switch": [
@@ -1527,6 +1486,20 @@
     ],
     "TextArea": [
       {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 textarea 鸿蒙适配 ([#3037](https://github.com/jdf2e/nutui-react/pull/3037))",
+        "rawContent": "textarea 鸿蒙适配 ([#3037](https://github.com/jdf2e/nutui-react/pull/3037))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(textarea): v15 ([#2887](https://github.com/jdf2e/nutui-react/pull/2887))`",
+        "rawContent": "`feat(textarea): v15 ([#2887](https://github.com/jdf2e/nutui-react/pull/2887))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.5",
         "type": "fix",
         "content": "🐛 fix(textarea): 字数限制文本遮挡输入框的内容 ([#2910](https://github.com/jdf2e/nutui-react/pull/2910))",
@@ -1546,20 +1519,6 @@
         "content": "🐛 fix(textarea): demo拆解与规范 ([#2132](https://github.com/jdf2e/nutui-react/pull/2132)) @Amylee9712",
         "rawContent": "fix(textarea): demo拆解与规范 ([#2132](https://github.com/jdf2e/nutui-react/pull/2132)) @Amylee9712",
         "tagName": "v2.5.1"
-      },
-      {
-        "version": "v2.3.9",
-        "type": "fix",
-        "content": "🐛 fix(textarea): 修复maxlength=-1时无法输入字符的情况 ([#1910](https://github.com/jdf2e/nutui-react/pull/1910)) @xiaoyatong",
-        "rawContent": "fix(textarea): 修复maxlength=-1时无法输入字符的情况 ([#1910](https://github.com/jdf2e/nutui-react/pull/1910)) @xiaoyatong",
-        "tagName": "v2.3.9"
-      },
-      {
-        "version": "v2.3.7",
-        "type": "fix",
-        "content": "🐛 fix(Textarea): 文档demo中props拼写错误修改 ([#1874](https://github.com/jdf2e/nutui-react/pull/1874)) @songsong",
-        "rawContent": "fix(Textarea): 文档demo中props拼写错误修改 ([#1874](https://github.com/jdf2e/nutui-react/pull/1874)) @songsong",
-        "tagName": "v2.3.7"
       }
     ],
     "Uploader": [
@@ -1638,6 +1597,20 @@
     ],
     "Badge": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: badge harmony ([#3001](https://github.com/jdf2e/nutui-react/pull/3001))`",
+        "rawContent": "`fix: badge harmony ([#3001](https://github.com/jdf2e/nutui-react/pull/3001))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(badge): v15 ([#2826](https://github.com/jdf2e/nutui-react/pull/2826))`",
+        "rawContent": "`feat(badge): v15 ([#2826](https://github.com/jdf2e/nutui-react/pull/2826))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.6.2",
         "type": "others",
         "content": "💡 undefined: style(badge): jdesign badge 样式 ([#2164](https://github.com/jdf2e/nutui-react/pull/2164)) @zhehu1",
@@ -1657,20 +1630,6 @@
         "content": "✨ feat(badge): 新增 fill 属性 ([#2042](https://github.com/jdf2e/nutui-react/pull/2042)) @eiinu",
         "rawContent": "feat(badge): 新增 fill 属性 ([#2042](https://github.com/jdf2e/nutui-react/pull/2042)) @eiinu",
         "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.4.1",
-        "type": "fix",
-        "content": "🐛 fix(badge): 修复value传入0时显示不正确的问题 ([#2006](https://github.com/jdf2e/nutui-react/pull/2006)) @boiboif",
-        "rawContent": "fix(badge): 修复value传入0时显示不正确的问题 ([#2006](https://github.com/jdf2e/nutui-react/pull/2006)) @boiboif",
-        "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.4.0",
-        "type": "feat",
-        "content": "✨ feat(rtl): badge ([#1986](https://github.com/jdf2e/nutui-react/pull/1986)) @Eiinu",
-        "rawContent": "feat(rtl): badge ([#1986](https://github.com/jdf2e/nutui-react/pull/1986)) @Eiinu",
-        "tagName": "v2.4.0"
       }
     ],
     "Dialog": [
@@ -1712,6 +1671,13 @@
     ],
     "Drag": [
       {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(drag): 解决 taro 不能滑动问题 ([#3054](https://github.com/jdf2e/nutui-react/pull/3054))",
+        "rawContent": "fix(drag): 解决 taro 不能滑动问题 ([#3054](https://github.com/jdf2e/nutui-react/pull/3054))",
+        "tagName": "v3.0.1"
+      },
+      {
         "version": "v2.6.13",
         "type": "feat",
         "content": "✨ feat(drag):  add the ability to support onDrag, onDragStart, onDragEnd callbacks ([#2418](https://github.com/jdf2e/nutui-react/pull/2418)) @Alex-huxiyang",
@@ -1742,6 +1708,13 @@
     ],
     "Empty": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(empty): correct css and docs ([#2819](https://github.com/jdf2e/nutui-react/pull/2819))`",
+        "rawContent": "`fix(empty): correct css and docs ([#2819](https://github.com/jdf2e/nutui-react/pull/2819))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.3",
         "type": "fix",
         "content": "🐛 fix(empty): actions add support for events ([#2854](https://github.com/jdf2e/nutui-react/pull/2854))",
@@ -1768,16 +1741,8 @@
         "content": "✨ feat(empty): 图片变更 ([#1988](https://github.com/jdf2e/nutui-react/pull/1988)) @xiaoyatong",
         "rawContent": "feat(empty): 图片变更 ([#1988](https://github.com/jdf2e/nutui-react/pull/1988)) @xiaoyatong",
         "tagName": "v2.4.0"
-      },
-      {
-        "version": "v2.3.5",
-        "type": "fix",
-        "content": "🐛 fix(empty): fix import at taro ([#1839](https://github.com/jdf2e/nutui-react/pull/1839)) @xiaoyatong",
-        "rawContent": "fix(empty): fix import at taro ([#1839](https://github.com/jdf2e/nutui-react/pull/1839)) @xiaoyatong",
-        "tagName": "v2.3.5"
       }
     ],
-    "ResultPage": [],
     "InfiniteLoading": [
       {
         "version": "v2.7.2",
@@ -1817,6 +1782,13 @@
     ],
     "Loading": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: loading ([#2733](https://github.com/jdf2e/nutui-react/pull/2733))`",
+        "rawContent": "`fix: loading ([#2733](https://github.com/jdf2e/nutui-react/pull/2733))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.9",
         "type": "others",
         "content": "📖 docs(loading): 主题变量修正 ([#3008](https://github.com/jdf2e/nutui-react/pull/3008))",
@@ -1842,13 +1814,6 @@
         "type": "feat",
         "content": "✨ loading 组件 ([#1204](https://github.com/jdf2e/nutui-react/pull/1204)) @mike8625",
         "rawContent": "loading 组件 ([#1204](https://github.com/jdf2e/nutui-react/pull/1204)) @mike8625",
-        "tagName": "v2.0.10"
-      },
-      {
-        "version": "v2.0.10",
-        "type": "fix",
-        "content": "🐛 loading 组件导出 props 类型 ([#1278](https://github.com/jdf2e/nutui-react/pull/1278)) @oasis-cloud",
-        "rawContent": "loading 组件导出 props 类型 ([#1278](https://github.com/jdf2e/nutui-react/pull/1278)) @oasis-cloud",
         "tagName": "v2.0.10"
       }
     ],
@@ -1928,6 +1893,13 @@
     ],
     "Popover": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix: popover dark and maxwidth`",
+        "rawContent": "`fix: popover dark and maxwidth`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.3",
         "type": "feat",
         "content": "✨ feat(popover): 增加最大宽度设置，支持文本超过最大宽度时，换行展示 ([#2851](https://github.com/jdf2e/nutui-react/pull/2851))",
@@ -1954,16 +1926,30 @@
         "content": "🐛 fix(popover): 调整demo ([#2043](https://github.com/jdf2e/nutui-react/pull/2043)) @xiaoyatong",
         "rawContent": "fix(popover): 调整demo ([#2043](https://github.com/jdf2e/nutui-react/pull/2043)) @xiaoyatong",
         "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.4.0",
-        "type": "feat",
-        "content": "✨ feat(popover): 增加 light 和 dark 模式的区分 ([#1977](https://github.com/jdf2e/nutui-react/pull/1977)) @xiaoyatong",
-        "rawContent": "feat(popover): 增加 light 和 dark 模式的区分 ([#1977](https://github.com/jdf2e/nutui-react/pull/1977)) @xiaoyatong",
-        "tagName": "v2.4.0"
       }
     ],
     "Popup": [
+      {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 popup 鸿蒙下层级问题修复，dialog 的适配做了调整，日历卡片调整了 demo ([#3038](https://github.com/jdf2e/nutui-react/pull/3038))",
+        "rawContent": "popup 鸿蒙下层级问题修复，dialog 的适配做了调整，日历卡片调整了 demo ([#3038](https://github.com/jdf2e/nutui-react/pull/3038))",
+        "tagName": "v3.0.1"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: popup 优化代码 ([#2944](https://github.com/jdf2e/nutui-react/pull/2944))`",
+        "rawContent": "`refactor: popup 优化代码 ([#2944](https://github.com/jdf2e/nutui-react/pull/2944))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `refactor: popup 优化代码 ([#2944](https://github.com/jdf2e/nutui-react/pull/2944))`",
+        "rawContent": "`refactor: popup 优化代码 ([#2944](https://github.com/jdf2e/nutui-react/pull/2944))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.7",
         "type": "others",
@@ -1977,27 +1963,6 @@
         "content": "🐛 fix(popup): display should not trigger the scrollview to update ([#2773](https://github.com/jdf2e/nutui-react/pull/2773))",
         "rawContent": "fix(popup): display should not trigger the scrollview to update ([#2773](https://github.com/jdf2e/nutui-react/pull/2773))",
         "tagName": "v2.7.1"
-      },
-      {
-        "version": "v2.6.22",
-        "type": "feat",
-        "content": "✨ feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 ([#2629](https://github.com/jdf2e/nutui-react/pull/2629))",
-        "rawContent": "feat(popup): lockscroll 增加可选值 strict, 用于支持 iOS12 ([#2629](https://github.com/jdf2e/nutui-react/pull/2629))",
-        "tagName": "v2.6.22"
-      },
-      {
-        "version": "v2.6.18",
-        "type": "feat",
-        "content": "✨ demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574))",
-        "rawContent": "demos for popup & dialog ([#2574](https://github.com/jdf2e/nutui-react/pull/2574))",
-        "tagName": "v2.6.18"
-      },
-      {
-        "version": "v2.5.1",
-        "type": "fix",
-        "content": "🐛 fix(popup): demo拆解与规范 ([#2122](https://github.com/jdf2e/nutui-react/pull/2122)) @ZissyW",
-        "rawContent": "fix(popup): demo拆解与规范 ([#2122](https://github.com/jdf2e/nutui-react/pull/2122)) @ZissyW",
-        "tagName": "v2.5.1"
       }
     ],
     "PullToRefresh": [
@@ -2037,6 +2002,7 @@
         "tagName": "v2.3.3"
       }
     ],
+    "ResultPage": [],
     "Skeleton": [
       {
         "version": "v2.4.2",
@@ -2061,6 +2027,13 @@
       }
     ],
     "Swipe": [
+      {
+        "version": "v3.0.2",
+        "type": "others",
+        "content": "💡 feat(swipe): harmony ([#3039](https://github.com/jdf2e/nutui-react/pull/3039))",
+        "rawContent": "feat(swipe): harmony ([#3039](https://github.com/jdf2e/nutui-react/pull/3039))",
+        "tagName": "v3.0.2"
+      },
       {
         "version": "v2.5.0",
         "type": "fix",
@@ -2088,16 +2061,23 @@
         "content": "🛠 refactor(swipe): 修订className类名 ([#1715](https://github.com/jdf2e/nutui-react/pull/1715)) @xiaoyatong",
         "rawContent": "🛠 refactor(swipe): 修订className类名 ([#1715](https://github.com/jdf2e/nutui-react/pull/1715)) @xiaoyatong",
         "tagName": "v2.3.0"
-      },
-      {
-        "version": "v2.1.0",
-        "type": "fix",
-        "content": "🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 ([#1608](https://github.com/jdf2e/nutui-react/pull/1608)) @Levidcd",
-        "rawContent": "🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 ([#1608](https://github.com/jdf2e/nutui-react/pull/1608)) @Levidcd",
-        "tagName": "v2.1.0"
       }
     ],
     "Toast": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(toast): svg color ([#2775](https://github.com/jdf2e/nutui-react/pull/2775))`",
+        "rawContent": "`fix(toast): svg color ([#2775](https://github.com/jdf2e/nutui-react/pull/2775))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(Toast): v15 ([#2299](https://github.com/jdf2e/nutui-react/pull/2299))`",
+        "rawContent": "`feat(Toast): v15 ([#2299](https://github.com/jdf2e/nutui-react/pull/2299))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.7",
         "type": "others",
@@ -2118,23 +2098,16 @@
         "content": "🐛 fix(Toast): demo拆解与规范 ([#2073](https://github.com/jdf2e/nutui-react/pull/2073)) @OrdinarySF",
         "rawContent": "fix(Toast): demo拆解与规范 ([#2073](https://github.com/jdf2e/nutui-react/pull/2073)) @OrdinarySF",
         "tagName": "v2.5.1"
-      },
-      {
-        "version": "v2.4.0",
-        "type": "fix",
-        "content": "🐛 fix(toast): add deprecated prop msg ([#1999](https://github.com/jdf2e/nutui-react/pull/1999)) @Eiinu",
-        "rawContent": "fix(toast): add deprecated prop msg ([#1999](https://github.com/jdf2e/nutui-react/pull/1999)) @Eiinu",
-        "tagName": "v2.4.0"
-      },
-      {
-        "version": "v2.4.0",
-        "type": "fix",
-        "content": "🐛 fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo ([#1994](https://github.com/jdf2e/nutui-react/pull/1994)) @xiaoyatong",
-        "rawContent": "fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo ([#1994](https://github.com/jdf2e/nutui-react/pull/1994)) @xiaoyatong",
-        "tagName": "v2.4.0"
       }
     ],
     "Animate": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `perf: 优化 animate ([#2968](https://github.com/jdf2e/nutui-react/pull/2968))`",
+        "rawContent": "`perf: 优化 animate ([#2968](https://github.com/jdf2e/nutui-react/pull/2968))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.7.8",
         "type": "others",
@@ -2286,6 +2259,13 @@
     ],
     "Collapse": [
       {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(collapse): 去掉 demo 顶部留白 ([#3041](https://github.com/jdf2e/nutui-react/pull/3041))",
+        "rawContent": "fix(collapse): 去掉 demo 顶部留白 ([#3041](https://github.com/jdf2e/nutui-react/pull/3041))",
+        "tagName": "v3.0.1"
+      },
+      {
         "version": "v2.5.0",
         "type": "fix",
         "content": "🐛 fix(collapse): demo拆解与规范 ([#2094](https://github.com/jdf2e/nutui-react/pull/2094)) @eiinu",
@@ -2312,13 +2292,6 @@
         "content": "💡 style(collapse): add border-bottom as an item ([#1698](https://github.com/jdf2e/nutui-react/pull/1698)) @xiaoyatong",
         "rawContent": "style(collapse): add border-bottom as an item ([#1698](https://github.com/jdf2e/nutui-react/pull/1698)) @xiaoyatong",
         "tagName": "v2.3.0"
-      },
-      {
-        "version": "v2.0.0-beta.1",
-        "type": "fix",
-        "content": "🐛 fix(collapse): 测试问题修复 ([#1132](https://github.com/jdf2e/nutui-react/pull/1132)) @Eiinu",
-        "rawContent": "fix(collapse): 测试问题修复 ([#1132](https://github.com/jdf2e/nutui-react/pull/1132)) @Eiinu",
-        "tagName": "v2.0.0-beta.1"
       }
     ],
     "CountDown": [
@@ -2360,6 +2333,13 @@
     ],
     "Ellipsis": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(Ellipsis): Correction of text ([#2778](https://github.com/jdf2e/nutui-react/pull/2778))`",
+        "rawContent": "`fix(Ellipsis): Correction of text ([#2778](https://github.com/jdf2e/nutui-react/pull/2778))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.6.2",
         "type": "fix",
         "content": "🐛 fix(ellipsis): 部分场景下的ref报错 ([#2200](https://github.com/jdf2e/nutui-react/pull/2200)) @Alex-huxiyang",
@@ -2386,13 +2366,6 @@
         "content": "🐛 fix(ellipsis): 修复设置行数超过内容高度时只显示一行内容的问题 ([#2028](https://github.com/jdf2e/nutui-react/pull/2028)) @boiboif",
         "rawContent": "fix(ellipsis): 修复设置行数超过内容高度时只显示一行内容的问题 ([#2028](https://github.com/jdf2e/nutui-react/pull/2028)) @boiboif",
         "tagName": "v2.4.1"
-      },
-      {
-        "version": "v2.3.8",
-        "type": "fix",
-        "content": "🐛 fix(ellipsis): 修复小程序文本省略问题 ([#1888](https://github.com/jdf2e/nutui-react/pull/1888)) @Eiinu",
-        "rawContent": "fix(ellipsis): 修复小程序文本省略问题 ([#1888](https://github.com/jdf2e/nutui-react/pull/1888)) @Eiinu",
-        "tagName": "v2.3.8"
       }
     ],
     "ImagePreview": [
@@ -2434,6 +2407,13 @@
     ],
     "Indicator": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(indicator): v15 ([#2746](https://github.com/jdf2e/nutui-react/pull/2746))`",
+        "rawContent": "`feat(indicator): v15 ([#2746](https://github.com/jdf2e/nutui-react/pull/2746))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.4.2",
         "type": "fix",
         "content": "🐛 fix(indicator): demo拆解与规范 ([#2090](https://github.com/jdf2e/nutui-react/pull/2090)) @eiinu",
@@ -2460,17 +2440,32 @@
         "content": "🐛 swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong",
         "rawContent": "swiper indicator zindex at taro ([#1586](https://github.com/jdf2e/nutui-react/pull/1586)) @xiaoyatong",
         "tagName": "v2.0.24"
-      },
-      {
-        "version": "v2.0.19",
-        "type": "fix",
-        "content": "🐛 indicator 超长换行 ([#1486](https://github.com/jdf2e/nutui-react/pull/1486)) @oasis-cloud",
-        "rawContent": "indicator 超长换行 ([#1486](https://github.com/jdf2e/nutui-react/pull/1486)) @oasis-cloud",
-        "tagName": "v2.0.19"
       }
     ],
-    "Lottie": [],
+    "Lottie": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat: lottie 组件 ([#2867](https://github.com/jdf2e/nutui-react/pull/2867))`",
+        "rawContent": "`feat: lottie 组件 ([#2867](https://github.com/jdf2e/nutui-react/pull/2867))`",
+        "tagName": "v3.0.0"
+      }
+    ],
     "Pagination": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(pagination): color of icon ([#2769](https://github.com/jdf2e/nutui-react/pull/2769))`",
+        "rawContent": "`fix(pagination): color of icon ([#2769](https://github.com/jdf2e/nutui-react/pull/2769))`",
+        "tagName": "v3.0.0"
+      },
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(pagination): v15 ([#2712](https://github.com/jdf2e/nutui-react/pull/2712))`",
+        "rawContent": "`feat(pagination): v15 ([#2712](https://github.com/jdf2e/nutui-react/pull/2712))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.6.12",
         "type": "feat",
@@ -2493,8 +2488,14 @@
         "tagName": "v2.3.0"
       }
     ],
-    "Segmented": [],
     "Price": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(price): v15 ([#2885](https://github.com/jdf2e/nutui-react/pull/2885))`",
+        "rawContent": "`feat(price): v15 ([#2885](https://github.com/jdf2e/nutui-react/pull/2885))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.4.2",
         "type": "fix",
@@ -2511,6 +2512,13 @@
       }
     ],
     "Progress": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(progress): fix style & support icon demo ([#2729](https://github.com/jdf2e/nutui-react/pull/2729))`",
+        "rawContent": "`fix(progress): fix style & support icon demo ([#2729](https://github.com/jdf2e/nutui-react/pull/2729))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.5.1",
         "type": "feat",
@@ -2538,15 +2546,9 @@
         "content": "✨ feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu",
         "rawContent": "feat(rtl): support progress & range ([#1961](https://github.com/jdf2e/nutui-react/pull/1961)) @Eiinu",
         "tagName": "v2.3.12"
-      },
-      {
-        "version": "v2.0.2",
-        "type": "others",
-        "content": "🔨 chore(progress): update demo ([#1192](https://github.com/jdf2e/nutui-react/pull/1192)) @Eiinu",
-        "rawContent": "🔨 chore(progress): update demo ([#1192](https://github.com/jdf2e/nutui-react/pull/1192)) @Eiinu",
-        "tagName": "v2.0.2"
       }
     ],
+    "Segmented": [],
     "Steps": [
       {
         "version": "v2.5.0",
@@ -2579,6 +2581,13 @@
     ],
     "Swiper": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3004](https://github.com/jdf2e/nutui-react/pull/3004))`",
+        "rawContent": "`fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3004](https://github.com/jdf2e/nutui-react/pull/3004))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.7.9",
         "type": "fix",
         "content": "🐛 fix(swiper): 设置横向轮播后，手势无法触发页面的滚动 ([#3003](https://github.com/jdf2e/nutui-react/pull/3003))",
@@ -2605,13 +2614,6 @@
         "content": "🐛 fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang",
         "rawContent": "fix(swiper): display abnormal when dir = 'rtl' ([#2454](https://github.com/jdf2e/nutui-react/pull/2454)) @Alex-huxiyang",
         "tagName": "v2.6.14"
-      },
-      {
-        "version": "v2.6.1",
-        "type": "fix",
-        "content": "🐛 fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang",
-        "rawContent": "fix(swiper): 异步加载 indicator 不显示 ([#2167](https://github.com/jdf2e/nutui-react/pull/2167)) @Alex-huxiyang",
-        "tagName": "v2.6.1"
       }
     ],
     "Table": [
@@ -2785,6 +2787,43 @@
         "tagName": "v2.0.24"
       }
     ],
+    "AvatarCropper": [
+      {
+        "version": "v2.7.0",
+        "type": "fix",
+        "content": "🐛 fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666))",
+        "rawContent": "fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666))",
+        "tagName": "v2.7.0"
+      },
+      {
+        "version": "v2.6.12",
+        "type": "fix",
+        "content": "🐛 fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang",
+        "rawContent": "fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang",
+        "tagName": "v2.6.12"
+      },
+      {
+        "version": "v2.5.0",
+        "type": "fix",
+        "content": "🐛 fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu",
+        "rawContent": "fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu",
+        "tagName": "v2.5.0"
+      },
+      {
+        "version": "v2.3.5",
+        "type": "feat",
+        "content": "✨ feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui",
+        "rawContent": "feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui",
+        "tagName": "v2.3.5"
+      },
+      {
+        "version": "v2.3.5",
+        "type": "fix",
+        "content": "🐛 fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong",
+        "rawContent": "fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong",
+        "tagName": "v2.3.5"
+      }
+    ],
     "Barrage": [
       {
         "version": "v2.6.21",
@@ -2854,6 +2893,13 @@
     ],
     "TimeSelect": [
       {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `fix(timeselect): harmony适配 ([#2806](https://github.com/jdf2e/nutui-react/pull/2806))`",
+        "rawContent": "`fix(timeselect): harmony适配 ([#2806](https://github.com/jdf2e/nutui-react/pull/2806))`",
+        "tagName": "v3.0.0"
+      },
+      {
         "version": "v2.5.0",
         "type": "fix",
         "content": "🐛 fix(timeselect): demo拆解与规范 ([#2087](https://github.com/jdf2e/nutui-react/pull/2087)) @Alex-huxiyang",
@@ -2876,6 +2922,13 @@
       }
     ],
     "TrendArrow": [
+      {
+        "version": "v3.0.0",
+        "type": "others",
+        "content": "💡 `feat(trendarrow): v15  ([#2540](https://github.com/jdf2e/nutui-react/pull/2540))`",
+        "rawContent": "`feat(trendarrow): v15  ([#2540](https://github.com/jdf2e/nutui-react/pull/2540))`",
+        "tagName": "v3.0.0"
+      },
       {
         "version": "v2.4.2",
         "type": "fix",
@@ -2907,6 +2960,13 @@
     ],
     "WaterMark": [
       {
+        "version": "v3.0.1",
+        "type": "others",
+        "content": "💡 fix(watermark): 小程序图片高度未撑开 ([#3040](https://github.com/jdf2e/nutui-react/pull/3040))",
+        "rawContent": "fix(watermark): 小程序图片高度未撑开 ([#3040](https://github.com/jdf2e/nutui-react/pull/3040))",
+        "tagName": "v3.0.1"
+      },
+      {
         "version": "v2.6.15",
         "type": "feat",
         "content": "✨ feat(watermark): support multi-line text ([#2477](https://github.com/jdf2e/nutui-react/pull/2477)) @xiaoyatong",
@@ -2933,50 +2993,6 @@
         "content": "🐛 fix(watermark): 修复小程序下画布尺寸问题 ([#1073](https://github.com/jdf2e/nutui-react/pull/1073)) @Eiinu",
         "rawContent": "fix(watermark): 修复小程序下画布尺寸问题 ([#1073](https://github.com/jdf2e/nutui-react/pull/1073)) @Eiinu",
         "tagName": "v1.5.8"
-      },
-      {
-        "version": "v2.0.0-alpha.13",
-        "type": "others",
-        "content": "🛠 refactor: watermark ([#1071](https://github.com/jdf2e/nutui-react/pull/1071)) @Eiinu",
-        "rawContent": "🛠 refactor: watermark ([#1071](https://github.com/jdf2e/nutui-react/pull/1071)) @Eiinu",
-        "tagName": "v2.0.0-alpha.13"
-      }
-    ],
-    "AvatarCropper": [
-      {
-        "version": "v2.7.0",
-        "type": "fix",
-        "content": "🐛 fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666))",
-        "rawContent": "fix(avatarcropper): multi-language support ([#2666](https://github.com/jdf2e/nutui-react/pull/2666))",
-        "tagName": "v2.7.0"
-      },
-      {
-        "version": "v2.6.12",
-        "type": "fix",
-        "content": "🐛 fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang",
-        "rawContent": "fix(avatarcropper): 报错 ([#2364](https://github.com/jdf2e/nutui-react/pull/2364)) @Alex-huxiyang",
-        "tagName": "v2.6.12"
-      },
-      {
-        "version": "v2.5.0",
-        "type": "fix",
-        "content": "🐛 fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu",
-        "rawContent": "fix(avatarcropper): demo拆解与规范 ([#2103](https://github.com/jdf2e/nutui-react/pull/2103)) @eiinu",
-        "tagName": "v2.5.0"
-      },
-      {
-        "version": "v2.3.5",
-        "type": "feat",
-        "content": "✨ feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui",
-        "rawContent": "feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 ([#1842](https://github.com/jdf2e/nutui-react/pull/1842)) @Marvin Gui",
-        "tagName": "v2.3.5"
-      },
-      {
-        "version": "v2.3.5",
-        "type": "fix",
-        "content": "🐛 fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong",
-        "rawContent": "fix(avatarcropper): fix cannot display when it is development at taro ([#1840](https://github.com/jdf2e/nutui-react/pull/1840)) @xiaoyatong",
-        "tagName": "v2.3.5"
       }
     ]
   }

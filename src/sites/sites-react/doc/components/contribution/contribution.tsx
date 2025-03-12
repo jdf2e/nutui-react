@@ -18,7 +18,6 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
   return (
     <>
       <h3>Bugs & Tips</h3>
-      {issues[name].length > 0 && <h4>Issues</h4>}
       <ul>
         {issues[name].map((item) => (
           <li key={item.number} style={{ cursor: 'pointer' }}>
@@ -38,7 +37,6 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
         ))}
       </ul>
 
-      {logs[name].length > 0 && <h4>Component Logs</h4>}
       <ul>
         {logs[name].map((item) => (
           <li key={item.version}>
@@ -54,13 +52,14 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
               {item.content
                 .replace(/@[^\s]+$/, '')
                 .replace(/\(\[(#\d+)\]\([^)]+\)\)/, '$1')
+                .replace(/`/g, '')
                 .replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '')}
             </a>
             <code style={{fontSize: 14, color: '#666'}}>{item.version}</code>
           </li>
         ))}
       </ul>
-      <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
+      {issues[name].length > 0 && logs[name].length > 0 && <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
         <span>View more resolved </span>
         <a
           href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
@@ -76,7 +75,7 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
           releases
         </a>
         <span> for {name}</span>
-      </div>
+      </div>}
     </>
   )
 }

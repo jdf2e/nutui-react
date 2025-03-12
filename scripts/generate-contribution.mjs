@@ -1,5 +1,13 @@
 /**
  * description: 生成Contribution数据
+ *
+ * 使用说明：
+ * 1. 在 GitHub 设置中生成 Personal Access Token:
+ *    - 访问 https://github.com/settings/tokens
+ *    - 选择 "Generate new token (classic)"
+ *    - 勾选 "repo" 权限
+ *    - 生成并复制 token
+ * 2. 执行命令：export GITHUB_TOKEN=your_token && node scripts/generate-contribution.mjs
  */
 import axios from 'axios'
 import * as fs from 'fs'
@@ -16,10 +24,10 @@ const GITHUB_API = {
   REPO_URL: 'https://github.com/jdf2e/nutui-react/',
   HEADERS: {
     Accept: 'application/vnd.github.v3+json',
-    Authorization: `Bearer ${TOKEN}`,
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
   },
 }
-
+console.log(`Bearer ${process.env.GITHUB_TOKEN}`)
 const headers = GITHUB_API.HEADERS
 const coms = config.nav
   .map((i) => i.packages)
@@ -154,7 +162,7 @@ Promise.all(coms.map((i) => generateContribution(i.name)))
     // 将数据写入到 JSON 文件
     const outputPath = path.resolve(
       __dirname,
-      '../src/sites/doc/components/contribution/contribution.json'
+      '../src/sites/sites-react/doc/components/contribution/contribution.json'
     )
     fs.writeFileSync(
       outputPath,
