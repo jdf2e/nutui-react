@@ -35,9 +35,6 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
             </a>
           </li>
         ))}
-      </ul>
-
-      <ul>
         {logs[name].map((item) => (
           <li key={item.version}>
             <a
