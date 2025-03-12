@@ -9,7 +9,7 @@ let implementation
 if (process.env.TARO_ENV === 'h5') {
   // @ts-ignore
   implementation = LottieWeb
-} else if (process.env.TARO_ENV === 'weapp') {
+} else if (process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'jd') {
   // @ts-ignore
   implementation = LottieMp
 } else {
