@@ -84,3 +84,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-indicator-dot-active-size | indicator dot active size | `6px` |
 | \--nutui-indicator-border-radius | indicator active border size | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | when horizontal, indicator margin | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

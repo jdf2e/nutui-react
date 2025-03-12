@@ -451,3 +451,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-swiper-pagination-bottom | The distance from the bottom of the pager | `12px` |
 | \--swiper-offset | Offset of the carouse | `0` |
+
+<Contribution name="Swiper" />

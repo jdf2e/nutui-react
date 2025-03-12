@@ -71,3 +71,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-notify-success-background-color | Background color of successful notify | `$color-success` |
 | \--nutui-notify-danger-background-color | Danger notify background color | `$color-primary` |
 | \--nutui-notify-warning-background-color | Warning notify background color | `$color-warning` |
+
+<Contribution name="Notify" />

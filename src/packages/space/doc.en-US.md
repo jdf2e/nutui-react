@@ -79,3 +79,5 @@ to [ConfigProvider component](#/en-US/component/configprovider).
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-space-gap | `8px` | spacing size |
+
+<Contribution name="Space" />

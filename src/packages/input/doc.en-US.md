@@ -165,3 +165,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-input-font-size | font size | `$font-size-base` |
 | \--nutui-input-lineheight | line height | `$font-size-l` |
 | \--nutui-input-padding | input padding | `10px 25px` |
+
+<Contribution name="Input" />

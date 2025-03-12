@@ -82,3 +82,5 @@ import { ResultPage } from '@nutui/nutui-react-taro'
 | \--nutui-resultpage-description-color | 描述的文字颜色 | `$color-text` |
 | \--nutui-resultpage-description-line-height | 描述的行高 | `20px` |
 | \--nutui-resultpage-actions-margin-top | 操作区域的margin-top值 | `16px` |
+
+<Contribution name="ResultPage" />

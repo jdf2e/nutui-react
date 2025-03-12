@@ -84,3 +84,5 @@ import { Indicator } from '@nutui/nutui-react-taro'
 | \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `6px` |
 | \--nutui-indicator-border-radius | 指示器焦点时的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

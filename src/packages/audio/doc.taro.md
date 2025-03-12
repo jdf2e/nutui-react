@@ -160,3 +160,5 @@ export default App
 | onPlayEnd | 语音播放完成，loop=false时生效 | event：HTMLAudioElement |
 | onMute | 静音回调 | event：HTMLAudioElement |
 | onCanPlay | 可以播放媒体时触发 | event：HTMLAudioElement |
+
+<Contribution name="Audio" />

@@ -72,3 +72,5 @@ import { Segmented } from '@nutui/nutui-react'
 | \--nutui-segmented-item-color | 分段選擇器選項文字顏色 | `$color-primary-text` |
 | \--nutui-segmented-active-background | 分段選擇器選項選取的背景顏色 | `$color-mask-part` |
 | \--nutui-segmented-icon-margin-right | 分段選擇器選項選間距 | `$color-mask-part` |
+
+<Contribution name="Segmented" />

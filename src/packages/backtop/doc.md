@@ -71,3 +71,5 @@ import { BackTop } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |
+
+<Contribution name="BackTop" />

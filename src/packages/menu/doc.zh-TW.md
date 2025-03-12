@@ -137,3 +137,5 @@ import { Menu } from '@nutui/nutui-react'
 | \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `$color-text-disabled` |
 | \--nutui-menu-item-padding | 菜單選項的內邊距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜單選項文本與icon的距離 | `8px` |
+
+<Contribution name="Menu" />

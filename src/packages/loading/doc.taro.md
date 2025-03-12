@@ -96,3 +96,5 @@ import { Loading } from '@nutui/nutui-react-taro'
 | \--nutui-loading-icon-size | icon大小 | `$font-size-s` |
 | \--nutui-loading-color | 文本色值 | `$color-text-help` |
 | \--nutui-loading-font-size | 文本字号 | `$font-size-s` |
+
+<Contribution name="Loading" />

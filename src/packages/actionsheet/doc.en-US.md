@@ -89,3 +89,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-actionsheet-item-line-height | item line height | `24px` |
 | \--nutui-actionsheet-item-color | item color | `$color-title` |
 | \--nutui-actionsheet-item-danger | item danger color | `$color-primary` |
+
+<Contribution name="ActionSheet" />

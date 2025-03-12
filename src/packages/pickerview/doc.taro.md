@@ -92,3 +92,5 @@ import { PickerView } from '@nutui/nutui-react-taro'
 | \--nutui-picker-item-text-font-size | 面板每条数据的字号 | `$font-size-base` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid $color-border` |
 | \--nut-picker-mask-background | 面板遮挡区渐变值 | `linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))` |
+
+<Contribution name="PickerView" />

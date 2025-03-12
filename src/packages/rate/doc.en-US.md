@@ -141,3 +141,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-rate-icon-size | icon size | `12px` |
 | \--nutui-rate-font-color | Rating font color | `$color-primary-icon` |
 | \--nutui-rate-font-size | Rating font size | `12px` |
+
+<Contribution name="Rate" />

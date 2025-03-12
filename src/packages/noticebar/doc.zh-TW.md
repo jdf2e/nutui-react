@@ -154,3 +154,5 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-icon-gap | icon、text間距 | `4px` |
 | \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |
 | \--nutui-noticebar-right-icon-width | 右側icon的寬度和高度的設定 | `16px` |
+
+<Contribution name="NoticeBar" />

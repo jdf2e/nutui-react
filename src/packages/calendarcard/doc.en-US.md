@@ -151,3 +151,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-day-width | calendar day width | `14.28%` |
 | \--nutui-calendar-choose-color | calendar choose color | `$color-primary` |
 | \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |
+
+<Contribution name="CalendarCard" />

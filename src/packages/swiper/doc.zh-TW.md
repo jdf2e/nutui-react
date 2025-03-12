@@ -450,3 +450,5 @@ export default App
 | --- | --- | --- |
 | \--nutui-swiper-pagination-bottom | 分頁器距離底部的距離 | `12px` |
 | \--swiper-offset | 輪播容器的偏移 | `0` |
+
+<Contribution name="Swiper" />

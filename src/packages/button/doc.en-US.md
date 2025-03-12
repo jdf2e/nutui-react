@@ -148,3 +148,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-mini-font-size | The font size of the button with size mini | `$font-size-xs` |
 | \--nutui-button-mini-border-radius | The rounded corners of the button with size mini | `6px` |
 | \--nutui-button-text-icon-margin | Margin of text with icon button | `4px` |
+
+<Contribution name="Button" />

@@ -9,32 +9,36 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const CascaderDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      uncontrolled: '基础用法-非受控',
       title1: '自定义属性名称',
       title2: '动态加载',
       title3: '部分数据动态加载',
       title4: '自动转换',
-      customStyle: '自定义样式',
+      title5: '自定义样式',
     },
     'zh-TW': {
       basic: '基础用法',
+      uncontrolled: '基础用法-非受控',
       title1: '自定義屬性名稱',
       title2: '動態加載',
       title3: '部分數據動態加載',
       title4: '自動轉換',
-      customStyle: '自定義样式',
+      title5: '自定義样式',
     },
     'en-US': {
       basic: 'Basic Usage',
+      uncontrolled: 'uncontrolled',
       title1: 'Custom Attribute Name',
       title2: 'Async Loading',
       title3: 'Async Loading Of Partial Data',
       title4: 'Automatic Data Conversion',
-      customStyle: 'Customize CSS',
+      title5: 'Customize CSS',
     },
   })
 
@@ -44,6 +48,8 @@ const CascaderDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
+        <View className="h2">{translated.uncontrolled}</View>
+        <Demo7 />
         <View className="h2">{translated.title1}</View>
         <Demo2 />
         <View className="h2">{translated.title2}</View>
@@ -52,7 +58,7 @@ const CascaderDemo = () => {
         <Demo4 />
         <View className="h2">{translated.title4}</View>
         <Demo5 />
-        <View className="h2">{translated.customStyle}</View>
+        <View className="h2">{translated.title5}</View>
         <Demo6 />
       </ScrollView>
     </>

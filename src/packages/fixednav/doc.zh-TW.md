@@ -80,3 +80,5 @@ import { FixedNav } from '@nutui/nutui-react'
 | \--nutui-fixednav-button-background | button 的背景顏色 | `$color-primary-gradient-1` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | 激活顏色 | `$color-primary` |
+
+<Contribution name="FixedNav" />

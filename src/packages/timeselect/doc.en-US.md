@@ -92,3 +92,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-time-height | time height | `50px` |
 | \--nutui-timeselect-time-margin | time margin | `0 10px 10px 0` |
 | \--nutui-timeselect-time-background | time background | `$color-background` |
+
+<Contribution name="TimeSelect" />

@@ -66,3 +66,5 @@ import { Row, Col } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-col-default-margin-bottom | col 组件的下边距 | `15px` |
+
+<Contribution name="Layout" />

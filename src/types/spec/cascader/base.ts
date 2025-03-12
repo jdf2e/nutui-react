@@ -57,7 +57,11 @@ export interface BaseCascader {
   closeIconPosition: PopupCloseIconPosition
   closeIcon: ReactNode
   lazy: boolean
-  onLoad: (node: any, resolve: any) => void
-  onChange: (value: CascaderValue, params?: any) => void
-  onPathChange: (value: CascaderValue, params: any) => void
+  onLoad: (
+    node: CascaderOption,
+    levelIndex: number
+  ) => Promise<CascaderOption[]>
+  onChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
+  onPathChange: (value: CascaderValue, pathNodes: CascaderOption[]) => void
+  onTabsChange: (index: number) => void
 }

@@ -151,3 +151,5 @@ import { CalendarCard } from '@nutui/nutui-react'
 | \--nutui-calendar-day-width | 日歷元素寬度 | `14.28%` |
 | \--nutui-calendar-choose-color | 日歷選中元素的字色 | `$color-primary` |
 | \--nutui-calendar-day-active-border-radius | 日歷選中元素的圓角 | `4px` |
+
+<Contribution name="CalendarCard" />

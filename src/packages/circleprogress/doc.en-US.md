@@ -84,3 +84,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$color-title` |
 | \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-l` |
+
+<Contribution name="CircleProgress" />

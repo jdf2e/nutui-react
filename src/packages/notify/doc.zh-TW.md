@@ -73,3 +73,5 @@ import { Notify } from '@nutui/nutui-react'
 | \--nutui-notify-success-background-color | 成功通知的背景顏色 | `$color-success` |
 | \--nutui-notify-danger-background-color | 危險通知的背景顏色 | `$color-primary` |
 | \--nutui-notify-warning-background-color | 警告通知的背景顏色 | `$color-warning` |
+
+<Contribution name="Notify" />

@@ -117,3 +117,5 @@ import { Popup } from '@nutui/nutui-react'
 | \--nutui-popup-title-height | 标题栏的高度 | `50px` |
 | \--nutui-popup-title-border-bottom | 标题栏底部边框 | `0` |
 | \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |
+
+<Contribution name="Popup" />

@@ -96,3 +96,5 @@ import { HoverButton } from '@nutui/nutui-react'
 | \--nutui-hoverbutton-item-background-active | 按钮背景色-点击态 | `#F6F6F6` |
 | \--nutui-hoverbutton-item-icon-color | 图标色-正常态 | `#1A1A1A` |
 | \--nutui-hoverbutton-item-icon-color-active | 图标色-点击态 | `#595959` |
+
+<Contribution name="HoverButton" />

@@ -166,3 +166,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
 | \--nutui-popover-menu-item-width | The width value of each item in the options | `160px` |
+
+<Contribution name="Popover" />

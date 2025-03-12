@@ -66,3 +66,5 @@ import { Row, Col } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-col-default-margin-bottom | col 組件的下邊距 | `15px` |
+
+<Contribution name="Layout" />

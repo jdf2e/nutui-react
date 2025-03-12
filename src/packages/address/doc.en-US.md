@@ -87,3 +87,5 @@ You can get the Address instance and call instance methods through ref.
 | close | Close address selection | `-` |
 
 More properties in Cascader.
+
+<Contribution name="Address" />

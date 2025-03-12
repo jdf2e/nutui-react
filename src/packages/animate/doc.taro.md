@@ -52,3 +52,5 @@ import { Animate } from '@nutui/nutui-react-taro'
 | 9 | jump | 跳跃，建议loop为true |
 | 10 | twinkle | 水波，建议loop为true |
 | 11 | flicker | 擦亮按钮，建议loop为true |
+
+<Contribution name="Animate" />

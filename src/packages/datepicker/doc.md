@@ -105,3 +105,5 @@ DatetimePicker 通过 type 属性来定义需要选择的时间类型。将 type
 | onCancel | 点击取消按钮时触发 | `() => void` | `-` |
 | onClose | 确定和取消时，都触发 | `(options, value) => void` | `-` |
 | onChange | 选项改变时触发 | `(options, value, index) => void` | `-` |
+
+<Contribution name="DatePicker" />

@@ -84,3 +84,5 @@ import { Indicator } from '@nutui/nutui-react'
 | \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `6px` |
 | \--nutui-indicator-border-radius | 指示器焦點時的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器橫向時的margin值 | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

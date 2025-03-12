@@ -79,3 +79,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-infiniteloading-color | Swipe to bottom text color | `$color-text-help` |
 | \--nutui-infiniteloading-icon-size | Swipe to bottom icon size | `24px` |
+
+<Contribution name="InfiniteLoading" />

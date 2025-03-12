@@ -82,3 +82,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-resultpage-description-color | Describe the text color | `$color-text` |
 | \--nutui-resultpage-description-line-height | Describe the line height | `20px` |
 | \--nutui-resultpage-actions-margin-topt | The margin-top value of the operation area | `16px` |
+
+<Contribution name="ResultPage" />

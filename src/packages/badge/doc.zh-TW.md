@@ -114,3 +114,5 @@ import { Badge } from '@nutui/nutui-react'
 | \--nutui-badge-dot-border | badge 為圓點時的邊框 | `1px solid $color-primary-text` |
 | \--nutui-badge-outline-color | badge 為 outline 文字色值 | `$color-primary` |
 | \--nutui-badge-outline-border | badge 為 outline 填充模式時的邊框 | `1px solid $color-primary-text` |
+
+<Contribution name="Badge" />

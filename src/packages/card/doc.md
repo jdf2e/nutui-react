@@ -85,3 +85,5 @@ import { Card } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-card-border-radius | 卡片、图片的圆角大小 | `4px` |
+
+<Contribution name="Card" />

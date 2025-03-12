@@ -128,3 +128,5 @@ import { Swiper } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-swiper-pagination-bottom | 分页器距离底部的距离 | `12px` |
+
+<Contribution name="Swiper" />

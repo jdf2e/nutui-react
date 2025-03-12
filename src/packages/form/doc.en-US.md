@@ -163,3 +163,5 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-form-item-body-input-text-align | Text alignment of form item input box | `left` |
 | \--nutui-form-item-tip-font-size | Font size for error messages | `10px` |
 | \--nutui-form-item-tip-text-align | Text alignment for error messages | `left` |
+
+<Contribution name="Form" />

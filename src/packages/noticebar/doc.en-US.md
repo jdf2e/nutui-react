@@ -154,3 +154,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-icon-gap | gap of icon and text | `4px` |
 | \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
 | \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
+
+<Contribution name="NoticeBar" />

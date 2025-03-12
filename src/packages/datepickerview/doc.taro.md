@@ -28,7 +28,7 @@ import { DatePickerView } from '@nutui/nutui-taro'
 
 :::
 
-## DatePicker
+## DatePickerView
 
 ### Props
 

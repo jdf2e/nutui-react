@@ -57,3 +57,5 @@ import { VirtualList } from '@nutui/nutui-react'
 | key | 用於指定 list 數據每一項的唯一 key 的字段名，默認取下標 | `string` | `-` |
 | direction | `vertical`、`horizontal` | `string` | `vertical` |
 | onScroll | 滑動到底(右)的事件，可以實現無限滾動 | `() => void` | `-` |
+
+<Contribution name="VirtualList" />

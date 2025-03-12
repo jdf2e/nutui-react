@@ -66,3 +66,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-col-default-margin-bottom | col margin-bottom | `15px` |
+
+<Contribution name="Layout" />

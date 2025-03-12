@@ -145,3 +145,5 @@ import { Steps } from '@nutui/nutui-react-taro'
 | \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $white` |
 | \--nutui-steps-dot-head-margin | 点状进度条点的外边距 | `7px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | 进行中点状进度条点的外边颜色 | `$color-primary-stop-2` |
+
+<Contribution name="Steps" />

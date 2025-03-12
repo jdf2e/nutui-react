@@ -113,3 +113,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-collapse-wrapper-content-font-size | content fontSize | `$font-size-base` |
 | \--nutui-collapse-wrapper-content-line-height | content lineHeight | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | content padding | `12px 26px` |
+
+<Contribution name="Collapse" />

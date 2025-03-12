@@ -131,3 +131,5 @@ import { Popup } from '@nutui/nutui-react-taro'
 ## FAQ
 
 在 iOS 下，有时候 `lockScroll` 可能不生效，此刻在打开 `popup` 时，可将宿主页面的样式增加 `overflow: hidden;`，关闭弹层时，再重置样式。
+
+<Contribution name="Popup" />

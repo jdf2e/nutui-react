@@ -18,7 +18,7 @@ import { routes as routers, guideEnRoutes, guideRoutes } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
-
+import Contribution from './components/contribution'
 const Title = () => {
   let location = useLocation()
   const isTaro = window.location.pathname.includes('taro')
@@ -68,6 +68,7 @@ const Title = () => {
 
 const components = {
   CodeBlock,
+  Contribution
 }
 
 const Content = () => {

@@ -174,3 +174,5 @@ import { Uploader } from '@nutui/nutui-react'
 | \--nutui-uploader-preview-tips-padding | 上传图片预览tips下的padding值 | `0 5px` |
 | \--nutui-uploader-preview-close-right | 上传图片关闭按钮的right值 | `0px` |
 | \--nutui-uploader-preview-close-top | 上传图片关闭按钮的top值 | `0px` |
+
+<Contribution name="Uploader" />

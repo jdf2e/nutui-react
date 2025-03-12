@@ -66,3 +66,5 @@ import { Lottie } from '@nutui/nutui-react'
 | getDuration | inFrames 如果为真，则以帧为单位返回持续时间；inFrames 如果为假，则以秒为单位返回。 | `(inFrames?: boolean) => number` |
 
 详细可以参考 [lottie-react](https://lottiereact.com/)
+
+<Contribution name="Lottie" />

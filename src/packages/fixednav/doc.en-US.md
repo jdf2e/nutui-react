@@ -80,3 +80,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-fixednav-button-background | button background | `$color-primary-gradient-1` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | active color | `$color-primary` |
+
+<Contribution name="FixedNav" />

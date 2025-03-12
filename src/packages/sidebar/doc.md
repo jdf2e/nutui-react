@@ -92,3 +92,5 @@ import { SideBar } from '@nutui/nutui-react'
 | \--nutui-sidebar-active-color | 激活状态下的字体颜色 | `$color-primary` |
 | \--nutui-sidebar-item-background | 内容区域的背景色 | `$white` |
 | \--nutui-sidebar-item-padding | 内容区域的内边距 | `24px 20px` |
+
+<Contribution name="SideBar" />

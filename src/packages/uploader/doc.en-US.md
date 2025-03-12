@@ -169,3 +169,5 @@ The component provides the following CSS variables that can be used to customize
 | \--nutui-uploader-preview-tips-padding | Padding value under uploaded image preview tips | `0 5px` |
 | \--nutui-uploader-preview-close-right | The right value under the upload image's close button | `0px` |
 | \--nutui-uploader-preview-close-top | The top value of the uploader's close button | `0px` |
+
+<Contribution name="Uploader" />

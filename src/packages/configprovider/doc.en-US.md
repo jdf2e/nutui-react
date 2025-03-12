@@ -123,3 +123,5 @@ If you can't find the language pack you need, you are welcome to create a new la
 | --- | --- | --- | --- |
 | locale | set the language | `BaseLang` | `zhCN` |
 | theme | set the theme | `Record<string, string>` | `-` |
+
+<Contribution name="ConfigProvider" />

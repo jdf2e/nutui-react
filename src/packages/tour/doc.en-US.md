@@ -103,3 +103,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tour-content-bottom-btn-padding | The padding value of the button at the bottom of the content area | `2px 4px` |
 | \--nutui-tour-content-bottom-btn-font-size | The font-size value of the button at the bottom of the content area | `12px` |
 | \--nutui-tour-content-bottom-btn-border-radius | The border-radius value of the button at the bottom of the content area | `4px` |
+
+<Contribution name="Tour" />

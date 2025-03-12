@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
 import addColorForHarmony from '@/utils/add-color-for-harmony'
-import { WebPaginationProps } from '@/types'
+import { PaginationNode, usePagination } from '@/hooks/use-pagination'
+import { TaroPaginationProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,9 +18,9 @@ const defaultProps = {
   pageSize: 10,
   itemSize: 5,
   ellipse: false,
-} as WebPaginationProps
+} as TaroPaginationProps
 export const Pagination: FunctionComponent<
-  Partial<WebPaginationProps> &
+  Partial<TaroPaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
@@ -44,53 +45,33 @@ export const Pagination: FunctionComponent<
   }
 
   const classPrefix = 'nut-pagination'
-  const [currentPage, setCurrentPage] = usePropsValue<number>({
+  const [current, setCurrent] = usePropsValue<number>({
     value,
     defaultValue,
     finalValue: 1,
     onChange,
   })
 
-  // (total + pageSize) => pageCount 计算页面的数量
-  const pageCount = useMemo(() => {
-    const num = Math.ceil(total / pageSize)
-    return Number.isNaN(num) ? 1 : Math.max(1, num)
-  }, [total, pageSize])
+  const [pages, pageCount] = usePagination({
+    total,
+    ellipse,
+    current,
+    displayCount: itemSize,
+    itemsPerPage: pageSize,
+  })
 
-  // (currentPage + itemSize + pageCount) => pages 显示的 item 列表
-  const pages = useMemo(() => {
-    const items = [] as Array<any>
-    let startPage = 1
-    let endPage = pageCount
-    const partialShow = pageCount > itemSize
-    if (partialShow) {
-      // 选中的 page 放在中间位置
-      startPage = Math.max(currentPage - Math.floor(itemSize / 2), 1)
-      endPage = startPage + itemSize - 1
-      if (endPage > pageCount) {
-        endPage = pageCount
-        startPage = endPage - itemSize + 1
-      }
-    }
-    // 遍历生成数组
-    for (let i = startPage; i <= endPage; i++) {
-      items.push({ number: i, text: i })
-    }
-    // 判断是否有折叠
-    if (partialShow && itemSize > 0 && ellipse) {
-      if (startPage > 1) {
-        items.unshift({ number: startPage - 1, text: '...' })
-      }
-      if (endPage < pageCount) {
-        items.push({ number: endPage + 1, text: '...' })
-      }
-    }
-    return items
-  }, [currentPage, itemSize, pageCount])
-
-  const handleSelectPage = (curPage: number) => {
-    if (curPage > pageCount || curPage < 1) return
-    setCurrentPage(curPage)
+  const handleClick = (item: PaginationNode) => {
+    if (item.selected) return
+    if (item.number > pageCount || item.number < 1) return
+    setCurrent(item.number)
+  }
+  const prevPage = () => {
+    const prev = current - 1
+    prev >= 1 && setCurrent(prev)
+  }
+  const nextPage = () => {
+    const next = current + 1
+    next <= pageCount && setCurrent(next)
   }
 
   return (
@@ -98,16 +79,16 @@ export const Pagination: FunctionComponent<
       {(mode === 'multi' || mode === 'simple') && (
         <>
           <View
-            className={classNames(
-              `${classPrefix}-prev`,
-              mode === 'multi' ? '' : `${classPrefix}-simple-border`,
-              currentPage === 1 ? `${classPrefix}-prev-disabled` : ''
-            )}
-            onClick={(e) => handleSelectPage(currentPage - 1)}
+            className={classNames({
+              [`${classPrefix}-prev`]: true,
+              [`${classPrefix}-simple-border`]: mode !== 'multi',
+              [`${classPrefix}-prev-disabled`]: current === 1,
+            })}
+            onClick={() => prevPage()}
           >
             {addColorForHarmony(
               prev || locale.pagination.prev,
-              currentPage === 1 ? '#c2c4cc' : '#ff0f23'
+              current === 1 ? '#c2c4cc' : '#ff0f23'
             )}
           </View>
           {mode === 'multi' && (
@@ -116,16 +97,15 @@ export const Pagination: FunctionComponent<
                 return (
                   <View
                     key={`${index}pagination`}
-                    className={classNames(`${classPrefix}-item`, {
-                      [`${classPrefix}-item-active`]:
-                        item.number === currentPage,
+                    className={classNames({
+                      [`${classPrefix}-item`]: true,
+                      [`${classPrefix}-item-active`]: item.selected,
                     })}
-                    onClick={(e) => {
-                      item.number !== currentPage &&
-                        handleSelectPage(item.number)
+                    onClick={() => {
+                      handleClick(item)
                     }}
                   >
-                    {itemRender ? itemRender(item, currentPage) : item.text}
+                    {itemRender ? itemRender(item, current) : item.text}
                   </View>
                 )
               })}
@@ -134,27 +114,27 @@ export const Pagination: FunctionComponent<
           {mode === 'simple' && (
             <View className={`${classPrefix}-contain`}>
               <View className={`${classPrefix}-simple`}>
-                {`${currentPage}/${pageCount}`}
+                {`${current}/${pageCount}`}
               </View>
             </View>
           )}
           <View
-            className={classNames(
-              `${classPrefix}-next`,
-              currentPage >= pageCount ? `${classPrefix}-next-disabled` : ''
-            )}
-            onClick={(e) => handleSelectPage(currentPage + 1)}
+            className={classNames({
+              [`${classPrefix}-next`]: true,
+              [`${classPrefix}-next-disabled`]: current >= pageCount,
+            })}
+            onClick={() => nextPage()}
           >
             {addColorForHarmony(
               next || locale.pagination.next,
-              currentPage >= pageCount ? '#c2c4cc' : '#ff0f23'
+              current >= pageCount ? '#c2c4cc' : '#ff0f23'
             )}
           </View>
         </>
       )}
       {mode === 'lite' && (
         <View className={`${classPrefix}-lite`}>
-          <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
+          <View className={`${classPrefix}-lite-active`}>{current}</View>
           <View className={`${classPrefix}-lite-spliterator`}>/</View>
           <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
         </View>

@@ -122,3 +122,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-picker-item-text-color | picker pannel item text color | `$color-title` |
 | \--nutui-picker-item-text-font-size | picker pannel item text font size | `14px` |
 | \--nutui-picker-item-active-line-border | picker pannel item active line border | `1px solid #d8d8d8` |
+
+<Contribution name="Picker" />

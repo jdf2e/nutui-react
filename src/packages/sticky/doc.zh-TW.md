@@ -53,3 +53,5 @@ import { Sticky } from '@nutui/nutui-react'
 | zIndex | 吸附時的層級 | `number` | `2000` |
 | container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
 | onChange | 吸附狀態改變時觸發 | `(val: boolean) => void` | `-` |
+
+<Contribution name="Sticky" />

@@ -129,3 +129,5 @@ import { Image } from '@nutui/nutui-react'
 | right | 右側對齊 |
 | bottom | 底部對齊 |
 | left | 左側對齊 |
+
+<Contribution name="Image" />

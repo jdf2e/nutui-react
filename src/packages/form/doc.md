@@ -162,3 +162,5 @@ import { Form } from '@nutui/nutui-react'
 | \--nutui-form-item-body-input-text-align | 表单项输入框的文本对齐方式 | `left` |
 | \--nutui-form-item-tip-font-size | 错误信息的字号 | `10px` |
 | \--nutui-form-item-tip-text-align | 错误信息的文本对齐方式 | `left` |
+
+<Contribution name="Form" />

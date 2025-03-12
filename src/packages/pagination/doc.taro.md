@@ -108,3 +108,5 @@ import { Pagination } from '@nutui/nutui-react-taro'
 | \--nutui-pagination-lite-radius | lite模式下的圆角 | `12px` |
 | \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |
+
+<Contribution name="Pagination" />

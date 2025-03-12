@@ -102,3 +102,5 @@ Reset the video when the video address changes
 | --- | --- | --- |
 | play | play | `-` |
 | pause | pause | `-` |
+
+<Contribution name="Video" />

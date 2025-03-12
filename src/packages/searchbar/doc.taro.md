@@ -129,3 +129,5 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$color-title` |
 | \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |
 | \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `left` |
+
+<Contribution name="SearchBar" />
