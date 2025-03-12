@@ -1,23 +1,10 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { ButtonItem, usePagination } from '@/hooks/use-pagination'
-
-export interface PaginationProps extends BasicComponent {
-  defaultValue: number
-  value: number
-  mode: 'multi' | 'simple' | 'lite'
-  prev: ReactNode
-  next: ReactNode
-  total: number
-  pageSize: number
-  itemSize: number
-  ellipse: boolean
-  itemRender: (page: any, index: number) => ReactNode
-  onChange: (currPage: number) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { PaginationNode, usePagination } from '@/hooks/use-pagination'
+import { WebPaginationProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -29,9 +16,9 @@ const defaultProps = {
   pageSize: 10,
   itemSize: 5,
   ellipse: false,
-} as PaginationProps
+} as WebPaginationProps
 export const Pagination: FunctionComponent<
-  Partial<PaginationProps> &
+  Partial<WebPaginationProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
@@ -71,7 +58,7 @@ export const Pagination: FunctionComponent<
     itemsPerPage: pageSize,
   })
 
-  const handleClick = (item: ButtonItem) => {
+  const handleClick = (item: PaginationNode) => {
     if (item.selected) return
     if (item.number > pageCount || item.number < 1) return
     setCurrent(item.number)
@@ -127,10 +114,10 @@ export const Pagination: FunctionComponent<
             </div>
           )}
           <div
-            className={classNames(
-              `${classPrefix}-next`,
-              current >= pageCount ? `${classPrefix}-next-disabled` : ''
-            )}
+            className={classNames({
+              [`${classPrefix}-next`]: true,
+              [`${classPrefix}-next-disabled`]: current >= pageCount,
+            })}
             onClick={() => nextPage()}
           >
             {next || locale.pagination.next}

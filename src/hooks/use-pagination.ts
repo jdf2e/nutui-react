@@ -11,13 +11,17 @@ interface PaginationOptions {
   ellipse: boolean
 }
 
-export type ButtonItem = { number: number; text: string; selected?: boolean }
+export type PaginationNode = {
+  number: number
+  text: string
+  selected?: boolean
+}
 
 type PaginationResult = [
   // 指示器
-  buttons: Array<ButtonItem>,
+  PaginationNodes: Array<PaginationNode>,
   // 指示器的总数量
-  buttonsCount: number,
+  PaginationNodesCount: number,
 ]
 
 const defaultPaginationOptions: Partial<PaginationOptions> = {
@@ -31,10 +35,10 @@ function human2Machine(number: number) {
   return --number
 }
 
-function calculateButtons(options: PaginationOptions, buttonsCount: number) {
+function calculateNodes(options: PaginationOptions, nodesCount: number) {
   // 分页器内部的索引从 0 开始，用户使用的索引从 1 开始
   const halfIndex = Math.floor(options.displayCount / 2)
-  const buttonsCountIndex = human2Machine(buttonsCount)
+  const buttonsCountIndex = human2Machine(nodesCount)
   const displayCountIndex = human2Machine(options.displayCount)
   const currentIndex = human2Machine(options.current)
   let start
@@ -67,33 +71,33 @@ function calculateButtons(options: PaginationOptions, buttonsCount: number) {
   }
 
   return addEllipses(buttons, {
-    buttonsCount,
+    nodesCount,
     ellipse: options.ellipse,
     displayCount: options.displayCount,
   })
 }
 
 function addEllipses(
-  buttons: Array<ButtonItem>,
+  nodes: Array<PaginationNode>,
   {
     displayCount,
-    buttonsCount,
+    nodesCount,
     ellipse,
-  }: { displayCount: number; buttonsCount: number; ellipse: boolean }
+  }: { displayCount: number; nodesCount: number; ellipse: boolean }
 ) {
-  if (buttonsCount <= displayCount || !ellipse) return buttons
-  const start = buttons[0]
-  const end = buttons[buttons.length - 1]
+  if (nodesCount <= displayCount || !ellipse) return nodes
+  const start = nodes[0]
+  const end = nodes[nodes.length - 1]
 
   const leftEllipse = start.number > 1
-  const rightEllipse = end.number < buttonsCount
+  const rightEllipse = end.number < nodesCount
   if (leftEllipse) {
-    buttons.unshift({ number: start.number - 1, text: '...' })
+    nodes.unshift({ number: start.number - 1, text: '...' })
   }
   if (rightEllipse) {
-    buttons.push({ number: end.number + 1, text: '...' })
+    nodes.push({ number: end.number + 1, text: '...' })
   }
-  return buttons
+  return nodes
 }
 
 export const usePagination = (options: PaginationOptions): PaginationResult => {
@@ -102,7 +106,7 @@ export const usePagination = (options: PaginationOptions): PaginationResult => {
     ...options,
   }
   const { total, itemsPerPage } = mergedOptions
-  const buttonsCount = Math.ceil((total || 0) / itemsPerPage) || 1
+  const nodesCount = Math.ceil((total || 0) / itemsPerPage) || 1
 
-  return [calculateButtons(mergedOptions, buttonsCount), buttonsCount]
+  return [calculateNodes(mergedOptions, nodesCount), nodesCount]
 }
