@@ -41,7 +41,7 @@ plugins: [
       style: 'css',
       camel2DashComponentName: false,
       "customName": (name, file) => {
-        return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
       }
     },
     "nutui-react",
