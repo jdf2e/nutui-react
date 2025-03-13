@@ -120,11 +120,9 @@ export const CalendarViewModeItem = React.forwardRef<
   const getMonthsPanel = () => {
     return monthsPanel.current as HTMLDivElement
   }
-
   const getMonthsRef = () => {
     return monthsRef.current as HTMLDivElement
   }
-
   const requestAniFrameFunc = (viewMode: string) => {
     switch (viewMode) {
       case 'month':
@@ -167,11 +165,9 @@ export const CalendarViewModeItem = React.forwardRef<
         break
     }
   }
-
   const isCurrYear = (year: number) => {
     return (innerValue as string).split('-')[0] === `${year}`
   }
-
   const getMonthsData = () => {
     // 获取区间范围内可用的月数，包括边界值所在的月份
     const startYear = Number(startDates[0])
@@ -242,7 +238,6 @@ export const CalendarViewModeItem = React.forwardRef<
     }
     return panelData
   }
-
   const getQuartersData = () => {
     // 获取区间范围内可用的季度数，包括边界值所在的季度数
     const startYear = Number(startDates[0])
@@ -311,7 +306,6 @@ export const CalendarViewModeItem = React.forwardRef<
     }
     return panelData
   }
-
   /*
    * 初始化面板数据
    * 获取总数据panelDate
@@ -322,7 +316,6 @@ export const CalendarViewModeItem = React.forwardRef<
     switch (viewMode) {
       case 'month': {
         const months = getMonthsData()
-        console.log('months', months)
         setPanelDate({ ...panelDate, months: months as any })
         break
       }
@@ -384,7 +377,7 @@ export const CalendarViewModeItem = React.forwardRef<
     scrollToDate,
   }))
 
-  const handleItemClick = (viewMode: string, item: any) => {
+  const handleItemClick = (item: any) => {
     // 点击事件，可以返回所点击元素的数据
     // 如果非可点击，则直接返回，不做处理
     if (item.type !== 'curr') return
@@ -444,7 +437,7 @@ export const CalendarViewModeItem = React.forwardRef<
           item.type,
           getClasses(item)
         )}
-        onClick={() => handleItemClick(viewMode, item)}
+        onClick={() => handleItemClick(item)}
         key={index}
       >
         <div className={`${classPrefix}-item-${item.type}`}>
@@ -455,40 +448,20 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderPanel = () => {
-    switch (viewMode) {
-      case 'month':
-        return (
-          <>
-            {panelDate.months.map((item: any, key: number) => (
-              <div className={`${classPrefix}-panel`} key={key}>
-                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
-                <div className={`${classPrefix}-content`}>
-                  {item.months.map((month: any, i: number) =>
-                    renderItem(month, i)
-                  )}
-                </div>
-              </div>
-            ))}
-          </>
-        )
-      case 'quarter':
-        return (
-          <>
-            {panelDate.quarters.map((item: any, key: number) => (
-              <div className={`${classPrefix}-panel`} key={key}>
-                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
-                <div className={`${classPrefix}-content`}>
-                  {item.quarters.map((quarter: any, i: number) =>
-                    renderItem(quarter, i)
-                  )}
-                </div>
-              </div>
-            ))}
-          </>
-        )
-      default:
-        break
-    }
+    return (
+      <>
+        {panelDate[`${viewMode}s`].map((item: any, key: number) => (
+          <div className={`${classPrefix}-panel`} key={key}>
+            <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+            <div className={`${classPrefix}-content`}>
+              {item[`${viewMode}s`].map((item: any, i: number) =>
+                renderItem(item, i)
+              )}
+            </div>
+          </div>
+        ))}
+      </>
+    )
   }
 
   const renderContent = () => {

@@ -452,40 +452,20 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const renderPanel = () => {
-    switch (viewMode) {
-      case 'month':
-        return (
-          <>
-            {panelDate.months.map((item: any, key: number) => (
-              <div className={`${classPrefix}-panel`} key={key}>
-                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
-                <div className={`${classPrefix}-content`}>
-                  {item.months.map((month: any, i: number) =>
-                    renderItem(month, i)
-                  )}
-                </div>
-              </div>
-            ))}
-          </>
-        )
-      case 'quarter':
-        return (
-          <>
-            {panelDate.quarters.map((item: any, key: number) => (
-              <div className={`${classPrefix}-panel`} key={key}>
-                <div className={`${classPrefix}-panel-title`}>{item.year}</div>
-                <div className={`${classPrefix}-content`}>
-                  {item.quarters.map((quarter: any, i: number) =>
-                    renderItem(quarter, i)
-                  )}
-                </div>
-              </div>
-            ))}
-          </>
-        )
-      default:
-        break
-    }
+    return (
+      <>
+        {panelDate[`${viewMode}s`].map((item: any, key: number) => (
+          <div className={`${classPrefix}-panel`} key={key}>
+            <div className={`${classPrefix}-panel-title`}>{item.year}</div>
+            <div className={`${classPrefix}-content`}>
+              {item[`${viewMode}s`].map((item: any, i: number) =>
+                renderItem(item, i)
+              )}
+            </div>
+          </div>
+        ))}
+      </>
+    )
   }
 
   const renderContent = () => {
