@@ -58,14 +58,3 @@ export interface BasePicker<POPUP_PROPS = any> extends BaseProps {
   onChange?: (args0: PickerOnChangeCallbackParameter) => void
   children?: any
 }
-
-export interface BasePickerView extends BaseProps {
-  setRefs?: (ref: any) => any
-  options: PickerOptions[]
-  value?: PickerValue[]
-  defaultValue?: PickerValue[]
-  threeDimensional?: boolean
-  duration?: number | string
-  renderLabel: (item: PickerOption) => React.ReactNode
-  onChange?: (arg0: PickerOnChangeCallbackParameter) => void
-}

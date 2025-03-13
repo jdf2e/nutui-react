@@ -1,3 +1,19 @@
+# v3.0.3
+
+`2025-03-07`
+
+- refactor(pagination): 组件重构, hooks 实现数据抽象 (#2988)
+- refactor(cascader): 组件重构，修订 lazy 属性的定义 (#3007)
+- fix(countdown): 秒位补 0 展示 (#3072)
+- fix(popup): 修复 popup 示例问题 (#3075)
+- fix(calendarcard): 修复日历卡片在 JD 小程序下的示例 (#3074)
+- fix(inputnumber): 组件重构, 增加 beforeChange，调整异步触发逻辑 (#3006)
+- chore: 类型文件中增加 jsdoc (#3073)
+- chore: 类型规范化 (#3034)
+- docs: 增加组件相关Issues和更新日志的展示 (#3027)
+- docs: 修复快速上手中的按需加载配置 (#3071)
+- docs: 更新迁移文档 (#3077)
+
 # v3.0.2
 
 `2025-03-07`

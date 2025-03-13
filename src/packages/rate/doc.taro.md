@@ -108,7 +108,7 @@ import { Rate } from '@nutui/nutui-react-taro'
 
 ## Rate
 
-## Props
+### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

@@ -59,7 +59,6 @@ const transform = (file, api, replace) => {
       return
     }
     const dir = join(__dirname, alias.replace('@/', '../src/'))
-    console.log(alias, file)
     if (file.path) {
       path.node.source.value = relativePath(dir, file.path)?.replace(
         '.taro',
@@ -114,6 +113,7 @@ async function buildES(p) {
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
           '@/types/*': ['src/types/*'],
+          '@/types': ['src/types'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,

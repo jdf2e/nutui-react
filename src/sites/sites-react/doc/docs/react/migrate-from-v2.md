@@ -41,7 +41,7 @@ plugins: [
       style: 'css',
       camel2DashComponentName: false,
       "customName": (name, file) => {
-        return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
       }
     },
     "nutui-react",
@@ -145,14 +145,25 @@ plugins: [
 ### 数据录入
 
 [//]: # '#### Calendar'
-[//]: # '#### Cascader'
+
+#### Cascader
+
+- `lazy` 属性表示开启数据的自动加载，Cascader 内部通过 `value` 和 `onLoad` 实现了自动加载数据的逻辑。`lazy` 属性必须和 `onLoad` 属性同时设置。
+- `onLoad`方法返回的数据类型为 `CascaderOption[]`, 默认支持 promise
+- 移除内置构建的树结构
+
 [//]: # '#### Checkbox'
 [//]: # '#### Checkbox.Group'
 [//]: # '#### DatePicker'
 [//]: # '#### Form'
 [//]: # '#### Form.Item'
 [//]: # '#### Input'
-[//]: # '#### InputNumber'
+
+#### InputNumber
+
+- 移除 `async`, 可通过 `beforeChange` 替代
+- 增加 `beforeChange`, 处理异步调用
+
 [//]: # '#### NumberKeyboard'
 [//]: # '#### Picker'
 [//]: # '#### Radio'
