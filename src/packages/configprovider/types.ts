@@ -370,7 +370,6 @@ export type NutCSSVariables =
   | 'nutuiNotifyTextColor'
   | 'nutuiNotifyFontSize'
   | 'nutuiNotifyBackgroundColor'
-  | 'nutuiNotifyDistance'
   | 'nutuiRateItemMargin'
   | 'nutuiRateIconColor'
   | 'nutuiRateIconInactiveColor'

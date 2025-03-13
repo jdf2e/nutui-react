@@ -77,7 +77,7 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     if (duration) {
       timer = window.setTimeout(() => {
         hide()
-      }, duration || 999999999)
+      }, duration)
     }
   }
   const clearTimer = () => {

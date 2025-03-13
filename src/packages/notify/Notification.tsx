@@ -51,7 +51,7 @@ export default class Notification extends React.PureComponent<
     if (duration) {
       this.closeTimer = window.setTimeout(() => {
         this.close()
-      }, duration || 999999999)
+      }, duration)
     }
   }
 
