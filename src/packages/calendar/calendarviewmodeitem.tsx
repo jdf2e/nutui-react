@@ -393,11 +393,7 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const renderContent = () => {
     return (
-      <div
-        className={`${classPrefix}-content`}
-        // onScroll={monthsViewScroll}
-        ref={monthsRef}
-      >
+      <div className={`${classPrefix}-content`} ref={monthsRef}>
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
           <div ref={viewAreaRef}>{renderPanel()}</div>
         </div>
