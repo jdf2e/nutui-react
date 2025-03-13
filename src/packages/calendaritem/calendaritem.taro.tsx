@@ -6,18 +6,20 @@ import { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   getDateString,
-  getCurrMonthData,
-  getDaysStatus,
-  getPreMonthDates,
   compareDate,
   getMonthDays,
-  getWeekDate,
-  formatResultDate,
   isEqual,
   getNumTwoBit,
   getWhatDay,
-  getWeekNosOfYear,
 } from '@/utils/date'
+import {
+  getCurrMonthData,
+  getPreMonthDates,
+  getWeekDate,
+  formatResultDate,
+  getDaysStatus,
+  getWeekNosOfYear,
+} from './utils'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { usePropsValue } from '@/utils/use-props-value'
