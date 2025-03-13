@@ -125,8 +125,8 @@
       flex-direction: column;
       position: relative;
       height: $calendar-day-height;
-      font-weight: 400;
-      font-size: 14px;
+      font-weight: $font-weight;
+      font-size: $font-size-base;
       margin-bottom: 4px;
       color: $color-text-help;
     }

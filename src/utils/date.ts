@@ -319,13 +319,14 @@ export const getPreMonths = (type: string, year: number, month: number) => {
     return {
       year,
       month: k + 1,
+      yearAndMonth: formatMonth(year, k + 1),
       type,
     }
   })
   return months
 }
 
-// 获取当前年月前的月份
+// 获取当前年月后的月份
 export const getMonths = (
   type: string,
   year: number,
@@ -337,6 +338,7 @@ export const getMonths = (
     return {
       year,
       month: k + month,
+      yearAndMonth: formatMonth(year, k + month),
       type,
     }
   })
@@ -420,7 +422,12 @@ export const getQuarters = (
   const endIndex = endMonth
   for (let index = startIndex; index <= endIndex; index += 3) {
     const quarter = getQuarter(index)
-    quarters.push({ year, quarter, type })
+    quarters.push({
+      year,
+      quarter,
+      yearAndQuarter: formatQuarter(year, quarter),
+      type,
+    })
   }
   return quarters
 }
@@ -432,7 +439,12 @@ export const getPreQuarters = (type: string, year: number, month: number) => {
   const endIndex = month - 3 // 当前月份不能算进之前的季度，-3 判断。
   for (let index = startIndex; index <= endIndex; index += 3) {
     const quarter = getQuarter(index)
-    quarters.push({ year, quarter, type })
+    quarters.push({
+      year,
+      quarter,
+      yearAndQuarter: formatQuarter(year, quarter),
+      type,
+    })
   }
   return quarters
 }
@@ -449,7 +461,12 @@ export const getNextQuarters = (
   const endIndex = endMonth
   for (let index = startIndex; index <= endIndex; index += 3) {
     const quarter = getQuarter(index)
-    quarters.push({ year, quarter, type })
+    quarters.push({
+      year,
+      quarter,
+      yearAndQuarter: formatQuarter(year, quarter),
+      type,
+    })
   }
   return quarters
 }

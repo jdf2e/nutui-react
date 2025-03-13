@@ -237,7 +237,7 @@ export const CalendarItem = React.forwardRef<
     const currentMonthsData = monthsData[current]
     if (currentMonthsData.title === yearMonthTitle) return
     const [year, month] = currentMonthsData.curData
-    onPageChange && onPageChange([year, month, `${year}-${month}`])
+    onPageChange?.([year, month, `${year}-${month}`])
     setYearMonthTitle(currentMonthsData.title)
   }
 
@@ -622,7 +622,7 @@ export const CalendarItem = React.forwardRef<
     }
 
     if (!isFirst) {
-      onDayClick && onDayClick(state.currDateArray)
+      onDayClick?.(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
       }
@@ -636,9 +636,9 @@ export const CalendarItem = React.forwardRef<
       type !== 'range'
     ) {
       const chooseData = state.currDateArray.slice(0)
-      onConfirm && onConfirm(chooseData)
+      onConfirm?.(chooseData)
       if (popup) {
-        onUpdate && onUpdate()
+        onUpdate?.()
       }
     }
   }
@@ -790,7 +790,6 @@ export const CalendarItem = React.forwardRef<
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
           <div
-            className="viewArea"
             ref={viewAreaRef}
             style={{ transform: `translateY(${translateY}px)` }}
           >

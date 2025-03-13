@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   getDateString,
@@ -10,8 +10,6 @@ import {
   getPreQuarters,
   getNextQuarters,
   getQuarters,
-  formatMonth,
-  formatQuarter,
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
@@ -124,7 +122,6 @@ export const CalendarViewModeItem = React.forwardRef<
   const getMonthsPanel = () => {
     return monthsPanel.current as HTMLDivElement
   }
-
   const getMonthsRef = () => {
     return monthsRef.current as HTMLDivElement
   }
@@ -136,14 +133,6 @@ export const CalendarViewModeItem = React.forwardRef<
           const containerHeight = lastItem.cssHeight + lastItem.scrollTop
           const currentIndex = panelDate.months.findIndex(
             (item) => item.currYear === true
-          )
-
-          console.log(
-            'containerHeight',
-            containerHeight,
-            currentIndex,
-            panelDate.months.length,
-            panelDate.months
           )
           requestAniFrame(() => {
             // 初始化 日历位置
@@ -164,14 +153,6 @@ export const CalendarViewModeItem = React.forwardRef<
           const currentIndex = panelDate.quarters.findIndex(
             (item) => item.currYear === true
           )
-
-          console.log(
-            'containerHeight',
-            containerHeight,
-            currentIndex,
-            panelDate.quarters.length,
-            panelDate.quarters
-          )
           requestAniFrame(() => {
             // 初始化 日历位置
             if (monthsRef && monthsPanel && viewAreaRef) {
@@ -188,11 +169,9 @@ export const CalendarViewModeItem = React.forwardRef<
         break
     }
   }
-
   const isCurrYear = (year: number) => {
     return (innerValue as string).split('-')[0] === `${year}`
   }
-
   const getMonthsData = () => {
     // 获取区间范围内可用的月数，包括边界值所在的月份
     const startYear = Number(startDates[0])
@@ -263,7 +242,6 @@ export const CalendarViewModeItem = React.forwardRef<
     }
     return panelData
   }
-
   const getQuartersData = () => {
     // 获取区间范围内可用的季度数，包括边界值所在的季度数
     const startYear = Number(startDates[0])
@@ -332,7 +310,6 @@ export const CalendarViewModeItem = React.forwardRef<
     }
     return panelData
   }
-
   /*
    * 初始化面板数据
    * 获取总数据panelDate
@@ -343,13 +320,11 @@ export const CalendarViewModeItem = React.forwardRef<
     switch (viewMode) {
       case 'month': {
         const months = getMonthsData()
-        console.log('monthts', months, panelDate)
         setPanelDate({ ...panelDate, months: months as any })
         break
       }
       case 'quarter': {
         const quarters = getQuartersData()
-        console.log('quarters', quarters, panelDate)
         setPanelDate({ ...panelDate, quarters: quarters as any })
         break
       }
@@ -411,12 +386,9 @@ export const CalendarViewModeItem = React.forwardRef<
     // 如果非可点击，则直接返回，不做处理
     if (item.type !== 'curr') return
     // 可点击时，需要关注当前元素是否已被选中，选中，取消选中，拿到数据
-    const val =
-      viewMode === 'month'
-        ? formatMonth(item.year, item.month)
-        : formatQuarter(item.year, item.quarter)
+    const val = viewMode === 'month' ? item.yearAndMonth : item.yearAndQuarter
     setInnerValue(val)
-    onItemClick && onItemClick(val)
+    onItemClick?.(val)
   }
 
   const isDisable = (item: any) => {
@@ -424,10 +396,7 @@ export const CalendarViewModeItem = React.forwardRef<
   }
 
   const isActive = (item: any) => {
-    const val =
-      viewMode === 'month'
-        ? formatMonth(item.year, item.month)
-        : formatQuarter(item.year, item.quarter)
+    const val = viewMode === 'month' ? item.yearAndMonth : item.yearAndQuarter
     return val === innerValue
   }
 
@@ -448,13 +417,15 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const renderHeader = () => {
     return (
-      <div
-        className={classNames({
-          [`${classPrefix}-header`]: true,
-        })}
-      >
-        {showTitle && <div className={`${classPrefix}-title`}>{title}</div>}
-      </div>
+      showTitle && (
+        <View
+          className={classNames({
+            [`${classPrefix}-header`]: true,
+          })}
+        >
+          <View className={`${classPrefix}-title`}>{title}</View>
+        </View>
+      )
     )
   }
 
@@ -528,7 +499,6 @@ export const CalendarViewModeItem = React.forwardRef<
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
           <div
-            className="viewArea"
             ref={viewAreaRef}
             style={{ transform: `translateY(${translateY}px)` }}
           >

@@ -106,7 +106,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | visible | 是否可见 | `boolean` | `false` |
 | type | 类型，日期选择'single'，区间选择'range' | `string` | `single` |
-| viewMode `v2.7.9` | 面板模式，用于展示不一样的面板 | `day` \| `month` \| `quarter` | `day` |
+| viewMode `v2.7.10` | 面板模式，用于展示不一样的面板 | `day` \| `month` \| `quarter` | `day` |
 | popup | 是否弹窗状态展示 | `boolean` | `true` |
 | autoBackfill | 自动回填 | `boolean` | `false` |
 | title | 显示标题 | `string` | `日期选择` |

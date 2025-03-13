@@ -9,7 +9,7 @@ const Demo11 = () => {
   }
 
   const yearMonthChange = (param: string) => {
-    console.log(param)
+    console.log('yearMonthChange', param)
   }
 
   return (
