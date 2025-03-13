@@ -161,7 +161,6 @@ export const Calendar = React.forwardRef<
             scrollAnimation={scrollAnimation}
             renderDay={renderDay}
             onItemClick={onItemClick}
-            onPageChange={yearMonthChange}
           />
         ) : (
           <CalendarItem
