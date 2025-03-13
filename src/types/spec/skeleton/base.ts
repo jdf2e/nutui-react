@@ -10,7 +10,6 @@ export interface BaseSkeleton extends BaseProps {
   shape: UIRound | 'circle'
   animated: boolean
   duration: number
-  inline: boolean
   visible: boolean
 }
 
