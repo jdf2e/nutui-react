@@ -147,7 +147,7 @@ export const SideBar: FC<Partial<TaroSideBarProps>> & {
     )
     index = index < 0 ? 0 : index
     return {
-      transform: `translate3d( 0,-${index * 100}%, 0)`,
+      transform: `translateY(-${index * 100}%)`,
       transitionDuration: `${contentDuration}ms`,
     }
   }
@@ -192,14 +192,14 @@ export const SideBar: FC<Partial<TaroSideBarProps>> & {
                 className={classNames(`${classPrefix}-titles-item`, {
                   [`${classPrefix}-titles-item-active`]:
                     !item.disabled && String(item.value) === String(value),
-                  [`${classPrefix}-titles-item-disabled`]: item.disabled,
                 })}
                 key={item.value}
               >
                 <View
                   className={classNames(
                     `${classPrefix}-ellipsis`,
-                    `${classPrefix}-titles-item-text`
+                    `${classPrefix}-titles-item-text`,
+                    { [`${classPrefix}-titles-item-disabled`]: item.disabled }
                   )}
                 >
                   {item.title}
