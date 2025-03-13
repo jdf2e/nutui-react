@@ -30,8 +30,8 @@ importers:
         specifier: 1.0.6-beta.2
         version: 1.0.6-beta.2
       '@nutui/lottie-miniprogram':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@nutui/touch-emulator':
         specifier: ^1.0.0
         version: 1.0.0
@@ -532,8 +532,8 @@ importers:
         specifier: ^7.23.9
         version: 7.26.0
       '@nutui/lottie-miniprogram':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@nutui/replace-icons':
         specifier: ^1.0.0
         version: 1.0.3(@types/node@22.10.5)(@vitest/ui@2.1.8)(happy-dom@17.1.0)(jsdom@24.1.3)(less@3.13.1)(lightningcss@1.28.2)(sass@1.77.6)(stylus@0.64.0)(terser@5.37.0)
@@ -2329,8 +2329,8 @@ packages:
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2':
     resolution: {integrity: sha512-2Scz5c9o14gA7Mw5JdiEkc/KEbNlNWMcJMuqVyFVipYeeYN/118N/fvHVpocmJviN0Gc4P+u3ZB3dIQSA2j4Fw==}
 
-  '@nutui/lottie-miniprogram@1.0.0':
-    resolution: {integrity: sha512-aXDxgGZkj3TZh6F7psgjtVmkA1z0rVWHKMSejnKdTjRJf7HWF+vxTZGC4mF0sHxdZ8vfVLr1Fq2inXt8dYoU+g==, tarball: https://registry.npmjs.org/@nutui/lottie-miniprogram/-/lottie-miniprogram-1.0.0.tgz}
+  '@nutui/lottie-miniprogram@1.0.1':
+    resolution: {integrity: sha512-SwsFaHnX2FZbaSJoPKf+EjNYkjiozydfvDhWQ/400uRlkJj8h3dtv4bAO+y3nE80idp7KUnMIaqyk4S8Kp/8xA==, tarball: https://registry.npmjs.org/@nutui/lottie-miniprogram/-/lottie-miniprogram-1.0.1.tgz}
 
   '@nutui/nutui-react@2.7.5':
     resolution: {integrity: sha512-oa7ybM1htEdCzBBokJa78QC/gf4d1qtdSTzn/lWgibRjMBKTKmZk5JMuDWMTPSqwW+y+A6uq9zT3hxngxs0gPA==}
@@ -13824,7 +13824,7 @@ snapshots:
 
   '@nutui/jdesign-icons-react-taro@1.0.6-beta.2': {}
 
-  '@nutui/lottie-miniprogram@1.0.0': {}
+  '@nutui/lottie-miniprogram@1.0.1': {}
 
   '@nutui/nutui-react@2.7.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:

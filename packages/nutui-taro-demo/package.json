@@ -63,7 +63,7 @@
     "@jdtaro/plugin-platform-jdharmony-cpp": "0.1.29-beta.0",
     "@nutui/replace-icons": "^1.0.0",
     "@nutui/touch-emulator": "^1.0.0",
-    "@nutui/lottie-miniprogram": "^1.0.0",
+    "@nutui/lottie-miniprogram": "^1.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@tarojs/components": "4.0.8-beta.1",
     "@tarojs/helper": "4.0.8-beta.1",
