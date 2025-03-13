@@ -14,11 +14,24 @@ import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
 import { splitDate } from './utils'
-import { CalendarDay, CalendarValue, CalendarType } from './types'
+import {
+  CalendarDay,
+  CalendarValue,
+  CalendarType,
+  CalendarMonth,
+  CalendarMonthInfoOfPanel,
+  CalendarQuarterInfoOfPanel,
+  CalendarQuarter,
+} from './types'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
+
+// 年面板的高度：cssHeight 231
+const YearMonthPanelHeight = 231
+// 年面板的高度：cssHeight 103
+const YearQuarterPanelHeight = 103
 
 export interface CalendarViewModeItemProps {
   type: CalendarType
@@ -78,7 +91,7 @@ export const CalendarViewModeItem = React.forwardRef<
     months: [
       {
         year: new Date().getFullYear(),
-        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        months: [] as CalendarMonth[],
         cssHeight: 0,
         scrollTop: 0,
         currYear: false,
@@ -87,7 +100,7 @@ export const CalendarViewModeItem = React.forwardRef<
     quarters: [
       {
         year: new Date().getFullYear(),
-        quarters: [1, 2, 3, 4],
+        quarters: [] as CalendarQuarter[],
         cssHeight: 0,
         scrollTop: 0,
         currYear: false,
@@ -174,67 +187,52 @@ export const CalendarViewModeItem = React.forwardRef<
     const startMonth = Number(startDates[1])
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
-    let panelData = []
-    const YearMonthPanelHeight = 231
+    const panelData: CalendarMonthInfoOfPanel[] = []
+    // 第某年的scrollTop：年面板高度 * （第某年数-1）
+    const addPanelData = (
+      year: number,
+      months: CalendarMonth[],
+      scrollTop: number
+    ) => {
+      panelData.push({
+        year,
+        months,
+        scrollTop,
+        cssHeight: YearMonthPanelHeight,
+        currYear: isCurrYear(year),
+      })
+    }
     // 在同一年时
     if (startYear === endYear) {
-      const months = [
-        ...getPreMonths('prev', startYear, startMonth),
-        ...getMonths('curr', startYear, startMonth, endMonth),
-        ...getMonths('next', endYear, endMonth + 1),
-      ]
-      panelData.push({
-        year: startYear,
-        months,
-        scrollTop: 0,
-        cssHeight: YearMonthPanelHeight,
-        currYear: isCurrYear(startYear),
-      })
+      addPanelData(
+        startYear,
+        [
+          ...getPreMonths('prev', startYear, startMonth),
+          ...getMonths('curr', startYear, startMonth, endMonth),
+          ...getMonths('next', endYear, endMonth + 1),
+        ],
+        0
+      )
     } else {
       let scrollTop = panelData.length * YearMonthPanelHeight
       const startMonths = [
         ...getPreMonths('prev', startYear, startMonth),
         ...getMonths('curr', startYear, startMonth),
       ]
-      panelData.push({
-        year: startYear,
-        months: startMonths,
-        scrollTop,
-        cssHeight: YearMonthPanelHeight,
-        currYear: isCurrYear(startYear),
-      })
+      addPanelData(startYear, startMonths, scrollTop)
       // 不同年份时，注意可能跨多个年
       for (let i = startYear + 1; i < endYear; i++) {
         scrollTop = panelData.length * YearMonthPanelHeight
         const midMonths = [...getMonths('curr', i, 1)]
-        panelData = [
-          ...panelData,
-          {
-            year: i,
-            months: midMonths,
-            scrollTop,
-            cssHeight: YearMonthPanelHeight,
-            currYear: isCurrYear(i),
-          },
-        ]
+        addPanelData(i, midMonths, scrollTop)
       }
       const lastMonths = [
         ...getPreMonths('curr', endYear, endMonth + 1),
         ...getMonths('next', endYear, endMonth + 1),
       ]
-      // 年面板的高度：cssHeight 231
-      // 第某年的scrollTop：年面板高度 * （第某年数-1）
+
       scrollTop = panelData.length * YearMonthPanelHeight
-      panelData = [
-        ...panelData,
-        {
-          year: endYear,
-          months: lastMonths,
-          scrollTop,
-          cssHeight: YearMonthPanelHeight,
-          currYear: isCurrYear(endYear),
-        },
-      ]
+      addPanelData(endYear, lastMonths, scrollTop)
     }
     return panelData
   }
@@ -244,65 +242,48 @@ export const CalendarViewModeItem = React.forwardRef<
     const startMonth = Number(startDates[1])
     const endYear = Number(endDates[0])
     const endMonth = Number(endDates[1])
-    let panelData = []
-    const YearQuarterPanelHeight = 103
+    const panelData: CalendarQuarterInfoOfPanel[] = []
+    // 第某年的scrollTop：年面板高度 * （第某年数-1）
+    const addPanelData = (
+      year: number,
+      quarters: CalendarQuarter[],
+      scrollTop: number
+    ) => {
+      panelData.push({
+        year,
+        quarters,
+        scrollTop,
+        cssHeight: YearQuarterPanelHeight,
+        currYear: isCurrYear(year),
+      })
+    }
     // 在同一年时
     if (startYear === endYear) {
-      const months = [
+      const quarters = [
         ...getPreQuarters('prev', startYear, startMonth),
         ...getQuarters('curr', startYear, startMonth, endMonth),
         ...getNextQuarters('next', endYear, endMonth),
       ]
-      panelData.push({
-        year: startYear,
-        quarters: months,
-        scrollTop: 0,
-        cssHeight: YearQuarterPanelHeight,
-        currYear: isCurrYear(startYear),
-      })
+      addPanelData(startYear, quarters, 0)
     } else {
       let scrollTop = panelData.length * YearQuarterPanelHeight
       const startQuarters = [
         ...getPreQuarters('prev', startYear, startMonth),
         ...getQuarters('curr', startYear, startMonth),
       ]
-      panelData.push({
-        year: startYear,
-        quarters: startQuarters,
-        scrollTop,
-        cssHeight: YearQuarterPanelHeight,
-        currYear: isCurrYear(startYear),
-      })
+      addPanelData(startYear, startQuarters, scrollTop)
       // 不同年份时，注意可能跨多个年
       for (let i = startYear + 1; i < endYear; i++) {
         scrollTop = panelData.length * YearQuarterPanelHeight
-        const midMonths = [...getQuarters('curr', i, 1)]
-        panelData = [
-          ...panelData,
-          {
-            year: i,
-            quarters: midMonths,
-            scrollTop,
-            cssHeight: YearQuarterPanelHeight,
-            currYear: isCurrYear(i),
-          },
-        ]
+        const midQuarters = [...getQuarters('curr', i, 1)]
+        addPanelData(i, midQuarters, scrollTop)
       }
-      const lastMonths = [
+      const lastQuarters = [
         ...getQuarters('curr', endYear, 1, endMonth),
         ...getNextQuarters('next', endYear, endMonth),
       ]
       scrollTop = panelData.length * YearQuarterPanelHeight
-      panelData = [
-        ...panelData,
-        {
-          year: endYear,
-          quarters: lastMonths,
-          scrollTop,
-          cssHeight: YearQuarterPanelHeight,
-          currYear: isCurrYear(endYear),
-        },
-      ]
+      addPanelData(endYear, lastQuarters, scrollTop)
     }
     return panelData
   }
@@ -312,21 +293,15 @@ export const CalendarViewModeItem = React.forwardRef<
    * 根据当前默认值跳转到指定位置
    */
   const initData = () => {
-    // 获取起止时间内的所有的周、月、季
-    switch (viewMode) {
-      case 'month': {
-        const months = getMonthsData()
-        setPanelDate({ ...panelDate, months: months as any })
-        break
-      }
-      case 'quarter': {
-        const quarters = getQuartersData()
-        setPanelDate({ ...panelDate, quarters: quarters as any })
-        break
-      }
-      default:
-        break
-    }
+    // 获取起止时间内的所有的月、季
+    const data =
+      // eslint-disable-next-line no-nested-ternary
+      viewMode === 'month'
+        ? getMonthsData()
+        : viewMode === 'quarter'
+          ? getQuartersData()
+          : null
+    setPanelDate({ ...panelDate, [`${viewMode}s`]: data })
   }
 
   useEffect(() => {
