@@ -44,7 +44,6 @@ export interface CalendarViewModeItemProps {
   scrollAnimation: boolean
   renderDay: (date: CalendarDay) => string | JSX.Element
   onItemClick: (data: string) => void
-  onPageChange: (data: any) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -58,7 +57,6 @@ const defaultProps = {
   scrollAnimation: true,
   renderDay: undefined,
   onItemClick: () => {},
-  onPageChange: (data: any) => {},
 } as unknown as CalendarViewModeItemProps
 
 export const CalendarViewModeItem = React.forwardRef<
