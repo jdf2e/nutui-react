@@ -1,6 +1,5 @@
-import React, { FunctionComponent } from 'react'
+import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import Avatar from '@/packages/avatar'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebSkeletonProps } from '@/types'
 
@@ -8,25 +7,24 @@ const defaultProps = {
   ...ComponentDefaults,
   rows: 1,
   animated: false,
-  title: false,
-  avatar: false,
-  avatarSize: '50px',
   visible: false,
-  avatarShape: 'round',
+  size: 'normal',
+  shape: 'round',
+  inline: false,
 } as WebSkeletonProps
 export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
   props
 ) => {
   const {
     className,
+    width,
+    height,
+    shape,
     animated,
     rows,
-    title,
-    avatar,
-    avatarSize,
     visible,
+    size,
     children,
-    avatarShape,
     ...rest
   } = {
     ...defaultProps,
@@ -35,61 +33,35 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
 
   const classPrefix = 'nut-skeleton'
   const classes = classNames(classPrefix, className)
-  const avatarClass = classNames({
-    [`nut-avatar`]: true,
-    [`nut-skeleton-content-avatar`]: true,
-    [`avatar-${avatarShape}`]: avatarShape,
-  })
 
-  const repeatLines = (num: number) => {
+  const repeatCount = (num: number) => {
     return Array.from({ length: num }, (v, i) => i)
   }
 
-  const getStyle = () => {
-    if (avatarSize) {
-      return {
-        width: avatarSize,
-        height: avatarSize,
-      }
-    }
-    return {
-      width: '50px',
-      height: '50px',
-    }
+  function shapeStyle(): CSSProperties {
+    if (shape === 'circle') return { borderRadius: '50%' }
+    if (shape === 'square') return { borderRadius: '0' }
+    return {}
   }
 
   return (
     <>
       {visible ? (
-        <>{children}</>
+        children
       ) : (
         <div className={classes} {...rest}>
-          {animated && <div className={`${classPrefix}-animation`} />}
-          <div className={`${classPrefix}-content`}>
-            {avatar && (
-              <Avatar
-                className={avatarClass}
-                shape={avatarShape}
-                style={getStyle()}
-                icon="null"
-              />
-            )}
-            {rows === 1 ? (
-              <div className={`${classPrefix}-content-block`} />
-            ) : (
-              <div className={`${classPrefix}-content-line`}>
-                {title && <div className={`${classPrefix}-content-title`} />}
-                {repeatLines(rows).map((item, index) => {
-                  return (
-                    <div
-                      className={`${classPrefix}-content-block`}
-                      key={index}
-                    />
-                  )
-                })}
+          {repeatCount(rows).map((item, index) => {
+            const contentClass = `${classPrefix}-content ${classPrefix}-content-${size} ${classPrefix}-content-${size}-${index}`
+            return (
+              <div
+                className={`${contentClass}`}
+                key={index}
+                style={{ width, height, ...shapeStyle() }}
+              >
+                {animated && <div className={`${classPrefix}-animation`} />}
               </div>
-            )}
-          </div>
+            )
+          })}
         </div>
       )}
     </>
