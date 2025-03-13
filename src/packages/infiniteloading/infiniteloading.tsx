@@ -80,16 +80,6 @@ export const InfiniteLoading: FunctionComponent<
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
-    if (defaultScrollTop) {
-      const childHeight = (getRefreshTop().firstElementChild as HTMLElement).offsetHeight || 0;
-      refreshMaxH.current = Math.floor(childHeight * 1 + 10);
-      setTimeout(() =>{
-        scrollEl.current.scrollTop = defaultScrollTop
-      }, 10)
-    }
-  }, [defaultScrollTop]);
-
-  useEffect(() => {
     if (target && document.getElementById(target)) {
       scrollEl.current = document.getElementById(target)
     } else {
@@ -112,6 +102,21 @@ export const InfiniteLoading: FunctionComponent<
       } as EventListenerOptions)
     }
   }, [])
+
+  useEffect(() => {
+    if (defaultScrollTop) {
+      const childHeight =
+        (getRefreshTop().firstElementChild as HTMLElement).offsetHeight || 0
+      refreshMaxH.current = Math.floor(childHeight * 1 + 10)
+      setTimeout(() => {
+        if ((scrollEl.current as any)?.scrollTop !== undefined) {
+          ;(scrollEl.current as any).scrollTop = defaultScrollTop
+        } else if ((scrollEl.current as any)?.scrollY !== undefined) {
+          ;(scrollEl.current as any).scrollY = defaultScrollTop
+        }
+      }, 10)
+    }
+  }, [defaultScrollTop])
 
   const getStyle = () => {
     return {
