@@ -25,6 +25,9 @@ import {
   CalendarQuarter,
 } from './types'
 
+type CalendarRef = {
+  scrollToDate: (date: string) => void
+}
 // 年面板的高度：cssHeight 231
 const YearMonthPanelHeight = 231
 // 年面板的高度：cssHeight 103
@@ -63,7 +66,7 @@ export const CalendarViewModeItem = React.forwardRef<
   CalendarRef,
   Partial<CalendarViewModeItemProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, ''>
->((props, ref) => {
+>((props) => {
   const { locale } = useConfig()
   const {
     style,
@@ -75,10 +78,8 @@ export const CalendarViewModeItem = React.forwardRef<
     startDate,
     endDate,
     showTitle,
-    scrollAnimation,
     renderDay,
     onItemClick,
-    onPageChange,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-calendar-viewmode'
@@ -105,9 +106,6 @@ export const CalendarViewModeItem = React.forwardRef<
     ],
   })
 
-  const monthTitle = locale.calendaritem.monthTitle
-  const [monthsData] = useState<any[]>([])
-  const [translateY, setTranslateY] = useState(0)
   const [scrollTop, setScrollTop] = useState(0)
 
   // 初始化开始结束数据
@@ -413,12 +411,7 @@ export const CalendarViewModeItem = React.forwardRef<
         ref={monthsRef}
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
-          <div
-            ref={viewAreaRef}
-            style={{ transform: `translateY(${translateY}px)` }}
-          >
-            {renderPanel()}
-          </div>
+          <div ref={viewAreaRef}>{renderPanel()}</div>
         </div>
       </ScrollView>
     )

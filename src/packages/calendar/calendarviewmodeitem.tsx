@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
-import { getDateString, compareDate } from '@/utils/date'
+import { getDateString } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -65,7 +65,7 @@ export const CalendarViewModeItem = React.forwardRef<
   CalendarRef,
   Partial<CalendarViewModeItemProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, ''>
->((props, ref) => {
+>((props) => {
   const { locale } = useConfig()
   const {
     style,
@@ -77,10 +77,8 @@ export const CalendarViewModeItem = React.forwardRef<
     startDate,
     endDate,
     showTitle,
-    scrollAnimation,
     renderDay,
     onItemClick,
-    onPageChange,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-calendar-viewmode'
@@ -106,11 +104,6 @@ export const CalendarViewModeItem = React.forwardRef<
       },
     ],
   })
-
-  const monthTitle = locale.calendaritem.monthTitle
-  const [monthsData] = useState<any[]>([])
-  const [translateY, setTranslateY] = useState(0)
-
   // 初始化开始结束数据
   const propStartDate = (startDate || getDateString(0)) as string
   const propEndDate = (endDate || getDateString(365)) as string
@@ -311,46 +304,6 @@ export const CalendarViewModeItem = React.forwardRef<
     initData()
   }, [])
 
-  // 暴露出的API
-  const scrollToDate = (date: string) => {
-    if (compareDate(date, propStartDate)) {
-      date = propStartDate
-    } else if (!compareDate(date, propEndDate)) {
-      date = propEndDate
-    }
-    const dateArr = splitDate(date)
-    monthsData.forEach((item, index) => {
-      if (item.title === monthTitle(dateArr[0], dateArr[1])) {
-        const currTop = monthsData[index].scrollTop
-        if (monthsRef.current) {
-          const distance = currTop - monthsRef.current.scrollTop
-          if (scrollAnimation) {
-            let flag = 0
-            const interval = setInterval(() => {
-              flag++
-              if (monthsRef.current) {
-                const offset = distance / 10
-                monthsRef.current.scrollTop += offset
-              }
-              if (flag >= 10) {
-                clearInterval(interval)
-                if (monthsRef.current) {
-                  monthsRef.current.scrollTop = currTop
-                }
-              }
-            }, 40)
-          } else {
-            monthsRef.current.scrollTop = currTop
-          }
-        }
-      }
-    })
-  }
-
-  React.useImperativeHandle(ref, () => ({
-    scrollToDate,
-  }))
-
   const handleItemClick = (item: any) => {
     // 点击事件，可以返回所点击元素的数据
     // 如果非可点击，则直接返回，不做处理
@@ -446,12 +399,7 @@ export const CalendarViewModeItem = React.forwardRef<
         ref={monthsRef}
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
-          <div
-            ref={viewAreaRef}
-            style={{ transform: `translateY(${translateY}px)` }}
-          >
-            {renderPanel()}
-          </div>
+          <div ref={viewAreaRef}>{renderPanel()}</div>
         </div>
       </div>
     )
