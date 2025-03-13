@@ -33,17 +33,17 @@ const NotifyDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView>
-        <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-          <View className="h2">{translated.basic}</View>
-          <Demo1 />
-          <View className="h2">{translated.jump}</View>
-          <Demo2 />
-          <View className="h2">{translated.close}</View>
-          <Demo3 />
-          <View className="h2">{translated.customStyle}</View>
-          <Demo4 />
-        </View>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : 'demo-bg-full'}`}
+      >
+        <View className="h2">{translated.basic}</View>
+        <Demo1 />
+        <View className="h2">{translated.jump}</View>
+        <Demo2 />
+        <View className="h2">{translated.close}</View>
+        <Demo3 />
+        <View className="h2">{translated.customStyle}</View>
+        <Demo4 />
       </ScrollView>
     </>
   )

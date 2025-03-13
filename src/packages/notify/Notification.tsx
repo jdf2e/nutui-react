@@ -51,7 +51,7 @@ export default class Notification extends React.PureComponent<
     if (duration) {
       this.closeTimer = window.setTimeout(() => {
         this.close()
-      }, duration)
+      }, duration || 999999999)
     }
   }
 
@@ -83,14 +83,19 @@ export default class Notification extends React.PureComponent<
       closeable,
       className,
       position,
+      distance,
     } = this.props
     const { show } = this.state
     const classes = classNames({
-      [`${classPrefix}-popup-top`]: position === 'top',
-      [`${classPrefix}-popup-bottom`]: position === 'bottom',
       [`${classPrefix}`]: true,
       [`${className}`]: true,
     })
+    const getDistance = () => {
+      if (position === 'top') {
+        return { top: `${distance + 57}px` }
+      }
+      return { bottom: `${distance}px` }
+    }
     return (
       <>
         <CSSTransition
@@ -101,7 +106,11 @@ export default class Notification extends React.PureComponent<
           appear
           position={position}
         >
-          <div className={classes} style={style} onClick={this.clickCover}>
+          <div
+            className={classes}
+            style={{ ...style, ...getDistance() }}
+            onClick={this.clickCover}
+          >
             {leftIcon ? (
               <div className={`${classPrefix}-left-icon`}>{leftIcon}</div>
             ) : null}

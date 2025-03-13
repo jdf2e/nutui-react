@@ -33,6 +33,9 @@ body {
 
   &.drag-full {
     padding: 57px 0 0 0;
+  }
+
+  &-bg-full {
     min-height: 100vh;
     .jd-scroll-view {
       min-height: calc(100vh - 57px);

@@ -1,8 +1,16 @@
-import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
+import React, {
+  useState,
+  useEffect,
+  FunctionComponent,
+  useRef,
+  useMemo,
+} from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
+import { web } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
@@ -15,6 +23,7 @@ import { TaroNotifyProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
+  distance: 8,
   position: 'top',
   visible: false,
   closeable: false,
@@ -35,6 +44,7 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     id,
     style,
     children,
+    distance,
     closeable,
     leftIcon,
     rightIcon,
@@ -67,7 +77,7 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     if (duration) {
       timer = window.setTimeout(() => {
         hide()
-      }, duration || 900000)
+      }, duration || 999999999)
     }
   }
   const clearTimer = () => {
@@ -80,6 +90,15 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     setShowNotify(false)
     onClose()
   }
+
+  const getDistance = useMemo(() => {
+    if (position === 'top') {
+      return {
+        top: pxTransform(web() ? Number(distance) + 57 : Number(distance)),
+      }
+    }
+    return { bottom: pxTransform(Number(distance)) }
+  }, [distance, position])
 
   const classes = classNames({
     [`${classPrefix}-popup-top`]: position === 'top',
@@ -107,7 +126,11 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
       position={position}
       id={id}
     >
-      <View className={classes} style={style} onClick={handleClick}>
+      <View
+        className={classes}
+        style={{ ...style, ...getDistance }}
+        onClick={handleClick}
+      >
         {leftIcon ? (
           <View className={`${classPrefix}-left-icon`}>{leftIcon}</View>
         ) : null}

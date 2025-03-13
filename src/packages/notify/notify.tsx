@@ -9,6 +9,7 @@ const options: WebNotifyProps = {
   ...ComponentDefaults,
   id: '',
   position: 'top',
+  distance: 8,
   visible: false,
   closeable: false,
   leftIcon: null,

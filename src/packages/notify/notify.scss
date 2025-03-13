@@ -42,6 +42,10 @@
 }
 
 .nut-notify {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  z-index: $notify-z-index;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -50,22 +54,6 @@
   border-radius: $notify-border-radius;
   box-shadow: $notify-box-shadow;
   background-color: $notify-background-color;
-
-  &-popup-top,
-  &-popup-bottom {
-    position: fixed;
-    left: 8px;
-    right: 8px;
-    z-index: $notify-z-index;
-  }
-
-  &-popup-top {
-    top: $notify-distance;
-  }
-
-  &-popup-bottom {
-    bottom: $notify-distance;
-  }
 
   &-content {
     flex: 1;
