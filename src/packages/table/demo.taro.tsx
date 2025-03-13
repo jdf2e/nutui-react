@@ -65,7 +65,6 @@ const TableDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
-          type="text"
           visible={show}
           content={toastMsg}
           onClose={() => {

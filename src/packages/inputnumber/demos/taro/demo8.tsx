@@ -5,11 +5,9 @@ const Demo8 = () => {
   const [inputValue, setInputValue] = useState(0)
   const [show, setShow] = useState(false)
   const [toastMsg, setToastMsg] = useState('')
-  const [toastType, setToastType] = useState('text')
 
-  const toastShow = (msg: any, type: string) => {
+  const toastShow = (msg: any) => {
     setToastMsg(msg)
-    setToastType(type)
     setShow(true)
   }
   const overlimit = (e: any) => {
@@ -17,7 +15,7 @@ const Demo8 = () => {
   }
 
   const beforeChange = (value: number | string): Promise<boolean> => {
-    toastShow('异步演示 2 秒后更改', 'loading')
+    toastShow('异步演示 2 秒后更改')
 
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -39,7 +37,6 @@ const Demo8 = () => {
         />
       </Cell>
       <Toast
-        type={toastType}
         visible={show}
         content={toastMsg}
         onClose={() => {

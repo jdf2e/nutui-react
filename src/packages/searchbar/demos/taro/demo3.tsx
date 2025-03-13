@@ -18,7 +18,6 @@ const Demo3 = () => {
         <SearchBar onSearch={() => toastShow()} />
       </ConfigProvider>
       <Toast
-        type="text"
         visible={show}
         content="search callback"
         onClose={() => {

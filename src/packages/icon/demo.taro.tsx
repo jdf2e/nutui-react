@@ -53,7 +53,6 @@ const IconDemo = () => {
         <Toast
           content={state.msg}
           visible={state.visible}
-          type={state.type}
           duration={state.duration}
           icon={state.icon}
           closeOnOverlayClick={state.closeOnOverlayClick}
