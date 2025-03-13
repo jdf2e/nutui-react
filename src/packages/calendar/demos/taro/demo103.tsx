@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
-  const [date, setDate] = useState<string[]>([])
+  const [date, setDate] = useState<string[]>(['2025-03-14'])
 
   const setChooseValue = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {

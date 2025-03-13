@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { getDateString, compareDate } from '@/utils/date'
+import { getDateString } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -24,9 +25,6 @@ import {
   CalendarQuarter,
 } from './types'
 
-type CalendarRef = {
-  scrollToDate: (date: string) => void
-}
 // 年面板的高度：cssHeight 231
 const YearMonthPanelHeight = 231
 // 年面板的高度：cssHeight 103
@@ -313,45 +311,10 @@ export const CalendarViewModeItem = React.forwardRef<
     initData()
   }, [])
 
-  // 暴露出的API
-  const scrollToDate = (date: string) => {
-    if (compareDate(date, propStartDate)) {
-      date = propStartDate
-    } else if (!compareDate(date, propEndDate)) {
-      date = propEndDate
-    }
-    const dateArr = splitDate(date)
-    monthsData.forEach((item, index) => {
-      if (item.title === monthTitle(dateArr[0], dateArr[1])) {
-        const currTop = monthsData[index].scrollTop
-        if (monthsRef.current) {
-          const distance = currTop - monthsRef.current.scrollTop
-          if (scrollAnimation) {
-            let flag = 0
-            const interval = setInterval(() => {
-              flag++
-              if (monthsRef.current) {
-                const offset = distance / 10
-                monthsRef.current.scrollTop += offset
-              }
-              if (flag >= 10) {
-                clearInterval(interval)
-                if (monthsRef.current) {
-                  monthsRef.current.scrollTop = currTop
-                }
-              }
-            }, 40)
-          } else {
-            monthsRef.current.scrollTop = currTop
-          }
-        }
-      }
-    })
+  const monthsViewScroll = (e: any) => {
+    const scrollTop = (e.target as HTMLElement).scrollTop
+    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
   }
-
-  React.useImperativeHandle(ref, () => ({
-    scrollToDate,
-  }))
 
   const handleItemClick = (viewMode: string, item: any) => {
     // 点击事件，可以返回所点击元素的数据
@@ -446,7 +409,7 @@ export const CalendarViewModeItem = React.forwardRef<
         scrollTop={scrollTop}
         scrollY
         className={`${classPrefix}-content`}
-        // onScroll={monthsViewScroll}
+        onScroll={monthsViewScroll}
         ref={monthsRef}
       >
         <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
