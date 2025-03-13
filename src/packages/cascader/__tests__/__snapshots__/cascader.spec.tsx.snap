@@ -19,7 +19,7 @@ exports[`Cascader > visible true 1`] = `
     style="z-index: 1000;"
   >
     <div
-      class="nut-cascader "
+      class="nut-cascader"
     >
       <div
         class="nut-tabs nut-tabs-horizontal"
@@ -28,40 +28,40 @@ exports[`Cascader > visible true 1`] = `
           class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
         >
           <div
-            class="nut-tabs-titles-item "
+            class="nut-tabs-titles-item"
           >
-            <span
+            <div
+              class="nut-tabs-titles-item-line nut-tabs-titles-item-line-horizontal"
+            />
+            <div
               class="nut-tabs-titles-item-text"
             >
               福建
-            </span>
-            <span
-              class="nut-tabs-titles-item-line"
-            />
+            </div>
           </div>
           <div
-            class="nut-tabs-titles-item "
+            class="nut-tabs-titles-item"
           >
-            <span
+            <div
+              class="nut-tabs-titles-item-line nut-tabs-titles-item-line-horizontal"
+            />
+            <div
               class="nut-tabs-titles-item-text"
             >
               福州
-            </span>
-            <span
-              class="nut-tabs-titles-item-line"
-            />
+            </div>
           </div>
           <div
             class="nut-tabs-titles-item nut-tabs-titles-item-active"
           >
-            <span
+            <div
+              class="nut-tabs-titles-item-line nut-tabs-titles-item-line-horizontal"
+            />
+            <div
               class="nut-tabs-titles-item-text"
             >
               鼓楼区
-            </span>
-            <span
-              class="nut-tabs-titles-item-line"
-            />
+            </div>
           </div>
         </div>
         <div
@@ -148,7 +148,7 @@ exports[`Cascader > visible true 1`] = `
               </div>
             </div>
             <div
-              class="nut-tabpane active"
+              class="nut-tabpane"
             >
               <div
                 class="nut-cascader-pane"

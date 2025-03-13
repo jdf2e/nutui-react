@@ -113,6 +113,7 @@ async function buildES(p) {
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
           '@/types/*': ['src/types/*'],
+          '@/types': ['src/types'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,

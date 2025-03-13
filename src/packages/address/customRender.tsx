@@ -12,8 +12,8 @@ export interface AddressProps extends WebCascaderProps {
   visible: boolean // popup visible
   type: string
   options: CascaderOption[]
-  value?: CascaderValue
-  defaultValue?: CascaderValue
+  value: CascaderValue
+  defaultValue: CascaderValue
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   height: string | number

@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import {
-  Cell,
-  Cascader,
-  ConfigProvider,
-  CascaderOption,
-} from '@nutui/nutui-react'
+import { Cascader, Cell, CascaderOption } from '@nutui/nutui-react'
 
-const customTheme = {
-  nutuiCascaderItemHeight: '48px',
-  nutuiCascaderItemMargin: '0 10px',
-  nutuiCascaderItemPadding: '10px',
-  nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
-  nutuiTabsTitlesItemActiveColor: '#3768FA',
-  nutuiTabsTabLineColor: '#3768FA',
-}
-
-const Demo6 = () => {
+const Demo7 = () => {
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState<string[]>(['浙江', '温州', '鹿城区'])
+  const [value, setValue] = useState<string[]>([])
   const [options, setOptions] = useState<CascaderOption[]>([])
+  const onChange = (value: any, path: any) => {
+    console.log('onchange', value, path)
+    setValue(value)
+  }
   useEffect(() => {
     setTimeout(() => {
+      setValue(['浙江', '温州', '鹿城区'])
       setOptions([
         {
           value: '浙江',
@@ -55,16 +46,16 @@ const Demo6 = () => {
               text: '长沙',
               disabled: true,
               children: [
-                { value: '西湖区', text: '西湖区' },
-                { value: '余杭区', text: '余杭区' },
+                { value: '芙蓉区', text: '芙蓉区' },
+                { value: '岳麓区', text: '岳麓区' },
               ],
             },
             {
-              value: '温州',
-              text: '温州',
+              value: '岳阳',
+              text: '岳阳',
               children: [
-                { value: '鹿城区', text: '鹿城区' },
-                { value: '瓯海区', text: '瓯海区' },
+                { value: '岳阳楼区', text: '岳阳楼区' },
+                { value: '云溪区', text: '云溪区' },
               ],
             },
           ],
@@ -86,13 +77,6 @@ const Demo6 = () => {
       ])
     }, 300)
   }, [])
-  const onChange = (value: any, path: any) => {
-    setValue(value)
-  }
-  const onPathChange = (value: any, path: any) => {
-    console.log('onPathChange', value, path)
-  }
-
   return (
     <>
       <Cell
@@ -102,23 +86,24 @@ const Demo6 = () => {
           setVisible(true)
         }}
       />
-      <ConfigProvider theme={customTheme}>
-        <Cascader
-          visible={visible}
-          activeColor="#3768FA"
-          value={value}
-          title="选择地址"
-          options={options}
-          closeable
-          activeIcon="star"
-          onClose={() => {
-            setVisible(false)
-          }}
-          onChange={onChange}
-          onPathChange={onPathChange}
-        />
-      </ConfigProvider>
+      <Cascader
+        popupProps={{
+          className: 'cascader-popup',
+        }}
+        visible={visible}
+        defaultValue={value}
+        title="选择地址"
+        options={options}
+        closeable
+        onClose={() => {
+          setVisible(false)
+        }}
+        onChange={onChange}
+        onPathChange={(value, path) => {
+          console.log(value, path)
+        }}
+      />
     </>
   )
 }
-export default Demo6
+export default Demo7

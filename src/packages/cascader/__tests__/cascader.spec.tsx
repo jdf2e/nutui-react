@@ -1,15 +1,9 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor, act } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { CascaderOption } from '@nutui/nutui-react'
 import { Cascader } from '../cascader'
 
-import { CascaderOption } from '../types'
-import Tree, { formatTree, convertListToOptions } from '../utils'
-
-const later = (t = 0) =>
-  new Promise((r) => {
-    setTimeout(r, t)
-  })
 const mockOptions = [
   {
     value: '浙江',
@@ -90,163 +84,6 @@ const mockConvertOptions = [
   { value: '广东省', text: '广东省', nodeId: 2, nodePid: 0, sort: 1 },
   { value: '广州市', text: '广州市', nodeId: 21, nodePid: 2 },
 ]
-
-describe('helpers', () => {
-  test('formatTree', () => {
-    const fromatedTree = formatTree(mockKeyConfigOptions, null, {
-      children: 'items',
-      text: 'name',
-      value: 'name',
-    })
-
-    expect(fromatedTree).toMatchObject(mockOptions)
-  })
-
-  test('convertListToOptions', () => {
-    const convertList = convertListToOptions(mockConvertOptions, {
-      topId: 0,
-      idKey: 'nodeId',
-      pidKey: 'nodePid',
-      sortKey: '',
-    })
-    expect(convertList).toMatchObject([
-      {
-        nodePid: 0,
-        nodeId: 1,
-        text: '北京',
-        value: '北京',
-        sort: 2,
-        children: [
-          {
-            nodePid: 1,
-            nodeId: 11,
-            text: '朝阳区',
-            value: '朝阳区',
-            children: [
-              {
-                nodePid: 11,
-                nodeId: 111,
-                text: '亦庄',
-                value: '亦庄',
-                children: [],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        nodePid: 0,
-        nodeId: 2,
-        text: '广东省',
-        value: '广东省',
-        children: [
-          {
-            nodePid: 2,
-            nodeId: 21,
-            text: '广州市',
-            value: '广州市',
-          },
-        ],
-      },
-    ])
-  })
-})
-
-describe('Tree', () => {
-  test('tree', () => {
-    const tree = new Tree([
-      {
-        text: '浙江',
-        value: '浙江',
-      },
-      {
-        text: '福建',
-        value: '福建',
-      },
-    ])
-    expect(tree.nodes).toMatchObject([
-      {
-        text: '浙江',
-        value: '浙江',
-      },
-      {
-        text: '福建',
-        value: '福建',
-      },
-    ])
-  })
-
-  test('tree with config', () => {
-    const tree = new Tree(mockKeyConfigOptions, {
-      value: 'name',
-      text: 'name',
-      children: 'items',
-    })
-    expect(tree.nodes).toMatchObject(mockOptions)
-  })
-
-  const tree = new Tree(mockOptions)
-  test('getPathNodesByValue', () => {
-    const pathNodes = tree.getPathNodesByValue(['浙江', '杭州', '西湖区'])
-    const mappedPathNodes = pathNodes.map(({ text, value }) => ({
-      text,
-      value,
-    }))
-
-    expect(mappedPathNodes).toMatchObject([
-      { text: '浙江', value: '浙江' },
-      { text: '杭州', value: '杭州' },
-      { text: '西湖区', value: '西湖区' },
-    ])
-  })
-
-  test('isLeaf', () => {
-    const node = tree.getNodeByValue('西湖区')
-    let isLeaf = tree.isLeaf(node as CascaderOption, false)
-    expect(isLeaf).toBeTruthy()
-    isLeaf = tree.isLeaf(node as CascaderOption, true)
-    expect(isLeaf).toBeFalsy()
-  })
-
-  test('hasChildren', () => {
-    let node = tree.getNodeByValue('西湖区')
-
-    let hasChildren = tree.hasChildren(node as CascaderOption, false)
-    expect(hasChildren).toBeFalsy()
-
-    hasChildren = tree.hasChildren(node as CascaderOption, true)
-    expect(hasChildren).toBeFalsy()
-
-    node = tree.getNodeByValue('杭州')
-
-    hasChildren = tree.hasChildren(node as CascaderOption, false)
-    expect(hasChildren).toBeTruthy()
-
-    hasChildren = tree.hasChildren(node as CascaderOption, true)
-    expect(hasChildren).toBeTruthy()
-  })
-
-  test('updateChildren', () => {
-    let node = tree.getNodeByValue('福建')
-    expect(node).toBeTruthy()
-
-    tree.updateChildren(
-      [{ text: '福州', value: '福州' }],
-      node as CascaderOption
-    )
-    node = tree.getNodeByValue('福州') as CascaderOption
-    expect(node).toBeTruthy()
-    expect(node.value).toBe('福州')
-
-    tree.updateChildren(
-      [{ text: '鼓楼区', value: '鼓楼区' }],
-      node as CascaderOption
-    )
-    node = tree.getNodeByValue('鼓楼区') as CascaderOption
-    expect(node).toBeTruthy()
-    expect(node.value).toBe('鼓楼区')
-  })
-})
 
 describe('Cascader', () => {
   it('options', async () => {
@@ -329,11 +166,11 @@ describe('Cascader', () => {
       />
     )
     const element = container.querySelectorAll(
-      '.active.nut-tabpane .active .nut-cascader-item-title'
+      '.nut-tabs-titles-item-active .nut-tabs-titles-item-text'
     )[0]
     expect(element).toHaveTextContent('鼓楼区')
   })
-  it('init Value with both valu and defaultValue', async () => {
+  it('init Value with both value and defaultValue', async () => {
     const { container } = render(
       <Cascader
         visible
@@ -343,7 +180,7 @@ describe('Cascader', () => {
       />
     )
     const element = container.querySelectorAll(
-      '.active.nut-tabpane .active .nut-cascader-item-title'
+      '.nut-tabs-titles-item-active .nut-tabs-titles-item-text'
     )[0]
     expect(element).toHaveTextContent('台江区')
   })
@@ -374,17 +211,19 @@ describe('Cascader', () => {
     const { container } = render(
       <Cascader
         lazy
-        onLoad={(node: any, resolve: (children: any) => void) => {
-          setTimeout(() => {
-            lazyFunc()
-            resolve({})
-          }, 50)
+        value={['test']}
+        onLoad={async (node: any) => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              lazyFunc()
+              resolve([] as CascaderOption[])
+            }, 50)
+          })
         }}
       />
     )
     expect(lazyFunc).not.toBeCalled()
-    await act(async () => {
-      await later(100)
+    await waitFor(() => {
       expect(lazyFunc).toBeCalled()
     })
   })
