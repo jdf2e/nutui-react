@@ -24,8 +24,8 @@ const NotifyDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
-      jump: 'Support jump',
-      close: 'Support close',
+      jump: 'Support Jump',
+      close: 'Support Close',
       customStyle: 'Custom Style',
     },
   })
