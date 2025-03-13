@@ -987,9 +987,9 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "v15": 1,
+          "v15": 10,
           "author": "oasis",
-          "dd": true
+          "dd": false
         },
         {
           "version": "3.0.0",
