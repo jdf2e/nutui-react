@@ -40,6 +40,14 @@
       rgba(0, 0, 0, 0.06) 50%,
       rgba(0, 0, 0, 0) 100%
     );
+    animation-name: nut-skeleton;
+    animation-delay: 0s;
+    animation-duration: 0.6s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-play-state: running;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
   }
 
   @keyframes nut-skeleton {

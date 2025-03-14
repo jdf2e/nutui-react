@@ -49,7 +49,7 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
   function durationStyle() {
     if (typeof duration !== 'undefined')
       return {
-        animation: `nut-skeleton ${duration}s linear 0s infinite`,
+        animationDuration: `${duration}s`,
       }
     return {}
   }
