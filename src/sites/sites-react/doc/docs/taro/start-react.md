@@ -118,7 +118,7 @@ import '@nutui/nutui-react-taro/dist/style.css'
 需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React Taro 的全局性逻辑和样式：`
 
 ```js
-import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 ```
 
 首先安装 `babel-plugin-import` 插件
