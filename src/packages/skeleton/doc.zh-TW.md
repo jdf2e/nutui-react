@@ -10,7 +10,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 ## 示例代碼
 
-### 基礎用法
+### 标题
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 傳入多行
+### 正文
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 顯示頭像
+### 模擬頭像
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 標題段落圓角風格
+### 標題段落
 
 :::demo
 
@@ -54,15 +54,16 @@ import { Skeleton } from '@nutui/nutui-react'
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 默認值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| visible | 是否顯示骨架屏(true不顯示骨架屏，false顯示骨架屏) | `boolean` | `true` |
-| animated | 是否開啟骨架屏動畫 | `boolean` | `false` |
-| avatar | 是否顯示頭像 | `boolean` | `false` |
-| avatarShape | 頭像形狀：正方形/圓形 | `string` | `round` |
-| avatarSize | 頭像大小 | `string` | `50px` |
-| rows | 設置段落行數 | `number` | `1` |
-| title | 是否顯示段落標題 | `boolean` | `true` |
+| visible | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
+| animated | 是否开启骨架屏动画 | `boolean` | `false` |
+| size | 指定使用的内置高度 | `'small' \| 'normal' \| 'large'` | `normal` |
+| shape | 设置形状 | `'square' \| 'round' \| 'circle'` | `round` |
+| duration | 动画时长 | `number` | `0.6` |
+| rows | 设置行数 | `number` | `1` |
+| width | 设置宽度，优先级高于 `size` 属性 | `string\|number` | `-` |
+| height | 设置高度，优先级高于 `size` 属性 | `string\|number` | `-` |
 
 ## 主題定制
 
@@ -73,8 +74,10 @@ import { Skeleton } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | 線條寬度 | `100%` |
-| \--nutui-skeleton-line-height | 線條高度 | `15px` |
-| \--nutui-skeleton-line-border-radius | 線條邊框圓角 | `0` |
+| \--nutui-skeleton-line-width | 线条宽度 | `100%` |
+| \--nutui-skeleton-line-small-height | 线条高度 | `16px` |
+| \--nutui-skeleton-line-normal-height | 线条高度 | `24px` |
+| \--nutui-skeleton-line-large-height | 线条高度 | `32px` |
+| \--nutui-skeleton-line-border-radius | 线条边框圆角 | `4px` |
 
 <Contribution name="Skeleton" />

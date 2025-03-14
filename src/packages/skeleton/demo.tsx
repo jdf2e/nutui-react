@@ -12,22 +12,22 @@ const SkeletonDemo = () => {
       '84aa6bce': '标题',
       ea3bc18a: '正文',
       '02a53df5': '模拟头像',
-      '0a001122': '标题段落圆角风格',
+      '0a001122': '标题段落',
       '07d62d5c': '显示子组件',
     },
     'zh-TW': {
       '84aa6bce': '标题',
       ea3bc18a: '正文',
       '02a53df5': '模拟头像',
-      '0a001122': '標題段落圓角風格',
-      '07d62d5c': '圖片組合',
+      '0a001122': '標題段落',
+      '07d62d5c': '显示子组件',
     },
     'en-US': {
       '84aa6bce': 'Title',
       ea3bc18a: 'Paragraph',
       '02a53df5': 'Mock Avatar',
-      '0a001122': 'Heading Paragraph Rounded Corner Style',
-      '07d62d5c': 'show subcomponents',
+      '0a001122': 'Heading Paragraph',
+      '07d62d5c': 'Show Subcomponents',
     },
   })
 

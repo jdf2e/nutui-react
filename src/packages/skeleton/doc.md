@@ -34,7 +34,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 标题段落圆角风格
+### 标题段落
 
 :::demo
 

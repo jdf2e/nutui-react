@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { WebSkeletonProps } from '@/types'
+import { TaroSkeletonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -11,9 +11,10 @@ const defaultProps = {
   visible: false,
   size: 'normal',
   shape: 'round',
+  duration: 0.6,
   inline: false,
-} as WebSkeletonProps
-export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
+} as TaroSkeletonProps
+export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
   props
 ) => {
   const {
@@ -25,6 +26,7 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
     rows,
     visible,
     size,
+    duration,
     children,
     ...rest
   } = {
@@ -45,6 +47,14 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
     return {}
   }
 
+  function durationStyle() {
+    if (typeof duration !== 'undefined')
+      return {
+        animation: `nut-skeleton ${duration}s linear 0s infinite`,
+      }
+    return {}
+  }
+
   return (
     <>
       {visible ? (
@@ -59,7 +69,12 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
                 key={index}
                 style={{ width, height, ...shapeStyle() }}
               >
-                {animated && <View className={`${classPrefix}-animation`} />}
+                {animated && (
+                  <View
+                    className={`${classPrefix}-animation`}
+                    style={durationStyle()}
+                  />
+                )}
               </View>
             )
           })}

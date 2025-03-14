@@ -10,7 +10,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 ## Code demonstration
 
-### Basic usage
+### Title
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Incoming multiline
+### Paragraph
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Show Faces
+### Mock Avatar
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Title paragraph fillet style
+### Heading Paragraph
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Display subcomponents
+### Show subcomponents
 
 :::demo
 
@@ -56,13 +56,14 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | Whether to display skeleton screen | `boolean` | `false` |
-| animated | Whether to turn on skeleton screen animation | `boolean` | `false` |
-| avatar | Show avatar | `boolean` | `false` |
-| avatarShape | Avatar shape: square / round | `string` | `round` |
-| avatarSize | Avatar size | `string` | `50px` |
-| rows | Set the number of paragraph lines | `number` | `1` |
-| title | Show paragraph titles | `boolean` | `false` |
+| visible | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
+| animated | 是否开启骨架屏动画 | `boolean` | `false` |
+| size | 指定使用的内置高度 | `'small' \| 'normal' \| 'large'` | `normal` |
+| shape | 设置形状 | `'square' \| 'round' \| 'circle'` | `round` |
+| duration | 动画时长 | `number` | `0.6` |
+| rows | 设置行数 | `number` | `1` |
+| width | 设置宽度，优先级高于 `size` 属性 | `string\|number` | `-` |
+| height | 设置高度，优先级高于 `size` 属性 | `string\|number` | `-` |
 
 ## Theming
 
@@ -72,9 +73,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-skeleton-background | background | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | line width | `100%` |
-| \--nutui-skeleton-line-height | line height | `15px` |
-| \--nutui-skeleton-line-border-radius | line borderRadius | `0` |
+| \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
+| \--nutui-skeleton-line-width | 线条宽度 | `100%` |
+| \--nutui-skeleton-line-small-height | 线条高度 | `16px` |
+| \--nutui-skeleton-line-normal-height | 线条高度 | `24px` |
+| \--nutui-skeleton-line-large-height | 线条高度 | `32px` |
+| \--nutui-skeleton-line-border-radius | 线条边框圆角 | `4px` |
 
 <Contribution name="Skeleton" />

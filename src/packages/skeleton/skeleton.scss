@@ -5,21 +5,21 @@
   &-content {
     position: relative;
     display: inline-flex;
-    width: 100%;
-    background: #f7f8fc;
-    border-radius: 4px;
+    width: $skeleton-line-width;
+    background: $skeleton-background;
+    border-radius: $skeleton-line-border-radius;
     overflow: hidden;
 
     &-normal {
-      height: 24px;
+      height: $skeleton-line-normal-height;
     }
 
     &-large {
-      height: 32px;
+      height: $skeleton-line-large-height;
     }
 
     &-small {
-      height: 16px;
+      height: $skeleton-line-small-height;
       margin-top: 8px;
     }
     &-small-0 {
@@ -40,17 +40,15 @@
       rgba(0, 0, 0, 0.06) 50%,
       rgba(0, 0, 0, 0) 100%
     );
-    background-size: 200% 100%;
-    animation: nut-skeleton 0.6s linear 0s infinite;
   }
 
   @keyframes nut-skeleton {
     from {
-      background-position: 200% 0;
+      transform: translateX(-100%);
     }
 
     to {
-      background-position: -200% 0;
+      transform: translateX(100%);
     }
   }
 }
@@ -65,11 +63,13 @@
 
   @keyframes nut-skeleton-rtl {
     from {
-      background-position: -200% 0;
+      //background-position: -200% 0;
+      transform: translateX(100%);
     }
 
     to {
-      background-position: 200% 0;
+      //background-position: 200% 0;
+      transform: translateX(-100%);
     }
   }
 }

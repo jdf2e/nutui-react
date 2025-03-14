@@ -5,10 +5,10 @@ export type avatarShape = 'round' | 'square'
 export interface BaseSkeleton extends BaseProps {
   rows: number
   size: Extract<UISize, 'small' | 'normal' | 'large'>
-  width: SimpleValue
-  height: SimpleValue
+  width?: SimpleValue
+  height?: SimpleValue
   shape: UIRound | 'circle'
   animated: boolean
-  duration: number
+  duration?: number
   visible: boolean
 }
