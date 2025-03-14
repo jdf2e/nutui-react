@@ -6,5 +6,13 @@ import { Skeleton } from '../skeleton'
 
 test('should allow to disable animation', () => {
   const { container } = render(<Skeleton rows={1} animated={false} />)
-  expect(container.querySelector('.skeleton-animation')).toBeFalsy()
+  expect(container.querySelector('.nut-skeleton-animation')).toBeFalsy()
+})
+
+test('should set duration', () => {
+  const { container } = render(<Skeleton rows={1} duration={2} />)
+  const animation = container.querySelector('.nut-skeleton-animation')
+  expect(animation).toHaveStyle({
+    animation: 'nut-skeleton 2s linear 0s infinite',
+  })
 })

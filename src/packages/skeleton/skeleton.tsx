@@ -6,7 +6,7 @@ import { WebSkeletonProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   rows: 1,
-  animated: false,
+  animated: true,
   visible: false,
   size: 'normal',
   shape: 'round',
