@@ -56,14 +56,14 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | 是否显示骨架屏(true不显示骨架屏，false显示骨架屏) | `boolean` | `true` |
-| animated | 是否开启骨架屏动画 | `boolean` | `false` |
-| size | 指定使用的内置高度 | `'small' \| 'normal' \| 'large'` | `normal` |
-| shape | 设置形状 | `'square' \| 'round' \| 'circle'` | `round` |
-| duration | 动画时长 | `number` | `0.6` |
-| rows | 设置行数 | `number` | `1` |
-| width | 设置宽度，优先级高于 `size` 属性 | `string\|number` | `-` |
-| height | 设置高度，优先级高于 `size` 属性 | `string\|number` | `-` |
+| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `true` |
+| animated | Whether to enable skeleton animation | `boolean` | `false` |
+| size | Specify the built-in height | `'small' \| 'normal' \| 'large'` | `normal` |
+| shape | Set shape | `'square' \| 'round' \| 'circle'` | `round` |
+| duration | Animation duration | `number` | `0.6` |
+| rows | Set number of rows | `number` | `1` |
+| width | Set width, higher priority than `size` property | `string\|number` | `-` |
+| height | Set height, higher priority than `size` property | `string\|number` | `-` |
 
 ## Theming
 
@@ -73,11 +73,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | 线条宽度 | `100%` |
-| \--nutui-skeleton-line-small-height | 线条高度 | `16px` |
-| \--nutui-skeleton-line-normal-height | 线条高度 | `24px` |
-| \--nutui-skeleton-line-large-height | 线条高度 | `32px` |
-| \--nutui-skeleton-line-border-radius | 线条边框圆角 | `4px` |
+| \--nutui-skeleton-background | Background | `rgb(239, 239, 239)` |
+| \--nutui-skeleton-line-width | Line width | `100%` |
+| \--nutui-skeleton-line-small-height | Line height | `16px` |
+| \--nutui-skeleton-line-normal-height | Line height | `24px` |
+| \--nutui-skeleton-line-large-height | Line height | `32px` |
+| \--nutui-skeleton-line-border-radius | Line border radius | `4px` |
 
 <Contribution name="Skeleton" />
