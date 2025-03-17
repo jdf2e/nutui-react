@@ -291,7 +291,7 @@ export const CalendarViewModeItem = React.forwardRef<
         : viewMode === 'quarter'
           ? getQuartersData()
           : null
-    setPanelDate({ ...panelDate, [`${viewMode}s`]: data })
+    setPanelDate((prev) => ({ ...prev, [`${viewMode}s`]: data }))
   }
 
   useEffect(() => {

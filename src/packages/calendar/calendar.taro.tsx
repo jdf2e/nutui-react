@@ -85,12 +85,12 @@ export const Calendar = React.forwardRef<
   const calendarRef = useRef<any>(null)
 
   const close = () => {
-    onClose && onClose()
+    onClose?.()
   }
 
   const choose = (param: string) => {
     close()
-    onConfirm && onConfirm(param)
+    onConfirm?.(param)
   }
   const closePopup = () => {
     close()
@@ -101,7 +101,7 @@ export const Calendar = React.forwardRef<
   }
 
   const yearMonthChange = (param: string) => {
-    onPageChange && onPageChange(param)
+    onPageChange?.(param)
   }
 
   React.useImperativeHandle(ref, () => ({

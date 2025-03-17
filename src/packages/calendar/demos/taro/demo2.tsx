@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react-taro'
 
-const Demo2 = () => {
+const Demo = () => {
   const d = new Date().getFullYear()
   const [date, setDate] = useState([`${d}-01-23`, `${d}-11-26`])
   const [isVisible, setIsVisible] = useState(false)
@@ -42,4 +42,4 @@ const Demo2 = () => {
     </>
   )
 }
-export default Demo2
+export default Demo
