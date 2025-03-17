@@ -34,6 +34,10 @@ const enUS: BaseLang = {
     start: 'Start',
     confirm: 'Confirm',
     title: 'Calendar',
+    week: 'W',
+    month: 'M',
+    year: 'Y',
+    quarter: 'Q',
     monthTitle: (year: number, month: number) =>
       `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Today',

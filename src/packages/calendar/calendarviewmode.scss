@@ -1,7 +1,4 @@
-@import '../popup/popup.scss';
-@import './calendarviewmode.scss';
-
-.nut-calendar {
+.nut-calendar-viewmode {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -37,10 +34,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-
-    &-buttons {
-      height: $calendar-header-height;
-    }
   }
 
   &-title {
@@ -54,25 +47,6 @@
     padding: 7px 0;
     line-height: 22px;
     font-size: $calendar-sub-title-font-size;
-  }
-
-  &-weeks {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 36px;
-    border-radius: 0px 0px 12px 12px;
-    box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
-    &-shrink {
-      padding-left: 17%;
-    }
-  }
-
-  &-week-item {
-    &:first-of-type,
-    &:last-of-type {
-      color: $color-primary;
-    }
   }
 
   // 内容区域
@@ -103,11 +77,10 @@
     }
   }
 
-  &-month {
+  &-panel {
     display: flex;
     flex-direction: column;
     text-align: center;
-
     &-title {
       height: 23px;
       line-height: 23px;
@@ -115,111 +88,50 @@
     }
   }
 
-  &-weeknumber {
-    width: 35%;
-    &-index {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
-      height: $calendar-day-height;
-      font-weight: $font-weight;
-      font-size: $font-size-base;
-      margin-bottom: 4px;
-      color: $color-text-help;
-    }
-  }
-
-  &-days {
-    overflow: hidden;
-  }
-
-  &-day {
+  &-item {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
     float: left;
-    width: $calendar-day-width;
+    width: $calendar-panel-item-width;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
 
-    &:nth-child(7n + 0),
-    &:nth-child(7n + 1) {
-      color: $color-primary;
-    }
-
-    &-info,
     &-info-curr {
       position: absolute;
       bottom: 5px;
       width: 100%;
-      font-size: 12px;
+      font-size: $font-size-s;
       line-height: 14px;
     }
 
-    &-info-top {
+    &-info {
       position: absolute;
-      width: 100%;
-      top: 5px;
-    }
-
-    &-info-bottom {
-      position: absolute;
-      width: 100%;
       bottom: 5px;
+      width: 100%;
+      font-size: $font-size-s;
+      line-height: 14px;
     }
 
-    &-active {
+    &.active {
       background-color: $calendar-active-background-color;
       color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;
-
-      &.active-start {
-        border-radius: 0px;
-        border-top-left-radius: $calendar-day-active-border-radius;
-        border-bottom-left-radius: $calendar-day-active-border-radius;
-      }
-
-      &.active-end {
-        border-radius: 0px;
-        border-top-right-radius: $calendar-day-active-border-radius;
-        border-bottom-right-radius: $calendar-day-active-border-radius;
-      }
-
       .nut-calendar-day-info {
         color: $color-primary-text;
       }
     }
 
-    &-disabled {
+    &-prev,
+    &-next {
       color: $calendar-disable-color !important;
-
       .nut-calendar-day-info-curr {
         display: none;
       }
     }
-
-    &-choose {
-      background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
-
-      &-disabled {
-        background-color: $calendar-choose-disable-background-color;
-        color: $calendar-disable-color !important;
-
-        .nut-calendar-day-info-curr {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .shrink {
-    display: flex;
   }
 
   // 底部导航
@@ -230,14 +142,13 @@
     background-color: $white;
 
     .calendar-confirm-btn {
-      height: 40px;
-      line-height: 40px;
-      margin: 6px 16px;
-      text-align: center;
-      border-radius: $radius-base;
+      height: 44px;
+      margin: 10px 18px;
+      border-radius: 22px;
       background: $button-primary-background-color;
       color: $color-primary-text;
-      font-weight: $font-weight-bold;
+      text-align: center;
+      line-height: 44px;
     }
   }
 }

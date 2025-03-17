@@ -36,6 +36,10 @@ const zhCN: BaseLang = {
     start: '開始',
     confirm: '確認',
     title: '日歷選擇',
+    week: '周',
+    month: '月',
+    year: '年',
+    quarter: '季度',
     monthTitle: (year: number, month: number) =>
       `${year}年${Number(month) < 10 ? `0${Number(month)}` : month}月`,
     today: '今天',

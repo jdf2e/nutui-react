@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo = () => {
   const d = new Date().getFullYear()
@@ -15,7 +16,7 @@ const Demo = () => {
 
   return (
     <>
-      <div
+      <View
         className="test-calendar-wrapper"
         style={{
           display: 'flex',
@@ -36,7 +37,7 @@ const Demo = () => {
           onConfirm={setChooseValue}
           onPageChange={yearMonthChange}
         />
-      </div>
+      </View>
     </>
   )
 }

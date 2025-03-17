@@ -42,6 +42,10 @@ const trTR: BaseLang = {
     start: 'Başlangıç',
     confirm: 'Onayla',
     title: 'Takvim seçimi',
+    week: 'H',
+    month: 'A',
+    year: 'Y',
+    quarter: 'Ç',
     monthTitle: (year: number, month: number) =>
       `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Bugün',

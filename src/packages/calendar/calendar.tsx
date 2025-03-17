@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
-import { Utils } from '@/utils/date'
+import CalendarViewModeItem from './calendarviewmodeitem'
+import { getDateString } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
 import type { CalendarDay, CalendarRef, WebCalendarProps } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
@@ -9,19 +10,22 @@ import { ComponentDefaults } from '@/utils/typings'
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
+  viewMode: 'day',
   autoBackfill: false,
   popup: true,
   visible: false,
   title: '',
+  value: '',
   defaultValue: '',
-  startDate: Utils.getDay(0),
-  endDate: Utils.getDay(365),
+  startDate: getDateString(0),
+  endDate: getDateString(365),
   showToday: true,
   startText: '',
   endText: '',
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
+  showMonthNumber: false,
   scrollAnimation: true,
   firstDayOfWeek: 0,
   disableDate: (date: CalendarDay) => false,
@@ -32,6 +36,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: (param: string) => {},
   onDayClick: (data: string) => {},
+  onItemClick: () => {},
   onPageChange: (param: string) => {},
 } as WebCalendarProps
 
@@ -47,8 +52,10 @@ export const Calendar = React.forwardRef<
     popup,
     visible,
     type,
+    viewMode,
     autoBackfill,
     title,
+    value,
     defaultValue,
     startDate,
     endDate,
@@ -58,6 +65,7 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
+    showMonthNumber,
     scrollAnimation,
     firstDayOfWeek,
     closeIcon,
@@ -70,6 +78,7 @@ export const Calendar = React.forwardRef<
     onClose,
     onConfirm,
     onDayClick,
+    onItemClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -87,10 +96,6 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string) => {
-    onDayClick && onDayClick(param)
-  }
-
   const scrollToDate = (date: string) => {
     calendarRef.current?.scrollToDate(date)
   }
@@ -105,42 +110,64 @@ export const Calendar = React.forwardRef<
 
   const renderItem = () => {
     return (
-      <CalendarItem
-        ref={calendarRef}
-        style={style}
-        className={className}
-        children={children}
-        type={type}
-        autoBackfill={autoBackfill}
-        renderBottomButton={renderBottomButton}
-        popup={popup}
-        title={title || locale.calendaritem.title}
-        defaultValue={defaultValue}
-        startDate={startDate}
-        endDate={endDate}
-        showToday={showToday}
-        startText={startText || locale.calendaritem.start}
-        endText={endText || locale.calendaritem.end}
-        confirmText={confirmText || locale.calendaritem.confirm}
-        showTitle={showTitle}
-        showSubTitle={showSubTitle}
-        scrollAnimation={scrollAnimation}
-        firstDayOfWeek={firstDayOfWeek}
-        disableDate={disableDate}
-        renderHeaderButtons={renderHeaderButtons}
-        renderDay={renderDay}
-        renderDayTop={renderDayTop}
-        renderDayBottom={renderDayBottom}
-        onConfirm={choose}
-        onDayClick={select}
-        onPageChange={yearMonthChange}
-      />
+      <>
+        {viewMode !== 'day' ? (
+          <CalendarViewModeItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            type={type}
+            viewMode={viewMode}
+            title={title || locale.calendaritem.title}
+            value={value}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showTitle={showTitle}
+            scrollAnimation={scrollAnimation}
+            renderDay={renderDay}
+            onItemClick={onItemClick}
+          />
+        ) : (
+          <CalendarItem
+            ref={calendarRef}
+            style={style}
+            className={className}
+            children={children}
+            type={type}
+            autoBackfill={autoBackfill}
+            renderBottomButton={renderBottomButton}
+            popup={popup}
+            title={title || locale.calendaritem.title}
+            defaultValue={defaultValue}
+            startDate={startDate}
+            endDate={endDate}
+            showToday={showToday}
+            startText={startText || locale.calendaritem.start}
+            endText={endText || locale.calendaritem.end}
+            confirmText={confirmText || locale.calendaritem.confirm}
+            showTitle={showTitle}
+            showSubTitle={showSubTitle}
+            showMonthNumber={showMonthNumber}
+            scrollAnimation={scrollAnimation}
+            firstDayOfWeek={firstDayOfWeek}
+            disableDate={disableDate}
+            renderHeaderButtons={renderHeaderButtons}
+            renderDay={renderDay}
+            renderDayTop={renderDayTop}
+            renderDayBottom={renderDayBottom}
+            onConfirm={choose}
+            onDayClick={(param) => onDayClick && onDayClick(param)}
+            onPageChange={yearMonthChange}
+          />
+        )}
+      </>
     )
   }
 
   return (
     <>
-      {popup ? (
+      {popup && viewMode === 'day' ? (
         <Popup
           className="nut-calendar-popup"
           visible={visible}
