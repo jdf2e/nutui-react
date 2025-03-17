@@ -76,6 +76,7 @@ export default class Notification extends React.PureComponent<
 
   render() {
     const {
+      id,
       style,
       message,
       leftIcon,
@@ -105,6 +106,7 @@ export default class Notification extends React.PureComponent<
           unmountOnExit
           appear
           position={position}
+          id={id}
         >
           <div
             className={classes}

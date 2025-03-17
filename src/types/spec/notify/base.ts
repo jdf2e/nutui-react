@@ -1,3 +1,4 @@
+import { PositionY } from '@/types/base/atoms'
 import { BaseProps } from '../../base/props'
 
 export interface BaseNotify extends BaseProps {
@@ -6,7 +7,7 @@ export interface BaseNotify extends BaseProps {
   closeable: boolean
   leftIcon: React.ReactNode
   rightIcon: React.ReactNode
-  position: string
+  position: PositionY
   duration: number
   onClick: () => void
   onClose: () => void

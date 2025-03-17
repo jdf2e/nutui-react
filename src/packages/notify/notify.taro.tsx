@@ -101,8 +101,6 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
   }, [distance, position])
 
   const classes = classNames({
-    [`${classPrefix}-popup-top`]: position === 'top',
-    [`${classPrefix}-popup-bottom`]: position === 'bottom',
     [`${classPrefix}`]: true,
     [`${className}`]: true,
   })
