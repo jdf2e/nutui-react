@@ -10,10 +10,12 @@ const Demo5 = () => {
   }
   return (
     <>
-      <Switch
-        onChange={(value, event) => changeStatus(value)}
-        style={{ marginBottom: 8 }}
-      />
+      <Cell>
+        <Switch
+          onChange={(value, event) => changeStatus(value)}
+          style={{ marginBottom: 8 }}
+        />
+      </Cell>
       <Cell>
         <View style={{ width: '100%' }}>
           <View style={{ display: 'flex' }}>
@@ -24,7 +26,7 @@ const Demo5 = () => {
                 src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
               />
             </Skeleton>
-            <View style={{ flexGrow: 1, marginLeft: 8 }}>
+            <View style={{ flex: 1, marginLeft: 8 }}>
               <Skeleton
                 visible={checked}
                 size="large"
