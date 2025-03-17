@@ -52,11 +52,10 @@ function getDay(i: number): string {
   return date2Str(date)
 }
 
-const Demo10 = () => {
-  const [date, setDate] = useState<string[]>(['2023-07-10', '2023-07-19'])
-
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState<string[]>([`${d}-01-23`, `${d}-01-30`])
   const [isVisible, setIsVisible] = useState(false)
-
   const calendarRef = useRef<any>(null)
 
   const openSwitch = () => {
@@ -72,8 +71,11 @@ const Demo10 = () => {
   }
 
   const goDate = () => {
+    // setDate(['2024-10-01', '2024-10-01'])
+    // 该行用于京东小程序IDE下问题的修复。
+    // 京东小程序，真机可不需要。
     if (calendarRef.current) {
-      calendarRef.current.scrollToDate('2023-04-01')
+      calendarRef.current.scrollToDate(`${d}-04-23`)
     }
   }
 
@@ -132,8 +134,8 @@ const Demo10 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2022-12-22"
-        endDate="2024-12-31"
+        startDate={`${d - 1}-11-21`}
+        endDate={`${d + 1}-09-10`}
         renderHeaderButtons={renderHeaderButtons}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
@@ -141,4 +143,4 @@ const Demo10 = () => {
     </>
   )
 }
-export default Demo10
+export default Demo
