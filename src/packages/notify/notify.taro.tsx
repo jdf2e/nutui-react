@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  FunctionComponent,
-  useRef,
-  useMemo,
-} from 'react'
+import React, { useState, useEffect, FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
@@ -62,7 +56,6 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
 
   let timer: number | null
   const [showNotify, setShowNotify] = useState(false)
-  const cssRef = useRef(null)
   useEffect(() => {
     if (visible) {
       show()
@@ -115,7 +108,6 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
 
   return (
     <CSSTransition
-      nodeRef={cssRef}
       in={showNotify}
       timeout={300}
       classNames="fade"
