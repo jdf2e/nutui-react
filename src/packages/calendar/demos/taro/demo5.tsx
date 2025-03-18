@@ -30,7 +30,6 @@ const Demo = () => {
         description={date && date.length ? `${date[0]}至${date[1]}` : '请选择'}
         onClick={openSwitch}
       />
-
       <Calendar
         visible={isVisible}
         defaultValue={date}

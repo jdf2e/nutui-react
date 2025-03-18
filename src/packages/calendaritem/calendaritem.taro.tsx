@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react'
 import classNames from 'classnames'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, Text, View } from '@tarojs/components'
 import Taro, { nextTick } from '@tarojs/taro'
 import { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
@@ -710,31 +710,31 @@ export const CalendarItem = React.forwardRef<
 
   const renderHeader = () => {
     return (
-      <div className={headerClasses}>
+      <View className={headerClasses}>
         {showTitle && (
-          <div className={`${classPrefix}-title`}>
+          <View className={`${classPrefix}-title`}>
             {title || locale.calendaritem.title}
-          </div>
+          </View>
         )}
         {renderHeaderButtons && (
-          <div className={`${classPrefix}-header-buttons`}>
+          <View className={`${classPrefix}-header-buttons`}>
             {renderHeaderButtons()}
-          </div>
+          </View>
         )}
         {showSubTitle && (
-          <div className={`${classPrefix}-sub-title`}>{yearMonthTitle}</div>
+          <View className={`${classPrefix}-sub-title`}>{yearMonthTitle}</View>
         )}
-        <div
+        <View
           className={`${classPrefix}-weeks ${showMonthNumber ? `${classPrefix}-weeks-shrink` : ''}`}
           ref={weeksPanel}
         >
           {weeks.map((item: string) => (
-            <div className={`${classPrefix}-week-item`} key={item}>
+            <View className={`${classPrefix}-week-item`} key={item}>
               {item}
-            </div>
+            </View>
           ))}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
@@ -743,34 +743,34 @@ export const CalendarItem = React.forwardRef<
     const endTip = isEndTip(day, month)
     const noStartNorEnd = !startTip && !endTip
     return (
-      <div
+      <View
         className={classNames('nut-calendar-item', getClasses(day, month))}
         onClick={() => handleDayClick(day, month, false)}
         key={index}
       >
-        <div className={`${classPrefix}-item-day`}>
+        <Text className={`${classPrefix}-item-day`}>
           {renderDay ? renderDay(day) : day.day}
-        </div>
+        </Text>
         {!startTip && renderDayTop && (
-          <div className={`${classPrefix}-item-info-top`}>
+          <View className={`${classPrefix}-item-info-top`}>
             {renderDayTop(day)}
-          </div>
+          </View>
         )}
         {noStartNorEnd && renderDayBottom && (
-          <div className={`${classPrefix}-item-info-bottom`}>
+          <View className={`${classPrefix}-item-info-bottom`}>
             {renderDayBottom(day)}
-          </div>
+          </View>
         )}
         {noStartNorEnd &&
           !renderDayBottom &&
           showToday &&
           isCurrDay(month, day.day) && (
-            <div className={`${classPrefix}-item-info-curr`}>
+            <View className={`${classPrefix}-item-info-curr`}>
               {locale.calendaritem.today}
-            </div>
+            </View>
           )}
         {startTip && (
-          <div
+          <View
             className={classNames('nut-calendar-item-info', {
               'nut-calendar-item-info-top': isStartAndEnd(
                 currentDate as string[]
@@ -778,38 +778,40 @@ export const CalendarItem = React.forwardRef<
             })}
           >
             {startText || locale.calendaritem.start}
-          </div>
+          </View>
         )}
         {endTip && (
-          <div className={`${classPrefix}-item-info`}>
+          <View className={`${classPrefix}-item-info`}>
             {endText || locale.calendaritem.end}
-          </div>
+          </View>
         )}
-      </div>
+      </View>
     )
   }
 
   const renderPanel = (month: any, key: number) => {
     return (
-      <div className={`${classPrefix}-month`} key={key}>
-        <div className={`${classPrefix}-month-title`}>{month.title}</div>
-        <div className={`${showMonthNumber ? 'shrink' : ''}`}>
+      <View className={`${classPrefix}-month`} key={key}>
+        <View className={`${classPrefix}-month-title`}>{month.title}</View>
+        <View className={`${showMonthNumber ? 'shrink' : ''}`}>
           {showMonthNumber && (
-            <div className={`${classPrefix}-weeknumber`}>
+            <View className={`${classPrefix}-weeknumber`}>
               {month.weekNo.map((item: string, index: number) => (
-                <div className={`${classPrefix}-weeknumber-index`} key={index}>
+                <View className={`${classPrefix}-weeknumber-index`} key={index}>
                   {item}
-                </div>
+                </View>
               ))}
-            </div>
+            </View>
           )}
-          <div className={`${classPrefix}-days`}>
+          <View
+            className={`${classPrefix}-days ${showMonthNumber ? `${classPrefix}-days-shrink` : ''}`}
+          >
             {month.monthData.map((day: CalendarDay, i: number) =>
               renderItem(month, day, i)
             )}
-          </div>
-        </div>
-      </div>
+          </View>
+        </View>
+      </View>
     )
   }
 
@@ -824,8 +826,8 @@ export const CalendarItem = React.forwardRef<
         onScroll={monthsViewScroll}
         ref={monthsRef}
       >
-        <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
-          <div
+        <View className={`${classPrefix}-pannel`} ref={monthsPanel}>
+          <View
             ref={viewAreaRef}
             style={{ transform: `translateY(${translateY}px)` }}
           >
@@ -834,35 +836,35 @@ export const CalendarItem = React.forwardRef<
               .map((month: any, key: number) => {
                 return renderPanel(month, key)
               })}
-          </div>
-        </div>
+          </View>
+        </View>
       </ScrollView>
     )
   }
 
   const renderFooter = () => {
     return (
-      <div className="nut-calendar-footer">
+      <View className="nut-calendar-footer">
         {children}
-        <div onClick={confirm}>
+        <View onClick={confirm}>
           {renderBottomButton ? (
             renderBottomButton()
           ) : (
-            <div className="calendar-confirm-btn">
+            <View className="calendar-confirm-btn">
               {confirmText || locale.confirm}
-            </div>
+            </View>
           )}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
   return (
-    <div className={classes} style={style}>
+    <View className={classes} style={style}>
       {renderHeader()}
       {renderContent()}
       {popup && !autoBackfill ? renderFooter() : ''}
-    </div>
+    </View>
   )
 })
 

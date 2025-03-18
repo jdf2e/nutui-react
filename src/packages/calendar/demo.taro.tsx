@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import './demo.scss'
+import { harmony } from '@/utils/platform-taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
-import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
@@ -20,6 +20,7 @@ import Demo102 from './demos/taro/demo102'
 import Demo103 from './demos/taro/demo103'
 
 const CalendarDemo = () => {
+  const Demo6 = harmony() ? null : lazy(() => import('./demos/taro/demo6'))
   const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '基础用法',
@@ -111,7 +112,7 @@ const CalendarDemo = () => {
         <Demo3 />
         <Demo4 />
         <Demo5 />
-        <Demo6 />
+        {harmony() ? null : <Suspense>{Demo6 && <Demo6 />}</Suspense>}
         <View className="h2">{translated.cfbdc781}</View>
         <Demo7 />
         <Demo8 />
@@ -120,11 +121,11 @@ const CalendarDemo = () => {
         <Demo10 />
         <View className="h2">{translated.e51e4582}</View>
         <Demo11 />
-        <h2>{translated.ees99933}</h2>
+        <View className="h2">{translated.ees99933}</View>
         <Demo101 />
-        <h2>{translated.e2s99933}</h2>
+        <View className="h2">{translated.e2s99933}</View>
         <Demo102 />
-        <h2>{translated.e4s99933}</h2>
+        <View className="h2">{translated.e4s99933}</View>
         <Demo103 />
       </ScrollView>
     </>

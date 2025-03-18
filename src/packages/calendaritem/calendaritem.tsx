@@ -765,7 +765,9 @@ export const CalendarItem = React.forwardRef<
         <div className={`${classPrefix}-month-title`}>{month.title}</div>
         <div className={`${showMonthNumber ? 'shrink' : ''}`}>
           {showMonthNumber && (
-            <div className={`${classPrefix}-weeknumber`}>
+            <div
+              className={`${classPrefix}-weeknumber ${classPrefix}-weeknumber-web`}
+            >
               {month.weekNo.map((item: string, index: number) => (
                 <div className={`${classPrefix}-weeknumber-index`} key={index}>
                   {item}

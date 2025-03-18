@@ -17,7 +17,7 @@ const Demo = () => {
       style={{
         display: 'flex',
         width: '100%',
-        height: '350px',
+        height: 400,
         overflow: 'hidden',
       }}
     >

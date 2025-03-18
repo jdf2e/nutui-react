@@ -48,12 +48,14 @@
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
     line-height: 50px;
+    text-align: center;
   }
 
   &-sub-title {
     padding: 7px 0;
     line-height: 22px;
     font-size: $calendar-sub-title-font-size;
+    text-align: center;
   }
 
   &-weeks {
@@ -79,7 +81,8 @@
   &-content {
     flex: 1;
     width: 100%;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     overflow-y: auto;
   }
 
@@ -112,11 +115,19 @@
       height: 23px;
       line-height: 23px;
       margin: 8px 0;
+      text-align: center;
     }
   }
 
   &-weeknumber {
+    /* #ifdef harmony */
+    width: 25%;
+    flex: 1;
+    /* #endif */
+    /* #ifndef harmony */
     width: 35%;
+    flex: 1;
+    /* #endif */
     &-index {
       display: flex;
       align-items: center;
@@ -131,8 +142,18 @@
     }
   }
 
+  &-weeknumber-web {
+    width: 35%;
+    flex: auto;
+  }
+
   &-days {
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    &-shrink {
+      flex: 5;
+    }
   }
 
   &-item {
@@ -147,11 +168,6 @@
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
 
-    &:nth-child(7n + 0),
-    &:nth-child(7n + 1) {
-      color: $color-primary;
-    }
-
     &-info,
     &-info-curr {
       position: absolute;
@@ -159,6 +175,7 @@
       width: 100%;
       font-size: $font-size-s;
       line-height: 14px;
+      text-align: center;
     }
 
     &-info-top {
@@ -183,23 +200,40 @@
         border-top-left-radius: $calendar-day-active-border-radius;
         border-bottom-left-radius: $calendar-day-active-border-radius;
       }
-
       &.active-end {
         border-radius: 0px;
         border-top-right-radius: $calendar-day-active-border-radius;
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
-
-      .nut-calendar-item-info {
+      .nut-calendar-item-info,
+      .nut-calendar-item-info-curr,
+      .nut-calendar-item-day {
+        color: $color-primary-text;
+      }
+      .nut-calendar-viewmode-item-info,
+      .nut-calendar-viewmode-item-info-curr,
+      .nut-calendar-viewmode-item-curr {
         color: $color-primary-text;
       }
     }
 
-    &-disabled {
+    &-disabled,
+    &-prev,
+    &-next {
       color: $calendar-disable-color !important;
 
       .nut-calendar-item-info-curr {
         display: none;
+      }
+      .nut-calendar-item-info,
+      .nut-calendar-item-info-curr,
+      .nut-calendar-item-day {
+        color: $calendar-disable-color !important;
+      }
+      .nut-calendar-viewmode-item-info,
+      .nut-calendar-viewmode-item-info-curr,
+      .nut-calendar-viewmode-item-curr {
+        color: $calendar-disable-color !important;
       }
     }
 
@@ -213,6 +247,16 @@
 
         .nut-calendar-item-info-curr {
           display: none;
+        }
+        .nut-calendar-item-info,
+        .nut-calendar-item-info-curr,
+        .nut-calendar-item-day {
+          color: $calendar-disable-color !important;
+        }
+        .nut-calendar-viewmode-item-info,
+        .nut-calendar-viewmode-item-info-curr,
+        .nut-calendar-viewmode-item-curr {
+          color: $calendar-disable-color !important;
         }
       }
     }
@@ -230,6 +274,7 @@
       height: 23px;
       line-height: 23px;
       margin: 8px 0;
+      text-align: center;
     }
   }
 
@@ -253,17 +298,18 @@
   }
 }
 
+.nut-calendar {
+  &-item {
+    &:nth-child(7n + 0),
+    &:nth-child(7n + 1) {
+      color: $color-primary;
+    }
+  }
+}
+
 .nut-calendar-viewmode {
   &-item {
     width: $calendar-panel-item-width;
-
-    &-prev,
-    &-next {
-      color: $calendar-disable-color !important;
-      .nut-calendar-item-info-curr {
-        display: none;
-      }
-    }
   }
 }
 

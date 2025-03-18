@@ -333,12 +333,12 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const getClasses = (item: any) => {
     if (isDisable(item)) {
-      return ['nut-calendar-item-disabled']
+      return ['nut-calendar-viewmode-item-disabled']
     }
     const res = []
     if (item.type === 'curr') {
       if (isActive(item)) {
-        res.push('nut-calendar-item-active')
+        res.push('nut-calendar-viewmode-item-active')
       }
     }
     return res
@@ -366,7 +366,7 @@ export const CalendarViewModeItem = React.forwardRef<
       quarter: locale.calendaritem.quarter,
     }
     return (
-      <div
+      <View
         className={classNames(
           `${classPrefix}-item`,
           item.type,
@@ -375,10 +375,10 @@ export const CalendarViewModeItem = React.forwardRef<
         onClick={() => handleItemClick(viewMode, item)}
         key={index}
       >
-        <div className={`${classPrefix}-item-${item.type}`}>
+        <View className={`${classPrefix}-item-${item.type}`}>
           {renderDay ? renderDay(item) : `${item[viewMode]}${units[viewMode]}`}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
@@ -386,14 +386,14 @@ export const CalendarViewModeItem = React.forwardRef<
     return (
       <>
         {panelDate[`${viewMode}s`].map((item: any, key: number) => (
-          <div className={`${classPrefix}-panel`} key={key}>
-            <div className={`${classPrefix}-panel-title`}>{item.year}</div>
-            <div className={`${classPrefix}-content`}>
+          <View className={`${classPrefix}-panel`} key={key}>
+            <View className={`${classPrefix}-panel-title`}>{item.year}</View>
+            <View className={`${classPrefix}-content`}>
               {item[`${viewMode}s`].map((item: any, i: number) =>
                 renderItem(item, i)
               )}
-            </div>
-          </div>
+            </View>
+          </View>
         ))}
       </>
     )
@@ -408,18 +408,18 @@ export const CalendarViewModeItem = React.forwardRef<
         onScroll={monthsViewScroll}
         ref={monthsRef}
       >
-        <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
-          <div ref={viewAreaRef}>{renderPanel()}</div>
-        </div>
+        <View className={`${classPrefix}-pannel`} ref={monthsPanel}>
+          <View ref={viewAreaRef}>{renderPanel()}</View>
+        </View>
       </ScrollView>
     )
   }
 
   return (
-    <div className={classes} style={style}>
+    <View className={classes} style={style}>
       {renderHeader()}
       {renderContent()}
-    </div>
+    </View>
   )
 })
 

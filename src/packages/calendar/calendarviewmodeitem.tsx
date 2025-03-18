@@ -323,12 +323,12 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const getClasses = (item: any) => {
     if (isDisable(item)) {
-      return ['nut-calendar-item-disabled']
+      return ['nut-calendar-viewmode-item-disabled']
     }
     const res = []
     if (item.type === 'curr') {
       if (isActive(item)) {
-        res.push('nut-calendar-item-active')
+        res.push('nut-calendar-viewmode-item-active')
       }
     }
     return res

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react-taro'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 
 const Demo = () => {
   const d = new Date().getFullYear()
@@ -21,7 +21,7 @@ const Demo = () => {
         style={{
           display: 'flex',
           width: '100%',
-          height: '613px',
+          height: 400,
           overflow: 'hidden',
         }}
       >
@@ -31,7 +31,9 @@ const Demo = () => {
           type="range"
           startDate={`${d - 1}-11-21`}
           endDate={`${d + 1}-09-10`}
-          startText={<div>test</div>}
+          startText={
+            <Text style={{ color: '#fff', textAlign: 'center' }}>test</Text>
+          }
           endText="leave"
           autoBackfill
           onConfirm={setChooseValue}
