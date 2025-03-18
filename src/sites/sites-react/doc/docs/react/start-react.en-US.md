@@ -53,7 +53,7 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 It is important to note that when manually loading components on demand, you also need to import the global class file in your entry file to load some of NutUI React's global logic and styles:
 
 ```js
-import '@nutui/nutui-react/dist/styles/themes/default.scss'
+import '@nutui/nutui-react/dist/styles/themes/default.css'
 ```
 
 #### Method 3: Automatic On-Demand Loading

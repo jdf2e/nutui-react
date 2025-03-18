@@ -53,7 +53,7 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React 的全局性逻辑和样式：`
 
 ```js
-import '@nutui/nutui-react/dist/styles/themes/default.scss'
+import '@nutui/nutui-react/dist/styles/themes/default.css'
 ```
 
 #### 方法三、自动的按需加载

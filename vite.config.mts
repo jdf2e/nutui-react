@@ -72,11 +72,11 @@ export default defineConfig(async (): Promise<UserConfig> => {
           ),
         },
         {
-          find: '@nutui/nutui-react/dist/locale/en-US',
+          find: '@nutui/nutui-react/dist/es/locale/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         {
-          find: '@nutui/nutui-react-taro/dist/locales/en-US',
+          find: '@nutui/nutui-react-taro/dist/es/locales/en-US',
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         { find: '@', replacement: resolve(__dirname, './src') },

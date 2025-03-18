@@ -115,7 +115,7 @@ You can also implement on-demand import of styles in the following ways:
 Note that when manually loading components on demand, you also need to import the global class file in the entry file to load some of NutUI React Taro's global logic and styles:
 
 ```js
-import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 ```
 
 Install `babel-plugin-import`.
