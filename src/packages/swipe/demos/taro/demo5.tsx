@@ -34,7 +34,11 @@ const App = () => {
             position: 'relative',
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>点击右侧按钮关闭</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            点击右侧按钮关闭
+          </View>
         </View>
       </Swipe>
     </>

@@ -62,7 +62,11 @@ const App = () => {
             zIndex: 2,
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>事件</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            事件
+          </View>
         </View>
       </Swipe>
     </>
