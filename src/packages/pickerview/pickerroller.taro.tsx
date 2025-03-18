@@ -32,7 +32,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const INERTIA_DISTANCE = 15
   const ROTATION = 20
   const touch = useTouch()
-  const [currentIndex, setCurrentIndex] = useState(1)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const lineSpacing = useRef(36)
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
@@ -88,9 +88,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       )
       if (deg >= 0 && deg < (options.length + 1) * ROTATION) {
         applyTransform('', `${deg}deg`, undefined, updatedMove)
-        setCurrentIndex(
-          Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
-        )
+        deg > 0 &&
+          setCurrentIndex(
+            Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
+          )
       }
     }
   }
