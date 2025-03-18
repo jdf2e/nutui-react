@@ -30,12 +30,16 @@ const list: FixedNavItem[] = [
 
 test('basic usage', () => {
   const { container } = render(<FixedNav list={list} />)
-  expect(container.querySelector('.nut-fixednav')).toHaveClass('right')
+  expect(container.querySelector('.nut-fixednav')).toHaveClass(
+    'nut-fixednav-right'
+  )
 })
 
 test('left nav', () => {
   const { container } = render(<FixedNav list={list} type="left" />)
-  expect(container.querySelector('.nut-fixednav')).toHaveClass('left')
+  expect(container.querySelector('.nut-fixednav')).toHaveClass(
+    'nut-fixednav-left'
+  )
 })
 
 test('should be displayed after setting the un-active-text', () => {
