@@ -5,6 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import classNames from 'classnames'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 import { WebPickerRollerProps, PickerOption } from '@/types'
@@ -89,12 +90,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
           setCurrentIndex(
             Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
           )
-        console.log(
-          's',
-          deg,
-          updatedMove,
-          Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
-        )
       }
     }
   }
