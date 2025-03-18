@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react-taro'
-import { View } from '@tarojs/components'
+import { View, Image } from '@tarojs/components'
 import Overlay from '@/packages/overlay/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { TaroFixedNavProps } from '@/types'
@@ -55,7 +55,7 @@ export const FixedNav: FunctionComponent<
     {
       active: visible,
     },
-    type,
+    `${classPrefix}-${type}`,
     className
   )
 
@@ -69,7 +69,7 @@ export const FixedNav: FunctionComponent<
         {React.isValidElement(item.icon) ? (
           item.icon
         ) : (
-          <img src={item.icon} alt="" />
+          <Image src={item.icon} className={`${classPrefix}-list-image`} />
         )}
         <View className={`${classPrefix}-list-text`}>{item.text}</View>
       </View>
