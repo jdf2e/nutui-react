@@ -5,6 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
@@ -135,7 +136,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     const index = options.findIndex(
       (item: PickerOption) => item.value === selectedValue
     )
-    setCurrentIndex(index === -1 ? 1 : index + 1)
+    setCurrentIndex(index === -1 ? 0 : index + 1)
     const move = index * lineSpacing.current
     shouldSelect && selectValue(-move)
     handleMove(-move)
@@ -227,9 +228,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {threeDimensional &&
           options.map((item: PickerOption, index: number) => (
             <View
-              className={`nut-pickerview-roller-item ${
-                isItemHidden(index + 1) && 'nut-pickerview-roller-item-hidden'
-              }`}
+              className={classNames('nut-pickerview-roller-item', {
+                'nut-pickerview-roller-item-hidden': isItemHidden(index + 1),
+                'nut-pickerview-roller-item-active': index + 1 === currentIndex,
+              })}
               style={rollerStyle(index)}
               key={item.value ?? index}
             >
