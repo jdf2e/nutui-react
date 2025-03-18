@@ -1,7 +1,7 @@
 @import '../popup/popup.scss';
-@import './calendarviewmode.scss';
 
-.nut-calendar {
+.nut-calendar,
+.nut-calendar-viewmode {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@
     overflow: hidden;
   }
 
-  &-day {
+  &-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,7 +157,7 @@
       position: absolute;
       bottom: 5px;
       width: 100%;
-      font-size: 12px;
+      font-size: $font-size-s;
       line-height: 14px;
     }
 
@@ -190,7 +190,7 @@
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
 
-      .nut-calendar-day-info {
+      .nut-calendar-item-info {
         color: $color-primary-text;
       }
     }
@@ -198,7 +198,7 @@
     &-disabled {
       color: $calendar-disable-color !important;
 
-      .nut-calendar-day-info-curr {
+      .nut-calendar-item-info-curr {
         display: none;
       }
     }
@@ -211,7 +211,7 @@
         background-color: $calendar-choose-disable-background-color;
         color: $calendar-disable-color !important;
 
-        .nut-calendar-day-info-curr {
+        .nut-calendar-item-info-curr {
           display: none;
         }
       }
@@ -220,6 +220,17 @@
 
   .shrink {
     display: flex;
+  }
+
+  &-panel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    &-title {
+      height: 23px;
+      line-height: 23px;
+      margin: 8px 0;
+    }
   }
 
   // 底部导航
@@ -238,6 +249,20 @@
       background: $button-primary-background-color;
       color: $color-primary-text;
       font-weight: $font-weight-bold;
+    }
+  }
+}
+
+.nut-calendar-viewmode {
+  &-item {
+    width: $calendar-panel-item-width;
+
+    &-prev,
+    &-next {
+      color: $calendar-disable-color !important;
+      .nut-calendar-item-info-curr {
+        display: none;
+      }
     }
   }
 }

@@ -48,7 +48,7 @@ test('single prop', async () => {
   expect(canlendarTitle2.length).toBe(0)
   const curMonth2 = container.querySelectorAll('.nut-calendar-sub-title')
   expect(curMonth2.length).toBe(0)
-  const tipCurr = container.querySelectorAll('.nut-calendar-day-info-curr')
+  const tipCurr = container.querySelectorAll('.nut-calendar-item-info-curr')
   expect(tipCurr.length).toBe(0)
 })
 
@@ -218,11 +218,11 @@ const testClickEvent = (
     />
   )
   const calendarMonthDay =
-    container.querySelectorAll('.nut-calendar-day')[offset]
+    container.querySelectorAll('.nut-calendar-item')[offset]
   fireEvent.click(calendarMonthDay)
   expect(onDayClick).toBeCalled()
   const start = container.querySelectorAll(
-    '.nut-calendar-day-active .nut-calendar-day-day'
+    '.nut-calendar-item-active .nut-calendar-item-day'
   )[0]
   expect(start.innerHTML).toBe(expected)
 }
@@ -251,23 +251,23 @@ test('multiple select event when click item', () => {
   )
 
   const start1 = container.querySelectorAll(
-    '.nut-calendar-day-active .nut-calendar-day-day'
+    '.nut-calendar-item-active .nut-calendar-item-day'
   )[0]
   expect(start1.innerHTML).toBe('1')
 
-  const calendarMonthDay = container.querySelectorAll('.nut-calendar-day')[15]
+  const calendarMonthDay = container.querySelectorAll('.nut-calendar-item')[15]
   fireEvent.click(calendarMonthDay)
   expect(onDayClick).toBeCalled()
   const start2 = container.querySelectorAll(
-    '.nut-calendar-day-active .nut-calendar-day-day'
+    '.nut-calendar-item-active .nut-calendar-item-day'
   )[1]
   expect(start2.innerHTML).toBe('13')
 
-  const calendarMonthDay2 = container.querySelectorAll('.nut-calendar-day')[16]
+  const calendarMonthDay2 = container.querySelectorAll('.nut-calendar-item')[16]
   fireEvent.click(calendarMonthDay2)
   expect(onDayClick).toBeCalled()
   const start3 = container.querySelectorAll(
-    '.nut-calendar-day-active .nut-calendar-day-day'
+    '.nut-calendar-item-active .nut-calendar-item-day'
   )[2]
   expect(start3.innerHTML).toBe('14')
 })
@@ -283,19 +283,19 @@ test('range select event when click item', () => {
       onDayClick={onDayClick}
     />
   )
-  const calendarMonthDay = container.querySelectorAll('.nut-calendar-day')[15]
+  const calendarMonthDay = container.querySelectorAll('.nut-calendar-item')[15]
   fireEvent.click(calendarMonthDay)
   expect(onDayClick).toBeCalled()
   const start = container.querySelectorAll(
-    '.nut-calendar-day-active .nut-calendar-day-day'
+    '.nut-calendar-item-active .nut-calendar-item-day'
   )[0]
   expect(start.innerHTML).toBe('10')
 
-  const calendarMonthDay2 = container.querySelectorAll('.nut-calendar-day')[20]
+  const calendarMonthDay2 = container.querySelectorAll('.nut-calendar-item')[20]
   fireEvent.click(calendarMonthDay2)
   expect(onDayClick).toBeCalled()
   const next = container.querySelectorAll(
-    '.nut-calendar-day-choose .nut-calendar-day-day'
+    '.nut-calendar-item-choose .nut-calendar-item-day'
   )[0]
   expect(next.innerHTML).toBe('11')
 })

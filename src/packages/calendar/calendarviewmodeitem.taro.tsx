@@ -28,9 +28,9 @@ import {
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
-// 年面板的高度：cssHeight 231
+// 年月面板的高度：cssHeight 231
 const YearMonthPanelHeight = 231
-// 年面板的高度：cssHeight 103
+// 年季面板的高度：cssHeight 103
 const YearQuarterPanelHeight = 103
 
 export interface CalendarViewModeItemProps {
@@ -333,12 +333,12 @@ export const CalendarViewModeItem = React.forwardRef<
 
   const getClasses = (item: any) => {
     if (isDisable(item)) {
-      return ['disabled']
+      return ['nut-calendar-item-disabled']
     }
     const res = []
     if (item.type === 'curr') {
       if (isActive(item)) {
-        res.push('active')
+        res.push('nut-calendar-item-active')
       }
     }
     return res

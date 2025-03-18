@@ -144,7 +144,7 @@ export const CalendarItem = React.forwardRef<
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-calendar'
-  const dayPrefix = 'nut-calendar-day'
+  const dayPrefix = 'nut-calendar-item'
 
   const weekdays = locale.calendaritem.weekdays
   const weeks = [
@@ -744,20 +744,20 @@ export const CalendarItem = React.forwardRef<
     const noStartNorEnd = !startTip && !endTip
     return (
       <div
-        className={classNames('nut-calendar-day', getClasses(day, month))}
+        className={classNames('nut-calendar-item', getClasses(day, month))}
         onClick={() => handleDayClick(day, month, false)}
         key={index}
       >
-        <div className={`${classPrefix}-day-day`}>
+        <div className={`${classPrefix}-item-day`}>
           {renderDay ? renderDay(day) : day.day}
         </div>
         {!startTip && renderDayTop && (
-          <div className={`${classPrefix}-day-info-top`}>
+          <div className={`${classPrefix}-item-info-top`}>
             {renderDayTop(day)}
           </div>
         )}
         {noStartNorEnd && renderDayBottom && (
-          <div className={`${classPrefix}-day-info-bottom`}>
+          <div className={`${classPrefix}-item-info-bottom`}>
             {renderDayBottom(day)}
           </div>
         )}
@@ -765,14 +765,14 @@ export const CalendarItem = React.forwardRef<
           !renderDayBottom &&
           showToday &&
           isCurrDay(month, day.day) && (
-            <div className={`${classPrefix}-day-info-curr`}>
+            <div className={`${classPrefix}-item-info-curr`}>
               {locale.calendaritem.today}
             </div>
           )}
         {startTip && (
           <div
-            className={classNames('nut-calendar-day-info', {
-              'nut-calendar-day-info-top': isStartAndEnd(
+            className={classNames('nut-calendar-item-info', {
+              'nut-calendar-item-info-top': isStartAndEnd(
                 currentDate as string[]
               ),
             })}
@@ -781,7 +781,7 @@ export const CalendarItem = React.forwardRef<
           </div>
         )}
         {endTip && (
-          <div className={`${classPrefix}-day-info`}>
+          <div className={`${classPrefix}-item-info`}>
             {endText || locale.calendaritem.end}
           </div>
         )}
