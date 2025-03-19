@@ -180,7 +180,7 @@ exports[`should render tiled 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: translate3d(0, 0px, 0);"
       >
         <div
-          class="nut-pickerview-roller-item-tiled"
+          class="nut-pickerview-roller-item-tiled nut-pickerview-roller-item-active"
         >
           南京市
         </div>
