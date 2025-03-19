@@ -193,3 +193,23 @@ config = {
 ```
 
 :::
+
+#### 4、CSS units
+
+The CSS units used in the components are px. However, during the Taro compilation, Taro will help you perform size conversion operations on styles. It is important to note that you should add styles related to NutUI to the blacklist, such as:
+
+:::demo
+
+```js
+// config/index.js
+config = {
+  postcss: {
+    pxtransform: {
+      enable: true,
+      config: { selectorBlackList: ['nut-'] },
+    },
+  },
+}
+```
+
+:::
