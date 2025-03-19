@@ -151,7 +151,18 @@ babel config：
 ## Usage Notes
 
 - NutUI-React is built on top of [react@^18.0.0](https://www.npmjs.com/package/react)
-- The CSS units used in the components are px. If your project requires rem units, you can use some tools for conversion, such as [webpack](https://www.webpackjs.com/) with the [px2rem-loader](https://www.npmjs.com/package/px2rem-loader), or the [postcss](https://github.com/postcss/postcss) plugin [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem).
+- The CSS units used in the components are px. If your project requires rem units, you can use some tools for conversion, such as [webpack](https://www.webpackjs.com/) with the [px2rem-loader](https://www.npmjs.com/package/px2rem-loader), or the [postcss](https://github.com/postcss/postcss) plugin [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem). Be attention, when you want to change **px** to **rem**, you should set classnames about **NutUI** in the black list, such as:
+
+```
+module.exports = {
+  plugins: {
+    'postcss-pxtorem': {
+      propList: ['*'],
+      selectorBlackList: ['nut-'] // ignore items
+    }
+  }
+}
+```
 
 ## Templates
 

@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
-import APPContext from '../../context'
+import React, { FunctionComponent } from 'react'
 import data from './contribution.json'
 
 interface ContributionMDXProps {
@@ -15,19 +9,12 @@ interface ContributionMDXProps {
 const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
   const name = props.name
   const { issues, logs } = data
-  const liStyle = {
-    cursor: 'pointer',
-    listStyleType: 'none',
-    margin: '2px',
-    position: 'static',
-    paddingLeft: '5px',
-  }
   return (
     <>
       <h3>Bugs & Tips</h3>
-      <ul style={{ margin: 0 }}>
+      <div style={{ margin: 0 }}>
         {issues[name].map((item) => (
-          <li key={item.number} style={liStyle}>
+          <div key={item.number} style={{ margin: 2 }}>
             <a
               href={item.url}
               target="_blank"
@@ -40,10 +27,10 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
             >
               {item.title}
             </a>
-          </li>
+          </div>
         ))}
         {logs[name].map((item) => (
-          <li key={item.version} style={liStyle}>
+          <div key={item.version} style={{ margin: 2 }}>
             <a
               href={item.content.match(/\(\[(#\d+)\]\(([^)]+)\)\)/)?.[2]}
               style={{
@@ -62,29 +49,40 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
                   ''
                 )}
             </a>
-            <code style={{ fontSize: 14, color: '#666' }}>{item.version}</code>
-          </li>
+            <span
+              style={{
+                fontSize: 14,
+                color: '#666',
+                backgroundColor: '#f5f5f5',
+                padding: '0 4px',
+                borderRadius: 5,
+              }}
+            >
+              {item.version}
+            </span>
+          </div>
         ))}
-      </ul>
-      {issues[name].length > 0 || logs[name].length > 0 && (
-        <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
-          <span>View more resolved </span>
-          <a
-            href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
-            style={{ color: '#1677ff', textDecoration: 'none' }}
-          >
-            issues
-          </a>
-          <span> and </span>
-          <a
-            href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}
-            style={{ color: '#1677ff', textDecoration: 'none' }}
-          >
-            releases
-          </a>
-          <span> for {name}</span>
-        </div>
-      )}
+      </div>
+      {issues[name].length > 0 ||
+        (logs[name].length > 0 && (
+          <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
+            <span>View more resolved </span>
+            <a
+              href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
+              style={{ color: '#1677ff', textDecoration: 'none' }}
+            >
+              issues
+            </a>
+            <span> and </span>
+            <a
+              href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}
+              style={{ color: '#1677ff', textDecoration: 'none' }}
+            >
+              releases
+            </a>
+            <span> for {name}</span>
+          </div>
+        ))}
     </>
   )
 }

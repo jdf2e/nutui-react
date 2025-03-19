@@ -13,49 +13,49 @@ exports[`should match base 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 20deg);"
       >
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item nut-pickerview-roller-item-active"
           style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
         >
           南京市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
         >
           无锡市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
         >
           海北藏族自治区
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
         >
           北京市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
         >
           连云港市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -120deg) translate3d(0px, 0px, 115px);"
         >
           大庆市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -140deg) translate3d(0px, 0px, 115px);"
         >
           绥化市
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -160deg) translate3d(0px, 0px, 115px);"
         >
           潍坊市
@@ -91,13 +91,13 @@ exports[`should match cascade 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 20deg);"
       >
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item nut-pickerview-roller-item-active"
           style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
         >
           北京 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
         >
           上海 | 测试
@@ -112,37 +112,37 @@ exports[`should match cascade 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 0deg);"
       >
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
         >
           朝阳区 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
         >
           海淀区 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
         >
           大兴区 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
         >
           东城区 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
         >
           西城区 | 测试
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -120deg) translate3d(0px, 0px, 115px);"
         >
           丰台区 | 测试
@@ -249,31 +249,31 @@ exports[`should render with Multi Column 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 0deg);"
       >
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
         >
           周一
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
         >
           周二
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
         >
           周三
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -80deg) translate3d(0px, 0px, 115px);"
         >
           周四
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -100deg) translate3d(0px, 0px, 115px);"
         >
           周五
@@ -288,19 +288,19 @@ exports[`should render with Multi Column 1`] = `
         style="transition: transform 0ms cubic-bezier(0.17, 0.89, 0.45, 1); transform: rotate3d(1, 0, 0, 0deg);"
       >
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 0px, 115px);"
         >
           上午
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -40deg) translate3d(0px, 0px, 115px);"
         >
           下午
         </div>
         <div
-          class="nut-pickerview-roller-item false"
+          class="nut-pickerview-roller-item"
           style="transform: rotate3d(1, 0, 0, -60deg) translate3d(0px, 0px, 115px);"
         >
           晚上

@@ -121,6 +121,7 @@ const config = {
     '@/locales': path.resolve(__dirname, '../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
     '@/hooks': path.resolve(__dirname, '../../../src/hooks'),
+    '@/types': path.resolve(__dirname, '../../../src/types'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
       '../../../src/packages/nutui.react.taro.ts'
