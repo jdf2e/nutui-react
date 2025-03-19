@@ -25,6 +25,8 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     renderLabel = (item: PickerOption) => item.label,
   } = props
 
+  const classPrefix = 'nut-pickerview-roller'
+
   const DEFAULT_DURATION = 200
   const INERTIA_TIME = 300
   const INERTIA_DISTANCE = 15
@@ -208,7 +210,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   return (
     <div className="nut-pickerview-list" ref={pickerRollerRef}>
       <div
-        className="nut-pickerview-roller"
+        className={classPrefix}
         ref={rollerRef}
         style={threeDimensional ? touchRollerStyle() : touchTiledStyle()}
         onTransitionEnd={stopMomentumScroll}
@@ -217,9 +219,9 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {threeDimensional &&
           options.map((item: PickerOption, index: number) => (
             <div
-              className={classNames('nut-pickerview-roller-item', {
-                'nut-pickerview-roller-item-hidden': isItemHidden(index + 1),
-                'nut-pickerview-roller-item-active': index + 1 === currentIndex,
+              className={classNames(`${classPrefix}-item`, {
+                [`${classPrefix}-item-hidden`]: isItemHidden(index + 1),
+                [`${classPrefix}-item-active`]: index + 1 === currentIndex,
               })}
               style={rollerStyle(index)}
               key={item.value ?? index}
@@ -231,7 +233,9 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {!threeDimensional &&
           options.map((item: PickerOption, index: number) => (
             <div
-              className="nut-pickerview-roller-item-tiled"
+              className={classNames(`${classPrefix}-item-tiled`, {
+                [`${classPrefix}-item-active`]: index + 1 === currentIndex,
+              })}
               key={item.value ?? index}
             >
               {renderLabel(item)}
