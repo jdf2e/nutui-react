@@ -87,7 +87,7 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
     oriDistance: 0,
     originScale: 1,
   })
-  const [lastTouchEndTime, setLastTouchEndTime] = useState(0) // 用来辅助监听双击
+  const lastTouchEndTime = useRef(0) // 用来辅助监听双击
   const onTouchStart = (event: TouchEvent) => {
     const touches = event.touches
     const events = touches[0]
@@ -95,7 +95,7 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
 
     // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
     const curTouchTime = Date.now()
-    if (curTouchTime - lastTouchEndTime < 100) {
+    if (curTouchTime - lastTouchEndTime.current < 100) {
       const store1 = store
       store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()
@@ -134,7 +134,7 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
   }
 
   const onTouchEnd = () => {
-    setLastTouchEndTime(Date.now())
+    lastTouchEndTime.current = Date.now()
     const store1 = store
     store1.moveable = false
     if ((store1.scale < 1.1 && store1.scale > 1) || store1.scale < 1) {
