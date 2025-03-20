@@ -366,3 +366,5 @@ export default App
 | --- | --- | --- |
 | open | 打開單元格側邊欄，`side`參數默認為`right` | `(side?: 'left' \| 'right') => void` |
 | close | 收起單元格側邊欄 | `() => void` |
+
+<Contribution name="Swipe" />

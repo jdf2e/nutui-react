@@ -102,3 +102,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-switch-label-text-color | Switch internal text color | `$color-primary-text` |
 | \--nutui-switch-label-font-size | Switch internal text size | `$font-size-s` |
 | \--nutui-switch-inactive-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |
+
+<Contribution name="Switch" />

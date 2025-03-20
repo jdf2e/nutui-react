@@ -7,13 +7,20 @@
   &-icon {
     color: $color-text-disabled;
     font-size: $checkbox-icon-font-size;
+    flex-shrink: 0;
+  }
+
+  &-icon-wrap {
+    font-size: 0px;
+    line-height: 0px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px 0px rgba(255, 15, 35, 0.2);
   }
 
   &-icon-checked {
     color: $color-primary;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
-    box-shadow: 0px 2px 4px 0px #ff0f2333;
     border-radius: 50%;
 
     &.nut-checkbox-icon-disabled {
@@ -25,6 +32,7 @@
     margin-left: $checkbox-label-margin-left;
     font-size: $checkbox-label-font-size;
     color: $checkbox-label-color;
+    flex-shrink: 0;
 
     &-disabled {
       color: $color-text-disabled;
@@ -59,6 +67,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    min-height: 32px;
     padding: $checkbox-button-padding;
     font-size: $checkbox-button-font-size;
     background: $checkbox-button-background;
@@ -92,29 +101,28 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
+    }
 
-      &-checked {
-        width: 12px;
-        height: 12px;
-        position: absolute;
-        color: $white;
-        top: 50%;
-        left: 50%;
-        transform: translate(-3px, -3px);
-      }
+    .nut-checkbox-button-icon-checked {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      color: $white;
+      right: 0;
+      bottom: 0;
+      transform: translate(-1px, -2px);
+    }
 
-      // background-color: $color-primary;
-      .nut-icon {
-        position: absolute;
-        font-size: 12px;
-        width: 12px;
-        height: 12px;
+    .nut-icon {
+      position: absolute;
+      font-size: 12px;
+      width: 12px;
+      height: 12px;
 
-        &:before {
-          top: auto;
-          bottom: -22px;
-          margin-left: 6px;
-        }
+      &:before {
+        top: auto;
+        bottom: -22px;
+        margin-left: 6px;
       }
     }
   }
@@ -126,15 +134,13 @@
   }
 
   &-list-item {
-    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
     padding: $checkbox-list-item-padding;
     border-top: $checkbox-list-item-border;
 
     .nut-checkbox-label {
-      flex: auto;
+      flex: none;
     }
 
     .nut-icon {

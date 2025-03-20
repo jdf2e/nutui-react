@@ -1,0 +1,80 @@
+name: PR Review Labels
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  update-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update PR labels
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              const { owner, repo } = context.repo;
+
+              // 获取所有开放的 PRs
+              const { data: prs } = await github.rest.pulls.list({
+                owner,
+                repo,
+                state: 'open'
+              });
+
+              for (const pr of prs) {
+                // 获取 PR 的所有 reviews
+                const { data: reviews } = await github.rest.pulls.listReviews({
+                  owner,
+                  repo,
+                  pull_number: pr.number
+                });
+
+                // 计算最新的 approved 数量
+                const latestReviews = new Map();
+                reviews.forEach(review => {
+                  latestReviews.set(review.user.id, review);
+                });
+
+                const approvedCount = Array.from(latestReviews.values())
+                  .filter(review => review.state === 'APPROVED')
+                  .length;
+
+                console.log(`PR #${pr.number} - Approved count:`, approvedCount);
+
+                // 获取当前标签
+                const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
+                  owner,
+                  repo,
+                  issue_number: pr.number
+                });
+
+                // 保留非 action 标签
+                const labelsToKeep = currentLabels
+                  .filter(label => label.name !== 'action:merge' && label.name !== 'action:review')
+                  .map(label => label.name);
+
+                // 添加新标签
+                const newLabel = approvedCount >= 2 ? 'action:merge' : 'action:review';
+                await github.rest.issues.setLabels({
+                  owner,
+                  repo,
+                  issue_number: pr.number,
+                  labels: [...labelsToKeep, newLabel]
+                });
+              }
+            } catch (error) {
+              console.error('Error:', error);
+              throw error;
+            }

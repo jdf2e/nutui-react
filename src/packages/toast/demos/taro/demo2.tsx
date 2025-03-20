@@ -12,9 +12,7 @@ const Demo5 = () => {
           Toast.show('test', {
             title: '函数调用函数调用',
             content: '函数调用函数调用函数调用函数调用函数',
-            type: 'fail',
             duration: 2,
-            position: 'center',
             icon: <Jd color="#ffffff" />,
             lockScroll: true,
             onClose: () => {

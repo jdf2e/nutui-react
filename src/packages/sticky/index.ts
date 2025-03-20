@@ -1,4 +1,4 @@
 import { Sticky } from './sticky'
 
-export type { StickyProps } from './sticky'
+export type { WebStickyProps as StickyProps } from '@/types'
 export default Sticky

@@ -1,56 +1,51 @@
 import React, { useState } from 'react'
-import { Cascader, Cell } from '@nutui/nutui-react-taro'
+import { Cascader, CascaderOption, Cell } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
-  const [isVisibleDemo3, setIsVisibleDemo3] = useState(false)
-  const [value3, setValue3] = useState(['A0', 'A12', 'A23', 'A32'])
+  const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState(['A11', 'A21', 'A31', 'A41'])
 
-  const lazyLoadDemo3 = (node: any, resolve: (children: any) => void) => {
-    setTimeout(() => {
-      if (node.root) {
-        resolve([
-          { value: 'A0', text: 'A0' },
-          { value: 'B0', text: 'B0' },
-          { value: 'C0', text: 'C0' },
-        ])
-      } else {
-        const { value, level } = node
-        const text = value.substring(0, 1)
+  const loadCascaderItemData = (
+    node: CascaderOption,
+    level: number
+  ): Promise<CascaderOption[]> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const { value } = node
+        const text = value?.toString().substring(0, 1)
         const value1 = `${text}${level + 1}1`
         const value2 = `${text}${level + 1}2`
-        const value3 = `${text}${level + 1}3`
         resolve([
-          { value: value1, text: value1, leaf: level >= 6 },
-          { value: value2, text: value2, leaf: level >= 6 },
-          { value: value3, text: value3, leaf: level >= 6 },
+          { value: value1, text: value1, leaf: level >= 2 },
+          { value: value2, text: value2, leaf: level >= 2 },
         ])
-      }
-    }, 2000)
+      }, 500)
+    })
   }
-  const change3 = (value: any, path: any) => {
-    console.log('onChange', value, path)
-    setValue3(value)
+  const onChange = (value: any, path: any) => {
+    setValue(value)
   }
+
   return (
     <>
       <Cell
         title="选择地址"
-        description={value3.length ? value3 : '请选择地址'}
+        description={value.length ? value.join(',') : '请选择地址'}
         onClick={() => {
-          setIsVisibleDemo3(true)
+          setVisible(true)
         }}
       />
       <Cascader
-        visible={isVisibleDemo3}
-        defaultValue={value3}
+        visible={visible}
+        defaultValue={value}
         title="选择地址"
         closeable
         onClose={() => {
-          setIsVisibleDemo3(false)
+          setVisible(false)
         }}
-        onChange={change3}
+        onChange={onChange}
         lazy
-        onLoad={lazyLoadDemo3}
+        onLoad={loadCascaderItemData}
       />
     </>
   )

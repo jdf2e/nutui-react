@@ -1,23 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { DataContext } from './context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type RowEventType = 'row' | 'col'
-
-export interface RowProps extends BasicComponent {
-  type: string
-  justify: string
-  align: string
-  wrap: string
-  gutter: string | number
-  onClick: (
-    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
-    type: RowEventType
-  ) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroRowProps } from '@/types'
 
 const classPrefix = 'nut-row'
 
@@ -28,9 +14,9 @@ const defaultProps = {
   align: 'flex-start',
   wrap: 'nowrap',
   gutter: '0',
-} as RowProps
+} as TaroRowProps
 export const Row: FunctionComponent<
-  Partial<RowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<TaroRowProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     className,

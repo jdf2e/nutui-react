@@ -141,3 +141,5 @@ import { Rate } from '@nutui/nutui-react'
 | \--nutui-rate-icon-size | icon 尺寸 | `12px` |
 | \--nutui-rate-font-color | 评分字体颜色 | `$color-primary-icon` |
 | \--nutui-rate-font-size | 评分字体大小 | `12px` |
+
+<Contribution name="Rate" />

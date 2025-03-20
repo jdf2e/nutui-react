@@ -8,10 +8,10 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
-import { getRect } from '@/utils/use-client-rect'
-import useRefs from '@/utils/use-refs'
-import { RateProps } from './types'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { getRect } from '@/hooks/use-client-rect'
+import useRefs from '@/hooks/use-refs'
+import { WebRateProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -25,8 +25,8 @@ const defaultProps = {
   readOnly: false,
   allowHalf: false,
   touchable: false,
-} as RateProps
-export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
+} as WebRateProps
+export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
   const {
     className,
     style,

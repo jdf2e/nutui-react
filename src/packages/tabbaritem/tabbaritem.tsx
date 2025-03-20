@@ -1,18 +1,9 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index'
 import TabbarContext from '@/packages/tabbar/context'
-
-export interface TabbarItemProps extends BasicComponent {
-  title: ReactNode
-  icon: ReactNode
-  value: ReactNode
-  dot: boolean
-  max: number
-  top: string
-  right: string
-}
+import { WebTabbarItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -23,9 +14,9 @@ const defaultProps = {
   max: 99,
   top: '0',
   right: '0',
-} as TabbarItemProps
+} as WebTabbarItemProps
 
-export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
+export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   props
 ) => {
   const ctx = useContext(TabbarContext)
@@ -69,6 +60,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     color: ctx?.activeColor,
   }
 
+  const renderTitleText = () => {
+    return title && <div className={titleClass}>{title}</div>
+  }
+
   return (
     <div
       className={tabbarItemClass}
@@ -84,12 +79,10 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
           <Badge {...badgeProps}>
             <div className={boxPrefix}>{icon}</div>
           </Badge>
-          <div className={titleClass}>{title}</div>
+          {renderTitleText()}
         </>
       ) : (
-        <Badge {...badgeProps}>
-          <div className={titleClass}>{title}</div>
-        </Badge>
+        <Badge {...badgeProps}>{renderTitleText()}</Badge>
       )}
     </div>
   )

@@ -1,45 +1,34 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, DialogConfirmProps, DialogReturnProps } from './config'
+import { destroyList, DialogConfirmProps, DialogReturnProps } from './types'
 import { render as reactRender, unmount } from '@/utils/render'
 
-function ConfirmDialog(props: DialogConfirmProps) {
+type DialogConfirmNativeProps = Partial<DialogConfirmProps>
+function ConfirmDialog(props: DialogConfirmNativeProps) {
   return <Dialog {...props}>{props.content}</Dialog>
 }
 
 // 如果是消息提示型弹出框，那么只有确认按钮
 export const normalizeConfig = (
-  config: DialogConfirmProps
-): DialogConfirmProps => {
-  if (config.isNotice) {
-    let { icon } = config
-    if (!icon && icon !== null) {
-      switch (config.noticeType) {
-        case 'alert':
-          icon = ''
-          break
-        default:
-          break
-      }
-    }
-    config.hideCancelButton = true
-  }
+  config: DialogConfirmNativeProps
+): DialogConfirmNativeProps => {
+  config.hideCancelButton = config.isNotice
   return config
 }
 
 const confirm = (
-  config: DialogConfirmProps,
-  renderFunc?: (props: DialogConfirmProps) => void
+  config: DialogConfirmNativeProps,
+  renderFunc?: (props: DialogConfirmNativeProps) => void
 ): DialogReturnProps => {
   const div = document.createElement('div')
   document.body.appendChild(div)
 
-  let dialogConfig: DialogConfirmProps = {
+  let dialogConfig: DialogConfirmNativeProps = {
     ...config,
     visible: false,
   }
 
-  const render = (props: DialogConfirmProps, callback?: () => any) => {
+  const render = (props: DialogConfirmNativeProps, callback?: () => any) => {
     reactRender(<ConfirmDialog {...props} onCancel={() => onCancel()} />, div)
     callback && callback()
   }
@@ -97,13 +86,11 @@ const confirm = (
     })
   }
 
-  const update = (newConfig: DialogConfirmProps) => {
+  const update = (newConfig: DialogConfirmNativeProps) => {
     dialogConfig = {
       ...dialogConfig,
-      title: config.title, // 避免 newConfig 未传递 title 时，icon 出现多个的问题
       ...newConfig,
     }
-
     dialogConfig = normalizeConfig(dialogConfig)
     renderFunction(dialogConfig)
   }

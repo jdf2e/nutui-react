@@ -1,5 +1,7 @@
 import { NoticeBar } from './noticebar'
 
-export type { NoticeBarAlign } from './types'
-export type { NoticeBarProps } from './noticebar'
+export type {
+  WebNoticeBarProps as NoticeBarProps,
+  NoticeBarAlign,
+} from '@/types'
 export default NoticeBar

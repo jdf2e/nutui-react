@@ -1,40 +1,10 @@
-import React, { useRef, ReactNode } from 'react'
+import React, { useRef } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import type { CalendarDay, CalendarType, CalendarRef } from './types'
+import type { CalendarDay, CalendarRef, TaroCalendarProps } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
-
-export interface CalendarProps {
-  type?: CalendarType
-  autoBackfill?: boolean
-  popup?: boolean
-  visible?: boolean
-  title?: string
-  defaultValue?: string | string[]
-  startDate?: string
-  endDate?: string
-  showToday?: boolean
-  startText?: ReactNode
-  endText?: ReactNode
-  confirmText?: ReactNode
-  showTitle?: boolean
-  showSubTitle?: boolean
-  scrollAnimation?: boolean
-  firstDayOfWeek: number
-  closeIcon?: ReactNode
-  disableDate: (date: CalendarDay) => boolean
-  renderHeaderButtons?: () => string | JSX.Element
-  renderBottomButton?: () => string | JSX.Element
-  renderDay?: (date: CalendarDay) => string | JSX.Element
-  renderDayTop?: (date: CalendarDay) => string | JSX.Element
-  renderDayBottom?: (date: CalendarDay) => string | JSX.Element
-  onClose?: () => void
-  onConfirm?: (param: string) => void
-  onDayClick?: (data: string) => void
-  onPageChange?: (param: string) => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -63,11 +33,11 @@ const defaultProps = {
   onConfirm: (param: string) => {},
   onDayClick: (data: string) => {},
   onPageChange: (param: string) => {},
-} as CalendarProps
+} as TaroCalendarProps
 
 export const Calendar = React.forwardRef<
   CalendarRef,
-  Partial<CalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
+  Partial<TaroCalendarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, ''>
 >((props, ref) => {
   const { locale } = useConfig()
   const {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View, CustomWrapper } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -70,59 +70,37 @@ const CalendarDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.single}</View>
-        <CustomWrapper>
-          <Demo1 />
-        </CustomWrapper>
+        <Demo1 />
 
         <View className="h2">{translated.multiple}</View>
-        <CustomWrapper>
-          <Demo2 />
-        </CustomWrapper>
+        <Demo2 />
 
         <View className="h2">{translated.range}</View>
-        <CustomWrapper>
-          <Demo3 />
-        </CustomWrapper>
+        <Demo3 />
 
         <View className="h2">{translated.week}</View>
-        <CustomWrapper>
-          <Demo4 />
-        </CustomWrapper>
+        <Demo4 />
 
         <View className="h2">{translated.control}</View>
-        <CustomWrapper>
-          <Demo5 />
-        </CustomWrapper>
+        <Demo5 />
 
         <View className="h2">{translated.renderDay}</View>
-        <CustomWrapper>
-          <Demo6 />
-        </CustomWrapper>
+        <Demo6 />
 
         <View className="h2">{translated.firstDay}</View>
-        <CustomWrapper>
-          <Demo7 />
-        </CustomWrapper>
+        <Demo7 />
 
         <View className="h2">{translated.customRange}</View>
-        <CustomWrapper>
-          <Demo8 />
-        </CustomWrapper>
+        <Demo8 />
 
         <View className="h2">{translated.disable}</View>
-        <CustomWrapper>
-          <Demo9 />
-        </CustomWrapper>
+        <Demo9 />
 
         <View className="h2">{translated.popup}</View>
-        <CustomWrapper>
-          <Demo10 />
-        </CustomWrapper>
+        <Demo10 />
 
         <View className="h2">{translated.ref}</View>
-        <CustomWrapper>
-          <Demo11 />
-        </CustomWrapper>
+        <Demo11 />
       </ScrollView>
     </>
   )

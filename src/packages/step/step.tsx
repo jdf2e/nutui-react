@@ -1,14 +1,8 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/steps/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface StepProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  value: number
-  icon: ReactNode
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebStepProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -16,9 +10,9 @@ const defaultProps = {
   description: '',
   value: 0,
   icon: null,
-} as StepProps
+} as WebStepProps
 export const Step: FunctionComponent<
-  Partial<StepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<WebStepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const { children, title, description, value, icon, className, ...restProps } =
     {

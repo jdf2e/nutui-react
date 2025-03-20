@@ -24,10 +24,12 @@ NutUI-React 可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/W
 /* 添加这段样式后，Primary Button 会变成绿色 */
 :root {
   --nutui-color-primary: green;
+  --nutui-color-primary-stop1: green;
+  --nutui-color-primary-stop2: green;
 }
 ```
 
-> @nutui/nutui-react 中带了两个主题文件 默认主题：@nutui/nutui-react/dist/styles/theme-default.scss; 暗黑主题：@nutui/nutui-react/dist/styles/theme-dark.scss; 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
+> @nutui/nutui-react 中带了两个主题文件 默认主题：@nutui/nutui-react/dist/styles/themes/default.css; 暗黑主题：@nutui/nutui-react/dist/styles/themes/dark.css; 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
 
 #### 通过 ConfigProvider 覆盖
 
@@ -121,3 +123,5 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 | --- | --- | --- | --- |
 | locale | 设置多语言包 | `BaseLang` | `zhCN` |
 | theme | 设置主题 | `Record<string, string>` | `-` |
+
+<Contribution name="ConfigProvider" />

@@ -1,27 +1,22 @@
-import React, { useState, FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
-import { AnimateType, AnimateAction } from './types'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ITouchEvent, View } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroAnimateProps } from '@/types'
 
-export interface AnimateProps extends BasicComponent {
-  type: AnimateType
-  action: AnimateAction
-  loop: boolean
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   type: 'shake',
   action: 'initial',
   loop: false,
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
-} as AnimateProps
+  onClick: (event) => {},
+} as TaroAnimateProps
 
-const classPrefix = `nut-animate`
-export const Animate: FunctionComponent<
-  Partial<AnimateProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+const classPrefix = 'nut-animate'
+
+export const Animate: FunctionComponent<Partial<TaroAnimateProps>> = (
+  props
+) => {
   const { className, type, action, loop, onClick, children, style } = {
     ...defaultProps,
     ...props,
@@ -29,29 +24,27 @@ export const Animate: FunctionComponent<
 
   const [clicked, setClicked] = useState(false)
 
-  const classes = classNames({
-    'nut-ani-container': true,
-    [`${classPrefix}-${type}`]: action === 'initial' || clicked ? type : false,
-    loop,
-  })
-  const cls = classNames(classes, className)
+  const classes = classNames(
+    {
+      'nut-ani-container': true,
+      [`${classPrefix}-${type}`]: action === 'initial' || clicked,
+      loop,
+    },
+    className
+  )
 
-  const handleClick = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
+  const handleClick = (event: ITouchEvent) => {
     setClicked(true)
     // 如果不是无限循环，清除类名
     if (!loop) {
-      setTimeout(() => {
-        setClicked(false)
-      }, 1000)
+      setTimeout(() => setClicked(false), 1000)
     }
-    onClick && onClick(event)
+    onClick(event)
   }
 
   return (
     <View className="nut-animate">
-      <View className={cls} onClick={handleClick} style={style}>
+      <View className={classes} onClick={handleClick} style={style}>
         {children}
       </View>
     </View>

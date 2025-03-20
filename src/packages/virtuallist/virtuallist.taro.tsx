@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -8,34 +7,23 @@ import React, {
   useState,
 } from 'react'
 import { ScrollView, View } from '@tarojs/components'
-import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Data, PositionType } from './types'
+import { getWindowInfo } from '@/utils/get-system-info'
+import { PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface VirtualListProps extends BasicComponent {
-  list: Array<Data>
-  containerHeight: number
-  itemRender: (data: any, dataIndex: number, index: number) => ReactNode
-  itemHeight: number
-  margin: number
-  itemEqual: boolean
-  overscan: number
-  onScroll: () => void
-  key: string
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroVirtualListProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-  list: [] as Array<Data>,
+  list: [] as Array<any>,
   itemHeight: 66,
   margin: 10,
   itemEqual: true,
   overscan: 2,
-} as VirtualListProps
+} as TaroVirtualListProps
 
-export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+export const VirtualList: FunctionComponent<Partial<TaroVirtualListProps>> = (
   props
 ) => {
   const {
@@ -56,7 +44,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const clientHeight = useMemo(
-    () => getSystemInfoSync().windowHeight - 5 || 667,
+    () => getWindowInfo().windowHeight - 5 || 667,
     []
   )
 

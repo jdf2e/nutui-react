@@ -5,5 +5,6 @@ export type {
   CalendarCardMonth,
   CalendarCardValue,
   CalendarCardRef,
-} from './types'
+  TaroCalendarCardProps as CalendarCardProp,
+} from '@/types'
 export default CalendarCard

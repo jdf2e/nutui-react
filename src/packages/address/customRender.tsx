@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react'
-import Cascader, {
-  CascaderProps,
+import {
+  WebCascaderProps,
   CascaderOption,
   CascaderValue,
   CascaderOptionKey,
-} from '@/packages/cascader/index'
+} from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
+import Cascader from '@/packages/cascader'
 
-export interface AddressProps extends CascaderProps {
+export interface AddressProps extends WebCascaderProps {
   visible: boolean // popup visible
   type: string
   options: CascaderOption[]
-  value?: CascaderValue
-  defaultValue?: CascaderValue
+  value: CascaderValue
+  defaultValue: CascaderValue
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   height: string | number

@@ -52,3 +52,5 @@ import { Animate } from '@nutui/nutui-react'
 | 9 | jump | jump，It is recommended that loop be true |
 | 10 | twinkle | twinkle，It is recommended that loop be true |
 | 11 | flicker | Polish button，It is recommended that loop be true |
+
+<Contribution name="Animate" />

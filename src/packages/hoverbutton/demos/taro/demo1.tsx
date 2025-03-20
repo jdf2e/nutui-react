@@ -1,6 +1,3 @@
-/**
- * 基础用法
- */
 import React from 'react'
 import { HoverButton } from '@nutui/nutui-react-taro'
 import { ITouchEvent } from '@tarojs/components'

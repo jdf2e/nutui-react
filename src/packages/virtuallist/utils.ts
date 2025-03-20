@@ -1,4 +1,4 @@
-import { PositionType, Data } from './types'
+import { PositionType } from './types'
 
 // 缓存列表初始化信息
 const initPositinoCache = (reaItemSize: number, length = 0): PositionType[] => {
@@ -76,7 +76,7 @@ const getEndIndex = ({
   overscan,
   sizeKey = 'width',
 }: {
-  list: Array<Data>
+  list: Array<any>
   startIndex: number
   visibleCount: number
   itemEqual?: boolean

@@ -137,3 +137,5 @@ Icon 和字符型可以自定义图标颜色及背景色
 | \--nutui-avatar-small-height | 小尺寸头像的高度 | `32px` |
 | \--nutui-avatar-normal-width | 正常尺寸头像的宽度 | `40px` |
 | \--nutui-avatar-normal-height | 正常尺寸头像的高度 | `40px` |
+
+<Contribution name="Avatar" />

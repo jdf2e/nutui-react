@@ -4,46 +4,20 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
-  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
-import {
-  OverlayProps,
-  defaultOverlayProps,
-} from '@/packages/overlay/overlay.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { ComponentDefaults } from '@/utils/typings'
-import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
+import { TaroPopupProps } from '@/types'
+import { harmony } from '@/utils/platform-taro'
 
-type Teleport = HTMLElement | (() => HTMLElement) | null
-
-export interface PopupProps extends OverlayProps {
-  position: string
-  transition: string
-  overlayStyle: React.CSSProperties
-  overlayClassName: string
-  closeable: boolean
-  closeIconPosition: string
-  closeIcon: ReactNode
-  left: ReactNode
-  title: ReactNode
-  description: ReactNode
-  destroyOnClose: boolean
-  portal: Teleport
-  overlay: boolean
-  round: boolean
-  onOpen: () => void
-  onClose: () => void
-  onOverlayClick: (e: ITouchEvent) => boolean | void
-  onCloseIconClick: (e: ITouchEvent) => boolean | void
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: TaroPopupProps = {
+  ...defaultOverlayProps,
   position: 'center',
   transition: '',
   overlayStyle: {},
@@ -57,16 +31,15 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onOverlayClick: (e: ITouchEvent) => true,
-  onCloseIconClick: (e: ITouchEvent) => true,
-  ...defaultOverlayProps,
-} as PopupProps
+  onOverlayClick: () => true,
+  onCloseIconClick: () => true,
+}
 
 // 默认1000，参看variables
 const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> &
+  Partial<TaroPopupProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const {
@@ -100,6 +73,7 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
+
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -110,9 +84,9 @@ export const Popup: FunctionComponent<
 
   const overlayStyles = {
     ...overlayStyle,
-    '--nutui-overlay-zIndex': index,
   }
-  const popStyles = { ...style, zIndex: index }
+  const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
+  const popStyles = { zIndex: contentZIndex, ...style }
   const popClassName = classNames(
     classPrefix,
     {
@@ -207,6 +181,23 @@ export const Popup: FunctionComponent<
       return renderCloseIcon()
     }
   }
+
+  const renderContent = () => {
+    return (
+      <>
+        <View
+          ref={refObject}
+          style={popStyles}
+          className={popClassName}
+          onClick={onClick}
+          catchMove={lockScroll}
+        >
+          {renderTitle()}
+          {showChildren ? children : null}
+        </View>
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -219,16 +210,7 @@ export const Popup: FunctionComponent<
         onEntered={afterShow}
         onExited={afterClose}
       >
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : null}
-        </View>
+        {renderContent()}
       </CSSTransition>
     )
   }
@@ -236,8 +218,9 @@ export const Popup: FunctionComponent<
   const renderNode = () => {
     return (
       <>
-        {overlay && (
+        {overlay ? (
           <Overlay
+            zIndex={index}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}
@@ -246,7 +229,7 @@ export const Popup: FunctionComponent<
             duration={duration}
             onClick={handleOverlayClick}
           />
-        )}
+        ) : null}
         {renderPop()}
       </>
     )
@@ -260,11 +243,11 @@ export const Popup: FunctionComponent<
     setTransitionName(transition || `${classPrefix}-slide-${position}`)
   }, [position, transition])
 
-  const resolveContainer = (getContainer: Teleport | undefined) =>
+  const resolveContainer = (getContainer: any) =>
     (typeof getContainer === 'function' ? getContainer() : getContainer) ||
     document.body
 
-  const renderToContainer = (getContainer: Teleport, node: ReactElement) => {
+  const renderToContainer = (getContainer: any, node: ReactElement) => {
     if (getContainer) {
       const container = resolveContainer(getContainer)
       return createPortal(node, container) as ReactPortal
@@ -272,7 +255,7 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  return <>{renderToContainer(portal as Teleport, renderNode())}</>
+  return <>{renderToContainer(portal as any, renderNode())}</>
 }
 
 Popup.displayName = 'NutPopup'

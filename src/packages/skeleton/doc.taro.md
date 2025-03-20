@@ -76,3 +76,5 @@ import { Skeleton } from '@nutui/nutui-react-taro'
 | \--nutui-skeleton-line-width | 线条宽度 | `100%` |
 | \--nutui-skeleton-line-height | 线条高度 | `15px` |
 | \--nutui-skeleton-line-border-radius | 线条边框圆角 | `0` |
+
+<Contribution name="Skeleton" />

@@ -30,7 +30,11 @@ const App = () => {
             position: 'relative',
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>禁用滑动</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            禁用滑动
+          </View>
         </View>
       </Swipe>
     </>

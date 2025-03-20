@@ -122,3 +122,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-price-symbol-small-size | small size symbol font size | `12px` |
 | \--nutui-price-integer-small-size | small Size integer part font size | `12px` |
 | \--nutui-price-decimal-small-size | small Size decimal part font size | `12px` |
+
+<Contribution name="Price" />

@@ -161,3 +161,5 @@ import { Radio } from '@nutui/nutui-react'
 | \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的右侧边距 | `20px` |
 | \--nutui-radiogroup-radio-margin-bottom | Group模式下每个 radio 的底部边距 | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |
+
+<Contribution name="Radio" />

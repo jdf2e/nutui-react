@@ -102,3 +102,5 @@ import { Switch } from '@nutui/nutui-react'
 | \--nutui-switch-label-text-color | 开关内部文字颜色 | `$color-primary-text` |
 | \--nutui-switch-label-font-size | 开关内部文字大小 | `$font-size-s` |
 | \--nutui-switch-inactive-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |
+
+<Contribution name="Switch" />

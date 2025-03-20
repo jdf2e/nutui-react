@@ -80,3 +80,5 @@ import { SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react'
 | \--nutui-sidenavbar-sub-title-color | 子標題字體顏色 | `$color-title` |
 | \--nutui-sidenavbar-sub-list-background | 選項列表背景色 | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | 選項列表字體顏色 | `$color-title` |
+
+<Contribution name="SideNavBar" />

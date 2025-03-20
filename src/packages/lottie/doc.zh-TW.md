@@ -62,3 +62,5 @@ import { Lottie } from '@nutui/nutui-react-taro'
 | playSegments | 播放區間訊框 | `(segments: AnimationSegment \| AnimationSegment[], forceFlag?: boolean) => void` |
 | destroy | 銷毀 | `() => void` |
 | getDuration | inFrames 若為真，則以幀為單位傳回持續時間；inFrames 若為假，則以秒為單位傳回。 | `(inFrames?: boolean) => number` |
+
+<Contribution name="Lottie" />

@@ -148,3 +148,5 @@ import { Button } from '@nutui/nutui-react'
 | \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-xs` |
 | \--nutui-button-mini-border-radius | size 為 mini 的按鈕的圓角 | `6px` |
 | \--nutui-button-text-icon-margin | 有 icon按鈕的文字的邊距 | `4px` |
+
+<Contribution name="Button" />

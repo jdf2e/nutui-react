@@ -1,41 +1,30 @@
-import React, { FunctionComponent, MouseEvent } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ArrowLeft } from '@nutui/icons-react'
-import Overlay from '@/packages/overlay'
+import Overlay from '@/packages/overlay/index'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import {
-  FixedNavType,
-  FixedNavItem,
-  FixedNavPosition,
-} from '@/packages/fixednav/types'
+import { WebFixedNavProps } from '@/types'
+import { defaultOverlayProps } from '@/packages/overlay/overlay'
+import Badge from '@/packages/badge/index'
 
-export interface FixedNavProps extends BasicComponent {
-  visible: boolean
-  overlay: boolean
-  list: Array<FixedNavItem>
-  activeText: string
-  inactiveText: string
-  position: FixedNavPosition
-  type: FixedNavType
-  onChange: (item: any) => void
-  onSelect: (item: any, event: MouseEvent) => void
-  content: React.ReactNode
-}
-
-const defaultProps = {
-  ...ComponentDefaults,
+const defaultProps: WebFixedNavProps = {
+  ...defaultOverlayProps,
   activeText: '',
   inactiveText: '',
   type: 'right',
+  list: [],
+  overlay: true,
   position: {
     top: 'auto',
     bottom: 'auto',
   },
-} as FixedNavProps
+  zIndex: 200,
+  onChange: (value: boolean) => {},
+  onSelect: () => {},
+}
 
 export const FixedNav: FunctionComponent<
-  Partial<FixedNavProps> &
+  Partial<WebFixedNavProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onSelect' | 'content'
@@ -43,42 +32,48 @@ export const FixedNav: FunctionComponent<
 > = (props) => {
   const { locale } = useConfig()
   const {
-    className,
     overlay,
     visible,
     list,
     activeText,
     inactiveText,
     position,
-    onChange,
-    onSelect,
     type,
     children,
     style,
+    className,
     content,
+    zIndex,
+    onChange,
+    onSelect,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-fixednav'
-
   const classes = classNames(
     classPrefix,
     {
       active: visible,
     },
-    type,
+    `${classPrefix}-${type}`,
     className
   )
 
-  const handleClick = (item: any, event: MouseEvent): void => {
-    onSelect(item, event)
-  }
-
-  const onUpdateValue = (value = !visible): void => {
-    onChange(value)
+  const renderListItem = (item: any, index: number) => {
+    return (
+      <div
+        className={`${classPrefix}-list-item`}
+        onClick={(event) => onSelect(item, event)}
+        key={item.id || index}
+      >
+        {React.isValidElement(item.icon) ? (
+          item.icon
+        ) : (
+          <img src={item.icon} alt="" className={`${classPrefix}-list-image`} />
+        )}
+        <div className={`${classPrefix}-list-text`}>{item.text}</div>
+      </div>
+    )
   }
 
   return (
@@ -93,8 +88,8 @@ export const FixedNav: FunctionComponent<
       {overlay && (
         <Overlay
           visible={visible}
-          style={{ '--nutui-overlay-zIndex': 200 }}
-          onClick={() => onUpdateValue(false)}
+          zIndex={zIndex}
+          onClick={() => onChange(false)}
         />
       )}
       <div className="list">
@@ -102,26 +97,22 @@ export const FixedNav: FunctionComponent<
           <div className={`${classPrefix}-list`}>
             {list.map((item: any, index) => {
               return (
-                <div
-                  className={`${classPrefix}-list-item`}
-                  onClick={(event) => handleClick(item, event)}
-                  key={item.id || index}
-                >
-                  {React.isValidElement(item.icon) ? (
-                    item.icon
+                <>
+                  {item.num ? (
+                    <Badge value={item.num} top={8} right={6}>
+                      {renderListItem(item, index)}
+                    </Badge>
                   ) : (
-                    <img src={item.icon} alt="" />
+                    <>{renderListItem(item, index)}</>
                   )}
-                  <div className={`${classPrefix}-list-text`}>{item.text}</div>
-                  {item.num && <div className="b">{item.num}</div>}
-                </div>
+                </>
               )
             })}
           </div>
         )}
       </div>
 
-      <div className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
+      <div className={`${classPrefix}-btn`} onClick={() => onChange(!visible)}>
         {content || (
           <>
             <ArrowLeft color="#fff" />

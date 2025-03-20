@@ -106,3 +106,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-textarea-padding | padding | `10px 25px` |
 | \--nutui-textarea-text-color | text color | `$color-title` |
 | \--nutui-textarea-text-curror-color | caret color | `$color-title` |
+
+<Contribution name="TextArea" />

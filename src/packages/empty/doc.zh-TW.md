@@ -89,3 +89,5 @@ import { Empty } from '@nutui/nutui-react'
 | \--nutui-empty-title-line-height | Empty組件圖片標題行高 | `$font-size-l` |
 | \--nutui-empty-description-line-height | Empty組件圖片描述行高 | `1` |
 | \--nutui-empty-background-color | Empty組件背景色 | `#fff` |
+
+<Contribution name="Empty" />

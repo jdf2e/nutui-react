@@ -19,7 +19,7 @@ const Demo1 = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        style={{ '--nutui-overlay-zIndex': 2020 }}
+        zIndex={3000}
         afterShow={() => {
           console.log('afterShow')
         }}

@@ -121,3 +121,5 @@ import { Price } from '@nutui/nutui-react-taro'
 | \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `12px` |
 | \--nutui-price-integer-small-size | small 尺寸整数部分字体大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `12px` |
+
+<Contribution name="Price" />

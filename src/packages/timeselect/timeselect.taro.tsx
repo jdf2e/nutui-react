@@ -1,41 +1,12 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import TimeDetail from '@/packages/timedetail/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider/index.taro'
+import { TaroTimeSelectProps, TimeSelectDateType, TimeType } from '@/types'
 
-export interface TimeType {
-  value?: string
-  text?: string
-  [prop: string]: any
-}
-
-export interface DateType {
-  value?: string
-  text?: string
-  children?: TimeType[]
-  [prop: string]: any
-}
-
-export interface OptionKeyType {
-  valueKey: string
-  textKey: string
-  childrenKey: string
-}
-
-export interface TimeSelectProps extends BasicComponent {
-  visible: boolean
-  multiple?: boolean
-  title?: ReactNode
-  defaultValue: DateType[]
-  options: DateType[]
-  optionKey: OptionKeyType
-  onSelect?: (value: DateType[]) => void
-  onDateChange?: (date: DateType, value: DateType[]) => void
-  onTimeChange?: (time: TimeType, value: DateType[]) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -47,8 +18,8 @@ const defaultProps = {
     textKey: 'text',
     childrenKey: 'children',
   },
-} as TimeSelectProps
-export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
+} as TaroTimeSelectProps
+export const TimeSelect: FunctionComponent<Partial<TaroTimeSelectProps>> = (
   props
 ) => {
   const { locale } = useConfig()
@@ -80,7 +51,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     }
     return ''
   })
-  const [activeTime, setActiveTime] = useState<DateType[]>(
+  const [activeTime, setActiveTime] = useState<TimeSelectDateType[]>(
     () => defaultValue || []
   )
   const classPrefix = 'nut-timeselect'
@@ -89,7 +60,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   }
   const handleSelectTime = (selectTime: TimeType) => {
     let newActiveTime = [...activeTime]
-    const date = newActiveTime.find((item: DateType) => {
+    const date = newActiveTime.find((item: TimeSelectDateType) => {
       return item[optionKey.valueKey] === activeDate
     })
     if (date) {
@@ -127,13 +98,13 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
         },
       ]
     }
-    newActiveTime = newActiveTime.filter((item: DateType) => {
+    newActiveTime = newActiveTime.filter((item: TimeSelectDateType) => {
       return item[optionKey.childrenKey]?.length > 0
     })
     setActiveTime(newActiveTime)
     onTimeChange && onTimeChange(selectTime, newActiveTime)
   }
-  const handleChange = (date: DateType) => {
+  const handleChange = (date: TimeSelectDateType) => {
     setActiveDate(date[optionKey.valueKey])
     onDateChange && onDateChange(date, activeTime)
   }
@@ -153,7 +124,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       <View className={classNames(classPrefix, className)}>
         <View className={`${classPrefix}-content`}>
           <View className={`${classPrefix}-content-left`}>
-            {options.map((item: DateType) => (
+            {options.map((item: TimeSelectDateType) => (
               <View
                 key={item[optionKey.valueKey]}
                 className={classNames('nut-timepannel', {

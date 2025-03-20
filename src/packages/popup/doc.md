@@ -92,7 +92,7 @@ import { Popup } from '@nutui/nutui-react'
 | description | 子标题/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否显示圆角 | `boolean` | `false` |
-| portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
 | onClick | 点击弹框时触发 | `event: MouseEvent` | `-` |
 | onCloseIconClick | 点击关闭图标时触发 | `event: MouseEvent` | `-` |
 | onOpen | 打开弹框时触发 | `-` | `-` |
@@ -117,3 +117,5 @@ import { Popup } from '@nutui/nutui-react'
 | \--nutui-popup-title-height | 标题栏的高度 | `50px` |
 | \--nutui-popup-title-border-bottom | 标题栏底部边框 | `0` |
 | \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |
+
+<Contribution name="Popup" />

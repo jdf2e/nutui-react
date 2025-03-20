@@ -10,33 +10,14 @@ import React, {
 import classNames from 'classnames'
 import { createPortal } from 'react-dom'
 import { ArrowRadius } from '@nutui/icons-react'
-import Popup from '@/packages/popup'
-import { PopupProps } from '@/packages/popup/popup'
-import { getRect } from '@/utils/use-client-rect'
+import Popup from '@/packages/popup/index'
+import { getRect } from '@/hooks/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import useClickAway from '@/utils/use-click-away'
+import useClickAway from '@/hooks/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
-import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 import { useRtl } from '@/packages/configprovider'
-
-export interface PopoverProps extends PopupProps {
-  list: PopoverList[]
-  theme: PopoverTheme | string
-  location: PopoverLocation | string
-  visible: boolean
-  offset: string[] | number[]
-  arrowOffset: number
-  targetId: string
-  showArrow: boolean
-  closeOnOutsideClick: boolean
-  closeOnActionClick: boolean
-  children?: React.ReactNode
-  onClick: () => void
-  onOpen: () => void
-  onClose: () => void
-  onSelect: (item: PopoverList, index: number) => void
-}
+import { WebPopoverProps, PopoverList } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -58,7 +39,8 @@ const defaultProps = {
 
 const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
-  Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
+  Partial<WebPopoverProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
   const rtl = useRtl()
   const {
@@ -300,7 +282,7 @@ export const Popover: FunctionComponent<
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
               overlay={overlay}
-              position="default"
+              position="none"
               lockScroll={false}
               {...rest}
             >

@@ -1,65 +1,33 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
   TouchEvent,
-  ReactNode,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
 import Taro from '@tarojs/taro'
 import { ITouchEvent, Video as TaroVideo, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
+
 import Popup from '@/packages/popup/index.taro'
 import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/hooks/use-props-value'
+import {
+  PreviewImageOption,
+  PreviewVideoOption,
+  TaroImagePreviewProps,
+} from '@/types'
 
 interface Store {
   scale: number
   moveable: boolean
   oriDistance: number
   originScale: number
-}
-
-export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
-
-export interface ImageOption {
-  src: string
-  index?: number
-}
-
-export interface VideoOption {
-  source: {
-    src: string
-    type: string
-  }
-  options: {
-    muted: boolean
-    controls: boolean
-  }
-  index?: number
-}
-
-export interface ImagePreviewProps extends BasicComponent {
-  images: Array<ImageOption>
-  videos: Array<VideoOption>
-  visible: boolean
-  autoPlay: boolean
-  value?: number
-  defaultValue: number
-  closeOnContentClick: boolean
-  pagination: boolean
-  indicator: boolean
-  indicatorColor: string
-  closeIcon: boolean | ReactNode
-  closeIconPosition: ImagePreviewCloseIconPosition
-  showMenuByLongpress: boolean
-  onChange: (value: number) => void
-  onClose: () => void
 }
 
 const defaultProps = {
@@ -78,8 +46,8 @@ const defaultProps = {
   showMenuByLongpress: false,
   onChange: () => {},
   onClose: () => {},
-} as ImagePreviewProps
-export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
+} as TaroImagePreviewProps
+export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
   props
 ) => {
   const {
@@ -274,16 +242,18 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
               <SwiperItem key={index} className="nut-imagepreview-swiper-item">
                 {item.type === 'video' ? (
                   <TaroVideo
-                    src={(item.data as VideoOption).source.src}
+                    src={(item.data as PreviewVideoOption).source.src}
                     onClick={closeOnImg}
-                    controls={(item.data as VideoOption).options.controls}
+                    controls={
+                      (item.data as PreviewVideoOption).options.controls
+                    }
                     autoplay={false}
                     loop={false}
-                    muted={(item.data as VideoOption).options.muted}
+                    muted={(item.data as PreviewVideoOption).options.muted}
                   />
                 ) : (
                   <Image
-                    src={(item.data as ImageOption).src}
+                    src={(item.data as PreviewImageOption).src}
                     mode="widthFix"
                     onClick={closeOnImg}
                     style={{ width: '100%' }}

@@ -86,3 +86,5 @@ import { ImagePreview } from '@nutui/nutui-react'
 | closeIconPosition | 關閉按鈕位置 | `top-right` \| `top-left` \| `bottom` | `top-right` |
 | onChange | 切換時觸發 | `(value:number) => void` | `-` |
 | onClose | 點擊遮罩關閉圖片預覽時觸發 | `() => void` | `-` |
+
+<Contribution name="ImagePreview" />

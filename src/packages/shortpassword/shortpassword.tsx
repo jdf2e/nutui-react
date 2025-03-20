@@ -1,38 +1,16 @@
 import React, {
   ForwardRefRenderFunction,
-  ReactNode,
   useEffect,
   useImperativeHandle,
   useMemo,
 } from 'react'
 import { Tips } from '@nutui/icons-react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
+import Popup from '@/packages/popup/index'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
-import { PopupProps } from '@/packages/popup/index'
-import { usePropsValue } from '@/utils/use-props-value'
-import { ShortPasswordActions } from '@/packages/shortpassword/types'
-
-export interface ShortPasswordProps extends PopupProps {
-  value: string
-  visible: boolean
-  plain: boolean
-  title: ReactNode
-  description: ReactNode
-  tips: ReactNode
-  hideFooter: boolean
-  length: number
-  error: ReactNode
-  autoFocus: boolean
-  onFocus: () => void
-  onChange: (value: string) => void
-  onConfirm: (value: string) => void
-  onCancel: () => void
-  onClose: () => void
-  onTips: () => void
-  onComplete: (value: string) => void
-}
+import { usePropsValue } from '@/hooks/use-props-value'
+import { WebShortPasswordProps, ShortPasswordRef } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -42,10 +20,10 @@ const defaultProps = {
   hideFooter: true,
   length: 6, // 1~6
   autoFocus: false,
-} as ShortPasswordProps
+} as WebShortPasswordProps
 export const InternalShortPassword: ForwardRefRenderFunction<
   unknown,
-  Partial<ShortPasswordProps>
+  Partial<WebShortPasswordProps>
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
@@ -62,6 +40,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     className,
     closeable,
     autoFocus,
+    round,
     onFocus,
     onChange,
     onConfirm,
@@ -93,7 +72,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     onClose?.()
     setVisible(false)
   }
-  const actions: ShortPasswordActions = {
+  const actions: ShortPasswordRef = {
     open: () => {
       setVisible(true)
     },
@@ -122,15 +101,12 @@ export const InternalShortPassword: ForwardRefRenderFunction<
 
   return (
     <Popup
-      style={{
-        padding: '32px 24px 28px 24px',
-        borderRadius: '12px',
-        textAlign: 'center',
-      }}
+      className={`${classPrefix}-popup`}
       visible={visible}
       closeable
       onOverlayClick={handleClose}
       onCloseIconClick={handleClose}
+      round={round}
       {...rest}
     >
       <div className={classNames(classPrefix, className)} style={style}>
@@ -187,5 +163,5 @@ export const InternalShortPassword: ForwardRefRenderFunction<
 }
 export const ShortPassword = React.forwardRef<
   unknown,
-  Partial<ShortPasswordProps>
+  Partial<WebShortPasswordProps>
 >(InternalShortPassword)

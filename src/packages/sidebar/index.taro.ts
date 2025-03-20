@@ -1,5 +1,5 @@
 import { SideBar } from './sidebar.taro'
 
-export type { SideBarProps } from './types'
+export type { TaroSideBarProps as SideBarProps } from '@/types'
 
 export default SideBar

@@ -3,7 +3,7 @@ import { Loading, Cell } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   return (
-    <Cell>
+    <Cell align="center">
       <Loading>加载中</Loading>
     </Cell>
   )

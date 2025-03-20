@@ -22,7 +22,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -30,7 +30,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -67,7 +67,7 @@ import { Indicator } from '@nutui/nutui-react-taro'
 | current | 当前页 | `number` | `0` |
 | total | 总页数 | `number` | `2` |
 | direction | 方向，默认为水平方向 | `horizontal` \| `vertical` | `horizontal` |
-| color | 颜色 | `primary` \| `white` | `primary` |
+| color | 颜色 | `primary` \| `default` | `primary` |
 | type | 交互类型 | `anchor` \| `slide` | `anchor` |
 
 ## 主题定制
@@ -84,3 +84,5 @@ import { Indicator } from '@nutui/nutui-react-taro'
 | \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `6px` |
 | \--nutui-indicator-border-radius | 指示器焦点时的border值 | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

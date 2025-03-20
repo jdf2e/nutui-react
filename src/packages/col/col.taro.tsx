@@ -1,26 +1,16 @@
 import React, {
+  CSSProperties,
   FunctionComponent,
+  useContext,
   useEffect,
   useState,
-  CSSProperties,
-  useContext,
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 import { DataContext } from '@/packages/row/context'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type ColEventType = 'row' | 'col'
-
-export interface ColProps extends BasicComponent {
-  span: string | number
-  offset: string | number
-  gutter: string | number
-  isFirst: boolean
-  isLast: boolean
-  onClick: (e: any, type: ColEventType) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroColProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -29,9 +19,9 @@ const defaultProps = {
   gutter: '0',
   isFirst: false,
   isLast: false,
-} as ColProps
+} as TaroColProps
 
-export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
+export const Col: FunctionComponent<Partial<TaroColProps>> = (props) => {
   const { className, style, span, offset, children, isFirst, isLast, onClick } =
     {
       ...defaultProps,

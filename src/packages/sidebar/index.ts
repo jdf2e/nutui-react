@@ -1,4 +1,4 @@
 import { SideBar } from './sidebar'
 
-export type { SideBarProps } from './types'
+export type { WebSideBarProps as SideBarProps } from '@/types'
 export default SideBar

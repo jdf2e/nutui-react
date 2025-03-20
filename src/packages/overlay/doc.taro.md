@@ -86,3 +86,5 @@ import { Overlay } from '@nutui/nutui-react-taro'
 | \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$white` |
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$color-title` |
 | \--nutui-overlay-animation-duration | 遮罩层动画延时的时长 | `0.3s` |
+
+<Contribution name="Overlay" />

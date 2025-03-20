@@ -1,34 +1,11 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { ScrollView, ScrollViewProps, View } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { InfiniteLoadingType } from './types'
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroInfiniteLoadingProps } from '@/types'
 import pxTransform from '@/utils/px-transform'
-
-export interface InfiniteLoadingProps
-  extends BasicComponent,
-    Omit<ScrollViewProps, 'style' | 'type' | 'onScroll'> {
-  type: InfiniteLoadingType
-  hasMore: boolean
-  threshold: number
-  target: string
-  pullRefresh: boolean
-  pullingText: ReactNode
-  loadingText: ReactNode
-  loadMoreText: ReactNode
-  onRefresh: () => Promise<void>
-  onLoadMore: () => Promise<void>
-  onScroll: (param: number) => void
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -37,11 +14,11 @@ const defaultProps = {
   threshold: 40,
   target: '',
   pullRefresh: false,
-} as InfiniteLoadingProps
+} as TaroInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
 export const InfiniteLoading: FunctionComponent<
-  Partial<InfiniteLoadingProps> &
+  Partial<TaroInfiniteLoadingProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onScroll'>
 > = (props) => {
   const { locale } = useConfig()
@@ -166,6 +143,7 @@ export const InfiniteLoading: FunctionComponent<
       refreshDone()
     }
   }
+
   function getBottomTipsText() {
     if (isInfiniting) {
       return loadingText || locale.infiniteloading.loadText
@@ -175,6 +153,7 @@ export const InfiniteLoading: FunctionComponent<
     }
     return null
   }
+
   return (
     <ScrollView
       {...rest}

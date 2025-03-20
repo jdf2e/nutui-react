@@ -2,13 +2,8 @@ import React, { useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { isObject } from '@/utils'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useForceUpdate } from '@/utils/use-force-update'
-
-export interface Color {
-  [key: string]: string
-}
+import { useForceUpdate } from '@/hooks/use-force-update'
 
 export interface CircleProgressProps extends BasicComponent {
   percent: string | number

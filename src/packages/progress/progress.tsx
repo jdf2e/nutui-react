@@ -1,18 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider'
-
-export interface ProgressProps extends BasicComponent {
-  percent: number
-  background: string
-  color: string
-  strokeWidth: string
-  showText: boolean
-  animated: boolean
-  lazy: boolean
-  delay: number
-}
+import { WebProgressProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,10 +11,10 @@ const defaultProps = {
   animated: false,
   lazy: false,
   delay: 0,
-} as ProgressProps
+} as WebProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<ProgressProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {

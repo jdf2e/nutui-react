@@ -13,31 +13,21 @@ import {
   canvasToTempFilePath,
   CanvasContext,
 } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { Canvas, View } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroSignatureProps } from '@/types'
 
-export type SignatureType = 'jpg' | 'png'
-
-export interface SignatureProps extends BasicComponent {
-  canvasId: string
-  type: SignatureType
-  lineWidth: number
-  strokeStyle: string
-  unSupportTpl: string
-  onConfirm?: (dataurl: string, isSigned?: boolean) => void
-  onClear?: () => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#1A1A1A',
-} as SignatureProps
+} as TaroSignatureProps
 
 const InternalSignature: ForwardRefRenderFunction<
   unknown,
-  Partial<SignatureProps>
+  Partial<TaroSignatureProps>
 > = (props, ref) => {
   const {
     canvasId,
@@ -210,7 +200,7 @@ const InternalSignature: ForwardRefRenderFunction<
             onTouchEnd={endEventHandler}
           />
         ) : (
-          <canvas
+          <Canvas
             id={canvasId}
             ref={canvasRef}
             canvas-id={canvasId}
@@ -226,7 +216,7 @@ const InternalSignature: ForwardRefRenderFunction<
   )
 }
 
-export const Signature = React.forwardRef<unknown, Partial<SignatureProps>>(
+export const Signature = React.forwardRef<unknown, Partial<TaroSignatureProps>>(
   InternalSignature
 )
 Signature.displayName = 'NutSignature'

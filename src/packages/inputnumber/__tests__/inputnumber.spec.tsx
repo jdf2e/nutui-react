@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { InputNumber } from '../inputnumber'
@@ -9,7 +9,7 @@ test('should render modelValue', () => {
   expect(container.querySelector('input')?.value).toBe('12')
 })
 
-test('should add step 2 when trigger click plus button', () => {
+test('should add step 2 when trigger click plus button', async () => {
   const overlimit = vi.fn()
   const add = vi.fn()
   const change = vi.fn()
@@ -23,13 +23,16 @@ test('should add step 2 when trigger click plus button', () => {
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
-  fireEvent.click(iconPlus)
+  await act(async () => {
+    fireEvent.click(iconPlus)
+  })
+
   expect(overlimit).not.toBeCalled()
-  expect(add).toBeCalled()
+  expect(add).toHaveBeenCalled()
   expect(change.mock.calls[0][0]).toBe(3)
 })
 
-test('should minis step 2 when trigger click minis button', () => {
+test('should minis step 2 when trigger click minis button', async () => {
   const overlimit = vi.fn()
   const reduce = vi.fn()
   const change = vi.fn()
@@ -43,13 +46,15 @@ test('should minis step 2 when trigger click minis button', () => {
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
-  fireEvent.click(iconMinus)
+  await act(async () => {
+    fireEvent.click(iconMinus)
+  })
   expect(overlimit).not.toBeCalled()
   expect(reduce).toBeCalled()
   expect(change.mock.calls[0][0]).toBe(1)
 })
 
-test('should render max props', () => {
+test('should render max props', async () => {
   const overlimit = vi.fn()
   const add = vi.fn()
   const change = vi.fn()
@@ -64,13 +69,15 @@ test('should render max props', () => {
     />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
-  fireEvent.click(iconPlus)
+  await act(async () => {
+    fireEvent.click(iconPlus)
+  })
   expect(overlimit).toBeCalled()
   expect(add).toBeCalled()
   expect(change).not.toBeCalled()
 })
 
-test('should render min props', () => {
+test('should render min props', async () => {
   const overlimit = vi.fn()
   const reduce = vi.fn()
   const change = vi.fn()
@@ -85,7 +92,9 @@ test('should render min props', () => {
     />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
-  fireEvent.click(iconMinus)
+  await act(async () => {
+    fireEvent.click(iconMinus)
+  })
   expect(overlimit).toBeCalled()
   expect(reduce).toBeCalled()
   expect(change).not.toBeCalled()
@@ -104,23 +113,27 @@ test('should not trigger click when disabled props to be true', () => {
   expect(container.querySelector('input')?.value).toBe('1')
 })
 
-test('should not focus input when readOnly props to be true', () => {
+test('should not focus input when readOnly props to be true', async () => {
   const focus = vi.fn()
   const { container } = render(
     <InputNumber readOnly defaultValue={2} onFocus={focus} />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
-  fireEvent.click(iconMinus)
+  await act(async () => {
+    fireEvent.click(iconMinus)
+  })
   expect(container.querySelector('input')?.value).toBe('1')
   expect(focus).not.toBeCalled()
 })
 
-test('should render decimal when step props to be 0.2', () => {
+test('should render decimal when step props to be 0.2', async () => {
   const { container } = render(
     <InputNumber step={0.2} digits={1} defaultValue={2} />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
-  fireEvent.click(iconPlus)
+  await act(async () => {
+    fireEvent.click(iconPlus)
+  })
   expect(container.querySelector('input')?.value).toBe('2.2')
 })
 
@@ -158,19 +171,15 @@ test('allowEmpty', () => {
   })
 })
 
-test('should overlimit when input', () => {
-  const change = vi.fn()
+test('should overlimit when input', async () => {
   const overlimit = vi.fn()
   const { container } = render(
-    <InputNumber
-      defaultValue={2}
-      max={100}
-      onChange={change}
-      onOverlimit={overlimit}
-    />
+    <InputNumber defaultValue={2} max={100} onOverlimit={overlimit} />
   )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'
-  fireEvent.input(input)
-  expect(change).toBeCalled()
+  await act(async () => {
+    fireEvent.input(input)
+  })
+  expect(overlimit).toBeCalled()
 })

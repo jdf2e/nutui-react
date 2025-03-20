@@ -6,6 +6,8 @@ node_modules
 .npmrc
 /dist
 /dist-demo
+/dist-site
+/release
 /libs
 /jd/upload.js
 # yarn.lock
@@ -53,3 +55,6 @@ pnpm-lock.*.yaml
 
 # vitest
 /html
+
+# Harmony CSS files
+src/packages/**/*.harmony.css

@@ -57,3 +57,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-signature-border-width | Signature border width | `1px` |
 | \--nutui-signature-background-color | Signature background color | `$white` |
 | \--nutui-signature-font-size | Signature text size | `$font-size-base` |
+
+<Contribution name="Signature" />

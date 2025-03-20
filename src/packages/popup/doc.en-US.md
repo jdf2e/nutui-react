@@ -92,7 +92,7 @@ import { Popup } from '@nutui/nutui-react'
 | description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
-| portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
 | onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
 | onCloseIconClick | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
 | onOpen | Triggered when the popup is opened | `-` | `-` |
@@ -117,3 +117,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popup-title-height | popup's title height | `50px` |
 | \--nutui-popup-title-border-bottom | popup's title border-bottom | `0` |
 | \--nutui-popup-animation-duration | lose icon's animation duration | `0.3s` |
+
+<Contribution name="Popup" />

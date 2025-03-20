@@ -1,32 +1,16 @@
 import React, {
   FunctionComponent,
-  useState,
+  useCallback,
   useEffect,
   useRef,
-  useCallback,
-  ReactNode,
+  useState,
 } from 'react'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebImageProps } from '@/types'
 
-export interface ImageProps extends BasicComponent {
-  src: string
-  fit: ImageFit
-  position: ImagePosition
-  alt: string
-  width: string
-  height: string
-  radius: string | number
-  error: boolean | ReactNode
-  loading: boolean | ReactNode
-  lazy: boolean
-  onClick: (e: MouseEvent) => void
-  onLoad: () => void
-  onError: () => void
-}
-
-const defaultProps: Partial<ImageProps> = {
+const defaultProps: Partial<WebImageProps> = {
   ...ComponentDefaults,
   fit: 'fill',
   position: 'center',
@@ -38,27 +22,9 @@ const defaultProps: Partial<ImageProps> = {
   lazy: false,
 }
 
-export type ImageFit =
-  | 'contain'
-  | 'cover'
-  | 'fill'
-  | 'none'
-  | 'scale-down'
-  | string
-export type ImagePosition =
-  | 'center'
-  | 'top'
-  | 'right'
-  | 'bottom'
-  | 'left'
-  | string
-
 const classPrefix = 'nut-image'
 
-export const Image: FunctionComponent<
-  Partial<ImageProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onLoad' | 'onError'>
-> = (props) => {
+export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
   const {
     className,
     style,

@@ -1,12 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { isObject } from '@/utils'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface Color {
-  [key: string]: string
-}
 export interface CircleProgressProps extends BasicComponent {
   percent: string | number
   strokeWidth?: string | number

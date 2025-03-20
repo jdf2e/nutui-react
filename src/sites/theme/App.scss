@@ -32,7 +32,7 @@ $doc-title-height: 137px;
       // transition: opacity 0.8s linear, visibility 0.8s linear;
       transition: opacity 0.8s;
       &.fixed {
-        width: calc(100% - 290px);
+        width: calc(100% - 270px);
         position: fixed;
         padding: 24px 48px;
         .title {
@@ -51,7 +51,7 @@ $doc-title-height: 137px;
     }
   }
   &-content {
-    margin-left: 290px;
+    margin-left: 270px;
     display: flex;
     flex-direction: column;
 

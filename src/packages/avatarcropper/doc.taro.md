@@ -56,3 +56,5 @@ import { AvatarCropper } from '@nutui/nutui-react-taro'
 | shape | 裁剪形状,可选值为：`square` `round` | `string` | `square` |
 | onConfirm | 裁剪后点击确认触发 | `(url: string) => void` | `-` |
 | onCancel | 点击取消触发 | `-` | `-` |
+
+<Contribution name="AvatarCropper" />

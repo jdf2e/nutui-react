@@ -1,35 +1,16 @@
-import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
-import { BasicComponent } from '@/utils/typings'
 import Indicator from '@/packages/indicator'
-import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { getRefValue, useRefState } from '@/hooks/use-ref-state'
 import { defaultEffect } from '@/packages/swiper/effects/default'
 import {
   focusEffect,
   updateTransform,
   useList,
 } from '@/packages/swiper/effects/focus'
-import { SwiperRef } from '@/packages/swiper/types'
-
-export interface FocusEffect {
-  name: 'focus'
-  scale: number
-}
-
-export interface SwiperProps extends BasicComponent {
-  direction: 'horizontal' | 'vertical'
-  indicator: ReactNode
-  loop: boolean
-  duration: number | string
-  autoPlay: boolean | number
-  defaultValue: number
-  touchable: boolean
-  effect: FocusEffect | undefined
-  slideSize?: number
-  onChange?: (index: number) => void
-}
+import { SwiperRef, WebSwiperProps } from '@/types'
 
 const defaultProps = {
   direction: 'horizontal',
@@ -40,9 +21,9 @@ const defaultProps = {
   defaultValue: 0,
   touchable: true,
   effect: undefined,
-} as SwiperProps
+} as WebSwiperProps
 
-export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
+export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
   (props, ref) => {
     const classPrefix = 'nut-swiper'
     const {
@@ -220,18 +201,17 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
           const y = (springs.y.get() / 100) * slideSize
           return [-x, -y]
         },
-        triggerAllEvents: true,
         bounds: () => {
           if (loop) return {}
           const slideSize = getSlideSize()
-          const swiperSize = getSwiperSize()
           if (isVertical) {
             return { top: 0, bottom: (count - 1) * slideSize }
           }
           return { left: 0, right: (count - 1) * slideSize }
         },
-        preventDefault: true,
         rubberband: true,
+        triggerAllEvents: true,
+        preventScroll: isVertical,
         axis: isVertical ? 'y' : 'x',
         pointer: {
           touch: true,
@@ -288,9 +268,9 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       return (
         <div
           ref={stageRef}
-          className={classNames('nut-swiper-inner', {
-            'nut-swiper-inner-vertical': isVertical,
-            'nut-swiper-inner-horizontal': !isVertical,
+          className={classNames(`${classPrefix}-inner`, {
+            [`${classPrefix}-inner-vertical`]: isVertical,
+            [`${classPrefix}-inner-horizontal`]: !isVertical,
           })}
           style={{
             ...(props.slideSize
@@ -304,7 +284,11 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
     }
     return (
       <div
-        className={classNames('nut-swiper', className)}
+        className={classNames(
+          classPrefix,
+          `${classPrefix}-canmove-${direction}`,
+          className
+        )}
         style={style}
         ref={swiperRef}
         {...bind()}

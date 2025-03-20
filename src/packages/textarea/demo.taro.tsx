@@ -94,7 +94,7 @@ const TextAreaDemo = () => {
         <Demo7 />
         <View className="h2">{translated.textAlign}</View>
         <Demo8 />
-        <h2>{translated.error}</h2>
+        <View className="h2">{translated.error}</View>
         <Demo9 />
       </ScrollView>
     </>

@@ -53,3 +53,5 @@ import { Sticky } from '@nutui/nutui-react'
 | zIndex | The level when snapping | `number` | `2000` |
 | container | the container's ref | `React.RefObject<HTMLElement>` | `-` |
 | onChange | Triggered when the snap state changes | `(val: boolean) => void` | `-` |
+
+<Contribution name="Sticky" />

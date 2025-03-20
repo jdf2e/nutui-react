@@ -26,7 +26,7 @@ const Demo6 = () => {
 
   return (
     <>
-      <Toast visible={state.visible} content={state.content} type="text" />
+      <Toast visible={state.visible} content={state.content} />
       {(iconfonts.IconFontConfig as any).data.map((item: any) => {
         return (
           <Cell.Group key={item.name} title={item.name}>
@@ -53,7 +53,7 @@ const Demo6 = () => {
                       }}
                       style={{
                         maxWidth: '25%',
-                        height: '60px',
+                        height: 60,
                         display: 'flex',
                         flex: '0 0 25%',
                         flexDirection: 'column',

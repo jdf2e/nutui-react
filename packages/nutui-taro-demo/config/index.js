@@ -112,7 +112,7 @@ const config = {
         '../../../src/packages/lottie/animation/dark/pulltorefresh-white.json'
       ),
 
-    '@nutui/nutui-react-taro/dist/locales/en-US': path.resolve(
+    '@nutui/nutui-react-taro/dist/es/locales/en-US': path.resolve(
       __dirname,
       '../../../src/locales/en-US.ts'
     ),
@@ -120,6 +120,8 @@ const config = {
     '@/sites': path.resolve(__dirname, '../../../src/sites'),
     '@/locales': path.resolve(__dirname, '../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
+    '@/hooks': path.resolve(__dirname, '../../../src/hooks'),
+    '@/types': path.resolve(__dirname, '../../../src/types'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
       '../../../src/packages/nutui.react.taro.ts'
@@ -139,12 +141,6 @@ const config = {
   framework: 'react',
   // harmony 相关配置
   harmony: {
-    ohPackage: {
-      dependencies: {
-        '@jd-oh/taro_library': '2.0.70',
-        '@jd-oh/taro_cpp_library': '0.1.2-alpha.0',
-      },
-    },
     // 将编译方式设置为使用 Vite 编译
     compiler: { type: 'vite' },
     // 【必填】鸿蒙主应用的绝对路径，例如：

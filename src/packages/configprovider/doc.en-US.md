@@ -24,10 +24,12 @@ You can override these CSS variables directly in your code, and the styling of t
 /* After you add this style, the Primary Button turns green */
 :root {
   --nutui-color-primary: green;
+  --nutui-color-primary-stop1: green;
+  --nutui-color-primary-stop2: green;
 }
 ```
 
-> @nutui/nutui-react comes with two theme files default：@nutui/nutui-react/dist/styles/theme-default.scss; dark：@nutui/nutui-react/dist/styles/theme-dark.scss; If you want to use the dark theme, you can import the dark theme file in your project.
+> @nutui/nutui-react comes with two theme files default：@nutui/nutui-react/dist/styles/themes/default.css; dark：@nutui/nutui-react/dist/styles/themes/dark.css; If you want to use the dark theme, you can import the dark theme file in your project.
 
 #### Overrides via ConfigProvider
 
@@ -121,3 +123,5 @@ If you can't find the language pack you need, you are welcome to create a new la
 | --- | --- | --- | --- |
 | locale | set the language | `BaseLang` | `zhCN` |
 | theme | set the theme | `Record<string, string>` | `-` |
+
+<Contribution name="ConfigProvider" />

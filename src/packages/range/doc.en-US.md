@@ -154,3 +154,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-range-button-width | button width | `24px` |
 | \--nutui-range-button-height | button height | `24px` |
 | \--nutui-range-button-border | button border | `1px solid $color-primary` |
+
+<Contribution name="Range" />

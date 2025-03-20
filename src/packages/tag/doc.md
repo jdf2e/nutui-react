@@ -81,3 +81,5 @@ import { Tag } from '@nutui/nutui-react'
 | \--nutui-tag-danger-background-color | 危险背景色 | `$color-primary` |
 | \--nutui-tag-round-border-radius | round模式下的圆角 | `8px` |
 | \--nutui-tag-mark-border-radius | mark模式下的圆角 | `0 8px 8px 0` |
+
+<Contribution name="Tag" />

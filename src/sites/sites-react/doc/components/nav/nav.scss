@@ -1,0 +1,107 @@
+.doc {
+  &-nav {
+    position: absolute;
+    top: $doc-header-height;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: $white;
+    width: 270px;
+    height: 100vh;
+    border-right: 1px solid #eee;
+    overflow: auto;
+    padding-left: 35px;
+    padding-top: 35px;
+
+    &.fixed {
+      position: fixed;
+      top: 0;
+      padding-top: 15px;
+    }
+
+    ol {
+      &.introduce {
+        padding-left: 5px;
+
+        li {
+          cursor: pointer;
+
+          &:hover {
+            color: $doc-default-color;
+          }
+        }
+      }
+
+      li {
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        color: $doc-default-nav-color;
+        position: relative;
+        font-weight: 600;
+
+        &.active {
+          font-weight: bold;
+          color: $doc-default-color;
+
+          &::before {
+            position: absolute;
+            content: '';
+            left: -12px;
+            top: 50%;
+            width: 22px;
+            margin-top: -5px;
+            height: 10px;
+            transform: rotate(90deg);
+            background: url('https://img10.360buyimg.com/imagetools/jfs/t1/136135/19/14659/946/5fa20aa8E33a9aa26/d329fbe669171208.png');
+            background-size: 100% 100%;
+          }
+        }
+      }
+
+      > ul {
+        li {
+          padding-left: 12px;
+          height: 36px;
+          line-height: 36px;
+          cursor: pointer;
+          height: 100%;
+          font-weight: 500;
+
+          &:hover {
+            &:visited {
+              color: $doc-default-color;
+            }
+          }
+
+          a {
+            &:hover {
+              color: $doc-default-color !important;
+            }
+
+            &.router-link-active,
+            &.active {
+              color: $doc-default-color !important;
+            }
+
+            &:link,
+            &:visited {
+              color: #1a1a1a;
+            }
+
+            b {
+              font-weight: normal;
+              font-size: 12px;
+            }
+          }
+
+          div {
+            &:hover {
+              color: $doc-default-color !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

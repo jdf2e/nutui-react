@@ -1,26 +1,19 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { WebTabPaneProps } from '@/types'
 
 interface TabPanelInnerProps {
   autoHeightClassName: string
-}
-
-export interface TabPaneProps {
-  title: string | number
-  value: string | number
-  disabled: boolean
-  className: string
-  children?: React.ReactNode
 }
 
 const defaultProps = {
   title: '',
   value: '',
   disabled: false,
-} as TabPaneProps
+} as WebTabPaneProps
 
 export const TabPane: FunctionComponent<
-  Partial<TabPaneProps & TabPanelInnerProps>
+  Partial<WebTabPaneProps & TabPanelInnerProps>
 > = (props) => {
   const { children, autoHeightClassName, className, disabled } = {
     ...defaultProps,

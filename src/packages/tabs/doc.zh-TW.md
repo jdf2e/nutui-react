@@ -258,3 +258,5 @@ import { Tabs } from '@nutui/nutui-react'
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向標題線條的高度 | `12px` |
 | \--nutui-tabs-tabpane-padding | Tabpane 的內邊距 | `24px 20px` |
 | \--nutui-tabs-tabpane-backgroundColor | Tabpane 的背景色 | `#fff` |
+
+<Contribution name="Tabs" />

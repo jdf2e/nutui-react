@@ -1,12 +1,15 @@
-const fs = require('fs-extra');
-const path = require('path');
-const changelog = fs.readFileSync(path.join(__dirname, '../CHANGELOG.md'), 'utf8');
+const fs = require('fs-extra')
+const path = require('path')
+const changelog = fs.readFileSync(
+  path.join(__dirname, '../CHANGELOG.md'),
+  'utf8'
+)
 
 const a = changelog.split('# v')
 console.log(a[1])
 const getLatestRelease = (cl) => {
   const a = changelog.split('# v')
-  if(a.length === 0) return ''
+  if (a.length === 0) return ''
   return `# v${a[1]}`
 
   // const tag1 = cl.indexOf('#')
@@ -18,8 +21,8 @@ const getLatestRelease = (cl) => {
   // }
   // return ''
 }
-let res = getLatestRelease(changelog);
+let res = getLatestRelease(changelog)
 if (res) {
   res += `\n> [CHANGELOG](https://github.com/jdf2e/nutui-react/blob/next/CHANGELOG.md)\n`
-  fs.writeFileSync('.github/changelog.md', res);
+  fs.writeFileSync('.github/changelog.md', res)
 }

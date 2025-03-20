@@ -80,3 +80,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidenavbar-sub-title-color | Subtitle font color | `$color-title` |
 | \--nutui-sidenavbar-sub-list-background | option list background color | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | option list font color | `$color-title` |
+
+<Contribution name="SideNavBar" />

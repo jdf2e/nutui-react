@@ -76,3 +76,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-skeleton-line-width | line width | `100%` |
 | \--nutui-skeleton-line-height | line height | `15px` |
 | \--nutui-skeleton-line-border-radius | line borderRadius | `0` |
+
+<Contribution name="Skeleton" />

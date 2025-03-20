@@ -1,19 +1,9 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import { AvatarContext } from './context'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebAvatarGroupProps } from '@/types'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface AvatarGroupProps extends BasicComponent {
-  maxContent: string
-  max: string | number
-  maxBackground: string
-  maxColor: string
-  size: 'large' | 'normal' | 'small'
-  shape: 'round' | 'square'
-  gap: string
-  level: 'left' | 'right'
-}
 const defaultProps = {
   ...ComponentDefaults,
   maxContent: '',
@@ -22,12 +12,12 @@ const defaultProps = {
   maxColor: '#666',
   gap: '-8',
   level: 'left',
-} as AvatarGroupProps
+} as WebAvatarGroupProps
 
 const classPrefix = `nut-avatar-group`
-export const AvatarGroup: FunctionComponent<
-  Partial<AvatarGroupProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const AvatarGroup: FunctionComponent<Partial<WebAvatarGroupProps>> = (
+  props
+) => {
   const propAvatarGroup = { ...defaultProps, ...props }
   const { className, style, children } = propAvatarGroup
 

@@ -6,15 +6,15 @@ exports[`textarea props test 1`] = `
     class="nut-textarea nut-textarea-container nut-textarea-default"
   >
     <textarea
-      class="nut-textarea-textarea "
+      class="nut-textarea-textarea"
       maxlength="20"
-      placeholder="请输入内容"
+      placeholder=""
       rows="2"
     >
       基础用法
     </textarea>
     <div
-      class="nut-textarea-limit "
+      class="nut-textarea-limit"
     >
       4
       /

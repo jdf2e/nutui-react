@@ -6,7 +6,7 @@ import {
 } from '@nutui/icons-react'
 import Lottie, { LottieProps } from '../lottie'
 import { ComponentDefaults } from '@/utils/typings'
-import { LoadingProps, LoadingRef } from './types'
+import { WebLoadingProps, LoadingRef } from '@/types'
 import { mergeProps } from '@/utils/merge-props' // 方便以后扩展设置为键值对形式
 
 // 方便以后扩展设置为键值对形式
@@ -21,12 +21,12 @@ const defaultProps = {
   type: 'circular',
   direction: 'horizontal',
   lottieProps: {},
-} as LoadingProps
+} as WebLoadingProps
 const defaultLottieProps = {
   loop: true,
   autoplay: true,
 }
-export const Loading = React.forwardRef<LoadingRef, Partial<LoadingProps>>(
+export const Loading = React.forwardRef<LoadingRef, Partial<WebLoadingProps>>(
   (props, ref) => {
     const {
       className,

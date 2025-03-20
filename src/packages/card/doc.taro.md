@@ -5,7 +5,7 @@
 ## 引入
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
+import { Card } from '@nutui/nutui-react-taro'
 ```
 
 ## 示例代码
@@ -85,3 +85,5 @@ import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-card-border-radius | 卡片、图片的圆角大小 | `4px` |
+
+<Contribution name="Card" />

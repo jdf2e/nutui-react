@@ -1,10 +1,9 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
   TouchEvent,
-  ReactNode,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
@@ -13,8 +12,13 @@ import Image from '@/packages/image'
 import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
 import SwiperItem from '@/packages/swiperitem'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/hooks/use-props-value'
+import {
+  PreviewImageOption,
+  PreviewVideoOption,
+  WebImagePreviewProps,
+} from '@/types'
 
 interface Store {
   scale: number
@@ -23,43 +27,7 @@ interface Store {
   originScale: number
 }
 
-export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
-
-export interface ImageOption {
-  src: string
-  index?: number
-}
-
-export interface VideoOption {
-  source: {
-    src: string
-    type: string
-  }
-  options: {
-    muted: boolean
-    controls: boolean
-  }
-  index?: number
-}
-
-export interface ImagePreviewProps extends BasicComponent {
-  images: ImageOption[]
-  videos: VideoOption[]
-  visible: boolean
-  autoPlay: number | string
-  value?: number
-  defaultValue: number
-  closeOnContentClick: boolean
-  pagination: boolean
-  indicator: boolean
-  indicatorColor: string
-  closeIcon: boolean | ReactNode
-  closeIconPosition: ImagePreviewCloseIconPosition
-  onChange: (value: number) => void
-  onClose: () => void
-}
-
-const defaultProps: ImagePreviewProps = {
+const defaultProps = {
   ...ComponentDefaults,
   images: [],
   videos: [],
@@ -74,8 +42,8 @@ const defaultProps: ImagePreviewProps = {
   closeIconPosition: 'top-right',
   onChange: () => {},
   onClose: () => {},
-}
-export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
+} as WebImagePreviewProps
+export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
   props
 ) => {
   const {
@@ -272,13 +240,13 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                 <SwiperItem key={index}>
                   {item.type === 'video' ? (
                     <Video
-                      source={(item.data as VideoOption).source}
-                      options={(item.data as VideoOption).options}
+                      source={(item.data as PreviewVideoOption).source}
+                      options={(item.data as PreviewVideoOption).options}
                       onClick={closeOnImg}
                     />
                   ) : (
                     <Image
-                      src={(item.data as ImageOption).src}
+                      src={(item.data as PreviewImageOption).src}
                       draggable={false}
                       onClick={closeOnImg}
                     />

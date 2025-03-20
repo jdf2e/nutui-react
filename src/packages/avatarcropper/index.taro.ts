@@ -1,10 +1,8 @@
 import { AvatarCropper } from './avatarcropper.taro'
 
 export type {
-  AvatarCropperProps,
-  AvatarCropperToolbarPosition,
+  WebAvatarCropperProps as AvatarCropperProps,
   AvatarCropperSizeType,
   AvatarCropperSourceType,
-  AvatarCropperShape,
-} from './avatarcropper.taro'
+} from '@/types'
 export default AvatarCropper

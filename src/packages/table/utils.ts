@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { TableColumnProps } from './types'
+import { TableColumnProps } from '@/types'
 
 export function useTableSticky(
   columns: Array<TableColumnProps>,

@@ -1,7 +1,7 @@
 import { ImagePreview } from './imagepreview'
 
 export type {
-  ImagePreviewProps,
+  WebImagePreviewProps as ImagePreviewProps,
   ImagePreviewCloseIconPosition,
-} from './imagepreview'
+} from '@/types'
 export default ImagePreview

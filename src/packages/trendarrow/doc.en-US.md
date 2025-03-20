@@ -102,3 +102,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-trendarrow-font-size | Trend arrow text size | `14px` |
 | \--nutui-trendarrow-icon-margin | Trend arrow Specifies the spacing between text and icon | `4px` |
+
+<Contribution name="TrendArrow" />

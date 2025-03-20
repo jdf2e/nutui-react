@@ -12,7 +12,7 @@ import {
 } from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 import {
   splitDate,
   isMultiple,
@@ -27,7 +27,7 @@ import {
   CalendarMonthInfo,
   CalendarValue,
   CalendarType,
-} from '../calendar/types'
+} from '@/types'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -880,7 +880,7 @@ export const CalendarItem = React.forwardRef<
     return (
       <View className="nut-calendar-footer">
         {children}
-        <View className="calendar-confirm-btn" onClick={confirm}>
+        <View onClick={confirm}>
           {renderBottomButton ? (
             renderBottomButton()
           ) : (

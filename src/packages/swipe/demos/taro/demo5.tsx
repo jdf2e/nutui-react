@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
-import { Button, Swipe, SwipeInstance } from '@nutui/nutui-react-taro'
+import { Button, Swipe, SwipeRef } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import pxTransform from '@/utils/px-transform'
 
 const App = () => {
-  const closeRef = useRef<SwipeInstance>(null)
+  const closeRef = useRef<SwipeRef>(null)
   return (
     <>
       <Swipe
@@ -34,7 +34,11 @@ const App = () => {
             position: 'relative',
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>点击右侧按钮关闭</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            点击右侧按钮关闭
+          </View>
         </View>
       </Swipe>
     </>

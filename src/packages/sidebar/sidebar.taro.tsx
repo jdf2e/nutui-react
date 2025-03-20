@@ -3,11 +3,11 @@ import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
-import useUuid from '@/utils/use-uuid'
-import { SideBarItemProps, SideBarProps } from './types'
+import useUuid from '@/hooks/use-uuid'
+import { TaroSideBarItemProps, TaroSideBarProps } from '@/types'
 import SideBarItem from '@/packages/sidebaritem/index.taro'
 import { mergeProps } from '@/utils/merge-props'
 
@@ -15,10 +15,10 @@ const defaultProps = {
   ...ComponentDefaults,
   contentDuration: 0,
   sidebarDuration: 0,
-} as SideBarProps
+} as TaroSideBarProps
 
 const classPrefix = 'nut-sidebar'
-export const SideBar: FC<Partial<SideBarProps>> & {
+export const SideBar: FC<Partial<TaroSideBarProps>> & {
   Item: typeof SideBarItem
 } = (props) => {
   const {
@@ -42,7 +42,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
   const navRef = useRef<HTMLDivElement>(null)
 
   const getTitles = () => {
-    const titles: SideBarItemProps[] = []
+    const titles: TaroSideBarItemProps[] = []
     React.Children.forEach(children, (child: any, idx) => {
       if (React.isValidElement(child)) {
         const props: any = child?.props
@@ -58,7 +58,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
     return titles
   }
 
-  const titles = useRef<SideBarItemProps[]>(getTitles())
+  const titles = useRef<TaroSideBarItemProps[]>(getTitles())
   const forceUpdate = useForceUpdate()
   useEffect(() => {
     titles.current = getTitles()
@@ -147,7 +147,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
     )
     index = index < 0 ? 0 : index
     return {
-      transform: `translate3d( 0,-${index * 100}%, 0)`,
+      transform: `translateY(-${index * 100}%)`,
       transitionDuration: `${contentDuration}ms`,
     }
   }
@@ -160,7 +160,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
     scrollIntoView(index)
   }, [value])
 
-  const tabChange = (item: SideBarItemProps, index: number) => {
+  const tabChange = (item: TaroSideBarItemProps, index: number) => {
     if (item.disabled) return
     onClick?.(item.value)
     setValue(item.value)
@@ -192,14 +192,14 @@ export const SideBar: FC<Partial<SideBarProps>> & {
                 className={classNames(`${classPrefix}-titles-item`, {
                   [`${classPrefix}-titles-item-active`]:
                     !item.disabled && String(item.value) === String(value),
-                  [`${classPrefix}-titles-item-disabled`]: item.disabled,
                 })}
                 key={item.value}
               >
                 <View
                   className={classNames(
                     `${classPrefix}-ellipsis`,
-                    `${classPrefix}-titles-item-text`
+                    `${classPrefix}-titles-item-text`,
+                    { [`${classPrefix}-titles-item-disabled`]: item.disabled }
                   )}
                 >
                   {item.title}

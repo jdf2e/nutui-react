@@ -3,20 +3,20 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import SideBarItem from '@/packages/sidebaritem'
 import raf from '@/utils/raf'
-import { usePropsValue } from '@/utils/use-props-value'
-import { useForceUpdate } from '@/utils/use-force-update'
+import { usePropsValue } from '@/hooks/use-props-value'
+import { useForceUpdate } from '@/hooks/use-force-update'
 import { mergeProps } from '@/utils/merge-props'
 
-import { SideBarItemProps, SideBarProps } from './types'
+import { WebSideBarItemProps, WebSideBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   contentDuration: 0,
   sidebarDuration: 0,
-} as SideBarProps
+} as WebSideBarProps
 
 const classPrefix = 'nut-sidebar'
-export const SideBar: FC<Partial<SideBarProps>> & {
+export const SideBar: FC<Partial<WebSideBarProps>> & {
   Item: typeof SideBarItem
 } = (props) => {
   const {
@@ -65,7 +65,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
   }
 
   const getTitles = () => {
-    const titles: SideBarItemProps[] = []
+    const titles: WebSideBarItemProps[] = []
     React.Children.forEach(children, (child: any, idx) => {
       if (React.isValidElement(child)) {
         const props: any = child?.props
@@ -80,7 +80,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
     })
     return titles
   }
-  const titles = useRef<SideBarItemProps[]>(getTitles())
+  const titles = useRef<WebSideBarItemProps[]>(getTitles())
   const forceUpdate = useForceUpdate()
   useEffect(() => {
     titles.current = getTitles()
@@ -116,7 +116,7 @@ export const SideBar: FC<Partial<SideBarProps>> & {
     return () => cancelAnimationFrame(rafId)
   }, [value])
 
-  const tabChange = (item: SideBarItemProps) => {
+  const tabChange = (item: WebSideBarItemProps) => {
     if (item.disabled) return
     onClick?.(item.value)
     setValue(item.value)

@@ -1,6 +1,9 @@
 import { FixedNav } from './fixednav'
 
-export type { FixedNavType, FixedNavPosition, FixedNavItem } from './types'
+export type {
+  FixedNavPosition,
+  FixedNavItem,
+  WebFixedNavProps as FixedNavProps,
+} from '@/types'
 
-export type { FixedNavProps } from './fixednav'
 export default FixedNav

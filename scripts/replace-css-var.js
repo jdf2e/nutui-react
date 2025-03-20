@@ -22,7 +22,7 @@ const variables = fs.readFileSync(
 
 const theme = fs.readFileSync(
   path.join(__dirname, '../src/styles/theme-default.scss'),
-).toString()
+).toString().replace('@import "./jd-font";', '').replace(`@import './jd-font';`, '')
 
 const exclude = ['icon']
 components.forEach((component) => {
@@ -56,7 +56,7 @@ components.forEach((component) => {
   postcss([
     cssvariables(/*options*/),
   ])
-    .process(res.css, { to })
+    .process(res.css, { from: undefined, to })
     .then((result) => {
       fs.writeFile(to, result.css, () => {
       })

@@ -36,7 +36,7 @@ const DragDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${isTaroWeb ? 'web' : 'full'}`}>
+      <ScrollView className={`demo ${isTaroWeb ? 'web' : 'drag-full'}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
         <View className="h2" style={{ paddingTop: '30px' }}>

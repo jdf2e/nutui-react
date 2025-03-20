@@ -94,3 +94,5 @@ import { ShortPassword } from '@nutui/nutui-react'
 | \--nutui-shortpassword-border-color | 邊框顏色 | `#ddd` |
 | \--nutui-shortpassword-error | 錯誤提示字體顏色 | `$color-primary` |
 | \--nutui-shortpassword-forget | 忘記密碼字體顏色 | `rgba(128, 128, 128, 1)` |
+
+<Contribution name="ShortPassword" />

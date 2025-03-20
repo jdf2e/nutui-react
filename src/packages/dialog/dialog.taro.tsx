@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useState } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { DialogBasicProps } from './config'
-import { Content } from './content.taro'
+import { DialogBasicProps } from './types.taro'
+import { Content, defaultContentProps } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import {
@@ -14,13 +13,15 @@ import {
   useCustomEvent,
   useCustomEventsPath,
   useParams,
-} from '@/utils/use-custom-event'
-import { BasicComponent } from '@/utils/typings'
-import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
+} from '@/hooks/use-custom-event'
+import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { mergeProps } from '@/utils/merge-props'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
+import { harmony } from '@/utils/platform-taro'
 
-export type DialogProps = DialogBasicProps & BasicComponent
-const defaultProps = {
+const defaultProps: DialogBasicProps = {
+  ...defaultOverlayProps,
+  ...defaultContentProps,
   title: '',
   content: '',
   header: '',
@@ -28,20 +29,23 @@ const defaultProps = {
   confirmText: '',
   cancelText: '',
   overlay: true,
-  closeOnOverlayClick: true,
+  overlayStyle: {},
+  overlayClassName: 'nut-dialog-overlay',
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
   footerDirection: 'horizontal',
-  lockScroll: true,
   closeIconPosition: 'bottom',
   closeIcon: false,
+  zIndex: 1200,
   beforeCancel: () => true,
   beforeClose: () => true,
+  onCancel: () => {},
+  onClose: () => {},
   onOverlayClick: () => true,
-} as DialogProps
+}
 
-export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
+export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   open: typeof open
   close: typeof close
 } = (props) => {
@@ -66,17 +70,20 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       lockScroll,
       disableConfirmButton,
       closeOnOverlayClick,
-      onOverlayClick,
       confirmText,
       cancelText,
       overlay,
+      overlayStyle,
+      overlayClassName,
       closeIconPosition,
       closeIcon,
+      zIndex,
+      beforeCancel,
+      beforeClose,
       onClose,
       onCancel,
       onConfirm,
-      beforeCancel,
-      beforeClose,
+      onOverlayClick,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -84,18 +91,16 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   useCustomEvent(
     id as string,
     ({ status, options }: { status: boolean; options: any }) => {
-      if (status) {
-        setParams({ ...options, visible: true })
-      } else {
-        setParams({ ...options, visible: false })
-      }
+      setParams({ ...options, visible: status })
     }
   )
   const refObject = useLockScrollTaro(!!(visible && lockScroll))
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleCancel = (
+      e: ITouchEvent | React.MouseEvent<HTMLButtonElement>
+    ) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -103,7 +108,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onCancel?.()
     }
 
-    const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
+    const handleOk = async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       setLoading(true)
       try {
@@ -118,41 +123,68 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     const btnClass =
       hideCancelButton || hideConfirmButton ? `${classPrefix}-footer-block` : ''
 
+    const renderCancelOfVertical = () => {
+      return (
+        !hideCancelButton && (
+          <View
+            className={`${classPrefix}-footer-cancel ${btnClass}`}
+            onClick={(e: ITouchEvent) => handleCancel(e)}
+          >
+            {cancelText || locale.cancel}
+          </View>
+        )
+      )
+    }
+
+    const renderCancel = () => {
+      return (
+        !hideCancelButton && (
+          <Button
+            type="default"
+            size="large"
+            className={`${classPrefix}-footer-cancel ${btnClass}`}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+              handleCancel(e)
+            }
+          >
+            {cancelText || locale.cancel}
+          </Button>
+        )
+      )
+    }
+
+    const renderConfirm = () => {
+      return (
+        !hideConfirmButton && (
+          <Button
+            size="large"
+            type="primary"
+            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
+              disabled: disableConfirmButton,
+            })}
+            disabled={disableConfirmButton}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOk(e)}
+            loading={loading}
+          >
+            {confirmText || locale.confirm}
+          </Button>
+        )
+      )
+    }
+
     return (
       footer || (
         <>
-          {!hideCancelButton &&
-            (footerDirection === 'vertical' ? (
-              <View
-                className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e as any)}
-              >
-                {cancelText || locale.cancel}
-              </View>
-            ) : (
-              <Button
-                type="default"
-                size="large"
-                className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e)}
-              >
-                {cancelText || locale.cancel}
-              </Button>
-            ))}
-
-          {!hideConfirmButton && (
-            <Button
-              size="large"
-              type="primary"
-              className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-                disabled: disableConfirmButton,
-              })}
-              disabled={disableConfirmButton}
-              onClick={(e) => handleOk(e)}
-              loading={loading}
-            >
-              {confirmText || locale.confirm}
-            </Button>
+          {footerDirection === 'vertical' ? (
+            <>
+              {renderConfirm()}
+              {renderCancelOfVertical()}
+            </>
+          ) : (
+            <>
+              {renderCancel()}
+              {renderConfirm()}
+            </>
           )}
         </>
       )
@@ -179,12 +211,38 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     )
   }
 
-  const onHandleClickOverlay = (e: any) => {
+  const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
-      const closed = onOverlayClick && onOverlayClick()
-      closed && onClose?.()
-      closed && onCancel?.()
+      const closed = onOverlayClick && onOverlayClick(e)
+      closed && onClose && onClose()
+      closed && onCancel && onCancel()
     }
+  }
+
+  const renderContent = () => {
+    const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
+    return (
+      <CSSTransition
+        in={visible}
+        timeout={300}
+        classNames="fadeDialog"
+        unmountOnExit
+        appear
+      >
+        <Content
+          className={className}
+          style={{ zIndex: contentZIndex, ...style }}
+          title={title}
+          header={header}
+          close={renderCloseIcon()}
+          footer={renderFooter()}
+          footerDirection={footerDirection}
+          visible={visible}
+        >
+          {content || children}
+        </Content>
+      </CSSTransition>
+    )
   }
 
   return (
@@ -193,38 +251,18 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       ref={refObject}
       catchMove={lockScroll}
     >
-      <>
-        {overlay ? (
-          <Overlay
-            visible={visible}
-            closeOnOverlayClick={closeOnOverlayClick}
-            lockScroll={lockScroll}
-            onClick={onHandleClickOverlay}
-            className={classNames('nut-dialog-overlay')}
-          />
-        ) : null}
-
-        <CSSTransition
-          in={visible}
-          timeout={300}
-          classNames="fadeDialog"
-          unmountOnExit
-          appear
-        >
-          <Content
-            className={className}
-            style={style}
-            title={title}
-            header={header}
-            close={renderCloseIcon()}
-            footer={renderFooter()}
-            footerDirection={footerDirection}
-            visible={visible}
-          >
-            {content || children}
-          </Content>
-        </CSSTransition>
-      </>
+      {overlay && (
+        <Overlay
+          zIndex={zIndex}
+          visible={visible}
+          style={overlayStyle}
+          className={overlayClassName}
+          closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
+          onClick={onHandleClickOverlay}
+        />
+      )}
+      {renderContent()}
     </View>
   )
 }

@@ -52,3 +52,5 @@ import { Animate } from '@nutui/nutui-react'
 | 9 | jump | 跳躍，建議loop為true |
 | 10 | twinkle | 水波，建議loop為true |
 | 11 | flicker | 擦亮按鈕，建議loop為true |
+
+<Contribution name="Animate" />

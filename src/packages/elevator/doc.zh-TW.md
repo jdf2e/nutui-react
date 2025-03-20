@@ -108,3 +108,5 @@ import { Elevator } from '@nutui/nutui-react'
 | \--nutui-elevator-list-fixed-color | 吸頂樓層文字顏色 | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | 吸頂樓層背景顏色 | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | 吸頂樓層陰影 | `0 0 10px #eee` |
+
+<Contribution name="Elevator" />

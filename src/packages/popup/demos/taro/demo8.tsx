@@ -18,6 +18,9 @@ const Demo8 = () => {
         title="禁止滚动穿透"
         position="bottom"
         lockScroll
+        onClose={() => {
+          setScrollPenetration(false)
+        }}
       >
         <ScrollView scrollY style={{ height: '300px' }}>
           {Array.from({ length: 200 })

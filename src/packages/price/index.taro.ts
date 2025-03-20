@@ -1,4 +1,8 @@
 import { Price } from './price.taro'
 
-export type { PriceProps, PriceSize, PriceColor } from './types'
+export type {
+  TaroPriceProps as PriceProps,
+  PriceSize,
+  PriceColor,
+} from '@/types'
 export default Price

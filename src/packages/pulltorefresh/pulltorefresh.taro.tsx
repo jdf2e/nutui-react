@@ -1,33 +1,16 @@
-import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Loading, More } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { useTouch } from '@/utils/use-touch'
+import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { BasicComponent, ComponentDefaults, Timeout } from '@/utils/typings'
-import { PullToRefreshType } from './types'
+import { ComponentDefaults, Timeout } from '@/utils/typings'
 import pxTransform from '@/utils/px-transform'
-
-export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
-
-export interface PullToRefreshProps extends BasicComponent {
-  onRefresh: () => Promise<any>
-  type: PullToRefreshType
-  pullingText: ReactNode
-  canReleaseText: ReactNode
-  refreshingText: ReactNode
-  completeText: ReactNode
-  completeDelay: number
-  headHeight: number
-  threshold: number
-  disabled: boolean
-  scrollTop: number
-  renderIcon: (status: PullStatus) => ReactNode
-  renderText: (status: PullStatus) => ReactNode
-}
+import { getDeviceInfo } from '@/utils/get-system-info'
+import { PullStatus, TaroPullToRefreshProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -42,15 +25,15 @@ const defaultProps = {
   threshold: 60,
   scrollTop: 0,
   onRefresh: () => {},
-} as PullToRefreshProps
+} as TaroPullToRefreshProps
 
-export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
-  p
-) => {
+export const PullToRefresh: FunctionComponent<
+  Partial<TaroPullToRefreshProps>
+> = (p) => {
   const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
   const touch = useTouch()
-  const props: PullToRefreshProps = {
+  const props: TaroPullToRefreshProps = {
     ...defaultProps,
     ...p,
     ...{
@@ -159,7 +142,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   }
   // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
   const isAndroidWeApp =
-    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
+    getDeviceInfo().platform === 'android' && Taro.getEnv() === 'WEAPP'
+
   const springStyles = {
     height: pxTransform(height),
     ...(!pullingRef.current || isAndroidWeApp
