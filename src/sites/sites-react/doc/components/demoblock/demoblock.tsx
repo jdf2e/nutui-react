@@ -35,7 +35,7 @@ ReactDOM.render(
   }
   return (
     <>
-      {props.children}
+      <div className='demo-block'>{props.children}</div>
 
       <div className="online-part">
         <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
