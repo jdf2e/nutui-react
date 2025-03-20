@@ -10,7 +10,6 @@ export interface EmptyAction {
   size?: ButtonSize
   fill?: ButtonFill
   disabled?: boolean
-  onClick?: () => () => void
 }
 
 type statusOptions = {
