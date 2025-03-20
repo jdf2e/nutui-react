@@ -3,7 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Uploader } from '../uploader'
-import { FileItem } from '../types'
+import { UploaderFileItem as FileItem } from '@/types/spec/uploader/base'
 import { Preview } from '../preview'
 import Button from '@/packages/button'
 
@@ -221,15 +221,17 @@ test('should render progress', () => {
   const textElement = container.querySelector('span')
   expect(textElement).toHaveTextContent('文件444.png')
 })
-test('simulates single file upload', () => {
+test('simulates single file upload', async () => {
   const handleUpload: any = vi.fn()
   const { container } = render(
     <Uploader upload={(file: File) => handleUpload(file)} />
   )
-  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const file = new File([new ArrayBuffer(10000)], 'hello.png', {
+    type: 'image/png',
+  })
   const input: any = container.querySelector('input')
 
-  fireEvent.change(input, { target: { files: [file] } })
+  await fireEvent.change(input, { target: { files: [file] } })
 
   expect(handleUpload).toHaveBeenCalledTimes(1)
   expect(handleUpload).toHaveBeenCalledWith(file)
@@ -241,15 +243,18 @@ test('simulates single file upload fail', async () => {
   const { container } = render(
     <Uploader upload={(file: File) => handleUpload(file)} />
   )
-  const file = new File(['hello'], 'hello.png', { type: 'image/png' })
+  const file = new File([new ArrayBuffer(10000)], 'hello.png', {
+    type: 'image/png',
+  })
   const input: any = container.querySelector('input')
 
-  fireEvent.change(input, { target: { files: [file] } })
+  await fireEvent.change(input, { target: { files: [file] } })
 
   expect(handleUpload).toHaveBeenCalledTimes(1)
   expect(handleUpload).toHaveBeenCalledWith(file)
+  await expect(handleUpload()).rejects.toThrow('Upload failed')
 })
-test('simulates multiple file upload', () => {
+test('simulates multiple file upload', async () => {
   const handleUpload: any = vi.fn()
   const handleOverCount: any = vi.fn()
   const { container } = render(
@@ -260,19 +265,25 @@ test('simulates multiple file upload', () => {
       onOverCount={handleOverCount}
     />
   )
-  const file1 = new File(['file1'], 'file1.txt', { type: 'text/plain' })
-  const file2 = new File(['file2'], 'file2.txt', { type: 'text/plain' })
-  const file3 = new File(['file3'], 'file3.txt', { type: 'text/plain' })
+  const file1 = new File([new ArrayBuffer(10000)], 'file1.txt', {
+    type: 'text/plain',
+  })
+  const file2 = new File([new ArrayBuffer(10000)], 'file2.txt', {
+    type: 'text/plain',
+  })
+  const file3 = new File([new ArrayBuffer(10000)], 'file3.txt', {
+    type: 'text/plain',
+  })
   const files = [file1, file2, file3]
   const input: any = container.querySelector('input')
 
-  fireEvent.change(input, { target: { files } })
+  await fireEvent.change(input, { target: { files } })
 
   expect(handleUpload).toHaveBeenCalledTimes(2)
   expect(handleOverCount).toHaveBeenCalledTimes(1)
   expect(handleOverCount).toHaveBeenCalledWith(3)
 })
-test('simulates file upload when autoupload is false', () => {
+test('simulates file upload when autoupload is false', async () => {
   const handleUpload: any = vi.fn()
   const handleOverCount: any = vi.fn()
   const { container } = render(
@@ -284,13 +295,21 @@ test('simulates file upload when autoupload is false', () => {
       onOverCount={handleOverCount}
     />
   )
-  const file1 = new File(['file1'], 'file1.txt', { type: 'text/plain' })
-  const file2 = new File(['file2'], 'file2.txt', { type: 'text/plain' })
-  const file3 = new File(['file3'], 'file3.txt', { type: 'text/plain' })
+  const file1 = new File([new ArrayBuffer(10000)], 'file1.txt', {
+    type: 'text/plain',
+  })
+  const file2 = new File([new ArrayBuffer(10000)], 'file2.txt', {
+    type: 'text/plain',
+  })
+  const file3 = new File([new ArrayBuffer(10000)], 'file3.txt', {
+    type: 'text/plain',
+  })
   const files = [file1, file2, file3]
   const input: any = container.querySelector('input')
-  fireEvent.change(input, { target: { files } })
+  await fireEvent.change(input, { target: { files } })
   expect(handleUpload).toHaveBeenCalledTimes(0)
+  expect(handleOverCount).toHaveBeenCalledTimes(1)
+  expect(handleOverCount).toHaveBeenCalledWith(3)
 })
 test('should render button', () => {
   const clearUpload = vi.fn()
