@@ -6,7 +6,7 @@
     bottom: 0;
     z-index: 1;
     background: $white;
-    width: 290px;
+    width: 270px;
     height: 100vh;
     border-right: 1px solid #eee;
     overflow: auto;
@@ -31,8 +31,8 @@
       }
 
       li {
-        height: 48px;
-        line-height: 48px;
+        height: 32px;
+        line-height: 32px;
         font-size: 14px;
         color: $doc-default-nav-color;
         font-weight: bold;

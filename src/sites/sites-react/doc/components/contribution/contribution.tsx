@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import data from './contribution.json'
+import './contribution.scss'
 
 interface ContributionMDXProps {
   name: string
@@ -12,33 +13,23 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
   return (
     <>
       <h3>Bugs & Tips</h3>
-      <div style={{ margin: 0 }}>
+      <div className='qa-container'>
         {issues[name].map((item) => (
-          <div key={item.number} style={{ margin: 2 }}>
+          <div key={item.number} className='qa-list'>
             <a
               href={item.url}
               target="_blank"
-              style={{
-                display: 'block',
-                textDecoration: 'none',
-                color: '#576b95',
-                fontSize: 14,
-              }}
+              className='qa-list-item'
             >
               {item.title}
             </a>
           </div>
         ))}
         {logs[name].map((item) => (
-          <div key={item.version} style={{ margin: 2 }}>
+          <div key={item.version} className='qa-list'>
             <a
               href={item.content.match(/\(\[(#\d+)\]\(([^)]+)\)\)/)?.[2]}
-              style={{
-                display: 'inline',
-                textDecoration: 'none',
-                color: '#576b95',
-                fontSize: 14,
-              }}
+               className='qa-list-item'
             >
               {item.content
                 .replace(/@[^\s]+$/, '')
@@ -49,40 +40,31 @@ const Contribution: FunctionComponent<ContributionMDXProps> = (props) => {
                   ''
                 )}
             </a>
-            <span
-              style={{
-                fontSize: 14,
-                color: '#666',
-                backgroundColor: '#f5f5f5',
-                padding: '0 4px',
-                borderRadius: 5,
-              }}
-            >
+            <span className='version-tag'>
               {item.version}
             </span>
           </div>
         ))}
+
+        <div className='qa-tips'>
+          <span>查看更多 </span>
+          <a
+            href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
+            className='qa-tips-link'
+          >
+            issues
+          </a>
+          <span> and </span>
+          <a
+            href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}
+            className='qa-tips-link'
+          >
+            releases
+          </a>
+          ，欢迎提交 PR。
+        </div>
       </div>
-      {issues[name].length > 0 ||
-        (logs[name].length > 0 && (
-          <div style={{ fontSize: '14px', color: '#666', marginTop: '16px' }}>
-            <span>View more resolved </span>
-            <a
-              href={`https://github.com/jdf2e/nutui-react/issues?q=is%3Aissue%20state%3Aclosed%20${name.toLowerCase()}`}
-              style={{ color: '#1677ff', textDecoration: 'none' }}
-            >
-              issues
-            </a>
-            <span> and </span>
-            <a
-              href={`https://github.com/jdf2e/nutui-react/releases?q=${name.toLowerCase()}&expanded=true`}
-              style={{ color: '#1677ff', textDecoration: 'none' }}
-            >
-              releases
-            </a>
-            <span> for {name}</span>
-          </div>
-        ))}
+      
     </>
   )
 }
