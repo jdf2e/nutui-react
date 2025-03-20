@@ -183,14 +183,14 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    onChange && onChange(page + 1)
+    onChange?.(page + 1)
   }
   const onCloseInner = (e: ITouchEvent | React.MouseEvent) => {
     e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
-    onClose && onClose()
+    onClose?.()
     setStore({
       ...store,
       scale: 1,

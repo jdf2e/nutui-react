@@ -184,7 +184,7 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    onChange && onChange(page + 1)
+    onChange?.(page + 1)
   }
 
   const onCloseInner = (e: React.MouseEvent<Element, MouseEvent>) => {
@@ -192,7 +192,7 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
-    onClose && onClose()
+    onClose?.()
     setStore({
       ...store,
       scale: 1,
