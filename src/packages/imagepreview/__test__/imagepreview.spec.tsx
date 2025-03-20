@@ -81,6 +81,11 @@ describe('ImagePreview Component', () => {
       'src',
       '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg'
     )
+    // 验证视频元素
+    const videoElements = container.getElementsByTagName('video')
+    expect(videoElements.length).toBe(2)
+    // 验证轮播容器
+    expect(container.querySelector('.nut-swiper')).toBeInTheDocument()
   })
 
   test('calls onClose when close icon is clicked', async () => {
@@ -134,6 +139,7 @@ describe('ImagePreview Component', () => {
       '.nut-imagepreview'
     ) as Element
 
+    // 测试放大
     // Simulate touch start for zoom in
     fireEvent.touchStart(swiperIndicator, {
       touches: [
@@ -153,6 +159,29 @@ describe('ImagePreview Component', () => {
     // Verify that scale function has been called or scale state has changed
     // Since we don't expose the scale, we may need to check the style if set
     expect((swiperIndicator as HTMLElement).style.transform).toContain('scale(')
+    const transformAfterZoomIn = (swiperIndicator as HTMLElement).style
+      .transform
+    expect(transformAfterZoomIn).toMatch(/scale\([\d.]+\)/)
+    // 测试缩小
+    fireEvent.touchStart(swiperIndicator, {
+      touches: [
+        { pageX: 300, pageY: 300 },
+        { pageX: 400, pageY: 400 },
+      ],
+    })
+    fireEvent.touchMove(swiperIndicator, {
+      touches: [
+        { pageX: 300, pageY: 300 },
+        { pageX: 350, pageY: 350 },
+      ],
+    })
+
+    const transformAfterZoomOut = (swiperIndicator as HTMLElement).style
+      .transform
+    expect(transformAfterZoomOut).toMatch(/scale\(1\)/)
+
+    // 测试触摸结束
+    fireEvent.touchEnd(swiperIndicator)
   })
 
   test('autoPlay', async () => {

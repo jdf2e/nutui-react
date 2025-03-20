@@ -73,8 +73,6 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
     onChange,
   })
 
-  console.log('innner0', innerNo, value, defaultValue)
-
   const [showPop, setShowPop] = useState(visible)
   const [active, setActive] = useState(0)
   const [maxNo, setMaxNo] = useState(images.length + videos.length)
@@ -92,7 +90,7 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
 
     // 如果是原尺寸，双击放大；否则回到原尺寸。
     const curTouchTime = Date.now()
-    if (curTouchTime - lastTouchEndTime < 300) {
+    if (curTouchTime - lastTouchEndTime < 100) {
       const store1 = store
       store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()

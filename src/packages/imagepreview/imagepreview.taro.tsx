@@ -95,7 +95,7 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
 
     // 如果已经放大，双击应变回原尺寸；如果是原尺寸，双击应放大
     const curTouchTime = Date.now()
-    if (curTouchTime - lastTouchEndTime < 300) {
+    if (curTouchTime - lastTouchEndTime < 100) {
       const store1 = store
       store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()
