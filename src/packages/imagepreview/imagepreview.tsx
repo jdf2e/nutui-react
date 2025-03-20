@@ -87,7 +87,6 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
     const { touches } = event
     const events = touches[0]
     const events2 = touches[1]
-
     // 如果是原尺寸，双击放大；否则回到原尺寸。
     const curTouchTime = Date.now()
     if (curTouchTime - lastTouchEndTime < 100) {
@@ -95,7 +94,6 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
       store1.scale = store1.scale === 1 ? 2 : 1
       scaleNow()
     }
-
     const store1 = store
     store1.moveable = true
 
@@ -109,11 +107,9 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
 
   const onTouchMove = (event: TouchEvent) => {
     if (!store.moveable) return
-
     const { touches } = event
     const events = touches[0]
     const events2 = touches[1]
-
     const store1 = store
 
     // 双指移动
@@ -148,6 +144,11 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
     document.addEventListener('touchmove', onTouchMove as any)
     document.addEventListener('touchend', onTouchEnd)
     document.addEventListener('touchcancel', onTouchEnd)
+    return () => {
+      document.removeEventListener('touchcancel', onTouchEnd)
+      document.removeEventListener('touchmove', onTouchMove as any)
+      document.removeEventListener('touchend', onTouchEnd)
+    }
   }
 
   useEffect(() => {

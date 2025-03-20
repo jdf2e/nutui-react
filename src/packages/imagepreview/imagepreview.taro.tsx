@@ -117,7 +117,6 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
     const touches = event.touches
     const events = touches[0]
     const events2 = touches[1]
-
     const store1 = store
 
     // 双指移动
@@ -150,6 +149,12 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
     document.addEventListener('touchmove', onTouchMove as any)
     document.addEventListener('touchend', onTouchEnd)
     document.addEventListener('touchcancel', onTouchEnd)
+
+    return () => {
+      document.removeEventListener('touchcancel', onTouchEnd)
+      document.removeEventListener('touchmove', onTouchMove as any)
+      document.removeEventListener('touchend', onTouchEnd)
+    }
   }
 
   useEffect(() => {
