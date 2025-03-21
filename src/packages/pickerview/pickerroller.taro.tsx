@@ -44,7 +44,6 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const isMoving = useRef(false)
   const rollerRef = useRef<any>(null)
   const pickerRollerRef = useRef<any>(null)
-  const placeholderRef = useRef(null)
   const [startTime, setStartTime] = useState(0)
   const [startY, setStartY] = useState(0)
   const transformY = useRef(0)
@@ -158,7 +157,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
 
   const getReactHeight = async () => {
     try {
-      const placeholder = await getRectByTaro(placeholderRef.current)
+      const placeholder = await getRectByTaro(rollerRef.current)
       const placeholderHeight = placeholder.height || 0
       return placeholderHeight
     } catch (error) {
@@ -188,7 +187,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         }
       })
     }
-  }, [pickerRollerRef.current, placeholderRef.current])
+  }, [pickerRollerRef.current, rollerRef.current])
 
   useEffect(() => {
     isMoving.current = false
@@ -248,12 +247,8 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   return (
     <View className="nut-pickerview-list" ref={pickerRollerRef}>
       <View
-        className={`${classPrefix}-placeholder`}
-        ref={placeholderRef}
-        id={`${classPrefix}-placeholder-${uuid}`}
-      />
-      <View
         className={classPrefix}
+        id={`${classPrefix}-${uuid}`}
         ref={rollerRef}
         style={threeDimensional ? touchRollerStyle() : touchTiledStyle()}
         onTransitionEnd={stopMomentumScroll}

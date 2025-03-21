@@ -49,9 +49,6 @@
     height: $picker-item-height;
     z-index: 1;
     transform-style: preserve-3d;
-    &-placeholder {
-      height: $picker-item-height;
-    }
   }
 
   &-roller-item {

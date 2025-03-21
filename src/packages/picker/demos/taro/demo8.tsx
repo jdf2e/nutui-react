@@ -48,6 +48,7 @@ const Demo8 = () => {
           nutuiPickerItemActiveLineBorder:
             '1px dashed var(--nutui-color-primary)',
           nutuiPickerItemTextColor: 'var(--nutui-color-primary)',
+          nutuiPickerItemHeight: '28px',
         }}
       >
         <Picker
