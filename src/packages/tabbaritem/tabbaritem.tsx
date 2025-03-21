@@ -39,17 +39,18 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   }
   const active = index === ctx?.selectIndex
   const classPrefix = 'nut-tabbar-item'
+
+  // 默认有 icon 和 text，icon+badge
+  // 考虑 只有icon时，icon large，icon+badge
+  // 考虑 只有text时，text large，text+badge
   const tabbarItemClass = classNames(
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
+      [`${classPrefix}-large`]: !icon || !title,
     },
     className
   )
-  const boxPrefix = `${classPrefix}-icon-box`
-  const titleClass = classNames(boxPrefix, `${boxPrefix}-nav`, {
-    [`${boxPrefix}-large`]: !icon,
-  })
 
   const badgeProps = {
     value,
@@ -61,7 +62,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   }
 
   const renderTitleText = () => {
-    return title && <div className={titleClass}>{title}</div>
+    return title && <div className={`${classPrefix}-text`}>{title}</div>
   }
 
   return (
@@ -76,9 +77,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     >
       {icon ? (
         <>
-          <Badge {...badgeProps}>
-            <div className={boxPrefix}>{icon}</div>
-          </Badge>
+          <Badge {...badgeProps}>{icon}</Badge>
           {renderTitleText()}
         </>
       ) : (

@@ -1135,7 +1135,7 @@ $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
 
 // tabbar（✅）
-$tabbar-height: var(--nutui-tabbar-height, 50px) !default;
+$tabbar-height: var(--nutui-tabbar-height, 46px) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $color-primary) !default;
 $tabbar-inactive-color: var(
   --nutui-tabbar-inactive-color,
@@ -1149,7 +1149,7 @@ $tabbar-border-bottom: var(
 $tabbar-box-shadow: var(--nutui-tabbar-box-shadow, none) !default;
 $tabbar-text-font-size: var(
   --nutui-tabbar-text-font-size,
-  $font-size-xs
+  $font-size-xxs
 ) !default;
 $tabbar-text-large-font-size: var(
   --nutui-tabbar-text-large-font-size,
@@ -1161,7 +1161,7 @@ $tabbar-text-large-font-weight: var(
 ) !default;
 $tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
-$tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
+$tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 4px) !default;
 
 //pulltorefresh
 $pulltorefresh-icon-width: var(--nutui-pulltorefresh-icon-width, 36px) !default;
