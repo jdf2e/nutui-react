@@ -41,11 +41,12 @@ const App = () => {
             <View
               style={{
                 display: 'flex',
+                alignItems: 'center',
                 justifyContent: 'space-between',
                 width: '100%',
               }}
             >
-              <Text>商品</Text>
+              <Text style={{ fontSize: pxTransform(12) }}>商品</Text>
               <InputNumber />
             </View>
           </View>

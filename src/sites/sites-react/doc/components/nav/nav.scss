@@ -6,7 +6,7 @@
     bottom: 0;
     z-index: 1;
     background: $white;
-    width: 290px;
+    width: 270px;
     height: 100vh;
     border-right: 1px solid #eee;
     overflow: auto;
@@ -33,12 +33,12 @@
       }
 
       li {
-        height: 48px;
-        line-height: 48px;
+        height: 40px;
+        line-height: 40px;
         font-size: 14px;
         color: $doc-default-nav-color;
         position: relative;
-        font-weight: bold;
+        font-weight: 600;
 
         &.active {
           font-weight: bold;
@@ -47,7 +47,7 @@
           &::before {
             position: absolute;
             content: '';
-            left: 0;
+            left: -12px;
             top: 50%;
             width: 22px;
             margin-top: -5px;
@@ -61,10 +61,12 @@
 
       > ul {
         li {
-          padding-left: 29px;
+          padding-left: 12px;
+          height: 36px;
+          line-height: 36px;
           cursor: pointer;
           height: 100%;
-          font-weight: bold;
+          font-weight: 500;
 
           &:hover {
             &:visited {

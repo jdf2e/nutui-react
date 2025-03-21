@@ -2,7 +2,7 @@ $doc-title-height: 137px;
 
 .doc {
   &-content {
-    margin-left: 290px;
+    margin-left: 270px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -85,7 +85,6 @@ $doc-title-height: 137px;
         background-color: #000;
         border-radius: 5px;
         position: absolute;
-        /* min-width:150px; */
         white-space: nowrap;
         top: -200%;
         transform: translateX(-55%);
@@ -164,7 +163,7 @@ $doc-title-height: 137px;
       transition: opacity 0.8s;
 
       &.fixed {
-        width: calc(100% - 290px);
+        width: calc(100% - 270px);
         position: fixed;
         padding: 24px 48px;
         z-index: 999;

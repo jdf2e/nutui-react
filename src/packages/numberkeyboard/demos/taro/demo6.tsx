@@ -32,7 +32,6 @@ const Demo6 = () => {
         }}
       />
       <Toast
-        type="text"
         visible={show}
         content={toastMsg}
         onClose={() => {

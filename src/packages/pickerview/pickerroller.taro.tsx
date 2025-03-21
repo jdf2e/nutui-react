@@ -5,6 +5,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
@@ -31,7 +32,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const INERTIA_DISTANCE = 15
   const ROTATION = 20
   const touch = useTouch()
-  const [currentIndex, setCurrentIndex] = useState(1)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const lineSpacing = useRef(36)
   const [touchTime, setTouchTime] = useState(0)
   const [touchDeg, setTouchDeg] = useState('0deg')
@@ -87,9 +88,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       )
       if (deg >= 0 && deg < (options.length + 1) * ROTATION) {
         applyTransform('', `${deg}deg`, undefined, updatedMove)
-        setCurrentIndex(
-          Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
-        )
+        deg > 0 &&
+          setCurrentIndex(
+            Math.abs(Math.round(updatedMove / lineSpacing.current)) + 1
+          )
       }
     }
   }
@@ -135,7 +137,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     const index = options.findIndex(
       (item: PickerOption) => item.value === selectedValue
     )
-    setCurrentIndex(index === -1 ? 1 : index + 1)
+    setCurrentIndex(index === -1 ? 0 : index + 1)
     const move = index * lineSpacing.current
     shouldSelect && selectValue(-move)
     handleMove(-move)
@@ -227,9 +229,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {threeDimensional &&
           options.map((item: PickerOption, index: number) => (
             <View
-              className={`nut-pickerview-roller-item ${
-                isItemHidden(index + 1) && 'nut-pickerview-roller-item-hidden'
-              }`}
+              className={classNames('nut-pickerview-roller-item', {
+                'nut-pickerview-roller-item-hidden': isItemHidden(index + 1),
+                'nut-pickerview-roller-item-active': index + 1 === currentIndex,
+              })}
               style={rollerStyle(index)}
               key={item.value ?? index}
             >

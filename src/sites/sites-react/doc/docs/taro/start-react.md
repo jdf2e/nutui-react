@@ -118,7 +118,7 @@ import '@nutui/nutui-react-taro/dist/style.css'
 需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React Taro 的全局性逻辑和样式：`
 
 ```js
-import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 ```
 
 首先安装 `babel-plugin-import` 插件
@@ -192,6 +192,27 @@ config = {
   },
   cache: {
     enable: false,
+  },
+}
+```
+
+:::
+
+#### 4、样式单位转化
+
+组件 CSS 单位使用的是 **px**，但是在 `Taro` 编译时，Taro 会帮你对样式做尺寸转换操作，需要注意的是，要对 **NutUI** 相关的样式设置在黑名单里，如：
+
+:::demo
+
+```js
+// config/index.js
+config = {
+  postcss: {
+    pxtransform: {
+      enable: true,
+      // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
+      config: { selectorBlackList: ['nut-'] },
+    },
   },
 }
 ```

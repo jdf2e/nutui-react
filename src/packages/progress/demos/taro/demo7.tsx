@@ -12,7 +12,6 @@ const Demo7 = () => {
     <Cell.Group>
       {!harmony() && (
         <Toast
-          type="text"
           visible={show}
           content={toastMsg}
           onClose={() => {

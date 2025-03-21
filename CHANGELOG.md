@@ -2,6 +2,15 @@
 
 `2025-03-07`
 
+- fix(sidebar): 禁用属性和内容显示异常 (#3084)
+- fix: 示例中 toast 的用法修复 (#3083)
+- chore: 移除废弃的 github action (#3085)
+- chore(deps): 升级 actions/github-script 到 v7 (#3012)
+
+# v3.0.3
+
+`2025-03-07`
+
 - refactor(pagination): 组件重构, hooks 实现数据抽象 (#2988)
 - refactor(cascader): 组件重构，修订 lazy 属性的定义 (#3007)
 - fix(countdown): 秒位补 0 展示 (#3072)

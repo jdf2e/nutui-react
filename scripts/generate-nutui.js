@@ -71,6 +71,7 @@ fs.outputFile(
 
 let fileStr = `${importStr}
 ${importScssStr}
+export * from '@/types';
 export { ${packages.join(',')} };`
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.react.ts'),
