@@ -1616,7 +1616,7 @@ $badge-background-color: var(
   $color-primary
 ) !default;
 $badge-color: var(--nutui-badge-color, $color-primary-text) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-xxs) !default;
+$badge-font-size: var(--nutui-badge-font-size, 9px) !default;
 $badge-border: var(
   --nutui-badge-border,
   1px solid $color-primary-text
