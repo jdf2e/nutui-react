@@ -14,6 +14,7 @@ export interface BaseTabbar extends BaseProps {
 export interface BaseTabbarItem extends BaseProps {
   title: ReactNode
   icon: ReactNode
+  activeIcon: ReactNode
   value: ReactNode
   dot: boolean
   max: number

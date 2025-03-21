@@ -5,10 +5,12 @@ import Badge from '@/packages/badge/index'
 import TabbarContext from '@/packages/tabbar/context'
 import { WebTabbarItemProps } from '@/types'
 
+// 是否支持双击事件？
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
   icon: null,
+  activeIcon: null,
   value: '',
   dot: false,
   max: 99,
@@ -25,6 +27,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     style,
     title,
     icon,
+    activeIcon,
     value,
     dot,
     max,
@@ -43,6 +46,10 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   // 默认有 icon 和 text，icon+badge
   // 考虑 只有icon时，icon large，icon+badge
   // 考虑 只有text时，text large，text+badge
+
+  // 如果有 activeIcon，则icon为默认态，activeIcon为选中态；
+  // 如果有 activeIcon，但没有 icon，则异常
+  // 如果没有 activeIcon，则icon为默认态，同时也为选中态，遵循默认选中规则
   const tabbarItemClass = classNames(
     classPrefix,
     {
@@ -65,6 +72,28 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     return title && <div className={`${classPrefix}-text`}>{title}</div>
   }
 
+  const renderTitle = () => {
+    return <Badge {...badgeProps}>{renderTitleText()}</Badge>
+  }
+
+  const renderIconAndTitle = () => {
+    return (
+      <>
+        <Badge {...badgeProps}>{icon}</Badge>
+        {renderTitleText()}
+      </>
+    )
+  }
+
+  const renderIconAndActiveIcon = () => {
+    return (
+      <>
+        <Badge {...badgeProps}>{active ? activeIcon : icon}</Badge>
+        {active && renderTitleText()}
+      </>
+    )
+  }
+
   return (
     <div
       className={tabbarItemClass}
@@ -75,14 +104,9 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
       onClick={() => ctx?.handleClick(index)}
       {...rest}
     >
-      {icon ? (
-        <>
-          <Badge {...badgeProps}>{icon}</Badge>
-          {renderTitleText()}
-        </>
-      ) : (
-        <Badge {...badgeProps}>{renderTitleText()}</Badge>
-      )}
+      {icon && !activeIcon && renderIconAndTitle()}
+      {!icon && renderTitle()}
+      {icon && activeIcon && renderIconAndActiveIcon()}
     </div>
   )
 }

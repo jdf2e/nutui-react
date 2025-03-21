@@ -31,6 +31,14 @@
     margin-top: $tabbar-text-margin-top;
   }
 
+  .nut-image {
+    &-default {
+      width: 38px;
+      height: 38px;
+      border-radius: 38px;
+    }
+  }
+
   &-large {
     justify-content: center;
     padding: 0;
