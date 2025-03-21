@@ -118,16 +118,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `50px` |
+| \--nutui-tabbar-height | 高度 | `46px` |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 陰影 | `none` |
-| \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xs` |
+| \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
-| \--nutui-tabbar-text-margin-top | 標題上外邊距 | `3px` |
+| \--nutui-tabbar-text-margin-top | 標題上外邊距 | `4px` |
 
 <Contribution name="Tabbar" />
