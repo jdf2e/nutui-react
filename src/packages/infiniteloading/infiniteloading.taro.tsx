@@ -6,12 +6,13 @@ import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { TaroInfiniteLoadingProps } from '@/types'
 import pxTransform from '@/utils/px-transform'
+import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'default',
   hasMore: true,
-  threshold: 40,
+  threshold: 200,
   target: '',
   pullRefresh: false,
 } as TaroInfiniteLoadingProps
@@ -37,10 +38,7 @@ export const InfiniteLoading: FunctionComponent<
     onLoadMore,
     onScroll,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const [isInfiniting, setIsInfiniting] = useState(false)
   const [topDisScoll, setTopDisScoll] = useState(0)
   const refreshTop = useRef<HTMLDivElement>(null)
@@ -53,13 +51,25 @@ export const InfiniteLoading: FunctionComponent<
 
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
+  const getRectTaro = async (selector: string): Promise<any> => {
+    return new Promise((resolve) => {
+      createSelectorQuery()
+        .select(selector)
+        .boundingClientRect()
+        .exec((res: any) => {
+          resolve(res[0])
+        })
+    })
+  }
+
   useEffect(() => {
-    refreshMaxH.current = threshold
-    const timer = setTimeout(() => {
+    const timer = setTimeout(async () => {
       getScrollHeight()
+      const rect = await getRectTaro('.nut-infinite-top-tips')
+      refreshMaxH.current = Math.floor((rect?.height ?? 0) * 2.5)
     }, 200)
     return () => clearTimeout(timer)
-  }, [hasMore, isInfiniting, threshold])
+  }, [hasMore, isInfiniting])
 
   /** 获取需要滚动的距离 */
   const getScrollHeight = () => {
