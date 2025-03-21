@@ -161,6 +161,7 @@ export const InfiniteLoading: FunctionComponent<
       scrollY
       id="scroller"
       type="list"
+      lowerThreshold={threshold}
       style={{ height: '100%' }}
       onScroll={scrollAction}
       onScrollToLower={lower}
