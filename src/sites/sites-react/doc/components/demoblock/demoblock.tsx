@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { copyCodeHtml } from './basedUtil'
 import { getParameters } from 'codesandbox/lib/api/define'
 import './demoblock.scss'
-import codesandboxPackage from './package.json?raw'
-import codesandboxtsconfig from './tsconfig.json?raw'
-import INDEX_HTML from './index.html?raw'
-import VITE_CONFIG from './vite.config.ts?raw'
+import codesandboxPackage from './codesandbox/package.json?raw'
+import INDEX_HTML from './codesandbox/index.html?raw'
+import INDEX_CSS from './codesandbox/index.css?raw'
 interface A {
   text: string
   scss: string
@@ -14,48 +13,42 @@ interface A {
 const DemoBlock: React.FunctionComponent<A> = (props) => {
   const [onlineUrl, setOnlineUrl] = useState('')
   useEffect(() => {
-    const MAIN_TSX = `import React from 'react'
+    const INDEX_TSX = `
+import React from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './app'
+import Demo from './demo';
+import './index.css'
 import '@nutui/nutui-react/dist/style.css'
 
-const root = createRoot(document.getElementById('root')!)
-root.render(<App />)
+createRoot(document.getElementById('container')).render(<Demo />);
 `
-    // const sourceMainReactJs = compressText(sourceMainReactJsStr)
     const sourceReactJs = props.text
     console.log(props.text)
-    // const sourceScss = compressText(props.scss || '')
     const parameters = getParameters({
       files: {
         'package.json': {
           content: codesandboxPackage as unknown as string,
           isBinary: false,
         },
-        'tsconfig.json': {
-          content: codesandboxtsconfig as unknown as string,
-          isBinary: false,
-        },
-        'vite.config.ts': {
-          content: VITE_CONFIG,
+        'index.css': {
+          content: INDEX_CSS,
           isBinary: false,
         },
         'index.html': {
           content: INDEX_HTML,
           isBinary: false,
         },
-        'src/main.tsx': {
-          content: MAIN_TSX,
+        'index.tsx': {
+          content: INDEX_TSX,
           isBinary: false,
         },
-        'src/app.tsx': {
+        'demo.tsx': {
           content: sourceReactJs,
           isBinary: false,
         },
       },
     })
-    const query = 'file=/src/app.tsx'
-    const onlineUrl = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=${query}&resolutionHeight=736`
+    const onlineUrl = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`
     setOnlineUrl(onlineUrl)
   }, [])
   const copyCode = () => {

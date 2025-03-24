@@ -1,0 +1,27 @@
+{
+  "browserslist": [
+    ">0.2%",
+    "not dead"
+  ],
+  "dependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@nutui/icons-react": "^3.0.1",
+    "@nutui/nutui-react": "^3.0.4",
+    "rc-util": "^5.44.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "title": "语法糖 - antd@5.24.4"
+}
