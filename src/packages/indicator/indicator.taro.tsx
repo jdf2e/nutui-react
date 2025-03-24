@@ -80,7 +80,7 @@ export const Indicator: FunctionComponent<
   }
 
   function maybeFixedWidth() {
-    if (total === 2 || type === 'slide') {
+    if (type === 'firstScreen' || type === 'slide') {
       return `${classPrefix}-fixed-width`
     }
     return ''
