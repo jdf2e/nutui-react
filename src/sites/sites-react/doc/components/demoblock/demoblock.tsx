@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { compressText, copyCodeHtml } from './basedUtil'
+import { copyCodeHtml } from './basedUtil'
+import { getParameters } from 'codesandbox/lib/api/define'
 import './demoblock.scss'
+import codesandboxPackage from './package.json?raw'
+import codesandboxtsconfig from './tsconfig.json?raw'
+import INDEX_HTML from './index.html?raw'
+import VITE_CONFIG from './vite.config.ts?raw'
 interface A {
   text: string
   scss: string
@@ -9,22 +14,48 @@ interface A {
 const DemoBlock: React.FunctionComponent<A> = (props) => {
   const [onlineUrl, setOnlineUrl] = useState('')
   useEffect(() => {
-    const sourceMainReactJsStr = `//import VConsole from "vconsole";
-//var vConsole = new VConsole();
-import React from "react";
-import ReactDOM from "react-dom";
+    const MAIN_TSX = `import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './app'
 import '@nutui/nutui-react/dist/style.css'
-import App from "./app.tsx";
-import "./app.scss";
-ReactDOM.render(
-  <App/>,
-  document.getElementById("app")
-);`
 
-    const sourceMainReactJs = compressText(sourceMainReactJsStr)
-    const sourceReactJs = compressText(props.text)
-    const sourceScss = compressText(props.scss || '')
-    const onlineUrl = `https://codehouse.jd.com/?source=share&type=react&mainJs=${sourceMainReactJs}&appValue=${sourceReactJs}&scssValue=${sourceScss}`
+const root = createRoot(document.getElementById('root')!)
+root.render(<App />)
+`
+    // const sourceMainReactJs = compressText(sourceMainReactJsStr)
+    const sourceReactJs = props.text
+    console.log(props.text)
+    // const sourceScss = compressText(props.scss || '')
+    const parameters = getParameters({
+      files: {
+        'package.json': {
+          content: codesandboxPackage as unknown as string,
+          isBinary: false,
+        },
+        'tsconfig.json': {
+          content: codesandboxtsconfig as unknown as string,
+          isBinary: false,
+        },
+        'vite.config.ts': {
+          content: VITE_CONFIG,
+          isBinary: false,
+        },
+        'index.html': {
+          content: INDEX_HTML,
+          isBinary: false,
+        },
+        'src/main.tsx': {
+          content: MAIN_TSX,
+          isBinary: false,
+        },
+        'src/app.tsx': {
+          content: sourceReactJs,
+          isBinary: false,
+        },
+      },
+    })
+    const query = 'file=/src/app.tsx'
+    const onlineUrl = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}&query=${query}&resolutionHeight=736`
     setOnlineUrl(onlineUrl)
   }, [])
   const copyCode = () => {
@@ -35,7 +66,7 @@ ReactDOM.render(
   }
   return (
     <>
-      <div className='demo-block'>{props.children}</div>
+      <div className="demo-block">{props.children}</div>
 
       <div className="online-part">
         <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
