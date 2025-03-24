@@ -295,7 +295,7 @@ test('range select event when click item', () => {
   fireEvent.click(calendarMonthDay2)
   expect(onDayClick).toBeCalled()
   const next = container.querySelectorAll(
-    '.nut-calendar-item-choose .nut-calendar-item-day'
+    '.nut-calendar-item.mid .nut-calendar-item-day'
   )[0]
   expect(next.innerHTML).toBe('11')
 })

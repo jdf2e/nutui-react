@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import CalendarViewModeItem from './calendarviewmodeitem.taro'
@@ -6,6 +7,7 @@ import { getDateString } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import type { CalendarDay, CalendarRef, TaroCalendarProps } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/platform-taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -84,6 +86,13 @@ export const Calendar = React.forwardRef<
 
   const calendarRef = useRef<any>(null)
 
+  const classes = classNames(
+    {
+      [`nut-calendar-harmony`]: harmony(),
+    },
+    className
+  )
+
   const close = () => {
     onClose?.()
   }
@@ -115,7 +124,7 @@ export const Calendar = React.forwardRef<
           <CalendarViewModeItem
             ref={calendarRef}
             style={style}
-            className={className}
+            className={classes}
             type={type}
             viewMode={viewMode}
             title={title || locale.calendaritem.title}
@@ -132,7 +141,7 @@ export const Calendar = React.forwardRef<
           <CalendarItem
             ref={calendarRef}
             style={style}
-            className={className}
+            className={classes}
             children={children}
             type={type}
             autoBackfill={autoBackfill}

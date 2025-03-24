@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import React, { useState, useEffect, useRef, ReactNode, useMemo } from 'react'
 import type { UIEvent } from 'react'
 import classNames from 'classnames'
 import { PopupProps } from '@/packages/popup/index'
@@ -144,11 +144,18 @@ export const CalendarItem = React.forwardRef<
   const classPrefix = 'nut-calendar'
   const dayPrefix = 'nut-calendar-item'
 
-  const weekdays = locale.calendaritem.weekdays
-  const weeks = [
-    ...weekdays.slice(firstDayOfWeek, 7),
-    ...weekdays.slice(0, firstDayOfWeek),
-  ]
+  const weekHeader = useMemo(() => {
+    const weekdays = locale.calendaritem.weekdays.map((day, index) => {
+      return {
+        name: day,
+        key: index,
+      }
+    })
+    return [
+      ...weekdays.slice(firstDayOfWeek, 7),
+      ...weekdays.slice(0, firstDayOfWeek),
+    ]
+  }, [firstDayOfWeek, locale.calendaritem.weekdays])
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
@@ -533,29 +540,37 @@ export const CalendarItem = React.forwardRef<
   const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
     const dateStr = getCurrDate(day, month)
     if (isDisable(day, month)) return `${dayPrefix}-disabled`
-    const activeCls = `${dayPrefix}-active`
-    if (type === 'range' || type === 'week') {
-      if (isStart(dateStr, currentDate as string[]))
-        return `${activeCls} active-start`
-      if (isEnd(dateStr, currentDate as string[])) {
-        return `${activeCls} active-end`
-      }
-      if (
-        currentDate.length === 2 &&
-        compareDate(currentDate[0], dateStr) &&
-        compareDate(dateStr, currentDate[1])
+
+    const resCls = []
+    if (day.type === 'active') {
+      if (isWeekend(day)) resCls.push('weekend')
+
+      const activeCls = `${dayPrefix}-active`
+
+      if (type === 'range' || type === 'week') {
+        if (isStart(dateStr, currentDate as string[]))
+          resCls.push(`${activeCls} start`)
+        if (isEnd(dateStr, currentDate as string[])) {
+          resCls.push(`${activeCls} end`)
+        }
+        if (
+          currentDate.length === 2 &&
+          compareDate(currentDate[0], dateStr) &&
+          compareDate(dateStr, currentDate[1])
+        ) {
+          resCls.push(
+            disableDate(day) ? `${activeCls} mid disabled` : `${activeCls} mid`
+          )
+        }
+      } else if (
+        (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
+        (type === 'single' && isEqual(currentDate as string, dateStr))
       ) {
-        return disableDate(day)
-          ? `${dayPrefix}-choose-disabled`
-          : `${dayPrefix}-choose`
+        resCls.push(activeCls)
       }
-    } else if (
-      (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
-      (type === 'single' && isEqual(currentDate as string, dateStr))
-    ) {
-      return activeCls
+      if (disableDate(day)) resCls.push(`${dayPrefix}-disabled`)
+      return resCls
     }
-    if (disableDate(day)) return `${dayPrefix}-disabled`
     return null
   }
 
@@ -648,7 +663,6 @@ export const CalendarItem = React.forwardRef<
   const classes = classNames(
     classPrefix,
     {
-      [`${classPrefix}-title`]: !popup,
       [`${classPrefix}-nofooter`]: !!autoBackfill,
     },
     className
@@ -678,6 +692,11 @@ export const CalendarItem = React.forwardRef<
     )
   }
 
+  const isWeekend = (day: CalendarDay) => {
+    const d = new Date(day.year, day.month - 1, day.day).getDay()
+    return d === 0 || d === 6
+  }
+
   const renderHeader = () => {
     return (
       <div className={headerClasses}>
@@ -698,9 +717,12 @@ export const CalendarItem = React.forwardRef<
           className={`${classPrefix}-weeks ${showMonthNumber ? `${classPrefix}-weeks-shrink` : ''}`}
           ref={weeksPanel}
         >
-          {weeks.map((item: string) => (
-            <div className={`${classPrefix}-week-item`} key={item}>
-              {item}
+          {weekHeader.map((item) => (
+            <div
+              className={`${classPrefix}-week-item ${(item.key === 0 || item.key === 6) && 'weekend'}`}
+              key={item.key}
+            >
+              {item.name}
             </div>
           ))}
         </div>
