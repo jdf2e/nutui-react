@@ -13,6 +13,7 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
+  disabled: false,
 } as WebBadgeProps
 
 export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
@@ -28,6 +29,7 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
     right,
     fill,
     size,
+    disabled,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-badge'
@@ -62,6 +64,7 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
     [`${classPrefix}-content`]: children,
+    [`${classPrefix}-disabled`]: disabled,
   })
 
   const getPositionStyle = (): CSSProperties => ({

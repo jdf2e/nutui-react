@@ -1616,6 +1616,10 @@ $badge-background-color: var(
   --nutui-badge-background-color,
   $color-primary
 ) !default;
+$badge-background-disabled-color: var(
+  --nutui-badge-background-disabled-color,
+  $color-text-disabled
+) !default;
 $badge-color: var(--nutui-badge-color, $color-primary-text) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-xxxs) !default;
 $badge-border: var(

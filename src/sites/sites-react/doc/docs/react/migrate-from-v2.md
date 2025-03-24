@@ -244,6 +244,7 @@ plugins: [
 
 - 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
 - 移除 `color`属性（`徽标背景颜色`），通过css变量`--nutui-badge-background-color`实现
+- 新增 `disabled` 属性，是否禁用
 
 [//]: # '#### CircleProgress'
 [//]: # '#### Collapse'
