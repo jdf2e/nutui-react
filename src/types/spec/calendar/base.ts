@@ -5,8 +5,6 @@ import { BaseProps } from '../../base/props'
 export interface CalendarDay {
   day: SimpleValue
   type: string
-  year?: number
-  month?: number
 }
 
 export interface CalendarMonthInfo {

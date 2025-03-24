@@ -561,12 +561,21 @@ export const CalendarItem = React.forwardRef<
     return false
   }
 
+  const isWeekend = (day: CalendarDay, month: CalendarMonthInfo) => {
+    const d = new Date(
+      Number(month.curData[0]),
+      Number(month.curData[1]) - 1,
+      Number(day.day)
+    ).getDay()
+    return d === 0 || d === 6
+  }
+
   const getClasses = (day: CalendarDay, month: CalendarMonthInfo) => {
     const dateStr = getCurrDate(day, month)
     if (isDisable(day, month)) return `${dayPrefix}-disabled`
     const resCls = []
     if (day.type === 'active') {
-      if (isWeekend(day)) resCls.push('weekend')
+      if (isWeekend(day, month)) resCls.push('weekend')
       const activeCls = `${dayPrefix}-active`
       if (type === 'range' || type === 'week') {
         if (isStart(dateStr, currentDate as string[]))
@@ -717,11 +726,6 @@ export const CalendarItem = React.forwardRef<
       day.type === 'active' &&
       isEnd(getCurrDate(day, month), currentDate as string[])
     )
-  }
-
-  const isWeekend = (day: CalendarDay) => {
-    const d = new Date(day.year, day.month - 1, Number(day.day)).getDay()
-    return d === 0 || d === 6
   }
 
   const renderHeader = () => {
