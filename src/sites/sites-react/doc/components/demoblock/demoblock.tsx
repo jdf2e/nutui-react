@@ -12,6 +12,7 @@ interface A {
 }
 const DemoBlock: React.FunctionComponent<A> = (props) => {
   const [onlineUrl, setOnlineUrl] = useState('')
+  const [copyText, setCopyText] = useState('复制代码')
   useEffect(() => {
     const INDEX_TSX = `
 import React from 'react'
@@ -23,7 +24,6 @@ import '@nutui/nutui-react/dist/style.css'
 createRoot(document.getElementById('container')).render(<Demo />);
 `
     const sourceReactJs = props.text
-    console.log(props.text)
     const parameters = getParameters({
       files: {
         'package.json': {
@@ -54,7 +54,10 @@ createRoot(document.getElementById('container')).render(<Demo />);
   const copyCode = () => {
     const sourceValue = props.text
     copyCodeHtml(sourceValue, () => {
-      alert('复制成功')
+      setCopyText('复制成功')
+      setTimeout(() => {
+        setCopyText('复制代码')
+      }, 2000)
     })
   }
   return (
@@ -76,7 +79,7 @@ createRoot(document.getElementById('container')).render(<Demo />);
             className="online-icon"
             src="https://img10.360buyimg.com/imagetools/jfs/t1/142615/10/25537/3671/61c31e6eE3ba7fb90/d1953e2b47e40e86.png"
           />
-          <div className="online-tips">复制代码</div>
+          <div className="online-tips">{copyText}</div>
         </div>
       </div>
     </>
