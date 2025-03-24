@@ -693,7 +693,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   const isWeekend = (day: CalendarDay) => {
-    const d = new Date(day.year, day.month - 1, day.day).getDay()
+    const d = new Date(day.year, day.month - 1, Number(day.day)).getDay()
     return d === 0 || d === 6
   }
 
