@@ -1,6 +1,8 @@
 .nut-badge {
   position: relative;
   display: inline-flex;
+  vertical-align: middle;
+  box-sizing: content-box;
   width: auto;
 
   &-icon {
@@ -37,8 +39,7 @@
 
   &-sup {
     display: inline-flex;
-    justify-content: center;
-    height: $badge-height;
+    text-align: center;
     min-width: $badge-min-width;
     padding: $badge-padding;
     box-sizing: border-box;
@@ -54,12 +55,6 @@
 
   &-number {
     font-family: 'JD';
-    /* #ifdef harmony */
-    line-height: 12px;
-    /* #endif */
-    /* #ifndef harmony */
-    line-height: 13px;
-    /* #endif */
   }
 
   &-one {

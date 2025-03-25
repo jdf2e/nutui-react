@@ -1,3 +1,32 @@
+# v3.0.5
+
+`2025-03-21`
+
+- feat(pickerview): 小程序支持自定义列表行高 (#3102)
+- feat: 优化了一下文档样式,更紧凑清晰 (#3105)
+- fix(ImagePreview): 优化代码，fix 因为popup最大宽度导致的问题 (#2939)
+- fix(badge): 解决中文偏上问题 (#3111)
+- fix(swipe): 调整 demo 中字体为 12 (#3093)
+- fix: correct import paths (#3089)
+- fix: 开发环境中导出 types 下的类型 (#3090)
+- fix(inputnumber): value 大于 max 图标应处于禁用态 (#3107)
+- fix(resultpage): 引入button样式 (#3103)
+- fix(SearchBar): demo 样式变量修订 (#3101)
+- fix: adjust site style (#3096)
+- refactor(fixednav): support harmony (#3095)
+- docs: 补充web 设置 px 转 rem时的文档 (#3098)
+- feat(pickerview): 选中值增加class类名用于自定义样式 (#3097)
+- test(uploader): optimize async test cases stability (#3104)
+
+# v3.0.4
+
+`2025-03-07`
+
+- fix(sidebar): 禁用属性和内容显示异常 (#3084)
+- fix: 示例中 toast 的用法修复 (#3083)
+- chore: 移除废弃的 github action (#3085)
+- chore(deps): 升级 actions/github-script 到 v7 (#3012)
+
 # v3.0.3
 
 `2025-03-07`

@@ -39,7 +39,6 @@ const Demo4 = () => {
         </PullToRefresh>
       </ScrollView>
       <Toast
-        type="text"
         visible={show}
         content={toastMsg}
         onClose={() => {

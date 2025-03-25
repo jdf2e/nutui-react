@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Drag, FixedNav } from '@nutui/nutui-react'
+import { Drag, FixedNav, useRtl } from '@nutui/nutui-react'
 
 const Demo5 = () => {
+  const rtl = useRtl()
   const list = [
     {
       id: 1,
@@ -37,7 +38,13 @@ const Demo5 = () => {
   }
   return (
     <>
-      <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
+      <Drag
+        direction="y"
+        style={{
+          ...(rtl ? { left: '0px' } : { right: '0px' }),
+          ...{ bottom: '240px' },
+        }}
+      >
         <FixedNav
           list={list}
           inactiveText="支持拖拽"

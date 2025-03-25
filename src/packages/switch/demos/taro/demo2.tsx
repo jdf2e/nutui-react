@@ -22,7 +22,6 @@ const Demo2 = () => {
         />
       </Cell>
       <Toast
-        type="text"
         content={`2秒后异步触发 ${value}`}
         visible={showToast}
         onClose={() => {

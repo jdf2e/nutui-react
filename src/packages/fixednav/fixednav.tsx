@@ -55,7 +55,7 @@ export const FixedNav: FunctionComponent<
     {
       active: visible,
     },
-    type,
+    `${classPrefix}-${type}`,
     className
   )
 
@@ -69,7 +69,7 @@ export const FixedNav: FunctionComponent<
         {React.isValidElement(item.icon) ? (
           item.icon
         ) : (
-          <img src={item.icon} alt="" />
+          <img src={item.icon} alt="" className={`${classPrefix}-list-image`} />
         )}
         <div className={`${classPrefix}-list-text`}>{item.text}</div>
       </div>

@@ -3,15 +3,13 @@ import { Cell, InputNumber, Toast } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const overlimit = () => {
-    toastShow('超出限制事件触发', 'warn')
+    toastShow('超出限制事件触发')
   }
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
-  const [toastType, SetToastType] = useState('text')
 
-  const toastShow = (msg: any, type: string) => {
+  const toastShow = (msg: string) => {
     SetToastMsg(msg)
-    SetToastType(type)
     SetShow(true)
   }
 
@@ -29,7 +27,6 @@ const Demo3 = () => {
         />
       </Cell>
       <Toast
-        type={toastType}
         visible={show}
         content={toastMsg}
         onClose={() => {
