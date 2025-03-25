@@ -23,5 +23,5 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
-  "title": "语法糖 - antd@5.24.4"
+  "title": "NutUI-React-Demo",
 }
