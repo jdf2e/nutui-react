@@ -115,6 +115,7 @@
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
     "classnames": "^2.5.1",
+    "codesandbox": "^2.2.3",
     "lodash.kebabcase": "^4.1.1",
     "lottie-miniprogram": "^1.0.12",
     "lottie-react": "^2.4.0",
