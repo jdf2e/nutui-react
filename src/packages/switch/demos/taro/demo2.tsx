@@ -6,7 +6,7 @@ const Demo2 = () => {
   const [value, setValue] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const onChangeAsync = (value: boolean, event: any) => {
+  const onChangeAsync = (value: boolean) => {
     setValue(value)
     setShowToast(true)
     setTimeout(() => {
@@ -18,7 +18,7 @@ const Demo2 = () => {
       <Cell>
         <Switch
           checked={checkedAsync}
-          onChange={(value, event) => onChangeAsync(value, event)}
+          onChange={(value) => onChangeAsync(value)}
         />
       </Cell>
       <Toast

@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { Loading1 } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider'
@@ -35,6 +36,12 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
+  useEffect(() => {
+    changing && setChanging(false)
+  }, [value])
+
+  const [changing, setChanging] = useState(false)
+
   const classes = () => {
     return classNames([
       classPrefix,
@@ -47,18 +54,16 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    if (disabled) return
-    onChange && onChange(!value, event)
+  const onClick = () => {
+    if (disabled || changing) return
+    if (props.onChange) {
+      setChanging(true)
+      props.onChange(!value)
+    }
     setValue(!value)
   }
   return (
-    <div
-      className={classes()}
-      onClick={(e) => onClick(e)}
-      style={style}
-      {...rest}
-    >
+    <div className={classes()} onClick={onClick} style={style} {...rest}>
       <div
         className={classNames([
           [`${classPrefix}-button`],
@@ -73,8 +78,14 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
           },
         ])}
       >
-        {!value && !activeText && (
-          <div className={`${classPrefix}-close-line`} />
+        {changing ? (
+          <Loading1 />
+        ) : (
+          <>
+            {!value && !activeText && (
+              <div className={`${classPrefix}-close-line`} />
+            )}
+          </>
         )}
       </div>
       {activeText && (
