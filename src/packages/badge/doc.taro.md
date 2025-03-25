@@ -18,6 +18,14 @@ import { Badge } from '@nutui/nutui-react-taro'
 
 :::
 
+### 禁用
+
+:::demo
+
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
 ### 最大值
 
 :::demo

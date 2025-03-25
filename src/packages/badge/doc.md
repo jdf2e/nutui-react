@@ -18,6 +18,14 @@ import { Badge } from '@nutui/nutui-react'
 
 :::
 
+### 禁用
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ### 最大值
 
 :::demo
