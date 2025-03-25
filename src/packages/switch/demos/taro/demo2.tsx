@@ -5,13 +5,19 @@ const Demo2 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   const [value, setValue] = useState(false)
   const [showToast, setShowToast] = useState(false)
+  const mockRequest = (): Promise<void> => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  }
 
-  const onChangeAsync = (value: boolean) => {
+  const onChangeAsync = async (value: boolean) => {
     setValue(value)
     setShowToast(true)
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
+    await mockRequest()
+    setCheckedAsync(value)
   }
   return (
     <>
