@@ -18,7 +18,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Custom DefaultValue
+### Logo Tips
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### No Icon
+### Only Text
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Logo Tips
+### Custom
 
 :::demo
 
@@ -50,7 +50,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Dot
+### Custom Color and Size
 
 :::demo
 
@@ -58,7 +58,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Custom Color
+### With Controlled
 
 :::demo
 
@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### Tabbar With Custom Number Of Icons
+### onDoubledClick Event
 
 :::demo
 
@@ -104,11 +104,12 @@ import { Tabbar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | title | the title of the tab | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | Custom icon | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
-| value | value to show in Badge, eg number、charctor and custom content | `ReactNode` | `-` |
+| value | value to show in Badge, eg number、charctor and custom content | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
+| onDoubleClick | When item is focused, you can add your callback when you click it again | `() => void` | `-` |
 
 ## Theming
 

@@ -144,7 +144,8 @@ plugins: [
 
 [//]: # '#### TabbarItem'
 
-- 为 `icon` 和 `title` 增加新的类型，支持 `function` 根据当前是否 `active` 状态展示不同的 icon；保留原类型，仅切换 `icon` 颜色。
+- 为 `icon`、`title` 和 `value` 增加新的类型，支持 `function` 根据当前是否 `active` 状态展示不同的 icon/title/value。
+- 增加 `onDoubleClick` 事件，用于处理当元素处于焦点时，再次点击时可增加自定义事件。
 
 [//]: # '#### Tabs'
 [//]: # '#### Tabs.Tabpane'

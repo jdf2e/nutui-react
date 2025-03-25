@@ -18,7 +18,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定義選中
+### 徽標提示
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 無圖標
+### 只配文字
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 徽標提示
+### 首坑品牌+營銷態
 
 :::demo
 
@@ -50,7 +50,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 紅點
+### 自定義顏色+數量
 
 :::demo
 
@@ -58,7 +58,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定義顏色
+### 受控
 
 :::demo
 
@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 可自定義icon個數的tabbar
+### 模擬雙擊支持回調
 
 :::demo
 
@@ -104,13 +104,14 @@ import { Tabbar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | title | 標簽頁的標題 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | icon | 自定義圖標 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
-| value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
+| value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| onDoubleClick | 用於處理當元素處於焦點時，再次點擊時可增加自定義事件。 | `() => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
