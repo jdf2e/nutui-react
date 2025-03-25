@@ -45,10 +45,10 @@ const Demo8 = () => {
       />
       <ConfigProvider
         theme={{
-          nutuiPickerItemHeight: '48px',
           nutuiPickerItemActiveLineBorder:
             '1px dashed var(--nutui-color-primary)',
           nutuiPickerItemTextColor: 'var(--nutui-color-primary)',
+          nutuiPickerItemHeight: '28px',
         }}
       >
         <Picker

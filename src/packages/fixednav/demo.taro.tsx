@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView } from '@tarojs/components'
+import { harmony } from '@/utils/platform-taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -17,8 +18,8 @@ const FixedNavDemo = () => {
         <Demo2 />
         <Demo3 />
         <Demo4 />
-        {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
-        <Demo5 />
+        {/* 配合 Drag 支持拖拽 ，harmony暂不支持 */}
+        {harmony() ? null : <Demo5 />}
       </ScrollView>
     </>
   )

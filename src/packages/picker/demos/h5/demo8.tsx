@@ -45,14 +45,13 @@ const Demo8 = () => {
       />
       <ConfigProvider
         theme={{
-          nutuiPickerItemHeight: '48px',
+          nutuiPickerItemHeight: '28px',
           nutuiPickerItemActiveLineBorder:
             '1px dashed var(--nutui-color-primary)',
           nutuiPickerItemTextColor: 'var(--nutui-color-primary)',
         }}
       >
         <Picker
-          style={{ '--nutui-picker-item-height': '28px' }}
           title="请选择城市"
           visible={visible}
           options={options}

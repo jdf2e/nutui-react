@@ -115,7 +115,7 @@ You can also implement on-demand import of styles in the following ways:
 Note that when manually loading components on demand, you also need to import the global class file in the entry file to load some of NutUI React Taro's global logic and styles:
 
 ```js
-import '@nutui/nutui-react-taro/dist/styles/themes/default.scss'
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 ```
 
 Install `babel-plugin-import`.
@@ -188,6 +188,26 @@ config = {
   },
   cache: {
     enable: false,
+  },
+}
+```
+
+:::
+
+#### 4、CSS units
+
+The CSS units used in the components are px. However, during the Taro compilation, Taro will help you perform size conversion operations on styles. It is important to note that you should add styles related to NutUI to the blacklist, such as:
+
+:::demo
+
+```js
+// config/index.js
+config = {
+  postcss: {
+    pxtransform: {
+      enable: true,
+      config: { selectorBlackList: ['nut-'] },
+    },
   },
 }
 ```

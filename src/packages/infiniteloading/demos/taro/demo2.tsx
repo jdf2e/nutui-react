@@ -108,7 +108,6 @@ const Demo2 = () => {
           </InfiniteLoading>
         </View>
         <Toast
-          type="text"
           visible={show}
           content={toastMsg}
           onClose={() => {

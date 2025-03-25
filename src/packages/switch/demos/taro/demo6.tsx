@@ -20,7 +20,6 @@ const Demo6 = () => {
         />
       </Cell>
       <Toast
-        type="text"
         content={`触发了onChange事件，开关状态：${value}`}
         visible={showToast}
         onClose={() => {
