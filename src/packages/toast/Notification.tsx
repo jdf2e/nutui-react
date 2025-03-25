@@ -149,7 +149,7 @@ export default class Notification extends React.PureComponent<
 
 Notification.newInstance = (properties, callback) => {
   const element = document.createElement('div')
-  const id = properties.id ? properties.id : `${new Date().getTime()}`
+  const id = properties.id ? properties.id : `${Date.now()}`
   element.id = id
   properties.id = id
   document.body.appendChild(element)

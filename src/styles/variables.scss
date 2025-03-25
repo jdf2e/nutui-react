@@ -147,6 +147,7 @@ $font-family:
   sans-serif !default;
 
 // Font
+$font-size-xxxs: var(--nutui-font-size-xxxs, 9px) !default;
 $font-size-xxs: var(--nutui-font-size-xxs, 10px) !default;
 $font-size-xs: var(--nutui-font-size-xs, 11px) !default;
 $font-size-s: var(--nutui-font-size-s, 12px) !default;
@@ -1616,7 +1617,7 @@ $badge-background-color: var(
   $color-primary
 ) !default;
 $badge-color: var(--nutui-badge-color, $color-primary-text) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-xxs) !default;
+$badge-font-size: var(--nutui-badge-font-size, $font-size-xxxs) !default;
 $badge-border: var(
   --nutui-badge-border,
   1px solid $color-primary-text

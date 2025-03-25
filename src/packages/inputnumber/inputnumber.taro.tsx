@@ -188,7 +188,8 @@ export const InputNumber: FunctionComponent<
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
             {
-              [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
+              [`${classPrefix}-icon-disabled`]:
+                Number(shadowValue) <= Number(min) || disabled,
             }
           )}
         />
@@ -214,7 +215,8 @@ export const InputNumber: FunctionComponent<
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
             {
-              [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
+              [`${classPrefix}-icon-disabled`]:
+                Number(shadowValue) >= Number(max) || disabled,
             }
           )}
         />

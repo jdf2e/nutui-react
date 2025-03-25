@@ -11,7 +11,7 @@ const Demo3 = () => {
       <ConfigProvider
         theme={{
           nutuiSearchbarBackground: 'var(--nutui-color-primary)',
-          nutuiSearchbarInputBackground: '#eee',
+          nutuiSearchbarContentBackground: '#eee',
           nutuiSearchbarInputTextAlign: 'right',
         }}
       >
