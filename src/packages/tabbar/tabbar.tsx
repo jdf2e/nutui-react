@@ -5,6 +5,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem'
 import TabbarContext from './context'
 import { WebTabbarProps } from '@/types'
+import SafeArea from '@/packages/safearea/index'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -83,7 +84,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
           )}
         </TabbarContext.Provider>
       </div>
-      {(fixed || safeArea) && <div className={`${classPrefix}-safe-area`} />}
+      {(fixed || safeArea) && <SafeArea position="bottom" />}
     </div>
   )
 }

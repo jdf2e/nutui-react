@@ -6,6 +6,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
 import TabbarContext from './context'
 import { TaroTabbarProps } from '@/types'
+import SafeArea from '@/packages/safearea/index.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -85,7 +86,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
           )}
         </TabbarContext.Provider>
       </View>
-      {(fixed || safeArea) && <View className={`${classPrefix}-safe-area`} />}
+      {(fixed || safeArea) && <SafeArea position="bottom" />}
     </View>
   )
 }
