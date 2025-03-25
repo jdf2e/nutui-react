@@ -102,8 +102,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| title | the title of the tab | `ReactNode` | `-` |
-| icon | Custom icon | `ReactNode` | `-` |
+| title | the title of the tab | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| icon | Custom icon | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | value to show in Badge, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Whether Badge is dotted | `boolean` | `false` |

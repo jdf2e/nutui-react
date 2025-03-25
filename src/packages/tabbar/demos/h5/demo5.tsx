@@ -1,15 +1,37 @@
 import React from 'react'
-import { Tabbar } from '@nutui/nutui-react'
-import { Cart, Category, Hi, Home, User } from '@nutui/icons-react'
+import { Tabbar, Image } from '@nutui/nutui-react'
+import { Cart, Hi, Home, User, Message } from '@nutui/icons-react'
 
-const Demo5 = () => (
-  <Tabbar>
-    <Tabbar.Item title="首页" icon={<Home />} value={11} />
-    <Tabbar.Item title="分类" icon={<Category />} />
-    <Tabbar.Item title="逛" icon={<Hi />} />
-    <Tabbar.Item title="购物车" icon={<Cart />} value={110} />
-    <Tabbar.Item title="我的" icon={<User />} />
-  </Tabbar>
-)
+const Demo = () => {
+  return (
+    <Tabbar>
+      <Tabbar.Item
+        title={(active: boolean) => (active ? '' : '首页')}
+        icon={(active: boolean) =>
+          active ? (
+            <Image src="https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png" />
+          ) : (
+            <Home />
+          )
+        }
+      />
 
-export default Demo5
+      <Tabbar.Item
+        icon={(active: boolean) =>
+          active ? (
+            <Hi />
+          ) : (
+            <Image src="https://storage.360buyimg.com/imgtools/00e365dee3-8fe58f80-0952-11f0-8d73-ab964e6901f9.png" />
+          )
+        }
+        title={(active: boolean) => (active ? '逛' : '')}
+        value="AI"
+      />
+      <Tabbar.Item title="消息" icon={<Message />} value={100} />
+      <Tabbar.Item title="购物车" icon={<Cart />} />
+      <Tabbar.Item title="我的" icon={<User />} />
+    </Tabbar>
+  )
+}
+
+export default Demo

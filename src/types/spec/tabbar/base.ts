@@ -12,12 +12,12 @@ export interface BaseTabbar extends BaseProps {
 }
 
 export interface BaseTabbarItem extends BaseProps {
-  title: ReactNode
-  icon: ReactNode
-  activeIcon: ReactNode
-  value: ReactNode
+  title: ReactNode | ((active: boolean) => ReactNode)
+  icon: ReactNode | ((active: boolean) => ReactNode)
+  value: ReactNode | ((active: boolean) => ReactNode)
   dot: boolean
   max: number
   top: string
   right: string
+  onDoubleClick: () => void
 }

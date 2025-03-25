@@ -102,8 +102,8 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| title | 标签页的标题 | `ReactNode` | `-` |
-| icon | 自定义图标 | `ReactNode` | `-` |
+| title | 标签页的标题 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| icon | 自定义图标 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | value | 徽标中显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
 | max | value 为数值时，最大值 | `number` | `99` |
 | dot | 徽标是否为小点 | `boolean` | `false` |

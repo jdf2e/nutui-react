@@ -138,7 +138,14 @@ plugins: [
 - 注意：** 该组件不符合移动端规范，已被废弃。请使用 SideBar **
 
 [//]: # '#### Tabbar'
+
+- 增加Demo：首坑为 logo 的当前流行处理方式；
+- 增加Demo：支持营销态的处理方式；
+
 [//]: # '#### TabbarItem'
+
+- 为 `icon` 和 `title` 增加新的类型，支持 `function` 根据当前是否 `active` 状态展示不同的 icon；保留原类型，仅切换 `icon` 颜色。
+
 [//]: # '#### Tabs'
 [//]: # '#### Tabs.Tabpane'
 

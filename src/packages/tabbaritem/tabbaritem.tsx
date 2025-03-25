@@ -5,12 +5,10 @@ import Badge from '@/packages/badge/index'
 import TabbarContext from '@/packages/tabbar/context'
 import { WebTabbarItemProps } from '@/types'
 
-// 是否支持双击事件？
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
   icon: null,
-  activeIcon: null,
   value: '',
   dot: false,
   max: 99,
@@ -27,7 +25,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     style,
     title,
     icon,
-    activeIcon,
     value,
     dot,
     max,
@@ -35,6 +32,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     right,
     // @ts-ignore
     index,
+    onDoubleClick,
     ...rest
   } = {
     ...defaultProps,
@@ -42,14 +40,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   }
   const active = index === ctx?.selectIndex
   const classPrefix = 'nut-tabbar-item'
-
-  // 默认有 icon 和 text，icon+badge
-  // 考虑 只有icon时，icon large，icon+badge
-  // 考虑 只有text时，text large，text+badge
-
-  // 如果有 activeIcon，则icon为默认态，activeIcon为选中态；
-  // 如果有 activeIcon，但没有 icon，则异常
-  // 如果没有 activeIcon，则icon为默认态，同时也为选中态，遵循默认选中规则
   const tabbarItemClass = classNames(
     classPrefix,
     {
@@ -59,8 +49,11 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     className
   )
 
+  const badgeValue =
+    value && typeof value === 'function' ? value(active) : value
+
   const badgeProps = {
-    value,
+    value: badgeValue,
     dot,
     max,
     top,
@@ -69,7 +62,13 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   }
 
   const renderTitleText = () => {
-    return title && <div className={`${classPrefix}-text`}>{title}</div>
+    return (
+      title && (
+        <div className={`${classPrefix}-text`}>
+          {typeof title === 'function' ? title(active) : title}
+        </div>
+      )
+    )
   }
 
   const renderTitle = () => {
@@ -79,17 +78,10 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge {...badgeProps}>{icon}</Badge>
+        <Badge {...badgeProps}>
+          {icon && typeof icon === 'function' ? icon(active) : icon}
+        </Badge>
         {renderTitleText()}
-      </>
-    )
-  }
-
-  const renderIconAndActiveIcon = () => {
-    return (
-      <>
-        <Badge {...badgeProps}>{active ? activeIcon : icon}</Badge>
-        {active && renderTitleText()}
       </>
     )
   }
@@ -101,12 +93,11 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
         color: active ? ctx?.activeColor : ctx?.inactiveColor,
         ...style,
       }}
-      onClick={() => ctx?.handleClick(index)}
+      onClick={() => (active ? onDoubleClick?.() : ctx?.handleClick(index))}
       {...rest}
     >
-      {icon && !activeIcon && renderIconAndTitle()}
+      {icon && renderIconAndTitle()}
       {!icon && renderTitle()}
-      {icon && activeIcon && renderIconAndActiveIcon()}
     </div>
   )
 }
