@@ -12,8 +12,9 @@ const defaultProps = {
   fixed: false,
   inactiveColor: '',
   activeColor: '',
+  direction: 'vertical',
   safeArea: false,
-  onSwitch: (value) => {},
+  onSwitch: () => {},
 } as WebTabbarProps
 
 export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
@@ -26,14 +27,13 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     fixed,
     activeColor,
     inactiveColor,
+    direction,
     safeArea,
     className,
     style,
     onSwitch,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
+
   const classPrefix = 'nut-tabbar'
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
@@ -43,18 +43,27 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     onChange: onSwitch,
   })
 
+  const sizeCls = () => {
+    const size = React.Children.count(children)
+    return size > 3
+      ? ''
+      : classNames({
+          [`${classPrefix}-wrap-3`]: size === 3,
+          [`${classPrefix}-wrap-2`]: size === 2,
+          [`${classPrefix}-wrap-${direction}`]: size === 2 && direction,
+        })
+  }
+
   return (
     <div
       className={classNames(
         classPrefix,
-        {
-          [`${classPrefix}-fixed`]: fixed,
-        },
+        { [`${classPrefix}-fixed`]: fixed },
         className
       )}
       style={style}
     >
-      <div className={`${classPrefix}-wrap`}>
+      <div className={`${classPrefix}-wrap ${sizeCls()}`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -63,10 +72,15 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
             handleClick: setSelectIndex,
           }}
         >
-          {React.Children.map(children, (child, index) => {
-            if (!React.isValidElement(child)) return null
-            return React.cloneElement(child, { ...child.props, index })
-          })}
+          {React.Children.map(children, (child, index) =>
+            React.isValidElement(child)
+              ? React.cloneElement(child, {
+                  ...child.props,
+                  index,
+                  direction: React.Children.count(children) === 2 && direction,
+                })
+              : null
+          )}
         </TabbarContext.Provider>
       </div>
       {(fixed || safeArea) && <div className={`${classPrefix}-safe-area`} />}

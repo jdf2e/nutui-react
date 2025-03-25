@@ -20,6 +20,30 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    &-3 {
+      padding: 0 16px;
+    }
+
+    &-2 {
+      padding: 0 32px;
+    }
+
+    &-horizontal {
+      padding: 12px 0 14px;
+      .nut-tabbar-item {
+        flex-direction: row;
+        justify-content: center;
+        .nut-icon {
+          width: 20px;
+          height: 20px;
+        }
+        .nut-tabbar-item-text {
+          margin: 0 4px 0 6px;
+          font-size: 14px;
+        }
+      }
+    }
   }
 
   &:last-child {

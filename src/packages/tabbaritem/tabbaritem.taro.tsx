@@ -15,6 +15,7 @@ const defaultProps = {
   max: 99,
   top: '0',
   right: '0',
+  direction: 'vertical',
 } as TaroTabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
@@ -33,6 +34,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     right,
     // @ts-ignore
     index,
+    direction,
     onDoubleClick,
     ...rest
   } = {
@@ -78,16 +80,30 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   }
 
   const renderTitle = () => {
-    return <Badge {...badgeProps}>{renderTitleText()}</Badge>
+    return (
+      <Badge size="normal" {...badgeProps}>
+        {renderTitleText()}
+      </Badge>
+    )
   }
 
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge {...badgeProps}>
+        <Badge size="normal" {...badgeProps}>
           {icon && typeof icon === 'function' ? icon(active) : icon}
         </Badge>
         {renderTitleText()}
+      </>
+    )
+  }
+
+  const renderDualItem = () => {
+    return dot ? null : (
+      <>
+        {icon && typeof icon === 'function' ? icon(active) : icon}
+        {renderTitleText()}
+        <Badge {...badgeProps} />
       </>
     )
   }
@@ -102,8 +118,14 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
       onClick={() => (active ? onDoubleClick?.() : ctx?.handleClick(index))}
       {...rest}
     >
-      {icon && renderIconAndTitle()}
-      {!icon && renderTitle()}
+      {direction === 'horizontal' && !dot ? (
+        renderDualItem()
+      ) : (
+        <>
+          {icon && renderIconAndTitle()}
+          {!icon && renderTitle()}
+        </>
+      )}
     </View>
   )
 }

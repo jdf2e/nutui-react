@@ -13,8 +13,9 @@ const defaultProps = {
   fixed: false,
   inactiveColor: '',
   activeColor: '',
+  direction: 'vertical',
   safeArea: false,
-  onSwitch: (value) => {},
+  onSwitch: () => {},
 } as TaroTabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
@@ -27,14 +28,12 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     fixed,
     activeColor,
     inactiveColor,
+    direction,
     safeArea,
     className,
     style,
     onSwitch,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
@@ -43,6 +42,17 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     finalValue: 0,
     onChange: onSwitch,
   })
+
+  const sizeCls = () => {
+    const size = React.Children.count(children)
+    return size > 3
+      ? ''
+      : classNames({
+          [`${classPrefix}-wrap-3`]: size === 3,
+          [`${classPrefix}-wrap-2`]: size === 2,
+          [`${classPrefix}-wrap-${direction}`]: size === 2 && direction,
+        })
+  }
 
   return (
     <View
@@ -55,7 +65,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
       )}
       style={style}
     >
-      <View className={`${classPrefix}-wrap`}>
+      <View className={`${classPrefix}-wrap ${sizeCls()}`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -64,10 +74,15 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
             handleClick: setSelectIndex,
           }}
         >
-          {React.Children.map(children, (child, index) => {
-            if (!React.isValidElement(child)) return null
-            return React.cloneElement(child, { ...child.props, index })
-          })}
+          {React.Children.map(children, (child, index) =>
+            React.isValidElement(child)
+              ? React.cloneElement(child, {
+                  ...child.props,
+                  index,
+                  direction: React.Children.count(children) === 2 && direction,
+                })
+              : null
+          )}
         </TabbarContext.Provider>
       </View>
       {(fixed || safeArea) && <View className={`${classPrefix}-safe-area`} />}
