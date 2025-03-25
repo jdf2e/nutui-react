@@ -21,8 +21,8 @@ test('should render tabbar when default', () => {
   expect(container.firstChild).toBeInTheDocument()
   expect(container.querySelectorAll('.nut-tabbar-item').length).toEqual(5)
   expect(
-    container.querySelectorAll('.nut-tabbar-item-icon-box').length
-  ).toEqual(10)
+    container.querySelectorAll('.nut-tabbar-item .nut-icon').length
+  ).toEqual(5)
 })
 
 test('should render custom color and badge when using prop', () => {
