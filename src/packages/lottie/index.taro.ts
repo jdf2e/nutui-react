@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
-import { Lottie as LottieWeb } from './web.taro'
-import { Lottie as LottieMp } from './mp.taro'
+import { Lottie as LottieWeb } from './lottieweb.taro'
+import { Lottie as LottieMp } from './lottiemp.taro'
 import { TaroLottieProps } from '@/types'
 
 export type { TaroLottieProps as LottieProps } from '@/types'
