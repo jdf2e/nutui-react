@@ -75,7 +75,7 @@ export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
   }
 
   function maybeFixedWidth() {
-    if (type === 'firstScreen' || type === 'slide') {
+    if (type === 'dualScreen' || type === 'slide') {
       return `${classPrefix}-fixed-width`
     }
     return ''

@@ -68,7 +68,7 @@ import { Indicator } from '@nutui/nutui-react'
 | total | 總頁數 | `number` | `2` |
 | direction | 方向，預設為水平方向 | `horizontal` \| `vertical` | `horizontal` |
 | color | 顏色 | `primary` \| `default` | `primary` |
-| type | 互動類型 | `anchor` \| `slide` | `anchor` |
+| type | 互動類型 | `anchor` \| `slide`\| `dualScreen` | `anchor` |
 
 ## 主題定製
 
