@@ -1,6 +1,6 @@
 # Calendar 日歴
 
-日歴，可平鋪/彈窗展示
+日歷，可平鋪/彈窗展示。支持日面板、月面板及季度面板展示。
 
 ## 引入
 
@@ -98,6 +98,30 @@ import { Calendar } from '@nutui/nutui-react'
 
 :::
 
+### 季度面板
+
+:::demo
+
+<CodeBlock src='h5/demo101.tsx'></CodeBlock>
+
+:::
+
+### 月面板
+
+:::demo
+
+<CodeBlock src='h5/demo102.tsx'></CodeBlock>
+
+:::
+
+### 顯示周號
+
+:::demo
+
+<CodeBlock src='h5/demo103.tsx'></CodeBlock>
+
+:::
+
 ## Calendar
 
 ### Props
@@ -106,6 +130,7 @@ import { Calendar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
 | type | 類型，日期選擇'single'，區間選擇'range' | `string` | `single` |
+| viewMode | 展示模式 | `day` \| `month` \| `quarter` | `day` |
 | popup | 是否彈窗狀態展示 | `boolean` | `true` |
 | autoBackfill | 自動回填 | `boolean` | `false` |
 | title | 顯示標題 | `string` | `日期選擇` |
@@ -118,6 +143,7 @@ import { Calendar } from '@nutui/nutui-react'
 | confirmText | 底部確認按鈕文案 | `ReactNode` | `確認` |
 | showTitle | 是否在展示日歴標題 | `boolean` | `true` |
 | showSubTitle | 是否展示日期標題 | `boolean` | `true` |
+| showMonthNumber | 是否展示周號 | `boolean` | `false` |
 | scrollAnimation | 是否啟動滾動動畫 | `boolean` | `true` |
 | firstDayOfWeek | 設置周起始日 | `0-6` | `0` |
 | closeIcon | 自定義 Icon | `ReactNode` | `close` |
@@ -128,6 +154,7 @@ import { Calendar } from '@nutui/nutui-react'
 | renderDayTop | 日期頂部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | onDayClick | 點擊/選擇後觸發 | `(data: string) => {}` | `-` |
+| onItemClick | 月面板/季度面板中，點擊某項 | `(data: string) => void` | `-` |
 | onPageChange | 年月子標題到達頂部時觸發 | `(param: string) => {}` | `-` |
 | onConfirm | 選擇之後或是點擊確認按鈕觸發 | `(param: string) => {}` | `-` |
 | onClose | 關閉時觸發 | `() => {}` | `-` |
@@ -170,5 +197,6 @@ import { Calendar } from '@nutui/nutui-react'
 | \--nutui-calendar-day-height | 日歴元素高度 | `60px` |
 | \--nutui-calendar-day-font-weight | 日歴元素字重 | `500` |
 | \--nutui-calendar-day-active-border-radius | 日歴選中元素的圓角 | `4px` |
+| \--nutui-calendar-panel-item-width | 月面板和季度面板每個元素的寬度 | `24.85%` |
 
 <Contribution name="Calendar" />
