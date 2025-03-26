@@ -6,7 +6,7 @@ const glob = require('glob')
 let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '../theme-default.scss';\n@import '../variables-${projectID}.scss';\n`
+  fileStr = `@import '../theme-${projectID}.scss';\n@import '../variables-${projectID}.scss';\n`
 }
 let tasks = []
 const componentsScss = glob.sync('./src/packages/**/*.scss', { dotRelative: true })
