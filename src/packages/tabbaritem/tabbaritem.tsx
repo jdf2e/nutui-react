@@ -91,7 +91,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge size="normal" {...badgeProps}>
+        <Badge size="normal" {...badgeProps} top={3}>
           {renderIcon()}
         </Badge>
         {renderTitleText()}

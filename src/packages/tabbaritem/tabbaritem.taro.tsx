@@ -103,7 +103,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   const renderIconAndTitle = () => {
     return (
       <>
-        <Badge size="normal" {...badgeProps}>
+        <Badge size="normal" {...badgeProps} top={3}>
           {renderIcon()}
         </Badge>
         {renderTitleText()}

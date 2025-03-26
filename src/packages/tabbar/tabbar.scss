@@ -9,7 +9,6 @@
   background: $color-background-overlay;
 
   &-wrap {
-    width: 100%;
     height: $tabbar-height;
     display: flex;
 
@@ -22,6 +21,7 @@
     }
 
     &-horizontal {
+      align-items: center;
       .nut-tabbar-item {
         flex-direction: row;
         justify-content: center;
@@ -32,6 +32,11 @@
         .nut-tabbar-item-text {
           margin: 0 4px 0 6px;
           font-size: 14px;
+        }
+        .nut-badge-sup {
+          &::after {
+            border: 0;
+          }
         }
       }
     }

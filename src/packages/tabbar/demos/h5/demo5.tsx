@@ -21,7 +21,7 @@ const Demo = () => {
           active ? (
             <Hi />
           ) : (
-            <Image src="https://storage.360buyimg.com/imgtools/00e365dee3-8fe58f80-0952-11f0-8d73-ab964e6901f9.png" />
+            <Image src="https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png" />
           )
         }
         title={(active: boolean) => (active ? '逛' : '')}
