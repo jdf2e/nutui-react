@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 import { Star } from '@nutui/icons-react'
 
-const Demo1 = () => {
+const Demo = () => {
   const d = new Date()
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
@@ -45,4 +45,4 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+export default Demo

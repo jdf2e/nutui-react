@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react-taro'
 
-const Demo2 = () => {
-  const [date, setDate] = useState(['2023-01-23', '2023-11-26'])
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState([`${d}-01-23`, `${d}-11-26`])
   const [isVisible, setIsVisible] = useState(false)
 
   const openSwitch = () => {
@@ -28,13 +29,12 @@ const Demo2 = () => {
         description={date ? `${date[0]}至${date[1]}` : '请选择'}
         onClick={openSwitch}
       />
-
       <Calendar
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2022-12-22"
-        endDate="2024-01-08"
+        startDate={`${d - 1}-12-22`}
+        endDate={`${d + 1}-01-22`}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
         onDayClick={select}
@@ -42,4 +42,4 @@ const Demo2 = () => {
     </>
   )
 }
-export default Demo2
+export default Demo

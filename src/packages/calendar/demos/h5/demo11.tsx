@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react'
 
-const Demo11 = () => {
-  const [date, setDate] = useState<string[]>(['2023-06-03', '2023-06-16'])
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState<string[]>([`${d}-06-03`, `${d}-06-16`])
 
   const setChooseValue = (param: string) => {
     setDate([...[param[0][3], param[1][3]]])
@@ -27,8 +28,8 @@ const Demo11 = () => {
           popup={false}
           defaultValue={date}
           type="range"
-          startDate="2023-5-23"
-          endDate="2023-08-01"
+          startDate={`${d - 1}-11-21`}
+          endDate={`${d + 1}-09-10`}
           startText={<div>test</div>}
           endText="leave"
           autoBackfill
@@ -39,4 +40,4 @@ const Demo11 = () => {
     </>
   )
 }
-export default Demo11
+export default Demo

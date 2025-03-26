@@ -46,6 +46,7 @@ const createConfig = async () => {
           }
         })
       }
+      
       co = { ...co, pages: co.pages.sort() }
       configRef.push(co)
     })

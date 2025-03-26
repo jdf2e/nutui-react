@@ -34,6 +34,10 @@ export interface BaseLang {
     start: string
     confirm: string
     title: string
+    week: string
+    month: string
+    year: string
+    quarter: string
     // eslint-disable-next-line @typescript-eslint/ban-types
     monthTitle: Function
     today: string

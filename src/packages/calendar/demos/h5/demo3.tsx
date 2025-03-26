@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
-const Demo3 = () => {
+const Demo = () => {
+  const d = new Date().getFullYear()
   const [date, setDate] = useState<string[]>([])
   const [isVisible, setIsVisible] = useState(false)
 
@@ -31,12 +32,12 @@ const Demo3 = () => {
         visible={isVisible}
         defaultValue={date}
         type="multiple"
-        startDate="2023-01-01"
-        endDate="2024-09-10"
+        startDate={`${d - 1}-11-21`}
+        endDate={`${d + 1}-09-10`}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
       />
     </>
   )
 }
-export default Demo3
+export default Demo

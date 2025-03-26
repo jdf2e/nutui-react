@@ -9,9 +9,9 @@ const padZero = (num: number | string, targetLength = 2) => {
   return str
 }
 
-const Demo9 = () => {
-  const [date, setDate] = useState<string[]>(['2023-06-12', '2023-06-16'])
-
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState<string[]>([`${d}-03-23`, `${d}-11-26`])
   const [isVisible, setIsVisible] = useState(false)
 
   const openSwitch = () => {
@@ -57,8 +57,8 @@ const Demo9 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2023-2-22"
-        endDate="2024-01-08"
+        startDate={`${d - 1}-11-21`}
+        endDate={`${d + 1}-09-10`}
         confirmText="submit"
         startText="enter"
         endText="leave"
@@ -72,4 +72,4 @@ const Demo9 = () => {
     </>
   )
 }
-export default Demo9
+export default Demo

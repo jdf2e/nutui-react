@@ -1026,6 +1026,10 @@ $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px
 ) !default;
+$calendar-panel-item-width: var(
+  --nutui-calendar-panel-item-width,
+  24.85%
+) !default;
 
 //hoverbutton
 $hoverbutton-spacing: var(--nutui-hoverbutton-spacing, $spacing-base) !default;

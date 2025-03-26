@@ -1,6 +1,6 @@
 # Calendar 日历
 
-日历，可平铺/弹窗展示
+日历，可平铺/弹窗展示。支持日面板、月面板及季度面板展示。
 
 ## 引入
 
@@ -98,6 +98,30 @@ import { Calendar } from '@nutui/nutui-react-taro'
 
 :::
 
+### 季度面板
+
+:::demo
+
+<CodeBlock src='h5/demo101.tsx'></CodeBlock>
+
+:::
+
+### 月面板
+
+:::demo
+
+<CodeBlock src='h5/demo102.tsx'></CodeBlock>
+
+:::
+
+### 显示周号
+
+:::demo
+
+<CodeBlock src='h5/demo103.tsx'></CodeBlock>
+
+:::
+
 ## Calendar
 
 ### Props
@@ -106,6 +130,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | visible | 是否可见 | `boolean` | `false` |
 | type | 类型，日期选择'single'，区间选择'range' | `string` | `single` |
+| viewMode | 展示模式 | `day` \| `month` \| `quarter` | `day` |
 | popup | 是否弹窗状态展示 | `boolean` | `true` |
 | autoBackfill | 自动回填 | `boolean` | `false` |
 | title | 显示标题 | `string` | `日期选择` |
@@ -118,6 +143,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | confirmText | 底部确认按钮文案 | `ReactNode` | `确认` |
 | showTitle | 是否在展示日历标题 | `boolean` | `true` |
 | showSubTitle | 是否展示日期标题 | `boolean` | `true` |
+| showMonthNumber | 是否展示周号 | `boolean` | `false` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
@@ -128,6 +154,7 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | renderDayTop | 日期顶部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | onDayClick | 点击/选择后触发 | `(data: string) => {}` | `-` |
+| onItemClick | 月面板/季度面板中，点击某项 | `(data: string) => void` | `-` |
 | onPageChange | 年月子标题到达顶部时触发 | `(param: string) => {}` | `-` |
 | onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` | `-` |
 | onClose | 关闭时触发 | `() => {}` | `-` |
@@ -170,5 +197,6 @@ import { Calendar } from '@nutui/nutui-react-taro'
 | \--nutui-calendar-day-height | 日历元素高度 | `60px` |
 | \--nutui-calendar-day-font-weight | 日历元素字重 | `500` |
 | \--nutui-calendar-day-active-border-radius | 日历选中元素的圆角 | `4px` |
+| \--nutui-calendar-panel-item-width | 月面板和季度面板每个元素的宽度 | `24.85%` |
 
 <Contribution name="Calendar" />

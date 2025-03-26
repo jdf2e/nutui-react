@@ -1,6 +1,7 @@
 @import '../popup/popup.scss';
 
-.nut-calendar {
+.nut-calendar,
+.nut-calendar-viewmode {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -47,12 +48,15 @@
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
     line-height: 50px;
+    text-align: center;
   }
 
   &-sub-title {
     padding: 7px 0;
     line-height: 22px;
     font-size: $calendar-sub-title-font-size;
+    font-weight: $calendar-title-font-weight;
+    text-align: center;
   }
 
   &-weeks {
@@ -62,11 +66,14 @@
     height: 36px;
     border-radius: 0px 0px 12px 12px;
     box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
+    &-shrink {
+      padding-left: 17%;
+    }
   }
 
   &-week-item {
-    &:first-of-type,
-    &:last-of-type {
+    font-weight: $calendar-title-font-weight;
+    &.weekend {
       color: $color-primary;
     }
   }
@@ -75,7 +82,8 @@
   &-content {
     flex: 1;
     width: 100%;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     overflow-y: auto;
   }
 
@@ -108,14 +116,42 @@
       height: 23px;
       line-height: 23px;
       margin: 8px 0;
+      text-align: center;
     }
+  }
+
+  &-weeknumber {
+    width: 35%;
+    flex: 1;
+    &-index {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      height: $calendar-day-height;
+      font-weight: $font-weight;
+      font-size: $font-size-base;
+      margin-bottom: 4px;
+      color: $color-text-help;
+    }
+  }
+
+  &-weeknumber-web {
+    width: 35%;
+    flex: auto;
   }
 
   &-days {
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    &-shrink {
+      flex: 5;
+    }
   }
 
-  &-day {
+  &-item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,9 +163,8 @@
     font-weight: $calendar-day-font-weight;
     margin-bottom: 4px;
 
-    &:nth-child(7n + 0),
-    &:nth-child(7n + 1) {
-      color: $color-primary;
+    &-day {
+      font-weight: $calendar-title-font-weight;
     }
 
     &-info,
@@ -137,8 +172,10 @@
       position: absolute;
       bottom: 5px;
       width: 100%;
-      font-size: 12px;
+      font-size: $font-size-s;
+      font-weight: $calendar-title-font-weight;
       line-height: 14px;
+      text-align: center;
     }
 
     &-info-top {
@@ -153,48 +190,70 @@
       bottom: 5px;
     }
 
+    &.weekend {
+      color: $color-primary;
+    }
+
     &-active {
       background-color: $calendar-active-background-color;
-      color: $color-primary-text !important;
+      color: $color-primary-text;
       border-radius: $calendar-day-active-border-radius;
 
-      &.active-start {
+      &.start {
         border-radius: 0px;
         border-top-left-radius: $calendar-day-active-border-radius;
         border-bottom-left-radius: $calendar-day-active-border-radius;
       }
-
-      &.active-end {
+      &.end {
         border-radius: 0px;
         border-top-right-radius: $calendar-day-active-border-radius;
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
 
-      .nut-calendar-day-info {
+      &.weekend {
         color: $color-primary-text;
+      }
+
+      &.mid {
+        border-radius: 0px;
+        background-color: $calendar-choose-background-color;
+        color: $calendar-choose-color;
+
+        &.disabled {
+          background-color: $calendar-choose-disable-background-color;
+          color: $calendar-disable-color !important;
+
+          .nut-calendar-item-info-curr {
+            display: none;
+          }
+        }
       }
     }
 
-    &-disabled {
+    &-disabled,
+    &-prev,
+    &-next {
       color: $calendar-disable-color !important;
 
-      .nut-calendar-day-info-curr {
+      .nut-calendar-item-info-curr {
         display: none;
       }
     }
+  }
 
-    &-choose {
-      background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
+  .shrink {
+    display: flex;
+  }
 
-      &-disabled {
-        background-color: $calendar-choose-disable-background-color;
-        color: $calendar-disable-color !important;
-
-        .nut-calendar-day-info-curr {
-          display: none;
-        }
-      }
+  &-panel {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    &-title {
+      height: 23px;
+      line-height: 23px;
+      margin: 8px 0;
+      text-align: center;
     }
   }
 
@@ -218,6 +277,110 @@
   }
 }
 
+.nut-calendar-harmony {
+  .nut-calendar-weeknumber {
+    width: 25%;
+    flex: 1;
+  }
+
+  .nut-calendar-item,
+  .nut-calendar-viewmode-item {
+    &.weekend {
+      .nut-calendar-item-day {
+        color: $color-primary;
+      }
+    }
+    &-active {
+      .nut-calendar-item-info,
+      .nut-calendar-item-info-curr,
+      .nut-calendar-item-day {
+        color: $color-primary-text;
+      }
+      .nut-calendar-viewmode-item-info,
+      .nut-calendar-viewmode-item-info-curr,
+      .nut-calendar-viewmode-item-curr {
+        color: $color-primary-text;
+      }
+
+      &.start,
+      &.end {
+        .nut-calendar-item-info,
+        .nut-calendar-item-info-curr,
+        .nut-calendar-item-day {
+          color: $color-primary-text;
+        }
+        .nut-calendar-viewmode-item-info,
+        .nut-calendar-viewmode-item-info-curr,
+        .nut-calendar-viewmode-item-curr {
+          color: $color-primary-text;
+        }
+      }
+
+      &.weekend {
+        .nut-calendar-item-day {
+          color: $color-primary-text;
+        }
+      }
+
+      &.mid {
+        &.disabled {
+          // harmony
+          .nut-calendar-item-info,
+          .nut-calendar-item-info-curr,
+          .nut-calendar-item-day {
+            color: $calendar-disable-color !important;
+          }
+          .nut-calendar-viewmode-item-info,
+          .nut-calendar-viewmode-item-info-curr,
+          .nut-calendar-viewmode-item-curr {
+            color: $calendar-disable-color !important;
+          }
+        }
+        .nut-calendar-item-info,
+        .nut-calendar-item-info-curr,
+        .nut-calendar-item-day {
+          color: $calendar-choose-color;
+        }
+        .nut-calendar-viewmode-item-info,
+        .nut-calendar-viewmode-item-info-curr,
+        .nut-calendar-viewmode-item-curr {
+          color: $calendar-choose-color;
+        }
+      }
+    }
+
+    &-prev,
+    &-next,
+    &-curr,
+    &-day,
+    &-info,
+    &-info-curr {
+      font-weight: $calendar-day-font-weight;
+    }
+
+    &-disabled,
+    &-prev,
+    &-next {
+      .nut-calendar-item-info,
+      .nut-calendar-item-info-curr,
+      .nut-calendar-item-day {
+        color: $calendar-disable-color !important;
+      }
+      .nut-calendar-viewmode-item-info,
+      .nut-calendar-viewmode-item-info-curr,
+      .nut-calendar-viewmode-item-curr {
+        color: $calendar-disable-color !important;
+      }
+    }
+  }
+}
+
+.nut-calendar-viewmode {
+  &-item {
+    width: $calendar-panel-item-width;
+  }
+}
+
 .nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
 }
@@ -228,14 +391,14 @@
     float: right;
 
     &-active {
-      &.active-start {
+      &.start {
         border-top-left-radius: 0;
         border-top-right-radius: $calendar-day-active-border-radius;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
 
-      &.active-end {
+      &.end {
         border-top-right-radius: 0;
         border-top-left-radius: $calendar-day-active-border-radius;
         border-bottom-right-radius: 0;

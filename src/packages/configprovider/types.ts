@@ -339,6 +339,7 @@ export type NutCSSVariables =
   | 'nutuiCalendarDayHeight'
   | 'nutuiCalendarDayFontWeight'
   | 'nutuiCalendarDayActiveBorderRadius'
+  | 'nutuiCalendarPanelItemWidth'
   | 'nutuiHoverbuttonSpacing'
   | 'nutuiHoverbuttonPositionBottom'
   | 'nutuiHoverbuttonPositionRight'

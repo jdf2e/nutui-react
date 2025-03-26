@@ -16,7 +16,8 @@ const padZero = (num: number | string, targetLength = 2) => {
   return str
 }
 
-const Demo6 = () => {
+const Demo = () => {
+  const d = new Date().getFullYear()
   const [date, setDate] = useState<string[]>([])
   const [isVisible, setIsVisible] = useState(false)
 
@@ -91,8 +92,8 @@ const Demo6 = () => {
         visible={isVisible}
         defaultValue={date}
         type="range"
-        startDate="2023-01-01"
-        endDate="2024-09-10"
+        startDate={`${d - 1}-11-21`}
+        endDate={`${d + 1}-09-10`}
         disableDate={disableDate}
         firstDayOfWeek={1}
         onDayClick={(date) => {
@@ -138,4 +139,4 @@ const Demo6 = () => {
     </>
   )
 }
-export default Demo6
+export default Demo

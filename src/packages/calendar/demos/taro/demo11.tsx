@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Calendar } from '@nutui/nutui-react-taro'
+import { View, Text } from '@tarojs/components'
 
-const Demo11 = () => {
-  const [date, setDate] = useState<string[]>(['2023-06-03', '2023-06-16'])
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState<string[]>([`${d}-06-03`, `${d}-06-16`])
 
   const setChooseValue = (param: string) => {
     setDate([...[param[0][3], param[1][3]]])
@@ -14,12 +16,12 @@ const Demo11 = () => {
 
   return (
     <>
-      <div
+      <View
         className="test-calendar-wrapper"
         style={{
           display: 'flex',
           width: '100%',
-          height: '613px',
+          height: 400,
           overflow: 'hidden',
         }}
       >
@@ -27,16 +29,18 @@ const Demo11 = () => {
           popup={false}
           defaultValue={date}
           type="range"
-          startDate="2023-5-23"
-          endDate="2023-08-01"
-          startText={<div>test</div>}
+          startDate={`${d - 1}-11-21`}
+          endDate={`${d + 1}-09-10`}
+          startText={
+            <Text style={{ color: '#fff', textAlign: 'center' }}>test</Text>
+          }
           endText="leave"
           autoBackfill
           onConfirm={setChooseValue}
           onPageChange={yearMonthChange}
         />
-      </div>
+      </View>
     </>
   )
 }
-export default Demo11
+export default Demo

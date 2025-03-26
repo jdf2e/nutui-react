@@ -11,8 +11,9 @@ export interface CalendarMonthInfo {
   curData: string[] | string
   title: string
   monthData: CalendarDay[]
-  cssHeight: number
-  scrollTop: number
+  weekNo?: string[]
+  cssHeight?: number
+  scrollTop?: number
 }
 
 export type CalendarValue = string | string[]
@@ -25,10 +26,12 @@ export type CalendarRef = {
 
 export interface BaseCalendar {
   type: CalendarType
+  viewMode: 'day' | 'month' | 'quarter'
   autoBackfill: boolean
   popup: boolean
   visible: boolean
   title: string
+  value: string
   defaultValue: string | string[]
   startDate: string
   endDate: string
@@ -38,6 +41,7 @@ export interface BaseCalendar {
   confirmText: ReactNode
   showTitle: boolean
   showSubTitle: boolean
+  showMonthNumber: boolean
   scrollAnimation: boolean
   firstDayOfWeek: number
   closeIcon?: ReactNode
@@ -50,6 +54,7 @@ export interface BaseCalendar {
   onClose: () => void
   onConfirm: (param: string) => void
   onDayClick: (data: string) => void
+  onItemClick: (param: string) => void
   onPageChange: (param: string) => void
 }
 
@@ -80,4 +85,34 @@ export interface BaseCalendarItem extends BaseProps {
   onUpdate: () => void
   onDayClick: (data: string) => void
   onPageChange: (data: any) => void
+}
+
+export interface CalendarMonth {
+  year: number
+  month: number
+  yearAndMonth?: string
+  type?: string
+}
+
+export interface CalendarQuarter {
+  year: number
+  quarter: number
+  yearAndQuarter?: string
+  type?: string
+}
+
+export type CalendarMonthInfoOfPanel = {
+  year: number
+  months: CalendarMonth[]
+  cssHeight: number
+  scrollTop: number
+  currYear: boolean
+}
+
+export type CalendarQuarterInfoOfPanel = {
+  year: number
+  quarters: CalendarQuarter[]
+  cssHeight: number
+  scrollTop: number
+  currYear: boolean
 }

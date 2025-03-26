@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
-const Demo8 = () => {
-  const [date, setDate] = useState<string[]>(['2023-03-23', '2023-11-26'])
+const Demo = () => {
+  const d = new Date().getFullYear()
+  const [date, setDate] = useState<string[]>([`${d}-03-23`, `${d}-11-26`])
   const [isVisible, setIsVisible] = useState(false)
 
   const openSwitch = () => {
@@ -33,8 +34,8 @@ const Demo8 = () => {
         defaultValue={date}
         type="range"
         autoBackfill
-        startDate="2022-12-22"
-        endDate="2024-01-08"
+        startDate={`${d - 1}-11-21`}
+        endDate={`${d + 1}-09-10`}
         onClose={closeSwitch}
         onConfirm={setChooseValue}
         onDayClick={select}
@@ -42,4 +43,4 @@ const Demo8 = () => {
     </>
   )
 }
-export default Demo8
+export default Demo

@@ -98,6 +98,30 @@ import { Calendar } from '@nutui/nutui-react'
 
 :::
 
+### Quarter ModeView
+
+:::demo
+
+<CodeBlock src='h5/demo101.tsx'></CodeBlock>
+
+:::
+
+### Month ModeView
+
+:::demo
+
+<CodeBlock src='h5/demo102.tsx'></CodeBlock>
+
+:::
+
+### show the Week Number
+
+:::demo
+
+<CodeBlock src='h5/demo103.tsx'></CodeBlock>
+
+:::
+
 ## Calendar
 
 ### Props
@@ -106,6 +130,7 @@ import { Calendar } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | Is it visible | `boolean` | `false` |
 | type | type, 'single' and 'range' | `string` | `single` |
+| viewMode | view mode | `day` \| `month` \| `quarter` | `day` |
 | popup | Whether to display the pop-up status | `boolean` | `true` |
 | autoBackfill | Automatic backfill | `boolean` | `false` |
 | title | show title | `string` | `日期选择` |
@@ -118,6 +143,7 @@ import { Calendar } from '@nutui/nutui-react'
 | confirmText | confirm text at footer | `ReactNode` | `确认` |
 | showTitle | whether to show title for calendar | `boolean` | `true` |
 | showSubTitle | whether to show sub title for calendar | `boolean` | `true` |
+| showMonthNumber | whether to show month number | `boolean` | `false` |
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
@@ -128,6 +154,7 @@ import { Calendar } from '@nutui/nutui-react'
 | renderDayTop | something above day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | renderDayBottom | something under day | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | onDayClick | trigger when click the day element | `(data: string) => {}` | `-` |
+| onItemClick | trigger when click the item in quarter or month panel | `(data: string) => void` | `-` |
 | onPageChange | page change ,one month makes as a page | `(param: string) => {}` | `-` |
 | onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` | `-` |
 | onClose | trigger close | `() => {}` | `-` |
@@ -170,5 +197,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-day-height | calendar day height | `60px` |
 | \--nutui-calendar-day-font-weight | calendar day font weight | `500` |
 | \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |
+| \--nutui-calendar-panel-item-width | item width in month and quarter panel | `24.85%` |
 
 <Contribution name="Calendar" />

@@ -34,6 +34,10 @@ const idID: BaseLang = {
     start: 'Mulai',
     confirm: 'Mengonfirmasi',
     title: 'Kalender',
+    week: 'Mg',
+    month: 'Bl',
+    year: 'Th',
+    quarter: 'Kt',
     monthTitle: (year: number, month: number) =>
       `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Hari ini',

@@ -34,6 +34,10 @@ const zhUG: BaseLang = {
     start: 'بېشى',
     confirm: 'جەزملەشتۈرۈڭ',
     title: 'تاللاڭ',
+    week: 'ھە',
+    month: 'ئا',
+    year: 'ي',
+    quarter: 'پە',
     monthTitle: (year: number, month: number) =>
       `${year} يىلى ${Number(month) < 10 ? `0${Number(month)}` : month} ئاي`,
     today: 'بۈگۈن',

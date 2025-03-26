@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
-const Demo7 = () => {
+const Demo = () => {
   const [date, setDate] = useState('')
   const [isVisible, setIsVisible] = useState(false)
 
@@ -27,8 +27,6 @@ const Demo7 = () => {
       <Calendar
         visible={isVisible}
         defaultValue={date}
-        startDate=""
-        endDate=""
         autoBackfill
         onClose={closeSwitch}
         onConfirm={setChooseValue}
@@ -36,4 +34,4 @@ const Demo7 = () => {
     </>
   )
 }
-export default Demo7
+export default Demo
