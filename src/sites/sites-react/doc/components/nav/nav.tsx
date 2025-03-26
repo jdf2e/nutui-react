@@ -86,7 +86,7 @@ const Nav = () => {
                           }
                           to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                         >
-                          {cp.name}&nbsp;&nbsp;
+                          {cp.name}&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>
                         </NavLink>
                       </li>

@@ -31,7 +31,9 @@ const App = () => {
             position: 'relative',
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
             点击下方按钮打开或关闭
           </View>
         </View>

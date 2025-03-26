@@ -53,7 +53,7 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React 的全局性逻辑和样式：`
 
 ```js
-import '@nutui/nutui-react/dist/styles/themes/default.scss'
+import '@nutui/nutui-react/dist/styles/themes/default.css'
 ```
 
 #### 方法三、自动的按需加载
@@ -151,7 +151,18 @@ babel 配置：
 ## 使用注意事项
 
 - NutUI-React 基于 [react@^18.0.0](https://www.npmjs.com/package/react) 构建
-- 组件 CSS 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 [webpack](https://www.webpackjs.com/) 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、[postcss](https://github.com/postcss/postcss) 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等
+- 组件 CSS 单位使用的是 **px**，如果你的项目中需要 **rem** 单位，可借助一些工具进行转换，比如 [webpack](https://www.webpackjs.com/) 的 [px2rem-loader](https://www.npmjs.com/package/px2rem-loader)、[postcss](https://github.com/postcss/postcss) 的 [postcss-plugin-px2rem](https://www.npmjs.com/package/postcss-plugin-px2rem) 插件等。需要注意的是，在转化 **rem** 时，对 **NutUI** 相关的样式设置在黑名单里，如：
+
+```
+module.exports = {
+  plugins: {
+    'postcss-pxtorem': {
+      propList: ['*'],
+      selectorBlackList: ['nut-'] // 忽略类名
+    }
+  }
+}
+```
 
 ## 示例
 

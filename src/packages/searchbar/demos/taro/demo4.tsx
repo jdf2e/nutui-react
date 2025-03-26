@@ -10,7 +10,6 @@ const Demo4 = () => {
     <>
       <SearchBar left="文本" right="测试" onSearch={() => toastShow()} />
       <Toast
-        type="text"
         visible={show}
         content="search callback"
         onClose={() => {
