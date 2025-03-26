@@ -11,6 +11,7 @@ const defaultProps = {
   disabled: false,
   activeText: '',
   inactiveText: '',
+  loadingIcon: <Loading1 />,
 } as WebSwitchProps
 export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   const {
@@ -19,6 +20,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
+    loadingIcon,
     className,
     style,
     onChange,
@@ -78,8 +80,8 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing ? (
-          <Loading1 />
+        {changing && loadingIcon ? (
+          <>{loadingIcon}</>
         ) : (
           <>
             {!value && !activeText && (

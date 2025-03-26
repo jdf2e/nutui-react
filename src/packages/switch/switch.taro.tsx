@@ -13,6 +13,7 @@ const defaultProps = {
   disabled: false,
   activeText: '',
   inactiveText: '',
+  loadingIcon: <Loading1 />,
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -21,6 +22,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
+    loadingIcon,
     className,
     style,
     onChange,
@@ -80,8 +82,8 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing ? (
-          <Loading1 />
+        {changing && loadingIcon ? (
+          <>{loadingIcon}</>
         ) : (
           <>
             {!value && !activeText && (

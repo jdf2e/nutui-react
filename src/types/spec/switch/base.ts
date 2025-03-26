@@ -7,5 +7,6 @@ export interface BaseSwitch extends BaseProps {
   disabled: boolean
   activeText: ReactNode
   inactiveText: ReactNode
+  loadingIcon: ReactNode
   onChange: (val: boolean) => void
 }
