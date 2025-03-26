@@ -94,7 +94,6 @@ export const SearchBar: FunctionComponent<
     searchSelf && searchSelf.focus()
   }
   const change = (event: BaseEventOrig<inputEventDetail>) => {
-    console.log(event)
     if (value === event.detail.value) return
     onChange && onChange?.(event.detail.value, event)
     setValue(event.detail.value)
