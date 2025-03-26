@@ -54,6 +54,7 @@
     "changelog": "node ./scripts/generate-changelog.js",
     "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
     "dev": "vite --open --force",
+    "dev:jmapp": "VITE_APP_PROJECT_ID=jmapp vite --open --force",
     "dev:rtl": "VITE_RTL=rtl vite --open --force",
     "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf vite --open --force",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
