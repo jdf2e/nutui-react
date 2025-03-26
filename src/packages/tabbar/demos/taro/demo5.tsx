@@ -1,6 +1,8 @@
 import React from 'react'
 import { Tabbar, Image } from '@nutui/nutui-react-taro'
 import { Cart, Hi, Home, User, Message } from '@nutui/icons-react-taro'
+import { harmony } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   return (
@@ -9,7 +11,11 @@ const Demo2 = () => {
         title={(active: boolean) => (active ? '' : '首页')}
         icon={(active: boolean) =>
           active ? (
-            <Image src="https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png" />
+            <Image
+              width={harmony() ? pxTransform(38) : '38px'}
+              height={harmony() ? pxTransform(38) : '38px'}
+              src="https://storage.360buyimg.com/imgtools/ba40719add-025fcd20-0618-11f0-8bdb-aba55e067ea2.png"
+            />
           ) : (
             <Home />
           )
@@ -21,7 +27,11 @@ const Demo2 = () => {
           active ? (
             <Hi />
           ) : (
-            <Image src="https://storage.360buyimg.com/imgtools/00e365dee3-8fe58f80-0952-11f0-8d73-ab964e6901f9.png" />
+            <Image
+              width={harmony() ? pxTransform(38) : '38px'}
+              height={harmony() ? pxTransform(38) : '38px'}
+              src="https://storage.360buyimg.com/imgtools/cadd649d79-8de544e0-0a11-11f0-9f55-9901c75f24a0.png"
+            />
           )
         }
         title={(active: boolean) => (active ? '逛' : '')}
