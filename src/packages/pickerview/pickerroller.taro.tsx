@@ -13,6 +13,8 @@ import { TaroPickerRollerProps, PickerOption } from '@/types'
 import { web } from '@/utils/platform-taro'
 import { preventDefault } from '@/utils'
 import { momentum, useStyles } from './utils'
+import useUuid from '@/hooks/use-uuid'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
@@ -26,6 +28,9 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     onSelect,
     renderLabel = (item: PickerOption) => item.label,
   } = props
+
+  const classPrefix = 'nut-pickerview-roller'
+  const uuid = useUuid()
 
   const DEFAULT_DURATION = 200
   const INERTIA_TIME = 300
@@ -43,6 +48,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const [startY, setStartY] = useState(0)
   const transformY = useRef(0)
   const [scrollDistance, setScrollDistance] = useState(0)
+  const [isGetLineSpacing, setGetStatus] = useState(web())
 
   const { touchRollerStyle, touchTiledStyle, rollerStyle } = useStyles(
     touchTime,
@@ -149,18 +155,39 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     selectValue(scrollDistance)
   }
 
+  const getReactHeight = async () => {
+    try {
+      const placeholder = await getRectByTaro(rollerRef.current)
+      const placeholderHeight = placeholder.height || 0
+      return placeholderHeight
+    } catch (error) {
+      console.error('获取高度失败:', error)
+      return 0
+    }
+  }
+
   // lineSpacing.current CSS variable
   useEffect(() => {
     const element = pickerRollerRef.current
+    let currentLineSpacing
     if (element && web()) {
       const computedStyle = getComputedStyle(element)
-      const currentLineSpacing = computedStyle.getPropertyValue(
+      currentLineSpacing = computedStyle.getPropertyValue(
         '--nutui-picker-item-height'
       )
-      !!currentLineSpacing &&
-        (lineSpacing.current = parseFloat(currentLineSpacing))
+      if (currentLineSpacing) {
+        lineSpacing.current = parseFloat(currentLineSpacing)
+      }
+    } else {
+      getReactHeight().then((height) => {
+        currentLineSpacing = height
+        if (currentLineSpacing) {
+          lineSpacing.current = currentLineSpacing
+          setGetStatus(true)
+        }
+      })
     }
-  }, [pickerRollerRef.current])
+  }, [pickerRollerRef.current, rollerRef.current])
 
   useEffect(() => {
     isMoving.current = false
@@ -220,7 +247,8 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   return (
     <View className="nut-pickerview-list" ref={pickerRollerRef}>
       <View
-        className="nut-pickerview-roller"
+        className={classPrefix}
+        id={`${classPrefix}-${uuid}`}
         ref={rollerRef}
         style={threeDimensional ? touchRollerStyle() : touchTiledStyle()}
         onTransitionEnd={stopMomentumScroll}
@@ -228,23 +256,29 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {/* 3D 效果 */}
         {threeDimensional &&
           options.map((item: PickerOption, index: number) => (
-            <View
-              className={classNames('nut-pickerview-roller-item', {
-                'nut-pickerview-roller-item-hidden': isItemHidden(index + 1),
-                'nut-pickerview-roller-item-active': index + 1 === currentIndex,
-              })}
-              style={rollerStyle(index)}
-              key={item.value ?? index}
-            >
-              {renderLabel(item)}
-            </View>
+            <>
+              {isGetLineSpacing ? (
+                <View
+                  className={classNames(`${classPrefix}-item`, {
+                    [`${classPrefix}-item-hidden`]: isItemHidden(index + 1),
+                    [`${classPrefix}-item-active`]: index + 1 === currentIndex,
+                  })}
+                  style={rollerStyle(index)}
+                  key={item.value ?? index}
+                >
+                  {renderLabel(item)}
+                </View>
+              ) : null}
+            </>
           ))}
         {/* Tiled */}
         {!threeDimensional &&
           options.map((item: PickerOption, index: number) => {
             return (
               <View
-                className="nut-pickerview-roller-item-tiled"
+                className={classNames(`${classPrefix}-item-tiled`, {
+                  [`${classPrefix}-item-active`]: index + 1 === currentIndex,
+                })}
                 key={item.value ?? index}
               >
                 {renderLabel(item)}

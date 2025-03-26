@@ -190,6 +190,7 @@ $font-family:
   sans-serif !default;
 
 // Font
+$font-size-xxxs: var(--nutui-font-size-xxxs, 9px) !default;
 $font-size-xxs: $font-text-mini !default;
 $font-size-xs: $font-text-xs !default;
 $font-size-s: $font-text-small !default;

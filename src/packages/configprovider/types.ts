@@ -50,6 +50,7 @@ export type NutCSSVariables =
   | 'nutuiColorTextDisabled'
   | 'nutuiColorTextDark'
   | 'nutuiColorTextLink'
+  | 'nutuiFontSizeXxxs'
   | 'nutuiFontSizeXxs'
   | 'nutuiFontSizeXs'
   | 'nutuiFontSizeS'
