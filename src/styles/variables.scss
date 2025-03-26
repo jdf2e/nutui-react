@@ -1633,8 +1633,8 @@ $badge-content-transform: var(
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 6px) !default;
-$badge-dot-small-width: var(--nutui-badge-dot-width, 4px) !default;
-$badge-dot-large-width: var(--nutui-badge-dot-width, 8px) !default;
+$badge-dot-small-width: var(--nutui-badge-dot-small-width, 4px) !default;
+$badge-dot-large-width: var(--nutui-badge-dot-large-width, 8px) !default;
 $badge-dot-border: var(--nutui-badge-dot-border, 1px solid $color-primary-text);
 $badge-outline-color: var(--nutui-badge-outline-color, $color-primary) !default;
 $badge-outline-border: var(
