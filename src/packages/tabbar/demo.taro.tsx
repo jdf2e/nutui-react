@@ -52,7 +52,9 @@ const TabbarDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView
+        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
         <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
         <View className="h2">{translated.b840c88f}</View>

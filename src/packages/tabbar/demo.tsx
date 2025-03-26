@@ -49,7 +49,7 @@ const TabbarDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>{translated.ce5c5446}</h2>
         <Demo1 />
         <h2>{translated.b840c88f}</h2>

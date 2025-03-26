@@ -1141,11 +1141,8 @@ $tabbar-inactive-color: var(
   --nutui-tabbar-inactive-color,
   $color-title
 ) !default;
-$tabbar-border-top: var(--nutui-tabbar-border-top, 1px solid #eee) !default;
-$tabbar-border-bottom: var(
-  --nutui-tabbar-border-bottom,
-  1px solid #eee
-) !default;
+$tabbar-border-top: var(--nutui-tabbar-border-top, 0) !default;
+$tabbar-border-bottom: var(--nutui-tabbar-border-bottom, 0) !default;
 $tabbar-box-shadow: var(--nutui-tabbar-box-shadow, none) !default;
 $tabbar-text-font-size: var(
   --nutui-tabbar-text-font-size,
