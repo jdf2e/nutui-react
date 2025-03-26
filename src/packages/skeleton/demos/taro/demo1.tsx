@@ -4,7 +4,7 @@ import { Cell, Skeleton } from '@nutui/nutui-react-taro'
 const Demo1 = () => {
   return (
     <Cell>
-      <Skeleton animated size="large" duration={3} style={{ width: '100%' }} />
+      <Skeleton animated size="large" style={{ width: '100%' }} />
     </Cell>
   )
 }
