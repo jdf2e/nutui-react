@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebSkeletonProps } from '@/types'
@@ -54,6 +59,25 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
     return {}
   }
 
+  const [animate, setAnimate] = useState(false)
+
+  const playAnimation = () => {
+    setAnimate(false) // 首先将 animate 设置为 false
+    setTimeout(() => {
+      setAnimate(true) // 1 毫秒后再设置为 true，触发动画
+    }, 10)
+  }
+
+  useEffect(() => {
+    if (!animated) return
+    playAnimation()
+    // 每隔 3 秒播放一次动画
+    const intervalId = setInterval(playAnimation, 1000 + duration * 1000) // xs 动画 + 1s 间隔
+
+    // 清理定时器
+    return () => clearInterval(intervalId)
+  }, [])
+
   return (
     <>
       {visible ? (
@@ -70,7 +94,7 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
               >
                 {animated && (
                   <div
-                    className={`${classPrefix}-animation`}
+                    className={`${animate ? `${classPrefix}-animation` : ''}`}
                     style={durationStyle()}
                   />
                 )}

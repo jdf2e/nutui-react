@@ -1,4 +1,9 @@
-import React, { CSSProperties, FunctionComponent } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -55,6 +60,25 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
     return {}
   }
 
+  const [animate, setAnimate] = useState(false)
+
+  const playAnimation = () => {
+    setAnimate(false)
+    setTimeout(() => {
+      setAnimate(true)
+    }, 10)
+  }
+
+  useEffect(() => {
+    if (!animated) return
+    playAnimation()
+    // 每隔 3 秒播放一次动画
+    const intervalId = setInterval(playAnimation, 1000 + duration * 1000) // xs 动画 + 1s 间隔
+
+    // 清理定时器
+    return () => clearInterval(intervalId)
+  }, [])
+
   return (
     <>
       {visible ? (
@@ -71,7 +95,7 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
               >
                 {animated && (
                   <View
-                    className={`${classPrefix}-animation`}
+                    className={`${animate ? `${classPrefix}-animation` : ''}`}
                     style={durationStyle()}
                   />
                 )}

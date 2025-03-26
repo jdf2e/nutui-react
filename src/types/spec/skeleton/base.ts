@@ -9,6 +9,6 @@ export interface BaseSkeleton extends BaseProps {
   height?: SimpleValue
   shape: UIRound | 'circle'
   animated: boolean
-  duration?: number
+  duration: number
   visible: boolean
 }
