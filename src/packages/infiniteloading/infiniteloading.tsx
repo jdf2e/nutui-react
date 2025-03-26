@@ -50,7 +50,6 @@ export const InfiniteLoading: FunctionComponent<
   const scrollEl = useRef<Window | HTMLElement | null>(null)
   const isTouching = useRef(false)
   const beforeScrollTop = useRef(0)
-  const refreshMaxH = useRef(0)
   const y = useRef(0)
   const distance = useRef(0)
 
@@ -118,7 +117,6 @@ export const InfiniteLoading: FunctionComponent<
       isTouching.current = true
       const childHeight = (getRefreshTop().firstElementChild as HTMLElement)
         .offsetHeight
-      refreshMaxH.current = Math.floor(childHeight * 1 + 10)
     }
   }
 

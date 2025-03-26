@@ -7,7 +7,6 @@ import { ComponentDefaults } from '@/utils/typings'
 import { TaroInfiniteLoadingProps } from '@/types'
 import pxTransform from '@/utils/px-transform'
 import { mergeProps } from '@/utils/merge-props'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -49,17 +48,13 @@ export const InfiniteLoading: FunctionComponent<
   const scrollTop = useRef(0)
   const isTouching = useRef(false)
   const y = useRef(0)
-  const refreshMaxH = useRef(0)
   const distance = useRef(0)
-  const refreshTipsRef = useRef<HTMLDivElement>(null)
 
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       getScrollHeight()
-      const rect = await getRectByTaro(refreshTipsRef.current)
-      refreshMaxH.current = Math.floor((rect?.height ?? 0) * 1.5)
     }, 200)
     return () => clearTimeout(timer)
   }, [hasMore, isInfiniting])
@@ -173,7 +168,7 @@ export const InfiniteLoading: FunctionComponent<
       onTouchEnd={touchEnd}
     >
       <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <View className="nut-infinite-top-tips" ref={refreshTipsRef}>
+        <View className="nut-infinite-top-tips">
           {pullingText || locale.infiniteloading.pullRefreshText}
         </View>
       </View>
