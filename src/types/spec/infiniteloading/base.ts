@@ -8,6 +8,7 @@ export interface BaseInfiniteLoading extends BaseProps {
   type: InfiniteLoadingType
   hasMore: boolean
   threshold: number
+  refreshDistance: number
   target: string
   capture: boolean
   pullRefresh: boolean

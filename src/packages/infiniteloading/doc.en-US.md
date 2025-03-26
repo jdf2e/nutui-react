@@ -65,6 +65,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 | pullRefresh | Enable pull refresh | `boolean` | `false` |
 | pullingText | Pull refresh text | `ReactNode` | `Let go and refresh` |
 | loadingText | Pull on loading text | `ReactNode` | `loading...` |
+| refreshDistance | Pull refresh trigger distance | `number` | `100` |
 | onRefresh | Pull down refresh event callback | `() => Promise<void>` | `-` |
 | onLoadMore | Callback function to continue loading | `() => Promise<void>` | `-` |
 | onScroll | Monitor scroll height in real time | `(param: number) => void` | `-` |

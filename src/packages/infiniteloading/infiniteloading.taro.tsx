@@ -7,6 +7,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { TaroInfiniteLoadingProps } from '@/types'
 import pxTransform from '@/utils/px-transform'
 import { mergeProps } from '@/utils/merge-props'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -15,6 +16,7 @@ const defaultProps = {
   threshold: 200,
   target: '',
   pullRefresh: false,
+  refreshDistance: 100,
 } as TaroInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
@@ -37,6 +39,7 @@ export const InfiniteLoading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScroll,
+    refreshDistance,
     ...rest
   } = mergeProps(defaultProps, props)
   const [isInfiniting, setIsInfiniting] = useState(false)
@@ -48,25 +51,15 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
+  const refreshTipsRef = useRef<HTMLDivElement>(null)
 
   const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
-
-  const getRectTaro = async (selector: string): Promise<any> => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .select(selector)
-        .boundingClientRect()
-        .exec((res: any) => {
-          resolve(res[0])
-        })
-    })
-  }
 
   useEffect(() => {
     const timer = setTimeout(async () => {
       getScrollHeight()
-      const rect = await getRectTaro('.nut-infinite-top-tips')
-      refreshMaxH.current = Math.floor((rect?.height ?? 0) * 2.5)
+      const rect = await getRectByTaro(refreshTipsRef.current)
+      refreshMaxH.current = Math.floor((rect?.height ?? 0) * 1.5)
     }, 200)
     return () => clearTimeout(timer)
   }, [hasMore, isInfiniting])
@@ -132,9 +125,9 @@ export const InfiniteLoading: FunctionComponent<
     if (distance.current > 0 && isTouching.current) {
       event.preventDefault()
       setTopDisScoll(distance.current)
-      if (distance.current >= refreshMaxH.current) {
-        distance.current = refreshMaxH.current
-        setTopDisScoll(refreshMaxH.current)
+      if (distance.current >= refreshDistance) {
+        distance.current = refreshDistance
+        setTopDisScoll(refreshDistance)
       }
     } else {
       distance.current = 0
@@ -144,7 +137,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchEnd = async () => {
-    if (distance.current < refreshMaxH.current) {
+    if (distance.current < refreshDistance) {
       distance.current = 0
       setTopDisScoll(0)
       isTouching.current = false
@@ -180,7 +173,7 @@ export const InfiniteLoading: FunctionComponent<
       onTouchEnd={touchEnd}
     >
       <View className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <View className="nut-infinite-top-tips">
+        <View className="nut-infinite-top-tips" ref={refreshTipsRef}>
           {pullingText || locale.infiniteloading.pullRefreshText}
         </View>
       </View>
