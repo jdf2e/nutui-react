@@ -7,6 +7,8 @@ import {
   More,
   Close,
 } from '@nutui/icons-react-taro'
+import { BaseEventOrig } from '@tarojs/components/types/common'
+import { InputProps } from '@tarojs/components'
 import {
   ConfigProvider,
   SearchBar,
@@ -15,6 +17,8 @@ import {
 } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+
+type inputEventDetail = InputProps.inputEventDetail
 
 type TSearchDemo = {
   basePlaceholder: string
@@ -87,7 +91,7 @@ const SearchBarDemo = () => {
   const [lightTheme, setLightTheme] = useState(false)
 
   const [value, setValue] = useState('')
-  const change = (val: string, e: React.ChangeEvent<HTMLInputElement>) => {
+  const change = (val: string, e?: BaseEventOrig<inputEventDetail>) => {
     setValue(val)
   }
 
@@ -169,7 +173,7 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title6}</h2>
         <SearchBar
-          onChange={(val: string, e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(val: string, e?: BaseEventOrig<inputEventDetail>) =>
             change(val, e)
           }
           maxLength={10}
