@@ -53,9 +53,9 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   )
 
   const renderNodeWithActive = (
-    props: ReactNode | ((active: boolean) => ReactNode)
+    node: ReactNode | ((active: boolean) => ReactNode)
   ) => {
-    return props && typeof props === 'function' ? props(active) : props
+    return node && typeof node === 'function' ? node(active) : node
   }
   const badgeProps = {
     value: renderNodeWithActive(value),
@@ -89,11 +89,22 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     )
   }
 
+  const renderIcon = () => {
+    const distIcon = renderNodeWithActive(icon)
+    // 鸿蒙差异处理，需要手动给icon一个color
+    return React.isValidElement(distIcon)
+      ? React.cloneElement(distIcon, {
+          ...distIcon.props,
+          color: active ? ctx?.activeColor : ctx?.inactiveColor,
+        })
+      : null
+  }
+
   const renderIconAndTitle = () => {
     return (
       <>
         <Badge size="normal" {...badgeProps}>
-          {renderNodeWithActive(icon)}
+          {renderIcon()}
         </Badge>
         {renderTitleText()}
       </>
@@ -103,7 +114,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   const renderDualItem = () => {
     return dot ? null : (
       <>
-        {renderNodeWithActive(icon)}
+        {renderIcon()}
         {renderTitleText()}
         <Badge {...badgeProps} />
       </>

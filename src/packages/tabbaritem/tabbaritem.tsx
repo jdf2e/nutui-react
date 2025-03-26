@@ -52,9 +52,9 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   )
 
   const renderNodeWithActive = (
-    props: ReactNode | ((active: boolean) => ReactNode)
+    node: ReactNode | ((active: boolean) => ReactNode)
   ) => {
-    return props && typeof props === 'function' ? props(active) : props
+    return node && typeof node === 'function' ? node(active) : node
   }
 
   const badgeProps = {
@@ -84,11 +84,15 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     )
   }
 
+  const renderIcon = () => {
+    return renderNodeWithActive(icon)
+  }
+
   const renderIconAndTitle = () => {
     return (
       <>
         <Badge size="normal" {...badgeProps}>
-          {renderNodeWithActive(icon)}
+          {renderIcon()}
         </Badge>
         {renderTitleText()}
       </>
@@ -98,7 +102,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderDualItem = () => {
     return dot ? null : (
       <>
-        {renderNodeWithActive(icon)}
+        {renderIcon()}
         {renderTitleText()}
         <Badge {...badgeProps} />
       </>
