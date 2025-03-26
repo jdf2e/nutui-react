@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -44,16 +44,22 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     onChange: onSwitch,
   })
 
-  const sizeCls = () => {
+  const sizeCls = useMemo(() => {
     const size = React.Children.count(children)
     return size > 3
       ? ''
       : classNames({
           [`${classPrefix}-wrap-3`]: size === 3,
           [`${classPrefix}-wrap-2`]: size === 2,
-          [`${classPrefix}-wrap-${direction}`]: size === 2 && direction,
+          [`${classPrefix}-wrap-${direction}`]:
+            size === 2 && direction !== 'vertical',
         })
-  }
+  }, [children, direction])
+
+  const itemDirection = useMemo(() => {
+    const size = React.Children.count(children)
+    return size === 2 && direction !== 'vertical' && direction
+  }, [direction, children])
 
   return (
     <div
@@ -64,7 +70,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
       )}
       style={style}
     >
-      <div className={`${classPrefix}-wrap ${sizeCls()}`}>
+      <div className={`${classPrefix}-wrap ${sizeCls}`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -78,7 +84,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
               ? React.cloneElement(child, {
                   ...child.props,
                   index,
-                  direction: React.Children.count(children) === 2 && direction,
+                  direction: itemDirection,
                 })
               : null
           )}

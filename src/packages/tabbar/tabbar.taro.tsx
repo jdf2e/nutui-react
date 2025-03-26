@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -44,16 +44,22 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     onChange: onSwitch,
   })
 
-  const sizeCls = () => {
+  const sizeCls = useMemo(() => {
     const size = React.Children.count(children)
     return size > 3
       ? ''
       : classNames({
           [`${classPrefix}-wrap-3`]: size === 3,
           [`${classPrefix}-wrap-2`]: size === 2,
-          [`${classPrefix}-wrap-${direction}`]: size === 2 && direction,
+          [`${classPrefix}-wrap-${direction}`]:
+            size === 2 && direction !== 'vertical',
         })
-  }
+  }, [children, direction])
+
+  const itemDirection = useMemo(() => {
+    const size = React.Children.count(children)
+    return size === 2 && direction !== 'vertical' && direction
+  }, [direction, children])
 
   return (
     <View
@@ -66,7 +72,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
       )}
       style={style}
     >
-      <View className={`${classPrefix}-wrap ${sizeCls()}`}>
+      <View className={`${classPrefix}-wrap ${sizeCls}`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -80,7 +86,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
               ? React.cloneElement(child, {
                   ...child.props,
                   index,
-                  direction: React.Children.count(children) === 2 && direction,
+                  direction: itemDirection,
                 })
               : null
           )}

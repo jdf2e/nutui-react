@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, useContext, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -52,11 +52,13 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     className
   )
 
-  const badgeValue =
-    value && typeof value === 'function' ? value(active) : value
-
+  const renderNodeWithActive = (
+    props: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return props && typeof props === 'function' ? props(active) : props
+  }
   const badgeProps = {
-    value: badgeValue,
+    value: renderNodeWithActive(value),
     dot,
     max,
     top,
@@ -73,7 +75,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
             color: active ? ctx?.activeColor : ctx?.inactiveColor,
           }}
         >
-          {typeof title === 'function' ? title(active) : title}
+          {renderNodeWithActive(title)}
         </View>
       )
     )
@@ -91,7 +93,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     return (
       <>
         <Badge size="normal" {...badgeProps}>
-          {icon && typeof icon === 'function' ? icon(active) : icon}
+          {renderNodeWithActive(icon)}
         </Badge>
         {renderTitleText()}
       </>
@@ -101,7 +103,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
   const renderDualItem = () => {
     return dot ? null : (
       <>
-        {icon && typeof icon === 'function' ? icon(active) : icon}
+        {renderNodeWithActive(icon)}
         {renderTitleText()}
         <Badge {...badgeProps} />
       </>

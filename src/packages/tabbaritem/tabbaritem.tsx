@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, useContext, ReactNode } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index'
@@ -51,11 +51,14 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     className
   )
 
-  const badgeValue =
-    value && typeof value === 'function' ? value(active) : value
+  const renderNodeWithActive = (
+    props: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return props && typeof props === 'function' ? props(active) : props
+  }
 
   const badgeProps = {
-    value: badgeValue,
+    value: renderNodeWithActive(value),
     dot,
     max,
     top,
@@ -67,7 +70,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     return (
       title && (
         <div className={`${classPrefix}-text`}>
-          {typeof title === 'function' ? title(active) : title}
+          {renderNodeWithActive(title)}
         </div>
       )
     )
@@ -85,7 +88,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     return (
       <>
         <Badge size="normal" {...badgeProps}>
-          {icon && typeof icon === 'function' ? icon(active) : icon}
+          {renderNodeWithActive(icon)}
         </Badge>
         {renderTitleText()}
       </>
@@ -95,7 +98,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   const renderDualItem = () => {
     return dot ? null : (
       <>
-        {icon && typeof icon === 'function' ? icon(active) : icon}
+        {renderNodeWithActive(icon)}
         {renderTitleText()}
         <Badge {...badgeProps} />
       </>
