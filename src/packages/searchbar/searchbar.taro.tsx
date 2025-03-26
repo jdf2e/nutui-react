@@ -1,8 +1,15 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
+import Taro from '@tarojs/taro'
+import { View, Input, InputProps, ITouchEvent } from '@tarojs/components'
 import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
+import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+type inputEventDetail = InputProps.inputEventDetail
+type inputForceEventDetail = InputProps.inputForceEventDetail
+type inputValueEventDetail = InputProps.inputValueEventDetail
 
 export interface SearchBarProps extends BasicComponent {
   value?: number | string
@@ -19,11 +26,11 @@ export interface SearchBarProps extends BasicComponent {
   leftIn: React.ReactNode
   rightIn: React.ReactNode
   onSearch?: (val: string) => void
-  onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
+  onChange?: (value: string, event?: BaseEventOrig<inputEventDetail>) => void
+  onFocus?: (value: string, event: BaseEventOrig<inputForceEventDetail>) => void
+  onBlur?: (value: string, event: BaseEventOrig<inputValueEventDetail>) => void
   onClear?: (event: MouseEvent<HTMLDivElement>) => void
-  onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
+  onInputClick?: (event: ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -51,7 +58,7 @@ export const SearchBar: FunctionComponent<
   const classPrefix = 'nut-searchbar'
 
   const { locale } = useConfig()
-  const searchRef = useRef<HTMLInputElement>(null)
+  const searchRef = useRef<HTMLInputElement | null>(null)
 
   const {
     value: outerValue,
@@ -86,88 +93,93 @@ export const SearchBar: FunctionComponent<
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
   }
-  const change = (event: ChangeEvent<HTMLInputElement>) => {
-    if (value === event.target.value) return
-    onChange && onChange?.(event.target.value, event)
-    setValue(event.target.value)
-    event.target.value === '' && forceFocus()
+  const change = (event: BaseEventOrig<inputEventDetail>) => {
+    console.log(event)
+    if (value === event.detail.value) return
+    onChange && onChange?.(event.detail.value, event)
+    setValue(event.detail.value)
+    event.detail.value === '' && forceFocus()
   }
-  const focus = (event: FocusEvent<HTMLInputElement>) => {
-    const { value } = event.target
+  const focus = (event: BaseEventOrig<inputForceEventDetail>) => {
+    const { value } = event.detail
     onFocus && onFocus?.(value, event)
   }
-  const blur = (event: FocusEvent<HTMLInputElement>) => {
+  const blur = (event: BaseEventOrig<inputValueEventDetail>) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
-    const { value } = event.target
+    const { value } = event.detail
     onBlur && onBlur?.(value, event)
   }
   useEffect(() => {
     setValue(outerValue || '')
   }, [outerValue])
   useEffect(() => {
-    autoFocus && forceFocus()
+    if (Taro.getEnv() === 'WEB') {
+      autoFocus && forceFocus()
+    }
   }, [autoFocus])
   const renderField = () => {
     return (
-      <input
+      <Input
         className={`${classPrefix}-input ${
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
         style={style}
-        value={value || ''}
+        value={(value || '').toString()}
         placeholder={placeholder || locale.placeholder}
-        disabled={disabled}
-        readOnly={readOnly}
-        maxLength={maxLength}
-        onKeyPress={onKeypress}
-        onChange={(e) => change(e)}
+        disabled={disabled || readOnly}
+        maxlength={maxLength}
+        nativeProps={{
+          onKeyPress: onKeypress,
+        }}
+        autoFocus={autoFocus}
+        onInput={(e) => change(e)}
         onFocus={(e) => focus(e)}
         onBlur={(e) => blur(e)}
         onClick={(e) => clickInput(e)}
       />
     )
   }
-  const clickInput = (e: MouseEvent<HTMLInputElement>) => {
+  const clickInput = (e: ITouchEvent) => {
     onInputClick && onInputClick(e)
   }
   const renderLeftIn = () => {
     if (!leftIn) return null
     return (
-      <div className={`${classPrefix}-leftin ${classPrefix}-icon`}>
+      <View className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
-      </div>
+      </View>
     )
   }
   const renderLeft = () => {
     if (!backable && !left) return null
     return (
-      <div className={`${classPrefix}-left`}>
+      <View className={`${classPrefix}-left`}>
         {backable ? <ArrowLeft size="16" /> : left}
-      </div>
+      </View>
     )
   }
   const renderRightIn = () => {
     if (!rightIn) return null
     return (
-      <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
+      <View className={`${classPrefix}-rightin ${classPrefix}-icon`}>
         {rightIn}
-      </div>
+      </View>
     )
   }
   const renderRight = () => {
     if (!right) return null
-    return <div className={`${classPrefix}-right`}>{right}</div>
+    return <View className={`${classPrefix}-right`}>{right}</View>
   }
   const handleClear = () => {
     return (
-      <div
+      <View
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
         <MaskClose size={16} />
-      </div>
+      </View>
     )
   }
   const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
@@ -188,25 +200,25 @@ export const SearchBar: FunctionComponent<
     }
   }
   return (
-    <div
+    <View
       className={`${classPrefix} ${
         disabled ? `${classPrefix}-disabled` : ''
       }  ${className || ''}`}
       style={style}
     >
       {renderLeft()}
-      <div
+      <View
         className={`${classPrefix}-content ${
           shape === 'round' ? `${classPrefix}-round` : ''
         }`}
       >
         {renderLeftIn()}
-        <div className="nut-searchbar-input-box">{renderField()}</div>
+        <View className="nut-searchbar-input-box">{renderField()}</View>
         {clearable && !value && renderRightIn()}
         {clearable && value && handleClear()}
-      </div>
+      </View>
       {renderRight()}
-    </div>
+    </View>
   )
 }
 
