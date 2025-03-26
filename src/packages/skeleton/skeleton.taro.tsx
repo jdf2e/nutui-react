@@ -95,7 +95,7 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
               >
                 {animated && (
                   <View
-                    className={`${animate ? `${classPrefix}-animation` : ''}`}
+                    className={`${classPrefix}-animated ${animate ? `${classPrefix}-animation` : ''}`}
                     style={durationStyle()}
                   />
                 )}

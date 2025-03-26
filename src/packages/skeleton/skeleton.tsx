@@ -94,7 +94,7 @@ export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
               >
                 {animated && (
                   <div
-                    className={`${animate ? `${classPrefix}-animation` : ''}`}
+                    className={`${classPrefix}-animated ${animate ? `${classPrefix}-animation` : ''}`}
                     style={durationStyle()}
                   />
                 )}

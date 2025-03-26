@@ -11,7 +11,7 @@ test('should allow to disable animation', () => {
 
 test('should set duration', () => {
   const { container } = render(<Skeleton rows={1} duration={2} />)
-  const animation = container.querySelector('.nut-skeleton-animation')
+  const animation = container.querySelector('.nut-skeleton-animated')
   expect(animation).toHaveStyle({
     animationDuration: '2s',
   })
