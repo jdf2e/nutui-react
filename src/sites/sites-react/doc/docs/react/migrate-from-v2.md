@@ -132,6 +132,7 @@ plugins: [
 #### Pagination
 
 - `itemRender` 属性类型调整为：`(page: any, index: number) => ReactNode`
+- `mode` 属性默认值调整为 `lite`
 
 #### SideNavBar
 

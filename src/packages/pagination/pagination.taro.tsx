@@ -11,7 +11,7 @@ import { TaroPaginationProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: 1,
-  mode: 'multi',
+  mode: 'lite',
   prev: null,
   next: null,
   total: 50,

@@ -76,7 +76,7 @@ import { Pagination } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | value | 當前頁碼，受控值，與 onChange 搭配使用 | `number` | `-` |
 | defaultValue | 默認頁碼，非受控 | `number` | `1` |
-| mode | 顯示模式 | `multi` \| `simple` \| `lite` | `multi` |
+| mode | 顯示模式 | `multi` \| `simple` \| `lite` | `lite` |
 | prev | 自定義上一頁按鈕內容 | `ReactNode` | `上一頁` |
 | next | 自定義下一頁按鈕內容 | `ReactNode` | `下一頁` |
 | total | 總記錄數 | `number` | `50` |
