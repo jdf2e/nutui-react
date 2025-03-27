@@ -184,10 +184,10 @@ export const Popover: FunctionComponent<
           styles[dir] =
             `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
-        if (skew === 'start') {
+        if (skew === 'left') {
           styles.left = `${left + parallel}px`
         }
-        if (skew === 'end') {
+        if (skew === 'right') {
           styles.left = `${right + parallel}px`
         }
       }
@@ -200,10 +200,10 @@ export const Popover: FunctionComponent<
             top - contentHeight / 2 + height / 2 - 4 + parallel
           }px`
         }
-        if (skew === 'start') {
+        if (skew === 'top') {
           styles.top = `${top + parallel}px`
         }
-        if (skew === 'end') {
+        if (skew === 'bottom') {
           styles.top = `${top + height + parallel}px`
         }
       }
@@ -224,10 +224,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'left') {
           styles[dir] = `${base + arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'right') {
           styles[dir2] = `${base - arrowOffset}px`
         }
       }
@@ -236,10 +236,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles.top = `calc(50% - ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'top') {
           styles.top = `${base - arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'bottom') {
           styles.bottom = `${base + arrowOffset}px`
         }
       }
@@ -301,8 +301,8 @@ export const Popover: FunctionComponent<
                     <div
                       className={classNames(
                         {
-                          'nut-popover-menu-item': true,
-                          'nut-popover-menu-disabled': item.disabled,
+                          'nut-popover-item': true,
+                          'nut-popover-item-disabled': item.disabled,
                         },
                         item.className
                       )}
@@ -310,16 +310,12 @@ export const Popover: FunctionComponent<
                       onClick={() => handleSelect(item, index)}
                     >
                       {item.icon && (
-                        <div className="nut-popover-menu-item-icon">
-                          {item.icon}
-                        </div>
+                        <div className="nut-popover-item-icon">{item.icon}</div>
                       )}
-                      <div className="nut-popover-menu-item-name">
-                        {item.name}
-                      </div>
+                      <div className="nut-popover-item-name">{item.name}</div>
                       {item.action && item.action.icon && (
                         <div
-                          className="nut-popover-menu-item-action-icon"
+                          className="nut-popover-item-action-icon"
                           onClick={(e) => item.action?.onClick?.(e)}
                         >
                           {item.action.icon}

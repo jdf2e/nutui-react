@@ -1658,11 +1658,8 @@ $popover-divider-color: var(
   --nutui-popover-divider-color,
   $color-border
 ) !default;
-$popover-menu-item-padding: var(
-  --nutui-popover-menu-item-padding,
-  8px
-) !default;
-$popover-menu-item-width: var(--nutui-popover-menu-item-width, 160px) !default;
+$popover-item-padding: var(--nutui-popover-item-padding, 8px) !default;
+$popover-item-width: var(--nutui-popover-item-width, 160px) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
