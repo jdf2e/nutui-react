@@ -76,14 +76,14 @@
     line-height: 28px;
     max-height: initial;
     overflow-y: initial;
+    padding: 0 $popover-padding;
 
-    .nut-popover-menu-item {
+    .nut-popover-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 $popover-menu-item-padding;
       border-bottom: 1px solid $popover-divider-color;
-      max-width: $popover-menu-item-width;
+      max-width: $popover-item-width;
       word-wrap: break-word;
 
       &:last-child {
@@ -91,48 +91,42 @@
         border-bottom: none;
       }
 
-      &-icon {
+      &-icon,
+      &-action-icon {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 12px;
-        height: 12px;
-        font-size: 12px;
+        width: $font-size-s;
+        height: $font-size-s;
+        font-size: $font-size-s;
         .nut-icon {
-          width: 12px;
-          height: 12px;
-          font-size: 12px;
+          width: $font-size-s;
+          height: $font-size-s;
+          font-size: $font-size-s;
         }
+      }
+
+      &-icon {
+        margin-right: $spacing-xxs;
       }
 
       &-name {
         width: calc(100% - 34px);
         word-break: keep-all;
-        margin: 0 8px 0 4px;
         flex: 1;
       }
 
       &-action-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 12px;
-        height: 12px;
-        font-size: 12px;
         color: $color-text;
-        .nut-icon {
-          width: 12px;
-          height: 12px;
-          font-size: 12px;
-        }
+        margin-left: $spacing-base;
       }
 
-      &.nut-popover-menu-disabled {
+      &.nut-popover-item-disabled {
         color: $popover-disable-color;
         cursor: not-allowed;
       }
 
-      &.nut-popover-menu-taroitem {
+      &.nut-popover-taroitem {
         display: flex;
       }
     }
@@ -217,7 +211,7 @@
   .nut-popover-content {
     background: $popover-text-color !important;
     color: $popover-content-background-color !important;
-    .nut-popover-menu-item {
+    .nut-popover-item {
       &-action-icon {
         color: rgba(255, 255, 255, 0.8);
       }
@@ -228,7 +222,7 @@
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
   .nut-popover-content {
-    .nut-popover-menu-item {
+    .nut-popover-item {
       &-name {
         margin-left: 0;
         margin-right: 4px;
@@ -236,7 +230,6 @@
 
       &-action-icon {
         right: auto;
-        left: $popover-menu-item-padding;
       }
     }
     &-top {

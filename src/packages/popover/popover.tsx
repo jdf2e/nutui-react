@@ -146,8 +146,8 @@ export const Popover: FunctionComponent<
   }
 
   const classes = classNames(
+    classPrefix,
     {
-      [`${classPrefix}`]: true,
       [`${classPrefix}-${theme}`]: theme === 'dark',
     },
     className
@@ -155,7 +155,8 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    return `${prefixCls} ${prefixCls}-${location.split('-')[0]} ${prefixCls}-${location}`
+    const direction = location.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
@@ -249,11 +250,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect && onSelect(item, index)
+      onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      onClick && onClick()
-      onClose && onClose()
+      onClick?.()
+      onClose?.()
     }
   }
   return (
@@ -263,11 +264,11 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            onClick && onClick()
+            onClick?.()
             if (!visible) {
-              onOpen && onOpen()
+              onOpen?.()
             } else {
-              onClose && onClose()
+              onClose?.()
             }
           }}
           style={style}
@@ -301,8 +302,8 @@ export const Popover: FunctionComponent<
                     <div
                       className={classNames(
                         {
-                          'nut-popover-menu-item': true,
-                          'nut-popover-menu-disabled': item.disabled,
+                          'nut-popover-item': true,
+                          'nut-popover-item-disabled': item.disabled,
                         },
                         item.className
                       )}
@@ -310,16 +311,12 @@ export const Popover: FunctionComponent<
                       onClick={() => handleSelect(item, index)}
                     >
                       {item.icon && (
-                        <div className="nut-popover-menu-item-icon">
-                          {item.icon}
-                        </div>
+                        <div className="nut-popover-item-icon">{item.icon}</div>
                       )}
-                      <div className="nut-popover-menu-item-name">
-                        {item.name}
-                      </div>
-                      {item.action && item.action.icon && (
+                      <div className="nut-popover-item-name">{item.name}</div>
+                      {item.action?.icon && (
                         <div
-                          className="nut-popover-menu-item-action-icon"
+                          className="nut-popover-item-action-icon"
                           onClick={(e) => item.action?.onClick?.(e)}
                         >
                           {item.action.icon}

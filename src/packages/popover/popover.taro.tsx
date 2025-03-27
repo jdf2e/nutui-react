@@ -33,7 +33,6 @@ const defaultProps = {
   offset: [0, 8],
   arrowOffset: 0,
   targetId: '',
-  className: '',
   showArrow: true,
   closeOnOutsideClick: true,
   closeOnActionClick: true,
@@ -140,14 +139,14 @@ export const Popover: FunctionComponent<
 
   const clickAway = () => {
     if (closeOnOutsideClick) {
-      onClick && onClick()
-      onClose && onClose()
+      onClick?.()
+      onClose?.()
     }
   }
 
   const classes = classNames(
+    classPrefix,
     {
-      [`${classPrefix}`]: true,
       [`${classPrefix}-${theme}`]: theme === 'dark',
     },
     className
@@ -155,7 +154,8 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    return `${prefixCls} ${prefixCls}-${location.split('-')[0]} ${prefixCls}-${location}`
+    const direction = location.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
@@ -295,8 +295,8 @@ export const Popover: FunctionComponent<
                 <View
                   className={classNames(
                     {
-                      'nut-popover-menu-item': true,
-                      'nut-popover-menu-disabled': item.disabled,
+                      'nut-popover-item': true,
+                      'nut-popover-item-disabled': item.disabled,
                     },
                     item.className
                   )}
@@ -304,16 +304,12 @@ export const Popover: FunctionComponent<
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon && (
-                    <View className="nut-popover-menu-item-icon">
-                      {item.icon}
-                    </View>
+                    <View className="nut-popover-item-icon">{item.icon}</View>
                   )}
-                  <View className="nut-popover-menu-item-name">
-                    {item.name}
-                  </View>
-                  {item.action && item.action.icon && (
+                  <View className="nut-popover-item-name">{item.name}</View>
+                  {item.action?.icon && (
                     <View
-                      className="nut-popover-menu-item-action-icon"
+                      className="nut-popover-item-action-icon"
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}

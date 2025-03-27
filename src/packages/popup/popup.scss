@@ -160,13 +160,13 @@
       }
     }
 
-    &-default-enter-active {
+    &-none-enter-active {
       animation-fill-mode: both;
       animation-name: popup-scale-fade-in;
       animation-duration: $popup-animation-duration;
     }
 
-    &-default-exit-active {
+    &-none-exit-active {
       animation-fill-mode: both;
       animation-name: popup-scale-fade-out;
       animation-duration: $popup-animation-duration;
@@ -323,7 +323,7 @@
       animation-duration: $popup-animation-duration;
     }
 
-    &-default-exit-done,
+    &-none-exit-done,
     &-center-exit-done,
     &-left-exit-done,
     &-right-exit-done,

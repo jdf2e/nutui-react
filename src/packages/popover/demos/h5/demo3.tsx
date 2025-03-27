@@ -56,6 +56,7 @@ const Demo3 = () => {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    flex: 1,
   } as any
   const selfContentDesc = {
     marginTop: '5px',

@@ -12,7 +12,7 @@ const Demo41 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
-  const [curPostion, setCurPostion] = useState('')
+  const [curPostion, setCurPostion] = useState('top')
 
   const columns = [
     [
