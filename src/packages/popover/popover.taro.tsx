@@ -184,10 +184,10 @@ export const Popover: FunctionComponent<
           styles[dir] =
             `${-(elWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
-        if (skew === 'start') {
+        if (skew === 'left') {
           styles.left = `${left + parallel}px`
         }
-        if (skew === 'end') {
+        if (skew === 'right') {
           styles.left = `${right + parallel}px`
         }
       }
@@ -198,10 +198,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles.top = `${top - elHeight / 2 + height / 2 - 4 + parallel}px`
         }
-        if (skew === 'start') {
+        if (skew === 'top') {
           styles.top = `${top + parallel}px`
         }
-        if (skew === 'end') {
+        if (skew === 'bottom') {
           styles.top = `${top + height + parallel}px`
         }
       }
@@ -224,10 +224,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'left') {
           styles[dir] = `${base + arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'right') {
           styles[dir2] = `${base - arrowOffset}px`
         }
       }
@@ -236,10 +236,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles.top = `calc(50% - ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'top') {
           styles.top = `${base - arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'bottom') {
           styles.bottom = `${base + arrowOffset}px`
         }
       }
@@ -275,7 +275,7 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
-      <View className={classes} style={getRootPosition()}>
+      <View className={classes} style={{ ...getRootPosition(), ...style }}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
           position="none"

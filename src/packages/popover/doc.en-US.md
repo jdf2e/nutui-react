@@ -26,7 +26,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### Custom Content
+### Custom Content and Color
 
 :::demo
 
@@ -38,19 +38,21 @@ import { Popover } from '@nutui/nutui-react'
 
 Use the location property to control where the bubble pops up. optional value
 
+> Attention, the type of location is changed from 3.x, take a look at the `FullPosition` type in types file .
+
 ```
 top           # Top middle
 left          # Left middle
 right         # Right middle
 bottom        # Bottom middle
-top-start     # Top left
-top-end       # Top right
-left-start    # Left top
-left-end      # Left bottom
-right-start   # Right top
-right-end     # Right bottom
-bottom-start  # Bottom left
-bottom-end    # Bottom right
+top-left      # Top left
+top-right     # Top Right
+left-top      # Left Top
+left-bottom   # Left Bottom
+right-top     # Right Top
+right-bottom  # Right Bottom
+bottom-left   # Bottom Left
+bottom-right  # Bottom Right
 ```
 
 :::demo
@@ -63,17 +65,6 @@ bottom-end    # Bottom right
 
 Use the location property to control where the bubble pops up. optional value
 
-```
-top           # Top middle
-left          # Left middle
-right         # Right middle
-bottom        # Bottom middle
-top-start     # Top left
-top-end       # Top right
-bottom-start  # Bottom left
-bottom-end    # Bottom right
-```
-
 :::demo
 
 <CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
@@ -85,14 +76,6 @@ bottom-end    # Bottom right
 :::demo
 
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### Custom Color
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

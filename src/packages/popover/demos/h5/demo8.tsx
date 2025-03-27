@@ -6,15 +6,7 @@ const Demo8 = () => {
   const list = [
     {
       key: 'key1',
-      name: 'option1',
-    },
-    {
-      key: 'key2',
-      name: 'option2',
-    },
-    {
-      key: 'key3',
-      name: 'option3',
+      name: '主要文案内容主要文案内容',
     },
   ]
   return (
@@ -31,16 +23,15 @@ const Demo8 = () => {
           className="demo-popover"
           visible={visible}
           list={list}
-          location="top-start"
+          theme="dark"
+          location="top-right"
           style={{ marginInlineEnd: '30px' }}
           closeOnOutsideClick={false}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)
           }}
         >
-          <Button type="primary" shape="square">
-            position: fixed
-          </Button>
+          <Button type="primary">position: fixed</Button>
         </Popover>
       </div>
     </>

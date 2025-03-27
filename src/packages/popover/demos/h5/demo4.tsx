@@ -32,7 +32,7 @@ const Demo4 = () => {
   const positionList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
     },
   ]
 
@@ -76,7 +76,7 @@ const Demo4 = () => {
         </div>
       </Picker>
       <Popover
-        className="custom-color"
+        theme="dark"
         visible={customPositon}
         targetId="pickerTarget"
         list={positionList}

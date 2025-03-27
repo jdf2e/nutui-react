@@ -9,7 +9,7 @@ import {
 } from '@nutui/nutui-react'
 import { Tips, Close } from '@nutui/icons-react'
 
-const Demo41 = () => {
+const Demo = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
@@ -20,15 +20,21 @@ const Demo41 = () => {
       { label: 'top', value: 'top' },
       { label: 'top-left', value: 'top-left' },
       { label: 'top-right', value: 'top-right' },
+      { label: 'right', value: 'right' },
+      { label: 'right-top', value: 'right-top' },
+      { label: 'right-bottom', value: 'right-bottom' },
       { label: 'bottom', value: 'bottom' },
       { label: 'bottom-left', value: 'bottom-left' },
       { label: 'bottom-right', value: 'bottom-right' },
+      { label: 'left', value: 'left' },
+      { label: 'left-top', value: 'left-top' },
+      { label: 'left-bottom', value: 'left-bottom' },
     ],
   ]
   const positionList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
       icon: <Tips color="rgba(255, 255,255, 1)" />,
       action: {
         icon: <Close color="rgba(255, 255,255, 1)" />,
@@ -79,7 +85,7 @@ const Demo41 = () => {
         </div>
       </Picker>
       <Popover
-        className="custom-color"
+        theme="dark"
         visible={customPositon}
         targetId="pickerTarget2"
         list={positionList}
@@ -89,4 +95,4 @@ const Demo41 = () => {
   )
 }
 
-export default Demo41
+export default Demo

@@ -26,7 +26,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### 自定义内容
+### 自定义内容+颜色
 
 :::demo
 
@@ -38,19 +38,21 @@ import { Popover } from '@nutui/nutui-react'
 
 通过 location 属性来控制气泡的弹出位置。可选值
 
+> 注意：这里在 3.x 版本上发生了变化，参考 type 文件中的 `FullPosition` 类型。
+
 ```
 top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-top-left     # 顶部左侧位置
-top-right       # 顶部右侧位置
-left-top    # 左侧上方位置
-left-bottom      # 左侧下方位置
-right-top   # 右侧上方位置
-right-bottom     # 右侧下方位置
-bottom-left  # 底部左侧位置
-bottom-right    # 底部右侧位置
+top-left      # 顶部左侧位置
+top-right     # 顶部右侧位置
+left-top      # 左侧上方位置
+left-bottom   # 左侧下方位置
+right-top     # 右侧上方位置
+right-bottom  # 右侧下方位置
+bottom-left   # 底部左侧位置
+bottom-right  # 底部右侧位置
 ```
 
 :::demo
@@ -61,18 +63,9 @@ bottom-right    # 底部右侧位置
 
 ### 位置自定义：单条数据
 
-通过 location 属性来控制气泡的弹出位置。可选值
+通过 location 属性来控制气泡的弹出位置。
 
-```
-top           # 顶部中间位置
-left          # 左侧中间位置
-right         # 右侧中间位置
-bottom        # 底部中间位置
-top-left     # 顶部左侧位置
-top-right       # 顶部右侧位置
-bottom-left  # 底部左侧位置
-bottom-right    # 底部右侧位置
-```
+> 注意：这里在 3.x 版本上发生了变化，参考 type 文件中的 `FullPosition` 类型。
 
 :::demo
 
@@ -85,14 +78,6 @@ bottom-right    # 底部右侧位置
 :::demo
 
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定义颜色
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

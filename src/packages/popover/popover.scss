@@ -76,7 +76,10 @@
     line-height: 28px;
     max-height: initial;
     overflow-y: initial;
-    padding: 0 $popover-padding;
+
+    &-group {
+      padding: 0 $popover-padding;
+    }
 
     .nut-popover-item {
       display: flex;

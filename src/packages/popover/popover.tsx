@@ -278,7 +278,7 @@ export const Popover: FunctionComponent<
       )}
       {
         createPortal(
-          <div className={classes} style={getRootPosition()}>
+          <div className={classes} style={{ ...getRootPosition(), ...style }}>
             <Popup
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
