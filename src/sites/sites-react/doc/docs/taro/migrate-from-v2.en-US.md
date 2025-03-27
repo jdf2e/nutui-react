@@ -1,4 +1,4 @@
-# Upgrade from v2 to v3.
+# Upgrade from v2 to v3
 
 This document will assist you in upgrading from NutUI React 2.x to NutUI React 3.x.
 
@@ -214,6 +214,7 @@ If your project uses these components, please read the documentation carefully a
 #### InfiniteLoading
 
 - The target attribute is used to obtain the element that is being listened to.
+- `refreshDistance` The distance to trigger the pull-down refresh.
 
 [//]: # '#### Notify'
 [//]: # '#### PullToRefresh'
