@@ -109,21 +109,25 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchStart = (event: any) => {
-    if (scrollTop.current === 0 && !isTouching.current && pullRefresh) {
+    if (!isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
+      distance.current = 0
+      setTopDisScoll(0)
       isTouching.current = true
     }
   }
 
   const touchMove = (event: any) => {
-    distance.current = event.touches[0].pageY - y.current
-    if (distance.current > 0 && isTouching.current) {
+    if (!isTouching.current) return
+    const currentY = event.touches[0].pageY
+    const newDistance = Math.max(0, currentY - y.current)
+    distance.current = newDistance
+
+    if (newDistance > 0) {
       event.preventDefault()
-      setTopDisScoll(distance.current)
-      if (distance.current >= refreshDistance) {
-        distance.current = refreshDistance
-        setTopDisScoll(refreshDistance)
-      }
+      const finalDistance = Math.min(newDistance, refreshDistance)
+      distance.current = finalDistance
+      setTopDisScoll(finalDistance)
     } else {
       distance.current = 0
       setTopDisScoll(0)
@@ -132,14 +136,17 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchEnd = async () => {
+    if (!isTouching.current) return
+
     if (distance.current < refreshDistance) {
       distance.current = 0
       setTopDisScoll(0)
-      isTouching.current = false
-    } else {
-      await onRefresh?.()
-      refreshDone()
+    } else if (onRefresh) {
+      await onRefresh()
     }
+
+    isTouching.current = false
+    refreshDone()
   }
 
   function getBottomTipsText() {
