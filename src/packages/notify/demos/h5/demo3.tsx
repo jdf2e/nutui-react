@@ -1,21 +1,26 @@
 import React from 'react'
 import { Notify, Cell } from '@nutui/nutui-react'
+import { Reload } from '@nutui/icons-react'
 
 const Demo3 = () => {
-  const cusBgNotify = (message: string) => {
+  const baseNotify = (message: string) => {
     Notify.text(message, {
-      style: {
-        '--nutui-notify-text-color': '#ad0000',
-        '--nutui-notify-base-background-color': '#ffe1e1',
+      leftIcon: <Reload />,
+      closeable: true,
+      onClose: () => {
+        console.log('close')
+      },
+      onClick: () => {
+        console.log('click')
       },
     })
   }
   return (
     <>
       <Cell
-        title="自定义背景色和字体颜色"
+        title="支持关闭"
         onClick={(event: React.MouseEvent) => {
-          cusBgNotify('自定义背景色和字体颜色')
+          baseNotify('请求失败，请重新刷新')
         }}
       />
     </>

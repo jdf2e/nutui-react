@@ -1,7 +1,10 @@
-import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
+import React, { useState, useEffect, FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
+import { Close } from '@nutui/icons-react-taro'
+import { web } from '@/utils/platform-taro'
+import pxTransform from '@/utils/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
@@ -14,10 +17,14 @@ import { TaroNotifyProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000,
-  type: 'danger',
+  distance: 8,
+  navHeight: 57,
   position: 'top',
   visible: false,
+  closeable: false,
+  leftIcon: null,
+  rightIcon: null,
+  duration: 3000,
   onClose: () => {},
   onClick: () => {},
 } as TaroNotifyProps
@@ -30,13 +37,17 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
 } = (props: Partial<TaroNotifyProps>) => {
   const {
     id,
-    children,
     style,
-    type,
-    className,
+    children,
+    distance,
+    navHeight,
+    closeable,
+    leftIcon,
+    rightIcon,
     position,
     visible,
     duration,
+    className,
     onClose,
     onClick,
   } = mergeProps(defaultProps, props)
@@ -47,7 +58,6 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
 
   let timer: number | null
   const [showNotify, setShowNotify] = useState(false)
-  const cssRef = useRef(null)
   useEffect(() => {
     if (visible) {
       show()
@@ -55,10 +65,6 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
       hide()
     }
   }, [visible])
-
-  const clickHandle = () => {
-    onClick()
-  }
 
   const show = () => {
     setShowNotify(true)
@@ -80,15 +86,32 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     onClose()
   }
 
+  const getDistance = useMemo(() => {
+    if (position === 'top') {
+      return {
+        top: pxTransform(
+          web() ? Number(distance) + navHeight : Number(distance)
+        ),
+      }
+    }
+    return { bottom: pxTransform(Number(distance)) }
+  }, [distance, position])
+
   const classes = classNames({
-    [`${classPrefix}-popup-top`]: position === 'top',
-    [`${classPrefix}-popup-bottom`]: position === 'bottom',
     [`${classPrefix}`]: true,
-    [`${classPrefix}-${type}`]: true,
+    [`${className}`]: true,
   })
+
+  const handleClick = () => {
+    onClick?.()
+  }
+
+  const handleClickIcon = () => {
+    hide()
+  }
+
   return (
     <CSSTransition
-      nodeRef={cssRef}
       in={showNotify}
       timeout={300}
       classNames="fade"
@@ -98,11 +121,30 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
       id={id}
     >
       <View
-        className={`${classes} ${className}`}
-        style={style}
-        onClick={clickHandle}
+        className={classes}
+        style={{ ...style, ...getDistance }}
+        onClick={handleClick}
       >
-        {children}
+        {leftIcon ? (
+          <View className={`${classPrefix}-left-icon`}>{leftIcon}</View>
+        ) : null}
+        <View
+          className={classNames({
+            [`${classPrefix}-content`]: true,
+            [`${classPrefix}-ellipsis`]: closeable || rightIcon,
+            [`${classPrefix}-layout-left`]: leftIcon || rightIcon,
+          })}
+        >
+          {children}
+        </View>
+        {rightIcon || closeable ? (
+          <View
+            className={`${classPrefix}-right-icon`}
+            onClick={handleClickIcon}
+          >
+            {rightIcon || (closeable ? <Close size={12} /> : null)}
+          </View>
+        ) : null}
       </View>
     </CSSTransition>
   )

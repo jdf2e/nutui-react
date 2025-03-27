@@ -1099,30 +1099,17 @@ $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 
 // Notify（✅）
-$notify-text-color: var(--nutui-notify-text-color, $white) !default;
-$notify-padding: var(--nutui-notify-padding, 0px 10px) !default;
-$notify-font-size: var(--nutui-notify-font-size, $font-size-base) !default;
 $notify-height: var(--nutui-notify-height, 40px) !default;
-$notify-base-background-color: var(
-  --nutui-notify-base-background-color,
-  $color-primary
+$notify-padding: var(--nutui-notify-padding, 0px 12px) !default;
+$notify-border-radius: var(--nutui-notify-border-radius, 8px) !default;
+$notify-box-shadow: var(
+  --nutui-notify-box-shadow,
+  0px 4px 12px 0px rgba(0, 0, 0, 0.06)
 ) !default;
-$notify-primary-background-color: var(
-  --nutui-notify-primary-background-color,
-  $color-info
-) !default;
-$notify-success-background-color: var(
-  --nutui-notify-success-background-color,
-  $color-success
-) !default;
-$notify-danger-background-color: var(
-  --nutui-notify-danger-background-color,
-  $color-primary
-) !default;
-$notify-warning-background-color: var(
-  --nutui-notify-warning-background-color,
-  $color-warning
-) !default;
+$notify-z-index: var(--nutui-notify-z-index, 1000) !default;
+$notify-text-color: var(--nutui-notify-text-color, $color-title) !default;
+$notify-font-size: var(--nutui-notify-font-size, $font-size-base) !default;
+$notify-background-color: var(--nutui-notify-background-color, $white) !default;
 
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, 4px) !default;

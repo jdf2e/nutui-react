@@ -1,17 +1,12 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import { Close } from '@nutui/icons-react'
 import { render as reactRender, unmount } from '@/utils/render'
-import { BasicComponent } from '@/utils/typings'
+import { WebNotifyProps } from '@/types'
 
-export interface NotificationProps extends BasicComponent {
-  id: string
-  message: string | React.ReactNode
-  duration: number
-  type: string
-  position: string
-  onClose: () => void
-  onClick: () => void
+export interface NotificationProps extends WebNotifyProps {
+  message: React.ReactNode
 }
 
 interface State {
@@ -48,7 +43,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClose()
+    this.props?.onClose()
   }
 
   startCloseTimer() {
@@ -80,14 +75,26 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const { style, message, type, className, position } = this.props
+    const {
+      id,
+      style,
+      message,
+      leftIcon,
+      rightIcon,
+      closeable,
+      className,
+      position,
+      distance,
+      navHeight,
+    } = this.props
     const { show } = this.state
-    const classes = classNames({
-      [`${classPrefix}-popup-top`]: position === 'top',
-      [`${classPrefix}-popup-bottom`]: position === 'bottom',
-      [`${classPrefix}`]: true,
-      [`${classPrefix}-${type}`]: true,
-    })
+    const classes = classNames(classPrefix, className)
+    const getDistance = () => {
+      if (position === 'top') {
+        return { top: `${distance + navHeight}px` }
+      }
+      return { bottom: `${distance}px` }
+    }
     return (
       <>
         <CSSTransition
@@ -97,13 +104,30 @@ export default class Notification extends React.PureComponent<
           unmountOnExit
           appear
           position={position}
+          id={id}
         >
           <div
-            className={`${classes} ${className}`}
-            style={style}
+            className={classes}
+            style={{ ...style, ...getDistance() }}
             onClick={this.clickCover}
           >
-            {message}
+            {leftIcon ? (
+              <div className={`${classPrefix}-left-icon`}>{leftIcon}</div>
+            ) : null}
+            <div
+              className={classNames({
+                [`${classPrefix}-content`]: true,
+                [`${classPrefix}-ellipsis`]: closeable || rightIcon,
+                [`${classPrefix}-layout-left`]: leftIcon || rightIcon,
+              })}
+            >
+              {message}
+            </div>
+            {rightIcon || closeable ? (
+              <div className={`${classPrefix}-right-icon`} onClick={this.close}>
+                {rightIcon || (closeable ? <Close /> : null)}
+              </div>
+            ) : null}
           </div>
         </CSSTransition>
       </>
