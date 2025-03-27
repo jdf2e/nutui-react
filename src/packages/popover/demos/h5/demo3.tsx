@@ -69,10 +69,11 @@ const Demo3 = () => {
     <>
       <Popover
         visible={customized}
+        theme="dark"
         onClick={() => {
           customized ? setCustomized(false) : setCustomized(true)
         }}
-        location="top-start"
+        location="top-left"
         className="customClass"
       >
         <Button type="primary" shape="square">

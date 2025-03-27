@@ -21,7 +21,7 @@ const Demo1 = () => {
       <Popover
         visible={basic}
         list={itemList}
-        location="bottom-start"
+        location="bottom-left"
         style={{ marginInlineEnd: 30 }}
         onClick={() => {
           basic ? setBasic(false) : setBasic(true)
@@ -35,7 +35,7 @@ const Demo1 = () => {
         visible={dark}
         list={itemList}
         theme="dark"
-        location="bottom-start"
+        location="bottom-left"
         onClick={() => {
           dark ? setDark(false) : setDark(true)
         }}

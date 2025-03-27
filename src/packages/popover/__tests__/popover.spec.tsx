@@ -172,14 +172,14 @@ test('render position fixed ', async () => {
       </Popover>
     </div>
   )
-  const item = document.querySelectorAll('.nut-popover-menu-item-name')
+  const item = document.querySelectorAll('.nut-popover-item-name')
   fireEvent.click(item[0])
   expect(click).toBeCalled()
   expect(close).toBeCalled()
   fireEvent.click(getByTestId('a'))
   await waitFor(() => {
     fireEvent.scroll(getByTestId('aa'), { target: { scrollTop: 10 } })
-    const item1 = document.querySelectorAll('.nut-popover-menu-item-name')
+    const item1 = document.querySelectorAll('.nut-popover-item-name')
     expect(item1.length).toBe(3)
   })
 })
@@ -193,7 +193,7 @@ test('should emit onchoose event when clicking the action', async () => {
       </Button>
     </Popover>
   )
-  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('option1'))
   await waitFor(() => expect(choose.mock.calls[0][1]).toBe(0))
@@ -208,7 +208,7 @@ test('should not emit select event when the action is disabled', async () => {
       </Button>
     </Popover>
   )
-  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose).not.toBeCalled())
 })

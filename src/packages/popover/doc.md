@@ -43,14 +43,14 @@ top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-top-start     # 顶部左侧位置
-top-end       # 顶部右侧位置
-left-start    # 左侧上方位置
-left-end      # 左侧下方位置
-right-start   # 右侧上方位置
-right-end     # 右侧下方位置
-bottom-start  # 底部左侧位置
-bottom-end    # 底部右侧位置
+top-left     # 顶部左侧位置
+top-right       # 顶部右侧位置
+left-top    # 左侧上方位置
+left-bottom      # 左侧下方位置
+right-top   # 右侧上方位置
+right-bottom     # 右侧下方位置
+bottom-left  # 底部左侧位置
+bottom-right    # 底部右侧位置
 ```
 
 :::demo
@@ -68,10 +68,10 @@ top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-top-start     # 顶部左侧位置
-top-end       # 顶部右侧位置
-bottom-start  # 底部左侧位置
-bottom-end    # 底部右侧位置
+top-left     # 顶部左侧位置
+top-right       # 顶部右侧位置
+bottom-left  # 底部左侧位置
+bottom-right    # 底部右侧位置
 ```
 
 :::demo
@@ -120,7 +120,7 @@ bottom-end    # 底部右侧位置
 | --- | --- | --- | --- |
 | list | 选项列表 | `PopoverList[]` | `[]` |
 | visible | 是否展示气泡弹出层 | `boolean` | `false` |
-| location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string` | `bottom` |
+| location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `FullPosition` | `bottom` |
 | offset | 出现位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
 | arrowOffset | 小箭头的偏移量 | `number` | `0` |
 | showArrow | 是否显示小箭头 | `boolean` | `true` |

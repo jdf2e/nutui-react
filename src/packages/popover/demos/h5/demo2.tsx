@@ -60,7 +60,7 @@ const Demo2 = () => {
       <Popover
         className="demo-popover"
         visible={showIcon}
-        location="bottom-start"
+        location="bottom-left"
         onClick={() => {
           showIcon ? setShowIcon(false) : setShowIcon(true)
         }}

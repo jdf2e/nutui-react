@@ -5,6 +5,7 @@ import {
   Picker,
   Toast,
   PickerOnChangeCallbackParameter,
+  FullPosition,
 } from '@nutui/nutui-react'
 import { Tips, Close } from '@nutui/icons-react'
 
@@ -12,16 +13,16 @@ const Demo41 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
-  const [curPostion, setCurPostion] = useState('top')
+  const [curPostion, setCurPostion] = useState<FullPosition>('top')
 
   const columns = [
     [
       { label: 'top', value: 'top' },
-      { label: 'top-start', value: 'top-start' },
-      { label: 'top-end', value: 'top-end' },
+      { label: 'top-left', value: 'top-left' },
+      { label: 'top-right', value: 'top-right' },
       { label: 'bottom', value: 'bottom' },
-      { label: 'bottom-start', value: 'bottom-start' },
-      { label: 'bottom-end', value: 'bottom-end' },
+      { label: 'bottom-left', value: 'bottom-left' },
+      { label: 'bottom-right', value: 'bottom-right' },
     ],
   ]
   const positionList = [
@@ -56,7 +57,6 @@ const Demo41 = () => {
         visible={showPicker}
         options={columns}
         duration="500"
-        title=""
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
@@ -66,7 +66,7 @@ const Demo41 = () => {
         }}
         onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
           if (selectedOptions[0]?.value) {
-            setCurPostion(selectedOptions[0].value as string)
+            setCurPostion(selectedOptions[0].value as FullPosition)
           }
         }}
         onClose={() => {
