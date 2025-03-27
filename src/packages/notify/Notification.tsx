@@ -43,7 +43,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClose && this.props.onClose()
+    this.props?.onClose()
   }
 
   startCloseTimer() {
@@ -85,15 +85,13 @@ export default class Notification extends React.PureComponent<
       className,
       position,
       distance,
+      navHeight,
     } = this.props
     const { show } = this.state
-    const classes = classNames({
-      [`${classPrefix}`]: true,
-      [`${className}`]: true,
-    })
+    const classes = classNames(classPrefix, className)
     const getDistance = () => {
       if (position === 'top') {
-        return { top: `${distance + 57}px` }
+        return { top: `${distance + navHeight}px` }
       }
       return { bottom: `${distance}px` }
     }

@@ -49,6 +49,7 @@ import { Notify } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | distance | Distance from top/bottom | `number` | `8` |
+| navHeight | Height of top navigation bar | `number` | `57` |
 | closeable | Whether to enable the close mode | `boolean` | `false` |
 | leftIcon | Left Icon | `ReactNode` | `-` |
 | rightIcon | Right Icon | `ReactNode` | `-` |

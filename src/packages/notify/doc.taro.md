@@ -50,6 +50,7 @@ import { Notify } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | visible | 消息框是否展示 | `boolean` | `false` |
 | distance | 距离顶部/底部距离 | `number` | `8` |
+| navHeight | 顶部导航高度 | `number` | `57` |
 | closeable | 是否启用关闭模式 | `boolean` | `false` |
 | leftIcon | 左边的 icon | `ReactNode` | `-` |
 | rightIcon | 右边的 icon，在 closeable 模式下默认为 `<Close />` | `ReactNode` | `-` |

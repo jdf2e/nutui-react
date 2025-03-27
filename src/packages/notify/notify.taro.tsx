@@ -18,6 +18,7 @@ const defaultProps = {
   ...ComponentDefaults,
   id: '',
   distance: 8,
+  navHeight: 57,
   position: 'top',
   visible: false,
   closeable: false,
@@ -39,6 +40,7 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
     style,
     children,
     distance,
+    navHeight,
     closeable,
     leftIcon,
     rightIcon,
@@ -87,7 +89,9 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
   const getDistance = useMemo(() => {
     if (position === 'top') {
       return {
-        top: pxTransform(web() ? Number(distance) + 57 : Number(distance)),
+        top: pxTransform(
+          web() ? Number(distance) + navHeight : Number(distance)
+        ),
       }
     }
     return { bottom: pxTransform(Number(distance)) }

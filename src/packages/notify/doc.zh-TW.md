@@ -49,6 +49,7 @@ import { Notify } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | distance | 距離頂部/底部距離 | `number` | `8` |
+| navHeight | 頂部導航高度 | `number` | `57` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |
 | leftIcon | 左邊的 icon | `ReactNode` | `-` |
 | rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<Close />` | `ReactNode` | `-` |

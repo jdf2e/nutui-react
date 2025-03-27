@@ -10,6 +10,7 @@ const options: WebNotifyProps = {
   id: '',
   position: 'top',
   distance: 8,
+  navHeight: 57,
   closeable: false,
   leftIcon: null,
   rightIcon: null,

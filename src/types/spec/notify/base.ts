@@ -4,6 +4,7 @@ import { BaseProps } from '../../base/props'
 export interface BaseNotify extends BaseProps {
   id: string
   distance: number
+  navHeight: number
   closeable: boolean
   leftIcon: React.ReactNode
   rightIcon: React.ReactNode
