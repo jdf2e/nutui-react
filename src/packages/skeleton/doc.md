@@ -10,7 +10,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 ## 示例代码
 
-### 基础用法
+### 标题
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 传入多行
+### 正文
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### 显示头像
+### 模拟头像
 
 :::demo
 
