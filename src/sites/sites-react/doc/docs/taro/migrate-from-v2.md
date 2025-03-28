@@ -137,8 +137,13 @@ plugins: [
 
 - 注意：** 该组件不符合移动端规范，已被废弃。请使用 SideBar **
 
-[//]: # '#### Tabbar'
-[//]: # '#### TabbarItem'
+#### Tabbar
+
+#### TabbarItem
+
+- 为 `icon`、`title` 和 `value` 增加新的类型，支持 `function` 根据当前是否 `active` 状态展示不同的 icon/title/value。
+- 增加 `onActiveClick` 事件，用于处理当元素处于焦点时，再次点击时可增加自定义事件。
+
 [//]: # '#### Tabs'
 [//]: # '#### Tabs.Tabpane'
 
@@ -162,11 +167,7 @@ plugins: [
 
 - 移除 `async`, 可通过 `beforeChange` 替代
 - 增加 `beforeChange`, 处理异步调用
-  [//]: # '#### NumberKeyboard'
-  [//]: # '#### Picker'
-  [//]: # '#### Radio'
-  [//]: # '### Radio.Group'
-  [//]: # '#### Range'
+
   [//]: # '#### NumberKeyboard'
   [//]: # '#### Picker'
   [//]: # '#### Radio'

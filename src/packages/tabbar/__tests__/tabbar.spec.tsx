@@ -107,7 +107,7 @@ test('should match active tabbar by click', async () => {
 })
 
 test('double click', async () => {
-  const onDoubleClick = vi.fn()
+  const onActiveClick = vi.fn()
   const { container } = render(
     <>
       <Tabbar>
@@ -115,7 +115,7 @@ test('double click', async () => {
         <Tabbar.Item
           title="分类"
           icon={<Category />}
-          onDoubleClick={onDoubleClick}
+          onActiveClick={onActiveClick}
         />
         <Tabbar.Item title="逛" icon={<Hi />} />
       </Tabbar>
@@ -126,7 +126,7 @@ test('double click', async () => {
     container.querySelectorAll('.nut-tabbar-item')
   fireEvent.click(tabbarItem[1])
   fireEvent.click(tabbarItem[1])
-  expect(onDoubleClick).toBeCalled()
+  expect(onActiveClick).toBeCalled()
 })
 
 test('should show sure emitted when click', async () => {

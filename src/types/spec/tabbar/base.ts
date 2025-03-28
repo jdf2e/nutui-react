@@ -21,5 +21,5 @@ export interface BaseTabbarItem extends BaseProps {
   top: string
   right: string
   direction: Direction
-  onDoubleClick: () => void
+  onActiveClick: () => void
 }

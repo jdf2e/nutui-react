@@ -35,7 +35,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     // @ts-ignore
     index,
     direction,
-    onDoubleClick,
+    onActiveClick,
     ...rest
   } = {
     ...defaultProps,
@@ -128,7 +128,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
         color: active ? ctx?.activeColor : ctx?.inactiveColor,
         ...style,
       }}
-      onClick={() => (active ? onDoubleClick?.() : ctx?.handleClick(index))}
+      onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
       {...rest}
     >
       {direction === 'horizontal' && !dot ? (

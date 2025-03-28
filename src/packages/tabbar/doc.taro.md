@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 模拟双击支持回调
+### 焦点时点击（模拟双击）支持回调
 
 :::demo
 
@@ -109,7 +109,7 @@ import { Tabbar } from '@nutui/nutui-react-taro'
 | dot | 徽标是否为小点 | `boolean` | `false` |
 | top | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
 | right | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
-| onDoubleClick | 用于处理当元素处于焦点时，再次点击时可增加自定义事件。 | `() => void` | `-` |
+| onActiveClick | 用于处理当元素处于焦点时，再次点击时可增加自定义事件。 | `() => void` | `-` |
 
 ## 主题定制
 

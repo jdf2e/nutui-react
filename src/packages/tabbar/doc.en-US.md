@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### onDoubledClick Event
+### onActiveClick Event
 
 :::demo
 
@@ -109,7 +109,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
-| onDoubleClick | When item is focused, you can add your callback when you click it again | `() => void` | `-` |
+| onActiveClick | When item is focused, you can add your callback when you click it again | `() => void` | `-` |
 
 ## Theming
 

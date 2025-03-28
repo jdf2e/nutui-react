@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 模擬雙擊支持回調
+### 焦點時點擊（模擬雙擊）支持回調
 
 :::demo
 
@@ -109,7 +109,7 @@ import { Tabbar } from '@nutui/nutui-react'
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| onDoubleClick | 用於處理當元素處於焦點時，再次點擊時可增加自定義事件。 | `() => void` | `-` |
+| onActiveClick | 用於處理當元素處於焦點時，再次點擊時可增加自定義事件。 | `() => void` | `-` |
 
 ## 主題定製
 

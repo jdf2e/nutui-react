@@ -11,9 +11,9 @@ const Demo = () => (
       icon={(active: boolean) => (active ? <HeartFill /> : <Heart />)}
     />
     <Tabbar.Item
-      title="双击回调"
+      title="焦点点击"
       icon={<Cart />}
-      onDoubleClick={() => console.log('可以在这里写想要的事件')}
+      onActiveClick={() => console.log('可以在这里写想要的事件')}
     />
     <Tabbar.Item title="我的" icon={<User />} />
   </Tabbar>
