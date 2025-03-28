@@ -60,9 +60,9 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
 
   const onClick = () => {
     if (disabled || changing) return
-    if (props.onChange) {
+    if (onChange) {
       setChanging(true)
-      props.onChange(!value)
+      onChange(!value)
     }
     setValue(!value)
   }

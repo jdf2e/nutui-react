@@ -58,9 +58,9 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
 
   const onClick = () => {
     if (disabled || changing) return
-    if (props.onChange) {
+    if (onChange) {
       setChanging(true)
-      props.onChange(!value)
+      onChange(!value)
     }
     setValue(!value)
   }
