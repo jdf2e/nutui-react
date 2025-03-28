@@ -53,6 +53,10 @@
     z-index: 1;
   }
 
+  &-disabled {
+    background: $badge-background-disabled-color;
+  }
+
   &-number {
     font-family: 'JD';
   }

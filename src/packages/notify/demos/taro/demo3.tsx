@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
 import { Notify, Cell } from '@nutui/nutui-react-taro'
+import { Reload } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
-  const [customShow, SetCustomShow] = useState(false)
+  const [showNotify, setShowNotify] = useState(false)
+  const [content] = useState('请求失败，请重新刷新')
   return (
     <>
       <Notify
-        className="customer"
-        visible={customShow}
-        style={{
-          '--nutui-notify-text-color': '#ad0000',
-          '--nutui-notify-base-background-color': '#ffe1e1',
-        }}
+        visible={showNotify}
+        leftIcon={<Reload />}
+        closeable
         onClose={() => {
-          SetCustomShow(false)
+          setShowNotify(false)
         }}
       >
-        自定义背景色和字体颜色
+        {content}
       </Notify>
       <Cell
-        title="自定义背景色和字体颜色"
-        onClick={(event: React.MouseEvent) => {
-          SetCustomShow(true)
+        title="支持关闭"
+        onClick={() => {
+          setShowNotify(true)
         }}
       />
     </>

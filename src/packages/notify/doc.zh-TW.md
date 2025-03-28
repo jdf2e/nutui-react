@@ -1,10 +1,8 @@
 # Notify 消息通知
 
-#
-
 在頁面頂部展示消息提示
 
-### 引入
+## 引入
 
 ```tsx
 import { Notify } from '@nutui/nutui-react'
@@ -20,7 +18,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### 通知類型
+### 支持跳轉
 
 :::demo
 
@@ -28,7 +26,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### 自定義樣式
+### 支持關閉
 
 :::demo
 
@@ -36,7 +34,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### 自定義時長
+### 自定義樣式
 
 :::demo
 
@@ -50,7 +48,11 @@ import { Notify } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 提示的信息類型（primary，success ，danger，warning） | `string` | `danger` |
+| distance | 距離頂部/底部距離 | `number` | `8` |
+| navHeight | 頂部導航高度 | `number` | `57` |
+| closeable | 是否啟用關閉模式 | `boolean` | `false` |
+| leftIcon | 左邊的 icon | `ReactNode` | `-` |
+| rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<Close />` | `ReactNode` | `-` |
 | duration | 展示時長(ms)，值為 0 時，notify 不會消失 | `string` | `3000` |
 | position | 自定義位置 (top, bottom) | `string` | `top` |
 | onClick | 點擊事件回調 | `onClick: () => void` | `-` |
@@ -65,13 +67,12 @@ import { Notify } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-notify-height | 消息通知的高度 | `40px` |
-| \--nutui-notify-padding | 消息通知的內邊距 | `0 10px` |
+| \--nutui-notify-padding | 消息通知的內邊距 | `0 12px` |
+| \--nutui-notify-border-radius | 消息通知的圓角 | `8px` |
+| \--nutui-notify-box-shadow | 消息通知的陰影 | `0px 4px 12px 0px rgba(0, 0, 0, 0.06)` |
+| \--nutui-notify-z-index | 消息通知的層級 | `1000` |
 | \--nutui-notify-font-size | 消息通知的字體大小 | `$font-size-base` |
-| \--nutui-notify-text-color | 消息通知的文本顏色 | `$white` |
-| \--nutui-notify-base-background-color | 消息通知的背景顏色 | `$color-primary` |
-| \--nutui-notify-primary-background-color | 主要通知的背景顏色 | `$color-info` |
-| \--nutui-notify-success-background-color | 成功通知的背景顏色 | `$color-success` |
-| \--nutui-notify-danger-background-color | 危險通知的背景顏色 | `$color-primary` |
-| \--nutui-notify-warning-background-color | 警告通知的背景顏色 | `$color-warning` |
+| \--nutui-notify-text-color | 消息通知的文本顏色 | `$color-title` |
+| \--nutui-notify-background-color | 消息通知的背景顏色 | `$white` |
 
 <Contribution name="Notify" />

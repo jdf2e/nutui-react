@@ -18,6 +18,14 @@ import { Badge } from '@nutui/nutui-react'
 
 :::
 
+### Disabled
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ### Max Size
 
 :::demo
@@ -88,6 +96,7 @@ import { Badge } from '@nutui/nutui-react'
 | top | Up and down offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
 | right | Left and right offset, can be set to: "0" or 0, etc. | `string` \| `number` | `0` |
 | fill | Fill Mode | `solid` \| `outline` | `solid` |
+| disabled | Whether to disable | `boolean` | `false` |
 
 ## Theming
 
@@ -99,6 +108,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-badge-height | The height of the badge | `14px` |
 | \--nutui-badge-background-color | badge background color | `$color-primary` |
+| \--nutui-badge-background-disabled-color | badge disables background color | `$color-text-disabled` |
 | \--nutui-badge-color | badge content color value | `$color-primary-text)` |
 | \--nutui-badge-font-size | badge content font size | `$font-size-xxs` |
 | \--nutui-badge-border | badge border | `1px solid $color-primary-text` |

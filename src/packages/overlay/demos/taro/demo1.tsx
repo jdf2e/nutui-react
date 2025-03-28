@@ -12,8 +12,8 @@ const Demo1 = () => {
   }
   return (
     <>
-      <Cell>
-        <View onClick={handleToggleShow}>点击按钮显示遮罩层</View>
+      <Cell onClick={handleToggleShow}>
+        <View>点击按钮显示遮罩层</View>
       </Cell>
 
       <Overlay

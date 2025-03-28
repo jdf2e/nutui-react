@@ -22,6 +22,7 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
+  disabled: false,
 } as TaroBadgeProps
 export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
   const rtl = useRtl()
@@ -36,6 +37,7 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
     right,
     fill,
     size,
+    disabled,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-badge'
@@ -73,6 +75,7 @@ export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
     [`${classPrefix}-content`]: children,
+    [`${classPrefix}-disabled`]: disabled,
   })
 
   useEffect(() => {

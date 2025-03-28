@@ -13,4 +13,5 @@ export interface BaseBadge extends BaseProps {
   right: SimpleValue
   fill: BadgeFill
   size: BadgeDotSize
+  disabled: boolean
 }

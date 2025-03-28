@@ -220,7 +220,15 @@ plugins: [
 
 - `target` 属性获取监听的目标元素
 
-[//]: # '#### Notify'
+#### Notify
+
+- 新增 `distance`，距离顶部/底部距离
+- 新增 `closeable`，是否启用关闭模式
+- 新增 `leftIcon`，左边的 icon
+- 新增 `rightIcon`，右边的 icon
+- 新增 `navHeight`，导航栏高度
+- 移除 `type`，通过css变量 `--nutui-notify-base-background-color` 修改
+
 [//]: # '#### PullToRefresh'
 [//]: # '#### Swipe'
 
@@ -248,6 +256,7 @@ plugins: [
 
 - 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
 - 移除 `color`属性（`徽标背景颜色`），通过css变量`--nutui-badge-background-color`实现
+- 新增 `disabled` 属性，是否禁用
 
 [//]: # '#### CircleProgress'
 [//]: # '#### Collapse'

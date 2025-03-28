@@ -14,8 +14,8 @@ const Demo5 = () => {
   }
   return (
     <>
-      <Cell>
-        <View onClick={handleToggleShow}>嵌套内容</View>
+      <Cell onClick={handleToggleShow}>
+        <View>嵌套内容</View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose}>

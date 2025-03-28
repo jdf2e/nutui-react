@@ -11,6 +11,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const BadgeDemo = () => {
   const [translated] = useTranslate({
@@ -23,6 +24,7 @@ const BadgeDemo = () => {
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
       a8237653: '填充模式',
+      disabled: '禁用',
     },
     'zh-TW': {
       '8ab98966': '默认用法',
@@ -33,6 +35,7 @@ const BadgeDemo = () => {
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
       a8237653: '填充模式',
+      disabled: '禁用',
     },
     'en-US': {
       '8ab98966': 'Basic usage',
@@ -43,6 +46,7 @@ const BadgeDemo = () => {
       '915d7b01': 'Custom Position',
       f1089312: 'Display Alone',
       a8237653: 'Fill Mode',
+      disabled: 'Disabled',
     },
   })
   return (
@@ -53,6 +57,8 @@ const BadgeDemo = () => {
         <Demo1 />
         <View className="h2">{translated['1e7a2282']}</View>
         <Demo2 />
+        <View className="h2">{translated.disabled}</View>
+        <Demo9 />
         <View className="h2">{translated.customColor}</View>
         <Demo3 />
         <View className="h2">{translated['1c730245']}</View>
