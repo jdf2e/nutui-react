@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Loading1 } from '@nutui/icons-react'
 import { Switch } from '../switch'
 
 test('activeText && checked && onChange && inactiveText && className && style test', async () => {
@@ -49,8 +50,32 @@ test('activeText && checked && onChange && inactiveText && className && style te
   }
 })
 
-test('disabled test', () => {
-  render(<Switch disabled />)
+test('disabled test', async () => {
+  const { container } = render(<Switch disabled />)
   const el = document.getElementsByClassName('nut-switch-disabled')
   expect(el.length > 0).toBe(true)
+  const buttonEl: Element | null = container.querySelector('.nut-switch-button')
+  if (buttonEl) {
+    await act(() => {
+      fireEvent.click(buttonEl)
+    })
+  }
+})
+
+test('loadingIcon test', async () => {
+  const testFn = vi.fn()
+  const { container } = render(
+    <Switch loadingIcon={<Loading1 />} onChange={testFn} />
+  )
+  const el: Element | null = container.querySelector('.nut-switch-button')
+  if (el) {
+    await act(() => {
+      fireEvent.click(el)
+    })
+    waitFor(() => {
+      // 异步
+      const el = document.getElementsByClassName('.nut-icon')
+      expect(el.length > 0).toBe(true)
+    })
+  }
 })
