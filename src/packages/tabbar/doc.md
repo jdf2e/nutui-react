@@ -18,7 +18,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定义选中
+### 徽标提示
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 无图标
+### 只配文字
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 徽标提示
+### 首坑品牌+营销态
 
 :::demo
 
@@ -50,7 +50,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 红点
+### 自定义颜色+数量
 
 :::demo
 
@@ -58,7 +58,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定义颜色
+### 受控
 
 :::demo
 
@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 可自定义icon个数的tabbar
+### 焦点时点击（模拟双击）支持回调
 
 :::demo
 
@@ -102,13 +102,14 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| title | 标签页的标题 | `ReactNode` | `-` |
-| icon | 自定义图标 | `ReactNode` | `-` |
-| value | 徽标中显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
+| title | 标签页的标题 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| icon | 自定义图标 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| value | 徽标中显示的内容，支持数字、字符和自定义内容 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | max | value 为数值时，最大值 | `number` | `99` |
 | dot | 徽标是否为小点 | `boolean` | `false` |
 | top | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
 | right | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
+| onActiveClick | 用于处理当元素处于焦点时，再次点击时可增加自定义事件。 | `() => void` | `-` |
 
 ## 主题定制
 
@@ -118,16 +119,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `50px` |
+| \--nutui-tabbar-height | 高度 | `46px` |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 阴影 | `none` |
-| \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xs` |
+| \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
-| \--nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |
+| \--nutui-tabbar-text-margin-top | 标题上外边距 | `4px` |
 
 <Contribution name="Tabbar" />

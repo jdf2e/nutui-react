@@ -77,6 +77,7 @@ import { Switch } from '@nutui/nutui-react'
 | disabled | Disabled | `boolean` | `false` |
 | activeText | Text description when opening | `ReactNode` | `-` |
 | inactiveText | Text description when closed | `ReactNode` | `-` |
+| loadingIcon | Controlled loading state icon | `ReactNode` | `<Loading1 />` |
 | onChange | Trigger when switching switches | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## Theming

@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 
-import { ITouchEvent, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
+import { Loading1 } from '@nutui/icons-react-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -12,6 +13,7 @@ const defaultProps = {
   disabled: false,
   activeText: '',
   inactiveText: '',
+  loadingIcon: <Loading1 />,
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -20,6 +22,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
+    loadingIcon,
     className,
     style,
     onChange,
@@ -37,6 +40,12 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
+  useEffect(() => {
+    changing && setChanging(false)
+  }, [value])
+
+  const [changing, setChanging] = useState(false)
+
   const classes = () => {
     return classNames([
       classPrefix,
@@ -49,20 +58,16 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
-    if (disabled) return
-    onChange && onChange(!value, event)
+  const onClick = () => {
+    if (disabled || changing) return
+    if (props.onChange) {
+      setChanging(true)
+      props.onChange(!value)
+    }
     setValue(!value)
   }
   return (
-    <View
-      className={classes()}
-      onClick={(e) => onClick(e)}
-      style={style}
-      {...rest}
-    >
+    <View className={classes()} onClick={onClick} style={style} {...rest}>
       <View
         className={classNames([
           [`${classPrefix}-button`],
@@ -77,8 +82,14 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {!value && !activeText && (
-          <View className={`${classPrefix}-close-line`} />
+        {changing && loadingIcon ? (
+          <>{loadingIcon}</>
+        ) : (
+          <>
+            {!value && !activeText && (
+              <View className={`${classPrefix}-close-line`} />
+            )}
+          </>
         )}
       </View>
       {activeText && (

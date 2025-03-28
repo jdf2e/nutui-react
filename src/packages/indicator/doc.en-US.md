@@ -68,7 +68,7 @@ import { Indicator } from '@nutui/nutui-react'
 | total | step total size | `number` | `3` |
 | direction | display directory,default is horizontal | `horizontal` \| `vertical` | `horizontal` |
 | color | color | `primary` \| `default` | `primary` |
-| type | interactivity Type | `anchor` \| `slide` | `anchor` |
+| type | interactivity Type | `anchor` \| `slide`\| `dualScreen` | `anchor` |
 
 ## Theming
 

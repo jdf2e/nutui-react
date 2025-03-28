@@ -40,6 +40,11 @@
         left: calc(100% - $switch-height + $switch-border-width);
       }
     }
+    .nut-icon {
+      width: calc(($switch-height - $switch-border-width * 2) / 2);
+      height: calc(($switch-height - $switch-border-width * 2) / 2);
+      color: $switch-active-disabled-background-color;
+    }
   }
 
   &-close {
