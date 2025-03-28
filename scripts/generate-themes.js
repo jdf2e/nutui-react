@@ -46,4 +46,25 @@ Promise.all(tasks).then((res) => {
       // logger.success(`文件写入成功`);
     }
   )
+  const themeDarkFile =  path.resolve(__dirname, '../dist/styles/theme-dark.css')
+  fs.copy(
+    path.resolve(__dirname, '../dist/styles/theme-dark.scss'),
+    themeDarkFile
+  ).then(() => {
+    fs.writeFileSync(themeDarkFile,fs.readFileSync(themeDarkFile).toString().replace(/\/\/[^\n]*\n/gi, ''))
+  })
+  const themeDefaultFile =  path.resolve(__dirname, '../dist/styles/theme-default.css')
+  fs.copy(
+    path.resolve(__dirname, '../dist/styles/theme-default.scss'),
+    themeDefaultFile
+  ).then(() => {
+    fs.writeFileSync(themeDefaultFile,fs.readFileSync(themeDefaultFile).toString().replace(/\/\/[^\n]*\n/gi, ''))
+  })
+  const themeJmappFile =  path.resolve(__dirname, '../dist/styles/theme-jmapp.css')
+  fs.copy(
+    path.resolve(__dirname, '../dist/styles/theme-jmapp.scss'),
+    themeJmappFile
+  ).then(() => {
+    fs.writeFileSync(themeJmappFile,fs.readFileSync(themeJmappFile).toString().replace(/\/\/[^\n]*\n/gi, ''))
+  })
 })
