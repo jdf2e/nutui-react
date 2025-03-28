@@ -83,12 +83,15 @@ export const Popover: FunctionComponent<
     setShowPopup(visible)
     if (visible) {
       setTimeout(() => {
-        getContentWidth()
+        getWrapperPosition()
+        setTimeout(() => {
+          getPopoverContentW()
+        }, 300)
       }, 0)
     }
   }, [visible])
 
-  const getContentWidth = async () => {
+  const getWrapperPosition = async () => {
     let rect
 
     createSelectorQuery()
@@ -115,9 +118,6 @@ export const Popover: FunctionComponent<
         })
       })
       .exec()
-    setTimeout(() => {
-      getPopoverContentW()
-    }, 300)
   }
 
   const getRectTaro = async (targetId: any): Promise<any> => {
@@ -158,7 +158,7 @@ export const Popover: FunctionComponent<
     return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
-  const getRootPosition = () => {
+  const getPopoverPosition = () => {
     const styles: CSSProperties = {}
     if (!rootPosition) {
       styles.visibility = 'hidden'
@@ -275,7 +275,7 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
-      <View className={classes} style={{ ...getRootPosition(), ...style }}>
+      <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
           position="none"
