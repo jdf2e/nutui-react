@@ -1,17 +1,20 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
   ReactNode,
   useContext,
-  useRef,
+  useEffect,
   useMemo,
+  useRef,
+  useState,
 } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
-import { createSelectorQuery } from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import useUuid from '@/hooks/use-uuid'
+import { useRefState } from '@/hooks/use-ref-state'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -54,8 +57,8 @@ export const CollapseItem: FunctionComponent<
   const context = useContext(CollapseContext)
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
-  const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
-  const target = `#nut-collapse-content-${refRandomId}`
+  const uid = useUuid()
+  const target = `nut-collapse-content-${uid}`
 
   const expanded = useMemo(() => {
     if (context) {
@@ -63,6 +66,7 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
+  console.log('oasis', expanded, name)
 
   const iconStyle = useMemo(() => {
     return expanded
@@ -70,81 +74,52 @@ export const CollapseItem: FunctionComponent<
       : { transform: 'translateY(-50%)' }
   }, [expanded, rotate])
 
-  const handleClick = () => {
-    if (!disabled) {
-      context.updateValue(name)
-    }
-  }
-
-  const [timer, setTimer] = useState<any>(null)
-  const [currentHeight, setCurrentHeight] = useState<string>('auto')
+  const timer = useRef<any>(null)
   const inAnimation = useRef(false)
-  const [wrapperHeight, setWrapperHeight] = useState(() =>
-    expanded ? 'auto' : '0px'
-  )
+  const [tran, setTran] = useState(0)
+  const [currentHeight, setCurrentHeight] = useRefState(0)
+  const [wrapperHeight, setWrapperHeight] = useState(0)
 
-  const getRect = (selector: string) => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .select(selector)
-        .boundingClientRect()
-        .exec((rect = []) => {
-          resolve(rect[0])
+  const updateRectHeight = async () => {
+    nextTick(async () => {
+      const res = await getRectByTaro(contentRef.current, target)
+      console.log('oasis res', res.height)
+      if (res?.height) {
+        setCurrentHeight(res.height)
+        setWrapperHeight(expanded ? res.height : 0)
+        setTimeout(() => {
+          setTran(1)
         })
+      }
     })
   }
-
   useEffect(() => {
-    setTimeout(() => {
-      getRect(target).then((res: any) => {
-        if (res?.height) {
-          setCurrentHeight(`${res.height}px`)
-        }
-      })
-    }, 200)
-  }, [children])
-
-  useEffect(() => {
-    setTimeout(() => {
-      getRect(target).then((res: any) => {
-        if (res?.height) {
-          setCurrentHeight(`${res.height}px`)
-        }
-      })
-    }, 100)
-  }, [])
+    nextTick(() => {
+      console.log('oasis update', name)
+      updateRectHeight()
+    })
+  }, [children, expanded])
 
   const toggle = () => {
     // 连续切换状态时，清除打开的后续操作
-    if (timer) {
-      clearTimeout(timer)
-      setTimer(timer)
+    if (timer.current) {
+      clearTimeout(timer.current)
     }
-    const start = expanded ? '0px' : currentHeight
-    const end = expanded ? currentHeight : '0px'
     inAnimation.current = true
-    setWrapperHeight(start)
+    const end = !expanded ? currentHeight.current : 0
+    console.log('oasis end', expanded, end)
     setTimeout(() => {
       setWrapperHeight(end)
       inAnimation.current = false
-      if (expanded) {
-        const timer = setTimeout(() => {
-          setWrapperHeight('auto')
-        }, 300)
-        setTimer(timer)
-      }
-    }, 100)
+    }, 0)
   }
-
-  const init = useRef(true)
-
-  useEffect(() => {
-    if (init.current) {
-      init.current = false
-    } else {
+  const handleClick = () => {
+    if (!disabled) {
+      console.log('oasis name', name)
+      context.updateValue(name)
       toggle()
     }
-  }, [expanded])
+  }
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
@@ -161,19 +136,21 @@ export const CollapseItem: FunctionComponent<
         </View>
       </View>
       <View
-        className={`${classPrefix}-content`}
+        className={classNames({
+          [`${classPrefix}-content-wrapper`]: true,
+          [`${classPrefix}-content-wrapper-tran`]: true,
+        })}
+        style={
+          tran
+            ? {
+                height: wrapperHeight,
+              }
+            : {}
+        }
         ref={wrapperRef}
-        style={{
-          willChange: 'height',
-          height: wrapperHeight,
-        }}
       >
-        <View
-          ref={contentRef}
-          className={`${classPrefix}-content-text`}
-          id={`nut-collapse-content-${refRandomId}`}
-        >
-          {children}
+        <View className={`${classPrefix}-content`} ref={contentRef} id={target}>
+          <View className={`${classPrefix}-content-text`}>{children}</View>
         </View>
       </View>
     </div>

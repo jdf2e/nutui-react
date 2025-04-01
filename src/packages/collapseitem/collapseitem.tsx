@@ -1,14 +1,16 @@
 import React, {
   FunctionComponent,
-  useEffect,
   ReactNode,
   useContext,
-  useRef,
+  useEffect,
   useMemo,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
+import { useRefState } from '@/hooks/use-ref-state'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -58,6 +60,7 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
+  console.log('oasis', expanded, name)
 
   const iconStyle = useMemo(() => {
     return expanded
@@ -65,51 +68,53 @@ export const CollapseItem: FunctionComponent<
       : { transform: 'translateY(-50%)' }
   }, [expanded, rotate])
 
-  const handleClick = () => {
-    if (!disabled) {
-      context.updateValue(name)
-    }
-  }
+  const timer = useRef<any>(null)
+  const inAnimation = useRef(false)
+  const [tran, setTran] = useState(0)
+  const [currentHeight, setCurrentHeight] = useRefState(0)
+  const [wrapperHeight, setWrapperHeight] = useState(0)
 
-  const onTransitionEnd = () => {
-    if (expanded) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.height = ''
+  const updateRectHeight = async () => {
+    setTimeout(async () => {
+      const height = contentRef.current.offsetHeight
+      console.log('oasis res', height)
+      if (height) {
+        setCurrentHeight(height)
+        setWrapperHeight(expanded ? height : 0)
+        setTimeout(() => {
+          setTran(1)
+        })
       }
-    }
-  }
-
-  const getOffsetHeight = () => {
-    const height = contentRef.current?.offsetHeight
-    return height ? `${height}px` : ''
-  }
-
-  const toggle = () => {
-    const start = expanded ? '0px' : getOffsetHeight()
-    if (wrapperRef.current) {
-      wrapperRef.current.style.height = start
-    }
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const end = expanded ? getOffsetHeight() : '0px'
-        if (wrapperRef.current) {
-          wrapperRef.current.style.height = end
-        }
-      })
     })
   }
-  const init = useRef(true)
 
   useEffect(() => {
-    if (init.current) {
-      init.current = false
-      if (!expanded) {
-        wrapperRef.current.style.height = '0px'
-      }
-    } else {
+    setTimeout(() => {
+      console.log('oasis update', name)
+      updateRectHeight()
+    })
+  }, [children, expanded])
+
+  const toggle = () => {
+    // 连续切换状态时，清除打开的后续操作
+    if (timer.current) {
+      clearTimeout(timer.current)
+    }
+    inAnimation.current = true
+    const end = !expanded ? currentHeight.current : 0
+    console.log('oasis end', expanded, end)
+    setTimeout(() => {
+      setWrapperHeight(end)
+      inAnimation.current = false
+    }, 0)
+  }
+  const handleClick = () => {
+    if (!disabled) {
+      console.log('oasis name', name)
+      context.updateValue(name)
       toggle()
     }
-  }, [expanded])
+  }
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
@@ -126,12 +131,23 @@ export const CollapseItem: FunctionComponent<
         </div>
       </div>
       <div
-        className={`${classPrefix}-content`}
-        onTransitionEnd={onTransitionEnd}
+        className={classNames({
+          [`${classPrefix}-content-wrapper`]: true,
+          [`${classPrefix}-content-wrapper-tran`]: true,
+        })}
+        style={
+          tran
+            ? {
+                height: wrapperHeight,
+              }
+            : {}
+        }
         ref={wrapperRef}
       >
-        <div ref={contentRef} className={`${classPrefix}-content-text`}>
-          {children}
+        <div className={`${classPrefix}-content`}>
+          <div ref={contentRef} className={`${classPrefix}-content-text`}>
+            {children}
+          </div>
         </div>
       </div>
     </div>
