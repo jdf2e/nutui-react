@@ -34,6 +34,7 @@ export const getRectByTaro = async (
     // 小程序下的逻辑
     return new Promise((resolve, reject) => {
       createSelectorQuery()
+        .in(element)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {

@@ -59,6 +59,7 @@ export const CollapseItem: FunctionComponent<
   const contentRef: any = useRef(null)
   const uid = useUuid()
   const target = `nut-collapse-content-${uid}`
+  console.log('oasistarget', target)
 
   const expanded = useMemo(() => {
     if (context) {
