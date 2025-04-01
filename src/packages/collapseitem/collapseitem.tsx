@@ -68,8 +68,6 @@ export const CollapseItem: FunctionComponent<
       : { transform: 'translateY(-50%)' }
   }, [expanded, rotate])
 
-  const timer = useRef<any>(null)
-  const inAnimation = useRef(false)
   const [tran, setTran] = useState(0)
   const [currentHeight, setCurrentHeight] = useRefState(0)
   const [wrapperHeight, setWrapperHeight] = useState(0)
@@ -96,17 +94,8 @@ export const CollapseItem: FunctionComponent<
   }, [children, expanded])
 
   const toggle = () => {
-    // 连续切换状态时，清除打开的后续操作
-    if (timer.current) {
-      clearTimeout(timer.current)
-    }
-    inAnimation.current = true
     const end = !expanded ? currentHeight.current : 0
-    console.log('oasis end', expanded, end)
-    setTimeout(() => {
-      setWrapperHeight(end)
-      inAnimation.current = false
-    }, 0)
+    setWrapperHeight(end)
   }
   const handleClick = () => {
     if (!disabled) {
