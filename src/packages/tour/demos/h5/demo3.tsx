@@ -48,7 +48,7 @@ const Demo3 = () => {
         onClose={closeTour}
         list={steps}
         type="tile"
-        location="bottom-end"
+        location="bottom-right"
         style={{
           '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
           '--nutui-popover-text-color': 'rgb(255, 255, 255)',

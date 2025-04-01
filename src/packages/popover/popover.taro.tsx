@@ -6,16 +6,17 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { createSelectorQuery } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPopoverProps, PopoverList } from '@/types'
+import pxTransform from '@/utils/px-transform'
+import useUuid from '@/hooks/use-uuid'
 
-export interface RootPosition {
+export interface WrapperPosition {
   width: number
   height: number
   left: number
@@ -77,7 +78,7 @@ export const Popover: FunctionComponent<
   const [showPopup, setShowPopup] = useState(false)
   const [popWidth, setPopWidth] = useState(0)
   const [popHeight, setPopHeight] = useState(0)
-  const [rootPosition, setRootPosition] = useState<RootPosition>()
+  const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   useEffect(() => {
     setShowPopup(visible)
     if (visible) {
@@ -86,36 +87,28 @@ export const Popover: FunctionComponent<
         setTimeout(() => {
           getPopoverContentW()
         }, 300)
-      }, 0)
+      }, 10)
     }
   }, [visible])
 
-  const getWrapperInfo = async (distance: number) => {
+  const uid = useUuid()
+  const popoverId = `popover-${uid}`
+
+  const getWrapperPosition = async () => {
     let rect
     if (targetId) {
       const elem = document.querySelector(`#${targetId}`)
       rect = await getRectByTaro(elem, targetId)
-      console.log('getWrapperInfo', rect)
     } else {
-      rect = await getRectByTaro(popoverRef.current)
+      rect = await getRectByTaro(popoverRef.current, popoverId)
     }
-
-    setRootPosition({
+    setWrapperPosition({
       width: rect.width,
       height: rect.height,
       left: rtl ? rect.right : rect.left,
-      top: rect.top + distance,
+      top: rect.top,
       right: rtl ? rect.left : rect.right,
     })
-  }
-
-  const getWrapperPosition = () => {
-    createSelectorQuery()
-      .selectViewport()
-      .scrollOffset((res) => {
-        getWrapperInfo(res.scrollTop)
-      })
-      .exec()
   }
 
   const getPopoverContentW = async () => {
@@ -147,11 +140,12 @@ export const Popover: FunctionComponent<
 
   const getPopoverPosition = () => {
     const styles: CSSProperties = {}
-    if (!rootPosition) {
+    if (!wrapperPosition) {
       styles.visibility = 'hidden'
       return styles
     }
-    const { width, height, left, top, right } = rootPosition
+    const { width, height, left, top, right } = wrapperPosition
+
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
     let cross = 0
@@ -161,36 +155,39 @@ export const Popover: FunctionComponent<
       cross += +offset[1]
       parallel += +rtloffset
     }
-    console.log('widht', width, 'left')
+
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
-        styles.top = `${top + h}px`
+        styles.top = pxTransform(top + h)
 
         if (!skew) {
-          styles[dir] =
-            `${-(popWidth - width) / 2 + rootPosition[dir] + parallel}px`
+          styles[dir] = pxTransform(
+            -(popWidth - width) / 2 + wrapperPosition[dir] + parallel
+          )
         }
         if (skew === 'left') {
-          styles.left = `${left + parallel}px`
+          styles.left = pxTransform(left + parallel)
         }
         if (skew === 'right') {
-          styles.left = `${right + parallel}px`
+          styles.left = pxTransform(right + parallel)
         }
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
           direction === 'left' ? -(popWidth + cross) : width + cross
-        styles.left = `${left + contentW}px`
+        styles.left = pxTransform(left + contentW)
         if (!skew) {
-          styles.top = `${top - popHeight / 2 + height / 2 - 4 + parallel}px`
+          styles.top = pxTransform(
+            top - popHeight / 2 + height / 2 - 4 + parallel
+          )
         }
         if (skew === 'top') {
-          styles.top = `${top + parallel}px`
+          styles.top = pxTransform(top + parallel)
         }
         if (skew === 'bottom') {
-          styles.top = `${top + height + parallel}px`
+          styles.top = pxTransform(top + height + parallel)
         }
       }
     }
@@ -250,6 +247,7 @@ export const Popover: FunctionComponent<
         <View
           className="nut-popover-wrapper"
           ref={popoverRef}
+          id={popoverId}
           onClick={() => {
             props?.onClick?.()
             if (!visible) {
@@ -294,7 +292,7 @@ export const Popover: FunctionComponent<
                   {item.icon && (
                     <View className="nut-popover-item-icon">{item.icon}</View>
                   )}
-                  <View className="nut-popover-item-name">{item.name}</View>
+                  <Text className="nut-popover-item-name">{item.name}</Text>
                   {item.action?.icon && (
                     <View
                       className="nut-popover-item-action-icon"

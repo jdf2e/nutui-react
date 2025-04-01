@@ -960,9 +960,9 @@
           "sort": 19,
           "show": true,
           "taro": true,
-          "v15": 10,
+          "v15": 1,
           "author": "lzz",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",

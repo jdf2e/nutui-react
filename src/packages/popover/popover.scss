@@ -1,5 +1,4 @@
 @import '../popup/popup.scss';
-
 .nut-popover {
   position: absolute;
   display: inline-block;
@@ -39,6 +38,7 @@
       }
 
       &.nut-popover-arrow-left-bottom {
+        top: auto;
         bottom: 16px;
         right: -8px;
         transform: rotate(90deg) translateY(0%);

@@ -75,7 +75,7 @@ test('render popover content dark', async () => {
 
 test('render popover position', async () => {
   render(
-    <Popover visible list={itemList} location="bottom-start">
+    <Popover visible list={itemList} location="bottom-left">
       <Button type="primary" shape="square">
         基础用法
       </Button>
@@ -83,13 +83,13 @@ test('render popover position', async () => {
   )
   const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
-    'nut-popup-none nut-popover-content nut-popover-content-bottom-start'
+    'nut-popup-none nut-popover-content nut-popover-content-bottom-left'
   )
 })
 
 test('render popover position2', async () => {
   const { container } = render(
-    <Popover visible list={itemList} location="bottom-start" arrowOffset={20}>
+    <Popover visible list={itemList} location="bottom-left" arrowOffset={20}>
       <Button type="primary" shape="square">
         基础用法
       </Button>
@@ -117,7 +117,7 @@ test('render popover position22', async () => {
 
 test('render popover position3', async () => {
   const { container } = render(
-    <Popover visible list={itemList} location="left-start" arrowOffset={20}>
+    <Popover visible list={itemList} location="left-top" arrowOffset={20}>
       <Button type="primary" shape="square">
         基础用法
       </Button>

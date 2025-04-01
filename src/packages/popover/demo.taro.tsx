@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import './demo.scss'
 import Header from '@/sites/components/header'
@@ -42,7 +42,7 @@ const PopoverDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.title}</View>
         <Demo1 />
         <View className="h2">{translated.title1}</View>
@@ -55,7 +55,7 @@ const PopoverDemo = () => {
         <Demo41 />
         <View className="h2">{translated.title4}</View>
         <Demo5 />
-      </ScrollView>
+      </View>
     </>
   )
 }

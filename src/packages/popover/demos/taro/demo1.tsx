@@ -44,7 +44,7 @@ const Demo = () => {
         visible={dark}
         list={itemList}
         theme="dark"
-        location="bottom-left"
+        location="right"
         onClick={() => {
           dark ? setDark(false) : setDark(true)
           setIndex(1)
