@@ -115,7 +115,9 @@ export const CollapseItem: FunctionComponent<
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <View
-        className={classNames(`${classPrefix}-header`, { disabled })}
+        className={classNames(`${classPrefix}-header`, {
+          [`${classPrefix}-header-disabled`]: disabled,
+        })}
         onClick={handleClick}
       >
         <View className={`${classPrefix}-title`}>{title}</View>

@@ -73,24 +73,19 @@ export const CollapseItem: FunctionComponent<
   const [wrapperHeight, setWrapperHeight] = useState(0)
 
   const updateRectHeight = async () => {
-    setTimeout(async () => {
-      const height = contentRef.current.offsetHeight
-      console.log('oasis res', height)
-      if (height) {
-        setCurrentHeight(height)
-        setWrapperHeight(expanded ? height : 0)
-        setTimeout(() => {
-          setTran(1)
-        })
-      }
-    })
+    const height = contentRef.current.offsetHeight
+    console.log('oasis res', height)
+    if (height) {
+      setCurrentHeight(height)
+      setWrapperHeight(expanded ? height : 0)
+      setTimeout(() => {
+        setTran(1)
+      })
+    }
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      console.log('oasis update', name)
-      updateRectHeight()
-    })
+    updateRectHeight()
   }, [children, expanded])
 
   const toggle = () => {
@@ -108,7 +103,9 @@ export const CollapseItem: FunctionComponent<
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
-        className={classNames(`${classPrefix}-header`, { disabled })}
+        className={classNames(`${classPrefix}-header`, {
+          [`${classPrefix}-header-disabled`]: disabled,
+        })}
         onClick={handleClick}
       >
         <div className={`${classPrefix}-title`}>{title}</div>

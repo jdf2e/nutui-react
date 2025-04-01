@@ -82,7 +82,7 @@
     transition: transform 0.3s;
   }
 
-  &-header.disabled {
+  &-header-disabled {
     color: $collapse-item-disabled-color;
 
     .nut-collapse-item-title {

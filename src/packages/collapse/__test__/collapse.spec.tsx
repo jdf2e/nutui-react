@@ -63,10 +63,13 @@ test('prop activeName', async () => {
       </Collapse>
     </>
   )
-
-  expect(
-    container.querySelectorAll('.nut-collapse-item-content')[2]
-  ).toHaveStyle('height:0px')
+  waitFor(() => {
+    expect(
+      container.querySelectorAll('.nut-collapse-item-content-wrapper')[2]
+    ).toHaveStyle({
+      height: '0',
+    })
+  })
 })
 
 test('prop rotate', async () => {
