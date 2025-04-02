@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button } from '@nutui/nutui-react'
+import { Button, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <Button
         color="blue"
         style={{
@@ -38,7 +38,7 @@ const App = () => {
       >
         渐变按钮
       </Button>
-    </>
+    </Cell>
   )
 }
 export default App
