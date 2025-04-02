@@ -61,7 +61,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const onClick = () => {
     if (disabled || changing) return
     if (onChange) {
-      setChanging(true)
+      loadingIcon && setChanging(true)
       onChange(!value)
     }
     setValue(!value)
