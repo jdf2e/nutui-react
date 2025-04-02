@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
+import { nextTick } from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
@@ -74,12 +75,7 @@ export const Popover: FunctionComponent<
   useEffect(() => {
     setShowPopup(visible)
     if (visible) {
-      setTimeout(() => {
-        getWrapperPosition()
-        setTimeout(() => {
-          getPopoverContentW()
-        }, 300)
-      }, 10)
+      getWrapperPosition()
     }
   }, [visible])
 
@@ -87,23 +83,28 @@ export const Popover: FunctionComponent<
   const popoverId = `popover-${uid}`
 
   const getWrapperPosition = async () => {
-    const rect = targetId
-      ? await getRectByTaro(document.querySelector(`#${targetId}`), targetId)
-      : await getRectByTaro(popoverRef.current, popoverId)
-    const { width, height, right, left, top } = rect
-    setWrapperPosition({
-      width,
-      height,
-      left: rtl ? right : left,
-      top,
-      right: rtl ? left : right,
+    nextTick(async () => {
+      const rect = targetId
+        ? await getRectByTaro(document.querySelector(`#${targetId}`), targetId)
+        : await getRectByTaro(popoverRef.current, popoverId)
+      const { width, height, right, left, top } = rect
+      setWrapperPosition({
+        width,
+        height,
+        left: rtl ? right : left,
+        top,
+        right: rtl ? left : right,
+      })
+      getPopoverContentW()
     })
   }
 
   const getPopoverContentW = async () => {
-    const rectContent = await getRectByTaro(popoverContentRef.current)
-    setPopWidth(rectContent.width)
-    setPopHeight(rectContent.height)
+    nextTick(async () => {
+      const rectContent = await getRectByTaro(popoverContentRef.current)
+      setPopWidth(rectContent.width)
+      setPopHeight(rectContent.height)
+    })
   }
 
   const clickAway = () => {
