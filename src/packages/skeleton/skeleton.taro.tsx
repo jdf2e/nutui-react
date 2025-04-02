@@ -1,34 +1,38 @@
-import React, { FunctionComponent } from 'react'
-import { View } from '@tarojs/components'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
 import classNames from 'classnames'
-import Avatar from '@/packages/avatar/index.taro'
+import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import pxTransform from '@/utils/px-transform'
 import { TaroSkeletonProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   rows: 1,
-  animated: false,
-  title: false,
-  avatar: false,
-  avatarSize: '50px',
+  animated: true,
   visible: false,
-  avatarShape: 'round',
+  size: 'normal',
+  shape: 'round',
+  duration: 0.6,
+  inline: false,
 } as TaroSkeletonProps
 export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
   props
 ) => {
   const {
     className,
+    width,
+    height,
+    shape,
     animated,
     rows,
-    title,
-    avatar,
-    avatarSize,
     visible,
+    size,
+    duration,
     children,
-    avatarShape,
     ...rest
   } = {
     ...defaultProps,
@@ -37,62 +41,67 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
 
   const classPrefix = 'nut-skeleton'
   const classes = classNames(classPrefix, className)
-  const avatarClass = classNames({
-    [`nut-avatar`]: true,
-    [`nut-skeleton-content-avatar`]: true,
-    [`avatar-${avatarShape}`]: avatarShape,
-  })
 
-  const repeatLines = (num: number) => {
+  const repeatCount = (num: number) => {
     return Array.from({ length: num }, (v, i) => i)
   }
 
-  const getStyle = () => {
-    if (avatarSize) {
-      return {
-        width: pxTransform(parseInt(avatarSize)),
-        height: pxTransform(parseInt(avatarSize)),
-      }
-    }
-    return {
-      width: pxTransform(50),
-      height: pxTransform(50),
-    }
+  function shapeStyle(): CSSProperties {
+    if (shape === 'circle') return { borderRadius: '50%' }
+    if (shape === 'square') return { borderRadius: '0' }
+    return {}
   }
+
+  function durationStyle() {
+    if (typeof duration !== 'undefined')
+      return {
+        animationDuration: `${duration}s`,
+      }
+    return {}
+  }
+
+  const [animate, setAnimate] = useState(false)
+
+  const playAnimation = () => {
+    setAnimate(false)
+    setTimeout(() => {
+      setAnimate(true)
+    }, 10)
+  }
+
+  useEffect(() => {
+    if (!animated) return
+    playAnimation()
+    // 每隔 3 秒播放一次动画
+    const intervalId = setInterval(playAnimation, 1000 + duration * 1000) // xs 动画 + 1s 间隔
+
+    // 清理定时器
+    return () => clearInterval(intervalId)
+  }, [])
 
   return (
     <>
       {visible ? (
-        <>{children}</>
+        children
       ) : (
         <View className={classes} {...rest}>
-          {animated && <View className={`${classPrefix}-animation`} />}
-          <View className={`${classPrefix}-content`}>
-            {avatar && (
-              <Avatar
-                className={avatarClass}
-                background="rgb(239, 239, 239)"
-                shape={avatarShape}
-                style={getStyle()}
-                icon="null"
-              />
-            )}
-            {rows === 1 ? (
-              <View className={`${classPrefix}-content-block`} />
-            ) : (
-              <View className={`${classPrefix}-content-line`}>
-                {title && <View className={`${classPrefix}-content-title`} />}
-                {repeatLines(rows).map((item, index) => {
-                  return (
-                    <View
-                      className={`${classPrefix}-content-block ${index === repeatLines(rows).length - 1 ? `${classPrefix}-content-block-last-child` : ''}`}
-                      key={index}
-                    />
-                  )
-                })}
+          {repeatCount(rows).map((item, index) => {
+            const contentClass = `${classPrefix}-content ${classPrefix}-content-${size} ${classPrefix}-content-${size}-${index}`
+            return (
+              <View
+                className={`${contentClass}`}
+                key={index}
+                style={{ width, height, ...shapeStyle() }}
+              >
+                {animated && (
+                  <View
+                    className={`${classPrefix}-animated ${animate ? `${classPrefix}-animation` : ''}`}
+                    style={durationStyle()}
+                  />
+                )}
               </View>
-            )}
-          </View>
+            )
+          })}
         </View>
       )}
     </>

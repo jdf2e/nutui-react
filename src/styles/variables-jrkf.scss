@@ -1136,6 +1136,13 @@ $notify-warning-background-color: var(
   --nutui-notify-warning-background-color,
   $color-warning
 ) !default;
+$notify-border-radius: var(--nutui-notify-border-radius, 8px) !default;
+$notify-box-shadow: var(
+  --nutui-notify-box-shadow,
+  0px 4px 12px 0px rgba(0, 0, 0, 0.06)
+) !default;
+$notify-z-index: var(--nutui-notify-z-index, 1000) !default;
+$notify-background-color: var(--nutui-notify-background-color, $white) !default;
 
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
@@ -2120,7 +2127,18 @@ $skeleton-background: var(
   $color-background
 ) !default;
 $skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
-$skeleton-line-height: var(--nutui-skeleton-line-height, 15px) !default;
+$skeleton-line-small-height: var(
+  --nutui-skeleton-line-small-height,
+  16px
+) !default;
+$skeleton-line-normal-height: var(
+  --nutui-skeleton-line-normal-height,
+  24px
+) !default;
+$skeleton-line-large-height: var(
+  --nutui-skeleton-line-large-height,
+  32px
+) !default;
 $skeleton-line-border-radius: var(
   --nutui-skeleton-line-border-radius,
   0

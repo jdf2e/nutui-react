@@ -1,4 +1,4 @@
-import { Lottie } from './web'
+import { Lottie } from './lottie'
 
 export type { WebLottieProps as LottieProps } from '@/types'
 

@@ -14,59 +14,59 @@ const TabbarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '基础用法',
-      c38a08ef: '自定义选中',
+      c38a08ef: '首坑品牌+营销态',
       ce5c5448: '只配图标',
-      ce5c5440: '无图标',
+      ce5c5440: '只配文字',
       b840c88f: '徽标提示',
-      customColor: '自定义颜色',
-      '8dab2f66': '可自定义icon个数的tabbar',
+      customColor: '自定义颜色+数量',
       cfbdc781: '固定底部',
-      c9e6df49: '红点',
+      c9e6df49: '受控',
+      c9e6df48: '模拟双击支持回调',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
-      c38a08ef: '自定義選中',
-      ce5c5448: '只配图标',
-      ce5c5440: '无图标',
+      c38a08ef: '首坑品牌+營銷態',
+      ce5c5448: '只配圖標',
+      ce5c5440: '只配文字',
       b840c88f: '徽標提示',
-      customColor: '自定義顏色',
-      '8dab2f66': '可自定義icon個數的tabbar',
+      customColor: '自定義顏色+數量',
       cfbdc781: '固定底部',
-      c9e6df49: '紅點',
+      c9e6df49: '受控',
+      c9e6df48: '模擬雙擊支持回調',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
-      c38a08ef: 'Custom DefaultValue',
+      c38a08ef: 'Custom',
       ce5c5448: 'Only Icon',
-      ce5c5440: 'No Icon',
+      ce5c5440: 'Only Text',
       b840c88f: 'Logo Tips',
-      customColor: 'Custom Color',
-      '8dab2f66': 'Tabbar With Custom Number Of Icons',
+      customColor: 'Custom Color and Size',
       cfbdc781: 'Fixed Bottom',
-      c9e6df49: 'Dot',
+      c9e6df49: 'With Controled',
+      c9e6df48: 'Mock Double Click',
     },
   })
 
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>{translated.ce5c5446}</h2>
         <Demo1 />
-        <h2>{translated.c38a08ef}</h2>
+        <h2>{translated.b840c88f}</h2>
         <Demo2 />
         <h2>{translated.ce5c5448}</h2>
         <Demo3 />
         <h2>{translated.ce5c5440}</h2>
         <Demo4 />
-        <h2>{translated.b840c88f}</h2>
+        <h2>{translated.c38a08ef}</h2>
         <Demo5 />
-        <h2>{translated.c9e6df49}</h2>
-        <Demo6 />
         <h2>{translated.customColor}</h2>
+        <Demo6 />
+        <h2>{translated.c9e6df49}</h2>
         <Demo7 />
-        <h2>{translated['8dab2f66']}</h2>
+        <h2>{translated.c9e6df48}</h2>
         <Demo8 />
-        <h2 style={{ marginBottom: '100px' }}>{translated.cfbdc781}</h2>
+        <h2 style={{ marginBottom: 100 }}>{translated.cfbdc781}</h2>
         <Demo9 />
       </div>
     </>

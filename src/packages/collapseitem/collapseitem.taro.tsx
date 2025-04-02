@@ -1,17 +1,20 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
   ReactNode,
   useContext,
-  useRef,
+  useEffect,
   useMemo,
+  useRef,
+  useState,
 } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
-import { createSelectorQuery } from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import useUuid from '@/hooks/use-uuid'
+import { useRefState } from '@/hooks/use-ref-state'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -54,8 +57,8 @@ export const CollapseItem: FunctionComponent<
   const context = useContext(CollapseContext)
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
-  const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
-  const target = `#nut-collapse-content-${refRandomId}`
+  const uid = useUuid()
+  const target = `nut-collapse-content-${uid}`
 
   const expanded = useMemo(() => {
     if (context) {
@@ -70,86 +73,45 @@ export const CollapseItem: FunctionComponent<
       : { transform: 'translateY(-50%)' }
   }, [expanded, rotate])
 
+  const [tran, setTran] = useState(0)
+  const [currentHeight, setCurrentHeight] = useRefState(0)
+  const [wrapperHeight, setWrapperHeight] = useState(0)
+
+  const updateRectHeight = async () => {
+    const res = await getRectByTaro(contentRef.current, target)
+    if (res?.height) {
+      setCurrentHeight(res.height)
+      setWrapperHeight(expanded ? res.height : 0)
+      nextTick(() => {
+        setTran(1)
+      })
+    }
+  }
+  useEffect(() => {
+    nextTick(() => {
+      updateRectHeight()
+    })
+  }, [children, expanded])
+
+  const toggle = () => {
+    const end = !expanded ? currentHeight.current : 0
+    setWrapperHeight(end)
+  }
   const handleClick = () => {
     if (!disabled) {
       context.updateValue(name)
+      setTimeout(() => {
+        toggle()
+      }, 150)
     }
   }
-
-  const [timer, setTimer] = useState<any>(null)
-  const [currentHeight, setCurrentHeight] = useState<string>('auto')
-  const inAnimation = useRef(false)
-  const [wrapperHeight, setWrapperHeight] = useState(() =>
-    expanded ? 'auto' : '0px'
-  )
-
-  const getRect = (selector: string) => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .select(selector)
-        .boundingClientRect()
-        .exec((rect = []) => {
-          resolve(rect[0])
-        })
-    })
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      getRect(target).then((res: any) => {
-        if (res?.height) {
-          setCurrentHeight(`${res.height}px`)
-        }
-      })
-    }, 200)
-  }, [children])
-
-  useEffect(() => {
-    setTimeout(() => {
-      getRect(target).then((res: any) => {
-        if (res?.height) {
-          setCurrentHeight(`${res.height}px`)
-        }
-      })
-    }, 100)
-  }, [])
-
-  const toggle = () => {
-    // 连续切换状态时，清除打开的后续操作
-    if (timer) {
-      clearTimeout(timer)
-      setTimer(timer)
-    }
-    const start = expanded ? '0px' : currentHeight
-    const end = expanded ? currentHeight : '0px'
-    inAnimation.current = true
-    setWrapperHeight(start)
-    setTimeout(() => {
-      setWrapperHeight(end)
-      inAnimation.current = false
-      if (expanded) {
-        const timer = setTimeout(() => {
-          setWrapperHeight('auto')
-        }, 300)
-        setTimer(timer)
-      }
-    }, 100)
-  }
-
-  const init = useRef(true)
-
-  useEffect(() => {
-    if (init.current) {
-      init.current = false
-    } else {
-      toggle()
-    }
-  }, [expanded])
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <View
-        className={classNames(`${classPrefix}-header`, { disabled })}
+        className={classNames(`${classPrefix}-header`, {
+          [`${classPrefix}-header-disabled`]: disabled,
+        })}
         onClick={handleClick}
       >
         <View className={`${classPrefix}-title`}>{title}</View>
@@ -161,19 +123,21 @@ export const CollapseItem: FunctionComponent<
         </View>
       </View>
       <View
-        className={`${classPrefix}-content`}
+        className={classNames({
+          [`${classPrefix}-content-wrapper`]: true,
+          [`${classPrefix}-content-wrapper-tran`]: true,
+        })}
+        style={
+          tran
+            ? {
+                height: wrapperHeight,
+              }
+            : {}
+        }
         ref={wrapperRef}
-        style={{
-          willChange: 'height',
-          height: wrapperHeight,
-        }}
       >
-        <View
-          ref={contentRef}
-          className={`${classPrefix}-content-text`}
-          id={`nut-collapse-content-${refRandomId}`}
-        >
-          {children}
+        <View className={`${classPrefix}-content`} ref={contentRef} id={target}>
+          <View className={`${classPrefix}-content-text`}>{children}</View>
         </View>
       </View>
     </div>

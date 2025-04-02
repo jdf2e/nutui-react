@@ -34,6 +34,8 @@ import { Lottie } from '@nutui/nutui-react-taro'
 
 :::
 
+> 提示：京东小程序开发工作无法展示，可使用真机预览
+
 ## Lottie
 
 ### Props

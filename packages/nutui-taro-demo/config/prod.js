@@ -11,6 +11,8 @@ try {
   /* empty */
 }
 
+console.log(hash && UI ? `-${hash}` : '')
+
 module.exports = {
   env: {
     NODE_ENV: '"production"',
@@ -19,7 +21,7 @@ module.exports = {
   defineConstants: {},
   mini: {},
   h5: {
-    publicPath: `/taro/react/3x/demo-${hash}`,
+    publicPath: `/taro/react/3x/demo${hash && UI ? `-${hash}` : ''}`,
     /**
      * WebpackChain 插件配置
      * @docs https://github.com/neutrinojs/webpack-chain

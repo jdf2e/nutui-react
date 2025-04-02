@@ -3,8 +3,8 @@ import { Cell, Skeleton } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   return (
-    <Cell style={{ display: 'block' }}>
-      <Skeleton rows={3} title animated />
+    <Cell>
+      <Skeleton rows={3} animated size="small" style={{ width: '100%' }} />
     </Cell>
   )
 }

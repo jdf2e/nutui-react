@@ -6,19 +6,13 @@ import { Skeleton } from '../skeleton'
 
 test('should allow to disable animation', () => {
   const { container } = render(<Skeleton rows={1} animated={false} />)
-  expect(container.querySelector('.skeleton-animation')).toBeFalsy()
+  expect(container.querySelector('.nut-skeleton-animation')).toBeFalsy()
 })
 
-test('should change avatar size when using avatarSize prop', () => {
-  const { container } = render(<Skeleton avatar avatarSize="20px" />)
-  expect(container.querySelector('.nut-avatar')).toHaveStyle({
-    width: '20px',
-    height: '20px',
+test('should set duration', () => {
+  const { container } = render(<Skeleton rows={1} duration={2} />)
+  const animation = container.querySelector('.nut-skeleton-animated')
+  expect(animation).toHaveStyle({
+    animationDuration: '2s',
   })
-  expect(container).toMatchSnapshot()
-})
-
-test('should change avatar shape when using avatarShape prop', () => {
-  const { container } = render(<Skeleton avatar avatarShape="square" />)
-  expect(container.querySelector('.nut-avatar')).toMatchSnapshot()
 })

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '../../base/props'
+import { BaseProps, Direction } from '@/types'
 
 export interface BaseTabbar extends BaseProps {
   defaultValue: number
@@ -7,16 +7,19 @@ export interface BaseTabbar extends BaseProps {
   fixed: boolean
   inactiveColor: string
   activeColor: string
+  direction: Direction
   safeArea: boolean
   onSwitch: (value: number) => void
 }
 
 export interface BaseTabbarItem extends BaseProps {
-  title: ReactNode
-  icon: ReactNode
-  value: ReactNode
+  title: ReactNode | ((active: boolean) => ReactNode)
+  icon: ReactNode | ((active: boolean) => ReactNode)
+  value: ReactNode | ((active: boolean) => ReactNode)
   dot: boolean
   max: number
   top: string
   right: string
+  direction: Direction
+  onActiveClick: () => void
 }

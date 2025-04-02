@@ -12,35 +12,38 @@ const NotifyDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
-      t1: '通知类型',
+      jump: '支持跳转',
+      close: '支持关闭',
       customStyle: '自定义样式',
-      t3: '自定义时长',
+    },
+    'zh-TW': {
+      basic: '基礎用法',
+      jump: '支持跳轉',
+      close: '支持關閉',
+      customStyle: '自定義樣式',
     },
     'en-US': {
       basic: 'Basic Usage',
-      t1: 'Notify Type',
+      jump: 'Support Jump',
+      close: 'Support Close',
       customStyle: 'Custom Style',
-      t3: 'Custom Duration',
     },
   })
 
   return (
     <>
       <Header />
-      <ScrollView>
-        <View
-          className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-          style={{ paddingBottom: '30px' }}
-        >
-          <View className="h2">{translated.basic}</View>
-          <Demo1 />
-          <View className="h2">{translated.t1}</View>
-          <Demo2 />
-          <View className="h2">{translated.customStyle}</View>
-          <Demo3 />
-          <View className="h2">{translated.t3}</View>
-          <Demo4 />
-        </View>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : 'demo-bg-full'}`}
+      >
+        <View className="h2">{translated.basic}</View>
+        <Demo1 />
+        <View className="h2">{translated.jump}</View>
+        <Demo2 />
+        <View className="h2">{translated.close}</View>
+        <Demo3 />
+        <View className="h2">{translated.customStyle}</View>
+        <Demo4 />
       </ScrollView>
     </>
   )

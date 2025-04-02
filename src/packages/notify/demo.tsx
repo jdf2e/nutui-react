@@ -9,28 +9,34 @@ const NotifyDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
-      t1: '通知类型',
+      jump: '支持跳转',
+      close: '支持关闭',
       customStyle: '自定义样式',
-      t3: '自定义时长',
+    },
+    'zh-TW': {
+      basic: '基礎用法',
+      jump: '支持跳轉',
+      close: '支持關閉',
+      customStyle: '自定義樣式',
     },
     'en-US': {
       basic: 'Basic Usage',
-      t1: 'Notify Type',
+      jump: 'Support Jump',
+      close: 'Support Close',
       customStyle: 'Custom Style',
-      t3: 'Custom Duration',
     },
   })
 
   return (
     <>
-      <div className="demo" style={{ paddingBottom: '30px' }}>
+      <div className="demo">
         <h2>{translated.basic}</h2>
         <Demo1 />
-        <h2>{translated.t1}</h2>
+        <h2>{translated.jump}</h2>
         <Demo2 />
-        <h2>{translated.customStyle}</h2>
+        <h2>{translated.close}</h2>
         <Demo3 />
-        <h2>{translated.t3}</h2>
+        <h2>{translated.customStyle}</h2>
         <Demo4 />
       </div>
     </>
