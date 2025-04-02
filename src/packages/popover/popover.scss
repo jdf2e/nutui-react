@@ -1,5 +1,4 @@
 @import '../popup/popup.scss';
-
 .nut-popover {
   position: absolute;
   display: inline-block;
@@ -39,6 +38,7 @@
       }
 
       &.nut-popover-arrow-left-bottom {
+        top: auto;
         bottom: 16px;
         right: -8px;
         transform: rotate(90deg) translateY(0%);
@@ -77,11 +77,14 @@
     max-height: initial;
     overflow-y: initial;
 
+    &-group {
+      padding: 0 $popover-padding;
+    }
+
     .nut-popover-item {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 $popover-item-padding;
       border-bottom: 1px solid $popover-divider-color;
       max-width: $popover-item-width;
       word-wrap: break-word;
@@ -91,40 +94,34 @@
         border-bottom: none;
       }
 
-      &-icon {
+      &-icon,
+      &-action-icon {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 12px;
-        height: 12px;
-        font-size: 12px;
+        width: $font-size-s;
+        height: $font-size-s;
+        font-size: $font-size-s;
         .nut-icon {
-          width: 12px;
-          height: 12px;
-          font-size: 12px;
+          width: $font-size-s;
+          height: $font-size-s;
+          font-size: $font-size-s;
         }
+      }
+
+      &-icon {
+        margin-right: $spacing-xxs;
       }
 
       &-name {
         width: calc(100% - 34px);
         word-break: keep-all;
-        margin: 0 8px 0 4px;
         flex: 1;
       }
 
       &-action-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 12px;
-        height: 12px;
-        font-size: 12px;
         color: $color-text;
-        .nut-icon {
-          width: 12px;
-          height: 12px;
-          font-size: 12px;
-        }
+        margin-left: $spacing-base;
       }
 
       &.nut-popover-item-disabled {
@@ -132,7 +129,7 @@
         cursor: not-allowed;
       }
 
-      &.nut-popover-item-taroitem {
+      &.nut-popover-taroitem {
         display: flex;
       }
     }
@@ -236,7 +233,6 @@
 
       &-action-icon {
         right: auto;
-        left: $popover-item-padding;
       }
     }
     &-top {

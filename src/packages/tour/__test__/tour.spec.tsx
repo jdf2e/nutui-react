@@ -31,20 +31,22 @@ const steps4 = [
   {
     content: '70+ 高质量组件，覆盖移动端主流场景',
     target: 'target4',
+    location: 'top-left',
   },
   {
     content: '支持一套代码同时开发多端小程序+H5',
     target: 'target5',
+    location: 'top-left',
   },
   {
     content: '基于京东APP 10.0 视觉规范',
     target: 'target6',
-    location: 'top-end',
+    location: 'top-right',
   },
   {
     content: '支持定制主题，内置 700+ 个主题变量',
     target: 'target7',
-    location: 'top-end',
+    location: 'top-right',
   },
 ]
 
@@ -52,10 +54,12 @@ test('base render', () => {
   const root = document.createElement('div')
   root.id = 'target'
   const { container } = render(
-    <Tour visible list={steps} type="tile" location="bottom-end" />
+    <Tour visible list={steps} type="tile" location="bottom-right" />
   )
   expect(document.querySelector('.nut-popover')).toBeTruthy()
-  expect(document.querySelector('.nut-popover-content-bottom-end')).toBeTruthy()
+  expect(
+    document.querySelector('.nut-popover-content-bottom-right')
+  ).toBeTruthy()
 })
 
 test('custom style', () => {
@@ -66,11 +70,10 @@ test('custom style', () => {
       visible
       list={steps}
       type="tile"
-      location="bottom-end"
+      location="bottom-right"
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[0, 0]}
       maskWidth={50}
@@ -91,11 +94,10 @@ test('custom offset', () => {
       visible
       list={steps2}
       type="tile"
-      location="bottom-end"
+      location="bottom-right"
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[8, 8]}
     />
@@ -112,12 +114,11 @@ test('slot render', () => {
       visible
       list={steps3}
       type="tile"
-      location="bottom-end"
+      location="bottom-right"
       offset={[8, 8]}
       style={{
         '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(75, 76, 77)',
       }}
     >
       <div className="tour-demo-custom-content">
@@ -135,7 +136,7 @@ test('steps render', async () => {
   const root1 = document.createElement('div')
   root1.id = 'target5'
   const { container } = render(
-    <Tour visible list={steps4} location="bottom-end" />
+    <Tour visible list={steps4} location="bottom-right" />
   )
   const btn = document.querySelectorAll(
     '.nut-tour-content-bottom-operate-btn'

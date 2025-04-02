@@ -260,7 +260,12 @@ If your project uses these components, please read the documentation carefully a
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-[//]: # '#### Popover'
+
+#### Popover
+
+- Deprecated style variables that existed in the documentation have been removed, `--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
+- Changed style variable, `--nutui-popover-menu-item-padding` -> `--nutui-popover-padding`，`--nutui-popover-menu-item-width` -> `--nutui-popover-item-width`
+- Revised the data type for `location` to use a unified position type `FullPosition`
 
 #### Price
 
