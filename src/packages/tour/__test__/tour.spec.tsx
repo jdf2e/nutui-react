@@ -74,7 +74,6 @@ test('custom style', () => {
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[0, 0]}
       maskWidth={50}
@@ -99,7 +98,6 @@ test('custom offset', () => {
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[8, 8]}
     />
@@ -121,7 +119,6 @@ test('slot render', () => {
       style={{
         '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
         '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-border-color': 'rgb(75, 76, 77)',
       }}
     >
       <div className="tour-demo-custom-content">
