@@ -26,7 +26,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### Custom Content
+### Custom Content and Color
 
 :::demo
 
@@ -38,19 +38,21 @@ import { Popover } from '@nutui/nutui-react'
 
 Use the location property to control where the bubble pops up. optional value
 
+> Attention, the type of location is changed from 3.x, take a look at the `FullPosition` type in types file .
+
 ```
 top           # Top middle
 left          # Left middle
 right         # Right middle
 bottom        # Bottom middle
-top-start     # Top left
-top-end       # Top right
-left-start    # Left top
-left-end      # Left bottom
-right-start   # Right top
-right-end     # Right bottom
-bottom-start  # Bottom left
-bottom-end    # Bottom right
+top-left      # Top left
+top-right     # Top Right
+left-top      # Left Top
+left-bottom   # Left Bottom
+right-top     # Right Top
+right-bottom  # Right Bottom
+bottom-left   # Bottom Left
+bottom-right  # Bottom Right
 ```
 
 :::demo
@@ -63,17 +65,6 @@ bottom-end    # Bottom right
 
 Use the location property to control where the bubble pops up. optional value
 
-```
-top           # Top middle
-left          # Left middle
-right         # Right middle
-bottom        # Bottom middle
-top-start     # Top left
-top-end       # Top right
-bottom-start  # Bottom left
-bottom-end    # Bottom right
-```
-
 :::demo
 
 <CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
@@ -85,14 +76,6 @@ bottom-end    # Bottom right
 :::demo
 
 <CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### Custom Color
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -159,12 +142,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-font-size | The font-size value of the popover content area | `12px` |
 | \--nutui-popover-text-color | Text color of options area | `$color-title` |
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
-| \--nutui-popover-hover-background-color | The background color of the finger click menu option | `#fff` |
-| \--nutui-popover-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
-| \--nutui-popover-border-color | Arrow colors for top, bottom, left and right | `$white` |
 | \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
-| \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
-| \--nutui-popover-menu-item-width | The width value of each item in the options | `160px` |
+| \--nutui-popover-padding | The padding value of each item in the option area menu | `8px` |
+| \--nutui-popover-item-width | The width value of each item in the options | `160px` |
 
 <Contribution name="Popover" />

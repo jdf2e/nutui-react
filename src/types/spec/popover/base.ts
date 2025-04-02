@@ -11,6 +11,14 @@ export interface PopoverList {
   action?: { icon?: ReactNode; onClick?: (e: any) => void }
 }
 
+export interface WrapperPosition {
+  width: number
+  height: number
+  left: number
+  top: number
+  right: number
+}
+
 export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
   BaseProps & {
     theme: UITheme

@@ -11,10 +11,11 @@ const Demo4 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
-  const [curPostion, setCurPostion] = useState<FullPosition>('left')
+  const [curPostion, setCurPostion] = useState<FullPosition>('top')
 
   const columns = [
     [
+      { label: 'top', value: 'top' },
       { label: 'top-left', value: 'top-left' },
       { label: 'top-right', value: 'top-right' },
       { label: 'right', value: 'right' },
@@ -31,7 +32,7 @@ const Demo4 = () => {
   const positionList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
     },
   ]
 
@@ -75,7 +76,7 @@ const Demo4 = () => {
         </div>
       </Picker>
       <Popover
-        className="custom-color"
+        theme="dark"
         visible={customPositon}
         targetId="pickerTarget"
         list={positionList}

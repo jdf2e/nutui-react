@@ -8,7 +8,6 @@ import React, {
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
-
 import PickerView from '@/packages/pickerview/index.taro'
 import Popup from '@/packages/popup/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'

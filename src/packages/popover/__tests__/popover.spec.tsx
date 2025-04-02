@@ -4,6 +4,7 @@ import '@testing-library/jest-dom'
 import { Tips, Close } from '@nutui/icons-react'
 import Popover from '../index'
 import Button from '@/packages/button'
+import { FullPosition } from '@/types'
 
 const itemList = [
   {
@@ -27,6 +28,10 @@ const itemListOne = [
     icon: <Tips />,
     action: {
       icon: <Close />,
+      onClick: (e: any) => {
+        console.log('onclick 1')
+        e.stopPropagation()
+      },
     },
   },
 ]
@@ -51,9 +56,7 @@ const itemListDisabled = [
 test('render popover content', async () => {
   const { container } = render(
     <Popover visible list={itemList}>
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
+      <Button type="primary">基础用法</Button>
     </Popover>
   )
   const content = document.querySelectorAll('.nut-popover-content')[0]
@@ -75,78 +78,53 @@ test('render popover content dark', async () => {
 
 test('render popover position', async () => {
   render(
-    <Popover visible list={itemList} location="bottom-start">
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
+    <Popover visible list={itemList} location="bottom-left">
+      <Button type="primary">基础用法</Button>
     </Popover>
   )
   const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
-    'nut-popup-none nut-popover-content nut-popover-content-bottom-start'
+    'nut-popup-none nut-popover-content nut-popover-content-bottom-left'
   )
 })
 
-test('render popover position2', async () => {
-  const { container } = render(
-    <Popover visible list={itemList} location="bottom-start" arrowOffset={20}>
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
+test('render popover position with arrowOffset', async () => {
+  const { rerender } = render(
+    <Popover visible list={itemList} location="bottom-left" arrowOffset={20}>
+      <Button type="primary">基础用法</Button>
     </Popover>
   )
-  const content = document.querySelectorAll(
-    '.nut-popover-arrow'
-  )[0] as HTMLElement
+
+  const checkArrowStyles = (location: FullPosition, expectedStyles: string) => {
+    rerender(
+      <Popover visible list={itemList} location={location} arrowOffset={20}>
+        <Button type="primary">基础用法</Button>
+      </Popover>
+    )
+    content = document.querySelectorAll('.nut-popover-arrow')[0]
+    expect(content).toHaveAttribute('style', expectedStyles)
+  }
+
+  let content = document.querySelectorAll('.nut-popover-arrow')[0]
   expect(content).toHaveAttribute('style', 'left: 36px;')
-})
 
-test('render popover position22', async () => {
-  const { container } = render(
-    <Popover visible list={itemList} arrowOffset={20}>
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
-    </Popover>
-  )
-  const content = document.querySelectorAll(
-    '.nut-popover-arrow'
-  )[0] as HTMLElement
-  expect(content).toHaveAttribute('style', 'left: calc(50% + 20px);')
-})
-
-test('render popover position3', async () => {
-  const { container } = render(
-    <Popover visible list={itemList} location="left-start" arrowOffset={20}>
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
-    </Popover>
-  )
-  const content = document.querySelectorAll(
-    '.nut-popover-arrow'
-  )[0] as HTMLElement
-  expect(content).toHaveAttribute('style', 'top: -4px;')
-})
-
-test('render popover position33', async () => {
-  const { container } = render(
-    <Popover visible list={itemList} location="left" arrowOffset={20}>
-      <Button type="primary" shape="square">
-        基础用法
-      </Button>
-    </Popover>
-  )
-  const content = document.querySelectorAll(
-    '.nut-popover-arrow'
-  )[0] as HTMLElement
-  expect(content).toHaveAttribute('style', 'top: calc(50% - 20px);')
+  checkArrowStyles('bottom', 'left: calc(50% + 20px);')
+  checkArrowStyles('bottom-right', 'right: -4px;')
+  checkArrowStyles('left', 'top: calc(50% - 20px);')
+  checkArrowStyles('left-bottom', 'bottom: 36px;')
+  checkArrowStyles('left-top', 'top: -4px;')
+  checkArrowStyles('right', 'top: calc(50% - 20px);')
+  checkArrowStyles('right-bottom', 'bottom: 36px;')
+  checkArrowStyles('right-top', 'top: -4px;')
+  checkArrowStyles('top-right', 'right: -4px;')
+  checkArrowStyles('top-left', 'left: 36px;')
+  checkArrowStyles('top', 'left: calc(50% + 20px);')
 })
 
 test('render position fixed ', async () => {
   const close = vi.fn()
   const click = vi.fn()
-  const { container, getByTestId } = render(
+  const { getByTestId } = render(
     <div
       style={{
         height: '200px',
@@ -166,34 +144,32 @@ test('render position fixed ', async () => {
         onClick={click}
         onClose={close}
       >
-        <Button data-testid="a" type="primary" shape="square">
+        <Button data-testid="a" type="primary">
           position: fixed
         </Button>
       </Popover>
     </div>
   )
-  const item = document.querySelectorAll('.nut-popover-menu-item-name')
+  const item = document.querySelectorAll('.nut-popover-item-name')
   fireEvent.click(item[0])
   expect(click).toBeCalled()
   expect(close).toBeCalled()
   fireEvent.click(getByTestId('a'))
   await waitFor(() => {
     fireEvent.scroll(getByTestId('aa'), { target: { scrollTop: 10 } })
-    const item1 = document.querySelectorAll('.nut-popover-menu-item-name')
+    const item1 = document.querySelectorAll('.nut-popover-item-name')
     expect(item1.length).toBe(3)
   })
 })
 
 test('should emit onchoose event when clicking the action', async () => {
   const choose = vi.fn()
-  const { container } = render(
+  render(
     <Popover visible list={itemList} onSelect={choose}>
-      <Button type="primary" shape="square">
-        明朗风格
-      </Button>
+      <Button type="primary">明朗风格</Button>
     </Popover>
   )
-  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('option1'))
   await waitFor(() => expect(choose.mock.calls[0][1]).toBe(0))
@@ -201,22 +177,21 @@ test('should emit onchoose event when clicking the action', async () => {
 
 test('should not emit select event when the action is disabled', async () => {
   const choose = vi.fn()
-  const { container } = render(
+  render(
     <Popover visible list={itemListDisabled} onSelect={choose}>
-      <Button type="primary" shape="square">
-        明朗风格
-      </Button>
+      <Button type="primary">明朗风格</Button>
     </Popover>
   )
-  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose).not.toBeCalled())
 })
 
-test('target id', async () => {
-  const choose = vi.fn()
+test('click event', async () => {
   const close = vi.fn()
-  const { container, getByTestId } = render(
+  const close1 = vi.fn()
+  const open = vi.fn()
+  const { getByTestId, rerender } = render(
     <div>
       <Popover visible targetId="popid" list={itemListOne} />
       <Button type="primary" id="popid">
@@ -228,4 +203,32 @@ test('target id', async () => {
     </div>
   )
   fireEvent.click(getByTestId('closeid'))
+  await waitFor(() =>
+    expect(document.querySelectorAll('.nut-popover')[0]).toHaveStyle({
+      visibility: 'hidden',
+    })
+  )
+
+  rerender(
+    <>
+      <Popover
+        visible
+        targetId="popid"
+        list={itemListOne}
+        location="left-bottom"
+        onOpen={open}
+        onClose={close1}
+        data-testid="popoverid"
+      />
+      <Button type="primary" id="popid" data-testid="popid">
+        自定义目标元素
+      </Button>
+    </>
+  )
+  fireEvent.click(getByTestId('popid'))
+  await waitFor(() => {
+    expect(document.querySelectorAll('.nut-popover')[0]).toHaveStyle({
+      visibility: 'hidden',
+    })
+  })
 })
