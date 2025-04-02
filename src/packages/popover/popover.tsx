@@ -17,7 +17,7 @@ import useClickAway from '@/hooks/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 import { useRtl } from '@/packages/configprovider'
-import { WebPopoverProps, PopoverList } from '@/types'
+import { WebPopoverProps, PopoverList, WrapperPosition } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -71,26 +71,32 @@ export const Popover: FunctionComponent<
   const popoverRef = useRef<HTMLDivElement>(null)
   const popoverContentRef = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
-  const [rootPosition, setRootPosition] = useState<{
-    width: number
-    height: number
-    left: number
-    top: number
-    right: number
-  }>()
-
+  const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   useEffect(() => {
     setShowPopup(visible)
     if (visible) {
       setTimeout(() => {
-        getContentWidth()
+        getWrapperPosition()
       }, 0)
     }
   }, [visible, location])
 
   const update = useRef((e: any) => {
-    getContentWidth()
+    getWrapperPosition()
   })
+
+  let targetSet = []
+  let element: Element | null = null
+  if (canUseDom && targetId) {
+    element = document.querySelector(`#${targetId}`)
+    targetSet = [element, popoverContentRef.current]
+  } else {
+    targetSet = [popoverRef.current, popoverContentRef.current]
+  }
+  const scrollableParents = useMemo(() => {
+    return getAllScrollableParents(element || popoverRef.current)
+  }, [element, popoverRef.current])
+
   useEffect(() => {
     if (visible) {
       scrollableParents.forEach((parent) => {
@@ -103,14 +109,6 @@ export const Popover: FunctionComponent<
     }
   }, [visible])
 
-  let element: Element | null = null
-  let targetSet = []
-  if (canUseDom && targetId) {
-    element = document.querySelector(`#${targetId}`) as Element
-    targetSet = [element, popoverContentRef.current]
-  } else {
-    targetSet = [popoverRef.current, popoverContentRef.current]
-  }
   useClickAway(
     () => {
       onClick?.()
@@ -123,25 +121,21 @@ export const Popover: FunctionComponent<
     closeOnOutsideClick
   )
 
-  const scrollableParents = useMemo(() => {
-    return getAllScrollableParents((element || popoverRef.current) as Element)
-  }, [element, popoverRef.current])
-
-  const getContentWidth = () => {
+  const getWrapperPosition = () => {
     const rect = getRect(
-      targetId
-        ? (document.querySelector(`#${targetId}`) as Element)
-        : (popoverRef.current as Element)
+      targetId ? document.querySelector(`#${targetId}`) : popoverRef.current
     )
-
-    setRootPosition({
-      width: rect.width,
-      height: rect.height,
-      left: rtl ? rect.right : rect.left,
-      top:
-        rect.top +
-        Math.max(document.documentElement.scrollTop, document.body.scrollTop),
-      right: rtl ? rect.left : rect.right,
+    const distance = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    )
+    const { width, height, right, left, top } = rect
+    setWrapperPosition({
+      width,
+      height,
+      left: rtl ? right : left,
+      top: top + distance,
+      right: rtl ? left : right,
     })
   }
 
@@ -159,12 +153,17 @@ export const Popover: FunctionComponent<
     return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
-  const getRootPosition = () => {
+  const getPopoverPosition = () => {
     const styles: CSSProperties = {}
-    if (!rootPosition) return {}
-    const contentWidth = popoverContentRef.current?.clientWidth as number
-    const contentHeight = popoverContentRef.current?.clientHeight as number
-    const { width, height, left, top, right } = rootPosition
+
+    if (!wrapperPosition) {
+      styles.visibility = 'hidden'
+      return styles
+    }
+
+    const popWidth = popoverContentRef.current?.clientWidth as number
+    const popHeight = popoverContentRef.current?.clientHeight as number
+    const { width, height, left, top, right } = wrapperPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
     let cross = 0
@@ -177,13 +176,12 @@ export const Popover: FunctionComponent<
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
-        const h =
-          direction === 'bottom' ? height + cross : -(contentHeight + cross)
+        const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
           styles[dir] =
-            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
+            `${-(popWidth - width) / 2 + wrapperPosition[dir] + parallel}px`
         }
         if (skew === 'left') {
           styles.left = `${left + parallel}px`
@@ -194,12 +192,10 @@ export const Popover: FunctionComponent<
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
-          direction === 'left' ? -(contentWidth + cross) : width + cross
+          direction === 'left' ? -(popWidth + cross) : width + cross
         styles.left = `${left + contentW}px`
         if (!skew) {
-          styles.top = `${
-            top - contentHeight / 2 + height / 2 - 4 + parallel
-          }px`
+          styles.top = `${top - popHeight / 2 + height / 2 - 4 + parallel}px`
         }
         if (skew === 'top') {
           styles.top = `${top + parallel}px`
@@ -209,10 +205,11 @@ export const Popover: FunctionComponent<
         }
       }
     }
+    styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
     return styles
   }
 
-  const arrowStyle = () => {
+  const popoverArrowStyle = () => {
     const styles: CSSProperties = {}
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
@@ -278,7 +275,10 @@ export const Popover: FunctionComponent<
       )}
       {
         createPortal(
-          <div className={classes} style={{ ...getRootPosition(), ...style }}>
+          <div
+            className={classes}
+            style={{ ...getPopoverPosition(), ...style }}
+          >
             <Popup
               className={`nut-popover-content nut-popover-content-${location}`}
               visible={showPopup}
@@ -292,7 +292,7 @@ export const Popover: FunctionComponent<
                 ref={popoverContentRef}
               >
                 {showArrow && (
-                  <div className={popoverArrow()} style={arrowStyle()}>
+                  <div className={popoverArrow()} style={popoverArrowStyle()}>
                     <ArrowRadius width={8} height={4} />
                   </div>
                 )}

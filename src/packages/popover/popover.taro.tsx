@@ -12,17 +12,9 @@ import Popup from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPopoverProps, PopoverList } from '@/types'
+import { TaroPopoverProps, PopoverList, WrapperPosition } from '@/types'
 import pxTransform from '@/utils/px-transform'
 import useUuid from '@/hooks/use-uuid'
-
-export interface WrapperPosition {
-  width: number
-  height: number
-  left: number
-  top: number
-  right: number
-}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -95,19 +87,16 @@ export const Popover: FunctionComponent<
   const popoverId = `popover-${uid}`
 
   const getWrapperPosition = async () => {
-    let rect
-    if (targetId) {
-      const elem = document.querySelector(`#${targetId}`)
-      rect = await getRectByTaro(elem, targetId)
-    } else {
-      rect = await getRectByTaro(popoverRef.current, popoverId)
-    }
+    const rect = targetId
+      ? await getRectByTaro(document.querySelector(`#${targetId}`), targetId)
+      : await getRectByTaro(popoverRef.current, popoverId)
+    const { width, height, right, left, top } = rect
     setWrapperPosition({
-      width: rect.width,
-      height: rect.height,
-      left: rtl ? rect.right : rect.left,
-      top: rect.top,
-      right: rtl ? rect.left : rect.right,
+      width,
+      height,
+      left: rtl ? right : left,
+      top,
+      right: rtl ? left : right,
     })
   }
 
@@ -145,7 +134,6 @@ export const Popover: FunctionComponent<
       return styles
     }
     const { width, height, left, top, right } = wrapperPosition
-
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
     let cross = 0
@@ -155,7 +143,6 @@ export const Popover: FunctionComponent<
       cross += +offset[1]
       parallel += +rtloffset
     }
-
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
@@ -275,7 +262,7 @@ export const Popover: FunctionComponent<
                 <ArrowRadius width={8} height={4} />
               </View>
             )}
-            {Array.isArray(children) ? children[1] : ''}
+            {Array.isArray(children) ? children[1] : null}
             {list.map((item, index) => {
               return (
                 <View
