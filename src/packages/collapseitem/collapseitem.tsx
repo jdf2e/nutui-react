@@ -73,13 +73,11 @@ export const CollapseItem: FunctionComponent<
 
   const updateRectHeight = async () => {
     const height = contentRef.current.offsetHeight
-    if (height) {
-      setCurrentHeight(height)
-      setWrapperHeight(expanded ? height : 0)
-      setTimeout(() => {
-        setTran(1)
-      })
-    }
+    setCurrentHeight(height)
+    setWrapperHeight(expanded ? height : 0)
+    setTimeout(() => {
+      setTran(1)
+    })
   }
 
   useEffect(() => {
