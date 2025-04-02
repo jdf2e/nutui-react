@@ -169,12 +169,10 @@ export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
 Dialog.confirm = (props: Partial<DialogConfirmProps>): DialogReturnProps => {
   return confirm(props)
 }
-;['alert'].forEach((type) => {
-  ;(Dialog as any)[type] = (props: Partial<DialogConfirmProps>) => {
+;['alert'].forEach(() => {
+  ;(Dialog as any).alert = (props: Partial<DialogConfirmProps>) => {
     return confirm({
       ...props,
-      isNotice: false,
-      noticeType: type,
     })
   }
 })

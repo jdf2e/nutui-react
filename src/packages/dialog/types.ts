@@ -47,8 +47,6 @@ export interface DialogBasicProps extends DialogWrapProps {
 
 export interface DialogConfirmProps extends DialogBasicProps {
   content: ReactNode
-  isNotice: boolean
-  noticeType: string
 }
 
 export type DialogReturnProps = {
