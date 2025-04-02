@@ -285,19 +285,28 @@ plugins: [
 - 新增 `color`, 价格类型
 
 [//]: # '#### Progress'
-[//]: # '#### Skeleton'
-[//]: # '#### Steps'
-[//]: # '#### Step'
-[//]: # '#### Swiper'
-[//]: # '#### Table'
-[//]: # '#### Tag'
-[//]: # '#### TrendArrow'
-[//]: # '#### Video'
-[//]: # '#### VirtualList'
-[//]: # '#### WaterMark'
-[//]: # '### 特色组件'
-[//]: # '#### Address'
-[//]: # '#### Barrage'
-[//]: # '#### Card'
-[//]: # '#### Signature'
-[//]: # '#### TimeSelect'
+
+#### Skeleton
+
+- 移除 `avatar` 属性，可通过 `width` 和 `height` 属性模拟
+- 移除 `avatarShape` 属性，可通过 `shape` 属性设置
+- 移除 `avatarSize` 属性
+- 新增 `width` 属性，控制宽度
+- 新增 `height` 属性，控制高度
+- 新增 `duration` 属性，控制动画时长
+- 新增 `size` 属性，通过 `size` 属性可选择使用组件内置的高度
+  [//]: # '#### Steps'
+  [//]: # '#### Step'
+  [//]: # '#### Swiper'
+  [//]: # '#### Table'
+  [//]: # '#### Tag'
+  [//]: # '#### TrendArrow'
+  [//]: # '#### Video'
+  [//]: # '#### VirtualList'
+  [//]: # '#### WaterMark'
+  [//]: # '### 特色组件'
+  [//]: # '#### Address'
+  [//]: # '#### Barrage'
+  [//]: # '#### Card'
+  [//]: # '#### Signature'
+  [//]: # '#### TimeSelect'

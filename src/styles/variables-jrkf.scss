@@ -2127,7 +2127,18 @@ $skeleton-background: var(
   $color-background
 ) !default;
 $skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
-$skeleton-line-height: var(--nutui-skeleton-line-height, 15px) !default;
+$skeleton-line-small-height: var(
+  --nutui-skeleton-line-small-height,
+  16px
+) !default;
+$skeleton-line-normal-height: var(
+  --nutui-skeleton-line-normal-height,
+  24px
+) !default;
+$skeleton-line-large-height: var(
+  --nutui-skeleton-line-large-height,
+  32px
+) !default;
 $skeleton-line-border-radius: var(
   --nutui-skeleton-line-border-radius,
   0
