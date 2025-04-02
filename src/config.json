@@ -1127,7 +1127,7 @@
           "dd": false
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -1135,12 +1135,12 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": -1,
-          "author": "zhenyulei",
-          "dd": false
+          "v15": 1,
+          "author": "oasis",
+          "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
@@ -1148,8 +1148,8 @@
           "sort": 13,
           "show": false,
           "exportEmpty": true,
-          "author": "zhenyulei",
-          "dd": false
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",

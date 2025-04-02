@@ -42,12 +42,16 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item-content"
+        class="nut-collapse-item-content-wrapper nut-collapse-item-content-wrapper-tran"
       >
         <div
-          class="nut-collapse-item-content-text"
+          class="nut-collapse-item-content"
         >
-          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+          <div
+            class="nut-collapse-item-content-text"
+          >
+            京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+          </div>
         </div>
       </div>
     </div>
@@ -88,12 +92,16 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item-content"
+        class="nut-collapse-item-content-wrapper nut-collapse-item-content-wrapper-tran"
       >
         <div
-          class="nut-collapse-item-content-text"
+          class="nut-collapse-item-content"
         >
-          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+          <div
+            class="nut-collapse-item-content-text"
+          >
+            京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+          </div>
         </div>
       </div>
     </div>
@@ -101,7 +109,7 @@ exports[`should match snapshot 1`] = `
       class="nut-collapse-item"
     >
       <div
-        class="nut-collapse-item-header disabled"
+        class="nut-collapse-item-header nut-collapse-item-header-disabled"
       >
         <div
           class="nut-collapse-item-title"
@@ -134,13 +142,16 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item-content"
-        style="height: 0px;"
+        class="nut-collapse-item-content-wrapper nut-collapse-item-content-wrapper-tran"
       >
         <div
-          class="nut-collapse-item-content-text"
+          class="nut-collapse-item-content"
         >
-          京东“厂直优品计划”首推“政府优品馆”
+          <div
+            class="nut-collapse-item-content-text"
+          >
+            京东“厂直优品计划”首推“政府优品馆”
+          </div>
         </div>
       </div>
     </div>
