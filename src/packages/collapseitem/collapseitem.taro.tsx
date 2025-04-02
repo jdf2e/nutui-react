@@ -59,7 +59,6 @@ export const CollapseItem: FunctionComponent<
   const contentRef: any = useRef(null)
   const uid = useUuid()
   const target = `nut-collapse-content-${uid}`
-  console.log('oasistarget', target)
 
   const expanded = useMemo(() => {
     if (context) {
@@ -67,7 +66,6 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
-  console.log('oasis', expanded, name)
 
   const iconStyle = useMemo(() => {
     return expanded
@@ -80,21 +78,17 @@ export const CollapseItem: FunctionComponent<
   const [wrapperHeight, setWrapperHeight] = useState(0)
 
   const updateRectHeight = async () => {
-    nextTick(async () => {
-      const res = await getRectByTaro(contentRef.current, target)
-      console.log('oasis res', res.height)
-      if (res?.height) {
-        setCurrentHeight(res.height)
-        setWrapperHeight(expanded ? res.height : 0)
-        setTimeout(() => {
-          setTran(1)
-        })
-      }
-    })
+    const res = await getRectByTaro(contentRef.current, target)
+    if (res?.height) {
+      setCurrentHeight(res.height)
+      setWrapperHeight(expanded ? res.height : 0)
+      nextTick(() => {
+        setTran(1)
+      })
+    }
   }
   useEffect(() => {
     nextTick(() => {
-      console.log('oasis update', name)
       updateRectHeight()
     })
   }, [children, expanded])
@@ -105,11 +99,10 @@ export const CollapseItem: FunctionComponent<
   }
   const handleClick = () => {
     if (!disabled) {
-      console.log('oasis name', name)
       context.updateValue(name)
-      nextTick(() => {
+      setTimeout(() => {
         toggle()
-      })
+      }, 150)
     }
   }
 

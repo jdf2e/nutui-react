@@ -60,7 +60,6 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
-  console.log('oasis', expanded, name)
 
   const iconStyle = useMemo(() => {
     return expanded
@@ -74,7 +73,6 @@ export const CollapseItem: FunctionComponent<
 
   const updateRectHeight = async () => {
     const height = contentRef.current.offsetHeight
-    console.log('oasis res', height)
     if (height) {
       setCurrentHeight(height)
       setWrapperHeight(expanded ? height : 0)
@@ -94,7 +92,6 @@ export const CollapseItem: FunctionComponent<
   }
   const handleClick = () => {
     if (!disabled) {
-      console.log('oasis name', name)
       context.updateValue(name)
       toggle()
     }
