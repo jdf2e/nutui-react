@@ -1,10 +1,18 @@
 import React from 'react'
-import { Cell, Skeleton } from '@nutui/nutui-react-taro'
+import { Cell, Skeleton, Space } from '@nutui/nutui-react-taro'
+import pxTransform from '@/utils/px-transform'
 
 const Demo3 = () => {
   return (
     <Cell>
-      <Skeleton rows={3} title animated avatar avatarSize="100px" />
+      <Space>
+        <Skeleton width={pxTransform(60)} height={pxTransform(60)} />
+        <Skeleton
+          width={pxTransform(60)}
+          height={pxTransform(60)}
+          shape="circle"
+        />
+      </Space>
     </Cell>
   )
 }

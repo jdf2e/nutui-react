@@ -1,10 +1,13 @@
 import React from 'react'
-import { Cell, Skeleton } from '@nutui/nutui-react'
+import { Cell, Skeleton, Space } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   return (
     <Cell>
-      <Skeleton rows={3} title animated avatar avatarSize="100px" />
+      <Space>
+        <Skeleton width={60} height={60} />
+        <Skeleton width={60} height={60} shape="circle" />
+      </Space>
     </Cell>
   )
 }

@@ -1,17 +1,23 @@
 import React from 'react'
-import { Cell, Skeleton, ConfigProvider } from '@nutui/nutui-react-taro'
+import { Cell, Skeleton } from '@nutui/nutui-react-taro'
 import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   return (
-    <Cell style={{ display: 'block' }}>
-      <ConfigProvider
-        theme={{
-          nutuiSkeletonLineBorderRadius: pxTransform(10),
+    <Cell>
+      <Skeleton width={pxTransform(132)} height={pxTransform(132)} />
+      <div
+        style={{
+          display: 'flex',
+          flexGrow: 1,
+          flexDirection: 'column',
+          marginLeft: pxTransform(10),
         }}
       >
-        <Skeleton rows={3} animated />
-      </ConfigProvider>
+        <Skeleton size="large" style={{ marginBottom: pxTransform(5) }} />
+        <Skeleton width="30%" style={{ marginBottom: pxTransform(5) }} />
+        <Skeleton width="80%" size="small" rows={3} />
+      </div>
     </Cell>
   )
 }

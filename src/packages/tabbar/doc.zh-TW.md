@@ -18,7 +18,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定義選中
+### 徽標提示
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 無圖標
+### 只配文字
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 徽標提示
+### 首坑品牌+營銷態
 
 :::demo
 
@@ -50,7 +50,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 紅點
+### 自定義顏色+數量
 
 :::demo
 
@@ -58,7 +58,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 自定義顏色
+### 受控
 
 :::demo
 
@@ -66,7 +66,7 @@ import { Tabbar } from '@nutui/nutui-react'
 
 :::
 
-### 可自定義icon個數的tabbar
+### 焦點時點擊（模擬雙擊）支持回調
 
 :::demo
 
@@ -102,15 +102,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| title | 標簽頁的標題 | `ReactNode` | `-` |
-| icon | 自定義圖標 | `ReactNode` | `-` |
-| value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
+| title | 標簽頁的標題 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| icon | 自定義圖標 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
+| value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` \| `((active: boolean) => ReactNode)` | `-` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| onActiveClick | 用於處理當元素處於焦點時，再次點擊時可增加自定義事件。 | `() => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -118,16 +119,16 @@ import { Tabbar } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabbar-height | 高度 | `50px` |
+| \--nutui-tabbar-height | 高度 | `46px` |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
 | \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 陰影 | `none` |
-| \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xs` |
+| \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xxs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-l` |
 | \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
-| \--nutui-tabbar-text-margin-top | 標題上外邊距 | `3px` |
+| \--nutui-tabbar-text-margin-top | 標題上外邊距 | `4px` |
 
 <Contribution name="Tabbar" />

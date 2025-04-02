@@ -1,10 +1,9 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, useContext, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index.taro'
 import TabbarContext from '@/packages/tabbar/context'
-import addColorForHarmony from '@/utils/add-color-for-harmony'
 import { TaroTabbarItemProps } from '@/types'
 
 const defaultProps = {
@@ -16,6 +15,7 @@ const defaultProps = {
   max: 99,
   top: '0',
   right: '0',
+  direction: 'vertical',
 } as TaroTabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
@@ -34,6 +34,8 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     right,
     // @ts-ignore
     index,
+    direction,
+    onActiveClick,
     ...rest
   } = {
     ...defaultProps,
@@ -45,16 +47,18 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
+      [`${classPrefix}-large`]: !icon || !title,
     },
     className
   )
-  const boxPrefix = `${classPrefix}-icon-box`
-  const titleClass = classNames(boxPrefix, `${boxPrefix}-nav`, {
-    [`${boxPrefix}-large`]: !icon,
-  })
 
+  const renderNodeWithActive = (
+    node: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return node && typeof node === 'function' ? node(active) : node
+  }
   const badgeProps = {
-    value,
+    value: renderNodeWithActive(value),
     dot,
     max,
     top,
@@ -66,14 +70,54 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
     return (
       title && (
         <View
-          className={titleClass}
+          className={`${classPrefix}-text`}
           style={{
             color: active ? ctx?.activeColor : ctx?.inactiveColor,
           }}
         >
-          {title}
+          {renderNodeWithActive(title)}
         </View>
       )
+    )
+  }
+
+  const renderTitle = () => {
+    return (
+      <Badge size="normal" {...badgeProps}>
+        {renderTitleText()}
+      </Badge>
+    )
+  }
+
+  const renderIcon = () => {
+    const distIcon = renderNodeWithActive(icon)
+    // 鸿蒙差异处理，需要手动给icon一个color
+    return React.isValidElement(distIcon)
+      ? React.cloneElement(distIcon, {
+          ...distIcon.props,
+          color: active ? ctx?.activeColor : ctx?.inactiveColor,
+        })
+      : null
+  }
+
+  const renderIconAndTitle = () => {
+    return (
+      <>
+        <Badge size="normal" {...badgeProps} top={3}>
+          {renderIcon()}
+        </Badge>
+        {renderTitleText()}
+      </>
+    )
+  }
+
+  const renderDualItem = () => {
+    return dot ? null : (
+      <>
+        {renderIcon()}
+        {renderTitleText()}
+        <Badge {...badgeProps} />
+      </>
     )
   }
 
@@ -84,23 +128,16 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
         color: active ? ctx?.activeColor : ctx?.inactiveColor,
         ...style,
       }}
-      onClick={() => ctx?.handleClick(index)}
+      onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
       {...rest}
     >
-      {icon ? (
-        <>
-          <Badge {...badgeProps}>
-            <View className={boxPrefix}>
-              {addColorForHarmony(
-                icon,
-                active ? ctx?.activeColor : ctx?.inactiveColor
-              )}
-            </View>
-          </Badge>
-          {renderTitleText()}
-        </>
+      {direction === 'horizontal' && !dot ? (
+        renderDualItem()
       ) : (
-        <Badge {...badgeProps}>{renderTitleText()}</Badge>
+        <>
+          {icon && renderIconAndTitle()}
+          {!icon && renderTitle()}
+        </>
       )}
     </View>
   )

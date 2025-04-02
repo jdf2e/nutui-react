@@ -1,3 +1,23 @@
+# v3.0.6
+
+`2025-03-28`
+
+- :sparkles: feat(skeleton): v15 (#3086)
+- :sparkles: feat(Tabbar): v15 样式适配；增加 icon/value/title 的function类型，支持根据active状态渲染不同数据；增加 onDoubleClick 事件 (#3110)
+- :sparkles: feat(indicator): 增加 UI 变体的类型 (#3114)
+- :sparkles: feat(switch): 异步切换支持受控loading态 (#3122)
+- :sparkles: feat(notify): v15 (#3082)
+- :sparkles: feat(lottie): 支持京东小程序 (#3080)
+- :sparkles: feat(demoblock): code block scrolling behavior， CodesandBox function and copyCode styles (#3106)
+- :bug: fix(searchbar): 支付宝小程序设置 enableInPageRenderInput 后无法触发 onChange (#3130)
+- :bug: fix: doc css (#3126)
+- :bug: fix(overlay): 扩大点击范围 (#3117)
+- :bug: fix(pickerview): 解决小程序获取高度计算错误 (#3120)
+- :bug: fix(badge): 修正css变量定义 (#3123)
+- :bug: fix: update pkgjson title (#3119)
+- 🪵 refactor(badge): 支持禁用模式 (#3118)
+- 🏡 chore: support ui review (#3121)
+
 # v3.0.5
 
 `2025-03-21`
