@@ -238,7 +238,7 @@ plugins: [
 - `activeText` 属性类型更改为`ReactNode`
 - `inactiveText` 属性类型更改为 `ReactNode`
 - 新增 `loadingIcon` 属性，受控 loading 态图标
-- - 新增 `changing` 属性，loading 态受控
+- 新增 `changing` 属性，loading 态受控
 - 新增 `onChangingChange` ，切换 loading 态时触发
 
 [//]: # '#### Toast'
