@@ -4,11 +4,10 @@ export type {
   DialogConfigType,
   DialogCloseIconPosition,
   DialogFooterDirection,
-  ContentProps,
+  TaroContentProps as ContentProps,
   DialogWrapProps,
-  DialogBasicProps,
-  DialogConfirmProps,
+  TaroDialogProps as DialogProps,
   DialogReturnProps,
-} from './types.taro'
+} from '@/types'
 
 export default BaseDialog

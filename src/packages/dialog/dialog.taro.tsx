@@ -1,13 +1,14 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { DialogBasicProps } from './types.taro'
+import { TaroDialogProps } from '@/types'
 import { Content, defaultContentProps } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import {
   customEvents,
   useCustomEvent,
@@ -16,10 +17,9 @@ import {
 } from '@/hooks/use-custom-event'
 import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
 import { mergeProps } from '@/utils/merge-props'
-import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import { harmony } from '@/utils/platform-taro'
 
-const defaultProps: DialogBasicProps = {
+const defaultProps = {
   ...defaultOverlayProps,
   ...defaultContentProps,
   title: '',
@@ -28,55 +28,52 @@ const defaultProps: DialogBasicProps = {
   footer: '',
   confirmText: '',
   cancelText: '',
-  overlay: true,
-  overlayStyle: {},
-  overlayClassName: 'nut-dialog-overlay',
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   closeIconPosition: 'bottom',
   closeIcon: false,
+  overlay: true,
+  overlayStyle: {},
+  overlayClassName: 'nut-dialog-overlay',
   zIndex: 1200,
   beforeCancel: () => true,
   beforeClose: () => true,
   onCancel: () => {},
   onClose: () => {},
+  onConfirm: () => {},
   onOverlayClick: () => true,
 }
 
-export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
+export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   open: typeof open
   close: typeof close
 } = (props) => {
-  const classPrefix = 'nut-dialog'
-  const { locale } = useConfig()
-  const [loading, setLoading] = useState(false)
-
   const {
     params: {
       id,
-      className,
-      style,
-      visible,
-      footer,
-      title,
-      header,
-      content,
-      children,
-      footerDirection,
-      hideConfirmButton,
-      hideCancelButton,
-      lockScroll,
-      disableConfirmButton,
       closeOnOverlayClick,
       confirmText,
       cancelText,
+      children,
+      className,
+      closeIconPosition,
+      closeIcon,
+      content,
+      disableConfirmButton,
+      footer,
+      footerDirection,
+      header,
+      hideConfirmButton,
+      hideCancelButton,
+      lockScroll,
       overlay,
       overlayStyle,
       overlayClassName,
-      closeIconPosition,
-      closeIcon,
+      style,
+      title,
+      visible,
       zIndex,
       beforeCancel,
       beforeClose,
@@ -87,6 +84,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
+  const classPrefix = 'nut-dialog'
+  const { locale } = useConfig()
+  const [loading, setLoading] = useState(false)
 
   useCustomEvent(
     id as string,
@@ -98,23 +98,21 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (
-      e: ITouchEvent | React.MouseEvent<HTMLButtonElement>
-    ) => {
+    const handleCancel = (e: ITouchEvent | MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
-      onClose?.()
-      onCancel?.()
+      onClose()
+      onCancel()
     }
 
-    const handleOk = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       setLoading(true)
       try {
         await onConfirm?.(e)
         setLoading(false)
-        onClose?.()
+        onClose()
       } catch {
         setLoading(false)
       }
@@ -128,7 +126,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
         !hideCancelButton && (
           <View
             className={`${classPrefix}-footer-cancel ${btnClass}`}
-            onClick={(e: ITouchEvent) => handleCancel(e)}
+            onClick={(e) => handleCancel(e)}
           >
             {cancelText || locale.cancel}
           </View>
@@ -143,9 +141,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
             type="default"
             size="large"
             className={`${classPrefix}-footer-cancel ${btnClass}`}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
-              handleCancel(e)
-            }
+            onClick={(e) => handleCancel(e)}
           >
             {cancelText || locale.cancel}
           </Button>
@@ -157,13 +153,13 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
       return (
         !hideConfirmButton && (
           <Button
-            size="large"
             type="primary"
+            size="large"
             className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
               disabled: disableConfirmButton,
             })}
             disabled={disableConfirmButton}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleOk(e)}
+            onClick={(e) => handleOk(e)}
             loading={loading}
           >
             {confirmText || locale.confirm}
@@ -196,8 +192,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
     const handleCancel = () => {
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
-      onClose?.()
-      onCancel?.()
+      onClose()
+      onCancel()
     }
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
@@ -214,8 +210,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogBasicProps>> & {
   const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose && onClose()
-      closed && onCancel && onCancel()
+      closed && onClose()
+      closed && onCancel()
     }
   }
 

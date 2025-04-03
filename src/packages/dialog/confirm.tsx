@@ -1,9 +1,9 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, DialogConfirmProps, DialogReturnProps } from './types'
+import { destroyList, BaseDialog, DialogReturnProps } from '@/types'
 import { render as reactRender, unmount } from '@/utils/render'
 
-type DialogConfirmNativeProps = Partial<DialogConfirmProps>
+type DialogConfirmNativeProps = Partial<BaseDialog>
 function ConfirmDialog(props: DialogConfirmNativeProps) {
   return <Dialog {...props}>{props.content}</Dialog>
 }
