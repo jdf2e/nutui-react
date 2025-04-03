@@ -15,6 +15,7 @@ const Demo2 = () => {
       }, 2000)
     })
     if (!res) {
+      // 主动抛出一个错误对象，用于中断组件 loading 态
       throw new Error()
     } else {
       setCheckedAsync(value)
