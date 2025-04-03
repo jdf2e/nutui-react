@@ -4,18 +4,18 @@ import { Cell, Switch, Toast } from '@nutui/nutui-react'
 const Demo2 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
 
-  const mockRequest = (): Promise<void> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve()
-      }, 2000)
-    })
-  }
-
   const onChangeAsync = async (value: boolean) => {
     Toast.show(`2秒后异步触发 ${value}`)
-    await mockRequest()
-    setCheckedAsync(value)
+    const res = await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true)
+      }, 2000)
+    })
+    if (!res) {
+      throw new Error()
+    } else {
+      setCheckedAsync(value)
+    }
   }
   return (
     <Cell>

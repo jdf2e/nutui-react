@@ -77,7 +77,6 @@ import { Switch } from '@nutui/nutui-react'
 | disabled | 禁用狀態 | `boolean` | `false` |
 | activeText | 打開時文字描述 | `ReactNode` | `-` |
 | inactiveText | 關閉時文字描述 | `ReactNode` | `-` |
-| loadingIcon | 控制加載狀態的圖標，當傳入空值時禁用 loading 狀態 | `ReactNode` | `<Loading1 />` |
 | onChange | 切換開關時觸發 | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## 主題定製

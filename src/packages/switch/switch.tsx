@@ -56,11 +56,15 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = () => {
+  const onClick = async () => {
     if (disabled || changing) return
     if (onChange) {
-      loadingIcon && setChanging(true)
-      onChange(!value)
+      setChanging(true)
+      try {
+        await onChange(!value)
+      } catch (e) {
+        setChanging(false)
+      }
     }
     setValue(!value)
   }

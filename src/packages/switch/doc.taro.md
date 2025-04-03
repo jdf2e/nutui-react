@@ -77,7 +77,6 @@ import { Switch } from '@nutui/nutui-react-taro'
 | disabled | 禁用状态 | `boolean` | `false` |
 | activeText | 打开时文字描述 | `ReactNode` | `-` |
 | inactiveText | 关闭时文字描述 | `ReactNode` | `-` |
-| loadingIcon | 控制加载状态的图标，传入空值时禁用 loading 态 | `ReactNode` | `<Loading1 />` |
 | onChange | 切换开关时触发 | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## 主题定制
