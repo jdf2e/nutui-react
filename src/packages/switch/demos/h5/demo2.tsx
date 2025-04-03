@@ -12,6 +12,7 @@ const Demo2 = () => {
       }, 2000)
     })
     if (!res) {
+      // 主动抛出一个错误，用于中断loading态
       throw new Error()
     } else {
       setCheckedAsync(value)
