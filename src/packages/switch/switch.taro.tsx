@@ -32,9 +32,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ...props,
   }
   const classPrefix = 'nut-switch'
-
   const rtl = useRtl()
-  console.log('checked', checked)
   const [value, setValue] = usePropsValue<boolean>({
     value: checked,
     defaultValue: defaultChecked,
