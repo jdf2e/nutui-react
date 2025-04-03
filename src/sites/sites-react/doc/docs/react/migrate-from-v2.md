@@ -238,6 +238,7 @@ plugins: [
 
 - `activeText` 属性类型更改为`ReactNode`
 - `inactiveText` 属性类型更改为 `ReactNode`
+- 新增 `loadingIcon` 属性，受控 loading 态图标
 
 [//]: # '#### Toast'
 
@@ -276,12 +277,7 @@ plugins: [
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-
-#### Popover
-
-- 废弃的样式变量，这些变量存在于文档，已删除：`--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
-- 变更样式变量 `--nutui-popover-menu-item-padding` 变更为 `--nutui-popover-padding`，`--nutui-popover-menu-item-width` 变更为 `--nutui-popover-item-width`
-- 修订 `location` 的数据类型，使用统一位置类型 `FullPosition`
+[//]: # '#### Popover'
 
 #### Price
 
