@@ -1,11 +1,11 @@
 import React from 'react'
 import { Star, Plus } from '@nutui/icons-react'
-import { Button } from '@nutui/nutui-react'
+import { Button, Cell } from '@nutui/nutui-react'
 
 const Demo4 = () => {
   const marginStyle = { margin: 8 }
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <Button
         disabled
         type="primary"
@@ -111,7 +111,7 @@ const Demo4 = () => {
       >
         Disabled
       </Button>
-    </>
+    </Cell>
   )
 }
 export default Demo4
