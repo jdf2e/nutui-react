@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button } from '@nutui/nutui-react'
+import { Button, Cell } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const marginStyle = { margin: 8 }
   return (
-    <>
+    <Cell style={{ flexWrap: 'wrap' }}>
       <Button type="primary" fill="solid" style={marginStyle}>
         Solid
       </Button>
@@ -17,7 +17,7 @@ const Demo2 = () => {
       <Button fill="none" style={marginStyle}>
         None
       </Button>
-    </>
+    </Cell>
   )
 }
 export default Demo2
