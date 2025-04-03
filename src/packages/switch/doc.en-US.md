@@ -26,6 +26,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### loading 态受控
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### disabled status
 
 :::demo
@@ -78,7 +86,9 @@ import { Switch } from '@nutui/nutui-react'
 | activeText | Text description when opening | `ReactNode` | `-` |
 | inactiveText | Text description when closed | `ReactNode` | `-` |
 | loadingIcon | Control the loading state icon, disable the loading state when a null | `ReactNode` | `<Loading1 />` |
-| onChange | Trigger when switching switches | `onChange:(value: boolean, event: Event)` | `-` |
+| changing | loading state, controlled | `boolean` | `-` |
+| onChangingChange | Triggered when switching loading | `onChangingChange:(value: boolean)` | `-` |
+| onChange | Trigger when switching switches | `onChange:(value: boolean)` | `-` |
 
 ## Theming
 

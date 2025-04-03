@@ -12,6 +12,8 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
+  changing: undefined,
+  onChangingChange: (changing: boolean) => {},
 } as WebSwitchProps
 export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   const {
@@ -24,6 +26,8 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     className,
     style,
     onChange,
+    changing: propChanging,
+    onChangingChange,
     ...rest
   } = {
     ...defaultProps,
@@ -38,11 +42,20 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
+  const [internalChanging, setInternalChanging] = useState(false)
+  const changing = propChanging !== undefined ? propChanging : internalChanging
+
+  const setChanging = (val: boolean) => {
+    if (propChanging !== undefined) {
+      onChangingChange(val)
+    } else {
+      setInternalChanging(val)
+    }
+  }
+
   useEffect(() => {
     changing && setChanging(false)
   }, [value])
-
-  const [changing, setChanging] = useState(false)
 
   const classes = () => {
     return classNames([

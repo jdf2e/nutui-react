@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Loading1 } from '@nutui/icons-react-taro'
@@ -14,6 +13,8 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
+  changing: undefined,
+  onChangingChange: (changing: boolean) => {},
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -26,6 +27,8 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     className,
     style,
     onChange,
+    changing: propChanging,
+    onChangingChange,
     ...rest
   } = {
     ...defaultProps,
@@ -40,11 +43,20 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
+  const [internalChanging, setInternalChanging] = useState(false)
+  const changing = propChanging !== undefined ? propChanging : internalChanging
+
+  const setChanging = (val: boolean) => {
+    if (propChanging !== undefined) {
+      onChangingChange(val)
+    } else {
+      setInternalChanging(val)
+    }
+  }
+
   useEffect(() => {
     changing && setChanging(false)
   }, [value])
-
-  const [changing, setChanging] = useState(false)
 
   const classes = () => {
     return classNames([

@@ -26,6 +26,14 @@ import { Switch } from '@nutui/nutui-react-taro'
 
 :::
 
+### loading 态受控
+
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 禁用状态
 
 :::demo
@@ -78,7 +86,9 @@ import { Switch } from '@nutui/nutui-react-taro'
 | activeText | 打开时文字描述 | `ReactNode` | `-` |
 | inactiveText | 关闭时文字描述 | `ReactNode` | `-` |
 | loadingIcon | 控制加载状态的图标，传入空值时禁用 loading 态 | `ReactNode` | `<Loading1 />` |
-| onChange | 切换开关时触发 | `onChange:(value: boolean, event: Event)` | `-` |
+| changing | loading 态，受控 | `boolean` | `-` |
+| onChangingChange | 切换 loading 态时触发 | `onChangingChange:(value: boolean)` | `-` |
+| onChange | 切换开关时触发 | `onChange:(value: boolean)` | `-` |
 
 ## 主题定制
 
