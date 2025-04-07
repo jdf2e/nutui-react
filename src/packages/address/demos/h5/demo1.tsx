@@ -3,6 +3,18 @@ import { Address, Cell } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const [text, setText] = useState<string>('选择地址')
+  const [hotList, setHotList] = useState([
+    { id: '1', name: '北京' },
+    { id: '2', name: '上海' },
+    { id: '1601', name: '广州' },
+    { id: '1607', name: '深圳' },
+    { id: '1213', name: '杭州' },
+    { id: '904', name: '南京' },
+    { id: '988', name: '苏州' },
+    { id: '3', name: '天津' },
+    { id: '3', name: '天津' },
+    { id: '3', name: '天津' },
+  ])
   const [optionsDemo1] = useState([
     {
       value: '浙江',
@@ -77,6 +89,7 @@ const Demo1 = () => {
       />
       <Address
         visible={visible}
+        hotList={hotList}
         options={optionsDemo1}
         title="选择地址"
         onChange={(value) => {

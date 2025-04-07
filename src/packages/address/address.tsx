@@ -7,6 +7,7 @@ import React, {
 import { ArrowLeft } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
+import { ElevatorRender } from './elevatorRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
 import {
@@ -21,12 +22,13 @@ import { usePropsValue } from '@/hooks/use-props-value'
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: [],
-  type: 'custom',
+  type: 'elevator',
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
   custom: false,
   existList: [],
+  hotList: [],
   height: '200px',
   defaultIcon: null,
   selectIcon: null,
@@ -62,6 +64,7 @@ export const InternalAddress: ForwardRefRenderFunction<
     defaultIcon,
     closeIcon,
     backIcon,
+    hotList,
     onChange,
     onExistSelect,
     onClose,
@@ -123,55 +126,104 @@ export const InternalAddress: ForwardRefRenderFunction<
     }
     onSwitch && onSwitch({ type: currentType })
   }
+  const renderElevator = () => {
+    return (
+      <Popup
+        visible={innerVisible}
+        position="bottom"
+        style={{ height: '87%' }}
+        round
+        closeable
+        closeIcon={closeIcon}
+        title={title || locale.address.selectRegion}
+        onClose={handleClose}
+      >
+        <div
+          className={`${classPrefix} ${className || ''}`}
+          style={{ ...style }}
+        >
+          {
+            // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
+            <ElevatorRender
+              visible={innerVisible}
+              closeable
+              title={title || locale.address.selectRegion}
+              left={renderLeftOnCustomSwitch()}
+              defaultValue={defaultValue}
+              closeIcon={closeIcon}
+              options={options}
+              hotList={hotList}
+              format={format}
+              optionKey={optionKey}
+              type={currentType}
+              height={height}
+              onClose={handleClose}
+              onChange={(val: CascaderValue, params?: any) => {
+                onChange?.(val, params)
+              }}
+            />
+          }
+        </div>
+      </Popup>
+    )
+  }
+  const renderCascator = () => {
+    return (
+      <CustomRender
+        visible={innerVisible}
+        closeable
+        title={title || locale.address.selectRegion}
+        left={renderLeftOnCustomSwitch()}
+        defaultValue={defaultValue}
+        closeIcon={closeIcon}
+        options={options}
+        format={format}
+        optionKey={optionKey}
+        type={currentType}
+        height={height}
+        onClose={handleClose}
+        onChange={(val: CascaderValue, params?: any) => {
+          onChange?.(val, params)
+        }}
+      />
+    )
+  }
+  const renderExist = () => {
+    return (
+      <Popup
+        visible={innerVisible}
+        position="bottom"
+        round
+        closeable
+        closeIcon={closeIcon}
+        title={title || locale.address.selectRegion}
+        onClose={handleClose}
+      >
+        <div
+          className={`${classPrefix} ${className || ''}`}
+          style={{ ...style }}
+        >
+          {
+            // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
+            <ExistRender
+              type={currentType}
+              existList={existList}
+              selectIcon={selectIcon}
+              defaultIcon={defaultIcon}
+              custom={custom}
+              onSelect={selectedExistItem}
+              onSwitch={onSwitchModule}
+            />
+          }
+        </div>
+      </Popup>
+    )
+  }
   return (
     <>
-      {currentType === 'custom' || currentType === 'custom2' ? (
-        <CustomRender
-          visible={innerVisible}
-          closeable
-          title={title || locale.address.selectRegion}
-          left={renderLeftOnCustomSwitch()}
-          defaultValue={defaultValue}
-          closeIcon={closeIcon}
-          options={options}
-          format={format}
-          optionKey={optionKey}
-          type={currentType}
-          height={height}
-          onClose={handleClose}
-          onChange={(val: CascaderValue, params?: any) => {
-            onChange?.(val, params)
-          }}
-        />
-      ) : (
-        <Popup
-          visible={innerVisible}
-          position="bottom"
-          round
-          closeable
-          closeIcon={closeIcon}
-          title={title || locale.address.selectRegion}
-          onClose={handleClose}
-        >
-          <div
-            className={`${classPrefix} ${className || ''}`}
-            style={{ ...style }}
-          >
-            {
-              // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
-              <ExistRender
-                type={currentType}
-                existList={existList}
-                selectIcon={selectIcon}
-                defaultIcon={defaultIcon}
-                custom={custom}
-                onSelect={selectedExistItem}
-                onSwitch={onSwitchModule}
-              />
-            }
-          </div>
-        </Popup>
-      )}
+      {currentType === 'elevator' ? renderElevator() : null}
+      {currentType === 'custom' ? renderCascator() : null}
+      {currentType === 'exist' ? renderExist() : null}
     </>
   )
 }
