@@ -17,7 +17,6 @@ const defaultProps = {
   size: 'normal',
   shape: 'round',
   duration: 0.6,
-  inline: false,
 } as TaroSkeletonProps
 export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
   props
