@@ -61,6 +61,7 @@
     "predev:taro": "pnpm run update:taro:entry",
     "dev:taro": "pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:taro:h5": "pnpm dev:taro h5",
+    "dev:taro:h5:html": "USE_HTML=1 pnpm dev:taro h5",
     "predev:jdtaro": "pnpm run update:taro:entry",
     "dev:jdtaro": "JD=1 pnpm --dir ./packages/nutui-taro-demo dev",
     "dev:jdtaro:jdharmonycpp": "pnpm run clone:jdharmony cpp && pnpm run update:taro:entry && JD=1 pnpm --dir ./packages/nutui-taro-demo dev:jdharmonycpp",

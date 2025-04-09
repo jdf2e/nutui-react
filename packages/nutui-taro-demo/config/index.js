@@ -5,6 +5,9 @@ let themeStr = `src/styles/theme-default.scss`
 const projectID = process.env.VITE_APP_PROJECT_ID
 const JD = process.env.JD
 console.log('JDJDJDJDJDJD', JD)
+const useHtml = process.env.USE_HTML
+console.log('useHtml', useHtml)
+
 if (projectID) {
   fileStr = `src/styles/variables-${projectID}.scss`
   themeStr = `src/styles/theme-${projectID}.scss`
@@ -210,6 +213,7 @@ const config = {
     },
     publicPath: '/',
     staticDirectory: 'static',
+    useHtmlComponents: useHtml === '1',
     postcss: {
       pxtransform: {
         enable: true,
