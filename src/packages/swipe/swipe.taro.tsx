@@ -9,7 +9,7 @@ import React, {
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { useReady } from '@tarojs/taro'
+import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
@@ -58,7 +58,7 @@ export const Swipe = forwardRef<
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
-    setTimeout(() => getWidth())
+    nextTick(() => getWidth())
   })
 
   const { children, className, style } = { ...defaultProps, ...props }

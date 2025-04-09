@@ -7,8 +7,8 @@ const ViewNode = (text: string, style: any) => {
     <div
       style={{
         display: 'flex',
-        width: 60,
-        height: 104,
+        width: 56,
+        height: 96,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -25,32 +25,34 @@ const App = () => {
   return (
     <>
       <Swipe
-        style={{ height: 104 }}
+        style={{ height: 96 }}
         rightAction={
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
-              width: 240,
-              height: 104,
+              width: 224,
+              height: 96,
               fontSize: 12,
+              borderRadius: 8,
+              overflow: 'hidden',
             }}
           >
             <>
-              {ViewNode('设置常买', {
-                background: '#F8F8F8',
-                color: '#1A1A1A',
+              {ViewNode('加常买', {
+                background: '#fff4e8',
+                color: '#b5691a',
               })}
-              {ViewNode('移入收藏', {
-                background: '#ffcc00',
+              {ViewNode('收藏', {
+                background: '#ffbf00',
                 color: '#FFF',
               })}
               {ViewNode('看相似', {
-                background: '#FF860D',
+                background: '#ff791a',
                 color: '#FFF',
               })}
               {ViewNode('删除', {
-                background: '#FA2C19',
+                background: '#ff0f23',
                 color: '#FFF',
               })}
             </>
