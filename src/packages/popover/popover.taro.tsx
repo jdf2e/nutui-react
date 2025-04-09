@@ -10,12 +10,12 @@ import { nextTick } from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPopoverProps, PopoverList, WrapperPosition } from '@/types'
-import pxTransform from '@/utils/px-transform'
-import useUuid from '@/hooks/use-uuid'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { useUuid } from '@/hooks/use-uuid'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -85,8 +85,11 @@ export const Popover: FunctionComponent<
   const getWrapperPosition = async () => {
     nextTick(async () => {
       const rect = targetId
-        ? await getRectByTaro(document.querySelector(`#${targetId}`), targetId)
-        : await getRectByTaro(popoverRef.current, popoverId)
+        ? await getRectInMultiPlatform(
+            document.querySelector(`#${targetId}`),
+            targetId
+          )
+        : await getRectInMultiPlatform(popoverRef.current, popoverId)
       const { width, height, right, left, top } = rect
       setWrapperPosition({
         width,
@@ -101,7 +104,9 @@ export const Popover: FunctionComponent<
 
   const getPopoverContentW = async () => {
     nextTick(async () => {
-      const rectContent = await getRectByTaro(popoverContentRef.current)
+      const rectContent = await getRectInMultiPlatform(
+        popoverContentRef.current
+      )
       setPopWidth(rectContent.width)
       setPopHeight(rectContent.height)
     })

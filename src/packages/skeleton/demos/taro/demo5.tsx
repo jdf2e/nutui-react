@@ -1,7 +1,12 @@
-import { Avatar, Cell, Skeleton, Switch } from '@nutui/nutui-react-taro'
+import {
+  Avatar,
+  Cell,
+  Skeleton,
+  Switch,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 import React, { useState } from 'react'
 import { View, Text } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const [checked, setChecked] = useState(false)

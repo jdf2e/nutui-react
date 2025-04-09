@@ -1,7 +1,10 @@
 import React from 'react'
-import { HoverButton, ConfigProvider } from '@nutui/nutui-react-taro'
+import {
+  HoverButton,
+  ConfigProvider,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 import { Cart } from '@nutui/icons-react-taro'
-import pxTransform from '@/utils/px-transform'
 
 const customSpacing = {
   nutuiHoverbuttonSpacing: pxTransform(40),

@@ -12,8 +12,8 @@ import classNames from 'classnames'
 import { nextTick } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import useUuid from '@/hooks/use-uuid'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { useUuid } from '@/hooks/use-uuid'
 import { useRefState } from '@/hooks/use-ref-state'
 
 export interface CollapseItemProps extends BasicComponent {
@@ -78,7 +78,7 @@ export const CollapseItem: FunctionComponent<
   const [wrapperHeight, setWrapperHeight] = useState(0)
 
   const updateRectHeight = async () => {
-    const res = await getRectByTaro(contentRef.current, target)
+    const res = await getRectInMultiPlatform(contentRef.current, target)
     if (res?.height) {
       setCurrentHeight(res.height)
       setWrapperHeight(expanded ? res.height : 0)

@@ -1,6 +1,5 @@
 import React from 'react'
-import { Drag, Button } from '@nutui/nutui-react-taro'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { Drag, Button, getWindowInfo } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   const { screenWidth, windowHeight, screenHeight } = getWindowInfo()

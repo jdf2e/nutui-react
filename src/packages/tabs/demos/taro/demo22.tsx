@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Tabs, pxTransform } from '@nutui/nutui-react-taro'
 
 // TODO：鸿蒙支持的不好：自定义变量
 const Demo22 = () => {

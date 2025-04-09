@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import GridContext from '../grid/context'
 import { BasicComponent } from '@/utils/typings'
 

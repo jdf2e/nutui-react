@@ -10,8 +10,8 @@ import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { ScrollView, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
-import useUuid from '@/hooks/use-uuid'
+import { harmony } from '@/utils/taro/platform'
+import { useUuid } from '@/hooks/use-uuid'
 
 export const elevatorContext = createContext({} as ElevatorData)
 

@@ -8,13 +8,13 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { useRtl } from '../configprovider/index.taro'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 import { TaroRangeProps, RangeValue } from '@/types'
 
 const defaultProps = {
@@ -258,7 +258,7 @@ export const Range: FunctionComponent<
         return
       }
       setDragStatus('')
-      const rect = await getRectByTaro(root.current)
+      const rect = await getRectInMultiPlatform(root.current)
       let x =
         typeof event.detail?.x !== 'undefined' ? event.detail.x : event.clientX
       if (isHm) x = parseFloat(pxTransform(event.windowX))
@@ -321,7 +321,7 @@ export const Range: FunctionComponent<
 
       touch.move(event)
       setDragStatus('draging')
-      const rect = await getRectByTaro(root.current)
+      const rect = await getRectInMultiPlatform(root.current)
       if (!rect) return
       let delta = isHm
         ? parseFloat(pxTransform(touch.deltaX.current))

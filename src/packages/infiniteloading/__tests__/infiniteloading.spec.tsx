@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { act, render, waitFor } from '@testing-library/react'
-import { trigger, triggerDrag } from '@/utils/test/event'
+import { trigger, triggerDrag } from '@/utils/event-mocker'
 import '@testing-library/jest-dom'
 
 import { InfiniteLoading } from '../infiniteloading'

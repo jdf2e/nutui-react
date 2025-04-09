@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const [visible, setVisible] = useState(false)

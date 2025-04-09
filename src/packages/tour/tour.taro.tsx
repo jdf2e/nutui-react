@@ -4,7 +4,7 @@ import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import Popover from '@/packages/popover/index.taro'
-import { getTaroRectById } from '@/hooks/use-taro-rect'
+import { getRectById } from '@/utils/taro/get-rect-by-id'
 import { ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { TaroTourProps } from '@/types'
@@ -90,7 +90,7 @@ export const Tour: FunctionComponent<
   }, [active])
 
   const getRootPosition = () => {
-    getTaroRectById(list[active].target as string).then((rect: any) => {
+    getRectById(list[active].target as string).then((rect: any) => {
       setMaskRect({
         top: rect.top,
         left: rect.left,

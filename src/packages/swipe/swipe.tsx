@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '@/hooks/use-touch'
-import { getRect } from '@/hooks/use-client-rect'
+import { getRect } from '@/utils/get-rect'
 import { PositionX, SwipeRef, WebSwipeProps } from '@/types'
 
 function preventDefault(

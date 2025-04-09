@@ -1,7 +1,6 @@
 import React from 'react'
-import { Cell, Tag } from '@nutui/nutui-react-taro'
+import { Cell, Tag, pxTransform } from '@nutui/nutui-react-taro'
 import { Image, Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   return (

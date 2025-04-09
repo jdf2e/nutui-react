@@ -1,6 +1,6 @@
 import { createSelectorQuery } from '@tarojs/taro'
-import MiniLru from '@/utils/lru'
-import { getRect, inBrowser } from '@/hooks/use-client-rect'
+import { MiniLru } from '@/utils/lru'
+import { getRect, inBrowser } from '@/utils/get-rect'
 
 const lru = new MiniLru(10)
 
@@ -26,7 +26,7 @@ export function makeRect(width: number, height: number) {
   } as Rect
 }
 
-export const getRectByTaro = async (
+export const getRectInMultiPlatform = async (
   element: any,
   harmonyId = ''
 ): Promise<Rect> => {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function useRefs() {
+export function useRefs() {
   const refs = React.useRef<HTMLDivElement[]>([])
 
   const setRefs = React.useCallback(

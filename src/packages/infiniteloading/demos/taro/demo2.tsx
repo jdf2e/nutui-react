@@ -1,7 +1,11 @@
 import React, { useState, useEffect, CSSProperties } from 'react'
-import { Cell, InfiniteLoading, Toast } from '@nutui/nutui-react-taro'
+import {
+  Cell,
+  InfiniteLoading,
+  Toast,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const sleep = (time: number): Promise<unknown> =>
   new Promise((resolve) => {

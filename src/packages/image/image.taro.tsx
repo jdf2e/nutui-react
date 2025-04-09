@@ -8,7 +8,7 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroImageProps } from '@/types'
 
 const defaultProps = {

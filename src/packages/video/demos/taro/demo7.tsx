@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Cell, Video, Button } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Cell, Video, Button, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [source, setSource] = useState({

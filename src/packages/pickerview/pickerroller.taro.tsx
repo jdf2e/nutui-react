@@ -10,11 +10,11 @@ import { View } from '@tarojs/components'
 import { useTouch } from '@/hooks/use-touch'
 import { passiveSupported } from '@/utils/supports-passive'
 import { TaroPickerRollerProps, PickerOption } from '@/types'
-import { web } from '@/utils/platform-taro'
+import { web } from '@/utils/taro/platform'
 import { preventDefault } from '@/utils'
 import { momentum, useStyles } from './utils'
-import useUuid from '@/hooks/use-uuid'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { useUuid } from '@/hooks/use-uuid'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 
 const InternalPickerRoller: ForwardRefRenderFunction<
   { stopMomentum: () => void; moving: boolean },
@@ -158,7 +158,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
 
   const getReactHeight = async () => {
     try {
-      const placeholder = await getRectByTaro(placeholderRef.current)
+      const placeholder = await getRectInMultiPlatform(placeholderRef.current)
       const placeholderHeight = placeholder.height || 0
       return placeholderHeight
     } catch (error) {

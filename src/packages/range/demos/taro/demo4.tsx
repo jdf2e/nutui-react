@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { View } from '@tarojs/components'
-import { Range, Cell /* , Toast */ } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
+import { Range, Cell, pxTransform, harmony } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   const cellStyle = useMemo(() => {

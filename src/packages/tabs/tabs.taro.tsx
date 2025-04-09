@@ -8,7 +8,7 @@ import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
-import useUuid from '@/hooks/use-uuid'
+import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
 

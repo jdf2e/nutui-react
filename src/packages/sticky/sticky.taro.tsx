@@ -10,10 +10,10 @@ import React, {
 import classNames from 'classnames'
 import { getEnv, PageScrollObject, usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { ComponentDefaults } from '@/utils/typings'
-import useWatch from '@/hooks/use-watch'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { useWatch } from '@/hooks/use-watch'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { TaroStickyProps } from '@/types'
 
@@ -97,8 +97,8 @@ export const Sticky: FunctionComponent<Partial<TaroStickyProps>> = (props) => {
   ])
 
   const handleScroll: any = async (scrollTop: number) => {
-    const curRootRect = await getRectByTaro(rootRef.current)
-    const stickyRect = await getRectByTaro(stickyRef.current)
+    const curRootRect = await getRectInMultiPlatform(rootRef.current)
+    const stickyRect = await getRectInMultiPlatform(stickyRef.current)
     if (!curRootRect || !stickyRect) {
       console.warn('getRectByTaro获取失败', { stickyRect, curRootRect })
       return
@@ -108,7 +108,7 @@ export const Sticky: FunctionComponent<Partial<TaroStickyProps>> = (props) => {
 
     if (position === 'top') {
       if (container) {
-        const containerRect = await getRectByTaro(container.current)
+        const containerRect = await getRectInMultiPlatform(container.current)
         const difference = containerRect.bottom - threshold - curRootRect.height
         const curTransform = difference < 0 ? difference : 0
         setTransform(curTransform)

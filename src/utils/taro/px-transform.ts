@@ -1,7 +1,7 @@
 import { pxTransform as transform } from '@tarojs/taro'
-import { harmony } from './platform-taro'
+import { harmony } from './platform'
 
-export default function pxTransform(value: number, radix?: number): any {
+export function pxTransform(value: number, radix?: number): any {
   // @ts-ignore
   if (harmony()) return transform(value, radix || 375)
   return `${value}px`

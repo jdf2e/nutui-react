@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import { TaroEllipsisProps } from '@/types'
@@ -93,7 +93,7 @@ export const Ellipsis: FunctionComponent<
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
-    const refe = await getRectByTaro(symbolContain?.current)
+    const refe = await getRectInMultiPlatform(symbolContain?.current)
     symbolTextWidth.current = refe.width
       ? Math.ceil(refe.width)
       : Math.ceil(widthBase.current[0] * 0.7921)
@@ -156,7 +156,7 @@ export const Ellipsis: FunctionComponent<
 
   // 计算省略号的位置
   const calcEllipse = async () => {
-    const refe = await getRectByTaro(rootContain.current)
+    const refe = await getRectInMultiPlatform(rootContain.current)
     if (refe.height <= maxHeight.current) {
       setExceeded(false)
       setCacled(true)
@@ -195,7 +195,7 @@ export const Ellipsis: FunctionComponent<
 
   // 验证省略号
   const verifyEllipsis = async () => {
-    const refe = await getRectByTaro(rootContain.current)
+    const refe = await getRectInMultiPlatform(rootContain.current)
     if (refe && refe.height && refe.height > maxHeight.current) {
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(

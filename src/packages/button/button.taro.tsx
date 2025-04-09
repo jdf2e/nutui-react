@@ -9,7 +9,7 @@ import {
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,

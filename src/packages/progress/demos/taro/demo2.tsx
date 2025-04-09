@@ -1,6 +1,5 @@
 import React from 'react'
-import { Cell, Progress } from '@nutui/nutui-react-taro'
-import { harmony } from '@/utils/platform-taro'
+import { Cell, Progress, harmony } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   return (

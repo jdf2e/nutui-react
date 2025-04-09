@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { BaseEventOrig, ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 import { getIcon } from '@/packages/hoverbuttonitem/utils'
 import { TaroHoverButtonItemProps } from '@/types'
 

@@ -1,9 +1,7 @@
 import React from 'react'
-import { Swipe } from '@nutui/nutui-react-taro'
+import { Swipe, harmony, pxTransform } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 
 const ViewNode = (text: string, style: any) => {
   return (

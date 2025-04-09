@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { SearchBar } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { SearchBar, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState('')

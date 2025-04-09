@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { DragState } from './drag'
-import { getWindowInfo } from '@/utils/get-system-info'
-import { web } from '@/utils/platform-taro'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
+import { web } from '@/utils/taro/platform'
 
 export interface DragProps extends BasicComponent {
   attract: boolean
@@ -72,7 +72,7 @@ export const Drag: FunctionComponent<
         height,
         top: dragTop,
         left: dragLeft,
-      } = await getRectByTaro(dragRef.current)
+      } = await getRectInMultiPlatform(dragRef.current)
 
       setBoundaryState({
         top: -dragTop + top,

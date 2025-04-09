@@ -14,10 +14,10 @@ import {
   useCustomEvent,
   useCustomEventsPath,
   useParams,
-} from '@/hooks/use-custom-event'
-import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
+} from '@/hooks/taro/use-custom-event'
+import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { mergeProps } from '@/utils/merge-props'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...defaultOverlayProps,

@@ -9,8 +9,8 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { harmony } from '@/utils/taro/platform'
 import { TaroBadgeProps } from '@/types'
 
 const defaultProps = {

@@ -1,8 +1,8 @@
 import React, { useImperativeHandle, useRef } from 'react'
 import { createSelectorQuery, getEnv, useReady, useUnload } from '@tarojs/taro'
 import lottie from '@nutui/lottie-miniprogram'
-import { getWindowInfo } from '@/utils/get-system-info'
-import useUuid from '@/hooks/use-uuid'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
+import { useUuid } from '@/hooks/use-uuid'
 import { TaroLottieProps } from '@/types'
 
 export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
