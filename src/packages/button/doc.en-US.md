@@ -125,7 +125,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-button-border-radius | Button rounded corner settings | `8px` |
+| \--nutui-button-border-radius | Button rounded corner settings | `$button-border-radius` |
 | \--nutui-button-border-width | The border width of the button | `1px` |
 | \--nutui-button-normal-padding | padding value when size normal | `0px 12px` |
 | \--nutui-button-default-height | The height of the button with type default | `32px` |
@@ -138,15 +138,15 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-default-font-size | The font size of the button with type default | `$font-size-s` |
 | \--nutui-button-large-height | The height of the button with size large | `40px` |
 | \--nutui-button-large-font-size | The font size of the button with size large | `$font-size-base` |
-| \--nutui-button-large-border-radius | Rounded corners for buttons with size large | `12px` |
+| \--nutui-button-large-border-radius | Rounded corners for buttons with size large | `$button-large-border-radius` |
 | \--nutui-button-small-padding | Padding for buttons of size small | `0 8px` |
 | \--nutui-button-small-height | The height of the button with size small | `28px` |
 | \--nutui-button-small-font-size | The font size of the button with size small | `$font-size-s` |
-| \--nutui-button-small-border-radius | Rounded corners for buttons with size small | `8px` |
+| \--nutui-button-small-border-radius | Rounded corners for buttons with size small | `$button-small-border-radius` |
 | \--nutui-button-mini-padding | Padding for buttons with size mini | `0 8px` |
 | \--nutui-button-mini-height | size is the height of the mini button | `24px` |
 | \--nutui-button-mini-font-size | The font size of the button with size mini | `$font-size-xs` |
-| \--nutui-button-mini-border-radius | The rounded corners of the button with size mini | `6px` |
+| \--nutui-button-mini-border-radius | The rounded corners of the button with size mini | `$button-mini-border-radius` |
 | \--nutui-button-text-icon-margin | Margin of text with icon button | `4px` |
 
 <Contribution name="Button" />

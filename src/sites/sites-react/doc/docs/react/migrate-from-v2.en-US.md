@@ -283,6 +283,7 @@ If your project uses these components, please read the documentation carefully a
 - Added `height` attribute to control height
 - Added `duration` attribute to control animation duration
 - Added `size` attribute to select from built-in component heights
+
   [//]: # '#### Steps'
   [//]: # '#### Step'
   [//]: # '#### Swiper'

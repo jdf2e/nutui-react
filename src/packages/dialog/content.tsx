@@ -1,8 +1,8 @@
-import React, { FunctionComponent, HTMLAttributes } from 'react'
+import React, { FunctionComponent, HTMLAttributes, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { ContentProps } from './types'
+import { WebContentProps } from '@/types'
 
-export const defaultContentProps: ContentProps = {
+export const defaultContentProps = {
   visible: false,
   title: '',
   header: '',
@@ -13,7 +13,7 @@ export const defaultContentProps: ContentProps = {
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> &
+  Partial<WebContentProps> &
     Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'content'>
 > = (props) => {
   const {
@@ -49,7 +49,7 @@ export const Content: FunctionComponent<
     )
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 

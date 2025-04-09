@@ -1,19 +1,11 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, DialogConfirmProps, DialogReturnProps } from './types'
+import { destroyList, BaseDialog, DialogReturnProps } from '@/types'
 import { render as reactRender, unmount } from '@/utils/render'
 
-type DialogConfirmNativeProps = Partial<DialogConfirmProps>
+type DialogConfirmNativeProps = Partial<BaseDialog>
 function ConfirmDialog(props: DialogConfirmNativeProps) {
   return <Dialog {...props}>{props.content}</Dialog>
-}
-
-// 如果是消息提示型弹出框，那么只有确认按钮
-export const normalizeConfig = (
-  config: DialogConfirmNativeProps
-): DialogConfirmNativeProps => {
-  config.hideCancelButton = config.isNotice
-  return config
 }
 
 const confirm = (
@@ -57,7 +49,6 @@ const confirm = (
 
   // 如果是promise，那么处理loading和加载完成关闭
   dialogConfig.onConfirm = onConfirm
-  dialogConfig = normalizeConfig(dialogConfig)
   dialogConfig.visible = true
   renderFunction(dialogConfig)
 
@@ -91,7 +82,6 @@ const confirm = (
       ...dialogConfig,
       ...newConfig,
     }
-    dialogConfig = normalizeConfig(dialogConfig)
     renderFunction(dialogConfig)
   }
 

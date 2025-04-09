@@ -23,5 +23,5 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
-  "title": "NutUI-React-Demo",
+  "title": "NutUI-React-Demo"
 }

@@ -10,15 +10,14 @@ const Demo8 = () => {
 
   return (
     <Cell style={{ flexWrap: 'wrap' }}>
-      <Button type="primary" style={marginStyle}>
-        Normal
+      <Button size="mini" style={marginStyle} type="primary">
+        Mini
       </Button>
-      <Button style={marginStyle}>Normal</Button>
       <Button size="small" style={marginStyle} type="primary">
         Small
       </Button>
-      <Button size="mini" style={marginStyle} type="primary">
-        Mini
+      <Button type="primary" style={marginStyle}>
+        Normal
       </Button>
       <Button size="large" type="primary" style={marginStyle}>
         Large
