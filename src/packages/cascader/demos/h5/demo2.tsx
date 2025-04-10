@@ -3,30 +3,30 @@ import { Cascader, CascaderOption, Cell } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState(['福建', '福州', '台江区'])
+  const [value, setValue] = useState(['ZheJiang', 'WenZhou', 'OuHai'])
   const [options, setOptions] = useState<CascaderOption[]>([])
   useEffect(() => {
     setTimeout(() => {
       setOptions([
         {
-          value1: '浙江',
+          value1: 'ZheJiang',
           text1: '浙江',
           items: [
             {
-              value1: '杭州',
+              value1: 'HangZhou',
               text1: '杭州',
               disabled: true,
               items: [
-                { value1: '西湖区', text1: '西湖区', disabled: true },
-                { value1: '余杭区', text1: '余杭区' },
+                { value1: 'XiHu', text1: '西湖区', disabled: true },
+                { value1: 'YuHang', text1: '余杭区' },
               ],
             },
             {
-              value1: '温州',
+              value1: 'WenZhou',
               text1: '温州',
               items: [
-                { value1: '鹿城区', text1: '鹿城区' },
-                { value1: '瓯海区', text1: '瓯海区' },
+                { value1: 'LuCheng', text1: '鹿城区' },
+                { value1: 'OuHai', text1: '瓯海区' },
               ],
             },
           ],
