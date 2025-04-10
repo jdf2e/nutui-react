@@ -128,6 +128,26 @@ export const InternalAddress: ForwardRefRenderFunction<
   }
   const renderElevator = () => {
     return (
+      <ElevatorRender
+        visible={innerVisible}
+        closeable
+        title={title || locale.address.selectRegion}
+        left={renderLeftOnCustomSwitch()}
+        defaultValue={defaultValue}
+        closeIcon={closeIcon}
+        options={options}
+        hotList={hotList}
+        format={format}
+        optionKey={optionKey}
+        type={currentType}
+        height={height}
+        onClose={handleClose}
+        onChange={(val: CascaderValue, params?: any) => {
+          onChange?.(val, params)
+        }}
+      />
+    )
+    return (
       <Popup
         visible={innerVisible}
         position="bottom"
