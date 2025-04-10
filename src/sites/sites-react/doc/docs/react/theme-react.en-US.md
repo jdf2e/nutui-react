@@ -23,6 +23,8 @@ We recommend replacing [CSS Vars] (https://developer.mozilla.org/zh-CN/docs/Web/
 
 Create a new 'SCSS' file 'custom_theme.scss' in your local project.
 
+**When customizing themes using SCSS files, you need to set the on-demand import to the SCSS file method. Refer to the description in the automatic on-demand loading configuration in the quick start guide.**
+
 ```scss
 // Dominant tone
 $color-primary: #fa2c19;

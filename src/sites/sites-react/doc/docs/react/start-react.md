@@ -91,7 +91,10 @@ export default defineConfig({
         {
           libName: '@nutui/nutui-react',
           style: (name) => {
+            // 按需引入 css 文件的处理，两种方式择其一
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
+            // 按需引入 scss 文件的处理，两种方式择其一
+            return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`
           },
           replaceOldImport: false,
           camel2DashComponentName: false,
@@ -132,7 +135,7 @@ babel 配置：
       'import',
       {
         libraryName: '@nutui/nutui-react',
-        style: 'css',
+        style: 'css', // 这里是按需引入的 css 文件，如果需要引入 scss 文件，可将 style 设置为 true
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`

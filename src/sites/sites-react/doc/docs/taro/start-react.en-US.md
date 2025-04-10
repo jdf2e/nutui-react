@@ -140,7 +140,7 @@ plugins: [
     'import',
     {
       libraryName: '@nutui/nutui-react-taro',
-      style: 'css',
+      style: 'css', // Here are the CSS files for on-demand import. If you need to import SCSS files, you can set the style to true.
       camel2DashComponentName: false,
       customName: (name, file) => {
         return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`

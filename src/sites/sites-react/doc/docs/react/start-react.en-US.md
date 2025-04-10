@@ -91,7 +91,10 @@ export default defineConfig({
         {
           libName: '@nutui/nutui-react',
           style: (name) => {
+            // Handling on-demand import of CSS files, choose one of the two methods
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
+            // Handling on-demand import of SCSS files, choose one of the two methods
+            return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`
           },
           replaceOldImport: false,
           camel2DashComponentName: false,
@@ -132,7 +135,7 @@ babel config：
       'import',
       {
         libraryName: '@nutui/nutui-react',
-        style: 'css',
+        style: 'css', // Here are the CSS files for on-demand import. If you need to import SCSS files, you can set the style to true.
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
