@@ -1,7 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
 import { CheckDisabled, Checked, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { CheckboxProps as TCheckboxProps, View } from '@tarojs/components'
+import { CheckboxProps as TCheckboxProps, Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -79,31 +79,47 @@ export const Checkbox: FC<
   const renderIcon = () => {
     if (innerDisabled) {
       if (innerIndeterminate) {
-        return <CheckDisabled className={color()} />
+        return (
+          <View className={`${classPrefix}-icon-wrap`}>
+            <CheckDisabled className={color()} />
+          </View>
+        )
       }
       if (innerChecked) {
-        return <Checked className={color()} />
+        return (
+          <View className={`${classPrefix}-icon-wrap`}>
+            <Checked className={color()} />
+          </View>
+        )
       }
-      return <CheckDisabled className={color()} />
+      return (
+        <View className={`${classPrefix}-icon-wrap`}>
+          <CheckDisabled className={color()} />
+        </View>
+      )
     }
     if (!innerChecked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal className={color()} />
+        <View className={`${classPrefix}-icon-wrap`}>
+          <CheckNormal className={color()} />
+        </View>
       )
     }
     if (innerIndeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled className={color()} />
+        <View className={`${classPrefix}-icon-wrap`}>
+          <CheckDisabled className={color()} />
+        </View>
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <View className={`${classPrefix}-icon-wrap`}>
+      <View className={`${classPrefix}-icon-wrap-shadow`}>
         <Checked className={color()} />
       </View>
     )
@@ -129,13 +145,13 @@ export const Checkbox: FC<
   }
   const renderLabel = () => {
     return (
-      <View
+      <Text
         className={classNames(`${classPrefix}-label `, {
           [`${classPrefix}-label-disabled`]: innerDisabled,
         })}
       >
         {children || label}
-      </View>
+      </Text>
     )
   }
 
@@ -178,7 +194,7 @@ export const Checkbox: FC<
 
   const renderCheckboxItem = () => {
     if (ctx?.list) {
-      return <>{renderListItem()}</>
+      return renderListItem()
     }
     if (shape === 'button') {
       return renderButton()
