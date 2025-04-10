@@ -54,12 +54,10 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
   }
 
   const containerStyle = {
-    height: pxCheck(height),
-    width: pxCheck(width),
+    ...(height ? { height: pxCheck(height) } : {}),
+    ...(width ? { width: pxCheck(width) } : {}),
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
-    borderRadius:
-      // eslint-disable-next-line no-nested-ternary
-      radius !== undefined && radius != null ? pxCheck(radius) : '',
+    borderRadius: radius !== undefined && radius != null ? pxCheck(radius) : '',
   }
 
   const imgStyle: any = {
