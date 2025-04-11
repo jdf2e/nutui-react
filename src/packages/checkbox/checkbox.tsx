@@ -108,7 +108,7 @@ export const Checkbox: FunctionComponent<
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
-      <div className={`${classPrefix}-icon-wrap`}>
+      <div className={`${classPrefix}-icon-wrap-shadow`}>
         <Checked className={color()} />
       </div>
     )
