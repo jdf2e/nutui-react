@@ -100,6 +100,7 @@ export const Cascader = forwardRef((props: Partial<TaroCascaderProps>, ref) => {
       const opt = currentOptions?.find((o: CascaderOption) => o.value === val)
       next.push({
         selected: val,
+        selectedText: opt?.text,
         pane: currentOptions,
       })
       pathNodes.current[index] = opt
@@ -270,7 +271,10 @@ export const Cascader = forwardRef((props: Partial<TaroCascaderProps>, ref) => {
           }}
         >
           {levels.map((pane, index) => (
-            <Tabs.TabPane title={pane.selected || locale.select} key={index}>
+            <Tabs.TabPane
+              title={pane.selectedText || locale.select}
+              key={index}
+            >
               <View className={classPane}>
                 {renderCascaderItem(pane, index)}
               </View>
