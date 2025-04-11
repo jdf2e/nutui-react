@@ -159,6 +159,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-header-font-weight | dialog header font weight | `600` |
 | \--nutui-dialog-footer-button-min-width | dialog footer button min width | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `12px` |
+| \--nutui-dialog-footer-cancel-bg | dialog footer cancel button's bg | `transparent` |
 | \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `16px` |
 | \--nutui-dialog-close-width | dialog close the width of the button | `16px` |

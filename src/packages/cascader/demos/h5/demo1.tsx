@@ -13,24 +13,24 @@ const Demo1 = () => {
     setTimeout(() => {
       setOptions([
         {
-          value: '浙江',
+          value: 'ZheJiang',
           text: '浙江',
           children: [
             {
-              value: '杭州',
+              value: 'HangZhou',
               text: '杭州',
               disabled: true,
               children: [
-                { value: '西湖区', text: '西湖区', disabled: true },
-                { value: '余杭区', text: '余杭区' },
+                { value: 'XiHu', text: '西湖区', disabled: true },
+                { value: 'YuHang', text: '余杭区' },
               ],
             },
             {
-              value: '温州',
+              value: 'WenZhou',
               text: '温州',
               children: [
-                { value: '鹿城区', text: '鹿城区' },
-                { value: '瓯海区', text: '瓯海区' },
+                { value: 'LuCheng', text: '鹿城区' },
+                { value: 'OuHai', text: '瓯海区' },
               ],
             },
           ],

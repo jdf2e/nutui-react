@@ -145,7 +145,7 @@ module.exports = {
       'import',
       {
         libraryName: '@nutui/nutui-react-taro',
-        style: 'css',
+        style: 'css', // 这里是按需引入的 css 文件，如果需要引入 scss 文件，可将 style 设置为 true
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`

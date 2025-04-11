@@ -17,7 +17,7 @@ if (projectID) {
 export default defineConfig(async (): Promise<UserConfig> => {
   return {
     mode: 'production',
-    base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '3x'}`,
+    base: `/h5/react/${projectID === 'jmapp' ? 'jdesign-3x' : '3x'}`,
     resolve: {
       alias: [
         {

@@ -17,6 +17,7 @@ const Demo8 = () => {
     Toast.show(`2秒后异步触发 ${value}`)
     await mockRequest()
     setCheckedAsync(value)
+    // setExternalLoading(false)
   }
   return (
     <Cell>

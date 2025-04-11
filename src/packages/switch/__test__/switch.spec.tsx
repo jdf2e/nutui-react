@@ -63,9 +63,13 @@ test('disabled test', async () => {
 })
 
 test('loadingIcon test', async () => {
-  const testFn = vi.fn()
   const { container } = render(
-    <Switch loadingIcon={<Loading1 />} onChange={testFn} />
+    <Switch
+      loadingIcon={<Loading1 />}
+      onChange={() => {
+        throw new Error('Function not implemented.')
+      }}
+    />
   )
   const el: Element | null = container.querySelector('.nut-switch-button')
   if (el) {
