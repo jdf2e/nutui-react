@@ -53,6 +53,12 @@
       padding: 0 12px;
       border-radius: 4px;
       background-color: $color-background-sunken;
+
+      &.active {
+        border: 1px solid $color-primary;
+        background-color: $color-primary-light-pressed;
+        color: $color-primary;
+      }
     }
     &-border {
       margin: 0 2px;

@@ -107,7 +107,6 @@ export const ElevatorRender: FunctionComponent<
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
   const [innerOptions, setInnerOptions] = useState(outerOptions)
-  // const innerOptions = getRefValue(optionsRef)
   const [loading, setLoading] = useState<{ [key: string]: any }>({})
 
   const [value, setValue] = usePropsValue({
@@ -123,10 +122,9 @@ export const ElevatorRender: FunctionComponent<
   const [innerValue, setInnerValue] = useState(value)
 
   const [addressTip, setAddressTip] = useState('选择省份/地区')
-  const [selectedRegion, setSelectedRegion] = useState<AreaInfo[]>([])
 
+  // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
-    console.log('inneroptions changes', innerOptions)
     let currOptions = innerOptions
     if (!isEmpty(format)) {
       currOptions = normalizeListOptions(innerOptions, format)
@@ -134,7 +132,7 @@ export const ElevatorRender: FunctionComponent<
       currOptions = normalizeOptions(innerOptions, optionKey) || []
     }
     return transformData(currOptions)
-  }, [innerOptions, optionKey, format, innerValue])
+  }, [innerOptions, optionKey, format])
 
   const [elevatorOptions, setElevatorOptions] = useState<any>([])
 
@@ -148,28 +146,41 @@ export const ElevatorRender: FunctionComponent<
     const next = []
     let end = false
     let currentOptions = options
+    console.log('levels', innerValue)
     for (const [index, val] of innerValue.entries()) {
-      const opt = currentOptions?.find((o: CascaderOption) => o.value === val)
+      const opt = currentOptions?.flatMap((o: any) => {
+        // console.log(
+        //   'currentOptions',
+        //   o,
+        //   val,
+        //   o.list.find((item: any) => item.name === val)
+        // )
+        const foundItem = o.list.find((item: any) => item.name === val)
+        return foundItem
+      })[0]
+
       next.push({
-        selected: val,
-        pane: currentOptions,
+        name: val,
+        children: currentOptions,
+        levelIndex: index,
+        current: index === tabActiveIndex,
       })
-      pathNodes.current[index] = opt
+      // pathNodes.current[index] = opt
       if (opt?.children) {
         currentOptions = opt.children
       } else {
         end = true
-        break
+        // break
       }
     }
     if (!end) {
       next.push({
-        selected: null,
-        pane: currentOptions,
+        name: null,
+        children: currentOptions,
       })
     }
     return next
-  }, [innerValue, options, innerOptions])
+  }, [innerValue, options, tabActiveIndex])
 
   const [visible, setVisible] = usePropsValue({
     value: outerVisible,
@@ -202,14 +213,7 @@ export const ElevatorRender: FunctionComponent<
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
-  }, [innerValue, innerOptions, outerOptions])
-
-  useEffect(() => {
-    const max = levels.length - 1
-    if (tabActiveIndex > max) {
-      setTabActiveIndex(max)
-    }
-  }, [tabActiveIndex, levels, innerOptions, outerOptions])
+  }, [innerValue])
 
   useEffect(() => {
     const load = async () => {
@@ -239,33 +243,25 @@ export const ElevatorRender: FunctionComponent<
   }, [lazy])
 
   const renderTab = () => {
-    console.log('selectedRegion', levels, selectedRegion)
+    console.log('tabs', levels)
     return (
       <div className={`${classPrefix}-selected`}>
-        {selectedRegion.map((item, index) => (
+        {levels.map((item, index) => (
           <>
             <div
-              className={`${classPrefix}-selected-item`}
+              className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
               key={`-${index}`}
-              onClick={(index) => {
-                onTabChange(item)
-                // props.onTabsChange?.(Number(index))
-                // setTabActiveIndex(Number(index))
+              onClick={() => {
+                console.log('index', Number(index), item.children)
+                props.onTabsChange?.(Number(index))
+                setTabActiveIndex(Number(index))
+                setLevelIndex(index)
+                setElevatorOptions(item.children)
               }}
             >
               {item.name}
-              {/* {levels.map((pane, index) => (
-                <Tabs.TabPane
-                  title={pane.selected || locale.select}
-                  key={index}
-                >
-                  <div className={classPane}>
-                    {renderCascaderItem(pane, index)}
-                  </div>
-                </Tabs.TabPane>
-              ))} */}
             </div>
-            {selectedRegion.length - 1 > index ? (
+            {levels.length - 1 > index ? (
               <div className={`${classPrefix}-selected-border`}>-</div>
             ) : null}
           </>
@@ -289,20 +285,6 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const onTabChange = (item: any) => {
-    console.log('item', item, item.parent)
-  }
-
-  const onElevatorItemClick = (key: string, item: AreaInfo) => {
-    console.log('onitem click', item)
-    setSelectedRegion((pre) => [...pre, item])
-    if (item.children?.length) {
-      setElevatorOptions(item.children)
-    } else {
-      console.log('close popup')
-    }
-  }
-
   const renderArea = () => {
     return (
       <>
@@ -311,7 +293,7 @@ export const ElevatorRender: FunctionComponent<
           className={`${classPrefix}-elevator`}
           list={elevatorOptions}
           onItemClick={(key: string, item: any) =>
-            onElevatorItemClick(key, item)
+            onElevatorItemClick(item, levelIndex)
           }
           height="300px"
         />
@@ -319,33 +301,46 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const chooseItem = async (pane: CascaderOption, levelIndex: number) => {
-    if (pane.disabled) return
-    console.log('chooseItem', pane, levelIndex)
+  const [levelIndex, setLevelIndex] = useState(0)
+
+  const onElevatorItemClick = (elevatorItem: AreaInfo, levelIndex: number) => {
+    console.log('onitem click', elevatorItem, innerValue, levelIndex)
+    if (elevatorItem?.disabled) return
+    const distIndex = levelIndex + 1
+    setLevelIndex(distIndex)
+
+    if (elevatorItem.children?.length) {
+      setElevatorOptions(elevatorItem.children)
+    } else {
+      console.log('close popup')
+    }
+
     const nextValue = innerValue.slice(0, levelIndex)
-    const nextPathNodes = pathNodes.current.slice(0, levelIndex)
-    if (pane.value) {
-      setLoading(!!onLoad && { [levelIndex]: pane.value })
-      nextValue[levelIndex] = pane.value
-      nextPathNodes[levelIndex] = pane
-      pathNodes.current = nextPathNodes
-      props?.onPathChange?.(nextValue, pathNodes.current)
+    console.log('nextvalue', nextValue)
+    // const nextPathNodes = pathNodes.current.slice(0, levelIndex)
+    if (elevatorItem.name) {
+      setLoading(!!onLoad && { [levelIndex]: elevatorItem.name })
+      nextValue[levelIndex] = elevatorItem.name
+      // nextPathNodes[levelIndex] = elevatorItem
+      // pathNodes.current = nextPathNodes
+      // props?.onPathChange?.(nextValue, pathNodes.current)
     }
-    if (onLoad) {
-      // 叶子节点不操作
-      if (!pane.leaf) {
-        const asyncOptions = await onLoad(pane, levelIndex)
-        // 修改 options 触发渲染逻辑
-        if (asyncOptions) pane.children = asyncOptions
-      } else {
-        setVisible(false)
-        setValue(nextValue)
-      }
-    }
-    if (!pane.children && !onLoad) {
+    // if (onLoad) {
+    //   // 叶子节点不操作
+    //   if (!elevatorItem.leaf) {
+    //     const asyncOptions = await onLoad(elevatorItem, levelIndex)
+    //     // 修改 options 触发渲染逻辑
+    //     if (asyncOptions) elevatorItem.children = asyncOptions
+    //   } else {
+    //     setVisible(false)
+    //     setValue(nextValue)
+    //   }
+    // }
+    if (!elevatorItem.children && !onLoad) {
       setVisible(false)
       setValue(nextValue)
     }
+    console.log('330 ', nextValue)
     setInnerValue(nextValue)
     setLoading({})
   }
@@ -353,7 +348,7 @@ export const ElevatorRender: FunctionComponent<
   const renderElevatorList = () => {
     return (
       <>
-        {selectedRegion.length ? renderTab() : null}
+        {levels.length ? renderTab() : null}
         {renderHotArea()}
         {renderArea()}
       </>

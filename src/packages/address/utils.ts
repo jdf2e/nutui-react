@@ -14,7 +14,7 @@ export const transformData = (data: any) => {
         name: item.value,
         wordCode: item.wordCode,
         id: generateId(item.value),
-        children: (item.children && groupByWordCode(item.children)) || {},
+        children: (item.children && groupByWordCode(item.children)) || null,
       })
 
       return acc
@@ -25,7 +25,7 @@ export const transformData = (data: any) => {
     return Object.keys(obj).map((key) => ({
       title: key,
       list: obj[key].map((item: any) => {
-        console.log('item', item)
+        // console.log('item', item)
         if (item.children) {
           item.children = extractTitles(item.children)
         }
