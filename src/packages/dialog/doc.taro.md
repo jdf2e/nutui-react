@@ -139,6 +139,7 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `12px` |
+| \--nutui-dialog-footer-cancel-bg | 取消按钮的背景色 | `transparent` |
 | \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
 | \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `18px` |

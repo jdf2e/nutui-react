@@ -1264,6 +1264,10 @@ $dialog-footer-cancel-margin-right: var(
   --nutui-dialog-footer-cancel-margin-right,
   12px
 ) !default;
+$dialog-footer-cancel-bg: var(
+  --nutui-dialog-footer-cancel-bg,
+  $button-default-background-color
+);
 $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
