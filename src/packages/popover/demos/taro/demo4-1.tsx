@@ -6,32 +6,37 @@ import {
   Picker,
   Toast,
   PickerOnChangeCallbackParameter,
+  FullPosition,
 } from '@nutui/nutui-react-taro'
 import { Tips, Close } from '@nutui/icons-react-taro'
 
-const Demo4 = () => {
+const Demo = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
-  const [curPostion, setCurPostion] = useState('')
+  const [curPostion, setCurPostion] = useState<FullPosition>('top')
   const [showToast, SetShowToast] = useState(false)
 
   const columns = [
     [
       { label: 'top', value: 'top' },
-      { label: 'top-start', value: 'top-start' },
-      { label: 'top-end', value: 'top-end' },
+      { label: 'top-left', value: 'top-left' },
+      { label: 'top-right', value: 'top-right' },
       { label: 'right', value: 'right' },
+      { label: 'right-top', value: 'right-top' },
+      { label: 'right-bottom', value: 'right-bottom' },
       { label: 'bottom', value: 'bottom' },
-      { label: 'bottom-start', value: 'bottom-start' },
-      { label: 'bottom-end', value: 'bottom-end' },
+      { label: 'bottom-left', value: 'bottom-left' },
+      { label: 'bottom-right', value: 'bottom-right' },
       { label: 'left', value: 'left' },
+      { label: 'left-top', value: 'left-top' },
+      { label: 'left-bottom', value: 'left-bottom' },
     ],
   ]
   const positionList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
       icon: <Tips color="rgba(255, 255,255, 1)" />,
       action: {
         icon: <Close color="rgba(255, 255,255, 1)" />,
@@ -60,7 +65,6 @@ const Demo4 = () => {
         visible={showPicker}
         options={columns}
         duration="500"
-        title=""
         onConfirm={(list) => {
           let description = ''
           list.forEach((option: any) => {
@@ -70,7 +74,7 @@ const Demo4 = () => {
         }}
         onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
           if (selectedOptions[0]?.value) {
-            setCurPostion(selectedOptions[0].value as string)
+            setCurPostion(selectedOptions[0].value as FullPosition)
           }
         }}
         onClose={() => {
@@ -83,8 +87,8 @@ const Demo4 = () => {
         </View>
       </Picker>
       <Popover
-        className="custom-color"
         visible={customPositon}
+        theme="dark"
         targetId="pickerTarget2"
         list={positionList}
         location={curPostion}
@@ -100,4 +104,4 @@ const Demo4 = () => {
   )
 }
 
-export default Demo4
+export default Demo

@@ -1,24 +1,14 @@
 import React, { useState } from 'react'
 import { Popover, Button } from '@nutui/nutui-react-taro'
-import { Home, Cart, Location } from '@nutui/icons-react-taro'
+import { Home } from '@nutui/icons-react-taro'
 
 const Demo5 = () => {
   const [customTarget, setCustomTarget] = useState(false)
   const iconItemList = [
     {
       key: 'key1',
-      name: 'option1',
-      icon: <Home color="rgba(250, 44, 25, 1)" />,
-    },
-    {
-      key: 'key2',
-      name: 'option2',
-      icon: <Cart />,
-    },
-    {
-      key: 'key3',
-      name: 'option3',
-      icon: <Location />,
+      name: '主要文案内容',
+      icon: <Home />,
     },
   ]
 
@@ -29,19 +19,15 @@ const Demo5 = () => {
     <>
       <Popover
         visible={customTarget}
+        theme="dark"
         targetId="popid"
         list={iconItemList}
-        location="top-start"
+        location="top-left"
         onClick={() => {
           setCustomTarget(false)
         }}
       />
-      <Button
-        type="primary"
-        shape="square"
-        id="popid"
-        onClick={clickCustomHandle}
-      >
+      <Button type="primary" id="popid" onClick={clickCustomHandle}>
         自定义目标元素
       </Button>
     </>

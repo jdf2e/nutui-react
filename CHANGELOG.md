@@ -1,3 +1,20 @@
+# v3.0.7
+
+`2025-04-03`
+
+- :sparkles: feat(jdesign): 修订变量名 (#3127)
+- :sparkles: feat(collapse): 适配鸿蒙 (#3139)
+- :bug: fix(tabs): 兼容16的处理 (#3150)
+- :bug: fix(dialog)：修复函数式调用时 hidecancel 不生效问题 (#3145)
+- :bug: fix(button): 样式变量无法生效问题修复 (#3142)
+- :bug: fix(Popup): 调整最小高度设定为 26% (#3144)
+- :bug: fix: popover 无法关闭的问题,删除无用代码和无用的样式变量 (#3129)
+- :bug: fix: contribution img failed to display (#3141)
+- :bug: fix(switch): 简化props使用 (#3132)
+- :bug: fix: tabbar config json (#3134)
+- 🪵 refactor(dialog): 抽离types到标准spec下，去掉web h5 wrap层 (#3147)
+- 🏡 chore: 修复正式环境的 publicPath (#3137)
+
 # v3.0.6
 
 `2025-03-28`

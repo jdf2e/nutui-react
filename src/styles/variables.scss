@@ -1631,21 +1631,12 @@ $badge-outline-border: var(
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, $radius-xs) !default;
-$popover-border-color: var(--nutui-popover-border-color, #ffffff) !default;
 $popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   #ffffff
 ) !default;
 $popover-text-color: var(--nutui-popover-text-color, $color-mask) !default;
-$popover-hover-background-color: var(
-  --nutui-popover-hover-background-color,
-  #fff
-) !default;
-$popover-hover-text-color: var(
-  --nutui-popover-hover-text-color,
-  #1a1a1a
-) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled
@@ -1654,11 +1645,8 @@ $popover-divider-color: var(
   --nutui-popover-divider-color,
   $color-border
 ) !default;
-$popover-menu-item-padding: var(
-  --nutui-popover-menu-item-padding,
-  8px
-) !default;
-$popover-menu-item-width: var(--nutui-popover-menu-item-width, 160px) !default;
+$popover-padding: var(--nutui-popover-padding, 8px) !default;
+$popover-item-width: var(--nutui-popover-item-width, 160px) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
@@ -2201,6 +2189,7 @@ $navbar-title-font-color: var(
   --nutui-navbar-title-font-color,
   $color-title
 ) !default;
+
 // sidebar（✅）
 $sidebar-background-color: var(
   --nutui-sidebar-background-color,

@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Popover, Button } from '@nutui/nutui-react-taro'
-import {
-  Home,
-  Cart,
-  Location,
-  Service,
-  Notice,
-  Category,
-} from '@nutui/icons-react-taro'
+import { Location, Service, Notice } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
-  const [customized, setCustomized] = useState(false)
-  const selfContent = [
+  const [visible, setVisible] = useState(false)
+  const list = [
     {
       key: 'key1',
       name: <Service />,
@@ -28,77 +21,50 @@ const Demo3 = () => {
       name: <Location />,
       description: 'option3',
     },
-    {
-      key: 'key4',
-      name: <Category />,
-      description: 'option4',
-    },
-    {
-      key: 'key5',
-      name: <Cart />,
-      description: 'option5',
-    },
-    {
-      key: 'key6',
-      name: <Home />,
-      description: 'option6',
-    },
   ]
 
-  const selfContentStyle = {
-    width: '195px',
+  const contStyle = {
+    width: '155px',
     display: 'flex',
-    flexWrap: 'wrap',
   } as any
-  const selfContentItem = {
+  const itemStyle = {
     marginTop: '10px',
-    marginBottom: '10px',
     display: 'flex',
-    justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    flex: 1,
   } as any
-  const selfContentDesc = {
-    marginTop: '5px',
-    width: '60px',
-    fontSize: '10px',
+  const descStyle = {
+    width: '50px',
     textAlign: 'center',
   } as any
 
   return (
     <>
       <Popover
-        visible={customized}
-        onClick={() => {
-          customized ? setCustomized(false) : setCustomized(true)
+        style={{
+          '--nutui-popover-text-color': '#ff0f23',
+          '--nutui-popover-content-background-color': '#FFEBF1',
         }}
-        location="top-start"
-        className="customClass"
+        visible={visible}
+        onClick={() => {
+          visible ? setVisible(false) : setVisible(true)
+        }}
+        location="right"
       >
-        <Button type="primary" shape="square">
-          自定义内容
-        </Button>
-        {customized ? (
-          <View className="self-content" style={selfContentStyle}>
-            {selfContent.map((item: any) => {
+        <Button type="primary">自定义内容+颜色</Button>
+        {visible && (
+          <View style={contStyle}>
+            {list.map((item: any) => {
               return (
-                <View
-                  className="self-content-item"
-                  key={item.key}
-                  style={selfContentItem}
-                >
-                  {item.name ? item.name : null}
-                  <View
-                    className="self-content-description"
-                    style={selfContentDesc}
-                  >
-                    {item.description}
-                  </View>
+                <View key={item.key} style={itemStyle}>
+                  {item.name}
+                  <View style={descStyle}>{item.description}</View>
                 </View>
               )
             })}
           </View>
-        ) : null}
+        )}
       </Popover>
     </>
   )

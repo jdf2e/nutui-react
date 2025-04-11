@@ -13,7 +13,7 @@ export const getTaroRectById = (id: string) => {
       query
         .select(`#${id}`)
         .boundingClientRect()
-        .exec(function (rect: any) {
+        .exec((rect: any) => {
           if (rect[0]) {
             resolve(rect[0])
           } else {

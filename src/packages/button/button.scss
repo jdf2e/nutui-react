@@ -101,22 +101,6 @@
 
   &-round {
     border-radius: $button-border-radius;
-
-    &-xlarge {
-      border-radius: $button-xlarge-border-radius;
-    }
-
-    &-large {
-      border-radius: $button-large-border-radius;
-    }
-
-    &-small {
-      border-radius: $button-small-border-radius;
-    }
-
-    &-mini {
-      border-radius: $button-mini-border-radius;
-    }
   }
 
   &-default {
@@ -155,7 +139,7 @@
     height: $button-xlarge-height;
     padding: $button-xlarge-padding;
     font-size: $button-xlarge-font-size;
-    border-radius: $radius-base;
+    border-radius: $button-xlarge-border-radius;
 
     .nut-button-text {
       margin-left: $button-xlarge-text-icon-margin;
@@ -178,7 +162,7 @@
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
-    border-radius: $radius-s;
+    border-radius: $button-large-border-radius;
 
     .nut-button-text {
       margin-left: $button-xlarge-text-icon-margin;
@@ -202,7 +186,7 @@
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
-    border-radius: $radius-xs;
+    border-radius: $button-small-border-radius;
 
     .nut-icon {
       font-size: $button-small-font-size;
@@ -219,7 +203,7 @@
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
-    border-radius: $radius-xs;
+    border-radius: $button-mini-border-radius;
 
     .nut-icon {
       font-size: $button-mini-font-size;

@@ -1,9 +1,9 @@
 import { Component } from 'react'
-import './app.scss'
-
 import('@/sites/assets/styles/reset.scss')
 import('@/packages/nutui.react.scss.taro')
 import('@nutui/touch-emulator')
+
+import './app.scss'
 
 // console.log(NutUI)
 class App extends Component {

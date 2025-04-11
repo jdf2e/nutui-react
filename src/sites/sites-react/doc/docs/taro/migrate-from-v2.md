@@ -278,7 +278,12 @@ plugins: [
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-[//]: # '#### Popover'
+
+#### Popover
+
+- 废弃的样式变量，这些变量存在于文档，已删除：`--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
+- 变更样式变量 `--nutui-popover-menu-item-padding` 变更为 `--nutui-popover-padding`，`--nutui-popover-menu-item-width` 变更为 `--nutui-popover-item-width`
+- 修订 `location` 的数据类型，使用统一位置类型 `FullPosition`
 
 #### Price
 
@@ -296,6 +301,7 @@ plugins: [
 - 新增 `height` 属性，控制高度
 - 新增 `duration` 属性，控制动画时长
 - 新增 `size` 属性，通过 `size` 属性可选择使用组件内置的高度
+
   [//]: # '#### Steps'
   [//]: # '#### Step'
   [//]: # '#### Swiper'

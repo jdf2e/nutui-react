@@ -6,23 +6,16 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import Taro, { createSelectorQuery } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { nextTick } from '@tarojs/taro'
+import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
-import { getRect } from '@/hooks/use-client-rect'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPopoverProps, PopoverList } from '@/types'
-
-export interface RootPosition {
-  width: number
-  height: number
-  left: number
-  top: number
-  right: number
-}
+import { TaroPopoverProps, PopoverList, WrapperPosition } from '@/types'
+import pxTransform from '@/utils/px-transform'
+import useUuid from '@/hooks/use-uuid'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -33,7 +26,6 @@ const defaultProps = {
   offset: [0, 8],
   arrowOffset: 0,
   targetId: '',
-  className: '',
   showArrow: true,
   closeOnOutsideClick: true,
   closeOnActionClick: true,
@@ -77,77 +69,54 @@ export const Popover: FunctionComponent<
   const popoverRef = useRef<HTMLDivElement>(null)
   const popoverContentRef = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
-  const [elWidth, setElWidth] = useState(0)
-  const [elHeight, setElHeight] = useState(0)
-  const [rootPosition, setRootPosition] = useState<RootPosition>()
+  const [popWidth, setPopWidth] = useState(0)
+  const [popHeight, setPopHeight] = useState(0)
+  const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   useEffect(() => {
     setShowPopup(visible)
     if (visible) {
-      setTimeout(() => {
-        getContentWidth()
-      }, 0)
+      getWrapperPosition()
     }
   }, [visible])
 
-  const getContentWidth = async () => {
-    let rect
+  const uid = useUuid()
+  const popoverId = `popover-${uid}`
 
-    createSelectorQuery()
-      .selectViewport()
-      .scrollOffset(async (res) => {
-        const distance = res.scrollTop
-
-        if (targetId) {
-          if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-            rect = getRect(document.querySelector(`#${targetId}`) as Element)
-          } else {
-            rect = await getRectTaro(targetId)
-          }
-        } else {
-          rect = await getRectByTaro(popoverRef.current)
-        }
-
-        setRootPosition({
-          width: rect.width,
-          height: rect.height,
-          left: rtl ? rect.right : rect.left,
-          top: rect.top + distance,
-          right: rtl ? rect.left : rect.right,
-        })
+  const getWrapperPosition = async () => {
+    nextTick(async () => {
+      const rect = targetId
+        ? await getRectByTaro(document.querySelector(`#${targetId}`), targetId)
+        : await getRectByTaro(popoverRef.current, popoverId)
+      const { width, height, right, left, top } = rect
+      setWrapperPosition({
+        width,
+        height,
+        left: rtl ? right : left,
+        top,
+        right: rtl ? left : right,
       })
-      .exec()
-    setTimeout(() => {
       getPopoverContentW()
-    }, 300)
-  }
-
-  const getRectTaro = async (targetId: any): Promise<any> => {
-    return new Promise((resolve) => {
-      createSelectorQuery()
-        .select(`#${targetId}`)
-        .boundingClientRect()
-        .exec((res: any) => {
-          resolve(res[0])
-        })
     })
   }
 
   const getPopoverContentW = async () => {
-    const rectContent = await getRectByTaro(popoverContentRef.current)
-    setElWidth(rectContent.width)
-    setElHeight(rectContent.height)
+    nextTick(async () => {
+      const rectContent = await getRectByTaro(popoverContentRef.current)
+      setPopWidth(rectContent.width)
+      setPopHeight(rectContent.height)
+    })
   }
 
   const clickAway = () => {
     if (closeOnOutsideClick) {
-      onClick && onClick()
-      onClose && onClose()
+      onClick?.()
+      onClose?.()
     }
   }
 
   const classes = classNames(
+    classPrefix,
     {
-      [`${classPrefix}`]: true,
       [`${classPrefix}-${theme}`]: theme === 'dark',
     },
     className
@@ -155,16 +124,17 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    return `${prefixCls} ${prefixCls}-${location.split('-')[0]} ${prefixCls}-${location}`
+    const direction = location.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
-  const getRootPosition = () => {
+  const getPopoverPosition = () => {
     const styles: CSSProperties = {}
-    if (!rootPosition) {
+    if (!wrapperPosition) {
       styles.visibility = 'hidden'
       return styles
     }
-    const { width, height, left, top, right } = rootPosition
+    const { width, height, left, top, right } = wrapperPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
     let cross = 0
@@ -177,37 +147,40 @@ export const Popover: FunctionComponent<
     if (width) {
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
-        const h = direction === 'bottom' ? height + cross : -(elHeight + cross)
-        styles.top = `${top + h}px`
+        const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
+        styles.top = pxTransform(top + h)
 
         if (!skew) {
-          styles[dir] =
-            `${-(elWidth - width) / 2 + rootPosition[dir] + parallel}px`
+          styles[dir] = pxTransform(
+            -(popWidth - width) / 2 + wrapperPosition[dir] + parallel
+          )
         }
-        if (skew === 'start') {
-          styles.left = `${left + parallel}px`
+        if (skew === 'left') {
+          styles.left = pxTransform(left + parallel)
         }
-        if (skew === 'end') {
-          styles.left = `${right + parallel}px`
+        if (skew === 'right') {
+          styles.left = pxTransform(right + parallel)
         }
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
-          direction === 'left' ? -(elWidth + cross) : width + cross
-        styles.left = `${left + contentW}px`
+          direction === 'left' ? -(popWidth + cross) : width + cross
+        styles.left = pxTransform(left + contentW)
         if (!skew) {
-          styles.top = `${top - elHeight / 2 + height / 2 - 4 + parallel}px`
+          styles.top = pxTransform(
+            top - popHeight / 2 + height / 2 - 4 + parallel
+          )
         }
-        if (skew === 'start') {
-          styles.top = `${top + parallel}px`
+        if (skew === 'top') {
+          styles.top = pxTransform(top + parallel)
         }
-        if (skew === 'end') {
-          styles.top = `${top + height + parallel}px`
+        if (skew === 'bottom') {
+          styles.top = pxTransform(top + height + parallel)
         }
       }
     }
 
-    styles.visibility = elWidth === 0 ? 'hidden' : 'initial'
+    styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
     return styles
   }
 
@@ -224,10 +197,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'left') {
           styles[dir] = `${base + arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'right') {
           styles[dir2] = `${base - arrowOffset}px`
         }
       }
@@ -236,10 +209,10 @@ export const Popover: FunctionComponent<
         if (!skew) {
           styles.top = `calc(50% - ${arrowOffset}px)`
         }
-        if (skew === 'start') {
+        if (skew === 'top') {
           styles.top = `${base - arrowOffset}px`
         }
-        if (skew === 'end') {
+        if (skew === 'bottom') {
           styles.bottom = `${base + arrowOffset}px`
         }
       }
@@ -262,6 +235,7 @@ export const Popover: FunctionComponent<
         <View
           className="nut-popover-wrapper"
           ref={popoverRef}
+          id={popoverId}
           onClick={() => {
             props?.onClick?.()
             if (!visible) {
@@ -275,7 +249,7 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
-      <View className={classes} style={getRootPosition()}>
+      <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
           position="none"
@@ -289,14 +263,14 @@ export const Popover: FunctionComponent<
                 <ArrowRadius width={8} height={4} />
               </View>
             )}
-            {Array.isArray(children) ? children[1] : ''}
+            {Array.isArray(children) ? children[1] : null}
             {list.map((item, index) => {
               return (
                 <View
                   className={classNames(
                     {
-                      'nut-popover-menu-item': true,
-                      'nut-popover-menu-disabled': item.disabled,
+                      'nut-popover-item': true,
+                      'nut-popover-item-disabled': item.disabled,
                     },
                     item.className
                   )}
@@ -304,16 +278,12 @@ export const Popover: FunctionComponent<
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon && (
-                    <View className="nut-popover-menu-item-icon">
-                      {item.icon}
-                    </View>
+                    <View className="nut-popover-item-icon">{item.icon}</View>
                   )}
-                  <View className="nut-popover-menu-item-name">
-                    {item.name}
-                  </View>
-                  {item.action && item.action.icon && (
+                  <Text className="nut-popover-item-name">{item.name}</Text>
+                  {item.action?.icon && (
                     <View
-                      className="nut-popover-menu-item-action-icon"
+                      className="nut-popover-item-action-icon"
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}

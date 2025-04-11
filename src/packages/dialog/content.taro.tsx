@@ -1,9 +1,9 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
-import { ContentProps } from './types.taro'
+import { TaroContentProps } from '@/types'
 
-export const defaultContentProps: ContentProps = {
+export const defaultContentProps = {
   visible: false,
   title: '',
   header: '',
@@ -14,7 +14,7 @@ export const defaultContentProps: ContentProps = {
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> &
+  Partial<TaroContentProps> &
     Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const {
@@ -25,6 +25,8 @@ export const Content: FunctionComponent<
     close,
     footerDirection,
     children,
+    style,
+    className,
     onClick,
   } = { ...defaultContentProps, ...props }
 
@@ -49,13 +51,13 @@ export const Content: FunctionComponent<
   }
 
   const handleClick = (e: ITouchEvent) => {
-    onClick && onClick(e)
+    onClick(e)
   }
 
   return (
     <View
-      className={classNames(`${classPrefix}-outer`, props.className)}
-      style={props.style}
+      className={classNames(`${classPrefix}-outer`, className)}
+      style={style}
       onClick={(e: ITouchEvent) => handleClick(e)}
     >
       {close}

@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button } from '@nutui/nutui-react'
+import { Button, Cell } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   return (
-    <Button block type="primary">
-      Block Button
-    </Button>
+    <Cell style={{ flexWrap: 'wrap' }}>
+      <Button block type="primary">
+        Block Button
+      </Button>
+    </Cell>
   )
 }
 export default Demo8
