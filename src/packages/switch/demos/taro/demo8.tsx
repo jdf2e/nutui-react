@@ -5,7 +5,7 @@ const Demo8 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   const [value, setValue] = useState(false)
   const [showToast, setShowToast] = useState(false)
-  const [externalChanging, setExternalChanging] = useState(false)
+  const [externalLoading, setExternalLoading] = useState(false)
   const mockRequest = (): Promise<void> => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -19,15 +19,15 @@ const Demo8 = () => {
     setShowToast(true)
     await mockRequest()
     setCheckedAsync(value)
-    // setExternalChanging(false)
+    // setExternalLoading(false)
   }
   return (
     <>
       <Cell>
         <Switch
-          changing={externalChanging}
-          onChangingChange={async (changing: boolean) => {
-            setExternalChanging(changing)
+          loading={externalLoading}
+          onLoadingChange={async (loading: boolean) => {
+            setExternalLoading(loading)
           }}
           checked={checkedAsync}
           onChange={(value) => onChangeAsync(value)}

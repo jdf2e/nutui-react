@@ -13,8 +13,8 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
-  changing: undefined,
-  onChangingChange: (changing: boolean) => {},
+  loading: undefined,
+  onLoadingChange: (loading: boolean) => {},
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -27,8 +27,8 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     className,
     style,
     onChange,
-    changing: propChanging,
-    onChangingChange,
+    loading: propLoading,
+    onLoadingChange,
     ...rest
   } = {
     ...defaultProps,
@@ -43,19 +43,19 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
-  const [internalChanging, setInternalChanging] = useState(false)
-  const changing = propChanging !== undefined ? propChanging : internalChanging
+  const [internalLoading, setInternalLoading] = useState(false)
+  const loading = propLoading !== undefined ? propLoading : internalLoading
 
-  const setChanging = (val: boolean) => {
-    if (propChanging !== undefined) {
-      onChangingChange(val)
+  const setLoading = (val: boolean) => {
+    if (propLoading !== undefined) {
+      onLoadingChange(val)
     } else {
-      setInternalChanging(val)
+      setInternalLoading(val)
     }
   }
 
   useEffect(() => {
-    changing && setChanging(false)
+    loading && setLoading(false)
   }, [value])
 
   const classes = () => {
@@ -71,9 +71,9 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   }
 
   const onClick = () => {
-    if (disabled || changing) return
+    if (disabled || loading) return
     if (onChange) {
-      loadingIcon && setChanging(true)
+      loadingIcon && setLoading(true)
       onChange(!value)
     }
     setValue(!value)
@@ -94,7 +94,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing && loadingIcon ? (
+        {loading && loadingIcon ? (
           <>{loadingIcon}</>
         ) : (
           <>

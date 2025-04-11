@@ -86,8 +86,8 @@ import { Switch } from '@nutui/nutui-react'
 | activeText | 打開時文字描述 | `ReactNode` | `-` |
 | inactiveText | 關閉時文字描述 | `ReactNode` | `-` |
 | loadingIcon | 控制加載狀態的圖標，當傳入空值時禁用 loading 狀態 | `ReactNode` | `<Loading1 />` |
-| changing | loading 態，受控 | `boolean` | `-` |
-| onChangingChange | 切換 loading 態時觸發 | `onChangingChange:(value: boolean)` | `-` |
+| loading | loading 態，受控 | `boolean` | `-` |
+| onLoadingChange | 切換 loading 態時觸發 | `onLoadingChange:(value: boolean)` | `-` |
 | onChange | 切換開關時觸發 | `onChange:(value: boolean)` | `-` |
 
 ## 主題定製

@@ -15,7 +15,7 @@ const SwitchDemo = () => {
       basic: '非受控',
       disabled: '禁用状态',
       asyncControl: '受控',
-      changingControl: 'loading 态受控',
+      loadingControl: 'loading 态受控',
       customColor: '自定义颜色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -25,7 +25,7 @@ const SwitchDemo = () => {
       basic: '非受控',
       disabled: '禁用狀態',
       asyncControl: '受控',
-      changingControl: 'loading 態受控',
+      loadingControl: 'loading 態受控',
       customColor: '自定義顏色',
       supportText: '支持文字',
       supportIcon: '支持Icon',
@@ -35,7 +35,7 @@ const SwitchDemo = () => {
       basic: 'Uncontrolled',
       disabled: 'Disabled',
       asyncControl: 'controlled',
-      changingControl: 'Controlled with loading',
+      loadingControl: 'Controlled with loading',
       customColor: 'Custom Color',
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
@@ -49,7 +49,7 @@ const SwitchDemo = () => {
         <Demo1 />
         <h2>{translated.asyncControl}</h2>
         <Demo2 />
-        <h2>{translated.changingControl}</h2>
+        <h2>{translated.loadingControl}</h2>
         <Demo8 />
         <h2>{translated.disabled}</h2>
         <Demo3 />

@@ -86,8 +86,8 @@ import { Switch } from '@nutui/nutui-react'
 | activeText | Text description when opening | `ReactNode` | `-` |
 | inactiveText | Text description when closed | `ReactNode` | `-` |
 | loadingIcon | Control the loading state icon, disable the loading state when a null | `ReactNode` | `<Loading1 />` |
-| changing | loading state, controlled | `boolean` | `-` |
-| onChangingChange | Triggered when switching loading | `onChangingChange:(value: boolean)` | `-` |
+| loading | loading state, controlled | `boolean` | `-` |
+| onLoadingChange | Triggered when switching loading | `onLoadingChange:(value: boolean)` | `-` |
 | onChange | Trigger when switching switches | `onChange:(value: boolean)` | `-` |
 
 ## Theming

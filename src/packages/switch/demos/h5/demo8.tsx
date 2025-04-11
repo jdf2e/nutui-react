@@ -3,7 +3,7 @@ import { Cell, Switch, Toast } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
-  const [externalChanging, setExternalChanging] = useState(false)
+  const [externalLoading, setExternalLoading] = useState(false)
 
   const mockRequest = (): Promise<void> => {
     return new Promise((resolve) => {
@@ -21,9 +21,9 @@ const Demo8 = () => {
   return (
     <Cell>
       <Switch
-        changing={externalChanging}
-        onChangingChange={async (changing: boolean) => {
-          setExternalChanging(changing)
+        loading={externalLoading}
+        onLoadingChange={async (loading: boolean) => {
+          setExternalLoading(loading)
         }}
         checked={checkedAsync}
         onChange={(value) => onChangeAsync(value)}
