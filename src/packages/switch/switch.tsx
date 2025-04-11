@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { Loading1 } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
@@ -12,6 +12,7 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
+  loading: false,
 } as WebSwitchProps
 export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   const {
@@ -21,6 +22,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     activeText,
     inactiveText,
     loadingIcon,
+    loading,
     className,
     style,
     onChange,
@@ -38,12 +40,6 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
-  useEffect(() => {
-    changing && setChanging(false)
-  }, [value])
-
-  const [changing, setChanging] = useState(false)
-
   const classes = () => {
     return classNames([
       classPrefix,
@@ -57,9 +53,8 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   }
 
   const onClick = () => {
-    if (disabled || changing) return
+    if (disabled || loading) return
     if (onChange) {
-      setChanging(true)
       onChange(!value)
     }
     setValue(!value)
@@ -80,7 +75,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing && loadingIcon ? (
+        {loading && loadingIcon ? (
           <>{loadingIcon}</>
         ) : (
           <>

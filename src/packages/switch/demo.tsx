@@ -7,6 +7,7 @@ import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -18,6 +19,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '触发了 onChange 事件，开关状态：',
+      loading: '标识开关操作仍在执行中',
     },
     'zh-TW': {
       basic: '非受控',
@@ -27,6 +29,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '觸發了 onChange 事件，開關狀態：',
+      loading: '開關操作仍在進行中',
     },
     'en-US': {
       basic: 'Uncontrolled',
@@ -36,6 +39,7 @@ const SwitchDemo = () => {
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
       eventTip: 'Emit onChange event, current state:',
+      loading: 'Mark a pending state of switch.',
     },
   })
   return (
@@ -55,6 +59,8 @@ const SwitchDemo = () => {
         <Demo6 />
         <h2>{translated.customColor}</h2>
         <Demo7 />
+        <h2>{translated.loading}</h2>
+        <Demo8 />
       </div>
     </>
   )

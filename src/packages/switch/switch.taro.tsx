@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
@@ -14,6 +14,7 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
+  loading: false,
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -23,6 +24,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     activeText,
     inactiveText,
     loadingIcon,
+    loading,
     className,
     style,
     onChange,
@@ -40,12 +42,6 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
-  useEffect(() => {
-    changing && setChanging(false)
-  }, [value])
-
-  const [changing, setChanging] = useState(false)
-
   const classes = () => {
     return classNames([
       classPrefix,
@@ -59,9 +55,8 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   }
 
   const onClick = () => {
-    if (disabled || changing) return
+    if (disabled || loading) return
     if (onChange) {
-      setChanging(true)
       onChange(!value)
     }
     setValue(!value)
@@ -82,7 +77,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing && loadingIcon ? (
+        {loading && loadingIcon ? (
           <>{loadingIcon}</>
         ) : (
           <>

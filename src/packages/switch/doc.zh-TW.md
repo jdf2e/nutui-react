@@ -78,6 +78,7 @@ import { Switch } from '@nutui/nutui-react'
 | activeText | 打開時文字描述 | `ReactNode` | `-` |
 | inactiveText | 關閉時文字描述 | `ReactNode` | `-` |
 | loadingIcon | 受控 loading 態圖標 | `ReactNode` | `<Loading1 />` |
+| loading | 載入中的開關 | `boolean` | `false` |
 | onChange | 切換開關時觸發 | `onChange:(value: boolean, event: Event)` | `-` |
 
 ## 主題定製
