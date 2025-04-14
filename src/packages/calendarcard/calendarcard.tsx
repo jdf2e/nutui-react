@@ -363,7 +363,7 @@ export const CalendarCard = React.forwardRef<
     }
   }
 
-  const monthTitle = locale.calendaritem.monthTitle
+  const monthTitle = locale.calendaritem?.monthTitle
 
   const renderHeader = () => {
     return (
@@ -392,7 +392,7 @@ export const CalendarCard = React.forwardRef<
   }
 
   const [weekHeader] = useState(() => {
-    const weekdays = locale.calendaritem.weekdays.map((day, index) => {
+    const weekdays = locale.calendaritem?.weekdays.map((day, index) => {
       return {
         name: day,
         key: index,

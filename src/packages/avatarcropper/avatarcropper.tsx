@@ -44,7 +44,7 @@ export const AvatarCropper: FunctionComponent<
       {locale.cancel}
     </Button>,
     <Button key="reset">{locale.reset}</Button>,
-    <Button key="rotate">{locale.avatarCropper.rotate}</Button>,
+    <Button key="rotate">{locale.avatarCropper?.rotate}</Button>,
     <Button type="success" key="confirm">
       {locale.confirm}
     </Button>,
@@ -458,7 +458,7 @@ export const AvatarCropper: FunctionComponent<
           accept="image/*"
           className={`${classPrefix}-input`}
           onChange={(e: any) => inputImageChange(e)}
-          aria-label={locale.avatarCropper.selectImage}
+          aria-label={locale.avatarCropper?.selectImage}
         />
         <div className="nut-avatar-cropper-edit-text">{editText}</div>
       </div>

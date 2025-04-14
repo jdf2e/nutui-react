@@ -7,7 +7,7 @@ import {
 } from './configprovider'
 
 export type {
-  WebConfigProviderProps,
+  WebConfigProviderProps as ConfigProviderProps,
   PageDirection as ConfigProviderDirection,
 } from '@/types'
 export type { NutCSSVariables } from './types'

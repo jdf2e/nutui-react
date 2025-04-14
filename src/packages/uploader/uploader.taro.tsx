@@ -184,7 +184,7 @@ const InternalUploader: ForwardRefRenderFunction<
           return {
             ...file,
             status: 'uploading',
-            message: locale.uploader.uploading,
+            message: locale.uploader?.uploading,
           }
         }
         return file
@@ -198,7 +198,7 @@ const InternalUploader: ForwardRefRenderFunction<
           const list = fileListRef.current.map((item) => {
             if (item.uid === currentTask.uid) {
               item.status = 'success'
-              item.message = locale.uploader.success
+              item.message = locale.uploader?.success
               item.url = result.url
             }
             return item
@@ -208,7 +208,7 @@ const InternalUploader: ForwardRefRenderFunction<
           const list = fileListRef.current.map((item) => {
             if (item.uid === currentTask.uid) {
               item.status = 'error'
-              item.message = locale.uploader.error
+              item.message = locale.uploader?.error
             }
             return item
           })
@@ -240,8 +240,8 @@ const InternalUploader: ForwardRefRenderFunction<
         status: autoUpload ? 'uploading' : 'ready',
         file,
         message: autoUpload
-          ? locale.uploader.uploading
-          : locale.uploader.waitingUpload,
+          ? locale.uploader?.uploading
+          : locale.uploader?.waitingUpload,
         name: getEnv() === 'WEB' ? file.originalFileObj?.name : filepath,
         path: filepath,
         type: getEnv() === 'WEB' ? file.originalFileObj?.type : fileType,
@@ -333,7 +333,7 @@ const InternalUploader: ForwardRefRenderFunction<
         <View className="nut-uploader-slot">
           <>
             <Button size="small" type="primary">
-              {locale.uploader.list}
+              {locale.uploader?.list}
             </Button>
             {Number(maxCount) > fileList.length && (
               <Button className="nut-uploader-input" onClick={_chooseImage} />

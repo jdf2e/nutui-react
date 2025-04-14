@@ -128,13 +128,13 @@ export const CalendarItem = React.forwardRef<
     onPageChange,
   } = { ...defaultProps, ...props }
 
-  const weekdays = locale.calendaritem.weekdays
+  const weekdays = locale.calendaritem?.weekdays
   const weeks = [
     ...weekdays.slice(firstDayOfWeek, 7),
     ...weekdays.slice(0, firstDayOfWeek),
   ]
 
-  const monthTitle = locale.calendaritem.monthTitle
+  const monthTitle = locale.calendaritem?.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
   const [monthsNum, setMonthsNum] = useState<number>(0)
@@ -766,7 +766,7 @@ export const CalendarItem = React.forwardRef<
       <div className={headerClasses}>
         {showTitle && (
           <div className={`${classPrefix}-title`}>
-            {title || locale.calendaritem.title}
+            {title || locale.calendaritem?.title}
           </div>
         )}
         {renderHeaderButtons && (
@@ -842,7 +842,7 @@ export const CalendarItem = React.forwardRef<
                             showToday &&
                             isCurrDay(month, day.day) && (
                               <div className={`${classPrefix}-day-info-curr`}>
-                                {locale.calendaritem.today}
+                                {locale.calendaritem?.today}
                               </div>
                             )}
                           {isStartTip(day, month) && (
@@ -853,12 +853,12 @@ export const CalendarItem = React.forwardRef<
                                   : ''
                               }`}
                             >
-                              {startText || locale.calendaritem.start}
+                              {startText || locale.calendaritem?.start}
                             </div>
                           )}
                           {isEndTip(day, month) && (
                             <div className={`${classPrefix}-day-info`}>
-                              {endText || locale.calendaritem.end}
+                              {endText || locale.calendaritem?.end}
                             </div>
                           )}
                         </div>

@@ -114,7 +114,7 @@ export const TimeSelect: FunctionComponent<Partial<TaroTimeSelectProps>> = (
       round
       visible={visible}
       position="bottom"
-      title={title || locale.timeselect.pickupTime}
+      title={title || locale.timeselect?.pickupTime}
       style={{
         ...style,
       }}

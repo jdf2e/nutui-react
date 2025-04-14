@@ -7,7 +7,7 @@ import {
 } from './configprovider.taro'
 
 export type {
-  TaroConfigProviderProps,
+  TaroConfigProviderProps as ConfigProviderProps,
   PageDirection as ConfigProviderDirection,
 } from '@/types'
 export type { NutCSSVariables } from './types'
