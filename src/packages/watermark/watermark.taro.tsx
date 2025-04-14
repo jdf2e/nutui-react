@@ -130,7 +130,9 @@ export const WaterMark: FunctionComponent<
           setBase64Url(canvas.toDataURL())
         }
       } else {
-        throw new Error(locale.watermark?.errorCanvasTips)
+        throw new Error(
+          locale.watermark?.errorCanvasTips || '无法获取 Canvas 上下文'
+        )
       }
     })
   }

@@ -363,7 +363,9 @@ export const CalendarCard = React.forwardRef<
     }
   }
 
-  const monthTitle = locale.calendaritem?.monthTitle
+  const formatTitle = (year: number, month: number) =>
+    `${year}-${Number(month) < 10 ? `0${Number(month)}` : month}`
+  const monthTitle = locale.calendaritem?.monthTitle || formatTitle
 
   const renderHeader = () => {
     return (

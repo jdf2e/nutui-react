@@ -134,7 +134,9 @@ export const CalendarItem = React.forwardRef<
     ...weekdays.slice(0, firstDayOfWeek),
   ]
 
-  const monthTitle = locale.calendaritem?.monthTitle
+  const formatTitle = (year: number, month: number) =>
+    `${year}-${Number(month) < 10 ? `0${Number(month)}` : month}`
+  const monthTitle = locale.calendaritem?.monthTitle || formatTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
   const [monthsNum, setMonthsNum] = useState<number>(0)
@@ -840,9 +842,10 @@ export const CalendarItem = React.forwardRef<
                             !isEndTip(day, month) &&
                             !renderDayBottom &&
                             showToday &&
-                            isCurrDay(month, day.day) && (
+                            isCurrDay(month, day.day) &&
+                            locale.calendaritem?.today && (
                               <div className={`${classPrefix}-day-info-curr`}>
-                                {locale.calendaritem?.today}
+                                {locale.calendaritem.today}
                               </div>
                             )}
                           {isStartTip(day, month) && (

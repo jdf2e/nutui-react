@@ -3,37 +3,37 @@ export interface BaseLang {
 }
 export type PageDirection = 'ltr' | 'rtl' | undefined
 
-export interface Locales extends Partial<BaseLang> {
-  save?: string
-  confirm?: string
-  cancel?: string
-  done?: string
-  noData?: string
-  placeholder?: string
-  select?: string
-  edit?: string
-  reset?: string
-  video?: {
+export interface Locales extends BaseLang {
+  save: string
+  confirm: string
+  cancel: string
+  done: string
+  noData: string
+  placeholder: string
+  select: string
+  edit: string
+  reset: string
+  video: {
     errorTip: string
     clickRetry: string
   }
-  fixednav?: {
+  fixednav: {
     activeText: string
     inactiveText: string
   }
-  infiniteloading?: {
+  infiniteloading: {
     pullRefreshText: string
     loadText: string
     loadMoreText: string
   }
-  pagination?: {
+  pagination: {
     prev: string
     next: string
   }
-  range?: {
+  range: {
     rangeText: string
   }
-  calendaritem?: {
+  calendaritem: {
     weekdays: Array<string>
     end: string
     start: string
@@ -45,12 +45,12 @@ export interface Locales extends Partial<BaseLang> {
     loadPreviousMonth: string
     noEarlierMonth: string
   }
-  shortpassword?: {
+  shortpassword: {
     title: string
     description: string
     tips: string
   }
-  uploader?: {
+  uploader: {
     list: string
     ready: string
     readyUpload: string
@@ -60,48 +60,48 @@ export interface Locales extends Partial<BaseLang> {
     error: string
     deleteWord: string
   }
-  countdown?: {
+  countdown: {
     day: string
     hour: string
     minute: string
     second: string
   }
-  address?: {
+  address: {
     selectRegion: string
     deliveryTo: string
     chooseAnotherAddress: string
   }
-  signature?: {
+  signature: {
     reSign: string
     unsupported: string
   }
-  ecard?: {
+  ecard: {
     chooseText: string
     otherValueText: string
     placeholder: string
   }
-  timeselect?: {
+  timeselect: {
     pickupTime: string
   }
-  sku?: {
+  sku: {
     buyNow: string
     buyNumber: string
     addToCard: string
   }
-  skuheader?: {
+  skuheader: {
     skuId: string
   }
-  addresslist?: {
+  addresslist: {
     addAddress: string
   }
-  comment?: {
+  comment: {
     complaintsText: string
     // eslint-disable-next-line @typescript-eslint/ban-types
     additionalReview: Function
     // eslint-disable-next-line @typescript-eslint/ban-types
     additionalImages: Function
   }
-  searchbar?: {
+  searchbar: {
     basePlaceholder: string
     text: string
     test: string
@@ -112,7 +112,7 @@ export interface Locales extends Partial<BaseLang> {
     title5: string
     title6: string
   }
-  audio?: {
+  audio: {
     back: string
     forward: string
     pause: string
@@ -120,8 +120,8 @@ export interface Locales extends Partial<BaseLang> {
     mute: string
     tips: string
   }
-  avatarCropper?: { rotate: string; selectImage: string }
-  datepicker?: {
+  avatarCropper: { rotate: string; selectImage: string }
+  datepicker: {
     year: string
     month: string
     day: string
@@ -129,18 +129,18 @@ export interface Locales extends Partial<BaseLang> {
     min: string
     seconds: string
   }
-  pullToRefresh?: {
+  pullToRefresh: {
     pullingText: string
     canReleaseText: string
     refreshingText: string
     completeText: string
   }
-  tour?: {
+  tour: {
     prevStepText: string
     completeText: string
     nextStepText: string
   }
-  watermark?: {
+  watermark: {
     errorCanvasTips: string
   }
 }

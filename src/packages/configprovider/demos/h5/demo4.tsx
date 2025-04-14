@@ -1,11 +1,12 @@
 import React from 'react'
-import { ConfigProvider, TextArea } from '@nutui/nutui-react'
-import enUS from '@nutui/nutui-react/dist/es/locale/en-US'
+import { ConfigProvider, TextArea, Button } from '@nutui/nutui-react'
 
+const loc = { text: 'ee' }
 const Demo4 = () => {
   return (
     <>
-      <ConfigProvider locale={enUS}>
+      <ConfigProvider locale={loc}>
+        <Button>{loc.text}</Button>
         <TextArea disabled showCount maxLength={20} />
       </ConfigProvider>
     </>

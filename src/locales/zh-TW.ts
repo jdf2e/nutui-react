@@ -1,6 +1,6 @@
 import { Locales } from '@/types'
 
-const zhCN: Locales = {
+const zhTW: Locales = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',
@@ -139,4 +139,4 @@ const zhCN: Locales = {
     errorCanvasTips: '當前環境不支持Canvas',
   },
 }
-export default zhCN
+export default zhTW
