@@ -91,9 +91,9 @@ import { Image } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | src | 图片链接 | `string` | `-` |
-| width | 宽度，默认单位`px` | `string` | `-` |
-| height | 高度，默认单位`px` | `string` | `-` |
-| radius | 圆角大小 | `string` \| `number` | `-` |
+| width | 宽度，默认单位`px` | `string \| number` | `-` |
+| height | 高度，默认单位`px` | `string \| number` | `-` |
+| radius | 圆角大小 | `string \| number` | `-` |
 | error | 是否展示图片加载失败 | `boolean \| ReactNode` | `true` |
 | loading | 是否展示加载中图片 | `boolean \| ReactNode` | `true` |
 | onLoad | 图片加载完后触发 | `() => void` | `-` |
