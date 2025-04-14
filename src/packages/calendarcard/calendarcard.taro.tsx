@@ -393,15 +393,14 @@ export const CalendarCard = React.forwardRef<
   }
 
   const [weekHeader] = useState(() => {
-    const weekdays = locale.calendaritem?.weekdays.map((day, index) => {
-      return {
-        name: day,
-        key: index,
-      }
-    })
+    const weekdays = locale.calendaritem?.weekdays || []
+    const weeks = weekdays.map((day, index) => ({
+      name: day,
+      key: index,
+    }))
     return [
-      ...weekdays.slice(firstDayOfWeek, 7),
-      ...weekdays.slice(0, firstDayOfWeek),
+      ...weeks.slice(firstDayOfWeek, 7),
+      ...weeks.slice(0, firstDayOfWeek),
     ]
   })
 

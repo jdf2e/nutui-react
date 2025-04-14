@@ -128,7 +128,7 @@ export const CalendarItem = React.forwardRef<
     onPageChange,
   } = { ...defaultProps, ...props }
 
-  const weekdays = locale.calendaritem?.weekdays
+  const weekdays = locale.calendaritem?.weekdays || []
   const weeks = [
     ...weekdays.slice(firstDayOfWeek, 7),
     ...weekdays.slice(0, firstDayOfWeek),

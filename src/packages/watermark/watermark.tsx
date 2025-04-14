@@ -110,7 +110,7 @@ export const WaterMark: FunctionComponent<
         setBase64Url(canvas.toDataURL())
       }
     } else {
-      throw new Error(locale.watermark.errorCanvasTips)
+      throw new Error(locale.watermark?.errorCanvasTips)
     }
   }
 
