@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const idID: BaseLang = {
+const idID: Locales = {
   save: 'Simpan',
   confirm: 'Konfirmasi',
   cancel: 'Batal',

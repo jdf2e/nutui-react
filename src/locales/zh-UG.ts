@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const zhUG: BaseLang = {
+const zhUG: Locales = {
   save: 'ساقلاش',
   confirm: 'ھەئە',
   cancel: 'ياق',

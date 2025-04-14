@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const zhCN: BaseLang = {
+const zhCN: Locales = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',

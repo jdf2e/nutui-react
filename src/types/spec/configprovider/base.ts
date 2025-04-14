@@ -1,8 +1,9 @@
 import { BaseProps } from '../../base/props'
-import { BaseLang, PageDirection } from '../../base/locales'
+import { Locales, PageDirection } from '../../base/locales'
 
-export interface BaseConfigProvider extends BaseProps {
-  locale: BaseLang
+export interface BaseConfigProvider<T extends Partial<Locales>>
+  extends BaseProps {
+  locale: T
   direction: PageDirection
-  theme: Record<string, string>
+  theme?: Record<string, string>
 }

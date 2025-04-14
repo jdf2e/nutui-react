@@ -3,31 +3,22 @@ import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import isEqual from 'react-fast-compare'
 import { useMemo } from '@/hooks/use-memo'
-import { BasicComponent } from '@/utils/typings'
-import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
-import type { NutCSSVariables } from './types'
 import { inBrowser } from '@/utils'
+import { WebConfigProviderProps, Locales as LocalesType } from '@/types'
 
-export interface ConfigProviderProps extends BasicComponent {
-  locale: BaseLang
-  direction?: ConfigProviderDirection
-  theme?: Record<string | NutCSSVariables, string>
-}
-
-export type ConfigProviderDirection = 'ltr' | 'rtl' | undefined
-
-const classPrefix = 'nut-configprovider'
+type Locales = Partial<LocalesType>
 
 export const defaultConfigRef: {
-  current: ConfigProviderProps
+  current: WebConfigProviderProps<Locales>
 } = {
   current: {
     locale: zhCN,
+    direction: 'ltr',
   },
 }
 
-export const setDefaultConfig = (config: ConfigProviderProps) => {
+export const setDefaultConfig = (config: WebConfigProviderProps<Locales>) => {
   defaultConfigRef.current = config
 }
 
@@ -35,7 +26,9 @@ export const getDefaultConfig = () => {
   return defaultConfigRef.current
 }
 
-const ConfigContext = createContext<ConfigProviderProps | null>(null)
+const ConfigContext = createContext<WebConfigProviderProps<Locales> | null>(
+  null
+)
 
 export const useConfig = () => {
   return useContext(ConfigContext) ?? getDefaultConfig()
@@ -58,10 +51,10 @@ export const useRtl = () => {
 }
 
 export const ConfigProvider: FunctionComponent<
-  Partial<ConfigProviderProps & BasicComponent>
+  Partial<WebConfigProviderProps<Locales>>
 > = (props) => {
   const { style, className, children, direction, ...config } = props
-
+  const classPrefix = 'nut-configprovider'
   const mergedConfig = useMemo(
     () => {
       return {
@@ -76,7 +69,7 @@ export const ConfigProvider: FunctionComponent<
         const nextTheme = next[index]
         return !isEqual(prevTheme, nextTheme)
       })
-  ) as ConfigProviderProps
+  ) as WebConfigProviderProps<Locales>
 
   const cssVarStyle = React.useMemo(() => {
     return convertThemeVarsToCSSVars(mergedConfig.theme || {})
