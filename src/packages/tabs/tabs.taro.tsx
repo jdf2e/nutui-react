@@ -144,7 +144,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   const scrollIntoView = (index: number) => {
     raf(() => {
       Promise.all([
-        getRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-list`),
+        getRect(`#nut-tabs-titles-${name || uuid}`),
         getAllRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-titles-item`),
       ]).then(([navRect, titleRects]: any) => {
         const titleRect = titleRects[index]
@@ -152,16 +152,32 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
 
         let to = 0
         if (direction === 'vertical') {
+          const totalHeight = titleRects.reduce(
+            (sum: number, curr: RectItem) => sum + curr.height,
+            0
+          )
           const top = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
-          to = top - (navRect.height - titleRect.height) / 2
+
+          to = Math.min(
+            Math.max(0, top - (navRect.height - titleRect.height) / 2),
+            totalHeight - navRect.height
+          )
         } else {
+          const totalWidth = titleRects.reduce(
+            (sum: number, curr: RectItem) => sum + curr.width,
+            0
+          )
           const left = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
-          to = left - (navRect.width - titleRect.width) / 2
+          to = Math.min(
+            Math.max(0, left - (navRect.width - titleRect.width) / 2),
+            totalWidth - navRect.width
+          )
         }
+
         scrollDirection(to, direction)
 
         nextTick(() => {

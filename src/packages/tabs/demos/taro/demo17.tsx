@@ -4,7 +4,7 @@ import { Text } from '@tarojs/components'
 
 const Demo17 = () => {
   const [tabvalue, setTabvalue] = useState<string | number>('0')
-  const list = Array.from(new Array(10).keys())
+  const list = Array.from(new Array(20).keys())
   return (
     <>
       <Tabs
