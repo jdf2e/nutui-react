@@ -14,6 +14,7 @@ export interface TaroInputProps
     BaseInput<TaroInputType, TaroInputConfirmType>,
     'onClick' | 'onFocus'
   > {
+  focus?: boolean
   onClick?: (e: ITouchEvent) => void
   onFocus?: (value: string, height?: number) => void
 }
