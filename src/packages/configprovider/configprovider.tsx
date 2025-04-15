@@ -1,4 +1,4 @@
-import React, { FunctionComponent, createContext, useContext } from 'react'
+import React, { createContext, useContext, Context } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import isEqual from 'react-fast-compare'
@@ -10,7 +10,7 @@ import { WebConfigProviderProps, Locales as LocalesType } from '@/types'
 type Locales = Partial<LocalesType>
 
 export const defaultConfigRef: {
-  current: WebConfigProviderProps<Locales>
+  current: any
 } = {
   current: {
     locale: zhCN,
@@ -18,20 +18,24 @@ export const defaultConfigRef: {
   },
 }
 
-export const setDefaultConfig = (config: WebConfigProviderProps<Locales>) => {
+export const setDefaultConfig = <T,>(config: WebConfigProviderProps<T>) => {
   defaultConfigRef.current = config
 }
 
-export const getDefaultConfig = () => {
-  return defaultConfigRef.current
+export const getDefaultConfig = <T = WebConfigProviderProps<Locales>,>() => {
+  return defaultConfigRef.current as T
 }
 
 const ConfigContext = createContext<WebConfigProviderProps<Locales> | null>(
   null
 )
 
-export const useConfig = () => {
-  return useContext(ConfigContext) ?? getDefaultConfig()
+export const useConfig = <T = Locales,>() => {
+  return (
+    useContext<WebConfigProviderProps<T>>(
+      ConfigContext as any as Context<WebConfigProviderProps<T>>
+    ) ?? getDefaultConfig<WebConfigProviderProps<T>>()
+  )
 }
 
 function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
@@ -50,9 +54,9 @@ export const useRtl = () => {
   return inBrowser && document.dir === 'rtl'
 }
 
-export const ConfigProvider: FunctionComponent<
-  Partial<WebConfigProviderProps<Locales>>
-> = (props) => {
+export const ConfigProvider = <T = Locales,>(
+  props: Partial<WebConfigProviderProps<T>>
+) => {
   const { style, className, children, direction, ...config } = props
   const classPrefix = 'nut-configprovider'
   const mergedConfig = useMemo(

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { WebTextAreaProps } from '@/types'
+import { Locales, WebTextAreaProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -26,7 +26,7 @@ export const TextArea: FunctionComponent<
       'onChange' | 'onBlur' | 'onFocus'
     >
 > = (props) => {
-  const { locale } = useConfig()
+  const { locale } = useConfig<Locales>()
   const {
     className,
     value,
