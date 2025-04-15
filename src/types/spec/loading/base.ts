@@ -3,7 +3,7 @@ import { BaseProps } from '../../base/props'
 import { Direction } from '../../base/atoms'
 
 export type LoadingRef = any
-export type LoadingType = 'spinner' | 'circular' | 'lottie'
+export type LoadingType = 'spinner' | 'circular'
 
 export interface BaseLoading<LOTTIE_PROPS = any> extends BaseProps {
   type: LoadingType
