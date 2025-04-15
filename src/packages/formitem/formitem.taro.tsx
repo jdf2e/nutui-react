@@ -1,43 +1,12 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { Text, View } from '@tarojs/components'
-import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
 import { toArray } from '@/utils/to-array'
 import { SECRET } from '@/packages/form/useform.taro'
-
-type TextAlign =
-  | 'start'
-  | 'end'
-  | 'left'
-  | 'right'
-  | 'center'
-  | 'justify'
-  | 'match-parent'
-
-type ShouldUpdate = (prevValue: any, curValue: any) => boolean
-
-export interface FormItemProps
-  extends Omit<BasicComponent, 'children'>,
-    BaseFormField {
-  required: boolean
-  initialValue: any
-  trigger: string
-  valuePropName: string
-  getValueFromEvent: (...args: any) => any
-  onClick: (
-    event: React.MouseEvent,
-    componentRef: React.MutableRefObject<any>
-  ) => void
-  errorMessageAlign: TextAlign
-  validateTrigger: string | string[]
-  shouldUpdate: boolean
-  noStyle: boolean
-  children: ReactNode | ((obj: any) => React.ReactNode)
-  align?: 'flex-start' | 'center' | 'flex-end'
-}
+import { TaroFormItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -48,10 +17,10 @@ const defaultProps = {
   errorMessageAlign: 'left',
   shouldUpdate: false,
   noStyle: false,
-} as FormItemProps
+} as TaroFormItemProps
 
 export class FormItem extends React.Component<
-  Partial<FormItemProps>,
+  Partial<TaroFormItemProps>,
   { resetCount: number }
 > {
   static defaultProps = defaultProps
@@ -66,7 +35,7 @@ export class FormItem extends React.Component<
 
   private eventOff: any
 
-  constructor(props: FormItemProps) {
+  constructor(props: TaroFormItemProps) {
     super(props)
     this.componentRef = React.createRef()
     this.state = {
