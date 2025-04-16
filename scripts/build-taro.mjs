@@ -431,8 +431,9 @@ async function buildCSS(themeName = '') {
 
     // copy harmonycss
     if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
+      const harmonyCss = join(__dirname, '../', file.replace('scss', 'harmony.css'))
+      await copy(harmonyCss, join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
+      await copy(harmonyCss, join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
     }
   }
 }
