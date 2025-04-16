@@ -192,6 +192,7 @@ async function buildUMD(p) {
     },
   })
 }
+
 // 针对不同包构建全量的 style
 async function buildAllCSS() {
   // 拷贝styles
@@ -284,7 +285,7 @@ async function copyStyles() {
 }
 
 // 构建样式
-async function buildCSS(p) {
+async function buildCSS(themeName='') {
   const cssFiles = await glob(['src/packages/**/*.scss'], {
     ignore: ['src/packages/**/demo.scss'],
   })
@@ -303,24 +304,13 @@ async function buildCSS(p) {
       '../src/packages',
       base.replace('.scss', ''),
     )
-    const code = sass.compileString(variables + '\n' + button, {
-      loadPaths: [loadPath],
-    })
     const cssPath = relative('src', loadPath)
-    // 写 css 文件
-    await dest(join(`${dist}/es`, cssPath, 'style/style.css'), code.css)
-    await dest(join(`${dist}/es`, cssPath, 'style/css.js'), `import './style.css'`)
 
-    await dest(join(`${dist}/cjs`, cssPath, 'style/style.css'), code.css)
-    await dest(
-      join(`${dist}/cjs`, cssPath, 'style/css.js'),
-      `import './style.css'`,
-    )
 
     // 删除 import
     // 写入 style.scss
     const atRules = []
-    await postcss([
+    const postcssRes = await postcss([
       {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
@@ -340,11 +330,19 @@ async function buildCSS(p) {
     ])
       .process(button, { from: loadPath, syntax: scss })
       .then((result) => {
-        dest(join(`${dist}/es`, cssPath, `style/${base}`), result.css)
-        dest(join(`${dist}/cjs`, cssPath, `style/${base}`), result.css)
+        return result
       })
+    await dest(join(`${dist}/es`, cssPath, `style/${base}`), postcssRes.css)
+    await dest(join(`${dist}/cjs`, cssPath, `style/${base}`), postcssRes.css)
+
+    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+      loadPaths: [loadPath],
+    })
+    await dest(join(`${dist}/es`, cssPath, 'style/style.css'), code.css)
+    await dest(join(`${dist}/cjs`, cssPath, 'style/style.css'), code.css)
 
     const jsContent = []
+    const cssContent = []
     atRules.forEach((rule) => {
       rule = rule.replaceAll('\'', '')
       if (rule.indexOf('../styles/') > -1) {
@@ -355,15 +353,24 @@ async function buildCSS(p) {
         const ext = extname(base)
         const name = base.replace(ext, '')
         jsContent.push(`import '../../${name}/style';`)
+        cssContent.push(`import '../../${name}/style/css';`)
       }
     })
     jsContent.push(`import './${base}';`)
+    cssContent.push(`import './style.css';`)
 
     await dest(
       join(`${dist}/cjs`, cssPath, `style/index.js`),
       jsContent.join('\n'),
     )
     await dest(join(`${dist}/es`, cssPath, `style/index.js`), jsContent.join('\n'))
+
+    // 写 css 文件
+    await dest(join(`${dist}/es`, cssPath, 'style/css.js'), cssContent.join('\n'))
+    await dest(
+      join(`${dist}/cjs`, cssPath, 'style/css.js'),
+      cssContent.join('\n'),
+    )
   }
 }
 
@@ -420,13 +427,14 @@ console.time('build UMD')
 await buildUMD()
 console.timeEnd('build UMD')
 
-console.time('Build CSS')
-await buildCSS()
-console.timeEnd('Build CSS')
 
 console.time('Copy Styles')
 await copyStyles()
 console.timeEnd('Copy Styles')
+
+console.time('Build CSS')
+await buildCSS()
+console.timeEnd('Build CSS')
 
 console.time('Build All CSS')
 await buildAllCSS()
