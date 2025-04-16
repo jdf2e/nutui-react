@@ -141,12 +141,12 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@shikijs/markdown-it": "^3.0.0",
     "@swc/core": "^1.4.8",
-    "@tarojs/components": "4.0.8-beta.1",
-    "@tarojs/plugin-platform-alipay": "4.0.8-beta.1",
-    "@tarojs/plugin-platform-jd": "4.0.8-beta.1",
-    "@tarojs/plugin-platform-weapp": "4.0.8-beta.1",
-    "@tarojs/react": "4.0.8-beta.1",
-    "@tarojs/taro": "4.0.8-beta.1",
+    "@tarojs/components": "4.0.12",
+    "@tarojs/plugin-platform-alipay": "4.0.12",
+    "@tarojs/plugin-platform-jd": "4.0.12",
+    "@tarojs/plugin-platform-weapp": "4.0.12",
+    "@tarojs/react": "4.0.12",
+    "@tarojs/taro": "4.0.12",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^16.0.0",
     "@types/fs-extra": "^11.0.4",
@@ -240,7 +240,7 @@
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
     "sass": "1.77.6",
-    "@tarojs/api": "4.0.8-beta.1",
-    "@tarojs/components": "4.0.8-beta.1"
+    "@tarojs/api": "4.0.12",
+    "@tarojs/components": "4.0.12"
   }
 }
