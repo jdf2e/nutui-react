@@ -306,7 +306,11 @@ plugins: [
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'
-  [//]: # '#### Video'
+
+#### Video
+
+- 兼容 Taro Component 属性，直接可以使用 `src`、`loop` 等属性。
+
   [//]: # '#### VirtualList'
   [//]: # '#### WaterMark'
   [//]: # '### 特色组件'

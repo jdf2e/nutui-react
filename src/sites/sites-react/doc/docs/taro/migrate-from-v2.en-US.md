@@ -290,7 +290,11 @@ If your project uses these components, please read the documentation carefully a
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'
-  [//]: # '#### Video'
+
+#### Video
+
+- Compatible with Taro Component properties, you can directly use attributes such as src, loop, and so on.
+
   [//]: # '#### VirtualList'
   [//]: # '#### WaterMark'
   [//]: # '### 特色组件'
