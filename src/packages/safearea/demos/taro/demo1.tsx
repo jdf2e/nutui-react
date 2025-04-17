@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text } from '@tarojs/components'
+import { ScrollView, Text, View } from '@tarojs/components'
 import { SafeArea } from '@nutui/nutui-react-taro'
 
 function generateRandomTextArray(count: number) {
@@ -20,8 +20,13 @@ function generateRandomTextArray(count: number) {
 const Demo1 = () => {
   return (
     <ScrollView>
+      <View style={{ backgroundColor: 'red' }}>
+        <SafeArea position="top" />
+      </View>
       <Text>{generateRandomTextArray(900).join(' ')}</Text>
-      <SafeArea position="bottom" />
+      <View style={{ backgroundColor: 'red' }}>
+        <SafeArea position="bottom" />
+      </View>
     </ScrollView>
   )
 }
