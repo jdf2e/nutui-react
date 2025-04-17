@@ -280,11 +280,24 @@ babel 配置：
         customName: (name, file) => {
           return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
         },
+        // 默认主题
         // 自动加载 scss 样式文件
         customStyleName: (name) =>
           `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`,
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
+
+        // B 端主题
+        // 自动加载 scss 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp`,
+        // 自动加载 css 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
+
+        // jkrf 端主题
+        // 自动加载 scss 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jkrf`,
+        // 自动加载 css 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jkrf/css`
       },
       'nutui-react',
     ],
