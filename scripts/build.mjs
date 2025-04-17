@@ -446,6 +446,10 @@ console.time('Build jmapp CSS')
 await buildCSS('jmapp')
 console.timeEnd('Build CSS')
 
+console.time('Build jrkf CSS')
+await buildCSS('jrkf')
+console.timeEnd('Build jrkf CSS')
+
 console.time('Build All CSS')
 await buildAllCSS()
 console.timeEnd('Build All CSS')
@@ -453,6 +457,10 @@ console.timeEnd('Build All CSS')
 console.time('Build All jmapp CSS')
 await buildAllCSS('jmapp')
 console.timeEnd('Build All jmapp CSS')
+
+console.time('Build All jrkf CSS')
+await buildAllCSS('jrkf')
+console.timeEnd('Build All jrkf CSS')
 
 
 console.time('Build Theme CSS')
