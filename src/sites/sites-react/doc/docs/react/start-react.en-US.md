@@ -314,6 +314,6 @@ module.exports = {
 
 ## Templates
 
-The example code can be found in the [packages/templates](https://github.com/jdf2e/nutui-react/tree/feat_v3.0/packages/nutui-templates) directory.
+The example code can be found in the [packages/templates](https://github.com/jdf2e/nutui-react/tree/feat_v3.x/packages/nutui-templates) directory.
 
 <content-examples/>

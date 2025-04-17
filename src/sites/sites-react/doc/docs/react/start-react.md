@@ -327,6 +327,6 @@ module.exports = {
 
 ## 示例
 
-示例代码可以再 [packages/templates](https://github.com/jdf2e/nutui-react/tree/feat_v3.0/packages/nutui-templates) 下查看
+示例代码可以再 [packages/templates](https://github.com/jdf2e/nutui-react/tree/feat_v3.x/packages/nutui-templates) 下查看
 
 <content-examples/>
