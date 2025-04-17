@@ -8,7 +8,7 @@ import {
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroImageProps } from '@/types'
 
 const defaultProps = {
@@ -54,14 +54,14 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
   }
 
   const containerStyle = {
-    // eslint-disable-next-line no-nested-ternary
-    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
-    // eslint-disable-next-line no-nested-ternary
-    width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
-    overflow: radius !== undefined && radius !== null ? 'hidden' : '',
-    borderRadius:
-      // eslint-disable-next-line no-nested-ternary
-      radius !== undefined && radius != null ? pxCheck(radius) : '',
+    ...(height ? { height: pxCheck(height) } : {}),
+    ...(width ? { width: pxCheck(width) } : {}),
+    ...(radius !== undefined && radius !== null
+      ? {
+          overflow: 'hidden',
+          borderRadius: pxCheck(radius),
+        }
+      : {}),
   }
 
   const imgStyle: any = {
@@ -100,7 +100,16 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     return null
   }, [loading, innerLoading])
   return (
-    <View className={classNames(classPrefix, className)} style={containerStyle}>
+    <View
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}-basic`]: Taro.getEnv() !== 'WEB',
+        },
+        className
+      )}
+      style={containerStyle}
+    >
       <TImage
         {...rest}
         className={`${classPrefix}-default ${className ? `${className}-image` : ''}`}

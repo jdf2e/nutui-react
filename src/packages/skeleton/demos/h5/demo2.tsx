@@ -3,8 +3,8 @@ import { Cell, Skeleton } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   return (
-    <Cell style={{ display: 'block', paddingTop: '3px' }}>
-      <Skeleton rows={3} title animated />
+    <Cell>
+      <Skeleton rows={3} animated size="small" style={{ width: '100%' }} />
     </Cell>
   )
 }

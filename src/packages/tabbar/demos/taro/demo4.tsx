@@ -2,17 +2,12 @@ import React from 'react'
 import { Tabbar } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => (
-  <Tabbar
-    onSwitch={(value) => {
-      console.log(value)
-    }}
-  >
+  <Tabbar>
     <Tabbar.Item title="首页" value={9} />
-    <Tabbar.Item title="分类" />
     <Tabbar.Item title="逛" />
+    <Tabbar.Item title="消息" />
     <Tabbar.Item title="购物车" />
     <Tabbar.Item title="我的" />
   </Tabbar>
 )
-
 export default Demo4

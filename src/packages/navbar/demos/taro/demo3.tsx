@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { NavBar, TabPane, Tabs } from '@nutui/nutui-react-taro'
+import { NavBar, TabPane, Tabs, harmony } from '@nutui/nutui-react-taro'
 import { ArrowLeft, More } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo3 = () => {
   const [tab1value, setTab1value] = useState<string | number>('0')

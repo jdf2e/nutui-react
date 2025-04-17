@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
+import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroOverlayProps } from '@/types'
 
 export const defaultOverlayProps: TaroOverlayProps = {

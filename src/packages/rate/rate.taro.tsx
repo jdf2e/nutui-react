@@ -11,8 +11,8 @@ import { useReady } from '@tarojs/taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import useRefs from '@/hooks/use-refs'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { useRefs } from '@/hooks/use-refs'
 import { TaroRateProps } from '@/types'
 
 const defaultProps = {
@@ -135,7 +135,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     for (let index = 0; index < refs.length; index++) {
       const item = refs[index]
       if (item) {
-        getRectByTaro(item).then((res) => {
+        getRectInMultiPlatform(item).then((res) => {
           rateRects.current[index] = res
         })
       }

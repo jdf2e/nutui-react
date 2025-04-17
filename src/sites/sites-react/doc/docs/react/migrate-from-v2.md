@@ -137,8 +137,13 @@ plugins: [
 
 - 注意：** 该组件不符合移动端规范，已被废弃。请使用 SideBar **
 
-[//]: # '#### Tabbar'
-[//]: # '#### TabbarItem'
+#### Tabbar
+
+#### TabbarItem
+
+- 为 `icon`、`title` 和 `value` 增加新的类型，支持 `function` 根据当前是否 `active` 状态展示不同的 icon/title/value。
+- 增加 `onActiveClick` 事件，用于处理当元素处于焦点时，再次点击时可增加自定义事件。
+
 [//]: # '#### Tabs'
 [//]: # '#### Tabs.Tabpane'
 
@@ -218,7 +223,15 @@ plugins: [
 - `target` 属性获取监听的目标元素
 - `refreshDistance` 下拉刷新触发距离
 
-[//]: # '#### Notify'
+#### Notify
+
+- 新增 `distance`，距离顶部/底部距离
+- 新增 `closeable`，是否启用关闭模式
+- 新增 `leftIcon`，左边的 icon
+- 新增 `rightIcon`，右边的 icon
+- 新增 `navHeight`，导航栏高度
+- 移除 `type`，通过css变量 `--nutui-notify-base-background-color` 修改
+
 [//]: # '#### PullToRefresh'
 [//]: # '#### Swipe'
 
@@ -226,6 +239,7 @@ plugins: [
 
 - `activeText` 属性类型更改为`ReactNode`
 - `inactiveText` 属性类型更改为 `ReactNode`
+- 新增 `loadingIcon` 属性，受控 loading 态图标
 
 [//]: # '#### Toast'
 
@@ -245,6 +259,7 @@ plugins: [
 
 - 新增 `size` 属性，dot 尺寸，当 dot 等于 `true` 时生效
 - 移除 `color`属性（`徽标背景颜色`），通过css变量`--nutui-badge-background-color`实现
+- 新增 `disabled` 属性，是否禁用
 
 [//]: # '#### CircleProgress'
 [//]: # '#### Collapse'
@@ -263,7 +278,12 @@ plugins: [
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-[//]: # '#### Popover'
+
+#### Popover
+
+- 废弃的样式变量，这些变量存在于文档，已删除：`--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
+- 变更样式变量 `--nutui-popover-menu-item-padding` 变更为 `--nutui-popover-padding`，`--nutui-popover-menu-item-width` 变更为 `--nutui-popover-item-width`
+- 修订 `location` 的数据类型，使用统一位置类型 `FullPosition`
 
 #### Price
 
@@ -271,19 +291,29 @@ plugins: [
 - 新增 `color`, 价格类型
 
 [//]: # '#### Progress'
-[//]: # '#### Skeleton'
-[//]: # '#### Steps'
-[//]: # '#### Step'
-[//]: # '#### Swiper'
-[//]: # '#### Table'
-[//]: # '#### Tag'
-[//]: # '#### TrendArrow'
-[//]: # '#### Video'
-[//]: # '#### VirtualList'
-[//]: # '#### WaterMark'
-[//]: # '### 特色组件'
-[//]: # '#### Address'
-[//]: # '#### Barrage'
-[//]: # '#### Card'
-[//]: # '#### Signature'
-[//]: # '#### TimeSelect'
+
+#### Skeleton
+
+- 移除 `avatar` 属性，可通过 `width` 和 `height` 属性模拟
+- 移除 `avatarShape` 属性，可通过 `shape` 属性设置
+- 移除 `avatarSize` 属性
+- 新增 `width` 属性，控制宽度
+- 新增 `height` 属性，控制高度
+- 新增 `duration` 属性，控制动画时长
+- 新增 `size` 属性，通过 `size` 属性可选择使用组件内置的高度
+
+  [//]: # '#### Steps'
+  [//]: # '#### Step'
+  [//]: # '#### Swiper'
+  [//]: # '#### Table'
+  [//]: # '#### Tag'
+  [//]: # '#### TrendArrow'
+  [//]: # '#### Video'
+  [//]: # '#### VirtualList'
+  [//]: # '#### WaterMark'
+  [//]: # '### 特色组件'
+  [//]: # '#### Address'
+  [//]: # '#### Barrage'
+  [//]: # '#### Card'
+  [//]: # '#### Signature'
+  [//]: # '#### TimeSelect'

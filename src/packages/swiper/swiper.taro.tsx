@@ -14,7 +14,7 @@ import {
 import classNames from 'classnames'
 import { CommonEventFunction } from '@tarojs/components/types/common'
 import Indicator from '@/packages/indicator/index.taro'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroSwiperProps } from '@/types'
 
 const defaultProps = {

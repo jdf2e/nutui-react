@@ -124,7 +124,7 @@ import { Button } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-button-border-radius | 按钮的圆角设置 | `8px` |
+| \--nutui-button-border-radius | 按钮的圆角设置 | `$button-border-radius` |
 | \--nutui-button-border-width | 按钮的边框宽度 | `1px` |
 | \--nutui-button-normal-padding | size normal时的padding值 | `0px 12px` |
 | \--nutui-button-default-height | type 为 default 的按钮的高度 | `32px` |
@@ -135,17 +135,20 @@ import { Button } from '@nutui/nutui-react'
 | \--nutui-button-default-disabled-color | type 为 default 的按钮的禁用文本色 | `$color-text-help` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 12px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-s` |
+| \--nutui-button-xlarge-height | size 为 xlarge 的按钮的高度 | `48px` |
+| \--nutui-button-xlarge-font-size | size 为 lxarge 的按钮的字号 | `$font-size-xl` |
+| \--nutui-button-xlarge-border-radius | size 为 xlarge 的按钮的圆角 | `$button-xlarge-border-radius` |
 | \--nutui-button-large-height | size 为 large 的按钮的高度 | `40px` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$font-size-base` |
-| \--nutui-button-large-border-radius | size 为 large 的按钮的圆角 | `12px` |
+| \--nutui-button-large-border-radius | size 为 large 的按钮的圆角 | `$button-large-border-radius` |
 | \--nutui-button-small-padding | size 为 small 的按钮的内边距 | `0 8px` |
 | \--nutui-button-small-height | size 为 small 的按钮的高度 | `28px` |
 | \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-s` |
-| \--nutui-button-small-border-radius | size 为 small 的按钮的圆角 | `8px` |
+| \--nutui-button-small-border-radius | size 为 small 的按钮的圆角 | `$button-small-border-radius` |
 | \--nutui-button-mini-padding | size 为 mini 的按钮的内边距 | `0 8px` |
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-xs` |
-| \--nutui-button-mini-border-radius | size 为 mini 的按钮的圆角 | `6px` |
+| \--nutui-button-mini-border-radius | size 为 mini 的按钮的圆角 | `$button-mini-border-radius` |
 | \--nutui-button-text-icon-margin | 带 icon按钮的文本的边距 | `4px` |
 
 <Contribution name="Button" />

@@ -4,34 +4,35 @@ import {
   Cell,
   Picker,
   PickerOnChangeCallbackParameter,
+  FullPosition,
 } from '@nutui/nutui-react'
 
 const Demo4 = () => {
   const [baseDesc, setBaseDesc] = useState('')
   const [showPicker, setShowPicker] = useState(false)
   const [customPositon, setCustomPosition] = useState(false)
-  const [curPostion, setCurPostion] = useState('')
+  const [curPostion, setCurPostion] = useState<FullPosition>('top')
 
   const columns = [
     [
       { label: 'top', value: 'top' },
-      { label: 'top-start', value: 'top-start' },
-      { label: 'top-end', value: 'top-end' },
+      { label: 'top-left', value: 'top-left' },
+      { label: 'top-right', value: 'top-right' },
       { label: 'right', value: 'right' },
-      { label: 'right-start', value: 'right-start' },
-      { label: 'right-end', value: 'right-end' },
+      { label: 'right-top', value: 'right-top' },
+      { label: 'right-bottom', value: 'right-bottom' },
       { label: 'bottom', value: 'bottom' },
-      { label: 'bottom-start', value: 'bottom-start' },
-      { label: 'bottom-end', value: 'bottom-end' },
+      { label: 'bottom-left', value: 'bottom-left' },
+      { label: 'bottom-right', value: 'bottom-right' },
       { label: 'left', value: 'left' },
-      { label: 'left-start', value: 'left-start' },
-      { label: 'left-end', value: 'left-end' },
+      { label: 'left-top', value: 'left-top' },
+      { label: 'left-bottom', value: 'left-bottom' },
     ],
   ]
   const positionList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
     },
   ]
 
@@ -62,7 +63,7 @@ const Demo4 = () => {
         }}
         onChange={({ selectedOptions }: PickerOnChangeCallbackParameter) => {
           if (selectedOptions[0]?.value) {
-            setCurPostion(selectedOptions[0].value as string)
+            setCurPostion(selectedOptions[0].value as FullPosition)
           }
         }}
         onClose={() => {
@@ -75,7 +76,7 @@ const Demo4 = () => {
         </div>
       </Picker>
       <Popover
-        className="custom-color"
+        theme="dark"
         visible={customPositon}
         targetId="pickerTarget"
         list={positionList}

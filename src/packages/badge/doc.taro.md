@@ -18,6 +18,14 @@ import { Badge } from '@nutui/nutui-react-taro'
 
 :::
 
+### 禁用
+
+:::demo
+
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
 ### 最大值
 
 :::demo
@@ -87,6 +95,7 @@ import { Badge } from '@nutui/nutui-react-taro'
 | top | 上下偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | right | 左右偏移量，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
+| disabled | 是否禁用 | `boolean` | `false` |
 
 ## 主题定制
 
@@ -98,6 +107,7 @@ import { Badge } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `$color-primary` |
+| \--nutui-badge-background-disabled-color | badge 禁用背景色 | `$color-text-disabled` |
 | \--nutui-badge-color | badge 内容色值 | `$color-primary-text` |
 | \--nutui-badge-font-size | badge 内容字号 | `$font-size-xxs` |
 | \--nutui-badge-border | badge 边框 | `1px solid $color-primary-text` |

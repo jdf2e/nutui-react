@@ -1,7 +1,6 @@
 import React from 'react'
-import { Cell, CellGroup, Price } from '@nutui/nutui-react-taro'
+import { Cell, CellGroup, Price, harmony } from '@nutui/nutui-react-taro'
 import { Text } from '@tarojs/components'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo9 = () => {
   const colorStyles = {

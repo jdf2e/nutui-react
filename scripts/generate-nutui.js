@@ -58,6 +58,8 @@ config.nav.map((item) => {
 
 let fileStrBuild = `${importStr}
 export * from '@/types';
+export * from '@/utils';
+export * from '@/hooks';
 export { ${packages.join(',')} };`
 
 fs.outputFile(
@@ -72,6 +74,8 @@ fs.outputFile(
 let fileStr = `${importStr}
 ${importScssStr}
 export * from '@/types';
+export * from '@/utils';
+export * from '@/hooks';
 export { ${packages.join(',')} };`
 fs.outputFile(
   path.resolve(__dirname, '../src/packages/nutui.react.ts'),

@@ -12,8 +12,8 @@ const Demo4 = () => {
   }
   return (
     <>
-      <Cell>
-        <View onClick={handleToggleShow}>不锁定背景滚动</View>
+      <Cell onClick={handleToggleShow}>
+        <View>不锁定背景滚动</View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose} lockScroll={false} />

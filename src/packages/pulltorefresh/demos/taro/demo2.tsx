@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { ScrollView } from '@tarojs/components'
-import { Cell, PullToRefresh } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Cell, PullToRefresh, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])

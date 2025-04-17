@@ -2,7 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { TriangleDown, TriangleUp } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 import { TaroTrendArrowProps } from '@/types'
 
 const defaultProps = {

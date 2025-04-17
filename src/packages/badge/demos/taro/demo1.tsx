@@ -1,8 +1,7 @@
 import React from 'react'
 import { Dongdong, User } from '@nutui/icons-react-taro'
-import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro'
+import { Avatar, Badge, Cell, pxTransform } from '@nutui/nutui-react-taro'
 import { Text } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo1 = () => {
   const renderText = () => {

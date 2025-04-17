@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text } from '@tarojs/components'
-import { Input } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Input, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [currentLength, setCurrentLength] = useState(0)

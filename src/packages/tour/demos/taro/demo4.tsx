@@ -34,7 +34,7 @@ const Demo4 = () => {
         onClose={closeTour}
         list={steps}
         type="tile"
-        location="bottom-end"
+        location="bottom-right"
         offset={[8, 8]}
         closeOnOverlayClick={false}
       >

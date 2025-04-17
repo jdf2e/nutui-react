@@ -14,7 +14,7 @@ function uniqueId(prefix = '$nut$') {
   return `${prefix}${id}`
 }
 
-export default function useUuid() {
+export function useUuid() {
   const idRef = useRef(uniqueId())
   return idRef.current
 }

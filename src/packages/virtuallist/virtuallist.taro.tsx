@@ -8,7 +8,7 @@ import React, {
 } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
 import { ComponentDefaults } from '@/utils/typings'

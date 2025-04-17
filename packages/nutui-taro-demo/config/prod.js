@@ -1,11 +1,27 @@
+const { execSync } = require('child_process')
+
+const UI = process.env.UI
+console.log('UI Review', UI)
+
+let hash = ''
+try {
+  hash = execSync('git rev-parse HEAD').toString().trim().substring(0, 7)
+  console.log(`当前 Git hash: ${hash}`)
+} catch (error) {
+  /* empty */
+}
+
+console.log(hash && UI ? `-${hash}` : '')
+
 module.exports = {
   env: {
     NODE_ENV: '"production"',
   },
+  outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? `demo${hash && UI ? `-${hash}` : ''}` : process.env.TARO_ENV}`,
   defineConstants: {},
   mini: {},
   h5: {
-    publicPath: '/taro/react/3x/demo',
+    publicPath: `/taro/react/${process.env.VITE_APP_PROJECT_ID === 'jmapp' ? 'jdesign-3x' : '3x'}/demo${hash && UI ? `-${hash}` : ''}`,
     /**
      * WebpackChain 插件配置
      * @docs https://github.com/neutrinojs/webpack-chain

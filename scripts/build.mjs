@@ -92,9 +92,11 @@ async function buildES(p) {
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
           '@/hooks/*': ['src/hooks/*'],
+          '@/hooks': ['src/hooks'],
           '@/types/*': ['src/types/*'],
           '@/types': ['src/types'],
           '@/locales/*': ['src/locales/*'],
+          '@/locales': ['src/locales'],
         },
         externalHelpers: true,
       },
@@ -254,6 +256,7 @@ async function buildThemeCSS() {
   })
 
   await vite.build({
+    configFile: false,
     logLevel: 'error',
     resolve: {
       alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],

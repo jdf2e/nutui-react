@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Text, View } from '@tarojs/components'
-import { Button, Swipe } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Button, Swipe, pxTransform } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const [shouldCatchMove, setShouldCatchMove] = useState(false)

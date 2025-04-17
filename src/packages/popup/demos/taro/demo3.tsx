@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Popup, Cell } from '@nutui/nutui-react-taro'
+import { Popup, Cell, harmony } from '@nutui/nutui-react-taro'
 import { Heart } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo3 = () => {
   const [showIcon, setShowIcon] = useState(false)

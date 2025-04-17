@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button, Input } from '@nutui/nutui-react-taro'
+import { Button, Input, pxTransform } from '@nutui/nutui-react-taro'
 import { Tips } from '@nutui/icons-react-taro'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo13 = () => {
   return (

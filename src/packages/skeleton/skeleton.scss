@@ -1,46 +1,29 @@
-@import '../avatar/avatar.scss';
-
 .nut-skeleton {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  vertical-align: middle;
-  width: 100%;
+  line-height: 0px;
+  font-size: 0px;
 
   &-content {
-    display: flex;
-    flex-direction: row;
+    position: relative;
+    display: inline-flex;
+    width: $skeleton-line-width;
+    background: $skeleton-background;
+    border-radius: $skeleton-line-border-radius;
+    overflow: hidden;
 
-    &-avatar {
-      margin-right: 20px;
-      background: $skeleton-background !important;
+    &-normal {
+      height: $skeleton-line-normal-height;
     }
 
-    &-block {
-      width: $skeleton-line-width;
-      height: $skeleton-line-height;
-      background: $skeleton-background;
-      margin-top: 10px;
-      border-radius: $skeleton-line-border-radius;
+    &-large {
+      height: $skeleton-line-large-height;
     }
 
-    &-line {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      .nut-skeleton-content-block:last-child {
-        width: 70%;
-      }
+    &-small {
+      height: $skeleton-line-small-height;
+      margin-top: 8px;
     }
-
-    &-title {
-      width: 30%;
-      height: $skeleton-line-height;
-      background: $skeleton-background;
-    }
-
-    &-block-last-child {
-      width: 55%;
+    &-small-0 {
+      margin-top: 0;
     }
   }
 
@@ -51,41 +34,50 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    animation: nut-skeleton 2s ease-in-out 0s infinite;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.02) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    animation-name: nut-skeleton;
+    animation-delay: 0s;
+    animation-duration: 0.6s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-play-state: running;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
   }
 
   @keyframes nut-skeleton {
-    0% {
-      background-position-x: -500px;
+    from {
+      transform: translateX(-100%);
     }
 
     to {
-      background-position-x: calc(500px + 100%);
+      transform: translateX(100%);
     }
   }
 }
 
 [dir='rtl'] .nut-skeleton,
 .nut-rtl .nut-skeleton {
-  &-content {
-    .nut-avatar {
-      margin-right: 0;
-      margin-left: 20px;
-    }
-  }
   &-animation {
     left: auto;
     right: 0;
-    animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
+    animation: nut-skeleton-rtl 2s linear 0s infinite;
   }
 
   @keyframes nut-skeleton-rtl {
-    0% {
-      background-position-x: calc(500px + 100%);
+    from {
+      //background-position: -200% 0;
+      transform: translateX(100%);
     }
 
     to {
-      background-position-x: -500px;
+      //background-position: 200% 0;
+      transform: translateX(-100%);
     }
   }
 }

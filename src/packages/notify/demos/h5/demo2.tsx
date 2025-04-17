@@ -1,46 +1,33 @@
 import React from 'react'
 import { Notify, Cell } from '@nutui/nutui-react'
+import { ArrowRight, NetworkError } from '@nutui/icons-react'
 
 const Demo2 = () => {
-  const primaryNotify = (message: string) => {
-    Notify.primary(message)
-  }
-  const successNotify = (message: string) => {
-    Notify.success(message)
-  }
-  const errorNotify = (message: string) => {
-    Notify.danger(message)
-  }
-  const warningNotify = (message: string) => {
-    Notify.warn(message)
+  const baseNotify = (message: string) => {
+    Notify.text(message, {
+      leftIcon: <NetworkError />,
+      rightIcon: <ArrowRight />,
+      onClose: () => {
+        console.log('close')
+      },
+      onClick: () => {
+        const replace = false
+        const url = 'https://jd.com'
+        if (url) {
+          replace ? window.location.replace(url) : (window.location.href = url)
+        }
+      },
+    })
   }
   return (
-    <Cell.Group>
+    <>
       <Cell
-        title="主要通知"
+        title="支持跳转"
         onClick={(event: React.MouseEvent) => {
-          primaryNotify('主要通知')
+          baseNotify('网络请求失败，请检查您的网络设置')
         }}
       />
-      <Cell
-        title="成功通知"
-        onClick={(event: React.MouseEvent) => {
-          successNotify('成功通知')
-        }}
-      />
-      <Cell
-        title="危险通知"
-        onClick={(event: React.MouseEvent) => {
-          errorNotify('危险通知')
-        }}
-      />
-      <Cell
-        title="警告通知"
-        onClick={(event: React.MouseEvent) => {
-          warningNotify('警告通知')
-        }}
-      />
-    </Cell.Group>
+    </>
   )
 }
 export default Demo2

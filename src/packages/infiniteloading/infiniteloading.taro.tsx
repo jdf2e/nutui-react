@@ -5,8 +5,7 @@ import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { TaroInfiniteLoadingProps } from '@/types'
-import pxTransform from '@/utils/px-transform'
-import { mergeProps } from '@/utils/merge-props'
+import { pxTransform } from '@/utils/taro/px-transform'
 
 const defaultProps = {
   ...ComponentDefaults,

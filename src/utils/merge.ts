@@ -1,5 +1,3 @@
-export default main
-
 export function main(clone: boolean, ...items: any[]): any
 export function main(...items: any[]): any
 export function main(...items: any[]) {

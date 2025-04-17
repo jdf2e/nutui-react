@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import { web } from '@/utils/platform-taro'
+import { web } from '@/utils/taro/platform'
 import { TaroCountDownProps, CountDownTime } from '@/types'
 
 const defaultProps = {

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Tabbar } from '@nutui/nutui-react-taro'
-import { Cart, Category, Hi, Home, User } from '@nutui/icons-react-taro'
+import { Cart, Hi, Home, User, Message } from '@nutui/icons-react-taro'
 
-const Demo2 = () => (
-  <Tabbar defaultValue={2}>
-    <Tabbar.Item title="首页" icon={<Home />} />
-    <Tabbar.Item title="分类" icon={<Category />} />
-    <Tabbar.Item title="逛" icon={<Hi />} />
-    <Tabbar.Item title="购物车" icon={<Cart />} />
-    <Tabbar.Item title="我的" icon={<User />} />
+const Demo5 = () => (
+  <Tabbar>
+    <Tabbar.Item icon={<Home />} title="首页" dot />
+    <Tabbar.Item title="逛" icon={<Hi />} value="内容" />
+    <Tabbar.Item title="消息" icon={<Message />} value={100} />
+    <Tabbar.Item title="购物车" icon={<Cart />} value={80} />
+    <Tabbar.Item title="我的" icon={<User />} value={8} />
   </Tabbar>
 )
 
-export default Demo2
+export default Demo5

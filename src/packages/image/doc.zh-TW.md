@@ -100,8 +100,8 @@ import { Image } from '@nutui/nutui-react'
 | fit | 圖片填充模式，等同於原生的 object-fit 屬性 | `ImageFit` | `fill` |
 | position | 圖片位置，等同於原生的 object-position 屬性 | `ImagePosition` | `center` |
 | alt | 替代文本 | `string` | `-` |
-| width | 寬度，默認單位`px` | `string` | `-` |
-| height | 高度，默認單位`px` | `string` | `-` |
+| width | 寬度，默認單位`px` | `string \| number` | `-` |
+| height | 高度，默認單位`px` | `string \| number` | `-` |
 | radius | 圓角大小 | `string` \| `number` | `-` |
 | error | 是否展示圖片加載失敗 | `boolean \| ReactNode` | `true` |
 | loading | 是否展示加載中圖片 | `boolean \| ReactNode` | `true` |

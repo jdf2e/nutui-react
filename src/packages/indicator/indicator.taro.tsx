@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, ViewProps } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroIndicatorProps, IndicatorType } from '@/types'
 
 const defaultProps = {
@@ -80,7 +80,7 @@ export const Indicator: FunctionComponent<
   }
 
   function maybeFixedWidth() {
-    if (total === 2 || type === 'slide') {
+    if (type === 'dualScreen' || type === 'slide') {
       return `${classPrefix}-fixed-width`
     }
     return ''

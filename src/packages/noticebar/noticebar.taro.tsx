@@ -8,7 +8,7 @@ import React, {
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroNoticeBarProps } from '@/types'
@@ -151,8 +151,8 @@ export const NoticeBar: FunctionComponent<
       if (!wrapRef.current || !contentRef.current) {
         return
       }
-      const warpRes = await getRectByTaro(wrapRef.current)
-      const contentRes = await getRectByTaro(contentRef.current)
+      const warpRes = await getRectInMultiPlatform(wrapRef.current)
+      const contentRes = await getRectInMultiPlatform(contentRef.current)
       const wrapW = warpRes.width
       const offsetW = contentRes.width
       const canScroll =
@@ -252,7 +252,7 @@ export const NoticeBar: FunctionComponent<
   const init = (active = +0) => {
     if (!container?.current) return
     setTimeout(async () => {
-      const rects = await getRectByTaro(container?.current)
+      const rects = await getRectInMultiPlatform(container?.current)
       const _active = Math.max(Math.min(childCount - 1, active), 0)
       const _height = rects?.height
       trackSize = childCount * Number(_height)

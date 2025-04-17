@@ -10,7 +10,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 ## Code demonstration
 
-### Basic usage
+### Title
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Incoming multiline
+### Paragraph
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Show Faces
+### Mock Avatar
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Title paragraph fillet style
+### Heading Paragraph
 
 :::demo
 
@@ -42,7 +42,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 :::
 
-### Display subcomponents
+### Show subcomponents
 
 :::demo
 
@@ -56,13 +56,14 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | Whether to display skeleton screen | `boolean` | `false` |
-| animated | Whether to turn on skeleton screen animation | `boolean` | `false` |
-| avatar | Show avatar | `boolean` | `false` |
-| avatarShape | Avatar shape: square / round | `string` | `round` |
-| avatarSize | Avatar size | `string` | `50px` |
-| rows | Set the number of paragraph lines | `number` | `1` |
-| title | Show paragraph titles | `boolean` | `false` |
+| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `true` |
+| animated | Whether to enable skeleton animation | `boolean` | `false` |
+| size | Specify the built-in height | `'small' \| 'normal' \| 'large'` | `normal` |
+| shape | Set shape | `'square' \| 'round' \| 'circle'` | `round` |
+| duration | Animation duration | `number` | `0.6` |
+| rows | Set number of rows | `number` | `1` |
+| width | Set width, higher priority than `size` property | `string\|number` | `-` |
+| height | Set height, higher priority than `size` property | `string\|number` | `-` |
 
 ## Theming
 
@@ -72,9 +73,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-skeleton-background | background | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | line width | `100%` |
-| \--nutui-skeleton-line-height | line height | `15px` |
-| \--nutui-skeleton-line-border-radius | line borderRadius | `0` |
+| \--nutui-skeleton-background | Background | `rgb(239, 239, 239)` |
+| \--nutui-skeleton-line-width | Line width | `100%` |
+| \--nutui-skeleton-line-small-height | Line height | `16px` |
+| \--nutui-skeleton-line-normal-height | Line height | `24px` |
+| \--nutui-skeleton-line-large-height | Line height | `32px` |
+| \--nutui-skeleton-line-border-radius | Line border radius | `4px` |
 
 <Contribution name="Skeleton" />

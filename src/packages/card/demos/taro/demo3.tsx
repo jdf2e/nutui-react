@@ -1,6 +1,5 @@
 import React from 'react'
-import { Card, Image } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Card, Image, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const state = {

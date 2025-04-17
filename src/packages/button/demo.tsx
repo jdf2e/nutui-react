@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
-import Cell from '../cell'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
@@ -54,41 +53,23 @@ const ButtonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <h2>{translated.e51e4582}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated['0aaad622']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <h2>{translated['7db1a8b2']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated.ce5c5447}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <h2>{translated.a52bef0c}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
         <h2>{translated['0aaad620']}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo7 />
-        </Cell>
+        <Demo7 />
         <h2>{translated.c9e6df49}</h2>
-        <Cell>
-          <Demo8 />
-        </Cell>
+        <Demo8 />
         <h2>{translated.customColor}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo9 />
-        </Cell>
+        <Demo9 />
       </div>
     </>
   )

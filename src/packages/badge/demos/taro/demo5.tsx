@@ -1,7 +1,12 @@
 import React from 'react'
 import { User } from '@nutui/icons-react-taro'
-import { Avatar, Badge, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import {
+  Avatar,
+  Badge,
+  Cell,
+  ConfigProvider,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 
 const customTheme = {
   nutuiBadgeBorderRadius: `${pxTransform(12)} ${pxTransform(12)} ${pxTransform(12)} 0`,

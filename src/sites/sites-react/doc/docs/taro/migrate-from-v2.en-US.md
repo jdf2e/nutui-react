@@ -261,7 +261,12 @@ If your project uses these components, please read the documentation carefully a
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-[//]: # '#### Popover'
+
+#### Popover
+
+- Deprecated style variables that existed in the documentation have been removed, `--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
+- Changed style variable, `--nutui-popover-menu-item-padding` -> `--nutui-popover-padding`，`--nutui-popover-menu-item-width` -> `--nutui-popover-item-width`
+- Revised the data type for `location` to use a unified position type `FullPosition`
 
 #### Price
 
@@ -269,19 +274,29 @@ If your project uses these components, please read the documentation carefully a
 - Added a new color attribute for price types.
 
 [//]: # '#### Progress'
-[//]: # '#### Skeleton'
-[//]: # '#### Steps'
-[//]: # '#### Step'
-[//]: # '#### Swiper'
-[//]: # '#### Table'
-[//]: # '#### Tag'
-[//]: # '#### TrendArrow'
-[//]: # '#### Video'
-[//]: # '#### VirtualList'
-[//]: # '#### WaterMark'
-[//]: # '### 特色组件'
-[//]: # '#### Address'
-[//]: # '#### Barrage'
-[//]: # '#### Card'
-[//]: # '#### Signature'
-[//]: # '#### TimeSelect'
+
+#### Skeleton
+
+- Removed `avatar` attribute, can be simulated using `width` and `height` attributes
+- Removed `avatarShape` attribute, can be set using the `shape` attribute
+- Removed `avatarSize` attribute
+- Added `width` attribute to control width
+- Added `height` attribute to control height
+- Added `duration` attribute to control animation duration
+- Added `size` attribute to select from built-in component heights
+
+  [//]: # '#### Steps'
+  [//]: # '#### Step'
+  [//]: # '#### Swiper'
+  [//]: # '#### Table'
+  [//]: # '#### Tag'
+  [//]: # '#### TrendArrow'
+  [//]: # '#### Video'
+  [//]: # '#### VirtualList'
+  [//]: # '#### WaterMark'
+  [//]: # '### 特色组件'
+  [//]: # '#### Address'
+  [//]: # '#### Barrage'
+  [//]: # '#### Card'
+  [//]: # '#### Signature'
+  [//]: # '#### TimeSelect'
