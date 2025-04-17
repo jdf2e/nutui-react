@@ -7,11 +7,11 @@
   "typings": "dist/es/packages/nutui.react.build.d.ts",
   "sideEffects": [
     "*.scss",
-    "dist/es/**/style/*",
-    "dist/cjs/**/style/*",
-    "dist/style.css",
-    "dist/styles/font/*",
-    "dist/styles/font-jmapp/*"
+    "dist/es/**/style{,-jmapp,-jrkf}/*",
+    "dist/cjs/**/style{,-jmapp,-jrkf}/*",
+    "dist/style{,-jmapp,-jrkf}.css",
+    "dist/styles/**/*",
+    "dist/styles/font{,-jmapp,-jrkf}/*"
   ],
   "description": "京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序",
   "keywords": [
