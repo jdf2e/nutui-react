@@ -502,7 +502,7 @@ console.timeEnd('Build CSS')
 
 console.time('Build jmapp CSS')
 await buildCSS('jmapp')
-console.timeEnd('Build CSS')
+console.timeEnd('Build jmapp CSS')
 
 console.time('Build jrkf CSS')
 await buildCSS('jrkf')
