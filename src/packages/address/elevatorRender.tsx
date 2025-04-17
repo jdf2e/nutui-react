@@ -103,7 +103,6 @@ export const ElevatorRender: FunctionComponent<
   const { locale } = useConfig()
 
   const classPrefix = 'nut-address'
-  const prefixEleCls = 'nut-address-elevator'
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
   const [innerOptions, setInnerOptions] = useState(outerOptions)
@@ -120,8 +119,8 @@ export const ElevatorRender: FunctionComponent<
   })
 
   const [innerValue, setInnerValue] = useState(value)
-
   const [addressTip, setAddressTip] = useState('选择省份/地区')
+  const [levelIndex, setLevelIndex] = useState(0)
 
   // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
@@ -146,15 +145,8 @@ export const ElevatorRender: FunctionComponent<
     const next = []
     let end = false
     let currentOptions = options
-    console.log('levels', innerValue)
     for (const [index, val] of innerValue.entries()) {
       const opt = currentOptions?.flatMap((o: any) => {
-        // console.log(
-        //   'currentOptions',
-        //   o,
-        //   val,
-        //   o.list.find((item: any) => item.name === val)
-        // )
         const foundItem = o.list.find((item: any) => item.name === val)
         return foundItem
       })[0]
@@ -191,15 +183,6 @@ export const ElevatorRender: FunctionComponent<
       }
     },
   })
-  // const actions: CascaderActions = {
-  //   open: () => {
-  //     setVisible(true)
-  //   },
-  //   close: () => {
-  //     setVisible(false)
-  //   },
-  // }
-  // useImperativeHandle(ref, () => actions)
 
   useEffect(() => {
     if (!visible) {
@@ -213,55 +196,30 @@ export const ElevatorRender: FunctionComponent<
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
+    setAddressTip(innerValue.length ? '请选择' : '选择省份/地区')
   }, [innerValue])
 
-  useEffect(() => {
-    const load = async () => {
-      const parent = { children: [] }
-      try {
-        await innerValue.reduce(async (promise: Promise<any>, val, key) => {
-          const pane = await onLoad({ value: val }, key)
-          const parent = await promise
-          parent.children = pane
-          if (key === innerValue.length - 1) {
-            return Promise.resolve(parent)
-          }
-          if (pane) {
-            const node = pane.find((p) => p.value === val)
-            return Promise.resolve(node)
-          }
-        }, Promise.resolve(parent))
-
-        // 如果需要处理最终结果，可以在这里使用 last
-        setInnerOptions(parent.children)
-      } catch (error) {
-        console.error('Error loading data:', error)
-      }
-    }
-
-    if (lazy) load()
-  }, [lazy])
-
   const renderTab = () => {
-    console.log('tabs', levels)
+    if (!levels[0].name) return
     return (
       <div className={`${classPrefix}-selected`}>
         {levels.map((item, index) => (
           <>
-            <div
-              className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
-              key={`-${index}`}
-              onClick={() => {
-                console.log('index', Number(index), item.children)
-                props.onTabsChange?.(Number(index))
-                setTabActiveIndex(Number(index))
-                setLevelIndex(index)
-                setElevatorOptions(item.children)
-              }}
-            >
-              {item.name}
-            </div>
-            {levels.length - 1 > index ? (
+            {item.name ? (
+              <div
+                className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
+                key={`-${index}`}
+                onClick={() => {
+                  props.onTabsChange?.(Number(index))
+                  setTabActiveIndex(Number(index))
+                  setLevelIndex(index)
+                  setElevatorOptions(item.children)
+                }}
+              >
+                {item.name}
+              </div>
+            ) : null}
+            {levels[index + 1]?.name ? (
               <div className={`${classPrefix}-selected-border`}>-</div>
             ) : null}
           </>
@@ -270,7 +228,32 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
+  const onElevatorItemClick = (elevatorItem: AreaInfo, levelIndex: number) => {
+    if (elevatorItem?.disabled) return
+    if (elevatorItem.children?.length) {
+      setElevatorOptions(elevatorItem.children)
+      const distIndex = levelIndex + 1
+      setLevelIndex(distIndex)
+    } else {
+      console.log('close popup')
+    }
+
+    const nextValue = innerValue.slice(0, levelIndex)
+    if (elevatorItem.name) {
+      setLoading(!!onLoad && { [levelIndex]: elevatorItem.name })
+      nextValue[levelIndex] = elevatorItem.name
+    }
+    if (!elevatorItem.children && !onLoad) {
+      setVisible(false)
+      setValue(nextValue)
+    }
+    setInnerValue(nextValue)
+    setLoading({})
+  }
+
   const renderHotArea = () => {
+    // 选中省份/直辖市时，会展示热门城市
+    if (levels.length && tabActiveIndex !== 0) return
     return (
       <>
         <div className={`${classPrefix}-title`}>热门城市</div>
@@ -301,54 +284,10 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const [levelIndex, setLevelIndex] = useState(0)
-
-  const onElevatorItemClick = (elevatorItem: AreaInfo, levelIndex: number) => {
-    console.log('onitem click', elevatorItem, innerValue, levelIndex)
-    if (elevatorItem?.disabled) return
-    const distIndex = levelIndex + 1
-    setLevelIndex(distIndex)
-
-    if (elevatorItem.children?.length) {
-      setElevatorOptions(elevatorItem.children)
-    } else {
-      console.log('close popup')
-    }
-
-    const nextValue = innerValue.slice(0, levelIndex)
-    console.log('nextvalue', nextValue)
-    // const nextPathNodes = pathNodes.current.slice(0, levelIndex)
-    if (elevatorItem.name) {
-      setLoading(!!onLoad && { [levelIndex]: elevatorItem.name })
-      nextValue[levelIndex] = elevatorItem.name
-      // nextPathNodes[levelIndex] = elevatorItem
-      // pathNodes.current = nextPathNodes
-      // props?.onPathChange?.(nextValue, pathNodes.current)
-    }
-    // if (onLoad) {
-    //   // 叶子节点不操作
-    //   if (!elevatorItem.leaf) {
-    //     const asyncOptions = await onLoad(elevatorItem, levelIndex)
-    //     // 修改 options 触发渲染逻辑
-    //     if (asyncOptions) elevatorItem.children = asyncOptions
-    //   } else {
-    //     setVisible(false)
-    //     setValue(nextValue)
-    //   }
-    // }
-    if (!elevatorItem.children && !onLoad) {
-      setVisible(false)
-      setValue(nextValue)
-    }
-    console.log('330 ', nextValue)
-    setInnerValue(nextValue)
-    setLoading({})
-  }
-
   const renderElevatorList = () => {
     return (
       <>
-        {levels.length ? renderTab() : null}
+        {renderTab()}
         {renderHotArea()}
         {renderArea()}
       </>
