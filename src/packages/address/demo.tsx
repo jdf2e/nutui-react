@@ -6,10 +6,12 @@ import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
+import Demo11 from './demos/h5/demo11'
 
 const AddressDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
+      elevator: '电梯地址',
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
       existList: '选择已有地址',
@@ -18,6 +20,7 @@ const AddressDemo = () => {
       uncontrolled: '非受控方式',
     },
     'zh-TW': {
+      elevator: '电梯地址',
       customAddress: '選擇自定義地址',
       selectCity: '選中省市區',
       existList: '選擇已有地址',
@@ -26,6 +29,7 @@ const AddressDemo = () => {
       uncontrolled: '非受控方式',
     },
     'en-US': {
+      elevator: 'Elevator Address',
       customAddress: 'Choose Custom Address',
       selectCity: 'Choose City',
       existList: 'Choose Exist Address',
@@ -38,6 +42,8 @@ const AddressDemo = () => {
   return (
     <>
       <div className="demo">
+        <h2>{translated.elevator}</h2>
+        <Demo11 />
         <h2>{translated.customAddress}</h2>
         <Demo1 />
         <h2>{translated.selectCity}</h2>

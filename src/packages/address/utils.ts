@@ -1,6 +1,6 @@
 const generateId = (name: string) => {
   // 简单实现：根据 name 生成一个随机 ID
-  return name.charCodeAt(0) + name.charCodeAt(1) // 使用字符的 Unicode 值作为 ID
+  return name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) // 使用字符的 Unicode 值作为 ID
 }
 
 export const transformData = (data: any) => {

@@ -22,7 +22,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: [],
-  type: 'elevator',
+  type: 'custom',
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
@@ -99,18 +99,19 @@ export const InternalAddress: ForwardRefRenderFunction<
   }
 
   const renderLeftOnCustomSwitch = () => {
-    if (custom) {
-      return (
-        <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
-          {React.isValidElement(backIcon) ? (
-            backIcon
-          ) : (
-            <ArrowLeft color="#cccccc" />
-          )}
-        </div>
-      )
-    }
-    return null
+    return (
+      <>
+        {custom && (
+          <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
+            {React.isValidElement(backIcon) ? (
+              backIcon
+            ) : (
+              <ArrowLeft color="#cccccc" />
+            )}
+          </div>
+        )}
+      </>
+    )
   }
 
   const selectedExistItem = (data: AddressList) => {
@@ -146,45 +147,6 @@ export const InternalAddress: ForwardRefRenderFunction<
           onChange?.(val, params)
         }}
       />
-    )
-    return (
-      <Popup
-        visible={innerVisible}
-        position="bottom"
-        style={{ height: '87%' }}
-        round
-        closeable
-        closeIcon={closeIcon}
-        title={title || locale.address.selectRegion}
-        onClose={handleClose}
-      >
-        <div
-          className={`${classPrefix} ${className || ''}`}
-          style={{ ...style }}
-        >
-          {
-            // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
-            <ElevatorRender
-              visible={innerVisible}
-              closeable
-              title={title || locale.address.selectRegion}
-              left={renderLeftOnCustomSwitch()}
-              defaultValue={defaultValue}
-              closeIcon={closeIcon}
-              options={options}
-              hotList={hotList}
-              format={format}
-              optionKey={optionKey}
-              type={currentType}
-              height={height}
-              onClose={handleClose}
-              onChange={(val: CascaderValue, params?: any) => {
-                onChange?.(val, params)
-              }}
-            />
-          }
-        </div>
-      </Popup>
     )
   }
   const renderCascator = () => {
