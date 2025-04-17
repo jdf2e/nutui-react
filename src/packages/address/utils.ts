@@ -4,19 +4,28 @@ const generateId = (name: string) => {
 }
 
 export const transformData = (data: any) => {
-  const groupByWordCode = (data: any) => {
+  const groupByWordCode = (
+    data: any,
+    parentId: string | number,
+    parentName: string
+  ) => {
     return data?.reduce((acc: any, item: any) => {
       const { wordCode } = item
       if (!acc[wordCode]) {
         acc[wordCode] = []
       }
+      const currentId = generateId(item.value)
       acc[wordCode].push({
         name: item.value,
         wordCode: item.wordCode,
-        id: generateId(item.value),
-        children: (item.children && groupByWordCode(item.children)) || null,
+        id: currentId,
+        pId: parentId,
+        pName: parentName,
+        children:
+          (item.children &&
+            groupByWordCode(item.children, currentId, item.text)) ||
+          null,
       })
-
       return acc
     }, {})
   }
@@ -34,7 +43,22 @@ export const transformData = (data: any) => {
     }))
   }
 
-  const middleData = groupByWordCode(data)
+  const middleData = groupByWordCode(data, '', '')
   const resultData = extractTitles(middleData)
   return resultData
+}
+
+export const findDataByName: any = (data: any, name: string) => {
+  for (const item of data) {
+    if (item.name?.indexOf(name) === 0) return item
+    if (item.children) {
+      const found = findDataByName(item.children, name)
+      if (found) return found
+    }
+    if (item.list) {
+      const found = findDataByName(item.list, name)
+      if (found) return found
+    }
+  }
+  return null // 如果没有找到，返回 null
 }

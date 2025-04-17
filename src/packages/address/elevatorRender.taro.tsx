@@ -12,7 +12,7 @@ import {
   normalizeListOptions,
   normalizeOptions,
 } from '@/packages/cascader/utils'
-import { transformData } from './utils'
+import { transformData, findDataByName } from './utils'
 import {
   CascaderOption,
   WebCascaderProps,
@@ -146,10 +146,12 @@ export const ElevatorRender: FunctionComponent<
     let end = false
     let currentOptions = options
     for (const [index, val] of innerValue.entries()) {
-      const opt = currentOptions?.flatMap((o: any) => {
-        const foundItem = o.list.find((item: any) => item.name === val)
-        return foundItem
-      })[0]
+      const opt = currentOptions
+        ?.flatMap((o: any) => {
+          const foundItem = o.list.find((item: any) => item.name === val)
+          return foundItem
+        })
+        .filter((item) => item !== undefined)[0]
 
       next.push({
         name: val,
@@ -201,6 +203,7 @@ export const ElevatorRender: FunctionComponent<
 
   const renderTab = () => {
     if (!levels[0].name) return
+    // console.log('tabs', levels)
     return (
       <div className={`${classPrefix}-selected`}>
         {levels.map((item, index) => (
@@ -237,7 +240,6 @@ export const ElevatorRender: FunctionComponent<
     } else {
       console.log('close popup')
     }
-
     const nextValue = innerValue.slice(0, levelIndex)
     if (elevatorItem.name) {
       setLoading(!!onLoad && { [levelIndex]: elevatorItem.name })
@@ -248,7 +250,20 @@ export const ElevatorRender: FunctionComponent<
       setValue(nextValue)
     }
     setInnerValue(nextValue)
-    setLoading({})
+  }
+
+  const onHotItemClick = (hotItem: any) => {
+    // 通过修改 innerValue 构造 level 数据
+    const distData = findDataByName(options, hotItem.name)
+    // 热门城市主要是一级城市和二级城市，可以扩展。TODO
+    if (distData) {
+      const innerValue = [distData.pName, distData.name].filter(
+        (item) => item !== ''
+      )
+      setInnerValue(innerValue)
+      setElevatorOptions(distData.children)
+      setLevelIndex(innerValue.length)
+    }
   }
 
   const renderHotArea = () => {
@@ -259,7 +274,11 @@ export const ElevatorRender: FunctionComponent<
         <div className={`${classPrefix}-title`}>热门城市</div>
         <div className={`${classPrefix}-hotlist`}>
           {hotList.map((item, index) => (
-            <div className={`${classPrefix}-hotlist-item`} key={`hot-${index}`}>
+            <div
+              className={`${classPrefix}-hotlist-item`}
+              key={`hot-${index}`}
+              onClick={() => onHotItemClick(item)}
+            >
               {item.name}
             </div>
           ))}
