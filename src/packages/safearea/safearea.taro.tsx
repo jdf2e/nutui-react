@@ -3,18 +3,19 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { TaroSafeAreaProps } from '@/types'
+import { jd, weapp } from '../nutui.react.build.taro'
 
 const classPrefix = 'nut-safe-area'
 export const SafeArea: FC<TaroSafeAreaProps> = (props) => {
   const getSafeAreaStyle = () => {
-    if (['WEAPP', 'JD'].includes(Taro.getEnv())) {
+    if (weapp() || jd()) {
       const { screenHeight, safeArea } = Taro.getSystemInfoSync()
       if (props.position === 'top') {
-        return { paddingTop: `${safeArea?.top || 0}px` }
+        return { paddingTop: safeArea?.top || 0 }
       }
       if (props.position === 'bottom') {
         const bottom = safeArea?.bottom || screenHeight
-        return { paddingBottom: `${screenHeight - bottom}px` }
+        return { paddingBottom: screenHeight - bottom }
       }
     }
     return {}
