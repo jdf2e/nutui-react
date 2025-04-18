@@ -16,7 +16,6 @@ type TaroInput = Omit<
   OmittedInput
 
 export interface TaroInputProps extends TaroInput {
-  focus?: boolean
   onClick?: (e: ITouchEvent) => void
   onFocus?: (value: string, height?: number) => void
 }
