@@ -150,7 +150,7 @@ export default defineConfig({
             // Handling on-demand import of SCSS files, choose one of the two methods
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`
 
-            // JDesign
+            // JMAPP
             // Handling on-demand import of CSS files, choose one of the two methods
             // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
             // Handling on-demand import of SCSS files, choose one of the two methods
@@ -174,7 +174,7 @@ export default defineConfig({
       scss: {
         api: 'modern-compiler', // or "modern"，"legacy"
         additionalData: `@import '@nutui/nutui-react/dist/styles/variables.scss';`,
-        // JDesign
+        // JMAPP
         // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jmapp.scss';`
         // JRKF
         // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jrkf.scss';`
