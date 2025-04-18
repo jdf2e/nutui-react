@@ -87,8 +87,6 @@ export const ElevatorRender: FunctionComponent<
   } = useConfig()
   const classPrefix = 'nut-address'
 
-  const [tabActiveIndex, setTabActiveIndex] = useState(0)
-  const [innerOptions, setInnerOptions] = useState(outerOptions)
   const [value, setValue] = usePropsValue({
     value: outerValue,
     defaultValue: outerDefaultValue,
@@ -99,9 +97,12 @@ export const ElevatorRender: FunctionComponent<
     },
   })
 
+  const [innerOptions, setInnerOptions] = useState(outerOptions)
   const [innerValue, setInnerValue] = useState(value)
+  const [elevatorOptions, setElevatorOptions] = useState<any>([])
   const [addressTip, setAddressTip] = useState(selectProvice)
   const [levelIndex, setLevelIndex] = useState(0)
+  const [tabActiveIndex, setTabActiveIndex] = useState(0)
 
   // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
@@ -113,8 +114,6 @@ export const ElevatorRender: FunctionComponent<
     }
     return transformData(innerOptions)
   }, [innerOptions, optionKey, format])
-
-  const [elevatorOptions, setElevatorOptions] = useState(options)
 
   useEffect(() => {
     setElevatorOptions(options)
@@ -145,6 +144,8 @@ export const ElevatorRender: FunctionComponent<
       next.push({
         name: null,
         children: currentOptions,
+        levels: -1,
+        current: false,
       })
     }
     return next
@@ -154,9 +155,7 @@ export const ElevatorRender: FunctionComponent<
     value: outerVisible,
     defaultValue: undefined,
     onChange: (value) => {
-      if (value === false) {
-        onClose()
-      }
+      if (value === false) onClose()
     },
   })
 
@@ -182,6 +181,7 @@ export const ElevatorRender: FunctionComponent<
     if (elevatorItem.name) {
       nextValue[levelIndex] = elevatorItem.name
     }
+    setInnerValue(nextValue)
     if (elevatorItem.children?.length) {
       setElevatorOptions(elevatorItem.children)
       setLevelIndex(levelIndex + 1)
@@ -189,7 +189,6 @@ export const ElevatorRender: FunctionComponent<
       setVisible(false)
       setValue(nextValue)
     }
-    setInnerValue(nextValue)
   }
 
   const handleHotItemClick = (hotItem: any) => {
@@ -210,14 +209,13 @@ export const ElevatorRender: FunctionComponent<
     return (
       <View className={`${classPrefix}-selected`}>
         {levels.map((item, index) => (
-          <>
+          <React.Fragment key={`adtabs-${index}`}>
             {item.name && (
               <View
                 className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
-                key={`-${index}`}
                 onClick={() => {
-                  props.onTabsChange?.(Number(index))
-                  setTabActiveIndex(Number(index))
+                  props.onTabsChange?.(index)
+                  setTabActiveIndex(index)
                   setLevelIndex(index)
                   setElevatorOptions(item.children)
                 }}
@@ -228,14 +226,14 @@ export const ElevatorRender: FunctionComponent<
             {levels[index + 1]?.name && (
               <View className={`${classPrefix}-selected-border`}>-</View>
             )}
-          </>
+          </React.Fragment>
         ))}
       </View>
     )
   }
 
   const renderHotCity = () => {
-    if (levels.length && tabActiveIndex !== 0) return
+    if (levels.length && tabActiveIndex !== 0) return null
     return (
       <>
         <View className={`${classPrefix}-title`}>{hotCity}</View>
@@ -254,31 +252,27 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const renderArea = () => {
-    return (
-      <>
-        <View className={`${classPrefix}-title`}>{addressTip}</View>
-        <Elevator
-          className={`${classPrefix}-elevator`}
-          list={elevatorOptions}
-          onItemClick={(key: string, item: any) =>
-            handleElevatorItemClick(item, levelIndex)
-          }
-          height="300px"
-        />
-      </>
-    )
-  }
+  const renderArea = () => (
+    <>
+      <View className={`${classPrefix}-title`}>{addressTip}</View>
+      <Elevator
+        className={`${classPrefix}-elevator`}
+        list={elevatorOptions}
+        onItemClick={(key: string, item: any) =>
+          handleElevatorItemClick(item, levelIndex)
+        }
+        height="300px"
+      />
+    </>
+  )
 
-  const renderContent = () => {
-    return (
-      <>
-        {renderTabs()}
-        {renderHotCity()}
-        {renderArea()}
-      </>
-    )
-  }
+  const renderContent = () => (
+    <>
+      {renderTabs()}
+      {renderHotCity()}
+      {renderArea()}
+    </>
+  )
 
   return popup ? (
     <Popup

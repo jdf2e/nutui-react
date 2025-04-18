@@ -105,24 +105,24 @@ export const ElevatorRender: FunctionComponent<
 
   // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
-    let currOptions = innerOptions
     if (!isEmpty(format)) {
-      currOptions = normalizeListOptions(innerOptions, format)
-    } else if (!isEmpty(optionKey)) {
-      currOptions = normalizeOptions(innerOptions, optionKey) || []
+      return transformData(normalizeListOptions(innerOptions, format))
     }
-    return transformData(currOptions)
+    if (!isEmpty(optionKey)) {
+      return transformData(normalizeOptions(innerOptions, optionKey) || [])
+    }
+    return transformData(innerOptions)
   }, [innerOptions, optionKey, format])
 
   useEffect(() => {
     setElevatorOptions(options)
   }, [options])
 
-  const levels: any[] = useMemo(() => {
+  const levels = useMemo(() => {
     const next = []
     let end = false
     let currentOptions = options
-    for (const [index, val] of innerValue.entries()) {
+    innerValue.forEach((val, index) => {
       const opt = currentOptions
         ?.flatMap((o: any) => o.list.find((item: any) => item.name === val))
         .filter((item) => item !== undefined)[0]
@@ -138,11 +138,13 @@ export const ElevatorRender: FunctionComponent<
       } else {
         end = true
       }
-    }
+    })
     if (!end) {
       next.push({
         name: null,
         children: currentOptions,
+        levels: -1,
+        current: false,
       })
     }
     return next
@@ -152,9 +154,7 @@ export const ElevatorRender: FunctionComponent<
     value: outerVisible,
     defaultValue: undefined,
     onChange: (value) => {
-      if (value === false) {
-        onClose()
-      }
+      if (value === false) onClose()
     },
   })
 
@@ -180,6 +180,7 @@ export const ElevatorRender: FunctionComponent<
     if (elevatorItem.name) {
       nextValue[levelIndex] = elevatorItem.name
     }
+    setInnerValue(nextValue)
     if (elevatorItem.children?.length) {
       setElevatorOptions(elevatorItem.children)
       setLevelIndex(levelIndex + 1)
@@ -187,7 +188,6 @@ export const ElevatorRender: FunctionComponent<
       setVisible(false)
       setValue(nextValue)
     }
-    setInnerValue(nextValue)
   }
 
   const handleHotItemClick = (hotItem: any) => {
@@ -208,14 +208,13 @@ export const ElevatorRender: FunctionComponent<
     return (
       <div className={`${classPrefix}-selected`}>
         {levels.map((item, index) => (
-          <>
+          <React.Fragment key={`adtabs-${index}`}>
             {item.name && (
               <div
                 className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
-                key={`-${index}`}
                 onClick={() => {
-                  props.onTabsChange?.(Number(index))
-                  setTabActiveIndex(Number(index))
+                  props.onTabsChange?.(index)
+                  setTabActiveIndex(index)
                   setLevelIndex(index)
                   setElevatorOptions(item.children)
                 }}
@@ -226,14 +225,14 @@ export const ElevatorRender: FunctionComponent<
             {levels[index + 1]?.name && (
               <div className={`${classPrefix}-selected-border`}>-</div>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     )
   }
 
   const renderHotCity = () => {
-    if (levels.length && tabActiveIndex !== 0) return
+    if (levels.length && tabActiveIndex !== 0) return null
     return (
       <>
         <div className={`${classPrefix}-title`}>{hotCity}</div>
@@ -252,31 +251,27 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const renderArea = () => {
-    return (
-      <>
-        <div className={`${classPrefix}-title`}>{addressTip}</div>
-        <Elevator
-          className={`${classPrefix}-elevator`}
-          list={elevatorOptions}
-          onItemClick={(key: string, item: any) =>
-            handleElevatorItemClick(item, levelIndex)
-          }
-          height="300px"
-        />
-      </>
-    )
-  }
+  const renderArea = () => (
+    <>
+      <div className={`${classPrefix}-title`}>{addressTip}</div>
+      <Elevator
+        className={`${classPrefix}-elevator`}
+        list={elevatorOptions}
+        onItemClick={(key: string, item: any) =>
+          handleElevatorItemClick(item, levelIndex)
+        }
+        height="300px"
+      />
+    </>
+  )
 
-  const renderContent = () => {
-    return (
-      <>
-        {renderTabs()}
-        {renderHotCity()}
-        {renderArea()}
-      </>
-    )
-  }
+  const renderContent = () => (
+    <>
+      {renderTabs()}
+      {renderHotCity()}
+      {renderArea()}
+    </>
+  )
 
   return popup ? (
     <Popup
