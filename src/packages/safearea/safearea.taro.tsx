@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { TaroSafeAreaProps } from '@/types'
-import { jd } from '../nutui.react.build.taro'
+import { jd } from '../../utils/taro/platform'
 
 const classPrefix = 'nut-safe-area'
 export const SafeArea: FC<TaroSafeAreaProps> = (props) => {
