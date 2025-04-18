@@ -65,6 +65,8 @@ const zhUG: BaseLang = {
     selectRegion: 'ئادىرىسنى تاللاڭ',
     deliveryTo: 'قەيەرگە',
     chooseAnotherAddress: 'باشقىنى تاللاش',
+    hotCity: 'ئاۋات شەھەرلەر',
+    selectProvice: 'ئۆلكە / شەھەرنى تاللاڭ',
   },
   signature: {
     reSign: 'قايتا',

@@ -1,11 +1,6 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 
+import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import Elevator from '../elevator/index.taro'
 import {
@@ -25,9 +20,6 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { useConfig } from '@/packages/configprovider'
 
-// 支持热区快速定位
-// 支持电梯快速定位
-// 已选省份地区放在顶部，独立展示
 type AreaInfo = {
   name: string
   id: string | number
@@ -73,20 +65,14 @@ export const ElevatorRender: FunctionComponent<
     >
 > = (props) => {
   const {
-    children,
-    type,
-    height,
     hotList,
     title,
     left,
-    defaultValue,
     optionKey,
     format,
     onClose,
     onChange,
     onPathChange,
-    activeColor,
-    activeIcon,
     popup,
     popupProps = {},
     visible: outerVisible,
@@ -96,30 +82,29 @@ export const ElevatorRender: FunctionComponent<
     closeable,
     closeIconPosition,
     closeIcon,
-    lazy,
-    onLoad,
-    ...rest
   } = mergeProps(defaultProps, props)
-  const { locale } = useConfig()
-
+  const {
+    locale: {
+      select,
+      address: { hotCity, selectProvice },
+    },
+  } = useConfig()
   const classPrefix = 'nut-address'
 
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
   const [innerOptions, setInnerOptions] = useState(outerOptions)
-  const [loading, setLoading] = useState<{ [key: string]: any }>({})
-
   const [value, setValue] = usePropsValue({
     value: outerValue,
     defaultValue: outerDefaultValue,
     finalValue: [],
     onChange: (value) => {
-      props.onChange?.(value, pathNodes.current)
-      props.onPathChange?.(value, pathNodes.current)
+      onChange(value, [])
+      onPathChange(value, [])
     },
   })
 
   const [innerValue, setInnerValue] = useState(value)
-  const [addressTip, setAddressTip] = useState('选择省份/地区')
+  const [addressTip, setAddressTip] = useState(selectProvice)
   const [levelIndex, setLevelIndex] = useState(0)
 
   // 初始化数据，只格式化一次；动态数据todo
@@ -139,18 +124,13 @@ export const ElevatorRender: FunctionComponent<
     setElevatorOptions(options)
   }, [options])
 
-  const pathNodes = useRef<CascaderOption[]>([])
-
   const levels: any[] = useMemo(() => {
     const next = []
     let end = false
     let currentOptions = options
     for (const [index, val] of innerValue.entries()) {
       const opt = currentOptions
-        ?.flatMap((o: any) => {
-          const foundItem = o.list.find((item: any) => item.name === val)
-          return foundItem
-        })
+        ?.flatMap((o: any) => o.list.find((item: any) => item.name === val))
         .filter((item) => item !== undefined)[0]
 
       next.push({
@@ -159,12 +139,10 @@ export const ElevatorRender: FunctionComponent<
         levelIndex: index,
         current: index === tabActiveIndex,
       })
-      // pathNodes.current[index] = opt
       if (opt?.children) {
         currentOptions = opt.children
       } else {
         end = true
-        // break
       }
     }
     if (!end) {
@@ -181,15 +159,13 @@ export const ElevatorRender: FunctionComponent<
     defaultValue: undefined,
     onChange: (value) => {
       if (value === false) {
-        props.onClose?.()
+        onClose()
       }
     },
   })
 
   useEffect(() => {
-    if (!visible) {
-      setInnerValue(value)
-    }
+    if (!visible) setInnerValue(value)
   }, [visible, value])
 
   useEffect(() => {
@@ -198,61 +174,30 @@ export const ElevatorRender: FunctionComponent<
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
-    setAddressTip(innerValue.length ? '请选择' : '选择省份/地区')
+    setAddressTip(innerValue.length ? select : selectProvice)
   }, [innerValue])
 
-  const renderTab = () => {
-    if (!levels[0].name) return
-    // console.log('tabs', levels)
-    return (
-      <div className={`${classPrefix}-selected`}>
-        {levels.map((item, index) => (
-          <>
-            {item.name ? (
-              <div
-                className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
-                key={`-${index}`}
-                onClick={() => {
-                  props.onTabsChange?.(Number(index))
-                  setTabActiveIndex(Number(index))
-                  setLevelIndex(index)
-                  setElevatorOptions(item.children)
-                }}
-              >
-                {item.name}
-              </div>
-            ) : null}
-            {levels[index + 1]?.name ? (
-              <div className={`${classPrefix}-selected-border`}>-</div>
-            ) : null}
-          </>
-        ))}
-      </div>
-    )
-  }
-
-  const onElevatorItemClick = (elevatorItem: AreaInfo, levelIndex: number) => {
-    if (elevatorItem?.disabled) return
+  const handleElevatorItemClick = (
+    elevatorItem: AreaInfo,
+    levelIndex: number
+  ) => {
+    // if (elevatorItem?.disabled) return
+    const nextValue = innerValue.slice(0, levelIndex)
+    if (elevatorItem.name) {
+      nextValue[levelIndex] = elevatorItem.name
+    }
     if (elevatorItem.children?.length) {
       setElevatorOptions(elevatorItem.children)
       const distIndex = levelIndex + 1
       setLevelIndex(distIndex)
     } else {
-      console.log('close popup')
-    }
-    const nextValue = innerValue.slice(0, levelIndex)
-    if (elevatorItem.name) {
-      setLoading(!!onLoad && { [levelIndex]: elevatorItem.name })
-      nextValue[levelIndex] = elevatorItem.name
-    }
-    if (!elevatorItem.children && !onLoad) {
       setVisible(false)
       setValue(nextValue)
     }
     setInnerValue(nextValue)
   }
 
-  const onHotItemClick = (hotItem: any) => {
+  const handleHotItemClick = (hotItem: any) => {
     // 通过修改 innerValue 构造 level 数据
     const distData = findDataByName(options, hotItem.name)
     // 热门城市主要是一级城市和二级城市，可以扩展。TODO
@@ -265,24 +210,51 @@ export const ElevatorRender: FunctionComponent<
       setLevelIndex(innerValue.length)
     }
   }
+  const renderTabs = () => {
+    if (!levels[0].name) return null
+    return (
+      <View className={`${classPrefix}-selected`}>
+        {levels.map((item, index) => (
+          <>
+            {item.name && (
+              <View
+                className={`${classPrefix}-selected-item ${item.current ? 'active' : ''}`}
+                key={`-${index}`}
+                onClick={() => {
+                  props.onTabsChange?.(Number(index))
+                  setTabActiveIndex(Number(index))
+                  setLevelIndex(index)
+                  setElevatorOptions(item.children)
+                }}
+              >
+                {item.name}
+              </View>
+            )}
+            {levels[index + 1]?.name && (
+              <View className={`${classPrefix}-selected-border`}>-</View>
+            )}
+          </>
+        ))}
+      </View>
+    )
+  }
 
-  const renderHotArea = () => {
-    // 选中省份/直辖市时，会展示热门城市
+  const renderHotCity = () => {
     if (levels.length && tabActiveIndex !== 0) return
     return (
       <>
-        <div className={`${classPrefix}-title`}>热门城市</div>
-        <div className={`${classPrefix}-hotlist`}>
+        <View className={`${classPrefix}-title`}>{hotCity}</View>
+        <View className={`${classPrefix}-hotlist`}>
           {hotList.map((item, index) => (
-            <div
+            <View
               className={`${classPrefix}-hotlist-item`}
               key={`hot-${index}`}
-              onClick={() => onHotItemClick(item)}
+              onClick={() => handleHotItemClick(item)}
             >
               {item.name}
-            </div>
+            </View>
           ))}
-        </div>
+        </View>
       </>
     )
   }
@@ -290,12 +262,12 @@ export const ElevatorRender: FunctionComponent<
   const renderArea = () => {
     return (
       <>
-        <div className={`${classPrefix}-title`}>{addressTip}</div>
+        <View className={`${classPrefix}-title`}>{addressTip}</View>
         <Elevator
           className={`${classPrefix}-elevator`}
           list={elevatorOptions}
           onItemClick={(key: string, item: any) =>
-            onElevatorItemClick(item, levelIndex)
+            handleElevatorItemClick(item, levelIndex)
           }
           height="300px"
         />
@@ -303,11 +275,11 @@ export const ElevatorRender: FunctionComponent<
     )
   }
 
-  const renderElevatorList = () => {
+  const renderContent = () => {
     return (
       <>
-        {renderTab()}
-        {renderHotArea()}
+        {renderTabs()}
+        {renderHotCity()}
         {renderArea()}
       </>
     )
@@ -323,15 +295,15 @@ export const ElevatorRender: FunctionComponent<
       closeIcon={closeIcon}
       closeable={closeable}
       closeIconPosition={closeIconPosition}
-      title={props.title}
-      left={props.left}
+      title={title}
+      left={left}
       onOverlayClick={() => setVisible(false)}
       onCloseIconClick={() => setVisible(false)}
     >
-      {renderElevatorList()}
+      {renderContent()}
     </Popup>
   ) : (
-    renderElevatorList()
+    renderContent()
   )
 }
 

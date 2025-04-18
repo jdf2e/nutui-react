@@ -65,6 +65,8 @@ export interface BaseLang {
     selectRegion: string
     deliveryTo: string
     chooseAnotherAddress: string
+    hotCity: string
+    selectProvice: string
   }
   signature: {
     reSign: string

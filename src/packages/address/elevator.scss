@@ -44,12 +44,9 @@
     border-bottom: 1px solid $color-border;
     &-item {
       font-size: 12px;
-      // display: flex;
       display: inline-block;
-      // justify-content: center;
-      // align-items: center;
-      height: 48px;
-      line-height: 48px;
+      height: 28px;
+      line-height: 28px;
       padding: 0 12px;
       border-radius: 4px;
       background-color: $color-background-sunken;

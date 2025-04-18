@@ -278,11 +278,12 @@ const Demo1 = () => {
       />
       <Address
         type="elevator"
+        title="选择地址"
         visible={visible}
         hotList={hotList}
         options={options}
-        title="选择地址"
         onChange={(value) => {
+          console.log('value', value)
           setText(value.join(''))
         }}
         onClose={() => setVisible(false)}
