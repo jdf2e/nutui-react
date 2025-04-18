@@ -12,6 +12,7 @@ import {
   WebCascaderProps,
   CascaderValue,
   CascaderOptionKey,
+  RegionData,
 } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -19,16 +20,11 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { useConfig } from '@/packages/configprovider'
 
-type AreaInfo = {
-  name: string
-  id: string | number
-  children: any
-}
 export interface AddressProps extends WebCascaderProps {
   visible: boolean // popup visible
   type: string
   options: CascaderOption[]
-  hotList: AreaInfo[]
+  hotList: RegionData[]
   value: CascaderValue
   defaultValue: CascaderValue
   optionKey: CascaderOptionKey
@@ -90,8 +86,6 @@ export const ElevatorRender: FunctionComponent<
   } = useConfig()
   const classPrefix = 'nut-address'
 
-  const [tabActiveIndex, setTabActiveIndex] = useState(0)
-  const [innerOptions, setInnerOptions] = useState(outerOptions)
   const [value, setValue] = usePropsValue({
     value: outerValue,
     defaultValue: outerDefaultValue,
@@ -102,9 +96,12 @@ export const ElevatorRender: FunctionComponent<
     },
   })
 
+  const [innerOptions, setInnerOptions] = useState(outerOptions)
   const [innerValue, setInnerValue] = useState(value)
+  const [elevatorOptions, setElevatorOptions] = useState<any>([])
   const [addressTip, setAddressTip] = useState(selectProvice)
   const [levelIndex, setLevelIndex] = useState(0)
+  const [tabActiveIndex, setTabActiveIndex] = useState(0)
 
   // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
@@ -116,8 +113,6 @@ export const ElevatorRender: FunctionComponent<
     }
     return transformData(currOptions)
   }, [innerOptions, optionKey, format])
-
-  const [elevatorOptions, setElevatorOptions] = useState<any>([])
 
   useEffect(() => {
     setElevatorOptions(options)
@@ -177,7 +172,7 @@ export const ElevatorRender: FunctionComponent<
   }, [innerValue])
 
   const handleElevatorItemClick = (
-    elevatorItem: AreaInfo,
+    elevatorItem: RegionData,
     levelIndex: number
   ) => {
     // if (elevatorItem?.disabled) return
@@ -187,8 +182,7 @@ export const ElevatorRender: FunctionComponent<
     }
     if (elevatorItem.children?.length) {
       setElevatorOptions(elevatorItem.children)
-      const distIndex = levelIndex + 1
-      setLevelIndex(distIndex)
+      setLevelIndex(levelIndex + 1)
     } else {
       setVisible(false)
       setValue(nextValue)

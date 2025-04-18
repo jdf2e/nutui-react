@@ -18,6 +18,7 @@ import {
 } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
+import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -70,10 +71,7 @@ export const InternalAddress: ForwardRefRenderFunction<
     onClose,
     onSwitch,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-address'
   const [currentType, setCurrentType] = useState<string>(type)
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({

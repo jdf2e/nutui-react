@@ -19,6 +19,7 @@ import {
   CascaderValue,
   TaroAddressProps,
 } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -71,10 +72,7 @@ const InternalAddress: ForwardRefRenderFunction<
     onClose,
     onSwitch,
     ...rest
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-address'
   const [currentType, setCurrentType] = useState<string>(type)
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({

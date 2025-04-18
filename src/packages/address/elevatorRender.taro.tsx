@@ -13,6 +13,7 @@ import {
   WebCascaderProps,
   CascaderValue,
   CascaderOptionKey,
+  RegionData,
 } from '@/types'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -20,16 +21,11 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { useConfig } from '@/packages/configprovider'
 
-type AreaInfo = {
-  name: string
-  id: string | number
-  children: any
-}
 export interface AddressProps extends WebCascaderProps {
   visible: boolean // popup visible
   type: string
   options: CascaderOption[]
-  hotList: AreaInfo[]
+  hotList: RegionData[]
   value: CascaderValue
   defaultValue: CascaderValue
   optionKey: CascaderOptionKey
@@ -109,26 +105,26 @@ export const ElevatorRender: FunctionComponent<
 
   // 初始化数据，只格式化一次；动态数据todo
   const options = useMemo(() => {
-    let currOptions = innerOptions
     if (!isEmpty(format)) {
-      currOptions = normalizeListOptions(innerOptions, format)
-    } else if (!isEmpty(optionKey)) {
-      currOptions = normalizeOptions(innerOptions, optionKey) || []
+      return transformData(normalizeListOptions(innerOptions, format))
     }
-    return transformData(currOptions)
+    if (!isEmpty(optionKey)) {
+      return transformData(normalizeOptions(innerOptions, optionKey) || [])
+    }
+    return transformData(innerOptions)
   }, [innerOptions, optionKey, format])
 
-  const [elevatorOptions, setElevatorOptions] = useState<any>([])
+  const [elevatorOptions, setElevatorOptions] = useState(options)
 
   useEffect(() => {
     setElevatorOptions(options)
   }, [options])
 
-  const levels: any[] = useMemo(() => {
+  const levels = useMemo(() => {
     const next = []
     let end = false
     let currentOptions = options
-    for (const [index, val] of innerValue.entries()) {
+    innerValue.forEach((val, index) => {
       const opt = currentOptions
         ?.flatMap((o: any) => o.list.find((item: any) => item.name === val))
         .filter((item) => item !== undefined)[0]
@@ -144,7 +140,7 @@ export const ElevatorRender: FunctionComponent<
       } else {
         end = true
       }
-    }
+    })
     if (!end) {
       next.push({
         name: null,
@@ -178,7 +174,7 @@ export const ElevatorRender: FunctionComponent<
   }, [innerValue])
 
   const handleElevatorItemClick = (
-    elevatorItem: AreaInfo,
+    elevatorItem: RegionData,
     levelIndex: number
   ) => {
     // if (elevatorItem?.disabled) return
@@ -188,8 +184,7 @@ export const ElevatorRender: FunctionComponent<
     }
     if (elevatorItem.children?.length) {
       setElevatorOptions(elevatorItem.children)
-      const distIndex = levelIndex + 1
-      setLevelIndex(distIndex)
+      setLevelIndex(levelIndex + 1)
     } else {
       setVisible(false)
       setValue(nextValue)

@@ -69,6 +69,7 @@ export interface BaseAddress {
   defaultIcon: React.ReactNode
   selectIcon: React.ReactNode
   backIcon: React.ReactNode
+  hotList: RegionData[]
   onSwitch?: (data: { type: string }) => void
   onExistSelect?: (data: AddressList) => void
 }
