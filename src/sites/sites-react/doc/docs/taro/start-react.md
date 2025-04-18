@@ -114,7 +114,7 @@ config = {
 import '@nutui/nutui-react-taro/dist/style.css'
 // 默认主题暗黑模式
 // import '@nutui/nutui-react-taro/dist/style.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/style-jmapp.css'
 // JKRF 主题
 // import '@nutui/nutui-react-taro/dist/style-jkrf.css'
@@ -130,7 +130,7 @@ import '@nutui/nutui-react-taro/dist/style.css'
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // 默认暗黑主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
 // JRKF 主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
@@ -140,7 +140,7 @@ import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
 // 默认暗黑主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
 // JRKF 主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
@@ -169,7 +169,7 @@ yarn add babel-plugin-import
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // 默认暗黑主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
 // JRKF 主题
 // import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
@@ -179,7 +179,7 @@ import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
 // 默认暗黑主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
 // JRKF 主题
 // import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
@@ -210,7 +210,7 @@ module.exports = {
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
 
-        // B 端主题
+        // JMAPP 主题
         // 自动加载 scss 样式文件
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jmapp`,
         // 自动加载 css 样式文件
@@ -234,7 +234,7 @@ module.exports = {
 {
   sass: {
     data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
-    // B 端主题
+    // JMAPP 主题
     // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
     // JRKF 主题
     // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`

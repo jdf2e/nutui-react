@@ -9,7 +9,7 @@ NutUI provides multiple sets of official `UI` themes by default, while allowing 
 | theme description | scss file name |
 | --- | --- |
 | Jingdong APP 10.0 theme (default) | `variables.scss` |
-| Jingdong B client Theme | `variables-jdb.scss ` |
+| Jingdong JMAPP Theme | `variables-jdb.scss ` |
 
 ## How to use
 
@@ -19,7 +19,7 @@ It is important to note that when configuring the theme, you also need to import
 | --- | --- |
 | JD APP Theme (Light Mode) | `@nutui/nutui-react/dist/styles/themes/default.css` |
 | JD APP Theme (Dark Mode) | `@nutui/nutui-react/dist/styles/themes/dark.css` |
-| JD B client Theme | `@nutui/nutui-react/dist/styles/themes/jmapp.css` |
+| JD JMAPP Theme | `@nutui/nutui-react/dist/styles/themes/jmapp.css` |
 | JD JRKF Theme | `@nutui/nutui-react/dist/styles/themes/jrkf.css` |
 
 Currently, only the default theme provides support for dark mode.

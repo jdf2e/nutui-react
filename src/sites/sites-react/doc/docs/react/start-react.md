@@ -30,7 +30,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 // JRKF 默认
 import '@nutui/nutui-react/dist/style.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react/dist/style-jmapp.css'
 // JRKF 主题
 // import '@nutui/nutui-react/dist/style-jrkf.css'
@@ -63,7 +63,7 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // 默认暗黑主题
 import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B 端主题
+// JMAPP 主题
 import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF 主题
 import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -73,7 +73,7 @@ import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
 import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // 默认暗黑主题
 import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B 端主题
+// JMAPP 主题
 import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF 主题
 import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
@@ -109,7 +109,7 @@ npm install vite-plugin-imp -D
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // 默认暗黑主题
 // import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF 主题
 // import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -119,7 +119,7 @@ import '@nutui/nutui-react/dist/styles/themes/default.css'
 // import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // 默认暗黑主题
 // import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF 主题
 // import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
@@ -150,7 +150,7 @@ export default defineConfig({
             // 按需引入 scss 文件的处理，两种方式择其一
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`
 
-            // B 端主题
+            // JMAPP 主题
             // 按需引入 css 文件的处理，两种方式择其一
             // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
             // 按需引入 scss 文件的处理，两种方式择其一
@@ -174,7 +174,7 @@ export default defineConfig({
       scss: {
         api: 'modern-compiler', // 或 "modern"，"legacy"
         additionalData: `@import '@nutui/nutui-react/dist/styles/variables.scss';`,
-        // B 端主题
+        // JMAPP 主题
         // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jmapp.scss';`
         // JRKF 主题
         // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jrkf.scss';`
@@ -214,7 +214,7 @@ npm install babel-plugin-import -D
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // 默认暗黑主题
 // import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF 主题
 // import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -224,7 +224,7 @@ import '@nutui/nutui-react/dist/styles/themes/default.css'
 // import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // 默认暗黑主题
 // import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B 端主题
+// JMAPP 主题
 // import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF 主题
 // import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
@@ -249,7 +249,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               additionalData: `@import '@nutui/nutui-react/dist/styles/variables.scss';`,
-              // B 端主题
+              // JMAPP 主题
               // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jmapp.scss';`
               // JRKF 主题
               // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jrkf.scss';`
@@ -287,7 +287,7 @@ babel 配置：
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
 
-        // B 端主题
+        // JMAPP 主题
         // 自动加载 scss 样式文件
         // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp`,
         // 自动加载 css 样式文件

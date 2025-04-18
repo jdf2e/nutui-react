@@ -30,7 +30,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 // default theme
 import '@nutui/nutui-react/dist/style.css'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react/dist/style-jmapp.css'
 // JRKF theme
 // import '@nutui/nutui-react/dist/style-jrkf.css'
@@ -63,7 +63,7 @@ It is important to note that when manually loading components on demand, you als
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // Default Drak theme
 import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B client Theme
+// JMAPP Theme
 import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF theme
 import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -73,7 +73,7 @@ import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
 import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // Default Drak theme
 import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B client Theme
+// JMAPP Theme
 import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF theme
 import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
@@ -109,7 +109,7 @@ The entry file needs to import global styles.
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // Default Drak theme
 // import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF theme
 // import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -119,7 +119,7 @@ import '@nutui/nutui-react/dist/styles/themes/default.css'
 // import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // Default Drak theme
 // import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF theme
 // import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
@@ -214,7 +214,7 @@ The entry file needs to import global styles.
 import '@nutui/nutui-react/dist/styles/themes/default.css'
 // Default Drak theme
 // import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
 // JRKF theme
 // import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
@@ -224,7 +224,7 @@ import '@nutui/nutui-react/dist/styles/themes/default.css'
 // import '@nutui/nutui-react/dist/styles/theme-default.scss'
 // Default Drak theme
 // import '@nutui/nutui-react/dist/styles/theme-dark.scss'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
 // JRKF theme
 // import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'

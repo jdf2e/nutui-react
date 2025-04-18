@@ -125,7 +125,7 @@ Note that when manually loading components on demand, you also need to import th
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // Default Drak theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
 // JRKF theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
@@ -135,7 +135,7 @@ import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
 // Default Drak theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
 // JRKF theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
@@ -162,7 +162,7 @@ babel config
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // Default Drak theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
 // JRKF theme
 // import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
@@ -172,7 +172,7 @@ import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
 // import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
 // Default Drak theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
-// B client Theme
+// JMAPP Theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
 // JRKF theme
 // import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
@@ -213,7 +213,7 @@ Taro config/index.js
 {
   sass: {
     data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
-    // B client Theme
+    // JMAPP Theme
     // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
     // JRKF Theme
     // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
