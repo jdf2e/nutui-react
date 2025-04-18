@@ -9,7 +9,7 @@ NutUI provides multiple sets of official `UI` themes by default, while allowing 
 | theme description | scss file name |
 | --- | --- |
 | Jingdong APP 10.0 theme (default) | `variables.scss` |
-| Jingdong JMAPP Theme | `variables-jdb.scss ` |
+| Jingdong JMAPP Theme | `variables-jmapp.scss ` |
 
 ## How to use
 
