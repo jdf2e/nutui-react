@@ -244,26 +244,28 @@ async function buildUMD() {
   })
 }
 
-async function buildAllCSS() {
+// 针对不同主题构建全量的 style
+async function buildAllCSS(themeName = '') {
   // 拷贝styles
+  const themeStylePath = themeName ? `style-${themeName}` : 'style'
   async function generateAllStyles() {
-    const projectID = process.env.VITE_APP_PROJECT_ID
     const content = [
-      `@import './styles/variables${projectID ? `-${projectID}` : ''}.scss';`,
+      `@import './styles/variables${themeName ? `-${themeName}` : ''}.scss';`,
       `@import './styles/mixins/index.scss';`,
       `@import './styles/animation/index.scss';`,
     ]
-    const scssFiles = await glob([`${dist}/es/packages/**/*.scss`])
+    const scssFiles = await glob([`${dist}/es/packages/**/${themeStylePath}/*.scss`])
     scssFiles.forEach((file) => {
       content.push(
-        `@import '${relativePath('/' + file, `/${dist}/style.scss`)}';`,
+        `@import '${relativePath('/' + file, `/${dist}/${themeStylePath}.scss`)}';`,
       )
     })
-    dest(`${dist}/style.scss`, content.join('\n'))
+    await dest(`${dist}/${themeStylePath}.scss`, content.join('\n'))
   }
 
   await generateAllStyles()
   await vite.build({
+    configFile: false,
     logLevel: 'error',
     resolve: {
       alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],
@@ -272,11 +274,16 @@ async function buildAllCSS() {
       emptyOutDir: false,
       outDir: dist,
       lib: {
-        entry: `./${dist}/style.scss`,
+        entry: `./${dist}/${themeStylePath}.scss`,
         formats: ['es'],
         name: 'style',
         fileName: 'style',
       },
+      rollupOptions: {
+        output: {
+          assetFileNames: `${themeStylePath}.css`, // 资源文件名
+        }
+      }
     },
   })
 }
@@ -287,6 +294,11 @@ async function buildThemeCSS() {
   })
   const projectID = process.env.VITE_APP_PROJECT_ID
   const inputFiles = {}
+  // nuitui 官方包包含全部主题文件，包括：
+  // default.css 默认明亮主题
+  // dark.css 默认暗黑主题
+  // jmapp.css、jrkf.css 主题
+  // 例如：jmapp 包只包含 jmapp 的主题文件，且是默认主题文件。
   files.forEach(filePath => {
     const themeName = basename(filePath, 'scss').replace('theme-', '')
     if (!projectID) {
@@ -331,16 +343,16 @@ async function copyStyles() {
 }
 
 // 构建样式
-async function buildCSS(p) {
-  const cssFiles = await glob(['src/packages/**/*.scss'], {
+async function buildCSS(themeName = '') {
+  const componentScssFiles = await glob(['src/packages/**/*.scss'], {
     ignore: ['src/packages/**/demo.scss'],
   })
 
   const variables = await readFile(
-    join(__dirname, '../src/styles/variables.scss'),
+    join(__dirname, `../src/styles/variables${themeName ? `-${themeName}` : ''}.scss`),
   )
-  for (const file of cssFiles) {
-    const button = await readFile(join(__dirname, '../', file), {
+  for (const file of componentScssFiles) {
+    const scssContent = await readFile(join(__dirname, '../', file), {
       encoding: 'utf8',
     })
     // countup 是特例
@@ -350,30 +362,11 @@ async function buildCSS(p) {
       '../src/packages',
       base.replace('.scss', ''),
     )
-    const code = sass.compileString(variables + '\n' + button, {
-      loadPaths: [loadPath],
-    })
     const cssPath = relative('src', loadPath)
-    // 写 css 文件
-    await dest(join(`${dist}/es`, cssPath, 'style/style.css'), code.css)
-    await dest(join(`${dist}/es`, cssPath, 'style/css.js'), `import './style.css'`)
-
-    await dest(join(`${dist}/cjs`, cssPath, 'style/style.css'), code.css)
-    await dest(
-      join(`${dist}/cjs`, cssPath, 'style/css.js'),
-      `import './style.css'`,
-    )
-
-    // copy harmonycss
-    if (file.indexOf('countup') === -1) {
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
-      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
-    }
-
     // 删除 import
     // 写入 style.scss
     const atRules = []
-    await postcss([
+    const postcssRes = await postcss([
       {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
@@ -391,13 +384,22 @@ async function buildCSS(p) {
         },
       },
     ])
-      .process(button, { from: loadPath, syntax: scss })
+      .process(scssContent, { from: loadPath, syntax: scss })
       .then((result) => {
-        dest(join(`${dist}/es`, cssPath, `style/${base}`), result.css)
-        dest(join(`${dist}/cjs`, cssPath, `style/${base}`), result.css)
+        return result
       })
+    const themeDir = themeName ? `style-${themeName}` : 'style'
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/${base}`), postcssRes.css)
+    await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
+
+    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+      loadPaths: [loadPath],
+    })
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
+    await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.css`), code.css)
 
     const jsContent = []
+    const cssContent = []
     atRules.forEach((rule) => {
       rule = rule.replaceAll('\'', '')
       if (rule.indexOf('../styles/') > -1) {
@@ -407,18 +409,33 @@ async function buildCSS(p) {
         const base = basename(rule)
         const ext = extname(base)
         const name = base.replace(ext, '')
-        jsContent.push(`import '../../${name}/style';`)
+        jsContent.push(`import '../../${name}/${themeDir}';`)
+        cssContent.push(`import '../../${name}/${themeDir}/css';`)
       }
     })
     jsContent.push(`import './${base}';`)
+    cssContent.push(`import './style.css';`)
 
     await dest(
-      join(`${dist}/cjs`, cssPath, `style/index.js`),
+      join(`${dist}/cjs`, cssPath, `${themeDir}/index.js`),
       jsContent.join('\n'),
     )
-    await dest(join(`${dist}/es`, cssPath, `style/index.js`), jsContent.join('\n'))
-  }
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/index.js`), jsContent.join('\n'))
 
+    // 写 css 文件
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/css.js`), cssContent.join('\n'))
+    await dest(
+      join(`${dist}/cjs`, cssPath, `${themeDir}/css.js`),
+      cssContent.join('\n'),
+    )
+
+    // copy harmonycss
+    if (file.indexOf('countup') === -1) {
+      const harmonyCss = join(__dirname, '../', file.replace('scss', 'harmony.css'))
+      await copy(harmonyCss, join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
+      await copy(harmonyCss, join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
+    }
+  }
 }
 
 function generateReleasePackageJson() {
@@ -474,17 +491,35 @@ console.time('build UMD')
 await buildUMD()
 console.timeEnd('build UMD')
 
-console.time('Build CSS')
-await buildCSS()
-console.timeEnd('Build CSS')
 
 console.time('Copy Styles')
 await copyStyles()
 console.timeEnd('Copy Styles')
 
+console.time('Build CSS')
+await buildCSS()
+console.timeEnd('Build CSS')
+
+console.time('Build jmapp CSS')
+await buildCSS('jmapp')
+console.timeEnd('Build jmapp CSS')
+
+console.time('Build jrkf CSS')
+await buildCSS('jrkf')
+console.timeEnd('Build jrkf CSS')
+
 console.time('Build All CSS')
 await buildAllCSS()
 console.timeEnd('Build All CSS')
+
+console.time('Build All jrkf CSS')
+await buildAllCSS('jrkf')
+console.timeEnd('Build All jrkf CSS')
+
+console.time('Build All jmapp CSS')
+await buildAllCSS('jmapp')
+console.timeEnd('Build All jmapp CSS')
+
 
 console.time('Build Theme CSS')
 await buildThemeCSS()

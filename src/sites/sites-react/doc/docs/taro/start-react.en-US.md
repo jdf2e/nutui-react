@@ -105,7 +105,12 @@ config = {
 You can choose to import style files in full:
 
 ```js
-import '@nutui/nutui-react-taro/dist/style.css'
+// default
+// import '@nutui/nutui-react-taro/dist/style.css'
+// B
+// import '@nutui/nutui-react-taro/dist/style-jmapp.css'
+// JKRF
+// import '@nutui/nutui-react-taro/dist/style-jkrf.css'
 ```
 
 You can also implement on-demand import of styles in the following ways:
@@ -115,7 +120,25 @@ You can also implement on-demand import of styles in the following ways:
 Note that when manually loading components on demand, you also need to import the global class file in the entry file to load some of NutUI React Taro's global logic and styles:
 
 ```js
+// css theme file path
+// Default theme
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
+// Default Drak theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
+// JMAPP Theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
+// JRKF theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
+
+// scss theme file path
+// Default theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
+// Default Drak theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
+// JMAPP Theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
+// JRKF theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
 ```
 
 Install `babel-plugin-import`.
@@ -134,24 +157,69 @@ babel config
 :::demo
 
 ```js
-// babel.config.js
-plugins: [
-  [
-    'import',
-    {
-      libraryName: '@nutui/nutui-react-taro',
-      style: 'css', // Here are the CSS files for on-demand import. If you need to import SCSS files, you can set the style to true.
-      camel2DashComponentName: false,
-      customName: (name, file) => {
-        return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
-      },
-    },
-    'nutui-react-taro',
-  ],
-]
+// app.js
+// Default theme
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
+// Default Drak theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
+// JMAPP Theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
+// JRKF theme
+// import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
+
+// scss theme file path
+// Default theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
+// Default Drak theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
+// JMAPP Theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
+// JRKF theme
+// import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
 ```
 
 :::
+
+babel config：
+
+```js
+// babel.config.js
+module.exports = {
+  presets: [
+    // ...
+  ],
+  plugins: [
+    [
+      'import',
+      {
+        libraryName: '@nutui/nutui-react',
+        camel2DashComponentName: false,
+        customName: (name, file) => {
+          return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        },
+        customStyleName: (name) =>
+          `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+      },
+      'nutui-react',
+    ],
+  ],
+}
+```
+
+Taro config/index.js
+
+```js
+{
+  sass: {
+    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
+    // JMAPP Theme
+    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
+    // JRKF Theme
+    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
+  }
+}
+```
 
 ## Precautions
 

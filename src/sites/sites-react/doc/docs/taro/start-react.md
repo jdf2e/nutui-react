@@ -110,7 +110,14 @@ config = {
 您可以选择全量引入样式文件：
 
 ```js
+// 默认主题
 import '@nutui/nutui-react-taro/dist/style.css'
+// 默认主题暗黑模式
+// import '@nutui/nutui-react-taro/dist/style.css'
+// JMAPP 主题
+// import '@nutui/nutui-react-taro/dist/style-jmapp.css'
+// JKRF 主题
+// import '@nutui/nutui-react-taro/dist/style-jkrf.css'
 ```
 
 #### 3.1、通过插件实现按需引入
@@ -118,7 +125,25 @@ import '@nutui/nutui-react-taro/dist/style.css'
 需要注意的是，`在手动按需加载时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React Taro 的全局性逻辑和样式：`
 
 ```js
+// css 主题文件路径
+// 默认主题
 import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
+// 默认暗黑主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
+// JMAPP 主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
+// JRKF 主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
+
+// scss 主题文件路径
+// 默认主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
+// 默认暗黑主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
+// JMAPP 主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
+// JRKF 主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
 ```
 
 首先安装 `babel-plugin-import` 插件
@@ -132,7 +157,37 @@ npm i babel-plugin-import
 yarn add babel-plugin-import
 ```
 
-安装后在项目中设置 babel 相关配置：
+入口文件需要引入全局样式
+
+:::demo
+
+```js
+// app.js
+
+// css 主题文件路径
+// 默认主题
+import '@nutui/nutui-react-taro/dist/styles/themes/default.css'
+// 默认暗黑主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/default-dark.css'
+// JMAPP 主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/jmapp.css'
+// JRKF 主题
+// import '@nutui/nutui-react-taro/dist/styles/themes/jrkf.css'
+
+// scss 主题文件路径
+// 默认主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-default.scss'
+// 默认暗黑主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss'
+// JMAPP 主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-jmapp.scss'
+// JRKF 主题
+// import '@nutui/nutui-react-taro/dist/styles/theme-jrkf.scss'
+```
+
+:::
+
+babel 相关配置：
 
 ```js
 // babel.config.js
@@ -144,16 +199,46 @@ module.exports = {
     [
       'import',
       {
-        libraryName: '@nutui/nutui-react-taro',
-        style: 'css', // 这里是按需引入的 css 文件，如果需要引入 scss 文件，可将 style 设置为 true
+        libraryName: '@nutui/nutui-react',
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
         },
+        // 自动加载 scss 样式文件
+        customStyleName: (name) =>
+          `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
+        // 自动加载 css 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+
+        // JMAPP 主题
+        // 自动加载 scss 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jmapp`,
+        // 自动加载 css 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
+
+        // jkrf 端主题
+        // 自动加载 scss 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jkrf`,
+        // 自动加载 css 样式文件
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jkrf/css`
       },
-      'nutui-react-taro',
+      'nutui-react',
     ],
   ],
+}
+```
+
+若您的项目采用 scss，则需要在 config/index 中增加如下配置：
+
+```js
+{
+  sass: {
+    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
+    // JMAPP 主题
+    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
+    // JRKF 主题
+    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
+  }
 }
 ```
 

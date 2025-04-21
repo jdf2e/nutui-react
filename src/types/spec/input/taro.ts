@@ -9,11 +9,13 @@ type OmittedInput = Omit<
   'type' | 'ref' | 'onBlur' | 'onFocus' | 'maxlength' | 'password'
 >
 
-export interface TaroInputProps
-  extends Omit<
-    BaseInput<TaroInputType, TaroInputConfirmType>,
-    'onClick' | 'onFocus'
-  > {
+type TaroInput = Omit<
+  BaseInput<TaroInputType, TaroInputConfirmType>,
+  'onClick' | 'onFocus'
+> &
+  OmittedInput
+
+export interface TaroInputProps extends TaroInput {
   onClick?: (e: ITouchEvent) => void
   onFocus?: (value: string, height?: number) => void
 }

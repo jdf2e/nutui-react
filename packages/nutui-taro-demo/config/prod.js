@@ -21,7 +21,7 @@ module.exports = {
   defineConstants: {},
   mini: {},
   h5: {
-    publicPath: `/taro/react/${process.env.VITE_APP_PROJECT_ID === 'jmapp' ? 'jdesign-3x' : '3x'}/demo${hash && UI ? `-${hash}` : ''}`,
+    publicPath: `/taro/react/${process.env.VITE_APP_PROJECT_ID === 'jmapp' ? 'jmapp-3x' : '3x'}/demo${hash && UI ? `-${hash}` : ''}`,
     /**
      * WebpackChain 插件配置
      * @docs https://github.com/neutrinojs/webpack-chain

@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react'
-import { BaseFormField } from './types'
+import React from 'react'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
 import { toArray } from '@/utils/to-array'
 import { SECRET } from '@/packages/form/useform'
+import { WebFormItemProps } from '@/types'
 
 type TextAlign =
   | 'start'
@@ -16,28 +16,6 @@ type TextAlign =
   | 'justify'
   | 'match-parent'
 
-type ShouldUpdate = (prevValue: any, curValue: any) => boolean
-
-export interface FormItemProps
-  extends Omit<BasicComponent, 'children'>,
-    BaseFormField {
-  required: boolean
-  initialValue: any
-  trigger: string
-  valuePropName: string
-  getValueFromEvent: (...args: any) => any
-  onClick: (
-    event: React.MouseEvent,
-    componentRef: React.MutableRefObject<any>
-  ) => void
-  errorMessageAlign: TextAlign
-  validateTrigger: string | string[]
-  shouldUpdate: boolean
-  noStyle: boolean
-  children: ReactNode | ((obj: any) => React.ReactNode)
-  align?: 'flex-start' | 'center' | 'flex-end'
-}
-
 const defaultProps = {
   ...ComponentDefaults,
   required: false,
@@ -47,10 +25,10 @@ const defaultProps = {
   errorMessageAlign: 'left',
   shouldUpdate: false,
   noStyle: false,
-} as FormItemProps
+} as WebFormItemProps
 
 export class FormItem extends React.Component<
-  Partial<FormItemProps>,
+  Partial<WebFormItemProps>,
   { resetCount: number }
 > {
   static defaultProps = defaultProps
@@ -65,7 +43,7 @@ export class FormItem extends React.Component<
 
   private eventOff: any
 
-  constructor(props: FormItemProps) {
+  constructor(props: WebFormItemProps) {
     super(props)
     this.componentRef = React.createRef()
     this.state = {

@@ -9,7 +9,7 @@ NutUI provides multiple sets of official `UI` themes by default, while allowing 
 | theme description | scss file name |
 | --- | --- |
 | Jingdong APP 10.0 theme (default) | `variables.scss` |
-| Jingdong JDesign Theme | `variables-jdb.scss ` |
+| Jingdong JMAPP Theme | `variables-jmapp.scss ` |
 
 ## How to use
 
@@ -19,56 +19,7 @@ It is important to note that when configuring the theme, you also need to import
 | --- | --- |
 | JD APP Theme (Light Mode) | `@nutui/nutui-react-taro/dist/styles/themes/default.css` |
 | JD APP Theme (Dark Mode) | `@nutui/nutui-react-taro/dist/styles/themes/dark.css` |
-| JD JDesign Theme | `@nutui/nutui-react-taro/dist/styles/themes/jmapp.css` |
+| JD JMAPP Theme | `@nutui/nutui-react-taro/dist/styles/themes/jmapp.css` |
 | JD JRKF Theme | `@nutui/nutui-react-taro/dist/styles/themes/jrkf.css` |
 
 Currently, only the default theme provides support for dark mode.
-
-### Modify the configuration file of the local project vite or webpack
-
-Modify the **sass-loader** configuration in the vite or webpack configuration file. The following example
-
-#### vite configuration example
-
-:::demo
-
-```javascript
-// https://vitejs.dev/config/
-export default defineConfig({
-  //...
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // Default Jingdong APP 10.0 theme > @import "@nutui/nutui-react/dist/styles/variables.scss";
-        // Jingdong B Mall theme > @import "@nutui/nutui-react/dist/styles/variables-jmapp.scss";
-        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
-      },
-    },
-  },
-})
-```
-
-:::
-
-#### webpack configuration example
-
-:::demo
-
-```javascript
-{
-    test: /\.(sa|sc)ss$/,
-    use: [
-        {
-            loader: 'sass-loader',
-            options: {
-                // Default Jingdong APP theme > @import "@nutui/nutui-react/dist/styles/variables.scss";
-                // Jingdong B Mall theme > @import "@nutui/nutui-react/dist/styles/variables-jdb.scss";
-                // Note: In different versions of sass-loader, the name of this option is different. For details, please refer to the version documentation corresponding to sass-loader
-                data: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
-            }
-        }
-    ]
-}
-```
-
-:::

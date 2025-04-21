@@ -1,3 +1,17 @@
+# v3.0.9
+
+`2025-04-18`
+
+- :sparkles: feat(form): 增加 taro components 属性的支持,抽象类型 (#3182)
+- :sparkles: feat(input): 增加 taro components 属性的支持 (#3181)
+- :sparkles: feat(button): 兼容 taro components (#3188)
+- :bug: fix(image): update image props tsType (#3178)
+- 🪵 refactor: 打包组件不同主题的 css 文件 (#3189)
+- 🪵 refactor(loading): 移除内置的 lottie，可通过 icon 属性加载 lottie (#3184)
+- 📖 docs(audio): 修订audio taro 端文档,不再支持taro多端 (#3187)
+- 🏡 chore: update taro version (#3186)
+- 🏡 chore: 调整 utils 和 hooks 的导出方式 (#3162)
+
 # v3.0.8
 
 `2025-04-11`

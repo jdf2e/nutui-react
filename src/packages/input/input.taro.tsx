@@ -39,6 +39,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   const rtl = useRtl()
   const { locale } = useConfig()
   const {
+    focus,
     type,
     name,
     placeholder,
@@ -183,7 +184,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         placeholderClass={`${classPrefix}-placeholder`}
         disabled={disabled || readOnly}
         value={value}
-        focus={autoFocus}
+        focus={autoFocus || focus}
         confirmType={confirmType}
         onBlur={handleBlur}
         onFocus={handleFocus}

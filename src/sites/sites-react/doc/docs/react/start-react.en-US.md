@@ -28,7 +28,12 @@ npm install @nutui/nutui-react
 ```js
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+// default theme
 import '@nutui/nutui-react/dist/style.css'
+// JMAPP Theme
+// import '@nutui/nutui-react/dist/style-jmapp.css'
+// JRKF theme
+// import '@nutui/nutui-react/dist/style-jrkf.css'
 import { Button } from '@nutui/nutui-react'
 
 ReactDOM.render(
@@ -53,7 +58,25 @@ import Button from '@nutui/nutui-react/dist/es/packages/button'
 It is important to note that when manually loading components on demand, you also need to import the global class file in your entry file to load some of NutUI React's global logic and styles:
 
 ```js
+// css theme file path
+// Default theme
 import '@nutui/nutui-react/dist/styles/themes/default.css'
+// Default Drak theme
+import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
+// JMAPP Theme
+import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
+// JRKF theme
+import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
+
+// scss theme file path
+// Default theme
+import '@nutui/nutui-react/dist/styles/theme-default.scss'
+// Default Drak theme
+import '@nutui/nutui-react/dist/styles/theme-dark.scss'
+// JMAPP Theme
+import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
+// JRKF theme
+import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
 ```
 
 #### Method 3: Automatic On-Demand Loading
@@ -74,6 +97,36 @@ yarn add vite-plugin-imp -D
 npm install vite-plugin-imp -D
 ```
 
+The entry file needs to import global styles.
+
+:::demo
+
+```js
+// app.js
+
+// CSS theme file path
+// Default theme
+import '@nutui/nutui-react/dist/styles/themes/default.css'
+// Default Drak theme
+// import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
+// JMAPP Theme
+// import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
+// JRKF theme
+// import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
+
+// scss theme file path
+// Default theme
+// import '@nutui/nutui-react/dist/styles/theme-default.scss'
+// Default Drak theme
+// import '@nutui/nutui-react/dist/styles/theme-dark.scss'
+// JMAPP Theme
+// import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
+// JRKF theme
+// import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
+```
+
+:::
+
 :::demo
 
 ```js
@@ -91,10 +144,23 @@ export default defineConfig({
         {
           libName: '@nutui/nutui-react',
           style: (name) => {
+            // Default theme
             // Handling on-demand import of CSS files, choose one of the two methods
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
             // Handling on-demand import of SCSS files, choose one of the two methods
             return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`
+
+            // JMAPP
+            // Handling on-demand import of CSS files, choose one of the two methods
+            // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
+            // Handling on-demand import of SCSS files, choose one of the two methods
+            // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jmapp`
+
+            // JRKF
+            // Handling on-demand import of CSS files, choose one of the two methods
+            // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jrkf/css`
+            // Handling on-demand import of SCSS files, choose one of the two methods
+            // return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style-jrkf`
           },
           replaceOldImport: false,
           camel2DashComponentName: false,
@@ -102,6 +168,19 @@ export default defineConfig({
       ],
     }),
   ],
+  // The project uses SCSS preprocessed style files and requires the following configuration to be added.
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler', // or "modern"，"legacy"
+        additionalData: `@import '@nutui/nutui-react/dist/styles/variables.scss';`,
+        // JMAPP
+        // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jmapp.scss';`
+        // JRKF
+        // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jrkf.scss';`
+      },
+    },
+  },
 })
 ```
 
@@ -123,6 +202,68 @@ yarn add babel-plugin-import -D
 npm install babel-plugin-import -D
 ```
 
+The entry file needs to import global styles.
+
+:::demo
+
+```js
+// app.js
+
+// CSS theme file path
+// Default theme
+import '@nutui/nutui-react/dist/styles/themes/default.css'
+// Default Drak theme
+// import '@nutui/nutui-react/dist/styles/themes/default-dark.css'
+// JMAPP Theme
+// import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
+// JRKF theme
+// import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
+
+// scss theme file path
+// Default theme
+// import '@nutui/nutui-react/dist/styles/theme-default.scss'
+// Default Drak theme
+// import '@nutui/nutui-react/dist/styles/theme-dark.scss'
+// JMAPP Theme
+// import '@nutui/nutui-react/dist/styles/theme-jmapp.scss'
+// JRKF theme
+// import '@nutui/nutui-react/dist/styles/theme-jrkf.scss'
+```
+
+:::
+
+webpack config：
+
+:::demo
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import '@nutui/nutui-react/dist/styles/variables.scss';`,
+              // B
+              // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jmapp.scss';`
+              // JRKF
+              // additionalData: `@import '@nutui/nutui-react/dist/styles/variables-jrkf.scss';`
+            },
+          },
+        ],
+      },
+    ],
+  },
+}
+```
+
+:::
+
 babel config：
 
 :::demo
@@ -135,11 +276,15 @@ babel config：
       'import',
       {
         libraryName: '@nutui/nutui-react',
-        style: 'css', // Here are the CSS files for on-demand import. If you need to import SCSS files, you can set the style to true.
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
         },
+        // Automatically load SCSS style files.
+        customStyleName: (name) =>
+          `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style`,
+        // Automatically load CSS style files.
+        // customStyleName: (name) => `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}/style/css`
       },
       'nutui-react',
     ],
@@ -169,6 +314,6 @@ module.exports = {
 
 ## Templates
 
-The example code can be found in the [packages/templates](https://github.com/jdf2e/nutui-react/tree/next/packages/nutui-templates) directory.
+The example code can be found in the [packages/templates](https://github.com/jdf2e/nutui-react/tree/feat_v3.x/packages/nutui-templates) directory.
 
 <content-examples/>
