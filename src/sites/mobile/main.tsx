@@ -13,7 +13,7 @@ try {
 } catch (e) {}
 let href = ''
 
-if (!isMobile && pathname.includes('demo')) {
+if (!isMobile && pathname.includes('demo') && !pathname.includes('jmapp')) {
   href = location.href.replace('demo.html', '')
   window.location.href = href
 }
