@@ -262,7 +262,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         {/* 3D 效果 */}
         {threeDimensional &&
           options.map((item: PickerOption, index: number) => (
-            <>
+            <React.Fragment key={item.value ?? index}>
               {isGetLineSpacing ? (
                 <View
                   className={classNames(`${classPrefix}-item`, {
@@ -270,12 +270,11 @@ const InternalPickerRoller: ForwardRefRenderFunction<
                     [`${classPrefix}-item-active`]: index + 1 === currentIndex,
                   })}
                   style={rollerStyle(index)}
-                  key={item.value ?? index}
                 >
                   {renderLabel(item)}
                 </View>
               ) : null}
-            </>
+            </React.Fragment>
           ))}
         {/* Tiled */}
         {!threeDimensional &&
