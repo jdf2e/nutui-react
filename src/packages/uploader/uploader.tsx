@@ -76,6 +76,7 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeUpload,
     beforeDelete,
     onUploadQueueChange,
+    listUploadRender,
     ...restProps
   } = mergeProps(defaultProps, props)
   const [fileList, setFileList] = usePropsValue({
@@ -276,26 +277,28 @@ const InternalUploader: ForwardRefRenderFunction<
     )
   }
   const renderListUploader = () => {
+    if (previewType !== 'list') return null
+
     return (
-      previewType === 'list' && (
-        <div className="nut-uploader-slot">
+      <div className="nut-uploader-slot">
+        {listUploadRender || (
           <Button size="small" type="primary">
             {locale.uploader.list}
           </Button>
-          {Number(maxCount) > fileList.length && (
-            <input
-              className="nut-uploader-input"
-              type="file"
-              capture={capture}
-              name={name}
-              accept={accept}
-              disabled={disabled}
-              multiple={multiple}
-              onChange={fileChange}
-            />
-          )}
-        </div>
-      )
+        )}
+        {Number(maxCount) > fileList.length && (
+          <input
+            className="nut-uploader-input"
+            type="file"
+            capture={capture}
+            name={name}
+            accept={accept}
+            disabled={disabled}
+            multiple={multiple}
+            onChange={fileChange}
+          />
+        )}
+      </div>
     )
   }
   return (

@@ -65,6 +65,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadIcon,
     deleteIcon,
     uploadLabel,
+    listUploadRender,
     accept,
     name,
     camera,
@@ -328,9 +329,11 @@ const InternalUploader: ForwardRefRenderFunction<
     onFileItemClick?.(file, index)
   }
   const renderListUploader = () => {
+    if (previewType !== 'list') return null
+
     return (
-      previewType === 'list' && (
-        <View className="nut-uploader-slot">
+      <View className="nut-uploader-slot">
+        {listUploadRender || (
           <>
             <Button size="small" type="primary">
               {locale.uploader.list}
@@ -339,8 +342,8 @@ const InternalUploader: ForwardRefRenderFunction<
               <Button className="nut-uploader-input" onClick={_chooseImage} />
             )}
           </>
-        </View>
-      )
+        )}
+      </View>
     )
   }
   const renderImageUploader = () => {
