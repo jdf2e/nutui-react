@@ -19,7 +19,8 @@ const defaultProps = {
   },
 } as TaroVideoProps
 
-const classPrefix = `nut-video`
+const classPrefix = 'nut-video'
+
 export const Video: FunctionComponent<Partial<TaroVideoProps & VideoProps>> = (
   props
 ) => {
@@ -39,7 +40,11 @@ export const Video: FunctionComponent<Partial<TaroVideoProps & VideoProps>> = (
     onPlayEnd,
     ...restProps
   } = mergeProps(defaultProps, props)
+
   const classes = classNames(classPrefix, className)
+
+  const effectiveControls =
+    props.options?.controls ?? controls ?? options.controls
 
   return (
     <View className={classes} style={style}>
@@ -49,7 +54,7 @@ export const Video: FunctionComponent<Partial<TaroVideoProps & VideoProps>> = (
         autoplay={options.autoplay || autoplay}
         loop={options.loop || loop}
         poster={options.poster || poster}
-        controls={controls !== undefined ? controls : options.controls}
+        controls={effectiveControls}
         src={source.src || (src as string)}
         onPlay={onPlay}
         onPause={onPause}
