@@ -88,8 +88,6 @@ import { Uploader } from '@nutui/nutui-react'
 
 ## Uploader
 
-好的，我来帮你翻译成英文版本：
-
 ### Props
 
 | Property | Description | Type | Default |
@@ -126,8 +124,6 @@ import { Uploader } from '@nutui/nutui-react'
 | onUploadQueueChange | Triggered when the image upload queue changes | `(tasks: FileItem[]) => void` | `-` |
 
 > Note: accept, capture and multiple are native attributes of browser input tags. Mobile devices have different levels of support for these attributes, so compatibility issues may occur on different models and WebViews.
-
-好的，我来帮你翻译成英文版本：
 
 ### FileItem
 
