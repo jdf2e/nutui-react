@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, ProgressProps } from '@tarojs/components'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
@@ -19,7 +19,8 @@ const defaultProps = {
 } as TaroProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<TaroProgressProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroProgressProps & ProgressProps> &
+    React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {
@@ -34,6 +35,17 @@ export const Progress: FunctionComponent<
     children,
     lazy,
     delay,
+    // tc
+    showInfo, // ✅
+    borderRadius,
+    fontSize,
+    activeColor,
+    backgroundColor,
+    active,
+    activeMode,
+    duration,
+    ariaLabel,
+    onActiveEnd,
     ...rest
   } = {
     ...defaultProps,
@@ -41,27 +53,44 @@ export const Progress: FunctionComponent<
   }
 
   const classPrefix = 'nut-progress'
+  const effectiveShowText = props.showText ?? showInfo ?? defaultProps.showText
+  const effectiveColor = props.color ?? activeColor ?? defaultProps.color
+  const effectiveBgColor =
+    props.background ?? backgroundColor ?? defaultProps.background
+  const effectiveAnimated = props.animated ?? active ?? defaultProps.animated
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
-    [`${classPrefix}-active`]: animated,
+    [`${classPrefix}-active`]: effectiveAnimated,
   })
 
-  const stylesOuter: React.CSSProperties = {
-    width: '100%',
-    backgroundColor: background,
-  }
-
   const [displayPercent, setDispalyPercent] = useState(percent)
+  const getStyles = () => {
+    // 基础样式
+    const baseStyles = {
+      height: strokeWidth && pxTransform(Number(strokeWidth)),
+      borderRadius: borderRadius && pxTransform(Number(borderRadius)),
+    }
+    const transitionStyle = {
+      transition: `width ${duration || 300}ms ease-in-out`,
+    }
 
-  const stylesInner: React.CSSProperties = {
-    width: `${displayPercent}%`,
-    background: color || '#FF0F23',
+    return {
+      outer: {
+        width: '100%',
+        backgroundColor: effectiveBgColor,
+        ...baseStyles,
+      },
+      inner: {
+        width: `${displayPercent}%`,
+        background: effectiveColor || '#FF0F23',
+        ...baseStyles,
+        ...transitionStyle,
+      },
+    }
   }
 
-  if (strokeWidth) {
-    stylesOuter.height = pxTransform(Number(strokeWidth))
-    stylesInner.height = pxTransform(Number(strokeWidth))
-  }
+  const { outer: stylesOuter, inner: stylesInner } = getStyles()
+
   const handlePercent = () => {
     let timer: any = null
     if (delay) {
@@ -77,8 +106,15 @@ export const Progress: FunctionComponent<
     }
   }
   useEffect(() => {
-    setDispalyPercent(percent)
-  }, [percent])
+    if (activeMode === 'backwards') {
+      setDispalyPercent(0)
+      setTimeout(() => {
+        setDispalyPercent(percent)
+      }, duration || 300)
+    } else {
+      setDispalyPercent(percent)
+    }
+  }, [percent, activeMode])
 
   const [intersecting, setIntersecting] = useState(false)
   const progressRef = useRef(null)
@@ -163,7 +199,8 @@ export const Progress: FunctionComponent<
   }
   const computeInnerStyle = () => {
     const style: any = {
-      backgroundColor: color || '#ff0f23',
+      backgroundColor: effectiveColor || '#ff0f23',
+      fontSize: fontSize && pxTransform(Number(fontSize)),
     }
     if (harmony()) {
       style.width = harmony()
@@ -178,14 +215,16 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
+      aria-label={ariaLabel}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
         <View
           className={classesInner}
           style={{ ...stylesInner, position: 'relative' }}
+          onTransitionEnd={onActiveEnd}
         >
-          {showText && (
+          {effectiveShowText && (
             <View
               style={{
                 position: 'relative',
