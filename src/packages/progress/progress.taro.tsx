@@ -36,7 +36,7 @@ export const Progress: FunctionComponent<
     lazy,
     delay,
     // tc
-    showInfo, // ✅
+    showInfo,
     borderRadius,
     fontSize,
     activeColor,
