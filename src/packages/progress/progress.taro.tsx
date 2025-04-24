@@ -68,7 +68,8 @@ export const Progress: FunctionComponent<
     // 基础样式
     const baseStyles = {
       height: strokeWidth && pxTransform(Number(strokeWidth)),
-      borderRadius: borderRadius && pxTransform(Number(borderRadius)),
+      borderRadius:
+        borderRadius && pxTransform(parseInt(borderRadius.toString())),
     }
     const transitionStyle = {
       transition: `width ${duration || 300}ms ease-in-out`,
@@ -106,15 +107,22 @@ export const Progress: FunctionComponent<
     }
   }
   useEffect(() => {
+    let timer: any = null
     if (activeMode === 'backwards') {
       setDispalyPercent(0)
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setDispalyPercent(percent)
       }, duration || 300)
     } else {
       setDispalyPercent(percent)
     }
-  }, [percent, activeMode])
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [percent, activeMode, duration])
 
   const [intersecting, setIntersecting] = useState(false)
   const progressRef = useRef(null)
@@ -200,7 +208,7 @@ export const Progress: FunctionComponent<
   const computeInnerStyle = () => {
     const style: any = {
       backgroundColor: effectiveColor || '#ff0f23',
-      fontSize: fontSize && pxTransform(Number(fontSize)),
+      fontSize: fontSize && pxTransform(parseInt(fontSize.toString())),
     }
     if (harmony()) {
       style.width = harmony()
