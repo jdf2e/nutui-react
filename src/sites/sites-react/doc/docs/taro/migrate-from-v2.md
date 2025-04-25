@@ -199,6 +199,7 @@ plugins: [
 - 调整多选状态下`maxCount`属性的默认值为`Number.MAX_VALUE`
 - 新增了的 `upload` 方法
 - `defaultValue` 和 `value` 的类型从 `FileType` 变更为 `FileItem`
+- `listUploadRender`允许自定义列表模式的上传区域
 
 ### 操作反馈
 

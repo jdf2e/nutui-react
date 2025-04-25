@@ -135,7 +135,7 @@ plugins: [
 
 #### SideNavBar
 
-- 注意：** 该组件不符合移动端规范，已被废弃。请使用 SideBar **
+- 注意：**该组件不符合移动端规范，已被废弃。请使用 SideBar**
 
 #### Tabbar
 
@@ -200,6 +200,7 @@ plugins: [
 - 调整多选状态下`maxCount`属性的默认值为`Number.MAX_VALUE`
 - 新增了的 `upload` 方法
 - `defaultValue` 和 `value` 的类型从 `FileType` 变更为 `FileItem`
+- `listUploadRender`允许自定义列表模式的上传区域
 
 ### 操作反馈
 
@@ -249,7 +250,7 @@ plugins: [
 
 #### Audio
 
-- 注意：** 该组件在 Taro 多端上没有计划支持。请使用 API **
+- 注意：**该组件在 Taro 多端上没有计划支持。请使用 API**
 
 [//]: # '#### Avatar'
 [//]: # '#### AvatarGroup'
