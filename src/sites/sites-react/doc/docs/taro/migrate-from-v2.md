@@ -135,7 +135,7 @@ plugins: [
 
 #### SideNavBar
 
-- 注意：** 该组件不符合移动端规范，已被废弃。请使用 SideBar **
+- 注意：**该组件不符合移动端规范，已被废弃。请使用 SideBar**
 
 #### Tabbar
 
@@ -249,7 +249,7 @@ plugins: [
 
 #### Audio
 
-- 注意：** 该组件在 Taro 多端上没有计划支持。请使用 API **
+- 注意：**该组件在 Taro 多端上没有计划支持。请使用 API**
 
 [//]: # '#### Avatar'
 [//]: # '#### AvatarGroup'
