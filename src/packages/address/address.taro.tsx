@@ -94,22 +94,19 @@ const InternalAddress: ForwardRefRenderFunction<
 
   const handleClose = () => {
     setInnerVisible(false)
-    onClose()
+    onClose && onClose()
   }
 
   const renderLeftOnCustomSwitch = () => {
+    if (!custom) return null
     return (
-      <>
-        {custom && (
-          <View className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
-            {React.isValidElement(backIcon) ? (
-              backIcon
-            ) : (
-              <ArrowLeft color="#cccccc" />
-            )}
-          </View>
+      <View className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
+        {React.isValidElement(backIcon) ? (
+          backIcon
+        ) : (
+          <ArrowLeft color="#cccccc" />
         )}
-      </>
+      </View>
     )
   }
 
