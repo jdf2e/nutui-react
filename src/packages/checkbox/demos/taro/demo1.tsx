@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
 import { Check } from '@nutui/icons-react-taro'
-import { Cell, Checkbox } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Cell, Checkbox, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const [checked] = useState(false)

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe, pxTransform } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   return (

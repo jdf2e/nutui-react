@@ -1,4 +1,4 @@
-export default class MiniLru {
+export class MiniLru {
   private cache: Map<any, any>
 
   private capacity: number

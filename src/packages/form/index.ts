@@ -1,20 +1,20 @@
 import React from 'react'
-import { Form, FormProps } from './form'
+import { Form } from './form'
 import { FormItem } from '../formitem/formitem'
-import { FormInstance } from './types'
 import { useForm, useWatch } from '@/packages/form/useform'
+import { FormInstance, WebFormProps } from '@/types'
 
-export type { FormProps } from './form'
 export type {
   FormItemRuleWithoutValidator,
   FormInstance,
   FormFieldEntity,
   NamePath,
   Store,
-} from './types'
+  WebFormProps as FormProps,
+} from '@/types'
 
 type CompoundedComponent = React.ForwardRefExoticComponent<
-  Partial<FormProps> &
+  Partial<WebFormProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
     React.RefAttributes<FormInstance>
 > & {

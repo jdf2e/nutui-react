@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ImagePreview } from '../imagepreview'
-import { triggerDrag } from '@/utils/test/event'
+import { triggerDrag } from '@/utils/event-mocker'
 
 describe('ImagePreview Component', () => {
   const images = [

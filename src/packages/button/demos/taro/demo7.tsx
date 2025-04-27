@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Cell } from '@nutui/nutui-react-taro'
-import { harmony } from '@/utils/platform-taro'
+import { Button, Cell, harmony } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [loading, setLoading] = useState(false)

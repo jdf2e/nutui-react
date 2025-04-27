@@ -1,4 +1,4 @@
-# Upgrade from v2 to v3.
+# Upgrade from v2 to v3
 
 This document will assist you in upgrading from NutUI React 2.x to NutUI React 3.x.
 
@@ -193,6 +193,7 @@ If your project uses these components, please read the documentation carefully a
 - Adjusted the default value of the maxCount attribute in multi-select mode to Number.MAX_VALUE.
 - Introduced a new upload method.
 - Changed the types of defaultValue and value from FileType to FileItem.
+- listUploadRender allows customizing the upload area in list mode.
 
 ### Feedback
 

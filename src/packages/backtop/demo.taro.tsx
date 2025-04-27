@@ -1,11 +1,11 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
+import { harmony } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo5 from './demos/taro/demo5'
-import { harmony } from '@/utils/platform-taro'
 
 const BackTopDemo = () => {
   const [translated] = useTranslate({

@@ -1,13 +1,11 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import {
   Loading as IconLoading,
   Loading1 as IconLoading1,
 } from '@nutui/icons-react'
-import Lottie, { LottieProps } from '../lottie'
 import { ComponentDefaults } from '@/utils/typings'
-import { WebLoadingProps, LoadingRef } from '@/types'
-import { mergeProps } from '@/utils/merge-props' // 方便以后扩展设置为键值对形式
+import { LoadingRef, WebLoadingProps } from '@/types' // 方便以后扩展设置为键值对形式
 
 // 方便以后扩展设置为键值对形式
 const loadingMap = {
@@ -28,45 +26,18 @@ const defaultLottieProps = {
 }
 export const Loading = React.forwardRef<LoadingRef, Partial<WebLoadingProps>>(
   (props, ref) => {
-    const {
-      className,
-      style,
-      children,
-      direction,
-      icon,
-      lottieProps,
-      ...rest
-    } = {
+    const { className, style, children, direction, icon, ...rest } = {
       ...defaultProps,
       ...props,
     }
-    const loadingLottieRef = useRef<LottieProps | null>(null)
-    // @ts-ignore
-    // const loadingLottieRef: React.MutableRefObject<LottieProps | null> =
-    //   useRef()
-    const mergedLottieProps = mergeProps(defaultLottieProps, lottieProps)
-    React.useImperativeHandle(ref, () => loadingLottieRef)
 
     const classPrefix = 'nut-loading'
     const getLoadingIcon = () => {
-      if (!rest.jsonData) {
-        console.warn('Lottie animation requires jsonData prop')
-      }
-      if (rest.type === 'lottie') {
-        return (
-          <Lottie
-            {...mergedLottieProps}
-            ref={loadingLottieRef}
-            source={rest.jsonData}
-          />
-        )
-      }
       const LoadingIcon = loadingMap[rest.type] || IconLoading1
       return <LoadingIcon className={`${classPrefix}-icon`} />
     }
     const iconboxClassName = () => {
-      if (rest.type === 'lottie') return `${classPrefix}-lottie-box`
-      return `${classPrefix}-icon-box`
+      return !icon ? `${classPrefix}-icon-box` : ''
     }
     return (
       <div

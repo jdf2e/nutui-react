@@ -1,6 +1,5 @@
 import React from 'react'
-import { Cell, Skeleton } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Cell, Skeleton, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo4 = () => {
   return (

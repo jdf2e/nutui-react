@@ -12,9 +12,9 @@ import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
-import { useLockScrollTaro } from '@/hooks/use-lock-scoll-taro'
+import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 
 const defaultProps: TaroPopupProps = {
   ...defaultOverlayProps,

@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Input } from '@nutui/nutui-react-taro'
+import { Input, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 import { Eye, Marshalling } from '@nutui/icons-react-taro'
-import pxTransform from '@/utils/px-transform'
 
 const Demo9 = () => {
   const [inputType, setInputType] = useState('password')

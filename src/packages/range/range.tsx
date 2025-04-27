@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '@/hooks/use-touch'
-import { getRect } from '@/hooks/use-client-rect'
+import { getRect } from '@/utils/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '../configprovider'

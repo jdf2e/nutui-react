@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
-import addColorForHarmony from '@/utils/add-color-for-harmony'
+import { addColorForHarmony } from '@/utils/taro/add-color-for-harmony'
 import { PaginationNode, usePagination } from '@/hooks/use-pagination'
 import { TaroPaginationProps } from '@/types'
 

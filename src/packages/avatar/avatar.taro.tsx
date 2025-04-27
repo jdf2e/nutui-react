@@ -10,9 +10,9 @@ import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroAvatarProps } from '@/types'
 
 const defaultProps = {

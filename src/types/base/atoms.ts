@@ -25,6 +25,15 @@ export type FlexJustify =
   | 'evenly'
   | 'stretch'
 
+export type TextAlign =
+  | 'start'
+  | 'end'
+  | 'left'
+  | 'right'
+  | 'center'
+  | 'justify'
+  | 'match-parent'
+
 export type Align = 'left' | 'center' | 'right'
 export type VAlign = 'top' | 'middle' | 'bottom'
 

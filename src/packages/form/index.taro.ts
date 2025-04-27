@@ -1,20 +1,20 @@
 import React from 'react'
-import { Form, FormProps } from './form.taro'
+import { Form } from './form.taro'
 import { FormItem } from '../formitem/formitem.taro'
-import { FormInstance } from './types'
 import { useForm, useWatch } from '@/packages/form/useform.taro'
+import { FormInstance, TaroFormProps } from '@/types'
 
-export type { FormProps } from './form.taro'
 export type {
   FormItemRuleWithoutValidator,
   FormInstance,
   FormFieldEntity,
   NamePath,
   Store,
-} from './types'
+  TaroFormProps as FormProps,
+} from '@/types'
 
 type CompoundedComponent = React.ForwardRefExoticComponent<
-  Partial<FormProps> &
+  Partial<TaroFormProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
     React.RefAttributes<FormInstance>
 > & {

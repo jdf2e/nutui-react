@@ -1,35 +1,28 @@
-export const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isFunction = (val: unknown): val is Function =>
-  typeof val === 'function'
-
-export const isPromise = <T = any>(val: unknown): val is Promise<T> => {
-  return isObject(val) && isFunction(val.then) && isFunction(val.catch)
-}
-
-export const upperCaseFirst = (str: string) => {
-  str = str.toLowerCase()
-  str = str.replace(
-    /\b\w+\b/g,
-    (word) => word.substring(0, 1).toUpperCase() + word.substring(1)
-  )
-  return str
-}
-
-export const clamp = (num: number, min: number, max: number): number =>
-  Math.min(Math.max(num, min), max)
-
-export function preventDefault(
-  event: React.TouchEvent<HTMLElement> | TouchEvent,
-  isStopPropagation?: boolean
-) {
-  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-    event.preventDefault()
-  }
-
-  if (isStopPropagation) {
-    event.stopPropagation()
-  }
-}
+export * from './bound'
+export * from './camel-case'
+export * from './can-use-dom'
+export * from './clamp'
+export * from './date'
+export * from './get-rect'
+export * from './get-scroll-parent'
+export * from './interceptor'
+export * from './is-date'
+export * from './is-empty'
+export * from './is-forward-ref-component'
+export * from './is-function'
+export * from './is-object'
+export * from './is-promise'
+export * from './lru'
+export * from './merge'
+export * from './merge-props'
+export * from './pad-zero'
+export * from './prevent-default'
+export * from './px-check'
+export * from './raf'
+export * from './render'
+export * from './rubberband'
+export * from './sleep'
+export * from './supports-passive'
+export * from './to-array'
+export * from './typings'
+export * from './upper-case-first'

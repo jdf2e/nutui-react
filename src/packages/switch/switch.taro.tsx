@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { Loading1 } from '@nutui/icons-react-taro'
@@ -14,6 +13,8 @@ const defaultProps = {
   activeText: '',
   inactiveText: '',
   loadingIcon: <Loading1 />,
+  loading: undefined,
+  onLoadingChange: (loading: boolean) => {},
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -26,25 +27,34 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     className,
     style,
     onChange,
+    loading: propLoading,
+    onLoadingChange,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const classPrefix = 'nut-switch'
-
   const rtl = useRtl()
-
   const [value, setValue] = usePropsValue<boolean>({
     value: checked,
     defaultValue: defaultChecked,
   })
 
-  useEffect(() => {
-    changing && setChanging(false)
-  }, [value])
+  const [internalLoading, setInternalLoading] = useState(false)
+  const loading = propLoading !== undefined ? propLoading : internalLoading
 
-  const [changing, setChanging] = useState(false)
+  const setLoading = (val: boolean) => {
+    if (propLoading !== undefined) {
+      onLoadingChange(val)
+    } else {
+      setInternalLoading(val)
+    }
+  }
+
+  useEffect(() => {
+    loading && setLoading(false)
+  }, [value])
 
   const classes = () => {
     return classNames([
@@ -58,11 +68,16 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = () => {
-    if (disabled || changing) return
+  const onClick = async () => {
+    if (disabled || loading) return
     if (onChange) {
-      setChanging(true)
+      loadingIcon && setLoading(true)
       onChange(!value)
+      try {
+        await onChange(!value)
+      } catch (e) {
+        setLoading(false)
+      }
     }
     setValue(!value)
   }
@@ -82,7 +97,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {changing && loadingIcon ? (
+        {loading && loadingIcon ? (
           <>{loadingIcon}</>
         ) : (
           <>

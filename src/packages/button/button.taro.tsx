@@ -9,7 +9,7 @@ import {
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -76,6 +76,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       children,
       className,
       style,
+      formType,
       nativeType,
       onClick,
       ...rest
@@ -145,7 +146,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     )
 
     if (getEnv() === 'WEB') {
-      ;(rest as any).type = rest.formType
+      ;(rest as any).type = formType
     }
     return (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -154,7 +155,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       <TaroButton
         {...rest}
         ref={ref}
-        formType={nativeType}
+        formType={formType || nativeType}
         className={buttonClassNames}
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}

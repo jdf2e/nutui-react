@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { FixedNav } from '@nutui/nutui-react-taro'
+import { FixedNav, pxTransform } from '@nutui/nutui-react-taro'
 import { Retweet } from '@nutui/icons-react-taro'
 import { View, Text } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo4 = () => {
   const [visible, setVisible] = useState(false)

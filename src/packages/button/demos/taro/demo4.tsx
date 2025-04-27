@@ -1,8 +1,7 @@
 import React from 'react'
 import { Text } from '@tarojs/components'
-import { Button, Cell } from '@nutui/nutui-react-taro'
+import { Button, Cell, harmony } from '@nutui/nutui-react-taro'
 import { Plus, Star } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo4 = () => {
   const marginStyle = {

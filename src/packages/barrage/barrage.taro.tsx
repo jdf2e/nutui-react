@@ -8,7 +8,7 @@ import classNames from 'classnames'
 
 import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 
 export interface BarrageProps extends BasicComponent {
   list: Array<string>
@@ -70,7 +70,7 @@ const InternalBarrage: ForwardRefRenderFunction<
 
   const getNodeWidth = async (node: Element | null, type = 'width') => {
     if (node) {
-      const refe = await getRectByTaro(node)
+      const refe = await getRectInMultiPlatform(node)
       return Math.ceil(type === 'height' ? refe.height : refe.width)
     }
     return 0
@@ -119,7 +119,7 @@ const InternalBarrage: ForwardRefRenderFunction<
   const setStyle = async (el: HTMLElement, currentIndex: number) => {
     try {
       if (el) {
-        const refe = await getRectByTaro(el)
+        const refe = await getRectInMultiPlatform(el)
         const width = refe.width
         const height = refe.height
         el.classList.add('move')

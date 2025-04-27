@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View } from '@tarojs/components'
-import { Lottie, PullToRefresh } from '@nutui/nutui-react-taro'
+import { Lottie, PullToRefresh, pxTransform } from '@nutui/nutui-react-taro'
 import Taro from '@tarojs/taro'
-import pxTransform from '@/utils/px-transform'
 import lightPull from '@/packages/lottie/animation/light/pulltorefresh.json'
 
 const Demo1 = () => {

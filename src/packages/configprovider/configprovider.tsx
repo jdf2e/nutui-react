@@ -2,12 +2,12 @@ import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import isEqual from 'react-fast-compare'
-import useMemo from '@/hooks/use-memo'
+import { useMemo } from '@/hooks/use-memo'
 import { BasicComponent } from '@/utils/typings'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 import type { NutCSSVariables } from './types'
-import { inBrowser } from '@/utils/raf'
+import { inBrowser } from '@/utils'
 
 export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang

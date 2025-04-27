@@ -1,3 +1,46 @@
+# v3.0.10
+
+`2025-04-25`
+
+- 📖 docs: jmapp 不判断环境，直接打开 (#3193)
+- :sparkles: feat(switch): loading 态受控 (#3149)
+- :sparkles: feat(uploader): add listUploadRender prop for custom list mode upload… (#3198)
+- :sparkles: feat(video): 兼容taro Component属性 (#3185)
+- :sparkles: feat(radio): 支持自定义icon的classname (#3196)
+- :bug: fix(tabs): 修复滚动计算问题，优化定位逻辑 (#3183)
+- :bug: fix: 兼容选中值为0的情况 (#3192)
+
+# v3.0.9
+
+`2025-04-18`
+
+- :sparkles: feat(form): 增加 taro components 属性的支持,抽象类型 (#3182)
+- :sparkles: feat(input): 增加 taro components 属性的支持 (#3181)
+- :sparkles: feat(button): 兼容 taro components (#3188)
+- :bug: fix(image): update image props tsType (#3178)
+- 🪵 refactor: 打包组件不同主题的 css 文件 (#3189)
+- 🪵 refactor(loading): 移除内置的 lottie，可通过 icon 属性加载 lottie (#3184)
+- 📖 docs(audio): 修订audio taro 端文档,不再支持taro多端 (#3187)
+- 🏡 chore: update taro version (#3186)
+- 🏡 chore: 调整 utils 和 hooks 的导出方式 (#3162)
+
+# v3.0.8
+
+`2025-04-11`
+
+- :sparkles: feat(v15): swipe 增加 v15 的 demo (#3160)
+- :sparkles: feat(dialog): 添加变量处理 (#3172)
+- :bug: fix(sidebar): scroll animation not working with sidebarDuration prop (#3169)
+- :bug: fix(switch): 异步操作中抛错可中断 loading 态 (#3143)
+- :bug: fix: jmapp demo build (#3146)
+- :bug: fix(image): 组件内部的style处理覆盖传入的className (#3165)
+- :bug: fix(cascader): 选中后 tab 应展示 text 字段的值 (#3167)
+- :bug: fix: codesandbox displays abnormal (#3159)
+- :bug: fix(docs): 修复 markdown 无法正确编译注释 (#3158)
+- :bug: fix(skeleton): 废弃inline 导致的警告问题修复 (#3154)
+- 🏡 chore: 增加 useHtmlComponents 模式 (#3156)
+- 📖 docs: 补充快速上手和主题中的配置项的解释 (#3163)
+
 # v3.0.7
 
 `2025-04-03`

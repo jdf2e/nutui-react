@@ -1,8 +1,6 @@
 import React from 'react'
-import { Tabbar, Image } from '@nutui/nutui-react-taro'
+import { Tabbar, Image, harmony, pxTransform } from '@nutui/nutui-react-taro'
 import { Cart, Hi, Home, User, Message } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   return (

@@ -1,4 +1,4 @@
-export const inBrowser = typeof window !== 'undefined'
+import { inBrowser } from '@/utils/get-rect'
 
 // 防频
 function requestAniFrame() {

@@ -8,8 +8,8 @@ import { useTouch } from '@/hooks/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
 import { ComponentDefaults, Timeout } from '@/utils/typings'
-import pxTransform from '@/utils/px-transform'
-import { getDeviceInfo } from '@/utils/get-system-info'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { getDeviceInfo } from '@/utils/taro/get-system-info'
 import { PullStatus, TaroPullToRefreshProps } from '@/types'
 
 const defaultProps = {

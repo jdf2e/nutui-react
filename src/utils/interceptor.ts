@@ -1,4 +1,4 @@
-import { isPromise } from './index'
+import { isPromise } from './is-promise'
 
 export type Interceptor = (
   ...args: any[]

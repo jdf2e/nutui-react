@@ -6,7 +6,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useForceUpdate } from '@/hooks/use-force-update'
 import raf from '@/utils/raf'
-import useUuid from '@/hooks/use-uuid'
+import { useUuid } from '@/hooks/use-uuid'
 import { TaroSideBarItemProps, TaroSideBarProps } from '@/types'
 import SideBarItem from '@/packages/sidebaritem/index.taro'
 import { mergeProps } from '@/utils/merge-props'
@@ -111,14 +111,26 @@ export const SideBar: FC<Partial<TaroSideBarProps>> & {
   const titleRectRef = useRef<RectItem[]>([])
   const [scrollTop, setScrollTop] = useState(0)
   const scrollDirection = (to: number) => {
-    let count = 0
-    const frames = sidebarDuration === 0 ? 1 : Math.round(sidebarDuration / 16)
-    function animate() {
+    if (sidebarDuration === 0) {
       setScrollTop(to)
-      if (++count < frames) {
+      return
+    }
+
+    const from = scrollTop
+    const frames = Math.round(sidebarDuration / 16)
+    let count = 0
+
+    function animate() {
+      const progress = count / frames
+      const current = from + (to - from) * progress
+      setScrollTop(current)
+
+      if (count < frames) {
+        count++
         raf(animate)
       }
     }
+
     animate()
   }
   const scrollIntoView = (index: number) => {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { FixedNav } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { FixedNav, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const list = [

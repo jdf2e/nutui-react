@@ -13,8 +13,8 @@ export interface BaseImage extends BaseProps {
   fit: ImageFit
   position: ImagePosition
   alt: string
-  width: string
-  height: string
+  width: string | number
+  height: string | number
   radius: SimpleValue
   error: ReactNode
   loading: ReactNode

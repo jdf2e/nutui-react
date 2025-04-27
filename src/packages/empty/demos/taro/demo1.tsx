@@ -1,6 +1,5 @@
 import React from 'react'
-import { Empty } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Empty, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   return (

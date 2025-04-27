@@ -1,7 +1,6 @@
 import React from 'react'
-import { Avatar, Cell } from '@nutui/nutui-react-taro'
+import { Avatar, Cell, harmony } from '@nutui/nutui-react-taro'
 import { User } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo6 = () => {
   return (

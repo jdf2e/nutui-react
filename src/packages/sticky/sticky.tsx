@@ -8,8 +8,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { getScrollParent } from '@/utils/get-scroll-parent'
-import { getRect } from '@/hooks/use-client-rect'
-import useWatch from '@/hooks/use-watch'
+import { getRect } from '@/utils/get-rect'
+import { useWatch } from '@/hooks/use-watch'
 import { ComponentDefaults } from '@/utils/typings'
 import { TaroStickyProps } from '@/types'
 

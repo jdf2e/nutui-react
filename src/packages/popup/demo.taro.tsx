@@ -1,9 +1,9 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
+import { harmony } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import { harmony } from '@/utils/platform-taro'
 
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'

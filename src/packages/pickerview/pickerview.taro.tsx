@@ -18,6 +18,7 @@ import {
   PickerOptions,
 } from '@/types'
 import PickerRoller from './pickerroller.taro'
+import { isEmpty } from '@/utils/is-empty'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -133,7 +134,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   const handleSelect = useCallback(
     (option: PickerOption, index: number) => {
       const newValue = option?.value
-      if (!newValue || innerValue[index] === newValue) return
+      if (isEmpty(newValue) || innerValue[index] === newValue) return
       changeIndex.current = index
       if (columnsType === 'multiple') {
         setInnerValue((prev) => {

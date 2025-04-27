@@ -3,14 +3,14 @@ import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
-import { web } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
+import { web } from '@/utils/taro/platform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
   useCustomEvent,
   useCustomEventsPath,
-} from '@/hooks/use-custom-event'
+} from '@/hooks/taro/use-custom-event'
 import { mergeProps } from '@/utils/merge-props'
 import { TaroNotifyProps } from '@/types'
 

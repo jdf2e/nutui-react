@@ -2,6 +2,7 @@ import React from 'react'
 import './demo.scss'
 import Taro from '@tarojs/taro'
 import { View, ScrollView } from '@tarojs/components'
+import { harmony } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -13,7 +14,6 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import { harmony } from '@/utils/platform-taro'
 
 const SwiperDemo = () => {
   const [translated] = useTranslate({
