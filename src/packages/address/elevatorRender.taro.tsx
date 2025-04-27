@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 
 import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
-import Elevator from '../elevator/index.taro'
+import Elevator from '@/packages/elevator/index.taro'
 import {
   normalizeListOptions,
   normalizeOptions,
@@ -177,7 +177,6 @@ export const ElevatorRender: FunctionComponent<
     elevatorItem: RegionData,
     levelIndex: number
   ) => {
-    // if (elevatorItem?.disabled) return
     const nextValue = innerValue.slice(0, levelIndex)
     if (elevatorItem.name) {
       nextValue[levelIndex] = elevatorItem.name
@@ -264,7 +263,9 @@ export const ElevatorRender: FunctionComponent<
         onItemClick={(key: string, item: any) =>
           handleElevatorItemClick(item, levelIndex)
         }
-        height="300px"
+        // height="67%"
+        style={{ height: '100%' }}
+        height="93%"
       />
     </>
   )
@@ -272,8 +273,15 @@ export const ElevatorRender: FunctionComponent<
   const renderContent = () => (
     <>
       {renderTabs()}
-      {renderHotCity()}
-      {renderArea()}
+      <View
+        style={{
+          height: innerValue.length ? '80%' : '93%',
+          overflowY: levels.length && tabActiveIndex !== 0 ? 'hidden' : 'auto',
+        }}
+      >
+        {renderHotCity()}
+        {renderArea()}
+      </View>
     </>
   )
 
@@ -282,7 +290,7 @@ export const ElevatorRender: FunctionComponent<
       {...popupProps}
       visible={visible}
       position="bottom"
-      style={{ height: '87%' }}
+      style={{ height: '89%' }}
       round
       closeIcon={closeIcon}
       closeable={closeable}

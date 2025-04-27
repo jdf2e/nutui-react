@@ -224,6 +224,16 @@ const Demo1 = () => {
         disabled: true,
       },
       {
+        value: '山东',
+        text: '山东',
+        wordCode: 'S',
+      },
+      {
+        value: '山西',
+        text: '山西',
+        wordCode: 'S',
+      },
+      {
         value: '上海',
         text: '上海',
         wordCode: 'S',
@@ -259,6 +269,16 @@ const Demo1 = () => {
             wordCode: 'J',
           },
         ],
+      },
+      {
+        value: '陕西',
+        text: '陕西',
+        wordCode: 'S',
+      },
+      {
+        value: '四川',
+        text: '四川',
+        wordCode: 'S',
       },
       {
         value: '浙江',

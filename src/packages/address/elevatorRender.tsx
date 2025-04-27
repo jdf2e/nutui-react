@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 
 import Popup from '@/packages/popup'
-import Elevator from '../elevator'
+import Elevator from '@/packages/elevator'
 import {
   normalizeListOptions,
   normalizeOptions,
@@ -176,7 +176,6 @@ export const ElevatorRender: FunctionComponent<
     elevatorItem: RegionData,
     levelIndex: number
   ) => {
-    // if (elevatorItem?.disabled) return
     const nextValue = innerValue.slice(0, levelIndex)
     if (elevatorItem.name) {
       nextValue[levelIndex] = elevatorItem.name
@@ -263,7 +262,8 @@ export const ElevatorRender: FunctionComponent<
         onItemClick={(key: string, item: any) =>
           handleElevatorItemClick(item, levelIndex)
         }
-        height="300px"
+        style={{ height: '100%' }}
+        height="93%"
       />
     </>
   )
@@ -271,8 +271,15 @@ export const ElevatorRender: FunctionComponent<
   const renderContent = () => (
     <>
       {renderTabs()}
-      {renderHotCity()}
-      {renderArea()}
+      <div
+        style={{
+          height: innerValue.length ? '80%' : '93%',
+          overflowY: levels.length && tabActiveIndex !== 0 ? 'hidden' : 'auto',
+        }}
+      >
+        {renderHotCity()}
+        {renderArea()}
+      </div>
     </>
   )
 
@@ -281,7 +288,7 @@ export const ElevatorRender: FunctionComponent<
       {...popupProps}
       visible={visible}
       position="bottom"
-      style={{ height: '87%' }}
+      style={{ height: '89%' }}
       round
       closeIcon={closeIcon}
       closeable={closeable}
