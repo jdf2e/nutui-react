@@ -1,7 +1,6 @@
 import React, { CSSProperties } from 'react'
-import { Row, Col } from '@nutui/nutui-react-taro'
+import { Row, Col, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo3 = () => {
   const flexContent: CSSProperties = {

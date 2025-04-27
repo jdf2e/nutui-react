@@ -30,6 +30,7 @@ export interface BaseUploader extends BaseProps {
   uploadIcon?: React.ReactNode
   deleteIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
+  listUploadRender?: React.ReactNode
   name: string
   accept: string
   disabled: boolean

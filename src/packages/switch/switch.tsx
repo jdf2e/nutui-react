@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { Loading1 } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider'
@@ -10,6 +11,9 @@ const defaultProps = {
   disabled: false,
   activeText: '',
   inactiveText: '',
+  loadingIcon: <Loading1 />,
+  loading: undefined,
+  onLoadingChange: (loading: boolean) => {},
 } as WebSwitchProps
 export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
   const {
@@ -18,9 +22,12 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
+    loadingIcon,
     className,
     style,
     onChange,
+    loading: propLoading,
+    onLoadingChange,
     ...rest
   } = {
     ...defaultProps,
@@ -35,6 +42,21 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     defaultValue: defaultChecked,
   })
 
+  const [internalLoading, setInternalLoading] = useState(false)
+  const loading = propLoading !== undefined ? propLoading : internalLoading
+
+  const setLoading = (val: boolean) => {
+    if (propLoading !== undefined) {
+      onLoadingChange(val)
+    } else {
+      setInternalLoading(val)
+    }
+  }
+
+  useEffect(() => {
+    loading && setLoading(false)
+  }, [value])
+
   const classes = () => {
     return classNames([
       classPrefix,
@@ -47,18 +69,20 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    if (disabled) return
-    onChange && onChange(!value, event)
+  const onClick = async () => {
+    if (disabled || loading) return
+    if (onChange) {
+      loadingIcon && setLoading(true)
+      try {
+        await onChange(!value)
+      } catch (e) {
+        setLoading(false)
+      }
+    }
     setValue(!value)
   }
   return (
-    <div
-      className={classes()}
-      onClick={(e) => onClick(e)}
-      style={style}
-      {...rest}
-    >
+    <div className={classes()} onClick={onClick} style={style} {...rest}>
       <div
         className={classNames([
           [`${classPrefix}-button`],
@@ -73,8 +97,14 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
           },
         ])}
       >
-        {!value && !activeText && (
-          <div className={`${classPrefix}-close-line`} />
+        {loading && loadingIcon ? (
+          <>{loadingIcon}</>
+        ) : (
+          <>
+            {!value && !activeText && (
+              <div className={`${classPrefix}-close-line`} />
+            )}
+          </>
         )}
       </div>
       {activeText && (

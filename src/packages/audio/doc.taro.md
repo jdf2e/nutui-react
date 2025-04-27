@@ -1,6 +1,10 @@
 # Audio 音频播放器
 
-用于音频播放
+用于音频播放。**Taro 端不再暴露该组件，建议使用能力更强的 Taro.createInnerAudioContext 接口。**
+
+请参考：https://docs.taro.zone/docs/components/media/audio
+
+> 以下使用方式，**已不支持**。
 
 ## 引入
 

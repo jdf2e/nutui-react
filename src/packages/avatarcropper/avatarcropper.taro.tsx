@@ -8,7 +8,7 @@ import React, {
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas, CommonEventFunction, View } from '@tarojs/components'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'

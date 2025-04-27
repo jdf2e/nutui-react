@@ -117,5 +117,5 @@ npm run build:taro
 感谢以下所有给 NutUI 贡献过代码的开发者。
 &nbsp;
 <a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
-<img src="https://opencollective.com/nutui-react/contributors.svg?width=890&button=false" alt="contributors"/>
+<img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" />
 </a>

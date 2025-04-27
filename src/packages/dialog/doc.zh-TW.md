@@ -159,6 +159,7 @@ export default function App() {
 | \--nutui-dialog-header-font-weight | 對話框標題字重 | `600` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
+| \--nutui-dialog-footer-cancel-bg | 取消按鈕的背景色 | `transparent` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排佈時的margin值 | `16px` |
 | \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `16px` |

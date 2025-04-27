@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { ActionSheet, Cell } from '@nutui/nutui-react-taro'
+import { ActionSheet, Cell, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo3 = () => {
   const [isVisible, setIsVisible] = useState(false)

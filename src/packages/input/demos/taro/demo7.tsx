@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Text, View } from '@tarojs/components'
-import { Button, Input } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Button, Input, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const [keyword, setKeyword] = useState('')

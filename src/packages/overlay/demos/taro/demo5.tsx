@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo5 = () => {
   const [visible, setVisible] = useState(false)
@@ -14,8 +13,8 @@ const Demo5 = () => {
   }
   return (
     <>
-      <Cell>
-        <View onClick={handleToggleShow}>嵌套内容</View>
+      <Cell onClick={handleToggleShow}>
+        <View>嵌套内容</View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose}>

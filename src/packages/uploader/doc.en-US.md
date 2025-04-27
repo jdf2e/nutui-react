@@ -91,59 +91,61 @@ import { Uploader } from '@nutui/nutui-react'
 ### Props
 
 | Property | Description | Type | Default |
-| --- | --- | --- | --- | autoUpload | Whether to upload the file immediately after selecting it.
-| autoUpload | If or not the upload will be done immediately after the file is selected, if false, you need to manually execute the ref submit method to upload | `boolean` | `true` | upload | The upload method, the input parameter is the file to be uploaded.
-| upload | Upload method, input is the file object to be uploaded, after asynchronous processing, return the upload result | `(file: File) => Promise<FileItem>` | `-` |
-| name | The name of the `input` tag `name`, the name of the file parameter sent to the backend | `string` | `file` |
-| defaultValue | Default list of files already uploaded | `FileItem[]` | `[]` |
-| value | List of files that have been uploaded | `FileItem[]` | `-` |
-| preview | Whether or not to show the preview image after a successful upload | `boolean` | `true` |
-| previewUrl | Default image address when uploading non-image ('image') formats | `string` | `-` |
-| deletable | Whether or not to show the delete button | `boolean` | `true` |
-| method | The http method for the upload request | `string` | `post` | | previewType
-| previewType | The built-in style of the uploaded list, two basic styles are supported picture, list | `string`
-| capture | Picture [selection mode](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture), directly bring up the camera | `string` | `false` | maxFileSize
-| maxFileSize | You can set the maximum file size (in bytes) for uploading | `number` \| `string` | `Number.MAX_VALUE` |
-| maxCount | File upload count limit | `number` \| `string` | `1` |
-| fit | Picture fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
-| clearInput | If or not you want to clear the `input` content, set it to `true` to support selecting the same file to upload over and over again | `boolean` | `true` |
-| accept | Allowed file types to be uploaded, [Details] (https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
-| uploadIcon | uploadRegion <a href="#/en-US/component/icon">Icon Name</a> | `React.ReactNode` | `-` |
-| deleteIcon | Delete the icon name of the region | `React.ReactNode` | `-` |
-| uploadLabel | Text below the image in the upload area | `React.
-| multiple | Whether to support file multi-selection |`boolean`|`false`|
-| disabled | Whether to disable file uploading |`boolean`|`false`|
-| beforeUpload | The beforeUpload function needs to return a`Promise`object |```(file: File[]) => Promise<File[] \| boolean>```|`-`|
-| beforeDelete | Callback when deleting a file, does not remove it if the return value is false. Supports returning a`Promise`object, which is not removed when resolve(false) or reject |```(file: FileItem, files: FileItem[]) => boolean```|`-`|
-| onOversize | Triggered when file size exceeds limit |```(file: File[]) => void```|`-`|
-| onOverCount | Triggered when the number of files exceeds the limit |`(count: number) => void`|`-`|
-| onChange | Triggered when the list of uploaded files changes |```(files: FileItem[]) => void```|`-`|
-| onDelete | Triggered when clicked to delete a file |```(file: FileItem, files: FileItem[]) => void```|`-`|
-| onFileItemClick | Triggered when a file is uploaded successfully |```(file: FileItem, index: number) => void```|`-`|
-| onUploadQueueChange | Triggered when the image upload queue changes |```(tasks: FileItem[]) => void```|`-` |
+| --- | --- | --- | --- |
+| autoUpload | Whether to upload immediately after selecting the file, when false, you need to manually execute the ref submit method to upload | `boolean` | `true` |
+| upload | Upload method, the input parameter is the file object to be uploaded, returns the upload result after asynchronous processing | `(file: File) => Promise<FileItem>` | `-` |
+| name | The name of the `input` tag, the file parameter name sent to the backend | `string` | `file` |
+| defaultValue | Default uploaded file list | `FileItem[]` | `[]` |
+| value | Uploaded file list | `FileItem[]` | `-` |
+| preview | Whether to display preview image after successful upload | `boolean` | `true` |
+| previewUrl | Default image address when uploading non-image('image') format | `string` | `-` |
+| deletable | Whether to display delete button | `boolean` | `true` |
+| method | Upload request http method | `string` | `post` |
+| previewType | Built-in style of upload list, supports two basic styles: picture、list | `string` | `picture` |
+| capture | Image [selection mode](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture), directly launch camera | `string` | `false` |
+| maxFileSize | Maximum uploadable file size (bytes) | `number` \| `string` | `Number.MAX_VALUE` |
+| maxCount | File upload quantity limit | `number` \| `string` | `1` |
+| fit | Image fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
+| clearInput | Whether to clear `input` content, set to `true` to support repeatedly selecting and uploading the same file | `boolean` | `true` |
+| accept | Allowed upload file types, [detailed explanation](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| uploadIcon | Upload area <a href="#/zh-CN/component/icon">icon name</a> | `React.ReactNode` | `-` |
+| deleteIcon | Delete area icon name | `React.ReactNode` | `-` |
+| uploadLabel | Text below the upload area image | `React.ReactNode` | `-` |
+| listUploadRender | Custom upload area in list mode | `React.ReactNode` | `-` |
+| multiple | Whether to support multiple file selection | `boolean` | `false` |
+| disabled | Whether to disable file upload | `boolean` | `false` |
+| beforeUpload | The function before upload needs to return a `Promise` object | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
+| beforeDelete | Callback when deleting files, no removal when return value is false. Supports returning a `Promise` object, no removal when `Promise` object resolve(false) or reject | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
+| onOversize | Triggered when file size exceeds limit | `(file: File[]) => void` | `-` |
+| onOverCount | Triggered when the number of files exceeds the limit | `(count: number) => void` | `-` |
+| onChange | Triggered when the uploaded file list changes | `(files: FileItem[]) => void` | `-` |
+| onDelete | Triggered when clicking to delete file | `(file: FileItem, files: FileItem[]) => void` | `-` |
+| onFileItemClick | Triggered when clicking after file upload success | `(file: FileItem, index: number) => void` | `-` |
+| onUploadQueueChange | Triggered when the image upload queue changes | `(tasks: FileItem[]) => void` | `-` |
 
-> Note: accept, capture and multiple are the native attributes of the browser input tag, the support for these attributes varies among mobile models, so there may be some compatibility issues under different models and WebViews.
+> Note: accept, capture and multiple are native attributes of browser input tags. Mobile devices have different levels of support for these attributes, so compatibility issues may occur on different models and WebViews.
 
 ### FileItem
 
-| Name | Description | Default Value |
-| --- | --- | --- | status | File status value.
-| status | File status value, optionally 'ready,uploading,success,error' | `ready` |
-| uid | Unique identifier of the file | `-` | name | File name.
-| name | File name | `-` | url | Path to file
-| url | file path | `-` | uid | unique identifier for the file | `-` | name | file name | `-` | url | file path | `-` | type | file type
-| type | file type | `image` |
-| loadingIcon | Loading Icon | `-` |
-| failIcon | failureIcon | `-` |
-| percentage | upload prgress percent | `-` |
+| Name | Description | Default |
+| --- | --- | --- |
+| status | File status value, optional 'ready,uploading,success,error' | `ready` |
+| uid | Unique identifier of the file | `-` |
+| name | File name | `-` |
+| url | File path | `-` |
+| type | File type | `image` |
+| loadingIcon | Loading icon | `-` |
+| failIcon | Failed loading icon | `-` |
+| percentage | Upload progress bar percentage | `-` |
 
 ### Methods
 
-The Uploader instance can be retrieved by ref and the instance methods called.
-| MethodName | Description | Parameters | ReturnValues |
-| --- | --- | --- | --- | --- | submit | Manual upload mode
-| submit | Manual upload mode, performs the upload operation | `-` | `-` |
-| clear | Clear the queue of selected files (this method is usually used when uploading in manual mode) | `index` | `-` |
+You can get the Uploader instance through ref and call instance methods
+
+| Method | Description | Parameters | Return |
+| --- | --- | --- | --- |
+| submit | Manual upload mode, execute upload operation | `-` | `-` |
+| clear | Clear the selected file queue (this method is generally used in conjunction with manual mode upload) | `index` | `-` |
 
 ## Theme customization
 

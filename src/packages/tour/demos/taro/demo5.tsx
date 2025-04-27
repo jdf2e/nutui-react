@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Cell, Tour, Tabbar } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
-  const [showTour, setShowTour] = useState(true)
+  const [showTour, setShowTour] = useState(false)
 
   const closeTour = () => {
     setShowTour(false)
@@ -12,20 +12,22 @@ const Demo5 = () => {
     {
       content: '70+ 高质量组件，覆盖移动端主流场景',
       target: 'target5',
+      location: 'top-left',
     },
     {
       content: '支持一套代码同时开发多端小程序+H5',
       target: 'target6',
+      location: 'top-left',
     },
     {
       content: '基于京东APP 10.0 视觉规范',
       target: 'target7',
-      location: 'top-end',
+      location: 'top-right',
     },
     {
       content: '支持定制主题，内置 700+ 个主题变量',
       target: 'target8',
-      location: 'top-end',
+      location: 'top-right',
     },
   ]
 
@@ -48,7 +50,7 @@ const Demo5 = () => {
         visible={showTour}
         onClose={closeTour}
         list={steps}
-        location="top-start"
+        location="top-left"
         offset={[0, 0]}
         maskWidth={60}
         maskHeight={50}

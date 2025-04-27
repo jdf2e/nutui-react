@@ -11,7 +11,7 @@ import Button from '@/packages/button'
 import { ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/hooks/use-touch'
 import { clamp, preventDefault } from '@/utils'
-import { getRect } from '@/hooks/use-client-rect'
+import { getRect } from '@/utils/get-rect'
 import { useConfig } from '@/packages/configprovider'
 import { WebAvatarCropperProps } from '@/types'
 

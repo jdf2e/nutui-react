@@ -8,11 +8,10 @@ import React, {
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import isEqual from 'react-fast-compare'
-
 import PickerView from '@/packages/pickerview/index.taro'
 import Popup from '@/packages/popup/index.taro'
 import SafeArea from '@/packages/safearea/index.taro'
-import useRefs from '@/hooks/use-refs'
+import { useRefs } from '@/hooks/use-refs'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'

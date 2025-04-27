@@ -18,7 +18,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### Notify Type
+### Support Jump
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### Custom Style
+### Support Close
 
 :::demo
 
@@ -34,7 +34,7 @@ import { Notify } from '@nutui/nutui-react'
 
 :::
 
-### Custom Duration
+### Custom Style
 
 :::demo
 
@@ -48,7 +48,11 @@ import { Notify } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | Display Type（primary,success ,danger,warning） | `string` | `danger` |
+| distance | Distance from top/bottom | `number` | `8` |
+| navHeight | Height of top navigation bar | `number` | `57` |
+| closeable | Whether to enable the close mode | `boolean` | `false` |
+| leftIcon | Left Icon | `ReactNode` | `-` |
+| rightIcon | Right Icon | `ReactNode` | `-` |
 | duration | Display duration (ms),value is 0 ,notify not disappear | `string` | `3000` |
 | position | Custom Position (top, bottom) | `string` | `top` |
 | onClick | Emitted when notify is clicked | `onClick: () => void` | `-` |
@@ -63,13 +67,12 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-notify-height | Height of notify | `40px` |
-| \--nutui-notify-padding | Inside margin of notify | `0 10px` |
+| \--nutui-notify-padding | Inside margin of notify | `0 12px` |
+| \--nutui-notify-border-radius | The rounded corners of the notify | `8px` |
+| \--nutui-notify-box-shadow | Shadow of notify | `0px 4px 12px 0px rgba(0, 0, 0, 0.06)` |
+| \--nutui-notify-z-index | ZIndex of notify | `1000` |
 | \--nutui-notify-font-size | The font size of notify | `$font-size-base` |
-| \--nutui-notify-text-color | The text color of notify | `$white` |
-| \--nutui-notify-base-background-color | The background color of notify | `$color-primary` |
-| \--nutui-notify-primary-background-color | The main notify background color | `$color-info` |
-| \--nutui-notify-success-background-color | Background color of successful notify | `$color-success` |
-| \--nutui-notify-danger-background-color | Danger notify background color | `$color-primary` |
-| \--nutui-notify-warning-background-color | Warning notify background color | `$color-warning` |
+| \--nutui-notify-text-color | The text color of notify | `$color-title` |
+| \--nutui-notify-background-color | The background color of notify | `$white` |
 
 <Contribution name="Notify" />

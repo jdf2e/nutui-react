@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
+import { harmony } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -27,7 +28,6 @@ import Demo20 from './demos/taro/demo20'
 import Demo21 from './demos/taro/demo21'
 import Demo22 from './demos/taro/demo22'
 import Demo23 from './demos/taro/demo23'
-import { harmony } from '@/utils/platform-taro'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({

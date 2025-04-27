@@ -4,7 +4,7 @@ type Callback<T> = (prev: T | undefined) => void
 type Config = {
   immediate: boolean
 }
-function useWatch<T>(
+export function useWatch<T>(
   dep: T,
   callback: Callback<T>,
   config: Config = { immediate: false }
@@ -35,5 +35,3 @@ function useWatch<T>(
     stop.current = true
   }
 }
-
-export default useWatch

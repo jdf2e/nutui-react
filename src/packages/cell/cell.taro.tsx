@@ -5,7 +5,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import pxTransform from '@/utils/px-transform'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { CellProps } from './types'
 
 interface CellTaroProps extends CellProps {

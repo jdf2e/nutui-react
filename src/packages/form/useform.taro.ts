@@ -7,7 +7,7 @@ import {
   FormInstance,
   NamePath,
   Store,
-} from './types'
+} from '@/types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
 type UpdateItem = { entity: FormFieldEntity; condition: any }

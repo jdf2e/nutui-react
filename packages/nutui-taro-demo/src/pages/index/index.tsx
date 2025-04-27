@@ -16,7 +16,7 @@ import { SearchBar } from '@/packages/searchbar/searchbar.taro'
 import pkg from '@/packages/../config.json'
 import packageJson from '@/packages/../../package.json'
 import './index.scss'
-import { harmony } from '../../../../../src/utils/platform-taro'
+import { harmony } from '../../../../../src/utils/taro/platform'
 
 const navs = pkg.nav
 

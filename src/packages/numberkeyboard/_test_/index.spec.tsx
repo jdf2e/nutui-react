@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { act, render } from '@testing-library/react'
-import { trigger } from '@/utils/test/event'
+import { trigger } from '@/utils/event-mocker'
 import '@testing-library/jest-dom'
 
 import { NumberKeyboard } from '../numberkeyboard'

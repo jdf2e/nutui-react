@@ -9,55 +9,17 @@ NutUI 默认提供多套官方`UI`主题，同时允许在一定程度上定制�
 | 主题说明 | scss 文件名称 |
 | --- | --- |
 | 京东 APP 主题（默认） | `variables.scss` |
-| 京东 JDesign 主题 | `variables-jmapp.scss` |
+| 京东 JMAPP 主题 ([预览](https://nutui.jd.com/taro/react/jmapp-3x/demo/index.html#/pages/index/index)) | `variables-jmapp.scss` |
 
 ## 使用方式
 
-### 修改本地项目 vite 或者 webpack 的配置文件
+需要注意的是，配置主题时，你还需要在入口文件中引入 global 类的文件来加载一些 NutUI React 的全局性逻辑和样式：
 
-修改 vite 或者 webpack 配置文件中 **sass-loader** 的配置。如下示例
+| 主题说明 | scss 文件名称 |
+| --- | --- |
+| 京东 APP 主题（明亮模式） | `@nutui/nutui-react-taro/dist/styles/themes/default.css` |
+| 京东 APP 主题（暗黑模式） | `@nutui/nutui-react-taro/dist/styles/themes/dark.css` |
+| 京东 JMAPP 主题 | `@nutui/nutui-react-taro/dist/styles/themes/jmapp.css` |
+| 京东 JRKF 主题 | `@nutui/nutui-react-taro/dist/styles/themes/jrkf.css` |
 
-#### vite 配置示例
-
-:::demo
-
-```javascript
-// https://vitejs.dev/config/
-export default defineConfig({
-  //...
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // 默认京东 APP 主题 > @import "@nutui/nutui-react/dist/styles/variables.scss";
-        // 京东B商城主题 > @import "@nutui/nutui-react/dist/styles/variables-jmapp.scss";
-        additionalData: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
-      },
-    },
-  },
-})
-```
-
-:::
-
-#### webpack 配置示例
-
-:::demo
-
-```javascript
-{
-    test: /\.(sa|sc)ss$/,
-    use: [
-        {
-            loader: 'sass-loader',
-            options: {
-                // 默认京东 APP 主题 > @import "@nutui/nutui-react/dist/styles/variables.scss";
-                // 京东B商城主题 > @import "@nutui/nutui-react/dist/styles/variables-jdb.scss";
-                // 注意：在 sass-loader 不同版本，这个选项名是 是不一样的，具体可参考 sass-loader对应的版本文档
-                data: `@import "@nutui/nutui-react/dist/styles/variables.scss";`,
-            }
-        }
-    ]
-}
-```
-
-:::
+目前只有默认主题提供了暗黑模式的支持。

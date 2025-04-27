@@ -1,5 +1,5 @@
 import React, { ReactElement, ReactNode } from 'react'
-import { harmony } from './platform-taro'
+import { harmony } from './platform'
 
 interface ColorProps {
   color?: string
@@ -11,7 +11,7 @@ interface ColorProps {
  * @param color - 要添加的颜色值（如：'#ff0000'）
  * @returns 处理后的 React 节点
  */
-function addColorForHarmony(maybeElement: ReactNode, color?: string) {
+export function addColorForHarmony(maybeElement: ReactNode, color?: string) {
   if (React.isValidElement(maybeElement) && harmony()) {
     return React.cloneElement<ColorProps>(maybeElement as ReactElement, {
       color,
@@ -19,5 +19,3 @@ function addColorForHarmony(maybeElement: ReactNode, color?: string) {
   }
   return maybeElement
 }
-
-export default addColorForHarmony

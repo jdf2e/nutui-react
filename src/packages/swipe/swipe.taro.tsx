@@ -9,13 +9,13 @@ import React, {
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { useReady } from '@tarojs/taro'
+import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
+import { harmony } from '@/utils/taro/platform'
 import { useRefState } from '@/hooks/use-ref-state'
-import useUuid from '@/hooks/use-uuid'
+import { useUuid } from '@/hooks/use-uuid'
 import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
 
 function preventDefault(event: any, isStopPropagation?: boolean): void {
@@ -49,16 +49,22 @@ export const Swipe = forwardRef<
   useReady(() => {
     const getWidth = async () => {
       if (leftWrapper.current) {
-        const leftRect = await getRectByTaro(leftWrapper.current, leftId)
+        const leftRect = await getRectInMultiPlatform(
+          leftWrapper.current,
+          leftId
+        )
         leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
       }
       if (rightWrapper.current) {
-        const rightRect = await getRectByTaro(rightWrapper.current, rightId)
+        const rightRect = await getRectInMultiPlatform(
+          rightWrapper.current,
+          rightId
+        )
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
-    setTimeout(() => getWidth())
+    nextTick(() => getWidth())
   })
 
   const { children, className, style } = { ...defaultProps, ...props }
@@ -98,11 +104,14 @@ export const Swipe = forwardRef<
   }
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
     if (leftWrapper.current) {
-      const leftRect = await getRectByTaro(leftWrapper.current, leftId)
+      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
-      const rightRect = await getRectByTaro(rightWrapper.current, rightId)
+      const rightRect = await getRectInMultiPlatform(
+        rightWrapper.current,
+        rightId
+      )
       rightRect &&
         setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
     }

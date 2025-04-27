@@ -12,8 +12,8 @@ const Demo2 = () => {
   }
   return (
     <>
-      <Cell>
-        <View onClick={handleToggleShow}>自定义遮罩样式</View>
+      <Cell onClick={handleToggleShow}>
+        <View>自定义遮罩样式</View>
       </Cell>
 
       <Overlay

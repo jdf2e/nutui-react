@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react'
-
-import { ITouchEvent, View } from '@tarojs/components'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
+import { Loading1 } from '@nutui/icons-react-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -12,6 +12,9 @@ const defaultProps = {
   disabled: false,
   activeText: '',
   inactiveText: '',
+  loadingIcon: <Loading1 />,
+  loading: undefined,
+  onLoadingChange: (loading: boolean) => {},
 } as TaroSwitchProps
 export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
   const {
@@ -20,22 +23,38 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     disabled,
     activeText,
     inactiveText,
+    loadingIcon,
     className,
     style,
     onChange,
+    loading: propLoading,
+    onLoadingChange,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
   const classPrefix = 'nut-switch'
-
   const rtl = useRtl()
-
   const [value, setValue] = usePropsValue<boolean>({
     value: checked,
     defaultValue: defaultChecked,
   })
+
+  const [internalLoading, setInternalLoading] = useState(false)
+  const loading = propLoading !== undefined ? propLoading : internalLoading
+
+  const setLoading = (val: boolean) => {
+    if (propLoading !== undefined) {
+      onLoadingChange(val)
+    } else {
+      setInternalLoading(val)
+    }
+  }
+
+  useEffect(() => {
+    loading && setLoading(false)
+  }, [value])
 
   const classes = () => {
     return classNames([
@@ -49,20 +68,21 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
-    if (disabled) return
-    onChange && onChange(!value, event)
+  const onClick = async () => {
+    if (disabled || loading) return
+    if (onChange) {
+      loadingIcon && setLoading(true)
+      onChange(!value)
+      try {
+        await onChange(!value)
+      } catch (e) {
+        setLoading(false)
+      }
+    }
     setValue(!value)
   }
   return (
-    <View
-      className={classes()}
-      onClick={(e) => onClick(e)}
-      style={style}
-      {...rest}
-    >
+    <View className={classes()} onClick={onClick} style={style} {...rest}>
       <View
         className={classNames([
           [`${classPrefix}-button`],
@@ -77,8 +97,14 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
           },
         ])}
       >
-        {!value && !activeText && (
-          <View className={`${classPrefix}-close-line`} />
+        {loading && loadingIcon ? (
+          <>{loadingIcon}</>
+        ) : (
+          <>
+            {!value && !activeText && (
+              <View className={`${classPrefix}-close-line`} />
+            )}
+          </>
         )}
       </View>
       {activeText && (

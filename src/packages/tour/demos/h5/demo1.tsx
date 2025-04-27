@@ -34,7 +34,7 @@ const Demo1 = () => {
         onClose={closeTour}
         list={steps}
         type="tile"
-        location="bottom-end"
+        location="bottom-right"
       />
     </>
   )

@@ -1,7 +1,12 @@
 import React, { useRef } from 'react'
-import { Button, Space, Swipe, SwipeRef } from '@nutui/nutui-react-taro'
+import {
+  Button,
+  Space,
+  Swipe,
+  SwipeRef,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   const openRef = useRef<SwipeRef>(null)

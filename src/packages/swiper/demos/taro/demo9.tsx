@@ -1,7 +1,6 @@
 import React from 'react'
-import { Swiper } from '@nutui/nutui-react-taro'
+import { Swiper, pxTransform } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo9 = () => {
   return (

@@ -13,9 +13,9 @@ import { usePageScroll } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react-taro'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { Overlay } from '@/packages/overlay/overlay.taro'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { MenuOptionItem, WebMenuItemProps } from '@/types'
@@ -74,7 +74,7 @@ export const MenuItem = forwardRef((props: Partial<WebMenuItemProps>, ref) => {
   const getParentOffset = useCallback(() => {
     setTimeout(async () => {
       const p = parent.menuRef.current
-      const rect = await getRectByTaro(p)
+      const rect = await getRectInMultiPlatform(p)
       setPosition({
         height: rect.height,
         top: rect.top,
@@ -90,7 +90,7 @@ export const MenuItem = forwardRef((props: Partial<WebMenuItemProps>, ref) => {
   const updateItemOffset = useCallback(() => {
     if (!parent.lockScroll) return
     const p = parent.menuRef.current
-    getRectByTaro(p).then((rect: any) => {
+    getRectInMultiPlatform(p).then((rect: any) => {
       if (rect) {
         setPosition({
           height: rect.height,

@@ -2,7 +2,7 @@ $doc-title-height: 137px;
 
 .doc {
   &-content {
-    margin-left: 290px;
+    margin-left: 270px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -140,7 +140,6 @@ $doc-title-height: 137px;
       justify-content: space-between;
       flex-direction: column;
       align-items: flex-start;
-      width: calc(100% - 408px);
 
       .npm-package {
         img {
@@ -164,7 +163,7 @@ $doc-title-height: 137px;
       transition: opacity 0.8s;
 
       &.fixed {
-        width: calc(100% - 290px);
+        width: calc(100% - 270px);
         position: fixed;
         padding: 24px 48px;
         z-index: 999;

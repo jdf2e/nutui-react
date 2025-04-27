@@ -1,8 +1,6 @@
 import React from 'react'
-import { Progress, Cell } from '@nutui/nutui-react-taro'
+import { Progress, Cell, pxTransform, harmony } from '@nutui/nutui-react-taro'
 import { Checked, Tips } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const iconStyle = {

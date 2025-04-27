@@ -4,10 +4,10 @@
 const fse = require('fs-extra')
 const config = require('../../src/config.json')
 const param = process.env.C
-// G=nav pnpm dev:jdtaro:jdharmonycpp 
-// base | layout | nav | dentry | dataentry | feedback | exhibition | business 
+// G=nav pnpm dev:jdtaro:jdharmonycpp
+// base | layout | nav | dentry | dataentry | feedback | exhibition | business
 const paramG = process.env.G
-   
+
 // C=radio pnpm dev:jdtaro:jdharmonycpp or C=radio,button,cell pnpm dev:jdtaro:jdharmonycpp
 const specialComponent = (name) => {
   if (!param) return true
@@ -36,7 +36,7 @@ const createConfig = async () => {
               co.pages.push(`pages/${it.name.toLowerCase()}/index`)
             }
           })
-        } 
+        }
       } else {
         item.packages.map((it) => {
           if (isShow(it)) {
@@ -68,6 +68,7 @@ export default defineAppConfig({
     navigationBarTitleText: 'NutUI-React',
     navigationBarTextStyle: 'black'
   },
+  renderingMode: 'mixed',
   components: ['pages/index/index', ...(subPackages.map(subPackage => {
     return subPackage.pages.map(page => \`\${subPackage.root}/\${page}\`)
   }).flat())]

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
-import { Cell, Toast, ToastWordBreak } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import {
+  Cell,
+  Toast,
+  ToastWordBreak,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
   const [state, setState] = useState<{

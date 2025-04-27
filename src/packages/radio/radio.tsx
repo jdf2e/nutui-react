@@ -79,7 +79,7 @@ export const Radio: FunctionComponent<
       return React.isValidElement(activeIcon) ? (
         React.cloneElement<any>(activeIcon, {
           ...activeIcon.props,
-          className: classNames(color()),
+          className: classNames(activeIcon.props.className, color()),
         })
       ) : (
         <CheckChecked className={classNames(color())} />
@@ -88,7 +88,7 @@ export const Radio: FunctionComponent<
     return React.isValidElement(icon) ? (
       React.cloneElement<any>(icon, {
         ...icon.props,
-        className: classNames(color()),
+        className: classNames(icon.props.className, color()),
       })
     ) : (
       <CheckNormal className={classNames(color())} />

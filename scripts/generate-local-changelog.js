@@ -10,7 +10,7 @@ shell.exec(
   { silent: true },
   (code, stdout, stderr) => {
     shell.exec(
-      `git log --since="${stdout.replace('\n', '')}" --pretty=format:"%s" next`,
+      `git log --since="${stdout.replace('\n', '')}" --pretty=format:"%s" feat_v3.x`,
       { silent: true },
       (code, stdout, stderr) => {
         const logs = stdout.split('\n')

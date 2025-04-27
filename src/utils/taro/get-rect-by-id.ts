@@ -1,6 +1,6 @@
 import Taro, { createSelectorQuery } from '@tarojs/taro'
 
-export const getTaroRectById = (id: string) => {
+export const getRectById = (id: string) => {
   return new Promise((resolve, reject) => {
     if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
       const t = document ? document.querySelector(`#${id}`) : ''
@@ -13,7 +13,7 @@ export const getTaroRectById = (id: string) => {
       query
         .select(`#${id}`)
         .boundingClientRect()
-        .exec(function (rect: any) {
+        .exec((rect: any) => {
           if (rect[0]) {
             resolve(rect[0])
           } else {

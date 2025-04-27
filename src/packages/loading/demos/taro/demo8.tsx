@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { View } from '@tarojs/components'
-import { Button, Cell, Loading, Overlay } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import {
+  Button,
+  Cell,
+  Loading,
+  Overlay,
+  pxTransform,
+} from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [visible, setVisible] = useState(false)

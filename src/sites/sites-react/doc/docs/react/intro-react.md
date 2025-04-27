@@ -34,7 +34,7 @@ NutUI-React 组件库，适用于 React 技术栈的 H5 应用，开箱即用，
 感谢以下小伙伴们为 NutUI-React 发展做出的贡献：
 
 <a href="https://github.com/jdf2e/nutui-react/graphs/contributors">
-  <img src="https://opencollective.com/nutui-react/contributors.svg?width=890&button=false" alt="contributors" />
+  <img src="https://contrib.rocks/image?repo=jdf2e/nutui-react" />
 </a>
 
 ## 开源协议

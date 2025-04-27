@@ -18,6 +18,14 @@ import { Badge } from '@nutui/nutui-react'
 
 :::
 
+### 禁用
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ### 最大值
 
 :::demo
@@ -87,6 +95,7 @@ import { Badge } from '@nutui/nutui-react'
 | top | 上下偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
 | right | 左右偏移量，可設置為："0"或0 等 | `string` \| `number` | `0` |
 | fill | 填充模式 | `solid` \| `outline` | `solid` |
+| disabled | 是否禁用 | `boolean` | `false` |
 
 ## 主題定制
 
@@ -98,6 +107,7 @@ import { Badge } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `$color-primary` |
+| \--nutui-badge-background-disabled-color | badge 禁用背景色 | `$color-text-disabled` |
 | \--nutui-badge-color | badge 內容色值 | `$color-primary-text)` |
 | \--nutui-badge-font-size | badge 內容字號 | `$font-size-xxs` |
 | \--nutui-badge-border | badge 邊框 | `1px solid $color-primary-text` |

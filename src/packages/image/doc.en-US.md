@@ -100,8 +100,8 @@ The Image component provides lazy loading of images, which can be realized by co
 | fit | image fill mode, equivalent to the native object-fit property | `ImageFit` | `fill` |
 | position | Image position, equivalent to the original object-position attribute | `ImagePosition` | `center` |
 | alt | alternative text | `string` | `-` |
-| width | width, default unit `px` | `string` | `-` |
-| height | height, default unit `px` | `string` | `-` |
+| width | width, default unit `px` | `string \| number` | `-` |
+| height | height, default unit `px` | `string \| number` | `-` |
 | radius | rounded corner size | `string` \| `number` | `-` |
 | error | Whether to display image loading failure | `boolean \| ReactNode` | `true` |
 | loading | Whether to show loading images | `boolean \| ReactNode` | `true` |

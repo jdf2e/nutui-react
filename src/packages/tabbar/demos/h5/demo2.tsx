@@ -1,25 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Tabbar } from '@nutui/nutui-react'
-import { Cart, Category, Hi, Home, User } from '@nutui/icons-react'
+import { Cart, Message, Hi, Home, User } from '@nutui/icons-react'
 
-const Demo2 = () => {
-  const [activeIndex, setActiveIndex] = useState(2)
+const Demo = () => (
+  <Tabbar>
+    <Tabbar.Item title="首页" icon={<Home />} dot />
+    <Tabbar.Item title="逛" icon={<Hi />} value="内容" />
+    <Tabbar.Item title="消息" icon={<Message />} value={100} />
+    <Tabbar.Item title="购物车" icon={<Cart />} value={80} />
+    <Tabbar.Item title="我的" icon={<User />} value={8} />
+  </Tabbar>
+)
 
-  return (
-    <Tabbar
-      defaultValue={0}
-      value={activeIndex}
-      onSwitch={(value) => {
-        setActiveIndex(value)
-      }}
-    >
-      <Tabbar.Item title="首页" icon={<Home />} />
-      <Tabbar.Item title="分类" icon={<Category />} />
-      <Tabbar.Item title="逛" icon={<Hi />} />
-      <Tabbar.Item title="购物车" icon={<Cart />} />
-      <Tabbar.Item title="我的" icon={<User />} />
-    </Tabbar>
-  )
-}
-
-export default Demo2
+export default Demo

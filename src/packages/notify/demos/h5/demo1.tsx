@@ -1,9 +1,11 @@
 import React from 'react'
 import { Notify, Cell } from '@nutui/nutui-react'
+import { Reload } from '@nutui/icons-react'
 
 const Demo1 = () => {
   const baseNotify = (message: string) => {
     Notify.text(message, {
+      leftIcon: <Reload />,
       onClose: () => {
         console.log('close')
       },
@@ -17,7 +19,7 @@ const Demo1 = () => {
       <Cell
         title="基础用法"
         onClick={(event: React.MouseEvent) => {
-          baseNotify('基础用法')
+          baseNotify('请求失败，请重试刷新')
         }}
       />
     </>

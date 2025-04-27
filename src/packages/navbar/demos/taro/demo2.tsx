@@ -1,10 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { NavBar, Space } from '@nutui/nutui-react-taro'
+import { NavBar, Space, pxTransform, harmony } from '@nutui/nutui-react-taro'
 import { ArrowLeft, Close, More, Share } from '@nutui/icons-react-taro'
-import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const styles = {
