@@ -82,7 +82,7 @@ const Index = () => {
             )}
             <View className="index-components-sublist">
               {nav.packages.map((com) =>
-                com.show && com.taro && (harmony() ? com.dd : true) && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
+                com.show && com.taro && (!search || new RegExp(search, 'ig').test(com.name.toLowerCase())) ? (
                   <View
                     key={com.name}
                     className="index-components-sublist-item"

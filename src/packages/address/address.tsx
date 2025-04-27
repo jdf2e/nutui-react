@@ -93,7 +93,7 @@ export const InternalAddress: ForwardRefRenderFunction<
 
   const handleClose = () => {
     setInnerVisible(false)
-    onClose && onClose()
+    onClose()
   }
 
   const renderLeftOnCustomSwitch = () => {
@@ -142,7 +142,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         height={height}
         onClose={handleClose}
         onChange={(val: CascaderValue, params?: any) => {
-          onChange?.(val, params)
+          onChange(val, params)
         }}
       />
     )
@@ -163,7 +163,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         height={height}
         onClose={handleClose}
         onChange={(val: CascaderValue, params?: any) => {
-          onChange?.(val, params)
+          onChange(val, params)
         }}
       />
     )
