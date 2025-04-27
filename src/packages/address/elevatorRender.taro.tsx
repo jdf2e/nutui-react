@@ -19,7 +19,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 export interface AddressProps extends WebCascaderProps {
   visible: boolean // popup visible
