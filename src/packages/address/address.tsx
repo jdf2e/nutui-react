@@ -139,7 +139,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         height={height}
         onClose={handleClose}
         onChange={(val: CascaderValue, params?: any) => {
-          onChange(val, params)
+          onChange?.(val, params)
         }}
       />
     )
