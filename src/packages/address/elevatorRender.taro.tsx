@@ -86,6 +86,7 @@ export const ElevatorRender: FunctionComponent<
     },
   } = useConfig()
   const classPrefix = 'nut-address'
+  const MAX_LENGTH = 10
 
   const [value, setValue] = usePropsValue({
     value: outerValue,
@@ -237,7 +238,9 @@ export const ElevatorRender: FunctionComponent<
     return (
       <>
         <View className={`${classPrefix}-title`}>{hotCity}</View>
-        <View className={`${classPrefix}-hotlist`}>
+        <View
+          className={`${classPrefix}-hotlist ${hotList.length > MAX_LENGTH ? 'hotlist-more' : ''}`}
+        >
           {hotList.map((item, index) => (
             <View
               className={`${classPrefix}-hotlist-item`}
