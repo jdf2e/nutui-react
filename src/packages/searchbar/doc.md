@@ -98,7 +98,7 @@ import { SearchBar } from '@nutui/nutui-react'
 | backable | 是否展示返回按钮 | `boolean` | `false` |
 | left | 搜索框左侧区域 | `ReactNode` | `-` |
 | right | 搜搜框右侧区域 | `ReactNode` | `-` |
-| leftIn | 输入框内左侧区域 | `ReactNode` | `<Search width="12" height="12" />` |
+| leftIn | 输入框内左侧区域 | `ReactNode` | `<Search />` |
 | rightIn | 输入框内右侧区域 | `ReactNode` | `-` |
 | onChange | 输入内容时触发 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 聚焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |

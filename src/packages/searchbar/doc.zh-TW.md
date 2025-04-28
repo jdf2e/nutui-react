@@ -86,7 +86,8 @@ import { SearchBar } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 當前輸入的值 | `string` | `-` |
+| value | 當前輸入的值，受控 | `string` | `-` |
+| defaultValue | 當前默認值，支持通過','分割成多個 | `string` | `-` |
 | placeholder | 輸入框默認暗紋 | `string` | `請輸入` |
 | shape | 搜索框形狀，可選值為 `round` | `string` | `square` |
 | disabled | 是否禁用輸入框 | `boolean` | `false` |
@@ -94,10 +95,10 @@ import { SearchBar } from '@nutui/nutui-react'
 | maxLength | 最大輸入長度 | `number` | `9999` |
 | clearable | 是否展示清除按鈕 | `boolean` | `true` |
 | autoFocus | 是否自動聚焦 | `boolean` | `false` |
-| backable | 是否展示返回按钮 | `boolean` | `false` |
+| backable | 是否展示返回按鈕 | `boolean` | `false` |
 | left | 搜索框左側區域 | `ReactNode` | `-` |
 | right | 搜搜框右側區域 | `ReactNode` | `-` |
-| leftIn | 輸入框內左側區域 | `ReactNode` | `<Search width="12" height="12" />` |
+| leftIn | 輸入框內左側區域 | `ReactNode` | `<Search />` |
 | rightIn | 輸入框內右側區域 | `ReactNode` | `-` |
 | onChange | 輸入內容時觸發 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 聚焦時觸發 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
@@ -105,6 +106,7 @@ import { SearchBar } from '@nutui/nutui-react'
 | onClear | 點擊清空時觸發 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onSearch | 確定搜索時觸發 | `(val: string) => void` | `-` |
 | onInputClick | 點擊輸入區域時觸發 | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
+| onItemClick | 點擊默認值的x號觸發 | `(value: string) => void` | `-` |
 
 ## 主題定制
 

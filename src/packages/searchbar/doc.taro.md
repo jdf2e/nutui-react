@@ -86,7 +86,8 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前输入的值 | `string` | `-` |
+| value | 当前输入的值，受控 | `string` | `-` |
+| defaultValue | 当前默认值，支持通过','分割成多个 | `string` | `-` |
 | placeholder | 输入框默认暗纹 | `string` | `请输入` |
 | shape | 搜索框形状，可选值为 `round` | `string` | `square` |
 | disabled | 是否禁用输入框 | `boolean` | `false` |
@@ -97,7 +98,7 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | backable | 是否展示返回按钮 | `boolean` | `false` |
 | left | 搜索框左侧区域 | `ReactNode` | `-` |
 | right | 搜搜框右侧区域 | `ReactNode` | `-` |
-| leftIn | 输入框内左侧区域 | `ReactNode` | `<Search size="12" />` |
+| leftIn | 输入框内左侧区域 | `ReactNode` | `<Search />` |
 | rightIn | 输入框内右侧区域 | `ReactNode` | `-` |
 | onChange | 输入内容时触发 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 聚焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
@@ -105,6 +106,7 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 | onClear | 点击清空时触发 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onSearch | 确定搜索时触发 | `(val: string) => void` | `-` |
 | onInputClick | 点击输入区域时触发 | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
+| onItemClick | 点击默认值的x号触发 | `(value: string) => void` | `-` |
 
 ## 主题定制
 
