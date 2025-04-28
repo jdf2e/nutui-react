@@ -1926,20 +1926,17 @@ $collapse-wrapper-content-background-color: var(
 
 // searchbar（✅）
 $searchbar-width: var(--nutui-searchbar-width, 100%) !default;
-$searchbar-padding: var(--nutui-searchbar-padding, 6px 16px) !default;
+$searchbar-padding: var(--nutui-searchbar-padding, 1px 8px) !default;
 $searchbar-background: var(
   --nutui-searchbar-background,
-  $color-background
+  $color-background-sunken
 ) !default;
 $searchbar-color: var(--nutui-searchbar-color, $color-title) !default;
-$searchbar-gap: var(--nutui-searchbar-gap, 16px) !default;
+$searchbar-gap: var(--nutui-searchbar-gap, 12px) !default;
+$searchbar-inner-gap: var(--nutui-searchbar-inner-gap, 8px) !default;
 $searchbar-font-size: var(
   --nutui-searchbar-font-size,
   $font-size-base
-) !default;
-$searchbar-content-padding: var(
-  --nutui-searchbar-content-padding,
-  0 12px
 ) !default;
 $searchbar-content-background: var(
   --nutui-searchbar-content-background,
@@ -1947,21 +1944,25 @@ $searchbar-content-background: var(
 ) !default;
 $searchbar-content-border-radius: var(
   --nutui-searchbar-content-border-radius,
-  4px
+  8px
 ) !default;
 $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
-  18px
+  19px
 ) !default;
-$searchbar-input-height: var(--nutui-searchbar-input-height, 32px) !default;
-$searchbar-input-padding: var(--nutui-searchbar-input-padding, 0 4px) !default;
+$searchbar-icon-size: var(--nutui-searchbar-icon-size, 20px);
+$searchbar-input-height: var(--nutui-searchbar-input-height, 38px) !default;
+$searchbar-input-padding: var(
+  --nutui-searchbar-input-padding,
+  0 0 0 8px
+) !default;
 $searchbar-input-text-color: var(
   --nutui-searchbar-input-text-color,
   $color-title
 ) !default;
 $searchbar-input-curror-color: var(
   --nutui-searchbar-input-curror-color,
-  $color-title
+  $color-primary
 ) !default;
 $searchbar-input-text-align: var(
   --nutui-searchbar-input-text-align,

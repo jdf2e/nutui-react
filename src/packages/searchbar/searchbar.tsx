@@ -1,9 +1,11 @@
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { ArrowLeft, MaskClose, Search } from '@nutui/icons-react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
+import { ArrowLeft, Close, MaskClose, Search } from '@nutui/icons-react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebSearchBarProps } from '@/types'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,7 +20,7 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search width="16" height="16" />,
+  leftIn: <Search />,
 } as WebSearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<WebSearchBarProps> &
@@ -30,10 +32,11 @@ export const SearchBar: FunctionComponent<
   const classPrefix = 'nut-searchbar'
 
   const { locale } = useConfig()
-  const searchRef = useRef<HTMLInputElement>(null)
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   const {
     value: outerValue,
+    defaultValue,
     style,
     placeholder,
     shape,
@@ -54,60 +57,85 @@ export const SearchBar: FunctionComponent<
     onClear,
     onSearch,
     onInputClick,
+    onItemClick,
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const [value, setValue] = useState(() => outerValue)
+  const [value, setValue] = usePropsValue<string>({
+    value: outerValue,
+    defaultValue,
+    finalValue: '',
+  })
+
+  useEffect(() => {
+    setValue(defaultValue)
+  }, [defaultValue])
 
   const forceFocus = () => {
-    const searchSelf: HTMLInputElement | null = searchRef.current
+    const searchSelf: HTMLInputElement | null = searchInputRef.current
     searchSelf && searchSelf.focus()
   }
-  const change = (event: ChangeEvent<HTMLInputElement>) => {
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
-    onChange && onChange?.(value, event)
+    onChange && onChange(value, event)
     setValue(value)
   }
-  const focus = (event: FocusEvent<HTMLInputElement>) => {
+
+  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
     const { value } = event.target
-    onFocus && onFocus?.(value, event)
+    onFocus && onFocus(value, event)
   }
-  const blur = (event: FocusEvent<HTMLInputElement>) => {
-    const searchSelf: HTMLInputElement | null = searchRef.current
+
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    const searchSelf: HTMLInputElement | null = searchInputRef.current
     searchSelf && searchSelf.blur()
     const { value } = event.target
-    onBlur && onBlur?.(value, event)
+    onBlur && onBlur(value, event)
   }
-  useEffect(() => {
-    setValue(outerValue)
-  }, [outerValue])
+
   useEffect(() => {
     autoFocus && forceFocus()
   }, [autoFocus])
+
   const renderField = () => {
+    const inputCls = classNames(`${classPrefix}-input`)
     return (
       <input
-        className={`${classPrefix}-input ${
-          clearable ? `${classPrefix}-input-clear` : ''
-        }`}
-        ref={searchRef}
+        className={inputCls}
+        ref={searchInputRef}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
         onKeyDown={onKeydown}
-        onChange={(e) => change(e)}
-        onFocus={(e) => focus(e)}
-        onBlur={(e) => blur(e)}
-        onClick={(e) => clickInput(e)}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClick={onInputClick}
       />
     )
   }
-  const clickInput = (e: MouseEvent<HTMLInputElement>) => {
-    onInputClick && onInputClick(e)
+
+  const renderDefaultValue = () => {
+    const list = defaultValue.split(',')
+    return (
+      <div className="nut-searchbar-values">
+        {list.map((item, index) => (
+          <div
+            key={`def-${index}`}
+            className="nut-searchbar-value"
+            onClick={() => onItemClick(item)}
+          >
+            {item}
+            <Close />
+          </div>
+        ))}
+      </div>
+    )
   }
 
   const renderLeftIn = () => {
@@ -122,7 +150,7 @@ export const SearchBar: FunctionComponent<
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft width="16" height="16" /> : left}
+        {backable ? <ArrowLeft /> : left}
       </div>
     )
   }
@@ -130,9 +158,15 @@ export const SearchBar: FunctionComponent<
   const renderRightIn = () => {
     if (!rightIn) return null
     return (
-      <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
-        {rightIn}
-      </div>
+      <>
+        {React.isValidElement(rightIn) ? (
+          <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
+            {rightIn}
+          </div>
+        ) : (
+          <div className={`${classPrefix}-rightin`}>{rightIn}</div>
+        )}
+      </>
     )
   }
 
@@ -141,7 +175,7 @@ export const SearchBar: FunctionComponent<
     return <div className={`${classPrefix}-right`}>{right}</div>
   }
 
-  const handleClear = () => {
+  const renderClear = () => {
     return (
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
@@ -153,11 +187,9 @@ export const SearchBar: FunctionComponent<
   }
 
   const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
-    if (disabled || readOnly) {
-      return
-    }
+    if (disabled || readOnly) return
     setValue('')
-    onChange && onChange?.('')
+    onChange && onChange('')
     onClear && onClear(event)
     forceFocus()
   }
@@ -172,23 +204,28 @@ export const SearchBar: FunctionComponent<
     }
   }
 
+  const cls = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}-disabled`]: disabled,
+      [`${classPrefix}-focus`]: left || backable,
+    },
+    className
+  )
+
   return (
-    <div
-      className={`${classPrefix} ${
-        disabled ? `${classPrefix}-disabled` : ''
-      }  ${className || ''}`}
-      style={style}
-    >
+    <div className={cls} style={style}>
       {renderLeft()}
       <div
-        className={`${classPrefix}-content ${
-          shape === 'round' ? `${classPrefix}-round` : ''
-        }`}
+        className={classNames(`${classPrefix}-content`, {
+          [`${classPrefix}-round`]: shape === 'round',
+        })}
       >
         {renderLeftIn()}
         {renderField()}
-        {clearable && !value && renderRightIn()}
-        {clearable && value && handleClear()}
+        {defaultValue && renderDefaultValue()}
+        {!defaultValue && clearable && value && renderClear()}
+        {renderRightIn()}
       </div>
       {renderRight()}
     </div>

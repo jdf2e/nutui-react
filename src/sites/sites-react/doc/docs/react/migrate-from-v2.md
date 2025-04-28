@@ -180,7 +180,12 @@ plugins: [
 - 新增 size 属性，控制图标的大小
 - 新增 showScore 属性，展示评分文案
 
-[//]: # '#### SearchBar'
+#### SearchBar
+
+- `value` 属性，支持受控
+- 新增 `defaultValue` 属性，用于搜索默认值，支持以','分割的字符串，用以展示为多个
+- 新增 `onItemClick` 属性，用于点击展示默认值时的x号，支持回调处理
+
 [//]: # '#### ShortPassword'
 
 #### TextArea

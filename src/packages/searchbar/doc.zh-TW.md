@@ -115,17 +115,17 @@ import { SearchBar } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-searchbar-width | 搜索框的寬度 | `100%` |
-| \--nutui-searchbar-padding | 搜索框的padding值 | `6px 16px` |
-| \--nutui-searchbar-background | 搜索框背景色 | `$color-background` |
+| \--nutui-searchbar-padding | 搜索框的padding值 | `1px 8px` |
+| \--nutui-searchbar-background | 搜索框背景色 | `$color-background-sunken` |
 | \--nutui-searchbar-color | 搜索框字色 | `$color-title` |
-| \--nutui-searchbar-gap | 搜索框各個間距 | `16px` |
+| \--nutui-searchbar-gap | 搜索框外部/大間距 | `12px` |
+| \--nutui-searchbar-inner-gap | 搜索框內部元素間的間距 | `12px` |
 | \--nutui-searchbar-font-size | 搜索框字號 | `$font-size-base` |
-| \--nutui-searchbar-content-padding | 搜索框中間內容區的padding值 | `0px 12px` |
 | \--nutui-searchbar-content-background | 搜索框中間內容區的背景色 | `$color-background-overlay` |
-| \--nutui-searchbar-content-border-radius | 搜索框內容區圓角 | `4px` |
-| \--nutui-searchbar-content-round-border-radius | 搜索框內容區在round模式下的圓角 | `18px` |
-| \--nutui-searchbar-input-height | 搜索框輸入區高度 | `32px` |
-| \--nutui-searchbar-input-padding | 搜索框輸入區padding | `0 4px` |
+| \--nutui-searchbar-content-border-radius | 搜索框內容區圓角 | `8px` |
+| \--nutui-searchbar-content-round-border-radius | 搜索框內容區在round模式下的圓角 | `19px` |
+| \--nutui-searchbar-input-height | 搜索框輸入區高度 | `38px` |
+| \--nutui-searchbar-input-padding | 搜索框輸入區padding | `0 0 0 8px` |
 | \--nutui-searchbar-input-text-color | 搜索框輸入區字色 | `$color-title` |
 | \--nutui-searchbar-input-curror-color | 搜索框輸入區輸入色 | `$color-title` |
 | \--nutui-searchbar-input-text-align | 搜索框輸入區對齊方式 | `left` |

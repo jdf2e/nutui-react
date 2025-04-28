@@ -4,6 +4,7 @@ import { BaseProps } from '../../base/props'
 
 export interface BaseSearchBar extends BaseProps {
   value: string
+  defaultValue: string
   placeholder: string
   shape: UIRound
   disabled: boolean
@@ -22,4 +23,5 @@ export interface BaseSearchBar extends BaseProps {
   onBlur: (value: string, e: any) => void
   onClear: (e: any) => void
   onInputClick: (e: any) => void
+  onItemClick: (value: string) => void
 }
