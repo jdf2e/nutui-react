@@ -8,9 +8,9 @@ import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
+let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";\n`
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/font-${projectID}/iconfont.css';\n@import '@/styles/theme-${projectID}.scss';\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
 }
 
 // https://vitejs.dev/config/

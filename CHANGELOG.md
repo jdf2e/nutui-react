@@ -1,3 +1,15 @@
+# v3.0.10
+
+`2025-04-25`
+
+- 📖 docs: jmapp 不判断环境，直接打开 (#3193)
+- :sparkles: feat(switch): loading 态受控 (#3149)
+- :sparkles: feat(uploader): add listUploadRender prop for custom list mode upload… (#3198)
+- :sparkles: feat(video): 兼容taro Component属性 (#3185)
+- :sparkles: feat(radio): 支持自定义icon的classname (#3196)
+- :bug: fix(tabs): 修复滚动计算问题，优化定位逻辑 (#3183)
+- :bug: fix: 兼容选中值为0的情况 (#3192)
+
 # v3.0.9
 
 `2025-04-18`

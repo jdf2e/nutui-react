@@ -26,6 +26,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### loading 態受控
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 禁用狀態
 
 :::demo
@@ -77,8 +85,10 @@ import { Switch } from '@nutui/nutui-react'
 | disabled | 禁用狀態 | `boolean` | `false` |
 | activeText | 打開時文字描述 | `ReactNode` | `-` |
 | inactiveText | 關閉時文字描述 | `ReactNode` | `-` |
-| loadingIcon | 受控 loading 態圖標 | `ReactNode` | `<Loading1 />` |
-| onChange | 切換開關時觸發 | `onChange:(value: boolean, event: Event)` | `-` |
+| loadingIcon | 控制加載狀態的圖標，當傳入空值時禁用 loading 狀態 | `ReactNode` | `<Loading1 />` |
+| loading | loading 態，受控 | `boolean` | `-` |
+| onLoadingChange | 切換 loading 態時觸發 | `onLoadingChange:(value: boolean)` | `-` |
+| onChange | 切換開關時觸發 | `onChange:(value: boolean)` | `-` |
 
 ## 主題定製
 
