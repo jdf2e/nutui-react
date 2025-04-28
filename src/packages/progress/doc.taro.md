@@ -88,6 +88,12 @@ import { Progress } from '@nutui/nutui-react-taro'
 | animated | 是否展示动画效果 | `boolean` | `false` |
 | lazy | 每次进入可视区展示进度条动画 | `boolean` | `false` |
 | delay | 延迟数据加载时长，单位 ms | `number` | `0` |
+| borderRadius | 进度条圆角大小 | `string` | `0` |
+| fontSize | 进度文字大小 | `string` | `12px` |
+| activeMode | 动画播放方式 | `forwards \| backwards` | `forwards` |
+| duration | 动画完成时间（单位：毫秒） | `number` | `30` |
+| ariaLabel | 无障碍标签 | `string` | `-` |
+| onActiveEnd | 动画完成后的回调函数 | `() => void` | `-` |
 
 ## 主题定制
 
