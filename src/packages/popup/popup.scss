@@ -197,6 +197,9 @@
       from {
         transform: translate3d(0, -100%, 0);
       }
+      to {
+        transform: translate3d(0, 0%, 0);
+      }
     }
 
     @keyframes popup-slide-top-exit {
@@ -223,6 +226,9 @@
     @keyframes popup-slide-right-enter {
       from {
         transform: translate3d(100%, 0, 0);
+      }
+      to {
+        transform: translate3d(0%, 0, 0);
       }
     }
 
@@ -251,6 +257,9 @@
       from {
         transform: translate3d(0, 100%, 0);
       }
+      to {
+        transform: translate3d(0, 0%, 0);
+      }
     }
 
     @keyframes slide-bottom-exit {
@@ -277,6 +286,9 @@
     @keyframes popup-slide-left-enter {
       from {
         transform: translate3d(-100%, 0, 0);
+      }
+      to {
+        transform: translate3d(0%, 0, 0);
       }
     }
 
