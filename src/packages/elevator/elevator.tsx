@@ -13,6 +13,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export const elevatorContext = createContext({} as ElevatorData)
 
 export interface ElevatorProps extends BasicComponent {
+  mode: 'horizontal' | 'vertical'
   height: number | string
   floorKey: string
   list: any[]
@@ -25,6 +26,7 @@ export interface ElevatorProps extends BasicComponent {
 }
 const defaultProps = {
   ...ComponentDefaults,
+  mode: 'horizontal',
   height: '200px',
   floorKey: 'title',
   list: [] as any[],
@@ -42,6 +44,7 @@ export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
+    mode,
     height,
     floorKey,
     list,
@@ -200,8 +203,12 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      {sticky && scrollY > 0 ? (
+    <div
+      className={`${classPrefix} ${classPrefix}-${mode} ${className}`}
+      style={style}
+      {...rest}
+    >
+      {mode === 'vertical' && sticky && scrollY > 0 ? (
         <div className={`${classPrefix}-list-fixed`}>
           <span className={`${classPrefix}-list-fixed-title`}>
             {list[currentIndex][floorKey]}
@@ -219,7 +226,7 @@ export const Elevator: FunctionComponent<
                 <div className={`${classPrefix}-list-item-code`}>
                   {item[floorKey]}
                 </div>
-                <>
+                <div className={`${classPrefix}-list-item-sublist`}>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
                       <div
@@ -244,7 +251,7 @@ export const Elevator: FunctionComponent<
                       </div>
                     )
                   })}
-                </>
+                </div>
               </div>
             )
           })}

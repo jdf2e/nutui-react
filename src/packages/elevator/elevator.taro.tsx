@@ -16,6 +16,7 @@ import { useUuid } from '@/hooks/use-uuid'
 export const elevatorContext = createContext({} as ElevatorData)
 
 export interface ElevatorProps extends BasicComponent {
+  mode: 'horizontal' | 'vertical'
   height: number | string
   floorKey: string
   list: any[]
@@ -26,9 +27,9 @@ export interface ElevatorProps extends BasicComponent {
   onItemClick: (key: string, item: ElevatorData) => void
   onIndexClick: (key: string) => void
 }
-
 const defaultProps = {
   ...ComponentDefaults,
+  mode: 'horizontal',
   height: '200px',
   floorKey: 'title',
   list: [] as any[],
@@ -38,18 +39,16 @@ const defaultProps = {
   showKeys: true,
   className: 'weapp-elevator',
 } as ElevatorProps
-
 interface ElevatorData {
   name: string
   id: number | string
-
   [key: string]: string | number
 }
-
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
+    mode,
     height,
     floorKey,
     list,
@@ -229,7 +228,7 @@ export const Elevator: FunctionComponent<
 
   return (
     <div
-      className={`${classPrefix} ${className} ${classPrefix}-${uuid}`}
+      className={`${classPrefix} ${className} ${classPrefix}-${mode} ${classPrefix}-${uuid}`}
       style={style}
       {...rest}
     >
@@ -256,7 +255,7 @@ export const Elevator: FunctionComponent<
                 <View className={`${classPrefix}-list-item-code`}>
                   {item[floorKey]}
                 </View>
-                <>
+                <View className={`${classPrefix}-list-item-sublist`}>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
                       <View
@@ -281,7 +280,7 @@ export const Elevator: FunctionComponent<
                       </View>
                     )
                   })}
-                </>
+                </View>
               </View>
             )
           })}
@@ -325,7 +324,7 @@ export const Elevator: FunctionComponent<
           </View>
         </>
       ) : null}
-      {sticky && scrollY > 0 ? (
+      {mode === 'vertical' && sticky && scrollY > 0 ? (
         <View className={`${classPrefix}-list-fixed`}>
           <Text className={`${classPrefix}-list-fixed-title`}>
             {list[codeIndex][floorKey]}

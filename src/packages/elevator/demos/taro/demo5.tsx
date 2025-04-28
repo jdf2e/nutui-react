@@ -1,6 +1,7 @@
 import React from 'react'
 import { Elevator } from '@nutui/nutui-react-taro'
 import { Fabulous } from '@nutui/icons-react-taro'
+import { Text } from '@tarojs/components'
 
 const Demo5 = () => {
   const dataList = [
@@ -72,8 +73,8 @@ const Demo5 = () => {
         {(value) => {
           return (
             <>
-              <Fabulous size={12} />
-              <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+              <Text>{value?.name}</Text>
+              <Fabulous style={{ marginLeft: '4px' }} height={12} />
             </>
           )
         }}

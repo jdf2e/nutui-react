@@ -25,12 +25,20 @@ const Demo1 = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
-          id: 3,
+          name: '甘肃',
+          id: 31,
         },
         {
           name: '广东',
-          id: 4,
+          id: 32,
+        },
+        {
+          name: '广东',
+          id: 33,
+        },
+        {
+          name: '贵州',
+          id: 34,
         },
       ],
     },
@@ -39,15 +47,53 @@ const Demo1 = () => {
       list: [
         {
           name: '湖南',
-          id: 5,
+          id: 41,
         },
         {
           name: '湖北',
-          id: 6,
+          id: 42,
         },
         {
-          name: '河南',
-          id: 7,
+          name: '湖北',
+          id: 43,
+        },
+        {
+          name: '湖南',
+          id: 44,
+        },
+        {
+          name: '海南',
+          id: 45,
+        },
+      ],
+    },
+    {
+      title: 'L',
+      list: [
+        {
+          name: '辽宁',
+          id: 51,
+        },
+      ],
+    },
+    {
+      title: 'S',
+      list: [
+        {
+          name: '山东',
+          id: 51,
+        },
+        {
+          name: '山西',
+          id: 52,
+        },
+        {
+          name: '上海',
+          id: 53,
+        },
+        {
+          name: '陕西',
+          id: 54,
         },
       ],
     },

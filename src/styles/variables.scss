@@ -2226,28 +2226,25 @@ $sidebar-item-padding: var(--nutui-sidebar-item-padding, 24px 20px) !default;
 $elevator-list-bg-color: var(--nutui-elevator-list-bg-color, $white) !default;
 $elevator-list-font-size: var(
   --nutui-elevator-list-font-size,
-  $font-size-s
+  $font-size-base
 ) !default;
 $elevator-list-color: var(--nutui-elevator-list-color, $color-title) !default;
 $elevator-list-item-padding: var(
   --nutui-elevator-list-item-padding,
-  0 20px
+  0 36px 0 20px
 ) !default;
 $elevator-list-item-name-height: var(
   --nutui-elevator-list-item-name-height,
-  30px
+  34px
 ) !default;
-$elevator-list-item-name-line-height: var(
-  --nutui-elevator-list-item-name-line-height,
-  30px
-) !default;
+
 $elevator-list-item-code-font-size: var(
   --nutui-elevator-list-item-code-font-size,
   $font-size-base
 ) !default;
 $elevator-list-item-code-color: var(
   --nutui-elevator-list-item-code-color,
-  $color-title
+  $color-text-help
 ) !default;
 $elevator-list-item-code-font-weight: var(
   --nutui-elevator-list-item-code-font-weight,
@@ -2255,25 +2252,22 @@ $elevator-list-item-code-font-weight: var(
 ) !default;
 $elevator-list-item-code-height: var(
   --nutui-elevator-list-item-code-height,
-  35px
+  34px
 ) !default;
-$elevator-list-item-code-line-height: var(
-  --nutui-elevator-list-item-code-line-height,
-  35px
+$elevator-list-item-code-width: var(
+  --nutui-elevator-list-item-code-width,
+  34px
 ) !default;
 $elevator-list-item-code-border-bottom: var(
   --nutui-elevator-list-item-code-border-bottom,
   1px solid $color-border
 ) !default;
-$elevator-list-item-code-background-color: var(
-  --nutui-elevator-list-item-code-background-color,
-  inherit
-) !default;
+
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
   rgba(240, 240, 240, 1) !default;
 $elevator-list-item-code-current-bg-color: var(
   --nutui-elevator-list-item-code-current-bg-color,
-  #fff
+  $color-text-disabled
 ) !default;
 $elevator-list-item-code-current-border-radius: var(
   --nutui-elevator-list-item-code-current-border-radius,
@@ -2287,10 +2281,6 @@ $elevator-list-item-code-current-height: var(
   --nutui-elevator-list-item-code-current-height,
   45px
 ) !default;
-$elevator-list-item-code-current-line-height: var(
-  --nutui-elevator-list-item-code-current-line-height,
-  45px
-) !default;
 $elevator-list-item-code-current-right: var(
   --nutui-elevator-list-item-code-current-right,
   60px
@@ -2299,37 +2289,28 @@ $elevator-list-item-code-current-top: var(
   --nutui-elevator-list-item-code-current-top,
   50%
 ) !default;
-$elevator-list-item-code-current-text-align: var(
-  --nutui-elevator-list-item-code-current-text-align,
-  center
+$elevator-list-item-code-current-color: var(
+  --nutui-elevator-list-item-code-color,
+  $white
 ) !default;
-$elevator-bars-right: var(--nutui-elevator-bars-right, 10px) !default;
+$elevator-bars-right: var(--nutui-elevator-bars-right, 16px) !default;
 $elevator-bars-top: var(--nutui-elevator-bars-top, 50%) !default;
 $elevator-bars-transform: var(
   --nutui-elevator-bars-transform,
   translateY(-50%)
 ) !default;
-$elevator-bars-padding: var(--nutui-elevator-bars-padding, 15px 0) !default;
-$elevator-bars-background-color: var(
-  --nutui-elevator-bars-background-color,
-  $color-background
-) !default;
-$elevator-bars-border-radius: var(
-  --nutui-elevator-bars-border-radius,
-  6px
-) !default;
 $elevator-bars-z-index: var(--nutui-elevator-bars-z-index, 1) !default;
-$elevator-bars-inner-item-padding: var(
-  --nutui-elevator-bars-inner-item-padding,
-  3px
-) !default;
 $elevator-bars-font-size: var(
   --nutui-elevator-bars-font-size,
-  $font-size-s
+  $font-size-xxs
+) !default;
+$elevator-bars-color: var(
+  --nutui-elevator-bars-color,
+  $color-text-help
 ) !default;
 $elevator-bars-active-color: var(
   --nutui-elevator-bars-active-color,
-  $color-primary
+  $white
 ) !default;
 $elevator-list-fixed-color: var(
   --nutui-elevator-list-fixed-color,
