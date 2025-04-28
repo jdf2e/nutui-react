@@ -81,7 +81,7 @@ export const ElevatorRender: FunctionComponent<
   const {
     locale: {
       select,
-      address: { hotCity, selectProvice },
+      address: { hotCity, selectProvince },
     },
   } = useConfig()
   const classPrefix = 'nut-address'
@@ -100,7 +100,7 @@ export const ElevatorRender: FunctionComponent<
   const [innerOptions, setInnerOptions] = useState(outerOptions)
   const [innerValue, setInnerValue] = useState(value)
   const [elevatorOptions, setElevatorOptions] = useState<any>([])
-  const [addressTip, setAddressTip] = useState(selectProvice)
+  const [addressTip, setAddressTip] = useState(selectProvince)
   const [levelIndex, setLevelIndex] = useState(0)
   const [tabActiveIndex, setTabActiveIndex] = useState(0)
 
@@ -169,7 +169,7 @@ export const ElevatorRender: FunctionComponent<
 
   useEffect(() => {
     setTabActiveIndex(levels.length - 1)
-    setAddressTip(innerValue.length ? select : selectProvice)
+    setAddressTip(innerValue.length ? select : selectProvince)
   }, [innerValue])
 
   const handleElevatorItemClick = (

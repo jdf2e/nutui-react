@@ -75,7 +75,7 @@ const trTR: BaseLang = {
     deliveryTo: 'Teslimat yeri',
     chooseAnotherAddress: 'Başka bir adres seçin',
     hotCity: 'Popüler şehirler',
-    selectProvice: 'İl/bölge seçin',
+    selectProvince: 'İl/bölge seçin',
   },
   signature: {
     reSign: 'Yeniden imzala',
