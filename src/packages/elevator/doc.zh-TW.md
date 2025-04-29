@@ -74,11 +74,10 @@ import { Elevator } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | 樓層區域背景顏色 | `$white` |
-| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-s` |
+| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-base` |
 | \--nutui-elevator-list-color | 樓層區域列表項字體顏色 | `$color-title` |
-| \--nutui-elevator-list-item-padding | 樓層區域列表項內邊距 | `0 20px` |
-| \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `30px` |
-| \--nutui-elevator-list-item-name-line-height | 樓層區域列表項行高 | `30px` |
+| \--nutui-elevator-list-item-padding | 樓層區域列表項內邊距 | `0 36px 0 20px` |
+| \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `34px` |
 | \--nutui-elevator-list-item-code-font-size | 樓層區域列表項標題字體大小 | `$font-size-base` |
 | \--nutui-elevator-list-item-code-color | 樓層區域列表項標題顏色 | `$color-title` |
 | \--nutui-elevator-list-item-code-font-weight | 樓層區域列表項標題字體粗細 | `$font-weight-bold` |
