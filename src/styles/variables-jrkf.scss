@@ -2146,13 +2146,10 @@ $searchbar-background: var(
 ) !default;
 $searchbar-color: var(--nutui-searchbar-color, $color-text-title) !default;
 $searchbar-gap: var(--nutui-searchbar-gap, 16px) !default;
+$searchbar-inner-gap: var(--nutui-searchbar-inner-gap, 8px) !default;
 $searchbar-font-size: var(
   --nutui-searchbar-font-size,
   $font-size-base
-) !default;
-$searchbar-content-padding: var(
-  --nutui-searchbar-content-padding,
-  0 12px
 ) !default;
 $searchbar-content-background: var(
   --nutui-searchbar-content-background,
@@ -2166,6 +2163,7 @@ $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
   18px
 ) !default;
+$searchbar-icon-size: var(--nutui-searchbar-icon-size, 20px) !default;
 $searchbar-input-height: var(--nutui-searchbar-input-height, 36px) !default;
 $searchbar-input-padding: var(
   --nutui-searchbar-input-padding,

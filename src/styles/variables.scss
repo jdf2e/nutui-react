@@ -1950,7 +1950,7 @@ $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
   19px
 ) !default;
-$searchbar-icon-size: var(--nutui-searchbar-icon-size, 20px);
+$searchbar-icon-size: var(--nutui-searchbar-icon-size, 20px) !default;
 $searchbar-input-height: var(--nutui-searchbar-input-height, 38px) !default;
 $searchbar-input-padding: var(
   --nutui-searchbar-input-padding,
