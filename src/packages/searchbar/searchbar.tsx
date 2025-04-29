@@ -68,10 +68,6 @@ export const SearchBar: FunctionComponent<
     finalValue: '',
   })
 
-  useEffect(() => {
-    setValue(defaultValue)
-  }, [defaultValue])
-
   const forceFocus = () => {
     const searchSelf: HTMLInputElement | null = searchInputRef.current
     searchSelf && searchSelf.focus()
@@ -125,7 +121,7 @@ export const SearchBar: FunctionComponent<
           <div
             key={`def-${index}`}
             className="nut-searchbar-value"
-            onClick={() => onItemClick(item)}
+            onClick={() => onItemClick?.(item)}
           >
             {item}
             <Close />
