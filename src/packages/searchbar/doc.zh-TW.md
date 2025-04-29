@@ -20,6 +20,14 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### 默認值、受控
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### 搜索框形狀及最大長度
 
 `SearchBar` 的 `shape` 屬性支持定義圓角直角，`maxLength` 可控制輸入字符的最大長度。

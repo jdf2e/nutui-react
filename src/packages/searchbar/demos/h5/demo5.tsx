@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArrowLeft, Photograph, More, Close, Star } from '@nutui/icons-react'
-import { SearchBar } from '../../searchbar'
+import { SearchBar } from '@nutui/nutui-react'
 
 const Demo5 = () => {
   return (

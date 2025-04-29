@@ -33,7 +33,6 @@ export const SearchBar: FunctionComponent<
 
   const { locale } = useConfig()
   const searchInputRef = useRef<HTMLInputElement>(null)
-
   const {
     value: outerValue,
     defaultValue,
@@ -85,15 +84,13 @@ export const SearchBar: FunctionComponent<
   }
 
   const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onFocus && onFocus(value, event)
+    onFocus && onFocus(event?.target?.value, event)
   }
 
   const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
     const searchSelf: HTMLInputElement | null = searchInputRef.current
     searchSelf && searchSelf.blur()
-    const { value } = event.target
-    onBlur && onBlur(value, event)
+    onBlur && onBlur(event?.target?.value, event)
   }
 
   useEffect(() => {

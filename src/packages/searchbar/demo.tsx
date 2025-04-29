@@ -24,7 +24,7 @@ const SearchBarDemo = () => {
     },
     'zh-TW': {
       title1: '基礎用法',
-      title10: '默认值、受控',
+      title10: '默認值、受控',
       title2: '蒐索框形狀及最大長度',
       title3: '蒐索框內外背景設定',
       title4: '蒐索框文字設定',
@@ -34,7 +34,7 @@ const SearchBarDemo = () => {
     },
     'en-US': {
       title1: 'Basic Usage',
-      title10: '默认值、受控',
+      title10: 'DefaultValue and controlled mode',
       title2: 'Search Box Shape And Maximum Length',
       title3: 'Background Settings Inside And Outside The Search Box',
       title4: 'Search Box Text Settings',

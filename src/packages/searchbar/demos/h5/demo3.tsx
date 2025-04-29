@@ -1,7 +1,5 @@
 import React from 'react'
-import { SearchBar } from '../../searchbar'
-import ConfigProvider from '../../../configprovider'
-import Toast from '../../../toast'
+import { SearchBar, ConfigProvider, Toast } from '@nutui/nutui-react'
 
 const Demo3 = () => {
   return (

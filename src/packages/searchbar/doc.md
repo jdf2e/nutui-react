@@ -12,11 +12,17 @@ import { SearchBar } from '@nutui/nutui-react'
 
 ### 基础用法
 
-`SearchBar` 的 `placeholder` 属性支持自定义。
-
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+### 默认值、受控模式
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 

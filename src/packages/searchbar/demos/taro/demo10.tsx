@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { SearchBar, Button } from '@nutui/nutui-react'
-import { Photograph, Category } from '@nutui/icons-react'
+import { SearchBar, Button } from '@nutui/nutui-react-taro'
+import { Photograph, Category } from '@nutui/icons-react-taro'
 
-const Demo = () => {
+const Demo1 = () => {
   const [dvalue, setDvalue] = useState('西红柿,铁皮')
   const [value, setValue] = useState('西红柿')
   const [value1, setValue1] = useState('')
@@ -49,4 +49,4 @@ const Demo = () => {
     </>
   )
 }
-export default Demo
+export default Demo1

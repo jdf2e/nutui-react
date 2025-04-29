@@ -20,6 +20,14 @@ import { SearchBar } from '@nutui/nutui-react-taro'
 
 :::
 
+### 默认值、受控模式
+
+:::demo
+
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
+
+:::
+
 ### 搜索框形状及最大长度
 
 `SearchBar` 的 `shape` 属性支持定义圆角直角，`maxLength` 可控制输入字符的最大长度。
