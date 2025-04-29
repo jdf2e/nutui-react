@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { Close } from '@nutui/icons-react'
 import Popup from '@/packages/popup/index'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -11,6 +12,7 @@ const defaultProps = {
   options: [],
   optionKey: { name: 'name', description: 'description' },
   cancelText: '',
+  position: 'bottom',
   onCancel: () => {},
   onSelect: () => {},
 } as unknown as WebActionSheetProps
@@ -30,6 +32,7 @@ export const ActionSheet: FunctionComponent<
     visible,
     className,
     style,
+    position,
     ...rest
   } = mergeProps(defaultProps, props)
 
@@ -53,22 +56,26 @@ export const ActionSheet: FunctionComponent<
       {...rest}
       round
       visible={visible}
-      position="bottom"
-      title={title}
+      position={position}
       description={description}
-      className={classPrefix}
+      className={`${classPrefix} ${classPrefix}-${position}`}
       onClose={() => {
-        onCancel && onCancel()
+        onCancel?.()
       }}
+      closeable={position === 'top'}
+      closeIcon={<Close className={`${classPrefix}-close-icon`} />}
     >
       <div className={`${className}`} style={style}>
+        {title && (
+          <div className={`${classPrefix}-${position}-title`}>{title}</div>
+        )}
         {options.length ? (
           <div className={`${classPrefix}-list`}>
             {options.map((item, index) => {
               const statusClass = `${item.disabled ? `${classPrefix}-item-disabled` : ''} ${item.danger ? `${classPrefix}-item-danger` : ''}`
               return (
                 <div
-                  className={`${classPrefix}-item ${statusClass}`}
+                  className={`${classPrefix}-item ${statusClass} ${index !== options.length - 1 ? `${classPrefix}-item-border` : ''}`}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >

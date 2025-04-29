@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react'
 
-const Demo4 = () => {
+const Demo = () => {
   const [isVisible, setIsVisible] = useState(false)
   const optionsThree: Record<string, string | boolean>[] = [
     {
@@ -30,4 +30,4 @@ const Demo4 = () => {
     </>
   )
 }
-export default Demo4
+export default Demo

@@ -2,37 +2,36 @@ import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react'
 
 const Demo = () => {
-  const [val, setVal] = useState('')
   const [isVisible, setIsVisible] = useState(false)
-  const options = [
+  const options: Record<string, string | boolean>[] = [
     {
-      name: '分享给朋友',
+      title: '分享给朋友',
     },
     {
-      name: '添加到收藏夹',
+      title: '添加到收藏夹',
     },
     {
-      name: '复制商品链接',
+      title: '复制商品链接',
+      disabled: true,
     },
   ]
-
-  const handleSelect = (item: any) => {
-    setVal(item.name)
-    setIsVisible(false)
+  const optionKey = {
+    name: 'title',
   }
-
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <span>基础用法</span>
-        <div style={{ marginInlineStart: '10px', color: '#999' }}>{val}</div>
+        <span>自定义key</span>
       </Cell>
       <ActionSheet
         visible={isVisible}
-        options={options}
-        onSelect={handleSelect}
-        onCancel={() => setIsVisible(false)}
         cancelText="取消"
+        optionKey={optionKey}
+        options={options}
+        onSelect={() => {
+          setIsVisible(false)
+        }}
+        onCancel={() => setIsVisible(false)}
       />
     </>
   )

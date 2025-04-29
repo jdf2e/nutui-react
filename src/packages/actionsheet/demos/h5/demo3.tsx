@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react'
 
-const Demo3 = () => {
+const Demo = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [val, setVal] = useState('')
-  const options: Record<string, string>[] = [
+  const options = [
     {
-      name: '权限设置',
+      name: '分享给朋友',
     },
     {
-      name: '重命名',
-    },
-    {
-      name: '删除',
-      description: '删除后无法恢复',
+      name: '添加到收藏夹',
     },
   ]
 
@@ -25,14 +21,14 @@ const Demo3 = () => {
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <span>展示描述信息</span>
+        <span>顶部弹出</span>
         <div style={{ marginInlineStart: '10px', color: '#999' }}>{val}</div>
       </Cell>
       <ActionSheet
+        position="top"
         visible={isVisible}
         title="标题"
-        description="请选择操作动作"
-        cancelText="取消"
+        // description="请选择操作动作"
         options={options}
         onSelect={handleSelect}
         onCancel={() => setIsVisible(false)}
@@ -40,4 +36,4 @@ const Demo3 = () => {
     </>
   )
 }
-export default Demo3
+export default Demo
