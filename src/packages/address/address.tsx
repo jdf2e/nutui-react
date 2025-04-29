@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import { ArrowLeft } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
-import { CustomRender } from './customRender'
+import { CascaderRender } from './cascaderRender'
 import { ElevatorRender } from './elevatorRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
@@ -23,7 +23,7 @@ import { mergeProps } from '@/utils/merge-props'
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: [],
-  type: 'custom',
+  type: 'cascader',
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
@@ -96,7 +96,7 @@ export const InternalAddress: ForwardRefRenderFunction<
     onClose && onClose()
   }
 
-  const renderLeftOnCustomSwitch = () => {
+  const renderLeftOnCascaderSwitch = () => {
     if (!custom) return null
     return (
       <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
@@ -116,7 +116,7 @@ export const InternalAddress: ForwardRefRenderFunction<
 
   const onSwitchModule = () => {
     if (currentType === 'exist') {
-      setCurrentType('custom')
+      setCurrentType('cascader')
     } else {
       setCurrentType('exist')
     }
@@ -128,7 +128,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         visible={innerVisible}
         closeable
         title={title || locale.address.selectRegion}
-        left={renderLeftOnCustomSwitch()}
+        left={renderLeftOnCascaderSwitch()}
         defaultValue={defaultValue}
         closeIcon={closeIcon}
         options={options}
@@ -146,11 +146,11 @@ export const InternalAddress: ForwardRefRenderFunction<
   }
   const renderCascator = () => {
     return (
-      <CustomRender
+      <CascaderRender
         visible={innerVisible}
         closeable
         title={title || locale.address.selectRegion}
-        left={renderLeftOnCustomSwitch()}
+        left={renderLeftOnCascaderSwitch()}
         defaultValue={defaultValue}
         closeIcon={closeIcon}
         options={options}
@@ -199,7 +199,7 @@ export const InternalAddress: ForwardRefRenderFunction<
   return (
     <>
       {currentType === 'elevator' ? renderElevator() : null}
-      {currentType === 'custom' ? renderCascator() : null}
+      {currentType === 'cascader' ? renderCascator() : null}
       {currentType === 'exist' ? renderExist() : null}
     </>
   )

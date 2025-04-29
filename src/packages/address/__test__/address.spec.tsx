@@ -424,7 +424,7 @@ const elevatorList = [
   },
 ]
 
-test('Address: show custom false', async () => {
+test('Address: show cascader false', async () => {
   const { container } = render(
     <Address visible options={optionsDemo1} title="选择地址" />
   )

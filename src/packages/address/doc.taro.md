@@ -76,7 +76,7 @@ import { Address } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | visible | 是否打开地址选择 | `boolean` | `-` |
 | defaultVisible | 初始地址选择打开/关闭状态 | `boolean` | `-` |
-| type | 地址选择类型 exist/custom/elevator | `string` | `custom` |
+| type | 地址选择类型 exist/cascader/elevator | `AddressModeType` | `cascader` |
 | existList | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | `Array` | `[]` |
 | defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | `ReactNode` | `-` |
 | selectIcon | 已有地址列表选中图标，type='exist' 时生效 | `ReactNode` | `-` |

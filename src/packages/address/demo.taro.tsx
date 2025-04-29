@@ -14,8 +14,8 @@ import Demo11 from './demos/taro/demo11'
 const AddressDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      elevator: '电梯地址',
-      customAddress: '选择自定义地址',
+      elevator: '电梯方式的地址展示',
+      cascaderAddress: '级联方式的地址展示',
       selectCity: '选中省市区',
       existList: '选择已有地址',
       customIcon: '自定义图标',
@@ -23,8 +23,8 @@ const AddressDemo = () => {
       uncontrolled: '非受控方式',
     },
     'zh-TW': {
-      elevator: '电梯地址',
-      customAddress: '選擇自定義地址',
+      elevator: '電梯方式的地址展示',
+      cascaderAddress: '級聯方式的地址展示',
       selectCity: '選中省市區',
       existList: '選擇已有地址',
       customIcon: '自定義圖標',
@@ -33,7 +33,7 @@ const AddressDemo = () => {
     },
     'en-US': {
       elevator: 'Elevator Address',
-      customAddress: 'Choose Custom Address',
+      cascaderAddress: 'Choose Cascader Address',
       selectCity: 'Choose City',
       existList: 'Choose Exist Address',
       customIcon: 'Custom Icon',
