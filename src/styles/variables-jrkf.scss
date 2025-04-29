@@ -2475,6 +2475,18 @@ $elevator-list-item-code-current-text-align: var(
   --nutui-elevator-list-item-code-current-text-align,
   center
 ) !default;
+$elevator-list-item-code-width: var(
+  --nutui-elevator-list-item-code-width,
+  34px
+) !default;
+$elevator-bars-color: var(
+  --nutui-elevator-bars-color,
+  $color-text-help
+) !default;
+$elevator-list-item-code-current-color: var(
+  --nutui-elevator-list-item-code-current-color,
+  $white
+) !default;
 $elevator-bars-right: var(--nutui-elevator-bars-right, 10px) !default;
 $elevator-bars-top: var(--nutui-elevator-bars-top, 50%) !default;
 $elevator-bars-transform: var(

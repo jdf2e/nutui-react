@@ -2362,6 +2362,18 @@ $elevator-list-item-code-color: var(
   --nutui-elevator-list-item-code-color,
   $color-title
 ) !default;
+$elevator-list-item-code-width: var(
+  --nutui-elevator-list-item-code-width,
+  34px
+) !default;
+$elevator-bars-color: var(
+  --nutui-elevator-bars-color,
+  $color-text-help
+) !default;
+$elevator-list-item-code-current-color: var(
+  --nutui-elevator-list-item-code-current-color,
+  $white
+) !default;
 $elevator-list-item-code-font-weight: var(
   --nutui-elevator-list-item-code-font-weight,
   $font-weight-bold
