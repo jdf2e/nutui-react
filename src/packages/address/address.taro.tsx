@@ -126,7 +126,7 @@ const InternalAddress: ForwardRefRenderFunction<
         visible={innerVisible}
         closeable
         title={title || locale.address.selectRegion}
-        left={renderLeftOnCascaderSwitch()}
+        left={backIcon}
         defaultValue={defaultValue}
         closeIcon={closeIcon}
         options={options}
