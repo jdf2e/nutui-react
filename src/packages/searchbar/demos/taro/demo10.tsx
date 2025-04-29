@@ -26,7 +26,7 @@ const Demo = () => {
         onFocus={() => {
           console.log('focus dvalue', dvalue)
           if (dvalue) {
-            setValue1(dvalue)
+            setValue1(dvalue.split(',').join(''))
             setDvalue('')
           }
         }}
