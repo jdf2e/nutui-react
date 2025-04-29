@@ -56,6 +56,7 @@ import { Elevator } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| mode | Elevator structure display mode | `horizontal` \| `vertical` | `horizontal` |
 | height | Height of elevator area | `number` \| `string` | `200px` |
 | floorKey | Index key value | `string` | `title` |
 | list | Index list | `Array（item needs to contain id and name attributes, and name supports passing in html structure）` | `[{id: 0, name: ''}]` |

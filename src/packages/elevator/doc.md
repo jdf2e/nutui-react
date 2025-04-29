@@ -56,6 +56,7 @@ import { Elevator } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| mode | 电梯结构展示模式 | `horizontal` \| `vertical` | `horizontal` |
 | height | 电梯区域的高度 | `number` \| `string` | `200px` |
 | floorKey | 索引 key 值 | `string` | `title` |
 | list | 索引列表 | `Array（item 需包含 id、name 属性, name 支持传入 html 结构）` | `[{id: 0, name: ''}]` |

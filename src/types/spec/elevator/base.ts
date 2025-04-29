@@ -15,7 +15,10 @@ export type ElevatorList = {
   [key: ElevatorFloorKey]: string // 只允许其他属性为字符串
 }
 
+export type ElevatorMode = 'horizontal' | 'vertical'
+
 export interface BaseElevator extends BaseProps {
+  mode: ElevatorMode
   height: SimpleValue
   floorKey: ElevatorFloorKey
   list: ElevatorList[]

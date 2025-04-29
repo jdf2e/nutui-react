@@ -9,24 +9,14 @@ import React, {
 import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { ScrollView, View, Text } from '@tarojs/components'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/taro/platform'
 import { useUuid } from '@/hooks/use-uuid'
 import raf from '@/utils/raf'
+import { ElevatorItem, TaroElevatorProps } from '@/types'
 
-export const elevatorContext = createContext({} as ElevatorData)
+export const elevatorContext = createContext({} as ElevatorItem)
 
-export interface ElevatorProps extends BasicComponent {
-  mode: 'horizontal' | 'vertical'
-  height: number | string
-  floorKey: string
-  list: any[]
-  sticky: boolean
-  spaceHeight: number
-  showKeys: boolean
-  onItemClick: (key: string, item: ElevatorData) => void
-  onIndexClick: (key: string) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   mode: 'horizontal',
@@ -36,14 +26,10 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
-} as ElevatorProps
-interface ElevatorData {
-  name: string
-  id: number | string
-  [key: string]: string | number
-}
+} as TaroElevatorProps
+
 export const Elevator: FunctionComponent<
-  Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
     mode,
@@ -76,8 +62,8 @@ export const Elevator: FunctionComponent<
     y2: 0,
   })
 
-  const [currentData, setCurrentData] = useState<ElevatorData>(
-    {} as ElevatorData
+  const [currentData, setCurrentData] = useState<ElevatorItem>(
+    {} as ElevatorItem
   )
   const [currentKey, setCurrentKey] = useState('')
   const [codeIndex, setCodeIndex] = useState<number>(0)
@@ -170,7 +156,7 @@ export const Elevator: FunctionComponent<
     scrollTo(index)
   }
 
-  const handleClickItem = (key: string, item: ElevatorData) => {
+  const handleClickItem = (key: string, item: ElevatorItem) => {
     onItemClick && onItemClick(key, item)
     setCurrentData(item)
     setCurrentKey(key)
@@ -249,7 +235,7 @@ export const Elevator: FunctionComponent<
                   {item[floorKey]}
                 </View>
                 <View className={`${classPrefix}-list-item-sublist`}>
-                  {item.list.map((subitem: ElevatorData) => {
+                  {item.list.map((subitem: ElevatorItem) => {
                     return (
                       <View
                         className={classNames({

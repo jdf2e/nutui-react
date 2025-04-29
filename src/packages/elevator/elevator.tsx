@@ -8,21 +8,11 @@ import React, {
 import { useGesture } from '@use-gesture/react'
 import { animated } from '@react-spring/web'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { ElevatorItem, WebElevatorProps } from '@/types'
 
-export const elevatorContext = createContext({} as ElevatorData)
+export const elevatorContext = createContext({} as ElevatorItem)
 
-export interface ElevatorProps extends BasicComponent {
-  mode: 'horizontal' | 'vertical'
-  height: number | string
-  floorKey: string
-  list: any[]
-  sticky: boolean
-  spaceHeight: number
-  showKeys: boolean
-  onItemClick: (key: string, item: ElevatorData) => void
-  onIndexClick: (key: string) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   mode: 'horizontal',
@@ -32,14 +22,10 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
-} as ElevatorProps
-interface ElevatorData {
-  name: string
-  id: number | string
-  [key: string]: string | number
-}
+} as WebElevatorProps
+
 export const Elevator: FunctionComponent<
-  Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
     mode,
@@ -72,8 +58,8 @@ export const Elevator: FunctionComponent<
     y2: 0,
   })
   const [scrollY, setScrollY] = useState(0)
-  const [currentData, setCurrentData] = useState<ElevatorData>(
-    {} as ElevatorData
+  const [currentData, setCurrentData] = useState<ElevatorItem>(
+    {} as ElevatorItem
   )
   const [currentKey, setCurrentKey] = useState('')
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -148,7 +134,7 @@ export const Elevator: FunctionComponent<
     },
   })
 
-  const handleClickItem = (key: string, item: ElevatorData) => {
+  const handleClickItem = (key: string, item: ElevatorItem) => {
     onItemClick && onItemClick(key, item)
     setCurrentData(item)
     setCurrentKey(key)
@@ -224,7 +210,7 @@ export const Elevator: FunctionComponent<
                   {item[floorKey]}
                 </div>
                 <div className={`${classPrefix}-list-item-sublist`}>
-                  {item.list.map((subitem: ElevatorData) => {
+                  {item.list.map((subitem: ElevatorItem) => {
                     return (
                       <div
                         className={classNames({
