@@ -1,18 +1,15 @@
-import React, { CSSProperties, useState } from 'react'
-import { ActionSheet, Cell, pxTransform } from '@nutui/nutui-react-taro'
+import React, { useState } from 'react'
+import { ActionSheet, Cell, Image } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
 const Demo5 = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const viewStyle: CSSProperties = {
-    textAlign: 'left',
-    paddingLeft: pxTransform(20),
-    paddingTop: pxTransform(10),
-  }
+  const itemStyle = { display: 'flex', alignItems: 'center', height: '52px' }
+
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <View>自定义内容</View>
+        <View>自定义内容1</View>
       </Cell>
       <ActionSheet
         visible={isVisible}
@@ -22,8 +19,22 @@ const Demo5 = () => {
         }}
         onCancel={() => setIsVisible(false)}
       >
-        <View style={viewStyle}>新建表格</View>
-        <View style={viewStyle}>新建文档</View>
+        <View style={{ ...itemStyle, borderBottom: '0.5px solid #c2c4cc' }}>
+          <Image
+            src="https://img20.360buyimg.com/img/jfs/t1/298387/38/1291/2642/68106cb8Fa0bc75fe/91a0135a25729d88.png"
+            width={20}
+            height={20}
+          />
+          <View style={{ marginLeft: 8 }}>加密呼叫（86）18888888888</View>
+        </View>
+        <View style={itemStyle}>
+          <Image
+            src="https://img11.360buyimg.com/img/jfs/t1/270315/26/29639/1865/68106d4cFc40d2a06/ddffb93564a1f495.png"
+            width={20}
+            height={20}
+          />
+          <View style={{ marginLeft: 8 }}>在线客服</View>
+        </View>
       </ActionSheet>
     </>
   )

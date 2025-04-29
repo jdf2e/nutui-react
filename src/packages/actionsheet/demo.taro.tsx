@@ -10,6 +10,7 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const ActionSheetDemo = () => {
   const [translated] = useTranslate({
@@ -45,8 +46,9 @@ const ActionSheetDemo = () => {
         <Demo4 />
         <View className="h2">{translated.c3a08065}</View>
         <Demo5 />
-        <View className="h2">{translated.c3a08066}</View>
         <Demo6 />
+        <View className="h2">{translated.c3a08066}</View>
+        <Demo7 />
       </ScrollView>
     </>
   )

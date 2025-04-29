@@ -5,16 +5,12 @@ import { View } from '@tarojs/components'
 const Demo3 = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [val, setVal] = useState('')
-  const options: Record<string, string>[] = [
+  const options = [
     {
-      name: '权限设置',
+      name: '分享给朋友',
     },
     {
-      name: '重命名',
-    },
-    {
-      name: '删除',
-      description: '删除后无法恢复',
+      name: '添加到收藏夹',
     },
   ]
   const handleSelect = (item: any) => {
@@ -24,16 +20,15 @@ const Demo3 = () => {
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <View>展示描述信息</View>
+        <View>顶部弹出</View>
         <View style={{ marginLeft: pxTransform(10), color: '#999' }}>
           {val}
         </View>
       </Cell>
       <ActionSheet
+        position="top"
         visible={isVisible}
         title="标题"
-        description="请选择操作动作"
-        cancelText="取消"
         options={options}
         onSelect={handleSelect}
         onCancel={() => setIsVisible(false)}

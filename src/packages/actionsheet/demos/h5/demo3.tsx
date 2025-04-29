@@ -28,7 +28,6 @@ const Demo = () => {
         position="top"
         visible={isVisible}
         title="标题"
-        // description="请选择操作动作"
         options={options}
         onSelect={handleSelect}
         onCancel={() => setIsVisible(false)}

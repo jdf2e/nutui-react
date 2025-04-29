@@ -2,7 +2,9 @@
 
 .nut-actionsheet {
   text-align: center;
+  box-sizing: border-box;
   padding: 16px;
+  width: 100%;
   &-bottom {
     padding-bottom: 34px;
   }
