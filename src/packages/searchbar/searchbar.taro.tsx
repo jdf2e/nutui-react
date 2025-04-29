@@ -218,8 +218,10 @@ export const SearchBar: FunctionComponent<
         })}
       >
         {renderLeftIn()}
-        <View className="nut-searchbar-input-box">{renderField()}</View>
-        {defaultValue && renderDefaultValue()}
+        <View className="nut-searchbar-input-box">
+          {renderField()}
+          {defaultValue && renderDefaultValue()}
+        </View>
         {!defaultValue && clearable && value && renderClear()}
         {renderRightIn()}
       </View>

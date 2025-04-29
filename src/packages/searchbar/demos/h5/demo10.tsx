@@ -15,12 +15,23 @@ const Demo = () => {
         value={value1}
         onItemClick={(value: string) => {
           console.log('click', value)
-          setDvalue('黄瓜')
+          if (dvalue) {
+            const arr = dvalue.split(',')
+            const newArr = arr.filter((item: string) => item !== value)
+            const newVal = newArr.length > 1 ? newArr.join(',') : newArr[0]
+            setValue1(newVal)
+            setDvalue(newVal)
+          }
         }}
         onFocus={() => {
-          console.log('focus')
-          setValue1(dvalue)
-          setDvalue('')
+          console.log('focus dvalue', dvalue)
+          if (dvalue) {
+            setValue1(dvalue)
+            setDvalue('')
+          }
+        }}
+        onChange={(val) => {
+          setValue1(val)
         }}
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>

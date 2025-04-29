@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { SearchBar, Button } from '@nutui/nutui-react-taro'
 import { Photograph, Category } from '@nutui/icons-react-taro'
 
-const Demo1 = () => {
+const Demo = () => {
   const [dvalue, setDvalue] = useState('西红柿,铁皮')
   const [value, setValue] = useState('西红柿')
   const [value1, setValue1] = useState('')
@@ -15,12 +15,23 @@ const Demo1 = () => {
         value={value1}
         onItemClick={(value: string) => {
           console.log('click', value)
-          setDvalue('黄瓜')
+          if (dvalue) {
+            const arr = dvalue.split(',')
+            const newArr = arr.filter((item: string) => item !== value)
+            const newVal = newArr.length > 1 ? newArr.join(',') : newArr[0]
+            setValue1(newVal)
+            setDvalue(newVal)
+          }
         }}
         onFocus={() => {
-          console.log('focus')
-          setValue1(dvalue)
-          setDvalue('')
+          console.log('focus dvalue', dvalue)
+          if (dvalue) {
+            setValue1(dvalue)
+            setDvalue('')
+          }
+        }}
+        onChange={(val) => {
+          setValue1(val)
         }}
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -49,4 +60,4 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+export default Demo

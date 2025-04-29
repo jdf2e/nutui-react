@@ -72,16 +72,20 @@
 
   &-clear {
     &.nut-searchbar-icon {
-      width: 12px;
-      height: 12px;
-      color: var(--nutui-black-5);
-      margin-right: $searchbar-inner-gap;
+      .nut-icon {
+        width: 12px;
+        height: 12px;
+        color: var(--nutui-black-5);
+        margin-right: $searchbar-inner-gap;
+      }
     }
   }
 
   &-values {
     position: absolute;
     display: flex;
+    flex-direction: row;
+    z-index: 2;
     background-color: #fff;
     top: 9px;
     left: 6px;
@@ -89,6 +93,9 @@
     line-height: 12px;
 
     .nut-searchbar-value {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       padding: 4px 8px;
       background-color: #f7f8fc;
       border-radius: 4px;
