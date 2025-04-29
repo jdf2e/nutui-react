@@ -61,8 +61,7 @@ import { Elevator } from '@nutui/nutui-react'
 | list | 索引列表 | `Array（item 需包含 id、name 屬性, name 支持傳入 html 結構）` | `[{id: 0, name: ''}]` |
 | sticky | 索引是否吸頂 | `boolean` | `false` |
 | showKeys | 展示右側導航 | `boolean` | `true` |
-| spaceHeight | 右側錨點的上下間距 | `number` | `23` |
-| titleHeight | 左側索引的高度 | `number` | `35` |
+| spaceHeight | 右側錨點的上下間距 | `number` | `18` |
 | onItemClick | 點擊內容 | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
 | onIndexClick | 點擊索引 | `onIndexClick:(key: string)=>void` | `false` |
 

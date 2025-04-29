@@ -12,6 +12,7 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/taro/platform'
 import { useUuid } from '@/hooks/use-uuid'
+import raf from '@/utils/raf'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
@@ -22,7 +23,6 @@ export interface ElevatorProps extends BasicComponent {
   list: any[]
   sticky: boolean
   spaceHeight: number
-  titleHeight: number
   showKeys: boolean
   onItemClick: (key: string, item: ElevatorData) => void
   onIndexClick: (key: string) => void
@@ -34,10 +34,8 @@ const defaultProps = {
   floorKey: 'title',
   list: [] as any[],
   sticky: false,
-  spaceHeight: 23,
-  titleHeight: 35,
+  spaceHeight: 18,
   showKeys: true,
-  className: 'weapp-elevator',
 } as ElevatorProps
 interface ElevatorData {
   name: string
@@ -54,7 +52,6 @@ export const Elevator: FunctionComponent<
     list,
     sticky,
     spaceHeight,
-    titleHeight,
     showKeys,
     className,
     style,
@@ -68,11 +65,10 @@ export const Elevator: FunctionComponent<
   }
   const uuid = useUuid()
   const classPrefix = 'nut-elevator'
-  const listview = useRef<HTMLDivElement>(null)
+
   const initData = {
     anchorIndex: 0,
     listHeight: [] as number[],
-    listGroup: [] as any[],
     scrollY: 0,
   }
   const touchState = useRef({
@@ -102,29 +98,35 @@ export const Elevator: FunctionComponent<
   }
 
   const calculateHeight = () => {
-    let height = 0
+    state.current.listHeight = [0]
 
-    state.current.listHeight.push(height)
-    for (let i = 0; i < state.current.listGroup.length; i++) {
-      const query = createSelectorQuery()
-      query
-        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-item-${i}`)
-        .boundingClientRect()
-      // eslint-disable-next-line no-loop-func
-      query.exec((res: any) => {
-        if (res[0][0]) height += res[0][0].height
-        state.current.listHeight.push(height)
+    const query = createSelectorQuery()
+    query
+      .selectAll(`#${classPrefix}-${uuid} .${classPrefix}-list-item`)
+      .boundingClientRect()
+      .exec((rect = []) => {
+        if (rect[0] && rect[0].length) {
+          // rect[0] = rect[0].reverse()
+          state.current.listHeight = rect[0].reduce(
+            (acc: any[], item: { height: any }, index: number) => {
+              // 当前项的高度等于前面所有项的高度之和
+              const height = acc[index] + item.height
+              acc.push(height)
+              return acc
+            },
+            [0]
+          )
+        }
       })
-    }
   }
 
-  const scrollTo = (index: number) => {
+  const scrollTo = async (index: number) => {
     if (!index && index !== 0) {
       return
     }
 
     if (!state.current.listHeight.length) {
-      calculateHeight()
+      await calculateHeight()
     }
     let cacheIndex = index
     if (index < 0) {
@@ -138,7 +140,7 @@ export const Elevator: FunctionComponent<
     setCodeIndex(cacheIndex)
     const scrollTop = state.current.listHeight[cacheIndex]
     setScrollTop(scrollTop)
-    if (sticky && scrollY !== scrollTop) {
+    if (mode === 'vertical' && sticky) {
       setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
     }
   }
@@ -178,38 +180,31 @@ export const Elevator: FunctionComponent<
     onIndexClick && onIndexClick(key)
   }
 
-  const setListGroup = () => {
-    if (listview.current) {
-      createSelectorQuery()
-        .selectAll(`.${classPrefix}-${uuid} .nut-elevator-list-item`)
-        .node((el) => {
-          state.current.listGroup = [...Object.keys(el)]
-          calculateHeight()
-        })
-        .exec()
-    }
-  }
-
   const listViewScroll = (e: any) => {
-    const { listHeight } = state.current
-    if (!listHeight.length) {
-      calculateHeight()
-    }
-    const target = e.target as Element
-    const { scrollTop } = target
-    state.current.scrollY = Math.floor(scrollTop)
-    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
-    if (sticky && scrollTop !== scrollY) {
-      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
-    }
-    if (scrolling.current) return
-    for (let i = 0; i < listHeight.length - 1; i++) {
-      const height1 = listHeight[i]
-      const height2 = listHeight[i + 1]
-      if (state.current.scrollY >= height1 && state.current.scrollY < height2) {
-        return setCodeIndex(i)
+    raf(() => {
+      const { listHeight } = state.current
+      if (!listHeight.length) {
+        calculateHeight()
       }
-    }
+      const target = e.target as Element
+      const { scrollTop } = target
+      state.current.scrollY = Math.floor(scrollTop)
+      Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
+      if (mode === 'vertical' && sticky) {
+        setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
+      }
+      if (scrolling.current) return
+
+      const index = listHeight.findIndex(
+        (height, i) =>
+          state.current.scrollY >= height &&
+          state.current.scrollY < (listHeight[i + 1] || Infinity)
+      )
+
+      if (index !== -1 && index !== codeIndex) {
+        setCodeIndex(index)
+      }
+    })
   }
 
   const getWrapStyle = useMemo(() => {
@@ -219,16 +214,15 @@ export const Elevator: FunctionComponent<
   }, [height])
 
   useEffect(() => {
-    if (listview.current) {
-      nextTick(() => {
-        setListGroup()
-      })
-    }
-  }, [listview])
+    nextTick(() => {
+      calculateHeight()
+    })
+  }, [])
 
   return (
     <div
-      className={`${classPrefix} ${className} ${classPrefix}-${mode} ${classPrefix}-${uuid}`}
+      className={`${classPrefix} ${className} ${classPrefix}-${mode} `}
+      id={`${classPrefix}-${uuid}`}
       style={style}
       {...rest}
     >
@@ -236,11 +230,10 @@ export const Elevator: FunctionComponent<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
-          scrollWithAnimation
+          enhanced
+          scrollWithAnimation={false}
           scrollAnchoring
           className={`${classPrefix}-list-inner`}
-          type="list"
-          ref={listview}
           onScroll={listViewScroll}
           onTouchStart={(e) => {
             scrolling.current = false

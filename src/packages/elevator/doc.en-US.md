@@ -61,8 +61,7 @@ import { Elevator } from '@nutui/nutui-react'
 | list | Index list | `Array（item needs to contain id and name attributes, and name supports passing in html structure）` | `[{id: 0, name: ''}]` |
 | sticky | Whether the index is ceiling | `boolean` | `false` |
 | showKeys | Show right navigation | `boolean` | `true` |
-| spaceHeight | Up and down spacing of right anchor point | `number` | `23` |
-| titleHeight | Height of left index | `number` | `35` |
+| spaceHeight | Up and down spacing of right anchor point | `number` | `18` |
 | onItemClick | Click content | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
 | onIndexClick | Click index | `onIndexClick:(key: string)=>void` | `false` |
 

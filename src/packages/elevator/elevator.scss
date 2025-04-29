@@ -88,7 +88,6 @@
     position: absolute;
     right: $elevator-bars-right;
     top: $elevator-bars-top;
-    font-size: $elevator-bars-font-size;
     transform: $elevator-bars-transform;
     z-index: $elevator-bars-z-index;
 
@@ -104,6 +103,7 @@
         border-radius: 50%;
         margin: 1px 0;
         color: $elevator-bars-color;
+        font-size: $elevator-bars-font-size;
         cursor: pointer;
         &-active {
           font-weight: $font-weight-bold;

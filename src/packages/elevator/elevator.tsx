@@ -19,7 +19,6 @@ export interface ElevatorProps extends BasicComponent {
   list: any[]
   sticky: boolean
   spaceHeight: number
-  titleHeight: number
   showKeys: boolean
   onItemClick: (key: string, item: ElevatorData) => void
   onIndexClick: (key: string) => void
@@ -31,8 +30,7 @@ const defaultProps = {
   floorKey: 'title',
   list: [] as any[],
   sticky: false,
-  spaceHeight: 23,
-  titleHeight: 35,
+  spaceHeight: 18,
   showKeys: true,
 } as ElevatorProps
 interface ElevatorData {
@@ -50,7 +48,6 @@ export const Elevator: FunctionComponent<
     list,
     sticky,
     spaceHeight,
-    titleHeight,
     showKeys,
     className,
     style,
