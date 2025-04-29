@@ -14,7 +14,7 @@ export interface ExistRenderProps {
 }
 
 const defaultProps = {
-  type: 'exsit',
+  type: 'exist',
   existList: [],
   defaultIcon: null,
   selectIcon: null,

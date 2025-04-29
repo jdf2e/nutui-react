@@ -115,12 +115,9 @@ export const InternalAddress: ForwardRefRenderFunction<
   }
 
   const onSwitchModule = () => {
-    if (currentType === 'exist') {
-      setCurrentType('cascader')
-    } else {
-      setCurrentType('exist')
-    }
-    onSwitch && onSwitch({ type: currentType })
+    const nextType = currentType === 'exist' ? 'cascader' : 'exist'
+    setCurrentType(nextType)
+    onSwitch && onSwitch({ type: nextType })
   }
   const renderElevator = () => {
     return (
@@ -160,7 +157,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         height={height}
         onClose={handleClose}
         onChange={(val: CascaderValue, params?: any) => {
-          onChange(val, params)
+          onChange && onChange(val, params)
         }}
       />
     )
