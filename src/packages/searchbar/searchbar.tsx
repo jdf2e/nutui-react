@@ -176,7 +176,8 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
-        onClick={(e) => clearaVal(e)}
+        onClick={clearaVal}
+        aria-label="清除"
       >
         <MaskClose />
       </div>
