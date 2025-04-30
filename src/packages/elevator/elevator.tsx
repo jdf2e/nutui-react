@@ -74,9 +74,13 @@ export const Elevator: FunctionComponent<
     return listview.current ? listview.current.clientHeight : 0
   }
 
-  const getData = (el: HTMLElement, name: string): string | void => {
+  const getData = (el: HTMLElement, name: string): string => {
     const prefix = 'data-'
-    return el.getAttribute(prefix + name) as string
+    // 检查点击的元素是否直接包含 data-index 属性
+    if (el.hasAttribute('data-index')) {
+      return el.getAttribute(prefix + name) as string
+    }
+    return '-1'
   }
 
   const calculateHeight = () => {
@@ -117,6 +121,10 @@ export const Elevator: FunctionComponent<
     onDragStart: ({ target, offset }) => {
       setScrollStart(true)
       const index = Number(getData(target as HTMLElement, 'index'))
+      if (index < 0) {
+        setScrollStart(false)
+        return
+      }
       touchState.current.y1 = offset[1]
       state.current.anchorIndex = +index
       setCodeIndex((codeIndex) => codeIndex + index)
