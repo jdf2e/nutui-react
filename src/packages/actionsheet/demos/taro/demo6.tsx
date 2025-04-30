@@ -49,7 +49,10 @@ const Demo6 = () => {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    margin: '0 16px 16px',
+    marginTop: 0,
+    marginBottom: 16,
+    marginLeft: 16,
+    marginRight: 16,
   }
 
   return (

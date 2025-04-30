@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 
 const Demo5 = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const itemStyle = { display: 'flex', alignItems: 'center', height: '52px' }
+  const itemStyle = { display: 'flex', alignItems: 'center', height: 52 }
 
   return (
     <>
@@ -19,7 +19,9 @@ const Demo5 = () => {
         }}
         onCancel={() => setIsVisible(false)}
       >
-        <View style={{ ...itemStyle, borderBottom: '0.5px solid #c2c4cc' }}>
+        <View
+          style={{ ...itemStyle, borderColor: '#c2c4cc', borderBottomWidth: 1 }}
+        >
           <Image
             src="https://img20.360buyimg.com/img/jfs/t1/298387/38/1291/2642/68106cb8Fa0bc75fe/91a0135a25729d88.png"
             width={20}
