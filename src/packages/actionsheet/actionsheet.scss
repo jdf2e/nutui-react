@@ -29,9 +29,6 @@
     width: 16px;
     height: 16px;
   }
-  .nut-popup-title {
-    border-bottom: 1px solid $actionsheet-border-color;
-  }
 
   &-list {
     display: block;
@@ -50,7 +47,7 @@
     color: $actionsheet-item-color;
     cursor: pointer;
     &-border {
-      border-bottom: 0.5px solid #c2c4cc;
+      border-bottom: $actionsheet-item-border-bottom;
       /* #ifdef harmony */
       border-width: 1px;
       /* #endif */
@@ -84,7 +81,7 @@
     /* #ifdef harmony */
     border-width: 1px;
     /* #endif */
-    border-radius: 8px;
+    border-radius: $actionsheet-border-radius;
     height: 40px;
     display: flex;
     align-items: center;

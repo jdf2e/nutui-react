@@ -659,18 +659,21 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-background-overlay
 ) !default;
-$actionsheet-border-color: var(
-  --nutui-actionsheet-border-color,
-  $color-border
+$actionsheet-cancel-border: var(
+  --nutui-actionsheet-cancel-border,
+  0.5px solid #c2c4cc
 ) !default;
-$actionsheet-border-radius: var(--nutui-actionsheet-border-radius, 0) !default;
+$actionsheet-border-radius: var(
+  --nutui-actionsheet-border-radius,
+  $radius-l
+) !default;
 $actionsheet-item-text-align: var(
   --nutui-actionsheet-item-text-align,
   left
 ) !default;
 $actionsheet-item-border-bottom: var(
   --nutui-actionsheet-item-border-bottom,
-  none
+  0.5px solid #c2c4cc
 ) !default;
 $actionsheet-item-line-height: var(
   --nutui-actionsheet-item-line-height,
