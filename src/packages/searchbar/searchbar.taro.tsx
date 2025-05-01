@@ -109,7 +109,7 @@ export const SearchBar: FunctionComponent<
   )
 
   const handleBlur = useCallback(
-    (event: BaseEventOrig<InputProps.inputValueEventDetail>) => {
+    (event: BaseEventOrig<InputProps.inputValueEventDetail> | any) => {
       searchInputRef.current?.blur()
       onBlur && onBlur(event.detail?.value, event)
       setTimeout(() => {
