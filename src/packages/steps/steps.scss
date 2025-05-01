@@ -2,9 +2,224 @@
 
 .nut-steps {
   display: flex;
-}
 
-.nut-steps-vertical {
-  height: 100%;
-  flex-flow: column;
+  &-horizontal {
+    flex-flow: row;
+    // justify-content: space-between;
+
+    &-count-2 {
+      // .nut-step {
+      //     flex: 1;
+      //     max-width: 33.33%;
+      // }
+    }
+
+    &-single {
+      .nut-step {
+      }
+    }
+
+    &-double {
+      .nut-step {
+        flex-direction: column;
+      }
+    }
+
+    &-double {
+      justify-content: center;
+
+      .nut-step {
+        flex-direction: column;
+
+        &-head {
+          justify-content: center;
+          margin-bottom: 6px;
+        }
+
+        &-main {
+          align-items: center;
+          margin-left: 0;
+        }
+      }
+    }
+
+    .nut-step {
+      // 强化业务属性展示
+      &.nut-step-business {
+        .nut-step-head-text {
+          background-color: #fff4e8;
+          color: #994d00;
+        }
+
+        .nut-step-title {
+          color: #994d00;
+        }
+      }
+
+      // 流程状态-当前
+      &.nut-step-process {
+        .nut-step-title {
+          color: $steps-process-title-color;
+        }
+
+        .nut-step-description {
+          color: $steps-process-description-color;
+        }
+      }
+
+      // 流程状态-等待
+      &.nut-step-wait {
+        .nut-step-title {
+          color: $steps-wait-title-color;
+        }
+
+        .nut-step-description {
+          color: $steps-wait-description-color;
+        }
+      }
+
+      // 流程状态-完成
+      &.nut-step-finish {
+      }
+    }
+  }
+
+  &-vertical {
+    flex-flow: column;
+
+    .nut-step {
+      padding-bottom: 13px;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+
+      &-line {
+        height: calc(100% - 4px);
+        width: 1px;
+        top: auto;
+        bottom: 0;
+      }
+
+      &-head {
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+      }
+
+      &-main {
+        height: auto;
+        margin-left: 8px;
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        height: 18px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      &-description {
+        margin: 0 0 1px;
+        height: auto;
+        line-height: 18px;
+        color: $color-text;
+        font-size: 14px;
+        box-sizing: border-box;
+
+        .description-time {
+          margin-top: 2px;
+          color: #808080;
+          font-size: 12px;
+          line-height: 18px;
+        }
+      }
+
+      &-head-dot-wrap,
+      &-head-icon-wrap,
+      &-head-text-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      &-head-dot-wrap {
+        height: 14px;
+      }
+
+      &-head-icon-wrap {
+        height: 28px;
+      }
+
+      &-head-text-wrap {
+        height: 20px;
+      }
+    }
+
+    &-icon {
+      .nut-step {
+        &-head {
+          width: 21px;
+          min-width: 21px;
+        }
+
+        &-line {
+          left: 10px;
+        }
+      }
+    }
+
+    &-dot {
+      .nut-step {
+        &-head {
+          width: 7px;
+        }
+
+        &-line {
+          left: 3px;
+        }
+      }
+    }
+
+    &-text {
+      .nut-step {
+        &-head {
+          width: 13px;
+          min-width: 13px;
+        }
+
+        &-line {
+          left: 6px;
+        }
+      }
+    }
+  }
+
+  &-horizontal-enhanced,
+  &-vertical-enhanced {
+    .nut-step-finish {
+      .nut-step-head-icon,
+      .nut-step-head-text {
+        background-color: $color-primary-light-pressed;
+
+        .nut-icon {
+          color: $color-primary-stop-1;
+        }
+      }
+
+      .nut-step-head-text {
+        color: $color-primary-stop-1;
+      }
+
+      .nut-step-head-dot {
+        background-color: #ffadbe;
+      }
+    }
+  }
 }

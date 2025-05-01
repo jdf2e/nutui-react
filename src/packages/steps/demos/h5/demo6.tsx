@@ -1,6 +1,5 @@
 import React from 'react'
-import { Steps, Step, ConfigProvider } from '@nutui/nutui-react'
-import { Transit } from '@nutui/icons-react'
+import { ConfigProvider, Cell } from '@nutui/nutui-react'
 
 const customTheme = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
@@ -21,22 +20,8 @@ const customTheme = {
 const Demo6 = () => {
   return (
     <>
-      <ConfigProvider theme={customTheme} style={{ padding: '15px 0px' }}>
-        <Steps dot value={2}>
-          <Step value={1} title="已完成" />
-          <Step
-            value={2}
-            title="进行中"
-            icon={
-              <Transit
-                width={20}
-                height={20}
-                style={{ color: 'red', flex: 'none' }}
-              />
-            }
-          />
-          <Step value={3} title="未开始" />
-        </Steps>
+      <ConfigProvider theme={customTheme}>
+        <Cell />
       </ConfigProvider>
     </>
   )

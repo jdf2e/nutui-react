@@ -14,14 +14,14 @@ const Demo5 = () => {
   return (
     <>
       <ConfigProvider theme={customTheme}>
-        <Steps value={val} dot>
+        <Steps value={val}>
           <Step value={1} />
           <Step value={2} />
           <Step value={3} />
         </Steps>
       </ConfigProvider>
       <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button type="danger" onClick={() => handleStep()}>
+        <Button size="small" type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
       </div>

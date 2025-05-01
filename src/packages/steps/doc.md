@@ -91,6 +91,7 @@ import { Steps } from '@nutui/nutui-react'
 | direction | 显示方向 | `horizontal` \| `vertical` | `horizontal` |
 | value | 当前所在的步骤 | `number` | `0` |
 | dot | 点状步骤条 | `boolean` | `false` |
+| onStepClick | 点击步骤的标题或图标时触发 | `(index: number) => void` | `-` |
 
 ## Step
 
@@ -99,11 +100,9 @@ import { Steps } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 流程步骤的标题 | `string` | `-` |
-| description | 流程步骤的描述性文字 | `string` | `-` |
+| description | 流程步骤的描述性文字 | `React.ReactNode` | `-` |
 | icon | 图标(来自Icon组件的name属性) | `ReactNode` | `-` |
 | value | 流程步骤的索引 | `number` | `0` |
-| description | 流程步骤的描述性文字的html结构 | `React.ReactNode` | `-` |
-| onStepClick | 点击步骤的标题或图标时触发 | `(index: number) => void` | `-` |
 
 ## 主题定制
 

@@ -29,7 +29,7 @@ const Demo4 = () => {
         </Steps>
       </ConfigProvider>
       <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button type="danger" onClick={() => handleStep()}>
+        <Button size="small" type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
       </div>

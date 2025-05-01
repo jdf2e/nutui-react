@@ -1299,6 +1299,11 @@ $address-tab-line-background: linear-gradient(
 ) !default;
 
 //steps（✅）
+$steps-base-head-size: var(
+  --nutui-steps-base-icon-size,
+  $font-size-xs
+) !default;
+
 $steps-base-icon-width: var(--nutui-steps-base-icon-width, 25px) !default;
 $steps-base-icon-height: var(--nutui-steps-base-icon-height, 25px) !default;
 $steps-base-icon-line-height: var(

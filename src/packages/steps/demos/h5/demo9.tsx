@@ -1,28 +1,91 @@
-import React from 'react'
-import { Steps, Step } from '@nutui/nutui-react'
+import React, { useState } from 'react'
+import { Steps, Step, Button, Cell } from '@nutui/nutui-react'
+import { PickedUp, WaitReceive } from '@nutui/icons-react'
 
 const Demo9 = () => {
+  const [value, setValue] = useState(2)
+  const handleStep = () => {
+    const newVal = (value % 3) + 1
+    setValue(newVal)
+  }
   return (
-    <div style={{ height: '300px', padding: '15px 30px' }}>
-      <Steps direction="vertical" dot value={2}>
-        <Step
-          value={1}
-          title="已完成"
-          description="您的订单已经打包完成，商品已发出"
-        />
-        <Step value={2} title="进行中" description="您的订单正在配送途中" />
-        <Step
-          value={3}
-          title="未开始"
-          description={
-            <>
-              <p>收货地址为：</p>
-              <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
-            </>
-          }
-        />
-      </Steps>
-    </div>
+    <>
+      <Cell>
+        <Steps direction="vertical" value={value} type="icon" status="dynamic">
+          <Step
+            type="dot"
+            value={1}
+            description="自提地址：深圳市福田区福华路29号京东快递自提点"
+          />
+          <Step
+            type="icon"
+            value={2}
+            title="待取件"
+            description={
+              <>
+                <p>
+                  你的订单已由【深圳市福田区福华路京东快递自
+                  提点】上架完成，请上门自提
+                </p>
+                <p className="description-time">2025-01-20 07:12:30</p>
+              </>
+            }
+            icon={<WaitReceive />}
+          />
+          <Step
+            type="icon"
+            value={3}
+            title="运输中"
+            description={
+              <>
+                <p>订单在【淮安分拣中心】完成分拣</p>
+                <p className="description-time">2025-01-20 07:12:30</p>
+              </>
+            }
+            icon={<PickedUp />}
+          />
+        </Steps>
+      </Cell>
+      <Cell>
+        <Steps direction="vertical" value={value} type="icon" status="enhanced">
+          <Step
+            type="dot"
+            value={1}
+            description="自提地址：深圳市福田区福华路29号京东快递自提点"
+          />
+          <Step
+            type="icon"
+            value={2}
+            title="待取件"
+            description={
+              <>
+                <p>
+                  你的订单已由【深圳市福田区福华路京东快递自
+                  提点】上架完成，请上门自提
+                </p>
+                <p className="description-time">2025-01-20 07:12:30</p>
+              </>
+            }
+            icon={<WaitReceive />}
+          />
+          <Step
+            type="icon"
+            value={3}
+            title="运输中"
+            description={
+              <>
+                <p>订单在【淮安分拣中心】完成分拣</p>
+                <p className="description-time">2025-01-20 07:12:30</p>
+              </>
+            }
+            icon={<PickedUp />}
+          />
+        </Steps>
+      </Cell>
+      <Button type="primary" size="small" onClick={handleStep}>
+        下一步
+      </Button>
+    </>
   )
 }
 export default Demo9

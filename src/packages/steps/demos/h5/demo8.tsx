@@ -1,23 +1,38 @@
-import React from 'react'
-import { Steps, Step } from '@nutui/nutui-react'
+import React, { useState } from 'react'
+import { Steps, Step, Button, Space, Cell } from '@nutui/nutui-react'
 
 const Demo8 = () => {
+  const [val, setVal] = useState(1)
+  const handleStep = () => {
+    const newVal = (val % 5) + 1
+    setVal(newVal)
+  }
   return (
-    <div style={{ height: '300px', padding: '15px 30px' }}>
-      <Steps direction="vertical" value={2}>
-        <Step
-          value={1}
-          title="已完成"
-          description="您的订单已经打包完成，商品已发出"
-        />
-        <Step value={2} title="进行中" description="您的订单正在配送途中" />
-        <Step
-          value={3}
-          title="未开始"
-          description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
-        />
-      </Steps>
-    </div>
+    <>
+      <Space justify="between">
+        <Cell>
+          <Steps direction="vertical" value={val} type="dot" status="dynamic">
+            <Step value={1} description="预约" />
+            <Step value={2} description="购买下单" />
+            <Step value={3} description="购买下单" />
+            <Step value={4} description="服务屡约" />
+            <Step value={5} description="完成" />
+          </Steps>
+        </Cell>
+        <Cell>
+          <Steps direction="vertical" value={val} type="dot" status="enhanced">
+            <Step value={1} description="预约" />
+            <Step value={2} description="购买下单" />
+            <Step value={3} description="购买下单" />
+            <Step value={4} description="服务屡约" />
+            <Step value={5} description="完成" />
+          </Steps>
+        </Cell>
+      </Space>
+      <Button type="primary" size="small" onClick={handleStep}>
+        下一步
+      </Button>
+    </>
   )
 }
 export default Demo8
