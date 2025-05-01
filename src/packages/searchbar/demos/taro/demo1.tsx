@@ -2,7 +2,7 @@ import React from 'react'
 import { SearchBar, Divider } from '@nutui/nutui-react-taro'
 import { Photograph, Scan } from '@nutui/icons-react-taro'
 
-const Demo1 = () => {
+const Demo = () => {
   return (
     <>
       <SearchBar placeholder="麻辣烫" rightIn="搜索" />
@@ -20,4 +20,4 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+export default Demo

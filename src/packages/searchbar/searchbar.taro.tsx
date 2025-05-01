@@ -1,5 +1,11 @@
-import Taro from '@tarojs/taro'
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+} from 'react'
 import {
   Input as TaroInput,
   ITouchEvent,
@@ -28,6 +34,7 @@ const defaultProps = {
   right: '',
   rightIn: '',
   leftIn: <Search />,
+  tag: false,
 } as TaroSearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<TaroSearchBarProps> &
@@ -57,6 +64,7 @@ export const SearchBar: FunctionComponent<
     left,
     leftIn,
     rightIn,
+    tag,
     onChange,
     onFocus,
     onBlur,
@@ -75,47 +83,89 @@ export const SearchBar: FunctionComponent<
     finalValue: '',
   })
 
-  const forceFocus = () => {
-    const searchSelf: HTMLInputElement | null = searchInputRef.current
-    searchSelf && searchSelf.focus()
-  }
-  const onInput = (event: BaseEventOrig<InputProps.inputEventDetail>) => {
-    const eventValue = event?.detail?.value
-    if (value === eventValue) return
-    onChange && onChange(eventValue, event)
-    setValue(eventValue)
-    eventValue === '' && forceFocus()
-  }
-  const handleFocus = (
-    event: BaseEventOrig<InputProps.inputForceEventDetail>
-  ) => {
-    onFocus && onFocus(event?.detail?.value, event)
-  }
+  const [innerTag, setInnerTag] = useState(tag)
+
+  const forceFocus = useCallback(() => {
+    searchInputRef.current?.focus()
+  }, [])
+
+  const onInput = useCallback(
+    (event: BaseEventOrig<InputProps.inputEventDetail>) => {
+      const eventValue = event.detail?.value
+      if (value === eventValue) return
+      onChange && onChange(eventValue, event)
+      setValue(eventValue)
+      eventValue === '' && forceFocus()
+    },
+    [onChange, setValue, forceFocus, value]
+  )
+
+  const handleFocus = useCallback(
+    (event: BaseEventOrig<InputProps.inputForceEventDetail>) => {
+      onFocus && onFocus(event.detail?.value, event)
+      setInnerTag(false)
+    },
+    [onFocus]
+  )
+
   const handleBlur = (
     event: BaseEventOrig<InputProps.inputValueEventDetail>
   ) => {
-    const searchSelf: HTMLInputElement | null = searchInputRef.current
-    searchSelf && searchSelf.blur()
-    onBlur && onBlur(event?.detail?.value, event)
+    searchInputRef.current?.blur()
+    onBlur && onBlur(event.detail?.value, event)
+    setTimeout(() => {
+      value && setInnerTag(tag)
+    }, 100)
   }
 
+  const clearaVal = useCallback(
+    (event: ITouchEvent) => {
+      if (disabled || readOnly) return
+      setValue('')
+      onChange && onChange('')
+      onClear && onClear(event)
+      forceFocus()
+    },
+    [disabled, readOnly, onChange, onClear, setValue]
+  )
+
+  const cls = useMemo(
+    () =>
+      classNames(
+        classPrefix,
+        {
+          [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-focus`]: left || backable,
+        },
+        className
+      ),
+    [disabled, backable, left, className]
+  )
+
   useEffect(() => {
-    if (Taro.getEnv() === 'WEB') {
-      autoFocus && forceFocus()
+    if (autoFocus) {
+      forceFocus()
     }
-  }, [autoFocus])
+    if (tag && !innerTag) {
+      forceFocus()
+    }
+  }, [autoFocus, forceFocus, innerTag])
+
   const renderField = () => {
     const inputCls = classNames(`${classPrefix}-input`)
     return (
       <TaroInput
         className={inputCls}
         ref={searchInputRef}
-        style={style}
-        value={(value || '').toString()}
+        style={{
+          ...style,
+          ...{ color: `${innerTag ? 'transparent' : '#333'}` },
+        }}
+        value={value}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled || readOnly}
         maxlength={maxLength}
-        autoFocus={autoFocus}
+        focus={autoFocus}
         onInput={onInput}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -125,10 +175,18 @@ export const SearchBar: FunctionComponent<
     )
   }
 
-  const renderDefaultValue = () => {
-    const list = defaultValue.split(',')
+  const renderValueByTags = useCallback(() => {
+    if (!innerTag) return null
+    if (!value) {
+      setTimeout(() => {
+        forceFocus()
+      }, 0)
+      return null
+    }
+    const list = value.split(',')
+    if (!list) return null
     return (
-      <View className="nut-searchbar-values">
+      <View className={`nut-searchbar-values `}>
         {list.map((item, index) => (
           <View
             key={`def-${index}`}
@@ -141,24 +199,27 @@ export const SearchBar: FunctionComponent<
         ))}
       </View>
     )
-  }
-  const renderLeftIn = () => {
+  }, [value, onItemClick, innerTag])
+
+  const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
     return (
       <View className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
       </View>
     )
-  }
-  const renderLeft = () => {
+  }, [leftIn])
+
+  const renderLeft = useCallback(() => {
     if (!backable && !left) return null
     return (
       <View className={`${classPrefix}-left`}>
         {backable ? <ArrowLeft /> : left}
       </View>
     )
-  }
-  const renderRightIn = () => {
+  }, [backable, left])
+
+  const renderRightIn = useCallback(() => {
     if (!rightIn) return null
     return (
       <>
@@ -171,40 +232,32 @@ export const SearchBar: FunctionComponent<
         )}
       </>
     )
-  }
-  const renderRight = () => {
+  }, [rightIn])
+
+  const renderRight = useCallback(() => {
     if (!right) return null
     return <View className={`${classPrefix}-right`}>{right}</View>
-  }
-  const renderClear = () => {
+  }, [right])
+
+  const renderClear = useCallback(() => {
     return (
       <View
         className={`${classPrefix}-clear ${classPrefix}-icon`}
-        onClick={(e: any) => clearaVal(e)}
+        style={{
+          visibility: `${!innerTag && value && clearable ? 'visible' : 'hidden'}`,
+        }}
+        onClick={clearaVal}
+        aria-label="清除"
       >
         <MaskClose />
       </View>
     )
-  }
-  const clearaVal = (event: ITouchEvent) => {
-    if (disabled || readOnly) return
-    setValue('')
-    forceFocus()
-    onChange && onChange('')
-    onClear && onClear(event)
-  }
+  }, [value, clearable, clearaVal, innerTag])
+
   const onConfirm = () => {
     onSearch && onSearch(value as string)
   }
 
-  const cls = classNames(
-    classPrefix,
-    {
-      [`${classPrefix}-disabled`]: disabled,
-      [`${classPrefix}-focus`]: left || backable,
-    },
-    className
-  )
   return (
     <View className={cls} style={style}>
       {renderLeft()}
@@ -214,11 +267,9 @@ export const SearchBar: FunctionComponent<
         })}
       >
         {renderLeftIn()}
-        <View className="nut-searchbar-input-box">
-          {renderField()}
-          {defaultValue && renderDefaultValue()}
-        </View>
-        {!defaultValue && clearable && value && renderClear()}
+        <View className="nut-searchbar-input-box">{renderField()}</View>
+        {renderValueByTags()}
+        {renderClear()}
         {renderRightIn()}
       </View>
       {renderRight()}

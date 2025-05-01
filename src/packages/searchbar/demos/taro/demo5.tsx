@@ -14,24 +14,22 @@ const Demo5 = () => {
       <SearchBar
         left={
           <>
-            <ArrowLeft size={20} />
-            <Close size={20} />
+            <ArrowLeft />
+            <Close />
           </>
         }
         right={
           <>
             <Star
-              size={20}
               style={{
                 color: 'var(--nutui-color-primary)',
               }}
             />
-            <More size={20} />
+            <More />
           </>
         }
         rightIn={
           <Photograph
-            size={16}
             onClick={() => {
               console.log('Photograph right in')
             }}

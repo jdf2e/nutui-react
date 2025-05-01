@@ -1,5 +1,12 @@
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from 'react'
 import { ArrowLeft, Close, MaskClose, Search } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
@@ -21,6 +28,7 @@ const defaultProps = {
   right: '',
   rightIn: '',
   leftIn: <Search />,
+  tag: false,
 } as WebSearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<WebSearchBarProps> &
@@ -30,7 +38,6 @@ export const SearchBar: FunctionComponent<
     >
 > = (props) => {
   const classPrefix = 'nut-searchbar'
-
   const { locale } = useConfig()
   const searchInputRef = useRef<HTMLInputElement>(null)
   const {
@@ -50,6 +57,7 @@ export const SearchBar: FunctionComponent<
     left,
     leftIn,
     rightIn,
+    tag,
     onChange,
     onFocus,
     onBlur,
@@ -68,30 +76,87 @@ export const SearchBar: FunctionComponent<
     finalValue: '',
   })
 
-  const forceFocus = () => {
-    const searchSelf: HTMLInputElement | null = searchInputRef.current
-    searchSelf && searchSelf.focus()
-  }
+  const [innerTag, setInnerTag] = useState(tag)
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onChange && onChange(value, event)
-    setValue(value)
-  }
+  const forceFocus = useCallback(() => {
+    searchInputRef.current?.focus()
+  }, [])
 
-  const handleFocus = (event: FocusEvent<HTMLInputElement>) => {
-    onFocus && onFocus(event?.target?.value, event)
-  }
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target
+      onChange && onChange(value, event)
+      setValue(value)
+    },
+    [onChange, setValue]
+  )
 
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
-    const searchSelf: HTMLInputElement | null = searchInputRef.current
-    searchSelf && searchSelf.blur()
-    onBlur && onBlur(event?.target?.value, event)
-  }
+  const handleInput = useCallback(
+    (event: MouseEvent<HTMLInputElement>) => {
+      onInputClick?.(event)
+    },
+    [onInputClick]
+  )
 
+  const handleFocus = useCallback(
+    (event: FocusEvent<HTMLInputElement>) => {
+      onFocus && onFocus(event.target?.value, event)
+      setInnerTag(false)
+    },
+    [onFocus]
+  )
+
+  const handleBlur = useCallback(
+    (event: FocusEvent<HTMLInputElement>) => {
+      searchInputRef.current?.blur()
+      onBlur && onBlur(event.target?.value, event)
+      setTimeout(() => {
+        setInnerTag(tag)
+      }, 150)
+    },
+    [onBlur, tag]
+  )
+  const clearaVal = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (disabled || readOnly) return
+      setValue('')
+      forceFocus()
+      onChange && onChange('')
+      onClear && onClear(event)
+    },
+    [disabled, readOnly, onChange, onClear, setValue]
+  )
+
+  const onKeydown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        const event = e.nativeEvent
+        if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+          event.preventDefault()
+        }
+        onSearch && onSearch(value as string)
+      }
+    },
+    [onSearch, value]
+  )
+
+  const cls = useMemo(
+    () =>
+      classNames(
+        classPrefix,
+        {
+          [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-focus`]: left || backable,
+        },
+        className
+      ),
+    [disabled, backable, left, className]
+  )
   useEffect(() => {
-    autoFocus && forceFocus()
-  }, [autoFocus])
+    if (autoFocus) {
+      forceFocus()
+    }
+  }, [autoFocus, forceFocus, value])
 
   const renderField = () => {
     const inputCls = classNames(`${classPrefix}-input`)
@@ -108,20 +173,27 @@ export const SearchBar: FunctionComponent<
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onClick={onInputClick}
+        onClick={handleInput}
       />
     )
   }
 
-  const renderDefaultValue = () => {
-    const list = defaultValue.split(',')
+  const renderValueByTags = useCallback(() => {
+    if (!value) {
+      setTimeout(() => {
+        forceFocus()
+      }, 0)
+      return null
+    }
+    const list = value.split(',')
+    if (!list) return null
     return (
       <div className="nut-searchbar-values">
         {list.map((item, index) => (
           <div
             key={`def-${index}`}
             className="nut-searchbar-value"
-            onClick={() => onItemClick?.(item)}
+            onClick={(e) => onItemClick?.(item, e)}
           >
             {item}
             <Close />
@@ -129,26 +201,27 @@ export const SearchBar: FunctionComponent<
         ))}
       </div>
     )
-  }
+  }, [value, onItemClick])
 
-  const renderLeftIn = () => {
+  const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
     return (
       <div className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
       </div>
     )
-  }
-  const renderLeft = () => {
+  }, [leftIn])
+
+  const renderLeft = useCallback(() => {
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}-left`}>
         {backable ? <ArrowLeft /> : left}
       </div>
     )
-  }
+  }, [backable, left])
 
-  const renderRightIn = () => {
+  const renderRightIn = useCallback(() => {
     if (!rightIn) return null
     return (
       <>
@@ -161,14 +234,15 @@ export const SearchBar: FunctionComponent<
         )}
       </>
     )
-  }
+  }, [rightIn])
 
-  const renderRight = () => {
+  const renderRight = useCallback(() => {
     if (!right) return null
     return <div className={`${classPrefix}-right`}>{right}</div>
-  }
+  }, [right])
 
-  const renderClear = () => {
+  const renderClear = useCallback(() => {
+    if (!value || !clearable) return null
     return (
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
@@ -178,34 +252,7 @@ export const SearchBar: FunctionComponent<
         <MaskClose />
       </div>
     )
-  }
-
-  const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
-    if (disabled || readOnly) return
-    setValue('')
-    onChange && onChange('')
-    onClear && onClear(event)
-    forceFocus()
-  }
-
-  const onKeydown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      const event = e.nativeEvent
-      if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-        event.preventDefault()
-      }
-      onSearch && onSearch(value as string)
-    }
-  }
-
-  const cls = classNames(
-    classPrefix,
-    {
-      [`${classPrefix}-disabled`]: disabled,
-      [`${classPrefix}-focus`]: left || backable,
-    },
-    className
-  )
+  }, [value, clearable, clearaVal])
 
   return (
     <div className={cls} style={style}>
@@ -217,8 +264,7 @@ export const SearchBar: FunctionComponent<
       >
         {renderLeftIn()}
         {renderField()}
-        {defaultValue && renderDefaultValue()}
-        {!defaultValue && clearable && value && renderClear()}
+        {innerTag ? renderValueByTags() : renderClear()}
         {renderRightIn()}
       </div>
       {renderRight()}

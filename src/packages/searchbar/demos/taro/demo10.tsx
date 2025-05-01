@@ -1,36 +1,30 @@
 import React, { useState } from 'react'
-import { SearchBar, Button } from '@nutui/nutui-react-taro'
+import { SearchBar } from '@nutui/nutui-react-taro'
 import { Photograph, Category } from '@nutui/icons-react-taro'
 
 const Demo = () => {
-  const [dvalue, setDvalue] = useState('西红柿,铁皮')
-  const [value, setValue] = useState('西红柿')
-  const [value1, setValue1] = useState('')
+  const [value, setValue] = useState('醋溜土豆丝')
+  const [value1, setValue1] = useState('西红柿,铁皮')
   return (
     <>
       <SearchBar
         backable
         leftIn={null}
-        defaultValue={dvalue}
         value={value1}
-        onItemClick={(value: string) => {
-          console.log('click', value)
-          if (dvalue) {
-            const arr = dvalue.split(',')
-            const newArr = arr.filter((item: string) => item !== value)
-            const newVal = newArr.length > 1 ? newArr.join(',') : newArr[0]
-            setValue1(newVal)
-            setDvalue(newVal)
-          }
+        tag
+        onItemClick={(val: string) => {
+          console.log('click', val)
+          const arr = value1.split(',')
+          const newArr = arr.filter((item: string) => item !== val)
+          const newVal = newArr.length > 1 ? newArr.join(',') : newArr.join('')
+          setValue1(newVal)
         }}
-        onFocus={() => {
-          console.log('focus dvalue', dvalue)
-          if (dvalue) {
-            setValue1(dvalue.split(',').join(''))
-            setDvalue('')
-          }
+        onFocus={(val: string) => {
+          console.log('focus value', val)
+          setValue1(val.split(',').join(''))
         }}
         onChange={(val) => {
+          console.log('onChange', val)
           setValue1(val)
         }}
         rightIn={
@@ -40,14 +34,14 @@ const Demo = () => {
         }
         right={<Category />}
       />
-      <SearchBar
+      {/* <SearchBar
         backable
         leftIn={null}
         value={value}
         onChange={(val) => {
           setValue(val)
         }}
-        autoFocus
+        // autoFocus
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Photograph color="#505259" style={{ marginRight: '12px' }} />
@@ -56,7 +50,7 @@ const Demo = () => {
             </Button>
           </div>
         }
-      />
+      /> */}
     </>
   )
 }
