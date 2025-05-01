@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import React, {
   FunctionComponent,
   useCallback,
@@ -112,8 +113,12 @@ export const SearchBar: FunctionComponent<
       searchInputRef.current?.blur()
       onBlur && onBlur(event.detail?.value, event)
       setTimeout(() => {
-        setInnerTag(tag)
-      }, 100)
+        if (Taro.getEnv() === 'WEB') {
+          setInnerTag(event.target?.value ? tag : false)
+        } else {
+          setInnerTag(tag)
+        }
+      }, 200)
     },
     [onBlur, tag, value]
   )
@@ -122,9 +127,9 @@ export const SearchBar: FunctionComponent<
     (event: ITouchEvent) => {
       if (disabled || readOnly) return
       setValue('')
+      forceFocus()
       onChange && onChange('')
       onClear && onClear(event)
-      forceFocus()
     },
     [disabled, readOnly, onChange, onClear, setValue]
   )
@@ -154,24 +159,47 @@ export const SearchBar: FunctionComponent<
   const renderField = () => {
     const inputCls = classNames(`${classPrefix}-input`)
     return (
-      <TaroInput
-        className={inputCls}
-        ref={searchInputRef}
-        style={{
-          ...style,
-          ...{ color: `${innerTag ? 'transparent' : '#333'}` },
-        }}
-        value={value}
-        placeholder={placeholder || locale.placeholder}
-        disabled={disabled || readOnly}
-        maxlength={maxLength}
-        focus={autoFocus}
-        onInput={handleInput}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onClick={onInputClick}
-        onConfirm={onConfirm}
-      />
+      <>
+        {Taro.getEnv() === 'WEB' ? (
+          <TaroInput
+            className={inputCls}
+            ref={searchInputRef}
+            style={{
+              ...style,
+              ...{ color: `${innerTag ? 'transparent' : '#333'}` },
+            }}
+            value={value}
+            placeholder={placeholder || locale.placeholder}
+            disabled={disabled || readOnly}
+            maxlength={maxLength}
+            autoFocus={autoFocus}
+            onInput={handleInput}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onClick={onInputClick}
+            onConfirm={onConfirm}
+          />
+        ) : (
+          <TaroInput
+            className={inputCls}
+            ref={searchInputRef}
+            style={{
+              ...style,
+              ...{ color: `${innerTag ? 'transparent' : '#333'}` },
+            }}
+            value={value}
+            placeholder={placeholder || locale.placeholder}
+            disabled={disabled || readOnly}
+            maxlength={maxLength}
+            focus={autoFocus}
+            onInput={handleInput}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onClick={onInputClick}
+            onConfirm={onConfirm}
+          />
+        )}
+      </>
     )
   }
 
@@ -186,7 +214,7 @@ export const SearchBar: FunctionComponent<
     const list = value.split(',')
     if (!list) return null
     return (
-      <View className={`nut-searchbar-values `}>
+      <View className="nut-searchbar-values">
         {list.map((item, index) => (
           <View
             key={`def-${index}`}

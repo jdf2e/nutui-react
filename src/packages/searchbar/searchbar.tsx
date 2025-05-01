@@ -156,7 +156,7 @@ export const SearchBar: FunctionComponent<
     if (autoFocus) {
       forceFocus()
     }
-  }, [autoFocus, forceFocus, value])
+  }, [autoFocus, forceFocus])
 
   const renderField = () => {
     const inputCls = classNames(`${classPrefix}-input`)
