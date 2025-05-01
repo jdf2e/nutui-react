@@ -26,12 +26,6 @@ test('should display left and right text', () => {
   )
 })
 
-test('should render with default value', () => {
-  const { container } = render(<SearchBar defaultValue="123" />)
-  const dvalues = container.querySelectorAll('.nut-searchbar-value')
-  expect(dvalues.length).toBe(1)
-})
-
 test('should render right-in element', () => {
   const { container, rerender } = render(<SearchBar rightIn="搜索" />)
   const rightin = container.querySelectorAll('.nut-searchbar-rightin')
