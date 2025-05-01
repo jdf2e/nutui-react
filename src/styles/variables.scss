@@ -1256,8 +1256,8 @@ $steps-process-head-border-color: var(
   $color-border
 ) !default;
 
-$steps-base-icon-width: var(--nutui-steps-base-icon-width, 20px) !default;
-$steps-base-icon-height: var(--nutui-steps-base-icon-height, 20px) !default;
+$steps-base-icon-width: var(--nutui-steps-base-icon-width, 16px) !default;
+$steps-base-icon-height: var(--nutui-steps-base-icon-height, 16px) !default;
 $steps-base-icon-margin-bottom: var(
   --nutui-steps-base-icon-margin-bottom,
   12px
@@ -1306,7 +1306,7 @@ $steps-process-title-font-weight: var(
 ) !default;
 $steps-process-description-color: var(
   --nutui-steps-process-description-color,
-  $color-text
+  $color-primary
 ) !default;
 $steps-finish-icon-bg-color: var(
   --nutui-steps-finish-icon-bg-color,

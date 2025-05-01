@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Steps, Step, Button, Space, Cell } from '@nutui/nutui-react'
 
 const Demo8 = () => {
-  const [val, setVal] = useState(1)
+  const [val, setVal] = useState(2)
   const handleStep = () => {
     const newVal = (val % 5) + 1
     setVal(newVal)

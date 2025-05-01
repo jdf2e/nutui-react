@@ -1,7 +1,6 @@
 .nut-step {
   position: relative;
   display: flex;
-  margin-right: 28px;
 
   &-head {
     position: relative;
@@ -28,16 +27,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $steps-base-icon-width;
-      height: $steps-base-icon-height;
       border-radius: 50%;
       background-color: $steps-wait-icon-bg-color;
       box-sizing: border-box;
       z-index: 1;
 
       .nut-icon {
-        width: 10px;
-        height: 10px;
         color: white;
       }
     }
@@ -53,37 +48,35 @@
     &-dot,
     &-icon,
     &-text {
-      border: 1px solid $steps-base-head-border-color;
+      //  border: 1px solid $steps-base-head-border-color;
     }
   }
 
   &-line {
     position: absolute;
-    top: 0;
-    left: 100%;
     z-index: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: $steps-base-head-height;
-    width: 28px;
-    background-color: $color-border;
-    background-color: #000000;
-
-    &-inner {
-      display: inline-flex;
-      height: $steps-base-line-height;
-      width: $steps-base-line-width;
-      background: $steps-base-line-background;
-    }
   }
 
   &-main {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: $steps-base-head-height;
-    margin-left: 4px;
+  }
+
+  &-line,
+  &-title,
+  &-description {
+    background-color: white;
+  }
+
+  &-title {
+    position: relative;
+    z-index: 1;
   }
 
   &-title {
@@ -102,14 +95,6 @@
     font-size: $steps-base-description-font-size;
     color: $steps-base-description-color;
     overflow: hidden;
-  }
-
-  &:last-child {
-    margin-right: 0;
-
-    .nut-step-line {
-      display: none;
-    }
   }
 
   // 流程状态-当前

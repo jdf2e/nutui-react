@@ -65,6 +65,7 @@ export const Step: FunctionComponent<
         {
           [`${classPrefix}-${currentStatus}`]: true,
           [`${classPrefix}-${type}`]: true,
+          [`${classPrefix}-special`]: description,
         },
         className
       ),
