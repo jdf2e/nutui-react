@@ -15,11 +15,11 @@ const Demo1 = () => {
             <Step value={1} title="选择旧品" />
             <Step value={2} title="下单购买" />
           </Steps>
-          <Steps value={val} status="business">
+          <Steps value={2} status="business">
             <Step value={1} title="选择旧品" />
             <Step value={2} title="下单购买" />
           </Steps>
-          <Steps value={val} status="dynamic">
+          <Steps value={2} status="dynamic">
             <Step value={1} title="选择旧品" />
             <Step value={2} title="下单购买" />
           </Steps>
@@ -32,12 +32,12 @@ const Demo1 = () => {
             <Step value={2} title="下单购买" />
             <Step value={3} title="取旧换新" />
           </Steps>
-          <Steps value={val} status="business">
+          <Steps value={2} status="business">
             <Step value={1} title="选择旧品" />
             <Step value={2} title="下单购买" />
             <Step value={3} title="取旧换新" />
           </Steps>
-          <Steps value={val} status="dynamic">
+          <Steps value={2} status="dynamic">
             <Step value={1} title="选择旧品" />
             <Step value={2} title="下单购买" />
             <Step value={3} title="取旧换新" />

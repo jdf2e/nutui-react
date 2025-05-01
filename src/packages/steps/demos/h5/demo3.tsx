@@ -18,11 +18,11 @@ const Demo3 = () => {
             <Step value={1} title="预约结束" description="03月17日19:59截止" />
             <Step value={2} title="抢购开始" description="03月21日21:59截止" />
           </Steps>
-          <Steps value={val} status="dynamic">
+          <Steps value={2} status="dynamic">
             <Step value={1} title="预约结束" description="03月17日19:59截止" />
             <Step value={2} title="抢购开始" description="03月21日21:59截止" />
           </Steps>
-          <Steps value={val} status="enhanced">
+          <Steps value={2} status="enhanced">
             <Step value={1} title="预约结束" description="03月17日19:59截止" />
             <Step value={2} title="抢购开始" description="03月21日21:59截止" />
           </Steps>
@@ -47,11 +47,10 @@ const Demo3 = () => {
           </Steps>
         </Space>
       </Cell>
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button size="small" type="danger" onClick={() => handleStep()}>
-          下一步
-        </Button>
-      </div>
+
+      <Button size="small" type="danger" onClick={() => handleStep()}>
+        下一步
+      </Button>
     </>
   )
 }
