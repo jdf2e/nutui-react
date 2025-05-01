@@ -91,7 +91,7 @@ export const SearchBar: FunctionComponent<
     [onChange, setValue]
   )
 
-  const handleInput = useCallback(
+  const handleInputClick = useCallback(
     (event: MouseEvent<HTMLInputElement>) => {
       onInputClick?.(event)
     },
@@ -111,10 +111,10 @@ export const SearchBar: FunctionComponent<
       searchInputRef.current?.blur()
       onBlur && onBlur(event.target?.value, event)
       setTimeout(() => {
-        setInnerTag(tag)
+        setInnerTag(event.target?.value ? tag : false)
       }, 150)
     },
-    [onBlur, tag]
+    [onBlur, tag, value]
   )
   const clearaVal = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
@@ -173,7 +173,7 @@ export const SearchBar: FunctionComponent<
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onClick={handleInput}
+        onClick={handleInputClick}
       />
     )
   }

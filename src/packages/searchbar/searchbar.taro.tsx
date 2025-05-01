@@ -1,9 +1,9 @@
 import React, {
   FunctionComponent,
+  useCallback,
   useEffect,
   useRef,
   useState,
-  useCallback,
   useMemo,
 } from 'react'
 import {
@@ -44,7 +44,6 @@ export const SearchBar: FunctionComponent<
     >
 > = (props) => {
   const classPrefix = 'nut-searchbar'
-
   const { locale } = useConfig()
   const searchInputRef = useRef<HTMLInputElement>(null)
   const {
@@ -89,7 +88,7 @@ export const SearchBar: FunctionComponent<
     searchInputRef.current?.focus()
   }, [])
 
-  const onInput = useCallback(
+  const handleInput = useCallback(
     (event: BaseEventOrig<InputProps.inputEventDetail>) => {
       const eventValue = event.detail?.value
       if (value === eventValue) return
@@ -108,15 +107,16 @@ export const SearchBar: FunctionComponent<
     [onFocus]
   )
 
-  const handleBlur = (
-    event: BaseEventOrig<InputProps.inputValueEventDetail>
-  ) => {
-    searchInputRef.current?.blur()
-    onBlur && onBlur(event.detail?.value, event)
-    setTimeout(() => {
-      value && setInnerTag(tag)
-    }, 100)
-  }
+  const handleBlur = useCallback(
+    (event: BaseEventOrig<InputProps.inputValueEventDetail>) => {
+      searchInputRef.current?.blur()
+      onBlur && onBlur(event.detail?.value, event)
+      setTimeout(() => {
+        setInnerTag(tag)
+      }, 100)
+    },
+    [onBlur, tag, value]
+  )
 
   const clearaVal = useCallback(
     (event: ITouchEvent) => {
@@ -166,7 +166,7 @@ export const SearchBar: FunctionComponent<
         disabled={disabled || readOnly}
         maxlength={maxLength}
         focus={autoFocus}
-        onInput={onInput}
+        onInput={handleInput}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onClick={onInputClick}
@@ -191,7 +191,7 @@ export const SearchBar: FunctionComponent<
           <View
             key={`def-${index}`}
             className="nut-searchbar-value"
-            onClick={() => onItemClick?.(item)}
+            onClick={(e) => onItemClick?.(item, e)}
           >
             {item}
             <Close />
