@@ -1273,7 +1273,7 @@ $steps-process-head-border-color: var(
   $color-border
 ) !default;
 $steps-process-head-background-color: var(
-  --nutui-steps-base-head-background-color,
+  --nutui-steps-process-head-background-color,
   $color-primary
 ) !default;
 $steps-process-color: var(--nutui-steps-process-color, $white) !default;
@@ -1310,7 +1310,7 @@ $steps-business-description-color: var(
   #994d00
 ) !default;
 $steps-business-head-text-color: var(
-  --nutui-steps-business-head-background-color,
+  --nutui-steps-business-head-text-color,
   #994d00
 ) !default;
 $steps-business-head-dot-background-color: var(
