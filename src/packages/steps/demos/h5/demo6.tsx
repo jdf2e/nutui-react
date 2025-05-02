@@ -1,29 +1,16 @@
 import React from 'react'
-import { ConfigProvider, Cell } from '@nutui/nutui-react'
-
-const customTheme = {
-  nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiColorPrimaryStop2: '#fff',
-  nutuiStepsDotIconBorder: '0',
-  nutuiStepsBaseIconWidth: '6px',
-  nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `#ddd`,
-  nutuiStepsFinishIconBgColor: 'black',
-  nutuiStepsFinishIconColor: 'black',
-  nutuiStepsProcessIconBgColor: 'white',
-  nutuiStepsWaitIconBgColor: '#ddd',
-  nutuiStepsBaseLineWidth: '45px',
-  nutuiStepsBaseLineHeight: '1px',
-  nutuiStepsFinishLineBackground: `black`,
-}
+import { Steps, Step, Cell } from '@nutui/nutui-react'
+import { Transit } from '@nutui/icons-react'
 
 const Demo6 = () => {
   return (
-    <>
-      <ConfigProvider theme={customTheme}>
-        <Cell />
-      </ConfigProvider>
-    </>
+    <Cell>
+      <Steps value={2} type="icon" layout="double" status="enhanced">
+        <Step value={1} title="已下单" type="dot" />
+        <Step value={2} title="进行中" icon={<Transit />} />
+        <Step value={3} title="已完成" icon={<Transit />} />
+      </Steps>
+    </Cell>
   )
 }
 export default Demo6

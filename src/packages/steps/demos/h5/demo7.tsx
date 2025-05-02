@@ -3,6 +3,28 @@ import { Steps, Step, Cell, Space, Button } from '@nutui/nutui-react'
 import { Location } from '@nutui/icons-react'
 
 const Demo7 = () => {
+  const data = [
+    {
+      value: 1,
+      title: '美国',
+      icon: <Location />,
+    },
+    {
+      value: 2,
+      title: '保税仓',
+      icon: <Location />,
+    },
+    {
+      value: 3,
+      title: '北京市',
+      icon: <Location />,
+    },
+    {
+      value: 4,
+      title: '分拣中心',
+      icon: <Location />,
+    },
+  ]
   const [val, setVal] = useState(2)
   const handleStep = () => {
     const newVal = (val % 4) + 1
@@ -13,25 +35,44 @@ const Demo7 = () => {
       <Cell>
         <Space direction="vertical">
           <Steps value={2} type="icon">
-            <Step value={1} title="澳大利亚" icon={<Location />} />
-            <Step value={2} title="京东厦门保税仓" icon={<Location />} />
+            {data.slice(0, 2).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
           </Steps>
-          <Steps value={2} type="icon" status="dynamic">
-            <Step value={1} title="澳大利亚" icon={<Location />} />
-            <Step value={2} title="京东厦门保税仓" icon={<Location />} />
-            <Step value={3} title="北京市" icon={<Location />} />
+          <Steps value={2} type="icon" status="business">
+            {data.slice(0, 3).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
           </Steps>
           <Steps value={val} type="icon" status="dynamic">
-            <Step value={1} title="澳大利亚" icon={<Location />} />
-            <Step value={2} title="保税仓" icon={<Location />} />
-            <Step value={3} title="厦门市" icon={<Location />} />
-            <Step value={4} title="北京市" icon={<Location />} />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
           </Steps>
           <Steps value={val} type="icon" status="enhanced">
-            <Step value={1} title="澳大利亚" icon={<Location />} />
-            <Step value={2} title="保税仓" icon={<Location />} />
-            <Step value={3} title="厦门市" icon={<Location />} />
-            <Step value={4} title="北京市" icon={<Location />} />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
           </Steps>
         </Space>
       </Cell>

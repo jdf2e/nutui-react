@@ -2,6 +2,23 @@ import React, { useState } from 'react'
 import { Steps, Step, Button, Space, Cell } from '@nutui/nutui-react'
 
 const Demo3 = () => {
+  const data = [
+    {
+      value: 1,
+      title: '预约结束',
+      description: '03月17日19:59截止',
+    },
+    {
+      value: 2,
+      title: '抢购开始',
+      description: '03月21日21:59截止',
+    },
+    {
+      value: 3,
+      title: '抢购结束',
+      description: '03月28日21:59截止',
+    },
+  ]
   const [val, setVal] = useState(2)
   const handleStep = () => {
     const newVal = (val % 3) + 1
@@ -15,35 +32,78 @@ const Demo3 = () => {
       <Cell>
         <Space direction="vertical">
           <Steps value={2} status="default">
-            <Step value={1} title="预约结束" description="03月17日19:59截止" />
-            <Step value={2} title="抢购开始" description="03月21日21:59截止" />
+            {data.slice(0, 2).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+          </Steps>
+          <Steps value={2} status="business">
+            {data.slice(0, 2).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Steps>
           <Steps value={2} status="dynamic">
-            <Step value={1} title="预约结束" description="03月17日19:59截止" />
-            <Step value={2} title="抢购开始" description="03月21日21:59截止" />
-          </Steps>
-          <Steps value={2} status="enhanced">
-            <Step value={1} title="预约结束" description="03月17日19:59截止" />
-            <Step value={2} title="抢购开始" description="03月21日21:59截止" />
+            {data.slice(0, 2).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Steps>
         </Space>
       </Cell>
       <Cell>
         <Space direction="vertical">
           <Steps value={val} status="default">
-            <Step value={1} title="节点内容" description="03月17日19:59截止" />
-            <Step value={2} title="节点内容" description="03月17日21:59截止" />
-            <Step value={3} title="节点内容" description="03月17日21:59截止" />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+          </Steps>
+          <Steps value={val} status="business">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Steps>
           <Steps value={val} status="dynamic">
-            <Step value={1} title="节点内容" description="03月17日19:59截止" />
-            <Step value={2} title="节点内容" description="03月17日21:59截止" />
-            <Step value={3} title="节点内容" description="03月17日21:59截止" />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Steps>
           <Steps value={val} status="enhanced" onStepClick={handleClickStep}>
-            <Step value={1} title="节点内容" description="03月17日19:59截止" />
-            <Step value={2} title="节点内容" description="03月17日21:59截止" />
-            <Step value={3} title="节点内容" description="03月17日21:59截止" />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </Steps>
         </Space>
       </Cell>

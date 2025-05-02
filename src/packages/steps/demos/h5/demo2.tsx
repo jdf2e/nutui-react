@@ -1,8 +1,30 @@
 import React, { useState } from 'react'
 import { Steps, Step, Button, Space, Cell } from '@nutui/nutui-react'
-import { Check, Location } from '@nutui/icons-react'
+import { Check } from '@nutui/icons-react'
 
 const Demo2 = () => {
+  const data = [
+    {
+      value: 1,
+      title: '提交订单',
+    },
+    {
+      value: 2,
+      title: '处理中',
+    },
+    {
+      value: 3,
+      title: '申请退款',
+    },
+    {
+      value: 4,
+      title: '审批中',
+    },
+    {
+      value: 5,
+      title: '已退款',
+    },
+  ]
   const [val, setVal] = useState(2)
   const handleStep = () => {
     const newVal = (val % 5) + 1
@@ -12,23 +34,20 @@ const Demo2 = () => {
     <Space direction="vertical">
       <Cell>
         <Space direction="vertical" style={{ width: '100%' }}>
-          <Steps value={2} status="default" type="dot" layout="double">
-            <Step value={1} title="申请退款" />
-            <Step value={2} title="财务审批" />
-            <Step value={3} title="完成退款" />
+          <Steps value={2} status="business" type="dot" layout="double">
+            {data.slice(0, 3).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
           <Steps value={2} status="dynamic" type="dot" layout="double">
-            <Step value={1} title="申请退款" />
-            <Step value={2} title="处理中" />
-            <Step value={3} title="财务审批" />
-            <Step value={4} title="已退款" />
+            {data.slice(0, 4).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
           <Steps value={val} status="enhanced" type="dot" layout="double">
-            <Step value={1} title="申请退款" />
-            <Step value={2} title="处理中" />
-            <Step value={3} title="财务审批" />
-            <Step value={4} title="审批中" />
-            <Step value={5} title="已退款" />
+            {data.map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
         </Space>
       </Cell>
@@ -36,14 +55,14 @@ const Demo2 = () => {
         <Space direction="vertical" style={{ width: '100%' }}>
           <Steps
             value={2}
-            status="dynamic"
+            status="business"
             type="icon"
             layout="double"
-            icon={<Location />}
+            icon={<Check />}
           >
-            <Step value={1} title="澳大利亚" />
-            <Step value={2} title="京东厦门保税仓" />
-            <Step value={4} title="北京市" />
+            {data.slice(0, 3).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
           <Steps
             value={2}
@@ -52,40 +71,39 @@ const Demo2 = () => {
             layout="double"
             icon={<Check />}
           >
-            <Step value={1} title="订单提交" />
-            <Step value={2} title="处理中" />
-            <Step value={3} title="订单完成" />
-            <Step value={3} title="开票成功" />
+            {data.slice(0, 4).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
 
           <Steps value={val} status="enhanced" type="icon" layout="double">
-            <Step value={1} title="订单提交" icon={<Location />} />
-            <Step value={2} title="处理中" icon={<Location />} />
-            <Step value={3} title="已出库" icon={<Location />} />
-            <Step value={4} title="已送达" icon={<Location />} />
-            <Step value={5} title="开票成功" icon={<Location />} />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={<Check />}
+              />
+            ))}
           </Steps>
         </Space>
       </Cell>
       <Cell>
         <Space direction="vertical" style={{ width: '100%' }}>
-          <Steps value={2} status="enhanced" layout="double">
-            <Step value={1} title="订单提交" />
-            <Step value={2} title="订单完成" />
-            <Step value={3} title="开票成功" />
+          <Steps value={2} status="business" layout="double">
+            {data.slice(0, 3).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
-          <Steps value={2} status="dynamic" layout="double">
-            <Step value={1} title="订单提交" />
-            <Step value={2} title="处理中" />
-            <Step value={3} title="已出库" />
-            <Step value={4} title="已送达" />
+          <Steps value={2} status="enhanced" layout="double">
+            {data.slice(0, 4).map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
           <Steps value={val} status="enhanced" layout="double">
-            <Step value={1} title="订单提交" icon={<Location />} />
-            <Step value={2} title="处理中" icon={<Location />} />
-            <Step value={3} title="已出库" icon={<Location />} />
-            <Step value={4} title="已送达" icon={<Location />} />
-            <Step value={5} title="开票成功" icon={<Location />} />
+            {data.map((item, index) => (
+              <Step key={index} value={item.value} title={item.title} />
+            ))}
           </Steps>
         </Space>
       </Cell>

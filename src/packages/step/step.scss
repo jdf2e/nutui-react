@@ -2,6 +2,12 @@
   position: relative;
   display: flex;
 
+  &:last-child {
+    .nut-step-line {
+      display: none;
+    }
+  }
+
   &-head {
     position: relative;
     display: flex;
@@ -58,6 +64,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &-inner {
+      display: flex;
+      flex: 1;
+      height: $steps-base-line-height;
+      background: $steps-base-line-background;
+    }
   }
 
   &-main {
@@ -127,6 +140,33 @@
     .nut-step-head-icon {
       .nut-icon {
         color: $color-text-help;
+      }
+    }
+  }
+
+  // 强化业务属性展示
+  &.nut-step-business {
+    .nut-step-head-text {
+      color: #994d00;
+    }
+
+    .nut-step-title,
+    .nut-step-description {
+      color: #994d00;
+    }
+
+    .nut-step-head-dot {
+      background-color: #994d00;
+    }
+
+    .nut-step-head-icon,
+    .nut-step-head-text {
+      background-color: #fff4e8;
+    }
+
+    .nut-step-head-icon {
+      .nut-icon {
+        color: #994d00;
       }
     }
   }

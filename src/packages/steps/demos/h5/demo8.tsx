@@ -2,6 +2,28 @@ import React, { useState } from 'react'
 import { Steps, Step, Button, Space, Cell } from '@nutui/nutui-react'
 
 const Demo8 = () => {
+  const data = [
+    {
+      value: 1,
+      description: '预约',
+    },
+    {
+      value: 2,
+      description: '购买下单',
+    },
+    {
+      value: 3,
+      description: '购买下单',
+    },
+    {
+      value: 4,
+      description: '服务屡约',
+    },
+    {
+      value: 5,
+      description: '完成',
+    },
+  ]
   const [val, setVal] = useState(2)
   const handleStep = () => {
     const newVal = (val % 5) + 1
@@ -11,21 +33,36 @@ const Demo8 = () => {
     <>
       <Space justify="between">
         <Cell>
+          <Steps direction="vertical" value={val} type="dot" status="business">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                description={item.description}
+              />
+            ))}
+          </Steps>
+        </Cell>
+        <Cell>
           <Steps direction="vertical" value={val} type="dot" status="dynamic">
-            <Step value={1} description="预约" />
-            <Step value={2} description="购买下单" />
-            <Step value={3} description="购买下单" />
-            <Step value={4} description="服务屡约" />
-            <Step value={5} description="完成" />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                description={item.description}
+              />
+            ))}
           </Steps>
         </Cell>
         <Cell>
           <Steps direction="vertical" value={val} type="dot" status="enhanced">
-            <Step value={1} description="预约" />
-            <Step value={2} description="购买下单" />
-            <Step value={3} description="购买下单" />
-            <Step value={4} description="服务屡约" />
-            <Step value={5} description="完成" />
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                description={item.description}
+              />
+            ))}
           </Steps>
         </Cell>
       </Space>
