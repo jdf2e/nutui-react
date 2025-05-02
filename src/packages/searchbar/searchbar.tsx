@@ -101,21 +101,33 @@ export const SearchBar: FunctionComponent<
   const handleFocus = useCallback(
     (event: FocusEvent<HTMLInputElement>) => {
       onFocus && onFocus(event.target?.value, event)
-      setInnerTag(false)
+      if (tag) setInnerTag(false)
     },
-    [onFocus]
+    [onFocus, tag]
   )
+
+  const [blurTimer, setBlurTimer] = useState<NodeJS.Timeout | null>(null)
 
   const handleBlur = useCallback(
     (event: FocusEvent<HTMLInputElement>) => {
       searchInputRef.current?.blur()
       onBlur && onBlur(event.target?.value, event)
-      setTimeout(() => {
-        setInnerTag(event.target?.value ? tag : false)
-      }, 150)
+      if (tag) {
+        const timer = setTimeout(() => {
+          setInnerTag(event.target?.value ? tag : false)
+        }, 150)
+        setBlurTimer(timer)
+      }
     },
-    [onBlur, tag, value]
+    [onBlur, tag]
   )
+
+  useEffect(() => {
+    return () => {
+      if (blurTimer) clearTimeout(blurTimer)
+    }
+  }, [blurTimer])
+
   const clearaVal = useCallback(
     (event: MouseEvent<HTMLDivElement>) => {
       if (disabled || readOnly) return
@@ -124,7 +136,7 @@ export const SearchBar: FunctionComponent<
       onChange && onChange('')
       onClear && onClear(event)
     },
-    [disabled, readOnly, onChange, onClear, setValue]
+    [disabled, readOnly, onChange, onClear, setValue, forceFocus]
   )
 
   const onKeydown = useCallback(

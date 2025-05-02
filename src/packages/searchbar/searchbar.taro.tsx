@@ -103,25 +103,36 @@ export const SearchBar: FunctionComponent<
   const handleFocus = useCallback(
     (event: BaseEventOrig<InputProps.inputForceEventDetail>) => {
       onFocus && onFocus(event.detail?.value, event)
-      setInnerTag(false)
+      if (tag) setInnerTag(false)
     },
     [onFocus]
   )
+
+  const [blurTimer, setBlurTimer] = useState<NodeJS.Timeout | null>(null)
 
   const handleBlur = useCallback(
     (event: BaseEventOrig<InputProps.inputValueEventDetail> | any) => {
       searchInputRef.current?.blur()
       onBlur && onBlur(event.detail?.value, event)
-      setTimeout(() => {
-        if (Taro.getEnv() === 'WEB') {
-          setInnerTag(event.target?.value ? tag : false)
-        } else {
-          setInnerTag(tag)
-        }
-      }, 200)
+      if (tag) {
+        const timer = setTimeout(() => {
+          if (Taro.getEnv() === 'WEB') {
+            setInnerTag(event.target?.value ? tag : false)
+          } else {
+            setInnerTag(tag)
+          }
+        }, 200)
+        setBlurTimer(timer)
+      }
     },
     [onBlur, tag, value]
   )
+
+  useEffect(() => {
+    return () => {
+      if (blurTimer) clearTimeout(blurTimer)
+    }
+  }, [blurTimer])
 
   const clearaVal = useCallback(
     (event: ITouchEvent) => {

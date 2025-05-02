@@ -71,14 +71,20 @@
   }
 
   &-clear {
-    width: 20px;
-    height: 20px;
     &.nut-searchbar-icon {
+      position: relative;
       .nut-icon {
         width: 12px;
         height: 12px;
         color: var(--nutui-black-5);
         margin-right: $searchbar-inner-gap;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 200%;
+        left: -20%;
       }
     }
   }

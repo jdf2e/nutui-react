@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar } from '@nutui/nutui-react-taro'
+import { SearchBar, Button } from '@nutui/nutui-react-taro'
 import { Photograph, Category } from '@nutui/icons-react-taro'
 
 const Demo = () => {
@@ -34,7 +34,7 @@ const Demo = () => {
         }
         right={<Category />}
       />
-      {/* <SearchBar
+      <SearchBar
         backable
         leftIn={null}
         value={value}
@@ -50,7 +50,7 @@ const Demo = () => {
             </Button>
           </div>
         }
-      /> */}
+      />
     </>
   )
 }
