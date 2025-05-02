@@ -17,26 +17,17 @@
     z-index: 1;
 
     &-text {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: $steps-base-head-text-width;
-      width: $steps-base-head-text-width;
-      border-radius: 50%;
+      height: $steps-base-head-text-size;
+      width: $steps-base-head-text-size;
       background-color: $steps-base-head-background-color;
       color: $steps-base-head-color;
       font-size: $steps-base-head-size;
     }
 
     &-icon {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: $steps-wait-icon-bg-color;
-      box-sizing: border-box;
-      z-index: 1;
+      height: $steps-base-head-icon-size;
+      width: $steps-base-head-icon-size;
+      background-color: $steps-base-head-background-color;
 
       .nut-icon {
         color: white;
@@ -44,17 +35,20 @@
     }
 
     &-dot {
-      display: flex;
-      height: 6px;
-      width: 6px;
-      border-radius: 50%;
-      background-color: $color-text-disabled;
+      height: $steps-base-head-dot-size;
+      width: $steps-base-head-dot-size;
+      background-color: $steps-base-head-dot-background-color;
     }
 
     &-dot,
     &-icon,
     &-text {
-      //  border: 1px solid $steps-base-head-border-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-sizing: border-box;
+      border: $steps-base-head-border;
     }
   }
 
@@ -84,7 +78,7 @@
   &-line,
   &-title,
   &-description {
-    background-color: white;
+    background-color: #ffffff;
   }
 
   &-title {
@@ -112,17 +106,14 @@
 
   // 流程状态-当前
   &.nut-step-process {
-    .nut-step-head-icon {
-      background-color: $steps-process-icon-bg-color;
+    .nut-step-head-icon,
+    .nut-step-head-text,
+    .nut-step-head-dot {
+      background-color: $steps-process-head-background-color;
     }
 
     .nut-step-head-text {
-      background-color: $steps-process-icon-bg-color;
-      color: $steps-process-icon-color;
-    }
-
-    .nut-step-head-dot {
-      background-color: $steps-process-icon-bg-color;
+      color: $steps-process-color;
     }
   }
 
@@ -130,7 +121,7 @@
   &.nut-step-wait {
     .nut-step-head-icon {
       .nut-icon {
-        color: $color-text-help;
+        color: $steps-wait-icon-color;
       }
     }
   }
@@ -139,7 +130,7 @@
   &.nut-step-finish {
     .nut-step-head-icon {
       .nut-icon {
-        color: $color-text-help;
+        color: $steps-finish-icon-color;
       }
     }
   }
@@ -147,26 +138,29 @@
   // 强化业务属性展示
   &.nut-step-business {
     .nut-step-head-text {
-      color: #994d00;
+      color: $steps-business-head-text-color;
     }
 
-    .nut-step-title,
+    .nut-step-title {
+      color: $steps-business-title-color;
+    }
+
     .nut-step-description {
-      color: #994d00;
+      color: $steps-business-description-color;
     }
 
     .nut-step-head-dot {
-      background-color: #994d00;
+      background-color: $steps-business-head-dot-background-color;
     }
 
     .nut-step-head-icon,
     .nut-step-head-text {
-      background-color: #fff4e8;
+      background-color: $steps-business-head-background-color;
     }
 
     .nut-step-head-icon {
       .nut-icon {
-        color: #994d00;
+        color: $steps-business-head-icon-color;
       }
     }
   }

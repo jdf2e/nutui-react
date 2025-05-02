@@ -9,12 +9,9 @@
 
     .nut-step {
       &-head {
-        background-color: white;
+        background-color: $steps-background-color;
 
         &-icon {
-          width: $steps-base-icon-width;
-          height: $steps-base-icon-height;
-
           .nut-icon {
             height: 10px;
             width: 10px;
@@ -23,7 +20,7 @@
           .nut-image {
             width: 100%;
             height: 100%;
-            background-color: #ffffff;
+            background-color: $steps-background-color;
           }
         }
       }
@@ -57,7 +54,7 @@
 
     &-single {
       .nut-step {
-        padding-right: 28px;
+        padding-right: $steps-horizontal-item-padding-right;
 
         &:last-child {
           padding-right: 0;
@@ -67,8 +64,8 @@
           top: 0;
           right: 0;
           height: $steps-base-head-height;
-          width: 28px;
-          padding: 0 8px;
+          width: $steps-horizontal-item-padding-right;
+          padding: $steps-horizontal-item-line-padding;
         }
 
         &-title,
@@ -77,7 +74,7 @@
         }
 
         &-special {
-          padding-right: 22px;
+          padding-right: $steps-horizontal-item-special-padding-right;
 
           .nut-step-line {
             width: 100%;
@@ -92,7 +89,7 @@
 
       &.nut-steps-horizontal-count-3 {
         .nut-step-special {
-          padding-right: 9px;
+          padding-right: $steps-horizontal-item-special-3-padding-right;
         }
       }
     }
@@ -127,14 +124,14 @@
           &-dot-wrap,
           &-icon-wrap,
           &-text-wrap {
-            background-color: white;
-            padding: 0 8px;
+            background-color: $steps-background-color;
+            padding: $steps-horizontal-item-line-padding;
           }
         }
 
         &-head-icon {
-          height: 20px;
-          width: 20px;
+          height: $steps-double-head-icon-size;
+          width: $steps-double-head-icon-size;
 
           .nut-icon {
             height: 12px;
@@ -153,7 +150,7 @@
         .nut-step {
           &-head,
           &-line {
-            height: 20px;
+            height: $steps-double-head-icon-size;
           }
         }
       }
@@ -162,7 +159,7 @@
         .nut-step {
           &-head,
           &-line {
-            height: 6px;
+            height: $steps-base-head-dot-size;
           }
         }
       }
@@ -171,7 +168,7 @@
         .nut-step {
           &-head,
           &-line {
-            height: 12px;
+            height: $steps-base-head-text-size;
           }
         }
       }
@@ -183,7 +180,7 @@
     flex-flow: column;
 
     .nut-step {
-      padding-bottom: 13px;
+      padding-bottom: $steps-vertical-item-padding-bottom;
 
       &:last-child {
         padding-bottom: 0;
@@ -205,8 +202,8 @@
         height: 18px;
 
         &-icon {
-          width: 20px;
-          height: 20px;
+          width: $steps-vertical-head-icon-size;
+          height: $steps-vertical-head-icon-size;
 
           .nut-icon {
             height: 12px;
@@ -223,25 +220,25 @@
       &-title {
         display: flex;
         align-items: center;
-        height: 18px;
-        font-size: 16px;
+        height: $steps-vertical-line-height;
+        font-size: $steps-vertical-title-font-size;
         font-weight: 500;
-        margin-bottom: 4px;
+        margin-bottom: $steps-vertical-title-margin-bottom;
       }
 
       &-description {
-        margin: 0 0 1px;
+        margin: $steps-vertical-description-margin;
         height: auto;
-        line-height: 18px;
+        line-height: $steps-vertical-line-height;
         color: $color-text;
-        font-size: 14px;
+        font-size: $steps-vertical-description-font-size;
         box-sizing: border-box;
 
         .description-time {
-          margin-top: 2px;
-          color: #808080;
-          font-size: 12px;
-          line-height: 18px;
+          margin-top: $steps-vertical-description-time-margin-top;
+          color: $steps-vertical-description-time-color;
+          font-size: $steps-vertical-description-time-font-size;
+          line-height: $steps-vertical-line-height;
         }
       }
 
@@ -258,27 +255,27 @@
       }
 
       &-head-dot-wrap {
-        height: 14px;
+        height: calc($steps-base-head-dot-size + 8px);
       }
 
       &-head-icon-wrap {
-        height: 28px;
+        height: calc($steps-vertical-head-icon-size + 8px);
       }
 
       &-head-text-wrap {
-        height: 20px;
+        height: calc($steps-base-head-text-size + 8px);
       }
     }
 
     &-icon {
       .nut-step {
         &-head {
-          width: 21px;
-          min-width: 21px;
+          width: calc($steps-vertical-head-icon-size + 1px);
+          min-width: calc($steps-vertical-head-icon-size + 1px);
         }
 
         &-line {
-          left: 10px;
+          left: calc($steps-vertical-head-icon-size / 2);
         }
       }
     }
@@ -286,11 +283,11 @@
     &-dot {
       .nut-step {
         &-head {
-          width: 7px;
+          width: calc($steps-base-head-dot-size + 1px);
         }
 
         &-line {
-          left: 3px;
+          left: calc($steps-base-head-dot-size / 2);
         }
       }
     }
@@ -298,12 +295,12 @@
     &-text {
       .nut-step {
         &-head {
-          width: 13px;
-          min-width: 13px;
+          width: calc($steps-base-head-text-size + 1px);
+          min-width: calc($steps-base-head-text-size + 1px);
         }
 
         &-line {
-          left: 6px;
+          left: calc($steps-base-head-text-size / 2);
         }
       }
     }
@@ -314,19 +311,19 @@
     .nut-step-finish {
       .nut-step-head-icon,
       .nut-step-head-text {
-        background-color: $color-primary-light-pressed;
+        background-color: $steps-enhanced-finish-head-background-color;
 
         .nut-icon {
-          color: $color-primary-stop-1;
+          color: $steps-enhanced-finish-head-icon-color;
         }
       }
 
       .nut-step-head-text {
-        color: $color-primary-stop-1;
+        color: $steps-enhanced-finish-head-text-color;
       }
 
       .nut-step-head-dot {
-        background-color: #ffadbe;
+        background-color: $steps-enhanced-finish-head-dot-background-color;
       }
     }
   }
