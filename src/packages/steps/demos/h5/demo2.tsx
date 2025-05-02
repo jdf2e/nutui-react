@@ -95,7 +95,7 @@ const Demo2 = () => {
               <Step key={index} value={item.value} title={item.title} />
             ))}
           </Steps>
-          <Steps value={2} status="enhanced" layout="double">
+          <Steps value={2} status="dynamic" layout="double">
             {data.slice(0, 4).map((item, index) => (
               <Step key={index} value={item.value} title={item.title} />
             ))}

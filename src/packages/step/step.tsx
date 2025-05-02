@@ -34,7 +34,7 @@ export const Step: FunctionComponent<
     ...props,
   }
 
-  const parent = useContext(DataContext)
+  const parent: any = useContext(DataContext)
   const {
     type: parentType,
     value: parentValue,
@@ -105,13 +105,7 @@ export const Step: FunctionComponent<
   }, [title, description])
 
   return (
-    <div
-      className={classes}
-      {...restProps}
-      onClick={handleClickStep}
-      role="listitem"
-      aria-current={currentStatus === 'process' ? 'step' : undefined}
-    >
+    <div className={classes} {...restProps} onClick={handleClickStep}>
       <div className={`${classPrefix}-head`}>
         <div className={`${classPrefix}-head-${type || parentType}-wrap`}>
           {renderHeadType}
