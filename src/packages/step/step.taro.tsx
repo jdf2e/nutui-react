@@ -76,14 +76,14 @@ export const Step: FunctionComponent<
   const renderHeadType = useMemo(() => {
     switch (type || parentType) {
       case 'text':
-        return <span className={`${classPrefix}-head-text`}>{value}</span>
+        return <View className={`${classPrefix}-head-text`}>{value}</View>
       case 'dot':
-        return <span className={`${classPrefix}-head-dot`} />
+        return <View className={`${classPrefix}-head-dot`} />
       case 'icon':
         return (
-          <span className={`${classPrefix}-head-icon`}>
+          <View className={`${classPrefix}-head-icon`}>
             {icon || parentIcon}
-          </span>
+          </View>
         )
       default:
         return null
@@ -105,7 +105,7 @@ export const Step: FunctionComponent<
   }, [title, description])
 
   return (
-    <View className={classes} {...restProps} onClick={handleClickStep}>
+    <div className={classes} {...restProps} onClick={handleClickStep}>
       <View className={`${classPrefix}-head`}>
         <View className={`${classPrefix}-head-${type || parentType}-wrap`}>
           {renderHeadType}
@@ -115,7 +115,7 @@ export const Step: FunctionComponent<
         <View className={`${classPrefix}-line-inner`} />
       </View>
       {renderContent}
-    </View>
+    </div>
   )
 }
 

@@ -69,6 +69,7 @@
           height: $steps-base-head-height;
           width: $steps-horizontal-item-padding-right;
           padding: $steps-horizontal-item-line-padding;
+          box-sizing: border-box;
         }
 
         &-title,

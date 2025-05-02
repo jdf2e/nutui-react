@@ -57,22 +57,22 @@ const StepsDemo = () => {
         <Demo1 />
 
         <View className="h2">{translated.horizontalTwoLine}</View>
-        <Demo2 />
-
-        <View className="h2">{translated.horizontalIcon}</View>
         <Demo3 />
 
+        <View className="h2">{translated.horizontalIcon}</View>
+        <Demo7 />
+
         <View className="h2">{translated.custom}</View>
-        <Demo4 />
+        <Demo2 />
 
         <View className="h2">{translated.horizontalDotIcon}</View>
-        <Demo5 />
-
-        <View className="h2">{translated.customIcon}</View>
         <Demo6 />
 
         <View className="h2">{translated.customIcon}</View>
-        <Demo7 />
+        <Demo5 />
+
+        <View className="h2">{translated.customIcon}</View>
+        <Demo4 />
 
         <View className="h2">{translated.vertical}</View>
         <Demo8 />
