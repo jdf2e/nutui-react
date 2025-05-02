@@ -47,7 +47,7 @@ export const AvatarCropper: FunctionComponent<
       {locale.cancel}
     </Button>,
     <Button key="reset">{locale.reset}</Button>,
-    <Button key="rotate">{locale.avatarCropper.rotate}</Button>,
+    <Button key="rotate">{locale.avatarCropper?.rotate}</Button>,
     <Button type="success" key="confirm">
       {locale.confirm}
     </Button>,

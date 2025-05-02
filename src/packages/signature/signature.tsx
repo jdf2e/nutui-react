@@ -162,7 +162,7 @@ const InternalSignature: ForwardRefRenderFunction<
             <>{unsupported}</>
           ) : (
             <p className={`${classPrefix}-unsupport`}>
-              {locale.signature.unsupported}
+              {locale.signature?.unsupported}
             </p>
           )}
         </>

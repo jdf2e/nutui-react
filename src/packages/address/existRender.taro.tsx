@@ -110,7 +110,7 @@ export const ExistRender: FunctionComponent<
         </ul>
       </ScrollView>
 
-      {(custom || (custom && locale.address.chooseAnotherAddress)) && (
+      {(custom || (custom && locale.address?.chooseAnotherAddress)) && (
         <View className={`${classPrefix}-footer`} onClick={onClick}>
           <View className={`${classPrefix}-footer-btn`}>{custom}</View>
         </View>

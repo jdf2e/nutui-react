@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const enUS: BaseLang = {
+const enUS: Locales = {
   save: 'Save',
   confirm: 'Confirm',
   cancel: 'Cancel',

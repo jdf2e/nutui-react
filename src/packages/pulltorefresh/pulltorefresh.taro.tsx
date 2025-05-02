@@ -37,10 +37,10 @@ export const PullToRefresh: FunctionComponent<
     ...defaultProps,
     ...p,
     ...{
-      pullingText: p.pullingText || locale.pullToRefresh.pullingText,
-      canReleaseText: p.canReleaseText || locale.pullToRefresh.canReleaseText,
-      refreshingText: p.refreshingText || locale.pullToRefresh.refreshingText,
-      completeText: p.completeText || locale.pullToRefresh.completeText,
+      pullingText: p.pullingText || locale.pullToRefresh?.pullingText,
+      canReleaseText: p.canReleaseText || locale.pullToRefresh?.canReleaseText,
+      refreshingText: p.refreshingText || locale.pullToRefresh?.refreshingText,
+      completeText: p.completeText || locale.pullToRefresh?.completeText,
     },
   }
 

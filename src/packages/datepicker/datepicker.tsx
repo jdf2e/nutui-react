@@ -71,7 +71,14 @@ const InternalPicker: ForwardRefRenderFunction<
   }
 
   const { locale } = useConfig()
-  const lang = locale.datepicker
+  const lang = locale.datepicker || {
+    day: '',
+    year: '',
+    month: '',
+    hour: '',
+    min: '',
+    seconds: '',
+  }
 
   const zhCNType: { [key: string]: string } = {
     day: lang.day,

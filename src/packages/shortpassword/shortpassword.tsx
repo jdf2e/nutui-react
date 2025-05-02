@@ -111,10 +111,10 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     >
       <div className={classNames(classPrefix, className)} style={style}>
         <div className={`${classPrefix}-title`}>
-          {title || locale.shortpassword.title}
+          {title || locale.shortpassword?.title}
         </div>
         <div className={`${classPrefix}-description`}>
-          {description || locale.shortpassword.description}
+          {description || locale.shortpassword?.description}
         </div>
         <div className={`${classPrefix}-input`} onClick={onFocus}>
           <div className={`${classPrefix}-input-site`} />
@@ -142,7 +142,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
             {tips || (
               <>
                 <Tips width={11} height={11} />
-                {locale.shortpassword.tips}
+                {locale.shortpassword?.tips}
               </>
             )}
           </div>

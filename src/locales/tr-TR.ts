@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const trTR: BaseLang = {
+const trTR: Locales = {
   save: 'Kaydet',
   confirm: 'Onayla',
   cancel: 'İptal',

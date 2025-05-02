@@ -117,8 +117,8 @@ export const FixedNav: FunctionComponent<
             <ArrowLeft color="#fff" />
             <View className="text">
               {visible
-                ? activeText || locale.fixednav.activeText
-                : inactiveText || locale.fixednav.inactiveText}
+                ? activeText || locale.fixednav?.activeText
+                : inactiveText || locale.fixednav?.inactiveText}
             </View>
           </>
         )}

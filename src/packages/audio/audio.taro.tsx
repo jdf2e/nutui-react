@@ -73,7 +73,7 @@ export const Audio: FunctionComponent<
   })
   audioCtx.onEnded(() => {
     if (loop) {
-      console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
+      console.warn(locale.audio?.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
       onPlayEnd?.(audioCtx)
     }
@@ -191,7 +191,7 @@ export const Audio: FunctionComponent<
             className="back"
             onClick={handleBack}
           >
-            {locale.audio.back || '快退'}
+            {locale.audio?.back || '快退'}
           </Button>
           <Button
             type="primary"
@@ -200,11 +200,11 @@ export const Audio: FunctionComponent<
             onClick={handleStatusChange}
           >
             {playing
-              ? `${locale.audio.pause || '暂停'}`
-              : `${locale.audio.start || '开始'}`}
+              ? `${locale.audio?.pause || '暂停'}`
+              : `${locale.audio?.start || '开始'}`}
           </Button>
           <Button type="primary" size="small" onClick={handleForward}>
-            {locale.audio.forward || '快进'}
+            {locale.audio?.forward || '快进'}
           </Button>
         </View>
       </>

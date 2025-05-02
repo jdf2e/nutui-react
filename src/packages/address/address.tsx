@@ -129,7 +129,7 @@ export const InternalAddress: ForwardRefRenderFunction<
         <CustomRender
           visible={innerVisible}
           closeable
-          title={title || locale.address.selectRegion}
+          title={title || locale.address?.selectRegion}
           left={renderLeftOnCustomSwitch()}
           defaultValue={defaultValue}
           closeIcon={closeIcon}
@@ -150,7 +150,7 @@ export const InternalAddress: ForwardRefRenderFunction<
           round
           closeable
           closeIcon={closeIcon}
-          title={title || locale.address.selectRegion}
+          title={title || locale.address?.selectRegion}
           onClose={handleClose}
         >
           <div

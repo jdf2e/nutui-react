@@ -87,7 +87,7 @@ export const Pagination: FunctionComponent<
             onClick={() => prevPage()}
           >
             {addColorForHarmony(
-              prev || locale.pagination.prev,
+              prev || locale.pagination?.prev,
               current === 1 ? '#c2c4cc' : '#ff0f23'
             )}
           </View>
@@ -126,7 +126,7 @@ export const Pagination: FunctionComponent<
             onClick={() => nextPage()}
           >
             {addColorForHarmony(
-              next || locale.pagination.next,
+              next || locale.pagination?.next,
               current >= pageCount ? '#c2c4cc' : '#ff0f23'
             )}
           </View>

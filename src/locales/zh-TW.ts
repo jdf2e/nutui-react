@@ -1,6 +1,6 @@
-import { BaseLang } from './base'
+import { Locales } from '@/types'
 
-const zhCN: BaseLang = {
+const zhTW: Locales = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',
@@ -139,4 +139,4 @@ const zhCN: BaseLang = {
     errorCanvasTips: '當前環境不支持Canvas',
   },
 }
-export default zhCN
+export default zhTW

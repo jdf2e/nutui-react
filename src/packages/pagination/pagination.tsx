@@ -84,7 +84,7 @@ export const Pagination: FunctionComponent<
             })}
             onClick={() => prevPage()}
           >
-            {prev || locale.pagination.prev}
+            {prev || locale.pagination?.prev}
           </div>
           {mode === 'multi' && (
             <div className={`${classPrefix}-contain`}>
@@ -120,7 +120,7 @@ export const Pagination: FunctionComponent<
             })}
             onClick={() => nextPage()}
           >
-            {next || locale.pagination.next}
+            {next || locale.pagination?.next}
           </div>
         </>
       )}

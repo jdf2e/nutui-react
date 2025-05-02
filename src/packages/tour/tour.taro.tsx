@@ -199,7 +199,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn"
                                     onClick={() => changeStep('prev')}
                                   >
-                                    {prev || locale.tour.prevStepText}
+                                    {prev || locale.tour?.prevStepText}
                                   </View>
                                 )}
                                 {list.length - 1 === active && (
@@ -207,7 +207,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={(e) => maskClose(e)}
                                   >
-                                    {complete || locale.tour.completeText}
+                                    {complete || locale.tour?.completeText}
                                   </View>
                                 )}
                                 {list.length - 1 !== active && (
@@ -215,7 +215,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={() => changeStep('next')}
                                   >
-                                    {next || locale.tour.nextStepText}
+                                    {next || locale.tour?.nextStepText}
                                   </View>
                                 )}
                               </View>

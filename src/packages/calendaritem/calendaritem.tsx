@@ -128,13 +128,15 @@ export const CalendarItem = React.forwardRef<
     onPageChange,
   } = { ...defaultProps, ...props }
 
-  const weekdays = locale.calendaritem.weekdays
+  const weekdays = locale.calendaritem?.weekdays || []
   const weeks = [
     ...weekdays.slice(firstDayOfWeek, 7),
     ...weekdays.slice(0, firstDayOfWeek),
   ]
 
-  const monthTitle = locale.calendaritem.monthTitle
+  const formatTitle = (year: number, month: number) =>
+    `${year}-${Number(month) < 10 ? `0${Number(month)}` : month}`
+  const monthTitle = locale.calendaritem?.monthTitle || formatTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
   const [monthsNum, setMonthsNum] = useState<number>(0)
@@ -766,7 +768,7 @@ export const CalendarItem = React.forwardRef<
       <div className={headerClasses}>
         {showTitle && (
           <div className={`${classPrefix}-title`}>
-            {title || locale.calendaritem.title}
+            {title || locale.calendaritem?.title}
           </div>
         )}
         {renderHeaderButtons && (
@@ -840,7 +842,8 @@ export const CalendarItem = React.forwardRef<
                             !isEndTip(day, month) &&
                             !renderDayBottom &&
                             showToday &&
-                            isCurrDay(month, day.day) && (
+                            isCurrDay(month, day.day) &&
+                            locale.calendaritem?.today && (
                               <div className={`${classPrefix}-day-info-curr`}>
                                 {locale.calendaritem.today}
                               </div>
@@ -853,12 +856,12 @@ export const CalendarItem = React.forwardRef<
                                   : ''
                               }`}
                             >
-                              {startText || locale.calendaritem.start}
+                              {startText || locale.calendaritem?.start}
                             </div>
                           )}
                           {isEndTip(day, month) && (
                             <div className={`${classPrefix}-day-info`}>
-                              {endText || locale.calendaritem.end}
+                              {endText || locale.calendaritem?.end}
                             </div>
                           )}
                         </div>

@@ -195,10 +195,10 @@ export const InfiniteLoading: FunctionComponent<
 
   function getBottomTipsText() {
     if (isInfiniting) {
-      return loadingText || locale.infiniteloading.loadText
+      return loadingText || locale.infiniteloading?.loadText
     }
     if (!hasMore) {
-      return loadMoreText || locale.infiniteloading.loadMoreText
+      return loadMoreText || locale.infiniteloading?.loadMoreText
     }
     return null
   }
@@ -213,7 +213,7 @@ export const InfiniteLoading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="nut-infinite-top-tips">
-          {pullingText || locale.infiniteloading.pullRefreshText}
+          {pullingText || locale.infiniteloading?.pullRefreshText}
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>

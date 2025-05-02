@@ -106,7 +106,7 @@ export const ExistRender: FunctionComponent<
           )
         })}
       </ul>
-      {(custom || (custom && locale.address.chooseAnotherAddress)) && (
+      {(custom || (custom && locale.address?.chooseAnotherAddress)) && (
         <div className={`${classPrefix}-footer`} onClick={onClick}>
           <div className={`${classPrefix}-footer-btn`}>{custom}</div>
         </div>
