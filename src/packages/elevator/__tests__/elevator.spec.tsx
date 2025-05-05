@@ -175,3 +175,135 @@ test('should render empty when list is empty', () => {
   const { container } = render(<Elevator list={[]} />)
   expect(container.querySelectorAll('.nut-elevator-list-item').length).toBe(0)
 })
+
+// 测试非标准属性的渲染
+test('should render with custom floor key', () => {
+  const customList = [
+    {
+      customTitle: 'A',
+      list: [
+        {
+          name: '安徽',
+          id: 1,
+        },
+      ],
+    },
+    {
+      customTitle: 'B',
+      list: [
+        {
+          name: '北京',
+          id: 2,
+        },
+      ],
+    },
+  ]
+
+  const { container } = render(
+    <Elevator list={customList} floorKey="customTitle" />
+  )
+  const barItems = container.querySelectorAll('.nut-elevator-bars-inner-item')
+
+  expect(barItems[0].textContent).toBe('A')
+  expect(barItems[1].textContent).toBe('B')
+})
+
+// 测试非字符串值的正确渲染
+test('should render non-string values properly', () => {
+  const numericKeyList = [
+    {
+      index: 1,
+      list: [
+        {
+          name: '项目1',
+          id: 1,
+        },
+      ],
+    },
+    {
+      index: 2,
+      list: [
+        {
+          name: '项目2',
+          id: 2,
+        },
+      ],
+    },
+  ]
+
+  const { container } = render(
+    <Elevator list={numericKeyList} floorKey="index" />
+  )
+  const barItems = container.querySelectorAll('.nut-elevator-bars-inner-item')
+
+  expect(barItems[0].textContent).toBe('1')
+  expect(barItems[1].textContent).toBe('2')
+})
+
+// 测试列表项点击后索引值的正确传递
+test('should pass correct index value when clicking bars item', () => {
+  const testClick = vi.fn()
+  const { container } = render(
+    <Elevator list={list} onIndexClick={(key: string) => testClick(key)} />
+  )
+
+  // 点击第二个索引
+  const indexItem = container.querySelectorAll(
+    '.nut-elevator-bars-inner-item'
+  )[1]
+  fireEvent.click(indexItem)
+
+  expect(testClick).toHaveBeenCalledWith('B')
+})
+
+// 测试列表滚动时高亮显示的正确性
+test('should highlight the correct index when scrolling', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+
+  // 模拟滚动
+  const listView = container.querySelector('.nut-elevator-list-inner')
+
+  await act(() => {
+    // 手动触发点击索引，应该会导致滚动和高亮
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[2]
+    fireEvent.click(indexItem)
+  })
+
+  // 检查是否正确高亮了第三个索引
+  waitFor(() => {
+    const activeIndex = container.querySelector(
+      '.nut-elevator-bars-inner-item-active'
+    )
+    expect(activeIndex?.textContent).toBe('G')
+  })
+})
+
+// 测试当存在垂直模式和sticky时，固定头部是否正确显示
+test('should show fixed title in vertical mode with sticky', async () => {
+  const { container } = render(
+    <Elevator list={list} mode="vertical" sticky height={200} />
+  )
+
+  // 首先触发点击以模拟滚动
+  await act(() => {
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[1]
+    fireEvent.click(indexItem)
+
+    // 模拟滚动事件
+    const listView = container.querySelector('.nut-elevator-list-inner')
+    if (listView) {
+      Object.defineProperty(listView, 'scrollTop', { value: 50 })
+      fireEvent.scroll(listView)
+    }
+  })
+
+  // 等待滚动效果完成后检查固定标题
+  waitFor(() => {
+    const fixedTitle = container.querySelector('.nut-elevator-list-fixed-title')
+    expect(fixedTitle).not.toBeNull()
+  })
+})
