@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
-import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -16,6 +15,7 @@ import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { useRtl } from '../configprovider/index.taro'
 import { harmony } from '@/utils/taro/platform'
 import { TaroRangeProps, RangeValue } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -31,16 +31,11 @@ const isHm = harmony()
 const classPrefix = 'nut-range'
 const verticalClassPrefix = `${classPrefix}-vertical`
 
-const isSameValue = (newValue: RangeValue, oldValue: RangeValue) => {
-  return JSON.stringify(newValue) === JSON.stringify(oldValue)
-}
+const isSameValue = (newValue: RangeValue, oldValue: RangeValue) =>
+  JSON.stringify(newValue) === JSON.stringify(oldValue)
 
-const handleOverlap = (value: number[]) => {
-  if (value[0] > value[1]) {
-    return value.slice(0).reverse()
-  }
-  return value
-}
+const handleOverlap = (value: number[]) =>
+  value[0] > value[1] ? value.slice(0).reverse() : value
 
 export const Range: FunctionComponent<
   Partial<TaroRangeProps> &
@@ -69,7 +64,7 @@ export const Range: FunctionComponent<
     onChange,
     onStart,
     onEnd,
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
 
   const rtlClassPrefix = useMemo(
     () => `rtl-${vertical ? verticalClassPrefix : classPrefix}`,
@@ -82,8 +77,9 @@ export const Range: FunctionComponent<
   const [marksList, setMarksList] = useState<number[]>([])
   const [startValue, setStartValue] = useState<any>(0)
   const scope = useMemo(() => {
-    if (max < min || max === min) {
+    if (max <= min) {
       console.log('max 的值需要大于 min的值')
+      return 0
     }
     return max - min
   }, [max, min])
@@ -184,7 +180,7 @@ export const Range: FunctionComponent<
 
   const calcOffset = useCallback(() => {
     const modelVal = current as any
-    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : `0%`
+    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : '0%'
   }, [current, isRange, min, scope])
 
   const barStyle = useCallback(() => {
@@ -252,28 +248,23 @@ export const Range: FunctionComponent<
     [current, format, isRange, onEnd, setCurrent]
   )
 
-  const click = useCallback(
+  const handleClick = useCallback(
     async (event: any) => {
-      if (disabled || !root.current) {
-        return
-      }
+      if (disabled || !root.current) return
+
       setDragStatus('')
       const rect = await getRectInMultiPlatform(root.current)
-      let x =
-        typeof event.detail?.x !== 'undefined' ? event.detail.x : event.clientX
-      if (isHm) x = parseFloat(pxTransform(event.windowX))
+      const x = event.detail?.x ?? event.clientX
+
       let delta = x - rect.left
       let total = rect.width
 
       if (vertical) {
-        let y =
-          typeof event.detail?.y !== 'undefined'
-            ? event.detail.y
-            : event.clientY
-        if (isHm) y = parseFloat(pxTransform(event.windowY))
+        const y = event.detail?.y ?? event.clientY
         delta = y - rect.top
         total = rect.height
       }
+
       const value = min + (delta / total) * scope
       setExactValue(current)
       if (isRange(current)) {
@@ -293,9 +284,7 @@ export const Range: FunctionComponent<
 
   const onTouchStart = useCallback(
     (event: any) => {
-      if (disabled) {
-        return
-      }
+      if (disabled) return
       touch.start(event)
       setExactValue(current)
       if (isRange(current)) {
@@ -312,27 +301,22 @@ export const Range: FunctionComponent<
   const onTouchMove = useCallback(
     async (event: any) => {
       // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
-      if (disabled || !root.current) {
-        return
-      }
-      if (dragStatus === 'start') {
-        onStart && onStart()
-      }
+      if (disabled || !root.current) return
 
+      if (dragStatus === 'start') onStart && onStart()
       touch.move(event)
       setDragStatus('draging')
+
       const rect = await getRectInMultiPlatform(root.current)
       if (!rect) return
-      let delta = isHm
-        ? parseFloat(pxTransform(touch.deltaX.current))
-        : touch.deltaX.current
+
+      let delta = touch.deltaX.current
       let total = rect.width
       let diff = (delta / total) * scope
       diff = rtl ? -diff : diff
+
       if (vertical) {
-        delta = isHm
-          ? parseFloat(pxTransform(touch.deltaY.current))
-          : touch.deltaY.current
+        delta = touch.deltaY.current
         total = rect.height
         diff = (delta / total) * scope
       }
@@ -364,9 +348,7 @@ export const Range: FunctionComponent<
   )
 
   const onTouchEnd = useCallback(() => {
-    if (disabled) {
-      return
-    }
+    if (disabled) return
     if (dragStatus === 'draging') {
       updateValue(current, true)
     }
@@ -382,64 +364,43 @@ export const Range: FunctionComponent<
     [current]
   )
 
-  const buttonTransform = useMemo(() => {
-    const borderRadis = { borderRadius: pxTransform(13) }
-    const transform = {
-      transform: 'translate(-50%, -50%)',
-    }
-
-    if (isHm) {
-      return {
-        ...borderRadis,
-        ...transform,
-      }
-    }
-    return {
-      ...transform,
-    }
-  }, [])
   const buttonNumberTransform = useMemo(() => {
     return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
   }, [vertical])
 
   const renderButton = useCallback(
-    (index?: number) => {
-      return (
-        <View>
-          {button || (
-            <View
-              className={classNames(`${classPrefix}-button`, {
-                [`${verticalClassPrefix}-button`]: vertical,
-                [`${rtlClassPrefix}-button`]: rtl,
-              })}
-              // @ts-ignore
-              style={buttonTransform}
-            >
-              {currentDescription !== null && (
-                <Text
-                  className={classNames(`${classPrefix}-button-number`, {
-                    [`${verticalClassPrefix}-button-number`]: vertical,
-                    [`${rtlClassPrefix}-button-number`]: rtl,
-                  })}
-                  style={{
-                    // @ts-ignore
-                    transform: buttonNumberTransform,
-                  }}
-                >
-                  {currentDescription
-                    ? currentDescription(curValue(index))
-                    : curValue(index)}
-                </Text>
-              )}
-            </View>
-          )}
-        </View>
-      )
-    },
+    (index?: number) => (
+      <>
+        {button || (
+          <View
+            className={classNames(`${classPrefix}-button`, {
+              [`${verticalClassPrefix}-button`]: vertical,
+              [`${rtlClassPrefix}-button`]: rtl,
+            })}
+            style={{ transform: 'translate(-50%, -50%)' }}
+          >
+            {currentDescription !== null && (
+              <Text
+                className={classNames(`${classPrefix}-button-number`, {
+                  [`${verticalClassPrefix}-button-number`]: vertical,
+                  [`${rtlClassPrefix}-button-number`]: rtl,
+                })}
+                style={{
+                  transform: buttonNumberTransform,
+                }}
+              >
+                {currentDescription
+                  ? currentDescription(curValue(index))
+                  : curValue(index)}
+              </Text>
+            )}
+          </View>
+        )}
+      </>
+    ),
     [
       button,
       buttonNumberTransform,
-      buttonTransform,
       curValue,
       currentDescription,
       rtl,
@@ -459,29 +420,27 @@ export const Range: FunctionComponent<
     })
     return (
       <View className={markcls}>
-        {marksList.map((mark: any) => {
-          return (
+        {marksList.map((mark: any) => (
+          <View
+            key={mark}
+            className={markClassName(mark)}
+            style={marksStyle(mark)}
+          >
+            <Text className={textcls}>
+              {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
+            </Text>
             <View
-              key={mark}
-              className={markClassName(mark)}
-              style={marksStyle(mark)}
-            >
-              <Text className={textcls}>
-                {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
-              </Text>
-              <View
-                className={classNames(
-                  `${vertical ? verticalClassPrefix : classPrefix}-tick`,
-                  {
-                    [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
-                      tickClass(mark),
-                    [`${rtlClassPrefix}-tick`]: rtl,
-                  }
-                )}
-              />
-            </View>
-          )
-        })}
+              className={classNames(
+                `${vertical ? verticalClassPrefix : classPrefix}-tick`,
+                {
+                  [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                    tickClass(mark),
+                  [`${rtlClassPrefix}-tick`]: rtl,
+                }
+              )}
+            />
+          </View>
+        ))}
       </View>
     )
   }, [
@@ -495,22 +454,8 @@ export const Range: FunctionComponent<
     vertical,
   ])
 
-  const wrapperTransform = useMemo(() => {
-    // @TODO 支持变量
-    const wrapperTransformRN = [
-      { translateX: pxTransform(vertical ? -12 : -13) },
-      { translateY: pxTransform(-12) },
-    ]
-    const wrapperTransform = 'translate(-50%, -50%)'
-
-    return wrapperTransform
-  }, [vertical])
-  const rangeWrapperTransform = useMemo(() => {
-    return 'translate(-50%, -50%)'
-  }, [])
-
   const renderRangeButton = useCallback(() => {
-    return [0, 1].map((item, index) => {
+    return [0, 1].map((_, index) => {
       const isLeft = index === 0
       const suffix = isLeft ? 'left' : 'right'
       const cls = classNames(`${classPrefix}-button-wrapper-${suffix}`, {
@@ -523,10 +468,9 @@ export const Range: FunctionComponent<
           key={index}
           className={cls}
           style={{
-            // @ts-ignore
-            transform: rangeWrapperTransform,
+            transform: 'translate(-50%, -50%)',
           }}
-          onTouchStart={(e: any) => {
+          onTouchStart={(e) => {
             setButtonIndex(index)
             onTouchStart(e)
           }}
@@ -544,22 +488,20 @@ export const Range: FunctionComponent<
     onTouchMove,
     onTouchStart,
     renderButton,
-    rangeWrapperTransform,
     vertical,
     rtl,
     rtlClassPrefix,
   ])
 
-  const renderSingleButton = useCallback(() => {
-    return (
+  const renderSingleButton = useCallback(
+    () => (
       <View
         catchMove
         className={classNames(`${classPrefix}-button-wrapper`, {
           [`${verticalClassPrefix}-button-wrapper`]: vertical,
         })}
         style={{
-          // @ts-ignore
-          transform: wrapperTransform,
+          transform: 'translate(-50%, -50%)',
         }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -569,22 +511,12 @@ export const Range: FunctionComponent<
       >
         {renderButton()}
       </View>
-    )
-  }, [
-    onTouchEnd,
-    onTouchMove,
-    onTouchStart,
-    renderButton,
-    wrapperTransform,
-    vertical,
-  ])
+    ),
+    [onTouchEnd, onTouchMove, onTouchStart, renderButton, vertical]
+  )
 
   const renderButtonWrapper = useCallback(() => {
-    if (range) {
-      return renderRangeButton()
-    }
-
-    return renderSingleButton()
+    return range ? renderRangeButton() : renderSingleButton()
   }, [renderRangeButton, renderSingleButton, range])
 
   return (
@@ -592,9 +524,8 @@ export const Range: FunctionComponent<
       {minDescription !== null && (
         <Text className={`${classPrefix}-min`}>{minDescription || min}</Text>
       )}
-      <View ref={root} className={classes} onClick={(e) => click(e)}>
+      <View ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
-
         <View className={`${classPrefix}-bar`} style={barStyle()}>
           {renderButtonWrapper()}
         </View>
