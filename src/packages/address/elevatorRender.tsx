@@ -47,10 +47,11 @@ const defaultProps = {
   closeIconPosition: 'top-right',
   closeIcon: 'close',
   lazy: false,
+  hotList: [],
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as unknown as AddressProps
+}
 
 export const ElevatorRender: FunctionComponent<
   Partial<AddressProps> &
@@ -195,16 +196,16 @@ export const ElevatorRender: FunctionComponent<
     const distData = findDataByName(options, hotItem.name)
     // 热门城市主要是一级城市和二级城市，可以扩展。TODO
     if (distData) {
-      const innerValue = [distData.pName, distData.name].filter(
+      const nextValue = [distData.pName, distData.name].filter(
         (item) => item !== ''
       )
-      setInnerValue(innerValue)
+      setInnerValue(nextValue)
       setElevatorOptions(distData.children)
-      setLevelIndex(innerValue.length)
+      setLevelIndex(nextValue.length)
     }
   }
   const renderTabs = () => {
-    if (!levels[0].name) return null
+    if (!levels.length || !levels[0].name) return null
     return (
       <div className={`${classPrefix}-selected`}>
         {levels.map((item, index) => (

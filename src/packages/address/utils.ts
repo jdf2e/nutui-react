@@ -1,5 +1,4 @@
 const generateId = (name: string) => {
-  // 简单实现：根据 name 生成一个随机 ID
   return name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0) // 使用字符的 Unicode 值作为 ID
 }
 
@@ -34,7 +33,6 @@ export const transformData = (data: any) => {
     return Object.keys(obj).map((key) => ({
       title: key,
       list: obj[key].map((item: any) => {
-        // console.log('item', item)
         if (item.children) {
           item.children = extractTitles(item.children)
         }

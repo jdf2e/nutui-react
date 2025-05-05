@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Address, Cell } from '@nutui/nutui-react'
+import { Address, Cell, CascaderOption } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const [text, setText] = useState<string>('选择地址')
@@ -15,7 +15,7 @@ const Demo1 = () => {
     { name: '武汉' },
     { name: '长沙' },
   ])
-  const [options, setOptions] = useState<any>([])
+  const [options, setOptions] = useState<CascaderOption[]>([])
   useEffect(() => {
     setOptions([
       {
@@ -56,7 +56,7 @@ const Demo1 = () => {
             wordCode: 'H',
             children: [
               { value: '杜集区', text: '杜集区', wordCode: 'D' },
-              { value: '烈山区', text: '杜集区', wordCode: 'L' },
+              { value: '烈山区', text: '烈山区', wordCode: 'L' },
             ],
           },
           {
