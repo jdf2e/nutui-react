@@ -5,7 +5,6 @@ export type StepStatus = 'wait' | 'process' | 'finish'
 export type StepType = 'text' | 'dot' | 'icon'
 export type StepLayout = 'single' | 'double'
 export type StepDirection = 'horizontal' | 'vertical'
-export type StepCount = 2 | 3 | 4
 export type StepsStatus = 'default' | 'business' | 'dynamic' | 'enhanced'
 export interface BaseStep extends BaseProps {
   title: ReactNode
@@ -17,7 +16,6 @@ export interface BaseStep extends BaseProps {
 
 export interface BaseSteps extends BaseProps {
   status: StepsStatus
-  count: StepCount
   direction: StepDirection
   value: number
   type: StepType

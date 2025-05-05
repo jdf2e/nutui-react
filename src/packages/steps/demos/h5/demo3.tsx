@@ -6,17 +6,17 @@ const Demo3 = () => {
     {
       value: 1,
       title: '预约结束',
-      description: '03月17日19:59截止',
+      description: '3月17日19:59截止',
     },
     {
       value: 2,
       title: '抢购开始',
-      description: '03月21日21:59截止',
+      description: '3月21日21:59截止',
     },
     {
       value: 3,
       title: '抢购结束',
-      description: '03月28日21:59截止',
+      description: '3月28日21:59截止',
     },
   ]
   const [val, setVal] = useState(2)

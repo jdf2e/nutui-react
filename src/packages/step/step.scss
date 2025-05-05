@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
 
-  &:last-child {
+  &-last {
     .nut-step-line {
       display: none;
     }
@@ -76,8 +76,7 @@
   }
 
   &-line,
-  &-title,
-  &-description {
+  &-title {
     background-color: #ffffff;
   }
 

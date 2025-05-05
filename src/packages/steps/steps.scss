@@ -59,8 +59,8 @@
       .nut-step {
         padding-right: $steps-horizontal-item-padding-right;
 
-        &:last-child {
-          padding-right: 0;
+        &-last {
+          padding-right: 0 !important;
         }
 
         &-line {
@@ -181,13 +181,17 @@
 
   // 纵向滚动条
   &-vertical {
-    flex-flow: column;
+    /* #ifdef harmony*/
+    flex: 1;
+    min-width: 0;
+    /* #endif */
+    flex-direction: column;
 
     .nut-step {
       padding-bottom: $steps-vertical-item-padding-bottom;
 
-      &:last-child {
-        padding-bottom: 0;
+      &-last {
+        padding-bottom: 0 !important;
       }
 
       &-line {
@@ -217,6 +221,8 @@
       }
 
       &-main {
+        flex: 1;
+        min-width: 0;
         height: auto;
         margin-left: 8px;
       }

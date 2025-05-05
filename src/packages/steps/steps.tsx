@@ -21,7 +21,6 @@ export const Steps: FunctionComponent<
   const {
     direction,
     value,
-    count,
     layout,
     status,
     type,
@@ -51,7 +50,17 @@ export const Steps: FunctionComponent<
   return (
     <DataContext.Provider value={parentSteps}>
       <div className={classes} {...restProps}>
-        {children}
+        {React.Children.map(children, (child, index) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, {
+              // @ts-ignore
+              className: classNames(child.props.className, {
+                'nut-step-last': index === React.Children.count(children) - 1,
+              }),
+            })
+          }
+          return child
+        })}
       </div>
     </DataContext.Provider>
   )

@@ -20,16 +20,7 @@ const defaultProps = {
 export const Step: FunctionComponent<
   Partial<TaroStepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const {
-    type,
-    children,
-    title,
-    description,
-    value,
-    icon,
-    className,
-    ...restProps
-  } = {
+  const { type, title, description, value, icon, className, style } = {
     ...defaultProps,
     ...props,
   }
@@ -49,7 +40,7 @@ export const Step: FunctionComponent<
     }
     if (value < +parentValue) return 'finish'
     return value === +parentValue ? 'process' : 'wait'
-  }, [value, parentValue])
+  }, [value, parentValue, status])
 
   const handleClickStep = useCallback(() => {
     onStepClick?.(value)
@@ -64,12 +55,12 @@ export const Step: FunctionComponent<
         classPrefix,
         {
           [`${classPrefix}-${currentStatus}`]: true,
-          [`${classPrefix}-${type}`]: true,
+          [`${classPrefix}-${type || parentType}`]: true,
           [`${classPrefix}-special`]: description,
         },
         className
       ),
-    [currentStatus, type, className]
+    [currentStatus, type, className, description, classPrefix]
   )
 
   // 头部渲染
@@ -105,7 +96,7 @@ export const Step: FunctionComponent<
   }, [title, description])
 
   return (
-    <div className={classes} {...restProps} onClick={handleClickStep}>
+    <div className={classes} style={style} onClick={handleClickStep}>
       <View className={`${classPrefix}-head`}>
         <View className={`${classPrefix}-head-${type || parentType}-wrap`}>
           {renderHeadType}
