@@ -11,8 +11,7 @@ export interface ElevatorItem {
 export type ElevatorFloorKey = string
 export type ElevatorList = {
   list: Array<ElevatorItem>
-} & {
-  [key: ElevatorFloorKey]: string // 只允许其他属性为字符串
+  title: string
 }
 
 export type ElevatorMode = 'horizontal' | 'vertical'

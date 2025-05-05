@@ -50,9 +50,6 @@ const list = [
   },
 ]
 
-const onIndexClick = (key: string) => {
-  console.log(key)
-}
 test('should render elevator list height after height props to be 200', () => {
   const { container } = render(<Elevator list={list} height={200} />)
   expect(container.querySelector('.nut-elevator-list')).toHaveAttribute(
@@ -131,4 +128,50 @@ test('index is sticky', () => {
       1
     )
   }, 300)
+})
+
+// 测试 mode 属性
+test('should render with vertical mode', () => {
+  const { container } = render(<Elevator list={list} mode="vertical" />)
+  expect(container.querySelector('.nut-elevator-vertical')).toBeTruthy()
+})
+
+// 测试 showKeys 属性
+test('should not render elevator bars when showKeys is false', () => {
+  const { container } = render(<Elevator list={list} showKeys={false} />)
+  expect(container.querySelector('.nut-elevator-bars')).toBeNull()
+})
+
+// 测试自定义内容渲染（children属性）
+test('should render custom content with children', () => {
+  // 使用 Context 消费者组件
+  const CustomItem = () => {
+    // 在测试环境中，我们不能直接使用 useContext，因此直接渲染一个固定元素
+    return <div className="custom-item">自定义内容</div>
+  }
+
+  const { container } = render(
+    <Elevator list={list}>
+      <CustomItem />
+    </Elevator>
+  )
+
+  const customItems = container.querySelectorAll('.custom-item')
+  expect(customItems.length).toBeGreaterThan(0)
+  expect(customItems[0].textContent).toBe('自定义内容')
+})
+
+// 测试非数字高度值
+test('should handle non-numeric height', () => {
+  const { container } = render(<Elevator list={list} height="50vh" />)
+  expect(container.querySelector('.nut-elevator-list')).toHaveAttribute(
+    'style',
+    'height: 50vh;'
+  )
+})
+
+// 测试空列表渲染
+test('should render empty when list is empty', () => {
+  const { container } = render(<Elevator list={[]} />)
+  expect(container.querySelectorAll('.nut-elevator-list-item').length).toBe(0)
 })
