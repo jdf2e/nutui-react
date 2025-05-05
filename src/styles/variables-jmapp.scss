@@ -1299,26 +1299,42 @@ $address-tab-line-background: linear-gradient(
 ) !default;
 
 //steps（✅）
-$steps-base-head-size: var(
-  --nutui-steps-base-icon-size,
-  $font-size-xs
+$steps-background-color: var(--nutui-steps-background-color, $white) !default;
+$steps-base-head-height: var(--nutui-steps-base-head-height, 14px) !default;
+$steps-base-head-background-color: var(
+  --nutui-steps-base-head-background-color,
+  $color-background
 ) !default;
-
-$steps-base-icon-width: var(--nutui-steps-base-icon-width, 25px) !default;
-$steps-base-icon-height: var(--nutui-steps-base-icon-height, 25px) !default;
-$steps-base-icon-line-height: var(
-  --nutui-steps-base-icon-line-height,
-  25px
-) !default;
-$steps-base-icon-margin-bottom: var(
-  --nutui-steps-base-icon-margin-bottom,
+$steps-base-head-border: var(--nutui-steps-base-head-border, none) !default;
+$steps-base-head-text-size: var(
+  --nutui-steps-base-head-text-size,
   12px
 ) !default;
-$steps-base-icon-font-size: var(
-  --nutui-steps-base-icon-font-size,
-  $font-size-s
+$steps-base-head-size: var(
+  --nutui-steps-base-icon-size,
+  $font-size-xxs
 ) !default;
-$steps-base-line-width: var(--nutui-steps-base-line-width, 70%) !default;
+$steps-base-head-color: var(
+  --nutui-steps-base-head-color,
+  $color-text
+) !default;
+$steps-base-head-dot-size: var(--nutui-steps-base-head-dot-size, 6px) !default;
+$steps-base-head-dot-background-color: var(
+  --nutui-steps-base-head-dot-background-color,
+  $color-text-disabled
+) !default;
+$steps-base-head-icon-size: var(
+  --nutui-steps-base-head-icon-size,
+  16px
+) !default;
+$steps-double-head-icon-size: var(
+  --nutui-steps-base-head-icon-size-right,
+  20px
+) !default;
+$steps-vertical-head-icon-size: var(
+  --nutui-steps-vertical-item-icon-size,
+  20px
+) !default;
 $steps-base-line-height: var(--nutui-steps-base-line-height, 1px) !default;
 $steps-base-line-background: var(
   --nutui-steps-base-line-background,
@@ -1326,27 +1342,48 @@ $steps-base-line-background: var(
 ) !default;
 $steps-base-title-font-size: var(
   --nutui-steps-base-title-font-size,
-  $font-size-base
+  $font-size-s
 ) !default;
 $steps-base-title-color: var(
   --nutui-steps-base-title-color,
   $color-title
 ) !default;
-$steps-base-title-margin-bottom: var(
+$steps-base-description-margin-top: var(
   --nutui-steps-base-title-margin-bottom,
-  0
+  2px
 ) !default;
 $steps-base-description-font-size: var(
   --nutui-steps-base-description-font-size,
-  $font-size-s
+  $font-size-xxs
 ) !default;
 $steps-base-description-color: var(
   --nutui-steps-base-description-color,
-  $color-text
+  $color-text-help
 ) !default;
-$steps-wait-icon-bg-color: var(
-  --nutui-steps-wait-icon-bg-color,
-  $color-default
+$steps-base-head-border-color: var(
+  --nutui-steps-base-head-border-color,
+  $color-border
+) !default;
+$steps-process-head-border-color: var(
+  --nutui-steps-base-head-border-color,
+  $color-border
+) !default;
+$steps-process-head-border-color: var(
+  --nutui-steps-base-head-border-color,
+  $color-border
+) !default;
+$steps-process-head-background-color: var(
+  --nutui-steps-process-head-background-color,
+  $color-primary
+) !default;
+$steps-process-color: var(--nutui-steps-process-color, $white) !default;
+$steps-process-title-color: var(
+  --nutui-steps-process-title-color,
+  $color-primary
+) !default;
+$steps-process-description-color: var(
+  --nutui-steps-process-description-color,
+  $color-primary
 ) !default;
 $steps-wait-icon-color: var(
   --nutui-steps-wait-icon-color,
@@ -1354,83 +1391,108 @@ $steps-wait-icon-color: var(
 ) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
-  $color-text-help
+  $color-title
 ) !default;
 $steps-wait-description-color: var(
   --nutui-steps-wait-description-color,
-  $color-text-help
-) !default;
-$steps-process-icon-bg-color: var(
-  --nutui-steps-process-icon-bg-color,
-  $color-primary
-) !default;
-$steps-process-icon-before-bg-color: var(
-  --nutui-steps-process-icon-before-bg-color,
-  none
-) !default;
-$steps-process-icon-color: var(
-  --nutui-steps-process-icon-color,
-  $white
-) !default;
-$steps-process-title-color: var(
-  --nutui-steps-process-title-color,
-  $color-primary
-) !default;
-$steps-process-title-font-size: var(
-  --nutui-steps-process-title-font-size,
-  $font-size-base
-) !default;
-$steps-process-title-font-weight: var(
-  --nutui-steps-process-title-font-weight,
-  $font-weight-bold
-) !default;
-$steps-process-description-color: var(
-  --nutui-steps-process-description-color,
   $color-text
-) !default;
-$steps-finish-icon-bg-color: var(
-  --nutui-steps-finish-icon-bg-color,
-  $color-primary-light-pressed
 ) !default;
 $steps-finish-icon-color: var(
   --nutui-steps-finish-icon-color,
-  $color-primary
+  $color-text-help
 ) !default;
-$steps-finish-icon-border-color: var(
-  --nutui-steps-finish-icon-border-color,
-  transparent
+$steps-business-title-color: var(
+  --nutui-steps-business-title-color,
+  #994d00
 ) !default;
-$steps-finish-title-color: var(
-  --nutui-steps-finish-title-color,
-  $color-title
+$steps-business-description-color: var(
+  --nutui-steps-business-description-color,
+  #994d00
 ) !default;
-$steps-finish-description-color: var(
-  --nutui-steps-finish-description-color,
-  $color-text
+$steps-business-head-text-color: var(
+  --nutui-steps-business-head-text-color,
+  #994d00
 ) !default;
-$steps-finish-line-background: var(
-  --nutui-steps-finish-line-background,
-  $color-primary
+$steps-business-head-dot-background-color: var(
+  --nutui-steps-business-head-dot-background-color,
+  #994d00
 ) !default;
-$steps-dot-finish-icon-bg-color: var(
-  --nutui-steps-finish-icon-bg-color,
-  $white
+$steps-business-head-icon-color: var(
+  --nutui-steps-business-head-icon-color,
+  #994d00
 ) !default;
-$steps-dot-finish-icon-border-color: var(
-  --nutui-steps-finish-icon-color,
-  $color-primary
+$steps-business-head-background-color: var(
+  --nutui-steps-business-head-background-color,
+  #fff4e8
 ) !default;
-$steps-dot-wait-icon-bg-color: var(
-  --nutui-steps-dot-wait-icon-bg-color,
-  $white
+$steps-enhanced-finish-head-background-color: var(
+  --nutui-steps-enhanced-finish-head-background-color,
+  $color-primary-light-pressed
 ) !default;
-$steps-dot-icon-width: var(--nutui-steps-dot-icon-width, 6px) !default;
-$steps-dot-icon-height: var(--nutui-steps-dot-icon-height, 6px) !default;
-$steps-dot-icon-border: var(
-  --nutui-steps-dot-icon-border,
-  2px solid $color-border-shade
+$steps-enhanced-finish-head-dot-background-color: var(
+  --nutui-steps-enhanced-finish-head-dot-background-color,
+  #ffadbe
 ) !default;
-$steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 10px 0) !default;
+$steps-enhanced-finish-head-icon-color: var(
+  --nutui-steps-enhanced-finish-head-icon-color,
+  $color-primary-stop-1
+) !default;
+$steps-enhanced-finish-head-text-color: var(
+  --nutui-steps-enhanced-finish-head-text-color,
+  $color-primary-stop-1
+) !default;
+$steps-horizontal-item-padding-right: var(
+  --nutui-steps-horizontal-item-padding-right,
+  28px
+) !default;
+$steps-horizontal-item-line-padding: var(
+  --nutui-steps-horizontal-item-line-padding,
+  0 8px
+) !default;
+$steps-horizontal-item-special-padding-right: var(
+  --nutui-steps-horizontal-item-special-padding-right,
+  22px
+) !default;
+$steps-horizontal-item-special-3-padding-right: var(
+  --nutui-steps-horizontal-item-special-3-padding-right,
+  9px
+) !default;
+$steps-vertical-item-padding-bottom: var(
+  --nutui-steps-vertical-item-padding-bottom,
+  13px
+) !default;
+$steps-vertical-title-font-size: var(
+  --nutui-steps-vertical-title-font-size,
+  $font-size-l
+) !default;
+$steps-vertical-title-margin-bottom: var(
+  --nutui-steps-vertical-title-margin-bottom,
+  4px
+) !default;
+$steps-vertical-line-height: var(
+  --nutui-steps-vertical-line-height,
+  18px
+) !default;
+$steps-vertical-description-font-size: var(
+  --nutui-steps-vertical-description-font-size,
+  $font-size-base
+) !default;
+$steps-vertical-description-margin: var(
+  --nutui-steps-vertical-description-margin,
+  0 0 1px
+) !default;
+$steps-vertical-description-time-font-size: var(
+  --nutui-steps-vertical-description-time-font-size,
+  $font-size-s
+) !default;
+$steps-vertical-description-time-margin-top: var(
+  --nutui-steps-vertical-description-time-margin-top,
+  2px
+) !default;
+$steps-vertical-description-time-color: var(
+  --nutui-steps-vertical-description-time-color,
+  #808080
+) !default;
 
 // dialog（✅）
 $dialog-min-width: var(--nutui-dialog-min-width, 240px) !default;
