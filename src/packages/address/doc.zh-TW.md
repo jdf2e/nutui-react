@@ -10,6 +10,14 @@ import { Address } from '@nutui/nutui-react'
 
 ## 示例代碼
 
+### 电梯地址
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ### 選擇自定義地址
 
 :::demo
@@ -60,7 +68,7 @@ import { Address } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | visible | 是否打開地址選擇 | `boolean` | `-` |
 | defaultVisible | 初始地址選擇打開/關閉狀態 | `boolean` | - |
-| type | 地址選擇類型 exist/custom | `string` | `custom` |
+| type | 地址選擇類型 exist/cascader/elevator | `AddressModeType` | `cascader` |
 | existList | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | `Array` | `[]` |
 | defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | `ReactNode` | `-` |
 | selectIcon | 已有地址列錶選中圖標，type='exist' 時生效 | `ReactNode` | `-` |

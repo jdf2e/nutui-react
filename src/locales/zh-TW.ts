@@ -67,6 +67,8 @@ const zhCN: BaseLang = {
     selectRegion: '請選擇地址',
     deliveryTo: '配送至',
     chooseAnotherAddress: '選擇其他地址',
+    hotCity: '熱門城市',
+    selectProvince: '選擇省份/地區',
   },
   signature: {
     reSign: '重簽',

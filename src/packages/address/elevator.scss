@@ -1,0 +1,116 @@
+@import '../elevator/elevator.scss';
+@import '../cascader/cascader.scss';
+
+.nut-address {
+  &-title {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 16px 12px 16px;
+  }
+  &-hotlist {
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 63px;
+      height: 28px;
+      font-size: 12px;
+      border-radius: 4px;
+      margin-bottom: 7px;
+      /* #ifdef harmony*/
+      margin-right: 6px;
+      /* #endif */
+      /* #ifndef harmony*/
+      margin-right: 7px;
+      /* #endif */
+      background-color: $color-background-sunken;
+      color: $color-title;
+      &:nth-child(5n) {
+        margin-right: 0;
+      }
+    }
+
+    &.hotlist-more {
+      .nut-address-hotlist-item {
+        width: auto;
+        padding: 0 16px;
+        margin-right: 7px;
+      }
+    }
+  }
+
+  &-selected {
+    width: 100%;
+    height: 60px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+    &-item {
+      font-size: 12px;
+      display: inline-block;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 12px;
+      border-radius: 4px;
+      background-color: $color-background-sunken;
+
+      &.active {
+        border: 1px solid $color-primary;
+        background-color: $color-primary-light-pressed;
+        color: $color-primary;
+      }
+    }
+    &-border {
+      margin: 0 2px;
+      color: $color-text-disabled;
+    }
+  }
+
+  &-elevator {
+    margin-top: 0;
+    .nut-elevator-list {
+      &-item {
+        position: relative;
+        padding-left: 20px;
+      }
+      &-item-code {
+        display: inline;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 0;
+        color: $color-text-help;
+        font-weight: 500;
+      }
+    }
+    .nut-elevator-bars {
+      top: 40%;
+      padding: 0;
+      background: none;
+
+      &-inner-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        border-radius: 16px;
+        margin-bottom: 2px;
+        color: $color-text-help;
+        &-active {
+          background-color: $color-primary;
+          color: $color-background-overlay;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
