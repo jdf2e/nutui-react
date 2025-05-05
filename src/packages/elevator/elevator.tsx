@@ -9,7 +9,7 @@ import { useGesture } from '@use-gesture/react'
 import { animated } from '@react-spring/web'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
-import { ElevatorItem, WebElevatorProps } from '@/types'
+import { ElevatorItem, WebElevatorProps, ElevatorList } from '@/types'
 
 export const elevatorContext = createContext({} as ElevatorItem)
 
@@ -18,7 +18,7 @@ const defaultProps = {
   mode: 'horizontal',
   height: '200px',
   floorKey: 'title',
-  list: [] as any[],
+  list: [] as ElevatorList[],
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
@@ -202,7 +202,7 @@ export const Elevator: FunctionComponent<
       {mode === 'vertical' && sticky && scrollY > 0 ? (
         <div className={`${classPrefix}-list-fixed`}>
           <span className={`${classPrefix}-list-fixed-title`}>
-            {list[currentIndex][floorKey]}
+            {list[currentIndex] && String(list[currentIndex][floorKey])}
           </span>
         </div>
       ) : null}
@@ -257,7 +257,7 @@ export const Elevator: FunctionComponent<
                 [`${classPrefix}-code-current-current`]: true,
               })}
             >
-              {list[codeIndex][floorKey]}
+              {list[codeIndex] && String(list[codeIndex][floorKey])}
             </div>
           ) : null}
           <div className={`${classPrefix}-bars`}>
@@ -278,7 +278,7 @@ export const Elevator: FunctionComponent<
                     key={index}
                     onClick={() => handleClickIndex(item[floorKey])}
                   >
-                    {item[floorKey]}
+                    {String(item[floorKey])}
                   </div>
                 )
               })}

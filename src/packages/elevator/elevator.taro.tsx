@@ -13,7 +13,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/taro/platform'
 import { useUuid } from '@/hooks/use-uuid'
 import raf from '@/utils/raf'
-import { ElevatorItem, TaroElevatorProps } from '@/types'
+import { ElevatorItem, ElevatorList, TaroElevatorProps } from '@/types'
 
 export const elevatorContext = createContext({} as ElevatorItem)
 
@@ -22,7 +22,7 @@ const defaultProps = {
   mode: 'horizontal',
   height: '200px',
   floorKey: 'title',
-  list: [] as any[],
+  list: [] as ElevatorList[],
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
@@ -274,7 +274,7 @@ export const Elevator: FunctionComponent<
                 [`${classPrefix}-code-current-current`]: true,
               })}
             >
-              {list[codeIndex][floorKey]}
+              {list[codeIndex] && String(list[codeIndex][floorKey])}
             </View>
           ) : null}
           <View className={`${classPrefix}-bars`}>
@@ -295,7 +295,7 @@ export const Elevator: FunctionComponent<
                     onTouchEnd={touchEnd}
                     style={{ touchAction: 'pan-y' }}
                   >
-                    {item[floorKey]}
+                    {String(item[floorKey])}
                   </View>
                 )
               })}
@@ -306,7 +306,7 @@ export const Elevator: FunctionComponent<
       {mode === 'vertical' && sticky && scrollY > 0 ? (
         <View className={`${classPrefix}-list-fixed`}>
           <Text className={`${classPrefix}-list-fixed-title`}>
-            {list[codeIndex][floorKey]}
+            {list[codeIndex] && String(list[codeIndex][floorKey])}
           </Text>
         </View>
       ) : null}

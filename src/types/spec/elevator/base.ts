@@ -11,7 +11,7 @@ export interface ElevatorItem {
 export type ElevatorFloorKey = string
 export type ElevatorList = {
   list: Array<ElevatorItem>
-  title: string
+  [key: string]: SimpleValue | Array<ElevatorItem>
 }
 
 export type ElevatorMode = 'horizontal' | 'vertical'
