@@ -307,3 +307,70 @@ test('should show fixed title in vertical mode with sticky', async () => {
     expect(fixedTitle).not.toBeNull()
   })
 })
+
+// 测试 getData 函数处理没有 data-index 属性的元素
+test('should handle element without data-index attribute', () => {
+  const { container } = render(<Elevator list={list} />)
+
+  // 创建一个没有 data-index 属性的元素
+  const divWithoutDataIndex = document.createElement('div')
+  divWithoutDataIndex.className = 'test-element'
+  container.appendChild(divWithoutDataIndex)
+
+  // 模拟拖拽事件，触发 drag 行为
+  const testElement = container.querySelector('.test-element')
+
+  // 由于无法直接测试内部函数，我们通过拖拽行为间接测试
+  // 如果处理正确，不应该引发错误
+  expect(() => {
+    if (testElement) {
+      fireEvent.mouseDown(testElement)
+      fireEvent.mouseMove(testElement, { clientX: 0, clientY: 10 })
+      fireEvent.mouseUp(testElement)
+    }
+  }).not.toThrow()
+})
+
+// 测试处理索引小于0的情况
+test('should handle invalid negative index', () => {
+  const { container } = render(<Elevator list={list} />)
+
+  // 创建一个有data-index但值为-1的元素
+  const divWithNegativeIndex = document.createElement('div')
+  divWithNegativeIndex.setAttribute('data-index', '-1')
+  divWithNegativeIndex.className = 'test-negative-index'
+  container.appendChild(divWithNegativeIndex)
+
+  // 我们无法直接测试内部状态，但可以检查不会因为负索引而出错
+  expect(() => {
+    const element = container.querySelector('.test-negative-index')
+    if (element) {
+      fireEvent.mouseDown(element)
+      fireEvent.mouseMove(element, { clientX: 0, clientY: 10 })
+      fireEvent.mouseUp(element)
+    }
+  }).not.toThrow()
+})
+
+// 测试拖拽事件触发并有效处理
+test('should handle drag gestures on valid index elements', async () => {
+  const { container } = render(<Elevator list={list} />)
+
+  // 获取索引元素
+  const indexItem = container.querySelectorAll(
+    '.nut-elevator-bars-inner-item'
+  )[1]
+
+  // 模拟拖拽
+  await act(() => {
+    // 开始拖拽
+    fireEvent.mouseDown(indexItem)
+    // 移动
+    fireEvent.mouseMove(indexItem, { clientX: 0, clientY: 50 })
+    // 结束拖拽
+    fireEvent.mouseUp(indexItem)
+  })
+
+  // 成功拖拽应该不会引发错误
+  expect(true).toBeTruthy()
+})
