@@ -9,4 +9,10 @@ export interface BaseProgress extends BaseProps {
   animated: boolean
   lazy: boolean
   delay: number
+  borderRadius: string
+  fontSize: string
+  activeMode: string
+  duration: number
+  ariaLabel: string
+  onActiveEnd: () => void
 }

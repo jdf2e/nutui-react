@@ -88,6 +88,12 @@ import { Progress } from '@nutui/nutui-react'
 | animated | Whether to show animation | `boolean` | `false` |
 | lazy | Show animation when intersect | `boolean` | `false` |
 | delay | Delay time to set percent, ms | `number` | `0` |
+| borderRadius | Progress bar corner size | `string` | `0` |
+| fontSize | Progress text size | `string` | `12px` |
+| activeMode | Animation playback mode | `forwards \| backwards` | `forwards` |
+| duration | Animation completion time (in milliseconds) | `number` | `30` |
+| ariaLabel | AccessibilityLabel | `string` | `-` |
+| onActiveEnd | Callback function after animation is completed | `() => void` | `-` |
 
 ## Theming
 

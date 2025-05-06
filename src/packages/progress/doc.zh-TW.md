@@ -88,6 +88,12 @@ import { Progress } from '@nutui/nutui-react'
 | animated | 是否展示動畫效果 | `boolean` | `false` |
 | lazy | 每次進入可視區展示進度條動畫 | `boolean` | `false` |
 | delay | 延遲數據加載時長，單位 ms | `number` | `0` |
+| borderRadius | 進度條圓角大小 | `string` | `0` |
+| fontSize | 進度文字大小 | `string` | `12px` |
+| activeMode | 動畫播放方式 | `forwards \| backwards` | `forwards` |
+| duration | 動畫完成時間（單位：毫秒） | `number` | `30` |
+| ariaLabel | 無障礙標簽 | `string` | `-` |
+| onActiveEnd | 動畫完成後的回調函數 | `() => void` | `-` |
 
 ## 主題定制
 
