@@ -3,7 +3,7 @@
 .nut-actionsheet {
   text-align: center;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 0 16px 16px 16px;
   width: 100%;
   &-bottom {
     padding-bottom: 34px;
@@ -11,19 +11,6 @@
   &.nut-popup {
     min-height: 10%;
     background-color: $actionsheet-background-color;
-  }
-  &-bottom-title,
-  &-top-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: rgb(26, 26, 26);
-    justify-content: center;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-  }
-  &-top-title {
-    justify-content: space-between;
   }
   &-close-icon {
     width: 16px;

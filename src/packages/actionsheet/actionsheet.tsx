@@ -54,6 +54,7 @@ export const ActionSheet: FunctionComponent<
   return (
     <Popup
       {...rest}
+      title={title}
       round
       visible={visible}
       position={position}
@@ -66,9 +67,9 @@ export const ActionSheet: FunctionComponent<
       closeIcon={<Close className={`${classPrefix}-close-icon`} />}
     >
       <div className={`${className}`} style={style}>
-        {title && (
+        {/* {title && (
           <div className={`${classPrefix}-${position}-title`}>{title}</div>
-        )}
+        )} */}
         {options.length ? (
           <div className={`${classPrefix}-list`}>
             {options.map((item, index) => {
