@@ -32,7 +32,6 @@ const Demo = () => {
         options={options}
         onSelect={handleSelect}
         onCancel={() => setIsVisible(false)}
-        cancelText="取消"
       />
     </>
   )

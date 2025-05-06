@@ -704,7 +704,7 @@ $actionsheet-background-color: var(
 ) !default;
 $actionsheet-cancel-border: var(
   --nutui-actionsheet-cancel-border,
-  0.5px solid #c2c4cc
+  none
 ) !default;
 $actionsheet-border-radius: var(
   --nutui-actionsheet-border-radius,
@@ -716,7 +716,7 @@ $actionsheet-item-text-align: var(
 ) !default;
 $actionsheet-item-border-bottom: var(
   --nutui-actionsheet-item-border-bottom,
-  0.5px solid #c2c4cc
+  none
 ) !default;
 $actionsheet-item-line-height: var(
   --nutui-actionsheet-item-line-height,
