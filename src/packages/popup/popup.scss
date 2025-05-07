@@ -9,13 +9,8 @@
   font-size: $font-size-base;
 
   &-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     border-bottom: $popup-title-border-bottom;
     padding: $popup-title-padding;
-    position: relative;
 
     &-wrapper {
       display: flex;
@@ -72,7 +67,6 @@
   }
   &-bottom-title,
   &-top-title {
-    padding-top: $popup-title-padding;
     color: $color-title;
     font-weight: $font-weight-bold;
     font-size: $popup-title-font-size;

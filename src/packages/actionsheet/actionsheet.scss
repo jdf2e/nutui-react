@@ -3,7 +3,10 @@
 .nut-actionsheet {
   text-align: center;
   box-sizing: border-box;
-  padding: 0 16px 16px 16px;
+  padding: 16px;
+  .nut-popup-title {
+    padding: 0;
+  }
   width: 100%;
   &-bottom {
     padding-bottom: 34px;

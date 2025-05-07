@@ -55,6 +55,7 @@ export const ActionSheet: FunctionComponent<
   return (
     <Popup
       {...rest}
+      title={title}
       round
       visible={visible}
       position={position}
@@ -67,9 +68,6 @@ export const ActionSheet: FunctionComponent<
       closeIcon={<Close className={`${classPrefix}-close-icon`} />}
     >
       <View className={`${className}`} style={style}>
-        {title && (
-          <View className={`${classPrefix}-${position}-title`}>{title}</View>
-        )}
         {options.length ? (
           <View className={`${classPrefix}-list`}>
             {options.map((item, index) => {
