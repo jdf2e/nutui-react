@@ -313,16 +313,19 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const onChangeImage = async (res: Taro.chooseImage.SuccessCallbackResult) => {
-    // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
     const { tempFiles } = res
     const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
-    let files: File[] = []
-    const filesArr = new Array<File>().slice.call(files)
     if (beforeUpload) {
-      files = await beforeUpload(filesArr)
+      beforeUpload(new Array<File>().slice.call(_files)).then(
+        (f: Array<File> | boolean) => {
+          const _files: File[] = filterFiles(new Array<File>().slice.call(f))
+          if (!_files.length) res.tempFiles = []
+          readFile(_files)
+        }
+      )
+    } else {
+      readFile(_files)
     }
-    files = filterFiles(filesArr)
-    readFile(_files)
   }
 
   const handleItemClick = (file: UploaderFileItem, index: number) => {

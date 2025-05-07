@@ -7,7 +7,6 @@ const Demo1 = () => {
     {
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       uid: 133,
-      status: 'uploading',
     },
   ])
 

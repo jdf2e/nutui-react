@@ -163,9 +163,14 @@ const InternalUploader: ForwardRefRenderFunction<
     const filesArr = new Array<File>().slice.call(files)
     if (beforeUpload) {
       _files = await beforeUpload(filesArr)
-      if (!_files.length) $el.value = ''
+      if (!_files.length) {
+        $el.value = ''
+        return
+      }
+    } else {
+      _files = filesArr
     }
-    _files = filterFiles(filesArr)
+    _files = filterFiles(_files)
 
     const tasks = _files.map((file) => {
       const info: any = {
