@@ -169,7 +169,20 @@ test('form set required', () => {
     </Form>
   )
   expect(
-    container.querySelectorAll('.nut-form-item-label-required')
+    container.querySelectorAll('.nut-form-item-label-required-left')
+  ).toHaveLength(1)
+})
+
+test('form set starPosition', () => {
+  const { container } = render(
+    <Form initialValues={{ username: 'NutUI-React' }} starPosition="right">
+      <Form.Item name="username" required label="UserName">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  expect(
+    container.querySelectorAll('.nut-form-item-label-required-right')
   ).toHaveLength(1)
 })
 
