@@ -70,10 +70,11 @@ export const Range: FunctionComponent<
     () => `rtl-${vertical ? verticalClassPrefix : classPrefix}`,
     [vertical]
   )
-  const [buttonIndex, setButtonIndex] = useState(0)
+  const buttonRef = useRef(0)
   const [dragStatus, setDragStatus] = useState('start')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
+  const rootRect = useRef<any>(null)
   const [marksList, setMarksList] = useState<number[]>([])
   const [startValue, setStartValue] = useState<any>(0)
   const scope = useMemo(() => {
@@ -87,17 +88,18 @@ export const Range: FunctionComponent<
   const handleChange = (value: RangeValue) => {
     onChange && onChange(value)
   }
-  const [current, setCurrent] = usePropsValue<RangeValue>({
+  const [innerValue, setInnerValue] = usePropsValue<RangeValue>({
     value,
     defaultValue,
     finalValue: 0,
     onChange: handleChange,
   })
-  const [exactValue, setExactValue] = useState<RangeValue>(
-    () => value || defaultValue || 0
-  )
+
+  const exactValueRef = useRef<RangeValue>(value || defaultValue || 0)
   const marksRef = useRef<{ [key: string]: any }>({})
+
   useEffect(() => {
+    console.log('set marklist')
     if (marks) {
       if (Array.isArray(marks)) {
         const list = marks
@@ -118,11 +120,13 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
+
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [verticalClassPrefix]: vertical,
     [`${classPrefix}-native`]: isHm,
   })
+
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
@@ -131,17 +135,18 @@ export const Range: FunctionComponent<
     },
     className
   )
+
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
       const verticalClassPrefix = 'nut-range-vertical-mark'
       let lowerBound = min
       let upperBound = max
-      if (range && Array.isArray(current)) {
-        lowerBound = current[0]
-        upperBound = current[1]
+      if (range && Array.isArray(innerValue)) {
+        lowerBound = innerValue[0]
+        upperBound = innerValue[1]
       } else {
-        upperBound = current as number
+        upperBound = innerValue as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       const classNames = [
@@ -161,7 +166,7 @@ export const Range: FunctionComponent<
 
       return classNames.join(' ')
     },
-    [min, max, range, current, vertical, rtl, rtlClassPrefix]
+    [min, max, range, innerValue, vertical, rtl, rtlClassPrefix]
   )
 
   const isRange = useCallback(
@@ -172,16 +177,16 @@ export const Range: FunctionComponent<
   )
 
   const calcMainAxis = useCallback(() => {
-    const modelVal = current as any
+    const modelVal = innerValue as any
     return isRange(modelVal)
       ? `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
       : `${((modelVal - min) * 100) / scope}%`
-  }, [current, isRange, min, scope])
+  }, [innerValue, isRange, min, scope])
 
   const calcOffset = useCallback(() => {
-    const modelVal = current as any
+    const modelVal = innerValue as any
     return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : '0%'
-  }, [current, isRange, min, scope])
+  }, [innerValue, isRange, min, scope])
 
   const barStyle = useCallback(() => {
     if (vertical) {
@@ -217,12 +222,12 @@ export const Range: FunctionComponent<
 
   const tickClass = useCallback(
     (mark: any) => {
-      if (range && Array.isArray(current)) {
-        return mark <= current[1] && mark >= current[0]
+      if (range && Array.isArray(innerValue)) {
+        return mark <= innerValue[1] && mark >= innerValue[0]
       }
-      return mark <= current
+      return mark <= innerValue
     },
-    [current, range]
+    [innerValue, range]
   )
 
   const format = useCallback(
@@ -240,12 +245,12 @@ export const Range: FunctionComponent<
       } else {
         value = format(value)
       }
-      if (!isSameValue(value, current)) {
-        setCurrent(value)
+      if (!isSameValue(value, innerValue)) {
+        setInnerValue(value)
       }
       end && onEnd && onEnd(value)
     },
-    [current, format, isRange, onEnd, setCurrent]
+    [innerValue, format, isRange, onEnd, setInnerValue]
   )
 
   const handleClick = useCallback(
@@ -266,9 +271,10 @@ export const Range: FunctionComponent<
       }
 
       const value = min + (delta / total) * scope
-      setExactValue(current)
-      if (isRange(current)) {
-        const [left, right] = current as any
+      exactValueRef.current = innerValue
+
+      if (isRange(innerValue)) {
+        const [left, right] = innerValue as any
         const middle = (left + right) / 2
         if (value <= middle) {
           updateValue([value, right], true)
@@ -279,63 +285,74 @@ export const Range: FunctionComponent<
         updateValue(value, true)
       }
     },
-    [current, disabled, isRange, min, scope, updateValue, vertical]
+    [innerValue, disabled, isRange, min, scope, updateValue, vertical]
   )
+
+  useEffect(() => {
+    const getRootRect = async () => {
+      if (root.current) {
+        const rect = await getRectInMultiPlatform(root.current)
+        rootRect.current = rect
+      }
+    }
+    getRootRect()
+  }, [root])
 
   const onTouchStart = useCallback(
     (event: any) => {
       if (disabled) return
       touch.start(event)
-      setExactValue(current)
-      if (isRange(current)) {
-        setStartValue((current as number[]).map(format))
+      exactValueRef.current = innerValue
+      if (isRange(innerValue)) {
+        setStartValue((innerValue as number[]).map(format))
       } else {
-        setStartValue(format(current as number))
+        setStartValue(format(innerValue as number))
       }
 
       setDragStatus('start')
     },
-    [current, disabled, format, isRange, touch]
+    [innerValue, disabled, format, isRange, touch]
   )
 
   const onTouchMove = useCallback(
     async (event: any) => {
-      // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
       if (disabled || !root.current) return
 
-      if (dragStatus === 'start') onStart && onStart()
+      if (dragStatus === 'start') {
+        onStart && onStart()
+        setDragStatus('draging')
+      }
       touch.move(event)
-      setDragStatus('draging')
 
-      const rect = await getRectInMultiPlatform(root.current)
-      if (!rect) return
+      const handleMove = async () => {
+        if (!rootRect.current) return
+        console.log('touch move000033', rootRect.current.width)
 
-      let delta = touch.deltaX.current
-      let total = rect.width
-      let diff = (delta / total) * scope
-      diff = rtl ? -diff : diff
+        let delta = touch.deltaX.current
+        let total = rootRect.current.width
+        let diff = (delta / total) * scope
+        diff = rtl ? -diff : diff
 
-      if (vertical) {
-        delta = touch.deltaY.current
-        total = rect.height
-        diff = (delta / total) * scope
+        if (vertical) {
+          delta = touch.deltaY.current
+          total = rootRect.current.height
+          diff = (delta / total) * scope
+        }
+
+        let newValue = startValue + diff
+        if (isRange(startValue)) {
+          newValue = (exactValueRef.current as number[]).slice()
+          newValue[buttonRef.current] = startValue[buttonRef.current] + diff
+        }
+        exactValueRef.current = newValue
+        updateValue(newValue)
       }
 
-      let newValue
-      if (isRange(startValue)) {
-        newValue = (exactValue as number[]).slice()
-        newValue[buttonIndex] = startValue[buttonIndex] + diff
-      } else {
-        newValue = startValue + diff
-      }
-      setExactValue(newValue)
-      updateValue(newValue)
+      requestAnimationFrame(handleMove)
     },
     [
-      buttonIndex,
       disabled,
       dragStatus,
-      exactValue,
       isRange,
       onStart,
       rtl,
@@ -350,18 +367,18 @@ export const Range: FunctionComponent<
   const onTouchEnd = useCallback(() => {
     if (disabled) return
     if (dragStatus === 'draging') {
-      updateValue(current, true)
+      updateValue(innerValue, true)
     }
     setDragStatus('')
-  }, [current, disabled, dragStatus, updateValue])
+  }, [innerValue, disabled, dragStatus, updateValue])
 
   const curValue = useCallback(
     (idx?: number) => {
-      const modelVal = current as any
+      const modelVal = innerValue as any
       const value = typeof idx === 'number' ? modelVal[idx] : modelVal
       return value
     },
-    [current]
+    [innerValue]
   )
 
   const buttonNumberTransform = useMemo(() => {
@@ -471,7 +488,7 @@ export const Range: FunctionComponent<
             transform: 'translate(-50%, -50%)',
           }}
           onTouchStart={(e) => {
-            setButtonIndex(index)
+            buttonRef.current = index
             onTouchStart(e)
           }}
           onTouchMove={onTouchMove}
