@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Steps, Step, Button, Cell, pxTransform } from '@nutui/nutui-react-taro'
 import { Check, PickedUp, Service, WaitReceive } from '@nutui/icons-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo9 = () => {
   const [value, setValue] = useState(2)
@@ -13,7 +14,7 @@ const Demo9 = () => {
     marginTop: pxTransform(2),
     color: '#808080',
     fontSize: pxTransform(12),
-    lineHeight: pxTransform(18),
+    lineHeight: 1.5,
   }
 
   return (
@@ -31,11 +32,11 @@ const Demo9 = () => {
             title="待取件"
             description={
               <>
-                <p>
+                <View>
                   你的订单已由【深圳市福田区福华路京东快递自
                   提点】上架完成，请上门自提
-                </p>
-                <p style={timeCustomStyle}>2025-01-20 07:12:30</p>
+                </View>
+                <View style={timeCustomStyle}>2025-01-20 07:12:30</View>
               </>
             }
             icon={<WaitReceive />}
@@ -46,8 +47,8 @@ const Demo9 = () => {
             title="运输中"
             description={
               <>
-                <p>订单在【淮安分拣中心】完成分拣</p>
-                <p style={timeCustomStyle}>2025-01-20 07:12:30</p>
+                <View>订单在【淮安分拣中心】完成分拣</View>
+                <View style={timeCustomStyle}>2025-01-20 07:12:30</View>
               </>
             }
             icon={<PickedUp />}
@@ -62,8 +63,8 @@ const Demo9 = () => {
             title="待安装  工程师已接单"
             description={
               <>
-                <p>已分配工程师 XXX 为您服务，联系电话 136 **** 8618</p>
-                <p style={timeCustomStyle}>2025-01-20 07:12:30</p>
+                <View>已分配工程师 XXX 为您服务，联系电话 136 **** 8618</View>
+                <View style={timeCustomStyle}>2025-01-20 07:12:30</View>
               </>
             }
             icon={<Service />}
@@ -74,8 +75,8 @@ const Demo9 = () => {
             title="已签收"
             description={
               <>
-                <p>京东快递 · 您的订单派送完成，已由家人签收</p>
-                <p style={timeCustomStyle}>2025-01-20 07:12:30</p>
+                <View>京东快递 · 您的订单派送完成，已由家人签收</View>
+                <View style={timeCustomStyle}>2025-01-20 07:12:30</View>
               </>
             }
             icon={<Check />}

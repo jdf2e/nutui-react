@@ -232,6 +232,7 @@
         align-items: center;
         height: $steps-vertical-line-height;
         font-size: $steps-vertical-title-font-size;
+        overflow: auto;
         font-weight: 500;
         margin-bottom: $steps-vertical-title-margin-bottom;
       }

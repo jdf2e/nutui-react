@@ -87,9 +87,9 @@ export const Step: FunctionComponent<
 
     return (
       <div className={`${classPrefix}-main`}>
-        {title && <span className={`${classPrefix}-title`}>{title}</span>}
+        {title && <View className={`${classPrefix}-title`}>{title}</View>}
         {description && (
-          <span className={`${classPrefix}-description`}>{description}</span>
+          <View className={`${classPrefix}-description`}>{description}</View>
         )}
       </div>
     )
