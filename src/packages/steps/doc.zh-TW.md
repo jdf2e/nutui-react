@@ -117,6 +117,7 @@ import { Steps } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-steps-background-color | 步驟條背景色 | `$white` |
 | \--nutui-steps-base-head-height | 頭部高度 | `14px` |
 | \--nutui-steps-base-head-background-color | 頭部背景色 | `$color-background` |
 | \--nutui-steps-base-head-border | 頭部邊框 | `none` |
@@ -144,14 +145,14 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-wait-title-color | 等待狀態標題顏色 | `$color-title` |
 | \--nutui-steps-wait-description-color | 等待狀態描述顏色 | `$color-text` |
 | \--nutui-steps-finish-icon-color | 完成狀態圖標顏色 | `$color-text-help` |
-| \--nutui-steps-business-title-color | 業務狀態標題顏色 | `#994d00` |
-| \--nutui-steps-business-description-color | 業務狀態描述顏色 | `#994d00` |
-| \--nutui-steps-business-head-text-color | 業務狀態頭部文字顏色 | `#994d00` |
-| \--nutui-steps-business-head-dot-background-color | 業務狀態頭部點狀背景色 | `#994d00` |
-| \--nutui-steps-business-head-icon-color | 業務狀態頭部圖標顏色 | `#994d00` |
-| \--nutui-steps-business-head-background-color | 業務狀態頭部背景色 | `#fff4e8` |
+| \--nutui-steps-business-title-color | 業務狀態標題顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-description-color | 業務狀態描述顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-text-color | 業務狀態頭部文字顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-dot-background-color | 業務狀態頭部點狀背景色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-icon-color | 業務狀態頭部圖標顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-background-color | 業務狀態頭部背景色 | `var(--nutui-color-service)` |
 | \--nutui-steps-enhanced-finish-head-background-color | 增強完成狀態頭部背景色 | `$color-primary-light-pressed` |
-| \--nutui-steps-enhanced-finish-head-dot-background-color | 增強完成狀態頭部點狀背景色 | `#ffadbe` |
+| \--nutui-steps-enhanced-finish-head-dot-background-color | 增強完成狀態頭部點狀背景色 | `$color-primary-disabled-special` |
 | \--nutui-steps-enhanced-finish-head-icon-color | 增強完成狀態頭部圖標顏色 | `$color-primary-stop-1` |
 | \--nutui-steps-enhanced-finish-head-text-color | 增強完成狀態頭部文字顏色 | `$color-primary-stop-1` |
 | \--nutui-steps-horizontal-item-padding-right | 水平項右內邊距 | `28px` |
@@ -164,8 +165,5 @@ import { Steps } from '@nutui/nutui-react'
 | \--nutui-steps-vertical-line-height | 垂直行高 | `18px` |
 | \--nutui-steps-vertical-description-font-size | 垂直描述字號 | `$font-size-base` |
 | \--nutui-steps-vertical-description-margin | 垂直描述邊距 | `0 0 1px` |
-| \--nutui-steps-vertical-description-time-font-size | 垂直描述時間字號 | `$font-size-s` |
-| \--nutui-steps-vertical-description-time-margin-top | 垂直描述時間上邊距 | `2px` |
-| \--nutui-steps-vertical-description-time-color | 垂直描述時間顏色 | `#808080` |
 
 <Contribution name="Steps" />

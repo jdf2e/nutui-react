@@ -1303,27 +1303,27 @@ $steps-finish-icon-color: var(
 ) !default;
 $steps-business-title-color: var(
   --nutui-steps-business-title-color,
-  #994d00
+  var(--nutui-color-service-pressed)
 ) !default;
 $steps-business-description-color: var(
   --nutui-steps-business-description-color,
-  #994d00
+  var(--nutui-color-service-pressed)
 ) !default;
 $steps-business-head-text-color: var(
   --nutui-steps-business-head-text-color,
-  #994d00
+  var(--nutui-color-service-pressed)
 ) !default;
 $steps-business-head-dot-background-color: var(
   --nutui-steps-business-head-dot-background-color,
-  #994d00
+  var(--nutui-color-service-pressed)
 ) !default;
 $steps-business-head-icon-color: var(
   --nutui-steps-business-head-icon-color,
-  #994d00
+  var(--nutui-color-service-pressed)
 ) !default;
 $steps-business-head-background-color: var(
   --nutui-steps-business-head-background-color,
-  #fff4e8
+  var(--nutui-color-service)
 ) !default;
 $steps-enhanced-finish-head-background-color: var(
   --nutui-steps-enhanced-finish-head-background-color,
@@ -1331,7 +1331,7 @@ $steps-enhanced-finish-head-background-color: var(
 ) !default;
 $steps-enhanced-finish-head-dot-background-color: var(
   --nutui-steps-enhanced-finish-head-dot-background-color,
-  #ffadbe
+  $color-primary-disabled-special
 ) !default;
 $steps-enhanced-finish-head-icon-color: var(
   --nutui-steps-enhanced-finish-head-icon-color,
@@ -1380,18 +1380,6 @@ $steps-vertical-description-font-size: var(
 $steps-vertical-description-margin: var(
   --nutui-steps-vertical-description-margin,
   0 0 1px
-) !default;
-$steps-vertical-description-time-font-size: var(
-  --nutui-steps-vertical-description-time-font-size,
-  $font-size-s
-) !default;
-$steps-vertical-description-time-margin-top: var(
-  --nutui-steps-vertical-description-time-margin-top,
-  2px
-) !default;
-$steps-vertical-description-time-color: var(
-  --nutui-steps-vertical-description-time-color,
-  #808080
 ) !default;
 
 // dialog（✅）

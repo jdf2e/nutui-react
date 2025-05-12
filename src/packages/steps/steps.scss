@@ -240,16 +240,9 @@
         margin: $steps-vertical-description-margin;
         height: auto;
         line-height: $steps-vertical-line-height;
-        color: $color-text;
+        color: $color-title;
         font-size: $steps-vertical-description-font-size;
         box-sizing: border-box;
-
-        .description-time {
-          margin-top: $steps-vertical-description-time-margin-top;
-          color: $steps-vertical-description-time-color;
-          font-size: $steps-vertical-description-time-font-size;
-          line-height: $steps-vertical-line-height;
-        }
       }
 
       &-head-dot-wrap,

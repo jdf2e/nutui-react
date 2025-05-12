@@ -117,6 +117,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-steps-background-color | Steps background color | `$white` |
 | \--nutui-steps-base-head-height | Head height | `14px` |
 | \--nutui-steps-base-head-background-color | Head background color | `$color-background` |
 | \--nutui-steps-base-head-border | Head border | `none` |
@@ -144,14 +145,14 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-wait-title-color | Waiting state title color | `$color-title` |
 | \--nutui-steps-wait-description-color | Waiting state description color | `$color-text` |
 | \--nutui-steps-finish-icon-color | Finish state icon color | `$color-text-help` |
-| \--nutui-steps-business-title-color | Business state title color | `#994d00` |
-| \--nutui-steps-business-description-color | Business state description color | `#994d00` |
-| \--nutui-steps-business-head-text-color | Business state head text color | `#994d00` |
-| \--nutui-steps-business-head-dot-background-color | Business state head dot background color | `#994d00` |
-| \--nutui-steps-business-head-icon-color | Business state head icon color | `#994d00` |
-| \--nutui-steps-business-head-background-color | Business state head background color | `#fff4e8` |
+| \--nutui-steps-business-title-color | Business state title color | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-description-color | Business state description color | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-text-color | Business state head text color | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-dot-background-color | Business state head dot background color | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-icon-color | Business state head icon color | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-background-color | Business state head background color | `var(--nutui-color-service)` |
 | \--nutui-steps-enhanced-finish-head-background-color | Enhanced finish state head background color | `$color-primary-light-pressed` |
-| \--nutui-steps-enhanced-finish-head-dot-background-color | Enhanced finish state head dot background color | `#ffadbe` |
+| \--nutui-steps-enhanced-finish-head-dot-background-color | Enhanced finish state head dot background color | `$color-primary-disabled-special` |
 | \--nutui-steps-enhanced-finish-head-icon-color | Enhanced finish state head icon color | `$color-primary-stop-1` |
 | \--nutui-steps-enhanced-finish-head-text-color | Enhanced finish state head text color | `$color-primary-stop-1` |
 | \--nutui-steps-horizontal-item-padding-right | Horizontal item right padding | `28px` |
@@ -164,8 +165,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-vertical-line-height | Vertical line height | `18px` |
 | \--nutui-steps-vertical-description-font-size | Vertical description font size | `$font-size-base` |
 | \--nutui-steps-vertical-description-margin | Vertical description margin | `0 0 1px` |
-| \--nutui-steps-vertical-description-time-font-size | Vertical description time font size | `$font-size-s` |
-| \--nutui-steps-vertical-description-time-margin-top | Vertical description time top margin | `2px` |
-| \--nutui-steps-vertical-description-time-color | Vertical description time color | `#808080` |
 
 <Contribution name="Steps" />
