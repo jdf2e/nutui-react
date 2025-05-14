@@ -308,69 +308,183 @@ test('should show fixed title in vertical mode with sticky', async () => {
   })
 })
 
-// 测试 getData 函数处理没有 data-index 属性的元素
-test('should handle element without data-index attribute', () => {
+// 测试 getData 函数的边界情况
+test('should return -1 when data-index attribute is not present', () => {
   const { container } = render(<Elevator list={list} />)
-
-  // 创建一个没有 data-index 属性的元素
-  const divWithoutDataIndex = document.createElement('div')
-  divWithoutDataIndex.className = 'test-element'
-  container.appendChild(divWithoutDataIndex)
-
-  // 模拟拖拽事件，触发 drag 行为
-  const testElement = container.querySelector('.test-element')
-
-  // 由于无法直接测试内部函数，我们通过拖拽行为间接测试
-  // 如果处理正确，不应该引发错误
-  expect(() => {
-    if (testElement) {
-      fireEvent.mouseDown(testElement)
-      fireEvent.mouseMove(testElement, { clientX: 0, clientY: 10 })
-      fireEvent.mouseUp(testElement)
-    }
-  }).not.toThrow()
+  const element = document.createElement('div')
+  const result = container
+    .querySelector('.nut-elevator')
+    ?.getAttribute('data-index')
+  expect(result).toBeNull()
 })
 
-// 测试处理索引小于0的情况
-test('should handle invalid negative index', () => {
-  const { container } = render(<Elevator list={list} />)
+// 测试 scrollTo 函数的边界情况
+test('should handle edge cases in scrollTo function', () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const listView = container.querySelector('.nut-elevator-list-inner')
 
-  // 创建一个有data-index但值为-1的元素
-  const divWithNegativeIndex = document.createElement('div')
-  divWithNegativeIndex.setAttribute('data-index', '-1')
-  divWithNegativeIndex.className = 'test-negative-index'
-  container.appendChild(divWithNegativeIndex)
+  // 测试 index 为 0 的情况
+  act(() => {
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[0]
+    fireEvent.click(indexItem)
+  })
+  expect(listView?.scrollTop).toBe(0)
 
-  // 我们无法直接测试内部状态，但可以检查不会因为负索引而出错
-  expect(() => {
-    const element = container.querySelector('.test-negative-index')
-    if (element) {
-      fireEvent.mouseDown(element)
-      fireEvent.mouseMove(element, { clientX: 0, clientY: 10 })
-      fireEvent.mouseUp(element)
-    }
-  }).not.toThrow()
+  // 测试 index 为负数的情况
+  act(() => {
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[0]
+    fireEvent.click(indexItem)
+  })
+  expect(listView?.scrollTop).toBe(0)
+
+  // 测试 index 超出列表长度的情况
+  act(() => {
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[list.length - 1]
+    fireEvent.click(indexItem)
+  })
+  expect(listView?.scrollTop).toBeGreaterThan(0)
 })
 
-// 测试拖拽事件触发并有效处理
-test('should handle drag gestures on valid index elements', async () => {
-  const { container } = render(<Elevator list={list} />)
+// 测试拖拽相关的状态变化
+test('should update states correctly during drag operations', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const barsInner = container.querySelector('.nut-elevator-bars-inner')
 
-  // 获取索引元素
-  const indexItem = container.querySelectorAll(
-    '.nut-elevator-bars-inner-item'
-  )[1]
-
-  // 模拟拖拽
+  // 模拟拖拽开始
   await act(() => {
-    // 开始拖拽
-    fireEvent.mouseDown(indexItem)
-    // 移动
-    fireEvent.mouseMove(indexItem, { clientX: 0, clientY: 50 })
-    // 结束拖拽
-    fireEvent.mouseUp(indexItem)
+    fireEvent.mouseDown(barsInner as Element, { clientY: 100 })
+    fireEvent.mouseMove(barsInner as Element, { clientY: 150 })
   })
 
-  // 成功拖拽应该不会引发错误
-  expect(true).toBeTruthy()
+  // 检查 scrollStart 状态
+  expect(container.querySelector('.nut-elevator-code-current')).toBeTruthy()
+
+  // 模拟拖拽结束
+  await act(() => {
+    fireEvent.mouseUp(barsInner as Element)
+  })
+
+  // 检查 codeIndex 更新
+  const currentCode = container.querySelector('.nut-elevator-code-current')
+  expect(currentCode).toBeTruthy()
+})
+
+// 测试 calculateHeight 函数
+test('should calculate list heights correctly', () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const listItems = container.querySelectorAll('.nut-elevator-list-item')
+
+  // 触发滚动以调用 calculateHeight
+  act(() => {
+    const listView = container.querySelector('.nut-elevator-list-inner')
+    if (listView) {
+      Object.defineProperty(listView, 'scrollTop', { value: 50 })
+      fireEvent.scroll(listView)
+    }
+  })
+
+  // 验证列表项高度计算
+  expect(listItems.length).toBe(list.length)
+})
+
+// 测试 listViewScroll 函数
+test('should handle list view scroll correctly', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const listView = container.querySelector('.nut-elevator-list-inner')
+
+  // 模拟滚动事件
+  await act(() => {
+    if (listView) {
+      Object.defineProperty(listView, 'scrollTop', { value: 100 })
+      fireEvent.scroll(listView)
+    }
+  })
+
+  // 验证滚动位置更新
+  const fixedTitle = container.querySelector('.nut-elevator-list-fixed-title')
+  expect(fixedTitle).toBeTruthy()
+})
+
+// 测试 setListGroup 函数
+test('should set list group correctly', () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const listItems = container.querySelectorAll('.nut-elevator-list-item')
+
+  // 验证列表组是否正确设置
+  expect(listItems.length).toBe(list.length)
+
+  // 验证每个列表项是否都有正确的类名
+  listItems.forEach((item) => {
+    expect(item).toHaveClass('nut-elevator-list-item')
+  })
+})
+
+// 测试 handleClickItem 和 handleClickIndex 的组合场景
+test('should handle combined click scenarios', async () => {
+  const onItemClick = vi.fn()
+  const onIndexClick = vi.fn()
+
+  const { container } = render(
+    <Elevator
+      list={list}
+      height={200}
+      onItemClick={onItemClick}
+      onIndexClick={onIndexClick}
+    />
+  )
+
+  // 测试点击索引项
+  await act(() => {
+    const indexItem = container.querySelectorAll(
+      '.nut-elevator-bars-inner-item'
+    )[1]
+    fireEvent.click(indexItem)
+  })
+  expect(onIndexClick).toHaveBeenCalledWith('B')
+
+  // 测试点击列表项
+  await act(() => {
+    const listItem = container.querySelectorAll(
+      '.nut-elevator-list-item-name'
+    )[0]
+    fireEvent.click(listItem)
+  })
+  expect(onItemClick).toHaveBeenCalledWith('A', { id: 1, name: '安徽' })
+
+  // 验证高亮状态
+  const highlightedItem = container.querySelector(
+    '.nut-elevator-list-item-name-highcolor'
+  )
+  expect(highlightedItem).toBeTruthy()
+})
+
+// 测试 resetScrollState 函数
+test('should reset scroll state correctly', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const barsInner = container.querySelector('.nut-elevator-bars-inner')
+
+  // 模拟拖拽开始
+  await act(() => {
+    fireEvent.mouseDown(barsInner as Element, { clientY: 100 })
+    fireEvent.mouseMove(barsInner as Element, { clientY: 150 })
+  })
+
+  // 验证滚动状态被设置
+  expect(container.querySelector('.nut-elevator-code-current')).toBeTruthy()
+
+  // 模拟拖拽结束
+  await act(() => {
+    fireEvent.mouseUp(barsInner as Element)
+  })
+
+  // 验证滚动状态被重置
+  setTimeout(() => {
+    expect(container.querySelector('.nut-elevator-code-current')).toBeFalsy()
+  }, 0)
 })

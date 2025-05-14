@@ -70,10 +70,6 @@ export const Elevator: FunctionComponent<
     setScrollStart(false)
   }
 
-  const clientHeight = () => {
-    return listview.current ? listview.current.clientHeight : 0
-  }
-
   const getData = (el: HTMLElement, name: string): string => {
     const prefix = 'data-'
     // 检查点击的元素是否直接包含 data-index 属性
