@@ -10,6 +10,7 @@ import { animated } from '@react-spring/web'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { ElevatorItem, WebElevatorProps, ElevatorList } from '@/types'
+import { usePropsValue } from '@/hooks'
 
 export const elevatorContext = createContext({} as ElevatorItem)
 
@@ -22,12 +23,16 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
+  defaultValue: undefined,
+  value: undefined,
 } as WebElevatorProps
 
 export const Elevator: FunctionComponent<
   Partial<WebElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
+    value,
+    defaultValue,
     mode,
     height,
     floorKey,
@@ -58,10 +63,10 @@ export const Elevator: FunctionComponent<
     y2: 0,
   })
   const [scrollY, setScrollY] = useState(0)
-  const [currentData, setCurrentData] = useState<ElevatorItem>(
-    {} as ElevatorItem
-  )
-  const [currentKey, setCurrentKey] = useState('')
+  const [currentData, setCurrentData] = usePropsValue<ElevatorItem>({
+    value,
+    defaultValue: defaultValue || ({} as ElevatorItem),
+  })
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
@@ -141,7 +146,6 @@ export const Elevator: FunctionComponent<
   const handleClickItem = (key: string, item: ElevatorItem) => {
     onItemClick && onItemClick(key, item)
     setCurrentData(item)
-    setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
@@ -220,8 +224,7 @@ export const Elevator: FunctionComponent<
                         className={classNames({
                           [`${classPrefix}-list-item-name`]: true,
                           [`${classPrefix}-list-item-name-highcolor`]:
-                            currentData.id === subitem.id &&
-                            currentKey === item[floorKey],
+                            currentData.id === subitem.id,
                         })}
                         key={subitem.id}
                         onClick={() => handleClickItem(item[floorKey], subitem)}

@@ -14,6 +14,7 @@ import { harmony } from '@/utils/taro/platform'
 import { useUuid } from '@/hooks/use-uuid'
 import raf from '@/utils/raf'
 import { ElevatorItem, ElevatorList, TaroElevatorProps } from '@/types'
+import { usePropsValue } from '@/hooks'
 
 export const elevatorContext = createContext({} as ElevatorItem)
 
@@ -26,12 +27,16 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 18,
   showKeys: true,
+  defaultValue: undefined,
+  value: undefined,
 } as TaroElevatorProps
 
 export const Elevator: FunctionComponent<
   Partial<TaroElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
+    value,
+    defaultValue,
     mode,
     height,
     floorKey,
@@ -62,10 +67,10 @@ export const Elevator: FunctionComponent<
     y2: 0,
   })
 
-  const [currentData, setCurrentData] = useState<ElevatorItem>(
-    {} as ElevatorItem
-  )
-  const [currentKey, setCurrentKey] = useState('')
+  const [currentData, setCurrentData] = usePropsValue<ElevatorItem>({
+    value,
+    defaultValue: defaultValue || ({} as ElevatorItem),
+  })
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
@@ -159,7 +164,6 @@ export const Elevator: FunctionComponent<
   const handleClickItem = (key: string, item: ElevatorItem) => {
     onItemClick && onItemClick(key, item)
     setCurrentData(item)
-    setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
@@ -241,8 +245,7 @@ export const Elevator: FunctionComponent<
                         className={classNames({
                           [`${classPrefix}-list-item-name`]: true,
                           [`${classPrefix}-list-item-name-highcolor`]:
-                            currentData.id === subitem.id &&
-                            currentKey === item[floorKey],
+                            currentData.id === subitem.id,
                         })}
                         key={subitem.id}
                         onClick={() => handleClickItem(item[floorKey], subitem)}
