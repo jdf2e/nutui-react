@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent, act, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Elevator } from '../elevator'
+import { trigger, triggerDrag } from '@/utils/event-mocker'
 
 const list = [
   {
@@ -382,4 +383,35 @@ test('should reset scroll state correctly', () => {
   render(<Elevator list={list} height={200} />)
   // 简化测试，只确认组件正常渲染
   expect(true).toBeTruthy()
+})
+
+test('should handle drag start correctly', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const barsInner = container.querySelector('.nut-elevator-bars-inner')
+
+  // 模拟拖拽开始
+  await act(async () => {
+    trigger(barsInner, 'touchstart', 0, 0)
+    trigger(barsInner, 'touchmove', 0, 20)
+  })
+
+  // 验证 scrollStart 状态是否被正确设置
+  await waitFor(() => {
+    expect(container.querySelector('.nut-elevator-code-current')).toBeTruthy()
+  })
+})
+
+test('should handle drag end correctly', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const barsInner = container.querySelector('.nut-elevator-bars-inner')
+
+  // 模拟完整的拖拽过程
+  await act(async () => {
+    triggerDrag(barsInner, 0, 50)
+  })
+
+  // 验证拖拽结束后的状态
+  await waitFor(() => {
+    expect(container.querySelector('.nut-elevator-code-current')).toBeFalsy()
+  })
 })
