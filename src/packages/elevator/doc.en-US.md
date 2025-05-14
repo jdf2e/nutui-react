@@ -56,6 +56,8 @@ import { Elevator } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| value | Currently selected value | `{id: number \| string, name: string}` | - |
+| defaultValue | Default selected value, controlled | `{id: number \| string, name: string}` | - |
 | mode | Elevator structure display mode | `horizontal` \| `vertical` | `horizontal` |
 | height | Height of elevator area | `number` \| `string` | `200px` |
 | floorKey | Index key value | `string` | `title` |
