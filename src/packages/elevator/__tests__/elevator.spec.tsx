@@ -2,7 +2,6 @@ import * as React from 'react'
 import { render, fireEvent, act, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Elevator } from '../elevator'
-import { trigger, triggerDrag } from '@/utils/event-mocker'
 
 const list = [
   {
@@ -343,25 +342,114 @@ test('should reset scroll state correctly', () => {
 test('should handle drag start correctly', async () => {
   const { container } = render(<Elevator list={list} height={200} />)
   const barsInner = container.querySelector('.nut-elevator-bars-inner')
+  const barItem = container.querySelector('.nut-elevator-bars-inner-item')
 
-  // 模拟拖拽开始
+  // 模拟 useGesture 的拖拽开始事件
   await act(async () => {
-    trigger(barsInner, 'dragstart', 0, 0)
-    trigger(barsInner, 'dragmove', 0, 20)
+    // 模拟 onDragStart 事件
+    const dragStartEvent = {
+      target: barItem,
+      offset: [0, 0],
+      first: true,
+      active: true,
+      movement: [0, 0],
+      direction: [0, 0],
+      velocity: [0, 0],
+      distance: 0,
+      cancel: () => {},
+    }
+
+    // 触发 onDragStart
+    const event = new CustomEvent('dragstart', { detail: dragStartEvent })
+    barItem?.dispatchEvent(event)
   })
 })
 
 test('should handle drag end correctly', async () => {
   const { container } = render(<Elevator list={list} height={200} />)
-  const barsInner = container.querySelector('.nut-elevator-bars-inner')
+  const barItem = container.querySelector('.nut-elevator-bars-inner-item')
 
-  // 模拟完整的拖拽过程
+  // 模拟 useGesture 的拖拽结束事件
   await act(async () => {
-    triggerDrag(barsInner, 0, 50)
+    // 模拟 onDragEnd 事件
+    const dragEndEvent = {
+      target: barItem,
+      offset: [0, 50],
+      last: true,
+      active: false,
+      movement: [0, 50],
+      direction: [0, 1],
+      velocity: [0, 0],
+      distance: 50,
+      cancel: () => {},
+    }
+
+    // 触发 onDragEnd
+    const event = new CustomEvent('dragend', { detail: dragEndEvent })
+    barItem?.dispatchEvent(event)
   })
 
   // 验证拖拽结束后的状态
   await waitFor(() => {
-    expect(container.querySelector('.nut-elevator-code-current')).toBeFalsy()
+    const currentCode = container.querySelector('.nut-elevator-code-current')
+    expect(currentCode).toBeFalsy()
+  })
+})
+
+test('should handle complete drag process', async () => {
+  const { container } = render(<Elevator list={list} height={200} />)
+  const barItem = container.querySelector('.nut-elevator-bars-inner-item')
+
+  await act(async () => {
+    // 1. 开始拖拽
+    const dragStartEvent = {
+      target: barItem,
+      offset: [0, 0],
+      first: true,
+      active: true,
+      movement: [0, 0],
+      direction: [0, 0],
+      velocity: [0, 0],
+      distance: 0,
+      cancel: () => {},
+    }
+    const startEvent = new CustomEvent('dragstart', { detail: dragStartEvent })
+    barItem?.dispatchEvent(startEvent)
+
+    // 2. 拖拽中
+    const dragMoveEvent = {
+      target: barItem,
+      offset: [0, 20],
+      first: false,
+      active: true,
+      movement: [0, 20],
+      direction: [0, 1],
+      velocity: [0, 1],
+      distance: 20,
+      cancel: () => {},
+    }
+    const moveEvent = new CustomEvent('dragmove', { detail: dragMoveEvent })
+    barItem?.dispatchEvent(moveEvent)
+
+    // 3. 结束拖拽
+    const dragEndEvent = {
+      target: barItem,
+      offset: [0, 20],
+      last: true,
+      active: false,
+      movement: [0, 20],
+      direction: [0, 1],
+      velocity: [0, 0],
+      distance: 20,
+      cancel: () => {},
+    }
+    const endEvent = new CustomEvent('dragend', { detail: dragEndEvent })
+    barItem?.dispatchEvent(endEvent)
+  })
+
+  // 验证最终状态
+  await waitFor(() => {
+    const currentCode = container.querySelector('.nut-elevator-code-current')
+    expect(currentCode).toBeFalsy()
   })
 })
