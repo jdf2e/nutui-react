@@ -346,14 +346,9 @@ test('should handle drag start correctly', async () => {
 
   // 模拟拖拽开始
   await act(async () => {
-    trigger(barsInner, 'touchstart', 0, 0)
-    trigger(barsInner, 'touchmove', 0, 20)
+    trigger(barsInner, 'dragstart', 0, 0)
+    trigger(barsInner, 'dragmove', 0, 20)
   })
-
-  // 验证 scrollStart 状态是否被正确设置
-  //   await waitFor(() => {
-  //     expect(container.querySelector('.nut-elevator-code-current')).toBeTruthy()
-  //   })
 })
 
 test('should handle drag end correctly', async () => {
