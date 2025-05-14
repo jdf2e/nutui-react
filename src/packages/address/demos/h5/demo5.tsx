@@ -93,7 +93,7 @@ const Demo5 = () => {
   }
 
   const onSwitch = (val: { type: string }) => {
-    if (val.type === 'custom') {
+    if (val.type === 'cascader') {
       console.log('点击了“选择其他地址”按钮')
     } else {
       console.log('点击了自定义地址左上角的返回按钮')

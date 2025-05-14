@@ -10,6 +10,7 @@ export interface CascaderPane {
 export interface CascaderOption {
   text?: string
   value?: number | string
+  wordCode?: string
   paneKey?: string
   disabled?: boolean
   children?: CascaderOption[]
