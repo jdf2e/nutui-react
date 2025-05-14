@@ -66,6 +66,8 @@ const idID: BaseLang = {
     selectRegion: 'Pilih Daerah',
     deliveryTo: 'Kirim Ke',
     chooseAnotherAddress: 'Pilih alamat lain',
+    hotCity: 'Kota-kota populer',
+    selectProvince: 'Pilih provinsi/wilayah',
   },
   signature: {
     reSign: 'Masuk Kembali',

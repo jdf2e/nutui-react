@@ -274,7 +274,7 @@ export const Elevator: FunctionComponent<
                     className={classNames({
                       [`${classPrefix}-bars-inner-item`]: true,
                       [`${classPrefix}-bars-inner-item-active`]:
-                        item[floorKey] === list[currentIndex][floorKey],
+                        item[floorKey] === list[currentIndex]?.[floorKey],
                     })}
                     data-index={index}
                     key={index}

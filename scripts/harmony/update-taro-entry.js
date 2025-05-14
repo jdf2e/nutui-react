@@ -21,7 +21,7 @@ const isShow = (item) => {
 
 // 更新 app.config.ts 文件
 const createConfig = async () => {
-  const configRef = []
+  let configRef = []
 
   return new Promise((res, rej) => {
     config.nav.map((item) => {
@@ -29,8 +29,8 @@ const createConfig = async () => {
         root: item.enName,
         pages: [],
       }
-      if(paramG) {
-        if(paramG === item.enName){
+      if (paramG) {
+        if (paramG === item.enName) {
           item.packages.map((it) => {
             if (isShow(it)) {
               co.pages.push(`pages/${it.name.toLowerCase()}/index`)
@@ -49,6 +49,10 @@ const createConfig = async () => {
       co = { ...co, pages: co.pages.sort() }
       configRef.push(co)
     })
+
+    // 如果 pages 数据为空，则删除该项
+    configRef = configRef.filter((item) => item.pages.length !== 0)
+
     res(configRef)
   })
 }

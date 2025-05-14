@@ -15,7 +15,7 @@ export interface ExistRenderProps {
 }
 
 const defaultProps = {
-  type: 'custom',
+  type: 'exist',
   existList: [],
   defaultIcon: null,
   selectIcon: null,
@@ -53,7 +53,7 @@ export const ExistRender: FunctionComponent<
 
   const onClick = (e: ITouchEvent) => {
     e.stopPropagation()
-    onSwitch && onSwitch({ type: type === 'exist' ? 'custom' : 'exist' })
+    onSwitch && onSwitch({ type: type === 'exist' ? 'cascader' : 'exist' })
   }
 
   return (

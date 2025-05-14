@@ -22,7 +22,7 @@ import { mergeProps } from '@/utils/merge-props'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { isEmpty } from '@/utils/is-empty'
 import { getRefValue, useRefState } from '@/hooks/use-ref-state'
-import { useConfig } from '@/packages/configprovider'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 const defaultProps: TaroCascaderProps = {
   ...ComponentDefaults,

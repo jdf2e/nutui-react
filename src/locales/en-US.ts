@@ -65,6 +65,8 @@ const enUS: BaseLang = {
     selectRegion: 'Choose Address',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address',
+    hotCity: 'Hot City',
+    selectProvince: 'Choose Province or City',
   },
   signature: {
     reSign: 'Re Sign',

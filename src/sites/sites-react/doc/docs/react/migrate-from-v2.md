@@ -149,6 +149,11 @@ plugins: [
 
 ### 数据录入
 
+#### Address
+
+- 修订原 type 的类型定义范围，改 `custom` 为 `cascader`，语义化更强；增加 `elevator`，便于快速检索地址。如果没有用到过 `exsit` 与 `custom` 切换逻辑的，理论上无需关注该变化。
+- 电梯模式，支持热门城市、级联地址按照电梯的方式展示。
+
 [//]: # '#### Calendar'
 
 #### Cascader
@@ -314,7 +319,6 @@ plugins: [
   [//]: # '#### VirtualList'
   [//]: # '#### WaterMark'
   [//]: # '### 特色组件'
-  [//]: # '#### Address'
   [//]: # '#### Barrage'
   [//]: # '#### Card'
   [//]: # '#### Signature'
