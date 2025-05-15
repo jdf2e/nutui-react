@@ -136,7 +136,8 @@ const InternalUploader: ForwardRefRenderFunction<
     if (disabled) {
       return
     }
-    if (Taro.getEnv() === 'WEB') {
+    const env = getEnv()
+    if (env === 'WEB') {
       const el = document.getElementById('taroChooseImage')
       if (el) {
         el?.setAttribute('accept', accept)
@@ -152,7 +153,7 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if ((getEnv() === 'WEAPP' || getEnv() === 'JD') && chooseMedia) {
+    if (['WEAPP', 'JD', 'WEB'].includes(env) && chooseMedia) {
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         /** 文件类型 */
