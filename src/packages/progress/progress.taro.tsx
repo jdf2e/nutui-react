@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
-import { View, ProgressProps } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
@@ -19,8 +19,7 @@ const defaultProps = {
 } as TaroProgressProps
 
 export const Progress: FunctionComponent<
-  Partial<TaroProgressProps & ProgressProps> &
-    React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const rtl = useRtl()
   const {
