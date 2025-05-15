@@ -30,11 +30,29 @@ describe('radio', () => {
 
   test('radio custom icon', () => {
     const { container } = render(
-      <Radio icon={<Check />} activeIcon={<Check />}>
+      <Radio
+        icon={<Check className="test-class" />}
+        activeIcon={<Check className="test-active-class" />}
+      >
         自定义图标
       </Radio>
     )
-    expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-Check')
+    expect(container.querySelector('.nut-icon')).toHaveClass('test-class')
+  })
+
+  test('radio custom icon checked', () => {
+    const { container } = render(
+      <Radio
+        defaultChecked
+        icon={<Check className="test-class" />}
+        activeIcon={<Check className="test-active-class" />}
+      >
+        自定义图标
+      </Radio>
+    )
+    expect(container.querySelector('.nut-icon')).toHaveClass(
+      'test-active-class'
+    )
   })
 
   test('radioGroup onChange toBeCalled', () => {

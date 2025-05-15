@@ -165,3 +165,5 @@ import { Input } from '@nutui/nutui-react'
 | \--nutui-input-font-size | 文本字号 | `$font-size-base` |
 | \--nutui-input-lineheight | 行高 | `$font-size-l` |
 | \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
+
+<Contribution name="Input" />

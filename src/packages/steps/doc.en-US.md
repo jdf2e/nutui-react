@@ -144,3 +144,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |
 | \--nutui-steps-process-icon-before-bg-color | The color of the outer border of the dot progress bar in progress | `$color-primary-stop-2` |
+
+<Contribution name="Steps" />

@@ -9,9 +9,9 @@ import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
-import { OverlayProps } from './types'
+import { WebOverlayProps } from '@/types'
 
-export const defaultOverlayProps: OverlayProps = {
+export const defaultOverlayProps: WebOverlayProps = {
   ...ComponentDefaults,
   zIndex: 1000,
   duration: 300,
@@ -23,7 +23,7 @@ export const defaultOverlayProps: OverlayProps = {
   afterClose: () => {},
 }
 export const Overlay: FunctionComponent<
-  Partial<OverlayProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebOverlayProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     children,

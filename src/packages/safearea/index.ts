@@ -1,4 +1,4 @@
 import { SafeArea } from './safearea'
 
-export type { SafeAreaProps } from './safearea'
+export type { WebSafeAreaProps as SafeAreaProps } from '@/types'
 export default SafeArea

@@ -104,3 +104,5 @@ import { NumberKeyboard } from '@nutui/nutui-react-taro'
 | \--nutui-numberkeyboard-key-confirm-font-color | 确认按键字体颜色 | `#fff` |
 | \--nutui-numberkeyboard-key-confirm-background-color | 确认按键背景颜色 | `$color-primary` |
 | \--nutui-numberkeyboard-background-color | 键盘容器背景色 | `$color-background` |
+
+<Contribution name="NumberKeyboard" />

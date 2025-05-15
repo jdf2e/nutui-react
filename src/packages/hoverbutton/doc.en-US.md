@@ -88,3 +88,5 @@ The component provides the following CSS variables that can be used for custom s
 | \--nutui-hoverbutton-item-background-active | Button active background color | `#F6F6F6` |
 | \--nutui-hoverbutton-item-icon-color | Icon normal color | `#1A1A1A` |
 | \--nutui-hoverbutton-item-icon-color-active | Icon active color | `#595959` |
+
+<Contribution name="HoverButton" />

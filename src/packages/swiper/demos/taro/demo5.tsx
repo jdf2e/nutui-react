@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro'
+import { Swiper, pxTransform } from '@nutui/nutui-react-taro'
 import { Image, Text, View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
-import pxTransform from '@/utils/px-transform'
 
 function Demo5() {
   const swiperRef = React.useRef<any>(null)

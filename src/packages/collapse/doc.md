@@ -113,3 +113,5 @@ import { Collapse } from '@nutui/nutui-react'
 | \--nutui-collapse-wrapper-content-font-size | 内容字体大小 | `$font-size-base` |
 | \--nutui-collapse-wrapper-content-line-height | 内容行高 | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | 内容内边距 | `12px 26px` |
+
+<Contribution name="Collapse" />

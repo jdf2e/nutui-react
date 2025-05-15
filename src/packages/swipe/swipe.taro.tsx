@@ -9,14 +9,14 @@ import React, {
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
+import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
-import pxTransform from '@/utils/px-transform'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { ComponentDefaults } from '@/utils/typings'
+import { harmony } from '@/utils/taro/platform'
 import { useRefState } from '@/hooks/use-ref-state'
-
-export type SwipeSide = 'left' | 'right'
+import { useUuid } from '@/hooks/use-uuid'
+import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
 
 function preventDefault(event: any, isStopPropagation?: boolean): void {
   if (typeof event.cancelable !== 'boolean' || event.cancelable) {
@@ -27,48 +27,13 @@ function preventDefault(event: any, isStopPropagation?: boolean): void {
   }
 }
 
-export interface SwipeInstance {
-  open: (side: SwipeSide) => void
-  close: () => void
-}
-
-export interface SwipeProps extends BasicComponent {
-  name?: string | number
-  leftAction?: React.ReactNode
-  rightAction?: React.ReactNode
-  /** 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise */
-  beforeClose?: (position: string) => void
-  disabled?: boolean
-  onOpen?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onClose?: ({
-    name,
-    position,
-  }: {
-    name: string | number
-    position: SwipeSide
-  }) => void
-  onActionClick?: (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
-    position: SwipeSide
-  ) => void
-  onTouchStart?: (event: BaseEventOrig<HTMLDivElement>) => void
-  onTouchEnd?: (event: BaseEventOrig<HTMLDivElement>) => void
-  onTouchMove?: (event: BaseEventOrig<HTMLDivElement>) => void
-}
-
 const defaultProps = {
   ...ComponentDefaults,
   name: '',
-} as SwipeProps
+} as TaroSwipeProps
 export const Swipe = forwardRef<
-  SwipeInstance,
-  Partial<SwipeProps> &
+  SwipeRef,
+  Partial<TaroSwipeProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
@@ -76,23 +41,31 @@ export const Swipe = forwardRef<
 >((props, instanceRef) => {
   const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
+  const uid = useUuid()
+  const leftId = `swipe-left-${uid}`
+  const rightId = `swipe-right-${uid}`
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
-  useEffect(() => {
+  useReady(() => {
     const getWidth = async () => {
       if (leftWrapper.current) {
-        const leftRect = await getRectByTaro(leftWrapper.current)
+        const leftRect = await getRectInMultiPlatform(
+          leftWrapper.current,
+          leftId
+        )
         leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
       }
       if (rightWrapper.current) {
-        const rightRect = await getRectByTaro(rightWrapper.current)
-        console.log('actionWidth.current.left', rightRect.width)
+        const rightRect = await getRectInMultiPlatform(
+          rightWrapper.current,
+          rightId
+        )
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
-    setTimeout(() => getWidth())
-  }, [])
+    nextTick(() => getWidth())
+  })
 
   const { children, className, style } = { ...defaultProps, ...props }
 
@@ -126,18 +99,19 @@ export const Swipe = forwardRef<
     }
   }
   const wrapperStyle = {
-    transform: `translate(${state.offset}px, 0)`,
+    transform: `translate(${state.offset}${!harmony() ? 'px' : ''}, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
-
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
-    console.log('ontouchstart')
     if (leftWrapper.current) {
-      const leftRect = await getRectByTaro(leftWrapper.current)
+      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
-      const rightRect = await getRectByTaro(rightWrapper.current)
+      const rightRect = await getRectInMultiPlatform(
+        rightWrapper.current,
+        rightId
+      )
       rightRect &&
         setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
     }
@@ -164,9 +138,7 @@ export const Swipe = forwardRef<
       }
 
       newState.offset = rangeCalculation(
-        (harmony()
-          ? parseFloat(pxTransform(touch.deltaX.current))
-          : touch.deltaX.current) + startOffset.current,
+        touch.deltaX.current + startOffset.current,
         -actionWidth.current.right || 0,
         actionWidth.current.left || 0
       )
@@ -185,7 +157,7 @@ export const Swipe = forwardRef<
     }
   }
 
-  const toggle = (side: SwipeSide) => {
+  const toggle = (side: PositionX) => {
     const offset = Math.abs(state.offset)
     const base = 0.3
     const baseNum = opened ? 1 - base : base
@@ -197,7 +169,7 @@ export const Swipe = forwardRef<
       close(side)
     }
   }
-  const open = (side: SwipeSide) => {
+  const open = (side: PositionX) => {
     opened.current = true
     const offset =
       side === 'left' ? actionWidth.current.left : -actionWidth.current.right
@@ -206,7 +178,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipeSide) => {
+  const close = (position?: PositionX) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -227,18 +199,13 @@ export const Swipe = forwardRef<
 
   const leftWrapper = useRef(null)
   const rightWrapper = useRef(null)
-  const renderActionContent = (side: SwipeSide) => {
+  const renderActionContent = (side: PositionX) => {
     if (props[`${side}Action`]) {
-      console.log('actionWidth xxx', actionWidth.current.left)
       return (
         <View
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}-${side}`}
-          style={{
-            ...(side === 'left'
-              ? { left: Number(`${-actionWidth.current.left}`) }
-              : {}),
-          }}
+          id={side === 'left' ? leftId : rightId}
           onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
@@ -249,7 +216,7 @@ export const Swipe = forwardRef<
   }
   const handleOperate = (
     event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
-    position: SwipeSide
+    position: PositionX
   ) => {
     event.stopPropagation()
     if (props.beforeClose) {

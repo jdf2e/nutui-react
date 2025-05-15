@@ -80,3 +80,5 @@ import { Space } from '@nutui/nutui-react'
 | 名稱 | 默認值 | 說明 |
 | --- | --- | --- |
 | \--nutui-space-gap | `8px` | 间距大小 |
+
+<Contribution name="Space" />

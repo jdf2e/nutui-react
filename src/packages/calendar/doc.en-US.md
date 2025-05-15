@@ -170,3 +170,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-day-height | calendar day height | `60px` |
 | \--nutui-calendar-day-font-weight | calendar day font weight | `500` |
 | \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |
+
+<Contribution name="Calendar" />

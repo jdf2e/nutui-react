@@ -54,3 +54,5 @@ import { AvatarCropper } from '@nutui/nutui-react'
 | shape | 裁剪形狀,可選值爲：`square` `round` | `string` | `square` |
 | onConfirm | 裁剪後點擊確認觸發 | `(url: string) => void` | `-` |
 | onCancel | 點擊取消觸發 | `-` | `-` |
+
+<Contribution name="AvatarCropper" />

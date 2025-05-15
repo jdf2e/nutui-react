@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import { PriceProps } from './types'
+import { WebPriceProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -14,8 +14,8 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
-} as PriceProps
-export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
+} as WebPriceProps
+export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const {
     color,
     price,

@@ -56,3 +56,5 @@ Set the shape of the crop display, which is still square after the crop, and nee
 | shape | Crop shape, optional value is：`square` `round` | `string` | `square` |
 | onConfirm | Click Confirm to trigger after cropping | `(url: string) => void` | `-` |
 | onCancel | Click cancel trigger | `-` | `-` |
+
+<Contribution name="AvatarCropper" />

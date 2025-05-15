@@ -1,34 +1,24 @@
 import React, { useState } from 'react'
 import { Notify, Cell } from '@nutui/nutui-react-taro'
+import { Reload } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   const [showNotify, setShowNotify] = useState(false)
-  const [states, setStates] = useState({
-    message: '',
-    type: 'danger',
-  })
-  const changeNotify = (message: string, type?: string) => {
-    const change = Object.assign(states, { message, type })
-    setStates(change)
-  }
+  const [content] = useState('请求失败，请重试刷新')
   return (
     <>
       <Notify
         visible={showNotify}
-        type={states.type as any}
+        leftIcon={<Reload />}
         onClose={() => {
           setShowNotify(false)
         }}
-        onClick={() => {
-          console.log('click')
-        }}
       >
-        {states.message}
+        {content}
       </Notify>
       <Cell
         title="基础用法"
-        onClick={(event: React.MouseEvent) => {
-          changeNotify('基础用法')
+        onClick={() => {
           setShowNotify(true)
         }}
       />

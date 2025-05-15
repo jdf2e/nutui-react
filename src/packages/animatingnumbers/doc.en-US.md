@@ -54,3 +54,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-countup-bg-color | background color of item | `inherit` |
 | \--nutui-countup-color | color of item | `$color-title` |
 | \--nutui-countup-separator-color | The font color of the separator | `$color-title` |
+
+<Contribution name="AnimatingNumbers" />

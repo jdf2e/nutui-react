@@ -1,42 +1,13 @@
-import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import Popover from '@/packages/popover/index.taro'
-import { PopoverLocation } from '@/packages/popover/types'
-import { getTaroRectById } from '@/hooks/use-taro-rect'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getRectById } from '@/utils/taro/get-rect-by-id'
+import { ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider/index.taro'
-
-export interface TourList {
-  target: Element | string
-  content?: string
-  location?: string
-  popoverOffset?: number[]
-  arrowOffset?: number
-}
-
-export type TourType = 'step' | 'tile'
-
-export interface TourProps extends BasicComponent {
-  visible: boolean
-  type: TourType
-  location: PopoverLocation
-  mask: boolean
-  maskWidth: number | string
-  maskHeight: number | string
-  offset: number[]
-  list: TourList[]
-  title: ReactNode
-  next: ReactNode
-  prev: ReactNode
-  complete: ReactNode
-  showPrev: boolean
-  closeOnOverlayClick: boolean
-  onClose: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  onChange: (value: number) => void
-}
+import { TaroTourProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -53,11 +24,11 @@ const defaultProps = {
   complete: '',
   showPrev: true,
   closeOnOverlayClick: true,
-} as TourProps
+} as TaroTourProps
 
 const classPrefix = 'nut-tour'
 export const Tour: FunctionComponent<
-  Partial<TourProps> &
+  Partial<TaroTourProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
@@ -119,8 +90,7 @@ export const Tour: FunctionComponent<
   }, [active])
 
   const getRootPosition = () => {
-    getTaroRectById(list[active].target as string).then((rect: any) => {
-      console.log('rect', rect)
+    getRectById(list[active].target as string).then((rect: any) => {
       setMaskRect({
         top: rect.top,
         left: rect.left,
@@ -151,7 +121,6 @@ export const Tour: FunctionComponent<
   ) => {
     setShowTour(false)
     setShowPopup(false)
-
     onClose && onClose(e)
   }
 
@@ -191,16 +160,16 @@ export const Tour: FunctionComponent<
                         ? 'nut-tour-mask'
                         : 'nut-tour-mask nut-tour-mask-none'
                     }`}
-                    id="nut-tour-popid"
+                    id={`nut-tour-popid${index}`}
                     style={maskStyle()}
                   />
                 )}
                 <Popover
                   visible={showPopup}
                   location={item.location || location}
-                  targetId="nut-tour-popid"
+                  targetId={`nut-tour-popid${index === active ? index : ''}`}
                   closeOnOutsideClick={false}
-                  offset={item.popoverOffset || [0, 12]}
+                  offset={item.popoverOffset || [0, 8]}
                   arrowOffset={item.arrowOffset || 0}
                 >
                   {/* placeholder don't delete <></> */}

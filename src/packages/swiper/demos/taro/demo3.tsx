@@ -1,7 +1,6 @@
 import React from 'react'
 import { Image } from '@tarojs/components'
-import { Swiper } from '@nutui/nutui-react-taro'
-import pxTransform from '@/utils/px-transform'
+import { Swiper, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const list = [

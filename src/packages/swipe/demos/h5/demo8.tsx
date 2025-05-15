@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { Button, Cell, Dialog, Swipe, SwipeInstance } from '@nutui/nutui-react'
+import { Button, Cell, Dialog, Swipe, SwipeRef } from '@nutui/nutui-react'
 
 const App = () => {
   const [showDialog, setShowDialog] = useState(false)
-  const refDom = useRef<SwipeInstance>(null)
+  const refDom = useRef<SwipeRef>(null)
   const pRef = useRef('left')
   const beforeClose = (postion: string) => {
     pRef.current = postion

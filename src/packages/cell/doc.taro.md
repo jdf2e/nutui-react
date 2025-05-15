@@ -127,3 +127,5 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-group-description-line-height | 单元格分组的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |
 | \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px` |
+
+<Contribution name="Cell" />

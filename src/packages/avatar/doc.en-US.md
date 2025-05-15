@@ -137,3 +137,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-avatar-small-height | The height of small avatars | `32px` |
 | \--nutui-avatar-normal-width | The width of a normal size avatar | `40px` |
 | \--nutui-avatar-normal-height | Height of normal size avatar | `40px` |
+
+<Contribution name="Avatar" />

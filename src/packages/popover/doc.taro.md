@@ -26,7 +26,7 @@ import { Popover } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义内容
+### 自定义内容+颜色
 
 :::demo
 
@@ -38,19 +38,21 @@ import { Popover } from '@nutui/nutui-react-taro'
 
 通过 location 属性来控制气泡的弹出位置。可选值
 
+> 注意：这里在 3.x 版本上发生了变化，参考 type 文件中的 `FullPosition` 类型。
+
 ```
 top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-top-start     # 顶部左侧位置
-top-end       # 顶部右侧位置
-left-start    # 左侧上方位置
-left-end      # 左侧下方位置
-right-start   # 右侧上方位置
-right-end     # 右侧下方位置
-bottom-start  # 底部左侧位置
-bottom-end    # 底部右侧位置
+top-left      # 顶部左侧位置
+top-right     # 顶部右侧位置
+left-top      # 左侧上方位置
+left-bottom   # 左侧下方位置
+right-top     # 右侧上方位置
+right-bottom  # 右侧下方位置
+bottom-left   # 底部左侧位置
+bottom-right  # 底部右侧位置
 ```
 
 :::demo
@@ -61,18 +63,9 @@ bottom-end    # 底部右侧位置
 
 ### 位置自定义：单条数据
 
-通过 location 属性来控制气泡的弹出位置。可选值
+通过 location 属性来控制气泡的弹出位置。
 
-```
-top           # 顶部中间位置
-left          # 左侧中间位置
-right         # 右侧中间位置
-bottom        # 底部中间位置
-top-start     # 顶部左侧位置
-top-end       # 顶部右侧位置
-bottom-start  # 底部左侧位置
-bottom-end    # 底部右侧位置
-```
+> 注意：这里在 3.x 版本上发生了变化，参考 type 文件中的 `FullPosition` 类型。
 
 :::demo
 
@@ -93,14 +86,6 @@ bottom-end    # 底部右侧位置
 :::demo
 
 <CodeBlock src='taro/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定义颜色
-
-:::demo
-
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -152,10 +137,9 @@ PopoverList 属性是一个由对象构成的数组，数组中的每个对象�
 | \--nutui-popover-font-size | popover 内容区的 font-size 值 | `12px` |
 | \--nutui-popover-text-color | 选项区的文字颜色 | `$color-title` |
 | \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
-| \--nutui-popover-hover-background-color | 手指点击菜单选项选中的背景颜色 | `#fff` |
-| \--nutui-popover-hover-text-color | 手指点击菜单选项选中的文字颜色 | `#1a1a1a` |
-| \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色 | `$white` |
 | \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
 | \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disabled` |
-| \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |
-| \--nutui-popover-menu-item-width | 选项区菜单每一项宽度值，超过宽度值后，会折行展示，保障信息的完整性 | `160px` |
+| \--nutui-popover-padding | 选项区菜单每一项的 padding 值 | `8px` |
+| \--nutui-popover-item-width | 选项区菜单每一项宽度值，超过宽度值后，会折行展示，保障信息的完整性 | `160px` |
+
+<Contribution name="Popover" />

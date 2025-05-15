@@ -196,3 +196,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-checkbox-list-item-border | List item border | `15px` |
 | \--nutui-checkbox-list-padding | list padding | `15px` |
 | \--nutui-checkbox-list-item-padding | padding of list items | `15px` |
+
+<Contribution name="Checkbox" />

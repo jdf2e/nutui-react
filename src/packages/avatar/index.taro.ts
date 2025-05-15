@@ -1,4 +1,4 @@
 import { Avatar } from './avatar.taro'
 
-export type { AvatarProps, AvatarShape } from './avatar.taro'
+export type { TaroAvatarProps as AvatarProps } from '@/types'
 export default Avatar

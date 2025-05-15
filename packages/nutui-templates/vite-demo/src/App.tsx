@@ -1,6 +1,9 @@
 import './App.css'
 import { Star } from '@nutui/icons-react'
 import { Row, Col, Image, Button } from '@nutui/nutui-react'
+import '@nutui/nutui-react/dist/styles/themes/default.css'
+// import '@nutui/nutui-react/dist/styles/themes/jmapp.css'
+// import '@nutui/nutui-react/dist/styles/themes/jrkf.css'
 
 const Home = () => {
   return (

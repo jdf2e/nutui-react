@@ -8,31 +8,13 @@ import React, {
 import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas, CommonEventFunction, View } from '@tarojs/components'
-import { getWindowInfo } from '@/utils/get-system-info'
+import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { Button } from '@/packages/button/button.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/hooks/use-touch'
 import { clamp, preventDefault } from '@/utils'
-
-export type AvatarCropperToolbarPosition = 'top' | 'bottom'
-export type AvatarCropperSizeType = 'original' | 'compressed'
-export type AvatarCropperSourceType = 'album' | 'camera'
-export type AvatarCropperShape = 'square' | 'round'
-
-export interface AvatarCropperProps extends BasicComponent {
-  maxZoom: number
-  space: number
-  toolbar: React.ReactNode[]
-  toolbarPosition: AvatarCropperToolbarPosition
-  editText: React.ReactNode | string
-  sizeType: AvatarCropperSizeType[]
-  sourceType: AvatarCropperSourceType[]
-  shape: AvatarCropperShape
-  onConfirm: (e: string) => void
-  onCancel: () => void
-}
+import { TaroAvatarCropperProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -53,12 +35,12 @@ const defaultProps = {
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
   shape: 'square',
-} as AvatarCropperProps
+} as TaroAvatarCropperProps
 
 const classPrefix = `nut-avatar-cropper`
-export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
-  props
-) => {
+export const AvatarCropper: FunctionComponent<
+  Partial<TaroAvatarCropperProps>
+> = (props) => {
   const { locale } = useConfig()
   defaultProps.toolbar = [
     <Button type="danger" key="cancel">

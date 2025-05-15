@@ -12,12 +12,13 @@ import isEqual from 'react-fast-compare'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import {
-  PickerViewProps,
+  TaroPickerViewProps,
   PickerOption,
   PickerValue,
   PickerOptions,
-} from './types'
+} from '@/types'
 import PickerRoller from './pickerroller.taro'
+import { isEmpty } from '@/utils/is-empty'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -25,11 +26,11 @@ const defaultProps = {
   defaultValue: [],
   value: undefined,
   renderLabel: (item: PickerOption) => item.label,
-} as PickerViewProps
+} as TaroPickerViewProps
 
 const InternalPickerView: ForwardRefRenderFunction<
   unknown,
-  Partial<PickerViewProps>
+  Partial<TaroPickerViewProps>
 > = (props, ref) => {
   const {
     options,
@@ -133,7 +134,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   const handleSelect = useCallback(
     (option: PickerOption, index: number) => {
       const newValue = option?.value
-      if (!newValue || innerValue[index] === newValue) return
+      if (isEmpty(newValue) || innerValue[index] === newValue) return
       changeIndex.current = index
       if (columnsType === 'multiple') {
         setInnerValue((prev) => {
@@ -218,7 +219,7 @@ const InternalPickerView: ForwardRefRenderFunction<
   )
 }
 
-const PickerView = React.forwardRef<unknown, Partial<PickerViewProps>>(
+const PickerView = React.forwardRef<unknown, Partial<TaroPickerViewProps>>(
   InternalPickerView
 )
 

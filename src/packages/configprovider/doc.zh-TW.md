@@ -123,3 +123,5 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 | --- | --- | --- | --- |
 | locale | 設置多語言包 | `BaseLang` | zhCN |
 | theme | 設置主題 | `Record<string, string>` | \- |
+
+<Contribution name="ConfigProvider" />

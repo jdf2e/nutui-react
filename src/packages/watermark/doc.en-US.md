@@ -60,3 +60,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-watermark-z-index | zIndex | `$mask-content-z-index` |
+
+<Contribution name="WaterMark" />

@@ -130,3 +130,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-searchbar-input-text-color | searchbar input text color | `$color-title` |
 | \--nutui-searchbar-input-curror-color | searchbar input curror color | `$color-title` |
 | \--nutui-searchbar-input-text-align | searchbar input text align | `left` |
+
+<Contribution name="SearchBar" />

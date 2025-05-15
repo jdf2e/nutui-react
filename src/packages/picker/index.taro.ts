@@ -1,4 +1,4 @@
 import Picker from './picker.taro'
 
-export type { PickerProps } from './types.taro'
+export type { TaroPickerProps as PickerProps } from '@/types'
 export default Picker

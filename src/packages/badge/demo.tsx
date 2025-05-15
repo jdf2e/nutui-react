@@ -8,6 +8,7 @@ import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 const BadgeDemo = () => {
   const [translated] = useTranslate({
@@ -20,6 +21,7 @@ const BadgeDemo = () => {
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
       a8237653: '填充模式',
+      disabled: '禁用',
     },
     'zh-TW': {
       '8ab98966': '默认用法',
@@ -30,6 +32,7 @@ const BadgeDemo = () => {
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
       a8237653: '填充模式',
+      disabled: '禁用',
     },
     'en-US': {
       '8ab98966': 'Basic usage',
@@ -40,6 +43,7 @@ const BadgeDemo = () => {
       '915d7b01': 'Custom Position',
       f1089312: 'Display Alone',
       a8237653: 'Fill Mode',
+      disabled: 'Disabled',
     },
   })
 
@@ -48,6 +52,8 @@ const BadgeDemo = () => {
       <div className="demo">
         <h2>{translated['8ab98966']}</h2>
         <Demo1 />
+        <h2>{translated.disabled}</h2>
+        <Demo9 />
         <h2>{translated['1e7a2282']}</h2>
         <Demo2 />
         <h2>{translated.customColor}</h2>

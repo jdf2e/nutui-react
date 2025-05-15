@@ -54,3 +54,5 @@ import { Drag } from '@nutui/nutui-react'
 | onDragStart | Start dragging elements | `() => void` | `-` |
 | onDrag | Drag element | `(state: { offset: [x: number, y: number] }) => void` | `-` |
 | onDragEnd | Stop dragging elements | `(state: { offset: [x: number, y: number] }) => void` | `-` |
+
+<Contribution name="Drag" />

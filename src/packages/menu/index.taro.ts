@@ -1,8 +1,8 @@
 import { Menu } from './menu.taro'
 
 export type {
-  MenuProps,
+  TaroMenuProps as MenuProps,
   MenuTriggerType,
-  MenuCallBackFunction,
-} from './menu.taro'
+  MenuCallBack,
+} from '@/types'
 export default Menu

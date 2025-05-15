@@ -105,6 +105,7 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | uploadIcon | 上传区域<a href="#/zh-CN/component/icon">图标名称</a> | `React.ReactNode` | `-` |
 | deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
+| listUploadRender | 自定义列表模式的上传区域 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
@@ -167,3 +168,5 @@ import { Uploader } from '@nutui/nutui-react-taro'
 | \--nutui-uploader-preview-tips-padding | 上传图片预览tips下的padding值 | `0 5px` |
 | \--nutui-uploader-preview-close-right | 上传图片关闭按钮的right值 | `0px` |
 | \--nutui-uploader-preview-close-top | 上传图片关闭按钮的top值 | `0px` |
+
+<Contribution name="Uploader" />

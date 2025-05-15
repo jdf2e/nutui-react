@@ -108,3 +108,5 @@ import { Progress } from '@nutui/nutui-react-taro'
 | \--nutui-progress-text-position-bottom | 文本定位 bottom | `-4px` |
 | \--nutui-progress-text-border-radius | 文本边框圆角 | `5px` |
 | \--nutui-progress-text-background | 文本背景颜色 | `$progress-color` |
+
+<Contribution name="Progress" />

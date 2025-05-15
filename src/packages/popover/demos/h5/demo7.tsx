@@ -6,15 +6,7 @@ const Demo7 = () => {
   const itemList = [
     {
       key: 'key1',
-      name: 'option1',
-    },
-    {
-      key: 'key2',
-      name: 'option2',
-    },
-    {
-      key: 'key3',
-      name: 'option3',
+      name: '主要文案内容主要文案内容',
     },
   ]
   return (
@@ -26,23 +18,23 @@ const Demo7 = () => {
           position: 'relative',
         }}
       >
-        <div style={{ height: '100px' }} />
+        <div style={{ height: 100 }} />
         <Popover
           className="demo-popover"
+          theme="dark"
           visible={visible}
           list={itemList}
-          location="top-start"
+          location="top-left"
           closeOnOutsideClick={false}
-          style={{ marginInlineEnd: '30px' }}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)
           }}
         >
-          <Button id="test" type="primary" shape="square">
+          <Button id="test" type="primary">
             置于可滚动容器中
           </Button>
         </Popover>
-        <div style={{ height: '100px' }} />
+        <div style={{ height: 100 }} />
       </div>
     </>
   )

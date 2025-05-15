@@ -36,3 +36,5 @@ import { Barrage } from '@nutui/nutui-react'
 | Event | Description | Arguments |
 | --- | --- | --- |
 | add | Add data | `(word: string) => void` |
+
+<Contribution name="Barrage" />

@@ -80,3 +80,5 @@ import { Space } from '@nutui/nutui-react-taro'
 | 名称 | 默认值 | 描述 |
 | --- | --- | --- |
 | \--nutui-space-gap | `8px` | 间距大小 |
+
+<Contribution name="Space" />

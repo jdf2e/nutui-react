@@ -102,3 +102,5 @@ import { TrendArrow } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-trendarrow-font-size | 指标趋势的文字大小 | `14px` |
 | \--nutui-trendarrow-icon-margin | 指标趋势的文字与图标间距 | `4px` |
+
+<Contribution name="TrendArrow" />

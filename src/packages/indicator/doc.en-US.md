@@ -67,8 +67,8 @@ import { Indicator } from '@nutui/nutui-react'
 | current | current step | `number` | `0` |
 | total | step total size | `number` | `3` |
 | direction | display directory,default is horizontal | `horizontal` \| `vertical` | `horizontal` |
-| color | color | `primary` \| `white` | `primary` |
-| type | interactivity Type | `anchor` \| `slide` | `anchor` |
+| color | color | `primary` \| `default` | `primary` |
+| type | interactivity Type | `anchor` \| `slide`\| `dualScreen` | `anchor` |
 
 ## Theming
 
@@ -84,3 +84,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-indicator-dot-active-size | indicator dot active size | `6px` |
 | \--nutui-indicator-border-radius | indicator active border size | `$radius-xxs` |
 | \--nutui-indicator-dot-margin | when horizontal, indicator margin | `$spacing-xxxs` |
+
+<Contribution name="Indicator" />

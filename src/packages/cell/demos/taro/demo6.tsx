@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button, Cell } from '@nutui/nutui-react-taro'
+import { Button, Cell, pxTransform } from '@nutui/nutui-react-taro'
 import { navigateTo, redirectTo } from '@tarojs/taro'
 import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo6 = () => {
   const onJumpclick = (

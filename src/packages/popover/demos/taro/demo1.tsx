@@ -2,19 +2,21 @@ import React, { useState } from 'react'
 import { Popover, Button, Space } from '@nutui/nutui-react-taro'
 import { Tips, Close } from '@nutui/icons-react-taro'
 
-const Demo1 = () => {
+const Demo = () => {
   const [basic, setBasic] = useState(false)
   const [dark, setDark] = useState(false)
+  const [index, setIndex] = useState(0)
   const itemList = [
     {
       key: 'key1',
-      name: 'option1',
+      name: '主要文案内容',
       icon: <Tips />,
       action: {
         icon: <Close />,
         onClick: (e: any) => {
-          console.log('onclick 1')
           e.stopPropagation()
+          index === 0 && basic && setBasic(false)
+          index === 1 && dark && setDark(false)
         },
       },
     },
@@ -24,10 +26,10 @@ const Demo1 = () => {
       <Popover
         visible={basic}
         list={itemList}
-        location="bottom-start"
-        style={{ marginInlineEnd: '30px' }}
+        location="bottom-left"
         onClick={() => {
           basic ? setBasic(false) : setBasic(true)
+          setIndex(0)
         }}
         onOpen={() => {
           console.log('打开菜单时触发')
@@ -36,27 +38,22 @@ const Demo1 = () => {
           console.log('关闭菜单时触发')
         }}
       >
-        <Button type="primary" shape="square">
-          明亮风格
-        </Button>
+        <Button type="primary">明亮风格</Button>
       </Popover>
-
       <Popover
         visible={dark}
         list={itemList}
         theme="dark"
-        location="bottom-start"
-        style={{ marginInlineEnd: '30px' }}
+        location="right"
         onClick={() => {
           dark ? setDark(false) : setDark(true)
+          setIndex(1)
         }}
       >
-        <Button type="primary" shape="square">
-          暗黑风格
-        </Button>
+        <Button type="primary">暗黑风格</Button>
       </Popover>
     </Space>
   )
 }
 
-export default Demo1
+export default Demo

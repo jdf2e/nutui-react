@@ -1,4 +1,4 @@
 import { BackTop } from './backtop'
 
-export type { BackTopProps } from './backtop'
+export type { WebBackTopProps as BackTopProps } from '@/types'
 export default BackTop

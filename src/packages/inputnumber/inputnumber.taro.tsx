@@ -1,41 +1,11 @@
-import React, {
-  useEffect,
-  useRef,
-  FunctionComponent,
-  useState,
-  ChangeEvent,
-} from 'react'
-import classNames from 'classnames'
-import { ITouchEvent, InputProps, View, Text } from '@tarojs/components'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
+import { ITouchEvent, View } from '@tarojs/components'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/platform-taro'
-
-export interface InputNumberProps extends BasicComponent {
-  value: number | string
-  defaultValue: number | string
-  allowEmpty: boolean
-  min: number | string
-  max: number | string
-  type?: Extract<InputProps['type'], 'number' | 'digit'>
-  disabled: boolean
-  readOnly: boolean
-  step: number
-  digits: number
-  async: boolean
-  select: boolean
-  formatter?: (value?: string | number) => string
-  onPlus: (e: ITouchEvent) => void
-  onMinus: (e: ITouchEvent) => void
-  onOverlimit: (e: ITouchEvent | ChangeEvent<HTMLInputElement>) => void
-  onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
-  onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
-  onChange: (
-    param: string | number,
-    e: ITouchEvent | ChangeEvent<HTMLInputElement>
-  ) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { bound } from '@/utils/bound'
+import { TaroInputNumberProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -44,16 +14,15 @@ const defaultProps = {
   allowEmpty: false,
   min: 1,
   max: 9999,
-  type: 'digit',
   step: 1,
   digits: 0,
-  async: false,
   select: true,
-} as InputNumberProps
+  beforeChange: (value) => Promise.resolve(true),
+} as TaroInputNumberProps
 
 const classPrefix = `nut-inputnumber`
 export const InputNumber: FunctionComponent<
-  Partial<InputNumberProps> &
+  Partial<TaroInputNumberProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'onBlur'>
 > = (props) => {
   const {
@@ -68,7 +37,6 @@ export const InputNumber: FunctionComponent<
     allowEmpty,
     digits,
     step,
-    async,
     select,
     className,
     style,
@@ -79,13 +47,15 @@ export const InputNumber: FunctionComponent<
     onBlur,
     onFocus,
     onChange,
+    beforeChange,
     ...restProps
   } = {
     ...defaultProps,
     ...props,
   }
-  const isHarmony = harmony()
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, className, {
+    [`${classPrefix}-disabled`]: disabled,
+  })
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
@@ -101,23 +71,16 @@ export const InputNumber: FunctionComponent<
         ? parseFloat(defaultValue)
         : defaultValue,
     finalValue: 0,
-    onChange: (value) => {},
   })
-  const bound = (value: number, min: number, max: number) => {
-    let res = value
-    if (min !== undefined) {
-      res = Math.max(Number(min), res)
-    }
-    if (max !== undefined) {
-      res = Math.min(Number(max), res)
-    }
-    return res
-  }
+
   const format = (value: number | null | string): string => {
     if (value === null) return ''
     // 如果超过 min 或 max, 需要纠正
-    if (typeof value === 'string') value = parseFloat(value)
-    const fixedValue = bound(value, Number(min), Number(max))
+    const fixedValue = bound(
+      typeof value === 'string' ? parseFloat(value) : value,
+      Number(min),
+      Number(max)
+    )
     if (formatter) {
       return formatter(fixedValue)
     }
@@ -126,57 +89,53 @@ export const InputNumber: FunctionComponent<
     }
     return fixedValue.toString()
   }
+
   const [inputValue, setInputValue] = useState(format(shadowValue))
 
   useEffect(() => {
-    if (!focused && !async) {
-      setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
+    if (!focused) {
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
 
-  useEffect(() => {
-    if (async) {
-      setShadowValue(bound(Number(value), Number(min), Number(max)))
-      setInputValue(format(value))
-    }
-  }, [value])
-
-  const calcNextValue = (current: any, step: any, symbol: number) => {
+  const calcNextValue = (current: any, stepValue: any, symbol: number) => {
     const dig = digits + 1
-    return (
-      (parseFloat(current || '0') * dig + parseFloat(step) * dig * symbol) / dig
-    )
+    const currentValue = parseFloat(current || '0')
+    const stepAmount = parseFloat(stepValue) * symbol
+    return (currentValue * dig + stepAmount * dig) / dig
   }
-  const update = (negative: boolean, e: ITouchEvent) => {
-    if (step !== undefined) {
-      const shouldOverBoundary = calcNextValue(
-        shadowValue,
-        step,
-        negative ? -1 : 1
-      )
-      const nextValue = bound(shouldOverBoundary, Number(min), Number(max))
-      setShadowValue(nextValue)
-      if (
-        negative
-          ? shouldOverBoundary < Number(min)
-          : shouldOverBoundary > Number(max)
-      ) {
-        onOverlimit?.(e)
-      } else {
-        onChange?.(nextValue, e)
-      }
+
+  const update = async (negative: boolean, e: ITouchEvent) => {
+    if (step === undefined) return
+    negative ? onMinus?.(e) : onPlus?.(e)
+
+    const shouldOverBoundary = calcNextValue(
+      bound(Number(shadowValue), Number(min), Number(max)),
+      step,
+      negative ? -1 : 1
+    )
+    const maybeResume = await beforeChange(Number(shouldOverBoundary))
+    if (!maybeResume) return
+
+    const nextValue = bound(shouldOverBoundary, Number(min), Number(max))
+    setShadowValue(nextValue)
+    if (
+      negative
+        ? shouldOverBoundary < Number(min)
+        : shouldOverBoundary > Number(max)
+    ) {
+      onOverlimit?.(e)
+    } else {
+      onChange?.(nextValue, e)
     }
   }
-  const handleReduce = (e: ITouchEvent) => {
+  const handleReduce = async (e: ITouchEvent) => {
     if (disabled) return
-    onMinus?.(e)
-    update(true, e)
+    await update(true, e)
   }
-  const handlePlus = (e: ITouchEvent) => {
+  const handlePlus = async (e: ITouchEvent) => {
     if (disabled) return
-    onPlus?.(e)
-    update(false, e)
+    await update(false, e)
   }
 
   const parseValue = (text: string) => {
@@ -184,40 +143,28 @@ export const InputNumber: FunctionComponent<
     if (text === '-') return null
     return text
   }
-  const clampValue = (valueStr: string | null) => {
-    if (valueStr === null) return defaultValue
-    const val = Number(parseFloat(valueStr || '0').toFixed(digits))
-    return Math.max(Number(min), Math.min(Number(max), val))
-  }
-  const handleValueChange = (
-    valueStr: string | null,
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const val = clampValue(valueStr)
-    // input暂不触发onOverlimit
-    // if (val !== Number(e.target.value)) {
-    //   onOverlimit?.(e)
-    // }
-    if (val !== Number(shadowValue)) {
-      onChange?.(val, e)
-    }
-  }
-  const handleInputChange = (e: any) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // 设置 input 值， 在 blur 时格式化
     setInputValue(e.target.value)
     const valueStr = parseValue(e.target.value)
-    if (valueStr === null) {
-      if (allowEmpty) {
-        setShadowValue(null)
-      } else {
-        setShadowValue(defaultValue)
-      }
+    const maybeResume = await beforeChange(Number(valueStr))
+    if (!maybeResume) return
+
+    setShadowValue(
+      // eslint-disable-next-line no-nested-ternary
+      valueStr === null ? (allowEmpty ? null : defaultValue) : valueStr
+    )
+
+    if (
+      valueStr !== null &&
+      (Number(valueStr) < Number(min) || Number(valueStr) > Number(max))
+    ) {
+      onOverlimit?.(e)
     } else {
-      setShadowValue(clampValue(valueStr) as any)
+      onChange?.(parseFloat(valueStr || '0').toFixed(digits), e)
     }
-    !async && handleValueChange(valueStr, e)
   }
-  const handleFocus = (e: any) => {
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true)
     setInputValue(
       shadowValue !== undefined && shadowValue !== null
@@ -226,48 +173,26 @@ export const InputNumber: FunctionComponent<
     )
     onFocus?.(e)
   }
-  const handleBlur = (e: any) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false)
-    onBlur?.(e)
+    onBlur && onBlur(e)
     const valueStr = parseValue(e.target.value)
-    if (valueStr === null) {
-      if (allowEmpty) {
-        setShadowValue(null)
-      } else {
-        setShadowValue(defaultValue)
-      }
-    } else {
-      setShadowValue(clampValue(valueStr) as any)
-    }
-    async && handleValueChange(valueStr, e)
+    onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
   }
 
   return (
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
-        {isHarmony ? (
-          <Text
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-minus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === min || disabled,
-              }
-            )}
-          >
-            -
-          </Text>
-        ) : (
-          <Minus
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-minus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === min || disabled,
-              }
-            )}
-          />
-        )}
+        <Minus
+          size={10}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-minus`,
+            {
+              [`${classPrefix}-icon-disabled`]:
+                Number(shadowValue) <= Number(min) || disabled,
+            }
+          )}
+        />
       </View>
       <input
         className={classNames(`${classPrefix}-input`, {
@@ -285,29 +210,16 @@ export const InputNumber: FunctionComponent<
       />
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
-        {isHarmony ? (
-          <Text
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-plus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === max || disabled,
-              }
-            )}
-          >
-            +
-          </Text>
-        ) : (
-          <Plus
-            className={classNames(
-              `${classPrefix}-icon ${classPrefix}-icon-plus`,
-              {
-                [`${classPrefix}-icon-disabled`]:
-                  shadowValue === max || disabled,
-              }
-            )}
-          />
-        )}
+        <Plus
+          size={10}
+          className={classNames(
+            `${classPrefix}-icon ${classPrefix}-icon-plus`,
+            {
+              [`${classPrefix}-icon-disabled`]:
+                Number(shadowValue) >= Number(max) || disabled,
+            }
+          )}
+        />
       </View>
     </View>
   )

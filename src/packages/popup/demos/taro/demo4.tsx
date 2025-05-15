@@ -9,26 +9,28 @@ const Demo4 = () => {
   return (
     <>
       <Cell
-        title="阻塞点击 Overlay 关闭"
+        title="阻塞点击 Overlay 关闭，方式1"
         onClick={() => {
           setShowOverlayStop(true)
         }}
       />
       <Popup
+        closeable
+        closeIcon={<Failure size={12} />}
         visible={showOverlayStop}
-        style={{ padding: '30px 50px' }}
+        style={{ height: '40%' }}
+        position="bottom"
         onClose={() => {
+          console.log('onClose')
           setShowOverlayStop(false)
         }}
         onOverlayClick={() => {
           console.log('onOverlayClick')
           return false
         }}
-      >
-        正文
-      </Popup>
+      />
       <Cell
-        title="阻塞点击 close icon 关闭"
+        title="阻塞点击 Overlay 关闭，方式2"
         onClick={() => {
           setShowCloseIconStop(true)
         }}
@@ -37,9 +39,9 @@ const Demo4 = () => {
         closeable
         closeIcon={<Failure size={12} />}
         visible={showCloseIconStop}
-        closeOnOverlayClick={false}
         style={{ height: '40%' }}
         position="bottom"
+        closeOnOverlayClick={false}
         onCloseIconClick={() => {
           console.log('onCloseIconClick')
           setShowCloseIconStop(false)

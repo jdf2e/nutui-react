@@ -95,3 +95,5 @@ import { DatePicker } from '@nutui/nutui'
 | onCancel | Emitted when click cancel button. | `() => void` | `-` |
 | onClose | Emitted when click confirm and cancel button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value, index) => void` | `-` |
+
+<Contribution name="DatePicker" />

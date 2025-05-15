@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
-import { Cell, Button, Toast, Progress } from '@nutui/nutui-react-taro'
+import {
+  Cell,
+  Button,
+  Toast,
+  Progress,
+  pxTransform,
+  harmony,
+} from '@nutui/nutui-react-taro'
 import { Text } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState(0)
@@ -12,7 +17,6 @@ const Demo7 = () => {
     <Cell.Group>
       {!harmony() && (
         <Toast
-          type="text"
           visible={show}
           content={toastMsg}
           onClose={() => {

@@ -148,3 +148,5 @@ import { CountDown } from '@nutui/nutui-react'
 | \--nutui-countdown-number-primary-color | type爲`primary`時，倒計時的時間區域的文字顏色 | `$color-primary-text` |
 | \--nutui-countdown-primary-background-color | type爲`primary`時，倒計時的時間區域的背景顏色 | `$color-primary` |
 | \--nutui-countdown-primary-border-color | type爲`primary`時，倒計時的時間區域的邊框顏色顏色 | `$color-primary` |
+
+<Contribution name="CountDown" />

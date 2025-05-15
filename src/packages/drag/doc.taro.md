@@ -54,3 +54,5 @@ import { Drag } from '@nutui/nutui-react-taro'
 | onDragStart | 开始拖拽元素 | `() => void` | `-` |
 | onDrag | 拖拽元素 | `(state: { offset: [x: number, y: number] }) => void` | `-` |
 | onDragEnd | 停止拖拽元素 | `(state: { offset: [x: number, y: number] }) => void` | `-` |
+
+<Contribution name="Drag" />

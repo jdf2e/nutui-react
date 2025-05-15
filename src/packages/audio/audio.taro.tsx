@@ -1,37 +1,17 @@
-import React, {
-  useState,
-  useRef,
-  CSSProperties,
-  FunctionComponent,
-} from 'react'
-
+import React, { useState, useRef, FunctionComponent } from 'react'
 import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
 import { Service } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface AudioProps extends BasicComponent {
-  className?: string
-  style?: CSSProperties
-  url: string
-  autoplay?: boolean
-  loop?: boolean
-  type: string
-  onFastBack?: (ctx: InnerAudioContext) => void
-  onForward?: (ctx: InnerAudioContext) => void
-  onPause?: any
-  onPlay?: any
-  onPlayEnd?: (ctx: InnerAudioContext) => void
-  onCanPlay?: (ctx: InnerAudioContext) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroAudioProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   className: '',
-  url: '',
+  src: '',
   style: {},
   autoplay: false,
   loop: false,
@@ -42,16 +22,16 @@ const defaultProps = {
   onPlay: (ctx: InnerAudioContext) => {},
   onPlayEnd: (ctx: InnerAudioContext) => {},
   onCanPlay: (ctx: InnerAudioContext) => {},
-} as AudioProps
+} as TaroAudioProps
 export const Audio: FunctionComponent<
-  Partial<AudioProps> &
+  Partial<TaroAudioProps> &
     (React.HTMLAttributes<HTMLDivElement> | InnerAudioContext)
 > = (props) => {
   const classPrefix = 'nut-audio'
   const { locale } = useConfig()
   const {
     className,
-    url,
+    src,
     style,
     autoplay,
     loop,
@@ -85,7 +65,7 @@ export const Audio: FunctionComponent<
 
   const audioRef = useRef(createInnerAudioContext())
   const audioCtx = audioRef.current
-  audioCtx.src = url
+  audioCtx.src = src
   audioCtx.autoplay = autoplay || false
   audioCtx.loop = loop || false
   audioCtx.onPause(() => {

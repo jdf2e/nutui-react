@@ -1,24 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface VideoProps extends BasicComponent {
-  source: {
-    type: string
-    src: string
-  }
-  options: {
-    controls?: boolean
-    muted?: boolean
-    autoplay?: boolean
-    poster?: string
-    playsinline?: boolean
-    loop?: boolean
-  }
-  onPlay: (element: HTMLVideoElement) => void
-  onPause: (element: HTMLVideoElement) => void
-  onPlayEnd: (element: HTMLVideoElement) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebVideoProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -34,7 +17,7 @@ const defaultProps = {
     playsinline: false,
     loop: false,
   },
-} as VideoProps
+} as WebVideoProps
 
 export type VideoRef = {
   pause: () => void
@@ -44,7 +27,7 @@ export type VideoRef = {
 const classPrefix = `nut-video`
 export const Video = React.forwardRef<
   VideoRef,
-  Partial<VideoProps> &
+  Partial<WebVideoProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
 >((props, ref) => {
   const {

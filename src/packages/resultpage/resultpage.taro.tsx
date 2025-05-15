@@ -1,32 +1,11 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { Tips, Warning, Failure, Ask, Success } from '@nutui/icons-react-taro'
-import { View, Text } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import {
-  Button,
-  ButtonFill,
-  ButtonSize,
-  ButtonType,
-} from '@/packages/button/button.taro'
-import { ResultPageStatus, ResultPageStatusOptions } from './types'
+import { Ask, Failure, Success, Tips, Warning } from '@nutui/icons-react-taro'
+import { Text, View } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
+import { Button } from '@/packages/button/button.taro'
+import { ResultPageStatusOptions, TaroResultPageProps } from '@/types'
 
-export type ResultPageAction = {
-  text: React.ReactNode
-  type?: ButtonType
-  size?: ButtonSize
-  fill?: ButtonFill
-  disabled?: boolean
-  onClick?: () => () => void
-}
-
-export interface ResultPageProps extends BasicComponent {
-  title: ReactNode
-  description: ReactNode
-  icon: ReactNode
-  status: ResultPageStatus
-  actions: ResultPageAction[]
-}
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
@@ -34,9 +13,9 @@ const defaultProps = {
   icon: '',
   status: 'info',
   actions: [],
-} as ResultPageProps
+} as TaroResultPageProps
 export const ResultPage: FunctionComponent<
-  Partial<ResultPageProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroResultPageProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     className,

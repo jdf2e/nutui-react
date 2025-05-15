@@ -1,3 +1,158 @@
+# v3.0.11
+
+`2025-05-09`
+
+- :bug: fix(address): 构建单一样式文件 (#3220)
+- 📖 docs: 升级文档补充 (#3204)
+- :sparkles: feat(address): v15 适配 (#3171)
+- :bug: fix: 修复编译单个组件在小程序下路径异常的问题 (#3215)
+- :bug: fix(picker): 解决透传popup的round属性不生效问题 (#3205)
+- zap: perf: optimize the performance issues caused by style injection (#3203)
+
+# v3.0.10
+
+`2025-04-25`
+
+- 📖 docs: jmapp 不判断环境，直接打开 (#3193)
+- :sparkles: feat(switch): loading 态受控 (#3149)
+- :sparkles: feat(uploader): add listUploadRender prop for custom list mode upload… (#3198)
+- :sparkles: feat(video): 兼容taro Component属性 (#3185)
+- :sparkles: feat(radio): 支持自定义icon的classname (#3196)
+- :bug: fix(tabs): 修复滚动计算问题，优化定位逻辑 (#3183)
+- :bug: fix: 兼容选中值为0的情况 (#3192)
+
+# v3.0.9
+
+`2025-04-18`
+
+- :sparkles: feat(form): 增加 taro components 属性的支持,抽象类型 (#3182)
+- :sparkles: feat(input): 增加 taro components 属性的支持 (#3181)
+- :sparkles: feat(button): 兼容 taro components (#3188)
+- :bug: fix(image): update image props tsType (#3178)
+- 🪵 refactor: 打包组件不同主题的 css 文件 (#3189)
+- 🪵 refactor(loading): 移除内置的 lottie，可通过 icon 属性加载 lottie (#3184)
+- 📖 docs(audio): 修订audio taro 端文档,不再支持taro多端 (#3187)
+- 🏡 chore: update taro version (#3186)
+- 🏡 chore: 调整 utils 和 hooks 的导出方式 (#3162)
+
+# v3.0.8
+
+`2025-04-11`
+
+- :sparkles: feat(v15): swipe 增加 v15 的 demo (#3160)
+- :sparkles: feat(dialog): 添加变量处理 (#3172)
+- :bug: fix(sidebar): scroll animation not working with sidebarDuration prop (#3169)
+- :bug: fix(switch): 异步操作中抛错可中断 loading 态 (#3143)
+- :bug: fix: jmapp demo build (#3146)
+- :bug: fix(image): 组件内部的style处理覆盖传入的className (#3165)
+- :bug: fix(cascader): 选中后 tab 应展示 text 字段的值 (#3167)
+- :bug: fix: codesandbox displays abnormal (#3159)
+- :bug: fix(docs): 修复 markdown 无法正确编译注释 (#3158)
+- :bug: fix(skeleton): 废弃inline 导致的警告问题修复 (#3154)
+- 🏡 chore: 增加 useHtmlComponents 模式 (#3156)
+- 📖 docs: 补充快速上手和主题中的配置项的解释 (#3163)
+
+# v3.0.7
+
+`2025-04-03`
+
+- :sparkles: feat(jdesign): 修订变量名 (#3127)
+- :sparkles: feat(collapse): 适配鸿蒙 (#3139)
+- :bug: fix(tabs): 兼容16的处理 (#3150)
+- :bug: fix(dialog)：修复函数式调用时 hidecancel 不生效问题 (#3145)
+- :bug: fix(button): 样式变量无法生效问题修复 (#3142)
+- :bug: fix(Popup): 调整最小高度设定为 26% (#3144)
+- :bug: fix: popover 无法关闭的问题,删除无用代码和无用的样式变量 (#3129)
+- :bug: fix: contribution img failed to display (#3141)
+- :bug: fix(switch): 简化props使用 (#3132)
+- :bug: fix: tabbar config json (#3134)
+- 🪵 refactor(dialog): 抽离types到标准spec下，去掉web h5 wrap层 (#3147)
+- 🏡 chore: 修复正式环境的 publicPath (#3137)
+
+# v3.0.6
+
+`2025-03-28`
+
+- :sparkles: feat(skeleton): v15 (#3086)
+- :sparkles: feat(Tabbar): v15 样式适配；增加 icon/value/title 的function类型，支持根据active状态渲染不同数据；增加 onDoubleClick 事件 (#3110)
+- :sparkles: feat(indicator): 增加 UI 变体的类型 (#3114)
+- :sparkles: feat(switch): 异步切换支持受控loading态 (#3122)
+- :sparkles: feat(notify): v15 (#3082)
+- :sparkles: feat(lottie): 支持京东小程序 (#3080)
+- :sparkles: feat(demoblock): code block scrolling behavior， CodesandBox function and copyCode styles (#3106)
+- :bug: fix(searchbar): 支付宝小程序设置 enableInPageRenderInput 后无法触发 onChange (#3130)
+- :bug: fix: doc css (#3126)
+- :bug: fix(overlay): 扩大点击范围 (#3117)
+- :bug: fix(pickerview): 解决小程序获取高度计算错误 (#3120)
+- :bug: fix(badge): 修正css变量定义 (#3123)
+- :bug: fix: update pkgjson title (#3119)
+- 🪵 refactor(badge): 支持禁用模式 (#3118)
+- 🏡 chore: support ui review (#3121)
+
+# v3.0.5
+
+`2025-03-21`
+
+- feat(pickerview): 小程序支持自定义列表行高 (#3102)
+- feat: 优化了一下文档样式,更紧凑清晰 (#3105)
+- fix(ImagePreview): 优化代码，fix 因为popup最大宽度导致的问题 (#2939)
+- fix(badge): 解决中文偏上问题 (#3111)
+- fix(swipe): 调整 demo 中字体为 12 (#3093)
+- fix: correct import paths (#3089)
+- fix: 开发环境中导出 types 下的类型 (#3090)
+- fix(inputnumber): value 大于 max 图标应处于禁用态 (#3107)
+- fix(resultpage): 引入button样式 (#3103)
+- fix(SearchBar): demo 样式变量修订 (#3101)
+- fix: adjust site style (#3096)
+- refactor(fixednav): support harmony (#3095)
+- docs: 补充web 设置 px 转 rem时的文档 (#3098)
+- feat(pickerview): 选中值增加class类名用于自定义样式 (#3097)
+- test(uploader): optimize async test cases stability (#3104)
+
+# v3.0.4
+
+`2025-03-07`
+
+- fix(sidebar): 禁用属性和内容显示异常 (#3084)
+- fix: 示例中 toast 的用法修复 (#3083)
+- chore: 移除废弃的 github action (#3085)
+- chore(deps): 升级 actions/github-script 到 v7 (#3012)
+
+# v3.0.3
+
+`2025-03-07`
+
+- refactor(pagination): 组件重构, hooks 实现数据抽象 (#2988)
+- refactor(cascader): 组件重构，修订 lazy 属性的定义 (#3007)
+- fix(countdown): 秒位补 0 展示 (#3072)
+- fix(popup): 修复 popup 示例问题 (#3075)
+- fix(calendarcard): 修复日历卡片在 JD 小程序下的示例 (#3074)
+- fix(inputnumber): 组件重构, 增加 beforeChange，调整异步触发逻辑 (#3006)
+- chore: 类型文件中增加 jsdoc (#3073)
+- chore: 类型规范化 (#3034)
+- docs: 增加组件相关Issues和更新日志的展示 (#3027)
+- docs: 修复快速上手中的按需加载配置 (#3071)
+- docs: 更新迁移文档 (#3077)
+
+# v3.0.2
+
+`2025-03-07`
+
+- feat(form): 同步 2.x 的功能 (#2976)
+- feat(swipe): harmony (#3039)
+- fix: sync v15 sign (#3067)
+- fix: 解决按需引入picker和datepicker没有样式问题 (#3064)
+- fix(signature): 解决taro h5不能绘制问题 (#3060)
+- fix(input): style 属性设置为 CSSProperties 类型的值 (#3059)
+- fix: taro default import error (#3057)
+- fix(docs): 快速上手文件 (#3058)
+- docs(site): 删除无用的代码，更新视觉版本号 (#3063)
+- docs: update common docs
+- docs: fix some mistakes in the documentation (#3056)
+- chore: add jdtaro. True means that will repeat (#3065)
+- chore: update site style (#3055)
+- refactor: migrate site to nutui-react (#2955)
+
 # v3.0.1
 
 `2025-03-05`

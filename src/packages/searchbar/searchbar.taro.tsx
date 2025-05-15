@@ -1,31 +1,16 @@
+import Taro from '@tarojs/taro'
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { View, ITouchEvent, Input as TaroInput } from '@tarojs/components'
-import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
+import {
+  Input as TaroInput,
+  ITouchEvent,
+  InputProps,
+  View,
+  BaseEventOrig,
+} from '@tarojs/components'
+import { ArrowLeft, MaskClose, Search } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface SearchBarProps extends BasicComponent {
-  value?: string
-  placeholder?: string
-  shape?: 'square' | 'round'
-  disabled?: boolean
-  maxLength?: number
-  clearable?: boolean
-  readOnly?: boolean
-  autoFocus?: boolean
-  backable: boolean
-  left: React.ReactNode
-  right: React.ReactNode
-  leftIn: React.ReactNode
-  rightIn: React.ReactNode
-  onSearch?: (val: string) => void
-  onChange?: (value: string, event?: ChangeEvent<HTMLInputElement>) => void
-  onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
-  onClear?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-  onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroSearchBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -41,9 +26,9 @@ const defaultProps = {
   right: '',
   rightIn: '',
   leftIn: <Search size="16" />,
-} as SearchBarProps
+} as TaroSearchBarProps
 export const SearchBar: FunctionComponent<
-  Partial<SearchBarProps> &
+  Partial<TaroSearchBarProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onFocus' | 'onBlur'
@@ -52,7 +37,7 @@ export const SearchBar: FunctionComponent<
   const classPrefix = 'nut-searchbar'
 
   const { locale } = useConfig()
-  const searchRef = useRef<HTMLInputElement>(null)
+  const searchRef = useRef<HTMLInputElement | null>(null)
 
   const {
     value: outerValue,
@@ -87,17 +72,17 @@ export const SearchBar: FunctionComponent<
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
   }
-  const onInput = (event: any) => {
+  const onInput = (event: BaseEventOrig<InputProps.inputEventDetail>) => {
     const eventValue = event?.detail?.value
     if (value === eventValue) return
     onChange && onChange?.(eventValue, event)
     setValue(eventValue)
     eventValue === '' && forceFocus()
   }
-  const focus = (event: any) => {
+  const focus = (event: BaseEventOrig<InputProps.inputForceEventDetail>) => {
     onFocus && onFocus(event?.detail?.value, event)
   }
-  const blur = (event: any) => {
+  const blur = (event: BaseEventOrig<InputProps.inputValueEventDetail>) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
     onBlur && onBlur(event?.detail?.value, event)
@@ -106,7 +91,9 @@ export const SearchBar: FunctionComponent<
     setValue(outerValue || '')
   }, [outerValue])
   useEffect(() => {
-    autoFocus && forceFocus()
+    if (Taro.getEnv() === 'WEB') {
+      autoFocus && forceFocus()
+    }
   }, [autoFocus])
   const renderField = () => {
     return (
@@ -115,10 +102,12 @@ export const SearchBar: FunctionComponent<
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
-        value={value || ''}
+        style={style}
+        value={(value || '').toString()}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled || readOnly}
         maxlength={maxLength}
+        autoFocus={autoFocus}
         onInput={onInput}
         onFocus={focus}
         onBlur={blur}
@@ -127,7 +116,7 @@ export const SearchBar: FunctionComponent<
       />
     )
   }
-  const clickInput = (e: any) => {
+  const clickInput = (e: ITouchEvent) => {
     onInputClick && onInputClick(e)
   }
   const renderLeftIn = () => {
@@ -168,9 +157,7 @@ export const SearchBar: FunctionComponent<
       </View>
     )
   }
-  const clearaVal = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
+  const clearaVal = (event: ITouchEvent) => {
     if (disabled || readOnly) {
       return
     }
@@ -179,14 +166,6 @@ export const SearchBar: FunctionComponent<
     onChange && onChange?.('')
     onClear && onClear(event)
   }
-  //   const onKeypress = (event: any) => {
-  //     if (event?.detail?.keyCode === 13) {
-  //       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-  //         event.preventDefault()
-  //       }
-  //       onSearch && onSearch(value as string)
-  //     }
-  //   }
   const onConfirm = () => {
     onSearch && onSearch(value as string)
   }

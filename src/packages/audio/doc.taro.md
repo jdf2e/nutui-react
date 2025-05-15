@@ -1,6 +1,10 @@
 # Audio 音频播放器
 
-用于音频播放
+用于音频播放。**Taro 端不再暴露该组件，建议使用能力更强的 Taro.createInnerAudioContext 接口。**
+
+请参考：https://docs.taro.zone/docs/components/media/audio
+
+> 以下使用方式，**已不支持**。
 
 ## 引入
 
@@ -23,7 +27,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
         preload="auto"
@@ -55,7 +59,7 @@ const App = () => {
         className="custom-voice-audio"
         id="custom-voice-audio"
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="none"
         preload="auto"
         onCanPlay={(e: any) => {
@@ -89,7 +93,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
         muted={false}
@@ -123,7 +127,7 @@ const App = () => {
     <>
       <Audio
         autoPlay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
         muted={false}
@@ -148,7 +152,7 @@ export default App
 | --- | --- | --- | --- |
 | className | 类名 | `string` | `-` |
 | style | css样式 | `CSSProperties` | `{}` |
-| url | 语音资源链接 | `string` | `-` |
+| src | 语音资源链接 | `string` | `-` |
 | muted | 是否静音 | `boolean` | `false` |
 | autoPlay | 是否自动播放 | `boolean` | `false` |
 | loop | 是否循环播放 | `boolean` | `false` |
@@ -160,3 +164,5 @@ export default App
 | onPlayEnd | 语音播放完成，loop=false时生效 | event：HTMLAudioElement |
 | onMute | 静音回调 | event：HTMLAudioElement |
 | onCanPlay | 可以播放媒体时触发 | event：HTMLAudioElement |
+
+<Contribution name="Audio" />

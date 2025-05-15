@@ -1,8 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe, pxTransform } from '@nutui/nutui-react-taro'
 import { Text, View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   const handleChange = () => {
@@ -62,7 +61,11 @@ const App = () => {
             zIndex: 2,
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>事件</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            事件
+          </View>
         </View>
       </Swipe>
     </>

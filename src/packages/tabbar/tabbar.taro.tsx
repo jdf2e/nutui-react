@@ -1,20 +1,12 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import TabbarItem from '../tabbaritem/index.taro'
 import TabbarContext from './context'
-
-export interface TabbarProps extends BasicComponent {
-  defaultValue: number
-  value?: number
-  fixed: boolean
-  inactiveColor: string
-  activeColor: string
-  safeArea: boolean
-  onSwitch: (value: number) => void
-}
+import { TaroTabbarProps } from '@/types'
+import SafeArea from '@/packages/safearea/index.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -22,11 +14,12 @@ const defaultProps = {
   fixed: false,
   inactiveColor: '',
   activeColor: '',
+  direction: 'vertical',
   safeArea: false,
-  onSwitch: (value) => {},
-} as TabbarProps
+  onSwitch: () => {},
+} as TaroTabbarProps
 
-export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
+export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
   Item: typeof TabbarItem
 } = (props) => {
   const {
@@ -36,14 +29,12 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
     fixed,
     activeColor,
     inactiveColor,
+    direction,
     safeArea,
     className,
     style,
     onSwitch,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
 
   const [selectIndex, setSelectIndex] = usePropsValue<number>({
@@ -52,6 +43,23 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
     finalValue: 0,
     onChange: onSwitch,
   })
+
+  const sizeCls = useMemo(() => {
+    const size = React.Children.count(children)
+    return size > 3
+      ? ''
+      : classNames({
+          [`${classPrefix}-wrap-3`]: size === 3,
+          [`${classPrefix}-wrap-2`]: size === 2,
+          [`${classPrefix}-wrap-${direction}`]:
+            size === 2 && direction !== 'vertical',
+        })
+  }, [children, direction])
+
+  const itemDirection = useMemo(() => {
+    const size = React.Children.count(children)
+    return size === 2 && direction !== 'vertical' && direction
+  }, [direction, children])
 
   return (
     <View
@@ -64,7 +72,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
       )}
       style={style}
     >
-      <View className={`${classPrefix}-wrap`}>
+      <View className={`${classPrefix}-wrap ${sizeCls}`}>
         <TabbarContext.Provider
           value={{
             selectIndex,
@@ -73,13 +81,18 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
             handleClick: setSelectIndex,
           }}
         >
-          {React.Children.map(children, (child, index) => {
-            if (!React.isValidElement(child)) return null
-            return React.cloneElement(child, { ...child.props, index })
-          })}
+          {React.Children.map(children, (child, index) =>
+            React.isValidElement(child)
+              ? React.cloneElement(child, {
+                  ...child.props,
+                  index,
+                  direction: itemDirection,
+                })
+              : null
+          )}
         </TabbarContext.Provider>
       </View>
-      {(fixed || safeArea) && <View className={`${classPrefix}-safe-area`} />}
+      {(fixed || safeArea) && <SafeArea position="bottom" />}
     </View>
   )
 }

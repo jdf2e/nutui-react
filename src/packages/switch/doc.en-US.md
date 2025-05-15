@@ -26,6 +26,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### loading 态受控
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### disabled status
 
 :::demo
@@ -77,7 +85,10 @@ import { Switch } from '@nutui/nutui-react'
 | disabled | Disabled | `boolean` | `false` |
 | activeText | Text description when opening | `ReactNode` | `-` |
 | inactiveText | Text description when closed | `ReactNode` | `-` |
-| onChange | Trigger when switching switches | `onChange:(value: boolean, event: Event)` | `-` |
+| loadingIcon | Control the loading state icon, disable the loading state when a null | `ReactNode` | `<Loading1 />` |
+| loading | loading state, controlled | `boolean` | `-` |
+| onLoadingChange | Triggered when switching loading | `onLoadingChange:(value: boolean)` | `-` |
+| onChange | Trigger when switching switches | `onChange:(value: boolean)` | `-` |
 
 ## Theming
 
@@ -102,3 +113,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-switch-label-text-color | Switch internal text color | `$color-primary-text` |
 | \--nutui-switch-label-font-size | Switch internal text size | `$font-size-s` |
 | \--nutui-switch-inactive-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |
+
+<Contribution name="Switch" />

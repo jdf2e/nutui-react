@@ -1,7 +1,6 @@
 import React from 'react'
-import { Card, Tag } from '@nutui/nutui-react-taro'
+import { Card, Tag, pxTransform } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const Demo2 = () => {
   const state = {

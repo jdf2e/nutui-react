@@ -1,11 +1,11 @@
 import PickerView from './pickerview.taro'
 
 export type {
-  PickerViewProps,
+  TaroPickerViewProps as PickerViewProps,
   PickerOption,
-  PickerRollerProps,
+  TaroPickerRollerProps as PickerRollerProps,
   PickerValue,
   PickerOptions,
   PickerOnChangeCallbackParameter,
-} from './types'
+} from '@/types'
 export default PickerView

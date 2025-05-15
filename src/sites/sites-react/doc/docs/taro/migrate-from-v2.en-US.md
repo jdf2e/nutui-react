@@ -1,4 +1,4 @@
-# Upgrade from v2 to v3.
+# Upgrade from v2 to v3
 
 This document will assist you in upgrading from NutUI React 2.x to NutUI React 3.x.
 
@@ -41,7 +41,7 @@ plugins: [
       style: 'css',
       camel2DashComponentName: false,
       "customName": (name, file) => {
-        return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
+        return `@nutui/nutui-react/dist/es/packages/${name.toLowerCase()}`
       }
     },
     "nutui-react",
@@ -145,19 +145,28 @@ If your project uses these components, please read the documentation carefully a
 ### Data
 
 [//]: # '#### Calendar'
-[//]: # '#### Cascader'
-[//]: # '#### Checkbox'
-[//]: # '#### Checkbox.Group'
-[//]: # '#### DatePicker'
-[//]: # '#### Form'
-[//]: # '#### Form.Item'
-[//]: # '#### Input'
-[//]: # '#### InputNumber'
-[//]: # '#### NumberKeyboard'
-[//]: # '#### Picker'
-[//]: # '#### Radio'
-[//]: # '### Radio.Group'
-[//]: # '#### Range'
+
+#### Cascader
+
+- The lazy property indicates that automatic data loading is enabled. The Cascader internally implements the logic for automatic data loading through value and onLoad. The lazy property must be set together with the onLoad property.
+- The data type returned by the onLoad method is CascaderOption[], which by default supports promises.
+- Remove the built-in tree structure.
+  [//]: # '#### Checkbox'
+  [//]: # '#### Checkbox.Group'
+  [//]: # '#### DatePicker'
+  [//]: # '#### Form'
+  [//]: # '#### Form.Item'
+  [//]: # '#### Input'
+
+#### InputNumber
+
+- Remove async, which can be replaced by beforeChange
+- Add beforeChange to handle asynchronous calls
+  [//]: # '#### NumberKeyboard'
+  [//]: # '#### Picker'
+  [//]: # '#### Radio'
+  [//]: # '### Radio.Group'
+  [//]: # '#### Range'
 
 #### Rate
 
@@ -184,6 +193,7 @@ If your project uses these components, please read the documentation carefully a
 - Adjusted the default value of the maxCount attribute in multi-select mode to Number.MAX_VALUE.
 - Introduced a new upload method.
 - Changed the types of defaultValue and value from FileType to FileItem.
+- listUploadRender allows customizing the upload area in list mode.
 
 ### Feedback
 
@@ -251,7 +261,12 @@ If your project uses these components, please read the documentation carefully a
 
 [//]: # '#### ImagePreview'
 [//]: # '#### NoticeBar'
-[//]: # '#### Popover'
+
+#### Popover
+
+- Deprecated style variables that existed in the documentation have been removed, `--nutui-popover-hover-background-color`、`--nutui-popover-hover-text-color`、`--nutui-popover-border-color`
+- Changed style variable, `--nutui-popover-menu-item-padding` -> `--nutui-popover-padding`，`--nutui-popover-menu-item-width` -> `--nutui-popover-item-width`
+- Revised the data type for `location` to use a unified position type `FullPosition`
 
 #### Price
 
@@ -259,19 +274,33 @@ If your project uses these components, please read the documentation carefully a
 - Added a new color attribute for price types.
 
 [//]: # '#### Progress'
-[//]: # '#### Skeleton'
-[//]: # '#### Steps'
-[//]: # '#### Step'
-[//]: # '#### Swiper'
-[//]: # '#### Table'
-[//]: # '#### Tag'
-[//]: # '#### TrendArrow'
-[//]: # '#### Video'
-[//]: # '#### VirtualList'
-[//]: # '#### WaterMark'
-[//]: # '### 特色组件'
-[//]: # '#### Address'
-[//]: # '#### Barrage'
-[//]: # '#### Card'
-[//]: # '#### Signature'
-[//]: # '#### TimeSelect'
+
+#### Skeleton
+
+- Removed `avatar` attribute, can be simulated using `width` and `height` attributes
+- Removed `avatarShape` attribute, can be set using the `shape` attribute
+- Removed `avatarSize` attribute
+- Added `width` attribute to control width
+- Added `height` attribute to control height
+- Added `duration` attribute to control animation duration
+- Added `size` attribute to select from built-in component heights
+
+  [//]: # '#### Steps'
+  [//]: # '#### Step'
+  [//]: # '#### Swiper'
+  [//]: # '#### Table'
+  [//]: # '#### Tag'
+  [//]: # '#### TrendArrow'
+
+#### Video
+
+- Compatible with Taro Component properties, you can directly use attributes such as src, loop, and so on.
+
+  [//]: # '#### VirtualList'
+  [//]: # '#### WaterMark'
+  [//]: # '### 特色组件'
+  [//]: # '#### Address'
+  [//]: # '#### Barrage'
+  [//]: # '#### Card'
+  [//]: # '#### Signature'
+  [//]: # '#### TimeSelect'

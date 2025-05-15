@@ -1,18 +1,9 @@
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext, ReactNode } from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index'
 import TabbarContext from '@/packages/tabbar/context'
-
-export interface TabbarItemProps extends BasicComponent {
-  title: ReactNode
-  icon: ReactNode
-  value: ReactNode
-  dot: boolean
-  max: number
-  top: string
-  right: string
-}
+import { WebTabbarItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -23,9 +14,10 @@ const defaultProps = {
   max: 99,
   top: '0',
   right: '0',
-} as TabbarItemProps
+  direction: 'vertical',
+} as WebTabbarItemProps
 
-export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
+export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
   props
 ) => {
   const ctx = useContext(TabbarContext)
@@ -41,6 +33,8 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     right,
     // @ts-ignore
     index,
+    direction,
+    onActiveClick,
     ...rest
   } = {
     ...defaultProps,
@@ -52,16 +46,19 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     classPrefix,
     {
       [`${classPrefix}-active`]: active,
+      [`${classPrefix}-large`]: !icon || !title,
     },
     className
   )
-  const boxPrefix = `${classPrefix}-icon-box`
-  const titleClass = classNames(boxPrefix, `${boxPrefix}-nav`, {
-    [`${boxPrefix}-large`]: !icon,
-  })
+
+  const renderNodeWithActive = (
+    node: ReactNode | ((active: boolean) => ReactNode)
+  ) => {
+    return node && typeof node === 'function' ? node(active) : node
+  }
 
   const badgeProps = {
-    value,
+    value: renderNodeWithActive(value),
     dot,
     max,
     top,
@@ -70,7 +67,46 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   }
 
   const renderTitleText = () => {
-    return title && <div className={titleClass}>{title}</div>
+    return (
+      title && (
+        <div className={`${classPrefix}-text`}>
+          {renderNodeWithActive(title)}
+        </div>
+      )
+    )
+  }
+
+  const renderTitle = () => {
+    return (
+      <Badge size="normal" {...badgeProps}>
+        {renderTitleText()}
+      </Badge>
+    )
+  }
+
+  const renderIcon = () => {
+    return renderNodeWithActive(icon)
+  }
+
+  const renderIconAndTitle = () => {
+    return (
+      <>
+        <Badge size="normal" {...badgeProps} top={3}>
+          {renderIcon()}
+        </Badge>
+        {renderTitleText()}
+      </>
+    )
+  }
+
+  const renderDualItem = () => {
+    return dot ? null : (
+      <>
+        {renderIcon()}
+        {renderTitleText()}
+        <Badge {...badgeProps} />
+      </>
+    )
   }
 
   return (
@@ -80,18 +116,16 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         color: active ? ctx?.activeColor : ctx?.inactiveColor,
         ...style,
       }}
-      onClick={() => ctx?.handleClick(index)}
+      onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
       {...rest}
     >
-      {icon ? (
-        <>
-          <Badge {...badgeProps}>
-            <div className={boxPrefix}>{icon}</div>
-          </Badge>
-          {renderTitleText()}
-        </>
+      {direction === 'horizontal' && !dot ? (
+        renderDualItem()
       ) : (
-        <Badge {...badgeProps}>{renderTitleText()}</Badge>
+        <>
+          {icon && renderIconAndTitle()}
+          {!icon && renderTitle()}
+        </>
       )}
     </div>
   )

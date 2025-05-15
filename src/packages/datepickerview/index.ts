@@ -1,4 +1,4 @@
 import { DatePickerView } from './datepickerview'
 
-export type { DatePickerViewProps } from './types'
+export type { WebDatePickerViewProps as DatePickerViewProps } from '@/types'
 export default DatePickerView

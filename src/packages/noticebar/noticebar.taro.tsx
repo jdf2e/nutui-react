@@ -1,40 +1,17 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
   FunctionComponent,
+  useEffect,
   useMemo,
-  ReactNode,
+  useRef,
+  useState,
 } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { NoticeBarAlign } from './types'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-
-export interface NoticeBarProps extends BasicComponent {
-  align: NoticeBarAlign
-  direction: string
-  list: any
-  duration: number
-  height: number
-  content: string
-  closeable: boolean
-  wrap: boolean
-  leftIcon: ReactNode
-  rightIcon: ReactNode
-  right: ReactNode
-  delay: string | number
-  scrollable: boolean | null
-  speed: number
-  close?: (event: any) => void
-  click?: (event: any) => void
-  onClose?: (event: any) => void
-  onClick?: (event: any) => void
-  onItemClick?: (event: any, value: any) => void
-}
+import { TaroNoticeBarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -52,9 +29,9 @@ const defaultProps = {
   delay: 1,
   scrollable: null,
   speed: 50,
-} as NoticeBarProps
+} as TaroNoticeBarProps
 export const NoticeBar: FunctionComponent<
-  Partial<NoticeBarProps> &
+  Partial<TaroNoticeBarProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const rtl = useRtl()
@@ -174,8 +151,8 @@ export const NoticeBar: FunctionComponent<
       if (!wrapRef.current || !contentRef.current) {
         return
       }
-      const warpRes = await getRectByTaro(wrapRef.current)
-      const contentRes = await getRectByTaro(contentRef.current)
+      const warpRes = await getRectInMultiPlatform(wrapRef.current)
+      const contentRes = await getRectInMultiPlatform(contentRef.current)
       const wrapW = warpRes.width
       const offsetW = contentRes.width
       const canScroll =
@@ -275,7 +252,7 @@ export const NoticeBar: FunctionComponent<
   const init = (active = +0) => {
     if (!container?.current) return
     setTimeout(async () => {
-      const rects = await getRectByTaro(container?.current)
+      const rects = await getRectInMultiPlatform(container?.current)
       const _active = Math.max(Math.min(childCount - 1, active), 0)
       const _height = rects?.height
       trackSize = childCount * Number(_height)

@@ -68,3 +68,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `0` |
 | \--nutui-navbar-title-font-color | The font color of the navbar's title | `$color-title` |
+
+<Contribution name="NavBar" />

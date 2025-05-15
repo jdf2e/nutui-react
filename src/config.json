@@ -79,6 +79,7 @@
           "sort": 1,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
           "author": "",
           "dd": true
@@ -148,6 +149,7 @@
           "show": true,
           "taro": true,
           "v15": 99,
+          "jdtaro": 2,
           "author": "vickyYE",
           "dd": true
         },
@@ -328,7 +330,7 @@
           "taro": true,
           "v15": 100,
           "author": "Ymm0008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -392,6 +394,7 @@
           "show": false,
           "taro": true,
           "author": "Alex.hxy",
+          "exportEmpty": true,
           "dd": true
         },
         {
@@ -403,7 +406,7 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": 2,
+          "v15": 1,
           "author": "dsj",
           "dd": true
         },
@@ -452,7 +455,7 @@
       "enName": "dentry",
       "packages": [
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Address",
           "type": "component",
           "cName": "地址",
@@ -460,8 +463,8 @@
           "sort": 3,
           "show": true,
           "taro": true,
-          "v15": 2,
-          "author": "yangxiaolu",
+          "v15": 1,
+          "author": "hanyuxinting",
           "dd": false
         },
         {
@@ -513,7 +516,7 @@
           "taro": true,
           "v15": 100,
           "author": "ailululu",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -576,6 +579,7 @@
           "show": true,
           "taro": true,
           "v15": 2,
+          "jdtaro": 2,
           "author": "hanyuxinting",
           "dd": false
         },
@@ -588,6 +592,7 @@
           "sort": 19,
           "show": false,
           "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "hanyuxinting",
           "dd": false
@@ -602,6 +607,7 @@
           "show": true,
           "taro": true,
           "v15": 1,
+          "jdtaro": 2,
           "author": "VickyYe",
           "dd": true
         },
@@ -789,6 +795,7 @@
           "sort": 11,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
           "author": "dsj",
           "dd": true
@@ -802,8 +809,9 @@
           "sort": 2,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 1,
-          
+
           "author": "VickyYe",
           "dd": true
         },
@@ -954,7 +962,7 @@
           "taro": true,
           "v15": 1,
           "author": "lzz",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -979,9 +987,9 @@
           "sort": 10,
           "show": true,
           "taro": true,
-          "v15": 1,
+          "v15": 10,
           "author": "oasis",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1005,7 +1013,7 @@
           "sort": 15,
           "show": true,
           "taro": true,
-          "v15": 2,
+          "v15": 1,
           "author": "swag~jun",
           "dd": true
         },
@@ -1020,7 +1028,7 @@
           "taro": true,
           "v15": 2,
           "author": "Ymm0008",
-          "dd": false
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1119,7 +1127,7 @@
           "dd": false
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -1127,12 +1135,12 @@
           "sort": 2,
           "show": true,
           "taro": true,
-          "v15": -1,
-          "author": "zhenyulei",
-          "dd": false
+          "v15": 1,
+          "author": "oasis",
+          "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
@@ -1140,8 +1148,8 @@
           "sort": 13,
           "show": false,
           "exportEmpty": true,
-          "author": "zhenyulei",
-          "dd": false
+          "author": "oasis",
+          "dd": true
         },
         {
           "version": "3.0.0",
@@ -1293,6 +1301,7 @@
           "sort": 14,
           "show": true,
           "taro": true,
+          "jdtaro": 2,
           "v15": 2,
           "author": "liukun",
           "dd": true
@@ -1305,6 +1314,8 @@
           "desc": "轮播子组件",
           "sort": 14,
           "show": false,
+          "taro": true,
+          "jdtaro": 2,
           "exportEmpty": true,
           "author": "liukun",
           "dd": true

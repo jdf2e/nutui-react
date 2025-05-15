@@ -1,24 +1,18 @@
 import React from 'react'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { getIcon } from '@/packages/hoverbuttonitem/utils'
-
-export interface HoverButtonItemProps extends BasicComponent {
-  className?: string
-  style?: React.CSSProperties
-  icon?: React.ReactNode
-  onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-}
+import { WebHoverButtonItemProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   icon: null,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
-} as HoverButtonItemProps
+} as WebHoverButtonItemProps
 
 const classPrefix = 'nut-hoverbutton-item'
 
-export const HoverButtonItem = (props: Partial<HoverButtonItemProps>) => {
+export const HoverButtonItem = (props: Partial<WebHoverButtonItemProps>) => {
   const { className, children, style, icon, onClick } = {
     ...defaultProps,
     ...props,

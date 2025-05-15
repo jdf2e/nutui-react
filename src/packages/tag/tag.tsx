@@ -1,35 +1,9 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  useState,
-  ReactNode,
-} from 'react'
 import type { MouseEvent } from 'react'
+import React, { CSSProperties, FunctionComponent, useState } from 'react'
 import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type TagType =
-  | 'default'
-  | 'primary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-
-export interface TagProps extends BasicComponent {
-  type: TagType
-  background: string
-  color: string
-  plain: boolean
-  round: boolean
-  mark: boolean
-  closeable: boolean
-  closeIcon: ReactNode
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
-  onClose: (e?: any) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebTagProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -41,10 +15,10 @@ const defaultProps = {
   mark: false,
   closeable: false,
   closeIcon: null,
-  onClose: (e: any) => {},
+  onClose: (e: MouseEvent<HTMLDivElement>) => {},
   onClick: (e: MouseEvent<HTMLDivElement>) => {},
-} as TagProps
-export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
+} as WebTagProps
+export const Tag: FunctionComponent<Partial<WebTagProps>> = (props) => {
   const {
     className,
     style,

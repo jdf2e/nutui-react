@@ -8,16 +8,10 @@ import React, {
 } from 'react'
 import { View, Text } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
+import { TaroCountUpProps } from '@/types'
 
-export interface CountUpProps extends BasicComponent {
-  length: number
-  value: string
-  delay?: number
-  duration: number
-  thousands: boolean
-}
 const defaultProps = {
   ...ComponentDefaults,
   length: 0,
@@ -25,8 +19,10 @@ const defaultProps = {
   delay: 300,
   duration: 1,
   thousands: false,
-} as CountUpProps
-export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
+} as TaroCountUpProps
+export const CountUp: FunctionComponent<Partial<TaroCountUpProps>> = (
+  props
+) => {
   const {
     length,
     value,

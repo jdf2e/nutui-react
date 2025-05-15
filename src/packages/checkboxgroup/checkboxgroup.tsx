@@ -1,28 +1,9 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
 import { usePropsValue } from '@/hooks/use-props-value'
-import {
-  CheckboxDirection,
-  CheckboxLabelPosition,
-  CheckboxLimit,
-} from '@/packages/checkboxgroup/types'
-
-export interface CheckboxGroupProps {
-  disabled?: boolean
-  value?: string[]
-  defaultValue?: string[]
-  list: boolean
-  max: number | undefined
-  min: number | undefined
-  labelPosition: CheckboxLabelPosition
-  direction: CheckboxDirection
-  options: RadioGroupOption[]
-  onChange: (value: string[]) => void
-  onLimit: (type: CheckboxLimit) => void
-}
+import { WebCheckboxGroupProps } from '@/types'
 
 const defaultProps = {
   max: undefined,
@@ -33,12 +14,12 @@ const defaultProps = {
   onChange: (value: string[]) => {},
   onLimit: (type: 'max' | 'min') => {},
   options: [],
-} as CheckboxGroupProps
+} as WebCheckboxGroupProps
 
 const classPrefix = 'nut-checkboxgroup'
 export const CheckboxGroup = React.forwardRef(
   (
-    props: Partial<CheckboxGroupProps> &
+    props: Partial<WebCheckboxGroupProps> &
       Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {

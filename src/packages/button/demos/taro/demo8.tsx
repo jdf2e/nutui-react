@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Cell } from '@nutui/nutui-react-taro'
-import { harmony } from '@/utils/platform-taro'
+import { Button, Cell, harmony } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const marginStyle = {
@@ -10,15 +9,14 @@ const Demo8 = () => {
 
   return (
     <Cell style={{ flexWrap: 'wrap' }}>
-      <Button type="primary" style={marginStyle}>
-        Normal
+      <Button size="mini" style={marginStyle} type="primary">
+        Mini
       </Button>
-      <Button style={marginStyle}>Normal</Button>
       <Button size="small" style={marginStyle} type="primary">
         Small
       </Button>
-      <Button size="mini" style={marginStyle} type="primary">
-        Mini
+      <Button type="primary" style={marginStyle}>
+        Normal
       </Button>
       <Button size="large" type="primary" style={marginStyle}>
         Large

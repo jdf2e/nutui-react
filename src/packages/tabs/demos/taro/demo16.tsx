@@ -17,6 +17,11 @@ const Demo16 = () => {
         <Tabs.TabPane title="百亿补贴">百亿补贴</Tabs.TabPane>
         <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
         <Tabs.TabPane title="真好真便宜">真好真便宜</Tabs.TabPane>
+        <Tabs.TabPane title="限时秒杀">限时秒杀</Tabs.TabPane>
+        <Tabs.TabPane title="品牌特惠">品牌特惠</Tabs.TabPane>
+        <Tabs.TabPane title="折扣专区">折扣专区</Tabs.TabPane>
+        <Tabs.TabPane title="新品首发">新品首发</Tabs.TabPane>
+        <Tabs.TabPane title="热销榜单">热销榜单</Tabs.TabPane>
       </Tabs>
     </>
   )

@@ -1,13 +1,11 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
-import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useTableSticky } from './utils'
-
-export type TableProps = BasicTableProps
+import { TableColumnProps, WebTableProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,9 +16,9 @@ const defaultProps = {
   noData: '',
   sorterIcon: null,
   showHeader: true,
-} as TableProps
+} as WebTableProps
 export const Table: FunctionComponent<
-  Partial<TableProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebTableProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
   const rtl = useRtl()

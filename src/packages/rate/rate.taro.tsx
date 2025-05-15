@@ -8,12 +8,12 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
 import { useReady } from '@tarojs/taro'
-import { View, Text, ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import useRefs from '@/hooks/use-refs'
-import { RateProps } from './types'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { useRefs } from '@/hooks/use-refs'
+import { TaroRateProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -27,8 +27,8 @@ const defaultProps = {
   readOnly: false,
   allowHalf: false,
   touchable: false,
-} as RateProps
-export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
+} as TaroRateProps
+export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
   const {
     className,
     style,
@@ -135,7 +135,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     for (let index = 0; index < refs.length; index++) {
       const item = refs[index]
       if (item) {
-        getRectByTaro(item).then((res) => {
+        getRectInMultiPlatform(item).then((res) => {
           rateRects.current[index] = res
         })
       }

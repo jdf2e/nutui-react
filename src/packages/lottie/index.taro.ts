@@ -1,13 +1,15 @@
 import { ComponentType } from 'react'
-import { Lottie as LottieWeb } from './web.taro'
-import { Lottie as LottieMp } from './mp.taro'
-import { LottieProps } from './types'
+import { Lottie as LottieWeb } from './lottieweb.taro'
+import { Lottie as LottieMp } from './lottiemp.taro'
+import { TaroLottieProps } from '@/types'
+
+export type { TaroLottieProps as LottieProps } from '@/types'
 
 let implementation
 if (process.env.TARO_ENV === 'h5') {
   // @ts-ignore
   implementation = LottieWeb
-} else if (process.env.TARO_ENV === 'weapp') {
+} else if (process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'jd') {
   // @ts-ignore
   implementation = LottieMp
 } else {
@@ -16,5 +18,5 @@ if (process.env.TARO_ENV === 'h5') {
     return props.children
   }
 }
-const Lottie: ComponentType<Partial<LottieProps>> = implementation as any
+const Lottie: ComponentType<Partial<TaroLottieProps>> = implementation as any
 export default Lottie

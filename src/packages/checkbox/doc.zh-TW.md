@@ -198,3 +198,5 @@ import { Checkbox } from '@nutui/nutui-react'
 | \--nutui-checkbox-list-item-border | 列表项的边框 | `15px` |
 | \--nutui-checkbox-list-padding | 列表的padding | `15px` |
 | \--nutui-checkbox-list-item-padding | 列表项的padding | `15px` |
+
+<Contribution name="Checkbox" />

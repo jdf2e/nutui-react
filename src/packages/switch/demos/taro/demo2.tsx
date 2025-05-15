@@ -6,23 +6,30 @@ const Demo2 = () => {
   const [value, setValue] = useState(false)
   const [showToast, setShowToast] = useState(false)
 
-  const onChangeAsync = (value: boolean, event: any) => {
+  const onChangeAsync = async (value: boolean) => {
     setValue(value)
     setShowToast(true)
-    setTimeout(() => {
+    const res = await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true)
+      }, 2000)
+    })
+    if (!res) {
+      // 主动抛出一个错误对象，用于中断组件 loading 态
+      throw new Error()
+    } else {
       setCheckedAsync(value)
-    }, 2000)
+    }
   }
   return (
     <>
       <Cell>
         <Switch
           checked={checkedAsync}
-          onChange={(value, event) => onChangeAsync(value, event)}
+          onChange={(value) => onChangeAsync(value)}
         />
       </Cell>
       <Toast
-        type="text"
         content={`2秒后异步触发 ${value}`}
         visible={showToast}
         onClose={() => {

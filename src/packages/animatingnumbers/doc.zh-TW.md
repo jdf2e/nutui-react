@@ -54,3 +54,5 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 | \--nutui-countup-bg-color | 每個數字塊的背景色 | `inherit` |
 | \--nutui-countup-color | 每個數字塊的字色 | `$color-title` |
 | \--nutui-countup-separator-color | 分隔符的字體顏色 | `$color-title` |
+
+<Contribution name="AnimatingNumbers" />

@@ -5,7 +5,7 @@ import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { VirtualList } from '../virtuallist'
-import { trigger } from '@/utils/test/event'
+import { trigger } from '@/utils/event-mocker'
 
 const props = {
   list: new Array(100).fill(0),

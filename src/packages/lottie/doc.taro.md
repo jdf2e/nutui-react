@@ -34,6 +34,8 @@ import { Lottie } from '@nutui/nutui-react-taro'
 
 :::
 
+> 提示：京东小程序开发工作无法展示，可使用真机预览
+
 ## Lottie
 
 ### Props
@@ -68,3 +70,5 @@ import { Lottie } from '@nutui/nutui-react-taro'
 详细可以参考 [https://lottiereact.com/](https://lottiereact.com/)
 
 | 方法名 | 说明 | 参数 |
+
+<Contribution name="Lottie" />

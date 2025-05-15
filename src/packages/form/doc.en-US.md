@@ -58,6 +58,14 @@ import { Form } from '@nutui/nutui-react'
 
 :::
 
+### useWatch
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### Form Type
 
 :::demo
@@ -80,6 +88,8 @@ import { Form } from '@nutui/nutui-react'
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
 | starPosition | The red star position of the required form item label | `left` \| `right` | `left` |
+| disabled | Disable all form fields | `boolean` | `false` |
+| validateTrigger | uniformly set the timing for fields to trigger validation | `string` \| `string[]`\| `false` | `onChange` |
 | onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
 | onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
@@ -119,15 +129,18 @@ The rule validation process is based on [async-validator](https://github.com/yim
 
 ### FormInstance
 
-Form.useForm() creates a Form instance, which is used to manage all data states.
+`Form.useForm()` creates a Form instance, which is used to manage all data states.
 
 | Property | Description | Type |
 | --- | --- | --- |
 | getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
 | getFieldsValue | Get values by a set of field names. Return according to the corresponding structure. Default return mounted field value, but you can use getFieldsValue(true) to get all values | `(name: NamePath \| boolean) => any` |
-| setFieldsValue | set field values | `(values) => void` |
-| resetFields | Reset form prompt state | `() => void` |
+| setFieldsValue | Set the value of the form (the value will be passed directly to the form store. If you do not want the object passed in to be modified, please copy it and pass it in) | `(values) => void` |
+| setFieldValue | Set the value of the corresponding field name | `<T>(name: NamePath, value: T) => void` |
+| resetFields | Reset form prompt state | `(namePaths?: NamePath[]) => void` |
 | submit | method to submit a form for validation | `Promise` |
+
+`Form.useWatch()`, this method will watch specified inputs and return their values. It is useful to render input value and for determining what to render by condition.
 
 ## Theming
 
@@ -150,3 +163,5 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-form-item-body-input-text-align | Text alignment of form item input box | `left` |
 | \--nutui-form-item-tip-font-size | Font size for error messages | `10px` |
 | \--nutui-form-item-tip-text-align | Text alignment for error messages | `left` |
+
+<Contribution name="Form" />

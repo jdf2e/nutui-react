@@ -103,3 +103,5 @@ import { Tour } from '@nutui/nutui-react-taro'
 | \--nutui-tour-content-bottom-btn-padding | 内容区底部按钮的padding值 | `2px 4px` |
 | \--nutui-tour-content-bottom-btn-font-size | 内容区底部按钮的font-size值 | `12px` |
 | \--nutui-tour-content-bottom-btn-border-radius | 内容区底部按钮的border-radius值 | `4px` |
+
+<Contribution name="Tour" />

@@ -81,3 +81,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tag-danger-background-color | danger background color | `$color-primary` |
 | \--nutui-tag-round-border-radius | round border radius | `8px` |
 | \--nutui-tag-mark-border-radius | mark border radius | `0 8px 8px 0` |
+
+<Contribution name="Tag" />

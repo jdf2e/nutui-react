@@ -36,3 +36,5 @@ import { Barrage } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 |
 | --- | --- | --- |
 | add | 添加數據 | `(word: string) => void` |
+
+<Contribution name="Barrage" />

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Address, Cell } from '@nutui/nutui-react'
 
 const Demo1 = () => {
-  const [text, setText] = useState<string>('选择地址')
-  const [optionsDemo1] = useState([
+  const [text, setText] = useState('请选择地址')
+  const [optionsDemo] = useState([
     {
       value: '浙江',
       text: '浙江',
@@ -71,15 +71,15 @@ const Demo1 = () => {
   return (
     <>
       <Cell
-        title="选择自定义地址"
+        title="选择地址"
         description={text}
         onClick={() => setVisible(true)}
       />
       <Address
         visible={visible}
-        options={optionsDemo1}
+        options={optionsDemo}
         title="选择地址"
-        onChange={(value) => {
+        onChange={(value, params) => {
           setText(value.join(''))
         }}
         onClose={() => setVisible(false)}

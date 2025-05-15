@@ -106,3 +106,5 @@ import { TextArea } from '@nutui/nutui-react'
 | \--nutui-textarea-padding | 内边距 | `10px 25px` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-primary` |
+
+<Contribution name="TextArea" />

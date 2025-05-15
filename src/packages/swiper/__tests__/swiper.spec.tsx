@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { fireEvent, render, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Swiper, { SwiperRef } from '../index'
-import { triggerDrag } from '@/utils/test/event'
+import { triggerDrag } from '@/utils/event-mocker'
 
 function sleep(delay = 0): Promise<void> {
   return new Promise((resolve) => {

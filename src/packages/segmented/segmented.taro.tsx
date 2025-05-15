@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { SegmentedItem, SegmentedProps } from './types'
+import { SegmentedItem, TaroSegmentedProps } from '@/types'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { mergeProps } from '@/utils/merge-props'
 
@@ -10,7 +10,7 @@ const defaultProps = {
   onChange: <T = any,>(value: T) => {},
 }
 
-export const Segmented = (props: Partial<SegmentedProps>) => {
+export const Segmented = (props: Partial<TaroSegmentedProps>) => {
   const classPrefix = 'nut-segmented'
   const itemClassPrefix = 'nut-segmented-item'
   const mergedProps = mergeProps(defaultProps, props)
@@ -24,7 +24,7 @@ export const Segmented = (props: Partial<SegmentedProps>) => {
     onChange: mergedProps.onChange,
   })
   const renderItems = useCallback(
-    (options: SegmentedProps['options'], value: string | number) => {
+    (options: TaroSegmentedProps['options'], value: string | number) => {
       return options.map((option, index) => {
         const optionType = typeof option
         switch (optionType) {

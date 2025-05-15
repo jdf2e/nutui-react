@@ -1,32 +1,24 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import classNames from 'classnames'
-import { Form as TForm, FormProps as TFormProps } from '@tarojs/components'
+import { Form as TForm } from '@tarojs/components'
 import { Context } from './context'
 import { SECRET, useForm } from './useform.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import Cell from '@/packages/cell/index.taro'
-import { FormInstance } from '@/packages/form/types'
-
-export interface FormProps extends TFormProps {
-  footer: ReactNode
-  initialValues: any
-  name: string
-  form: any
-  divider: boolean
-  labelPosition: 'top' | 'left' | 'right'
-  starPosition: 'left' | 'right'
-  onFinish: (values: any) => void
-  onFinishFailed: (values: any, errorFields: any) => void
-}
+import { TaroFormProps, FormInstance } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   labelPosition: 'right',
   starPosition: 'left',
+  disabled: false,
   divider: false,
+  validateTrigger: 'onChange',
+  onReset: () => {},
+  onSubmit: () => {},
   onFinish: (values) => {},
   onFinishFailed: (values, errorFields) => {},
-} as FormProps
+} as TaroFormProps
 
 const PositionInfo: any = {
   top: 'form-layout-top',
@@ -34,7 +26,7 @@ const PositionInfo: any = {
   right: 'form-layout-right',
 }
 
-export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
+export const Form = React.forwardRef<FormInstance, Partial<TaroFormProps>>(
   (props, ref) => {
     const classPrefix = 'nut-form'
     const {
@@ -44,10 +36,14 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       children,
       initialValues,
       divider,
+      disabled,
       onFinish,
       onFinishFailed,
+      validateTrigger,
       labelPosition,
       starPosition,
+      onReset,
+      onSubmit,
       form,
       ...rest
     } = {
@@ -91,15 +87,21 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
           e.preventDefault()
           e.stopPropagation()
           submit()
+          onSubmit?.()
         }}
         onReset={(e) => {
           e.preventDefault()
           e.stopPropagation()
           resetFields()
+          onReset?.()
         }}
       >
         <Cell.Group divider={divider}>
-          <Context.Provider value={formInstance}>{children}</Context.Provider>
+          <Context.Provider
+            value={{ formInstance, labelPosition, disabled, validateTrigger }}
+          >
+            {children}
+          </Context.Provider>
           {footer ? (
             <Cell className={`${classPrefix}-footer`}>{footer}</Cell>
           ) : null}

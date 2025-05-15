@@ -26,6 +26,14 @@ import { Switch } from '@nutui/nutui-react'
 
 :::
 
+### loading 态受控
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
 ### 禁用状态
 
 :::demo
@@ -77,7 +85,10 @@ import { Switch } from '@nutui/nutui-react'
 | disabled | 禁用状态 | `boolean` | `false` |
 | activeText | 打开时文字描述 | `ReactNode` | `-` |
 | inactiveText | 关闭时文字描述 | `ReactNode` | `-` |
-| onChange | 切换开关时触发 | `onChange:(value: boolean, event: Event)` | `-` |
+| loadingIcon | 控制加载状态的图标，传入空值时禁用 loading 态 | `ReactNode` | `<Loading1 />` |
+| loading | loading 态，受控 | `boolean` | `-` |
+| onLoadingChange | 切换 loading 态时触发 | `onLoadingChange:(value: boolean)` | `-` |
+| onChange | 切换开关时触发 | `onChange:(value: boolean)` | `-` |
 
 ## 主题定制
 
@@ -102,3 +113,5 @@ import { Switch } from '@nutui/nutui-react'
 | \--nutui-switch-label-text-color | 开关内部文字颜色 | `$color-primary-text` |
 | \--nutui-switch-label-font-size | 开关内部文字大小 | `$font-size-s` |
 | \--nutui-switch-inactive-disabled-label-text-color | 开关关闭禁用内部文字颜色 | `$color-text-disabled` |
+
+<Contribution name="Switch" />

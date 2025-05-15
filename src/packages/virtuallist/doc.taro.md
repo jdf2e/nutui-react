@@ -40,3 +40,5 @@ import { VirtualList } from '@nutui/nutui-react-taro'
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的 item 个数 | `number` | `2` |
 | key | 用于指定 list 数据每一项的唯一 key 的字段名，默认取下标 | `string` | `-` |
 | onScroll | 滑动到底的事件，可以实现无限滚动 | `() => void` | `-` |
+
+<Contribution name="VirtualList" />

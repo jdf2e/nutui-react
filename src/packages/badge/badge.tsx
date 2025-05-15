@@ -2,7 +2,7 @@ import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
-import { BadgeProps } from './types'
+import { WebBadgeProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -13,9 +13,10 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
-} as BadgeProps
+  disabled: false,
+} as WebBadgeProps
 
-export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
+export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
   const rtl = useRtl()
   const {
     className,
@@ -28,6 +29,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     right,
     fill,
     size,
+    disabled,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-badge'
@@ -62,6 +64,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
     [`${classPrefix}-content`]: children,
+    [`${classPrefix}-disabled`]: disabled,
   })
 
   const getPositionStyle = (): CSSProperties => ({

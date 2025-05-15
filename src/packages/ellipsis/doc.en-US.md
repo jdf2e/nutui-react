@@ -75,3 +75,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-ellipsis-expand-collapse-color | 展示和收起的按钮颜色 | `#3460fa` |
+
+<Contribution name="Ellipsis" />

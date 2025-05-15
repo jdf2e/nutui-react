@@ -1,29 +1,8 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  FunctionComponent,
-  ReactNode,
-} from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { InfiniteLoadingType } from './types'
-
-export interface InfiniteLoadingProps extends BasicComponent {
-  type: InfiniteLoadingType
-  hasMore: boolean
-  threshold: number
-  target: string
-  capture: boolean
-  pullRefresh: boolean
-  pullingText: ReactNode
-  loadingText: ReactNode
-  loadMoreText: ReactNode
-  onRefresh: () => Promise<void>
-  onLoadMore: () => Promise<void>
-  onScroll: (param: number) => void
-}
+import { ComponentDefaults } from '@/utils/typings'
+import { WebInfiniteLoadingProps } from '@/types'
 
 declare let window: Window & { webkitRequestAnimationFrame: any } & {
   mozRequestAnimationFrame: any
@@ -37,11 +16,11 @@ const defaultProps = {
   target: '',
   capture: false,
   pullRefresh: false,
-} as InfiniteLoadingProps
+} as WebInfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
 export const InfiniteLoading: FunctionComponent<
-  Partial<InfiniteLoadingProps> &
+  Partial<WebInfiniteLoadingProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onScroll'>
 > = (props) => {
   const { locale } = useConfig()
@@ -213,6 +192,7 @@ export const InfiniteLoading: FunctionComponent<
     onScroll && onScroll(resScrollTop)
     return offsetDistance <= threshold && direction === 'down'
   }
+
   function getBottomTipsText() {
     if (isInfiniting) {
       return loadingText || locale.infiniteloading.loadText
@@ -222,6 +202,7 @@ export const InfiniteLoading: FunctionComponent<
     }
     return null
   }
+
   return (
     <div
       className={classes}

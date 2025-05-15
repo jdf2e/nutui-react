@@ -11,7 +11,7 @@ NutUI-React 1.0 以上版本支持多语言。组件默认使用中文。
 ```javascript
 // 多语言版本
 import { ConfigProvider } from '@nutui/nutui-react'
-import en from '@nutui/nutui-react/dist/locales/en-US'
+import en from '@nutui/nutui-react/dist/es/locales/en-US'
 
 ReactDOM.render(
   <ConfigProvider locale={en}>
@@ -23,7 +23,7 @@ ReactDOM.render(
 
 :::
 
-## 目前支持的语言:
+## 目前支持的语言
 
 | 语言 | 文件名 | 版本 |
 | --- | --- | --- |

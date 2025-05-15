@@ -115,6 +115,7 @@ import { Uploader } from '@nutui/nutui-react'
 | uploadIcon | 上傳區域<a href="#/zh-CN/component/icon">圖標名稱</a> | `React.ReactNode` | `-` |
 | deleteIcon | 刪除區域的圖標名稱 | `React.ReactNode` | `-` |
 | uploadLabel | 上傳區域圖片下方文字 | `React.ReactNode` | `-` |
+| listUploadRender | 自定義列表模式的上傳區域 | `React.ReactNode` | `-` |
 | multiple | 是否支持文件多選 | `boolean` | `false` |
 | disabled | 是否禁用文件上傳 | `boolean` | `false` |
 | beforeUpload | 上傳前的函數需要返回一個`Promise`對象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
@@ -174,3 +175,5 @@ import { Uploader } from '@nutui/nutui-react'
 | \--nutui-uploader-preview-tips-padding | 上傳圖片預覽tips下的padding值 | `0 5px` |
 | \--nutui-uploader-preview-close-right | 上傳圖片關閉按鈕的right值 | `0px` |
 | \--nutui-uploader-preview-close-top | 上傳圖片關閉按鈕的top值 | `0px` |
+
+<Contribution name="Uploader" />

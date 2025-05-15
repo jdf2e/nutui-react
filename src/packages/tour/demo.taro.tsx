@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import './demo.scss'
@@ -31,7 +31,7 @@ const TourDemo = () => {
   return (
     <>
       <Header />
-      <ScrollView
+      <View
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-tour`}
       >
         <View className="h2">{translated.title1}</View>
@@ -44,7 +44,7 @@ const TourDemo = () => {
         <Demo4 />
         <View className="h2">{translated.title5}</View>
         <Demo5 />
-      </ScrollView>
+      </View>
     </>
   )
 }

@@ -57,3 +57,5 @@ import { Virtuallist } from '@nutui/nutui-react'
 | key | the key name of item in list, index as default | `string` | `-` |
 | direction | horizontal or vertical | `string` | `vertical` |
 | onScroll | scroll to end | `() => void` | `-` |
+
+<Contribution name="VirtualList" />

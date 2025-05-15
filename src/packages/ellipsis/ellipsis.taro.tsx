@@ -2,28 +2,14 @@ import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { getRectByTaro } from '@/utils/get-rect-by-taro'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
-
-export type EllipsisDirection = 'start' | 'end' | 'middle'
+import { TaroEllipsisProps } from '@/types'
 
 type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
-}
-
-export interface EllipsisProps extends BasicComponent {
-  content: string
-  direction: EllipsisDirection
-  rows: number | string
-  expandText: string
-  collapseText: string
-  symbol: string
-  lineHeight: number | string
-  width: number | string
-  onClick: () => void
-  onChange: (type: string) => void
 }
 
 const defaultProps = {
@@ -36,11 +22,11 @@ const defaultProps = {
   symbol: '...',
   lineHeight: '20',
   width: 'auto',
-} as EllipsisProps
+} as TaroEllipsisProps
 
 const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
-  Partial<EllipsisProps> &
+  Partial<TaroEllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
   const {
@@ -107,7 +93,7 @@ export const Ellipsis: FunctionComponent<
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
-    const refe = await getRectByTaro(symbolContain?.current)
+    const refe = await getRectInMultiPlatform(symbolContain?.current)
     symbolTextWidth.current = refe.width
       ? Math.ceil(refe.width)
       : Math.ceil(widthBase.current[0] * 0.7921)
@@ -170,7 +156,7 @@ export const Ellipsis: FunctionComponent<
 
   // 计算省略号的位置
   const calcEllipse = async () => {
-    const refe = await getRectByTaro(rootContain.current)
+    const refe = await getRectInMultiPlatform(rootContain.current)
     if (refe.height <= maxHeight.current) {
       setExceeded(false)
       setCacled(true)
@@ -209,7 +195,7 @@ export const Ellipsis: FunctionComponent<
 
   // 验证省略号
   const verifyEllipsis = async () => {
-    const refe = await getRectByTaro(rootContain.current)
+    const refe = await getRectInMultiPlatform(rootContain.current)
     if (refe && refe.height && refe.height > maxHeight.current) {
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(

@@ -170,3 +170,5 @@ import { Calendar } from '@nutui/nutui-react'
 | \--nutui-calendar-day-height | 日歴元素高度 | `60px` |
 | \--nutui-calendar-day-font-weight | 日歴元素字重 | `500` |
 | \--nutui-calendar-day-active-border-radius | 日歴選中元素的圓角 | `4px` |
+
+<Contribution name="Calendar" />

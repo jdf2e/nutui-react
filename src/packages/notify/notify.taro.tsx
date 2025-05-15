@@ -1,54 +1,53 @@
-import React, { useState, useEffect, FunctionComponent, useRef } from 'react'
+import React, { useState, useEffect, FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { Close } from '@nutui/icons-react-taro'
+import { web } from '@/utils/taro/platform'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
   useCustomEvent,
   useCustomEventsPath,
-} from '@/hooks/use-custom-event'
+} from '@/hooks/taro/use-custom-event'
 import { mergeProps } from '@/utils/merge-props'
-
-export type NotifyPosition = 'top' | 'bottom'
-export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
-
-export interface NotifyProps extends BasicComponent {
-  id?: string
-  duration: number
-  type: NotifyType
-  position: NotifyPosition
-  visible: boolean
-  onClose: () => void
-  onClick: () => void
-}
+import { TaroNotifyProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000,
-  type: 'danger',
+  distance: 8,
+  navHeight: 57,
   position: 'top',
   visible: false,
+  closeable: false,
+  leftIcon: null,
+  rightIcon: null,
+  duration: 3000,
   onClose: () => {},
   onClick: () => {},
-} as NotifyProps
+} as TaroNotifyProps
 
 const classPrefix = 'nut-notify'
 
-export const Notify: FunctionComponent<Partial<NotifyProps>> & {
+export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
   open: typeof open
   close: typeof close
-} = (props: Partial<NotifyProps>) => {
+} = (props: Partial<TaroNotifyProps>) => {
   const {
     id,
-    children,
     style,
-    type,
-    className,
+    children,
+    distance,
+    navHeight,
+    closeable,
+    leftIcon,
+    rightIcon,
     position,
     visible,
     duration,
+    className,
     onClose,
     onClick,
   } = mergeProps(defaultProps, props)
@@ -59,7 +58,6 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
 
   let timer: number | null
   const [showNotify, setShowNotify] = useState(false)
-  const cssRef = useRef(null)
   useEffect(() => {
     if (visible) {
       show()
@@ -67,10 +65,6 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
       hide()
     }
   }, [visible])
-
-  const clickHandle = () => {
-    onClick()
-  }
 
   const show = () => {
     setShowNotify(true)
@@ -92,15 +86,32 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
     onClose()
   }
 
+  const getDistance = useMemo(() => {
+    if (position === 'top') {
+      return {
+        top: pxTransform(
+          web() ? Number(distance) + navHeight : Number(distance)
+        ),
+      }
+    }
+    return { bottom: pxTransform(Number(distance)) }
+  }, [distance, position])
+
   const classes = classNames({
-    [`${classPrefix}-popup-top`]: position === 'top',
-    [`${classPrefix}-popup-bottom`]: position === 'bottom',
     [`${classPrefix}`]: true,
-    [`${classPrefix}-${type}`]: true,
+    [`${className}`]: true,
   })
+
+  const handleClick = () => {
+    onClick?.()
+  }
+
+  const handleClickIcon = () => {
+    hide()
+  }
+
   return (
     <CSSTransition
-      nodeRef={cssRef}
       in={showNotify}
       timeout={300}
       classNames="fade"
@@ -110,11 +121,30 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
       id={id}
     >
       <View
-        className={`${classes} ${className}`}
-        style={style}
-        onClick={clickHandle}
+        className={classes}
+        style={{ ...style, ...getDistance }}
+        onClick={handleClick}
       >
-        {children}
+        {leftIcon ? (
+          <View className={`${classPrefix}-left-icon`}>{leftIcon}</View>
+        ) : null}
+        <View
+          className={classNames({
+            [`${classPrefix}-content`]: true,
+            [`${classPrefix}-ellipsis`]: closeable || rightIcon,
+            [`${classPrefix}-layout-left`]: leftIcon || rightIcon,
+          })}
+        >
+          {children}
+        </View>
+        {rightIcon || closeable ? (
+          <View
+            className={`${classPrefix}-right-icon`}
+            onClick={handleClickIcon}
+          >
+            {rightIcon || (closeable ? <Close size={12} /> : null)}
+          </View>
+        ) : null}
       </View>
     </CSSTransition>
   )

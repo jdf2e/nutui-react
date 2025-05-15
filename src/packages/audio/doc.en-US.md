@@ -60,3 +60,5 @@ import { Audio } from '@nutui/nutui-react'
 | onEnd | The voice playback is complete, loop=false takes effect | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
 | onMute | Mute | `(event：HTMLAudioElement) => void` | `-` |
 | onCanPlay | Can be triggered when the media can be played | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
+
+<Contribution name="Audio" />

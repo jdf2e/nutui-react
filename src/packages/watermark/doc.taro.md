@@ -60,3 +60,5 @@ import { Watermark } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-watermark-z-index | zIndex | `$mask-content-z-index` |
+
+<Contribution name="WaterMark" />

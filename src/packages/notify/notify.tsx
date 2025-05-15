@@ -1,23 +1,20 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { WebNotifyProps } from '@/types'
 
 let messageInstance: any = null
-export interface NotifyProps extends BasicComponent {
-  id: string
-  duration: number
-  type: string
-  position: string
-  onClick: () => void
-  onClose: () => void
-}
 
-const options: NotifyProps = {
+const options: WebNotifyProps = {
   ...ComponentDefaults,
   id: '',
-  duration: 3000,
-  type: 'danger',
   position: 'top',
+  distance: 8,
+  navHeight: 57,
+  closeable: false,
+  leftIcon: null,
+  rightIcon: null,
+  duration: 3000,
   onClose: () => {},
   onClick: () => {},
 }
@@ -42,6 +39,7 @@ function notice(opts: any) {
     messageInstance = notification
   })
 }
+
 const errorMsg = (message: any) => {
   if (!message) {
     console.warn('[NutUI Notify]: message不能为空')
@@ -52,22 +50,6 @@ export default {
   text(message: string | React.ReactNode, option = {}) {
     errorMsg(message)
     return notice({ message, type: 'base', ...option })
-  },
-  success(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'success', ...option })
-  },
-  primary(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'primary', ...option })
-  },
-  danger(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'danger', ...option })
-  },
-  warn(message: string | React.ReactNode, option = {}) {
-    errorMsg(message)
-    return notice({ message, type: 'warning', ...option })
   },
   hide() {
     if (messageInstance) {

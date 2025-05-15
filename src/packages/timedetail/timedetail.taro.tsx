@@ -1,24 +1,17 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import {
+  TaroTimeSelectDetailProps,
+  TimeSelectDateType,
   TimeType,
-  DateType,
-  OptionKeyType,
-} from '@/packages/timeselect/index.taro'
+} from '@/types'
 
-export interface TimeDetailProps extends BasicComponent {
-  activeDate: string
-  activeTime: DateType[]
-  options: DateType[]
-  optionKey: OptionKeyType
-  onSelect: (time: TimeType) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
   activeDate: '',
-  activeTime: [] as DateType[],
+  activeTime: [] as TimeSelectDateType[],
   options: [],
   optionKey: {
     valueKey: 'value',
@@ -26,9 +19,9 @@ const defaultProps = {
     childrenKey: 'children',
   },
   onSelect: () => {},
-} as TimeDetailProps
+} as TaroTimeSelectDetailProps
 export const TimeDetail: FunctionComponent<
-  Partial<TimeDetailProps> &
+  Partial<TaroTimeSelectDetailProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
   const { options, optionKey, className, activeDate, activeTime, onSelect } = {
@@ -39,7 +32,7 @@ export const TimeDetail: FunctionComponent<
   const timeList = useMemo(() => {
     return (
       options?.find(
-        (item: DateType) => item[optionKey.valueKey] === activeDate
+        (item: TimeSelectDateType) => item[optionKey.valueKey] === activeDate
       ) || {
         [optionKey.childrenKey]: [],
       }
@@ -47,7 +40,7 @@ export const TimeDetail: FunctionComponent<
   }, [options, optionKey, activeDate])
   const isActive = useCallback(
     (timeKey: string) => {
-      const date = activeTime.find((item: DateType) => {
+      const date = activeTime.find((item: TimeSelectDateType) => {
         return item[optionKey.valueKey] === activeDate
       })
       if (date?.[optionKey.childrenKey]) {

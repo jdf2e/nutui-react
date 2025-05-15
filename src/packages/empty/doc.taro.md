@@ -89,3 +89,5 @@ import { Empty } from '@nutui/nutui-react-taro'
 | \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-l` |
 | \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1` |
 | \--nutui-empty-background-color | Empty组件背景色 | `#fff` |
+
+<Contribution name="Empty" />

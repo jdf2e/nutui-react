@@ -161,3 +161,5 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radiogroup-radio-margin | Margin Right of each radio in Group mode | `20px` |
 | \--nutui-radiogroup-radio-margin-bottom | Margin Bottom of each radio in Group mode | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
+
+<Contribution name="Radio" />

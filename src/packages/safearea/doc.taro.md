@@ -35,3 +35,5 @@ import { SafeArea } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-safe-area-multiple | 显示的倍数 | `1` |
+
+<Contribution name="SafeArea" />

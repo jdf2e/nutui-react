@@ -9,9 +9,9 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import pxTransform from '@/utils/px-transform'
-import { harmony } from '@/utils/platform-taro'
-import { BadgeProps } from './types'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { harmony } from '@/utils/taro/platform'
+import { TaroBadgeProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -22,8 +22,9 @@ const defaultProps = {
   right: 0,
   fill: 'solid',
   size: 'large',
-} as BadgeProps
-export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
+  disabled: false,
+} as TaroBadgeProps
+export const Badge: FunctionComponent<Partial<TaroBadgeProps>> = (props) => {
   const rtl = useRtl()
   const {
     className,
@@ -36,6 +37,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     right,
     fill,
     size,
+    disabled,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-badge'
@@ -73,6 +75,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',
     [`${classPrefix}-content`]: children,
+    [`${classPrefix}-disabled`]: disabled,
   })
 
   useEffect(() => {

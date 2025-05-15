@@ -122,3 +122,5 @@ import { Price } from '@nutui/nutui-react'
 | \--nutui-price-symbol-small-size | small 尺寸符號字體大小 | `12px` |
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `12px` |
+
+<Contribution name="Price" />

@@ -1,5 +1,8 @@
 import { ResultPage } from './resultpage.taro'
 
-export type { ResultPageProps, ResultPageAction } from './resultpage.taro'
-export type { ResultPageStatusOptions, ResultPageStatus } from './types'
+export type {
+  ResultPageStatus,
+  TaroResultPageProps as ResultPageProps,
+  ResultPageAction,
+} from '@/types'
 export default ResultPage

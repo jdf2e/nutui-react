@@ -1,17 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { BasicComponent } from '@/utils/typings'
+import { TaroSwiperItemProps } from '@/types'
 
-export interface SwiperItemProps extends BasicComponent {
-  itemId?: string
-  skipHiddenItemLayout?: boolean
-}
-
-const defaultProps = {
-  itemId: '',
-  skipHiddenItemLayout: false,
-} as SwiperItemProps
-
-export const SwiperItem: FunctionComponent<Partial<SwiperItemProps>> = (
+export const SwiperItem: FunctionComponent<Partial<TaroSwiperItemProps>> = (
   props
 ) => {
   const { children, ...rest } = props

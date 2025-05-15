@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Swipe } from '@nutui/nutui-react-taro'
+import { Button, Swipe, pxTransform } from '@nutui/nutui-react-taro'
 import { View, Text } from '@tarojs/components'
-import pxTransform from '@/utils/px-transform'
 
 const App = () => {
   return (
@@ -30,7 +29,11 @@ const App = () => {
             position: 'relative',
           }}
         >
-          <View style={{ marginLeft: pxTransform(10) }}>禁用滑动</View>
+          <View
+            style={{ marginLeft: pxTransform(10), fontSize: pxTransform(12) }}
+          >
+            禁用滑动
+          </View>
         </View>
       </Swipe>
     </>

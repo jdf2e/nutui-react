@@ -1,29 +1,22 @@
-import React, { useState, FunctionComponent } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
-import { AnimateType, AnimateAction } from './types'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface AnimateProps extends BasicComponent {
-  type: AnimateType
-  action: AnimateAction
-  loop: boolean
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
-}
+import { ITouchEvent, View } from '@tarojs/components'
+import { ComponentDefaults } from '@/utils/typings'
+import { TaroAnimateProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'shake',
   action: 'initial',
   loop: false,
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
-} as AnimateProps
+  onClick: (event) => {},
+} as TaroAnimateProps
 
 const classPrefix = 'nut-animate'
 
-export const Animate: FunctionComponent<
-  Partial<AnimateProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const Animate: FunctionComponent<Partial<TaroAnimateProps>> = (
+  props
+) => {
   const { className, type, action, loop, onClick, children, style } = {
     ...defaultProps,
     ...props,
@@ -40,9 +33,7 @@ export const Animate: FunctionComponent<
     className
   )
 
-  const handleClick = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
-  ) => {
+  const handleClick = (event: ITouchEvent) => {
     setClicked(true)
     // 如果不是无限循环，清除类名
     if (!loop) {

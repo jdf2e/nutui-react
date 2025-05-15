@@ -68,3 +68,5 @@ import { NavBar } from '@nutui/nutui-react'
 | \--nutui-navbar-title-font-size | 頭部導航標題的字體大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | 頭部導航標題的字體粗細 | `0` |
 | \--nutui-navbar-title-font-color | 頭部導航標題的字體顏色 | `$color-title` |
+
+<Contribution name="NavBar" />

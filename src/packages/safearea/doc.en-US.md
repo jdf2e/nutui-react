@@ -35,3 +35,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-safe-area-multiple | Displayed multiple | `1` |
+
+<Contribution name="SafeArea" />

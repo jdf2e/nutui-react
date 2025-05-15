@@ -69,7 +69,7 @@ test('base other props', async () => {
 })
 
 test('base Tabpane Props', () => {
-  const { container } = render(
+  const { container, rerender } = render(
     <Tabs value="0">
       <TabPane title="Tab 1" value="0">
         Tab 1
@@ -88,6 +88,15 @@ test('base Tabpane Props', () => {
   expect(el[0]).toHaveClass('nut-tabs-titles-item-active')
   expect(el[1]).toHaveClass('nut-tabs-titles-item-disabled')
   expect(el2[0]).toHaveTextContent('Tab 1')
+
+  rerender(
+    <Tabs value="0">
+      <TabPane title="Tab 1" value="0" />
+      <TabPane title="Tab 2" value="1" disabled />
+      <TabPane title="Tab 3" value="2" />
+    </Tabs>
+  )
+  expect(container.querySelectorAll('.nut-tabpane').length).toBe(0)
 })
 
 test('base Tabpane autoHeight Props', () => {

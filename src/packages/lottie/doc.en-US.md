@@ -60,3 +60,5 @@ import { Lottie } from '@nutui/nutui-react'
 | playSegments | Play interval frame | `(segments: AnimationSegment \| AnimationSegment[], forceFlag?: boolean) => void` |
 | destroy | destroy | `() => void` |
 | getDuration | inFrames If true, returns the duration in frames; inFrames if false, returns the duration in seconds. | `(inFrames?: boolean) => number` |
+
+<Contribution name="Lottie" />

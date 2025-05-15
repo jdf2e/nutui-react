@@ -1,14 +1,16 @@
 import React, {
   FunctionComponent,
-  useEffect,
   ReactNode,
   useContext,
-  useRef,
+  useEffect,
   useMemo,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
+import { useRefState } from '@/hooks/use-ref-state'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
@@ -65,56 +67,40 @@ export const CollapseItem: FunctionComponent<
       : { transform: 'translateY(-50%)' }
   }, [expanded, rotate])
 
+  const [tran, setTran] = useState(0)
+  const [currentHeight, setCurrentHeight] = useRefState(0)
+  const [wrapperHeight, setWrapperHeight] = useState(0)
+
+  const updateRectHeight = async () => {
+    const height = contentRef.current.offsetHeight
+    setCurrentHeight(height)
+    setWrapperHeight(expanded ? height : 0)
+    setTimeout(() => {
+      setTran(1)
+    })
+  }
+
+  useEffect(() => {
+    updateRectHeight()
+  }, [children, expanded])
+
+  const toggle = () => {
+    const end = !expanded ? currentHeight.current : 0
+    setWrapperHeight(end)
+  }
   const handleClick = () => {
     if (!disabled) {
       context.updateValue(name)
-    }
-  }
-
-  const onTransitionEnd = () => {
-    if (expanded) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.height = ''
-      }
-    }
-  }
-
-  const getOffsetHeight = () => {
-    const height = contentRef.current?.offsetHeight
-    return height ? `${height}px` : ''
-  }
-
-  const toggle = () => {
-    const start = expanded ? '0px' : getOffsetHeight()
-    if (wrapperRef.current) {
-      wrapperRef.current.style.height = start
-    }
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const end = expanded ? getOffsetHeight() : '0px'
-        if (wrapperRef.current) {
-          wrapperRef.current.style.height = end
-        }
-      })
-    })
-  }
-  const init = useRef(true)
-
-  useEffect(() => {
-    if (init.current) {
-      init.current = false
-      if (!expanded) {
-        wrapperRef.current.style.height = '0px'
-      }
-    } else {
       toggle()
     }
-  }, [expanded])
+  }
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
-        className={classNames(`${classPrefix}-header`, { disabled })}
+        className={classNames(`${classPrefix}-header`, {
+          [`${classPrefix}-header-disabled`]: disabled,
+        })}
         onClick={handleClick}
       >
         <div className={`${classPrefix}-title`}>{title}</div>
@@ -126,12 +112,23 @@ export const CollapseItem: FunctionComponent<
         </div>
       </div>
       <div
-        className={`${classPrefix}-content`}
-        onTransitionEnd={onTransitionEnd}
+        className={classNames({
+          [`${classPrefix}-content-wrapper`]: true,
+          [`${classPrefix}-content-wrapper-tran`]: true,
+        })}
+        style={
+          tran
+            ? {
+                height: wrapperHeight,
+              }
+            : {}
+        }
         ref={wrapperRef}
       >
-        <div ref={contentRef} className={`${classPrefix}-content-text`}>
-          {children}
+        <div className={`${classPrefix}-content`}>
+          <div ref={contentRef} className={`${classPrefix}-content-text`}>
+            {children}
+          </div>
         </div>
       </div>
     </div>

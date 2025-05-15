@@ -108,3 +108,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-pagination-lite-radius | lite mode radius | `12px` |
 | \--nutui-pagination-lite-background-color | lite mode background color | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite mode background color of current page | `var(--nutui-black-5)` |
+
+<Contribution name="Pagination" />

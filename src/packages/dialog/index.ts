@@ -4,11 +4,10 @@ export type {
   DialogConfigType,
   DialogCloseIconPosition,
   DialogFooterDirection,
-  ContentProps,
+  WebContentProps as ContentProps,
   DialogWrapProps,
-  DialogBasicProps,
-  DialogConfirmProps,
+  WebDialogProps as DialogProps,
   DialogReturnProps,
-} from './types'
+} from '@/types'
 
 export default Dialog

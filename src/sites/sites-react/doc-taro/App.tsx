@@ -13,7 +13,7 @@ import loadable from '@loadable/component'
 import CodeBlock from '../doc/components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
 import { Navigate } from 'react-router-dom'
-
+import Contribution from '../doc/components/contribution'
 const Title = () => {
   console.log(routers)
   let location = useLocation()
@@ -64,6 +64,7 @@ const Title = () => {
 
 const components = {
   CodeBlock,
+  Contribution,
 }
 
 const Content = () => {

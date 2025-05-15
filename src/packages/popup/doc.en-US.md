@@ -117,3 +117,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popup-title-height | popup's title height | `50px` |
 | \--nutui-popup-title-border-bottom | popup's title border-bottom | `0` |
 | \--nutui-popup-animation-duration | lose icon's animation duration | `0.3s` |
+
+<Contribution name="Popup" />

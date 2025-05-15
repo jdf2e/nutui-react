@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import * as iconfonts from '@nutui/icons-react-taro'
-import { Cell, Toast } from '@nutui/nutui-react-taro'
+import { Cell, Toast, camelCase } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { camelCase } from '@/utils/camel-case'
 
 const Demo7 = () => {
   const generateAMCopyText = (icon: any) => {
@@ -27,7 +26,7 @@ const Demo7 = () => {
 
   return (
     <>
-      <Toast visible={state.visible} content={state.content} type="text" />
+      <Toast visible={state.visible} content={state.content} />
       {(iconfonts.IconFontConfig as any).style.map((item: any) => {
         return (
           <Cell.Group key={item.name} title={item.name}>

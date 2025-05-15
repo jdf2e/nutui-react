@@ -1,5 +1,4 @@
 import { Calendar } from './calendar'
 
-export type { CalendarDay, CalendarMonthInfo, CalendarType } from './types'
-export type { CalendarProps } from './calendar'
+export type { WebCalendarProps as CalendarProps } from '@/types'
 export default Calendar

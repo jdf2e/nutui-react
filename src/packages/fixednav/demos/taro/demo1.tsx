@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FixedNav, FixedNavItem } from '@nutui/nutui-react-taro'
+import { FixedNav, FixedNavItem, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
   const list = [
@@ -36,17 +36,15 @@ const Demo1 = () => {
     console.log(item, event)
   }
   return (
-    <>
-      <FixedNav
-        list={list}
-        activeText="基础用法"
-        overlay
-        position={{ top: '70px' }}
-        onChange={change}
-        visible={visible}
-        onSelect={selected}
-      />
-    </>
+    <FixedNav
+      list={list}
+      activeText="基础用法"
+      overlay
+      position={{ top: pxTransform(70) }}
+      onChange={change}
+      visible={visible}
+      onSelect={selected}
+    />
   )
 }
 export default Demo1

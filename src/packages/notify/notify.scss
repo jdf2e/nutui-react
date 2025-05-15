@@ -6,7 +6,7 @@
 /*入场动画过程*/
 .fade-enter-active {
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 300ms ease-in;
 }
 
 /*入场动画结束*/
@@ -22,7 +22,7 @@
 /*离场动画过程*/
 .fade-exit-active {
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 300ms ease-out;
 }
 
 /*离场动画结束*/
@@ -38,56 +38,59 @@
 /*页面第一次加载时的动画过程*/
 .fade-appear-active {
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 300ms;
 }
 
 .nut-notify {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  z-index: $notify-z-index;
   display: flex;
-  justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: $notify-padding;
-  color: $notify-text-color;
-  font-size: $notify-font-size;
-  white-space: pre-wrap;
-  word-wrap: break-word;
   height: $notify-height;
+  padding: $notify-padding;
+  border-radius: $notify-border-radius;
+  box-shadow: $notify-box-shadow;
+  background-color: $notify-background-color;
 
-  &-popup-top,
-  &-popup-bottom {
-    position: fixed;
-    left: 0;
-    right: 0;
-    overflow-y: auto;
-    transition: transform 0.3s;
-    z-index: 9999;
+  &-content {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+    font-size: $notify-font-size;
+    color: $notify-text-color;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
-  &-popup-top {
-    top: 0;
+  &-ellipsis {
+    text-overflow: ellipsis;
   }
 
-  &-popup-bottom {
-    bottom: 0;
+  &-layout-left {
+    text-align: left;
   }
 
-  &-base {
-    background: $notify-base-background-color;
+  &-left-icon,
+  &-right-icon {
+    display: inline-flex;
   }
 
-  &-primary {
-    background: $notify-primary-background-color;
+  &-left-icon {
+    margin-right: 6px;
+    .nut-icon {
+      height: 16px;
+      width: 16px;
+    }
   }
 
-  &-success {
-    background: $notify-success-background-color;
-  }
-
-  &-danger {
-    background: $notify-danger-background-color;
-  }
-
-  &-warning {
-    background: $notify-warning-background-color;
+  &-right-icon {
+    margin-left: 6px;
+    .nut-icon {
+      height: 12px;
+      width: 12px;
+    }
   }
 }
