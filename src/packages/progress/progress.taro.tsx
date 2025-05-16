@@ -233,7 +233,10 @@ export const Progress: FunctionComponent<
         />
       </View>
       {effectiveShowText && (
-        <View className={`${classPrefix}-text`}>
+        <View
+          className={`${classPrefix}-text`}
+          style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
+        >
           {children || `${percent}%`}
         </View>
       )}

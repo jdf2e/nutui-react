@@ -27,7 +27,7 @@ test('should render with custom style props', () => {
   const { container } = render(
     <Progress percent={50} borderRadius="8px" fontSize="16px" showText />
   )
-  const inner = container.querySelector('.nut-progress-text-inner')
+  const inner = container.querySelector('.nut-progress-text')
   expect(inner).toHaveStyle({
     fontSize: '16px',
   })

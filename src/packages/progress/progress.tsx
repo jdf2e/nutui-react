@@ -148,7 +148,12 @@ export const Progress: FunctionComponent<
         />
       </div>
       {showText && (
-        <div className={`${classPrefix}-text`}>{children || `${percent}%`}</div>
+        <div
+          className={`${classPrefix}-text`}
+          style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
+        >
+          {children || `${percent}%`}
+        </div>
       )}
     </div>
   )
