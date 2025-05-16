@@ -107,9 +107,9 @@ import { Progress } from '@nutui/nutui-react-taro'
 | \--nutui-progress-border-radius | 进度条边框圆角 | `12px` |
 | \--nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | 进度条背景色 | `#f3f3f3` |
-| \--nutui-progress-text-color | 文本颜色 | `$color-primary-text` |
+| \--nutui-progress-text-color | 文本颜色 | `$color-text-help` |
 | \--nutui-progress-text-padding | 文本内边距 | `0 5px` |
-| \--nutui-progress-text-font-size | 文本字体大小 | `9px` |
+| \--nutui-progress-text-font-size | 文本字体大小 | `13px` |
 | \--nutui-progress-text-position-top | 文本定位 top | `-4px` |
 | \--nutui-progress-text-position-bottom | 文本定位 bottom | `-4px` |
 | \--nutui-progress-text-border-radius | 文本边框圆角 | `5px` |

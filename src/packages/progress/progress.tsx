@@ -145,31 +145,11 @@ export const Progress: FunctionComponent<
           onTransitionEnd={() => {
             onActiveEnd?.()
           }}
-        >
-          {showText && (
-            <div
-              className={`${classPrefix}-text`}
-              style={
-                rtl
-                  ? { right: `${displayPercent}%` }
-                  : { left: `${displayPercent}%` }
-              }
-            >
-              {children || (
-                <div
-                  className={`${classPrefix}-text-inner`}
-                  style={{
-                    background: color,
-                    fontSize: fontSize && parseInt(fontSize.toString()),
-                  }}
-                >
-                  {percent}%
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        />
       </div>
+      {showText && (
+        <div className={`${classPrefix}-text`}>{children || `${percent}%`}</div>
+      )}
     </div>
   )
 }

@@ -230,44 +230,13 @@ export const Progress: FunctionComponent<
           className={classesInner}
           style={{ ...stylesInner, position: 'relative' }}
           onTransitionEnd={onActiveEnd}
-        >
-          {effectiveShowText && (
-            <View
-              style={{
-                position: 'relative',
-                [rtl ? 'left' : 'right']: computeRight(),
-              }}
-            >
-              <View
-                className={`${classPrefix}-text`}
-                style={{
-                  ...getTextStyle(),
-                  height:
-                    // eslint-disable-next-line no-nested-ternary
-                    harmony()
-                      ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
-                      : strokeWidth
-                        ? Number(strokeWidth) + 8
-                        : 18,
-                  position: 'absolute',
-                  top: -(strokeWidth
-                    ? (Number(strokeWidth) + 8 - 9) / 2 + 5
-                    : 9),
-                }}
-              >
-                {children || (
-                  <View
-                    className={`${classPrefix}-text-inner`}
-                    style={computeInnerStyle()}
-                  >
-                    {`${percent}%`}
-                  </View>
-                )}
-              </View>
-            </View>
-          )}
-        </View>
+        />
       </View>
+      {effectiveShowText && (
+        <View className={`${classPrefix}-text`}>
+          {children || `${percent}%`}
+        </View>
+      )}
     </View>
   )
 }

@@ -107,9 +107,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-progress-border-radius | borderRadius | `12px` |
 | \--nutui-progress-color | progress color | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | progress background | `#f3f3f3` |
-| \--nutui-progress-text-color | text color | `$color-primary-text` |
+| \--nutui-progress-text-color | text color | `$color-text-help` |
 | \--nutui-progress-text-padding | text padding | `0 5px` |
-| \--nutui-progress-text-font-size | text fontSize | `9px` |
+| \--nutui-progress-text-font-size | text fontSize | `13px` |
 | \--nutui-progress-text-position-top | text top | `-4px` |
 | \--nutui-progress-text-position-bottom | text bottom | `-4px` |
 | \--nutui-progress-text-border-radius | text borderRadius | `5px` |
