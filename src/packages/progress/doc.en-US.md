@@ -74,6 +74,12 @@ import { Progress } from '@nutui/nutui-react'
 
 :::
 
+### Set animation duration and playback mode
+
+:::demo
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+:::
+
 ## Progress
 
 ### Props
@@ -88,6 +94,12 @@ import { Progress } from '@nutui/nutui-react'
 | animated | Whether to show animation | `boolean` | `false` |
 | lazy | Show animation when intersect | `boolean` | `false` |
 | delay | Delay time to set percent, ms | `number` | `0` |
+| borderRadius | Progress bar corner size | `string` | `0` |
+| fontSize | Progress text size | `string` | `12px` |
+| activeMode | Animation playback mode | `forwards \| backwards` | `forwards` |
+| duration | Animation completion time (in milliseconds) | `number` | `30` |
+| ariaLabel | AccessibilityLabel | `string` | `-` |
+| onActiveEnd | Callback function after animation is completed | `() => void` | `-` |
 
 ## Theming
 
@@ -101,9 +113,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-progress-border-radius | borderRadius | `12px` |
 | \--nutui-progress-color | progress color | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | progress background | `#f3f3f3` |
-| \--nutui-progress-text-color | text color | `$color-primary-text` |
+| \--nutui-progress-text-color | text color | `$color-text-help` |
 | \--nutui-progress-text-padding | text padding | `0 5px` |
-| \--nutui-progress-text-font-size | text fontSize | `9px` |
+| \--nutui-progress-text-font-size | text fontSize | `13px` |
 | \--nutui-progress-text-position-top | text top | `-4px` |
 | \--nutui-progress-text-position-bottom | text bottom | `-4px` |
 | \--nutui-progress-text-border-radius | text borderRadius | `5px` |

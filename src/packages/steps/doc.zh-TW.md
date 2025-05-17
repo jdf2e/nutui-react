@@ -10,7 +10,7 @@ import { Steps } from '@nutui/nutui-react'
 
 ## 示例代碼
 
-### 基礎用法
+### 橫版左右布局1行文案
 
 :::demo
 
@@ -18,7 +18,23 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 基礎用法：點狀
+### 橫版左右布局2行文案
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+### 橫版左右布局icon
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### 橫版上下布局點狀、icon、文案
 
 :::demo
 
@@ -26,11 +42,19 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 標題和描述信息
+### 橫向上下布局混合：點狀 + icon
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### 橫向自定義icon
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -42,31 +66,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 自定義步驟條：點狀
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 自定義步驟條：點狀 + icon
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### 自定義圖標
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-### 豎嚮步驟條
+### 豎向點狀
 
 :::demo
 
@@ -74,7 +74,7 @@ import { Steps } from '@nutui/nutui-react'
 
 :::
 
-### 點狀步驟和垂直方嚮
+### 豎向混合：點狀 + icon
 
 :::demo
 
@@ -88,9 +88,13 @@ import { Steps } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| direction | 顯示方嚮 | `horizontal` \| `vertical` | `horizontal` |
+| direction | 步驟條的顯示方嚮 | `horizontal` \| `vertical` | `horizontal` |
 | value | 當前所在的步驟 | `number` | `0` |
-| dot | 點狀步驟條 | `boolean` | `false` |
+| status | 步驟條的展示狀態 | `default` \| `business` \| `dynamic` \| `enhanced` | `default` |
+| type | 步驟條的類型 | `text` \| `dot` \| `icon` | `text` |
+| layout | 步驟條的布局方式 | `single` \| `double` | `single` |
+| icon | 自定義圖標 | `ReactNode` | `-` |
+| onStepClick | 點擊切換步驟條時觸發 | `(index: number) => void` | `-` |
 
 ## Step
 
@@ -98,12 +102,11 @@ import { Steps } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| title | 流程步驟的標題 | `string` | `-` |
-| description | 流程步驟的描述性文字 | `string` | `-` |
-| icon | 圖標(來自Icon組件的name屬性) | `ReactNode` | `-` |
+| title | 流程步驟的標題 | `ReactNode` | `-` |
+| description | 流程步驟的描述性文字 | `ReactNode` | `-` |
+| icon | 圖標 | `ReactNode` | `-` |
 | value | 流程步驟的索引 | `number` | `0` |
-| description | 流程步驟的描述性文字的html結構 | `React.ReactNode` | `-` |
-| onStepClick | 點擊步驟的標題或圖標時觸發 | `(index: number) => void` | `-` |
+| type | 步驟類型 | `text` \| `dot` \| `icon` | `text` |
 
 ## 主題定制
 
@@ -113,37 +116,53 @@ import { Steps } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-steps-base-icon-width | icon 容器的寬度 | `25px` |
-| \--nutui-steps-base-icon-height | icon 容器的高度 | `25px` |
-| \--nutui-steps-base-icon-line-height | icon 容器的行高 | `25px` |
-| \--nutui-steps-base-icon-margin-bottom | icon 容器的底部外邊距 | `12px` |
-| \--nutui-steps-base-icon-font-size | icon 容器的字號 | `$font-size-s` |
-| \--nutui-steps-base-line-width | 分割線的寬度 | `100%` |
-| \--nutui-steps-base-line-background | 分割線的背景色 | `$color-text-help` |
-| \--nutui-steps-base-title-font-size | 標題的字號 | `$font-size-base` |
-| \--nutui-steps-base-title-color | 標題的顏色 | `$color-title` |
-| \--nutui-steps-base-title-margin-bottom | 標題底部外邊距 | `10px` |
-| \--nutui-steps-base-description-font-size | 描述文案的字號 | `$font-size-s` |
-| \--nutui-steps-base-description-color | 描述文案的字體顏色 | `$color-text` |
-| \--nutui-steps-wait-icon-bg-color | 等待狀態的 icon 容器的背景色 | `$color-text-help` |
-| \--nutui-steps-wait-icon-color | 等待狀態的 icon 容器的字體顏色 | `$white` |
-| \--nutui-steps-wait-title-color | 等待狀態標題字體顏色 | `$color-title` |
-| \--nutui-steps-wait-description-color | 等待狀態描述字體顏色 | `$color-text` |
-| \--nutui-steps-process-icon-bg-color | 進行中icon容器背景色 | `$color-primary` |
-| \--nutui-steps-process-icon-color | 進行中icon容器字體顏色 | `$white` |
-| \--nutui-steps-process-title-color | 進行中標題字體顏色 | `$color-primary` |
-| \--nutui-steps-process-title-font-size | 進行中標題字號 | `$font-size-base` |
-| \--nutui-steps-process-title-font-weight | 進行中標題字重 | `$font-weight-bold` |
-| \--nutui-steps-process-description-color | 進行中描述字體顏色 | `$color-text` |
-| \--nutui-steps-finish-icon-bg-color | 完成狀態icon 容器的背景色 | `$color-primary-text` |
-| \--nutui-steps-finish-icon-color | 完成狀態icon 容器的字體顏色 | `$color-primary` |
-| \--nutui-steps-finish-title-color | 完成狀態標題的字體顏色 | `$color-primary` |
-| \--nutui-steps-finish-description-color | 完成狀態描述的字體顏色 | `$color-text` |
-| \--nutui-steps-finish-line-background | 完成狀態分割線的顏色 | `$color-primary` |
-| \--nutui-steps-dot-icon-width | 點狀進度條點的寬度 | `6px` |
-| \--nutui-steps-dot-icon-height | 點狀進度條點的高度 | `6px` |
-| \--nutui-steps-dot-icon-border | 點狀進度條點的邊框 | `2px solid $white` |
-| \--nutui-steps-dot-head-margin | 點狀進度條點的外邊距 | `7px 0 0 0` |
-| \--nutui-steps-process-icon-before-bg-color | 進行中點狀進度條點的外邊顏色 | `$color-primary-stop-2` |
+| \--nutui-steps-background-color | 步驟條背景色 | `$white` |
+| \--nutui-steps-base-head-height | 頭部高度 | `14px` |
+| \--nutui-steps-base-head-background-color | 頭部背景色 | `$color-background` |
+| \--nutui-steps-base-head-border | 頭部邊框 | `none` |
+| \--nutui-steps-base-head-text-size | 頭部文字大小 | `12px` |
+| \--nutui-steps-base-head-size | 頭部圖標大小 | `$font-size-xxs` |
+| \--nutui-steps-base-head-color | 頭部顏色 | `$color-text` |
+| \--nutui-steps-base-head-dot-size | 頭部點狀大小 | `6px` |
+| \--nutui-steps-base-head-dot-background-color | 頭部點狀背景色 | `$color-text-disabled` |
+| \--nutui-steps-base-head-icon-size | 頭部圖標大小 | `16px` |
+| \--nutui-steps-double-head-icon-size | 雙行頭部圖標大小 | `20px` |
+| \--nutui-steps-vertical-head-icon-size | 垂直頭部圖標大小 | `20px` |
+| \--nutui-steps-base-line-height | 分割線高度 | `1px` |
+| \--nutui-steps-base-line-background | 分割線背景色 | `$color-border` |
+| \--nutui-steps-base-title-font-size | 標題字號 | `$font-size-s` |
+| \--nutui-steps-base-title-color | 標題顏色 | `$color-title` |
+| \--nutui-steps-base-description-margin-top | 描述上邊距 | `2px` |
+| \--nutui-steps-base-description-font-size | 描述字號 | `$font-size-xxs` |
+| \--nutui-steps-base-description-color | 描述顏色 | `$color-text-help` |
+| \--nutui-steps-base-head-border-color | 頭部邊框顏色 | `$color-border` |
+| \--nutui-steps-process-head-background-color | 進行中頭部背景色 | `$color-primary` |
+| \--nutui-steps-process-color | 進行中顏色 | `$white` |
+| \--nutui-steps-process-title-color | 進行中標題顏色 | `$color-primary` |
+| \--nutui-steps-process-description-color | 進行中描述顏色 | `$color-primary` |
+| \--nutui-steps-wait-icon-color | 等待狀態圖標顏色 | `$color-text-help` |
+| \--nutui-steps-wait-title-color | 等待狀態標題顏色 | `$color-title` |
+| \--nutui-steps-wait-description-color | 等待狀態描述顏色 | `$color-text` |
+| \--nutui-steps-finish-icon-color | 完成狀態圖標顏色 | `$color-text-help` |
+| \--nutui-steps-business-title-color | 業務狀態標題顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-description-color | 業務狀態描述顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-text-color | 業務狀態頭部文字顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-dot-background-color | 業務狀態頭部點狀背景色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-icon-color | 業務狀態頭部圖標顏色 | `var(--nutui-color-service-pressed)` |
+| \--nutui-steps-business-head-background-color | 業務狀態頭部背景色 | `var(--nutui-color-service)` |
+| \--nutui-steps-enhanced-finish-head-background-color | 增強完成狀態頭部背景色 | `$color-primary-light-pressed` |
+| \--nutui-steps-enhanced-finish-head-dot-background-color | 增強完成狀態頭部點狀背景色 | `$color-primary-disabled-special` |
+| \--nutui-steps-enhanced-finish-head-icon-color | 增強完成狀態頭部圖標顏色 | `$color-primary-stop-1` |
+| \--nutui-steps-enhanced-finish-head-text-color | 增強完成狀態頭部文字顏色 | `$color-primary-stop-1` |
+| \--nutui-steps-horizontal-item-padding-right | 水平項右內邊距 | `28px` |
+| \--nutui-steps-horizontal-item-line-padding | 水平項分割線內邊距 | `0 8px` |
+| \--nutui-steps-horizontal-item-special-padding-right | 特殊水平項右內邊距 | `22px` |
+| \--nutui-steps-horizontal-item-special-3-padding-right | 3項特殊水平項右內邊距 | `9px` |
+| \--nutui-steps-vertical-item-padding-bottom | 垂直項下內邊距 | `13px` |
+| \--nutui-steps-vertical-title-font-size | 垂直標題字號 | `$font-size-l` |
+| \--nutui-steps-vertical-title-margin-bottom | 垂直標題下邊距 | `4px` |
+| \--nutui-steps-vertical-line-height | 垂直行高 | `18px` |
+| \--nutui-steps-vertical-description-font-size | 垂直描述字號 | `$font-size-base` |
+| \--nutui-steps-vertical-description-margin | 垂直描述邊距 | `0 0 1px` |
 
 <Contribution name="Steps" />

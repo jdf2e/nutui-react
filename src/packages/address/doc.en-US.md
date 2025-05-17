@@ -10,6 +10,14 @@ import { Address } from '@nutui/nutui-react'
 
 ## Demo
 
+### Elevator Address
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ### Choose Custom Address
 
 :::demo
@@ -66,7 +74,7 @@ If you want to select a province, you need to set the region ID in the order of 
 | --- | --- | --- | --- |
 | visible | Whether to open address | `boolean` | `-` |
 | defaultVisible | Initial open/close state of the address selection | `boolean` | - |
-| type | Choose type: exist/custom | `string` | `custom` |
+| type | Choose type: exist/cascader/elevator | `AddressModeType` | `cascader` |
 | existList | Exist address list data | `Array` | `[]` |
 | defaultIcon | Exist address default icon | `ReactNode` | `-` |
 | selectIcon | Exist address selected icon | `ReactNode` | `-` |

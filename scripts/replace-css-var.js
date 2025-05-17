@@ -42,17 +42,36 @@ components.forEach((component) => {
     `../src/packages/${componentName}/${componentName}.harmony.css`,
   )
   const matched = content.match(/@import.*?[;][\n\r]?/gi)
+  const componentSplitScss = []
   if (matched) {
     matched.forEach((m) => {
       if (m.indexOf('styles') > -1) {
         content = content.replace(m, mixin)
       } else {
-        content = content.replace(m, '')
+        // 相对路径是 ../ 是组件，所以剔除
+        if (m.indexOf("'./") === - 1) {
+          content = content.replace(m, '')
+        } else {
+          // 组件内的样式拆分
+          content = content.replace(m, '')
+          const splitScssName = m.match(/\'\.\/([a-z]+)\.scss/)
+          if (splitScssName && splitScssName.length == 2) {
+            componentSplitScss.push(fs
+              .readFileSync(
+                path.join(
+                  __dirname,
+                  `../src/packages/${componentName}/${splitScssName[1]}.scss`,
+                ),
+              )
+              .toString())
+          }
+
+        }
       }
     })
   }
 
-  const res = sass.compileString(theme + variables + content)
+  const res = sass.compileString(theme + variables + componentSplitScss.join('\n') + content)
   postcss([
     cssvariables(/*options*/),
   ])

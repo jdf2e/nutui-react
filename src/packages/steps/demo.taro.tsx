@@ -16,72 +16,68 @@ import Demo9 from './demos/taro/demo9'
 const StepsDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基础用法',
-      dot: '基础用法：点状',
-      info: '标题和描述信息',
+      basic: '横版左右布局1行文案',
+      horizontalTwoLine: '横版左右布局2行文案',
+      horizontalIcon: '横版左右布局icon',
+      horizontalDouble: '横版上下布局点状、icon、文案',
+      horizontalDotIcon: '横向上下布局混合：点状 + icon',
       custom: '自定义步骤条',
-      customDot: '自定义步骤条：点状',
-      customBoth: '自定义步骤条：点状 + icon',
-      customIcon: '自定义图标',
-      vertical: '竖向步骤条',
-      da71e1e5: '您的订单已经打包完成，商品已发出',
-      verticalDot: '点状步骤和垂直方向',
+      customIcon: '横向自定义icon',
+      vertical: '竖向点状',
+      verticalDotIcon: '竖向混合：点状 + icon',
     },
     'zh-TW': {
-      basic: '基础用法',
-      dot: '基础用法：点状',
-      info: '標題和描述信息',
+      basic: '橫版左右布局1行文案',
+      horizontalTwoLine: '橫版左右布局2行文案',
+      horizontalIcon: '橫版左右布局icon',
+      horizontalDouble: '橫版上下布局點狀、icon、文案',
+      horizontalDotIcon: '橫版上下布局混合：點狀 + icon',
       custom: '自定義步驟条',
-      customDot: '自定義步驟条：点状',
-      customBoth: '自定義步驟条：点状+icon',
-      customIcon: '自定義圖標',
-      vertical: '豎向步驟條',
-      da71e1e5: '您的訂單已經打包完成，商品已發出',
-      verticalDot: '點狀步驟和垂直方向',
+      customIcon: '橫版自定義icon',
+      vertical: '豎向點狀',
+      verticalDotIcon: '豎向步驟條：点状+icon',
     },
     'en-US': {
-      basic: 'Basic usage',
-      dot: 'Basic usage: Dot',
-      info: 'Title and description information',
-      custom: 'Custom Step Bar',
-      customDot: 'Custom Step Bar: Dot',
-      customBoth: 'Custom Step Bar: Dot+icon',
-      customIcon: 'custom Icon',
-      vertical: 'vertical step bar',
-      verticalDot: 'Dot Steps and Vertical Orientation',
+      basic: 'Horizontal 1-line text layout',
+      horizontalTwoLine: 'Horizontal 2-line text layout',
+      horizontalIcon: 'Horizontal icon layout',
+      horizontalDouble: 'Horizontal dot, icon, text layout',
+      horizontalDotIcon: 'Horizontal mixed layout: dot + icon',
+      custom: 'Custom step bar',
+      customIcon: 'Horizontal custom icon',
+      vertical: 'Vertical dot',
+      verticalDotIcon: 'Vertical dot + icon',
     },
   })
   return (
     <>
       <Header />
-      <ScrollView
-        className={`demo full bg-w ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-      >
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
 
-        <View className="h2">{translated.dot}</View>
-        <Demo2 />
-
-        <View className="h2">{translated.info}</View>
+        <View className="h2">{translated.horizontalTwoLine}</View>
         <Demo3 />
 
+        <View className="h2">{translated.horizontalIcon}</View>
+        <Demo7 />
+
         <View className="h2">{translated.custom}</View>
-        <Demo4 />
+        <Demo2 />
 
-        <View className="h2">{translated.customDot}</View>
-        <Demo5 />
-
-        <View className="h2">{translated.customBoth}</View>
+        <View className="h2">{translated.horizontalDotIcon}</View>
         <Demo6 />
 
         <View className="h2">{translated.customIcon}</View>
-        <Demo7 />
+        <Demo5 />
+
+        <View className="h2">{translated.customIcon}</View>
+        <Demo4 />
 
         <View className="h2">{translated.vertical}</View>
         <Demo8 />
 
-        <View className="h2">{translated.verticalDot}</View>
+        <View className="h2">{translated.verticalDotIcon}</View>
         <Demo9 />
       </ScrollView>
     </>

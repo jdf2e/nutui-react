@@ -3,14 +3,7 @@ import { CascaderOption, CascaderOptionKey, CascaderValue } from '@/types'
 
 export interface RegionData {
   name?: string
-
   [key: string]: any
-}
-
-export interface ChangeData {
-  next: string
-  value: string | RegionData
-  custom: string
 }
 
 export interface CloseCallBackData extends Regions {
@@ -40,13 +33,6 @@ export interface AddressList {
   phone?: string
 }
 
-export interface CurrentData {
-  next: string
-  value: string | RegionData
-  custom: string
-  selectedRegion?: Regions
-}
-
 export interface Regions {
   province: RegionData
   city: RegionData
@@ -54,12 +40,14 @@ export interface Regions {
   town: RegionData
 }
 
+export type AddressModeType = 'exist' | 'cascader' | 'elevator'
+
 export interface BaseAddress {
   visible: boolean
   defaultVisible: boolean
   value?: CascaderValue
   defaultValue?: CascaderValue
-  type: string
+  type: AddressModeType
   options: CascaderOption[]
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
@@ -69,6 +57,7 @@ export interface BaseAddress {
   defaultIcon: React.ReactNode
   selectIcon: React.ReactNode
   backIcon: React.ReactNode
+  hotList: RegionData[]
   onSwitch?: (data: { type: string }) => void
   onExistSelect?: (data: AddressList) => void
 }

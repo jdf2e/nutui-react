@@ -29,6 +29,12 @@ export const Progress: FunctionComponent<
     children,
     lazy,
     delay,
+    borderRadius,
+    fontSize,
+    activeMode,
+    duration,
+    ariaLabel,
+    onActiveEnd,
     ...rest
   } = {
     ...defaultProps,
@@ -44,6 +50,7 @@ export const Progress: FunctionComponent<
 
   const stylesOuter: React.CSSProperties = {
     height: `${strokeWidth}px`,
+    borderRadius: borderRadius && parseInt(borderRadius.toString()),
     background,
   }
 
@@ -52,11 +59,27 @@ export const Progress: FunctionComponent<
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
     background: color || '#FF0F23',
+    borderRadius: borderRadius && parseInt(borderRadius.toString()),
+    transition: `width ${duration || 300}ms ease-in-out`,
   }
 
   useEffect(() => {
-    setDispalyPercent(percent)
-  }, [percent])
+    let timer: any = null
+    if (activeMode === 'backwards') {
+      setDispalyPercent(0)
+      timer = setTimeout(() => {
+        setDispalyPercent(percent)
+      }, duration || 300)
+    } else {
+      setDispalyPercent(percent)
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [percent, activeMode, duration])
 
   const [intersecting, setIntersecting] = useState(false)
 
@@ -112,33 +135,26 @@ export const Progress: FunctionComponent<
       ref={progressRef}
       className={classNames(classPrefix, className)}
       style={style}
+      aria-label={ariaLabel}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>
-        <div className={classesInner} style={stylesInner}>
-          {showText && (
-            <div
-              className={`${classPrefix}-text`}
-              style={
-                rtl
-                  ? { right: `${displayPercent}%` }
-                  : { left: `${displayPercent}%` }
-              }
-            >
-              {children || (
-                <div
-                  className={`${classPrefix}-text-inner`}
-                  style={{
-                    background: color,
-                  }}
-                >
-                  {percent}%
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        <div
+          className={classesInner}
+          style={stylesInner}
+          onTransitionEnd={() => {
+            onActiveEnd?.()
+          }}
+        />
       </div>
+      {showText && (
+        <div
+          className={`${classPrefix}-text`}
+          style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
+        >
+          {children || `${percent}%`}
+        </div>
+      )}
     </div>
   )
 }

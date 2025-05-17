@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowDown } from '@nutui/icons-react'
-import { SearchBar } from '../../searchbar'
-import PopOver from '../../../popover'
+import { SearchBar, Popover } from '@nutui/nutui-react'
 
 const Demo6 = () => {
   const itemList = [
@@ -14,7 +13,7 @@ const Demo6 = () => {
     <>
       <SearchBar
         leftIn={
-          <PopOver
+          <Popover
             visible={lightTheme}
             onClick={() => {
               lightTheme ? setLightTheme(false) : setLightTheme(true)
@@ -25,7 +24,7 @@ const Demo6 = () => {
               更多
               <ArrowDown />
             </div>
-          </PopOver>
+          </Popover>
         }
       />
     </>

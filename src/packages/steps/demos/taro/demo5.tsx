@@ -1,31 +1,53 @@
-import React, { useState } from 'react'
-import { View } from '@tarojs/components'
-import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react-taro'
+import React from 'react'
+import { Steps, Step, Image, Cell, Space } from '@nutui/nutui-react-taro'
 
-const customTheme = {
-  nutuiStepsBaseLineWidth: '30%',
-}
-
+const data = [
+  {
+    title: '澳大利亚',
+    icon: 'https://img20.360buyimg.com/img/jfs/t1/292466/40/2162/796/6814444aFb166b228/172fa4fac14da979.png',
+  },
+  {
+    title: '京东厦门保税仓',
+    icon: 'https://img30.360buyimg.com/img/jfs/t1/284678/5/27948/800/68144449F4a2dd83d/04a7ea1908f79a18.png',
+  },
+  {
+    title: '北京市',
+    icon: 'https://img10.360buyimg.com/img/jfs/t1/282198/27/29335/736/6814444aF939efd7a/884c695a6f4a0893.png',
+  },
+]
 const Demo5 = () => {
-  const [val, setVal] = useState(1)
-  const handleStep = () => {
-    const newVal = (val % 3) + 1
-    setVal(newVal)
-  }
   return (
     <>
-      <ConfigProvider theme={customTheme}>
-        <Steps value={val} dot>
-          <Step value={1} />
-          <Step value={2} />
-          <Step value={3} />
-        </Steps>
-      </ConfigProvider>
-      <View style={{ marginTop: '10px', textAlign: 'center' }}>
-        <Button type="danger" onClick={() => handleStep()}>
-          下一步
-        </Button>
-      </View>
+      <Space direction="vertical">
+        <Cell
+          style={{
+            justifyContent: 'center',
+          }}
+        >
+          <Steps value={1} type="icon">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={index + 1}
+                title={item.title}
+                icon={<Image src={item.icon} />}
+              />
+            ))}
+          </Steps>
+        </Cell>
+        <Cell>
+          <Steps value={1} type="icon" layout="double">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={index + 1}
+                title={item.title}
+                icon={<Image src={item.icon} />}
+              />
+            ))}
+          </Steps>
+        </Cell>
+      </Space>
     </>
   )
 }

@@ -9,28 +9,114 @@
   box-sizing: border-box;
   justify-content: center;
 
+  .nut-icon {
+    width: $searchbar-icon-size;
+    height: $searchbar-icon-size;
+    font-size: $searchbar-icon-size;
+  }
+
   &-content {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $searchbar-content-padding;
+    padding: 0 $searchbar-gap;
     height: $searchbar-input-height;
     background: $searchbar-content-background;
     border-radius: $searchbar-content-border-radius;
+    border: 1px solid $color-primary;
   }
 
   &-icon {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: $color-primary;
   }
 
-  &-clear,
+  &-leftin {
+    margin-right: $searchbar-inner-gap;
+  }
+
   &-rightin {
-    width: 16px;
-    height: 16px;
-    color: var(--nutui-black-5);
+    font-size: 15px;
+    font-weight: 500;
+    color: $color-primary;
+
+    &.nut-searchbar-icon {
+      color: var(--nutui-black-5);
+    }
+  }
+
+  &-input-box,
+  &-input {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &-input {
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: $searchbar-font-size;
+    color: $searchbar-input-text-color;
+    caret-color: $searchbar-input-curror-color;
+    background: transparent;
+    text-align: $searchbar-input-text-align;
+  }
+
+  &-clear {
+    &.nut-searchbar-icon {
+      position: relative;
+      .nut-icon {
+        width: 12px;
+        height: 12px;
+        color: var(--nutui-black-5);
+        margin-right: $searchbar-inner-gap;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 200%;
+        left: -20%;
+      }
+    }
+  }
+
+  &-values {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+    background-color: #fff;
+    top: 9px;
+    left: 6px;
+    font-size: 12px;
+    line-height: 12px;
+
+    .nut-searchbar-value {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px 8px;
+      background-color: #f7f8fc;
+      border-radius: 4px;
+      margin-right: 2px;
+    }
+
+    .nut-icon {
+      width: 6px;
+      height: 6px;
+      font-size: 6px;
+      color: #c2c4cc;
+      margin-left: 4px;
+    }
   }
 
   &-left,
@@ -93,32 +179,20 @@
     }
   }
 
-  &-input-box,
-  &-input {
-    display: flex;
-    align-items: center;
-    flex: 1;
-  }
-
-  &-input {
-    border: 0;
-    outline: 0;
-    box-sizing: border-box;
-    width: 100%;
-    padding: $searchbar-input-padding;
-    font-size: $searchbar-font-size;
-    color: $searchbar-input-text-color;
-    caret-color: $searchbar-input-curror-color;
-    background: transparent;
-    text-align: $searchbar-input-text-align;
-  }
-
   &-round {
     border-radius: $searchbar-content-round-border-radius;
   }
 
   &-disabled {
     cursor: not-allowed;
+  }
+
+  &-focus {
+    padding: 5px $searchbar-gap;
+
+    .nut-searchbar-content {
+      border: 0.5px solid #ff5c67;
+    }
   }
 }
 

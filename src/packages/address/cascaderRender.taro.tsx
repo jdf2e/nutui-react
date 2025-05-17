@@ -22,14 +22,14 @@ export interface AddressProps extends TaroCascaderProps {
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
-  type: 'custom',
+  type: 'cascader',
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
   height: '200px',
 } as unknown as AddressProps
 
-export const CustomRender: FunctionComponent<
+export const CascaderRender: FunctionComponent<
   Partial<AddressProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
@@ -59,7 +59,7 @@ export const CustomRender: FunctionComponent<
 
   return (
     <>
-      {type === 'custom' && (
+      {type === 'cascader' && (
         <Cascader
           visible={visible}
           value={value}
