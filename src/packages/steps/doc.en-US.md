@@ -88,14 +88,13 @@ import { Steps } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| direction | Display direction | `horizontal` \| `vertical` | `horizontal` |
+| direction | Display direction of the step bar | `horizontal` \| `vertical` | `horizontal` |
 | value | Current step | `number` | `0` |
-| status | Step bar status | `default` \| `business` \| `dynamic` \| `enhanced` | `default` |
-| count | Number of steps | `2` \| `3` \| `4` | `-` |
-| type | Step type | `text` \| `dot` \| `icon` | `text` |
-| layout | Layout mode | `single` \| `double` | `single` |
+| status | Display status of the step bar | `default` \| `business` \| `dynamic` \| `enhanced` | `default` |
+| type | Type of the step bar | `text` \| `dot` \| `icon` | `text` |
+| layout | Layout mode of the step bar | `single` \| `double` | `single` |
 | icon | Custom icon | `ReactNode` | `-` |
-| onStepClick | Triggered when clicking the title or icon of a step | `(index: number) => void` | `-` |
+| onStepClick | Triggered when switching steps | `(index: number) => void` | `-` |
 
 ## Step
 

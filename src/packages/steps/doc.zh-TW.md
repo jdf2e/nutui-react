@@ -88,14 +88,13 @@ import { Steps } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| direction | 顯示方嚮 | `horizontal` \| `vertical` | `horizontal` |
+| direction | 步驟條的顯示方嚮 | `horizontal` \| `vertical` | `horizontal` |
 | value | 當前所在的步驟 | `number` | `0` |
-| status | 步驟條狀態 | `default` \| `business` \| `dynamic` \| `enhanced` | `default` |
-| count | 步驟數量 | `2` \| `3` \| `4` | `-` |
-| type | 步驟類型 | `text` \| `dot` \| `icon` | `text` |
-| layout | 布局方式 | `single` \| `double` | `single` |
+| status | 步驟條的展示狀態 | `default` \| `business` \| `dynamic` \| `enhanced` | `default` |
+| type | 步驟條的類型 | `text` \| `dot` \| `icon` | `text` |
+| layout | 步驟條的布局方式 | `single` \| `double` | `single` |
 | icon | 自定義圖標 | `ReactNode` | `-` |
-| onStepClick | 點擊步驟的標題或圖標時觸發 | `(index: number) => void` | `-` |
+| onStepClick | 點擊切換步驟條時觸發 | `(index: number) => void` | `-` |
 
 ## Step
 

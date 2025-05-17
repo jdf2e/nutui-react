@@ -308,8 +308,20 @@ plugins: [
 - 新增 `duration` 属性，控制动画时长
 - 新增 `size` 属性，通过 `size` 属性可选择使用组件内置的高度
 
-  [//]: # '#### Steps'
-  [//]: # '#### Step'
+#### Steps
+
+- 新增 `status` 属性，设置步骤条的展示状态
+- 新增 `layout` 属性，设置步骤条的布局方式
+- 新增 `type` 属性，设置步骤条的类型
+- 新增 `icon` 属性，设置自定义图标
+- 移除 `dot` 属性，可使用 `type` 属性
+- 新增 `onStepClick`, 点击切换步骤条时触发
+
+#### Step
+
+- 修改 `title` 和 `description` 的类型为 `ReactNode`
+- 新增 `type` 属性，设置步骤条类型
+
   [//]: # '#### Swiper'
   [//]: # '#### Table'
   [//]: # '#### Tag'
