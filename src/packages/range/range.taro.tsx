@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
+import { useReady, nextTick } from '@tarojs/taro'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
@@ -72,9 +73,10 @@ export const Range: FunctionComponent<
     [vertical]
   )
   const buttonRef = useRef(0)
-  const [dragStatus, setDragStatus] = useState('start')
+  const dragStatusRef = useRef('start')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
+  const rootRect = useRef<any>(null)
   const [marksList, setMarksList] = useState<number[]>([])
   const [startValue, setStartValue] = useState<any>(0)
   const scope = useMemo(() => {
@@ -116,11 +118,13 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
+
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [verticalClassPrefix]: vertical,
     [`${classPrefix}-native`]: isHm,
   })
+
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
@@ -129,6 +133,7 @@ export const Range: FunctionComponent<
     },
     className
   )
+
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
@@ -169,33 +174,33 @@ export const Range: FunctionComponent<
     [range]
   )
 
-  const calcMainAxis = useCallback(() => {
+  const calcMainAxis = useMemo(() => {
     const modelVal = innerValue as any
     return isRange(modelVal)
       ? `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
       : `${((modelVal - min) * 100) / scope}%`
   }, [innerValue, isRange, min, scope])
 
-  const calcOffset = useCallback(() => {
+  const calcOffset = useMemo(() => {
     const modelVal = innerValue as any
     return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : '0%'
   }, [innerValue, isRange, min, scope])
 
-  const barStyle = useCallback(() => {
+  const barStyle = useMemo(() => {
     if (vertical) {
       return {
-        height: calcMainAxis(),
-        top: calcOffset(),
-        transition: dragStatus ? 'none' : undefined,
+        height: calcMainAxis,
+        top: calcOffset,
+        transition: dragStatusRef.current ? 'none' : undefined,
       }
     }
     const dir = rtl ? 'right' : 'left'
     return {
-      width: calcMainAxis(),
-      [dir]: calcOffset(),
-      transition: dragStatus ? 'none' : undefined,
+      width: calcMainAxis,
+      [dir]: calcOffset,
+      transition: dragStatusRef.current ? 'none' : undefined,
     }
-  }, [calcMainAxis, calcOffset, dragStatus, rtl, vertical])
+  }, [calcMainAxis, calcOffset, rtl, vertical])
 
   const marksStyle = useCallback(
     (mark: any) => {
@@ -251,7 +256,7 @@ export const Range: FunctionComponent<
       if (disabled || !root.current) return
       // TODO 鸿蒙获取clientX的数据有误，windowX 也变成了 undefined。暂不支持，待上游支持。
       if (isHm) return
-      setDragStatus('')
+      dragStatusRef.current = ''
       const rect = await getRectInMultiPlatform(root.current)
       let x = event.detail?.x ?? event.clientX
       if (isHm) x = parseFloat(pxTransform(event.windowX || x))
@@ -281,6 +286,18 @@ export const Range: FunctionComponent<
     [innerValue, disabled, isRange, min, scope, updateValue, vertical]
   )
 
+  useReady(() => {
+    const getRootRect = async () => {
+      if (root.current) {
+        const rect = await getRectInMultiPlatform(root.current)
+        rootRect.current = rect
+      }
+    }
+    nextTick(() => {
+      getRootRect()
+    })
+  })
+
   const onTouchStart = useCallback(
     (event: any) => {
       if (disabled) return
@@ -291,7 +308,7 @@ export const Range: FunctionComponent<
       } else {
         setStartValue(format(innerValue as number))
       }
-      setDragStatus('start')
+      dragStatusRef.current = 'start'
     },
     [innerValue, disabled, format, isRange, touch]
   )
@@ -300,26 +317,26 @@ export const Range: FunctionComponent<
     async (event: any) => {
       // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
       if (disabled || !root.current) return
-      if (dragStatus === 'start') {
+      if (dragStatusRef.current === 'start') {
         onStart && onStart()
-        setDragStatus('draging')
+        dragStatusRef.current = 'draging'
       }
       touch.move(event)
 
       const handleMove = async () => {
-        const rect = await getRectInMultiPlatform(root.current)
-        if (!rect) return
+        if (!rootRect.current) return
         let delta = isHm
           ? parseFloat(pxTransform(touch.deltaX.current))
           : touch.deltaX.current
-        let total = rect.width
+        let total = rootRect.current.width
         let diff = (delta / total) * scope
         diff = rtl ? -diff : diff
+
         if (vertical) {
           delta = isHm
             ? parseFloat(pxTransform(touch.deltaY.current))
             : touch.deltaY.current
-          total = rect.height
+          total = rootRect.current.height
           diff = (delta / total) * scope
         }
 
@@ -335,7 +352,6 @@ export const Range: FunctionComponent<
     },
     [
       disabled,
-      dragStatus,
       isRange,
       onStart,
       rtl,
@@ -349,11 +365,11 @@ export const Range: FunctionComponent<
 
   const onTouchEnd = useCallback(() => {
     if (disabled) return
-    if (dragStatus === 'draging') {
+    if (dragStatusRef.current === 'draging') {
       updateValue(innerValue, true)
     }
-    setDragStatus('')
-  }, [innerValue, disabled, dragStatus, updateValue])
+    dragStatusRef.current = ''
+  }, [innerValue, disabled, updateValue])
 
   const curValue = useCallback(
     (idx?: number) => {
@@ -455,13 +471,11 @@ export const Range: FunctionComponent<
 
   const renderRangeButton = useCallback(() => {
     return [0, 1].map((_, index) => {
-      const isLeft = index === 0
-      const suffix = isLeft ? 'left' : 'right'
+      const suffix = index === 0 ? 'left' : 'right'
       const cls = classNames(`${classPrefix}-button-wrapper-${suffix}`, {
         [`${verticalClassPrefix}-button-wrapper-${suffix}`]: vertical,
         [`${rtlClassPrefix}-button-wrapper-${suffix}`]: rtl,
       })
-
       return (
         <View
           key={index}
@@ -515,8 +529,15 @@ export const Range: FunctionComponent<
   )
 
   const renderButtonWrapper = useCallback(() => {
-    return range ? renderRangeButton() : renderSingleButton()
-  }, [renderRangeButton, renderSingleButton, range])
+    return (
+      <View
+        className={`${classPrefix}-bar ${isHm ? '' : `${classPrefix}-bar-animate`}}`}
+        style={barStyle}
+      >
+        {range ? renderRangeButton() : renderSingleButton()}
+      </View>
+    )
+  }, [renderRangeButton, renderSingleButton, range, barStyle])
 
   return (
     <View className={containerClasses} style={style}>
@@ -525,9 +546,7 @@ export const Range: FunctionComponent<
       )}
       <View ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
-        <View className={`${classPrefix}-bar`} style={barStyle()}>
-          {renderButtonWrapper()}
-        </View>
+        {renderButtonWrapper()}
       </View>
       {maxDescription !== null && (
         <Text className={`${classPrefix}-max`}>{maxDescription || max}</Text>
