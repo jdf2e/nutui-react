@@ -533,7 +533,10 @@ export const Range: FunctionComponent<
       <div ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
 
-        <div className={`${classPrefix}-bar`} style={barStyle()}>
+        <div
+          className={`${classPrefix}-bar ${classPrefix}-bar-animate`}
+          style={barStyle()}
+        >
           {renderButtonWrapper()}
         </div>
       </div>
