@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
+import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -74,13 +75,11 @@ export const Range: FunctionComponent<
   const [dragStatus, setDragStatus] = useState('start')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
-  const rootRect = useRef<any>(null)
   const [marksList, setMarksList] = useState<number[]>([])
   const [startValue, setStartValue] = useState<any>(0)
   const scope = useMemo(() => {
-    if (max <= min) {
+    if (max < min || max === min) {
       console.log('max 的值需要大于 min的值')
-      return 0
     }
     return max - min
   }, [max, min])
@@ -94,12 +93,9 @@ export const Range: FunctionComponent<
     finalValue: 0,
     onChange: handleChange,
   })
-
   const exactValueRef = useRef<RangeValue>(value || defaultValue || 0)
   const marksRef = useRef<{ [key: string]: any }>({})
-
   useEffect(() => {
-    console.log('set marklist')
     if (marks) {
       if (Array.isArray(marks)) {
         const list = marks
@@ -120,13 +116,11 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
-
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [verticalClassPrefix]: vertical,
     [`${classPrefix}-native`]: isHm,
   })
-
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
@@ -135,7 +129,6 @@ export const Range: FunctionComponent<
     },
     className
   )
-
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
@@ -256,23 +249,23 @@ export const Range: FunctionComponent<
   const handleClick = useCallback(
     async (event: any) => {
       if (disabled || !root.current) return
-
+      // TODO 鸿蒙获取clientX的数据有误，windowX 也变成了 undefined。暂不支持，待上游支持。
+      if (isHm) return
       setDragStatus('')
       const rect = await getRectInMultiPlatform(root.current)
-      const x = event.detail?.x ?? event.clientX
-
+      let x = event.detail?.x ?? event.clientX
+      if (isHm) x = parseFloat(pxTransform(event.windowX || x))
       let delta = x - rect.left
       let total = rect.width
 
       if (vertical) {
-        const y = event.detail?.y ?? event.clientY
+        let y = event.detail?.y ?? event.clientY
+        if (isHm) y = parseFloat(pxTransform(event.windowY || y))
         delta = y - rect.top
         total = rect.height
       }
-
       const value = min + (delta / total) * scope
       exactValueRef.current = innerValue
-
       if (isRange(innerValue)) {
         const [left, right] = innerValue as any
         const middle = (left + right) / 2
@@ -288,16 +281,6 @@ export const Range: FunctionComponent<
     [innerValue, disabled, isRange, min, scope, updateValue, vertical]
   )
 
-  useEffect(() => {
-    const getRootRect = async () => {
-      if (root.current) {
-        const rect = await getRectInMultiPlatform(root.current)
-        rootRect.current = rect
-      }
-    }
-    getRootRect()
-  }, [root])
-
   const onTouchStart = useCallback(
     (event: any) => {
       if (disabled) return
@@ -308,7 +291,6 @@ export const Range: FunctionComponent<
       } else {
         setStartValue(format(innerValue as number))
       }
-
       setDragStatus('start')
     },
     [innerValue, disabled, format, isRange, touch]
@@ -316,8 +298,8 @@ export const Range: FunctionComponent<
 
   const onTouchMove = useCallback(
     async (event: any) => {
+      // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
       if (disabled || !root.current) return
-
       if (dragStatus === 'start') {
         onStart && onStart()
         setDragStatus('draging')
@@ -325,17 +307,19 @@ export const Range: FunctionComponent<
       touch.move(event)
 
       const handleMove = async () => {
-        if (!rootRect.current) return
-        console.log('touch move000033', rootRect.current.width)
-
-        let delta = touch.deltaX.current
-        let total = rootRect.current.width
+        const rect = await getRectInMultiPlatform(root.current)
+        if (!rect) return
+        let delta = isHm
+          ? parseFloat(pxTransform(touch.deltaX.current))
+          : touch.deltaX.current
+        let total = rect.width
         let diff = (delta / total) * scope
         diff = rtl ? -diff : diff
-
         if (vertical) {
-          delta = touch.deltaY.current
-          total = rootRect.current.height
+          delta = isHm
+            ? parseFloat(pxTransform(touch.deltaY.current))
+            : touch.deltaY.current
+          total = rect.height
           diff = (delta / total) * scope
         }
 
@@ -347,7 +331,6 @@ export const Range: FunctionComponent<
         exactValueRef.current = newValue
         updateValue(newValue)
       }
-
       requestAnimationFrame(handleMove)
     },
     [
@@ -380,7 +363,6 @@ export const Range: FunctionComponent<
     },
     [innerValue]
   )
-
   const buttonNumberTransform = useMemo(() => {
     return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
   }, [vertical])
