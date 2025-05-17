@@ -74,6 +74,12 @@ import { Progress } from '@nutui/nutui-react'
 
 :::
 
+### Set animation duration and playback mode
+
+:::demo
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+:::
+
 ## Progress
 
 ### Props

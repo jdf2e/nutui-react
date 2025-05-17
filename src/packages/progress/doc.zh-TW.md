@@ -74,6 +74,12 @@ import { Progress } from '@nutui/nutui-react'
 
 :::
 
+### 設置動畫時長與播放方式
+
+:::demo
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+:::
+
 ## Progress
 
 ### Props
