@@ -328,7 +328,10 @@ plugins: [
 - 修改 `title` 和 `description` 的类型为 `ReactNode`
 - 新增 `type` 属性，设置步骤条类型
 
-  [//]: # '#### Swiper'
+#### Swiper
+
+- 修改 `autoPlay` 为 `autoplay`
+
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'

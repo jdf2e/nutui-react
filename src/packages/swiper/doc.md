@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        autoPlay
+        autoplay
         loop
         slideSize={300}
         indicator
@@ -427,7 +427,7 @@ export default App
 | indicator | 分页指示器是否展示，可传入自定义的 HTML 结构 | `ReactNode` | `false` |
 | loop | 是否循环轮播 | `boolean` | `true` |
 | duration | 动画时长（单位是ms） | `number` \| `string` | `500` |
-| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `0` |
+| autoplay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `0` |
 | defaultValue | 初始化索引值 | `number` \| `string` | `0` |
 | touchable | 是否可触摸滑动 | `boolean` | `true` |
 | onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |

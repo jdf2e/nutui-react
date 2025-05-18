@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
@@ -18,6 +18,7 @@ const defaultProps = {
   loop: false,
   duration: 3000,
   autoPlay: false,
+  autoplay: false,
   defaultValue: 0,
   touchable: true,
   effect: undefined,
@@ -33,6 +34,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       loop,
       effect,
       autoPlay,
+      autoplay,
       touchable,
       defaultValue,
       duration,
@@ -95,23 +97,30 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     const [transforms, setTransforms] = useList(effect, count, current)
 
     // 自动播放
-    const runTimeSwiper = () => {
+    const runTimeSwiper = useCallback(() => {
       const durationNumber =
         typeof duration === 'string' ? parseInt(duration) : duration
-      const d = typeof autoPlay === 'number' ? autoPlay : durationNumber
+      let d = durationNumber
+      if (typeof autoPlay === 'number') {
+        d = autoPlay
+      }
+      if (typeof autoplay === 'number') {
+        d = autoplay
+      }
       timeoutRef.current = window.setTimeout(() => {
         next()
         runTimeSwiper()
       }, d)
-    }
+    }, [autoPlay, autoplay, duration])
+
     useEffect(() => {
-      if (!autoPlay || dragging) return
+      if (!autoPlay || !autoplay || dragging) return
       runTimeSwiper()
 
       return () => {
         if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
       }
-    }, [autoPlay, duration, dragging, count])
+    }, [autoPlay, autoplay, duration, dragging, count, runTimeSwiper])
 
     function boundIndex(current: number) {
       const min = 0

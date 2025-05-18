@@ -12,7 +12,11 @@ export type TaroSwiperProps = Omit<BaseSwiper, OmittedKeys> &
     height?: SimpleValue
     direction: Direction
     indicator: ReactNode
+    /**
+     * @deprecated Please use `autoplay` prop instead.
+     */
     autoPlay: boolean
+    autoplay: boolean
     loop: boolean
     defaultValue: number
   }
