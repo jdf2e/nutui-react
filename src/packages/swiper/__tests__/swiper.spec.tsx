@@ -119,6 +119,22 @@ test('should render indicator', () => {
   expect(indicatorItem.length).toEqual(4)
 })
 
+test('should render effect', () => {
+  const { container } = render(
+    <Swiper defaultValue={1} effect={{ name: 'focus', scale: 1 }}>
+      {list.map((item) => {
+        return (
+          <Swiper.Item key={item}>
+            <img src={item} alt="" />
+          </Swiper.Item>
+        )
+      })}
+    </Swiper>
+  )
+  const swiper = container.querySelectorAll('.nut-swiper-slide')[0]
+  expect(swiper).toHaveStyle({ transform: 'translate3d(-100%,0,0) scale(1)' })
+})
+
 test('should render auto-play', async () => {
   const { container } = render(
     <Swiper style={{ width: '375px' }} defaultValue={0} autoplay>
@@ -141,12 +157,7 @@ test('should render auto-play', async () => {
 
 test('should render auto-play width number', async () => {
   const { container } = render(
-    <Swiper
-      style={{ width: '375px' }}
-      slideSize={300}
-      defaultValue={0}
-      autoplay={300}
-    >
+    <Swiper style={{ width: '375px' }} defaultValue={0} autoplay={300}>
       {list.map((item) => {
         return (
           <Swiper.Item key={item}>
@@ -173,7 +184,6 @@ test('should not allow to drag when touchable is false', () => {
       slideSize={200}
       defaultValue={0}
       onChange={onChange}
-      touchable={false}
     >
       {list.map((item) => {
         return (
@@ -184,7 +194,7 @@ test('should not allow to drag when touchable is false', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper')[0]
+  const swiper = container.querySelector('.nut-swiper')
   const swiperItem = container.querySelector('.nut-swiper-slide')
   triggerDrag(swiper, 220, 0)
   expect(swiperItem).toHaveStyle({
