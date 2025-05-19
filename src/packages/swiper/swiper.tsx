@@ -101,15 +101,24 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     const runTimeSwiper = useCallback(() => {
       const durationNumber =
         typeof duration === 'string' ? parseInt(duration) : duration
-      const d = typeof autoplay === 'number' ? autoplay : durationNumber
+      let d = durationNumber
+      // 优先使用明确设置的数值型自动播放间隔
+      if (typeof props.autoPlay === 'number') {
+        d = props.autoPlay
+      } else if (typeof autoplay === 'number') {
+        d = autoplay
+      }
       timeoutRef.current = window.setTimeout(() => {
         next()
         runTimeSwiper()
       }, d)
-    }, [autoplay, duration])
+    }, [props.autoPlay, autoplay, duration])
 
     useEffect(() => {
-      if (!autoplay || dragging) return
+      // 兼容旧版的 autoPlay 属性
+      const shouldAutoplay = props.autoPlay || autoplay
+      if (!shouldAutoplay || dragging) return
+      // if (!autoplay || dragging) return
       runTimeSwiper()
       return () => {
         if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
