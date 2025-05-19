@@ -17,7 +17,6 @@ const defaultProps = {
   indicator: false,
   loop: false,
   duration: 3000,
-  autoPlay: false,
   autoplay: false,
   defaultValue: 0,
   touchable: true,
@@ -33,7 +32,6 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       indicator,
       loop,
       effect,
-      autoPlay,
       autoplay,
       touchable,
       defaultValue,
@@ -44,26 +42,43 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     const isVertical = direction === 'vertical'
     const count = useMemo(() => {
       let c = 0
-      React.Children.map(children, (child, index) => {
+      React.Children.map(children, () => {
         c += 1
       })
       return c
     }, [children])
-    const getSlideSize = () => {
+    const stageRef = useRef<HTMLDivElement>(null)
+    const swiperRef = useRef<HTMLDivElement>(null)
+    const timeoutRef = useRef<number | null>(null)
+    const [dragging, setDragging] = useState(false)
+    const [innerValue, setInnerValue] = useRefState(defaultValue)
+    const [springs, api] = useSpring(() => ({
+      x: !isVertical ? innerValue.current * 100 * -1 : 0,
+      y: isVertical ? innerValue.current * 100 * -1 : 0,
+      s: 0,
+      reset: () => {},
+      config: { tension: 200, friction: 30 },
+    }))
+
+    const getSlideSize = useMemo(() => {
       if (props.slideSize) return props.slideSize
       if (stageRef.current) {
-        if (isVertical) return stageRef.current.offsetHeight
-        return stageRef.current.offsetWidth
+        return isVertical
+          ? stageRef.current.offsetHeight
+          : stageRef.current.offsetWidth
       }
       return 0
-    }
-    const getSwiperSize = () => {
+    }, [isVertical, props.slideSize])
+
+    const getSwiperSize = useMemo(() => {
       if (swiperRef.current) {
-        if (isVertical) return swiperRef.current.offsetHeight
-        return swiperRef.current.offsetWidth
+        return isVertical
+          ? swiperRef.current.offsetHeight
+          : swiperRef.current.offsetWidth
       }
       return 0
-    }
+    }, [isVertical])
+
     const bound = (v: number, min: number, max: number) => {
       if (min !== undefined) {
         v = Math.max(v, min)
@@ -73,37 +88,23 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       }
       return v
     }
-    const timeoutRef = useRef<number | null>(null)
-    const [dragging, setDragging] = useState(false)
-    const [current, setCurrent] = useRefState(defaultValue)
-    const stageRef = useRef<HTMLDivElement>(null)
-    const swiperRef = useRef<HTMLDivElement>(null)
-    const [springs, api] = useSpring(() => ({
-      x: !isVertical ? current.current * 100 * -1 : 0,
-      y: isVertical ? current.current * 100 * -1 : 0,
-      s: 0,
-      reset: () => {},
-      config: { tension: 200, friction: 30 },
-    }))
+
     useEffect(() => {
       api.start({
-        [isVertical ? 'y' : 'x']: boundIndex(current.current) * -1 * 100,
+        [isVertical ? 'y' : 'x']: boundIndex(innerValue.current) * -1 * 100,
         immediate: true,
       })
     }, [swiperRef.current])
 
     const swiperDirection = useRef(1)
-
-    const [transforms, setTransforms] = useList(effect, count, current)
+    const [transforms, setTransforms] = useList(effect, count, innerValue)
 
     // 自动播放
     const runTimeSwiper = useCallback(() => {
+      if (!autoplay || dragging) return
       const durationNumber =
         typeof duration === 'string' ? parseInt(duration) : duration
       let d = durationNumber
-      if (typeof autoPlay === 'number') {
-        d = autoPlay
-      }
       if (typeof autoplay === 'number') {
         d = autoplay
       }
@@ -111,24 +112,21 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
         next()
         runTimeSwiper()
       }, d)
-    }, [autoPlay, autoplay, duration])
+    }, [autoplay, duration])
 
     useEffect(() => {
-      if (!autoPlay || !autoplay || dragging) return
       runTimeSwiper()
-
       return () => {
         if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
       }
-    }, [autoPlay, autoplay, duration, dragging, count, runTimeSwiper])
+    }, [autoplay, duration, dragging, count, runTimeSwiper])
 
     function boundIndex(current: number) {
       const min = 0
       const max = count - 1
       if (current === max && !loop && props.slideSize) {
         const slideSize = props.slideSize
-        const swiperSize = getSwiperSize()
-        const ratio = (swiperSize - slideSize) / slideSize
+        const ratio = (getSwiperSize - slideSize) / slideSize
         return bound(current, min, max - ratio)
       }
       return current
@@ -140,7 +138,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
         const cycleIndex = index % count
         targetIndex = cycleIndex < 0 ? cycleIndex + count : cycleIndex
       }
-      setCurrent(targetIndex)
+      setInnerValue(targetIndex)
       props.onChange?.(targetIndex)
 
       if (effect) {
@@ -173,7 +171,6 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     const bind = useDrag(
       (state) => {
         const axis = Number(isVertical)
-        const slideSize = getSlideSize()
         const offset = state.offset[axis]
 
         setDragging(!!state.dragging)
@@ -185,17 +182,17 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           // 计算位置
           const swipeDirection = state.direction[axis]
           const velocity = state.velocity[axis]
-          const minIndex = Math.floor(offset / slideSize)
+          const minIndex = Math.floor(offset / getSlideSize)
           const maxIndex = minIndex + 1
           const index = Math.round(
-            (offset + velocity * 2000 * swipeDirection) / slideSize
+            (offset + velocity * 2000 * swipeDirection) / getSlideSize
           )
           to(bound(index, minIndex, maxIndex))
         } else {
           // 实时移动，换算百分比
           api.start({
-            [isVertical ? 'y' : 'x']: -((offset / slideSize) * 100),
-            s: distance / slideSize,
+            [isVertical ? 'y' : 'x']: -((offset / getSlideSize) * 100),
+            s: distance / getSlideSize,
             immediate: true,
           })
         }
@@ -205,18 +202,15 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
         transform: ([x, y]) => [-x, -y],
         from: () => {
           // 由百分比转换到像素
-          const slideSize = getSlideSize()
-          const x = (springs.x.get() / 100) * slideSize
-          const y = (springs.y.get() / 100) * slideSize
+          const x = (springs.x.get() / 100) * getSlideSize
+          const y = (springs.y.get() / 100) * getSlideSize
           return [-x, -y]
         },
         bounds: () => {
           if (loop) return {}
-          const slideSize = getSlideSize()
-          if (isVertical) {
-            return { top: 0, bottom: (count - 1) * slideSize }
-          }
-          return { left: 0, right: (count - 1) * slideSize }
+          return isVertical
+            ? { top: 0, bottom: (count - 1) * getSlideSize }
+            : { left: 0, right: (count - 1) * getSlideSize }
         },
         rubberband: true,
         triggerAllEvents: true,
@@ -229,8 +223,8 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     )
 
     const renderIndicator = () => {
-      if (React.isValidElement(indicator)) return indicator
       if (!indicator) return null
+      if (React.isValidElement(indicator)) return indicator
       return (
         <div
           className={classNames({
@@ -240,7 +234,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           })}
         >
           <Indicator
-            current={getRefValue(current)}
+            current={getRefValue(innerValue)}
             total={count}
             direction={direction}
           />
@@ -265,7 +259,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           count,
           isVertical,
           effect,
-          current,
+          current: innerValue,
           swiperDirection,
           dragging,
           transforms,
