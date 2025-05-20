@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import { useSpring, animated } from '@react-spring/web'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
@@ -50,7 +50,7 @@ export const Overlay: FunctionComponent<
 
   const shouldLockScroll = !innerVisible ? false : lockScroll
   useLockScroll(nodeRef, shouldLockScroll)
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, `${classPrefix}-slide`, className)
   const styles = {
     ...style,
     zIndex,
@@ -62,26 +62,30 @@ export const Overlay: FunctionComponent<
     }
   }
 
+  const springProps = useSpring({
+    opacity: innerVisible ? 1 : 0,
+    config: { duration },
+    onRest: () => {
+      if (innerVisible) {
+        afterShow()
+      } else {
+        afterClose()
+      }
+    },
+  })
+
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      classNames={`${classPrefix}-slide`}
-      unmountOnExit
-      timeout={duration}
-      in={innerVisible}
-      onEntered={afterShow}
-      onExited={afterClose}
-    >
-      <div
+    innerVisible && (
+      <animated.div
         ref={nodeRef}
         className={classes}
-        style={styles}
+        style={{ ...styles, ...springProps }}
         {...rest}
         onClick={handleClick}
       >
         {children}
-      </div>
-    </CSSTransition>
+      </animated.div>
+    )
   )
 }
 
