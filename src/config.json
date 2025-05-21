@@ -811,7 +811,6 @@
           "taro": true,
           "jdtaro": 2,
           "v15": 1,
-
           "author": "VickyYe",
           "dd": true
         },
@@ -1269,7 +1268,7 @@
           "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Step",
           "sort": 17,
           "cName": "步骤条子组件",
@@ -1277,10 +1276,12 @@
           "show": false,
           "exportEmpty": true,
           "desc": "步骤条子组件",
-          "author": "swag~jun"
+          "v15": 2,
+          "author": "songsong",
+          "dd": true
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Steps",
           "type": "component",
           "cName": "步骤条",
@@ -1289,8 +1290,8 @@
           "show": true,
           "taro": true,
           "v15": 2,
-          "author": "swag~jun",
-          "dd": false
+          "author": "songsong",
+          "dd": true
         },
         {
           "version": "3.0.0",

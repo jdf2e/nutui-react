@@ -1,3 +1,15 @@
+# v3.0.12
+
+`2025-05-17`
+
+- :sparkles: feat(range): 鸿蒙适配,修订NaN,纵向mark时异常问题 (#3217)
+- :sparkles: feat(progress): 兼容并支持taro components的progressProps & v15适配 (#3202)
+- :sparkles: feat(searchbar): v15 适配,增加了受控和默认值 (#3209)
+- :sparkles: feat(steps): v15 (#3216)
+- :bug: fix(uploader): beforeUpload failed to work (#3219)
+- :bug: fix(uploader): 多端上传媒体文件逻辑与2x保持一致 (#3223)
+- :bug: fix(address): 构建单一样式文件 (#3220)
+
 # v3.0.11
 
 `2025-05-09`

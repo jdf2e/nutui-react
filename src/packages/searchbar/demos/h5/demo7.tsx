@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SearchBar } from '../../searchbar'
+import { SearchBar } from '@nutui/nutui-react'
 
 const Demo7 = () => {
   const [value, setValue] = useState('')

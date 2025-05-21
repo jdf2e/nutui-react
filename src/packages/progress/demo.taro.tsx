@@ -11,6 +11,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const ProgressDemo = () => {
   const [translated] = useTranslate({
@@ -23,16 +24,18 @@ const ProgressDemo = () => {
       statusDisplay: '状态显示',
       dynamicChange: '动态改变',
       lazy: '延迟加载数据',
+      activeMode: '设置动画时长与播放方式',
     },
     'zh-TW': {
       basic: '基礎用法',
-      customStyle: '設置顏色與寛度',
+      customStyle: '設置顏色與寬度',
       noShowPercentage: '顯示百分比',
       customContent: '自定義顯示內容',
       customSize: '自定義尺寸',
       statusDisplay: '狀態顯示',
       dynamicChange: '動態改變',
-      lazy: '延迟加载数据',
+      lazy: '延遲加載數據',
+      activeMode: '設置動畫時長與播放方式',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -43,6 +46,7 @@ const ProgressDemo = () => {
       statusDisplay: 'Status Display',
       dynamicChange: 'Dynamic Change',
       lazy: 'Delay Time',
+      activeMode: 'Duration And Animation Mode',
     },
   })
 
@@ -71,6 +75,8 @@ const ProgressDemo = () => {
             <Demo8 />
           </>
         )}
+        <View className="h2">{translated.activeMode}</View>
+        <Demo9 />
       </ScrollView>
     </>
   )

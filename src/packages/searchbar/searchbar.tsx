@@ -1,9 +1,18 @@
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { ArrowLeft, MaskClose, Search } from '@nutui/icons-react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from 'react'
+import { ArrowLeft, Close, MaskClose, Search } from '@nutui/icons-react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebSearchBarProps } from '@/types'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,7 +27,8 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search width="16" height="16" />,
+  leftIn: <Search />,
+  tag: false,
 } as WebSearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<WebSearchBarProps> &
@@ -28,12 +38,11 @@ export const SearchBar: FunctionComponent<
     >
 > = (props) => {
   const classPrefix = 'nut-searchbar'
-
   const { locale } = useConfig()
-  const searchRef = useRef<HTMLInputElement>(null)
-
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const {
     value: outerValue,
+    defaultValue,
     style,
     placeholder,
     shape,
@@ -48,147 +57,227 @@ export const SearchBar: FunctionComponent<
     left,
     leftIn,
     rightIn,
+    tag,
     onChange,
     onFocus,
     onBlur,
     onClear,
     onSearch,
     onInputClick,
+    onItemClick,
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const [value, setValue] = useState(() => outerValue)
+  const [value, setValue] = usePropsValue<string>({
+    value: outerValue,
+    defaultValue,
+    finalValue: '',
+  })
 
-  const forceFocus = () => {
-    const searchSelf: HTMLInputElement | null = searchRef.current
-    searchSelf && searchSelf.focus()
-  }
-  const change = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onChange && onChange?.(value, event)
-    setValue(value)
-  }
-  const focus = (event: FocusEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onFocus && onFocus?.(value, event)
-  }
-  const blur = (event: FocusEvent<HTMLInputElement>) => {
-    const searchSelf: HTMLInputElement | null = searchRef.current
-    searchSelf && searchSelf.blur()
-    const { value } = event.target
-    onBlur && onBlur?.(value, event)
-  }
+  const [innerTag, setInnerTag] = useState(tag)
+
+  const forceFocus = useCallback(() => {
+    searchInputRef.current?.focus()
+  }, [])
+
+  const handleChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target
+      onChange && onChange(value, event)
+      setValue(value)
+    },
+    [onChange, setValue]
+  )
+
+  const handleInputClick = useCallback(
+    (event: MouseEvent<HTMLInputElement>) => {
+      onInputClick?.(event)
+    },
+    [onInputClick]
+  )
+
+  const handleFocus = useCallback(
+    (event: FocusEvent<HTMLInputElement>) => {
+      onFocus && onFocus(event.target?.value, event)
+      if (tag) setInnerTag(false)
+    },
+    [onFocus, tag]
+  )
+
+  const [blurTimer, setBlurTimer] = useState<NodeJS.Timeout | null>(null)
+
+  const handleBlur = useCallback(
+    (event: FocusEvent<HTMLInputElement>) => {
+      searchInputRef.current?.blur()
+      onBlur && onBlur(event.target?.value, event)
+      if (tag) {
+        const timer = setTimeout(() => {
+          setInnerTag(event.target?.value ? tag : false)
+        }, 150)
+        setBlurTimer(timer)
+      }
+    },
+    [onBlur, tag]
+  )
+
   useEffect(() => {
-    setValue(outerValue)
-  }, [outerValue])
+    return () => {
+      if (blurTimer) clearTimeout(blurTimer)
+    }
+  }, [blurTimer])
+
+  const clearaVal = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (disabled || readOnly) return
+      setValue('')
+      forceFocus()
+      onChange && onChange('')
+      onClear && onClear(event)
+    },
+    [disabled, readOnly, onChange, onClear, setValue, forceFocus]
+  )
+
+  const onKeydown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        const event = e.nativeEvent
+        if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+          event.preventDefault()
+        }
+        onSearch && onSearch(value as string)
+      }
+    },
+    [onSearch, value]
+  )
+
+  const cls = useMemo(
+    () =>
+      classNames(
+        classPrefix,
+        {
+          [`${classPrefix}-disabled`]: disabled,
+          [`${classPrefix}-focus`]: left || backable,
+        },
+        className
+      ),
+    [disabled, backable, left, className]
+  )
   useEffect(() => {
-    autoFocus && forceFocus()
-  }, [autoFocus])
+    if (autoFocus) {
+      forceFocus()
+    }
+  }, [autoFocus, forceFocus])
+
   const renderField = () => {
+    const inputCls = classNames(`${classPrefix}-input`)
     return (
       <input
-        className={`${classPrefix}-input ${
-          clearable ? `${classPrefix}-input-clear` : ''
-        }`}
-        ref={searchRef}
+        className={inputCls}
+        ref={searchInputRef}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
         onKeyDown={onKeydown}
-        onChange={(e) => change(e)}
-        onFocus={(e) => focus(e)}
-        onBlur={(e) => blur(e)}
-        onClick={(e) => clickInput(e)}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClick={handleInputClick}
       />
     )
   }
-  const clickInput = (e: MouseEvent<HTMLInputElement>) => {
-    onInputClick && onInputClick(e)
-  }
 
-  const renderLeftIn = () => {
+  const renderValueByTags = useCallback(() => {
+    if (!value) {
+      setTimeout(() => {
+        forceFocus()
+      }, 0)
+      return null
+    }
+    const list = value.split(',')
+    if (!list) return null
+    return (
+      <div className="nut-searchbar-values">
+        {list.map((item, index) => (
+          <div
+            key={`def-${index}`}
+            className="nut-searchbar-value"
+            onClick={(e) => onItemClick?.(item, e)}
+          >
+            {item}
+            <Close />
+          </div>
+        ))}
+      </div>
+    )
+  }, [value, onItemClick])
+
+  const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
     return (
       <div className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
       </div>
     )
-  }
-  const renderLeft = () => {
+  }, [leftIn])
+
+  const renderLeft = useCallback(() => {
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft width="16" height="16" /> : left}
+        {backable ? <ArrowLeft /> : left}
       </div>
     )
-  }
+  }, [backable, left])
 
-  const renderRightIn = () => {
+  const renderRightIn = useCallback(() => {
     if (!rightIn) return null
     return (
-      <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
-        {rightIn}
-      </div>
+      <>
+        {React.isValidElement(rightIn) ? (
+          <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
+            {rightIn}
+          </div>
+        ) : (
+          <div className={`${classPrefix}-rightin`}>{rightIn}</div>
+        )}
+      </>
     )
-  }
+  }, [rightIn])
 
-  const renderRight = () => {
+  const renderRight = useCallback(() => {
     if (!right) return null
     return <div className={`${classPrefix}-right`}>{right}</div>
-  }
+  }, [right])
 
-  const handleClear = () => {
+  const renderClear = useCallback(() => {
+    if (!value || !clearable) return null
     return (
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
-        onClick={(e) => clearaVal(e)}
+        onClick={clearaVal}
+        aria-label="清除"
       >
         <MaskClose />
       </div>
     )
-  }
-
-  const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
-    if (disabled || readOnly) {
-      return
-    }
-    setValue('')
-    onChange && onChange?.('')
-    onClear && onClear(event)
-    forceFocus()
-  }
-
-  const onKeydown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      const event = e.nativeEvent
-      if (typeof event.cancelable !== 'boolean' || event.cancelable) {
-        event.preventDefault()
-      }
-      onSearch && onSearch(value as string)
-    }
-  }
+  }, [value, clearable, clearaVal])
 
   return (
-    <div
-      className={`${classPrefix} ${
-        disabled ? `${classPrefix}-disabled` : ''
-      }  ${className || ''}`}
-      style={style}
-    >
+    <div className={cls} style={style}>
       {renderLeft()}
       <div
-        className={`${classPrefix}-content ${
-          shape === 'round' ? `${classPrefix}-round` : ''
-        }`}
+        className={classNames(`${classPrefix}-content`, {
+          [`${classPrefix}-round`]: shape === 'round',
+        })}
       >
         {renderLeftIn()}
         {renderField()}
-        {clearable && !value && renderRightIn()}
-        {clearable && value && handleClear()}
+        {innerTag ? renderValueByTags() : renderClear()}
+        {renderRightIn()}
       </div>
       {renderRight()}
     </div>

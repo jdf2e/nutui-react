@@ -34,6 +34,17 @@ export const Progress: FunctionComponent<
     children,
     lazy,
     delay,
+    // tc
+    showInfo,
+    borderRadius,
+    fontSize,
+    activeColor,
+    backgroundColor,
+    active,
+    activeMode,
+    duration,
+    ariaLabel,
+    onActiveEnd,
     ...rest
   } = {
     ...defaultProps,
@@ -41,27 +52,45 @@ export const Progress: FunctionComponent<
   }
 
   const classPrefix = 'nut-progress'
+  const effectiveShowText = props.showText ?? showInfo ?? defaultProps.showText
+  const effectiveColor = props.color ?? activeColor ?? defaultProps.color
+  const effectiveBgColor =
+    props.background ?? backgroundColor ?? defaultProps.background
+  const effectiveAnimated = props.animated ?? active ?? defaultProps.animated
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
-    [`${classPrefix}-active`]: animated,
+    [`${classPrefix}-active`]: effectiveAnimated,
   })
 
-  const stylesOuter: React.CSSProperties = {
-    width: '100%',
-    backgroundColor: background,
-  }
-
   const [displayPercent, setDispalyPercent] = useState(percent)
+  const getStyles = () => {
+    // 基础样式
+    const baseStyles = {
+      height: strokeWidth && pxTransform(Number(strokeWidth)),
+      borderRadius:
+        borderRadius && pxTransform(parseInt(borderRadius.toString())),
+    }
+    const transitionStyle = {
+      transition: `width ${duration || 300}ms ease-in-out`,
+    }
 
-  const stylesInner: React.CSSProperties = {
-    width: `${displayPercent}%`,
-    background: color || '#FF0F23',
+    return {
+      outer: {
+        width: '100%',
+        backgroundColor: effectiveBgColor,
+        ...baseStyles,
+      },
+      inner: {
+        width: `${displayPercent}%`,
+        background: effectiveColor || '#FF0F23',
+        ...baseStyles,
+        ...transitionStyle,
+      },
+    }
   }
 
-  if (strokeWidth) {
-    stylesOuter.height = pxTransform(Number(strokeWidth))
-    stylesInner.height = pxTransform(Number(strokeWidth))
-  }
+  const { outer: stylesOuter, inner: stylesInner } = getStyles()
+
   const handlePercent = () => {
     let timer: any = null
     if (delay) {
@@ -77,8 +106,22 @@ export const Progress: FunctionComponent<
     }
   }
   useEffect(() => {
-    setDispalyPercent(percent)
-  }, [percent])
+    let timer: any = null
+    if (activeMode === 'backwards') {
+      setDispalyPercent(0)
+      timer = setTimeout(() => {
+        setDispalyPercent(percent)
+      }, duration || 300)
+    } else {
+      setDispalyPercent(percent)
+    }
+
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [percent, activeMode, duration])
 
   const [intersecting, setIntersecting] = useState(false)
   const progressRef = useRef(null)
@@ -163,7 +206,8 @@ export const Progress: FunctionComponent<
   }
   const computeInnerStyle = () => {
     const style: any = {
-      backgroundColor: color || '#ff0f23',
+      backgroundColor: effectiveColor || '#ff0f23',
+      fontSize: fontSize && pxTransform(parseInt(fontSize.toString())),
     }
     if (harmony()) {
       style.width = harmony()
@@ -178,50 +222,24 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
+      aria-label={ariaLabel}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
         <View
           className={classesInner}
           style={{ ...stylesInner, position: 'relative' }}
-        >
-          {showText && (
-            <View
-              style={{
-                position: 'relative',
-                [rtl ? 'left' : 'right']: computeRight(),
-              }}
-            >
-              <View
-                className={`${classPrefix}-text`}
-                style={{
-                  ...getTextStyle(),
-                  height:
-                    // eslint-disable-next-line no-nested-ternary
-                    harmony()
-                      ? pxTransform(strokeWidth ? Number(strokeWidth) + 8 : 18)
-                      : strokeWidth
-                        ? Number(strokeWidth) + 8
-                        : 18,
-                  position: 'absolute',
-                  top: -(strokeWidth
-                    ? (Number(strokeWidth) + 8 - 9) / 2 + 5
-                    : 9),
-                }}
-              >
-                {children || (
-                  <View
-                    className={`${classPrefix}-text-inner`}
-                    style={computeInnerStyle()}
-                  >
-                    {`${percent}%`}
-                  </View>
-                )}
-              </View>
-            </View>
-          )}
-        </View>
+          onTransitionEnd={onActiveEnd}
+        />
       </View>
+      {effectiveShowText && (
+        <View
+          className={`${classPrefix}-text`}
+          style={{ fontSize: fontSize && parseInt(fontSize.toString()) }}
+        >
+          {children || `${percent}%`}
+        </View>
+      )}
     </View>
   )
 }

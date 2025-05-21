@@ -453,3 +453,63 @@ test('preview component', () => {
   )
   expect(clickFunc).toBeCalled()
 })
+test('should handle beforeUpload function', async () => {
+  const handleUpload = vi.fn()
+  const beforeUpload = vi.fn((files) => {
+    // 只允许 PNG 文件通过
+    return files.filter((file) => file.type === 'image/png')
+  })
+
+  const { container } = render(
+    <Uploader
+      upload={(file: File) => handleUpload(file)}
+      beforeUpload={beforeUpload}
+    />
+  )
+
+  const pngFile = new File([new ArrayBuffer(10000)], 'test.png', {
+    type: 'image/png',
+  })
+  const jpgFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
+    type: 'image/jpeg',
+  })
+
+  const input: any = container.querySelector('input')
+
+  // 测试单个 PNG 文件上传
+  await fireEvent.change(input, { target: { files: [pngFile] } })
+  expect(beforeUpload).toHaveBeenCalledTimes(1)
+  expect(handleUpload).toHaveBeenCalledWith(pngFile)
+
+  // 测试单个 JPG 文件被过滤
+  await fireEvent.change(input, { target: { files: [jpgFile] } })
+  expect(beforeUpload).toHaveBeenCalledTimes(2)
+  expect(handleUpload).not.toHaveBeenCalledWith(jpgFile)
+
+  // 测试多文件上传时的过滤
+  await fireEvent.change(input, { target: { files: [pngFile, jpgFile] } })
+  expect(beforeUpload).toHaveBeenCalledTimes(3)
+  expect(handleUpload).toHaveBeenCalledTimes(2) // 只有 PNG 文件被上传
+})
+
+test('should handle beforeUpload returning empty array', async () => {
+  const handleUpload = vi.fn()
+  const beforeUpload = vi.fn(() => [])
+
+  const { container } = render(
+    <Uploader
+      upload={(file: File) => handleUpload(file)}
+      beforeUpload={beforeUpload}
+    />
+  )
+
+  const file = new File([new ArrayBuffer(10000)], 'test.txt', {
+    type: 'text/plain',
+  })
+
+  const input: any = container.querySelector('input')
+  await fireEvent.change(input, { target: { files: [file] } })
+
+  expect(beforeUpload).toHaveBeenCalled()
+  expect(handleUpload).not.toHaveBeenCalled()
+})
