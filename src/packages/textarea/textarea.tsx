@@ -111,6 +111,7 @@ export const TextArea = forwardRef(
       clear: () => setInnerValue(''),
       focus: () => textareaRef.current?.focus(),
       blur: () => textareaRef.current?.blur(),
+      get: () => textareaRef.current,
       get nativeElement() {
         return textareaRef.current
       },

@@ -87,12 +87,9 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
       clear: () => {
         setInnerValue('')
       },
-      focus: () => {
-        textareaRef.current?.focus()
-      },
-      blur: () => {
-        textareaRef.current?.blur()
-      },
+      focus: () => textareaRef.current?.focus(),
+      blur: () => textareaRef.current?.blur(),
+      get: () => textareaRef.current,
       get nativeElement() {
         return textareaRef.current
       },
