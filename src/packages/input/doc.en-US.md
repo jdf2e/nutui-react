@@ -148,6 +148,17 @@ import { Input } from '@nutui/nutui-react'
 | onClear | Triggered when the clear button is clicked | `(value: string) => void` | `-` |
 | onClick | Triggered when the input container is clicked | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
+### Ref
+
+You can get Ref of Input.
+
+| Event | Description | Arguments |
+| --- | --- | --- |
+| clear | clear the value of input | `-` |
+| focus | focus the input | `-` |
+| blur | blur the input | `-` |
+| get | get the input ref | `-` |
+
 ## Theming
 
 ### CSS Variables

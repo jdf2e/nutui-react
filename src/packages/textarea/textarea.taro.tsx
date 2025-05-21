@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { BaseEventOrig, Textarea, View } from '@tarojs/components'
@@ -19,9 +19,7 @@ const defaultProps = {
   plain: false,
   status: 'default',
 } as TaroTextAreaProps
-export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
-  props
-) => {
+export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
   const { locale } = useConfig()
   const {
     className,
@@ -54,20 +52,21 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
     return value
   }
 
-  const [inputValue, setInputValue] = usePropsValue<string>({
+  const [innerValue, setInnerValue] = usePropsValue<string>({
     value,
     defaultValue,
     finalValue: format(defaultValue),
     onChange,
   })
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChange = (event: BaseEventOrig) => {
     const text = event?.detail?.value
     if (text) {
       const value = compositionRef.current ? text : format(text)
-      setInputValue(value)
+      setInnerValue(value)
     } else {
-      setInputValue('')
+      setInnerValue('')
     }
   }
 
@@ -82,6 +81,23 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
     if (isDisabled()) return
     onBlur?.(event)
   }
+
+  useImperativeHandle(ref, () => {
+    return {
+      clear: () => {
+        setInnerValue('')
+      },
+      focus: () => {
+        textareaRef.current?.focus()
+      },
+      blur: () => {
+        textareaRef.current?.blur()
+      },
+      get nativeElement() {
+        return textareaRef.current
+      },
+    }
+  })
 
   return (
     <>
@@ -101,6 +117,7 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
       >
         <Textarea
           {...rest}
+          ref={textareaRef}
           nativeProps={{
             style,
             readOnly,
@@ -118,7 +135,7 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
           style={Taro.getEnv() === 'WEB' ? undefined : style}
           disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
           // @ts-ignore
-          value={inputValue}
+          value={innerValue}
           onInput={handleChange}
           onBlur={handleBlur}
           onFocus={handleFocus}
@@ -134,12 +151,12 @@ export const TextArea: FunctionComponent<Partial<TaroTextAreaProps>> = (
               [`${classPrefix}-limit-disabled`]: disabled,
             })}
           >
-            {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
+            {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
           </View>
         )}
       </View>
     </>
   )
-}
+})
 
 TextArea.displayName = 'NutTextArea'

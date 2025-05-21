@@ -148,6 +148,17 @@ import { Input } from '@nutui/nutui-react'
 | onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
+### Ref
+
+通過 ref 可以獲取到 Input 實例並調用實例方法。
+
+| 方法名 | 說明 | 參數 |
+| --- | --- | --- |
+| clear | 清除容器中的數據 | `-` |
+| focus | 使容器獲取焦點 | `-` |
+| blur | 使容器失去焦點 | `-` |
+| get | 獲取當前容器 | `-` |
+
 ## 主题定制
 
 ### 样式变量

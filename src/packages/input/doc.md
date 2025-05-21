@@ -151,6 +151,17 @@ import { Input } from '@nutui/nutui-react'
 
 此外还支持以下原生属性：`onCompositionStart` `onCompositionEnd`
 
+### Ref
+
+通过 ref 可以获取到 Input 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| clear | 清除容器中的数据 | `-` |
+| focus | 使容器获取焦点 | `-` |
+| blur | 使容器失去焦点 | `-` |
+| get | 获取当前容器 | `-` |
+
 ## 主题定制
 
 ### 样式变量
