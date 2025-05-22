@@ -43,12 +43,6 @@ ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點
 
 :::
 
-:::demo
-
-<CodeBlock src='taro/demo2.tsx'></CodeBlock>
-
-:::
-
 #### CSS 變數
 
 NutUI-React 支援的 CSS 變數如下：
@@ -93,13 +87,7 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-:::demo
-
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -107,7 +95,7 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

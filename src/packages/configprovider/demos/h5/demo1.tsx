@@ -1,7 +1,7 @@
 import React from 'react'
 import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react'
 
-const Demo1 = () => {
+const Demo = () => {
   const darkTheme = {
     nutuiColorPrimaryIcon: 'green',
     nutuiColorPrimaryStop1: 'green',
@@ -37,4 +37,4 @@ const Demo1 = () => {
   )
 }
 
-export default Demo1
+export default Demo

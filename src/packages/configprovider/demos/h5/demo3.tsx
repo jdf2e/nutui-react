@@ -1,7 +1,7 @@
 import React from 'react'
 import { ConfigProvider, Cell } from '@nutui/nutui-react'
 
-const Demo5 = () => {
+const Demo = () => {
   return (
     <>
       <ConfigProvider direction="rtl">
@@ -19,4 +19,4 @@ const Demo5 = () => {
   )
 }
 
-export default Demo5
+export default Demo

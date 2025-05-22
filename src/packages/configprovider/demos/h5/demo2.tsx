@@ -2,7 +2,7 @@ import React from 'react'
 import { ConfigProvider, TextArea, Cell } from '@nutui/nutui-react'
 import enUS from '@nutui/nutui-react/dist/es/locale/en-US'
 
-const Demo3 = () => {
+const Demo = () => {
   return (
     <>
       <ConfigProvider>
@@ -19,4 +19,4 @@ const Demo3 = () => {
   )
 }
 
-export default Demo3
+export default Demo

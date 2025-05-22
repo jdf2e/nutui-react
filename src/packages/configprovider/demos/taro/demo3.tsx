@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from '@tarojs/components'
 import { ConfigProvider, Cell, pxTransform } from '@nutui/nutui-react-taro'
 
-const Demo5 = () => {
+const Demo = () => {
   return (
     <>
       <ConfigProvider direction="rtl">
@@ -24,4 +24,4 @@ const Demo5 = () => {
   )
 }
 
-export default Demo5
+export default Demo
