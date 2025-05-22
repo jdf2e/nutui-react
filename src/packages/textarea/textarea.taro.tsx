@@ -12,7 +12,6 @@ const defaultProps = {
   defaultValue: '',
   showCount: false,
   maxLength: 140,
-  placeholder: '',
   readOnly: false,
   disabled: false,
   autoSize: false,
