@@ -8,7 +8,7 @@ exports[`textarea props test 1`] = `
     <textarea
       class="nut-textarea-textarea"
       maxlength="20"
-      placeholder=""
+      placeholder="请输入内容"
       rows="2"
     >
       基础用法
