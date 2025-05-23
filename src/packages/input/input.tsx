@@ -85,7 +85,6 @@ export const Input = forwardRef(
       clear: () => setValue(''),
       focus: () => inputRef.current?.focus(),
       blur: () => inputRef.current?.blur(),
-      get: () => inputRef.current,
       get nativeElement() {
         return inputRef.current
       },

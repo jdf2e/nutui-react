@@ -157,7 +157,7 @@ You can get Ref of Input.
 | clear | clear the value of input | `-` |
 | focus | focus the input | `-` |
 | blur | blur the input | `-` |
-| get | get the input ref | `-` |
+| nativeElement | get the input ref | `-` |
 
 ## Theming
 
