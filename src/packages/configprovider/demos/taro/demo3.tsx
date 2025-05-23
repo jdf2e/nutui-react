@@ -1,14 +1,27 @@
 import React from 'react'
-import { ConfigProvider, TextArea } from '@nutui/nutui-react-taro'
+import { View, Text } from '@tarojs/components'
+import { ConfigProvider, Cell, pxTransform } from '@nutui/nutui-react-taro'
 
-const Demo3 = () => {
+const Demo = () => {
   return (
     <>
-      <ConfigProvider>
-        <TextArea disabled showCount maxLength={20} />
+      <ConfigProvider direction="rtl">
+        <Cell
+          title={
+            <View>
+              <Text style={{ fontSize: pxTransform(14) }}>我是标题</Text>
+            </View>
+          }
+          description={
+            <Text style={{ fontSize: pxTransform(12), color: '#ccc' }}>
+              我是描述
+            </Text>
+          }
+          extra="描述文字"
+        />
       </ConfigProvider>
     </>
   )
 }
 
-export default Demo3
+export default Demo

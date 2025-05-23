@@ -288,7 +288,11 @@ If your project uses these components, please read the documentation carefully a
 
   [//]: # '#### Steps'
   [//]: # '#### Step'
-  [//]: # '#### Swiper'
+
+#### Swiper
+
+- Changed `autoPlay` to `autoplay`
+
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'

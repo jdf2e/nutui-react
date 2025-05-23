@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        autoPlay
+        autoplay
         loop
         slideSize={300}
         indicator
@@ -428,7 +428,7 @@ export default App
 | indicator | Whether the pagination indicator is displayed | `boolean` | `false` |
 | loop | Whether to rotate | `boolean` | `true` |
 | duration | Animation duration（Unit ms | `number` \| `string` | `500` |
-| autoPlay | Automatic rotation duration, 0 means no automatic | `number` \| `string` | `0` |
+| autoplay | Automatic rotation duration, 0 means no automatic | `number` \| `string` | `0` |
 | defaultValue | Initialize index value | `number` \| `string` | `0` |
 | touchable | Is it possible to touch swipe | `boolean` | `true` |
 | onChange | Callback after card switching | `(current: number) => void` | `-` |

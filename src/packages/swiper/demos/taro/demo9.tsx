@@ -7,7 +7,7 @@ const Demo9 = () => {
     <Swiper
       height={pxTransform(120)}
       loop
-      autoPlay
+      autoplay
       style={{
         justifyContent: 'flex-start',
         alignItems: 'flex-start',

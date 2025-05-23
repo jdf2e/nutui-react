@@ -1,10 +1,27 @@
 import React from 'react'
 import { ConfigProvider, Cell, Button, Rate } from '@nutui/nutui-react-taro'
 
-const Demo1 = () => {
+const Demo = () => {
+  const darkTheme = {
+    nutuiColorPrimaryIcon: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
   return (
     <>
       <ConfigProvider>
+        <Cell.Group>
+          <Cell>
+            <Rate defaultValue={3} />
+          </Cell>
+          <Cell>
+            <Button type="primary" block>
+              提交
+            </Button>
+          </Cell>
+        </Cell.Group>
+      </ConfigProvider>
+      <ConfigProvider theme={darkTheme}>
         <Cell.Group>
           <Cell>
             <Rate defaultValue={3} />
@@ -20,4 +37,4 @@ const Demo1 = () => {
   )
 }
 
-export default Demo1
+export default Demo

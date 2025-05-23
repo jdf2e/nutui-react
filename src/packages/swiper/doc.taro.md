@@ -105,7 +105,7 @@ import { Swiper } from '@nutui/nutui-react-taro'
 | direction | 轮播方向 | `horizontal` \| `vertical` | `horizontal` |
 | indicator | 分页指示器是否展示 | `boolean` | `false` |
 | loop | 是否循环轮播 | `boolean` | `true` |
-| autoPlay | 自动轮播 | `boolean` | `false` |
+| autoplay | 自动轮播 | `boolean` | `false` |
 | defaultValue | 初始化索引值 | `number` | `0` |
 | onChange | 卡片切换后的回调 | `CommonEventFunction<TaroSwiperProps.onChangeEventDetail>` | `-` |
 

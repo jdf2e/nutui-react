@@ -1,28 +1,22 @@
 import React from 'react'
-import { ConfigProvider, Cell, Button, Rate } from '@nutui/nutui-react-taro'
+import { ConfigProvider, TextArea, Cell } from '@nutui/nutui-react-taro'
+import enUS from '@nutui/nutui-react-taro/dist/es/locales/en-US'
 
-const Demo2 = () => {
-  const darkTheme = {
-    nutuiColorPrimaryIcon: 'green',
-    nutuiColorPrimaryStop1: 'green',
-    nutuiColorPrimaryStop2: 'green',
-  }
+const Demo = () => {
   return (
     <>
-      <ConfigProvider theme={darkTheme}>
-        <Cell.Group>
-          <Cell>
-            <Rate defaultValue={3} />
-          </Cell>
-          <Cell>
-            <Button type="primary" block>
-              提交
-            </Button>
-          </Cell>
-        </Cell.Group>
+      <ConfigProvider>
+        <Cell>
+          <TextArea disabled showCount maxLength={20} />
+        </Cell>
+      </ConfigProvider>
+      <ConfigProvider locale={enUS}>
+        <Cell>
+          <TextArea disabled showCount maxLength={20} />
+        </Cell>
       </ConfigProvider>
     </>
   )
 }
 
-export default Demo2
+export default Demo

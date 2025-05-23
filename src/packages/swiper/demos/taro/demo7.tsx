@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
 import { Image } from '@tarojs/components'
 
 const Demo7 = () => {
-  const [initPage8, setInitPage8] = useState(0)
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',

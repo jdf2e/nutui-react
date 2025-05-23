@@ -17,7 +17,6 @@ const defaultProps = {
   showCount: false,
   rows: 2,
   maxLength: 140,
-  placeholder: '',
   readOnly: false,
   disabled: false,
   autoSize: false,
