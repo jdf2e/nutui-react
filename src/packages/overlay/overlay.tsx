@@ -5,8 +5,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
+import CSSTransition from '@/utils/css-transition/CSSTransition'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { WebOverlayProps } from '@/types'
