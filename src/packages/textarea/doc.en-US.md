@@ -104,7 +104,7 @@ You can get Ref of Textarea.
 | clear | clear the value of textarea | `-` |
 | focus | focus the textarea | `-` |
 | blur | blur the textarea | `-` |
-| get | get the textarea ref | `-` |
+| nativeElement | get the textarea ref | `-` |
 
 ## Theming
 

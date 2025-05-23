@@ -196,7 +196,7 @@ plugins: [
 
 - 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型
 - 新增 `status` 属性，值为 `default` | `error`，可定义输入框的状态
-- 新增 `ref` 属性，支持 `clear` `focus` `blur` `get` 等方法
+- 新增 `ref` 属性，支持 `clear` `focus` `blur` `nativeElement` 等方法
 - 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader

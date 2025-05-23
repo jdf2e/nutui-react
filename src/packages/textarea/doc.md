@@ -104,7 +104,7 @@ import { TextArea } from '@nutui/nutui-react'
 | clear | 清除容器中的数据 | `-` |
 | focus | 使容器获取焦点 | `-` |
 | blur | 使容器失去焦点 | `-` |
-| get | 获取当前容器 | `-` |
+| nativeElement | 获取当前容器 | `-` |
 
 ## 主题定制
 

@@ -180,7 +180,7 @@ If your project uses these components, please read the documentation carefully a
 
 - Added a plain attribute to mark it as a plain text type. The default value is false, indicating it is a container type.
 - Added a status attribute, with possible values of default | error, to define the state of the input box.
-- Add `ref`，and apis `clear` `focus` `blur` `get`.
+- Add `ref`，and apis `clear` `focus` `blur` `nativeElement`.
 - Removed some basic style variables and recommended using foundational style variables, such as $textarea-font, $textarea-limit-color, and $textarea-disabled-color.
 
 #### Uploader
