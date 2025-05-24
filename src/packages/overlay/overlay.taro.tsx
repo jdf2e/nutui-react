@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
+import CSSTransition from '@/utils/css-transition/CSSTransition'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroOverlayProps } from '@/types'

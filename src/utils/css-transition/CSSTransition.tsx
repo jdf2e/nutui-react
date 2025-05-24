@@ -1,17 +1,17 @@
 import addOneClass from 'dom-helpers/addClass'
 
 import removeOneClass from 'dom-helpers/removeClass'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import Transition from './Transition'
 import { forceReflow } from './utils/reflow'
 
-const addClass = (node, classes) =>
+const addClassCommon = (node: HTMLElement | null, classes: string) =>
   node && classes && classes.split(' ').forEach((c) => addOneClass(node, c))
-const removeClass = (node, classes) =>
+const removeClassCommon = (node: HTMLElement | null, classes: string) =>
   node && classes && classes.split(' ').forEach((c) => removeOneClass(node, c))
 
-type classNamesShape =
+type ClassNamesShape =
   | string
   | {
       appear: string
@@ -26,95 +26,110 @@ type classNamesShape =
     }
 
 interface CSSTransitionProps {
-  classNames: classNamesShape
+  classNames: ClassNamesShape
   onEnter: (node: HTMLElement, isAppearing: boolean) => void
   onEntering: (node: HTMLElement, isAppearing: boolean) => void
   onEntered: (node: HTMLElement, isAppearing: boolean) => void
   onExit: (node: HTMLElement) => void
   onExiting: (node: HTMLElement) => void
   onExited: (node: HTMLElement) => void
+  nodeRef?: React.RefObject<HTMLElement>
+  children: React.ReactNode
 }
 
-class CSSTransition extends React.Component {
-  static defaultProps = {
-    classNames: '',
-  }
+const defaultProps = {
+  classNames: '',
+}
 
-  appliedClasses = {
+const CSSTransition: FunctionComponent<Partial<CSSTransitionProps>> = (
+  props
+) => {
+  const {
+    classNames,
+    onEnter: _onEnter,
+    onEntering: _onEntering,
+    onEntered: _onEntered,
+    onExit: _onExit,
+    onExiting: _onExiting,
+    onExited: _onExited,
+    nodeRef: _nodeRef,
+    ...childProps
+  } = { ...defaultProps, ...props }
+
+  const appliedClasses = {
     appear: {},
     enter: {},
     exit: {},
   }
 
-  onEnter = (maybeNode, maybeAppearing) => {
-    const [node, appearing] = this.resolveArguments(maybeNode, maybeAppearing)
-    this.removeClasses(node, 'exit')
-    this.addClass(node, appearing ? 'appear' : 'enter', 'base')
+  const onEnter = (maybeNode: any, maybeAppearing: boolean) => {
+    const [node, appearing] = resolveArguments(maybeNode, maybeAppearing)
+    removeClasses(node, 'exit')
+    addClass(node, appearing ? 'appear' : 'enter', 'base')
 
-    if (this.props.onEnter) {
-      this.props.onEnter(maybeNode, maybeAppearing)
+    if (_onEnter) {
+      _onEnter(maybeNode, maybeAppearing)
     }
   }
 
-  onEntering = (maybeNode, maybeAppearing) => {
-    const [node, appearing] = this.resolveArguments(maybeNode, maybeAppearing)
+  const onEntering = (maybeNode: any, maybeAppearing: boolean) => {
+    const [node, appearing] = resolveArguments(maybeNode, maybeAppearing)
     const type = appearing ? 'appear' : 'enter'
-    this.addClass(node, type, 'active')
+    addClass(node, type, 'active')
 
-    if (this.props.onEntering) {
-      this.props.onEntering(maybeNode, maybeAppearing)
+    if (_onEntering) {
+      _onEntering(maybeNode, maybeAppearing)
     }
   }
 
-  onEntered = (maybeNode, maybeAppearing) => {
-    const [node, appearing] = this.resolveArguments(maybeNode, maybeAppearing)
+  const onEntered = (maybeNode: any, maybeAppearing: boolean) => {
+    const [node, appearing] = resolveArguments(maybeNode, maybeAppearing)
     const type = appearing ? 'appear' : 'enter'
-    this.removeClasses(node, type)
-    this.addClass(node, type, 'done')
+    removeClasses(node, type)
+    addClass(node, type, 'done')
 
-    if (this.props.onEntered) {
-      this.props.onEntered(maybeNode, maybeAppearing)
+    if (_onEntered) {
+      _onEntered(maybeNode, maybeAppearing)
     }
   }
 
-  onExit = (maybeNode) => {
-    const [node] = this.resolveArguments(maybeNode)
-    this.removeClasses(node, 'appear')
-    this.removeClasses(node, 'enter')
-    this.addClass(node, 'exit', 'base')
+  const onExit = (maybeNode: any) => {
+    const [node] = resolveArguments(maybeNode)
+    removeClasses(node, 'appear')
+    removeClasses(node, 'enter')
+    addClass(node, 'exit', 'base')
 
-    if (this.props.onExit) {
-      this.props.onExit(maybeNode)
+    if (_onExit) {
+      _onExit(maybeNode)
     }
   }
 
-  onExiting = (maybeNode) => {
-    const [node] = this.resolveArguments(maybeNode)
-    this.addClass(node, 'exit', 'active')
+  const onExiting = (maybeNode: any) => {
+    const [node] = resolveArguments(maybeNode)
+    addClass(node, 'exit', 'active')
 
-    if (this.props.onExiting) {
-      this.props.onExiting(maybeNode)
+    if (_onExiting) {
+      _onExiting(maybeNode)
     }
   }
 
-  onExited = (maybeNode) => {
-    const [node] = this.resolveArguments(maybeNode)
-    this.removeClasses(node, 'exit')
-    this.addClass(node, 'exit', 'done')
+  const onExited = (maybeNode: any) => {
+    const [node] = resolveArguments(maybeNode)
+    removeClasses(node, 'exit')
+    addClass(node, 'exit', 'done')
 
-    if (this.props.onExited) {
-      this.props.onExited(maybeNode)
+    if (_onExited) {
+      _onExited(maybeNode)
     }
   }
 
   // when prop `nodeRef` is provided `node` is excluded
-  resolveArguments = (maybeNode, maybeAppearing) =>
-    this.props.nodeRef
-      ? [this.props.nodeRef.current, maybeNode] // here `maybeNode` is actually `appearing`
+  const resolveArguments = (maybeNode: any, maybeAppearing: boolean) =>
+    _nodeRef
+      ? [_nodeRef.current, maybeNode] // here `maybeNode` is actually `appearing`
       : [maybeNode, maybeAppearing] // `findDOMNode` was used
 
-  getClassNames = (type) => {
-    const { classNames } = this.props
+  const getClassNames = (type: string) => {
     const isStringClassNames = typeof classNames === 'string'
     const prefix = isStringClassNames && classNames ? `${classNames}-` : ''
 
@@ -137,9 +152,9 @@ class CSSTransition extends React.Component {
     }
   }
 
-  addClass(node, type, phase) {
-    let className = this.getClassNames(type)[`${phase}ClassName`]
-    const { doneClassName } = this.getClassNames('enter')
+  const addClass = (node: HTMLElement | null, type: string, phase: string) => {
+    let className = getClassNames(type)[`${phase}ClassName`]
+    const { doneClassName } = getClassNames('enter')
 
     if (type === 'appear' && phase === 'done' && doneClassName) {
       className += ` ${doneClassName}`
@@ -152,46 +167,42 @@ class CSSTransition extends React.Component {
     }
 
     if (className) {
-      this.appliedClasses[type][phase] = className
-      addClass(node, className)
+      appliedClasses[type][phase] = className
+      addClassCommon(node, className)
     }
   }
 
-  removeClasses(node, type) {
+  const removeClasses = (node: HTMLElement | null, type: string) => {
     const {
       base: baseClassName,
       active: activeClassName,
       done: doneClassName,
-    } = this.appliedClasses[type]
+    } = appliedClasses[type]
 
-    this.appliedClasses[type] = {}
+    appliedClasses[type] = {}
 
     if (baseClassName) {
-      removeClass(node, baseClassName)
+      removeClassCommon(node, baseClassName)
     }
     if (activeClassName) {
-      removeClass(node, activeClassName)
+      removeClassCommon(node, activeClassName)
     }
     if (doneClassName) {
-      removeClass(node, doneClassName)
+      removeClassCommon(node, doneClassName)
     }
   }
 
-  render() {
-    const { classNames: _, ...props } = this.props
-
-    return (
-      <Transition
-        {...props}
-        onEnter={this.onEnter}
-        onEntered={this.onEntered}
-        onEntering={this.onEntering}
-        onExit={this.onExit}
-        onExiting={this.onExiting}
-        onExited={this.onExited}
-      />
-    )
-  }
+  return (
+    <Transition
+      {...childProps}
+      onEnter={onEnter}
+      onEntered={onEntered}
+      onEntering={onEntering}
+      onExit={onExit}
+      onExiting={onExiting}
+      onExited={onExited}
+    />
+  )
 }
 
 export default CSSTransition
