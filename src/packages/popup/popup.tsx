@@ -153,10 +153,14 @@ export const Popup: FunctionComponent<
             {left && <div className={`${classPrefix}-title-left`}>{left}</div>}
             {(title || description) && (
               <div className={`${classPrefix}-title-wrapper`}>
-                <div className={`${classPrefix}-title-title`}>{title}</div>
+                {title && (
+                  <div className={`${classPrefix}-title-title`}>{title}</div>
+                )}
                 {description && (
                   <div
-                    className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
+                    className={classNames(`${classPrefix}-title-description`, {
+                      [`${classPrefix}-title-description-gap`]: title,
+                    })}
                   >
                     {description}
                   </div>

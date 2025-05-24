@@ -158,10 +158,14 @@ export const Popup: FunctionComponent<
             )}
             {(title || description) && (
               <View className={`${classPrefix}-title-wrapper`}>
-                <View className={`${classPrefix}-title-title`}>{title}</View>
+                {title && (
+                  <View className={`${classPrefix}-title-title`}>{title}</View>
+                )}
                 {description && (
                   <View
-                    className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
+                    className={classNames(`${classPrefix}-title-description`, {
+                      [`${classPrefix}-title-description-gap`]: title,
+                    })}
                   >
                     {description}
                   </View>

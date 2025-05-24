@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -74,7 +75,10 @@ export const ActionSheet: FunctionComponent<
               const statusClass = `${item.disabled ? `${classPrefix}-item-disabled` : ''} ${item.danger ? `${classPrefix}-item-danger` : ''}`
               return (
                 <View
-                  className={`${classPrefix}-item ${statusClass} ${index !== options.length - 1 ? `${classPrefix}-item-border` : ''}`}
+                  className={classNames(`${classPrefix}-item`, statusClass, {
+                    [`${classPrefix}-item-border`]:
+                      index !== options.length - 1,
+                  })}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >
