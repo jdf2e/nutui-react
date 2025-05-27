@@ -59,6 +59,7 @@ import { Lottie } from '@nutui/nutui-react-taro'
 | play | 播放 | `-` |
 | stop | 停止 | `-` |
 | pause | 暂停 | `-` |
+| dpr | 是否开启物理像素与逻辑像素的比率 | `true` |
 | setSpeed | 设置播放速度 | `(speed: number) => void` |
 | goToAndPlay | 跳转到指定帧并播放 | `(value: number, isFrame?: boolean) => void` |
 | goToAndStop | 跳转到指定帧并停止 | `(value: number, isFrame?: boolean) => void` |
