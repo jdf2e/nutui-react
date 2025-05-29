@@ -66,7 +66,7 @@ import { Uploader } from '@nutui/nutui-react-taro'
 
 :::
 
-### 选中文件后，通过按钮手动执行上传
+### 直接调起摄像头（移动端生效）
 
 :::demo
 
@@ -74,11 +74,19 @@ import { Uploader } from '@nutui/nutui-react-taro'
 
 :::
 
-### 基础用法-上传列表展示
+### 选中文件后，通过按钮手动执行上传
 
 :::demo
 
 <CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
+### 基础用法-上传列表展示
+
+:::demo
+
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
 :::
 
