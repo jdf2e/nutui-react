@@ -15,7 +15,7 @@ export const ENTERING = 'entering'
 export const ENTERED = 'entered'
 export const EXITING = 'exiting'
 
-interface TransitionProps {
+export interface TransitionProps {
   in: boolean
   mountOnEnter: boolean
   unmountOnExit: boolean
@@ -51,7 +51,9 @@ const defaultProps = {
   onExited: () => {},
 }
 
-const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
+export const Transition: FunctionComponent<Partial<TransitionProps>> = (
+  props
+) => {
   const {
     children,
     // filter props for `Transition`
@@ -96,7 +98,7 @@ const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
     }
 
     setStatus(initialStatus)
-  }, [_in])
+  }, [_in, enter, props.appear, unmountOnExit, mountOnEnter, context])
 
   useEffect(() => {
     if (status === EXITED && unmountOnExit) {
@@ -104,7 +106,7 @@ const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
     } else {
       updateStatus(true, null)
     }
-  }, [])
+  }, [status, unmountOnExit])
 
   useEffect(() => {
     let nextStatus = null
@@ -115,8 +117,9 @@ const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
     } else if (status === ENTERING || status === ENTERED) {
       nextStatus = EXITING
     }
+    console.log('nextStatus', nextStatus)
     updateStatus(false, nextStatus)
-  }, [_in])
+  }, [_in, status])
 
   useEffect(() => {
     return () => {
@@ -167,6 +170,8 @@ const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
 
     const timeouts = getTimeouts()
     const enterTimeout = appearing ? timeouts.appear : timeouts.enter
+
+    console.log('performEnter')
     // no enter animation skip right to ENTERED
     // if we are mounting and running this it means appear _must_ be set
     if ((!mounting && !enter) || config.disabled) {
@@ -221,8 +226,8 @@ const Transition: FunctionComponent<Partial<TransitionProps>> = (props) => {
     // This shouldn't be necessary, but there are weird race conditions with
     // setState callbacks and unmounting in testing, so always make sure that
     // we can cancel any pending setState callbacks after we unmount.
-    callback = setNextCallback(callback)
-    setStatus((prev) => ({ ...prev, ...nextState }), callback)
+    const nextCallback = setNextCallback(callback)
+    setStatus((prev) => ({ ...prev, ...nextState }), nextCallback)
   }
 
   const setNextCallback = (callback?: () => void) => {
@@ -281,5 +286,3 @@ Transition.EXITED = EXITED
 Transition.ENTERING = ENTERING
 Transition.ENTERED = ENTERED
 Transition.EXITING = EXITING
-
-export default Transition

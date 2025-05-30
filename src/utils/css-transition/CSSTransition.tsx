@@ -3,7 +3,7 @@ import addOneClass from 'dom-helpers/addClass'
 import removeOneClass from 'dom-helpers/removeClass'
 import React, { FunctionComponent } from 'react'
 
-import Transition from './Transition'
+import { Transition, TransitionProps } from './Transition'
 import { forceReflow } from './utils/reflow'
 
 const addClassCommon = (node: HTMLElement | null, classes: string) =>
@@ -25,15 +25,8 @@ type ClassNamesShape =
       exitDone: string
     }
 
-interface CSSTransitionProps {
+interface CSSTransitionProps extends TransitionProps {
   classNames: ClassNamesShape
-  onEnter: (node: HTMLElement, isAppearing: boolean) => void
-  onEntering: (node: HTMLElement, isAppearing: boolean) => void
-  onEntered: (node: HTMLElement, isAppearing: boolean) => void
-  onExit: (node: HTMLElement) => void
-  onExiting: (node: HTMLElement) => void
-  onExited: (node: HTMLElement) => void
-  nodeRef?: React.RefObject<HTMLElement>
   children: React.ReactNode
 }
 
