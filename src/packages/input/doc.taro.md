@@ -131,6 +131,7 @@ import { Input } from '@nutui/nutui-react-taro'
 | defaultValue | 初始默认值 | `string` | `-` |
 | value | 初始默认值 | `string` | `-` |
 | type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | `string` | `text` |
+| plain | 输入框是容器型还是文本型，容器型一般都是带外边框的 | `boolean` | `false` |
 | name | 组件名字，用于表单提交获取数据 | `string` | `-` |
 | placeholder | 输入框为空时占位符 | `string` | `-` |
 | align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |

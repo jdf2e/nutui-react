@@ -88,7 +88,6 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
       blur: () => {
         inputRef.current?.blur()
       },
-      get: () => inputRef.current,
       get nativeElement() {
         return inputRef.current
       },

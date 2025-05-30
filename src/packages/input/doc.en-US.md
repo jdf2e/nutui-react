@@ -131,6 +131,7 @@ import { Input } from '@nutui/nutui-react'
 | defaultValue | default value | `string` | `-` |
 | value | input value | `string` | `-` |
 | type | input box type, supports all `type` attributes of native `input` tags, and also supports `number` `digit` | `string` | `text` |
+| plain | Input box is plain | `boolean` | `false` |
 | name | Component name, used for form submission to get data | `string` | `-` |
 | placeholder | placeholder when the input box is empty | `string` | `-` |
 | align | Alignment of input box content, optional values `left`, `center`, `right` | `string` | `left` |
