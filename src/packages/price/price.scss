@@ -62,14 +62,23 @@
   &-integer {
     &-xlarge {
       font-size: $price-integer-xlarge-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-xlarge-size;
+      /* #endif */
     }
 
     &-large {
       font-size: $price-integer-large-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-large-size;
+      /* #endif */
     }
 
     &-normal {
       font-size: $price-integer-normal-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-normal-size;
+      /* #endif */
     }
 
     &-small {
