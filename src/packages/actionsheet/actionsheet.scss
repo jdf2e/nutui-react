@@ -2,14 +2,22 @@
 
 .nut-actionsheet {
   text-align: center;
-
+  box-sizing: border-box;
+  padding: 16px;
+  .nut-popup-title {
+    padding: 0;
+  }
+  width: 100%;
+  &-bottom {
+    padding-bottom: 34px;
+  }
   &.nut-popup {
     min-height: 10%;
     background-color: $actionsheet-background-color;
   }
-
-  .nut-popup-title {
-    border-bottom: 1px solid $actionsheet-border-color;
+  &-close-icon {
+    width: 16px;
+    height: 16px;
   }
 
   &-list {
@@ -23,12 +31,17 @@
   &-cancel,
   &-item {
     display: block;
-    padding: 10px;
     text-align: $actionsheet-item-text-align;
     line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
     color: $actionsheet-item-color;
     cursor: pointer;
+    &-border {
+      border-bottom: $actionsheet-item-border-bottom;
+      /* #ifdef harmony */
+      border-width: 1px;
+      /* #endif */
+    }
     &-name {
       text-align: $actionsheet-item-text-align;
       line-height: $actionsheet-item-line-height;
@@ -54,9 +67,19 @@
   }
 
   &-cancel {
-    margin-top: 5px;
-    border-top: 1px solid $actionsheet-border-color;
+    border: 0.5px solid #c2c4cc;
+    /* #ifdef harmony */
+    border-width: 1px;
+    /* #endif */
     border-radius: $actionsheet-border-radius;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 40px;
+    color: $color-title;
+    margin-top: 16px;
   }
 
   &-safe-area {

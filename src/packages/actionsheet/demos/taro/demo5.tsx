@@ -1,18 +1,16 @@
-import React, { CSSProperties, useState } from 'react'
-import { ActionSheet, Cell, pxTransform } from '@nutui/nutui-react-taro'
+import React, { useState } from 'react'
+import { ActionSheet, Cell } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import { Dongdong, Message } from '@nutui/icons-react-taro'
 
 const Demo5 = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const viewStyle: CSSProperties = {
-    textAlign: 'left',
-    paddingLeft: pxTransform(20),
-    paddingTop: pxTransform(10),
-  }
+  const itemStyle = { display: 'flex', alignItems: 'center', height: 52 }
+
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <View>自定义内容</View>
+        <View>自定义内容1</View>
       </Cell>
       <ActionSheet
         visible={isVisible}
@@ -22,8 +20,16 @@ const Demo5 = () => {
         }}
         onCancel={() => setIsVisible(false)}
       >
-        <View style={viewStyle}>新建表格</View>
-        <View style={viewStyle}>新建文档</View>
+        <View
+          style={{ ...itemStyle, borderColor: '#c2c4cc', borderBottomWidth: 1 }}
+        >
+          <Dongdong width={20} height={20} />
+          <View style={{ marginLeft: 8 }}>加密呼叫（86）18888888888</View>
+        </View>
+        <View style={itemStyle}>
+          <Message width={20} height={20} />
+          <View style={{ marginLeft: 8 }}>在线客服</View>
+        </View>
       </ActionSheet>
     </>
   )

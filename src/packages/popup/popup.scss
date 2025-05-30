@@ -9,26 +9,14 @@
   font-size: $font-size-base;
 
   &-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     border-bottom: $popup-title-border-bottom;
     padding: $popup-title-padding;
-    position: relative;
 
     &-wrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    &-title {
-      color: $color-title;
-      font-weight: $font-weight-bold;
-      font-size: $popup-title-font-size;
-      line-height: $popup-title-font-size;
     }
 
     &-description {
@@ -77,7 +65,20 @@
       }
     }
   }
-
+  &-bottom-title,
+  &-top-title {
+    color: $color-title;
+    font-weight: $font-weight-bold;
+    font-size: $popup-title-font-size;
+    line-height: $popup-title-font-size;
+    justify-content: center;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+  &-top-title {
+    justify-content: space-between;
+  }
   &-center {
     top: 50%;
     left: 50%;

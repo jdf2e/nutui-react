@@ -91,11 +91,11 @@ import { ActionSheet } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-actionsheet-background-color | 背景色 | `$color-background-overlay` |
-| \--nutui-actionsheet-border-radius | 列表和取消按钮圆角 | `0` |
-| \--nutui-actionsheet-border-color | 标题和取消位置的border色值 | `#F7F8FC` |
-| \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `center` |
-| \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `none` |
-| \--nutui-actionsheet-item-line-height | 列表项行高 | `24px` |
+| \--nutui-actionsheet-border-radius | 列表和取消按钮圆角 | `$radius-l` |
+| \--nutui-actionsheet-cancel-border | 取消位置的border | `0.5px solid #c2c4cc` |
+| \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `left` |
+| \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `0.5px solid #c2c4cc` |
+| \--nutui-actionsheet-item-line-height | 列表项行高 | `52px` |
 | \--nutui-actionsheet-item-color | 列表项字色 | `$color-title` |
 | \--nutui-actionsheet-item-danger | 列表项danger字色 | `$color-primary` |
 

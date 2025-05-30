@@ -82,11 +82,11 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-actionsheet-background-color | the backgroundColor of actionsheet panel | `$color-background-overlay` |
-| \--nutui-actionsheet-border-radius | the borderRadius of list and cancel button | `0` |
-| \--nutui-actionsheet-border-color | title border-bottom and cancle border-top | `#F7F8FC` |
-| \--nutui-actionsheet-item-text-align | item text align | `center` |
-| \--nutui-actionsheet-item-border-bottom | item border bottom | `none` |
-| \--nutui-actionsheet-item-line-height | item line height | `24px` |
+| \--nutui-actionsheet-border-radius | the borderRadius of list and cancel button | `$radius-l` |
+| \--nutui-actionsheet-cancel-border | cancel button border | `0.5px solid #c2c4cc` |
+| \--nutui-actionsheet-item-text-align | item text align | `left` |
+| \--nutui-actionsheet-item-border-bottom | item border bottom | `0.5px solid #c2c4cc` |
+| \--nutui-actionsheet-item-line-height | item line height | `52px` |
 | \--nutui-actionsheet-item-color | item color | `$color-title` |
 | \--nutui-actionsheet-item-danger | item danger color | `$color-primary` |
 

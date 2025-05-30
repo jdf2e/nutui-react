@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
+import { Close } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
@@ -12,6 +14,7 @@ const defaultProps = {
   options: [],
   optionKey: { name: 'name', description: 'description' },
   cancelText: '',
+  position: 'bottom',
   onCancel: () => {},
   onSelect: () => {},
 } as unknown as TaroActionSheetProps
@@ -31,6 +34,7 @@ export const ActionSheet: FunctionComponent<
     visible,
     className,
     style,
+    position,
     ...rest
   } = mergeProps(defaultProps, props)
 
@@ -52,15 +56,17 @@ export const ActionSheet: FunctionComponent<
   return (
     <Popup
       {...rest}
+      title={title}
       round
       visible={visible}
-      position="bottom"
-      title={title}
+      position={position}
       description={description}
-      className={classPrefix}
+      className={`${classPrefix} ${classPrefix}-${position}`}
       onClose={() => {
-        onCancel && onCancel()
+        onCancel?.()
       }}
+      closeable={position === 'top'}
+      closeIcon={<Close className={`${classPrefix}-close-icon`} />}
     >
       <View className={`${className}`} style={style}>
         {options.length ? (
@@ -69,7 +75,10 @@ export const ActionSheet: FunctionComponent<
               const statusClass = `${item.disabled ? `${classPrefix}-item-disabled` : ''} ${item.danger ? `${classPrefix}-item-danger` : ''}`
               return (
                 <View
-                  className={`${classPrefix}-item ${statusClass}`}
+                  className={classNames(`${classPrefix}-item`, statusClass, {
+                    [`${classPrefix}-item-border`]:
+                      index !== options.length - 1,
+                  })}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >

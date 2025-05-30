@@ -7,13 +7,10 @@ const Demo2 = () => {
   const [val, setVal] = useState('')
   const options = [
     {
-      name: '权限设置',
+      name: '分享给朋友',
     },
     {
-      name: '重命名',
-    },
-    {
-      name: '删除',
+      name: '添加到收藏夹',
     },
   ]
   const handleSelect = (item: any) => {
@@ -23,17 +20,18 @@ const Demo2 = () => {
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <View>展示取消按钮</View>
+        <View>展示标题</View>
         <View style={{ marginLeft: pxTransform(10), color: '#999' }}>
           {val}
         </View>
       </Cell>
       <ActionSheet
+        title="标题"
         visible={isVisible}
-        cancelText="取消"
         options={options}
         onSelect={handleSelect}
         onCancel={() => setIsVisible(false)}
+        cancelText="取消"
       />
     </>
   )

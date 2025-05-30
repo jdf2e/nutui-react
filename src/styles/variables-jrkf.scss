@@ -783,6 +783,10 @@ $actionsheet-background-color: var(
   $color-surface-1
 ) !default;
 $actionsheet-border-color: var(--nutui-actionsheet-border-color, none) !default;
+$actionsheet-cancel-border: var(
+  --nutui-actionsheet-cancel-border,
+  none
+) !default;
 $actionsheet-border-radius: var(
   --nutui-actionsheet-border-radius,
   $radius-l

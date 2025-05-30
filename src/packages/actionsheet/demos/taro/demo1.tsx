@@ -7,13 +7,13 @@ const Demo1 = () => {
   const [isVisible, setIsVisible] = useState(false)
   const options = [
     {
-      name: '权限设置',
+      name: '分享给朋友',
     },
     {
-      name: '重命名',
+      name: '添加到收藏夹',
     },
     {
-      name: '删除',
+      name: '复制商品链接',
     },
   ]
 
@@ -31,7 +31,6 @@ const Demo1 = () => {
         </View>
       </Cell>
       <ActionSheet
-        title="标题"
         visible={isVisible}
         options={options}
         onSelect={handleSelect}

@@ -1,27 +1,34 @@
 import React, { useState } from 'react'
-import { ActionSheet, Cell } from '@nutui/nutui-react'
+import { ActionSheet, Cell } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const optionsThree: Record<string, string | boolean>[] = [
+  const options: Record<string, string | boolean>[] = [
     {
-      name: '着色选项',
-      danger: true,
+      title: '分享给朋友',
     },
     {
-      name: '禁用选项',
+      title: '添加到收藏夹',
+    },
+    {
+      title: '复制商品链接',
       disabled: true,
     },
   ]
+  const optionKey = {
+    name: 'title',
+  }
   return (
     <>
       <Cell onClick={() => setIsVisible(!isVisible)}>
-        <span>选项状态</span>
+        <View>自定义key</View>
       </Cell>
       <ActionSheet
         visible={isVisible}
         cancelText="取消"
-        options={optionsThree}
+        optionKey={optionKey}
+        options={options}
         onSelect={() => {
           setIsVisible(false)
         }}

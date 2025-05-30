@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { ActionSheet, Cell } from '@nutui/nutui-react'
 
-const Demo1 = () => {
+const Demo = () => {
   const [val, setVal] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const options = [
     {
-      name: '权限设置',
+      name: '分享给朋友',
     },
     {
-      name: '重命名',
+      name: '添加到收藏夹',
     },
     {
-      name: '删除',
+      name: '复制商品链接',
     },
   ]
 
@@ -28,7 +28,6 @@ const Demo1 = () => {
         <div style={{ marginInlineStart: '10px', color: '#999' }}>{val}</div>
       </Cell>
       <ActionSheet
-        title="标题"
         visible={isVisible}
         options={options}
         onSelect={handleSelect}
@@ -37,4 +36,4 @@ const Demo1 = () => {
     </>
   )
 }
-export default Demo1
+export default Demo

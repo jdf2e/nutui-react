@@ -146,28 +146,28 @@ export const Popup: FunctionComponent<
   const renderTitle = () => {
     if (left || title || description) {
       return (
-        <div className={`${classPrefix}-title`}>
-          {position === 'bottom' && (
-            <>
-              {left && (
-                <div className={`${classPrefix}-title-left`}>{left}</div>
-              )}
-              {(title || description) && (
-                <div className={`${classPrefix}-title-wrapper`}>
-                  {title && (
-                    <div className={`${classPrefix}-title-title`}>{title}</div>
-                  )}
-                  {description && (
-                    <div
-                      className={`${classPrefix}-title-description ${title ? `${classPrefix}-title-description-gap` : ''}`}
-                    >
-                      {description}
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
-          )}
+        <div
+          className={`${classPrefix}-title ${classPrefix}-${position}-title`}
+        >
+          <>
+            {left && <div className={`${classPrefix}-title-left`}>{left}</div>}
+            {(title || description) && (
+              <div className={`${classPrefix}-title-wrapper`}>
+                {title && (
+                  <div className={`${classPrefix}-title-title`}>{title}</div>
+                )}
+                {description && (
+                  <div
+                    className={classNames(`${classPrefix}-title-description`, {
+                      [`${classPrefix}-title-description-gap`]: title,
+                    })}
+                  >
+                    {description}
+                  </div>
+                )}
+              </div>
+            )}
+          </>
           {renderCloseIcon()}
         </div>
       )
