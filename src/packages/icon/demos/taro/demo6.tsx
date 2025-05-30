@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import * as iconfonts from '@nutui/icons-react-taro'
-import { Cell, Toast, camelCase } from '@nutui/nutui-react-taro'
+import { Cell, Toast } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
+import { camelCase } from '../camel-case'
 
 const Demo6 = () => {
   const generateCopyText = (name: string) => {

@@ -50,10 +50,10 @@
     &-wrapper {
       position: relative;
       flex: 1;
-      /* #ifdef harmony */
+      /* #ifdef harmony dynamic*/
       width: 33%;
       /* #endif */
-      /* #ifndef harmony */
+      /* #ifndef harmony dynamic*/
       flex-basis: 33%;
       /* #endif */
       box-sizing: border-box;

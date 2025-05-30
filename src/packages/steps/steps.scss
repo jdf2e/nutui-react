@@ -181,7 +181,7 @@
 
   // 纵向滚动条
   &-vertical {
-    /* #ifdef harmony*/
+    /* #ifdef harmony dynamic*/
     flex: 1;
     min-width: 0;
     /* #endif */

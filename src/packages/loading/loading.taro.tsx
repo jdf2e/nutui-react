@@ -20,10 +20,7 @@ const defaultProps = {
   type: 'circular',
   direction: 'horizontal',
 } as TaroLoadingProps
-const defaultLottieProps = {
-  loop: true,
-  autoplay: true,
-}
+
 export const Loading = React.forwardRef<LoadingRef, Partial<TaroLoadingProps>>(
   (props, ref) => {
     const { className, style, children, direction, icon, ...rest } = {

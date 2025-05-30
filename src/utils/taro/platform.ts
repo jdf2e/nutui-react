@@ -12,3 +12,7 @@ export const web = () => {
 export const miniprogram = () => {
   return ['mini'].includes(getEnv().toLowerCase())
 }
+
+export const td = () => {
+  return ['dynamic'].includes(getEnv().toLowerCase())
+}
