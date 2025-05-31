@@ -11,17 +11,17 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 const ConfigProviderDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      text: 'Textarea 中文与英文',
+      text: 'Pagination 中文与英文',
       theme: '默认主题与定制主题',
       RTL: harmony() ? 'RTL【暂不支持】' : 'RTL',
     },
     'zh-TW': {
-      text: 'Textarea 中文与英文',
+      text: 'Pagination 中文与英文',
       theme: '默認主題与定制主題',
       RTL: harmony() ? 'RTL【暂不支持】' : 'RTL',
     },
     'en-US': {
-      text: 'Textarea zh-CN and en-US',
+      text: 'Pagination zh-CN and en-US',
       theme: 'Default Theme And Custom Theme',
       RTL: harmony() ? 'RTL[Pendding]' : 'RTL',
     },
