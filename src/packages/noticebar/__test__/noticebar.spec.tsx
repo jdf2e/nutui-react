@@ -220,3 +220,43 @@ test('vertical event test', async () => {
   fireEvent.click(box)
   await waitFor(() => expect(handleClick).toBeCalled())
 })
+
+test('vertical container height calculation with children', async () => {
+  const horseLamp1 = [
+    'NoticeBar 公告栏',
+    'Cascader 级联选择',
+    'DatePicker 日期选择器',
+    'CheckBox 复选按钮',
+  ]
+  const height = 50
+  const { container } = render(
+    <NoticeBar direction="vertical" height={height} speed={10} duration={1000}>
+      {horseLamp1.map((item, index) => {
+        return (
+          <div
+            className="custom-item"
+            style={{ height: `${height}px`, lineHeight: `${height}px` }}
+            key={index}
+          >
+            {item}
+          </div>
+        )
+      })}
+    </NoticeBar>
+  )
+
+  await waitFor(
+    () => {
+      const wrapElement = container.querySelector('.nut-noticebar-box-wrap')
+      if (wrapElement) {
+        // 验证容器高度应该是 (childCount + 1) * height
+        // childCount = 4, height = 50, 所以期望高度是 (4 + 1) * 50 = 250px
+        const expectedHeight = `${(horseLamp1.length + 1) * height}px`
+        console.log(wrapElement, 'wrapElement')
+        expect(wrapElement).toHaveStyle(`height: ${expectedHeight}`)
+      }
+    },
+    // 由于init中并不会立刻设置样式，所以需要等待一段时间
+    { timeout: 3000 }
+  )
+})

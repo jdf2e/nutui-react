@@ -358,7 +358,7 @@ export const NoticeBar: FunctionComponent<
     target.style.transitionDuration = `${
       swiperRef.current.moving ? 0 : duration
     }ms`
-    target.style.height = `${Number(height) * childCount}px`
+    target.style.height = `${Number(height) * (childCount + 1)}px`
     target.style.transform = `translate3D(0,${_offset}px,0)`
   }
   // 无缝滚动第一个元素位移控制
