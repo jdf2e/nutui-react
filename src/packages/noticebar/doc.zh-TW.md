@@ -96,7 +96,7 @@ import { NoticeBar } from '@nutui/nutui-react'
 
 :::
 
-### 縱嚮模式：自定義右側圖標
+### 縱嚮模式：自定義右側圖標，動態變更滾動內容
 
 :::demo
 

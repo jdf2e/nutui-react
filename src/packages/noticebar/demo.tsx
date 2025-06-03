@@ -25,7 +25,7 @@ const NoticeBarDemo = () => {
       customeRight: '自定义右侧内容',
       vertical: '垂直滚动',
       complexAm: '纵向模式：自定义左侧图标',
-      customAm: '纵向模式：自定义滚动内容',
+      customAm: '纵向模式：自定义滚动内容，动态变更滚动内容',
       customRightIcon: '纵向模式：自定义右侧图标',
     },
     'en-US': {
@@ -38,7 +38,7 @@ const NoticeBarDemo = () => {
       customeRight: 'custom right content',
       vertical: 'Vertical Scroll',
       complexAm: 'Vertical Scroll Complex Animation',
-      customAm: 'Vertical Scroll Custom Style',
+      customAm: 'Vertical Scroll Custom Style，Dynamic Change Scroll Content',
       customRightIcon: 'Vertical Scroll Custom Right Icon',
     },
   })
