@@ -17,7 +17,7 @@ const Demo9 = () => {
         direction="vertical"
         height={50}
         speed={10}
-        duration={1000}
+        duration={3000}
         closeable
         onClose={() => {
           console.log('close')

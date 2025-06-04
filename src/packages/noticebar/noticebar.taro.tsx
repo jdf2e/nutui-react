@@ -190,26 +190,45 @@ export const NoticeBar: FunctionComponent<
     }, 0)
   }
 
+  // 滚动时间间隔
+  const scrollAnimationTimeMs = useMemo(() => {
+    if (Number(speed) <= 0 || Number(height) <= 0) return 0
+
+    // 用于计算时间（秒到毫秒，并处理 <1 秒的情况）
+    const calculateTimeInMs = (baseSeconds: number): number => {
+      if (baseSeconds < 1) {
+        // 例如 0.04s -> "0.0" -> 0ms.  0.05s -> "0.1" -> 100ms.
+        return Number(baseSeconds.toFixed(1)) * 1000
+      }
+      return Math.floor(baseSeconds) * 1000
+    }
+
+    // 尝试使用 /4 因子计算
+    const timeWithFactor4 = calculateTimeInMs(
+      Number(height) / Number(speed) / 4
+    )
+
+    if (timeWithFactor4 === 0) {
+      // 如果带 /4 因子的时间为0，则回退到不带 /4 因子的计算
+      return calculateTimeInMs(Number(height) / Number(speed))
+    }
+    return timeWithFactor4
+  }, [height, speed])
+
   const startRollEasy = () => {
-    showhorseLamp()
-    const time =
-      height / speed / 4 < 1
-        ? Number((height / speed / 4).toFixed(1)) * 1000
-        : ~~(height / speed / 4) * 1000
-    const timerCurr = window.setInterval(showhorseLamp, time + Number(duration))
+    const timerCurr = window.setInterval(
+      showhorseLamp,
+      scrollAnimationTimeMs + Number(duration)
+    )
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
     SetAnimate(true)
-    const time =
-      height / speed / 4 < 1
-        ? Number((height / speed / 4).toFixed(1)) * 1000
-        : ~~(height / speed / 4) * 1000
     setTimeout(() => {
       scrollList.current.push(scrollList.current[0])
       scrollList.current.shift()
       SetAnimate(false)
-    }, time)
+    }, scrollAnimationTimeMs)
   }
 
   // 点击滚动单元
@@ -237,16 +256,8 @@ export const NoticeBar: FunctionComponent<
     height: isVertical ? `${height}px` : '',
   }
 
-  const duringTime =
-    height / speed / 4 < 1
-      ? Number((height / speed / 4).toFixed(1))
-      : ~~(height / speed / 4)
-  const noDuring =
-    height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
   const horseLampStyle = {
-    transition: animate
-      ? `all ${duringTime === 0 ? noDuring : duringTime}s`
-      : '',
+    transition: animate ? `all ${scrollAnimationTimeMs}ms` : '',
     marginTop: animate ? `-${height}px` : '',
   }
 
@@ -306,7 +317,7 @@ export const NoticeBar: FunctionComponent<
         next()
         autoplay()
       },
-      Number(duration) + 100 * speed
+      Number(duration) + scrollAnimationTimeMs
     )
   }
 
@@ -375,7 +386,7 @@ export const NoticeBar: FunctionComponent<
       moveOffset + Number(activeRef.current === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${
-      swiperRef.current.moving ? 0 : duration
+      swiperRef.current.moving ? 0 : scrollAnimationTimeMs
     }ms`
     target.style.height = `${Number(height) * (childCount + 1)}px`
     target.style.transform = `translate3D(0,${_offset}px,0)`
