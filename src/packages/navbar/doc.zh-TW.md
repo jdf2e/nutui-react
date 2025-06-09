@@ -62,7 +62,7 @@ import { NavBar } from '@nutui/nutui-react'
 | \--nutui-navbar-height | 頭部導航的高度 | `44px` |
 | \--nutui-navbar-margin-bottom | 頭部導航的下邊距 | `20px` |
 | \--nutui-navbar-background | 頭部導航的背景顏色 | `$white` |
-| \--nutui-navbar-box-shadow | 頭部導航的陰影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| \--nutui-navbar-box-shadow | 頭部導航的陰影 | `0px 0px transparent` |
 | \--nutui-navbar-color | 頭部導航的字體顏色 | `$color-text` |
 | \--nutui-navbar-font-size | 頭部導航的字體大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-size | 頭部導航標題的字體大小 | `$font-size-base` |

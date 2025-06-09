@@ -7,6 +7,8 @@
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;

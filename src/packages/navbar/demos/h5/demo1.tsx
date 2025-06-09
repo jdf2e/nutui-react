@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar, Toast } from '@nutui/nutui-react'
+import { NavBar, Toast, Space } from '@nutui/nutui-react'
 import { ArrowLeft, Close, More, Share } from '@nutui/icons-react'
 
 const Demo1 = () => {
@@ -21,7 +21,7 @@ const Demo1 = () => {
     },
   }
   return (
-    <>
+    <Space direction="vertical">
       <NavBar
         title="页面标题"
         back={
@@ -63,7 +63,7 @@ const Demo1 = () => {
         }
         onBackClick={(e) => Toast.show('返回')}
       />
-    </>
+    </Space>
   )
 }
 export default Demo1
