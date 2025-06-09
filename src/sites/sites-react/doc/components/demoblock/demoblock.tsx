@@ -65,14 +65,14 @@ createRoot(document.getElementById('container')).render(<Demo />);
       <div className="demo-block">{props.children}</div>
 
       <div className="online-part">
-        <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
+       {!props.text.includes('-taro') && <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
           <img
             alt=""
             className="online-icon"
             src="https://img12.360buyimg.com/imagetools/jfs/t1/214225/34/8715/7002/61c31bf1E69324ee9/7a452063eba88be4.png"
           />
           <div className="online-tips">在线调试</div>
-        </a>
+        </a>}
         <div className="list" onClick={copyCode}>
           <img
             alt=""
