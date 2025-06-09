@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconFontConfig, IconFont } from '@nutui/icons-react'
-import { Cell, Toast, camelCase } from '@nutui/nutui-react'
+import { Cell, Toast } from '@nutui/nutui-react'
+import { camelCase } from '../camel-case'
 
 const generateAMCopyText = (icon: any) => {
   return `<${camelCase(icon.name, {

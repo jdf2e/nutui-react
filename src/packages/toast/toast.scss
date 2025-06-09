@@ -28,10 +28,10 @@
   }
 
   &-overlay-default-taro {
-    /* #ifdef harmony */
+    /* #ifdef harmony dynamic*/
     background-color: rgba(0, 0, 0, 0);
     /* #endif */
-    /* #ifndef harmony */
+    /* #ifndef harmony dynamic*/
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
     /* #endif */
   }

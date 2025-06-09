@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Loading, Star } from '@nutui/icons-react'
-import { Uploader, Button, FileItem } from '@nutui/nutui-react-taro'
+import { Uploader, Button, UploaderFileItem } from '@nutui/nutui-react-taro'
 
 const Demo10 = () => {
-  const [list, setList] = useState<FileItem[]>([
+  const [list, setList] = useState<UploaderFileItem[]>([
     {
       name: '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',

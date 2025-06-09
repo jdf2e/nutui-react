@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchBar } from '../../searchbar'
+import { SearchBar } from '@nutui/nutui-react'
 
 const Demo2 = () => {
   return (

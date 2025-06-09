@@ -248,11 +248,9 @@ export const Range: FunctionComponent<
     [current, format, isRange, onEnd, setCurrent]
   )
 
-  const click = useCallback(
+  const handleClick = useCallback(
     (event: any) => {
-      if (disabled || !root.current) {
-        return
-      }
+      if (disabled || !root.current) return
       setDragStatus('')
       const rect = getRect(root.current)
       let delta = event.clientX - rect.left
@@ -280,9 +278,7 @@ export const Range: FunctionComponent<
 
   const onTouchStart = useCallback(
     (event: any) => {
-      if (disabled) {
-        return
-      }
+      if (disabled) return
       touch.start(event)
       setExactValue(current)
       if (isRange(current)) {
@@ -534,10 +530,13 @@ export const Range: FunctionComponent<
       {minDescription !== null && (
         <div className={`${classPrefix}-min`}>{minDescription || min}</div>
       )}
-      <div ref={root} className={classes} onClick={(e) => click(e)}>
+      <div ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
 
-        <div className={`${classPrefix}-bar`} style={barStyle()}>
+        <div
+          className={`${classPrefix}-bar ${classPrefix}-bar-animate`}
+          style={barStyle()}
+        >
           {renderButtonWrapper()}
         </div>
       </div>

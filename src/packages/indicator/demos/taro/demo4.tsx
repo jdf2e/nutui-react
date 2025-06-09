@@ -46,15 +46,7 @@ const Demo4 = () => {
         />
       </Cell>
       <Cell style={{ background: '#C2C4CC' }}>
-        <Indicator
-          total={6}
-          current={2}
-          direction="vertical"
-          color="default"
-          style={{
-            marginLeft: pxTransform(50),
-          }}
-        />
+        <Indicator total={6} current={2} direction="vertical" color="default" />
       </Cell>
     </>
   )

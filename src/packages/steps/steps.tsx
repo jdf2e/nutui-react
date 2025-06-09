@@ -6,9 +6,12 @@ import { WebStepsProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-  value: 0,
   direction: 'horizontal',
-  dot: false,
+  layout: 'single',
+  type: 'text',
+  status: 'default',
+  value: 0,
+  icon: null,
 } as WebStepsProps
 
 export const Steps: FunctionComponent<
@@ -16,11 +19,13 @@ export const Steps: FunctionComponent<
 > = (props) => {
   const propSteps = { ...defaultProps, ...props }
   const {
-    children,
-    value,
     direction,
+    value,
+    layout,
+    status,
+    type,
     className,
-    dot,
+    children,
     onStepClick,
     ...restProps
   } = propSteps
@@ -34,14 +39,28 @@ export const Steps: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-${direction}`]: true,
-      [`${classPrefix}-dot`]: !!dot,
+      [`${classPrefix}-${direction}-count-${React.Children.count(children)}`]:
+        true,
+      [`${classPrefix}-${direction}-${layout}`]: true,
+      [`${classPrefix}-${direction}-${type}`]: true,
+      [`${classPrefix}-${direction}-${status}`]: true,
     },
     className
   )
   return (
     <DataContext.Provider value={parentSteps}>
       <div className={classes} {...restProps}>
-        {children}
+        {React.Children.map(children, (child, index) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, {
+              // @ts-ignore
+              className: classNames(child.props.className, {
+                'nut-step-last': index === React.Children.count(children) - 1,
+              }),
+            })
+          }
+          return child
+        })}
       </div>
     </DataContext.Provider>
   )

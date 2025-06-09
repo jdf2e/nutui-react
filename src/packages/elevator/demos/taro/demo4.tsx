@@ -125,7 +125,7 @@ const Demo4 = () => {
   }
   return (
     <Elevator
-      className="test-elevator4"
+      mode="vertical"
       list={dataList}
       height="220"
       sticky

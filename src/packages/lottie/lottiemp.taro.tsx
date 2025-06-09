@@ -18,6 +18,7 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
     onComplete,
     style,
     speed = 1,
+    dpr = true,
   } = props
   const setSpeed = () => {
     if (animation.current) {
@@ -26,7 +27,7 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
     }
   }
   useImperativeHandle(ref, () => animation.current || {})
-  const dpr = useRef(getWindowInfo().pixelRatio)
+  const pixelRatio = useRef(getWindowInfo().pixelRatio)
   useReady(() => {
     createSelectorQuery()
       .select(`#${id}`)
@@ -40,15 +41,16 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
             const canvas = res.node
             const context = canvas.getContext('2d')
 
-            // scale canvas to adapt dpr
+            // scale canvas to adapt pixelRatio
             if (
               style &&
               style.width !== undefined &&
               style.height !== undefined
             ) {
-              canvas.width = parseFloat(style.width.toString()) * dpr.current
-              canvas.height = parseFloat(style.height.toString()) * dpr.current
-              context.scale(dpr.current, dpr.current)
+              const finalDpr = dpr ? pixelRatio.current : 1
+              canvas.width = parseFloat(style.width.toString()) * finalDpr
+              canvas.height = parseFloat(style.height.toString()) * finalDpr
+              context.scale(finalDpr, finalDpr)
             }
 
             lottie.setup(canvas)

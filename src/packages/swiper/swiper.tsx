@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
@@ -17,7 +17,7 @@ const defaultProps = {
   indicator: false,
   loop: false,
   duration: 3000,
-  autoPlay: false,
+  autoplay: false,
   defaultValue: 0,
   touchable: true,
   effect: undefined,
@@ -32,7 +32,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       indicator,
       loop,
       effect,
-      autoPlay,
+      autoplay,
       touchable,
       defaultValue,
       duration,
@@ -42,23 +42,38 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     const isVertical = direction === 'vertical'
     const count = useMemo(() => {
       let c = 0
-      React.Children.map(children, (child, index) => {
+      React.Children.map(children, () => {
         c += 1
       })
       return c
     }, [children])
+    const timeoutRef = useRef<number | null>(null)
+    const [dragging, setDragging] = useState(false)
+    const [innerValue, setInnerValue] = useRefState(defaultValue)
+    const stageRef = useRef<HTMLDivElement>(null)
+    const swiperRef = useRef<HTMLDivElement>(null)
+    const [springs, api] = useSpring(() => ({
+      x: !isVertical ? innerValue.current * 100 * -1 : 0,
+      y: isVertical ? innerValue.current * 100 * -1 : 0,
+      s: 0,
+      reset: () => {},
+      config: { tension: 200, friction: 30 },
+    }))
+
     const getSlideSize = () => {
       if (props.slideSize) return props.slideSize
       if (stageRef.current) {
-        if (isVertical) return stageRef.current.offsetHeight
-        return stageRef.current.offsetWidth
+        return isVertical
+          ? stageRef.current.offsetHeight
+          : stageRef.current.offsetWidth
       }
       return 0
     }
     const getSwiperSize = () => {
       if (swiperRef.current) {
-        if (isVertical) return swiperRef.current.offsetHeight
-        return swiperRef.current.offsetWidth
+        return isVertical
+          ? swiperRef.current.offsetHeight
+          : swiperRef.current.offsetWidth
       }
       return 0
     }
@@ -71,47 +86,44 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       }
       return v
     }
-    const timeoutRef = useRef<number | null>(null)
-    const [dragging, setDragging] = useState(false)
-    const [current, setCurrent] = useRefState(defaultValue)
-    const stageRef = useRef<HTMLDivElement>(null)
-    const swiperRef = useRef<HTMLDivElement>(null)
-    const [springs, api] = useSpring(() => ({
-      x: !isVertical ? current.current * 100 * -1 : 0,
-      y: isVertical ? current.current * 100 * -1 : 0,
-      s: 0,
-      reset: () => {},
-      config: { tension: 200, friction: 30 },
-    }))
+
     useEffect(() => {
       api.start({
-        [isVertical ? 'y' : 'x']: boundIndex(current.current) * -1 * 100,
+        [isVertical ? 'y' : 'x']: boundIndex(innerValue.current) * -1 * 100,
         immediate: true,
       })
     }, [swiperRef.current])
 
     const swiperDirection = useRef(1)
-
-    const [transforms, setTransforms] = useList(effect, count, current)
+    const [transforms, setTransforms] = useList(effect, count, innerValue)
 
     // 自动播放
-    const runTimeSwiper = () => {
+    const runTimeSwiper = useCallback(() => {
       const durationNumber =
         typeof duration === 'string' ? parseInt(duration) : duration
-      const d = typeof autoPlay === 'number' ? autoPlay : durationNumber
+      let d = durationNumber
+      // 优先使用明确设置的数值型自动播放间隔
+      if (typeof props.autoPlay === 'number') {
+        d = props.autoPlay
+      } else if (typeof autoplay === 'number') {
+        d = autoplay
+      }
       timeoutRef.current = window.setTimeout(() => {
         next()
         runTimeSwiper()
       }, d)
-    }
-    useEffect(() => {
-      if (!autoPlay || dragging) return
-      runTimeSwiper()
+    }, [props.autoPlay, autoplay, duration])
 
+    useEffect(() => {
+      // 兼容旧版的 autoPlay 属性
+      const shouldAutoplay = props.autoPlay || autoplay
+      if (!shouldAutoplay || dragging) return
+      // if (!autoplay || dragging) return
+      runTimeSwiper()
       return () => {
         if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
       }
-    }, [autoPlay, duration, dragging, count])
+    }, [autoplay, duration, dragging, count, runTimeSwiper])
 
     function boundIndex(current: number) {
       const min = 0
@@ -131,7 +143,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
         const cycleIndex = index % count
         targetIndex = cycleIndex < 0 ? cycleIndex + count : cycleIndex
       }
-      setCurrent(targetIndex)
+      setInnerValue(targetIndex)
       props.onChange?.(targetIndex)
 
       if (effect) {
@@ -204,10 +216,9 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
         bounds: () => {
           if (loop) return {}
           const slideSize = getSlideSize()
-          if (isVertical) {
-            return { top: 0, bottom: (count - 1) * slideSize }
-          }
-          return { left: 0, right: (count - 1) * slideSize }
+          return isVertical
+            ? { top: 0, bottom: (count - 1) * slideSize }
+            : { left: 0, right: (count - 1) * slideSize }
         },
         rubberband: true,
         triggerAllEvents: true,
@@ -220,8 +231,8 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
     )
 
     const renderIndicator = () => {
-      if (React.isValidElement(indicator)) return indicator
       if (!indicator) return null
+      if (React.isValidElement(indicator)) return indicator
       return (
         <div
           className={classNames({
@@ -231,7 +242,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           })}
         >
           <Indicator
-            current={getRefValue(current)}
+            current={getRefValue(innerValue)}
             total={count}
             direction={direction}
           />
@@ -256,7 +267,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           count,
           isVertical,
           effect,
-          current,
+          current: innerValue,
           swiperDirection,
           dragging,
           transforms,

@@ -24,8 +24,8 @@ You can override these CSS variables directly in your code, and the styling of t
 /* After you add this style, the Primary Button turns green */
 :root {
   --nutui-color-primary: green;
-  --nutui-color-primary-stop1: green;
-  --nutui-color-primary-stop2: green;
+  --nutui-color-primary-stop-1: green;
+  --nutui-color-primary-stop-2: green;
 }
 ```
 
@@ -40,12 +40,6 @@ The ConfigProvider component provides the ability to override CSS variables, and
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
-
-:::
-
-:::demo
-
-<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -93,13 +87,7 @@ NutUI-React provides a ConfigProvider component for global configuration of inte
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -107,7 +95,7 @@ NutUI-React provides a ConfigProvider component for global configuration of inte
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

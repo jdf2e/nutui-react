@@ -23,63 +23,55 @@ const Demo2 = () => {
   return (
     <>
       <Space direction="vertical">
-        <div style={{ background: '#fff' }}>
-          <NavBar
-            back={
-              <>
-                <ArrowLeft />
-                返回
-              </>
-            }
-            right={<Share onClick={(e) => Toast.show('icon')} />}
-            onBackClick={(e) => Toast.show('返回')}
+        <NavBar
+          back={
+            <>
+              <ArrowLeft />
+              返回
+            </>
+          }
+          right={<Share onClick={(e) => Toast.show('icon')} />}
+          onBackClick={(e) => Toast.show('返回')}
+        >
+          页面标题
+        </NavBar>
+        <NavBar
+          right={<Share onClick={(e) => Toast.show('icon')} />}
+          onBackClick={(e) => Toast.show('返回')}
+        >
+          页面标题
+        </NavBar>
+        <NavBar
+          right={<span onClick={(e) => Toast.show('清空')}>清空</span>}
+          left={<Close />}
+          back={<ArrowLeft />}
+          onBackClick={(e) => Toast.show('返回')}
+        >
+          <div
+            style={{
+              ...styles.flexCenter,
+              alignItems: 'flex-start',
+              flexDirection: 'column',
+            }}
           >
-            页面标题
-          </NavBar>
-        </div>
-        <div style={{ background: '#fff' }}>
-          <NavBar
-            right={<Share onClick={(e) => Toast.show('icon')} />}
-            onBackClick={(e) => Toast.show('返回')}
-          >
-            页面标题
-          </NavBar>
-        </div>
-        <div style={{ background: '#fff' }}>
-          <NavBar
-            right={<span onClick={(e) => Toast.show('清空')}>清空</span>}
-            left={<Close />}
-            back={<ArrowLeft />}
-            onBackClick={(e) => Toast.show('返回')}
-          >
-            <div
-              style={{
-                ...styles.flexCenter,
-                alignItems: 'flex-start',
-                flexDirection: 'column',
-              }}
-            >
-              <span style={styles.title} onClick={(e) => Toast.show('标题')}>
-                页面标题
-              </span>
-              <span style={styles.description}>副标题</span>
-            </div>
-          </NavBar>
-        </div>
-        <div style={{ background: '#fff' }}>
-          <NavBar
-            back={<ArrowLeft />}
-            right={
-              <>
-                <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-                <More onClick={(e) => Toast.show('icon')} />
-              </>
-            }
-            onBackClick={(e) => Toast.show('返回')}
-          >
-            <span onClick={(e) => Toast.show('页面标题')}>页面标题</span>
-          </NavBar>
-        </div>
+            <span style={styles.title} onClick={(e) => Toast.show('标题')}>
+              页面标题
+            </span>
+            <span style={styles.description}>副标题</span>
+          </div>
+        </NavBar>
+        <NavBar
+          back={<ArrowLeft />}
+          right={
+            <>
+              <span onClick={(e) => Toast.show('编辑')}>编辑</span>
+              <More onClick={(e) => Toast.show('icon')} />
+            </>
+          }
+          onBackClick={(e) => Toast.show('返回')}
+        >
+          <span onClick={(e) => Toast.show('页面标题')}>页面标题</span>
+        </NavBar>
       </Space>
     </>
   )

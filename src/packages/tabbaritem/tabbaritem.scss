@@ -13,10 +13,10 @@
     width: 24px;
     height: 24px;
     font-size: 24px;
-    /* #ifdef harmony*/
+    /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
     /* #endif*/
-    /* #ifndef harmony*/
+    /* #ifndef harmony dynamic*/
     color: inherit;
     /* #endif*/
   }
@@ -54,10 +54,10 @@
 
     .nut-tabbar-item-text,
     .nut-icon {
-      /* #ifdef harmony*/
+      /* #ifdef harmony dynamic*/
       color: $tabbar-active-color;
       /* #endif*/
-      /* #ifndef harmony*/
+      /* #ifndef harmony dynamic*/
       color: inherit;
       /* #endif*/
     }

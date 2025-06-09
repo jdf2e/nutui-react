@@ -1,14 +1,22 @@
 import React from 'react'
-import { ConfigProvider, TextArea } from '@nutui/nutui-react'
+import { ConfigProvider, Cell } from '@nutui/nutui-react'
 
-const Demo3 = () => {
+const Demo = () => {
   return (
     <>
-      <ConfigProvider>
-        <TextArea disabled showCount maxLength={20} />
+      <ConfigProvider direction="rtl">
+        <Cell
+          title={
+            <div>
+              <span>我是标题</span>
+            </div>
+          }
+          description={<span>我是描述</span>}
+          extra="描述文字"
+        />
       </ConfigProvider>
     </>
   )
 }
 
-export default Demo3
+export default Demo

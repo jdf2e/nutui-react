@@ -95,6 +95,17 @@ import { TextArea } from '@nutui/nutui-react'
 | onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
+### Ref
+
+You can get Ref of Textarea.
+
+| Event | Description | Arguments |
+| --- | --- | --- |
+| clear | clear the value of textarea | `-` |
+| focus | focus the textarea | `-` |
+| blur | blur the textarea | `-` |
+| nativeElement | get the textarea ref | `-` |
+
 ## Theming
 
 ### CSS Variables

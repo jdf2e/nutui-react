@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        autoPlay
+        autoplay
         loop
         slideSize={300}
         indicator

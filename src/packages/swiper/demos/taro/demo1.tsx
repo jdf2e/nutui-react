@@ -19,17 +19,19 @@ const Demo1 = () => {
     console.log(`onChange is trigger ${e}`)
   }
   return (
-    <Swiper defaultValue={1} autoPlay indicator onChange={onChange}>
-      {list.map((item, index) => (
-        <Swiper.Item key={item}>
-          <Image
-            style={{ width: '100%', height: '100%' }}
-            onClick={() => console.log(index)}
-            src={item}
-          />
-        </Swiper.Item>
-      ))}
-    </Swiper>
+    <>
+      <Swiper defaultValue={2} autoplay indicator onChange={onChange}>
+        {list.map((item, index) => (
+          <Swiper.Item key={item}>
+            <Image
+              style={{ width: '100%', height: '100%' }}
+              onClick={() => console.log(index)}
+              src={item}
+            />
+          </Swiper.Item>
+        ))}
+      </Swiper>
+    </>
   )
 }
 export default Demo1

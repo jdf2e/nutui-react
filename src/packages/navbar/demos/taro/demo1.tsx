@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { NavBar, pxTransform, harmony } from '@nutui/nutui-react-taro'
+import { NavBar, pxTransform, harmony, Space } from '@nutui/nutui-react-taro'
 import { ArrowLeft, Close, More, Share } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
@@ -25,7 +25,7 @@ const Demo1 = () => {
     },
   }
   return (
-    <>
+    <Space direction="vertical">
       <NavBar
         title="页面标题"
         back={
@@ -84,7 +84,7 @@ const Demo1 = () => {
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       />
-    </>
+    </Space>
   )
 }
 export default Demo1

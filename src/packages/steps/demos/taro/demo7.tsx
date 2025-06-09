@@ -1,27 +1,85 @@
-import React from 'react'
-import { Steps, Step } from '@nutui/nutui-react-taro'
-import { Service, Transit, Check } from '@nutui/icons-react-taro'
+import React, { useState } from 'react'
+import { Steps, Step, Cell, Space, Button } from '@nutui/nutui-react-taro'
+import { Location } from '@nutui/icons-react-taro'
 
 const Demo7 = () => {
+  const data = [
+    {
+      value: 1,
+      title: '美国',
+      icon: <Location />,
+    },
+    {
+      value: 2,
+      title: '保税仓',
+      icon: <Location />,
+    },
+    {
+      value: 3,
+      title: '北京市',
+      icon: <Location />,
+    },
+    {
+      value: 4,
+      title: '分拣中心',
+      icon: <Location />,
+    },
+  ]
+  const [val, setVal] = useState(2)
+  const handleStep = () => {
+    const newVal = (val % 4) + 1
+    setVal(newVal)
+  }
   return (
     <>
-      <Steps value={1}>
-        <Step
-          value={1}
-          title="已完成"
-          icon={<Service width={14} height={14} />}
-        />
-        <Step
-          value={2}
-          title="进行中"
-          icon={<Transit width={14} height={14} />}
-        />
-        <Step
-          value={3}
-          title="未开始"
-          icon={<Check width={14} height={14} />}
-        />
-      </Steps>
+      <Cell>
+        <Space direction="vertical">
+          <Steps value={2} type="icon">
+            {data.slice(0, 2).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </Steps>
+          <Steps value={2} type="icon" status="business">
+            {data.slice(0, 3).map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </Steps>
+          <Steps value={val} type="icon" status="dynamic">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </Steps>
+          <Steps value={val} type="icon" status="enhanced">
+            {data.map((item, index) => (
+              <Step
+                key={index}
+                value={item.value}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </Steps>
+        </Space>
+      </Cell>
+
+      <Button size="small" type="danger" onClick={() => handleStep()}>
+        下一步
+      </Button>
     </>
   )
 }

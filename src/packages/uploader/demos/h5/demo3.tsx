@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem, Space } from '@nutui/nutui-react'
+import { Uploader, Cell, UploaderFileItem, Space } from '@nutui/nutui-react'
 
 const Demo3 = () => {
-  const [list, setList] = useState<FileItem[]>([])
+  const [list, setList] = useState<UploaderFileItem[]>([])
   function sleep(time: number) {
     return new Promise<void>((resolve) => {
       setTimeout(() => {

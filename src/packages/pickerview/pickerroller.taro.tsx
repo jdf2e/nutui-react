@@ -159,11 +159,11 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const getReactHeight = async () => {
     try {
       const placeholder = await getRectInMultiPlatform(placeholderRef.current)
-      const placeholderHeight = placeholder.height || 0
+      const placeholderHeight = placeholder.height || 36
       return placeholderHeight
     } catch (error) {
       console.error('获取高度失败:', error)
-      return 0
+      return 36
     }
   }
 
@@ -179,7 +179,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       if (currentLineSpacing) {
         lineSpacing.current = parseFloat(currentLineSpacing)
       }
-    } else {
+    } else if (placeholderRef.current) {
       getReactHeight().then((height) => {
         currentLineSpacing = height
         if (currentLineSpacing) {

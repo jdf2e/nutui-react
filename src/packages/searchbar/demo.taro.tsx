@@ -12,11 +12,13 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
+import Demo10 from './demos/taro/demo10'
 
 const SearchBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       title1: '基础用法',
+      title10: '默认值、受控',
       title2: '搜索框形状及最大长度',
       title3: '搜索框内外背景设置',
       title4: '搜索框文本设置',
@@ -26,6 +28,7 @@ const SearchBarDemo = () => {
     },
     'zh-TW': {
       title1: '基礎用法',
+      title10: '默認值、受控',
       title2: '蒐索框形狀及最大長度',
       title3: '蒐索框內外背景設定',
       title4: '蒐索框文字設定',
@@ -35,21 +38,13 @@ const SearchBarDemo = () => {
     },
     'en-US': {
       title1: 'Basic Usage',
+      title10: 'DefaultValue and controlled mode',
       title2: 'Search Box Shape And Maximum Length',
       title3: 'Background Settings Inside And Outside The Search Box',
       title4: 'Search Box Text Settings',
       title5: 'Custom Icon Settings',
       title6: 'Data Change Monitoring',
       title7: 'Custom Settings',
-    },
-    'id-ID': {
-      title1: 'penggunaan dasar',
-      title2: 'bentuk kotak pencarian dan panjang maksimum',
-      title3: 'pengaturan latar belakang di dalam dan diluar kotak pencarian',
-      title4: 'tetapan teks kotak pencarian',
-      title5: 'pengaturan ikon suai',
-      title6: 'Monitor perubahan data',
-      title7: 'pengaturan suai',
     },
   })
 
@@ -59,6 +54,8 @@ const SearchBarDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.title1}</View>
         <Demo1 />
+        <View className="h2">{translated.title10}</View>
+        <Demo10 />
         <View className="h2">{translated.title2}</View>
         <Demo2 />
         <View className="h2">{translated.title3}</View>

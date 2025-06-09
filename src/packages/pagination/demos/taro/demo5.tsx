@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View } from '@tarojs/components'
+import { Text } from '@tarojs/components'
 import { Pagination } from '@nutui/nutui-react-taro'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 
@@ -11,9 +11,9 @@ const Demo5 = () => {
   }
   const itemRender = (page: any, current: number) => {
     return (
-      <View style={{ color: current === page.number ? '#fff' : '#ff0f23' }}>
+      <Text style={{ color: current === page.number ? '#fff' : '#ff0f23' }}>
         {page.number === 3 ? 'hot' : page.text}
-      </View>
+      </Text>
     )
   }
   return (

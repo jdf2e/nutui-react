@@ -42,7 +42,6 @@ const Demo11 = () => {
                 justifyContent: 'center',
                 top: '50%',
                 left: '50%',
-                // @ts-ignore
                 transform: 'translate(-50%, -50%)',
                 ...buttonNativeStyle,
               }}
@@ -54,7 +53,7 @@ const Demo11 = () => {
                         height: pxTransform(18),
                         color: 'white',
                         fontSize: pxTransform(10),
-                        lineHeight: pxTransform(10),
+                        lineHeight: 1,
                         textAlign: 'center',
                         paddingTop: pxTransform(4),
                         paddingBottom: pxTransform(4),

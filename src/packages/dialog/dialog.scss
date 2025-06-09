@@ -8,7 +8,7 @@
   align-items: center;
   width: $dialog-width;
   min-width: $dialog-min-width;
-  /* #ifndef harmony*/
+  /* #ifndef harmony dynamic*/
   max-height: 67%;
   /* #endif */
   min-height: $dialog-min-height;

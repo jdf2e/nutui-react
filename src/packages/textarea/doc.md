@@ -95,6 +95,17 @@ import { TextArea } from '@nutui/nutui-react'
 | onFocus | 聚焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 | onBlur | 失焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
+### Ref
+
+通过 ref 可以获取到 Textarea 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| clear | 清除容器中的数据 | `-` |
+| focus | 使容器获取焦点 | `-` |
+| blur | 使容器失去焦点 | `-` |
+| nativeElement | 获取当前容器 | `-` |
+
 ## 主题定制
 
 ### 样式变量

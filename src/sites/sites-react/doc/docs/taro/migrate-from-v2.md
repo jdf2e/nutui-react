@@ -112,7 +112,13 @@ plugins: [
 
 ### 导航组件
 
-[//]: # '#### Elevator'
+#### Elevator
+
+- 新增 `mode` 属性，可选值 `'horizontal'` 或 `'vertical'`，默认 `horizontal`
+- 移除 `titleHeight` 属性， 代码中未使用。
+- 新增 `defaultValue` 属性，默认选中的值
+- 新增 `value` 属性，当前选中的值，受控
+
 [//]: # '#### FixedNav'
 
 #### Indicator
@@ -184,13 +190,19 @@ plugins: [
 - 新增 size 属性，控制图标的大小
 - 新增 showScore 属性，展示评分文案
 
-[//]: # '#### SearchBar'
+#### SearchBar
+
+- `value` 属性，支持受控
+- 新增 `defaultValue` 属性，用于搜索默认值，支持以','分割的字符串，用以展示为多个
+- 新增 `onItemClick` 属性，用于点击展示默认值时的x号，支持回调处理
+
 [//]: # '#### ShortPassword'
 
 #### TextArea
 
 - 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型
 - 新增 `status` 属性，值为 `default` | `error`，可定义输入框的状态
+- 新增 `ref` 属性，支持 `clear` `focus` `blur` `nativeElement` 等方法
 - 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader
@@ -308,9 +320,24 @@ plugins: [
 - 新增 `duration` 属性，控制动画时长
 - 新增 `size` 属性，通过 `size` 属性可选择使用组件内置的高度
 
-  [//]: # '#### Steps'
-  [//]: # '#### Step'
-  [//]: # '#### Swiper'
+#### Steps
+
+- 新增 `status` 属性，设置步骤条的展示状态
+- 新增 `layout` 属性，设置步骤条的布局方式
+- 新增 `type` 属性，设置步骤条的类型
+- 新增 `icon` 属性，设置自定义图标
+- 移除 `dot` 属性，可使用 `type` 属性
+- 新增 `onStepClick`, 点击切换步骤条时触发
+
+#### Step
+
+- 修改 `title` 和 `description` 的类型为 `ReactNode`
+- 新增 `type` 属性，设置步骤条类型
+
+#### Swiper
+
+- 修改 `autoPlay` 为 `autoplay`
+
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'

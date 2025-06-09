@@ -46,7 +46,10 @@
     max-height: 100%;
     background: $range-active-color;
     border-radius: 2px;
-    transition: all 0.2s;
+
+    &-animate {
+      transition: all 0.2s;
+    }
   }
 
   &-button {
@@ -204,7 +207,8 @@
     position: absolute;
     width: 36px;
     height: 100%;
-    top: initial;
+    // top: initial;
+    top: 0px;
     right: 50%;
     overflow: visible;
     font-size: 12px;

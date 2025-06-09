@@ -1,10 +1,4 @@
-import React, {
-  Children,
-  useEffect,
-  useImperativeHandle,
-  useMemo,
-  useState,
-} from 'react'
+import React, { Children, useImperativeHandle, useMemo, useState } from 'react'
 import {
   Swiper as TaroSwiper,
   SwiperItem as TSwiperItem,
@@ -21,6 +15,7 @@ const defaultProps = {
   direction: 'horizontal',
   indicator: false,
   autoPlay: false,
+  autoplay: false,
   loop: false,
   defaultValue: 0,
   style: {},
@@ -35,11 +30,16 @@ export const Swiper = React.forwardRef(
       className,
       children,
       indicator,
+      indicatorDots,
       loop,
+      circular,
       autoPlay,
+      autoplay,
       duration,
+      vertical,
       direction,
       defaultValue,
+      current,
       onChange,
       style,
       ...rest
@@ -47,7 +47,7 @@ export const Swiper = React.forwardRef(
       ...defaultProps,
       ...props,
     }
-    const [current, setCurrent] = useState(defaultValue)
+    const [innerValue, setInnerValue] = useState(current || defaultValue)
     const childrenCount = useMemo(() => {
       let c = 0
       React.Children.map(children, (child, index) => {
@@ -55,23 +55,21 @@ export const Swiper = React.forwardRef(
       })
       return c
     }, [children])
-    useEffect(() => {
-      setCurrent(defaultValue)
-    }, [defaultValue])
     const renderIndicator = () => {
       if (React.isValidElement(indicator)) return indicator
-      if (indicator) {
+      if (indicator || indicatorDots) {
         return (
           <View
             className={classNames({
               [`${classPrefix}-indicator`]: true,
-              [`${classPrefix}-indicator-vertical`]: direction === 'vertical',
+              [`${classPrefix}-indicator-vertical`]:
+                direction === 'vertical' || vertical,
             })}
           >
             <Indicator
-              current={current}
+              current={innerValue}
               total={childrenCount}
-              direction={direction}
+              direction={vertical ? 'vertical' : direction}
             />
           </View>
         )
@@ -81,26 +79,28 @@ export const Swiper = React.forwardRef(
     const handleOnChange: CommonEventFunction<
       TSwiperProps.onChangeEventDetail
     > = (value) => {
-      setCurrent(value.detail.current)
+      setInnerValue(value.detail.current)
     }
     useImperativeHandle(ref, () => ({
       to: (value: number) => {
-        setCurrent(value)
+        setInnerValue(value)
       },
       next: () => {
         if (loop) {
-          setCurrent((current + 1) % childrenCount)
+          setInnerValue((innerValue + 1) % childrenCount)
         } else {
-          setCurrent(current + 1 >= childrenCount ? current : current + 1)
+          setInnerValue(
+            innerValue + 1 >= childrenCount ? innerValue : innerValue + 1
+          )
         }
       },
       prev: () => {
         if (loop) {
-          let next = current - 1
+          let next = innerValue - 1
           next = next < 0 ? childrenCount + next : next
-          setCurrent(next % childrenCount)
+          setInnerValue(next % childrenCount)
         } else {
-          setCurrent(current - 1 <= 0 ? 0 : current - 1)
+          setInnerValue(innerValue - 1 <= 0 ? 0 : innerValue - 1)
         }
       },
     }))
@@ -121,10 +121,10 @@ export const Swiper = React.forwardRef(
           }}
         >
           <TaroSwiper
-            current={current}
+            current={innerValue}
             circular={loop}
-            autoplay={autoPlay}
-            vertical={direction === 'vertical'}
+            autoplay={autoplay || autoPlay}
+            vertical={direction === 'vertical' || vertical}
             indicatorDots={false}
             onChange={(e) => {
               handleOnChange(e)

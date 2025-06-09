@@ -74,6 +74,12 @@ import { Progress } from '@nutui/nutui-react'
 
 :::
 
+### 設置動畫時長與播放方式
+
+:::demo
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+:::
+
 ## Progress
 
 ### Props
@@ -88,6 +94,12 @@ import { Progress } from '@nutui/nutui-react'
 | animated | 是否展示動畫效果 | `boolean` | `false` |
 | lazy | 每次進入可視區展示進度條動畫 | `boolean` | `false` |
 | delay | 延遲數據加載時長，單位 ms | `number` | `0` |
+| borderRadius | 進度條圓角大小 | `string` | `0` |
+| fontSize | 進度文字大小 | `string` | `12px` |
+| activeMode | 動畫播放方式 | `forwards \| backwards` | `forwards` |
+| duration | 動畫完成時間（單位：毫秒） | `number` | `30` |
+| ariaLabel | 無障礙標簽 | `string` | `-` |
+| onActiveEnd | 動畫完成後的回調函數 | `() => void` | `-` |
 
 ## 主題定制
 
@@ -101,9 +113,9 @@ import { Progress } from '@nutui/nutui-react'
 | \--nutui-progress-border-radius | 進度條邊框圓角 | `12px` |
 | \--nutui-progress-color | 進度條顏色 | `linear-gradient(135deg, #FF0F23 0%, #fa6419 100%)` |
 | \--nutui-progress-background | 進度條背景色 | `#f3f3f3` |
-| \--nutui-progress-text-color | 文本顏色 | `$color-primary-text` |
+| \--nutui-progress-text-color | 文本顏色 | `$color-text-help` |
 | \--nutui-progress-text-padding | 文本內邊距 | `0 5px` |
-| \--nutui-progress-text-font-size | 文本字體大小 | `9px` |
+| \--nutui-progress-text-font-size | 文本字體大小 | `13px` |
 | \--nutui-progress-text-position-top | 文本定位 top | `-4px` |
 | \--nutui-progress-text-position-bottom | 文本定位 bottom | `-4px` |
 | \--nutui-progress-text-border-radius | 文本邊框圓角 | `5px` |

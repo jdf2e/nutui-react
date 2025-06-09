@@ -26,12 +26,20 @@ const Demo5 = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
-          id: 3,
+          name: '甘肃',
+          id: 31,
         },
         {
           name: '广东',
-          id: 4,
+          id: 32,
+        },
+        {
+          name: '广东',
+          id: 33,
+        },
+        {
+          name: '贵州',
+          id: 34,
         },
       ],
     },
@@ -40,15 +48,44 @@ const Demo5 = () => {
       list: [
         {
           name: '湖南',
-          id: 5,
+          id: 41,
         },
         {
           name: '湖北',
-          id: 6,
+          id: 42,
         },
         {
-          name: '河南',
-          id: 7,
+          name: '湖北',
+          id: 43,
+        },
+        {
+          name: '湖南',
+          id: 44,
+        },
+        {
+          name: '海南',
+          id: 45,
+        },
+      ],
+    },
+    {
+      title: 'S',
+      list: [
+        {
+          name: '山东',
+          id: 51,
+        },
+        {
+          name: '山西',
+          id: 52,
+        },
+        {
+          name: '上海',
+          id: 53,
+        },
+        {
+          name: '陕西',
+          id: 54,
         },
       ],
     },
@@ -71,8 +108,8 @@ const Demo5 = () => {
         {(value) => {
           return (
             <>
-              <Fabulous width={12} height={12} />
-              <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+              <span>{value?.name}</span>
+              <Fabulous style={{ marginLeft: '4px' }} height={12} />
             </>
           )
         }}

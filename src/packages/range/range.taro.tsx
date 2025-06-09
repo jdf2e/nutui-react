@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
+import { useReady, nextTick } from '@tarojs/taro'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
@@ -16,6 +17,7 @@ import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { useRtl } from '../configprovider/index.taro'
 import { harmony } from '@/utils/taro/platform'
 import { TaroRangeProps, RangeValue } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -31,16 +33,11 @@ const isHm = harmony()
 const classPrefix = 'nut-range'
 const verticalClassPrefix = `${classPrefix}-vertical`
 
-const isSameValue = (newValue: RangeValue, oldValue: RangeValue) => {
-  return JSON.stringify(newValue) === JSON.stringify(oldValue)
-}
+const isSameValue = (newValue: RangeValue, oldValue: RangeValue) =>
+  JSON.stringify(newValue) === JSON.stringify(oldValue)
 
-const handleOverlap = (value: number[]) => {
-  if (value[0] > value[1]) {
-    return value.slice(0).reverse()
-  }
-  return value
-}
+const handleOverlap = (value: number[]) =>
+  value[0] > value[1] ? value.slice(0).reverse() : value
 
 export const Range: FunctionComponent<
   Partial<TaroRangeProps> &
@@ -69,16 +66,17 @@ export const Range: FunctionComponent<
     onChange,
     onStart,
     onEnd,
-  } = { ...defaultProps, ...props }
+  } = mergeProps(defaultProps, props)
 
   const rtlClassPrefix = useMemo(
     () => `rtl-${vertical ? verticalClassPrefix : classPrefix}`,
     [vertical]
   )
-  const [buttonIndex, setButtonIndex] = useState(0)
-  const [dragStatus, setDragStatus] = useState('start')
+  const buttonRef = useRef(0)
+  const dragStatusRef = useRef('start')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
+  const rootRect = useRef<any>(null)
   const [marksList, setMarksList] = useState<number[]>([])
   const [startValue, setStartValue] = useState<any>(0)
   const scope = useMemo(() => {
@@ -91,15 +89,13 @@ export const Range: FunctionComponent<
   const handleChange = (value: RangeValue) => {
     onChange && onChange(value)
   }
-  const [current, setCurrent] = usePropsValue<RangeValue>({
+  const [innerValue, setInnerValue] = usePropsValue<RangeValue>({
     value,
     defaultValue,
     finalValue: 0,
     onChange: handleChange,
   })
-  const [exactValue, setExactValue] = useState<RangeValue>(
-    () => value || defaultValue || 0
-  )
+  const exactValueRef = useRef<RangeValue>(value || defaultValue || 0)
   const marksRef = useRef<{ [key: string]: any }>({})
   useEffect(() => {
     if (marks) {
@@ -122,11 +118,13 @@ export const Range: FunctionComponent<
       }
     }
   }, [marks, max, min])
+
   const classes = classNames(classPrefix, {
     [`${classPrefix}-disabled`]: disabled,
     [verticalClassPrefix]: vertical,
     [`${classPrefix}-native`]: isHm,
   })
+
   const containerClasses = classNames(
     `${classPrefix}-container`,
     {
@@ -135,17 +133,18 @@ export const Range: FunctionComponent<
     },
     className
   )
+
   const markClassName = useCallback(
     (mark: any) => {
       const classPrefix = 'nut-range-mark'
       const verticalClassPrefix = 'nut-range-vertical-mark'
       let lowerBound = min
       let upperBound = max
-      if (range && Array.isArray(current)) {
-        lowerBound = current[0]
-        upperBound = current[1]
+      if (range && Array.isArray(innerValue)) {
+        lowerBound = innerValue[0]
+        upperBound = innerValue[1]
       } else {
-        upperBound = current as number
+        upperBound = innerValue as number
       }
       const isActive = mark <= upperBound && mark >= lowerBound
       const classNames = [
@@ -165,7 +164,7 @@ export const Range: FunctionComponent<
 
       return classNames.join(' ')
     },
-    [min, max, range, current, vertical, rtl, rtlClassPrefix]
+    [min, max, range, innerValue, vertical, rtl, rtlClassPrefix]
   )
 
   const isRange = useCallback(
@@ -175,33 +174,33 @@ export const Range: FunctionComponent<
     [range]
   )
 
-  const calcMainAxis = useCallback(() => {
-    const modelVal = current as any
+  const calcMainAxis = useMemo(() => {
+    const modelVal = innerValue as any
     return isRange(modelVal)
       ? `${((modelVal[1] - modelVal[0]) * 100) / scope}%`
       : `${((modelVal - min) * 100) / scope}%`
-  }, [current, isRange, min, scope])
+  }, [innerValue, isRange, min, scope])
 
-  const calcOffset = useCallback(() => {
-    const modelVal = current as any
-    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : `0%`
-  }, [current, isRange, min, scope])
+  const calcOffset = useMemo(() => {
+    const modelVal = innerValue as any
+    return isRange(modelVal) ? `${((modelVal[0] - min) * 100) / scope}%` : '0%'
+  }, [innerValue, isRange, min, scope])
 
-  const barStyle = useCallback(() => {
+  const barStyle = useMemo(() => {
     if (vertical) {
       return {
-        height: calcMainAxis(),
-        top: calcOffset(),
-        transition: dragStatus ? 'none' : undefined,
+        height: calcMainAxis,
+        top: calcOffset,
+        transition: dragStatusRef.current ? 'none' : undefined,
       }
     }
     const dir = rtl ? 'right' : 'left'
     return {
-      width: calcMainAxis(),
-      [dir]: calcOffset(),
-      transition: dragStatus ? 'none' : undefined,
+      width: calcMainAxis,
+      [dir]: calcOffset,
+      transition: dragStatusRef.current ? 'none' : undefined,
     }
-  }, [calcMainAxis, calcOffset, dragStatus, rtl, vertical])
+  }, [calcMainAxis, calcOffset, rtl, vertical])
 
   const marksStyle = useCallback(
     (mark: any) => {
@@ -221,12 +220,12 @@ export const Range: FunctionComponent<
 
   const tickClass = useCallback(
     (mark: any) => {
-      if (range && Array.isArray(current)) {
-        return mark <= current[1] && mark >= current[0]
+      if (range && Array.isArray(innerValue)) {
+        return mark <= innerValue[1] && mark >= innerValue[0]
       }
-      return mark <= current
+      return mark <= innerValue
     },
-    [current, range]
+    [innerValue, range]
   )
 
   const format = useCallback(
@@ -244,40 +243,36 @@ export const Range: FunctionComponent<
       } else {
         value = format(value)
       }
-      if (!isSameValue(value, current)) {
-        setCurrent(value)
+      if (!isSameValue(value, innerValue)) {
+        setInnerValue(value)
       }
       end && onEnd && onEnd(value)
     },
-    [current, format, isRange, onEnd, setCurrent]
+    [innerValue, format, isRange, onEnd, setInnerValue]
   )
 
-  const click = useCallback(
+  const handleClick = useCallback(
     async (event: any) => {
-      if (disabled || !root.current) {
-        return
-      }
-      setDragStatus('')
+      if (disabled || !root.current) return
+      // TODO 鸿蒙获取clientX的数据有误，windowX 也变成了 undefined。暂不支持，待上游支持。
+      if (isHm) return
+      dragStatusRef.current = ''
       const rect = await getRectInMultiPlatform(root.current)
-      let x =
-        typeof event.detail?.x !== 'undefined' ? event.detail.x : event.clientX
-      if (isHm) x = parseFloat(pxTransform(event.windowX))
+      let x = event.detail?.x ?? event.clientX
+      if (isHm) x = parseFloat(pxTransform(event.windowX || x))
       let delta = x - rect.left
       let total = rect.width
 
       if (vertical) {
-        let y =
-          typeof event.detail?.y !== 'undefined'
-            ? event.detail.y
-            : event.clientY
-        if (isHm) y = parseFloat(pxTransform(event.windowY))
+        let y = event.detail?.y ?? event.clientY
+        if (isHm) y = parseFloat(pxTransform(event.windowY || y))
         delta = y - rect.top
         total = rect.height
       }
       const value = min + (delta / total) * scope
-      setExactValue(current)
-      if (isRange(current)) {
-        const [left, right] = current as any
+      exactValueRef.current = innerValue
+      if (isRange(innerValue)) {
+        const [left, right] = innerValue as any
         const middle = (left + right) / 2
         if (value <= middle) {
           updateValue([value, right], true)
@@ -288,70 +283,75 @@ export const Range: FunctionComponent<
         updateValue(value, true)
       }
     },
-    [current, disabled, isRange, min, scope, updateValue, vertical]
+    [innerValue, disabled, isRange, min, scope, updateValue, vertical]
   )
+
+  useReady(() => {
+    const getRootRect = async () => {
+      if (root.current) {
+        const rect = await getRectInMultiPlatform(root.current)
+        rootRect.current = rect
+      }
+    }
+    nextTick(() => {
+      getRootRect()
+    })
+  })
 
   const onTouchStart = useCallback(
     (event: any) => {
-      if (disabled) {
-        return
-      }
+      if (disabled) return
       touch.start(event)
-      setExactValue(current)
-      if (isRange(current)) {
-        setStartValue((current as number[]).map(format))
+      exactValueRef.current = innerValue
+      if (isRange(innerValue)) {
+        setStartValue((innerValue as number[]).map(format))
       } else {
-        setStartValue(format(current as number))
+        setStartValue(format(innerValue as number))
       }
-
-      setDragStatus('start')
+      dragStatusRef.current = 'start'
     },
-    [current, disabled, format, isRange, touch]
+    [innerValue, disabled, format, isRange, touch]
   )
 
   const onTouchMove = useCallback(
     async (event: any) => {
       // @TODO RN、鸿蒙端垂直滑动时，页面会一同滑动，待解决
-      if (disabled || !root.current) {
-        return
-      }
-      if (dragStatus === 'start') {
+      if (disabled || !root.current) return
+      if (dragStatusRef.current === 'start') {
         onStart && onStart()
+        dragStatusRef.current = 'draging'
       }
-
       touch.move(event)
-      setDragStatus('draging')
-      const rect = await getRectInMultiPlatform(root.current)
-      if (!rect) return
-      let delta = isHm
-        ? parseFloat(pxTransform(touch.deltaX.current))
-        : touch.deltaX.current
-      let total = rect.width
-      let diff = (delta / total) * scope
-      diff = rtl ? -diff : diff
-      if (vertical) {
-        delta = isHm
-          ? parseFloat(pxTransform(touch.deltaY.current))
-          : touch.deltaY.current
-        total = rect.height
-        diff = (delta / total) * scope
-      }
 
-      let newValue
-      if (isRange(startValue)) {
-        newValue = (exactValue as number[]).slice()
-        newValue[buttonIndex] = startValue[buttonIndex] + diff
-      } else {
-        newValue = startValue + diff
+      const handleMove = async () => {
+        if (!rootRect.current) return
+        let delta = isHm
+          ? parseFloat(pxTransform(touch.deltaX.current))
+          : touch.deltaX.current
+        let total = rootRect.current.width
+        let diff = (delta / total) * scope
+        diff = rtl ? -diff : diff
+
+        if (vertical) {
+          delta = isHm
+            ? parseFloat(pxTransform(touch.deltaY.current))
+            : touch.deltaY.current
+          total = rootRect.current.height
+          diff = (delta / total) * scope
+        }
+
+        let newValue = startValue + diff
+        if (isRange(startValue)) {
+          newValue = (exactValueRef.current as number[]).slice()
+          newValue[buttonRef.current] = startValue[buttonRef.current] + diff
+        }
+        exactValueRef.current = newValue
+        updateValue(newValue)
       }
-      setExactValue(newValue)
-      updateValue(newValue)
+      requestAnimationFrame(handleMove)
     },
     [
-      buttonIndex,
       disabled,
-      dragStatus,
-      exactValue,
       isRange,
       onStart,
       rtl,
@@ -364,82 +364,58 @@ export const Range: FunctionComponent<
   )
 
   const onTouchEnd = useCallback(() => {
-    if (disabled) {
-      return
+    if (disabled) return
+    if (dragStatusRef.current === 'draging') {
+      updateValue(innerValue, true)
     }
-    if (dragStatus === 'draging') {
-      updateValue(current, true)
-    }
-    setDragStatus('')
-  }, [current, disabled, dragStatus, updateValue])
+    dragStatusRef.current = ''
+  }, [innerValue, disabled, updateValue])
 
   const curValue = useCallback(
     (idx?: number) => {
-      const modelVal = current as any
+      const modelVal = innerValue as any
       const value = typeof idx === 'number' ? modelVal[idx] : modelVal
       return value
     },
-    [current]
+    [innerValue]
   )
-
-  const buttonTransform = useMemo(() => {
-    const borderRadis = { borderRadius: pxTransform(13) }
-    const transform = {
-      transform: 'translate(-50%, -50%)',
-    }
-
-    if (isHm) {
-      return {
-        ...borderRadis,
-        ...transform,
-      }
-    }
-    return {
-      ...transform,
-    }
-  }, [])
   const buttonNumberTransform = useMemo(() => {
     return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
   }, [vertical])
 
   const renderButton = useCallback(
-    (index?: number) => {
-      return (
-        <View>
-          {button || (
-            <View
-              className={classNames(`${classPrefix}-button`, {
-                [`${verticalClassPrefix}-button`]: vertical,
-                [`${rtlClassPrefix}-button`]: rtl,
-              })}
-              // @ts-ignore
-              style={buttonTransform}
-            >
-              {currentDescription !== null && (
-                <Text
-                  className={classNames(`${classPrefix}-button-number`, {
-                    [`${verticalClassPrefix}-button-number`]: vertical,
-                    [`${rtlClassPrefix}-button-number`]: rtl,
-                  })}
-                  style={{
-                    // @ts-ignore
-                    transform: buttonNumberTransform,
-                  }}
-                >
-                  {currentDescription
-                    ? currentDescription(curValue(index))
-                    : curValue(index)}
-                </Text>
-              )}
-            </View>
-          )}
-        </View>
-      )
-    },
+    (index?: number) => (
+      <>
+        {button || (
+          <View
+            className={classNames(`${classPrefix}-button`, {
+              [`${verticalClassPrefix}-button`]: vertical,
+              [`${rtlClassPrefix}-button`]: rtl,
+            })}
+            style={{ transform: 'translate(-50%, -50%)' }}
+          >
+            {currentDescription !== null && (
+              <Text
+                className={classNames(`${classPrefix}-button-number`, {
+                  [`${verticalClassPrefix}-button-number`]: vertical,
+                  [`${rtlClassPrefix}-button-number`]: rtl,
+                })}
+                style={{
+                  transform: buttonNumberTransform,
+                }}
+              >
+                {currentDescription
+                  ? currentDescription(curValue(index))
+                  : curValue(index)}
+              </Text>
+            )}
+          </View>
+        )}
+      </>
+    ),
     [
       button,
       buttonNumberTransform,
-      buttonTransform,
       curValue,
       currentDescription,
       rtl,
@@ -459,29 +435,27 @@ export const Range: FunctionComponent<
     })
     return (
       <View className={markcls}>
-        {marksList.map((mark: any) => {
-          return (
+        {marksList.map((mark: any) => (
+          <View
+            key={mark}
+            className={markClassName(mark)}
+            style={marksStyle(mark)}
+          >
+            <Text className={textcls}>
+              {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
+            </Text>
             <View
-              key={mark}
-              className={markClassName(mark)}
-              style={marksStyle(mark)}
-            >
-              <Text className={textcls}>
-                {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
-              </Text>
-              <View
-                className={classNames(
-                  `${vertical ? verticalClassPrefix : classPrefix}-tick`,
-                  {
-                    [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
-                      tickClass(mark),
-                    [`${rtlClassPrefix}-tick`]: rtl,
-                  }
-                )}
-              />
-            </View>
-          )
-        })}
+              className={classNames(
+                `${vertical ? verticalClassPrefix : classPrefix}-tick`,
+                {
+                  [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                    tickClass(mark),
+                  [`${rtlClassPrefix}-tick`]: rtl,
+                }
+              )}
+            />
+          </View>
+        ))}
       </View>
     )
   }, [
@@ -495,39 +469,22 @@ export const Range: FunctionComponent<
     vertical,
   ])
 
-  const wrapperTransform = useMemo(() => {
-    // @TODO 支持变量
-    const wrapperTransformRN = [
-      { translateX: pxTransform(vertical ? -12 : -13) },
-      { translateY: pxTransform(-12) },
-    ]
-    const wrapperTransform = 'translate(-50%, -50%)'
-
-    return wrapperTransform
-  }, [vertical])
-  const rangeWrapperTransform = useMemo(() => {
-    return 'translate(-50%, -50%)'
-  }, [])
-
   const renderRangeButton = useCallback(() => {
-    return [0, 1].map((item, index) => {
-      const isLeft = index === 0
-      const suffix = isLeft ? 'left' : 'right'
+    return [0, 1].map((_, index) => {
+      const suffix = index === 0 ? 'left' : 'right'
       const cls = classNames(`${classPrefix}-button-wrapper-${suffix}`, {
         [`${verticalClassPrefix}-button-wrapper-${suffix}`]: vertical,
         [`${rtlClassPrefix}-button-wrapper-${suffix}`]: rtl,
       })
-
       return (
         <View
           key={index}
           className={cls}
           style={{
-            // @ts-ignore
-            transform: rangeWrapperTransform,
+            transform: 'translate(-50%, -50%)',
           }}
-          onTouchStart={(e: any) => {
-            setButtonIndex(index)
+          onTouchStart={(e) => {
+            buttonRef.current = index
             onTouchStart(e)
           }}
           onTouchMove={onTouchMove}
@@ -544,22 +501,20 @@ export const Range: FunctionComponent<
     onTouchMove,
     onTouchStart,
     renderButton,
-    rangeWrapperTransform,
     vertical,
     rtl,
     rtlClassPrefix,
   ])
 
-  const renderSingleButton = useCallback(() => {
-    return (
+  const renderSingleButton = useCallback(
+    () => (
       <View
         catchMove
         className={classNames(`${classPrefix}-button-wrapper`, {
           [`${verticalClassPrefix}-button-wrapper`]: vertical,
         })}
         style={{
-          // @ts-ignore
-          transform: wrapperTransform,
+          transform: 'translate(-50%, -50%)',
         }}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -569,35 +524,29 @@ export const Range: FunctionComponent<
       >
         {renderButton()}
       </View>
-    )
-  }, [
-    onTouchEnd,
-    onTouchMove,
-    onTouchStart,
-    renderButton,
-    wrapperTransform,
-    vertical,
-  ])
+    ),
+    [onTouchEnd, onTouchMove, onTouchStart, renderButton, vertical]
+  )
 
   const renderButtonWrapper = useCallback(() => {
-    if (range) {
-      return renderRangeButton()
-    }
-
-    return renderSingleButton()
-  }, [renderRangeButton, renderSingleButton, range])
+    return (
+      <View
+        className={`${classPrefix}-bar ${isHm ? '' : `${classPrefix}-bar-animate`}}`}
+        style={barStyle}
+      >
+        {range ? renderRangeButton() : renderSingleButton()}
+      </View>
+    )
+  }, [renderRangeButton, renderSingleButton, range, barStyle])
 
   return (
     <View className={containerClasses} style={style}>
       {minDescription !== null && (
         <Text className={`${classPrefix}-min`}>{minDescription || min}</Text>
       )}
-      <View ref={root} className={classes} onClick={(e) => click(e)}>
+      <View ref={root} className={classes} onClick={handleClick}>
         {renderMarks()}
-
-        <View className={`${classPrefix}-bar`} style={barStyle()}>
-          {renderButtonWrapper()}
-        </View>
+        {renderButtonWrapper()}
       </View>
       {maxDescription !== null && (
         <Text className={`${classPrefix}-max`}>{maxDescription || max}</Text>

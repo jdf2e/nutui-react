@@ -1,9 +1,9 @@
 import React from 'react'
-import { Uploader, FileItem } from '@nutui/nutui-react-taro'
+import { Uploader, UploaderFileItem } from '@nutui/nutui-react-taro'
 import { Dongdong, Loading, Star } from '@nutui/icons-react-taro'
 
 const Demo2 = () => {
-  const defaultList: FileItem[] = [
+  const defaultList: UploaderFileItem[] = [
     {
       uid: 111,
       name: '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
@@ -44,7 +44,7 @@ const Demo2 = () => {
       loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
   ]
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
+  const onDelete = (file: UploaderFileItem, fileList: UploaderFileItem[]) => {
     console.log('delete事件触发', file, fileList)
   }
   return (

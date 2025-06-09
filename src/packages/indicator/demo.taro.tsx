@@ -44,19 +44,14 @@ const IndicatorDemo = () => {
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
         <Demo1 />
-
         <View className="h2">{translated.white}</View>
         <Demo5 />
-
         <View className="h2">{translated.type}</View>
         <Demo6 />
-
         <View className="h2">{translated.customNode}</View>
         <Demo2 />
-
         <View className="h2">{translated.custom}</View>
         <Demo3 />
-
         <View className="h2">{translated.vertical}</View>
         <Demo4 />
       </ScrollView>

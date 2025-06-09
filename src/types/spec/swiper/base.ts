@@ -18,7 +18,11 @@ export interface BaseSwiper extends BaseProps {
   indicator: ReactNode
   loop: boolean
   duration: SimpleValue
+  /**
+   * @deprecated Please use `autoplay` prop instead.
+   */
   autoPlay: boolean | number
+  autoplay: boolean | number
   defaultValue: number
   touchable: boolean
   effect: FocusEffect | undefined

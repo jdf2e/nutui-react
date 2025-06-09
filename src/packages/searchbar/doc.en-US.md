@@ -20,6 +20,14 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
+### DefaultValue And Controlled
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### Search box shape and maximum length
 
 `SearchBar`'s `shape` Attribute supports defining fillet right angles，`maxLength` Can control the maximum length of input characters。

@@ -67,10 +67,10 @@
       font-size: 12px;
       border-radius: 4px;
       margin-bottom: 7px;
-      /* #ifdef harmony*/
+      /* #ifdef harmony dynamic*/
       margin-right: 6px;
       /* #endif */
-      /* #ifndef harmony*/
+      /* #ifndef harmony dynamic*/
       margin-right: 7px;
       /* #endif */
       background-color: $color-background-sunken;
