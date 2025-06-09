@@ -72,7 +72,6 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     if (disabled || loading) return
     if (onChange) {
       loadingIcon && setLoading(true)
-      onChange(!value)
       try {
         await onChange(!value)
       } catch (e) {
