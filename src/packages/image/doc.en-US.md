@@ -104,6 +104,7 @@ The Image component provides lazy loading of images, which can be realized by co
 | height | height, default unit `px` | `string \| number` | `-` |
 | radius | rounded corner size | `string` \| `number` | `-` |
 | error | Whether to display image loading failure | `boolean \| ReactNode` | `true` |
+| errorClass | Custom class name for error state | `string` | '' |
 | loading | Whether to show loading images | `boolean \| ReactNode` | `true` |
 | lazy | Whether to lazy load images | `boolean` | `false` |
 | onClick | Triggered when an image is clicked | `(e: MouseEvent) => void` | `-` |

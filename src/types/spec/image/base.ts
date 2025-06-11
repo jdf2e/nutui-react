@@ -18,6 +18,7 @@ export interface BaseImage extends BaseProps {
   radius: SimpleValue
   error: ReactNode
   loading: ReactNode
+  errorClass: string
   lazy: boolean
   draggable: boolean
   onLoad: () => void

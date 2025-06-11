@@ -87,11 +87,14 @@ If your project uses these components, please read the documentation carefully a
 
 - Removed style variable `--nutui-button-default-font-weight`
 
+#### Image
+
+- add props `errorClass`, support custom error state class name.
+
 [//]: # '#### Cell'
 [//]: # '#### CellGroup'
 [//]: # '#### ConfigProvider'
 [//]: # '#### Icon'
-[//]: # '#### Image'
 [//]: # '#### Overlay'
 [//]: # '#### Popup'
 

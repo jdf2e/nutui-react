@@ -20,6 +20,7 @@ const defaultProps: Partial<WebImageProps> = {
   error: true,
   loading: true,
   lazy: false,
+  errorClass: '',
 }
 
 const classPrefix = 'nut-image'
@@ -39,6 +40,7 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
     loading,
     lazy,
     draggable,
+    errorClass,
     onClick,
     onLoad,
     onError,
@@ -186,7 +188,9 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
       {lazy ? (
         <img
           ref={imgRef}
-          className={`${classPrefix}-default lazyload`}
+          className={classNames(`${classPrefix}-default`, 'lazyload', {
+            [`${errorClass}`]: isError,
+          })}
           style={imgStyle}
           data-src={src}
           alt={alt}
@@ -198,7 +202,9 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
       ) : (
         <img
           ref={imgRef}
-          className={`${classPrefix}-default`}
+          className={classNames(`${classPrefix}-default`, {
+            [`${errorClass}`]: isError,
+          })}
           style={imgStyle}
           src={src}
           alt={alt}

@@ -95,6 +95,7 @@ import { Image } from '@nutui/nutui-react-taro'
 | height | 高度，默认单位`px` | `string \| number` | `-` |
 | radius | 圆角大小 | `string \| number` | `-` |
 | error | 是否展示图片加载失败 | `boolean \| ReactNode` | `true` |
+| errorClass | 自定义错误状态的类名 | `string` | '' |
 | loading | 是否展示加载中图片 | `boolean \| ReactNode` | `true` |
 | onLoad | 图片加载完后触发 | `() => void` | `-` |
 | onError | 图片加载失败后触发 | `() => void` | `-` |
