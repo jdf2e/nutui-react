@@ -6,7 +6,7 @@ export interface BaseOverlay extends BaseProps {
   visible: boolean
   lockScroll: boolean
   closeOnOverlayClick: boolean
-
+  animated: boolean
   afterShow: () => void
   afterClose: () => void
   onClick: (event: any) => void

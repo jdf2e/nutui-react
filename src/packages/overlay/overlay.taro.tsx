@@ -13,6 +13,7 @@ export const defaultOverlayProps: TaroOverlayProps = {
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
+  animated: true,
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},
@@ -30,6 +31,7 @@ export const Overlay: FunctionComponent<
     visible,
     lockScroll,
     style,
+    animated,
     afterShow,
     afterClose,
     onClick,
@@ -70,17 +72,29 @@ export const Overlay: FunctionComponent<
   )
 
   return (
-    <CSSTransition
-      nodeRef={nodeRef}
-      classNames={`${classPrefix}-slide`}
-      unmountOnExit
-      timeout={duration}
-      in={innerVisible}
-      onEntered={afterShow}
-      onExited={afterClose}
-    >
-      {renderOverlay()}
-    </CSSTransition>
+    <>
+      {animated ? (
+        <CSSTransition
+          nodeRef={nodeRef}
+          classNames={`${classPrefix}-slide`}
+          unmountOnExit
+          timeout={duration}
+          in={innerVisible}
+          onEntered={afterShow}
+          onExited={afterClose}
+        >
+          {renderOverlay()}
+        </CSSTransition>
+      ) : (
+        <View
+          ref={nodeRef}
+          className={`${classPrefix}-slide`}
+          style={{ visibility: innerVisible ? 'visible' : 'hidden' }}
+        >
+          {renderOverlay()}
+        </View>
+      )}
+    </>
   )
 }
 

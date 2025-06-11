@@ -18,6 +18,7 @@ export const defaultOverlayProps: WebOverlayProps = {
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
+  animated: true,
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},

@@ -65,6 +65,7 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    animated,
     onOpen,
     onClose,
     onOverlayClick,
@@ -200,18 +201,30 @@ export const Popup: FunctionComponent<
   }
   const renderPop = () => {
     return (
-      <CSSTransition
-        nodeRef={refObject}
-        classNames={transitionName}
-        mountOnEnter
-        unmountOnExit={destroyOnClose}
-        timeout={duration}
-        in={innerVisible}
-        onEntered={afterShow}
-        onExited={afterClose}
-      >
-        {renderContent()}
-      </CSSTransition>
+      <>
+        {animated ? (
+          <CSSTransition
+            nodeRef={refObject}
+            classNames={transitionName}
+            mountOnEnter
+            unmountOnExit={destroyOnClose}
+            timeout={duration}
+            in={innerVisible}
+            onEntered={afterShow}
+            onExited={afterClose}
+          >
+            {renderContent()}
+          </CSSTransition>
+        ) : (
+          <View
+            ref={refObject}
+            className={transitionName}
+            style={{ visibility: innerVisible ? 'visible' : 'hidden' }}
+          >
+            {renderContent()}
+          </View>
+        )}
+      </>
     )
   }
 
@@ -221,6 +234,7 @@ export const Popup: FunctionComponent<
         {overlay ? (
           <Overlay
             zIndex={index}
+            animated={animated}
             style={overlayStyles}
             className={overlayClassName}
             visible={innerVisible}
