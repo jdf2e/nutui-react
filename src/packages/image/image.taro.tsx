@@ -59,7 +59,6 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
   }
 
   const containerStyle = {
-    ...(style as CSSProperties),
     ...(height ? { height: pxCheck(height) } : {}),
     ...(width ? { width: pxCheck(width) } : {}),
     ...(radius !== undefined && radius !== null
@@ -68,6 +67,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
           borderRadius: pxCheck(radius),
         }
       : {}),
+    ...(style as CSSProperties),
   }
 
   const imgStyle: any = {
