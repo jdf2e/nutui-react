@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { useSpring, animated } from '@react-spring/web'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -45,7 +44,7 @@ export const Overlay: FunctionComponent<
     setInnerVisible(visible)
   }, [visible])
 
-  const classes = classNames(classPrefix, `${classPrefix}-slide`, className)
+  const classes = classNames(classPrefix, className)
   const styles = {
     zIndex,
     ...style,
@@ -57,30 +56,17 @@ export const Overlay: FunctionComponent<
     }
   }
 
-  const springProps = useSpring({
-    opacity: innerVisible ? 1 : 0,
-    config: { duration },
-    onRest: () => {
-      if (innerVisible) {
-        afterShow()
-      } else {
-        afterClose()
-      }
-    },
-  })
-
-  return (
-    innerVisible && (
-      <animated.div
-        ref={nodeRef}
-        className={classes}
-        style={{ ...styles, ...springProps }}
-        {...rest}
-        onClick={handleClick}
-      >
-        {children}
-      </animated.div>
-    )
+  const renderOverlay = () => (
+    <View
+      ref={nodeRef}
+      className={classes}
+      style={styles}
+      {...(rest as any)}
+      catchMove={lockScroll}
+      onClick={handleClick}
+    >
+      {children}
+    </View>
   )
 
   return (
@@ -93,16 +79,7 @@ export const Overlay: FunctionComponent<
       onEntered={afterShow}
       onExited={afterClose}
     >
-      <View
-        ref={nodeRef}
-        className={classes}
-        style={styles}
-        {...(rest as any)}
-        catchMove={lockScroll}
-        onClick={handleClick}
-      >
-        {children}
-      </View>
+      {renderOverlay()}
     </CSSTransition>
   )
 }
