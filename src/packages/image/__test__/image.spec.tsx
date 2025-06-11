@@ -42,3 +42,33 @@ test('image round test', () => {
     'height: 100px; width: 100px; overflow: hidden; border-radius: 50%;'
   )
 })
+test('image success without errorClass', () => {
+  const { container } = render(
+    <Image src={src} width="100" height="100" errorClass="custom-error" />
+  )
+  expect(container.querySelector('.nut-image-default')).not.toHaveClass(
+    'custom-error'
+  )
+  expect(container).toMatchSnapshot()
+})
+
+test('image error with errorClass', () => {
+  const invalidSrc = 'https://xxx'
+  const { container } = render(
+    <Image
+      src={invalidSrc}
+      width="100"
+      height="100"
+      errorClass="custom-error"
+    />
+  )
+
+  setTimeout(() => {
+    expect(container.querySelector('.nut-image-default')).toHaveClass(
+      'custom-error'
+    )
+    expect(container.querySelector('.nut-image-error')).toBeInTheDocument()
+  }, 0)
+
+  expect(container).toMatchSnapshot()
+})
