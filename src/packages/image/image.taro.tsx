@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useCallback,
+  useState,
+} from 'react'
 import Taro from '@tarojs/taro'
 import {
   Image as TImage,
@@ -62,6 +67,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
           borderRadius: pxCheck(radius),
         }
       : {}),
+    ...(style as CSSProperties),
   }
 
   const imgStyle: any = {
