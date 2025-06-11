@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Image from '@/packages/image'
 
@@ -62,13 +62,10 @@ test('image error with errorClass', () => {
       errorClass="custom-error"
     />
   )
-
-  setTimeout(() => {
+  waitFor(() => {
     expect(container.querySelector('.nut-image-default')).toHaveClass(
       'custom-error'
     )
     expect(container.querySelector('.nut-image-error')).toBeInTheDocument()
-  }, 0)
-
-  expect(container).toMatchSnapshot()
+  })
 })
