@@ -141,7 +141,8 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   }
 
   const handleBlur = (event: any) => {
-    const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+    const val =
+      Taro.getEnv() === 'WEB' ? (event.target as any).value : event.detail.value
     updateValue(val, 'onBlur')
     setTimeout(() => setActive(false), 200)
   }
