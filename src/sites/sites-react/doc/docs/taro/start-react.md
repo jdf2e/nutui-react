@@ -116,8 +116,8 @@ import '@nutui/nutui-react-taro/dist/style.css'
 // import '@nutui/nutui-react-taro/dist/style.css'
 // JMAPP 主题
 // import '@nutui/nutui-react-taro/dist/style-jmapp.css'
-// JKRF 主题
-// import '@nutui/nutui-react-taro/dist/style-jkrf.css'
+// JRKF 主题
+// import '@nutui/nutui-react-taro/dist/style-jrkf.css'
 ```
 
 #### 3.1、通过插件实现按需引入
@@ -199,7 +199,7 @@ module.exports = {
     [
       'import',
       {
-        libraryName: '@nutui/nutui-react',
+        libraryName: '@nutui/nutui-react-taro',
         camel2DashComponentName: false,
         customName: (name, file) => {
           return `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}`
@@ -216,11 +216,11 @@ module.exports = {
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jmapp/css`
 
-        // jkrf 端主题
+        // jrkf 端主题
         // 自动加载 scss 样式文件
-        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jkrf`,
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jrkf`,
         // 自动加载 css 样式文件
-        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jkrf/css`
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style-jrkf/css`
       },
       'nutui-react',
     ],
@@ -292,11 +292,13 @@ config = {
 ```js
 // config/index.js
 config = {
-  postcss: {
-    pxtransform: {
-      enable: true,
-      // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-      config: { selectorBlackList: ['nut-'] },
+  h5: {
+    postcss: {
+      pxtransform: {
+        enable: true,
+        // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
+        config: { selectorBlackList: ['nut-'] },
+      },
     },
   },
 }
