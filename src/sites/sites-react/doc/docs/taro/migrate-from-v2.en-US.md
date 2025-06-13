@@ -87,12 +87,11 @@ If your project uses these components, please read the documentation carefully a
 
 - Removed style variable `--nutui-button-default-font-weight`
 
-#### Image
-
 [//]: # '#### Cell'
 [//]: # '#### CellGroup'
 [//]: # '#### ConfigProvider'
 [//]: # '#### Icon'
+[//]: # '#### Image'
 [//]: # '#### Overlay'
 [//]: # '#### Popup'
 

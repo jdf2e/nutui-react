@@ -87,12 +87,11 @@ plugins: [
 
 - 移除样式变量 `--nutui-button-default-font-weight`
 
-#### Image
-
 [//]: # '#### Cell'
 [//]: # '#### CellGroup'
 [//]: # '#### ConfigProvider'
 [//]: # '#### Icon'
+[//]: # '#### Image'
 [//]: # '#### Overlay'
 [//]: # '#### Popup'
 
