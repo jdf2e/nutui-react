@@ -89,8 +89,6 @@ plugins: [
 
 #### Image
 
-- 新增 `errorClass` 属性，自定义错误状态的类名
-
 [//]: # '#### Cell'
 [//]: # '#### CellGroup'
 [//]: # '#### ConfigProvider'

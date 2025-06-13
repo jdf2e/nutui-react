@@ -104,7 +104,6 @@ import { Image } from '@nutui/nutui-react'
 | height | 高度，默認單位`px` | `string \| number` | `-` |
 | radius | 圓角大小 | `string` \| `number` | `-` |
 | error | 是否展示圖片加載失敗 | `boolean \| ReactNode` | `true` |
-| errorClass | 自定義錯誤狀態的類名 | `string` | '' |
 | loading | 是否展示加載中圖片 | `boolean \| ReactNode` | `true` |
 | lazy | 是否為懶加載圖片 | `boolean` | `false` |
 | onClick | 點擊圖片時觸發 | `(e: MouseEvent) => void` | `-` |

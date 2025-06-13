@@ -20,7 +20,6 @@ const defaultProps = {
   src: '',
   error: true,
   loading: true,
-  errorClass: '',
 } as TaroImageProps
 
 export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
@@ -36,7 +35,6 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     loading,
     onLoad,
     onError,
-    errorClass,
     ...rest
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
@@ -124,7 +122,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
           `${classPrefix}-default`,
           className && `${className}-image`,
           {
-            [`${errorClass}`]: isError,
+            [`${classPrefix}-error`]: isError,
           }
         )}
         style={imgStyle}

@@ -89,8 +89,6 @@ If your project uses these components, please read the documentation carefully a
 
 #### Image
 
-- add props `errorClass`, support custom error state class name.
-
 [//]: # '#### Cell'
 [//]: # '#### CellGroup'
 [//]: # '#### ConfigProvider'
