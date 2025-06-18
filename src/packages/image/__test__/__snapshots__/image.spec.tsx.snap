@@ -1,6 +1,70 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`image error with errorClass 1`] = `
+<div>
+  <div
+    class="nut-image"
+    style="height: 100px; width: 100px;"
+  >
+    <img
+      alt=""
+      class="nut-image-default"
+      src="https://xxx"
+      style="object-fit: fill; object-position: center;"
+    />
+    <div
+      class="nut-image-loading"
+    >
+      <svg
+        aria-labelledby="Image"
+        class="nut-icon nut-icon-Image "
+        role="presentation"
+        viewBox="0 0 49 48"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M48 18.85V36a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V8a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v10.153c.054.226.056.465 0 .696M8 3a5 5 0 0 0-5 5V24.49A16.536 16.536 0 0 1 7 24c3.45 0 6.655 1.06 9.303 2.87C19.627 19.295 27.193 14 36 14c3.212 0 6.26.705 9 1.97V8a5 5 0 0 0-5-5zm2 9a2 2 0 1 1 4 0 2 2 0 0 1-4 0M3 27.602V36a5 5 0 0 0 5 5h32a5 5 0 0 0 5-5V19.333A18.412 18.412 0 0 0 36 17c-8.124 0-15.028 5.237-17.513 12.524a1.499 1.499 0 0 1-2.486.914A13.444 13.444 0 0 0 7 27c-1.395 0-2.738.211-4 .602"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`image props test 1`] = `
+<div>
+  <div
+    class="nut-image"
+    style="height: 100px; width: 100px;"
+  >
+    <img
+      alt=""
+      class="nut-image-default"
+      src="https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg"
+      style="object-fit: fill; object-position: center;"
+    />
+    <div
+      class="nut-image-loading"
+    >
+      <svg
+        aria-labelledby="Image"
+        class="nut-icon nut-icon-Image "
+        role="presentation"
+        viewBox="0 0 49 48"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M48 18.85V36a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V8a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v10.153c.054.226.056.465 0 .696M8 3a5 5 0 0 0-5 5V24.49A16.536 16.536 0 0 1 7 24c3.45 0 6.655 1.06 9.303 2.87C19.627 19.295 27.193 14 36 14c3.212 0 6.26.705 9 1.97V8a5 5 0 0 0-5-5zm2 9a2 2 0 1 1 4 0 2 2 0 0 1-4 0M3 27.602V36a5 5 0 0 0 5 5h32a5 5 0 0 0 5-5V19.333A18.412 18.412 0 0 0 36 17c-8.124 0-15.028 5.237-17.513 12.524a1.499 1.499 0 0 1-2.486.914A13.444 13.444 0 0 0 7 27c-1.395 0-2.738.211-4 .602"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`image success without errorClass 1`] = `
 <div>
   <div
     class="nut-image"

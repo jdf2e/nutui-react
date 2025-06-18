@@ -73,7 +73,7 @@ export const generateDatePickerRanges = (
   startDate: Date,
   endDate: Date
 ) => {
-  const selected = new Date(selectedDate)
+  const selected = selectedDate ? new Date(selectedDate) : new Date(startDate)
   if (!selected) return []
 
   // 获取最大和最小边界值
