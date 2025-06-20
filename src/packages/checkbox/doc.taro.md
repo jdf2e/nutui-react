@@ -147,7 +147,7 @@ import { Checkbox } from '@nutui/nutui-react-taro'
 | icon | 选中前 | `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
 | indeterminateIcon | 半选状态 | `ReactNode` | `'CheckDisabled'` |
-| label | 复选框的文本内容 | `string` | `-` |
+| label | 复选框的文本内容 | `ReactNode` | `-` |
 | value | 标识值，用于 Group 模式 | `string` \| `number` | `-` |
 | shape | 形状 | `button` \| `round` | `round` |
 | onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
