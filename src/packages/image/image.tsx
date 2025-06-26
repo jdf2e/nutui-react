@@ -183,30 +183,18 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
         imageClick(e)
       }}
     >
-      {lazy ? (
-        <img
-          ref={imgRef}
-          className={`${classPrefix}-default lazyload`}
-          style={imgStyle}
-          data-src={src}
-          alt={alt}
-          loading="lazy"
-          onLoad={handleLoad}
-          onError={handleError}
-          draggable={draggable}
-        />
-      ) : (
-        <img
-          ref={imgRef}
-          className={`${classPrefix}-default`}
-          style={imgStyle}
-          src={src}
-          alt={alt}
-          onLoad={handleLoad}
-          onError={handleError}
-          draggable={draggable}
-        />
-      )}
+      <img
+        ref={imgRef}
+        className={classNames(`${classPrefix}-default`, lazy && 'lazyload', {
+          [`${classPrefix}-error`]: isError,
+        })}
+        style={imgStyle}
+        {...(lazy ? { 'data-src': src, loading: 'lazy' } : { src })}
+        alt={alt}
+        onLoad={handleLoad}
+        onError={handleError}
+        draggable={draggable}
+      />
       {renderLoading()}
       {renderErrorImg()}
     </div>

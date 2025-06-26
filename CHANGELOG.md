@@ -1,3 +1,19 @@
+# v3.0.14
+
+`2025-06-13`
+
+- 🏡 chore(site): adjust online debugging visibility (#3257)
+- :sparkles: feat(image): support custom error state class name (#3263)
+- :bug: fix: docs (#3268)
+- :bug: fix(datepicker): 解决未传默认值时限制时间边界不准确问题 (#3265)
+- :bug: fix(input): handleBlur callback value is undefined in mini-programs (#3266)
+- :bug: fix(image): 修复内联样式不生效 (#3254)
+- :bug: fix(switch): 移除重复的onchange回调 (#3259)
+- :bug: fix(tabs): correct tabpane-background-color css variables (#3255)
+- :bug: fix(navbar): 支持background的配置,补充了部分demo (#3258)
+- :bug: fix(configprovider): 调整demo,修复web h5 下引入不一致问题,修复文档 (#3244)
+- :bug: fix(elevator): v15 适配 & 选中值支持受控 (#3210)
+
 # v3.0.13
 
 `2025-05-30`
