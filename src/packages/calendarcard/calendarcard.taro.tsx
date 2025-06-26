@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
@@ -50,7 +50,7 @@ export const CalendarCard = React.forwardRef<
     onPageChange,
     onChange,
   } = { ...defaultProps, ...props }
-
+  const onPageChangeRef = useRef(onPageChange)
   // 当前月份信息
   const [month, setMonth] = useState<CalendarCardMonth>(() => {
     let date = new Date(Date.now())
@@ -134,10 +134,14 @@ export const CalendarCard = React.forwardRef<
   )
 
   useEffect(() => {
+    onPageChangeRef.current = onPageChange
+  }, [onPageChange])
+
+  useEffect(() => {
     const newDays = getDays(month)
     setDays(newDays)
-    onPageChange?.(month)
-  }, [month, getDays, onPageChange, firstDayOfWeek])
+    onPageChangeRef.current?.(month)
+  }, [month, getDays, firstDayOfWeek])
 
   const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     return (
