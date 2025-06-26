@@ -125,7 +125,7 @@ class FormStore {
       [name]: value,
     }
     this.setFieldsValue(store)
-    this.notifyWatch([name])
+    // this.notifyWatch([name])
   }
 
   setCallback = (callback: Callbacks) => {
