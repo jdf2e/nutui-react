@@ -30,7 +30,7 @@
 
   .nut-form-item-labeltxt {
     position: relative;
-    font-size: 12px;
+    font-size: $form-item-label-font-size;
   }
 
   &-body {
