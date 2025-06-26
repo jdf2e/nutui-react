@@ -18,14 +18,20 @@
     word-wrap: break-word;
     text-align: $form-item-label-text-align;
     line-height: unset;
-  }
 
-  &-label-required {
-    color: $form-item-required-color;
-    margin-right: $form-item-required-margin-right;
-    display: block;
-    position: absolute;
-    left: -10px;
+    &-left-required {
+      color: $form-item-required-color;
+      margin-right: $form-item-required-margin-right;
+      position: absolute;
+      left: -10px;
+    }
+
+    &-right-required {
+      color: $form-item-required-color;
+      margin-left: $form-item-required-margin-right;
+      position: absolute;
+      right: -10px;
+    }
   }
 
   .nut-form-item-labeltxt {
@@ -134,13 +140,6 @@
   position: relative;
   padding-left: 12px;
   white-space: nowrap;
-}
-
-.nut-form-item-label-left-required {
-  display: block;
-  line-height: 1.5;
-  position: absolute;
-  left: 0.1em;
 }
 
 .nut-form-item-top {
