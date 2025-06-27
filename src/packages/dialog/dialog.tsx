@@ -196,7 +196,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   const onHandleClickOverlay = (e: MouseEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose()
       closed && onCancel()
     }
   }

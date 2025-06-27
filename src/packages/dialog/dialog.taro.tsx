@@ -206,7 +206,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose()
       closed && onCancel()
     }
   }
