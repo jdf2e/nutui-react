@@ -349,7 +349,6 @@ export type NutCSSVariables =
   | 'nutuiHoverbuttonItemIconColor'
   | 'nutuiHoverbuttonItemIconColorActive'
   | 'nutuiOverlayBgColor'
-  | 'nutuiOverlayZIndex'
   | 'nutuiOverlayContentBgColor'
   | 'nutuiOverlayContentColor'
   | 'nutuiOverlayAnimationDuration'
