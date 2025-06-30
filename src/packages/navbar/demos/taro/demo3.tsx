@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { NavBar, TabPane, Tabs, harmony } from '@nutui/nutui-react-taro'
+import { NavBar, TabPane, Tabs, harmony, Space } from '@nutui/nutui-react-taro'
 import { ArrowLeft, More } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
@@ -9,8 +9,9 @@ const Demo3 = () => {
   const [tab2value, setTab2value] = useState<string | number>('0')
   const marginStyle = harmony() ? { marginRight: 16 } : {}
   return (
-    <>
+    <Space direction="vertical">
       <NavBar
+        style={{ '--nutui-navbar-background': 'transparent' }}
         back={<ArrowLeft />}
         right={
           <>
@@ -33,6 +34,7 @@ const Demo3 = () => {
             }}
             style={{
               '--nutui-tabs-titles-gap': 0,
+              '--nutui-tabs-titles-background-color': 'transparent',
             }}
           >
             <TabPane title="Tab 1"> Tab 1 </TabPane>
@@ -42,6 +44,10 @@ const Demo3 = () => {
         </View>
       </NavBar>
       <NavBar
+        style={{
+          '--nutui-navbar-background': '#ff0f23',
+          '--nutui-navbar-color': '#fff',
+        }}
         back={<ArrowLeft />}
         right={
           <>
@@ -58,7 +64,12 @@ const Demo3 = () => {
       >
         <View>
           <Tabs
-            className="navbar-tabs"
+            style={{
+              '--nutui-tabs-titles-gap': 0,
+              '--nutui-tabs-titles-background-color': 'transparent',
+              '--nutui-tabs-titles-item-color': '#fff',
+              '--nutui-color-title': 'white',
+            }}
             align="left"
             activeType="simple"
             value={tab2value}
@@ -71,7 +82,7 @@ const Demo3 = () => {
           </Tabs>
         </View>
       </NavBar>
-    </>
+    </Space>
   )
 }
 export default Demo3

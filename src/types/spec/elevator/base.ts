@@ -4,18 +4,21 @@ import { SimpleValue } from '../../base/atoms'
 export interface ElevatorItem {
   name: string
   id: SimpleValue
-
   [key: string]: SimpleValue
 }
 
 export type ElevatorFloorKey = string
 export type ElevatorList = {
   list: Array<ElevatorItem>
-} & {
-  [key: ElevatorFloorKey]: string // 只允许其他属性为字符串
+  [key: string]: SimpleValue | Array<ElevatorItem>
 }
 
+export type ElevatorMode = 'horizontal' | 'vertical'
+
 export interface BaseElevator extends BaseProps {
+  defaultValue?: ElevatorItem
+  value?: ElevatorItem
+  mode: ElevatorMode
   height: SimpleValue
   floorKey: ElevatorFloorKey
   list: ElevatorList[]

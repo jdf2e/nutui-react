@@ -8,46 +8,37 @@ import React, {
 import { useGesture } from '@use-gesture/react'
 import { animated } from '@react-spring/web'
 import classNames from 'classnames'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { ElevatorItem, WebElevatorProps, ElevatorList } from '@/types'
+import { usePropsValue } from '@/hooks'
 
-export const elevatorContext = createContext({} as ElevatorData)
+export const elevatorContext = createContext({} as ElevatorItem)
 
-export interface ElevatorProps extends BasicComponent {
-  height: number | string
-  floorKey: string
-  list: any[]
-  sticky: boolean
-  spaceHeight: number
-  titleHeight: number
-  showKeys: boolean
-  onItemClick: (key: string, item: ElevatorData) => void
-  onIndexClick: (key: string) => void
-}
 const defaultProps = {
   ...ComponentDefaults,
+  mode: 'horizontal',
   height: '200px',
   floorKey: 'title',
-  list: [] as any[],
+  list: [] as ElevatorList[],
   sticky: false,
-  spaceHeight: 23,
-  titleHeight: 35,
+  spaceHeight: 18,
   showKeys: true,
-} as ElevatorProps
-interface ElevatorData {
-  name: string
-  id: number | string
-  [key: string]: string | number
-}
+  defaultValue: undefined,
+  value: undefined,
+} as WebElevatorProps
+
 export const Elevator: FunctionComponent<
-  Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<WebElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
   const {
+    value,
+    defaultValue,
+    mode,
     height,
     floorKey,
     list,
     sticky,
     spaceHeight,
-    titleHeight,
     showKeys,
     className,
     style,
@@ -72,10 +63,10 @@ export const Elevator: FunctionComponent<
     y2: 0,
   })
   const [scrollY, setScrollY] = useState(0)
-  const [currentData, setCurrentData] = useState<ElevatorData>(
-    {} as ElevatorData
-  )
-  const [currentKey, setCurrentKey] = useState('')
+  const [currentData, setCurrentData] = usePropsValue<ElevatorItem>({
+    value,
+    defaultValue: defaultValue || ({} as ElevatorItem),
+  })
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
@@ -84,13 +75,13 @@ export const Elevator: FunctionComponent<
     setScrollStart(false)
   }
 
-  const clientHeight = () => {
-    return listview.current ? listview.current.clientHeight : 0
-  }
-
-  const getData = (el: HTMLElement, name: string): string | void => {
+  const getData = (el: HTMLElement, name: string): string => {
     const prefix = 'data-'
-    return el.getAttribute(prefix + name) as string
+    // 检查点击的元素是否直接包含 data-index 属性
+    if (el.hasAttribute('data-index')) {
+      return el.getAttribute(prefix + name) as string
+    }
+    return '-1'
   }
 
   const calculateHeight = () => {
@@ -131,6 +122,10 @@ export const Elevator: FunctionComponent<
     onDragStart: ({ target, offset }) => {
       setScrollStart(true)
       const index = Number(getData(target as HTMLElement, 'index'))
+      if (index < 0) {
+        setScrollStart(false)
+        return
+      }
       touchState.current.y1 = offset[1]
       state.current.anchorIndex = +index
       setCodeIndex((codeIndex) => codeIndex + index)
@@ -148,10 +143,9 @@ export const Elevator: FunctionComponent<
     },
   })
 
-  const handleClickItem = (key: string, item: ElevatorData) => {
+  const handleClickItem = (key: string, item: ElevatorItem) => {
     onItemClick && onItemClick(key, item)
     setCurrentData(item)
-    setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
@@ -200,11 +194,15 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      {sticky && scrollY > 0 ? (
+    <div
+      className={`${classPrefix} ${classPrefix}-${mode} ${className}`}
+      style={style}
+      {...rest}
+    >
+      {mode === 'vertical' && sticky && scrollY > 0 ? (
         <div className={`${classPrefix}-list-fixed`}>
           <span className={`${classPrefix}-list-fixed-title`}>
-            {list[currentIndex][floorKey]}
+            {list[currentIndex] && String(list[currentIndex][floorKey])}
           </span>
         </div>
       ) : null}
@@ -219,15 +217,14 @@ export const Elevator: FunctionComponent<
                 <div className={`${classPrefix}-list-item-code`}>
                   {item[floorKey]}
                 </div>
-                <>
-                  {item.list.map((subitem: ElevatorData) => {
+                <div className={`${classPrefix}-list-item-sublist`}>
+                  {item.list.map((subitem: ElevatorItem) => {
                     return (
                       <div
                         className={classNames({
                           [`${classPrefix}-list-item-name`]: true,
                           [`${classPrefix}-list-item-name-highcolor`]:
-                            currentData.id === subitem.id &&
-                            currentKey === item[floorKey],
+                            currentData.id === subitem.id,
                         })}
                         key={subitem.id}
                         onClick={() => handleClickItem(item[floorKey], subitem)}
@@ -244,7 +241,7 @@ export const Elevator: FunctionComponent<
                       </div>
                     )
                   })}
-                </>
+                </div>
               </div>
             )
           })}
@@ -259,7 +256,7 @@ export const Elevator: FunctionComponent<
                 [`${classPrefix}-code-current-current`]: true,
               })}
             >
-              {list[codeIndex][floorKey]}
+              {list[codeIndex] && String(list[codeIndex][floorKey])}
             </div>
           ) : null}
           <div className={`${classPrefix}-bars`}>
@@ -280,7 +277,7 @@ export const Elevator: FunctionComponent<
                     key={index}
                     onClick={() => handleClickIndex(item[floorKey])}
                   >
-                    {item[floorKey]}
+                    {String(item[floorKey])}
                   </div>
                 )
               })}

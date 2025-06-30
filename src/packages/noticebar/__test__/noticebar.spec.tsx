@@ -253,6 +253,7 @@ test('vertical container height calculation with children', async () => {
         // 验证容器高度应该是 (childCount + 1) * height
         // childCount = 4, height = 50, 所以期望高度是 (4 + 1) * 50 = 250px
         const expectedHeight = `${(horseLamp1.length + 1) * height}px`
+        console.log(wrapElement, 'wrapElement')
         expect(wrapElement).toHaveStyle(`height: ${expectedHeight}`)
       }
     },

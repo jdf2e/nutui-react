@@ -145,7 +145,7 @@ When the value changes, the change event will be fired
 | icon | before selection | `ReactNode` | `'CheckNormal'` |
 | activeIcon | after selection | `ReactNode` | `'Checked'` |
 | indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
-| label | text content of the checkbox | `string` | `-` |
+| label | text content of the checkbox | `ReactNode` | `-` |
 | value | identification value, used in Group mode | `string` \| `number` | `-` |
 | shape | shape | `button` \| `round` | `round` |
 | onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |

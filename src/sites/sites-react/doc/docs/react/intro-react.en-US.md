@@ -12,7 +12,7 @@ The NutUI-React component library is suitable for H5 applications of the React t
 - 💪 Support for server-side rendering (Next.js)
 - 🍭 Support custom themes
 - 🌍 Internationalization support
-- 🍭 Unit test coverage exceeds 80% to ensure stability
+- 🍭 Unit test coverage exceeds 85% to ensure stability
 - 📖 Sketch design resources are available
 
 ## Examples

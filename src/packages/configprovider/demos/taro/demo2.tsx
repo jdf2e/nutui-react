@@ -1,5 +1,5 @@
 import React from 'react'
-import { ConfigProvider, TextArea, Cell } from '@nutui/nutui-react-taro'
+import { ConfigProvider, Pagination, Cell } from '@nutui/nutui-react-taro'
 import enUS from '@nutui/nutui-react-taro/dist/es/locales/en-US'
 
 const Demo = () => {
@@ -7,12 +7,12 @@ const Demo = () => {
     <>
       <ConfigProvider>
         <Cell>
-          <TextArea disabled showCount maxLength={20} />
+          <Pagination total={20} pageSize={5} />
         </Cell>
       </ConfigProvider>
       <ConfigProvider locale={enUS}>
         <Cell>
-          <TextArea disabled showCount maxLength={20} />
+          <Pagination total={20} pageSize={5} />
         </Cell>
       </ConfigProvider>
     </>

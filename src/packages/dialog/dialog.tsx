@@ -90,8 +90,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     ) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
-      if (!beforeClose?.()) return
-      onClose()
       onCancel()
     }
 
@@ -179,11 +177,9 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
 
   const renderCloseIcon = () => {
     if (!closeIcon) return null
-    const handleCancel = () => {
-      if (!beforeCancel?.()) return
+    const handleClose = () => {
       if (!beforeClose?.()) return
       onClose()
-      onCancel()
     }
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
@@ -191,7 +187,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <div className={closeClasses} onClick={handleCancel}>
+      <div className={closeClasses} onClick={handleClose}>
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
     )
@@ -200,7 +196,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   const onHandleClickOverlay = (e: MouseEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose()
       closed && onCancel()
     }
   }

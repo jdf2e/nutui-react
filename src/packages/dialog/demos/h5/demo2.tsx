@@ -10,7 +10,9 @@ const Demo2 = () => {
         title="基础弹框"
         visible={visible}
         onConfirm={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
+        onCancel={() => {
+          setVisible(false)
+        }}
       >
         支持函数调用和组件调用两种方式。
       </Dialog>

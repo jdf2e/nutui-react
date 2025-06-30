@@ -27,7 +27,7 @@
       "@/*": [
         "src/*"
       ],
-      "@nutui/nutui-react/dist/es/locale/en-US": [
+      "@nutui/nutui-react/dist/es/locales/en-US": [
         "src/locales/en-US.ts"
       ],
       "@nutui/nutui-react-taro/dist/es/locales/en-US": [

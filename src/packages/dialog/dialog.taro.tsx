@@ -101,8 +101,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     const handleCancel = (e: ITouchEvent | MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
-      if (!beforeClose?.()) return
-      onClose()
       onCancel()
     }
 
@@ -189,11 +187,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
 
   const renderCloseIcon = () => {
     if (!closeIcon) return null
-    const handleCancel = () => {
-      if (!beforeCancel?.()) return
+    const handleClose = () => {
       if (!beforeClose?.()) return
       onClose()
-      onCancel()
     }
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
@@ -201,7 +197,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <View className={closeClasses} onClick={handleCancel}>
+      <View className={closeClasses} onClick={handleClose}>
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </View>
     )
@@ -210,7 +206,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
-      closed && onClose()
       closed && onCancel()
     }
   }

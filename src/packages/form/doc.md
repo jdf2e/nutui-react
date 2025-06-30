@@ -152,7 +152,7 @@ import { Form } from '@nutui/nutui-react'
 | \--nutui-form-item-error-line-color | 错误信息边框颜色 | `$color-primary` |
 | \--nutui-form-item-required-color | 必选标识的字体颜色 | `$color-primary` |
 | \--nutui-form-item-error-message-color | 错误信息的文本颜色 | `$color-primary` |
-| \--nutui-form-item-label-font-size | label 字号 | `14px` |
+| \--nutui-form-item-label-font-size | label 字号 | `12px` |
 | \--nutui-form-item-label-width | label 宽度 | `90px` |
 | \--nutui-form-item-label-margin-right | label 右外边距 | `10px` |
 | \--nutui-form-item-label-text-align | label 文本对齐方式 | `left` |

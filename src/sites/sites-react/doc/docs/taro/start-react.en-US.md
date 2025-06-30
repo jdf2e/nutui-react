@@ -109,8 +109,8 @@ You can choose to import style files in full:
 // import '@nutui/nutui-react-taro/dist/style.css'
 // B
 // import '@nutui/nutui-react-taro/dist/style-jmapp.css'
-// JKRF
-// import '@nutui/nutui-react-taro/dist/style-jkrf.css'
+// jrkf
+// import '@nutui/nutui-react-taro/dist/style-jrkf.css'
 ```
 
 You can also implement on-demand import of styles in the following ways:
