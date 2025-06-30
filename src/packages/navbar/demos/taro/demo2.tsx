@@ -27,92 +27,83 @@ const Demo2 = () => {
   return (
     <>
       <Space direction="vertical">
-        <View style={{ background: '#fff' }}>
-          <NavBar
-            back={
-              <>
-                <ArrowLeft style={harmony() ? { marginRight: 16 } : {}} />
-                返回
-              </>
-            }
-            right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
-            onBackClick={(e) => Taro.showToast({ title: '返回' })}
+        <NavBar
+          back={
+            <>
+              <ArrowLeft style={harmony() ? { marginRight: 16 } : {}} />
+              返回
+            </>
+          }
+          right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
+          onBackClick={(e) => Taro.showToast({ title: '返回' })}
+        >
+          <View
+            style={styles.title}
+            onClick={(e) => Taro.showToast({ title: '页面标题' })}
           >
+            页面标题
+          </View>
+        </NavBar>
+
+        <NavBar
+          right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
+          onBackClick={(e) => Taro.showToast({ title: '返回' })}
+        >
+          <View
+            style={styles.title}
+            onClick={(e) => Taro.showToast({ title: '页面标题' })}
+          >
+            页面标题
+          </View>
+        </NavBar>
+        <NavBar
+          right={
+            <View onClick={(e) => Taro.showToast({ title: '清空' })}>清空</View>
+          }
+          left={<Close style={harmony() ? { marginLeft: 16 } : {}} />}
+          back={<ArrowLeft />}
+          onBackClick={(e) => Taro.showToast({ title: '返回' })}
+        >
+          <View>
             <View
-              style={styles.title}
-              onClick={(e) => Taro.showToast({ title: '页面标题' })}
+              style={{
+                ...styles.flexCenter,
+                alignItems: 'flex-start',
+                flexDirection: 'column',
+              }}
             >
-              页面标题
-            </View>
-          </NavBar>
-        </View>
-        <View style={{ background: '#fff' }}>
-          <NavBar
-            right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
-            onBackClick={(e) => Taro.showToast({ title: '返回' })}
-          >
-            <View
-              style={styles.title}
-              onClick={(e) => Taro.showToast({ title: '页面标题' })}
-            >
-              页面标题
-            </View>
-          </NavBar>
-        </View>
-        <View style={{ background: '#fff' }}>
-          <NavBar
-            right={
-              <View onClick={(e) => Taro.showToast({ title: '清空' })}>
-                清空
-              </View>
-            }
-            left={<Close style={harmony() ? { marginLeft: 16 } : {}} />}
-            back={<ArrowLeft />}
-            onBackClick={(e) => Taro.showToast({ title: '返回' })}
-          >
-            <View>
               <View
-                style={{
-                  ...styles.flexCenter,
-                  alignItems: 'flex-start',
-                  flexDirection: 'column',
-                }}
+                style={styles.title}
+                onClick={(e) => Taro.showToast({ title: '标题' })}
               >
-                <View
-                  style={styles.title}
-                  onClick={(e) => Taro.showToast({ title: '标题' })}
-                >
-                  页面标题
-                </View>
-                <View style={styles.description}>副标题</View>
+                页面标题
               </View>
+              <View style={styles.description}>副标题</View>
             </View>
-          </NavBar>
-        </View>
-        <View style={{ background: '#fff' }}>
-          <NavBar
-            back={<ArrowLeft />}
-            right={
-              <>
-                <View
-                  style={harmony() ? { marginRight: 16 } : {}}
-                  onClick={(e) => Taro.showToast({ title: '编辑' })}
-                >
-                  编辑
-                </View>
-                <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-              </>
-            }
-            onBackClick={(e) => Taro.showToast({ title: '返回' })}
+          </View>
+        </NavBar>
+        <NavBar
+          back={<ArrowLeft />}
+          right={
+            <>
+              <View
+                style={harmony() ? { marginRight: 16 } : {}}
+                onClick={(e) => Taro.showToast({ title: '编辑' })}
+              >
+                编辑
+              </View>
+              <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            </>
+          }
+          onBackClick={(e) => Taro.showToast({ title: '返回' })}
+        >
+          <View
+            style={styles.title}
+            onClick={(e) => Taro.showToast({ title: '页面标题' })}
           >
-            <View
-              style={styles.title}
-              onClick={(e) => Taro.showToast({ title: '页面标题' })}
-            >
-              页面标题
-            </View>
-          </NavBar>
-        </View>
+            页面标题
+          </View>
+        </NavBar>
       </Space>
     </>
   )

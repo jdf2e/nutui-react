@@ -286,6 +286,7 @@
       color: $button-success-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-success-disabled;
       border-color: $button-success-disabled;
@@ -320,6 +321,7 @@
       color: $button-info-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-info-disabled;
       border-color: $button-info-disabled;
@@ -354,6 +356,7 @@
       color: $button-danger-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-danger-disabled;
       border-color: $button-danger-disabled;

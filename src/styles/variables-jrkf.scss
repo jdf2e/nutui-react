@@ -2084,8 +2084,8 @@ $tabs-titles-item-smile-bottom: var(
   -10px
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
-$tabs-tabpane-backgroundColor: var(
-  --nutui-tabs-tabpane-backgroundColor,
+$tabs-tabpane-background-color: var(
+  --nutui-tabs-tabpane-background-color,
   #fff
 ) !default;
 // indicator（✅）
@@ -2528,6 +2528,18 @@ $elevator-list-item-code-current-top: var(
 $elevator-list-item-code-current-text-align: var(
   --nutui-elevator-list-item-code-current-text-align,
   center
+) !default;
+$elevator-list-item-code-width: var(
+  --nutui-elevator-list-item-code-width,
+  34px
+) !default;
+$elevator-bars-color: var(
+  --nutui-elevator-bars-color,
+  $color-text-help
+) !default;
+$elevator-list-item-code-current-color: var(
+  --nutui-elevator-list-item-code-current-color,
+  $white
 ) !default;
 $elevator-bars-right: var(--nutui-elevator-bars-right, 10px) !default;
 $elevator-bars-top: var(--nutui-elevator-bars-top, 50%) !default;

@@ -24,6 +24,7 @@ export type CalendarCardRef = {
 export interface BaseCalendarCard extends BaseProps {
   // 日视图-选择一个日期 | 日视图-选择多个日期 | 日视图-选择范围 | 周视图-选择某一周
   type: 'single' | 'multiple' | 'range' | 'week'
+  title: ReactNode
   value: CalendarCardValue
   defaultValue: CalendarCardValue
   firstDayOfWeek: number // 0-6

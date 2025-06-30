@@ -35,25 +35,15 @@ const ElevatorDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo1 />
-        </div>
+        <Demo1 />
         <h2>{translated.customIndex}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo2 />
-        </div>
+        <Demo2 />
         <h2>{translated.showKeys}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo3 />
-        </div>
+        <Demo3 />
         <h2>{translated.sticky}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo4 />
-        </div>
+        <Demo4 />
         <h2>{translated.customContent}</h2>
-        <div style={{ background: 'white' }}>
-          <Demo5 />
-        </div>
+        <Demo5 />
       </div>
     </>
   )

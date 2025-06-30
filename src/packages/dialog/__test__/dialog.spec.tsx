@@ -4,9 +4,9 @@ import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
 test('show dialog base info display ', async () => {
-  const onClose = vi.fn()
+  const onCancel = vi.fn()
   const { container } = render(
-    <Dialog title="title" data-testid="test" visible onClose={onClose}>
+    <Dialog title="title" data-testid="test" visible onCancel={onCancel}>
       <div>content</div>
     </Dialog>
   )
@@ -28,7 +28,7 @@ test('show dialog base info display ', async () => {
 
   expect(wrapEle).toBeNull()
   fireEvent.click(footerCancelEle)
-  expect(onClose).toBeCalled()
+  expect(onCancel).toBeCalled()
 })
 
 test('show dialog custom footer-direction ', async () => {
@@ -116,7 +116,6 @@ test('dialog close icon  position adjustment', async () => {
   expect(closeBtn).toBeInTheDocument()
   fireEvent.click(closeBtn)
   expect(onClose).toBeCalled()
-  expect(onCancel).toBeCalled()
 })
 
 test('should display loading when onConfirm returns a promise', async () => {

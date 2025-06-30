@@ -112,7 +112,13 @@ plugins: [
 
 ### 导航组件
 
-[//]: # '#### Elevator'
+#### Elevator
+
+- 新增 `mode` 属性，可选值 `'horizontal'` 或 `'vertical'`，默认 `horizontal`
+- 移除 `titleHeight` 属性， 代码中未使用。
+- 新增 `defaultValue` 属性，默认选中的值
+- 新增 `value` 属性，当前选中的值，受控
+
 [//]: # '#### FixedNav'
 
 #### Indicator
