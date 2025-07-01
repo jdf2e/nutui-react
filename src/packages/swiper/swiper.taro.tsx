@@ -137,8 +137,8 @@ export const Swiper = React.forwardRef(
         >
           <TaroSwiper
             current={innerValue}
-            // circular={loop}
-            autoplay={false}
+            circular={loop}
+            autoplay={autoplay || autoPlay}
             vertical={direction === 'vertical' || vertical}
             indicatorDots={false}
             onChange={(e) => {
