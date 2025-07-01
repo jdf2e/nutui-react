@@ -30,9 +30,9 @@ const defaultProps = {
   renderDayTop: undefined,
   renderDayBottom: undefined,
   onClose: () => {},
-  onConfirm: (param: string) => {},
-  onDayClick: (data: string) => {},
-  onPageChange: (param: string) => {},
+  onConfirm: () => {},
+  onDayClick: () => {},
+  onPageChange: () => {},
 } as TaroCalendarProps
 
 export const Calendar = React.forwardRef<
@@ -87,7 +87,7 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     onDayClick && onDayClick(param)
   }
 
