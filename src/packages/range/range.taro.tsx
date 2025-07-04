@@ -2,13 +2,14 @@ import React, {
   FunctionComponent,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
-import { useReady, nextTick } from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
@@ -286,7 +287,7 @@ export const Range: FunctionComponent<
     [innerValue, disabled, isRange, min, scope, updateValue, vertical]
   )
 
-  useReady(() => {
+  useLayoutEffect(() => {
     const getRootRect = async () => {
       if (root.current) {
         const rect = await getRectInMultiPlatform(root.current)
@@ -296,7 +297,7 @@ export const Range: FunctionComponent<
     nextTick(() => {
       getRootRect()
     })
-  })
+  }, [])
 
   const onTouchStart = useCallback(
     (event: any) => {
