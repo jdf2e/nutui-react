@@ -9,7 +9,6 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
-import { nextTick } from '@tarojs/taro'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useTouch } from '@/hooks/use-touch'
 import { ComponentDefaults } from '@/utils/typings'
@@ -288,15 +287,11 @@ export const Range: FunctionComponent<
   )
 
   useLayoutEffect(() => {
-    const getRootRect = async () => {
-      if (root.current) {
-        const rect = await getRectInMultiPlatform(root.current)
+    if (root.current) {
+      getRectInMultiPlatform(root.current).then((rect) => {
         rootRect.current = rect
-      }
+      })
     }
-    nextTick(() => {
-      getRootRect()
-    })
   }, [])
 
   const onTouchStart = useCallback(
