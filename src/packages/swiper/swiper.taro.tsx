@@ -1,4 +1,10 @@
-import React, { Children, useImperativeHandle, useMemo, useState } from 'react'
+import React, {
+  Children,
+  useImperativeHandle,
+  useMemo,
+  useState,
+  useEffect,
+} from 'react'
 import {
   Swiper as TaroSwiper,
   SwiperItem as TSwiperItem,
@@ -47,6 +53,7 @@ export const Swiper = React.forwardRef(
       ...defaultProps,
       ...props,
     }
+
     const [innerValue, setInnerValue] = useState(current || defaultValue)
     const childrenCount = useMemo(() => {
       let c = 0
@@ -55,6 +62,11 @@ export const Swiper = React.forwardRef(
       })
       return c
     }, [children])
+
+    useEffect(() => {
+      setInnerValue(current || defaultValue)
+    }, [defaultValue, current])
+
     const renderIndicator = () => {
       if (React.isValidElement(indicator)) return indicator
       if (indicator || indicatorDots) {
@@ -76,11 +88,13 @@ export const Swiper = React.forwardRef(
       }
       return null
     }
+
     const handleOnChange: CommonEventFunction<
       TSwiperProps.onChangeEventDetail
     > = (value) => {
       setInnerValue(value.detail.current)
     }
+
     useImperativeHandle(ref, () => ({
       to: (value: number) => {
         setInnerValue(value)
@@ -104,6 +118,7 @@ export const Swiper = React.forwardRef(
         }
       },
     }))
+
     return (
       <View
         className={classNames(classPrefix, className)}

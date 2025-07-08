@@ -61,7 +61,7 @@ export interface CalendarItemProps extends PopupProps {
   renderDayBottom: (date: CalendarDay) => string | JSX.Element
   onConfirm: (data: string) => void
   onUpdate: () => void
-  onDayClick: (data: string) => void
+  onDayClick: (data: string[]) => void
   onPageChange: (data: any) => void
 }
 const defaultProps = {
@@ -85,10 +85,10 @@ const defaultProps = {
   renderDay: undefined,
   renderDayTop: undefined,
   renderDayBottom: undefined,
-  onConfirm: (data: string) => {},
+  onConfirm: () => {},
   onUpdate: () => {},
-  onDayClick: (data: string) => {},
-  onPageChange: (data: any) => {},
+  onDayClick: () => {},
+  onPageChange: () => {},
 } as unknown as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
