@@ -285,7 +285,7 @@ export const CalendarItem = React.forwardRef<
     if (yearNum > 0) {
       monthNum += 12 * yearNum
     }
-    if (monthNum <= 0) {
+    if (monthNum < 0) {
       monthNum = 1
     }
     setMonthsNum(monthNum)
