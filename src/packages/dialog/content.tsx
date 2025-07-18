@@ -59,7 +59,6 @@ export const Content: FunctionComponent<
       style={style}
       onClick={handleClick}
     >
-      {close}
       {header}
       <div
         className={classPrefix}
@@ -68,6 +67,7 @@ export const Content: FunctionComponent<
         {renderHeader()}
         <div className={`${classPrefix}-content`}>{children}</div>
         {renderFooter()}
+        {close}
       </div>
     </div>
   )

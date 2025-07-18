@@ -2,12 +2,7 @@
   position: relative;
   display: flex;
   display: inline-block;
-  /* #ifdef harmony dynamic*/
-  width: 80px;
-  /* #endif */
-  /* #ifndef harmony dynamic*/
   width: auto;
-  /* #endif */
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -15,19 +10,30 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: $button-default-height;
-  font-size: $button-default-font-size;
-  font-weight: $font-weight;
   text-align: center;
   cursor: pointer;
-  transition: $button-transition;
   user-select: none;
   touch-action: manipulation;
   -webkit-appearance: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* #ifndef harmony dynamic*/
+  height: $button-default-height;
+  font-size: $button-default-font-size;
+  font-weight: $font-weight;
+  transition: $button-transition;
   color: $button-default-color;
   background: $button-default-background-color;
   border-width: $button-border-width;
+  /* #endif */
+  /* #ifdef harmony dynamic*/
+  height: 62px;
+  font-size: 28px;
+  font-weight: 400;
+  transition: opacity 0.2s;
+  color: #1a1a1a;
+  background: transparent;
+  border-width: 0.5px;
+  /* #endif */
 
   &-text {
     margin-left: $button-text-icon-margin;
