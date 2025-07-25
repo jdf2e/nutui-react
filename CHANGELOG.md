@@ -1,3 +1,11 @@
+# v3.0.16
+
+`2025-07-04`
+
+- :bug: fix(calendar): 类型修订 (#3292)
+- :bug: fix(swiper): 修改初始值时不生效问题 (#3293)
+- :bug: fix(noticebar): children cannot update responsively in vertical mode (#3251)
+
 # v3.0.15
 
 `2025-06-27`

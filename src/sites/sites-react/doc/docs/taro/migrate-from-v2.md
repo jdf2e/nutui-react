@@ -310,7 +310,7 @@ plugins: [
 
 [//]: # '#### Progress'
 
-# '#### Skeleton'
+#### Skeleton
 
 - 移除 `avatar` 属性，可通过 `width` 和 `height` 属性模拟
 - 移除 `avatarShape` 属性，可通过 `shape` 属性设置

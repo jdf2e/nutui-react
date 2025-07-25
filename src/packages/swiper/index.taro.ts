@@ -5,9 +5,7 @@ import { TaroSwiperProps } from '@/types'
 
 export type { TaroSwiperProps as SwiperProps } from '@/types'
 type CompoundedComponent = React.ForwardRefExoticComponent<
-  Partial<TaroSwiperProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &
-    React.RefAttributes<any>
+  Partial<TaroSwiperProps> & React.RefAttributes<any>
 > & {
   Item: typeof SwiperItem
 }
