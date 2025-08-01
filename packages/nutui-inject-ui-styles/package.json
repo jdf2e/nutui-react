@@ -1,0 +1,44 @@
+{
+    "name": "@nutui/inject-ui-styles",
+    "version": "0.0.1",
+    "description": "",
+    "keywords": [
+        "Taro",
+        "Plugin"
+    ],
+    "author": "",
+    "homepage": "",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "typings": "types/index.d.ts",
+    "files": [
+        "dist",
+        "index.js",
+        "types"
+    ],
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w"
+    },
+    "bugs": {
+        "url": ""
+    },
+    "dependencies": {
+        "@tarojs/service": "^4.0.0",
+        "lodash.kebabcase": "^4.1.1",
+        "tslib": "^2.6.2",
+        "webpack-chain": "^6.5.1"
+    },
+    "devDependencies": {
+        "@types/lodash.kebabcase": "^4.1.9",
+        "@types/node": "^18.13.0",
+        "prettier": "^3.2.5",
+        "rollup": "^2.79.0",
+        "rollup-plugin-ts": "^3.0.2",
+        "typescript": "^5.4.5"
+    }
+}
