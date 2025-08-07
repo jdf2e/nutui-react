@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
@@ -213,26 +212,30 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const renderContent = () => {
     const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
     return (
-      <CSSTransition
-        in={visible}
-        timeout={300}
-        classNames="fadeDialog"
-        unmountOnExit
-        appear
+      // <CSSTransition
+      //   in={visible}
+      //   timeout={300}
+      //   classNames="fadeDialog"
+      //   unmountOnExit
+      //   appear
+      // >
+      <Content
+        className={className}
+        style={{
+          zIndex: contentZIndex,
+          ...style,
+          display: visible ? 'block' : 'none',
+        }}
+        title={title}
+        header={header}
+        close={renderCloseIcon()}
+        footer={renderFooter()}
+        footerDirection={footerDirection}
+        visible={visible}
       >
-        <Content
-          className={className}
-          style={{ zIndex: contentZIndex, ...style }}
-          title={title}
-          header={header}
-          close={renderCloseIcon()}
-          footer={renderFooter()}
-          footerDirection={footerDirection}
-          visible={visible}
-        >
-          {content || children}
-        </Content>
-      </CSSTransition>
+        {content || children}
+      </Content>
+      // </CSSTransition>
     )
   }
 
