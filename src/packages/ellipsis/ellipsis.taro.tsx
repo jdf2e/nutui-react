@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { getRectInMultiPlatform, getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import { TaroEllipsisProps } from '@/types'
@@ -195,7 +195,7 @@ export const Ellipsis: FunctionComponent<
 
   // 验证省略号
   const verifyEllipsis = async () => {
-    const refe = await getRectInMultiPlatform(rootContain.current)
+    const refe = await getRectInMultiPlatformWithoutCache(rootContain.current)
     if (refe && refe.height && refe.height > maxHeight.current) {
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(
