@@ -20,7 +20,7 @@ const defaultProps = {
 export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const {
     color,
-    price,
+    price: originalPrice,
     symbol,
     digits,
     thousands,
@@ -37,6 +37,10 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const classPrefix = 'nut-price'
 
   const rtl = useRtl()
+
+  const price = useMemo(() => {
+    return originalPrice.toString().replace(/[^\d.]/g, '')
+  }, [originalPrice])
 
   const isCustomPriceColor = useMemo(() => {
     const specificPriceColor = Object.values(PriceColorEnum)
