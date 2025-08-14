@@ -82,16 +82,32 @@ import { Price } from '@nutui/nutui-react'
 
 :::
 
+### 自定義顏色
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 數據原樣輸出
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Price
 
 ### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| color | 價格類型 | `primary` \| `gray` \| `darkgray` | `primary` |
+| color | 價格類型, 支持自定義顏色 | `primary` \| `gray` \| `darkgray` \| `string` | `primary` |
 | price | 價格數量 | `number` | `0` |
 | symbol | 符號類型 | `string` | `&yen;` |
-| digits | 小數位位數 | `number` | `2` |
+| digits | 小數位位數，傳入`null`數據原樣輸出 | `number` \| `null` | `2` |
 | thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
 | position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
 | size | 價格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
@@ -105,9 +121,9 @@ import { Price } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-price-primary-color | type為primary時文字顏色 | `#ff0f23` |
-| \--nutui-price-color | type為gray時文字顏色 | `#888b94` |
-| \--nutui-price-darkgray-color | type為darkgray時文字顏色 | `#1a1a1a` |
+| \--nutui-price-primary-color | color為primary時文字顏色 | `#ff0f23` |
+| \--nutui-price-color | color為gray時文字顏色 | `#888b94` |
+| \--nutui-price-darkgray-color | color為darkgray時文字顏色 | `#1a1a1a` |
 | \--nutui-price-line-color | 劃線價顏色 | `#888b94` |
 | \--nutui-price-symbol-padding-right | 符號的右內邊距 | `0px` |
 | \--nutui-price-symbol-xlarge-size | xlarge 尺寸符號字體大小 | `12px` |

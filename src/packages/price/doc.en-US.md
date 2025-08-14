@@ -82,19 +82,35 @@ import { Price } from '@nutui/nutui-react'
 
 :::
 
+### Custom color
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### Data original output
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
 ## Price
 
 ### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| color | Price type | `primary` \| `gray` \| `darkgray` | `primary` |
+| color | Price type, supports custom colors | `primary` \| `gray` \| `darkgray` \| `string` | `primary` |
 | price | Price | `number` | `0` |
 | symbol | Symbol type | `string` | `&yen;` |
-| digits | Decimal digits | `number` | `2` |
+| digits | Decimal digits, pass `null` for original data output | `number` \| `null` | `2` |
 | thousands | Thousands separation | `boolean` | `false` |
 | position | The symbol appear before or after the price，`before`、`after` | `string` | `before` |
-| size | Size，`xlarge` \| `large` \| `normal` \| `small` | `string` | `large` |
+| size | Size，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
 | line | Line-through price | `boolean` | `false` |
 
 ## Theming
@@ -105,9 +121,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-price-primary-color | Text color when type is primary | `#ff0f23` |
-| \--nutui-price-color | Text color when type is gray | `#888b94` |
-| \--nutui-price-darkgray-color | Text color when type is darkgray | `#1a1a1a` |
+| \--nutui-price-primary-color | Text color when color is primary | `#ff0f23` |
+| \--nutui-price-color | Text color when color is gray | `#888b94` |
+| \--nutui-price-darkgray-color | Text color when color is darkgray | `#1a1a1a` |
 | \--nutui-price-line-color | Underline price color | `#888b94` |
 | \--nutui-price-symbol-padding-right | Right padding of symbol | `0px` |
 | \--nutui-price-symbol-xlarge-size | xlarge size symbol font size | `12px` |
