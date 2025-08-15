@@ -53,3 +53,24 @@ export const getRectInMultiPlatform = async (
   }
   return Promise.resolve(makeRect(0, 0))
 }
+
+// 获取元素位置，不走缓存
+export const getRectInMultiPlatformWithoutCache = async (
+  element: any,
+  harmonyId = ''
+): Promise<Rect> => {
+  if (element) {
+    if (inBrowser) {
+      return Promise.resolve(getRect(element))
+    }
+    return new Promise((resolve, reject) => {
+      createSelectorQuery()
+        .select(`#${harmonyId || element.uid}`)
+        .boundingClientRect()
+        .exec(([rects]) => {
+          resolve(rects)
+        })
+    })
+  }
+  return Promise.resolve(makeRect(0, 0))
+}
