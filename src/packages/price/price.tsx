@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import { WebPriceProps } from '@/types'
+import { WebPriceProps, PriceColorEnum } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,7 +18,7 @@ const defaultProps = {
 export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const {
     color,
-    price,
+    price: originalPrice,
     symbol,
     digits,
     thousands,
@@ -36,6 +36,23 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const classPrefix = 'nut-price'
 
   const rtl = useRtl()
+
+  const price = useMemo(() => {
+    return originalPrice.toString().replace(/[^\d.]/g, '')
+  }, [originalPrice])
+
+  const isCustomPriceColor = useMemo(() => {
+    const specificPriceColor = Object.values(PriceColorEnum)
+    return !specificPriceColor.includes(color as PriceColorEnum)
+  }, [color])
+
+  const priceColorStyle = useMemo(() => {
+    return isCustomPriceColor
+      ? {
+          color,
+        }
+      : {}
+  }, [isCustomPriceColor, color])
 
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
@@ -62,17 +79,20 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     }
 
     if (checkPoint(decimalNum)) {
-      decimalNum = Number(decimalNum).toFixed(digits)
+      decimalNum = digits ? Number(decimalNum).toFixed(digits) : `${decimalNum}`
       decimalNum =
         typeof decimalNum.split('.') === 'string'
           ? 0
-          : decimalNum.split('.')[1] || 0
+          : decimalNum.split('.')[1] || ''
     } else {
-      decimalNum = 0
+      decimalNum = ''
     }
-    const result = `0.${decimalNum}`
-    const resultFixed = Number(result).toFixed(digits)
-    return String(resultFixed).substring(2, resultFixed.length)
+    if (digits) {
+      const result = `0.${decimalNum}`
+      const resultFixed = Number(result).toFixed(digits)
+      return String(resultFixed).substring(2, resultFixed.length)
+    }
+    return decimalNum
   }
 
   const renderSymbol = () => {
@@ -86,6 +106,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
             [`${classPrefix}-rtl`]: rtl,
           },
         ])}
+        style={priceColorStyle}
         dangerouslySetInnerHTML={{ __html: symbol || '' }}
       />
     )
@@ -93,7 +114,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
 
   return (
     <div
-      className={`${classPrefix} ${classPrefix}-${color} ${className}`}
+      className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
       {...rest}
     >
@@ -102,22 +123,27 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
         className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
           line ? `${classPrefix}-line` : ''
         }`}
+        style={priceColorStyle}
       >
         {formatThousands(price)}
       </div>
-      {digits ? (
+      {digits !== 0 ? (
         <>
+          {checkPoint(price) || digits ? (
+            <div
+              className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+                line ? `${classPrefix}-line` : ''
+              }`}
+              style={priceColorStyle}
+            >
+              .
+            </div>
+          ) : null}
           <div
             className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
               line ? `${classPrefix}-line` : ''
             }`}
-          >
-            .
-          </div>
-          <div
-            className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-              line ? `${classPrefix}-line` : ''
-            }`}
+            style={priceColorStyle}
           >
             {formatDecimal(price)}
           </div>
