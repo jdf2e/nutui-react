@@ -1,3 +1,16 @@
+# v3.0.18
+
+`2025-08-15`
+
+- 🏡 chore: 升级icon库 (#3330)
+- 🏡 chore: 发布taro下的样式按需插件
+- 📖 docs: 更新介绍部分内容 (#3324)
+- :sparkles: feat: Ellipsis校验越界不走缓存配置 (#3329)
+- :sparkles: feat(price): 支持自定义颜色&数据原样输出 (#3328)
+- :sparkles: feat(notify): 支持promise调用notice (#3319)
+- :bug: fix(noticebar): 适配鸿蒙样式修复 (#3332)
+- :bug: Fix icons svg (#3331)
+
 # v3.0.17
 
 `2025-08-01`
