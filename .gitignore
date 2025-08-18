@@ -58,3 +58,6 @@ pnpm-lock.*.yaml
 
 # Harmony CSS files
 src/packages/**/*.harmony.css
+
+# Irrelevant config files
+.joycode
