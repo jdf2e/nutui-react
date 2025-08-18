@@ -141,6 +141,7 @@ export const Swiper = React.forwardRef(
             autoplay={autoplay || autoPlay}
             vertical={direction === 'vertical' || vertical}
             indicatorDots={false}
+            duration={duration || 500}
             onChange={(e) => {
               handleOnChange(e)
               props.onChange?.(e)
