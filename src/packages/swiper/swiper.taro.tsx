@@ -41,7 +41,6 @@ export const Swiper = React.forwardRef(
       circular,
       autoPlay,
       autoplay,
-      duration,
       vertical,
       direction,
       defaultValue,
