@@ -21,8 +21,13 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   destroyOnClose: boolean
   overlay: boolean
   round: boolean
+  resizable: boolean
+  minHeight: string
   onOpen: () => void
   onClose: () => void
   onOverlayClick: (e: any) => boolean | void
   onCloseIconClick: (e: any) => boolean | void
+  onTouchMove: (height: string, e: any, direction: 'up' | 'down') => void
+  onTouchStart: (height: string, e: any) => void
+  onTouchEnd: (height: string, e: any) => void
 }

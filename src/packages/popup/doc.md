@@ -87,19 +87,24 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | 是否显示关闭按钮 | `boolean` | `false` |
 | closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
+| resizable | 上下滑动调整高度 | `boolean` | `false` |
+| minHeight | 设置最小高度 | `string` | `26%` |
 | left | 标题左侧部分 | `ReactNode` | `-` |
 | title | 标题中间部分 | `ReactNode` | `-` |
 | description | 子标题/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否显示圆角 | `boolean` | `false` |
 | portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
+| afterShow | 继承于`Overlay`, 遮罩打开动画结束时触发 | `event: HTMLElement` | `-` |
+| afterClose | 继承于`Overlay`, 遮罩关闭动画结束时触发 | `event: HTMLElement` | `-` |
 | onClick | 点击弹框时触发 | `event: MouseEvent` | `-` |
 | onCloseIconClick | 点击关闭图标时触发 | `event: MouseEvent` | `-` |
 | onOpen | 打开弹框时触发 | `-` | `-` |
 | onClose | 关闭弹框时触发 | `-` | `-` |
-| afterShow | 继承于`Overlay`, 遮罩打开动画结束时触发 | `event: HTMLElement` | `-` |
-| afterClose | 继承于`Overlay`, 遮罩关闭动画结束时触发 | `event: HTMLElement` | `-` |
 | onOverlayClick | 点击遮罩触发 | `event: MouseEvent` | `-` |
+| onTouchStart | 开始触碰时触发 | `(height:string, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | 滑动时触发 | `(height:string, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
+| onTouchEnd | 结束触碰时触发 | `(height:string, event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主题定制
 

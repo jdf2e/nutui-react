@@ -4,17 +4,20 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
+  useRef,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
+import { pxTransform } from '@/utils/taro/px-transform'
 
 const defaultProps: TaroPopupProps = {
   ...defaultOverlayProps,
@@ -29,10 +32,15 @@ const defaultProps: TaroPopupProps = {
   portal: null,
   overlay: true,
   round: false,
+  resizable: false,
+  minHeight: '26%',
   onOpen: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
   onCloseIconClick: () => true,
+  onTouchStart: () => {},
+  onTouchMove: () => {},
+  onTouchEnd: () => {},
 }
 
 // 默认1000，参看variables
@@ -40,7 +48,10 @@ const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<TaroPopupProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onClick' | 'title' | 'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
+    >
 > = (props) => {
   const {
     children,
@@ -65,6 +76,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    resizable,
+    minHeight,
     onOpen,
     onClose,
     onOverlayClick,
@@ -72,21 +85,29 @@ export const Popup: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
   } = { ...defaultProps, ...props }
-
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-  const refObject = useLockScrollTaro(innerVisible && lockScroll)
-  const classPrefix = 'nut-popup'
+  const nodeRef = useLockScrollTaro(innerVisible && lockScroll)
 
+  const rootRect = useRef<any>(null)
+  const touchStartRef = useRef(0)
+  const touchMoveDistanceRef = useRef(0)
+  const heightRef = useRef(0)
+  const isTouching = useRef(false)
+
+  const classPrefix = 'nut-popup'
   const overlayStyles = {
     ...overlayStyle,
   }
   const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
-  const popStyles = { zIndex: contentZIndex, ...style }
+  const popStyles = { zIndex: contentZIndex, minHeight, ...style }
   const popClassName = classNames(
     classPrefix,
     {
@@ -98,6 +119,10 @@ export const Popup: FunctionComponent<
 
   const open = () => {
     if (!innerVisible) {
+      // 当高度改变后，再次打开时，将高度置为初始高度
+      if (resizable && nodeRef.current && heightRef.current) {
+        nodeRef.current.style.height = `${heightRef.current}px`
+      }
       setInnerVisible(true)
       setIndex(++innerIndex)
     }
@@ -182,26 +207,80 @@ export const Popup: FunctionComponent<
     }
   }
 
+  const handleTouchStart = async (event: ITouchEvent) => {
+    if (!resizable || !nodeRef.current) return
+    // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
+    touchStartRef.current = event.touches[0].pageY
+    // 标记开始滑动
+    isTouching.current = true
+    // 标记当前popup的高度
+    const rect = await getRectInMultiPlatform(nodeRef.current)
+    rootRect.current = rect
+    heightRef.current =
+      rootRect.current?.height || nodeRef.current?.offsetHeight || 0
+    // console.log(
+    //   'touchstart',
+    //   touchStartRef.current,
+    //   heightRef.current,
+    //   rootRect.current,
+    //   nodeRef.current?.offsetHeight
+    // )
+    onTouchStart?.(rootRect.current.height, event)
+  }
+
+  const handleTouchMove = (event: ITouchEvent) => {
+    if (!resizable || !nodeRef.current || !rootRect.current) return
+    event.stopPropagation()
+
+    // console.log('向下', rootRect.current.height)
+
+    // move过程中，当前的pageY 与 start值比较
+    touchMoveDistanceRef.current =
+      event.touches[0].pageY - touchStartRef.current
+    // 向下滑动
+    if (touchMoveDistanceRef.current > 0 && isTouching.current) {
+      nodeRef.current.style.height = `${heightRef.current - touchMoveDistanceRef.current}px`
+      onTouchMove?.(nodeRef.current.style.height, event, 'down')
+      // console.log('向下', nodeRef.current.style.height)
+    } else {
+      // 向上滑动
+      nodeRef.current.style.height = pxTransform(
+        heightRef.current - touchMoveDistanceRef.current
+      )
+      onTouchMove?.(nodeRef.current.style.height, event, 'up')
+      // console.log('向上', nodeRef.current.style.height)
+    }
+  }
+
+  const handleTouchEnd = (event: ITouchEvent) => {
+    if (!resizable || !nodeRef.current || !rootRect.current) return
+    console.log('touchend', event)
+    isTouching.current = false
+    onTouchEnd?.(nodeRef.current.style.height, event)
+  }
+
   const renderContent = () => {
     return (
-      <>
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : null}
-        </View>
-      </>
+      <View
+        ref={nodeRef}
+        style={popStyles}
+        className={popClassName}
+        onClick={onClick}
+        catchMove={lockScroll}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+      >
+        {renderTitle()}
+        {showChildren ? children : null}
+      </View>
     )
   }
   const renderPop = () => {
     return (
       <CSSTransition
-        nodeRef={refObject}
+        nodeRef={nodeRef}
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}
