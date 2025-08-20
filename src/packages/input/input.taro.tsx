@@ -83,7 +83,13 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         setValue('')
       },
       focus: () => {
-        inputRef.current?.focus()
+        console.error('inputRef', inputRef.current)
+        console.error('inputRef focus method', inputRef.current?.focus)
+        const taroInputCoreDom = inputRef.current as HTMLDivElement
+        console.error('taroInputCoreDom', taroInputCoreDom)
+        const inputDom = taroInputCoreDom.querySelector('input')
+        console.error('inputDom', inputDom)
+        inputDom?.focus()
       },
       blur: () => {
         inputRef.current?.blur()
