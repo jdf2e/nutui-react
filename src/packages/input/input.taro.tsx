@@ -77,22 +77,28 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [active, setActive] = useState(false)
 
+  // 兼容H5和小程序获取原生input标签
+  const getNativeInput = () => {
+    if (Taro.getEnv() === 'WEB') {
+      const taroInputCoreEl = inputRef.current as HTMLElement
+      const inputEl = taroInputCoreEl?.querySelector?.('input')
+      return inputEl
+    }
+    return inputRef.current
+  }
+
   useImperativeHandle(ref, () => {
     return {
       clear: () => {
         setValue('')
       },
       focus: () => {
-        console.error('inputRef', inputRef.current)
-        console.error('inputRef focus method', inputRef.current?.focus)
-        const taroInputCoreDom = inputRef.current as HTMLDivElement
-        console.error('taroInputCoreDom', taroInputCoreDom)
-        const inputDom = taroInputCoreDom.querySelector('input')
-        console.error('inputDom', inputDom)
-        inputDom?.focus()
+        const nativeInput = getNativeInput()
+        nativeInput?.focus()
       },
       blur: () => {
-        inputRef.current?.blur()
+        const nativeInput = getNativeInput()
+        nativeInput?.blur()
       },
       get nativeElement() {
         return inputRef.current
