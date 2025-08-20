@@ -33,7 +33,7 @@ const defaultProps: TaroPopupProps = {
   overlay: true,
   round: false,
   resizable: false,
-  minHeight: '26%',
+  minHeight: '',
   onOpen: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
