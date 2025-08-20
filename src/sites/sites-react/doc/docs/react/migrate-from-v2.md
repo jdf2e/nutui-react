@@ -93,7 +93,12 @@ plugins: [
 [//]: # '#### Icon'
 [//]: # '#### Image'
 [//]: # '#### Overlay'
-[//]: # '#### Popup'
+
+#### Popup
+
+- 新增属性 resizable，用于底部弹出时，可上下滑动
+- 新增属性 minHeight，用于设置最小高度，可搭配 resizable 使用
+- 新增 onTouchStart、onTouchMove、onTouchEnd 方法
 
 ### 布局组件
 
