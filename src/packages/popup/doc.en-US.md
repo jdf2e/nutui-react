@@ -102,9 +102,9 @@ import { Popup } from '@nutui/nutui-react'
 | onOpen | Triggered when the popup is opened | `-` | `-` |
 | onClose | Fired when the popup is closed | `-` | `-` |
 | onOverlayClick | Click on the mask to trigger | `event: MouseEvent` | `-` |
-| onTouchStart | triggered when starting to touch | `height:string, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchMove | triggered when starting to move | `(height:string, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
-| onTouchEnd | triggered when finishing to touch | `height:string, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchStart | triggered when starting to touch | `height: number, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | triggered when starting to move | `(height: number, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
+| onTouchEnd | triggered when finishing to touch | `height: number, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
 

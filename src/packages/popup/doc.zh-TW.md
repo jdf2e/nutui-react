@@ -102,9 +102,9 @@ import { Popup } from '@nutui/nutui-react'
 | onOpen | 打開彈框時觸發 | `-` | `-` |
 | onClose | 關閉彈框時觸發 | `-` | `-` |
 | onOverlayClick | 點擊遮罩觸發 | `event: MouseEvent` | `-` |
-| onTouchStart | 開始觸碰時觸發 | `(height: string, event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchMove | 滑動時觸發 | `(height: string, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
-| onTouchEnd | 結束觸碰時觸發 | `(height: string, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchStart | 開始觸碰時觸發 | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | 滑動時觸發 | `(height: number, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
+| onTouchEnd | 結束觸碰時觸發 | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主題定制
 
