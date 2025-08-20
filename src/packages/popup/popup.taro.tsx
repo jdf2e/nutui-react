@@ -120,7 +120,12 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       // 当高度改变后，再次打开时，将高度置为初始高度
-      if (resizable && nodeRef.current && heightRef.current) {
+      if (
+        position === 'bottom' &&
+        resizable &&
+        nodeRef.current &&
+        heightRef.current
+      ) {
         nodeRef.current.style.height = `${heightRef.current}px`
       }
       setInnerVisible(true)
@@ -208,7 +213,7 @@ export const Popup: FunctionComponent<
   }
 
   const handleTouchStart = async (event: ITouchEvent) => {
-    if (!resizable || !nodeRef.current) return
+    if (position !== 'bottom' || !resizable || !nodeRef.current) return
     // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
     touchStartRef.current = event.touches[0].pageY
     // 标记开始滑动
@@ -230,7 +235,13 @@ export const Popup: FunctionComponent<
   }
 
   const handleTouchMove = (event: ITouchEvent) => {
-    if (!resizable || !nodeRef.current || !rootRect.current) return
+    if (
+      position !== 'bottom' ||
+      !resizable ||
+      !nodeRef.current ||
+      !rootRect.current
+    )
+      return
     event.stopPropagation()
 
     // move过程中，当前的pageY 与 start值比较
@@ -259,7 +270,13 @@ export const Popup: FunctionComponent<
   }
 
   const handleTouchEnd = (event: ITouchEvent) => {
-    if (!resizable || !nodeRef.current || !rootRect.current) return
+    if (
+      position !== 'bottom' ||
+      !resizable ||
+      !nodeRef.current ||
+      !rootRect.current
+    )
+      return
     console.log('touchend', event)
     isTouching.current = false
     const currentHeight = heightRef.current - touchMoveDistanceRef.current

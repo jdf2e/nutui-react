@@ -87,7 +87,7 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
-| resizable | you can resize the height of popup | `boolean` | `false` |
+| resizable | you can resize the height of popup, just used by position from bottom | `boolean` | `false` |
 | minHeight | The minHeight of popup | `string` | `26%` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |

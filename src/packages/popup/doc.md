@@ -87,7 +87,7 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | 是否显示关闭按钮 | `boolean` | `false` |
 | closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
-| resizable | 上下滑动调整高度 | `boolean` | `false` |
+| resizable | 上下滑动调整高度，当前只支持从底部弹出 | `boolean` | `false` |
 | minHeight | 设置最小高度 | `string` | `26%` |
 | left | 标题左侧部分 | `ReactNode` | `-` |
 | title | 标题中间部分 | `ReactNode` | `-` |
