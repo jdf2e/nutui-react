@@ -81,7 +81,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   const getNativeInput = () => {
     if (Taro.getEnv() === 'WEB') {
       const taroInputCoreEl = inputRef.current as HTMLElement
-      const inputEl = taroInputCoreEl?.querySelector?.('input')
+      const inputEl = taroInputCoreEl.querySelector('input')
       return inputEl
     }
     return inputRef.current
