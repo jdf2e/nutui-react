@@ -217,7 +217,7 @@ export const Popup: FunctionComponent<
     // 标记当前popup的高度
     heightRef.current = nodeRef.current?.offsetHeight || 0
     console.log('touchstart', touchStartRef.current, heightRef.current)
-    onTouchStart?.(nodeRef.current.style.height, event)
+    onTouchStart?.(heightRef.current, event)
   }
 
   const handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
@@ -228,20 +228,14 @@ export const Popup: FunctionComponent<
     touchMoveDistanceRef.current =
       event.touches[0].pageY - touchStartRef.current
 
-    // console.log(
-    //   'touchMoveDistanceRef.current',
-    //   touchMoveDistanceRef.current,
-    //   event.touches[0].pageY,
-    //   touchStartRef.current
-    // )
+    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    nodeRef.current.style.height = `${currentHeight}px`
     // 向下滑动
     if (touchMoveDistanceRef.current > 0) {
-      nodeRef.current.style.height = `${heightRef.current - touchMoveDistanceRef.current}px`
-      onTouchMove?.(nodeRef.current.style.height, event, 'down')
+      onTouchMove?.(currentHeight, event, 'down')
     } else {
       // 向上滑动
-      nodeRef.current.style.height = `${heightRef.current - touchMoveDistanceRef.current}px`
-      onTouchMove?.(nodeRef.current.style.height, event, 'up')
+      onTouchMove?.(currentHeight, event, 'up')
     }
   }
 
@@ -249,7 +243,8 @@ export const Popup: FunctionComponent<
     if (!resizable || !nodeRef.current) return
     console.log('touchend', event)
     isTouching.current = false
-    onTouchEnd?.(nodeRef.current.style.height, event)
+    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    onTouchEnd?.(currentHeight, event)
   }
 
   const renderPop = () => {

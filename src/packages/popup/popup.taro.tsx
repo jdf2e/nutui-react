@@ -11,7 +11,7 @@ import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
-import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
@@ -214,49 +214,56 @@ export const Popup: FunctionComponent<
     // 标记开始滑动
     isTouching.current = true
     // 标记当前popup的高度
-    const rect = await getRectInMultiPlatform(nodeRef.current)
+    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
     rootRect.current = rect
     heightRef.current =
-      rootRect.current?.height || nodeRef.current?.offsetHeight || 0
+      nodeRef.current?.offsetHeight || rootRect.current?.height || 0
     // console.log(
     //   'touchstart',
     //   touchStartRef.current,
-    //   heightRef.current,
+    //   heightRef.current, //
     //   rootRect.current,
-    //   nodeRef.current?.offsetHeight
+    //   nodeRef.current?.offsetHeight, //
+    //   nodeRef.current.style.height //
     // )
-    onTouchStart?.(rootRect.current.height, event)
+    onTouchStart?.(heightRef.current, event)
   }
 
   const handleTouchMove = (event: ITouchEvent) => {
     if (!resizable || !nodeRef.current || !rootRect.current) return
     event.stopPropagation()
 
-    // console.log('向下', rootRect.current.height)
-
     // move过程中，当前的pageY 与 start值比较
     touchMoveDistanceRef.current =
       event.touches[0].pageY - touchStartRef.current
-    // 向下滑动
-    if (touchMoveDistanceRef.current > 0 && isTouching.current) {
-      nodeRef.current.style.height = `${heightRef.current - touchMoveDistanceRef.current}px`
-      onTouchMove?.(nodeRef.current.style.height, event, 'down')
-      // console.log('向下', nodeRef.current.style.height)
-    } else {
-      // 向上滑动
-      nodeRef.current.style.height = pxTransform(
-        heightRef.current - touchMoveDistanceRef.current
-      )
-      onTouchMove?.(nodeRef.current.style.height, event, 'up')
-      // console.log('向上', nodeRef.current.style.height)
+
+    const handleMove = () => {
+      const currentHeight = heightRef.current - touchMoveDistanceRef.current
+      nodeRef.current.style.height = pxTransform(currentHeight)
+      if (touchMoveDistanceRef.current > 0 && isTouching.current) {
+        // 向下滑动
+        onTouchMove?.(currentHeight, event, 'down')
+        // console.log('向下', nodeRef.current.style.height)
+      } else {
+        // 向上滑动
+        onTouchMove?.(currentHeight, event, 'up')
+        console.log(
+          '向上',
+          heightRef.current,
+          touchMoveDistanceRef.current,
+          currentHeight
+        )
+      }
     }
+    requestAnimationFrame(handleMove)
   }
 
   const handleTouchEnd = (event: ITouchEvent) => {
     if (!resizable || !nodeRef.current || !rootRect.current) return
     console.log('touchend', event)
     isTouching.current = false
-    onTouchEnd?.(nodeRef.current.style.height, event)
+    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    onTouchEnd?.(currentHeight, event)
   }
 
   const renderContent = () => {
