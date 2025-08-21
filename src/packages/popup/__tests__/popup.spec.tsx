@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Popup } from '../popup'
 
@@ -87,12 +87,6 @@ test('pop minHeight', () => {
   expect(node).toHaveStyle({ minHeight: '30%' })
 })
 
-test('pop resizable', () => {
-  const { container } = render(<Popup resizable visible position="bottom" />)
-  const node = container.querySelector('.nut-popup') as HTMLElement
-  // expect(node).toHaveStyle({ minHeight: '30%' })
-})
-
 test('should render close icon when using closeable prop', () => {
   const { container } = render(<Popup visible closeable />)
   const closeIcon = container.querySelector(
@@ -155,7 +149,7 @@ test('should emit open event when prop visible is set to true', async () => {
       test
     </Popup>
   )
-  expect(onOpen).toBeCalled()
+  await waitFor(() => expect(onOpen).toBeCalled())
 })
 
 test('event click-overlay test', async () => {
