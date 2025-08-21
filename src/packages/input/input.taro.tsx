@@ -195,7 +195,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
           placeholder === undefined ? locale.placeholder : placeholder
         }
         placeholderClass={`${classPrefix}-placeholder`}
-        disabled={disabled || readOnly}
+        disabled={disabled}
         value={value}
         focus={autoFocus || focus}
         confirmType={confirmType}
