@@ -17,6 +17,7 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   closeIcon: ReactNode
   left?: ReactNode
   title?: ReactNode
+  top?: ReactNode
   description?: ReactNode
   destroyOnClose: boolean
   overlay: boolean

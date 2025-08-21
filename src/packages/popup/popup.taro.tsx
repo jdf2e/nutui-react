@@ -69,6 +69,7 @@ export const Popup: FunctionComponent<
     closeIcon,
     left,
     title,
+    top,
     description,
     style,
     transition,
@@ -314,6 +315,7 @@ export const Popup: FunctionComponent<
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
+        {top}
         {renderTitle()}
         {showChildren ? children : null}
       </View>
