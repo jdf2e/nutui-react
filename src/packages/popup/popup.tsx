@@ -97,6 +97,8 @@ export const Popup: FunctionComponent<
   const touchStartRef = useRef(0)
   const touchMoveDistanceRef = useRef(0)
   const heightRef = useRef(0)
+  // 首次可调整时记录的默认高度
+  const defaultHeightRef = useRef(0)
   const isTouching = useRef(false)
 
   useLockScroll(nodeRef, innerVisible && lockScroll)
@@ -129,7 +131,7 @@ export const Popup: FunctionComponent<
         nodeRef.current &&
         heightRef.current
       ) {
-        nodeRef.current.style.height = `${heightRef.current}px`
+        nodeRef.current.style.height = `${defaultHeightRef.current}px`
       }
       setInnerVisible(true)
       setIndex(++innerIndex)
@@ -221,6 +223,7 @@ export const Popup: FunctionComponent<
     isTouching.current = true
     // 标记当前popup的高度
     heightRef.current = nodeRef.current?.offsetHeight || 0
+    if (!defaultHeightRef.current) defaultHeightRef.current = heightRef.current
     onTouchStart?.(heightRef.current, event)
   }
 
