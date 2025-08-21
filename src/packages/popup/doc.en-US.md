@@ -87,8 +87,8 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
-| resizable | you can resize the height of popup, just used by position from bottom | `boolean` | `false` |
-| minHeight | The minHeight of popup | `string` | `26%` |
+| resizable | Enable vertical resizing of the popup | `boolean` | `false` |
+| minHeight | Minimum height of the popup | `string` | `26%` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |
 | description | The subtitle/description | `ReactNode` | `-` |
@@ -102,9 +102,9 @@ import { Popup } from '@nutui/nutui-react'
 | onOpen | Triggered when the popup is opened | `-` | `-` |
 | onClose | Fired when the popup is closed | `-` | `-` |
 | onOverlayClick | Click on the mask to trigger | `event: MouseEvent` | `-` |
-| onTouchStart | triggered when starting to touch | `height: number, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchMove | triggered when starting to move | `(height: number, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
-| onTouchEnd | triggered when finishing to touch | `height: number, (event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchStart | triggered when starting to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | triggered while moving | `(height: number, event: TouchEvent<HTMLDivElement>, direction: 'up' \| 'down') => void` | `-` |
+| onTouchEnd | triggered when finishing to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
 

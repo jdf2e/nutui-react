@@ -112,9 +112,9 @@ import { Popup } from '@nutui/nutui-react-taro'
 | onOpen | 打开弹框时触发 | `-` | `-` |
 | onClose | 关闭弹框时触发 | `-` | `-` |
 | onOverlayClick | 点击遮罩触发 | `event: MouseEvent` | `-` |
-| onTouchStart | 开始触碰时触发 | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchMove | 滑动时触发 | `(height: number, event: TouchEvent<HTMLDivElement>, 'up' \| 'down') => void` | `-` |
-| onTouchEnd | 结束触碰时触发 | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchStart | 开始触碰时触发 | `(height: number, event: ITouchEvent) => void` | `-` |
+| onTouchMove | 滑动时触发 | `(height: number, event: ITouchEvent, direction: 'up' \| 'down') => void` | `-` |
+| onTouchEnd | 结束触碰时触发 | `(height: number, event: ITouchEvent) => void` | `-` |
 
 ## 主题定制
 

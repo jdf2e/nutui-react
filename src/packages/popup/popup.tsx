@@ -221,7 +221,6 @@ export const Popup: FunctionComponent<
     isTouching.current = true
     // 标记当前popup的高度
     heightRef.current = nodeRef.current?.offsetHeight || 0
-    console.log('touchstart', touchStartRef.current, heightRef.current)
     onTouchStart?.(heightRef.current, event)
   }
 
@@ -246,7 +245,6 @@ export const Popup: FunctionComponent<
 
   const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (position !== 'bottom' || !resizable || !nodeRef.current) return
-    console.log('touchend', event)
     isTouching.current = false
     const currentHeight = heightRef.current - touchMoveDistanceRef.current
     onTouchEnd?.(currentHeight, event)
