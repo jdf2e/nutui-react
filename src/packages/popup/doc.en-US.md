@@ -87,19 +87,24 @@ import { Popup } from '@nutui/nutui-react'
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
+| resizable | Enable vertical resizing of the popup | `boolean` | `false` |
+| minHeight | Minimum height of the popup | `string` | `26%` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |
 | description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
 | portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` \| null` | `null` |
+| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
+| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
 | onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
 | onCloseIconClick | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
 | onOpen | Triggered when the popup is opened | `-` | `-` |
 | onClose | Fired when the popup is closed | `-` | `-` |
-| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
-| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
 | onOverlayClick | Click on the mask to trigger | `event: MouseEvent` | `-` |
+| onTouchStart | triggered when starting to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | triggered while moving | `(height: number, event: TouchEvent<HTMLDivElement>, direction: 'up' \| 'down') => void` | `-` |
+| onTouchEnd | triggered when finishing to touch | `(height: number, event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
 

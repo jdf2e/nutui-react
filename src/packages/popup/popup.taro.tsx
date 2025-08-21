@@ -10,7 +10,8 @@ import { createPortal } from 'react-dom'
 // import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
 import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -94,7 +95,9 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-  const nodeRef = useLockScrollTaro(innerVisible && lockScroll)
+  const nodeRef = useLockScrollTaro(
+    innerVisible && lockScroll
+  ) as React.MutableRefObject<any>
 
   const rootRect = useRef<any>(null)
   const touchStartRef = useRef(0)
@@ -221,33 +224,23 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleTouchStart = async (event: ITouchEvent) => {
+  const handleTouchStart: CommonEventFunction = async (event) => {
     if (position !== 'bottom' || !resizable || !nodeRef.current) return
+    const e = event as ITouchEvent
     // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
-    touchStartRef.current = event.touches[0].pageY
+    touchStartRef.current = e.touches[0].pageY
     // 标记开始滑动
     isTouching.current = true
     // 标记当前popup的高度
     const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
     rootRect.current = rect
     heightRef.current =
-      // @ts-ignore
       nodeRef.current?.offsetHeight || rootRect.current?.height || 0
     if (!defaultHeightRef.current) defaultHeightRef.current = heightRef.current
-    // console.log(
-    //   '====> touchstart',
-    //   touchStartRef.current,
-    //   heightRef.current, //
-    //   rootRect.current,
-    //   // @ts-ignore
-    //   nodeRef?.current?.offsetHeight, //
-    //   // @ts-ignore
-    //   nodeRef?.current?.style?.height //
-    // )
-    onTouchStart?.(heightRef.current, event)
+    onTouchStart?.(heightRef.current, e)
   }
 
-  const handleTouchMove = (event: ITouchEvent) => {
+  const handleTouchMove: CommonEventFunction = (event) => {
     if (
       position !== 'bottom' ||
       !resizable ||
@@ -255,34 +248,35 @@ export const Popup: FunctionComponent<
       !rootRect.current
     )
       return
-    event.stopPropagation()
 
-    // move过程中，当前的pageY 与 start值比较
-    touchMoveDistanceRef.current =
-      event.touches[0].pageY - touchStartRef.current
+    const e = event as ITouchEvent
+    e.stopPropagation()
+
+    // 计算位移：move过程中，当前的pageY 与 start值比较
+    touchMoveDistanceRef.current = e.touches[0].pageY - touchStartRef.current
 
     const handleMove = () => {
-      const currentHeight = heightRef.current - touchMoveDistanceRef.current
+      const min =
+        typeof minHeight === 'number'
+          ? minHeight
+          : parseInt(String(minHeight || 0), 10) || 0
+      const currentHeight = Math.max(
+        min,
+        heightRef.current - touchMoveDistanceRef.current
+      )
       setPopupHeight(pxTransform(currentHeight))
       if (touchMoveDistanceRef.current > 0 && isTouching.current) {
         // 向下滑动
-        onTouchMove?.(currentHeight, event, 'down')
-        // console.log('=====> 向下', pxTransform(currentHeight))
+        onTouchMove?.(currentHeight, e, 'down')
       } else {
         // 向上滑动
-        onTouchMove?.(currentHeight, event, 'up')
-        // console.log(
-        //   '=====> 向上',
-        //   heightRef.current,
-        //   touchMoveDistanceRef.current,
-        //   currentHeight
-        // )
+        onTouchMove?.(currentHeight, e, 'up')
       }
     }
     requestAnimationFrame(handleMove)
   }
 
-  const handleTouchEnd = (event: ITouchEvent) => {
+  const handleTouchEnd: CommonEventFunction = (event) => {
     if (
       position !== 'bottom' ||
       !resizable ||
@@ -290,9 +284,17 @@ export const Popup: FunctionComponent<
       !rootRect.current
     )
       return
+    const e = event as ITouchEvent
     isTouching.current = false
-    const currentHeight = heightRef.current - touchMoveDistanceRef.current
-    onTouchEnd?.(currentHeight, event)
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
+    onTouchEnd?.(currentHeight, e)
   }
 
   const renderPop = () => {
@@ -307,13 +309,9 @@ export const Popup: FunctionComponent<
         className={popClassName}
         onClick={onClick}
         catchMove={lockScroll}
-        // @ts-ignore
         onTouchStart={handleTouchStart}
-        // @ts-ignore
         onTouchMove={handleTouchMove}
-        // @ts-ignore
         onTouchEnd={handleTouchEnd}
-        // @ts-ignore
         onTouchCancel={handleTouchEnd}
       >
         {renderTitle()}

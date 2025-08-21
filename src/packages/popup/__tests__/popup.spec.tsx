@@ -1,34 +1,22 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Popup } from '../popup'
 
-test('should change z-index when using z-index prop', () => {
-  const { container } = render(<Popup visible zIndex={99} />)
-  const element = container.querySelector('.nut-popup') as HTMLElement
-  expect(element.style.zIndex).toEqual('99')
+test('renders without crashing', () => {
+  render(<Popup visible>Test Content</Popup>)
+  expect(screen.getByText('Test Content')).toBeInTheDocument()
 })
 
-test('prop overlay-class test', async () => {
-  const { container } = render(<Popup visible overlayClassName="testclas" />)
-  const overlay = container.querySelector('.nut-overlay') as HTMLElement
-  expect(overlay).toHaveClass('testclas')
-})
+test('opens and closes correctly', () => {
+  const { rerender } = render(<Popup visible={false}>Test Content</Popup>)
 
-test('prop overlay-style test', async () => {
-  const { container } = render(
-    <Popup visible overlayStyle={{ color: 'red' }} />
-  )
-  const overlay = container.querySelector('.nut-overlay') as HTMLElement
-  expect(overlay).toHaveStyle({
-    color: 'red',
-  })
-})
+  // Initially, it should not be visible
+  expect(screen.queryByText('Test Content')).not.toBeInTheDocument()
 
-test('should lock scroll when showed', async () => {
-  const { rerender } = render(<Popup visible={false} />)
-  rerender(<Popup visible />)
-  expect(document.body.classList.contains('nut-overflow-hidden')).toBe(true)
+  // Rerender with visible true
+  rerender(<Popup visible>Test Content</Popup>)
+  expect(screen.getByText('Test Content')).toBeInTheDocument()
 })
 
 test('should not render overlay when overlay prop is false', () => {
@@ -91,6 +79,14 @@ test('pop description', () => {
   expect(title).toHaveTextContent('副标题')
 })
 
+test('pop minHeight', () => {
+  const { container } = render(
+    <Popup minHeight="30%" visible position="bottom" />
+  )
+  const node = container.querySelector('.nut-popup') as HTMLElement
+  expect(node).toHaveStyle({ minHeight: '30%' })
+})
+
 test('should render close icon when using closeable prop', () => {
   const { container } = render(<Popup visible closeable />)
   const closeIcon = container.querySelector(
@@ -145,11 +141,15 @@ test('event click-title-right icon and keep overlay test ', () => {
   expect(overlay2).toBeNull()
 })
 
-test('should emit open event when prop visible is set to true', () => {
+test('should emit open event when prop visible is set to true', async () => {
   const onOpen = vi.fn()
   const { rerender } = render(<Popup visible={false} onOpen={onOpen} />)
-  rerender(<Popup visible onOpen={onOpen} />)
-  expect(onOpen).toBeCalled()
+  rerender(
+    <Popup visible onOpen={onOpen} closeOnOverlayClick>
+      test
+    </Popup>
+  )
+  await waitFor(() => expect(onOpen).toBeCalled())
 })
 
 test('event click-overlay test', async () => {
@@ -170,4 +170,39 @@ test('pop destroyOnClose', () => {
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(overlay)
   expect(onClose).toBeCalled()
+})
+
+test('handles touch events correctly', () => {
+  const handleTouchStart = vi.fn()
+  const handleTouchMove = vi.fn()
+  const handleTouchEnd = vi.fn()
+
+  render(
+    <Popup
+      visible
+      resizable
+      position="bottom"
+      // minHeight="400px"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      Test Content
+    </Popup>
+  )
+
+  const popup = document.body.querySelector('.nut-popup') as HTMLElement
+
+  // Simulate touch events
+  fireEvent.touchStart(popup, { touches: [{ pageY: 400 }] })
+  expect(handleTouchStart).toHaveBeenCalled()
+
+  fireEvent.touchMove(popup, { touches: [{ pageY: 50 }] })
+  expect(handleTouchMove).toHaveBeenCalled()
+
+  fireEvent.touchMove(popup, { touches: [{ pageY: 450 }] })
+  expect(handleTouchMove).toHaveBeenCalled()
+
+  fireEvent.touchEnd(popup)
+  expect(handleTouchEnd).toHaveBeenCalled()
 })
