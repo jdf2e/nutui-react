@@ -256,7 +256,14 @@ export const Popup: FunctionComponent<
     touchMoveDistanceRef.current = e.touches[0].pageY - touchStartRef.current
 
     const handleMove = () => {
-      const currentHeight = heightRef.current - touchMoveDistanceRef.current
+      const min =
+        typeof minHeight === 'number'
+          ? minHeight
+          : parseInt(String(minHeight || 0), 10) || 0
+      const currentHeight = Math.max(
+        min,
+        heightRef.current - touchMoveDistanceRef.current
+      )
       setPopupHeight(pxTransform(currentHeight))
       if (touchMoveDistanceRef.current > 0 && isTouching.current) {
         // 向下滑动
@@ -279,7 +286,14 @@ export const Popup: FunctionComponent<
       return
     const e = event as ITouchEvent
     isTouching.current = false
-    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
     onTouchEnd?.(currentHeight, e)
   }
 

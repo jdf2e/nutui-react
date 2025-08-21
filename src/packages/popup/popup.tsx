@@ -235,7 +235,15 @@ export const Popup: FunctionComponent<
     touchMoveDistanceRef.current =
       event.touches[0].pageY - touchStartRef.current
 
-    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
+
     nodeRef.current.style.height = `${currentHeight}px`
     // 向下滑动
     if (touchMoveDistanceRef.current > 0) {
@@ -249,7 +257,14 @@ export const Popup: FunctionComponent<
   const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (position !== 'bottom' || !resizable || !nodeRef.current) return
     isTouching.current = false
-    const currentHeight = heightRef.current - touchMoveDistanceRef.current
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
     onTouchEnd?.(currentHeight, event)
   }
 
