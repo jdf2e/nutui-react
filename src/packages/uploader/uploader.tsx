@@ -183,22 +183,19 @@ const InternalUploader: ForwardRefRenderFunction<
         name: file.name,
         type: file.type,
       }
-      fileListRef.current = [...fileListRef.current, info]
-
-      if (preview && file.type?.includes('image')) {
+      if (preview) {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
-          const updatedList = fileListRef.current.map((item) =>
-            item.uid === info.uid
-              ? { ...item, url: (event.target as FileReader).result as string }
-              : item
-          )
-          fileListRef.current = updatedList
-          setFileList(updatedList)
+          fileListRef.current = [
+            ...fileListRef.current,
+            {
+              ...info,
+              url: (event.target as FileReader).result as string,
+            },
+          ]
+          setFileList(fileListRef.current)
         }
         reader.readAsDataURL(file)
-      } else {
-        setFileList(fileListRef.current)
       }
       return info
     })
