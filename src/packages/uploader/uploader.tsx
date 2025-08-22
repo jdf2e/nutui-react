@@ -183,11 +183,7 @@ const InternalUploader: ForwardRefRenderFunction<
         name: file.name,
         type: file.type,
       }
-      if (preview) {
-        // 如果是图片类型的预览且上传的文件非图片则不放入文件列表中
-        if (previewType === 'picture' && !file.type?.includes('image')) {
-          return info
-        }
+      if (preview && previewType === 'picture') {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileListRef.current = [
