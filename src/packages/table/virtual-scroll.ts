@@ -5,10 +5,12 @@ export interface VirtualScrollOptions {
   total: number
   // 可视区域高度
   viewportHeight: number
-  // 每行高度
+  // 每行默认高度（当无法获取实际高度时使用）
   itemHeight: number
   // 预加载的行数（可视区域外上下额外渲染的行数）
   overscan?: number
+  // 是否启用动态高度（如果为true，将尝试获取每行的实际高度）
+  dynamicHeight?: boolean
 }
 
 export interface VirtualScrollResult {
@@ -24,6 +26,10 @@ export interface VirtualScrollResult {
   containerRef: React.RefObject<HTMLDivElement>
   // 滚动到指定索引的方法
   scrollTo: (index: number) => void
+  // 更新指定行高度的方法
+  updateItemHeight: (index: number, height: number) => void
+  // 获取行元素引用的方法
+  getRowRef: (index: number) => (element: HTMLElement | null) => void
 }
 
 /**
@@ -34,10 +40,34 @@ export interface VirtualScrollResult {
 export function useVirtualScroll(
   options: VirtualScrollOptions
 ): VirtualScrollResult {
-  const { total, viewportHeight, itemHeight, overscan = 5 } = options
+  const {
+    total,
+    viewportHeight,
+    itemHeight,
+    overscan = 5,
+    dynamicHeight = false,
+  } = options
 
-  // 计算总高度
-  const totalHeight = total * itemHeight
+  // 高度缓存，用于存储每行的实际高度
+  const [heightCache, setHeightCache] = useState<Record<number, number>>({})
+
+  // 行元素引用缓存
+  const rowRefs = useRef<Record<number, HTMLElement | null>>({})
+
+  // 计算总高度（考虑动态高度）
+  const calculateTotalHeight = () => {
+    if (!dynamicHeight) {
+      return total * itemHeight
+    }
+
+    let height = 0
+    for (let i = 0; i < total; i++) {
+      height += heightCache[i] || itemHeight
+    }
+    return height
+  }
+
+  const totalHeight = calculateTotalHeight()
 
   // 容器引用
   const containerRef = useRef<HTMLDivElement>(null)
@@ -67,15 +97,68 @@ export function useVirtualScroll(
     }
   }, [total, totalHeight, scrollTop])
 
-  // 计算可视区域内的行索引范围
-  const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan)
-  const endIndex = Math.min(
-    total - 1,
-    Math.ceil((scrollTop + viewportHeight) / itemHeight) + overscan
-  )
+  // 计算可视区域内的行索引范围（考虑动态高度）
+  const calculateVisibleRange = () => {
+    if (!dynamicHeight) {
+      // 固定高度的简单计算
+      const start = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan)
+      const end = Math.min(
+        total - 1,
+        Math.ceil((scrollTop + viewportHeight) / itemHeight) + overscan
+      )
+      return [start, end] as [number, number]
+    }
 
-  // 计算偏移量
-  const offsetY = startIndex * itemHeight
+    // 动态高度的计算
+    let currentHeight = 0
+    let startIndex = 0
+    let endIndex = 0
+
+    // 找到起始索引
+    for (let i = 0; i < total; i++) {
+      const rowHeight = heightCache[i] || itemHeight
+      if (currentHeight + rowHeight > scrollTop) {
+        startIndex = Math.max(0, i - overscan)
+        break
+      }
+      currentHeight += rowHeight
+    }
+
+    // 找到结束索引
+    currentHeight = 0
+    for (let i = 0; i < total; i++) {
+      const rowHeight = heightCache[i] || itemHeight
+      currentHeight += rowHeight
+      if (currentHeight > scrollTop + viewportHeight) {
+        endIndex = Math.min(total - 1, i + overscan)
+        break
+      }
+
+      // 如果到达最后一行，设置结束索引为最后一行
+      if (i === total - 1) {
+        endIndex = total - 1
+      }
+    }
+
+    return [startIndex, endIndex] as [number, number]
+  }
+
+  const visibleRange = calculateVisibleRange()
+
+  // 计算偏移量（考虑动态高度）
+  const calculateOffsetY = () => {
+    if (!dynamicHeight) {
+      return visibleRange[0] * itemHeight
+    }
+
+    let offset = 0
+    for (let i = 0; i < visibleRange[0]; i++) {
+      offset += heightCache[i] || itemHeight
+    }
+    return offset
+  }
+
+  const offsetY = calculateOffsetY()
 
   // 使用防抖优化滚动事件处理
   const scrollTimerRef = useRef<number | null>(null)
@@ -104,22 +187,57 @@ export function useVirtualScroll(
     }, 100) // 100ms的防抖延迟
   }
 
-  // 手动设置滚动位置的方法
+  // 手动设置滚动位置的方法（考虑动态高度）
   const scrollTo = (index: number) => {
     if (containerRef.current) {
       const targetIndex = Math.min(Math.max(0, index), totalRef.current - 1) // 确保不会滚动到超出范围的位置
-      const targetScrollTop = targetIndex * itemHeight
+
+      let targetScrollTop = 0
+      if (!dynamicHeight) {
+        targetScrollTop = targetIndex * itemHeight
+      } else {
+        // 计算目标位置的滚动偏移
+        for (let i = 0; i < targetIndex; i++) {
+          targetScrollTop += heightCache[i] || itemHeight
+        }
+      }
+
       containerRef.current.scrollTop = targetScrollTop
       setScrollTop(targetScrollTop) // 立即更新状态，确保渲染不延迟
     }
   }
 
+  // 更新指定行高度的方法
+  const updateItemHeight = (index: number, height: number) => {
+    if (heightCache[index] !== height) {
+      setHeightCache((prev) => ({
+        ...prev,
+        [index]: height,
+      }))
+    }
+  }
+
+  // 获取行元素引用的方法
+  const getRowRef = (index: number) => (element: HTMLElement | null) => {
+    if (element && dynamicHeight) {
+      rowRefs.current[index] = element
+
+      // 如果高度发生变化，更新高度缓存
+      const currentHeight = element.getBoundingClientRect().height
+      if (heightCache[index] !== currentHeight) {
+        updateItemHeight(index, currentHeight)
+      }
+    }
+  }
+
   return {
-    visibleRange: [startIndex, endIndex],
+    visibleRange,
     totalHeight,
     offsetY,
     onScroll,
     containerRef,
     scrollTo,
+    updateItemHeight,
+    getRowRef,
   }
 }

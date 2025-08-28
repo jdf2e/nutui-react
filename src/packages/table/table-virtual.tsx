@@ -28,6 +28,8 @@ export interface VirtualTableProps extends Omit<WebTableProps, 'bordered'> {
   scrollToIndex?: (index: number) => void
   // 覆盖WebTableProps中的bordered，使其可选
   bordered?: boolean
+  // 是否启用动态高度（如果为true，将尝试获取每行的实际高度）
+  dynamicHeight?: boolean
 }
 
 // 定义组件引用类型
@@ -49,6 +51,7 @@ const defaultProps = {
   height: 300,
   rowHeight: 40,
   overscan: 5,
+  dynamicHeight: false,
 } as VirtualTableProps
 
 // 使用ForwardRefRenderFunction来定义组件，以便支持ref转发
@@ -78,6 +81,7 @@ const TableVirtualComponent: ForwardRefRenderFunction<
     rowHeight,
     overscan,
     scrollToIndex,
+    dynamicHeight,
     ...rest
   } = {
     ...defaultProps,
@@ -117,11 +121,14 @@ const TableVirtualComponent: ForwardRefRenderFunction<
     onScroll,
     containerRef,
     scrollTo,
+    getRowRef,
+    updateItemHeight,
   } = useVirtualScroll({
     total: innerValue.length,
     viewportHeight: (height || 300) - (showHeader ? headerHeight || 0 : 0),
     itemHeight: rowHeight || 40,
     overscan: overscan || 5,
+    dynamicHeight: dynamicHeight || false,
   })
 
   // 使用useImperativeHandle暴露方法给外部
@@ -380,10 +387,22 @@ const TableVirtualComponent: ForwardRefRenderFunction<
         const inner = renderBodyTds(item, actualIndex)
         const { rowRender } = item
         if (rowRender && typeof rowRender === 'function') {
-          return rowRender(item, actualIndex, { inner })
+          const renderedRow = rowRender(item, actualIndex, { inner })
+          // 如果自定义渲染函数返回的是React元素，我们需要添加ref
+          if (React.isValidElement(renderedRow) && dynamicHeight) {
+            return React.cloneElement(renderedRow, {
+              // @ts-ignore
+              ref: getRowRef(actualIndex),
+            })
+          }
+          return renderedRow
         }
         return (
-          <div className={bodyClassPrefix} key={`row-${actualIndex}`}>
+          <div
+            className={bodyClassPrefix}
+            key={`row-${actualIndex}`}
+            ref={dynamicHeight ? getRowRef(actualIndex) : undefined}
+          >
             {inner}
           </div>
         )
@@ -427,25 +446,24 @@ const TableVirtualComponent: ForwardRefRenderFunction<
               <div className={headerClassPrefix}>{renderHeadCells()}</div>
             </div>
           )}
-          <div className={`${classPrefix}-main-body`}>
+          <div
+            className={`${classPrefix}-main-body`}
+            style={{
+              height: totalHeight,
+              position: 'relative',
+            }}
+          >
             {virtual && (
               <div
                 style={{
-                  height: totalHeight,
-                  position: 'relative',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  transform: `translateY(${offsetY}px)`,
                 }}
               >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    transform: `translateY(${offsetY}px)`,
-                  }}
-                >
-                  {renderBodyTrs()}
-                </div>
+                {renderBodyTrs()}
               </div>
             )}
             {!virtual && renderBodyTrs()}
