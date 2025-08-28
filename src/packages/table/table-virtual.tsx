@@ -437,6 +437,10 @@ const TableVirtualComponent: ForwardRefRenderFunction<
             [`${classPrefix}-main-striped`]: striped,
             [`${classPrefix}-main-virtual`]: virtual,
           })}
+          style={{
+            height: totalHeight,
+            position: 'relative',
+          }}
         >
           {showHeader && (
             <div className={`${classPrefix}-main-head`} ref={headerRef}>
@@ -446,24 +450,14 @@ const TableVirtualComponent: ForwardRefRenderFunction<
           <div
             className={`${classPrefix}-main-body`}
             style={{
-              height: totalHeight,
-              position: 'relative',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              transform: `translateY(${offsetY}px)`,
             }}
           >
-            {virtual && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  transform: `translateY(${offsetY}px)`,
-                }}
-              >
-                {renderBodyTrs()}
-              </div>
-            )}
-            {!virtual && renderBodyTrs()}
+            {renderBodyTrs()}
           </div>
         </div>
       </div>
