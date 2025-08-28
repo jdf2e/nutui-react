@@ -418,9 +418,18 @@ const TableVirtualComponent: ForwardRefRenderFunction<
             isSticky ? `${classPrefix}-wrapper-sticky` : ''
           }`
         )}
+        ref={virtual ? containerRef : undefined}
+        onScroll={virtual ? (e) => onScroll(e) : undefined}
         style={{
           ...style,
-          ...(virtual ? { height: height || 300 } : {}),
+          ...(virtual
+            ? {
+                height: height || 300,
+                maxHeight: height || 300,
+                overflow: 'auto',
+                position: 'relative',
+              }
+            : {}),
         }}
       >
         <div
@@ -428,18 +437,6 @@ const TableVirtualComponent: ForwardRefRenderFunction<
             [`${classPrefix}-main-striped`]: striped,
             [`${classPrefix}-main-virtual`]: virtual,
           })}
-          ref={virtual ? containerRef : undefined}
-          onScroll={virtual ? (e) => onScroll(e) : undefined}
-          style={
-            virtual
-              ? {
-                  height: height || 300,
-                  maxHeight: height || 300,
-                  overflow: 'auto',
-                  position: 'relative',
-                }
-              : {}
-          }
         >
           {showHeader && (
             <div className={`${classPrefix}-main-head`} ref={headerRef}>
