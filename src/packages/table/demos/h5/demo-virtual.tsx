@@ -1,0 +1,122 @@
+import React, { useState, useRef } from 'react'
+import TableVirtual, {
+  TableColumnProps,
+  VirtualTableRef,
+} from '../../index.virtual'
+
+// 定义数据项接口
+interface DataItem {
+  name: string
+  record: string
+  age: number
+}
+
+const DemoVirtual = () => {
+  // 创建表格引用
+  const tableRef = useRef<VirtualTableRef>(null)
+
+  // 生成大量数据
+  const generateData = (count: number): DataItem[] => {
+    const data: DataItem[] = []
+    for (let i = 0; i < count; i++) {
+      data.push({
+        name: `Name ${i}`,
+        record: ['小学', '初中', '高中', '大专', '本科'][i % 5],
+        age: Math.floor(Math.random() * 50) + 10,
+      })
+    }
+    return data
+  }
+
+  // 定义列配置
+  const [columns] = useState<TableColumnProps[]>([
+    {
+      title: 'ID',
+      key: 'id',
+      render: (_record: any, index: number) => {
+        return index + 1
+      },
+    },
+    {
+      title: '姓名',
+      key: 'name',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      sorter: (a: DataItem, b: DataItem) => a.age - b.age,
+    },
+  ])
+
+  // 使用状态管理数据
+  const [data, setData] = useState(generateData(1000))
+
+  // 更新数据的方法
+  const updateData = (count: number) => {
+    setData(generateData(count))
+  }
+
+  // 滚动到指定行的方法
+  const handleScrollToRow = (index: number) => {
+    if (tableRef.current) {
+      tableRef.current.scrollToIndex(index)
+    }
+  }
+
+  return (
+    <div>
+      <h2>普通表格 (无虚拟滚动)</h2>
+      <TableVirtual
+        columns={columns}
+        data={data.slice(0, 10)}
+        style={{ marginBottom: '20px' }}
+        height={400}
+        bordered
+      />
+
+      <div style={{ marginBottom: '10px' }}>
+        <button onClick={() => handleScrollToRow(0)}>滚动到顶部</button>
+        <button
+          onClick={() => handleScrollToRow(500)}
+          style={{ marginLeft: '10px' }}
+        >
+          滚动到中间
+        </button>
+        <button
+          onClick={() => handleScrollToRow(999)}
+          style={{ marginLeft: '10px' }}
+        >
+          滚动到底部
+        </button>
+      </div>
+
+      <div style={{ marginBottom: '10px' }}>
+        <button onClick={() => updateData(500)}>更新为500条数据</button>
+        <button onClick={() => updateData(1500)} style={{ marginLeft: '10px' }}>
+          更新为1500条数据
+        </button>
+        <button onClick={() => updateData(1000)} style={{ marginLeft: '10px' }}>
+          重置为1000条数据
+        </button>
+      </div>
+
+      <h2>虚拟滚动表格 (1000条数据)</h2>
+      <TableVirtual
+        ref={tableRef}
+        columns={columns}
+        data={data}
+        virtual
+        height={400}
+        rowHeight={40}
+        overscan={10}
+        bordered
+      />
+    </div>
+  )
+}
+
+export default DemoVirtual
