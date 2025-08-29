@@ -470,6 +470,11 @@ const TableVirtualComponent: ForwardRefRenderFunction<
                   transform: `translateY(${offsetY}px)`,
                   display: 'table-row',
                   width: '100%',
+                  willChange: 'transform', // 提示浏览器该元素会频繁变换，优化渲染性能
+                  backfaceVisibility: 'hidden', // 防止渲染闪烁
+                  WebkitBackfaceVisibility: 'hidden', // Safari 兼容
+                  transition: 'transform 0.05s ease-out', // 添加平滑过渡效果，减少闪动
+                  zIndex: 1, // 确保内容在正确的层级
                 }}
               >
                 {renderBodyTrs()}
