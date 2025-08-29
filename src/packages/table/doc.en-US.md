@@ -114,6 +114,26 @@ import { Table } from '@nutui/nutui-react'
 
 :::
 
+### Virtual Scrolling
+
+When the table has a large amount of data, virtual scrolling can be used to optimize performance.
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+
+:::
+
+### Virtual Scrolling + Dynamic Row Height
+
+Supports dynamic calculation of row height, suitable for scenarios where row content height is not fixed.
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Table
 
 ### Props
@@ -141,6 +161,65 @@ import { Table } from '@nutui/nutui-react'
 | render | Custom rendering of column data, priority is high | `Function(record)` | `-` |
 | width | Column width | `number` | `auto` |
 | fixed | Fixed position | `left` \| `right` | `-` |
+
+## TableVirtual
+
+### Import
+
+```tsx
+import { TableVirtual } from '@nutui/nutui-react'
+```
+
+### Props
+
+Inherits all properties of the Table component, and adds the following properties:
+
+| Property | Description | Type | Default Value |
+| --- | --- | --- | --- |
+| virtual | Whether to enable virtual scrolling | `boolean` | `false` |
+| height | Table viewport height | `number` | `300` |
+| rowHeight | Height of each row | `number` | `40` |
+| overscan | Number of rows to preload | `number` | `5` |
+| dynamicHeight | Whether to enable dynamic height (if true, will try to get the actual height of each row) | `boolean` | `false` |
+
+### VirtualTableRef
+
+| Property | Description | Type |
+| --- | --- | --- |
+| scrollToIndex | Method to scroll to a specific index | `(index: number) => void` |
+
+### Example
+
+```tsx
+import React, { useRef } from 'react'
+import { TableVirtual } from '@nutui/nutui-react'
+import type { VirtualTableRef } from '@nutui/nutui-react'
+
+const VirtualTableExample = () => {
+  const tableRef = useRef<VirtualTableRef>(null)
+
+  // Scroll to specific row
+  const scrollToRow = (index: number) => {
+    tableRef.current?.scrollToIndex(index)
+  }
+
+  return (
+    <TableVirtual
+      ref={tableRef}
+      virtual
+      height={300}
+      rowHeight={40}
+      overscan={5}
+      columns={columns}
+      data={data}
+    />
+  )
+}
+
+VirtualTableExample.displayName = 'VirtualTableExample'
+
+export default VirtualTableExample
+```
 
 ## Theme Customization
 
