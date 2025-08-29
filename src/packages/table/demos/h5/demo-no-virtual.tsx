@@ -1,8 +1,5 @@
-import React, { useState, useRef } from 'react'
-import TableVirtual, {
-  TableColumnProps,
-  VirtualTableRef,
-} from '../../index.virtual'
+import React, { useState } from 'react'
+import TableVirtual, { TableColumnProps } from '../../index.virtual'
 
 // 定义数据项接口
 interface DataItem {
@@ -12,10 +9,7 @@ interface DataItem {
   description?: string // 添加描述字段，用于测试不同高度的行
 }
 
-const DemoVirtual = () => {
-  // 创建表格引用
-  const tableRef = useRef<VirtualTableRef>(null)
-
+const DemoNoVirtual = () => {
   // 生成大量数据
   const generateData = (count: number): DataItem[] => {
     const data: DataItem[] = []
@@ -89,32 +83,17 @@ const DemoVirtual = () => {
   ])
 
   // 使用状态管理数据
-  const [data, setData] = useState(generateData(1000))
-
-  // 更新数据的方法
-  const updateData = (count: number) => {
-    setData(generateData(count))
-  }
-
-  // 滚动到指定行的方法
-  const handleScrollToRow = (index: number) => {
-    if (tableRef.current) {
-      tableRef.current.scrollToIndex(index)
-    }
-  }
+  const [data] = useState(generateData(10))
 
   return (
     <TableVirtual
       columns={columns}
       data={data}
-      virtual
+      style={{ marginBottom: '20px' }}
       height={400}
-      rowHeight={40} // 默认行高，实际会根据内容动态调整
-      overscan={10}
       bordered
-      dynamicHeight // 启用动态高度
     />
   )
 }
 
-export default DemoVirtual
+export default DemoNoVirtual

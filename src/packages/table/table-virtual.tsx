@@ -437,7 +437,9 @@ const TableVirtualComponent: ForwardRefRenderFunction<
                 overflow: 'auto',
                 position: 'relative',
               }
-            : {}),
+            : {
+                height: height || 300,
+              }),
         }}
       >
         <div

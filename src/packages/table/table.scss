@@ -49,17 +49,6 @@
       }
     }
 
-    &-virtual {
-      .nut-table-main-head {
-        &-tr {
-          &-th {
-            background-color: #fff;
-            z-index: 1;
-          }
-        }
-      }
-    }
-
     &-head,
     &-body {
       background: inherit;
@@ -82,6 +71,8 @@
           background: inherit;
           position: sticky;
           top: 0;
+          background-color: $table-th-bg-color;
+          z-index: 1;
 
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {

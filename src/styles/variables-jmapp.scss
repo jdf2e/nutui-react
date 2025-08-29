@@ -2342,6 +2342,7 @@ $table-sticky-right-shadow: var(
   --nutui-table-sticky-right-shadow,
   -4px 0 8px 0 rgba(0, 0, 0, 0.1)
 ) !default;
+$table-th-bg-color: var(--nutui-table-th-bg-color, #fff) !default;
 
 // navbar（✅）
 $navbar-width: var(--nutui-navbar-width, 100%) !default;
