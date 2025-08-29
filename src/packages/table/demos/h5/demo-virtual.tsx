@@ -45,6 +45,7 @@ const DemoVirtual = () => {
     {
       title: 'ID',
       key: 'id',
+      width: 50,
       render: (_record: any, index: number) => {
         return index + 1
       },
@@ -52,14 +53,17 @@ const DemoVirtual = () => {
     {
       title: '姓名',
       key: 'name',
+      width: 80,
     },
     {
       title: '学历',
       key: 'record',
+      width: 60,
     },
     {
       title: '年龄',
       key: 'age',
+      width: 70,
       sorter: (a: DataItem, b: DataItem) => a.age - b.age,
     },
     {
@@ -136,7 +140,7 @@ const DemoVirtual = () => {
         </button>
       </div>
 
-      <h2>虚拟滚动表格 (固定高度)</h2>
+      {/* <h2>虚拟滚动表格 (固定高度)</h2>
       <TableVirtual
         ref={tableRef}
         columns={columns}
@@ -146,7 +150,7 @@ const DemoVirtual = () => {
         rowHeight={40}
         overscan={10}
         bordered
-      />
+      /> */}
 
       <h2>虚拟滚动表格 (动态高度)</h2>
       <TableVirtual

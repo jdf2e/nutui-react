@@ -313,7 +313,10 @@ const TableVirtualComponent: ForwardRefRenderFunction<
           )}
           key={item.key}
           onClick={() => handleSorterClick(item)}
-          style={getStickyStyle(item.key)}
+          style={{
+            ...getStickyStyle(item.key),
+            width: item.width,
+          }}
         >
           {item.title}&nbsp;
           {item.sorter && renderSorterIcon()}
@@ -324,18 +327,20 @@ const TableVirtualComponent: ForwardRefRenderFunction<
 
   const sortDataItem = () => {
     return columns.map((column: TableColumnProps) => {
-      return [column.key, column.render] as [
+      return [column.key, column.render, column.width] as [
         string,
         ((item: any, index: number) => React.ReactNode) | undefined,
+        number,
       ]
     })
   }
 
   const renderBodyTds = (item: any, rowIndex: number) => {
     return sortDataItem().map(
-      ([value, render]: [
+      ([value, render, width]: [
         string,
         ((item: any, index: number) => React.ReactNode) | undefined,
+        number,
       ]) => {
         return (
           <div
@@ -345,7 +350,10 @@ const TableVirtualComponent: ForwardRefRenderFunction<
               getStickyClass(value)
             )}
             key={value}
-            style={getStickyStyle(value)}
+            style={{
+              ...getStickyStyle(value),
+              width,
+            }}
           >
             {typeof item[value] === 'function' ||
             typeof render === 'function' ? (
@@ -437,10 +445,6 @@ const TableVirtualComponent: ForwardRefRenderFunction<
             [`${classPrefix}-main-striped`]: striped,
             [`${classPrefix}-main-virtual`]: virtual,
           })}
-          style={{
-            height: totalHeight,
-            position: 'relative',
-          }}
         >
           {showHeader && (
             <div className={`${classPrefix}-main-head`} ref={headerRef}>
@@ -450,14 +454,26 @@ const TableVirtualComponent: ForwardRefRenderFunction<
           <div
             className={`${classPrefix}-main-body`}
             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              transform: `translateY(${offsetY}px)`,
+              height: totalHeight,
+              position: 'relative',
             }}
           >
-            {renderBodyTrs()}
+            {virtual && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  transform: `translateY(${offsetY}px)`,
+                  display: 'table-row',
+                  width: '100%',
+                }}
+              >
+                {renderBodyTrs()}
+              </div>
+            )}
+            {!virtual && renderBodyTrs()}
           </div>
         </div>
       </div>
