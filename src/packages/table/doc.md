@@ -114,23 +114,23 @@ import { Table } from '@nutui/nutui-react'
 
 :::
 
-### 虚拟滚动
+### 不开启虚拟滚动
 
-当表格数据量较大时，可以使用虚拟滚动来优化性能。
+虚拟滚动表格不开启虚拟滚动，当普通表格使用。
 
 :::demo
 
-<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+<CodeBlock src='h5/demo-no-virtual.tsx'></CodeBlock>
 
 :::
 
 ### 虚拟滚动 + 动态行高
 
-支持动态计算行高，适用于行内容高度不固定的场景。
+当表格数据量较大时，可以使用虚拟滚动来优化性能。支持动态计算行高，适用于行内容高度不固定的场景。
 
 :::demo
 
-<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+<CodeBlock src='h5/demo-virtual.tsx'></CodeBlock>
 
 :::
 

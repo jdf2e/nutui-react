@@ -114,23 +114,23 @@ import { Table } from '@nutui/nutui-react'
 
 :::
 
-### Virtual Scrolling
+### Disable Virtual Scrolling
 
-When the table has a large amount of data, virtual scrolling can be used to optimize performance.
+Virtual scrolling table without enabling virtual scrolling, used as a regular table.
 
 :::demo
 
-<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+<CodeBlock src='h5/demo-no-virtual.tsx'></CodeBlock>
 
 :::
 
 ### Virtual Scrolling + Dynamic Row Height
 
-Supports dynamic calculation of row height, suitable for scenarios where row content height is not fixed.
+When the table has a large amount of data, virtual scrolling can be used to optimize performance. Supports dynamic calculation of row height, suitable for scenarios where row content height is not fixed.
 
 :::demo
 
-<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+<CodeBlock src='h5/demo-virtual.tsx'></CodeBlock>
 
 :::
 
