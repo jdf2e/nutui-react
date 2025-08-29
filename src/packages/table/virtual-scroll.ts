@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useThrottle } from './hooks'
 
 export interface VirtualScrollOptions {
   // 数据总条数
@@ -164,16 +165,8 @@ export function useVirtualScroll(
 
   const offsetY = calculateOffsetY()
 
-  // 使用防抖优化滚动事件处理
-  const scrollTimerRef = useRef<number | null>(null)
-
-  // 滚动事件处理函数
-  // 使用requestAnimationFrame进行滚动处理，避免过多的状态更新
-  const onScroll = (event: React.UIEvent) => {
-    // 获取当前滚动位置
-    const scrollContainer = event.target as HTMLDivElement
-    const currentScrollTop = scrollContainer.scrollTop
-
+  // 滚动事件处理函数 - 使用节流优化
+  const handleScrollUpdate = (currentScrollTop: number) => {
     // 如果滚动位置与当前引用值相同，则不更新
     if (currentScrollTop === scrollTopRef.current) {
       return
@@ -182,25 +175,31 @@ export function useVirtualScroll(
     // 立即更新ref值，这不会触发重新渲染
     scrollTopRef.current = currentScrollTop
 
-    // 清除之前的RAF请求
-    if (scrollTimerRef.current !== null) {
-      window.cancelAnimationFrame(scrollTimerRef.current as number)
-    }
-
-    // 使用requestAnimationFrame来优化渲染性能
-    scrollTimerRef.current = window.requestAnimationFrame(() => {
-      // 触发状态更新以重新渲染可视区域
-      // 使用函数形式的setState，确保我们总是基于最新状态更新
-      setScrollTopState((prev) => {
-        // 只有当滚动位置真正变化时才更新状态
-        if (Math.abs(prev - scrollTopRef.current) > 1) {
-          return scrollTopRef.current
-        }
-        return prev
-      })
-
-      scrollTimerRef.current = null
+    // 触发状态更新以重新渲染可视区域
+    // 使用函数形式的setState，确保我们总是基于最新状态更新
+    setScrollTopState((prev) => {
+      // 只有当滚动位置真正变化时才更新状态
+      if (Math.abs(prev - scrollTopRef.current) > 1) {
+        return scrollTopRef.current
+      }
+      return prev
     })
+  }
+
+  // 使用节流优化滚动事件处理，在快速滚动时降低更新频率
+  const throttledScrollHandler = useThrottle(handleScrollUpdate, 16, {
+    leading: true,
+    trailing: true,
+  })
+
+  // 滚动事件处理函数
+  const onScroll = (event: React.UIEvent) => {
+    // 获取当前滚动位置
+    const scrollContainer = event.target as HTMLDivElement
+    const currentScrollTop = scrollContainer.scrollTop
+
+    // 使用节流函数处理滚动更新
+    throttledScrollHandler(currentScrollTop)
   }
 
   // 手动设置滚动位置的方法（考虑动态高度）

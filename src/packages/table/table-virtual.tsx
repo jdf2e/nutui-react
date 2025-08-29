@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   forwardRef,
   ForwardRefRenderFunction,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
@@ -13,6 +14,7 @@ import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useTableSticky } from './utils'
 import { useVirtualScroll } from './virtual-scroll'
+import TableRow from './table-row'
 import { SortStateType, TableColumnProps, WebTableProps } from '@/types'
 
 export interface VirtualTableProps extends Omit<WebTableProps, 'bordered'> {
@@ -255,16 +257,22 @@ const TableVirtualComponent: ForwardRefRenderFunction<
     }
   }
 
-  const cellClasses = (item: TableColumnProps) => {
-    return {
-      [`${headerClassPrefix}-border`]: bordered,
-      [`${headerClassPrefix}-align${item.align ? item.align : ''}`]: true,
-    }
-  }
+  const cellClasses = useCallback(
+    (item: TableColumnProps) => {
+      return {
+        [`${headerClassPrefix}-border`]: bordered,
+        [`${headerClassPrefix}-align${item.align ? item.align : ''}`]: true,
+      }
+    },
+    [headerClassPrefix, bordered]
+  )
 
-  const getColumnItem = (value: string): TableColumnProps => {
-    return columns.filter((item: TableColumnProps) => item.key === value)[0]
-  }
+  const getColumnItem = useCallback(
+    (value: string): TableColumnProps => {
+      return columns.filter((item: TableColumnProps) => item.key === value)[0]
+    },
+    [columns]
+  )
 
   const renderHeadCells = () => {
     return columns.map((item: TableColumnProps, index: number) => {
@@ -325,7 +333,7 @@ const TableVirtualComponent: ForwardRefRenderFunction<
     })
   }
 
-  const sortDataItem = () => {
+  const sortDataItem = useCallback(() => {
     return columns.map((column: TableColumnProps) => {
       return [column.key, column.render, column.width] as [
         string,
@@ -333,41 +341,10 @@ const TableVirtualComponent: ForwardRefRenderFunction<
         number,
       ]
     })
-  }
+  }, [columns])
 
-  const renderBodyTds = (item: any, rowIndex: number) => {
-    return sortDataItem().map(
-      ([value, render, width]: [
-        string,
-        ((item: any, index: number) => React.ReactNode) | undefined,
-        number,
-      ]) => {
-        return (
-          <div
-            className={classNames(
-              `${bodyClassPrefix}-td`,
-              cellClasses(getColumnItem(value)),
-              getStickyClass(value)
-            )}
-            key={value}
-            style={{
-              ...getStickyStyle(value),
-              width,
-            }}
-          >
-            {typeof item[value] === 'function' ||
-            typeof render === 'function' ? (
-              <div>{render ? render(item, rowIndex) : item[value](item)}</div>
-            ) : (
-              item[value]
-            )}
-          </div>
-        )
-      }
-    )
-  }
-
-  const renderBodyTrs = () => {
+  // 使用useCallback优化renderBodyTrs函数，避免不必要的重新创建
+  const renderBodyTrs = useCallback(() => {
     // 如果启用了虚拟滚动，只渲染可视区域内的行
     const dataToRender = virtual
       ? innerValue.slice(
@@ -392,31 +369,37 @@ const TableVirtualComponent: ForwardRefRenderFunction<
           return null
         }
 
-        const inner = renderBodyTds(item, actualIndex)
-        const { rowRender } = item
-        if (rowRender && typeof rowRender === 'function') {
-          const renderedRow = rowRender(item, actualIndex, { inner })
-          // 如果自定义渲染函数返回的是React元素，我们需要添加ref
-          if (React.isValidElement(renderedRow) && dynamicHeight) {
-            return React.cloneElement(renderedRow, {
-              // @ts-ignore
-              ref: getRowRef(actualIndex),
-            })
-          }
-          return renderedRow
-        }
+        // 使用记忆化的TableRow组件，减少不必要的重渲染
         return (
-          <div
-            className={bodyClassPrefix}
+          <TableRow
             key={`row-${actualIndex}`}
-            ref={dynamicHeight ? getRowRef(actualIndex) : undefined}
-          >
-            {inner}
-          </div>
+            item={item}
+            rowIndex={actualIndex}
+            bodyClassPrefix={bodyClassPrefix}
+            cellClasses={cellClasses}
+            getStickyClass={getStickyClass}
+            getStickyStyle={getStickyStyle}
+            getColumnItem={getColumnItem}
+            sortDataItem={sortDataItem}
+            dynamicHeight={dynamicHeight}
+            getRowRef={dynamicHeight ? getRowRef : undefined}
+          />
         )
       })
       .filter(Boolean) // 过滤掉无效的行
-  }
+  }, [
+    virtual,
+    innerValue,
+    visibleRange,
+    bodyClassPrefix,
+    cellClasses,
+    getStickyClass,
+    getStickyStyle,
+    getColumnItem,
+    sortDataItem,
+    dynamicHeight,
+    getRowRef,
+  ])
 
   return (
     <div className={cls} {...rest}>
