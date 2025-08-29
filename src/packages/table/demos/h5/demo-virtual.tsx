@@ -46,6 +46,7 @@ const DemoVirtual = () => {
       title: 'ID',
       key: 'id',
       width: 50,
+      fixed: 'left',
       render: (_record: any, index: number) => {
         return index + 1
       },
@@ -69,6 +70,8 @@ const DemoVirtual = () => {
     {
       title: '描述',
       key: 'description',
+      width: 100,
+      fixed: 'right',
       render: (record: DataItem) => {
         return record.description ? (
           <div

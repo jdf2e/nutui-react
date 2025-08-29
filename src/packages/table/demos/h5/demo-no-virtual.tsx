@@ -40,6 +40,7 @@ const DemoNoVirtual = () => {
       title: 'ID',
       key: 'id',
       width: 50,
+      fixed: 'left',
       render: (_record: any, index: number) => {
         return index + 1
       },
@@ -63,6 +64,8 @@ const DemoNoVirtual = () => {
     {
       title: '描述',
       key: 'description',
+      width: 100,
+      fixed: 'right',
       render: (record: DataItem) => {
         return record.description ? (
           <div
@@ -85,15 +88,7 @@ const DemoNoVirtual = () => {
   // 使用状态管理数据
   const [data] = useState(generateData(10))
 
-  return (
-    <TableVirtual
-      columns={columns}
-      data={data}
-      style={{ marginBottom: '20px' }}
-      height={400}
-      bordered
-    />
-  )
+  return <TableVirtual columns={columns} data={data} height={400} bordered />
 }
 
 export default DemoNoVirtual

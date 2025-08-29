@@ -49,6 +49,12 @@
       }
     }
 
+    &-virtual {
+      .nut-table-main-body > div {
+        background-color: $color-background-overlay;
+      }
+    }
+
     &-head,
     &-body {
       background: inherit;
