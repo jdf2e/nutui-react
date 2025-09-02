@@ -1388,6 +1388,10 @@ $dialog-padding: var(--nutui-dialog-padding, 24px) !default;
 $dialog-max-height: var(--nutui-dialog-max-height, 420px) !default;
 $dialog-min-height: var(--nutui-dialog-min-height, 124px) !default;
 $dialog-border-radius: var(--nutui-dialog-border-radius, $radius-xl) !default;
+$dialog-background: var(
+  --nutui-dialog-background,
+  $color-background-overlay
+) !default;
 $dialog-content-margin: var(
   --nutui-dialog-content-margin,
   12px 0 16px 0
