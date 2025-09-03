@@ -44,7 +44,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-}
+} as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   open: typeof open
