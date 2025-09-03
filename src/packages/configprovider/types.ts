@@ -458,6 +458,7 @@ export type NutCSSVariables =
   | 'nutuiDialogMaxHeight'
   | 'nutuiDialogMinHeight'
   | 'nutuiDialogBorderRadius'
+  | 'nutuiDialogBackground'
   | 'nutuiDialogContentMargin'
   | 'nutuiDialogContentMaxHeight'
   | 'nutuiDialogContentLineHeight'
