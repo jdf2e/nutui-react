@@ -130,6 +130,7 @@
     &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
       background: $dialog-footer-cancel-bg;
+      color: $button-default-color;
       .nut-button-children {
         color: $button-default-color;
       }
@@ -137,6 +138,7 @@
 
     &-ok {
       max-width: $dialog-footer-ok-max-width;
+      font-weight: $font-weight-bold;
       .nut-button-children {
         font-weight: $font-weight-bold;
       }
