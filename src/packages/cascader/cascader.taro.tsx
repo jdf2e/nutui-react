@@ -165,7 +165,7 @@ export const Cascader = forwardRef((props: Partial<TaroCascaderProps>, ref) => {
         await innerValue.reduce(async (promise: Promise<any>, val, key) => {
           const pane = await onLoad({ value: val }, key)
           const parent = await promise
-          parent.children = pane
+          if (parent) parent.children = pane
           if (key === innerValue.length - 1) {
             return Promise.resolve(parent)
           }
