@@ -6,6 +6,7 @@ import React, {
   ReactPortal,
   useRef,
 } from 'react'
+import { nextTick } from '@tarojs/taro'
 import { createPortal } from 'react-dom'
 // import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
@@ -99,7 +100,7 @@ export const Popup: FunctionComponent<
   const nodeRef = useLockScrollTaro(
     innerVisible && lockScroll
   ) as React.MutableRefObject<any>
-
+  const topNodeRef = React.useRef<HTMLDivElement | null>(null)
   const rootRect = useRef<any>(null)
   const touchStartRef = useRef(0)
   const touchMoveDistanceRef = useRef(0)
@@ -122,6 +123,8 @@ export const Popup: FunctionComponent<
     className
   )
   const [popupHeight, setPopupHeight] = useState('')
+  const [topBottom, setTopBottom] = useState('')
+
   const resizeStyles = () => {
     if (popupHeight !== '') {
       return {
@@ -149,6 +152,22 @@ export const Popup: FunctionComponent<
     }
     onOpen && onOpen()
   }
+
+  const getPopupHeight = async () => {
+    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
+    const height = nodeRef.current?.offsetHeight || rect?.height
+    setTopBottom(pxTransform(height))
+  }
+
+  useEffect(() => {
+    if (innerVisible && topNodeRef.current && nodeRef.current) {
+      nextTick(() => {
+        nextTick(() => {
+          getPopupHeight()
+        })
+      })
+    }
+  }, [innerVisible])
 
   const close = () => {
     if (innerVisible) {
@@ -186,6 +205,19 @@ export const Popup: FunctionComponent<
           </View>
         )}
       </>
+    )
+  }
+
+  const renderTop = () => {
+    if (!top) return null
+    return (
+      <View
+        className={`${classPrefix}-bottom-top`}
+        ref={topNodeRef}
+        style={{ bottom: topBottom }}
+      >
+        {top}
+      </View>
     )
   }
 
@@ -315,7 +347,7 @@ export const Popup: FunctionComponent<
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
-        {top}
+        {renderTop()}
         {renderTitle()}
         {showChildren ? children : null}
       </View>
