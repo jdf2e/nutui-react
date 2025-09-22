@@ -27,8 +27,6 @@ export const Col: FunctionComponent<
       ...defaultProps,
       ...props,
     }
-  const [colName, setColName] = useState('')
-  const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
 
   const classs = () => {
@@ -49,6 +47,8 @@ export const Col: FunctionComponent<
     }
     return style
   }
+  const [colName, setColName] = useState(classs())
+  const [colStyle, setColStyle] = useState(getStyle())
   useEffect(() => {
     setColName(classs)
     setColStyle(getStyle)
