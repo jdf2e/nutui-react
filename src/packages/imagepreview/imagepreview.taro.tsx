@@ -22,6 +22,7 @@ import {
   PreviewVideoOption,
   TaroImagePreviewProps,
 } from '@/types'
+import { mergeProps } from '@/utils'
 
 interface Store {
   scale: number
@@ -46,7 +47,7 @@ const defaultProps = {
   showMenuByLongpress: false,
   onChange: () => {},
   onClose: () => {},
-} as TaroImagePreviewProps
+} as unknown as TaroImagePreviewProps
 export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
   props
 ) => {
@@ -62,13 +63,15 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
     pagination,
     indicator,
     autoPlay,
+    loop,
     closeOnContentClick,
     closeIcon,
     closeIconPosition,
     showMenuByLongpress,
     onClose,
     onChange,
-  } = { ...defaultProps, ...props }
+    ...rest
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-imagepreview'
   const ref = useRef<HTMLDivElement | null>(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
@@ -223,9 +226,10 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
         onTouchCancel={onTouchEnd}
       >
         <Swiper
-          autoPlay={autoPlay}
+          autoplay={autoPlay}
+          loop={loop}
+          direction="horizontal"
           className={`${classPrefix}-swiper`}
-          loop
           height="100%"
           style={{
             display: showPop ? 'block' : 'none',
@@ -233,7 +237,6 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
             width: '100%',
             height: '100%',
           }}
-          direction="horizontal"
           onChange={(e) => slideChangeEnd(e.detail.current)}
           defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
           indicator={indicator}

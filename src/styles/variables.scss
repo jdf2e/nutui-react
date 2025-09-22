@@ -1061,7 +1061,6 @@ $hoverbutton-item-icon-color-active: var(
 
 //overlay（✅）
 $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
-$overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
   $color-background-overlay
@@ -1389,6 +1388,10 @@ $dialog-padding: var(--nutui-dialog-padding, 24px) !default;
 $dialog-max-height: var(--nutui-dialog-max-height, 420px) !default;
 $dialog-min-height: var(--nutui-dialog-min-height, 124px) !default;
 $dialog-border-radius: var(--nutui-dialog-border-radius, $radius-xl) !default;
+$dialog-background: var(
+  --nutui-dialog-background,
+  $color-background-overlay
+) !default;
 $dialog-content-margin: var(
   --nutui-dialog-content-margin,
   12px 0 16px 0
@@ -2134,7 +2137,7 @@ $form-item-error-message-color: var(
 ) !default;
 $form-item-label-font-size: var(
   --nutui-form-item-label-font-size,
-  $font-size-base
+  $font-size-s
 ) !default;
 $form-item-label-width: var(--nutui-form-item-label-width, 90px) !default;
 $form-item-label-margin-right: var(

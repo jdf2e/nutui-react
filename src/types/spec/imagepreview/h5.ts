@@ -1,3 +1,5 @@
 import { BaseImagePreview } from './base'
+import { WebSwiperProps } from '@/types'
 
-export interface WebImagePreviewProps extends BaseImagePreview {}
+type props = BaseImagePreview & Omit<WebSwiperProps, 'autoPlay' | 'indicator'>
+export interface WebImagePreviewProps extends Omit<props, 'autoplay'> {}

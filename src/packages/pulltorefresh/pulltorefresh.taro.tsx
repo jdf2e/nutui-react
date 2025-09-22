@@ -154,7 +154,7 @@ export const PullToRefresh: FunctionComponent<
     <View
       className={classes}
       style={props.style}
-      catchMove
+      catchMove={props.catchMove}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

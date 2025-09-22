@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, {
+  CSSProperties,
+  FunctionComponent,
+  useCallback,
+  useState,
+} from 'react'
 import Taro from '@tarojs/taro'
 import {
   Image as TImage,
@@ -62,6 +67,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
           borderRadius: pxCheck(radius),
         }
       : {}),
+    ...(style as CSSProperties),
   }
 
   const imgStyle: any = {
@@ -112,7 +118,13 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     >
       <TImage
         {...rest}
-        className={`${classPrefix}-default ${className ? `${className}-image` : ''}`}
+        className={classNames(
+          `${classPrefix}-default`,
+          className && `${className}-image`,
+          {
+            [`${classPrefix}-error`]: isError,
+          }
+        )}
         style={imgStyle}
         src={src}
         onLoad={(e) => handleLoad(e)}

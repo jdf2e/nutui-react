@@ -93,7 +93,12 @@ plugins: [
 [//]: # '#### Icon'
 [//]: # '#### Image'
 [//]: # '#### Overlay'
-[//]: # '#### Popup'
+
+#### Popup
+
+- 新增属性 resizable，用于底部弹出时，可上下滑动
+- 新增属性 minHeight，用于设置最小高度，可搭配 resizable 使用
+- 新增 onTouchStart、onTouchMove、onTouchEnd 方法
 
 ### 布局组件
 
@@ -310,7 +315,7 @@ plugins: [
 
 [//]: # '#### Progress'
 
-# '#### Skeleton'
+#### Skeleton
 
 - 移除 `avatar` 属性，可通过 `width` 和 `height` 属性模拟
 - 移除 `avatarShape` 属性，可通过 `shape` 属性设置

@@ -1,3 +1,68 @@
+# v3.0.18
+
+`2025-08-15`
+
+- 🏡 chore: 升级icon库 (#3330)
+- 🏡 chore: 发布taro下的样式按需插件
+- 📖 docs: 更新介绍部分内容 (#3324)
+- :sparkles: feat: Ellipsis校验越界不走缓存配置 (#3329)
+- :sparkles: feat(price): 支持自定义颜色&数据原样输出 (#3328)
+- :sparkles: feat(notify): 支持promise调用notice (#3319)
+- :bug: fix(noticebar): 适配鸿蒙样式修复 (#3332)
+- :bug: Fix icons svg (#3331)
+
+# v3.0.17
+
+`2025-08-01`
+
+- :sparkles: feat: add plugin for bizui using nutui (#3318)
+- :bug: fix(skeleton): correct v3 update docs (#3313)
+- :bug: fix(pulltorefresh): 增加 catchMove 属性，用于显示控制 (#3311)
+- :bug: fix: 修复日历只有一个月的情况 (#3306)
+- 🏡 chore(harmonycss): 每个组件构建全量的css (#3316)
+
+# v3.0.16
+
+`2025-07-04`
+
+- :bug: fix(calendar): 类型修订 (#3292)
+- :bug: fix(swiper): 修改初始值时不生效问题 (#3293)
+- :bug: fix(noticebar): children cannot update responsively in vertical mode (#3251)
+
+# v3.0.15
+
+`2025-06-27`
+
+- 📖 docs(checkbox): 修订数据类型 (#3273)
+- :sparkles: feat(dialog): close和cancel各司其职 (#3282)
+- :sparkles: feat(calendarcard): 增加自定义头 (#3285)
+- :sparkles: feat(calendarcard): 对函数做了优化处理 (#3284)
+- :bug: fix(configprovider): 修订路径别名 (#3287)
+- :bug: fix(form): 单测错误修复 (#3286)
+- :bug: fix(noticebar): first item is not visible when scrolling vertically (#3249)
+- :bug: fix(form): 修复右侧星星无法展示的问题 (#3283)
+- :bug: fix(form): label无法修改字号 (#3280)
+- :bug: fix: remove -zIndex CSS variable due to lower priority and default value confusion (#3262)
+- :bug: fix(button): 禁用样式修订 (#3279)
+- :bug: fix(datepicker): 修改不设置事件类型的返回值 (#3270)
+- :bug: fix(pickerview): 修改快速滚动偶现滑动错位问题 (#3278)
+
+# v3.0.14
+
+`2025-06-13`
+
+- 🏡 chore(site): adjust online debugging visibility (#3257)
+- :sparkles: feat(image): support custom error state class name (#3263)
+- :bug: fix: docs (#3268)
+- :bug: fix(datepicker): 解决未传默认值时限制时间边界不准确问题 (#3265)
+- :bug: fix(input): handleBlur callback value is undefined in mini-programs (#3266)
+- :bug: fix(image): 修复内联样式不生效 (#3254)
+- :bug: fix(switch): 移除重复的onchange回调 (#3259)
+- :bug: fix(tabs): correct tabpane-background-color css variables (#3255)
+- :bug: fix(navbar): 支持background的配置,补充了部分demo (#3258)
+- :bug: fix(configprovider): 调整demo,修复web h5 下引入不一致问题,修复文档 (#3244)
+- :bug: fix(elevator): v15 适配 & 选中值支持受控 (#3210)
+
 # v3.0.13
 
 `2025-05-30`

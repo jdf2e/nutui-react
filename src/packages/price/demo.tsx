@@ -9,6 +9,8 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
+import Demo11 from './demos/h5/demo11'
 
 const PriceDemo = () => {
   const [translated] = useTranslate({
@@ -22,6 +24,8 @@ const PriceDemo = () => {
       title7: '不展示 symbol 符号',
       title8: '划线价',
       title9: '场域分类：原子级、模块级、列表级、页面级',
+      title10: '自定义颜色',
+      title11: '数据原样输出',
     },
     'zh-TW': {
       title1: '支持尺寸：small、normal、large、xlarge',
@@ -45,6 +49,8 @@ const PriceDemo = () => {
       title7: 'Do not display symbol',
       title8: 'Line-through price',
       title9: 'Field classification: atomic, module, list, page',
+      title10: 'Custom color',
+      title11: 'Data original output',
     },
   })
 
@@ -68,6 +74,10 @@ const PriceDemo = () => {
       <Demo7 />
       <h2>{translated.title8}</h2>
       <Demo8 />
+      <h2>{translated.title10}</h2>
+      <Demo10 />
+      <h2>{translated.title11}</h2>
+      <Demo11 />
     </div>
   )
 }

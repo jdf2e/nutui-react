@@ -77,16 +77,28 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [active, setActive] = useState(false)
 
+  // 兼容H5和小程序获取原生input标签
+  const getNativeInput = () => {
+    if (Taro.getEnv() === 'WEB') {
+      const taroInputCoreEl = inputRef.current as HTMLElement
+      const inputEl = taroInputCoreEl.querySelector('input')
+      return inputEl
+    }
+    return inputRef.current
+  }
+
   useImperativeHandle(ref, () => {
     return {
       clear: () => {
         setValue('')
       },
       focus: () => {
-        inputRef.current?.focus()
+        const nativeInput = getNativeInput()
+        nativeInput?.focus()
       },
       blur: () => {
-        inputRef.current?.blur()
+        const nativeInput = getNativeInput()
+        nativeInput?.blur()
       },
       get nativeElement() {
         return inputRef.current
@@ -141,7 +153,8 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   }
 
   const handleBlur = (event: any) => {
-    const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+    const val =
+      Taro.getEnv() === 'WEB' ? (event.target as any).value : event.detail.value
     updateValue(val, 'onBlur')
     setTimeout(() => setActive(false), 200)
   }

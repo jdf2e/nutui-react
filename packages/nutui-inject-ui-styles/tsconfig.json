@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "target": "ES2015",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "module": "ESNext",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "isolatedModules": false,
+    "types": ["node"]
+  },
+  "include": [
+    "./src"
+  ]
+}

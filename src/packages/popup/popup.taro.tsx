@@ -4,17 +4,21 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
+  useRef,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
-import { View, ITouchEvent } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
+import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
+import { pxTransform } from '@/utils/taro/px-transform'
 
 const defaultProps: TaroPopupProps = {
   ...defaultOverlayProps,
@@ -29,10 +33,15 @@ const defaultProps: TaroPopupProps = {
   portal: null,
   overlay: true,
   round: false,
+  resizable: false,
+  minHeight: '',
   onOpen: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
   onCloseIconClick: () => true,
+  onTouchStart: () => {},
+  onTouchMove: () => {},
+  onTouchEnd: () => {},
 }
 
 // 默认1000，参看variables
@@ -40,7 +49,10 @@ const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<TaroPopupProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onClick' | 'title' | 'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
+    >
 > = (props) => {
   const {
     children,
@@ -65,6 +77,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    resizable,
+    minHeight,
     onOpen,
     onClose,
     onOverlayClick,
@@ -72,21 +86,32 @@ export const Popup: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
   } = { ...defaultProps, ...props }
-
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-  const refObject = useLockScrollTaro(innerVisible && lockScroll)
-  const classPrefix = 'nut-popup'
+  const nodeRef = useLockScrollTaro(
+    innerVisible && lockScroll
+  ) as React.MutableRefObject<any>
 
+  const rootRect = useRef<any>(null)
+  const touchStartRef = useRef(0)
+  const touchMoveDistanceRef = useRef(0)
+  const heightRef = useRef(0)
+  const defaultHeightRef = useRef(0)
+  const isTouching = useRef(false)
+
+  const classPrefix = 'nut-popup'
   const overlayStyles = {
     ...overlayStyle,
   }
   const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
-  const popStyles = { zIndex: contentZIndex, ...style }
+  const popStyles = { zIndex: contentZIndex, minHeight, ...style }
   const popClassName = classNames(
     classPrefix,
     {
@@ -95,9 +120,26 @@ export const Popup: FunctionComponent<
     },
     className
   )
+  const [popupHeight, setPopupHeight] = useState('')
+  const resizeStyles = () => {
+    if (popupHeight !== '') {
+      return {
+        height: popupHeight,
+      }
+    }
+  }
 
   const open = () => {
     if (!innerVisible) {
+      // 当高度改变后，再次打开时，将高度置为初始高度
+      if (
+        position === 'bottom' &&
+        resizable &&
+        nodeRef.current &&
+        heightRef.current
+      ) {
+        setPopupHeight(pxTransform(defaultHeightRef.current))
+      }
       setInnerVisible(true)
       setIndex(++innerIndex)
     }
@@ -182,26 +224,105 @@ export const Popup: FunctionComponent<
     }
   }
 
+  const handleTouchStart: CommonEventFunction = async (event) => {
+    if (position !== 'bottom' || !resizable || !nodeRef.current) return
+    const e = event as ITouchEvent
+    // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
+    touchStartRef.current = e.touches[0].pageY
+    // 标记开始滑动
+    isTouching.current = true
+    // 标记当前popup的高度
+    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
+    rootRect.current = rect
+    heightRef.current =
+      nodeRef.current?.offsetHeight || rootRect.current?.height || 0
+    if (!defaultHeightRef.current) defaultHeightRef.current = heightRef.current
+    onTouchStart?.(heightRef.current, e)
+  }
+
+  const handleTouchMove: CommonEventFunction = (event) => {
+    if (
+      position !== 'bottom' ||
+      !resizable ||
+      !nodeRef.current ||
+      !rootRect.current
+    )
+      return
+
+    const e = event as ITouchEvent
+    e.stopPropagation()
+
+    // 计算位移：move过程中，当前的pageY 与 start值比较
+    touchMoveDistanceRef.current = e.touches[0].pageY - touchStartRef.current
+
+    const handleMove = () => {
+      const min =
+        typeof minHeight === 'number'
+          ? minHeight
+          : parseInt(String(minHeight || 0), 10) || 0
+      const currentHeight = Math.max(
+        min,
+        heightRef.current - touchMoveDistanceRef.current
+      )
+      setPopupHeight(pxTransform(currentHeight))
+      if (touchMoveDistanceRef.current > 0 && isTouching.current) {
+        // 向下滑动
+        onTouchMove?.(currentHeight, e, 'down')
+      } else {
+        // 向上滑动
+        onTouchMove?.(currentHeight, e, 'up')
+      }
+    }
+    requestAnimationFrame(handleMove)
+  }
+
+  const handleTouchEnd: CommonEventFunction = (event) => {
+    if (
+      position !== 'bottom' ||
+      !resizable ||
+      !nodeRef.current ||
+      !rootRect.current
+    )
+      return
+    const e = event as ITouchEvent
+    isTouching.current = false
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
+    onTouchEnd?.(currentHeight, e)
+  }
+
   const renderContent = () => {
     return (
-      <>
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : null}
-        </View>
-      </>
+      <View
+        ref={nodeRef}
+        style={{
+          ...popStyles,
+          display: innerVisible ? 'block' : 'none',
+          ...resizeStyles(),
+        }}
+        className={popClassName}
+        onClick={onClick}
+        catchMove={lockScroll}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+      >
+        {renderTitle()}
+        {showChildren ? children : null}
+      </View>
     )
   }
   const renderPop = () => {
     return (
       <CSSTransition
-        nodeRef={refObject}
+        nodeRef={nodeRef}
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}

@@ -11,6 +11,7 @@ import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
 import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
+import Demo12 from './demos/h5/demo12'
 
 const CalendarDemo = () => {
   const [translated] = useTranslate({
@@ -28,6 +29,7 @@ const CalendarDemo = () => {
       select: '选择日期',
       confirm: '确定',
       ref: '使用 Ref 上的方法',
+      title: '搭配 Ref 使用自定义头',
     },
     'zh-TW': {
       single: '選擇單個日期',
@@ -43,6 +45,7 @@ const CalendarDemo = () => {
       select: '選擇日期',
       confirm: '確定',
       ref: '使用 Ref 上的方法',
+      title: '搭配 Ref 使用自定義头',
     },
     'en-US': {
       single: 'Select a single date',
@@ -58,6 +61,7 @@ const CalendarDemo = () => {
       select: 'Select',
       confirm: 'Confirm',
       ref: 'Use ref',
+      title: 'Custom title',
     },
   })
 
@@ -66,36 +70,28 @@ const CalendarDemo = () => {
       <div className="demo">
         <h2>{translated.single}</h2>
         <Demo1 />
-
         <h2>{translated.multiple}</h2>
         <Demo2 />
-
         <h2>{translated.range}</h2>
         <Demo3 />
-
         <h2>{translated.week}</h2>
         <Demo4 />
-
         <h2>{translated.control}</h2>
         <Demo5 />
-
         <h2>{translated.renderDay}</h2>
         <Demo6 />
-
         <h2>{translated.firstDay}</h2>
         <Demo7 />
-
         <h2>{translated.customRange}</h2>
         <Demo8 />
-
         <h2>{translated.disable}</h2>
         <Demo9 />
-
         <h2>{translated.popup}</h2>
         <Demo10 />
-
         <h2>{translated.ref}</h2>
         <Demo11 />
+        <h2>{translated.title}</h2>
+        <Demo12 />
       </div>
     </>
   )
