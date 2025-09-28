@@ -182,7 +182,7 @@ export const Toast: FunctionComponent<
               {renderIcon()}
               {title && <Text className={`${classPrefix}-title`}>{title}</Text>}
               {content && (
-                <Text className={`${classPrefix}-text`}>{content}</Text>
+                <View className={`${classPrefix}-text`}>{content}</View>
               )}
             </View>
           </View>
