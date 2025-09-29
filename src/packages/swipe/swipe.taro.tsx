@@ -13,7 +13,7 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
-import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRefState } from '@/hooks/use-ref-state'
 import { useUuid } from '@/hooks/use-uuid'
@@ -48,14 +48,11 @@ export const Swipe = forwardRef<
 
   const getWidth = async () => {
     if (leftWrapper.current) {
-      const leftRect = await getRectInMultiPlatformWithoutCache(
-        leftWrapper.current,
-        leftId
-      )
+      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
       leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
-      const rightRect = await getRectInMultiPlatformWithoutCache(
+      const rightRect = await getRectInMultiPlatform(
         rightWrapper.current,
         rightId
       )
@@ -102,9 +99,9 @@ export const Swipe = forwardRef<
   const wrapperStyle = useMemo(() => {
     return {
       transform: `translate(${state.offset}px, 0)`,
-      transitionDuration: '.6s',
+      transitionDuration: state.dragging ? '0.01s' : '.6s',
     }
-  }, [state.offset])
+  }, [state.offset, state.dragging])
 
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
     if (!props.disabled) {
@@ -168,7 +165,6 @@ export const Swipe = forwardRef<
     const name = props.name as number | string
     props.onOpen?.({ name, position: side })
 
-    // dd
     setState((prevState) => ({
       ...prevState,
       offset: Number(offset) || 0,
@@ -184,7 +180,6 @@ export const Swipe = forwardRef<
           position: position || 'left',
         })
       }
-      // setState((v) => ({ ...v, offset: 0 }))
       setState((prevState) => ({
         ...prevState,
         offset: 0,
