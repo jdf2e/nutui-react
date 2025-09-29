@@ -233,7 +233,6 @@ export const Swipe = forwardRef<
   useEffect(() => {
     // 并没有生效
     const handler: any = (event: { target: Node | null }) => {
-      console.log('~~hanyu handler---- window', event)
       const targets = [root]
       if (
         targets.some((targetItem) => {
