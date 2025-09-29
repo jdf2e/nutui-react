@@ -1,8 +1,10 @@
 import React, {
   forwardRef,
   MouseEvent,
+  useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -13,7 +15,6 @@ import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/taro/platform'
 import { useRefState } from '@/hooks/use-ref-state'
 import { useUuid } from '@/hooks/use-uuid'
 import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
@@ -45,25 +46,23 @@ export const Swipe = forwardRef<
   const leftId = `swipe-left-${uid}`
   const rightId = `swipe-right-${uid}`
 
+  const getWidth = async () => {
+    if (leftWrapper.current) {
+      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
+      leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
+    }
+    if (rightWrapper.current) {
+      const rightRect = await getRectInMultiPlatform(
+        rightWrapper.current,
+        rightId
+      )
+      rightRect &&
+        setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
+    }
+  }
+
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
   useReady(() => {
-    const getWidth = async () => {
-      if (leftWrapper.current) {
-        const leftRect = await getRectInMultiPlatform(
-          leftWrapper.current,
-          leftId
-        )
-        leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
-      }
-      if (rightWrapper.current) {
-        const rightRect = await getRectInMultiPlatform(
-          rightWrapper.current,
-          rightId
-        )
-        rightRect &&
-          setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
-      }
-    }
     nextTick(() => getWidth())
   })
 
@@ -78,7 +77,6 @@ export const Swipe = forwardRef<
     offset: 0,
     dragging: false,
   })
-
   const [actionWidth, updateState] = useRefState({
     left: 0,
     right: 0,
@@ -98,24 +96,16 @@ export const Swipe = forwardRef<
       })
     }
   }
-  const wrapperStyle = {
-    transform: `translate(${state.offset}${!harmony() ? 'px' : ''}, 0)`,
-    transitionDuration: state.dragging ? '0s' : '.6s',
-  }
+  const wrapperStyle = useMemo(() => {
+    return {
+      transform: `translate(${state.offset}px, 0)`,
+      transitionDuration: state.dragging ? '0.01s' : '.6s',
+    }
+  }, [state.offset, state.dragging])
+
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
-    if (leftWrapper.current) {
-      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
-      leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
-    }
-    if (rightWrapper.current) {
-      const rightRect = await getRectInMultiPlatform(
-        rightWrapper.current,
-        rightId
-      )
-      rightRect &&
-        setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
-    }
     if (!props.disabled) {
+      getWidth()
       startOffset.current = state.offset
       touch.start(event)
       props.onTouchStart?.(event)
@@ -123,32 +113,31 @@ export const Swipe = forwardRef<
   }
 
   const onTouchMove = (event: BaseEventOrig<HTMLDivElement>) => {
-    if (props.disabled) {
-      return
-    }
-
+    if (props.disabled) return
     touch.move(event)
     props.onTouchMove?.(event)
     if (touch.isHorizontal()) {
       lockClick.current = true
-      const newState = { ...state, dragging: true }
       const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
         preventDefault(event, true)
       }
-
-      newState.offset = rangeCalculation(
+      const offset = rangeCalculation(
         touch.deltaX.current + startOffset.current,
         -actionWidth.current.right || 0,
         actionWidth.current.left || 0
       )
-      setState(newState)
+      setState((prevState) => ({
+        ...prevState,
+        dragging: true,
+        offset: Number(offset) || 0,
+      }))
     }
   }
 
   const onTouchEnd = (event: BaseEventOrig<HTMLDivElement>) => {
     if (state.dragging) {
-      setState((v) => ({ ...v, dragging: false }))
+      setState((prevState) => ({ ...prevState, dragging: false }))
       toggle(state.offset > 0 ? 'left' : 'right')
       setTimeout(() => {
         lockClick.current = false
@@ -175,19 +164,29 @@ export const Swipe = forwardRef<
       side === 'left' ? actionWidth.current.left : -actionWidth.current.right
     const name = props.name as number | string
     props.onOpen?.({ name, position: side })
-    setState((v) => ({ ...v, offset: Number(offset) || 0 }))
+
+    setState((prevState) => ({
+      ...prevState,
+      offset: Number(offset) || 0,
+    }))
   }
 
-  const close = (position?: PositionX) => {
-    if (opened.current) {
-      opened.current = false
-      props.onClose?.({
-        name: props.name as number | string,
-        position: position || 'left',
-      })
-    }
-    setState((v) => ({ ...v, offset: 0 }))
-  }
+  const close = useCallback(
+    (position?: PositionX) => {
+      if (opened.current) {
+        opened.current = false
+        props.onClose?.({
+          name: props.name as number | string,
+          position: position || 'left',
+        })
+      }
+      setState((prevState) => ({
+        ...prevState,
+        offset: 0,
+      }))
+    },
+    [props]
+  )
 
   const rangeCalculation = (
     num: number | string,
@@ -232,8 +231,7 @@ export const Swipe = forwardRef<
   }))
 
   useEffect(() => {
-    if (harmony()) return
-
+    // 并没有生效
     const handler: any = (event: { target: Node | null }) => {
       const targets = [root]
       if (
@@ -248,11 +246,10 @@ export const Swipe = forwardRef<
     }
 
     document.addEventListener('touchstart', handler)
-
     return () => {
       document.removeEventListener('touchstart', handler)
     }
-  }, [])
+  }, [close])
 
   return (
     <View
