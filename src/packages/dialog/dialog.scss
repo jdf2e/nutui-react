@@ -125,12 +125,14 @@
 
     .nut-button {
       min-width: $dialog-footer-button-min-width;
+      border-radius: $diloag-footer-button-border;
     }
 
     &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
       background: $dialog-footer-cancel-bg;
       color: $button-default-color;
+      border: none;
       .nut-button-children {
         color: $button-default-color;
       }
@@ -138,9 +140,9 @@
 
     &-ok {
       max-width: $dialog-footer-ok-max-width;
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-medium;
       .nut-button-children {
-        font-weight: $font-weight-bold;
+        font-weight: $font-weight-medium;
       }
     }
 
