@@ -127,7 +127,7 @@ export const NoticeBar: FunctionComponent<
         startRollEasy()
       }
     } else {
-      initScrollWrap(content)
+      initScrollWrap()
     }
     return () => {
       // 销毁事件
@@ -136,7 +136,7 @@ export const NoticeBar: FunctionComponent<
   }, [childs])
 
   useEffect(() => {
-    initScrollWrap(content)
+    initScrollWrap()
   }, [content])
 
   useEffect(() => {
@@ -145,7 +145,7 @@ export const NoticeBar: FunctionComponent<
     }
   }, [list])
 
-  const initScrollWrap = (value: string) => {
+  const initScrollWrap = () => {
     if (showNoticeBar === false) {
       return
     }
