@@ -155,6 +155,7 @@ export const NoticeBar: FunctionComponent<
       }
       const warpRes = await getRectInMultiPlatform(wrapRef.current)
       const contentRes = await getRectInMultiPlatform(contentRef.current)
+      if (!warpRes || !contentRes) return
       const wrapW = warpRes.width
       const offsetW = contentRes.width
       const canScroll =
