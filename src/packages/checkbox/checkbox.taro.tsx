@@ -198,6 +198,7 @@ export const Checkbox: FC<
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
           'nut-checkbox-list-item': ctx?.list,
+          [`${classPrefix}-active`]: innerChecked,
         },
         className
       )}
