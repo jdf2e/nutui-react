@@ -83,6 +83,7 @@
     font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
     color: $color-title;
+    margin-bottom: $dialog-title-margin-bottom;
     @include oneline-ellipsis();
   }
 
@@ -125,14 +126,15 @@
 
     .nut-button {
       min-width: $dialog-footer-button-min-width;
-      border-radius: $diloag-footer-button-border;
+      border-radius: $dialog-footer-button-border;
+      padding: var(--nutui-button-large-padding, 0 12px);
     }
 
     &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
       background: $dialog-footer-cancel-bg;
       color: $button-default-color;
-      border: none;
+      border-color: var(--nutui-button-default-border-color, transparent);
       .nut-button-children {
         color: $button-default-color;
       }
