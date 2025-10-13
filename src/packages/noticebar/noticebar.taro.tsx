@@ -6,9 +6,11 @@ import React, {
   useState,
   useCallback,
 } from 'react'
+
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { useUuid } from '@/hooks/use-uuid'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -67,6 +69,11 @@ export const NoticeBar: FunctionComponent<
   const classPrefix = 'nut-noticebar'
   const wrapRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+
+  const uid = useUuid()
+  const wrapRefId = `wrap-ref-${uid}`
+  const contentRefId = `content-ref-${uid}`
+
   const [showNoticeBar, setShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
@@ -153,8 +160,11 @@ export const NoticeBar: FunctionComponent<
       if (!wrapRef.current || !contentRef.current) {
         return
       }
-      const warpRes = await getRectInMultiPlatform(wrapRef.current)
-      const contentRes = await getRectInMultiPlatform(contentRef.current)
+      const warpRes = await getRectInMultiPlatform(wrapRef.current, wrapRefId)
+      const contentRes = await getRectInMultiPlatform(
+        contentRef.current,
+        contentRefId
+      )
       if (!warpRes || !contentRes) return
       const wrapW = warpRes.width
       const offsetW = contentRes.width
@@ -493,9 +503,10 @@ export const NoticeBar: FunctionComponent<
       {showNoticeBar && direction === 'horizontal' ? (
         <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {renderLeftIcon()}
-          <View ref={wrapRef} className="nut-noticebar-box-wrap">
+          <View ref={wrapRef} className="nut-noticebar-box-wrap" id={wrapRefId}>
             <View
               ref={contentRef}
+              id={contentRefId}
               className={`nut-noticebar-box-wrap-content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
               }`}
