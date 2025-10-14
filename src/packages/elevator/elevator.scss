@@ -98,7 +98,9 @@
       display: flex;
       flex-direction: column;
       &-item {
+        /* #ifndef dynamic*/
         display: inline-flex;
+        /* #endif */
         /* #ifdef dynamic*/
         display: flex;
         /* #endif */

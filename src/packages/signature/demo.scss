@@ -13,7 +13,9 @@
 
   .demo-btn {
     margin-top: 0;
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     /* #ifdef dynamic*/
     display: flex;
     /* #endif */

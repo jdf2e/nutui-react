@@ -1,6 +1,8 @@
 .nut-badge {
   position: relative;
+  /* #ifndef dynamic*/
   display: inline-flex;
+  /* #endif */
   /* #ifdef dynamic*/
   display: flex;
   /* #endif */
@@ -41,7 +43,9 @@
   }
 
   &-sup {
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     /* #ifdef dynamic*/
     display: flex;
     /* #endif */

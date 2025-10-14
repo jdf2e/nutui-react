@@ -1,5 +1,7 @@
 .nut-loading {
+  /* #ifndef dynamic*/
   display: inline-flex;
+  /* #endif */
   /* #ifdef dynamic*/
   display: flex;
   /* #endif */

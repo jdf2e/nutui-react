@@ -114,7 +114,9 @@
           width: 100%;
 
           &-inner {
+            /* #ifndef dynamic*/
             display: inline-flex;
+            /* #endif */
             /* #ifdef dynamic*/
             display: flex;
             /* #endif */
