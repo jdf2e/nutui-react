@@ -63,6 +63,9 @@
 
   &-custom-icon {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     align-items: center;
     justify-content: center;
     font-size: $tag-font-size;

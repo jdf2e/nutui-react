@@ -5,6 +5,9 @@
   &-content {
     position: relative;
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     width: $skeleton-line-width;
     background: $skeleton-background;
     border-radius: $skeleton-line-border-radius;

@@ -7,6 +7,9 @@
   margin: 0 auto;
   &-icon {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     margin-bottom: $resultpage-icon-margin-bottom;
     .nut-icon {
       height: $resultpage-icon-size;

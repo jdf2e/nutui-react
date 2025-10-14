@@ -66,6 +66,9 @@
   &-button {
     position: relative;
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     align-items: center;
     min-height: 32px;
     padding: $checkbox-button-padding;

@@ -1,5 +1,8 @@
 .nut-segmented {
   display: inline-flex;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
   height: $segmented-height;
   min-width: 24px;
   padding: $segmented-padding;

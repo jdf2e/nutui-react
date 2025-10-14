@@ -1,7 +1,11 @@
 .nut-inputnumber {
   display: inline-flex;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
   width: calc(
-    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} + #{$inputnumber-input-width}
+    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} +
+      #{$inputnumber-input-width}
   );
   flex-direction: row;
   align-items: center;

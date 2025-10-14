@@ -115,6 +115,9 @@
 
           &-inner {
             display: inline-flex;
+            /* #ifdef dynamic*/
+            display: flex;
+            /* #endif */
             height: $steps-base-line-height;
             width: 100%;
             background: $steps-base-line-background;
@@ -232,7 +235,9 @@
         align-items: center;
         height: $steps-vertical-line-height;
         font-size: $steps-vertical-title-font-size;
+        /* #ifndef dynamic*/
         overflow: auto;
+        /* #endif */
         font-weight: 500;
         margin-bottom: $steps-vertical-title-margin-bottom;
       }

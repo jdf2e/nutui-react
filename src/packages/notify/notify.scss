@@ -76,6 +76,9 @@
   &-left-icon,
   &-right-icon {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
   }
 
   &-left-icon {

@@ -1,6 +1,9 @@
 .nut-badge {
   position: relative;
   display: inline-flex;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
   vertical-align: middle;
   box-sizing: content-box;
   width: auto;
@@ -39,6 +42,9 @@
 
   &-sup {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     text-align: center;
     min-width: $badge-min-width;
     padding: $badge-padding;

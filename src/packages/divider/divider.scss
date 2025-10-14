@@ -46,6 +46,9 @@
 
   &-vertical {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     width: 0px;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;

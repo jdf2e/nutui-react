@@ -1,6 +1,9 @@
 .nut-countup {
   &-list {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     height: $countup-height;
     overflow: hidden;
     direction: ltr;

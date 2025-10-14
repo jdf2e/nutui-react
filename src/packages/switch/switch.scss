@@ -2,6 +2,9 @@
   cursor: pointer;
   position: relative;
   display: inline-flex;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
   flex-direction: row;
   align-items: center;
   min-width: $switch-width;
@@ -59,6 +62,9 @@
 
   &-label {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     align-items: center;
     height: 100%;
     white-space: nowrap;

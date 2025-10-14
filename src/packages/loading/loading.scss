@@ -1,5 +1,8 @@
 .nut-loading {
   display: inline-flex;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
   flex-direction: row;
   align-items: center;
   justify-content: center;

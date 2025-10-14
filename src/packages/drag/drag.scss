@@ -8,6 +8,9 @@
   font-size: 0;
   &-inner {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     width: fit-content;
     height: fit-content;
     touch-action: none;

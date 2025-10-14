@@ -98,6 +98,9 @@
 
   &-score {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     align-items: center;
     color: $rate-font-color;
     font-family: 'JDZH-Regular';

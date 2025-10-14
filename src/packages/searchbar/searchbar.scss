@@ -122,6 +122,9 @@
   &-left,
   &-right {
     display: inline-flex;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     align-items: center;
 
     &.nut-icon {
