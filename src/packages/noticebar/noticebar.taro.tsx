@@ -6,7 +6,7 @@ import React, {
   useState,
   useCallback,
 } from 'react'
-import Taro from '@tarojs/taro'
+import { nextTick } from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
@@ -156,7 +156,7 @@ export const NoticeBar: FunctionComponent<
     if (showNoticeBar === false) {
       return
     }
-    Taro.nextTick(async () => {
+    nextTick(async () => {
       if (!wrapRef.current || !contentRef.current) {
         return
       }
