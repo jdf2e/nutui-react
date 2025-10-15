@@ -6,7 +6,7 @@ import React, {
   useState,
   useCallback,
 } from 'react'
-
+import Taro from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
@@ -156,7 +156,7 @@ export const NoticeBar: FunctionComponent<
     if (showNoticeBar === false) {
       return
     }
-    setTimeout(async () => {
+    Taro.nextTick(async () => {
       if (!wrapRef.current || !contentRef.current) {
         return
       }
@@ -179,7 +179,7 @@ export const NoticeBar: FunctionComponent<
       } else {
         SetAnimationClass('')
       }
-    }, 0)
+    })
   }
   const handleClick = (event: ITouchEvent) => {
     click && click(event)
