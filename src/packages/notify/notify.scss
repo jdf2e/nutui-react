@@ -75,7 +75,12 @@
 
   &-left-icon,
   &-right-icon {
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
   }
 
   &-left-icon {

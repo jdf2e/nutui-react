@@ -103,6 +103,7 @@ $font-text-mini: var(
 
 // 字重
 $font-weight: var(--nutui-font-weight);
+$font-weight-medium: var(--nutui-font-weight-medium, 500) !default;
 $font-weight-bold: var(--nutui-font-weight-bold);
 
 // 行高
@@ -1500,6 +1501,10 @@ $dialog-footer-justify-content: var(
   --nutui-dialog-footer-justify-content,
   space-around
 ) !default;
+$dialog-title-margin-bottom: var(
+  --nutui-dialog-title-margin-bottom,
+  8px
+) !default;
 $dialog-content-margin: var(
   --nutui-dialog-content-margin,
   $spacing-base 0
@@ -1515,6 +1520,10 @@ $dialog-content-line-height: var(
 $dialog-content-text-align: var(
   --nutui-dialog-content-text-align,
   left
+) !default;
+$dialog-footer-button-border: var(
+  --nutui-dialog-footer-button-border,
+  6px
 ) !default;
 $dialog-footer-button-min-width: var(
   --nutui-dialog-footer-button-min-width,

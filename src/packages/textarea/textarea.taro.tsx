@@ -139,7 +139,6 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
           placeholder={
             placeholder !== undefined ? placeholder : locale.placeholder
           }
-          showCount={showCount}
         />
         {showCount && (
           <View

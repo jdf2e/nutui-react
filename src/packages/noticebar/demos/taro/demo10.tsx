@@ -3,10 +3,10 @@ import { Button, NoticeBar, Space } from '@nutui/nutui-react-taro'
 
 const Demo10 = () => {
   const horseLamp3 = [
-    'NoticeBar 公告栏',
-    'Cascader 级联选择',
-    'DatePicker 日期选择器',
-    'CheckBox 复选按钮',
+    'NoticeBar 公告栏-公告栏公告栏公告栏公告栏',
+    'Cascader 级联选择-公告栏公告栏公告栏公告栏',
+    'DatePicker 日期选择器-公告栏公告栏公告栏公告栏公告栏',
+    'CheckBox 复选按钮-公告栏公告栏公告栏公告栏公告栏',
   ]
 
   const [list, setList] = useState(horseLamp3)
@@ -17,6 +17,7 @@ const Demo10 = () => {
         direction="vertical"
         height={50}
         speed={10}
+        scrollable={false}
         duration={1000}
         closeable
         onClose={() => {
@@ -27,7 +28,13 @@ const Demo10 = () => {
           return (
             <div
               className="custom-item"
-              style={{ height: '50px', lineHeight: '50px' }}
+              style={{
+                height: '50px',
+                lineHeight: '50px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+              }}
               key={index}
               onClick={() => {
                 console.log('custom-inner', item)

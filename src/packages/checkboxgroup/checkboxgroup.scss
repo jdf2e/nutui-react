@@ -30,7 +30,12 @@
     flex-wrap: wrap;
 
     .nut-checkbox {
+      /* #ifndef dynamic*/
       display: inline-flex;
+      /* #endif */
+      /* #ifdef dynamic*/
+      display: flex;
+      /* #endif */
       flex: 1;
       margin-right: 20px;
 

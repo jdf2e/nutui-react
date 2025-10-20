@@ -1,14 +1,13 @@
 import React, {
   FunctionComponent,
   ReactElement,
-  useCallback,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
+import { useReady } from '@tarojs/taro'
 import { ITouchEvent, Text, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
@@ -132,7 +131,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     }
   }
 
-  const updateRects = useCallback(() => {
+  const updateRects = () => {
     for (let index = 0; index < refs.length; index++) {
       const item = refs[index]
       if (item) {
@@ -141,11 +140,11 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
         })
       }
     }
-  }, [refs])
+  }
 
-  useLayoutEffect(() => {
+  useReady(() => {
     updateRects()
-  }, [updateRects])
+  })
 
   const handleTouchStart = (e: any) => {
     if (!touchable || readOnly || disabled) {

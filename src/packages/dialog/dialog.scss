@@ -19,9 +19,11 @@
     position: fixed;
     max-height: 100%;
     background-color: $dialog-background;
+    /* #ifndef dynamic*/
     transition:
       transform 0.2s,
       -webkit-transform 0.2s;
+    /* #endif */
     -webkit-overflow-scrolling: touch;
     top: 50%;
     left: 50%;
@@ -83,6 +85,7 @@
     font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
     color: $color-title;
+    margin-bottom: $dialog-title-margin-bottom;
     @include oneline-ellipsis();
   }
 
@@ -125,12 +128,15 @@
 
     .nut-button {
       min-width: $dialog-footer-button-min-width;
+      border-radius: $dialog-footer-button-border;
+      padding: var(--nutui-button-large-padding, 0 12px);
     }
 
     &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
       background: $dialog-footer-cancel-bg;
       color: $button-default-color;
+      border-color: var(--nutui-button-default-border-color, transparent);
       .nut-button-children {
         color: $button-default-color;
       }
@@ -138,9 +144,9 @@
 
     &-ok {
       max-width: $dialog-footer-ok-max-width;
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-medium;
       .nut-button-children {
-        font-weight: $font-weight-bold;
+        font-weight: $font-weight-medium;
       }
     }
 

@@ -45,7 +45,12 @@
   }
 
   &-vertical {
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
     width: 0px;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;

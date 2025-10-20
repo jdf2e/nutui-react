@@ -11,7 +11,9 @@
   }
 
   .nut-tabs-titles-item {
+    /* #ifndef dynamic*/
     flex: initial;
+    /* #endif */
     min-width: auto;
     width: auto;
     padding: $cascader-tabs-item-padding;

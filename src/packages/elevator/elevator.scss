@@ -16,7 +16,9 @@
       min-height: 100%;
       width: 100%;
       background-color: $elevator-list-bg-color;
+      /* #ifndef dynamic*/
       overflow: auto;
+      /* #endif */
     }
 
     &-item {
@@ -96,7 +98,12 @@
       display: flex;
       flex-direction: column;
       &-item {
+        /* #ifndef dynamic*/
         display: inline-flex;
+        /* #endif */
+        /* #ifdef dynamic*/
+        display: flex;
+        /* #endif */
         align-items: center;
         justify-content: center;
         height: 16px;

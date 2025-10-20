@@ -29,7 +29,12 @@
     }
 
     .nut-icon {
+      /* #ifndef dynamic*/
       display: inline-flex;
+      /* #endif */
+      /* #ifdef dynamic*/
+      display: flex;
+      /* #endif */
       align-items: center;
       margin-right: $menu-item-icon-margin;
       flex-shrink: 0;
