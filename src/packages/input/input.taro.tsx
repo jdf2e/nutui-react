@@ -14,19 +14,7 @@ import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { InputFormatTrigger, TaroInputProps } from '@/types'
-
-const ENV_TYPE = {
-  WEAPP: 'WEAPP',
-  SWAN: 'SWAN',
-  ALIPAY: 'ALIPAY',
-  TT: 'TT',
-  QQ: 'QQ',
-  JD: 'JD',
-  WEB: 'WEB',
-  RN: 'RN',
-  HARMONY: 'HARMONY',
-  QUICKAPP: 'QUICKAPP',
-}
+import { ENV_TYPE } from '@/utils/taro/env-type'
 
 const defaultProps = {
   ...ComponentDefaults,

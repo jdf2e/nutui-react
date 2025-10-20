@@ -190,7 +190,7 @@ export const Popup: FunctionComponent<
   }
 
   const renderTop = () => {
-    if (!top) return null
+    if (!top || position !== 'bottom') return null
     return (
       <div className={`${classPrefix}-bottom-top`} ref={topNodeRef}>
         {top}

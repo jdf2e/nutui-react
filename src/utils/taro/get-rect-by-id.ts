@@ -1,17 +1,5 @@
 import Taro, { createSelectorQuery } from '@tarojs/taro'
-
-const ENV_TYPE = {
-  WEAPP: 'WEAPP',
-  SWAN: 'SWAN',
-  ALIPAY: 'ALIPAY',
-  TT: 'TT',
-  QQ: 'QQ',
-  JD: 'JD',
-  WEB: 'WEB',
-  RN: 'RN',
-  HARMONY: 'HARMONY',
-  QUICKAPP: 'QUICKAPP',
-}
+import { ENV_TYPE } from './env-type'
 
 export const getRectById = (id: string) => {
   return new Promise((resolve, reject) => {
