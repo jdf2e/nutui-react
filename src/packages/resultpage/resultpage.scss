@@ -6,11 +6,11 @@
   align-items: center;
   margin: 0 auto;
   &-icon {
-    /* #ifndef dynamic*/
-    display: inline-flex;
-    /* #endif */
     /* #ifdef dynamic*/
     display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
+    display: inline-flex;
     /* #endif */
     margin-bottom: $resultpage-icon-margin-bottom;
     .nut-icon {

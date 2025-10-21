@@ -121,11 +121,11 @@
 
   &-left,
   &-right {
-    /* #ifndef dynamic*/
-    display: inline-flex;
-    /* #endif */
     /* #ifdef dynamic*/
     display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
+    display: inline-flex;
     /* #endif */
     align-items: center;
 

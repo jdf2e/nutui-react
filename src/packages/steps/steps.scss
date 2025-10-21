@@ -86,7 +86,9 @@
 
           .nut-step-title {
             padding-right: 8px;
+            /* #ifndef dynamic*/
             width: fit-content;
+            /* #endif */
           }
         }
       }
@@ -114,11 +116,11 @@
           width: 100%;
 
           &-inner {
-            /* #ifndef dynamic*/
-            display: inline-flex;
-            /* #endif */
             /* #ifdef dynamic*/
             display: flex;
+            /* #endif */
+            /* #ifndef dynamic*/
+            display: inline-flex;
             /* #endif */
             height: $steps-base-line-height;
             width: 100%;

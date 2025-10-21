@@ -1,9 +1,9 @@
 .nut-inputnumber {
-  /* #ifndef dynamic*/
-  display: inline-flex;
-  /* #endif */
   /* #ifdef dynamic*/
   display: flex;
+  /* #endif */
+  /* #ifndef dynamic*/
+  display: inline-flex;
   /* #endif */
   width: calc(
     2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} +

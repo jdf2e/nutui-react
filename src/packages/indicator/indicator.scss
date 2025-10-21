@@ -110,7 +110,9 @@
     &-dot,
     &-line {
       position: relative;
+      /* #ifndef dynamic*/
       box-sizing: content-box;
+      /* #endif */
       background: rgba(255, 255, 255, 0.4);
       opacity: 1;
     }
