@@ -1650,6 +1650,39 @@ $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
 ) !default;
+$dialog-footer-badge-height: var(
+  --nutui-dialog-footer-badge-height,
+  14px
+) !default;
+$dialog-footer-badge-fontsize: var(
+  --nutui-dialog-footer-badge-fontsize,
+  10px
+) !default;
+$dialog-footer-badge-padding: var(
+  --nutui-dialog-footer-badge-padding,
+  0 3px
+) !default;
+$dialog-footer-badge-top: var(--nutui-dialog-footer-badge-top, -8px) !default;
+$dialog-footer-badge-border-radius: var(
+  --nutui-dialog-footer-badge-border-radius,
+  2px 2px 0px 2px
+) !default;
+$dialog-footer-badge-bg-ok: var(
+  --nutui-dialog-footer-badge-bg-ok,
+  $color-danger-light
+) !default;
+$dialog-footer-badge-color-ok: var(
+  --nutui-dialog-footer-badge-color-ok,
+  $color-primary
+) !default;
+$dialog-footer-badge-bg-cancel: var(
+  --nutui-dialog-footer-badge-bg-cancel,
+  $color-danger-light
+) !default;
+$dialog-footer-badge-color-cancel: var(
+  --nutui-dialog-footer-badge-color-cancel,
+  $color-primary
+) !default;
 $dialog-header-font-size: var(
   --nutui-dialog-header-font-size,
   $font-size-l

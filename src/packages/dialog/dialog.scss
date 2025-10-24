@@ -123,6 +123,7 @@
         display: flex;
         justify-content: center;
         margin-top: $dialog-vertical-footer-ok-margin-top;
+        background: transparent;
       }
     }
 
@@ -142,6 +143,28 @@
       }
     }
 
+    &-ok-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+
+      .nut-dialog-footer-ok-badge {
+        position: absolute;
+        right: 0;
+        top: $dialog-footer-badge-top;
+        display: flex;
+        align-items: center;
+        height: $dialog-footer-badge-height;
+        padding: $dialog-footer-badge-padding;
+        background: $dialog-footer-badge-bg-ok;
+        border-radius: $dialog-footer-badge-border-radius;
+        font-size: $dialog-footer-badge-fontsize;
+        color: $dialog-footer-badge-color-ok;
+      }
+    }
+
     &-ok {
       max-width: $dialog-footer-ok-max-width;
       font-weight: $font-weight-medium;
@@ -153,6 +176,28 @@
     &-block {
       &.nut-button {
         min-width: 100%;
+      }
+    }
+
+    &-cancel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+
+      .nut-dialog-footer-cancel-badge {
+        position: absolute;
+        right: $dialog-footer-cancel-margin-right;
+        top: $dialog-footer-badge-top;
+        display: flex;
+        align-items: center;
+        height: $dialog-footer-badge-height;
+        padding: $dialog-footer-badge-padding;
+        background: $dialog-footer-badge-bg-cancel;
+        border-radius: $dialog-footer-badge-border-radius;
+        font-size: $dialog-footer-badge-fontsize;
+        color: $dialog-footer-badge-color-cancel;
       }
     }
   }
