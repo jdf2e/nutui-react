@@ -25,7 +25,7 @@ const ImageDemo = () => {
       error: '加载失败',
       lazyload: '图片懒加载',
       imageText: 'Image + text 模式',
-      ATRIAUsage: '无障碍使用示例',
+      ARIAUsage: '无障碍使用示例',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -36,7 +36,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'Image + text ',
-      ATRIAUsage: 'ATRIA Usage',
+      ARIAUsage: 'ATRIA Usage',
     },
   })
   return (
@@ -67,7 +67,7 @@ const ImageDemo = () => {
             <Demo8 />
           </>
         )}
-        <View className="h2">{translated.ATRIAUsage}</View>
+        <View className="h2">{translated.ARIAUsage}</View>
         <Demo9 />
       </ScrollView>
     </>
