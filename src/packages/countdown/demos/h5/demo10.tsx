@@ -3,7 +3,7 @@ import { Cell, CountDown } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const stateRef = useRef({
-    endTime: Date.now() + 10 * 1000,
+    endTime: Date.now() + 60 * 1000,
   })
   const onEnd = () => {
     console.log('countdown: ended.')
