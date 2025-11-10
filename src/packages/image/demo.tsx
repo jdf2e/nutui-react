@@ -22,7 +22,7 @@ const ImageDemo = () => {
       error: '加载失败',
       lazyload: '图片懒加载',
       imageText: 'Image + text 模式',
-      ATRIAUsage: 'ATRIA用法',
+      ARIAUsage: 'ATRIA用法',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -33,7 +33,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'image + text ',
-      ATRIAUsage: 'ATRIA Usage',
+      ARIAUsage: 'ATRIA Usage',
     },
   })
 
@@ -72,7 +72,7 @@ const ImageDemo = () => {
         <Cell>
           <Demo8 />
         </Cell>
-        <h2>{translated.ATRIAUsage}</h2>
+        <h2>{translated.ARIAUsage}</h2>
         <Cell>
           <Demo9 />
         </Cell>
