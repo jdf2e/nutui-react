@@ -159,6 +159,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={buttonClassNames}
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
+        ariaLabel="button"
       >
         <View className="nut-button-wrap">
           {loading && <Loading className="nut-icon-loading" />}

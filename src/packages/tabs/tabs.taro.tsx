@@ -233,7 +233,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
         className={classesTitle}
         style={tabStyle}
       >
-        <View className="nut-tabs-list">
+        <View className="nut-tabs-list" role="tablist" ariaRole="tablist">
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
@@ -259,10 +259,14 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                           `${classPrefix}-titles-item-line-${direction}`
                         )}
                         style={{ background: activeColor }}
+                        ariaHidden
                       />
                     )}
                     {activeType === 'smile' && (
-                      <View className={`${classPrefix}-titles-item-smile`}>
+                      <View
+                        className={`${classPrefix}-titles-item-smile`}
+                        ariaHidden
+                      >
                         <JoySmile color={activeColor} />
                       </View>
                     )}
@@ -274,6 +278,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                         `${classPrefix}-titles-item-text`
                       )}
                       style={{ color: activeColor }}
+                      ariaRole="tab"
+                      ariaSelected={
+                        !item.disabled && String(item.value) === String(value)
+                      }
                     >
                       {item.title}
                     </View>

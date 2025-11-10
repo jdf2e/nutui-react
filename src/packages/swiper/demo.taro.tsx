@@ -14,6 +14,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 
 const SwiperDemo = () => {
   const [translated] = useTranslate({
@@ -27,6 +28,7 @@ const SwiperDemo = () => {
       horizontalCenter: '水平居中展示（无指示器）',
       verticalCenter: '垂直居中展示',
       multiItems: '一屏多个数据时',
+      asycARIA: '基础用法 ARIA',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -38,6 +40,7 @@ const SwiperDemo = () => {
       horizontalCenter: 'Horizontal center display(no indicator)',
       verticalCenter: 'Vertical center display',
       multiItems: 'many datas in a frame',
+      asycARIA: 'Basic Usage ARIA',
     },
   })
 
@@ -78,6 +81,8 @@ const SwiperDemo = () => {
         ) : null}
         <View className="h2">{translated.multiItems}</View>
         <Demo9 />
+        <View className="h2">{translated.asycARIA}</View>
+        <Demo10 />
       </ScrollView>
     </>
   )

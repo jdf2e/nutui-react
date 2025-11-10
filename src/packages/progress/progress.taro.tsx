@@ -222,7 +222,8 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
+      ariaLabel={ariaLabel || `进度${percent}%`}
+      ariaRole="progressbar"
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>

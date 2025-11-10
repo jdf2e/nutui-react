@@ -21,6 +21,7 @@ export interface BaseRadio extends BaseProps {
   activeIcon: ReactNode
   value: SimpleValue
   onChange: (checked: boolean) => void
+  type: string
 }
 
 export interface BaseRadioGroup extends BaseProps {
@@ -32,4 +33,5 @@ export interface BaseRadioGroup extends BaseProps {
   disabled?: boolean
   options: RadioGroupOption[]
   onChange: (value: SimpleValue) => void
+  type: string
 }

@@ -30,6 +30,7 @@ const defaultProps = {
   delay: 1,
   scrollable: null,
   speed: 50,
+  rightIconAriaLabel: '',
 } as WebNoticeBarProps
 export const NoticeBar: FunctionComponent<
   Partial<WebNoticeBarProps> &
@@ -59,6 +60,7 @@ export const NoticeBar: FunctionComponent<
     onClose,
     onClick,
     onItemClick,
+    rightIconAriaLabel,
   } = {
     ...defaultProps,
     ...props,
@@ -455,7 +457,9 @@ export const NoticeBar: FunctionComponent<
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <div className="nut-noticebar-box-left-icon" aria-hidden>
+              {leftIcon}
+            </div>
           ) : null}
           <div ref={wrapRef} className="nut-noticebar-box-wrap">
             <div
@@ -474,8 +478,12 @@ export const NoticeBar: FunctionComponent<
             <div className="nut-noticebar-box-right">{right}</div>
           ) : null}
           {closeable || rightIcon ? (
-            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close width={12} height={12} />}
+            <div
+              className="nut-noticebar-box-right-icon"
+              onClick={onClickIcon}
+              aria-label={`${closeable ? 'close' : rightIconAriaLabel}`}
+            >
+              {rightIcon || <Close width={12} height={12} aria-hidden />}
             </div>
           ) : null}
         </div>

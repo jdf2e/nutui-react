@@ -42,6 +42,7 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
     onClick,
     onLoad,
     onError,
+    ariaLabel,
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -194,6 +195,7 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
         onLoad={handleLoad}
         onError={handleError}
         draggable={draggable}
+        aria-label={ariaLabel}
       />
       {renderLoading()}
       {renderErrorImg()}

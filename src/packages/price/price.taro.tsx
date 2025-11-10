@@ -170,6 +170,13 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
+          ariaLabel={`${
+            symbol && position === 'before' ? `${symbol}` : ''
+          }${formatThousands(price)}${
+            checkPoint(price) || digits ? '.' : ''
+          }${formatDecimal(price)}${
+            symbol && position === 'after' ? `${symbol}` : ''
+          }`}
         >
           {renderInner()}
         </Text>
@@ -177,6 +184,13 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <View
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
+          ariaLabel={`${
+            symbol && position === 'before' ? `${symbol}` : ''
+          }${formatThousands(price)}${
+            checkPoint(price) || digits ? '.' : ''
+          }${formatDecimal(price)}${
+            symbol && position === 'after' ? `${symbol}` : ''
+          }`}
         >
           {renderInner()}
         </View>

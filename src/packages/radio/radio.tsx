@@ -130,7 +130,15 @@ export const Radio: FunctionComponent<
     className
   )
   return (
-    <div className={cls} style={style} onClick={handleClick} {...rest}>
+    <div
+      className={cls}
+      style={style}
+      onClick={handleClick}
+      {...rest}
+      role="radio"
+      tabIndex={0}
+      aria-checked={checkedStatement}
+    >
       {renderRadioItem()}
     </div>
   )

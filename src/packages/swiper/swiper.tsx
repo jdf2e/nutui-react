@@ -38,6 +38,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
       duration,
       style,
       className,
+      alt,
     } = { ...defaultProps, ...props }
     const isVertical = direction === 'vertical'
     const count = useMemo(() => {
@@ -258,6 +259,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<WebSwiperProps>>(
           loop,
           count,
           isVertical,
+          alt,
         })
       if (effect && effect.name === 'focus') {
         return focusEffect({

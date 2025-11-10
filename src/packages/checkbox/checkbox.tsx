@@ -208,6 +208,9 @@ export const Checkbox: FunctionComponent<
       )}
       {...rest}
       onClick={handleClick}
+      role="checkbox"
+      tabIndex={0}
+      aria-checked={innerChecked && !innerIndeterminate}
     >
       {renderCheckboxItem()}
     </div>

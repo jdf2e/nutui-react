@@ -82,7 +82,15 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     setValue(!value)
   }
   return (
-    <div className={classes()} onClick={onClick} style={style} {...rest}>
+    <div
+      className={classes()}
+      onClick={onClick}
+      style={style}
+      {...rest}
+      role="switch"
+      tabIndex={0}
+      aria-checked={value}
+    >
       <div
         className={classNames([
           [`${classPrefix}-button`],

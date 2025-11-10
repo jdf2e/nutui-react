@@ -203,6 +203,8 @@ export const Checkbox: FC<
       )}
       {...rest}
       onClick={handleClick}
+      ariaRole="checkbox"
+      ariaChecked={innerChecked && !innerIndeterminate}
     >
       {renderCheckboxItem()}
     </View>

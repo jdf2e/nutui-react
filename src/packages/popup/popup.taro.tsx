@@ -313,6 +313,7 @@ export const Popup: FunctionComponent<
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
+        ariaRole="dialog"
       >
         {renderTitle()}
         {showChildren ? children : null}

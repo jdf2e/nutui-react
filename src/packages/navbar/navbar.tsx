@@ -66,6 +66,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
             onClick={(e) => onBackClick(e)}
+            aria-label="back"
           >
             {back}
           </div>
@@ -82,6 +83,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
+        aria-label={title ? 'nav title' : ''}
       >
         {title || children}
       </div>
@@ -104,7 +106,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <div className={cls} style={styles()}>
+      <div className={cls} style={styles()} role="navigation">
         {renderLeft()}
         {renderContent()}
         {renderRight()}

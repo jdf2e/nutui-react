@@ -180,7 +180,12 @@ export const InputNumber: FunctionComponent<
 
   return (
     <div className={classes} style={style} {...restProps}>
-      <div className={`${classPrefix}-minus`} onClick={handleReduce}>
+      <div
+        className={`${classPrefix}-minus`}
+        onClick={handleReduce}
+        role="button"
+        tabIndex={0}
+      >
         <Minus
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
@@ -204,7 +209,12 @@ export const InputNumber: FunctionComponent<
         onBlur={handleBlur}
         onFocus={handleFocus}
       />
-      <div className={`${classPrefix}-add`} onClick={handlePlus}>
+      <div
+        className={`${classPrefix}-add`}
+        role="button"
+        tabIndex={0}
+        onClick={handlePlus}
+      >
         <Plus
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
