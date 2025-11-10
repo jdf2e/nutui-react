@@ -21,7 +21,7 @@ const Demo1 = () => {
         content={text}
         align="center"
         wrap
-        rightIcon={<ArrowRight aria-label="more" />}
+        rightIcon={<ArrowRight />}
         rightIconAriaLabel="more"
       />
       <br />
