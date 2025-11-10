@@ -25,6 +25,7 @@ const defaultProps = {
   loop: false,
   defaultValue: 0,
   style: {},
+  ariaRoledescription: '左右滑动操作',
 } as TaroSwiperProps
 
 const classPrefix = 'nut-swiper'
@@ -165,6 +166,7 @@ export const Swiper = React.forwardRef(
                   key={index}
                   ariaLabel={ariaLabelItem}
                   ariaHidden={innerValue !== index}
+                  ariaRoledescription={ariaRoledescription}
                 >
                   {child}
                 </TSwiperItem>

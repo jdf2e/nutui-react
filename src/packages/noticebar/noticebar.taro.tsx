@@ -486,6 +486,7 @@ export const NoticeBar: FunctionComponent<
             <View
               className="nut-noticebar-box-right-icon"
               onClick={onClickIcon}
+              ariaLabel={`${closeable ? 'close' : rightIconAriaLabel}`}
             >
               {rightIcon || <Close size={12} />}
             </View>
@@ -500,7 +501,9 @@ export const NoticeBar: FunctionComponent<
           onClick={handleClick}
         >
           {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
+            <View className="nut-noticebar-box-left-icon" ariaHidden>
+              {leftIcon}
+            </View>
           ) : null}
           {children ? (
             <View className="nut-noticebar-box-wrap" ref={innerRef}>

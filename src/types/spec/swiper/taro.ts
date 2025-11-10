@@ -20,6 +20,7 @@ export type TaroSwiperProps = Omit<BaseSwiper, OmittedKeys> &
     loop: boolean
     defaultValue: number
     ariaLabel: string
+    ariaRoledescription: string
   }
 
 export interface TaroSwiperItemProps extends Omit<BaseSwiperItem, 'onClick'> {
