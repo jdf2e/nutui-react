@@ -3,7 +3,7 @@ import { Tabbar } from '@nutui/nutui-react'
 import { Cart, Hi, Home, User, Heart, HeartFill } from '@nutui/icons-react'
 
 const Demo10 = () => (
-  <Tabbar>
+  <Tabbar ariaLabel="底部导航">
     <Tabbar.Item
       title="首页"
       ariaLabel="首页"

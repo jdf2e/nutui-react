@@ -79,7 +79,7 @@ export const focusEffect = (args: DefaultEffect) => {
             return scale
           }),
         }}
-        tabIndex={-1}
+        tabIndex={0}
         aria-hidden={!(index === getRefValue(current))}
       >
         {child}

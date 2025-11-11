@@ -23,5 +23,5 @@ export interface BaseImage extends BaseProps {
   onLoad: () => void
   onError: () => void
   onClick: (e: any) => void
-  ariaLabel: string
+  ariaLabel?: string
 }

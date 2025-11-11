@@ -259,14 +259,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                           `${classPrefix}-titles-item-line-${direction}`
                         )}
                         style={{ background: activeColor }}
-                        ariaHidden
                       />
                     )}
                     {activeType === 'smile' && (
-                      <View
-                        className={`${classPrefix}-titles-item-smile`}
-                        ariaHidden
-                      >
+                      <View className={`${classPrefix}-titles-item-smile`}>
                         <JoySmile color={activeColor} />
                       </View>
                     )}
@@ -282,6 +278,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                       ariaSelected={
                         !item.disabled && String(item.value) === String(value)
                       }
+                      ariaDisabled={item.disabled}
                     >
                       {item.title}
                     </View>

@@ -38,7 +38,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部',
       c9e6df49: '受控',
       c9e6df48: '模擬雙擊支持回調',
-      ce5c5446aria: '无障碍基础用法',
+      ce5c5446aria: '無障礙基礎用法',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',

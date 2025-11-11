@@ -21,16 +21,19 @@ export const TabPane: FunctionComponent<
   }
 
   const classPrefix = 'nut-tabpane'
+  const active = !disabled && (props as any).active
   const classes = classNames(
     classPrefix,
     {
-      active: !disabled && (props as any).active,
+      active,
     },
     autoHeightClassName,
     className
   )
 
   return children ? (
-    <div className={classes}>{!disabled && children}</div>
+    <div className={classes} role="tabpanel" tabIndex={active ? 0 : -1}>
+      {!disabled && children}
+    </div>
   ) : null
 }

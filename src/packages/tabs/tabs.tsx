@@ -205,6 +205,8 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                     aria-selected={
                       !item.disabled && String(item.value) === String(value)
                     }
+                    tabIndex={0}
+                    aria-disabled={item.disabled}
                   >
                     {item.title}
                   </div>

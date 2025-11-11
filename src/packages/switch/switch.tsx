@@ -28,6 +28,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     onChange,
     loading: propLoading,
     onLoadingChange,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -88,8 +89,10 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
       style={style}
       {...rest}
       role="switch"
-      tabIndex={0}
+      tabIndex={disabled ? -1 : 0}
       aria-checked={value}
+      aria-disabled={disabled}
+      aria-label={ariaLabel}
     >
       <div
         className={classNames([

@@ -11,6 +11,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -23,6 +24,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '触发了 onChange 事件，开关状态：',
+      supportARIA: '支持ARIA',
     },
     'zh-TW': {
       basic: '非受控',
@@ -33,6 +35,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '觸發了 onChange 事件，開關狀態：',
+      supportARIA: '支持ARIA',
     },
     'en-US': {
       basic: 'Uncontrolled',
@@ -43,6 +46,7 @@ const SwitchDemo = () => {
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
       eventTip: 'Emit onChange event, current state:',
+      supportARIA: '支持ARIA',
     },
   })
   return (
@@ -65,6 +69,8 @@ const SwitchDemo = () => {
         <Demo6 />
         <View className="h2">{translated.customColor}</View>
         <Demo7 />
+        <View className="h2">{translated.supportARIA}</View>
+        <Demo9 />
       </ScrollView>
     </>
   )

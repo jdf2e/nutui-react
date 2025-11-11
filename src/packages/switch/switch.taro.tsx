@@ -29,6 +29,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     onChange,
     loading: propLoading,
     onLoadingChange,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -87,7 +88,9 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
       style={style}
       ariaRole="switch"
       ariaChecked={value}
-      disabled={disabled}
+      ariaDisabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      ariaLabel={ariaLabel}
       {...rest}
     >
       <View

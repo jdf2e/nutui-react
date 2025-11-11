@@ -131,6 +131,7 @@ export const TabbarItem: FunctionComponent<Partial<TaroTabbarItemProps>> = (
       onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
       ariaRole="tab"
       ariaSelected={active}
+      tabIndex={0}
       {...rest}
     >
       {direction === 'horizontal' && !dot ? (

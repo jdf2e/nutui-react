@@ -17,6 +17,7 @@ const defaultProps = {
   direction: 'vertical',
   safeArea: false,
   onSwitch: () => {},
+  ariaLabel: '',
 } as TaroTabbarProps
 
 export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
@@ -34,6 +35,7 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
     className,
     style,
     onSwitch,
+    ariaLabel,
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-tabbar'
 
@@ -71,8 +73,9 @@ export const Tabbar: FunctionComponent<Partial<TaroTabbarProps>> & {
         className
       )}
       style={style}
+      ariaLabel={ariaLabel}
     >
-      <View className={`${classPrefix}-wrap ${sizeCls}`}>
+      <View className={`${classPrefix}-wrap ${sizeCls}`} ariaRole="tablist">
         <TabbarContext.Provider
           value={{
             selectIndex,
