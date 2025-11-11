@@ -136,8 +136,9 @@ export const Radio: FunctionComponent<
       onClick={handleClick}
       {...rest}
       role="radio"
-      tabIndex={0}
+      tabIndex={disabled ? -1 : 0}
       aria-checked={checkedStatement}
+      aria-disabled={disabled}
     >
       {renderRadioItem()}
     </div>
