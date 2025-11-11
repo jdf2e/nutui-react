@@ -185,11 +185,11 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
           ariaLabel={`${
-            symbol && position === 'before' ? `${symbol}` : ''
+            symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
           }${formatThousands(price)}${
             checkPoint(price) || digits ? '.' : ''
           }${formatDecimal(price)}${
-            symbol && position === 'after' ? `${symbol}` : ''
+            symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
           }`}
         >
           {renderInner()}
