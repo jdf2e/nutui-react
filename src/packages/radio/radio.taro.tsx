@@ -143,6 +143,7 @@ export const Radio: FC<
       onClick={handleClick}
       ariaRole="radio"
       ariaChecked={checkedStatement}
+      ariaDisabled={disabled}
     >
       {renderRadioItem()}
     </View>
