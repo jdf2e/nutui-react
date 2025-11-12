@@ -5,6 +5,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
 import { bound } from '@/utils/bound'
 import { WebInputNumberProps } from '@/types'
+import { useTranslate } from '@/sites/assets/locale/taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,6 +18,7 @@ const defaultProps = {
   digits: 0,
   select: true,
   beforeChange: (value) => Promise.resolve(true),
+  ariaLabel: '数字输入框',
 } as WebInputNumberProps
 
 const classPrefix = `nut-inputnumber`
@@ -46,6 +48,7 @@ export const InputNumber: FunctionComponent<
     onFocus,
     onChange,
     beforeChange,
+    ariaLabel,
     ...restProps
   } = {
     ...defaultProps,
@@ -56,6 +59,16 @@ export const InputNumber: FunctionComponent<
   })
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const [translated] = useTranslate({
+    'zh-CN': {
+      mins: '减',
+      plus: '加',
+    },
+    'zh-TW': {
+      mins: 'Minus',
+      plus: 'Plus',
+    },
+  })
   useEffect(() => {
     if (select && focused) {
       inputRef.current?.select?.()
@@ -179,12 +192,20 @@ export const InputNumber: FunctionComponent<
   }
 
   return (
-    <div className={classes} style={style} {...restProps}>
+    <div
+      className={classes}
+      style={style}
+      {...restProps}
+      aria-label={ariaLabel}
+      aria-disabled={disabled}
+    >
       <div
         className={`${classPrefix}-minus`}
         onClick={handleReduce}
         role="button"
         tabIndex={0}
+        aria-label={translated.mins}
+        aria-disabled={Number(shadowValue) <= Number(min) || disabled}
       >
         <Minus
           className={classNames(
@@ -213,6 +234,8 @@ export const InputNumber: FunctionComponent<
         className={`${classPrefix}-add`}
         role="button"
         tabIndex={0}
+        aria-label={translated.plus}
+        aria-disabled={Number(shadowValue) >= Number(max) || disabled}
         onClick={handlePlus}
       >
         <Plus

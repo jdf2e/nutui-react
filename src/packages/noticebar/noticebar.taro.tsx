@@ -462,9 +462,7 @@ export const NoticeBar: FunctionComponent<
       {showNoticeBar && direction === 'horizontal' ? (
         <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon" ariaHidden>
-              {leftIcon}
-            </View>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
           <View ref={wrapRef} className="nut-noticebar-box-wrap">
             <View
@@ -501,9 +499,7 @@ export const NoticeBar: FunctionComponent<
           onClick={handleClick}
         >
           {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon" ariaHidden>
-              {leftIcon}
-            </View>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
           {children ? (
             <View className="nut-noticebar-box-wrap" ref={innerRef}>

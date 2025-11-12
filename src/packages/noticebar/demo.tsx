@@ -28,7 +28,7 @@ const NoticeBarDemo = () => {
       complexAm: '纵向模式：自定义左侧图标',
       customAm: '纵向模式：自定义滚动内容，动态变更滚动内容',
       customRightIcon: '纵向模式：自定义右侧图标',
-      basicARIA: 'ARIA基础使用',
+      basicARIA: '基础使用 支持ARIA',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -42,7 +42,7 @@ const NoticeBarDemo = () => {
       complexAm: 'Vertical Scroll Complex Animation',
       customAm: 'Vertical Scroll Custom Style，Dynamic Change Scroll Content',
       customRightIcon: 'Vertical Scroll Custom Right Icon',
-      basicARIA: 'ARIA Basic Usage',
+      basicARIA: 'Basic Usage support ARIA',
     },
   })
 

@@ -15,14 +15,14 @@ const Demo1 = () => {
           endTime={stateRef.current.endTime}
           type="primary"
           onEnd={onEnd}
-          ariaRoledescription="双十一活动"
+          ariaLabel="双十一活动倒计时"
         />
       </Cell>
       <Cell>
         <CountDown
           endTime={stateRef.current.endTime}
           onEnd={onEnd}
-          ariaRoledescription="双十一活动"
+          ariaLabel="双十一活动倒计时"
         />
       </Cell>
       <Cell>
@@ -30,7 +30,7 @@ const Demo1 = () => {
           endTime={stateRef.current.endTime}
           type="text"
           onEnd={onEnd}
-          ariaRoledescription="双十一活动"
+          ariaLabel="双十一活动倒计时"
         />
       </Cell>
     </>

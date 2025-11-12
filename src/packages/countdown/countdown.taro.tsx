@@ -24,6 +24,7 @@ const defaultProps = {
   autoStart: true,
   time: 0,
   destroy: false,
+  ariaLabel: '倒计时',
 } as TaroCountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
@@ -48,7 +49,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     onRestart,
     onUpdate,
     children,
-    ariaRoledescription,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-countdown'
@@ -68,6 +69,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   const [role, setRole] = useState('')
   // ARIA alert提示内容
   const [alertContent, setAlertContent] = useState('')
+  const alertTimerRef = useRef<number>()
 
   // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
@@ -108,8 +110,8 @@ const InternalCountDown: ForwardRefRenderFunction<
           pause()
           onEnd && onEnd()
           setRole('alert')
-          setAlertContent('时间到')
-          setTimeout(() => {
+          setAlertContent(`${ariaLabel}倒计时结束`)
+          alertTimerRef.current = window.setTimeout(() => {
             setRole('')
             setAlertContent('')
           }, 3000)
@@ -268,6 +270,9 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   const componentWillUnmount = () => {
     destroy && cancelAnimationFrame(stateRef.current.timer)
+    if (alertTimerRef.current) {
+      clearTimeout(alertTimerRef.current)
+    }
   }
 
   const getUnit = (unit: string) => {
@@ -338,8 +343,7 @@ const InternalCountDown: ForwardRefRenderFunction<
         <View
           className={`${classPrefix} ${className}`}
           style={{ ...style }}
-          ariaLabel="倒计时"
-          ariaRoledescription={ariaRoledescription}
+          ariaLabel={ariaLabel}
           {...rest}
         >
           {renderTaroTime()}

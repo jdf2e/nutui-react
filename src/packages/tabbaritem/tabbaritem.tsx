@@ -120,7 +120,7 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
       }}
       onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
       role="tab"
-      tabIndex={0}
+      tabIndex={active ? 0 : -1}
       aria-label={ariaLabel}
       aria-roledescription={ariaRoledescription}
       aria-selected={active}
