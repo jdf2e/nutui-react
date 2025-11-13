@@ -72,7 +72,8 @@ const jaJP: BaseLang = {
   },
   signature: {
     reSign: '再署名',
-    unsupported: '申し訳ありませんが、現在のブラウザはCanvasをサポートしていません。このコントロールは使用できません！',
+    unsupported:
+      '申し訳ありませんが、現在のブラウザはCanvasをサポートしていません。このコントロールは使用できません！',
   },
   ecard: {
     chooseText: '電子カードの額面を選択してください',
