@@ -4,7 +4,7 @@ import { Cell, Switch } from '@nutui/nutui-react'
 const Demo9 = () => {
   return (
     <Cell>
-      <Switch defaultChecked ariaLabel="弹幕" />
+      <Switch defaultChecked ariaLabel="开关按钮" />
     </Cell>
   )
 }

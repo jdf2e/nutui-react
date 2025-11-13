@@ -205,7 +205,8 @@ export const Checkbox: FC<
       {...rest}
       onClick={handleClick}
       ariaRole="checkbox"
-      ariaChecked={innerChecked && !innerIndeterminate}
+      tabIndex={innerDisabled ? -1 : 0}
+      ariaChecked={innerIndeterminate ? 'mixed' : innerChecked}
     >
       {renderCheckboxItem()}
     </View>

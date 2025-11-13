@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 import { Star } from '@nutui/icons-react'
 
-const Demo23 = () => {
+const Demo25 = () => {
   const [tabvalue, setTabvalue] = useState('c1')
   const list = [
     {
@@ -30,7 +30,7 @@ const Demo23 = () => {
               className={`nut-tabs-titles-item ${tabvalue === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
               key={item.paneKey}
               role="tab"
-              tabIndex={0}
+              tabIndex={-1}
               aria-selected={tabvalue === item.paneKey}
             >
               {item.icon || null}
@@ -49,4 +49,4 @@ const Demo23 = () => {
     </>
   )
 }
-export default Demo23
+export default Demo25

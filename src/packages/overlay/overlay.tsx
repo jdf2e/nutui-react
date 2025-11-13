@@ -21,6 +21,7 @@ export const defaultOverlayProps: WebOverlayProps = {
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},
+  ariaLabel: '蒙层',
 }
 export const Overlay: FunctionComponent<
   Partial<WebOverlayProps> & React.HTMLAttributes<HTMLDivElement>
@@ -37,6 +38,7 @@ export const Overlay: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
+    ariaLabel,
     ...rest
   } = { ...defaultOverlayProps, ...props }
 
@@ -78,6 +80,8 @@ export const Overlay: FunctionComponent<
         style={styles}
         {...rest}
         onClick={handleClick}
+        aria-label={closeOnOverlayClick ? ariaLabel : ''}
+        aria-hidden={!closeOnOverlayClick}
       >
         {children}
       </div>

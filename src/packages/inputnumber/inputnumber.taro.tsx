@@ -66,7 +66,7 @@ export const InputNumber: FunctionComponent<
       mins: '减',
       plus: '加',
     },
-    'zh-TW': {
+    'en-US': {
       mins: 'Minus',
       plus: 'Plus',
     },

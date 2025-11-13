@@ -69,7 +69,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   const [role, setRole] = useState('')
   // ARIA alert提示内容
   const [alertContent, setAlertContent] = useState('')
-  const alertTimerRef = useRef<number>()
+  const alertTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
   // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
@@ -111,7 +111,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           onEnd && onEnd()
           setRole('alert')
           setAlertContent(`${ariaLabel}倒计时结束`)
-          alertTimerRef.current = window.setTimeout(() => {
+          alertTimerRef.current = setTimeout(() => {
             setRole('')
             setAlertContent('')
           }, 3000)

@@ -22,7 +22,7 @@ const ImageDemo = () => {
       error: '加载失败',
       lazyload: '图片懒加载',
       imageText: 'Image + text 模式',
-      ARIAUsage: 'ATRIA用法',
+      ARIAUsage: '无障碍使用示例',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -33,7 +33,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'image + text ',
-      ARIAUsage: 'ATRIA Usage',
+      ARIAUsage: 'ARIA Usage',
     },
   })
 

@@ -43,6 +43,7 @@ const defaultProps = {
   onCancel: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
+  ariaLabel: 'dialog',
 }
 
 const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
@@ -79,10 +80,12 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    ariaLabel,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const role = 'dialog'
 
   const renderFooter = () => {
     if (footer === null) return ''
@@ -216,7 +219,13 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <div className={closeClasses} onClick={handleClose}>
+      <div
+        className={closeClasses}
+        onClick={handleClose}
+        role="button"
+        tabIndex={0}
+        aria-label="close"
+      >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
     )
@@ -247,7 +256,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
-          role="dialog"
+          ariaRole={role}
+          ariaLabel={ariaLabel}
         >
           {content || children}
         </Content>
@@ -256,7 +266,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   }
 
   return (
-    <div style={{ display: visible ? 'block' : 'none' }} aria-modal={visible}>
+    <div style={{ display: visible ? 'block' : 'none' }}>
       {overlay && (
         <Overlay
           zIndex={zIndex}

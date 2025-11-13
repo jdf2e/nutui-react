@@ -26,7 +26,7 @@ const CountDownDemo = () => {
       controlTime: '控制开始和暂停的倒计时',
       customStyle: '自定义展示样式',
       handleControl: '手动控制',
-      ariaBasic: 'ARIA基础用法',
+      supportAria: '支持ARIA',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -38,7 +38,7 @@ const CountDownDemo = () => {
       controlTime: '控製開始和暫停的倒計時',
       customStyle: '自定義展示樣式',
       handleControl: '手動控製',
-      ariaBasic: 'ARIA基础用法',
+      supportAria: '支持ARIA',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -50,7 +50,7 @@ const CountDownDemo = () => {
       controlTime: 'Manual Control',
       customStyle: 'Custom Style',
       handleControl: 'Handle Control',
-      ariaBasic: 'ARIA Basic Usage',
+      supportAria: 'support ARIA',
     },
   })
 
@@ -80,7 +80,7 @@ const CountDownDemo = () => {
         <Demo8 />
         <View className="h2">{translated.handleControl}</View>
         <Demo9 />
-        <View className="h2">{translated.ariaBasic}</View>
+        <View className="h2">{translated.supportAria}</View>
         <Demo10 />
       </ScrollView>
     </>

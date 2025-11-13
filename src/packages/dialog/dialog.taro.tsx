@@ -45,7 +45,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-  role: 'dialog',
+  ariaLabel: 'dialog',
 } as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
@@ -85,13 +85,14 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
-      role,
+      ariaLabel,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const role = 'dialog'
 
   useCustomEvent(
     id as string,
@@ -249,7 +250,13 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <View className={closeClasses} onClick={handleClose}>
+      <View
+        className={closeClasses}
+        onClick={handleClose}
+        ariaRole="button"
+        ariaLabel="close"
+        tabindex={0}
+      >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </View>
     )
@@ -286,6 +293,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footerDirection={footerDirection}
         visible={visible}
         ariaRole={role}
+        ariaLabel={ariaLabel}
       >
         {content || children}
       </Content>
@@ -298,7 +306,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       style={{ display: visible ? 'block' : 'none' }}
       ref={refObject}
       catchMove={lockScroll}
-      ariaModal={visible}
     >
       {overlay && (
         <Overlay
@@ -309,7 +316,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
-          ariaRoledescription="背景蒙层"
+          ariaLabel="背景蒙层"
         />
       )}
       {renderContent()}

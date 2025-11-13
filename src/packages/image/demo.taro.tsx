@@ -36,7 +36,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'Image + text ',
-      ARIAUsage: 'ATRIA Usage',
+      ARIAUsage: 'ARIA Usage',
     },
   })
   return (

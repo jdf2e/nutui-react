@@ -27,7 +27,8 @@ export const Content: FunctionComponent<
     style,
     className,
     onClick,
-    role,
+    ariaRole,
+    ariaLabel,
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
@@ -59,8 +60,9 @@ export const Content: FunctionComponent<
       className={classNames(`${classPrefix}-outer`, className)}
       style={style}
       onClick={handleClick}
-      role={role}
-      aria-modal={visible}
+      role={ariaRole}
+      aria-label={ariaLabel}
+      tabIndex={-1}
     >
       {close}
       {header}

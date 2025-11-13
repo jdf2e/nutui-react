@@ -135,8 +135,11 @@ export const Progress: FunctionComponent<
       ref={progressRef}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel || `进度${percent}%`}
+      aria-label={ariaLabel}
       role="progressbar"
+      aria-valuenow={percent}
+      aria-valuemin={0}
+      aria-valuemax={100}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>

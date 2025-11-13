@@ -43,7 +43,7 @@ const SwitchDemo = () => {
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
       eventTip: 'Emit onChange event, current state:',
-      supportARIA: 'Support RIA',
+      supportARIA: 'Support ARIA',
     },
   })
   return (

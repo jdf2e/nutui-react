@@ -27,6 +27,7 @@ const Demo9 = () => {
             src="https://x"
             width="100"
             height="100"
+            alt="加载失败的图片-默认样式"
             onError={() => {
               console.log('image error')
             }}
@@ -34,7 +35,13 @@ const Demo9 = () => {
           <div style={imageText}>默认</div>
         </div>
         <div style={{ width: 110 }}>
-          <Image src="https://x" width="100" height="100" error={<Failure />} />
+          <Image
+            src="https://x"
+            width="100"
+            height="100"
+            alt="加载失败的图片-自定义样式"
+            error={<Failure />}
+          />
           <div style={imageText}>自定义</div>
         </div>
       </div>

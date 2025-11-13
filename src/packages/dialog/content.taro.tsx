@@ -29,7 +29,7 @@ export const Content: FunctionComponent<
     className,
     onClick,
     ariaRole,
-    ariaModal,
+    ariaLabel,
   } = { ...defaultContentProps, ...props }
 
   const classPrefix = 'nut-dialog'
@@ -62,7 +62,8 @@ export const Content: FunctionComponent<
       style={style}
       onClick={(e: ITouchEvent) => handleClick(e)}
       ariaRole={ariaRole}
-      ariaModal={visible}
+      ariaLabel={ariaLabel}
+      tabindex={-1}
     >
       {close}
       {header}
