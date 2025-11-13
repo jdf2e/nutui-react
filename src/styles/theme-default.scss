@@ -259,7 +259,8 @@ page {
   // 标准内容、名称类关键信息
   --nutui-font-size-base: var(--nutui-font-size-14);
   // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
-  --nutui-font-size-l: var(--nutui-font-size-16);
+  --nutui-font-size-l: var(--nutui-font-size-15);
+  --nutui-font-size-icon: var(--nutui-font-size-16);
   // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
   --nutui-font-size-xl: var(--nutui-font-size-18);
   // 数字：页面级主价格，如商详、收银台
@@ -272,6 +273,8 @@ page {
   --nutui-font-weight-light: 300;
   // 常规内容
   --nutui-font-weight: 400;
+  // 500
+  --nutui-font-weight-medium: 500;
   // 强化内容
   --nutui-font-weight-bold: 600;
 

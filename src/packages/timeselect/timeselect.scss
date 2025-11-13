@@ -16,7 +16,9 @@
     width: $timeselect-date-width;
     min-width: $timeselect-date-width;
     height: 100%;
+    /* #ifndef dynamic*/
     overflow: auto;
+    /* #endif */
     background: $color-background-sunken;
   }
 }

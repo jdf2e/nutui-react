@@ -11,6 +11,7 @@ import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
+import { td } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -192,6 +193,17 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
       (t) => String(t.value) === String(value)
     )
     index = index < 0 ? 0 : index
+
+    // 适配 安卓 处理，临时方案，hack
+    if (td()) {
+      return {
+        transform:
+          direction === 'horizontal'
+            ? `translate3d(${rtl ? '' : '-'}${index * 50}%, 0, 0)`
+            : `translate3d( 0, -${index * 50}%, 0)`,
+        transitionDuration: `${duration}ms`,
+      }
+    }
     return {
       transform:
         direction === 'horizontal'

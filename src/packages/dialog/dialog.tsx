@@ -23,6 +23,7 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
+  badge: '',
   confirmText: '',
   cancelText: '',
   closeOnOverlayClick: true,
@@ -61,6 +62,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     footer,
     footerDirection,
     header,
+    badge,
     hideConfirmButton,
     hideCancelButton,
     lockScroll,
@@ -140,18 +142,45 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     const renderConfirm = () => {
       return (
         !hideConfirmButton && (
-          <Button
-            type="primary"
-            size="large"
-            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-              disabled: disableConfirmButton,
-            })}
-            disabled={disableConfirmButton}
-            onClick={(e) => handleOk(e)}
-            loading={loading}
-          >
-            {confirmText || locale.confirm}
-          </Button>
+          <>
+            {badge ? (
+              <div className={`${classPrefix}-footer-ok-container`}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className={classNames(
+                    `${classPrefix}-footer-ok ${btnClass}`,
+                    {
+                      disabled: disableConfirmButton,
+                    }
+                  )}
+                  disabled={disableConfirmButton}
+                  onClick={(e) => handleOk(e)}
+                  loading={loading}
+                >
+                  {confirmText || locale.confirm}
+                </Button>
+                {badge ? (
+                  <div className={`${classPrefix}-footer-ok-badge`}>
+                    {badge}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <Button
+                type="primary"
+                size="large"
+                className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
+                  disabled: disableConfirmButton,
+                })}
+                disabled={disableConfirmButton}
+                onClick={(e) => handleOk(e)}
+                loading={loading}
+              >
+                {confirmText || locale.confirm}
+              </Button>
+            )}
+          </>
         )
       )
     }

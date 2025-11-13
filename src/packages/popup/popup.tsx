@@ -66,6 +66,7 @@ export const Popup: FunctionComponent<
     closeIcon,
     left,
     title,
+    top,
     description,
     style,
     transition,
@@ -88,6 +89,7 @@ export const Popup: FunctionComponent<
     onTouchEnd,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
+  const topNodeRef = React.useRef<HTMLDivElement | null>(null)
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -142,6 +144,12 @@ export const Popup: FunctionComponent<
     onOpen && onOpen()
   }
 
+  useEffect(() => {
+    if (topNodeRef.current && nodeRef.current) {
+      topNodeRef.current.style.bottom = `${nodeRef.current?.clientHeight}px`
+    }
+  }, [innerVisible])
+
   const close = () => {
     if (innerVisible) {
       setInnerVisible(false)
@@ -178,6 +186,15 @@ export const Popup: FunctionComponent<
           </div>
         )}
       </>
+    )
+  }
+
+  const renderTop = () => {
+    if (!top) return null
+    return (
+      <div className={`${classPrefix}-bottom-top`} ref={topNodeRef}>
+        {top}
+      </div>
     )
   }
 
@@ -291,6 +308,7 @@ export const Popup: FunctionComponent<
           onTouchCancel={handleTouchEnd}
           role="dialog"
         >
+          {renderTop()}
           {renderTitle()}
           {showChildren && children}
         </div>

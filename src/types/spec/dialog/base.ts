@@ -34,6 +34,8 @@ export interface BaseDialog extends DialogWrapProps {
   content: ReactNode
   confirmText: ReactNode
   cancelText: ReactNode
+  confirmBadge: ReactNode
+  cancelBadge: ReactNode
   hideConfirmButton: boolean
   hideCancelButton: boolean
   disableConfirmButton: boolean

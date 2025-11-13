@@ -182,17 +182,21 @@
     &-wrapper,
     &-wrapper-right {
       position: absolute;
+      /* #ifndef dynamic*/
       top: initial;
+      right: initial;
+      /* #endif */
       top: 100%;
       left: 50%;
-      right: initial;
       // transform: translate3d(-50%, -50%, 0);
     }
 
     &-wrapper-left {
       top: 0px;
       left: 50%;
+      /* #ifndef dynamic*/
       right: initial;
+      /* #endif */
       // transform: translate3d(-50%, -50%, 0);
     }
 
@@ -207,7 +211,6 @@
     position: absolute;
     width: 36px;
     height: 100%;
-    // top: initial;
     top: 0px;
     right: 50%;
     overflow: visible;
@@ -257,19 +260,25 @@
     &-wrapper,
     &-wrapper-right {
       left: 0;
+      /* #ifndef dynamic*/
       right: initial;
+      /* #endif */
       // transform: translate3d(-50%, -50%, 0);
     }
     &-wrapper-left {
       right: 0;
+      /* #ifndef dynamic*/
       left: initial;
+      /* #endif */
       // transform: translate3d(50%, -50%, 0);
     }
   }
 
   &-tick {
     right: 0px;
+    /* #ifndef dynamic*/
     left: initial;
+    /* #endif */
   }
 
   &-mark-text {
@@ -281,13 +290,17 @@
       &-wrapper,
       &-wrapper-right {
         right: 50%;
+        /* #ifndef dynamic*/
         left: initial;
+        /* #endif */
         // transform: translate3d(50%, 50%, 0);
       }
 
       &-wrapper-left {
         right: 50%;
+        /* #ifndef dynamic*/
         left: initial;
+        /* #endif */
         // transform: translate3d(50%, -50%, 0);
       }
 

@@ -74,8 +74,10 @@
     font-size: $popover-font-size;
     color: $popover-text-color;
     line-height: 28px;
+    /* #ifndef dynamic*/
     max-height: initial;
     overflow-y: initial;
+    /* #endif */
 
     &-group {
       padding: 0 $popover-padding;

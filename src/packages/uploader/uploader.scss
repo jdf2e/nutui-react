@@ -180,7 +180,9 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        /* #ifndef dynamic*/
         position: initial;
+        /* #endif */
         border-radius: $uploader-image-border-radius;
       }
 
