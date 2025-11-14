@@ -143,9 +143,10 @@ export const Radio: FC<
       style={style}
       onClick={handleClick}
       ariaRole="radio"
+      ariaLabel={ariaLabel}
+      // @ts-ignore
       ariaChecked={checkedStatement}
       ariaDisabled={disabled}
-      ariaLabel={ariaLabel}
     >
       {renderRadioItem()}
     </View>

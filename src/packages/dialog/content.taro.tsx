@@ -63,7 +63,8 @@ export const Content: FunctionComponent<
       onClick={(e: ITouchEvent) => handleClick(e)}
       ariaRole={ariaRole}
       ariaLabel={ariaLabel}
-      tabindex={-1}
+      // @ts-ignore
+      tabIndex={-1}
     >
       {close}
       {header}

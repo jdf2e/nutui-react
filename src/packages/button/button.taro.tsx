@@ -163,6 +163,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
         ariaRole={role}
+        // @ts-ignore
         ariaDisabled={disabled}
       >
         <View className="nut-button-wrap">
