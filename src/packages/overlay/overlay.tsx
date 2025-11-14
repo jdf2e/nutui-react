@@ -81,8 +81,9 @@ export const Overlay: FunctionComponent<
         style={styles}
         {...rest}
         onClick={handleClick}
-        aria-label={closeOnOverlayClick ? ariaLabel || locale.mask : ''}
-        aria-hidden={!closeOnOverlayClick}
+        {...(closeOnOverlayClick
+          ? { ariaLabel: ariaLabel || locale.mask }
+          : {})}
       >
         {children}
       </div>
