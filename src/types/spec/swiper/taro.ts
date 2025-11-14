@@ -19,11 +19,9 @@ export type TaroSwiperProps = Omit<BaseSwiper, OmittedKeys> &
     autoplay: boolean
     loop: boolean
     defaultValue: number
-    ariaLabel: string
   }
 
 export interface TaroSwiperItemProps extends Omit<BaseSwiperItem, 'onClick'> {
   itemId?: string
   skipHiddenItemLayout?: boolean
-  ariaLabel: string
 }

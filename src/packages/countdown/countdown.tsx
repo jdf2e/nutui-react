@@ -45,7 +45,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     onRestart,
     onUpdate,
     children,
-    ariaRoledescription,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-countdown'
@@ -61,10 +60,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     handleEndTime: Date.now(), // 最终截止时间
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
   })
-
-  const [role, setRole] = useState('')
-  // ARIA alert提示内容
-  const [alertContent, setAlertContent] = useState('')
 
   // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
@@ -102,12 +97,6 @@ const InternalCountDown: ForwardRefRenderFunction<
           stateRef.current.counting = false
           pause()
           onEnd && onEnd()
-          setRole('alert')
-          setAlertContent('时间到')
-          setTimeout(() => {
-            setRole('')
-            setAlertContent('')
-          }, 3000)
         }
 
         if (remainTime > 0) {
@@ -293,11 +282,9 @@ const InternalCountDown: ForwardRefRenderFunction<
         <div
           className={`${classPrefix} ${className}`}
           style={{ ...style }}
-          aria-label="倒计时"
-          aria-roledescription={ariaRoledescription}
           {...rest}
           dangerouslySetInnerHTML={{
-            __html: `${renderTime}<span style="display:none" role=${role}>${alertContent}</span>`,
+            __html: `${renderTime}`,
           }}
         />
       )}

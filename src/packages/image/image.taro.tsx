@@ -35,7 +35,6 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     loading,
     onLoad,
     onError,
-    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
@@ -130,7 +129,6 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
         src={src}
         onLoad={(e) => handleLoad(e)}
         onError={(e) => handleError(e)}
-        ariaLabel={ariaLabel}
       />
       <>
         {renderLoading()}

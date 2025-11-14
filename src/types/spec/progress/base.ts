@@ -15,5 +15,4 @@ export interface BaseProgress extends BaseProps {
   duration: number
   ariaLabel: string
   onActiveEnd: () => void
-  role: string
 }

@@ -47,8 +47,6 @@ export const Swiper = React.forwardRef(
       current,
       onChange,
       style,
-      ariaLabel,
-      ariaRoledescription,
       ...rest
     } = {
       ...defaultProps,
@@ -154,18 +152,11 @@ export const Swiper = React.forwardRef(
           >
             {Children.toArray(children).map((child, index) => {
               let className
-              let ariaLabelItem
               if (React.isValidElement(child)) {
                 className = child.props.className
-                ariaLabelItem = child.props.ariaLabel
               }
               return (
-                <TSwiperItem
-                  className={className}
-                  key={index}
-                  ariaLabel={ariaLabelItem}
-                  ariaHidden={innerValue !== index}
-                >
+                <TSwiperItem className={className} key={index}>
                   {child}
                 </TSwiperItem>
               )

@@ -29,7 +29,7 @@ const Header = () => {
     <>
       {Taro.getEnv() === 'WEB' ? (
         <div className="applets-demo-header">
-          <div className="back" onClick={navigateTo} role='button' aria-label='back'>
+          <div className="back" onClick={navigateTo}>
             <ArrowLeft />
           </div>
           <div className="applets-icon">

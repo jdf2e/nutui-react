@@ -81,15 +81,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     setValue(!value)
   }
   return (
-    <View
-      className={classes()}
-      onClick={onClick}
-      style={style}
-      ariaRole="switch"
-      ariaChecked={value}
-      disabled={disabled}
-      {...rest}
-    >
+    <View className={classes()} onClick={onClick} style={style} {...rest}>
       <View
         className={classNames([
           [`${classPrefix}-button`],

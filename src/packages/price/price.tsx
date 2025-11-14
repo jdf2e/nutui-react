@@ -116,13 +116,6 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     <div
       className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
-      aria-label={`${
-        symbol && position === 'before' ? `${symbol}` : ''
-      }${formatThousands(price)}${
-        checkPoint(price) || digits ? '.' : ''
-      }${formatDecimal(price)}${
-        symbol && position === 'after' ? `${symbol}` : ''
-      }`}
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}

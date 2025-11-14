@@ -16,7 +16,6 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
-import Demo12 from './demos/taro/demo12'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
@@ -32,7 +31,6 @@ const NoticeBarDemo = () => {
       complexAm: '纵向模式：自定义左侧图标',
       customAm: '纵向模式：自定义滚动内容，动态变更滚动内容',
       customRightIcon: '纵向模式：自定义右侧图标',
-      basicARIA: 'ARIA基础使用',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -46,7 +44,6 @@ const NoticeBarDemo = () => {
       complexAm: 'Vertical Scroll Complex Animation',
       customAm: 'Vertical Scroll Custom Style，Dynamic Change Scroll Content',
       customRightIcon: 'Vertical Scroll Custom Right Icon',
-      basicARIA: 'ARIA Basic Usage',
     },
   })
 
@@ -85,8 +82,6 @@ const NoticeBarDemo = () => {
         <View className="interstroll-list">
           <Demo11 />
         </View>
-        <View className="h2">{translated.basicARIA}</View>
-        <Demo12 />
       </ScrollView>
     </>
   )

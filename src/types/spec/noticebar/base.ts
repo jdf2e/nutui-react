@@ -23,5 +23,4 @@ export interface BaseNoticeBar extends BaseProps {
   onClose?: (event: any) => void
   onClick?: (event: any) => void
   onItemClick?: (event: any, value: any) => void
-  rightIconAriaLabel: string
 }

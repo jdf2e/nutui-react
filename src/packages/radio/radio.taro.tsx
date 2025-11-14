@@ -137,13 +137,7 @@ export const Radio: FC<
     className
   )
   return (
-    <View
-      className={cls}
-      style={style}
-      onClick={handleClick}
-      ariaRole="radio"
-      ariaChecked={checkedStatement}
-    >
+    <View className={cls} style={style} onClick={handleClick}>
       {renderRadioItem()}
     </View>
   )

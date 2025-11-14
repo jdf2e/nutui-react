@@ -178,7 +178,6 @@ export const Toast: FunctionComponent<
                 }
               )}
               style={{ ...styles, ...contentStyle }}
-              ariaRole="alert"
             >
               {renderIcon()}
               {title && <Text className={`${classPrefix}-title`}>{title}</Text>}

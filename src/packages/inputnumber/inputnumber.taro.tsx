@@ -182,11 +182,7 @@ export const InputNumber: FunctionComponent<
 
   return (
     <View className={classes} style={style}>
-      <View
-        className={`${classPrefix}-minus`}
-        onClick={handleReduce}
-        ariaRole="button"
-      >
+      <View className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
           size={10}
           className={classNames(
@@ -213,11 +209,7 @@ export const InputNumber: FunctionComponent<
         onFocus={handleFocus}
       />
 
-      <View
-        className={`${classPrefix}-add`}
-        onClick={handlePlus}
-        ariaRole="button"
-      >
+      <View className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
           size={10}
           className={classNames(

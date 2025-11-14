@@ -35,8 +35,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
     index,
     direction,
     onActiveClick,
-    ariaLabel,
-    ariaRoledescription,
     ...rest
   } = {
     ...defaultProps,
@@ -119,11 +117,6 @@ export const TabbarItem: FunctionComponent<Partial<WebTabbarItemProps>> = (
         ...style,
       }}
       onClick={() => (active ? onActiveClick?.() : ctx?.handleClick(index))}
-      role="tab"
-      tabIndex={0}
-      aria-label={ariaLabel}
-      aria-roledescription={ariaRoledescription}
-      aria-selected={active}
       {...rest}
     >
       {direction === 'horizontal' && !dot ? (

@@ -158,7 +158,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     }
   }
   return (
-    <div className={classes} {...rest} role="tablist">
+    <div className={classes} {...rest}>
       <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
@@ -182,14 +182,10 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                         `${classPrefix}-titles-item-line-${direction}`
                       )}
                       style={{ background: activeColor }}
-                      aria-hidden
                     />
                   )}
                   {activeType === 'smile' && (
-                    <div
-                      className={`${classPrefix}-titles-item-smile`}
-                      aria-hidden
-                    >
+                    <div className={`${classPrefix}-titles-item-smile`}>
                       <JoySmile color={activeColor} width={40} height={20} />
                     </div>
                   )}
@@ -201,10 +197,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                       `${classPrefix}-titles-item-text`
                     )}
                     style={{ color: activeColor }}
-                    role="tab"
-                    aria-selected={
-                      !item.disabled && String(item.value) === String(value)
-                    }
                   >
                     {item.title}
                   </div>

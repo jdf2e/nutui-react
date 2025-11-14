@@ -30,7 +30,6 @@ const defaultProps = {
   delay: 1,
   scrollable: null,
   speed: 50,
-  rightIconAriaLabel: '',
 } as TaroNoticeBarProps
 export const NoticeBar: FunctionComponent<
   Partial<TaroNoticeBarProps> &
@@ -60,7 +59,6 @@ export const NoticeBar: FunctionComponent<
     onClose,
     onClick,
     onItemClick,
-    rightIconAriaLabel,
   } = {
     ...defaultProps,
     ...props,
@@ -462,9 +460,7 @@ export const NoticeBar: FunctionComponent<
       {showNoticeBar && direction === 'horizontal' ? (
         <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon" ariaHidden>
-              {leftIcon}
-            </View>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
           <View ref={wrapRef} className="nut-noticebar-box-wrap">
             <View
@@ -545,7 +541,6 @@ export const NoticeBar: FunctionComponent<
             onClick={(e) => {
               handleClickIcon(e)
             }}
-            ariaLabel={`${closeable ? 'close' : rightIconAriaLabel}`}
           >
             {rightIcon || (closeable ? <Close size={12} /> : null)}
           </View>

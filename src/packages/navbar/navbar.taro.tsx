@@ -67,7 +67,6 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
             onClick={(e) => onBackClick(e)}
-            ariaLabel="back"
           >
             {back}
           </View>
@@ -84,7 +83,6 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
-        ariaLabel={title ? 'nav title' : ''}
       >
         {title || children}
       </View>
@@ -107,7 +105,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <View className={cls} style={styles()} ariaRole="navigation">
+      <View className={cls} style={styles()}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}

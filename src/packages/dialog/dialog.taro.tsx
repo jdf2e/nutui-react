@@ -44,7 +44,6 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-  role: 'dialog',
 } as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
@@ -82,7 +81,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
-      role,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -231,7 +229,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
-          ariaRole={role}
         >
           {content || children}
         </Content>
@@ -244,7 +241,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       style={{ display: visible ? 'block' : 'none' }}
       ref={refObject}
       catchMove={lockScroll}
-      ariaModal={visible}
     >
       {overlay && (
         <Overlay
@@ -255,7 +251,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
-          ariaRoledescription="背景蒙层"
         />
       )}
       {renderContent()}

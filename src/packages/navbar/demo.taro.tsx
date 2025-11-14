@@ -7,7 +7,6 @@ import './demo.scss'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
 
 const NavBarDemo = () => {
   const [translated] = useTranslate({
@@ -15,19 +14,16 @@ const NavBarDemo = () => {
       basic: '基础用法',
       title1: '标题位置',
       title2: '多tab切换导航',
-      basicARIA: 'ARIA基础用法',
     },
     'zh-TW': {
       basic: '基礎用法',
       title1: '標題位置',
       title2: '多tab切換導航',
-      basicARIA: 'ARIA基礎用法',
     },
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Title Align',
       title2: 'Multi-tab Switching Navigation',
-      basicARIA: 'ARIA Basic Usage',
     },
   })
   return (
@@ -42,8 +38,6 @@ const NavBarDemo = () => {
         <Demo2 />
         <View className="h2">{translated.title2}</View>
         <Demo3 />
-        <View className="h2">{translated.basicARIA}</View>
-        <Demo4 />
       </ScrollView>
     </>
   )

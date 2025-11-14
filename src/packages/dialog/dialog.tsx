@@ -218,7 +218,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
-          role="dialog"
         >
           {content || children}
         </Content>
@@ -227,7 +226,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
   }
 
   return (
-    <div style={{ display: visible ? 'block' : 'none' }} aria-modal={visible}>
+    <div style={{ display: visible ? 'block' : 'none' }}>
       {overlay && (
         <Overlay
           zIndex={zIndex}

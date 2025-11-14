@@ -22,7 +22,4 @@ export interface BaseTabbarItem extends BaseProps {
   right: string
   direction: Direction
   onActiveClick: () => void
-  ariaLabel: string
-  ariaSelected: boolean
-  ariaRoledescription: string
 }

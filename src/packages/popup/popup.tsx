@@ -289,7 +289,6 @@ export const Popup: FunctionComponent<
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleTouchEnd}
-          role="dialog"
         >
           {renderTitle()}
           {showChildren && children}
