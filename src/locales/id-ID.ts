@@ -141,6 +141,6 @@ const idID: BaseLang = {
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
-  mask: 'Topeng',
+  mask: 'Masker',
 }
 export default idID

@@ -66,8 +66,7 @@ export const Overlay: FunctionComponent<
       {...(rest as any)}
       catchMove={lockScroll}
       onClick={handleClick}
-      ariaLabel={closeOnOverlayClick ? ariaLabel || locale.mask : ''}
-      ariaHidden={!closeOnOverlayClick}
+      {...(closeOnOverlayClick ? { ariaLabel: ariaLabel || locale.mask } : {})}
     >
       {children}
     </View>
