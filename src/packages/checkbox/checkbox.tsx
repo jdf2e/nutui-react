@@ -209,6 +209,9 @@ export const Checkbox: FunctionComponent<
       )}
       {...rest}
       onClick={handleClick}
+      role="checkbox"
+      tabIndex={innerDisabled ? -1 : 0}
+      aria-checked={innerIndeterminate ? 'mixed' : innerChecked}
     >
       {renderCheckboxItem()}
     </div>

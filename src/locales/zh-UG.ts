@@ -10,6 +10,7 @@ const zhUG: BaseLang = {
   select: 'تاللاڭ',
   edit: 'يحرر',
   reset: 'إعادة ضبط',
+  close: 'تاقاش',
   video: {
     errorTip: 'فىلىمنى قويۇش مەغلۇپ بولدى',
     clickRetry: 'قايتا سىناش',
@@ -138,5 +139,6 @@ const zhUG: BaseLang = {
   watermark: {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },
+  mask: 'mengceng',
 }
 export default zhUG
