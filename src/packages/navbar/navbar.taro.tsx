@@ -84,7 +84,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
-        ariaLabel={title ? 'nav title' : ''}
+        {...(title ? { ariaLabel: title } : {})}
       >
         {title || children}
       </View>

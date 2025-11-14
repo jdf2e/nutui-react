@@ -10,6 +10,7 @@ const trTR: BaseLang = {
   select: 'Seçiniz',
   edit: 'düzenlemek',
   reset: 'sıfırlama',
+  close: 'Kapat',
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',

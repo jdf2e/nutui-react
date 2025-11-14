@@ -224,7 +224,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
         onClick={handleClose}
         role="button"
         tabIndex={0}
-        aria-label="close"
+        aria-label={locale.close}
       >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
@@ -276,6 +276,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
+          ariaLabel="背景蒙层"
         />
       )}
       {renderContent()}

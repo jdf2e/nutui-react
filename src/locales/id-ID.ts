@@ -10,6 +10,7 @@ const idID: BaseLang = {
   select: 'Pilih',
   edit: 'Sunting',
   reset: 'Mengatur Ulang',
+  close: 'Tutup',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',

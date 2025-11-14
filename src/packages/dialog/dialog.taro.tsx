@@ -254,7 +254,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         className={closeClasses}
         onClick={handleClose}
         ariaRole="button"
-        ariaLabel="close"
+        ariaLabel={locale.close}
         tabindex={0}
       >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}

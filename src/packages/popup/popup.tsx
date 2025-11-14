@@ -16,6 +16,8 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { WebPopupProps } from '@/types'
+import { useTranslate } from '@/sites/assets/locale'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps: WebPopupProps = {
   ...defaultOverlayProps,
@@ -102,6 +104,16 @@ export const Popup: FunctionComponent<
   // 首次可调整时记录的默认高度
   const defaultHeightRef = useRef(0)
   const isTouching = useRef(false)
+  const role = 'dialog'
+  const { locale } = useConfig()
+  const [translated] = useTranslate({
+    'zh-CN': {
+      title: '标题',
+    },
+    'en-US': {
+      title: 'title',
+    },
+  })
 
   useLockScroll(nodeRef, innerVisible && lockScroll)
 
@@ -181,7 +193,13 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <div className={closeClasses} onClick={handleCloseIconClick}>
+          <div
+            className={closeClasses}
+            onClick={handleCloseIconClick}
+            role="button"
+            aria-label={locale.close}
+            tabIndex={-1}
+          >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </div>
         )}
@@ -208,7 +226,10 @@ export const Popup: FunctionComponent<
                 <div className={`${classPrefix}-title-left`}>{left}</div>
               )}
               {(title || description) && (
-                <div className={`${classPrefix}-title-wrapper`}>
+                <div
+                  className={`${classPrefix}-title-wrapper`}
+                  aria-label={translated.title}
+                >
                   {title && (
                     <div className={`${classPrefix}-title-title`}>{title}</div>
                   )}
@@ -306,7 +327,7 @@ export const Popup: FunctionComponent<
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
           onTouchCancel={handleTouchEnd}
-          role="dialog"
+          role={role}
         >
           {renderTop()}
           {renderTitle()}

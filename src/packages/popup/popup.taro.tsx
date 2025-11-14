@@ -20,6 +20,7 @@ import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
 import { pxTransform } from '@/utils/taro/px-transform'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 const defaultProps: TaroPopupProps = {
   ...defaultOverlayProps,
@@ -107,6 +108,7 @@ export const Popup: FunctionComponent<
   const heightRef = useRef(0)
   const defaultHeightRef = useRef(0)
   const isTouching = useRef(false)
+  const { locale } = useConfig()
 
   const classPrefix = 'nut-popup'
   const overlayStyles = {
@@ -124,6 +126,7 @@ export const Popup: FunctionComponent<
   )
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')
+  const role = 'dialog'
 
   const resizeStyles = () => {
     if (popupHeight !== '') {
@@ -200,7 +203,12 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <View className={closeClasses} onClick={handleCloseIconClick}>
+          <View
+            className={closeClasses}
+            onClick={handleCloseIconClick}
+            ariaRole="button"
+            ariaLabel={locale.close}
+          >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>
         )}
@@ -346,7 +354,7 @@ export const Popup: FunctionComponent<
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
-        ariaRole="dialog"
+        ariaRole={role}
       >
         {renderTop()}
         {renderTitle()}

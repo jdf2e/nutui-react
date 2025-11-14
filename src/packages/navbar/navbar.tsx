@@ -83,7 +83,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
-        aria-label={title ? 'nav title' : ''}
+        {...(title ? { 'aria-label': title } : {})}
       >
         {title || children}
       </div>
