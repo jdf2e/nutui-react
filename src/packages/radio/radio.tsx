@@ -32,6 +32,7 @@ export const Radio: FunctionComponent<
     icon,
     activeIcon,
     onChange,
+    ariaLabel,
     ...others
   } = {
     ...defaultProps,
@@ -139,6 +140,7 @@ export const Radio: FunctionComponent<
       tabIndex={disabled ? -1 : 0}
       aria-checked={checkedStatement}
       aria-disabled={disabled}
+      aria-label={ariaLabel}
     >
       {renderRadioItem()}
     </div>

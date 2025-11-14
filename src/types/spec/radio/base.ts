@@ -21,6 +21,7 @@ export interface BaseRadio extends BaseProps {
   activeIcon: ReactNode
   value: SimpleValue
   onChange: (checked: boolean) => void
+  ariaLabel?: string
 }
 
 export interface BaseRadioGroup extends BaseProps {

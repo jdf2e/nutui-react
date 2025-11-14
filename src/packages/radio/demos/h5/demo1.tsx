@@ -5,15 +5,17 @@ const Demo1 = () => {
   return (
     <Cell.Group>
       <Cell>
-        <Radio defaultChecked>选项1</Radio>
-      </Cell>
-      <Cell>
-        <Radio defaultChecked labelPosition="left">
+        <Radio defaultChecked ariaLabel="checkbox">
           选项1
         </Radio>
       </Cell>
       <Cell>
-        <Radio defaultChecked disabled>
+        <Radio defaultChecked labelPosition="left" ariaLabel="checkbox">
+          选项1
+        </Radio>
+      </Cell>
+      <Cell>
+        <Radio defaultChecked disabled ariaLabel="checkbox">
           选项1
         </Radio>
       </Cell>

@@ -88,6 +88,7 @@ export const Popup: FunctionComponent<
     onTouchStart,
     onTouchMove,
     onTouchEnd,
+    closeAriaLabel,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
   const topNodeRef = React.useRef<HTMLDivElement | null>(null)
@@ -188,7 +189,7 @@ export const Popup: FunctionComponent<
             className={closeClasses}
             onClick={handleCloseIconClick}
             role="button"
-            aria-label={locale.close}
+            aria-label={closeAriaLabel || locale.close}
             tabIndex={-1}
           >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}

@@ -44,6 +44,7 @@ export interface BaseDialog extends DialogWrapProps {
   beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+  ariaLabel: string
 }
 
 export type DialogReturnProps = {

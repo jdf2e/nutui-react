@@ -37,6 +37,7 @@ export const Radio: FC<
     icon,
     activeIcon,
     onChange,
+    ariaLabel,
     ...others
   } = {
     ...defaultProps,
@@ -144,6 +145,7 @@ export const Radio: FC<
       ariaRole="radio"
       ariaChecked={checkedStatement}
       ariaDisabled={disabled}
+      ariaLabel={ariaLabel}
     >
       {renderRadioItem()}
     </View>
