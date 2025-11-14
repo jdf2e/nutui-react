@@ -83,6 +83,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       ...rest
     } = { ...defaultProps, ...props }
 
+    const role = 'button'
     const getStyle = useMemo(() => {
       const style: CSSProperties = {}
       if (color) {
@@ -161,6 +162,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={buttonClassNames}
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
+        ariaRole={role}
+        ariaDisabled={disabled}
       >
         <View className="nut-button-wrap">
           {loading && <Loading className="nut-icon-loading" />}

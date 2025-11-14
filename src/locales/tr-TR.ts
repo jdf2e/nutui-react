@@ -10,6 +10,7 @@ const trTR: BaseLang = {
   select: 'Seçiniz',
   edit: 'düzenlemek',
   reset: 'sıfırlama',
+  close: 'Kapat',
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
@@ -148,5 +149,6 @@ const trTR: BaseLang = {
   watermark: {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
+  mask: 'Maske',
 }
 export default trTR
