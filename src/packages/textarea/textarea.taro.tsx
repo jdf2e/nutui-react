@@ -34,6 +34,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
     style,
     plain,
     status,
+    viewId,
     onChange,
     onBlur,
     onFocus,
@@ -97,6 +98,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
   return (
     <>
       <View
+        id={viewId}
         className={classNames(
           classPrefix,
           {

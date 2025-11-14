@@ -40,6 +40,10 @@ const Demo6 = () => {
         cancelText="决策2"
         onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
+        onClose={() => {
+          setVisible2(false)
+          console.log('关闭底部icon 3')
+        }}
         closeIcon
       >
         支持函数调用和组件调用两种方式。
