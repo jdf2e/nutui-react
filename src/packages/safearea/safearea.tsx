@@ -4,13 +4,20 @@ import { WebSafeAreaProps } from '@/types'
 
 const classPrefix = 'nut-safe-area'
 export const SafeArea: FC<WebSafeAreaProps> = (props) => {
+  const { className, style, position, children, ...rest } = props
+
   return (
     <div
+      {...rest}
       className={classNames(
         classPrefix,
-        `${classPrefix}-position-${props.position}`
+        `${classPrefix}-position-${position}`,
+        className
       )}
-    />
+      style={style}
+    >
+      {children}
+    </div>
   )
 }
 
