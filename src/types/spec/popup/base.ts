@@ -31,4 +31,5 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   onTouchMove: (height: number, e: any, direction: 'up' | 'down') => void
   onTouchStart: (height: number, e: any) => void
   onTouchEnd: (height: number, e: any) => void
+  closeAriaLabel?: string
 }

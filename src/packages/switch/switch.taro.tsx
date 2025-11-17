@@ -87,6 +87,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
       onClick={onClick}
       style={style}
       ariaRole="switch"
+      // @ts-ignore
       ariaChecked={value}
       ariaDisabled={disabled}
       tabIndex={disabled ? -1 : 0}

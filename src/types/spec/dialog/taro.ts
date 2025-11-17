@@ -3,8 +3,8 @@ import { BaseDialog, BaseContentProps } from './base'
 
 export interface TaroContentProps extends BaseContentProps {
   onClick: (event: ITouchEvent) => void
-  ariaRole: string
-  ariaLabel: string
+  ariaRole?: string
+  ariaLabel?: string
 }
 
 export interface TaroDialogProps

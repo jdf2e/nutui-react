@@ -16,7 +16,6 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { WebPopupProps } from '@/types'
-import { useTranslate } from '@/sites/assets/locale'
 import { useConfig } from '@/packages/configprovider'
 
 const defaultProps: WebPopupProps = {
@@ -89,6 +88,7 @@ export const Popup: FunctionComponent<
     onTouchStart,
     onTouchMove,
     onTouchEnd,
+    closeAriaLabel,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
   const topNodeRef = React.useRef<HTMLDivElement | null>(null)
@@ -106,14 +106,6 @@ export const Popup: FunctionComponent<
   const isTouching = useRef(false)
   const role = 'dialog'
   const { locale } = useConfig()
-  const [translated] = useTranslate({
-    'zh-CN': {
-      title: '标题',
-    },
-    'en-US': {
-      title: 'title',
-    },
-  })
 
   useLockScroll(nodeRef, innerVisible && lockScroll)
 
@@ -197,7 +189,7 @@ export const Popup: FunctionComponent<
             className={closeClasses}
             onClick={handleCloseIconClick}
             role="button"
-            aria-label={locale.close}
+            aria-label={closeAriaLabel || locale.close}
             tabIndex={-1}
           >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}

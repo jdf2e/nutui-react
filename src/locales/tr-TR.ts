@@ -149,5 +149,6 @@ const trTR: BaseLang = {
   watermark: {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
+  mask: 'Maske',
 }
 export default trTR

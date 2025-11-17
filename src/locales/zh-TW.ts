@@ -141,5 +141,6 @@ const zhCN: BaseLang = {
   watermark: {
     errorCanvasTips: '當前環境不支持Canvas',
   },
+  mask: '蒙層',
 }
 export default zhCN

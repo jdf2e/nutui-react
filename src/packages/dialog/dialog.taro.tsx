@@ -45,7 +45,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-  ariaLabel: 'dialog',
+  // ariaLabel: 'dialog',
 } as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
@@ -85,7 +85,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
-      ariaLabel,
+      // ariaLabel,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
@@ -255,7 +255,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         onClick={handleClose}
         ariaRole="button"
         ariaLabel={locale.close}
-        tabindex={0}
+        // @ts-ignore
+        tabIndex={0}
       >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </View>
@@ -293,7 +294,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footerDirection={footerDirection}
         visible={visible}
         ariaRole={role}
-        ariaLabel={ariaLabel}
+        // ariaLabel={ariaLabel}
       >
         {content || children}
       </Content>

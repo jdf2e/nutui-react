@@ -92,6 +92,7 @@ export const Popup: FunctionComponent<
     onTouchStart,
     onTouchMove,
     onTouchEnd,
+    closeAriaLabel,
   } = { ...defaultProps, ...props }
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
@@ -207,7 +208,7 @@ export const Popup: FunctionComponent<
             className={closeClasses}
             onClick={handleCloseIconClick}
             ariaRole="button"
-            ariaLabel={locale.close}
+            ariaLabel={closeAriaLabel || locale.close}
           >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>

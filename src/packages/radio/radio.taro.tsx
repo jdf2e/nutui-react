@@ -37,6 +37,7 @@ export const Radio: FC<
     icon,
     activeIcon,
     onChange,
+    ariaLabel,
     ...others
   } = {
     ...defaultProps,
@@ -142,6 +143,8 @@ export const Radio: FC<
       style={style}
       onClick={handleClick}
       ariaRole="radio"
+      ariaLabel={ariaLabel}
+      // @ts-ignore
       ariaChecked={checkedStatement}
       ariaDisabled={disabled}
     >
