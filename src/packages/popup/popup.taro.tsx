@@ -127,7 +127,6 @@ export const Popup: FunctionComponent<
   )
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')
-  const role = 'dialog'
 
   const resizeStyles = () => {
     if (popupHeight !== '') {
@@ -355,7 +354,6 @@ export const Popup: FunctionComponent<
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
-        ariaRole={role}
       >
         {renderTop()}
         {renderTitle()}

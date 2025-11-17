@@ -45,7 +45,7 @@ const defaultProps = {
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
-  ariaLabel: 'dialog',
+  // ariaLabel: 'dialog',
 } as TaroDialogProps
 
 export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
@@ -85,14 +85,13 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       onCancel,
       onConfirm,
       onOverlayClick,
-      ariaLabel,
+      // ariaLabel,
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
-  const role = 'dialog'
 
   useCustomEvent(
     id as string,
@@ -293,8 +292,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footer={renderFooter()}
         footerDirection={footerDirection}
         visible={visible}
-        ariaRole={role}
-        ariaLabel={ariaLabel}
       >
         {content || children}
       </Content>

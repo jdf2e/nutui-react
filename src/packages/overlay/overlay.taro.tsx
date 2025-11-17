@@ -4,7 +4,6 @@ import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroOverlayProps } from '@/types'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export const defaultOverlayProps: TaroOverlayProps = {
   ...ComponentDefaults,
@@ -33,14 +32,12 @@ export const Overlay: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
-    ariaLabel,
     ...rest
   } = { ...defaultOverlayProps, ...props }
 
   const classPrefix = 'nut-overlay'
   const [innerVisible, setInnerVisible] = useState(visible)
   const nodeRef = useLockScrollTaro(!!lockScroll && innerVisible)
-  const { locale } = useConfig()
 
   useEffect(() => {
     setInnerVisible(visible)
@@ -66,7 +63,6 @@ export const Overlay: FunctionComponent<
       {...(rest as any)}
       catchMove={lockScroll}
       onClick={handleClick}
-      {...(closeOnOverlayClick ? { ariaLabel: ariaLabel || locale.mask } : {})}
     >
       {children}
     </View>
