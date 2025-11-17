@@ -5,7 +5,7 @@ import { TaroSafeAreaProps } from '@/types'
 
 const classPrefix = 'nut-safe-area'
 export const SafeArea: FC<TaroSafeAreaProps> = (props) => {
-  const { className, style, position, children, ...rest } = props
+  const { className, style, position, ...rest } = props
 
   return (
     <View
@@ -16,9 +16,7 @@ export const SafeArea: FC<TaroSafeAreaProps> = (props) => {
         className
       )}
       style={style}
-    >
-      {children}
-    </View>
+    />
   )
 }
 
