@@ -218,10 +218,7 @@ export const Popup: FunctionComponent<
                 <div className={`${classPrefix}-title-left`}>{left}</div>
               )}
               {(title || description) && (
-                <div
-                  className={`${classPrefix}-title-wrapper`}
-                  aria-label={translated.title}
-                >
+                <div className={`${classPrefix}-title-wrapper`}>
                   {title && (
                     <div className={`${classPrefix}-title-title`}>{title}</div>
                   )}
