@@ -23,7 +23,7 @@ const defaultProps = {
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
-  destroy: false,
+  destroy: true,
 } as TaroCountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<

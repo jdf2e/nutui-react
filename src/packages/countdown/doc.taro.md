@@ -99,7 +99,7 @@ import { CountDown } from '@nutui/nutui-react-taro'
 | millisecond | 是否开启毫秒级渲染 | `boolean` | `false` |
 | autoStart | 是否自动开始倒计时 | `boolean` | `true` |
 | time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | `number` | `0` |
-| destroy | 销毁实例 | `boolean` | `false` |
+| destroy | 销毁实例 | `boolean` | `true` |
 | onEnd | 倒计时结束时回调函数 | `无` | `-` |
 | onPaused | 暂停倒计时回调函数 | `onPaused: (restTime: number) => void` | `-` |
 | onRestart | 重新开始倒计时回调函数 | `onRestart: (restTime: number) => void` | `-` |

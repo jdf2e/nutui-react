@@ -99,7 +99,7 @@ Paused and restarted the countdown with the paused attribute
 | millisecond | Whether to enable millisecond render | `boolean` | `false` |
 | autoStart | Whether to auto start count down | `boolean` | `true` |
 | time | Total time, unit milliseconds | `number` | `0` |
-| destroy | destroy instance | `boolean` | `false` |
+| destroy | destroy instance | `boolean` | `true` |
 | onPaused | Emitted when count down paused | `onPaused: (restTime: number) => void` | `-` |
 | onRestart | Emitted when count down restart | `onRestart: (restTime: number) => void` | `-` |
 | onUpdate | Real-time update of the countdown data callback function | `onUpdate: (restTime: any) => void` | `-` |

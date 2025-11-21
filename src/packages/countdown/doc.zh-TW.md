@@ -99,7 +99,7 @@ import { CountDown } from '@nutui/nutui-react'
 | millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
 | autoStart | 是否自動開始倒計時 | `boolean` | `true` |
 | time | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | `number` | `0` |
-| destroy | 銷毀實例 | `boolean` | `false` |
+| destroy | 銷毀實例 | `boolean` | `true` |
 | onEnd | 倒計時結束時回調函數 | `無` | `-` |
 | onPaused | 暫停倒計時回調函數 | `onPaused: (restTime: number) => void` | `-` |
 | onRestart | 重新開始倒計時回調函數 | `onRestart: (restTime: number) => void` | `-` |
