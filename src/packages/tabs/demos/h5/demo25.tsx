@@ -32,6 +32,7 @@ const Demo25 = () => {
               role="tab"
               tabIndex={-1}
               aria-selected={tabvalue === item.paneKey}
+              aria-label={item.paneKey}
             >
               {item.icon || null}
               <span className="nut-tabs-titles-item-text">{item.title}</span>
@@ -39,9 +40,14 @@ const Demo25 = () => {
             </div>
           ))
         }}
+        ariaLabel="选项卡"
       >
         {list.map((item) => (
-          <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
+          <Tabs.TabPane
+            key={item.paneKey}
+            value={item.paneKey}
+            ariaLabel={item.paneKey}
+          >
             {item.title}
           </Tabs.TabPane>
         ))}

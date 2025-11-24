@@ -4,6 +4,7 @@ import { useRtl } from '@/packages/configprovider/index'
 import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea'
 import { WebNavBarProps } from '@/types'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -37,6 +38,8 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
 
   const rtl = useRtl()
 
+  const { locale } = useConfig()
+
   const children = Array.isArray(props.children)
     ? props.children
     : [props.children]
@@ -66,7 +69,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
             onClick={(e) => onBackClick(e)}
-            aria-label="back"
+            aria-label={locale.back}
           >
             {back}
           </div>
@@ -83,7 +86,7 @@ export const NavBar: FunctionComponent<Partial<WebNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
-        {...(title ? { 'aria-label': title } : {})}
+        // {...(title ? { 'aria-label': title } : {})}
       >
         {title || children}
       </div>

@@ -15,6 +15,7 @@ import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroNoticeBarProps } from '@/types'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -75,6 +76,7 @@ export const NoticeBar: FunctionComponent<
   const uid = useUuid()
   const wrapRefId = `wrap-ref-${uid}`
   const contentRefId = `content-ref-${uid}`
+  const { locale } = useConfig()
 
   const [showNoticeBar, setShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
@@ -491,9 +493,9 @@ export const NoticeBar: FunctionComponent<
           <View
             className="nut-noticebar-box-right-icon"
             onClick={handleClickIcon}
-            ariaLabel={`${closeable ? 'close' : rightIconAriaLabel}`}
+            ariaLabel={`${closeable ? locale.close : rightIconAriaLabel}`}
           >
-            {rightIcon || <Close size={12} />}
+            {rightIcon || <Close size={12} ariaLabel={locale.close} />}
           </View>
         ) : null}
       </>

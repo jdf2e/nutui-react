@@ -15,7 +15,7 @@ const defaultProps = {
 export const TabPane: FunctionComponent<
   Partial<WebTabPaneProps & TabPanelInnerProps>
 > = (props) => {
-  const { children, autoHeightClassName, className, disabled } = {
+  const { children, autoHeightClassName, className, disabled, ariaLabel } = {
     ...defaultProps,
     ...props,
   }
@@ -32,7 +32,12 @@ export const TabPane: FunctionComponent<
   )
 
   return children ? (
-    <div className={classes} role="tabpanel" tabIndex={active ? 0 : -1}>
+    <div
+      className={classes}
+      role="tabpanel"
+      tabIndex={active ? 0 : -1}
+      aria-label={ariaLabel}
+    >
       {!disabled && children}
     </div>
   ) : null

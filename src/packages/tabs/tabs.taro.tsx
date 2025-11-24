@@ -44,6 +44,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     autoHeight,
     value: outerValue,
     defaultValue: outerDefaultValue,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -67,6 +68,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
             title: props.title,
             value: props.value || idx,
             disabled: props.disabled,
+            titleAriaLabel: props.titleAriaLabel,
           })
         }
       }
@@ -245,7 +247,12 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
         className={classesTitle}
         style={tabStyle}
       >
-        <View className="nut-tabs-list" role="tablist" ariaRole="tablist">
+        <View
+          className="nut-tabs-list"
+          role="tablist"
+          ariaRole="tablist"
+          ariaLabel={ariaLabel}
+        >
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
@@ -291,6 +298,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                         !item.disabled && String(item.value) === String(value)
                       }
                       ariaDisabled={item.disabled}
+                      ariaLabel={item.titleAriaLabel}
                     >
                       {item.title}
                     </View>

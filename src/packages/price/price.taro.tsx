@@ -29,6 +29,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     line,
     className,
     style,
+    ariaLabel,
   } = {
     ...defaultProps,
     ...props,
@@ -170,13 +171,16 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
-          ariaLabel={`${
-            symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
-          }${formatThousands(price)}${
-            checkPoint(price) || digits ? '.' : ''
-          }${formatDecimal(price)}${
-            symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
-          }`}
+          ariaLabel={
+            ariaLabel ||
+            `${
+              symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
+            }${formatThousands(price)}${
+              checkPoint(price) || digits ? '.' : ''
+            }${formatDecimal(price)}${
+              symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
+            }`
+          }
         >
           {renderInner()}
         </Text>
@@ -184,13 +188,16 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
         <View
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
-          ariaLabel={`${
-            symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
-          }${formatThousands(price)}${
-            checkPoint(price) || digits ? '.' : ''
-          }${formatDecimal(price)}${
-            symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
-          }`}
+          ariaLabel={
+            ariaLabel ||
+            `${
+              symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
+            }${formatThousands(price)}${
+              checkPoint(price) || digits ? '.' : ''
+            }${formatDecimal(price)}${
+              symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
+            }`
+          }
         >
           {renderInner()}
         </View>

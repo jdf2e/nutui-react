@@ -5,7 +5,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
 import { bound } from '@/utils/bound'
 import { WebInputNumberProps } from '@/types'
-import { useTranslate } from '@/sites/assets/locale/taro'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -59,16 +59,8 @@ export const InputNumber: FunctionComponent<
   })
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [translated] = useTranslate({
-    'zh-CN': {
-      mins: '减',
-      plus: '加',
-    },
-    'zh-TW': {
-      mins: 'Minus',
-      plus: 'Plus',
-    },
-  })
+  const { locale } = useConfig()
+
   useEffect(() => {
     if (select && focused) {
       inputRef.current?.select?.()
@@ -204,7 +196,7 @@ export const InputNumber: FunctionComponent<
         onClick={handleReduce}
         role="button"
         tabIndex={0}
-        aria-label={translated.mins}
+        aria-label={locale.arithmetic.minus}
         aria-disabled={Number(shadowValue) <= Number(min) || disabled}
       >
         <Minus
@@ -234,7 +226,7 @@ export const InputNumber: FunctionComponent<
         className={`${classPrefix}-add`}
         role="button"
         tabIndex={0}
-        aria-label={translated.plus}
+        aria-label={locale.arithmetic.plus}
         aria-disabled={Number(shadowValue) >= Number(max) || disabled}
         onClick={handlePlus}
       >

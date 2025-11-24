@@ -26,7 +26,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部',
       c9e6df49: '受控',
       c9e6df48: '模拟双击支持回调',
-      ce5c5446aria: '无障碍基础用法',
+      supportAria: '支持无障碍',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -38,7 +38,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部',
       c9e6df49: '受控',
       c9e6df48: '模擬雙擊支持回調',
-      ce5c5446aria: '無障礙基礎用法',
+      supportAria: '支持無障礙',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -50,7 +50,7 @@ const TabbarDemo = () => {
       cfbdc781: 'Fixed Bottom',
       c9e6df49: 'With Controled',
       c9e6df48: 'Mock Double Click',
-      ce5c5446aria: 'ARIA Basic Usage',
+      supportAria: 'support ARIA',
     },
   })
   return (
@@ -75,7 +75,7 @@ const TabbarDemo = () => {
         <Demo7 />
         <View className="h2">{translated.c9e6df48}</View>
         <Demo8 />
-        <View className="h2">{translated.ce5c5446aria}</View>
+        <View className="h2">{translated.supportAria}</View>
         <Demo10 />
         <View className="h2" style={{ marginBottom: 100 }}>
           {translated.cfbdc781}

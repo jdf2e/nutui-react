@@ -5,6 +5,7 @@ import { useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import SafeArea from '@/packages/safearea/index.taro'
 import { TaroNavBarProps } from '@/types'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -38,6 +39,8 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
 
   const rtl = useRtl()
 
+  const { locale } = useConfig()
+
   const children = Array.isArray(props.children)
     ? props.children
     : [props.children]
@@ -67,7 +70,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
               [`${classPrefix}-left-back-children-rtl`]: left && rtl,
             })}
             onClick={(e) => onBackClick(e)}
-            ariaLabel="back"
+            ariaLabel={locale.back}
           >
             {back}
           </View>
@@ -84,7 +87,7 @@ export const NavBar: FunctionComponent<Partial<TaroNavBarProps>> = (props) => {
           [`${classPrefix}-title`]: true,
           [`${classPrefix}-title-center`]: title,
         })}
-        {...(title ? { ariaLabel: title } : {})}
+        // {...(title ? { ariaLabel: title } : {})}
       >
         {title || children}
       </View>

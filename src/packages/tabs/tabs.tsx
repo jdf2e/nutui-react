@@ -40,6 +40,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     autoHeight,
     value: outerValue,
     defaultValue: outerDefaultValue,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -98,6 +99,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
             title: props.title,
             value: props.value || idx,
             disabled: props.disabled,
+            titleAriaLabel: props.titleAriaLabel,
           })
         }
       }
@@ -158,7 +160,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     }
   }
   return (
-    <div className={classes} {...rest} role="tablist">
+    <div className={classes} {...rest} role="tablist" aria-label={ariaLabel}>
       <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
@@ -211,6 +213,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                         : -1
                     }
                     aria-disabled={item.disabled}
+                    aria-label={item.titleAriaLabel}
                   >
                     {item.title}
                   </div>

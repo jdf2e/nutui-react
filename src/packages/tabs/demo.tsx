@@ -51,7 +51,7 @@ const TabsDemo = () => {
       titleLeftCard: '左对齐-卡片模式',
       titleLeftButton: '左对齐-按钮模式',
       titleLeftDivider: '左对齐-分割线模式',
-      title2ARIA: 'ARIA基础用法',
+      title2ARIA: '基础用法 支持ARIA',
       title8ARIA: '自定义标签栏 支持ARIA',
     },
     'en-US': {
@@ -77,7 +77,7 @@ const TabsDemo = () => {
       titleLeftCard: 'Title Left Align - Card Mode',
       titleLeftButton: 'Title Left Align - Button Mode',
       titleLeftDivider: 'Title Left Align - Divider Mode',
-      title2ARIA: 'ARIA Basic Usage',
+      title2ARIA: 'Basic Usage support ARIA',
       title8ARIA: 'Custom Tab Bar support ARIA',
     },
   })

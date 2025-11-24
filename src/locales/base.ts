@@ -9,6 +9,7 @@ export interface BaseLang {
   edit: string
   reset: string
   close: string
+  back: string
   video: {
     errorTip: string
     clickRetry: string
@@ -142,4 +143,8 @@ export interface BaseLang {
     errorCanvasTips: string
   }
   mask: string
+  arithmetic: {
+    plus: string
+    minus: string
+  }
 }

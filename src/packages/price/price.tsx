@@ -27,6 +27,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     line,
     className,
     style,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -124,13 +125,16 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     <div
       className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
-      aria-label={`${
-        symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
-      }${formatThousands(price)}${
-        checkPoint(price) || digits ? '.' : ''
-      }${formatDecimal(price)}${
-        symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
-      }`}
+      aria-label={
+        ariaLabel ||
+        `${
+          symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
+        }${formatThousands(price)}${
+          checkPoint(price) || digits ? '.' : ''
+        }${formatDecimal(price)}${
+          symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
+        }`
+      }
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}

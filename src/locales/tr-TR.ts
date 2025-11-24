@@ -11,6 +11,7 @@ const trTR: BaseLang = {
   edit: 'düzenlemek',
   reset: 'sıfırlama',
   close: 'Kapat',
+  back: 'Geri dön',
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
@@ -150,5 +151,9 @@ const trTR: BaseLang = {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
   mask: 'Maske',
+  arithmetic: {
+    plus: 'Ayrıca',
+    minus: 'eksi',
+  },
 }
 export default trTR

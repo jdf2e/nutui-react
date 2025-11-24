@@ -11,7 +11,7 @@ import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/utils/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider'
+import { useRtl, useConfig } from '@/packages/configprovider'
 import { WebNoticeBarProps } from '@/types'
 
 const defaultProps = {
@@ -65,6 +65,8 @@ export const NoticeBar: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+
+  const { locale } = useConfig()
 
   const classPrefix = 'nut-noticebar'
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -481,7 +483,7 @@ export const NoticeBar: FunctionComponent<
             <div
               className="nut-noticebar-box-right-icon"
               onClick={onClickIcon}
-              aria-label={`${closeable ? 'close' : rightIconAriaLabel}`}
+              aria-label={`${closeable ? locale.close : rightIconAriaLabel}`}
             >
               {rightIcon || <Close width={12} height={12} aria-hidden />}
             </div>
