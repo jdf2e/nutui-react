@@ -7,7 +7,6 @@ import React, {
   useState,
 } from 'react'
 import { View, Text } from '@tarojs/components'
-import { createSelectorQuery } from '@tarojs/taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { mergeProps } from '@/utils/merge-props'
 import { TaroCountUpProps } from '@/types'
@@ -56,32 +55,23 @@ export const CountUp: FunctionComponent<Partial<TaroCountUpProps>> = (
 
   const setNumberTransform = useCallback(() => {
     if (countupRef.current && numberArr.length) {
-      createSelectorQuery()
-        .selectAll('.nut-countup-listitem')
-        .node((numberItems: any) => {
-          const transformArrCache: CSSProperties[] = []
-          Object.keys(numberItems).forEach((key: any) => {
-            const elem = numberItems[Number(key)] as HTMLElement
-            const idx = Number(numberArr[Number(key)])
-            const enabled =
-              elem && typeof idx === 'number' && !Number.isNaN(idx)
-            if (enabled) {
-              // 计算规则：父元素和实际列表高度的百分比，分割成20等份
-              const transform =
-                idx || idx === 0
-                  ? `translate(0, -${(idx === 0 ? 10 : idx) * 5}%)`
-                  : ''
-              transformArrCache.push({
-                transitionDuration: `${duration}s`,
-                transform,
-              } as CSSProperties)
-            }
-          })
-          setTransformArr([...transformArrCache])
-        })
-        .exec()
+      // 直接创建与numberArr长度匹配的transform数组
+      const newTransformArr: CSSProperties[] = []
+
+      numberArr.forEach((item, idx) => {
+        const numValue = Number(item)
+        if (!Number.isNaN(numValue)) {
+          // 直接使用数字值计算正确的滚动位置
+          newTransformArr[idx] = {
+            transitionDuration: `${duration}s`,
+            transform: `translate(0, -${numValue * 5}%)`,
+          }
+        }
+      })
+
+      setTransformArr(newTransformArr)
     }
-  }, [numberArr])
+  }, [numberArr, duration])
 
   useEffect(() => {
     if (numberArr.length) {
