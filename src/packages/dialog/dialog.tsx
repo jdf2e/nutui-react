@@ -256,7 +256,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
-          ariaRole={role}
           ariaLabel={ariaLabel}
         >
           {content || children}
