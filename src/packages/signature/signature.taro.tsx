@@ -145,7 +145,7 @@ const InternalSignature: ForwardRefRenderFunction<
   const initCanvas = () => {
     nextTick(() => {
       setTimeout(() => {
-        if (getEnv() === 'WEAPP' || getEnv() === 'JD') {
+        if (['WEAPP', 'JD', 'ASCF'].includes(getEnv())) {
           createSelectorQuery()
             .select(`#${canvasId}`)
             .fields(
@@ -186,7 +186,7 @@ const InternalSignature: ForwardRefRenderFunction<
   return (
     <View className={`${classPrefix} ${className}`} {...rest}>
       <View className={`${classPrefix}-inner spcanvas_WEAPP`} ref={wrapRef}>
-        {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
+        {['WEAPP', 'JD', 'ASCF'].includes(getEnv()) ? (
           <canvas
             id={canvasId}
             ref={canvasRef}
