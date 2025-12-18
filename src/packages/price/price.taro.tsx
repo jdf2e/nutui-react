@@ -166,7 +166,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
 
   return (
     <>
-      {harmony() ? (
+      {harmony() || process.env.TARO_ENV === 'dynamic' ? (
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}

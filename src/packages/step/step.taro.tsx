@@ -86,17 +86,17 @@ export const Step: FunctionComponent<
     if (!title && !description) return null
 
     return (
-      <div className={`${classPrefix}-main`}>
+      <View className={`${classPrefix}-main`}>
         {title && <View className={`${classPrefix}-title`}>{title}</View>}
         {description && (
           <View className={`${classPrefix}-description`}>{description}</View>
         )}
-      </div>
+      </View>
     )
   }, [title, description])
 
   return (
-    <div className={classes} style={style} onClick={handleClickStep}>
+    <View className={classes} style={style} onClick={handleClickStep}>
       <View className={`${classPrefix}-head`}>
         <View className={`${classPrefix}-head-${type || parentType}-wrap`}>
           {renderHeadType}
@@ -106,7 +106,7 @@ export const Step: FunctionComponent<
         <View className={`${classPrefix}-line-inner`} />
       </View>
       {renderContent}
-    </div>
+    </View>
   )
 }
 
