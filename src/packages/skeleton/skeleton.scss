@@ -4,7 +4,12 @@
 
   &-content {
     position: relative;
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     width: $skeleton-line-width;
     background: $skeleton-background;
     border-radius: $skeleton-line-border-radius;

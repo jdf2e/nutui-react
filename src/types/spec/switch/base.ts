@@ -11,4 +11,5 @@ export interface BaseSwitch extends BaseProps {
   loading: boolean | undefined
   onLoadingChange: (loading: boolean) => void
   onChange: (val: boolean) => void
+  ariaLabel?: string
 }

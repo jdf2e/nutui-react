@@ -34,6 +34,8 @@ export interface BaseDialog extends DialogWrapProps {
   content: ReactNode
   confirmText: ReactNode
   cancelText: ReactNode
+  confirmBadge: ReactNode
+  cancelBadge: ReactNode
   hideConfirmButton: boolean
   hideCancelButton: boolean
   disableConfirmButton: boolean
@@ -42,6 +44,7 @@ export interface BaseDialog extends DialogWrapProps {
   beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
+  ariaLabel?: string
 }
 
 export type DialogReturnProps = {

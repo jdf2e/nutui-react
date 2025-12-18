@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.18",
+  "version": "3.0.19-cpp.19",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -109,7 +109,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.9",
     "@nutui/icons-react": "^3.0.2-beta.5",
-    "@nutui/icons-react-taro": "^3.0.2-beta.3",
+    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.3",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@nutui/lottie-miniprogram": "^1.0.2",
@@ -241,6 +241,7 @@
     "@types/react-dom": "^18.2.19",
     "sass": "1.77.6",
     "@tarojs/api": "4.0.12",
-    "@tarojs/components": "4.0.12"
+    "@tarojs/components": "4.0.12",
+    "@nutui/icons-react-taro": "^3.0.2-cpp.1"
   }
 }

@@ -35,7 +35,9 @@
 }
 
 .nut-virtualList-box {
+  /* #ifndef dynamic*/
   overflow: auto;
+  /* #endif */
 }
 
 .nut-virtuallist {

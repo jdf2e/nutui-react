@@ -36,11 +36,15 @@
       justify-content: center;
 
       .nut-noticebar-box-wrap {
+        /* #ifndef dynamic*/
         flex: initial;
+        /* #endif */
 
         .nut-noticebar-box-wrap-content {
           position: relative;
+          /* #ifndef dynamic*/
           display: initial;
+          /* #endif */
         }
       }
     }

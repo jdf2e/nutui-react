@@ -8,6 +8,7 @@ import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -20,6 +21,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '触发了 onChange 事件，开关状态：',
+      supportARIA: '支持ARIA',
     },
     'zh-TW': {
       basic: '非受控',
@@ -30,6 +32,7 @@ const SwitchDemo = () => {
       supportText: '支持文字',
       supportIcon: '支持Icon',
       eventTip: '觸發了 onChange 事件，開關狀態：',
+      supportARIA: '支持ARIA',
     },
     'en-US': {
       basic: 'Uncontrolled',
@@ -40,6 +43,7 @@ const SwitchDemo = () => {
       supportText: 'Support Text',
       supportIcon: 'Support Icon',
       eventTip: 'Emit onChange event, current state:',
+      supportARIA: 'Support ARIA',
     },
   })
   return (
@@ -61,6 +65,8 @@ const SwitchDemo = () => {
         <Demo6 />
         <h2>{translated.customColor}</h2>
         <Demo7 />
+        <h2>{translated.supportARIA}</h2>
+        <Demo9 />
       </div>
     </>
   )
