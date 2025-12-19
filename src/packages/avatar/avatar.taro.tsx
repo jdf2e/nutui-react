@@ -22,7 +22,7 @@ const defaultProps = {
   icon: '',
   background: '#eee',
   color: '#666',
-  fit: 'cover',
+  mode: 'scaleToFill',
   src: '',
   alt: '',
   avatarIndex: 0,
@@ -40,7 +40,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     color,
     src,
     icon,
-    fit,
+    mode,
     avatarIndex,
     className,
     style,
@@ -129,7 +129,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
                 <Image
                   className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
-                  style={{ objectFit: fit }}
+                  mode={mode}
                   onError={errorEvent}
                 />
               )}
