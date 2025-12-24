@@ -8,7 +8,7 @@ export type ToastSize = Extract<UISize, 'large' | 'small'> | 'base'
 export type BaseToast<OVERLAY_PROPS> = OVERLAY_PROPS & {
   id: string
   position: VAlign
-  title: string
+  title: ReactNode
   size: ToastSize
   icon: ToastIcon
   content: ReactNode
