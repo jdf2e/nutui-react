@@ -13,6 +13,7 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 
 const AvatarDemo = () => {
   const [translated] = useTranslate({
@@ -26,6 +27,7 @@ const AvatarDemo = () => {
       f645fc65: '组合头像可控制层级方向',
       '43f00872': '点击头像触发事件',
       f645fc66: '列表展示',
+      imageMode: '图片填充模式',
     },
     'zh-TW': {
       '67f78db5': '支持三種尺寸：small、normal、large',
@@ -37,6 +39,7 @@ const AvatarDemo = () => {
       f645fc65: '組合頭像可控制層級方向',
       '43f00872': '點擊頭像觸發事件',
       f645fc66: '列表展示',
+      imageMode: '圖片填充模式',
     },
     'en-US': {
       '67f78db5': 'Support three sizes: small, normal, large',
@@ -49,6 +52,7 @@ const AvatarDemo = () => {
       f645fc65: 'Combining avatars to control hierarchy direction',
       '43f00872': 'Click on the avatar to trigger the event',
       f645fc66: 'list',
+      imageMode: 'Image fill mode',
     },
   })
 
@@ -76,6 +80,8 @@ const AvatarDemo = () => {
         <Demo8 />
         <View className="h2">{translated.f645fc66}</View>
         <Demo9 />
+        <View className="h2">{translated.imageMode}</View>
+        <Demo10 />
       </ScrollView>
     </>
   )
