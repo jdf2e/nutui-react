@@ -60,7 +60,7 @@ import { Toast } from '@nutui/nutui-react-taro'
 | --- | --- | --- | --- |
 | content | 消息文本内容 | `string` \| `React.ReactNode` | `-` |
 | duration | 展示时长（秒），值为 0 时，toast 不会自动消失（loading类型默认为0） | `number` | `2` |
-| title | 标题 | `string` | `-` |
+| title | 标题 | `React.ReactNode` | `-` |
 | position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
 | contentClassName | 自定义内容区类名 | `string` | `-` |
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
