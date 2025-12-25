@@ -212,6 +212,9 @@
     }
 
     @keyframes popup-slide-top-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, -100%, 0);
       }
@@ -242,6 +245,9 @@
     }
 
     @keyframes popup-slide-right-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(100%, 0, 0);
       }
@@ -271,7 +277,10 @@
       }
     }
 
-    @keyframes slide-bottom-exit {
+    @keyframes popup-slide-bottom-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, 100%, 0);
       }
@@ -287,7 +296,7 @@
 
     &-bottom-exit {
       animation-fill-mode: both;
-      animation-name: slide-bottom-exit;
+      animation-name: popup-slide-bottom-exit;
       animation-duration: $popup-animation-duration;
     }
 
@@ -302,6 +311,9 @@
     }
 
     @keyframes popup-slide-left-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(-100%, 0, 0);
       }

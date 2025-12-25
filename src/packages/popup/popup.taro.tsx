@@ -8,11 +8,11 @@ import React, {
 } from 'react'
 import { nextTick } from '@tarojs/taro'
 import { createPortal } from 'react-dom'
-// import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
+import { CSSTransition } from '@/packages/react-transition-group/index'
 import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -338,14 +338,14 @@ export const Popup: FunctionComponent<
     onTouchEnd?.(currentHeight, e)
   }
 
-  const renderPop = () => {
+  const renderContent = () => {
     return (
       <View
         ref={nodeRef}
         style={{
           ...popStyles,
-          display: innerVisible ? 'block' : 'none',
           ...resizeStyles(),
+          display: innerVisible ? 'block' : 'none',
         }}
         className={popClassName}
         onClick={onClick}
@@ -361,22 +361,23 @@ export const Popup: FunctionComponent<
       </View>
     )
   }
-  // const renderPop = () => {
-  // return (
-  //   <CSSTransition
-  //     nodeRef={nodeRef}
-  //     classNames={transitionName}
-  //     mountOnEnter
-  //     unmountOnExit={destroyOnClose}
-  //     timeout={duration}
-  //     in={innerVisible}
-  //     onEntered={afterShow}
-  //     onExited={afterClose}
-  //   >
-  //     {renderContent()}
-  //   </CSSTransition>
-  // )
-  // }
+
+  const renderPop = () => {
+    return (
+      <CSSTransition
+        nodeRef={nodeRef}
+        classNames={transitionName}
+        mountOnEnter
+        unmountOnExit={destroyOnClose}
+        timeout={duration}
+        in={innerVisible}
+        onEntered={afterShow}
+        onExited={afterClose}
+      >
+        {renderContent()}
+      </CSSTransition>
+    )
+  }
 
   const renderNode = () => {
     return (
