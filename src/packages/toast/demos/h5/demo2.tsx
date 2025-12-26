@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Toast, Cell, Button } from '@nutui/nutui-react'
 
 const Demo2 = () => {
@@ -16,6 +16,17 @@ const Demo2 = () => {
     })
   }
 
+  const [neverDisappear, setNeverDisappear] = useState(false)
+
+  const hideToastStyle: React.CSSProperties = neverDisappear
+    ? {
+        position: 'fixed',
+        top: '53%',
+        left: '35%',
+        zIndex: 9999,
+      }
+    : {}
+
   return (
     <>
       <Cell
@@ -28,18 +39,24 @@ const Demo2 = () => {
         title="Toast 不消失"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => permanentToast('Toast 不消失')}
-      />
-      <Button
-        style={{ margin: 8 }}
-        type="primary"
-        shape="round"
-        onClick={() => {
-          Toast.clear()
+        ) => {
+          setNeverDisappear(true)
+          permanentToast('Toast 不消失')
         }}
-      >
-        隐藏Toast
-      </Button>
+      />
+      <div style={hideToastStyle}>
+        <Button
+          style={{ margin: 8 }}
+          type="primary"
+          shape="round"
+          onClick={() => {
+            setNeverDisappear(false)
+            Toast.clear()
+          }}
+        >
+          隐藏Toast
+        </Button>
+      </div>
     </>
   )
 }
