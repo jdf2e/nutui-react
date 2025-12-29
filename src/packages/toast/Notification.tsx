@@ -156,13 +156,14 @@ Notification.newInstance = (properties, callback) => {
 
   let called = false
 
-  function ref(instance: any) {
+  function ref(instance: Notification | null) {
     if (called) {
       return
     }
     called = true
     callback({
       component: instance,
+      id,
       destroy() {
         unmount(element)
         element && element.parentNode && element.parentNode.removeChild(element)
