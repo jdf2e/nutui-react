@@ -136,3 +136,35 @@ test('event show-loading-toast', async () => {
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('loading')
   })
 })
+
+test('manually close in strict mode', async () => {
+  const time = 2000
+  const content = 'strict mode loading'
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        onClickToast('loading', content)
+        onClickToast('loading', content)
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(onClickToast).toBeCalled()
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(content)
+  })
+
+  Toast.clear()
+
+  await waitFor(
+    () => {
+      expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(
+        undefined
+      )
+    },
+    {
+      timeout: time,
+    }
+  )
+})
