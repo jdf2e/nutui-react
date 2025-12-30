@@ -6,12 +6,12 @@ import { clone } from '@/utils'
 
 type NotificationInstance = {
   component: Notification
-  id: number
+  id: string
   destroy: () => void
 }
 
 let messageInstance: NotificationInstance | null = null
-const messageInstaceSet = new Set<NotificationInstance>()
+const messageInstanceSet = new Set<NotificationInstance>()
 
 let defaultProps: WebToastProps = {
   ...defaultOverlayProps,
@@ -58,7 +58,7 @@ function notice(opts: ToastNativeProps) {
   getInstance(opts2, (notification: NotificationInstance) => {
     const oldInstance = messageInstance ? clone(messageInstance) : null
     if (notification.id === oldInstance?.id) {
-      messageInstaceSet.add(oldInstance)
+      messageInstanceSet.add(oldInstance)
     }
     messageInstance = notification
   })
@@ -92,11 +92,11 @@ export default {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
-      if (messageInstaceSet?.size) {
-        messageInstaceSet.forEach((instance: NotificationInstance) => {
+      if (messageInstanceSet?.size) {
+        messageInstanceSet.forEach((instance: NotificationInstance) => {
           instance?.destroy()
         })
-        messageInstaceSet.clear()
+        messageInstanceSet.clear()
       }
     }
   },
