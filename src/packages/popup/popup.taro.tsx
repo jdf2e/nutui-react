@@ -344,7 +344,7 @@ export const Popup: FunctionComponent<
         ref={nodeRef}
         style={{
           ...popStyles,
-          display: innerVisible ? 'block' : 'none',
+          display: innerVisible ? popStyles?.display || 'block' : 'none',
           ...resizeStyles(),
         }}
         className={popClassName}
