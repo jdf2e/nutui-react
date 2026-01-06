@@ -94,6 +94,7 @@ export const CheckboxGroup = React.forwardRef(
           onLimit,
           value: _value,
           check: (value: string) => {
+            if (_value.includes(value)) return
             const combined: string[] = [..._value, value]
             if (max !== undefined) {
               if (combined.length > max) {
