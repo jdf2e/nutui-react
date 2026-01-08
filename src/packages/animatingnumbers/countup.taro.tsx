@@ -75,6 +75,8 @@ export const CountUp: FunctionComponent<Partial<TaroCountUpProps>> = (
                 transitionDuration: `${duration}s`,
                 transform,
               } as CSSProperties)
+            } else {
+              transformArrCache.push({} as CSSProperties)
             }
           })
           setTransformArr([...transformArrCache])
