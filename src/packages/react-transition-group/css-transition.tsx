@@ -14,6 +14,7 @@ export interface CSSTransitionProps extends TransitionProps {
         exitDone?: string
         appear?: string
         appearActive?: string
+        appearDone?: string
         [key: string]: string | undefined
       }
   children?: ReactNode | ((status: TransitionStatus) => ReactNode)
@@ -29,104 +30,41 @@ const CSSTransition: React.FC<CSSTransitionProps> = (props) => {
     onExit,
     onExiting,
     onExited,
+    nodeRef,
     ...rest
   } = props
 
-  const nodeRef = useRef<HTMLElement>(null)
+  const internalNodeRef = useRef<HTMLElement>(null)
+  const appliedClasses = useRef<{
+    appear: Record<string, string>
+    enter: Record<string, string>
+    exit: Record<string, string>
+  }>({
+    appear: {},
+    enter: {},
+    exit: {},
+  })
 
-  const getClassNames = (name: string) => {
-    if (typeof classNamesProp === 'string') {
-      return `${classNamesProp}-${name}`
-    }
-    return classNamesProp?.[name] || ''
-  }
+  const getClassNames = (type: 'appear' | 'enter' | 'exit') => {
+    const isStringClassNames = typeof classNamesProp === 'string'
+    const prefix = isStringClassNames && classNamesProp ? `${classNamesProp}-` : ''
 
-  const removeAllClasses = (node: HTMLElement) => {
-    // Remove all possible transition classes to ensure a clean state
-    const allClasses = [
-      getClassNames('enter'),
-      getClassNames('enter-active'),
-      getClassNames('enter-done'),
-      getClassNames('exit'),
-      getClassNames('exit-active'),
-      getClassNames('exit-done'),
-      getClassNames('appear'),
-      getClassNames('appear-active'),
-    ]
-    allClasses.forEach((cls) => {
-      if (cls) node.classList.remove(cls)
-    })
-  }
+    const baseClassName = isStringClassNames
+      ? `${prefix}${type}`
+      : classNamesProp?.[type] || ''
 
-  const handleEnter = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
+    const activeClassName = isStringClassNames
+      ? `${baseClassName}-active`
+      : classNamesProp?.[`${type}Active`] || ''
 
-    removeAllClasses(node)
-    addClass(node, getClassNames('enter'))
+    const doneClassName = isStringClassNames
+      ? `${baseClassName}-done`
+      : classNamesProp?.[`${type}Done`] || ''
 
-    if (onEnter) {
-      onEnter(node)
-    }
-  }
-
-  const handleEntering = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
-
-    addClass(node, getClassNames('enter-active'))
-
-    if (onEntering) {
-      onEntering(node)
-    }
-  }
-
-  const handleEntered = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
-
-    removeClass(node, getClassNames('enter'))
-    removeClass(node, getClassNames('enter-active'))
-    addClass(node, getClassNames('enter-done'))
-
-    if (onEntered) {
-      onEntered(node)
-    }
-  }
-
-  const handleExit = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
-
-    removeAllClasses(node)
-    addClass(node, getClassNames('exit'))
-
-    if (onExit) {
-      onExit(node)
-    }
-  }
-
-  const handleExiting = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
-
-    addClass(node, getClassNames('exit-active'))
-
-    if (onExiting) {
-      onExiting(node)
-    }
-  }
-
-  const handleExited = (maybeNode?: HTMLElement) => {
-    const node = maybeNode || nodeRef.current
-    if (!node) return
-
-    removeClass(node, getClassNames('exit'))
-    removeClass(node, getClassNames('exit-active'))
-    addClass(node, getClassNames('exit-done'))
-
-    if (onExited) {
-      onExited(node)
+    return {
+      baseClassName,
+      activeClassName,
+      doneClassName,
     }
   }
 
@@ -142,9 +80,190 @@ const CSSTransition: React.FC<CSSTransitionProps> = (props) => {
     }
   }
 
+  // Force reflow to ensure transitions work properly
+  const forceReflow = (node: HTMLElement) => {
+    return node.scrollTop
+  }
+
+  const getClassNameForStatus = (status: TransitionStatus): string => {
+    switch (status) {
+      case 'entering':
+        return getClassNames('enter').activeClassName
+      case 'entered':
+        return getClassNames('enter').doneClassName
+      case 'exiting':
+        return getClassNames('exit').activeClassName
+      case 'exited':
+        return getClassNames('exit').doneClassName
+      default:
+        return ''
+    }
+  }
+
+  const removeClasses = (
+    node: HTMLElement,
+    type: 'appear' | 'enter' | 'exit'
+  ) => {
+    const {
+      base: baseClassName,
+      active: activeClassName,
+      done: doneClassName,
+    } = appliedClasses.current[type]
+
+    appliedClasses.current[type] = {}
+
+    if (baseClassName) {
+      removeClass(node, baseClassName)
+    }
+    if (activeClassName) {
+      removeClass(node, activeClassName)
+    }
+    if (doneClassName) {
+      removeClass(node, doneClassName)
+    }
+  }
+
+  // Resolve arguments - handle nodeRef prop
+  const resolveArguments = (maybeNode?: HTMLElement, maybeAppearing?: boolean): [HTMLElement | null, boolean] => {
+    if (nodeRef) {
+      // When nodeRef is provided, maybeNode is actually isAppearing
+      return [nodeRef.current, !!maybeNode]
+    }
+    // When nodeRef is not provided, use maybeNode and maybeAppearing as is
+    return [maybeNode || null, !!maybeAppearing]
+  }
+
+  const handleEnter = (maybeNode?: HTMLElement, maybeAppearing?: boolean) => {
+    const [node, appearing] = resolveArguments(maybeNode, maybeAppearing)
+    if (!node || typeof node === 'boolean') return
+
+    const type = appearing ? 'appear' : 'enter'
+
+    removeClasses(node, 'exit')
+    removeClasses(node, type)
+
+    const { baseClassName, activeClassName, doneClassName } = getClassNames(type)
+
+    appliedClasses.current[type] = {
+      base: baseClassName,
+      active: activeClassName,
+      done: doneClassName,
+    }
+
+    addClass(node, baseClassName)
+
+    if (onEnter) {
+      onEnter(maybeNode, maybeAppearing)
+    }
+  }
+
+  const handleEntering = (
+    maybeNode?: HTMLElement,
+    maybeAppearing?: boolean
+  ) => {
+    const [node] = resolveArguments(maybeNode, maybeAppearing)
+    if (!node || typeof node === 'boolean') return
+
+    const type = maybeAppearing ? 'appear' : 'enter'
+    const { activeClassName } = appliedClasses.current[type]
+
+    // Force reflow to ensure transitions work properly
+    if (activeClassName) {
+      forceReflow(node)
+    }
+
+    addClass(node, activeClassName)
+
+    if (onEntering) {
+      onEntering(maybeNode, maybeAppearing)
+    }
+  }
+
+  const handleEntered = (maybeNode?: HTMLElement, maybeAppearing?: boolean) => {
+    const [node] = resolveArguments(maybeNode, maybeAppearing)
+    if (!node) return
+
+    const type = maybeAppearing ? 'appear' : 'enter'
+    const { baseClassName, activeClassName, doneClassName } = appliedClasses.current[type]
+
+    removeClass(node, baseClassName)
+    removeClass(node, activeClassName)
+
+    if (doneClassName) {
+      addClass(node, doneClassName)
+    }
+
+    appliedClasses.current[type] = {}
+
+    if (onEntered) {
+      onEntered(maybeNode, maybeAppearing)
+    }
+  }
+
+  const handleExit = (maybeNode?: HTMLElement) => {
+    const [node] = resolveArguments(maybeNode)
+    if (!node || typeof node === 'boolean') return
+
+    removeClasses(node, 'appear')
+    removeClasses(node, 'enter')
+
+    const { baseClassName, activeClassName, doneClassName } = getClassNames('exit')
+
+    appliedClasses.current.exit = {
+      base: baseClassName,
+      active: activeClassName,
+      done: doneClassName,
+    }
+
+    addClass(node, baseClassName)
+
+    if (onExit) {
+      onExit(maybeNode)
+    }
+  }
+
+  const handleExiting = (maybeNode?: HTMLElement) => {
+    const [node] = resolveArguments(maybeNode)
+    if (!node || typeof node === 'boolean') return
+
+    const { activeClassName } = appliedClasses.current.exit
+
+    // Force reflow to ensure transitions work properly
+    if (activeClassName) {
+      forceReflow(node)
+    }
+
+    addClass(node, activeClassName)
+
+    if (onExiting) {
+      onExiting(maybeNode)
+    }
+  }
+
+  const handleExited = (maybeNode?: HTMLElement) => {
+    const [node] = resolveArguments(maybeNode)
+    if (!node || typeof node === 'boolean') return
+
+    const { baseClassName, activeClassName, doneClassName } = appliedClasses.current.exit
+
+    removeClass(node, baseClassName)
+    removeClass(node, activeClassName)
+
+    if (doneClassName) {
+      addClass(node, doneClassName)
+    }
+
+    appliedClasses.current.exit = {}
+
+    if (onExited) {
+      onExited(maybeNode)
+    }
+  }
+
   return (
     <Transition
       {...rest}
+      nodeRef={nodeRef || internalNodeRef}
       onEnter={handleEnter}
       onEntering={handleEntering}
       onEntered={handleEntered}
@@ -161,12 +280,12 @@ const CSSTransition: React.FC<CSSTransitionProps> = (props) => {
             const childProps = { ...child.props }
             const currentClasses = classNames(
               childProps.className,
-              getClassNames(status)
+              getClassNameForStatus(status)
             )
             return React.cloneElement(child, {
               ...childProps,
               className: currentClasses,
-              ref: nodeRef,
+              ref: nodeRef || internalNodeRef,
             })
           }
         : (status: TransitionStatus) => {
@@ -180,13 +299,13 @@ const CSSTransition: React.FC<CSSTransitionProps> = (props) => {
             // Apply classes based on status
             const currentClasses = classNames(
               childProps.className,
-              getClassNames(status)
+              getClassNameForStatus(status)
             )
 
             return React.cloneElement(child, {
               ...childProps,
               className: currentClasses,
-              ref: nodeRef,
+              ref: nodeRef || internalNodeRef,
             })
           }}
     </Transition>
