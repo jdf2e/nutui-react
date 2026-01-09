@@ -1,6 +1,5 @@
 import Taro, {
   canIUse,
-  getAppBaseInfo as taroGetAppBaseInfo,
   getDeviceInfo as taroGetDeviceInfo,
   getSystemInfoSync,
   getWindowInfo as taroGetWindowInfo,
@@ -25,10 +24,10 @@ export const getWindowInfo = (): Taro.getWindowInfo.Result => {
   return canIUse('getWindowInfo') ? taroGetWindowInfo() : getSystemInfoSync()
 }
 
-/**
- * 获取应用基础信息，兼容新旧 API
- * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
- */
-export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
-  return canIUse('getAppBaseInfo') ? taroGetAppBaseInfo() : getSystemInfoSync()
-}
+// /**
+//  * 获取应用基础信息，兼容新旧 API
+//  * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
+//  */
+// export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
+//   return canIUse('getAppBaseInfo') ? taroGetAppBaseInfo() : getSystemInfoSync()
+// }
