@@ -19,6 +19,7 @@
 
   &-icon-checked {
     color: $color-primary;
+    background-color: $white;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
     border-radius: 50%;
@@ -41,6 +42,7 @@
 
   &-icon-indeterminate {
     color: $color-primary;
+    background-color: $white;
     box-shadow: 0px 2px 4px 0px #ff0f2333;
     border-radius: 50%;
 
@@ -51,6 +53,8 @@
 
   &-icon-disabled {
     color: $color-text-disabled;
+    background-color: $white;
+    border-radius: 50%;
     box-shadow: none;
   }
 
@@ -65,10 +69,10 @@
 
   &-button {
     position: relative;
-    /* #ifdef dynamic*/
+    /* #ifdef dynamic */
     display: flex;
     /* #endif */
-    /* #ifndef dynamic*/
+    /* #ifndef dynamic */
     display: inline-flex;
     /* #endif */
     align-items: center;
