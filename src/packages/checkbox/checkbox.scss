@@ -10,11 +10,16 @@
     flex-shrink: 0;
   }
 
-  &-icon-wrap {
+  &-icon-wrap-shadow {
     font-size: 0px;
     line-height: 0px;
     border-radius: 50%;
     box-shadow: 0px 2px 4px 0px rgba(255, 15, 35, 0.2);
+  }
+  &-icon-wrap {
+    font-size: 0px;
+    line-height: 0px;
+    border-radius: 50%;
   }
 
   &-icon-checked {

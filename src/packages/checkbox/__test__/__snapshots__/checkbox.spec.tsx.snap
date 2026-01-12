@@ -6,7 +6,7 @@ exports[`should match snapshot 1`] = `
     class="nut-checkbox nut-checkbox-reverse"
   >
     <div
-      class="nut-checkbox-icon-wrap"
+      class="nut-checkbox-icon-wrap-shadow"
     >
       <svg
         aria-labelledby="Checked"
