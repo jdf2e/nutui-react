@@ -79,7 +79,8 @@ export const Radio: FC<
   const renderIcon = () => {
     const { icon, activeIcon } = props
     if (disabled && !checkedStatement) {
-      return <CheckDisabled className={classNames(color())} />
+      // @ts-ignore
+      return <CheckDisabled className={classNames(color())} ariaHidden />
     }
     if (checkedStatement) {
       return React.isValidElement(activeIcon) ? (
@@ -88,7 +89,8 @@ export const Radio: FC<
           className: classNames(activeIcon.props.className, color()),
         })
       ) : (
-        <CheckChecked className={classNames(color())} />
+        // @ts-ignore
+        <CheckChecked className={classNames(color())} ariaHidden />
       )
     }
     return React.isValidElement(icon) ? (
@@ -97,7 +99,8 @@ export const Radio: FC<
         className: classNames(icon.props.className, color()),
       })
     ) : (
-      <CheckNormal className={classNames(color())} />
+      // @ts-ignore
+      <CheckNormal className={classNames(color())} ariaHidden />
     )
   }
   const renderLabel = () => {
