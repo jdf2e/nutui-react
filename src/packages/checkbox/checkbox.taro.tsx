@@ -79,32 +79,38 @@ export const Checkbox: FC<
   const renderIcon = () => {
     if (innerDisabled) {
       if (innerIndeterminate) {
-        return <CheckDisabled className={color()} />
+        // @ts-ignore
+        return <CheckDisabled className={color()} ariaHidden />
       }
       if (innerChecked) {
-        return <Checked className={color()} />
+        // @ts-ignore
+        return <Checked className={color()} ariaHidden />
       }
-      return <CheckDisabled className={color()} />
+      // @ts-ignore
+      return <CheckDisabled className={color()} ariaHidden />
     }
     if (!innerChecked) {
       return React.isValidElement(icon) ? (
         icon
       ) : (
-        <CheckNormal className={color()} />
+        // @ts-ignore
+        <CheckNormal className={color()} ariaHidden />
       )
     }
     if (innerIndeterminate) {
       return React.isValidElement(indeterminateIcon) ? (
         indeterminateIcon
       ) : (
-        <CheckDisabled className={color()} />
+        // @ts-ignore
+        <CheckDisabled className={color()} ariaHidden />
       )
     }
     return React.isValidElement(activeIcon) ? (
       activeIcon
     ) : (
       <View className={`${classPrefix}-icon-wrap`}>
-        <Checked className={color()} />
+        {/* @ts-ignore */}
+        <Checked className={color()} ariaHidden />
       </View>
     )
   }
