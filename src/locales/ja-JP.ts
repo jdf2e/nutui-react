@@ -141,5 +141,7 @@ const jaJP: BaseLang = {
   watermark: {
     errorCanvasTips: '現在の環境はCanvasをサポートしていません',
   },
+  mask: 'マスク',
+  close: '閉じる',
 }
 export default jaJP
