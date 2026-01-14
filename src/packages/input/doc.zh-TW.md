@@ -141,6 +141,7 @@ import { Input } from '@nutui/nutui-react'
 | maxLength | 限製最長輸入字符 | `string` \| `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除圖標 Icon <a href="#/icon">可參考 Icon </a> | `ReactNode` | `MaskClose` |
+| inputStyle | 輸入框樣式 | `CSSProperties` | `-` |
 | formatter | 輸入內容格式化函數 | `(val: string) => string` | `-` |
 | formatTrigger | 格式化函數觸發的時機，可選值為 `onChange`、`onBlur` | `string` | `-` |
 | onChange | 輸入框內容變化時觸發 | `(value: string) => void` | `-` |
