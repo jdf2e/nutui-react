@@ -203,11 +203,15 @@ export const Checkbox: FunctionComponent<
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
           'nut-checkbox-list-item': ctx?.list,
+          [`${classPrefix}-active`]: innerChecked,
         },
         className
       )}
       {...rest}
       onClick={handleClick}
+      role="checkbox"
+      tabIndex={innerDisabled ? -1 : 0}
+      aria-checked={innerIndeterminate ? 'mixed' : innerChecked}
     >
       {renderCheckboxItem()}
     </div>

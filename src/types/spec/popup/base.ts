@@ -17,6 +17,7 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   closeIcon: ReactNode
   left?: ReactNode
   title?: ReactNode
+  top?: ReactNode
   description?: ReactNode
   destroyOnClose: boolean
   overlay: boolean
@@ -30,4 +31,5 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   onTouchMove: (height: number, e: any, direction: 'up' | 'down') => void
   onTouchStart: (height: number, e: any) => void
   onTouchEnd: (height: number, e: any) => void
+  closeAriaLabel?: string
 }

@@ -10,6 +10,8 @@ const zhCN: BaseLang = {
   select: '请选择',
   edit: '编辑',
   reset: '重置',
+  close: '关闭',
+  back: '返回',
   video: {
     errorTip: '视频加载失败',
     clickRetry: '点击重试',
@@ -139,6 +141,11 @@ const zhCN: BaseLang = {
   },
   watermark: {
     errorCanvasTips: '当前环境不支持Canvas',
+  },
+  mask: '蒙层',
+  arithmetic: {
+    plus: '加',
+    minus: '减',
   },
 }
 export default zhCN

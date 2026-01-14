@@ -11,6 +11,7 @@ import raf from '@/utils/raf'
 import { useUuid } from '@/hooks/use-uuid'
 import { useRtl } from '../configprovider/configprovider.taro'
 import { TabsTitle, TaroTabsProps } from '@/types'
+import { td } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -43,6 +44,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
     autoHeight,
     value: outerValue,
     defaultValue: outerDefaultValue,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -66,6 +68,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
             title: props.title,
             value: props.value || idx,
             disabled: props.disabled,
+            titleAriaLabel: props.titleAriaLabel,
           })
         }
       }
@@ -192,6 +195,17 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
       (t) => String(t.value) === String(value)
     )
     index = index < 0 ? 0 : index
+
+    // 适配 安卓 处理，临时方案，hack
+    if (td()) {
+      return {
+        transform:
+          direction === 'horizontal'
+            ? `translate3d(${rtl ? '' : '-'}${index * 50}%, 0, 0)`
+            : `translate3d( 0, -${index * 50}%, 0)`,
+        transitionDuration: `${duration}ms`,
+      }
+    }
     return {
       transform:
         direction === 'horizontal'
@@ -233,7 +247,12 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
         className={classesTitle}
         style={tabStyle}
       >
-        <View className="nut-tabs-list">
+        <View
+          className="nut-tabs-list"
+          role="tablist"
+          ariaRole="tablist"
+          ariaLabel={ariaLabel}
+        >
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
@@ -274,6 +293,12 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                         `${classPrefix}-titles-item-text`
                       )}
                       style={{ color: activeColor }}
+                      ariaRole="tab"
+                      ariaSelected={
+                        !item.disabled && String(item.value) === String(value)
+                      }
+                      ariaDisabled={item.disabled}
+                      ariaLabel={item.titleAriaLabel}
                     >
                       {item.title}
                     </View>

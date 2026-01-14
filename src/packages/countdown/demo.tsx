@@ -9,6 +9,7 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
 
 const CountDownDemo = () => {
   const [translated] = useTranslate({
@@ -22,9 +23,10 @@ const CountDownDemo = () => {
       controlTime: '控制开始和暂停的倒计时',
       customStyle: '自定义展示样式',
       handleControl: '手动控制',
+      supportAria: '支持ARIA',
     },
     'zh-TW': {
-      basic: '基础用法',
+      basic: '基礎用法',
       remainingTime: '剩余時間用法',
       format: '自定義格式',
       millisecond: '毫秒級渲染',
@@ -33,6 +35,7 @@ const CountDownDemo = () => {
       controlTime: '控製開始和暫停的倒計時',
       customStyle: '自定義展示樣式',
       handleControl: '手動控製',
+      supportAria: '支持ARIA',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -44,6 +47,7 @@ const CountDownDemo = () => {
       controlTime: 'Manual Control',
       customStyle: 'Custom Style',
       handleControl: 'Handle Control',
+      supportAria: 'support ARIA',
     },
   })
 
@@ -68,6 +72,8 @@ const CountDownDemo = () => {
         <Demo8 />
         <h2>{translated.handleControl}</h2>
         <Demo9 />
+        <h2>{translated.supportAria}</h2>
+        <Demo10 />
       </div>
     </>
   )

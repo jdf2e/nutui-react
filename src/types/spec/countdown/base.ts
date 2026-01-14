@@ -27,4 +27,5 @@ export interface BaseCountDown extends BaseProps {
   onRestart: (restTime: number) => void
   onUpdate: (restTime: string | CountDownTime) => void
   children: ReactNode
+  ariaLabel?: string
 }

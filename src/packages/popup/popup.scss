@@ -98,6 +98,10 @@
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
     }
+
+    &-top {
+      position: absolute;
+    }
   }
 
   &-right {

@@ -9,6 +9,7 @@ import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -21,6 +22,7 @@ const ImageDemo = () => {
       error: '加载失败',
       lazyload: '图片懒加载',
       imageText: 'Image + text 模式',
+      ARIAUsage: '无障碍使用示例',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -31,6 +33,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'image + text ',
+      ARIAUsage: 'ARIA Usage',
     },
   })
 
@@ -68,6 +71,10 @@ const ImageDemo = () => {
         <h2>{translated.lazyload}</h2>
         <Cell>
           <Demo8 />
+        </Cell>
+        <h2>{translated.ARIAUsage}</h2>
+        <Cell>
+          <Demo9 />
         </Cell>
       </div>
     </>

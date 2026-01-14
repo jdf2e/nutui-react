@@ -7,6 +7,8 @@ export type TabsTitle = {
   disabled: boolean
   active?: boolean
   value: SimpleValue
+  ariaLabel?: string
+  titleAriaLabel?: string
 }
 
 export interface BaseTabs extends BaseProps {
@@ -22,10 +24,13 @@ export interface BaseTabs extends BaseProps {
   onChange: (index: SimpleValue) => void
   onClick: (index: SimpleValue) => void
   autoHeight: boolean
+  ariaLabel?: string
 }
 
 export interface BaseTabPane extends BaseProps {
   title: SimpleValue
   value: SimpleValue
   disabled: boolean
+  ariaLabel?: string
+  titleAriaLabel?: string
 }

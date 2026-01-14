@@ -10,6 +10,8 @@ const enUS: BaseLang = {
   select: 'Select',
   edit: 'Edit',
   reset: 'Reset',
+  close: 'Close',
+  back: 'Back',
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',
@@ -138,6 +140,11 @@ const enUS: BaseLang = {
   },
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
+  },
+  mask: 'Mask',
+  arithmetic: {
+    plus: 'Plus',
+    minus: 'Minus',
   },
 }
 export default enUS

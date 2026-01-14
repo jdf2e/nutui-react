@@ -23,6 +23,8 @@ import Demo20 from './demos/h5/demo20'
 import Demo21 from './demos/h5/demo21'
 import Demo22 from './demos/h5/demo22'
 import Demo23 from './demos/h5/demo23'
+import Demo24 from './demos/h5/demo24'
+import Demo25 from './demos/h5/demo25'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({
@@ -49,6 +51,8 @@ const TabsDemo = () => {
       titleLeftCard: '左对齐-卡片模式',
       titleLeftButton: '左对齐-按钮模式',
       titleLeftDivider: '左对齐-分割线模式',
+      title2ARIA: '基础用法 支持ARIA',
+      title8ARIA: '自定义标签栏 支持ARIA',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -73,6 +77,8 @@ const TabsDemo = () => {
       titleLeftCard: 'Title Left Align - Card Mode',
       titleLeftButton: 'Title Left Align - Button Mode',
       titleLeftDivider: 'Title Left Align - Divider Mode',
+      title2ARIA: 'Basic Usage support ARIA',
+      title8ARIA: 'Custom Tab Bar support ARIA',
     },
   })
 
@@ -125,6 +131,10 @@ const TabsDemo = () => {
         <Demo22 />
         <h2>{translated.title8}</h2>
         <Demo23 />
+        <h2>{translated.title2ARIA}</h2>
+        <Demo24 />
+        <h2>{translated.title8ARIA}</h2>
+        <Demo25 />
       </div>
     </>
   )

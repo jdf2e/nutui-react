@@ -9,6 +9,7 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
 
 const TabbarDemo = () => {
   const [translated] = useTranslate({
@@ -22,6 +23,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部',
       c9e6df49: '受控',
       c9e6df48: '模拟双击支持回调',
+      supportAria: '支持无障碍',
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
@@ -33,6 +35,7 @@ const TabbarDemo = () => {
       cfbdc781: '固定底部',
       c9e6df49: '受控',
       c9e6df48: '模擬雙擊支持回調',
+      supportAria: '支持無障礙',
     },
     'en-US': {
       ce5c5446: 'Basic Usage',
@@ -44,6 +47,7 @@ const TabbarDemo = () => {
       cfbdc781: 'Fixed Bottom',
       c9e6df49: 'With Controled',
       c9e6df48: 'Mock Double Click',
+      supportAria: 'support ARIA',
     },
   })
 
@@ -66,6 +70,8 @@ const TabbarDemo = () => {
         <Demo7 />
         <h2>{translated.c9e6df48}</h2>
         <Demo8 />
+        <h2>{translated.supportAria}</h2>
+        <Demo10 />
         <h2 style={{ marginBottom: 100 }}>{translated.cfbdc781}</h2>
         <Demo9 />
       </div>

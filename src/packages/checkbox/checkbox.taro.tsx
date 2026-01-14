@@ -198,11 +198,15 @@ export const Checkbox: FC<
         {
           [`${classPrefix}-reverse`]: labelPosition === 'left',
           'nut-checkbox-list-item': ctx?.list,
+          [`${classPrefix}-active`]: innerChecked,
         },
         className
       )}
       {...rest}
       onClick={handleClick}
+      ariaRole="checkbox"
+      tabIndex={innerDisabled ? -1 : 0}
+      ariaChecked={innerIndeterminate ? 'mixed' : innerChecked}
     >
       {renderCheckboxItem()}
     </View>

@@ -23,6 +23,7 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
+  badge: '',
   confirmText: '',
   cancelText: '',
   closeOnOverlayClick: true,
@@ -42,6 +43,7 @@ const defaultProps = {
   onCancel: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
+  ariaLabel: 'dialog',
 }
 
 const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
@@ -61,6 +63,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     footer,
     footerDirection,
     header,
+    badge,
     hideConfirmButton,
     hideCancelButton,
     lockScroll,
@@ -77,10 +80,12 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     onCancel,
     onConfirm,
     onOverlayClick,
+    ariaLabel,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const role = 'dialog'
 
   const renderFooter = () => {
     if (footer === null) return ''
@@ -140,18 +145,45 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     const renderConfirm = () => {
       return (
         !hideConfirmButton && (
-          <Button
-            type="primary"
-            size="large"
-            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-              disabled: disableConfirmButton,
-            })}
-            disabled={disableConfirmButton}
-            onClick={(e) => handleOk(e)}
-            loading={loading}
-          >
-            {confirmText || locale.confirm}
-          </Button>
+          <>
+            {badge ? (
+              <div className={`${classPrefix}-footer-ok-container`}>
+                <Button
+                  type="primary"
+                  size="large"
+                  className={classNames(
+                    `${classPrefix}-footer-ok ${btnClass}`,
+                    {
+                      disabled: disableConfirmButton,
+                    }
+                  )}
+                  disabled={disableConfirmButton}
+                  onClick={(e) => handleOk(e)}
+                  loading={loading}
+                >
+                  {confirmText || locale.confirm}
+                </Button>
+                {badge ? (
+                  <div className={`${classPrefix}-footer-ok-badge`}>
+                    {badge}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <Button
+                type="primary"
+                size="large"
+                className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
+                  disabled: disableConfirmButton,
+                })}
+                disabled={disableConfirmButton}
+                onClick={(e) => handleOk(e)}
+                loading={loading}
+              >
+                {confirmText || locale.confirm}
+              </Button>
+            )}
+          </>
         )
       )
     }
@@ -187,7 +219,13 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     })
     const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
-      <div className={closeClasses} onClick={handleClose}>
+      <div
+        className={closeClasses}
+        onClick={handleClose}
+        role="button"
+        tabIndex={0}
+        aria-label={locale.close}
+      >
         {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
     )
@@ -218,6 +256,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           footer={renderFooter()}
           footerDirection={footerDirection}
           visible={visible}
+          ariaRole={role}
+          ariaLabel={ariaLabel}
         >
           {content || children}
         </Content>
@@ -236,6 +276,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
+          ariaLabel="背景蒙层"
         />
       )}
       {renderContent()}

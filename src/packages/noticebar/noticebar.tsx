@@ -11,7 +11,7 @@ import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/utils/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider'
+import { useRtl, useConfig } from '@/packages/configprovider'
 import { WebNoticeBarProps } from '@/types'
 
 const defaultProps = {
@@ -30,6 +30,7 @@ const defaultProps = {
   delay: 1,
   scrollable: null,
   speed: 50,
+  rightIconAriaLabel: '',
 } as WebNoticeBarProps
 export const NoticeBar: FunctionComponent<
   Partial<WebNoticeBarProps> &
@@ -59,10 +60,13 @@ export const NoticeBar: FunctionComponent<
     onClose,
     onClick,
     onItemClick,
+    rightIconAriaLabel,
   } = {
     ...defaultProps,
     ...props,
   }
+
+  const { locale } = useConfig()
 
   const classPrefix = 'nut-noticebar'
   const wrapRef = useRef<HTMLDivElement>(null)
@@ -455,7 +459,9 @@ export const NoticeBar: FunctionComponent<
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <div className="nut-noticebar-box-left-icon" aria-hidden>
+              {leftIcon}
+            </div>
           ) : null}
           <div ref={wrapRef} className="nut-noticebar-box-wrap">
             <div
@@ -474,8 +480,12 @@ export const NoticeBar: FunctionComponent<
             <div className="nut-noticebar-box-right">{right}</div>
           ) : null}
           {closeable || rightIcon ? (
-            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close width={12} height={12} />}
+            <div
+              className="nut-noticebar-box-right-icon"
+              onClick={onClickIcon}
+              aria-label={`${closeable ? locale.close : rightIconAriaLabel}`}
+            >
+              {rightIcon || <Close width={12} height={12} aria-hidden />}
             </div>
           ) : null}
         </div>
@@ -488,7 +498,9 @@ export const NoticeBar: FunctionComponent<
           onClick={handleClick}
         >
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <div className="nut-noticebar-box-left-icon" aria-hidden>
+              {leftIcon}
+            </div>
           ) : null}
           {children ? (
             <div className="nut-noticebar-box-wrap" ref={innerRef}>
@@ -533,6 +545,7 @@ export const NoticeBar: FunctionComponent<
             onClick={(e) => {
               handleClickIcon(e)
             }}
+            aria-label={`${closeable ? 'close' : rightIconAriaLabel}`}
           >
             {rightIcon || (closeable ? <Close width={12} height={12} /> : null)}
           </div>
