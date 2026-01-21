@@ -15,6 +15,7 @@ export const defaultOverlayProps: TaroOverlayProps = {
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},
+  ariaLabel: '蒙层',
 }
 export const Overlay: FunctionComponent<
   Partial<TaroOverlayProps> &
@@ -32,6 +33,7 @@ export const Overlay: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
+    ariaLabel,
     ...rest
   } = { ...defaultOverlayProps, ...props }
 
@@ -63,6 +65,8 @@ export const Overlay: FunctionComponent<
       {...(rest as any)}
       catchMove={lockScroll}
       onClick={handleClick}
+      ariaLabel={closeOnOverlayClick ? ariaLabel : ''}
+      ariaHidden={!closeOnOverlayClick}
     >
       {children}
     </View>

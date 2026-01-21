@@ -8,6 +8,7 @@ type DefaultEffect = {
   isVertical: boolean
   loop: boolean
   count: number
+  alt: string
 }
 const getPerSlidePosition = (
   index: number,
@@ -29,7 +30,7 @@ const getPerSlidePosition = (
 }
 export const defaultEffect = (args: DefaultEffect) => {
   return React.Children.map(args.children, (child, index) => {
-    const { isVertical, getSpringsAxis, loop, count } = args
+    const { isVertical, getSpringsAxis, loop, count, alt } = args
     const rtl = useRtl()
     const position = rtl ? 'right' : 'left'
     return (
@@ -41,6 +42,9 @@ export const defaultEffect = (args: DefaultEffect) => {
           }),
           [isVertical ? 'top' : position]: `-${index * 100}%`,
         }}
+        tabIndex={-1}
+        aria-hidden
+        aria-label={alt}
       >
         {child}
       </animated.div>

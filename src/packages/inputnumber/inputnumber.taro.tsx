@@ -6,6 +6,7 @@ import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
 import { bound } from '@/utils/bound'
 import { TaroInputNumberProps } from '@/types'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -18,6 +19,7 @@ const defaultProps = {
   digits: 0,
   select: true,
   beforeChange: (value) => Promise.resolve(true),
+  ariaLabel: '数字输入框',
 } as TaroInputNumberProps
 
 const classPrefix = `nut-inputnumber`
@@ -48,6 +50,7 @@ export const InputNumber: FunctionComponent<
     onFocus,
     onChange,
     beforeChange,
+    ariaLabel,
     ...restProps
   } = {
     ...defaultProps,
@@ -58,6 +61,8 @@ export const InputNumber: FunctionComponent<
   })
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const { locale } = useConfig()
+
   useEffect(() => {
     if (select && focused) {
       inputRef.current?.select?.()
@@ -181,8 +186,19 @@ export const InputNumber: FunctionComponent<
   }
 
   return (
-    <View className={classes} style={style}>
-      <View className={`${classPrefix}-minus`} onClick={handleReduce}>
+    <View
+      className={classes}
+      style={style}
+      ariaLabel={ariaLabel}
+      ariaDisabled={disabled}
+    >
+      <View
+        className={`${classPrefix}-minus`}
+        onClick={handleReduce}
+        ariaRole="button"
+        ariaLabel={locale.arithmetic.minus}
+        ariaDisabled={Number(shadowValue) <= Number(min) || disabled}
+      >
         <Minus
           size={10}
           className={classNames(
@@ -209,7 +225,13 @@ export const InputNumber: FunctionComponent<
         onFocus={handleFocus}
       />
 
-      <View className={`${classPrefix}-add`} onClick={handlePlus}>
+      <View
+        className={`${classPrefix}-add`}
+        onClick={handlePlus}
+        ariaRole="button"
+        ariaLabel={locale.arithmetic.plus}
+        ariaDisabled={Number(shadowValue) >= Number(max) || disabled}
+      >
         <Plus
           size={10}
           className={classNames(

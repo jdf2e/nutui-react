@@ -10,6 +10,7 @@ export interface BaseTabbar extends BaseProps {
   direction: Direction
   safeArea: boolean
   onSwitch: (value: number) => void
+  ariaLabel?: string
 }
 
 export interface BaseTabbarItem extends BaseProps {
@@ -22,4 +23,7 @@ export interface BaseTabbarItem extends BaseProps {
   right: string
   direction: Direction
   onActiveClick: () => void
+  ariaLabel?: string
+  ariaSelected?: boolean
+  ariaRoledescription?: string
 }

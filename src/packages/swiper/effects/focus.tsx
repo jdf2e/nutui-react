@@ -79,6 +79,8 @@ export const focusEffect = (args: DefaultEffect) => {
             return scale
           }),
         }}
+        tabIndex={0}
+        aria-hidden={!(index === getRefValue(current))}
       >
         {child}
       </animated.div>

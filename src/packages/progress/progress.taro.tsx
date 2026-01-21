@@ -222,7 +222,11 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
+      ariaLabel={ariaLabel}
+      ariaRole="progressbar"
+      ariaValueNow={percent}
+      ariaValueMin={0}
+      ariaValueMax={100}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>

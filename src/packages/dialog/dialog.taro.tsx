@@ -92,6 +92,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
   const [loading, setLoading] = useState(false)
+  const role = 'dialog'
 
   useCustomEvent(
     id as string,
@@ -292,6 +293,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footer={renderFooter()}
         footerDirection={footerDirection}
         visible={visible}
+        ariaRole={role}
+        // ariaLabel={ariaLabel}
       >
         {content || children}
       </Content>
@@ -314,6 +317,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
+          ariaLabel="背景蒙层"
         />
       )}
       {renderContent()}

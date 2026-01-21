@@ -136,6 +136,10 @@ export const Progress: FunctionComponent<
       className={classNames(classPrefix, className)}
       style={style}
       aria-label={ariaLabel}
+      role="progressbar"
+      aria-valuenow={percent}
+      aria-valuemin={0}
+      aria-valuemax={100}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>

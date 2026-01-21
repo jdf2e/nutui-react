@@ -12,6 +12,7 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -24,6 +25,7 @@ const ImageDemo = () => {
       error: '加载失败',
       lazyload: '图片懒加载',
       imageText: 'Image + text 模式',
+      ARIAUsage: '无障碍使用示例',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -34,6 +36,7 @@ const ImageDemo = () => {
       error: 'Error',
       lazyload: 'Lazyload',
       imageText: 'Image + text ',
+      ARIAUsage: 'ARIA Usage',
     },
   })
   return (
@@ -64,6 +67,8 @@ const ImageDemo = () => {
             <Demo8 />
           </>
         )}
+        <View className="h2">{translated.ARIAUsage}</View>
+        <Demo9 />
       </ScrollView>
     </>
   )

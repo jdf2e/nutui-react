@@ -16,22 +16,30 @@ const defaultProps = {
 export const TabPane: FunctionComponent<
   Partial<TaroTabPaneProps & TabPanelInnerProps>
 > = (props) => {
-  const { children, autoHeightClassName, className, disabled } = {
+  const { children, autoHeightClassName, className, disabled, ariaLabel } = {
     ...defaultProps,
     ...props,
   }
 
   const classPrefix = 'nut-tabpane'
+  const active = !disabled && (props as any).active
   const classes = classNames(
     classPrefix,
     {
-      active: !disabled && (props as any).active,
+      active,
     },
     autoHeightClassName,
     className
   )
 
   return children ? (
-    <View className={classes}>{!disabled && children}</View>
+    <View
+      className={classes}
+      ariaRole="tabpanel"
+      tabIndex={active ? 0 : -1}
+      ariaLabel={ariaLabel}
+    >
+      {!disabled && children}
+    </View>
   ) : null
 }

@@ -20,4 +20,5 @@ export interface BaseInputNumber extends BaseProps {
   onFocus: (e: any) => void
   beforeChange: (value: SimpleValue) => boolean | Promise<boolean>
   onChange: (param: string | number, e: any) => void
+  ariaLabel?: string
 }

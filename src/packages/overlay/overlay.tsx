@@ -22,6 +22,7 @@ export const defaultOverlayProps: WebOverlayProps = {
   onClick: () => {},
   afterShow: () => {},
   afterClose: () => {},
+  ariaLabel: '蒙层',
 }
 export const Overlay: FunctionComponent<
   Partial<WebOverlayProps> & React.HTMLAttributes<HTMLDivElement>

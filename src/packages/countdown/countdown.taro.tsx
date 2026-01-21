@@ -24,6 +24,7 @@ const defaultProps = {
   autoStart: true,
   time: 0,
   destroy: false,
+  ariaLabel: '倒计时',
 } as TaroCountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
@@ -48,6 +49,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     onRestart,
     onUpdate,
     children,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-countdown'
@@ -63,6 +65,11 @@ const InternalCountDown: ForwardRefRenderFunction<
     handleEndTime: Date.now(), // 最终截止时间
     diffTime: 0, // 设置了 startTime 时，与 date.now() 的差异
   })
+
+  const [role, setRole] = useState('')
+  // ARIA alert提示内容
+  const [alertContent, setAlertContent] = useState('')
+  const alertTimerRef = useRef<ReturnType<typeof setTimeout>>()
 
   // 时间戳转换 或 获取当前时间的时间戳
   const getTimeStamp = (timeStr?: string | number) => {
@@ -102,6 +109,12 @@ const InternalCountDown: ForwardRefRenderFunction<
           stateRef.current.counting = false
           pause()
           onEnd && onEnd()
+          setRole('alert')
+          setAlertContent(`${ariaLabel}倒计时结束`)
+          alertTimerRef.current = setTimeout(() => {
+            setRole('')
+            setAlertContent('')
+          }, 3000)
         }
 
         if (remainTime > 0) {
@@ -257,6 +270,9 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   const componentWillUnmount = () => {
     destroy && cancelAnimationFrame(stateRef.current.timer)
+    if (alertTimerRef.current) {
+      clearTimeout(alertTimerRef.current)
+    }
   }
 
   const getUnit = (unit: string) => {
@@ -327,9 +343,26 @@ const InternalCountDown: ForwardRefRenderFunction<
         <View
           className={`${classPrefix} ${className}`}
           style={{ ...style }}
+          ariaLabel={ariaLabel}
           {...rest}
         >
           {renderTaroTime()}
+          <View
+            role={role}
+            style={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              padding: 0,
+              margin: -1,
+              overflow: 'hidden',
+              clip: 'rect(0 0 0 0)',
+              whiteSpace: 'nowrap',
+              border: 0,
+            }}
+          >
+            {alertContent}
+          </View>
         </View>
       )}
     </>

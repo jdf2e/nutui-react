@@ -27,6 +27,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     line,
     className,
     style,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -53,7 +54,15 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
         }
       : {}
   }, [isCustomPriceColor, color])
-
+  const replaceSpecialChar = (str: string) => {
+    return str
+      .replace(/&quot;/g, '"')
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&yen;/g, '¥')
+  }
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
   }
@@ -116,6 +125,16 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     <div
       className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
       style={style}
+      aria-label={
+        ariaLabel ||
+        `${
+          symbol && position === 'before' ? replaceSpecialChar(symbol) : ''
+        }${formatThousands(price)}${
+          checkPoint(price) || digits ? '.' : ''
+        }${formatDecimal(price)}${
+          symbol && position === 'after' ? replaceSpecialChar(symbol) : ''
+        }`
+      }
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}

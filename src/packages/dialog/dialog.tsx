@@ -275,6 +275,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={onHandleClickOverlay}
+          ariaLabel="背景蒙层"
         />
       )}
       {renderContent()}

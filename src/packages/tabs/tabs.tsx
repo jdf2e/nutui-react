@@ -40,6 +40,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     autoHeight,
     value: outerValue,
     defaultValue: outerDefaultValue,
+    ariaLabel,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -98,6 +99,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
             title: props.title,
             value: props.value || idx,
             disabled: props.disabled,
+            titleAriaLabel: props.titleAriaLabel,
           })
         }
       }
@@ -158,7 +160,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     }
   }
   return (
-    <div className={classes} {...rest}>
+    <div className={classes} {...rest} role="tablist" aria-label={ariaLabel}>
       <div className={classesTitle} style={tabStyle} ref={navRef}>
         {!!title && typeof title === 'function'
           ? title()
@@ -182,10 +184,14 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                         `${classPrefix}-titles-item-line-${direction}`
                       )}
                       style={{ background: activeColor }}
+                      aria-hidden
                     />
                   )}
                   {activeType === 'smile' && (
-                    <div className={`${classPrefix}-titles-item-smile`}>
+                    <div
+                      className={`${classPrefix}-titles-item-smile`}
+                      aria-hidden
+                    >
                       <JoySmile color={activeColor} width={40} height={20} />
                     </div>
                   )}
@@ -197,6 +203,17 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                       `${classPrefix}-titles-item-text`
                     )}
                     style={{ color: activeColor }}
+                    role="tab"
+                    aria-selected={
+                      !item.disabled && String(item.value) === String(value)
+                    }
+                    tabIndex={
+                      !item.disabled && String(item.value) === String(value)
+                        ? 0
+                        : -1
+                    }
+                    aria-disabled={item.disabled}
+                    aria-label={item.titleAriaLabel}
                   >
                     {item.title}
                   </div>

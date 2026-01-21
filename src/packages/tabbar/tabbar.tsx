@@ -16,6 +16,7 @@ const defaultProps = {
   direction: 'vertical',
   safeArea: false,
   onSwitch: () => {},
+  ariaLabel: '',
 } as WebTabbarProps
 
 export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
@@ -33,6 +34,7 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
     className,
     style,
     onSwitch,
+    ariaLabel,
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-tabbar'
@@ -69,8 +71,9 @@ export const Tabbar: FunctionComponent<Partial<WebTabbarProps>> & {
         className
       )}
       style={style}
+      aria-label={ariaLabel}
     >
-      <div className={`${classPrefix}-wrap ${sizeCls}`}>
+      <div className={`${classPrefix}-wrap ${sizeCls}`} role="tablist">
         <TabbarContext.Provider
           value={{
             selectIndex,

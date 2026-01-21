@@ -14,6 +14,7 @@ import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
 
 const InputNumberDemo = () => {
   const [translated] = useTranslate({
@@ -31,6 +32,7 @@ const InputNumberDemo = () => {
       '7e2394ae': '自定义按钮大小',
       '7e2394be': '支持formatter',
       '5b7286d1': '支持取消全选中文本',
+      supportARIA: '支持ARIA',
     },
     'zh-TW': {
       '6333c786': '超出限制事件觸發',
@@ -46,6 +48,7 @@ const InputNumberDemo = () => {
       '7e2394ae': '自定義按鈕大小',
       '7e2394be': '支持formatter',
       '5b7286d1': '支援取消全選中文本',
+      supportARIA: '支持ARIA',
     },
     'en-US': {
       '6333c786': 'Exceeded limit event triggered',
@@ -61,6 +64,7 @@ const InputNumberDemo = () => {
       '7e2394ae': 'custom button size',
       '7e2394be': 'support formatter',
       '5b7286d1': 'support deselect all text',
+      supportARIA: 'support ARIA',
     },
   })
 
@@ -88,6 +92,8 @@ const InputNumberDemo = () => {
         <Demo9 />
         <View className="h2">{translated['5b7286d1']}</View>
         <Demo10 />
+        <View className="h2">{translated.supportARIA}</View>
+        <Demo11 />
       </ScrollView>
     </>
   )
