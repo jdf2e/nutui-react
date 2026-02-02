@@ -31,5 +31,7 @@ export const getWindowInfo = (): Taro.getWindowInfo.Result => {
  * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
  */
 export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
-  return typeof Taro.getAppBaseInfo === 'function' ? Taro.getAppBaseInfo() : Taro.getSystemInfoSync()
+  return typeof Taro.getAppBaseInfo === 'function'
+    ? Taro.getAppBaseInfo()
+    : Taro.getSystemInfoSync()
 }

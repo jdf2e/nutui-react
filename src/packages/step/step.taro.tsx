@@ -60,7 +60,7 @@ export const Step: FunctionComponent<
         },
         className
       ),
-    [currentStatus, type, className, description, classPrefix]
+    [currentStatus, type, className, description, classPrefix, parentType]
   )
 
   // 头部渲染
@@ -79,24 +79,24 @@ export const Step: FunctionComponent<
       default:
         return null
     }
-  }, [type, value, icon])
+  }, [type, value, icon, parentIcon, parentType, classPrefix])
 
   // 内容渲染
   const renderContent = useMemo(() => {
     if (!title && !description) return null
 
     return (
-      <div className={`${classPrefix}-main`}>
+      <View className={`${classPrefix}-main`}>
         {title && <View className={`${classPrefix}-title`}>{title}</View>}
         {description && (
           <View className={`${classPrefix}-description`}>{description}</View>
         )}
-      </div>
+      </View>
     )
-  }, [title, description])
+  }, [title, description, classPrefix])
 
   return (
-    <div className={classes} style={style} onClick={handleClickStep}>
+    <View className={classes} style={style} onClick={handleClickStep}>
       <View className={`${classPrefix}-head`}>
         <View className={`${classPrefix}-head-${type || parentType}-wrap`}>
           {renderHeadType}
@@ -106,7 +106,7 @@ export const Step: FunctionComponent<
         <View className={`${classPrefix}-line-inner`} />
       </View>
       {renderContent}
-    </div>
+    </View>
   )
 }
 

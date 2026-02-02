@@ -6,7 +6,9 @@
   color: $color-title;
   padding: $tabs-tabpane-padding;
   box-sizing: border-box;
+  /* #ifndef dynamic*/
   overflow: auto;
+  /* #endif */
 
   &.inactive {
     overflow: visible;

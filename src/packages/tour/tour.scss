@@ -20,7 +20,9 @@
     display: block;
     padding: $tour-content-padding;
     min-width: $tour-content-min-width;
+    /* #ifndef dynamic*/
     box-sizing: content-box;
+    /* #endif */
 
     &-top {
       display: block;

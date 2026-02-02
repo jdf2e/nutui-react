@@ -95,7 +95,11 @@
   &-text {
     color: #ffffff;
     text-align: $toast-inner-text-align;
+    /* #ifdef harmony dynamic*/
+    line-height: normal;
+    /* #endif */
     line-height: 20px;
+    height: auto;
   }
 
   &-title {
@@ -103,6 +107,9 @@
     font-size: $toast-title-font-size;
     font-weight: 600;
     text-align: $toast-inner-text-align;
+    /* #ifdef harmony dynamic*/
+    line-height: normal;
+    /* #endif */
     line-height: 22px;
   }
 

@@ -1,8 +1,13 @@
 .nut-badge {
   position: relative;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
+  /* #ifndef dynamic*/
   display: inline-flex;
-  vertical-align: middle;
   box-sizing: content-box;
+  /* #endif */
+  vertical-align: middle;
   width: auto;
 
   &-icon {
@@ -38,7 +43,12 @@
   }
 
   &-sup {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     text-align: center;
     min-width: $badge-min-width;
     padding: $badge-padding;
