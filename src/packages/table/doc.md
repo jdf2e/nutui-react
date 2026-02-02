@@ -114,6 +114,26 @@ import { Table } from '@nutui/nutui-react'
 
 :::
 
+### 不开启虚拟滚动
+
+虚拟滚动表格不开启虚拟滚动，当普通表格使用。
+
+:::demo
+
+<CodeBlock src='h5/demo-no-virtual.tsx'></CodeBlock>
+
+:::
+
+### 虚拟滚动 + 动态行高
+
+当表格数据量较大时，可以使用虚拟滚动来优化性能。支持动态计算行高，适用于行内容高度不固定的场景。
+
+:::demo
+
+<CodeBlock src='h5/demo-virtual.tsx'></CodeBlock>
+
+:::
+
 ## Table
 
 ### Props
@@ -141,6 +161,65 @@ import { Table } from '@nutui/nutui-react'
 | render | 自定义渲染列数据，优先级高 | `Function(record)` | `-` |
 | width | 列宽度 | `number` | `auto` |
 | fixed | 固定位置 | `left` \| `right` | `-` |
+
+## TableVirtual
+
+### 引入
+
+```tsx
+import { TableVirtual } from '@nutui/nutui-react'
+```
+
+### Props
+
+继承 Table 组件的所有属性，并新增以下属性：
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| virtual | 是否启用虚拟滚动 | `boolean` | `false` |
+| height | 表格可视区域高度 | `number` | `300` |
+| rowHeight | 每行高度 | `number` | `40` |
+| overscan | 预加载的行数 | `number` | `5` |
+| dynamicHeight | 是否启用动态高度（如果为true，将尝试获取每行的实际高度） | `boolean` | `false` |
+
+### VirtualTableRef
+
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| scrollToIndex | 滚动到指定索引的方法 | `(index: number) => void` |
+
+### 示例
+
+```tsx
+import React, { useRef } from 'react'
+import { TableVirtual } from '@nutui/nutui-react'
+import type { VirtualTableRef } from '@nutui/nutui-react'
+
+const VirtualTableExample = () => {
+  const tableRef = useRef<VirtualTableRef>(null)
+
+  // 滚动到指定行
+  const scrollToRow = (index: number) => {
+    tableRef.current?.scrollToIndex(index)
+  }
+
+  return (
+    <TableVirtual
+      ref={tableRef}
+      virtual
+      height={300}
+      rowHeight={40}
+      overscan={5}
+      columns={columns}
+      data={data}
+    />
+  )
+}
+
+VirtualTableExample.displayName = 'VirtualTableExample'
+
+export default VirtualTableExample
+```
 
 ## 主题定制
 

@@ -49,6 +49,12 @@
       }
     }
 
+    &-virtual {
+      .nut-table-main-body > div {
+        background-color: $color-background-overlay;
+      }
+    }
+
     &-head,
     &-body {
       background: inherit;
@@ -64,12 +70,15 @@
         }
 
         &-th {
+          box-sizing: border-box;
           display: table-cell;
           padding: $table-cols-padding;
           table-layout: fixed;
           background: inherit;
           position: sticky;
           top: 0;
+          background-color: $table-th-bg-color;
+          z-index: 2;
 
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {
@@ -82,6 +91,7 @@
         }
 
         &-td {
+          box-sizing: border-box;
           display: table-cell;
           padding: $table-cols-padding;
           table-layout: fixed;

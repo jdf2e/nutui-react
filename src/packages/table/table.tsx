@@ -5,7 +5,7 @@ import { useConfig, useRtl } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useTableSticky } from './utils'
-import { TableColumnProps, WebTableProps } from '@/types'
+import { SortStateType, TableColumnProps, WebTableProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -42,7 +42,7 @@ export const Table: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const sortedMapping = useRef<{ [key: string]: boolean }>({})
+  const sortedMapping = useRef<{ [key: string]: SortStateType }>({})
   const [innerValue, setValue] = usePropsValue({
     defaultValue: data,
     finalValue: [],
@@ -65,19 +65,59 @@ export const Table: FunctionComponent<
   const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
-    if (item.sorter && !sortedMapping.current[item.key]) {
+    if (!item.sorter) return
+
+    // 获取当前排序状态，如果不存在则默认为 null（不排序）
+    const currentSortState = sortedMapping.current[item.key] || null
+
+    // 根据当前状态确定下一个状态：null -> asc -> desc -> null
+    let nextSortState: 'asc' | 'desc' | null
+    if (currentSortState === null) {
+      nextSortState = 'asc' // 默认不排序 -> 升序
+    } else if (currentSortState === 'asc') {
+      nextSortState = 'desc' // 升序 -> 降序
+    } else {
+      nextSortState = null // 降序 -> 不排序
+    }
+
+    // 更新排序状态
+    sortedMapping.current[item.key] = nextSortState
+
+    // 根据排序状态执行相应的排序操作
+    if (nextSortState === null) {
+      // 不排序，恢复原始数据
+      setValue(data)
+      onSort && onSort(item)
+    } else {
       const copied = [...innerValue]
       if (typeof item.sorter === 'function') {
-        copied.sort(item.sorter as (a: any, b: any) => number)
+        // 使用自定义排序函数
+        if (nextSortState === 'asc') {
+          copied.sort(item.sorter as (a: any, b: any) => number)
+        } else {
+          // 降序：交换排序函数的参数顺序
+          copied.sort(
+            (a, b) => -(item.sorter as (a: any, b: any) => number)(a, b)
+          )
+        }
       } else if (item.sorter === 'default') {
-        copied.sort()
+        // 默认排序
+        if (nextSortState === 'asc') {
+          copied.sort()
+        } else {
+          copied.sort().reverse()
+        }
+      } else if (item.sorter === true) {
+        // 简单排序，根据列的 key 值进行排序
+        const key = item.key
+        if (nextSortState === 'asc') {
+          copied.sort((a, b) => (a[key] > b[key] ? 1 : -1))
+        } else {
+          copied.sort((a, b) => (a[key] > b[key] ? -1 : 1))
+        }
       }
-      sortedMapping.current[item.key] = true
       setValue(copied, true)
-      onSort && onSort(item, copied)
-    } else {
-      sortedMapping.current[item.key] = false
-      setValue(data)
+      onSort && onSort(item, copied, nextSortState)
     }
   }
 
@@ -94,6 +134,42 @@ export const Table: FunctionComponent<
 
   const renderHeadCells = () => {
     return columns.map((item, index) => {
+      // 获取当前列的排序状态
+      const currentSortState = sortedMapping.current[item.key] || null
+
+      // 根据排序状态决定是否显示图标以及显示什么图标
+      const renderSorterIcon = () => {
+        if (!item.sorter) return null
+
+        // 如果列提供了自定义的排序图标函数，优先使用
+        if (item.sorterIcon) {
+          return item.sorterIcon(currentSortState)
+        }
+
+        // 如果提供了全局的排序图标，使用全局图标
+        if (sorterIcon) {
+          return sorterIcon
+        }
+
+        // 默认图标逻辑：根据排序状态显示不同的图标
+        if (currentSortState === 'asc') {
+          // 升序状态
+          return (
+            <ArrowDown
+              width="12px"
+              height="12px"
+              style={{ transform: 'rotate(180deg)' }}
+            />
+          )
+        }
+        if (currentSortState === 'desc') {
+          // 降序状态
+          return <ArrowDown width="12px" height="12px" />
+        }
+        // 未排序状态 - 显示较淡的图标
+        return <ArrowDown width="12px" height="12px" style={{ opacity: 0.3 }} />
+      }
+
       return (
         <div
           className={classNames(
@@ -106,8 +182,7 @@ export const Table: FunctionComponent<
           style={getStickyStyle(item.key)}
         >
           {item.title}&nbsp;
-          {item.sorter &&
-            (sorterIcon || <ArrowDown width="12px" height="12px" />)}
+          {item.sorter && renderSorterIcon()}
         </div>
       )
     })

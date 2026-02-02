@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import { Table, Toast } from '@nutui/nutui-react'
+import {
+  SortStateType,
+  Table,
+  TableColumnProps,
+  Toast,
+} from '@nutui/nutui-react'
+import { ArrowDown, ArrowUp } from '@nutui/icons-react'
 
-interface TableColumnProps {
-  key: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
-  fixed?: 'left' | 'right'
-  width?: number
-}
 const Demo9 = () => {
   const [data] = useState([
     {
@@ -50,14 +47,26 @@ const Demo9 = () => {
     {
       title: '年龄',
       key: 'age',
-      sorter: (row1: any, row2: any) => {
-        return row1.age - row2.age
+      sorterIcon: (currentSortState) => {
+        if (currentSortState === null)
+          return (
+            <ArrowDown width="12px" height="12px" style={{ opacity: 0.3 }} />
+          )
+        if (currentSortState === 'asc')
+          return <ArrowDown width="12px" height="12px" />
+        if (currentSortState === 'desc')
+          return <ArrowUp width="12px" height="12px" />
       },
+      sorter: (row1: any, row2: any) => row1.age - row2.age,
     },
   ])
 
-  const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    Toast.show(`${JSON.stringify(item)}`)
+  const handleSorter = (
+    item: TableColumnProps,
+    sortedData?: Array<any>,
+    sortState?: SortStateType
+  ) => {
+    Toast.show(`${item.title} 排序状态：${sortState || '不排序'}`)
   }
 
   return (

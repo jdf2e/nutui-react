@@ -14,6 +14,9 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
+import DemoNoVirtual from './demos/h5/demo-no-virtual'
+import DemoVirtual from './demos/h5/demo-virtual'
 
 const TableDemo = () => {
   const [translated] = useTranslate({
@@ -31,7 +34,10 @@ const TableDemo = () => {
       stickyHeader: '固定表头',
       stickyLeftColumn: '固定左列',
       stickyRightColumn: '固定右列',
+      stickyBothColumns: '同时固定表头和左列',
       customRow: '自定义行',
+      noVirtual: '普通表格',
+      virtual: '虚拟滚动',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -47,8 +53,11 @@ const TableDemo = () => {
       sorterIcon: 'Supports Replacing Sorting ICON',
       stickyHeader: 'Sticky Header',
       stickyLeftColumn: 'Sticky Left Column',
-      stickyRightColumn: 'Sticky Rright Column',
+      stickyRightColumn: 'Sticky Right Column',
+      stickyBothColumns: 'Sticky Both Header And Left Column',
       customRow: 'Custom Row',
+      noVirtual: 'no virtual scroll',
+      virtual: 'virtual scroll',
     },
   })
 
@@ -80,8 +89,14 @@ const TableDemo = () => {
       <Demo12 />
       <h2>{translated.stickyRightColumn}</h2>
       <Demo13 />
+      <h2>{translated.stickyBothColumns}</h2>
+      <Demo15 />
       <h2>{translated.customRow}</h2>
       <Demo14 />
+      <h2>{translated.noVirtual}</h2>
+      <DemoNoVirtual />
+      <h2>{translated.virtual}</h2>
+      <DemoVirtual />
     </div>
   )
 }
