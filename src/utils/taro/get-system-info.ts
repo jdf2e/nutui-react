@@ -26,10 +26,12 @@ export const getWindowInfo = (): Taro.getWindowInfo.Result => {
     : Taro.getSystemInfoSync()
 }
 
-// /**
-//  * 获取应用基础信息，兼容新旧 API
-//  * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
-//  */
-// export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
-//   return canIUse('getAppBaseInfo') ? taroGetAppBaseInfo() : getSystemInfoSync()
-// }
+/**
+ * 获取应用基础信息，兼容新旧 API
+ * @returns {Taro.getAppBaseInfo.Result} 应用基础信息
+ */
+export const getAppBaseInfo = (): Taro.getAppBaseInfo.Result => {
+  return typeof Taro.getAppBaseInfo === 'function'
+    ? Taro.getAppBaseInfo()
+    : Taro.getSystemInfoSync()
+}

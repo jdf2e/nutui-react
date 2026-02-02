@@ -3,7 +3,10 @@ import isEqual from 'react-fast-compare'
 import { eventCenter, getCurrentInstance } from '@tarojs/taro'
 import { useForceUpdate } from '@/hooks/use-force-update'
 
+<<<<<<< HEAD
 // export const customEvents = new Events()
+=======
+>>>>>>> feat_v3.x
 export const customEvents = eventCenter
 
 export function useCustomEventsPath(selector?: string) {
