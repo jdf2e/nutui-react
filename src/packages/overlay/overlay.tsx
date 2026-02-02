@@ -10,7 +10,6 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { WebOverlayProps } from '@/types'
-import { useConfig } from '@/packages/configprovider'
 
 export const defaultOverlayProps: WebOverlayProps = {
   ...ComponentDefaults,
@@ -38,14 +37,12 @@ export const Overlay: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
-    ariaLabel,
     ...rest
   } = { ...defaultOverlayProps, ...props }
 
   const classPrefix = 'nut-overlay'
   const [innerVisible, setInnerVisible] = useState(visible)
   const nodeRef = useRef(null)
-  const { locale } = useConfig()
 
   useEffect(() => {
     setInnerVisible(visible)
@@ -81,9 +78,6 @@ export const Overlay: FunctionComponent<
         style={styles}
         {...rest}
         onClick={handleClick}
-        {...(closeOnOverlayClick
-          ? { ariaLabel: ariaLabel || locale.mask }
-          : {})}
       >
         {children}
       </div>

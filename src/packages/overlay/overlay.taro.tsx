@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -59,7 +60,7 @@ export const Overlay: FunctionComponent<
     <View
       ref={nodeRef}
       className={classes}
-      style={{ ...styles, display: innerVisible ? 'block' : 'none' }}
+      style={styles}
       {...(rest as any)}
       catchMove={lockScroll}
       onClick={handleClick}
@@ -68,21 +69,19 @@ export const Overlay: FunctionComponent<
     </View>
   )
 
-  return <>{renderOverlay()}</>
-
-  // return (
-  //   <CSSTransition
-  //     nodeRef={nodeRef}
-  //     classNames={`${classPrefix}-slide`}
-  //     unmountOnExit
-  //     timeout={duration}
-  //     in={innerVisible}
-  //     onEntered={afterShow}
-  //     onExited={afterClose}
-  //   >
-  //     {renderOverlay()}
-  //   </CSSTransition>
-  // )
+  return (
+    <CSSTransition
+      nodeRef={nodeRef}
+      classNames={`${classPrefix}-slide`}
+      unmountOnExit
+      timeout={duration}
+      in={innerVisible}
+      onEntered={afterShow}
+      onExited={afterClose}
+    >
+      {renderOverlay()}
+    </CSSTransition>
+  )
 }
 
 Overlay.displayName = 'NutOverlay'

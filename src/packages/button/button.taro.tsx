@@ -2,18 +2,19 @@ import React, { CSSProperties, useCallback, useMemo } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import {
-  // ButtonProps as MiniProgramButtonProps,
+  ButtonProps as MiniProgramButtonProps,
   View,
-  // Button as TaroButton,
+  Button as TaroButton,
 } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
+import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/taro/platform'
 
-// type OmitMiniProgramButtonProps = Omit<
-//   MiniProgramButtonProps,
-//   'size' | 'type' | 'onClick' | 'style'
-// >
+type OmitMiniProgramButtonProps = Omit<
+  MiniProgramButtonProps,
+  'size' | 'type' | 'onClick' | 'style'
+>
 
 export type ButtonType =
   | 'default'
@@ -26,11 +27,9 @@ export type ButtonSize = 'xlarge' | 'large' | 'normal' | 'small' | 'mini'
 export type ButtonShape = 'square' | 'round'
 export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
-// export interface ButtonProps
-//   extends BasicComponent,
-//     OmitMiniProgramButtonProps {
-
-export interface ButtonProps extends BasicComponent {
+export interface ButtonProps
+  extends BasicComponent,
+    OmitMiniProgramButtonProps {
   color: string
   shape: ButtonShape
   type: ButtonType
@@ -77,7 +76,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       children,
       className,
       style,
-      // formType,
+      formType,
       nativeType,
       onClick,
       ...rest
@@ -146,18 +145,17 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       className
     )
 
-    // if (getEnv() === 'WEB') {
-    //   ;(rest as any).type = formType
-    // }
+    if (getEnv() === 'WEB') {
+      ;(rest as any).type = formType
+    }
     return (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
-      // <TaroButton
-      <View
+      <TaroButton
         {...rest}
         ref={ref}
-        // formType={formType || nativeType}
+        formType={formType || nativeType}
         className={buttonClassNames}
         style={{ ...getStyle, ...style }}
         onClick={(e) => handleClick(e as any)}
@@ -177,8 +175,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           )}
           {rightIcon}
         </View>
-      </View>
-      // </TaroButton>
+      </TaroButton>
     )
   }
 )
