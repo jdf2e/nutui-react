@@ -10,6 +10,7 @@ const idID: BaseLang = {
   select: 'Pilih',
   edit: 'Sunting',
   reset: 'Mengatur Ulang',
+  close: 'Tutup',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
@@ -140,5 +141,6 @@ const idID: BaseLang = {
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
+  mask: 'Masker',
 }
 export default idID

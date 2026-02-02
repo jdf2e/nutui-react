@@ -8,6 +8,7 @@ export interface BaseLang {
   select: string
   edit: string
   reset: string
+  close: string
   video: {
     errorTip: string
     clickRetry: string
@@ -140,4 +141,5 @@ export interface BaseLang {
   watermark: {
     errorCanvasTips: string
   }
+  mask: string
 }
