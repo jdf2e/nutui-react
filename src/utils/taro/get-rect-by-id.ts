@@ -1,8 +1,21 @@
 import Taro, { createSelectorQuery } from '@tarojs/taro'
 
+const ENV_TYPE = {
+  WEAPP: 'WEAPP',
+  SWAN: 'SWAN',
+  ALIPAY: 'ALIPAY',
+  TT: 'TT',
+  QQ: 'QQ',
+  JD: 'JD',
+  WEB: 'WEB',
+  RN: 'RN',
+  HARMONY: 'HARMONY',
+  QUICKAPP: 'QUICKAPP',
+}
+
 export const getRectById = (id: string) => {
   return new Promise((resolve, reject) => {
-    if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+    if (Taro.getEnv() === ENV_TYPE.WEB) {
       const t = document ? document.querySelector(`#${id}`) : ''
       if (t) {
         resolve(t?.getBoundingClientRect())
