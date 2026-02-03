@@ -6,6 +6,7 @@ import React, {
   ReactPortal,
   useRef,
 } from 'react'
+import { nextTick } from '@tarojs/taro'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
@@ -19,6 +20,7 @@ import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroPopupProps } from '@/types'
 import { harmony } from '@/utils/taro/platform'
 import { pxTransform } from '@/utils/taro/px-transform'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 const defaultProps: TaroPopupProps = {
   ...defaultOverlayProps,
@@ -69,6 +71,7 @@ export const Popup: FunctionComponent<
     closeIcon,
     left,
     title,
+    top,
     description,
     style,
     transition,
@@ -89,6 +92,7 @@ export const Popup: FunctionComponent<
     onTouchStart,
     onTouchMove,
     onTouchEnd,
+    closeAriaLabel,
   } = { ...defaultProps, ...props }
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
@@ -98,13 +102,14 @@ export const Popup: FunctionComponent<
   const nodeRef = useLockScrollTaro(
     innerVisible && lockScroll
   ) as React.MutableRefObject<any>
-
+  const topNodeRef = React.useRef<HTMLDivElement | null>(null)
   const rootRect = useRef<any>(null)
   const touchStartRef = useRef(0)
   const touchMoveDistanceRef = useRef(0)
   const heightRef = useRef(0)
   const defaultHeightRef = useRef(0)
   const isTouching = useRef(false)
+  const { locale } = useConfig()
 
   const classPrefix = 'nut-popup'
   const overlayStyles = {
@@ -121,6 +126,8 @@ export const Popup: FunctionComponent<
     className
   )
   const [popupHeight, setPopupHeight] = useState('')
+  const [topBottom, setTopBottom] = useState('')
+
   const resizeStyles = () => {
     if (popupHeight !== '') {
       return {
@@ -148,6 +155,22 @@ export const Popup: FunctionComponent<
     }
     onOpen && onOpen()
   }
+
+  const getPopupHeight = async () => {
+    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
+    const height = nodeRef.current?.offsetHeight || rect?.height
+    setTopBottom(pxTransform(height))
+  }
+
+  useEffect(() => {
+    if (innerVisible && topNodeRef.current && nodeRef.current) {
+      nextTick(() => {
+        nextTick(() => {
+          getPopupHeight()
+        })
+      })
+    }
+  }, [innerVisible])
 
   const close = () => {
     if (innerVisible) {
@@ -180,11 +203,29 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <View className={closeClasses} onClick={handleCloseIconClick}>
+          <View
+            className={closeClasses}
+            onClick={handleCloseIconClick}
+            ariaRole="button"
+            ariaLabel={closeAriaLabel || locale.close}
+          >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </View>
         )}
       </>
+    )
+  }
+
+  const renderTop = () => {
+    if (!top) return null
+    return (
+      <View
+        className={`${classPrefix}-bottom-top`}
+        ref={topNodeRef}
+        style={{ bottom: topBottom }}
+      >
+        {top}
+      </View>
     )
   }
 
@@ -303,7 +344,7 @@ export const Popup: FunctionComponent<
         ref={nodeRef}
         style={{
           ...popStyles,
-          display: innerVisible ? 'block' : 'none',
+          display: innerVisible ? popStyles?.display || 'block' : 'none',
           ...resizeStyles(),
         }}
         className={popClassName}
@@ -314,6 +355,7 @@ export const Popup: FunctionComponent<
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
       >
+        {renderTop()}
         {renderTitle()}
         {showChildren ? children : null}
       </View>

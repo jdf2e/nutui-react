@@ -78,6 +78,14 @@ import { Popup } from '@nutui/nutui-react-taro'
 
 :::
 
+### 顶部占位
+
+:::demo
+
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
 ## Popup
 
 ### Props
@@ -99,8 +107,10 @@ import { Popup } from '@nutui/nutui-react-taro'
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
 | resizable | 上下滑动调整高度，当前只支持从底部弹出 | `boolean` | `false` |
 | minHeight | 设置最小高度 | `string` | `26%` |
+| closeAriaLabel | 关闭图标的 `aria-label` | `string` | `-` |
 | left | 标题左侧部分 | `ReactNode` | `-` |
 | title | 标题中间部分 | `ReactNode` | `-` |
+| top | 頂部佔位 | `ReactNode` | `-` |
 | description | 子标题/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否显示圆角 | `boolean` | `false` |
