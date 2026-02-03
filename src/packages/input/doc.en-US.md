@@ -141,6 +141,7 @@ import { Input } from '@nutui/nutui-react'
 | maxLength | Limit the longest input characters | `string, number` | `-` |
 | clearable | show clear Icon | `boolean` | `false` |
 | clearIcon | clear icon Icon <a href="#/icon">refer to Icon </a> | `ReactNode` | `MaskClose` |
+| inputStyle | input box style | `CSSProperties` | `-` |
 | formatter | input content formatting function | `(val: string) => string` | `-` |
 | formatTrigger | The timing when the format function is triggered, the optional values are `onChange`, `onBlur` | `string` | `-` |
 | onChange | Triggered when the content of the input box changes | `(value: string) => void` | `-` |
