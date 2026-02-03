@@ -68,6 +68,14 @@ import { Popup } from '@nutui/nutui-react'
 
 :::
 
+### 頂部佔位
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ## Popup
 
 ### Props
@@ -89,8 +97,10 @@ import { Popup } from '@nutui/nutui-react'
 | closeIcon | 自定義 Icon | `ReactNode` | `close` |
 | resizable | 上下滑動調整高度，目前只支援從底部彈出 | `boolean` | `false` |
 | minHeight | 設定最小高度 | `string` | `26%` |
-| left | 标题左侧部分 | `ReactNode` | `-` |
-| title | 标题中间部分 | `ReactNode` | `-` |
+| closeAriaLabel | 關閉圖標的 `aria-label` | `string` | `-` |
+| left | 標題左側部分 | `ReactNode` | `-` |
+| title | 標題中間部分 | `ReactNode` | `-` |
+| top | 頂部佔位 | `ReactNode` | `-` |
 | description | 子標題/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否顯示圓角 | `boolean` | `false` |

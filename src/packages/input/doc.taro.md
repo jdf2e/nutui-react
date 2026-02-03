@@ -141,6 +141,7 @@ import { Input } from '@nutui/nutui-react-taro'
 | maxLength | 限制最长输入字符 | `string` \| `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
+| inputStyle | 输入框样式 | `CSSProperties` | `-` |
 | confirmType | 键盘右下角按钮的文字，仅在type='text'时生效,可选值 send：发送、search：搜索、next：下一个、go：前往、done：完成 | `string` | `done` |
 | formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |
 | formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |

@@ -8,6 +8,7 @@ import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
+import Demo9 from './demos/h5/demo9'
 
 const PopupDemo = () => {
   const [translated] = useTranslate({
@@ -28,6 +29,7 @@ const PopupDemo = () => {
       '0aaad620': '圆角弹框',
       ea3d02f2: '指定节点挂载',
       c9e6df49: '多层堆叠',
+      '7db1a8b6': '顶部占位',
     },
     'zh-TW': {
       ce5c5446: '基礎類型',
@@ -46,6 +48,7 @@ const PopupDemo = () => {
       '0aaad620': '圓角彈框',
       ea3d02f2: '指定節點掛載',
       c9e6df49: '多層堆疊',
+      '7db1a8b6': '頂部佔位',
     },
     'en-US': {
       ce5c5446: 'base type',
@@ -64,6 +67,7 @@ const PopupDemo = () => {
       '0aaad620': 'Rounded popup',
       ea3d02f2: 'Mount the specified node',
       c9e6df49: 'multi-layer stacking',
+      '7db1a8b6': 'Header and Footer',
     },
   })
 
@@ -90,6 +94,9 @@ const PopupDemo = () => {
 
         <h2>{translated.c9e6df49}</h2>
         <Demo7 />
+
+        <h2>{translated['7db1a8b6']}</h2>
+        <Demo9 />
       </div>
     </>
   )

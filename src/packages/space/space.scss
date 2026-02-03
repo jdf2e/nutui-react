@@ -82,7 +82,9 @@
     }
 
     &-stretch {
+      /* #ifndef dynamic*/
       justify-content: stretch;
+      /* #endif */
     }
   }
 }

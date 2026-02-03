@@ -95,6 +95,16 @@ test('should render close icon when using closeable prop', () => {
   expect(closeIcon).toBeTruthy()
 })
 
+test('should render close icon with custom closeAriaLabel', () => {
+  const { container } = render(
+    <Popup visible closeable closeAriaLabel="custom close label" />
+  )
+  const closeIcon = container.querySelector(
+    '.nut-popup-title-right'
+  ) as HTMLElement
+  expect(closeIcon).toHaveAttribute('aria-label', 'custom close label')
+})
+
 test('should have "nut-popup-round" class when setting the round prop', () => {
   const { container } = render(<Popup visible round />)
   const round = container.querySelector('.nut-popup-round') as HTMLElement

@@ -68,6 +68,14 @@ import { Popup } from '@nutui/nutui-react'
 
 :::
 
+### Header and Footer
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
 ## Popup
 
 ### Props
@@ -89,8 +97,10 @@ import { Popup } from '@nutui/nutui-react'
 | closeIcon | Custom Icon | `ReactNode` | `close` |
 | resizable | Enable vertical resizing of the popup | `boolean` | `false` |
 | minHeight | Minimum height of the popup | `string` | `26%` |
+| closeAriaLabel | The `aria-label` of the close icon | `string` | `-` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |
+| top | The top of popup | `ReactNode` | `-` |
 | description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |

@@ -1,22 +1,22 @@
 @import './jd-font';
 :root,
 page {
-  // 品牌颜色
-  --nutui-brand-1: #403635; // 梯度1
-  --nutui-brand-2: #665452; // 梯度2
-  --nutui-brand-3: #99706b; // 梯度3
-  --nutui-brand-4: #cc5f52; // 梯度4
-  --nutui-brand-5: #f2503d; // 梯度5
-  --nutui-brand-6: #fa3725; // 梯度6
-  --nutui-brand-7: #f24130; // 梯度7
-  --nutui-brand-8: #e55446; // 梯度8
-  --nutui-brand-9: #f26e61; // 梯度9
-  --nutui-brand-10: #e5928a; // 梯度10
+  --nutui-brand-1: #efffef; // 梯度1
+  --nutui-brand-2: #d5fbd5; // 梯度2
+  --nutui-brand-3: #72e88c; // 梯度3
+  --nutui-brand-4: #3fe363; // 梯度4
+  --nutui-brand-5: #23d94b; // 梯度5
+  --nutui-brand-6: #1ed145; // 梯度6
+  --nutui-brand-7: #16c73d; // 梯度7
+  --nutui-brand-8: #00ae42; // 梯度8
+  --nutui-brand-9: #009b3b; // 梯度9
+  --nutui-brand-10: #007d30; // 梯度10
+  --nutui-brand-11: #185c07; // 梯度11
+  --nutui-brand-12: #ff475d; // 梯度12
+  --nutui-brand-13: #ff0f23; // 梯度13
 
-  --nutui-brand-11: #330f02; // 梯度11
-
-  --nutui-brand-stop-1: #ff475d; // 渐变色起
-  --nutui-brand-stop-2: #fa3725; // 渐变色止
+  --nutui-brand-stop-1: #23d94b; // 渐变色起
+  --nutui-brand-stop-2: #1ed145; // 渐变色止
 
   // service color
   --nutui-golden-1: #fff4e8;
@@ -260,8 +260,7 @@ page {
   // 标准内容、名称类关键信息
   --nutui-font-size-base: var(--nutui-font-size-14);
   // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
-  --nutui-font-size-l: var(--nutui-font-size-15);
-  --nutui-font-size-icon: var(--nutui-font-size-16);
+  --nutui-font-size-l: var(--nutui-font-size-16);
   // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
   --nutui-font-size-xl: var(--nutui-font-size-18);
   // 数字：页面级主价格，如商详、收银台

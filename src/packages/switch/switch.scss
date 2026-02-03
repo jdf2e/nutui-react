@@ -1,7 +1,12 @@
 .nut-switch {
   cursor: pointer;
   position: relative;
+  /* #ifdef dynamic*/
+  display: flex;
+  /* #endif */
+  /* #ifndef dynamic*/
   display: inline-flex;
+  /* #endif */
   flex-direction: row;
   align-items: center;
   min-width: $switch-width;
@@ -58,7 +63,12 @@
   }
 
   &-label {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     align-items: center;
     height: 100%;
     white-space: nowrap;

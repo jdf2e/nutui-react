@@ -5,7 +5,10 @@ const Demo14 = () => {
   return (
     <>
       <Input
-        style={{ '--nutui-input-border-bottom-width': '1px' }}
+        style={{
+          '--nutui-input-border-bottom-width': '1px',
+          '--nutui-input-color': 'red',
+        }}
         placeholder="边框"
       />
     </>

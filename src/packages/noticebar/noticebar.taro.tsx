@@ -6,9 +6,11 @@ import React, {
   useState,
   useCallback,
 } from 'react'
+import { nextTick } from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { useUuid } from '@/hooks/use-uuid'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -67,7 +69,12 @@ export const NoticeBar: FunctionComponent<
   const classPrefix = 'nut-noticebar'
   const wrapRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const [showNoticeBar, SetShowNoticeBar] = useState(true)
+
+  const uid = useUuid()
+  const wrapRefId = `wrap-ref-${uid}`
+  const contentRefId = `content-ref-${uid}`
+
+  const [showNoticeBar, setShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
@@ -127,7 +134,7 @@ export const NoticeBar: FunctionComponent<
         startRollEasy()
       }
     } else {
-      initScrollWrap(content)
+      initScrollWrap()
     }
     return () => {
       // 销毁事件
@@ -136,7 +143,7 @@ export const NoticeBar: FunctionComponent<
   }, [childs])
 
   useEffect(() => {
-    initScrollWrap(content)
+    initScrollWrap()
   }, [content])
 
   useEffect(() => {
@@ -145,16 +152,20 @@ export const NoticeBar: FunctionComponent<
     }
   }, [list])
 
-  const initScrollWrap = (value: string) => {
+  const initScrollWrap = () => {
     if (showNoticeBar === false) {
       return
     }
-    setTimeout(async () => {
+    nextTick(async () => {
       if (!wrapRef.current || !contentRef.current) {
         return
       }
-      const warpRes = await getRectInMultiPlatform(wrapRef.current)
-      const contentRes = await getRectInMultiPlatform(contentRef.current)
+      const warpRes = await getRectInMultiPlatform(wrapRef.current, wrapRefId)
+      const contentRes = await getRectInMultiPlatform(
+        contentRef.current,
+        contentRefId
+      )
+      if (!warpRes || !contentRes) return
       const wrapW = warpRes.width
       const offsetW = contentRes.width
       const canScroll =
@@ -168,18 +179,11 @@ export const NoticeBar: FunctionComponent<
       } else {
         SetAnimationClass('')
       }
-    }, 0)
+    })
   }
   const handleClick = (event: ITouchEvent) => {
     click && click(event)
     onClick && onClick(event)
-  }
-
-  const onClickIcon = (event: ITouchEvent) => {
-    event.stopPropagation()
-    SetShowNoticeBar(!closeable)
-    close && close(event)
-    onClose && onClose(event)
   }
 
   const onAnimationEnd = () => {
@@ -212,13 +216,15 @@ export const NoticeBar: FunctionComponent<
     }, time)
   }
 
-  // 点击滚动单元
-  const handleClickIcon = (event: ITouchEvent) => {
-    event.stopPropagation()
-    SetShowNoticeBar(!closeable)
-    close && close(event)
-    onClose && onClose(event)
-  }
+  const handleClickIcon = useCallback(
+    (event: ITouchEvent) => {
+      event.stopPropagation()
+      setShowNoticeBar(!closeable)
+      close && close(event)
+      onClose && onClose(event)
+    },
+    [close, onClose, closeable]
+  )
 
   const isEllipsis = () => {
     if (isCanScroll == null && align === 'left') {
@@ -383,10 +389,10 @@ export const NoticeBar: FunctionComponent<
 
   // 无缝滚动第一个元素位移控制
   const itemStyle = (index: any) => {
-    const style: any = {}
+    const style: any = { width: '100%' }
     if (height) {
       style.height = `${height}px`
-      style.lineHeight = `${height}px`
+      // style.lineHeight = `${height}px`
     }
     const offset = childOffset[index]
     if (offset) {
@@ -455,16 +461,52 @@ export const NoticeBar: FunctionComponent<
     setIsContainerReady(true)
   }, [])
 
+  const renderLeftIcon = useCallback(() => {
+    return (
+      <>
+        {leftIcon ? (
+          <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
+        ) : null}
+      </>
+    )
+  }, [leftIcon])
+
+  const renderRight = useCallback(
+    () => (
+      <>
+        {right ? (
+          <View className="nut-noticebar-box-right">{right}</View>
+        ) : null}
+      </>
+    ),
+    [right]
+  )
+
+  const renderRightIcon = useCallback(
+    () => (
+      <>
+        {rightIcon || closeable ? (
+          <View
+            className="nut-noticebar-box-right-icon"
+            onClick={handleClickIcon}
+          >
+            {rightIcon || <Close size={12} />}
+          </View>
+        ) : null}
+      </>
+    ),
+    [rightIcon, closeable, handleClickIcon]
+  )
+
   return (
     <View className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <View className={noticebarClass} style={barStyle} onClick={handleClick}>
-          {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
-          ) : null}
-          <View ref={wrapRef} className="nut-noticebar-box-wrap">
+          {renderLeftIcon()}
+          <View ref={wrapRef} className="nut-noticebar-box-wrap" id={wrapRefId}>
             <View
               ref={contentRef}
+              id={contentRefId}
               className={`nut-noticebar-box-wrap-content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
               }`}
@@ -475,17 +517,8 @@ export const NoticeBar: FunctionComponent<
               {content}
             </View>
           </View>
-          {right ? (
-            <View className="nut-noticebar-box-right">{right}</View>
-          ) : null}
-          {closeable || rightIcon ? (
-            <View
-              className="nut-noticebar-box-right-icon"
-              onClick={onClickIcon}
-            >
-              {rightIcon || <Close size={12} />}
-            </View>
-          ) : null}
+          {renderRight()}
+          {renderRightIcon()}
         </View>
       ) : null}
       {showNoticeBar && hasVerticalContent && isVertical ? (
@@ -495,9 +528,7 @@ export const NoticeBar: FunctionComponent<
           ref={containerRefCallback}
           onClick={handleClick}
         >
-          {leftIcon ? (
-            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
-          ) : null}
+          {renderLeftIcon()}
           {children ? (
             <View className="nut-noticebar-box-wrap" ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
@@ -521,7 +552,6 @@ export const NoticeBar: FunctionComponent<
             >
               {scrollList.current.map((item: string, index: number) => {
                 return (
-                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <View
                     className="nut-noticebar-box-horseLamp-list-item"
                     style={{ height }}
@@ -536,14 +566,8 @@ export const NoticeBar: FunctionComponent<
               })}
             </View>
           )}
-          <View
-            className="nut-noticebar-box-right-icon"
-            onClick={(e) => {
-              handleClickIcon(e)
-            }}
-          >
-            {rightIcon || (closeable ? <Close size={12} /> : null)}
-          </View>
+          {renderRight()}
+          {renderRightIcon()}
         </View>
       ) : null}
     </View>

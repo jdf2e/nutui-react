@@ -91,6 +91,8 @@ import { Dialog } from '@nutui/nutui-react'
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
 | confirmText | Confirm the button copywriting | `ReactNode` | `Sure` |
 | cancelText | Cancellation of buttons | `ReactNode` | `Cancel` |
+| confirmBadge | Badge of confirm button | `ReactNode` | `-` |
+| cancelBadge | Badge of cancel button | `ReactNode` | `-` |
 | overlay | Whether to show a overlay | `boolean` | `true` |
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |

@@ -28,6 +28,7 @@ const Demo = () => {
         onClose={() => {
           setShowPopup(false)
         }}
+        closeAriaLabel="关闭弹框"
       />
       <Popup
         closeable
@@ -50,6 +51,7 @@ const Demo = () => {
         onTouchEnd={(height, e) => {
           console.log('onTouchEnd', height, e)
         }}
+        closeAriaLabel="关闭弹框"
       />
     </>
   )

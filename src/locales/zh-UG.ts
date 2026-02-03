@@ -139,6 +139,6 @@ const zhUG: BaseLang = {
   watermark: {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },
-  mask: 'mask',
+  mask: 'قاپلىما قەۋەت',
 }
 export default zhUG

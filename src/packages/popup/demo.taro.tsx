@@ -12,6 +12,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
 
 const PopupDemo = () => {
   const [translated] = useTranslate({
@@ -33,6 +34,7 @@ const PopupDemo = () => {
       '0aaad620': '圆角弹框',
       ea3d02f2: '指定节点挂载',
       c9e6df49: '多层堆叠',
+      '7db1a8b6': '顶部占位',
     },
     'zh-TW': {
       ce5c5446: '基礎類型',
@@ -52,6 +54,7 @@ const PopupDemo = () => {
       '0aaad620': '圓角彈框',
       ea3d02f2: '指定節點掛載',
       c9e6df49: '多層堆疊',
+      '7db1a8b6': '頂部佔位',
     },
     'en-US': {
       ce5c5446: 'base type',
@@ -71,6 +74,7 @@ const PopupDemo = () => {
       '0aaad620': 'Rounded popup',
       ea3d02f2: 'Mount the specified node',
       c9e6df49: 'multi-layer stacking',
+      '7db1a8b6': 'Header and Footer',
     },
   })
 
@@ -105,6 +109,9 @@ const PopupDemo = () => {
 
         <View className="h2">{translated.cfbdc782}</View>
         <Demo8 />
+
+        <View className="h2">{translated['7db1a8b6']}</View>
+        <Demo9 />
       </ScrollView>
     </>
   )
