@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPriceProps, PriceColorEnum } from '@/types'
-import { harmony } from '@/utils/taro/platform'
+import { harmony, td } from '@/utils/taro/platform'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -166,7 +166,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
 
   return (
     <>
-      {harmony() ? (
+      {harmony() || td() ? (
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
