@@ -1,5 +1,4 @@
 export * from './bound'
-export * from './camel-case'
 export * from './can-use-dom'
 export * from './clamp'
 export * from './date'

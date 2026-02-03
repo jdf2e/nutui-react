@@ -4,7 +4,10 @@ import React, {
   ReactPortal,
   useEffect,
   useState,
+  useRef,
 } from 'react'
+import type { TouchEvent } from 'react'
+
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
@@ -13,6 +16,7 @@ import { defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { useLockScroll } from '@/hooks/use-lock-scroll'
 import { WebPopupProps } from '@/types'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps: WebPopupProps = {
   ...defaultOverlayProps,
@@ -27,17 +31,26 @@ const defaultProps: WebPopupProps = {
   portal: null,
   overlay: true,
   round: false,
+  resizable: false,
+  minHeight: '',
   onOpen: () => {},
   onClose: () => {},
   onOverlayClick: () => true,
   onCloseIconClick: () => true,
+  onTouchStart: () => {},
+  onTouchMove: () => {},
+  onTouchEnd: () => {},
 }
 
 // 默认1000，参看variables
 const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<WebPopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<WebPopupProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'title' | 'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
+    >
 > = (props) => {
   const {
     children,
@@ -54,6 +67,7 @@ export const Popup: FunctionComponent<
     closeIcon,
     left,
     title,
+    top,
     description,
     style,
     transition,
@@ -62,6 +76,8 @@ export const Popup: FunctionComponent<
     className,
     destroyOnClose,
     portal,
+    resizable,
+    minHeight,
     onOpen,
     onClose,
     onOverlayClick,
@@ -69,13 +85,26 @@ export const Popup: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
+    closeAriaLabel,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
+  const topNodeRef = React.useRef<HTMLDivElement | null>(null)
   let innerIndex = zIndex || _zIndex
   const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
+
+  const touchStartRef = useRef(0)
+  const touchMoveDistanceRef = useRef(0)
+  const heightRef = useRef(0)
+  // 首次可调整时记录的默认高度
+  const defaultHeightRef = useRef(0)
+  const isTouching = useRef(false)
+  const { locale } = useConfig()
 
   useLockScroll(nodeRef, innerVisible && lockScroll)
 
@@ -83,7 +112,12 @@ export const Popup: FunctionComponent<
   const overlayStyles = {
     ...overlayStyle,
   }
-  const popStyles = { ...style, zIndex: index }
+  const popStyles = {
+    ...style,
+    zIndex: index,
+    minHeight,
+  }
+
   const popClassName = classNames(
     classPrefix,
     {
@@ -95,6 +129,15 @@ export const Popup: FunctionComponent<
 
   const open = () => {
     if (!innerVisible) {
+      // 当高度改变后，再次打开时，将高度置为初始高度
+      if (
+        position === 'bottom' &&
+        resizable &&
+        nodeRef.current &&
+        heightRef.current
+      ) {
+        nodeRef.current.style.height = `${defaultHeightRef.current}px`
+      }
       setInnerVisible(true)
       setIndex(++innerIndex)
     }
@@ -103,6 +146,12 @@ export const Popup: FunctionComponent<
     }
     onOpen && onOpen()
   }
+
+  useEffect(() => {
+    if (topNodeRef.current && nodeRef.current) {
+      topNodeRef.current.style.bottom = `${nodeRef.current?.clientHeight}px`
+    }
+  }, [innerVisible])
 
   const close = () => {
     if (innerVisible) {
@@ -135,11 +184,26 @@ export const Popup: FunctionComponent<
     return (
       <>
         {closeable && (
-          <div className={closeClasses} onClick={handleCloseIconClick}>
+          <div
+            className={closeClasses}
+            onClick={handleCloseIconClick}
+            role="button"
+            aria-label={closeAriaLabel || locale.close}
+            tabIndex={-1}
+          >
             {React.isValidElement(closeIcon) ? closeIcon : <Close />}
           </div>
         )}
       </>
+    )
+  }
+
+  const renderTop = () => {
+    if (!top) return null
+    return (
+      <div className={`${classPrefix}-bottom-top`} ref={topNodeRef}>
+        {top}
+      </div>
     )
   }
 
@@ -176,6 +240,60 @@ export const Popup: FunctionComponent<
       return renderCloseIcon()
     }
   }
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    if (position !== 'bottom' || !resizable || !nodeRef.current) return
+    // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
+    touchStartRef.current = event.touches[0].pageY
+    // 标记开始滑动
+    isTouching.current = true
+    // 标记当前popup的高度
+    heightRef.current = nodeRef.current?.offsetHeight || 0
+    if (!defaultHeightRef.current) defaultHeightRef.current = heightRef.current
+    onTouchStart?.(heightRef.current, event)
+  }
+
+  const handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    if (position !== 'bottom' || !resizable || !nodeRef.current) return
+    event.stopPropagation()
+
+    // move过程中，当前的pageY 与 start值比较
+    touchMoveDistanceRef.current =
+      event.touches[0].pageY - touchStartRef.current
+
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
+
+    nodeRef.current.style.height = `${currentHeight}px`
+    // 向下滑动
+    if (touchMoveDistanceRef.current > 0) {
+      onTouchMove?.(currentHeight, event, 'down')
+    } else {
+      // 向上滑动
+      onTouchMove?.(currentHeight, event, 'up')
+    }
+  }
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (position !== 'bottom' || !resizable || !nodeRef.current) return
+    isTouching.current = false
+    const min =
+      typeof minHeight === 'number'
+        ? minHeight
+        : parseInt(String(minHeight || 0), 10) || 0
+    const currentHeight = Math.max(
+      min,
+      heightRef.current - touchMoveDistanceRef.current
+    )
+    onTouchEnd?.(currentHeight, event)
+  }
+
   const renderPop = () => {
     return (
       <CSSTransition
@@ -193,7 +311,12 @@ export const Popup: FunctionComponent<
           style={popStyles}
           className={popClassName}
           onClick={onClick}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
         >
+          {renderTop()}
           {renderTitle()}
           {showChildren && children}
         </div>

@@ -11,7 +11,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* #ifndef dynamic*/
     box-sizing: content-box;
+    /* #endif */
     padding: $popup-title-padding;
     color: $color-title;
     font-size: $popup-title-font-size;
@@ -50,10 +52,10 @@
     &-wrapper {
       position: relative;
       flex: 1;
-      /* #ifdef harmony */
+      /* #ifdef harmony dynamic*/
       width: 33%;
       /* #endif */
-      /* #ifndef harmony */
+      /* #ifndef harmony dynamic*/
       flex-basis: 33%;
       /* #endif */
       box-sizing: border-box;

@@ -10,19 +10,20 @@ import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { ComponentDefaults } from '@/utils/typings'
-import { harmony } from '@/utils/taro/platform'
+import { harmony, td } from '@/utils/taro/platform'
 import AvatarGroup from '@/packages/avatargroup/index.taro'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroAvatarProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
-  size: harmony() ? '40' : '',
+  size: harmony() || td() ? '40' : '',
   shape: 'round',
   icon: '',
   background: '#eee',
   color: '#666',
   fit: 'cover',
+  mode: 'scaleToFill',
   src: '',
   alt: '',
   avatarIndex: 0,
@@ -40,6 +41,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     color,
     src,
     icon,
+    mode,
     fit,
     avatarIndex,
     className,
@@ -130,6 +132,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
                   className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
                   style={{ objectFit: fit }}
+                  mode={mode}
                   onError={errorEvent}
                 />
               )}

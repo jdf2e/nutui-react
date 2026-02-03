@@ -7,6 +7,8 @@
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
+  background: $navbar-background;
+  box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
@@ -26,8 +28,10 @@
   }
 
   &-safe-area-inset-top {
+    /* #ifndef dynamic*/
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
+    /* #endif */
   }
 
   &-title-wrapper {

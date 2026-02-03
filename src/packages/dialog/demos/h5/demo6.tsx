@@ -22,7 +22,14 @@ const Demo6 = () => {
           '--nutui-dialog-close-color': '#888B94',
         }}
         onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
+        onClose={() => {
+          setVisible1(false)
+          console.log('onClose')
+        }}
+        onCancel={() => {
+          // do sth else
+          console.log('onCancel')
+        }}
       >
         支持函数调用和组件调用两种方式。
       </Dialog>
@@ -40,6 +47,10 @@ const Demo6 = () => {
         cancelText="决策2"
         onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
+        onClose={() => {
+          setVisible2(false)
+          console.log('关闭底部icon 3')
+        }}
         closeIcon
       >
         支持函数调用和组件调用两种方式。

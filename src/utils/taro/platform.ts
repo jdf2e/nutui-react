@@ -1,14 +1,18 @@
-import { getEnv } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 
 export const harmony = () => {
   return ['harmony', 'harmonyhybrid', 'jdharmony'].includes(
-    getEnv().toLowerCase()
+    Taro.getEnv().toLowerCase()
   )
 }
 export const web = () => {
-  return ['web'].includes(getEnv().toLowerCase())
+  return ['web'].includes(Taro.getEnv().toLowerCase())
 }
 
 export const miniprogram = () => {
-  return ['mini'].includes(getEnv().toLowerCase())
+  return ['mini'].includes(Taro.getEnv().toLowerCase())
+}
+
+export const td = () => {
+  return ['dynamic'].includes(Taro.getEnv().toLowerCase())
 }

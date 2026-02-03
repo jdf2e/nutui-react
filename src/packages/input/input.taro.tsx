@@ -7,13 +7,26 @@ import React, {
 } from 'react'
 import { Input as TaroInput, View } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
-import Taro, { ENV_TYPE, getEnv } from '@tarojs/taro'
+import Taro, { getEnv } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { formatNumber } from './utils'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { InputFormatTrigger, TaroInputProps } from '@/types'
+
+const ENV_TYPE = {
+  WEAPP: 'WEAPP',
+  SWAN: 'SWAN',
+  ALIPAY: 'ALIPAY',
+  TT: 'TT',
+  QQ: 'QQ',
+  JD: 'JD',
+  WEB: 'WEB',
+  RN: 'RN',
+  HARMONY: 'HARMONY',
+  QUICKAPP: 'QUICKAPP',
+}
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -54,6 +67,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     style,
     className,
     plain,
+    inputStyle,
     onChange,
     onFocus,
     onBlur,
@@ -77,16 +91,28 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [active, setActive] = useState(false)
 
+  // 兼容H5和小程序获取原生input标签
+  const getNativeInput = () => {
+    if (Taro.getEnv() === 'WEB') {
+      const taroInputCoreEl = inputRef.current as HTMLElement
+      const inputEl = taroInputCoreEl.querySelector('input')
+      return inputEl
+    }
+    return inputRef.current
+  }
+
   useImperativeHandle(ref, () => {
     return {
       clear: () => {
         setValue('')
       },
       focus: () => {
-        inputRef.current?.focus()
+        const nativeInput = getNativeInput()
+        nativeInput?.focus()
       },
       blur: () => {
-        inputRef.current?.blur()
+        const nativeInput = getNativeInput()
+        nativeInput?.blur()
       },
       get nativeElement() {
         return inputRef.current
@@ -141,7 +167,8 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
   }
 
   const handleBlur = (event: any) => {
-    const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+    const val =
+      Taro.getEnv() === 'WEB' ? (event.target as any).value : event.detail.value
     updateValue(val, 'onBlur')
     setTimeout(() => setActive(false), 200)
   }
@@ -174,7 +201,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         name={name}
         className="nut-input-native"
         ref={inputRef}
-        style={{ textAlign: getTextAlign() }}
+        style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
         type={inputType(type) as any}
         password={type === 'password'}
         maxlength={maxLength}
@@ -182,7 +209,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
           placeholder === undefined ? locale.placeholder : placeholder
         }
         placeholderClass={`${classPrefix}-placeholder`}
-        disabled={disabled || readOnly}
+        disabled={disabled}
         value={value}
         focus={autoFocus || focus}
         confirmType={confirmType}

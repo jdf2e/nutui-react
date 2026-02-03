@@ -93,7 +93,13 @@ plugins: [
 [//]: # '#### Icon'
 [//]: # '#### Image'
 [//]: # '#### Overlay'
-[//]: # '#### Popup'
+
+#### Popup
+
+- 新增属性 resizable，用于底部弹出时，可上下滑动
+- 新增属性 minHeight，用于设置最小高度，可搭配 resizable 使用
+- 新增属性 top，用于在title上侧展示用户自定义内容
+- 新增 onTouchStart、onTouchMove、onTouchEnd 方法
 
 ### 布局组件
 
@@ -112,7 +118,13 @@ plugins: [
 
 ### 导航组件
 
-[//]: # '#### Elevator'
+#### Elevator
+
+- 新增 `mode` 属性，可选值 `'horizontal'` 或 `'vertical'`，默认 `horizontal`
+- 移除 `titleHeight` 属性， 代码中未使用。
+- 新增 `defaultValue` 属性，默认选中的值
+- 新增 `value` 属性，当前选中的值， 受控
+
 [//]: # '#### FixedNav'
 
 #### Indicator
@@ -197,6 +209,7 @@ plugins: [
 
 - 新增 `plain` 属性，标记为 纯文本型；该值默认为false，标记为 container 容器型
 - 新增 `status` 属性，值为 `default` | `error`，可定义输入框的状态
+- 新增 `ref` 属性，支持 `clear` `focus` `blur` `nativeElement` 等方法
 - 删掉一些可使用基础样式变量，并且建议使用基础样式变量的样式变量，比如 `$textarea-font` `$textarea-limit-color` `$textarea-disabled-color`
 
 #### Uploader
@@ -328,7 +341,10 @@ plugins: [
 - 修改 `title` 和 `description` 的类型为 `ReactNode`
 - 新增 `type` 属性，设置步骤条类型
 
-  [//]: # '#### Swiper'
+#### Swiper
+
+- 修改 `autoPlay` 为 `autoplay`
+
   [//]: # '#### Table'
   [//]: # '#### Tag'
   [//]: # '#### TrendArrow'

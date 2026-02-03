@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor, act } from '@testing-library/react'
+import { render, fireEvent, waitFor, act, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
 test('show dialog base info display ', async () => {
-  const onClose = vi.fn()
+  const onCancel = vi.fn()
   const { container } = render(
-    <Dialog title="title" data-testid="test" visible onClose={onClose}>
+    <Dialog title="title" data-testid="test" visible onCancel={onCancel}>
       <div>content</div>
     </Dialog>
   )
@@ -28,7 +28,7 @@ test('show dialog base info display ', async () => {
 
   expect(wrapEle).toBeNull()
   fireEvent.click(footerCancelEle)
-  expect(onClose).toBeCalled()
+  expect(onCancel).toBeCalled()
 })
 
 test('show dialog custom footer-direction ', async () => {
@@ -116,7 +116,6 @@ test('dialog close icon  position adjustment', async () => {
   expect(closeBtn).toBeInTheDocument()
   fireEvent.click(closeBtn)
   expect(onClose).toBeCalled()
-  expect(onCancel).toBeCalled()
 })
 
 test('should display loading when onConfirm returns a promise', async () => {
@@ -145,4 +144,86 @@ test('should display loading when onConfirm returns a promise', async () => {
   })
 
   expect(mockOnConfirm).toHaveBeenCalled()
+})
+
+test('show dialog header ', async () => {
+  const { container } = render(
+    <Dialog header={<div className="custom-header">header</div>} visible>
+      content
+    </Dialog>
+  )
+  expect(container.querySelector('.custom-header')).toBeInTheDocument()
+})
+
+test('show dialog confirmBadge and cancelBadge ', async () => {
+  const { container } = render(
+    <Dialog visible confirmBadge="confirm" cancelBadge="cancel">
+      content
+    </Dialog>
+  )
+  expect(
+    container.querySelector('.nut-dialog-footer-ok-badge')
+  ).toHaveTextContent('confirm')
+  expect(
+    container.querySelector('.nut-dialog-footer-cancel-badge')
+  ).toHaveTextContent('cancel')
+})
+
+test('dialog disableConfirmButton ', async () => {
+  const onConfirm = vi.fn()
+  const { container } = render(
+    <Dialog visible disableConfirmButton onConfirm={onConfirm}>
+      content
+    </Dialog>
+  )
+  const footerOkEle = container.querySelector(
+    '.nut-dialog-footer-ok'
+  ) as HTMLElement
+  expect(footerOkEle).toHaveClass('disabled')
+  fireEvent.click(footerOkEle)
+  expect(onConfirm).not.toBeCalled()
+})
+
+test('dialog beforeCancel ', async () => {
+  const onCancel = vi.fn()
+  const beforeCancel = vi.fn(() => false)
+  const { container } = render(
+    <Dialog visible onCancel={onCancel} beforeCancel={beforeCancel}>
+      content
+    </Dialog>
+  )
+  const footerCancelEle = container.querySelector(
+    '.nut-dialog-footer-cancel'
+  ) as HTMLElement
+  fireEvent.click(footerCancelEle)
+  expect(beforeCancel).toBeCalled()
+  expect(onCancel).not.toBeCalled()
+})
+
+test('dialog functional call update and close ', async () => {
+  let dialog: any
+  await act(async () => {
+    dialog = Dialog.confirm({
+      title: 'functional',
+      content: 'original content',
+    })
+  })
+
+  expect(screen.getByText('functional')).toBeInTheDocument()
+  expect(screen.getByText('original content')).toBeInTheDocument()
+
+  await act(async () => {
+    dialog.update({
+      content: 'updated content',
+    })
+  })
+  expect(screen.getByText('updated content')).toBeInTheDocument()
+
+  await act(async () => {
+    dialog.close()
+  })
+
+  await waitFor(() => {
+    expect(screen.queryByText('functional')).not.toBeInTheDocument()
+  })
 })

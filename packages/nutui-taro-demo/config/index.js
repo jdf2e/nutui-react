@@ -93,7 +93,6 @@ const config = {
         __dirname,
         '../../../src/packages/lottie/animation/light/pulltorefresh.json'
       ),
-
     '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/loading.json':
       path.resolve(
         __dirname,
@@ -114,7 +113,6 @@ const config = {
         __dirname,
         '../../../src/packages/lottie/animation/dark/pulltorefresh-white.json'
       ),
-
     '@nutui/nutui-react-taro/dist/es/locales/en-US': path.resolve(
       __dirname,
       '../../../src/locales/en-US.ts'

@@ -87,6 +87,7 @@
       height: 100%;
       background: $uploader-preview-progress-background;
       border-radius: $uploader-image-border-radius;
+      z-index: 10;
 
       i {
         margin-bottom: $uploader-image-icon-margin-bottom;
@@ -179,7 +180,9 @@
         justify-content: center;
         align-items: center;
         height: 100%;
+        /* #ifndef dynamic*/
         position: initial;
+        /* #endif */
         border-radius: $uploader-image-border-radius;
       }
 

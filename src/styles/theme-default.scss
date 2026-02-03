@@ -17,99 +17,67 @@ page {
   --nutui-brand-stop-1: #ff475d; // 渐变色起
   --nutui-brand-stop-2: #ff0f23; // 渐变色止
 
-  // 品牌颜色语义化
-  // 品牌主色调默认态，主要功能控件的背景、边框、镂空状态下的文字等
-  --nutui-color-primary: var(--nutui-brand-6);
-  // 品牌渐变色左端
-  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
-  // 品牌渐变色右端
-  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
-  // 品牌主色调或其他深色背景下的文字
-  --nutui-color-primary-text: var(--nutui-color-background-gray-1);
-  // 品牌主色调点击态，背景、边框、镂空状态下的文字
-  --nutui-color-primary-pressed: var(--nutui-brand-7);
-  // 品牌主色调禁用态，背景、边框、镂空状态下的文字
-  --nutui-color-primary-disabled: var(--nutui-color-content-gray-1);
-  // 品牌主色调特殊禁用态，通过操作后可转位默认态
-  --nutui-color-primary-disabled-special: var(--nutui-brand-3);
-  // 品牌主色调镂空背景点击态
-  --nutui-color-primary-light-pressed: var(--nutui-brand-1);
-  --nutui-color-primary-specialdisabled: var(--nutui-red-3);
-
   // service color
-  --nutui-golden-1: #fff2e0;
-  --nutui-golden-2: #ffd4a3;
-  --nutui-golden-3: #cc8241;
-  --nutui-golden-4: #994d00;
+  --nutui-golden-1: #fff4e8;
+  --nutui-golden-2: rgba(181, 105, 26, 0.02);
+  --nutui-golden-3: rgba(181, 105, 26, 0.2);
+  --nutui-golden-4: #b5691a;
+  --nutui-golden-5: #ffe7cc;
+  --nutui-golden-6: #ffd8ad;
+  --nutui-golden-7: #664100;
 
   --nutui-golden-stop-1: #fff9f0;
   --nutui-golden-stop-2: #ffe3c2;
-
-  // service color 语义化
-  --nutui-color-service: var(--nutui-golden-1);
-  --nutui-color-service-border: var(--nutui-golden-2);
-  --nutui-color-service-pressed: var(--nutui-golden-4);
-  --nutui-color-service-stop-1: var(--nutui-golden-stop-1);
-  --nutui-color-service-stop-2: var(--nutui-golden-stop-2);
-  --nutui-color-service-text: var(--nutui-golden-3);
 
   // success color
   --nutui-green-1: #ebfbeb;
   --nutui-green-2: #00d900;
   --nutui-green-3: #2aa32a;
 
-  // success color 语义化
-  --nutui-color-success: var(--nutui-green-2); // 深背景
-  --nutui-color-success-light: var(--nutui-green-1); // 浅背景
-  --nutui-color-success-pressed: var(--nutui-green-3); // 文字
+  // danger color 发现不一致TODO
 
-  // danger color
-  --nutui-red-1: #ffebef;
+  // red color
+  --nutui-red-1: #fff0f4;
+  --nutui-red-2: #ffd6e1;
   --nutui-red-3: #ffadbe;
-  --nutui-red-2: #ff0f23;
+  --nutui-red-4: #ff8595;
+  --nutui-red-5: #ff5c67;
   --nutui-red-6: #ff3333;
-
-  // danger color 语义化
-  --nutui-color-danger: var(--nutui-red-2); // 背景或文字
-  --nutui-color-danger-light: var(--nutui-red-1); // 背景
+  --nutui-red-7: #e53029;
+  --nutui-red-8: #cc2c21;
+  --nutui-red-9: #992412;
+  --nutui-red-10: #661b08;
+  --nutui-red-11: #330f02;
 
   // warning color
-  --nutui-yellow-1: #fff5cc;
+  --nutui-yellow-1: #fff9e0;
   --nutui-yellow-2: #ffbf00;
-  --nutui-yellow-3: #c47600;
-
-  // warning color 语义化
-  --nutui-color-warning: var(--nutui-yellow-2); // 深背景
-  --nutui-color-warning-light: var(--nutui-yellow-1); // 浅背景
-  --nutui-color-warning-pressed: var(--nutui-yellow-3); // 文字
+  --nutui-yellow-3: #b26b00;
 
   // info color
   --nutui-blue-1: #e5f5ff;
   --nutui-blue-2: #0073ff;
 
-  // info color 语义化
-  --nutui-color-info: var(--nutui-blue-2); // 背景或文字，链接色
-  --nutui-color-info-light: var(--nutui-blue-1); // 背景
-
   --nutui-secondary-1: #14cc33; // 辅助色
-  --nutui-color-text-link: var(--nutui-blue-2);
 
   // 背景色
   // 卡片背景色
   --nutui-gray-1: #ffffff;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-2: #f7f8fc;
+  --nutui-gray-2: #f5f6fa;
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-  --nutui-gray-3: #f2f3f5;
+  --nutui-gray-3: #f2f3f7;
+  // 组件背景色，2025年新增
+  --nutui-gray-9: #f5f6fa;
   // 文字色
   // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
   --nutui-gray-4: #c2c4cc;
   // 三级文字色（次要）
-  --nutui-gray-5: #888b94;
+  --nutui-gray-5: #828794;
   // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
-  --nutui-gray-6: #505259;
+  --nutui-gray-6: #3d414d;
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-  --nutui-gray-7: #1a1a1a;
+  --nutui-gray-7: #171a26;
   // icon 未选中颜色
   --nutui-gray-8: #dadce0;
 
@@ -119,7 +87,7 @@ page {
   --nutui-black-2: rgba(0, 0, 0, 0.02);
   // 线条色
   // 间隔线/容错线，用于结构或信息分割
-  --nutui-black-3: rgba(0, 0, 0, 0.06);
+  --nutui-black-3: rgba(0, 0, 0, 0.08);
   --nutui-black-4: rgba(0, 0, 0, 0.1);
   --nutui-black-5: rgba(0, 0, 0, 0.2);
   --nutui-black-6: rgba(0, 0, 0, 0.3);
@@ -149,6 +117,69 @@ page {
   --nutui-white-12: rgba(255, 255, 255, 0.9);
   --nutui-white-13: rgba(255, 255, 255, 1);
 
+  // 品牌颜色语义化
+  // 品牌主色调默认态，主要功能控件的背景、边框、镂空状态下的文字等
+  --nutui-color-primary: var(--nutui-brand-6);
+  // 品牌渐变色左端
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
+  // 品牌渐变色右端
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
+  // 品牌主色调或其他深色背景下的文字
+  --nutui-color-primary-text: var(--nutui-color-background-gray-1);
+  // 品牌主色调点击态，背景、边框、镂空状态下的文字
+  --nutui-color-primary-pressed: var(--nutui-red-7);
+  // 品牌主色调禁用态，背景、边框、镂空状态下的文字
+  --nutui-color-primary-disabled: var(--nutui-color-content-gray-1);
+  // 品牌主色调特殊禁用态，通过操作后可转位默认态
+  --nutui-color-primary-disabled-special: var(--nutui-red-3);
+  // 2025 新增
+  --nutui-color-primary-light: var(--nutui-brand-1);
+  // 品牌主色调镂空背景点击态
+  --nutui-color-primary-light-pressed: var(--nutui-red-2);
+  // 看上去命名和上边重复，去掉
+  // --nutui-color-primary-specialdisabled: var(--nutui-red-3);
+
+  // service color 语义化
+  // 金色背景
+  --nutui-color-service: var(--nutui-golden-1);
+  // 填充标签边框
+  --nutui-color-service-border-1: var(--nutui-golden-2);
+  // 线框标签边框
+  --nutui-color-service-border-2: var(--nutui-golden-3);
+  // 废弃
+  //   --nutui-color-service-border: var(--nutui-golden-2);
+  --nutui-color-service-pressed: var(--nutui-golden-4);
+  // 金色文字
+  --nutui-color-service-text: var(--nutui-golden-4);
+  // 金色按钮背景
+  --nutui-color-service-btn-bg: var(--nutui-golden-5);
+  // 金色按钮点击态背景
+  --nutui-color-service-btn-bg-pressed: var(--nutui-golden-6);
+  // 金色按钮文字
+  --nutui-color-service-btn-text: var(--nutui-golden-7);
+
+  --nutui-color-service-stop-1: var(--nutui-golden-stop-1);
+  --nutui-color-service-stop-2: var(--nutui-golden-stop-2);
+
+  // success color 语义化
+  --nutui-color-success: var(--nutui-green-2); // 深背景
+  --nutui-color-success-light: var(--nutui-green-1); // 浅背景
+  --nutui-color-success-pressed: var(--nutui-green-3); // 文字
+
+  // danger color 语义化，待办，看上去目前非常的独立 TODO
+  --nutui-color-danger: var(--nutui-red-2); // 背景或文字
+  --nutui-color-danger-light: var(--nutui-red-1); // 背景
+
+  // info color 语义化
+  --nutui-color-info: var(--nutui-blue-2); // 背景或文字，链接色
+  --nutui-color-info-light: var(--nutui-blue-1); // 背景
+  --nutui-color-text-link: var(--nutui-blue-2);
+
+  // warning color 语义化
+  --nutui-color-warning: var(--nutui-yellow-2); // 深背景
+  --nutui-color-warning-light: var(--nutui-yellow-1); // 浅背景
+  --nutui-color-warning-pressed: var(--nutui-yellow-3); // 文字
+
   // 文字颜色值 语义化
   --nutui-color-content-gray-1: var(--nutui-gray-4);
   --nutui-color-content-gray-2: var(--nutui-gray-5);
@@ -167,12 +198,15 @@ page {
   --nutui-color-background-gray-1: var(--nutui-gray-1);
   --nutui-color-background-gray-2: var(--nutui-gray-2);
   --nutui-color-background-gray-3: var(--nutui-gray-3);
+  --nutui-color-background-gray-4: var(--nutui-gray-9);
   // 页面背景
   --nutui-color-background: var(--nutui-color-background-gray-3);
   // 卡片背景
   --nutui-color-background-overlay: var(--nutui-color-background-gray-1);
   // 卡片内容器背景
   --nutui-color-background-sunken: var(--nutui-color-background-gray-2);
+  // 组件背景，2025年新增
+  --nutui-color-background-component: var(--nutui-color-background-gray-4);
 
   // 蒙层颜色值 语义化
   --nutui-color-mask-gray-1: var(--nutui-black-2);
@@ -225,7 +259,8 @@ page {
   // 标准内容、名称类关键信息
   --nutui-font-size-base: var(--nutui-font-size-14);
   // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
-  --nutui-font-size-l: var(--nutui-font-size-16);
+  --nutui-font-size-l: var(--nutui-font-size-15);
+  --nutui-font-size-icon: var(--nutui-font-size-16);
   // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
   --nutui-font-size-xl: var(--nutui-font-size-18);
   // 数字：页面级主价格，如商详、收银台
@@ -238,6 +273,8 @@ page {
   --nutui-font-weight-light: 300;
   // 常规内容
   --nutui-font-weight: 400;
+  // 500
+  --nutui-font-weight-medium: 500;
   // 强化内容
   --nutui-font-weight-bold: 600;
 

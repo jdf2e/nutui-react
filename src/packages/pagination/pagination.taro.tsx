@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { ComponentDefaults } from '@/utils/typings'
@@ -134,9 +134,9 @@ export const Pagination: FunctionComponent<
       )}
       {mode === 'lite' && (
         <View className={`${classPrefix}-lite`}>
-          <View className={`${classPrefix}-lite-active`}>{current}</View>
-          <View className={`${classPrefix}-lite-spliterator`}>/</View>
-          <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
+          <Text className={`${classPrefix}-lite-active`}>{current}</Text>
+          <Text className={`${classPrefix}-lite-spliterator`}>/</Text>
+          <Text className={`${classPrefix}-lite-default`}>{pageCount}</Text>
         </View>
       )}
     </View>

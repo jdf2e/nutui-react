@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem } from '@nutui/nutui-react'
+import { Uploader, Cell, UploaderFileItem } from '@nutui/nutui-react'
 
 const Demo4 = () => {
-  const [list, setList] = useState<FileItem[]>([])
+  const [list, setList] = useState<UploaderFileItem[]>([])
   const onOversize = (files: File[]) => {
     console.log('oversize 触发 文件大小不能超过 50kb', files)
   }

@@ -10,7 +10,7 @@ const Demo8 = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
-    <View className="demo-box vertical-center">
+    <View>
       <Swiper
         defaultValue={0}
         direction="vertical"

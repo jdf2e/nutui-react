@@ -28,6 +28,7 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     onChange,
     loading: propLoading,
     onLoadingChange,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -82,7 +83,17 @@ export const Switch: FunctionComponent<Partial<WebSwitchProps>> = (props) => {
     setValue(!value)
   }
   return (
-    <div className={classes()} onClick={onClick} style={style} {...rest}>
+    <div
+      className={classes()}
+      onClick={onClick}
+      style={style}
+      {...rest}
+      role="switch"
+      tabIndex={disabled ? -1 : 0}
+      aria-checked={value}
+      aria-disabled={disabled}
+      aria-label={ariaLabel}
+    >
       <div
         className={classNames([
           [`${classPrefix}-button`],

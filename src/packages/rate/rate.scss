@@ -97,10 +97,15 @@
   }
 
   &-score {
+    /* #ifdef dynamic*/
+    display: flex;
+    /* #endif */
+    /* #ifndef dynamic*/
     display: inline-flex;
+    /* #endif */
     align-items: center;
     color: $rate-font-color;
-    font-family: 'JD';
+    font-family: 'JDZH-Regular';
     line-height: 1;
 
     &-normal {

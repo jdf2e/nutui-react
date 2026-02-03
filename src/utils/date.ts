@@ -258,8 +258,8 @@ export const getPreMonthDates = (
     return {
       day: k + 1,
       type,
-      preYear,
-      preMonth,
+      year: preYear,
+      month: preMonth,
     }
   })
   return months.slice(preDates - days)

@@ -58,6 +58,7 @@ export const SearchBar: FunctionComponent<
     leftIn,
     rightIn,
     tag,
+    inputProps,
     onChange,
     onFocus,
     onBlur,
@@ -186,6 +187,7 @@ export const SearchBar: FunctionComponent<
         onFocus={handleFocus}
         onBlur={handleBlur}
         onClick={handleInputClick}
+        {...inputProps}
       />
     )
   }

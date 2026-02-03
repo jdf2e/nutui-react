@@ -9,7 +9,7 @@
   &-integer,
   &-decimal {
     color: $price-color;
-    font-family: 'JD';
+    font-family: 'JDZH-Bold';
     line-height: 1;
   }
 
@@ -18,7 +18,7 @@
       &-symbol,
       &-integer,
       &-decimal {
-        font-family: 'JD-Bold';
+        font-family: 'JDZH-Bold';
         color: $price-darkgray-color;
       }
     }
@@ -29,7 +29,7 @@
       &-symbol,
       &-integer,
       &-decimal {
-        font-family: 'JD-Bold';
+        font-family: 'JDZH-Bold';
         color: $price-primary-color;
       }
     }
@@ -62,14 +62,23 @@
   &-integer {
     &-xlarge {
       font-size: $price-integer-xlarge-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-xlarge-size;
+      /* #endif */
     }
 
     &-large {
       font-size: $price-integer-large-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-large-size;
+      /* #endif */
     }
 
     &-normal {
       font-size: $price-integer-normal-size;
+      /* #ifdef dynamic */
+      line-height: $price-integer-normal-size;
+      /* #endif */
     }
 
     &-small {

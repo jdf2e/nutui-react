@@ -36,11 +36,15 @@
       justify-content: center;
 
       .nut-noticebar-box-wrap {
+        /* #ifndef dynamic*/
         flex: initial;
+        /* #endif */
 
         .nut-noticebar-box-wrap-content {
           position: relative;
+          /* #ifndef dynamic*/
           display: initial;
+          /* #endif */
         }
       }
     }
@@ -51,6 +55,9 @@
       min-width: $noticebar-left-icon-width;
       margin-right: $noticebar-icon-gap;
       background-size: 100% 100%;
+      .nut-icon {
+        color: $noticebar-color;
+      }
     }
 
     &-right-icon {
@@ -63,12 +70,14 @@
       .nut-icon {
         width: 12px;
         height: 12px;
+        color: $noticebar-color;
       }
     }
 
     &-wrap {
       display: flex;
       flex: 1;
+      align-items: center;
       height: $noticebar-line-height;
       line-height: $noticebar-line-height;
       overflow: hidden;
@@ -77,6 +86,7 @@
       .nut-noticebar-box-wrap-content {
         position: absolute;
         white-space: nowrap;
+        color: $noticebar-color;
 
         &.nut-ellipsis {
           max-width: 100%;

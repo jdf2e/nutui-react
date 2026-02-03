@@ -96,7 +96,7 @@ import { NoticeBar } from '@nutui/nutui-react-taro'
 
 :::
 
-### 纵向模式：自定义右侧图标
+### 纵向模式：自定义右侧图标，动态变更滚动内容
 
 :::demo
 

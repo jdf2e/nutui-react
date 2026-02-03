@@ -94,6 +94,17 @@ import { TextArea } from '@nutui/nutui-react'
 | onFocus | 聚焦時觸發 | `(event) => void` | `-` |
 | onBlur | 失焦時觸發 | `(event) => void` | `-` |
 
+### Ref
+
+通過 ref 可以獲取到 Textarea 實例並調用實例方法。
+
+| 方法名 | 說明 | 參數 |
+| --- | --- | --- |
+| clear | 清除容器中的數據 | `-` |
+| focus | 使容器獲取焦點 | `-` |
+| blur | 使容器失去焦點 | `-` |
+| nativeElement | 獲取當前容器 | `-` |
+
 ## 主題定制
 
 ### 樣式變量

@@ -24,8 +24,8 @@ NutUI-React 可以通過 \[CSS 變數\]（<https://developer.mozilla.org/zh-CN/d
 /* 添加這段樣式后，Primary Button 會變成綠色 */
 :root {
   --nutui-color-primary: green;
-  --nutui-color-primary-stop1: green;
-  --nutui-color-primary-stop2: green;
+  --nutui-color-primary-stop-1: green;
+  --nutui-color-primary-stop-2: green;
 }
 ```
 
@@ -40,12 +40,6 @@ ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
-
-:::
-
-:::demo
-
-<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -93,13 +87,7 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 
 :::demo
 
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-:::demo
-
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -107,7 +95,7 @@ NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

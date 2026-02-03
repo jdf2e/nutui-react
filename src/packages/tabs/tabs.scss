@@ -110,7 +110,9 @@
       }
 
       .nut-tabs-titles-item-line {
+        /* #ifndef dynamic*/
         overflow: unset;
+        /* #endif */
         content: ' ';
         width: $tabs-tab-line-width;
         height: $tabs-tab-line-height;
@@ -118,7 +120,9 @@
       }
 
       .nut-tabs-titles-item-smile {
+        /* #ifndef dynamic*/
         overflow: unset;
+        /* #endif */
         width: 40px;
         height: 20px;
 
@@ -214,10 +218,10 @@
 .nut-tabs-vertical {
   .nut-tabs-ellipsis {
     white-space: break-spaces;
-    /* #ifdef harmony */
+    /* #ifdef harmony dynamic*/
     padding-left: 12px;
     /* #endif */
-    /* #ifndef harmony */
+    /* #ifndef harmony dynamic*/
     padding-left: 6px;
     /* #endif */
     width: 90px;

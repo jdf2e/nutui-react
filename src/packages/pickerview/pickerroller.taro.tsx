@@ -107,7 +107,10 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     onSelect?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
   }
 
+  const isScroll = useRef(false)
+
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    isScroll.current = true
     touch.start(event)
     setStartY(touch.deltaY.current)
     setStartTime(Date.now())
@@ -134,6 +137,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     } else {
       handleMove(move, 'end')
     }
+    isScroll.current = false
     setTimeout(() => {
       touch.reset()
     }, 0)
@@ -159,11 +163,11 @@ const InternalPickerRoller: ForwardRefRenderFunction<
   const getReactHeight = async () => {
     try {
       const placeholder = await getRectInMultiPlatform(placeholderRef.current)
-      const placeholderHeight = placeholder.height || 0
+      const placeholderHeight = placeholder.height || 36
       return placeholderHeight
     } catch (error) {
       console.error('获取高度失败:', error)
-      return 0
+      return 36
     }
   }
 
@@ -179,7 +183,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
       if (currentLineSpacing) {
         lineSpacing.current = parseFloat(currentLineSpacing)
       }
-    } else {
+    } else if (placeholderRef.current) {
       getReactHeight().then((height) => {
         currentLineSpacing = height
         if (currentLineSpacing) {
@@ -245,6 +249,12 @@ const InternalPickerRoller: ForwardRefRenderFunction<
     handleTouchEnd,
   ])
 
+  const onTransitionEnd = () => {
+    if (!isScroll.current) {
+      stopMomentumScroll()
+    }
+  }
+
   return (
     <View className="nut-pickerview-list" ref={pickerRollerRef}>
       <View
@@ -257,7 +267,7 @@ const InternalPickerRoller: ForwardRefRenderFunction<
         id={`${classPrefix}-${uuid}`}
         ref={rollerRef}
         style={threeDimensional ? touchRollerStyle() : touchTiledStyle()}
-        onTransitionEnd={stopMomentumScroll}
+        onTransitionEnd={onTransitionEnd}
       >
         {/* 3D 效果 */}
         {threeDimensional &&

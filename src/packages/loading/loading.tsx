@@ -20,10 +20,7 @@ const defaultProps = {
   direction: 'horizontal',
   lottieProps: {},
 } as WebLoadingProps
-const defaultLottieProps = {
-  loop: true,
-  autoplay: true,
-}
+
 export const Loading = React.forwardRef<LoadingRef, Partial<WebLoadingProps>>(
   (props, ref) => {
     const { className, style, children, direction, icon, ...rest } = {

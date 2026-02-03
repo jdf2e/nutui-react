@@ -428,11 +428,70 @@ async function buildCSS(themeName = '') {
       join(`${dist}/cjs`, cssPath, `${themeDir}/css.js`),
       cssContent.join('\n'),
     )
-    // copy harmonycss
+  }
+}
+
+// 构建样式
+async function buildHarmonyCSS(themeName = '') {
+  const componentScssFiles = await glob(['src/packages/**/*.scss'], {
+    ignore: ['src/packages/**/demo.scss'],
+  })
+
+  const variables = await readFile(
+    join(
+      __dirname,
+      `../src/styles/variables${themeName ? `-${themeName}` : ''}.scss`,
+    ),
+  )
+  for (const file of componentScssFiles) {
+    const scssContent = await readFile(join(__dirname, '../', file), {
+      encoding: 'utf8',
+    })
+    // countup 是特例
+    const base = basename(file)
+    const loadPath = join(
+      __dirname,
+      '../src/packages',
+      base.replace('.scss', ''),
+    )
+    const cssPath = relative('src', loadPath)
+    // 删除 import
+    // 写入 style.scss
+    const atRules = []
+    const postcssRes = await postcss([
+      {
+        postcssPlugin: 'remove-atrule',
+        AtRule(root) {
+          if (root.name === 'import') {
+            if (root.params.indexOf('\'../../styles') > -1) {
+              atRules.push(root.params)
+              root.params = root.params.replace('../../', '../../../../')
+              return
+            }
+          }
+        },
+      },
+    ])
+      .process(scssContent, { from: loadPath, syntax: scss })
+      .then((result) => {
+        return result
+      })
+    const themeDir = themeName ? `style-${themeName}` : 'style'
+    const code = sass.compileString(
+      variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
+      {
+        loadPaths: [loadPath],
+      },
+    )
     if (file.indexOf('countup') === -1) {
-      const harmonyCss = join(__dirname, '../', file.replace('scss', 'harmony.css'))
-      await copy(harmonyCss, join(`${dist}/cjs`, cssPath, 'style/style.harmony.css'))
-      await copy(harmonyCss, join(`${dist}/es`, cssPath, 'style/style.harmony.css'))
+      await dest(
+        join(`${dist}/es`, cssPath, `${themeDir}/style.harmony.css`),
+        code.css,
+      )
+      await dest(
+        join(`${dist}/cjs`, cssPath, `${themeDir}/style.harmony.css`),
+        code.css,
+      )
     }
   }
 }
@@ -497,6 +556,7 @@ console.timeEnd('Copy Styles')
 
 console.time('Build CSS')
 await buildCSS()
+await buildHarmonyCSS()
 console.timeEnd('Build CSS')
 
 console.time('Build jmapp CSS')

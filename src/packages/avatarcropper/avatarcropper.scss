@@ -59,7 +59,9 @@
 
       &.top {
         top: 0;
+        /* #ifndef dynamic*/
         bottom: inherit;
+        /* #endif */
       }
 
       &-flex {

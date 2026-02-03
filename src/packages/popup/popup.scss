@@ -90,11 +90,6 @@
     }
   }
 
-  &-bottom,
-  &-top {
-    max-height: 87%;
-  }
-
   &-bottom {
     bottom: 0;
     left: 0;
@@ -102,6 +97,10 @@
 
     &.nut-popup-round {
       border-radius: $popup-border-radius $popup-border-radius 0 0;
+    }
+
+    &-top {
+      position: absolute;
     }
   }
 

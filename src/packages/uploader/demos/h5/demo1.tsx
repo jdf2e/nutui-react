@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem, Space } from '@nutui/nutui-react'
+import { Uploader, Cell, UploaderFileItem, Space } from '@nutui/nutui-react'
 import { Dongdong } from '@nutui/icons-react'
 
 const Demo1 = () => {
-  const [list, setList] = useState<FileItem[]>([
+  const [list, setList] = useState<UploaderFileItem[]>([
     {
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
       uid: 133,
@@ -23,7 +23,7 @@ const Demo1 = () => {
       url: URL.createObjectURL(file),
     }
   }
-  async function uploadFail(file: File): Promise<FileItem> {
+  async function uploadFail(file: File): Promise<UploaderFileItem> {
     await sleep(2000)
     throw new Error('Fail to upload')
   }

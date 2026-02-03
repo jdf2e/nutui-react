@@ -2,10 +2,10 @@
   position: relative;
   display: flex;
   display: inline-block;
-  /* #ifdef harmony*/
+  /* #ifdef harmony dynamic*/
   width: 80px;
   /* #endif */
-  /* #ifndef harmony*/
+  /* #ifndef harmony dynamic*/
   width: auto;
   /* #endif */
   flex-direction: row;
@@ -55,6 +55,12 @@
     transform: translate(-50%, -50%);
     opacity: 0;
     content: ' ';
+    /* #ifdef dynamic*/
+    pointer-events: none;
+    /* #endif */
+    /* #ifndef dynamic*/
+    pointer-events: auto;
+    /* #endif */
   }
 
   &::after {
@@ -72,7 +78,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* #ifndef harmony */
+    /* #ifndef harmony dynamic*/
     background: initial;
     /* #endif */
     .nut-icon {
@@ -286,6 +292,7 @@
       color: $button-success-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-success-disabled;
       border-color: $button-success-disabled;
@@ -320,6 +327,7 @@
       color: $button-info-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-info-disabled;
       border-color: $button-info-disabled;
@@ -354,6 +362,7 @@
       color: $button-danger-color;
     }
 
+    &-disabled,
     &-solid-disabled {
       background: $button-danger-disabled;
       border-color: $button-danger-disabled;

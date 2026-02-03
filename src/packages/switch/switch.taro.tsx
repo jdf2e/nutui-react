@@ -29,6 +29,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     onChange,
     loading: propLoading,
     onLoadingChange,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -72,7 +73,6 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     if (disabled || loading) return
     if (onChange) {
       loadingIcon && setLoading(true)
-      onChange(!value)
       try {
         await onChange(!value)
       } catch (e) {
@@ -82,7 +82,18 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     setValue(!value)
   }
   return (
-    <View className={classes()} onClick={onClick} style={style} {...rest}>
+    <View
+      className={classes()}
+      onClick={onClick}
+      style={style}
+      ariaRole="switch"
+      // @ts-ignore
+      ariaChecked={value}
+      ariaDisabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      ariaLabel={ariaLabel}
+      {...rest}
+    >
       <View
         className={classNames([
           [`${classPrefix}-button`],

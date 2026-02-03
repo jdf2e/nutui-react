@@ -11,6 +11,8 @@ const Demo1 = () => {
             className: 'dialog-func',
             title: '基础弹框',
             content: '支持函数调用和组件调用两种方式。',
+            confirmBadge: 'ges',
+            cancelBadge: 'ddddd',
           })
         }}
       />

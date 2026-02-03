@@ -86,7 +86,9 @@
 
           .nut-step-title {
             padding-right: 8px;
+            /* #ifndef dynamic*/
             width: fit-content;
+            /* #endif */
           }
         }
       }
@@ -114,7 +116,12 @@
           width: 100%;
 
           &-inner {
+            /* #ifdef dynamic*/
+            display: flex;
+            /* #endif */
+            /* #ifndef dynamic*/
             display: inline-flex;
+            /* #endif */
             height: $steps-base-line-height;
             width: 100%;
             background: $steps-base-line-background;
@@ -181,7 +188,7 @@
 
   // 纵向滚动条
   &-vertical {
-    /* #ifdef harmony*/
+    /* #ifdef harmony dynamic*/
     flex: 1;
     min-width: 0;
     /* #endif */
@@ -232,7 +239,9 @@
         align-items: center;
         height: $steps-vertical-line-height;
         font-size: $steps-vertical-title-font-size;
+        /* #ifndef dynamic*/
         overflow: auto;
+        /* #endif */
         font-weight: 500;
         margin-bottom: $steps-vertical-title-margin-bottom;
       }

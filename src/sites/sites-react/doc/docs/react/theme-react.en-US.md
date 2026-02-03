@@ -28,7 +28,7 @@ Create a new 'SCSS' file 'custom_theme.scss' in your local project.
 ```scss
 // Dominant tone
 $color-primary: #fa2c19;
-$color-primary-end: #fa6419;
+$color-primary-stop-1: #fa6419;
 ...
 ```
 
@@ -62,7 +62,7 @@ export default defineConfig({
             loader: 'sass-loader',
             options: {
                 // Note: The option name is different for different versions of ass-loader. For details, see the corresponding version document of ass-loader
-                data: `@import "./assets/custom_theme.scss";@import "@nutui/nutui/dist/styles/variables.scss";`,
+                data: `@import "./assets/custom_theme.scss";@import "@nutui/nutui-react/dist/styles/variables.scss";`,
             }
         }
     ]

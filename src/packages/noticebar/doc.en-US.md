@@ -88,7 +88,7 @@ Add Right mode to set more custom content.
 
 :::
 
-### Vertical Scroll Custom Style
+### Vertical Scroll Custom Style， Dynamic Content Updates
 
 :::demo
 

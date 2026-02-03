@@ -44,7 +44,24 @@ function Demo5() {
           setCurrent2(e.detail.current)
         }}
         indicator={
-          <View className="page">
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              position: 'absolute',
+              left: '85%',
+              top: pxTransform(120),
+              width: pxTransform(46),
+              height: pxTransform(22),
+              backgroundColor: 'rgba(0, 0, 0, 0.33)',
+              borderRadius: pxTransform(22),
+              textAlign: 'center',
+              fontSize: pxTransform(14),
+              zIndex: 1,
+            }}
+          >
             <Text>
               {current2 + 1}/{list.length}
             </Text>

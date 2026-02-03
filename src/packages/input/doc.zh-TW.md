@@ -126,27 +126,40 @@ import { Input } from '@nutui/nutui-react'
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| defaultValue | 初始默认值 | `string` | `-` |
-| value | 初始默认值 | `string` | `-` |
-| type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | `string` | `text` |
-| name | 组件名字，用于表单提交获取数据 | `string` | `-` |
-| placeholder | 输入框为空时占位符 | `string` | `-` |
-| align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |
+| defaultValue | 初始默認值 | `string` | `-` |
+| value | 初始默認值 | `string` | `-` |
+| type | 輸入框類型，支持原生 `input` 標簽的所有 `type` 屬性，另外還支持 `number` `digit` | `string` | `text` |
+| plain | 輸入框是容器型還是文本型，容器型一般都是帶外邊框的 | `boolean` | `false` |
+| name | 組件名字，用於表單提交獲取數據 | `string` | `-` |
+| placeholder | 輸入框為空時占位符 | `string` | `-` |
+| align | 輸入框內容對齊方式，可選值 `left`、`center`、`right` | `string` | `left` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| readOnly | 是否只读 | `boolean` | `false` |
-| autoFocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
-| maxLength | 限制最长输入字符 | `string` \| `number` | `-` |
+| readOnly | 是否只讀 | `boolean` | `false` |
+| autoFocus | 是否自動獲得焦點，iOS 系統不支持該屬性 | `boolean` | `false` |
+| maxLength | 限製最長輸入字符 | `string` \| `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
-| clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
-| formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |
-| formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
-| onChange | 输入框内容变化时触发 | `(value: string) => void` | `-` |
-| onBlur | 失去焦点后触发 | `(value: string) => void` | `-` |
-| onFocus | 获得焦点后触发 | `(value: string) => void` | `-` |
-| onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
-| onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
+| clearIcon | 清除圖標 Icon <a href="#/icon">可參考 Icon </a> | `ReactNode` | `MaskClose` |
+| inputStyle | 輸入框樣式 | `CSSProperties` | `-` |
+| formatter | 輸入內容格式化函數 | `(val: string) => string` | `-` |
+| formatTrigger | 格式化函數觸發的時機，可選值為 `onChange`、`onBlur` | `string` | `-` |
+| onChange | 輸入框內容變化時觸發 | `(value: string) => void` | `-` |
+| onBlur | 失去焦點後觸發 | `(value: string) => void` | `-` |
+| onFocus | 獲得焦點後觸發 | `(value: string) => void` | `-` |
+| onClear | 點擊清空按鈕時觸發 | `(value: string) => void` | `-` |
+| onClick | 點擊 input 容器觸發 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
+
+### Ref
+
+通過 ref 可以獲取到 Input 實例並調用實例方法。
+
+| 方法名 | 說明 | 參數 |
+| --- | --- | --- |
+| clear | 清除容器中的數據 | `-` |
+| focus | 使容器獲取焦點 | `-` |
+| blur | 使容器失去焦點 | `-` |
+| nativeElement | 獲取當前容器 | `-` |
 
 ## 主题定制
 

@@ -29,7 +29,12 @@
     }
 
     .nut-icon {
+      /* #ifdef dynamic*/
+      display: flex;
+      /* #endif */
+      /* #ifndef dynamic*/
       display: inline-flex;
+      /* #endif */
       align-items: center;
       margin-right: $menu-item-icon-margin;
       flex-shrink: 0;
@@ -56,14 +61,14 @@
 
 .nut-menu-placeholder-element {
   position: fixed;
-  top: -$menu-bar-line-height;
+  top: calc(-1 * var(--menu-bar-line-height));
   left: 0;
   right: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
 
   &.up {
-    bottom: -$menu-bar-line-height;
+    bottom: calc(-1 * var(--menu-bar-line-height));
   }
 }
 

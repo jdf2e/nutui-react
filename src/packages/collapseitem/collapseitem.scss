@@ -38,10 +38,10 @@
       left: 16px;
       bottom: 0;
       border-bottom: $collapse-item-header-border-bottom;
-      /* #ifdef harmony */
+      /* #ifdef harmony dynamic*/
       transform: scale(1, 1);
       /* #endif */
-      /* #ifndef harmony */
+      /* #ifndef harmony dynamic*/
       transform: scale(1, 0.5);
       /* #endif */
     }

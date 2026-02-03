@@ -131,6 +131,7 @@ import { Input } from '@nutui/nutui-react'
 | defaultValue | 初始默认值 | `string` | `-` |
 | value | 初始默认值 | `string` | `-` |
 | type | 输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit` | `string` | `text` |
+| plain | 输入框是容器型还是文本型，容器型一般都是带外边框的 | `boolean` | `false` |
 | name | 组件名字，用于表单提交获取数据 | `string` | `-` |
 | placeholder | 输入框为空时占位符 | `string` | `-` |
 | align | 输入框内容对齐方式，可选值 `left`、`center`、`right` | `string` | `left` |
@@ -140,6 +141,7 @@ import { Input } from '@nutui/nutui-react'
 | maxLength | 限制最长输入字符 | `string` \| `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
+| inputStyle | 输入框样式 | `CSSProperties` | `-` |
 | confirmType | 键盘右下角按钮的文字，仅在type='text'时生效,可选值 send：发送、search：搜索、next：下一个、go：前往、done：完成 | `string` | `done` |
 | formatter | 输入内容格式化函数 | `(val: string) => string` | `-` |
 | formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
@@ -150,6 +152,17 @@ import { Input } from '@nutui/nutui-react'
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 此外还支持以下原生属性：`onCompositionStart` `onCompositionEnd`
+
+### Ref
+
+通过 ref 可以获取到 Input 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| clear | 清除容器中的数据 | `-` |
+| focus | 使容器获取焦点 | `-` |
+| blur | 使容器失去焦点 | `-` |
+| nativeElement | 获取当前容器 | `-` |
 
 ## 主题定制
 

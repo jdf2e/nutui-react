@@ -20,12 +20,14 @@
   }
 
   &-main {
+    /* #ifndef dynamic*/
     display: table;
+    width: max-content;
+    /* #endif */
     overflow-x: auto;
     color: $color-title;
     background-color: $color-background-overlay;
     table-layout: fixed;
-    width: max-content;
     min-width: 100%;
     position: relative;
 
@@ -54,7 +56,9 @@
       background: inherit;
 
       &-tr {
+        /* #ifndef dynamic*/
         display: table-row;
+        /* #endif */
         background: inherit;
 
         &:last-child {
@@ -64,7 +68,9 @@
         }
 
         &-th {
+          /* #ifndef dynamic*/
           display: table-cell;
+          /* #endif */
           padding: $table-cols-padding;
           table-layout: fixed;
           background: inherit;
@@ -82,7 +88,9 @@
         }
 
         &-td {
+          /* #ifndef dynamic*/
           display: table-cell;
+          /* #endif */
           padding: $table-cols-padding;
           table-layout: fixed;
           background: inherit;
@@ -120,11 +128,15 @@
     }
 
     &-head {
+      /* #ifndef dynamic*/
       display: table-header-group;
+      /* #endif */
     }
 
     &-body {
+      /* #ifndef dynamic*/
       display: table-row-group;
+      /* #endif */
     }
   }
 

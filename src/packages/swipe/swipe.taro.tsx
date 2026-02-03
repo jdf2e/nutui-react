@@ -1,15 +1,16 @@
 import React, {
   forwardRef,
   MouseEvent,
+  useCallback,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
-import { nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
@@ -45,8 +46,43 @@ export const Swipe = forwardRef<
   const leftId = `swipe-left-${uid}`
   const rightId = `swipe-right-${uid}`
 
+  const { children, className, style } = { ...defaultProps, ...props }
+
+  const root: any = useRef<HTMLDivElement>()
+  const opened = useRef(false)
+  const lockClick = useRef(false)
+  const startOffset = useRef(0)
+
+  const [state, setState] = useState({
+    offset: 0,
+    dragging: false,
+  })
+
+  const [actionWidth, updateState] = useRefState({
+    left: 0,
+    right: 0,
+  })
+  const setActionWidth = useCallback(
+    (fn: any) => {
+      const res = fn()
+      if (res.left !== undefined) {
+        updateState({
+          ...actionWidth.current,
+          left: res.left,
+        })
+      }
+      if (res.right !== undefined) {
+        updateState({
+          ...actionWidth.current,
+          right: res.right,
+        })
+      }
+    },
+    [actionWidth, updateState]
+  )
+
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
-  useReady(() => {
+  useLayoutEffect(() => {
     const getWidth = async () => {
       if (leftWrapper.current) {
         const leftRect = await getRectInMultiPlatform(
@@ -64,40 +100,10 @@ export const Swipe = forwardRef<
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
     }
-    nextTick(() => getWidth())
-  })
 
-  const { children, className, style } = { ...defaultProps, ...props }
+    getWidth()
+  }, [leftId, rightId, setActionWidth])
 
-  const root: any = useRef<HTMLDivElement>()
-  const opened = useRef(false)
-  const lockClick = useRef(false)
-  const startOffset = useRef(0)
-
-  const [state, setState] = useState({
-    offset: 0,
-    dragging: false,
-  })
-
-  const [actionWidth, updateState] = useRefState({
-    left: 0,
-    right: 0,
-  })
-  const setActionWidth = (fn: any) => {
-    const res = fn()
-    if (res.left !== undefined) {
-      updateState({
-        ...actionWidth.current,
-        left: res.left,
-      })
-    }
-    if (res.right !== undefined) {
-      updateState({
-        ...actionWidth.current,
-        right: res.right,
-      })
-    }
-  }
   const wrapperStyle = {
     transform: `translate(${state.offset}${!harmony() ? 'px' : ''}, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',

@@ -8,7 +8,7 @@
   align-items: center;
   width: $dialog-width;
   min-width: $dialog-min-width;
-  /* #ifndef harmony*/
+  /* #ifndef harmony dynamic*/
   max-height: 67%;
   /* #endif */
   min-height: $dialog-min-height;
@@ -18,10 +18,12 @@
   &-outer {
     position: fixed;
     max-height: 100%;
-    background-color: $white;
+    background-color: $dialog-background;
+    /* #ifndef dynamic*/
     transition:
       transform 0.2s,
       -webkit-transform 0.2s;
+    /* #endif */
     -webkit-overflow-scrolling: touch;
     top: 50%;
     left: 50%;
@@ -83,6 +85,7 @@
     font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
     color: $color-title;
+    margin-bottom: $dialog-title-margin-bottom;
     @include oneline-ellipsis();
   }
 
@@ -120,25 +123,81 @@
         display: flex;
         justify-content: center;
         margin-top: $dialog-vertical-footer-ok-margin-top;
+        background: transparent;
       }
     }
 
     .nut-button {
       min-width: $dialog-footer-button-min-width;
+      border-radius: $dialog-footer-button-border;
+      padding: var(--nutui-button-large-padding, 0 12px);
     }
 
     &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
       background: $dialog-footer-cancel-bg;
+      color: $button-default-color;
+      border-color: var(--nutui-button-default-border-color, transparent);
+      .nut-button-children {
+        color: $button-default-color;
+      }
+    }
+
+    &-ok-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+
+      .nut-dialog-footer-ok-badge {
+        position: absolute;
+        right: 0;
+        top: $dialog-footer-badge-top;
+        display: flex;
+        align-items: center;
+        height: $dialog-footer-badge-height;
+        padding: $dialog-footer-badge-padding;
+        background: $dialog-footer-badge-bg-ok;
+        border-radius: $dialog-footer-badge-border-radius;
+        font-size: $dialog-footer-badge-fontsize;
+        color: $dialog-footer-badge-color-ok;
+      }
     }
 
     &-ok {
       max-width: $dialog-footer-ok-max-width;
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-medium;
+      .nut-button-children {
+        font-weight: $font-weight-medium;
+      }
     }
+
     &-block {
       &.nut-button {
         min-width: 100%;
+      }
+    }
+
+    &-cancel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-around;
+
+      .nut-dialog-footer-cancel-badge {
+        position: absolute;
+        right: $dialog-footer-cancel-margin-right;
+        top: $dialog-footer-badge-top;
+        display: flex;
+        align-items: center;
+        height: $dialog-footer-badge-height;
+        padding: $dialog-footer-badge-padding;
+        background: $dialog-footer-badge-bg-cancel;
+        border-radius: $dialog-footer-badge-border-radius;
+        font-size: $dialog-footer-badge-fontsize;
+        color: $dialog-footer-badge-color-cancel;
       }
     }
   }

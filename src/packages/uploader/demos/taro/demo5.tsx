@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Uploader, Cell, FileItem } from '@nutui/nutui-react-taro'
+import { Uploader, Cell, UploaderFileItem } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
-  const [list, setList] = useState<FileItem[]>([])
+  const [list, setList] = useState<UploaderFileItem[]>([])
   const beforeUpload = async (files: File[]) => {
     const allowedTypes = ['image/png']
     const filteredFiles = Array.from(files).filter((file) =>

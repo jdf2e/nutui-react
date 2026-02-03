@@ -19,6 +19,7 @@ import {
   PreviewVideoOption,
   WebImagePreviewProps,
 } from '@/types'
+import { mergeProps } from '@/utils'
 
 interface Store {
   scale: number
@@ -42,7 +43,7 @@ const defaultProps = {
   closeIconPosition: 'top-right',
   onChange: () => {},
   onClose: () => {},
-} as WebImagePreviewProps
+} as unknown as WebImagePreviewProps
 export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
   props
 ) => {
@@ -63,7 +64,8 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
     closeIconPosition,
     onClose,
     onChange,
-  } = { ...defaultProps, ...props }
+    ...rest
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'nut-imagepreview'
   const ref = useRef<HTMLDivElement | null>(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
@@ -218,17 +220,15 @@ export const ImagePreview: FunctionComponent<Partial<WebImagePreviewProps>> = (
       >
         {showPop && (
           <Swiper
-            autoPlay={!!duration}
-            duration={duration}
+            autoplay={!!duration}
             className={`${classPrefix}-swiper`}
-            loop
             style={{
               '--nutui-indicator-color': indicatorColor,
             }}
-            direction="horizontal"
             onChange={(page) => slideChangeEnd(page)}
             defaultValue={innerNo > maxNo ? maxNo - 1 : innerNo - 1}
             indicator={indicator}
+            {...rest}
           >
             {[
               ...videos.map((item) => ({ type: 'video', data: item })),
