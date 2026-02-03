@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
@@ -130,50 +130,53 @@ export const CalendarViewModeItem = React.forwardRef<
   const getMonthsRef = () => {
     return monthsRef.current as HTMLDivElement
   }
-  const requestAniFrameFunc = (viewMode: string) => {
-    switch (viewMode) {
-      case 'month':
-        {
-          const lastItem = panelDate.months[panelDate.months.length - 1]
-          const containerHeight = lastItem.cssHeight + lastItem.scrollTop
-          const currentIndex = panelDate.months.findIndex(
-            (item) => item.currYear === true
-          )
-          requestAniFrame(() => {
-            // 初始化 日历位置
-            if (monthsRef && monthsPanel && viewAreaRef) {
-              viewHeight = getMonthsRef().clientHeight
-              getMonthsPanel().style.height = `${containerHeight}px`
-              const currTop = panelDate.months[currentIndex]?.scrollTop || 0
-              getMonthsRef().scrollTop = currTop
-              setScrollTop(currTop)
-            }
-          })
-        }
-        break
-      case 'quarter':
-        {
-          const lastItem = panelDate.quarters[panelDate.quarters.length - 1]
-          const containerHeight = lastItem.cssHeight + lastItem.scrollTop
-          const currentIndex = panelDate.quarters.findIndex(
-            (item) => item.currYear === true
-          )
-          requestAniFrame(() => {
-            // 初始化 日历位置
-            if (monthsRef && monthsPanel && viewAreaRef) {
-              viewHeight = getMonthsRef().clientHeight
-              getMonthsPanel().style.height = `${containerHeight}px`
-              const currTop = panelDate.quarters[currentIndex]?.scrollTop || 0
-              getMonthsRef().scrollTop = currTop
-              setScrollTop(currTop)
-            }
-          })
-        }
-        break
-      default:
-        break
-    }
-  }
+  const requestAniFrameFunc = useCallback(
+    (viewMode: string) => {
+      switch (viewMode) {
+        case 'month':
+          {
+            const lastItem = panelDate.months[panelDate.months.length - 1]
+            const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+            const currentIndex = panelDate.months.findIndex(
+              (item) => item.currYear === true
+            )
+            requestAniFrame(() => {
+              // 初始化 日历位置
+              if (monthsRef && monthsPanel && viewAreaRef) {
+                viewHeight = getMonthsRef().clientHeight
+                getMonthsPanel().style.height = `${containerHeight}px`
+                const currTop = panelDate.months[currentIndex]?.scrollTop || 0
+                getMonthsRef().scrollTop = currTop
+                setScrollTop(currTop)
+              }
+            })
+          }
+          break
+        case 'quarter':
+          {
+            const lastItem = panelDate.quarters[panelDate.quarters.length - 1]
+            const containerHeight = lastItem.cssHeight + lastItem.scrollTop
+            const currentIndex = panelDate.quarters.findIndex(
+              (item) => item.currYear === true
+            )
+            requestAniFrame(() => {
+              // 初始化 日历位置
+              if (monthsRef && monthsPanel && viewAreaRef) {
+                viewHeight = getMonthsRef().clientHeight
+                getMonthsPanel().style.height = `${containerHeight}px`
+                const currTop = panelDate.quarters[currentIndex]?.scrollTop || 0
+                getMonthsRef().scrollTop = currTop
+                setScrollTop(currTop)
+              }
+            })
+          }
+          break
+        default:
+          break
+      }
+    },
+    [panelDate]
+  )
   const isCurrYear = (year: number) => {
     return (innerValue as string).split('-')[0] === `${year}`
   }
@@ -301,7 +304,7 @@ export const CalendarViewModeItem = React.forwardRef<
 
   useEffect(() => {
     requestAniFrameFunc(viewMode)
-  }, [panelDate])
+  }, [panelDate, viewMode, requestAniFrameFunc])
 
   useEffect(() => {
     initData()
@@ -373,7 +376,7 @@ export const CalendarViewModeItem = React.forwardRef<
           getClasses(item)
         )}
         onClick={() => handleItemClick(viewMode, item)}
-        key={index}
+        key={`${viewMode}-${index}`}
       >
         <View className={`${classPrefix}-item-${item.type}`}>
           {renderDay ? renderDay(item) : `${item[viewMode]}${units[viewMode]}`}
@@ -386,7 +389,7 @@ export const CalendarViewModeItem = React.forwardRef<
     return (
       <>
         {panelDate[`${viewMode}s`].map((item: any, key: number) => (
-          <View className={`${classPrefix}-panel`} key={key}>
+          <View className={`${classPrefix}-panel`} key={`${item.year}-${key}`}>
             <View className={`${classPrefix}-panel-title`}>{item.year}</View>
             <View className={`${classPrefix}-content`}>
               {item[`${viewMode}s`].map((item: any, i: number) =>
