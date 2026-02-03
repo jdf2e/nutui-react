@@ -134,6 +134,8 @@ export default class Notification extends React.PureComponent<
             style={{
               ...contentStyle,
             }}
+            role="alert"
+            aria-label={(title ?? '') + (content ?? '')}
           >
             {this.renderIcon()}
             {title && <div className={`${classPrefix}-title`}>{title}</div>}
