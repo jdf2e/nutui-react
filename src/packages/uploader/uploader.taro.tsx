@@ -153,7 +153,7 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if (['WEAPP', 'JD', 'WEB', 'ASCF'].includes(env) && chooseMedia) {
+    if (['WEAPP', 'JD', 'ASCF'].includes(env) && chooseMedia) {
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
         /** 文件类型 */
