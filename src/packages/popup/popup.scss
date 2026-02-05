@@ -81,6 +81,8 @@
   &-center {
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     min-height: 10%;
     max-width: 295px;
     transform: translate(-50%, -50%);
@@ -93,6 +95,8 @@
   &-bottom {
     bottom: 0;
     left: 0;
+    right: auto;
+    top: auto;
     width: 100%;
 
     &.nut-popup-round {
@@ -107,6 +111,8 @@
   &-right {
     top: 0;
     right: 0;
+    left: auto;
+    bottom: auto;
     width: 100px;
     height: 100%;
 
@@ -118,6 +124,8 @@
   &-left {
     top: 0;
     left: 0;
+    right: auto;
+    bottom: auto;
     width: 100px;
     height: 100%;
 
@@ -129,6 +137,8 @@
   &-top {
     top: 0;
     left: 0;
+    right: auto;
+    bottom: auto;
     width: 100%;
 
     &.nut-popup-round {
