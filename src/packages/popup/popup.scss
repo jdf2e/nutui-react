@@ -270,7 +270,7 @@
       animation-duration: $popup-animation-duration;
     }
 
-    &-right-exit {
+    &-right-exit-active {
       animation-fill-mode: both;
       animation-name: popup-slide-right-exit;
       animation-duration: $popup-animation-duration;
@@ -286,7 +286,7 @@
       }
     }
 
-    @keyframes slide-bottom-exit {
+    @keyframes popup-slide-bottom-exit {
       from {
         transform: translate3d(0, 0%, 0);
       }
@@ -297,15 +297,15 @@
 
     &-bottom-enter-active,
     &-bottom-appear-active {
-      transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
       animation-fill-mode: both;
       animation-name: popup-slide-bottom-enter;
       animation-duration: $popup-animation-duration;
     }
 
-    &-bottom-exit {
+    &-bottom-exit-active {
       animation-fill-mode: both;
-      animation-name: slide-bottom-exit;
+      animation-name: popup-slide-bottom-exit;
       animation-duration: $popup-animation-duration;
     }
 
@@ -330,14 +330,13 @@
 
     &-left-enter-active,
     &-left-appear-active {
-      transform: translate(0, 0);
+      transform: translate3d(0, 0, 0);
       animation-fill-mode: both;
       animation-name: popup-slide-left-enter;
       animation-duration: $popup-animation-duration;
     }
 
-    &-left-exit-active,
-    &-left-exit-done {
+    &-left-exit-active {
       animation-fill-mode: both;
       animation-name: popup-slide-left-exit;
       animation-duration: $popup-animation-duration;
