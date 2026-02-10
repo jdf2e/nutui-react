@@ -5,6 +5,7 @@ import React, {
   PropsWithChildren,
   useRef,
   useEffect,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import Taro, {
@@ -119,6 +120,7 @@ export interface UploaderProps extends BasicComponent {
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
+  enablePasteUpload?: boolean
 }
 
 const defaultProps = {
@@ -152,6 +154,7 @@ const defaultProps = {
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
+  enablePasteUpload: false,
 } as UploaderProps
 
 const InternalUploader: ForwardRefRenderFunction<
@@ -202,6 +205,7 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeUpload,
     beforeXhrUpload,
     beforeDelete,
+    enablePasteUpload,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -418,7 +422,7 @@ const InternalUploader: ForwardRefRenderFunction<
         for (const [key, value] of Object.entries(data)) {
           formData.append(key, value as any)
         }
-        formData.append(name, file.originalFileObj as Blob)
+        formData.append(name, (file.originalFileObj as Blob) ?? file)
         fileItem.name = file.originalFileObj?.name
         fileItem.type = file.originalFileObj?.type
         fileItem.formData = formData
@@ -428,8 +432,22 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      executeUpload(fileItem, index)
-      results.push(fileItem)
+      if (preview && file.type?.includes('image')) {
+        const reader = new FileReader()
+        reader.onload = (event) => {
+          fileItem.url = event.target?.result as string
+          fileItem.path = event.target?.result as string
+          fileItem.name = (file as unknown as Blob).name
+          executeUpload(fileItem, index)
+          results.push(fileItem)
+          setFileList([...fileList, ...results])
+        }
+
+        reader.readAsDataURL(file.originalFileObj ?? (file as unknown as Blob))
+      } else {
+        executeUpload(fileItem, index)
+        results.push(fileItem)
+      }
     })
     setFileList([...fileList, ...results])
   }
@@ -505,6 +523,52 @@ const InternalUploader: ForwardRefRenderFunction<
   const handleItemClick = (file: FileItem, index: number) => {
     onFileItemClick?.(file, index)
   }
+
+  const handlePaste = useCallback(
+    (event: ClipboardEvent) => {
+      if (!enablePasteUpload || disabled) return
+
+      const clipboardData = event.clipboardData ?? (window as any).clipboardData
+      const items = clipboardData?.items ?? []
+      const files: TFileType[] = []
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        if (item.kind === 'file' && item.type.startsWith('image/')) {
+          const file = item.getAsFile()
+          if (file) {
+            files.push({
+              originalFileObj: file,
+              size: file.size,
+              path: '',
+              tempFilePath: '',
+              type: file.type,
+              fileType: file.type,
+            })
+          }
+        }
+      }
+
+      if (files.length) {
+        readFile(files)
+      }
+    },
+    [enablePasteUpload, disabled, beforeUpload, filterFiles, readFile, onChange]
+  )
+
+  useEffect(() => {
+    fileListRef.current = fileList
+
+    if (enablePasteUpload) {
+      document.addEventListener('paste', handlePaste)
+    }
+
+    return () => {
+      if (enablePasteUpload) {
+        document.removeEventListener('paste', handlePaste)
+      }
+    }
+  }, [fileList, enablePasteUpload, handlePaste])
 
   return (
     <div className={classes} {...restProps}>

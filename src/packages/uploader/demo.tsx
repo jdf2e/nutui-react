@@ -15,6 +15,7 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
 
 const UploaderDemo = () => {
   const [translated] = useTranslate({
@@ -32,6 +33,7 @@ const UploaderDemo = () => {
       manualExecution: '选中文件后，通过按钮手动执行上传',
       disabled: '禁用状态',
       customDeleteIcon: '自定义删除icon',
+      enablePasteUpload: '启用粘贴上传',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -47,6 +49,7 @@ const UploaderDemo = () => {
       manualExecution: '選取檔後，通過按鈕手動執行上傳',
       disabled: '禁用狀態',
       customDeleteIcon: '自定義刪除icon',
+      enablePasteUpload: '啟用粘貼上傳',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -63,6 +66,7 @@ const UploaderDemo = () => {
         'After selecting Chinese, manually perform the upload via the button',
       disabled: 'Disabled state',
       customDeleteIcon: 'Custom DeleteIcon',
+      enablePasteUpload: 'Enable paste upload',
     },
   })
 
@@ -97,6 +101,8 @@ const UploaderDemo = () => {
         <Demo13 />
         <h2>{translated.customDeleteIcon}</h2>
         <Demo14 />
+        <h2>{translated.enablePasteUpload}</h2>
+        <Demo15 />
       </div>
     </>
   )

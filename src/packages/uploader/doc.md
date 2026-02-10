@@ -137,6 +137,16 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
+### 浏览器中粘贴图片上传
+
+在浏览器中可以通过 Ctrl+V（Mac 上是 Cmd+V） 或右键粘贴图片进行上传。
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Uploader
 
 ### Props
@@ -193,6 +203,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | url | 文件路径 | `-` |
 | type | 文件类型 | `image/jpeg` |
 | formData | 上传所需的data | `new FormData()` |
+| enablePasteUpload | 是否支持粘贴上传，仅在浏览器端支持，在其他设备端，即使开启也不生效。 | `false` |
 
 ### Methods
 

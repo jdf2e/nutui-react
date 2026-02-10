@@ -286,3 +286,46 @@ test('preview component', () => {
   )
   expect(clickFunc).toBeCalled()
 })
+
+test('should handle paste upload', async () => {
+  // arrange
+  const onChange = vi.fn()
+
+  const { container } = render(
+    <Uploader onChange={onChange} enablePasteUpload autoUpload={false} />
+  )
+
+  const file = new File(['image data'], 'pasted-image.png', {
+    type: 'image/png',
+  })
+
+  const pasteEvent = new ClipboardEvent('paste', {
+    bubbles: true,
+    cancelable: true,
+    clipboardData: new DataTransfer(),
+  })
+
+  pasteEvent.clipboardData?.items.add(file)
+
+  // act
+  await import('@testing-library/react').then(({ act: testAct }) =>
+    testAct(async () => {
+      container.firstChild?.dispatchEvent(pasteEvent)
+    })
+  )
+
+  // assert
+  expect(onChange).toHaveBeenCalled()
+
+  const lastCallArgs = onChange.mock.calls[onChange.mock.calls.length - 1][0]
+
+  expect(lastCallArgs).toEqual(
+    expect.arrayContaining([
+      expect.objectContaining({
+        name: 'pasted-image.png',
+        type: 'image/png',
+        status: 'ready',
+      }),
+    ])
+  )
+})
