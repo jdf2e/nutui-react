@@ -10,7 +10,7 @@ overrides:
   sass: 1.77.6
   '@tarojs/api': 4.0.12
   '@tarojs/components': 4.0.12
-  '@nutui/icons-react-taro': ^3.0.2-cpp.1
+  '@nutui/icons-react-taro': 3.0.2-cpp.3.beta.5
 
 pnpmfileChecksum: sha256-vdRRyq/guBwoPc79ya+CONxRFdBJFDCi90LApD+jwA8=
 
@@ -25,8 +25,8 @@ importers:
         specifier: ^3.0.2-beta.5
         version: 3.0.2-beta.5
       '@nutui/icons-react-taro':
-        specifier: ^3.0.2-cpp.1
-        version: 3.0.2-cpp.1
+        specifier: 3.0.2-cpp.3.beta.5
+        version: 3.0.2-cpp.3.beta.5
       '@nutui/jdesign-icons-react-taro':
         specifier: 1.0.6-beta.2
         version: 1.0.6-beta.2
@@ -2333,8 +2333,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==, tarball: https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz}
     engines: {node: '>= 8'}
 
-  '@nutui/icons-react-taro@3.0.2-cpp.1':
-    resolution: {integrity: sha512-EX7L7X+gc4c9X5dLmNVUkGvwUx3/ptaW/5SIBEZLffD3F3DXipK6PfUkOqAY6aF5s/e84D0+yQlg/BIBz0xLjA==, tarball: https://registry.npmjs.org/@nutui/icons-react-taro/-/icons-react-taro-3.0.2-cpp.1.tgz}
+  '@nutui/icons-react-taro@3.0.2-cpp.3.beta.5':
+    resolution: {integrity: sha512-umi1JIO1uZejm26cu2r9NrplTE9TxekVFNmLBfDm9VT7fb4SvPvDI/kRmeF8ctznRGWYn4tjAgQh84225YgrJw==, tarball: https://registry.npmjs.org/@nutui/icons-react-taro/-/icons-react-taro-3.0.2-cpp.3.beta.5.tgz}
 
   '@nutui/icons-react@1.0.5':
     resolution: {integrity: sha512-0TYl3Fk+sVz95DKqn/7isYAvaK5YGnaBwMMib4rqYLoqi9GGFwgU9rp2hYXu/X5IYdWgshj0xiuGMK75/vUYbQ==, tarball: https://registry.npmjs.org/@nutui/icons-react/-/icons-react-1.0.5.tgz}
@@ -14928,7 +14928,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@nutui/icons-react-taro@3.0.2-cpp.1': {}
+  '@nutui/icons-react-taro@3.0.2-cpp.3.beta.5': {}
 
   '@nutui/icons-react@1.0.5': {}
 

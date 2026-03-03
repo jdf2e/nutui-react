@@ -117,7 +117,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-popup-border-radius | popup's border radius | `24px` |
 | \--nutui-popup-icon-size | popup's title icon size | `18px` |
-| \--nutui-popup-title-padding | popup's title padding | `16px` |
+| \--nutui-popup-title-padding | popup's title padding | `11px` |
 | \--nutui-popup-title-font-size | popup's title font size | `18px` |
 | \--nutui-popup-description-font-size | popup's subtitle/description font size | `10px` |
 | \--nutui-popup-title-height | popup's title height | `50px` |

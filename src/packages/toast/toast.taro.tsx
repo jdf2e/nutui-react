@@ -147,9 +147,10 @@ export const Toast: FunctionComponent<
     'nut-toast-rtl': rtl,
   })
 
-  const styles = harmony()
-    ? { left: '50%', transform: 'translate(-50%, -50%)' }
-    : null
+  const styles =
+    harmony() || td()
+      ? { left: '50%', transform: 'translate(-50%, -50%)' }
+      : null
 
   return (
     <>
@@ -179,6 +180,7 @@ export const Toast: FunctionComponent<
               )}
               style={{ ...styles, ...contentStyle }}
               ariaRole="alert"
+              ariaLabel={title + content}
             >
               {renderIcon()}
               {title && <Text className={`${classPrefix}-title`}>{title}</Text>}

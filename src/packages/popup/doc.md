@@ -117,7 +117,7 @@ import { Popup } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-popup-border-radius | 弹框的圆角值 | `24px` |
 | \--nutui-popup-icon-size | 弹框关闭按钮的大小 | `18px` |
-| \--nutui-popup-title-padding | 标题栏的padding值 | `16px` |
+| \--nutui-popup-title-padding | 标题栏的padding值 | `11px` |
 | \--nutui-popup-title-font-size | 标题栏的字号 | `18px` |
 | \--nutui-popup-description-font-size | 子标题栏的字号 | `10px` |
 | \--nutui-popup-title-height | 标题栏的高度 | `50px` |
