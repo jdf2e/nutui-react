@@ -155,7 +155,7 @@ const InternalQuickEnter: ForwardRefRenderFunction<
         onClose={onCancelEvent}
       >
         <SafeArea position="top" />
-        {innerVisible ? <>{renderQuickEnterElement()} </> : null}
+        {renderQuickEnterElement()}
       </Popup>
     </>
   )
