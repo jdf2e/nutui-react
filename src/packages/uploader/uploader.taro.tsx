@@ -27,6 +27,7 @@ import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { FileItem } from './file-item'
 import { usePropsValue } from '@/utils/use-props-value'
+import { chooseFile } from './chooseFile'
 import { Preview } from '@/packages/uploader/preview.taro'
 
 interface sizeType {
@@ -245,13 +246,13 @@ const InternalUploader: ForwardRefRenderFunction<
       return
     }
     if (Taro.getEnv() === 'WEB') {
-      const el = document.getElementById('taroChooseImage')
+      const el = document.getElementById('taroChooseFile')
       if (el) {
         el?.setAttribute('accept', accept)
       } else {
         const obj = document.createElement('input')
         obj.setAttribute('type', 'file')
-        obj.setAttribute('id', 'taroChooseImage')
+        obj.setAttribute('id', 'taroChooseFile')
         obj.setAttribute('accept', accept)
         obj.setAttribute(
           'style',
@@ -259,8 +260,17 @@ const InternalUploader: ForwardRefRenderFunction<
         )
         document.body.appendChild(obj)
       }
-    }
-    if (['WEAPP', 'JD'].includes(getEnv()) && chooseMedia) {
+      chooseFile({
+        count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
+        // 可以指定是原图还是压缩图，默认二者都有
+        sizeType,
+        sourceType,
+        success: onChangeImage,
+        fail: (res: any) => {
+          onFailure && onFailure(res)
+        },
+      })
+    } else if (['WEAPP', 'JD'].includes(getEnv()) && chooseMedia) {
       // 其余端全部使用 chooseImage API
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
