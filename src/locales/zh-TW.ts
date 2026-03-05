@@ -142,5 +142,8 @@ const zhCN: BaseLang = {
     errorCanvasTips: '當前環境不支持Canvas',
   },
   mask: '蒙層',
+  quickenter: {
+    title: '快捷入口',
+  },
 }
 export default zhCN

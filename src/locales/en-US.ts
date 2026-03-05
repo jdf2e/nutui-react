@@ -141,5 +141,8 @@ const enUS: BaseLang = {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
   mask: 'Mask',
+  quickenter: {
+    title: 'Quick Enter',
+  },
 }
 export default enUS

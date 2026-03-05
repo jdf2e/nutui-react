@@ -1,0 +1,112 @@
+@import '../popup/popup.scss';
+
+.nut-quickenter {
+  width: 100%;
+  max-height: $quickenter-max-height; // Limit height for scrolling
+  background: $quickenter-bg-color;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  &-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 16px 0;
+    box-sizing: border-box;
+  }
+
+  &-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    color: $quickenter-title-color;
+    font-size: $quickenter-title-font-size;
+  }
+
+  &-close-btn {
+    color: $quickenter-close-icon-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg,
+    .nut-icon {
+      width: $quickenter-close-icon-size;
+      height: $quickenter-close-icon-size;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    padding: 10px 28px;
+    overflow-y: hidden; // Default: no scrolling
+    box-sizing: border-box;
+
+    &-scrollable {
+      overflow-y: auto; // Only scroll when > 8 items
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 56px;
+    padding: 0 0 12px 0; // Reduced from 16px to ensure 2 rows fit in 256px
+    box-sizing: border-box;
+    cursor: pointer;
+
+    // Calculate gap for 4 items per row: (100% - 4 * 56px) / 3
+    margin-right: calc((100% - 224px) / 3);
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+
+    &-icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: $quickenter-item-icon-bg-color;
+      color: $quickenter-item-icon-color;
+      margin-bottom: 8px;
+      flex-shrink: 0;
+
+      svg,
+      .nut-icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    &-title {
+      font-size: $quickenter-item-title-font-size;
+      color: $quickenter-item-title-color;
+      text-align: center;
+      line-height: 1.4;
+      // Allow multi-line if text is long, preventing truncation
+      white-space: normal;
+      word-wrap: break-word;
+      width: 72px; // Allow text to be slightly wider than icon
+      margin-left: -8px; // Center 72px title over 56px icon
+      margin-right: -8px;
+    }
+  }
+}
