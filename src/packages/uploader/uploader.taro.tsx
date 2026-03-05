@@ -120,6 +120,7 @@ export interface UploaderProps extends BasicComponent {
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
+  needchooseFile?: boolean
 }
 
 const defaultProps = {
@@ -203,6 +204,7 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeUpload,
     beforeXhrUpload,
     beforeDelete,
+    needchooseFile,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -245,7 +247,7 @@ const InternalUploader: ForwardRefRenderFunction<
     if (disabled) {
       return
     }
-    if (Taro.getEnv() === 'WEB') {
+    if (Taro.getEnv() === 'WEB' && needchooseFile) {
       const el = document.getElementById('taroChooseFile')
       if (el) {
         el?.setAttribute('accept', accept)
@@ -270,7 +272,7 @@ const InternalUploader: ForwardRefRenderFunction<
           onFailure && onFailure(res)
         },
       })
-    } else if (['WEAPP', 'JD'].includes(getEnv()) && chooseMedia) {
+    } else if (['WEAPP', 'JD', 'WEB'].includes(getEnv()) && chooseMedia) {
       // 其余端全部使用 chooseImage API
       chooseMedia({
         count: multiple ? (maxCount as number) * 1 - fileList.length : 1,
