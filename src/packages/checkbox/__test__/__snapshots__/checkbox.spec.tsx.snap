@@ -12,11 +12,11 @@ exports[`should match snapshot 1`] = `
         aria-labelledby="Checked"
         class="nut-icon nut-icon-Checked nut-checkbox-icon nut-checkbox-icon-checked"
         role="presentation"
-        viewBox="0 0 16 16"
+        viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m4.325-10.117-5.318 5.362-3.332-3.36a.25.25 0 0 1 0-.351l.701-.707a.25.25 0 0 1 .355 0L7.007 9.12l4.262-4.297a.25.25 0 0 1 .355 0l.701.707a.25.25 0 0 1 0 .352"
+          d="M512 1024A512 512 0 1 0 512 0a512 512 0 0 0 0 1024m276.8-647.49L448.45 719.68 235.2 504.64a16 16 0 0 1 0-22.46l44.86-45.25a16 16 0 0 1 22.72 0l145.67 146.75 272.77-275.01a16 16 0 0 1 22.72 0l44.86 45.25a16 16 0 0 1 0 22.53z"
           fill="currentColor"
         />
       </svg>
