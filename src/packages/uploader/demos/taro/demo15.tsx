@@ -7,7 +7,7 @@ const Demo15 = () => {
     <Uploader
       previewType="list"
       url={uploadUrl}
-      needchooseFile
+      needChooseFile
       accept=".doc,.docx,.pdf,.jpg,.jpeg,.png,.bmp"
     />
   )

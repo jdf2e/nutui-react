@@ -120,7 +120,7 @@ export interface UploaderProps extends BasicComponent {
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
-  needchooseFile?: boolean
+  needChooseFile?: boolean
 }
 
 const defaultProps = {
@@ -204,7 +204,7 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeUpload,
     beforeXhrUpload,
     beforeDelete,
-    needchooseFile,
+    needChooseFile,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -247,7 +247,7 @@ const InternalUploader: ForwardRefRenderFunction<
     if (disabled) {
       return
     }
-    if (Taro.getEnv() === 'WEB' && needchooseFile) {
+    if (Taro.getEnv() === 'WEB' && needChooseFile) {
       const el = document.getElementById('taroChooseFile')
       if (el) {
         el?.setAttribute('accept', accept)
