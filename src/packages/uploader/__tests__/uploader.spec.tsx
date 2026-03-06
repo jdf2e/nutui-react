@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Uploader } from '../uploader'
@@ -275,9 +275,12 @@ test('simulates single file upload', async () => {
   })
   const input: any = container.querySelector('input')
 
-  await fireEvent.change(input, { target: { files: [file] } })
-
-  expect(handleUpload).toHaveBeenCalledTimes(1)
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [file] } })
+  })
+  await waitFor(() => {
+    expect(handleUpload).toHaveBeenCalledTimes(1)
+  })
   expect(handleUpload).toHaveBeenCalledWith(file)
 })
 test('simulates single file upload fail', async () => {
@@ -292,9 +295,12 @@ test('simulates single file upload fail', async () => {
   })
   const input: any = container.querySelector('input')
 
-  await fireEvent.change(input, { target: { files: [file] } })
-
-  expect(handleUpload).toHaveBeenCalledTimes(1)
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [file] } })
+  })
+  await waitFor(() => {
+    expect(handleUpload).toHaveBeenCalledTimes(1)
+  })
   expect(handleUpload).toHaveBeenCalledWith(file)
   await expect(handleUpload()).rejects.toThrow('Upload failed')
 })
@@ -321,9 +327,12 @@ test('simulates multiple file upload', async () => {
   const files = [file1, file2, file3]
   const input: any = container.querySelector('input')
 
-  await fireEvent.change(input, { target: { files } })
-
-  expect(handleUpload).toHaveBeenCalledTimes(2)
+  await act(async () => {
+    fireEvent.change(input, { target: { files } })
+  })
+  await waitFor(() => {
+    expect(handleUpload).toHaveBeenCalledTimes(2)
+  })
   expect(handleOverCount).toHaveBeenCalledTimes(1)
   expect(handleOverCount).toHaveBeenCalledWith(3)
 })
@@ -350,9 +359,13 @@ test('simulates file upload when autoupload is false', async () => {
   })
   const files = [file1, file2, file3]
   const input: any = container.querySelector('input')
-  await fireEvent.change(input, { target: { files } })
+  await act(async () => {
+    fireEvent.change(input, { target: { files } })
+  })
+  await waitFor(() => {
+    expect(handleOverCount).toHaveBeenCalledTimes(1)
+  })
   expect(handleUpload).toHaveBeenCalledTimes(0)
-  expect(handleOverCount).toHaveBeenCalledTimes(1)
   expect(handleOverCount).toHaveBeenCalledWith(3)
 })
 test('should render button', () => {
@@ -521,18 +534,30 @@ test('should handle beforeUpload function', async () => {
   const input: any = container.querySelector('input')
 
   // 测试单个 PNG 文件上传
-  await fireEvent.change(input, { target: { files: [pngFile] } })
-  expect(beforeUpload).toHaveBeenCalledTimes(1)
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [pngFile] } })
+  })
+  await waitFor(() => {
+    expect(beforeUpload).toHaveBeenCalledTimes(1)
+  })
   expect(handleUpload).toHaveBeenCalledWith(pngFile)
 
   // 测试单个 JPG 文件被过滤
-  await fireEvent.change(input, { target: { files: [jpgFile] } })
-  expect(beforeUpload).toHaveBeenCalledTimes(2)
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [jpgFile] } })
+  })
+  await waitFor(() => {
+    expect(beforeUpload).toHaveBeenCalledTimes(2)
+  })
   expect(handleUpload).not.toHaveBeenCalledWith(jpgFile)
 
   // 测试多文件上传时的过滤
-  await fireEvent.change(input, { target: { files: [pngFile, jpgFile] } })
-  expect(beforeUpload).toHaveBeenCalledTimes(3)
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [pngFile, jpgFile] } })
+  })
+  await waitFor(() => {
+    expect(beforeUpload).toHaveBeenCalledTimes(3)
+  })
   expect(handleUpload).toHaveBeenCalledTimes(2) // 只有 PNG 文件被上传
 })
 
@@ -552,8 +577,11 @@ test('should handle beforeUpload returning empty array', async () => {
   })
 
   const input: any = container.querySelector('input')
-  await fireEvent.change(input, { target: { files: [file] } })
-
-  expect(beforeUpload).toHaveBeenCalled()
+  await act(async () => {
+    fireEvent.change(input, { target: { files: [file] } })
+  })
+  await waitFor(() => {
+    expect(beforeUpload).toHaveBeenCalled()
+  })
   expect(handleUpload).not.toHaveBeenCalled()
 })
