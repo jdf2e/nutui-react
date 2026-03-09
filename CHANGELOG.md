@@ -1,3 +1,13 @@
+# v2.7.15
+
+`2026-03-09`
+
+- 🏡 chore: 升级版本
+- :sparkles: feat: 调整button圆角、dialog内边间距 (#3321)
+- :bug: fix: uploader上传组件taro版本h5端支持文件选择 (#3424)
+- :bug: fix(uploader): 修复H5上传 (#3421)
+- :bug: fix(form): setFieldValue与setFieldsValue 重复触发notifyWatch (#3228)
+
 # v2.7.14
 
 `2025-04-30`
