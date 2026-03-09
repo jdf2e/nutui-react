@@ -18,6 +18,7 @@ import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
+import Demo15 from './demos/taro/demo15'
 
 const UploaderDemo = () => {
   const [translated] = useTranslate({
@@ -35,6 +36,7 @@ const UploaderDemo = () => {
       manualExecution: '选中文件后，通过按钮手动执行上传',
       disabled: '禁用状态',
       customDeleteIcon: '自定义删除icon',
+      customFileType: '自定义文件类型（仅H5端生效）',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -50,6 +52,7 @@ const UploaderDemo = () => {
       manualExecution: '選取檔後，通過按鈕手動執行上傳',
       disabled: '禁用狀態',
       customDeleteIcon: '自定義刪除icon',
+      customFileType: '自定義文件類型（僅H5端生效）',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -67,6 +70,7 @@ const UploaderDemo = () => {
         'After selecting Chinese, manually perform the upload via the button',
       disabled: 'Disabled state',
       customDeleteIcon: 'Custom DeleteIcon',
+      customFileType: 'Custom file type (H5 only)',
     },
   })
 
@@ -102,6 +106,8 @@ const UploaderDemo = () => {
         <Demo13 />
         <h2>{translated.customDeleteIcon}</h2>
         <Demo14 />
+        <h2>{translated.customFileType}</h2>
+        <Demo15 />
       </div>
     </>
   )

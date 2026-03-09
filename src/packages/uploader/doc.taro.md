@@ -136,6 +136,14 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 :::
 
+### 自定义文件类型（仅 H5 端生效）
+
+::::demo
+
+<CodeBlock src='taro/demo15.tsx'></CodeBlock>
+
+::::
+
 ## Uploader
 
 ### Props
@@ -162,6 +170,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | maxDuration | 拍摄视频最长拍摄时间，单位秒。时间范围为 3s 至 60s 之间。不限制相册。 | `number` | `10` |
 | headers | 设置上传的请求头部 | `object` | `{}` |
 | data | 附加上传的信息 formData | `object` | `{}` |
+| accept | H5 端 `input` 的 `accept` 属性，用于限制选择的文件类型（仅 H5 端生效） | `string` | `*` |
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `ReactNode` | `-` |
 | deleteIcon | 删除区域的图标名称 | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `string` | `&quot;&quot;` |
@@ -169,6 +178,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | timeout | 超时时间，单位为毫秒 | `number` \| `string` | `1000 * 30` |
+| needChooseFile | 是否在 H5 端使用原生 `input` 选择文件（配合 `accept` 自定义文件类型，仅 H5 端生效） | `boolean` | `false` |
 | beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
