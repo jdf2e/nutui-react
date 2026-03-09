@@ -1,3 +1,64 @@
+# v3.0.19
+
+`2026-03-06`
+
+- :sparkles: feat: 合并近期跨原生改动点，增加了无障碍，部分组件增加了新功能。 (#3420)
+- :sparkles: feat: 给 searchbar 暴露 input 更多属性 (#3416)
+- :sparkles: feat(toast): add functionality to make toast persistent until manually cleared (#3410)
+- :sparkles: feat(avatar): support image fill mode in taro avatar component (#3405)
+- :sparkles: feat(language): 添加日语语言包 (#3384)
+- :sparkles: feat(ascf): 支持ASCF鸿蒙元服务 (#3402)
+- :sparkles: feat(theme): 升级8月份主题的微调，修订dialog 样式的鸿蒙适配等 (#3351)
+- :sparkles: feat(Popup): 新增弹层可上下滑动 (#3340)
+- :bug: fix(tag): 修订样式 (#3425)
+- :bug: fix: 修订导入方式,兼容五端处理 (#3419)
+- :bug: fix(countup): 修改千分位展示异常问题 (#3417)
+- :bug: fix(datepicker): 修复在使用 DatePicker 时页面会短暂出现 0 的问题 (#3399)
+- :bug: fix: fix showCount props is invalid in alipay (#3366)
+- :bug: fix: 更正正黑字体 (#3363)
+- :bug: fix: 兼容nextjs ssr，初始状态class=""元素会闪一下 (#3358)
+- :bug: fix: dialog.taro中defaultProps使用ts断言确认类型 (#3347)
+- :bug: fix(uploader): 处理非图片文件类型问题 (#3343)
+- :bug: fix(input): 兼容h5和小程序获取原生input标签 (#3341)
+- :bug: fix(range): taro环境异步渲染useReady不会触发 (#3297)
+- :bug: fix(swiper): duration属性透传 (#3337)
+- zap: perf(col): 使用hooks优化 (#3361)
+
+# v3.0.18
+
+`2026-03-06`
+
+- 🏡 chore(release): v3.0.18
+- 🏡 chore: 升级icon库 (#3330)
+- 🏡 chore: 发布taro下的样式按需插件
+- 📖 docs: 更新介绍部分内容 (#3324)
+- :sparkles: feat: 合并近期跨原生改动点，增加了无障碍，部分组件增加了新功能。 (#3420)
+- :sparkles: feat: 给 searchbar 暴露 input 更多属性 (#3416)
+- :sparkles: feat(toast): add functionality to make toast persistent until manually cleared (#3410)
+- :sparkles: feat(avatar): support image fill mode in taro avatar component (#3405)
+- :sparkles: feat(language): 添加日语语言包 (#3384)
+- :sparkles: feat(ascf): 支持ASCF鸿蒙元服务 (#3402)
+- :sparkles: feat(theme): 升级8月份主题的微调，修订dialog 样式的鸿蒙适配等 (#3351)
+- :sparkles: feat(Popup): 新增弹层可上下滑动 (#3340)
+- :sparkles: feat: Ellipsis校验越界不走缓存配置 (#3329)
+- :sparkles: feat(price): 支持自定义颜色&数据原样输出 (#3328)
+- :sparkles: feat(notify): 支持promise调用notice (#3319)
+- :bug: fix(tag): 修订样式 (#3425)
+- :bug: fix: 修订导入方式,兼容五端处理 (#3419)
+- :bug: fix(countup): 修改千分位展示异常问题 (#3417)
+- :bug: fix(datepicker): 修复在使用 DatePicker 时页面会短暂出现 0 的问题 (#3399)
+- :bug: fix: fix showCount props is invalid in alipay (#3366)
+- :bug: fix: 更正正黑字体 (#3363)
+- :bug: fix: 兼容nextjs ssr，初始状态class=""元素会闪一下 (#3358)
+- :bug: fix: dialog.taro中defaultProps使用ts断言确认类型 (#3347)
+- :bug: fix(uploader): 处理非图片文件类型问题 (#3343)
+- :bug: fix(input): 兼容h5和小程序获取原生input标签 (#3341)
+- :bug: fix(range): taro环境异步渲染useReady不会触发 (#3297)
+- :bug: fix(swiper): duration属性透传 (#3337)
+- :bug: fix(noticebar): 适配鸿蒙样式修复 (#3332)
+- :bug: Fix icons svg (#3331)
+- zap: perf(col): 使用hooks优化 (#3361)
+
 # v3.0.18
 
 `2025-08-15`
