@@ -90,11 +90,11 @@ const Demo = () => {
 export default Demo
 ```
 
-## API
+## QuickEnter
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否可见 | `boolean` | `false` |
 | title | 标题 | `ReactNode` | `快捷入口` |

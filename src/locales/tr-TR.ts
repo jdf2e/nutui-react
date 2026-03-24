@@ -150,5 +150,8 @@ const trTR: BaseLang = {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
   mask: 'Maske',
+  quickenter: {
+    title: 'Hızlı Giriş',
+  },
 }
 export default trTR

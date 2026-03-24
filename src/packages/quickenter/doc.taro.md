@@ -138,7 +138,7 @@ const Demo = () => {
 export default Demo
 ```
 
-## API
+## QuickEnter
 
 ### Props
 

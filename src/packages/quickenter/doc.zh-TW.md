@@ -1,126 +1,139 @@
-# Picker 選擇器
+在這裡輸入要轉換的內容# QuickEnter 快捷入口
 
-提供多個選項集合供用戶選擇其中一項。
+## 介紹
+
+快捷入口組件，底部彈出的快捷導航列表。
 
 ## 引入
 
 ```tsx
-import { Picker } from '@nutui/nutui-react'
+import { QuickEnter } from '@nutui/nutui-react'
 ```
 
-## 示例代碼
+## 代碼演示
 
 ### 基礎用法
 
-:::demo
+```tsx
+import React, { useState } from 'react'
+import { QuickEnter, Cell, Toast } from '@nutui/nutui-react'
+import {
+  Message,
+  Home,
+  Search,
+  Cart,
+  Edit,
+  Shop,
+  Del,
+} from '@nutui/icons-react'
 
-<CodeBlock src='h5/demo1.tsx'></CodeBlock>
+const Demo = () => {
+  const [visible, setVisible] = useState(false)
+  const options = [
+    { title: '消息', icon: <Message /> },
+    { title: '首頁', icon: <Home /> },
+    { title: '蒐索', icon: <Search /> },
+    { title: '購物車', icon: <Cart /> },
+    { title: '功能反饋', icon: <Edit /> },
+    { title: '我的常購', icon: <Shop /> },
+    { title: '訂單回收站', icon: <Del /> },
+  ]
 
-:::
+  const onChange = (item: any) => {
+    Toast.show(`Clicked: ${item.title}`)
+  }
 
-### 默認選中項
+  return (
+    <>
+      <Cell title="點擊查看快捷入口" onClick={() => setVisible(true)} />
+      <QuickEnter
+        visible={visible}
+        options={options}
+        onClose={() => setVisible(false)}
+        onChange={onChange}
+      />
+    </>
+  )
+}
+export default Demo
+```
 
-:::demo
+### 自定義關閉圖標
 
-<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+```tsx
+import React, { useState } from 'react'
+import { QuickEnter, Cell } from '@nutui/nutui-react'
+import { Message, Home, Search, Cart, ArrowUp } from '@nutui/icons-react'
 
-:::
+const Demo = () => {
+  const [visible, setVisible] = useState(false)
+  const options = [
+    { title: '消息', icon: <Message />, badge: 8 },
+    { title: '首頁', icon: <Home /> },
+    { title: '蒐索', icon: <Search /> },
+    { title: '購物車', icon: <Cart /> },
+  ]
 
-### 受控
+  return (
+    <>
+      <Cell title="自定義關閉圖標" onClick={() => setVisible(true)} />
+      <QuickEnter
+        visible={visible}
+        options={options}
+        style={{ '--nutui-quickenter-bg-color': '#fff' }}
+        closeIcon={<ArrowUp width={12} height={12} />}
+        onClose={() => setVisible(false)}
+      />
+    </>
+  )
+}
+export default Demo
+```
 
-:::demo
-
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
-
-:::
-
-### 多列樣式
-
-:::demo
-
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-### 平鋪展示
-
-通過設置 `threeDimensional` 取消 3D 展示效果，並且通過設置 `duration` 可以控製快速滾動的時長。
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 多級聯動
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### 異步獲取
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-### 自定義主題
-
-:::demo
-
-<CodeBlock src='h5/demo8.tsx'></CodeBlock>
-
-:::
-
-## Picker
+## QuickEnter
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 默認值 |
+| 屬性 | 説明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
-| title | 設置標題 | `string` | `-` |
-| options | 列表數據 | `Array` | `[]` |
-| value | 選中值，受控 | `Array` | `[]` |
-| defaultValue | 默認選中 | `Array` | `[]` |
-| threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
-| duration | 快速滑動時慣性滾動的時長，單位 ms | `string` \| `number` | `1000` |
-| popupProps | 透傳popup屬性 | `object` | `-` |
-| closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
-| onConfirm | 點擊確認按鈕時候回調 | `(options, value) => void` | `-` |
-| onChange | 每一列值變更時調用 | `(options, value) => void` | `-` |
-| onCancel | 點擊取消按鈕時觸發 | `() => void` | `-` |
-| onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |
-| afterClose | 聯動時，關閉時回調 | `(options, value) => void` | `-` |
+| title | 標題 | `ReactNode` | `快捷入口` |
+| options | 選項列表 | `QuickEnterOption[]` | `[]` |
+| closeIcon | 自定義關閉圖標 | `ReactNode` | `-` |
+| popupProps | 透傳給 Popup 組件的屬性 | `PopupProps` | `{}` |
+| closeOnOverlayClick | 是否在點擊遮罩層後關閉 | `boolean` | `true` |
 
-### options 數據結構
+### Events
 
-| 屬性 | 說明 | 類型 | 默認值 |
+| 事件名 | 説明 | 回調參數 |
+| --- | --- | --- |
+| onClose | 關閉時觸髮 | `-` |
+| onChange | 點擊選項時觸髮 | `item: QuickEnterOption, index: number` |
+
+### QuickEnterOption 數據結構
+
+| 參數 | 説明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| text | 選項的文字內容 | `string` \| `number` | `-` |
-| value | 選項對應的值，且唯一 | `string` \| `number` | `-` |
-| children | 用於級聯選項 | `Array` | `-` |
+| title | 選項標題 | `string` | `-` |
+| icon | 選項圖標 | `ReactNode` | `-` |
+| type | 選項類型 | `string` | `-` |
+| url | 跳轉鏈接 | `string` | `-` |
 
 ## 主題定製
 
 ### 樣式變量
 
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，詳情請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 說明 | 默認值 |
-| --- | --- | --- |
-| \--nutui-picker-title-cancel-color | 取消文案的色值 | `$text-color` |
-| \--nutui-picker-title-cancel-font-size | 取消字號 | `14px` |
-| \--nutui-picker-title-ok-color | 確認文案的色值 | `$color-primary` |
-| \--nutui-picker-title-ok-font-size | 確認字號 | `14px` |
-| \--nutui-picker-list-height | 面板高度 | `252px` |
-| \--nutui-picker-item-height | 面板每一條數據高度 | `36px` |
-| \--nutui-picker-item-text-color | 面板每一條數據的字色 | `$color-title` |
-| \--nutui-picker-item-text-font-size | 面板每條數據字號 | `14px` |
-| \--nutui-picker-item-active-line-border | 面板當前選中的border值 | `1px solid #d8d8d8` |
-
-<Contribution name="Picker" />
+| 名稱 | 默認值 |
+| --- | --- |
+| --nutui-quickenter-bg-color | `$f5f5f5` |
+| --nutui-quickenter-max-height | `256px` |
+| --nutui-quickenter-title-font-size | `$font-size-base` |
+| --nutui-quickenter-title-color | `$color-title` |
+| --nutui-quickenter-item-title-font-size | `$font-size-s` |
+| --nutui-quickenter-item-title-color | `$color-title` |
+| --nutui-quickenter-item-icon-bg-color | `$white` |
+| --nutui-quickenter-item-icon-color | `$color-title` |
+| --nutui-quickenter-close-icon-size | `12px` |
+| --nutui-quickenter-close-icon-color | `#808080` |
