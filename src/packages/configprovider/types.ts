@@ -871,6 +871,8 @@ export type NutCSSVariables =
   | 'nutuiQuickenterItemIconColor'
   | 'nutuiQuickenterCloseIconSize'
   | 'nutuiQuickenterCloseIconColor'
+  | 'nutuiQuickenterBoxShadow'
+  | 'nutuiQuickenterBackdropFilter'
   | 'nutuiSafeAreaMultiple'
   | 'nutuiBlack3'
   | 'nutuiBlack1'

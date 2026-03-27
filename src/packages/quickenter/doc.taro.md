@@ -185,3 +185,4 @@ export default Demo
 | --nutui-quickenter-item-icon-color | `$color-title` |
 | --nutui-quickenter-close-icon-size | `12px` |
 | --nutui-quickenter-close-icon-color | `#808080` |
+| --nutui-quickenter-box-shadow | `0px 8px 16px rgba(141, 153, 167, 0.2), 0px -0.5px 0px rgba(0, 0, 0, 0.05) inset` |

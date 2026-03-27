@@ -9,6 +9,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  box-shadow: $quickenter-box-shadow;
+  // backdrop-filter: $quickenter-backdrop-filter;
 
   &-control {
     display: flex;
