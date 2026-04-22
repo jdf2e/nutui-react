@@ -11,6 +11,8 @@ const zhCN: BaseLang = {
   edit: '編輯',
   reset: '重置',
   close: '關閉',
+  back: '返回',
+  clear: '清除',
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試',

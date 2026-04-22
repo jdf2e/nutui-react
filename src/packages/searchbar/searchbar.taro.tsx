@@ -34,7 +34,7 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search />,
+  leftIn: <Search ariaHidden />,
   tag: false,
 } as TaroSearchBarProps
 export const SearchBar: FunctionComponent<
@@ -236,12 +236,12 @@ export const SearchBar: FunctionComponent<
             onClick={(e) => onItemClick?.(item, e)}
           >
             {item}
-            <Close />
+            <Close ariaLabel={locale.close} />
           </View>
         ))}
       </View>
     )
-  }, [value, onItemClick, innerTag])
+  }, [value, onItemClick, innerTag, locale.close])
 
   const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
@@ -255,11 +255,15 @@ export const SearchBar: FunctionComponent<
   const renderLeft = useCallback(() => {
     if (!backable && !left) return null
     return (
-      <View className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft /> : left}
+      <View
+        className={`${classPrefix}-left`}
+        ariaRole={backable ? 'button' : undefined}
+        ariaLabel={backable ? locale.back : undefined}
+      >
+        {backable ? <ArrowLeft ariaHidden /> : left}
       </View>
     )
-  }, [backable, left])
+  }, [backable, left, locale])
 
   const renderRightIn = useCallback(() => {
     if (!rightIn) return null
@@ -289,12 +293,13 @@ export const SearchBar: FunctionComponent<
           visibility: `${!innerTag && value && clearable ? 'visible' : 'hidden'}`,
         }}
         onClick={clearaVal}
-        aria-label="清除"
+        ariaRole="button"
+        ariaLabel={locale.clear}
       >
-        <MaskClose />
+        <MaskClose ariaHidden />
       </View>
     )
-  }, [value, clearable, clearaVal, innerTag])
+  }, [value, clearable, clearaVal, innerTag, locale])
 
   const onConfirm = () => {
     onSearch && onSearch(value as string)

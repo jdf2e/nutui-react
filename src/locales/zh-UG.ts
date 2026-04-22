@@ -11,6 +11,8 @@ const zhUG: BaseLang = {
   edit: 'يحرر',
   reset: 'إعادة ضبط',
   close: 'تاقاش',
+  back: 'قايتىش',
+  clear: 'تاقاش',
   video: {
     errorTip: 'فىلىمنى قويۇش مەغلۇپ بولدى',
     clickRetry: 'قايتا سىناش',

@@ -11,6 +11,8 @@ const idID: BaseLang = {
   edit: 'Sunting',
   reset: 'Mengatur Ulang',
   close: 'Tutup',
+  back: 'Kembali',
+  clear: 'Bersihkan',
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',

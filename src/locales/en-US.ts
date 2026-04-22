@@ -11,6 +11,8 @@ const enUS: BaseLang = {
   edit: 'Edit',
   reset: 'Reset',
   close: 'Close',
+  back: 'Back',
+  clear: 'Clear',
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',

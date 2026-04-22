@@ -9,6 +9,8 @@ export interface BaseLang {
   edit: string
   reset: string
   close: string
+  back: string
+  clear: string
   video: {
     errorTip: string
     clickRetry: string

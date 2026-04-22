@@ -10,6 +10,9 @@ const jaJP: BaseLang = {
   select: '選択してください',
   edit: '編集',
   reset: 'リセット',
+  close: '閉じる',
+  back: '戻る',
+  clear: 'クリア',
   video: {
     errorTip: '動画の読み込みに失敗しました',
     clickRetry: 'クリックして再試行',

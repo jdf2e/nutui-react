@@ -11,6 +11,8 @@ const trTR: BaseLang = {
   edit: 'düzenlemek',
   reset: 'sıfırlama',
   close: 'Kapat',
+  back: 'Geri',
+  clear: 'Temizle',
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
