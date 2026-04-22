@@ -243,6 +243,6 @@
     "sass": "1.77.6",
     "@tarojs/api": "4.0.12",
     "@tarojs/components": "4.0.12",
-    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.5"
+    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.9"
   }
 }
