@@ -33,7 +33,6 @@ export const Progress: FunctionComponent<
     fontSize,
     activeMode,
     duration,
-    ariaLabel,
     onActiveEnd,
     ...rest
   } = {
@@ -135,7 +134,6 @@ export const Progress: FunctionComponent<
       ref={progressRef}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>

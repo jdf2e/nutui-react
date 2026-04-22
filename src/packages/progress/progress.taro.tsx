@@ -43,7 +43,6 @@ export const Progress: FunctionComponent<
     active,
     activeMode,
     duration,
-    ariaLabel,
     onActiveEnd,
     ...rest
   } = {
@@ -222,7 +221,6 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>
