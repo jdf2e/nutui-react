@@ -185,18 +185,36 @@ export const Input = forwardRef(
             composingRef.current = false
             onCompositionEnd?.(e)
           }}
+          aria-label={
+            props['aria-label'] ||
+            // eslint-disable-next-line no-nested-ternary
+            (value
+              ? undefined
+              : placeholder === undefined
+                ? locale.placeholder
+                : placeholder)
+          }
         />
         {clearable && !readOnly && active && value.length > 0 && (
           <span
             style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            tabIndex={0}
             onClick={() => {
               if (!disabled) {
                 setValue('')
                 onClear?.('')
               }
             }}
+            role="button"
+            aria-label={(locale as any).clear || '清除'}
           >
-            {clearIcon || <MaskClose className="nut-input-clear" />}
+            {clearIcon ? (
+              React.cloneElement(clearIcon as any, {
+                'aria-hidden': 'true',
+              })
+            ) : (
+              <MaskClose aria-hidden="true" className="nut-input-clear" />
+            )}
           </span>
         )}
       </div>
