@@ -7,6 +7,8 @@ const Demo1 = () => {
     <Cell align="flex-end">
       <Avatar
         size="large"
+        alt="我是头像"
+        aria-label="我是头像"
         src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
         style={styles}
       />
