@@ -23,6 +23,7 @@ export interface BaseQuickEnter<POPUP_PROPS = any> extends BaseProps {
   popupProps?: POPUP_PROPS
   closeOnOverlayClick?: boolean
   closeIcon?: ReactNode
+  safeAreaInsetTop?: boolean
   onClose?: () => void
   onChange?: (item: QuickEnterOption, index: number) => void
   children?: ReactNode

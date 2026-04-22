@@ -2,7 +2,6 @@ import React, { ForwardRefRenderFunction, useImperativeHandle } from 'react'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
 import Popup from '@/packages/popup/index'
-import SafeArea from '@/packages/safearea/index'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
 import {
@@ -19,6 +18,7 @@ const defaultProps = {
   options: [],
   visible: false,
   closeOnOverlayClick: true,
+  safeAreaInsetTop: true,
 } as unknown as WebQuickEnterProps
 
 const InternalQuickEnter: ForwardRefRenderFunction<
@@ -37,13 +37,16 @@ const InternalQuickEnter: ForwardRefRenderFunction<
     onClose,
     onChange,
     closeIcon,
+    safeAreaInsetTop,
     ...rest
   } = { ...defaultProps, ...props }
   const { locale } = useConfig()
   const mergedTitle = title || locale.quickenter.title
 
   const classPrefix = 'nut-quickenter'
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, className, {
+    'safe-area-top': safeAreaInsetTop,
+  })
 
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
     value: props.visible,
@@ -152,7 +155,6 @@ const InternalQuickEnter: ForwardRefRenderFunction<
         }}
         onClose={onCancelEvent}
       >
-        <SafeArea position="top" />
         {renderQuickEnterElement()}
       </Popup>
     </>

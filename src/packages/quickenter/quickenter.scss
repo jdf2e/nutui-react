@@ -2,7 +2,8 @@
 
 .nut-quickenter {
   width: 100%;
-  max-height: $quickenter-max-height; // Limit height for scrolling
+  /* 限制弹层最大高度，包含安全区 */
+  max-height: calc(#{$quickenter-max-height} + env(safe-area-inset-top, 0));
   background: $quickenter-bg-color;
   border-radius: 0 0 12px 12px;
   overflow: hidden;
@@ -11,6 +12,13 @@
   flex-direction: column;
   box-shadow: $quickenter-box-shadow;
   // backdrop-filter: $quickenter-backdrop-filter;
+
+  &.safe-area-top {
+    /* 使用 env fallback，确保旧浏览器返回 0 */
+    padding-top: calc(
+      env(safe-area-inset-top, 0) * var(--nutui-safe-area-multiple, 1)
+    );
+  }
 
   &-control {
     display: flex;
@@ -46,7 +54,7 @@
   &-content {
     flex: 1;
     padding: 10px 28px;
-    overflow-y: hidden; // Default: no scrolling
+    overflow-y: hidden; // 始终可滚动，防止内容被遮挡
     box-sizing: border-box;
 
     &-scrollable {
