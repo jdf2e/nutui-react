@@ -85,7 +85,7 @@ const InternalQuickEnter: ForwardRefRenderFunction<
             onCancelEvent()
           }}
         >
-          {closeIcon || <Close />}
+          {closeIcon || <Close aria-label={locale.close} />}
         </div>
       </div>
     )
@@ -104,8 +104,9 @@ const InternalQuickEnter: ForwardRefRenderFunction<
               key={index}
               className={`${classPrefix}-item`}
               onClick={() => handleItemClick(item, index)}
+              aria-label={`${item.title} ${item.badge ?? item.badgeProps?.value}`}
             >
-              <div className={`${classPrefix}-item-icon`}>
+              <div className={`${classPrefix}-item-icon`} aria-hidden="true">
                 <Badge
                   {...item.badgeProps}
                   value={item.badge ?? item.badgeProps?.value}
@@ -113,7 +114,9 @@ const InternalQuickEnter: ForwardRefRenderFunction<
                   {item.icon}
                 </Badge>
               </div>
-              <div className={`${classPrefix}-item-title`}>{item.title}</div>
+              <div className={`${classPrefix}-item-title`} aria-hidden="true">
+                {item.title}
+              </div>
             </div>
           ))}
         </div>
