@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider'
+import { useRtl } from '@/packages/configprovider'
 import { WebProgressProps } from '@/types'
 
 const defaultProps = {

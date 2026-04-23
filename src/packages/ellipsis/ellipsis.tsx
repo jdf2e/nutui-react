@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useIsomorphicLayoutEffect } from '@/hooks/use-isomprphic-layout-effect'
-import { useRtl } from '../configprovider'
+import { useRtl } from '@/packages/configprovider'
 import { WebEllipsisProps } from '@/types'
 
 type EllipsisValue = {

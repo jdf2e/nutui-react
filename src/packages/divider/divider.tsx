@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider'
+import { useRtl } from '@/packages/configprovider'
 
 export type DividerContentPosition = 'left' | 'center' | 'right'
 export type DividerDirection = 'horizontal' | 'vertical'
