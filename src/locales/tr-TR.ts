@@ -11,6 +11,11 @@ const trTR: BaseLang = {
   edit: 'düzenlemek',
   reset: 'sıfırlama',
   close: 'Kapat',
+  back: 'Geri',
+  clear: 'Temizle',
+  image: {
+    errorTip: 'Resim yüklenemedi',
+  },
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
@@ -150,5 +155,8 @@ const trTR: BaseLang = {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
   mask: 'Maske',
+  quickenter: {
+    title: 'Hızlı Giriş',
+  },
 }
 export default trTR

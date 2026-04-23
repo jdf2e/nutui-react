@@ -11,6 +11,11 @@ const zhUG: BaseLang = {
   edit: 'يحرر',
   reset: 'إعادة ضبط',
   close: 'تاقاش',
+  back: 'قايتىش',
+  clear: 'تاقاش',
+  image: {
+    errorTip: 'رەسىم يۈكلەش مەغلۇپ بولدى',
+  },
   video: {
     errorTip: 'فىلىمنى قويۇش مەغلۇپ بولدى',
     clickRetry: 'قايتا سىناش',
@@ -140,5 +145,8 @@ const zhUG: BaseLang = {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },
   mask: 'mask',
+  quickenter: {
+    title: 'تېز كىرگۈزۈش',
+  },
 }
 export default zhUG

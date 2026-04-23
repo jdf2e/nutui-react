@@ -15,6 +15,7 @@ import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroImageProps } from '@/types'
+import { useConfig } from '@/packages/configprovider/index.taro'
 
 const defaultProps = {
   src: '',
@@ -39,6 +40,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
+  const { locale } = useConfig()
 
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : pxTransform(+value)
@@ -80,8 +82,11 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <View className={`${classPrefix}-error`}>
-          <ImageError />
+        <View
+          className={`${classPrefix}-error`}
+          ariaLabel={locale.image.errorTip || ''}
+        >
+          <ImageError ariaHidden />
         </View>
       )
     }
@@ -89,7 +94,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
       return <View className={`${classPrefix}-error`}>{error}</View>
     }
     return null
-  }, [error, isError, innerLoading])
+  }, [error, isError, innerLoading, locale])
 
   const renderLoading = useCallback(() => {
     if (!loading) return null
@@ -127,6 +132,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
         )}
         style={imgStyle}
         src={src}
+        ariaHidden={isError}
         onLoad={(e) => handleLoad(e)}
         onError={(e) => handleError(e)}
       />

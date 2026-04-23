@@ -7,7 +7,7 @@ import {
   getRectInMultiPlatformWithoutCache,
 } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider/index.taro'
+import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroEllipsisProps } from '@/types'
 
 type EllipsisValue = {

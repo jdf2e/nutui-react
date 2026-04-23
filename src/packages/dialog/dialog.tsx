@@ -217,7 +217,12 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
-    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
+    const systemIcon =
+      closeIconPosition !== 'bottom' ? (
+        <Close aria-hidden="true" />
+      ) : (
+        <Failure aria-hidden="true" />
+      )
     return (
       <div
         className={closeClasses}
@@ -226,7 +231,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
         tabIndex={0}
         aria-label={locale.close}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
+        {React.isValidElement(closeIcon) ? closeIcon : systemIcon}
       </div>
     )
   }

@@ -12,7 +12,7 @@ const Demo13 = () => {
         padding: '0 10px',
       }}
     >
-      <Tips color="var(--nutui-gray-7)" />
+      <Tips aria-hidden="true" color="var(--nutui-gray-7)" />
       <Input
         placeholder="请输入短信验证码"
         style={{ '--nutui-input-padding': '10px' }}

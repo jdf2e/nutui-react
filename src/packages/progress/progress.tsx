@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider'
+import { useRtl } from '@/packages/configprovider'
 import { WebProgressProps } from '@/types'
 
 const defaultProps = {
@@ -33,7 +33,6 @@ export const Progress: FunctionComponent<
     fontSize,
     activeMode,
     duration,
-    ariaLabel,
     onActiveEnd,
     ...rest
   } = {
@@ -135,7 +134,6 @@ export const Progress: FunctionComponent<
       ref={progressRef}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
       {...rest}
     >
       <div className={`${classPrefix}-outer`} style={stylesOuter}>

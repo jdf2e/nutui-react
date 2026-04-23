@@ -11,6 +11,11 @@ const idID: BaseLang = {
   edit: 'Sunting',
   reset: 'Mengatur Ulang',
   close: 'Tutup',
+  back: 'Kembali',
+  clear: 'Bersihkan',
+  image: {
+    errorTip: 'Gambar gagal dimuat',
+  },
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
@@ -142,5 +147,8 @@ const idID: BaseLang = {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
   mask: 'Masker',
+  quickenter: {
+    title: 'Masuk Cepat',
+  },
 }
 export default idID

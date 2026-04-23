@@ -26,11 +26,13 @@ const Demo2 = () => {
         <NavBar
           back={
             <>
-              <ArrowLeft />
+              <ArrowLeft aria-hidden="true" />
               返回
             </>
           }
-          right={<Share onClick={(e) => Toast.show('icon')} />}
+          right={
+            <Share aria-label="分享" onClick={(e) => Toast.show('icon')} />
+          }
           onBackClick={(e) => Toast.show('返回')}
         >
           页面标题
@@ -43,8 +45,8 @@ const Demo2 = () => {
         </NavBar>
         <NavBar
           right={<span onClick={(e) => Toast.show('清空')}>清空</span>}
-          left={<Close />}
-          back={<ArrowLeft />}
+          left={<Close aria-label="关闭" />}
+          back={<ArrowLeft aria-label="返回" />}
           onBackClick={(e) => Toast.show('返回')}
         >
           <div
@@ -61,11 +63,11 @@ const Demo2 = () => {
           </div>
         </NavBar>
         <NavBar
-          back={<ArrowLeft />}
+          back={<ArrowLeft aria-label="返回" />}
           right={
             <>
               <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-              <More onClick={(e) => Toast.show('icon')} />
+              <More aria-label="更多" onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show('返回')}

@@ -42,7 +42,7 @@ export const ResultPage: FunctionComponent<
   }
   return (
     <div className={cls} style={style}>
-      <div className={`${classPrefix}-icon`}>
+      <div className={`${classPrefix}-icon`} aria-hidden="true">
         {icon || defaultStatus[status]}
       </div>
       {typeof title === 'string' && title ? (

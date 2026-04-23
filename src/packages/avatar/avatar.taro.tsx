@@ -40,6 +40,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     background,
     color,
     src,
+    alt,
     icon,
     mode,
     fit,
@@ -48,7 +49,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     style,
     onClick,
     onError,
-    // ...rest
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -106,7 +107,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
     ) {
       setShowMax(true)
     }
-  }, [avatarIndex, groupCount])
+  }, [avatarIndex, groupCount, groupMax])
 
   const errorEvent = () => {
     onError && onError()
@@ -124,6 +125,8 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
+          ariaRole={onClick ? 'button' : undefined}
+          {...rest}
         >
           {(!groupMax || avatarIndex <= groupMax) && (
             <>
@@ -131,9 +134,11 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
                 <Image
                   className={`nut-avatar-img nut-avatar-${groupSize || size || 'normal'}-img`}
                   src={src}
+                  nativeProps={{ alt }}
                   style={{ objectFit: fit }}
                   mode={mode}
                   onError={errorEvent}
+                  ariaHidden
                 />
               )}
               {React.isValidElement(icon) ? (
@@ -156,6 +161,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
               {!src && !icon && !children && (
                 <View className="nut-avatar-text">
                   <User
+                    ariaHidden
                     style={{ color }}
                     className={`nut-avatar-icon nut-avatar-${groupSize || size || 'normal'}-icon`}
                   />

@@ -13,8 +13,8 @@ const Demo4 = () => {
       <Cell style={{ flexWrap: 'wrap' }}>
         <Button
           type="primary"
-          icon={<Star color="#ffffff" />}
-          rightIcon={<Star color="#ffffff" />}
+          icon={<Star ariaHidden color="#ffffff" />}
+          rightIcon={<Star ariaHidden color="#ffffff" />}
           style={marginStyle}
         >
           Button
@@ -22,8 +22,8 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="outline"
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star ariaHidden color="#ff0f23" />}
+          rightIcon={<Star ariaHidden color="#ff0f23" />}
           style={marginStyle}
         >
           Button
@@ -31,15 +31,15 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star ariaHidden color="#ff0f23" />}
+          rightIcon={<Star ariaHidden color="#ff0f23" />}
           style={marginStyle}
         >
           Button
         </Button>
         <Button
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star ariaHidden color="#ff0f23" />}
+          rightIcon={<Star ariaHidden color="#ff0f23" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
@@ -53,8 +53,8 @@ const Demo4 = () => {
         <Button
           type="default"
           fill="none"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star ariaHidden />}
+          rightIcon={<Star ariaHidden />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
@@ -67,8 +67,8 @@ const Demo4 = () => {
         <Button
           type="default"
           fill="none"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star ariaHidden />}
+          rightIcon={<Star ariaHidden />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
@@ -80,8 +80,8 @@ const Demo4 = () => {
         </Button>
         <Button
           type="default"
-          icon={<Star />}
-          rightIcon={<Star />}
+          icon={<Star ariaHidden />}
+          rightIcon={<Star ariaHidden />}
           style={marginStyle}
         >
           Button
@@ -90,7 +90,7 @@ const Demo4 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus ariaHidden size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -98,7 +98,7 @@ const Demo4 = () => {
         <Button
           fill="outline"
           type="primary"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus ariaHidden size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -106,7 +106,7 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus ariaHidden size={10} color="#ff0f23" />}
           style={{
             margin: 8,
           }}
@@ -115,8 +115,8 @@ const Demo4 = () => {
           shape="round"
           type="primary"
           size="large"
-          icon={<Star color="#ffffff" />}
-          rightIcon={<Star color="#ffffff" />}
+          icon={<Star ariaHidden color="#ffffff" />}
+          rightIcon={<Star ariaHidden color="#ffffff" />}
           style={marginStyle}
         >
           Button
@@ -125,8 +125,8 @@ const Demo4 = () => {
           shape="round"
           type="primary"
           size="xlarge"
-          icon={<Star color="#ffffff" />}
-          rightIcon={<Star color="#ffffff" />}
+          icon={<Star ariaHidden color="#ffffff" />}
+          rightIcon={<Star ariaHidden color="#ffffff" />}
           style={marginStyle}
         >
           Button

@@ -244,7 +244,7 @@ export const Popup: FunctionComponent<
         ariaRole="button"
         ariaLabel={closeAriaLabel || locale.close}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+        {React.isValidElement(closeIcon) ? closeIcon : <Close ariaHidden />}
       </View>
     )
   }, [

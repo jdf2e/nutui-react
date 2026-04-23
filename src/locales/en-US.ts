@@ -11,6 +11,11 @@ const enUS: BaseLang = {
   edit: 'Edit',
   reset: 'Reset',
   close: 'Close',
+  back: 'Back',
+  clear: 'Clear',
+  image: {
+    errorTip: 'Image failed to load',
+  },
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',
@@ -141,5 +146,8 @@ const enUS: BaseLang = {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
   mask: 'Mask',
+  quickenter: {
+    title: 'Quick Enter',
+  },
 }
 export default enUS

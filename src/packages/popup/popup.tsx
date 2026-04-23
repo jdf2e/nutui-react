@@ -173,7 +173,7 @@ export const Popup: FunctionComponent<
     }
   }
 
-  const handleCloseIconClick = (e: React.MouseEvent<Element, MouseEvent>) => {
+  const handleCloseIconClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     onCloseIconClick(e) && close()
   }
 
@@ -190,9 +190,13 @@ export const Popup: FunctionComponent<
             onClick={handleCloseIconClick}
             role="button"
             aria-label={closeAriaLabel || locale.close}
-            tabIndex={-1}
+            tabIndex={0}
           >
-            {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+            {React.isValidElement(closeIcon) ? (
+              closeIcon
+            ) : (
+              <Close aria-hidden="true" />
+            )}
           </div>
         )}
       </>

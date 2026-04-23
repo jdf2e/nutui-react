@@ -10,6 +10,12 @@ const jaJP: BaseLang = {
   select: '選択してください',
   edit: '編集',
   reset: 'リセット',
+  close: '閉じる',
+  back: '戻る',
+  clear: 'クリア',
+  image: {
+    errorTip: '画像の読み込みに失敗しました',
+  },
   video: {
     errorTip: '動画の読み込みに失敗しました',
     clickRetry: 'クリックして再試行',
@@ -143,5 +149,8 @@ const jaJP: BaseLang = {
   },
   mask: 'マスク',
   close: '閉じる',
+  quickenter: {
+    title: 'クイックアクセス',
+  },
 }
 export default jaJP

@@ -247,7 +247,12 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
-    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
+    const systemIcon =
+      closeIconPosition !== 'bottom' ? (
+        <Close ariaHidden />
+      ) : (
+        <Failure ariaHidden />
+      )
     return (
       <View
         className={closeClasses}
@@ -257,7 +262,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         // @ts-ignore
         tabIndex={0}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
+        {React.isValidElement(closeIcon) ? closeIcon : systemIcon}
       </View>
     )
   }

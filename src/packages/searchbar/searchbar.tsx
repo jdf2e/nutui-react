@@ -27,7 +27,7 @@ const defaultProps = {
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search />,
+  leftIn: <Search aria-hidden="true" />,
   tag: false,
 } as WebSearchBarProps
 export const SearchBar: FunctionComponent<
@@ -175,6 +175,7 @@ export const SearchBar: FunctionComponent<
     const inputCls = classNames(`${classPrefix}-input`)
     return (
       <input
+        type="search"
         className={inputCls}
         ref={searchInputRef}
         value={value || ''}
@@ -210,12 +211,12 @@ export const SearchBar: FunctionComponent<
             onClick={(e) => onItemClick?.(item, e)}
           >
             {item}
-            <Close />
+            <Close aria-label={locale.close} />
           </div>
         ))}
       </div>
     )
-  }, [value, onItemClick])
+  }, [value, onItemClick, forceFocus, locale.close])
 
   const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
@@ -229,11 +230,17 @@ export const SearchBar: FunctionComponent<
   const renderLeft = useCallback(() => {
     if (!backable && !left) return null
     return (
-      <div className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft /> : left}
+      <div
+        className={`${classPrefix}-left`}
+        role={backable ? 'button' : undefined}
+        aria-label={backable ? locale.back || '返回' : undefined}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={backable ? 0 : undefined}
+      >
+        {backable ? <ArrowLeft aria-hidden="true" /> : left}
       </div>
     )
-  }, [backable, left])
+  }, [backable, left, locale])
 
   const renderRightIn = useCallback(() => {
     if (!rightIn) return null
@@ -261,9 +268,11 @@ export const SearchBar: FunctionComponent<
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
         onClick={clearaVal}
+        role="button"
+        tabIndex={0}
         aria-label="清除"
       >
-        <MaskClose />
+        <MaskClose aria-hidden="true" />
       </div>
     )
   }, [value, clearable, clearaVal])

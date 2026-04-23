@@ -11,6 +11,11 @@ const zhCN: BaseLang = {
   edit: '編輯',
   reset: '重置',
   close: '關閉',
+  back: '返回',
+  clear: '清除',
+  image: {
+    errorTip: '圖片加載失敗',
+  },
   video: {
     errorTip: '視頻加載失敗',
     clickRetry: '點擊重試',
@@ -142,5 +147,8 @@ const zhCN: BaseLang = {
     errorCanvasTips: '當前環境不支持Canvas',
   },
   mask: '蒙層',
+  quickenter: {
+    title: '快捷入口',
+  },
 }
 export default zhCN
