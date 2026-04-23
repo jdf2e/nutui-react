@@ -13,6 +13,9 @@ const idID: BaseLang = {
   close: 'Tutup',
   back: 'Kembali',
   clear: 'Bersihkan',
+  image: {
+    errorTip: 'Gambar gagal dimuat',
+  },
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',

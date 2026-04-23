@@ -9,6 +9,7 @@ import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { WebImageProps } from '@/types'
+import { useConfig } from '@/packages/configprovider'
 
 const defaultProps: Partial<WebImageProps> = {
   ...ComponentDefaults,
@@ -47,6 +48,9 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
   const [isError, setIsError] = useState(false)
   const [complete, setComplete] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
+
+  const { locale } = useConfig()
+
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
@@ -149,8 +153,11 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
     if (!isError) return null
     if (typeof error === 'boolean' && error === true && !innerLoading) {
       return (
-        <div className={`${classPrefix}-error`}>
-          <ImageError />
+        <div
+          className={`${classPrefix}-error`}
+          aria-label={locale.image.errorTip || ''}
+        >
+          <ImageError aria-hidden="true" />
         </div>
       )
     }
@@ -158,7 +165,7 @@ export const Image: FunctionComponent<Partial<WebImageProps>> = (props) => {
       return <div className={`${classPrefix}-error`}>{error}</div>
     }
     return null
-  }, [error, isError])
+  }, [error, isError, locale, innerLoading])
 
   const renderLoading = useCallback(() => {
     if (!loading) return null

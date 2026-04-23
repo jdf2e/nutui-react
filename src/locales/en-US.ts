@@ -13,6 +13,9 @@ const enUS: BaseLang = {
   close: 'Close',
   back: 'Back',
   clear: 'Clear',
+  image: {
+    errorTip: 'Image failed to load',
+  },
   video: {
     errorTip: 'Error Tip',
     clickRetry: 'Click Retry',

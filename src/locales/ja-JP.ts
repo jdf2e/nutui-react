@@ -13,6 +13,9 @@ const jaJP: BaseLang = {
   close: '閉じる',
   back: '戻る',
   clear: 'クリア',
+  image: {
+    errorTip: '画像の読み込みに失敗しました',
+  },
   video: {
     errorTip: '動画の読み込みに失敗しました',
     clickRetry: 'クリックして再試行',

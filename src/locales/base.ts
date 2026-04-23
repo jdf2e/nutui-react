@@ -11,6 +11,9 @@ export interface BaseLang {
   close: string
   back: string
   clear: string
+  image: {
+    errorTip: string
+  }
   video: {
     errorTip: string
     clickRetry: string

@@ -13,6 +13,9 @@ const zhCN: BaseLang = {
   close: '关闭',
   back: '返回',
   clear: '清除',
+  image: {
+    errorTip: '图片加载失败',
+  },
   video: {
     errorTip: '视频加载失败',
     clickRetry: '点击重试',

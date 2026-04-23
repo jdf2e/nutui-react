@@ -13,6 +13,9 @@ const zhUG: BaseLang = {
   close: 'تاقاش',
   back: 'قايتىش',
   clear: 'تاقاش',
+  image: {
+    errorTip: 'رەسىم يۈكلەش مەغلۇپ بولدى',
+  },
   video: {
     errorTip: 'فىلىمنى قويۇش مەغلۇپ بولدى',
     clickRetry: 'قايتا سىناش',

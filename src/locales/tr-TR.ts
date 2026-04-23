@@ -13,6 +13,9 @@ const trTR: BaseLang = {
   close: 'Kapat',
   back: 'Geri',
   clear: 'Temizle',
+  image: {
+    errorTip: 'Resim yüklenemedi',
+  },
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
