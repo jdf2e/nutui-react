@@ -43,6 +43,7 @@ export const ResultPage: FunctionComponent<
   }
   return (
     <View className={cls} style={style}>
+      {/* @ts-ignore */}
       <View className={`${classPrefix}-icon`} ariaHidden>
         {icon || defaultStatus[status]}
       </View>

@@ -139,6 +139,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
                   style={{ objectFit: fit }}
                   mode={mode}
                   onError={errorEvent}
+                  // @ts-ignore
                   ariaHidden
                 />
               )}

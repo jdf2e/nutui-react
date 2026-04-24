@@ -132,6 +132,7 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
         )}
         style={imgStyle}
         src={src}
+        // @ts-ignore
         ariaHidden={isError}
         onLoad={(e) => handleLoad(e)}
         onError={(e) => handleError(e)}

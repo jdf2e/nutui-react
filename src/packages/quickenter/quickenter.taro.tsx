@@ -114,6 +114,7 @@ const InternalQuickEnter: ForwardRefRenderFunction<
               ariaLabel={`${item.title} ${item.badge ?? item.badgeProps?.value}`}
               onClick={() => handleItemClick(item, index)}
             >
+              {/* @ts-ignore */}
               <View className={`${classPrefix}-item-icon`} ariaHidden>
                 <Badge
                   {...item.badgeProps}
@@ -122,6 +123,7 @@ const InternalQuickEnter: ForwardRefRenderFunction<
                   {item.icon}
                 </Badge>
               </View>
+              {/* @ts-ignore */}
               <View className={`${classPrefix}-item-title`} ariaHidden>
                 {item.title}
               </View>

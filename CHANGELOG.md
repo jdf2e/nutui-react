@@ -1,3 +1,17 @@
+# v3.0.19-cpp.27
+
+`2026-04-24`
+
+- 🏡 chore: 升级京东正黑字体到 2.3 (#3435)
+- 🏡 chore: 升级 icon 库版本
+- 🚀 feat: 针对小程序环境进行性能优化与 SelectorQuery 作用域适配 (Tabs, CountUp, getRect)
+- ♿️ feat: 全面适配无障碍 (A11y)，涉及组件：Image, Dialog, Button, SearchBar, Popup, Tabs, Progress, Avatar, NavBar, ResultPage
+- 📖 docs: 新增组件标准白皮书与 AI 助手相关文档
+- 🐛 fix(avatar): 修复 onClick 条件判断逻辑并支持 Taro 端 alt 属性
+- 🐛 fix(tabs): 修复 useRtl 引用路径并优化无障碍属性
+- 🐛 fix(quickenter): 修复顶部安全区域适配问题
+- 🐛 fix(type): 修复类型导出与 lint 问题
+
 # v3.0.18
 
 `2025-08-15`
