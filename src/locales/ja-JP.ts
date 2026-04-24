@@ -148,7 +148,6 @@ const jaJP: BaseLang = {
     errorCanvasTips: '現在の環境はCanvasをサポートしていません',
   },
   mask: 'マスク',
-  close: '閉じる',
   quickenter: {
     title: 'クイックアクセス',
   },

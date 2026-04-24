@@ -129,6 +129,7 @@ export const Avatar: FunctionComponent<Partial<WebAvatarProps>> & {
     onClick && onClick(e)
   }
 
+  // @ts-ignore
   const clickableProps = onClick
     ? {
         role: 'button',

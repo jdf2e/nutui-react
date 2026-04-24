@@ -125,6 +125,7 @@ export const Avatar: FunctionComponent<Partial<TaroAvatarProps>> & {
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
+          // @ts-ignore
           ariaRole={onClick ? 'button' : undefined}
           {...rest}
         >
