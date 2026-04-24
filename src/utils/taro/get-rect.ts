@@ -41,6 +41,7 @@ export const getRectInMultiPlatform = async (
         return
       }
       createSelectorQuery()
+        .in(element?._scope || element)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
@@ -65,6 +66,7 @@ export const getRectInMultiPlatformWithoutCache = async (
     }
     return new Promise((resolve, reject) => {
       createSelectorQuery()
+        .in(element?._scope || element)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
