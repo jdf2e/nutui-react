@@ -41,6 +41,7 @@ export const getRectInMultiPlatform = async (
         return
       }
       createSelectorQuery()
+        // https://taro.jd.com/docs/reference/config/page/
         .in(element?._scope || element)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
@@ -66,6 +67,7 @@ export const getRectInMultiPlatformWithoutCache = async (
     }
     return new Promise((resolve, reject) => {
       createSelectorQuery()
+        // https://taro.jd.com/docs/reference/config/page/
         .in(element?._scope || element)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
