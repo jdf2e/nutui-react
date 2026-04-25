@@ -24,6 +24,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
   firstDayOfWeek: 0,
+  weekdays: [],
 }
 
 const prefixCls = 'nut-calendarcard'
@@ -47,6 +48,7 @@ export const CalendarCard = React.forwardRef<
     renderDay,
     renderDayTop,
     renderDayBottom,
+    weekdays,
     onDayClick,
     onPageChange,
     onChange,
@@ -235,6 +237,30 @@ export const CalendarCard = React.forwardRef<
     return d === 0 || d === 6
   }
 
+  const isToday = (day: CalendarCardDay) => {
+    const today = new Date()
+    return (
+      day.year === today.getFullYear() &&
+      day.month === today.getMonth() + 1 &&
+      day.date === today.getDate()
+    )
+  }
+
+  // 日期无障碍朗读
+  const getAriaLabel = (day: CalendarCardDay) => {
+    const today = isToday(day)
+    // 日期选定时，朗读="已选定 1号 按钮"
+    if (isActive(day)) {
+      return today ? `已选定今日${day.date}号` : `已选定${day.date}号`
+    }
+    // 若不可选中，朗读=“3号 按钮 变暗”
+    if (isDisable(day)) {
+      return today ? `${day.date}号今日按钮变暗` : `${day.date}号按钮变暗`
+    }
+    // 未选定时，朗读=“2号 按钮”
+    return today ? `${day.date}号今日` : `${day.date}号`
+  }
+
   const getClasses = (day: CalendarCardDay) => {
     /**
      * active: single、multiple 激活日期
@@ -398,15 +424,17 @@ export const CalendarCard = React.forwardRef<
   }
 
   const [weekHeader] = useState(() => {
-    const weekdays = locale.calendaritem.weekdays.map((day, index) => {
+    const weekdaysList =
+      weekdays.length > 0 ? weekdays : locale.calendaritem.weekdays
+    const weekdaysData = weekdaysList.map((day, index) => {
       return {
         name: day,
         key: index,
       }
     })
     return [
-      ...weekdays.slice(firstDayOfWeek, 7),
-      ...weekdays.slice(0, firstDayOfWeek),
+      ...weekdaysData.slice(firstDayOfWeek, 7),
+      ...weekdaysData.slice(0, firstDayOfWeek),
     ]
   })
 
@@ -437,14 +465,19 @@ export const CalendarCard = React.forwardRef<
               )}
               key={`${day.year}-${day.month}-${day.date}`}
               onClick={() => handleDayClick(day)}
+              ariaLabel={getAriaLabel(day)}
+              ariaRole="button"
             >
-              <View className={`${prefixCls}-day-top`}>
+              {/* @ts-ignore */}
+              <View className={`${prefixCls}-day-top`} ariaHidden>
                 {renderDayTop ? renderDayTop(day) : ''}
               </View>
-              <View className={`${prefixCls}-day-inner`}>
+              {/* @ts-ignore */}
+              <View className={`${prefixCls}-day-inner`} ariaHidden>
                 {renderDay ? renderDay(day) : day.date}
               </View>
-              <View className={`${prefixCls}-day-bottom`}>
+              {/* @ts-ignore */}
+              <View className={`${prefixCls}-day-bottom`} ariaHidden>
                 {renderDayBottom ? renderDayBottom(day) : ''}
               </View>
             </View>
