@@ -429,7 +429,7 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  const [weekHeader] = useMemo(() => {
+  const weekHeader = useMemo(() => {
     const weekdaysList =
       weekdays.length > 0 ? weekdays : locale.calendaritem.weekdays
     const weekdaysData = weekdaysList.map((day, index) => {
