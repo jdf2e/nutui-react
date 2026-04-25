@@ -251,14 +251,20 @@ export const CalendarCard = React.forwardRef<
     const today = isToday(day)
     // 日期选定时，朗读="已选定 1号 按钮"
     if (isActive(day)) {
-      return today ? `已选定今日${day.date}号` : `已选定${day.date}号`
+      return today
+        ? `已选定今日${day.month}月${day.date}号`
+        : `已选定${day.month}月${day.date}号`
     }
     // 若不可选中，朗读=“3号 按钮 变暗”
     if (isDisable(day)) {
-      return today ? `${day.date}号今日按钮变暗` : `${day.date}号按钮变暗`
+      return today
+        ? `${day.month}月${day.date}号今日按钮变暗`
+        : `${day.month}月${day.date}号按钮变暗`
     }
     // 未选定时，朗读=“2号 按钮”
-    return today ? `${day.date}号今日` : `${day.date}号`
+    return today
+      ? `${day.month}月${day.date}号今日`
+      : `${day.month}月${day.date}号`
   }
 
   const getClasses = (day: CalendarCardDay) => {
@@ -468,16 +474,14 @@ export const CalendarCard = React.forwardRef<
               ariaLabel={getAriaLabel(day)}
               ariaRole="button"
             >
-              {/* @ts-ignore */}
-              <View className={`${prefixCls}-day-top`} ariaHidden>
+              <View className={`${prefixCls}-day-top`}>
                 {renderDayTop ? renderDayTop(day) : ''}
               </View>
               {/* @ts-ignore */}
               <View className={`${prefixCls}-day-inner`} ariaHidden>
                 {renderDay ? renderDay(day) : day.date}
               </View>
-              {/* @ts-ignore */}
-              <View className={`${prefixCls}-day-bottom`} ariaHidden>
+              <View className={`${prefixCls}-day-bottom`}>
                 {renderDayBottom ? renderDayBottom(day) : ''}
               </View>
             </View>

@@ -16,6 +16,7 @@ import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
 
 const CalendarDemo = () => {
   const [translated] = useTranslate({
@@ -97,6 +98,8 @@ const CalendarDemo = () => {
         <Demo11 />
         <View className="h2">{translated.title}</View>
         <Demo12 />
+        <View className="h2">{translated.title}</View>
+        <Demo13 />
       </ScrollView>
     </>
   )
