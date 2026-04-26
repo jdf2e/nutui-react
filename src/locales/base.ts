@@ -45,6 +45,8 @@ export interface BaseLang {
     today: string
     loadPreviousMonth: string
     noEarlierMonth: string
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    dayAriaLabel?: Function
   }
   shortpassword: {
     title: string

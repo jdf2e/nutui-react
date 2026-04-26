@@ -45,6 +45,24 @@ const enUS: BaseLang = {
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
     noEarlierMonth: 'No Earlier Month',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      const dateStr = `${year}-${month}-${day}`
+      let label = today ? `Today, ${dateStr}` : dateStr
+      if (isActive) {
+        label = `Selected ${label}`
+      }
+      if (isDisable) {
+        label = `${label} disabled`
+      }
+      return label
+    },
   },
   shortpassword: {
     title: 'Please input a password',

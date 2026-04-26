@@ -45,6 +45,24 @@ const zhUG: BaseLang = {
     today: 'بۈگۈن',
     loadPreviousMonth: 'ئالدىنقى ئاي',
     noEarlierMonth: 'تۈگىدى',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      const dateStr = `${year}-${month}-${day}`
+      let label = today ? `بۈگۈن, ${dateStr}` : dateStr
+      if (isActive) {
+        label = `تاللانغان ${label}`
+      }
+      if (isDisable) {
+        label = `${label} چەكلەنگەن`
+      }
+      return label
+    },
   },
   shortpassword: {
     title: 'مەخپى نومۇرنى كىرگۈزۈڭ',
