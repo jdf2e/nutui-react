@@ -1,3 +1,10 @@
+# v3.0.19-cpp.28
+
+`2026-04-27`
+
+- 🚀 feat(price): 组件增加原样渲染的兜底逻辑，支持输入内容包含无价格或多个价格时直接原样返回 (#3440)
+- ♿️ feat(calendarcard): 补充无障碍支持 (A11y)，增加 `dayAriaLabel` 多语言配置，开放 `renderDayAriaLabel` 以及在 Web 端支持了 `weekdays` 属性自定义星期的表头
+
 # v3.0.19-cpp.27
 
 `2026-04-24`
