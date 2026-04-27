@@ -95,7 +95,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
