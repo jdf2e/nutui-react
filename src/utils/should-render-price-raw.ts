@@ -1,5 +1,7 @@
-const CJK = /[\u4E00-\u9FFF]/
 const RE_NUM = /\d+(?:\.\d+)?/g
+
+// 价格合法字符：数字、小数点、负号、大写货币代码（HK USD EUR 等）、常见货币符号 Unicode 区块（含全角 ￥）
+const PRICE_CHARS = /^[\d.\-A-Z¥￥$€£₩₹₽₺₴₪฿\u20A0-\u20CF\uFE69\uFF04\uFFE5]*$/
 
 function hasNoExtractablePrice(s: string) {
   const t = s.trim()
@@ -14,7 +16,6 @@ export function shouldRenderPriceAsRaw(s: string) {
     return true
   }
   const t = s.trim()
-  if (!CJK.test(t)) return false
   const matches = Array.from(t.matchAll(RE_NUM))
   if (matches.length < 2) return false
   const a = matches[0]
@@ -22,5 +23,9 @@ export function shouldRenderPriceAsRaw(s: string) {
   const i0 = a.index!
   const i1 = b.index!
   const between = t.slice(i0 + a[0].length, i1)
-  return CJK.test(between)
+  return !PRICE_CHARS.test(between)
+}
+
+export function hasNonPriceChars(s: string): boolean {
+  return !PRICE_CHARS.test(s)
 }
