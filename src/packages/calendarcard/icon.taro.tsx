@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Image, View } from '@tarojs/components'
+import { Image } from '@tarojs/components'
 
 let left =
   'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48cGF0aCBkPSJNNi42MDUgOS40OWEuNzcxLjc3MSAwIDAgMSAwLS45OGwzLjYtNC4zNzJhLjc3MS43NzEgMCAwIDEgMS4xOS45ODFMOC4yIDlsMy4xOTcgMy44ODFhLjc3MS43NzEgMCAxIDEtMS4xOTEuOThsLTMuNi00LjM3eiIvPjwvc3ZnPg=='
@@ -30,15 +30,10 @@ if (process.env.TARO_ENV === 'jdharmony_cpp') {
 
 const Icon: FC<IconProps> = ({ url }) => {
   const style = {
-    background: `url('${url}') no-repeat center`,
-    backgroundSize: '100% 100%',
     width: 18,
     height: 18,
   }
-  if (process.env.TARO_ENV === 'jdharmony_cpp') {
-    return <Image src={url} style={style} />
-  }
-  return <View style={style} />
+  return <Image src={url} style={style} mode="aspectFit" />
 }
 
 export const ArrowLeft: FC = () => <Icon url={left} />
