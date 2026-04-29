@@ -2,7 +2,7 @@
   &-head {
     overflow: hidden;
     position: relative;
-    font-size: 12px;
+    font-size: scale-px(12px);
 
     &-content {
       position: absolute;
@@ -18,7 +18,7 @@
       &-icons {
         width: $pulltorefresh-icon-width;
         height: $pulltorefresh-icon-height;
-        margin-bottom: 4px;
+        margin-bottom: scale-px(4px);
       }
     }
   }

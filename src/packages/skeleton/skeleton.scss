@@ -1,6 +1,6 @@
 .nut-skeleton {
-  line-height: 0px;
-  font-size: 0px;
+  line-height: scale-px(0px);
+  font-size: scale-px(0px);
 
   &-content {
     position: relative;
@@ -25,7 +25,7 @@
 
     &-small {
       height: $skeleton-line-small-height;
-      margin-top: 8px;
+      margin-top: scale-px(8px);
     }
     &-small-0 {
       margin-top: 0;

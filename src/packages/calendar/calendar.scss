@@ -46,12 +46,12 @@
     color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
-    line-height: 50px;
+    line-height: scale-px(50px);
   }
 
   &-sub-title {
-    padding: 7px 0;
-    line-height: 22px;
+    padding: scale-px(7px) 0;
+    line-height: scale-px(22px);
     font-size: $calendar-sub-title-font-size;
   }
 
@@ -59,9 +59,10 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 36px;
-    border-radius: 0px 0px 12px 12px;
-    box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
+    height: scale-px(36px);
+    border-radius: scale-px(0px) scale-px(0px) scale-px(12px) scale-px(12px);
+    box-shadow: scale-px(0px) scale-px(4px) scale-px(10px) scale-px(0px)
+      rgba($color: #000000, $alpha: 0.06);
   }
 
   &-week-item {
@@ -87,11 +88,11 @@
     box-sizing: border-box;
 
     .calendar-loading-tip {
-      height: 50px;
-      line-height: 50px;
+      height: scale-px(50px);
+      line-height: scale-px(50px);
       text-align: center;
       position: absolute;
-      top: -50px;
+      top: scale-px(-50px);
       left: 0;
       right: 0;
       font-size: $font-size-s;
@@ -105,9 +106,9 @@
     text-align: center;
 
     &-title {
-      height: 23px;
-      line-height: 23px;
-      margin: 8px 0;
+      height: scale-px(23px);
+      line-height: scale-px(23px);
+      margin: scale-px(8px) 0;
     }
   }
 
@@ -125,7 +126,7 @@
     width: $calendar-day-width;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
-    margin-bottom: 4px;
+    margin-bottom: scale-px(4px);
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
@@ -135,22 +136,22 @@
     &-info,
     &-info-curr {
       position: absolute;
-      bottom: 5px;
+      bottom: scale-px(5px);
       width: 100%;
-      font-size: 12px;
-      line-height: 14px;
+      font-size: scale-px(12px);
+      line-height: scale-px(14px);
     }
 
     &-info-top {
       position: absolute;
       width: 100%;
-      top: 5px;
+      top: scale-px(5px);
     }
 
     &-info-bottom {
       position: absolute;
       width: 100%;
-      bottom: 5px;
+      bottom: scale-px(5px);
     }
 
     &-active {
@@ -159,13 +160,13 @@
       border-radius: $calendar-day-active-border-radius;
 
       &.active-start {
-        border-radius: 0px;
+        border-radius: scale-px(0px);
         border-top-left-radius: $calendar-day-active-border-radius;
         border-bottom-left-radius: $calendar-day-active-border-radius;
       }
 
       &.active-end {
-        border-radius: 0px;
+        border-radius: scale-px(0px);
         border-top-right-radius: $calendar-day-active-border-radius;
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
@@ -206,9 +207,9 @@
     background-color: $white;
 
     .calendar-confirm-btn {
-      height: 40px;
-      line-height: 40px;
-      margin: 6px 16px;
+      height: scale-px(40px);
+      line-height: scale-px(40px);
+      margin: scale-px(6px) scale-px(16px);
       text-align: center;
       border-radius: $radius-base;
       background: $button-primary-background-color;
@@ -219,7 +220,7 @@
 }
 
 .nut-calendar-popup .nut-popup-title-right {
-  top: 7px !important;
+  top: scale-px(7px) !important;
 }
 
 [dir='rtl'] .nut-calendar,

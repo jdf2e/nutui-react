@@ -86,8 +86,8 @@
   }
 
   &-title {
-    height: 14px;
-    line-height: 14px;
+    height: scale-px(14px);
+    line-height: scale-px(14px);
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
     overflow: hidden;
@@ -95,8 +95,8 @@
   }
 
   &-description {
-    height: 16px;
-    line-height: 16px;
+    height: scale-px(16px);
+    line-height: scale-px(16px);
     margin-top: $steps-base-description-margin-top;
     font-size: $steps-base-description-font-size;
     color: $steps-base-description-color;

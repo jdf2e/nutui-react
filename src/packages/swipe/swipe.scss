@@ -27,12 +27,12 @@
 
   &-left {
     left: 0;
-    transform: translate(-100%, 0px);
+    transform: translate(-100%, scale-px(0px));
   }
 
   &-right {
     //left: 100%;
-    right: 0px;
-    transform: translate(100%, 0px);
+    right: scale-px(0px);
+    transform: translate(100%, scale-px(0px));
   }
 }

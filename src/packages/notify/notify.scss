@@ -43,8 +43,8 @@
 
 .nut-notify {
   position: fixed;
-  left: 8px;
-  right: 8px;
+  left: scale-px(8px);
+  right: scale-px(8px);
   z-index: $notify-z-index;
   display: flex;
   align-items: center;
@@ -84,18 +84,18 @@
   }
 
   &-left-icon {
-    margin-right: 6px;
+    margin-right: scale-px(6px);
     .nut-icon {
-      height: 16px;
-      width: 16px;
+      height: scale-px(16px);
+      width: scale-px(16px);
     }
   }
 
   &-right-icon {
-    margin-left: 6px;
+    margin-left: scale-px(6px);
     .nut-icon {
-      height: 12px;
-      width: 12px;
+      height: scale-px(12px);
+      width: scale-px(12px);
     }
   }
 }

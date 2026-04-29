@@ -22,7 +22,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 4px;
+        margin-bottom: scale-px(4px);
       }
     }
   }
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-top: 6px;
+    padding-top: scale-px(6px);
     color: $infiniteloading-color;
     text-align: center;
 
@@ -43,7 +43,7 @@
       font-size: $font-size-xxs;
 
       &-icons {
-        margin-right: 8px;
+        margin-right: scale-px(8px);
       }
     }
   }
@@ -62,7 +62,7 @@
     &-tips {
       &-icons {
         margin-right: 0;
-        margin-left: 8px;
+        margin-left: scale-px(8px);
       }
     }
   }

@@ -74,7 +74,7 @@
 
 .nut-menu-container-down-enter {
   opacity: 0;
-  transform: translate(0, -30px);
+  transform: translate(0, scale-px(-30px));
 }
 
 .nut-menu-container-down-enter-done {
@@ -95,7 +95,7 @@
 
 .nut-menu-container-up-enter {
   opacity: 0;
-  transform: translate(0, 30px);
+  transform: translate(0, scale-px(30px));
 }
 
 .nut-menu-container-up-enter-done {

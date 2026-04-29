@@ -12,7 +12,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    border: 1px solid $table-border-color;
+    border: scale-px(1px) solid $table-border-color;
 
     &-sticky {
       overflow-x: auto;
@@ -101,15 +101,15 @@
 
           &-nodata {
             display: flex;
-            height: 50px;
+            height: scale-px(50px);
             align-items: center;
             justify-content: center;
           }
         }
 
         &-border {
-          border-right: 1px solid $table-border-color;
-          border-bottom: 1px solid $table-border-color;
+          border-right: scale-px(1px) solid $table-border-color;
+          border-bottom: scale-px(1px) solid $table-border-color;
         }
 
         &-alignleft,
@@ -143,9 +143,9 @@
   &-sticky-left,
   &-sticky-right {
     position: absolute;
-    top: 0px;
-    width: 8px;
-    bottom: -1px;
+    top: scale-px(0px);
+    width: scale-px(8px);
+    bottom: scale-px(-1px);
     overflow-x: hidden;
     overflow-y: hidden;
     box-shadow: none;
@@ -156,12 +156,12 @@
   }
 
   &-sticky-left {
-    left: 1px;
+    left: scale-px(1px);
     box-shadow: $table-sticky-left-shadow;
   }
 
   &-sticky-right {
-    right: 1px;
+    right: scale-px(1px);
     box-shadow: $table-sticky-right-shadow;
   }
 
@@ -186,7 +186,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: scale-px(30px);
     padding: $table-cols-padding;
     position: relative;
     z-index: 5;
@@ -215,7 +215,7 @@
 
         &-border {
           border-right: none;
-          border-left: 1px solid $table-border-color;
+          border-left: scale-px(1px) solid $table-border-color;
         }
 
         &-alignleft,
@@ -232,13 +232,13 @@
 
   &-sticky-left {
     left: auto;
-    right: 1px;
+    right: scale-px(1px);
     box-shadow: $table-sticky-right-shadow;
   }
 
   &-sticky-right {
     right: auto;
-    left: 1px;
+    left: scale-px(1px);
     box-shadow: $table-sticky-left-shadow;
   }
   &-fixed-left-last {

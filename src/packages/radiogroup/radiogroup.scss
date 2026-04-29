@@ -23,7 +23,7 @@
       }
 
       &-button {
-        border: 1px solid $radio-button-background;
+        border: scale-px(1px) solid $radio-button-background;
       }
 
       &-button-active {
@@ -38,7 +38,7 @@
 
     .nut-radio {
       &-button {
-        border: 1px solid $white;
+        border: scale-px(1px) solid $white;
       }
 
       &-button-active {
@@ -55,7 +55,7 @@
   .nut-radio-button-active.nut-radio-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: 1px solid $color-text-disabled;
+    border: scale-px(1px) solid $color-text-disabled;
   }
 }
 

@@ -5,14 +5,14 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-  padding: 6px 0 2px;
+  padding: scale-px(6px) 0 scale-px(2px);
   color: $tabbar-inactive-color;
   height: 100%;
 
   .nut-icon {
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
+    width: scale-px(24px);
+    height: scale-px(24px);
+    font-size: scale-px(24px);
     /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
     /* #endif*/
@@ -31,9 +31,9 @@
 
   .nut-image {
     &-default {
-      width: 38px;
-      height: 38px;
-      border-radius: 38px;
+      width: scale-px(38px);
+      height: scale-px(38px);
+      border-radius: scale-px(38px);
     }
   }
 

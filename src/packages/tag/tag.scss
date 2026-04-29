@@ -12,7 +12,7 @@
 
   .nut-icon {
     vertical-align: middle;
-    margin-left: 4px;
+    margin-left: scale-px(4px);
     color: $tag-color;
   }
 
@@ -72,7 +72,7 @@
     justify-content: center;
     font-size: $tag-font-size;
     color: $tag-color;
-    margin-left: 4px;
+    margin-left: scale-px(4px);
   }
 
   &-plain {
@@ -85,6 +85,6 @@
 .nut-rtl .nut-tag {
   .nut-icon {
     margin-left: 0;
-    margin-right: 4px;
+    margin-right: scale-px(4px);
   }
 }

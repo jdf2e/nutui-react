@@ -37,7 +37,8 @@
     &-checked {
       color: $color-primary;
       background-color: $white;
-      box-shadow: 0px 2px 4px 0px #ff0f2333;
+      box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
+        #ff0f2333;
       border-radius: 50%;
 
       &.nut-radio-icon-disabled {
@@ -61,14 +62,14 @@
     display: inline-flex;
     /* #endif */
     align-items: center;
-    min-height: 30px;
+    min-height: scale-px(30px);
     padding: $radio-button-padding;
     font-size: $radio-button-font-size;
     background: $radio-button-background;
     border-radius: $radio-button-border-radius;
     color: $radio-label-color;
     box-sizing: border-box;
-    border: 1px solid $radio-button-background;
+    border: scale-px(1px) solid $radio-button-background;
 
     &-active {
       background: $color-primary-light-pressed;
@@ -78,14 +79,14 @@
 
     &-disabled {
       color: $color-text-disabled;
-      border: 1px solid $radio-button-background;
+      border: scale-px(1px) solid $radio-button-background;
     }
   }
 
   .nut-radio-button-active.nut-radio-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: 1px solid $color-text-disabled;
+    border: scale-px(1px) solid $color-text-disabled;
   }
 }
 

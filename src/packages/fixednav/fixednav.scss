@@ -5,7 +5,7 @@
   position: fixed;
   z-index: $fixednav-index;
   display: inline-block;
-  height: 50px;
+  height: scale-px(5scale-px(0px));
 
   &.active {
     .nut-fixednav-btn {
@@ -29,17 +29,18 @@
     box-sizing: border-box;
     position: absolute;
     z-index: $fixednav-index;
-    width: 70px;
+    width: scale-px(7scale-px(0px));
     height: 100%;
     background: $fixednav-button-background;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
+      rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 
     .text {
-      width: 24px;
-      line-height: 13px;
+      width: scale-px(2scale-px(4px));
+      line-height: scale-px(1scale-px(3px));
       font-size: $font-size-s;
       color: #fff;
       flex-shrink: 0;
@@ -59,7 +60,8 @@
     background: $fixednav-background-color;
     display: flex;
     justify-content: space-between;
-    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: scale-px(2px) scale-px(2px) scale-px(8px) scale-px(0px)
+      rgba(0, 0, 0, 0.2);
 
     &-item {
       position: relative;
@@ -69,19 +71,19 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-width: 50px;
+      min-width: scale-px(5scale-px(0px));
       flex-shrink: 0;
       color: $fixednav-color;
 
       .nut-fixednav-list-text {
-        font-size: 10px;
+        font-size: scale-px(1scale-px(0px));
       }
     }
 
     &-image {
-      width: 20px;
-      height: 20px;
-      margin-bottom: 2px;
+      width: scale-px(2scale-px(0px));
+      height: scale-px(2scale-px(0px));
+      margin-bottom: scale-px(2px);
     }
   }
 
@@ -89,19 +91,21 @@
     right: 0;
     .nut-fixednav-btn {
       right: 0;
-      border-radius: 45px 0px 0px 45px;
+      border-radius: scale-px(4scale-px(5px)) scale-px(0px) scale-px(0px)
+        scale-px(4scale-px(5px));
       .nut-icon {
-        margin-right: 5px;
+        margin-right: scale-px(5px);
         transform: rotate(0deg);
       }
     }
     .nut-fixednav-list {
       right: 0;
       transform: translateX(100%);
-      border-radius: 25px 0px 0px 25px;
+      border-radius: scale-px(2scale-px(5px)) scale-px(0px) scale-px(0px)
+        scale-px(2scale-px(5px));
       padding: {
-        left: 20px;
-        right: 80px;
+        left: scale-px(2scale-px(0px));
+        right: scale-px(8scale-px(0px));
       }
     }
   }
@@ -111,9 +115,9 @@
     .nut-fixednav-btn {
       flex-direction: row-reverse;
       left: 0;
-      border-radius: 0 45px 45px 0;
+      border-radius: 0 scale-px(4scale-px(5px)) scale-px(4scale-px(5px)) 0;
       .nut-icon {
-        margin-left: 5px;
+        margin-left: scale-px(5px);
         transform: rotate(180deg);
       }
     }
@@ -121,10 +125,11 @@
     .nut-fixednav-list {
       transform: translateX(-100%);
       left: 0;
-      border-radius: 0px 25px 25px 0px;
+      border-radius: scale-px(0px) scale-px(2scale-px(5px))
+        scale-px(2scale-px(5px)) scale-px(0px);
       padding: {
-        left: 80px;
-        right: 20px;
+        left: scale-px(8scale-px(0px));
+        right: scale-px(2scale-px(0px));
       }
     }
   }
@@ -150,10 +155,11 @@
   &-btn {
     right: auto;
     left: 0;
-    border-radius: 0px 45px 45px 0px;
+    border-radius: scale-px(0px) scale-px(4scale-px(5px))
+      scale-px(4scale-px(5px)) scale-px(0px);
     .nut-icon {
-      margin-right: 0px;
-      margin-left: 5px;
+      margin-right: scale-px(0px);
+      margin-left: scale-px(5px);
       transform: rotate(180deg);
     }
   }
@@ -162,12 +168,14 @@
     right: auto;
     left: 0;
     transform: translateX(-100%);
-    border-radius: 0px 25px 25px 0px;
-    box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+    border-radius: scale-px(0px) scale-px(2scale-px(5px))
+      scale-px(2scale-px(5px)) scale-px(0px);
+    box-shadow: scale-px(-scale-px(2px)) scale-px(2px) scale-px(8px)
+      scale-px(0px) rgba(0, 0, 0, 0.2);
 
     padding: {
-      right: 20px;
-      left: 80px;
+      right: scale-px(2scale-px(0px));
+      left: scale-px(8scale-px(0px));
     }
 
     &-item {
@@ -185,12 +193,12 @@
     .nut-fixednav-btn {
       left: auto;
       right: 0;
-      border-radius: 45px 0 0 45px;
+      border-radius: scale-px(4scale-px(5px)) 0 0 scale-px(4scale-px(5px));
 
       .nut-icon {
         transform: rotate(0deg);
-        margin-right: 5px;
-        margin-left: 0px;
+        margin-right: scale-px(5px);
+        margin-left: scale-px(0px);
       }
     }
 
@@ -198,11 +206,12 @@
       transform: translateX(100%);
       right: auto;
       left: auto;
-      border-radius: 25px 0px 0px 25px;
+      border-radius: scale-px(2scale-px(5px)) scale-px(0px) scale-px(0px)
+        scale-px(2scale-px(5px));
 
       padding: {
-        right: 80px;
-        left: 20px;
+        right: scale-px(8scale-px(0px));
+        left: scale-px(2scale-px(0px));
       }
     }
   }

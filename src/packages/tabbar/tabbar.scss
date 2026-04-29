@@ -1,7 +1,7 @@
 @import '../tabbaritem/tabbaritem.scss';
 
 .nut-tabbar {
-  border: 0px;
+  border: scale-px(0px);
   box-shadow: $tabbar-box-shadow;
   border-bottom: $tabbar-border-bottom;
   border-top: $tabbar-border-top;
@@ -13,11 +13,11 @@
     display: flex;
 
     &-3 {
-      padding: 0 16px;
+      padding: 0 scale-px(16px);
     }
 
     &-2 {
-      padding: 0 32px;
+      padding: 0 scale-px(32px);
     }
 
     &-horizontal {
@@ -26,12 +26,12 @@
         flex-direction: row;
         justify-content: center;
         .nut-icon {
-          width: 20px;
-          height: 20px;
+          width: scale-px(20px);
+          height: scale-px(20px);
         }
         .nut-tabbar-item-text {
-          margin: 0 4px 0 6px;
-          font-size: 14px;
+          margin: 0 scale-px(4px) 0 scale-px(6px);
+          font-size: scale-px(14px);
         }
         .nut-badge-sup {
           &::after {
@@ -44,8 +44,8 @@
 
   &-fixed {
     position: fixed;
-    bottom: 0px;
-    left: 0px;
+    bottom: scale-px(0px);
+    left: scale-px(0px);
   }
 }
 
@@ -58,6 +58,6 @@
 
   &-fixed {
     left: auto;
-    right: 0px;
+    right: scale-px(0px);
   }
 }

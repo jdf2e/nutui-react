@@ -3,7 +3,7 @@
 .nut-tour {
   &-mask {
     position: fixed;
-    box-shadow: 0px 0px 0px 150vh $color-mask;
+    box-shadow: scale-px(0px) scale-px(0px) scale-px(0px) 150vh $color-mask;
     border-radius: $tour-mask-border-radius;
     z-index: 999;
 
@@ -29,8 +29,8 @@
       text-align: end;
 
       &-close {
-        --nut-icon-width: 10px;
-        --nut-icon-height: 10px;
+        --nut-icon-width: scale-px(10px);
+        --nut-icon-height: scale-px(10px);
       }
     }
 
@@ -51,7 +51,7 @@
 
         &-btn {
           display: inline-block;
-          border: 1px solid $color-text-disabled;
+          border: scale-px(1px) solid $color-text-disabled;
           margin-left: $tour-content-bottom-btn-margin-left;
           padding: $tour-content-bottom-btn-padding;
           font-size: $tour-content-bottom-btn-font-size;

@@ -82,7 +82,7 @@
     top: 50%;
     left: 50%;
     min-height: 10%;
-    max-width: 295px;
+    max-width: scale-px(295px);
     transform: translate(-50%, -50%);
 
     &.nut-popup-round {
@@ -107,7 +107,7 @@
   &-right {
     top: 0;
     right: 0;
-    width: 100px;
+    width: scale-px(100px);
     height: 100%;
 
     &.nut-popup-round {
@@ -118,7 +118,7 @@
   &-left {
     top: 0;
     left: 0;
-    width: 100px;
+    width: scale-px(100px);
     height: 100%;
 
     &.nut-popup-round {

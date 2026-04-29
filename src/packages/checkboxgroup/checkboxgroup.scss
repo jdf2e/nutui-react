@@ -10,7 +10,7 @@
     flex-direction: column;
 
     .nut-checkbox {
-      margin-bottom: 5px;
+      margin-bottom: scale-px(5px);
 
       &.nut-checkbox-reverse {
         width: 100%;
@@ -37,7 +37,7 @@
       display: inline-flex;
       /* #endif */
       flex: 1;
-      margin-right: 20px;
+      margin-right: scale-px(20px);
 
       &-button-active {
         border: $radio-button-active-border;
@@ -55,7 +55,7 @@
     box-sizing: border-box;
 
     .nut-checkbox {
-      margin-bottom: 5px;
+      margin-bottom: scale-px(5px);
 
       &.nut-checkbox-reverse {
         width: auto;
@@ -75,14 +75,14 @@
 .nut-rtl .nut-checkboxgroup {
   .nut-checkbox {
     &-label {
-      margin-right: 5px;
+      margin-right: scale-px(5px);
     }
   }
 
   &-vertical {
     .nut-checkbox {
       &-label {
-        margin-right: 5px;
+        margin-right: scale-px(5px);
       }
     }
   }
@@ -90,7 +90,7 @@
   &-horizontal {
     .nut-checkbox {
       margin-right: 0;
-      margin-left: 20px;
+      margin-left: scale-px(20px);
     }
   }
 }

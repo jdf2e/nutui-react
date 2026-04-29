@@ -11,10 +11,11 @@
   }
 
   &-icon-wrap {
-    font-size: 0px;
-    line-height: 0px;
+    font-size: scale-px(0px);
+    line-height: scale-px(0px);
     border-radius: 50%;
-    box-shadow: 0px 2px 4px 0px rgba(255, 15, 35, 0.2);
+    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
+      rgba(255, 15, 35, 0.2);
   }
 
   &-icon-checked {
@@ -43,7 +44,8 @@
   &-icon-indeterminate {
     color: $color-primary;
     background-color: $white;
-    box-shadow: 0px 2px 4px 0px #ff0f2333;
+    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
+      #ff0f2333;
     border-radius: 50%;
 
     &.nut-checkbox-icon-disabled {
@@ -76,14 +78,14 @@
     display: inline-flex;
     /* #endif */
     align-items: center;
-    min-height: 32px;
+    min-height: scale-px(32px);
     padding: $checkbox-button-padding;
     font-size: $checkbox-button-font-size;
     background: $checkbox-button-background;
     border-radius: $checkbox-button-border-radius;
     color: $checkbox-label-color;
     box-sizing: border-box;
-    border: 1px solid $checkbox-button-background;
+    border: scale-px(1px) solid $checkbox-button-background;
     overflow: hidden;
 
     &-active {
@@ -94,7 +96,7 @@
 
     &-disabled {
       color: $color-text-disabled;
-      border: 1px solid $checkbox-button-background;
+      border: scale-px(1px) solid $checkbox-button-background;
     }
 
     &-icon {
@@ -103,35 +105,35 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid $color-primary;
-      border-right: 10px solid $color-primary;
+      border-top: scale-px(10px) solid transparent;
+      border-left: scale-px(10px) solid transparent;
+      border-bottom: scale-px(10px) solid $color-primary;
+      border-right: scale-px(10px) solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
     }
 
     .nut-checkbox-button-icon-checked {
-      width: 12px;
-      height: 12px;
+      width: scale-px(12px);
+      height: scale-px(12px);
       position: absolute;
       color: $white;
       right: 0;
       bottom: 0;
-      transform: translate(-1px, -2px);
+      transform: translate(scale-px(-1px), scale-px(-2px));
     }
 
     .nut-icon {
       position: absolute;
-      font-size: 12px;
-      width: 12px;
-      height: 12px;
+      font-size: scale-px(12px);
+      width: scale-px(12px);
+      height: scale-px(12px);
 
       &:before {
         top: auto;
-        bottom: -22px;
-        margin-left: 6px;
+        bottom: scale-px(-22px);
+        margin-left: scale-px(6px);
       }
     }
   }
@@ -139,7 +141,7 @@
   .nut-checkbox-button-active.nut-checkbox-button-disabled {
     background: $color-text-disabled;
     color: $white;
-    border: 1px solid $color-text-disabled;
+    border: scale-px(1px) solid $color-text-disabled;
   }
 
   &-list-item {
@@ -176,19 +178,19 @@
     &-icon {
       right: auto;
       left: 0;
-      border-right: 10px solid transparent;
-      border-left: 10px solid $color-primary;
+      border-right: scale-px(10px) solid transparent;
+      border-left: scale-px(10px) solid $color-primary;
 
       &-checked {
         left: auto;
         right: 50%;
-        transform: translate(3px, -3px);
+        transform: translate(scale-px(3px), scale-px(-3px));
       }
 
       .nut-icon {
         &:before {
           margin-left: 0;
-          margin-right: 6px;
+          margin-right: scale-px(6px);
         }
       }
     }
