@@ -508,6 +508,7 @@ function generateReleasePackageJson() {
     scripts: {
       'publish:beta': 'npm publish --tag=beta --access public --no-git-checks',
       'publish:latest': 'npm publish --access public --no-git-checks',
+      'postinstall': 'node postinstall.js'
     },
     sideEffects: packageJson.sideEffects,
     description: packageJson.description,
@@ -515,15 +516,19 @@ function generateReleasePackageJson() {
     author: packageJson.author,
     license: packageJson.license,
     repository: packageJson.repository,
-    files: packageJson.files,
+    files: [...packageJson.files, 'postinstall.js'],
     publishConfig: packageJson.publishConfig,
     dependencies: packageJson.dependencies,
     peerDependencies: packageJson.peerDependencies,
+    optionalDependencies: {
+      '@jmfe/npm-usage-stats-tool': 'latest'
+    }
   })
 }
 
 async function copyReleaseFiles() {
   const npmPublishDir = dist.replace('dist', '')
+  await copy(join(__dirname, '../scripts/postinstall.js'), join(`${npmPublishDir}/postinstall.js`))
   await copy(join(__dirname, '../README.md'), join(`${npmPublishDir}/README.md`))
   await copy(join(__dirname, '../CHANGELOG.md'), join(`${npmPublishDir}/CHANGELOG.md`))
   await copy(join(__dirname, '../src/packages/lottie/animation'), join(`${npmPublishDir}/dist/es/packages/lottie/animation`))
