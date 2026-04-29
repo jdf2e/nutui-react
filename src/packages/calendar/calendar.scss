@@ -181,12 +181,12 @@
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
 
-      .nut-calendar-day-info {
+      &.nut-calendar-day-active .nut-calendar-day-info {
         color: $color-primary-text;
       }
 
-      .nut-calendar-day-day,
-      .nut-calendar-day-info-curr {
+      &.nut-calendar-day-active .nut-calendar-day-day,
+      &.nut-calendar-day-active .nut-calendar-day-info-curr {
         color: $color-primary-text;
       }
     }
@@ -194,8 +194,8 @@
     &-disabled {
       color: $calendar-disable-color !important;
 
-      .nut-calendar-day-day,
-      .nut-calendar-day-info-curr {
+      &.nut-calendar-day-disabled .nut-calendar-day-day,
+      &.nut-calendar-day-disabled .nut-calendar-day-info-curr {
         color: $calendar-disable-color;
       }
 
@@ -208,8 +208,8 @@
       background-color: $calendar-choose-background-color;
       color: $calendar-choose-color;
 
-      .nut-calendar-day-day,
-      .nut-calendar-day-info-curr {
+      &.nut-calendar-day-choose .nut-calendar-day-day,
+      &.nut-calendar-day-choose .nut-calendar-day-info-curr {
         color: $calendar-choose-color;
       }
 
@@ -217,8 +217,8 @@
         background-color: $calendar-choose-disable-background-color;
         color: $calendar-disable-color !important;
 
-        .nut-calendar-day-day,
-        .nut-calendar-day-info-curr {
+        &.nut-calendar-day-choose-disabled .nut-calendar-day-day,
+        &.nut-calendar-day-choose-disabled .nut-calendar-day-info-curr {
           color: $calendar-disable-color;
         }
 
