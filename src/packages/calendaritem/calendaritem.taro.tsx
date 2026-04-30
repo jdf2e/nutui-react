@@ -193,6 +193,8 @@ export const CalendarItem = React.forwardRef<
   const monthsRef = useRef<HTMLDivElement>(null)
   const monthsPanel = useRef<HTMLDivElement>(null)
   const viewAreaRef = useRef<HTMLDivElement>(null)
+  const isProgrammaticScrollRef = useRef(false)
+  const scrollReleaseTimerRef = useRef<number>()
   const [avgHeight, setAvgHeight] = useState(0)
   let viewHeight = 0
 
@@ -419,6 +421,16 @@ export const CalendarItem = React.forwardRef<
     return monthsRef.current as HTMLDivElement
   }
 
+  const markProgrammaticScroll = () => {
+    isProgrammaticScrollRef.current = true
+    if (scrollReleaseTimerRef.current) {
+      clearTimeout(scrollReleaseTimerRef.current)
+    }
+    scrollReleaseTimerRef.current = window.setTimeout(() => {
+      isProgrammaticScrollRef.current = false
+    }, 450)
+  }
+
   const requestAniFrameFunc = (current: number, monthNum: number) => {
     const lastItem = monthsData[monthsData.length - 1]
     const containerHeight = lastItem.cssHeight + lastItem.scrollTop
@@ -429,6 +441,7 @@ export const CalendarItem = React.forwardRef<
         getMonthsPanel().style.height = `${containerHeight}px`
         const currTop = monthsData[current].scrollTop
         getMonthsRef().scrollTop = currTop
+        markProgrammaticScroll()
         setScrollTop(currTop)
         nextTick(() => setScrollWithAnimation(true))
       }
@@ -478,6 +491,14 @@ export const CalendarItem = React.forwardRef<
     popup && resetRender()
   }, [currentDate])
 
+  useEffect(() => {
+    return () => {
+      if (scrollReleaseTimerRef.current) {
+        clearTimeout(scrollReleaseTimerRef.current)
+      }
+    }
+  }, [])
+
   // 暴露出的API
   const scrollToDate = (date: string) => {
     if (compareDate(date, propStartDate)) {
@@ -490,6 +511,7 @@ export const CalendarItem = React.forwardRef<
       if (item.title === monthTitle(dateArr[0], dateArr[1])) {
         const currTop = monthsData[index].scrollTop
         if (monthsRef.current) {
+          markProgrammaticScroll()
           const distance = currTop - monthsRef.current.scrollTop
           if (scrollAnimation) {
             let flag = 0
@@ -519,7 +541,9 @@ export const CalendarItem = React.forwardRef<
   const monthsViewScroll = (e: any) => {
     if (monthsData.length <= 1) return
     const scrollTop = (e.target as HTMLElement).scrollTop
-    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
+    Taro.getEnv() === 'WEB' &&
+      !isProgrammaticScrollRef.current &&
+      setScrollTop(scrollTop)
     let current = Math.floor(scrollTop / avgHeight)
     if (current < 0) return
     if (!monthsData[current + 1]) return
