@@ -29,11 +29,7 @@ if (process.env.TARO_ENV === 'jdharmony_cpp') {
 }
 
 const Icon: FC<IconProps> = ({ url }) => {
-  const style = {
-    width: 18,
-    height: 18,
-  }
-  return <Image src={url} style={style} mode="aspectFit" />
+  return <Image className="nut-calendarcard-icon" src={url} mode="aspectFit" />
 }
 
 export const ArrowLeft: FC = () => <Icon url={left} />
