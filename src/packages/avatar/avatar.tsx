@@ -129,6 +129,14 @@ export const Avatar: FunctionComponent<Partial<WebAvatarProps>> & {
     onClick && onClick(e)
   }
 
+  // @ts-ignore
+  const clickableProps = onClick
+    ? {
+        role: 'button',
+        tabIndex: 0,
+      }
+    : {}
+
   return (
     <>
       {(showMax ||
@@ -136,6 +144,7 @@ export const Avatar: FunctionComponent<Partial<WebAvatarProps>> & {
         avatarIndex <= propAvatarGroup?.max) && (
         <div
           className={cls}
+          {...clickableProps}
           {...rest}
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
@@ -160,7 +169,7 @@ export const Avatar: FunctionComponent<Partial<WebAvatarProps>> & {
                 : null}
               {children && <span className="nut-avatar-text">{children}</span>}
               {!src && !icon && !children && (
-                <User className="nut-avatar-icon" />
+                <User aria-hidden="true" className="nut-avatar-icon" />
               )}
             </>
           )}

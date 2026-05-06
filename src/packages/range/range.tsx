@@ -12,7 +12,7 @@ import { useTouch } from '@/hooks/use-touch'
 import { getRect } from '@/utils/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/hooks/use-props-value'
-import { useRtl } from '../configprovider'
+import { useRtl } from '@/packages/configprovider'
 import { WebRangeProps, RangeValue } from '@/types'
 
 const defaultProps = {

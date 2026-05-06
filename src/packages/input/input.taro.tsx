@@ -67,6 +67,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     style,
     className,
     plain,
+    inputStyle,
     onChange,
     onFocus,
     onBlur,
@@ -200,7 +201,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         name={name}
         className="nut-input-native"
         ref={inputRef}
-        style={{ textAlign: getTextAlign() }}
+        style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
         type={inputType(type) as any}
         password={type === 'password'}
         maxlength={maxLength}
@@ -215,6 +216,15 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         onBlur={handleBlur}
         onFocus={handleFocus}
         onInput={handleInput}
+        ariaLabel={
+          props.ariaLabel ||
+          // eslint-disable-next-line no-nested-ternary
+          (value
+            ? undefined
+            : placeholder === undefined
+              ? locale.placeholder
+              : placeholder)
+        }
       />
       <View
         style={{
@@ -225,15 +235,23 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
           alignItems: 'center',
           cursor: 'pointer',
         }}
-        onClick={(e) => {
+        onClick={(e: any) => {
           e.stopPropagation()
           if (!disabled) {
             setValue('')
             onClear?.('')
           }
         }}
+        ariaRole="button"
+        ariaLabel={(locale as any).clear || '清除'}
       >
-        {clearIcon || <MaskClose className="nut-input-clear" />}
+        {clearIcon ? (
+          React.cloneElement(clearIcon as any, {
+            ariaHidden: true,
+          })
+        ) : (
+          <MaskClose ariaHidden className="nut-input-clear" />
+        )}
       </View>
     </View>
   )

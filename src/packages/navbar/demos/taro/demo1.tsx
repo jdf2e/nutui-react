@@ -30,16 +30,29 @@ const Demo1 = () => {
         title="页面标题"
         back={
           <>
-            <ArrowLeft style={harmony() ? { marginRight: 16 } : {}} />
+            <ArrowLeft
+              ariaHidden
+              style={harmony() ? { marginRight: 16 } : {}}
+            />
             返回
           </>
         }
-        right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
+        right={
+          <Share
+            ariaLabel="分享"
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          />
+        }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       />
       <NavBar
         title="页面标题"
-        right={<Share onClick={(e) => Taro.showToast({ title: 'icon' })} />}
+        right={
+          <Share
+            ariaLabel="分享"
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          />
+        }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       />
       <NavBar
@@ -57,8 +70,13 @@ const Demo1 = () => {
         right={
           <View onClick={(e) => Taro.showToast({ title: '清空' })}>清空</View>
         }
-        left={<Close style={harmony() ? { marginRight: 16 } : {}} />}
-        back={<ArrowLeft />}
+        left={
+          <Close
+            ariaLabel="关闭"
+            style={harmony() ? { marginRight: 16 } : {}}
+          />
+        }
+        back={<ArrowLeft ariaLabel="返回" />}
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       />
       <NavBar
@@ -79,7 +97,10 @@ const Demo1 = () => {
             >
               编辑
             </View>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            <More
+              ariaLabel="更多"
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}

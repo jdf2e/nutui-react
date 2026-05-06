@@ -30,10 +30,12 @@ export interface BaseCalendarCard extends BaseProps {
   firstDayOfWeek: number // 0-6
   startDate: Date
   endDate: Date
+  weekdays?: string[]
   disableDay: (day: CalendarCardDay) => boolean
   renderDay: (day: CalendarCardDay) => ReactNode
   renderDayTop: (day: CalendarCardDay) => ReactNode
   renderDayBottom: (day: CalendarCardDay) => ReactNode
+  renderDayAriaLabel?: (day: CalendarCardDay) => string
   onDayClick: (day: CalendarCardDay) => void
   onPageChange: (data: CalendarCardMonth) => void
   onChange: (value: CalendarCardValue) => void

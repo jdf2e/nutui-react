@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
 import { WebPriceProps, PriceColorEnum } from '@/types'
+import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -36,10 +37,17 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const classPrefix = 'nut-price'
 
   const rtl = useRtl()
+  const isRenderPriceRaw = useMemo(
+    () =>
+      typeof originalPrice === 'string' &&
+      shouldRenderPriceAsRaw(originalPrice),
+    [originalPrice]
+  )
 
   const price = useMemo(() => {
+    if (isRenderPriceRaw) return ''
     return originalPrice.toString().replace(/[^\d.]/g, '')
-  }, [originalPrice])
+  }, [originalPrice, isRenderPriceRaw])
 
   const isCustomPriceColor = useMemo(() => {
     const specificPriceColor = Object.values(PriceColorEnum)
@@ -112,45 +120,54 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     )
   }
 
-  return (
-    <div
-      className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
-      style={style}
-      {...rest}
-    >
-      {symbol && position === 'before' ? renderSymbol() : null}
-      <div
-        className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
-          line ? `${classPrefix}-line` : ''
-        }`}
-        style={priceColorStyle}
-      >
-        {formatThousands(price)}
-      </div>
-      {digits !== 0 ? (
-        <>
-          {checkPoint(price) || digits ? (
+  const renderRawContent = () => <>{originalPrice}</>
+  const renderInner = () => {
+    return (
+      <>
+        {symbol && position === 'before' ? renderSymbol() : null}
+        <div
+          className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+            line ? `${classPrefix}-line` : ''
+          }`}
+          style={priceColorStyle}
+        >
+          {formatThousands(price)}
+        </div>
+        {digits !== 0 ? (
+          <>
+            {checkPoint(price) || digits ? (
+              <div
+                className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+                  line ? `${classPrefix}-line` : ''
+                }`}
+                style={priceColorStyle}
+              >
+                .
+              </div>
+            ) : null}
             <div
               className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
                 line ? `${classPrefix}-line` : ''
               }`}
               style={priceColorStyle}
             >
-              .
+              {formatDecimal(price)}
             </div>
-          ) : null}
-          <div
-            className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-              line ? `${classPrefix}-line` : ''
-            }`}
-            style={priceColorStyle}
-          >
-            {formatDecimal(price)}
-          </div>
-        </>
-      ) : null}
+          </>
+        ) : null}
 
-      {symbol && position === 'after' ? renderSymbol() : null}
+        {symbol && position === 'after' ? renderSymbol() : null}
+      </>
+    )
+  }
+
+  return (
+    <div
+      className={`${classPrefix} ${classPrefix}-${isCustomPriceColor ? 'custom' : color} ${className}`}
+      style={style}
+      {...rest}
+    >
+      {isRenderPriceRaw ? renderRawContent() : renderInner()}
     </div>
   )
 }

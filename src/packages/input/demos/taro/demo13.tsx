@@ -14,7 +14,7 @@ const Demo13 = () => {
         backgroundColor: '#ffffff',
       }}
     >
-      <Tips style={{ marginLeft: pxTransform(10) }} />
+      <Tips aria-hidden="true" style={{ marginLeft: pxTransform(10) }} />
       <Input
         placeholder="请输入短信验证码"
         style={{ '--nutui-input-padding': '10px' }}

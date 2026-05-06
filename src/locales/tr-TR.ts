@@ -11,6 +11,11 @@ const trTR: BaseLang = {
   edit: 'düzenlemek',
   reset: 'sıfırlama',
   close: 'Kapat',
+  back: 'Geri',
+  clear: 'Temizle',
+  image: {
+    errorTip: 'Resim yüklenemedi',
+  },
   video: {
     errorTip: 'Video yüklenemedi',
     clickRetry: 'Yeniden Tıklayın',
@@ -48,6 +53,24 @@ const trTR: BaseLang = {
     today: 'Bugün',
     loadPreviousMonth: 'Önceki ayı yükle',
     noEarlierMonth: 'Önceki ay yok',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      const dateStr = `${year}-${month}-${day}`
+      let label = today ? `Bugün, ${dateStr}` : dateStr
+      if (isActive) {
+        label = `Seçili ${label}`
+      }
+      if (isDisable) {
+        label = `${label} devre dışı`
+      }
+      return label
+    },
   },
   shortpassword: {
     title: 'Lütfen şifrenizi girin',
@@ -150,5 +173,8 @@ const trTR: BaseLang = {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },
   mask: 'Maske',
+  quickenter: {
+    title: 'Hızlı Giriş',
+  },
 }
 export default trTR

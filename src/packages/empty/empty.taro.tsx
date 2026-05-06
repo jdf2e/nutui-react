@@ -2,18 +2,14 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, Image } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import {
-  Button,
-  ButtonFill,
-  ButtonSize,
-  ButtonType,
-} from '@/packages/button/button.taro'
+import { UIFill, UISize, UIType } from '@/types/base/atoms'
+import { Button } from '@/packages/button/button.taro'
 
 export interface EmptyAction {
   text: React.ReactNode
-  type?: ButtonType
-  size?: ButtonSize
-  fill?: ButtonFill
+  type?: UIType
+  size?: UISize
+  fill?: UIFill
   disabled?: boolean
   onClick?: () => () => void
 }

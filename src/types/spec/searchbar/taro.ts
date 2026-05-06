@@ -15,4 +15,5 @@ export interface TaroSearchBarProps
   onBlur?: (value: string, event: BaseEventOrig<inputValueEventDetail>) => void
   onClear?: (event: ITouchEvent) => void
   onInputClick?: (event: ITouchEvent) => void
+  inputProps?: Partial<InputProps>
 }

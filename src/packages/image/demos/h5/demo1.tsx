@@ -8,6 +8,7 @@ const Demo1 = () => {
     <>
       <Image
         src={src}
+        aria-label="我是图片"
         onClick={() => {
           console.log('click image')
         }}

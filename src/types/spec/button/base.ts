@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import type { MouseEvent } from 'react'
 import { BaseProps } from '../../base/props'
 import { UIFill, UIRound, UISize, UIType } from '../../base/atoms'
 
@@ -15,5 +16,5 @@ export interface BaseButton extends BaseProps {
   rightIcon: ReactNode
   id: string
   nativeType: 'submit' | 'reset' | 'button'
-  onClick: (e: any) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }

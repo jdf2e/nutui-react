@@ -4,7 +4,7 @@ import { Cell, Progress } from '@nutui/nutui-react'
 const Demo1 = () => {
   return (
     <Cell>
-      <Progress percent={30} />
+      <Progress percent={30} aria-label="进度30%" />
     </Cell>
   )
 }

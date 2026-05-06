@@ -12,6 +12,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 import Demo10 from './demos/taro/demo10'
 
 const SearchBarDemo = () => {
@@ -25,6 +26,7 @@ const SearchBarDemo = () => {
       title5: '自定义图标设置',
       title6: '数据改变监听',
       title7: '自定义设置',
+      title8: 'InputProps扩展属性',
     },
     'zh-TW': {
       title1: '基礎用法',
@@ -35,6 +37,7 @@ const SearchBarDemo = () => {
       title5: '自定義圖標設定',
       title6: '數據改變監聽',
       title7: '自定義設定',
+      title8: 'InputProps擴展屬性',
     },
     'en-US': {
       title1: 'Basic Usage',
@@ -45,6 +48,7 @@ const SearchBarDemo = () => {
       title5: 'Custom Icon Settings',
       title6: 'Data Change Monitoring',
       title7: 'Custom Settings',
+      title8: 'InputProps Extension Attributes',
     },
   })
 
@@ -71,6 +75,8 @@ const SearchBarDemo = () => {
             <Demo6 />
           </>
         )}
+        <View className="h2">{translated.title8}</View>
+        <Demo8 />
         <View className="h2">{translated.title6}</View>
         <Demo7 />
       </ScrollView>

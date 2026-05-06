@@ -1,4 +1,9 @@
-import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
+import type {
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+  InputHTMLAttributes,
+} from 'react'
 import { BaseSearchBar } from './base'
 
 export interface WebSearchBarProps
@@ -11,4 +16,5 @@ export interface WebSearchBarProps
   onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
   onClear?: (event: MouseEvent<HTMLDivElement>) => void
   onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
+  inputProps?: Partial<InputHTMLAttributes<HTMLInputElement>>
 }

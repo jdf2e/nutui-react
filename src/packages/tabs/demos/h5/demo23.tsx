@@ -8,7 +8,7 @@ const Demo23 = () => {
     {
       title: '自定义 1',
       paneKey: 'c1',
-      icon: <Star />,
+      icon: <Star aria-hidden="true" />,
     },
     {
       title: '自定义 2',

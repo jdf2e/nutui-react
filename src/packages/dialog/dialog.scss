@@ -130,7 +130,7 @@
     .nut-button {
       min-width: $dialog-footer-button-min-width;
       border-radius: $dialog-footer-button-border;
-      padding: var(--nutui-button-large-padding, 0 12px);
+      padding: var(--nutui-button-large-padding, 0);
     }
 
     &-cancel.nut-dialog-footer-cancel {

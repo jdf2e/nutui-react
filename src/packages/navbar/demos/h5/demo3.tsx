@@ -13,7 +13,7 @@ const Demo3 = () => {
         right={
           <>
             <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-            <More onClick={(e) => Toast.show('icon')} />
+            <More aria-label="更多" onClick={(e) => Toast.show('icon')} />
           </>
         }
         onBackClick={(e) => Toast.show('返回')}
@@ -40,11 +40,11 @@ const Demo3 = () => {
           '--nutui-navbar-background': '#ff0f23',
           '--nutui-navbar-color': '#fff',
         }}
-        back={<ArrowLeft />}
+        back={<ArrowLeft aria-label="返回" />}
         right={
           <>
             <span onClick={(e) => Toast.show('编辑')}>编辑</span>
-            <More onClick={(e) => Toast.show('icon')} />
+            <More aria-label="更多" onClick={(e) => Toast.show('icon')} />
           </>
         }
         onBackClick={(e) => Toast.show('返回')}

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "3.0.19-cpp.22-7",
+  "version": "3.0.19-cpp.28",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/es/packages/nutui.react.build.js",
@@ -55,6 +55,7 @@
     "clone:jdharmony": "node ./scripts/harmony/clone-jdharmony.js",
     "dev": "vite --open --force",
     "dev:jmapp": "VITE_APP_PROJECT_ID=jmapp vite --open --force",
+    "dev:daojia": "VITE_APP_PROJECT_ID=daojia vite --open --force",
     "dev:rtl": "VITE_RTL=rtl vite --open --force",
     "dev:jrkf": "VITE_APP_PROJECT_ID=jrkf vite --open --force",
     "dev:taro:rn:dark": "THEME=dark pnpm dev:taro:rn",
@@ -109,7 +110,7 @@
   "dependencies": {
     "@babel/runtime": "^7.23.9",
     "@nutui/icons-react": "^3.0.2-beta.5",
-    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.3",
+    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.9",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/touch-emulator": "^1.0.0",
     "@nutui/lottie-miniprogram": "^1.0.2",
@@ -242,6 +243,6 @@
     "sass": "1.77.6",
     "@tarojs/api": "4.0.12",
     "@tarojs/components": "4.0.12",
-    "@nutui/icons-react-taro": "^3.0.2-cpp.1"
+    "@nutui/icons-react-taro": "3.0.2-cpp.3.beta.9"
   }
 }

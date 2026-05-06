@@ -11,6 +11,11 @@ const zhCN: BaseLang = {
   edit: '编辑',
   reset: '重置',
   close: '关闭',
+  back: '返回',
+  clear: '清除',
+  image: {
+    errorTip: '图片加载失败',
+  },
   video: {
     errorTip: '视频加载失败',
     clickRetry: '点击重试',
@@ -42,6 +47,26 @@ const zhCN: BaseLang = {
     today: '今天',
     loadPreviousMonth: '加载上一个月',
     noEarlierMonth: '没有更早月份',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      if (isActive) {
+        return today
+          ? `已选定今日${month}月${day}号`
+          : `已选定${month}月${day}号`
+      }
+      if (isDisable) {
+        return today
+          ? `${month}月${day}号今日按钮变暗`
+          : `${month}月${day}号按钮变暗`
+      }
+      return today ? `${month}月${day}号今日` : `${month}月${day}号`
+    },
   },
   shortpassword: {
     title: '请输入密码',
@@ -142,5 +167,8 @@ const zhCN: BaseLang = {
     errorCanvasTips: '当前环境不支持Canvas',
   },
   mask: '蒙层',
+  quickenter: {
+    title: '快捷入口',
+  },
 }
 export default zhCN
