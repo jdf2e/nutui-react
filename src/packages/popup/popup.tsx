@@ -40,6 +40,7 @@ const defaultProps: WebPopupProps = {
   onTouchStart: () => {},
   onTouchMove: () => {},
   onTouchEnd: () => {},
+  overlayProps: {},
 }
 
 // 默认1000，参看variables
@@ -89,6 +90,7 @@ export const Popup: FunctionComponent<
     onTouchMove,
     onTouchEnd,
     closeAriaLabel,
+    overlayProps,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
   const topNodeRef = React.useRef<HTMLDivElement | null>(null)
@@ -343,6 +345,7 @@ export const Popup: FunctionComponent<
             lockScroll={lockScroll}
             duration={duration}
             onClick={handleOverlayClick}
+            {...overlayProps}
           />
         )}
         {renderPop()}

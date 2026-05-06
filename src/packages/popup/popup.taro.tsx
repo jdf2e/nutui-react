@@ -46,6 +46,7 @@ const defaultProps: TaroPopupProps = {
   onTouchStart: () => {},
   onTouchMove: () => {},
   onTouchEnd: () => {},
+  overlayProps: {},
 }
 
 // 默认1000，参看variables
@@ -95,6 +96,7 @@ export const Popup: FunctionComponent<
     onTouchMove,
     onTouchEnd,
     closeAriaLabel,
+    overlayProps,
   } = { ...defaultProps, ...props }
   const { locale } = useConfig()
 
@@ -435,6 +437,7 @@ export const Popup: FunctionComponent<
             lockScroll={lockScroll}
             duration={duration}
             onClick={handleOverlayClick}
+            {...overlayProps}
           />
         ) : null}
         {renderPop()}
