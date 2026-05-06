@@ -41,6 +41,7 @@ const defaultProps: WebPopupProps = {
   onTouchMove: () => {},
   onTouchEnd: () => {},
   overlayProps: {},
+  animated: true,
 }
 
 // 默认1000，参看variables
@@ -91,6 +92,7 @@ export const Popup: FunctionComponent<
     onTouchEnd,
     closeAriaLabel,
     overlayProps,
+    animated,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef<HTMLDivElement | null>(null)
   const topNodeRef = React.useRef<HTMLDivElement | null>(null)
@@ -108,6 +110,7 @@ export const Popup: FunctionComponent<
   const isTouching = useRef(false)
   const role = 'dialog'
   const { locale } = useConfig()
+  const transitionDuration = animated ? Number(duration) : 0
 
   useLockScroll(nodeRef, innerVisible && lockScroll)
 
@@ -162,7 +165,7 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-        }, Number(duration))
+        }, transitionDuration)
       }
       onClose && onClose()
     }
@@ -308,7 +311,7 @@ export const Popup: FunctionComponent<
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}
-        timeout={duration}
+        timeout={transitionDuration}
         in={innerVisible}
         onEntered={afterShow}
         onExited={afterClose}
@@ -343,7 +346,7 @@ export const Popup: FunctionComponent<
             visible={innerVisible}
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
-            duration={duration}
+            duration={transitionDuration}
             onClick={handleOverlayClick}
             {...overlayProps}
           />

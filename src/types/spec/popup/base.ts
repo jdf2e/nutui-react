@@ -33,4 +33,5 @@ export interface BasePopup extends BaseProps, BaseOverlay {
   onTouchEnd: (height: number, e: any) => void
   closeAriaLabel?: string
   overlayProps?: any
+  animated?: boolean
 }
