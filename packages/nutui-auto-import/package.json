@@ -1,7 +1,7 @@
 {
   "name": "@nutui/nutui-react-auto-import",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@10.33.4",
   "description": "NutUI React 组件的自动导入插件，支持多种构建工具如 Vite、Webpack、Rollup 等。",
   "type": "module",
   "keywords": [
