@@ -7,9 +7,10 @@ const viVN: BaseLang = {
   done: 'Hoàn thành',
   noData: 'Tạm thời không có dữ liệu',
   placeholder: 'Vui lòng nhập nội dung',
+  select: 'Vui lòng chọn',
   edit: 'Chỉnh sửa',
   reset: 'Đặt lại',
-  select: 'Vui lòng chọn',
+  close: 'Đóng',
   video: {
     errorTip: 'Tải video không thành công',
     clickRetry: 'Nhấn để thử lại',
@@ -60,7 +61,7 @@ const viVN: BaseLang = {
     day: 'Ngày',
     hour: 'Giờ',
     minute: 'Phút',
-    second: '',
+    second: 'Giây',
   },
   address: {
     selectRegion: 'Vui lòng chọn khu vực',
@@ -140,5 +141,6 @@ const viVN: BaseLang = {
   watermark: {
     errorCanvasTips: 'Môi trường hiện tại không hỗ trợ Canvas',
   },
+  mask: 'Lớp phủ',
 }
 export default viVN
