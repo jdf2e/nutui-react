@@ -1,3 +1,16 @@
+# v3.0.20-beta.0
+
+`2026-05-06`
+
+- :bug: fix: 修改多语言
+- :bug: fix: 修订demo
+- :sparkles: feat: enhance SafeArea with className/style props and constant() iOS fallback (#3388)
+- :sparkles: feat(language): 添加越南语语言包 (#3378)
+- 🏡 chore(deps): update dependency jest to v30 (#3288)
+- 🏡 chore(deps): update commitlint monorepo to v20 (#3428)
+- 🏡 chore(deps): update actions/github-script action to v9 (#3432)
+- 🔨 build: 添加postinstall脚本以收集使用统计信息 (#3436)
+
 # v3.0.19
 
 `2026-03-06`
