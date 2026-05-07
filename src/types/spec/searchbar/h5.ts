@@ -1,4 +1,9 @@
-import type { ChangeEvent, FocusEvent, MouseEvent, InputHTMLAttributes } from 'react'
+import type {
+  ChangeEvent,
+  FocusEvent,
+  MouseEvent,
+  InputHTMLAttributes,
+} from 'react'
 import { BaseSearchBar } from './base'
 
 export interface WebSearchBarProps

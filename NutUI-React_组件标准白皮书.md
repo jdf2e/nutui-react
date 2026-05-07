@@ -114,6 +114,7 @@ NutUI 的演进伴随着移动端技术的演进，从移动端到跨端，从 V
    定义组件 Props 前，**必须（MUST）**继承全局抽象类型 `BasicComponent`（或 `MiniProgramBasicProps` 等多端公共类型），确保组件基础能力的统一。
 
 2. **强类型声明与规范**：
+
    - **禁止 `any`**：Props 参数需使用显式联合类型，严禁使用 `any` 逃避类型检查。
    - **事件命名**：对外事件统一以 `onXXX`（小驼峰）命名。
    - **精简通信**：事件通信仅传递必要数据，避免携带冗余的组件实例或私有变量。
@@ -149,6 +150,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
 ### 5.4 组件防御与容灾红线
 
 1. **防阻断式崩溃**：
+
    - 针对入参异常、异步失败、逻辑边界等风险点，必须内置 `try-catch` 或提供兜底 UI。
    - 组件内部错误不得外溢导致整个前端应用白屏死机。
 
