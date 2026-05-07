@@ -112,6 +112,7 @@ import { Price } from '@nutui/nutui-react'
 | position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
 | size | 價格尺寸，`xlarge` \| `large` \| `normal` \| `small` | `string` | `normal` |
 | line | 是否劃線價 | `boolean` | `false` |
+| raw | 開啟後，當 price 包含非法字符時，原樣展示，不做格式化處理 | `boolean` | `false` |
 
 ## 主題定製
 

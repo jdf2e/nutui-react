@@ -5,7 +5,10 @@ import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPriceProps, PriceColorEnum } from '@/types'
 import { harmony } from '@/utils/taro/platform'
-import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
+import {
+  shouldRenderPriceAsRaw,
+  hasNonPriceChars,
+} from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -17,6 +20,7 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
+  raw: false,
 } as TaroPriceProps
 export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   const {
@@ -28,6 +32,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     position,
     size,
     line,
+    raw,
     className,
     style,
   } = {
@@ -41,9 +46,12 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
 
   const isRenderPriceRaw = useMemo(
     () =>
-      typeof originalPrice === 'string' &&
-      shouldRenderPriceAsRaw(originalPrice),
-    [originalPrice]
+      (typeof originalPrice === 'string' &&
+        shouldRenderPriceAsRaw(originalPrice)) ||
+      (raw &&
+        typeof originalPrice === 'string' &&
+        hasNonPriceChars(originalPrice)),
+    [originalPrice, raw]
   )
 
   const price = useMemo(() => {
@@ -95,7 +103,7 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
