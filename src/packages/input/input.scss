@@ -18,7 +18,7 @@
     color: $color-text-disabled;
     width: scale-px(14px);
     height: scale-px(14px);
-    font-size: scale-px(14px);
+    font-size: $font-size-base;
   }
   &-container {
     height: scale-px(38px);

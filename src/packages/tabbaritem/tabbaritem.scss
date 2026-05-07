@@ -12,7 +12,7 @@
   .nut-icon {
     width: scale-px(24px);
     height: scale-px(24px);
-    font-size: scale-px(24px);
+    font-size: $font-size-xxl;
     /* #ifdef harmony dynamic*/
     color: $tabbar-inactive-color;
     /* #endif*/

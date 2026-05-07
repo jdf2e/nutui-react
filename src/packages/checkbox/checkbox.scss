@@ -11,7 +11,7 @@
   }
 
   &-icon-wrap {
-    font-size: scale-px(0px);
+    font-size: 0px;
     line-height: scale-px(0px);
     border-radius: 50%;
     box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
@@ -126,7 +126,7 @@
 
     .nut-icon {
       position: absolute;
-      font-size: scale-px(12px);
+      font-size: $font-size-s;
       width: scale-px(12px);
       height: scale-px(12px);
 

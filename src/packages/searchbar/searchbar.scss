@@ -40,7 +40,7 @@
   }
 
   &-rightin {
-    font-size: scale-px(15px);
+    font-size: $font-size-l;
     font-weight: 500;
     color: $color-primary;
 
@@ -97,7 +97,7 @@
     background-color: #fff;
     top: scale-px(9px);
     left: scale-px(6px);
-    font-size: scale-px(12px);
+    font-size: $font-size-s;
     line-height: scale-px(12px);
 
     .nut-searchbar-value {
@@ -113,7 +113,7 @@
     .nut-icon {
       width: scale-px(6px);
       height: scale-px(6px);
-      font-size: scale-px(6px);
+      font-size: scale-font-px(6px);
       color: #c2c4cc;
       margin-left: scale-px(4px);
     }

@@ -28,7 +28,7 @@
     &-title {
       @include moreline-ellipsis();
       line-height: 1.5;
-      font-size: scale-px(14px);
+      font-size: $font-size-base;
       color: $color-title;
     }
 
@@ -71,7 +71,7 @@
       &-name {
         line-height: 1.5;
         color: $color-text;
-        font-size: scale-px(12px);
+        font-size: $font-size-s;
         padding-top: scale-px(4px);
       }
     }

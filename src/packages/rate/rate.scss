@@ -114,12 +114,12 @@
     }
 
     &-large {
-      font-size: calc($rate-font-size + scale-px(6px));
+      font-size: calc($rate-font-size + scale-font-px(6px));
       padding-left: calc($rate-item-margin * 2);
     }
 
     &-small {
-      font-size: calc($rate-font-size - scale-px(2px));
+      font-size: calc($rate-font-size - scale-font-px(2px));
       padding-left: calc($rate-item-margin / 2);
     }
 

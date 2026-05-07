@@ -2,9 +2,17 @@
 // 缩放系数
 :root {
   --scale-f: 1;
+  --scale-font: var(--scale-f, 1);
+  --scale-icon: var(--scale-f, 1);
 }
 @function scale-px($size) {
   @return calc(#{$size} * var(--scale-f, 1));
+}
+@function scale-font-px($size) {
+  @return calc(#{$size} * var(--scale-font, var(--scale-f, 1)));
+}
+@function scale-icon-px($size) {
+  @return calc(#{$size} * var(--scale-icon, var(--scale-f, 1)));
 }
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #ff0f23) !default;
@@ -154,17 +162,17 @@ $font-family:
   sans-serif !default;
 
 // Font
-$font-size-xxxs: var(--nutui-font-size-xxxs, scale-px(9px)) !default;
-$font-size-xxs: var(--nutui-font-size-xxs, scale-px(10px)) !default;
-$font-size-xs: var(--nutui-font-size-xs, scale-px(11px)) !default;
-$font-size-s: var(--nutui-font-size-s, scale-px(12px)) !default;
-$font-size-base: var(--nutui-font-size-base, scale-px(14px)) !default;
-$font-size-l: var(--nutui-font-size-l, scale-px(15px)) !default;
-$font-size-icon: var(--nutui-font-size-icon, scale-px(16px)) !default;
-$font-size-xl: var(--nutui-font-size-xl, scale-px(18px)) !default;
-$font-size-xxl: var(--nutui-font-size-xxl, scale-px(24px)) !default;
-$font-size-xxxl: var(--nutui-font-size-10, scale-px(26px)) !default;
-$font-size-xxxxl: var(--nutui-font-size-11, scale-px(28px)) !default;
+$font-size-xxxs: var(--nutui-font-size-xxxs, scale-font-px(9px)) !default;
+$font-size-xxs: var(--nutui-font-size-xxs, scale-font-px(10px)) !default;
+$font-size-xs: var(--nutui-font-size-xs, scale-font-px(11px)) !default;
+$font-size-s: var(--nutui-font-size-s, scale-font-px(12px)) !default;
+$font-size-base: var(--nutui-font-size-base, scale-font-px(14px)) !default;
+$font-size-l: var(--nutui-font-size-l, scale-font-px(15px)) !default;
+$font-size-icon: var(--nutui-font-size-icon, scale-icon-px(16px)) !default;
+$font-size-xl: var(--nutui-font-size-xl, scale-font-px(18px)) !default;
+$font-size-xxl: var(--nutui-font-size-xxl, scale-font-px(24px)) !default;
+$font-size-xxxl: var(--nutui-font-size-10, scale-font-px(26px)) !default;
+$font-size-xxxxl: var(--nutui-font-size-11, scale-font-px(28px)) !default;
 
 // 字重 ok
 $font-weight-light: var(--nutui-font-weight-light, 300) !default;
@@ -534,9 +542,9 @@ $divider-vertical-margin: var(
 
 // icon（✅）
 
-$icon-height: var(--nutui-icon-height, scale-px(20px)) !default;
-$icon-width: var(--nutui-icon-width, scale-px(20px)) !default;
-$icon-line-height: var(--nutui-icon-line-height, scale-px(20px)) !default;
+$icon-height: var(--nutui-icon-height, scale-icon-px(20px)) !default;
+$icon-width: var(--nutui-icon-width, scale-icon-px(20px)) !default;
+$icon-line-height: var(--nutui-icon-line-height, scale-icon-px(20px)) !default;
 
 // uploader（✅）
 $uploader-image-width: var(
@@ -577,7 +585,7 @@ $uploader-image-icon-margin-bottom: var(
 ) !default;
 $uploader-image-icon-tip-font-size: var(
   --nutui-uploader-image-icon-tip-font-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $uploader-preview-progress-background: var(
   --nutui-uploader-preview-progress-background,
@@ -807,7 +815,7 @@ $numberkeyboard-header-close-color: var(
 ) !default;
 $numberkeyboard-header-close-font-size: var(
   --nutui-numberkeyboard-header-close-font-size,
-  scale-px(14px)
+  $font-size-base
 ) !default;
 $numberkeyboard-header-close-background-color: var(
   --nutui-numberkeyboard-header-close-background-color,
@@ -921,57 +929,57 @@ $price-symbol-padding-right: var(
 //xlarge price（✅）
 $price-symbol-xlarge-size: var(
   --nutui-price-symbol-xlarge-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $price-integer-xlarge-size: var(
   --nutui-price-integer-xlarge-size,
-  scale-px(24px)
+  $font-size-xxl
 ) !default;
 $price-decimal-xlarge-size: var(
   --nutui-price-decimal-xlarge-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 
 //large price（✅）
 $price-symbol-large-size: var(
   --nutui-price-symbol-large-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $price-integer-large-size: var(
   --nutui-price-integer-large-size,
-  scale-px(18px)
+  $font-size-xl
 ) !default;
 $price-decimal-large-size: var(
   --nutui-price-decimal-large-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 
 //normal price（✅）
 $price-symbol-normal-size: var(
   --nutui-price-symbol-normal-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $price-integer-normal-size: var(
   --nutui-price-integer-normal-size,
-  scale-px(16px)
+  scale-font-px(16px)
 ) !default;
 $price-decimal-normal-size: var(
   --nutui-price-decimal-normal-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 
 // small price（✅）
 $price-symbol-small-size: var(
   --nutui-price-symbol-small-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $price-integer-small-size: var(
   --nutui-price-integer-small-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $price-decimal-small-size: var(
   --nutui-price-decimal-small-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 
 //avatar（✅）
@@ -1050,11 +1058,11 @@ $switch-inactive-disabled-label-text-color: var(
 $toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
 $toast-title-font-size: var(
   --nutui-toast-title-font-size,
-  scale-px(16px)
+  scale-font-px(16px)
 ) !default;
 $toast-text-font-size: var(
   --nutui-toast-text-font-size,
-  scale-px(14px)
+  $font-size-base
 ) !default;
 $toast-font-color: var(--nutui-toast-font-color, $white) !default;
 $toast-inner-padding: var(
@@ -1087,7 +1095,7 @@ $tour-content-inner-margin: var(
 ) !default;
 $tour-content-inner-font-size: var(
   --nutui-tour-content-inner-font-size,
-  scale-px(14px)
+  $font-size-base
 ) !default;
 $tour-content-bottom-margin-top: var(
   --nutui-tour-content-bottom-margin-top,
@@ -1103,7 +1111,7 @@ $tour-content-bottom-btn-padding: var(
 ) !default;
 $tour-content-bottom-btn-font-size: var(
   --nutui-tour-content-bottom-btn-font-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $tour-content-bottom-btn-border-radius: var(
   --nutui-tour-content-bottom-btn-border-radius,
@@ -1174,7 +1182,7 @@ $hoverbutton-position-right: var(
 ) !default;
 $hoverbutton-item-size: var(
   --nutui-hoverbutton-item-size,
-  scale-px(40px)
+  scale-font-px(40px)
 ) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
@@ -1261,9 +1269,9 @@ $rate-icon-inactive-color: var(
   --nutui-rate-icon-inactive-color,
   $color-primary-icon-disabled
 ) !default;
-$rate-icon-size: var(--nutui-rate-icon-size, scale-px(12px)) !default;
+$rate-icon-size: var(--nutui-rate-icon-size, scale-font-px(12px)) !default;
 $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
-$rate-font-size: var(--nutui-rate-font-size, scale-px(12px)) !default;
+$rate-font-size: var(--nutui-rate-font-size, $font-size-s) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, scale-px(46px)) !default;
@@ -1317,7 +1325,7 @@ $infiniteloading-color: var(
 ) !default;
 $infiniteloading-icon-size: var(
   --nutui-infiniteloading-icon-size,
-  scale-px(24px)
+  $font-size-xxl
 ) !default;
 
 //range（✅）
@@ -1363,7 +1371,7 @@ $steps-base-head-background-color: var(
 $steps-base-head-border: var(--nutui-steps-base-head-border, none) !default;
 $steps-base-head-text-size: var(
   --nutui-steps-base-head-text-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $steps-base-head-size: var(
   --nutui-steps-base-icon-size,
@@ -1375,7 +1383,7 @@ $steps-base-head-color: var(
 ) !default;
 $steps-base-head-dot-size: var(
   --nutui-steps-base-head-dot-size,
-  scale-px(6px)
+  scale-font-px(6px)
 ) !default;
 $steps-base-head-dot-background-color: var(
   --nutui-steps-base-head-dot-background-color,
@@ -1383,15 +1391,15 @@ $steps-base-head-dot-background-color: var(
 ) !default;
 $steps-base-head-icon-size: var(
   --nutui-steps-base-head-icon-size,
-  scale-px(16px)
+  scale-font-px(16px)
 ) !default;
 $steps-double-head-icon-size: var(
   --nutui-steps-base-head-icon-size-right,
-  scale-px(20px)
+  scale-font-px(20px)
 ) !default;
 $steps-vertical-head-icon-size: var(
   --nutui-steps-vertical-item-icon-size,
-  scale-px(20px)
+  scale-font-px(20px)
 ) !default;
 $steps-base-line-height: var(
   --nutui-steps-base-line-height,
@@ -1643,11 +1651,11 @@ $dialog-vertical-footer-ok-margin-top: var(
   scale-px(16px)
 ) !default;
 $dialog-close-color: var(--nutui-dialog-close-color, #ffffff) !default;
-$dialog-close-width: var(--nutui-dialog-close-width, scale-px(16px)) !default;
+$dialog-close-width: var(--nutui-dialog-close-width, $font-size-icon) !default;
 $dialog-close-height: var(--nutui-dialog-close-height, scale-px(16px)) !default;
 $dialog-bottom-close-icon-size: var(
   --nutui-dialog-bottom-close-icon-size,
-  scale-px(24px)
+  $font-size-xxl
 ) !default;
 $dialog-close-top: var(--nutui-dialog-close-top, scale-px(16px)) !default;
 $dialog-close-left: var(--nutui-dialog-close-left, scale-px(16px)) !default;
@@ -1926,7 +1934,7 @@ $badge-padding: var(
   scale-px(1px) scale-px(4px)
 ) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, scale-px(2px)) !default;
-$badge-icon-size: var(--nutui-badge-icon-size, scale-px(10px)) !default;
+$badge-icon-size: var(--nutui-badge-icon-size, $font-size-xxs) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translate(50%, -50%)
@@ -1998,7 +2006,7 @@ $progress-text-padding: var(
 ) !default;
 $progress-text-font-size: var(
   --nutui-progress-text-font-size,
-  scale-px(13px)
+  scale-font-px(13px)
 ) !default;
 $progress-text-position-top: var(
   --nutui-progress-text-position-top,
@@ -2307,7 +2315,10 @@ $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
   scale-px(19px)
 ) !default;
-$searchbar-icon-size: var(--nutui-searchbar-icon-size, scale-px(20px)) !default;
+$searchbar-icon-size: var(
+  --nutui-searchbar-icon-size,
+  scale-font-px(20px)
+) !default;
 $searchbar-input-height: var(
   --nutui-searchbar-input-height,
   scale-px(38px)
@@ -2737,7 +2748,7 @@ $addresslist-border: var(--nutui-addresslist-border, #f0f0f0) !default;
 $addresslist-font-color: var(--nutui-addresslist-font-color, #333333) !default;
 $addresslist-font-size: var(
   --nutui-addresslist-font-size,
-  scale-px(16px)
+  scale-font-px(16px)
 ) !default;
 $addresslist-mask-bg: var(
   --nutui-addresslist-mask-bg,
@@ -2749,7 +2760,7 @@ $addresslist-addr-font-color: var(
 ) !default;
 $addresslist-addr-font-size: var(
   --nutui-addresslist-addr-font-size,
-  scale-px(12px)
+  $font-size-s
 ) !default;
 $addresslist-set-bg: var(--nutui-addresslist-set-bg, #f5a623) !default;
 $addresslist-del-bg: var(--nutui-addresslist-del-bg, #e1251b) !default;
@@ -2795,7 +2806,7 @@ $watermark-z-index: var(
 // TrendArrow
 $trendarrow-font-size: var(
   --nutui-trendarrow-font-size,
-  scale-px(14px)
+  $font-size-base
 ) !default;
 $trendarrow-icon-margin: var(
   --nutui-trendarrow-icon-margin,
@@ -2805,7 +2816,7 @@ $trendarrow-icon-margin: var(
 // animatingnumbers（✅）
 $countup-width: var(--nutui-countup-width, auto) !default;
 $countup-height: var(--nutui-countup-height, scale-px(32px)) !default;
-$countup-base-size: var(--nutui-countup-base-size, scale-px(18px)) !default;
+$countup-base-size: var(--nutui-countup-base-size, $font-size-xl) !default;
 $countup-border-radius: var(
   --nutui-countup-border-radius,
   scale-px(4px)
@@ -2845,7 +2856,7 @@ $col-default-margin-bottom: var(
 // TrendArrow
 $trendarrow-font-size: var(
   --nutui-trendarrow-font-size,
-  scale-px(14px)
+  $font-size-base
 ) !default;
 $trendarrow-icon-margin: var(
   --nutui-trendarrow-icon-margin,

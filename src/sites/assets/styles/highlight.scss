@@ -5,7 +5,7 @@ code {
   overflow-x: auto;
   color: $nutui-doc-code-color;
   font-weight: 400;
-  font-size: 13px;
+  font-size: scale-font-px(13px);
   font-family: $nutui-doc-code-font-family;
   line-height: 1.8;
   white-space: pre-wrap;

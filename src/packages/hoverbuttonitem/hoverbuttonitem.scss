@@ -28,7 +28,7 @@
         display: block;
         width: scale-px(14px);
         height: scale-px(14px);
-        font-size: scale-px(14px);
+        font-size: $font-size-base;
       }
     }
   }
@@ -44,7 +44,7 @@
       display: block;
       width: scale-px(20px);
       height: scale-px(20px);
-      font-size: scale-px(20px);
+      font-size: scale-font-px(20px);
     }
   }
 
@@ -59,7 +59,7 @@
   }
 
   &-text {
-    font-size: scale-px(10px);
+    font-size: $font-size-xxs;
     margin-top: scale-px(5px);
     line-height: scale-px(9px);
   }
