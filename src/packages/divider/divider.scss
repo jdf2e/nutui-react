@@ -51,7 +51,7 @@
     /* #ifndef dynamic*/
     display: inline-flex;
     /* #endif */
-    width: scale-px(0px);
+    width: 0px;
     height: $divider-vertical-height;
     border-left: scale-px(1px) solid $divider-border-color;
     margin: $divider-vertical-margin;

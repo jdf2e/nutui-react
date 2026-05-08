@@ -12,10 +12,9 @@
 
   &-icon-wrap {
     font-size: 0px;
-    line-height: scale-px(0px);
+    line-height: 0px;
     border-radius: 50%;
-    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
-      rgba(255, 15, 35, 0.2);
+    box-shadow: 0px scale-px(2px) scale-px(4px) 0px rgba(255, 15, 35, 0.2);
   }
 
   &-icon-checked {
@@ -44,8 +43,7 @@
   &-icon-indeterminate {
     color: $color-primary;
     background-color: $white;
-    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
-      #ff0f2333;
+    box-shadow: 0px scale-px(2px) scale-px(4px) 0px #ff0f2333;
     border-radius: 50%;
 
     &.nut-checkbox-icon-disabled {

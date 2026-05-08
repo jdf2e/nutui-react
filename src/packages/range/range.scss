@@ -59,8 +59,7 @@
     height: $range-button-height;
     background: $range-button-background;
     border-radius: 50%;
-    box-shadow: scale-px(0px) scale-px(1px) scale-px(2px) scale-px(0px)
-      rgba(0, 0, 0, 0.15);
+    box-shadow: 0px scale-px(1px) scale-px(2px) 0px rgba(0, 0, 0, 0.15);
     border: $range-button-border;
     outline: none;
     align-items: center;
@@ -159,7 +158,7 @@
     top: scale-px(-20px);
     width: scale-px(11px);
     height: scale-px(11px);
-    left: scale-px(0px);
+    left: 0px;
     border-radius: scale-px(6px);
     background: $range-inactive-color;
 
@@ -172,12 +171,12 @@
 .nut-range-vertical-container {
   height: 100%;
   flex-direction: column;
-  padding: scale-px(0px) scale-px(15px);
+  padding: 0px scale-px(15px);
 }
 
 .nut-range-vertical {
   width: $range-height;
-  margin: $range-margin scale-px(0px);
+  margin: $range-margin 0px;
 
   &-button {
     &-wrapper,
@@ -193,7 +192,7 @@
     }
 
     &-wrapper-left {
-      top: scale-px(0px);
+      top: 0px;
       left: 50%;
       /* #ifndef dynamic*/
       right: initial;
@@ -202,7 +201,7 @@
     }
 
     &-number {
-      left: scale-px(0px);
+      left: 0px;
       top: 50%;
       // transform: translate3d(100%, 0, 0);
     }
@@ -212,11 +211,11 @@
     position: absolute;
     width: scale-px(36px);
     height: 100%;
-    top: scale-px(0px);
+    top: 0px;
     right: 50%;
     overflow: visible;
     font-size: $font-size-s;
-    padding: scale-px(0px);
+    padding: 0px;
   }
 
   &-mark-hm {
@@ -276,7 +275,7 @@
   }
 
   &-tick {
-    right: scale-px(0px);
+    right: 0px;
     /* #ifndef dynamic*/
     left: initial;
     /* #endif */

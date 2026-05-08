@@ -248,7 +248,7 @@ $button-border-width: var(
 ) !default;
 $button-normal-padding: var(
   --nutui-button-normal-padding,
-  scale-px(0px) scale-px(12px)
+  0px scale-px(12px)
 ) !default;
 $button-default-height: var(
   --nutui-button-default-height,
@@ -273,7 +273,7 @@ $button-default-disabled-color: var(
 ) !default;
 $button-default-padding: var(
   --nutui-button-default-padding,
-  scale-px(0px) scale-px(12px)
+  0px scale-px(12px)
 ) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
@@ -286,7 +286,7 @@ $button-xlarge-height: var(
 ) !default;
 $button-xlarge-padding: var(
   --nutui-button-xlarge-padding,
-  scale-px(0px) scale-px(24px)
+  0px scale-px(24px)
 ) !default;
 $button-xlarge-font-size: var(
   --nutui-button-xlarge-font-size,
@@ -304,7 +304,7 @@ $button-xlarge-border-radius: var(
 $button-large-height: var(--nutui-button-large-height, scale-px(40px)) !default;
 $button-large-padding: var(
   --nutui-button-large-padding,
-  scale-px(0px) scale-px(16px)
+  0px scale-px(16px)
 ) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
@@ -321,7 +321,7 @@ $button-small-font-size: var(
 ) !default;
 $button-small-padding: var(
   --nutui-button-small-padding,
-  scale-px(0px) scale-px(8px)
+  0px scale-px(8px)
 ) !default;
 $button-small-height: var(--nutui-button-small-height, scale-px(28px)) !default;
 $button-small-border-radius: var(
@@ -331,7 +331,7 @@ $button-small-border-radius: var(
 
 $button-mini-padding: var(
   --nutui-button-mini-padding,
-  scale-px(0px) scale-px(8px)
+  0px scale-px(8px)
 ) !default;
 $button-mini-height: var(--nutui-button-mini-height, scale-px(24px)) !default;
 $button-mini-font-size: var(
@@ -472,7 +472,7 @@ $cell-background-color: var(
 ) !default;
 $cell-box-shadow: var(
   --nutui-cell-box-shadow,
-  scale-px(0px) scale-px(1px) scale-px(7px) scale-px(0px) rgba(237, 238, 241, 1)
+  0px scale-px(1px) scale-px(7px) 0px rgba(237, 238, 241, 1)
 ) !default;
 
 // cell-group（✅）
@@ -555,10 +555,7 @@ $uploader-image-height: var(
   --nutui-uploader-image-height,
   scale-px(100px)
 ) !default;
-$uploader-image-border: var(
-  --nutui-uploader-image-border,
-  scale-px(0px)
-) !default;
+$uploader-image-border: var(--nutui-uploader-image-border, 0px) !default;
 $uploader-image-border-radius: var(
   --nutui-uploader-image-border-radius,
   scale-px(4px)
@@ -613,11 +610,11 @@ $uploader-preview-tips-padding: var(
 ) !default;
 $uploader-preview-close-right: var(
   --nutui-uploader-preview-close-right,
-  scale-px(0px)
+  0px
 ) !default;
 $uploader-preview-close-top: var(
   --nutui-uploader-preview-close-top,
-  scale-px(0px)
+  0px
 ) !default;
 
 // picker（✅）
@@ -663,7 +660,7 @@ $picker-mask-background: var(
 $input-border-bottom: var(--nutui-input-border-bottom, $color-border) !default;
 $input-border-bottom-width: var(
   --nutui-input-border-bottom-width,
-  scale-px(0px)
+  0px
 ) !default;
 // $input-disabled-color: var(
 //   --nutui-input-disabled-color,
@@ -717,10 +714,7 @@ $inputnumber-input-border-radius: var(
   --nutui-inputnumber-input-border-radius,
   scale-px(4px)
 ) !default;
-$inputnumber-input-margin: var(
-  --nutui-inputnumber-input-margin,
-  scale-px(0px)
-) !default;
+$inputnumber-input-margin: var(--nutui-inputnumber-input-margin, 0px) !default;
 $inputnumber-button-width: var(
   --nutui-inputnumber-button-width,
   scale-px(20px)
@@ -923,7 +917,7 @@ $price-line-color: var(
 ) !default;
 $price-symbol-padding-right: var(
   --nutui-price-symbol-padding-right,
-  scale-px(0px)
+  0px
 ) !default;
 
 //xlarge price（✅）
@@ -1030,15 +1024,15 @@ $switch-inside-border-radius: var(
 /* #ifdef harmony */
 $switch-inside-box-shadow: var(
   --nutui-switch-inside-box-shadow,
-  scale-px(0px) scale-px(2px) scale-px(6px) scale-px(0px) rgba(0, 0, 0, 0.1)
+  0px scale-px(2px) scale-px(6px) 0px rgba(0, 0, 0, 0.1)
 ) !default;
 /* #endif */
 /* #ifndef harmony */
 $switch-inside-box-shadow: var(
   --nutui-switch-inside-box-shadow,
-  scale-px(0px) scale-px(2px) scale-px(1px) scale-px(0px) rgba(0, 0, 0, 0.06),
-  scale-px(0px) scale-px(2px) scale-px(6px) scale-px(0px) rgba(0, 0, 0, 0.1),
-  scale-px(0px) scale-px(0px) scale-px(0px) scale-px(1px) rgba(0, 0, 0, 0.02)
+  0px scale-px(2px) scale-px(1px) 0px rgba(0, 0, 0, 0.06),
+  0px scale-px(2px) scale-px(6px) 0px rgba(0, 0, 0, 0.1),
+  0px 0px 0px scale-px(1px) rgba(0, 0, 0, 0.02)
 ) !default;
 /* #endif */
 $switch-label-text-color: var(
@@ -1091,7 +1085,7 @@ $tour-content-padding: var(
 ) !default;
 $tour-content-inner-margin: var(
   --nutui-tour-content-inner-margin,
-  scale-px(10px) scale-px(0px)
+  scale-px(10px) 0px
 ) !default;
 $tour-content-inner-font-size: var(
   --nutui-tour-content-inner-font-size,
@@ -1182,7 +1176,7 @@ $hoverbutton-position-right: var(
 ) !default;
 $hoverbutton-item-size: var(
   --nutui-hoverbutton-item-size,
-  scale-font-px(40px)
+  scale-px(40px)
 ) !default;
 $hoverbutton-item-border-color: var(
   --nutui-hoverbutton-item-border-color,
@@ -1245,17 +1239,14 @@ $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 
 // Notify（✅）
 $notify-height: var(--nutui-notify-height, scale-px(40px)) !default;
-$notify-padding: var(
-  --nutui-notify-padding,
-  scale-px(0px) scale-px(12px)
-) !default;
+$notify-padding: var(--nutui-notify-padding, 0px scale-px(12px)) !default;
 $notify-border-radius: var(
   --nutui-notify-border-radius,
   scale-px(8px)
 ) !default;
 $notify-box-shadow: var(
   --nutui-notify-box-shadow,
-  scale-px(0px) scale-px(4px) scale-px(12px) scale-px(0px) rgba(0, 0, 0, 0.06)
+  0px scale-px(4px) scale-px(12px) 0px rgba(0, 0, 0, 0.06)
 ) !default;
 $notify-z-index: var(--nutui-notify-z-index, 1000) !default;
 $notify-text-color: var(--nutui-notify-text-color, $color-title) !default;
@@ -1383,7 +1374,7 @@ $steps-base-head-color: var(
 ) !default;
 $steps-base-head-dot-size: var(
   --nutui-steps-base-head-dot-size,
-  scale-font-px(6px)
+  scale-px(6px)
 ) !default;
 $steps-base-head-dot-background-color: var(
   --nutui-steps-base-head-dot-background-color,
@@ -1395,11 +1386,11 @@ $steps-base-head-icon-size: var(
 ) !default;
 $steps-double-head-icon-size: var(
   --nutui-steps-base-head-icon-size-right,
-  scale-font-px(20px)
+  scale-px(20px)
 ) !default;
 $steps-vertical-head-icon-size: var(
   --nutui-steps-vertical-item-icon-size,
-  scale-font-px(20px)
+  scale-px(20px)
 ) !default;
 $steps-base-line-height: var(
   --nutui-steps-base-line-height,
@@ -1620,7 +1611,7 @@ $dialog-footer-badge-top: var(
 ) !default;
 $dialog-footer-badge-border-radius: var(
   --nutui-dialog-footer-badge-border-radius,
-  scale-px(2px) scale-px(2px) scale-px(0px) scale-px(2px)
+  scale-px(2px) scale-px(2px) 0px scale-px(2px)
 ) !default;
 $dialog-footer-badge-bg-ok: var(
   --nutui-dialog-footer-badge-bg-ok,
@@ -1651,7 +1642,7 @@ $dialog-vertical-footer-ok-margin-top: var(
   scale-px(16px)
 ) !default;
 $dialog-close-color: var(--nutui-dialog-close-color, #ffffff) !default;
-$dialog-close-width: var(--nutui-dialog-close-width, $font-size-icon) !default;
+$dialog-close-width: var(--nutui-dialog-close-width, scale-px(16px)) !default;
 $dialog-close-height: var(--nutui-dialog-close-height, scale-px(16px)) !default;
 $dialog-bottom-close-icon-size: var(
   --nutui-dialog-bottom-close-icon-size,
@@ -1875,7 +1866,7 @@ $timeselect-time-background: var(
 ) !default;
 
 //tag（✅）
-$tag-padding: var(--nutui-tag-padding, scale-px(0px) scale-px(2px)) !default;
+$tag-padding: var(--nutui-tag-padding, 0px scale-px(2px)) !default;
 $tag-font-size: var(--nutui-tag-font-size, $font-size-xxs) !default;
 $tag-border-radius: var(--nutui-tag-border-radius, scale-px(2px)) !default;
 $tag-height: var(--nutui-tag-height, scale-px(14px)) !default;
@@ -2315,10 +2306,7 @@ $searchbar-content-round-border-radius: var(
   --nutui-searchbar-content-round-border-radius,
   scale-px(19px)
 ) !default;
-$searchbar-icon-size: var(
-  --nutui-searchbar-icon-size,
-  scale-font-px(20px)
-) !default;
+$searchbar-icon-size: var(--nutui-searchbar-icon-size, scale-px(20px)) !default;
 $searchbar-input-height: var(
   --nutui-searchbar-input-height,
   scale-px(38px)
@@ -2381,10 +2369,7 @@ $empty-image-small-size: var(
   --nutui-empty-image-small-size,
   scale-px(120px)
 ) !default;
-$empty-title-margin-top: var(
-  --nutui-empty-title-margin-top,
-  scale-px(0px)
-) !default;
+$empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
 $empty-background-color: var(
   --nutui-empty-background-color,
   $color-background-overlay
@@ -2441,13 +2426,10 @@ $cascader-item-padding: var(
   --nutui-cascader-item-padding,
   scale-px(10px) scale-px(20px)
 ) !default;
-$cascader-item-margin: var(
-  --nutui-cascader-item-margin,
-  scale-px(0px)
-) !default;
+$cascader-item-margin: var(--nutui-cascader-item-margin, 0px) !default;
 $cascader-item-border-bottom: var(
   --nutui-cascader-item-border-bottom,
-  scale-px(0px) solid $color-border
+  0px solid $color-border
 ) !default;
 $cascader-item-color: var(--nutui-cascader-item-color, $color-title) !default;
 $cascader-item-font-size: var(
@@ -2537,7 +2519,7 @@ $skeleton-line-border-radius: var(
 $card-border-radius: var(--nutui-card-border-radius, scale-px(4px)) !default;
 
 // grid（✅）
-$grid-border-width: var(--nutui-grid-border-width, scale-px(0px)) !default;
+$grid-border-width: var(--nutui-grid-border-width, 0px) !default;
 $grid-border-color: var(--nutui-grid-border-color, $color-border) !default;
 $grid-item-border-radius: var(
   --nutui-grid-item-border-radius,

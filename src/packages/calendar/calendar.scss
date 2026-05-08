@@ -60,8 +60,8 @@
     align-items: center;
     justify-content: space-around;
     height: scale-px(36px);
-    border-radius: scale-px(0px) scale-px(0px) scale-px(12px) scale-px(12px);
-    box-shadow: scale-px(0px) scale-px(4px) scale-px(10px) scale-px(0px)
+    border-radius: 0px 0px scale-px(12px) scale-px(12px);
+    box-shadow: 0px scale-px(4px) scale-px(10px) 0px
       rgba($color: #000000, $alpha: 0.06);
   }
 
@@ -160,13 +160,13 @@
       border-radius: $calendar-day-active-border-radius;
 
       &.active-start {
-        border-radius: scale-px(0px);
+        border-radius: 0px;
         border-top-left-radius: $calendar-day-active-border-radius;
         border-bottom-left-radius: $calendar-day-active-border-radius;
       }
 
       &.active-end {
-        border-radius: scale-px(0px);
+        border-radius: 0px;
         border-top-right-radius: $calendar-day-active-border-radius;
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }

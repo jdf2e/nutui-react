@@ -32,8 +32,7 @@
     width: scale-px(70px);
     height: 100%;
     background: $fixednav-button-background;
-    box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
-      rgba(0, 0, 0, 0.2);
+    box-shadow: 0px scale-px(2px) scale-px(4px) 0px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,8 +59,7 @@
     background: $fixednav-background-color;
     display: flex;
     justify-content: space-between;
-    box-shadow: scale-px(2px) scale-px(2px) scale-px(8px) scale-px(0px)
-      rgba(0, 0, 0, 0.2);
+    box-shadow: scale-px(2px) scale-px(2px) scale-px(8px) 0px rgba(0, 0, 0, 0.2);
 
     &-item {
       position: relative;
@@ -152,9 +150,9 @@
   &-btn {
     right: auto;
     left: 0;
-    border-radius: scale-px(0px) scale-px(45px) scale-px(45px) scale-px(0px);
+    border-radius: 0px scale-px(45px) scale-px(45px) 0px;
     .nut-icon {
-      margin-right: scale-px(0px);
+      margin-right: 0px;
       margin-left: scale-px(5px);
       transform: rotate(180deg);
     }
@@ -164,8 +162,8 @@
     right: auto;
     left: 0;
     transform: translateX(-100%);
-    border-radius: scale-px(0px) scale-px(25px) scale-px(25px) scale-px(0px);
-    box-shadow: scale-px(-2px) scale-px(2px) scale-px(8px) scale-px(0px)
+    border-radius: 0px scale-px(25px) scale-px(25px) 0px;
+    box-shadow: scale-px(-2px) scale-px(2px) scale-px(8px) 0px
       rgba(0, 0, 0, 0.2);
 
     padding: {
@@ -193,7 +191,7 @@
       .nut-icon {
         transform: rotate(0deg);
         margin-right: scale-px(5px);
-        margin-left: scale-px(0px);
+        margin-left: 0px;
       }
     }
 
@@ -201,7 +199,7 @@
       transform: translateX(100%);
       right: auto;
       left: auto;
-      border-radius: scale-px(25px) scale-px(0px) scale-px(0px) scale-px(25px);
+      border-radius: scale-px(25px) 0px 0px scale-px(25px);
 
       padding: {
         right: scale-px(80px);

@@ -37,8 +37,7 @@
     &-checked {
       color: $color-primary;
       background-color: $white;
-      box-shadow: scale-px(0px) scale-px(2px) scale-px(4px) scale-px(0px)
-        #ff0f2333;
+      box-shadow: 0px scale-px(2px) scale-px(4px) 0px #ff0f2333;
       border-radius: 50%;
 
       &.nut-radio-icon-disabled {

@@ -21,7 +21,7 @@
     opacity: 0.4;
 
     &-0 {
-      margin-left: scale-px(0px);
+      margin-left: 0px;
     }
 
     &-active {
@@ -149,11 +149,11 @@
 
   .nut-indicator {
     &-dot {
-      margin: scale-px(0px);
+      margin: 0px;
       margin-top: $indicator-dot-margin;
 
       &-0 {
-        margin-top: scale-px(0px);
+        margin-top: 0px;
       }
 
       &-active {
@@ -178,7 +178,7 @@
   &-dot {
     &-0 {
       margin-right: $indicator-dot-margin;
-      margin-left: scale-px(0px);
+      margin-left: 0px;
     }
   }
 }

@@ -101,8 +101,8 @@
 
     &.list {
       width: 100%;
-      margin-right: scale-px(0px);
-      margin-bottom: scale-px(0px);
+      margin-right: 0px;
+      margin-bottom: 0px;
       margin-top: scale-px(10px);
       box-shadow: 0 scale-px(2px) scale-px(10px) 0 rgb(0 0 0 / 1%);
     }
@@ -235,7 +235,7 @@
 
     &.list {
       margin-right: 0;
-      margin-left: scale-px(0px);
+      margin-left: 0px;
     }
 
     .close {

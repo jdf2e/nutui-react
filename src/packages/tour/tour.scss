@@ -3,7 +3,7 @@
 .nut-tour {
   &-mask {
     position: fixed;
-    box-shadow: scale-px(0px) scale-px(0px) scale-px(0px) 150vh $color-mask;
+    box-shadow: 0px 0px 0px 150vh $color-mask;
     border-radius: $tour-mask-border-radius;
     z-index: 999;
 
