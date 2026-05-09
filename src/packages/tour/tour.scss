@@ -29,8 +29,8 @@
       text-align: end;
 
       &-close {
-        --nut-icon-width: scale-px(10px);
-        --nut-icon-height: scale-px(10px);
+        width: scale-px(10px);
+        height: scale-px(10px);
       }
     }
 

@@ -3,6 +3,7 @@
   border-radius: scale-px(12px);
   overflow: hidden;
   font-size: $calendar-base-font-size;
+  line-height: $calendar-base-font-size;
   color: $color-title;
 
   &-header {

@@ -106,20 +106,22 @@
     align-items: center;
     color: $rate-font-color;
     font-family: 'JDZH-Regular';
-    line-height: 1;
 
     &-normal {
       padding-left: $rate-item-margin;
       font-size: $rate-font-size;
+      line-height: $rate-font-size;
     }
 
     &-large {
       font-size: calc($rate-font-size + scale-font-px(6px));
+      line-height: calc($rate-font-size + scale-font-px(6px));
       padding-left: calc($rate-item-margin * 2);
     }
 
     &-small {
       font-size: calc($rate-font-size - scale-font-px(2px));
+      line-height: calc($rate-font-size - scale-font-px(2px));
       padding-left: calc($rate-item-margin / 2);
     }
 

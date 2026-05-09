@@ -23,8 +23,8 @@
     height: $inputnumber-button-height;
     background-color: $inputnumber-button-background-color;
     .nut-icon {
-      --nut-icon-width: scale-px(10px);
-      --nut-icon-height: scale-px(10px);
+      width: scale-px(10px);
+      height: scale-px(10px);
     }
   }
 
@@ -66,12 +66,12 @@
   }
 
   &-icon-minus {
-    --nut-icon-width: scale-px(16px);
-    --nut-icon-height: scale-px(16px);
+    width: scale-px(16px);
+    height: scale-px(16px);
   }
 
   &-icon-plus {
-    --nut-icon-width: scale-px(16px);
-    --nut-icon-height: scale-px(16px);
+    width: scale-px(16px);
+    height: scale-px(16px);
   }
 }

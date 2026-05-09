@@ -23,7 +23,7 @@
   border-radius: $segmented-item-radius;
   color: $segmented-item-color;
   font-size: $segmented-item-fontsize;
-  line-height: 1;
+  line-height: $segmented-item-fontsize;
   box-sizing: border-box;
 }
 
