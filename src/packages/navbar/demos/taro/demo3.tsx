@@ -12,7 +12,7 @@ const Demo3 = () => {
     <Space direction="vertical">
       <NavBar
         style={{ '--nutui-navbar-background': 'transparent' }}
-        back={<ArrowLeft />}
+        back={<ArrowLeft ariaLabel="返回" />}
         right={
           <>
             <View
@@ -21,7 +21,10 @@ const Demo3 = () => {
             >
               编辑
             </View>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            <More
+              ariaLabel="更多"
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
@@ -48,7 +51,7 @@ const Demo3 = () => {
           '--nutui-navbar-background': '#ff0f23',
           '--nutui-navbar-color': '#fff',
         }}
-        back={<ArrowLeft />}
+        back={<ArrowLeft ariaLabel="返回" />}
         right={
           <>
             <View
@@ -57,7 +60,10 @@ const Demo3 = () => {
             >
               编辑
             </View>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
+            <More
+              ariaLabel="更多"
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
           </>
         }
         onBackClick={(e) => Taro.showToast({ title: '返回' })}

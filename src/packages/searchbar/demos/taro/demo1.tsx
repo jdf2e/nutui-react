@@ -7,11 +7,15 @@ const Demo = () => {
     <>
       <SearchBar placeholder="麻辣烫" rightIn="搜索" />
       <SearchBar
-        leftIn={<Scan />}
+        leftIn={<Scan ariaLabel="扫一扫" />}
         placeholder="华为Mate 70"
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Photograph color="#888B94" onClick={() => console.log('拍照购')} />
+            <Photograph
+              ariaLabel="拍照购"
+              color="#888B94"
+              onClick={() => console.log('拍照购')}
+            />
             <Divider direction="vertical" />
             <span style={{ color: '#ff0f23' }}>搜索</span>
           </div>

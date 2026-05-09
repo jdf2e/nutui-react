@@ -206,3 +206,22 @@ test('handles touch events correctly', () => {
   fireEvent.touchEnd(popup)
   expect(handleTouchEnd).toHaveBeenCalled()
 })
+
+test('overlayProps propagation test', () => {
+  const { container } = render(
+    <Popup
+      visible
+      overlayProps={{ 'aria-label': 'custom-overlay-label', id: 'my-overlay' }}
+    />
+  )
+  const overlay = container.querySelector('.nut-overlay') as HTMLElement
+  expect(overlay).toBeTruthy()
+  expect(overlay).toHaveAttribute('aria-label', 'custom-overlay-label')
+  expect(overlay).toHaveAttribute('id', 'my-overlay')
+})
+
+test('should disable animation when animated prop is false', () => {
+  const { container } = render(<Popup visible animated={false} />)
+  const overlay = container.querySelector('.nut-overlay') as HTMLElement
+  expect(overlay).toBeTruthy()
+})

@@ -4,7 +4,7 @@ import Taro, { PageInstance } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '../configprovider/index.taro'
+import { useRtl } from '@/packages/configprovider/index.taro'
 import { useUuid } from '@/hooks/use-uuid'
 import { harmony, web } from '@/utils/taro/platform'
 import { TaroProgressProps } from '@/types'
@@ -43,7 +43,6 @@ export const Progress: FunctionComponent<
     active,
     activeMode,
     duration,
-    ariaLabel,
     onActiveEnd,
     ...rest
   } = {
@@ -222,7 +221,6 @@ export const Progress: FunctionComponent<
       id={selector}
       className={classNames(classPrefix, className)}
       style={style}
-      aria-label={ariaLabel}
       {...(rest as any)}
     >
       <View className={`${classPrefix}-outer`} style={stylesOuter}>

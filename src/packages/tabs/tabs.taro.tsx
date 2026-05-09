@@ -56,6 +56,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   })
 
   const titleItemsRef = useRef<HTMLDivElement[]>([])
+  const tabsRef = useRef<any>(null)
 
   const getTitles = () => {
     const titles: TabsTitle[] = []
@@ -104,6 +105,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
       createSelectorQuery()
+        .in(tabsRef.current?._scope || tabsRef.current)
         .select(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -114,6 +116,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   const getAllRect = (selector: string) => {
     return new Promise((resolve) => {
       createSelectorQuery()
+        .in(tabsRef.current?._scope || tabsRef.current)
         .selectAll(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -229,7 +232,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   }
 
   return (
-    <View className={classes} {...rest}>
+    <View className={classes} {...rest} ref={tabsRef}>
       <ScrollView
         enableFlex
         scrollX={direction === 'horizontal'}
@@ -274,7 +277,11 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                       />
                     )}
                     {activeType === 'smile' && (
-                      <View className={`${classPrefix}-titles-item-smile`}>
+                      <View
+                        className={`${classPrefix}-titles-item-smile`}
+                        // @ts-ignore
+                        ariaHidden
+                      >
                         <JoySmile color={activeColor} />
                       </View>
                     )}

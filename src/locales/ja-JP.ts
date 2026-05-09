@@ -10,6 +10,12 @@ const jaJP: BaseLang = {
   select: '選択してください',
   edit: '編集',
   reset: 'リセット',
+  close: '閉じる',
+  back: '戻る',
+  clear: 'クリア',
+  image: {
+    errorTip: '画像の読み込みに失敗しました',
+  },
   video: {
     errorTip: '動画の読み込みに失敗しました',
     clickRetry: 'クリックして再試行',
@@ -41,6 +47,26 @@ const jaJP: BaseLang = {
     today: '今日',
     loadPreviousMonth: '前の月を読み込む',
     noEarlierMonth: 'これより前の月はありません',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      if (isActive) {
+        return today
+          ? `今日${month}月${day}日を選択しました`
+          : `${month}月${day}日を選択しました`
+      }
+      if (isDisable) {
+        return today
+          ? `今日${month}月${day}日は無効です`
+          : `${month}月${day}日は無効です`
+      }
+      return today ? `今日${month}月${day}日` : `${month}月${day}日`
+    },
   },
   shortpassword: {
     title: 'パスワードを入力してください',
@@ -142,6 +168,8 @@ const jaJP: BaseLang = {
     errorCanvasTips: '現在の環境はCanvasをサポートしていません',
   },
   mask: 'マスク',
-  close: '閉じる',
+  quickenter: {
+    title: 'クイックアクセス',
+  },
 }
 export default jaJP

@@ -128,9 +128,20 @@
     font-weight: $calendar-day-font-weight;
     margin-bottom: scale-px(4px);
 
+    // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
+    &-day,
+    &-info-curr {
+      color: $color-title;
+    }
+
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
       color: $color-primary;
+
+      .nut-calendar-day-day,
+      .nut-calendar-day-info-curr {
+        color: $color-primary;
+      }
     }
 
     &-info,
@@ -171,13 +182,23 @@
         border-bottom-right-radius: $calendar-day-active-border-radius;
       }
 
-      .nut-calendar-day-info {
+      &.nut-calendar-day-active .nut-calendar-day-info {
+        color: $color-primary-text;
+      }
+
+      &.nut-calendar-day-active .nut-calendar-day-day,
+      &.nut-calendar-day-active .nut-calendar-day-info-curr {
         color: $color-primary-text;
       }
     }
 
     &-disabled {
       color: $calendar-disable-color !important;
+
+      &.nut-calendar-day-disabled .nut-calendar-day-day,
+      &.nut-calendar-day-disabled .nut-calendar-day-info-curr {
+        color: $calendar-disable-color;
+      }
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -188,9 +209,19 @@
       background-color: $calendar-choose-background-color;
       color: $calendar-choose-color;
 
+      &.nut-calendar-day-choose .nut-calendar-day-day,
+      &.nut-calendar-day-choose .nut-calendar-day-info-curr {
+        color: $calendar-choose-color;
+      }
+
       &-disabled {
         background-color: $calendar-choose-disable-background-color;
         color: $calendar-disable-color !important;
+
+        &.nut-calendar-day-choose-disabled .nut-calendar-day-day,
+        &.nut-calendar-day-choose-disabled .nut-calendar-day-info-curr {
+          color: $calendar-disable-color;
+        }
 
         .nut-calendar-day-info-curr {
           display: none;

@@ -10,7 +10,7 @@ const Demo3 = () => {
         return <Cell key={index}>我是测试数据{index}</Cell>
       })}
       <BackTop threshold={100}>
-        <Top size={12} />
+        <Top aria-hidden="true" size={12} />
         <View style={{ fontSize: '12px' }}>顶部</View>
       </BackTop>
     </>

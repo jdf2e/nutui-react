@@ -28,7 +28,6 @@
       color: $color-title;
       font-weight: $font-weight-bold;
       font-size: $popup-title-font-size;
-      line-height: $popup-title-font-size;
     }
 
     &-description {
@@ -81,6 +80,8 @@
   &-center {
     top: 50%;
     left: 50%;
+    right: auto;
+    bottom: auto;
     min-height: 10%;
     max-width: scale-px(295px);
     transform: translate(-50%, -50%);
@@ -93,6 +94,8 @@
   &-bottom {
     bottom: 0;
     left: 0;
+    right: auto;
+    top: auto;
     width: 100%;
 
     &.nut-popup-round {
@@ -107,6 +110,8 @@
   &-right {
     top: 0;
     right: 0;
+    left: auto;
+    bottom: auto;
     width: scale-px(100px);
     height: 100%;
 
@@ -118,6 +123,8 @@
   &-left {
     top: 0;
     left: 0;
+    right: auto;
+    bottom: auto;
     width: scale-px(100px);
     height: 100%;
 
@@ -129,6 +136,8 @@
   &-top {
     top: 0;
     left: 0;
+    right: auto;
+    bottom: auto;
     width: 100%;
 
     &.nut-popup-round {
@@ -212,6 +221,9 @@
     }
 
     @keyframes popup-slide-top-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, -100%, 0);
       }
@@ -242,6 +254,9 @@
     }
 
     @keyframes popup-slide-right-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(100%, 0, 0);
       }
@@ -272,6 +287,9 @@
     }
 
     @keyframes slide-bottom-exit {
+      from {
+        transform: translate3d(0, 0%, 0);
+      }
       to {
         transform: translate3d(0, 100%, 0);
       }
@@ -302,6 +320,9 @@
     }
 
     @keyframes popup-slide-left-exit {
+      from {
+        transform: translate3d(0%, 0, 0);
+      }
       to {
         transform: translate3d(-100%, 0, 0);
       }

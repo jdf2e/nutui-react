@@ -7,7 +7,7 @@ const Demo2 = () => {
   }
   return (
     <Cell style={{ flexWrap: 'wrap' }}>
-      <Button type="primary" style={marginStyle}>
+      <Button type="primary" style={marginStyle} ariaLabel="无障碍-重要按钮">
         Primary
       </Button>
       <Button type="info" style={marginStyle}>
