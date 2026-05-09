@@ -1,18 +1,28 @@
 // ----------------------------------------------------
 // 缩放系数
 :root {
-  --scale-f: 1;
-  --scale-font: var(--scale-f, 1);
-  --scale-icon: var(--scale-f, 1);
+  --nut-scale-f: 1;
+  --nut-scale-font: var(--nut-scale-f, 1);
+  --nut-scale-icon: var(--nut-scale-f, 1);
+  // ---- icon size ----
+  --nut-icon-height: calc(
+    16px * var(--nut-scale-icon, var(--nut-scale-f, 1))
+  ) !important;
+  --nut-icon-width: calc(
+    16px * var(--nut-scale-icon, var(--nut-scale-f, 1))
+  ) !important;
+  --nut-icon-line-height: calc(
+    16px * var(--nut-scale-icon, var(--nut-scale-f, 1))
+  ) !important;
 }
 @function scale-px($size) {
-  @return calc(#{$size} * var(--scale-f, 1));
+  @return calc(#{$size} * var(--nut-scale-f, 1));
 }
 @function scale-font-px($size) {
-  @return calc(#{$size} * var(--scale-font, var(--scale-f, 1)));
+  @return calc(#{$size} * var(--nut-scale-font, var(--nut-scale-f, 1)));
 }
 @function scale-icon-px($size) {
-  @return calc(#{$size} * var(--scale-icon, var(--scale-f, 1)));
+  @return calc(#{$size} * var(--nut-scale-icon, var(--nut-scale-f, 1)));
 }
 // 主色调 // done
 $color-primary: var(--nutui-color-primary, #ff0f23) !default;
@@ -1374,7 +1384,7 @@ $steps-base-head-color: var(
 ) !default;
 $steps-base-head-dot-size: var(
   --nutui-steps-base-head-dot-size,
-  scale-px(6px)
+  scale-icon-px(6px)
 ) !default;
 $steps-base-head-dot-background-color: var(
   --nutui-steps-base-head-dot-background-color,
@@ -1519,7 +1529,7 @@ $steps-horizontal-item-special-3-padding-right: var(
 ) !default;
 $steps-vertical-item-padding-bottom: var(
   --nutui-steps-vertical-item-padding-bottom,
-  scale-px(13px)
+  scale-px(12px)
 ) !default;
 $steps-vertical-title-font-size: var(
   --nutui-steps-vertical-title-font-size,
@@ -1527,11 +1537,11 @@ $steps-vertical-title-font-size: var(
 ) !default;
 $steps-vertical-title-margin-bottom: var(
   --nutui-steps-vertical-title-margin-bottom,
-  scale-px(4px)
+  scale-px(3px)
 ) !default;
 $steps-vertical-line-height: var(
   --nutui-steps-vertical-line-height,
-  scale-px(18px)
+  scale-px(20px)
 ) !default;
 $steps-vertical-description-font-size: var(
   --nutui-steps-vertical-description-font-size,
@@ -1850,7 +1860,7 @@ $timeselect-date-active-color: var(
 ) !default;
 $timeselect-time-width: var(
   --nutui-timeselect-time-width,
-  scale-px(100px)
+  scale-px(110px)
 ) !default;
 $timeselect-time-height: var(
   --nutui-timeselect-time-height,

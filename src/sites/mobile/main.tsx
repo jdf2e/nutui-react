@@ -29,7 +29,7 @@ if (!isMobile && pathname.includes('demo') && !pathname.includes('jmapp')) {
 }
 
 if (rootElement != null) {
-  initScaleF()
+  initScaleF('elderly')
   const root = ReactDOM.createRoot(rootElement)
   root.render(<App />)
 }

@@ -48,6 +48,7 @@
     font-size: $navbar-title-font-size;
     font-weight: $navbar-title-font-weight;
     color: $navbar-title-font-color;
+    white-space: nowrap;
 
     &-center {
       max-width: scale-px(129px);

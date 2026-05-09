@@ -12,6 +12,8 @@
     .nut-icon-ArrowRadius {
       position: absolute;
       color: $popover-content-background-color;
+      width: scale-px(8px);
+      height: scale-px(4px);
     }
 
     &-top {

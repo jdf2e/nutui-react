@@ -13,8 +13,8 @@
 
         &-icon {
           .nut-icon {
-            height: scale-px(10px);
-            width: scale-px(10px);
+            height: scale-icon-px(10px);
+            width: scale-icon-px(10px);
           }
 
           .nut-image {
@@ -108,6 +108,7 @@
         flex-direction: column;
         align-items: center;
         flex: 1;
+        min-width: 0;
 
         &-line {
           top: 0;
@@ -130,7 +131,7 @@
 
         &-head {
           justify-content: center;
-          margin-bottom: scale-px(6px);
+          margin-bottom: scale-px(5px);
 
           &-dot-wrap,
           &-icon-wrap,
@@ -145,15 +146,22 @@
           width: $steps-double-head-icon-size;
 
           .nut-icon {
-            height: scale-px(12px);
-            width: scale-px(12px);
+            height: scale-icon-px(12px);
+            width: scale-icon-px(12px);
           }
         }
 
         &-main {
           align-items: center;
           margin-left: 0;
-          margin-top: scale-px(2px);
+        }
+
+        &-title {
+          height: auto;
+          line-height: scale-px(20px);
+          white-space: normal;
+          overflow-wrap: break-word;
+          text-align: center;
         }
       }
 
@@ -214,15 +222,15 @@
       &-head {
         align-items: center;
         justify-content: center;
-        height: scale-px(18px);
+        height: scale-px(20px);
 
         &-icon {
           width: $steps-vertical-head-icon-size;
           height: $steps-vertical-head-icon-size;
 
           .nut-icon {
-            height: scale-px(12px);
-            width: scale-px(12px);
+            height: scale-icon-px(12px);
+            width: scale-icon-px(12px);
           }
         }
       }

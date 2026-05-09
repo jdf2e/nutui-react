@@ -79,6 +79,11 @@
     background-color: #fff;
     border: $tag-border-width solid $color-title;
   }
+
+  &-close-icon {
+    width: scale-icon-px(8px);
+    height: scale-icon-px(8px);
+  }
 }
 
 [dir='rtl'] .nut-tag,

@@ -1,6 +1,6 @@
 /**
- * 响应式缩放系数（--nut-scale-f）：结合京东站内原生桥与站外视口规则，
- * 写入根节点 CSS 变量，供布局/字号/icon 等按比例换算（见 calcByProfile）。
+ * Taro/H5 缩放系数：优先尝试站内原生桥，失败回退到视口规则，
+ * 并写入 --nut-scale-f / --nut-scale-font / --nut-scale-icon 供样式层消费。
  */
 import { canUseDom } from './can-use-dom'
 
@@ -31,7 +31,6 @@ declare global {
 
 /** 当前基准缩放（来自原生或视口计算） */
 let scale = 1
-
 /** 字体档位：标准、大字、老年 */
 export type ScaleProfile = 'standard' | 'large' | 'elderly'
 /** 不同场景可选用不同放大比例（layout 等默认可不额外放大） */
@@ -153,7 +152,7 @@ async function getScaleByNative() {
       }
     }
   } catch {
-    /* 原生异常时由 getScaleF 回退到视口规则 */
+    // ignore native failures and fallback to viewport rule
   }
 
   return null
@@ -206,7 +205,6 @@ export function initScaleF(nextProfile?: ScaleProfile) {
 /** 更新全局 profile，并在当前 scale 下重刷 CSS 变量 */
 function setScaleProfile(nextProfile?: ScaleProfile) {
   profile = normalizeProfile(nextProfile)
-  // profile 切换后需要重新应用当前缩放值。
   setScaleF(scale)
   return profile
 }
@@ -219,9 +217,7 @@ type CalcByProfileOptions = {
   device?: ScaleDevice
 }
 
-/**
- * 按档位与场景将设计稿基准值换算为实际数值：base × 场景倍率 × 当前 scale，再按规则取整。
- */
+/** 按档位与场景将设计稿基准值换算为实际数值：base × 场景倍率 × 当前 scale，再按规则取整。 */
 export function calcByProfile(
   baseValue: number,
   options: CalcByProfileOptions = {}

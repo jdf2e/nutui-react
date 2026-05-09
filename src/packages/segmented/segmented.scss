@@ -32,6 +32,8 @@
 }
 
 .nut-segmented-icon {
+  display: flex;
+  align-items: center;
   height: scale-px(10px);
   width: scale-px(10px);
   margin-right: $segmented-icon-margin-right;

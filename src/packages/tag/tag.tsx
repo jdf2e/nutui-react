@@ -104,8 +104,7 @@ export const Tag: FunctionComponent<Partial<WebTagProps>> = (props) => {
               </i>
             ) : (
               <Close
-                width={8}
-                height={8}
+                className={`${classPrefix}-close-icon`}
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e)

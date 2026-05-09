@@ -103,10 +103,10 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: scale-px(10px) solid transparent;
-      border-left: scale-px(10px) solid transparent;
-      border-bottom: scale-px(10px) solid $color-primary;
-      border-right: scale-px(10px) solid $color-primary;
+      border-top: scale-icon-px(10px) solid transparent;
+      border-left: scale-icon-px(10px) solid transparent;
+      border-bottom: scale-icon-px(10px) solid $color-primary;
+      border-right: scale-icon-px(10px) solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -117,7 +117,7 @@
       height: scale-px(12px);
       position: absolute;
       color: $white;
-      right: 0;
+      right: 0px;
       bottom: 0;
       transform: translate(scale-px(-1px), scale-px(-2px));
     }
