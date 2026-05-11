@@ -1,6 +1,7 @@
 /**
  * 响应式缩放系数（--nut-scale-f）：结合京东站内原生桥与站外视口规则，
- * 写入根节点 CSS 变量，供布局/字号/icon 等按比例换算（见 calcByProfile）。
+ * 写入根节点 CSS 变量（--nut-scale-f / --nut-scale-font / --nut-scale-icon），
+ * 供布局/字号/icon 等按比例换算（见 calcByProfile）。H5 与 Taro WebView 共用此实现。
  */
 import { canUseDom } from './can-use-dom'
 
