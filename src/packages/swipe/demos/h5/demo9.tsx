@@ -10,7 +10,7 @@ const App = () => {
             <Button
               shape="square"
               type="danger"
-              style={{ alignSelf: 'stretch', height: 46 }}
+              style={{ alignSelf: 'stretch', height: '100%' }}
             >
               加入购物车
             </Button>
