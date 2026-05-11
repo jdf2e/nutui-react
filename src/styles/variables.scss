@@ -1226,7 +1226,7 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, $radius-xl) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, scale-px(20px)) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, scale-px(11px)) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, scale-px(16px)) !default;
 $popup-title-font-size: var(
   --nutui-popup-title-font-size,
   $font-size-xl
@@ -2909,7 +2909,10 @@ $resultpage-actions-margin-top: var(
 
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
-$quickenter-max-height: var(--nutui-quickenter-max-height, 256px) !default;
+$quickenter-max-height: var(
+  --nutui-quickenter-max-height,
+  scale-px(256px)
+) !default;
 $quickenter-title-font-size: var(
   --nutui-quickenter-title-font-size,
   $font-size-base
@@ -2936,7 +2939,7 @@ $quickenter-item-icon-color: var(
 ) !default;
 $quickenter-close-icon-size: var(
   --nutui-quickenter-close-icon-size,
-  12px
+  scale-icon-px(12px)
 ) !default;
 $quickenter-close-icon-color: var(
   --nutui-quickenter-close-icon-color,
@@ -2944,8 +2947,8 @@ $quickenter-close-icon-color: var(
 ) !default;
 $quickenter-box-shadow: var(
   --nutui-quickenter-box-shadow,
-  0px 8px 16px rgba(141, 153, 167, 0.2),
-  0px -0.5px 0px rgba(0, 0, 0, 0.05) inset
+  0px scale-px(8px) scale-px(16px) rgba(141, 153, 167, 0.2),
+  0px scale-px(-0.5px) 0px scale-px(0.05) inset
 ) !default;
 // $quickenter-backdrop-filter: var(
 //   --nutui-quickenter-backdrop-filter,

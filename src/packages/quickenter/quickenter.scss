@@ -5,7 +5,7 @@
   /* 限制弹层最大高度，包含安全区 */
   max-height: calc(#{$quickenter-max-height} + env(safe-area-inset-top, 0));
   background: $quickenter-bg-color;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 scale-px(12px) scale-px(12px);
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 16px 0;
+    padding: scale-px(30px) scale-px(16px) 0;
     box-sizing: border-box;
   }
 
@@ -53,7 +53,7 @@
 
   &-content {
     flex: 1;
-    padding: 10px 28px;
+    padding: scale-px(10px) scale-px(28px);
     overflow-y: hidden; // 始终可滚动，防止内容被遮挡
     box-sizing: border-box;
 
@@ -75,34 +75,34 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 56px;
-    padding: 0 0 12px 0; // Reduced from 16px to ensure 2 rows fit in 256px
+    width: scale-px(56px);
+    padding: 0 0 scale-px(12px) 0; // Reduced from 16px to ensure 2 rows fit in 256px
     box-sizing: border-box;
     cursor: pointer;
 
     // Calculate gap for 4 items per row: (100% - 4 * 56px) / 3
-    margin-right: calc((100% - 224px) / 3);
+    margin-right: calc((100% - scale-px(224px)) / 3);
 
     &:nth-child(4n) {
       margin-right: 0;
     }
 
     &-icon {
-      width: 56px;
-      height: 56px;
+      width: scale-px(56px);
+      height: scale-px(56px);
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: $quickenter-item-icon-bg-color;
       color: $quickenter-item-icon-color;
-      margin-bottom: 8px;
+      margin-bottom: scale-px(8px);
       flex-shrink: 0;
 
       svg,
       .nut-icon {
-        width: 22px;
-        height: 22px;
+        width: scale-icon-px(22px);
+        height: scale-icon-px(22px);
       }
     }
 
@@ -110,13 +110,13 @@
       font-size: $quickenter-item-title-font-size;
       color: $quickenter-item-title-color;
       text-align: center;
-      line-height: 1.4;
+      line-height: scale-font-px(16px);
       // Allow multi-line if text is long, preventing truncation
       white-space: normal;
       word-wrap: break-word;
-      width: 72px; // Allow text to be slightly wider than icon
-      margin-left: -8px; // Center 72px title over 56px icon
-      margin-right: -8px;
+      width: scale-px(72px); // Allow text to be slightly wider than icon
+      margin-left: scale-px(-8px); // Center 72px title over 56px icon
+      margin-right: scale-px(-8px);
     }
   }
 }

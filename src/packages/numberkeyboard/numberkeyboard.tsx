@@ -118,7 +118,7 @@ export const NumberKeyboard: FunctionComponent<
         case 'delete':
           return <DeleteIcon />
         case 'close':
-          return <ArrowDown width={18} height={18} />
+          return <ArrowDown className={`${classPrefix}-close-icon`} />
         case 'confirm':
           return <>{confirmText || locale.done}</>
         default:

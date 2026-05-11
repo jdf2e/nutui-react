@@ -74,8 +74,8 @@
     &.nut-searchbar-icon {
       position: relative;
       .nut-icon {
-        width: scale-px(12px);
-        height: scale-px(12px);
+        width: scale-icon-px(12px);
+        height: scale-icon-px(12px);
         color: var(--nutui-black-5);
         margin-right: $searchbar-inner-gap;
       }
@@ -111,8 +111,8 @@
     }
 
     .nut-icon {
-      width: scale-px(6px);
-      height: scale-px(6px);
+      width: scale-icon-px(6px);
+      height: scale-icon-px(6px);
       font-size: scale-font-px(6px);
       color: #c2c4cc;
       margin-left: scale-px(4px);
