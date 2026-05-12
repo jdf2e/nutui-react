@@ -1,6 +1,6 @@
 ---
 name: nutui-build-local-verify
-description: NutUI 比例缩放本地验证——默认就地覆盖：每个组件 SCSS 写回 src/packages 下同一路径（如 actionsheet/actionsheet.scss→同文件）；--mirror 才写到 scale-verify/ 对照。不写 build。
+description: NutUI 比例缩放本地验证——写回 src/packages 下同路径组件 SCSS（跳过 src/packages/**/demo.scss 与 demos）；--mirror 写 scale-verify/；不写 build。
 disable-model-invocation: true
 ---
 
@@ -10,6 +10,8 @@ disable-model-invocation: true
 
 **只做一步**：用 `scripts/px-to-scale-px-in-component-scss.cjs` 把组件 SCSS 里裸 `px` 转成 `scale-px` 等，并把结果写回磁盘。
 
+**不扫描、不写入**：**`src/packages/<组件名>/demo.scss`**（各组件目录根下的单文件）、`**/demos/**`、路径中含 **`/demo/`**、测试与快照目录下的 `.scss`（与官方 `build.mjs` 里对 `**/demo.scss` 的 ignore 一致）。
+
 - **默认（就地覆盖）**：对每个匹配的 `.scss`，**读、写都是同一路径**——相对 `src/packages` 的路径不变。例如 `src/packages/actionsheet/actionsheet.scss` 转换后仍写回该文件，不会改到别的目录或改名。
 - **`--mirror`**：不写源码；结果写到 **`scale-verify/<与 src/packages 相同的相对路径>`**（例如 `scale-verify/actionsheet/actionsheet.scss`），便于 diff。
 
@@ -18,6 +20,14 @@ disable-model-invocation: true
 ## 覆盖原 SCSS（推荐）
 
 在 **nutui-react 仓库根目录** 执行。**务必先 commit / stash**，用完 `git restore src/packages` 或 `git checkout -- src/packages` 恢复。
+
+若只需还原 **`src/packages/<组件>/demo.scss`**（当前脚本已跳过；若曾被旧版本误改）：
+
+```bash
+find src/packages -name 'demo.scss' -exec git restore -- {} \;
+```
+
+**然后**在仓库根执行验证：
 
 ```bash
 pnpm run verify-scale

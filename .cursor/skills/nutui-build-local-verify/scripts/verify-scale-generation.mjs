@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * 默认：每个文件读自且写回 src/packages 下同一路径（如 …/actionsheet/actionsheet.scss）。
- * 不包含 build；自行 git diff / 恢复即可。
+ * 本地验证：默认就地写回 src/packages 下同一路径的组件 .scss（如 …/actionsheet/actionsheet.scss）。
+ * 跳过 src/packages/**/demo.scss、demos、测试与快照（与 build.mjs ignore 一致）。
+ * --mirror 只写 scale-verify/；不包含 build；自行 git diff / 恢复即可。
  */
 import fs from 'node:fs/promises'
 import path from 'path'
@@ -32,6 +33,9 @@ function isScssFile(name) {
 
 function shouldSkip(relPath) {
   const p = relPath.replaceAll('\\', '/')
+  // 与 build.mjs 的 ignore 一致：**/demo.scss 不参与 px→scale 写回
+  if (path.posix.basename(p) === 'demo.scss') return true
+  if (p.includes('/demo/')) return true
   if (p.includes('/demos/')) return true
   if (p.includes('/__test__/')) return true
   if (p.includes('/__tests__/')) return true
