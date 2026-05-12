@@ -74,7 +74,7 @@
 
         &-title,
         &-description {
-          padding-left: scale-px(4px);
+          padding-left: 4px;
         }
 
         &-special {
@@ -85,7 +85,7 @@
           }
 
           .nut-step-title {
-            padding-right: scale-px(8px);
+            padding-right: 8px;
             /* #ifndef dynamic*/
             width: fit-content;
             /* #endif */
@@ -131,7 +131,7 @@
 
         &-head {
           justify-content: center;
-          margin-bottom: scale-px(5px);
+          margin-bottom: 5px;
 
           &-dot-wrap,
           &-icon-wrap,
@@ -158,7 +158,7 @@
 
         &-title {
           height: auto;
-          line-height: scale-px(20px);
+          line-height: 20px;
           white-space: normal;
           overflow-wrap: break-word;
           text-align: center;
@@ -210,8 +210,8 @@
       }
 
       &-line {
-        height: calc(100% - scale-px(4px));
-        width: scale-px(1px);
+        height: calc(100% - 4px);
+        width: 1px;
         bottom: 0;
 
         &-inner {
@@ -222,7 +222,7 @@
       &-head {
         align-items: center;
         justify-content: center;
-        height: scale-px(20px);
+        height: 20px;
 
         &-icon {
           width: $steps-vertical-head-icon-size;
@@ -239,7 +239,7 @@
         flex: 1;
         min-width: 0;
         height: auto;
-        margin-left: scale-px(8px);
+        margin-left: 8px;
       }
 
       &-title {
@@ -276,23 +276,23 @@
       }
 
       &-head-dot-wrap {
-        height: calc($steps-base-head-dot-size + scale-px(8px));
+        height: calc($steps-base-head-dot-size + 8px);
       }
 
       &-head-icon-wrap {
-        height: calc($steps-vertical-head-icon-size + scale-px(8px));
+        height: calc($steps-vertical-head-icon-size + 8px);
       }
 
       &-head-text-wrap {
-        height: calc($steps-base-head-text-size + scale-px(8px));
+        height: calc($steps-base-head-text-size + 8px);
       }
     }
 
     &-icon {
       .nut-step {
         &-head {
-          width: calc($steps-vertical-head-icon-size + scale-px(1px));
-          min-width: calc($steps-vertical-head-icon-size + scale-px(1px));
+          width: calc($steps-vertical-head-icon-size + 1px);
+          min-width: calc($steps-vertical-head-icon-size + 1px);
         }
 
         &-line {
@@ -304,7 +304,7 @@
     &-dot {
       .nut-step {
         &-head {
-          width: calc($steps-base-head-dot-size + scale-px(1px));
+          width: calc($steps-base-head-dot-size + 1px);
         }
 
         &-line {
@@ -316,8 +316,8 @@
     &-text {
       .nut-step {
         &-head {
-          width: calc($steps-base-head-text-size + scale-px(1px));
-          min-width: calc($steps-base-head-text-size + scale-px(1px));
+          width: calc($steps-base-head-text-size + 1px);
+          min-width: calc($steps-base-head-text-size + 1px);
         }
 
         &-line {

@@ -46,12 +46,12 @@
     color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
-    line-height: scale-px(50px);
+    line-height: 50px;
   }
 
   &-sub-title {
-    padding: scale-px(7px) 0;
-    line-height: scale-px(22px);
+    padding: 7px 0;
+    line-height: 22px;
     font-size: $calendar-sub-title-font-size;
   }
 
@@ -59,10 +59,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: scale-px(36px);
-    border-radius: 0px 0px scale-px(12px) scale-px(12px);
-    box-shadow: 0px scale-px(4px) scale-px(10px) 0px
-      rgba($color: #000000, $alpha: 0.06);
+    height: 36px;
+    border-radius: 0px 0px 12px 12px;
+    box-shadow: 0px 4px 10px 0px rgba($color: #000000, $alpha: 0.06);
   }
 
   &-week-item {
@@ -88,11 +87,11 @@
     box-sizing: border-box;
 
     .calendar-loading-tip {
-      height: scale-px(50px);
-      line-height: scale-px(50px);
+      height: 50px;
+      line-height: 50px;
       text-align: center;
       position: absolute;
-      top: scale-px(-50px);
+      top: -50px;
       left: 0;
       right: 0;
       font-size: $font-size-s;
@@ -106,9 +105,9 @@
     text-align: center;
 
     &-title {
-      height: scale-px(23px);
-      line-height: scale-px(23px);
-      margin: scale-px(8px) 0;
+      height: 23px;
+      line-height: 23px;
+      margin: 8px 0;
     }
   }
 
@@ -126,7 +125,7 @@
     width: $calendar-day-width;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
-    margin-bottom: scale-px(4px);
+    margin-bottom: 4px;
 
     // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
     &-day,
@@ -147,22 +146,22 @@
     &-info,
     &-info-curr {
       position: absolute;
-      bottom: scale-px(5px);
+      bottom: 5px;
       width: 100%;
       font-size: $font-size-s;
-      line-height: scale-px(14px);
+      line-height: 14px;
     }
 
     &-info-top {
       position: absolute;
       width: 100%;
-      top: scale-px(5px);
+      top: 5px;
     }
 
     &-info-bottom {
       position: absolute;
       width: 100%;
-      bottom: scale-px(5px);
+      bottom: 5px;
     }
 
     &-active {
@@ -238,9 +237,9 @@
     background-color: $white;
 
     .calendar-confirm-btn {
-      height: scale-px(40px);
-      line-height: scale-px(40px);
-      margin: scale-px(6px) scale-px(16px);
+      height: 40px;
+      line-height: 40px;
+      margin: 6px 16px;
       text-align: center;
       border-radius: $radius-base;
       background: $button-primary-background-color;
@@ -251,7 +250,7 @@
 }
 
 .nut-calendar-popup .nut-popup-title-right {
-  top: scale-px(7px) !important;
+  top: 7px !important;
 }
 
 [dir='rtl'] .nut-calendar,

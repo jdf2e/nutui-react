@@ -4,15 +4,15 @@
 .nut-address {
   &-exist {
     display: block;
-    padding: scale-px(15px) scale-px(20px) 0;
-    height: scale-px(279px);
+    padding: 15px 20px 0;
+    height: 279px;
     overflow-y: auto;
     box-sizing: border-box;
 
     &-item {
       display: flex;
       align-items: center;
-      margin-bottom: scale-px(20px);
+      margin-bottom: 20px;
       font-size: $font-size-s;
       line-height: $font-size-base;
       color: $color-title;
@@ -22,25 +22,25 @@
       }
 
       &-info {
-        margin-left: scale-px(9px);
+        margin-left: 9px;
       }
     }
   }
 
   &-footer {
     width: 100%;
-    height: scale-px(54px);
-    padding: scale-px(6px) 0px 0;
-    border-top: scale-px(1px) solid $color-border;
+    height: 54px;
+    padding: 6px 0px 0;
+    border-top: 1px solid $color-border;
 
     &-btn {
       width: 90%;
-      height: scale-px(42px);
-      line-height: scale-px(42px);
+      height: 42px;
+      line-height: 42px;
       margin: auto;
       text-align: center;
       background: $button-primary-background-color;
-      border-radius: scale-px(21px);
+      border-radius: 21px;
       font-size: $font-size-l;
       color: $color-primary-text;
     }
@@ -51,10 +51,10 @@
   &-title {
     font-size: $font-size-base;
     font-weight: 500;
-    padding: scale-px(16px) scale-px(16px) scale-px(12px) scale-px(16px);
+    padding: 16px 16px 12px 16px;
   }
   &-hotlist {
-    padding: 0 scale-px(16px);
+    padding: 0 16px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -62,16 +62,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: scale-px(63px);
-      height: scale-px(28px);
+      width: 63px;
+      height: 28px;
       font-size: $font-size-s;
-      border-radius: scale-px(4px);
-      margin-bottom: scale-px(7px);
+      border-radius: 4px;
+      margin-bottom: 7px;
       /* #ifdef harmony dynamic*/
-      margin-right: scale-px(6px);
+      margin-right: 6px;
       /* #endif */
       /* #ifndef harmony dynamic*/
-      margin-right: scale-px(7px);
+      margin-right: 7px;
       /* #endif */
       background-color: $color-background-sunken;
       color: $color-title;
@@ -83,36 +83,36 @@
     &.hotlist-more {
       .nut-address-hotlist-item {
         width: auto;
-        padding: 0 scale-px(16px);
-        margin-right: scale-px(7px);
+        padding: 0 16px;
+        margin-right: 7px;
       }
     }
   }
 
   &-selected {
     width: 100%;
-    height: scale-px(60px);
-    padding: 0 scale-px(16px);
+    height: 60px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
-    border-bottom: scale-px(1px) solid $color-border;
+    border-bottom: 1px solid $color-border;
     &-item {
       font-size: $font-size-s;
       display: inline-block;
-      height: scale-px(28px);
-      line-height: scale-px(28px);
-      padding: 0 scale-px(12px);
-      border-radius: scale-px(4px);
+      height: 28px;
+      line-height: 28px;
+      padding: 0 12px;
+      border-radius: 4px;
       background-color: $color-background-sunken;
 
       &.active {
-        border: scale-px(1px) solid $color-primary;
+        border: 1px solid $color-primary;
         background-color: $color-primary-light-pressed;
         color: $color-primary;
       }
     }
     &-border {
-      margin: 0 scale-px(2px);
+      margin: 0 2px;
       color: $color-text-disabled;
     }
   }
@@ -122,15 +122,15 @@
     .nut-elevator-list {
       &-item {
         position: relative;
-        padding-left: scale-px(20px);
+        padding-left: 20px;
       }
       &-item-code {
         display: inline;
         position: absolute;
         left: 0;
         top: 0;
-        height: scale-px(30px);
-        line-height: scale-px(30px);
+        height: 30px;
+        line-height: 30px;
         border-bottom: 0;
         color: $color-text-help;
         font-weight: 500;
@@ -145,11 +145,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: scale-px(16px);
-        height: scale-px(16px);
+        width: 16px;
+        height: 16px;
         font-size: $font-size-xxs;
-        border-radius: scale-px(16px);
-        margin-bottom: scale-px(2px);
+        border-radius: 16px;
+        margin-bottom: 2px;
         color: $color-text-help;
         &-active {
           background-color: $color-primary;
@@ -167,7 +167,7 @@
     &-item {
       &-info {
         margin-left: 0;
-        margin-right: scale-px(9px);
+        margin-right: 9px;
       }
     }
   }

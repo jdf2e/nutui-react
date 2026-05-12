@@ -6,8 +6,8 @@
     float: left;
     color: $color-title;
     background: $color-background-overlay;
-    padding: scale-px(10px);
-    margin-right: scale-px(20px);
+    padding: 10px;
+    margin-right: 20px;
   }
 
   &:after {
@@ -23,12 +23,12 @@
     display: block;
     color: $color-title;
     background: $color-background-overlay;
-    border-radius: scale-px(7px);
-    box-shadow: 0 scale-px(1px) scale-px(6px) 0 rgba(237, 238, 241, 1);
-    margin-top: scale-px(20px);
-    padding: scale-px(14px) scale-px(15px);
+    border-radius: 7px;
+    box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
+    margin-top: 20px;
+    padding: 14px 15px;
     font-size: scale-font-px(13px);
-    line-height: scale-px(18px);
+    line-height: 18px;
     font-family: PingFangSC;
     font-weight: 500;
   }
@@ -74,6 +74,6 @@
   li {
     float: right;
     margin-right: 0;
-    margin-left: scale-px(20px);
+    margin-left: 20px;
   }
 }

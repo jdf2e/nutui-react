@@ -44,16 +44,16 @@
     &-large {
       margin-left: calc($rate-item-margin * 2);
       .nut-icon {
-        height: calc($rate-icon-size + scale-px(8px));
-        width: calc($rate-icon-size + scale-px(8px));
+        height: calc($rate-icon-size + 8px);
+        width: calc($rate-icon-size + 8px);
       }
     }
 
     &-small {
       margin-left: calc($rate-item-margin / 2);
       .nut-icon {
-        height: calc($rate-icon-size - scale-px(4px));
-        width: calc($rate-icon-size - scale-px(4px));
+        height: calc($rate-icon-size - 4px);
+        width: calc($rate-icon-size - 4px);
       }
     }
 
@@ -148,7 +148,7 @@
     }
 
     &-small {
-      margin-right: calc($rate-item-margin - scale-px(2px));
+      margin-right: calc($rate-item-margin - 2px);
     }
 
     &:last-child {
@@ -185,7 +185,7 @@
     }
 
     &-small {
-      padding-right: calc($rate-item-margin - scale-px(2px));
+      padding-right: calc($rate-item-margin - 2px);
     }
   }
 }

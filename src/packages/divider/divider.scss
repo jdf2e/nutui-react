@@ -53,7 +53,7 @@
     /* #endif */
     width: 0px;
     height: $divider-vertical-height;
-    border-left: scale-px(1px) solid $divider-border-color;
+    border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
     vertical-align: middle;
   }

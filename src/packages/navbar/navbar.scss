@@ -12,7 +12,7 @@
   font-size: $navbar-font-size;
   color: $navbar-color;
   overflow: hidden;
-  padding: 0 scale-px(16px);
+  padding: 0 16px;
 
   &-fixed {
     position: fixed;
@@ -51,7 +51,7 @@
     white-space: nowrap;
 
     &-center {
-      max-width: scale-px(129px);
+      max-width: 129px;
       justify-content: center;
     }
   }
@@ -65,31 +65,31 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    max-width: scale-px(124px);
+    max-width: 124px;
     height: 100%;
     cursor: pointer;
     /* #ifndef harmony jd h5 weapp*/
     .nut-icon,
     .nutui-iconfont {
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
       font-size: scale-font-px(20px);
     }
 
     /* #endif */
     &-maxwidth {
       box-sizing: border-box;
-      width: calc(scale-px(124px) - scale-px(16px));
+      width: calc(124px - 16px);
     }
   }
 
   &-left {
-    padding-right: scale-px(16px);
-    gap: scale-px(16px);
+    padding-right: 16px;
+    gap: 16px;
 
     &-rtl {
       padding-right: 0;
-      padding-left: scale-px(16px);
+      padding-left: 16px;
     }
 
     &-back {
@@ -97,7 +97,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap: scale-px(16px);
+      gap: 16px;
     }
 
     &-hidden {
@@ -107,12 +107,12 @@
   }
 
   &-right {
-    padding-left: scale-px(16px);
+    padding-left: 16px;
     justify-content: flex-end;
-    gap: scale-px(16px);
+    gap: 16px;
 
     &-rtl {
-      padding-right: scale-px(16px);
+      padding-right: 16px;
       padding-left: 0;
     }
   }

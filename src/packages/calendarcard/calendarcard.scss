@@ -1,6 +1,6 @@
 .nut-calendarcard {
   background: $color-background-overlay;
-  border-radius: scale-px(12px);
+  border-radius: 12px;
   overflow: hidden;
   font-size: $calendar-base-font-size;
   line-height: $calendar-base-font-size;
@@ -18,15 +18,15 @@
       display: flex;
       flex-direction: row;
       cursor: pointer;
-      margin: scale-px(16px);
+      margin: 16px;
       line-height: 1;
 
       .left {
-        margin-left: scale-px(8px);
+        margin-left: 8px;
       }
 
       .right {
-        margin-right: scale-px(8px);
+        margin-right: 8px;
       }
     }
   }
@@ -51,9 +51,9 @@
     flex-direction: column;
     position: relative;
     width: $calendar-day-width;
-    height: scale-px(48px);
+    height: 48px;
     cursor: pointer;
-    margin-bottom: scale-px(4px);
+    margin-bottom: 4px;
     text-align: center;
 
     // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
@@ -73,9 +73,9 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: scale-px(12px);
+      height: 12px;
       font-size: $font-size-s;
-      line-height: scale-px(12px);
+      line-height: 12px;
     }
 
     &.weekend {
@@ -152,12 +152,12 @@
     &-right {
       .left {
         margin-left: 0;
-        margin-right: scale-px(8px);
+        margin-right: 8px;
       }
 
       .right {
         margin-right: 0;
-        margin-left: scale-px(8px);
+        margin-left: 8px;
       }
 
       .nut-icon-ArrowLeft,

@@ -16,12 +16,12 @@
 
   .nut-icon {
     color: $color-text-disabled;
-    width: scale-px(14px);
-    height: scale-px(14px);
+    width: 14px;
+    height: 14px;
     font-size: $font-size-base;
   }
   &-container {
-    height: scale-px(38px);
+    height: 38px;
     padding: $input-padding;
     background-color: $input-background-color;
     border-radius: $input-border-radius;

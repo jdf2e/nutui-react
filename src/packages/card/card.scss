@@ -9,8 +9,8 @@
   border-radius: $card-border-radius;
 
   &-left {
-    width: scale-px(120px);
-    height: scale-px(120px);
+    width: 120px;
+    height: 120px;
     flex-shrink: 0;
 
     > img {
@@ -23,7 +23,7 @@
 
   &-right {
     flex: 1;
-    padding: 0 scale-px(10px) scale-px(8px);
+    padding: 0 10px 8px;
 
     &-title {
       @include moreline-ellipsis();
@@ -35,13 +35,13 @@
     &-price {
       display: flex;
       align-items: center;
-      height: scale-px(18px);
-      line-height: scale-px(18px);
-      margin-top: scale-px(9px);
+      height: 18px;
+      line-height: 18px;
+      margin-top: 9px;
 
       &-origin {
         &.nut-price {
-          margin-left: scale-px(2px);
+          margin-left: 2px;
           .nut-price-symbol,
           .nut-price-integer,
           .nut-price-decimal {
@@ -54,11 +54,11 @@
     &-other {
       display: flex;
       align-items: center;
-      padding: scale-px(5px) 0 scale-px(2px);
+      padding: 5px 0 2px;
 
       .nut-tag {
-        padding: 0 scale-px(2px);
-        margin-right: scale-px(5px);
+        padding: 0 2px;
+        margin-right: 5px;
         font-size: $font-size-xs;
       }
     }
@@ -72,7 +72,7 @@
         line-height: 1.5;
         color: $color-text;
         font-size: $font-size-s;
-        padding-top: scale-px(4px);
+        padding-top: 4px;
       }
     }
   }
@@ -85,7 +85,7 @@
       &-origin {
         &.nut-price {
           margin-left: 0;
-          margin-right: scale-px(2px);
+          margin-right: 2px;
         }
       }
     }
@@ -93,7 +93,7 @@
     &-other {
       .nut-tag {
         margin-right: 0;
-        margin-left: scale-px(5px);
+        margin-left: 5px;
       }
     }
   }

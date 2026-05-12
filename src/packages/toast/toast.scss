@@ -44,9 +44,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: scale-px(96px);
+    min-width: 96px;
     max-width: 60%;
-    // max-width: scale-px(224px);
+    // max-width: 224px;
     box-sizing: border-box;
     font-size: $toast-text-font-size;
     text-align: $toast-inner-text-align;
@@ -58,7 +58,7 @@
 
     &-descrption {
       max-width: 68.2%;
-      // max-width: scale-px(256px);
+      // max-width: 256px;
     }
 
     &-normal {
@@ -95,7 +95,7 @@
   &-text {
     color: #ffffff;
     text-align: $toast-inner-text-align;
-    line-height: scale-px(20px);
+    line-height: 20px;
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
@@ -107,15 +107,15 @@
     font-size: $toast-title-font-size;
     font-weight: 600;
     text-align: $toast-inner-text-align;
-    line-height: scale-px(22px);
+    line-height: 22px;
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
   }
 
   .nut-icon {
-    width: scale-px(24px);
-    height: scale-px(24px);
+    width: 24px;
+    height: 24px;
     color: #ffffff;
   }
 
@@ -124,12 +124,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: scale-px(3px) 0 scale-px(5px);
+    margin: 3px 0 5px;
     color: #ffffff;
 
     &-icon {
-      width: scale-px(24px);
-      height: scale-px(24px);
+      width: 24px;
+      height: 24px;
     }
   }
 

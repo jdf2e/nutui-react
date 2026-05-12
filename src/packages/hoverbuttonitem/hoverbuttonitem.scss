@@ -3,7 +3,7 @@
     width: $hoverbutton-item-size;
     height: $hoverbutton-item-size;
     border-radius: $hoverbutton-item-size;
-    border: scale-px(1px) solid $hoverbutton-item-border-color;
+    border: 1px solid $hoverbutton-item-border-color;
     background-color: $hoverbutton-item-background;
 
     &:active,
@@ -26,24 +26,24 @@
 
       .nut-icon {
         display: block;
-        width: scale-px(14px);
-        height: scale-px(14px);
+        width: 14px;
+        height: 14px;
         font-size: $font-size-base;
       }
     }
   }
 
   &-icon {
-    width: scale-px(20px);
-    height: scale-px(20px);
-    margin: scale-px(9px);
+    width: 20px;
+    height: 20px;
+    margin: 9px;
     color: $hoverbutton-item-icon-color;
     fill: $hoverbutton-item-icon-color;
 
     .nut-icon {
       display: block;
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
       font-size: scale-font-px(20px);
     }
   }
@@ -54,13 +54,13 @@
   }
 
   &-text-icon {
-    width: scale-px(14px);
-    height: scale-px(5px);
+    width: 14px;
+    height: 5px;
   }
 
   &-text {
     font-size: $font-size-xxs;
-    margin-top: scale-px(5px);
-    line-height: scale-px(9px);
+    margin-top: 5px;
+    line-height: 9px;
   }
 }

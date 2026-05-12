@@ -4,7 +4,8 @@ description: >-
   NutUI React proportional scaling on branch feat_resize: runtime --nut-scale-f /
   --nut-scale-font / --nut-scale-icon from scale-f.ts (H5) and scale-f.taro.ts
   (Taro), Sass helpers scale-px / scale-font-px / scale-icon-px and theme font
-  tokens in variables.scss & theme-*.scss; profiles standard / large / elderly;
+  tokens in variables.scss & theme-*.scss; npm run build / build:taro run
+  scripts/px-to-scale-px-in-component-scss.cjs on component SCSS in memory; profiles standard / large / elderly;
   commit-backed rules e.g. never scale 0px. Use when implementing 多尺寸适配,
   等比适配, 大字版, 老年版, scale-px, viewport or native bridge scaling, or
   editing component SCSS for resize.
@@ -47,6 +48,11 @@ description: >-
 ```
 
 **主题字号档**（`theme-default.scss` / `theme-dark.scss`）：`--nutui-font-size-*` 使用 `calc(Npx * var(--nut-scale-font, var(--nut-scale-f, 1)))`，与 **大字/老年** 档位对齐。
+
+### 2.1 `npm run build` / `npm run build:taro` 时的 px → `scale-px`
+
+- 与 `package.json` 中顺序一致：先跑 **`scripts/replace-css-var.js`**，再 **`scripts/build.mjs`** 或 **`scripts/build-taro.mjs`**；上述脚本在读取 **`src/packages/**/\*.scss`（不含 demo）** 后，会经 **`scripts/px-to-scale-px-in-component-scss.cjs`** 在**内存**里把声明值中的裸 **`Npx`** 转为 **`scale-px(Npx)`**（规则见 §3），**不写回\*\*仓库文件。
+- 源码里可继续手写 **`scale-px` / `scale-font-px` / `scale-icon-px`**；构建不会重复嵌套 `scale-px`。
 
 ---
 

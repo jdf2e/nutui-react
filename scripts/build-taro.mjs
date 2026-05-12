@@ -7,6 +7,7 @@ import scss from 'postcss-scss'
 import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
+import { createRequire } from 'node:module'
 import { execSync } from 'child_process'
 import { access, mkdir, readFile, writeFile } from 'fs/promises'
 import { basename, dirname, extname, join, relative, resolve } from 'path'
@@ -18,6 +19,8 @@ import { generate } from './build-theme-typings.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+const require = createRequire(import.meta.url)
+const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
 const dist = 'release/taro/dist'
 const filePath = resolve(__dirname, '../package.json')
 const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
@@ -352,9 +355,10 @@ async function buildCSS(themeName = '') {
     join(__dirname, `../src/styles/variables${themeName ? `-${themeName}` : ''}.scss`),
   )
   for (const file of componentScssFiles) {
-    const scssContent = await readFile(join(__dirname, '../', file), {
+    let scssContent = await readFile(join(__dirname, '../', file), {
       encoding: 'utf8',
     })
+    scssContent = pxToScalePxInComponentScss(scssContent)
     // countup 是特例
     const base = basename(file)
     const loadPath = join(
@@ -444,9 +448,10 @@ async function buildHarmonyCSS(themeName = '') {
     ),
   )
   for (const file of componentScssFiles) {
-    const scssContent = await readFile(join(__dirname, '../', file), {
+    let scssContent = await readFile(join(__dirname, '../', file), {
       encoding: 'utf8',
     })
+    scssContent = pxToScalePxInComponentScss(scssContent)
     // countup 是特例
     const base = basename(file)
     const loadPath = join(

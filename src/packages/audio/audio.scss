@@ -10,11 +10,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: scale-px(30px);
-      height: scale-px(30px);
+      width: 30px;
+      height: 30px;
       background: $white;
       border-radius: 50%;
-      box-shadow: 0 0 scale-px(8px) $color-text-disabled;
+      box-shadow: 0 0 8px $color-text-disabled;
     }
 
     .nut-audio-icon-stop {
@@ -26,11 +26,11 @@
         top: 50%;
         transform: translateX(-50%);
         content: '';
-        height: scale-px(2px);
-        width: scale-px(30px);
+        height: 2px;
+        width: 30px;
         background: $color-text-disabled;
         transform: rotate(45deg);
-        transform-origin: scale-px(8px) scale-px(-18px);
+        transform-origin: 8px -18px;
       }
     }
   }
@@ -40,34 +40,34 @@
     align-items: center;
     width: 100%;
     margin: 0px auto;
-    padding: scale-px(10px) 0;
+    padding: 10px 0;
 
     &-bar-wrapper {
       flex: 1;
-      margin: 0 scale-px(10px);
+      margin: 0 10px;
     }
 
     .time {
-      min-width: scale-px(50px);
+      min-width: 50px;
       font-size: $font-size-s;
       text-align: center;
     }
 
     .nut-range-button {
-      width: scale-px(8px);
-      height: scale-px(8px);
+      width: 8px;
+      height: 8px;
     }
   }
 
   .custom-button-group {
     .nut-button-primary {
-      margin: 0 scale-px(5px);
+      margin: 0 5px;
     }
   }
 
   .custom-button-group-disable {
     .nut-button-primary {
-      margin: 0 scale-px(5px);
+      margin: 0 5px;
       pointer-events: none;
     }
   }
@@ -78,7 +78,7 @@
 
   .nut-audio-none-container {
     .nut-voice {
-      border: scale-px(1px) solid $color-title;
+      border: 1px solid $color-title;
       align-items: center;
     }
   }
@@ -92,7 +92,7 @@
         left: auto;
         right: 50%;
         transform: rotate(-45deg);
-        transform-origin: scale-px(20px) scale-px(-18px);
+        transform-origin: 20px -18px;
       }
     }
   }

@@ -60,7 +60,7 @@
     }
 
     &-bottom {
-      bottom: scale-px(-64px);
+      bottom: -64px;
       width: $dialog-bottom-close-icon-size;
       height: $dialog-bottom-close-icon-size;
       left: 50%;

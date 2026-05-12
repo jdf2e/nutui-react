@@ -13,11 +13,11 @@
     display: flex;
 
     &-3 {
-      padding: 0 scale-px(16px);
+      padding: 0 16px;
     }
 
     &-2 {
-      padding: 0 scale-px(32px);
+      padding: 0 32px;
     }
 
     &-horizontal {
@@ -26,11 +26,11 @@
         flex-direction: row;
         justify-content: center;
         .nut-icon {
-          width: scale-px(20px);
-          height: scale-px(20px);
+          width: 20px;
+          height: 20px;
         }
         .nut-tabbar-item-text {
-          margin: 0 scale-px(4px) 0 scale-px(6px);
+          margin: 0 4px 0 6px;
           font-size: $font-size-base;
         }
         .nut-badge-sup {

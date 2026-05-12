@@ -8,8 +8,8 @@
 .nut-pagination-prev,
 .nut-pagination-item,
 .nut-pagination-next {
-  height: scale-px(39px);
-  min-width: scale-px(39px);
+  height: 39px;
+  min-width: 39px;
   flex-shrink: 0;
   box-sizing: border-box;
   display: flex;
@@ -53,9 +53,9 @@
 }
 
 .nut-pagination-simple {
-  height: scale-px(39px);
-  width: scale-px(124px);
-  line-height: scale-px(39px);
+  height: 39px;
+  width: 124px;
+  line-height: 39px;
   text-align: center;
   font-size: $pagination-font-size;
   color: $pagination-color;

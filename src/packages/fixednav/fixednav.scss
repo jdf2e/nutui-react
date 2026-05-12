@@ -5,7 +5,7 @@
   position: fixed;
   z-index: $fixednav-index;
   display: inline-block;
-  height: scale-px(50px);
+  height: 50px;
 
   &.active {
     .nut-fixednav-btn {
@@ -29,17 +29,17 @@
     box-sizing: border-box;
     position: absolute;
     z-index: $fixednav-index;
-    width: scale-px(70px);
+    width: 70px;
     height: 100%;
     background: $fixednav-button-background;
-    box-shadow: 0px scale-px(2px) scale-px(4px) 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 
     .text {
-      width: scale-px(24px);
-      line-height: scale-px(13px);
+      width: 24px;
+      line-height: 13px;
       font-size: $font-size-s;
       color: #fff;
       flex-shrink: 0;
@@ -59,7 +59,7 @@
     background: $fixednav-background-color;
     display: flex;
     justify-content: space-between;
-    box-shadow: scale-px(2px) scale-px(2px) scale-px(8px) 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
 
     &-item {
       position: relative;
@@ -69,7 +69,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-width: scale-px(50px);
+      min-width: 50px;
       flex-shrink: 0;
       color: $fixednav-color;
 
@@ -79,9 +79,9 @@
     }
 
     &-image {
-      width: scale-px(20px);
-      height: scale-px(20px);
-      margin-bottom: scale-px(2px);
+      width: 20px;
+      height: 20px;
+      margin-bottom: 2px;
     }
   }
 
@@ -89,19 +89,19 @@
     right: 0;
     .nut-fixednav-btn {
       right: 0;
-      border-radius: scale-px(45px) 0 0 scale-px(45px);
+      border-radius: 45px 0 0 45px;
       .nut-icon {
-        margin-right: scale-px(5px);
+        margin-right: 5px;
         transform: rotate(0deg);
       }
     }
     .nut-fixednav-list {
       right: 0;
       transform: translateX(100%);
-      border-radius: scale-px(25px) 0 0 scale-px(25px);
+      border-radius: 25px 0 0 25px;
       padding: {
-        left: scale-px(20px);
-        right: scale-px(80px);
+        left: 20px;
+        right: 80px;
       }
     }
   }
@@ -111,9 +111,9 @@
     .nut-fixednav-btn {
       flex-direction: row-reverse;
       left: 0;
-      border-radius: 0 scale-px(45px) scale-px(45px) 0;
+      border-radius: 0 45px 45px 0;
       .nut-icon {
-        margin-left: scale-px(5px);
+        margin-left: 5px;
         transform: rotate(180deg);
       }
     }
@@ -121,10 +121,10 @@
     .nut-fixednav-list {
       transform: translateX(-100%);
       left: 0;
-      border-radius: 0 scale-px(25px) scale-px(25px) 0;
+      border-radius: 0 25px 25px 0;
       padding: {
-        left: scale-px(80px);
-        right: scale-px(20px);
+        left: 80px;
+        right: 20px;
       }
     }
   }
@@ -150,10 +150,10 @@
   &-btn {
     right: auto;
     left: 0;
-    border-radius: 0px scale-px(45px) scale-px(45px) 0px;
+    border-radius: 0px 45px 45px 0px;
     .nut-icon {
       margin-right: 0px;
-      margin-left: scale-px(5px);
+      margin-left: 5px;
       transform: rotate(180deg);
     }
   }
@@ -162,13 +162,12 @@
     right: auto;
     left: 0;
     transform: translateX(-100%);
-    border-radius: 0px scale-px(25px) scale-px(25px) 0px;
-    box-shadow: scale-px(-2px) scale-px(2px) scale-px(8px) 0px
-      rgba(0, 0, 0, 0.2);
+    border-radius: 0px 25px 25px 0px;
+    box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.2);
 
     padding: {
-      right: scale-px(20px);
-      left: scale-px(80px);
+      right: 20px;
+      left: 80px;
     }
 
     &-item {
@@ -186,11 +185,11 @@
     .nut-fixednav-btn {
       left: auto;
       right: 0;
-      border-radius: scale-px(45px) 0 0 scale-px(45px);
+      border-radius: 45px 0 0 45px;
 
       .nut-icon {
         transform: rotate(0deg);
-        margin-right: scale-px(5px);
+        margin-right: 5px;
         margin-left: 0px;
       }
     }
@@ -199,11 +198,11 @@
       transform: translateX(100%);
       right: auto;
       left: auto;
-      border-radius: scale-px(25px) 0px 0px scale-px(25px);
+      border-radius: 25px 0px 0px 25px;
 
       padding: {
-        right: scale-px(80px);
-        left: scale-px(20px);
+        right: 80px;
+        left: 20px;
       }
     }
   }

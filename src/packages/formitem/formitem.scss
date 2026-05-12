@@ -23,14 +23,14 @@
       color: $form-item-required-color;
       margin-right: $form-item-required-margin-right;
       position: absolute;
-      left: scale-px(-10px);
+      left: -10px;
     }
 
     &-right-required {
       color: $form-item-required-color;
       margin-left: $form-item-required-margin-right;
       position: absolute;
-      right: scale-px(-10px);
+      right: -10px;
     }
   }
 
@@ -68,7 +68,7 @@
       }
 
       .nut-range-container {
-        min-height: scale-px(24px);
+        min-height: 24px;
       }
 
       .nut-textarea {
@@ -132,13 +132,13 @@
 
 .nut-form-item-label-right {
   justify-content: flex-end;
-  padding-right: scale-px(24px);
+  padding-right: 24px;
   white-space: nowrap;
 }
 
 .nut-form-item-label-left {
   position: relative;
-  padding-left: scale-px(12px);
+  padding-left: 12px;
   white-space: nowrap;
 }
 
@@ -150,8 +150,8 @@
 
 .nut-form-item-label-top {
   display: block;
-  padding-bottom: scale-px(4px);
-  padding-right: scale-px(24px);
+  padding-bottom: 4px;
+  padding-right: 24px;
 }
 
 .nut-form-item-body-top {
@@ -163,14 +163,14 @@
 .nut-rtl .form-layout-right .nut-form-item-label {
   text-align: left;
   padding-right: 0;
-  padding-left: scale-px(24px);
+  padding-left: 24px;
 }
 
 [dir='rtl'] .form-layout-left .nut-form-item-label,
 .nut-rtl .form-layout-left .nut-form-item-label {
   text-align: right;
   padding-left: 0;
-  padding-right: scale-px(12px);
+  padding-right: 12px;
 
   // .required {
   //   left: auto;
@@ -181,7 +181,7 @@
 [dir='rtl'] .form-layout-top .nut-form-item-label,
 .nut-rtl .form-layout-top .nut-form-item-label {
   padding-right: 0;
-  padding-left: scale-px(24px);
+  padding-left: 24px;
 }
 
 [dir='rtl'] .form-layout-top .nut-form-item-body,

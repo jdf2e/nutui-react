@@ -25,7 +25,7 @@
     height: $searchbar-input-height;
     background: $searchbar-content-background;
     border-radius: $searchbar-content-border-radius;
-    border: scale-px(1px) solid $color-primary;
+    border: 1px solid $color-primary;
   }
 
   &-icon {
@@ -95,19 +95,19 @@
     flex-direction: row;
     z-index: 2;
     background-color: #fff;
-    top: scale-px(9px);
-    left: scale-px(6px);
+    top: 9px;
+    left: 6px;
     font-size: $font-size-s;
-    line-height: scale-px(12px);
+    line-height: 12px;
 
     .nut-searchbar-value {
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: scale-px(4px) scale-px(8px);
+      padding: 4px 8px;
       background-color: #f7f8fc;
-      border-radius: scale-px(4px);
-      margin-right: scale-px(2px);
+      border-radius: 4px;
+      margin-right: 2px;
     }
 
     .nut-icon {
@@ -115,7 +115,7 @@
       height: scale-icon-px(6px);
       font-size: scale-font-px(6px);
       color: #c2c4cc;
-      margin-left: scale-px(4px);
+      margin-left: 4px;
     }
   }
 
@@ -130,8 +130,8 @@
     align-items: center;
 
     &.nut-icon {
-      width: scale-px(20px);
-      height: scale-px(20px);
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -193,10 +193,10 @@
   }
 
   &-focus {
-    padding: scale-px(5px) $searchbar-gap;
+    padding: 5px $searchbar-gap;
 
     .nut-searchbar-content {
-      border: scale-px(0.5px) solid #ff5c67;
+      border: 0.5px solid #ff5c67;
     }
   }
 }

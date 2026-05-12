@@ -13,7 +13,7 @@
   }
 
   &-error {
-    border: scale-px(0.5px) solid $color-danger;
+    border: 0.5px solid $color-danger;
     background-color: $color-danger-light;
   }
 
@@ -34,7 +34,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: scale-px(40px);
+    height: 40px;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -49,10 +49,10 @@
     // &::after{
     //   content: '';
     //   position: absolute;
-    //   width: scale-px(2px);
-    //   height: scale-px(14px);
+    //   width: 2px;
+    //   height: 14px;
     //   background-color: red;
-    //   // left: scale-px(10px);
+    //   // left: 10px;
     //   // top: 50%;
     //   transform: translateY(-50%);
     //   z-index: 1;
@@ -87,7 +87,7 @@
   &.nut-textarea-rtl {
     &-limit {
       right: auto;
-      left: scale-px(15px);
+      left: 15px;
     }
   }
 }

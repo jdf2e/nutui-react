@@ -6,7 +6,7 @@
   align-items: center;
 
   &-fixed-width {
-    width: scale-px(21px);
+    width: 21px;
   }
 
   &-dot,
@@ -36,11 +36,11 @@
   &-fixed-width {
     // 两个页码的时候
     .nut-indicator-dot {
-      width: scale-px(12px);
+      width: 12px;
       border-radius: $indicator-border-radius;
 
       &-active {
-        width: scale-px(6px);
+        width: 6px;
       }
     }
   }
@@ -49,17 +49,17 @@
     // 竖向固定高度
     &.nut-indicator-fixed-width {
       justify-content: flex-start;
-      height: scale-px(21px);
+      height: 21px;
       width: auto;
 
       // 竖向两个页码
       .nut-indicator-dot {
-        width: scale-px(3px);
-        height: scale-px(12px);
+        width: 3px;
+        height: 12px;
         border-radius: $indicator-border-radius;
 
         &-active {
-          height: scale-px(6px);
+          height: 6px;
         }
       }
 
@@ -67,7 +67,7 @@
         &.nut-indicator-white {
           .nut-indicator-dot {
             &-active {
-              height: scale-px(6px);
+              height: 6px;
             }
           }
         }
@@ -136,7 +136,7 @@
 
 .nut-indicator-track.nut-indicator-white {
   &:after {
-    border: scale-px(1px) solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     background: rgba(255, 255, 255, 0.4);
   }
 }

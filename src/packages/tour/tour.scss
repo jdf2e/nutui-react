@@ -29,8 +29,8 @@
       text-align: end;
 
       &-close {
-        width: scale-px(10px);
-        height: scale-px(10px);
+        width: 10px;
+        height: 10px;
       }
     }
 
@@ -51,7 +51,7 @@
 
         &-btn {
           display: inline-block;
-          border: scale-px(1px) solid $color-text-disabled;
+          border: 1px solid $color-text-disabled;
           margin-left: $tour-content-bottom-btn-margin-left;
           padding: $tour-content-bottom-btn-padding;
           font-size: $tour-content-bottom-btn-font-size;

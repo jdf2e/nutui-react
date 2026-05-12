@@ -6,8 +6,8 @@
     box-sizing: border-box;
     content: ' ';
     pointer-events: none;
-    right: scale-px(16px);
-    left: scale-px(16px);
+    right: 16px;
+    left: 16px;
     bottom: 0;
     border-bottom: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
@@ -34,8 +34,8 @@
       box-sizing: border-box;
       content: ' ';
       pointer-events: none;
-      right: scale-px(16px);
-      left: scale-px(16px);
+      right: 16px;
+      left: 16px;
       bottom: 0;
       border-bottom: $collapse-item-header-border-bottom;
       /* #ifdef harmony dynamic*/
@@ -57,7 +57,7 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    padding: 0px scale-px(20px);
+    padding: 0px 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -66,7 +66,7 @@
 
   &-icon-box {
     display: flex;
-    width: scale-px(24px);
+    width: 24px;
     position: relative;
     color: $color-text;
   }
@@ -76,7 +76,7 @@
     align-items: center;
     position: absolute;
     top: 50%;
-    left: scale-px(5px);
+    left: 5px;
     transform: translateY(-50%);
     transform-origin: center;
     transition: transform 0.3s;
@@ -126,6 +126,6 @@
 .nut-rtl .nut-collapse-item {
   &-icon {
     left: auto;
-    right: scale-px(5px);
+    right: 5px;
   }
 }

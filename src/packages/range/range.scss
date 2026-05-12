@@ -19,13 +19,13 @@
   height: $range-height;
   margin: 0 $range-margin;
   background-color: $range-inactive-color;
-  border-radius: scale-px(2px);
+  border-radius: 2px;
   flex: 1;
   cursor: pointer;
 
   &::before {
     position: absolute;
-    inset-block: scale-px(-8px);
+    inset-block: -8px;
     inset-inline: 0;
     content: '';
   }
@@ -45,7 +45,7 @@
     max-width: 100%;
     max-height: 100%;
     background: $range-active-color;
-    border-radius: scale-px(2px);
+    border-radius: 2px;
 
     &-animate {
       transition: all 0.2s;
@@ -59,7 +59,7 @@
     height: $range-button-height;
     background: $range-button-background;
     border-radius: 50%;
-    box-shadow: 0px scale-px(1px) scale-px(2px) 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
     border: $range-button-border;
     outline: none;
     align-items: center;
@@ -98,9 +98,9 @@
     &-number {
       position: relative;
       width: 200%;
-      height: scale-px(24px);
-      line-height: scale-px(14px);
-      padding: scale-px(5px) 0;
+      height: 24px;
+      line-height: 14px;
+      padding: 5px 0;
       left: 50%;
       display: flex;
       align-items: center;
@@ -130,7 +130,7 @@
   &-mark {
     position: absolute;
     width: 100%;
-    height: scale-px(14px);
+    height: 14px;
     overflow: visible;
     top: 50%;
   }
@@ -138,14 +138,14 @@
   &-mark-text-wrapper {
     position: absolute;
     height: 100%;
-    top: scale-px(14px);
+    top: 14px;
     display: inline-block;
-    transform: translateX(scale-px(-10px));
+    transform: translateX(-10px);
   }
 
   &-mark-text {
     position: absolute;
-    line-height: scale-px(16px);
+    line-height: 16px;
     font-size: $font-size-s;
     color: #999;
     text-align: center;
@@ -155,11 +155,11 @@
 
   &-tick {
     position: absolute;
-    top: scale-px(-20px);
-    width: scale-px(11px);
-    height: scale-px(11px);
+    top: -20px;
+    width: 11px;
+    height: 11px;
     left: 0px;
-    border-radius: scale-px(6px);
+    border-radius: 6px;
     background: $range-inactive-color;
 
     &-active {
@@ -171,7 +171,7 @@
 .nut-range-vertical-container {
   height: 100%;
   flex-direction: column;
-  padding: 0px scale-px(15px);
+  padding: 0px 15px;
 }
 
 .nut-range-vertical {
@@ -209,7 +209,7 @@
 
   &-mark {
     position: absolute;
-    width: scale-px(36px);
+    width: 36px;
     height: 100%;
     top: 0px;
     right: 50%;
@@ -219,21 +219,21 @@
   }
 
   &-mark-hm {
-    left: scale-px(-34px);
+    left: -34px;
   }
 
   &-mark-text-wrapper {
-    // width: scale-px(20px);
-    height: scale-px(16px);
+    // width: 20px;
+    height: 16px;
     position: absolute;
     display: inline-block;
     user-select: none;
-    transform: translateY(scale-px(-11px));
+    transform: translateY(-11px);
   }
 
   &-mark-text {
     height: 100%;
-    line-height: scale-px(16px);
+    line-height: 16px;
     color: #999;
     text-align: center;
     word-break: keep-all;
@@ -241,11 +241,11 @@
 
   &-tick {
     position: absolute;
-    top: scale-px(2px);
-    left: scale-px(31px);
-    width: scale-px(10px);
-    height: scale-px(10px);
-    border-radius: scale-px(5px);
+    top: 2px;
+    left: 31px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     background: $range-inactive-color;
 
     &-active {
@@ -282,7 +282,7 @@
   }
 
   &-mark-text {
-    transform: translateX(scale-px(10px));
+    transform: translateX(10px);
   }
 
   &-vertical {
@@ -316,13 +316,13 @@
 
     &-tick {
       left: auto;
-      right: scale-px(30px);
+      right: 30px;
       margin-left: 0;
-      margin-right: scale-px(-0px);
+      margin-right: -0px;
     }
 
     &-mark-text-wrapper {
-      transform: translateY(scale-px(-11px));
+      transform: translateY(-11px);
     }
   }
 }

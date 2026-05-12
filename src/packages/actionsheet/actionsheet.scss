@@ -9,7 +9,7 @@
   }
 
   .nut-popup-title {
-    border-bottom: scale-px(1px) solid $actionsheet-border-color;
+    border-bottom: 1px solid $actionsheet-border-color;
   }
 
   &-list {
@@ -23,7 +23,7 @@
   &-cancel,
   &-item {
     display: block;
-    padding: scale-px(10px);
+    padding: 10px;
     text-align: $actionsheet-item-text-align;
     line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
@@ -54,8 +54,8 @@
   }
 
   &-cancel {
-    margin-top: scale-px(5px);
-    border-top: scale-px(1px) solid $actionsheet-border-color;
+    margin-top: 5px;
+    border-top: 1px solid $actionsheet-border-color;
     border-radius: $actionsheet-border-radius;
   }
 
