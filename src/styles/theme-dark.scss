@@ -228,59 +228,25 @@ page {
   --nutui-color-border-disabled: var(--nutui-color-content-gray-1);
 
   // 字体 ok
-  --nutui-font-size-8: calc(8px * var(--nut-scale-font, var(--nut-scale-f, 1)));
-  --nutui-font-size-9: calc(9px * var(--nut-scale-font, var(--nut-scale-f, 1)));
-  --nutui-font-size-10: calc(
-    10px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-11: calc(
-    11px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-12: calc(
-    12px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-13: calc(
-    13px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-14: calc(
-    14px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-15: calc(
-    15px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-16: calc(
-    16px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-17: calc(
-    17px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-18: calc(
-    18px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-19: calc(
-    19px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-20: calc(
-    20px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-21: calc(
-    21px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-22: calc(
-    22px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-23: calc(
-    23px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-24: calc(
-    24px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-25: calc(
-    25px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
-  --nutui-font-size-26: calc(
-    26px * var(--nut-scale-font, var(--nut-scale-f, 1))
-  );
+  --nutui-font-size-8: 8px;
+  --nutui-font-size-9: 9px;
+  --nutui-font-size-10: 10px;
+  --nutui-font-size-11: 11px;
+  --nutui-font-size-12: 12px;
+  --nutui-font-size-13: 13px;
+  --nutui-font-size-14: 14px;
+  --nutui-font-size-15: 15px;
+  --nutui-font-size-16: 16px;
+  --nutui-font-size-17: 17px;
+  --nutui-font-size-18: 18px;
+  --nutui-font-size-19: 19px;
+  --nutui-font-size-20: 20px;
+  --nutui-font-size-21: 21px;
+  --nutui-font-size-22: 22px;
+  --nutui-font-size-23: 23px;
+  --nutui-font-size-24: 24px;
+  --nutui-font-size-25: 25px;
+  --nutui-font-size-26: 26px;
 
   // 字号语义化
   // 徽标文字
@@ -291,12 +257,18 @@ page {
   --nutui-font-size-xs: var(--nutui-font-size-11);
   // 汉字：次要内容、辅助类信息 数字：羊角符号、小数点及角分
   --nutui-font-size-s: var(--nutui-font-size-12);
+  --nutui-font-size-m: var(--nutui-font-size-13);
   // 标准内容、名称类关键信息
   --nutui-font-size-base: var(--nutui-font-size-14);
   // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
   --nutui-font-size-l: var(--nutui-font-size-16);
+  // 16px 字阶（与 l 同档数值，供 --nutui-font-size-md 语义）
+  --nutui-font-size-md: var(--nutui-font-size-16);
+  --nutui-font-size-icon: var(--nutui-font-size-16);
   // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
   --nutui-font-size-xl: var(--nutui-font-size-18);
+  // xl(18) 与 xxl(24) 之间（20px）
+  --nutui-font-size-2xl: var(--nutui-font-size-20);
   // 数字：页面级主价格，如商详、收银台
   --nutui-font-size-xxl: var(--nutui-font-size-24);
   // zanwu
@@ -311,7 +283,19 @@ page {
   --nutui-font-weight-bold: 600;
 
   // 行高
-  --nutui-line-height-base: 1.5;
+  --nutui-line-height-xxxs: var(--nutui-font-size-xxxs);
+  --nutui-line-height-xxs: var(--nutui-font-size-xxs);
+  --nutui-line-height-xs: var(--nutui-font-size-xs);
+  --nutui-line-height-s: var(--nutui-font-size-s);
+  --nutui-line-height-m: var(--nutui-font-size-m);
+  --nutui-line-height-base: var(--nutui-font-size-base);
+  --nutui-line-height-l: var(--nutui-font-size-l);
+  --nutui-line-height-md: var(--nutui-font-size-md);
+  --nutui-line-height-icon: var(--nutui-font-size-icon);
+  --nutui-line-height-xl: var(--nutui-font-size-xl);
+  --nutui-line-height-2xl: var(--nutui-font-size-2xl);
+  --nutui-line-height-xxl: var(--nutui-font-size-xxl);
+  --nutui-line-height-xxxl: var(--nutui-font-size-xxxl);
 
   // 对齐方式
   --nutui-text-align: left;

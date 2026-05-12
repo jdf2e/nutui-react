@@ -20,14 +20,12 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
     speed = 1,
     dpr = true,
   } = props
-
   const setSpeed = () => {
     if (animation.current) {
       animation.current.setSpeed(Math.abs(speed))
       animation.current.setDirection(speed > 0 ? 1 : -1)
     }
   }
-
   useImperativeHandle(ref, () => animation.current || {})
   const pixelRatio = useRef(getWindowInfo().pixelRatio)
   useReady(() => {
@@ -75,7 +73,6 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
       )
       .exec()
   })
-
   useUnload(() => {
     onComplete &&
       animation.current &&

@@ -101,8 +101,8 @@
 
       svg,
       .nut-icon {
-        width: scale-icon-px(22px);
-        height: scale-icon-px(22px);
+        width: $icon-size-22;
+        height: $icon-size-22;
       }
     }
 
@@ -110,7 +110,7 @@
       font-size: $quickenter-item-title-font-size;
       color: $quickenter-item-title-color;
       text-align: center;
-      line-height: scale-font-px(16px);
+      line-height: $line-height-md;
       // Allow multi-line if text is long, preventing truncation
       white-space: normal;
       word-wrap: break-word;

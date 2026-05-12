@@ -3,6 +3,7 @@
   border-radius: 12px;
   overflow: hidden;
   font-size: $calendar-base-font-size;
+  line-height: $line-height-l;
   line-height: $calendar-base-font-size;
   color: $color-title;
 
@@ -19,7 +20,6 @@
       flex-direction: row;
       cursor: pointer;
       margin: 16px;
-      line-height: 1;
 
       .left {
         margin-left: 8px;

@@ -114,14 +114,14 @@
     }
 
     &-large {
-      font-size: calc($rate-font-size + scale-font-px(6px));
-      line-height: calc($rate-font-size + scale-font-px(6px));
+      font-size: $rate-font-size-large;
+      line-height: $rate-font-size-large;
       padding-left: calc($rate-item-margin * 2);
     }
 
     &-small {
-      font-size: calc($rate-font-size - scale-font-px(2px));
-      line-height: calc($rate-font-size - scale-font-px(2px));
+      font-size: $rate-font-size-small;
+      line-height: $rate-font-size-small;
       padding-left: calc($rate-item-margin / 2);
     }
 

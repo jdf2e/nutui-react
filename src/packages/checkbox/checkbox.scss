@@ -103,10 +103,10 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: scale-icon-px(10px) solid transparent;
-      border-left: scale-icon-px(10px) solid transparent;
-      border-bottom: scale-icon-px(10px) solid $color-primary;
-      border-right: scale-icon-px(10px) solid $color-primary;
+      border-top: $icon-size-10 solid transparent;
+      border-left: $icon-size-10 solid transparent;
+      border-bottom: $icon-size-10 solid $color-primary;
+      border-right: $icon-size-10 solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;

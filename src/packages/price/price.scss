@@ -1,6 +1,7 @@
 .nut-price {
   direction: ltr;
   font-size: $font-size-l;
+  line-height: $price-root-line-height;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -17,7 +18,6 @@
       &-symbol,
       &-integer,
       &-decimal {
-        font-family: 'JDZH-Bold';
         color: $price-darkgray-color;
       }
     }
@@ -28,7 +28,6 @@
       &-symbol,
       &-integer,
       &-decimal {
-        font-family: 'JDZH-Bold';
         color: $price-primary-color;
       }
     }
@@ -38,22 +37,22 @@
     padding-right: $price-symbol-padding-right;
     &-xlarge {
       font-size: $price-symbol-xlarge-size;
-      line-height: $price-symbol-xlarge-size;
+      line-height: $price-minor-line-height;
     }
 
     &-large {
       font-size: $price-symbol-large-size;
-      line-height: $price-symbol-large-size;
+      line-height: $price-minor-line-height;
     }
 
     &-normal {
       font-size: $price-symbol-normal-size;
-      line-height: $price-symbol-normal-size;
+      line-height: $price-minor-line-height;
     }
 
     &-small {
       font-size: $price-symbol-small-size;
-      line-height: $price-symbol-small-size;
+      line-height: $price-minor-line-height;
     }
 
     &-rtl {
@@ -65,44 +64,44 @@
   &-integer {
     &-xlarge {
       font-size: $price-integer-xlarge-size;
-      line-height: $price-integer-xlarge-size;
+      line-height: $price-integer-xlarge-line-height;
     }
 
     &-large {
       font-size: $price-integer-large-size;
-      line-height: $price-integer-large-size;
+      line-height: $price-integer-large-line-height;
     }
 
     &-normal {
       font-size: $price-integer-normal-size;
-      line-height: $price-integer-normal-size;
+      line-height: $price-integer-normal-line-height;
     }
 
     &-small {
       font-size: $price-integer-small-size;
-      line-height: $price-integer-small-size;
+      line-height: $price-integer-small-line-height;
     }
   }
 
   &-decimal {
     &-xlarge {
       font-size: $price-decimal-xlarge-size;
-      line-height: $price-decimal-xlarge-size;
+      line-height: $price-minor-line-height;
     }
 
     &-large {
       font-size: $price-decimal-large-size;
-      line-height: $price-decimal-large-size;
+      line-height: $price-minor-line-height;
     }
 
     &-normal {
       font-size: $price-decimal-normal-size;
-      line-height: $price-decimal-normal-size;
+      line-height: $price-minor-line-height;
     }
 
     &-small {
       font-size: $price-decimal-small-size;
-      line-height: $price-decimal-small-size;
+      line-height: $price-minor-line-height;
     }
   }
 

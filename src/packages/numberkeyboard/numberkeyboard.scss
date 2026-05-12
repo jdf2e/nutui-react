@@ -2,8 +2,8 @@
 
 .nut-numberkeyboard {
   &-close-icon {
-    width: scale-icon-px(18px);
-    height: scale-icon-px(18px);
+    width: $icon-size-18;
+    height: $icon-size-18;
   }
 
   width: 100%;

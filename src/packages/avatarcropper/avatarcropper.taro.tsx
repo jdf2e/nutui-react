@@ -693,5 +693,4 @@ export const AvatarCropper: FunctionComponent<
     </>
   )
 }
-
 AvatarCropper.displayName = 'NutAvatarCropper'

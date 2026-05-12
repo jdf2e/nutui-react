@@ -13,8 +13,8 @@
 
         &-icon {
           .nut-icon {
-            height: scale-icon-px(10px);
-            width: scale-icon-px(10px);
+            height: $icon-size-10;
+            width: $icon-size-10;
           }
 
           .nut-image {
@@ -146,8 +146,8 @@
           width: $steps-double-head-icon-size;
 
           .nut-icon {
-            height: scale-icon-px(12px);
-            width: scale-icon-px(12px);
+            height: $icon-size-12;
+            width: $icon-size-12;
           }
         }
 
@@ -229,8 +229,8 @@
           height: $steps-vertical-head-icon-size;
 
           .nut-icon {
-            height: scale-icon-px(12px);
-            width: scale-icon-px(12px);
+            height: $icon-size-12;
+            width: $icon-size-12;
           }
         }
       }
