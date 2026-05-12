@@ -74,6 +74,11 @@
       }
     }
 
+    &-right-icon-default {
+      width: $icon-size-12;
+      height: $icon-size-12;
+    }
+
     &-wrap {
       display: flex;
       flex: 1;

@@ -99,6 +99,11 @@
       }
     }
 
+    &-smile-icon {
+      width: 40px;
+      height: 20px;
+    }
+
     &-active {
       .nut-icon {
         color: $tabs-titles-item-active-color;

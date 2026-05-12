@@ -27,7 +27,7 @@
 
     &-title {
       @include moreline-ellipsis();
-      line-height: $line-height-xl;
+      line-height: $line-height-2xl;
       font-size: $font-size-base;
       color: $color-title;
     }

@@ -110,18 +110,18 @@
     &-normal {
       padding-left: $rate-item-margin;
       font-size: $rate-font-size;
-      line-height: $rate-font-size;
+      line-height: $line-height-s;
     }
 
     &-large {
       font-size: $rate-font-size-large;
-      line-height: $rate-font-size-large;
+      line-height: $line-height-xl;
       padding-left: calc($rate-item-margin * 2);
     }
 
     &-small {
       font-size: $rate-font-size-small;
-      line-height: $rate-font-size-small;
+      line-height: $line-height-xxs;
       padding-left: calc($rate-item-margin / 2);
     }
 

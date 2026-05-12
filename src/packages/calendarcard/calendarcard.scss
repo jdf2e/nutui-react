@@ -3,8 +3,6 @@
   border-radius: 12px;
   overflow: hidden;
   font-size: $calendar-base-font-size;
-  line-height: $line-height-l;
-  line-height: $calendar-base-font-size;
   color: $color-title;
 
   &-header {
@@ -13,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     font-weight: normal;
+    line-height: $line-height-l;
 
     &-left,
     &-right {

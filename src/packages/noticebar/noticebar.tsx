@@ -24,7 +24,7 @@ const defaultProps = {
   content: '',
   closeable: false,
   wrap: false,
-  leftIcon: <Notice width={16} height={16} />,
+  leftIcon: <Notice />,
   rightIcon: null,
   right: null,
   delay: 1,
@@ -475,7 +475,9 @@ export const NoticeBar: FunctionComponent<
           ) : null}
           {closeable || rightIcon ? (
             <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close width={12} height={12} />}
+              {rightIcon || (
+                <Close className="nut-noticebar-box-right-icon-default" />
+              )}
             </div>
           ) : null}
         </div>
@@ -534,7 +536,10 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon(e)
             }}
           >
-            {rightIcon || (closeable ? <Close width={12} height={12} /> : null)}
+            {rightIcon ||
+              (closeable ? (
+                <Close className="nut-noticebar-box-right-icon-default" />
+              ) : null)}
           </div>
         </div>
       ) : null}

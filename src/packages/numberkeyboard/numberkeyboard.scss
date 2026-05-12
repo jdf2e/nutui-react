@@ -6,6 +6,11 @@
     height: $icon-size-18;
   }
 
+  &-delete-icon {
+    width: 28px;
+    height: 28px;
+  }
+
   width: 100%;
   padding: $numberkeyboard-padding;
   user-select: none;

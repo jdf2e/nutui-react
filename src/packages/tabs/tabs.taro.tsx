@@ -282,7 +282,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                         // @ts-ignore
                         ariaHidden
                       >
-                        <JoySmile color={activeColor} />
+                        <JoySmile
+                          color={activeColor}
+                          className={`${classPrefix}-titles-item-smile-icon`}
+                        />
                       </View>
                     )}
                     <View

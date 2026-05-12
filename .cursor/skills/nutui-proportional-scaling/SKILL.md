@@ -79,6 +79,13 @@ description: >-
 - 图标占位：**`scale-icon-px`** 或已有 `--nut-icon-*`。
 - 保持与 **无障碍/大屏** 相关提交协同：同一文件改尺度时，勿回退 `dialog` 等对大字兼容的改动。
 
+### 3.5 组件 `.tsx` 图标尺寸治理（props → class → 变量）
+
+- 对 `@nutui/icons-react` / `@nutui/icons-react-taro`：尽量避免在组件上写死 `size={12}`、`width={16}`、`height={16}`。
+- **推荐模式**：在 `.tsx` 里只加语义化 `className`，到对应 `.scss` 里用变量控制尺寸（优先 `$icon-size-*` 阶梯，或组件专用变量）。
+- 若是内联 `<svg>`（非 NutUI 图标组件）也遵循同一规则：移除 `width/height` 字面量，改为 class，并在 SCSS 用变量（可新增如 `$xxx-icon-size`，默认 `scale-icon-px(Npx)`）。
+- 新增尺寸档优先沉淀到 `variables.scss`（如 `$icon-size-11`、`$icon-size-16`），避免同一像素值在多个组件重复散落。
+
 ### 3.4 `calc()`、Sass 变量与 `#{}`（与 `variables.scss` / 主题 token 一致）
 
 - **推荐**：在 `calc()` 里直接写 Sass 变量，如 **`calc($steps-vertical-head-icon-size + 1px)`**、**`calc($rate-item-margin / 2)`**，而不是 **`calc(#{$steps-vertical-head-icon-size} + 1px)`**。`#{}` 只在需要把值**硬插成无引号 CSS 片段**、或要避免 Sass 对单位做提前合并时再考虑；普通设计 token 用 **`$var` 作为 `calc` 的操作数**即可。
@@ -104,6 +111,7 @@ description: >-
 - [ ] 字体/图标是否应走 **`scale-font-px` / `scale-icon-px`** 而非误用 `scale-px`。
 - [ ] 含 **`$token` 与裸 `px` 的混合运算**：若 token 会变成 **`var(--nutui-*)`**，是否已用 **`calc($a - $b + Npx)`**，而不是 **`($a - $b + Npx)`** 写在 `margin` / `width` 等非纯编译期长度位置。
 - [ ] `calc()` 内对设计 token 是否优先 **`calc($var + 1px)`**，避免无必要的 **`#{}`**。
+- [ ] 组件 `.tsx` 是否仍有写死图标尺寸（`size/width/height`）；如有，是否已改为 **class + SCSS 变量**（内联 `svg` 同理）。
 - [ ] TS 侧改 `scale-f*` 已同步考虑 **Taro** 文件。
 - [ ] 修改 `formatScaleValue` / 断点时，已通读 **视口与平板常量** 是否仍与文档、设计一致。
 
