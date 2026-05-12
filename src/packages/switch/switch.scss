@@ -78,16 +78,16 @@
       color: $switch-label-text-color;
     }
     &-open {
-      margin: 0 ($switch-height - $switch-border-width + 3px) 0 7px;
+      margin: 0 calc($switch-height - $switch-border-width + 3px) 0 7px;
       &-rtl {
-        margin: 0 7px 0 ($switch-height - $switch-border-width + 3px);
+        margin: 0 7px 0 calc($switch-height - $switch-border-width + 3px);
       }
     }
 
     &-close {
-      margin: 0 7px 0 ($switch-height - $switch-border-width + 3px);
+      margin: 0 7px 0 calc($switch-height - $switch-border-width + 3px);
       &-rtl {
-        margin: 0 ($switch-height - $switch-border-width + 3px) 0 7px;
+        margin: 0 calc($switch-height - $switch-border-width + 3px) 0 7px;
       }
     }
 

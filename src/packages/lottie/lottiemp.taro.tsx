@@ -1,5 +1,5 @@
-import React, { useImperativeHandle, useLayoutEffect, useRef } from 'react'
-import { createSelectorQuery, getEnv, useUnload } from '@tarojs/taro'
+import React, { useImperativeHandle, useRef } from 'react'
+import { createSelectorQuery, getEnv, useReady, useUnload } from '@tarojs/taro'
 import lottie from '@nutui/lottie-miniprogram'
 import { getWindowInfo } from '@/utils/taro/get-system-info'
 import { useUuid } from '@/hooks/use-uuid'
@@ -21,9 +21,16 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
     dpr = true,
   } = props
 
+  const setSpeed = () => {
+    if (animation.current) {
+      animation.current.setSpeed(Math.abs(speed))
+      animation.current.setDirection(speed > 0 ? 1 : -1)
+    }
+  }
+
   useImperativeHandle(ref, () => animation.current || {})
   const pixelRatio = useRef(getWindowInfo().pixelRatio)
-  useLayoutEffect(() => {
+  useReady(() => {
     createSelectorQuery()
       .select(`#${id}`)
       .fields(
@@ -57,14 +64,9 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
                 context,
               },
             })
-            if (onComplete) {
+            onComplete &&
               animation.current.addEventListener('complete', onComplete)
-            }
-
-            if (animation.current) {
-              animation.current.setSpeed(Math.abs(speed))
-              animation.current.setDirection(speed > 0 ? 1 : -1)
-            }
+            setSpeed()
             inited.current = true
           } catch (error) {
             console.error(error)
@@ -72,7 +74,7 @@ export const Lottie = React.forwardRef((props: TaroLottieProps, ref: any) => {
         }
       )
       .exec()
-  }, [autoPlay, dpr, id, loop, onComplete, source, speed, style])
+  })
 
   useUnload(() => {
     onComplete &&

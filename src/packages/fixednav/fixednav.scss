@@ -89,7 +89,7 @@
     right: 0;
     .nut-fixednav-btn {
       right: 0;
-      border-radius: 45px 0 0 45px;
+      border-radius: 45px 0px 0px 45px;
       .nut-icon {
         margin-right: 5px;
         transform: rotate(0deg);
@@ -98,7 +98,7 @@
     .nut-fixednav-list {
       right: 0;
       transform: translateX(100%);
-      border-radius: 25px 0 0 25px;
+      border-radius: 25px 0px 0px 25px;
       padding: {
         left: 20px;
         right: 80px;
@@ -121,7 +121,7 @@
     .nut-fixednav-list {
       transform: translateX(-100%);
       left: 0;
-      border-radius: 0 25px 25px 0;
+      border-radius: 0px 25px 25px 0px;
       padding: {
         left: 80px;
         right: 20px;

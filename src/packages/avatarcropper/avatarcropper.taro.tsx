@@ -4,9 +4,8 @@ import React, {
   useMemo,
   useCallback,
   FunctionComponent,
-  useLayoutEffect,
 } from 'react'
-import Taro, { createSelectorQuery } from '@tarojs/taro'
+import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas, CommonEventFunction, View } from '@tarojs/components'
 import { getWindowInfo } from '@/utils/taro/get-system-info'
@@ -138,7 +137,7 @@ export const AvatarCropper: FunctionComponent<
     cropperCanvasContext: null,
   })
 
-  useLayoutEffect(() => {
+  useReady(() => {
     if (showAlipayCanvas2D) {
       const { canvasId } = canvasAll
       createSelectorQuery()
@@ -150,7 +149,7 @@ export const AvatarCropper: FunctionComponent<
         })
         .exec()
     }
-  }, [showAlipayCanvas2D, state.displayHeight, state.displayWidth])
+  })
 
   useEffect(() => {
     setCanvasAll({
