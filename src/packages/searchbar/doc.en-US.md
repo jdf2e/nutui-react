@@ -78,7 +78,6 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
-
 ### InputProps Extension Attributes
 
 `SearchBar`'s `inputProps` property can extend the attributes of the underlying input element, supporting all attributes of the native input element.
@@ -98,7 +97,6 @@ import { SearchBar } from '@nutui/nutui-react'
 <CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
-
 
 ## SearchBar
 

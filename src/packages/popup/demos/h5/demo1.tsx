@@ -29,6 +29,7 @@ const Demo = () => {
           setShowPopup(false)
         }}
         closeAriaLabel="关闭弹框"
+        overlayProps={{ ariaLabel: '点击蒙层关闭' }}
       />
       <Popup
         closeable

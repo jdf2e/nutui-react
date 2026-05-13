@@ -30,6 +30,12 @@
     }
   }
 
+  &-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+  }
+
   &-days {
     display: flex;
     flex-direction: row;
@@ -49,6 +55,13 @@
     margin-bottom: 4px;
     text-align: center;
 
+    // 部分 Taro 机型下子节点不会稳定继承父级 color，颜色直接落到最内层文案。
+    &-top,
+    &-inner,
+    &-bottom {
+      color: $color-title;
+    }
+
     &.header {
       cursor: auto;
     }
@@ -66,6 +79,12 @@
 
     &.weekend {
       color: $calendar-choose-color;
+
+      .nut-calendarcard-day-top,
+      .nut-calendarcard-day-inner,
+      .nut-calendarcard-day-bottom {
+        color: $calendar-choose-color;
+      }
     }
 
     &.active {

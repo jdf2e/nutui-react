@@ -96,8 +96,6 @@ import { SearchBar } from '@nutui/nutui-react'
 
 :::
 
-
-
 ## SearchBar
 
 ### Props

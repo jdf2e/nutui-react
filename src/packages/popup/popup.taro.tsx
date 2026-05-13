@@ -46,6 +46,8 @@ const defaultProps: TaroPopupProps = {
   onTouchStart: () => {},
   onTouchMove: () => {},
   onTouchEnd: () => {},
+  overlayProps: {},
+  animated: true,
 }
 
 // 默认1000，参看variables
@@ -95,8 +97,13 @@ export const Popup: FunctionComponent<
     onTouchMove,
     onTouchEnd,
     closeAriaLabel,
+    overlayProps,
+    animated,
   } = { ...defaultProps, ...props }
   const { locale } = useConfig()
+  const transitionDuration = useMemo(() => {
+    return animated ? Number(duration) : 0
+  }, [animated, duration])
 
   const [index, setIndex] = useState(zIndex || _zIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -187,14 +194,14 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-        }, Number(duration))
+        }, transitionDuration)
       }
       onClose?.()
     }
   }, [
     innerVisible,
     destroyOnClose,
-    duration,
+    transitionDuration,
     onClose,
     setInnerVisible,
     setShowChildren,
@@ -395,7 +402,7 @@ export const Popup: FunctionComponent<
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}
-        timeout={Number(duration)}
+        timeout={Number(transitionDuration)}
         in={innerVisible}
         onEntered={afterShow}
         onExited={afterClose}
@@ -433,8 +440,9 @@ export const Popup: FunctionComponent<
             visible={innerVisible}
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
-            duration={duration}
+            duration={transitionDuration}
             onClick={handleOverlayClick}
+            {...overlayProps}
           />
         ) : null}
         {renderPop()}
