@@ -3,7 +3,10 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
 import { WebPriceProps, PriceColorEnum } from '@/types'
-import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
+import {
+  shouldRenderPriceAsRaw,
+  hasNonPriceChars,
+} from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -15,6 +18,7 @@ const defaultProps = {
   position: 'before',
   size: 'normal',
   line: false,
+  raw: false,
 } as WebPriceProps
 export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const {
@@ -26,6 +30,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
     position,
     size,
     line,
+    raw,
     className,
     style,
     ...rest
@@ -39,9 +44,12 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   const rtl = useRtl()
   const isRenderPriceRaw = useMemo(
     () =>
-      typeof originalPrice === 'string' &&
-      shouldRenderPriceAsRaw(originalPrice),
-    [originalPrice]
+      (typeof originalPrice === 'string' &&
+        shouldRenderPriceAsRaw(originalPrice)) ||
+      (raw &&
+        typeof originalPrice === 'string' &&
+        hasNonPriceChars(originalPrice)),
+    [originalPrice, raw]
   )
 
   const price = useMemo(() => {
@@ -82,7 +90,7 @@ export const Price: FunctionComponent<Partial<WebPriceProps>> = (props) => {
   }
 
   const formatDecimal = (decimalNum: any) => {
-    if (Number(decimalNum) === 0) {
+    if (Number(decimalNum) === 0 && !checkPoint(decimalNum)) {
       decimalNum = 0
     }
 
