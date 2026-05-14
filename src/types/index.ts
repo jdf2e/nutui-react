@@ -351,3 +351,7 @@ export * from './spec/audio/taro'
 export * from './spec/steps/base'
 export * from './spec/steps/h5'
 export * from './spec/steps/taro'
+
+export * from './spec/quickenter/base'
+export * from './spec/quickenter/h5'
+export * from './spec/quickenter/taro'

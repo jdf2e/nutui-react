@@ -140,5 +140,8 @@ const zhUG: BaseLang = {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },
   mask: 'قاپلىما قەۋەت',
+  quickenter: {
+    title: 'تېز كىرگۈزۈش',
+  },
 }
 export default zhUG

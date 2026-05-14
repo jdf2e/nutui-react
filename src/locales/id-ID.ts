@@ -142,5 +142,8 @@ const idID: BaseLang = {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },
   mask: 'Masker',
+  quickenter: {
+    title: 'Masuk Cepat',
+  },
 }
 export default idID
