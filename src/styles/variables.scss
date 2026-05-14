@@ -1,9 +1,11 @@
 // ----------------------------------------------------
 // 缩放系数
-:root {
+:root,
+page {
   --nut-scale-f: 1;
   --nut-scale-font: var(--nut-scale-f, 1);
   --nut-scale-icon: var(--nut-scale-f, 1);
+
   // ---- icon size ----
   --nut-icon-height: calc(
     16px * var(--nut-scale-icon, var(--nut-scale-f, 1))

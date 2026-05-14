@@ -39,10 +39,6 @@ export type ScaleProfile = 'standard' | 'large' | 'elderly'
 export type ScaleScene = 'layout' | 'font' | 'icon' | 'lego'
 export type ScaleDevice = 'phone' | 'pad'
 
-/** 视口大于等于该宽度时按平板处理 */
-const PAD_BREAKPOINT = 600
-/** 平板默认整体缩放倍数 */
-const PAD_SCALE = 1.2
 /** 大字模式下仅 font 场景的相对倍率 */
 const LARGE_FONT_RATIO = 1.15
 /** 老年模式下 font/icon/lego 场景的相对倍率 */
@@ -88,7 +84,7 @@ function formatScaleValue(nextScale: number) {
 /** 根据屏宽粗略区分 phone / pad */
 function getCurrentDevice(): ScaleDevice {
   if (!canUseDom) return 'phone'
-  return window.innerWidth >= PAD_BREAKPOINT ? 'pad' : 'phone'
+  return window.innerWidth >= 600 ? 'pad' : 'phone'
 }
 
 /** 在 profile 与 scene 维度上叠加额外倍率（与全局 scale 相乘） */
@@ -124,8 +120,8 @@ function getScaleByViewport() {
 
   if (!deviceWidth) return 1
 
-  if (deviceWidth >= PAD_BREAKPOINT) {
-    return PAD_SCALE
+  if (deviceWidth >= 600) {
+    return 1.2
   }
 
   if (deviceWidth >= 375 && deviceWidth < 600) {
