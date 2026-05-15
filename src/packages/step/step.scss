@@ -86,11 +86,9 @@
   }
 
   &-title {
-    height: 14px;
     line-height: 14px;
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
-    overflow: hidden;
     white-space: nowrap;
   }
 
