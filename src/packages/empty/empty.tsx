@@ -2,13 +2,14 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-import Button, { ButtonFill, ButtonSize, ButtonType } from '../button'
+import Button from '../button'
+import { UIType, UISize, UIFill } from '@/types/base/atoms'
 
 export interface EmptyAction {
   text: React.ReactNode
-  type?: ButtonType
-  size?: ButtonSize
-  fill?: ButtonFill
+  type?: UIType
+  size?: UISize
+  fill?: UIFill
   disabled?: boolean
   onClick?: () => () => void
 }

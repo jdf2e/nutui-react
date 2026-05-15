@@ -175,6 +175,7 @@ export const SearchBar: FunctionComponent<
     const inputCls = classNames(`${classPrefix}-input`)
     return (
       <input
+        type="search"
         className={inputCls}
         ref={searchInputRef}
         value={value || ''}
@@ -215,7 +216,7 @@ export const SearchBar: FunctionComponent<
         ))}
       </div>
     )
-  }, [value, onItemClick])
+  }, [value, onItemClick, forceFocus])
 
   const renderLeftIn = useCallback(() => {
     if (!leftIn) return null
@@ -261,7 +262,6 @@ export const SearchBar: FunctionComponent<
       <div
         className={`${classPrefix}-clear ${classPrefix}-icon`}
         onClick={clearaVal}
-        aria-label="清除"
       >
         <MaskClose />
       </div>

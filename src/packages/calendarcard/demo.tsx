@@ -12,6 +12,7 @@ import Demo9 from './demos/h5/demo9'
 import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
+import Demo13 from './demos/h5/demo13'
 
 const CalendarDemo = () => {
   const [translated] = useTranslate({
@@ -30,6 +31,7 @@ const CalendarDemo = () => {
       confirm: '确定',
       ref: '使用 Ref 上的方法',
       title: '搭配 Ref 使用自定义头',
+      customWeekdays: '自定义周几',
     },
     'zh-TW': {
       single: '選擇單個日期',
@@ -46,6 +48,7 @@ const CalendarDemo = () => {
       confirm: '確定',
       ref: '使用 Ref 上的方法',
       title: '搭配 Ref 使用自定義头',
+      customWeekdays: '自定義周几',
     },
     'en-US': {
       single: 'Select a single date',
@@ -62,6 +65,7 @@ const CalendarDemo = () => {
       confirm: 'Confirm',
       ref: 'Use ref',
       title: 'Custom title',
+      customWeekdays: 'Custom weekdays',
     },
   })
 
@@ -92,6 +96,8 @@ const CalendarDemo = () => {
         <Demo11 />
         <h2>{translated.title}</h2>
         <Demo12 />
+        <h2>{translated.customWeekdays}</h2>
+        <Demo13 />
       </div>
     </>
   )

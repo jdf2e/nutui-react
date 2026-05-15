@@ -235,3 +235,18 @@ test('test startDate & endDate', async () => {
   const title4 = container.querySelector('.nut-calendarcard-header-title')
   expect(title4?.innerHTML).toBe('2022年12月')
 })
+
+test('test custom weekdays', async () => {
+  const { container } = render(
+    <CalendarCard
+      defaultValue={new Date('2023-01-25')}
+      weekdays={['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']}
+    />
+  )
+
+  const headers = container.querySelectorAll('.nut-calendarcard-day.header')
+  expect(headers.length).toBe(7)
+  expect(headers[0].innerHTML).toBe('Sun')
+  expect(headers[1].innerHTML).toBe('Mon')
+  expect(headers[6].innerHTML).toBe('Sat')
+})

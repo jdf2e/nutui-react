@@ -1078,7 +1078,7 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, $radius-xl) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, 20px) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 11px) !default;
 $popup-title-font-size: var(
   --nutui-popup-title-font-size,
   $font-size-xl
@@ -2622,3 +2622,7 @@ $quickenter-box-shadow: var(
   0px 8px 16px rgba(141, 153, 167, 0.2),
   0px -0.5px 0px rgba(0, 0, 0, 0.05) inset
 ) !default;
+// $quickenter-backdrop-filter: var(
+//   --nutui-quickenter-backdrop-filter,
+//   blur(8px)
+// ) !default;
