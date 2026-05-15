@@ -1,3 +1,14 @@
+# v3.0.20-cpp
+
+`2026-05-15`
+
+- 🚀 feat(price): 增加 `raw` 属性，开启后 price 包含非法字符时原样展示 (#3453)
+- ♿️ feat(price): 支持无障碍 (#3441)
+- 🚀 feat(calendar): 处理日历在多端表现异常问题，解决 weekend 样式优先级问题 (#3452)
+- 🚀 feat(popup): 增加属性用于表达是否展示动效，并透传 overlay 属性
+- 🐛 fix(calendar): 修复文本 color 继承问题，calendarCard 顶部箭头 icon 替换为 Image 标签 (#3444)
+- 🏡 chore(steps): 调整样式 (#3458)
+
 # v3.0.19-cpp.28
 
 `2026-04-27`
