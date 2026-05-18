@@ -48,6 +48,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   } = { ...defaultProps, ...props }
 
   const uuid = useUuid()
+  const tabsRef = useRef<any>(null)
 
   const [value, setValue] = usePropsValue<string | number>({
     value: outerValue,
@@ -103,7 +104,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
 
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
-      createSelectorQuery()
+      const query = createSelectorQuery()
+      const scope = tabsRef.current?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
         .select(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -113,7 +117,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   }
   const getAllRect = (selector: string) => {
     return new Promise((resolve) => {
-      createSelectorQuery()
+      const query = createSelectorQuery()
+      const scope = tabsRef.current?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
         .selectAll(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -229,7 +236,7 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
   }
 
   return (
-    <View className={classes} {...rest}>
+    <View className={classes} ref={tabsRef} {...rest}>
       <ScrollView
         enableFlex
         scrollX={direction === 'horizontal'}

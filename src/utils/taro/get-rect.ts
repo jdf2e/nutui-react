@@ -4,6 +4,11 @@ import { getRect, inBrowser } from '@/utils/get-rect'
 
 const lru = new MiniLru(10)
 
+const createScopedSelectorQuery = (scope?: any) => {
+  const query = createSelectorQuery()
+  return scope ? query.in(scope) : query
+}
+
 export interface Rect {
   dataset: Record<string, any>
   id: string
@@ -40,7 +45,8 @@ export const getRectInMultiPlatform = async (
         resolve(lru.get(element) as Rect)
         return
       }
-      createSelectorQuery()
+      createScopedSelectorQuery(element?._scope)
+        // https://taro.jd.com/docs/reference/config/page/
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
@@ -64,7 +70,8 @@ export const getRectInMultiPlatformWithoutCache = async (
       return Promise.resolve(getRect(element))
     }
     return new Promise((resolve, reject) => {
-      createSelectorQuery()
+      createScopedSelectorQuery(element?._scope)
+        // https://taro.jd.com/docs/reference/config/page/
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {

@@ -14,7 +14,10 @@ const Demo1 = () => {
   ]
 
   const onChange = (item: any) => {
-    Toast.show('toast', { content: `Clicked: ${item.title}` })
+    Toast.show('toast', {
+      title: `Clicked: ${item.title}`,
+      icon: 'none',
+    })
   }
 
   return (

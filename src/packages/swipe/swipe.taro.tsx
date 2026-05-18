@@ -4,15 +4,14 @@ import React, {
   useCallback,
   useEffect,
   useImperativeHandle,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { BaseEventOrig } from '@tarojs/components/types/common'
+import { createSelectorQuery, nextTick, useReady } from '@tarojs/taro'
 import { useTouch } from '@/hooks/use-touch'
-import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { harmony } from '@/utils/taro/platform'
 import { useRefState } from '@/hooks/use-ref-state'
@@ -20,10 +19,13 @@ import { useUuid } from '@/hooks/use-uuid'
 import { PositionX, SwipeRef, TaroSwipeProps } from '@/types'
 
 function preventDefault(event: any, isStopPropagation?: boolean): void {
-  if (typeof event.cancelable !== 'boolean' || event.cancelable) {
+  if (
+    event.preventDefault &&
+    (typeof event.cancelable !== 'boolean' || event.cancelable)
+  ) {
     event.preventDefault()
   }
-  if (isStopPropagation) {
+  if (isStopPropagation && event.stopPropagation) {
     event.stopPropagation()
   }
 }
@@ -52,6 +54,8 @@ export const Swipe = forwardRef<
   const opened = useRef(false)
   const lockClick = useRef(false)
   const startOffset = useRef(0)
+  const leftWrapper = useRef(null)
+  const rightWrapper = useRef(null)
 
   const [state, setState] = useState({
     offset: 0,
@@ -63,65 +67,65 @@ export const Swipe = forwardRef<
     right: 0,
   })
   const setActionWidth = useCallback(
-    (fn: any) => {
-      const res = fn()
-      if (res.left !== undefined) {
-        updateState({
-          ...actionWidth.current,
-          left: res.left,
-        })
-      }
-      if (res.right !== undefined) {
-        updateState({
-          ...actionWidth.current,
-          right: res.right,
-        })
-      }
+    (side: PositionX, width: number) => {
+      if (actionWidth.current[side] === width) return
+      updateState({
+        ...actionWidth.current,
+        [side]: width,
+      })
     },
     [actionWidth, updateState]
   )
 
-  // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
-  useLayoutEffect(() => {
-    const getWidth = async () => {
-      if (leftWrapper.current) {
-        const leftRect = await getRectInMultiPlatform(
-          leftWrapper.current,
-          leftId
-        )
-        leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
+  const getActionRect = (element: any, id: string) => {
+    return new Promise<any>((resolve) => {
+      if (!element) {
+        resolve(null)
+        return
       }
-      if (rightWrapper.current) {
-        const rightRect = await getRectInMultiPlatform(
-          rightWrapper.current,
-          rightId
-        )
-        rightRect &&
-          setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
-      }
-    }
 
-    getWidth()
-  }, [leftId, rightId, setActionWidth])
+      const query = createSelectorQuery()
+      const scope = element?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
+        .select(`#${id}`)
+        .boundingClientRect()
+        .exec((rect = []) => {
+          resolve(rect[0] || null)
+        })
+    })
+  }
+
+  const getWidth = useCallback(async () => {
+    if (props.leftAction) {
+      const leftRect = await getActionRect(leftWrapper.current, leftId)
+      leftRect && setActionWidth('left', leftRect.width)
+    }
+    if (props.rightAction) {
+      const rightRect = await getActionRect(rightWrapper.current, rightId)
+      rightRect && setActionWidth('right', rightRect.width)
+    }
+  }, [leftId, props.leftAction, props.rightAction, rightId, setActionWidth])
+
+  const getWidthRef = useRef(getWidth)
+  useEffect(() => {
+    getWidthRef.current = getWidth
+  }, [getWidth])
+
+  // 页面 ready 后测量操作区域宽度，宽度未变化时不触发更新。
+  useReady(() => {
+    nextTick(() => {
+      getWidthRef.current()
+    })
+  })
 
   const wrapperStyle = {
     transform: `translate(${state.offset}${!harmony() ? 'px' : ''}, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
-    if (leftWrapper.current) {
-      const leftRect = await getRectInMultiPlatform(leftWrapper.current, leftId)
-      leftRect && setActionWidth((v: any) => ({ ...v, left: leftRect.width }))
-    }
-    if (rightWrapper.current) {
-      const rightRect = await getRectInMultiPlatform(
-        rightWrapper.current,
-        rightId
-      )
-      rightRect &&
-        setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
-    }
     if (!props.disabled) {
+      getWidth()
       startOffset.current = state.offset
       touch.start(event)
       props.onTouchStart?.(event)
@@ -203,8 +207,6 @@ export const Swipe = forwardRef<
     return Math.min(Math.max(Number(num), Number(min)), Number(max))
   }
 
-  const leftWrapper = useRef(null)
-  const rightWrapper = useRef(null)
   const renderActionContent = (side: PositionX) => {
     if (props[`${side}Action`]) {
       return (

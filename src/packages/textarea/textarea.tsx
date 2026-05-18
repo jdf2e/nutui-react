@@ -48,7 +48,6 @@ export const TextArea = forwardRef(
       style,
       plain,
       status,
-      viewId,
       onChange,
       onBlur,
       onFocus,
@@ -119,7 +118,6 @@ export const TextArea = forwardRef(
     return (
       <>
         <div
-          id={viewId}
           className={classNames(
             classPrefix,
             {

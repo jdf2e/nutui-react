@@ -56,7 +56,10 @@ export const CountUp: FunctionComponent<Partial<TaroCountUpProps>> = (
 
   const setNumberTransform = useCallback(() => {
     if (countupRef.current && numberArr.length) {
-      createSelectorQuery()
+      const query = createSelectorQuery()
+      const scope = (countupRef.current as any)?._scope
+      const scopedQuery = scope ? query.in(scope) : query
+      scopedQuery
         .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
           const transformArrCache: CSSProperties[] = []
@@ -83,7 +86,7 @@ export const CountUp: FunctionComponent<Partial<TaroCountUpProps>> = (
         })
         .exec()
     }
-  }, [numberArr])
+  }, [duration, numberArr])
 
   useEffect(() => {
     if (numberArr.length) {

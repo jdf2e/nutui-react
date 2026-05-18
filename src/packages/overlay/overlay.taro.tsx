@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { TaroOverlayProps } from '@/types'
+import ConfigurableCSSTransition from '@/utils/taro/ConfigurableCSSTransition'
 
 export const defaultOverlayProps: TaroOverlayProps = {
   ...ComponentDefaults,
@@ -70,17 +70,17 @@ export const Overlay: FunctionComponent<
   )
 
   return (
-    <CSSTransition
+    <ConfigurableCSSTransition
       nodeRef={nodeRef}
       classNames={`${classPrefix}-slide`}
       unmountOnExit
-      timeout={duration}
+      timeout={Number(duration)}
       in={innerVisible}
       onEntered={afterShow}
       onExited={afterClose}
     >
       {renderOverlay()}
-    </CSSTransition>
+    </ConfigurableCSSTransition>
   )
 }
 

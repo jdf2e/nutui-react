@@ -198,7 +198,7 @@ export const InputNumber: FunctionComponent<
         className={classNames(`${classPrefix}-input`, {
           [`${classPrefix}-input-disabled`]: disabled,
         })}
-        type={type}
+        type={formatter ? 'text' : type}
         ref={inputRef}
         inputMode={type === 'digit' ? 'decimal' : 'numeric'}
         disabled={disabled}

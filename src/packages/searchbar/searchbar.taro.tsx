@@ -289,7 +289,6 @@ export const SearchBar: FunctionComponent<
           visibility: `${!innerTag && value && clearable ? 'visible' : 'hidden'}`,
         }}
         onClick={clearaVal}
-        aria-label="清除"
       >
         <MaskClose />
       </View>
