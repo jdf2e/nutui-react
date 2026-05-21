@@ -2601,40 +2601,12 @@ $resultpage-actions-margin-top: var(
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
 $quickenter-max-height: var(--nutui-quickenter-max-height, 256px) !default;
-$quickenter-title-font-size: var(
-  --nutui-quickenter-title-font-size,
-  $font-size-base
-) !default;
-$quickenter-title-color: var(
-  --nutui-quickenter-title-color,
-  $color-title
-) !default;
-$quickenter-item-title-font-size: var(
-  --nutui-quickenter-item-title-font-size,
-  $font-size-s
-) !default;
-$quickenter-item-title-color: var(
-  --nutui-quickenter-item-title-color,
-  $color-title
-) !default;
-$quickenter-item-icon-bg-color: var(
-  --nutui-quickenter-item-icon-bg-color,
-  $white
-) !default;
-$quickenter-item-icon-color: var(
-  --nutui-quickenter-item-icon-color,
-  $color-title
-) !default;
-$quickenter-close-icon-size: var(
-  --nutui-quickenter-close-icon-size,
-  12px
-) !default;
-$quickenter-close-icon-color: var(
-  --nutui-quickenter-close-icon-color,
-  #808080
-) !default;
-$quickenter-box-shadow: var(
-  --nutui-quickenter-box-shadow,
-  0px 8px 16px rgba(141, 153, 167, 0.2),
-  0px -0.5px 0px rgba(0, 0, 0, 0.05) inset
-) !default;
+$quickenter-title-font-size: var(--nutui-quickenter-title-font-size, $font-size-base) !default;
+$quickenter-title-color: var(--nutui-quickenter-title-color, $color-title) !default;
+$quickenter-item-title-font-size: var(--nutui-quickenter-item-title-font-size, $font-size-s) !default;
+$quickenter-item-title-color: var(--nutui-quickenter-item-title-color, $color-title) !default;
+$quickenter-item-icon-bg-color: var(--nutui-quickenter-item-icon-bg-color, $white) !default;
+$quickenter-item-icon-color: var(--nutui-quickenter-item-icon-color, $color-title) !default;
+$quickenter-close-icon-size: var(--nutui-quickenter-close-icon-size, 12px) !default;
+$quickenter-close-icon-color: var(--nutui-quickenter-close-icon-color, #808080) !default;
+$quickenter-box-shadow: var(--nutui-quickenter-box-shadow, 0px 8px 16px rgba(141, 153, 167, 0.2), 0px -0.5px 0px rgba(0, 0, 0, 0.05) inset) !default;

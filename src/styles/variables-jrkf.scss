@@ -224,10 +224,7 @@ $line-height-xxs: var(--nutui-line-height-xxs, $font-size-xxs) !default;
 $line-height-xs: var(--nutui-line-height-xs, $font-size-xs) !default;
 $line-height-s: var(--nutui-line-height-s, $font-size-s) !default;
 $line-height-m: var(--nutui-line-height-m, $font-size-m) !default;
-$line-height-base: var(
-  --nutui-line-height-base,
-  var(--nutui-line-height, $font-size-base)
-) !default;
+$line-height-base: var(--nutui-line-height-base, var(--nutui-line-height, $font-size-base)) !default;
 $line-height-l: var(--nutui-line-height-l, $font-size-l) !default;
 $line-height-md: var(--nutui-line-height-md, $font-size-md) !default;
 $line-height-icon: var(--nutui-line-height-icon, $font-size-icon) !default;
@@ -1355,14 +1352,8 @@ $notify-background-color: var(--nutui-notify-background-color, $white) !default;
 $rate-icon-size: var(--nutui-rate-icon-size, 12px) !default;
 $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
-$rate-font-size-large: var(
-  --nutui-rate-font-size-large,
-  calc(#{$rate-font-size} + 6px)
-) !default;
-$rate-font-size-small: var(
-  --nutui-rate-font-size-small,
-  calc(#{$rate-font-size} - 2px)
-) !default;
+$rate-font-size-large: var(--nutui-rate-font-size-large, calc(#{$rate-font-size} + 6px)) !default;
+$rate-font-size-small: var(--nutui-rate-font-size-small, calc(#{$rate-font-size} - 2px)) !default;
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
 $rate-icon-inactive-color: var(
