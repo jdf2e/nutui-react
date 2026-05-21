@@ -282,7 +282,10 @@ export const Tabs: FunctionComponent<Partial<TaroTabsProps>> & {
                     )}
                     {activeType === 'smile' && (
                       <View className={`${classPrefix}-titles-item-smile`}>
-                        <JoySmile color={activeColor} />
+                        <JoySmile
+                          color={activeColor}
+                          className={`${classPrefix}-titles-item-smile-icon`}
+                        />
                       </View>
                     )}
                     <View

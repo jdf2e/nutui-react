@@ -95,10 +95,10 @@
   &-text {
     color: #ffffff;
     text-align: $toast-inner-text-align;
+    line-height: 20px;
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
-    line-height: 20px;
     height: auto;
   }
 
@@ -107,11 +107,9 @@
     font-size: $toast-title-font-size;
     font-weight: 600;
     text-align: $toast-inner-text-align;
+    line-height: 22px;
     /* #ifdef harmony dynamic*/
     line-height: normal;
-    /* #endif */
-    /* #ifndef harmony dynamic*/
-    line-height: 22px;
     /* #endif */
   }
 

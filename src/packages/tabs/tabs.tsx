@@ -185,10 +185,7 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
                     />
                   )}
                   {activeType === 'smile' && (
-                    <div
-                      className={`${classPrefix}-titles-item-smile`}
-                      aria-hidden="true"
-                    >
+                    <div className={`${classPrefix}-titles-item-smile`}>
                       <JoySmile
                         color={activeColor}
                         className={`${classPrefix}-titles-item-smile-icon`}
