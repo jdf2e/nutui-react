@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * 本地验证：默认就地写回 src/packages 下同一路径的组件 .scss（如 …/actionsheet/actionsheet.scss）。
- * 跳过 src/packages/**/demo.scss、demos、测试与快照（与 build.mjs ignore 一致）。
+ * 跳过 src/packages 下的 demo.scss、demos、测试与快照（与 build.mjs ignore 一致）。
  * --mirror 只写 scale-verify/；不包含 build；自行 git diff / 恢复即可。
  */
 import fs from 'node:fs/promises'
