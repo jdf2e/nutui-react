@@ -19,7 +19,7 @@ const App = () => {
           <Button
             shape="square"
             type="success"
-            style={{ alignSelf: 'stretch', height: 46 }}
+            style={{ alignSelf: 'stretch', height: '100%' }}
           >
             选择
           </Button>
@@ -29,7 +29,7 @@ const App = () => {
             <Button
               shape="square"
               type="danger"
-              style={{ alignSelf: 'stretch', height: 46 }}
+              style={{ alignSelf: 'stretch', height: '100%' }}
             >
               删除
             </Button>

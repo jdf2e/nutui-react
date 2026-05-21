@@ -28,6 +28,11 @@
       color: $menu-item-active-color;
     }
 
+    &-icon {
+      display: flex;
+      align-items: center;
+    }
+
     .nut-icon {
       /* #ifdef dynamic*/
       display: flex;

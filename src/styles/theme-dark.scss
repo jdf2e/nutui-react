@@ -228,25 +228,59 @@ page {
   --nutui-color-border-disabled: var(--nutui-color-content-gray-1);
 
   // 字体 ok
-  --nutui-font-size-8: 8px;
-  --nutui-font-size-9: 9px;
-  --nutui-font-size-10: 10px;
-  --nutui-font-size-11: 11px;
-  --nutui-font-size-12: 12px;
-  --nutui-font-size-13: 13px;
-  --nutui-font-size-14: 14px;
-  --nutui-font-size-15: 15px;
-  --nutui-font-size-16: 16px;
-  --nutui-font-size-17: 17px;
-  --nutui-font-size-18: 18px;
-  --nutui-font-size-19: 19px;
-  --nutui-font-size-20: 20px;
-  --nutui-font-size-21: 21px;
-  --nutui-font-size-22: 22px;
-  --nutui-font-size-23: 23px;
-  --nutui-font-size-24: 24px;
-  --nutui-font-size-25: 25px;
-  --nutui-font-size-26: 26px;
+  --nutui-font-size-8: calc(8px * var(--nut-scale-font, var(--nut-scale-f, 1)));
+  --nutui-font-size-9: calc(9px * var(--nut-scale-font, var(--nut-scale-f, 1)));
+  --nutui-font-size-10: calc(
+    10px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-11: calc(
+    11px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-12: calc(
+    12px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-13: calc(
+    13px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-14: calc(
+    14px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-15: calc(
+    15px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-16: calc(
+    16px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-17: calc(
+    17px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-18: calc(
+    18px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-19: calc(
+    19px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-20: calc(
+    20px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-21: calc(
+    21px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-22: calc(
+    22px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-23: calc(
+    23px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-24: calc(
+    24px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-25: calc(
+    25px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
+  --nutui-font-size-26: calc(
+    26px * var(--nut-scale-font, var(--nut-scale-f, 1))
+  );
 
   // 字号语义化
   // 徽标文字
@@ -257,12 +291,18 @@ page {
   --nutui-font-size-xs: var(--nutui-font-size-11);
   // 汉字：次要内容、辅助类信息 数字：羊角符号、小数点及角分
   --nutui-font-size-s: var(--nutui-font-size-12);
+  --nutui-font-size-m: var(--nutui-font-size-13);
   // 标准内容、名称类关键信息
   --nutui-font-size-base: var(--nutui-font-size-14);
   // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
   --nutui-font-size-l: var(--nutui-font-size-16);
+  // 16px 字阶（与 l 同档数值，供 --nutui-font-size-md 语义）
+  --nutui-font-size-md: var(--nutui-font-size-16);
+  --nutui-font-size-icon: var(--nutui-font-size-16);
   // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
   --nutui-font-size-xl: var(--nutui-font-size-18);
+  // xl(18) 与 xxl(24) 之间（20px）
+  --nutui-font-size-2xl: var(--nutui-font-size-20);
   // 数字：页面级主价格，如商详、收银台
   --nutui-font-size-xxl: var(--nutui-font-size-24);
   // zanwu
@@ -277,28 +317,40 @@ page {
   --nutui-font-weight-bold: 600;
 
   // 行高
-  --nutui-line-height-base: 1.5;
+  --nutui-line-height-xxxs: var(--nutui-font-size-xxxs);
+  --nutui-line-height-xxs: var(--nutui-font-size-xxs);
+  --nutui-line-height-xs: var(--nutui-font-size-xs);
+  --nutui-line-height-s: var(--nutui-font-size-s);
+  --nutui-line-height-m: var(--nutui-font-size-m);
+  --nutui-line-height-base: var(--nutui-font-size-base);
+  --nutui-line-height-l: var(--nutui-font-size-l);
+  --nutui-line-height-md: var(--nutui-font-size-md);
+  --nutui-line-height-icon: var(--nutui-font-size-icon);
+  --nutui-line-height-xl: var(--nutui-font-size-xl);
+  --nutui-line-height-2xl: var(--nutui-font-size-2xl);
+  --nutui-line-height-xxl: var(--nutui-font-size-xxl);
+  --nutui-line-height-xxxl: var(--nutui-font-size-xxxl);
 
   // 对齐方式
   --nutui-text-align: left;
 
   // space
-  --nutui-spacing-1: 1px;
-  --nutui-spacing-2: 2px;
-  --nutui-spacing-3: 3px;
-  --nutui-spacing-4: 4px;
-  --nutui-spacing-5: 5px;
-  --nutui-spacing-6: 6px;
-  --nutui-spacing-7: 7px;
-  --nutui-spacing-8: 8px;
-  --nutui-spacing-9: 9px;
-  --nutui-spacing-10: 10px;
-  --nutui-spacing-11: 11px;
-  --nutui-spacing-12: 12px;
-  --nutui-spacing-13: 13px;
-  --nutui-spacing-14: 14px;
-  --nutui-spacing-15: 15px;
-  --nutui-spacing-16: 16px;
+  --nutui-spacing-1: calc(1px * var(--nut-scale-f, 1));
+  --nutui-spacing-2: calc(2px * var(--nut-scale-f, 1));
+  --nutui-spacing-3: calc(3px * var(--nut-scale-f, 1));
+  --nutui-spacing-4: calc(4px * var(--nut-scale-f, 1));
+  --nutui-spacing-5: calc(5px * var(--nut-scale-f, 1));
+  --nutui-spacing-6: calc(6px * var(--nut-scale-f, 1));
+  --nutui-spacing-7: calc(7px * var(--nut-scale-f, 1));
+  --nutui-spacing-8: calc(8px * var(--nut-scale-f, 1));
+  --nutui-spacing-9: calc(9px * var(--nut-scale-f, 1));
+  --nutui-spacing-10: calc(10px * var(--nut-scale-f, 1));
+  --nutui-spacing-11: calc(11px * var(--nut-scale-f, 1));
+  --nutui-spacing-12: calc(12px * var(--nut-scale-f, 1));
+  --nutui-spacing-13: calc(13px * var(--nut-scale-f, 1));
+  --nutui-spacing-14: calc(14px * var(--nut-scale-f, 1));
+  --nutui-spacing-15: calc(15px * var(--nut-scale-f, 1));
+  --nutui-spacing-16: calc(16px * var(--nut-scale-f, 1));
 
   // space 语义化
   // 狭小空间内的紧密关联内容
@@ -320,30 +372,30 @@ page {
 
   // radius ok
   --nutui-radius-0: 0px;
-  --nutui-radius-1: 1px;
-  --nutui-radius-2: 2px;
-  --nutui-radius-3: 3px;
-  --nutui-radius-4: 4px;
-  --nutui-radius-5: 5px;
-  --nutui-radius-6: 6px;
-  --nutui-radius-7: 7px;
-  --nutui-radius-8: 8px;
-  --nutui-radius-9: 9px;
-  --nutui-radius-10: 10px;
-  --nutui-radius-11: 11px;
-  --nutui-radius-12: 12px;
-  --nutui-radius-13: 13px;
-  --nutui-radius-14: 14px;
-  --nutui-radius-15: 15px;
-  --nutui-radius-16: 16px;
-  --nutui-radius-17: 17px;
-  --nutui-radius-18: 18px;
-  --nutui-radius-19: 19px;
-  --nutui-radius-20: 20px;
-  --nutui-radius-21: 21px;
-  --nutui-radius-22: 22px;
-  --nutui-radius-23: 23px;
-  --nutui-radius-24: 24px;
+  --nutui-radius-1: calc(1px * var(--nut-scale-f, 1));
+  --nutui-radius-2: calc(2px * var(--nut-scale-f, 1));
+  --nutui-radius-3: calc(3px * var(--nut-scale-f, 1));
+  --nutui-radius-4: calc(4px * var(--nut-scale-f, 1));
+  --nutui-radius-5: calc(5px * var(--nut-scale-f, 1));
+  --nutui-radius-6: calc(6px * var(--nut-scale-f, 1));
+  --nutui-radius-7: calc(7px * var(--nut-scale-f, 1));
+  --nutui-radius-8: calc(8px * var(--nut-scale-f, 1));
+  --nutui-radius-9: calc(9px * var(--nut-scale-f, 1));
+  --nutui-radius-10: calc(10px * var(--nut-scale-f, 1));
+  --nutui-radius-11: calc(11px * var(--nut-scale-f, 1));
+  --nutui-radius-12: calc(12px * var(--nut-scale-f, 1));
+  --nutui-radius-13: calc(13px * var(--nut-scale-f, 1));
+  --nutui-radius-14: calc(14px * var(--nut-scale-f, 1));
+  --nutui-radius-15: calc(15px * var(--nut-scale-f, 1));
+  --nutui-radius-16: calc(16px * var(--nut-scale-f, 1));
+  --nutui-radius-17: calc(17px * var(--nut-scale-f, 1));
+  --nutui-radius-18: calc(18px * var(--nut-scale-f, 1));
+  --nutui-radius-19: calc(19px * var(--nut-scale-f, 1));
+  --nutui-radius-20: calc(20px * var(--nut-scale-f, 1));
+  --nutui-radius-21: calc(21px * var(--nut-scale-f, 1));
+  --nutui-radius-22: calc(22px * var(--nut-scale-f, 1));
+  --nutui-radius-23: calc(23px * var(--nut-scale-f, 1));
+  --nutui-radius-24: calc(24px * var(--nut-scale-f, 1));
 
   // radius 语义化
   // 内容描述型的详情页面通栏结构

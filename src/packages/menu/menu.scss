@@ -42,6 +42,8 @@
   }
 
   &-icon {
+    width: $icon-size-12;
+    height: $icon-size-12;
     flex-shrink: 0;
     transition: all 0.2s linear;
   }

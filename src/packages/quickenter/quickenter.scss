@@ -3,7 +3,7 @@
 .nut-quickenter {
   width: 100%;
   /* 限制弹层最大高度，包含安全区 */
-  max-height: calc(#{$quickenter-max-height} + env(safe-area-inset-top, 0));
+  max-height: calc($quickenter-max-height + env(safe-area-inset-top, 0px));
   background: $quickenter-bg-color;
   border-radius: 0 0 12px 12px;
   overflow: hidden;
@@ -101,8 +101,8 @@
 
       svg,
       .nut-icon {
-        width: 22px;
-        height: 22px;
+        width: $icon-size-22;
+        height: $icon-size-22;
       }
     }
 
@@ -110,7 +110,7 @@
       font-size: $quickenter-item-title-font-size;
       color: $quickenter-item-title-color;
       text-align: center;
-      line-height: 1.4;
+      line-height: $line-height-md;
       // Allow multi-line if text is long, preventing truncation
       white-space: normal;
       word-wrap: break-word;

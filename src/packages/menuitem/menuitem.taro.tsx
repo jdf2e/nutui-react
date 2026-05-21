@@ -233,7 +233,6 @@ export const MenuItem = forwardRef((props: Partial<WebMenuItemProps>, ref) => {
                       ) : (
                         <Check
                           color={activeColor}
-                          size={16}
                           className={`nut-menu-container-item-icon ${getIconCName(item.value, value)}`}
                         />
                       )}
