@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState, MouseEvent } from 'react'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
-import { CSSTransition } from 'react-transition-group'
 import Button from '@/packages/button/index.taro'
 import { TaroDialogProps } from '@/types'
 import { Content, defaultContentProps } from './content.taro'
@@ -26,8 +25,7 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
-  cancelBadge: '',
-  confirmBadge: '',
+  badge: '',
   confirmText: '',
   cancelText: '',
   hideConfirmButton: false,
@@ -67,8 +65,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       footer,
       footerDirection,
       header,
-      cancelBadge,
-      confirmBadge,
+      badge,
       hideConfirmButton,
       hideCancelButton,
       lockScroll,
@@ -139,34 +136,14 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     const renderCancel = () => {
       return (
         !hideCancelButton && (
-          <>
-            {cancelBadge ? (
-              <View className={`${classPrefix}-footer-cancel-container`}>
-                <Button
-                  type="default"
-                  size="large"
-                  className={`${classPrefix}-footer-cancel ${btnClass}`}
-                  onClick={(e) => handleCancel(e)}
-                >
-                  {cancelText || locale.cancel}
-                </Button>
-                {cancelBadge ? (
-                  <View className={`${classPrefix}-footer-cancel-badge`}>
-                    {cancelBadge}
-                  </View>
-                ) : null}
-              </View>
-            ) : (
-              <Button
-                type="default"
-                size="large"
-                className={`${classPrefix}-footer-cancel ${btnClass}`}
-                onClick={(e) => handleCancel(e)}
-              >
-                {cancelText || locale.cancel}
-              </Button>
-            )}
-          </>
+          <Button
+            type="default"
+            size="large"
+            className={`${classPrefix}-footer-cancel ${btnClass}`}
+            onClick={(e) => handleCancel(e)}
+          >
+            {cancelText || locale.cancel}
+          </Button>
         )
       )
     }
@@ -175,7 +152,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       return (
         !hideConfirmButton && (
           <>
-            {confirmBadge ? (
+            {badge ? (
               <View className={`${classPrefix}-footer-ok-container`}>
                 <Button
                   type="primary"
@@ -192,9 +169,9 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
                 >
                   {confirmText || locale.confirm}
                 </Button>
-                {confirmBadge ? (
+                {badge ? (
                   <View className={`${classPrefix}-footer-ok-badge`}>
-                    {confirmBadge}
+                    {badge}
                   </View>
                 ) : null}
               </View>
@@ -246,7 +223,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
-    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
+    const systemIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
       <View
         className={closeClasses}
@@ -256,7 +233,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         // @ts-ignore
         tabIndex={0}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
+        {React.isValidElement(closeIcon) ? closeIcon : systemIcon}
       </View>
     )
   }
@@ -271,30 +248,22 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   const renderContent = () => {
     const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
     return (
-      <CSSTransition
-        in={visible}
-        timeout={300}
-        classNames="fadeDialog"
-        unmountOnExit
-        appear
+      <Content
+        className={className}
+        style={{
+          zIndex: contentZIndex,
+          ...style,
+          display: visible ? 'block' : 'none',
+        }}
+        title={title}
+        header={header}
+        close={renderCloseIcon()}
+        footer={renderFooter()}
+        footerDirection={footerDirection}
+        visible={visible}
       >
-        <Content
-          className={className}
-          style={{
-            zIndex: contentZIndex,
-            ...style,
-            // display: visible ? 'block' : 'none',
-          }}
-          title={title}
-          header={header}
-          close={renderCloseIcon()}
-          footer={renderFooter()}
-          footerDirection={footerDirection}
-          visible={visible}
-        >
-          {content || children}
-        </Content>
-      </CSSTransition>
+        {content || children}
+      </Content>
     )
   }
 

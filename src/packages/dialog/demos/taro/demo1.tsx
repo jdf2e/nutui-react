@@ -11,8 +11,7 @@ const Demo1 = () => {
           Dialog.open('test', {
             title: '函数式调用',
             content: '可通过 Dialog.open 打开对话框',
-            confirmBadge: 'ges',
-            cancelBadge: 'ddddd',
+            badge: 'ges',
             onConfirm: () => {
               Dialog.close('test')
             },

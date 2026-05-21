@@ -5,14 +5,16 @@ import React, {
   ReactElement,
   ReactPortal,
   useRef,
+  useMemo,
+  useCallback,
 } from 'react'
 import { nextTick } from '@tarojs/taro'
 import { createPortal } from 'react-dom'
-import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import type { ITouchEvent, CommonEventFunction } from '@tarojs/components'
+import ConfigurableCSSTransition from '@/utils/taro/ConfigurableCSSTransition'
 import { getRectInMultiPlatformWithoutCache } from '@/utils/taro/get-rect'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -94,49 +96,62 @@ export const Popup: FunctionComponent<
     onTouchEnd,
     closeAriaLabel,
   } = { ...defaultProps, ...props }
-  let innerIndex = zIndex || _zIndex
-  const [index, setIndex] = useState(innerIndex)
+  const { locale } = useConfig()
+
+  const [index, setIndex] = useState(zIndex || _zIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
-  const [transitionName, setTransitionName] = useState('')
+
   const nodeRef = useLockScrollTaro(
     innerVisible && lockScroll
   ) as React.MutableRefObject<any>
-  const topNodeRef = React.useRef<HTMLDivElement | null>(null)
+  const topNodeRef = useRef<HTMLDivElement | null>(null)
   const rootRect = useRef<any>(null)
   const touchStartRef = useRef(0)
   const touchMoveDistanceRef = useRef(0)
   const heightRef = useRef(0)
   const defaultHeightRef = useRef(0)
   const isTouching = useRef(false)
-  const { locale } = useConfig()
 
   const classPrefix = 'nut-popup'
-  const overlayStyles = {
-    ...overlayStyle,
-  }
-  const contentZIndex = harmony() ? index + 1 : index // 解决harmony层级问题
-  const popStyles = { zIndex: contentZIndex, minHeight, ...style }
-  const popClassName = classNames(
-    classPrefix,
-    {
-      [`${classPrefix}-round`]: round || position === 'bottom',
-      [`${classPrefix}-${position}`]: true,
-    },
-    className
-  )
+
+  const transitionName = useMemo(() => {
+    return transition || `${classPrefix}-slide-${position}`
+  }, [transition, position])
+
+  const overlayStyles = useMemo(() => {
+    return { ...overlayStyle }
+  }, [overlayStyle])
+
+  const contentZIndex = useMemo(() => {
+    return harmony() ? index + 1 : index // 解决harmony层级问题
+  }, [index])
+
+  const popStyles = useMemo(() => {
+    return { zIndex: contentZIndex, minHeight, ...style }
+  }, [contentZIndex, minHeight, style])
+
+  const popClassName = useMemo(() => {
+    return classNames(
+      classPrefix,
+      {
+        [`${classPrefix}-round`]: round || position === 'bottom',
+        [`${classPrefix}-${position}`]: true,
+      },
+      className
+    )
+  }, [round, position, className])
+
   const [popupHeight, setPopupHeight] = useState('')
   const [topBottom, setTopBottom] = useState('')
 
-  const resizeStyles = () => {
-    if (popupHeight !== '') {
-      return {
-        height: popupHeight,
-      }
-    }
-  }
+  const getPopupHeight = useCallback(async () => {
+    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
+    const height = nodeRef.current?.offsetHeight || rect?.height
+    setTopBottom(pxTransform(height))
+  }, [nodeRef])
 
-  const open = () => {
+  const open = useCallback(() => {
     if (!innerVisible) {
       // 当高度改变后，再次打开时，将高度置为初始高度
       if (
@@ -148,19 +163,46 @@ export const Popup: FunctionComponent<
         setPopupHeight(pxTransform(defaultHeightRef.current))
       }
       setInnerVisible(true)
-      setIndex(++innerIndex)
+      setIndex((prev) => prev + 1)
     }
     if (destroyOnClose) {
       setShowChildren(true)
     }
-    onOpen && onOpen()
-  }
+    onOpen?.()
+  }, [
+    innerVisible,
+    position,
+    resizable,
+    destroyOnClose,
+    onOpen,
+    nodeRef,
+    setInnerVisible,
+    setIndex,
+    setShowChildren,
+  ])
 
-  const getPopupHeight = async () => {
-    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
-    const height = nodeRef.current?.offsetHeight || rect?.height
-    setTopBottom(pxTransform(height))
-  }
+  const close = useCallback(() => {
+    if (innerVisible) {
+      setInnerVisible(false)
+      if (destroyOnClose) {
+        setTimeout(() => {
+          setShowChildren(false)
+        }, Number(duration))
+      }
+      onClose?.()
+    }
+  }, [
+    innerVisible,
+    destroyOnClose,
+    duration,
+    onClose,
+    setInnerVisible,
+    setShowChildren,
+  ])
+
+  useEffect(() => {
+    visible ? open() : close()
+  }, [visible, open, close])
 
   useEffect(() => {
     if (innerVisible && topNodeRef.current && nodeRef.current) {
@@ -170,53 +212,51 @@ export const Popup: FunctionComponent<
         })
       })
     }
-  }, [innerVisible])
+  }, [innerVisible, getPopupHeight, nodeRef])
 
-  const close = () => {
-    if (innerVisible) {
-      setInnerVisible(false)
-      if (destroyOnClose) {
-        setTimeout(() => {
-          setShowChildren(false)
-        }, Number(duration))
+  const handleOverlayClick = useCallback(
+    (e: ITouchEvent) => {
+      e.stopPropagation()
+      if (closeOnOverlayClick && onOverlayClick(e)) {
+        close()
       }
-      onClose && onClose()
-    }
-  }
+    },
+    [closeOnOverlayClick, onOverlayClick, close]
+  )
 
-  const handleOverlayClick = (e: ITouchEvent) => {
-    e.stopPropagation()
-    if (closeOnOverlayClick && onOverlayClick(e)) {
-      close()
-    }
-  }
+  const handleCloseIconClick = useCallback(
+    (e: ITouchEvent) => {
+      onCloseIconClick(e) && close()
+    },
+    [onCloseIconClick, close]
+  )
 
-  const handleCloseIconClick = (e: ITouchEvent) => {
-    onCloseIconClick(e) && close()
-  }
-
-  const renderCloseIcon = () => {
+  const renderCloseIcon = useCallback(() => {
+    if (!closeable) return null
     const closeClasses = classNames(
       `${classPrefix}-title-right`,
       `${classPrefix}-title-right-${closeIconPosition}`
     )
     return (
-      <>
-        {closeable && (
-          <View
-            className={closeClasses}
-            onClick={handleCloseIconClick}
-            ariaRole="button"
-            ariaLabel={closeAriaLabel || locale.close}
-          >
-            {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-          </View>
-        )}
-      </>
+      <View
+        className={closeClasses}
+        onClick={handleCloseIconClick}
+        ariaRole="button"
+        ariaLabel={closeAriaLabel || locale.close}
+      >
+        {React.isValidElement(closeIcon) ? closeIcon : <Close ariaHidden />}
+      </View>
     )
-  }
+  }, [
+    closeable,
+    closeIconPosition,
+    handleCloseIconClick,
+    closeAriaLabel,
+    locale.close,
+    closeIcon,
+  ])
 
-  const renderTop = () => {
+  const renderTop = useCallback(() => {
     if (!top) return null
     return (
       <View
@@ -227,9 +267,9 @@ export const Popup: FunctionComponent<
         {top}
       </View>
     )
-  }
+  }, [top, topBottom])
 
-  const renderTitle = () => {
+  const renderTitle = useCallback(() => {
     if (left || title || description) {
       return (
         <View className={`${classPrefix}-title`}>
@@ -263,40 +303,78 @@ export const Popup: FunctionComponent<
     if (closeable) {
       return renderCloseIcon()
     }
-  }
+  }, [left, title, description, position, closeable, renderCloseIcon])
 
-  const handleTouchStart: CommonEventFunction = async (event) => {
-    if (position !== 'bottom' || !resizable || !nodeRef.current) return
-    const e = event as ITouchEvent
-    // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
-    touchStartRef.current = e.touches[0].pageY
-    // 标记开始滑动
-    isTouching.current = true
-    // 标记当前popup的高度
-    const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
-    rootRect.current = rect
-    heightRef.current =
-      nodeRef.current?.offsetHeight || rootRect.current?.height || 0
-    if (!defaultHeightRef.current) defaultHeightRef.current = heightRef.current
-    onTouchStart?.(heightRef.current, e)
-  }
+  const handleTouchStart: CommonEventFunction = useCallback(
+    async (event) => {
+      if (position !== 'bottom' || !resizable || !nodeRef.current) return
+      const e = event as ITouchEvent
+      // 开始touch，记录下touch的pageY，用以判断是向上滑动还是向下滑动
+      touchStartRef.current = e.touches[0].pageY
+      // 标记开始滑动
+      isTouching.current = true
+      // 标记当前popup的高度
+      const rect = await getRectInMultiPlatformWithoutCache(nodeRef.current)
+      rootRect.current = rect
+      heightRef.current =
+        nodeRef.current?.offsetHeight || rootRect.current?.height || 0
+      if (!defaultHeightRef.current)
+        defaultHeightRef.current = heightRef.current
+      onTouchStart?.(heightRef.current, e)
+    },
+    [position, resizable, onTouchStart, nodeRef]
+  )
 
-  const handleTouchMove: CommonEventFunction = (event) => {
-    if (
-      position !== 'bottom' ||
-      !resizable ||
-      !nodeRef.current ||
-      !rootRect.current
-    )
-      return
+  const handleTouchMove: CommonEventFunction = useCallback(
+    (event) => {
+      if (
+        position !== 'bottom' ||
+        !resizable ||
+        !nodeRef.current ||
+        !rootRect.current
+      )
+        return
 
-    const e = event as ITouchEvent
-    e.stopPropagation()
+      const e = event as ITouchEvent
+      e.stopPropagation()
 
-    // 计算位移：move过程中，当前的pageY 与 start值比较
-    touchMoveDistanceRef.current = e.touches[0].pageY - touchStartRef.current
+      // 计算位移：move过程中，当前的pageY 与 start值比较
+      touchMoveDistanceRef.current = e.touches[0].pageY - touchStartRef.current
 
-    const handleMove = () => {
+      const handleMove = () => {
+        const min =
+          typeof minHeight === 'number'
+            ? minHeight
+            : parseInt(String(minHeight || 0), 10) || 0
+        const currentHeight = Math.max(
+          min,
+          heightRef.current - touchMoveDistanceRef.current
+        )
+        setPopupHeight(pxTransform(currentHeight))
+        if (touchMoveDistanceRef.current > 0 && isTouching.current) {
+          // 向下滑动
+          onTouchMove?.(currentHeight, e, 'down')
+        } else {
+          // 向上滑动
+          onTouchMove?.(currentHeight, e, 'up')
+        }
+      }
+      requestAnimationFrame(handleMove)
+    },
+    [position, resizable, minHeight, onTouchMove, nodeRef]
+  )
+
+  const handleTouchEnd: CommonEventFunction = useCallback(
+    (event) => {
+      if (
+        position !== 'bottom' ||
+        !resizable ||
+        !nodeRef.current ||
+        !rootRect.current
+      )
+        return
+      const e = event as ITouchEvent
+      isTouching.current = false
       const min =
         typeof minHeight === 'number'
           ? minHeight
@@ -305,76 +383,42 @@ export const Popup: FunctionComponent<
         min,
         heightRef.current - touchMoveDistanceRef.current
       )
-      setPopupHeight(pxTransform(currentHeight))
-      if (touchMoveDistanceRef.current > 0 && isTouching.current) {
-        // 向下滑动
-        onTouchMove?.(currentHeight, e, 'down')
-      } else {
-        // 向上滑动
-        onTouchMove?.(currentHeight, e, 'up')
-      }
-    }
-    requestAnimationFrame(handleMove)
-  }
+      onTouchEnd?.(currentHeight, e)
+    },
+    [position, resizable, minHeight, onTouchEnd, nodeRef]
+  )
 
-  const handleTouchEnd: CommonEventFunction = (event) => {
-    if (
-      position !== 'bottom' ||
-      !resizable ||
-      !nodeRef.current ||
-      !rootRect.current
-    )
-      return
-    const e = event as ITouchEvent
-    isTouching.current = false
-    const min =
-      typeof minHeight === 'number'
-        ? minHeight
-        : parseInt(String(minHeight || 0), 10) || 0
-    const currentHeight = Math.max(
-      min,
-      heightRef.current - touchMoveDistanceRef.current
-    )
-    onTouchEnd?.(currentHeight, e)
-  }
-
-  const renderContent = () => {
-    return (
-      <View
-        ref={nodeRef}
-        style={{
-          ...popStyles,
-          display: innerVisible ? popStyles?.display || 'block' : 'none',
-          ...resizeStyles(),
-        }}
-        className={popClassName}
-        onClick={onClick}
-        catchMove={lockScroll}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
-      >
-        {renderTop()}
-        {renderTitle()}
-        {showChildren ? children : null}
-      </View>
-    )
-  }
   const renderPop = () => {
     return (
-      <CSSTransition
+      <ConfigurableCSSTransition
         nodeRef={nodeRef}
         classNames={transitionName}
         mountOnEnter
         unmountOnExit={destroyOnClose}
-        timeout={duration}
+        timeout={Number(duration)}
         in={innerVisible}
         onEntered={afterShow}
         onExited={afterClose}
       >
-        {renderContent()}
-      </CSSTransition>
+        <View
+          ref={nodeRef}
+          style={{
+            ...popStyles,
+            ...(popupHeight ? { height: popupHeight } : {}),
+          }}
+          className={popClassName}
+          onClick={onClick}
+          catchMove={lockScroll}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}
+        >
+          {renderTop()}
+          {renderTitle()}
+          {showChildren ? children : null}
+        </View>
+      </ConfigurableCSSTransition>
     )
   }
 
@@ -397,14 +441,6 @@ export const Popup: FunctionComponent<
       </>
     )
   }
-
-  useEffect(() => {
-    visible ? open() : close()
-  }, [visible])
-
-  useEffect(() => {
-    setTransitionName(transition || `${classPrefix}-slide-${position}`)
-  }, [position, transition])
 
   const resolveContainer = (getContainer: any) =>
     (typeof getContainer === 'function' ? getContainer() : getContainer) ||

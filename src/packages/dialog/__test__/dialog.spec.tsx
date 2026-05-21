@@ -155,18 +155,15 @@ test('show dialog header ', async () => {
   expect(container.querySelector('.custom-header')).toBeInTheDocument()
 })
 
-test('show dialog confirmBadge and cancelBadge ', async () => {
+test('show dialog badge ', async () => {
   const { container } = render(
-    <Dialog visible confirmBadge="confirm" cancelBadge="cancel">
+    <Dialog visible badge="confirm">
       content
     </Dialog>
   )
   expect(
     container.querySelector('.nut-dialog-footer-ok-badge')
   ).toHaveTextContent('confirm')
-  expect(
-    container.querySelector('.nut-dialog-footer-cancel-badge')
-  ).toHaveTextContent('cancel')
 })
 
 test('dialog disableConfirmButton ', async () => {

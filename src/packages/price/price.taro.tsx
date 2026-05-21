@@ -4,7 +4,8 @@ import classNames from 'classnames'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { TaroPriceProps, PriceColorEnum } from '@/types'
-import { harmony, td } from '@/utils/taro/platform'
+import { harmony } from '@/utils/taro/platform'
+import { shouldRenderPriceAsRaw } from '@/utils/should-render-price-raw'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -38,9 +39,17 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
 
   const rtl = useRtl()
 
+  const isRenderPriceRaw = useMemo(
+    () =>
+      typeof originalPrice === 'string' &&
+      shouldRenderPriceAsRaw(originalPrice),
+    [originalPrice]
+  )
+
   const price = useMemo(() => {
+    if (isRenderPriceRaw) return ''
     return originalPrice.toString().replace(/[^\d.]/g, '')
-  }, [originalPrice])
+  }, [originalPrice, isRenderPriceRaw])
 
   const isCustomPriceColor = useMemo(() => {
     const specificPriceColor = Object.values(PriceColorEnum)
@@ -164,21 +173,23 @@ export const Price: FunctionComponent<Partial<TaroPriceProps>> = (props) => {
     )
   }
 
+  const renderRawContent = () => <>{originalPrice}</>
+
   return (
     <>
-      {harmony() || td() ? (
+      {harmony() || process.env.TARO_ENV === 'dynamic' ? (
         <Text
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
-          {renderInner()}
+          {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </Text>
       ) : (
         <View
           className={`${classPrefix} ${classPrefix}-${color} ${className}`}
           style={style}
         >
-          {renderInner()}
+          {isRenderPriceRaw ? renderRawContent() : renderInner()}
         </View>
       )}
     </>
