@@ -1037,32 +1037,6 @@ $price-symbol-small-size: var(--nutui-price-symbol-small-size, 10px) !default;
 $price-integer-small-size: var(--nutui-price-integer-small-size, 12px) !default;
 $price-decimal-small-size: var(--nutui-price-decimal-small-size, 10px) !default;
 
-// price 行高（与 variables.scss 对齐）
-$price-root-line-height: var(
-  --nutui-price-root-line-height,
-  $line-height-l
-) !default;
-$price-minor-line-height: var(
-  --nutui-price-minor-line-height,
-  $line-height-s
-) !default;
-$price-integer-xlarge-line-height: var(
-  --nutui-price-integer-xlarge-line-height,
-  $line-height-xxl
-) !default;
-$price-integer-large-line-height: var(
-  --nutui-price-integer-large-line-height,
-  $line-height-xl
-) !default;
-$price-integer-normal-line-height: var(
-  --nutui-price-integer-normal-line-height,
-  $line-height-md
-) !default;
-$price-integer-small-line-height: var(
-  --nutui-price-integer-small-line-height,
-  $line-height-s
-) !default;
-
 //avatar（✅）
 $avatar-square: var(--nutui-avatar-square, $radius-base) !default;
 $avatar-large-width: var(--nutui-avatar-large-width, 48px) !default;

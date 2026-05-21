@@ -1,7 +1,7 @@
 .nut-price {
   direction: ltr;
   font-size: $font-size-l;
-  line-height: $price-root-line-height;
+  line-height: $font-size-l;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -37,22 +37,22 @@
     padding-right: $price-symbol-padding-right;
     &-xlarge {
       font-size: $price-symbol-xlarge-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-symbol-xlarge-size;
     }
 
     &-large {
       font-size: $price-symbol-large-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-symbol-large-size;
     }
 
     &-normal {
       font-size: $price-symbol-normal-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-symbol-normal-size;
     }
 
     &-small {
       font-size: $price-symbol-small-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-symbol-small-size;
     }
 
     &-rtl {
@@ -64,44 +64,44 @@
   &-integer {
     &-xlarge {
       font-size: $price-integer-xlarge-size;
-      line-height: $price-integer-xlarge-line-height;
+      line-height: $price-integer-xlarge-size;
     }
 
     &-large {
       font-size: $price-integer-large-size;
-      line-height: $price-integer-large-line-height;
+      line-height: $price-integer-large-size;
     }
 
     &-normal {
       font-size: $price-integer-normal-size;
-      line-height: $price-integer-normal-line-height;
+      line-height: $price-integer-normal-size;
     }
 
     &-small {
       font-size: $price-integer-small-size;
-      line-height: $price-integer-small-line-height;
+      line-height: $price-integer-small-size;
     }
   }
 
   &-decimal {
     &-xlarge {
       font-size: $price-decimal-xlarge-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-decimal-xlarge-size;
     }
 
     &-large {
       font-size: $price-decimal-large-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-decimal-large-size;
     }
 
     &-normal {
       font-size: $price-decimal-normal-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-decimal-normal-size;
     }
 
     &-small {
       font-size: $price-decimal-small-size;
-      line-height: $price-minor-line-height;
+      line-height: $price-decimal-small-size;
     }
   }
 
