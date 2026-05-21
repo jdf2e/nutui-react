@@ -143,5 +143,8 @@ const jaJP: BaseLang = {
   },
   mask: 'マスク',
   close: '閉じる',
+  quickenter: {
+    title: 'クイックアクセス',
+  },
 }
 export default jaJP

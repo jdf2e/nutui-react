@@ -68,14 +68,6 @@ import { Popup } from '@nutui/nutui-react'
 
 :::
 
-### 頂部佔位
-
-:::demo
-
-<CodeBlock src='h5/demo9.tsx'></CodeBlock>
-
-:::
-
 ## Popup
 
 ### Props
@@ -98,9 +90,8 @@ import { Popup } from '@nutui/nutui-react'
 | resizable | 上下滑動調整高度，目前只支援從底部彈出 | `boolean` | `false` |
 | minHeight | 設定最小高度 | `string` | `26%` |
 | closeAriaLabel | 關閉圖標的 `aria-label` | `string` | `-` |
-| left | 標題左側部分 | `ReactNode` | `-` |
-| title | 標題中間部分 | `ReactNode` | `-` |
-| top | 頂部佔位 | `ReactNode` | `-` |
+| left | 标题左侧部分 | `ReactNode` | `-` |
+| title | 标题中间部分 | `ReactNode` | `-` |
 | description | 子標題/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否顯示圓角 | `boolean` | `false` |
@@ -126,7 +117,7 @@ import { Popup } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-popup-border-radius | 彈框的圓角值 | `24px` |
 | \--nutui-popup-icon-size | 彈框關閉按鈕的大小 | `18px` |
-| \--nutui-popup-title-padding | 標題欄的padding值 | `16px` |
+| \--nutui-popup-title-padding | 標題欄的padding值 | `11px` |
 | \--nutui-popup-title-font-size | 標題欄的字號 | `18px` |
 | \--nutui-popup-subtitle-font-size | 子標題欄的字號 | `10px` |
 | \--nutui-popup-title-height | 標題欄的高度 | `50px` |

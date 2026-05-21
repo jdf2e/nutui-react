@@ -142,5 +142,8 @@ const viVN: BaseLang = {
     errorCanvasTips: 'Môi trường hiện tại không hỗ trợ Canvas',
   },
   mask: 'Lớp phủ',
+  quickenter: {
+    title: 'Truy cập nhanh',
+  },
 }
 export default viVN

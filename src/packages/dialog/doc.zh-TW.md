@@ -91,8 +91,6 @@ import { Dialog } from '@nutui/nutui-react'
 | footer | 自定義頁腳，傳入 null 則不顯示 | `ReactNode` | `-` |
 | confirmText | 確認按鈕文案 | `ReactNode` | `確定` |
 | cancelText | 取消按鈕文案 | `ReactNode` | `取消` |
-| confirmBadge | 確認按鈕徽標 | `ReactNode` | `-` |
-| cancelBadge | 取消按鈕徽標 | `ReactNode` | `-` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隱藏確定按鈕 | `boolean` | `false` |
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |

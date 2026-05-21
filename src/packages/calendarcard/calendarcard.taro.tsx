@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
+import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
@@ -24,6 +24,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
   firstDayOfWeek: 0,
+  weekdays: [],
 }
 
 const prefixCls = 'nut-calendarcard'
@@ -47,6 +48,7 @@ export const CalendarCard = React.forwardRef<
     renderDay,
     renderDayTop,
     renderDayBottom,
+    weekdays,
     onDayClick,
     onPageChange,
     onChange,
@@ -397,18 +399,20 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  const [weekHeader] = useState(() => {
-    const weekdays = locale.calendaritem.weekdays.map((day, index) => {
+  const weekHeader = useMemo(() => {
+    const weekdaysList =
+      weekdays.length > 0 ? weekdays : locale.calendaritem.weekdays
+    const weekdaysData = weekdaysList.map((day, index) => {
       return {
         name: day,
         key: index,
       }
     })
     return [
-      ...weekdays.slice(firstDayOfWeek, 7),
-      ...weekdays.slice(0, firstDayOfWeek),
+      ...weekdaysData.slice(firstDayOfWeek, 7),
+      ...weekdaysData.slice(0, firstDayOfWeek),
     ]
-  })
+  }, [weekdays, firstDayOfWeek, locale.calendaritem.weekdays])
 
   const renderContent = () => {
     return (

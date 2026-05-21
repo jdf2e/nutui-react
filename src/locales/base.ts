@@ -142,4 +142,7 @@ export interface BaseLang {
     errorCanvasTips: string
   }
   mask: string
+  quickenter: {
+    title: string
+  }
 }
