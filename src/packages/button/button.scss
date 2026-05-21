@@ -58,6 +58,9 @@
     /* #ifdef dynamic*/
     pointer-events: none;
     /* #endif */
+    /* #ifndef dynamic*/
+    pointer-events: auto;
+    /* #endif */
   }
 
   &::after {

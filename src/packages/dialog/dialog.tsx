@@ -23,7 +23,8 @@ const defaultProps = {
   content: '',
   header: '',
   footer: '',
-  badge: '',
+  cancelBadge: '',
+  confirmBadge: '',
   confirmText: '',
   cancelText: '',
   closeOnOverlayClick: true,
@@ -62,7 +63,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     footer,
     footerDirection,
     header,
-    badge,
+    cancelBadge,
+    confirmBadge,
     hideConfirmButton,
     hideCancelButton,
     lockScroll,
@@ -114,7 +116,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
       return (
         !hideCancelButton && (
           <div
-            style={{ order: 2 }}
             className={`${classPrefix}-footer-cancel ${btnClass}`}
             onClick={(e) => handleCancel(e)}
           >
@@ -127,14 +128,34 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
     const renderCancel = () => {
       return (
         !hideCancelButton && (
-          <Button
-            type="default"
-            size="large"
-            className={`${classPrefix}-footer-cancel ${btnClass}`}
-            onClick={(e) => handleCancel(e)}
-          >
-            {cancelText || locale.cancel}
-          </Button>
+          <>
+            {cancelBadge ? (
+              <div className={`${classPrefix}-footer-cancel-container`}>
+                <Button
+                  type="default"
+                  size="large"
+                  className={`${classPrefix}-footer-cancel ${btnClass}`}
+                  onClick={(e) => handleCancel(e)}
+                >
+                  {cancelText || locale.cancel}
+                </Button>
+                {cancelBadge ? (
+                  <div className={`${classPrefix}-footer-cancel-badge`}>
+                    {cancelBadge}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <Button
+                type="default"
+                size="large"
+                className={`${classPrefix}-footer-cancel ${btnClass}`}
+                onClick={(e) => handleCancel(e)}
+              >
+                {cancelText || locale.cancel}
+              </Button>
+            )}
+          </>
         )
       )
     }
@@ -143,7 +164,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
       return (
         !hideConfirmButton && (
           <>
-            {badge ? (
+            {confirmBadge ? (
               <div className={`${classPrefix}-footer-ok-container`}>
                 <Button
                   type="primary"
@@ -160,9 +181,9 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
                 >
                   {confirmText || locale.confirm}
                 </Button>
-                {badge ? (
+                {confirmBadge ? (
                   <div className={`${classPrefix}-footer-ok-badge`}>
-                    {badge}
+                    {confirmBadge}
                   </div>
                 ) : null}
               </div>
@@ -214,7 +235,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
-    const systemIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
+    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
     return (
       <div
         className={closeClasses}
@@ -223,7 +244,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<WebDialogProps>> = (
         aria-label={locale.close}
         tabIndex={0}
       >
-        {React.isValidElement(closeIcon) ? closeIcon : systemIcon}
+        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
       </div>
     )
   }
