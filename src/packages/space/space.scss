@@ -30,7 +30,7 @@
 
     &-wrap {
       flex-wrap: wrap;
-      margin-bottom: calc(#{$space-gap} * -1);
+      margin-bottom: calc($space-gap * -1);
 
       &-item {
         padding-bottom: $space-gap;

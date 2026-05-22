@@ -11,7 +11,7 @@ const App = () => {
           <Button
             shape="square"
             type="danger"
-            style={{ alignSelf: 'stretch', height: 46 }}
+            style={{ alignSelf: 'stretch', height: '100%' }}
           >
             删除
           </Button>

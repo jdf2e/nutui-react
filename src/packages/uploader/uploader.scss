@@ -95,7 +95,7 @@
 
       &-msg {
         color: $color-text-help;
-        font-size: 12px;
+        font-size: $font-size-s;
       }
     }
 
@@ -161,7 +161,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        font-size: 12px;
+        font-size: $font-size-s;
         color: $white;
         text-align: center;
         box-sizing: border-box;
@@ -197,7 +197,7 @@
         &-name {
           display: flex;
           width: 90%;
-          font-size: 12px;
+          font-size: $font-size-s;
           color: $color-text;
           @include moreline-ellipsis();
 

@@ -293,7 +293,7 @@ export const Popover: FunctionComponent<
               >
                 {showArrow && (
                   <div className={popoverArrow()} style={popoverArrowStyle()}>
-                    <ArrowRadius width={8} height={4} />
+                    <ArrowRadius />
                   </div>
                 )}
                 {Array.isArray(children) ? children[1] : null}

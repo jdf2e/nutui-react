@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom/client'
 import App from './App'
 import '@nutui/touch-emulator' // 适配 h5 示例桌面端预览
 import { isMobile } from '@/sites/assets/util'
+import { initScaleF } from '@/utils/scale-f'
 import('../../packages/nutui.react.scss')
 
 const projectID = import.meta.env.VITE_APP_PROJECT_ID || ''
@@ -28,6 +29,7 @@ if (!isMobile && pathname.includes('demo') && !pathname.includes('jmapp')) {
 }
 
 if (rootElement != null) {
+  initScaleF()
   const root = ReactDOM.createRoot(rootElement)
   root.render(<App />)
 }

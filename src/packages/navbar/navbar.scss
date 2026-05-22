@@ -48,6 +48,7 @@
     font-size: $navbar-title-font-size;
     font-weight: $navbar-title-font-weight;
     color: $navbar-title-font-color;
+    white-space: nowrap;
 
     &-center {
       max-width: 129px;
@@ -72,7 +73,7 @@
     .nutui-iconfont {
       width: 20px;
       height: 20px;
-      font-size: 20px;
+      font-size: $font-size-2xl;
     }
 
     /* #endif */

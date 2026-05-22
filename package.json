@@ -101,11 +101,9 @@
     "e2e:run:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:run:taro",
     "e2e:open:taro": "start-server-and-test dev:taro:h5 http://localhost:10086 cypress:open:taro",
     "update:taro:entry": "node ./scripts/harmony/update-taro-entry",
-    "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro"
-  },
-  "lint-staged": {
-    "*.{scss,md}": "prettier --write",
-    "*.{ts,tsx,js}": "eslint"
+    "upgradeTaro": "pnpm --dir ./packages/nutui-taro-demo upgradeTaro",
+    "verify-scale": "node .cursor/skills/nutui-build-local-verify/scripts/verify-scale-generation.mjs",
+    "verify-scale:mirror": "node .cursor/skills/nutui-build-local-verify/scripts/verify-scale-generation.mjs --mirror"
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",

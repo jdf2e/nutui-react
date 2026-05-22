@@ -40,7 +40,7 @@
   }
 
   &-rightin {
-    font-size: 15px;
+    font-size: $font-size-l;
     font-weight: 500;
     color: $color-primary;
 
@@ -74,8 +74,8 @@
     &.nut-searchbar-icon {
       position: relative;
       .nut-icon {
-        width: 12px;
-        height: 12px;
+        width: $icon-size-12;
+        height: $icon-size-12;
         color: var(--nutui-black-5);
         margin-right: $searchbar-inner-gap;
       }
@@ -97,7 +97,7 @@
     background-color: #fff;
     top: 9px;
     left: 6px;
-    font-size: 12px;
+    font-size: $font-size-s;
     line-height: 12px;
 
     .nut-searchbar-value {
@@ -111,9 +111,9 @@
     }
 
     .nut-icon {
-      width: 6px;
-      height: 6px;
-      font-size: 6px;
+      width: $icon-size-6;
+      height: $icon-size-6;
+      font-size: $icon-size-6;
       color: #c2c4cc;
       margin-left: 4px;
     }

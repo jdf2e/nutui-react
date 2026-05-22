@@ -14,7 +14,7 @@ const App = () => {
             type="success"
             style={{
               alignSelf: 'stretch',
-              height: 46,
+              height: '100%',
             }}
           >
             选择
@@ -25,14 +25,14 @@ const App = () => {
             <Button
               shape="square"
               type="danger"
-              style={{ alignSelf: 'stretch', height: 46 }}
+              style={{ alignSelf: 'stretch', height: '100%' }}
             >
               删除
             </Button>
             <Button
               shape="square"
               type="info"
-              style={{ alignSelf: 'stretch', height: 46 }}
+              style={{ alignSelf: 'stretch', height: '100%' }}
             >
               收藏
             </Button>

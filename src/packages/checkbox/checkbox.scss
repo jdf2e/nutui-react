@@ -103,10 +103,10 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid $color-primary;
-      border-right: 10px solid $color-primary;
+      border-top: $icon-size-10 solid transparent;
+      border-left: $icon-size-10 solid transparent;
+      border-bottom: $icon-size-10 solid $color-primary;
+      border-right: $icon-size-10 solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -124,7 +124,7 @@
 
     .nut-icon {
       position: absolute;
-      font-size: 12px;
+      font-size: $font-size-s;
       width: 12px;
       height: 12px;
 

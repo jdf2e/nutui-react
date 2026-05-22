@@ -146,7 +146,7 @@
   &-mark-text {
     position: absolute;
     line-height: 16px;
-    font-size: 12px;
+    font-size: $font-size-s;
     color: #999;
     text-align: center;
     word-break: keep-all;
@@ -214,7 +214,7 @@
     top: 0px;
     right: 50%;
     overflow: visible;
-    font-size: 12px;
+    font-size: $font-size-s;
     padding: 0px;
   }
 

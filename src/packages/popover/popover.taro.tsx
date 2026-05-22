@@ -265,7 +265,7 @@ export const Popover: FunctionComponent<
           <View className="nut-popover-content-group" ref={popoverContentRef}>
             {showArrow && (
               <View className={popoverArrow()} style={popoverArrowStyle()}>
-                <ArrowRadius width={8} height={4} />
+                <ArrowRadius />
               </View>
             )}
             {Array.isArray(children) ? children[1] : null}

@@ -184,7 +184,6 @@ export const InputNumber: FunctionComponent<
     <View className={classes} style={style}>
       <View className={`${classPrefix}-minus`} onClick={handleReduce}>
         <Minus
-          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-minus`,
             {
@@ -211,7 +210,6 @@ export const InputNumber: FunctionComponent<
 
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
-          size={10}
           className={classNames(
             `${classPrefix}-icon ${classPrefix}-icon-plus`,
             {
