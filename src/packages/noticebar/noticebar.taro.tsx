@@ -26,7 +26,7 @@ const defaultProps = {
   content: '',
   closeable: false,
   wrap: false,
-  leftIcon: <Notice size={16} />,
+  leftIcon: <Notice />,
   rightIcon: null,
   right: null,
   delay: 1,
@@ -490,7 +490,9 @@ export const NoticeBar: FunctionComponent<
             className="nut-noticebar-box-right-icon"
             onClick={handleClickIcon}
           >
-            {rightIcon || <Close size={12} />}
+            {rightIcon || (
+              <Close className="nut-noticebar-box-right-icon-default" />
+            )}
           </View>
         ) : null}
       </>

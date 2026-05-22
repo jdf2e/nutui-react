@@ -93,10 +93,15 @@
 
       .nut-icon {
         position: absolute;
-        font-size: 20px;
+        font-size: $font-size-2xl;
         width: 100%;
         height: 100%;
       }
+    }
+
+    &-smile-icon {
+      width: 40px;
+      height: 20px;
     }
 
     &-active {

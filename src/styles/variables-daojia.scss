@@ -151,10 +151,13 @@ $font-size-xxxs: var(--nutui-font-size-xxxs, 9px) !default;
 $font-size-xxs: var(--nutui-font-size-xxs, 10px) !default;
 $font-size-xs: var(--nutui-font-size-xs, 11px) !default;
 $font-size-s: var(--nutui-font-size-s, 12px) !default;
+$font-size-m: var(--nutui-font-size-m, 13px) !default;
 $font-size-base: var(--nutui-font-size-base, 14px) !default;
 $font-size-l: var(--nutui-font-size-l, 15px) !default;
+$font-size-md: var(--nutui-font-size-md, 16px) !default;
 $font-size-icon: var(--nutui-font-size-icon, 16px) !default;
 $font-size-xl: var(--nutui-font-size-xl, 18px) !default;
+$font-size-2xl: var(--nutui-font-size-2xl, 20px) !default;
 $font-size-xxl: var(--nutui-font-size-xxl, 24px) !default;
 $font-size-xxxl: var(--nutui-font-size-10, 26px) !default;
 $font-size-xxxxl: var(--nutui-font-size-11, 28px) !default;
@@ -165,8 +168,21 @@ $font-weight: var(--nutui-font-weight, 400) !default;
 $font-weight-medium: var(--nutui-font-weight-medium, 500) !default;
 $font-weight-bold: var(--nutui-font-weight-bold, 600) !default;
 
-// 行高
-$line-height-base: var(--nutui-line-height-base, 1.5) !default;
+// 行高（与同档字号等值；不经 scale）
+$line-height-xxxs: var(--nutui-line-height-xxxs, $font-size-xxxs) !default;
+$line-height-xxs: var(--nutui-line-height-xxs, $font-size-xxs) !default;
+$line-height-xs: var(--nutui-line-height-xs, $font-size-xs) !default;
+$line-height-s: var(--nutui-line-height-s, $font-size-s) !default;
+$line-height-m: var(--nutui-line-height-m, $font-size-m) !default;
+$line-height-base: var(--nutui-line-height-base, $font-size-base) !default;
+$line-height-l: var(--nutui-line-height-l, $font-size-l) !default;
+$line-height-md: var(--nutui-line-height-md, $font-size-md) !default;
+$line-height-icon: var(--nutui-line-height-icon, $font-size-icon) !default;
+$line-height-xl: var(--nutui-line-height-xl, $font-size-xl) !default;
+$line-height-2xl: var(--nutui-line-height-2xl, $font-size-2xl) !default;
+$line-height-xxl: var(--nutui-line-height-xxl, $font-size-xxl) !default;
+$line-height-xxxl: var(--nutui-line-height-xxxl, $font-size-xxxl) !default;
+$line-height-xxxxl: var(--nutui-line-height-xxxxl, $font-size-xxxxl) !default;
 
 // 间距 space
 $spacing-xxxs: var(--nutui-spacing-xxxs, 2px) !default;
@@ -2581,3 +2597,16 @@ $resultpage-actions-margin-top: var(
   --nutui-resultpage-actions-margin-top,
   16px
 ) !default;
+
+// quickenter
+$quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
+$quickenter-max-height: var(--nutui-quickenter-max-height, 256px) !default;
+$quickenter-title-font-size: var(--nutui-quickenter-title-font-size, $font-size-base) !default;
+$quickenter-title-color: var(--nutui-quickenter-title-color, $color-title) !default;
+$quickenter-item-title-font-size: var(--nutui-quickenter-item-title-font-size, $font-size-s) !default;
+$quickenter-item-title-color: var(--nutui-quickenter-item-title-color, $color-title) !default;
+$quickenter-item-icon-bg-color: var(--nutui-quickenter-item-icon-bg-color, $white) !default;
+$quickenter-item-icon-color: var(--nutui-quickenter-item-icon-color, $color-title) !default;
+$quickenter-close-icon-size: var(--nutui-quickenter-close-icon-size, 12px) !default;
+$quickenter-close-icon-color: var(--nutui-quickenter-close-icon-color, #808080) !default;
+$quickenter-box-shadow: var(--nutui-quickenter-box-shadow, 0px 8px 16px rgba(141, 153, 167, 0.2), 0px -0.5px 0px rgba(0, 0, 0, 0.05) inset) !default;

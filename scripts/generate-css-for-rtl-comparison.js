@@ -21,6 +21,8 @@ const variables = fs.readFileSync(
   path.join(__dirname, '../src/styles/variables.scss')
 )
 
+const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
+
 function postcssRemoveRtl() {
   return {
     postcssPlugin: 'postcss-remove-rtl',
@@ -50,6 +52,7 @@ components.forEach((component) => {
       )
     )
     .toString()
+  content = pxToScalePxInComponentScss(content)
   let to = path.join(
     __dirname,
     `../src/packages/${componentName}/${componentName}.rtl.css`

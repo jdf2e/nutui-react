@@ -98,7 +98,9 @@
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
+    /* #ifndef harmony dynamic*/
     line-height: 20px;
+    /* #endif */
     height: auto;
   }
 

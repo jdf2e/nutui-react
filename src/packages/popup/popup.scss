@@ -49,7 +49,9 @@
       position: absolute;
       top: $popup-title-padding;
       right: $popup-title-padding;
-
+      display: flex;
+      align-items: center;
+      justify-content: center;
       z-index: 1;
       width: $popup-icon-size;
       height: $popup-icon-size;

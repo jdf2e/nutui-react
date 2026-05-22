@@ -142,7 +142,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
           <View className={`${classPrefix}-message-forget`} onClick={onTips}>
             {tips || (
               <>
-                <Tips size={11} />
+                <Tips className={`${classPrefix}-message-tips-icon`} />
                 {locale.shortpassword.tips}
               </>
             )}

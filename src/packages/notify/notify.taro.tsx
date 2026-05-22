@@ -142,7 +142,10 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
             className={`${classPrefix}-right-icon`}
             onClick={handleClickIcon}
           >
-            {rightIcon || (closeable ? <Close size={12} /> : null)}
+            {rightIcon ||
+              (closeable ? (
+                <Close className={`${classPrefix}-close-icon`} />
+              ) : null)}
           </View>
         ) : null}
       </View>

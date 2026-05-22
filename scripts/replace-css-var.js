@@ -24,6 +24,8 @@ const theme = fs.readFileSync(
   path.join(__dirname, '../src/styles/theme-default.scss'),
 ).toString().replace('@import "./jd-font";', '').replace(`@import './jd-font';`, '')
 
+const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
+
 const exclude = ['icon']
 components.forEach((component) => {
   const componentName = component.name.toLowerCase()
@@ -37,6 +39,7 @@ components.forEach((component) => {
       ),
     )
     .toString()
+  content = pxToScalePxInComponentScss(content)
   let to = path.join(
     __dirname,
     `../src/packages/${componentName}/${componentName}.harmony.css`,
@@ -56,14 +59,18 @@ components.forEach((component) => {
           content = content.replace(m, '')
           const splitScssName = m.match(/\'\.\/([a-z]+)\.scss/)
           if (splitScssName && splitScssName.length == 2) {
-            componentSplitScss.push(fs
-              .readFileSync(
-                path.join(
-                  __dirname,
-                  `../src/packages/${componentName}/${splitScssName[1]}.scss`,
-                ),
-              )
-              .toString())
+            componentSplitScss.push(
+              pxToScalePxInComponentScss(
+                fs
+                  .readFileSync(
+                    path.join(
+                      __dirname,
+                      `../src/packages/${componentName}/${splitScssName[1]}.scss`,
+                    ),
+                  )
+                  .toString(),
+              ),
+            )
           }
 
         }

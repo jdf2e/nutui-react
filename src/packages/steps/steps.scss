@@ -13,8 +13,8 @@
 
         &-icon {
           .nut-icon {
-            height: 10px;
-            width: 10px;
+            height: $icon-size-10;
+            width: $icon-size-10;
           }
 
           .nut-image {
@@ -108,6 +108,7 @@
         flex-direction: column;
         align-items: center;
         flex: 1;
+        min-width: 0;
 
         &-line {
           top: 0;
@@ -130,7 +131,7 @@
 
         &-head {
           justify-content: center;
-          margin-bottom: 6px;
+          margin-bottom: 5px;
 
           &-dot-wrap,
           &-icon-wrap,
@@ -145,15 +146,22 @@
           width: $steps-double-head-icon-size;
 
           .nut-icon {
-            height: 12px;
-            width: 12px;
+            height: $icon-size-12;
+            width: $icon-size-12;
           }
         }
 
         &-main {
           align-items: center;
           margin-left: 0;
-          margin-top: 2px;
+        }
+
+        &-title {
+          height: auto;
+          line-height: 20px;
+          white-space: normal;
+          overflow-wrap: break-word;
+          text-align: center;
         }
       }
 
@@ -214,15 +222,15 @@
       &-head {
         align-items: center;
         justify-content: center;
-        height: 18px;
+        height: 20px;
 
         &-icon {
           width: $steps-vertical-head-icon-size;
           height: $steps-vertical-head-icon-size;
 
           .nut-icon {
-            height: 12px;
-            width: 12px;
+            height: $icon-size-12;
+            width: $icon-size-12;
           }
         }
       }

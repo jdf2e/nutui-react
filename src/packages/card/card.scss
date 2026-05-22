@@ -27,8 +27,8 @@
 
     &-title {
       @include moreline-ellipsis();
-      line-height: 1.5;
-      font-size: 14px;
+      line-height: $line-height-2xl;
+      font-size: $font-size-base;
       color: $color-title;
     }
 
@@ -69,9 +69,9 @@
       align-items: center;
 
       &-name {
-        line-height: 1.5;
+        line-height: $line-height-xl;
         color: $color-text;
-        font-size: 12px;
+        font-size: $font-size-s;
         padding-top: 4px;
       }
     }
