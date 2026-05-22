@@ -23,6 +23,7 @@ export interface InfiniteLoadingProps extends BasicComponent {
   onRefresh: () => Promise<void>
   onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
+  defaultScrollTop?: number
 }
 
 declare let window: Window & { webkitRequestAnimationFrame: any } & {
@@ -60,6 +61,7 @@ export const InfiniteLoading: FunctionComponent<
     onRefresh,
     onLoadMore,
     onScroll,
+    defaultScrollTop,
     ...restProps
   } = {
     ...defaultProps,
@@ -100,6 +102,21 @@ export const InfiniteLoading: FunctionComponent<
       } as EventListenerOptions)
     }
   }, [])
+
+  useEffect(() => {
+    if (defaultScrollTop) {
+      const childHeight =
+        (getRefreshTop().firstElementChild as HTMLElement).offsetHeight || 0
+      refreshMaxH.current = Math.floor(childHeight * 1 + 10)
+      setTimeout(() => {
+        if ((scrollEl.current as any)?.scrollTop !== undefined) {
+          ;(scrollEl.current as any).scrollTop = defaultScrollTop
+        } else if ((scrollEl.current as any)?.scrollY !== undefined) {
+          ;(scrollEl.current as any).scrollY = defaultScrollTop
+        }
+      }, 10)
+    }
+  }, [defaultScrollTop])
 
   const getStyle = () => {
     return {
