@@ -18,12 +18,19 @@
     text-align: $form-item-label-text-align;
   }
 
-  &-label-required {
+  &-label-required-left {
     color: $form-item-required-color;
     margin-right: $form-item-required-margin-right;
     display: block;
     position: absolute;
     left: -0.8em;
+  }
+  &-label-required-right {
+    color: $form-item-required-color;
+    margin-right: $form-item-required-margin-right;
+    display: block;
+    // position: absolute;
+    // left: -0.8em;
   }
 
   .nut-form-item-labeltxt {
@@ -129,6 +136,7 @@
 /* position */
 
 .nut-form-item-label-right {
+  position: relative;
   justify-content: flex-end;
   padding-right: 24px;
   white-space: nowrap;

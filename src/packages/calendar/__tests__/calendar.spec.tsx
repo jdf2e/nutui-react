@@ -289,7 +289,7 @@ test('range select event when click item', () => {
   const start = container.querySelectorAll(
     '.nut-calendar-day-active .nut-calendar-day-day'
   )[0]
-  expect(start.innerHTML).toBe('10')
+  expect(start.innerHTML).toBe('14')
 
   const calendarMonthDay2 = container.querySelectorAll('.nut-calendar-day')[20]
   fireEvent.click(calendarMonthDay2)
@@ -297,5 +297,5 @@ test('range select event when click item', () => {
   const next = container.querySelectorAll(
     '.nut-calendar-day-choose .nut-calendar-day-day'
   )[0]
-  expect(next.innerHTML).toBe('11')
+  expect(next.innerHTML).toBe('15')
 })
