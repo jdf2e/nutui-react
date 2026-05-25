@@ -35,11 +35,11 @@ export const ResultPage: FunctionComponent<
   const cls = classNames(classPrefix, className)
 
   const defaultStatus: ResultPageStatusOptions = {
-    success: <Success color="#00D900" />,
-    error: <Failure color="#FF0F23" />,
-    warning: <Warning color="#FFBF00" />,
-    info: <Tips color="#0073FF" />,
-    waiting: <Ask color="#0073FF" />,
+    success: <Success color="var(--nutui-color-success, #0acc2a)" />,
+    error: <Failure color="var(--nutui-color-primary, #ff0f23)" />,
+    warning: <Warning color="var(--nutui-color-warning, #ffaa00)" />,
+    info: <Tips color="var(--nutui-color-info, #0c82f7)" />,
+    waiting: <Ask color="var(--nutui-color-info, #0c82f7)" />,
   }
   return (
     <View className={cls} style={style}>

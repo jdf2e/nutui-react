@@ -88,7 +88,9 @@ export const Pagination: FunctionComponent<
           >
             {addColorForHarmony(
               prev || locale.pagination.prev,
-              current === 1 ? '#c2c4cc' : '#ff0f23'
+              current === 1
+                ? 'var(--nutui-color-text-disabled, #c2c4cc)'
+                : 'var(--nutui-color-primary, #ff0f23)'
             )}
           </View>
           {mode === 'multi' && (
@@ -127,7 +129,9 @@ export const Pagination: FunctionComponent<
           >
             {addColorForHarmony(
               next || locale.pagination.next,
-              current >= pageCount ? '#c2c4cc' : '#ff0f23'
+              current >= pageCount
+                ? 'var(--nutui-color-text-disabled, #c2c4cc)'
+                : 'var(--nutui-color-primary, #ff0f23)'
             )}
           </View>
         </>

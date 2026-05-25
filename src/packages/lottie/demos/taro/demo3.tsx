@@ -5,7 +5,7 @@ import whitePull from '@nutui/nutui-react-taro/dist/es/lottie/animation/dark/pul
 const Demo3 = () => {
   return (
     <>
-      <Cell style={{ background: '#FF0F23' }}>
+      <Cell style={{ background: 'var(--nutui-color-primary, #ff0f23)' }}>
         <Lottie source={whitePull} style={{ width: 132, height: 26 }} />
       </Cell>
     </>

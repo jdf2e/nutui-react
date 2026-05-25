@@ -41,8 +41,9 @@ const Demo3 = () => {
     <>
       <Popover
         style={{
-          '--nutui-popover-text-color': '#ff0f23',
-          '--nutui-popover-content-background-color': '#FFEBF1',
+          '--nutui-popover-text-color': 'var(--nutui-color-primary, #ff0f23)',
+          '--nutui-popover-content-background-color':
+            'var(--nutui-brand-1, #ffe8ee)',
         }}
         visible={visible}
         onClick={() => {

@@ -11,8 +11,8 @@ const Demo6 = () => {
           <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
           <Avatar icon={<User />} />
           <Avatar
-            color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
-            background={`${variableDisabled ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
+            color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary, #ff0f23)'}`}
+            background={`${variableDisabled ? '#ffccd7' : 'var(--nutui-brand-2, #ffccd7)'}`}
           >
             U
           </Avatar>
@@ -23,8 +23,8 @@ const Demo6 = () => {
           <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
           <Avatar icon={<User />} />
           <Avatar
-            color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
-            background={`${variableDisabled ? '#ffd6e1' : 'var(--nutui-brand-2)'}`}
+            color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary, #ff0f23)'}`}
+            background={`${variableDisabled ? '#ffccd7' : 'var(--nutui-brand-2, #ffccd7)'}`}
           >
             U
           </Avatar>

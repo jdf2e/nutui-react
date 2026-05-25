@@ -2,18 +2,17 @@
 :root,
 page {
   // 品牌颜色
-  --nutui-brand-1: #403635; // 梯度1
-  --nutui-brand-2: #665452; // 梯度2
-  --nutui-brand-3: #99706b; // 梯度3
-  --nutui-brand-4: #cc5f52; // 梯度4
-  --nutui-brand-5: #f2503d; // 梯度5
-  --nutui-brand-6: #fa3725; // 梯度6
-  --nutui-brand-7: #f24130; // 梯度7
-  --nutui-brand-8: #e55446; // 梯度8
-  --nutui-brand-9: #f26e61; // 梯度9
-  --nutui-brand-10: #e5928a; // 梯度10
-
-  --nutui-brand-11: #330f02; // 梯度11
+  --nutui-brand-1: #2a181c; // 梯度1
+  --nutui-brand-2: #3d2128; // 梯度2
+  --nutui-brand-3: #5f2b34; // 梯度3
+  --nutui-brand-4: #802b37; // 梯度4
+  --nutui-brand-5: #b81427; // 梯度5
+  --nutui-brand-6: #ff0f23; // 梯度6
+  --nutui-brand-7: #ff707b; // 梯度7
+  --nutui-brand-8: #ffa3ac; // 梯度8
+  --nutui-brand-9: #ffccd2; // 梯度9
+  --nutui-brand-10: #fff0f2; // 梯度10
+  --nutui-brand-11: #fff4f5; // 梯度11
 
   --nutui-brand-stop-1: #ff475d; // 渐变色起
   --nutui-brand-stop-2: #fa3725; // 渐变色止
@@ -31,9 +30,9 @@ page {
   --nutui-golden-stop-2: #ffe3c2;
 
   // success color
-  --nutui-green-1: #1f2920;
-  --nutui-green-2: #32c241;
-  --nutui-green-3: #12b222;
+  --nutui-green-1: #253a2a;
+  --nutui-green-2: #4bd165;
+  --nutui-green-3: #45b058;
 
   // danger color 发现不一致 TODO
 
@@ -51,13 +50,14 @@ page {
   --nutui-red-11: #ffe7e0;
 
   // warning color
-  --nutui-yellow-1: #29271f;
-  --nutui-yellow-2: #faaf00;
-  --nutui-yellow-3: #cc8500;
+  --nutui-yellow-1: #3f351e;
+  --nutui-yellow-2: #ffbd22;
+  --nutui-yellow-3: #d99100;
 
   // info color
-  --nutui-blue-1: #23292e;
-  --nutui-blue-2: #3385ff;
+  --nutui-blue-1: #212f42;
+  --nutui-blue-2: #60a5fa;
+  --nutui-blue-3: #90caf9;
 
   --nutui-secondary-1: #14cc33; // 辅助色
 
@@ -163,18 +163,20 @@ page {
   --nutui-color-service-stop-2: var(--nutui-golden-stop-2);
 
   // success color 语义化
-  --nutui-color-success: var(--nutui-green-2); // 深背景
+  --nutui-color-success: var(--nutui-green-2); // 深背景/图形
   --nutui-color-success-light: var(--nutui-green-1); // 浅背景
   --nutui-color-success-pressed: var(--nutui-green-3); // 文字
 
   // danger color 语义化，待办，看上去目前非常的独立 @周峯
   --nutui-color-danger: var(--nutui-red-2); // 背景或文字
   --nutui-color-danger-light: var(--nutui-red-1); // 背景
+  --nutui-color-danger-pressed: var(--nutui-red-3); // 文字
 
   // info color 语义化
   --nutui-color-info: var(--nutui-blue-2); // 背景或文字，链接色
   --nutui-color-info-light: var(--nutui-blue-1); // 背景
   --nutui-color-text-link: var(--nutui-blue-2);
+  --nutui-color-info-pressed: var(--nutui-blue-3); // 文字
 
   // warning color 语义化
   --nutui-color-warning: var(--nutui-yellow-2); // 深背景

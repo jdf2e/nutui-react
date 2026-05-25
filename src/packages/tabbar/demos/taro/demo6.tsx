@@ -4,20 +4,26 @@ import { Cart, Home, User } from '@nutui/icons-react-taro'
 
 const Demo7 = () => (
   <Space direction="vertical">
-    <Tabbar inactiveColor="#7d7e80" activeColor="#0073ff">
+    <Tabbar
+      inactiveColor="#7d7e80"
+      activeColor="var(--nutui-color-info, #0c82f7)"
+    >
       <Tabbar.Item title="首页" icon={<Home />} />
       <Tabbar.Item title="购物车" icon={<Cart />} />
       <Tabbar.Item title="我的" icon={<User />} />
     </Tabbar>
 
-    <Tabbar inactiveColor="#7d7e80" activeColor="#0073ff">
+    <Tabbar
+      inactiveColor="#7d7e80"
+      activeColor="var(--nutui-color-info, #0c82f7)"
+    >
       <Tabbar.Item title="首页" icon={<Home />} />
       <Tabbar.Item title="我的" icon={<User />} />
     </Tabbar>
 
     <Tabbar
       inactiveColor="#7d7e80"
-      activeColor="#0073ff"
+      activeColor="var(--nutui-color-info, #0c82f7)"
       direction="horizontal"
     >
       <Tabbar.Item title="我的优惠券" icon={<Home />} dot />

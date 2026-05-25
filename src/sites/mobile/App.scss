@@ -23,10 +23,10 @@ body {
     height: 57px;
     line-height: 57px;
     text-align: center;
-    background: white;
+    background: var(--nutui-color-background-overlay, white);
     font-weight: bold;
     font-size: 20px;
-    color: rgba(51, 51, 51, 1);
+    color: var(--nutui-color-title, rgba(51, 51, 51, 1));
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
 
     .back {
@@ -67,7 +67,7 @@ body {
   .demo {
     min-height: 100vh;
     height: 100%;
-    background: #f7f8fa;
+    background: var(--nutui-color-background, #f7f8fa);
     overflow-x: hidden;
     overflow-y: auto;
     padding: 57px 17px 0 17px;
@@ -85,7 +85,7 @@ body {
     }
 
     &.bg-w {
-      background: #fff;
+      background: var(--nutui-color-background-overlay, #fff);
     }
 
     &::-webkit-scrollbar {
@@ -97,7 +97,7 @@ body {
       margin-top: 30px;
       margin-bottom: 10px;
       font-size: 14px;
-      color: rgba(144, 156, 164, 1);
+      color: var(--nutui-color-title, rgba(144, 156, 164, 1));
       padding: 0 10px;
       font-weight: normal;
     }
@@ -108,7 +108,7 @@ body {
 
     .card {
       padding: 25px 18px;
-      background: rgba(255, 255, 255, 1);
+      background: var(--nutui-color-background-overlay, rgba(255, 255, 255, 1));
     }
   }
 }

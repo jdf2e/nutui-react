@@ -20,8 +20,8 @@ const defaultProps = {
   size: harmony() || td() ? '40' : '',
   shape: 'round',
   icon: '',
-  background: '#eee',
-  color: '#666',
+  background: '#eee', // TODO
+  color: '#666', // TODO
   fit: 'cover',
   mode: 'scaleToFill',
   src: '',

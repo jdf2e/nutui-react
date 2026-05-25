@@ -17,7 +17,7 @@ const defaultProps = {
   strokeWidth: 5,
   radius: 50,
   strokeLinecap: 'round',
-  color: '#FF0F23',
+  color: 'var(--nutui-color-primary, #ff0f23)',
   background: '#e5e9f2',
   clockwise: true,
 } as CircleProgressProps

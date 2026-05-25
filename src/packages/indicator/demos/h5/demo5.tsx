@@ -4,7 +4,7 @@ import { Cell, Indicator } from '@nutui/nutui-react'
 const Demo5 = () => {
   return (
     <>
-      <Cell style={{ background: '#C2C4CC' }}>
+      <Cell style={{ background: 'var(--nutui-color-text-disabled, #c2c4cc)' }}>
         <Indicator total={3} current={0} color="default" />
       </Cell>
     </>

@@ -81,7 +81,7 @@ export const Progress: FunctionComponent<
       },
       inner: {
         width: `${displayPercent}%`,
-        background: effectiveColor || '#FF0F23',
+        background: effectiveColor || 'var(--nutui-color-primary, #ff0f23)',
         ...baseStyles,
         ...transitionStyle,
       },
@@ -205,7 +205,7 @@ export const Progress: FunctionComponent<
   }
   const computeInnerStyle = () => {
     const style: any = {
-      backgroundColor: effectiveColor || '#ff0f23',
+      backgroundColor: effectiveColor || 'var(--nutui-color-primary, #ff0f23)',
       fontSize: fontSize && pxTransform(parseInt(fontSize.toString())),
     }
     if (harmony()) {

@@ -26,7 +26,7 @@ const Demo3 = () => {
             flexDirection: 'row',
             alignItems: 'center',
             fontSize: pxTransform(12),
-            color: '#505259',
+            color: 'var(--nutui-color-text, #1a1a1a)',
             height: pxTransform(20),
           }}
         >

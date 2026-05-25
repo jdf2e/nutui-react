@@ -28,7 +28,7 @@ const Demo1 = () => {
         <View
           style={{
             borderTopWidth: 1,
-            borderTopColor: '#1a1a1a',
+            borderTopColor: 'var(--nutui-color-title, #1a1a1a)',
             borderTopStyle: 'solid',
             width: 20,
             marginTop: 3,

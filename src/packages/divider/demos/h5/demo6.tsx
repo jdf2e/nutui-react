@@ -6,11 +6,23 @@ const Demo6 = () => {
     <Cell align="center">
       文本
       <Divider direction="vertical" />
-      <a href="#" style={{ color: '#0073ff', verticalAlign: 'middle' }}>
+      <a
+        href="#"
+        style={{
+          color: 'var(--nutui-color-info, #0c82f7)',
+          verticalAlign: 'middle',
+        }}
+      >
         链接
       </a>
       <Divider direction="vertical" />
-      <a href="#" style={{ color: '#0073ff', verticalAlign: 'middle' }}>
+      <a
+        href="#"
+        style={{
+          color: 'var(--nutui-color-info, #0c82f7)',
+          verticalAlign: 'middle',
+        }}
+      >
         链接
       </a>
     </Cell>

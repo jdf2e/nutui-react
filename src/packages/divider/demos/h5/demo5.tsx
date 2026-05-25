@@ -6,8 +6,8 @@ const Demo5 = () => {
     <Cell>
       <Divider
         style={{
-          color: '#0073ff',
-          borderColor: '#0073ff',
+          color: 'var(--nutui-color-info, #0c82f7)',
+          borderColor: 'var(--nutui-color-info, #0c82f7)',
           padding: '0 16px',
           borderStyle: 'dashed',
         }}

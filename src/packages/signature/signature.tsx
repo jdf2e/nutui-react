@@ -14,7 +14,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'png',
   lineWidth: 2,
-  strokeStyle: '#1A1A1A',
+  strokeStyle: 'var(--nutui-color-title, #1a1a1a)',
   unsupported: '',
 } as WebSignatureProps
 const InternalSignature: ForwardRefRenderFunction<

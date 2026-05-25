@@ -18,8 +18,8 @@ const Demo4 = () => {
               border: '1px solid #FFFFFF',
               borderRadius: '50%',
               margin: '4px',
-              background: `var(--nutui-color-primary)`,
-              boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+              background: `var(--nutui-color-primary, #ff0f23)`,
+              boxShadow: `0 0 1px 1px var(--nutui-color-primary, #ff0f23)`,
             }}
           >
             {5}
@@ -44,7 +44,7 @@ const Demo4 = () => {
           }}
         />
       </Cell>
-      <Cell style={{ background: '#C2C4CC' }}>
+      <Cell style={{ background: 'var(--nutui-color-text-disabled, #c2c4cc)' }}>
         <Indicator
           total={6}
           current={2}

@@ -54,7 +54,7 @@ const Demo6 = () => {
               <View style={{ fontWeight: pxTransform(500) }}>我是标题</View>
               <View
                 style={{
-                  color: '#888B94',
+                  color: 'var(--nutui-color-text-help, #999999)',
                   fontSize: pxTransform(10),
                   marginLeft: pxTransform(5),
                 }}
@@ -84,7 +84,7 @@ const Demo6 = () => {
           title={
             <Text
               style={{
-                color: '#888B94',
+                color: 'var(--nutui-color-text-help, #999999)',
                 fontSize: pxTransform(12),
               }}
             >

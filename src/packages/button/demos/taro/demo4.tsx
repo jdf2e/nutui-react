@@ -22,8 +22,8 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="outline"
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
+          rightIcon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
           style={marginStyle}
         >
           Button
@@ -31,24 +31,26 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
+          rightIcon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
           style={marginStyle}
         >
           Button
         </Button>
         <Button
-          icon={<Star color="#ff0f23" />}
-          rightIcon={<Star color="#ff0f23" />}
+          icon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
+          rightIcon={<Star color="var(--nutui-color-primary, #ff0f23)" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `#ffebf1`,
-            borderColor: `#ff0f23`,
-            color: `#ff0f23`,
+            backgroundColor: `var(--nutui-brand-1, #ffe8ee)`,
+            borderColor: `var(--nutui-color-primary, #ff0f23)`,
+            color: `var(--nutui-color-primary, #ff0f23)`,
           }}
         >
-          <Text style={{ color: '#ff0f23' }}>Button</Text>
+          <Text style={{ color: 'var(--nutui-color-primary, #ff0f23)' }}>
+            Button
+          </Text>
         </Button>
         <Button
           type="default"
@@ -58,8 +60,8 @@ const Demo4 = () => {
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `#f2f3f5`,
-            color: `#1a1a1a`,
+            backgroundColor: `var(--nutui-color-background, #f7f8fa)`,
+            color: `var(--nutui-color-title, #1a1a1a)`,
           }}
         >
           Button
@@ -73,7 +75,7 @@ const Demo4 = () => {
             margin: 8,
             width: harmony() ? 140 : 'auto',
             backgroundColor: `#ffffff`,
-            color: `#1a1a1a`,
+            color: `var(--nutui-color-title, #1a1a1a)`,
           }}
         >
           Button
@@ -90,7 +92,7 @@ const Demo4 = () => {
           shape="square"
           fill="outline"
           type="primary"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus size={10} color="var(--nutui-color-primary, #ff0f23)" />}
           style={{
             margin: 8,
           }}
@@ -98,7 +100,7 @@ const Demo4 = () => {
         <Button
           fill="outline"
           type="primary"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus size={10} color="var(--nutui-color-primary, #ff0f23)" />}
           style={{
             margin: 8,
           }}
@@ -106,7 +108,7 @@ const Demo4 = () => {
         <Button
           type="primary"
           fill="dashed"
-          icon={<Plus size={10} color="#ff0f23" />}
+          icon={<Plus size={10} color="var(--nutui-color-primary, #ff0f23)" />}
           style={{
             margin: 8,
           }}

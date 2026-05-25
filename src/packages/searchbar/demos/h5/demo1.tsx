@@ -11,9 +11,14 @@ const Demo1 = () => {
         placeholder="华为Mate 70"
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Photograph color="#888B94" onClick={() => console.log('拍照购')} />
+            <Photograph
+              color="var(--nutui-color-text-help, #999999)"
+              onClick={() => console.log('拍照购')}
+            />
             <Divider direction="vertical" />
-            <span style={{ color: '#ff0f23' }}>搜索</span>
+            <span style={{ color: 'var(--nutui-color-primary, #ff0f23)' }}>
+              搜索
+            </span>
           </div>
         }
       />

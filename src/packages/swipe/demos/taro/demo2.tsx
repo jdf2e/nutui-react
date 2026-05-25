@@ -47,7 +47,7 @@ const App = () => {
                 color: '#b5691a',
               })}
               {ViewNode('收藏', {
-                background: '#ffbf00',
+                background: 'var(--nutui-color-warning, #ffaa00)',
                 color: '#FFF',
               })}
               {ViewNode('看相似', {
@@ -55,7 +55,7 @@ const App = () => {
                 color: '#FFF',
               })}
               {ViewNode('删除', {
-                background: '#ff0f23',
+                background: 'var(--nutui-color-primary, #ff0f23)',
                 color: '#FFF',
               })}
             </>

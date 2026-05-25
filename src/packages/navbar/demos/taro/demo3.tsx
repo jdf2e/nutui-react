@@ -45,7 +45,7 @@ const Demo3 = () => {
       </NavBar>
       <NavBar
         style={{
-          '--nutui-navbar-background': '#ff0f23',
+          '--nutui-navbar-background': 'var(--nutui-color-primary, #ff0f23)',
           '--nutui-navbar-color': '#fff',
         }}
         back={<ArrowLeft />}

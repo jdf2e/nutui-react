@@ -30,8 +30,8 @@ const Demo7 = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#F7F8FC',
-            color: '#C2C4CC',
+            backgroundColor: 'var(--nutui-color-background-sunken, #f2f3f7)',
+            color: 'var(--nutui-color-text-disabled, #c2c4cc)',
           }}
         >
           自定义内容区域

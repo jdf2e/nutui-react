@@ -19,7 +19,7 @@ const Demo2 = () => {
             borderColor: '#FFFFFF',
             borderRadius: pxTransform(14),
             margin: pxTransform(4),
-            backgroundColor: '#ff0f23',
+            backgroundColor: 'var(--nutui-color-primary, #ff0f23)',
           }}
         >
           5

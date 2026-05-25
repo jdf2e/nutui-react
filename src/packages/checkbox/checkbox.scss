@@ -43,7 +43,7 @@
   &-icon-indeterminate {
     color: $color-primary;
     background-color: $white;
-    box-shadow: 0px 2px 4px 0px #ff0f2333;
+    box-shadow: 0px 2px 4px 0px rgba($color-primary, 0.2);
     border-radius: 50%;
 
     &.nut-checkbox-icon-disabled {

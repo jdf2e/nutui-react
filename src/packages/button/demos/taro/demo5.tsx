@@ -23,8 +23,8 @@ const Demo5 = () => {
           disabled
           type="primary"
           fill="outline"
-          icon={<Star color="#ffadbe" />}
-          rightIcon={<Star color="#ffadbe" />}
+          icon={<Star color="var(--nutui-brand-3, #ff91a5)" />}
+          rightIcon={<Star color="var(--nutui-brand-3, #ff91a5)" />}
           style={marginStyle}
         >
           Disabled
@@ -33,8 +33,8 @@ const Demo5 = () => {
           disabled
           type="primary"
           fill="dashed"
-          icon={<Star color="#ffadbe" />}
-          rightIcon={<Star color="#ffadbe" />}
+          icon={<Star color="var(--nutui-brand-3, #ff91a5)" />}
+          rightIcon={<Star color="var(--nutui-brand-3, #ff91a5)" />}
           style={marginStyle}
         >
           Disabled
@@ -52,13 +52,13 @@ const Demo5 = () => {
           disabled
           type="default"
           fill="none"
-          icon={<Star color="#888b94" />}
-          rightIcon={<Star color="#888b94" />}
+          icon={<Star color="var(--nutui-color-text-help, #999999)" />}
+          rightIcon={<Star color="var(--nutui-color-text-help, #999999)" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
-            backgroundColor: `#f2f3f5`,
-            color: `#888b94`,
+            backgroundColor: `var(--nutui-color-background, #f7f8fa)`,
+            color: `var(--nutui-color-text-help, #999999)`,
           }}
         >
           Disabled
@@ -67,13 +67,13 @@ const Demo5 = () => {
           disabled
           type="default"
           fill="none"
-          icon={<Star color="#888b94" />}
-          rightIcon={<Star color="#888b94" />}
+          icon={<Star color="var(--nutui-color-text-help, #999999)" />}
+          rightIcon={<Star color="var(--nutui-color-text-help, #999999)" />}
           style={{
             margin: 8,
             width: harmony() ? 140 : 'auto',
             backgroundColor: `#ffffff`,
-            color: `#888b94`,
+            color: `var(--nutui-color-text-help, #999999)`,
           }}
         >
           Disabled
@@ -102,15 +102,15 @@ const Demo5 = () => {
           icon={<Plus size={10} color="#ffffff" />}
           style={{
             margin: 8,
-            backgroundColor: '#ffadbe',
-            borderColor: '#ffadbe',
+            backgroundColor: 'var(--nutui-brand-3, #ff91a5)',
+            borderColor: 'var(--nutui-brand-3, #ff91a5)',
           }}
         />
         <Button
           disabled
           type="primary"
           fill="dashed"
-          icon={<Plus size={10} color="#ffadbe" />}
+          icon={<Plus size={10} color="var(--nutui-brand-3, #ff91a5)" />}
           style={{
             margin: 8,
           }}

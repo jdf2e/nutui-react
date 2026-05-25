@@ -10,7 +10,8 @@ const Demo4 = () => {
         visible={customShow}
         style={{
           '--nutui-notify-text-color': '#FFFFFF',
-          '--nutui-notify-background-color': '#ff0f23',
+          '--nutui-notify-background-color':
+            'var(--nutui-color-primary, #ff0f23)',
         }}
         leftIcon={<Reload color="#FFFFFF" />}
         onClose={() => {

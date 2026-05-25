@@ -102,7 +102,7 @@ const Demo1 = () => {
               <View
                 style={{
                   ...fontSize,
-                  color: '#c2c4cc',
+                  color: 'var(--nutui-color-text-disabled, #c2c4cc)',
                   height: pxTransform(20),
                   display: 'flex',
                   alignItems: 'center',
@@ -112,7 +112,7 @@ const Demo1 = () => {
               </View>
               <View
                 style={{
-                  color: '#c2c4cc',
+                  color: 'var(--nutui-color-text-disabled, #c2c4cc)',
                   height: pxTransform(20),
                   display: 'flex',
                   alignItems: 'center',

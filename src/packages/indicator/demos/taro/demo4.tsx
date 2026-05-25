@@ -20,7 +20,7 @@ const Demo4 = () => {
               borderColor: '#FFFFFF',
               borderRadius: pxTransform(14),
               margin: pxTransform(4),
-              backgroundColor: '#ff0f23',
+              backgroundColor: 'var(--nutui-color-primary, #ff0f23)',
             }}
           >
             5
@@ -45,7 +45,7 @@ const Demo4 = () => {
           }}
         />
       </Cell>
-      <Cell style={{ background: '#C2C4CC' }}>
+      <Cell style={{ background: 'var(--nutui-color-text-disabled, #c2c4cc)' }}>
         <Indicator total={6} current={2} direction="vertical" color="default" />
       </Cell>
     </>

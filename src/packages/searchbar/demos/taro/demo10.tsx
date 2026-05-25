@@ -29,7 +29,7 @@ const Demo = () => {
         }}
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Photograph color="#505259" />
+            <Photograph color="var(--nutui-color-text, #1a1a1a)" />
           </div>
         }
         right={<Category />}
@@ -44,7 +44,10 @@ const Demo = () => {
         // autoFocus
         rightIn={
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Photograph color="#505259" style={{ marginRight: '12px' }} />
+            <Photograph
+              color="var(--nutui-color-text, #1a1a1a)"
+              style={{ marginRight: '12px' }}
+            />
             <Button type="primary" size="mini">
               搜索
             </Button>

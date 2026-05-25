@@ -11,7 +11,14 @@ const Demo5 = () => {
   }
   const itemRender = (page: any, current: number) => {
     return (
-      <Text style={{ color: current === page.number ? '#fff' : '#ff0f23' }}>
+      <Text
+        style={{
+          color:
+            current === page.number
+              ? '#fff'
+              : 'var(--nutui-color-primary, #ff0f23)',
+        }}
+      >
         {page.number === 3 ? 'hot' : page.text}
       </Text>
     )

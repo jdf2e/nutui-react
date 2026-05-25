@@ -27,7 +27,7 @@ const Demo1 = () => {
           style={{
             height: 1,
             width: 20,
-            background: '#1A1A1A',
+            background: 'var(--nutui-color-title, #1a1a1a)',
             marginTop: 3,
             marginBottom: 3,
           }}

@@ -10,7 +10,7 @@ const Demo6 = () => {
       <Cell>
         <Indicator total={2} type="dualScreen" current={0} />
       </Cell>
-      <Cell style={{ background: '#C2C4CC' }}>
+      <Cell style={{ background: 'var(--nutui-color-text-disabled, #c2c4cc)' }}>
         <Indicator total={2} type="dualScreen" current={1} color="default" />
       </Cell>
     </>

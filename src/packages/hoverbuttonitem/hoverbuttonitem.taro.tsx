@@ -25,7 +25,14 @@ export const HoverButtonItem = (props: Partial<TaroHoverButtonItemProps>) => {
   const [isTouchStart, setTouchStart] = useState(false)
   // @TODO 待添加暗黑模式及样式变量功能
   const nativeProps = useMemo(
-    () => (isHarmony ? { color: isTouchStart ? '#595959' : '#1A1A1A' } : {}),
+    () =>
+      isHarmony
+        ? {
+            color: isTouchStart
+              ? 'var(--nutui-color-text, #595959)'
+              : 'var(--nutui-color-title, #1A1A1A)',
+          }
+        : {},
     [isTouchStart]
   )
 

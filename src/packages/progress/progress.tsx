@@ -57,7 +57,7 @@ export const Progress: FunctionComponent<
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
-    background: color || '#FF0F23',
+    background: color || 'var(--nutui-color-primary, #ff0f23)',
     borderRadius: borderRadius && parseInt(borderRadius.toString()),
     transition: `width ${duration || 300}ms ease-in-out`,
   }

@@ -248,7 +248,7 @@ export const Cascader = forwardRef((props: Partial<TaroCascaderProps>, ref) => {
             ) : (
               <Check
                 className={`${classPrefix}-icon-check`}
-                color={activeColor || '#ff0f23'}
+                color={activeColor || 'var(--nutui-color-primary, #ff0f23)'}
               />
             ))}
         </View>

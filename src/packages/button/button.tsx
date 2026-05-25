@@ -55,7 +55,7 @@ export const Button = React.forwardRef<
           style.borderColor = color
         }
       } else {
-        style.color = '#fff'
+        style.color = 'var(--nutui-color-primary-text, #fff)'
         style.background = color
         style.borderColor = 'transparent'
       }

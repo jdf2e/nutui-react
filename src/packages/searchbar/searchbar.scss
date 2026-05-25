@@ -76,7 +76,7 @@
       .nut-icon {
         width: $icon-size-12;
         height: $icon-size-12;
-        color: var(--nutui-black-5);
+        color: var(--nutui-black-5, rgba(0, 0, 0, 0.2));
         margin-right: $searchbar-inner-gap;
       }
       &::after {
@@ -94,7 +94,7 @@
     display: flex;
     flex-direction: row;
     z-index: 2;
-    background-color: #fff;
+    background-color: $searchbar-content-background;
     top: 9px;
     left: 6px;
     font-size: $font-size-s;
@@ -105,7 +105,7 @@
       flex-direction: row;
       align-items: center;
       padding: 4px 8px;
-      background-color: #f7f8fc;
+      background-color: $color-background-sunken;
       border-radius: 4px;
       margin-right: 2px;
     }
@@ -114,7 +114,7 @@
       width: $icon-size-6;
       height: $icon-size-6;
       font-size: $icon-size-6;
-      color: #c2c4cc;
+      color: $color-text-disabled;
       margin-left: 4px;
     }
   }
@@ -196,7 +196,7 @@
     padding: 5px $searchbar-gap;
 
     .nut-searchbar-content {
-      border: 0.5px solid #ff5c67;
+      border: 0.5px solid $color-primary;
     }
   }
 }

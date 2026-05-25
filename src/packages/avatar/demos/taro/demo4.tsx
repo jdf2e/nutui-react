@@ -9,13 +9,13 @@ const Demo4 = () => {
     <Cell className="cell-avatar">
       <Avatar
         color="#ffffff"
-        background={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
+        background={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary, #ff0f23)'}`}
         icon={<User />}
         style={styles}
       />
       <Avatar
-        color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary)'}`}
-        background={`${variableDisabled ? '#ffebf1' : 'var(--nutui-color-primary-light-pressed)'}`}
+        color={`${variableDisabled ? '#ff0f23' : 'var(--nutui-color-primary, #ff0f23)'}`}
+        background={`${variableDisabled ? '#ffe8ee' : 'var(--nutui-color-primary-light-pressed, #ffe8ee)'}`}
       >
         U
       </Avatar>

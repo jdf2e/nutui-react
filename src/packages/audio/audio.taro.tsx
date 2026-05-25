@@ -172,8 +172,8 @@ export const Audio: FunctionComponent<
               currentDescription={null}
               maxDescription={null}
               minDescription={null}
-              inactive-color="#cccccc"
-              active-color="#FF0F23"
+              inactive-color="var(--nutui-color-text-disabled, #c2c4cc)"
+              active-color="var(--nutui-color-primary, #ff0f23)"
             />
           </View>
           <View className="time">

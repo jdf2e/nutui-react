@@ -44,7 +44,7 @@ const Demo6 = () => {
               <span style={{ fontWeight: '500' }}>我是标题</span>
               <span
                 style={{
-                  color: '#888B94',
+                  color: 'var(--nutui-color-text-help, #999999)',
                   fontSize: '10px',
                   marginLeft: '5px',
                   lineHeight: 1.5,
@@ -73,7 +73,7 @@ const Demo6 = () => {
           title={
             <div
               style={{
-                color: '#888B94',
+                color: 'var(--nutui-color-text-help, #999999)',
                 fontSize: '12px',
               }}
             >

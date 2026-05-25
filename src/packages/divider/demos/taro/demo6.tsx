@@ -11,7 +11,10 @@ const Demo6 = () => {
         onClick={() => {
           console.log('跳转')
         }}
-        style={{ color: '#0073ff', verticalAlign: 'middle' }}
+        style={{
+          color: 'var(--nutui-color-info, #0c82f7)',
+          verticalAlign: 'middle',
+        }}
       >
         链接
       </Text>
@@ -20,7 +23,10 @@ const Demo6 = () => {
         onClick={() => {
           console.log('跳转')
         }}
-        style={{ color: '#0073ff', verticalAlign: 'middle' }}
+        style={{
+          color: 'var(--nutui-color-info, #0c82f7)',
+          verticalAlign: 'middle',
+        }}
       >
         链接
       </Text>

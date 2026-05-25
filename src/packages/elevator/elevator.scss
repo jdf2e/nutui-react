@@ -117,10 +117,14 @@
           font-weight: $font-weight-bold;
           color: $elevator-bars-active-color;
           /* #ifndef weapp jd*/
-          background: linear-gradient(to right, #ff475d, #ff0f23);
+          background: linear-gradient(
+            to right,
+            $color-primary-stop-1,
+            $color-primary
+          );
           /* #endif */
           /* #ifdef weapp jd*/
-          background: #ff0f23;
+          background: $color-primary;
           /* #endif */
         }
       }

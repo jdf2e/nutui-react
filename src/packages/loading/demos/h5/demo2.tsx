@@ -4,7 +4,9 @@ import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react'
 const Demo2 = () => {
   return (
     <Cell>
-      <ConfigProvider theme={{ nutuiLoadingIconColor: '#FF0F23' }}>
+      <ConfigProvider
+        theme={{ nutuiLoadingIconColor: 'var(--nutui-color-primary, #ff0f23)' }}
+      >
         <Loading type="circular" />
       </ConfigProvider>
       <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>

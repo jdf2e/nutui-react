@@ -59,7 +59,7 @@ export const Button = React.forwardRef<
           style.borderColor = color
         }
       } else {
-        style.color = '#fff'
+        style.color = 'var(--nutui-color-primary-text, #fff)'
         if (harmony()) {
           style.backgroundColor = color
         }
@@ -76,7 +76,7 @@ export const Button = React.forwardRef<
       if (props.fill === 'outline' || props.fill === 'dashed') {
         style.color = color
       } else {
-        style.color = '#fff'
+        style.color = 'var(--nutui-color-primary-text, #fff)'
         style.background = 'transparent'
         style.borderColor = 'transparent'
       }
