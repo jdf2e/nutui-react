@@ -95,9 +95,21 @@
     }
   }
 
-  &-disabled {
+  &.nut-button-disabled {
     cursor: not-allowed;
-    color: #ffffff;
+
+    // 不带色彩的纯灰禁用 (配合 className 使用)
+    &.nut-button-disabled-gray {
+      background: var(--nutui-button-disabled-background-color, #ccc);
+      color: #fff;
+      border-color: var(--nutui-button-disabled-background-color, #ccc);
+      opacity: 1;
+
+      .nut-button-desc {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+    // color: #ffffff;
   }
 
   &.nut-button-icononly {
@@ -139,6 +151,27 @@
 
   &-normal {
     padding: $button-normal-padding;
+    min-width: scale-px(60px);
+  }
+
+  &-has-desc {
+    .nut-button-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+    .nut-button-title {
+      font-size: scale-font-px(14px);
+      font-weight: $font-weight-bold;
+    }
+    .nut-button-desc {
+      font-size: scale-font-px(12px);
+      font-weight: $font-weight;
+      opacity: 0.8;
+      margin-top: scale-px(2px);
+    }
   }
 
   &-xlarge {
@@ -146,6 +179,7 @@
     padding: $button-xlarge-padding;
     font-size: $button-xlarge-font-size;
     border-radius: $button-xlarge-border-radius;
+    font-weight: $font-weight-bold;
 
     .nut-button-text {
       margin-left: $button-xlarge-text-icon-margin;
@@ -164,11 +198,36 @@
     }
   }
 
+  &-44 {
+    height: $button-44-height;
+    padding: $button-44-padding;
+    font-size: $button-44-font-size;
+    border-radius: $button-44-border-radius;
+    font-weight: $font-weight-bold;
+
+    .nut-button-text {
+      margin-left: $button-xlarge-text-icon-margin;
+      &-right {
+        margin-right: $button-xlarge-text-icon-margin;
+      }
+    }
+
+    .nut-icon {
+      font-size: $button-44-font-size;
+      width: $button-44-font-size;
+      height: $button-44-font-size;
+    }
+    &-children {
+      font-size: $button-44-font-size;
+    }
+  }
+
   &-large {
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
     border-radius: $button-large-border-radius;
+    min-width: scale-px(84px);
 
     .nut-button-text {
       margin-left: $button-xlarge-text-icon-margin;
@@ -188,11 +247,38 @@
     }
   }
 
+  &-36 {
+    height: $button-36-height;
+    padding: $button-36-padding;
+    font-size: $button-36-font-size;
+    border-radius: $button-36-border-radius;
+    min-width: scale-px(66px);
+
+    .nut-button-text {
+      margin-left: $button-xlarge-text-icon-margin;
+      &-right {
+        margin-right: $button-xlarge-text-icon-margin;
+      }
+    }
+
+    .nut-icon {
+      font-size: $button-36-font-size;
+      width: $button-36-font-size;
+      height: $button-36-font-size;
+    }
+
+    &-children {
+      font-size: $button-36-font-size;
+    }
+  }
+
   &-small {
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
     border-radius: $button-small-border-radius;
+    min-width: scale-px(52px);
+    font-weight: $font-weight;
 
     .nut-icon {
       font-size: $button-small-font-size;
@@ -210,6 +296,8 @@
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
     border-radius: $button-mini-border-radius;
+    min-width: scale-px(48px);
+    font-weight: $font-weight;
 
     .nut-icon {
       font-size: $button-mini-font-size;
@@ -275,6 +363,16 @@
       &-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
+      }
+    }
+
+    &-light {
+      color: $button-primary-light-color;
+      background: $button-primary-light-background-color;
+      border-color: $button-primary-light-border-color;
+
+      &-disabled {
+        opacity: 0.5;
       }
     }
   }
@@ -423,6 +521,44 @@
     }
   }
 
+  &-golden {
+    color: $color-service-text;
+    background: $color-service-btn-bg;
+    background-origin: border-box;
+    border-color: transparent;
+
+    &-children {
+      color: $color-service-text;
+    }
+
+    &-disabled,
+    &-solid-disabled {
+      opacity: 0.5;
+      color: $color-service-text;
+      background: $color-service-btn-bg-disabled;
+      border-color: $color-service-btn-bg-disabled;
+    }
+
+    &-outline,
+    &-dashed {
+      color: $color-service-text;
+      border-color: $color-service-border;
+
+      &-disabled {
+        opacity: 0.5;
+        color: $color-service-text;
+        border-color: $color-service-btn-bg-disabled;
+      }
+    }
+
+    &-none {
+      color: $color-service-text;
+      &-disabled {
+        color: $color-service;
+      }
+    }
+  }
+
   &-block {
     display: block;
     width: 100%;
@@ -469,4 +605,11 @@
     right: 50%;
     transform: translate(50%, -50%);
   }
+}
+
+.nut-theme-dark {
+  // button primary-light
+  --nutui-button-primary-light-color: var(--nutui-color-primary);
+  --nutui-button-primary-light-background-color: rgba(250, 44, 25, 0.15);
+  --nutui-button-primary-light-border-color: transparent;
 }

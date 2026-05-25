@@ -8,21 +8,37 @@ const Demo8 = () => {
   }
 
   return (
-    <Cell style={{ flexWrap: 'wrap' }}>
-      <Button size="mini" style={marginStyle} type="primary">
-        Mini
+    <Cell style={{ flexWrap: 'wrap', alignItems: 'center' }}>
+      <Button
+        size="48"
+        type="primary"
+        style={marginStyle}
+        description="描述文本"
+      >
+        48
       </Button>
-      <Button size="small" style={marginStyle} type="primary">
-        Small
+      <Button
+        size="44"
+        type="primary"
+        style={marginStyle}
+        description="描述文本"
+      >
+        44
       </Button>
-      <Button type="primary" style={marginStyle}>
-        Normal
+      <Button size="40" type="primary" style={marginStyle}>
+        40
       </Button>
-      <Button size="large" type="primary" style={marginStyle}>
-        Large
+      <Button size="36" type="primary" style={marginStyle}>
+        36
       </Button>
-      <Button size="xlarge" type="primary" style={marginStyle}>
-        XLarge
+      <Button size="32" type="primary" style={marginStyle}>
+        32
+      </Button>
+      <Button size="28" type="primary" style={marginStyle}>
+        28
+      </Button>
+      <Button size="24" type="primary" style={marginStyle}>
+        24
       </Button>
     </Cell>
   )

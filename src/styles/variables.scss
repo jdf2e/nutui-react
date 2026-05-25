@@ -110,6 +110,15 @@ $color-danger-background: var(
 ) !default; //done
 $color-danger-text: var(--nutui-color-danger-text, #ff0f23) !default; //done
 
+// 服务色
+$color-service: var(--nutui-color-service, #fff4e0) !default;
+$color-service-pressed: var(--nutui-color-service-pressed, #f2ba79) !default;
+$color-service-border: var(--nutui-color-service-border, #ccb9ab) !default;
+$color-service-text: var(--nutui-color-service-text, #80512d) !default;
+$color-service-btn-bg: var(--nutui-color-service-btn-bg, #ffe6c2) !default;
+$color-service-btn-bg-pressed: var(--nutui-color-service-btn-bg-pressed, #ffddad) !default;
+$color-service-btn-bg-disabled: var(--nutui-color-service-btn-bg-disabled, #fff4e8) !default;
+
 // 背景色
 $color-background: var(--nutui-color-background, #f2f3f5) !default; //done
 // 卡片背景色
@@ -292,6 +301,17 @@ $button-xlarge-border-radius: var(
   $radius-base
 ) !default;
 
+$button-44-height: var(--nutui-button-44-height, scale-px(44px)) !default;
+$button-44-padding: var(--nutui-button-44-padding, 0px scale-px(16px)) !default;
+$button-44-font-size: var(
+  --nutui-button-44-font-size,
+  var(--nutui-font-size-15)
+) !default;
+$button-44-border-radius: var(
+  --nutui-button-44-border-radius,
+  $radius-base
+) !default;
+
 $button-large-height: var(--nutui-button-large-height, scale-px(40px)) !default;
 $button-large-padding: var(--nutui-button-large-padding, 0px scale-px(16px)) !default;
 $button-large-font-size: var(
@@ -300,6 +320,17 @@ $button-large-font-size: var(
 ) !default;
 $button-large-border-radius: var(
   --nutui-button-large-border-radius,
+  $radius-base
+) !default;
+
+$button-36-height: var(--nutui-button-36-height, scale-px(36px)) !default;
+$button-36-padding: var(--nutui-button-36-padding, 0px scale-px(12px)) !default;
+$button-36-font-size: var(
+  --nutui-button-36-font-size,
+  var(--nutui-font-size-14)
+) !default;
+$button-36-border-radius: var(
+  --nutui-button-36-border-radius,
   $radius-base
 ) !default;
 
@@ -333,10 +364,9 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: linear-gradient(
-  90deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
+$button-primary-background-color: var(
+  --nutui-button-primary-background-color,
+  $color-primary
 ) !default;
 
 $button-primary-disabled: var(
@@ -410,6 +440,19 @@ $button-danger-background-color: var(
 $button-danger-disabled: var(
   --nutui-button-danger-disabled,
   $color-danger-disabled
+) !default;
+
+$button-primary-light-color: var(
+  --nutui-button-primary-light-color,
+  $button-primary-background-color
+) !default;
+$button-primary-light-background-color: var(
+  --nutui-button-primary-light-background-color,
+  rgba(250, 44, 25, 0.1)
+) !default;
+$button-primary-light-border-color: var(
+  --nutui-button-primary-light-border-color,
+  transparent
 ) !default;
 
 $button-text-icon-margin: var(--nutui-button-text-icon-margin, scale-px(4px)) !default;

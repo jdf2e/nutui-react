@@ -13,7 +13,11 @@ exports[`should match snapshot 1`] = `
       <div
         class=""
       >
-        主要按钮
+        <div
+          class="nut-button-title"
+        >
+          主要按钮
+        </div>
       </div>
     </div>
   </button>

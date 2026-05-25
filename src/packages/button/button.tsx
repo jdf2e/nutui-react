@@ -42,9 +42,22 @@ export const Button = React.forwardRef<
     className,
     style,
     nativeType,
+    description,
     onClick,
     ...rest
   } = { ...defaultProps, ...props }
+
+  const mappedSize = useMemo(() => {
+    if (!size) return 'normal'
+    const sizeMap: Record<string, string> = {
+      '48': 'xlarge',
+      '40': 'large',
+      '32': 'normal',
+      '28': 'small',
+      '24': 'mini',
+    }
+    return sizeMap[size] || size
+  }, [size])
 
   const getStyle = useMemo(() => {
     const style: CSSProperties = {}
@@ -79,7 +92,8 @@ export const Button = React.forwardRef<
       [`${prefixCls}-${type}-solid`]: type === 'primary' && !props.fill,
       [`${prefixCls}-${fill}`]: props.fill,
       [`${prefixCls}-${type}-${fill}`]: props.fill,
-      [`${prefixCls}-${size}`]: size,
+      [`${prefixCls}-${mappedSize}`]: mappedSize,
+      [`${prefixCls}-has-desc`]: !!description,
       [`${prefixCls}-${shape}`]: shape,
       [`${prefixCls}-block`]: block,
       [`${prefixCls}-disabled`]: disabled || loading,
@@ -105,11 +119,15 @@ export const Button = React.forwardRef<
         {!loading && icon}
         {children && (
           <div
-            className={`${props.fill || disabled || loading ? `nut-button-${type}${props.fill ? `-${fill}` : ''}${disabled || loading ? '-disabled' : ''}` : ''}${icon || loading ? ' nut-button-text' : ''}${
-              rightIcon ? ' nut-button-text-right' : ''
-            }`}
+            className={classNames({
+              'nut-button-text': icon || loading,
+              'nut-button-text-right': rightIcon,
+            })}
           >
-            {children}
+            <div className="nut-button-title">{children}</div>
+            {description && (
+              <div className="nut-button-desc">{description}</div>
+            )}
           </div>
         )}
         {rightIcon}
