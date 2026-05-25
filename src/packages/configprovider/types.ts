@@ -8,7 +8,6 @@ export type NutCSSVariables =
   | 'nutuiColorPrimaryLightPressed'
   | 'nutuiColorPrimaryIcon'
   | 'nutuiColorPrimaryIconDisabled'
-  | 'nutuiColorPrimarySpecialdisabled'
   | 'nutuiColorDefault'
   | 'nutuiColorDefaultPressed'
   | 'nutuiColorDefaultLight'

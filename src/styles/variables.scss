@@ -44,10 +44,6 @@ $color-primary-icon-disabled: var(
   --nutui-color-primary-icon-disabled,
   #dadce0
 ) !default;
-$color-primary-specialdisabled: var(
-  --nutui-color-primary-specialdisabled,
-  #ff91a5
-) !default;
 
 // 默认色
 $color-default: var(--nutui-color-default) !default;
@@ -849,7 +845,7 @@ $countdown-number-background-color: var(
 ) !default;
 $countdown-number-border-color: var(
   --nutui-countdown-number-border-color,
-  $color-primary-specialdisabled
+  $color-primary-disabled-special
 ) !default;
 $countdown-number-primary-color: var(
   --nutui-countdown-number-primary-color,
