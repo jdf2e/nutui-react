@@ -11,6 +11,11 @@ const idID: BaseLang = {
   edit: 'Sunting',
   reset: 'Mengatur Ulang',
   close: 'Tutup',
+  back: 'Kembali',
+  clear: 'Bersihkan',
+  image: {
+    errorTip: 'Gambar gagal dimuat',
+  },
   video: {
     errorTip: 'Terjadi Kesalahan',
     clickRetry: 'Coba Lagi',
@@ -40,6 +45,24 @@ const idID: BaseLang = {
     today: 'Hari ini',
     loadPreviousMonth: 'Muat Bulan Sebelumnya',
     noEarlierMonth: 'Tidak Ada Bulan Sebelumnya',
+    dayAriaLabel: (
+      year: number,
+      month: number,
+      day: number,
+      today: boolean,
+      isActive: boolean,
+      isDisable: boolean
+    ) => {
+      const dateStr = `${year}-${month}-${day}`
+      let label = today ? `Hari ini, ${dateStr}` : dateStr
+      if (isActive) {
+        label = `Dipilih ${label}`
+      }
+      if (isDisable) {
+        label = `${label} dinonaktifkan`
+      }
+      return label
+    },
   },
   shortpassword: {
     title: 'SIlakan masukan kata sandi',
