@@ -97,7 +97,7 @@
     "@nutui/nutui-react": "^2.6.22",
     "@babel/core": "^7.25.8",
     "@babel/preset-react": "^7.25.7",
-    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-babel": "^7.1.0",
     "@sxzz/eslint-config": "^4.2.0",
     "@sxzz/prettier-config": "^2.0.2",
     "@sxzz/test-utils": "^0.3.2",
