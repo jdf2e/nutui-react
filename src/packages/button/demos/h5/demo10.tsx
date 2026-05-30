@@ -198,6 +198,9 @@ const Demo10 = () => {
         <Button size="24" type="primary" style={marginStyle}>
           操作按钮
         </Button>
+        <Button size="24" type="primary" disabled style={marginStyle}>
+          操作按钮
+        </Button>
         <Button size="24" type="primary" fill="light" style={marginStyle}>
           操作按钮
         </Button>

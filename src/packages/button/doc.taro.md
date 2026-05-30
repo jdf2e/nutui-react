@@ -1,6 +1,6 @@
 # Button 按钮
 
-按钮用于触发一个操作，如提交表单。
+接收用户的点击或触摸操作，触发对应的功能或指令。帮助用户完成提交、确认、取消、跳转、删除等关键行为，是最基础、最直接的交互入口。
 
 ## 引入
 
@@ -78,7 +78,20 @@ import { Button } from '@nutui/nutui-react-taro'
 
 ### 按钮尺寸
 
-支持 `xlarge` 、 `large`、`normal`、`small`、`mini` 尺寸，默认为 `normal`。
+支持外部开源的语义化尺寸 `xlarge`、 `large`、`normal`、`small`、`mini`，以及京东内部设计规范的数字尺寸体系 `48`、`44`、`40`、`36`、`32`、`28`、`24`，默认为 `normal`。
+
+| 尺寸类别 | 京东内部数字尺寸 | 外部开源语义尺寸 | 高度 (Height) | 内边距 (Padding) | 字号 (Font-Size) | 适用场景说明 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 特定大按钮 | `48` | `xlarge` | 48px | 0 16px | 15px | 页面底部吸底操作 |
+| 页面主按钮 | `44` | **(无)** | 44px | 0 16px | 15px | 页面级主要提交、确认操作 |
+| 区块主按钮 | `40` | `large` | 40px | 0 16px | 15px | 页面局部区块内的主要操作 |
+| 常规按钮 | `36` | **(无)** | 36px | 0 12px | 14px | 常规列表或表单使用 |
+| 默认按钮 | `32` | `normal` | 32px | 0 12px | 12px | 默认的基础组件操作 |
+| 次级按钮 | `28` | `small` | 28px | 0 8px | 12px | 页面内的次级辅助操作或标签 |
+| 极小按钮 | `24` | `mini` | 24px | 0 8px | 11px | 极小空间内的特殊操作 |
+
+> [!NOTE]
+> `xlarge`、`large`、`normal`、`small`、`mini` 属于外部开源组件库通用的语义化尺寸。数字体系尺寸旨在精准贴合京东内部最新的 V16 设计规范，两者在底层互相兼容并完美复用。
 
 :::demo
 
@@ -113,7 +126,7 @@ import { Button } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按钮的尺寸 | `normal` \|`xlarge` \| `large` \| `small` \| `mini` | `normal` |
+| size | 按钮的尺寸 | `normal` \|`xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |

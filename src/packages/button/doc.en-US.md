@@ -70,7 +70,20 @@ Set the button shape through the 'shape' property, support circular, square butt
 
 ### Button size
 
-Support 'xlarge', 'large', 'normal', 'small', 'mini' sizes, the default is 'normal'.
+Supports external open-source semantic sizes `xlarge`, `large`, `normal`, `small`, `mini`, and JD internal design specification numeric sizes `48`, `44`, `40`, `36`, `32`, `28`, `24`. The default is `normal`.
+
+| Size Category | JD Internal Numeric Size | External Open-source Size | Height | Padding | Font-Size | Description |
+| --- | --- | --- | --- | --- | --- | --- |
+| Extra Large | `48` | `xlarge` | 48px | 0 16px | 15px | Page bottom sticky operations |
+| Page Main | `44` | **(None)** | 44px | 0 16px | 15px | Page-level main submit/confirm operations |
+| Block Main | `40` | `large` | 40px | 0 16px | 15px | Main operations within local blocks |
+| Regular | `36` | **(None)** | 36px | 0 12px | 14px | Used in regular lists or forms |
+| Default | `32` | `normal` | 32px | 0 12px | 12px | Default basic component interaction size |
+| Secondary | `28` | `small` | 28px | 0 8px | 12px | Secondary operations or tag-style buttons |
+| Mini | `24` | `mini` | 24px | 0 8px | 11px | Special operations in extremely small spaces |
+
+> [!NOTE]
+> `xlarge`, `large`, `normal`, `small`, and `mini` are standard semantic sizes for the external open-source community. The numeric sizes are designed to strictly match JD's internal V16 design specifications. Both systems are fully compatible and perfectly reused at the underlying level.
 
 :::demo
 
@@ -105,7 +118,7 @@ The color property allows you to customize the color of the button.
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | button size | `normal` \| `xlarge` \| `large` \| `small` | `normal` |
+| size | button size | `normal` \| `xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | button shape | `square` \| `round` | `round` |
 | color | Button color, supports linear-gradient gradient color. In outline and dashed modes, color is set. In other cases, background is set. It is recommended to use color configuration implemented by CSS variables. | `string` | `-` |
 | fill | fill pattern | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
