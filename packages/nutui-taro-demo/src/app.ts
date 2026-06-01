@@ -6,6 +6,13 @@ import('@nutui/touch-emulator')
 
 import './app.scss'
 
+// H5 开发模式下自动启动 VConsole
+if (process.env.TARO_ENV === 'h5' && process.env.NODE_ENV === 'development') {
+  import('vconsole').then(({ default: VConsole }) => {
+    new VConsole()
+  })
+}
+
 // console.log(NutUI)
 class App extends Component {
   private disposeScale?: () => void

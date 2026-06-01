@@ -112,10 +112,12 @@ export const Button = React.forwardRef<
       type={nativeType}
       className={buttonClassNames}
       style={{ ...getStyle, ...style }}
+      aria-disabled={disabled || loading}
+      aria-busy={loading}
       onClick={handleClick}
     >
       <div className="nut-button-wrap">
-        {loading && <Loading className="nut-icon-loading" />}
+        {loading && <Loading className="nut-icon-loading" aria-hidden="true" />}
         {!loading && icon}
         {children && (
           <div

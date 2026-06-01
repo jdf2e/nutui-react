@@ -131,18 +131,26 @@ export const Button = React.forwardRef<
   //   ;(rest as any).type = formType
   // }
   return (
+    // <TaroButton>
     // @ts-ignore
-    // <TaroButton
     <View
       {...rest}
       ref={ref}
       // formType={formType || nativeType}
       className={buttonClassNames}
       style={{ ...getStyle, ...style }}
+      ariaRole="button"
+      role="button"
+      ariaDisabled={disabled || loading}
+      aria-disabled={disabled || loading}
+      ariaBusy={loading}
+      aria-busy={loading}
       onClick={(e) => handleClick(e as any)}
     >
       <View className="nut-button-wrap">
-        {loading && <Loading className="nut-icon-loading" />}
+        {loading && (
+          <Loading className="nut-icon-loading" ariaHidden aria-hidden />
+        )}
         {!loading && icon}
         {children && (
           <View
