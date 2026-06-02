@@ -164,7 +164,11 @@ export const Button = React.forwardRef<
             )}
             style={harmony() ? getContStyle : {}}
           >
-            <View className="nut-button-title">{children}</View>
+            {description ? (
+              <View className="nut-button-title">{children}</View>
+            ) : (
+              children
+            )}
             {description && (
               <View className="nut-button-desc">{description}</View>
             )}

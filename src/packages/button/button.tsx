@@ -126,7 +126,11 @@ export const Button = React.forwardRef<
               'nut-button-text-right': rightIcon,
             })}
           >
-            <div className="nut-button-title">{children}</div>
+            {description ? (
+              <div className="nut-button-title">{children}</div>
+            ) : (
+              children
+            )}
             {description && (
               <div className="nut-button-desc">{description}</div>
             )}
