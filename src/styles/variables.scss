@@ -47,7 +47,7 @@ $color-primary-icon-disabled: var(
 
 // 默认色
 $color-default: var(--nutui-color-default) !default;
-$color-default-pressed: var(--nutui-color-default-pressed) !default;
+$color-default-pressed: var(--nutui-color-default-pressed, #e6e6e6) !default;
 $color-default-light: var(--nutui-color-default-light) !default;
 $color-default-disabled: var(--nutui-color-default-disabled) !default;
 
