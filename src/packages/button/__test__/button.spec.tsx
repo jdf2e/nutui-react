@@ -27,12 +27,12 @@ test('should  fill is outline', () => {
 })
 
 test('should have righticon correctly', () => {
-  const { getByText } = render(
+  const { container } = render(
     <Button data-testid="button" icon={<Star />} rightIcon={<Star />}>
       主要按钮
     </Button>
   )
-  expect(getByText('主要按钮')).toHaveClass('nut-button-text-right')
+  expect(container.querySelector('.nut-button-text-right')).toBeInTheDocument()
 })
 
 test('should props color when use fill correctly', () => {
@@ -96,4 +96,67 @@ test('should fireEvent correctly', () => {
   expect(container.querySelector('.nut-button')).toHaveClass(
     'nut-button-loading'
   )
+})
+test('should render description correctly', () => {
+  const { container, getByText } = render(
+    <Button size="48" description="副文本">
+      主要按钮
+    </Button>
+  )
+  expect(container.querySelector('.nut-button')).toHaveClass(
+    'nut-button-xlarge'
+  )
+  expect(container.querySelector('.nut-button')).toHaveClass(
+    'nut-button-has-desc'
+  )
+  expect(getByText('副文本')).toBeInTheDocument()
+  expect(container.querySelector('.nut-button-desc')).toBeInTheDocument()
+})
+
+test('should map sizes correctly', () => {
+  const { container } = render(
+    <>
+      <Button size="44">44</Button>
+      <Button size="36">36</Button>
+      <Button size="28">28</Button>
+    </>
+  )
+  expect(container.querySelectorAll('.nut-button')[0]).toHaveClass(
+    'nut-button-44'
+  )
+  expect(container.querySelectorAll('.nut-button')[1]).toHaveClass(
+    'nut-button-36'
+  )
+  expect(container.querySelectorAll('.nut-button')[2]).toHaveClass(
+    'nut-button-small'
+  )
+})
+
+test('should render service and primary-light correctly', () => {
+  const { container } = render(
+    <>
+      <Button type="service">Service</Button>
+      <Button type="primary" fill="light">
+        Light
+      </Button>
+    </>
+  )
+  expect(container.querySelectorAll('.nut-button')[0]).toHaveClass(
+    'nut-button-service'
+  )
+  expect(container.querySelectorAll('.nut-button')[1]).toHaveClass(
+    'nut-button-primary-light'
+  )
+})
+
+test('should only render nut-button-title when description is present', () => {
+  const { container: withDesc } = render(
+    <Button description="辅助描述">有描述</Button>
+  )
+  expect(withDesc.querySelector('.nut-button-title')).toBeInTheDocument()
+  expect(withDesc.querySelector('.nut-button-desc')).toBeInTheDocument()
+
+  const { container: withoutDesc } = render(<Button>无描述</Button>)
+  expect(withoutDesc.querySelector('.nut-button-title')).not.toBeInTheDocument()
+  expect(withoutDesc.querySelector('.nut-button-desc')).not.toBeInTheDocument()
 })

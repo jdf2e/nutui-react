@@ -18,13 +18,13 @@ page {
   --nutui-brand-stop-2: #ff0f23; // 渐变色止
 
   // service color
-  --nutui-golden-1: #fff4e8;
-  --nutui-golden-2: rgba(181, 105, 26, 0.02);
-  --nutui-golden-3: rgba(181, 105, 26, 0.2);
-  --nutui-golden-4: #b5691a;
-  --nutui-golden-5: #ffe7cc;
-  --nutui-golden-6: #ffd8ad;
-  --nutui-golden-7: #664100;
+  --nutui-golden-1: #fff4e0;
+  --nutui-golden-2: #f2ba79;
+  --nutui-golden-3: #ccb9ab;
+  --nutui-golden-4: #80512d;
+  --nutui-golden-5: #ffe6c2;
+  --nutui-golden-6: #ffddad;
+  --nutui-golden-7: #fff4e8;
 
   --nutui-golden-stop-1: #fff9f0;
   --nutui-golden-stop-2: #ffe3c2;
@@ -37,17 +37,17 @@ page {
   // danger color 发现不一致TODO
 
   // red color
-  --nutui-red-1: #fff0f4;
-  --nutui-red-2: #ffd6e1;
-  --nutui-red-3: #ffadbe;
-  --nutui-red-4: #ff8595;
-  --nutui-red-5: #ff5c67;
-  --nutui-red-6: #ff3333;
-  --nutui-red-7: #e53029;
-  --nutui-red-8: #cc2c21;
-  --nutui-red-9: #992412;
-  --nutui-red-10: #661b08;
-  --nutui-red-11: #330f02;
+  --nutui-red-1: var(--nutui-brand-1);
+  --nutui-red-2: var(--nutui-brand-2);
+  --nutui-red-3: var(--nutui-brand-3);
+  --nutui-red-4: var(--nutui-brand-4);
+  --nutui-red-5: var(--nutui-brand-5);
+  --nutui-red-6: var(--nutui-brand-6);
+  --nutui-red-7: var(--nutui-brand-7);
+  --nutui-red-8: var(--nutui-brand-8);
+  --nutui-red-9: var(--nutui-brand-9);
+  --nutui-red-10: var(--nutui-brand-10);
+  --nutui-red-11: var(--nutui-brand-11);
 
   // warning color
   --nutui-yellow-1: #fffbe6;
@@ -65,20 +65,20 @@ page {
   // 卡片背景色
   --nutui-gray-1: #ffffff;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-2: #f5f6fa;
+  --nutui-gray-2: #f0f2f7;
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-  --nutui-gray-3: #f2f3f7;
+  --nutui-gray-3: #f2f4f7;
   // 组件背景色，2025年新增
   --nutui-gray-9: #f5f6fa;
   // 文字色
   // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-  --nutui-gray-4: #c2c4cc;
+  --nutui-gray-4: #b4b8bf;
   // 三级文字色（次要）
-  --nutui-gray-5: #828794;
+  --nutui-gray-5: #8d9199;
   // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
-  --nutui-gray-6: #3d414d;
+  --nutui-gray-6: #5a5e66;
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-  --nutui-gray-7: #171a26;
+  --nutui-gray-7: #11141a;
   // icon 未选中颜色
   --nutui-gray-8: #dadce0;
 
@@ -104,6 +104,12 @@ page {
   --nutui-black-12: rgba(0, 0, 0, 0.9);
   --nutui-black-13: rgba(0, 0, 0, 1);
 
+  // mask 梯度
+  --nutui-mask-1: rgba(17, 20, 26, 0.02);
+  --nutui-mask-2: rgba(17, 20, 26, 0.08);
+  --nutui-mask-3: rgba(17, 20, 26, 0.2);
+  --nutui-mask-4: rgba(17, 20, 26, 0.7);
+
   --nutui-white-1: rgba(255, 255, 255, 0);
   --nutui-white-2: rgba(255, 255, 255, 0.02);
   --nutui-white-3: rgba(255, 255, 255, 0.05);
@@ -122,45 +128,37 @@ page {
   // 品牌主色调默认态，主要功能控件的背景、边框、镂空状态下的文字等
   --nutui-color-primary: var(--nutui-brand-6);
   // 品牌渐变色左端
-  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1); // TODO 删掉
   // 品牌渐变色右端
-  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2); // TODO 删掉
   // 品牌主色调或其他深色背景下的文字
-  --nutui-color-primary-text: var(--nutui-color-background-gray-1);
+  --nutui-color-primary-text: var(--nutui-gray-1);// TODO white
   // 品牌主色调点击态，背景、边框、镂空状态下的文字
   --nutui-color-primary-pressed: var(--nutui-red-7);
   // 品牌主色调禁用态，背景、边框、镂空状态下的文字
-  --nutui-color-primary-disabled: var(--nutui-color-content-gray-1);
+  --nutui-color-primary-disabled: var(--nutui-gray-4);
   // 品牌主色调特殊禁用态，通过操作后可转位默认态
   --nutui-color-primary-disabled-special: var(--nutui-red-3);
   // 2025 新增
   --nutui-color-primary-light: var(--nutui-brand-1);
   // 品牌主色调镂空背景点击态
   --nutui-color-primary-light-pressed: var(--nutui-red-2);
-  // 看上去命名和上边重复，去掉
-  // --nutui-color-primary-specialdisabled: var(--nutui-red-3);
 
   // service color 语义化
   // 金色背景
   --nutui-color-service: var(--nutui-golden-1);
-  // 填充标签边框
-  --nutui-color-service-border-1: var(--nutui-golden-2);
-  // 线框标签边框
-  --nutui-color-service-border-2: var(--nutui-golden-3);
-  // 废弃
-  //   --nutui-color-service-border: var(--nutui-golden-2);
-  --nutui-color-service-pressed: var(--nutui-golden-4);
+  // 深背景
+  --nutui-color-service-pressed: var(--nutui-golden-2);
+  // 边框
+  --nutui-color-service-border: var(--nutui-golden-3);
   // 金色文字
   --nutui-color-service-text: var(--nutui-golden-4);
   // 金色按钮背景
   --nutui-color-service-btn-bg: var(--nutui-golden-5);
   // 金色按钮点击态背景
   --nutui-color-service-btn-bg-pressed: var(--nutui-golden-6);
-  // 金色按钮文字
-  --nutui-color-service-btn-text: var(--nutui-golden-7);
-
-  --nutui-color-service-stop-1: var(--nutui-golden-stop-1);
-  --nutui-color-service-stop-2: var(--nutui-golden-stop-2);
+  // 金色按钮不可点击态背景
+  --nutui-color-service-btn-bg-disabled: var(--nutui-golden-7);
 
   // success color 语义化
   --nutui-color-success: var(--nutui-green-2); // 深背景/图形
@@ -170,7 +168,7 @@ page {
   // danger color 语义化，待办，看上去目前非常的独立 TODO
   --nutui-color-danger: var(--nutui-red-2); // 背景或文字
   --nutui-color-danger-light: var(--nutui-red-1); // 背景
-  --nutui-color-danger-pressed: var(--nutui-red-1); // 文字
+  --nutui-color-danger-pressed: var(--nutui-red-3); // 文字
 
   // info color 语义化
   --nutui-color-info: var(--nutui-blue-2); // 深背景/图形
@@ -184,50 +182,38 @@ page {
   --nutui-color-warning-pressed: var(--nutui-yellow-3); // 文字
 
   // 文字颜色值 语义化
-  --nutui-color-content-gray-1: var(--nutui-gray-4);
-  --nutui-color-content-gray-2: var(--nutui-gray-5);
-  --nutui-color-content-gray-3: var(--nutui-gray-6);
-  --nutui-color-content-gray-4: var(--nutui-gray-7);
   // 一级文字色（重要）
-  --nutui-color-title: var(--nutui-color-content-gray-4);
+  --nutui-color-title: var(--nutui-gray-7);
   // 二级文字色或可操作用色（常规）
-  --nutui-color-text: var(--nutui-color-content-gray-3);
+  --nutui-color-text: var(--nutui-gray-6);
   // 三级文字色（次要）
-  --nutui-color-text-help: var(--nutui-color-content-gray-2);
+  --nutui-color-text-help: var(--nutui-gray-5);
   // 四级文字色（不可操作）
-  --nutui-color-text-disabled: var(--nutui-color-content-gray-1);
+  --nutui-color-text-disabled: var(--nutui-gray-4);
 
   // 背景颜色值 语义化
-  --nutui-color-background-gray-1: var(--nutui-gray-1);
-  --nutui-color-background-gray-2: var(--nutui-gray-2);
-  --nutui-color-background-gray-3: var(--nutui-gray-3);
-  --nutui-color-background-gray-4: var(--nutui-gray-9);
   // 页面背景
-  --nutui-color-background: var(--nutui-color-background-gray-3);
+  --nutui-color-background: var(--nutui-gray-3);
   // 卡片背景
-  --nutui-color-background-overlay: var(--nutui-color-background-gray-1);
+  --nutui-color-background-overlay: var(--nutui-gray-1); // TODO 当前定义为 white
   // 卡片内容器背景
-  --nutui-color-background-sunken: var(--nutui-color-background-gray-2);
+  --nutui-color-background-sunken: var(--nutui-gray-2); // TODO 待判断是否还存在
   // 组件背景，2025年新增
-  --nutui-color-background-component: var(--nutui-color-background-gray-4);
+  --nutui-color-background-component: var(--nutui-gray-2);
 
   // 蒙层颜色值 语义化
-  --nutui-color-mask-gray-1: var(--nutui-black-2);
-  --nutui-color-mask-gray-2: var(--nutui-black-7);
-  --nutui-color-mask-gray-3: var(--nutui-black-10);
   // 全部蒙层
-  --nutui-color-mask: var(--nutui-color-mask-gray-3);
+  --nutui-color-mask: var(--nutui-mask-4);
   // 局部弹层
-  --nutui-color-mask-part: var(--nutui-color-mask-gray-2);
+  --nutui-color-mask-part: var(--nutui-mask-3);
   // 容错弹层
-  --nutui-color-mask-fault-toleran: var(--nutui-color-mask-gray-1);
+  --nutui-color-mask-fault-toleran: var(--nutui-mask-1);
 
   // 线颜色值 语义化
-  --nutui-color-line-gray-1: var(--nutui-black-3);
   // 间隔线或容错线
-  --nutui-color-border: var(--nutui-color-line-gray-1);
+  --nutui-color-border: var(--nutui-mask-2);
   // 组件边框禁用色
-  --nutui-color-border-disabled: var(--nutui-color-content-gray-1);
+  --nutui-color-border-disabled: var(--nutui-gray-4);
 
   // 字体 ok
   --nutui-font-size-8: calc(8px * var(--nut-scale-font, var(--nut-scale-f, 1)));
@@ -253,25 +239,25 @@ page {
   // 字号语义化
   // 徽标文字
   --nutui-font-size-xxxs: var(--nutui-font-size-9);
-  // 标签内文字
+  // 标签文字；标签内金额
   --nutui-font-size-xxs: var(--nutui-font-size-10);
-  // 导购或信息密集的次要内容、辅助信息
+  // 次要注解；搭配同字号汉字或币种符号、角分
   --nutui-font-size-xs: var(--nutui-font-size-11);
-  // 汉字：次要内容、辅助类信息 数字：羊角符号、小数点及角分
-  --nutui-font-size-s: var(--nutui-font-size-12);
+  // 辅助说明；狭小空间商品价格
+  --nutui-font-size-s: var(--nutui-font-size-13);
   --nutui-font-size-m: var(--nutui-font-size-13);
-  // 标准内容、名称类关键信息
+  // 正文；普通商卡价格
   --nutui-font-size-base: var(--nutui-font-size-14);
-  // 汉字：楼层标题、卡片标题 数字：重复型价格，如搜推商卡
-  --nutui-font-size-l: var(--nutui-font-size-15);
+  // 楼层标题；重复型主价格（搜推、交易、订单）
+  --nutui-font-size-l: var(--nutui-font-size-16);
   // l(15) 与 xl(18) 之间，价格整数 normal 等（16px，字阶缩放）
   --nutui-font-size-md: var(--nutui-font-size-16);
   --nutui-font-size-icon: var(--nutui-font-size-16);
-  // 汉字：页面标题、页面级最重要内容 数字：模块级主价格，如购物车、结算、底导
+  // 页面标题；模块级总价格（购物车、结算底部条）
   --nutui-font-size-xl: var(--nutui-font-size-18);
   // xl(18) 与 xxl(24) 之间（20px）
   --nutui-font-size-2xl: var(--nutui-font-size-20);
-  // 数字：页面级主价格，如商详、收银台
+  // 页面级重要价格（商详、收银台）
   --nutui-font-size-xxl: var(--nutui-font-size-24);
   // zanwu
   --nutui-font-size-xxxl: var(--nutui-font-size-26);
@@ -368,20 +354,30 @@ page {
   --nutui-radius-24: calc(24px * var(--nut-scale-f, 1));
 
   // radius 语义化
-  // 内容描述型的详情页面通栏结构
-  --nutui-radius-xxxs: var(--nutui-radius-0);
+  --nutui-radius-xxxs: var(--nutui-radius-0); // zanwu
+  // 平台型页面通栏卡片结构
+  --nutui-radius-xxs: var(--nutui-radius-0);
   // 标签
-  --nutui-radius-xxs: var(--nutui-radius-2);
-  // 单行高度20、24、28的组件
-  --nutui-radius-xs: var(--nutui-radius-4);
-  // 单行高度32、36的组件
-  --nutui-radius-s: var(--nutui-radius-6);
-  // 单行高度40及以上的组件
-  --nutui-radius-base: var(--nutui-radius-8);
-  // 入口型非通栏卡片
+  --nutui-radius-xs: var(--nutui-radius-2);
+  // 单行高度20至24的组件
+  --nutui-radius-s: var(--nutui-radius-4);
+  // 单行高度28至36的组件
+  --nutui-radius-base: var(--nutui-radius-6);
+  // 导购型页面卡片结构/单行高度40及以上的组件
   --nutui-radius-l: var(--nutui-radius-8);
-  // 结构分割、通栏卡片、临时操作层组件等场景
+  // 顶导/吐司提示等悬浮层小面积组件
   --nutui-radius-xl: var(--nutui-radius-12);
-  --nutui-radius-xxl: var(--nutui-radius-14); // zanwu
+  // 弹层/弹窗/底导等悬浮层中大面积组件
+  --nutui-radius-xxl: var(--nutui-radius-16);
   --nutui-radius-xxxl: var(--nutui-radius-16); // zanwu
+
+  // line-width 梯度
+  --nutui-line-1: calc(1px * var(--nut-scale-f, 1));
+  --nutui-line-2: calc(1.5px * var(--nut-scale-f, 1));
+
+  // line 语义化
+  // 标签边框
+  --nutui-line-tag: var(--nutui-line-1);
+  // 间隔线/组件边框
+  --nutui-line-component: var(--nutui-line-2);
 }

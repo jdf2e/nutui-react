@@ -27,9 +27,7 @@ exports[`should match snapshot 1`] = `
             style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
-              aria-labelledby="ArrowDown"
               class="nut-icon nut-icon-ArrowDown "
-              role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -77,9 +75,7 @@ exports[`should match snapshot 1`] = `
             style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
-              aria-labelledby="ArrowDown"
               class="nut-icon nut-icon-ArrowDown "
-              role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -127,9 +123,7 @@ exports[`should match snapshot 1`] = `
             style="transform: translateY(-50%);"
           >
             <svg
-              aria-labelledby="ArrowDown"
               class="nut-icon nut-icon-ArrowDown "
-              role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
             >

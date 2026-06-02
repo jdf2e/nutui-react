@@ -1,3 +1,34 @@
+@mixin button-size(
+  $height,
+  $padding,
+  $font-size,
+  $radius,
+  $text-icon-margin: null
+) {
+  height: $height;
+  padding: $padding;
+  font-size: $font-size;
+  border-radius: $radius;
+
+  @if $text-icon-margin {
+    .nut-button-text {
+      margin-left: $text-icon-margin;
+      &-right {
+        margin-right: $text-icon-margin;
+      }
+    }
+  }
+
+  .nut-icon {
+    font-size: $font-size;
+    width: $font-size;
+    height: $font-size;
+  }
+  &-children {
+    font-size: $font-size;
+  }
+}
+
 .nut-button {
   position: relative;
   display: flex;
@@ -95,9 +126,20 @@
     }
   }
 
-  &-disabled {
+  &.nut-button-disabled {
     cursor: not-allowed;
-    color: #ffffff;
+
+    // 不带色彩的纯灰禁用 (配合 className 使用)
+    &.nut-button-disabled-gray {
+      background: var(--nutui-button-disabled-background-color, #ccc);
+      color: #fff;
+      border-color: var(--nutui-button-disabled-background-color, #ccc);
+      opacity: 1;
+
+      .nut-button-desc {
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
   }
 
   &.nut-button-icononly {
@@ -135,290 +177,303 @@
         border-color: $button-default-disabled;
       }
     }
+
+    &:active:not(.nut-button-disabled):not(.nut-button-loading) {
+      background: $button-default-pressed;
+    }
   }
 
   &-normal {
     padding: $button-normal-padding;
+    min-width: scale-px(60px);
+  }
+
+  &-has-desc {
+    .nut-button-text,
+    .nut-button-children {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+    }
+    .nut-button-title {
+      font-size: scale-font-px(14px);
+      font-weight: $font-weight-bold;
+    }
+    .nut-button-desc {
+      font-size: scale-font-px(12px);
+      font-weight: $font-weight;
+      opacity: 0.8;
+      margin-top: scale-px(2px);
+    }
   }
 
   &-xlarge {
-    height: $button-xlarge-height;
-    padding: $button-xlarge-padding;
-    font-size: $button-xlarge-font-size;
-    border-radius: $button-xlarge-border-radius;
-
-    .nut-button-text {
-      margin-left: $button-xlarge-text-icon-margin;
-      &-right {
-        margin-right: $button-xlarge-text-icon-margin;
-      }
-    }
-
-    .nut-icon {
-      font-size: $button-xlarge-font-size;
-      width: $button-xlarge-font-size;
-      height: $button-xlarge-font-size;
-    }
-    &-children {
-      font-size: $button-xlarge-font-size;
-    }
-  }
-
-  &-large {
-    height: $button-large-height;
-    padding: $button-large-padding;
-    font-size: $button-large-font-size;
-    border-radius: $button-large-border-radius;
-
-    .nut-button-text {
-      margin-left: $button-xlarge-text-icon-margin;
-      &-right {
-        margin-right: $button-xlarge-text-icon-margin;
-      }
-    }
-
-    .nut-icon {
-      font-size: $button-large-font-size;
-      width: $button-large-font-size;
-      height: $button-large-font-size;
-    }
-
-    &-children {
-      font-size: $button-large-font-size;
-    }
-  }
-
-  &-small {
-    height: $button-small-height;
-    padding: $button-small-padding;
-    font-size: $button-small-font-size;
-    border-radius: $button-small-border-radius;
-
-    .nut-icon {
-      font-size: $button-small-font-size;
-      width: $button-small-font-size;
-      height: $button-small-font-size;
-    }
-
-    &-children {
-      font-size: $button-small-font-size;
-    }
-  }
-
-  &-mini {
-    height: $button-mini-height;
-    padding: $button-mini-padding;
-    font-size: $button-mini-font-size;
-    border-radius: $button-mini-border-radius;
-
-    .nut-icon {
-      font-size: $button-mini-font-size;
-      width: $button-mini-font-size;
-      height: $button-mini-font-size;
-    }
-
-    &-children {
-      font-size: $button-mini-font-size;
-    }
-  }
-
-  &-primary {
-    color: $button-primary-color;
-    background-origin: border-box;
-    border-color: transparent;
-
-    &-children {
-      color: $button-primary-color;
-    }
-
-    &-solid {
-      background: $button-primary-background-color;
-      color: $button-primary-color;
-      border-color: transparent;
-      font-weight: $font-weight-bold;
-      &.nut-button-small,
-      &.nut-button-mini {
-        font-weight: $font-weight;
-      }
-    }
-
-    &-disabled,
-    &-disabled.nut-button-icononly,
-    &-solid-disabled {
-      color: $button-primary-color;
-      background: $button-primary-disabled;
-      border-color: $button-primary-disabled;
-    }
-
-    &-none {
-      color: $button-primary-border-color;
-
-      &-disabled {
-        color: $button-primary-disabled;
-      }
-    }
-
-    &-outline {
-      color: $button-primary-border-color;
-      border-color: $button-primary-border-color;
-
-      &-disabled {
-        color: $button-primary-disabled;
-        border-color: $button-primary-disabled;
-      }
-    }
-
-    &-dashed {
-      color: $button-primary-border-color;
-      border-color: $button-primary-border-color;
-
-      &-disabled {
-        color: $button-primary-disabled;
-        border-color: $button-primary-disabled;
-      }
-    }
-  }
-  &-primary.nut-button-solid.nut-button-normal {
+    @include button-size(
+      $button-xlarge-height,
+      $button-xlarge-padding,
+      $button-xlarge-font-size,
+      $button-xlarge-border-radius,
+      $button-xlarge-text-icon-margin
+    );
     font-weight: $font-weight-bold;
   }
 
-  &-success {
-    color: $button-success-color;
-    background: $button-success-background-color;
-    background-origin: border-box;
-    border-color: transparent;
-
-    &-children {
-      color: $button-success-color;
-    }
-
-    &-disabled,
-    &-solid-disabled {
-      background: $button-success-disabled;
-      border-color: $button-success-disabled;
-    }
-
-    &-outline,
-    &-dashed {
-      color: $button-success-border-color;
-      border-color: $button-success-border-color;
-
-      &-disabled {
-        color: $button-primary-disabled;
-        border-color: $button-primary-disabled;
-      }
-    }
-
-    &-none {
-      color: $button-success-border-color;
-      &-disabled {
-        color: $button-success-disabled;
-      }
-    }
+  &-44 {
+    @include button-size(
+      $button-44-height,
+      $button-44-padding,
+      $button-44-font-size,
+      $button-44-border-radius,
+      $button-xlarge-text-icon-margin
+    );
+    font-weight: $font-weight-bold;
   }
 
-  &-info {
-    color: $button-info-color;
-    background: $button-info-background-color;
-    background-origin: border-box;
-    border-color: transparent;
-
-    &-children {
-      color: $button-info-color;
-    }
-
-    &-disabled,
-    &-solid-disabled {
-      background: $button-info-disabled;
-      border-color: $button-info-disabled;
-    }
-
-    &-outline,
-    &-dashed {
-      color: $button-info-border-color;
-      border-color: $button-info-border-color;
-
-      &-disabled {
-        color: $button-info-disabled;
-        border-color: $button-info-disabled;
-      }
-    }
-
-    &-none {
-      color: $button-info-border-color;
-      &-disabled {
-        color: $button-info-disabled;
-      }
-    }
+  &-large {
+    @include button-size(
+      $button-large-height,
+      $button-large-padding,
+      $button-large-font-size,
+      $button-large-border-radius,
+      $button-xlarge-text-icon-margin
+    );
+    min-width: scale-px(84px);
   }
 
-  &-danger {
-    color: $button-danger-color;
-    background: $button-danger-background-color;
-    background-origin: border-box;
-    border-color: transparent;
-
-    &-children {
-      color: $button-danger-color;
-    }
-
-    &-disabled,
-    &-solid-disabled {
-      background: $button-danger-disabled;
-      border-color: $button-danger-disabled;
-    }
-
-    &-outline,
-    &-dashed {
-      color: $button-danger-border-color;
-      border-color: $button-danger-border-color;
-
-      &-disabled {
-        color: $button-danger-disabled;
-        border-color: $button-danger-disabled;
-      }
-    }
-
-    &-none {
-      color: $button-danger-border-color;
-      &-disabled {
-        color: $button-danger-disabled;
-      }
-    }
+  &-36 {
+    @include button-size(
+      $button-36-height,
+      $button-36-padding,
+      $button-36-font-size,
+      $button-36-border-radius,
+      $button-xlarge-text-icon-margin
+    );
+    min-width: scale-px(66px);
   }
 
-  &-warning {
-    color: $button-warning-color;
-    background: $button-warning-background-color;
-    background-origin: border-box;
-    border-color: transparent;
+  &-small {
+    @include button-size(
+      $button-small-height,
+      $button-small-padding,
+      $button-small-font-size,
+      $button-small-border-radius
+    );
+    min-width: scale-px(52px);
+    font-weight: $font-weight;
+  }
 
-    &-children {
-      color: $button-warning-color;
-    }
+  &-mini {
+    @include button-size(
+      $button-mini-height,
+      $button-mini-padding,
+      $button-mini-font-size,
+      $button-mini-border-radius
+    );
+    min-width: scale-px(48px);
+    font-weight: $font-weight;
+  }
 
-    &-disabled,
-    &-solid-disabled {
-      color: $button-warning-color;
-      background: $button-warning-disabled;
-      border-color: $button-warning-disabled;
-    }
+  $button-colors: (
+    'primary': (
+      $button-primary-color,
+      $button-primary-background-color,
+      $button-primary-border-color,
+      $button-primary-border-color,
+      $button-primary-disabled,
+      $button-primary-color,
+      $button-primary-disabled,
+      $button-primary-disabled,
+      $button-primary-disabled,
+      null,
+      $button-primary-pressed,
+    ),
+    'success': (
+      $button-success-color,
+      $button-success-background-color,
+      $button-success-border-color,
+      $button-success-border-color,
+      $button-success-disabled,
+      $button-success-color,
+      $button-primary-disabled,
+      $button-primary-disabled,
+      $button-success-disabled,
+      null,
+      $button-success-pressed,
+    ),
+    'info': (
+      $button-info-color,
+      $button-info-background-color,
+      $button-info-border-color,
+      $button-info-border-color,
+      $button-info-disabled,
+      $button-info-color,
+      $button-info-disabled,
+      $button-info-disabled,
+      $button-info-disabled,
+      null,
+      $button-info-pressed,
+    ),
+    'danger': (
+      $button-danger-color,
+      $button-danger-background-color,
+      $button-danger-border-color,
+      $button-danger-border-color,
+      $button-danger-disabled,
+      $button-danger-color,
+      $button-danger-disabled,
+      $button-danger-disabled,
+      $button-danger-disabled,
+      null,
+      $button-danger-pressed,
+    ),
+    'warning': (
+      $button-warning-color,
+      $button-warning-background-color,
+      $button-warning-border-color,
+      $button-warning-border-color,
+      $button-warning-disabled,
+      $button-warning-color,
+      $button-warning-disabled,
+      $button-warning-disabled,
+      $button-warning-disabled,
+      null,
+      $button-warning-pressed,
+    ),
+    'service': (
+      $button-service-color,
+      $button-service-background-color,
+      $button-service-color,
+      $button-service-border-color,
+      $button-service-disabled,
+      $button-service-color,
+      $button-service-color,
+      $button-service-disabled,
+      $button-service-color,
+      0.5,
+      $button-service-pressed,
+    ),
+  );
 
-    &-outline,
-    &-dashed {
-      color: $button-warning-border-color;
-      border-color: $button-warning-border-color;
+  @each $type, $colors in $button-colors {
+    $text-color: nth($colors, 1);
+    $bg-color: nth($colors, 2);
+    $outline-text-color: nth($colors, 3);
+    $outline-border-color: nth($colors, 4);
+    $disabled-bg: nth($colors, 5);
+    $disabled-text-color: nth($colors, 6);
+    $outline-disabled-text-color: nth($colors, 7);
+    $outline-disabled-border-color: nth($colors, 8);
+    $none-disabled-text-color: nth($colors, 9);
+    $opacity-disabled: nth($colors, 10);
+    $pressed-bg: nth($colors, 11);
 
-      &-disabled {
-        color: $button-warning-disabled;
-        border-color: $button-warning-disabled;
+    &-#{$type} {
+      color: $text-color;
+      background: $bg-color;
+      background-origin: border-box;
+      border-color: transparent;
+
+      &-children {
+        color: $text-color;
       }
-    }
 
-    &-none {
-      color: $button-warning-border-color;
-      &-disabled {
-        color: $button-warning-disabled;
+      &-disabled,
+      &-solid-disabled {
+        @if $opacity-disabled {
+          opacity: $opacity-disabled;
+        }
+        color: $disabled-text-color;
+        background: $disabled-bg;
+        border-color: $disabled-bg;
+      }
+
+      &-outline,
+      &-dashed {
+        color: $outline-text-color;
+        border-color: $outline-border-color;
+
+        .nut-button-#{$type}-children {
+          color: $outline-text-color;
+        }
+
+        &-disabled {
+          @if $opacity-disabled {
+            opacity: $opacity-disabled;
+          }
+          color: $outline-disabled-text-color;
+          border-color: $outline-disabled-border-color;
+
+          .nut-button-#{$type}-children {
+            color: $outline-disabled-text-color;
+          }
+        }
+      }
+
+      &-none {
+        color: $outline-text-color;
+
+        .nut-button-#{$type}-children {
+          color: $outline-text-color;
+        }
+
+        &-disabled {
+          @if $opacity-disabled {
+            opacity: $opacity-disabled;
+          }
+          color: $none-disabled-text-color;
+
+          .nut-button-#{$type}-children {
+            color: $none-disabled-text-color;
+          }
+        }
+      }
+
+      // pressed / active states
+      &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+          .nut-button-outline
+        ):not(.nut-button-dashed) {
+        background: $pressed-bg;
+      }
+
+      @if $type == 'primary' {
+        &-solid {
+          font-weight: $font-weight-bold;
+          &.nut-button-small,
+          &.nut-button-mini {
+            font-weight: $font-weight;
+          }
+        }
+
+        &.nut-button-solid.nut-button-normal {
+          font-weight: $font-weight-bold;
+        }
+
+        &-light {
+          color: $button-primary-light-color;
+          background: $button-primary-light-background-color;
+          border-color: $button-primary-light-border-color;
+
+          .nut-button-primary-children {
+            color: $button-primary-light-color;
+          }
+
+          &-disabled {
+            opacity: 0.5;
+
+            .nut-button-primary-children {
+              color: $button-primary-light-color;
+            }
+          }
+
+          // press state for primary-light
+          &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+              .nut-button-outline
+            ):not(.nut-button-dashed) {
+            background: $color-primary-light-pressed;
+          }
+        }
       }
     }
   }
@@ -469,4 +524,11 @@
     right: 50%;
     transform: translate(50%, -50%);
   }
+}
+
+.nut-theme-dark {
+  // button primary-light
+  --nutui-button-primary-light-color: var(--nutui-color-primary);
+  --nutui-button-primary-light-background-color: rgba(250, 44, 25, 0.15);
+  --nutui-button-primary-light-border-color: transparent;
 }

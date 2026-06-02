@@ -3,7 +3,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "./src/vite-env.d.ts"
   ],
   "exclude": [
     "./node_modules",

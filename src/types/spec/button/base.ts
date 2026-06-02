@@ -14,6 +14,7 @@ export interface BaseButton extends BaseProps {
   disabled: boolean
   icon: ReactNode
   rightIcon: ReactNode
+  description?: ReactNode
   id: string
   nativeType: 'submit' | 'reset' | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void

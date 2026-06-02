@@ -9,11 +9,8 @@ exports[`should render description correctly 1`] = `
       class="nut-resultpage-icon"
     >
       <svg
-        aria-labelledby="Tips"
         class="nut-icon nut-icon-Tips "
-        color="#0073FF"
-        role="presentation"
-        style="color: #0073FF;"
+        color="var(--nutui-color-info, #0c82f7)"
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
       >
