@@ -505,6 +505,19 @@ $button-primary-light-border-color: var(
   transparent
 ) !default;
 
+$button-primary-light-color: var(
+  --nutui-button-primary-light-color,
+  $button-primary-background-color
+) !default;
+$button-primary-light-background-color: var(
+  --nutui-button-primary-light-background-color,
+  rgba(250, 44, 25, 0.1)
+) !default;
+$button-primary-light-border-color: var(
+  --nutui-button-primary-light-border-color,
+  transparent
+) !default;
+
 $button-text-icon-margin: var(--nutui-button-text-icon-margin, scale-px(4px)) !default;
 
 // cell（✅）

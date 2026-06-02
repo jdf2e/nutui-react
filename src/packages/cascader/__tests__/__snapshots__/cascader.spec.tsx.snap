@@ -69,7 +69,7 @@ exports[`Cascader > visible true 1`] = `
         >
           <div
             class="nut-tabs-content"
-            style="transform: translate3d(-200%, 0, 0); transition-duration: 300ms;"
+            style="transform: translate3d(-200%,0,0); transition-duration: 300ms;"
           >
             <div
               class="nut-tabpane"
