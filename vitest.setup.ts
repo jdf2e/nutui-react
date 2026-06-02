@@ -39,15 +39,35 @@ function isElement(value: unknown): value is Element {
 // 标记已经 strip 过的克隆节点，避免再次进入 serializer 造成无限递归
 const STRIPPED_NODES = new WeakSet<Element>()
 
-function stripAriaInPlace(node: Element): void {
-  Array.from(node.attributes).forEach((attr) => {
+/**
+ * 递归清洗克隆节点：
+ * 1. 剥离所有的无障碍（aria-*）相关属性与 role 属性。
+ * 2. 修复 Happy DOM 的 cloneNode 副作用：
+ *    - Happy DOM 在克隆节点时会自作聪明地为某些元素补上默认属性（如为克隆的 input 补上 formaction/formmethod，或为部分节点补上 style=""）。
+ *    - 我们通过与 originalNode（原始 DOM 节点）进行对比，如果克隆节点上多出了原始节点原本没有的非 Aria 属性，直接将其移除，确保快照干净、无污染。
+ */
+function stripAriaAndFixClone(node: Element, originalNode: Element): void {
+  const attrs = Array.from(node.attributes)
+  attrs.forEach((attr) => {
     if (isAriaAttribute(attr.name)) {
+      // 移除无障碍属性
+      node.removeAttribute(attr.name)
+    } else if (!originalNode.hasAttribute(attr.name)) {
+      // 移除 Happy DOM 克隆时多出来的默认伴随属性
       node.removeAttribute(attr.name)
     }
   })
-  Array.from(node.children).forEach((child) =>
-    stripAriaInPlace(child as Element)
-  )
+  const children = Array.from(node.children)
+  const originalChildren = Array.from(originalNode.children)
+  for (let i = 0; i < children.length; i++) {
+    if (children[i] && originalChildren[i]) {
+      // 双指针递归清洗子节点
+      stripAriaAndFixClone(
+        children[i] as Element,
+        originalChildren[i] as Element
+      )
+    }
+  }
 }
 
 expect.addSnapshotSerializer({
@@ -58,7 +78,7 @@ expect.addSnapshotSerializer({
   },
   serialize(value: Element, config, indentation, depth, refs, printer) {
     const clone = value.cloneNode(true) as Element
-    stripAriaInPlace(clone)
+    stripAriaAndFixClone(clone, value)
     STRIPPED_NODES.add(clone)
     Array.from(clone.querySelectorAll('*')).forEach((descendant) =>
       STRIPPED_NODES.add(descendant as Element)
