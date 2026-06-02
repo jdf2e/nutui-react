@@ -12,9 +12,7 @@ exports[`size test 1`] = `
         class="nut-rate-item-icon nut-rate-item-icon-disabled"
       >
         <svg
-          aria-labelledby="StarFill"
           class="nut-icon nut-icon-StarFill "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >

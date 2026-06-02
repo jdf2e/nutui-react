@@ -132,19 +132,31 @@ test('should map sizes correctly', () => {
   )
 })
 
-test('should render golden and primary-light correctly', () => {
+test('should render service and primary-light correctly', () => {
   const { container } = render(
     <>
-      <Button type="golden">Golden</Button>
+      <Button type="service">Service</Button>
       <Button type="primary" fill="light">
         Light
       </Button>
     </>
   )
   expect(container.querySelectorAll('.nut-button')[0]).toHaveClass(
-    'nut-button-golden'
+    'nut-button-service'
   )
   expect(container.querySelectorAll('.nut-button')[1]).toHaveClass(
     'nut-button-primary-light'
   )
+})
+
+test('should only render nut-button-title when description is present', () => {
+  const { container: withDesc } = render(
+    <Button description="辅助描述">有描述</Button>
+  )
+  expect(withDesc.querySelector('.nut-button-title')).toBeInTheDocument()
+  expect(withDesc.querySelector('.nut-button-desc')).toBeInTheDocument()
+
+  const { container: withoutDesc } = render(<Button>无描述</Button>)
+  expect(withoutDesc.querySelector('.nut-button-title')).not.toBeInTheDocument()
+  expect(withoutDesc.querySelector('.nut-button-desc')).not.toBeInTheDocument()
 })

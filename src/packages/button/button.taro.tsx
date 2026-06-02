@@ -116,7 +116,6 @@ export const Button = React.forwardRef<
       [`${prefixCls}-${mappedSize}`]: mappedSize,
       [`${prefixCls}-has-desc`]: !!description,
       [`${prefixCls}-${shape}`]: shape,
-      [`${prefixCls}-${shape}-${mappedSize}`]: shape && mappedSize,
       [`${prefixCls}-block`]: block,
       [`${prefixCls}-disabled`]: disabled || loading,
       [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
@@ -131,18 +130,26 @@ export const Button = React.forwardRef<
   //   ;(rest as any).type = formType
   // }
   return (
+    // <TaroButton>
     // @ts-ignore
-    // <TaroButton
     <View
       {...rest}
       ref={ref}
       // formType={formType || nativeType}
       className={buttonClassNames}
       style={{ ...getStyle, ...style }}
+      ariaRole="button"
+      role="button"
+      ariaDisabled={disabled || loading}
+      aria-disabled={disabled || loading}
+      ariaBusy={loading}
+      aria-busy={loading}
       onClick={(e) => handleClick(e as any)}
     >
       <View className="nut-button-wrap">
-        {loading && <Loading className="nut-icon-loading" />}
+        {loading && (
+          <Loading className="nut-icon-loading" ariaHidden aria-hidden />
+        )}
         {!loading && icon}
         {children && (
           <View
@@ -157,7 +164,11 @@ export const Button = React.forwardRef<
             )}
             style={harmony() ? getContStyle : {}}
           >
-            <View className="nut-button-title">{children}</View>
+            {description ? (
+              <View className="nut-button-title">{children}</View>
+            ) : (
+              children
+            )}
             {description && (
               <View className="nut-button-desc">{description}</View>
             )}

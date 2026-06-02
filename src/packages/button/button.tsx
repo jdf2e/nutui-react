@@ -112,10 +112,12 @@ export const Button = React.forwardRef<
       type={nativeType}
       className={buttonClassNames}
       style={{ ...getStyle, ...style }}
+      aria-disabled={disabled || loading}
+      aria-busy={loading}
       onClick={handleClick}
     >
       <div className="nut-button-wrap">
-        {loading && <Loading className="nut-icon-loading" />}
+        {loading && <Loading className="nut-icon-loading" aria-hidden="true" />}
         {!loading && icon}
         {children && (
           <div
@@ -124,7 +126,11 @@ export const Button = React.forwardRef<
               'nut-button-text-right': rightIcon,
             })}
           >
-            <div className="nut-button-title">{children}</div>
+            {description ? (
+              <div className="nut-button-title">{children}</div>
+            ) : (
+              children
+            )}
             {description && (
               <div className="nut-button-desc">{description}</div>
             )}

@@ -8,7 +8,7 @@ export type UIType =
   | 'success'
   | 'warning'
   | 'danger'
-  | 'golden'
+  | 'service'
 export type UISize =
   | 'xlarge'
   | 'large'

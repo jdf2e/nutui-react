@@ -113,6 +113,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.35",
     "stylelint": "^16.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vconsole": "^3.15.1"
   }
 }

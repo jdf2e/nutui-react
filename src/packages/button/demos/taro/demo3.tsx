@@ -19,6 +19,9 @@ const Demo3 = () => {
       <Button fill="none" style={marginStyle}>
         None
       </Button>
+      <Button type="primary" fill="light" style={marginStyle}>
+        Light
+      </Button>
     </Cell>
   )
 }

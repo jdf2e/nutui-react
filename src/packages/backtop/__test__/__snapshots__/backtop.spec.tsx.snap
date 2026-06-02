@@ -13,9 +13,7 @@ exports[`backtop custom test 1`] = `
         class="nut-hoverbutton-item-container"
       >
         <svg
-          aria-labelledby="Top"
           class="nut-icon nut-icon-Top "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
