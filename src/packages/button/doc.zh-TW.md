@@ -12,7 +12,7 @@ import { Button } from '@nutui/nutui-react'
 
 ### 按鈕類型
 
-按鈕支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六種類型，默認為 `default`。
+按鈕支持 `default`、`primary`、`info`、`warning`、`danger`、`success`、`service` 七種類型，默认为 `default`。
 
 :::demo
 
@@ -117,7 +117,7 @@ import { Button } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` \| `golden` | `default` |
+| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` \| `service` | `default` |
 | size | 按鈕的尺寸 | `normal` \| `xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支援傳入 linear-gradient 漸層色, outline 和 dashed 模式下設定的是 color，其他情況設定的是background，建議使用CSS變數實現的顏色配置 | `string` | `-` |

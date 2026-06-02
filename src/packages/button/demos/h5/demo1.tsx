@@ -23,8 +23,8 @@ const Demo1 = () => {
       <Button type="success" style={marginStyle}>
         Success
       </Button>
-      <Button type="golden" style={marginStyle}>
-        Golden
+      <Button type="service" style={marginStyle}>
+        Service
       </Button>
     </Cell>
   )

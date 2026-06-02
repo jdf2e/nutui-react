@@ -485,6 +485,23 @@ $button-danger-disabled: var(
   $color-danger-disabled
 ) !default;
 
+$button-service-color: var(
+  --nutui-button-service-color,
+  $color-service-text
+) !default;
+$button-service-border-color: var(
+  --nutui-button-service-border-color,
+  $color-service-border
+) !default;
+$button-service-background-color: var(
+  --nutui-button-service-background-color,
+  $color-service-btn-bg
+) !default;
+$button-service-disabled: var(
+  --nutui-button-service-disabled,
+  $color-service-btn-bg-disabled
+) !default;
+
 $button-primary-light-color: var(
   --nutui-button-primary-light-color,
   $button-primary-background-color

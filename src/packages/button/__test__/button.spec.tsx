@@ -132,17 +132,17 @@ test('should map sizes correctly', () => {
   )
 })
 
-test('should render golden and primary-light correctly', () => {
+test('should render service and primary-light correctly', () => {
   const { container } = render(
     <>
-      <Button type="golden">Golden</Button>
+      <Button type="service">Service</Button>
       <Button type="primary" fill="light">
         Light
       </Button>
     </>
   )
   expect(container.querySelectorAll('.nut-button')[0]).toHaveClass(
-    'nut-button-golden'
+    'nut-button-service'
   )
   expect(container.querySelectorAll('.nut-button')[1]).toHaveClass(
     'nut-button-primary-light'

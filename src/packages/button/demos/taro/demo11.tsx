@@ -72,7 +72,7 @@ const Demo11 = () => {
       <Cell style={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Button
           size="48"
-          type="golden"
+          type="service"
           description="辅助描述"
           style={marginStyle}
         >
@@ -80,7 +80,7 @@ const Demo11 = () => {
         </Button>
         <Button
           size="48"
-          type="golden"
+          type="service"
           description="辅助描述"
           className="nut-button-active"
           style={marginStyle}
@@ -98,7 +98,7 @@ const Demo11 = () => {
         </Button>
         <Button
           size="48"
-          type="golden"
+          type="service"
           description="辅助描述"
           disabled
           style={marginStyle}
@@ -115,7 +115,7 @@ const Demo11 = () => {
         <Button size="44" type="primary" disabled style={marginStyle}>
           操作按钮
         </Button>
-        <Button size="44" type="golden" style={marginStyle}>
+        <Button size="44" type="service" style={marginStyle}>
           操作按钮
         </Button>
         <Button
@@ -136,7 +136,7 @@ const Demo11 = () => {
         <Button size="40" type="primary" disabled style={marginStyle}>
           操作按钮
         </Button>
-        <Button size="40" type="golden" style={marginStyle}>
+        <Button size="40" type="service" style={marginStyle}>
           操作按钮
         </Button>
         <Button size="40" type="default" style={marginStyle}>

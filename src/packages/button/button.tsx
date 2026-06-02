@@ -97,8 +97,6 @@ export const Button = React.forwardRef<
       [`${prefixCls}-${shape}`]: shape,
       [`${prefixCls}-block`]: block,
       [`${prefixCls}-disabled`]: disabled || loading,
-      [`${prefixCls}-${type}${props.fill ? `-${fill}` : ''}-disabled`]:
-        disabled || loading,
       [`${prefixCls}-loading`]: loading,
       [`${prefixCls}-icononly`]: !children,
     },
