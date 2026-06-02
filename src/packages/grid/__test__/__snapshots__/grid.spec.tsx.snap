@@ -13,9 +13,7 @@ exports[`render with column num 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -44,9 +42,7 @@ exports[`render with column num 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -69,46 +65,12 @@ exports[`render with column num 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      style=""
     >
       <div
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
-          viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M255.78 255.78a42.48 42.48 0 0 0-42.63 42.63c0 23.66 18.97 42.63 42.63 42.63s42.63-18.97 42.63-42.63-18.97-42.63-42.63-42.63"
-            fill="currentColor"
-          />
-          ,
-          <path
-            d="M1023.13 809.98V444.42c1.07-4.9 1.07-10.02 0-14.92V213.15c0-94.21-76.31-170.52-170.52-170.52H170.52C76.31 42.63 0 118.94 0 213.15v596.83C0 904.19 76.31 980.5 170.52 980.5h682.09c94.21 0 170.52-76.31 170.52-170.52m-170.52-703.4c58.83 0 106.58 47.75 106.57 106.57v169.88a458.2 458.2 0 0 0-191.83-41.99c-187.79 0-348.93 112.76-419.91 274.33a350.2 350.2 0 0 0-198.23-61.18c-29.41 0-57.98 3.62-85.26 10.45V213.15c0-58.83 47.75-106.58 106.57-106.57zM63.95 809.98V630.93c26.86-8.31 55.63-12.79 85.26-12.79 73.75 0 140.89 27.71 191.83 73.32a32.02 32.02 0 0 0 53.08-19.61c53.07-155.39 200.15-266.87 373.23-266.86 69.7 0 135.14 18.12 191.83 49.66v355.33c0 58.83-47.75 106.58-106.57 106.57H170.52c-58.83 0-106.58-47.75-106.57-106.57"
-            fill="currentColor"
-          />
-        </svg>
-        <div
-          class="nut-grid-item-text"
-        >
-          文本
-        </div>
-      </div>
-    </div>
-    <div
-      class="nut-grid-item"
-      style="margin-right: 9px; margin-top: 9px;"
-    >
-      <div
-        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
-      >
-        <svg
-          aria-labelledby="Image"
-          class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -137,9 +99,36 @@ exports[`render with column num 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M255.78 255.78a42.48 42.48 0 0 0-42.63 42.63c0 23.66 18.97 42.63 42.63 42.63s42.63-18.97 42.63-42.63-18.97-42.63-42.63-42.63"
+            fill="currentColor"
+          />
+          ,
+          <path
+            d="M1023.13 809.98V444.42c1.07-4.9 1.07-10.02 0-14.92V213.15c0-94.21-76.31-170.52-170.52-170.52H170.52C76.31 42.63 0 118.94 0 213.15v596.83C0 904.19 76.31 980.5 170.52 980.5h682.09c94.21 0 170.52-76.31 170.52-170.52m-170.52-703.4c58.83 0 106.58 47.75 106.57 106.57v169.88a458.2 458.2 0 0 0-191.83-41.99c-187.79 0-348.93 112.76-419.91 274.33a350.2 350.2 0 0 0-198.23-61.18c-29.41 0-57.98 3.62-85.26 10.45V213.15c0-58.83 47.75-106.58 106.57-106.57zM63.95 809.98V630.93c26.86-8.31 55.63-12.79 85.26-12.79 73.75 0 140.89 27.71 191.83 73.32a32.02 32.02 0 0 0 53.08-19.61c53.07-155.39 200.15-266.87 373.23-266.86 69.7 0 135.14 18.12 191.83 49.66v355.33c0 58.83-47.75 106.58-106.57 106.57H170.52c-58.83 0-106.58-47.75-106.57-106.57"
+            fill="currentColor"
+          />
+        </svg>
+        <div
+          class="nut-grid-item-text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="margin-right: 9px; margin-top: 9px;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
+      >
+        <svg
+          class="nut-icon nut-icon-Image "
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -168,9 +157,7 @@ exports[`render with column num 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -208,9 +195,7 @@ exports[`render with custom content 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-horizontal"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -248,10 +233,8 @@ exports[`render with custom content 1`] = `
             style="background-color: #FF0F23; color: #666;"
           >
             <svg
-              aria-labelledby="Image"
               class="nut-icon nut-icon-Image  nut-avatar-icon"
               color="#fff"
-              role="presentation"
               style="color: #fff;"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -282,10 +265,8 @@ exports[`render with custom content 1`] = `
           style="background-color: #FF0F23; color: #666;"
         >
           <svg
-            aria-labelledby="Image"
             class="nut-icon nut-icon-Image  nut-avatar-icon"
             color="#fff"
-            role="presentation"
             style="color: #fff;"
             viewBox="0 0 1024 1024"
             xmlns="http://www.w3.org/2000/svg"
@@ -305,7 +286,6 @@ exports[`render with custom content 1`] = `
     </div>
     <div
       class="nut-grid-item"
-      style=""
     >
       <div
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-horizontal"
@@ -327,9 +307,7 @@ exports[`render with custom content 1`] = `
               class="nut-image-loading"
             >
               <svg
-                aria-labelledby="Image"
                 class="nut-icon nut-icon-Image "
-                role="presentation"
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -365,9 +343,7 @@ exports[`should match snapshot 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -396,9 +372,7 @@ exports[`should match snapshot 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -427,9 +401,7 @@ exports[`should match snapshot 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-surround nut-grid-item-content-center nut-grid-item-content-square nut-grid-item-content-vertical"
       >
         <svg
-          aria-labelledby="Image"
           class="nut-icon nut-icon-Image "
-          role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >

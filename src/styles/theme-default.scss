@@ -24,6 +24,7 @@ page {
   --nutui-golden-4: #80512d;
   --nutui-golden-5: #ffe6c2;
   --nutui-golden-6: #ffddad;
+  --nutui-golden-7: #fff4e8;
 
   --nutui-golden-stop-1: #fff9f0;
   --nutui-golden-stop-2: #ffe3c2;
@@ -156,6 +157,8 @@ page {
   --nutui-color-service-btn-bg: var(--nutui-golden-5);
   // 金色按钮点击态背景
   --nutui-color-service-btn-bg-pressed: var(--nutui-golden-6);
+  // 金色按钮不可点击态背景
+  --nutui-color-service-btn-bg-disabled: var(--nutui-golden-7);
 
   // success color 语义化
   --nutui-color-success: var(--nutui-green-2); // 深背景/图形

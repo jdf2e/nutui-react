@@ -40,8 +40,7 @@ export const Steps: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-${direction}`]: true,
-      [`${classPrefix}-${direction}-count-${React.Children.count(children)}`]:
-        true,
+      [`${classPrefix}-${direction}-count-${React.Children.count(children)}`]: true,
       [`${classPrefix}-${direction}-${layout}`]: true,
       [`${classPrefix}-${direction}-${type}`]: true,
       [`${classPrefix}-${direction}-${status}`]: true,

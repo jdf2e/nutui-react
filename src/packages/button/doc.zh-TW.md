@@ -1,6 +1,6 @@
 # Button 按鈕
 
-按鈕用於觸發一個操作，如提交表單。
+接收用戶的點擊或觸摸操作，觸發對應的功能或指令。幫助用戶完成提交、確認、取消、跳轉、刪除等關鍵行為，是最基礎、最直接的交互入口。
 
 ## 引入
 
@@ -12,7 +12,7 @@ import { Button } from '@nutui/nutui-react'
 
 ### 按鈕類型
 
-按鈕支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六種類型，默認為 `default`。
+按鈕支持 `default`、`primary`、`info`、`warning`、`danger`、`success`、`service` 七種類型，默认为 `default`。
 
 :::demo
 
@@ -70,7 +70,20 @@ import { Button } from '@nutui/nutui-react'
 
 ### 按鈕尺寸
 
-支持 'xlarge'、 `large`、`normal`、`small`、`mini` 尺寸，默認為 `normal`。
+支持外部開源的語義化尺寸 `xlarge`、 `large`、`normal`、`small`、`mini`，以及京東內部設計規範的數字尺寸體系 `48`、`44`、`40`、`36`、`32`、`28`、`24`，默認為 `normal`。
+
+| 尺寸類別 | 京東內部數字尺寸 | 外部開源語義尺寸 | 高度 (Height) | 內邊距 (Padding) | 字號 (Font-Size) | 適用場景說明 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 特定大按鈕 | `48` | `xlarge` | 48px | 0 16px | 15px | 頁面底部吸底操作 |
+| 頁面主按鈕 | `44` | **(無)** | 44px | 0 16px | 15px | 頁面級主要提交、確認操作 |
+| 區塊主按鈕 | `40` | `large` | 40px | 0 16px | 15px | 頁面局部區塊內的主要操作 |
+| 常規按鈕 | `36` | **(無)** | 36px | 0 12px | 14px | 常規列表或表單使用 |
+| 默認按鈕 | `32` | `normal` | 32px | 0 12px | 12px | 默認的基礎組件操作 |
+| 次級按鈕 | `28` | `small` | 28px | 0 8px | 12px | 頁面內的次級輔助操作或標籤 |
+| 極小按鈕 | `24` | `mini` | 24px | 0 8px | 11px | 極小空間內的特殊操作 |
+
+> [!NOTE]
+> `xlarge`、`large`、`normal`、`small`、`mini` 屬於外部開源組件庫通用的語義化尺寸。數字體系尺寸旨在精準貼合京東內部最新的 V16 設計規範，兩者在底層互相兼容並完美複用。
 
 :::demo
 
@@ -104,8 +117,8 @@ import { Button } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按鈕的尺寸 | `normal` \| `xlarge` \| `large` \| `small` \| `mini` | `normal` |
+| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` \| `service` | `default` |
+| size | 按鈕的尺寸 | `normal` \| `xlarge` \| `large` \| `small` \| `mini` \| `48` \| `44` \| `40` \| `36` \| `32` \| `28` \| `24` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支援傳入 linear-gradient 漸層色, outline 和 dashed 模式下設定的是 color，其他情況設定的是background，建議使用CSS變數實現的顏色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |

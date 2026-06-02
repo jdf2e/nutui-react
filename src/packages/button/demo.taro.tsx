@@ -14,6 +14,7 @@ import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
+import Demo11 from './demos/taro/demo11'
 
 const ButtonDemo = () => {
   const [translated] = useTranslate({
@@ -28,6 +29,7 @@ const ButtonDemo = () => {
       '0aaad620': '按钮尺寸',
       c9e6df49: '块级元素',
       customColor: '自定义颜色',
+      demo11: '全景尺寸与状态矩阵',
     },
     'zh-TW': {
       ce5c5446: '按鈕類型',
@@ -40,6 +42,7 @@ const ButtonDemo = () => {
       '0aaad620': '按鈕尺寸',
       c9e6df49: '塊級元素',
       customColor: '自定義顏色',
+      demo11: '全景尺寸與狀態矩陣',
     },
     'en-US': {
       ce5c5446: 'Button Type',
@@ -52,6 +55,7 @@ const ButtonDemo = () => {
       '0aaad620': 'Button size',
       c9e6df49: 'Block-level elements',
       customColor: 'Custom Colors',
+      demo11: 'Panoramic Size & State Matrix',
     },
   })
   return (
@@ -83,6 +87,8 @@ const ButtonDemo = () => {
         <Demo9 />
         <View className="h2">{translated.customColor}</View>
         <Demo10 />
+        <View className="h2">{translated.demo11}</View>
+        <Demo11 />
       </ScrollView>
     </>
   )
