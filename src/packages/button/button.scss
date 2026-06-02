@@ -177,6 +177,10 @@
         border-color: $button-default-disabled;
       }
     }
+
+    &:active:not(.nut-button-disabled):not(.nut-button-loading) {
+      background: $button-default-pressed;
+    }
   }
 
   &-normal {
@@ -283,6 +287,7 @@
       $button-primary-disabled,
       $button-primary-disabled,
       null,
+      $button-primary-pressed,
     ),
     'success': (
       $button-success-color,
@@ -295,6 +300,7 @@
       $button-primary-disabled,
       $button-success-disabled,
       null,
+      $button-success-pressed,
     ),
     'info': (
       $button-info-color,
@@ -307,6 +313,7 @@
       $button-info-disabled,
       $button-info-disabled,
       null,
+      $button-info-pressed,
     ),
     'danger': (
       $button-danger-color,
@@ -319,6 +326,7 @@
       $button-danger-disabled,
       $button-danger-disabled,
       null,
+      $button-danger-pressed,
     ),
     'warning': (
       $button-warning-color,
@@ -331,6 +339,7 @@
       $button-warning-disabled,
       $button-warning-disabled,
       null,
+      $button-warning-pressed,
     ),
     'service': (
       $button-service-color,
@@ -343,6 +352,7 @@
       $button-service-disabled,
       $button-service-color,
       0.5,
+      $button-service-pressed,
     ),
   );
 
@@ -357,6 +367,7 @@
     $outline-disabled-border-color: nth($colors, 8);
     $none-disabled-text-color: nth($colors, 9);
     $opacity-disabled: nth($colors, 10);
+    $pressed-bg: nth($colors, 11);
 
     &-#{$type} {
       color: $text-color;
@@ -419,6 +430,13 @@
         }
       }
 
+      // pressed / active states
+      &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+          .nut-button-outline
+        ):not(.nut-button-dashed) {
+        background: $pressed-bg;
+      }
+
       @if $type == 'primary' {
         &-solid {
           font-weight: $font-weight-bold;
@@ -447,6 +465,13 @@
             .nut-button-primary-children {
               color: $button-primary-light-color;
             }
+          }
+
+          // press state for primary-light
+          &:active:not(.nut-button-disabled):not(.nut-button-loading):not(
+              .nut-button-outline
+            ):not(.nut-button-dashed) {
+            background: $color-primary-light-pressed;
           }
         }
       }

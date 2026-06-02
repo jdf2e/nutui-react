@@ -13,14 +13,6 @@ const Demo10 = () => {
         </Button>
         <Button
           size="48"
-          type="primary"
-          className="nut-button-active"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
           className="nut-button-disabled-gray"
           disabled
           style={marginStyle}
@@ -30,21 +22,10 @@ const Demo10 = () => {
         <Button size="48" type="primary" disabled style={marginStyle}>
           操作按钮
         </Button>
-      </Cell>
-      <Cell style={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Button
           size="48"
           type="primary"
           description="辅助描述"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          type="primary"
-          description="辅助描述"
-          className="nut-button-active"
           style={marginStyle}
         >
           操作按钮
@@ -67,30 +48,10 @@ const Demo10 = () => {
         >
           操作按钮
         </Button>
-      </Cell>
-      <Cell style={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Button
           size="48"
           type="service"
           description="辅助描述"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          type="service"
-          description="辅助描述"
-          className="nut-button-active"
-          style={marginStyle}
-        >
-          操作按钮
-        </Button>
-        <Button
-          size="48"
-          description="辅助描述"
-          className="nut-button-disabled-gray"
-          disabled
           style={marginStyle}
         >
           操作按钮
