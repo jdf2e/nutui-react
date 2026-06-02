@@ -10,7 +10,7 @@ exports[`should render progress when use props 1`] = `
     >
       <div
         class="nut-progress-inner"
-        style="width: 100%; background: #FF0F23; transition: width 300ms ease-in-out;"
+        style="width: 100%; background: var(--nutui-color-primary,#ff0f23); transition: width 300ms ease-in-out;"
       />
     </div>
   </div>
