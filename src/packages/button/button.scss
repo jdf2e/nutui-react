@@ -478,6 +478,44 @@
     }
   }
 
+  &-golden {
+    color: $color-service-text;
+    background: $color-service-btn-bg;
+    background-origin: border-box;
+    border-color: transparent;
+
+    &-children {
+      color: $color-service-text;
+    }
+
+    &-disabled,
+    &-solid-disabled {
+      opacity: 0.5;
+      color: $color-service-text;
+      background: $color-service-btn-bg-disabled;
+      border-color: $color-service-btn-bg-disabled;
+    }
+
+    &-outline,
+    &-dashed {
+      color: $color-service-text;
+      border-color: $color-service-border;
+
+      &-disabled {
+        opacity: 0.5;
+        color: $color-service-text;
+        border-color: $color-service-btn-bg-disabled;
+      }
+    }
+
+    &-none {
+      color: $color-service-text;
+      &-disabled {
+        color: $color-service;
+      }
+    }
+  }
+
   &-block {
     display: block;
     width: 100%;
