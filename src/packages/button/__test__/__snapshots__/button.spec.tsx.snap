@@ -3,10 +3,8 @@
 exports[`should match snapshot 1`] = `
 <div>
   <button
-    aria-busy="false"
-    aria-disabled="false"
-    class="nut-button nut-button-primary nut-button-primary-solid nut-button-normal nut-button-round aa"
-    style="--nutui-button-solid-color: var(--nutui-button-primary-color); --nutui-button-solid-background-color: var(--nutui-button-primary-background-color); --nutui-button-solid-border-color: transparent; --nutui-button-solid-disabled-color: var(--nutui-button-primary-color); --nutui-button-solid-disabled-background-color: var(--nutui-button-primary-disabled); --nutui-button-outline-color: var(--nutui-button-primary-border-color); --nutui-button-outline-border-color: var(--nutui-button-primary-border-color); --nutui-button-outline-disabled-color: var(--nutui-button-primary-disabled); --nutui-button-outline-disabled-border-color: var(--nutui-button-primary-disabled); --nutui-button-none-color: var(--nutui-button-primary-border-color); --nutui-button-none-disabled-color: var(--nutui-button-primary-disabled); --nutui-button-opacity-disabled: 1; --nutui-button-height: var(--nutui-button-normal-height); --nutui-button-padding: var(--nutui-button-normal-padding); --nutui-button-font-size: var(--nutui-button-normal-font-size); --nutui-button-border-radius: var(--nutui-button-normal-border-radius); --nutui-button-text-icon-margin: var(--nutui-button-normal-text-icon-margin); margin: 8px;"
+    class="nut-button nut-button-primary nut-button-outline nut-button-primary-outline nut-button-normal nut-button-round aa"
+    style="margin: 8px;"
     type="button"
   >
     <div

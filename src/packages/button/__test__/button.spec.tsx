@@ -148,3 +148,15 @@ test('should render service and primary-light correctly', () => {
     'nut-button-primary-light'
   )
 })
+
+test('should only render nut-button-title when description is present', () => {
+  const { container: withDesc } = render(
+    <Button description="辅助描述">有描述</Button>
+  )
+  expect(withDesc.querySelector('.nut-button-title')).toBeInTheDocument()
+  expect(withDesc.querySelector('.nut-button-desc')).toBeInTheDocument()
+
+  const { container: withoutDesc } = render(<Button>无描述</Button>)
+  expect(withoutDesc.querySelector('.nut-button-title')).not.toBeInTheDocument()
+  expect(withoutDesc.querySelector('.nut-button-desc')).not.toBeInTheDocument()
+})
