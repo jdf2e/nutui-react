@@ -1,6 +1,6 @@
 # Radio
 
-Used to single select in a set of alternatives
+Used to single select in a set of alternatives. The component includes 4 states: unchecked, checked, forced checked, and forced unchecked.
 
 ## Import
 

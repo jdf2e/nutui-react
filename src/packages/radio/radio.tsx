@@ -101,7 +101,7 @@ export const Radio: FunctionComponent<
     return (
       <>
         {renderIcon()}
-        <div className={labelcls}>{children}</div>
+        {children && <div className={labelcls}>{children}</div>}
       </>
     )
   }
@@ -126,6 +126,7 @@ export const Radio: FunctionComponent<
     classPrefix,
     {
       [`${classPrefix}-reverse`]: labelPosition === 'left',
+      [`${classPrefix}-nolabel`]: !children,
     },
     className
   )

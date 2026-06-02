@@ -110,7 +110,7 @@ export const Radio: FC<
     return (
       <>
         {renderIcon()}
-        <View className={labelcls}>{children}</View>
+        {children && <View className={labelcls}>{children}</View>}
       </>
     )
   }
@@ -137,6 +137,7 @@ export const Radio: FC<
     classPrefix,
     {
       [`${classPrefix}-reverse`]: labelPosition === 'left',
+      [`${classPrefix}-nolabel`]: !children,
     },
     className
   )
