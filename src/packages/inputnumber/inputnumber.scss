@@ -6,7 +6,7 @@
   display: inline-flex;
   /* #endif */
   width: calc(
-    2 * #{$inputnumber-input-margin} + 2 * #{$inputnumber-button-width} +
+    2 * #{$inputnumber-divider-width} + 2 * #{$inputnumber-button-width} +
       #{$inputnumber-input-width}
   );
   flex-direction: row;
@@ -38,20 +38,26 @@
     }
   }
 
+  &-divider {
+    width: $inputnumber-divider-width;
+    align-self: stretch;
+    background-color: $color-background-overlay;
+  }
+
   &-input {
     display: flex;
     justify-content: center;
     align-items: center;
     width: $inputnumber-input-width;
-    font-size: $inputnumber-input-font-size;
     height: $inputnumber-input-height;
+    font-size: $inputnumber-input-font-size;
+    font-family: $inputnumber-input-font-family;
     text-align: center;
     outline: none;
     border: $inputnumber-input-border;
-    margin-left: $inputnumber-input-margin;
-    margin-right: $inputnumber-input-margin;
     color: $color-text;
     background-color: $inputnumber-input-background-color;
+    padding: 0;
     &-disabled {
       color: $color-text-disabled;
     }

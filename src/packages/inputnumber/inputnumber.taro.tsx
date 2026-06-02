@@ -193,6 +193,7 @@ export const InputNumber: FunctionComponent<
           )}
         />
       </View>
+      <View className={`${classPrefix}-divider`} />
       <input
         className={classNames(`${classPrefix}-input`, {
           [`${classPrefix}-input-disabled`]: disabled,
@@ -207,7 +208,7 @@ export const InputNumber: FunctionComponent<
         onBlur={handleBlur}
         onFocus={handleFocus}
       />
-
+      <View className={`${classPrefix}-divider`} />
       <View className={`${classPrefix}-add`} onClick={handlePlus}>
         <Plus
           className={classNames(
