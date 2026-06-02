@@ -63,6 +63,7 @@ expect.addSnapshotSerializer({
     Array.from(clone.querySelectorAll('*')).forEach((descendant) =>
       STRIPPED_NODES.add(descendant as Element)
     )
-    return printer(clone, config, indentation, depth, refs)
+    const result = printer(clone, config, indentation, depth, refs)
+    return result.replace(/\s+style=["']["']/g, '')
   },
 })

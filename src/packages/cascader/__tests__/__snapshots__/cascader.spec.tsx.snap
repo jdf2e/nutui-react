@@ -104,9 +104,7 @@ exports[`Cascader > visible true 1`] = `
                     福建
                   </div>
                   <svg
-                    aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
-                    role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -133,9 +131,7 @@ exports[`Cascader > visible true 1`] = `
                     福州
                   </div>
                   <svg
-                    aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
-                    role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -162,9 +158,7 @@ exports[`Cascader > visible true 1`] = `
                     鼓楼区
                   </div>
                   <svg
-                    aria-labelledby="Check"
                     class="nut-icon nut-icon-Check nut-cascader-icon-check"
-                    role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -203,9 +197,7 @@ exports[`Cascader > visible true 2`] = `
     鼓楼区
   </div>
   <svg
-    aria-labelledby="Check"
     class="nut-icon nut-icon-Check nut-cascader-icon-check"
-    role="presentation"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
   >

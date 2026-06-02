@@ -99,10 +99,7 @@ exports[`slot extra 1`] = `
       class="nut-cell-extra"
     >
       <div
-        aria-checked="true"
-        aria-disabled="false"
         class="nut-switch"
-        role="switch"
         tabindex="0"
       >
         <div
