@@ -770,7 +770,7 @@ $inputnumber-input-width: var(--nutui-inputnumber-input-width, scale-px(32px)) !
 $inputnumber-input-height: var(--nutui-inputnumber-input-height, scale-px(28px)) !default;
 $inputnumber-input-background-color: var(
   --nutui-inputnumber-input-background-color,
-  $color-background
+  var(--nutui-color-background-component)
 ) !default;
 $inputnumber-input-font-color: var(
   --nutui-inputnumber-input-font-color,
@@ -793,7 +793,7 @@ $inputnumber-button-height: var(
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
-  $color-background
+  var(--nutui-color-background-component)
 ) !default;
 $inputnumber-divider-width: var(--nutui-inputnumber-divider-width, 1px) !default;
 $inputnumber-input-font-family: var(--nutui-inputnumber-input-font-family, JDZH) !default;
