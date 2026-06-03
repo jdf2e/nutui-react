@@ -133,15 +133,16 @@ export const Checkbox: FunctionComponent<
     return cls
   }
   const renderLabel = () => {
-    return (
+    const hasLabel = children || label
+    return hasLabel ? (
       <span
         className={classNames(`${classPrefix}-label `, {
           [`${classPrefix}-label-disabled`]: innerDisabled,
         })}
       >
-        {children || label}
+        {hasLabel}
       </span>
-    )
+    ) : null
   }
 
   const handleClick = () => {
@@ -204,6 +205,7 @@ export const Checkbox: FunctionComponent<
           [`${classPrefix}-reverse`]: labelPosition === 'left',
           'nut-checkbox-list-item': ctx?.list,
           [`${classPrefix}-active`]: innerChecked,
+          [`${classPrefix}-nolabel`]: !(children || label),
         },
         className
       )}

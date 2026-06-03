@@ -32,7 +32,7 @@
 
   &-icon {
     color: $color-text-disabled;
-    background-color: $white;
+    background-color: $color-background-overlay;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
     font-size: $radio-icon-font-size;
@@ -48,7 +48,7 @@
 
       &.nut-radio-icon-disabled {
         color: $color-primary-disabled-special;
-        background-color: $white;
+        background-color: $color-background-overlay;
         box-shadow: none;
         border-radius: 50%;
       }

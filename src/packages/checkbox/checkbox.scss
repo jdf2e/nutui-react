@@ -3,10 +3,21 @@
 .nut-checkbox {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  min-height: scale-px(32px);
+
+  &.nut-checkbox-nolabel {
+    min-width: scale-px(32px);
+    justify-content: center;
+  }
 
   &-icon {
     color: $color-text-disabled;
+    background-color: $color-background-overlay;
+    transition-duration: 0.3s;
+    transition-property: color, border-color, background-color;
     font-size: $checkbox-icon-font-size;
+    border-radius: 50%;
     flex-shrink: 0;
   }
 
@@ -14,7 +25,7 @@
     font-size: 0px;
     line-height: 0px;
     border-radius: 50%;
-    box-shadow: 0px 2px 4px 0px rgba(255, 15, 35, 0.2);
+    box-shadow: none;
   }
 
   &-icon-checked {
@@ -23,9 +34,12 @@
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
     border-radius: 50%;
+    box-shadow: none;
 
     &.nut-checkbox-icon-disabled {
       color: $color-primary-disabled-special;
+      background-color: $color-background-overlay;
+      box-shadow: none;
     }
   }
 
@@ -43,17 +57,19 @@
   &-icon-indeterminate {
     color: $color-primary;
     background-color: $white;
-    box-shadow: 0px 2px 4px 0px rgba($color-primary, 0.2);
+    box-shadow: none;
     border-radius: 50%;
 
     &.nut-checkbox-icon-disabled {
       color: $color-primary-disabled-special;
+      background-color: $color-background-overlay;
+      box-shadow: none;
     }
   }
 
   &-icon-disabled {
     color: $color-text-disabled;
-    background-color: $white;
+    background-color: $color-background-overlay;
     border-radius: 50%;
     box-shadow: none;
   }

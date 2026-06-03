@@ -30,6 +30,7 @@ const darkTheme = {
   nutuiColorPrimaryStop1: '#f54958',
   nutuiColorPrimaryStop2: '#fa3725',
   nutuiColorTextLink: '#60a5fa',
+  nutuiColorPrimaryDisabledSpecial: '#5f2b34',
   nutuiBrand1: '#2a181c',
   nutuiBrand2: '#3d2128',
   nutuiBrand3: '#5f2b34',
