@@ -126,10 +126,7 @@ export default class Notification extends React.PureComponent<
               `${classPrefix}-${position}`,
               contentClassName,
               `${classPrefix}-inner-${size}`,
-              `${classPrefix}-inner-${wordBreak}`,
-              {
-                [`${classPrefix}-inner-descrption`]: content,
-              }
+              `${classPrefix}-inner-${wordBreak}`
             )}
             style={{
               ...contentStyle,

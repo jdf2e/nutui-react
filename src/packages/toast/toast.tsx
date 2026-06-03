@@ -15,7 +15,7 @@ let defaultProps: WebToastProps = {
   contentClassName: '',
   contentStyle: {},
   wordBreak: 'break-all',
-  duration: 2, // 时长,duration为0则一直展示
+  duration: 3, // 时长,duration为0则一直展示
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
   lockScroll: false,
   zIndex: 1300,
