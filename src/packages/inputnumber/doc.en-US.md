@@ -139,18 +139,18 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| \--nutui-inputnumber-input-width | The width of the input in the number input box | `40px` |
-| \--nutui-inputnumber-input-height | The height of the input in the number input box | `24px` |
-| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `$color-background` |
-| \--nutui-inputnumber-input-font-color | The font size color of the input in the number input box | `$color-title` |
-| \--nutui-inputnumber-input-font-size | The font size of the input in the number input box | `14px` |
+| \--nutui-inputnumber-input-width | The width of the input in the number input box | `32px` |
+| \--nutui-inputnumber-input-height | The height of the input in the number input box | `28px` |
+| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `var(--nutui-color-background-component)` |
+| \--nutui-inputnumber-input-font-color | The font color of the input in the number input box | `$color-title` |
+| \--nutui-inputnumber-input-font-size | The font size of the input in the number input box | `$font-size-s` |
+| \--nutui-inputnumber-input-font-family | The font family of the input in the number input box | `JDZH` |
 | \--nutui-inputnumber-input-border | The border value of the input in the number input box | `0` |
-| \--nutui-inputnumber-input-border-radius | The rounded corners of the input in the number input box | `6px` |
-| \--nutui-inputnumber-input-margin | The rounded corners of the input in the number input box | `0` |
-| \--nutui-inputnumber-button-width | The width of the left and right buttons of the number input box | `14px` |
-| \--nutui-inputnumber-button-height | The height of the left and right buttons of the number input box | `16px` |
-| \--nutui-inputnumber-button-border-radius | The rounded corners of the left and right buttons of the number input box | `30px` |
-| \--nutui-inputnumber-button-background-color | The background color of the left and right buttons of the number input box | `transparent` |
+| \--nutui-inputnumber-input-border-radius | The border radius of the number input box | `$radius-base` |
+| \--nutui-inputnumber-divider-width | The width of the divider between sections | `1px` |
+| \--nutui-inputnumber-button-width | The width of the left and right buttons | `28px` |
+| \--nutui-inputnumber-button-height | The height of the left and right buttons | `28px` |
+| \--nutui-inputnumber-button-background-color | The background color of the left and right buttons | `$color-background` |
 | \--nutui-inputnumber-icon-color | The color of the icon in the number input box | `$color-text` |
 | \--nutui-inputnumber-icon-size | The size of the icon in the number input box | `8px` |
 | \--nutui-inputnumber-disabled-color | The color of the disabled status of inputnumber | `$color-text-disabled` |

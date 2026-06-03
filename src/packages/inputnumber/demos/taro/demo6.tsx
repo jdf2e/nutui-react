@@ -3,20 +3,17 @@ import { Cell, ConfigProvider, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   const customTheme = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonWidth: '36px',
+    nutuiInputnumberButtonHeight: '36px',
     nutuiInputnumberButtonBorderRadius: '2px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputHeight: '30px',
-    nutuiInputnumberInputMargin: '0 2px',
+    nutuiInputnumberInputHeight: '36px',
+    nutuiInputnumberDividerWidth: '1px',
   }
 
   const customTheme2 = {
-    nutuiInputnumberButtonWidth: '24px',
-    nutuiInputnumberButtonHeight: '24px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputBackgroundColor: '#fff',
-    nutuiInputnumberInputMargin: '0 2px',
+    nutuiInputnumberButtonWidth: '32px',
+    nutuiInputnumberButtonHeight: '32px',
+    nutuiInputnumberDividerWidth: '1px',
   }
 
   return (

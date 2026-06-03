@@ -246,6 +246,8 @@ export type NutCSSVariables =
   | 'nutuiInputnumberButtonWidth'
   | 'nutuiInputnumberButtonHeight'
   | 'nutuiInputnumberButtonBackgroundColor'
+  | 'nutuiInputnumberDividerWidth'
+  | 'nutuiInputnumberInputFontFamily'
   | 'nutuiInputnumberIconColor'
   | 'nutuiInputnumberIconSize'
   | 'nutuiInputnumberDisabledColor'

@@ -504,6 +504,8 @@ $inputnumber-button-height: var(--nutui-inputnumber-button-height,
     20px) !default;
 $inputnumber-button-background-color: var(--nutui-inputnumber-button-background-color,
     transparent) !default;
+$inputnumber-divider-width: var(--nutui-inputnumber-divider-width, 0px) !default;
+$inputnumber-input-font-family: var(--nutui-inputnumber-input-font-family, JDZH) !default;
 $inputnumber-icon-color: var(--nutui-inputnumber-icon-color,
     $color-text) !default;
 $inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 8px) !default;
