@@ -51,7 +51,7 @@ export default defineConfig({
 
 #### Webpack 方式
 
-```javascript
+````javascript
 {
   test: /\.(sa|sc)ss$/,
   use: [
@@ -64,4 +64,112 @@ export default defineConfig({
     }
   ]
 }
+
+## 暗黑模式
+
+NutUI-React 原生支持暗黑模式。组件库在暗黑模式下使用一套独立调优的色彩变量。
+
+### 方案 A：跟随 APP 主动切换（推荐）
+
+如果你的应用需要由用户在设置中手动切换亮色/暗黑模式（不强制跟随系统），可以使用**类名切换方案**。
+
+#### 1. 引入样式
+
+首先，在项目入口文件中引入组件库的默认样式和暗黑样式。你可以根据项目需要选择引入 CSS 或 SCSS：
+
+##### 引入 CSS 样式（适用于普通 JS/TS 项目）：
+
+参考方式二。
+
+
+##### 引入 SCSS 样式（适用于配置了 Sass 预处理器的项目）：
+
+参考方式二。
+
+#### 2. 挂载类名
+
+在项目的根节点（例如 `html`、`body` 或者 React 最外层包裹元素）上挂载 `.nut-theme-dark` 类名即可应用暗黑主题。
+
+`isDark` 的值，需要桥接 APP 的实现。
+
+```tsx
+import React, { useState } from 'react'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <div className={isDark ? 'nut-theme-dark' : ''}>
+      <button onClick={() => setIsDark(!isDark)}>
+        当前模式：{isDark ? '暗黑模式' : '普通模式'}
+      </button>
+      {/* 你的其他组件 */}
+    </div>
+  )
+}
+````
+
+#### 3. 配合 ConfigProvider 进行定制
+
+如果你需要更灵活地在 React 逻辑中控制暗黑模式，或者对暗黑模式下的色彩进行微调，可以结合 `ConfigProvider` 使用：
+
+```tsx
+import React, { useState } from 'react'
+import { ConfigProvider } from '@nutui/nutui-react'
+
+// 自定义暗黑模式下的主色调
+const darkTheme = {
+  nutuiColorPrimary: '#ff0f23',
+  nutuiColorBackgroundOverlay: '#1f2226',
+}
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <ConfigProvider
+      theme={isDark ? darkTheme : undefined}
+      className={isDark ? 'nut-theme-dark' : ''}
+    >
+      <button onClick={() => setIsDark(!isDark)}>切换模式</button>
+      {/* 组件库在暗黑模式下会自动识别 .nut-theme-dark，且通过 theme 属性定制的变量会自动覆盖 */}
+    </ConfigProvider>
+  )
+}
+```
+
+---
+
+### 方案 B：跟随系统媒体查询
+
+如果你的应用希望**完全自动跟随系统**的亮暗模式设置，无需手动提供开关，可使用**系统媒体查询方案**。
+
+#### 1. 编写自定义 CSS/SCSS
+
+你可以在项目中创建一个全局样式文件（例如 `dark-mode.scss`），利用媒体查询自动应用暗黑样式映射：
+
+```scss
+@media (prefers-color-scheme: dark) {
+  :root {
+    // 导入组件库自带的暗黑变量映射
+    @import '@nutui/nutui-react/dist/styles/theme-dark.scss';
+  }
+}
+```
+
+#### 2. 在入口中引入
+
+在项目入口文件中直接引入该样式文件，当系统/浏览器切换为暗黑模式时会自动触发样式加载，无需 JS 逻辑介入。
+
+---
+
+### 方案对比与选用建议
+
+| 方案 | 适用场景 | 实现原理 | 优点 |
+| --- | --- | --- | --- |
+| **方案 A (跟随 APP)** | 应用内需要提供“深色/浅色/系统”的手动切换开关，不强绑定系统。 | 挂载类名 `.nut-theme-dark` 或结合 `ConfigProvider` | 灵活度最高，支持局部容器应用暗黑，且可通过 JS 轻松定制。 |
+| **方案 B (跟随系统)** | 应用不需要手动开关，纯粹期望用户系统是深色时，网页就自动呈现深色。 | CSS 媒体查询 `@media` | 无需 JS 介入，完全由浏览器渲染引擎自动化控制。 |
+
+```
+
 ```

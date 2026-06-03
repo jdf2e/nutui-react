@@ -218,3 +218,9 @@ test('list model should fireEvent correctly', () => {
   fireEvent.click(getByTestId('checkbox4'))
   expect(limit).toBeCalledWith('max')
 })
+
+test('Render checkbox with no label', () => {
+  const { container } = render(<Checkbox data-testid="nolabel" />)
+  expect(container.querySelector('.nut-checkbox-nolabel')).toBeTruthy()
+  expect(container.querySelector('.nut-checkbox-label')).toBeFalsy()
+})

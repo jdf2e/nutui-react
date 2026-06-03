@@ -1,6 +1,6 @@
 # Checkbox
 
-多选按钮用于选择。
+The multi-select button is used for selection. The component supports 4 states: unchecked, checked, forced unchecked (disabled unchecked), and forced checked (disabled checked).
 
 ## Import
 

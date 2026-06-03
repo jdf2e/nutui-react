@@ -68,3 +68,111 @@ export default defineConfig({
     ]
 }
 ```
+
+## Dark Mode
+
+NutUI-React natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.
+
+### Option A: App-Active Switch (Recommended)
+
+If your application requires users to manually toggle between light and dark modes in the settings (not strictly following the system), you can use the **class name toggle solution**.
+
+#### 1. Import Styles
+
+First, import the component library's default styles and dark theme styles in the project entry file. You can choose to import CSS or SCSS depending on your project needs:
+
+##### Import CSS styles (for general JS/TS projects):
+
+Refer to Method 2.
+
+##### Import SCSS styles (for projects configured with Sass preprocessor):
+
+Refer to Method 2.
+
+#### 2. Mount Class Name
+
+Mount the `.nut-theme-dark` class name on the root node of the project (such as `html`, `body` or the outermost wrapper element in React) to apply the dark theme.
+
+The value of `isDark` needs to bridge the implementation of the APP.
+
+```tsx
+import React, { useState } from 'react'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <div className={isDark ? 'nut-theme-dark' : ''}>
+      <button onClick={() => setIsDark(!isDark)}>
+        Current Mode: {isDark ? 'Dark' : 'Light'}
+      </button>
+      {/* Your other components */}
+    </div>
+  )
+}
+```
+
+#### 3. Customize with ConfigProvider
+
+If you need to control the dark mode more flexibly in React logic, or fine-tune colors in dark mode, you can use it in combination with `ConfigProvider`:
+
+```tsx
+import React, { useState } from 'react'
+import { ConfigProvider } from '@nutui/nutui-react'
+
+// Custom primary color in dark mode
+const darkTheme = {
+  nutuiColorPrimary: '#ff0f23',
+  nutuiColorBackgroundOverlay: '#1f2226',
+}
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <ConfigProvider
+      theme={isDark ? darkTheme : undefined}
+      className={isDark ? 'nut-theme-dark' : ''}
+    >
+      <button onClick={() => setIsDark(!isDark)}>Toggle Mode</button>
+      {/* The component library will automatically detect .nut-theme-dark in dark mode, and variables customized through the theme attribute will automatically override. */}
+    </ConfigProvider>
+  )
+}
+```
+
+---
+
+### Option B: System Media Query
+
+If your application is designed to **automatically follow the system's** light/dark mode settings without providing a manual toggle, you can use the **system media query solution**.
+
+#### 1. Write Custom CSS/SCSS
+
+You can create a global style file in your project (such as `dark-mode.scss`) and use media queries to automatically apply dark mode style mappings:
+
+```scss
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Import the dark variable mappings built into the component library
+    @import '@nutui/nutui-react/dist/styles/theme-dark.scss';
+  }
+}
+```
+
+#### 2. Import in Entrance
+
+Import the style file directly in the project entry file. When the system/browser toggles to dark mode, the style will automatically load without JS logic intervention.
+
+---
+
+### Option Comparison and Selection Recommendations
+
+| Solution | Applicable Scenario | Implementation Principle | Advantages |
+| --- | --- | --- | --- |
+| **Option A (Follow App)** | Need manual toggle switch of "dark/light/system" in application, not strongly bound to system. | Mount class name `.nut-theme-dark` or combine with `ConfigProvider` | Highest flexibility, supports applying dark mode to partial containers, easily customized via JS. |
+| **Option B (Follow System)** | No manual toggle switch needed, page automatically shows dark mode when user system is dark. | CSS media query `@media` | No JS intervention required, fully automated by the browser rendering engine. |
+
+```
+
+```
