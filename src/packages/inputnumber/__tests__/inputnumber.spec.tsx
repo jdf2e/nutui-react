@@ -183,3 +183,150 @@ test('should overlimit when input', async () => {
   })
   expect(overlimit).toBeCalled()
 })
+
+test('should render correct structure order: minus, divider, input, divider, add', () => {
+  const { container } = render(<InputNumber defaultValue={1} />)
+  const root = container.querySelector('.nut-inputnumber')!
+  const children = Array.from(root.children)
+  expect(children[0]).toHaveClass('nut-inputnumber-minus')
+  expect(children[1]).toHaveClass('nut-inputnumber-divider')
+  expect(children[2].tagName).toBe('INPUT')
+  expect(children[3]).toHaveClass('nut-inputnumber-divider')
+  expect(children[4]).toHaveClass('nut-inputnumber-add')
+})
+
+test('should add disabled class when disabled', () => {
+  const { container } = render(<InputNumber defaultValue={1} disabled />)
+  expect(container.querySelector('.nut-inputnumber')).toHaveClass(
+    'nut-inputnumber-disabled'
+  )
+  expect(container.querySelector('input')).toBeDisabled()
+})
+
+test('should add input-disabled class when disabled', () => {
+  const { container } = render(<InputNumber defaultValue={1} disabled />)
+  expect(container.querySelector('input')).toHaveClass(
+    'nut-inputnumber-input-disabled'
+  )
+})
+
+test('should add icon-disabled class when value equals min', () => {
+  const { container } = render(
+    <InputNumber defaultValue={1} min={1} max={10} />
+  )
+  const minusIcon = container.querySelector('.nut-inputnumber-icon-minus')
+  expect(minusIcon).toHaveClass('nut-inputnumber-icon-disabled')
+})
+
+test('should add icon-disabled class when value equals max', () => {
+  const { container } = render(
+    <InputNumber defaultValue={10} min={1} max={10} />
+  )
+  const plusIcon = container.querySelector('.nut-inputnumber-icon-plus')
+  expect(plusIcon).toHaveClass('nut-inputnumber-icon-disabled')
+})
+
+test('should trigger onFocus when input is focused', () => {
+  const focus = vi.fn()
+  const { container } = render(<InputNumber defaultValue={5} onFocus={focus} />)
+  const input = container.querySelector('input')!
+  fireEvent.focus(input)
+  expect(focus).toHaveBeenCalled()
+})
+
+test('should trigger onBlur when input loses focus', () => {
+  const blur = vi.fn()
+  const { container } = render(<InputNumber defaultValue={5} onBlur={blur} />)
+  const input = container.querySelector('input')!
+  fireEvent.focus(input)
+  fireEvent.blur(input)
+  expect(blur).toHaveBeenCalled()
+})
+
+test('should support controlled value', () => {
+  const { container, rerender } = render(<InputNumber value={5} />)
+  expect(container.querySelector('input')?.value).toBe('5')
+  rerender(<InputNumber value={10} />)
+  expect(container.querySelector('input')?.value).toBe('10')
+})
+
+test('should support string value', () => {
+  const { container } = render(<InputNumber defaultValue="8" />)
+  expect(container.querySelector('input')?.value).toBe('8')
+})
+
+test('should block change when beforeChange returns false', async () => {
+  const change = vi.fn()
+  const { container } = render(
+    <InputNumber
+      defaultValue={1}
+      beforeChange={() => Promise.resolve(false)}
+      onChange={change}
+    />
+  )
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
+  await act(async () => {
+    fireEvent.click(iconPlus)
+  })
+  expect(change).not.toBeCalled()
+  expect(container.querySelector('input')?.value).toBe('1')
+})
+
+test('should support custom className and style', () => {
+  const { container } = render(
+    <InputNumber
+      defaultValue={1}
+      className="custom-class"
+      style={{ marginTop: '10px' }}
+    />
+  )
+  const root = container.querySelector('.nut-inputnumber')!
+  expect(root).toHaveClass('custom-class')
+  expect(root).toHaveStyle({ marginTop: '10px' })
+})
+
+test('should format value with formatter', () => {
+  const { container } = render(
+    <InputNumber defaultValue={1000} formatter={(v) => `$${v}`} />
+  )
+  expect(container.querySelector('input')?.value).toBe('$1000')
+})
+
+test('should handle input change', async () => {
+  const change = vi.fn()
+  const { container } = render(
+    <InputNumber defaultValue={1} onChange={change} />
+  )
+  const input = container.querySelector('input')!
+  await act(async () => {
+    fireEvent.input(input, { target: { value: '5' } })
+  })
+  expect(change).toHaveBeenCalled()
+})
+
+test('should clamp value on blur when exceeding max', async () => {
+  const { container } = render(
+    <InputNumber defaultValue={5} min={1} max={10} />
+  )
+  const input = container.querySelector('input')!
+  fireEvent.focus(input)
+  await act(async () => {
+    fireEvent.input(input, { target: { value: '20' } })
+  })
+  fireEvent.blur(input)
+  await waitFor(() => {
+    expect(container.querySelector('input')?.value).toBe('10')
+  })
+})
+
+test('should render with digits precision', async () => {
+  const { container } = render(
+    <InputNumber defaultValue={1} digits={2} step={1} />
+  )
+  expect(container.querySelector('input')?.value).toBe('1.00')
+  const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
+  await act(async () => {
+    fireEvent.click(iconPlus)
+  })
+  expect(container.querySelector('input')?.value).toBe('2.00')
+})
