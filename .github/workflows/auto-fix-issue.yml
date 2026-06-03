@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0 # 完整拉取历史，方便 git 操作
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -46,15 +51,20 @@ jobs:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: python scripts/agents/issue_resolver.py
 
-      # 使用成熟的 create-pull-request Actions 来自动将分支提交为 PR
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: fix/issue-${{ github.event.issue.number }}
-          title: "fix: automatically resolved issue #${{ github.event.issue.number }}"
-          body: |
-            This PR was generated automatically by the Antigravity Issue Resolver Agent.
-            
-            Closes #${{ github.event.issue.number }}
-          commit-message: "fix: auto resolve issue #${{ github.event.issue.number }}"
+      # 推送分支并使用 GitHub CLI (gh) 自动创建 Pull Request
+      - name: Push Branch and Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="fix/issue-${{ github.event.issue.number }}"
+          if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
+            echo "Branch $BRANCH_NAME found. Pushing to origin..."
+            git push origin "$BRANCH_NAME" --force
+            gh pr create \
+              --title "fix: automatically resolved issue #${{ github.event.issue.number }}" \
+              --body "This PR was generated automatically by the Antigravity Issue Resolver Agent. Closes #${{ github.event.issue.number }}" \
+              --head "$BRANCH_NAME" \
+              --base "${{ github.event.repository.default_branch }}" || echo "PR already exists."
+          else
+            echo "No fix branch was created by the Agent."
+          fi
