@@ -278,6 +278,21 @@ export const handlePickerValueChange = (
     formattedDate.push(new Date(defaultDate).getDate())
   }
 
+  if (
+    (rangeType === 'time' || rangeType === 'hour-minutes') &&
+    formattedDate.length < 6
+  ) {
+    const defaultDateObj = new Date(defaultDate)
+    formattedDate.unshift(
+      defaultDateObj.getFullYear(),
+      defaultDateObj.getMonth() + 1,
+      defaultDateObj.getDate()
+    )
+    if (rangeType === 'hour-minutes') {
+      formattedDate.push(0)
+    }
+  }
+
   const year = Number(formattedDate[0])
   const month = Number(formattedDate[1]) - 1
   const day = Math.min(

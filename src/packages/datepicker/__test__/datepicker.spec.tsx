@@ -189,3 +189,44 @@ test('Filter Time', async () => {
   const lists = columns[3].querySelectorAll('.nut-pickerview-roller-item')
   expect(lists.length).toBe(4)
 })
+
+test('DatePicker time range boundary check', async () => {
+  const confirm = vi.fn()
+  const { container, rerender } = render(
+    <DatePicker
+      title="时间选择"
+      visible
+      type="hour-minutes"
+      value={new Date(2022, 0, 1, 8, 40)}
+      startDate={new Date(2022, 0, 1, 8, 30)}
+      endDate={new Date(2022, 0, 1, 18, 45)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+
+  const columns = container.querySelectorAll('.nut-pickerview-list')
+  const minutes = columns[1].querySelectorAll(
+    '.nut-pickerview-roller-item-tiled'
+  )
+  expect(minutes.length).toBe(30) // 30 to 59 minutes (30 items)
+
+  rerender(
+    <DatePicker
+      title="时间选择"
+      visible
+      type="hour-minutes"
+      value={new Date(2022, 0, 1, 18, 20)}
+      startDate={new Date(2022, 0, 1, 8, 30)}
+      endDate={new Date(2022, 0, 1, 18, 45)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+
+  const columnsMax = container.querySelectorAll('.nut-pickerview-list')
+  const minutesMax = columnsMax[1].querySelectorAll(
+    '.nut-pickerview-roller-item-tiled'
+  )
+  expect(minutesMax.length).toBe(46) // 0 to 45 minutes (46 items)
+})

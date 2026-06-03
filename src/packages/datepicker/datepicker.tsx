@@ -125,11 +125,7 @@ const InternalPicker: ForwardRefRenderFunction<
       }
       onChange?.(
         selectedOptions,
-        [
-          String(newDate.getFullYear()),
-          String(newDate.getMonth() + 1),
-          String(newDate.getDate()),
-        ],
+        selectedOptions.map((val) => val.value),
         index
       )
     }
