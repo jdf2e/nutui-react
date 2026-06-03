@@ -1,4 +1,5 @@
-@import '../hoverbuttonitem/hoverbuttonitem.scss';
+@use '../hoverbuttonitem/hoverbuttonitem.scss';
+@use '../safearea/safearea.scss';
 
 .nut-hoverbutton {
   display: flex;

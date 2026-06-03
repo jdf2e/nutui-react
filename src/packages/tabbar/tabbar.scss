@@ -1,4 +1,5 @@
-@import '../tabbaritem/tabbaritem.scss';
+@use '../tabbaritem/tabbaritem.scss';
+@use '../safearea/safearea.scss';
 
 .nut-tabbar {
   border: 0px;
