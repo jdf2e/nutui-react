@@ -1,0 +1,60 @@
+name: Auto Fix Issue by AI Agent
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  auto-fix:
+    # 只有当打上的标签是 'auto-fix' 时才触发 Agent 修复流程
+    if: github.event.label.name == 'auto-fix'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 完整拉取历史，方便 git 操作
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Install Node Dependencies
+        run: pnpm install
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install google-antigravity
+
+      - name: Run Antigravity AI Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ISSUE_ID: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python scripts/agents/issue_resolver.py
+
+      # 使用成熟的 create-pull-request Actions 来自动将分支提交为 PR
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: fix/issue-${{ github.event.issue.number }}
+          title: "fix: automatically resolved issue #${{ github.event.issue.number }}"
+          body: |
+            This PR was generated automatically by the Antigravity Issue Resolver Agent.
+            
+            Closes #${{ github.event.issue.number }}
+          commit-message: "fix: auto resolve issue #${{ github.event.issue.number }}"
