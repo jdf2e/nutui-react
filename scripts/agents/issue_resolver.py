@@ -140,13 +140,21 @@ async def main():
         )
 
         # 唤醒 Agent 执行自动编写、分析、测试和提交的一体化 Turn
-        response = await agent.chat(prompt)
-        
-        # 3. 提取结构化结果
-        data = await response.structured_output()
-        print("\n✨ Agent 执行完成！结构化修复总结如下：")
-        import json
-        print(json.dumps(data, indent=2, ensure_ascii=False))
+        try:
+            response = await agent.chat(prompt)
+            data = await response.structured_output()
+            
+            if data is None:
+                print("❌ 错误：Agent 未能返回有效的结构化修复总结。")
+                print("这通常是由于 API 频率限制 (HTTP 429) 或运行过程中模型终止导致的。")
+                sys.exit(1)
+                
+            print("\n✨ Agent 执行完成！结构化修复总结如下：")
+            import json
+            print(json.dumps(data, indent=2, ensure_ascii=False))
+        except Exception as e:
+            print(f"❌ 运行 Agent 时发生致命错误: {str(e)}")
+            sys.exit(1)
 
 if __name__ == "__main__":
     # 使用 asyncio 异步驱动 Agent 的事件循环
