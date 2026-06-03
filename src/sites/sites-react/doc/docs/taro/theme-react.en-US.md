@@ -68,3 +68,124 @@ export default defineConfig({
     ]
 }
 ```
+
+## Dark Mode
+
+NutUI-React (Taro version) natively supports dark mode. The component library uses a set of independently tuned color variables in dark mode.
+
+### Option A: App-Active Switch (Recommended)
+
+If your miniprogram/application requires users to manually toggle between light and dark modes in the settings (not strictly following the system), you can use the **class name toggle solution**.
+
+#### 1. Import Styles
+
+First, import the component library's default styles and dark theme styles in the project entry or global style file. You can choose to import CSS or SCSS depending on your project configuration:
+
+##### Import CSS styles (for general JS/TS projects):
+
+Refer to Method 2.
+
+##### Import SCSS styles (for projects configured with Sass preprocessor):
+
+Refer to Method 2.
+
+#### 2. Mount Class Name
+
+Mount the `.nut-theme-dark` class name on the root page container of the miniprogram (such as Taro's `View` tag or a global page wrapper component):
+
+The value of `isDark` needs to bridge the implementation of the APP.
+
+```tsx
+import React, { useState } from 'react'
+import { View, Button } from '@tarojs/components'
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <View
+      className={isDark ? 'nut-theme-dark' : ''}
+      style={{ minHeight: '100vh' }}
+    >
+      <Button onClick={() => setIsDark(!isDark)}>
+        Current Mode: {isDark ? 'Dark' : 'Light'}
+      </Button>
+      {/* Your other components */}
+    </View>
+  )
+}
+```
+
+#### 3. Customize with ConfigProvider
+
+If you need to control the dark mode more flexibly in Taro/React logic, or customize dark theme color variables, you can use it in combination with `ConfigProvider`:
+
+```tsx
+import React, { useState } from 'react'
+import { View, Button } from '@tarojs/components'
+import { ConfigProvider } from '@nutui/nutui-react-taro'
+
+// Custom primary color in dark mode
+const darkTheme = {
+  nutuiColorPrimary: '#ff0f23',
+  nutuiColorBackgroundOverlay: '#1f2226',
+}
+
+function App() {
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <ConfigProvider
+      theme={isDark ? darkTheme : undefined}
+      className={isDark ? 'nut-theme-dark' : ''}
+    >
+      <View style={{ minHeight: '100vh' }}>
+        <Button onClick={() => setIsDark(!isDark)}>Toggle Mode</Button>
+        {/* The component library will automatically detect .nut-theme-dark in dark mode, and variables customized through the theme attribute will automatically override. */}
+      </View>
+    </ConfigProvider>
+  )
+}
+```
+
+---
+
+### Option B: System Media Query
+
+If your application is designed to **automatically follow the mobile operating system's** light/dark mode settings (e.g. dark mode in WeChat miniprogram) without providing a manual toggle, you can use the **system media query solution**.
+
+#### 1. Write Global SCSS
+
+In the global SCSS style file, use media queries to dynamically inject dark variables. For miniprogram environments, the styles need to be applied on the `page` node to cover the entire page background:
+
+```scss
+@media (prefers-color-scheme: dark) {
+  page {
+    // Import the dark variable mappings built into the component library
+    @import '@nutui/nutui-react-taro/dist/styles/theme-dark.scss';
+  }
+}
+```
+
+#### 2. Import Configuration
+
+Make sure your miniprogram (taking WeChat miniprogram as an example) is configured to support dark mode in `app.json` or `app.config.ts`:
+
+```json
+{
+  "darkmode": true
+}
+```
+
+---
+
+### Option Comparison and Selection Recommendations
+
+| Solution | Applicable Scenario | Implementation Principle | Advantages |
+| --- | --- | --- | --- |
+| **Option A (Follow App)** | Need manual toggle switch of "dark/light" in application, not strongly bound to system. | Mount class name `.nut-theme-dark` or combine with `ConfigProvider` | Highest flexibility, supports applying dark mode to partial containers, easily controlled via JS/TS. |
+| **Option B (Follow System)** | No manual toggle switch needed, miniprogram automatically shows dark mode when phone system is dark. | `@media (prefers-color-scheme: dark)` | No JS intervention required, fully automated by the host miniprogram container. |
+
+```
+
+```
