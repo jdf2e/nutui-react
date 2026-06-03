@@ -20,7 +20,7 @@ import { TaroToastProps } from '@/types'
 const defaultProps: TaroToastProps = {
   ...defaultOverlayProps,
   id: '',
-  duration: 2, // 时长,duration为0则一直展示
+  duration: 3, // 时长,duration为0则一直展示
   position: 'middle',
   title: '',
   size: 'base', // 设置字体大小，默认base,可选large\small\base
@@ -173,10 +173,7 @@ export const Toast: FunctionComponent<
                 `${classPrefix}-${position}`,
                 contentClassName,
                 `${classPrefix}-inner-${size}`,
-                `${classPrefix}-inner-${wordBreak}`,
-                {
-                  [`${classPrefix}-inner-descrption`]: content,
-                }
+                `${classPrefix}-inner-${wordBreak}`
               )}
               style={{ ...styles, ...contentStyle }}
               ariaRole="alert"

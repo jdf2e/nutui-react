@@ -44,9 +44,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 96px;
-    max-width: 60%;
-    // max-width: 224px;
+    min-width: var(--nutui-toast-inner-min-width, scale-px(88px));
+    max-width: var(--nutui-toast-inner-max-width, scale-px(200px));
     box-sizing: border-box;
     font-size: $toast-text-font-size;
     text-align: $toast-inner-text-align;
@@ -56,9 +55,9 @@
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
 
-    &-descrption {
-      max-width: 68.2%;
-      // max-width: 256px;
+    .nut-toast-has-icon & {
+      min-width: var(--nutui-toast-inner-has-icon-min-width, scale-px(97px));
+      max-width: var(--nutui-toast-inner-has-icon-max-width, scale-px(225px));
     }
 
     &-normal {
@@ -93,34 +92,38 @@
   }
 
   &-text {
-    color: #ffffff;
+    color: var(--nutui-toast-font-color, var(--nutui-white, #ffffff));
     text-align: $toast-inner-text-align;
+    font-weight: var(--nutui-toast-text-font-weight, 400);
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    line-height: 20px;
+    line-height: scale-px(20px);
     /* #endif */
     height: auto;
   }
 
   &-title {
-    color: #ffffff;
+    color: var(--nutui-toast-font-color, var(--nutui-white, #ffffff));
     font-size: $toast-title-font-size;
-    font-weight: 600;
+    font-weight: var(--nutui-toast-title-font-weight, 600);
     text-align: $toast-inner-text-align;
     /* #ifdef harmony dynamic*/
     line-height: normal;
     /* #endif */
     /* #ifndef harmony dynamic*/
-    line-height: 22px;
+    line-height: scale-px(22px);
     /* #endif */
   }
 
   .nut-icon {
-    width: 24px;
-    height: 24px;
-    color: #ffffff;
+    width: scale-px(20px);
+    height: scale-px(20px);
+    color: var(
+      --nutui-toast-icon-color,
+      var(--nutui-toast-font-color, var(--nutui-white, #ffffff))
+    );
   }
 
   &-icon-wrapper {
@@ -128,12 +131,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 3px 0 5px;
-    color: #ffffff;
+    margin: 0;
+    padding: scale-px(10px) 0;
+    color: var(
+      --nutui-toast-icon-color,
+      var(--nutui-toast-font-color, var(--nutui-white, #ffffff))
+    );
 
     &-icon {
-      width: 24px;
-      height: 24px;
+      width: scale-px(20px);
+      height: scale-px(20px);
     }
   }
 
