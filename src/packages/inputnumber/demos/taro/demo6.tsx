@@ -6,7 +6,6 @@ const Demo6 = () => {
     nutuiInputnumberButtonWidth: '36px',
     nutuiInputnumberButtonHeight: '36px',
     nutuiInputnumberButtonBorderRadius: '2px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
     nutuiInputnumberInputHeight: '36px',
     nutuiInputnumberDividerWidth: '1px',
   }
@@ -14,8 +13,6 @@ const Demo6 = () => {
   const customTheme2 = {
     nutuiInputnumberButtonWidth: '32px',
     nutuiInputnumberButtonHeight: '32px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputBackgroundColor: '#fff',
     nutuiInputnumberDividerWidth: '1px',
   }
 

@@ -141,7 +141,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-inputnumber-input-width | The width of the input in the number input box | `32px` |
 | \--nutui-inputnumber-input-height | The height of the input in the number input box | `28px` |
-| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `$color-background` |
+| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `var(--nutui-color-background-component)` |
 | \--nutui-inputnumber-input-font-color | The font color of the input in the number input box | `$color-title` |
 | \--nutui-inputnumber-input-font-size | The font size of the input in the number input box | `$font-size-s` |
 | \--nutui-inputnumber-input-font-family | The font family of the input in the number input box | `JDZH` |

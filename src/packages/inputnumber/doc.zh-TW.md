@@ -133,7 +133,7 @@ import { InputNumber } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-inputnumber-input-width | 數字輸入框中input的寬度 | `32px` |
 | \--nutui-inputnumber-input-height | 數字輸入框中input的高度 | `28px` |
-| \--nutui-inputnumber-input-background-color | 數字輸入框中input的背景顏色 | `$color-background` |
+| \--nutui-inputnumber-input-background-color | 數字輸入框中input的背景顏色 | `var(--nutui-color-background-component)` |
 | \--nutui-inputnumber-input-font-color | 數字輸入框中input的字號顏色 | `$color-title` |
 | \--nutui-inputnumber-input-font-size | 數字輸入框中input的字號大小 | `$font-size-s` |
 | \--nutui-inputnumber-input-font-family | 數字輸入框中input的字體 | `JDZH` |
