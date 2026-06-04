@@ -52,6 +52,8 @@ export const Swipe = forwardRef<
     left: 0,
     right: 0,
   })
+  const actionWidthRef = useRef(actionWidth)
+  actionWidthRef.current = actionWidth
   const wrapperStyle = {
     transform: `translate3d(${state.offset}px, 0, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
@@ -78,7 +80,8 @@ export const Swipe = forwardRef<
     if (touch.isHorizontal()) {
       lockClick.current = true
       const newState = { ...state, dragging: true }
-      const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
+      const isEdge =
+        !opened.current || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
         preventDefault(event, true)
       }
@@ -108,7 +111,7 @@ export const Swipe = forwardRef<
   const toggle = (side: PositionX) => {
     const offset = Math.abs(state.offset)
     const base = 0.3
-    const baseNum = opened ? 1 - base : base
+    const baseNum = opened.current ? 1 - base : base
     const width = side === 'left' ? leftWidth : rightWidth
 
     if (width && offset > Number(width) * baseNum) {
@@ -151,22 +154,22 @@ export const Swipe = forwardRef<
     }
     return 0
   }
-  const leftRef = useCallback(
-    (node: Element | null) => {
-      if (node !== null) {
-        setActionWidth((v) => ({ ...v, left: getNodeWidth(node) }))
+  const leftRef = useCallback((node: Element | null) => {
+    if (node !== null) {
+      const width = getNodeWidth(node)
+      if (width !== actionWidthRef.current.left) {
+        setActionWidth((v) => ({ ...v, left: width }))
       }
-    },
-    [props.leftAction]
-  )
-  const rightRef = useCallback(
-    (node: Element | null) => {
-      if (node !== null) {
-        setActionWidth((v) => ({ ...v, right: getNodeWidth(node) }))
+    }
+  }, [])
+  const rightRef = useCallback((node: Element | null) => {
+    if (node !== null) {
+      const width = getNodeWidth(node)
+      if (width !== actionWidthRef.current.right) {
+        setActionWidth((v) => ({ ...v, right: width }))
       }
-    },
-    [props.rightAction]
-  )
+    }
+  }, [])
   const renderActionContent = (side: PositionX, measuredRef: any) => {
     if (props[`${side}Action`]) {
       return (

@@ -142,7 +142,8 @@ export const Swipe = forwardRef<
     if (touch.isHorizontal()) {
       lockClick.current = true
       const newState = { ...state, dragging: true }
-      const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
+      const isEdge =
+        !opened.current || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
         preventDefault(event, true)
       }
@@ -170,7 +171,7 @@ export const Swipe = forwardRef<
   const toggle = (side: PositionX) => {
     const offset = Math.abs(state.offset)
     const base = 0.3
-    const baseNum = opened ? 1 - base : base
+    const baseNum = opened.current ? 1 - base : base
     const width =
       side === 'left' ? actionWidth.current.left : actionWidth.current.right
     if (width && offset > Number(width) * baseNum) {
