@@ -127,11 +127,13 @@ def process_issue(issue):
 def watch_loop():
     print(f"👀 本地 Issue 监听器已启动（监听仓库: {REPO_OWNER}/{REPO_NAME}，触发标签: {TRIGGER_LABEL}）...")
     print("按下 Ctrl+C 可停止运行。")
-    
-    # 鉴权环境变量检查说明
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("⚠️ 警告：未检测到 GEMINI_API_KEY 环境变量，Agent 执行可能会失败。")
-        
+
+    # 检查 claude CLI 是否可用
+    try:
+        subprocess.run(["claude", "--version"], capture_output=True, check=True)
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        print("⚠️ 警告：未检测到 claude CLI，Agent 执行可能会失败。")
+
     while True:
         issues = fetch_issues_with_label()
         if issues:
