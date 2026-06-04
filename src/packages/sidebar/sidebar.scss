@@ -1,5 +1,5 @@
-@import '../../styles/mixins/index';
-@import '../sidebaritem/sidebaritem.scss';
+@use '../../styles/mixins/index' as *;
+@use '../sidebaritem/sidebaritem.scss';
 
 .nut-sidebar {
   display: flex;

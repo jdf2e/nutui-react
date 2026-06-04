@@ -9,9 +9,9 @@ import rehypeHighlight from 'rehype-highlight'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";\n`
+let fileStr = `@use "@/styles/variables.scss" as *;@use "@/sites/assets/styles/variables.scss" as *;\n`
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
+  fileStr = `@use '@/styles/variables-${projectID}.scss' as *;\n@use "@/sites/assets/styles/variables.scss" as *;\n`
 }
 
 // https://vitejs.dev/config/
@@ -93,7 +93,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     css: {
       preprocessorOptions: {
         scss: {
-          // example : additionalData: `@import "./src/design/styles/variables";`
+          // additionalData injects @use variables into every scss file
           api: 'modern-compiler',
           additionalData: fileStr,
           // 这里查看可选值：https://github.com/sass/sass/blob/1c9ec00/js-api-doc/deprecations.d.ts#L180
@@ -120,11 +120,10 @@ export default defineConfig(async (): Promise<UserConfig> => {
         apply: 'serve',
         async load(id: string) {
           if (id.endsWith('.scss')) {
-            // 移除 @import 语句
             const filePath = resolve(process.cwd(), id)
             const scssCode = await readFileSync(filePath, 'utf-8')
             const modifiedCode = scssCode.replace(
-              /@import\s+['"](\.{2}?\/)[^'".]+(.s?css)['"];/g,
+              /@use\s+['"](\.{2}?\/)[^'".]+(.s?css)['"](\s+as\s+\*)?;/g,
               ''
             )
             return modifiedCode

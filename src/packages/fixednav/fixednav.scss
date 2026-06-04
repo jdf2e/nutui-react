@@ -1,5 +1,5 @@
-@import '../overlay/overlay.scss';
-@import '../badge/badge.scss';
+@use '../overlay/overlay.scss';
+@use '../badge/badge.scss';
 
 .nut-fixednav {
   position: fixed;

@@ -1,5 +1,5 @@
-@import '../button/button.scss';
-@import '../range/range.scss';
+@use '../button/button.scss';
+@use '../range/range.scss';
 
 .nut-audio {
   &-icon {

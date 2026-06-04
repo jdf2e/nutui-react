@@ -1,5 +1,5 @@
-@import '../elevator/elevator.scss';
-@import '../cascader/cascader.scss';
+@use '../elevator/elevator.scss';
+@use '../cascader/cascader.scss';
 
 .nut-address {
   &-exist {

@@ -1,7 +1,7 @@
-@import '../popup/popup.scss';
-@import '../swiper/swiper.scss';
-@import '../video/video.scss';
-@import '../image/image.scss';
+@use '../popup/popup.scss';
+@use '../swiper/swiper.scss';
+@use '../video/video.scss';
+@use '../image/image.scss';
 
 .nut-imagepreview {
   width: 100%;

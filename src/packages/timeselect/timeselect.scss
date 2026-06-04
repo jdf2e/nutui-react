@@ -1,5 +1,5 @@
-@import '../popup/popup.scss';
-@import '../timedetail/timedetail.scss';
+@use '../popup/popup.scss';
+@use '../timedetail/timedetail.scss';
 
 .nut-timeselect {
   background-color: $color-background-overlay;

@@ -1,6 +1,6 @@
-@import '../button/button.scss';
-@import '../overlay/overlay.scss';
-@import '../../styles/mixins/index';
+@use '../button/button.scss';
+@use '../overlay/overlay.scss';
+@use '../../styles/mixins/index' as *;
 
 .nut-dialog {
   display: flex;

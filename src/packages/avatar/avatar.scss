@@ -1,5 +1,5 @@
-@import '../image/image.scss';
-@import '../avatargroup/avatargroup.scss';
+@use '../image/image.scss';
+@use '../avatargroup/avatargroup.scss';
 
 .nut-avatar {
   position: relative;

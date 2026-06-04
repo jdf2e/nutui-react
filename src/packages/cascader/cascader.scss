@@ -1,5 +1,5 @@
-@import '../popup/popup.scss';
-@import '../tabs/tabs.scss';
+@use '../popup/popup.scss';
+@use '../tabs/tabs.scss';
 
 .nut-cascader {
   width: 100%;

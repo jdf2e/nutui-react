@@ -1,5 +1,5 @@
-@import '../../styles/mixins/text-ellipsis.scss';
-@import '../menuitem/menuitem.scss';
+@use '../../styles/mixins/text-ellipsis.scss' as *;
+@use '../menuitem/menuitem.scss';
 
 .nut-menu {
   position: relative;
