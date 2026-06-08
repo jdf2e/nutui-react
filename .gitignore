@@ -48,6 +48,7 @@ pnpm-lock.*.yaml
 .idea
 .vscode
 .omx
+.omc
 *.suo
 *.ntvs*
 *.njsproj
