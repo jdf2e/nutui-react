@@ -9,7 +9,7 @@ NutUI 默认提供多套官方`UI`主题，同时允许在一定程度上定制�
 | 主题说明 | scss 文件名称 |
 | --- | --- |
 | 京东 APP 主题（默认） | `variables.scss` |
-| 京东 JMAPP 主题 ([预览](https://nutui.jd.com/h5/react/jmapp-3x/demo.html#/zh-CN/component/Button)) | `variables-jmapp.scss` |
+| 京东 JMAPP 主题 ([预览](https://nutui.jd.com/h5/react/jmapp-4x/demo.html#/zh-CN/component/Button)) | `variables-jmapp.scss` |
 | 京东 JRKF 主题 | `variables-jrkf.scss` |
 
 ## 使用方式

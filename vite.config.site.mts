@@ -21,11 +21,11 @@ export default defineConfig(async (): Promise<UserConfig> => {
   const remarkGfm = await import('remark-gfm')
   const remarkDirective = await import('remark-directive')
   return {
-    base: '/h5/react/3x',
+    base: '/h5/react/4x',
     server: {
       port: 2021,
       host: '0.0.0.0',
-      open: '/h5/react/3x/index.react.html',
+      open: '/h5/react/4x/index.react.html',
       proxy: {
         '/devServer': {
           target: 'https://nutui.jd.com',
@@ -38,7 +38,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
       alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
     },
     define: {
-      __DEMO_PATH__: JSON.stringify('/h5/react/3x/demo.html#'),
+      __DEMO_PATH__: JSON.stringify('/h5/react/4x/demo.html#'),
     },
     css: {
       preprocessorOptions: {

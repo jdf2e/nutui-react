@@ -1,3 +1,24 @@
+# v4.0.0-beta.1
+
+`2026-06-05`
+
+- 🤖 ci: add strict error handling and exit codes to issue resolver agent
+- 📖 docs: 修订文档
+- :sparkles: feat(agents): add local issue watcher daemon script
+- :sparkles: feat(toast): 适配v16，增加升级v4版本的文档 (#3471)
+- :sparkles: feat: inputnumber暗黑适配 (#3470)
+- :sparkles: feat: inputnumber更新 (#3466)
+- :sparkles: feat(checkbox): 适配v16并补充主题相关文档 (#3469)
+- :sparkles: feat(radio): 适配V16 (#3468)
+- :sparkles: feat(test): 单测处理 (#3467)
+- :sparkles: feat(button): v16 重构+无障碍支持 (#3465)
+- :bug: fix(swipe): resolve infinite re-render loop causing page freeze
+- :bug: fix(datepicker): 解决时间解析为 Invalid Date 的 Bug (#3472)
+- :bug: fix: conflicts
+- 🪵 refactor: 添加手动触发 (#3474)
+- 🪵 refactor: 添加GitHub Actions 自动化的 workflow 配置文件 (#3473)
+- 💡 test(swipe): add touch interaction tests for coverage
+
 # v3.0.20
 
 `2026-05-20`

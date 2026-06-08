@@ -21,7 +21,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
   const remarkGfm = await import('remark-gfm')
   const remarkDirective = await import('remark-directive')
   return {
-    base: '/taro/react/3x',
+    base: '/taro/react/4x',
     server: {
       port: 2021,
       host: '0.0.0.0',
@@ -36,7 +36,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
       },
     },
     define: {
-      __DEMO_PATH__: JSON.stringify('/taro/react/3x/demo/index.html#'),
+      __DEMO_PATH__: JSON.stringify('/taro/react/4x/demo/index.html#'),
     },
     resolve: {
       alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
