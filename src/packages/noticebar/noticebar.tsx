@@ -20,13 +20,17 @@ const defaultProps = {
   direction: 'horizontal',
   list: [],
   duration: 1000,
-  height: 40,
+  height: 36,
   content: '',
   closeable: false,
   wrap: false,
   leftIcon: <Notice />,
   rightIcon: null,
   right: null,
+  description: null,
+  tag: null,
+  action: null,
+  autoClose: 0,
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -51,6 +55,10 @@ export const NoticeBar: FunctionComponent<
     leftIcon,
     rightIcon,
     right,
+    description,
+    tag,
+    action,
+    autoClose,
     delay,
     scrollable,
     speed,
@@ -117,6 +125,17 @@ export const NoticeBar: FunctionComponent<
     }
     return 0
   })()
+
+  // 自动关闭
+  useEffect(() => {
+    if (autoClose && autoClose > 0 && showNoticeBar) {
+      const autoCloseTimer = window.setTimeout(() => {
+        SetShowNoticeBar(false)
+        onClose?.(undefined as any)
+      }, autoClose)
+      return () => clearTimeout(autoCloseTimer)
+    }
+  }, [autoClose, showNoticeBar])
 
   useEffect(() => {
     if (isVertical) {
@@ -450,50 +469,122 @@ export const NoticeBar: FunctionComponent<
     setIsContainerReady(true)
   }, [])
 
+  const renderLeftIcon = () => {
+    if (!leftIcon) return null
+    return <div className={`${classPrefix}-box-left-icon`}>{leftIcon}</div>
+  }
+
+  const renderTag = () => {
+    if (!tag) return null
+    return <div className={`${classPrefix}-box-tag`}>{tag}</div>
+  }
+
+  const renderAction = () => {
+    if (!action) return null
+    return <div className={`${classPrefix}-box-action`}>{action}</div>
+  }
+
+  const RING_R = 20
+  const RING_CIRCUMFERENCE = 2 * Math.PI * RING_R
+
+  const renderAutoCloseIcon = () => {
+    return (
+      <div className={`${classPrefix}-box-close-countdown`}>
+        <svg
+          className={`${classPrefix}-box-close-ring`}
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className={`${classPrefix}-box-close-ring-shadow`}
+            cx="24"
+            cy="24"
+            r={RING_R}
+            fill="none"
+            strokeWidth="3"
+          />
+          <circle
+            className={`${classPrefix}-box-close-ring-progress`}
+            cx="24"
+            cy="24"
+            r={RING_R}
+            fill="none"
+            strokeWidth="3"
+            strokeDasharray={RING_CIRCUMFERENCE}
+            strokeDashoffset="0"
+            strokeLinecap="round"
+            style={{
+              animation: `nut-noticebar-ring-countdown ${autoClose}ms linear forwards`,
+            }}
+          />
+        </svg>
+        <Close className={`${classPrefix}-box-close-icon`} />
+      </div>
+    )
+  }
+
+  const renderCloseIcon = () => {
+    if (!closeable && !rightIcon && !(autoClose && autoClose > 0)) return null
+    return (
+      <div className={`${classPrefix}-box-right-icon`} onClick={onClickIcon}>
+        {rightIcon ||
+          (autoClose && autoClose > 0 ? (
+            renderAutoCloseIcon()
+          ) : (
+            <Close className={`${classPrefix}-box-right-icon-default`} />
+          ))}
+      </div>
+    )
+  }
+
+  const renderRight = () => {
+    if (!right) return null
+    return <div className={`${classPrefix}-box-right`}>{right}</div>
+  }
+
   return (
     <div className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
-          ) : null}
-          <div ref={wrapRef} className="nut-noticebar-box-wrap">
-            <div
-              ref={contentRef}
-              className={`nut-noticebar-box-wrap-content ${animationClass} ${
-                isEllipsis() ? 'nut-ellipsis' : ''
-              }`}
-              style={contentStyle}
-              onAnimationEnd={onAnimationEnd}
-            >
-              {children}
-              {content}
+          {renderLeftIcon()}
+          <div className={`${classPrefix}-box-content-wrapper`}>
+            <div className={`${classPrefix}-box-content-main`}>
+              <div ref={wrapRef} className={`${classPrefix}-box-wrap`}>
+                <div
+                  ref={contentRef}
+                  className={`${classPrefix}-box-wrap-content ${animationClass} ${
+                    isEllipsis() ? 'nut-ellipsis' : ''
+                  }`}
+                  style={contentStyle}
+                  onAnimationEnd={onAnimationEnd}
+                >
+                  {children}
+                  {content}
+                </div>
+              </div>
+              {renderTag()}
             </div>
+            {description ? (
+              <div className={`${classPrefix}-box-description`}>
+                {description}
+              </div>
+            ) : null}
           </div>
-          {right ? (
-            <div className="nut-noticebar-box-right">{right}</div>
-          ) : null}
-          {closeable || rightIcon ? (
-            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
-              {rightIcon || (
-                <Close className="nut-noticebar-box-right-icon-default" />
-              )}
-            </div>
-          ) : null}
+          {renderAction()}
+          {renderRight()}
+          {renderCloseIcon()}
         </div>
       ) : null}
       {showNoticeBar && hasVerticalContent && isVertical ? (
         <div
-          className="nut-noticebar-vertical"
+          className={`${classPrefix}-vertical`}
           style={barStyle}
           ref={containerRefCallback}
           onClick={handleClick}
         >
-          {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
-          ) : null}
+          {renderLeftIcon()}
           {children ? (
-            <div className="nut-noticebar-box-wrap" ref={innerRef}>
+            <div className={`${classPrefix}-box-wrap`} ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   <div
@@ -510,14 +601,13 @@ export const NoticeBar: FunctionComponent<
             </div>
           ) : (
             <div
-              className="nut-noticebar-box-horseLamp-list"
+              className={`${classPrefix}-box-horseLamp-list`}
               style={horseLampStyle}
             >
               {scrollList.current.map((item: string, index: number) => {
                 return (
-                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <div
-                    className="nut-noticebar-box-horseLamp-list-item"
+                    className={`${classPrefix}-box-horseLamp-list-item`}
                     style={{ height }}
                     key={index}
                     onClick={(e) => {
@@ -530,17 +620,10 @@ export const NoticeBar: FunctionComponent<
               })}
             </div>
           )}
-          <div
-            className="nut-noticebar-box-right-icon"
-            onClick={(e) => {
-              handleClickIcon(e)
-            }}
-          >
-            {rightIcon ||
-              (closeable ? (
-                <Close className="nut-noticebar-box-right-icon-default" />
-              ) : null)}
-          </div>
+          {renderTag()}
+          {renderAction()}
+          {renderRight()}
+          {renderCloseIcon()}
         </div>
       ) : null}
     </div>

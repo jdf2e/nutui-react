@@ -113,9 +113,13 @@ Add Right mode to set more custom content.
 | align | Layout mode. When the value is center, scrolling is not supported | `left` \| `center` | `left` |
 | direction | Rolling direction | `string` | `horizontal` |
 | content | Notice text content | `string` | `-` |
+| description | Sub text content, displayed below the main text | `ReactNode` | `-` |
+| tag | Info tag icon, displayed next to the text, size 12×12 | `ReactNode` | `-` |
+| action | Action button area, supports weak action (text link) and strong action (button), max width 99px | `ReactNode` | `-` |
 | closeable | Whether to enable the off mode | `boolean` | `false` |
+| autoClose | Auto close delay (milliseconds), 0 or unset means manual close | `number` | `0` |
 | leftIcon | Left Icon | `ReactNode` | `-` |
-| rightIcon | Right Icon | `ReactNode` | `-` |
+| rightIcon | Right Icon, defaults to `<MaskClose />` in closeable mode | `ReactNode` | `-` |
 | right | Different from rightIcon, it is the right custom area, used by mode of direction='horizontal' | `ReactNode` | `-` |
 | delay | Delay time | `string` \| `number` | `1` |
 | scrollable | Whether to scroll content | `boolean` | `true` |
@@ -146,13 +150,23 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-height | noticebar height | `36px` |
 | \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | noticebar color | `#d9500b` |
-| \--nutui-noticebar-font-size | noticebar font size | `$font-size-s` |
-| \--nutui-noticebar-line-height | noticebar line height | `24px` |
-| \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
+| \--nutui-noticebar-font-size | noticebar font size | `$font-size-m` |
+| \--nutui-noticebar-line-height | noticebar line height | `20px` |
+| \--nutui-noticebar-box-padding | noticebar box padding | `2px 8px` |
 | \--nutui-noticebar-border-radius | noticebar border radius | `0` |
-| \--nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
-| \--nutui-noticebar-icon-gap | gap of icon and text | `4px` |
-| \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
+| \--nutui-noticebar-wrap-padding | noticebar wrap padding | `10px 8px` |
+| \--nutui-noticebar-icon-gap | gap of icon and text | `6px` |
+| \--nutui-noticebar-left-icon-width | noticebar left icon width | `24px` |
 | \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
+| \--nutui-noticebar-close-size | close button size | `20px` |
+| \--nutui-noticebar-tag-size | info tag size | `12px` |
+| \--nutui-noticebar-tag-gap | info tag gap | `4px` |
+| \--nutui-noticebar-action-max-width | action button max width | `99px` |
+| \--nutui-noticebar-action-gap | action button gap | `12px` |
+| \--nutui-noticebar-description-font-size | description font size | `11px` |
+| \--nutui-noticebar-description-color | description color | `#666` |
+| \--nutui-noticebar-description-line-height | description line height | `16px` |
+| \--nutui-noticebar-left-icon-border-radius | left icon border radius | `4px` |
+| \--nutui-noticebar-close-icon-size | close icon size | `10px` |
 
 <Contribution name="NoticeBar" />

@@ -1,0 +1,74 @@
+{
+  "component": "noticebar",
+  "requirement": "更新H5 NoticeBar组件结构布局：配图、文案（主/副文本）、信息标、操作按钮、关闭按钮（含自动关闭），关闭按钮改用MaskClose圆形×图标，对齐harmony CSS设计结构",
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "新增 Props 类型定义",
+      "file": "src/types/spec/noticebar/base.ts",
+      "description": "在 BaseNoticeBar 接口中新增4个 Props：\n- description: ReactNode — 副文本\n- tag: ReactNode — 信息标图标\n- action: ReactNode — 操作按钮区域\n- autoClose: number — 自动关闭延时（毫秒），0或不传为手动关闭",
+      "depends": [],
+      "verification": "npx tsc --noEmit 类型检查通过",
+      "status": "pending"
+    },
+    {
+      "id": "T2",
+      "title": "更新全局样式变量",
+      "file": "src/styles/variables.scss",
+      "description": "修改现有变量：\n- $noticebar-left-icon-width: 16px → 24px\n- $noticebar-icon-gap: 4px → 6px\n新增变量：\n- $noticebar-action-max-width: 99px\n- $noticebar-action-gap: 12px\n- $noticebar-close-size: 20px\n- $noticebar-tag-size: 12px\n- $noticebar-tag-gap: 4px\n- $noticebar-description-font-size: 11px\n- $noticebar-description-color: #666",
+      "depends": [],
+      "verification": "SCSS 编译无报错",
+      "status": "pending"
+    },
+    {
+      "id": "T3",
+      "title": "更新组件 SCSS 样式",
+      "file": "src/packages/noticebar/noticebar.scss",
+      "description": "新增样式类（对齐harmony CSS）：\n- .nut-noticebar-box-content-wrapper: flex:1, overflow:hidden, min-width:0\n- .nut-noticebar-box-description: font-size:$description-font-size, color:$description-color, line-height:1.4, margin-top:2px\n- .nut-noticebar-box-tag: 12*12px, margin-left:4px, flex-shrink:0\n- .nut-noticebar-box-action: max-width:99px, margin-left:12px, flex-shrink:0, white-space:nowrap\n更新：\n- .nut-noticebar-box-right-icon: width/height改为触摸区域适配(内含20*20图标), margin-right:-8px, flex-shrink:0, cursor:pointer\n- .nut-noticebar-box-right-icon-default: 20*20px\n- .nut-noticebar-box-left-icon img: border-radius:4px\n- 同步更新 RTL 样式中 tag/action 的间距镜像",
+      "depends": ["T2"],
+      "verification": "SCSS 编译无报错，样式类名与harmony CSS一致",
+      "status": "pending"
+    },
+    {
+      "id": "T4",
+      "title": "更新 H5 组件 JSX 结构",
+      "file": "src/packages/noticebar/noticebar.tsx",
+      "description": "1. import MaskClose 替代 Close 作为默认关闭图标\n2. 解构新增 props: description, tag, action, autoClose\n3. 新增自动关闭逻辑: useEffect 中设置 setTimeout，autoClose>0 时到时间自动触发关闭\n4. 重构 horizontal 模式 JSX 布局为：\n   leftIcon → content-wrapper(主文本+副文本) → tag → action → close\n   - 新增 .nut-noticebar-box-content-wrapper 包裹文案区域\n   - 当 description 存在时渲染副文本\n   - 当 tag 存在时渲染信息标\n   - 当 action 存在时渲染操作按钮区域\n   - 关闭按钮默认图标改为 MaskClose\n5. vertical 模式同步新增 tag/action/description 支持\n6. 保持原有 right/rightIcon props 的向后兼容",
+      "depends": ["T1", "T3"],
+      "verification": "npx tsc --noEmit 通过，浏览器视觉验证布局",
+      "status": "pending"
+    },
+    {
+      "id": "T5",
+      "title": "更新单元测试",
+      "file": "src/packages/noticebar/__test__/noticebar.spec.tsx",
+      "description": "新增测试用例：\n- description prop 渲染副文本\n- tag prop 渲染信息标\n- action prop 渲染操作按钮区域\n- autoClose 自动关闭功能（定时器触发后 showNoticeBar=false）\n- 关闭按钮默认图标为 MaskClose\n- 更新已有 snapshot 以匹配新结构",
+      "depends": ["T4"],
+      "verification": "npx vitest run src/packages/noticebar 全部通过",
+      "status": "pending"
+    },
+    {
+      "id": "T6",
+      "title": "更新组件文档",
+      "file": "src/packages/noticebar/doc.md",
+      "description": "Props 表新增：\n- description: 副文本内容, ReactNode\n- tag: 信息标图标, ReactNode\n- action: 操作按钮区域, ReactNode\n- autoClose: 自动关闭延时(ms), number, 默认0\nCSS变量表新增：\n- --nutui-noticebar-action-max-width\n- --nutui-noticebar-action-gap\n- --nutui-noticebar-close-size\n- --nutui-noticebar-tag-size\n- --nutui-noticebar-tag-gap\n- --nutui-noticebar-description-font-size\n- --nutui-noticebar-description-color\n更新已有变量默认值说明",
+      "depends": ["T4"],
+      "verification": "文档格式正确，Props 与代码一致",
+      "status": "pending"
+    }
+  ],
+  "checkpoints": [
+    {
+      "after": "T3",
+      "check": "SCSS 编译通过，确认新增样式变量和类名与 harmony CSS 一致"
+    },
+    {
+      "after": "T4",
+      "check": "TypeScript 类型检查通过，浏览器视觉验证 H5 布局符合设计规范"
+    },
+    {
+      "after": "T5",
+      "check": "npx vitest run src/packages/noticebar -u 全部通过，无回归"
+    }
+  ]
+}

@@ -113,9 +113,13 @@ import { NoticeBar } from '@nutui/nutui-react'
 | align | 佈局方式, 值為`center`時，不支持滾動 | `left` \| `center` | `left` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
+| description | 副文本內容，顯示在主文本下方 | `ReactNode` | `-` |
+| tag | 信息標圖標，顯示在文案右側，尺寸 12×12 | `ReactNode` | `-` |
+| action | 操作按鈕區域，支持弱行動（文字鏈接）和強行動（按鈕），最大寬度 99px | `ReactNode` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |
+| autoClose | 自動關閉延時（毫秒），0 或不傳為手動關閉 | `number` | `0` |
 | leftIcon | 左邊的 icon，closeable 模式下默認為空 | `ReactNode` | `-` |
-| rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<Close />` | `ReactNode` | `-` |
+| rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<MaskClose />` | `ReactNode` | `-` |
 | right | 區別於rightIcon，為右邊自定義區域，僅用於 direction='horizontal' 模式 | `ReactNode` | `-` |
 | delay | 延時多少秒 | `string` \| `number` | `1` |
 | scrollable | 是否可以滾動 | `boolean` | `true` |
@@ -146,13 +150,23 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-height | 高度 | `36px` |
 | \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | 文字色 | `#d9500b` |
-| \--nutui-noticebar-font-size | 字號 | `$font-size-s` |
-| \--nutui-noticebar-line-height | 行高 | `24px` |
-| \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-font-size | 字號 | `$font-size-m` |
+| \--nutui-noticebar-line-height | 行高 | `20px` |
+| \--nutui-noticebar-box-padding | padding值 | `2px 8px` |
 | \--nutui-noticebar-border-radius | 圓角 | `0` |
-| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
-| \--nutui-noticebar-icon-gap | icon、text間距 | `4px` |
-| \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |
+| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `10px 8px` |
+| \--nutui-noticebar-icon-gap | icon、text間距 | `6px` |
+| \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `24px` |
 | \--nutui-noticebar-right-icon-width | 右側icon的寬度和高度的設定 | `16px` |
+| \--nutui-noticebar-close-size | 關閉按鈕尺寸 | `20px` |
+| \--nutui-noticebar-tag-size | 信息標尺寸 | `12px` |
+| \--nutui-noticebar-tag-gap | 信息標與文本間距 | `4px` |
+| \--nutui-noticebar-action-max-width | 操作按鈕最大寬度 | `99px` |
+| \--nutui-noticebar-action-gap | 操作按鈕與文本間距 | `12px` |
+| \--nutui-noticebar-description-font-size | 副文本字號 | `11px` |
+| \--nutui-noticebar-description-color | 副文本顏色 | `#666` |
+| \--nutui-noticebar-description-line-height | 副文本行高 | `16px` |
+| \--nutui-noticebar-left-icon-border-radius | 左側圖標圓角 | `4px` |
+| \--nutui-noticebar-close-icon-size | 關閉圖標尺寸 | `10px` |
 
 <Contribution name="NoticeBar" />

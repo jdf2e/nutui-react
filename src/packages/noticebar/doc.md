@@ -104,6 +104,24 @@ import { NoticeBar } from '@nutui/nutui-react'
 
 :::
 
+### 信息标与操作按钮
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### 自动关闭
+
+通过设置 `autoClose` 属性（毫秒）可启用自动关闭模式，关闭按钮外会展示倒计时圆环动画。
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
 ## NoticeBar
 
 ### Props
@@ -113,9 +131,13 @@ import { NoticeBar } from '@nutui/nutui-react'
 | align | 布局方式, 值为`center`时，不支持滚动 | `left` \| `center` | `left` |
 | direction | 滚动的方向，可选 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
+| description | 副文本内容，显示在主文本下方 | `ReactNode` | `-` |
+| tag | 信息标图标，显示在文案右侧，尺寸 12×12 | `ReactNode` | `-` |
+| action | 操作按钮区域，支持弱行动（文字链接）和强行动（按钮），最大宽度 99px | `ReactNode` | `-` |
 | closeable | 是否启用关闭模式 | `boolean` | `false` |
+| autoClose | 自动关闭延时（毫秒），0 或不传为手动关闭 | `number` | `0` |
 | leftIcon | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-` |
-| rightIcon | 右边的 icon，在 closeable 模式下默认为 `<Close />` | `ReactNode` | `-` |
+| rightIcon | 右边的 icon，在 closeable 模式下默认为 `<MaskClose />` | `ReactNode` | `-` |
 | right | 区别于rightIcon，为右边自定义区域，仅用于 direction='horizontal' 模式 | `ReactNode` | `-` |
 | delay | 延时多少秒 | `string` \| `number` | `1` |
 | scrollable | 是否可以滚动 | `boolean` | `true` |
@@ -146,13 +168,23 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-height | 高度 | `36px` |
 | \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | 文字色 | `#d9500b` |
-| \--nutui-noticebar-font-size | 字号 | `$font-size-s` |
-| \--nutui-noticebar-line-height | 行高 | `24px` |
-| \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-font-size | 字号 | `$font-size-m` |
+| \--nutui-noticebar-line-height | 行高 | `20px` |
+| \--nutui-noticebar-box-padding | padding值 | `2px 8px` |
 | \--nutui-noticebar-border-radius | 圆角 | `0` |
-| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
-| \--nutui-noticebar-icon-gap | icon、text间距 | `4px` |
-| \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `16px` |
+| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `10px 8px` |
+| \--nutui-noticebar-icon-gap | icon、text间距 | `6px` |
+| \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `24px` |
 | \--nutui-noticebar-right-icon-width | 右侧icon的宽度和高度的设定 | `16px` |
+| \--nutui-noticebar-close-size | 关闭按钮尺寸 | `20px` |
+| \--nutui-noticebar-tag-size | 信息标尺寸 | `12px` |
+| \--nutui-noticebar-tag-gap | 信息标与文本间距 | `4px` |
+| \--nutui-noticebar-action-max-width | 操作按钮最大宽度 | `99px` |
+| \--nutui-noticebar-action-gap | 操作按钮与文本间距 | `12px` |
+| \--nutui-noticebar-description-font-size | 副文本字号 | `11px` |
+| \--nutui-noticebar-description-color | 副文本颜色 | `#666` |
+| \--nutui-noticebar-description-line-height | 副文本行高 | `16px` |
+| \--nutui-noticebar-left-icon-border-radius | 左侧图标圆角 | `4px` |
+| \--nutui-noticebar-close-icon-size | 关闭图标尺寸 | `10px` |
 
 <Contribution name="NoticeBar" />
