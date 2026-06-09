@@ -102,10 +102,12 @@ test('should render placement inside-bottom-left', () => {
   ).toBeInTheDocument()
 })
 
-test('slide type should calculate correct transform', () => {
+test('slide type should set CSS custom properties for transform', () => {
   const { container } = render(<Indicator type="slide" total={3} current={1} />)
-  const line = container.querySelector('.nut-indicator-line-active')
+  const line = container.querySelector(
+    '.nut-indicator-line-active'
+  ) as HTMLElement
   expect(line).toBeInTheDocument()
-  // stride = (24 - 8) / (3 - 1) = 8, current=1 → translateX(8px)
-  expect(line).toHaveStyle({ transform: 'translateX(8px)' })
+  expect(line.style.getPropertyValue('--nutui-indicator-current')).toBe('1')
+  expect(line.style.getPropertyValue('--nutui-indicator-total')).toBe('3')
 })

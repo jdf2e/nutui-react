@@ -82,6 +82,13 @@
       transition: transform 0.3s ease-in-out;
       background: $indicator-color;
       border: $indicator-dot-border;
+      transform: translateX(
+        calc(
+          var(--nutui-indicator-current, 0) /
+            (var(--nutui-indicator-total, 2) - 1) *
+            (#{$indicator-track-width} - #{$indicator-slider-width})
+        )
+      );
     }
   }
 
@@ -189,6 +196,16 @@
       &-line {
         width: $indicator-dot-size;
         height: $indicator-slider-width;
+
+        &-active {
+          transform: translateY(
+            calc(
+              var(--nutui-indicator-current, 0) /
+                (var(--nutui-indicator-total, 2) - 1) *
+                (#{$indicator-track-width} - #{$indicator-slider-width})
+            )
+          );
+        }
       }
     }
   }

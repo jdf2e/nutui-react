@@ -1,7 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, ViewProps } from '@tarojs/components'
-import { pxTransform } from '@/utils/taro/px-transform'
 import { TaroIndicatorProps, IndicatorType } from '@/types'
 
 const defaultProps = {
@@ -60,13 +59,11 @@ export const Indicator: FunctionComponent<
     return childs
   }
   const renderLineElement = () => {
-    const trackWidth: number = 24
-    const sliderWidth: number = 8
-    const stride = (trackWidth - sliderWidth) / (total - 1)
     return (
       <View
         style={{
-          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${pxTransform(current * stride)})`,
+          '--nutui-indicator-current': current,
+          '--nutui-indicator-total': total,
         }}
         className={`${classPrefix}-line ${classPrefix}-line-active`}
       />

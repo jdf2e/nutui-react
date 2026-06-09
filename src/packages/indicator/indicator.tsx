@@ -55,14 +55,14 @@ export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
     return childs
   }
   const renderLineElement = () => {
-    const trackWidth: number = 24
-    const sliderWidth: number = 8
-    const stride = (trackWidth - sliderWidth) / (total - 1)
     return (
       <div
-        style={{
-          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * stride}px)`,
-        }}
+        style={
+          {
+            '--nutui-indicator-current': current,
+            '--nutui-indicator-total': total,
+          } as React.CSSProperties
+        }
         className={`${classPrefix}-line ${classPrefix}-line-active`}
       />
     )
