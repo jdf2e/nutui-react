@@ -28,6 +28,8 @@ import { Indicator } from '@nutui/nutui-react'
 
 ### Type
 
+Supports three types: anchor indicator (anchor, 2-6 pages), slide indicator (slide, 2-11 pages), dual-screen indicator (dualScreen, fixed 2 pages).
+
 :::demo
 
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
@@ -58,6 +60,16 @@ import { Indicator } from '@nutui/nutui-react'
 
 :::
 
+### Placement
+
+Supports placing the indicator outside or inside the content module at different positions. For inside placement (inside-\*), the parent container must have `position: relative`.
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ## Indicator
 
 ### Props
@@ -65,10 +77,11 @@ import { Indicator } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | current | current step | `number` | `0` |
-| total | step total size | `number` | `3` |
-| direction | display directory,default is horizontal | `horizontal` \| `vertical` | `horizontal` |
+| total | step total size | `number` | `2` |
+| direction | display directory, default is horizontal | `horizontal` \| `vertical` | `horizontal` |
 | color | color | `primary` \| `default` | `primary` |
-| type | interactivity Type | `anchor` \| `slide`\| `dualScreen` | `anchor` |
+| type | interactivity type | `anchor` \| `slide`\| `dualScreen` | `anchor` |
+| placement | placement layout | `outside` \| `inside-top-right` \| `inside-bottom-center` \| `inside-bottom-left` | `-` |
 
 ## Theming
 
@@ -79,10 +92,17 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-indicator-color | indicator active color | `$color-primary` |
-| \--nutui-indicator-dot-color | indicator default color | `$color-text-disabled` |
-| \--nutui-indicator-dot-size | indicator dot size | `3px` |
-| \--nutui-indicator-dot-active-size | indicator dot active size | `6px` |
+| \--nutui-indicator-dot-color | indicator default color | `$color-border` |
+| \--nutui-indicator-dot-size | indicator dot size | `4px` |
+| \--nutui-indicator-dot-active-size | indicator dot active size | `8px` |
 | \--nutui-indicator-border-radius | indicator active border size | `$radius-xxs` |
-| \--nutui-indicator-dot-margin | when horizontal, indicator margin | `$spacing-xxxs` |
+| \--nutui-indicator-dot-margin | when horizontal, indicator margin | `$spacing-xxs` |
+| \--nutui-indicator-dot-border | indicator inner border | `0.33px solid $color-border` |
+| \--nutui-indicator-dot-inactive-color | indicator inactive fill color | `var(--nutui-color-background-component, #f0f2f7)` |
+| \--nutui-indicator-track-width | slide indicator track width | `24px` |
+| \--nutui-indicator-slider-width | slide indicator slider width | `8px` |
+| \--nutui-indicator-dual-screen-inactive-width | dual-screen indicator inactive width | `16px` |
+| \--nutui-indicator-placement-gap | placement gap to content | `8px` |
+| \--nutui-indicator-placement-safe-gap | outside placement safe gap below | `12px` |
 
 <Contribution name="Indicator" />

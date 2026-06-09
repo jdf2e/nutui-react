@@ -25,6 +25,7 @@ export const Indicator: FunctionComponent<
     children,
     className,
     direction,
+    placement,
     ...rest
   } = {
     ...defaultProps,
@@ -34,6 +35,7 @@ export const Indicator: FunctionComponent<
     [`${classPrefix}-vertical`]: direction === 'vertical',
     [`${classPrefix}-white`]: color === 'default',
     [`${classPrefix}-track`]: type === 'slide',
+    [`${classPrefix}-${placement}`]: !!placement,
   })
 
   const renderDotElement = () => {
@@ -58,8 +60,8 @@ export const Indicator: FunctionComponent<
     return childs
   }
   const renderLineElement = () => {
-    const trackWidth: number = 21
-    const sliderWidth: number = 6
+    const trackWidth: number = 24
+    const sliderWidth: number = 8
     const stride = (trackWidth - sliderWidth) / (total - 1)
     return (
       <View

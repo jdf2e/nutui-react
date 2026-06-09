@@ -6,7 +6,7 @@
   align-items: center;
 
   &-fixed-width {
-    width: 21px;
+    width: $indicator-track-width;
   }
 
   &-dot,
@@ -16,9 +16,10 @@
     width: $indicator-dot-size;
     height: $indicator-dot-size;
     border-radius: 50%;
-    background-color: $color-border-disabled;
+    background-color: $indicator-dot-inactive-color;
+    border: $indicator-dot-border;
+    box-sizing: border-box;
     margin-left: $indicator-dot-margin;
-    opacity: 0.4;
 
     &-0 {
       margin-left: 0px;
@@ -26,21 +27,23 @@
 
     &-active {
       width: $indicator-dot-active-size;
+      height: $indicator-dot-size;
       border-radius: $indicator-border-radius;
       background: $indicator-color;
-      opacity: 1;
+      border: $indicator-dot-border;
     }
   }
 
-  // 固定宽度
+  // 双屏模式
   &-fixed-width {
-    // 两个页码的时候
     .nut-indicator-dot {
-      width: 12px;
+      width: $indicator-dual-screen-inactive-width;
+      height: $indicator-dot-size;
       border-radius: $indicator-border-radius;
 
       &-active {
-        width: 6px;
+        width: $indicator-dot-active-size;
+        height: $indicator-dot-size;
       }
     }
   }
@@ -49,43 +52,63 @@
     // 竖向固定高度
     &.nut-indicator-fixed-width {
       justify-content: flex-start;
-      height: 21px;
+      height: $indicator-track-width;
       width: auto;
 
-      // 竖向两个页码
+      // 竖向双屏
       .nut-indicator-dot {
-        width: 3px;
-        height: 12px;
+        width: $indicator-dot-size;
+        height: $indicator-dual-screen-inactive-width;
         border-radius: $indicator-border-radius;
 
         &-active {
-          height: 6px;
-        }
-      }
-
-      &.nut-indicator-fixed-width {
-        &.nut-indicator-white {
-          .nut-indicator-dot {
-            &-active {
-              height: 6px;
-            }
-          }
+          width: $indicator-dot-size;
+          height: $indicator-dot-active-size;
         }
       }
     }
   }
 
   &-line {
-    width: $indicator-dot-active-size;
+    width: $indicator-slider-width;
     margin: 0;
-
     border-radius: $indicator-border-radius;
     background-color: transparent;
+    border: none;
 
     &-active {
+      position: relative;
+      z-index: 1;
       transition: transform 0.3s ease-in-out;
       background: $indicator-color;
+      border: $indicator-dot-border;
     }
+  }
+
+  // 定位布局
+  &-outside {
+    margin-top: $indicator-placement-gap;
+    margin-bottom: $indicator-placement-safe-gap;
+    justify-content: center;
+  }
+
+  &-inside-top-right {
+    position: absolute;
+    top: $indicator-placement-gap;
+    right: $indicator-placement-gap;
+  }
+
+  &-inside-bottom-center {
+    position: absolute;
+    bottom: $indicator-placement-gap;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-inside-bottom-left {
+    position: absolute;
+    bottom: $indicator-placement-gap;
+    left: $indicator-placement-gap;
   }
 }
 
@@ -100,8 +123,8 @@
     height: 100%;
     box-sizing: border-box;
     border-radius: $indicator-border-radius;
-    background-color: $color-border-disabled;
-    opacity: 0.4;
+    background-color: $indicator-dot-inactive-color;
+    border: $indicator-dot-border;
   }
 }
 
@@ -110,11 +133,8 @@
     &-dot,
     &-line {
       position: relative;
-      /* #ifndef dynamic*/
-      box-sizing: content-box;
-      /* #endif */
-      background: rgba(255, 255, 255, 0.4);
-      opacity: 1;
+      background: $color-primary-text;
+      opacity: 0.4;
     }
 
     &-line {
@@ -122,13 +142,14 @@
 
       &-active {
         opacity: 1;
-        background: rgba(255, 255, 255, 1);
+        background: $color-primary-text;
       }
     }
 
     &-dot {
       &-active {
-        background: rgba(255, 255, 255, 1);
+        background: $color-primary-text;
+        opacity: 1;
       }
     }
   }
@@ -136,8 +157,8 @@
 
 .nut-indicator-track.nut-indicator-white {
   &:after {
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    background: rgba(255, 255, 255, 0.4);
+    background: $color-primary-text;
+    opacity: 0.4;
   }
 }
 
@@ -167,7 +188,7 @@
     .nut-indicator {
       &-line {
         width: $indicator-dot-size;
-        height: $indicator-dot-active-size;
+        height: $indicator-slider-width;
       }
     }
   }
@@ -180,5 +201,15 @@
       margin-right: $indicator-dot-margin;
       margin-left: 0px;
     }
+  }
+
+  &-inside-top-right {
+    right: auto;
+    left: $indicator-placement-gap;
+  }
+
+  &-inside-bottom-left {
+    left: auto;
+    right: $indicator-placement-gap;
   }
 }
