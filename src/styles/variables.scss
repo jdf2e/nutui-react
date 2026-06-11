@@ -151,7 +151,7 @@ $color-border-disabled: var(--nutui-color-border-disabled, #c2c4cc) !default;
 $color-title: var(--nutui-color-title, #1a1a1a) !default;
 $color-text: var(--nutui-color-text, #505259) !default;
 $color-text-help: var(--nutui-color-text-help, #888b94) !default;
-$color-text-disabled: var(--nutui-color-text-disabled, #c2c4cc) !default;
+$color-text-disabled: var(--nutui-color-text-disabled, #b4b8bf) !default;
 $color-text-dark: var(
   --nutui-color-text-dark,
   rgba(255, 255, 255, 0.9)
@@ -159,7 +159,7 @@ $color-text-dark: var(
 $color-text-link: var(--nutui-color-text-link, #0c82f7) !default;
 
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
-$color-primary-text: #ffffff !default;
+$color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
 $white: #ffffff !default;
 $black: #000000 !default;
 
@@ -1040,15 +1040,16 @@ $switch-active-disabled-background-color: var(
 ) !default;
 $switch-inactive-disabled-background-color: var(
   --nutui-switch-inactive-disabled-background-color,
-  $color-background
+  var(--nutui-color-background-component)
 ) !default;
 $switch-inactive-line-background-color: var(
   --nutui-switch-inactive-line-background-color,
-  #ffffff
+  $color-primary-text
 ) !default;
-$switch-width: var(--nutui-switch-width, scale-px(46px)) !default;
-$switch-height: var(--nutui-switch-height, scale-px(28px)) !default;
-$switch-line-height: var(--nutui-switch-line-height, scale-px(28px)) !default;
+$switch-width: var(--nutui-switch-width, scale-px(56px)) !default;
+$switch-height: var(--nutui-switch-height, scale-px(24px)) !default;
+$switch-inside-width: var(--nutui-switch-inside-width, scale-px(32px)) !default;
+$switch-inside-height: var(--nutui-switch-inside-height, scale-px(20px)) !default;
 $switch-border-radius: var(
   --nutui-switch-border-radius,
   $radius-circle
@@ -1056,29 +1057,19 @@ $switch-border-radius: var(
 $switch-border-width: var(--nutui-switch-border-width, scale-px(2px)) !default;
 $switch-inside-border-radius: var(
   --nutui-switch-inside-border-radius,
-  $radius-full
+  $radius-circle
 ) !default;
-/* #ifdef harmony */
 $switch-inside-box-shadow: var(
   --nutui-switch-inside-box-shadow,
-  0px scale-px(2px) scale-px(6px) 0px rgba(0, 0, 0, 0.1)
+  0px scale-px(4px) scale-px(8px) 0px rgba(0, 0, 0, 0.12)
 ) !default;
-/* #endif */
-/* #ifndef harmony */
-$switch-inside-box-shadow: var(
-  --nutui-switch-inside-box-shadow,
-  0px scale-px(2px) scale-px(1px) 0px rgba(0, 0, 0, 0.06),
-  0px scale-px(2px) scale-px(6px) 0px rgba(0, 0, 0, 0.1),
-  0px 0px 0px scale-px(1px) rgba(0, 0, 0, 0.02)
-) !default;
-/* #endif */
 $switch-label-text-color: var(
   --nutui-switch-label-text-color,
   $color-primary-text
 ) !default;
 $switch-label-font-size: var(
   --nutui-switch-label-font-size,
-  $font-size-s
+  $font-size-xs
 ) !default;
 $switch-inactive-disabled-label-text-color: var(
   --nutui-switch-inactive-disabled-label-text-color,

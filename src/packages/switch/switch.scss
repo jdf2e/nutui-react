@@ -11,7 +11,6 @@
   align-items: center;
   min-width: $switch-width;
   height: $switch-height;
-  line-height: $switch-line-height;
   background-color: $switch-active-background-color;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
@@ -27,14 +26,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: calc($switch-height - $switch-border-width * 2);
-    width: calc($switch-height - $switch-border-width * 2);
+    height: $switch-inside-height;
+    width: $switch-inside-width;
     border-radius: $switch-inside-border-radius;
     background: $color-primary-text;
     transition: left 0.3s linear;
     box-shadow: $switch-inside-box-shadow;
     &-open {
-      left: calc(100% - $switch-height + $switch-border-width);
+      left: calc(100% - $switch-inside-width - $switch-border-width);
       &-rtl {
         left: $switch-border-width;
       }
@@ -42,13 +41,8 @@
     &-close {
       left: $switch-border-width;
       &-rtl {
-        left: calc(100% - $switch-height + $switch-border-width);
+        left: calc(100% - $switch-inside-width - $switch-border-width);
       }
-    }
-    .nut-icon {
-      width: calc(($switch-height - $switch-border-width * 2) / 2);
-      height: calc(($switch-height - $switch-border-width * 2) / 2);
-      color: $switch-active-disabled-background-color;
     }
   }
 
@@ -60,6 +54,12 @@
       background: $switch-inactive-line-background-color;
       border-radius: 2px;
     }
+  }
+
+  .nut-icon {
+    width: calc($switch-height / 2);
+    height: calc($switch-height / 2);
+    color: $switch-active-disabled-background-color;
   }
 
   &-label {
@@ -78,16 +78,16 @@
       color: $switch-label-text-color;
     }
     &-open {
-      margin: 0 calc($switch-height - $switch-border-width + 3px) 0 7px;
+      margin: 0 calc($switch-inside-width + $switch-border-width + 3px) 0 7px;
       &-rtl {
-        margin: 0 7px 0 calc($switch-height - $switch-border-width + 3px);
+        margin: 0 7px 0 calc($switch-inside-width + $switch-border-width + 3px);
       }
     }
 
     &-close {
-      margin: 0 7px 0 calc($switch-height - $switch-border-width + 3px);
+      margin: 0 7px 0 calc($switch-inside-width + $switch-border-width + 3px);
       &-rtl {
-        margin: 0 calc($switch-height - $switch-border-width + 3px) 0 7px;
+        margin: 0 calc($switch-inside-width + $switch-border-width + 3px) 0 7px;
       }
     }
 
