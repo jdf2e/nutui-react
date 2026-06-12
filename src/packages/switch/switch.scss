@@ -1,4 +1,11 @@
 .nut-switch {
+  --nut-switch-height: #{$switch-height};
+  --nut-switch-inside-width: #{$switch-inside-width};
+  --nut-switch-border-width: #{$switch-border-width};
+  --nut-switch-label-margin-offset: calc(
+    var(--nut-switch-inside-width) + var(--nut-switch-border-width) + 3px
+  );
+
   cursor: pointer;
   position: relative;
   /* #ifdef dynamic*/
@@ -16,7 +23,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  flex: 0 0 auto; // 防止被压缩
+  flex: 0 0 auto;
 
   &-button {
     position: absolute;
@@ -33,15 +40,19 @@
     transition: left 0.3s linear;
     box-shadow: $switch-inside-box-shadow;
     &-open {
-      left: calc(100% - $switch-inside-width - $switch-border-width);
+      left: calc(
+        100% - var(--nut-switch-inside-width) - var(--nut-switch-border-width)
+      );
       &-rtl {
-        left: $switch-border-width;
+        left: var(--nut-switch-border-width);
       }
     }
     &-close {
-      left: $switch-border-width;
+      left: var(--nut-switch-border-width);
       &-rtl {
-        left: calc(100% - $switch-inside-width - $switch-border-width);
+        left: calc(
+          100% - var(--nut-switch-inside-width) - var(--nut-switch-border-width)
+        );
       }
     }
   }
@@ -49,7 +60,9 @@
   &-close {
     background-color: $switch-inactive-background-color;
     &-line {
-      width: calc(($switch-height - $switch-border-width * 2) / 2);
+      width: calc(
+        (var(--nut-switch-height) - var(--nut-switch-border-width) * 2) * 0.5
+      );
       height: 2px;
       background: $switch-inactive-line-background-color;
       border-radius: 2px;
@@ -57,8 +70,8 @@
   }
 
   .nut-icon {
-    width: calc($switch-height / 2);
-    height: calc($switch-height / 2);
+    width: calc(var(--nut-switch-height) * 0.5);
+    height: calc(var(--nut-switch-height) * 0.5);
     color: $switch-active-disabled-background-color;
   }
 
@@ -78,16 +91,16 @@
       color: $switch-label-text-color;
     }
     &-open {
-      margin: 0 calc($switch-inside-width + $switch-border-width + 3px) 0 7px;
+      margin: 0 var(--nut-switch-label-margin-offset) 0 7px;
       &-rtl {
-        margin: 0 7px 0 calc($switch-inside-width + $switch-border-width + 3px);
+        margin: 0 7px 0 var(--nut-switch-label-margin-offset);
       }
     }
 
     &-close {
-      margin: 0 7px 0 calc($switch-inside-width + $switch-border-width + 3px);
+      margin: 0 7px 0 var(--nut-switch-label-margin-offset);
       &-rtl {
-        margin: 0 calc($switch-inside-width + $switch-border-width + 3px) 0 7px;
+        margin: 0 var(--nut-switch-label-margin-offset) 0 7px;
       }
     }
 
