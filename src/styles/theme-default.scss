@@ -380,4 +380,7 @@ page {
   --nutui-line-tag: var(--nutui-line-1);
   // 间隔线/组件边框
   --nutui-line-component: var(--nutui-line-2);
+
+  // indicator 圆角（不随 radius-xxs 归零）
+  --nutui-indicator-border-radius: var(--nutui-radius-2);
 }

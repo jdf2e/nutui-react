@@ -2073,16 +2073,44 @@ $tabs-tabpane-background-color: var(
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;
-$indicator-dot-size: var(--nutui-indicator-dot-size, scale-px(3px)) !default;
+$indicator-dot-size: var(--nutui-indicator-dot-size, scale-px(4px)) !default;
 $indicator-dot-active-size: var(
   --nutui-indicator-dot-active-size,
-  scale-px(6px)
+  scale-px(8px)
 ) !default;
 $indicator-border-radius: var(
   --nutui-indicator-border-radius,
   $radius-xxs
 ) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, $spacing-xxs) !default;
+$indicator-dot-border: var(
+  --nutui-indicator-dot-border,
+  scale-px(0.33px) solid $color-border
+) !default;
+$indicator-dot-inactive-color: var(
+  --nutui-indicator-dot-inactive-color,
+  var(--nutui-color-background-component, #f0f2f7)
+) !default;
+$indicator-track-width: var(
+  --nutui-indicator-track-width,
+  scale-px(24px)
+) !default;
+$indicator-slider-width: var(
+  --nutui-indicator-slider-width,
+  scale-px(8px)
+) !default;
+$indicator-dual-screen-inactive-width: var(
+  --nutui-indicator-dual-screen-inactive-width,
+  scale-px(16px)
+) !default;
+$indicator-placement-gap: var(
+  --nutui-indicator-placement-gap,
+  scale-px(8px)
+) !default;
+$indicator-placement-safe-gap: var(
+  --nutui-indicator-placement-safe-gap,
+  scale-px(12px)
+) !default;
 
 // menu（✅）
 $menu-scroll-fixed-top: var(--nutui-menu-scroll-fixed-top, 0) !default;
