@@ -9,6 +9,7 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const IndicatorDemo = () => {
   const [translated] = useTranslate({
@@ -19,6 +20,7 @@ const IndicatorDemo = () => {
       customNode: '自定义节点',
       custom: '自定义',
       vertical: '竖向展示',
+      placement: '定位布局',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -27,6 +29,7 @@ const IndicatorDemo = () => {
       customNode: '自定义节点',
       custom: '自定义',
       vertical: '豎向展示',
+      placement: '定位佈局',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -35,6 +38,7 @@ const IndicatorDemo = () => {
       customNode: 'Custom Node',
       custom: 'Custom',
       vertical: 'Vertical display',
+      placement: 'Placement',
     },
   })
 
@@ -54,6 +58,8 @@ const IndicatorDemo = () => {
         <Demo3 />
         <View className="h2">{translated.vertical}</View>
         <Demo4 />
+        <View className="h2">{translated.placement}</View>
+        <Demo7 />
       </ScrollView>
     </>
   )

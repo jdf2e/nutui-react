@@ -23,6 +23,7 @@ export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
     children,
     className,
     direction,
+    placement,
     ...rest
   } = {
     ...defaultProps,
@@ -32,6 +33,7 @@ export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
     [`${classPrefix}-vertical`]: direction === 'vertical',
     [`${classPrefix}-white`]: color === 'default',
     [`${classPrefix}-track`]: type === 'slide',
+    [`${classPrefix}-${placement}`]: !!placement,
   })
 
   const renderDotElement = () => {
@@ -53,14 +55,14 @@ export const Indicator: FunctionComponent<Partial<WebIndicatorProps>> = (
     return childs
   }
   const renderLineElement = () => {
-    const trackWidth: number = 21
-    const sliderWidth: number = 6
-    const stride = (trackWidth - sliderWidth) / (total - 1)
     return (
       <div
-        style={{
-          transform: `${direction === 'vertical' ? 'translateY' : 'translateX'}(${current * stride}px)`,
-        }}
+        style={
+          {
+            '--nutui-indicator-current': current,
+            '--nutui-indicator-total': total,
+          } as React.CSSProperties
+        }
         className={`${classPrefix}-line ${classPrefix}-line-active`}
       />
     )
