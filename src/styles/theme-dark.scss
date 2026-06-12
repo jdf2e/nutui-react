@@ -123,7 +123,7 @@ page,
   // --nutui-white-10: rgba(255, 255, 255, 0.7);
   // --nutui-white-11: rgba(255, 255, 255, 0.8);
   --nutui-white-12: rgba(31, 31, 31, 0.9);
-  // --nutui-white-13: rgba(255, 255, 255, 1);
+  --nutui-white-13: rgba(255, 255, 255, 1);
 
   // 品牌颜色语义化
   // 品牌主色调默认态，主要功能控件的背景、边框、镂空状态下的文字等
@@ -133,7 +133,7 @@ page,
   // 品牌渐变色右端
   --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
   // 品牌主色调或其他深色背景下的文字
-  --nutui-color-primary-text: var(--nutui-gray-1);
+  --nutui-color-primary-text: var(--nutui-white-13);
   // 品牌主色调点击态，背景、边框、镂空状态下的文字
   --nutui-color-primary-pressed: var(--nutui-red-7);
   // 品牌主色调禁用态，背景、边框、镂空状态下的文字
