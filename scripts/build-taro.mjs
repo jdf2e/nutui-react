@@ -348,7 +348,11 @@ async function copyStyles() {
 // 构建样式
 async function buildCSS(themeName = '') {
   const componentScssFiles = await glob(['src/packages/**/*.scss'], {
-    ignore: ['src/packages/**/demo.scss'],
+    ignore: [
+      'src/packages/**/demo.scss',
+      // demo 专用全量 bundle，不参与 npm 按组件发包
+      'src/packages/nutui.react.scss.taro.bundle.scss',
+    ],
   })
 
   const variables = await readFile(
@@ -438,7 +442,10 @@ async function buildCSS(themeName = '') {
 // 构建样式
 async function buildHarmonyCSS(themeName = '') {
   const componentScssFiles = await glob(['src/packages/**/*.scss'], {
-    ignore: ['src/packages/**/demo.scss'],
+    ignore: [
+      'src/packages/**/demo.scss',
+      'src/packages/nutui.react.scss.taro.bundle.scss',
+    ],
   })
 
   const variables = await readFile(
