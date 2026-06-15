@@ -1,3 +1,12 @@
+# v4.0.0-beta.3
+
+`2026-06-12`
+
+- 🏡 chore(deps): update actions/setup-python action to v6 (#3477)
+- :sparkles: feat(switch): 适配 v16 (#3483)
+- :sparkles: feat: indicator基础升级完成 (#3480)
+- :bug: fix: 解决taro版本demo变量文件重复注入导致超时的问题 (#3482)
+
 # v4.0.0-beta.2
 
 `2026-06-08`
