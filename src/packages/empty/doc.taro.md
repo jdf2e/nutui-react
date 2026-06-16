@@ -93,7 +93,6 @@ import { Empty } from '@nutui/nutui-react-taro'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-empty-padding | 组件内边距 | `20px` |
-| \--nutui-empty-background-color | 背景色 | `$color-background-overlay` |
 | \--nutui-empty-title-color | 标题颜色 | `$color-title`（`#11141A`） |
 | \--nutui-empty-description-color | 描述颜色 | `$color-text-help`（`#8D9199`） |
 
@@ -129,7 +128,5 @@ import { Empty } from '@nutui/nutui-react-taro'
 | \--nutui-empty-partial-content-gap | 图与文案间距 | `8px` |
 | \--nutui-empty-partial-description-font-size | 文案字号 | `$font-size-m` |
 | \--nutui-empty-partial-description-line-height | 文案行高 | `32px` |
-
-> v4 已移除 `--nutui-empty-image-size`、`--nutui-empty-image-small-size` 等 v3 变量，请按 `size` 使用上表对应变量。
 
 <Contribution name="Empty" />

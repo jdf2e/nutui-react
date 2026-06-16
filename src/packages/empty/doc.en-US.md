@@ -93,7 +93,6 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-empty-padding | Component padding | `20px` |
-| \--nutui-empty-background-color | Background color | `$color-background-overlay` |
 | \--nutui-empty-title-color | Title color | `$color-title` (`#11141A`) |
 | \--nutui-empty-description-color | Description color | `$color-text-help` (`#8D9199`) |
 
@@ -129,7 +128,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-empty-partial-content-gap | Gap between image and text | `8px` |
 | \--nutui-empty-partial-description-font-size | Text font size | `$font-size-m` |
 | \--nutui-empty-partial-description-line-height | Text line height | `32px` |
-
-> v4 removed legacy variables such as `--nutui-empty-image-size` and `--nutui-empty-image-small-size`. Use the per-size variables above.
 
 <Contribution name="Empty" />

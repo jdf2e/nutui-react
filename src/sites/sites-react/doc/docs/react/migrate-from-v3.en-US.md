@@ -70,7 +70,7 @@ npm install @nutui/nutui-react-taro
 - **Theme Variable Updates**:
   - Added `--nutui-empty-title-color`, `--nutui-empty-description-color`, and per-size variables (e.g. `--nutui-empty-full-image-size`).
   - Font sizes default to `$font-size-*` theme tokens; line heights use `$line-height-*` when available (e.g. 24px, 20px), otherwise design-spec px values (e.g. 22px, 32px).
-  - Legacy `--nutui-empty-image-size` and `--nutui-empty-image-small-size` have been removed; use per-size variables instead.
+  - Legacy `--nutui-empty-image-size`, `--nutui-empty-image-small-size`, and `--nutui-empty-background-color` have been removed; use per-size variables instead. The component itself is transparent; use an outer container (e.g. `Cell`) for display backgrounds.
 - **`status` Enum Breaking Change**:
   - 8 built-in scenarios: `network` / `comment` / `search` / `shop` / `address` / `order` / `favor` / `cart`.
   - Removed `empty` and `error`; default changed from `empty` to `network`.

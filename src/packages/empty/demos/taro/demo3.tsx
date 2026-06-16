@@ -1,7 +1,11 @@
 import React from 'react'
-import { Empty } from '@nutui/nutui-react-taro'
+import { Cell, Empty } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
-  return <Empty size="partial" status="search" description="没有更多商品咯" />
+  return (
+    <Cell>
+      <Empty size="partial" status="search" description="没有更多商品咯" />
+    </Cell>
+  )
 }
 export default Demo3

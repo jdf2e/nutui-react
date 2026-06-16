@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, TabPane, Empty } from '@nutui/nutui-react'
+import { Empty, TabPane, Tabs } from '@nutui/nutui-react'
 
 const statusList = [
   {

@@ -70,7 +70,7 @@ npm install @nutui/nutui-react-taro
 - **主题变量调整**：
   - 新增 `--nutui-empty-title-color`、`--nutui-empty-description-color` 及分尺寸变量（如 `--nutui-empty-full-image-size`）。
   - 字号默认引用 `$font-size-*` 主题 token；行高有对应 token 时引用 `$line-height-*`（如 24px、20px），其余按设计稿 px 值（如 22px、32px）。
-  - 旧变量 `--nutui-empty-image-size`、`--nutui-empty-image-small-size` 已移除，请改用对应尺寸变量。
+  - 旧变量 `--nutui-empty-image-size`、`--nutui-empty-image-small-size`、`--nutui-empty-background-color` 已移除，请改用对应尺寸变量；组件本身为透明背景，展示区域背景由外层容器（如 `Cell`）控制。
 - **`status` 枚举变更（不兼容）**：
   - 内置 8 种业务场景：`network` / `comment` / `search` / `shop` / `address` / `order` / `favor` / `cart`。
   - 移除 `empty`、`error`；默认值由 `empty` 调整为 `network`。

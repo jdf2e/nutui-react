@@ -8,16 +8,12 @@
   flex-direction: column;
   justify-content: center;
   padding: $empty-padding;
-  background-color: $empty-background-color;
 
   &-image {
-    flex-shrink: 0;
-
     img,
     image {
       width: 100%;
       height: 100%;
-      display: block;
     }
   }
 

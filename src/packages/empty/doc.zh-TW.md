@@ -93,7 +93,6 @@ import { Empty } from '@nutui/nutui-react'
 | 名稱 | 説明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-empty-padding | 組件內邊距 | `20px` |
-| \--nutui-empty-background-color | 背景色 | `$color-background-overlay` |
 | \--nutui-empty-title-color | 標題顏色 | `$color-title`（`#11141A`） |
 | \--nutui-empty-description-color | 描述顏色 | `$color-text-help`（`#8D9199`） |
 
@@ -129,7 +128,5 @@ import { Empty } from '@nutui/nutui-react'
 | \--nutui-empty-partial-content-gap | 圖與文案間距 | `8px` |
 | \--nutui-empty-partial-description-font-size | 文案字號 | `$font-size-m` |
 | \--nutui-empty-partial-description-line-height | 文案行高 | `32px` |
-
-> v4 已移除 `--nutui-empty-image-size`、`--nutui-empty-image-small-size` 等 v3 變量，請按 `size` 使用上表對應變量。
 
 <Contribution name="Empty" />

@@ -1410,8 +1410,6 @@ $segmented-icon-margin-right: var(--nutui-segmented-icon-margin-right,
 
 // empty（✅）
 $empty-padding: var(--nutui-empty-padding, 20px) !default;
-$empty-background-color: var(--nutui-empty-background-color,
-    $color-background-overlay) !default;
 $empty-title-color: var(--nutui-empty-title-color, $color-title) !default;
 $empty-description-color: var(--nutui-empty-description-color, $color-text-help) !default;
 $empty-full-padding-top: var(--nutui-empty-full-padding-top, 160px) !default;

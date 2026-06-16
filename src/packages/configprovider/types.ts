@@ -772,7 +772,6 @@ export type NutCSSVariables =
   | 'nutuiSegmentedActiveBackground'
   | 'nutuiSegmentedIconMarginRight'
   | 'nutuiEmptyPadding'
-  | 'nutuiEmptyBackgroundColor'
   | 'nutuiEmptyTitleColor'
   | 'nutuiEmptyDescriptionColor'
   | 'nutuiEmptyFullPaddingTop'

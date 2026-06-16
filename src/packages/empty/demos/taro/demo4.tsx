@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Tabs, TabPane, Empty } from '@nutui/nutui-react-taro'
+import { Empty, TabPane, Tabs } from '@nutui/nutui-react-taro'
 
 const statusList = [
   {
