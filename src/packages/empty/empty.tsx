@@ -3,36 +3,22 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 import Button from '../button'
-import { UIType, UISize, UIFill } from '@/types/base/atoms'
+import {
+  getEmptyStatusImage,
+  type EmptyAction,
+  type EmptySize,
+  type EmptyStatus,
+} from '@/types'
 
-export interface EmptyAction {
-  text: React.ReactNode
-  type?: UIType
-  size?: UISize
-  fill?: UIFill
-  disabled?: boolean
-  onClick?: () => () => void
-}
+export type { EmptyAction, EmptySize, EmptyStatus } from '@/types'
 
-type statusOptions = {
-  [key: string]: string
-}
-
-const defaultStatus: statusOptions = {
-  empty:
-    'https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png',
-  error:
-    'https://storage.360buyimg.com/imgtools/f3278d0ebb-0ce360c0-c0ac-11ee-8375-193101bb1a46.png',
-  network:
-    'https://storage.360buyimg.com/imgtools/43c30f7e29-0d483d10-c0ac-11ee-bec4-eb4d2a09a51d.png',
-}
 export interface EmptyProps extends BasicComponent {
   image?: ReactNode
   imageSize: number | string
   title: ReactNode
   description: ReactNode
-  size: 'small' | 'base'
-  status: 'empty' | 'error' | 'network'
+  size: EmptySize
+  status: EmptyStatus
   actions: Array<EmptyAction>
 }
 
@@ -41,8 +27,8 @@ const defaultProps = {
   title: '',
   description: '',
   imageSize: '',
-  size: 'base',
-  status: 'empty',
+  size: 'half',
+  status: 'network',
   actions: [],
 } as EmptyProps
 
@@ -69,7 +55,7 @@ export const Empty: FunctionComponent<
 
   const [imgStyle, setImgStyle] = useState<any>({})
 
-  const imageUrl = image || defaultStatus[status]
+  const imageUrl = image || getEmptyStatusImage(status)
   const imageNode =
     typeof imageUrl === 'string' ? (
       <img
@@ -101,25 +87,47 @@ export const Empty: FunctionComponent<
       }
     })
   }, [imageSize])
-  const cls = classNames(classPrefix, className)
+  const cls = classNames(classPrefix, `${classPrefix}--${size}`, className)
+
+  const imageBlock = (
+    <div className={`${classPrefix}-image`} style={imgStyle}>
+      {imageNode}
+    </div>
+  )
+
+  const titleBlock =
+    typeof title === 'string' && title ? (
+      <div className={`${classPrefix}-title`}>{title}</div>
+    ) : (
+      title
+    )
+
+  const descriptionBlock =
+    typeof description === 'string' ? (
+      <div className={`${classPrefix}-description`}>{description}</div>
+    ) : (
+      description
+    )
 
   return (
-    <div className={cls} {...rest}>
-      <div className={`${classPrefix}-${size}`} style={imgStyle}>
-        {imageNode}
-      </div>
-      {typeof title === 'string' && title ? (
-        <div className={`${classPrefix}-title`}>{title}</div>
+    <div className={cls} style={style} {...rest}>
+      {size === 'partial' ? (
+        <div className={`${classPrefix}-partial-body`}>
+          {imageBlock}
+          <div className={`${classPrefix}-content`}>
+            {titleBlock}
+            {descriptionBlock}
+          </div>
+        </div>
       ) : (
-        title
-      )}
-      {typeof description === 'string' ? (
-        <div className={`${classPrefix}-description`}>{description}</div>
-      ) : (
-        description
+        <>
+          {imageBlock}
+          {titleBlock}
+          {descriptionBlock}
+        </>
       )}
       {actions.length ? (
-        <div className={`${classPrefix}-actions-${size}`}>
+        <div className={`${classPrefix}-actions`}>
           {actions.map((action, index) => {
             const { text, ...rest } = action
             return (

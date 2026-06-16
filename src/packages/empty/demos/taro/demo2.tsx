@@ -1,13 +1,30 @@
 import React from 'react'
-import { Empty } from '@nutui/nutui-react-taro'
+import { Empty, Toast } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   return (
-    <Empty
-      title="半屏缺省标题"
-      description="内容描述内容描述内容描述"
-      size="small"
-    />
+    <>
+      <Empty
+        size="half"
+        status="cart"
+        title="小购物车大容量"
+        description="把喜欢的商品都加进来吧"
+        actions={[
+          {
+            text: '逛逛秒杀',
+            onClick: () =>
+              Toast.show('empty-demo2', { title: '逛逛秒杀', icon: 'none' }),
+          },
+          {
+            text: '看看关注',
+            type: 'primary',
+            onClick: () =>
+              Toast.show('empty-demo2', { title: '看看关注', icon: 'none' }),
+          },
+        ]}
+      />
+      <Toast id="empty-demo2" />
+    </>
   )
 }
 export default Demo2

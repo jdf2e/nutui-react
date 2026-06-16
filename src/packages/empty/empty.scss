@@ -1,4 +1,5 @@
 @import '../button/button.scss';
+
 .nut-empty {
   box-sizing: border-box;
   width: 100%;
@@ -9,55 +10,125 @@
   padding: $empty-padding;
   background-color: $empty-background-color;
 
-  &-base {
-    width: $empty-image-size;
-    height: $empty-image-size;
+  &-image {
+    flex-shrink: 0;
 
     img,
     image {
       width: 100%;
       height: 100%;
-    }
-  }
-
-  &-small {
-    width: $empty-image-small-size;
-    height: $empty-image-small-size;
-
-    img,
-    image {
-      width: 100%;
-      height: 100%;
+      display: block;
     }
   }
 
   &-title {
-    margin-top: $empty-title-margin-top;
+    text-align: center;
+    color: $empty-title-color;
     font-weight: $font-weight-bold;
-    margin-bottom: $empty-title-margin-bottom;
-    color: $color-title;
-    font-size: $font-size-l;
-    line-height: $empty-title-line-height;
   }
 
   &-description {
-    color: $color-text;
-    font-size: $font-size-s;
-    line-height: $empty-description-line-height;
+    text-align: center;
+    color: $empty-description-color;
+    font-weight: $font-weight;
   }
-  &-actions-base {
+
+  &-actions {
     display: flex;
     flex-direction: row;
-    margin-top: 24px;
-  }
-  &-actions-small {
-    display: flex;
-    flex-direction: row;
-    margin-top: 16px;
+    justify-content: center;
   }
 
   &-action {
     margin-right: 6px;
     margin-left: 6px;
+  }
+
+  &-partial-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  &-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  // 全屏型：整页无数据
+  &--full {
+    padding-top: $empty-full-padding-top;
+
+    .nut-empty-image {
+      width: $empty-full-image-size;
+      height: $empty-full-image-size;
+    }
+
+    .nut-empty-title {
+      font-size: $empty-full-title-font-size;
+      line-height: $empty-full-title-line-height;
+    }
+
+    .nut-empty-description {
+      font-size: $empty-full-description-font-size;
+      line-height: $empty-full-description-line-height;
+    }
+
+    .nut-empty-actions {
+      margin-top: $empty-full-actions-margin-top;
+    }
+  }
+
+  // 半屏型：模块、弹层等区域
+  &--half {
+    .nut-empty-image {
+      width: $empty-half-image-size;
+      height: $empty-half-image-size;
+    }
+
+    .nut-empty-title {
+      font-size: $empty-half-title-font-size;
+      line-height: $empty-half-title-line-height;
+    }
+
+    .nut-empty-description {
+      font-size: $empty-half-description-font-size;
+      line-height: $empty-half-description-line-height;
+    }
+
+    .nut-empty-actions {
+      margin-top: $empty-half-actions-margin-top;
+    }
+  }
+
+  // 局部型：横向图文
+  &--partial {
+    padding: $empty-partial-padding;
+
+    .nut-empty-partial-body {
+      gap: $empty-partial-content-gap;
+    }
+
+    .nut-empty-image {
+      width: $empty-partial-image-size;
+      height: $empty-partial-image-size;
+    }
+
+    .nut-empty-title {
+      text-align: left;
+      font-size: $empty-partial-description-font-size;
+      line-height: $empty-partial-description-line-height;
+      color: $empty-title-color;
+      font-weight: $font-weight;
+    }
+
+    .nut-empty-description {
+      text-align: left;
+      font-size: $empty-partial-description-font-size;
+      line-height: $empty-partial-description-line-height;
+      color: $empty-description-color;
+      font-weight: $font-weight;
+    }
   }
 }

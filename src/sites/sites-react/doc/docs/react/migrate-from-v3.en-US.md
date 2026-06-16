@@ -48,3 +48,33 @@ npm install @nutui/nutui-react-taro
 
 - **Dark Mode Correction**:
   - Resolved incorrect color variables/mappings under Dark Mode (`theme-dark`) for Checkbox background colors and borders.
+
+### Empty
+
+> **No v3 compatibility in v4**: no prop aliases, no runtime fallbacks, and no `EmptyState` type alias. Migrate manually using the tables below.
+
+- **`size` Enum Breaking Change**:
+  - Removed `base` / `small`. Aligned with JD APP V11.0 empty-state spec: `full` / `half` / `partial`.
+  - Default changed from `base` to `half`.
+  - Recommended migration:
+    - `size="base"` (v3 default, 160px image) → use `size="full"` for full-page states, or `size="partial"` for embedded partial areas.
+    - `size="small"` (v3, 120px image) → `size="half"` (half-screen, 80px image).
+- **Visual Spec Updates**:
+  - **`full`**: 160px image, title `$font-size-md` / line height 24px / `#11141A`, description `$font-size-base` / line height 22px / `#8D9199`, 160px top spacing.
+  - **`half`**: 80px image, title `$font-size-s` / line height 22px, description `$font-size-m` / line height 20px.
+  - **`partial`**: 32px image in horizontal layout, text `$font-size-m` / line height 32px, padding `0 16px`, 8px gap between image and text.
+- **CSS Class Name Breaking Changes**:
+  - Size modifiers: `.nut-empty-base` / `.nut-empty-small` → `.nut-empty--full` / `.nut-empty--half` / `.nut-empty--partial`.
+  - Image wrapper: `.nut-empty-base` / `.nut-empty-small` → `.nut-empty-image`.
+  - Actions: `.nut-empty-actions-base` / `.nut-empty-actions-small` → `.nut-empty-actions`.
+- **Theme Variable Updates**:
+  - Added `--nutui-empty-title-color`, `--nutui-empty-description-color`, and per-size variables (e.g. `--nutui-empty-full-image-size`).
+  - Font sizes default to `$font-size-*` theme tokens; line heights use `$line-height-*` when available (e.g. 24px, 20px), otherwise design-spec px values (e.g. 22px, 32px).
+  - Legacy `--nutui-empty-image-size` and `--nutui-empty-image-small-size` have been removed; use per-size variables instead.
+- **`status` Enum Breaking Change**:
+  - 8 built-in scenarios: `network` / `comment` / `search` / `shop` / `address` / `order` / `favor` / `cart`.
+  - Removed `empty` and `error`; default changed from `empty` to `network`.
+  - Recommended v3 → v4 mapping (code changes required; no automatic conversion):
+    - `status="empty"` → `status="search"` (generic empty) or another enum above
+    - `status="error"` → `status="network"` or a custom `image`
+  - Images load from CDN URLs at runtime; see `src/types/spec/empty/base.ts` for the mapping.

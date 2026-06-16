@@ -1,24 +1,21 @@
 import React from 'react'
-import { Empty } from '@nutui/nutui-react'
+import { Empty, Toast } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   return (
-    <>
-      <Empty
-        title="全屏缺省标题"
-        description="内容描述内容描述内容描述"
-        actions={[{ text: '次要操作' }, { text: '主要操作', type: 'primary' }]}
-      />
-      <Empty
-        description="内容描述内容描述内容描述"
-        actions={[{ text: '操作按钮' }]}
-        style={{ marginTop: '10px' }}
-      />
-      <Empty
-        description="内容描述内容描述内容描述"
-        style={{ marginTop: '10px' }}
-      />
-    </>
+    <Empty
+      size="full"
+      status="network"
+      title="网络连接已断开"
+      description="请检查网络设置或刷新页面"
+      actions={[
+        {
+          text: '刷新',
+          type: 'primary',
+          onClick: () => Toast.show('正在刷新...'),
+        },
+      ]}
+    />
   )
 }
 export default Demo1
