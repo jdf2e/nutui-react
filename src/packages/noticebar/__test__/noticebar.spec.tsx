@@ -353,6 +353,18 @@ test('dynamic children update test', async () => {
   })
 })
 
+test('wrap mode applies wrapable class with left-icon', () => {
+  const { container } = render(
+    <NoticeBar content="双行文本内容" wrap leftIcon={<Notice />} />
+  )
+  expect(container.querySelector('.nut-noticebar-box')).toHaveClass(
+    'nut-noticebar-box-wrapable'
+  )
+  expect(
+    container.querySelector('.nut-noticebar-box-left-icon')
+  ).toBeTruthy()
+})
+
 test('description prop renders sub text', () => {
   const { container } = render(
     <NoticeBar content="主文本内容" description="副文本内容" />

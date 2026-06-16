@@ -1,18 +1,17 @@
 {
   "component": "noticebar",
-  "tasksCompleted": 6,
+  "tasksCompleted": 9,
   "tasksFailed": 0,
-  "testResult": "pass (20/20)",
+  "testResult": "pass (21/21)",
   "filesModified": [
-    "src/types/spec/noticebar/base.ts",
     "src/styles/variables.scss",
     "src/packages/noticebar/noticebar.scss",
-    "src/packages/noticebar/noticebar.tsx",
+    "src/packages/noticebar/noticebar.harmony.css",
     "src/packages/noticebar/__test__/noticebar.spec.tsx",
     "src/packages/noticebar/doc.md",
     "src/packages/noticebar/doc.en-US.md",
     "src/packages/noticebar/doc.zh-TW.md",
     "src/packages/noticebar/doc.taro.md"
   ],
-  "summary": "H5 NoticeBar 组件完成结构布局更新。新增 description(副文本)、tag(信息标)、action(操作按钮)、autoClose(自动关闭) 4个 Props。关闭按钮：手动关闭使用 Close ×图标，自动关闭使用 SVG 圆环倒计时动画(从整环到消失) + Close 图标。JSX 结构重构为 leftIcon → content-wrapper(主文本+副文本) → tag → action → right → close。新增 7 个 CSS 变量，更新了 4 份多语言文档和 6 个新测试用例，全部 20 个测试通过。"
+  "summary": "NoticeBar 16.0 设计对齐（第二轮）完成。P0：主文本颜色从 #d9500b 改为 $color-title(#1a1a1a)，字号从 $font-size-m(13px) 改为 $font-size-base(14px)，新增 $noticebar-icon-color 保留图标警示色。P1：容器高度从 36px 调整为 40px（修复单行图标上下 8DP 间距），双行 wrap padding 调整为 9px，新增 $noticebar-left-icon-wrap-width(32px) 用于双行模式图标放大。P2：新增 .nut-noticebar-box-left-icon--product 商品图修饰类（32px/底部加白），right prop 文档标记 deprecated。同步更新 harmony CSS、4 份多语言文档、新增 1 个测试用例，全部 21 个测试通过。"
 }

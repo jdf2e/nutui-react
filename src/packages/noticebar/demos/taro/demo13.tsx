@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NoticeBar, Button } from '@nutui/nutui-react'
+import { NoticeBar, Button } from '@nutui/nutui-react-taro'
 
 const Demo13 = () => {
   const [visible, setVisible] = useState(true)

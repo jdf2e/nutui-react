@@ -1,6 +1,6 @@
 import React from 'react'
-import { NoticeBar, Button } from '@nutui/nutui-react'
-import { Notice } from '@nutui/icons-react'
+import { NoticeBar, Button } from '@nutui/nutui-react-taro'
+import { Notice } from '@nutui/icons-react-taro'
 
 const Demo12 = () => {
   return (

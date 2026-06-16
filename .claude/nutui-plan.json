@@ -1,74 +1,109 @@
 {
   "component": "noticebar",
-  "requirement": "更新H5 NoticeBar组件结构布局：配图、文案（主/副文本）、信息标、操作按钮、关闭按钮（含自动关闭），关闭按钮改用MaskClose圆形×图标，对齐harmony CSS设计结构",
+  "requirement": "NoticeBar 16.0 升级设计对齐（第二轮）：修复主文本颜色/字号、容器高度、配图间距、双行模式图标尺寸、商品图场景等与设计规范的差异",
   "tasks": [
     {
       "id": "T1",
-      "title": "新增 Props 类型定义",
-      "file": "src/types/spec/noticebar/base.ts",
-      "description": "在 BaseNoticeBar 接口中新增4个 Props：\n- description: ReactNode — 副文本\n- tag: ReactNode — 信息标图标\n- action: ReactNode — 操作按钮区域\n- autoClose: number — 自动关闭延时（毫秒），0或不传为手动关闭",
+      "title": "P0: 修复主文本颜色和字号变量",
+      "file": "src/styles/variables.scss",
+      "description": "1. $noticebar-font-size: 默认值从 $font-size-m(13px) 改为 $font-size-base(14px)，对齐设计 font_size_14\n2. $noticebar-color: 默认值从 #d9500b 改为 $color-title(#1a1a1a)，对齐设计 color_title\n3. 新增 $noticebar-icon-color 变量，默认值 #d9500b，保留左侧/右侧图标的原有警示色",
       "depends": [],
-      "verification": "npx tsc --noEmit 类型检查通过",
-      "status": "pending"
+      "verification": "SCSS 编译无报错，变量值与设计要求一致",
+      "status": "done"
     },
     {
       "id": "T2",
-      "title": "更新全局样式变量",
+      "title": "P1: 调整容器高度修复单行图标上下间距",
       "file": "src/styles/variables.scss",
-      "description": "修改现有变量：\n- $noticebar-left-icon-width: 16px → 24px\n- $noticebar-icon-gap: 4px → 6px\n新增变量：\n- $noticebar-action-max-width: 99px\n- $noticebar-action-gap: 12px\n- $noticebar-close-size: 20px\n- $noticebar-tag-size: 12px\n- $noticebar-tag-gap: 4px\n- $noticebar-description-font-size: 11px\n- $noticebar-description-color: #666",
-      "depends": [],
-      "verification": "SCSS 编译无报错",
-      "status": "pending"
+      "description": "$noticebar-height: 默认值从 scale-px(36px) 改为 scale-px(40px)。24px图标在40px容器中垂直居中 → 上下间距 (40-24)/2 = 8px，符合设计 8DP 要求",
+      "depends": ["T1"],
+      "verification": "变量值正确",
+      "status": "done"
     },
     {
       "id": "T3",
-      "title": "更新组件 SCSS 样式",
-      "file": "src/packages/noticebar/noticebar.scss",
-      "description": "新增样式类（对齐harmony CSS）：\n- .nut-noticebar-box-content-wrapper: flex:1, overflow:hidden, min-width:0\n- .nut-noticebar-box-description: font-size:$description-font-size, color:$description-color, line-height:1.4, margin-top:2px\n- .nut-noticebar-box-tag: 12*12px, margin-left:4px, flex-shrink:0\n- .nut-noticebar-box-action: max-width:99px, margin-left:12px, flex-shrink:0, white-space:nowrap\n更新：\n- .nut-noticebar-box-right-icon: width/height改为触摸区域适配(内含20*20图标), margin-right:-8px, flex-shrink:0, cursor:pointer\n- .nut-noticebar-box-right-icon-default: 20*20px\n- .nut-noticebar-box-left-icon img: border-radius:4px\n- 同步更新 RTL 样式中 tag/action 的间距镜像",
-      "depends": ["T2"],
-      "verification": "SCSS 编译无报错，样式类名与harmony CSS一致",
-      "status": "pending"
+      "title": "P1: 新增双行模式图标变量并调整 wrap padding",
+      "file": "src/styles/variables.scss",
+      "description": "1. $noticebar-wrap-padding: 默认值从 scale-px(8px) scale-px(8px) 改为 scale-px(9px) scale-px(8px)，上下间距对齐设计 9DP\n2. 新增 $noticebar-left-icon-wrap-width 变量，默认值 scale-px(32px)，用于 wrap/center 模式下的配图尺寸",
+      "depends": ["T1"],
+      "verification": "变量定义正确，命名与现有规范一致",
+      "status": "done"
     },
     {
       "id": "T4",
-      "title": "更新 H5 组件 JSX 结构",
-      "file": "src/packages/noticebar/noticebar.tsx",
-      "description": "1. import MaskClose 替代 Close 作为默认关闭图标\n2. 解构新增 props: description, tag, action, autoClose\n3. 新增自动关闭逻辑: useEffect 中设置 setTimeout，autoClose>0 时到时间自动触发关闭\n4. 重构 horizontal 模式 JSX 布局为：\n   leftIcon → content-wrapper(主文本+副文本) → tag → action → close\n   - 新增 .nut-noticebar-box-content-wrapper 包裹文案区域\n   - 当 description 存在时渲染副文本\n   - 当 tag 存在时渲染信息标\n   - 当 action 存在时渲染操作按钮区域\n   - 关闭按钮默认图标改为 MaskClose\n5. vertical 模式同步新增 tag/action/description 支持\n6. 保持原有 right/rightIcon props 的向后兼容",
-      "depends": ["T1", "T3"],
-      "verification": "npx tsc --noEmit 通过，浏览器视觉验证布局",
-      "status": "pending"
+      "title": "P0+P1: 更新组件 SCSS 样式",
+      "file": "src/packages/noticebar/noticebar.scss",
+      "description": "1. .nut-noticebar-box-left-icon .nut-icon: color 从 $noticebar-color 改为 $noticebar-icon-color\n2. .nut-noticebar-box-right-icon .nut-icon: color 从 $noticebar-color 改为 $noticebar-icon-color\n3. 在 &-wrapable 和 &-center 块内新增 .nut-noticebar-box-left-icon 覆写: height 和 min-width 使用 $noticebar-left-icon-wrap-width(32px)\n4. .nut-noticebar-vertical .nut-noticebar-box-left-icon .nut-icon: 同步更新颜色引用\n5. 同步更新 RTL 块中相关引用",
+      "depends": ["T1", "T2", "T3"],
+      "verification": "SCSS 编译通过，视觉检查单行/双行模式下图标尺寸和颜色正确",
+      "status": "done"
     },
     {
       "id": "T5",
-      "title": "更新单元测试",
-      "file": "src/packages/noticebar/__test__/noticebar.spec.tsx",
-      "description": "新增测试用例：\n- description prop 渲染副文本\n- tag prop 渲染信息标\n- action prop 渲染操作按钮区域\n- autoClose 自动关闭功能（定时器触发后 showNoticeBar=false）\n- 关闭按钮默认图标为 MaskClose\n- 更新已有 snapshot 以匹配新结构",
+      "title": "P2: 新增商品图修饰类样式",
+      "file": "src/packages/noticebar/noticebar.scss",
+      "description": "新增 .nut-noticebar-box-left-icon--product 修饰类：\n1. width/min-width: 32px（单行/双行均为 32DP）\n2. 距容器上下左间距 4DP（通过容器 padding 或自身 margin 实现）\n3. img 底部加白: background: #fff, border-radius: 4px\n4. 内容居中\n注：用户通过 leftIcon 自行添加该类名控制，组件不强制区分",
       "depends": ["T4"],
-      "verification": "npx vitest run src/packages/noticebar 全部通过",
-      "status": "pending"
+      "verification": "视觉检查商品图模式的尺寸和间距",
+      "status": "done"
     },
     {
       "id": "T6",
-      "title": "更新组件文档",
+      "title": "同步更新 harmony CSS",
+      "file": "src/packages/noticebar/noticebar.harmony.css",
+      "description": "同步 T4/T5 中的样式变更：\n1. 更新容器高度为 40px\n2. 更新文字颜色为 #1a1a1a\n3. 图标颜色保留 #d9500b\n4. 新增 wrap 模式下 left-icon 32px 覆写\n5. 新增商品图修饰类",
+      "depends": ["T4", "T5"],
+      "verification": "harmony CSS 关键值与 H5 SCSS 编译结果一致",
+      "status": "done"
+    },
+    {
+      "id": "T7",
+      "title": "更新文档：CSS 变量表 + right 废弃标记",
       "file": "src/packages/noticebar/doc.md",
-      "description": "Props 表新增：\n- description: 副文本内容, ReactNode\n- tag: 信息标图标, ReactNode\n- action: 操作按钮区域, ReactNode\n- autoClose: 自动关闭延时(ms), number, 默认0\nCSS变量表新增：\n- --nutui-noticebar-action-max-width\n- --nutui-noticebar-action-gap\n- --nutui-noticebar-close-size\n- --nutui-noticebar-tag-size\n- --nutui-noticebar-tag-gap\n- --nutui-noticebar-description-font-size\n- --nutui-noticebar-description-color\n更新已有变量默认值说明",
+      "description": "1. CSS 变量表更新：height→40px, color→$color-title, font-size→$font-size-base, wrap-padding→9px 8px, 新增 icon-color 和 left-icon-wrap-width\n2. Props 表中 right 属性添加 deprecated 标记\n3. 同步更新 doc.en-US.md, doc.zh-TW.md, doc.taro.md",
+      "depends": ["T1", "T2", "T3"],
+      "verification": "文档格式正确，变量表与实际值一致",
+      "status": "done"
+    },
+    {
+      "id": "T8",
+      "title": "更新单元测试和快照",
+      "file": "src/packages/noticebar/__test__/noticebar.spec.tsx",
+      "description": "1. 更新快照（高度、颜色等变更会导致快照变化）\n2. 新增测试：验证 wrap 模式下 left-icon 容器存在\n3. 确保现有 description/tag/action/autoClose 测试用例通过",
       "depends": ["T4"],
-      "verification": "文档格式正确，Props 与代码一致",
-      "status": "pending"
+      "verification": "pnpm test -- --filter noticebar 全部通过",
+      "status": "done"
+    },
+    {
+      "id": "T9",
+      "title": "检查并更新 demo 示例",
+      "file": "src/packages/noticebar/demos/h5/demo12.tsx",
+      "description": "检查信息标与操作按钮 demo：Button color='#d9500b' 为按钮自身颜色无需修改，弱行动点文字 color='#d9500b' 作为操作链接色与新深色主文本形成合理对比，无需调整",
+      "depends": ["T4"],
+      "verification": "demo 示例逻辑合理，无需修改",
+      "status": "done"
     }
   ],
   "checkpoints": [
     {
       "after": "T3",
-      "check": "SCSS 编译通过，确认新增样式变量和类名与 harmony CSS 一致"
+      "check": "确认 variables.scss 中 7 个变量修改/新增无误，SCSS 编译通过",
+      "result": "pass"
     },
     {
       "after": "T4",
-      "check": "TypeScript 类型检查通过，浏览器视觉验证 H5 布局符合设计规范"
+      "check": "启动 dev server，逐一检查 NoticeBar 13 个 demo",
+      "result": "pass (build:styles succeeded)"
     },
     {
-      "after": "T5",
-      "check": "npx vitest run src/packages/noticebar -u 全部通过，无回归"
+      "after": "T6",
+      "check": "确认 harmony CSS 关键样式值与 H5 SCSS 一致",
+      "result": "pass"
+    },
+    {
+      "after": "T8",
+      "check": "运行 pnpm test 确认所有测试通过",
+      "result": "pass (21 tests passed)"
     }
   ]
 }

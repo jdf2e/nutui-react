@@ -1778,24 +1778,32 @@ $fixednav-item-active-color: var(
 ) !default;
 
 // NoticeBar（✅）
-$noticebar-height: var(--nutui-noticebar-height, scale-px(36px)) !default;
+$noticebar-height: var(--nutui-noticebar-height, scale-px(40px)) !default;
 $noticebar-background: var(
   --nutui-noticebar-background,
-  rgba(251, 248, 220, 1)
+  $color-background-overlay
 ) !default;
-$noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
-$noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-m) !default;
+$noticebar-color: var(--nutui-noticebar-color, $color-title) !default;
+$noticebar-icon-color: var(
+  --nutui-noticebar-icon-color,
+  $color-primary
+) !default;
+$noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-base) !default;
 $noticebar-line-height: var(--nutui-noticebar-line-height, scale-px(20px)) !default;
 $noticebar-box-padding: var(--nutui-noticebar-box-padding, scale-px(2px) scale-px(8px)) !default;
 $noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
 $noticebar-wrap-padding: var(
   --nutui-noticebar-wrapable-padding,
-  scale-px(8px) scale-px(8px)
+  scale-px(9px) scale-px(8px)
 ) !default;
 $noticebar-icon-gap: var(--nutui-noticebar-icon-gap, scale-px(6px)) !default;
 $noticebar-left-icon-width: var(
   --nutui-noticebar-left-icon-width,
   scale-px(24px)
+) !default;
+$noticebar-left-icon-wrap-width: var(
+  --nutui-noticebar-left-icon-wrap-width,
+  scale-px(32px)
 ) !default;
 $noticebar-right-icon-width: var(
   --nutui-noticebar-right-icon-width,
@@ -1818,6 +1826,10 @@ $noticebar-action-gap: var(
   --nutui-noticebar-action-gap,
   scale-px(12px)
 ) !default;
+$noticebar-action-font-size: var(
+  --nutui-noticebar-action-font-size,
+  $font-size-xs
+) !default;
 $noticebar-description-font-size: var(
   --nutui-noticebar-description-font-size,
   scale-px(11px)
@@ -1834,13 +1846,17 @@ $noticebar-description-line-height: var(
   --nutui-noticebar-description-line-height,
   scale-px(16px)
 ) !default;
+$noticebar-close-color: var(
+  --nutui-noticebar-close-color,
+  $color-text-help
+) !default;
 $noticebar-close-icon-size: var(
   --nutui-noticebar-close-icon-size,
   scale-px(10px)
 ) !default;
 $noticebar-close-ring-color: var(
   --nutui-noticebar-close-ring-color,
-  $noticebar-color
+  $color-text-help
 ) !default;
 $noticebar-close-ring-shadow-color: var(
   --nutui-noticebar-close-ring-shadow-color,

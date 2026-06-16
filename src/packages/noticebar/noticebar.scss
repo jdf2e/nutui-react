@@ -20,6 +20,11 @@
       .nut-noticebar-box-wrap {
         height: auto;
       }
+
+      .nut-noticebar-box-left-icon {
+        height: $noticebar-left-icon-wrap-width;
+        min-width: $noticebar-left-icon-wrap-width;
+      }
     }
 
     &-wrapable {
@@ -61,7 +66,7 @@
       background-size: 100% 100%;
 
       .nut-icon {
-        color: $noticebar-color;
+        color: $noticebar-icon-color;
       }
 
       img {
@@ -104,6 +109,8 @@
       justify-content: center;
       max-width: $noticebar-action-max-width;
       margin-left: $noticebar-action-gap;
+      font-size: $noticebar-action-font-size;
+      color: $color-primary;
       flex-shrink: 0;
       white-space: nowrap;
     }
@@ -119,7 +126,7 @@
       cursor: pointer;
 
       .nut-icon {
-        color: $noticebar-color;
+        color: $noticebar-close-color;
       }
     }
 
@@ -159,6 +166,16 @@
     &-close-icon {
       width: $noticebar-close-icon-size;
       height: $noticebar-close-icon-size;
+    }
+
+    &-left-icon--product {
+      height: scale-px(32px);
+      min-width: scale-px(32px);
+
+      img {
+        background: $white;
+        border-radius: $noticebar-left-icon-border-radius;
+      }
     }
 
     &-right {
@@ -271,6 +288,8 @@
       justify-content: center;
       max-width: $noticebar-action-max-width;
       margin-left: $noticebar-action-gap;
+      font-size: $noticebar-action-font-size;
+      color: $color-primary;
       flex-shrink: 0;
       white-space: nowrap;
     }
