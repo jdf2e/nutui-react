@@ -13,6 +13,8 @@ import Demo9 from './demos/h5/demo9'
 import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
+import Demo13 from './demos/h5/demo13'
+import Demo14 from './demos/h5/demo14'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -29,6 +31,8 @@ const RateDemo = () => {
       event: '绑定事件',
       touchable: '滑动选择',
       touchevent: '滑动事件',
+      verticalLayout: '上下布局',
+      withLabel: '带标签',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -43,6 +47,8 @@ const RateDemo = () => {
       event: '綁定事件',
       touchable: '滑動選擇',
       touchevent: '滑動事件',
+      verticalLayout: '上下佈局',
+      withLabel: '帶標籤',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -57,6 +63,8 @@ const RateDemo = () => {
       event: 'Event',
       touchable: 'Touch to Select',
       touchevent: 'Touch Event',
+      verticalLayout: 'Vertical Layout',
+      withLabel: 'With Label',
     },
   })
   const cellStyle: CSSProperties = {
@@ -125,6 +133,16 @@ const RateDemo = () => {
         <h2>{translated.touchevent}</h2>
         <Cell style={cellStyle}>
           <Demo12 />
+        </Cell>
+
+        <h2>{translated.verticalLayout}</h2>
+        <Cell style={cellStyle}>
+          <Demo13 />
+        </Cell>
+
+        <h2>{translated.withLabel}</h2>
+        <Cell style={cellStyle}>
+          <Demo14 />
         </Cell>
       </div>
     </>

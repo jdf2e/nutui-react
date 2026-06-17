@@ -14,6 +14,37 @@
     }
   }
 
+  &-horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-vertical {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+  }
+
+  &-label {
+    color: $rate-label-color;
+    white-space: nowrap;
+  }
+
+  &-labels {
+    display: flex;
+    width: 100%;
+
+    &-item {
+      flex: 1;
+      text-align: center;
+      color: $rate-label-color;
+    }
+  }
+
   &-item {
     display: flex;
     align-items: center;
@@ -30,38 +61,6 @@
 
       .nut-icon {
         flex-shrink: 0;
-      }
-    }
-
-    &-normal {
-      margin-left: $rate-item-margin;
-      .nut-icon {
-        height: $rate-icon-size;
-        width: $rate-icon-size;
-      }
-    }
-
-    &-large {
-      margin-left: calc($rate-item-margin * 2);
-      .nut-icon {
-        height: calc($rate-icon-size + 8px);
-        width: calc($rate-icon-size + 8px);
-      }
-    }
-
-    &-small {
-      margin-left: calc($rate-item-margin / 2);
-      .nut-icon {
-        height: calc($rate-icon-size - 4px);
-        width: calc($rate-icon-size - 4px);
-      }
-    }
-
-    &-normal,
-    &-large,
-    &-small {
-      &:first-child {
-        margin-left: 0;
       }
     }
 
@@ -107,85 +106,238 @@
     color: $rate-font-color;
     font-family: 'JDZH-Regular';
 
-    &-normal {
-      padding-left: $rate-item-margin;
-      font-size: $rate-font-size;
+    &-disabled {
+      color: $rate-icon-inactive-color;
+    }
+  }
+
+  // horizontal layout
+  &-horizontal {
+    .nut-rate-item {
+      margin-left: $rate-item-margin;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    // 12DP - star gap 2px
+    .nut-rate-item-small {
+      margin-left: scale-px(2px);
+      &:first-child {
+        margin-left: 0;
+      }
+      .nut-icon {
+        height: scale-font-px(12px);
+        width: scale-font-px(12px);
+      }
+    }
+
+    .nut-rate-item-normal {
+      .nut-icon {
+        height: scale-font-px(16px);
+        width: scale-font-px(16px);
+      }
+    }
+
+    .nut-rate-item-large {
+      .nut-icon {
+        height: scale-font-px(20px);
+        width: scale-font-px(20px);
+      }
+    }
+
+    .nut-rate-label-small {
+      font-size: $font-size-s;
+      margin-right: scale-px(4px);
+    }
+
+    .nut-rate-label-normal {
+      font-size: $font-size-s;
+      margin-right: scale-px(12px);
+    }
+
+    .nut-rate-label-large {
+      font-size: $font-size-base;
+      margin-right: scale-px(12px);
+    }
+
+    .nut-rate-score-small {
+      padding-left: scale-px(4px);
+      font-size: $font-size-s;
       line-height: $line-height-s;
     }
 
-    &-large {
-      font-size: $rate-font-size-large;
-      line-height: $line-height-xl;
-      padding-left: calc($rate-item-margin * 2);
+    .nut-rate-score-normal {
+      padding-left: scale-px(12px);
+      font-size: $font-size-s;
+      line-height: $line-height-s;
     }
 
-    &-small {
-      font-size: $rate-font-size-small;
-      line-height: $line-height-xxs;
-      padding-left: calc($rate-item-margin / 2);
+    .nut-rate-score-large {
+      padding-left: scale-px(12px);
+      font-size: $font-size-base;
+      line-height: $line-height-base;
+    }
+  }
+
+  // vertical layout
+  &-vertical {
+    .nut-rate-list {
+      justify-content: center;
+      width: 100%;
     }
 
-    &-disabled {
-      color: $rate-icon-inactive-color;
+    .nut-rate-item {
+      margin-left: $rate-item-margin;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .nut-rate-item-small,
+    .nut-rate-item-normal {
+      .nut-icon {
+        height: scale-font-px(20px);
+        width: scale-font-px(20px);
+      }
+    }
+
+    .nut-rate-item-large {
+      flex: 1;
+      justify-content: center;
+
+      .nut-icon {
+        height: scale-font-px(28px);
+        width: scale-font-px(28px);
+      }
+    }
+
+    .nut-rate-label-small,
+    .nut-rate-label-normal {
+      font-size: $font-size-xs;
+      margin-top: scale-px(6px);
+    }
+
+    .nut-rate-label-large {
+      font-size: $font-size-s;
+      margin-top: scale-px(8px);
+    }
+
+    .nut-rate-labels {
+      width: 100%;
+    }
+
+    .nut-rate-labels-small,
+    .nut-rate-labels-normal {
+      margin-top: scale-px(6px);
+
+      .nut-rate-labels-item {
+        font-size: $font-size-xs;
+      }
+    }
+
+    .nut-rate-labels-large {
+      margin-top: scale-px(8px);
+
+      .nut-rate-labels-item {
+        font-size: $font-size-s;
+      }
+    }
+
+    .nut-rate-score-small,
+    .nut-rate-score-normal {
+      font-size: $font-size-xs;
+      line-height: $line-height-xs;
+      margin-top: scale-px(6px);
+    }
+
+    .nut-rate-score-large {
+      font-size: $font-size-s;
+      line-height: $line-height-s;
+      margin-top: scale-px(8px);
     }
   }
 }
 
 [dir='rtl'] .nut-rate,
 .nut-rtl .nut-rate {
-  &-item {
-    margin-left: 0;
-    &:first-child {
+  &-horizontal {
+    .nut-rate-item {
+      margin-left: 0;
+      margin-right: $rate-item-margin;
+
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+
+    .nut-rate-item-small {
+      margin-left: 0;
+      margin-right: scale-px(2px);
+
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+
+    .nut-rate-label {
       margin-right: 0;
     }
 
-    &-normal {
-      margin-right: $rate-item-margin;
+    .nut-rate-label-small {
+      margin-left: scale-px(4px);
     }
 
-    &-large {
-      margin-right: calc($rate-item-margin * 2);
+    .nut-rate-label-normal {
+      margin-left: scale-px(12px);
     }
 
-    &-small {
-      margin-right: calc($rate-item-margin - 2px);
+    .nut-rate-label-large {
+      margin-left: scale-px(12px);
     }
 
-    &:last-child {
+    .nut-rate-score {
+      padding-left: 0;
+    }
+
+    .nut-rate-score-small {
+      padding-right: scale-px(4px);
+    }
+
+    .nut-rate-score-normal {
+      padding-right: scale-px(12px);
+    }
+
+    .nut-rate-score-large {
+      padding-right: scale-px(12px);
+    }
+  }
+
+  &-vertical {
+    .nut-rate-item {
       margin-left: 0;
-    }
+      margin-right: $rate-item-margin;
 
-    &-half {
-      left: auto;
-      right: 0;
-    }
-
-    &-icon {
-      &.nut-rate-item-icon.nut-rate-item-icon-half {
-        left: auto;
-        right: 0;
-      }
-
-      &.nut-rate-item-icon::before {
-        left: auto;
-        right: auto;
+      &:first-child {
+        margin-right: 0;
       }
     }
   }
 
-  &-score {
-    padding-left: 0;
+  &-item-half {
+    left: auto;
+    right: 0;
+  }
 
-    &-large {
-      padding-right: calc($rate-item-margin * 2);
+  &-item-icon {
+    &.nut-rate-item-icon.nut-rate-item-icon-half {
+      left: auto;
+      right: 0;
     }
 
-    &-normal {
-      padding-right: $rate-item-margin;
-    }
-
-    &-small {
-      padding-right: calc($rate-item-margin - 2px);
+    &.nut-rate-item-icon::before {
+      left: auto;
+      right: auto;
     }
   }
 }

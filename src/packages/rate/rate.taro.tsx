@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   ReactElement,
+  ReactNode,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -19,6 +20,7 @@ import { TaroRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
+  layout: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -34,6 +36,8 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     className,
     style,
     size,
+    layout,
+    label,
     showScore,
     count,
     value,
@@ -187,10 +191,62 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     }
   }
 
+  const isArrayLabel = Array.isArray(label)
+
+  const renderSingleLabel = () => {
+    if (label == null || isArrayLabel) return null
+    return (
+      <Text
+        className={classNames(
+          `${classPrefix}-label`,
+          `${classPrefix}-label-${size}`
+        )}
+      >
+        {label}
+      </Text>
+    )
+  }
+
+  const renderArrayLabels = () => {
+    if (!isArrayLabel) return null
+    return (
+      <View
+        className={classNames(
+          `${classPrefix}-labels`,
+          `${classPrefix}-labels-${size}`
+        )}
+      >
+        {(label as ReactNode[]).map((item, index) => (
+          <Text className={`${classPrefix}-labels-item`} key={index}>
+            {item}
+          </Text>
+        ))}
+      </View>
+    )
+  }
+
+  const renderScore = () => {
+    if (!showScore) return null
+    return (
+      <Text
+        className={classNames(
+          `${classPrefix}-score`,
+          `${classPrefix}-score-${size}`,
+          {
+            [`${classPrefix}-score-disabled`]: disabled,
+          }
+        )}
+      >
+        {score.toFixed(1)}
+      </Text>
+    )
+  }
+
   return (
     <View
       className={classNames(
         classPrefix,
+        `${classPrefix}-${layout}`,
         {
           disabled,
           readonly: readOnly,
@@ -204,49 +260,46 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      {countArray.map((n, index) => {
-        return (
-          <View
-            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
-            key={n}
-            ref={setRefs(index)}
-            onClick={(event) => onClick(event, n)}
-          >
+      {layout === 'horizontal' && renderSingleLabel()}
+      <View className={`${classPrefix}-list`}>
+        {countArray.map((n, index) => {
+          return (
             <View
-              className={classNames(`${classPrefix}-item-icon`, {
-                [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
-              })}
+              className={`${classPrefix}-item ${classPrefix}-item-${size}`}
+              key={n}
+              ref={setRefs(index)}
+              onClick={(event) => onClick(event, n)}
             >
-              {renderIcon(n)}
-            </View>
-            {allowHalf && score > n - 1 && (
               <View
-                className={classNames(
-                  `${classPrefix}-item-half`,
-                  `${classPrefix}-item-icon`,
-                  `${classPrefix}-item-icon-half`
-                )}
-                onClick={(event) => onHalfClick(event, n)}
+                className={classNames(`${classPrefix}-item-icon`, {
+                  [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
+                })}
               >
                 {renderIcon(n)}
               </View>
-            )}
-          </View>
-        )
-      })}
-      {showScore ? (
-        <Text
-          className={classNames(
-            `${classPrefix}-score`,
-            `${classPrefix}-score-${size}`,
-            {
-              [`${classPrefix}-score-disabled`]: disabled,
-            }
-          )}
-        >
-          {score.toFixed(1)}
-        </Text>
-      ) : null}
+              {allowHalf && score > n - 1 && (
+                <View
+                  className={classNames(
+                    `${classPrefix}-item-half`,
+                    `${classPrefix}-item-icon`,
+                    `${classPrefix}-item-icon-half`
+                  )}
+                  onClick={(event) => onHalfClick(event, n)}
+                >
+                  {renderIcon(n)}
+                </View>
+              )}
+            </View>
+          )
+        })}
+      </View>
+      {layout === 'horizontal' && renderScore()}
+      {layout === 'vertical' && (
+        <>
+          {renderScore()}
+          {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}
+        </>
+      )}
     </View>
   )
 }

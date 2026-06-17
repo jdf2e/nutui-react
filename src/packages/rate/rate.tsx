@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   ReactElement,
+  ReactNode,
   useEffect,
   useRef,
   useState,
@@ -16,6 +17,7 @@ import { WebRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
+  layout: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -31,6 +33,8 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     className,
     style,
     size,
+    layout,
+    label,
     showScore,
     count,
     value,
@@ -193,10 +197,62 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     }
   }, [])
 
+  const isArrayLabel = Array.isArray(label)
+
+  const renderSingleLabel = () => {
+    if (label == null || isArrayLabel) return null
+    return (
+      <span
+        className={classNames(
+          `${classPrefix}-label`,
+          `${classPrefix}-label-${size}`
+        )}
+      >
+        {label}
+      </span>
+    )
+  }
+
+  const renderArrayLabels = () => {
+    if (!isArrayLabel) return null
+    return (
+      <div
+        className={classNames(
+          `${classPrefix}-labels`,
+          `${classPrefix}-labels-${size}`
+        )}
+      >
+        {(label as ReactNode[]).map((item, index) => (
+          <span className={`${classPrefix}-labels-item`} key={index}>
+            {item}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  const renderScore = () => {
+    if (!showScore) return null
+    return (
+      <span
+        className={classNames(
+          `${classPrefix}-score`,
+          `${classPrefix}-score-${size}`,
+          {
+            [`${classPrefix}-score-disabled`]: disabled,
+          }
+        )}
+      >
+        {score.toFixed(1)}
+      </span>
+    )
+  }
+
   return (
     <div
       className={classNames(
         classPrefix,
+        `${classPrefix}-${layout}`,
         {
           disabled,
           readonly: readOnly,
@@ -206,49 +262,46 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
       ref={rateRef}
       style={style}
     >
-      {countArray.map((n, index) => {
-        return (
-          <div
-            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
-            key={n}
-            ref={setRefs(index)}
-            onClick={(event) => onClick(event, n)}
-          >
+      {layout === 'horizontal' && renderSingleLabel()}
+      <div className={`${classPrefix}-list`}>
+        {countArray.map((n, index) => {
+          return (
             <div
-              className={classNames(`${classPrefix}-item-icon`, {
-                [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
-              })}
+              className={`${classPrefix}-item ${classPrefix}-item-${size}`}
+              key={n}
+              ref={setRefs(index)}
+              onClick={(event) => onClick(event, n)}
             >
-              {renderIcon(n)}
-            </div>
-            {allowHalf && score > n - 1 && (
               <div
-                className={classNames(
-                  `${classPrefix}-item-half`,
-                  `${classPrefix}-item-icon`,
-                  `${classPrefix}-item-icon-half`
-                )}
-                onClick={(event) => onHalfClick(event, n)}
+                className={classNames(`${classPrefix}-item-icon`, {
+                  [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
+                })}
               >
                 {renderIcon(n)}
               </div>
-            )}
-          </div>
-        )
-      })}
-      {showScore ? (
-        <span
-          className={classNames(
-            `${classPrefix}-score`,
-            `${classPrefix}-score-${size}`,
-            {
-              [`${classPrefix}-score-disabled`]: disabled,
-            }
-          )}
-        >
-          {score.toFixed(1)}
-        </span>
-      ) : null}
+              {allowHalf && score > n - 1 && (
+                <div
+                  className={classNames(
+                    `${classPrefix}-item-half`,
+                    `${classPrefix}-item-icon`,
+                    `${classPrefix}-item-icon-half`
+                  )}
+                  onClick={(event) => onHalfClick(event, n)}
+                >
+                  {renderIcon(n)}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+      {layout === 'horizontal' && renderScore()}
+      {layout === 'vertical' && (
+        <>
+          {renderScore()}
+          {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}
+        </>
+      )}
     </div>
   )
 }

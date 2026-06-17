@@ -3,9 +3,12 @@ import { BasicComponent } from '@/utils/typings'
 import { UISize } from '../../base/atoms'
 
 export type RateSize = Extract<UISize, 'large' | 'normal' | 'small'>
+export type RateLayout = 'horizontal' | 'vertical'
 
 export interface BaseRate extends BasicComponent {
   size: RateSize
+  layout: RateLayout
+  label: ReactNode | ReactNode[]
   showScore: boolean
   count: number
   value: number

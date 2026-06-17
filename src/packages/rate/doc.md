@@ -106,6 +106,22 @@ import { Rate } from '@nutui/nutui-react'
 
 :::
 
+### 上下布局
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
+### 带标签
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props
@@ -113,6 +129,8 @@ import { Rate } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
+| layout | 布局方式 | `horizontal` \| `vertical` | `horizontal` |
+| label | 标签文字 | `ReactNode` | `-` |
 | showScore | 展示评分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默认值 | `number` | `0` |
 | value | 受控的 star 数值 | `number` | `0` |
@@ -138,8 +156,9 @@ import { Rate } from '@nutui/nutui-react'
 | \--nutui-rate-item-margin | 间距 | `4px` |
 | \--nutui-rate-icon-color | icon 激活颜色 | `$color-primary-icon` |
 | \--nutui-rate-icon-inactive-color | icon 未激活颜色 | `$color-primary-icon-disabled` |
-| \--nutui-rate-icon-size | icon 尺寸 | `12px` |
+| \--nutui-rate-icon-size | icon 尺寸 | `16px` |
 | \--nutui-rate-font-color | 评分字体颜色 | `$color-primary-icon` |
 | \--nutui-rate-font-size | 评分字体大小 | `12px` |
+| \--nutui-rate-label-color | 标签字体颜色 | `$color-text-disabled` |
 
 <Contribution name="Rate" />
