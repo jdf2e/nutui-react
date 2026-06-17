@@ -122,6 +122,14 @@ import { Rate } from '@nutui/nutui-react'
 
 :::
 
+### 過渡動畫
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props

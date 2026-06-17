@@ -122,6 +122,14 @@ import { Rate } from '@nutui/nutui-react-taro'
 
 :::
 
+### 过渡动画
+
+:::demo
+
+<CodeBlock src='taro/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props

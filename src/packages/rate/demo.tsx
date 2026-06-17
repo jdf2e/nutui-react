@@ -15,6 +15,7 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -33,6 +34,7 @@ const RateDemo = () => {
       touchevent: '滑动事件',
       verticalLayout: '上下布局',
       withLabel: '带标签',
+      animation: '过渡动画',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -49,6 +51,7 @@ const RateDemo = () => {
       touchevent: '滑動事件',
       verticalLayout: '上下佈局',
       withLabel: '帶標籤',
+      animation: '過渡動畫',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -65,6 +68,7 @@ const RateDemo = () => {
       touchevent: 'Touch Event',
       verticalLayout: 'Vertical Layout',
       withLabel: 'With Label',
+      animation: 'Transition Animation',
     },
   })
   const cellStyle: CSSProperties = {
@@ -143,6 +147,11 @@ const RateDemo = () => {
         <h2>{translated.withLabel}</h2>
         <Cell style={cellStyle}>
           <Demo14 />
+        </Cell>
+
+        <h2>{translated.animation}</h2>
+        <Cell style={cellStyle}>
+          <Demo15 />
         </Cell>
       </div>
     </>

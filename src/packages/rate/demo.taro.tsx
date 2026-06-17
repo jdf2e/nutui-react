@@ -18,6 +18,7 @@ import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
+import Demo15 from './demos/taro/demo15'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -36,6 +37,7 @@ const RateDemo = () => {
       touchend: '滑动事件',
       verticalLayout: '上下布局',
       withLabel: '带标签',
+      animation: '过渡动画',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -52,6 +54,7 @@ const RateDemo = () => {
       touchend: '滑動事件',
       verticalLayout: '上下佈局',
       withLabel: '帶標籤',
+      animation: '過渡動畫',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -68,6 +71,7 @@ const RateDemo = () => {
       touchend: 'Touch Event',
       verticalLayout: 'Vertical Layout',
       withLabel: 'With Label',
+      animation: 'Transition Animation',
     },
   })
   const cellStyle: CSSProperties = {
@@ -150,6 +154,11 @@ const RateDemo = () => {
         <View className="h2">{translated.withLabel}</View>
         <Cell style={cellStyle}>
           <Demo14 />
+        </Cell>
+
+        <View className="h2">{translated.animation}</View>
+        <Cell style={cellStyle}>
+          <Demo15 />
         </Cell>
       </ScrollView>
     </>
