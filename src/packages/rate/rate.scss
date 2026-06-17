@@ -92,6 +92,10 @@
         left: auto;
         transform: none;
       }
+
+      &-animate {
+        animation: nut-rate-bounce 0.3s ease-in-out;
+      }
     }
   }
 
@@ -256,6 +260,18 @@
       line-height: $line-height-s;
       margin-top: scale-px(8px);
     }
+  }
+}
+
+@keyframes nut-rate-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

@@ -58,6 +58,16 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
 
   const classPrefix = 'nut-rate'
 
+  const shouldAnimate = layout === 'vertical' || size === 'large'
+  const [animatingIndex, setAnimatingIndex] = useState(-1)
+
+  useEffect(() => {
+    if (animatingIndex >= 0) {
+      const timer = setTimeout(() => setAnimatingIndex(-1), 300)
+      return () => clearTimeout(timer)
+    }
+  }, [animatingIndex])
+
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
 
   const [refs, setRefs] = useRefs()
@@ -109,6 +119,9 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       value = index
     }
     value = Math.max(value, min)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(index - 1)
+    }
     setScore(value)
   }
 
@@ -119,6 +132,9 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(min, n - 0.5)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(n - 1)
+    }
     setScore(value)
   }
 
@@ -273,6 +289,8 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
               <View
                 className={classNames(`${classPrefix}-item-icon`, {
                   [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
+                  [`${classPrefix}-item-icon-animate`]:
+                    animatingIndex === index,
                 })}
               >
                 {renderIcon(n)}
