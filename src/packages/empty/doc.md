@@ -10,7 +10,7 @@ import { Empty } from '@nutui/nutui-react'
 
 ## 示例代码
 
-### 基础用法
+### 全屏 full
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### Size 为 small 时，可用于半屏
+### 半屏 half
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### 自定义内容大小
+### 局部 partial
 
 :::demo
 
@@ -34,11 +34,19 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### 图片类型，内置 3 个
+### 图片类型，内置 8 个
 
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### 自定义图片大小
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -52,7 +60,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### 底部内容
+### 自定义底部按钮
 
 :::demo
 
@@ -70,9 +78,9 @@ import { Empty } from '@nutui/nutui-react'
 | imageSize | 图片大小，number 类型单位为 px | `number` \| `string` | `-` |
 | title | 图片下方的标题 | `ReactNode` | `-` |
 | description | 图片下方的描述文字 | `ReactNode` | `-` |
-| size | 组件整体大小，适配于全屏或半屏 | `small` \| `base` | `base` |
-| status | 默认图片错误类型 | `empty` \| `error` \| `network` | `empty` |
-| actions | 可用于处理操作的一组数据 | `Array` | `[]` |
+| size | 组件尺寸，对齐 JD APP V11.0 缺省状态规范 | `full` \| `half` \| `partial` | `half` |
+| status | 内置缺省插图类型，与设计稿业务场景一一对应 | `network` \| `comment` \| `search` \| `shop` \| `address` \| `order` \| `favor` \| `cart` | `network` |
+| actions | 操作按钮列表，项内字段同 Button，支持 `onClick` | `EmptyAction[]` | `[]` |
 
 ## 主题定制
 
@@ -80,14 +88,45 @@ import { Empty } from '@nutui/nutui-react'
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
+**通用**
+
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-empty-padding | Empty组件图片的padding值 | `32px 40px` |
-| \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `160px` |
-| \--nutui-empty-image-small-size | size 为 small 时，Empty组件图片的尺寸大小 | `120px` |
-| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `0px` |
-| \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-l` |
-| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1` |
-| \--nutui-empty-background-color | Empty组件背景色 | `#fff` |
+| \--nutui-empty-padding | 组件内边距 | `20px` |
+| \--nutui-empty-title-color | 标题颜色 | `$color-title`（`#11141A`） |
+| \--nutui-empty-description-color | 描述颜色 | `$color-text-help`（`#8D9199`） |
+
+**全屏 `full`**
+
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-empty-full-padding-top | 顶部间距 | `160px` |
+| \--nutui-empty-full-image-size | 插图尺寸 | `160px` |
+| \--nutui-empty-full-title-font-size | 标题字号 | `$font-size-md` |
+| \--nutui-empty-full-title-line-height | 标题行高 | `$line-height-xxl` |
+| \--nutui-empty-full-description-font-size | 描述字号 | `$font-size-base` |
+| \--nutui-empty-full-description-line-height | 描述行高 | `22px` |
+| \--nutui-empty-full-actions-margin-top | 操作区上边距 | `8px` |
+
+**半屏 `half`**
+
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-empty-half-image-size | 插图尺寸 | `80px` |
+| \--nutui-empty-half-title-font-size | 标题字号 | `$font-size-s` |
+| \--nutui-empty-half-title-line-height | 标题行高 | `22px` |
+| \--nutui-empty-half-description-font-size | 描述字号 | `$font-size-m` |
+| \--nutui-empty-half-description-line-height | 描述行高 | `$line-height-2xl` |
+| \--nutui-empty-half-actions-margin-top | 操作区上边距 | `8px` |
+
+**局部 `partial`**
+
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-empty-partial-padding | 容器内边距 | `0 16px` |
+| \--nutui-empty-partial-image-size | 插图尺寸 | `32px` |
+| \--nutui-empty-partial-content-gap | 图与文案间距 | `8px` |
+| \--nutui-empty-partial-description-font-size | 文案字号 | `$font-size-m` |
+| \--nutui-empty-partial-description-line-height | 文案行高 | `32px` |
 
 <Contribution name="Empty" />

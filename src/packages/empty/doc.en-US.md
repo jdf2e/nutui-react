@@ -10,7 +10,7 @@ import { Empty } from '@nutui/nutui-react'
 
 ## Demo
 
-### Basic usage
+### Full
 
 :::demo
 
@@ -18,7 +18,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### Size is small
+### Half
 
 :::demo
 
@@ -26,7 +26,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### Custom content size
+### Partial
 
 :::demo
 
@@ -34,11 +34,19 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### Picture type, 3 built-in
+### Picture type, 8 built-in
 
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### Custom image size
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -52,7 +60,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::
 
-### Bottom content
+### Custom bottom buttons
 
 :::demo
 
@@ -70,9 +78,9 @@ import { Empty } from '@nutui/nutui-react'
 | imageSize | Image size, the unit of number type is px | `number` \| `string` | `-` |
 | title | Title below the image | `ReactNode` | `-` |
 | description | Description below the image | `ReactNode` | `-` |
-| size | Size of component,used by full screen or half screen | `small` \| `base` | `base` |
-| status | The Default error type | `empty` \| `error` \| `network` | `empty` |
-| actions | Actions of operation | `Array` | `[]` |
+| size | Component size per JD APP V11.0 empty-state spec | `full` \| `half` \| `partial` | `half` |
+| status | Built-in illustration type mapped to design scenarios | `network` \| `comment` \| `search` \| `shop` \| `address` \| `order` \| `favor` \| `cart` | `network` |
+| actions | Actions list; fields align with Button, including `onClick` | `EmptyAction[]` | `[]` |
 
 ## Theming
 
@@ -80,14 +88,45 @@ import { Empty } from '@nutui/nutui-react'
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
+**Common**
+
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-empty-padding | The padding value of the Empty component image | `32px 40px` |
-| \--nutui-empty-image-size | The size of the Empty component image | `160px` |
-| \--nutui-empty-image-small-size | When size is small, the size of the Empty component image | `120px` |
-| \--nutui-empty-title-margin-top | The value of margin-top of the Empty component image title | `0px` |
-| \--nutui-empty-title-line-height | Empty component image title line height | `$font-size-l` |
-| \--nutui-empty-description-line-height | Empty component image description line height | `1` |
-| \--nutui-empty-background-color | Empty component background color | `#fff` |
+| \--nutui-empty-padding | Component padding | `20px` |
+| \--nutui-empty-title-color | Title color | `$color-title` (`#11141A`) |
+| \--nutui-empty-description-color | Description color | `$color-text-help` (`#8D9199`) |
+
+**`full`**
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-empty-full-padding-top | Top spacing | `160px` |
+| \--nutui-empty-full-image-size | Image size | `160px` |
+| \--nutui-empty-full-title-font-size | Title font size | `$font-size-md` |
+| \--nutui-empty-full-title-line-height | Title line height | `$line-height-xxl` |
+| \--nutui-empty-full-description-font-size | Description font size | `$font-size-base` |
+| \--nutui-empty-full-description-line-height | Description line height | `22px` |
+| \--nutui-empty-full-actions-margin-top | Actions margin top | `8px` |
+
+**`half`**
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-empty-half-image-size | Image size | `80px` |
+| \--nutui-empty-half-title-font-size | Title font size | `$font-size-s` |
+| \--nutui-empty-half-title-line-height | Title line height | `22px` |
+| \--nutui-empty-half-description-font-size | Description font size | `$font-size-m` |
+| \--nutui-empty-half-description-line-height | Description line height | `$line-height-2xl` |
+| \--nutui-empty-half-actions-margin-top | Actions margin top | `8px` |
+
+**`partial`**
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-empty-partial-padding | Container padding | `0 16px` |
+| \--nutui-empty-partial-image-size | Image size | `32px` |
+| \--nutui-empty-partial-content-gap | Gap between image and text | `8px` |
+| \--nutui-empty-partial-description-font-size | Text font size | `$font-size-m` |
+| \--nutui-empty-partial-description-line-height | Text line height | `32px` |
 
 <Contribution name="Empty" />

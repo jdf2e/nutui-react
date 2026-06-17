@@ -1496,7 +1496,7 @@ $steps-horizontal-item-line-padding: var(
 ) !default;
 $steps-horizontal-item-special-padding-right: var(
   --nutui-steps-horizontal-item-special-padding-right,
-  scale-px(22px)
+  scale-font-px(22px)
 ) !default;
 $steps-horizontal-item-special-3-padding-right: var(
   --nutui-steps-horizontal-item-special-3-padding-right,
@@ -2277,26 +2277,33 @@ $segmented-icon-margin-right: var(
 ) !default;
 
 // empty（✅）
-$empty-padding: var(--nutui-empty-padding, scale-px(32px) scale-px(40px)) !default;
-$empty-image-size: var(--nutui-empty-image-size, scale-px(160px)) !default;
-$empty-image-small-size: var(--nutui-empty-image-small-size, scale-px(120px)) !default;
-$empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
-$empty-background-color: var(
-  --nutui-empty-background-color,
-  $color-background-overlay
-) !default;
-$empty-title-margin-bottom: var(
-  --nutui-empty-title-margin-bottom,
-  scale-px(12px)
-) !default;
-$empty-title-line-height: var(
-  --nutui-empty-title-line-height,
-  $font-size-l
-) !default;
-$empty-description-line-height: var(
-  --nutui-empty-description-line-height,
-  1
-) !default;
+$empty-padding: var(--nutui-empty-padding, scale-px(20px) ) !default;
+$empty-title-color: var(--nutui-empty-title-color, $color-title) !default;
+$empty-description-color: var(--nutui-empty-description-color, $color-text-help) !default;
+
+// 全屏型
+$empty-full-padding-top: var(--nutui-empty-full-padding-top, scale-px(160px)) !default;
+$empty-full-image-size: var(--nutui-empty-full-image-size, scale-px(160px)) !default;
+$empty-full-title-font-size: var(--nutui-empty-full-title-font-size, $font-size-md) !default;
+$empty-full-title-line-height: var(--nutui-empty-full-title-line-height, $line-height-xxl) !default;
+$empty-full-description-font-size: var(--nutui-empty-full-description-font-size, $font-size-base) !default;
+$empty-full-description-line-height: var(--nutui-empty-full-description-line-height, scale-font-px(22px)) !default;
+$empty-full-actions-margin-top: var(--nutui-empty-full-actions-margin-top, scale-px(8px)) !default;
+
+// 半屏型
+$empty-half-image-size: var(--nutui-empty-half-image-size, scale-px(80px)) !default;
+$empty-half-title-font-size: var(--nutui-empty-half-title-font-size, $font-size-s) !default;
+$empty-half-title-line-height: var(--nutui-empty-half-title-line-height, scale-font-px(22px)) !default;
+$empty-half-description-font-size: var(--nutui-empty-half-description-font-size, $font-size-m) !default;
+$empty-half-description-line-height: var(--nutui-empty-half-description-line-height, $line-height-2xl) !default;
+$empty-half-actions-margin-top: var(--nutui-empty-half-actions-margin-top, scale-px(8px)) !default;
+
+// 局部型
+$empty-partial-padding: var(--nutui-empty-partial-padding, scale-px(0px) scale-px(16px)) !default;
+$empty-partial-image-size: var(--nutui-empty-partial-image-size, scale-px(32px)) !default;
+$empty-partial-content-gap: var(--nutui-empty-partial-content-gap, scale-px(8px)) !default;
+$empty-partial-description-font-size: var(--nutui-empty-partial-description-font-size, $font-size-m) !default;
+$empty-partial-description-line-height: var(--nutui-empty-partial-description-line-height, scale-font-px(32px)) !default;
 
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-base) !default;

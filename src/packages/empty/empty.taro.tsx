@@ -2,37 +2,23 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, Image } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { UIFill, UISize, UIType } from '@/types/base/atoms'
 import { Button } from '@/packages/button/button.taro'
+import {
+  getEmptyStatusImage,
+  type EmptyAction,
+  type EmptySize,
+  type EmptyStatus,
+} from '@/types'
 
-export interface EmptyAction {
-  text: React.ReactNode
-  type?: UIType
-  size?: UISize
-  fill?: UIFill
-  disabled?: boolean
-  onClick?: () => () => void
-}
+export type { EmptyAction, EmptySize, EmptyStatus } from '@/types'
 
-type statusOptions = {
-  [key: string]: string
-}
-
-const defaultStatus: statusOptions = {
-  empty:
-    'https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png',
-  error:
-    'https://storage.360buyimg.com/imgtools/f3278d0ebb-0ce360c0-c0ac-11ee-8375-193101bb1a46.png',
-  network:
-    'https://storage.360buyimg.com/imgtools/43c30f7e29-0d483d10-c0ac-11ee-bec4-eb4d2a09a51d.png',
-}
 export interface EmptyProps extends BasicComponent {
   image?: ReactNode
   imageSize: number | string
   title: ReactNode
   description: ReactNode
-  size: 'small' | 'base'
-  status: 'empty' | 'error' | 'network'
+  size: EmptySize
+  status: EmptyStatus
   actions: Array<EmptyAction>
 }
 
@@ -41,8 +27,8 @@ const defaultProps = {
   title: '',
   description: '',
   imageSize: '',
-  size: 'base',
-  status: 'empty',
+  size: 'half',
+  status: 'network',
   actions: [],
 } as EmptyProps
 
@@ -69,7 +55,7 @@ export const Empty: FunctionComponent<
 
   const [imgStyle, setImgStyle] = useState<any>({})
 
-  const imageUrl = image || defaultStatus[status]
+  const imageUrl = image || getEmptyStatusImage(status)
   const imageNode =
     typeof imageUrl === 'string' ? (
       <Image
@@ -100,25 +86,47 @@ export const Empty: FunctionComponent<
       }
     })
   }, [imageSize])
-  const cls = classNames(classPrefix, className)
+  const cls = classNames(classPrefix, `${classPrefix}--${size}`, className)
+
+  const imageBlock = (
+    <View className={`${classPrefix}-image`} style={imgStyle}>
+      {imageNode}
+    </View>
+  )
+
+  const titleBlock =
+    typeof title === 'string' && title ? (
+      <View className={`${classPrefix}-title`}>{title}</View>
+    ) : (
+      title
+    )
+
+  const descriptionBlock =
+    typeof description === 'string' ? (
+      <View className={`${classPrefix}-description`}>{description}</View>
+    ) : (
+      description
+    )
 
   return (
     <View className={cls} style={style}>
-      <View className={`${classPrefix}-${size}`} style={imgStyle}>
-        {imageNode}
-      </View>
-      {typeof title === 'string' && title ? (
-        <View className={`${classPrefix}-title`}>{title}</View>
+      {size === 'partial' ? (
+        <View className={`${classPrefix}-partial-body`}>
+          {imageBlock}
+          <View className={`${classPrefix}-content`}>
+            {titleBlock}
+            {descriptionBlock}
+          </View>
+        </View>
       ) : (
-        title
-      )}
-      {typeof description === 'string' ? (
-        <View className={`${classPrefix}-description`}>{description}</View>
-      ) : (
-        description
+        <>
+          {imageBlock}
+          {titleBlock}
+          {descriptionBlock}
+        </>
       )}
       {actions.length ? (
-        <View className={`${classPrefix}-actions-${size}`}>
+        <View className={`${classPrefix}-actions`}>
           {actions.map((action, index) => {
             const { text, ...rest } = action
             return (

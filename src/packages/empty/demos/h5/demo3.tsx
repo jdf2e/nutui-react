@@ -1,7 +1,11 @@
 import React from 'react'
-import { Empty } from '@nutui/nutui-react'
+import { Cell, Empty } from '@nutui/nutui-react'
 
 const Demo3 = () => {
-  return <Empty description="内容描述内容描述" imageSize={80} />
+  return (
+    <Cell>
+      <Empty size="partial" status="search" description="没有更多商品咯" />
+    </Cell>
+  )
 }
 export default Demo3
