@@ -88,6 +88,7 @@ const Nav = () => {
                         >
                           {cp.name}&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>
+                          {cp.v16 && <span className="nav-new-tag">new</span>}
                         </NavLink>
                       </li>
                     )
