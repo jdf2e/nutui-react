@@ -1445,6 +1445,7 @@ $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
 $rate-font-size-large: var(--nutui-rate-font-size-large, calc(#{$rate-font-size} + 6px)) !default;
 $rate-font-size-small: var(--nutui-rate-font-size-small, calc(#{$rate-font-size} - 2px)) !default;
+$rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
 $rate-icon-inactive-color: var(

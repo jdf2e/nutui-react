@@ -1,7 +1,12 @@
 import React from 'react'
-import { Rate } from '@nutui/nutui-react'
+import { Rate, Space } from '@nutui/nutui-react'
 
 const Demo9 = () => {
-  return <Rate defaultValue={3} readOnly />
+  return (
+    <Space direction="vertical">
+      <Rate defaultValue={3} readOnly />
+      <Rate defaultValue={4} readOnly showScore label="评分" />
+    </Space>
+  )
 }
 export default Demo9

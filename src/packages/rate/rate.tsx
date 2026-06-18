@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   ReactElement,
+  ReactNode,
   useEffect,
   useRef,
   useState,
@@ -16,6 +17,7 @@ import { WebRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
+  direction: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -31,6 +33,8 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     className,
     style,
     size,
+    direction,
+    label,
     showScore,
     count,
     value,
@@ -50,6 +54,16 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
   }
 
   const classPrefix = 'nut-rate'
+
+  const shouldAnimate = direction === 'vertical' || size === 'large'
+  const [animatingIndex, setAnimatingIndex] = useState(-1)
+
+  useEffect(() => {
+    if (animatingIndex >= 0) {
+      const timer = setTimeout(() => setAnimatingIndex(-1), 300)
+      return () => clearTimeout(timer)
+    }
+  }, [animatingIndex])
 
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
 
@@ -99,6 +113,9 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
       value = index
     }
     value = Math.max(value, min)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(index - 1)
+    }
     setScore(value)
   }
 
@@ -106,6 +123,9 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(min, n - 0.5)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(n - 1)
+    }
     setScore(value)
   }
 
@@ -193,10 +213,62 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     }
   }, [])
 
+  const isArrayLabel = Array.isArray(label)
+
+  const renderSingleLabel = () => {
+    if (label == null || isArrayLabel) return null
+    return (
+      <span
+        className={classNames(
+          `${classPrefix}-label`,
+          `${classPrefix}-label-${size}`
+        )}
+      >
+        {label}
+      </span>
+    )
+  }
+
+  const renderArrayLabels = () => {
+    if (!isArrayLabel) return null
+    return (
+      <div
+        className={classNames(
+          `${classPrefix}-labels`,
+          `${classPrefix}-labels-${size}`
+        )}
+      >
+        {(label as ReactNode[]).map((item, index) => (
+          <span className={`${classPrefix}-labels-item`} key={index}>
+            {item}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  const renderScore = () => {
+    if (!showScore) return null
+    return (
+      <span
+        className={classNames(
+          `${classPrefix}-score`,
+          `${classPrefix}-score-${size}`,
+          {
+            [`${classPrefix}-score-disabled`]: disabled,
+          }
+        )}
+      >
+        {score.toFixed(1)}
+      </span>
+    )
+  }
+
   return (
     <div
       className={classNames(
         classPrefix,
+        `${classPrefix}-${direction}`,
         {
           disabled,
           readonly: readOnly,
@@ -206,49 +278,48 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
       ref={rateRef}
       style={style}
     >
-      {countArray.map((n, index) => {
-        return (
-          <div
-            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
-            key={n}
-            ref={setRefs(index)}
-            onClick={(event) => onClick(event, n)}
-          >
+      {direction === 'horizontal' && renderSingleLabel()}
+      <div className={`${classPrefix}-list`}>
+        {countArray.map((n, index) => {
+          return (
             <div
-              className={classNames(`${classPrefix}-item-icon`, {
-                [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
-              })}
+              className={`${classPrefix}-item ${classPrefix}-item-${size}`}
+              key={n}
+              ref={setRefs(index)}
+              onClick={(event) => onClick(event, n)}
             >
-              {renderIcon(n)}
-            </div>
-            {allowHalf && score > n - 1 && (
               <div
-                className={classNames(
-                  `${classPrefix}-item-half`,
-                  `${classPrefix}-item-icon`,
-                  `${classPrefix}-item-icon-half`
-                )}
-                onClick={(event) => onHalfClick(event, n)}
+                className={classNames(`${classPrefix}-item-icon`, {
+                  [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
+                  [`${classPrefix}-item-icon-animate`]:
+                    animatingIndex === index,
+                })}
               >
                 {renderIcon(n)}
               </div>
-            )}
-          </div>
-        )
-      })}
-      {showScore ? (
-        <span
-          className={classNames(
-            `${classPrefix}-score`,
-            `${classPrefix}-score-${size}`,
-            {
-              [`${classPrefix}-score-disabled`]: disabled,
-            }
-          )}
-        >
-          {score.toFixed(1)}
-        </span>
-      ) : null}
+              {allowHalf && score > n - 1 && (
+                <div
+                  className={classNames(
+                    `${classPrefix}-item-half`,
+                    `${classPrefix}-item-icon`,
+                    `${classPrefix}-item-icon-half`
+                  )}
+                  onClick={(event) => onHalfClick(event, n)}
+                >
+                  {renderIcon(n)}
+                </div>
+              )}
+            </div>
+          )
+        })}
+      </div>
+      {direction === 'horizontal' && renderScore()}
+      {direction === 'vertical' && (
+        <>
+          {renderScore()}
+          {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}
+        </>
+      )}
     </div>
   )
 }

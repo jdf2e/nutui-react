@@ -1261,11 +1261,12 @@ $rate-icon-inactive-color: var(
   --nutui-rate-icon-inactive-color,
   $color-primary-icon-disabled
 ) !default;
-$rate-icon-size: var(--nutui-rate-icon-size, scale-font-px(12px)) !default;
+$rate-icon-size: var(--nutui-rate-icon-size, scale-font-px(16px)) !default;
 $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, $font-size-s) !default;
-$rate-font-size-large: var(--nutui-rate-font-size-large, calc($rate-font-size + scale-font-px(6px))) !default;
-$rate-font-size-small: var(--nutui-rate-font-size-small, calc($rate-font-size - scale-font-px(2px))) !default;
+$rate-font-size-large: var(--nutui-rate-font-size-large, $font-size-base) !default;
+$rate-font-size-small: var(--nutui-rate-font-size-small, $font-size-s) !default;
+$rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, scale-px(46px)) !default;
