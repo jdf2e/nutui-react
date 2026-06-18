@@ -137,7 +137,7 @@ import { Rate } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | size | Score size | `large` \| `normal` \| `small` | `normal` |
-| layout | Layout type | `horizontal` \| `vertical` | `horizontal` |
+| direction | Direction | `horizontal` \| `vertical` | `horizontal` |
 | label | Label text | `ReactNode` | `-` |
 | showScore | Show Score | `boolean` | `false` |
 | defaultValue | Uncontrolled star value | `number` | `0` |

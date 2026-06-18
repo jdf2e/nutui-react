@@ -92,22 +92,22 @@ test('showScore test', () => {
   }
 })
 
-test('layout horizontal test', () => {
-  const { container } = render(<Rate defaultValue={3} layout="horizontal" />)
+test('direction horizontal test', () => {
+  const { container } = render(<Rate defaultValue={3} direction="horizontal" />)
   const root = container.querySelector('.nut-rate')
   expect(root).toHaveClass('nut-rate-horizontal')
   expect(container.querySelector('.nut-rate-list')).toBeTruthy()
 })
 
-test('layout vertical test', () => {
-  const { container } = render(<Rate defaultValue={3} layout="vertical" />)
+test('direction vertical test', () => {
+  const { container } = render(<Rate defaultValue={3} direction="vertical" />)
   const root = container.querySelector('.nut-rate')
   expect(root).toHaveClass('nut-rate-vertical')
 })
 
 test('label test horizontal', () => {
   const { container } = render(
-    <Rate defaultValue={3} label="评分" layout="horizontal" />
+    <Rate defaultValue={3} label="评分" direction="horizontal" />
   )
   const label = container.querySelector('.nut-rate-label')
   expect(label).toBeTruthy()
@@ -122,7 +122,7 @@ test('label test horizontal', () => {
 
 test('label test vertical', () => {
   const { container } = render(
-    <Rate defaultValue={3} label="非常满意" layout="vertical" />
+    <Rate defaultValue={3} label="非常满意" direction="vertical" />
   )
   const label = container.querySelector('.nut-rate-label')
   expect(label).toBeTruthy()
@@ -138,7 +138,7 @@ test('label test vertical', () => {
 test('array label test vertical', () => {
   const labels = ['不满意', '', '', '', '非常满意']
   const { container } = render(
-    <Rate defaultValue={3} label={labels} layout="vertical" />
+    <Rate defaultValue={3} label={labels} direction="vertical" />
   )
   const labelsRow = container.querySelector('.nut-rate-labels')
   expect(labelsRow).toBeTruthy()

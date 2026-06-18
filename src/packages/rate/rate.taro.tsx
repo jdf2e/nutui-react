@@ -20,7 +20,7 @@ import { TaroRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
-  layout: 'horizontal',
+  direction: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -36,7 +36,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     className,
     style,
     size,
-    layout,
+    direction,
     label,
     showScore,
     count,
@@ -58,7 +58,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
 
   const classPrefix = 'nut-rate'
 
-  const shouldAnimate = layout === 'vertical' || size === 'large'
+  const shouldAnimate = direction === 'vertical' || size === 'large'
   const [animatingIndex, setAnimatingIndex] = useState(-1)
 
   useEffect(() => {
@@ -262,7 +262,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     <View
       className={classNames(
         classPrefix,
-        `${classPrefix}-${layout}`,
+        `${classPrefix}-${direction}`,
         {
           disabled,
           readonly: readOnly,
@@ -276,7 +276,7 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      {layout === 'horizontal' && renderSingleLabel()}
+      {direction === 'horizontal' && renderSingleLabel()}
       <View className={`${classPrefix}-list`}>
         {countArray.map((n, index) => {
           return (
@@ -311,8 +311,8 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
           )
         })}
       </View>
-      {layout === 'horizontal' && renderScore()}
-      {layout === 'vertical' && (
+      {direction === 'horizontal' && renderScore()}
+      {direction === 'vertical' && (
         <>
           {renderScore()}
           {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}

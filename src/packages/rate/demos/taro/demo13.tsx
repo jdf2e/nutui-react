@@ -6,12 +6,12 @@ const Demo13 = () => {
     <Space direction="vertical" style={{ width: '100%' }}>
       <Rate
         defaultValue={4}
-        layout="vertical"
+        direction="vertical"
         label={['不满意', '', '', '', '非常满意']}
       />
       <Rate
         defaultValue={4}
-        layout="vertical"
+        direction="vertical"
         size="large"
         label={['不满意', '', '', '', '非常满意']}
       />

@@ -17,7 +17,7 @@ import { WebRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
-  layout: 'horizontal',
+  direction: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -33,7 +33,7 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     className,
     style,
     size,
-    layout,
+    direction,
     label,
     showScore,
     count,
@@ -55,7 +55,7 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
 
   const classPrefix = 'nut-rate'
 
-  const shouldAnimate = layout === 'vertical' || size === 'large'
+  const shouldAnimate = direction === 'vertical' || size === 'large'
   const [animatingIndex, setAnimatingIndex] = useState(-1)
 
   useEffect(() => {
@@ -268,7 +268,7 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
     <div
       className={classNames(
         classPrefix,
-        `${classPrefix}-${layout}`,
+        `${classPrefix}-${direction}`,
         {
           disabled,
           readonly: readOnly,
@@ -278,7 +278,7 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
       ref={rateRef}
       style={style}
     >
-      {layout === 'horizontal' && renderSingleLabel()}
+      {direction === 'horizontal' && renderSingleLabel()}
       <div className={`${classPrefix}-list`}>
         {countArray.map((n, index) => {
           return (
@@ -313,8 +313,8 @@ export const Rate: FunctionComponent<Partial<WebRateProps>> = (props) => {
           )
         })}
       </div>
-      {layout === 'horizontal' && renderScore()}
-      {layout === 'vertical' && (
+      {direction === 'horizontal' && renderScore()}
+      {direction === 'vertical' && (
         <>
           {renderScore()}
           {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}

@@ -137,7 +137,7 @@ import { Rate } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
-| layout | 佈局方式 | `horizontal` \| `vertical` | `horizontal` |
+| direction | 方向 | `horizontal` \| `vertical` | `horizontal` |
 | label | 標籤文字 | `ReactNode` | `-` |
 | showScore | 展示評分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默認值 | `number` | `0` |

@@ -1,4 +1,8 @@
 import { Rate } from './rate'
 
-export type { RateSize, RateLayout, WebRateProps as RateProps } from '@/types'
+export type {
+  RateSize,
+  RateDirection,
+  WebRateProps as RateProps,
+} from '@/types'
 export default Rate

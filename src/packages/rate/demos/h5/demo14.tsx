@@ -9,7 +9,7 @@ const Demo14 = () => {
       <Rate defaultValue={4} size="large" label="一键评分" />
       <Rate
         defaultValue={4}
-        layout="vertical"
+        direction="vertical"
         size="large"
         label={['非常不满', '不满意', '一般', '满意', '非常满意']}
       />

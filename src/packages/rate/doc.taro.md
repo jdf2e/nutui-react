@@ -137,7 +137,7 @@ import { Rate } from '@nutui/nutui-react-taro'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
-| layout | 布局方式 | `horizontal` \| `vertical` | `horizontal` |
+| direction | 方向 | `horizontal` \| `vertical` | `horizontal` |
 | label | 标签文字 | `ReactNode` | `-` |
 | showScore | 展示评分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默认值 | `number` | `0` |
