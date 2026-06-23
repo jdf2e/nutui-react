@@ -360,9 +360,7 @@ test('wrap mode applies wrapable class with left-icon', () => {
   expect(container.querySelector('.nut-noticebar-box')).toHaveClass(
     'nut-noticebar-box-wrapable'
   )
-  expect(
-    container.querySelector('.nut-noticebar-box-left-icon')
-  ).toBeTruthy()
+  expect(container.querySelector('.nut-noticebar-box-left-icon')).toBeTruthy()
 })
 
 test('description prop renders sub text', () => {
@@ -419,7 +417,7 @@ test('autoClose renders countdown ring and closes after delay', async () => {
   expect(
     container.querySelector('.nut-noticebar-box-close-countdown')
   ).toBeTruthy()
-  expect(container.querySelector('.nut-noticebar-box-close-ring')).toBeTruthy()
+  expect(container.querySelector('.nut-noticebar-box-close-icon')).toBeTruthy()
 
   act(() => {
     vi.advanceTimersByTime(3000)

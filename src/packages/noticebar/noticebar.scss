@@ -142,30 +142,26 @@
       justify-content: center;
       width: $noticebar-close-size;
       height: $noticebar-close-size;
-    }
+      background: conic-gradient(
+        $noticebar-close-ring-color 0% var(--progress),
+        $noticebar-close-ring-shadow-color var(--progress) 100%
+      );
+      border-radius: 50%;
 
-    &-close-ring {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-      shape-rendering: geometricPrecision;
-    }
-
-    &-close-ring-shadow {
-      stroke: $noticebar-close-ring-shadow-color;
-    }
-
-    &-close-ring-progress {
-      stroke: $noticebar-close-ring-color;
-      will-change: stroke-dashoffset;
+      &::before {
+        content: '';
+        position: absolute;
+        inset: scale-px(1px);
+        background: $noticebar-background;
+        border-radius: 50%;
+      }
     }
 
     &-close-icon {
+      position: relative;
       width: $noticebar-close-icon-size;
       height: $noticebar-close-icon-size;
+      color: $noticebar-close-color;
     }
 
     &-left-icon--product {
@@ -261,45 +257,12 @@
       flex-direction: column;
     }
 
-    .nut-noticebar-box-content-wrapper {
-      flex: 1;
-      overflow: hidden;
-      min-width: 0;
-    }
-
     .nut-noticebar-box-description {
-      font-size: $noticebar-description-font-size;
-      color: $noticebar-description-color;
-      line-height: $noticebar-description-line-height;
-    }
-
-    .nut-noticebar-box-tag {
-      display: flex;
-      align-items: center;
-      width: $noticebar-tag-size;
-      height: $noticebar-tag-size;
-      margin-left: $noticebar-tag-gap;
-      flex-shrink: 0;
-    }
-
-    .nut-noticebar-box-action {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: $noticebar-action-max-width;
-      margin-left: $noticebar-action-gap;
-      font-size: $noticebar-action-font-size;
-      color: $color-primary;
-      flex-shrink: 0;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .nut-noticebar-box-right-icon {
       align-self: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: $noticebar-close-size;
       margin-left: $noticebar-icon-gap;
     }
   }
@@ -319,15 +282,6 @@
   @keyframes nut-notice-bar-play-vertical {
     to {
       transform: translateY($noticebar-height);
-    }
-  }
-
-  @keyframes nut-noticebar-ring-countdown {
-    from {
-      stroke-dashoffset: 0;
-    }
-    to {
-      stroke-dashoffset: 125.66;
     }
   }
 }

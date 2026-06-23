@@ -24,7 +24,7 @@ export interface BaseNoticeBar extends BaseProps {
   speed: number
   close?: (event: any) => void
   click?: (event: any) => void
-  onClose?: (event: any) => void
+  onClose?: (event?: any) => void
   onClick?: (event: any) => void
   onItemClick?: (event: any, value: any) => void
 }

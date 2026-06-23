@@ -75,7 +75,8 @@ export const NoticeBar: FunctionComponent<
   const classPrefix = 'nut-noticebar'
   const wrapRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const [showNoticeBar, SetShowNoticeBar] = useState(true)
+  const [showNoticeBar, setShowNoticeBar] = useState(true)
+  const [autoCloseProgress, setAutoCloseProgress] = useState(100)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
@@ -126,15 +127,29 @@ export const NoticeBar: FunctionComponent<
     return 0
   })()
 
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
   // 自动关闭
   useEffect(() => {
     if (autoClose && autoClose > 0 && showNoticeBar) {
-      const autoCloseTimer = window.setTimeout(() => {
-        SetShowNoticeBar(false)
-        onClose?.(undefined as any)
+      const startTime = Date.now()
+      const interval = setInterval(() => {
+        const elapsed = Date.now() - startTime
+        const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
+        setAutoCloseProgress(remaining)
+        if (remaining <= 0) clearInterval(interval)
+      }, 50)
+      const autoCloseTimer = setTimeout(() => {
+        setShowNoticeBar(false)
+        onCloseRef.current?.()
       }, autoClose)
-      return () => clearTimeout(autoCloseTimer)
+      return () => {
+        clearInterval(interval)
+        clearTimeout(autoCloseTimer)
+      }
     }
+    setAutoCloseProgress(100)
   }, [autoClose, showNoticeBar])
 
   useEffect(() => {
@@ -194,7 +209,7 @@ export const NoticeBar: FunctionComponent<
 
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
-    SetShowNoticeBar(!closeable)
+    setShowNoticeBar(!closeable)
     close && close(event)
     onClose && onClose(event)
   }
@@ -227,14 +242,6 @@ export const NoticeBar: FunctionComponent<
       scrollList.current.shift()
       SetAnimate(false)
     }, time)
-  }
-
-  // 点击滚动单元
-  const handleClickIcon = (event: MouseEvent) => {
-    event.stopPropagation()
-    SetShowNoticeBar(!closeable)
-    close && close(event)
-    onClose && onClose(event)
   }
 
   const isEllipsis = () => {
@@ -484,40 +491,16 @@ export const NoticeBar: FunctionComponent<
     return <div className={`${classPrefix}-box-action`}>{action}</div>
   }
 
-  const RING_R = 20
-  const RING_CIRCUMFERENCE = 2 * Math.PI * RING_R
-
   const renderAutoCloseIcon = () => {
     return (
-      <div className={`${classPrefix}-box-close-countdown`}>
-        <svg
-          className={`${classPrefix}-box-close-ring`}
-          viewBox="0 0 48 48"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            className={`${classPrefix}-box-close-ring-shadow`}
-            cx="24"
-            cy="24"
-            r={RING_R}
-            fill="none"
-            strokeWidth="3"
-          />
-          <circle
-            className={`${classPrefix}-box-close-ring-progress`}
-            cx="24"
-            cy="24"
-            r={RING_R}
-            fill="none"
-            strokeWidth="3"
-            strokeDasharray={RING_CIRCUMFERENCE}
-            strokeDashoffset="0"
-            strokeLinecap="round"
-            style={{
-              animation: `nut-noticebar-ring-countdown ${autoClose}ms linear forwards`,
-            }}
-          />
-        </svg>
+      <div
+        className={`${classPrefix}-box-close-countdown`}
+        style={
+          {
+            '--progress': `${autoCloseProgress}%`,
+          } as React.CSSProperties
+        }
+      >
         <Close className={`${classPrefix}-box-close-icon`} />
       </div>
     )
@@ -539,6 +522,11 @@ export const NoticeBar: FunctionComponent<
 
   const renderRight = () => {
     if (!right) return null
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        '[NutUI] NoticeBar: `right` prop is deprecated, use `action` instead.'
+      )
+    }
     return <div className={`${classPrefix}-box-right`}>{right}</div>
   }
 

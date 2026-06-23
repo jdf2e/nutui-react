@@ -21,7 +21,7 @@ const Demo13 = () => {
             </Button>
           }
           autoClose={5000}
-          onClose={() => console.log('auto closed')}
+          onClose={() => {}}
           wrap
         />
       )}
