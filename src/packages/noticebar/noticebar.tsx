@@ -129,24 +129,26 @@ export const NoticeBar: FunctionComponent<
 
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
+  const autoCloseTimerRef = useRef(0)
+  const autoCloseIntervalRef = useRef(0)
 
   // 自动关闭
   useEffect(() => {
     if (autoClose && autoClose > 0 && showNoticeBar) {
       const startTime = Date.now()
-      const interval = setInterval(() => {
+      autoCloseIntervalRef.current = window.setInterval(() => {
         const elapsed = Date.now() - startTime
         const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
         setAutoCloseProgress(remaining)
-        if (remaining <= 0) clearInterval(interval)
+        if (remaining <= 0) clearInterval(autoCloseIntervalRef.current)
       }, 50)
-      const autoCloseTimer = setTimeout(() => {
+      autoCloseTimerRef.current = window.setTimeout(() => {
         setShowNoticeBar(false)
         onCloseRef.current?.()
       }, autoClose)
       return () => {
-        clearInterval(interval)
-        clearTimeout(autoCloseTimer)
+        clearInterval(autoCloseIntervalRef.current)
+        clearTimeout(autoCloseTimerRef.current)
       }
     }
     setAutoCloseProgress(100)
@@ -209,7 +211,9 @@ export const NoticeBar: FunctionComponent<
 
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
-    setShowNoticeBar(!closeable)
+    setShowNoticeBar(false)
+    clearInterval(autoCloseIntervalRef.current)
+    clearTimeout(autoCloseTimerRef.current)
     close && close(event)
     onClose && onClose(event)
   }

@@ -191,10 +191,12 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-action-gap | action button gap | `12px` |
 | \--nutui-noticebar-action-font-size | action button font size | `$font-size-xs` |
 | \--nutui-noticebar-description-font-size | description font size | `11px` |
-| \--nutui-noticebar-description-color | description color | `#666` |
+| \--nutui-noticebar-description-color | description color | `$color-text` |
 | \--nutui-noticebar-description-line-height | description line height | `16px` |
 | \--nutui-noticebar-left-icon-border-radius | left icon border radius | `4px` |
 | \--nutui-noticebar-close-color | close button color | `$color-text-help` |
 | \--nutui-noticebar-close-icon-size | close icon size | `10px` |
+| \--nutui-noticebar-close-ring-color | countdown ring progress color | `$color-text-help` |
+| \--nutui-noticebar-close-ring-shadow-color | countdown ring track color | `$color-border` |
 
 <Contribution name="NoticeBar" />

@@ -136,24 +136,26 @@ export const NoticeBar: FunctionComponent<
 
   const onCloseRef = useRef(onClose)
   onCloseRef.current = onClose
+  const autoCloseTimerRef = useRef(0)
+  const autoCloseIntervalRef = useRef(0)
 
   // 自动关闭
   useEffect(() => {
     if (autoClose && autoClose > 0 && showNoticeBar) {
       const startTime = Date.now()
-      const interval = setInterval(() => {
+      autoCloseIntervalRef.current = setInterval(() => {
         const elapsed = Date.now() - startTime
         const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
         setAutoCloseProgress(remaining)
-        if (remaining <= 0) clearInterval(interval)
-      }, 50)
-      const autoCloseTimer = setTimeout(() => {
+        if (remaining <= 0) clearInterval(autoCloseIntervalRef.current)
+      }, 50) as unknown as number
+      autoCloseTimerRef.current = setTimeout(() => {
         setShowNoticeBar(false)
         onCloseRef.current?.()
-      }, autoClose)
+      }, autoClose) as unknown as number
       return () => {
-        clearInterval(interval)
-        clearTimeout(autoCloseTimer)
+        clearInterval(autoCloseIntervalRef.current)
+        clearTimeout(autoCloseTimerRef.current)
       }
     }
     setAutoCloseProgress(100)
@@ -223,11 +225,13 @@ export const NoticeBar: FunctionComponent<
   const onClickIcon = useCallback(
     (event: ITouchEvent) => {
       event.stopPropagation()
-      setShowNoticeBar(!closeable)
+      setShowNoticeBar(false)
+      clearInterval(autoCloseIntervalRef.current)
+      clearTimeout(autoCloseTimerRef.current)
       close && close(event)
       onClose && onClose(event)
     },
-    [close, onClose, closeable]
+    [close, onClose]
   )
 
   const onAnimationEnd = () => {

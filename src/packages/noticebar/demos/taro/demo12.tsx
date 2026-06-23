@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar, Button } from '@nutui/nutui-react-taro'
 import { Notice } from '@nutui/icons-react-taro'
 
@@ -16,7 +17,7 @@ const Demo12 = () => {
         wrap
         closeable
       />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar
         content="提示文案描述文案描文案"
         description="文案提示描述描述描述"
@@ -29,7 +30,7 @@ const Demo12 = () => {
         wrap
         closeable
       />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar
         wrap
         content="文案展示字"

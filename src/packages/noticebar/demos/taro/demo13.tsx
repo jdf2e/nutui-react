@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar, Button } from '@nutui/nutui-react-taro'
 
 const Demo13 = () => {
@@ -25,7 +26,7 @@ const Demo13 = () => {
           wrap
         />
       )}
-      <br />
+      <View style={{ height: 12 }} />
       <Button size="small" onClick={reset}>
         重新展示
       </Button>

@@ -191,10 +191,12 @@ import { NoticeBar } from '@nutui/nutui-react'
 | \--nutui-noticebar-action-gap | 操作按鈕與文本間距 | `12px` |
 | \--nutui-noticebar-action-font-size | 操作按鈕字號 | `$font-size-xs` |
 | \--nutui-noticebar-description-font-size | 副文本字號 | `11px` |
-| \--nutui-noticebar-description-color | 副文本顏色 | `#666` |
+| \--nutui-noticebar-description-color | 副文本顏色 | `$color-text` |
 | \--nutui-noticebar-description-line-height | 副文本行高 | `16px` |
 | \--nutui-noticebar-left-icon-border-radius | 左側圖標圓角 | `4px` |
 | \--nutui-noticebar-close-color | 關閉按鈕顏色 | `$color-text-help` |
 | \--nutui-noticebar-close-icon-size | 關閉圖標尺寸 | `10px` |
+| \--nutui-noticebar-close-ring-color | 倒計時圓環進度色 | `$color-text-help` |
+| \--nutui-noticebar-close-ring-shadow-color | 倒計時圓環底色 | `$color-border` |
 
 <Contribution name="NoticeBar" />
