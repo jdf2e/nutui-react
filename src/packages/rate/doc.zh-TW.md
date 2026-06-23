@@ -106,6 +106,30 @@ import { Rate } from '@nutui/nutui-react'
 
 :::
 
+### 上下佈局
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
+### 帶標籤
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+
+:::
+
+### 過渡動畫
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props
@@ -113,6 +137,8 @@ import { Rate } from '@nutui/nutui-react'
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | size | star 尺寸 | `large` \| `normal` \| `small` | `normal` |
+| direction | 方向 | `horizontal` \| `vertical` | `horizontal` |
+| label | 標籤文字 | `ReactNode` | `-` |
 | showScore | 展示評分 | `boolean` | `false` |
 | defaultValue | 非受控的 star 默認值 | `number` | `0` |
 | value | 受控的 star 數值 | `number` | `0` |
@@ -123,7 +149,7 @@ import { Rate } from '@nutui/nutui-react'
 | allowHalf | 是否半星 | `boolean` | `false` |
 | readOnly | 是否只讀 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
-| touchable | 是否允許滑動選擇 ｜ `boolean` | `false` |
+| touchable | 是否允許滑動選擇 | `boolean` | `false` |
 | onChange | 當前 star 數修改時觸發 | `(value: number) => void` | `-` |
 | onTouchEnd | touch 滑動結束時觸發 | `(event: TouchEvent, value: number) => void` | `-` |
 
@@ -138,8 +164,9 @@ import { Rate } from '@nutui/nutui-react'
 | \--nutui-rate-item-margin | 間距 | `4px` |
 | \--nutui-rate-icon-color | icon 激活顏色 | `$color-primary-icon` |
 | \--nutui-rate-icon-inactive-color | icon 未激活顏色 | `$color-primary-icon-disabled` |
-| \--nutui-rate-icon-size | icon 尺寸 | `12px` |
+| \--nutui-rate-icon-size | icon 尺寸 | `16px` |
 | \--nutui-rate-font-color | 評分字體顏色 | `$color-primary-icon` |
 | \--nutui-rate-font-size | 評分字體大小 | `12px` |
+| \--nutui-rate-label-color | 標籤字體顏色 | `$color-text-disabled` |
 
 <Contribution name="Rate" />

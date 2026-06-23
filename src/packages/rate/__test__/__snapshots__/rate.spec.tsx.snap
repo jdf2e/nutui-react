@@ -3,24 +3,28 @@
 exports[`size test 1`] = `
 <div>
   <div
-    class="nut-rate"
+    class="nut-rate nut-rate-horizontal"
   >
     <div
-      class="nut-rate-item nut-rate-item-large"
+      class="nut-rate-list"
     >
       <div
-        class="nut-rate-item-icon nut-rate-item-icon-disabled"
+        class="nut-rate-item nut-rate-item-large"
       >
-        <svg
-          class="nut-icon nut-icon-StarFill "
-          viewBox="0 0 1024 1024"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          class="nut-rate-item-icon nut-rate-item-icon-disabled"
         >
-          <path
-            d="M512 2.13a32 32 0 0 1 27.65 15.9l156.07 267.94 303.06 65.65a32 32 0 0 1 17.07 52.6L809.26 635.46l31.23 308.52a32 32 0 0 1-44.74 32.51L512 851.41 228.27 976.47a32 32 0 0 1-44.76-32.51l31.23-308.53L8.13 404.18a32 32 0 0 1 17.11-52.59l303.04-65.62L484.35 18.05A32 32 0 0 1 512 2.13"
-            fill="currentColor"
-          />
-        </svg>
+          <svg
+            class="nut-icon nut-icon-StarFill "
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M512 2.13a32 32 0 0 1 27.65 15.9l156.07 267.94 303.06 65.65a32 32 0 0 1 17.07 52.6L809.26 635.46l31.23 308.52a32 32 0 0 1-44.74 32.51L512 851.41 228.27 976.47a32 32 0 0 1-44.76-32.51l31.23-308.53L8.13 404.18a32 32 0 0 1 17.11-52.59l303.04-65.62L484.35 18.05A32 32 0 0 1 512 2.13"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
       </div>
     </div>
   </div>

@@ -101,17 +101,18 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-switch-active-background-color | Switch on status background color | `$color-primary` |
 | \--nutui-switch-inactive-background-color | Switch off status background color | `$color-text-disabled` |
 | \--nutui-switch-active-disabled-background-color | Switch toggle on the background color disabled | `$color-primary-disabled-special` |
-| \--nutui-switch-inactive-disabled-background-color | Turn off the background color disabled | `$color-background` |
-| \--nutui-switch-inactive-line-bg-color | Switch Off Internal Button Line Color | `#ffffff` |
-| \--nutui-switch-width | Switch Width | `46px` |
-| \--nutui-switch-height | Switch height | `28px` |
-| \--nutui-switch-line-height | Switch line height | `28px` |
+| \--nutui-switch-inactive-disabled-background-color | Turn off the background color disabled | `var(--nutui-color-background-component)` |
+| \--nutui-switch-inactive-line-background-color | Switch Off Internal Button Line Color | `$color-primary-text` |
+| \--nutui-switch-width | Switch Width | `56px` |
+| \--nutui-switch-height | Switch height | `24px` |
+| \--nutui-switch-inside-width | Switch internal button width | `32px` |
+| \--nutui-switch-inside-height | Switch internal button height | `20px` |
 | \--nutui-switch-border-radius | Switch rounded corner size | `$radius-circle` |
 | \--nutui-switch-border-width | Switch border width | `2px` |
-| \--nutui-switch-inside-border-radius | Switch internal button rounded corner size | `$radius-full` |
-| \--nutui-switch-inside-box-shadow | Switch Internal Button Shadow | `0px 2px 6px 0px rgba(0, 0, 0, 0.4)` |
+| \--nutui-switch-inside-border-radius | Switch internal button rounded corner size | `$radius-circle` |
+| \--nutui-switch-inside-box-shadow | Switch Internal Button Shadow | `0px 4px 8px 0px rgba(0, 0, 0, 0.12)` |
 | \--nutui-switch-label-text-color | Switch internal text color | `$color-primary-text` |
-| \--nutui-switch-label-font-size | Switch internal text size | `$font-size-s` |
+| \--nutui-switch-label-font-size | Switch internal text size | `$font-size-xs` |
 | \--nutui-switch-inactive-disabled-label-text-color | Turn off and disable internal text color | `$color-text-disabled` |
 
 <Contribution name="Switch" />

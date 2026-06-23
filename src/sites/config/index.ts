@@ -72,7 +72,7 @@ const moreGuide = [
             name: 'NutUI-React',
             link: '/taro/react/4x/#/zh-CN/guide/intro-react',
             language: ['React18', 'Taro'],
-            app: 'App 15.0'
+            app: 'App 16.0'
           },
           {
             name: 'NutUI-Uni',
@@ -126,7 +126,7 @@ const reactGuide = [
         name: '4x',
         link: '/h5/react/4x/',
         language: ['React18'],
-        app: 'App 15.0'
+        app: 'App 16.0'
       },
       {
         name: '3x',

@@ -1445,6 +1445,7 @@ $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
 $rate-font-size-large: var(--nutui-rate-font-size-large, calc(#{$rate-font-size} + 6px)) !default;
 $rate-font-size-small: var(--nutui-rate-font-size-small, calc(#{$rate-font-size} - 2px)) !default;
+$rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
 $rate-icon-inactive-color: var(
@@ -2269,6 +2270,34 @@ $indicator-dot-active-size: var(
 ) !default;
 $indicator-border-radius: var(--nutui-indicator-border-radius, 2px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, $spacing-xs) !default;
+$indicator-dot-border: var(
+  --nutui-indicator-dot-border,
+  0.33px solid $color-border
+) !default;
+$indicator-dot-inactive-color: var(
+  --nutui-indicator-dot-inactive-color,
+  #f0f2f7
+) !default;
+$indicator-track-width: var(
+  --nutui-indicator-track-width,
+  24px
+) !default;
+$indicator-slider-width: var(
+  --nutui-indicator-slider-width,
+  8px
+) !default;
+$indicator-dual-screen-inactive-width: var(
+  --nutui-indicator-dual-screen-inactive-width,
+  16px
+) !default;
+$indicator-placement-gap: var(
+  --nutui-indicator-placement-gap,
+  8px
+) !default;
+$indicator-placement-safe-gap: var(
+  --nutui-indicator-placement-safe-gap,
+  12px
+) !default;
 
 // menu（✅）
 $menu-scroll-fixed-top: var(--nutui-menu-scroll-fixed-top, 0) !default;
@@ -2411,27 +2440,30 @@ $searchbar-input-text-align: var(
 
 // empty（✅）
 
-$empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
-$empty-image-size: var(--nutui-empty-image-size, 160px) !default;
-$empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
-$empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
-$empty-background-color: var(--nutui-empty-background-color, #fff) !default;
-$empty-title-margin-bottom: var(
-  --nutui-empty-title-margin-bottom,
-  8px
+$empty-padding: var(--nutui-empty-padding, 20px) !default;
+$empty-title-color: var(--nutui-empty-title-color, $color-title) !default;
+$empty-description-color: var(--nutui-empty-description-color, $color-text-help) !default;
+$empty-full-padding-top: var(--nutui-empty-full-padding-top, 160px) !default;
+$empty-full-image-size: var(--nutui-empty-full-image-size, 160px) !default;
+$empty-full-title-font-size: var(--nutui-empty-full-title-font-size, $font-size-md) !default;
+$empty-full-title-line-height: var(--nutui-empty-full-title-line-height, $line-height-xxl) !default;
+$empty-full-description-font-size: var(--nutui-empty-full-description-font-size, $font-size-base) !default;
+$empty-full-description-line-height: var(
+  --nutui-empty-full-description-line-height,
+  22px
 ) !default;
-$empty-title-line-height: var(
-  --nutui-empty-title-line-height,
-  $font-size-base
-) !default;
-$empty-description-margin-top: var(
-  --nutui-empty-description-margin-top,
-  0px
-) !default;
-$empty-description-line-height: var(
-  --nutui-empty-description-line-height,
-  1.2
-) !default;
+$empty-full-actions-margin-top: var(--nutui-empty-full-actions-margin-top, 8px) !default;
+$empty-half-image-size: var(--nutui-empty-half-image-size, 80px) !default;
+$empty-half-title-font-size: var(--nutui-empty-half-title-font-size, $font-size-s) !default;
+$empty-half-title-line-height: var(--nutui-empty-half-title-line-height, 22px) !default;
+$empty-half-description-font-size: var(--nutui-empty-half-description-font-size, $font-size-m) !default;
+$empty-half-description-line-height: var(--nutui-empty-half-description-line-height, $line-height-2xl) !default;
+$empty-half-actions-margin-top: var(--nutui-empty-half-actions-margin-top, 8px) !default;
+$empty-partial-padding: var(--nutui-empty-partial-padding, 0px 16px) !default;
+$empty-partial-image-size: var(--nutui-empty-partial-image-size, 32px) !default;
+$empty-partial-content-gap: var(--nutui-empty-partial-content-gap, 8px) !default;
+$empty-partial-description-font-size: var(--nutui-empty-partial-description-font-size, $font-size-m) !default;
+$empty-partial-description-line-height: var(--nutui-empty-partial-description-line-height, 32px) !default;
 
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-base) !default;

@@ -1,6 +1,7 @@
 import React, {
   FunctionComponent,
   ReactElement,
+  ReactNode,
   useCallback,
   useEffect,
   useLayoutEffect,
@@ -19,6 +20,7 @@ import { TaroRateProps } from '@/types'
 const defaultProps = {
   ...ComponentDefaults,
   size: 'normal',
+  direction: 'horizontal',
   showScore: false,
   count: 5,
   min: 0,
@@ -34,6 +36,8 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     className,
     style,
     size,
+    direction,
+    label,
     showScore,
     count,
     value,
@@ -53,6 +57,16 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
   }
 
   const classPrefix = 'nut-rate'
+
+  const shouldAnimate = direction === 'vertical' || size === 'large'
+  const [animatingIndex, setAnimatingIndex] = useState(-1)
+
+  useEffect(() => {
+    if (animatingIndex >= 0) {
+      const timer = setTimeout(() => setAnimatingIndex(-1), 300)
+      return () => clearTimeout(timer)
+    }
+  }, [animatingIndex])
 
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
 
@@ -105,6 +119,9 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       value = index
     }
     value = Math.max(value, min)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(index - 1)
+    }
     setScore(value)
   }
 
@@ -115,6 +132,9 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(min, n - 0.5)
+    if (shouldAnimate && value > score) {
+      setAnimatingIndex(n - 1)
+    }
     setScore(value)
   }
 
@@ -187,10 +207,62 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
     }
   }
 
+  const isArrayLabel = Array.isArray(label)
+
+  const renderSingleLabel = () => {
+    if (label == null || isArrayLabel) return null
+    return (
+      <Text
+        className={classNames(
+          `${classPrefix}-label`,
+          `${classPrefix}-label-${size}`
+        )}
+      >
+        {label}
+      </Text>
+    )
+  }
+
+  const renderArrayLabels = () => {
+    if (!isArrayLabel) return null
+    return (
+      <View
+        className={classNames(
+          `${classPrefix}-labels`,
+          `${classPrefix}-labels-${size}`
+        )}
+      >
+        {(label as ReactNode[]).map((item, index) => (
+          <Text className={`${classPrefix}-labels-item`} key={index}>
+            {item}
+          </Text>
+        ))}
+      </View>
+    )
+  }
+
+  const renderScore = () => {
+    if (!showScore) return null
+    return (
+      <Text
+        className={classNames(
+          `${classPrefix}-score`,
+          `${classPrefix}-score-${size}`,
+          {
+            [`${classPrefix}-score-disabled`]: disabled,
+          }
+        )}
+      >
+        {score.toFixed(1)}
+      </Text>
+    )
+  }
+
   return (
     <View
       className={classNames(
         classPrefix,
+        `${classPrefix}-${direction}`,
         {
           disabled,
           readonly: readOnly,
@@ -204,49 +276,48 @@ export const Rate: FunctionComponent<Partial<TaroRateProps>> = (props) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      {countArray.map((n, index) => {
-        return (
-          <View
-            className={`${classPrefix}-item ${classPrefix}-item-${size}`}
-            key={n}
-            ref={setRefs(index)}
-            onClick={(event) => onClick(event, n)}
-          >
+      {direction === 'horizontal' && renderSingleLabel()}
+      <View className={`${classPrefix}-list`}>
+        {countArray.map((n, index) => {
+          return (
             <View
-              className={classNames(`${classPrefix}-item-icon`, {
-                [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
-              })}
+              className={`${classPrefix}-item ${classPrefix}-item-${size}`}
+              key={n}
+              ref={setRefs(index)}
+              onClick={(event) => onClick(event, n)}
             >
-              {renderIcon(n)}
-            </View>
-            {allowHalf && score > n - 1 && (
               <View
-                className={classNames(
-                  `${classPrefix}-item-half`,
-                  `${classPrefix}-item-icon`,
-                  `${classPrefix}-item-icon-half`
-                )}
-                onClick={(event) => onHalfClick(event, n)}
+                className={classNames(`${classPrefix}-item-icon`, {
+                  [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
+                  [`${classPrefix}-item-icon-animate`]:
+                    animatingIndex === index,
+                })}
               >
                 {renderIcon(n)}
               </View>
-            )}
-          </View>
-        )
-      })}
-      {showScore ? (
-        <Text
-          className={classNames(
-            `${classPrefix}-score`,
-            `${classPrefix}-score-${size}`,
-            {
-              [`${classPrefix}-score-disabled`]: disabled,
-            }
-          )}
-        >
-          {score.toFixed(1)}
-        </Text>
-      ) : null}
+              {allowHalf && score > n - 1 && (
+                <View
+                  className={classNames(
+                    `${classPrefix}-item-half`,
+                    `${classPrefix}-item-icon`,
+                    `${classPrefix}-item-icon-half`
+                  )}
+                  onClick={(event) => onHalfClick(event, n)}
+                >
+                  {renderIcon(n)}
+                </View>
+              )}
+            </View>
+          )
+        })}
+      </View>
+      {direction === 'horizontal' && renderScore()}
+      {direction === 'vertical' && (
+        <>
+          {renderScore()}
+          {isArrayLabel ? renderArrayLabels() : renderSingleLabel()}
+        </>
+      )}
     </View>
   )
 }
