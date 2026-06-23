@@ -441,6 +441,7 @@ export type NutCSSVariables =
   | 'nutuiRateFontSize'
   | 'nutuiRateFontSizeLarge'
   | 'nutuiRateFontSizeSmall'
+  | 'nutuiRateLabelColor'
   | 'nutuiTabbarHeight'
   | 'nutuiTabbarActiveColor'
   | 'nutuiTabbarInactiveColor'

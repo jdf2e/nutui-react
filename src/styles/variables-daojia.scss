@@ -798,6 +798,7 @@ $rate-icon-inactive-color: var(--nutui-rate-icon-inactive-color,
 $rate-icon-size: var(--nutui-rate-icon-size, 12px) !default;
 $rate-font-color: var(--nutui-rate-font-color, $color-primary-icon) !default;
 $rate-font-size: var(--nutui-rate-font-size, 12px) !default;
+$rate-label-color: var(--nutui-rate-label-color, $color-text-disabled) !default;
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 46px) !default;

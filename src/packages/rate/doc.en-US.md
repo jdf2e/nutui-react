@@ -106,6 +106,30 @@ import { Rate } from '@nutui/nutui-react'
 
 :::
 
+### Vertical Layout
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
+### With Label
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
+
+:::
+
+### Transition Animation
+
+:::demo
+
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
+
+:::
+
 ## Rate
 
 ### Props
@@ -113,6 +137,8 @@ import { Rate } from '@nutui/nutui-react'
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | size | Score size | `large` \| `normal` \| `small` | `normal` |
+| direction | Direction | `horizontal` \| `vertical` | `horizontal` |
+| label | Label text | `ReactNode` | `-` |
 | showScore | Show Score | `boolean` | `false` |
 | defaultValue | Uncontrolled star value | `number` | `0` |
 | value | Controlled star value | `number` | `0` |
@@ -123,7 +149,7 @@ import { Rate } from '@nutui/nutui-react'
 | allowHalf | Half star or not | `boolean` | `false` |
 | readOnly | Read only | `boolean` | `false` |
 | disabled | Disable or not | `boolean` | `false` |
-| touchable | Enable touch to select ｜ `boolean` | `false` |
+| touchable | Enable touch to select | `boolean` | `false` |
 | onChange | Event triggered when the current score is modified | `(value: number) => void` | `-` |
 | onTouchEnd | Event triggered when touch end | `(event: TouchEvent, value: number) => void` | `-` |
 
@@ -138,8 +164,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-rate-item-margin | spacing | `4px` |
 | \--nutui-rate-icon-color | icon activation color | `$color-primary-icon` |
 | \--nutui-rate-icon-inactive-color | icon inactive color | `$color-primary-icon-disabled` |
-| \--nutui-rate-icon-size | icon size | `12px` |
+| \--nutui-rate-icon-size | icon size | `16px` |
 | \--nutui-rate-font-color | Rating font color | `$color-primary-icon` |
 | \--nutui-rate-font-size | Rating font size | `12px` |
+| \--nutui-rate-label-color | Label font color | `$color-text-disabled` |
 
 <Contribution name="Rate" />
