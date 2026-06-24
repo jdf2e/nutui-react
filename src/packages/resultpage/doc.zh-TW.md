@@ -52,6 +52,26 @@ import { ResultPage } from '@nutui/nutui-react'
 
 :::
 
+### 半彈層內嵌
+
+適用於 Popup 半彈層場景，內容區縱向居中展示。
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### 彈窗內嵌
+
+適用於 Dialog 彈窗場景。
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
 ## ResultPage
 
 ### Props
@@ -61,8 +81,19 @@ import { ResultPage } from '@nutui/nutui-react'
 | title | 標題 | `ReactNode` | `-` |
 | description | 描述，最多展示兩行 | `ReactNode` | `-` |
 | status | 狀態類型 | `success` \| `error` \| `warning` \| `info` \| `waiting` | `info` |
-| icon | 自定義 `icon` | `ReactNode` | `-` |
-| actions | 可用於處理操作的一組數據 | `Array` | `[]` |
+| icon | 自定義圖標 | `ReactNode` | `-` |
+| actions | 底部操作按鈕 | `ResultPageAction[]` | `[]` |
+
+### ResultPageAction
+
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| text | 按鈕文案 | `ReactNode` | `-` |
+| type | 按鈕類型 | `UIType` | `default` |
+| size | 按鈕尺寸 | `UISize` | `large` |
+| fill | 填充模式 | `UIFill` | `outline` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| onClick | 點擊回調 | `() => void` | `-` |
 
 ## 主題定製
 
@@ -73,14 +104,15 @@ import { ResultPage } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-resultpage-width | 內容區域寬度 | `240px` |
-| \--nutui-resultpage-icon-size | icon的寬高 | `36px` |
-| \--nutui-resultpage-icon-margin-bottom | icon的margin-bottom值 | `12px` |
-| \--resultpage-title-margin-bottom | 標題的margin-top值 | `12px` |
-| \--nutui-resultpage-title-font-size | 標題的字體大小 | `$font-size-xl` |
-| \---nutui-resultpage-title-color | 標題的文字顏色 | `$color-title` |
-| \--nutui-resultpage-description-font-size | 描述的字體大小 | `$font-size-base` |
-| \--nutui-resultpage-description-color | 描述的文字顏色 | `$color-text` |
-| \--nutui-resultpage-description-line-height | 描述的行高 | `20px` |
-| \--nutui-resultpage-actions-margin-topt | 操作區域的margin-top值 | `16px` |
+| \--nutui-resultpage-icon-size | 圖標尺寸 | `36px` |
+| \--nutui-resultpage-icon-margin-bottom | 圖標與內容間距 | `4px` |
+| \--nutui-resultpage-title-margin-bottom | 標題與描述間距 | `4px` |
+| \--nutui-resultpage-title-font-size | 標題字號 | `16px` |
+| \--nutui-resultpage-title-line-height | 標題行高 | `24px` |
+| \--nutui-resultpage-title-color | 標題顏色 | `$color-title` |
+| \--nutui-resultpage-description-font-size | 描述字號 | `14px` |
+| \--nutui-resultpage-description-color | 描述顏色 | `$color-text` |
+| \--nutui-resultpage-description-line-height | 描述行高 | `22px` |
+| \--nutui-resultpage-actions-margin-top | 描述與操作區間距 | `12px` |
 
 <Contribution name="ResultPage" />

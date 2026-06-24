@@ -78,3 +78,43 @@ npm install @nutui/nutui-react-taro
     - `status="empty"` → `status="search"`（通用空态）或按场景选用上表枚举
     - `status="error"` → `status="network"` 或通过 `image` 传入自定义插图
   - 插图通过 CDN URL 运行时加载，映射表见 `src/types/spec/empty/base.ts`。
+
+### Popover (反馈类)
+
+> **v4 不提供 v3 兼容**：无 Props 别名、无 `.nut-popover-dark` 类名回退。请按下表手动迁移。
+
+- **新增 `type` 气泡类型（不兼容默认值行为）**：
+  - 新增 `type` 属性，枚举 `status`（状态型：图标 + 文案 + 关闭）/ `description`（说明型：仅文案）。
+  - 默认值 `status`；说明型最大宽度 208px，状态型最大宽度 240px。
+- **`theme` 默认值变更（不兼容）**：
+  - 默认值由 `light` 调整为 `dark`（对齐设计规范深色气泡）。
+  - **明亮风格保留**：设置 `theme="light"` 即可使用白底深字的明亮风格。
+  - 推荐迁移映射：
+    - v3 默认明亮风格 → 显式设置 `theme="light"`
+    - v3 `theme="dark"` → v4 可移除该属性（已是默认外观）
+- **视觉规格对齐设计稿**：
+  - **通用**：高度 28px，字号 12px，背景 `$color-mask`，文案 `$color-primary-text`，垂直内边距 6px、水平内边距 8px。
+  - **状态型**：图标/关闭 12×12、80% 透明度，关闭按钮触控热区不低于 36×36px。
+  - **说明型**：仅文案，左右内边距各 8px。
+- **CSS 类名变更（不兼容）**：
+  - 移除 `.nut-popover-dark`；默认样式即为设计规范深色气泡。
+  - 明亮风格改用 `.nut-popover-light`（`theme="light"`）。
+  - 新增类型修饰类：`.nut-popover--status` / `.nut-popover--description`。
+- **主题变量调整**：
+  - 新增 `--nutui-popover-padding-horizontal`、`--nutui-popover-padding-vertical`、`--nutui-popover-height`、`--nutui-popover-icon-size`、`--nutui-popover-icon-color`、`--nutui-popover-status-max-width`、`--nutui-popover-description-max-width`、`--nutui-popover-action-hotspot-size`。
+  - `--nutui-popover-content-background-color` 默认值由 `#ffffff` 改为 `$color-mask`；`--nutui-popover-text-color` 由 `$color-mask` 改为 `$color-primary-text`。
+  - `--nutui-popover-item-width` 默认值由 `160px` 改为 `240px`（等同状态型最大宽度）。
+
+### ResultPage (反馈类)
+
+> **v4 不提供 v3 兼容**：无 Props 别名。请按下表手动迁移。
+
+- **类型入口调整**：
+  - 移除 `src/packages/resultpage/types.ts`，统一从 `@/types` 引入 `ResultPageStatus`、`ResultPageAction`、`ResultPageProps`。
+- **视觉规格对齐 JD APP 16.0**：
+  - 描述文案默认居中；失败状态图标色值 H5 端对齐 `$color-primary`（`#ff2159`）。
+  - 图标与内容间距 4px；标题与描述间距 4px；描述与操作区间距 12px；操作按钮横向间距 12px（`margin: 0 6px`）。
+  - 标题：`$font-size-md` / 行高 24px；描述行高 22px。
+- **主题变量调整**：
+  - 新增 `--nutui-resultpage-title-line-height`。
+  - `--nutui-resultpage-icon-margin-bottom` 默认 `12px` → `4px`；`--nutui-resultpage-title-margin-bottom` `12px` → `4px`；`--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`；`--nutui-resultpage-description-line-height` `20px` → `22px`；`--nutui-resultpage-actions-margin-top` `16px` → `12px`。

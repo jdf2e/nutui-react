@@ -78,3 +78,43 @@ npm install @nutui/nutui-react-taro
     - `status="empty"` → `status="search"` (generic empty) or another enum above
     - `status="error"` → `status="network"` or a custom `image`
   - Images load from CDN URLs at runtime; see `src/types/spec/empty/base.ts` for the mapping.
+
+### Popover
+
+> **No v3 compatibility in v4**: no prop aliases and no `.nut-popover-dark` class fallback. Migrate manually using the table below.
+
+- **New `type` bubble variant (breaking default behavior)**:
+  - Added `type`: `status` (icon + text + close) or `description` (text only).
+  - Default `status`; max width 240px for status, 208px for description.
+- **`theme` default changed (breaking)**:
+  - Default changed from `light` to `dark` (design-spec dark bubble).
+  - **Light style is preserved**: set `theme="light"` for the bright white-background style.
+  - Recommended migration:
+    - v3 default bright style → set `theme="light"` explicitly
+    - v3 `theme="dark"` → can remove the prop in v4 (already the default look)
+- **Visual spec updates**:
+  - **Common**: height 28px, font 12px, background `$color-mask`, text `$color-primary-text`, padding 6px vertical / 8px horizontal.
+  - **Status**: icon/close 12×12 at 80% opacity; close button touch hotspot at least 36×36px.
+  - **Description**: text only, 8px horizontal padding.
+- **CSS class name breaking changes**:
+  - Removed `.nut-popover-dark`; default styles match the design-spec dark bubble.
+  - Bright style uses `.nut-popover-light` (`theme="light"`).
+  - Added `.nut-popover--status` / `.nut-popover--description`.
+- **Theme variable updates**:
+  - Added `--nutui-popover-padding-horizontal`, `--nutui-popover-padding-vertical`, `--nutui-popover-height`, `--nutui-popover-icon-size`, `--nutui-popover-icon-color`, `--nutui-popover-status-max-width`, `--nutui-popover-description-max-width`, `--nutui-popover-action-hotspot-size`.
+  - `--nutui-popover-content-background-color` default changed from `#ffffff` to `$color-mask`; `--nutui-popover-text-color` from `$color-mask` to `$color-primary-text`.
+  - `--nutui-popover-item-width` default changed from `160px` to `240px` (same as status max width).
+
+### ResultPage
+
+> **No v3 compatibility in v4**: no prop aliases. Migrate manually using the table below.
+
+- **Type entry change**:
+  - Removed `src/packages/resultpage/types.ts`; import `ResultPageStatus`, `ResultPageAction`, and `ResultPageProps` from `@/types`.
+- **Visual spec aligned with JD APP 16.0**:
+  - Description text is centered by default; H5 error icon color aligns with `$color-primary` (`#ff2159`).
+  - 4px below icon; 4px between title and description; 12px above actions; 12px between buttons (`margin: 0 6px`).
+  - Title: `$font-size-md` / line height 24px; description line height 22px.
+- **Theme variable updates**:
+  - Added `--nutui-resultpage-title-line-height`.
+  - `--nutui-resultpage-icon-margin-bottom` default `12px` → `4px`; `--nutui-resultpage-title-margin-bottom` `12px` → `4px`; `--nutui-resultpage-title-font-size` `$font-size-xl` → `$font-size-md`; `--nutui-resultpage-description-line-height` `20px` → `22px`; `--nutui-resultpage-actions-margin-top` `16px` → `12px`.

@@ -5,13 +5,11 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  .nut-button {
+    width: 114px;
+  }
   &-icon {
-    /* #ifdef dynamic*/
     display: flex;
-    /* #endif */
-    /* #ifndef dynamic*/
-    display: inline-flex;
-    /* #endif */
     margin-bottom: $resultpage-icon-margin-bottom;
     .nut-icon {
       height: $resultpage-icon-size;
@@ -22,6 +20,7 @@
     width: $resultpage-width;
     margin-bottom: $resultpage-title-margin-bottom;
     font-size: $resultpage-title-font-size;
+    line-height: $resultpage-title-line-height;
     color: $resultpage-title-color;
     font-weight: $font-weight-bold;
     text-align: center;
@@ -31,6 +30,7 @@
     line-height: $resultpage-description-line-height;
     font-size: $resultpage-description-font-size;
     color: $resultpage-description-color;
+    text-align: center;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -46,6 +46,7 @@
     }
   }
   &-action {
+    width: 114px;
     margin-left: 6px;
     margin-right: 6px;
   }

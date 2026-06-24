@@ -13,6 +13,7 @@ const defaultProps = {
   status: 'info',
   actions: [],
 } as WebResultPageProps
+
 export const ResultPage: FunctionComponent<
   Partial<WebResultPageProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -35,11 +36,12 @@ export const ResultPage: FunctionComponent<
 
   const defaultStatus: ResultPageStatusOptions = {
     success: <Success color="var(--nutui-color-success, #0acc2a)" />,
-    error: <Failure color="var(--nutui-color-primary, #ff0f23)" />,
+    error: <Failure color="var(--nutui-color-primary, #ff2159)" />,
     warning: <Warning color="var(--nutui-color-warning, #ffaa00)" />,
     info: <Tips color="var(--nutui-color-info, #0c82f7)" />,
     waiting: <Ask color="var(--nutui-color-info, #0c82f7)" />,
   }
+
   return (
     <div className={cls} style={style}>
       <div className={`${classPrefix}-icon`}>

@@ -2912,6 +2912,10 @@ $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
   $font-size-xl
 ) !default;
+$resultpage-title-line-height: var(
+  --nutui-resultpage-title-line-height,
+  $line-height-xl
+) !default;
 $resultpage-title-color: var(
   --nutui-resultpage-title-color,
   $color-title

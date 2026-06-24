@@ -2737,15 +2737,19 @@ $resultpage-width: var(--nutui-resultpage-width, scale-px(240px)) !default;
 $resultpage-icon-size: var(--nutui-resultpage-icon-size, scale-px(36px)) !default;
 $resultpage-icon-margin-bottom: var(
   --nutui-resultpage-icon-margin-bottom,
-  scale-px(12px)
+  scale-px(4px)
 ) !default;
 $resultpage-title-margin-bottom: var(
   --nutui-resultpage-title-margin-bottom,
-  scale-px(12px)
+  scale-px(4px)
 ) !default;
 $resultpage-title-font-size: var(
   --nutui-resultpage-title-font-size,
-  $font-size-xl
+  $font-size-md
+) !default;
+$resultpage-title-line-height: var(
+  --nutui-resultpage-title-line-height,
+  scale-px(24px)
 ) !default;
 $resultpage-title-color: var(
   --nutui-resultpage-title-color,
@@ -2761,11 +2765,11 @@ $resultpage-description-color: var(
 ) !default;
 $resultpage-description-line-height: var(
   --nutui-resultpage-description-line-height,
-  scale-px(20px)
+  scale-px(22px)
 ) !default;
 $resultpage-actions-margin-top: var(
   --nutui-resultpage-actions-margin-top,
-  scale-px(16px)
+  scale-px(12px)
 ) !default;
 
 // quickenter
