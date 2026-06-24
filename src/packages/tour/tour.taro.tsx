@@ -170,7 +170,7 @@ export const Tour: FunctionComponent<
                   targetId={`nut-tour-popid${index === active ? index : ''}`}
                   closeOnOutsideClick={false}
                   offset={item.popoverOffset || [0, 8]}
-                  arrowOffset={item.arrowOffset || 0}
+                  arrowOffset={item.arrowOffset || 20}
                 >
                   {/* placeholder don't delete <></> */}
                   <></>
