@@ -192,6 +192,7 @@ export const Popup: FunctionComponent<
   }
 
   const handleCloseIconClick = (e: ITouchEvent) => {
+    e.stopPropagation()
     onCloseIconClick(e) && close()
   }
 
