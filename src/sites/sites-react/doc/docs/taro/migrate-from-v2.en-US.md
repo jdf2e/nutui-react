@@ -222,6 +222,7 @@ If your project uses these components, please read the documentation carefully a
 #### InfiniteLoading
 
 - The target attribute is used to obtain the element that is being listened to.
+- `refreshDistance` The distance to trigger the pull-down refresh.
 
 [//]: # '#### Notify'
 [//]: # '#### PullToRefresh'
