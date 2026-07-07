@@ -1,8 +1,17 @@
+import { ReactNode } from 'react'
 import Notification from './Notification'
 import { WebToastProps } from '@/types'
 import { defaultOverlayProps } from '@/packages/overlay/overlay'
+import { clone } from '@/utils'
 
-let messageInstance: any = null
+type NotificationInstance = {
+  component: Notification
+  id: string
+  destroy: () => void
+}
+
+let messageInstance: NotificationInstance | null = null
+const messageInstanceSet = new Set<NotificationInstance>()
 
 let defaultProps: WebToastProps = {
   ...defaultOverlayProps,
@@ -26,18 +35,18 @@ type ToastNativeProps = Partial<WebToastProps>
 
 function getInstance(
   props: ToastNativeProps,
-  callback: (notification: any) => void
+  callback: (notification: NotificationInstance) => void
 ) {
   if (messageInstance) {
     messageInstance.destroy()
     messageInstance = null
   }
-  Notification.newInstance(props, (notification: any) => {
+  Notification.newInstance(props, (notification: NotificationInstance) => {
     return callback && callback(notification)
   })
 }
 
-function notice(opts: any) {
+function notice(opts: ToastNativeProps) {
   function close() {
     if (messageInstance) {
       messageInstance.destroy()
@@ -46,12 +55,16 @@ function notice(opts: any) {
     }
   }
   const opts2 = { ...defaultProps, ...opts, onClose: close }
-  getInstance(opts2, (notification: any) => {
+  getInstance(opts2, (notification: NotificationInstance) => {
+    const oldInstance = messageInstance ? clone(messageInstance) : null
+    if (notification.id === oldInstance?.id) {
+      messageInstanceSet.add(oldInstance)
+    }
     messageInstance = notification
   })
 }
 
-const errorMsg = (msg: any) => {
+const errorMsg = (msg: ReactNode) => {
   if (!msg) {
     console.warn('[NutUI Toast]: msg cannot be null')
   }
@@ -79,6 +92,12 @@ export default {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
+      if (messageInstanceSet?.size) {
+        messageInstanceSet.forEach((instance: NotificationInstance) => {
+          instance?.destroy()
+        })
+        messageInstanceSet.clear()
+      }
     }
   },
 }

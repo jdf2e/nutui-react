@@ -29,6 +29,12 @@ const onClickToast = vi.fn((type, msg, options?) => {
   }
 })
 
+const waitTimeout = (delay: number) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+}
+
 test('event click-show-toast test', async () => {
   const { getByTestId } = render(
     <Cell
@@ -135,4 +141,104 @@ test('event show-loading-toast', async () => {
     expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-loading')
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('loading')
   })
+})
+
+test('manually close in strict mode', async () => {
+  const time = 2000
+  const content = 'strict mode loading'
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        onClickToast('loading', content)
+        onClickToast('loading', content)
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(onClickToast).toBeCalled()
+    expect(document.querySelectorAll('.nut-toast-text')?.length).toBe(2)
+  })
+
+  Toast.clear()
+
+  await waitTimeout(time)
+  expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(undefined)
+})
+
+test('no content', async () => {
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        Toast.show({})
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(undefined)
+  })
+})
+
+test('string option', async () => {
+  const content = 'string option'
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        Toast.show(content)
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(content)
+  })
+})
+
+test('global config', async () => {
+  const content = 'global config'
+  const contentClassName = 'content-demo'
+  Toast.config({ contentClassName })
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        onClickToast('text', content)
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector(`.${contentClassName}`)).toBeTruthy()
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(content)
+  })
+})
+
+test('1s after close', async () => {
+  const content = '1'
+  let isCalledClose = false
+  const { getByTestId } = render(
+    <Cell
+      data-testid="emit-click"
+      onClick={() => {
+        onClickToast('text', content, {
+          duration: 1,
+          onClose: () => {
+            isCalledClose = true
+          },
+        })
+      }}
+    />
+  )
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe(content)
+  })
+
+  await waitTimeout(2000)
+  expect(document.querySelector('.nut-toast-text')).toBe(null)
+  expect(isCalledClose).toBeTruthy()
 })
