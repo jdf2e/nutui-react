@@ -62,7 +62,10 @@ function show(option: ToastNativeProps | string) {
     errorMsg(option)
     return notice({ content: option })
   }
-  errorMsg(option.content)
+  const checkParam = ['title', 'content']
+  Object.entries(option)
+    .filter(([k, v]) => checkParam.includes(k))
+    .forEach(([k, v]) => errorMsg(v))
   return notice({
     ...option,
   })
