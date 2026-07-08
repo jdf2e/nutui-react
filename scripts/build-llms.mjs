@@ -6,7 +6,7 @@
 // DO NOT manual edit the outputs. Run: npm run generate:llms
 import fs from 'fs'
 import path from 'path'
-import { fileURLToPath } from 'url'
+import { fileURLToPath, pathToFileURL } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -111,6 +111,6 @@ function main() {
 }
 
 // 仅作为脚本直接运行时执行 main，被 import 时不执行。
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main()
 }
