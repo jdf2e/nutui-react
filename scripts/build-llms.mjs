@@ -20,6 +20,8 @@ const SITE_URL = `${SITE_ORIGIN}${SITE_BASE}`
 
 const SUMMARY =
   'NutUI React 是京东风格的轻量级移动端 React 组件库，支持一套代码生成 H5 和小程序（Taro 多端）。'
+const SUMMARY_EN =
+  'NutUI React is a lightweight, JD-style mobile React UI library that generates both H5 and mini-program (Taro multi-platform) apps from a single codebase.'
 
 export function loadMeta() {
   return JSON.parse(fs.readFileSync(META_PATH, 'utf-8'))
@@ -72,7 +74,8 @@ export function generateLlmsFull(meta, lang = 'h5') {
     lang === 'enUS'
       ? '# NutUI React - Full Component Documentation'
       : '# NutUI React - 全部组件文档'
-  const parts = [title, '', `> ${SUMMARY}`, '']
+  const summary = lang === 'enUS' ? SUMMARY_EN : SUMMARY
+  const parts = [title, '', `> ${summary}`, '']
   for (const cat of meta.categories) {
     for (const id of cat.components) {
       const c = meta.components[id]
