@@ -145,7 +145,7 @@ function parseTokens(validIdsSorted) {
   while ((m = re.exec(content)) !== null) {
     const scssVar = `$${m[1]}`
     const cssVar = m[2]
-    const def = m[3] != null ? m[3].trim().replace(/\)\s*$/, '') : null
+    const def = m[3] != null ? m[3].trim() : null
     const token = { cssVar, scssVar, default: def }
     const rest = cssVar.slice('--nutui-'.length)
     // 最长匹配：validIdsSorted 已按长度降序

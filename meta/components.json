@@ -328,17 +328,17 @@
     {
       "cssVar": "--nutui-color-mask",
       "scssVar": "$color-mask",
-      "default": "rgba(0, 0, 0, 0.7"
+      "default": "rgba(0, 0, 0, 0.7)"
     },
     {
       "cssVar": "--nutui-color-mask-part",
       "scssVar": "$color-mask-part",
-      "default": "rgba(0, 0, 0, 0.4"
+      "default": "rgba(0, 0, 0, 0.4)"
     },
     {
       "cssVar": "--nutui-color-border",
       "scssVar": "$color-border",
-      "default": "rgba(0, 0, 0, 0.06"
+      "default": "rgba(0, 0, 0, 0.06)"
     },
     {
       "cssVar": "--nutui-color-border-disabled",
@@ -378,72 +378,72 @@
     {
       "cssVar": "--nutui-font-size-xxxs",
       "scssVar": "$font-size-xxxs",
-      "default": "scale-font-px(9px"
+      "default": "scale-font-px(9px)"
     },
     {
       "cssVar": "--nutui-font-size-xxs",
       "scssVar": "$font-size-xxs",
-      "default": "scale-font-px(10px"
+      "default": "scale-font-px(10px)"
     },
     {
       "cssVar": "--nutui-font-size-xs",
       "scssVar": "$font-size-xs",
-      "default": "scale-font-px(11px"
+      "default": "scale-font-px(11px)"
     },
     {
       "cssVar": "--nutui-font-size-s",
       "scssVar": "$font-size-s",
-      "default": "scale-font-px(12px"
+      "default": "scale-font-px(12px)"
     },
     {
       "cssVar": "--nutui-font-size-m",
       "scssVar": "$font-size-m",
-      "default": "scale-font-px(13px"
+      "default": "scale-font-px(13px)"
     },
     {
       "cssVar": "--nutui-font-size-base",
       "scssVar": "$font-size-base",
-      "default": "scale-font-px(14px"
+      "default": "scale-font-px(14px)"
     },
     {
       "cssVar": "--nutui-font-size-l",
       "scssVar": "$font-size-l",
-      "default": "scale-font-px(15px"
+      "default": "scale-font-px(15px)"
     },
     {
       "cssVar": "--nutui-font-size-md",
       "scssVar": "$font-size-md",
-      "default": "scale-font-px(16px"
+      "default": "scale-font-px(16px)"
     },
     {
       "cssVar": "--nutui-font-size-icon",
       "scssVar": "$font-size-icon",
-      "default": "scale-icon-px(16px"
+      "default": "scale-icon-px(16px)"
     },
     {
       "cssVar": "--nutui-font-size-xl",
       "scssVar": "$font-size-xl",
-      "default": "scale-font-px(18px"
+      "default": "scale-font-px(18px)"
     },
     {
       "cssVar": "--nutui-font-size-2xl",
       "scssVar": "$font-size-2xl",
-      "default": "scale-font-px(20px"
+      "default": "scale-font-px(20px)"
     },
     {
       "cssVar": "--nutui-font-size-xxl",
       "scssVar": "$font-size-xxl",
-      "default": "scale-font-px(24px"
+      "default": "scale-font-px(24px)"
     },
     {
       "cssVar": "--nutui-font-size-10",
       "scssVar": "$font-size-xxxl",
-      "default": "scale-font-px(26px"
+      "default": "scale-font-px(26px)"
     },
     {
       "cssVar": "--nutui-font-size-11",
       "scssVar": "$font-size-xxxxl",
-      "default": "scale-font-px(28px"
+      "default": "scale-font-px(28px)"
     },
     {
       "cssVar": "--nutui-line-height-xxxs",
@@ -538,82 +538,82 @@
     {
       "cssVar": "--nutui-spacing-xxxs",
       "scssVar": "$spacing-xxxs",
-      "default": "scale-px(2px"
+      "default": "scale-px(2px)"
     },
     {
       "cssVar": "--nutui-spacing-xxs",
       "scssVar": "$spacing-xxs",
-      "default": "scale-px(4px"
+      "default": "scale-px(4px)"
     },
     {
       "cssVar": "--nutui-spacing-xs",
       "scssVar": "$spacing-xs",
-      "default": "scale-px(6px"
+      "default": "scale-px(6px)"
     },
     {
       "cssVar": "--nutui-spacing-s",
       "scssVar": "$spacing-s",
-      "default": "scale-px(7px"
+      "default": "scale-px(7px)"
     },
     {
       "cssVar": "--nutui-spacing-base",
       "scssVar": "$spacing-base",
-      "default": "scale-px(8px"
+      "default": "scale-px(8px)"
     },
     {
       "cssVar": "--nutui-spacing-l",
       "scssVar": "$spacing-l",
-      "default": "scale-px(9px"
+      "default": "scale-px(9px)"
     },
     {
       "cssVar": "--nutui-spacing-xl",
       "scssVar": "$spacing-xl",
-      "default": "scale-px(12px"
+      "default": "scale-px(12px)"
     },
     {
       "cssVar": "--nutui-spacing-xxl",
       "scssVar": "$spacing-xxl",
-      "default": "scale-px(16px"
+      "default": "scale-px(16px)"
     },
     {
       "cssVar": "--nutui-spacing-xxxl",
       "scssVar": "$spacing-xxxl",
-      "default": "scale-px(18px"
+      "default": "scale-px(18px)"
     },
     {
       "cssVar": "--nutui-radius-xxs",
       "scssVar": "$radius-xxs",
-      "default": "scale-px(2px"
+      "default": "scale-px(2px)"
     },
     {
       "cssVar": "--nutui-radius-xs",
       "scssVar": "$radius-xs",
-      "default": "scale-px(4px"
+      "default": "scale-px(4px)"
     },
     {
       "cssVar": "--nutui-radius-s",
       "scssVar": "$radius-s",
-      "default": "scale-px(6px"
+      "default": "scale-px(6px)"
     },
     {
       "cssVar": "--nutui-radius-base",
       "scssVar": "$radius-base",
-      "default": "scale-px(8px"
+      "default": "scale-px(8px)"
     },
     {
       "cssVar": "--nutui-radius-l",
       "scssVar": "$radius-l",
-      "default": "scale-px(8px"
+      "default": "scale-px(8px)"
     },
     {
       "cssVar": "--nutui-radius-xxl",
       "scssVar": "$radius-xxl",
-      "default": "scale-px(14px"
+      "default": "scale-px(14px)"
     },
     {
       "cssVar": "--nutui-radius-xxxl",
       "scssVar": "$radius-xxxl",
-      "default": "scale-px(16px"
+      "default": "scale-px(16px)"
     },
     {
       "cssVar": "--nutui-list-item-margin",
@@ -658,7 +658,7 @@
     {
       "cssVar": "--nutui-countup-height",
       "scssVar": "$countup-height",
-      "default": "scale-px(32px"
+      "default": "scale-px(32px)"
     },
     {
       "cssVar": "--nutui-countup-base-size",
@@ -668,7 +668,7 @@
     {
       "cssVar": "--nutui-countup-border-radius",
       "scssVar": "$countup-border-radius",
-      "default": "scale-px(4px"
+      "default": "scale-px(4px)"
     },
     {
       "cssVar": "--nutui-countup-lr-margin",
@@ -824,17 +824,17 @@
         {
           "cssVar": "--nutui-button-border-width",
           "scssVar": "$button-border-width",
-          "default": "scale-px(0.5px"
+          "default": "scale-px(0.5px)"
         },
         {
           "cssVar": "--nutui-button-normal-padding",
           "scssVar": "$button-normal-padding",
-          "default": "0px scale-px(12px"
+          "default": "0px scale-px(12px)"
         },
         {
           "cssVar": "--nutui-button-default-height",
           "scssVar": "$button-default-height",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-button-default-color",
@@ -844,72 +844,72 @@
         {
           "cssVar": "--nutui-button-default-padding",
           "scssVar": "$button-default-padding",
-          "default": "0px scale-px(12px"
+          "default": "0px scale-px(12px)"
         },
         {
           "cssVar": "--nutui-button-xlarge-height",
           "scssVar": "$button-xlarge-height",
-          "default": "scale-px(48px"
+          "default": "scale-px(48px)"
         },
         {
           "cssVar": "--nutui-button-xlarge-padding",
           "scssVar": "$button-xlarge-padding",
-          "default": "0px scale-px(20px"
+          "default": "0px scale-px(20px)"
         },
         {
           "cssVar": "--nutui-button-44-height",
           "scssVar": "$button-44-height",
-          "default": "scale-px(44px"
+          "default": "scale-px(44px)"
         },
         {
           "cssVar": "--nutui-button-44-padding",
           "scssVar": "$button-44-padding",
-          "default": "0px scale-px(16px"
+          "default": "0px scale-px(16px)"
         },
         {
           "cssVar": "--nutui-button-large-height",
           "scssVar": "$button-large-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-button-large-padding",
           "scssVar": "$button-large-padding",
-          "default": "0px scale-px(12px"
+          "default": "0px scale-px(12px)"
         },
         {
           "cssVar": "--nutui-button-36-height",
           "scssVar": "$button-36-height",
-          "default": "scale-px(36px"
+          "default": "scale-px(36px)"
         },
         {
           "cssVar": "--nutui-button-36-padding",
           "scssVar": "$button-36-padding",
-          "default": "0px scale-px(12px"
+          "default": "0px scale-px(12px)"
         },
         {
           "cssVar": "--nutui-button-small-padding",
           "scssVar": "$button-small-padding",
-          "default": "0px scale-px(8px"
+          "default": "0px scale-px(8px)"
         },
         {
           "cssVar": "--nutui-button-small-height",
           "scssVar": "$button-small-height",
-          "default": "scale-px(28px"
+          "default": "scale-px(28px)"
         },
         {
           "cssVar": "--nutui-button-mini-padding",
           "scssVar": "$button-mini-padding",
-          "default": "0px scale-px(6px"
+          "default": "0px scale-px(6px)"
         },
         {
           "cssVar": "--nutui-button-mini-height",
           "scssVar": "$button-mini-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-button-text-icon-margin",
           "scssVar": "$button-text-icon-margin",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         }
       ]
     },
@@ -1023,32 +1023,32 @@
         {
           "cssVar": "--nutui-cell-border-radius",
           "scssVar": "$cell-border-radius",
-          "default": "scale-px(6px"
+          "default": "scale-px(6px)"
         },
         {
           "cssVar": "--nutui-cell-padding",
           "scssVar": "$cell-padding",
-          "default": "scale-px(13px) scale-px(16px"
+          "default": "scale-px(13px) scale-px(16px)"
         },
         {
           "cssVar": "--nutui-cell-line-height",
           "scssVar": "$cell-line-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-cell-divider-right",
           "scssVar": "$cell-divider-right",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-cell-divider-left",
           "scssVar": "$cell-divider-left",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-cell-group-wrap-margin",
           "scssVar": "$cell-group-wrap-margin",
-          "default": "scale-px(10px"
+          "default": "scale-px(10px)"
         }
       ]
     },
@@ -1317,47 +1317,47 @@
         {
           "cssVar": "--nutui-icon-size-6",
           "scssVar": "$icon-size-6",
-          "default": "scale-icon-px(6px"
+          "default": "scale-icon-px(6px)"
         },
         {
           "cssVar": "--nutui-icon-size-8",
           "scssVar": "$icon-size-8",
-          "default": "scale-icon-px(8px"
+          "default": "scale-icon-px(8px)"
         },
         {
           "cssVar": "--nutui-icon-size-10",
           "scssVar": "$icon-size-10",
-          "default": "scale-icon-px(10px"
+          "default": "scale-icon-px(10px)"
         },
         {
           "cssVar": "--nutui-icon-size-11",
           "scssVar": "$icon-size-11",
-          "default": "scale-icon-px(11px"
+          "default": "scale-icon-px(11px)"
         },
         {
           "cssVar": "--nutui-icon-size-12",
           "scssVar": "$icon-size-12",
-          "default": "scale-icon-px(12px"
+          "default": "scale-icon-px(12px)"
         },
         {
           "cssVar": "--nutui-icon-size-16",
           "scssVar": "$icon-size-16",
-          "default": "scale-icon-px(16px"
+          "default": "scale-icon-px(16px)"
         },
         {
           "cssVar": "--nutui-icon-size-18",
           "scssVar": "$icon-size-18",
-          "default": "scale-icon-px(18px"
+          "default": "scale-icon-px(18px)"
         },
         {
           "cssVar": "--nutui-icon-size-20",
           "scssVar": "$icon-size-20",
-          "default": "scale-icon-px(20px"
+          "default": "scale-icon-px(20px)"
         },
         {
           "cssVar": "--nutui-icon-size-22",
           "scssVar": "$icon-size-22",
-          "default": "scale-icon-px(22px"
+          "default": "scale-icon-px(22px)"
         },
         {
           "cssVar": "--nutui-icon-height",
@@ -1793,12 +1793,12 @@
         {
           "cssVar": "--nutui-divider-line-height",
           "scssVar": "$divider-line-height",
-          "default": "scale-px(1px"
+          "default": "scale-px(1px)"
         },
         {
           "cssVar": "--nutui-divider-spacing",
           "scssVar": "$divider-spacing",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-divider-side-width",
@@ -1808,12 +1808,12 @@
         {
           "cssVar": "--nutui-divider-vertical-height",
           "scssVar": "$divider-vertical-height",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-divider-vertical-margin",
           "scssVar": "$divider-vertical-margin",
-          "default": "0 scale-px(8px"
+          "default": "0 scale-px(8px)"
         }
       ]
     },
@@ -1939,7 +1939,7 @@
         {
           "cssVar": "--nutui-grid-item-text-margin",
           "scssVar": "$grid-item-text-margin",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-grid-item-text-color",
@@ -2189,12 +2189,12 @@
         {
           "cssVar": "--nutui-row-content-height",
           "scssVar": "$row-content-height",
-          "default": "scale-px(50px"
+          "default": "scale-px(50px)"
         },
         {
           "cssVar": "--nutui-row-content-line-height",
           "scssVar": "$row-content-line-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         }
       ]
     },
@@ -2292,7 +2292,7 @@
         {
           "cssVar": "--nutui-space-gap",
           "scssVar": "$space-gap",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         }
       ]
     },
@@ -2594,7 +2594,7 @@
         {
           "cssVar": "--nutui-elevator-bars-right",
           "scssVar": "$elevator-bars-right",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-elevator-bars-top",
@@ -2795,7 +2795,7 @@
         {
           "cssVar": "--nutui-hoverbutton-item-size",
           "scssVar": "$hoverbutton-item-size",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         }
       ]
     },
@@ -2940,12 +2940,12 @@
         {
           "cssVar": "--nutui-navbar-height",
           "scssVar": "$navbar-height",
-          "default": "scale-px(44px"
+          "default": "scale-px(44px)"
         },
         {
           "cssVar": "--nutui-navbar-margin-bottom",
           "scssVar": "$navbar-margin-bottom",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-navbar-background",
@@ -3027,17 +3027,17 @@
         {
           "cssVar": "--nutui-sidebar-width",
           "scssVar": "$sidebar-width",
-          "default": "scale-px(104px"
+          "default": "scale-px(104px)"
         },
         {
           "cssVar": "--nutui-sidebar-max-width",
           "scssVar": "$sidebar-max-width",
-          "default": "scale-px(128px"
+          "default": "scale-px(128px)"
         },
         {
           "cssVar": "--nutui-sidebar-title-height",
           "scssVar": "$sidebar-title-height",
-          "default": "scale-px(52px"
+          "default": "scale-px(52px)"
         },
         {
           "cssVar": "--nutui-sidebar-item-background",
@@ -3047,7 +3047,7 @@
         {
           "cssVar": "--nutui-sidebar-item-padding",
           "scssVar": "$sidebar-item-padding",
-          "default": "scale-px(24px) scale-px(20px"
+          "default": "scale-px(24px) scale-px(20px)"
         }
       ]
     },
@@ -3193,7 +3193,7 @@
         {
           "cssVar": "--nutui-tabbar-height",
           "scssVar": "$tabbar-height",
-          "default": "scale-px(46px"
+          "default": "scale-px(46px)"
         },
         {
           "cssVar": "--nutui-tabbar-active-color",
@@ -3218,12 +3218,12 @@
         {
           "cssVar": "--nutui-tabbar-text-line-height",
           "scssVar": "$tabbar-text-line-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-tabbar-text-margin-top",
           "scssVar": "$tabbar-text-margin-top",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         }
       ]
     },
@@ -3536,22 +3536,22 @@
         {
           "cssVar": "--nutui-tabs-titles-height",
           "scssVar": "$tabs-titles-height",
-          "default": "scale-px(44px"
+          "default": "scale-px(44px)"
         },
         {
           "cssVar": "--nutui-tabs-titles-gap",
           "scssVar": "$tabs-titles-gap",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-tabs-tab-line-width",
           "scssVar": "$tabs-tab-line-width",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-tabs-tab-line-height",
           "scssVar": "$tabs-tab-line-height",
-          "default": "scale-px(2px"
+          "default": "scale-px(2px)"
         },
         {
           "cssVar": "--nutui-tabs-tab-line-color",
@@ -3571,7 +3571,7 @@
         {
           "cssVar": "--nutui-tabs-tabpane-padding",
           "scssVar": "$tabs-tabpane-padding",
-          "default": "scale-px(24px) scale-px(20px"
+          "default": "scale-px(24px) scale-px(20px)"
         }
       ]
     },
@@ -3941,7 +3941,7 @@
         {
           "cssVar": "--nutui-calendar-header-height",
           "scssVar": "$calendar-header-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-calendar-day-width",
@@ -3951,7 +3951,7 @@
         {
           "cssVar": "--nutui-calendar-day-height",
           "scssVar": "$calendar-day-height",
-          "default": "scale-px(60px"
+          "default": "scale-px(60px)"
         }
       ]
     },
@@ -4225,17 +4225,17 @@
         {
           "cssVar": "--nutui-cascader-pane-height",
           "scssVar": "$cascader-pane-height",
-          "default": "scale-px(342px"
+          "default": "scale-px(342px)"
         },
         {
           "cssVar": "--nutui-cascader-pane-paddingTop",
           "scssVar": "$cascader-pane-paddingTop",
-          "default": "scale-px(10px"
+          "default": "scale-px(10px)"
         },
         {
           "cssVar": "--nutui-cascader-bar-line-height",
           "scssVar": "$cascader-bar-line-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-cascader-bar-color",
@@ -4245,12 +4245,12 @@
         {
           "cssVar": "--nutui-cascader-item-height",
           "scssVar": "$cascader-item-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-cascader-item-padding",
           "scssVar": "$cascader-item-padding",
-          "default": "scale-px(10px) scale-px(20px"
+          "default": "scale-px(10px) scale-px(20px)"
         },
         {
           "cssVar": "--nutui-cascader-item-margin",
@@ -4409,7 +4409,7 @@
         {
           "cssVar": "--nutui-checkbox-list-padding",
           "scssVar": "$checkbox-list-padding",
-          "default": "0 0 0 scale-px(12px"
+          "default": "0 0 0 scale-px(12px)"
         }
       ]
     },
@@ -4834,7 +4834,7 @@
         {
           "cssVar": "--nutui-form-item-label-width",
           "scssVar": "$form-item-label-width",
-          "default": "scale-px(90px"
+          "default": "scale-px(90px)"
         },
         {
           "cssVar": "--nutui-form-item-tip-text-align",
@@ -5245,7 +5245,7 @@
         {
           "cssVar": "--nutui-input-padding",
           "scssVar": "$input-padding",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         }
       ]
     },
@@ -5421,12 +5421,12 @@
         {
           "cssVar": "--nutui-inputnumber-input-width",
           "scssVar": "$inputnumber-input-width",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-inputnumber-input-height",
           "scssVar": "$inputnumber-input-height",
-          "default": "scale-px(28px"
+          "default": "scale-px(28px)"
         },
         {
           "cssVar": "--nutui-inputnumber-input-border",
@@ -5441,7 +5441,7 @@
         {
           "cssVar": "--nutui-inputnumber-button-width",
           "scssVar": "$inputnumber-button-width",
-          "default": "scale-px(28px"
+          "default": "scale-px(28px)"
         },
         {
           "cssVar": "--nutui-inputnumber-divider-width",
@@ -5456,7 +5456,7 @@
         {
           "cssVar": "--nutui-inputnumber-icon-size",
           "scssVar": "$inputnumber-icon-size",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         }
       ]
     },
@@ -5561,7 +5561,7 @@
         {
           "cssVar": "--nutui-menu-bar-line-height",
           "scssVar": "$menu-bar-line-height",
-          "default": "scale-px(48px"
+          "default": "scale-px(48px)"
         },
         {
           "cssVar": "--nutui-menu-bar-opened-z-index",
@@ -5571,7 +5571,7 @@
         {
           "cssVar": "--nutui-menu-title-padding",
           "scssVar": "$menu-title-padding",
-          "default": "0 scale-px(8px"
+          "default": "0 scale-px(8px)"
         },
         {
           "cssVar": "--nutui-menu-title-color",
@@ -5586,12 +5586,12 @@
         {
           "cssVar": "--nutui-menu-content-padding",
           "scssVar": "$menu-content-padding",
-          "default": "scale-px(12px) scale-px(24px"
+          "default": "scale-px(12px) scale-px(24px)"
         },
         {
           "cssVar": "--nutui-menu-content-max-height",
           "scssVar": "$menu-content-max-height",
-          "default": "scale-px(214px"
+          "default": "scale-px(214px)"
         },
         {
           "cssVar": "--nutui-menu-item-padding",
@@ -5601,7 +5601,7 @@
         {
           "cssVar": "--nutui-menu-item-icon-margin",
           "scssVar": "$menu-item-icon-margin",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         }
       ]
     },
@@ -5980,7 +5980,7 @@
         {
           "cssVar": "--nutui-picker-item-height",
           "scssVar": "$picker-item-height",
-          "default": "scale-px(36px"
+          "default": "scale-px(36px)"
         }
       ]
     },
@@ -6170,12 +6170,12 @@
         {
           "cssVar": "--nutui-radio-label-margin-left",
           "scssVar": "$radio-label-margin-left",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         },
         {
           "cssVar": "--nutui-radio-button-padding",
           "scssVar": "$radio-button-padding",
-          "default": "scale-px(5px) scale-px(18px"
+          "default": "scale-px(5px) scale-px(18px)"
         }
       ]
     },
@@ -6258,7 +6258,7 @@
         {
           "cssVar": "--nutui-radiogroup-radio-margin",
           "scssVar": "$radiogroup-radio-margin",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         }
       ]
     },
@@ -6439,12 +6439,12 @@
         {
           "cssVar": "--nutui-range-height",
           "scssVar": "$range-height",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         },
         {
           "cssVar": "--nutui-range-margin",
           "scssVar": "$range-margin",
-          "default": "scale-px(15px"
+          "default": "scale-px(15px)"
         },
         {
           "cssVar": "--nutui-range-active-color",
@@ -6454,12 +6454,12 @@
         {
           "cssVar": "--nutui-range-button-width",
           "scssVar": "$range-button-width",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-range-button-height",
           "scssVar": "$range-button-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         }
       ]
     },
@@ -6603,7 +6603,7 @@
         {
           "cssVar": "--nutui-rate-item-margin",
           "scssVar": "$rate-item-margin",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         },
         {
           "cssVar": "--nutui-rate-icon-color",
@@ -6613,7 +6613,7 @@
         {
           "cssVar": "--nutui-rate-icon-size",
           "scssVar": "$rate-icon-size",
-          "default": "scale-font-px(16px"
+          "default": "scale-font-px(16px)"
         },
         {
           "cssVar": "--nutui-rate-font-color",
@@ -6823,7 +6823,7 @@
         {
           "cssVar": "--nutui-searchbar-padding",
           "scssVar": "$searchbar-padding",
-          "default": "scale-px(1px) scale-px(8px"
+          "default": "scale-px(1px) scale-px(8px)"
         },
         {
           "cssVar": "--nutui-searchbar-color",
@@ -6833,22 +6833,22 @@
         {
           "cssVar": "--nutui-searchbar-gap",
           "scssVar": "$searchbar-gap",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-searchbar-inner-gap",
           "scssVar": "$searchbar-inner-gap",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-searchbar-icon-size",
           "scssVar": "$searchbar-icon-size",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-searchbar-input-height",
           "scssVar": "$searchbar-input-height",
-          "default": "scale-px(38px"
+          "default": "scale-px(38px)"
         }
       ]
     },
@@ -7136,7 +7136,7 @@
         {
           "cssVar": "--nutui-signature-border-width",
           "scssVar": "$signature-border-width",
-          "default": "scale-px(1px"
+          "default": "scale-px(1px)"
         },
         {
           "cssVar": "--nutui-signature-height",
@@ -7250,27 +7250,27 @@
         {
           "cssVar": "--nutui-switch-width",
           "scssVar": "$switch-width",
-          "default": "scale-px(56px"
+          "default": "scale-px(56px)"
         },
         {
           "cssVar": "--nutui-switch-height",
           "scssVar": "$switch-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-switch-inside-width",
           "scssVar": "$switch-inside-width",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-switch-inside-height",
           "scssVar": "$switch-inside-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-switch-border-width",
           "scssVar": "$switch-border-width",
-          "default": "scale-px(2px"
+          "default": "scale-px(2px)"
         }
       ]
     },
@@ -7415,7 +7415,7 @@
         {
           "cssVar": "--nutui-textarea-padding",
           "scssVar": "$textarea-padding",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-textarea-text-color",
@@ -7774,12 +7774,12 @@
         {
           "cssVar": "--nutui-uploader-image-width",
           "scssVar": "$uploader-image-width",
-          "default": "scale-px(100px"
+          "default": "scale-px(100px)"
         },
         {
           "cssVar": "--nutui-uploader-image-height",
           "scssVar": "$uploader-image-height",
-          "default": "scale-px(100px"
+          "default": "scale-px(100px)"
         },
         {
           "cssVar": "--nutui-uploader-image-border",
@@ -8038,7 +8038,7 @@
         {
           "cssVar": "--nutui-badge-height",
           "scssVar": "$badge-height",
-          "default": "scale-px(14px"
+          "default": "scale-px(14px)"
         },
         {
           "cssVar": "--nutui-badge-color",
@@ -8058,17 +8058,17 @@
         {
           "cssVar": "--nutui-badge-min-width",
           "scssVar": "$badge-min-width",
-          "default": "scale-px(6px"
+          "default": "scale-px(6px)"
         },
         {
           "cssVar": "--nutui-badge-padding",
           "scssVar": "$badge-padding",
-          "default": "scale-px(1px) scale-px(4px"
+          "default": "scale-px(1px) scale-px(4px)"
         },
         {
           "cssVar": "--nutui-badge-icon-padding",
           "scssVar": "$badge-icon-padding",
-          "default": "scale-px(2px"
+          "default": "scale-px(2px)"
         },
         {
           "cssVar": "--nutui-badge-icon-size",
@@ -8083,17 +8083,17 @@
         {
           "cssVar": "--nutui-badge-dot-width",
           "scssVar": "$badge-dot-width",
-          "default": "scale-px(6px"
+          "default": "scale-px(6px)"
         },
         {
           "cssVar": "--nutui-badge-dot-small-width",
           "scssVar": "$badge-dot-small-width",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         },
         {
           "cssVar": "--nutui-badge-dot-large-width",
           "scssVar": "$badge-dot-large-width",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-badge-outline-color",
@@ -8288,27 +8288,27 @@
         {
           "cssVar": "--nutui-dialog-min-width",
           "scssVar": "$dialog-min-width",
-          "default": "scale-px(240px"
+          "default": "scale-px(240px)"
         },
         {
           "cssVar": "--nutui-dialog-width",
           "scssVar": "$dialog-width",
-          "default": "scale-px(295px"
+          "default": "scale-px(295px)"
         },
         {
           "cssVar": "--nutui-dialog-padding",
           "scssVar": "$dialog-padding",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-dialog-max-height",
           "scssVar": "$dialog-max-height",
-          "default": "scale-px(420px"
+          "default": "scale-px(420px)"
         },
         {
           "cssVar": "--nutui-dialog-min-height",
           "scssVar": "$dialog-min-height",
-          "default": "scale-px(124px"
+          "default": "scale-px(124px)"
         },
         {
           "cssVar": "--nutui-dialog-border-radius",
@@ -8323,7 +8323,7 @@
         {
           "cssVar": "--nutui-dialog-footer-badge-top",
           "scssVar": "$dialog-footer-badge-top",
-          "default": "scale-px(-8px"
+          "default": "scale-px(-8px)"
         },
         {
           "cssVar": "--nutui-dialog-close-color",
@@ -8333,27 +8333,27 @@
         {
           "cssVar": "--nutui-dialog-close-width",
           "scssVar": "$dialog-close-width",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-dialog-close-height",
           "scssVar": "$dialog-close-height",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-dialog-close-top",
           "scssVar": "$dialog-close-top",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-dialog-close-left",
           "scssVar": "$dialog-close-left",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-dialog-close-right",
           "scssVar": "$dialog-close-right",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         }
       ]
     },
@@ -8519,7 +8519,7 @@
         {
           "cssVar": "--nutui-empty-padding",
           "scssVar": "$empty-padding",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-empty-title-color",
@@ -8534,12 +8534,12 @@
         {
           "cssVar": "--nutui-empty-full-padding-top",
           "scssVar": "$empty-full-padding-top",
-          "default": "scale-px(160px"
+          "default": "scale-px(160px)"
         },
         {
           "cssVar": "--nutui-empty-full-image-size",
           "scssVar": "$empty-full-image-size",
-          "default": "scale-px(160px"
+          "default": "scale-px(160px)"
         },
         {
           "cssVar": "--nutui-empty-full-title-font-size",
@@ -8559,17 +8559,17 @@
         {
           "cssVar": "--nutui-empty-full-description-line-height",
           "scssVar": "$empty-full-description-line-height",
-          "default": "scale-font-px(22px"
+          "default": "scale-font-px(22px)"
         },
         {
           "cssVar": "--nutui-empty-full-actions-margin-top",
           "scssVar": "$empty-full-actions-margin-top",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-empty-half-image-size",
           "scssVar": "$empty-half-image-size",
-          "default": "scale-px(80px"
+          "default": "scale-px(80px)"
         },
         {
           "cssVar": "--nutui-empty-half-title-font-size",
@@ -8579,7 +8579,7 @@
         {
           "cssVar": "--nutui-empty-half-title-line-height",
           "scssVar": "$empty-half-title-line-height",
-          "default": "scale-font-px(22px"
+          "default": "scale-font-px(22px)"
         },
         {
           "cssVar": "--nutui-empty-half-description-font-size",
@@ -8594,22 +8594,22 @@
         {
           "cssVar": "--nutui-empty-half-actions-margin-top",
           "scssVar": "$empty-half-actions-margin-top",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-empty-partial-padding",
           "scssVar": "$empty-partial-padding",
-          "default": "scale-px(0px) scale-px(16px"
+          "default": "scale-px(0px) scale-px(16px)"
         },
         {
           "cssVar": "--nutui-empty-partial-image-size",
           "scssVar": "$empty-partial-image-size",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-empty-partial-content-gap",
           "scssVar": "$empty-partial-content-gap",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-empty-partial-description-font-size",
@@ -8619,7 +8619,7 @@
         {
           "cssVar": "--nutui-empty-partial-description-line-height",
           "scssVar": "$empty-partial-description-line-height",
-          "default": "scale-font-px(32px"
+          "default": "scale-font-px(32px)"
         }
       ]
     },
@@ -9004,7 +9004,7 @@
         {
           "cssVar": "--nutui-noticebar-height",
           "scssVar": "$noticebar-height",
-          "default": "scale-px(36px"
+          "default": "scale-px(36px)"
         },
         {
           "cssVar": "--nutui-noticebar-color",
@@ -9019,12 +9019,12 @@
         {
           "cssVar": "--nutui-noticebar-line-height",
           "scssVar": "$noticebar-line-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-noticebar-box-padding",
           "scssVar": "$noticebar-box-padding",
-          "default": "0 scale-px(16px"
+          "default": "0 scale-px(16px)"
         },
         {
           "cssVar": "--nutui-noticebar-border-radius",
@@ -9034,7 +9034,7 @@
         {
           "cssVar": "--nutui-noticebar-icon-gap",
           "scssVar": "$noticebar-icon-gap",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         }
       ]
     },
@@ -9126,17 +9126,17 @@
         {
           "cssVar": "--nutui-notify-height",
           "scssVar": "$notify-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-notify-padding",
           "scssVar": "$notify-padding",
-          "default": "0px scale-px(12px"
+          "default": "0px scale-px(12px)"
         },
         {
           "cssVar": "--nutui-notify-border-radius",
           "scssVar": "$notify-border-radius",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-notify-z-index",
@@ -9347,12 +9347,12 @@
         {
           "cssVar": "--nutui-popover-padding",
           "scssVar": "$popover-padding",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         },
         {
           "cssVar": "--nutui-popover-item-width",
           "scssVar": "$popover-item-width",
-          "default": "scale-px(160px"
+          "default": "scale-px(160px)"
         }
       ]
     },
@@ -9579,17 +9579,17 @@
         {
           "cssVar": "--nutui-popup-icon-size",
           "scssVar": "$popup-icon-size",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-popup-title-padding",
           "scssVar": "$popup-title-padding",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-popup-title-height",
           "scssVar": "$popup-title-height",
-          "default": "scale-px(50px"
+          "default": "scale-px(50px)"
         },
         {
           "cssVar": "--nutui-popup-title-border-bottom",
@@ -9719,7 +9719,7 @@
         {
           "cssVar": "--nutui-pulltorefresh-icon-width",
           "scssVar": "$pulltorefresh-icon-width",
-          "default": "scale-px(36px"
+          "default": "scale-px(36px)"
         }
       ]
     },
@@ -9774,12 +9774,12 @@
         {
           "cssVar": "--nutui-resultpage-width",
           "scssVar": "$resultpage-width",
-          "default": "scale-px(240px"
+          "default": "scale-px(240px)"
         },
         {
           "cssVar": "--nutui-resultpage-icon-size",
           "scssVar": "$resultpage-icon-size",
-          "default": "scale-px(36px"
+          "default": "scale-px(36px)"
         }
       ]
     },
@@ -10207,7 +10207,7 @@
         {
           "cssVar": "--nutui-toast-inner-padding",
           "scssVar": "$toast-inner-padding",
-          "default": "scale-px(12px) scale-px(16px"
+          "default": "scale-px(12px) scale-px(16px)"
         },
         {
           "cssVar": "--nutui-toast-inner-bg-color",
@@ -10705,37 +10705,37 @@
         {
           "cssVar": "--nutui-avatar-square",
           "scssVar": "$avatar-square",
-          "default": "scale-px(5px"
+          "default": "scale-px(5px)"
         },
         {
           "cssVar": "--nutui-avatar-large-width",
           "scssVar": "$avatar-large-width",
-          "default": "scale-px(60px"
+          "default": "scale-px(60px)"
         },
         {
           "cssVar": "--nutui-avatar-large-height",
           "scssVar": "$avatar-large-height",
-          "default": "scale-px(60px"
+          "default": "scale-px(60px)"
         },
         {
           "cssVar": "--nutui-avatar-small-width",
           "scssVar": "$avatar-small-width",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-avatar-small-height",
           "scssVar": "$avatar-small-height",
-          "default": "scale-px(32px"
+          "default": "scale-px(32px)"
         },
         {
           "cssVar": "--nutui-avatar-normal-width",
           "scssVar": "$avatar-normal-width",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-avatar-normal-height",
           "scssVar": "$avatar-normal-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         }
       ]
     },
@@ -11024,7 +11024,7 @@
         {
           "cssVar": "--nutui-collapse-item-padding",
           "scssVar": "$collapse-item-padding",
-          "default": "scale-px(13px) scale-px(26px"
+          "default": "scale-px(13px) scale-px(26px)"
         },
         {
           "cssVar": "--nutui-collapse-item-color",
@@ -11353,12 +11353,12 @@
         {
           "cssVar": "--nutui-countdown-height",
           "scssVar": "$countdown-height",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-countdown-width",
           "scssVar": "$countdown-width",
-          "default": "scale-px(16px"
+          "default": "scale-px(16px)"
         },
         {
           "cssVar": "--nutui-countdown-number-padding",
@@ -11368,7 +11368,7 @@
         {
           "cssVar": "--nutui-countdown-number-margin",
           "scssVar": "$countdown-number-margin",
-          "default": "0 scale-px(1px"
+          "default": "0 scale-px(1px)"
         }
       ]
     },
@@ -11699,7 +11699,7 @@
         {
           "cssVar": "--nutui-indicator-dot-size",
           "scssVar": "$indicator-dot-size",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         },
         {
           "cssVar": "--nutui-indicator-dot-margin",
@@ -11891,12 +11891,12 @@
         {
           "cssVar": "--nutui-pagination-lite-width",
           "scssVar": "$pagination-lite-width",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-pagination-lite-height",
           "scssVar": "$pagination-lite-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         }
       ]
     },
@@ -12019,7 +12019,7 @@
         {
           "cssVar": "--nutui-price-color",
           "scssVar": "$price-color",
-          "default": "var(--nutui-color-text-help"
+          "default": "var(--nutui-color-text-help)"
         },
         {
           "cssVar": "--nutui-price-symbol-xlarge-size",
@@ -12179,22 +12179,22 @@
         {
           "cssVar": "--nutui-progress-height",
           "scssVar": "$progress-height",
-          "default": "scale-px(10px"
+          "default": "scale-px(10px)"
         },
         {
           "cssVar": "--nutui-progress-border-radius",
           "scssVar": "$progress-border-radius",
-          "default": "scale-px(12px"
+          "default": "scale-px(12px)"
         },
         {
           "cssVar": "--nutui-progress-text-padding",
           "scssVar": "$progress-text-padding",
-          "default": "0 scale-px(5px"
+          "default": "0 scale-px(5px)"
         },
         {
           "cssVar": "--nutui-progress-text-font-size",
           "scssVar": "$progress-text-font-size",
-          "default": "scale-font-px(13px"
+          "default": "scale-font-px(13px)"
         }
       ]
     },
@@ -12245,7 +12245,7 @@
         {
           "cssVar": "--nutui-segmented-height",
           "scssVar": "$segmented-height",
-          "default": "scale-px(24px"
+          "default": "scale-px(24px)"
         },
         {
           "cssVar": "--nutui-segmented-padding",
@@ -12260,7 +12260,7 @@
         {
           "cssVar": "--nutui-segmented-height",
           "scssVar": "$segmented-item-height",
-          "default": "scale-px(20px"
+          "default": "scale-px(20px)"
         },
         {
           "cssVar": "--nutui-segmented-item-radius",
@@ -12437,7 +12437,7 @@
         {
           "cssVar": "--nutui-steps-base-head-height",
           "scssVar": "$steps-base-head-height",
-          "default": "scale-px(14px"
+          "default": "scale-px(14px)"
         },
         {
           "cssVar": "--nutui-steps-base-head-border",
@@ -12452,7 +12452,7 @@
         {
           "cssVar": "--nutui-steps-base-line-height",
           "scssVar": "$steps-base-line-height",
-          "default": "scale-px(1px"
+          "default": "scale-px(1px)"
         },
         {
           "cssVar": "--nutui-steps-process-color",
@@ -12847,7 +12847,7 @@
         {
           "cssVar": "--nutui-table-cols-padding",
           "scssVar": "$table-cols-padding",
-          "default": "scale-px(10px"
+          "default": "scale-px(10px)"
         },
         {
           "cssVar": "--nutui-table-tr-odd-bg-color",
@@ -12974,7 +12974,7 @@
         {
           "cssVar": "--nutui-tag-padding",
           "scssVar": "$tag-padding",
-          "default": "0px scale-px(2px"
+          "default": "0px scale-px(2px)"
         },
         {
           "cssVar": "--nutui-tag-font-size",
@@ -12984,12 +12984,12 @@
         {
           "cssVar": "--nutui-tag-border-radius",
           "scssVar": "$tag-border-radius",
-          "default": "scale-px(2px"
+          "default": "scale-px(2px)"
         },
         {
           "cssVar": "--nutui-tag-height",
           "scssVar": "$tag-height",
-          "default": "scale-px(14px"
+          "default": "scale-px(14px)"
         },
         {
           "cssVar": "--nutui-tag-color",
@@ -12999,7 +12999,7 @@
         {
           "cssVar": "--nutui-tag-border-width",
           "scssVar": "$tag-border-width",
-          "default": "scale-px(1px"
+          "default": "scale-px(1px)"
         },
         {
           "cssVar": "--nutui-tag-background-color",
@@ -13009,7 +13009,7 @@
         {
           "cssVar": "--nutui-tag-round-border-radius",
           "scssVar": "$tag-round-border-radius",
-          "default": "scale-px(8px"
+          "default": "scale-px(8px)"
         }
       ]
     },
@@ -13064,17 +13064,17 @@
         {
           "cssVar": "--nutui-tour-mask-border-radius",
           "scssVar": "$tour-mask-border-radius",
-          "default": "scale-px(10px"
+          "default": "scale-px(10px)"
         },
         {
           "cssVar": "--nutui-tour-content-min-width",
           "scssVar": "$tour-content-min-width",
-          "default": "scale-px(200px"
+          "default": "scale-px(200px)"
         },
         {
           "cssVar": "--nutui-tour-content-padding",
           "scssVar": "$tour-content-padding",
-          "default": "scale-px(10px) scale-px(12px"
+          "default": "scale-px(10px) scale-px(12px)"
         }
       ]
     },
@@ -13366,7 +13366,7 @@
         {
           "cssVar": "--nutui-quickenter-max-height",
           "scssVar": "$quickenter-max-height",
-          "default": "scale-px(256px"
+          "default": "scale-px(256px)"
         }
       ]
     },
@@ -13643,7 +13643,7 @@
         {
           "cssVar": "--nutui-card-border-radius",
           "scssVar": "$card-border-radius",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         }
       ]
     },
@@ -13837,22 +13837,22 @@
         {
           "cssVar": "--nutui-timeselect-date-width",
           "scssVar": "$timeselect-date-width",
-          "default": "scale-px(140px"
+          "default": "scale-px(140px)"
         },
         {
           "cssVar": "--nutui-timeselect-date-height",
           "scssVar": "$timeselect-date-height",
-          "default": "scale-px(40px"
+          "default": "scale-px(40px)"
         },
         {
           "cssVar": "--nutui-timeselect-time-width",
           "scssVar": "$timeselect-time-width",
-          "default": "scale-px(110px"
+          "default": "scale-px(110px)"
         },
         {
           "cssVar": "--nutui-timeselect-time-height",
           "scssVar": "$timeselect-time-height",
-          "default": "scale-px(50px"
+          "default": "scale-px(50px)"
         }
       ]
     },
@@ -13993,7 +13993,7 @@
         {
           "cssVar": "--nutui-trendarrow-icon-margin",
           "scssVar": "$trendarrow-icon-margin",
-          "default": "scale-px(4px"
+          "default": "scale-px(4px)"
         }
       ]
     },
