@@ -11,6 +11,8 @@ node_modules
 /meta/llms.txt
 /meta/llms-full-cn.txt
 /meta/llms-full.txt
+/meta/llms-semantic-cn.txt
+/meta/llms-semantic.txt
 /release
 /libs
 /jd/upload.js

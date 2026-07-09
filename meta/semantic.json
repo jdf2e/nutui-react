@@ -1,0 +1,3672 @@
+{
+  "schemaVersion": "1.0.0",
+  "libVersion": "4.0.0-beta.4",
+  "componentCount": 100,
+  "components": {
+    "button": {
+      "id": "button",
+      "name": "Button",
+      "cName": "按钮",
+      "classes": [
+        "nut-button",
+        "nut-button-36",
+        "nut-button-36-children",
+        "nut-button-44",
+        "nut-button-44-children",
+        "nut-button-block",
+        "nut-button-children",
+        "nut-button-danger",
+        "nut-button-danger-children",
+        "nut-button-danger-dashed",
+        "nut-button-danger-dashed-disabled",
+        "nut-button-danger-disabled",
+        "nut-button-danger-none",
+        "nut-button-danger-none-disabled",
+        "nut-button-danger-outline",
+        "nut-button-danger-outline-disabled",
+        "nut-button-danger-solid-disabled",
+        "nut-button-dashed",
+        "nut-button-default",
+        "nut-button-default-dashed-disabled",
+        "nut-button-default-disabled",
+        "nut-button-default-none-disabled",
+        "nut-button-default-outline-disabled",
+        "nut-button-default-solid-disabled",
+        "nut-button-desc",
+        "nut-button-disabled",
+        "nut-button-disabled-gray",
+        "nut-button-golden",
+        "nut-button-golden-children",
+        "nut-button-golden-dashed",
+        "nut-button-golden-dashed-disabled",
+        "nut-button-golden-disabled",
+        "nut-button-golden-none",
+        "nut-button-golden-none-disabled",
+        "nut-button-golden-outline",
+        "nut-button-golden-outline-disabled",
+        "nut-button-golden-solid-disabled",
+        "nut-button-has-desc",
+        "nut-button-icononly",
+        "nut-button-info",
+        "nut-button-info-children",
+        "nut-button-info-dashed",
+        "nut-button-info-dashed-disabled",
+        "nut-button-info-disabled",
+        "nut-button-info-none",
+        "nut-button-info-none-disabled",
+        "nut-button-info-outline",
+        "nut-button-info-outline-disabled",
+        "nut-button-info-solid-disabled",
+        "nut-button-large",
+        "nut-button-large-children",
+        "nut-button-loading",
+        "nut-button-mini",
+        "nut-button-mini-children",
+        "nut-button-none",
+        "nut-button-normal",
+        "nut-button-outline",
+        "nut-button-primary",
+        "nut-button-primary-children",
+        "nut-button-primary-dashed",
+        "nut-button-primary-dashed-disabled",
+        "nut-button-primary-disabled",
+        "nut-button-primary-light",
+        "nut-button-primary-light-disabled",
+        "nut-button-primary-none",
+        "nut-button-primary-none-disabled",
+        "nut-button-primary-outline",
+        "nut-button-primary-outline-disabled",
+        "nut-button-primary-solid",
+        "nut-button-primary-solid-disabled",
+        "nut-button-round",
+        "nut-button-service",
+        "nut-button-service-children",
+        "nut-button-service-dashed",
+        "nut-button-service-dashed-disabled",
+        "nut-button-service-disabled",
+        "nut-button-service-none",
+        "nut-button-service-none-disabled",
+        "nut-button-service-outline",
+        "nut-button-service-outline-disabled",
+        "nut-button-service-solid-disabled",
+        "nut-button-small",
+        "nut-button-small-children",
+        "nut-button-solid",
+        "nut-button-square",
+        "nut-button-success",
+        "nut-button-success-children",
+        "nut-button-success-dashed",
+        "nut-button-success-dashed-disabled",
+        "nut-button-success-disabled",
+        "nut-button-success-none",
+        "nut-button-success-none-disabled",
+        "nut-button-success-outline",
+        "nut-button-success-outline-disabled",
+        "nut-button-success-solid-disabled",
+        "nut-button-text",
+        "nut-button-text-right",
+        "nut-button-title",
+        "nut-button-warning",
+        "nut-button-warning-children",
+        "nut-button-warning-dashed",
+        "nut-button-warning-dashed-disabled",
+        "nut-button-warning-disabled",
+        "nut-button-warning-none",
+        "nut-button-warning-none-disabled",
+        "nut-button-warning-outline",
+        "nut-button-warning-outline-disabled",
+        "nut-button-warning-solid-disabled",
+        "nut-button-wrap",
+        "nut-button-xlarge",
+        "nut-button-xlarge-children"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-button-border-radius",
+          "scssVar": "$button-border-radius",
+          "default": "$radius-s"
+        },
+        {
+          "cssVar": "--nutui-button-border-width",
+          "scssVar": "$button-border-width",
+          "default": "scale-px(0.5px)"
+        },
+        {
+          "cssVar": "--nutui-button-normal-padding",
+          "scssVar": "$button-normal-padding",
+          "default": "0px scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-button-default-height",
+          "scssVar": "$button-default-height",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-button-default-color",
+          "scssVar": "$button-default-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-button-default-padding",
+          "scssVar": "$button-default-padding",
+          "default": "0px scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-button-xlarge-height",
+          "scssVar": "$button-xlarge-height",
+          "default": "scale-px(48px)"
+        },
+        {
+          "cssVar": "--nutui-button-xlarge-padding",
+          "scssVar": "$button-xlarge-padding",
+          "default": "0px scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-button-44-height",
+          "scssVar": "$button-44-height",
+          "default": "scale-px(44px)"
+        },
+        {
+          "cssVar": "--nutui-button-44-padding",
+          "scssVar": "$button-44-padding",
+          "default": "0px scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-button-large-height",
+          "scssVar": "$button-large-height",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-button-large-padding",
+          "scssVar": "$button-large-padding",
+          "default": "0px scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-button-36-height",
+          "scssVar": "$button-36-height",
+          "default": "scale-px(36px)"
+        },
+        {
+          "cssVar": "--nutui-button-36-padding",
+          "scssVar": "$button-36-padding",
+          "default": "0px scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-button-small-padding",
+          "scssVar": "$button-small-padding",
+          "default": "0px scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-button-small-height",
+          "scssVar": "$button-small-height",
+          "default": "scale-px(28px)"
+        },
+        {
+          "cssVar": "--nutui-button-mini-padding",
+          "scssVar": "$button-mini-padding",
+          "default": "0px scale-px(6px)"
+        },
+        {
+          "cssVar": "--nutui-button-mini-height",
+          "scssVar": "$button-mini-height",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-button-text-icon-margin",
+          "scssVar": "$button-text-icon-margin",
+          "default": "scale-px(4px)"
+        }
+      ]
+    },
+    "cell": {
+      "id": "cell",
+      "name": "Cell",
+      "cName": "单元格",
+      "classes": [
+        "nut-cell",
+        "nut-cell-clickable",
+        "nut-cell-description",
+        "nut-cell-divider",
+        "nut-cell-divider-inner",
+        "nut-cell-divider-rtl",
+        "nut-cell-extra",
+        "nut-cell-left",
+        "nut-cell-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-cell-title-color",
+          "scssVar": "$cell-title-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-cell-extra-color",
+          "scssVar": "$cell-extra-color",
+          "default": "$color-text"
+        },
+        {
+          "cssVar": "--nutui-cell-border-radius",
+          "scssVar": "$cell-border-radius",
+          "default": "scale-px(6px)"
+        },
+        {
+          "cssVar": "--nutui-cell-padding",
+          "scssVar": "$cell-padding",
+          "default": "scale-px(13px) scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-cell-line-height",
+          "scssVar": "$cell-line-height",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-cell-divider-right",
+          "scssVar": "$cell-divider-right",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-cell-divider-left",
+          "scssVar": "$cell-divider-left",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-cell-group-wrap-margin",
+          "scssVar": "$cell-group-wrap-margin",
+          "default": "scale-px(10px)"
+        }
+      ]
+    },
+    "cellgroup": {
+      "id": "cellgroup",
+      "name": "CellGroup",
+      "cName": "单元格",
+      "classes": [
+        "nut-cell-group",
+        "nut-cell-group-description",
+        "nut-cell-group-item",
+        "nut-cell-group-title",
+        "nut-cell-group-wrap"
+      ],
+      "tokens": []
+    },
+    "icon": {
+      "id": "icon",
+      "name": "Icon",
+      "cName": "图标",
+      "classes": [
+        "nut-icon",
+        "nut-icon-ArrowLeft",
+        "nut-icon-ArrowRadius",
+        "nut-icon-ArrowRight",
+        "nut-icon-Link",
+        "nut-icon-checklist"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-icon-size-6",
+          "scssVar": "$icon-size-6",
+          "default": "scale-icon-px(6px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-8",
+          "scssVar": "$icon-size-8",
+          "default": "scale-icon-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-10",
+          "scssVar": "$icon-size-10",
+          "default": "scale-icon-px(10px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-11",
+          "scssVar": "$icon-size-11",
+          "default": "scale-icon-px(11px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-12",
+          "scssVar": "$icon-size-12",
+          "default": "scale-icon-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-16",
+          "scssVar": "$icon-size-16",
+          "default": "scale-icon-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-18",
+          "scssVar": "$icon-size-18",
+          "default": "scale-icon-px(18px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-20",
+          "scssVar": "$icon-size-20",
+          "default": "scale-icon-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-icon-size-22",
+          "scssVar": "$icon-size-22",
+          "default": "scale-icon-px(22px)"
+        },
+        {
+          "cssVar": "--nutui-icon-height",
+          "scssVar": "$icon-height",
+          "default": "$icon-size-20"
+        },
+        {
+          "cssVar": "--nutui-icon-width",
+          "scssVar": "$icon-width",
+          "default": "$icon-size-20"
+        },
+        {
+          "cssVar": "--nutui-icon-line-height",
+          "scssVar": "$icon-line-height",
+          "default": "$icon-size-20"
+        }
+      ]
+    },
+    "image": {
+      "id": "image",
+      "name": "Image",
+      "cName": "图片",
+      "classes": [
+        "nut-image",
+        "nut-image-basic",
+        "nut-image-default",
+        "nut-image-error",
+        "nut-image-loading",
+        "nut-image-round",
+        "nut-img-error",
+        "nut-img-loading"
+      ],
+      "tokens": []
+    },
+    "overlay": {
+      "id": "overlay",
+      "name": "Overlay",
+      "cName": "遮罩层",
+      "classes": [
+        "nut-overlay",
+        "nut-overlay-slide-appear-active",
+        "nut-overlay-slide-enter-active",
+        "nut-overlay-slide-exit-active"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-overlay-bg-color",
+          "scssVar": "$overlay-bg-color",
+          "default": "$color-mask"
+        }
+      ]
+    },
+    "divider": {
+      "id": "divider",
+      "name": "Divider",
+      "cName": "分割线",
+      "classes": [
+        "nut-divider",
+        "nut-divider-after",
+        "nut-divider-before",
+        "nut-divider-center-after",
+        "nut-divider-center-before",
+        "nut-divider-left-after",
+        "nut-divider-left-before",
+        "nut-divider-right-after",
+        "nut-divider-right-before",
+        "nut-divider-rtl-after",
+        "nut-divider-rtl-before",
+        "nut-divider-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-divider-margin",
+          "scssVar": "$divider-margin",
+          "default": "scale-px(16px) 0"
+        },
+        {
+          "cssVar": "--nutui-divider-text-color",
+          "scssVar": "$divider-text-color",
+          "default": "$color-text"
+        },
+        {
+          "cssVar": "--nutui-divider-line-height",
+          "scssVar": "$divider-line-height",
+          "default": "scale-px(1px)"
+        },
+        {
+          "cssVar": "--nutui-divider-spacing",
+          "scssVar": "$divider-spacing",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-divider-side-width",
+          "scssVar": "$divider-side-width",
+          "default": "10%"
+        },
+        {
+          "cssVar": "--nutui-divider-vertical-height",
+          "scssVar": "$divider-vertical-height",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-divider-vertical-margin",
+          "scssVar": "$divider-vertical-margin",
+          "default": "0 scale-px(8px)"
+        }
+      ]
+    },
+    "grid": {
+      "id": "grid",
+      "name": "Grid",
+      "cName": "宫格",
+      "classes": [
+        "nut-grid",
+        "nut-grid-border"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-grid-border-width",
+          "scssVar": "$grid-border-width",
+          "default": "0px"
+        },
+        {
+          "cssVar": "--nutui-grid-border-color",
+          "scssVar": "$grid-border-color",
+          "default": "$color-border"
+        },
+        {
+          "cssVar": "--nutui-grid-item-text-margin",
+          "scssVar": "$grid-item-text-margin",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-grid-item-text-color",
+          "scssVar": "$grid-item-text-color",
+          "default": "$color-title"
+        }
+      ]
+    },
+    "griditem": {
+      "id": "griditem",
+      "name": "GridItem",
+      "cName": "宫格子组件",
+      "classes": [
+        "nut-grid-item",
+        "nut-grid-item-content",
+        "nut-grid-item-content-border",
+        "nut-grid-item-content-center",
+        "nut-grid-item-content-clickable",
+        "nut-grid-item-content-horizontal",
+        "nut-grid-item-content-horizontal-reverse",
+        "nut-grid-item-content-reverse",
+        "nut-grid-item-content-square",
+        "nut-grid-item-content-surround",
+        "nut-grid-item-text",
+        "nut-grid-item-text-horizontal",
+        "nut-grid-item-text-horizontal-reverse",
+        "nut-grid-item-text-reverse"
+      ],
+      "tokens": []
+    },
+    "col": {
+      "id": "col",
+      "name": "Col",
+      "cName": "列",
+      "classes": [
+        "nut-col",
+        "nut-col-1",
+        "nut-col-10",
+        "nut-col-11",
+        "nut-col-12",
+        "nut-col-13",
+        "nut-col-14",
+        "nut-col-15",
+        "nut-col-16",
+        "nut-col-17",
+        "nut-col-18",
+        "nut-col-19",
+        "nut-col-2",
+        "nut-col-20",
+        "nut-col-21",
+        "nut-col-22",
+        "nut-col-23",
+        "nut-col-24",
+        "nut-col-3",
+        "nut-col-4",
+        "nut-col-5",
+        "nut-col-6",
+        "nut-col-7",
+        "nut-col-8",
+        "nut-col-9",
+        "nut-col-gutter",
+        "nut-col-offset-1",
+        "nut-col-offset-10",
+        "nut-col-offset-11",
+        "nut-col-offset-12",
+        "nut-col-offset-13",
+        "nut-col-offset-14",
+        "nut-col-offset-15",
+        "nut-col-offset-16",
+        "nut-col-offset-17",
+        "nut-col-offset-18",
+        "nut-col-offset-19",
+        "nut-col-offset-2",
+        "nut-col-offset-20",
+        "nut-col-offset-21",
+        "nut-col-offset-22",
+        "nut-col-offset-23",
+        "nut-col-offset-24",
+        "nut-col-offset-3",
+        "nut-col-offset-4",
+        "nut-col-offset-5",
+        "nut-col-offset-6",
+        "nut-col-offset-7",
+        "nut-col-offset-8",
+        "nut-col-offset-9"
+      ],
+      "tokens": []
+    },
+    "row": {
+      "id": "row",
+      "name": "Row",
+      "cName": "行",
+      "classes": [
+        "nut-row",
+        "nut-row-align-center",
+        "nut-row-align-flex-end",
+        "nut-row-align-flex-start",
+        "nut-row-flex",
+        "nut-row-flex-nowrap",
+        "nut-row-flex-reverse",
+        "nut-row-flex-wrap",
+        "nut-row-justify-center",
+        "nut-row-justify-end",
+        "nut-row-justify-space-around",
+        "nut-row-justify-space-between"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-row-content-color",
+          "scssVar": "$row-content-color",
+          "default": "#fff"
+        },
+        {
+          "cssVar": "--nutui-row-content-height",
+          "scssVar": "$row-content-height",
+          "default": "scale-px(50px)"
+        },
+        {
+          "cssVar": "--nutui-row-content-line-height",
+          "scssVar": "$row-content-line-height",
+          "default": "scale-px(40px)"
+        }
+      ]
+    },
+    "safearea": {
+      "id": "safearea",
+      "name": "SafeArea",
+      "cName": "安全区",
+      "classes": [
+        "nut-safe-area",
+        "nut-safe-area-position-bottom",
+        "nut-safe-area-position-top"
+      ],
+      "tokens": []
+    },
+    "space": {
+      "id": "space",
+      "name": "Space",
+      "cName": "间距",
+      "classes": [
+        "nut-space",
+        "nut-space-align-baseline",
+        "nut-space-align-center",
+        "nut-space-align-end",
+        "nut-space-align-start",
+        "nut-space-horizontal",
+        "nut-space-horizontal-item",
+        "nut-space-horizontal-item-last",
+        "nut-space-horizontal-wrap",
+        "nut-space-horizontal-wrap-item",
+        "nut-space-item",
+        "nut-space-justify-around",
+        "nut-space-justify-between",
+        "nut-space-justify-center",
+        "nut-space-justify-end",
+        "nut-space-justify-evenly",
+        "nut-space-justify-start",
+        "nut-space-justify-stretch",
+        "nut-space-vertical",
+        "nut-space-vertical-item",
+        "nut-space-vertical-item-last"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-space-gap",
+          "scssVar": "$space-gap",
+          "default": "scale-px(8px)"
+        }
+      ]
+    },
+    "sticky": {
+      "id": "sticky",
+      "name": "Sticky",
+      "cName": "粘性布局",
+      "classes": [
+        "nut-sticky-fixed"
+      ],
+      "tokens": []
+    },
+    "backtop": {
+      "id": "backtop",
+      "name": "BackTop",
+      "cName": "返回顶部",
+      "classes": [
+        "nut-backtop",
+        "nut-backtop-show"
+      ],
+      "tokens": []
+    },
+    "elevator": {
+      "id": "elevator",
+      "name": "Elevator",
+      "cName": "电梯楼层",
+      "classes": [
+        "nut-elevator",
+        "nut-elevator-bars",
+        "nut-elevator-bars-inner",
+        "nut-elevator-bars-inner-item",
+        "nut-elevator-bars-inner-item-active",
+        "nut-elevator-code-current",
+        "nut-elevator-horizontal",
+        "nut-elevator-list",
+        "nut-elevator-list-fixed",
+        "nut-elevator-list-fixed-title",
+        "nut-elevator-list-inner",
+        "nut-elevator-list-item",
+        "nut-elevator-list-item-code",
+        "nut-elevator-list-item-name",
+        "nut-elevator-list-item-name-highcolor",
+        "nut-elevator-list-item-sublist",
+        "nut-elevator-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-elevator-list-bg-color",
+          "scssVar": "$elevator-list-bg-color",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-elevator-list-color",
+          "scssVar": "$elevator-list-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-elevator-bars-right",
+          "scssVar": "$elevator-bars-right",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-elevator-bars-top",
+          "scssVar": "$elevator-bars-top",
+          "default": "50%"
+        },
+        {
+          "cssVar": "--nutui-elevator-bars-z-index",
+          "scssVar": "$elevator-bars-z-index",
+          "default": "1"
+        }
+      ]
+    },
+    "fixednav": {
+      "id": "fixednav",
+      "name": "FixedNav",
+      "cName": "悬浮导航",
+      "classes": [
+        "nut-fixednav",
+        "nut-fixednav-btn",
+        "nut-fixednav-left",
+        "nut-fixednav-list",
+        "nut-fixednav-list-image",
+        "nut-fixednav-list-item",
+        "nut-fixednav-list-text",
+        "nut-fixednav-right"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-fixednav-color",
+          "scssVar": "$fixednav-color",
+          "default": "#1a1a1a"
+        },
+        {
+          "cssVar": "--nutui-fixednav-index",
+          "scssVar": "$fixednav-index",
+          "default": "900"
+        }
+      ]
+    },
+    "hoverbutton": {
+      "id": "hoverbutton",
+      "name": "HoverButton",
+      "cName": "悬浮按钮",
+      "classes": [
+        "nut-hoverbutton",
+        "nut-hoverbutton-container",
+        "nut-hoverbutton-container-rtl"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-hoverbutton-spacing",
+          "scssVar": "$hoverbutton-spacing",
+          "default": "$spacing-base"
+        },
+        {
+          "cssVar": "--nutui-hoverbutton-item-size",
+          "scssVar": "$hoverbutton-item-size",
+          "default": "scale-px(40px)"
+        }
+      ]
+    },
+    "hoverbuttonitem": {
+      "id": "hoverbuttonitem",
+      "name": "HoverButtonItem",
+      "cName": "悬浮按钮子组件",
+      "classes": [
+        "nut-hoverbutton-item-container",
+        "nut-hoverbutton-item-container-active",
+        "nut-hoverbutton-item-container-harmony",
+        "nut-hoverbutton-item-container-icontext",
+        "nut-hoverbutton-item-icon",
+        "nut-hoverbutton-item-text",
+        "nut-hoverbutton-item-text-icon"
+      ],
+      "tokens": []
+    },
+    "navbar": {
+      "id": "navbar",
+      "name": "NavBar",
+      "cName": "头部导航",
+      "classes": [
+        "nut-navbar",
+        "nut-navbar-fixed",
+        "nut-navbar-left",
+        "nut-navbar-left-back",
+        "nut-navbar-left-hidden",
+        "nut-navbar-left-maxwidth",
+        "nut-navbar-left-rtl",
+        "nut-navbar-placeholder",
+        "nut-navbar-right",
+        "nut-navbar-right-maxwidth",
+        "nut-navbar-right-rtl",
+        "nut-navbar-rtl",
+        "nut-navbar-safe-area-inset-top",
+        "nut-navbar-title",
+        "nut-navbar-title-center",
+        "nut-navbar-title-wrapper"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-navbar-width",
+          "scssVar": "$navbar-width",
+          "default": "100%"
+        },
+        {
+          "cssVar": "--nutui-navbar-height",
+          "scssVar": "$navbar-height",
+          "default": "scale-px(44px)"
+        },
+        {
+          "cssVar": "--nutui-navbar-margin-bottom",
+          "scssVar": "$navbar-margin-bottom",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-navbar-background",
+          "scssVar": "$navbar-background",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-navbar-box-shadow",
+          "scssVar": "$navbar-box-shadow",
+          "default": "none"
+        },
+        {
+          "cssVar": "--nutui-navbar-color",
+          "scssVar": "$navbar-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-navbar-font-size",
+          "scssVar": "$navbar-font-size",
+          "default": "$font-size-base"
+        }
+      ]
+    },
+    "sidebar": {
+      "id": "sidebar",
+      "name": "SideBar",
+      "cName": "侧边栏导航",
+      "classes": [
+        "nut-sidebar",
+        "nut-sidebar-content",
+        "nut-sidebar-content-wrap",
+        "nut-sidebar-list",
+        "nut-sidebar-titles",
+        "nut-sidebar-titles-item",
+        "nut-sidebar-titles-item-active",
+        "nut-sidebar-titles-item-disabled",
+        "nut-sidebar-titles-item-text",
+        "nut-sidebar-titles-scrollable"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-sidebar-border-radius",
+          "scssVar": "$sidebar-border-radius",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-sidebar-width",
+          "scssVar": "$sidebar-width",
+          "default": "scale-px(104px)"
+        },
+        {
+          "cssVar": "--nutui-sidebar-max-width",
+          "scssVar": "$sidebar-max-width",
+          "default": "scale-px(128px)"
+        },
+        {
+          "cssVar": "--nutui-sidebar-title-height",
+          "scssVar": "$sidebar-title-height",
+          "default": "scale-px(52px)"
+        },
+        {
+          "cssVar": "--nutui-sidebar-item-background",
+          "scssVar": "$sidebar-item-background",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-sidebar-item-padding",
+          "scssVar": "$sidebar-item-padding",
+          "default": "scale-px(24px) scale-px(20px)"
+        }
+      ]
+    },
+    "sidebaritem": {
+      "id": "sidebaritem",
+      "name": "SideBarItem",
+      "cName": "侧边栏导航子组件",
+      "classes": [
+        "nut-sidebaritem"
+      ],
+      "tokens": []
+    },
+    "tabbar": {
+      "id": "tabbar",
+      "name": "Tabbar",
+      "cName": "标签栏",
+      "classes": [
+        "nut-tabbar",
+        "nut-tabbar-fixed",
+        "nut-tabbar-wrap",
+        "nut-tabbar-wrap-2",
+        "nut-tabbar-wrap-3",
+        "nut-tabbar-wrap-horizontal"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-tabbar-height",
+          "scssVar": "$tabbar-height",
+          "default": "scale-px(46px)"
+        },
+        {
+          "cssVar": "--nutui-tabbar-active-color",
+          "scssVar": "$tabbar-active-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-tabbar-border-top",
+          "scssVar": "$tabbar-border-top",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-tabbar-border-bottom",
+          "scssVar": "$tabbar-border-bottom",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-tabbar-box-shadow",
+          "scssVar": "$tabbar-box-shadow",
+          "default": "none"
+        },
+        {
+          "cssVar": "--nutui-tabbar-text-line-height",
+          "scssVar": "$tabbar-text-line-height",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-tabbar-text-margin-top",
+          "scssVar": "$tabbar-text-margin-top",
+          "default": "scale-px(4px)"
+        }
+      ]
+    },
+    "tabbaritem": {
+      "id": "tabbaritem",
+      "name": "TabbarItem",
+      "cName": "标签栏子组件",
+      "classes": [
+        "nut-tabbar-item",
+        "nut-tabbar-item-active",
+        "nut-tabbar-item-large",
+        "nut-tabbar-item-text"
+      ],
+      "tokens": []
+    },
+    "tabpane": {
+      "id": "tabpane",
+      "name": "TabPane",
+      "cName": "选项卡切换子组件",
+      "classes": [
+        "nut-tabpane"
+      ],
+      "tokens": []
+    },
+    "tabs": {
+      "id": "tabs",
+      "name": "Tabs",
+      "cName": "选项卡切换",
+      "classes": [
+        "nut-tabs",
+        "nut-tabs-content",
+        "nut-tabs-content-wrap",
+        "nut-tabs-ellipsis",
+        "nut-tabs-horizontal",
+        "nut-tabs-list",
+        "nut-tabs-titles",
+        "nut-tabs-titles-button",
+        "nut-tabs-titles-card",
+        "nut-tabs-titles-divider",
+        "nut-tabs-titles-item",
+        "nut-tabs-titles-item-active",
+        "nut-tabs-titles-item-disabled",
+        "nut-tabs-titles-item-left",
+        "nut-tabs-titles-item-line",
+        "nut-tabs-titles-item-line-vertical",
+        "nut-tabs-titles-item-right",
+        "nut-tabs-titles-item-smile",
+        "nut-tabs-titles-item-smile-icon",
+        "nut-tabs-titles-item-text",
+        "nut-tabs-titles-left",
+        "nut-tabs-titles-line",
+        "nut-tabs-titles-right",
+        "nut-tabs-titles-simple",
+        "nut-tabs-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-tabs-titles-height",
+          "scssVar": "$tabs-titles-height",
+          "default": "scale-px(44px)"
+        },
+        {
+          "cssVar": "--nutui-tabs-titles-gap",
+          "scssVar": "$tabs-titles-gap",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-tabs-tab-line-width",
+          "scssVar": "$tabs-tab-line-width",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-tabs-tab-line-height",
+          "scssVar": "$tabs-tab-line-height",
+          "default": "scale-px(2px)"
+        },
+        {
+          "cssVar": "--nutui-tabs-tab-line-color",
+          "scssVar": "$tabs-tab-line-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-tabs-line-bottom",
+          "scssVar": "$tabs-tab-line-bottom",
+          "default": "15%"
+        },
+        {
+          "cssVar": "--nutui-tabs-tab-line-opacity",
+          "scssVar": "$tabs-tab-line-opacity",
+          "default": "1"
+        },
+        {
+          "cssVar": "--nutui-tabs-tabpane-padding",
+          "scssVar": "$tabs-tabpane-padding",
+          "default": "scale-px(24px) scale-px(20px)"
+        }
+      ]
+    },
+    "address": {
+      "id": "address",
+      "name": "Address",
+      "cName": "地址",
+      "classes": [
+        "nut-address-elevator",
+        "nut-address-exist",
+        "nut-address-exist-item",
+        "nut-address-exist-item-info",
+        "nut-address-footer",
+        "nut-address-footer-btn",
+        "nut-address-hotlist",
+        "nut-address-hotlist-item",
+        "nut-address-selected",
+        "nut-address-selected-border",
+        "nut-address-selected-item",
+        "nut-address-title"
+      ],
+      "tokens": []
+    },
+    "calendar": {
+      "id": "calendar",
+      "name": "Calendar",
+      "cName": "日历",
+      "classes": [
+        "nut-calendar",
+        "nut-calendar-content",
+        "nut-calendar-day",
+        "nut-calendar-day-active",
+        "nut-calendar-day-choose",
+        "nut-calendar-day-choose-disabled",
+        "nut-calendar-day-day",
+        "nut-calendar-day-disabled",
+        "nut-calendar-day-info",
+        "nut-calendar-day-info-bottom",
+        "nut-calendar-day-info-curr",
+        "nut-calendar-day-info-top",
+        "nut-calendar-days",
+        "nut-calendar-footer",
+        "nut-calendar-header",
+        "nut-calendar-header-buttons",
+        "nut-calendar-month",
+        "nut-calendar-month-title",
+        "nut-calendar-pannel",
+        "nut-calendar-popup",
+        "nut-calendar-sub-title",
+        "nut-calendar-taro",
+        "nut-calendar-title",
+        "nut-calendar-week-item",
+        "nut-calendar-weeks"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-calendar-header-height",
+          "scssVar": "$calendar-header-height",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-calendar-day-width",
+          "scssVar": "$calendar-day-width",
+          "default": "14.28%"
+        },
+        {
+          "cssVar": "--nutui-calendar-day-height",
+          "scssVar": "$calendar-day-height",
+          "default": "scale-px(60px)"
+        }
+      ]
+    },
+    "calendarcard": {
+      "id": "calendarcard",
+      "name": "CalendarCard",
+      "cName": "日历卡片",
+      "classes": [
+        "nut-calendarcard",
+        "nut-calendarcard-day",
+        "nut-calendarcard-day-bottom",
+        "nut-calendarcard-day-inner",
+        "nut-calendarcard-day-top",
+        "nut-calendarcard-days",
+        "nut-calendarcard-header",
+        "nut-calendarcard-header-left",
+        "nut-calendarcard-header-right",
+        "nut-calendarcard-icon"
+      ],
+      "tokens": []
+    },
+    "cascader": {
+      "id": "cascader",
+      "name": "Cascader",
+      "cName": "级联选择器",
+      "classes": [
+        "nut-cascader",
+        "nut-cascader-item",
+        "nut-cascader-item-icon-check",
+        "nut-cascader-item-title",
+        "nut-cascader-pane"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-cascader-font-size",
+          "scssVar": "$cascader-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-cascader-pane-height",
+          "scssVar": "$cascader-pane-height",
+          "default": "scale-px(342px)"
+        },
+        {
+          "cssVar": "--nutui-cascader-pane-paddingTop",
+          "scssVar": "$cascader-pane-paddingTop",
+          "default": "scale-px(10px)"
+        },
+        {
+          "cssVar": "--nutui-cascader-bar-line-height",
+          "scssVar": "$cascader-bar-line-height",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-cascader-bar-color",
+          "scssVar": "$cascader-bar-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-cascader-item-height",
+          "scssVar": "$cascader-item-height",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-cascader-item-padding",
+          "scssVar": "$cascader-item-padding",
+          "default": "scale-px(10px) scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-cascader-item-margin",
+          "scssVar": "$cascader-item-margin",
+          "default": "0px"
+        },
+        {
+          "cssVar": "--nutui-cascader-item-color",
+          "scssVar": "$cascader-item-color",
+          "default": "$color-title"
+        }
+      ]
+    },
+    "checkbox": {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "cName": "复选按钮",
+      "classes": [
+        "nut-checkbox",
+        "nut-checkbox-button",
+        "nut-checkbox-button-active",
+        "nut-checkbox-button-disabled",
+        "nut-checkbox-button-icon",
+        "nut-checkbox-button-icon-checked",
+        "nut-checkbox-icon",
+        "nut-checkbox-icon-checked",
+        "nut-checkbox-icon-disabled",
+        "nut-checkbox-icon-indeterminate",
+        "nut-checkbox-icon-wrap",
+        "nut-checkbox-label",
+        "nut-checkbox-label-disabled",
+        "nut-checkbox-list-item",
+        "nut-checkbox-nolabel",
+        "nut-checkbox-reverse"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-checkbox-label-color",
+          "scssVar": "$checkbox-label-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-checkbox-list-padding",
+          "scssVar": "$checkbox-list-padding",
+          "default": "0 0 0 scale-px(12px)"
+        }
+      ]
+    },
+    "checkboxgroup": {
+      "id": "checkboxgroup",
+      "name": "CheckboxGroup",
+      "cName": "多选按钮组",
+      "classes": [
+        "nut-checkboxgroup",
+        "nut-checkboxgroup-horizontal",
+        "nut-checkboxgroup-list",
+        "nut-checkboxgroup-vertical"
+      ],
+      "tokens": []
+    },
+    "datepickerview": {
+      "id": "datepickerview",
+      "name": "DatePickerView",
+      "cName": "日期选择器视图",
+      "classes": [
+        "nut-datepickerview"
+      ],
+      "tokens": []
+    },
+    "form": {
+      "id": "form",
+      "name": "Form",
+      "cName": "表单",
+      "classes": [],
+      "tokens": [
+        {
+          "cssVar": "--nutui-form-item-label-width",
+          "scssVar": "$form-item-label-width",
+          "default": "scale-px(90px)"
+        },
+        {
+          "cssVar": "--nutui-form-item-tip-text-align",
+          "scssVar": "$form-item-tip-text-align",
+          "default": "left"
+        }
+      ]
+    },
+    "formitem": {
+      "id": "formitem",
+      "name": "FormItem",
+      "cName": "表单项",
+      "classes": [
+        "nut-form-item",
+        "nut-form-item-body",
+        "nut-form-item-body-slots",
+        "nut-form-item-body-tips",
+        "nut-form-item-body-top",
+        "nut-form-item-disabled",
+        "nut-form-item-label",
+        "nut-form-item-label-left",
+        "nut-form-item-label-left-required",
+        "nut-form-item-label-right",
+        "nut-form-item-label-right-required",
+        "nut-form-item-label-top",
+        "nut-form-item-labeltxt",
+        "nut-form-item-tips",
+        "nut-form-item-top"
+      ],
+      "tokens": []
+    },
+    "input": {
+      "id": "input",
+      "name": "Input",
+      "cName": "输入框",
+      "classes": [
+        "nut-input",
+        "nut-input-container",
+        "nut-input-disabled",
+        "nut-input-native",
+        "nut-input-placeholder",
+        "nut-input-readonly",
+        "nut-input-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-input-border-bottom",
+          "scssVar": "$input-border-bottom",
+          "default": "$color-border"
+        },
+        {
+          "cssVar": "--nutui-input-font-size",
+          "scssVar": "$input-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-input-lineheight",
+          "scssVar": "$input-lineheight",
+          "default": "$font-size-xl"
+        },
+        {
+          "cssVar": "--nutui-input-border-radius",
+          "scssVar": "$input-border-radius",
+          "default": "$radius-s"
+        },
+        {
+          "cssVar": "--nutui-input-color",
+          "scssVar": "$input-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-input-padding",
+          "scssVar": "$input-padding",
+          "default": "scale-px(12px)"
+        }
+      ]
+    },
+    "inputnumber": {
+      "id": "inputnumber",
+      "name": "InputNumber",
+      "cName": "数字输入框",
+      "classes": [
+        "nut-inputnumber",
+        "nut-inputnumber-add",
+        "nut-inputnumber-divider",
+        "nut-inputnumber-icon",
+        "nut-inputnumber-icon-disabled",
+        "nut-inputnumber-icon-minus",
+        "nut-inputnumber-icon-plus",
+        "nut-inputnumber-input",
+        "nut-inputnumber-input-disabled",
+        "nut-inputnumber-minus"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-inputnumber-input-width",
+          "scssVar": "$inputnumber-input-width",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-input-height",
+          "scssVar": "$inputnumber-input-height",
+          "default": "scale-px(28px)"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-input-border",
+          "scssVar": "$inputnumber-input-border",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-input-margin",
+          "scssVar": "$inputnumber-input-margin",
+          "default": "1px"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-button-width",
+          "scssVar": "$inputnumber-button-width",
+          "default": "scale-px(28px)"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-divider-width",
+          "scssVar": "$inputnumber-divider-width",
+          "default": "1px"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-input-font-family",
+          "scssVar": "$inputnumber-input-font-family",
+          "default": "JDZH"
+        },
+        {
+          "cssVar": "--nutui-inputnumber-icon-size",
+          "scssVar": "$inputnumber-icon-size",
+          "default": "scale-px(8px)"
+        }
+      ]
+    },
+    "menu": {
+      "id": "menu",
+      "name": "Menu",
+      "cName": "菜单",
+      "classes": [
+        "nut-menu",
+        "nut-menu-bar",
+        "nut-menu-container",
+        "nut-menu-container-content",
+        "nut-menu-container-content_fixed",
+        "nut-menu-container-down-enter",
+        "nut-menu-container-down-enter-done",
+        "nut-menu-container-down-exit",
+        "nut-menu-container-down-exit-done",
+        "nut-menu-container-item",
+        "nut-menu-container-item-icon",
+        "nut-menu-container-overlay",
+        "nut-menu-container-up-enter",
+        "nut-menu-container-up-enter-done",
+        "nut-menu-container-up-exit",
+        "nut-menu-container-up-exit-done",
+        "nut-menu-container-wrap",
+        "nut-menu-container-wrap-up",
+        "nut-menu-placeholder-element",
+        "nut-menu-title",
+        "nut-menu-title-icon",
+        "nut-menu-title-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-menu-scroll-fixed-top",
+          "scssVar": "$menu-scroll-fixed-top",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-menu-bar-line-height",
+          "scssVar": "$menu-bar-line-height",
+          "default": "scale-px(48px)"
+        },
+        {
+          "cssVar": "--nutui-menu-bar-opened-z-index",
+          "scssVar": "$menu-bar-opened-z-index",
+          "default": "1000"
+        },
+        {
+          "cssVar": "--nutui-menu-title-padding",
+          "scssVar": "$menu-title-padding",
+          "default": "0 scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-menu-title-color",
+          "scssVar": "$menu-title-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-menu-container-z-index",
+          "scssVar": "$menu-container-z-index",
+          "default": "1000"
+        },
+        {
+          "cssVar": "--nutui-menu-content-padding",
+          "scssVar": "$menu-content-padding",
+          "default": "scale-px(12px) scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-menu-content-max-height",
+          "scssVar": "$menu-content-max-height",
+          "default": "scale-px(214px)"
+        },
+        {
+          "cssVar": "--nutui-menu-item-padding",
+          "scssVar": "$menu-item-padding",
+          "default": "scale-px(12px) 0"
+        },
+        {
+          "cssVar": "--nutui-menu-item-icon-margin",
+          "scssVar": "$menu-item-icon-margin",
+          "default": "scale-px(8px)"
+        }
+      ]
+    },
+    "numberkeyboard": {
+      "id": "numberkeyboard",
+      "name": "NumberKeyboard",
+      "cName": "数字键盘",
+      "classes": [
+        "nut-numberkeyboard",
+        "nut-numberkeyboard-body",
+        "nut-numberkeyboard-body-keys",
+        "nut-numberkeyboard-body-wrapper",
+        "nut-numberkeyboard-close-icon",
+        "nut-numberkeyboard-delete-icon",
+        "nut-numberkeyboard-header",
+        "nut-numberkeyboard-header-close",
+        "nut-numberkeyboard-header-title",
+        "nut-numberkeyboard-sidebar"
+      ],
+      "tokens": []
+    },
+    "picker": {
+      "id": "picker",
+      "name": "Picker",
+      "cName": "选择器",
+      "classes": [
+        "nut-picker",
+        "nut-picker-cancel-btn",
+        "nut-picker-confirm-btn",
+        "nut-picker-control",
+        "nut-picker-panel",
+        "nut-picker-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-picker-item-height",
+          "scssVar": "$picker-item-height",
+          "default": "scale-px(36px)"
+        }
+      ]
+    },
+    "pickerview": {
+      "id": "pickerview",
+      "name": "PickerView",
+      "cName": "选择器视图",
+      "classes": [
+        "nut-pickerview",
+        "nut-pickerview-indicator",
+        "nut-pickerview-list",
+        "nut-pickerview-mask",
+        "nut-pickerview-roller",
+        "nut-pickerview-roller-item",
+        "nut-pickerview-roller-item-hidden",
+        "nut-pickerview-roller-item-tiled",
+        "nut-pickerview-roller-placeholder"
+      ],
+      "tokens": []
+    },
+    "radio": {
+      "id": "radio",
+      "name": "Radio",
+      "cName": "单选按钮",
+      "classes": [
+        "nut-radio",
+        "nut-radio-button",
+        "nut-radio-button-active",
+        "nut-radio-button-disabled",
+        "nut-radio-icon",
+        "nut-radio-icon-checked",
+        "nut-radio-icon-disabled",
+        "nut-radio-label",
+        "nut-radio-label-disabled",
+        "nut-radio-nolabel",
+        "nut-radio-reverse"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-radio-label-color",
+          "scssVar": "$radio-label-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-radio-label-margin-left",
+          "scssVar": "$radio-label-margin-left",
+          "default": "scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-radio-button-padding",
+          "scssVar": "$radio-button-padding",
+          "default": "scale-px(5px) scale-px(18px)"
+        }
+      ]
+    },
+    "radiogroup": {
+      "id": "radiogroup",
+      "name": "RadioGroup",
+      "cName": "单选按钮组",
+      "classes": [
+        "nut-radiogroup",
+        "nut-radiogroup-horizontal",
+        "nut-radiogroup-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-radiogroup-radio-margin",
+          "scssVar": "$radiogroup-radio-margin",
+          "default": "scale-px(20px)"
+        }
+      ]
+    },
+    "range": {
+      "id": "range",
+      "name": "Range",
+      "cName": "区间选择器",
+      "classes": [
+        "nut-range",
+        "nut-range-bar",
+        "nut-range-bar-animate",
+        "nut-range-button",
+        "nut-range-button-number",
+        "nut-range-button-wrapper",
+        "nut-range-button-wrapper-left",
+        "nut-range-button-wrapper-right",
+        "nut-range-container",
+        "nut-range-container-native",
+        "nut-range-disabled",
+        "nut-range-mark",
+        "nut-range-mark-text",
+        "nut-range-mark-text-wrapper",
+        "nut-range-max",
+        "nut-range-min",
+        "nut-range-tick",
+        "nut-range-tick-active",
+        "nut-range-vertical",
+        "nut-range-vertical-button-number",
+        "nut-range-vertical-button-wrapper",
+        "nut-range-vertical-button-wrapper-left",
+        "nut-range-vertical-button-wrapper-right",
+        "nut-range-vertical-container",
+        "nut-range-vertical-mark",
+        "nut-range-vertical-mark-hm",
+        "nut-range-vertical-mark-text",
+        "nut-range-vertical-mark-text-wrapper",
+        "nut-range-vertical-tick",
+        "nut-range-vertical-tick-active"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-range-color",
+          "scssVar": "$range-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-range-height",
+          "scssVar": "$range-height",
+          "default": "scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-range-margin",
+          "scssVar": "$range-margin",
+          "default": "scale-px(15px)"
+        },
+        {
+          "cssVar": "--nutui-range-active-color",
+          "scssVar": "$range-active-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-range-button-width",
+          "scssVar": "$range-button-width",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-range-button-height",
+          "scssVar": "$range-button-height",
+          "default": "scale-px(24px)"
+        }
+      ]
+    },
+    "rate": {
+      "id": "rate",
+      "name": "Rate",
+      "cName": "评分",
+      "classes": [
+        "nut-rate",
+        "nut-rate-horizontal",
+        "nut-rate-item",
+        "nut-rate-item-half",
+        "nut-rate-item-icon",
+        "nut-rate-item-icon-animate",
+        "nut-rate-item-icon-disabled",
+        "nut-rate-item-icon-half",
+        "nut-rate-item-large",
+        "nut-rate-item-normal",
+        "nut-rate-item-small",
+        "nut-rate-label",
+        "nut-rate-label-large",
+        "nut-rate-label-normal",
+        "nut-rate-label-small",
+        "nut-rate-labels",
+        "nut-rate-labels-item",
+        "nut-rate-labels-large",
+        "nut-rate-labels-normal",
+        "nut-rate-labels-small",
+        "nut-rate-list",
+        "nut-rate-score",
+        "nut-rate-score-disabled",
+        "nut-rate-score-large",
+        "nut-rate-score-normal",
+        "nut-rate-score-small",
+        "nut-rate-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-rate-item-margin",
+          "scssVar": "$rate-item-margin",
+          "default": "scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-rate-icon-color",
+          "scssVar": "$rate-icon-color",
+          "default": "$color-primary-icon"
+        },
+        {
+          "cssVar": "--nutui-rate-icon-size",
+          "scssVar": "$rate-icon-size",
+          "default": "scale-font-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-rate-font-color",
+          "scssVar": "$rate-font-color",
+          "default": "$color-primary-icon"
+        },
+        {
+          "cssVar": "--nutui-rate-font-size",
+          "scssVar": "$rate-font-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-rate-font-size-large",
+          "scssVar": "$rate-font-size-large",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-rate-font-size-small",
+          "scssVar": "$rate-font-size-small",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-rate-label-color",
+          "scssVar": "$rate-label-color",
+          "default": "$color-text-disabled"
+        }
+      ]
+    },
+    "searchbar": {
+      "id": "searchbar",
+      "name": "SearchBar",
+      "cName": "搜索栏",
+      "classes": [
+        "nut-searchbar",
+        "nut-searchbar-clear",
+        "nut-searchbar-content",
+        "nut-searchbar-disabled",
+        "nut-searchbar-focus",
+        "nut-searchbar-icon",
+        "nut-searchbar-input",
+        "nut-searchbar-input-box",
+        "nut-searchbar-left",
+        "nut-searchbar-leftin",
+        "nut-searchbar-right",
+        "nut-searchbar-rightin",
+        "nut-searchbar-round",
+        "nut-searchbar-value",
+        "nut-searchbar-values"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-searchbar-width",
+          "scssVar": "$searchbar-width",
+          "default": "100%"
+        },
+        {
+          "cssVar": "--nutui-searchbar-padding",
+          "scssVar": "$searchbar-padding",
+          "default": "scale-px(1px) scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-searchbar-color",
+          "scssVar": "$searchbar-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-searchbar-gap",
+          "scssVar": "$searchbar-gap",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-searchbar-inner-gap",
+          "scssVar": "$searchbar-inner-gap",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-searchbar-icon-size",
+          "scssVar": "$searchbar-icon-size",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-searchbar-input-height",
+          "scssVar": "$searchbar-input-height",
+          "default": "scale-px(38px)"
+        }
+      ]
+    },
+    "shortpassword": {
+      "id": "shortpassword",
+      "name": "ShortPassword",
+      "cName": "短密码",
+      "classes": [
+        "nut-shortpassword-description",
+        "nut-shortpassword-footer",
+        "nut-shortpassword-footer-cancel",
+        "nut-shortpassword-footer-sure",
+        "nut-shortpassword-input",
+        "nut-shortpassword-input-fake",
+        "nut-shortpassword-input-fake-li",
+        "nut-shortpassword-input-fake-li-icon",
+        "nut-shortpassword-input-real",
+        "nut-shortpassword-input-site",
+        "nut-shortpassword-message",
+        "nut-shortpassword-message-error",
+        "nut-shortpassword-message-forget",
+        "nut-shortpassword-message-tips-icon",
+        "nut-shortpassword-popup",
+        "nut-shortpassword-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-shortpassword-error",
+          "scssVar": "$shortpassword-error",
+          "default": "$color-primary"
+        }
+      ]
+    },
+    "signature": {
+      "id": "signature",
+      "name": "Signature",
+      "cName": "签名",
+      "classes": [
+        "nut-signature",
+        "nut-signature-inner",
+        "nut-signature-unsupport"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-signature-border-width",
+          "scssVar": "$signature-border-width",
+          "default": "scale-px(1px)"
+        },
+        {
+          "cssVar": "--nutui-signature-height",
+          "scssVar": "$signature-height",
+          "default": "10rem"
+        }
+      ]
+    },
+    "switch": {
+      "id": "switch",
+      "name": "Switch",
+      "cName": "开关",
+      "classes": [
+        "nut-switch",
+        "nut-switch-button",
+        "nut-switch-button-close",
+        "nut-switch-button-close-rtl",
+        "nut-switch-button-open",
+        "nut-switch-button-open-rtl",
+        "nut-switch-close",
+        "nut-switch-close-line",
+        "nut-switch-disabled",
+        "nut-switch-disabled-close",
+        "nut-switch-label",
+        "nut-switch-label-close",
+        "nut-switch-label-close-disabled",
+        "nut-switch-label-close-rtl",
+        "nut-switch-label-open",
+        "nut-switch-label-open-rtl"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-switch-width",
+          "scssVar": "$switch-width",
+          "default": "scale-px(56px)"
+        },
+        {
+          "cssVar": "--nutui-switch-height",
+          "scssVar": "$switch-height",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-switch-inside-width",
+          "scssVar": "$switch-inside-width",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-switch-inside-height",
+          "scssVar": "$switch-inside-height",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-switch-border-width",
+          "scssVar": "$switch-border-width",
+          "default": "scale-px(2px)"
+        }
+      ]
+    },
+    "textarea": {
+      "id": "textarea",
+      "name": "TextArea",
+      "cName": "文本域",
+      "classes": [
+        "nut-textarea",
+        "nut-textarea-container",
+        "nut-textarea-error",
+        "nut-textarea-limit",
+        "nut-textarea-limit-disabled",
+        "nut-textarea-rtl-limit",
+        "nut-textarea-textarea",
+        "nut-textarea-textarea-disabled"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-textarea-padding",
+          "scssVar": "$textarea-padding",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-textarea-text-color",
+          "scssVar": "$textarea-text-color",
+          "default": "$color-title"
+        }
+      ]
+    },
+    "uploader": {
+      "id": "uploader",
+      "name": "Uploader",
+      "cName": "上传",
+      "classes": [
+        "nut-uploader",
+        "nut-uploader-icon",
+        "nut-uploader-icon-tip",
+        "nut-uploader-input",
+        "nut-uploader-preview",
+        "nut-uploader-preview-img",
+        "nut-uploader-preview-img-c",
+        "nut-uploader-preview-img-file",
+        "nut-uploader-preview-img-file-name",
+        "nut-uploader-preview-list",
+        "nut-uploader-preview-progress",
+        "nut-uploader-preview-progress-msg",
+        "nut-uploader-slot",
+        "nut-uploader-upload",
+        "nut-uploader-upload-disabled"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-uploader-image-width",
+          "scssVar": "$uploader-image-width",
+          "default": "scale-px(100px)"
+        },
+        {
+          "cssVar": "--nutui-uploader-image-height",
+          "scssVar": "$uploader-image-height",
+          "default": "scale-px(100px)"
+        },
+        {
+          "cssVar": "--nutui-uploader-image-border",
+          "scssVar": "$uploader-image-border",
+          "default": "0px"
+        }
+      ]
+    },
+    "actionsheet": {
+      "id": "actionsheet",
+      "name": "ActionSheet",
+      "cName": "动作面板",
+      "classes": [
+        "nut-actionsheet",
+        "nut-actionsheet-cancel",
+        "nut-actionsheet-cancel-danger",
+        "nut-actionsheet-cancel-description",
+        "nut-actionsheet-cancel-disabled",
+        "nut-actionsheet-cancel-name",
+        "nut-actionsheet-item",
+        "nut-actionsheet-item-danger",
+        "nut-actionsheet-item-description",
+        "nut-actionsheet-item-disabled",
+        "nut-actionsheet-item-name",
+        "nut-actionsheet-list",
+        "nut-actionsheet-safe-area"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-actionsheet-border-radius",
+          "scssVar": "$actionsheet-border-radius",
+          "default": "0"
+        }
+      ]
+    },
+    "badge": {
+      "id": "badge",
+      "name": "Badge",
+      "cName": "徽标",
+      "classes": [
+        "nut-badge",
+        "nut-badge-content",
+        "nut-badge-disabled",
+        "nut-badge-dot",
+        "nut-badge-dot-large",
+        "nut-badge-dot-normal",
+        "nut-badge-dot-small",
+        "nut-badge-icon",
+        "nut-badge-number",
+        "nut-badge-one",
+        "nut-badge-outline",
+        "nut-badge-sup"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-badge-height",
+          "scssVar": "$badge-height",
+          "default": "scale-px(14px)"
+        },
+        {
+          "cssVar": "--nutui-badge-color",
+          "scssVar": "$badge-color",
+          "default": "$color-primary-text"
+        },
+        {
+          "cssVar": "--nutui-badge-font-size",
+          "scssVar": "$badge-font-size",
+          "default": "$font-size-xxxs"
+        },
+        {
+          "cssVar": "--nutui-badge-border-radius",
+          "scssVar": "$badge-border-radius",
+          "default": "$badge-height"
+        },
+        {
+          "cssVar": "--nutui-badge-min-width",
+          "scssVar": "$badge-min-width",
+          "default": "scale-px(6px)"
+        },
+        {
+          "cssVar": "--nutui-badge-padding",
+          "scssVar": "$badge-padding",
+          "default": "scale-px(1px) scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-badge-icon-padding",
+          "scssVar": "$badge-icon-padding",
+          "default": "scale-px(2px)"
+        },
+        {
+          "cssVar": "--nutui-badge-icon-size",
+          "scssVar": "$badge-icon-size",
+          "default": "$font-size-xxs"
+        },
+        {
+          "cssVar": "--nutui-badge-z-index",
+          "scssVar": "$badge-z-index",
+          "default": "1"
+        },
+        {
+          "cssVar": "--nutui-badge-dot-width",
+          "scssVar": "$badge-dot-width",
+          "default": "scale-px(6px)"
+        },
+        {
+          "cssVar": "--nutui-badge-dot-small-width",
+          "scssVar": "$badge-dot-small-width",
+          "default": "scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-badge-dot-large-width",
+          "scssVar": "$badge-dot-large-width",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-badge-outline-color",
+          "scssVar": "$badge-outline-color",
+          "default": "$color-primary"
+        }
+      ]
+    },
+    "dialog": {
+      "id": "dialog",
+      "name": "Dialog",
+      "cName": "对话框",
+      "classes": [
+        "nut-dialog",
+        "nut-dialog-close",
+        "nut-dialog-close-bottom",
+        "nut-dialog-close-top-left",
+        "nut-dialog-close-top-right",
+        "nut-dialog-content",
+        "nut-dialog-footer",
+        "nut-dialog-footer-block",
+        "nut-dialog-footer-cancel",
+        "nut-dialog-footer-cancel-badge",
+        "nut-dialog-footer-cancel-container",
+        "nut-dialog-footer-ok",
+        "nut-dialog-footer-ok-badge",
+        "nut-dialog-footer-ok-container",
+        "nut-dialog-header",
+        "nut-dialog-outer"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-dialog-min-width",
+          "scssVar": "$dialog-min-width",
+          "default": "scale-px(240px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-width",
+          "scssVar": "$dialog-width",
+          "default": "scale-px(295px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-padding",
+          "scssVar": "$dialog-padding",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-max-height",
+          "scssVar": "$dialog-max-height",
+          "default": "scale-px(420px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-min-height",
+          "scssVar": "$dialog-min-height",
+          "default": "scale-px(124px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-border-radius",
+          "scssVar": "$dialog-border-radius",
+          "default": "$radius-xl"
+        },
+        {
+          "cssVar": "--nutui-dialog-content-margin",
+          "scssVar": "$dialog-content-margin",
+          "default": "0 0 scale-px(20px) 0"
+        },
+        {
+          "cssVar": "--nutui-dialog-footer-badge-top",
+          "scssVar": "$dialog-footer-badge-top",
+          "default": "scale-px(-8px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-color",
+          "scssVar": "$dialog-close-color",
+          "default": "#ffffff"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-width",
+          "scssVar": "$dialog-close-width",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-height",
+          "scssVar": "$dialog-close-height",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-top",
+          "scssVar": "$dialog-close-top",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-left",
+          "scssVar": "$dialog-close-left",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-dialog-close-right",
+          "scssVar": "$dialog-close-right",
+          "default": "scale-px(16px)"
+        }
+      ]
+    },
+    "drag": {
+      "id": "drag",
+      "name": "Drag",
+      "cName": "拖拽",
+      "classes": [
+        "nut-drag",
+        "nut-drag-inner"
+      ],
+      "tokens": []
+    },
+    "empty": {
+      "id": "empty",
+      "name": "Empty",
+      "cName": "空状态",
+      "classes": [
+        "nut-empty",
+        "nut-empty--full",
+        "nut-empty--half",
+        "nut-empty--partial",
+        "nut-empty-action",
+        "nut-empty-actions",
+        "nut-empty-content",
+        "nut-empty-description",
+        "nut-empty-image",
+        "nut-empty-partial-body",
+        "nut-empty-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-empty-padding",
+          "scssVar": "$empty-padding",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-empty-title-color",
+          "scssVar": "$empty-title-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-empty-description-color",
+          "scssVar": "$empty-description-color",
+          "default": "$color-text-help"
+        },
+        {
+          "cssVar": "--nutui-empty-full-padding-top",
+          "scssVar": "$empty-full-padding-top",
+          "default": "scale-px(160px)"
+        },
+        {
+          "cssVar": "--nutui-empty-full-image-size",
+          "scssVar": "$empty-full-image-size",
+          "default": "scale-px(160px)"
+        },
+        {
+          "cssVar": "--nutui-empty-full-title-font-size",
+          "scssVar": "$empty-full-title-font-size",
+          "default": "$font-size-md"
+        },
+        {
+          "cssVar": "--nutui-empty-full-title-line-height",
+          "scssVar": "$empty-full-title-line-height",
+          "default": "$line-height-xxl"
+        },
+        {
+          "cssVar": "--nutui-empty-full-description-font-size",
+          "scssVar": "$empty-full-description-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-empty-full-description-line-height",
+          "scssVar": "$empty-full-description-line-height",
+          "default": "scale-font-px(22px)"
+        },
+        {
+          "cssVar": "--nutui-empty-full-actions-margin-top",
+          "scssVar": "$empty-full-actions-margin-top",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-empty-half-image-size",
+          "scssVar": "$empty-half-image-size",
+          "default": "scale-px(80px)"
+        },
+        {
+          "cssVar": "--nutui-empty-half-title-font-size",
+          "scssVar": "$empty-half-title-font-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-empty-half-title-line-height",
+          "scssVar": "$empty-half-title-line-height",
+          "default": "scale-font-px(22px)"
+        },
+        {
+          "cssVar": "--nutui-empty-half-description-font-size",
+          "scssVar": "$empty-half-description-font-size",
+          "default": "$font-size-m"
+        },
+        {
+          "cssVar": "--nutui-empty-half-description-line-height",
+          "scssVar": "$empty-half-description-line-height",
+          "default": "$line-height-2xl"
+        },
+        {
+          "cssVar": "--nutui-empty-half-actions-margin-top",
+          "scssVar": "$empty-half-actions-margin-top",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-empty-partial-padding",
+          "scssVar": "$empty-partial-padding",
+          "default": "scale-px(0px) scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-empty-partial-image-size",
+          "scssVar": "$empty-partial-image-size",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-empty-partial-content-gap",
+          "scssVar": "$empty-partial-content-gap",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-empty-partial-description-font-size",
+          "scssVar": "$empty-partial-description-font-size",
+          "default": "$font-size-m"
+        },
+        {
+          "cssVar": "--nutui-empty-partial-description-line-height",
+          "scssVar": "$empty-partial-description-line-height",
+          "default": "scale-font-px(32px)"
+        }
+      ]
+    },
+    "infiniteloading": {
+      "id": "infiniteloading",
+      "name": "InfiniteLoading",
+      "cName": "滚动加载",
+      "classes": [
+        "nut-infinite-bottom",
+        "nut-infinite-bottom-tips",
+        "nut-infinite-bottom-tips-icons",
+        "nut-infinite-top",
+        "nut-infinite-top-tips",
+        "nut-infinite-top-tips-icons",
+        "nut-infiniteloading",
+        "nut-infiniteloading-primary"
+      ],
+      "tokens": []
+    },
+    "loading": {
+      "id": "loading",
+      "name": "Loading",
+      "cName": "加载中",
+      "classes": [
+        "nut-loading",
+        "nut-loading-icon",
+        "nut-loading-icon-box",
+        "nut-loading-text",
+        "nut-loading-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-loading-icon-color",
+          "scssVar": "$loading-icon-color",
+          "default": "$color-text-help"
+        },
+        {
+          "cssVar": "--nutui-loading-icon-size",
+          "scssVar": "$loading-icon-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-loading-color",
+          "scssVar": "$loading-color",
+          "default": "$color-text-help"
+        },
+        {
+          "cssVar": "--nutui-loading-font-size",
+          "scssVar": "$loading-font-size",
+          "default": "$font-size-s"
+        }
+      ]
+    },
+    "noticebar": {
+      "id": "noticebar",
+      "name": "NoticeBar",
+      "cName": "公告栏",
+      "classes": [
+        "nut-noticebar",
+        "nut-noticebar-box",
+        "nut-noticebar-box-center",
+        "nut-noticebar-box-horseLamp-list",
+        "nut-noticebar-box-horseLamp-list-item",
+        "nut-noticebar-box-left-icon",
+        "nut-noticebar-box-right-icon",
+        "nut-noticebar-box-right-icon-default",
+        "nut-noticebar-box-wrap",
+        "nut-noticebar-box-wrap-content",
+        "nut-noticebar-box-wrapable",
+        "nut-noticebar-vertical"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-noticebar-height",
+          "scssVar": "$noticebar-height",
+          "default": "scale-px(36px)"
+        },
+        {
+          "cssVar": "--nutui-noticebar-color",
+          "scssVar": "$noticebar-color",
+          "default": "#d9500b"
+        },
+        {
+          "cssVar": "--nutui-noticebar-font-size",
+          "scssVar": "$noticebar-font-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-noticebar-line-height",
+          "scssVar": "$noticebar-line-height",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-noticebar-box-padding",
+          "scssVar": "$noticebar-box-padding",
+          "default": "0 scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-noticebar-border-radius",
+          "scssVar": "$noticebar-border-radius",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-noticebar-icon-gap",
+          "scssVar": "$noticebar-icon-gap",
+          "default": "scale-px(4px)"
+        }
+      ]
+    },
+    "notify": {
+      "id": "notify",
+      "name": "Notify",
+      "cName": "消息通知",
+      "classes": [
+        "nut-notify",
+        "nut-notify-close-icon",
+        "nut-notify-content",
+        "nut-notify-ellipsis",
+        "nut-notify-layout-left",
+        "nut-notify-left-icon",
+        "nut-notify-right-icon"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-notify-height",
+          "scssVar": "$notify-height",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-notify-padding",
+          "scssVar": "$notify-padding",
+          "default": "0px scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-notify-border-radius",
+          "scssVar": "$notify-border-radius",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-notify-z-index",
+          "scssVar": "$notify-z-index",
+          "default": "1000"
+        },
+        {
+          "cssVar": "--nutui-notify-text-color",
+          "scssVar": "$notify-text-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-notify-font-size",
+          "scssVar": "$notify-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-notify-background-color",
+          "scssVar": "$notify-background-color",
+          "default": "$white"
+        }
+      ]
+    },
+    "popover": {
+      "id": "popover",
+      "name": "Popover",
+      "cName": "气泡弹出框",
+      "classes": [
+        "nut-popover",
+        "nut-popover-arrow",
+        "nut-popover-arrow-bottom",
+        "nut-popover-arrow-bottom-left",
+        "nut-popover-arrow-bottom-right",
+        "nut-popover-arrow-left",
+        "nut-popover-arrow-left-bottom",
+        "nut-popover-arrow-left-top",
+        "nut-popover-arrow-right",
+        "nut-popover-arrow-right-bottom",
+        "nut-popover-arrow-right-top",
+        "nut-popover-arrow-top",
+        "nut-popover-arrow-top-left",
+        "nut-popover-arrow-top-right",
+        "nut-popover-content",
+        "nut-popover-content-bg",
+        "nut-popover-content-bottom",
+        "nut-popover-content-bottom-left",
+        "nut-popover-content-bottom-right",
+        "nut-popover-content-copy",
+        "nut-popover-content-group",
+        "nut-popover-content-left-bottom",
+        "nut-popover-content-left-top",
+        "nut-popover-content-right-bottom",
+        "nut-popover-content-right-top",
+        "nut-popover-content-top",
+        "nut-popover-content-top-left",
+        "nut-popover-content-top-right",
+        "nut-popover-dark",
+        "nut-popover-enter-active",
+        "nut-popover-enter-from",
+        "nut-popover-item",
+        "nut-popover-item-action-icon",
+        "nut-popover-item-disabled",
+        "nut-popover-item-icon",
+        "nut-popover-item-name",
+        "nut-popover-leave-active",
+        "nut-popover-taroitem",
+        "nut-popover-wrapper"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-popover-border-radius",
+          "scssVar": "$popover-border-radius",
+          "default": "$radius-xs"
+        },
+        {
+          "cssVar": "--nutui-popover-font-size",
+          "scssVar": "$popover-font-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-popover-text-color",
+          "scssVar": "$popover-text-color",
+          "default": "$color-mask"
+        },
+        {
+          "cssVar": "--nutui-popover-padding",
+          "scssVar": "$popover-padding",
+          "default": "scale-px(8px)"
+        },
+        {
+          "cssVar": "--nutui-popover-item-width",
+          "scssVar": "$popover-item-width",
+          "default": "scale-px(160px)"
+        }
+      ]
+    },
+    "popup": {
+      "id": "popup",
+      "name": "Popup",
+      "cName": "弹出层",
+      "classes": [
+        "nut-popup",
+        "nut-popup-bottom",
+        "nut-popup-bottom-top",
+        "nut-popup-center",
+        "nut-popup-left",
+        "nut-popup-right",
+        "nut-popup-round",
+        "nut-popup-slide",
+        "nut-popup-slide-bottom-appear-active",
+        "nut-popup-slide-bottom-enter-active",
+        "nut-popup-slide-bottom-exit",
+        "nut-popup-slide-bottom-exit-done",
+        "nut-popup-slide-center-enter-active",
+        "nut-popup-slide-center-exit-active",
+        "nut-popup-slide-center-exit-done",
+        "nut-popup-slide-left-appear-active",
+        "nut-popup-slide-left-enter-active",
+        "nut-popup-slide-left-exit-active",
+        "nut-popup-slide-left-exit-done",
+        "nut-popup-slide-none-enter-active",
+        "nut-popup-slide-none-exit-active",
+        "nut-popup-slide-none-exit-done",
+        "nut-popup-slide-right-appear-active",
+        "nut-popup-slide-right-enter-active",
+        "nut-popup-slide-right-exit",
+        "nut-popup-slide-right-exit-done",
+        "nut-popup-slide-top-appear-active",
+        "nut-popup-slide-top-enter-active",
+        "nut-popup-slide-top-exit-active",
+        "nut-popup-slide-top-exit-done",
+        "nut-popup-title",
+        "nut-popup-title-description",
+        "nut-popup-title-description-gap",
+        "nut-popup-title-left",
+        "nut-popup-title-right",
+        "nut-popup-title-right-bottom-left",
+        "nut-popup-title-right-bottom-right",
+        "nut-popup-title-right-top-left",
+        "nut-popup-title-title",
+        "nut-popup-title-wrapper",
+        "nut-popup-top"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-popup-border-radius",
+          "scssVar": "$popup-border-radius",
+          "default": "$radius-xl"
+        },
+        {
+          "cssVar": "--nutui-popup-icon-size",
+          "scssVar": "$popup-icon-size",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-popup-title-padding",
+          "scssVar": "$popup-title-padding",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-popup-title-height",
+          "scssVar": "$popup-title-height",
+          "default": "scale-px(50px)"
+        },
+        {
+          "cssVar": "--nutui-popup-title-border-bottom",
+          "scssVar": "$popup-title-border-bottom",
+          "default": "0"
+        },
+        {
+          "cssVar": "--nutui-popup-animation-duration",
+          "scssVar": "$popup-animation-duration",
+          "default": "0.3s"
+        }
+      ]
+    },
+    "pulltorefresh": {
+      "id": "pulltorefresh",
+      "name": "PullToRefresh",
+      "cName": "下拉刷新",
+      "classes": [
+        "nut-pulltorefresh-head",
+        "nut-pulltorefresh-head-content",
+        "nut-pulltorefresh-head-content-icons",
+        "nut-pulltorefresh-primary",
+        "nut-pulltorefresh-primary-content",
+        "nut-pulltorefresh-primary-head-content",
+        "nut-pulltorefresh-primary-status-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-pulltorefresh-icon-width",
+          "scssVar": "$pulltorefresh-icon-width",
+          "default": "scale-px(36px)"
+        }
+      ]
+    },
+    "resultpage": {
+      "id": "resultpage",
+      "name": "ResultPage",
+      "cName": "结果反馈",
+      "classes": [
+        "nut-resultpage",
+        "nut-resultpage-action",
+        "nut-resultpage-actions",
+        "nut-resultpage-description",
+        "nut-resultpage-icon",
+        "nut-resultpage-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-resultpage-width",
+          "scssVar": "$resultpage-width",
+          "default": "scale-px(240px)"
+        },
+        {
+          "cssVar": "--nutui-resultpage-icon-size",
+          "scssVar": "$resultpage-icon-size",
+          "default": "scale-px(36px)"
+        }
+      ]
+    },
+    "skeleton": {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "cName": "骨架屏",
+      "classes": [
+        "nut-skeleton",
+        "nut-skeleton-animation",
+        "nut-skeleton-content",
+        "nut-skeleton-content-large",
+        "nut-skeleton-content-normal",
+        "nut-skeleton-content-small",
+        "nut-skeleton-content-small-0"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-skeleton-line-width",
+          "scssVar": "$skeleton-line-width",
+          "default": "100%"
+        }
+      ]
+    },
+    "swipe": {
+      "id": "swipe",
+      "name": "Swipe",
+      "cName": "滑动手势",
+      "classes": [
+        "nut-swipe",
+        "nut-swipe-left",
+        "nut-swipe-wrapper"
+      ],
+      "tokens": []
+    },
+    "toast": {
+      "id": "toast",
+      "name": "Toast",
+      "cName": "吐司",
+      "classes": [
+        "nut-toast",
+        "nut-toast-bottom",
+        "nut-toast-center",
+        "nut-toast-has-icon",
+        "nut-toast-icon-wrapper",
+        "nut-toast-icon-wrapper-icon",
+        "nut-toast-inner",
+        "nut-toast-inner-break-word",
+        "nut-toast-inner-large",
+        "nut-toast-inner-normal",
+        "nut-toast-inner-small",
+        "nut-toast-overlay-default",
+        "nut-toast-overlay-default-taro",
+        "nut-toast-rtl",
+        "nut-toast-rtl-inner",
+        "nut-toast-text",
+        "nut-toast-title",
+        "nut-toast-top"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-toast-inner-text-align",
+          "scssVar": "$toast-inner-text-align",
+          "default": "center"
+        },
+        {
+          "cssVar": "--nutui-toast-title-font-size",
+          "scssVar": "$toast-title-font-size",
+          "default": "$font-size-md"
+        },
+        {
+          "cssVar": "--nutui-toast-text-font-size",
+          "scssVar": "$toast-text-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-toast-font-color",
+          "scssVar": "$toast-font-color",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-toast-inner-padding",
+          "scssVar": "$toast-inner-padding",
+          "default": "scale-px(12px) scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-toast-inner-bg-color",
+          "scssVar": "$toast-inner-bg-color",
+          "default": "$color-mask"
+        },
+        {
+          "cssVar": "--nutui-toast-inner-top",
+          "scssVar": "$toast-inner-top",
+          "default": "50%"
+        }
+      ]
+    },
+    "animate": {
+      "id": "animate",
+      "name": "Animate",
+      "cName": "动画/动效",
+      "classes": [
+        "nut-animate",
+        "nut-animate-breath",
+        "nut-animate-flicker",
+        "nut-animate-float",
+        "nut-animate-jump",
+        "nut-animate-ripple",
+        "nut-animate-shake",
+        "nut-animate-slide-bottom",
+        "nut-animate-slide-left",
+        "nut-animate-slide-right",
+        "nut-animate-slide-top",
+        "nut-animate-twinkle"
+      ],
+      "tokens": []
+    },
+    "animatingnumbers": {
+      "id": "animatingnumbers",
+      "name": "AnimatingNumbers",
+      "cName": "数字动画",
+      "classes": [
+        "nut-countup-list",
+        "nut-countup-listitem",
+        "nut-countup-listitem-number",
+        "nut-countup-number",
+        "nut-countup-number-text",
+        "nut-countup-separator"
+      ],
+      "tokens": []
+    },
+    "audio": {
+      "id": "audio",
+      "name": "Audio",
+      "cName": "音频播放器",
+      "classes": [
+        "nut-audio",
+        "nut-audio-icon",
+        "nut-audio-icon-box",
+        "nut-audio-icon-stop",
+        "nut-audio-none-container",
+        "nut-audio-progress",
+        "nut-audio-progress-bar-wrapper",
+        "nut-voice"
+      ],
+      "tokens": []
+    },
+    "avatar": {
+      "id": "avatar",
+      "name": "Avatar",
+      "cName": "头像",
+      "classes": [
+        "nut-avatar",
+        "nut-avatar-first-child",
+        "nut-avatar-icon",
+        "nut-avatar-img",
+        "nut-avatar-large",
+        "nut-avatar-large-icon",
+        "nut-avatar-large-img",
+        "nut-avatar-large-text",
+        "nut-avatar-round",
+        "nut-avatar-small",
+        "nut-avatar-small-text",
+        "nut-avatar-square",
+        "nut-avatar-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-avatar-square",
+          "scssVar": "$avatar-square",
+          "default": "scale-px(5px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-large-width",
+          "scssVar": "$avatar-large-width",
+          "default": "scale-px(60px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-large-height",
+          "scssVar": "$avatar-large-height",
+          "default": "scale-px(60px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-small-width",
+          "scssVar": "$avatar-small-width",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-small-height",
+          "scssVar": "$avatar-small-height",
+          "default": "scale-px(32px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-normal-width",
+          "scssVar": "$avatar-normal-width",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-avatar-normal-height",
+          "scssVar": "$avatar-normal-height",
+          "default": "scale-px(40px)"
+        }
+      ]
+    },
+    "avatargroup": {
+      "id": "avatargroup",
+      "name": "AvatarGroup",
+      "cName": "头像组合子组件",
+      "classes": [
+        "nut-avatar-group",
+        "nut-avatar-group-avatar"
+      ],
+      "tokens": []
+    },
+    "circleprogress": {
+      "id": "circleprogress",
+      "name": "CircleProgress",
+      "cName": "环形进度条",
+      "classes": [
+        "nut-circleprogress",
+        "nut-circleprogress-hover",
+        "nut-circleprogress-path",
+        "nut-circleprogress-text"
+      ],
+      "tokens": []
+    },
+    "collapse": {
+      "id": "collapse",
+      "name": "Collapse",
+      "cName": "折叠面板",
+      "classes": [],
+      "tokens": [
+        {
+          "cssVar": "--nutui-collapse-item-padding",
+          "scssVar": "$collapse-item-padding",
+          "default": "scale-px(13px) scale-px(26px)"
+        },
+        {
+          "cssVar": "--nutui-collapse-item-color",
+          "scssVar": "$collapse-item-color",
+          "default": "$color-title"
+        }
+      ]
+    },
+    "collapseitem": {
+      "id": "collapseitem",
+      "name": "CollapseItem",
+      "cName": "折叠面板子组件",
+      "classes": [
+        "nut-collapse-item",
+        "nut-collapse-item-content",
+        "nut-collapse-item-content-text",
+        "nut-collapse-item-content-wrapper",
+        "nut-collapse-item-content-wrapper-tran",
+        "nut-collapse-item-extra",
+        "nut-collapse-item-header",
+        "nut-collapse-item-header-disabled",
+        "nut-collapse-item-icon",
+        "nut-collapse-item-icon-box",
+        "nut-collapse-item-title"
+      ],
+      "tokens": []
+    },
+    "countdown": {
+      "id": "countdown",
+      "name": "CountDown",
+      "cName": "倒计时",
+      "classes": [
+        "nut-countdown",
+        "nut-countdown-number",
+        "nut-countdown-number-primary",
+        "nut-countdown-number-text",
+        "nut-countdown-unit"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-countdown-display",
+          "scssVar": "$countdown-display",
+          "default": "flex"
+        },
+        {
+          "cssVar": "--nutui-countdown-color",
+          "scssVar": "$countdown-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-countdown-font-size",
+          "scssVar": "$countdown-font-size",
+          "default": "$font-size-xs"
+        },
+        {
+          "cssVar": "--nutui-countdown-height",
+          "scssVar": "$countdown-height",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-countdown-width",
+          "scssVar": "$countdown-width",
+          "default": "scale-px(16px)"
+        },
+        {
+          "cssVar": "--nutui-countdown-number-padding",
+          "scssVar": "$countdown-number-padding",
+          "default": "0 0"
+        },
+        {
+          "cssVar": "--nutui-countdown-number-margin",
+          "scssVar": "$countdown-number-margin",
+          "default": "0 scale-px(1px)"
+        }
+      ]
+    },
+    "ellipsis": {
+      "id": "ellipsis",
+      "name": "Ellipsis",
+      "cName": "文本省略",
+      "classes": [
+        "nut-ellipsis",
+        "nut-ellipsis-copy",
+        "nut-ellipsis-text",
+        "nut-ellipsis-width",
+        "nut-ellipsis-wordbreak"
+      ],
+      "tokens": []
+    },
+    "imagepreview": {
+      "id": "imagepreview",
+      "name": "ImagePreview",
+      "cName": "图片预览",
+      "classes": [
+        "nut-image-preview-box",
+        "nut-imagepreview",
+        "nut-imagepreview-close",
+        "nut-imagepreview-index",
+        "nut-imagepreview-pop",
+        "nut-imagepreview-swiper",
+        "nut-imagepreview-swiper-item"
+      ],
+      "tokens": []
+    },
+    "indicator": {
+      "id": "indicator",
+      "name": "Indicator",
+      "cName": "指示器",
+      "classes": [
+        "nut-indicator",
+        "nut-indicator-dot",
+        "nut-indicator-dot-0",
+        "nut-indicator-dot-active",
+        "nut-indicator-fixed-width",
+        "nut-indicator-inside-bottom-center",
+        "nut-indicator-inside-bottom-left",
+        "nut-indicator-inside-top-right",
+        "nut-indicator-line",
+        "nut-indicator-line-0",
+        "nut-indicator-line-active",
+        "nut-indicator-outside",
+        "nut-indicator-track",
+        "nut-indicator-vertical",
+        "nut-indicator-white"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-indicator-color",
+          "scssVar": "$indicator-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-indicator-dot-color",
+          "scssVar": "$indicator-dot-color",
+          "default": "$color-border"
+        },
+        {
+          "cssVar": "--nutui-indicator-dot-size",
+          "scssVar": "$indicator-dot-size",
+          "default": "scale-px(4px)"
+        },
+        {
+          "cssVar": "--nutui-indicator-dot-margin",
+          "scssVar": "$indicator-dot-margin",
+          "default": "$spacing-xxs"
+        }
+      ]
+    },
+    "pagination": {
+      "id": "pagination",
+      "name": "Pagination",
+      "cName": "分页",
+      "classes": [
+        "nut-pagination",
+        "nut-pagination-contain",
+        "nut-pagination-item",
+        "nut-pagination-item-active",
+        "nut-pagination-item-disabled",
+        "nut-pagination-lite",
+        "nut-pagination-lite-active",
+        "nut-pagination-lite-default",
+        "nut-pagination-lite-spliterator",
+        "nut-pagination-next",
+        "nut-pagination-next-disabled",
+        "nut-pagination-prev",
+        "nut-pagination-prev-disabled",
+        "nut-pagination-simple",
+        "nut-pagination-simple-border"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-pagination-color",
+          "scssVar": "$pagination-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-pagination-lite-color",
+          "scssVar": "$pagination-lite-color",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-pagination-lite-width",
+          "scssVar": "$pagination-lite-width",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-pagination-lite-height",
+          "scssVar": "$pagination-lite-height",
+          "default": "scale-px(20px)"
+        }
+      ]
+    },
+    "price": {
+      "id": "price",
+      "name": "Price",
+      "cName": "价格",
+      "classes": [
+        "nut-price",
+        "nut-price-darkgray",
+        "nut-price-decimal",
+        "nut-price-decimal-large",
+        "nut-price-decimal-normal",
+        "nut-price-decimal-small",
+        "nut-price-decimal-xlarge",
+        "nut-price-integer",
+        "nut-price-integer-large",
+        "nut-price-integer-normal",
+        "nut-price-integer-small",
+        "nut-price-integer-xlarge",
+        "nut-price-line",
+        "nut-price-primary",
+        "nut-price-symbol",
+        "nut-price-symbol-large",
+        "nut-price-symbol-normal",
+        "nut-price-symbol-rtl",
+        "nut-price-symbol-small",
+        "nut-price-symbol-xlarge"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-price-color",
+          "scssVar": "$price-primary-color",
+          "default": "$color-primary"
+        },
+        {
+          "cssVar": "--nutui-price-color",
+          "scssVar": "$price-color",
+          "default": "var(--nutui-color-text-help)"
+        },
+        {
+          "cssVar": "--nutui-price-symbol-xlarge-size",
+          "scssVar": "$price-symbol-xlarge-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-symbol-large-size",
+          "scssVar": "$price-symbol-large-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-integer-large-size",
+          "scssVar": "$price-integer-large-size",
+          "default": "$font-size-xl"
+        },
+        {
+          "cssVar": "--nutui-price-decimal-large-size",
+          "scssVar": "$price-decimal-large-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-symbol-normal-size",
+          "scssVar": "$price-symbol-normal-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-symbol-small-size",
+          "scssVar": "$price-symbol-small-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-integer-small-size",
+          "scssVar": "$price-integer-small-size",
+          "default": "$font-size-s"
+        },
+        {
+          "cssVar": "--nutui-price-decimal-small-size",
+          "scssVar": "$price-decimal-small-size",
+          "default": "$font-size-s"
+        }
+      ]
+    },
+    "progress": {
+      "id": "progress",
+      "name": "Progress",
+      "cName": "进度条",
+      "classes": [
+        "nut-progress",
+        "nut-progress-active",
+        "nut-progress-inner",
+        "nut-progress-outer",
+        "nut-progress-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-progress-height",
+          "scssVar": "$progress-height",
+          "default": "scale-px(10px)"
+        },
+        {
+          "cssVar": "--nutui-progress-border-radius",
+          "scssVar": "$progress-border-radius",
+          "default": "scale-px(12px)"
+        },
+        {
+          "cssVar": "--nutui-progress-text-padding",
+          "scssVar": "$progress-text-padding",
+          "default": "0 scale-px(5px)"
+        },
+        {
+          "cssVar": "--nutui-progress-text-font-size",
+          "scssVar": "$progress-text-font-size",
+          "default": "scale-font-px(13px)"
+        }
+      ]
+    },
+    "segmented": {
+      "id": "segmented",
+      "name": "Segmented",
+      "cName": "分段选择器",
+      "classes": [
+        "nut-segmented",
+        "nut-segmented-icon",
+        "nut-segmented-item",
+        "nut-segmented-item-active"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-segmented-height",
+          "scssVar": "$segmented-height",
+          "default": "scale-px(24px)"
+        },
+        {
+          "cssVar": "--nutui-segmented-padding",
+          "scssVar": "$segmented-padding",
+          "default": "$spacing-xxxs"
+        },
+        {
+          "cssVar": "--nutui-segmented-radius",
+          "scssVar": "$segmented-border-radius",
+          "default": "$radius-xs"
+        },
+        {
+          "cssVar": "--nutui-segmented-height",
+          "scssVar": "$segmented-item-height",
+          "default": "scale-px(20px)"
+        },
+        {
+          "cssVar": "--nutui-segmented-item-radius",
+          "scssVar": "$segmented-item-radius",
+          "default": "$radius-xs"
+        }
+      ]
+    },
+    "step": {
+      "id": "step",
+      "name": "Step",
+      "cName": "步骤条子组件",
+      "classes": [
+        "nut-step",
+        "nut-step-business",
+        "nut-step-description",
+        "nut-step-finish",
+        "nut-step-head",
+        "nut-step-head-dot",
+        "nut-step-head-dot-wrap",
+        "nut-step-head-icon",
+        "nut-step-head-icon-wrap",
+        "nut-step-head-text",
+        "nut-step-head-text-wrap",
+        "nut-step-last",
+        "nut-step-line",
+        "nut-step-line-inner",
+        "nut-step-main",
+        "nut-step-process",
+        "nut-step-title",
+        "nut-step-wait"
+      ],
+      "tokens": []
+    },
+    "steps": {
+      "id": "steps",
+      "name": "Steps",
+      "cName": "步骤条",
+      "classes": [
+        "nut-step-special",
+        "nut-steps",
+        "nut-steps-horizontal",
+        "nut-steps-horizontal-count-3",
+        "nut-steps-horizontal-dot",
+        "nut-steps-horizontal-double",
+        "nut-steps-horizontal-enhanced",
+        "nut-steps-horizontal-icon",
+        "nut-steps-horizontal-single",
+        "nut-steps-horizontal-text",
+        "nut-steps-vertical",
+        "nut-steps-vertical-dot",
+        "nut-steps-vertical-enhanced",
+        "nut-steps-vertical-icon",
+        "nut-steps-vertical-text"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-steps-background-color",
+          "scssVar": "$steps-background-color",
+          "default": "$white"
+        },
+        {
+          "cssVar": "--nutui-steps-base-head-height",
+          "scssVar": "$steps-base-head-height",
+          "default": "scale-px(14px)"
+        },
+        {
+          "cssVar": "--nutui-steps-base-head-border",
+          "scssVar": "$steps-base-head-border",
+          "default": "none"
+        },
+        {
+          "cssVar": "--nutui-steps-base-head-dot-size",
+          "scssVar": "$steps-base-head-dot-size",
+          "default": "$icon-size-6"
+        },
+        {
+          "cssVar": "--nutui-steps-base-line-height",
+          "scssVar": "$steps-base-line-height",
+          "default": "scale-px(1px)"
+        },
+        {
+          "cssVar": "--nutui-steps-process-color",
+          "scssVar": "$steps-process-color",
+          "default": "$white"
+        }
+      ]
+    },
+    "swiper": {
+      "id": "swiper",
+      "name": "Swiper",
+      "cName": "轮播",
+      "classes": [
+        "nut-swipe-right",
+        "nut-swiper",
+        "nut-swiper-canmove-horizontal",
+        "nut-swiper-canmove-vertical",
+        "nut-swiper-indicator",
+        "nut-swiper-indicator-vertical",
+        "nut-swiper-inner",
+        "nut-swiper-inner-vertical",
+        "nut-swiper-slide"
+      ],
+      "tokens": []
+    },
+    "swiperitem": {
+      "id": "swiperitem",
+      "name": "SwiperItem",
+      "cName": "轮播子组件",
+      "classes": [
+        "nut-swiper-item"
+      ],
+      "tokens": []
+    },
+    "table": {
+      "id": "table",
+      "name": "Table",
+      "cName": "表格",
+      "classes": [
+        "nut-table",
+        "nut-table-fixed-left",
+        "nut-table-fixed-left-last",
+        "nut-table-fixed-right",
+        "nut-table-main",
+        "nut-table-main-body",
+        "nut-table-main-body-tr",
+        "nut-table-main-body-tr-align",
+        "nut-table-main-body-tr-aligncenter",
+        "nut-table-main-body-tr-alignleft",
+        "nut-table-main-body-tr-alignright",
+        "nut-table-main-body-tr-border",
+        "nut-table-main-body-tr-td",
+        "nut-table-main-body-tr-td-nodata",
+        "nut-table-main-body-tr-th",
+        "nut-table-main-head",
+        "nut-table-main-head-tr",
+        "nut-table-main-head-tr-align",
+        "nut-table-main-head-tr-aligncenter",
+        "nut-table-main-head-tr-alignleft",
+        "nut-table-main-head-tr-alignright",
+        "nut-table-main-head-tr-border",
+        "nut-table-main-head-tr-td",
+        "nut-table-main-head-tr-td-nodata",
+        "nut-table-main-head-tr-th",
+        "nut-table-main-striped",
+        "nut-table-sticky-left",
+        "nut-table-sticky-right",
+        "nut-table-summary",
+        "nut-table-wrapper",
+        "nut-table-wrapper-sticky"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-table-border-color",
+          "scssVar": "$table-border-color",
+          "default": "$color-border"
+        },
+        {
+          "cssVar": "--nutui-table-cols-padding",
+          "scssVar": "$table-cols-padding",
+          "default": "scale-px(10px)"
+        },
+        {
+          "cssVar": "--nutui-table-tr-odd-bg-color",
+          "scssVar": "$table-tr-odd-bg-color",
+          "default": "$white"
+        }
+      ]
+    },
+    "tag": {
+      "id": "tag",
+      "name": "Tag",
+      "cName": "标签",
+      "classes": [
+        "nut-tag",
+        "nut-tag-close",
+        "nut-tag-close-icon",
+        "nut-tag-custom-icon",
+        "nut-tag-danger",
+        "nut-tag-default",
+        "nut-tag-info",
+        "nut-tag-mark",
+        "nut-tag-plain",
+        "nut-tag-primary",
+        "nut-tag-round",
+        "nut-tag-success",
+        "nut-tag-text",
+        "nut-tag-text-plain",
+        "nut-tag-warning"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-tag-padding",
+          "scssVar": "$tag-padding",
+          "default": "0px scale-px(2px)"
+        },
+        {
+          "cssVar": "--nutui-tag-font-size",
+          "scssVar": "$tag-font-size",
+          "default": "$font-size-xxs"
+        },
+        {
+          "cssVar": "--nutui-tag-border-radius",
+          "scssVar": "$tag-border-radius",
+          "default": "scale-px(2px)"
+        },
+        {
+          "cssVar": "--nutui-tag-height",
+          "scssVar": "$tag-height",
+          "default": "scale-px(14px)"
+        },
+        {
+          "cssVar": "--nutui-tag-color",
+          "scssVar": "$tag-color",
+          "default": "#ffffff"
+        },
+        {
+          "cssVar": "--nutui-tag-border-width",
+          "scssVar": "$tag-border-width",
+          "default": "scale-px(1px)"
+        },
+        {
+          "cssVar": "--nutui-tag-background-color",
+          "scssVar": "$tag-background-color",
+          "default": "$color-title"
+        },
+        {
+          "cssVar": "--nutui-tag-round-border-radius",
+          "scssVar": "$tag-round-border-radius",
+          "default": "scale-px(8px)"
+        }
+      ]
+    },
+    "tour": {
+      "id": "tour",
+      "name": "Tour",
+      "cName": "引导",
+      "classes": [
+        "nut-tour-content",
+        "nut-tour-content-bottom",
+        "nut-tour-content-bottom-operate",
+        "nut-tour-content-bottom-operate-btn",
+        "nut-tour-content-inner",
+        "nut-tour-content-tile",
+        "nut-tour-content-top",
+        "nut-tour-content-top-close",
+        "nut-tour-mask",
+        "nut-tour-mask-hidden",
+        "nut-tour-mask-none",
+        "nut-tour-masked"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-tour-mask-border-radius",
+          "scssVar": "$tour-mask-border-radius",
+          "default": "scale-px(10px)"
+        },
+        {
+          "cssVar": "--nutui-tour-content-min-width",
+          "scssVar": "$tour-content-min-width",
+          "default": "scale-px(200px)"
+        },
+        {
+          "cssVar": "--nutui-tour-content-padding",
+          "scssVar": "$tour-content-padding",
+          "default": "scale-px(10px) scale-px(12px)"
+        }
+      ]
+    },
+    "video": {
+      "id": "video",
+      "name": "Video",
+      "cName": "视频播放器",
+      "classes": [
+        "nut-video",
+        "nut-video-player"
+      ],
+      "tokens": []
+    },
+    "virtuallist": {
+      "id": "virtuallist",
+      "name": "VirtualList",
+      "cName": "虚拟列表",
+      "classes": [
+        "nut-horizontal-items",
+        "nut-vertical-items",
+        "nut-virtualList-box",
+        "nut-virtuallist",
+        "nut-virtuallist-container",
+        "nut-virtuallist-item",
+        "nut-virtuallist-phantom"
+      ],
+      "tokens": []
+    },
+    "quickenter": {
+      "id": "quickenter",
+      "name": "QuickEnter",
+      "cName": "快捷入口",
+      "classes": [
+        "nut-quickenter",
+        "nut-quickenter-close-btn",
+        "nut-quickenter-content",
+        "nut-quickenter-content-scrollable",
+        "nut-quickenter-control",
+        "nut-quickenter-item",
+        "nut-quickenter-item-icon",
+        "nut-quickenter-item-title",
+        "nut-quickenter-list",
+        "nut-quickenter-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-quickenter-bg-color",
+          "scssVar": "$quickenter-bg-color",
+          "default": "#f5f5f5"
+        },
+        {
+          "cssVar": "--nutui-quickenter-max-height",
+          "scssVar": "$quickenter-max-height",
+          "default": "scale-px(256px)"
+        }
+      ]
+    },
+    "avatarcropper": {
+      "id": "avatarcropper",
+      "name": "AvatarCropper",
+      "cName": "头像裁剪",
+      "classes": [
+        "nut-avatar-cropper",
+        "nut-avatar-cropper-edit-text",
+        "nut-avatar-cropper-input",
+        "nut-avatar-cropper-popup",
+        "nut-avatar-cropper-popup-canvas",
+        "nut-avatar-cropper-popup-cut-canvas",
+        "nut-avatar-cropper-popup-highlight",
+        "nut-avatar-cropper-popup-toolbar",
+        "nut-avatar-cropper-popup-toolbar-flex",
+        "nut-avatar-cropper-popup-toolbar-item"
+      ],
+      "tokens": []
+    },
+    "barrage": {
+      "id": "barrage",
+      "name": "Barrage",
+      "cName": "弹幕",
+      "classes": [
+        "nut-barrage"
+      ],
+      "tokens": []
+    },
+    "card": {
+      "id": "card",
+      "name": "Card",
+      "cName": "商品卡片",
+      "classes": [
+        "nut-card",
+        "nut-card-left",
+        "nut-card-right",
+        "nut-card-right-other",
+        "nut-card-right-price",
+        "nut-card-right-price-origin",
+        "nut-card-right-shop",
+        "nut-card-right-shop-name",
+        "nut-card-right-title"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-card-border-radius",
+          "scssVar": "$card-border-radius",
+          "default": "scale-px(4px)"
+        }
+      ]
+    },
+    "timedetail": {
+      "id": "timedetail",
+      "name": "TimeDetail",
+      "cName": "配送时间",
+      "classes": [
+        "nut-timedetail",
+        "nut-timedetail-item"
+      ],
+      "tokens": []
+    },
+    "timeselect": {
+      "id": "timeselect",
+      "name": "TimeSelect",
+      "cName": "配送时间",
+      "classes": [
+        "nut-timepannel",
+        "nut-timeselect",
+        "nut-timeselect-content",
+        "nut-timeselect-content-left"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-timeselect-date-width",
+          "scssVar": "$timeselect-date-width",
+          "default": "scale-px(140px)"
+        },
+        {
+          "cssVar": "--nutui-timeselect-date-height",
+          "scssVar": "$timeselect-date-height",
+          "default": "scale-px(40px)"
+        },
+        {
+          "cssVar": "--nutui-timeselect-time-width",
+          "scssVar": "$timeselect-time-width",
+          "default": "scale-px(110px)"
+        },
+        {
+          "cssVar": "--nutui-timeselect-time-height",
+          "scssVar": "$timeselect-time-height",
+          "default": "scale-px(50px)"
+        }
+      ]
+    },
+    "trendarrow": {
+      "id": "trendarrow",
+      "name": "TrendArrow",
+      "cName": "趋势箭头",
+      "classes": [
+        "nut-trendarrow",
+        "nut-trendarrow-icon-after",
+        "nut-trendarrow-icon-before",
+        "nut-trendarrow-rate"
+      ],
+      "tokens": [
+        {
+          "cssVar": "--nutui-trendarrow-font-size",
+          "scssVar": "$trendarrow-font-size",
+          "default": "$font-size-base"
+        },
+        {
+          "cssVar": "--nutui-trendarrow-icon-margin",
+          "scssVar": "$trendarrow-icon-margin",
+          "default": "scale-px(4px)"
+        }
+      ]
+    },
+    "watermark": {
+      "id": "watermark",
+      "name": "WaterMark",
+      "cName": "水印",
+      "classes": [
+        "nut-watermark",
+        "nut-watermark-full-page"
+      ],
+      "tokens": []
+    }
+  }
+}

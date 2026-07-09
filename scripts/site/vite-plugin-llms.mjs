@@ -12,9 +12,23 @@ import {
   generateLlmsFull,
   SITE_BASE,
 } from '../build-llms.mjs'
+import {
+  loadSemantic,
+  generateSemanticMd,
+  generateLlmsSemantic,
+} from '../build-semantic.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
+
+// 读 semantic.json（需先 npm run generate:semantic）。未生成时返回 null，跳过 semantic 产物而非报错。
+function tryLoadSemantic() {
+  try {
+    return loadSemantic()
+  } catch {
+    return null
+  }
+}
 
 // 收集所有要产出的虚拟文件：{ 相对站点根的路径 -> 文本内容 }
 function collectFiles() {
@@ -30,6 +44,17 @@ function collectFiles() {
     const abs = path.join(ROOT, rel)
     if (!fs.existsSync(abs)) continue
     files[`components/${c.id}.md`] = fs.readFileSync(abs, 'utf-8')
+  }
+  // 每组件样式结构文档：components/<id>/semantic.md（对齐 Ant 的 <comp>/semantic.md 语义）。
+  // 语义聚合单文件：llms-semantic-cn.txt / llms-semantic.txt（对齐 llms-full 的组织方式）。
+  const semantic = tryLoadSemantic()
+  if (semantic) {
+    files['llms-semantic-cn.txt'] = generateLlmsSemantic(semantic, meta, 'h5')
+    files['llms-semantic.txt'] = generateLlmsSemantic(semantic, meta, 'enUS')
+    for (const id of Object.keys(semantic.components)) {
+      const md = generateSemanticMd(semantic, id)
+      if (md) files[`components/${id}/semantic.md`] = md
+    }
   }
   return files
 }
@@ -54,7 +79,8 @@ export default function llmsPlugin() {
       )
     },
 
-    // dev 阶段：中间件按 <base>/llms.txt、<base>/components/<id>.md 实时返回。
+    // dev 阶段：中间件按 <base>/llms.txt、<base>/components/<id>.md、
+    // <base>/components/<id>/semantic.md 实时返回（后两者均命中 components/ + .md 判定）。
     configureServer(server) {
       const base = SITE_BASE.replace(/\/$/, '')
       server.middlewares.use((req, res, next) => {
@@ -65,6 +91,8 @@ export default function llmsPlugin() {
           key === 'llms.txt' ||
           key === 'llms-full-cn.txt' ||
           key === 'llms-full.txt' ||
+          key === 'llms-semantic-cn.txt' ||
+          key === 'llms-semantic.txt' ||
           (key.startsWith('components/') && key.endsWith('.md'))
         if (!isTarget) return next()
 

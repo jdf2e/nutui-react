@@ -11,6 +11,7 @@ import { fileURLToPath, pathToFileURL } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const META_PATH = path.join(ROOT, 'meta/components.json')
+const SEMANTIC_PATH = path.join(ROOT, 'meta/semantic.json')
 const OUTPUT_DIR = path.join(ROOT, 'meta')
 
 // 线上文档站基址：域名 + vite base。单组件 .md 路由由 site 插件产出到 <base>/components/<id>.md。
@@ -27,6 +28,16 @@ export function loadMeta() {
   return JSON.parse(fs.readFileSync(META_PATH, 'utf-8'))
 }
 
+// 尝试读 semantic.json（需先 npm run generate:semantic）。未生成时返回 null，
+// llms 产物据此跳过 semantic 入口/链接而非报错。直接读 JSON 避免与 build-semantic.mjs 循环依赖。
+function tryLoadSemantic() {
+  try {
+    return JSON.parse(fs.readFileSync(SEMANTIC_PATH, 'utf-8'))
+  } catch {
+    return null
+  }
+}
+
 // 仅纳入有中文文档的组件（= show:true 的展示组件），按 categories 的 nav 顺序输出。
 function docComponents(meta) {
   const list = []
@@ -41,6 +52,7 @@ function docComponents(meta) {
 
 export function generateLlmsTxt(meta) {
   const groups = docComponents(meta)
+  const semantic = tryLoadSemantic()
   const lines = []
   lines.push(`# NutUI React - 京东风格轻量级移动端 React 组件库`)
   lines.push('')
@@ -54,6 +66,10 @@ export function generateLlmsTxt(meta) {
   lines.push('')
   lines.push(`- [全部组件文档（中文，单文件）](${SITE_URL}/llms-full-cn.txt)`)
   lines.push(`- [Full Documentation (English, single file)](${SITE_URL}/llms-full.txt)`)
+  if (semantic) {
+    lines.push(`- [全部组件样式结构（中文，单文件）](${SITE_URL}/llms-semantic-cn.txt)`)
+    lines.push(`- [Component Style Structure (English, single file)](${SITE_URL}/llms-semantic.txt)`)
+  }
   lines.push('')
 
   for (const { category, comps } of groups) {
@@ -62,6 +78,24 @@ export function generateLlmsTxt(meta) {
     for (const c of comps) {
       const label = c.cName ? `${c.name} ${c.cName}` : c.name
       lines.push(`- [${label}](${SITE_URL}/components/${c.id}.md)`)
+    }
+    lines.push('')
+  }
+
+  // per-component 语义文档分区（仅当 semantic.json 已生成）。列出每个有语义数据的组件的 semantic.md 链接。
+  if (semantic) {
+    lines.push('## 样式结构 (Semantic)')
+    lines.push('')
+    lines.push(
+      '每个组件的 `semantic.md` 列出其渲染产物可用的 CSS class 与 CSS 变量，供自定义样式 / 主题覆盖时精确定位。'
+    )
+    lines.push('')
+    for (const { comps } of groups) {
+      for (const c of comps) {
+        if (!semantic.components[c.id]) continue
+        const label = c.cName ? `${c.name} ${c.cName}` : c.name
+        lines.push(`- [${label} Semantic](${SITE_URL}/components/${c.id}/semantic.md)`)
+      }
     }
     lines.push('')
   }
@@ -75,6 +109,8 @@ export function generateLlmsFull(meta, lang = 'h5') {
       ? '# NutUI React - Full Component Documentation'
       : '# NutUI React - 全部组件文档'
   const summary = lang === 'enUS' ? SUMMARY_EN : SUMMARY
+  const semantic = tryLoadSemantic()
+  const semanticHeading = lang === 'enUS' ? 'Semantic DOM' : '样式结构 (Semantic DOM)'
   const parts = [title, '', `> ${summary}`, '']
   for (const cat of meta.categories) {
     for (const id of cat.components) {
@@ -85,6 +121,10 @@ export function generateLlmsFull(meta, lang = 'h5') {
       if (!fs.existsSync(abs)) continue
       parts.push('---', '')
       parts.push(fs.readFileSync(abs, 'utf-8').trim())
+      // 组件语义文档链接（不内联正文，与 llms-full 的文档主体分离，同 Ant Design 组织方式）。
+      if (semantic && semantic.components[id]) {
+        parts.push('', `## ${semanticHeading}`, '', `${SITE_URL}/components/${id}/semantic.md`)
+      }
       parts.push('')
     }
   }
