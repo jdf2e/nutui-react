@@ -7,11 +7,9 @@ node_modules
 /dist
 /dist-demo
 /dist-site
-# meta 派生产物：均由 generate:meta / generate:llms 在构建时产出（build:site 前自动生成），不落库
-/meta/components.json
-/meta/llms.txt
-/meta/llms-full-cn.txt
-/meta/llms-full.txt
+# meta 派生产物：components.json 由 generate:meta 产出，各平台 llms 由 generate:llms 产出
+# （build:site / build:taro:site 前自动生成），整个目录均为构建产物，不落库
+/meta/
 /release
 /libs
 /jd/upload.js

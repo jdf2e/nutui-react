@@ -66,7 +66,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         }),
       },
       reactRefresh(),
-      llmsPlugin(),
+      llmsPlugin({ platform: 'h5' }),
     ],
     build: {
       outDir: './dist-site/h5',
