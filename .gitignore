@@ -7,7 +7,8 @@ node_modules
 /dist
 /dist-demo
 /dist-site
-# llms 派生产物（由 generate:llms / vite 插件在构建时产出），meta/components.json 仍提交
+# meta 派生产物：均由 generate:meta / generate:llms 在构建时产出（build:site 前自动生成），不落库
+/meta/components.json
 /meta/llms.txt
 /meta/llms-full-cn.txt
 /meta/llms-full.txt
