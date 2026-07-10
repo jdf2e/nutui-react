@@ -26,14 +26,14 @@ We provide several aggregated files to help AI tools access the NutUI-React (H5,
 
 Append the component id (lowercase) under the site's `components/` path with a `.md` suffix to fetch that component's plain-text documentation, without loading the full file:
 
-- [`https://nutui.jd.com/h5/react/4x/components/button.md`](https://nutui.jd.com/h5/react/4x/components/button.md)
-- [`https://nutui.jd.com/h5/react/4x/components/cell.md`](https://nutui.jd.com/h5/react/4x/components/cell.md)
+[`https://nutui.jd.com/h5/react/4x/components/button.md`](https://nutui.jd.com/h5/react/4x/components/button.md)
+[`https://nutui.jd.com/h5/react/4x/components/cell.md`](https://nutui.jd.com/h5/react/4x/components/cell.md)
 
 ### Semantic Documentation
 
 Each component has a semantic (style structure) description file:
 
-- [`https://nutui.jd.com/h5/react/4x/components/button/semantic.md`](https://nutui.jd.com/h5/react/4x/components/button/semantic.md)
+    [`https://nutui.jd.com/h5/react/4x/components/button/semantic.md`](https://nutui.jd.com/h5/react/4x/components/button/semantic.md)
 
 Semantic documentation includes:
 
@@ -48,5 +48,4 @@ Semantic documentation includes:
 | **Cursor** | Use the `@Docs` feature to add the LLMs.txt URL, or add the prompt to `.cursor/rules`. [Documentation](https://docs.cursor.com/context/@-symbols/@-docs) | `Read https://nutui.jd.com/h5/react/4x/llms-full.txt and understand NutUI-React components. Use this knowledge when writing code with NutUI-React.` |
 | **GitHub Copilot** | Reference the `llms.txt` URL in chat, or add `llms-full.txt` content to context. | `Read https://nutui.jd.com/h5/react/4x/llms-full.txt and understand NutUI-React components. Use this knowledge when writing code with NutUI-React.` |
 | **Claude / Claude Code** | Add to `CLAUDE.md` or use `/memory` to persist. [Documentation](https://docs.anthropic.com/en/docs/claude-code) | `Read https://nutui.jd.com/h5/react/4x/llms-full.txt and understand NutUI-React components. Use this knowledge when writing code with NutUI-React.` |
-| **Others** | Add the link to your knowledge base or docs source. | `Read https://nutui.jd.com/h5/react/4x/llms-full.txt and understand NutUI-React components. Use this knowledge when writing code with NutUI-React.` |
 | **Custom RAG / Agent** | Fetch `llms.txt` to parse navigation, then request each component's `.md` on demand to build an index. | `Read https://nutui.jd.com/h5/react/4x/llms.txt for navigation, then fetch each component's .md on demand.` |
