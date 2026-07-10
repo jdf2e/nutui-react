@@ -43,4 +43,26 @@ for (const path in modulesEnTaroDocs) {
     name
   });
 }
-export {routes, guideRoutes, guideEnRoutes, guideTaroRoutes, guideEnTaroRoutes}
+
+const aiTaroRoutes: any[] = []
+const modulesAiTaroDocs = import.meta.glob('/src/sites/sites-react/doc/docs/ai-taro/*.md');
+for (const path in modulesAiTaroDocs) {
+  if (path.includes('.en-US.md')) continue;
+  let name = (/docs\/ai-taro\/(.*).md/.exec(path) as any[])[1];
+  aiTaroRoutes.push({
+    path: `/zh-CN/ai/${name}`,
+    component: modulesAiTaroDocs[path],
+    name
+  });
+}
+const modulesAiEnTaroDocs = import.meta.glob('/src/sites/sites-react/doc/docs/ai-taro/*.en-US.md');
+for (const path in modulesAiEnTaroDocs) {
+  let name = (/docs\/ai-taro\/(.*).en-US.md/.exec(path) as any[])[1];
+  aiTaroRoutes.push({
+    path: `/en-US/ai/${name}`,
+    component: modulesAiEnTaroDocs[path],
+    name: `en-${name}`
+  });
+}
+
+export {routes, guideRoutes, guideEnRoutes, guideTaroRoutes, guideEnTaroRoutes, aiTaroRoutes}

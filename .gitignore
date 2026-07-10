@@ -67,3 +67,5 @@ pnpm-lock.*.yaml
 
 # Harmony CSS files
 src/packages/**/*.harmony.css
+
+.playwright-cli/
