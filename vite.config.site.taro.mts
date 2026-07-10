@@ -6,6 +6,8 @@ import { join, resolve } from 'path'
 import atImport from 'postcss-import'
 import rehypeHighlight from 'rehype-highlight'
 import config from './package.json'
+// @ts-ignore
+import llmsPlugin from './scripts/site/vite-plugin-llms.mjs'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
@@ -64,6 +66,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
         }),
       },
       reactRefresh(),
+      llmsPlugin({ platform: 'taro' }),
     ],
     build: {
       outDir: './dist-site/taro',
