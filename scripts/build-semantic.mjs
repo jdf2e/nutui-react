@@ -32,7 +32,9 @@ const SILENCE = [
 
 // 编译单个组件 scss，用 postcss 提取全部 .nut-* class 名（去 . 前缀）。失败返回 null。
 function extractClasses(scssPath) {
-  const entry = `@import '${VARIABLES_PATH}';\n@import '${scssPath}';`
+  // Sass @import 字符串里反斜杠是转义字符，Windows 路径需转 POSIX 正斜杠（各平台通用）。
+  const toPosix = (p) => p.replace(/\\/g, '/')
+  const entry = `@import '${toPosix(VARIABLES_PATH)}';\n@import '${toPosix(scssPath)}';`
   let css
   try {
     ;({ css } = sass.compileString(entry, {
