@@ -5,6 +5,7 @@ import { runInfo } from './commands/info.js'
 import { runDoc } from './commands/doc.js'
 import { runDemo } from './commands/demo.js'
 import { runToken } from './commands/token.js'
+import { runMcp } from './commands/mcp.js'
 import type { Lang, OutputFormat } from './types.js'
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -102,6 +103,18 @@ yargs(hideBin(process.argv))
         component: argv.component as string | undefined,
         format: argv.format as OutputFormat,
       })
+  )
+  .command(
+    'mcp',
+    '启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等调用',
+    (y) =>
+      y.option('lang', {
+        alias: 'l',
+        choices: ['zh', 'en'] as const,
+        default: 'zh' as Lang,
+        describe: '默认文档语言（工具未显式指定 lang 时生效）',
+      }),
+    (argv) => runMcp({ lang: argv.lang as Lang })
   )
   .demandCommand(1, '请指定一个命令。运行 nutui-react --help 查看用法。')
   .strict()

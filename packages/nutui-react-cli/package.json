@@ -41,6 +41,7 @@
     "release:beta": "bumpp --preid beta && pnpm publish --tag beta"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

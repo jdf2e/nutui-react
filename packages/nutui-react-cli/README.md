@@ -33,6 +33,7 @@ nutui-react info Button --format json
 | `nutui-react doc <Component> [--lang zh\|en]` | 查看组件完整文档，默认中文 |
 | `nutui-react demo <Component> [name]` | 省略 `name` 列出全部示例；指定 `name`（如 `demo1`）输出源码 |
 | `nutui-react token [Component]` | 查看 Design Token；省略组件名则列出全局 token |
+| `nutui-react mcp` | 启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等 IDE 调用 |
 
 全局选项：`--format, -f <text\|json>`（默认 `text`）、`--help, -h`、`--version, -v`。
 
@@ -46,6 +47,50 @@ nutui-react demo Button          # 列出示例
 nutui-react demo Button demo1    # 查看某个示例源码
 nutui-react token Button
 ```
+
+## MCP（IDE 集成）
+
+CLI 是「Agent 主动敲命令」，MCP 则把同一份能力注册成 IDE 原生工具，让 Claude Code / Cursor / VS Code / Codex 在对话中**按需自动调用**，无需拼命令行字符串。二者复用同一份离线 meta 快照，等于给同一个知识库套了两种调用协议。
+
+`nutui-react mcp` 启动一个 stdio MCP 服务，暴露 5 个只读工具与 2 个提示词：
+
+| 工具 | 说明 |
+| --- | --- |
+| `nutui_list` | 列出全部组件（可按分类筛选） |
+| `nutui_info` | 组件 Props 规格 |
+| `nutui_doc` | 组件完整文档（`lang: zh\|en`） |
+| `nutui_demo` | H5 示例列表 / 源码 |
+| `nutui_token` | Design Token（全局 / 组件级） |
+
+| 提示词 | 说明 |
+| --- | --- |
+| `nutui-expert` | 把 Agent 定位为 NutUI React 专家（先查后写） |
+| `nutui-page-generator` | 基于组件生成完整可运行页面 |
+
+### 客户端配置
+
+**Claude Code**（`.mcp.json` 或 `claude mcp add`）、**Cursor**（`.cursor/mcp.json`）、**VS Code**（`.vscode/mcp.json` 的 `servers` 字段）通用配置：
+
+```json
+{
+  "mcpServers": {
+    "nutui-react": {
+      "command": "npx",
+      "args": ["-y", "@nutui/nutui-react-cli", "mcp"]
+    }
+  }
+}
+```
+
+**Codex**（`~/.codex/config.toml`）：
+
+```toml
+[mcp_servers.nutui-react]
+command = "npx"
+args = ["-y", "@nutui/nutui-react-cli", "mcp"]
+```
+
+> `npx -y` 免全局安装即可拉起；也可全局安装后把 `command` 换成 `nutui-react`、`args` 换成 `["mcp"]`。
 
 ## 本地开发
 
