@@ -3,3 +3,4 @@ packages:
   - 'packages/nutui-auto-import'
   - 'packages/nutui-taro-demo'
   - 'packages/nutui-replace-icons'
+  - 'packages/nutui-react-cli'
