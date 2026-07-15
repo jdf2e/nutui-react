@@ -41,6 +41,13 @@ export const SiteReact = {
       eName: 'Components',
       path: '/zh-CN/component/button',
       pathName: '/zh-CN/component/button'
+    },
+    {
+      name: 'llms',
+      cName: 'AI',
+      eName: 'AI',
+      path: '/zh-CN/ai/llms',
+      pathName: 'llms'
     }
   ],
   language: 'react'
@@ -88,6 +95,13 @@ export const SiteReactTaro = {
       eName: 'Components',
       path: '/zh-CN/component/button',
       pathName: '/zh-CN/component/button'
+    },
+    {
+      name: 'llms',
+      cName: 'AI',
+      eName: 'AI',
+      path: '/zh-CN/ai/llms',
+      pathName: 'llms'
     }
   ],
   language: 'react'

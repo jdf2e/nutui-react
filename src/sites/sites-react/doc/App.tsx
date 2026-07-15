@@ -14,7 +14,7 @@ import Header from '../doc/components/header'
 import DemoPreview from '../doc/components/demo-preview'
 import Issue from '..//doc/components/issue'
 import { getComponentName } from '../../assets/util'
-import { routes as routers, guideEnRoutes, guideRoutes } from './router'
+import { routes as routers, guideEnRoutes, guideRoutes, aiRoutes } from './router'
 import loadable from '@loadable/component'
 import CodeBlock from './components/demoblock/codeblock'
 import { BackTop } from '../../../packages/backtop/backtop'
@@ -82,11 +82,12 @@ const Content = () => {
       setFixed(false)
     }
   }
-  const isGuide = location.pathname.includes('/guide')
+  const isGuide =
+    location.pathname.includes('/guide') || location.pathname.includes('/ai/')
   useEffect(() => {
     document.addEventListener('scroll', scrollTitle)
   }, [])
-  const routes = [...routers, ...guideRoutes, ...guideEnRoutes]
+  const routes = [...routers, ...guideRoutes, ...guideEnRoutes, ...aiRoutes]
   return (
     <div className="doc-content">
       {!isGuide && (

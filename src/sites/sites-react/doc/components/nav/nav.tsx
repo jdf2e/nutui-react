@@ -9,6 +9,7 @@ const Nav = () => {
   const [lang] = useLocale()
   const [fixed, setFixed] = useState(false)
   const [isGuide, setIsGuide] = useState(false)
+  const [isAi, setIsAi] = useState(false)
   const [activeName, setActiveName] = useState<string>('')
   const scrollNav = () => {
     let top = document.documentElement.scrollTop
@@ -31,6 +32,7 @@ const Nav = () => {
     } else {
       setIsGuide(false)
     }
+    setIsAi(location.pathname.includes('/ai/'))
     setActiveName(location.pathname.slice(location.pathname.lastIndexOf('/') + 1))
   }, [location])
   const changeNav = (_nav: any) => {
@@ -41,7 +43,22 @@ const Nav = () => {
   const isZh = lang === 'zh-CN'
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
-      {isGuide ? (
+      {isAi ? (
+        <ol>
+          <ul>
+            <li className={activeName === 'llms' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/llms`}
+              >
+                LLMs.txt
+              </NavLink>
+            </li>
+          </ul>
+        </ol>
+      ) : isGuide ? (
         <ol>
           <ul>
             {docs.packages.map((_package) => (
