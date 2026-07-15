@@ -92,6 +92,19 @@ args = ["-y", "@nutui/nutui-react-cli", "mcp"]
 
 > `npx -y` 免全局安装即可拉起；也可全局安装后把 `command` 换成 `nutui-react`、`args` 换成 `["mcp"]`。
 
+## CLI 内 Skill（教 Agent 何时用）
+
+CLI 内置一份 [Skill 文件](./skills/nutui-react/SKILL.md)（遵循 Anthropic Agent Skills 规范），随 npm 包一起分发。CLI / MCP 提供的是「能力」，Skill 则约束 Agent「**什么时候、按什么顺序**」用这些能力——例如「写组件前先 `nutui-react info` 查 Props、再 `nutui-react demo` 拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
+
+安装（skill 已随包 bundle，装好 CLI 后从本地路径装进当前项目）：
+
+```bash
+npm i -D @nutui/nutui-react-cli
+npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
+```
+
+兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 [skills](https://github.com/vercel-labs/skills) 协议的 Agent。安装后，Agent 在遇到 NutUI React 相关任务时会自动遵循「先查后写」的流程。
+
 ## 本地开发
 
 ```bash
