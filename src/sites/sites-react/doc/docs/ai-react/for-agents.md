@@ -10,6 +10,7 @@
 在编写任何 NutUI-React（@nutui/nutui-react）代码之前，请先阅读 https://nutui.jd.com/h5/react/4x/llms-full-cn.txt 理解组件的真实 API、用法与样式结构，不要凭记忆猜测 Prop 或枚举值。使用任何组件前先查文档，再写代码。
 
 如果你的环境支持 skills，请运行：
+npm i -D @nutui/nutui-react-cli
 npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 ```
 
