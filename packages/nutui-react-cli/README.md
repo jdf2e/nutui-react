@@ -13,8 +13,8 @@
 免安装（推荐）：
 
 ```bash
-npx @nutui/nutui-react-cli list
-npx @nutui/nutui-react-cli info Button
+npx -y @nutui/nutui-react-cli list
+npx -y @nutui/nutui-react-cli info Button
 ```
 
 或全局安装后用 `nutui-react` 命令：
