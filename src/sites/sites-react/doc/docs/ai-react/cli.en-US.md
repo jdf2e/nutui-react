@@ -4,7 +4,7 @@ This guide explains how to use `@nutui/nutui-react-cli` to query NutUI-React com
 
 ## What is the NutUI-React CLI?
 
-[`@nutui/nutui-react-cli`](https://github.com/jdf2e/nutui-react) is an **offline knowledge-query CLI for NutUI-React**, built for AI coding. It bundles component props, docs, demos, and Design Tokens with the package, so AI coding assistants (Claude Code / Cursor / Copilot, etc.) can _look up_ APIs instead of _guessing_ them — eliminating API hallucinations at the source.
+[@nutui/nutui-react-cli](https://www.npmjs.com/package/@nutui/nutui-react-cli) is an **offline knowledge-query CLI for NutUI-React**, built for AI coding. It bundles component props, docs, demos, and Design Tokens with the package, so AI coding assistants (Claude Code / Cursor / Copilot, etc.) can _look up_ APIs instead of _guessing_ them — eliminating API hallucinations at the source.
 
 ## Highlights
 

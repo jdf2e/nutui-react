@@ -4,7 +4,7 @@
 
 ## 什么是 NutUI-React CLI？
 
-[`@nutui/nutui-react-cli`](https://github.com/jdf2e/nutui-react) 是面向 AI Coding 的 **NutUI-React 离线知识查询 CLI**。它把组件的 Props、文档、示例与 Design Token 打包随包分发，让 AI 编程助手（Claude Code / Cursor / Copilot 等）从「猜 API」变成「查 API」，从根源消除 API 幻觉。
+[@nutui/nutui-react-cli](https://www.npmjs.com/package/@nutui/nutui-react-cli) 是面向 AI Coding 的 **NutUI-React 离线知识查询 CLI**。它把组件的 Props、文档、示例与 Design Token 打包随包分发，让 AI 编程助手（Claude Code / Cursor / Copilot 等）从「猜 API」变成「查 API」，从根源消除 API 幻觉。
 
 ## 亮点
 

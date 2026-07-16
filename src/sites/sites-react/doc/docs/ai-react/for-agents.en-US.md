@@ -18,7 +18,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 
 ### CLI — offline knowledge query
 
-[`@nutui/nutui-react-cli`](https://github.com/jdf2e/nutui-react) bundles component props, docs, demos, and Design Tokens with the package, so queries run locally in milliseconds — no network, no API key.
+[@nutui/nutui-react-cli](https://www.npmjs.com/package/@nutui/nutui-react-cli) bundles component props, docs, demos, and Design Tokens with the package, so queries run locally in milliseconds — no network, no API key.
 
 ```bash
 npx @nutui/nutui-react-cli info Button

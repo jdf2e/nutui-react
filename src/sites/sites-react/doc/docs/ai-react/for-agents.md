@@ -18,7 +18,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 
 ### CLI — 离线知识查询
 
-[`@nutui/nutui-react-cli`](https://github.com/jdf2e/nutui-react) 把组件的 Props、文档、示例与 Design Token 打包随包分发，安装后本地毫秒级查询，无需网络、无需 API Key。
+[@nutui/nutui-react-cli](https://www.npmjs.com/package/@nutui/nutui-react-cli) 把组件的 Props、文档、示例与 Design Token 打包随包分发，安装后本地毫秒级查询，无需网络、无需 API Key。
 
 ```bash
 npx @nutui/nutui-react-cli info Button
