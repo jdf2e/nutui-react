@@ -46,8 +46,8 @@ export const SiteReact = {
       name: 'llms',
       cName: 'AI',
       eName: 'AI',
-      path: '/zh-CN/ai/llms',
-      pathName: 'llms'
+      path: '/zh-CN/ai/for-agents',
+      pathName: 'for-agents'
     }
   ],
   language: 'react'
@@ -100,8 +100,8 @@ export const SiteReactTaro = {
       name: 'llms',
       cName: 'AI',
       eName: 'AI',
-      path: '/zh-CN/ai/llms',
-      pathName: 'llms'
+      path: '/zh-CN/ai/for-agents',
+      pathName: 'for-agents'
     }
   ],
   language: 'react'
