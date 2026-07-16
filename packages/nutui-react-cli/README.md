@@ -108,9 +108,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 ## 本地开发
 
 ```bash
-# 仓库根：确保 meta 最新
-npm run generate:meta
-# 本包：构建（prepare-data + tsup）
+# 本包：构建（build 会先自动 generate:meta 再 prepare-data + tsup）
 pnpm --dir packages/nutui-react-cli build
 # 本地试跑
 node packages/nutui-react-cli/dist/cli.js list
@@ -119,9 +117,7 @@ node packages/nutui-react-cli/dist/cli.js list
 ## 发布
 
 ```bash
-# 1. 仓库根：确保 meta 最新（读 src/config.json 等，幂等可重复）
-npm run generate:meta
-# 2. 发布 beta（bumpp 选版本 -> prepublishOnly 跑 build -> pnpm publish --tag beta）
+# 发布 beta（bumpp 选版本 -> prepublishOnly 跑 build -> pnpm publish --tag beta）
 pnpm --dir packages/nutui-react-cli release:beta
 # 或发布正式版
 pnpm --dir packages/nutui-react-cli release
