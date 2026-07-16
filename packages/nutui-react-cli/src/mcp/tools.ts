@@ -199,7 +199,7 @@ export function createToolHandler(ctx: McpContext) {
       case 'nutui_doc': {
         const comp = resolve(meta, params.component as string)
         if (isError(comp)) return toMcpResult(comp)
-        const lang = (params.lang as Lang) === 'en' ? 'en' : ctx.lang
+        const lang = (params.lang as Lang) ?? ctx.lang
         const content = readDoc(comp, lang)
         if (content === null) {
           return toMcpResult(

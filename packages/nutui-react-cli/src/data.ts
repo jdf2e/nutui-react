@@ -87,6 +87,10 @@ export function listDemos(component: Component): string[] {
 
 // 读取组件某个 demo 的源码。name 形如 demo1（也容忍带 .tsx）。缺失返回 null。
 export function readDemo(component: Component, name: string): string | null {
+  // 防御路径穿越：确保 name 中不包含路径分隔符
+  if (name.includes('/') || name.includes('\\')) {
+    return null
+  }
   const base = name.endsWith('.tsx') ? name : `${name}.tsx`
   const file = path.join(DATA_DIR, 'demos', component.id, base)
   return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null
