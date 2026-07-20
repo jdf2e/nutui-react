@@ -1,0 +1,55 @@
+{
+  "name": "@nutui/nutui-react-cli",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "NutUI React 面向 AI Coding 的离线知识查询 CLI：list / info / doc / demo / token。",
+  "keywords": [
+    "nutui",
+    "nutui-react",
+    "cli",
+    "ai-coding",
+    "llm",
+    "react component"
+  ],
+  "license": "MIT",
+  "author": "jdcfe",
+  "homepage": "https://github.com/jdf2e/nutui-react.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdf2e/nutui-react.git"
+  },
+  "bin": {
+    "nutui-react": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "data",
+    "skills"
+  ],
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare-data": "node scripts/prepare-data.mjs",
+    "build": "node scripts/prepare-data.mjs && tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp && pnpm publish",
+    "release:beta": "bumpp --preid beta && pnpm publish --tag beta"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/yargs": "^17.0.33",
+    "bumpp": "^9.5.2",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  }
+}

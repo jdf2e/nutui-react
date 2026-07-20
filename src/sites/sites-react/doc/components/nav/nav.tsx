@@ -46,6 +46,36 @@ const Nav = () => {
       {isAi ? (
         <ol>
           <ul>
+            <li className={activeName === 'for-agents' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/for-agents`}
+              >
+                For Agents
+              </NavLink>
+            </li>
+            <li className={activeName === 'cli' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/cli`}
+              >
+                CLI
+              </NavLink>
+            </li>
+            <li className={activeName === 'mcp' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/mcp`}
+              >
+                MCP Server
+              </NavLink>
+            </li>
             <li className={activeName === 'llms' ? 'active' : ''}>
               <NavLink
                 className={({ isActive, isPending }) =>
