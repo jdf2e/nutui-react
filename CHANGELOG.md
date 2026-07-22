@@ -1,3 +1,11 @@
+# v4.0.0-beta.5
+
+`2026-07-21`
+
+- :sparkles: feature: MCP Server + Skill (#3497)
+- :sparkles: feat: 新增组件样式结构(Semantic)文档,完善面向 AI Coding 的站点接入 (#3496)
+- :sparkles: feat: 新增面向 AI Coding 的 LLMs 文档生成 (#3495)
+
 # v4.0.0-beta.4
 
 `2026-06-18`
