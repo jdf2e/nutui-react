@@ -1,22 +1,25 @@
-// nutui-react token [Component] —— 输出 Design Token。无参列全局 token，有参列组件 token。
+// token [Component] —— 输出 Design Token。无参列全局 token，有参列组件 token。
 import { loadMeta } from '../data.js'
 import { output, renderTable } from '../format.js'
 import { resolveOrExit } from './_shared.js'
+import type { CliConfig } from '../config.js'
 import type { OutputFormat, Token } from '../types.js'
 
 export interface TokenArgs {
+  config: CliConfig
   component?: string
   format: OutputFormat
 }
 
 export function runToken(args: TokenArgs): void {
-  const meta = loadMeta()
+  const { config } = args
+  const meta = loadMeta(config.dataDir)
 
   // 无参：全局 token。
   if (!args.component) {
     output(args.format, { scope: 'global', tokens: meta.globalTokens }, () =>
       renderTokenText(
-        `NutUI React 全局 Design Token（${meta.globalTokens.length} 个）`,
+        `${config.libLabel}全局 Design Token（${meta.globalTokens.length} 个）`,
         meta.globalTokens
       )
     )
@@ -24,11 +27,11 @@ export function runToken(args: TokenArgs): void {
   }
 
   // 有参：组件 token。
-  const comp = resolveOrExit(meta, args.component)
+  const comp = resolveOrExit(config, meta, args.component)
   const tokens = comp.tokens ?? []
   output(args.format, { scope: comp.id, name: comp.name, tokens }, () => {
     if (!tokens.length) {
-      return `${comp.name} ${comp.cName} 无专属 Design Token（可运行 nutui-react token 查看全局 token）。`
+      return `${comp.name} ${comp.cName} 无专属 Design Token（可运行 ${config.binName} token 查看全局 token）。`
     }
     return renderTokenText(
       `${comp.name} ${comp.cName} 的 Design Token（${tokens.length} 个）`,

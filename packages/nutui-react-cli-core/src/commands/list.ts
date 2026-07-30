@@ -1,15 +1,17 @@
-// nutui-react list —— 按分类列出组件。
+// list —— 按分类列出组件。
 import { loadMeta } from '../data.js'
 import { output, renderTable } from '../format.js'
+import type { CliConfig } from '../config.js'
 import type { OutputFormat } from '../types.js'
 
 export interface ListArgs {
+  config: CliConfig
   category?: string
   format: OutputFormat
 }
 
 export function runList(args: ListArgs): void {
-  const meta = loadMeta()
+  const meta = loadMeta(args.config.dataDir)
   let categories = meta.categories
   if (args.category) {
     const key = args.category.toLowerCase()
@@ -50,7 +52,7 @@ export function runList(args: ListArgs): void {
         `▍${cat.name} (${cat.enName})\n${renderTable(['组件', '中文名', '版本'], rows)}`
       )
     }
-    const header = `NutUI React（H5）共 ${meta.componentCount} 个组件，版本 ${meta.libVersion}`
+    const header = `${args.config.libLabel}共 ${meta.componentCount} 个组件，版本 ${meta.libVersion}`
     return `${header}\n\n${blocks.join('\n\n')}\n\n合计：${total} 个`
   })
 }

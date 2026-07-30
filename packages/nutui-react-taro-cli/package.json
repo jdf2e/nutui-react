@@ -1,11 +1,13 @@
 {
-  "name": "@nutui/nutui-react-cli",
-  "version": "0.1.1",
+  "name": "@nutui/nutui-react-taro-cli",
+  "version": "0.1.0",
   "type": "module",
-  "description": "NutUI React 面向 AI Coding 的离线知识查询 CLI：list / info / doc / demo / token。",
+  "description": "NutUI React Taro 面向 AI Coding 的离线知识查询 CLI：list / info / doc / demo / token。",
   "keywords": [
     "nutui",
     "nutui-react",
+    "nutui-react-taro",
+    "taro",
     "cli",
     "ai-coding",
     "llm",
@@ -19,7 +21,7 @@
     "url": "https://github.com/jdf2e/nutui-react.git"
   },
   "bin": {
-    "nutui-react": "./dist/cli.js"
+    "nutui-react-taro": "./dist/cli.js"
   },
   "files": [
     "dist",

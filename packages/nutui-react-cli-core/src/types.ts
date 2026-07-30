@@ -1,4 +1,6 @@
-// meta/components.json 的结构类型（React/H5 视角）。schema 见仓库 scripts/build-meta.mjs。
+// meta/components.json 的结构类型。schema 见仓库 scripts/build-meta.mjs。
+// 注：随包 data 快照里，prepare-data 已把平台对应的 api 归一到 `api` 字段，
+// 运行时代码只读 `api`，不感知 apiTaro。apiTaro 仅出现在仓库根 meta，类型此处保留以备。
 
 export interface Token {
   cssVar: string
@@ -47,6 +49,7 @@ export interface Component {
   docs: DocRefs
   demos: { h5: string[]; taro: string[] }
   api: { tables: ApiTable[] }
+  apiTaro?: { tables: ApiTable[] }
   tokens: Token[]
 }
 
@@ -66,11 +69,7 @@ export interface Meta {
   components: Record<string, Component>
 }
 
-// CLI 语言维度 -> meta.docs 的 key。React 端只支持 zh / en。
-export type Lang = 'zh' | 'en'
-export const LANG_TO_DOC_KEY: Record<Lang, 'h5' | 'enUS'> = {
-  zh: 'h5',
-  en: 'enUS',
-}
+// 文档语言维度。具体支持哪些由各包 CliConfig.langs 决定（H5: zh/en；Taro: zh）。
+export type Lang = string
 
 export type OutputFormat = 'text' | 'json'
