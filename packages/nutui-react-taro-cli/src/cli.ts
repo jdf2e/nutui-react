@@ -1,4 +1,4 @@
-// @nutui/nutui-react-cli（H5）薄入口：构造 H5 CliConfig，委托 core 的 runCli。
+// @nutui/nutui-react-taro-cli（Taro）薄入口：构造 Taro CliConfig，委托 core 的 runCli。
 import { hideBin } from 'yargs/helpers'
 import { fileURLToPath } from 'node:url'
 import { runCli, type CliConfig } from '@nutui/nutui-react-cli-core'
@@ -10,17 +10,18 @@ declare const __CLI_VERSION__: string
 const dataDir = fileURLToPath(new URL('../data/', import.meta.url))
 
 const config: CliConfig = {
-  binName: 'nutui-react',
-  cliPkgName: '@nutui/nutui-react-cli',
-  platform: 'h5',
-  libLabel: 'NutUI React（H5）',
-  demoLabel: 'H5',
+  binName: 'nutui-react-taro',
+  cliPkgName: '@nutui/nutui-react-taro-cli',
+  platform: 'taro',
+  libLabel: 'NutUI React（Taro 多端）',
+  demoLabel: 'Taro',
   version: __CLI_VERSION__,
   dataDir,
-  langs: ['zh', 'en'],
+  // Taro 端暂无英文组件文档，仅提供中文。
+  langs: ['zh'],
   defaultLang: 'zh',
   langLabel: { zh: '中文', en: '英文' },
-  mcp: { serverName: 'nutui-react', toolPrefix: 'nutui_' },
+  mcp: { serverName: 'nutui-react-taro', toolPrefix: 'nutui_' },
 }
 
 runCli(config, hideBin(process.argv))

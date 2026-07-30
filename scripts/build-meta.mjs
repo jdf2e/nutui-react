@@ -10,6 +10,7 @@ const ROOT = path.resolve(__dirname, '..')
 
 const CONFIG_PATH = path.join(ROOT, 'src/config.json')
 const PROPERTIES_PATH = path.join(ROOT, 'scripts/properties.json')
+const PROPERTIES_TARO_PATH = path.join(ROOT, 'scripts/properties-taro.json')
 const VARIABLES_PATH = path.join(ROOT, 'src/styles/variables.scss')
 const PACKAGES_DIR = path.join(ROOT, 'src/packages')
 const SPEC_DIR = path.join(ROOT, 'src/types/spec')
@@ -66,7 +67,7 @@ const resolveApiId = (rawComponentName, validIds) => {
 }
 
 // ---- A. properties.json → bucket[id] = { normKey -> table } ----
-function buildApiBucket(properties, validIds) {
+function buildApiBucket(properties, validIds, orphanLabel = 'orphan-api') {
   const bucket = {}
   const orphan = new Set()
 
@@ -108,7 +109,7 @@ function buildApiBucket(properties, validIds) {
 
   if (orphan.size) {
     warn(
-      `[orphan-api] ${orphan.size} 个 properties 组件名无法匹配 config，未注入：${[...orphan].join('，')}`
+      `[${orphanLabel}] ${orphan.size} 个 properties 组件名无法匹配 config，未注入：${[...orphan].join('，')}`
     )
   }
   return bucket
@@ -206,6 +207,15 @@ function main() {
   console.log('🚀 building meta/components.json ...')
   const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'))
   const properties = JSON.parse(fs.readFileSync(PROPERTIES_PATH, 'utf-8'))
+  // taro 端 Props（源自 doc.taro.md）。为可选产物：缺失时 apiTaro 落空表并告警，不中断。
+  let propertiesTaro = null
+  if (fs.existsSync(PROPERTIES_TARO_PATH)) {
+    propertiesTaro = JSON.parse(fs.readFileSync(PROPERTIES_TARO_PATH, 'utf-8'))
+  } else {
+    warn(
+      `[props-taro-missing] 未找到 ${path.relative(ROOT, PROPERTIES_TARO_PATH)}，apiTaro 全部为空。请运行：npm run generate:props:taro`
+    )
+  }
   const pkg = JSON.parse(fs.readFileSync(PKG_JSON_PATH, 'utf-8'))
 
   // config.nav → 主索引
@@ -221,18 +231,24 @@ function main() {
   const validIdsSorted = [...validIds].sort((a, b) => b.length - a.length)
 
   const bucket = buildApiBucket(properties, validIds)
+  const bucketTaro = propertiesTaro
+    ? buildApiBucket(propertiesTaro, validIds, 'orphan-api-taro')
+    : {}
   const { perComponent: tokensByComp, globalTokens } = parseTokens(validIdsSorted)
 
   const components = {}
   const categories = []
   const noApiIds = []
+  const noApiTaroIds = []
 
   for (const cat of config.nav) {
     const catRef = { name: cat.name, enName: cat.enName, components: [] }
     for (const p of cat.packages) {
       const id = toDirId(p.name)
       const api = bucketToApi(id, bucket[id])
+      const apiTaro = bucketToApi(id, bucketTaro[id])
       if (!api.tables.length) noApiIds.push(id)
+      if (!apiTaro.tables.length) noApiTaroIds.push(id)
 
       const entry = {
         id,
@@ -253,6 +269,7 @@ function main() {
       const spec = resolveSpec(id)
       if (spec) entry.spec = spec
       entry.api = api
+      entry.apiTaro = apiTaro
       entry.tokens = tokensByComp[id] || []
 
       if (p.show && !entry.demos.h5.length && !entry.demos.taro.length) {
@@ -268,12 +285,14 @@ function main() {
 
   const componentCount = Object.keys(components).length
   const apiComponentCount = componentCount - noApiIds.length
+  const apiTaroComponentCount = componentCount - noApiTaroIds.length
 
   const output = {
     schemaVersion: SCHEMA_VERSION,
     libVersion: pkg.version,
     componentCount,
     apiComponentCount,
+    apiTaroComponentCount,
     categories,
     globalTokens,
     components,
@@ -284,10 +303,10 @@ function main() {
 
   // ---- 对账 & 汇总 ----
   console.log(`✅ 写入 ${path.relative(ROOT, OUTPUT_PATH)}`)
-  console.log(`   组件总数: ${componentCount}，有 API 表: ${apiComponentCount}`)
+  console.log(`   组件总数: ${componentCount}，有 API 表(H5): ${apiComponentCount}，有 API 表(taro): ${apiTaroComponentCount}`)
   console.log(`   全局 token: ${globalTokens.length}`)
   if (noApiIds.length) {
-    console.log(`   无 API 表的组件 (${noApiIds.length}): ${noApiIds.join(', ')}`)
+    console.log(`   无 API 表(H5)的组件 (${noApiIds.length}): ${noApiIds.join(', ')}`)
   }
   if (warnings.length) {
     console.log(`\n⚠️  ${warnings.length} 条 WARNING：`)

@@ -1,17 +1,19 @@
-// nutui-react info <Component> —— 输出组件 Props 表。
+// info <Component> —— 输出组件 Props 表。
 import { loadMeta } from '../data.js'
 import { output, renderTable } from '../format.js'
 import { resolveOrExit } from './_shared.js'
+import type { CliConfig } from '../config.js'
 import type { OutputFormat } from '../types.js'
 
 export interface InfoArgs {
+  config: CliConfig
   component: string
   format: OutputFormat
 }
 
 export function runInfo(args: InfoArgs): void {
-  const meta = loadMeta()
-  const comp = resolveOrExit(meta, args.component)
+  const meta = loadMeta(args.config.dataDir)
+  const comp = resolveOrExit(args.config, meta, args.component)
   const tables = comp.api?.tables ?? []
   const propTables = tables.filter((t) => t.kind === 'props')
 

@@ -1,18 +1,14 @@
-// 定位随包发布的 data/ 快照，加载 meta 与 doc/demo 文件。
+// 数据查询原语。DATA_DIR 由各叶子包通过 CliConfig.dataDir 注入（各包用 import.meta.url
+// 相对定位自己的随包 data/ 快照），core 不再自行用 import.meta.url 定位。
 import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import type { Component, Lang, Meta } from './types.js'
-import { LANG_TO_DOC_KEY } from './types.js'
-
-// dist/cli.js 运行时，data/ 与 dist/ 同级（见 package.json files: [dist, data]）。
-const DATA_DIR = fileURLToPath(new URL('../data/', import.meta.url))
 
 let cachedMeta: Meta | null = null
 
-export function loadMeta(): Meta {
+export function loadMeta(dataDir: string): Meta {
   if (cachedMeta) return cachedMeta
-  const metaPath = path.join(DATA_DIR, 'meta.json')
+  const metaPath = path.join(dataDir, 'meta.json')
   if (!fs.existsSync(metaPath)) {
     throw new Error(
       `未找到打包数据 ${metaPath}。若为源码开发，请先运行 pnpm run build（或 pnpm run prepare-data）。`
@@ -63,16 +59,20 @@ export function suggestComponents(
     .map((x) => x.name)
 }
 
-// 读取组件某语言的文档原文。缺失返回 null。
-export function readDoc(component: Component, lang: Lang): string | null {
-  const key = LANG_TO_DOC_KEY[lang]
-  const file = path.join(DATA_DIR, 'docs', component.id, `${key}.md`)
+// 读取组件某语言的文档原文。快照期 prepare-data 已按 <lang>.md 落盘（zh.md / en.md），
+// 故此处直接以 lang 寻址，无需 key 映射。缺失（如 Taro 无英文）返回 null。
+export function readDoc(
+  dataDir: string,
+  component: Component,
+  lang: Lang
+): string | null {
+  const file = path.join(dataDir, 'docs', component.id, `${lang}.md`)
   return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null
 }
 
-// 列出组件的全部 H5 demo 文件名（不含扩展名，如 demo1），按序号排序。
-export function listDemos(component: Component): string[] {
-  const dir = path.join(DATA_DIR, 'demos', component.id)
+// 列出组件的全部 demo 文件名（不含扩展名，如 demo1），按序号排序。
+export function listDemos(dataDir: string, component: Component): string[] {
+  const dir = path.join(dataDir, 'demos', component.id)
   if (!fs.existsSync(dir)) return []
   return fs
     .readdirSync(dir)
@@ -86,12 +86,16 @@ export function listDemos(component: Component): string[] {
 }
 
 // 读取组件某个 demo 的源码。name 形如 demo1（也容忍带 .tsx）。缺失返回 null。
-export function readDemo(component: Component, name: string): string | null {
+export function readDemo(
+  dataDir: string,
+  component: Component,
+  name: string
+): string | null {
   // 防御路径穿越：确保 name 中不包含路径分隔符
   if (name.includes('/') || name.includes('\\')) {
     return null
   }
   const base = name.endsWith('.tsx') ? name : `${name}.tsx`
-  const file = path.join(DATA_DIR, 'demos', component.id, base)
+  const file = path.join(dataDir, 'demos', component.id, base)
   return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null
 }
