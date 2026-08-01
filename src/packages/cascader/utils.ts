@@ -13,10 +13,10 @@ export const normalizeOptions = (
       ...others
     } = opt
     return {
+      ...others,
       text,
       value,
       children: normalizeOptions(children, keyMap),
-      ...others,
     } as CascaderOption
   })
 }
