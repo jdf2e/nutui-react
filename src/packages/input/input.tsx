@@ -25,6 +25,7 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
+  description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
@@ -52,6 +53,7 @@ export const Input = forwardRef(
       maxLength,
       clearable,
       clearIcon,
+      description,
       formatTrigger,
       autoFocus,
       style,
@@ -158,46 +160,55 @@ export const Input = forwardRef(
         style={style}
         onClick={onClick}
       >
-        <input
-          {...rest}
-          ref={inputRef}
-          name={name}
-          className="nut-input-native"
-          style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
-          type={getInputType(type)}
-          maxLength={maxLength}
-          placeholder={
-            placeholder === undefined ? locale.placeholder : placeholder
-          }
-          disabled={disabled}
-          readOnly={readOnly}
-          value={value}
-          autoFocus={autoFocus}
-          enterKeyHint={confirmType}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleInputChange}
-          onCompositionStart={(e) => {
-            composingRef.current = true
-            onCompositionStart?.(e)
-          }}
-          onCompositionEnd={(e) => {
-            composingRef.current = false
-            onCompositionEnd?.(e)
-          }}
-        />
-        {clearable && !readOnly && active && value.length > 0 && (
-          <span
-            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
-            onClick={() => {
-              if (!disabled) {
-                setValue('')
-                onClear?.('')
-              }
+        <div className="nut-input-main">
+          <input
+            {...rest}
+            ref={inputRef}
+            name={name}
+            className="nut-input-native"
+            style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
+            type={getInputType(type)}
+            maxLength={maxLength}
+            placeholder={
+              placeholder === undefined ? locale.placeholder : placeholder
+            }
+            disabled={disabled}
+            readOnly={readOnly}
+            value={value}
+            autoFocus={autoFocus}
+            enterKeyHint={confirmType}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            onChange={handleInputChange}
+            onCompositionStart={(e) => {
+              composingRef.current = true
+              onCompositionStart?.(e)
             }}
-          >
-            {clearIcon || <MaskClose className="nut-input-clear" />}
-          </span>
+            onCompositionEnd={(e) => {
+              composingRef.current = false
+              onCompositionEnd?.(e)
+            }}
+          />
+          {clearable && !readOnly && active && value.length > 0 && (
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+              onClick={() => {
+                if (!disabled) {
+                  setValue('')
+                  onClear?.('')
+                }
+              }}
+            >
+              {clearIcon || <MaskClose className="nut-input-clear" />}
+            </span>
+          )}
+        </div>
+        {description !== null && description !== undefined && (
+          <div className="nut-input-description">{description}</div>
         )}
       </div>
     )

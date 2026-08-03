@@ -41,6 +41,7 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
+  description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
@@ -62,6 +63,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     maxLength,
     clearable,
     clearIcon,
+    description,
     formatTrigger,
     autoFocus,
     style,
@@ -196,46 +198,51 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         onClick && onClick(e)
       }}
     >
-      <TaroInput
-        {...rest}
-        name={name}
-        className="nut-input-native"
-        ref={inputRef}
-        style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
-        type={inputType(type) as any}
-        password={type === 'password'}
-        maxlength={maxLength}
-        placeholder={
-          placeholder === undefined ? locale.placeholder : placeholder
-        }
-        placeholderClass={`${classPrefix}-placeholder`}
-        disabled={disabled}
-        value={value}
-        focus={autoFocus || focus}
-        confirmType={confirmType}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        onInput={handleInput}
-      />
-      <View
-        style={{
-          display:
-            clearable && !readOnly && active && value.length > 0
-              ? 'flex'
-              : 'none',
-          alignItems: 'center',
-          cursor: 'pointer',
-        }}
-        onClick={(e) => {
-          e.stopPropagation()
-          if (!disabled) {
-            setValue('')
-            onClear?.('')
+      <View className="nut-input-main">
+        <TaroInput
+          {...rest}
+          name={name}
+          className="nut-input-native"
+          ref={inputRef}
+          style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
+          type={inputType(type) as any}
+          password={type === 'password'}
+          maxlength={maxLength}
+          placeholder={
+            placeholder === undefined ? locale.placeholder : placeholder
           }
-        }}
-      >
-        {clearIcon || <MaskClose className="nut-input-clear" />}
+          placeholderClass={`${classPrefix}-placeholder`}
+          disabled={disabled}
+          value={value}
+          focus={autoFocus || focus}
+          confirmType={confirmType}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          onInput={handleInput}
+        />
+        <View
+          style={{
+            display:
+              clearable && !readOnly && active && value.length > 0
+                ? 'flex'
+                : 'none',
+            alignItems: 'center',
+            cursor: 'pointer',
+          }}
+          onClick={(e) => {
+            e.stopPropagation()
+            if (!disabled) {
+              setValue('')
+              onClear?.('')
+            }
+          }}
+        >
+          {clearIcon || <MaskClose className="nut-input-clear" />}
+        </View>
       </View>
+      {description !== null && description !== undefined && (
+        <View className="nut-input-description">{description}</View>
+      )}
     </View>
   )
 })

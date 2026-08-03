@@ -5,8 +5,10 @@ import { BaseProps } from '../../base/props'
 export type InputFormatTrigger = 'onChange' | 'onBlur'
 export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
 
-export interface BaseInput<INPUT_TYPE, CONFIRM_TYPE = InputConfirmType>
-  extends BaseProps {
+export interface BaseInput<
+  INPUT_TYPE,
+  CONFIRM_TYPE = InputConfirmType,
+> extends BaseProps {
   type: INPUT_TYPE
   name: string
   defaultValue?: string
@@ -18,6 +20,7 @@ export interface BaseInput<INPUT_TYPE, CONFIRM_TYPE = InputConfirmType>
   maxLength: number
   clearable: boolean
   clearIcon: ReactNode
+  description?: ReactNode
   formatTrigger: InputFormatTrigger
   autoFocus: boolean
   confirmType: CONFIRM_TYPE

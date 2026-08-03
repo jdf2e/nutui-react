@@ -18,11 +18,13 @@ import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
+import Demo15 from './demos/taro/demo15'
 
 const InputDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      description: '辅助说明',
       uncontrolled: '非受控',
       controlled: '受控',
       title1: '自定义类型',
@@ -58,6 +60,7 @@ const InputDemo = () => {
     },
     'en-US': {
       basic: 'Basic usage',
+      description: 'Description',
       uncontrolled: 'uncontrolled',
       controlled: 'Controlled',
       title1: 'Custom Type',
@@ -128,6 +131,8 @@ const InputDemo = () => {
         <Demo13 />
         <View className="h2">{translated.border}</View>
         <Demo14 />
+        <View className="h2">{translated.description}</View>
+        <Demo15 />
       </ScrollView>
     </>
   )

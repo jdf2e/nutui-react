@@ -1,12 +1,30 @@
 .nut-input {
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   flex: 1;
-  align-items: center;
+  align-items: stretch;
   font-size: $input-font-size;
   box-sizing: border-box;
+
+  &-main {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &-description {
+    margin-top: 4px;
+    color: $color-text-help;
+    font-family: $font-family;
+    font-size: $font-size-s;
+    font-weight: $font-weight;
+  }
 
   .nut-input-native .weui-input::placeholder,
   &-placeholder {
@@ -20,7 +38,7 @@
     height: 14px;
     font-size: $font-size-base;
   }
-  &-container {
+  &-container &-main {
     height: 38px;
     padding: $input-padding;
     background-color: $input-background-color;

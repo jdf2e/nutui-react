@@ -16,11 +16,13 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
 
 const InputDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      description: '辅助说明',
       uncontrolled: '非受控',
       controlled: '受控',
       title1: '自定义类型',
@@ -37,6 +39,7 @@ const InputDemo = () => {
     },
     'en-US': {
       basic: 'Basic usage',
+      description: 'Description',
       uncontrolled: 'uncontrolled',
       controlled: 'Controlled',
       title1: 'Custom Type',
@@ -84,6 +87,8 @@ const InputDemo = () => {
         <Demo13 />
         <h2>{translated.border}</h2>
         <Demo14 />
+        <h2>{translated.description}</h2>
+        <Demo15 />
       </div>
     </>
   )

@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Input from '@/packages/input'
@@ -121,6 +123,37 @@ test('clearable and clear event test', () => {
       ''
     )
   }, 300)
+})
+
+test('renders optional description', () => {
+  const { container, rerender } = render(
+    <Input description="可添加描述性的辅助说明信息" />
+  )
+
+  const description = container.querySelector('.nut-input-description')
+
+  expect(description).toHaveTextContent('可添加描述性的辅助说明信息')
+
+  rerender(<Input />)
+  expect(
+    container.querySelector('.nut-input-description')
+  ).not.toBeInTheDocument()
+})
+
+test('applies description typography, color and spacing styles', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const descriptionStyles = inputStyles.match(
+    /&-description\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(descriptionStyles).toContain('margin-top: 4px')
+  expect(descriptionStyles).toContain('color: $color-text-help')
+  expect(descriptionStyles).toContain('font-family: $font-family')
+  expect(descriptionStyles).toContain('font-size: $font-size-s')
+  expect(descriptionStyles).toContain('font-weight: $font-weight')
 })
 
 test('disabled test', () => {
