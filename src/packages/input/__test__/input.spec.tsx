@@ -226,6 +226,61 @@ test('applies primary caret color to native inputs', () => {
   expect(taroNativeStyles).toContain('caret-color: $color-primary')
 })
 
+test('applies help text color to placeholders', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const placeholderStyles = inputStyles.match(
+    /&-native::placeholder,\s*&-native \.weui-input::placeholder,\s*&-placeholder\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(placeholderStyles).toContain('color: $color-text-help')
+})
+
+test('applies title color to jmapp input content', () => {
+  const inputVariables = readFileSync(
+    resolve(process.cwd(), 'src/styles/variables-jmapp.scss'),
+    'utf8'
+  )
+  const inputColor = inputVariables.match(/\$input-color:[^;]+;/)?.[0]
+
+  expect(inputColor).toContain('$color-title')
+})
+
+test('applies scalable height variable to plain native inputs', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const plainHeightStyles = inputStyles.match(
+    /&-plain &-main,\s*&-plain &-native,\s*&-plain &-native \.weui-input\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(plainHeightStyles).toContain('height: $input-plain-height')
+
+  const variableFiles = [
+    'variables.scss',
+    'variables-jmapp.scss',
+    'variables-jrkf.scss',
+    'variables-daojia.scss',
+  ]
+
+  variableFiles.forEach((file) => {
+    const variables = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf8'
+    )
+    const plainHeight = variables.match(
+      /\$input-plain-height:[\s\S]*?\) !default;/
+    )?.[0]
+
+    expect(plainHeight).toContain('--nutui-input-plain-height')
+    expect(plainHeight).toContain('$input-font-size')
+    expect(plainHeight).not.toContain('--nut-scale-font')
+  })
+})
+
 test('disabled test', () => {
   const { container } = render(<Input placeholder="文本" disabled />)
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(

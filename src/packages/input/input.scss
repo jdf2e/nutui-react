@@ -39,9 +39,16 @@
     margin-right: 12px;
   }
 
-  .nut-input-native .weui-input::placeholder,
+  &-plain &-main,
+  &-plain &-native,
+  &-plain &-native .weui-input {
+    height: $input-plain-height;
+  }
+
+  &-native::placeholder,
+  &-native .weui-input::placeholder,
   &-placeholder {
-    color: rgb(117, 117, 117);
+    color: $color-text-help;
     font-size: $input-font-size;
   }
 
