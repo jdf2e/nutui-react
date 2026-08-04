@@ -20,6 +20,7 @@ export interface BaseInput<
   maxLength: number
   clearable: boolean
   clearIcon: ReactNode
+  rightIcon?: ReactNode
   description?: ReactNode
   formatTrigger: InputFormatTrigger
   autoFocus: boolean

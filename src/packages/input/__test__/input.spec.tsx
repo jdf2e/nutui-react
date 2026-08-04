@@ -156,6 +156,60 @@ test('applies description typography, color and spacing styles', () => {
   expect(descriptionStyles).toContain('font-weight: $font-weight')
 })
 
+test('right icon takes precedence over clear button', () => {
+  const { container, getByTestId } = render(
+    <Input
+      defaultValue="京东多快好省"
+      clearable
+      rightIcon={<span data-testid="right-icon">辅助功能</span>}
+    />
+  )
+  const input = container.querySelector('.nut-input-native') as HTMLElement
+
+  fireEvent.focus(input)
+
+  expect(getByTestId('right-icon')).toBeInTheDocument()
+  expect(container.querySelector('.nut-input-clear')).not.toBeInTheDocument()
+})
+
+test('applies right action spacing and text ellipsis styles', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const actionStyles = inputStyles.match(/&-action\s*\{([^}]*)\}/)?.[1]
+  const plainActionStyles = inputStyles.match(
+    /&-plain &-action\s*\{([^}]*)\}/
+  )?.[1]
+  const nativeStyles = inputStyles.match(
+    /\.nut-input-native\s*\{([^}]*)\}/
+  )?.[1]
+  const iconStyles = inputStyles.match(/\.nut-icon\s*\{([^}]*)\}/)?.[1]
+
+  expect(actionStyles).toContain('margin-left: 4px')
+  expect(plainActionStyles).toContain('margin-right: 12px')
+  expect(iconStyles).toContain('width: 14px')
+  expect(iconStyles).toContain('height: 14px')
+  expect(nativeStyles).toContain('min-width: 0')
+  expect(nativeStyles).toContain('overflow: hidden')
+  expect(nativeStyles).toContain('text-overflow: ellipsis')
+  expect(nativeStyles).toContain('white-space: nowrap')
+})
+
+test('applies text ellipsis styles to Taro H5 native input', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const taroNativeStyles = inputStyles.match(
+    /\.nut-input-native\s*\{[^}]*\.weui-input\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(taroNativeStyles).toContain('overflow: hidden')
+  expect(taroNativeStyles).toContain('text-overflow: ellipsis')
+  expect(taroNativeStyles).toContain('white-space: nowrap')
+})
+
 test('disabled test', () => {
   const { container } = render(<Input placeholder="文本" disabled />)
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(

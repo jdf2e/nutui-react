@@ -41,6 +41,7 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
+  rightIcon: null,
   description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
@@ -63,6 +64,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     maxLength,
     clearable,
     clearIcon,
+    rightIcon,
     description,
     formatTrigger,
     autoFocus,
@@ -220,25 +222,27 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
           onFocus={handleFocus}
           onInput={handleInput}
         />
-        <View
-          style={{
-            display:
-              clearable && !readOnly && active && value.length > 0
-                ? 'flex'
-                : 'none',
-            alignItems: 'center',
-            cursor: 'pointer',
-          }}
-          onClick={(e) => {
-            e.stopPropagation()
-            if (!disabled) {
-              setValue('')
-              onClear?.('')
-            }
-          }}
-        >
-          {clearIcon || <MaskClose className="nut-input-clear" />}
-        </View>
+        {rightIcon ? (
+          <View className="nut-input-action">{rightIcon}</View>
+        ) : (
+          clearable &&
+          !readOnly &&
+          active &&
+          value.length > 0 && (
+            <View
+              className="nut-input-action"
+              onClick={(e) => {
+                e.stopPropagation()
+                if (!disabled) {
+                  setValue('')
+                  onClear?.('')
+                }
+              }}
+            >
+              {clearIcon || <MaskClose className="nut-input-clear" />}
+            </View>
+          )
+        )}
       </View>
       {description !== null && description !== undefined && (
         <View className="nut-input-description">{description}</View>

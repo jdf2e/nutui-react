@@ -25,6 +25,7 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
+  rightIcon: null,
   description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
@@ -53,6 +54,7 @@ export const Input = forwardRef(
       maxLength,
       clearable,
       clearIcon,
+      rightIcon,
       description,
       formatTrigger,
       autoFocus,
@@ -189,22 +191,25 @@ export const Input = forwardRef(
               onCompositionEnd?.(e)
             }}
           />
-          {clearable && !readOnly && active && value.length > 0 && (
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                if (!disabled) {
-                  setValue('')
-                  onClear?.('')
-                }
-              }}
-            >
-              {clearIcon || <MaskClose className="nut-input-clear" />}
-            </span>
+          {rightIcon ? (
+            <span className="nut-input-action">{rightIcon}</span>
+          ) : (
+            clearable &&
+            !readOnly &&
+            active &&
+            value.length > 0 && (
+              <span
+                className="nut-input-action"
+                onClick={() => {
+                  if (!disabled) {
+                    setValue('')
+                    onClear?.('')
+                  }
+                }}
+              >
+                {clearIcon || <MaskClose className="nut-input-clear" />}
+              </span>
+            )
           )}
         </div>
         {description !== null && description !== undefined && (

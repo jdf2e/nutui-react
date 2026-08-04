@@ -26,6 +26,19 @@
     font-weight: $font-weight;
   }
 
+  &-action {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    cursor: pointer;
+  }
+
+  &-plain &-action {
+    margin-right: 12px;
+  }
+
   .nut-input-native .weui-input::placeholder,
   &-placeholder {
     color: rgb(117, 117, 117);
@@ -49,6 +62,7 @@
 
 .nut-input-native {
   flex: 1;
+  min-width: 0;
   color: $input-color;
   font-size: $input-font-size;
   padding: 0;
@@ -56,6 +70,15 @@
   outline: 0 none;
   text-decoration: none;
   background-color: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .weui-input {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .nut-input-readonly {
