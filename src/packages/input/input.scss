@@ -65,6 +65,7 @@
   min-width: 0;
   color: $input-color;
   font-size: $input-font-size;
+  caret-color: $color-primary;
   padding: 0;
   border: 0;
   outline: 0 none;
@@ -75,6 +76,7 @@
   white-space: nowrap;
 
   .weui-input {
+    caret-color: $color-primary;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

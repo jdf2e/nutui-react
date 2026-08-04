@@ -210,6 +210,22 @@ test('applies text ellipsis styles to Taro H5 native input', () => {
   expect(taroNativeStyles).toContain('white-space: nowrap')
 })
 
+test('applies primary caret color to native inputs', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const nativeStyles = inputStyles.match(
+    /\.nut-input-native\s*\{([^}]*)\}/
+  )?.[1]
+  const taroNativeStyles = inputStyles.match(
+    /\.nut-input-native\s*\{[^}]*\.weui-input\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(nativeStyles).toContain('caret-color: $color-primary')
+  expect(taroNativeStyles).toContain('caret-color: $color-primary')
+})
+
 test('disabled test', () => {
   const { container } = render(<Input placeholder="文本" disabled />)
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(
