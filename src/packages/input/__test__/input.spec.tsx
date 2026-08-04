@@ -76,17 +76,35 @@ test('password test', () => {
 })
 
 test('readOnly test', () => {
-  const { container } = render(<Input placeholder="文本" readOnly />)
-  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
-    'readOnly'
+  const handleClick = vi.fn()
+  const inputRef = React.createRef<any>()
+  const { container } = render(
+    <Input ref={inputRef} placeholder="文本" readOnly onClick={handleClick} />
   )
+  const root = container.querySelector('.nut-input') as HTMLElement
+  const input = container.querySelector('.nut-input-native') as HTMLElement
+
+  expect(input).toHaveAttribute('readOnly')
+  expect(input).not.toHaveAttribute('disabled')
+  fireEvent.click(root)
+  inputRef.current.focus()
+
+  expect(handleClick).not.toHaveBeenCalled()
+  expect(input).not.toHaveFocus()
 })
 
 test('disabled test', () => {
-  const { container } = render(<Input placeholder="文本" disabled />)
+  const handleClick = vi.fn()
+  const { container } = render(
+    <Input placeholder="文本" disabled onClick={handleClick} />
+  )
+  const root = container.querySelector('.nut-input') as HTMLElement
+
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(
     'disabled'
   )
+  fireEvent.click(root)
+  expect(handleClick).not.toHaveBeenCalled()
 })
 
 test('textarea test', () => {
@@ -236,6 +254,25 @@ test('applies help text color to placeholders', () => {
   )?.[1]
 
   expect(placeholderStyles).toContain('color: $color-text-help')
+})
+
+test('applies state colors and behavior to disabled and readonly inputs', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const taroInput = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.taro.tsx'),
+    'utf8'
+  )
+
+  expect(inputStyles).toMatch(
+    /\.nut-input-readonly[\s\S]*?\.nut-input-placeholder[\s\S]*?color: \$color-text-help/
+  )
+  expect(inputStyles).toMatch(
+    /\.nut-input-disabled[\s\S]*?\.nut-input-placeholder[\s\S]*?color: \$color-text-disabled/
+  )
+  expect(taroInput).toContain('disabled={disabled || readOnly}')
 })
 
 test('applies title color to jmapp input content', () => {

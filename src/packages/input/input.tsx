@@ -88,7 +88,9 @@ export const Input = forwardRef(
 
     useImperativeHandle(ref, () => ({
       clear: () => setValue(''),
-      focus: () => inputRef.current?.focus(),
+      focus: () => {
+        if (!disabled && !readOnly) inputRef.current?.focus()
+      },
       blur: () => inputRef.current?.blur(),
       get nativeElement() {
         return inputRef.current
@@ -160,7 +162,7 @@ export const Input = forwardRef(
       <div
         className={`${getInputClass()} ${className || ''}`}
         style={style}
-        onClick={onClick}
+        onClick={disabled || readOnly ? undefined : onClick}
       >
         <div className="nut-input-main">
           <input
@@ -195,6 +197,7 @@ export const Input = forwardRef(
             <span className="nut-input-action">{rightIcon}</span>
           ) : (
             clearable &&
+            !disabled &&
             !readOnly &&
             active &&
             value.length > 0 && (

@@ -111,8 +111,10 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         setValue('')
       },
       focus: () => {
-        const nativeInput = getNativeInput()
-        nativeInput?.focus()
+        if (!disabled && !readOnly) {
+          const nativeInput = getNativeInput()
+          nativeInput?.focus()
+        }
       },
       blur: () => {
         const nativeInput = getNativeInput()
@@ -133,7 +135,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     ]
       .filter(Boolean)
       .join(' ')
-  }, [disabled])
+  }, [disabled, readOnly, plain])
 
   const [, updateState] = React.useState()
   const forceUpdate = React.useCallback(() => updateState({} as any), [])
@@ -197,7 +199,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
       className={`${inputClass()}  ${className || ''}`}
       style={style}
       onClick={(e) => {
-        onClick && onClick(e)
+        if (!disabled && !readOnly) onClick?.(e)
       }}
     >
       <View className="nut-input-main">
@@ -214,7 +216,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
             placeholder === undefined ? locale.placeholder : placeholder
           }
           placeholderClass={`${classPrefix}-placeholder`}
-          disabled={disabled}
+          disabled={disabled || readOnly}
           value={value}
           focus={autoFocus || focus}
           confirmType={confirmType}
@@ -226,6 +228,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
           <View className="nut-input-action">{rightIcon}</View>
         ) : (
           clearable &&
+          !disabled &&
           !readOnly &&
           active &&
           value.length > 0 && (

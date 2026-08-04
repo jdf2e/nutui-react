@@ -91,13 +91,30 @@
 }
 
 .nut-input-readonly {
+  pointer-events: none;
+
   .nut-input-native {
+    color: $color-text-help;
+    opacity: 1;
+    -webkit-text-fill-color: $color-text-help;
+  }
+
+  .nut-input-native::placeholder,
+  .nut-input-native .weui-input::placeholder,
+  .nut-input-placeholder {
     color: $color-text-help;
   }
 }
 
 .nut-input-disabled {
   color: $color-text-disabled !important;
+  pointer-events: none;
+
+  .nut-input-native::placeholder,
+  .nut-input-native .weui-input::placeholder,
+  .nut-input-placeholder {
+    color: $color-text-disabled;
+  }
 
   input:disabled {
     color: $color-text-disabled;
