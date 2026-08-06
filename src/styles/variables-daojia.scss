@@ -400,6 +400,13 @@ $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
 
+$icon-size-6: var(--nutui-icon-size-6, 6px) !default;
+$icon-size-8: var(--nutui-icon-size-8, 8px) !default;
+$icon-size-10: var(--nutui-icon-size-10, 10px) !default;
+$icon-size-11: var(--nutui-icon-size-11, 11px) !default;
+$icon-size-12: var(--nutui-icon-size-12, 12px) !default;
+$icon-size-18: var(--nutui-icon-size-18, 18px) !default;
+$icon-size-22: var(--nutui-icon-size-22, 22px) !default;
 $icon-height: var(--nutui-icon-height, 20px) !default;
 $icon-width: var(--nutui-icon-width, 20px) !default;
 $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
@@ -665,6 +672,8 @@ $switch-line-height: var(--nutui-switch-line-height, 28px) !default;
 $switch-border-radius: var(--nutui-switch-border-radius,
     $radius-circle) !default;
 $switch-border-width: var(--nutui-switch-border-width, 2px) !default;
+$switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
+$switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
 $switch-inside-border-radius: var(--nutui-switch-inside-border-radius,
     $radius-full) !default;
 /* #ifdef harmony */
