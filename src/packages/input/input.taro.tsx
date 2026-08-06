@@ -46,6 +46,7 @@ const defaultProps = {
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
+  status: 'default',
 } as TaroInputProps
 
 export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
@@ -71,6 +72,7 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     style,
     className,
     plain,
+    status,
     inputStyle,
     onChange,
     onFocus,
@@ -131,11 +133,12 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
       classPrefix,
       `${disabled ? `${classPrefix}-disabled` : ''}`,
       readOnly ? `${classPrefix}-readonly` : '',
+      status === 'error' ? `${classPrefix}-error` : '',
       `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
     ]
       .filter(Boolean)
       .join(' ')
-  }, [disabled, readOnly, plain])
+  }, [disabled, readOnly, plain, status])
 
   const [, updateState] = React.useState()
   const forceUpdate = React.useCallback(() => updateState({} as any), [])

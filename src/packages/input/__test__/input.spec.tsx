@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Input from '@/packages/input'
+import Input, { type InputStatus } from '@/packages/input'
 import ConfigProvider from '@/packages/configprovider'
 
 test('input props test', () => {
@@ -156,6 +156,87 @@ test('renders optional description', () => {
   expect(
     container.querySelector('.nut-input-description')
   ).not.toBeInTheDocument()
+})
+
+test('renders externally controlled error state and description', () => {
+  const status: InputStatus = 'error'
+  const { container, rerender } = render(
+    <Input status={status} description="错误提示信息" />
+  )
+  const input = container.querySelector('.nut-input')
+
+  expect(input).toHaveClass('nut-input-error')
+  expect(container.querySelector('.nut-input-description')).toHaveTextContent(
+    '错误提示信息'
+  )
+
+  rerender(<Input status="default" description="辅助说明信息" />)
+  expect(input).not.toHaveClass('nut-input-error')
+})
+
+test('applies error text and container-only error field styles', () => {
+  const inputStyles = readFileSync(
+    resolve(process.cwd(), 'src/packages/input/input.scss'),
+    'utf8'
+  )
+  const descriptionErrorStyles = inputStyles.match(
+    /\.nut-input-error \.nut-input-description\s*\{([^}]*)\}/
+  )?.[1]
+  const containerErrorStyles = inputStyles.match(
+    /\.nut-input-container\.nut-input-error \.nut-input-main\s*\{([^}]*)\}/
+  )?.[1]
+
+  expect(descriptionErrorStyles).toContain('color: $input-error-color')
+  expect(containerErrorStyles).toContain(
+    'background-color: $color-danger-light'
+  )
+  expect(containerErrorStyles).toContain(
+    'border: 0.67px solid $input-error-color'
+  )
+  expect(inputStyles).not.toMatch(
+    /\.nut-input-plain\.nut-input-error \.nut-input-main/
+  )
+})
+
+test('defines color-error token and uses it for Input error color', () => {
+  const variableFiles = [
+    'variables.scss',
+    'variables-jmapp.scss',
+    'variables-jrkf.scss',
+    'variables-daojia.scss',
+  ]
+
+  variableFiles.forEach((file) => {
+    const variables = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf8'
+    )
+    const globalErrorColor = variables.match(/\$color-error:[^;]+;/)?.[0]
+    const errorColor = variables.match(/\$input-error-color:[^;]+;/)?.[0]
+
+    expect(globalErrorColor).toContain('--nutui-color-error')
+    expect(errorColor).toContain('--nutui-input-error-color')
+    expect(errorColor).toContain('$color-error')
+    expect(errorColor).not.toContain('$color-danger')
+  })
+
+  const themeFiles = [
+    'theme-default.scss',
+    'theme-dark.scss',
+    'theme-jmapp.scss',
+    'theme-jrkf.scss',
+    'theme-daojia.scss',
+    'theme-dark-daojia.scss',
+  ]
+
+  themeFiles.forEach((file) => {
+    const theme = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf8'
+    )
+
+    expect(theme).toContain('--nutui-color-error: #ff2159')
+  })
 })
 
 test('applies description typography, color and spacing styles', () => {

@@ -109,6 +109,7 @@ $color-danger-background: var(
   #ff0f23
 ) !default; //done
 $color-danger-text: var(--nutui-color-danger-text, #ff0f23) !default; //done
+$color-error: var(--nutui-color-error, #ff2159) !default;
 
 // 服务色
 $color-service: var(--nutui-color-service, #fff4e0) !default;
@@ -744,6 +745,7 @@ $input-border-bottom-width: var(
 //   $color-text-disabled
 // ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-error-color: var(--nutui-input-error-color, $color-error) !default;
 $input-plain-height: var(
   --nutui-input-plain-height,
   $input-font-size

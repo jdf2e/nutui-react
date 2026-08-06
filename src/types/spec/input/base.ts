@@ -4,6 +4,7 @@ import { BaseProps } from '../../base/props'
 
 export type InputFormatTrigger = 'onChange' | 'onBlur'
 export type InputConfirmType = 'send' | 'search' | 'next' | 'go' | 'done'
+export type InputStatus = 'default' | 'error'
 
 export interface BaseInput<
   INPUT_TYPE,
@@ -26,6 +27,7 @@ export interface BaseInput<
   autoFocus: boolean
   confirmType: CONFIRM_TYPE
   plain: boolean
+  status: InputStatus
   inputStyle?: CSSProperties
   formatter?: (value: string) => string
   onChange?: (value: string) => void

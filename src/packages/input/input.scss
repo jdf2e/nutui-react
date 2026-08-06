@@ -67,6 +67,15 @@
   }
 }
 
+.nut-input-error .nut-input-description {
+  color: $input-error-color;
+}
+
+.nut-input-container.nut-input-error .nut-input-main {
+  background-color: $color-danger-light;
+  border: 1px solid $input-error-color;
+}
+
 .nut-input-native {
   flex: 1;
   min-width: 0;

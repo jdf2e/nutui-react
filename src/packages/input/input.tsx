@@ -30,6 +30,7 @@ const defaultProps = {
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
+  status: 'default',
 } as WebInputProps
 
 export const Input = forwardRef(
@@ -68,6 +69,7 @@ export const Input = forwardRef(
       onClick,
       confirmType,
       plain,
+      status,
       defaultValue,
       value: _value,
       onCompositionStart,
@@ -103,11 +105,12 @@ export const Input = forwardRef(
         classPrefix,
         `${disabled ? `${classPrefix}-disabled` : ''}`,
         readOnly ? `${classPrefix}-readonly` : '',
+        status === 'error' ? `${classPrefix}-error` : '',
         `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
       ]
         .filter(Boolean)
         .join(' ')
-    }, [disabled, readOnly, plain])
+    }, [disabled, readOnly, plain, status])
 
     const handleValueUpdate = (
       inputValue: string,
