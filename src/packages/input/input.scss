@@ -72,8 +72,8 @@
 }
 
 .nut-input-container.nut-input-error .nut-input-main {
-  background-color: $color-danger-light;
-  border: 1px solid $input-error-color;
+  background-color: $color-error-light;
+  box-shadow: inset 0 0 0 0.67px $input-error-color;
 }
 
 .nut-input-native {

@@ -187,18 +187,17 @@ test('applies error text and container-only error field styles', () => {
   )?.[1]
 
   expect(descriptionErrorStyles).toContain('color: $input-error-color')
+  expect(containerErrorStyles).toContain('background-color: $color-error-light')
+  expect(containerErrorStyles).not.toContain('$color-danger-light')
   expect(containerErrorStyles).toContain(
-    'background-color: $color-danger-light'
-  )
-  expect(containerErrorStyles).toContain(
-    'border: 0.67px solid $input-error-color'
+    'box-shadow: inset 0 0 0 0.67px $input-error-color'
   )
   expect(inputStyles).not.toMatch(
     /\.nut-input-plain\.nut-input-error \.nut-input-main/
   )
 })
 
-test('defines color-error token and uses it for Input error color', () => {
+test('defines the complete error color token chain', () => {
   const variableFiles = [
     'variables.scss',
     'variables-jmapp.scss',
@@ -211,31 +210,60 @@ test('defines color-error token and uses it for Input error color', () => {
       resolve(process.cwd(), `src/styles/${file}`),
       'utf8'
     )
-    const globalErrorColor = variables.match(/\$color-error:[^;]+;/)?.[0]
     const errorColor = variables.match(/\$input-error-color:[^;]+;/)?.[0]
 
-    expect(globalErrorColor).toContain('--nutui-color-error')
+    expect(variables).toContain('$color-error: var(--nutui-color-error')
+    expect(variables).toContain(
+      '$color-error-light: var(--nutui-color-error-light'
+    )
+    expect(variables).toContain(
+      '$color-error-pressed: var(--nutui-color-error-pressed'
+    )
     expect(errorColor).toContain('--nutui-input-error-color')
     expect(errorColor).toContain('$color-error')
     expect(errorColor).not.toContain('$color-danger')
   })
 
-  const themeFiles = [
+  const lightThemeFiles = [
     'theme-default.scss',
-    'theme-dark.scss',
     'theme-jmapp.scss',
     'theme-jrkf.scss',
     'theme-daojia.scss',
-    'theme-dark-daojia.scss',
   ]
+  const darkThemeFiles = ['theme-dark.scss', 'theme-dark-daojia.scss']
 
-  themeFiles.forEach((file) => {
+  lightThemeFiles.forEach((file) => {
     const theme = readFileSync(
       resolve(process.cwd(), `src/styles/${file}`),
       'utf8'
     )
 
-    expect(theme).toContain('--nutui-color-error: #ff2159')
+    expect(theme).toContain('--nutui-danger-1: #ffedef')
+    expect(theme).toContain('--nutui-danger-2: #ff2159')
+    expect(theme).toContain('--nutui-danger-3: #d9114a')
+  })
+
+  darkThemeFiles.forEach((file) => {
+    const theme = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf8'
+    )
+
+    expect(theme).toContain('--nutui-danger-1: #3d2529')
+    expect(theme).toContain('--nutui-danger-2: #f9607a')
+    expect(theme).toContain('--nutui-danger-3: #ff4d6a')
+  })
+  ;[...lightThemeFiles, ...darkThemeFiles].forEach((file) => {
+    const theme = readFileSync(
+      resolve(process.cwd(), `src/styles/${file}`),
+      'utf8'
+    )
+
+    expect(theme).toContain('--nutui-color-error: var(--nutui-danger-2)')
+    expect(theme).toContain('--nutui-color-error-light: var(--nutui-danger-1)')
+    expect(theme).toContain(
+      '--nutui-color-error-pressed: var(--nutui-danger-3)'
+    )
   })
 })
 

@@ -110,6 +110,8 @@ $color-danger-background: var(
 ) !default; //done
 $color-danger-text: var(--nutui-color-danger-text, #ff0f23) !default; //done
 $color-error: var(--nutui-color-error, #ff2159) !default;
+$color-error-light: var(--nutui-color-error-light, #ffedef) !default;
+$color-error-pressed: var(--nutui-color-error-pressed, #d9114a) !default;
 
 // 服务色
 $color-service: var(--nutui-color-service, #fff4e0) !default;

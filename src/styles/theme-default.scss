@@ -35,6 +35,10 @@ page {
   --nutui-green-3: #00801e;
 
   // danger color 发现不一致TODO
+  // danger color
+  --nutui-danger-1: #ffedef;
+  --nutui-danger-2: #ff2159;
+  --nutui-danger-3: #d9114a;
 
   // red color
   --nutui-red-1: var(--nutui-brand-1);
@@ -169,6 +173,9 @@ page {
   --nutui-color-danger: var(--nutui-red-2); // 背景或文字
   --nutui-color-danger-light: var(--nutui-red-1); // 背景
   --nutui-color-danger-pressed: var(--nutui-red-3); // 文字
+  --nutui-color-error: var(--nutui-danger-2);
+  --nutui-color-error-light: var(--nutui-danger-1);
+  --nutui-color-error-pressed: var(--nutui-danger-3);
 
   // info color 语义化
   --nutui-color-info: var(--nutui-blue-2); // 深背景/图形
