@@ -394,6 +394,33 @@ test('applies title color to jmapp input content', () => {
   expect(inputColor).toContain('$color-title')
 })
 
+test('defines the updated default gray-2 value', () => {
+  const defaultTheme = readFileSync(
+    resolve(process.cwd(), 'src/styles/theme-default.scss'),
+    'utf8'
+  )
+
+  expect(defaultTheme).toContain('--nutui-gray-2: #ebedf2')
+  expect(defaultTheme).toContain(
+    '--nutui-color-background-component: var(--nutui-gray-2)'
+  )
+})
+
+test('uses component background token for default container input', () => {
+  const inputVariables = readFileSync(
+    resolve(process.cwd(), 'src/styles/variables.scss'),
+    'utf8'
+  )
+  const inputBackground = inputVariables.slice(
+    inputVariables.indexOf('$input-background-color:'),
+    inputVariables.indexOf('$input-padding:')
+  )
+
+  expect(inputBackground).toContain('--nutui-input-background-color')
+  expect(inputBackground).toContain('var(--nutui-color-background-component)')
+  expect(inputBackground).not.toContain('$color-background-overlay')
+})
+
 test('applies scalable height variable to plain native inputs', () => {
   const inputStyles = readFileSync(
     resolve(process.cwd(), 'src/packages/input/input.scss'),

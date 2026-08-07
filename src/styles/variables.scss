@@ -757,7 +757,7 @@ $input-border-radius: var(--nutui-input-border-radius, $radius-s) !default;
 $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(
   --nutui-input-background-color,
-  $color-background-overlay
+  var(--nutui-color-background-component)
 ) !default;
 $input-padding: var(--nutui-input-padding, scale-px(12px)) !default;
 
