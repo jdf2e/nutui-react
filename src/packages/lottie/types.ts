@@ -3,8 +3,7 @@ import { LottieOptions } from 'lottie-react'
 import { BasicComponent } from '@/utils/typings'
 
 export interface LottieProps
-  extends Omit<LottieOptions, 'animationData'>,
-    BasicComponent {
+  extends Omit<LottieOptions, 'animationData'>, BasicComponent {
   style: React.CSSProperties
   source: NonNullable<unknown>
   loop: boolean | number

@@ -15,7 +15,6 @@ exports[`align center test 1`] = `
           aria-labelledby="Notice"
           class="nut-icon nut-icon-Notice "
           role="presentation"
-          style="width: 16px; height: 16px;"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -55,7 +54,6 @@ exports[`noticebar base test 1`] = `
           aria-labelledby="Notice"
           class="nut-icon nut-icon-Notice "
           role="presentation"
-          style="width: 16px; height: 16px;"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -95,7 +93,6 @@ exports[`scrollable test 1`] = `
           aria-labelledby="Notice"
           class="nut-icon nut-icon-Notice "
           role="presentation"
-          style="width: 16px; height: 16px;"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
