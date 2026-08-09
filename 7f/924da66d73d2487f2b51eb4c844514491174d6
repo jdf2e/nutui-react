@@ -1,0 +1,21 @@
+src/utils/should-render-price-raw.ts
+  s_4f4448892194bf::t_f6de70fb0a9b9e 3-6,15,28-33
+src/utils/taro/get-rect.ts
+  s_4f4448892194bf::t_f6de70fb0a9b9e 43,45,69,71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "7f924da66d73d2487f2b51eb4c844514491174d6",
+  "prompts": {},
+  "sessions": {
+    "s_4f4448892194bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ada947b-04a8-44a1-8ee1-7f24e9d9fb10",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
