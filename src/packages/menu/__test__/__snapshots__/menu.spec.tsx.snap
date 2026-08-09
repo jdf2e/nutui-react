@@ -20,7 +20,6 @@ exports[`should match snapshot 1`] = `
           aria-labelledby="ArrowDown"
           class="nut-icon nut-icon-ArrowDown nut-menu-title-icon"
           role="presentation"
-          style="width: 12px; height: 12px;"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -115,7 +114,6 @@ exports[`should match snapshot of two columns in one line 1`] = `
           aria-labelledby="ArrowDown"
           class="nut-icon nut-icon-ArrowDown nut-menu-title-icon"
           role="presentation"
-          style="width: 12px; height: 12px;"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
