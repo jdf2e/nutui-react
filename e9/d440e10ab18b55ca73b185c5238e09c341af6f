@@ -1,0 +1,19 @@
+package.json
+  s_ce0563318a91d7::t_b28806ece97b4c 115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "e9d440e10ab18b55ca73b185c5238e09c341af6f",
+  "prompts": {},
+  "sessions": {
+    "s_ce0563318a91d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "06051eea-230e-4bda-89e6-133d41088db3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": null
+    }
+  }
+}
