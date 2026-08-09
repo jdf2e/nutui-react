@@ -1,10 +1,12 @@
+pnpm-lock.yaml
+  s_ce0563318a91d7::t_b77b234ce8d1e4 18529,18535,18539,18543
 package.json
   s_ce0563318a91d7::t_913eca517a0103 109-111,114,116,122,129-135,137-138,141-142,149-150,152,154,156-160,162-171,173-183,186,190-193,196-200,202-204,206-208,210-215,217-220,222-224,226-229,231,233
 ---
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.7",
-  "base_commit_sha": "a56017e86d8fb76acbc4325645b97aae0e00cb08",
+  "base_commit_sha": "a2b4a7ede1a950653af27b121c80c1797b9dd72a",
   "prompts": {},
   "sessions": {
     "s_ce0563318a91d7": {
@@ -13,7 +15,7 @@ package.json
         "id": "06051eea-230e-4bda-89e6-133d41088db3",
         "model": "claude-opus-4-6"
       },
-      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+      "human_author": null
     }
   }
 }
