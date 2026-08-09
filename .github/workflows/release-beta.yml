@@ -41,7 +41,7 @@ jobs:
       - name: Install pnpm
         run: npm i -g pnpm@10
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           registry-url: 'https://registry.npmjs.org'
           node-version: '20'
