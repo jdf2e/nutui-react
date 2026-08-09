@@ -42,7 +42,6 @@ export default defineAppConfig ({
     navigationBarTitleText: 'NutUI-React',
     navigationBarTextStyle: 'black'
   },
-  renderingMode: 'mixed',
   components: ['pages/index/index', ...(subPackages.map(subPackage => {
     return subPackage.pages.map(page => \`\${subPackage.root}/\${page}\`)
   }).flat())]

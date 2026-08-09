@@ -1,36 +1,11 @@
 /**
- * 响应式缩放系数（--nut-scale-f）：结合京东站内原生桥与站外视口规则，
+ * 响应式缩放系数（--nut-scale-f）：按视口宽度计算，
  * 写入根节点 CSS 变量（--nut-scale-f / --nut-scale-font / --nut-scale-icon），
  * 供布局/字号/icon 等按比例换算（见 calcByProfile）。H5 与 Taro WebView 共用此实现。
  */
 import { canUseDom } from './can-use-dom'
 
-/** 原生 DongScreenAdapterPlugin.getScale 的典型返回结构 */
-type NativeScaleResponse = {
-  status?: string
-  data?: {
-    scale?: number | string
-  }
-}
-
-/** jmfe 通用 callNative 签名 */
-type NativeCaller = (
-  plugin: string,
-  method: string,
-  params: string,
-  extra: string
-) => Promise<NativeScaleResponse>
-
-/** 站内容器的 jmfe 桥接方法（可选） */
-declare global {
-  interface Window {
-    jmfe?: {
-      callNative?: NativeCaller
-    }
-  }
-}
-
-/** 当前基准缩放（来自原生或视口计算） */
+/** 当前基准缩放（来自视口计算） */
 let scale = 1
 
 /** 字体档位：标准、大字、老年 */
@@ -113,7 +88,7 @@ function roundByScaleRule(
   return Math.round(value)
 }
 
-/** 无原生桥时按屏宽推算 scale（含平板与 375 基准窄屏区间） */
+/** 按屏宽推算 scale（含平板与 375 基准窄屏区间） */
 function getScaleByViewport() {
   if (!canUseDom) return 1
   const deviceWidth = window.innerWidth
@@ -132,34 +107,8 @@ function getScaleByViewport() {
   return 1
 }
 
-/** 通过 jmfe.callNative 拉取 DongScreenAdapterPlugin；失败返回 null */
-async function getScaleByNative() {
-  if (!canUseDom || !window.jmfe?.callNative) return null
-
-  try {
-    const res = await window.jmfe.callNative(
-      'DongScreenAdapterPlugin',
-      'getScale',
-      JSON.stringify({}),
-      ''
-    )
-    if (res?.status === '0' && res.data?.scale !== undefined) {
-      const parsed = Number(res.data.scale)
-      if (Number.isFinite(parsed) && parsed > 0) {
-        return parsed
-      }
-    }
-  } catch {
-    /* 原生异常时由 getScaleF 回退到视口规则 */
-  }
-
-  return null
-}
-
-/** 统一获取缩放：站内原生优先，失败则用视口规则 */
-async function getScaleF() {
-  const nativeScale = await getScaleByNative()
-  if (nativeScale) return nativeScale
+/** 统一获取缩放：按视口规则计算 */
+function getScaleF() {
   return getScaleByViewport()
 }
 
@@ -171,12 +120,12 @@ function setScaleF(nextScale: number) {
   return scale
 }
 
-/** 重新拉取缩放；可选同时切换 profile，避免与当前值相同时重复写 DOM */
-async function refreshScaleF(nextProfile?: ScaleProfile) {
+/** 重新计算缩放；可选同时切换 profile，避免与当前值相同时重复写 DOM */
+function refreshScaleF(nextProfile?: ScaleProfile) {
   if (nextProfile) {
     setScaleProfile(nextProfile)
   }
-  const nextScale = await getScaleF()
+  const nextScale = getScaleF()
   if (!scale || nextScale !== scale) {
     setScaleF(nextScale)
   }
