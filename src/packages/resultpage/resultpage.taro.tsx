@@ -14,6 +14,7 @@ const defaultProps = {
   status: 'info',
   actions: [],
 } as TaroResultPageProps
+
 export const ResultPage: FunctionComponent<
   Partial<TaroResultPageProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -41,6 +42,7 @@ export const ResultPage: FunctionComponent<
     info: <Tips color="var(--nutui-color-info, #0c82f7)" />,
     waiting: <Ask color="var(--nutui-color-info, #0c82f7)" />,
   }
+
   return (
     <View className={cls} style={style}>
       <View className={`${classPrefix}-icon`}>

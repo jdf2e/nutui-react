@@ -1702,11 +1702,13 @@ $loading-lottie-background: var(--nutui-loading-lottie-background,
 $resultpage-width: var(--nutui-resultpage-width, 240px) !default;
 $resultpage-icon-size: var(--nutui-resultpage-icon-size, 36px) !default;
 $resultpage-icon-margin-bottom: var(--nutui-resultpage-icon-margin-bottom,
-    12px) !default;
+    4px) !default;
 $resultpage-title-margin-bottom: var(--nutui-resultpage-title-margin-bottom,
-    12px) !default;
+    4px) !default;
 $resultpage-title-font-size: var(--nutui-resultpage-title-font-size,
-    $font-size-xl) !default;
+    $font-size-md) !default;
+$resultpage-title-line-height: var(--nutui-resultpage-title-line-height,
+    24px) !default;
 $resultpage-title-color: var(--nutui-resultpage-title-color,
     $color-title) !default;
 $resultpage-description-font-size: var(--nutui-resultpage-description-font-size,
@@ -1714,9 +1716,9 @@ $resultpage-description-font-size: var(--nutui-resultpage-description-font-size,
 $resultpage-description-color: var(--nutui-resultpage-description-color,
     $color-text) !default;
 $resultpage-description-line-height: var(--nutui-resultpage-description-line-height,
-    20px) !default;
+    22px) !default;
 $resultpage-actions-margin-top: var(--nutui-resultpage-actions-margin-top,
-    16px) !default;
+    12px) !default;
 
 // quickenter
 $quickenter-bg-color: var(--nutui-quickenter-bg-color, #f5f5f5) !default;
