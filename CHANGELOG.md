@@ -1,3 +1,10 @@
+# v4.0.0-beta.6
+
+`2026-08-10`
+
+- :sparkles: feat: 为 @nutui/nutui-react-taro 补齐 AI-Coding 能力(CLI / MCP / Skill + 站点文档) (#3500)
+- :bug: fix(Cascader): preserve normalized option keys (#3501)
+
 # v4.0.0-beta.5
 
 `2026-07-21`
