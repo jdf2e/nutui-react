@@ -1,0 +1,102 @@
+src/packages/numberkeyboard/_test_/__snapshots__/index.spec.tsx.snap
+  s_5602573d4d3284::t_dda4e9ab76bf43 165,321,351
+pr-review/pr-2974-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+  s_ce0563318a91d7::t_21b6229ac62ae5 1-3,5-25
+pr-review/pr-2933-2026-08-09.md
+  s_ce0563318a91d7::t_02fb73dca439f8 1-3,5-25
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+package.json
+  s_ce0563318a91d7::t_913eca517a0103 109-111,114,116,122,129-135,137-138,141-142,149-150,152,154,156-160,162-171,173-183,186,190-193,196-200,202-204,206-208,210-215,217-220,222-224,226-229,231,233
+src/packages/steps/steps.tsx
+  s_ce0563318a91d7::t_f586c794d34950 42
+pr-review/pr-3213-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+  s_ce0563318a91d7::t_186c88c55ca00b 1-3,5-25
+pnpm-lock.yaml
+  s_ce0563318a91d7::t_b77b234ce8d1e4 18529,18535,18539,18543
+pr-review/summary-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 14,21,27,48,75,89
+  s_ce0563318a91d7::t_082b9ba2fb471b 1-13,15-20,22-26,28-47,49-74,76-88
+src/packages/avatarcropper/__tests__/avatarcropper.spec.tsx
+  s_ce0563318a91d7::t_f586c794d34950 98
+pr-review/pr-3088-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+  s_ce0563318a91d7::t_f14f5c2dd252cf 1-3,5-25
+pr-review/pr-3115-2026-08-09.md
+  s_ce0563318a91d7::t_f14f5c2dd252cf 1-3,5-25
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+.pr3385_page1.json
+  s_2b6caad62d7a31::t_4903d32380e75c 1-985
+src/packages/resultpage/types.ts
+  s_ce0563318a91d7::t_f586c794d34950 6
+pr-review/pr-2941-2026-08-09.md
+  s_ce0563318a91d7::t_12a1c9b5c8ee5b 1-3,5-25
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+src/packages/toast/toast.taro.tsx
+  s_ce0563318a91d7::t_f586c794d34950 201-203
+src/packages/lottie/types.ts
+  s_ce0563318a91d7::t_f586c794d34950 6
+src/packages/steps/steps.taro.tsx
+  s_ce0563318a91d7::t_f586c794d34950 43
+pnpm-workspace.yaml
+  s_5602573d4d3284::t_b2d1faac5cf2f5 2-13
+pr-review/pr-3011-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+  s_ce0563318a91d7::t_f14f5c2dd252cf 1-3,5-9,11-20,22,27-28
+  s_ce0563318a91d7::t_08759ebed8dd3c 10,21,23-26,29
+docs/merge-execution-progress.md
+  s_4f4448892194bf::t_6d76d3c9176293 1-25,27-40,42-55,57-65,67-125,127-139,141-148,150-160,162-169,171-182,184-188,190-193,195-203,205-220,222-242
+  s_5602573d4d3284::t_dda4e9ab76bf43 26,41,56,66,126,140,149,161,170,183,189,194,204,221
+src/packages/formitem/formitem.tsx
+  s_ce0563318a91d7::t_f586c794d34950 11
+pr-review/pr-3180-2026-08-09.md
+  s_ce0563318a91d7::t_2801869a15a914 1-3,5-25
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+pr-review/pr-3112-2026-08-09.md
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+  s_ce0563318a91d7::t_84b01af3c425be 1-3,5-25
+pr-review/pr-3091-2026-08-09.md
+  s_ce0563318a91d7::t_c9cbb135808764 1-3,5-25
+  s_5602573d4d3284::t_dda4e9ab76bf43 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "9919a13af05b5e2daa57a1485e738da6ca235622",
+  "prompts": {},
+  "sessions": {
+    "s_2b6caad62d7a31": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3559ff6c-e65a-4d58-bffc-7b90f67c9f81",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    },
+    "s_4f4448892194bf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ada947b-04a8-44a1-8ee1-7f24e9d9fb10",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    },
+    "s_5602573d4d3284": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "609e28d7-60c9-47f4-8296-32b5078dbf9a",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": null
+    },
+    "s_ce0563318a91d7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "06051eea-230e-4bda-89e6-133d41088db3",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": null
+    }
+  }
+}

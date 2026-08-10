@@ -1,0 +1,53 @@
+src/styles/theme-dark.scss
+  s_bbf5109276a6dc::t_59eaadd179ee68 382-386
+src/locales/zh-UG.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 166-168
+src/packages/backtop/backtop.tsx
+  s_bbf5109276a6dc::t_a8e77a717990ea 15,25-28,39-41,121-123,128,133-136
+src/packages/backtop/backtop.scss
+  s_bbf5109276a6dc::t_59eaadd179ee68 7
+src/packages/backtop/doc.taro.md
+  s_bbf5109276a6dc::t_59eaadd179ee68 71
+src/locales/zh-CN.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 170-172
+src/locales/tr-TR.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 176-178
+src/packages/backtop/backtop.taro.tsx
+  s_bbf5109276a6dc::t_59eaadd179ee68 14,20,30,42-43,48,93-95,100,105-108
+src/packages/backtop/doc.zh-TW.md
+  s_bbf5109276a6dc::t_59eaadd179ee68 80
+src/locales/vi-VN.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 168-170
+src/locales/base.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 152-154
+src/locales/ja-JP.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 171-173
+src/locales/id-ID.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 168-170
+src/packages/backtop/__test__/__snapshots__/backtop.spec.tsx.snap
+  s_bbf5109276a6dc::t_59eaadd179ee68 8
+src/locales/zh-TW.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 170-172
+src/packages/backtop/doc.md
+  s_bbf5109276a6dc::t_59eaadd179ee68 69
+src/packages/backtop/doc.en-US.md
+  s_bbf5109276a6dc::t_59eaadd179ee68 82
+src/locales/en-US.ts
+  s_bbf5109276a6dc::t_59eaadd179ee68 167-169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "cd48d7a738fef2c94a45576aac4138d988c50f97",
+  "prompts": {},
+  "sessions": {
+    "s_bbf5109276a6dc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bfc4382e-68a6-41e7-be70-26ff017396d4",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
