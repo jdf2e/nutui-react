@@ -74,6 +74,13 @@
       }
     }
 
+    &-auto {
+      font-size: $dialog-auto-close-font-size;
+      color: $dialog-auto-close-color;
+      margin-top: $dialog-auto-close-margin-top;
+      text-align: center;
+    }
+
     &:active {
       opacity: 0.7;
     }
@@ -86,6 +93,25 @@
     font-weight: $dialog-header-font-weight;
     color: $color-title;
     margin-bottom: $dialog-title-margin-bottom;
+    @include oneline-ellipsis();
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: $dialog-header-icon-size;
+      height: $dialog-header-icon-size;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+  }
+
+  &-subtitle {
+    display: block;
+    text-align: center;
+    font-size: $dialog-subtitle-font-size;
+    color: $dialog-subtitle-color;
+    margin-top: $dialog-subtitle-margin-top;
     @include oneline-ellipsis();
   }
 

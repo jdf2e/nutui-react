@@ -1631,6 +1631,31 @@ $dialog-bottom-close-icon-size: var(
 $dialog-close-top: var(--nutui-dialog-close-top, scale-px(16px)) !default;
 $dialog-close-left: var(--nutui-dialog-close-left, scale-px(16px)) !default;
 $dialog-close-right: var(--nutui-dialog-close-right, scale-px(16px)) !default;
+$dialog-subtitle-font-size: var(
+  --nutui-dialog-subtitle-font-size,
+  $font-size-s
+) !default;
+$dialog-subtitle-color: var(
+  --nutui-dialog-subtitle-color,
+  $color-text-help
+) !default;
+$dialog-subtitle-margin-top: var(
+  --nutui-dialog-subtitle-margin-top,
+  4px
+) !default;
+$dialog-header-icon-size: var(--nutui-dialog-header-icon-size, 20px) !default;
+$dialog-auto-close-font-size: var(
+  --nutui-dialog-auto-close-font-size,
+  $font-size-s
+) !default;
+$dialog-auto-close-color: var(
+  --nutui-dialog-auto-close-color,
+  $color-text-help
+) !default;
+$dialog-auto-close-margin-top: var(
+  --nutui-dialog-auto-close-margin-top,
+  8px
+) !default;
 
 // checkbox（✅）
 $checkbox-label-disable-color: var(

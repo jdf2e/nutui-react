@@ -166,5 +166,8 @@ const zhUG: BaseLang = {
   quickenter: {
     title: 'تېز كىرگۈزۈش',
   },
+  dialog: {
+    autoCloseText: '{second} سېكۇنتتا ئۆز-ئۆزىدىن ئىچكى كۆرۈنۈش تاقالىدۇ',
+  },
 }
 export default zhUG

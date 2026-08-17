@@ -5,6 +5,8 @@ import { WebContentProps } from '@/types'
 export const defaultContentProps = {
   visible: false,
   title: '',
+  subtitle: '',
+  titleIcon: '',
   header: '',
   footer: '',
   close: '',
@@ -19,6 +21,8 @@ export const Content: FunctionComponent<
   const {
     visible,
     title,
+    subtitle,
+    titleIcon,
     header,
     footer,
     close,
@@ -32,7 +36,22 @@ export const Content: FunctionComponent<
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title && <div className={`${classPrefix}-header`}>{title}</div>
+    return (
+      title && (
+        <div className={`${classPrefix}-header`}>
+          {titleIcon && (
+            <span className={`${classPrefix}-header-icon`}>{titleIcon}</span>
+          )}
+          {title}
+        </div>
+      )
+    )
+  }
+
+  const renderSubtitle = () => {
+    return (
+      subtitle && <div className={`${classPrefix}-subtitle`}>{subtitle}</div>
+    )
   }
 
   const renderFooter = () => {
@@ -66,6 +85,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
+        {renderSubtitle()}
         <div className={`${classPrefix}-content`}>{children}</div>
         {renderFooter()}
       </div>

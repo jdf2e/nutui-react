@@ -12,6 +12,8 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 
 const DialogDemo = () => {
   const [translated] = useTranslate({
@@ -25,6 +27,8 @@ const DialogDemo = () => {
       title5: '带关闭按钮',
       title6: '自定义内容区域',
       title7: '顶部带插图',
+      title8: '标题图标和副标题',
+      title9: '倒计时自动关闭',
     },
     'en-US': {
       funUse: 'Function use',
@@ -36,6 +40,8 @@ const DialogDemo = () => {
       title5: 'With close button',
       title6: 'Custom content area',
       title7: 'Top with picture',
+      title8: 'Title icon and subtitle',
+      title9: 'Auto close with countdown',
     },
   })
 
@@ -60,6 +66,10 @@ const DialogDemo = () => {
         <Demo7 />
         <View className="h2">{translated.title7}</View>
         <Demo8 />
+        <View className="h2">{translated.title8}</View>
+        <Demo9 />
+        <View className="h2">{translated.title9}</View>
+        <Demo10 />
       </ScrollView>
     </>
   )
