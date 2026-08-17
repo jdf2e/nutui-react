@@ -1,0 +1,61 @@
+src/packages/dialog/dialog.tsx
+  s_57e031e22d3702::t_55e88afe7b18c6 102-130
+src/packages/dialog/dialog.taro.tsx
+  s_57e031e22d3702::t_79851156d8d448 1-7,35-36,51,79-80,93,106-134,281,292-315,344-345
+src/packages/dialog/demo.tsx
+  s_57e031e22d3702::t_a71a7d5f5daef5 11-12,26-27,39-40,64-67
+src/packages/dialog/demos/taro/demo10.tsx
+  s_57e031e22d3702::t_9f973dfe2fa07f 1-7,9-22
+  s_57e031e22d3702::t_bdd904e12ef9d6 8
+src/packages/dialog/demos/taro/demo9.tsx
+  s_57e031e22d3702::t_9f973dfe2fa07f 1-8,10-23
+  s_57e031e22d3702::t_bdd904e12ef9d6 9
+src/locales/id-ID.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 171-173
+src/packages/dialog/demo.taro.tsx
+  s_57e031e22d3702::t_bdd904e12ef9d6 69-72
+  s_57e031e22d3702::t_a71a7d5f5daef5 15-16,30-31,43-44
+src/packages/dialog/demos/h5/demo9.tsx
+  s_57e031e22d3702::t_9f973dfe2fa07f 1-8,10-23
+  s_57e031e22d3702::t_bdd904e12ef9d6 9
+src/packages/dialog/demos/h5/demo10.tsx
+  s_57e031e22d3702::t_bdd904e12ef9d6 8
+  s_57e031e22d3702::t_9f973dfe2fa07f 1-7,9-22
+src/locales/zh-UG.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 169-171
+src/locales/ja-JP.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 174-176
+src/locales/zh-TW.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 173-175
+src/styles/variables.scss
+  s_57e031e22d3702::t_6375a7b1270b7d 1634-1658
+src/locales/vi-VN.ts
+  s_57e031e22d3702::t_6e00e2882b184c 171,173
+  s_57e031e22d3702::t_fa5bddf5397fbe 172
+src/locales/en-US.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 170-172
+src/types/spec/dialog/base.ts
+  s_57e031e22d3702::t_7c9a45785e6662 16-17,41-43
+src/locales/zh-CN.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 173-175
+src/locales/tr-TR.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 179-181
+src/locales/base.ts
+  s_57e031e22d3702::t_94dbb4dfda55bc 155-157
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a2d7360caada6020453abf5526aadc3a6ce16e48",
+  "prompts": {},
+  "sessions": {
+    "s_57e031e22d3702": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "171c67a7-9573-4647-9696-898c118c4d31",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
