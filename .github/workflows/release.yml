@@ -42,6 +42,22 @@ jobs:
             exit 1
           fi
 
+      - name: Verify release package versions
+        if: env.ABORT != 'true'
+        run: |
+          ROOT_VERSION=$(node -p "require('./package.json').version")
+          H5_VERSION=$(node -p "require('./release/h5/package.json').version")
+          TARO_VERSION=$(node -p "require('./release/taro/package.json').version")
+          echo "Root: $ROOT_VERSION  H5: $H5_VERSION  Taro: $TARO_VERSION"
+          if [ "$ROOT_VERSION" != "$H5_VERSION" ]; then
+            echo "ERROR: release/h5 version ($H5_VERSION) != root version ($ROOT_VERSION)"
+            exit 1
+          fi
+          if [ "$ROOT_VERSION" != "$TARO_VERSION" ]; then
+            echo "ERROR: release/taro version ($TARO_VERSION) != root version ($ROOT_VERSION)"
+            exit 1
+          fi
+
       - name: Run Release @nutui/nutui-react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

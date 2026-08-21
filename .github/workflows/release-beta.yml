@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feat_v3.x
+      - feat_v4.x
   workflow_dispatch:
 
 jobs:
@@ -60,6 +61,22 @@ jobs:
           fi
           if ! pnpm build:taro; then
             echo "构建 nutui-react-taro 失败"
+            exit 1
+          fi
+
+      - name: Verify release package versions
+        if: env.ABORT != 'true'
+        run: |
+          ROOT_VERSION=$(node -p "require('./package.json').version")
+          H5_VERSION=$(node -p "require('./release/h5/package.json').version")
+          TARO_VERSION=$(node -p "require('./release/taro/package.json').version")
+          echo "Root: $ROOT_VERSION  H5: $H5_VERSION  Taro: $TARO_VERSION"
+          if [ "$ROOT_VERSION" != "$H5_VERSION" ]; then
+            echo "ERROR: release/h5 version ($H5_VERSION) != root version ($ROOT_VERSION)"
+            exit 1
+          fi
+          if [ "$ROOT_VERSION" != "$TARO_VERSION" ]; then
+            echo "ERROR: release/taro version ($TARO_VERSION) != root version ($ROOT_VERSION)"
             exit 1
           fi
 

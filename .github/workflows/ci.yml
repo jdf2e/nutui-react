@@ -5,6 +5,7 @@ on:
     branches:
       - next
       - feat_v3.x
+      - feat_v4.x
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
