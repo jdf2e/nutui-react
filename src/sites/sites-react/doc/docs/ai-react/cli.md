@@ -86,6 +86,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 
 ## 了解更多
 
+- [Skill](/#/zh-CN/ai/skill)
 - [MCP Server](/#/zh-CN/ai/mcp)
 - [LLMs.txt](/#/zh-CN/ai/llms)
 - [For Agents](/#/zh-CN/ai/for-agents)

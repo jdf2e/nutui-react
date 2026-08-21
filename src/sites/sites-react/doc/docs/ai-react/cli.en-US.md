@@ -86,6 +86,7 @@ If your IDE supports MCP, the CLI can also run as an MCP server, registering the
 
 ## Learn more
 
+- [Skill](/#/en-US/ai/skill)
 - [MCP Server](/#/en-US/ai/mcp)
 - [LLMs.txt](/#/en-US/ai/llms)
 - [For Agents](/#/en-US/ai/for-agents)
