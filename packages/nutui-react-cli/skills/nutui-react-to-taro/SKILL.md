@@ -35,15 +35,13 @@ which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C>
 
 ### 阶段 0 —— 环境准备（项目配置，最先做）
 
-迁移后的代码在 Taro 里跑起来的前提是项目已配置好。权威来源：NutUI 官方「快速上手」
-（start-react）文档。
+迁移后的代码在 Taro 里跑起来的前提是项目已配置好。
 
 1. **安装依赖**（执行安装前先征求用户同意）：
    - `@nutui/nutui-react-taro`、`@nutui/icons-react-taro`
    - `@tarojs/plugin-html` —— **版本必须与项目的 Taro 版本一致**
    - `babel-plugin-import`（仅当项目需要按需引入时）
-2. **修改 `config/index.js`** —— 开启 HTML 插件并设置设计尺寸，让 NutUI（基于 375
-   的库）正确缩放：
+2. **修改 `config/index.js`** —— 开启 HTML 插件并设置设计尺寸，让 NutUI 正确缩放：
    ```js
    config = {
      plugins: ['@tarojs/plugin-html'],
@@ -118,7 +116,7 @@ nutui-react-taro doc Signature --format json
 
 ### ② 原生 HTML 标签 → Taro 组件 —— 替换 + 补 import
 
-Taro 没有 DOM。替换原生标签并补上 `@tarojs/components` 的 import。
+替换原生标签并补上 `@tarojs/components` 的 import。
 
 | H5 | Taro | 备注 |
 | --- | --- | --- |

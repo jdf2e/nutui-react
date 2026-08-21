@@ -27,7 +27,7 @@ which nutui-react || echo "use: npx -y @nutui/nutui-react-cli <command>"
 
 下文示例为简洁起见统一使用 `nutui-react` 形式。
 
-**始终传入 `--format json` 以获得可编程解析的结构化输出**（默认输出为人类可读的 `text`）。
+**始终传入 `--format json` 以获得可编程解析的结构化输出**。
 
 ## 使用场景
 
@@ -112,6 +112,7 @@ nutui-react token Button --format json
 | `nutui-react doc <Component> [--lang zh\|en]` | 组件完整 Markdown 文档（默认中文） |
 | `nutui-react demo <Component> [name]` | 省略 `name` 列出示例；传入 `name`（如 `demo1`）获取源码 |
 | `nutui-react token [Component]` | Design Token —— 省略组件名则返回全局 Token |
+| `nutui-react mcp` | 启动本地 stdio MCP 服务器，供 IDE 集成 |
 
 ## 全局参数
 

@@ -1,12 +1,7 @@
 ---
 name: nutui-react-taro
 description: >
-  当用户的任务涉及 NutUI React Taro（@nutui/nutui-react-taro）时使用 ——
-  为小程序 / 跨端（Taro）应用编写 NutUI React Taro 组件、调试 NutUI Taro
-  问题，或查询 NutUI Taro 组件的 API/属性/文档/示例/设计变量（Design Token）。
-  触发场景：与 NutUI Taro 相关的代码、从 '@nutui/nutui-react-taro' 导入，或
-  明确的 NutUI Taro 相关提问。NutUI React Taro 是京东面向 Taro（小程序 /
-  多端）的移动端组件库，一套代码同时支持 H5 与小程序。
+  当用户的任务涉及 NutUI React Taro（@nutui/nutui-react-taro）时使用 —— 为小程序 / 跨端（Taro）应用编写 NutUI React Taro 组件、调试 NutUI Taro 问题，或查询 NutUI Taro 组件的 API/属性/文档/示例/设计变量（Design Token）。 触发场景：与 NutUI Taro 相关的代码、从 '@nutui/nutui-react-taro' 导入，或明确的 NutUI Taro 相关提问。NutUI React Taro 是京东面向 Taro（小程序 / 多端）的移动端组件库，一套代码同时支持 H5 与小程序。
 allowed-tools:
   - Bash(nutui-react-taro *)
   - Bash(npx -y @nutui/nutui-react-taro-cli *)
