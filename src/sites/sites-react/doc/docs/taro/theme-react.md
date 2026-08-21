@@ -65,6 +65,44 @@ export default defineConfig({
   ]
 }
 
+### Taro 项目：使用 sass.resource 的性能说明
+
+在 Taro 项目中，通常会通过 `config/index.js` 的 `sass.resource` 来注入全局 SCSS 变量：
+
+```javascript
+// config/index.js
+const config = {
+  sass: {
+    resource: [
+      path.resolve(__dirname, '../src/styles/variables.scss'),
+    ],
+  },
+}
+```
+
+**注意**：`sass.resource` 会将文件内容注入到项目中**每一个** SCSS 文件的头部参与编译。因此，应**只将包含纯 Sass 变量/函数定义的文件**放入 `sass.resource`——即只包含 `$variable`、`@mixin`、`@function` 等编译期定义，不含任何实体 CSS 输出（如 `:root {}` 块或 `@font-face` 声明）。
+
+`theme-default.scss`（主题 CSS 变量文件）全部内容为 `:root, page {}` CSS 自定义属性声明，属于**运行时 CSS**，无需在每个组件编译时重复注入。应将其移至全局入口样式（如 `app.scss`）中一次性引入：
+
+```scss
+/* app.scss —— 全局引入一次，而非通过 sass.resource 重复注入 */
+@import '../../src/styles/theme-default.scss';
+```
+
+```javascript
+// config/index.js —— sass.resource 只保留纯 Sass 变量/函数文件
+const config = {
+  sass: {
+    resource: [
+      path.resolve(__dirname, '../src/styles/variables.scss'),
+      // 不要在这里加入 theme-default.scss
+    ],
+  },
+}
+```
+
+这样可以避免 `theme-default.scss` 的 380+ 行 CSS 被重复编译到每个 SCSS 文件中，显著减少编译产物体积。
+
 ## 暗黑模式
 
 NutUI-React (Taro 版) 原生支持暗黑模式。组件库在暗黑模式下使用一套独立调优的色彩变量。

@@ -131,7 +131,6 @@ const config = {
   sass: {
     resource: [
       path.resolve(__dirname, '../../../', fileStr),
-      path.resolve(__dirname, '../../../', themeStr),
     ],
   },
   defineConstants: {},
