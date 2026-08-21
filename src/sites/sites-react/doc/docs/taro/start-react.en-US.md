@@ -212,11 +212,14 @@ Taro config/index.js
 ```js
 {
   sass: {
-    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
-    // JMAPP Theme
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
-    // JRKF Theme
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
+    // resource only injects pure Sass variables/functions, no CSS entity output
+    resource: [
+      path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables.scss'),
+      // JMAPP Theme
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss'),
+      // JRKF Theme
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss'),
+    ],
   }
 }
 ```
