@@ -200,6 +200,8 @@ module.exports = {
         customStyleName: (name) =>
           `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+        // mini-program only: removes RTL styles for smaller bundle
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`
       },
       'nutui-react',
     ],
