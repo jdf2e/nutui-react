@@ -1,12 +1,7 @@
 ---
 name: nutui-react-to-taro
 description: >
-  当需要把项目（或代码片段）从 NutUI React（@nutui/nutui-react，H5）迁移到
-  NutUI React Taro（@nutui/nutui-react-taro，小程序 / 跨端 Taro）时使用。触发场景
-  如「把 NutUI React 迁移到 Taro」「让这个 H5 的 NutUI 页面能在小程序里跑」，或将 H5 的
-  NutUI 组件转换到 Taro 运行时。两个包共用同一套组件，绝大多数组件一一对应——真正
-  的工作是包名 / import 改写、原生标签 → Taro 组件替换、样式单位修正，以及对少数
-  两端 props 不同的组件做交叉核对。
+  当需要把项目（或代码片段）从 NutUI React（@nutui/nutui-react，H5）迁移到 NutUI React Taro（@nutui/nutui-react-taro，小程序 / 跨端 Taro）时使用。触发场景如「把 NutUI React 迁移到 Taro」「让这个 H5 的 NutUI 页面能在小程序里跑」，或将 H5 的 NutUI 组件转换到 Taro 运行时。两个包共用同一套组件，绝大多数组件一一对应——真正的工作是包名 / import 改写、原生标签 → Taro 组件替换、样式单位修正，以及对少数两端 props 不同的组件做交叉核对。
 allowed-tools:
   - Bash(nutui-react *)
   - Bash(nutui-react-taro *)
@@ -18,10 +13,7 @@ allowed-tools:
 
 # NutUI React（H5）→ NutUI React Taro 迁移
 
-你负责把代码从 `@nutui/nutui-react`（H5）迁移到 `@nutui/nutui-react-taro`
-（Taro 小程序 / 跨端）。两个包由**同一套 codebase** 构建，因此几乎每个组件在两端
-都同名、props 也大体一致。这让迁移高度规则化——但仍有少数环节需要真正的判断，
-不能无脑查找替换。
+你负责把代码从 `@nutui/nutui-react`（H5）迁移到 `@nutui/nutui-react-taro`（Taro 小程序 / 跨端）。两个包由**同一套 codebase** 构建，因此几乎每个组件在两端都同名、props 也大体一致。这让迁移高度规则化——但仍有少数环节需要真正的判断，不能无脑查找替换。
 
 有两个 CLI 支撑本工作，均离线、元数据随包分发：
 
@@ -35,9 +27,7 @@ which nutui-react      || echo "use: npx -y @nutui/nutui-react-cli info <C> --fo
 which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C> --format json"
 ```
 
-**最重要的习惯：每碰一个组件，改写前先用两个 CLI 对比它的 props。** props 通常
-一致，但一旦不同（Uploader、Image、InputNumber 等），盲目照搬会产出在小程序上
-悄悄失效的代码。始终传 `--format json` 并解析它。
+**最重要的习惯：每碰一个组件，改写前先用两个 CLI 对比它的 props。** props 通常一致，但一旦不同（Uploader、Image、InputNumber 等），盲目照搬会产出在小程序上悄悄失效的代码。始终传 `--format json` 并解析它。
 
 ## 迁移流程
 
@@ -111,8 +101,7 @@ nutui-react-taro doc Signature --format json
 
 ### 阶段 4 —— 验证
 
-- 构建 Taro 目标端并确认编译通过：如
-  `taro build --type weapp --watch`（或 `--type h5`）。
+- 构建 Taro 目标端并确认编译通过：如 `taro build --type weapp --watch`（或 `--type h5`）。
 - 手动复查每个高风险文件——**编译通过不代表** canvas / Web API 的改写行为正确。
 - 报告哪些文件已完全自动迁移、哪些需要用户复核。
 
@@ -151,10 +140,8 @@ Taro 没有 DOM。替换原生标签并补上 `@tarojs/components` 的 import。
 ### ③ 样式单位 —— 裸 px 与逻辑属性
 
 - 裸数字 px 必须转成字符串：`margin: 8` → `margin: '8px'`。
-- 小程序不支持逻辑属性：`marginInlineStart` → `marginLeft`、
-  `insetInlineStart` → `left` 等。
-- 需要跨设备缩放的值，用从 `@nutui/nutui-react-taro` 引入的 `pxTransform(10)`
-  （返回按 rpx 适配的长度）。
+- 小程序不支持逻辑属性：`marginInlineStart` → `marginLeft`、`insetInlineStart` → `left` 等。
+- 需要跨设备缩放的值，用从 `@nutui/nutui-react-taro` 引入的 `pxTransform(10)`（返回按 rpx 适配的长度）。
 
 ```diff
 - const marginStyle = { margin: 8 }
@@ -163,8 +150,7 @@ Taro 没有 DOM。替换原生标签并补上 `@tarojs/components` 的 import。
 
 ### ④ 触摸事件类型
 
-小程序的触摸事件不是 `MouseEvent`。放宽类型，并从 `@tarojs/components` 引入
-`ITouchEvent`。
+小程序的触摸事件不是 `MouseEvent`。放宽类型，并从 `@tarojs/components` 引入 `ITouchEvent`。
 
 ```diff
 + import { ITouchEvent } from '@tarojs/components'
@@ -174,10 +160,7 @@ Taro 没有 DOM。替换原生标签并补上 `@tarojs/components` 的 import。
 
 ### ⑤ Web-only API → Taro API —— 需要推理，逐处改写
 
-Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**，能力随目标版本漂移
-——**别一律删除**。逐处判断：能映射到 `@tarojs/taro` 或组件自身能力的就映射；运行
-时确实支持的（如异步版 `getBoundingClientRect`）保留；只有真正无法迁移的才删。常见
-映射：
+Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**，能力随目标版本漂移——**别一律删除**。逐处判断：能映射到 `@tarojs/taro` 或组件自身能力的就映射；运行时确实支持的（如异步版 `getBoundingClientRect`）保留；只有真正无法迁移的才删。常见映射：
 
 | H5 写法 | Taro 替代 |
 | --- | --- |
@@ -189,8 +172,7 @@ Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**，能力
 
 ### ⑥ 组件 props 差异 —— 用两个 CLI 交叉核对
 
-绝大多数 props 一致，但有些组件确实不同。**永远不要假设，去 diff。** 已确认的例子
-（迁移时请实时核对，版本会漂移）：
+绝大多数 props 一致，但有些组件确实不同。**永远不要假设，去 diff。** 已确认的例子（迁移时请实时核对，版本会漂移）：
 
 | 组件 | 仅 H5 有的 props | 仅 Taro 有的 props | 处理 |
 | --- | --- | --- | --- |
@@ -201,24 +183,15 @@ Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**，能力
 
 ## 陷阱（盲目替换会做错）
 
-1. **`Audio` 在 Taro 端无对应组件。** 它只存在于 H5 包。当某文件用到 NutUI 的
-   `Audio` 时，停下并告知用户——建议改用 `Taro.createInnerAudioContext()` 或自定义
-   方案。不要凭空编一个 import。
-2. **不要盲目替换每一个 `document`。** 有些组件原样接受它——如 `Popup` 的
-   `portal={document.body}` 在 Taro 端**保持不变**（组件已处理）。按组件语义 /
-   CLI doc 判断，而非按 grep。
-3. **canvas 类组件（如 `Signature`）是语义改写。** H5 端常有手写 DOM 操作
-   （`document.createElement('img')`、往节点里 append）。在 Taro 端删掉那段 DOM
-   逻辑，改用组件的 `canvasId` prop + ref 方法。先读 `nutui-react-taro doc Signature`。
-4. **`<span>` → `<Text>` 还是 `<View>`。** `<Text>` 是行内、仅用于纯文本；把子元素
-   包进 `<Text>` 会破坏布局。有嵌套元素时用 `<View>`。
+1. **`Audio` 在 Taro 端无对应组件。** 它只存在于 H5 包。当某文件用到 NutUI 的 `Audio` 时，停下并告知用户——建议改用 `Taro.createInnerAudioContext()` 或自定义方案。不要凭空编一个 import。
+2. **不要盲目替换每一个 `document`。** 有些组件原样接受它——如 `Popup` 的 `portal={document.body}` 在 Taro 端**保持不变**（组件已处理）。按组件语义 / CLI doc 判断，而非按 grep。
+3. **canvas 类组件（如 `Signature`）是语义改写。** H5 端常有手写 DOM 操作（`document.createElement('img')`、往节点里 append）。在 Taro 端删掉那段 DOM 逻辑，改用组件的 `canvasId` prop + ref 方法。先读 `nutui-react-taro doc Signature`。
+4. **`<span>` → `<Text>` 还是 `<View>`。** `<Text>` 是行内、仅用于纯文本；把子元素包进 `<Text>` 会破坏布局。有嵌套元素时用 `<View>`。
 
 ## 核心规则
 
-1. **改写每个组件前，用 `nutui-react info <C>` 和 `nutui-react-taro info <C>` 交叉
-   核对它的 props。** 这是整个迁移的核心——见规则 ⑥。
+1. **改写每个组件前，用 `nutui-react info <C>` 和 `nutui-react-taro info <C>` 交叉核对它的 props。** 这是整个迁移的核心——见规则 ⑥。
 2. **始终 `--format json`** —— 解析结构化输出，不要正则抓文本。
 3. **确认组件在 Taro 端存在**，用 `nutui-react-taro list`；留意 `Audio` 缺口。
-4. **规则 ①–④ 是机械的；⑤–⑥ 及陷阱需要判断** —— 后者逐处处理，对无法安全自动
-   迁移的地方标记出来交用户复核。在 Taro 构建编译通过前，不要声称某文件已迁移完成。
+4. **规则 ①–④ 是机械的；⑤–⑥ 及陷阱需要判断** —— 后者逐处处理，对无法安全自动迁移的地方标记出来交用户复核。在 Taro 构建编译通过前，不要声称某文件已迁移完成。
 5. **先做环境准备** —— 若项目无法编译 Taro + NutUI，代码迁移就没有意义。

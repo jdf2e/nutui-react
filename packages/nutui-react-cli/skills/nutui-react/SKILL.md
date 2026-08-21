@@ -1,11 +1,7 @@
 ---
 name: nutui-react
 description: >
-  当用户的任务涉及 NutUI React（@nutui/nutui-react）时使用 —— 编写
-  NutUI React 组件、调试 NutUI 问题，或查询 NutUI 组件的
-  API/属性/文档/示例/设计变量（Design Token）。触发场景：与 NutUI 相关的代码、
-  从 '@nutui/nutui-react' 导入，或明确的 NutUI 相关提问。NutUI React 是京东的
-  轻量级移动端（H5）组件库。
+  当用户的任务涉及 NutUI React（@nutui/nutui-react）时使用 —— 编写 NutUI React 组件、调试 NutUI 问题，或查询 NutUI 组件的 API/属性/文档/示例/设计变量（Design Token）。触发场景：与 NutUI 相关的代码、从 '@nutui/nutui-react' 导入，或明确的 NutUI 相关提问。NutUI React 是京东的轻量级移动端（H5）组件库。
 allowed-tools:
   - Bash(nutui-react *)
   - Bash(npx -y @nutui/nutui-react-cli *)
