@@ -1,14 +1,12 @@
 import { defineConfig } from 'vite'
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import reactRefresh from '@vitejs/plugin-react'
-import autoprefixer from 'autoprefixer'
-import atImport from 'postcss-import'
+import {
+  buildCssOptions,
+  packageAliases,
+} from './vite.config.base.mts'
 
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
-const projectID = process.env.VITE_APP_PROJECT_ID
-if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
-}
+const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,31 +30,9 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [...packageAliases],
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: fileStr,
-      },
-      postcss: {
-        plugins: [
-          atImport({ path: join(__dirname, 'src`') }),
-          autoprefixer({
-            overrideBrowserslist: [
-              '> 0.5%',
-              'last 2 versions',
-              'ie > 11',
-              'iOS >= 10',
-              'Android >= 5',
-            ],
-          }),
-        ],
-      },
-    },
-  },
+  css: buildCssOptions(projectID, true),
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
