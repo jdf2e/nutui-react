@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
@@ -8,7 +9,7 @@ const Demo3 = () => {
   return (
     <>
       <NoticeBar content={textShort} scrollable />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar content={text} scrollable={false} />
     </>
   )

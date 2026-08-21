@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar } from '@nutui/nutui-react-taro'
 import { ArrowRight } from '@nutui/icons-react-taro'
 
@@ -14,9 +15,9 @@ const Demo2 = () => {
         wrap
         rightIcon={<ArrowRight />}
       />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar content={text} align="center" rightIcon={<ArrowRight />} />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar
         content={textShort}
         align="center"

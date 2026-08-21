@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Fabulous } from '@nutui/icons-react'
+import { Fabulous, Notice } from '@nutui/icons-react'
 import NoticeBar from '@/packages/noticebar'
 import Image from '@/packages/image'
 
@@ -351,4 +351,80 @@ test('dynamic children update test', async () => {
       expect(item).toHaveStyle(`line-height: ${height}px`)
     })
   })
+})
+
+test('wrap mode applies wrapable class with left-icon', () => {
+  const { container } = render(
+    <NoticeBar content="双行文本内容" wrap leftIcon={<Notice />} />
+  )
+  expect(container.querySelector('.nut-noticebar-box')).toHaveClass(
+    'nut-noticebar-box-wrapable'
+  )
+  expect(container.querySelector('.nut-noticebar-box-left-icon')).toBeTruthy()
+})
+
+test('description prop renders sub text', () => {
+  const { container } = render(
+    <NoticeBar content="主文本内容" description="副文本内容" />
+  )
+  const desc = container.querySelector('.nut-noticebar-box-description')
+  expect(desc).toBeTruthy()
+  expect(desc?.innerHTML).toBe('副文本内容')
+})
+
+test('tag prop renders info tag', () => {
+  const { container } = render(
+    <NoticeBar content="提示文案" tag={<Notice width={12} height={12} />} />
+  )
+  const tagEl = container.querySelector('.nut-noticebar-box-tag')
+  expect(tagEl).toBeTruthy()
+  expect(tagEl?.querySelector('.nut-icon')).toBeTruthy()
+})
+
+test('action prop renders action button', () => {
+  const { container } = render(
+    <NoticeBar content="提示文案" action={<span>强行动点</span>} />
+  )
+  const actionEl = container.querySelector('.nut-noticebar-box-action')
+  expect(actionEl).toBeTruthy()
+  expect(actionEl?.innerHTML).toContain('强行动点')
+})
+
+test('content-wrapper is rendered in horizontal mode', () => {
+  const { container } = render(
+    <NoticeBar content="测试内容" description="副文本" />
+  )
+  expect(
+    container.querySelector('.nut-noticebar-box-content-wrapper')
+  ).toBeTruthy()
+})
+
+test('closeable renders Close icon by default', () => {
+  const { container } = render(<NoticeBar content="测试内容" closeable />)
+  const closeIcon = container.querySelector('.nut-noticebar-box-right-icon')
+  expect(closeIcon).toBeTruthy()
+  expect(closeIcon?.querySelector('.nut-icon-Close')).toBeTruthy()
+})
+
+test('autoClose renders countdown ring and closes after delay', async () => {
+  vi.useFakeTimers()
+  const handleClose = vi.fn()
+  const { container } = render(
+    <NoticeBar content="自动关闭" autoClose={3000} onClose={handleClose} />
+  )
+
+  expect(container.querySelector('.nut-noticebar-box')).toBeTruthy()
+  expect(
+    container.querySelector('.nut-noticebar-box-close-countdown')
+  ).toBeTruthy()
+  expect(container.querySelector('.nut-noticebar-box-close-icon')).toBeTruthy()
+
+  act(() => {
+    vi.advanceTimersByTime(3000)
+  })
+
+  expect(container.querySelector('.nut-noticebar-box')).toBeFalsy()
+  expect(handleClose).toHaveBeenCalled()
+
+  vi.useRealTimers()
 })

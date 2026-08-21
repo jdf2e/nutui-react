@@ -1103,6 +1103,22 @@ $noticebar-left-icon-width: var(--nutui-noticebar-left-icon-width,
     16px) !default;
 $noticebar-right-icon-width: var(--nutui-noticebar-right-icon-width,
     16px) !default;
+$noticebar-icon-color: var(--nutui-noticebar-icon-color, $color-primary) !default;
+$noticebar-left-icon-wrap-width: var(--nutui-noticebar-left-icon-wrap-width, 32px) !default;
+$noticebar-close-size: var(--nutui-noticebar-close-size, 20px) !default;
+$noticebar-tag-size: var(--nutui-noticebar-tag-size, 12px) !default;
+$noticebar-tag-gap: var(--nutui-noticebar-tag-gap, 4px) !default;
+$noticebar-action-max-width: var(--nutui-noticebar-action-max-width, 99px) !default;
+$noticebar-action-gap: var(--nutui-noticebar-action-gap, 12px) !default;
+$noticebar-action-font-size: var(--nutui-noticebar-action-font-size, $font-size-xs) !default;
+$noticebar-description-font-size: var(--nutui-noticebar-description-font-size, 11px) !default;
+$noticebar-description-color: var(--nutui-noticebar-description-color, $color-text) !default;
+$noticebar-left-icon-border-radius: var(--nutui-noticebar-left-icon-border-radius, 4px) !default;
+$noticebar-description-line-height: var(--nutui-noticebar-description-line-height, 16px) !default;
+$noticebar-close-color: var(--nutui-noticebar-close-color, $color-text-help) !default;
+$noticebar-close-icon-size: var(--nutui-noticebar-close-icon-size, 10px) !default;
+$noticebar-close-ring-color: var(--nutui-noticebar-close-ring-color, $color-text-help) !default;
+$noticebar-close-ring-shadow-color: var(--nutui-noticebar-close-ring-shadow-color, $color-border) !default;
 
 // TimeSelect（✅）
 $timeselect-date-width: var(--nutui-timeselect-date-width, 140px) !default;
