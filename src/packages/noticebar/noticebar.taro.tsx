@@ -22,13 +22,17 @@ const defaultProps = {
   direction: 'horizontal',
   list: [],
   duration: 1000,
-  height: 40,
+  height: 36,
   content: '',
   closeable: false,
   wrap: false,
   leftIcon: <Notice />,
   rightIcon: null,
   right: null,
+  description: null,
+  tag: null,
+  action: null,
+  autoClose: 0,
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -53,6 +57,10 @@ export const NoticeBar: FunctionComponent<
     leftIcon,
     rightIcon,
     right,
+    description,
+    tag,
+    action,
+    autoClose,
     delay,
     scrollable,
     speed,
@@ -75,6 +83,7 @@ export const NoticeBar: FunctionComponent<
   const contentRefId = `content-ref-${uid}`
 
   const [showNoticeBar, setShowNoticeBar] = useState(true)
+  const [autoCloseProgress, setAutoCloseProgress] = useState(100)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
@@ -124,6 +133,33 @@ export const NoticeBar: FunctionComponent<
     }
     return 0
   })()
+
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+  const autoCloseTimerRef = useRef(0)
+  const autoCloseIntervalRef = useRef(0)
+
+  // 自动关闭
+  useEffect(() => {
+    if (autoClose && autoClose > 0 && showNoticeBar) {
+      const startTime = Date.now()
+      autoCloseIntervalRef.current = setInterval(() => {
+        const elapsed = Date.now() - startTime
+        const remaining = Math.max(0, 100 - (elapsed / autoClose) * 100)
+        setAutoCloseProgress(remaining)
+        if (remaining <= 0) clearInterval(autoCloseIntervalRef.current)
+      }, 50) as unknown as number
+      autoCloseTimerRef.current = setTimeout(() => {
+        setShowNoticeBar(false)
+        onCloseRef.current?.()
+      }, autoClose) as unknown as number
+      return () => {
+        clearInterval(autoCloseIntervalRef.current)
+        clearTimeout(autoCloseTimerRef.current)
+      }
+    }
+    setAutoCloseProgress(100)
+  }, [autoClose, showNoticeBar])
 
   useEffect(() => {
     if (isVertical) {
@@ -186,6 +222,18 @@ export const NoticeBar: FunctionComponent<
     onClick && onClick(event)
   }
 
+  const onClickIcon = useCallback(
+    (event: ITouchEvent) => {
+      event.stopPropagation()
+      setShowNoticeBar(false)
+      clearInterval(autoCloseIntervalRef.current)
+      clearTimeout(autoCloseTimerRef.current)
+      close && close(event)
+      onClose && onClose(event)
+    },
+    [close, onClose]
+  )
+
   const onAnimationEnd = () => {
     SetFirstRound(false)
     setTimeout(() => {
@@ -215,16 +263,6 @@ export const NoticeBar: FunctionComponent<
       SetAnimate(false)
     }, time)
   }
-
-  const handleClickIcon = useCallback(
-    (event: ITouchEvent) => {
-      event.stopPropagation()
-      setShowNoticeBar(!closeable)
-      close && close(event)
-      onClose && onClose(event)
-    },
-    [close, onClose, closeable]
-  )
 
   const isEllipsis = () => {
     if (isCanScroll == null && align === 'left') {
@@ -392,7 +430,6 @@ export const NoticeBar: FunctionComponent<
     const style: any = { width: '100%' }
     if (height) {
       style.height = `${height}px`
-      // style.lineHeight = `${height}px`
     }
     const offset = childOffset[index]
     if (offset) {
@@ -461,78 +498,108 @@ export const NoticeBar: FunctionComponent<
     setIsContainerReady(true)
   }, [])
 
-  const renderLeftIcon = useCallback(() => {
+  const renderLeftIcon = () => {
+    if (!leftIcon) return null
+    return <View className={`${classPrefix}-box-left-icon`}>{leftIcon}</View>
+  }
+
+  const renderTag = () => {
+    if (!tag) return null
+    return <View className={`${classPrefix}-box-tag`}>{tag}</View>
+  }
+
+  const renderAction = () => {
+    if (!action) return null
+    return <View className={`${classPrefix}-box-action`}>{action}</View>
+  }
+
+  const renderAutoCloseIcon = () => {
     return (
-      <>
-        {leftIcon ? (
-          <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
-        ) : null}
-      </>
+      <View
+        className={`${classPrefix}-box-close-countdown`}
+        style={
+          {
+            '--progress': `${autoCloseProgress}%`,
+          } as React.CSSProperties
+        }
+      >
+        <Close className={`${classPrefix}-box-close-icon`} />
+      </View>
     )
-  }, [leftIcon])
+  }
 
-  const renderRight = useCallback(
-    () => (
-      <>
-        {right ? (
-          <View className="nut-noticebar-box-right">{right}</View>
-        ) : null}
-      </>
-    ),
-    [right]
-  )
+  const renderCloseIcon = () => {
+    if (!closeable && !rightIcon && !(autoClose && autoClose > 0)) return null
+    return (
+      <View className={`${classPrefix}-box-right-icon`} onClick={onClickIcon}>
+        {rightIcon ||
+          (autoClose && autoClose > 0 ? (
+            renderAutoCloseIcon()
+          ) : (
+            <Close className={`${classPrefix}-box-right-icon-default`} />
+          ))}
+      </View>
+    )
+  }
 
-  const renderRightIcon = useCallback(
-    () => (
-      <>
-        {rightIcon || closeable ? (
-          <View
-            className="nut-noticebar-box-right-icon"
-            onClick={handleClickIcon}
-          >
-            {rightIcon || (
-              <Close className="nut-noticebar-box-right-icon-default" />
-            )}
-          </View>
-        ) : null}
-      </>
-    ),
-    [rightIcon, closeable, handleClickIcon]
-  )
+  const renderRight = () => {
+    if (!right) return null
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        '[NutUI] NoticeBar: `right` prop is deprecated, use `action` instead.'
+      )
+    }
+    return <View className={`${classPrefix}-box-right`}>{right}</View>
+  }
 
   return (
     <View className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {renderLeftIcon()}
-          <View ref={wrapRef} className="nut-noticebar-box-wrap" id={wrapRefId}>
-            <View
-              ref={contentRef}
-              id={contentRefId}
-              className={`nut-noticebar-box-wrap-content ${animationClass} ${
-                isEllipsis() ? 'nut-ellipsis' : ''
-              }`}
-              style={contentStyle}
-              onAnimationEnd={onAnimationEnd}
-            >
-              {children}
-              {content}
+          <View className={`${classPrefix}-box-content-wrapper`}>
+            <View className={`${classPrefix}-box-content-main`}>
+              <View
+                ref={wrapRef}
+                className={`${classPrefix}-box-wrap`}
+                id={wrapRefId}
+              >
+                <View
+                  ref={contentRef}
+                  id={contentRefId}
+                  className={`${classPrefix}-box-wrap-content ${animationClass} ${
+                    isEllipsis() ? 'nut-ellipsis' : ''
+                  }`}
+                  style={contentStyle}
+                  onAnimationEnd={onAnimationEnd}
+                >
+                  {children}
+                  {content}
+                </View>
+              </View>
+              {renderTag()}
             </View>
+            {description ? (
+              <View className={`${classPrefix}-box-description`}>
+                {description}
+              </View>
+            ) : null}
           </View>
+          {renderAction()}
           {renderRight()}
-          {renderRightIcon()}
+          {renderCloseIcon()}
         </View>
       ) : null}
       {showNoticeBar && hasVerticalContent && isVertical ? (
         <View
-          className="nut-noticebar-vertical"
+          className={`${classPrefix}-vertical`}
           style={barStyle}
           ref={containerRefCallback}
           onClick={handleClick}
         >
           {renderLeftIcon()}
           {children ? (
-            <View className="nut-noticebar-box-wrap" ref={innerRef}>
+            <View className={`${classPrefix}-box-wrap`} ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   <View
@@ -549,13 +616,13 @@ export const NoticeBar: FunctionComponent<
             </View>
           ) : (
             <View
-              className="nut-noticebar-box-horseLamp-list"
+              className={`${classPrefix}-box-horseLamp-list`}
               style={horseLampStyle}
             >
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   <View
-                    className="nut-noticebar-box-horseLamp-list-item"
+                    className={`${classPrefix}-box-horseLamp-list-item`}
                     style={{ height }}
                     key={index}
                     onClick={(e) => {
@@ -568,8 +635,10 @@ export const NoticeBar: FunctionComponent<
               })}
             </View>
           )}
+          {renderTag()}
+          {renderAction()}
           {renderRight()}
-          {renderRightIcon()}
+          {renderCloseIcon()}
         </View>
       ) : null}
     </View>

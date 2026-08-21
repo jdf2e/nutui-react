@@ -1770,30 +1770,90 @@ $fixednav-item-active-color: var(
 ) !default;
 
 // NoticeBar（✅）
-$noticebar-height: var(--nutui-noticebar-height, scale-px(36px)) !default;
+$noticebar-height: var(--nutui-noticebar-height, scale-px(40px)) !default;
 $noticebar-background: var(
   --nutui-noticebar-background,
-  rgba(251, 248, 220, 1)
+  $color-background-overlay
 ) !default;
-$noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
-$noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-s) !default;
-$noticebar-line-height: var(--nutui-noticebar-line-height, scale-px(24px)) !default;
-$noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 scale-px(16px)) !default;
+$noticebar-color: var(--nutui-noticebar-color, $color-title) !default;
+$noticebar-icon-color: var(
+  --nutui-noticebar-icon-color,
+  $color-primary
+) !default;
+$noticebar-font-size: var(--nutui-noticebar-font-size, $font-size-base) !default;
+$noticebar-line-height: var(--nutui-noticebar-line-height, scale-px(20px)) !default;
+$noticebar-box-padding: var(--nutui-noticebar-box-padding, scale-px(2px) scale-px(8px)) !default;
 $noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
 $noticebar-wrap-padding: var(
   --nutui-noticebar-wrapable-padding,
-  scale-px(8px) scale-px(16px)
+  scale-px(9px) scale-px(8px)
 ) !default;
-$noticebar-icon-gap: var(--nutui-noticebar-icon-gap, scale-px(4px)) !default;
+$noticebar-icon-gap: var(--nutui-noticebar-icon-gap, scale-px(6px)) !default;
 $noticebar-left-icon-width: var(
   --nutui-noticebar-left-icon-width,
-  scale-px(16px)
+  scale-px(24px)
+) !default;
+$noticebar-left-icon-wrap-width: var(
+  --nutui-noticebar-left-icon-wrap-width,
+  scale-px(32px)
 ) !default;
 $noticebar-right-icon-width: var(
   --nutui-noticebar-right-icon-width,
   scale-px(16px)
 ) !default;
-
+$noticebar-close-size: var(
+  --nutui-noticebar-close-size,
+  scale-px(20px)
+) !default;
+$noticebar-tag-size: var(
+  --nutui-noticebar-tag-size,
+  scale-px(12px)
+) !default;
+$noticebar-tag-gap: var(--nutui-noticebar-tag-gap, scale-px(4px)) !default;
+$noticebar-action-max-width: var(
+  --nutui-noticebar-action-max-width,
+  scale-px(99px)
+) !default;
+$noticebar-action-gap: var(
+  --nutui-noticebar-action-gap,
+  scale-px(12px)
+) !default;
+$noticebar-action-font-size: var(
+  --nutui-noticebar-action-font-size,
+  $font-size-xs
+) !default;
+$noticebar-description-font-size: var(
+  --nutui-noticebar-description-font-size,
+  scale-px(11px)
+) !default;
+$noticebar-description-color: var(
+  --nutui-noticebar-description-color,
+  $color-text
+) !default;
+$noticebar-left-icon-border-radius: var(
+  --nutui-noticebar-left-icon-border-radius,
+  scale-px(4px)
+) !default;
+$noticebar-description-line-height: var(
+  --nutui-noticebar-description-line-height,
+  scale-px(16px)
+) !default;
+$noticebar-close-color: var(
+  --nutui-noticebar-close-color,
+  $color-text-help
+) !default;
+$noticebar-close-icon-size: var(
+  --nutui-noticebar-close-icon-size,
+  scale-px(10px)
+) !default;
+$noticebar-close-ring-color: var(
+  --nutui-noticebar-close-ring-color,
+  $color-text-help
+) !default;
+$noticebar-close-ring-shadow-color: var(
+  --nutui-noticebar-close-ring-shadow-color,
+  $color-border
+) !default;
 // TimeSelect（✅）
 $timeselect-date-width: var(--nutui-timeselect-date-width, scale-px(140px)) !default;
 $timeselect-date-height: var(--nutui-timeselect-date-height, scale-px(40px)) !default;
@@ -1883,23 +1943,71 @@ $badge-outline-border: var(
 );
 
 //popover（✅）
-$popover-border-radius: var(--nutui-popover-border-radius, $radius-xs) !default;
+$popover-border-radius: var(--nutui-popover-border-radius, $radius-s) !default;
 $popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
-  #ffffff
+  $color-mask
 ) !default;
-$popover-text-color: var(--nutui-popover-text-color, $color-mask) !default;
+$popover-text-color: var(--nutui-popover-text-color, $color-primary-text) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled
 ) !default;
 $popover-divider-color: var(
   --nutui-popover-divider-color,
+  rgba(255, 255, 255, 0.12)
+) !default;
+$popover-padding-horizontal: var(
+  --nutui-popover-padding-horizontal,
+  scale-px(8px)
+) !default;
+$popover-padding-vertical: var(
+  --nutui-popover-padding-vertical,
+  scale-px(6px)
+) !default;
+$popover-height: var(--nutui-popover-height, scale-px(28px)) !default;
+$popover-icon-size: var(--nutui-popover-icon-size, scale-px(12px)) !default;
+$popover-icon-color: var(
+  --nutui-popover-icon-color,
+  rgba(255, 255, 255, 0.8)
+) !default;
+$popover-status-max-width: var(
+  --nutui-popover-status-max-width,
+  scale-px(240px)
+) !default;
+$popover-description-max-width: var(
+  --nutui-popover-description-max-width,
+  scale-px(208px)
+) !default;
+$popover-action-hotspot-size: var(
+  --nutui-popover-action-hotspot-size,
+  scale-px(36px)
+) !default;
+$popover-light-content-background-color: var(
+  --nutui-popover-light-content-background-color,
+  #ffffff
+) !default;
+$popover-light-text-color: var(
+  --nutui-popover-light-text-color,
+  $color-mask
+) !default;
+$popover-light-icon-color: var(
+  --nutui-popover-light-icon-color,
+  rgba(17, 20, 26, 0.8)
+) !default;
+$popover-light-divider-color: var(
+  --nutui-popover-light-divider-color,
   $color-border
 ) !default;
-$popover-padding: var(--nutui-popover-padding, scale-px(8px)) !default;
-$popover-item-width: var(--nutui-popover-item-width, scale-px(160px)) !default;
+$popover-padding: var(
+  --nutui-popover-padding,
+  $popover-padding-horizontal
+) !default;
+$popover-item-width: var(
+  --nutui-popover-item-width,
+  $popover-status-max-width
+) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, scale-px(10px)) !default;

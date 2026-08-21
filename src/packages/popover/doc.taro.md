@@ -10,7 +10,7 @@ import { Popover } from '@nutui/nutui-react-taro'
 
 ## 示例代码
 
-### 基础用法
+### 气泡类型
 
 :::demo
 
@@ -81,27 +81,24 @@ bottom-right  # 底部右侧位置
 
 :::
 
-### 自定义目标元素
-
-:::demo
-
-<CodeBlock src='taro/demo5.tsx'></CodeBlock>
-
-:::
-
 ## Popover
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| type | 气泡类型，`status` 状态型（图标+文案+关闭），`description` 说明型（仅文案） | `status` \| `description` | `status` |
 | list | 选项列表 | `PopoverList[]` | `[]` |
 | visible | 是否展示气泡弹出层 | `boolean` | `false` |
-| location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string` | `bottom` |
-| offset | 出现位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
+| theme | 主题风格，默认 `dark` 为设计规范深色气泡；`light` 为明亮风格（白底深字） | `light` \| `dark` | `dark` |
+| location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `FullPosition` | `bottom` |
+| offset | 出现位置的偏移量 | `string[]` \| `number[]` | `[0, 8]` |
+| arrowOffset | 小箭头的偏移量 | `number` | `20` |
 | showArrow | 是否显示小箭头 | `boolean` | `true` |
 | closeOnActionClick | 是否在点击选项后关闭 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
+| autoShow | 是否自动弹出，需配合 `onOpen` 更新 `visible` | `boolean` | `false` |
+| duration | 自动关闭时长（ms），`0` 表示不自动关闭 | `number` | `0` |
 | targetId | 自定义目标元素 id | `string` | `-` |
 | onClick | 点击切换 popover 展示状态 | `() => void` | `() => {}` |
 | onSelect | 点击选项时触发 | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
@@ -133,13 +130,25 @@ PopoverList 属性是一个由对象构成的数组，数组中的每个对象�
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-popover-border-radius | popover 内容区的 border 的圆角值 | `8px` |
-| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `12px` |
-| \--nutui-popover-text-color | 选项区的文字颜色 | `$color-title` |
-| \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
-| \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
+| \--nutui-popover-border-radius | popover 内容区的圆角 | `6px` |
+| \--nutui-popover-font-size | popover 内容区的字号 | `12px` |
+| \--nutui-popover-text-color | 文案颜色 | `$color-primary-text` |
+| \--nutui-popover-content-background-color | 内容区背景色 | `$color-mask` |
+| \--nutui-popover-divider-color | 多选项之间的分割线颜色 | `rgba(255, 255, 255, 0.12)` |
 | \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disabled` |
-| \--nutui-popover-padding | 选项区菜单每一项的 padding 值 | `8px` |
-| \--nutui-popover-item-width | 选项区菜单每一项宽度值，超过宽度值后，会折行展示，保障信息的完整性 | `160px` |
+| \--nutui-popover-padding-horizontal | 内容区水平内边距 | `8px` |
+| \--nutui-popover-padding-vertical | 内容区垂直内边距 | `6px` |
+| \--nutui-popover-height | 气泡高度 | `28px` |
+| \--nutui-popover-icon-size | 图标尺寸 | `12px` |
+| \--nutui-popover-icon-color | 图标颜色（80% 透明度） | `rgba(255, 255, 255, 0.8)` |
+| \--nutui-popover-status-max-width | 状态型最大宽度 | `240px` |
+| \--nutui-popover-description-max-width | 说明型最大宽度 | `208px` |
+| \--nutui-popover-action-hotspot-size | 关闭按钮触控热区尺寸 | `36px` |
+| \--nutui-popover-light-content-background-color | 明亮风格背景色 | `#ffffff` |
+| \--nutui-popover-light-text-color | 明亮风格文案颜色 | `$color-mask` |
+| \--nutui-popover-light-icon-color | 明亮风格图标颜色（80% 透明度） | `rgba(17, 20, 26, 0.8)` |
+| \--nutui-popover-light-divider-color | 明亮风格分割线颜色 | `$color-border` |
+| \--nutui-popover-padding | 兼容旧版水平内边距变量 | `8px` |
+| \--nutui-popover-item-width | 兼容旧版选项宽度，等同状态型最大宽度 | `240px` |
 
 <Contribution name="Popover" />

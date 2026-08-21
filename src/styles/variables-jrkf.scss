@@ -1984,6 +1984,25 @@ $noticebar-right-icon-width: var(
   --nutui-noticebar-right-icon-width,
   16px
 ) !default;
+$noticebar-icon-color: var(--nutui-noticebar-icon-color, $color-primary) !default;
+$noticebar-left-icon-wrap-width: var(
+  --nutui-noticebar-left-icon-wrap-width,
+  32px
+) !default;
+$noticebar-close-size: var(--nutui-noticebar-close-size, 20px) !default;
+$noticebar-tag-size: var(--nutui-noticebar-tag-size, 12px) !default;
+$noticebar-tag-gap: var(--nutui-noticebar-tag-gap, 4px) !default;
+$noticebar-action-max-width: var(--nutui-noticebar-action-max-width, 99px) !default;
+$noticebar-action-gap: var(--nutui-noticebar-action-gap, 12px) !default;
+$noticebar-action-font-size: var(--nutui-noticebar-action-font-size, $font-size-xs) !default;
+$noticebar-description-font-size: var(--nutui-noticebar-description-font-size, 11px) !default;
+$noticebar-description-color: var(--nutui-noticebar-description-color, $color-text) !default;
+$noticebar-left-icon-border-radius: var(--nutui-noticebar-left-icon-border-radius, 4px) !default;
+$noticebar-description-line-height: var(--nutui-noticebar-description-line-height, 16px) !default;
+$noticebar-close-color: var(--nutui-noticebar-close-color, $color-text-help) !default;
+$noticebar-close-icon-size: var(--nutui-noticebar-close-icon-size, 10px) !default;
+$noticebar-close-ring-color: var(--nutui-noticebar-close-ring-color, $color-text-help) !default;
+$noticebar-close-ring-shadow-color: var(--nutui-noticebar-close-ring-shadow-color, $color-border) !default;
 
 // TimeSelect（✅）
 $timeselect-date-width: var(--nutui-timeselect-date-width, 140px) !default;
@@ -2079,19 +2098,46 @@ $badge-outline-border: var(
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, $radius-s) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-base) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-s) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
-  #ffffff
+  $color-mask
 ) !default;
-$popover-text-color: var(--nutui-popover-text-color, $color-text) !default;
+$popover-text-color: var(--nutui-popover-text-color, $color-primary-text) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled
 ) !default;
-$popover-divider-color: var(--nutui-popover-divider-color, none) !default;
-$popover-padding: var(--nutui-popover-padding, $spacing-xl) !default;
-$popover-item-width: var(--nutui-popover-item-width, 160px) !default;
+$popover-divider-color: var(
+  --nutui-popover-divider-color,
+  rgba(255, 255, 255, 0.12)
+) !default;
+$popover-padding-horizontal: var(--nutui-popover-padding-horizontal, 8px) !default;
+$popover-padding-vertical: var(--nutui-popover-padding-vertical, 6px) !default;
+$popover-height: var(--nutui-popover-height, 28px) !default;
+$popover-icon-size: var(--nutui-popover-icon-size, 12px) !default;
+$popover-icon-color: var(--nutui-popover-icon-color, rgba(255, 255, 255, 0.8)) !default;
+$popover-status-max-width: var(--nutui-popover-status-max-width, 240px) !default;
+$popover-description-max-width: var(
+  --nutui-popover-description-max-width,
+  208px
+) !default;
+$popover-action-hotspot-size: var(--nutui-popover-action-hotspot-size, 36px) !default;
+$popover-light-content-background-color: var(
+  --nutui-popover-light-content-background-color,
+  #ffffff
+) !default;
+$popover-light-text-color: var(--nutui-popover-light-text-color, $color-mask) !default;
+$popover-light-icon-color: var(
+  --nutui-popover-light-icon-color,
+  rgba(17, 20, 26, 0.8)
+) !default;
+$popover-light-divider-color: var(
+  --nutui-popover-light-divider-color,
+  $color-border
+) !default;
+$popover-padding: var(--nutui-popover-padding, $popover-padding-horizontal) !default;
+$popover-item-width: var(--nutui-popover-item-width, $popover-status-max-width) !default;
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
