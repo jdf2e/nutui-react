@@ -82,19 +82,23 @@ export const autoprefixerBrowsers = [
 
 /**
  * 生成各配置共用的 css.preprocessorOptions。
- * @param projectID        主题 ID，影响 SCSS 变量注入
- * @param withAutoprefixer 是否加入 autoprefixer（生产 demo/theme 构建需要，dev/site 不需要）
+ * @param projectID          主题 ID，影响 SCSS 变量注入
+ * @param withAutoprefixer   是否加入 autoprefixer（生产 demo/theme 构建需要，dev/site 不需要）
+ * @param silenceDeprecations 是否抑制 sass @import 废弃警告（dev 传 false 保持警告可见）
  */
 export function buildCssOptions(
   projectID = '',
   withAutoprefixer = false,
+  silenceDeprecations = true,
 ): UserConfig['css'] {
   return {
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
         additionalData: buildScssAdditionalData(projectID),
-        silenceDeprecations: ['import', 'global-builtin'],
+        ...(silenceDeprecations
+          ? { silenceDeprecations: ['import', 'global-builtin'] }
+          : {}),
       },
       postcss: {
         plugins: [
