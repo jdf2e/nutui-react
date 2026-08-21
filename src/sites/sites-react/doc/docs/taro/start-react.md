@@ -209,6 +209,8 @@ module.exports = {
           `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+        // 自动加载 css 样式文件（小程序专用，已移除 RTL 样式，体积更小）
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`
 
         // JMAPP 主题
         // 自动加载 scss 样式文件
