@@ -400,7 +400,10 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/${base}`), postcssRes.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
 
-    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+    // strip CSS entity blocks (:root/page {}) from variables before per-component compile
+    // these blocks belong in the global style.css entry, not repeated in each component
+    const variablesSassOnly = variables.toString().replace(/:root\s*,?\s*\npage\s*\{[^}]*\}\n?/g, '')
+    const code = sass.compileString(variablesSassOnly + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
       loadPaths: [loadPath],
     })
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
@@ -489,8 +492,10 @@ async function buildHarmonyCSS(themeName = '') {
         return result
       })
     const themeDir = themeName ? `style-${themeName}` : 'style'
+    // strip CSS entity blocks from variables — same as buildCSS
+    const variablesSassOnly = variables.toString().replace(/:root\s*,?\s*\npage\s*\{[^}]*\}\n?/g, '')
     const code = sass.compileString(
-      variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
+      variablesSassOnly + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
       {
         loadPaths: [loadPath],
       },

@@ -233,11 +233,14 @@ module.exports = {
 ```js
 {
   sass: {
-    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
-    // JMAPP 主题
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
-    // JRKF 主题
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
+    // resource 仅注入纯 Sass 变量/函数，不含实体 CSS 输出
+    resource: [
+      path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables.scss'),
+      // JMAPP 主题
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss'),
+      // JRKF 主题
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss'),
+    ],
   }
 }
 ```
