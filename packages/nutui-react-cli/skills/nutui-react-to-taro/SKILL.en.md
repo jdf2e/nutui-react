@@ -36,7 +36,8 @@ Two CLIs back this work; both are offline, with metadata shipped alongside the p
 If a CLI is not on PATH, invoke it via npx (no install needed):
 
 ```bash
-which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli <command>"
+which nutui-react      || echo "use: npx -y @nutui/nutui-react-cli info <C>"
+which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C>"
 ```
 
 **The most important habit: for every component you touch, diff its props with

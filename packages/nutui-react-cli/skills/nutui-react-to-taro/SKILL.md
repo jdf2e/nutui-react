@@ -31,7 +31,8 @@ allowed-tools:
 若某个 CLI 不在 PATH 上，用 npx 调用(无需安装):
 
 ```bash
-which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli <command>"
+which nutui-react      || echo "use: npx -y @nutui/nutui-react-cli info <C>"
+which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C>"
 ```
 
 **最重要的习惯:每碰一个组件，改写前先用两个 CLI 对比它的 props。** props 通常
