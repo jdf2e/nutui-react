@@ -1,0 +1,19 @@
+pnpm-lock.yaml
+  s_db93c4b879d0b9::t_93fd3aef1bb368 24-25,27-28,2648-2652,2657-2661,15754-15757,15761-15764
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "030e76004272bd0980dab519f37e03e0b9577cf1",
+  "prompts": {},
+  "sessions": {
+    "s_db93c4b879d0b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f931bba-9227-484b-a4b1-108ec8a4d771",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
