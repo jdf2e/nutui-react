@@ -1,0 +1,24 @@
+scripts/build-taro.mjs
+  s_db93c4b879d0b9::t_cc7bed67b24464 399-402
+  s_db93c4b879d0b9::t_0c9c4f23cb1328 488-489,491
+src/sites/sites-react/doc/docs/taro/start-react.md
+  s_db93c4b879d0b9::t_5e722da5ea0ceb 236-243
+src/sites/sites-react/doc/docs/taro/start-react.en-US.md
+  s_db93c4b879d0b9::t_5b9e5ee2924926 215-222
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "7ba73c64ec0569596e4dd74ba5fcb6de4664e038",
+  "prompts": {},
+  "sessions": {
+    "s_db93c4b879d0b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f931bba-9227-484b-a4b1-108ec8a4d771",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
