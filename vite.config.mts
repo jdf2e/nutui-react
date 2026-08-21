@@ -26,7 +26,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     resolve: {
       alias: [...lottieAliases, ...localeAliases, ...packageAliases],
     },
-    css: buildCssOptions(projectID),
+    css: buildCssOptions(projectID, false, false),
     plugins: [
       await buildMdxPlugin(),
       {
