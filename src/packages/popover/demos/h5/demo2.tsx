@@ -44,7 +44,6 @@ const Demo2 = () => {
     <Space>
       <Popover
         visible={showIcon}
-        theme="dark"
         location="bottom-left"
         onClick={() => {
           showIcon ? setShowIcon(false) : setShowIcon(true)
@@ -55,7 +54,6 @@ const Demo2 = () => {
       </Popover>
       <Popover
         visible={disableAction}
-        theme="dark"
         onClick={() => {
           disableAction ? setDisableAction(false) : setDisableAction(true)
         }}

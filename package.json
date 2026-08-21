@@ -114,8 +114,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^3.0.2-beta.5",
-    "@nutui/icons-react-taro": "^3.0.2-beta.3",
+    "@nutui/icons-react": "^3.0.2-beta.6",
+    "@nutui/icons-react-taro": "3.0.2-beta.6",
     "@nutui/jdesign-icons-react-taro": "1.0.6-beta.2",
     "@nutui/lottie-miniprogram": "^1.0.2",
     "@nutui/touch-emulator": "^1.0.0",

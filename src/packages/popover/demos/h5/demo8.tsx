@@ -23,7 +23,6 @@ const Demo8 = () => {
           className="demo-popover"
           visible={visible}
           list={list}
-          theme="dark"
           location="top-right"
           style={{ marginInlineEnd: '30px' }}
           closeOnOutsideClick={false}

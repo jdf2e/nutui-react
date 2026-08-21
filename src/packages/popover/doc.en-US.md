@@ -10,7 +10,7 @@ import { Popover } from '@nutui/nutui-react'
 
 ## Demo
 
-### Basic Usage
+### Bubble Types
 
 :::demo
 
@@ -101,14 +101,18 @@ Use the location property to control where the bubble pops up. optional value
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| type | Bubble type: `status` (icon + text + close) or `description` (text only) | `status` \| `description` | `status` |
 | list | list of options | `PopoverList[]` | `[]` |
 | visible | whether to show | `boolean` | `false` |
-| location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
-| offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
-| arrowOffset | the offset of the arrow | `number` | `0` |
+| theme | Theme style: default `dark` is the design-spec bubble; `light` is the bright style (white bg, dark text) | `light` \| `dark` | `dark` |
+| location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `FullPosition` | `bottom` |
+| offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 8]` |
+| arrowOffset | the offset of the arrow | `number` | `20` |
 | showArrow | whether to show small arrows | `boolean` | `true` |
 | closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
 | closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
+| autoShow | Whether to show automatically on mount; update `visible` in `onOpen` | `boolean` | `false` |
+| duration | Auto-close duration (ms); `0` disables auto-close | `number` | `0` |
 | targetId | Custom target id | `string` | `-` |
 | onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
 | onSelect | Fired when an option is clicked | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
@@ -138,13 +142,25 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-popover-border-radius | The rounded corner value of the border of the popover content area | `8px` |
-| \--nutui-popover-font-size | The font-size value of the popover content area | `12px` |
-| \--nutui-popover-text-color | Text color of options area | `$color-title` |
-| \--nutui-popover-content-background-color | The background color of the options area | `$white` |
-| \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
-| \--nutui-popover-padding | The padding value of each item in the option area menu | `8px` |
-| \--nutui-popover-item-width | The width value of each item in the options | `160px` |
+| \--nutui-popover-border-radius | Border radius of popover content | `6px` |
+| \--nutui-popover-font-size | Font size of popover content | `12px` |
+| \--nutui-popover-text-color | Text color | `$color-primary-text` |
+| \--nutui-popover-content-background-color | Background color | `$color-mask` |
+| \--nutui-popover-divider-color | Divider color between items | `rgba(255, 255, 255, 0.12)` |
+| \--nutui-popover-disable-color | Disabled option color | `$color-text-disabled` |
+| \--nutui-popover-padding-horizontal | Horizontal padding | `8px` |
+| \--nutui-popover-padding-vertical | Vertical padding | `6px` |
+| \--nutui-popover-height | Bubble height | `28px` |
+| \--nutui-popover-icon-size | Icon size | `12px` |
+| \--nutui-popover-icon-color | Icon color (80% opacity) | `rgba(255, 255, 255, 0.8)` |
+| \--nutui-popover-status-max-width | Max width for status type | `240px` |
+| \--nutui-popover-description-max-width | Max width for description type | `208px` |
+| \--nutui-popover-action-hotspot-size | Close button touch hotspot size | `36px` |
+| \--nutui-popover-light-content-background-color | Light theme background color | `#ffffff` |
+| \--nutui-popover-light-text-color | Light theme text color | `$color-mask` |
+| \--nutui-popover-light-icon-color | Light theme icon color (80% opacity) | `rgba(17, 20, 26, 0.8)` |
+| \--nutui-popover-light-divider-color | Light theme divider color | `$color-border` |
+| \--nutui-popover-padding | Legacy horizontal padding alias | `8px` |
+| \--nutui-popover-item-width | Legacy item width alias (same as status max width) | `240px` |
 
 <Contribution name="Popover" />

@@ -7,25 +7,25 @@
   &-arrow {
     position: absolute;
     width: 8px;
-    height: 4px;
+    height: 8px;
 
     .nut-icon-ArrowRadius {
       position: absolute;
       color: $popover-content-background-color;
       width: 8px;
-      height: 4px;
+      height: 8px;
     }
 
     &-top {
-      bottom: -4px;
+      bottom: -8px;
     }
 
     &-bottom {
-      top: -4px;
+      top: -8px;
     }
 
     &-left {
-      right: -6px;
+      right: -8px;
       transform-origin: center top;
 
       &.nut-popover-arrow-left {
@@ -34,15 +34,12 @@
       }
 
       &.nut-popover-arrow-left-top {
-        top: 16px;
-        right: -8px;
+        right: -12px;
         transform: rotate(90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-left-bottom {
-        top: auto;
-        bottom: 16px;
-        right: -8px;
+        right: -12px;
         transform: rotate(90deg) translateY(0%);
       }
     }
@@ -51,19 +48,17 @@
       transform-origin: center top;
       &.nut-popover-arrow-right {
         top: 50%;
-        left: -6px;
+        left: -8px;
         transform: rotate(-90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-right-top {
-        top: 16px;
-        left: -8px;
+        left: -12px;
         transform: rotate(-90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-right-bottom {
-        bottom: 16px;
-        left: -8px;
+        left: -12px;
         transform: rotate(-90deg) translateY(0%);
       }
     }
@@ -75,41 +70,57 @@
     border-radius: $popover-border-radius;
     font-size: $popover-font-size;
     color: $popover-text-color;
-    line-height: 28px;
     /* #ifndef dynamic*/
     max-height: initial;
     overflow-y: initial;
     /* #endif */
 
     &-group {
-      padding: 0 $popover-padding;
+      padding: 0 $popover-padding-horizontal;
+      overflow: visible;
     }
 
     .nut-popover-item {
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: $popover-height;
+      padding: $popover-padding-vertical 0;
       border-bottom: 1px solid $popover-divider-color;
-      max-width: $popover-item-width;
       word-wrap: break-word;
 
       &:last-child {
-        margin-bottom: 0px;
+        margin-bottom: 0;
         border-bottom: none;
       }
 
       &-icon,
       &-action-icon {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: $font-size-s;
-        height: $font-size-s;
-        font-size: $font-size-s;
+        flex-shrink: 0;
+        align-self: stretch;
+        width: $popover-icon-size;
+        color: $popover-icon-color;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: $popover-action-hotspot-size;
+          transform: translateX(-50%);
+        }
+
         .nut-icon {
-          width: $font-size-s;
-          height: $font-size-s;
-          font-size: $font-size-s;
+          position: relative;
+          z-index: 1;
+          width: $popover-icon-size;
+          height: $popover-icon-size;
         }
       }
 
@@ -118,14 +129,17 @@
       }
 
       &-name {
-        width: calc(100% - 34px);
         word-break: keep-all;
         flex: 1;
+        min-width: 0;
+        text-align: center;
+        line-height: calc(
+          #{$popover-height} - #{$popover-padding-vertical} * 2
+        );
       }
 
       &-action-icon {
-        color: $color-text;
-        margin-left: $spacing-base;
+        margin-left: $spacing-xxs;
       }
 
       &.nut-popover-item-disabled {
@@ -149,18 +163,16 @@
     &-top-right {
       right: 0;
       .nut-popover-arrow-top-right {
-        right: 16px;
-        bottom: -3.5px;
-        transform: rotate(180deg) translateX(0%);
+        transform-origin: center right;
+        transform: rotate(180deg) translateX(50%);
       }
     }
 
     &-top-left {
       left: 0;
       .nut-popover-arrow-top-left {
-        left: 16px;
-        bottom: -3.5px;
-        transform: rotate(180deg) translateX(0%);
+        transform-origin: center left;
+        transform: rotate(180deg) translateX(-50%);
       }
     }
 
@@ -174,16 +186,14 @@
     &-bottom-right {
       right: 0;
       .nut-popover-arrow-bottom-right {
-        right: 16px;
-        transform: translateX(0%);
+        transform: translateX(50%);
       }
     }
 
     &-bottom-left {
       left: 0;
       .nut-popover-arrow-bottom-left {
-        left: 16px;
-        transform: translateX(0%);
+        transform: translateX(-50%);
       }
     }
 
@@ -203,24 +213,42 @@
       top: 0;
     }
   }
+
+  &--status {
+    .nut-popover-content .nut-popover-item {
+      max-width: $popover-status-max-width;
+    }
+  }
+
+  &--description {
+    .nut-popover-content .nut-popover-item {
+      max-width: $popover-description-max-width;
+    }
+  }
 }
 
-.nut-popover-dark {
-  background: $popover-text-color;
-  color: $popover-content-background-color;
-
+.nut-popover-light {
   .nut-popover-arrow {
-    .nut-icon-ArrowRadius {
-      color: $popover-text-color;
+    .nut-icon-ArrowRadius,
+    .nut-popover-arrow-svg {
+      color: $popover-light-content-background-color;
     }
   }
 
   .nut-popover-content {
-    background: $popover-text-color !important;
-    color: $popover-content-background-color !important;
+    background: $popover-light-content-background-color !important;
+    color: $popover-light-text-color !important;
+
     .nut-popover-item {
+      border-bottom-color: $popover-light-divider-color;
+
+      &-icon,
       &-action-icon {
-        color: rgba(255, 255, 255, 0.8);
+        color: $popover-light-icon-color;
+
+        .nut-icon {
+          color: $popover-light-icon-color;
+        }
       }
     }
   }
@@ -230,13 +258,14 @@
 .nut-rtl .nut-popover {
   .nut-popover-content {
     .nut-popover-item {
-      &-name {
-        margin-left: 0;
-        margin-right: 4px;
+      &-icon {
+        margin-right: 0;
+        margin-left: $spacing-xxs;
       }
 
       &-action-icon {
-        right: auto;
+        margin-left: 0;
+        margin-right: $spacing-xxs;
       }
     }
     &-top {
@@ -252,7 +281,6 @@
 
       .nut-popover-arrow-top-right {
         right: auto;
-        left: 16px;
       }
     }
 
@@ -262,7 +290,6 @@
 
       .nut-popover-arrow-top-left {
         left: auto;
-        right: 16px;
       }
     }
 
@@ -280,7 +307,6 @@
 
       .nut-popover-arrow-bottom-right {
         right: auto;
-        left: 16px;
       }
     }
 
@@ -290,7 +316,6 @@
 
       .nut-popover-arrow-bottom-left {
         left: auto;
-        right: 16px;
       }
     }
   }

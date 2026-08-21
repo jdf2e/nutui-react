@@ -14,7 +14,7 @@ import Demo8 from './demos/h5/demo8'
 const PopoverDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      title: '基础用法',
+      title: '气泡类型',
       title1: '选项配置',
       title2: '自定义内容+颜色',
       title3: '位置自定义：多条数据',
@@ -24,7 +24,7 @@ const PopoverDemo = () => {
       fixed: '容器设置 position: fixed',
     },
     'en-US': {
-      title: 'Basic Usage',
+      title: 'Bubble Types',
       title1: 'Option Configuration',
       title2: 'Custom Content and Color',
       title3: 'Custom Location: multi datas',
@@ -34,7 +34,7 @@ const PopoverDemo = () => {
       fixed: 'position: fixed',
     },
     'zh-TW': {
-      title: '基礎用法',
+      title: '氣泡類型',
       title1: '選項配置',
       title2: '自定義內容+顏色',
       title3: '位置自定義：多條資料',
