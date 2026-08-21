@@ -1,0 +1,23 @@
+.github/workflows/release-beta.yml
+  s_0a9a55795a95b7::t_152efeaa997227 8,67-79
+.github/workflows/ci.yml
+  s_0a9a55795a95b7::t_eb61dda099a00d 8
+.github/workflows/release.yml
+  s_0a9a55795a95b7::t_c47ca31cbffb66 45-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "de9712f710c44982d244a70073dbcfea3edf3e14",
+  "prompts": {},
+  "sessions": {
+    "s_0a9a55795a95b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a326857-a65f-4432-b8bd-65280204e972",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
