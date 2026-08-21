@@ -1,0 +1,31 @@
+vite.config.site.mts
+  s_0a9a55795a95b7::t_7bdbe85e7eb685 4,8-12,34,39,41
+vite.config.demo.ts
+  s_0a9a55795a95b7::t_2279af2b0892e5 3,5-10,20,22
+vite.config.base.mts
+  s_0a9a55795a95b7::t_276edb16c33d70 5,21,74,85-86,108-127
+  s_0a9a55795a95b7::t_73c44b295abe5d 1-4,6-20,22-73,75-84,87-107,128-129
+vite.config.site.taro.mts
+  s_0a9a55795a95b7::t_85ae6c728f7238 4,8-12,37,39,41
+vite.config.theme.mts
+  s_0a9a55795a95b7::t_ffed0c56916e89 2,4-7,9,33,35
+vite.config.mts
+  s_0a9a55795a95b7::t_c0ef04c741cdba 8,31
+  s_0a9a55795a95b7::t_51d9c08a198643 4,6-7,9-12,27,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "07a2009edd95ec0c47fdaab3cc64e6fd5c1481f0",
+  "prompts": {},
+  "sessions": {
+    "s_0a9a55795a95b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a326857-a65f-4432-b8bd-65280204e972",
+        "model": "eu.anthropic.claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
