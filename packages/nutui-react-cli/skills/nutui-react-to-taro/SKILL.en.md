@@ -36,8 +36,8 @@ Two CLIs back this work; both are offline, with metadata shipped alongside the p
 If a CLI is not on PATH, invoke it via npx (no install needed):
 
 ```bash
-which nutui-react      || echo "use: npx -y @nutui/nutui-react-cli info <C>"
-which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C>"
+which nutui-react      || echo "use: npx -y @nutui/nutui-react-cli info <C> --format json"
+which nutui-react-taro || echo "use: npx -y @nutui/nutui-react-taro-cli info <C> --format json"
 ```
 
 **The most important habit: for every component you touch, diff its props with
@@ -194,7 +194,7 @@ mappings:
 | H5 pattern | Taro replacement |
 | --- | --- |
 | `alert` / popping a toast via DOM | `Taro.showToast(...)` (`import Taro from '@tarojs/taro'`) |
-| `URL.createObjectURL(file)` | use the upload result URL / temp path from `Taro.chooseImage` |
+| `URL.createObjectURL(file)` | pick the matching Taro chooser/upload API by file type (`Taro.chooseMedia` for images/video; check the `@tarojs/taro` docs for other types), then use its temp path — don't force video / audio / generic files through image picking |
 | `document.createElement` + manual DOM manipulation | prefer component props / ref; when you genuinely need to touch nodes use APIs like `Taro.createSelectorQuery`, don't blindly delete the logic |
 | `window.location` / route navigation | `Taro.navigateTo` / `Taro.redirectTo` |
 | `localStorage` | `Taro.setStorageSync` / `Taro.getStorageSync` |
