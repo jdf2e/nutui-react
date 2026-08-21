@@ -174,13 +174,16 @@ Taro 没有 DOM。替换原生标签并补上 `@tarojs/components` 的 import。
 
 ### ⑤ Web-only API → Taro API —— 需要推理，逐处改写
 
-小程序里没有 `window` / `document` / DOM。映射到 `@tarojs/taro` 或组件自身能力:
+Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**,能力随目标版本漂移
+——**别一律删除**。逐处判断:能映射到 `@tarojs/taro` 或组件自身能力的就映射;运行
+时确实支持的(如异步版 `getBoundingClientRect`)保留;只有真正无法迁移的才删。常见
+映射:
 
 | H5 写法 | Taro 替代 |
 | --- | --- |
 | `alert` / 用 DOM 弹 toast | `Taro.showToast(...)`(`import Taro from '@tarojs/taro'`) |
 | `URL.createObjectURL(file)` | 用上传结果 URL / `Taro.chooseImage` 的临时路径 |
-| `document.createElement` + DOM 操作 | 删除;改用组件 props / ref 驱动 |
+| `document.createElement` + 手动 DOM 操作 | 优先用组件 props / ref 表达;确需操作节点时用 `Taro.createSelectorQuery` 等 API,勿盲目删逻辑 |
 | `window.location` / 路由跳转 | `Taro.navigateTo` / `Taro.redirectTo` |
 | `localStorage` | `Taro.setStorageSync` / `Taro.getStorageSync` |
 | `addEventListener('scroll')` | Taro 页面 / 滚动事件或组件 props |

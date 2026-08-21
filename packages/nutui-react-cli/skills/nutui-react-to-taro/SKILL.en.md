@@ -184,14 +184,18 @@ Mini-program touch events are not `MouseEvent`. Loosen the type and import
 
 ### ⑤ Web-only API → Taro API — requires reasoning, rewrite case by case
 
-There is no `window` / `document` / DOM in a mini-program. Map these to
-`@tarojs/taro` or the component's own capabilities:
+The Taro runtime provides only a **limited emulation** of `window` / `document` /
+DOM, and its coverage drifts by target version — **do not delete wholesale**.
+Judge case by case: map to `@tarojs/taro` or the component's own capabilities
+where possible; keep what the runtime genuinely supports (e.g. the async
+`getBoundingClientRect`); delete only logic that truly cannot be migrated. Common
+mappings:
 
 | H5 pattern | Taro replacement |
 | --- | --- |
 | `alert` / popping a toast via DOM | `Taro.showToast(...)` (`import Taro from '@tarojs/taro'`) |
 | `URL.createObjectURL(file)` | use the upload result URL / temp path from `Taro.chooseImage` |
-| `document.createElement` + DOM manipulation | delete it; drive via component props / ref instead |
+| `document.createElement` + manual DOM manipulation | prefer component props / ref; when you genuinely need to touch nodes use APIs like `Taro.createSelectorQuery`, don't blindly delete the logic |
 | `window.location` / route navigation | `Taro.navigateTo` / `Taro.redirectTo` |
 | `localStorage` | `Taro.setStorageSync` / `Taro.getStorageSync` |
 | `addEventListener('scroll')` | Taro page / scroll events or component props |
