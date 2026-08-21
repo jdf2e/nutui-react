@@ -1,0 +1,21 @@
+packages/nutui-taro-demo/src/app.scss
+  s_db93c4b879d0b9::t_d17241fa27cbdf 1
+src/sites/sites-react/doc/docs/taro/theme-react.md
+  s_db93c4b879d0b9::t_8d62bfa495bf29 68-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a784a87601b64184ff1082d0d57447fdec372de4",
+  "prompts": {},
+  "sessions": {
+    "s_db93c4b879d0b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f931bba-9227-484b-a4b1-108ec8a4d771",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
