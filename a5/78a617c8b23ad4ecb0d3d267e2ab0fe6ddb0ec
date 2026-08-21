@@ -1,0 +1,21 @@
+vite.config.mts
+  s_0a9a55795a95b7::t_8ad56e7be8c77d 29
+vite.config.base.mts
+  s_0a9a55795a95b7::t_e4e8751bb27b03 85-87,92,99-101
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a578a617c8b23ad4ecb0d3d267e2ab0fe6ddb0ec",
+  "prompts": {},
+  "sessions": {
+    "s_0a9a55795a95b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1a326857-a65f-4432-b8bd-65280204e972",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
