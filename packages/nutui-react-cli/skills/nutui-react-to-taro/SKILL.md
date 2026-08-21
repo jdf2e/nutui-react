@@ -182,7 +182,6 @@ Taro 运行时对 `window` / `document` / DOM 只做了**受限模拟**，能力
 | H5 写法 | Taro 替代 |
 | --- | --- |
 | `alert` / 用 DOM 弹 toast | `Taro.showToast(...)`（`import Taro from '@tarojs/taro'`） |
-| `URL.createObjectURL(file)` | 按文件类型选对应的 Taro 选择/上传 API（图片/视频用 `Taro.chooseMedia`，其他类型查 `@tarojs/taro` 文档），取其临时路径；别把视频/音频/普通文件一律套图片选择 |
 | `document.createElement` + 手动 DOM 操作 | 优先用组件 props / ref 表达；确需操作节点时用 `Taro.createSelectorQuery` 等 API，勿盲目删逻辑 |
 | `window.location` / 路由跳转 | `Taro.navigateTo` / `Taro.redirectTo` |
 | `localStorage` | `Taro.setStorageSync` / `Taro.getStorageSync` |
