@@ -116,6 +116,7 @@ nutui-react-taro token Button --format json
 | `nutui-react-taro doc <Component>` | 组件完整 Markdown 文档（中文） |
 | `nutui-react-taro demo <Component> [name]` | 省略 `name` 列出示例;传入 `name`（如 `demo1`）获取源码 |
 | `nutui-react-taro token [Component]` | Design Token —— 省略组件名则返回全局 Token |
+| `nutui-react-taro mcp` | 启动本地 stdio MCP 服务器,供 IDE 集成 |
 
 ## 全局参数
 
