@@ -1,0 +1,20 @@
+docs/material-frosted-glass.md
+  s_f8dea148c9711a::t_4b3964a0b73fe8 12,26-34,39-47,52-60,65-69,74-78
+  s_f8dea148c9711a::t_12ffa912e11a71 1-11,13-25,35-38,48-51,61-64,70-73,79-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "be2613a30b750aeba29f30edeb6d351fbe4a6e7f",
+  "prompts": {},
+  "sessions": {
+    "s_f8dea148c9711a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6fa9dd4c-644f-4ea8-8485-a6ed873f0098",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
