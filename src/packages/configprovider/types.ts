@@ -856,6 +856,7 @@ export type NutCSSVariables =
   | 'nutuiSkeletonLineNormalHeight'
   | 'nutuiSkeletonLineLargeHeight'
   | 'nutuiSkeletonLineBorderRadius'
+  | 'nutuiSkeletonAnimationColor'
   | 'nutuiCardBorderRadius'
   | 'nutuiGridBorderWidth'
   | 'nutuiGridBorderColor'

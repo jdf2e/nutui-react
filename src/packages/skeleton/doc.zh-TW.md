@@ -57,10 +57,10 @@ import { Skeleton } from '@nutui/nutui-react'
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否顯示骨架屏(true不顯示骨架屏，false顯示骨架屏) | `boolean` | `true` |
-| animated | 是否開啟骨架屏動畫 | `boolean` | `false` |
+| animated | 是否開啟骨架屏動畫 | `boolean` | `true` |
 | size | 指定使用的內置高度 | `'small' \| 'normal' \| 'large'` | `normal` |
 | shape | 設置形狀 | `'square' \| 'round' \| 'circle'` | `round` |
-| duration | 動畫時長 | `number` | `0.6` |
+| duration | 動畫時長 | `number` | `0.4` |
 | rows | 設置行數 | `number` | `1` |
 | width | 設置寬度，優先級高於 `size` 屬性 | `string\|number` | `-` |
 | height | 設置高度，優先級高於 `size` 屬性 | `string\|number` | `-` |
@@ -73,11 +73,12 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
+| \--nutui-skeleton-background | 背景 | `#f2f3f5` |
 | \--nutui-skeleton-line-width | 線條寬度 | `100%` |
 | \--nutui-skeleton-line-small-height | 線條高度 | `16px` |
-| \--nutui-skeleton-line-normal-height | 線條高度 | `24px` |
-| \--nutui-skeleton-line-large-height | 線條高度 | `32px` |
+| \--nutui-skeleton-line-normal-height | 線條高度 | `20px` |
+| \--nutui-skeleton-line-large-height | 線條高度 | `28px` |
 | \--nutui-skeleton-line-border-radius | 線條邊框圓角 | `4px` |
+| \--nutui-skeleton-animation-color | 加載光影顏色（暗黑模式下自動降低透明度） | `rgba(255, 255, 255, 0.5)` |
 
 <Contribution name="Skeleton" />

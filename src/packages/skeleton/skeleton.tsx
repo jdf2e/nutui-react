@@ -15,7 +15,7 @@ const defaultProps = {
   visible: false,
   size: 'normal',
   shape: 'round',
-  duration: 0.6,
+  duration: 0.4,
 } as WebSkeletonProps
 export const Skeleton: FunctionComponent<Partial<WebSkeletonProps>> = (
   props

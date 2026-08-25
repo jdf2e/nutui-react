@@ -104,3 +104,15 @@ npm install @nutui/nutui-react-taro
   - Added `--nutui-popover-padding-horizontal`, `--nutui-popover-padding-vertical`, `--nutui-popover-height`, `--nutui-popover-icon-size`, `--nutui-popover-icon-color`, `--nutui-popover-status-max-width`, `--nutui-popover-description-max-width`, `--nutui-popover-action-hotspot-size`.
   - `--nutui-popover-content-background-color` default changed from `#ffffff` to `$color-mask`; `--nutui-popover-text-color` from `$color-mask` to `$color-primary-text`.
   - `--nutui-popover-item-width` default changed from `160px` to `240px` (same as status max width).
+
+### Skeleton
+
+- **`size` visual spec updates (compatible)**:
+  - `large` (title) height changed from `32px` to `28px`; `normal` (price) height from `24px` to `20px`; `small` (paragraph) stays `16px`; border radius stays `4px`.
+  - Size semantics: `small` for paragraph, `normal` for price, `large` for title.
+- **`duration` default changed (breaking default behavior)**:
+  - The shimmer sweep duration default changed from `0.6` (600ms) to `0.4` (400ms). To keep the original pace, pass `duration={0.6}` explicitly.
+- **Background token update**:
+  - `--nutui-skeleton-background` default fallback changed from `$color-background-sunken` to `$color-background`, following the `color-background` token in dark mode automatically.
+- **Shimmer visual redesign**:
+  - The loading shimmer changed from a dark horizontal-translate overlay to a white 30° diagonal light band (80px wide, gradient opacity 0% → 50% → 0%), sweeping left to right over 400ms and looping after a ~1s pause.

@@ -35,19 +35,20 @@
   &-animation {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -80px;
+    width: 80px;
     height: 100%;
     z-index: 1;
     background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.02) 50%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(255, 255, 255, 0) 0%,
+      $skeleton-animation-color 50%,
+      rgba(255, 255, 255, 0) 100%
     );
+    transform: skewX(-30deg);
     animation-name: nut-skeleton;
     animation-delay: 0s;
-    animation-duration: 0.6s;
+    animation-duration: 0.4s;
     animation-direction: normal;
     animation-fill-mode: both;
     animation-play-state: running;
@@ -56,12 +57,22 @@
   }
 
   @keyframes nut-skeleton {
-    from {
-      transform: translateX(-100%);
+    0% {
+      left: -80px;
+      opacity: 0;
     }
 
-    to {
-      transform: translateX(100%);
+    5% {
+      opacity: 1;
+    }
+
+    95% {
+      opacity: 1;
+    }
+
+    100% {
+      left: 100%;
+      opacity: 0;
     }
   }
 }
@@ -70,19 +81,34 @@
 .nut-rtl .nut-skeleton {
   &-animation {
     left: auto;
-    right: 0;
-    animation: nut-skeleton-rtl 2s linear 0s infinite;
+    right: -80px;
+    transform: skewX(30deg);
+    animation-name: nut-skeleton-rtl;
   }
 
   @keyframes nut-skeleton-rtl {
-    from {
-      //background-position: -200% 0;
-      transform: translateX(100%);
+    0% {
+      right: -80px;
+      opacity: 0;
     }
 
-    to {
-      //background-position: 200% 0;
-      transform: translateX(-100%);
+    5% {
+      opacity: 1;
+    }
+
+    95% {
+      opacity: 1;
+    }
+
+    100% {
+      right: 100%;
+      opacity: 0;
     }
   }
+}
+
+.nut-theme-dark {
+  // 组件级覆盖
+  // skeleton 加载光影：暗黑下背景近黑，白色光影对比过强，降低透明度
+  --nutui-skeleton-animation-color: var(--nutui-black-3);
 }

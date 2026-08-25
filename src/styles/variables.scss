@@ -2504,7 +2504,7 @@ $form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 // skeleton（✅）
 $skeleton-background: var(
   --nutui-skeleton-background,
-  $color-background-sunken
+  $color-background
 ) !default;
 $skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
 $skeleton-line-small-height: var(
@@ -2513,15 +2513,19 @@ $skeleton-line-small-height: var(
 ) !default;
 $skeleton-line-normal-height: var(
   --nutui-skeleton-line-normal-height,
-  scale-px(24px)
+  scale-px(20px)
 ) !default;
 $skeleton-line-large-height: var(
   --nutui-skeleton-line-large-height,
-  scale-px(32px)
+  scale-px(28px)
 ) !default;
 $skeleton-line-border-radius: var(
   --nutui-skeleton-line-border-radius,
   $radius-xs
+) !default;
+$skeleton-animation-color: var(
+  --nutui-skeleton-animation-color,
+  rgba(255, 255, 255, 0.5)
 ) !default;
 
 // card（✅）

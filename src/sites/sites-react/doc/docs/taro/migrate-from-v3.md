@@ -104,3 +104,15 @@ npm install @nutui/nutui-react-taro
   - 新增 `--nutui-popover-padding-horizontal`、`--nutui-popover-padding-vertical`、`--nutui-popover-height`、`--nutui-popover-icon-size`、`--nutui-popover-icon-color`、`--nutui-popover-status-max-width`、`--nutui-popover-description-max-width`、`--nutui-popover-action-hotspot-size`。
   - `--nutui-popover-content-background-color` 默认值由 `#ffffff` 改为 `$color-mask`；`--nutui-popover-text-color` 由 `$color-mask` 改为 `$color-primary-text`。
   - `--nutui-popover-item-width` 默认值由 `160px` 改为 `240px`（等同状态型最大宽度）。
+
+### Skeleton (反馈类)
+
+- **`size` 视觉规格对齐设计稿（兼容升级）**：
+  - `large`（标题）高度由 `32px` 调整为 `28px`；`normal`（价格）高度由 `24px` 调整为 `20px`；`small`（正文）保持 `16px`；圆角保持 `4px`。
+  - 尺寸语义映射：`small` 对应正文、`normal` 对应价格、`large` 对应标题。
+- **`duration` 默认值变更（不兼容默认值行为）**：
+  - 光晕移动时长默认值由 `0.6`（600ms）调整为 `0.4`（400ms）。如需维持原有节奏，请显式传入 `duration={0.6}`。
+- **背景色令牌调整**：
+  - `--nutui-skeleton-background` 默认回退值由 `$color-background-sunken` 改为 `$color-background`，暗黑模式下自动跟随 `color-background` 令牌。
+- **光晕视觉重做**：
+  - 加载光晕由横向平移的深色叠加改为白色 30° 斜向光带（宽 80px，渐变透明度 0% → 50% → 0%），由左至右移动 400ms、停顿约 1s 后循环。
