@@ -4,11 +4,10 @@
 
 ## 安装
 
-本 skill 同时依赖源端（H5）与目标端（Taro）两个 CLI：
+本 skill 同时依赖源端（H5）与目标端（Taro）两个 CLI，运行时通过 `npx` 免安装调用，无需预装：
 
 ```bash
-npm i -D @dongweb/nutui-react-cli @dongweb/nutui-react-taro-cli
-npx skills add ./node_modules/@dongweb/nutui-react-cli/skills/nutui-react-to-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-to-taro
 ```
 
 ## 适用场景

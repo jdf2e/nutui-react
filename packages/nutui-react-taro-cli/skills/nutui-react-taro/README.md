@@ -5,8 +5,7 @@
 ## 安装
 
 ```bash
-npm i -D @dongweb/nutui-react-taro-cli
-npx skills add ./node_modules/@dongweb/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 ## 适用场景

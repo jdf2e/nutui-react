@@ -29,8 +29,7 @@ Guides the agent to query the real API with the CLI before writing any NutUI-Rea
 **Install:**
 
 ```bash
-npm i -D @nutui/nutui-react-cli
-npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
+npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
 ## `nutui-react-to-taro` — migrate H5 to Taro
@@ -49,8 +48,7 @@ Guides the agent to migrate a project using `@nutui/nutui-react` (H5) to `@nutui
 **Install:**
 
 ```bash
-npm i -D @nutui/nutui-react-cli
-npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react-to-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-to-taro
 ```
 
 ## How Skill relates to CLI / MCP

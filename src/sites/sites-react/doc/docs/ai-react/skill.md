@@ -29,8 +29,7 @@
 **安装：**
 
 ```bash
-npm i -D @nutui/nutui-react-cli
-npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
+npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
 ## `nutui-react-to-taro` — H5 迁移到 Taro
@@ -49,8 +48,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 **安装：**
 
 ```bash
-npm i -D @nutui/nutui-react-cli
-npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react-to-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-to-taro
 ```
 
 ## Skill 与 CLI / MCP 的关系

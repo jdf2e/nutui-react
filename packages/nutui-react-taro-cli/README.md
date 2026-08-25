@@ -99,11 +99,10 @@ args = ["-y", "@nutui/nutui-react-taro-cli", "mcp"]
 
 CLI 内置一份 [Skill 文件](./skills/nutui-react-taro/SKILL.md)（遵循 Anthropic Agent Skills 规范），随 npm 包一起分发。CLI / MCP 提供的是「能力」，Skill 则约束 Agent「**什么时候、按什么顺序**」用这些能力——例如「写组件前先 `nutui-react-taro info` 查 Props、再 `nutui-react-taro demo` 拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
 
-安装（skill 已随包 bundle，装好 CLI 后从本地路径装进当前项目）：
+安装（从 GitHub 仓库直接装进当前项目）：
 
 ```bash
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 [skills](https://github.com/vercel-labs/skills) 协议的 Agent。安装后，Agent 在遇到 NutUI React Taro 相关任务时会自动遵循「先查后写」的流程。

@@ -5,8 +5,7 @@
 ## 安装
 
 ```bash
-npm i -D @dongweb/nutui-react-cli
-npx skills add ./node_modules/@dongweb/nutui-react-cli/skills/nutui-react
+npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
 ## 适用场景
