@@ -173,6 +173,28 @@ Platform Adapter 方案的前提是"两端差异主要是语法差异"。实际�
 
 **注意**：SCSS 变量中间层（`$button-height: var(--nutui-button-height, 32px)`）在此方案中仍然有效，不需要改组件 SCSS，主题覆盖只操作 CSS 变量层。
 
+**包体影响分析**：
+
+- `variables.scss`（base）随组件走，这部分本来就必须存在，无增量
+- 主题 override 文件由用户**按需引入**，不引入 = 0 体积
+- 纯 CSS custom property 方案，零 JS 运行时开销
+- 旧方案：用哪个主题就要打包那份完整的 90KB；新方案：base 1 份 + override 几十行，同功能体积下降 ~95%
+
+**多主题并存**（同一项目需要多套皮肤）：
+
+```jsx
+// 运行时切换，一行代码，零重渲染
+document.documentElement.setAttribute('data-theme', 'dark')
+
+// 子树隔离，外部不受影响
+<div data-theme="jd">
+  <Button />  {/* 使用 jd 主题 */}
+</div>
+<Button />    {/* 仍然使用默认主题 */}
+```
+
+**Taro / 小程序环境的权衡**：CSS custom property 在小程序中不支持运行时动态修改（`setAttribute` 无效）。此时可在构建时用 sass `@use with ($overrides)` 做静态编译，每个主题输出独立 CSS 文件，用户在 app 入口 `import` 哪份就用哪套皮肤。代价是无法运行时切换；若业务需要运行时切换，小程序侧只能回退到全量替换方案，H5 侧继续用 CSS 变量。
+
 ---
 
 ### 3. `exports` 字段缺失 — 阻断现代生态接入

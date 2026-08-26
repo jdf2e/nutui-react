@@ -310,3 +310,46 @@ config = {
 ```
 
 :::
+
+## 样式体积优化
+
+### 优化一：按需加载样式（收益最大）
+
+全量引入 `style.css`（约 288KB）时，未使用的组件样式也会被打包进去。推荐通过 `babel-plugin-import` 实现按需加载，只引入实际使用的组件样式。详见上方 **3.1 通过插件实现按需引入**。
+
+### 优化二：小程序使用无 RTL 版样式
+
+小程序环境（weapp/jd/tt 等）不需要 RTL（从右到左）样式。NutUI 提供了去除 RTL 规则的专用产物：
+
+| 产物 | 说明 | 体积 |
+| --- | --- | --- |
+| `style.css` | 完整样式（含 RTL） | 基准 |
+| `style.mini.css` | 小程序专用（移除 RTL） | 约节省 **25.5KB（7%）** |
+
+**全量引入时：**
+
+```js
+// 替换原来的 style.css
+import '@nutui/nutui-react-taro/dist/style.mini.css'
+```
+
+**按需引入时**，将 `babel-plugin-import` 的 `customStyleName` 改为 `style/mini`：
+
+```js
+// babel.config.js
+customStyleName: (name) =>
+  `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`
+```
+
+### 优化三：sass.resource 只注入纯 Sass 变量
+
+`sass.resource` 会将文件内容注入到**每一个** SCSS 文件头部参与编译。应只注入不含实体 CSS 输出的纯变量/函数文件（`variables.scss`），将 `theme-default.scss` 移至全局入口单次引入，避免 380+ 行 CSS 重复编译。详见**主题定制**文档。
+
+### 收益汇总
+
+| 优化项 | 节省体积 | 适用场景 |
+| --- | --- | --- |
+| 按需加载（10 个组件） | ~6.4KB | 所有项目 |
+| 全量改用 `style.mini.css` | ~25.5KB | 小程序项目 |
+| 两者叠加（按需 + mini，10 个组件） | ~6.4KB | 小程序按需加载 |
+| 两者叠加（按需 + mini，全部组件） | ~66.5KB | 小程序全量使用 |
