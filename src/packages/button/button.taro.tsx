@@ -147,9 +147,7 @@ export const Button = React.forwardRef<
       onClick={(e) => handleClick(e as any)}
     >
       <View className="nut-button-wrap">
-        {loading && (
-          <Loading className="nut-icon-loading" ariaHidden aria-hidden />
-        )}
+        {loading && <Loading className="nut-icon-loading" aria-hidden />}
         {!loading && icon}
         {children && (
           <View
