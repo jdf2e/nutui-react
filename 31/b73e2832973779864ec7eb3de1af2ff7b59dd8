@@ -1,0 +1,19 @@
+src/sites/sites-react/doc/docs/taro/start-react.en-US.md
+  s_db93c4b879d0b9::t_b01d53d0dd6f0e 203-204
+  s_db93c4b879d0b9::t_5b9e5ee2924926 217-224
+scripts/build-taro.mjs
+  s_db93c4b879d0b9::t_5ab31f82d9b614 302-306
+  s_db93c4b879d0b9::t_7734556186562e 427-431,434,440,447,452,466-471
+  s_db93c4b879d0b9::t_cc7bed67b24464 418-421
+  s_db93c4b879d0b9::t_0c9c4f23cb1328 526-527,529
+  s_db93c4b879d0b9::t_330474472452c9 24-33
+src/sites/sites-react/doc/docs/taro/start-react.md
+  s_db93c4b879d0b9::t_5e722da5ea0ceb 238-245
+  s_db93c4b879d0b9::t_233c07417ca304 212-213
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "31b73e2832973779864ec7eb3de1af2ff7b59dd8",
+  "prompts": {}
+}
