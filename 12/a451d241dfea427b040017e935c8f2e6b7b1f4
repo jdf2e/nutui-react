@@ -1,0 +1,23 @@
+src/packages/barrage/barrage.taro.tsx
+  s_16ba8f5a6d8441::t_bf8da93d1e8150 147-151
+src/packages/popover/popover.taro.tsx
+  s_16ba8f5a6d8441::t_0136aeffa79e34 89-91
+src/packages/imagepreview/imagepreview.taro.tsx
+  s_16ba8f5a6d8441::t_bf8da93d1e8150 152-156
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "12a451d241dfea427b040017e935c8f2e6b7b1f4",
+  "prompts": {},
+  "sessions": {
+    "s_16ba8f5a6d8441": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "754368a5-4eed-4b4f-ae0e-81cf9a6ea57e",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
