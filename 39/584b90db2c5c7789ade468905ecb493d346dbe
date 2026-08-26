@@ -1,0 +1,19 @@
+src/packages/swipe/swipe.taro.tsx
+  s_16ba8f5a6d8441::t_c4b4470185bf57 234-238
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "39584b90db2c5c7789ade468905ecb493d346dbe",
+  "prompts": {},
+  "sessions": {
+    "s_16ba8f5a6d8441": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "754368a5-4eed-4b4f-ae0e-81cf9a6ea57e",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
