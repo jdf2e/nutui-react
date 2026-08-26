@@ -231,6 +231,11 @@ export const Swipe = forwardRef<
   }))
 
   useEffect(() => {
+    if (
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    )
+      return
     // 并没有生效
     const handler: any = (event: { target: Node | null }) => {
       const targets = [root]
