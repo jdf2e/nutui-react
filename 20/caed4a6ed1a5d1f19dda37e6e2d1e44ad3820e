@@ -1,0 +1,14 @@
+src/sites/sites-react/doc/docs/taro/start-react.en-US.md
+  s_db93c4b879d0b9::t_5b9e5ee2924926 215-222
+scripts/build-taro.mjs
+  s_db93c4b879d0b9::t_cc7bed67b24464 403-406
+  s_db93c4b879d0b9::t_0c9c4f23cb1328 495-496,498
+src/sites/sites-react/doc/docs/taro/start-react.md
+  s_db93c4b879d0b9::t_5e722da5ea0ceb 236-243
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "20caed4a6ed1a5d1f19dda37e6e2d1e44ad3820e",
+  "prompts": {}
+}
