@@ -1,0 +1,19 @@
+package.json
+  s_a1a3f0df8b4194::t_c8d2ccf9156cf1 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a6fd3cdf4edad94f1a0740e72105459f94b672a3",
+  "prompts": {},
+  "sessions": {
+    "s_a1a3f0df8b4194": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e30009cf-b7da-4245-9b14-4a8bbce160b8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
