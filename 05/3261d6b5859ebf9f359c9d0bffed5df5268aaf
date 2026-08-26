@@ -1,0 +1,30 @@
+docs/architecture-optimization.md
+  s_a1a3f0df8b4194::t_3fee5818327beb 176,178-197
+  s_a1a3f0df8b4194::t_adb2dc5634b794 177
+src/sites/sites-react/doc/docs/taro/start-react.md
+  s_db93c4b879d0b9::t_04ef47782901d0 313-355
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "053261d6b5859ebf9f359c9d0bffed5df5268aaf",
+  "prompts": {},
+  "sessions": {
+    "s_a1a3f0df8b4194": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e30009cf-b7da-4245-9b14-4a8bbce160b8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    },
+    "s_db93c4b879d0b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f931bba-9227-484b-a4b1-108ec8a4d771",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
