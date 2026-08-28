@@ -1,0 +1,19 @@
+scripts/build.mjs
+  s_5ed2188d63c584::t_ea1102d157ba0f 138-145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "8015bad5cc441be3663eecc41c53d2ce77ee9627",
+  "prompts": {},
+  "sessions": {
+    "s_5ed2188d63c584": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb3c5ea-ec07-42b4-baa2-e8c7f88e7c73",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
