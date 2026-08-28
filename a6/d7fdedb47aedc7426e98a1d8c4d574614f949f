@@ -1,0 +1,38 @@
+src/packages/grid/__test__/__snapshots__/grid.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 322
+src/packages/address/__test__/__snapshots__/address.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 3,5,7,9,11,13,15
+src/packages/progress/progress.tsx
+  s_5ed2188d63c584::t_59ce3c1b2cffe0 37
+  s_5ed2188d63c584::t_e069a4eeb2cf35 138
+src/packages/checkbox/__test__/__snapshots__/checkbox.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 6-9
+src/packages/overlay/__tests__/__snapshots__/overlay.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 6
+src/packages/cascader/__tests__/__snapshots__/cascader.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 14,20
+src/packages/numberkeyboard/_test_/__snapshots__/index.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 6,12,201,207
+src/packages/cell/__test__/__snapshots__/cell.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 102-103,105-106
+src/packages/image/__test__/__snapshots__/image.spec.tsx.snap
+  s_5ed2188d63c584::t_c17b3a203b8355 11
+src/packages/overlay/__tests__/overlay.spec.tsx
+  s_5ed2188d63c584::t_3e3fca9206f614 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a6d7fdedb47aedc7426e98a1d8c4d574614f949f",
+  "prompts": {},
+  "sessions": {
+    "s_5ed2188d63c584": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb3c5ea-ec07-42b4-baa2-e8c7f88e7c73",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
