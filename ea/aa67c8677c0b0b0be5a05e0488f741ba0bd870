@@ -1,0 +1,21 @@
+src/packages/resultpage/__test__/__snapshots__/resultpage.spec.tsx.snap
+  s_5ed2188d63c584::t_8d79c9cf5dee81 9
+src/packages/timeselect/__test__/__snapshots__/timeselect.spec.tsx.snap
+  s_5ed2188d63c584::t_8d79c9cf5dee81 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "eaaa67c8677c0b0b0be5a05e0488f741ba0bd870",
+  "prompts": {},
+  "sessions": {
+    "s_5ed2188d63c584": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb3c5ea-ec07-42b4-baa2-e8c7f88e7c73",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
