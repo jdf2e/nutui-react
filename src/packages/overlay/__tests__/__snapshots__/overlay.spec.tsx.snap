@@ -3,6 +3,7 @@
 exports[`content test 1`] = `
 <div>
   <div
+    arialabel="蒙层"
     class="nut-overlay"
     style="z-index: 1000;"
   >

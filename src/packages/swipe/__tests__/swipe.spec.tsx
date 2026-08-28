@@ -96,3 +96,28 @@ test('base swipe content', async () => {
     container.querySelector('.nut-swipe .nut-swipe-right .nut-button-wrap')
   ).toHaveTextContent('购物车')
 })
+
+describe('swipe.taro document guard logic', () => {
+  test('skips addEventListener when document.addEventListener is not a function', () => {
+    const addSpy = vi.spyOn(document, 'addEventListener')
+    const original = document.addEventListener
+
+    // @ts-expect-error simulate non-H5 Taro env
+    document.addEventListener = undefined
+
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    expect(shouldSkip).toBe(true)
+
+    document.addEventListener = original
+    addSpy.mockRestore()
+  })
+
+  test('does not skip addEventListener in normal H5 env', () => {
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    expect(shouldSkip).toBe(false)
+  })
+})

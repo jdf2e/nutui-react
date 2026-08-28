@@ -3,7 +3,10 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-checkbox nut-checkbox-reverse"
+    aria-checked="true"
+    class="nut-checkbox nut-checkbox-reverse nut-checkbox-active"
+    role="checkbox"
+    tabindex="0"
   >
     <div
       class="nut-checkbox-icon-wrap"

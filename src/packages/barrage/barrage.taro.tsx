@@ -144,6 +144,11 @@ const InternalBarrage: ForwardRefRenderFunction<
     if (!loop && index.current >= list.length) {
       return
     }
+    if (
+      typeof document === 'undefined' ||
+      typeof document.createElement !== 'function'
+    )
+      return
 
     const _index = loop ? index.current % list.length : index.current
     const el = document.createElement(`View`)
