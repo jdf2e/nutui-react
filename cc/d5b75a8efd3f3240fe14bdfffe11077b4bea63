@@ -1,0 +1,28 @@
+src/packages/imagepreview/__test__/imagepreview.spec.tsx
+  s_5ed2188d63c584::t_ac55716162bdcf 199,202-204,211-213,219-220
+  s_5ed2188d63c584::t_32d11b4176158d 200-201,205-210,214-218
+CHANGELOG.md
+  s_5ed2188d63c584::t_77f6e4b7ef70d5 1-7
+src/packages/swipe/__tests__/swipe.spec.tsx
+  s_5ed2188d63c584::t_74bf59f10e5511 100-102,104,107-112,114,117-121
+  s_5ed2188d63c584::t_27795f017ac798 99,103,105-106,113,115-116,122-123
+src/packages/barrage/__tests__/barrage.spec.tsx
+  s_5ed2188d63c584::t_71d18138556879 91,94-96,103-105,111-112
+  s_5ed2188d63c584::t_8512da0e4be211 92-93,97-102,106-110
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "ccd5b75a8efd3f3240fe14bdfffe11077b4bea63",
+  "prompts": {},
+  "sessions": {
+    "s_5ed2188d63c584": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb3c5ea-ec07-42b4-baa2-e8c7f88e7c73",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
