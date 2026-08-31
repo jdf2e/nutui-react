@@ -1,0 +1,19 @@
+CHANGELOG.md
+  s_05a6eba10a3b28::t_cc0acf6b1dc100 3-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "d9ba7e28addc7071862a93249716da42d0dd8a40",
+  "prompts": {},
+  "sessions": {
+    "s_05a6eba10a3b28": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "693fdcdb-6c50-441d-8c88-befda71d64e0",
+        "model": "composer-2.5"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
