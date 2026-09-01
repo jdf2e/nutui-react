@@ -1,6 +1,8 @@
 # NutUI Knowledge
 
-`nutui-react` 是 NutUI 离线文档知识查询 skill，面向 AI 编程智能体，教它「写 NutUI 代码前先查文档」——通过 `@nutui/nutui-react-cli` 检索官方组件的 Props、文档、示例与 Design Token 避免凭记忆猜测 API 名、Props 或配置项。
+NutUI 离线文档知识查询 skill，面向 AI 编程智能体教它「写 NutUI 代码前先查文档」。
+
+内部通过 `@nutui/nutui-react-cli` 检索官方组件的 Props、文档、示例与 Design Token 避免凭记忆猜测 API 名、Props 或配置项。
 
 ## 安装
 

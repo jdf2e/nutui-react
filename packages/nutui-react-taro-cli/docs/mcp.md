@@ -1,6 +1,6 @@
 # NutUI Taro Knowledge
 
-本篇介绍如何通过 Model Context Protocol (MCP) 在 AI 工具中使用 NutUI-React（Taro 多端）。
+通过 Model Context Protocol (MCP) 教 AI 工具中使用 NutUI-React（Taro 多端）。
 
 ## 启动 MCP 服务
 

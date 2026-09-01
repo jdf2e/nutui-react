@@ -1,6 +1,8 @@
 # NutUI Taro Knowledge
 
-`nutui-react-taro` 是 NutUI React Taro 离线文档知识查询 skill，面向 AI 编程智能体，教它「写 NutUI Taro 代码前先查文档」——通过 `@dongweb/nutui-react-taro-cli` 检索官方组件的 Props、文档、示例与 Design Token，避免凭记忆猜测 API 名、Props 或配置项。NutUI React Taro 是京东面向 Taro（小程序 / 多端）的移动端组件库，一套代码同时支持 H5 与小程序，其组件属性可能与 H5 版的 `@nutui/nutui-react` 不同。
+NutUI React Taro 离线文档知识查询。面向 AI 编程智能体，教它「写 NutUI Taro 代码前先查文档」。
+
+内部通过 `@dongweb/nutui-react-taro-cli` 检索官方组件的 Props、文档、示例与 Design Token，避免凭记忆猜测 API 名、Props 或配置项。NutUI React Taro 是京东面向 Taro（小程序 / 多端）的移动端组件库，一套代码同时支持 H5 与小程序，其组件属性可能与 H5 版的 `@nutui/nutui-react` 不同。
 
 ## 安装
 

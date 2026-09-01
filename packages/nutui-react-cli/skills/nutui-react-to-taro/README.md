@@ -1,6 +1,8 @@
 # NutUI React to Taro Migration
 
-`nutui-react-to-taro` 是把项目从 NutUI React（`@nutui/nutui-react`，H5）迁移到 NutUI React Taro（`@nutui/nutui-react-taro`，小程序 / 跨端）的 skill，面向 AI 编程智能体。两个包由同一套 codebase 构建，几乎每个组件在两端都同名、Props 也大体一致，因此迁移高度规则化。skill 借助源端与目标端两个离线 CLI 交叉核对 Props，把迁移拆成包名 / import 改写、原生标签 → Taro 组件替换、样式单位修正等机械步骤，并对少数两端 Props 不同的组件做人工判断，避免盲目查找替换产出在小程序上悄悄失效的代码。
+把项目从 NutUI React（`@nutui/nutui-react`，H5）迁移到 NutUI React Taro（`@nutui/nutui-react-taro`，小程序 / 跨端）。
+
+两个包由同一套 codebase 构建，几乎每个组件在两端都同名、Props 也大体一致，因此迁移高度规则化。skill 借助源端与目标端两个离线 CLI 交叉核对 Props，把迁移拆成包名 / import 改写、原生标签 → Taro 组件替换、样式单位修正等机械步骤，并对少数两端 Props 不同的组件做人工判断，避免盲目查找替换产出在小程序上悄悄失效的代码。
 
 ## 安装
 

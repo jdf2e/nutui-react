@@ -1,6 +1,6 @@
 # NutUI Knowledge
 
-本篇介绍如何通过 Model Context Protocol (MCP) 在 AI 工具中使用 NutUI-React。
+通过 Model Context Protocol (MCP) 教 AI 工具中使用 NutUI-React。
 
 ## 启动 MCP 服务
 
