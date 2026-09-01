@@ -1317,22 +1317,28 @@ $infiniteloading-icon-size: var(
 //range（✅）
 $range-color: var(--nutui-range-color, $color-title) !default;
 $range-height: var(--nutui-range-height, scale-px(4px)) !default;
-$range-margin: var(--nutui-range-margin, scale-px(15px)) !default;
+$range-margin: var(--nutui-range-margin, scale-px(16px)) !default;
 $range-inactive-color: var(
   --nutui-range-inactive-color,
-  $color-primary-light-pressed
+  var(--nutui-color-background-component, #f0f2f7)
 ) !default;
 $range-active-color: var(--nutui-range-active-color, $color-primary) !default;
+$range-disabled-color: var(
+  --nutui-range-disabled-color,
+  $color-primary-light-pressed
+) !default;
 $range-button-background: var(
   --nutui-range-button-background,
   $color-primary-text
 ) !default;
-$range-button-width: var(--nutui-range-button-width, scale-px(24px)) !default;
-$range-button-height: var(--nutui-range-button-height, scale-px(24px)) !default;
+$range-button-width: var(--nutui-range-button-width, scale-px(20px)) !default;
+$range-button-height: var(--nutui-range-button-height, scale-px(20px)) !default;
 $range-button-border: var(
   --nutui-range-button-border,
-  scale-px(1px) solid $color-primary
+  scale-px(1px) solid $color-border
 ) !default;
+$range-tick-size: var(--nutui-range-tick-size, scale-px(8px)) !default;
+
 
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, scale-px(12px));

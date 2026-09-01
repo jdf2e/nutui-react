@@ -32,7 +32,8 @@
 
   &-min,
   &-max {
-    font-size: $font-size-s;
+    font-size: $font-size-md;
+    line-height: $line-height-md;
     color: $range-color;
     user-select: none;
   }
@@ -59,7 +60,10 @@
     height: $range-button-height;
     background: $range-button-background;
     border-radius: 50%;
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow:
+      0 1px 10px 0 rgba(0, 0, 0, 0.05),
+      0 4px 5px 0 rgba(0, 0, 0, 0.08),
+      0 2px 4px -1px rgba(0, 0, 0, 0.12);
     border: $range-button-border;
     outline: none;
     align-items: center;
@@ -96,29 +100,52 @@
     }
 
     &-number {
-      position: relative;
-      width: 200%;
-      height: 24px;
-      line-height: 14px;
-      padding: 5px 0;
+      position: absolute;
       left: 50%;
+      bottom: 100%;
+      transform: translateX(-50%);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
       user-select: none;
-      font-size: $font-size-s;
-      color: $range-color;
-      text-align: center;
-      vertical-align: center;
-      box-sizing: border-box;
-      // transform: translate3d(0, -100%, 0);
+      // 角标底部距游标 2px
+      margin-bottom: 2px;
+
+      &-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 30px;
+        height: 30px;
+        padding: 0 8px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        background: $color-mask;
+        color: $color-primary-text;
+        font-size: $font-size-s;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      &-arrow {
+        width: 8px;
+        height: 4px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 8px 4px;
+        // 气泡角标（尖角朝下）
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAAzklEQVQokZ2OMU4CYRBG38y6Ji7sEhNiYQeX8ACcgovQ7CmsbOg9hQegsbKioMKQHQibSMaQsPDbSKILBHSqmS/fexm5bd/3gT7/m+do/bl6SxqtOwjdv5Ai+lIu3ocKEOtmKCKTy2GZLOfTRwAFKIrCY61yEYqzMFisVb6/o/3i7pssTUY79AFonoKvtMrNrDwQfEs8S5PRNmgPuK7xHms1MLNfX0bUW+5+k7bGhND7me+i7WBpNq33DwQAa/+wRpoZ0AFEgzyV89nrse4XAnZKmareuPsAAAAASUVORK5CYII=');
+      }
     }
   }
 
   &-disabled {
     cursor: not-allowed;
-    // 鸿蒙端在外层设置的透明度会分发到所有子图层上，导致样式与其他端不一致
-    opacity: 0.54;
+
+    // 禁用区间颜色通过独立变量实现，避免整体 opacity 在鸿蒙端分发到子图层
+    .nut-range-bar {
+      background: $range-disabled-color;
+    }
 
     .nut-range-button-wrapper,
     .nut-range-button-wrapper-left,
@@ -130,36 +157,40 @@
   &-mark {
     position: absolute;
     width: 100%;
-    height: 14px;
+    height: $range-tick-size;
     overflow: visible;
     top: 50%;
   }
 
   &-mark-text-wrapper {
     position: absolute;
+    top: 0;
     height: 100%;
-    top: 14px;
     display: inline-block;
-    transform: translateX(-10px);
   }
 
   &-mark-text {
     position: absolute;
-    line-height: 16px;
-    font-size: $font-size-s;
-    color: #999;
+    top: 16px;
+    left: 0;
+    transform: translateX(-50%);
+    line-height: $line-height-md;
+    font-size: $font-size-base;
+    color: $range-color;
     text-align: center;
     word-break: keep-all;
+    white-space: nowrap;
     user-select: none;
   }
 
   &-tick {
     position: absolute;
-    top: -20px;
-    width: 11px;
-    height: 11px;
-    left: 0px;
-    border-radius: 6px;
+    top: 0;
+    left: 0;
+    width: $range-tick-size;
+    height: $range-tick-size;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
     background: $range-inactive-color;
 
     &-active {
@@ -176,7 +207,8 @@
 
 .nut-range-vertical {
   width: $range-height;
-  margin: $range-margin 0px;
+  // 纵向左右范围文字距进度条 8px（横向为 16px，见 $range-margin）
+  margin: 8px 0px;
 
   &-button {
     &-wrapper,
@@ -201,9 +233,24 @@
     }
 
     &-number {
-      left: 0px;
+      left: 100%;
       top: 50%;
-      // transform: translate3d(100%, 0, 0);
+      bottom: auto;
+      // arrow 在 DOM 中位于 body 之后，row-reverse 使角标显示在气泡左侧
+      flex-direction: row-reverse;
+      transform: translateY(-50%);
+      margin-bottom: 0;
+      // 角标在气泡左侧，距游标 2px
+      margin-left: 2px;
+
+      // arrow 元素类名固定为 .nut-range-button-number-arrow（无 vertical 变体），
+      // 需用后代选择器命中；横向角标尖朝下，顺时针旋转 90° 使尖角朝左指向游标
+      .nut-range-button-number-arrow {
+        transform: rotate(90deg);
+        // 8×4 盒旋转后视觉为 4px 宽，但布局盒仍占 8px，
+        // 用负外边距收掉气泡侧多出的 (8-4)/2 = 2px 空白
+        margin-right: -2px;
+      }
     }
   }
 
@@ -214,7 +261,7 @@
     top: 0px;
     right: 50%;
     overflow: visible;
-    font-size: $font-size-s;
+    font-size: $font-size-base;
     padding: 0px;
   }
 
@@ -223,29 +270,39 @@
   }
 
   &-mark-text-wrapper {
-    // width: 20px;
-    height: 16px;
+    height: $range-tick-size;
     position: absolute;
+    left: 0;
+    right: 0;
     display: inline-block;
     user-select: none;
-    transform: translateY(-11px);
+    // 以刻度点中线为基准纵向居中
+    transform: translateY(-50%);
   }
 
   &-mark-text {
-    height: 100%;
-    line-height: 16px;
-    color: #999;
-    text-align: center;
+    position: absolute;
+    left: auto;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: $line-height-md;
+    font-size: $font-size-base;
+    color: $range-color;
+    text-align: right;
     word-break: keep-all;
+    white-space: nowrap;
   }
 
   &-tick {
     position: absolute;
-    top: 2px;
-    left: 31px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+    top: 50%;
+    right: 0;
+    left: auto;
+    width: $range-tick-size;
+    height: $range-tick-size;
+    transform: translate(50%, -50%);
+    border-radius: 50%;
     background: $range-inactive-color;
 
     &-active {
@@ -275,14 +332,17 @@
   }
 
   &-tick {
-    right: 0px;
+    left: auto;
+    right: 0;
     /* #ifndef dynamic*/
-    left: initial;
     /* #endif */
+    transform: translate(50%, -50%);
   }
 
   &-mark-text {
-    transform: translateX(10px);
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
   }
 
   &-vertical {
@@ -303,10 +363,6 @@
         /* #endif */
         // transform: translate3d(50%, -50%, 0);
       }
-
-      &-number {
-        // transform: translate3d(-100%, 0, 0);
-      }
     }
 
     &-mark {
@@ -315,14 +371,19 @@
     }
 
     &-tick {
-      left: auto;
-      right: 30px;
-      margin-left: 0;
-      margin-right: -0px;
+      right: auto;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &-mark-text {
+      right: auto;
+      left: 16px;
+      text-align: left;
     }
 
     &-mark-text-wrapper {
-      transform: translateY(-11px);
+      transform: translateY(-50%);
     }
   }
 }

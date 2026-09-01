@@ -360,10 +360,6 @@ export const Range: FunctionComponent<
 
   const renderButton = useCallback(
     (index?: number) => {
-      const buttonNumberTransform = vertical
-        ? 'translate(100%, -50%)'
-        : 'translate(-50%, -100%)'
-
       return (
         <>
           {button || (
@@ -382,13 +378,13 @@ export const Range: FunctionComponent<
                     [`${verticalClassPrefix}-button-number`]: vertical,
                     [`${rtlClassPrefix}-button-number`]: rtl,
                   })}
-                  style={{
-                    transform: buttonNumberTransform,
-                  }}
                 >
-                  {currentDescription
-                    ? currentDescription(curValue(index))
-                    : curValue(index)}
+                  <div className={`${classPrefix}-button-number-body`}>
+                    {currentDescription
+                      ? currentDescription(curValue(index))
+                      : curValue(index)}
+                  </div>
+                  <div className={`${classPrefix}-button-number-arrow`} />
                 </div>
               )}
             </div>
@@ -410,14 +406,26 @@ export const Range: FunctionComponent<
     return (
       <div className={markcls}>
         {marksList.map((mark: any) => {
+          const markText = Array.isArray(marks)
+            ? marksRef.current[mark]
+            : marks[mark]
+          const markTextStyle: Record<string, string | number> = {}
+          if (vertical) {
+            markTextStyle.right =
+              12 + Math.max(0, 3 - String(markText).length) * 3
+          } else if (mark === min) {
+            markTextStyle.transform = 'translateX(-4px)'
+          } else if (mark === max) {
+            markTextStyle.transform = 'translateX(calc(-100% + 4px))'
+          }
           return (
             <span
               key={mark}
               className={markClassName(mark)}
               style={marksStyle(mark)}
             >
-              <span className={textcls}>
-                {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
+              <span className={textcls} style={markTextStyle}>
+                {markText}
               </span>
               <span
                 className={classNames(
@@ -439,6 +447,8 @@ export const Range: FunctionComponent<
     marks,
     marksList,
     marksStyle,
+    max,
+    min,
     rtl,
     rtlClassPrefix,
     tickClass,

@@ -379,9 +379,6 @@ export const Range: FunctionComponent<
     },
     [innerValue]
   )
-  const buttonNumberTransform = useMemo(() => {
-    return vertical ? 'translate(100%, -50%)' : 'translate(-50%, -100%)'
-  }, [vertical])
 
   const renderButton = useCallback(
     (index?: number) => (
@@ -395,33 +392,25 @@ export const Range: FunctionComponent<
             style={{ transform: 'translate(-50%, -50%)' }}
           >
             {currentDescription !== null && (
-              <Text
+              <View
                 className={classNames(`${classPrefix}-button-number`, {
                   [`${verticalClassPrefix}-button-number`]: vertical,
                   [`${rtlClassPrefix}-button-number`]: rtl,
                 })}
-                style={{
-                  transform: buttonNumberTransform,
-                }}
               >
-                {currentDescription
-                  ? currentDescription(curValue(index))
-                  : curValue(index)}
-              </Text>
+                <Text className={`${classPrefix}-button-number-body`}>
+                  {currentDescription
+                    ? currentDescription(curValue(index))
+                    : curValue(index)}
+                </Text>
+                <View className={`${classPrefix}-button-number-arrow`} />
+              </View>
             )}
           </View>
         )}
       </>
     ),
-    [
-      button,
-      buttonNumberTransform,
-      curValue,
-      currentDescription,
-      rtl,
-      rtlClassPrefix,
-      vertical,
-    ]
+    [button, curValue, currentDescription, rtl, rtlClassPrefix, vertical]
   )
   const renderMarks = useCallback(() => {
     if (marksList.length <= 0) return null
@@ -435,27 +424,41 @@ export const Range: FunctionComponent<
     })
     return (
       <View className={markcls}>
-        {marksList.map((mark: any) => (
-          <View
-            key={mark}
-            className={markClassName(mark)}
-            style={marksStyle(mark)}
-          >
-            <Text className={textcls}>
-              {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
-            </Text>
+        {marksList.map((mark: any) => {
+          const markText = Array.isArray(marks)
+            ? marksRef.current[mark]
+            : marks[mark]
+          const markTextStyle: Record<string, string | number> = {}
+          if (vertical) {
+            markTextStyle.right =
+              12 + Math.max(0, 3 - String(markText).length) * 3
+          } else if (mark === min) {
+            markTextStyle.transform = 'translateX(-4px)'
+          } else if (mark === max) {
+            markTextStyle.transform = 'translateX(calc(-100% + 4px))'
+          }
+          return (
             <View
-              className={classNames(
-                `${vertical ? verticalClassPrefix : classPrefix}-tick`,
-                {
-                  [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
-                    tickClass(mark),
-                  [`${rtlClassPrefix}-tick`]: rtl,
-                }
-              )}
-            />
-          </View>
-        ))}
+              key={mark}
+              className={markClassName(mark)}
+              style={marksStyle(mark)}
+            >
+              <Text className={textcls} style={markTextStyle}>
+                {markText}
+              </Text>
+              <View
+                className={classNames(
+                  `${vertical ? verticalClassPrefix : classPrefix}-tick`,
+                  {
+                    [`${vertical ? verticalClassPrefix : classPrefix}-tick-active`]:
+                      tickClass(mark),
+                    [`${rtlClassPrefix}-tick`]: rtl,
+                  }
+                )}
+              />
+            </View>
+          )
+        })}
       </View>
     )
   }, [
@@ -463,6 +466,8 @@ export const Range: FunctionComponent<
     marks,
     marksList,
     marksStyle,
+    max,
+    min,
     rtl,
     rtlClassPrefix,
     tickClass,

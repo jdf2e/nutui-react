@@ -3,8 +3,4 @@ export type ResultPageStatusOptions = {
 }
 
 export type ResultPageStatus =
-  | 'success'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'waiting'
+  'success' | 'error' | 'warning' | 'info' | 'waiting'
