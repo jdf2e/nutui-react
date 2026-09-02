@@ -1,0 +1,21 @@
+scripts/build.mjs
+  s_7d3eb4cd5df7b4::t_91ced1e93e187d 141-148
+src/locales/zh-UG.ts
+  s_7d3eb4cd5df7b4::t_fe2e563320fe38 165
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "d22d3eaffbba179a8c39f7bb75f631abdf89fffa",
+  "prompts": {},
+  "sessions": {
+    "s_7d3eb4cd5df7b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6106891b-8611-44ae-be15-ba0a08e2f299",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
