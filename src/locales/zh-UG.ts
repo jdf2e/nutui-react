@@ -162,7 +162,7 @@ const zhUG: BaseLang = {
   watermark: {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },
-  mask: 'قاپلىما قەۋەت',
+  mask: 'mask',
   quickenter: {
     title: 'تېز كىرگۈزۈش',
   },

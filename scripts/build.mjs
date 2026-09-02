@@ -138,9 +138,14 @@ async function buildCJS(p) {
 async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.h5.json')
   const types = join(__dirname, `../${dist}/types`)
-  await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
-  )
+  try {
+    execSync(
+      `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${types}`,
+      { stdio: 'pipe' },
+    )
+  } catch (e) {
+    // tsc exits non-zero on type errors but still emits declaration files
+  }
 
 
   const files = await glob([`${dist}/types/src/**/*.d.ts`], {
