@@ -10,4 +10,5 @@ export interface BaseOverlay extends BaseProps {
   afterShow: () => void
   afterClose: () => void
   onClick: (event: any) => void
+  ariaLabel?: string
 }

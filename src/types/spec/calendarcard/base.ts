@@ -35,6 +35,7 @@ export interface BaseCalendarCard extends BaseProps {
   renderDay: (day: CalendarCardDay) => ReactNode
   renderDayTop: (day: CalendarCardDay) => ReactNode
   renderDayBottom: (day: CalendarCardDay) => ReactNode
+  renderDayAriaLabel?: (day: CalendarCardDay) => string
   onDayClick: (day: CalendarCardDay) => void
   onPageChange: (data: CalendarCardMonth) => void
   onChange: (value: CalendarCardValue) => void
