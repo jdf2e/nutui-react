@@ -1,0 +1,40 @@
+src/utils/taro/get-rect.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 43,45,69,71
+src/types/spec/dialog/h5.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 5-6
+src/types/spec/popup/base.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 35-36
+src/types/spec/calendarcard/base.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 38
+src/types/spec/price/base.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 22
+src/types/spec/dialog/base.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 46
+  s_7d3eb4cd5df7b4::t_d268373b206491 22,54-56
+src/types/spec/dialog/taro.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 6-7
+  s_7d3eb4cd5df7b4::t_d268373b206491 10-13
+src/types/spec/searchbar/h5.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 1-6
+  s_7d3eb4cd5df7b4::t_d268373b206491 9-12
+src/utils/should-render-price-raw.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 3-6,15,28-33
+src/types/spec/overlay/base.ts
+  s_7d3eb4cd5df7b4::t_075670bb4ef899 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a5eccd75b71b73efc59733ae43c2dd59789116bd",
+  "prompts": {},
+  "sessions": {
+    "s_7d3eb4cd5df7b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6106891b-8611-44ae-be15-ba0a08e2f299",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
