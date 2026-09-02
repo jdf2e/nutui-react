@@ -54,9 +54,9 @@ importers:
       codesandbox:
         specifier: ^2.2.3
         version: 2.2.3
-      lodash.kebabcase:
-        specifier: ^4.1.1
-        version: 4.1.1
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       lottie-react:
         specifier: ^2.4.0
         version: 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -145,9 +145,9 @@ importers:
       '@types/loadable__component':
         specifier: ^5.13.8
         version: 5.13.10
-      '@types/lodash.kebabcase':
-        specifier: ^4.1.9
-        version: 4.1.9
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/node':
         specifier: ^20.11.19
         version: 20.19.17
@@ -3725,6 +3725,9 @@ packages:
 
   '@types/loadable__component@5.13.10':
     resolution: {integrity: sha512-2/LjmgG1JcGPj7T3NViq7BB5cvOA0s63gL3Gv+FPULj2L+3ExWfsNQcsFPUIOoGsVUJeZxgNPf320JZDyxjtCQ==}
+
+  '@types/lodash-es@4.17.12':
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==, tarball: https://registry.npmjs.org/@types/lodash-es/-/lodash-es-4.17.12.tgz}
 
   '@types/lodash.debounce@4.0.9':
     resolution: {integrity: sha512-Ma5JcgTREwpLRwMM+XwBR7DaWe96nC38uCBDFKZWbNKD+osjVzdpnUSwBcqCptrp16sSOLBAUb50Car5I0TCsQ==}
@@ -16565,6 +16568,10 @@ snapshots:
   '@types/loadable__component@5.13.10':
     dependencies:
       '@types/react': 18.3.24
+
+  '@types/lodash-es@4.17.12':
+    dependencies:
+      '@types/lodash': 4.17.20
 
   '@types/lodash.debounce@4.0.9':
     dependencies:

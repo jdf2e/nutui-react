@@ -1,6 +1,6 @@
 import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
-import kebabCase from 'lodash.kebabcase'
+import { kebabCase } from 'lodash-es'
 import isEqual from 'react-fast-compare'
 import { View } from '@tarojs/components'
 import { useMemo } from '@/hooks/use-memo'
