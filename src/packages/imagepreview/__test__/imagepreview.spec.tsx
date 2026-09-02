@@ -196,3 +196,25 @@ describe('ImagePreview Component', () => {
     })
   })
 })
+
+describe('imagepreview.taro document guard logic', () => {
+  test('skips addEventListener when document.addEventListener is not a function', () => {
+    const original = document.addEventListener
+    // @ts-expect-error simulate non-H5 Taro env
+    document.addEventListener = undefined
+
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    expect(shouldSkip).toBe(true)
+
+    document.addEventListener = original
+  })
+
+  test('does not skip addEventListener in normal H5 env', () => {
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    expect(shouldSkip).toBe(false)
+  })
+})

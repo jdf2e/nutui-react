@@ -6,6 +6,7 @@ exports[`should render description correctly 1`] = `
     class="nut-resultpage"
   >
     <div
+      aria-hidden="true"
       class="nut-resultpage-icon"
     >
       <svg

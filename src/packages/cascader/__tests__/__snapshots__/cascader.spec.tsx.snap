@@ -11,11 +11,13 @@ exports[`Cascader > value 1`] = `<div />`;
 exports[`Cascader > visible true 1`] = `
 <div>
   <div
+    arialabel="蒙层"
     class="nut-overlay"
     style="z-index: 1000;"
   />
   <div
     class="nut-popup nut-popup-round nut-popup-bottom"
+    role="dialog"
     style="z-index: 1000;"
   >
     <div

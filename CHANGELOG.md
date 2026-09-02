@@ -1,3 +1,10 @@
+# v3.0.22-cpp
+
+`2026-08-28`
+
+- 🐛 fix(swipe): 修复 Taro Android/iOS 环境下 `document.addEventListener` 不是函数导致报错的问题
+- 🐛 fix(taro): 修复 imagepreview/barrage/popover 在 Taro 非 H5 环境下访问 `document` API 报错的问题
+
 # v3.0.21-cpp
 
 `2026-05-20`

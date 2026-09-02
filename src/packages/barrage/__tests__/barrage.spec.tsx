@@ -88,3 +88,25 @@ test('should danmu rows top', async () => {
     { timeout: 4000 }
   )
 })
+
+describe('barrage.taro document guard logic', () => {
+  test('skips createElement when document.createElement is not a function', () => {
+    const original = document.createElement.bind(document)
+    // @ts-expect-error simulate non-H5 Taro env
+    document.createElement = undefined
+
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.createElement !== 'function'
+    expect(shouldSkip).toBe(true)
+
+    document.createElement = original
+  })
+
+  test('does not skip createElement in normal H5 env', () => {
+    const shouldSkip =
+      typeof document === 'undefined' ||
+      typeof document.createElement !== 'function'
+    expect(shouldSkip).toBe(false)
+  })
+})

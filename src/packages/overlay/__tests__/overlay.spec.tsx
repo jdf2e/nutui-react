@@ -11,6 +11,7 @@ test('should change z-index when using z-index prop', () => {
   // @ts-ignore
   expect(getByTestId('overlay-zindex')).toMatchInlineSnapshot(`
     <div
+      arialabel="蒙层"
       class="nut-overlay"
       data-testid="overlay-zindex"
       style="z-index: 99;"

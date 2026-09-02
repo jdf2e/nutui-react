@@ -86,7 +86,9 @@ export const Popover: FunctionComponent<
     nextTick(async () => {
       const rect = targetId
         ? await getRectInMultiPlatform(
-            document.querySelector(`#${targetId}`),
+            typeof document !== 'undefined'
+              ? document.querySelector(`#${targetId}`)
+              : null,
             targetId
           )
         : await getRectInMultiPlatform(popoverRef.current, popoverId)

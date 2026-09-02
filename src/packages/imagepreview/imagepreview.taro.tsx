@@ -149,6 +149,11 @@ export const ImagePreview: FunctionComponent<Partial<TaroImagePreviewProps>> = (
     init()
   }, [])
   const init = () => {
+    if (
+      typeof document === 'undefined' ||
+      typeof document.addEventListener !== 'function'
+    )
+      return
     document.addEventListener('touchmove', onTouchMove as any)
     document.addEventListener('touchend', onTouchEnd)
     document.addEventListener('touchcancel', onTouchEnd)
