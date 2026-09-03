@@ -54,9 +54,6 @@ importers:
       codesandbox:
         specifier: ^2.2.3
         version: 2.2.3
-      lodash.kebabcase:
-        specifier: ^4.1.1
-        version: 4.1.1
       lottie-react:
         specifier: ^2.4.0
         version: 2.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -145,9 +142,6 @@ importers:
       '@types/loadable__component':
         specifier: ^5.13.8
         version: 5.13.10
-      '@types/lodash.kebabcase':
-        specifier: ^4.1.9
-        version: 4.1.9
       '@types/node':
         specifier: ^20.11.19
         version: 20.19.17
