@@ -56,7 +56,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `true` |
+| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `false` |
 | animated | Whether to enable skeleton animation | `boolean` | `true` |
 | size | Specify the built-in height | `'small' \| 'normal' \| 'large'` | `normal` |
 | shape | Set shape | `'square' \| 'round' \| 'circle'` | `round` |

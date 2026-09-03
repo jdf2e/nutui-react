@@ -56,7 +56,7 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| visible | 是否顯示骨架屏(true不顯示骨架屏，false顯示骨架屏) | `boolean` | `true` |
+| visible | 是否顯示骨架屏(true不顯示骨架屏，false顯示骨架屏) | `boolean` | `false` |
 | animated | 是否開啟骨架屏動畫 | `boolean` | `true` |
 | size | 指定使用的內置高度 | `'small' \| 'normal' \| 'large'` | `normal` |
 | shape | 設置形狀 | `'square' \| 'round' \| 'circle'` | `round` |

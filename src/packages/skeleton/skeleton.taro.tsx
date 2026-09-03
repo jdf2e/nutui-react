@@ -1,9 +1,4 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  useEffect,
-  useState,
-} from 'react'
+import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { ComponentDefaults } from '@/utils/typings'
@@ -54,29 +49,11 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
   function durationStyle() {
     if (typeof duration !== 'undefined')
       return {
-        animationDuration: `${duration}s`,
+        // duration 为扫光时长,叠加固定 1s 停顿构成完整循环周期
+        animationDuration: `${duration + 1}s`,
       }
     return {}
   }
-
-  const [animate, setAnimate] = useState(false)
-
-  const playAnimation = () => {
-    setAnimate(false)
-    setTimeout(() => {
-      setAnimate(true)
-    }, 10)
-  }
-
-  useEffect(() => {
-    if (!animated) return
-    playAnimation()
-    // 每隔 3 秒播放一次动画
-    const intervalId = setInterval(playAnimation, 1000 + duration * 1000) // xs 动画 + 1s 间隔
-
-    // 清理定时器
-    return () => clearInterval(intervalId)
-  }, [])
 
   return (
     <>
@@ -94,7 +71,7 @@ export const Skeleton: FunctionComponent<Partial<TaroSkeletonProps>> = (
               >
                 {animated && (
                   <View
-                    className={`${classPrefix}-animated ${animate ? `${classPrefix}-animation` : ''}`}
+                    className={`${classPrefix}-animation`}
                     style={durationStyle()}
                   />
                 )}

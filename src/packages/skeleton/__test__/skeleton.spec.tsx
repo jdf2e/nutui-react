@@ -11,13 +11,13 @@ test('should allow to disable animation', () => {
 
 test('should render animated element by default', () => {
   const { container } = render(<Skeleton rows={1} />)
-  expect(container.querySelector('.nut-skeleton-animated')).toBeTruthy()
+  expect(container.querySelector('.nut-skeleton-animation')).toBeTruthy()
 })
 
 test('should set duration', () => {
   const { container } = render(<Skeleton rows={1} duration={2} />)
-  const animation = container.querySelector('.nut-skeleton-animated')
+  const animation = container.querySelector('.nut-skeleton-animation')
   expect(animation).toHaveStyle({
-    animationDuration: '2s',
+    animationDuration: '3s',
   })
 })
