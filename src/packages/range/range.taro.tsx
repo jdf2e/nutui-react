@@ -432,10 +432,15 @@ export const Range: FunctionComponent<
           if (vertical) {
             markTextStyle.right =
               12 + Math.max(0, 3 - String(markText).length) * 3
-          } else if (mark === min) {
-            markTextStyle.transform = 'translateX(-4px)'
-          } else if (mark === max) {
-            markTextStyle.transform = 'translateX(calc(-100% + 4px))'
+          } else if (Number(mark) === Number(min)) {
+            // RTL 下 min 在右端,首尾修正方向对调
+            markTextStyle.transform = rtl
+              ? 'translateX(calc(-100% + 4px))'
+              : 'translateX(-4px)'
+          } else if (Number(mark) === Number(max)) {
+            markTextStyle.transform = rtl
+              ? 'translateX(-4px)'
+              : 'translateX(calc(-100% + 4px))'
           }
           return (
             <View

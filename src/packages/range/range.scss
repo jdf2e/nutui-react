@@ -128,13 +128,12 @@
       }
 
       &-arrow {
-        width: 8px;
-        height: 4px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 8px 4px;
-        // 气泡角标（尖角朝下）
-        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAAzklEQVQokZ2OMU4CYRBG38y6Ji7sEhNiYQeX8ACcgovQ7CmsbOg9hQegsbKioMKQHQibSMaQsPDbSKILBHSqmS/fexm5bd/3gT7/m+do/bl6SxqtOwjdv5Ai+lIu3ocKEOtmKCKTy2GZLOfTRwAFKIrCY61yEYqzMFisVb6/o/3i7pssTUY79AFonoKvtMrNrDwQfEs8S5PRNmgPuK7xHms1MLNfX0bUW+5+k7bGhND7me+i7WBpNq33DwQAa/+wRpoZ0AFEgzyV89nrse4XAnZKmareuPsAAAAASUVORK5CYII=');
+        width: 0;
+        height: 0;
+        // 纯 CSS 三角(尖角朝下),尖角色取气泡主体同一变量,随主题/暗黑联动
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid $color-mask;
       }
     }
   }
@@ -243,13 +242,14 @@
       // 角标在气泡左侧，距游标 2px
       margin-left: 2px;
 
-      // arrow 元素类名固定为 .nut-range-button-number-arrow（无 vertical 变体），
-      // 需用后代选择器命中；横向角标尖朝下，顺时针旋转 90° 使尖角朝左指向游标
+      // arrow 元素类名固定为 .nut-range-button-number-arrow(无 vertical 变体),
+      // 需用后代选择器命中;纵向气泡在游标右侧,尖角直接用 border 画成朝左,
+      // 不再依赖 rotate + 负 margin 补偿,规避低端引擎 1px 缝隙/模糊
       .nut-range-button-number-arrow {
-        transform: rotate(90deg);
-        // 8×4 盒旋转后视觉为 4px 宽，但布局盒仍占 8px，
-        // 用负外边距收掉气泡侧多出的 (8-4)/2 = 2px 空白
-        margin-right: -2px;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: none;
+        border-right: 4px solid $color-mask;
       }
     }
   }
