@@ -1,0 +1,35 @@
+src/packages/image/image.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 12,46,52-54,157-161,169,202,206
+src/packages/image/demos/taro/demo1.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 9
+src/packages/avatar/avatar.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 132-139,147,172
+src/packages/image/image.taro.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 18,43,85-89,97,135-136
+src/packages/avatar/demos/h5/demo1.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 10-11
+src/packages/image/__test__/__snapshots__/image.spec.tsx.snap
+  s_7d3eb4cd5df7b4::t_690ec1d69252ca 11
+src/packages/image/demos/h5/demo1.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 11
+src/packages/avatar/avatar.taro.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 43,52,110,128-130,138,142-143,166
+src/packages/avatar/demos/taro/demo1.tsx
+  s_7d3eb4cd5df7b4::t_2922a4b5f85292 10-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "0ddee4d7f0ba5988f26232fca00d6d1b155d6ed4",
+  "prompts": {},
+  "sessions": {
+    "s_7d3eb4cd5df7b4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6106891b-8611-44ae-be15-ba0a08e2f299",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "hanyuxinting <hanyuxinting@sina.cn>"
+    }
+  }
+}
