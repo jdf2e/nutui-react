@@ -1,0 +1,26 @@
+package.json
+  h_4a031138686c08 3
+CHANGELOG.md
+  s_05a6eba10a3b28::t_9f2e1441c8d3b4 3-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "2ccd3c33c20619f89a9b5fc3db938dd7bbe44421",
+  "prompts": {},
+  "humans": {
+    "h_4a031138686c08": {
+      "author": "songchenglin3 <353833373@qq.com>"
+    }
+  },
+  "sessions": {
+    "s_05a6eba10a3b28": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "693fdcdb-6c50-441d-8c88-befda71d64e0",
+        "model": "default"
+      },
+      "human_author": "songchenglin3 <353833373@qq.com>"
+    }
+  }
+}
