@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-cli",
-  "version": "0.1.1",
+  "version": "4.0.0",
   "type": "module",
   "description": "NutUI React 面向 AI Coding 的离线知识查询 CLI：list / info / doc / demo / token。",
   "keywords": [
@@ -24,7 +24,9 @@
   "files": [
     "dist",
     "data",
-    "skills"
+    "skills",
+    "README.md",
+    "docs"
   ],
   "engines": {
     "node": ">=18.12.0"
