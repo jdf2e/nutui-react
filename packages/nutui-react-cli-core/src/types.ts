@@ -73,3 +73,20 @@ export interface Meta {
 export type Lang = string
 
 export type OutputFormat = 'text' | 'json'
+
+// data/versions.json 的结构：把 major.minor 映射到具体 tag，供运行时把请求版本
+// 路由到最接近的历史快照目录。由 scripts/sync.mjs 生成。
+export interface MajorIndex {
+  // 该 major 的 latest tag（不带 v 前缀，如 '3.1.0' / '4.0.0-beta.7'）
+  latest: string
+  // 是否有稳定版（v4 目前全 beta → false，命中时不打「预发布」warning）
+  stable: boolean
+  // major.minor → tag（不带 v 前缀），如 { '3.0': '3.0.20', '3.1': '3.1.0' }
+  minors: Record<string, string>
+}
+
+export interface VersionsIndex {
+  // 兜底 major，如 'v4'
+  defaultMajor: string
+  majors: Record<string, MajorIndex>
+}

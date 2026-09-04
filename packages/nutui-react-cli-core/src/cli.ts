@@ -25,6 +25,13 @@ export function runCli(config: CliConfig, argv: string[]): void {
       default: 'text' as OutputFormat,
       global: true,
     })
+    .option('nutui-version', {
+      alias: 'nv',
+      type: 'string',
+      describe:
+        '目标 NutUI 版本（如 3、3.1.0、4.0.0-beta.7）；省略则从 node_modules / package.json 自动检测',
+      global: true,
+    })
     .command(
       ['list', 'ls'],
       '列出全部组件（按分类）',
@@ -39,6 +46,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           config,
           category: a.category,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -55,6 +63,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           config,
           component: a.component as string,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -82,6 +91,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string,
           lang: (a.lang as Lang) ?? config.defaultLang,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -104,6 +114,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           component: a.component as string,
           name: a.name as string | undefined,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(
@@ -119,6 +130,7 @@ export function runCli(config: CliConfig, argv: string[]): void {
           config,
           component: a.component as string | undefined,
           format: a.format as OutputFormat,
+          nutuiVersion: a['nutui-version'] as string | undefined,
         })
     )
     .command(

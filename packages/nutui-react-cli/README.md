@@ -35,7 +35,12 @@ nutui-react info Button --format json
 | `nutui-react token [Component]` | 查看 Design Token；省略组件名则列出全局 token |
 | `nutui-react mcp` | 启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等 IDE 调用 |
 
-全局选项：`--format, -f <text\|json>`（默认 `text`）、`--help, -h`、`--version, -v`。
+全局选项：
+
+- `--format, -f <text\|json>`（默认 `text`）
+- `--nutui-version, --nv <version>`（目标 NutUI 版本，见下）
+- `--help, -h`
+- `--version, -v`（CLI 自身版本）。
 
 示例：
 
@@ -47,6 +52,29 @@ nutui-react demo Button          # 列出示例
 nutui-react demo Button demo1    # 查看某个示例源码
 nutui-react token Button
 ```
+
+## 多版本
+
+CLI 随包内置多个 NutUI 大版本的离线快照（当前：`v3.0.20`、`v3.1.0`、`v4.0.0-beta.7`），可对同一台机器上不同 NutUI 版本给出对应的组件知识。
+
+用 `--nutui-version`（别名 `--nv`）指定目标版本，支持 `3`、`3.1.0`、`4.0.0-beta.7` 等写法：
+
+```bash
+nutui-react --nv 3.1.0 info Button      # 查 3.1.0 的 Button Props
+nutui-react --nv 3 list                 # 查 v3 最新快照
+nutui-react --nv 4.0.0-beta.7 doc Cell
+```
+
+按以下顺序**自动检测**目标版本：
+
+1. `--nutui-version <v>` 显式指定；
+2. 项目 `node_modules/@nutui/nutui-react/package.json` 的实际安装版本；
+3. 项目 `package.json` 的 `dependencies` / `devDependencies` / `peerDependencies` 声明（兼容 `^3.1.0`、`~3.1.0` 等）；
+4. 兜底到默认大版本（`v4`）的 latest。
+
+版本路由按 `major.minor` 粒度：请求 `3.0.5` 会落到该 minor 系列的最高 patch 快照 `v3.0.20`；请求的 minor 若高于已有，回退到该 major 最近的旧 minor。每次查询的输出都会标明实际命中的版本与来源。
+
+> 在项目里能自动推断版本时，优先不显式传 `--nutui-version`，让 CLI 自行检测更省心。
 
 ## MCP（IDE 集成）
 

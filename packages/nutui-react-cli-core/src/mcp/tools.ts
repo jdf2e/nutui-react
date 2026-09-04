@@ -1,13 +1,19 @@
-// MCP 工具定义与处理器。复用 data.ts 原语，与 CLI 命令共享同一份 meta 快照，
+// MCP 工具定义与处理器。复用 data.ts 原语，与 CLI 命令共享同一套多版本快照路由，
 // 输出结构与各命令的 --format json 保持一致。工具名 = config.mcp.toolPrefix + 动词。
+//
+// 多版本：每个工具入参新增可选 nutuiVersion（与 CLI 的 --nutui-version 对齐）。handler
+// 内部走同一套 detectVersion → resolveSnapshotDir → loadMetaByDir，路由到对应快照。
 import {
   listDemos,
-  loadMeta,
+  loadMetaByDir,
+  loadVersionsIndex,
   readDemo,
   readDoc,
   resolveComponent,
+  resolveSnapshotDir,
   suggestComponents,
 } from '../data.js'
+import { detectVersion, type VersionInfo } from '../version.js'
 import { createError, ErrorCodes } from '../error.js'
 import type { CliConfig } from '../config.js'
 import type { Component, Lang, Meta } from '../types.js'
@@ -64,6 +70,19 @@ function langEnumDesc(config: CliConfig): string {
   return `文档语言，${parts.join('，')}`
 }
 
+// 目标版本参数描述（各工具共用）。
+const NUTUI_VERSION_DESC =
+  '目标 NutUI 版本（如 3、3.1.0、4.0.0-beta.7）；省略则从项目 node_modules / package.json 自动检测，检测不到则用默认大版本'
+
+function nutuiVersionProp() {
+  return {
+    nutuiVersion: {
+      type: 'string',
+      description: NUTUI_VERSION_DESC,
+    },
+  }
+}
+
 export function buildToolDefinitions(config: CliConfig) {
   const p = config.mcp.toolPrefix
   return [
@@ -78,6 +97,7 @@ export function buildToolDefinitions(config: CliConfig) {
             description:
               '按分类英文名筛选（如 base / feedback / form），省略则列出全部',
           },
+          ...nutuiVersionProp(),
         },
         required: [] as string[],
       },
@@ -92,8 +112,9 @@ export function buildToolDefinitions(config: CliConfig) {
         properties: {
           component: {
             type: 'string',
-            description: '组件名（大小写不敏感，如 Button）',
+            description: '组件名(大小写不敏感，如 Button)',
           },
+          ...nutuiVersionProp(),
         },
         required: ['component'],
       },
@@ -107,13 +128,14 @@ export function buildToolDefinitions(config: CliConfig) {
         properties: {
           component: {
             type: 'string',
-            description: '组件名（大小写不敏感，如 Button）',
+            description: '组件名(大小写不敏感，如 Button)',
           },
           lang: {
             type: 'string',
             enum: [...config.langs],
             description: langEnumDesc(config),
           },
+          ...nutuiVersionProp(),
         },
         required: ['component'],
       },
@@ -127,12 +149,13 @@ export function buildToolDefinitions(config: CliConfig) {
         properties: {
           component: {
             type: 'string',
-            description: '组件名（大小写不敏感，如 Button）',
+            description: '组件名(大小写不敏感，如 Button)',
           },
           name: {
             type: 'string',
             description: '示例名（如 demo1）；省略则列出全部示例',
           },
+          ...nutuiVersionProp(),
         },
         required: ['component'],
       },
@@ -149,6 +172,7 @@ export function buildToolDefinitions(config: CliConfig) {
             type: 'string',
             description: '组件名，返回组件级 token；省略则返回全局 token',
           },
+          ...nutuiVersionProp(),
         },
         required: [] as string[],
       },
@@ -160,7 +184,22 @@ export function buildToolDefinitions(config: CliConfig) {
 export function createToolHandler(config: CliConfig) {
   const p = config.mcp.toolPrefix
   return async (name: string, params: Record<string, unknown>) => {
-    const meta = loadMeta(config.dataDir)
+    // 每次调用按入参 nutuiVersion 路由到对应快照（省略则自动检测）。
+    const versionsIndex = loadVersionsIndex(config.dataDir)
+    const versionInfo: VersionInfo = detectVersion({
+      flag: params.nutuiVersion as string | undefined,
+      cwd: process.cwd(),
+      npmPackageName: config.npmPackageName,
+      versionsIndex,
+    })
+    const snapshotDir = resolveSnapshotDir(config.dataDir, versionInfo.version)
+    const meta = loadMetaByDir(snapshotDir)
+    const _meta = {
+      version: versionInfo.version,
+      major: versionInfo.major,
+      source: versionInfo.source,
+    }
+
     // 去前缀得到动词，兼容两端不同前缀。
     const verb = name.startsWith(p) ? name.slice(p.length) : name
 
@@ -186,7 +225,7 @@ export function createToolHandler(config: CliConfig) {
               version: c.version,
             })),
         }))
-        return toMcpResult({ libVersion: meta.libVersion, categories: data })
+        return toMcpResult({ _meta, libVersion: meta.libVersion, categories: data })
       }
 
       case 'info': {
@@ -196,6 +235,7 @@ export function createToolHandler(config: CliConfig) {
           (t) => t.kind === 'props'
         )
         return toMcpResult({
+          _meta,
           name: comp.name,
           cName: comp.cName,
           version: comp.version,
@@ -211,7 +251,7 @@ export function createToolHandler(config: CliConfig) {
         const comp = resolve(config, meta, params.component as string)
         if (isError(comp)) return toMcpResult(comp)
         const lang = (params.lang as Lang) ?? config.defaultLang
-        const content = readDoc(config.dataDir, comp, lang)
+        const content = readDoc(snapshotDir, comp, lang)
         if (content === null) {
           const langName = config.langLabel[lang] ?? lang
           return toMcpResult(
@@ -221,18 +261,18 @@ export function createToolHandler(config: CliConfig) {
             )
           )
         }
-        return toMcpResult({ name: comp.name, lang, doc: content })
+        return toMcpResult({ _meta, name: comp.name, lang, doc: content })
       }
 
       case 'demo': {
         const comp = resolve(config, meta, params.component as string)
         if (isError(comp)) return toMcpResult(comp)
-        const demos = listDemos(config.dataDir, comp)
+        const demos = listDemos(snapshotDir, comp)
         const demoName = params.name as string | undefined
         if (!demoName) {
-          return toMcpResult({ component: comp.name, demos })
+          return toMcpResult({ _meta, component: comp.name, demos })
         }
-        const code = readDemo(config.dataDir, comp, demoName)
+        const code = readDemo(snapshotDir, comp, demoName)
         if (code === null) {
           return toMcpResult(
             createError(
@@ -244,17 +284,18 @@ export function createToolHandler(config: CliConfig) {
             )
           )
         }
-        return toMcpResult({ component: comp.name, demo: demoName, code })
+        return toMcpResult({ _meta, component: comp.name, demo: demoName, code })
       }
 
       case 'token': {
         const query = params.component as string | undefined
         if (!query) {
-          return toMcpResult({ scope: 'global', tokens: meta.globalTokens })
+          return toMcpResult({ _meta, scope: 'global', tokens: meta.globalTokens })
         }
         const comp = resolve(config, meta, query)
         if (isError(comp)) return toMcpResult(comp)
         return toMcpResult({
+          _meta,
           scope: comp.id,
           component: comp.name,
           tokens: comp.tokens ?? [],
