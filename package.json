@@ -158,7 +158,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/loadable__component": "^5.13.10",
     "@types/lodash.kebabcase": "^4.1.9",
-    "@types/node": "^20.19.43",
+    "@types/node": "^24.13.3",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",

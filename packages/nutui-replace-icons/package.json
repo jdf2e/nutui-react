@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/lodash.kebabcase": "^4.1.9",
-    "@types/node": "^18.19.130",
+    "@types/node": "^24.13.3",
     "prettier": "^3.9.6",
     "rollup": "^2.80.0",
     "rollup-plugin-ts": "^3.4.5",
