@@ -1401,19 +1401,24 @@ $infiniteloading-icon-size: var(
 //range（✅）
 $range-color: var(--nutui-range-color, $color-title) !default;
 $range-height: var(--nutui-range-height, 2px) !default;
-$range-margin: var(--nutui-range-margin, 15px) !default;
+$range-margin: var(--nutui-range-margin, 16px) !default;
 $range-inactive-color: var(
   --nutui-range-inactive-color,
-  $color-default
+  var(--nutui-color-background-component)
 ) !default;
 $range-active-color: var(--nutui-range-active-color, $color-primary) !default;
+$range-disabled-color: var(
+  --nutui-range-disabled-color,
+  $color-primary-light-pressed
+) !default;
 $range-button-background: var(
   --nutui-range-button-background,
   $color-primary-text
 ) !default;
-$range-button-width: var(--nutui-range-button-width, 24px) !default;
-$range-button-height: var(--nutui-range-button-height, 24px) !default;
+$range-button-width: var(--nutui-range-button-width, 20px) !default;
+$range-button-height: var(--nutui-range-button-height, 20px) !default;
 $range-button-border: var(--nutui-range-button-border, none) !default;
+$range-tick-size: var(--nutui-range-tick-size, 8px) !default;
 
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, 12px);
@@ -2556,15 +2561,19 @@ $skeleton-line-small-height: var(
 ) !default;
 $skeleton-line-normal-height: var(
   --nutui-skeleton-line-normal-height,
-  24px
+  20px
 ) !default;
 $skeleton-line-large-height: var(
   --nutui-skeleton-line-large-height,
-  32px
+  28px
 ) !default;
 $skeleton-line-border-radius: var(
   --nutui-skeleton-line-border-radius,
   0
+) !default;
+$skeleton-animation-color: var(
+  --nutui-skeleton-animation-color,
+  rgba(255, 255, 255, 0.5)
 ) !default;
 
 // card（✅）

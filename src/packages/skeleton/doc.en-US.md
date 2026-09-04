@@ -56,11 +56,11 @@ import { Skeleton } from '@nutui/nutui-react'
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `true` |
-| animated | Whether to enable skeleton animation | `boolean` | `false` |
+| visible | Whether to show skeleton screen (true: hide skeleton, false: show skeleton) | `boolean` | `false` |
+| animated | Whether to enable skeleton animation | `boolean` | `true` |
 | size | Specify the built-in height | `'small' \| 'normal' \| 'large'` | `normal` |
 | shape | Set shape | `'square' \| 'round' \| 'circle'` | `round` |
-| duration | Animation duration | `number` | `0.6` |
+| duration | Animation duration | `number` | `0.4` |
 | rows | Set number of rows | `number` | `1` |
 | width | Set width, higher priority than `size` property | `string\|number` | `-` |
 | height | Set height, higher priority than `size` property | `string\|number` | `-` |
@@ -73,11 +73,12 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-skeleton-background | Background | `rgb(239, 239, 239)` |
+| \--nutui-skeleton-background | Background | `#f2f3f5` |
 | \--nutui-skeleton-line-width | Line width | `100%` |
 | \--nutui-skeleton-line-small-height | Line height | `16px` |
-| \--nutui-skeleton-line-normal-height | Line height | `24px` |
-| \--nutui-skeleton-line-large-height | Line height | `32px` |
+| \--nutui-skeleton-line-normal-height | Line height | `20px` |
+| \--nutui-skeleton-line-large-height | Line height | `28px` |
 | \--nutui-skeleton-line-border-radius | Line border radius | `4px` |
+| \--nutui-skeleton-animation-color | Loading shimmer color (opacity auto-reduced in dark mode) | `rgba(255, 255, 255, 0.5)` |
 
 <Contribution name="Skeleton" />

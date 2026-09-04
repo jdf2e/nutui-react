@@ -36,6 +36,7 @@ const Demo10 = () => {
           nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
           nutuiRangeMargin: '20px',
           nutuiRangeHeight: '6px',
+          nutuiRangeTickSize: '11px',
         }}
       >
         <Range
