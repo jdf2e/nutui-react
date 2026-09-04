@@ -24,6 +24,8 @@ The CLI is "the agent runs commands"; MCP registers the same capabilities as IDE
 
 All tools are read-only, side-effect-free, and do not access the external network.
 
+Every tool accepts an optional `nutuiVersion` argument (e.g. `3.1.0`, `4.0.0-beta.7`) to target a NutUI major version; when omitted, the version your project uses is auto-detected, falling back to the default major. See the [CLI multi-version notes](/#/en-US/ai/cli).
+
 ### Prompts
 
 | Prompt | Description |

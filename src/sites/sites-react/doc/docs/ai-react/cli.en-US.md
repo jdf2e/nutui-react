@@ -9,6 +9,7 @@ This guide explains how to use `@nutui/nutui-react-cli` to query NutUI-React com
 ## Highlights
 
 - **Fully offline, zero API key** — Component metadata, docs, and demos are bundled at build time. Once installed, queries run locally in milliseconds with no network requests and no latency.
+- **Multi-version snapshots** — Bundles offline snapshots of multiple major versions (v3 / v4). Use `--nutui-version` to query the exact API of any version; when omitted, the CLI auto-detects the version your project uses.
 - **Structured output** — Every command supports `--format json` for agents to parse directly, instead of regex-matching text.
 - **Smart correction** — Component names are case-insensitive; typed `Buttn`? The CLI suggests `Button` based on edit distance rather than just erroring out.
 - **Bilingual docs** — The `doc` command supports `--lang zh|en` to switch between Chinese and English.
@@ -44,6 +45,7 @@ nutui-react demo Button              # List all H5 demo names for the component
 nutui-react demo Button demo1        # View a demo's source
 nutui-react token                    # Global Design Tokens
 nutui-react token Button             # Component-level Design Tokens
+nutui-react --nv 3.1.0 info Button   # Query a specific NutUI version's API (auto-detected if omitted)
 nutui-react mcp                      # Start a local MCP server for IDE integration
 ```
 
@@ -65,9 +67,31 @@ When a component name isn't found, the CLI returns a "did you mean" suggestion (
 | Flag | Description | Default |
 | --- | --- | --- |
 | `--format, -f <text\|json>` | Output format; agents should prefer `json` | `text` |
+| `--nutui-version, --nv <version>` | Target NutUI version (e.g. `3`, `3.1.0`, `4.0.0-beta.7`) | Auto-detected |
 | `--lang, -l <zh\|en>` | Doc language (for `doc` / `mcp`) | `zh` |
 | `--help, -h` | Show help | - |
-| `--version, -v` | Print the CLI version | - |
+| `--version, -v` | Print the CLI's own version (not the NutUI version) | - |
+
+## Multi-version
+
+The CLI bundles offline snapshots of multiple NutUI major versions (currently `v3.0.20`, `v3.1.0`, `v4.0.0-beta.7`), so it can answer with the right component knowledge for whichever NutUI version a machine uses. Pass `--nutui-version` (alias `--nv`) to target a version — `3`, `3.1.0`, `4.0.0-beta.7`, etc. all work:
+
+```bash
+nutui-react --nv 3.1.0 info Button      # Button props in 3.1.0
+nutui-react --nv 3 list                 # latest v3 snapshot
+nutui-react --nv 4.0.0-beta.7 doc Cell
+```
+
+When `--nutui-version` is omitted, the target version is **auto-detected** in this order:
+
+1. the `--nutui-version <v>` flag;
+2. the installed version in the project's `node_modules/@nutui/nutui-react/package.json`;
+3. the `dependencies` / `devDependencies` / `peerDependencies` declaration in the project's `package.json` (handles `^3.1.0`, `~3.1.0`, etc.);
+4. a fallback to the default major version (`v4`) latest.
+
+Version routing is `major.minor`-grained: a request for `3.0.5` lands on the highest patch snapshot of that minor series, `v3.0.20`; a minor higher than any available falls back to the nearest older minor of that major. Every query reports the resolved version and its source (the header in `text` output, the `_meta` field in `json` output).
+
+> When the version can be inferred from the project, prefer not passing `--nutui-version` and let the CLI detect it. The `-v / --version` semantics stay unchanged — it still prints the CLI's own version.
 
 ## Usage with AI tools
 

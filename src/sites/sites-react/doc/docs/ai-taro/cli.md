@@ -11,6 +11,7 @@
 ## 亮点
 
 - **完全离线、零 API Key** — 组件元数据与文档、示例在构建期打包进入，安装后本地毫秒级查询，无网络请求、无延迟。
+- **多版本快照** — 随包内置 v3 / v4 多个大版本的离线快照，`--nutui-version` 可查询任意版本的精确 API，未指定时自动检测项目所用版本。
 - **结构化输出** — 所有命令支持 `--format json`，供 Agent 直接解析，而非正则抓文本。
 - **智能纠错** — 组件名大小写不敏感；输入 `Buttn`？CLI 基于编辑距离建议 `Button`，而非直接报错。
 - **Taro 端专属数据** — Props 与示例取自 Taro 端文档（`doc.taro.md` / `demos/taro`），与 H5 包可能不同。
@@ -45,6 +46,7 @@ nutui-react-taro demo Button              # 列出组件的全部 Taro 示例名
 nutui-react-taro demo Button demo1        # 查看某个示例的源码
 nutui-react-taro token                    # 全局 Design Token
 nutui-react-taro token Button             # 组件级 Design Token
+nutui-react-taro --nv 3.1.0 info Button   # 查指定 NutUI 版本的 API（省略则自动检测）
 nutui-react-taro mcp                      # 启动本地 MCP 服务，供 IDE 集成
 ```
 
@@ -66,8 +68,30 @@ nutui-react-taro mcp                      # 启动本地 MCP 服务，供 IDE �
 | 参数 | 说明 | 默认值 |
 | --- | --- | --- |
 | `--format, -f <text\|json>` | 输出格式；Agent 应优先用 `json` | `text` |
+| `--nutui-version, --nv <version>` | 目标 NutUI 版本（如 `3`、`3.1.0`、`4.0.0-beta.7`） | 自动检测 |
 | `--help, -h` | 显示帮助 | - |
-| `--version, -v` | 打印 CLI 版本号 | - |
+| `--version, -v` | 打印 CLI 自身版本号（非 NutUI 版本） | - |
+
+## 多版本
+
+CLI 随包内置多个 NutUI 大版本的离线快照（当前：`v3.0.20`、`v3.1.0`、`v4.0.0-beta.7`），可对同一台机器上不同 NutUI 版本给出对应的组件知识。用 `--nutui-version`（别名 `--nv`）指定目标版本，支持 `3`、`3.1.0`、`4.0.0-beta.7` 等写法：
+
+```bash
+nutui-react-taro --nv 3.1.0 info Button
+nutui-react-taro --nv 3 list
+nutui-react-taro --nv 4.0.0-beta.7 doc Cell
+```
+
+未指定 `--nutui-version` 时，按以下顺序**自动检测**目标版本：
+
+1. `--nutui-version <v>` 显式指定；
+2. 项目 `node_modules/@nutui/nutui-react-taro/package.json` 的实际安装版本；
+3. 项目 `package.json` 的 `dependencies` / `devDependencies` / `peerDependencies` 声明（兼容 `^3.1.0`、`~3.1.0` 等）；
+4. 兜底到默认大版本（`v4`）的 latest。
+
+版本路由按 `major.minor` 粒度：请求 `3.0.5` 会落到该 minor 系列的最高 patch 快照 `v3.0.20`；请求的 minor 若高于已有，回退到该 major 最近的旧 minor。每次查询的输出都会标明实际命中的版本与来源（`text` 输出的头部、`json` 输出的 `_meta` 字段）。
+
+> 在项目里能自动推断版本时，优先不显式传 `--nutui-version`，让 CLI 自行检测更省心。`-v / --version` 语义保持不变，仍输出 CLI 自身版本。
 
 ## 在 AI 工具中使用
 
