@@ -73,11 +73,10 @@ When a component name isn't found, the CLI returns a "did you mean" suggestion (
 
 The CLI ships with a Skill file following the [Agent Skills](https://github.com/vercel-labs/skills) spec, distributed with the npm package. It guides the agent to call the right command at the right time — e.g. "look up props with `info` and grab a demo before writing a component" and "customize styles with `var(--nutui-*)` tokens instead of hardcoded colors".
 
-Install into the current project (the skill is bundled with the package; install it from the local path after installing the CLI):
+Install into the current project (directly from the GitHub repo):
 
 ```bash
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 Once installed, the agent automatically follows the "look up first, then write" workflow when it encounters NutUI-React Taro tasks. Compatible with Claude Code / Cursor / VS Code / Codex and any agent that supports the skills protocol.

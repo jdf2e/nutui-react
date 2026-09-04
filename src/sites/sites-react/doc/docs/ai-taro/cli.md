@@ -73,11 +73,10 @@ nutui-react-taro mcp                      # 启动本地 MCP 服务，供 IDE �
 
 CLI 内置一份遵循 [Agent Skills](https://github.com/vercel-labs/skills) 规范的 Skill 文件，随 npm 包分发，指导 Agent 在正确的时机调用正确的命令——例如「写组件前先 `info` 查 Props、再 `demo` 拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
 
-安装到当前项目（skill 已随包 bundle，装好 CLI 后从本地路径安装）：
+安装到当前项目（从 GitHub 仓库直接安装）：
 
 ```bash
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 安装后，Agent 在遇到 NutUI-React Taro 相关任务时会自动遵循「先查后写」的流程。兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 skills 协议的 Agent。
