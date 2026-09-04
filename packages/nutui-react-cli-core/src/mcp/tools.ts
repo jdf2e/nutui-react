@@ -9,12 +9,16 @@ import {
   loadVersionsIndex,
   readDemo,
   readDoc,
+  readMigrationDoc,
   resolveComponent,
   resolveSnapshotDir,
   suggestComponents,
 } from '../data.js'
 import { detectVersion, type VersionInfo } from '../version.js'
 import { createError, ErrorCodes } from '../error.js'
+import { parseMigrationDoc, filterSections } from '../commands/migrate-parse.js'
+import { diffMeta } from '../commands/diff-compute.js'
+import { scanProject } from '../utils/scan.js'
 import type { CliConfig } from '../config.js'
 import type { Component, Lang, Meta } from '../types.js'
 
@@ -178,6 +182,46 @@ export function buildToolDefinitions(config: CliConfig) {
       },
       annotations: { title: '查询 Design Token', ...TOOL_ANNOTATIONS },
     },
+    {
+      name: `${p}migrate`,
+      description:
+        '获取 NutUI 大版本迁移指南（默认 v3→v4）。component 只看某组件；applyDir 扫描项目目录，只返回项目用到组件的迁移步骤。数据源是随包抽取的官方迁移文档。',
+      inputSchema: {
+        type: 'object' as const,
+        properties: {
+          from: { type: 'string', description: '起始大版本（如 3），默认 3' },
+          to: { type: 'string', description: '目标大版本（如 4），默认 from+1' },
+          component: {
+            type: 'string',
+            description: '只返回该组件的迁移说明（大小写不敏感）',
+          },
+          applyDir: {
+            type: 'string',
+            description: '扫描该目录，只返回项目实际用到组件的迁移步骤',
+          },
+        },
+        required: [] as string[],
+      },
+      annotations: { title: '版本迁移指南', ...TOOL_ANNOTATIONS },
+    },
+    {
+      name: `${p}diff`,
+      description:
+        '跨版本 Props 差异比对：给定两个版本，返回各组件新增 / 移除 / 类型或默认值变更的 Props。',
+      inputSchema: {
+        type: 'object' as const,
+        properties: {
+          v1: { type: 'string', description: '起始版本（如 3、3.1.0）' },
+          v2: { type: 'string', description: '目标版本（如 4、4.0.0-beta.7）' },
+          component: {
+            type: 'string',
+            description: '只比对该组件（大小写不敏感）；省略则比对全部',
+          },
+        },
+        required: ['v1', 'v2'],
+      },
+      annotations: { title: '跨版本 Props 差异', ...TOOL_ANNOTATIONS },
+    },
   ]
 }
 
@@ -299,6 +343,114 @@ export function createToolHandler(config: CliConfig) {
           scope: comp.id,
           component: comp.name,
           tokens: comp.tokens ?? [],
+        })
+      }
+
+      case 'migrate': {
+        // 迁移跨两个大版本，自己解析，不用预加载的单快照 meta。
+        const toMajorNum = (v: unknown): number | null => {
+          if (!v) return null
+          const m = String(v).replace(/^v/, '').match(/^(\d+)/)
+          return m ? Number(m[1]) : null
+        }
+        const fromMajor = toMajorNum(params.from) ?? 3
+        const toMajor = toMajorNum(params.to) ?? fromMajor + 1
+        if (toMajor <= fromMajor) {
+          return toMcpResult(
+            createError(
+              ErrorCodes.INVALID_ARGUMENT,
+              `迁移方向无效：from=v${fromMajor} to=v${toMajor}。请指定从低到高的大版本。`
+            )
+          )
+        }
+        const toKey = `v${toMajor}`
+        if (!versionsIndex.majors[toKey]) {
+          return toMcpResult(
+            createError(
+              ErrorCodes.VERSION_NOT_FOUND,
+              `未找到 NutUI v${toMajor} 的离线数据，无法提供 v${fromMajor}→v${toMajor} 迁移指南。`
+            )
+          )
+        }
+        const toDir = resolveSnapshotDir(config.dataDir, String(toMajor))
+        const md = readMigrationDoc(toDir, fromMajor)
+        if (md === null) {
+          return toMcpResult(
+            createError(
+              ErrorCodes.DOC_NOT_FOUND,
+              `暂无 v${fromMajor}→v${toMajor} 的迁移文档数据。`
+            )
+          )
+        }
+        const parsed = parseMigrationDoc(md)
+        const applyDir = params.applyDir as string | undefined
+        const compName = params.component as string | undefined
+        let sections = parsed.sections
+        let scanInfo: Record<string, unknown> = {}
+        if (applyDir) {
+          const scan = scanProject(applyDir)
+          sections = filterSections(parsed.sections, scan.components)
+          const covered = new Set(sections.map((s) => s.component.toLowerCase()))
+          scanInfo = {
+            appliedTo: applyDir,
+            scannedFiles: scan.scannedFileCount,
+            projectComponents: scan.components,
+            matchedComponents: sections.map((s) => s.component),
+            componentsWithoutBreakingChanges: scan.components.filter(
+              (c) => !covered.has(c.toLowerCase())
+            ),
+          }
+        } else if (compName) {
+          sections = filterSections(parsed.sections, [compName])
+        }
+        return toMcpResult({
+          _meta: { from: `v${fromMajor}`, to: `v${toMajor}`, libVersion: versionsIndex.majors[toKey].latest },
+          title: parsed.title,
+          intro: applyDir || compName ? undefined : parsed.intro,
+          coveredComponents: parsed.sections.map((s) => s.component),
+          steps: sections.map((s) => ({
+            component: s.component,
+            category: s.category,
+            guide: s.raw,
+          })),
+          ...scanInfo,
+        })
+      }
+
+      case 'diff': {
+        const v1 = params.v1 as string
+        const v2 = params.v2 as string
+        if (!v1 || !v2) {
+          return toMcpResult(
+            createError(ErrorCodes.INVALID_ARGUMENT, 'diff 需要 v1 与 v2 两个版本参数。')
+          )
+        }
+        const metaA = loadMetaByDir(resolveSnapshotDir(config.dataDir, v1))
+        const metaB = loadMetaByDir(resolveSnapshotDir(config.dataDir, v2))
+        const compName = params.component as string | undefined
+        let componentId: string | undefined
+        if (compName) {
+          const comp = resolveComponent(metaB, compName) ?? resolveComponent(metaA, compName)
+          if (!comp) {
+            const sug = suggestComponents(metaB, compName)
+            return toMcpResult(
+              createError(
+                ErrorCodes.COMPONENT_NOT_FOUND,
+                `未找到组件「${compName}」。`,
+                sug.length ? `你是否想找：${sug.join(' / ')}？` : undefined
+              )
+            )
+          }
+          componentId = comp.id
+        }
+        const diffs = diffMeta(metaA, metaB, componentId)
+        return toMcpResult({
+          _meta: { v1: metaA.libVersion, v2: metaB.libVersion },
+          v1: metaA.libVersion,
+          v2: metaB.libVersion,
+          component: compName ?? null,
+          changedComponentCount: diffs.length,
+          components: diffs,
         })
       }
 

@@ -26,9 +26,12 @@ function copyRepoFile(srcRepoRoot, relPosixPath, destAbs) {
  * @param {Record<string,string>} opts.docKeys  lang -> meta.docs 的 key。{zh:'h5', en:'enUS'} 或 {zh:'taro'}
  * @param {'h5'|'taro'} opts.demoKey  取 meta.demos 的哪一端
  * @param {'api'|'apiTaro'} opts.apiField  取哪一端的 API 表，归一写入快照的 `api` 字段
- * @returns {{ docCount:number, demoCount:number, missing:number, libVersion:string }}
+ * @param {Record<string,string>} [opts.migrationDocs]  "from-v{n}" -> 该 tag worktree 内迁移文档的 posix 相对路径。
+ *   如 { 'from-v3': 'src/sites/sites-react/doc/docs/react/migrate-from-v3.md' }。文档只在部分 tag（如 v4）存在，
+ *   不存在时静默跳过。命中则复制到 outDir/migrations/from-v{n}.md，供 migrate 命令读取。
+ * @returns {{ docCount:number, demoCount:number, missing:number, libVersion:string, migrationCount:number }}
  */
-export function prepareData({ srcMetaPath, srcRepoRoot, outDir, docKeys, demoKey, apiField }) {
+export function prepareData({ srcMetaPath, srcRepoRoot, outDir, docKeys, demoKey, apiField, migrationDocs }) {
   const meta = JSON.parse(fs.readFileSync(srcMetaPath, 'utf-8'))
 
   // 全量重建该版本目录，避免残留上一次的组件。
@@ -81,7 +84,15 @@ export function prepareData({ srcMetaPath, srcRepoRoot, outDir, docKeys, demoKey
     }
   }
 
-  return { docCount, demoCount, missing: missing.length, libVersion: meta.libVersion, missingList: missing }
+  // 4. 迁移文档：把该 tag worktree 内存在的迁移文档复制到 outDir/migrations/from-v{n}.md。
+  //    文档随 v4 beta 手写维护、只在部分 tag 存在（v3 tag 无），缺失静默跳过。
+  let migrationCount = 0
+  for (const [key, rel] of Object.entries(migrationDocs || {})) {
+    const ok = copyRepoFile(srcRepoRoot, rel, path.join(outDir, 'migrations', `${key}.md`))
+    if (ok) migrationCount++
+  }
+
+  return { docCount, demoCount, missing: missing.length, libVersion: meta.libVersion, missingList: missing, migrationCount }
 }
 
 /**
@@ -93,8 +104,9 @@ export function prepareData({ srcMetaPath, srcRepoRoot, outDir, docKeys, demoKey
  * @param {Record<string,string>} opts.docKeys
  * @param {'h5'|'taro'} opts.demoKey
  * @param {'api'|'apiTaro'} opts.apiField
+ * @param {Record<string,string>} [opts.migrationDocs]  "from-v{n}" -> 迁移文档相对仓库根的 posix 路径（按平台不同）
  */
-export async function prepareAllVersions({ pkgDir, docKeys, demoKey, apiField }) {
+export async function prepareAllVersions({ pkgDir, docKeys, demoKey, apiField, migrationDocs }) {
   const { sync } = await import('./sync.mjs')
   const platform = apiField === 'apiTaro' ? 'Taro' : 'React/H5'
   console.log(`🚀 building multi-version data snapshots (${platform}) for ${pkgDir} ...\n`)
@@ -116,9 +128,10 @@ export async function prepareAllVersions({ pkgDir, docKeys, demoKey, apiField })
         docKeys,
         demoKey,
         apiField,
+        migrationDocs,
       })
       console.log(
-        `  ✅ v${snap.clean}: docs ${res.docCount} + demos ${res.demoCount}（libVersion ${res.libVersion}）`
+        `  ✅ v${snap.clean}: docs ${res.docCount} + demos ${res.demoCount}${res.migrationCount ? ` + 迁移文档 ${res.migrationCount}` : ''}（libVersion ${res.libVersion}）`
       )
       if (res.missing) {
         console.log(`     ⚠️  ${res.missing} 个文件在 worktree 缺失（已跳过）`)

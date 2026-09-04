@@ -189,3 +189,14 @@ export function readDemo(
   const file = path.join(snapshotDir, 'demos', component.id, base)
   return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null
 }
+
+// 读取某个快照目录下的迁移文档原文（prepare-data 从对应 tag worktree 抽取而来）。
+// fromMajor 形如 3（表示"从 v3 升级到当前快照版本"）；文档路径为 migrations/from-v{n}.md。
+// 该文档只在含迁移说明的版本（如 v4）快照里存在，缺失返回 null。
+export function readMigrationDoc(
+  snapshotDir: string,
+  fromMajor: number
+): string | null {
+  const file = path.join(snapshotDir, 'migrations', `from-v${fromMajor}.md`)
+  return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null
+}

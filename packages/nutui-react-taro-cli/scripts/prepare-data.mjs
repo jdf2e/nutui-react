@@ -13,4 +13,8 @@ await prepareAllVersions({
   docKeys: { zh: 'taro' },
   demoKey: 'taro',
   apiField: 'apiTaro',
+  // Taro 端迁移文档（随 v4 手写维护，v3 tag 无，缺失静默跳过）。
+  migrationDocs: {
+    'from-v3': 'src/sites/sites-react/doc/docs/taro/migrate-from-v3.md',
+  },
 })

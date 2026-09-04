@@ -12,4 +12,8 @@ await prepareAllVersions({
   docKeys: { zh: 'h5', en: 'enUS' },
   demoKey: 'h5',
   apiField: 'api',
+  // H5 端迁移文档（随 v4 手写维护，v3 tag 无，缺失静默跳过）。
+  migrationDocs: {
+    'from-v3': 'src/sites/sites-react/doc/docs/react/migrate-from-v3.md',
+  },
 })
