@@ -109,6 +109,9 @@ $color-danger-background: var(
   #ff0f23
 ) !default; //done
 $color-danger-text: var(--nutui-color-danger-text, #ff0f23) !default; //done
+$color-error: var(--nutui-color-error, #ff2159) !default;
+$color-error-light: var(--nutui-color-error-light, #ffedef) !default;
+$color-error-pressed: var(--nutui-color-error-pressed, #d9114a) !default;
 
 // 服务色
 $color-service: var(--nutui-color-service, #fff4e0) !default;
@@ -744,12 +747,17 @@ $input-border-bottom-width: var(
 //   $color-text-disabled
 // ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-error-color: var(--nutui-input-error-color, $color-error) !default;
+$input-plain-height: var(
+  --nutui-input-plain-height,
+  $input-font-size
+) !default;
 $input-lineheight: var(--nutui-input-lineheight, $font-size-xl) !default;
 $input-border-radius: var(--nutui-input-border-radius, $radius-s) !default;
 $input-color: var(--nutui-input-color, $color-title) !default;
 $input-background-color: var(
   --nutui-input-background-color,
-  $color-background-overlay
+  var(--nutui-color-background-component)
 ) !default;
 $input-padding: var(--nutui-input-padding, scale-px(12px)) !default;
 
@@ -1317,22 +1325,28 @@ $infiniteloading-icon-size: var(
 //range（✅）
 $range-color: var(--nutui-range-color, $color-title) !default;
 $range-height: var(--nutui-range-height, scale-px(4px)) !default;
-$range-margin: var(--nutui-range-margin, scale-px(15px)) !default;
+$range-margin: var(--nutui-range-margin, scale-px(16px)) !default;
 $range-inactive-color: var(
   --nutui-range-inactive-color,
-  $color-primary-light-pressed
+  var(--nutui-color-background-component, #f0f2f7)
 ) !default;
 $range-active-color: var(--nutui-range-active-color, $color-primary) !default;
+$range-disabled-color: var(
+  --nutui-range-disabled-color,
+  $color-primary-light-pressed
+) !default;
 $range-button-background: var(
   --nutui-range-button-background,
   $color-primary-text
 ) !default;
-$range-button-width: var(--nutui-range-button-width, scale-px(24px)) !default;
-$range-button-height: var(--nutui-range-button-height, scale-px(24px)) !default;
+$range-button-width: var(--nutui-range-button-width, scale-px(20px)) !default;
+$range-button-height: var(--nutui-range-button-height, scale-px(20px)) !default;
 $range-button-border: var(
   --nutui-range-button-border,
-  scale-px(1px) solid $color-primary
+  scale-px(1px) solid $color-border
 ) !default;
+$range-tick-size: var(--nutui-range-tick-size, scale-px(8px)) !default;
+
 
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, scale-px(12px));
@@ -2504,7 +2518,7 @@ $form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 // skeleton（✅）
 $skeleton-background: var(
   --nutui-skeleton-background,
-  $color-background-sunken
+  $color-background
 ) !default;
 $skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
 $skeleton-line-small-height: var(
@@ -2513,15 +2527,19 @@ $skeleton-line-small-height: var(
 ) !default;
 $skeleton-line-normal-height: var(
   --nutui-skeleton-line-normal-height,
-  scale-px(24px)
+  scale-px(20px)
 ) !default;
 $skeleton-line-large-height: var(
   --nutui-skeleton-line-large-height,
-  scale-px(32px)
+  scale-px(28px)
 ) !default;
 $skeleton-line-border-radius: var(
   --nutui-skeleton-line-border-radius,
   $radius-xs
+) !default;
+$skeleton-animation-color: var(
+  --nutui-skeleton-animation-color,
+  rgba(255, 255, 255, 0.5)
 ) !default;
 
 // card（✅）

@@ -95,10 +95,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   )
 
   const input = container.querySelector('.nut-avatar-cropper-input') as
-    | Element
-    | Node
-    | Document
-    | Window
+    Element | Node | Document | Window
   expect(input).toBeInTheDocument()
 
   const smallFile = new File([new ArrayBuffer(100)], 'small.jpg')
