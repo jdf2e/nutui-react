@@ -41,9 +41,12 @@ const defaultProps = {
   maxLength: 9999,
   clearable: false,
   clearIcon: null,
+  rightIcon: null,
+  description: null,
   formatTrigger: 'onChange',
   autoFocus: false,
   plain: false,
+  status: 'default',
 } as TaroInputProps
 
 export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
@@ -62,11 +65,14 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
     maxLength,
     clearable,
     clearIcon,
+    rightIcon,
+    description,
     formatTrigger,
     autoFocus,
     style,
     className,
     plain,
+    status,
     inputStyle,
     onChange,
     onFocus,
@@ -107,8 +113,10 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
         setValue('')
       },
       focus: () => {
-        const nativeInput = getNativeInput()
-        nativeInput?.focus()
+        if (!disabled && !readOnly) {
+          const nativeInput = getNativeInput()
+          nativeInput?.focus()
+        }
       },
       blur: () => {
         const nativeInput = getNativeInput()
@@ -125,11 +133,12 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
       classPrefix,
       `${disabled ? `${classPrefix}-disabled` : ''}`,
       readOnly ? `${classPrefix}-readonly` : '',
+      status === 'error' ? `${classPrefix}-error` : '',
       `${plain ? `${classPrefix}-plain` : `${classPrefix}-container`}`,
     ]
       .filter(Boolean)
       .join(' ')
-  }, [disabled])
+  }, [disabled, readOnly, plain, status])
 
   const [, updateState] = React.useState()
   const forceUpdate = React.useCallback(() => updateState({} as any), [])
@@ -193,49 +202,57 @@ export const Input = forwardRef((props: Partial<TaroInputProps>, ref) => {
       className={`${inputClass()}  ${className || ''}`}
       style={style}
       onClick={(e) => {
-        onClick && onClick(e)
+        if (!disabled && !readOnly) onClick?.(e)
       }}
     >
-      <TaroInput
-        {...rest}
-        name={name}
-        className="nut-input-native"
-        ref={inputRef}
-        style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
-        type={inputType(type) as any}
-        password={type === 'password'}
-        maxlength={maxLength}
-        placeholder={
-          placeholder === undefined ? locale.placeholder : placeholder
-        }
-        placeholderClass={`${classPrefix}-placeholder`}
-        disabled={disabled}
-        value={value}
-        focus={autoFocus || focus}
-        confirmType={confirmType}
-        onBlur={handleBlur}
-        onFocus={handleFocus}
-        onInput={handleInput}
-      />
-      <View
-        style={{
-          display:
-            clearable && !readOnly && active && value.length > 0
-              ? 'flex'
-              : 'none',
-          alignItems: 'center',
-          cursor: 'pointer',
-        }}
-        onClick={(e) => {
-          e.stopPropagation()
-          if (!disabled) {
-            setValue('')
-            onClear?.('')
+      <View className="nut-input-main">
+        <TaroInput
+          {...rest}
+          name={name}
+          className="nut-input-native"
+          ref={inputRef}
+          style={{ ...{ textAlign: getTextAlign() }, ...inputStyle }}
+          type={inputType(type) as any}
+          password={type === 'password'}
+          maxlength={maxLength}
+          placeholder={
+            placeholder === undefined ? locale.placeholder : placeholder
           }
-        }}
-      >
-        {clearIcon || <MaskClose className="nut-input-clear" />}
+          placeholderClass={`${classPrefix}-placeholder`}
+          disabled={disabled || readOnly}
+          value={value}
+          focus={autoFocus || focus}
+          confirmType={confirmType}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          onInput={handleInput}
+        />
+        {rightIcon ? (
+          <View className="nut-input-action">{rightIcon}</View>
+        ) : (
+          clearable &&
+          !disabled &&
+          !readOnly &&
+          active &&
+          value.length > 0 && (
+            <View
+              className="nut-input-action"
+              onClick={(e) => {
+                e.stopPropagation()
+                if (!disabled) {
+                  setValue('')
+                  onClear?.('')
+                }
+              }}
+            >
+              {clearIcon || <MaskClose className="nut-input-clear" />}
+            </View>
+          )
+        )}
       </View>
+      {description !== null && description !== undefined && (
+        <View className="nut-input-description">{description}</View>
+      )}
     </View>
   )
 })

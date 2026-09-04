@@ -16,6 +16,9 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 import Demo14 from './demos/h5/demo14'
+import Demo15 from './demos/h5/demo15'
+import Demo16 from './demos/h5/demo16'
+import Demo17 from './demos/h5/demo17'
 
 const InputDemo = () => {
   const [translated] = useTranslate({
@@ -34,6 +37,9 @@ const InputDemo = () => {
       withForm: '配合表单使用',
       password1: '带密码可见',
       wordCount: '字数统计',
+      description: '辅助说明',
+      auxiliary: '辅助功能',
+      errorStatus: '错误状态',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -50,6 +56,9 @@ const InputDemo = () => {
       title10: 'event',
       title11: 'Layout',
       border: 'border',
+      description: 'Description',
+      auxiliary: 'Auxiliary action',
+      errorStatus: 'Error status',
     },
   })
 
@@ -84,6 +93,12 @@ const InputDemo = () => {
         <Demo13 />
         <h2>{translated.border}</h2>
         <Demo14 />
+        <h2>{translated.description}</h2>
+        <Demo15 />
+        <h2>{translated.auxiliary}</h2>
+        <Demo16 />
+        <h2>{translated.errorStatus}</h2>
+        <Demo17 />
       </div>
     </>
   )

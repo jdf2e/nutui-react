@@ -62,6 +62,9 @@ $color-danger-light: var(--nutui-color-danger-light, #ffebef) !default; //done
 $color-danger-background: var(--nutui-color-danger-background,
     #1ed145) !default; //done
 $color-danger-text: var(--nutui-color-danger-text, #1ed145) !default; //done
+$color-error: var(--nutui-color-error) !default;
+$color-error-light: var(--nutui-color-error-light) !default;
+$color-error-pressed: var(--nutui-color-error-pressed) !default;
 
 // 业务/服务色
 $color-service: var(--nutui-color-service, #fff4e0) !default;
@@ -400,6 +403,13 @@ $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
 
+$icon-size-6: var(--nutui-icon-size-6, 6px) !default;
+$icon-size-8: var(--nutui-icon-size-8, 8px) !default;
+$icon-size-10: var(--nutui-icon-size-10, 10px) !default;
+$icon-size-11: var(--nutui-icon-size-11, 11px) !default;
+$icon-size-12: var(--nutui-icon-size-12, 12px) !default;
+$icon-size-18: var(--nutui-icon-size-18, 18px) !default;
+$icon-size-22: var(--nutui-icon-size-22, 22px) !default;
 $icon-height: var(--nutui-icon-height, 20px) !default;
 $icon-width: var(--nutui-icon-width, 20px) !default;
 $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
@@ -471,6 +481,11 @@ $input-border-bottom-width: var(--nutui-input-border-bottom-width,
 //   $color-text-disabled
 // ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-error-color: var(--nutui-input-error-color, $color-error) !default;
+$input-plain-height: var(
+  --nutui-input-plain-height,
+  $input-font-size
+) !default;
 $input-lineheight: var(--nutui-input-lineheight, $font-size-xl) !default;
 $input-border-radius: var(--nutui-input-border-radius, $radius-s) !default;
 $input-color: var(--nutui-input-color, $color-title) !default;
@@ -661,6 +676,8 @@ $switch-line-height: var(--nutui-switch-line-height, 28px) !default;
 $switch-border-radius: var(--nutui-switch-border-radius,
     $radius-circle) !default;
 $switch-border-width: var(--nutui-switch-border-width, 2px) !default;
+$switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
+$switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
 $switch-inside-border-radius: var(--nutui-switch-inside-border-radius,
     $radius-full) !default;
 /* #ifdef harmony */
