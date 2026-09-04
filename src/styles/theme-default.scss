@@ -35,6 +35,10 @@ page {
   --nutui-green-3: #00801e;
 
   // danger color 发现不一致TODO
+  // danger color
+  --nutui-danger-1: #ffedef;
+  --nutui-danger-2: #ff2159;
+  --nutui-danger-3: #d9114a;
 
   // red color
   --nutui-red-1: var(--nutui-brand-1);
@@ -65,7 +69,7 @@ page {
   // 卡片背景色
   --nutui-gray-1: #ffffff;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-2: #f0f2f7;
+  --nutui-gray-2: #ebedf2;
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
   --nutui-gray-3: #f2f4f7;
   // 组件背景色，2025年新增
@@ -169,6 +173,9 @@ page {
   --nutui-color-danger: var(--nutui-red-2); // 背景或文字
   --nutui-color-danger-light: var(--nutui-red-1); // 背景
   --nutui-color-danger-pressed: var(--nutui-red-3); // 文字
+  --nutui-color-error: var(--nutui-danger-2);
+  --nutui-color-error-light: var(--nutui-danger-1);
+  --nutui-color-error-pressed: var(--nutui-danger-3);
 
   // info color 语义化
   --nutui-color-info: var(--nutui-blue-2); // 深背景/图形
@@ -244,7 +251,7 @@ page {
   // 次要注解；搭配同字号汉字或币种符号、角分
   --nutui-font-size-xs: var(--nutui-font-size-11);
   // 辅助说明；狭小空间商品价格
-  --nutui-font-size-s: var(--nutui-font-size-13);
+  --nutui-font-size-s: var(--nutui-font-size-12);
   --nutui-font-size-m: var(--nutui-font-size-13);
   // 正文；普通商卡价格
   --nutui-font-size-base: var(--nutui-font-size-14);
