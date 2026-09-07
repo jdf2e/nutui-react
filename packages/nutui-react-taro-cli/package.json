@@ -52,7 +52,7 @@
     "@nutui/nutui-react-cli-core": "workspace:*",
     "@types/node": "^22.20.1",
     "@types/yargs": "^17.0.35",
-    "bumpp": "^9.11.1",
+    "bumpp": "^12.3.0",
     "tsup": "^8.5.1",
     "typescript": "^5.6.2"
   }
