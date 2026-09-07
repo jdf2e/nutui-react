@@ -102,7 +102,7 @@
     "@sxzz/prettier-config": "^2.3.2",
     "@sxzz/test-utils": "^0.5.18",
     "@types/node": "^22.20.1",
-    "bumpp": "^9.11.1",
+    "bumpp": "^12.3.0",
     "eslint": "^9.39.5",
     "fast-glob": "^3.3.3",
     "prettier": "^3.9.6",
