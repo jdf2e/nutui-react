@@ -16,7 +16,7 @@ Three Skills are available:
 | `nutui-react-v3-to-v4` | Systematically upgrade `@nutui/nutui-react` from v3 to v4 |
 | `nutui-react-to-taro` | Migrate an H5 project from `@nutui/nutui-react` to `@nutui/nutui-react-taro` (Taro / mini-program) |
 
-## `nutui-react` — look up before writing
+## nutui-react — look up before writing
 
 Guides the agent to query the real API with the CLI before writing any NutUI-React component code, instead of guessing props or enum values from memory.
 
@@ -33,7 +33,7 @@ Guides the agent to query the real API with the CLI before writing any NutUI-Rea
 npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
-## `nutui-react-v3-to-v4` — major-version upgrade
+## nutui-react-v3-to-v4 — major-version upgrade
 
 Guides the agent through upgrading `@nutui/nutui-react` from v3 to v4 with the new `migrate` and `diff` capabilities. It focuses on style, CSS class, Design Token, enum, and default-value changes that may not produce compile errors.
 
@@ -51,7 +51,7 @@ Guides the agent through upgrading `@nutui/nutui-react` from v3 to v4 with the n
 npx skills add jdf2e/nutui-react --skill nutui-react-v3-to-v4
 ```
 
-## `nutui-react-to-taro` — migrate H5 to Taro
+## nutui-react-to-taro — migrate H5 to Taro
 
 Guides the agent to migrate a project using `@nutui/nutui-react` (H5) to `@nutui/nutui-react-taro` (Taro cross-platform / mini-program). The two packages share one component set and almost every component maps 1:1, so migration is highly regular — the Skill orchestrates the mechanical rewrites and the judgment-heavy semantic rewrites into a clear workflow.
 

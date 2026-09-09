@@ -13,7 +13,7 @@
 | `nutui-react-taro` | 写 NutUI-React Taro 代码时「先查后写」，消除 API 幻觉 |
 | `nutui-react-taro-v3-to-v4` | 将 `@nutui/nutui-react-taro` 从 v3 系统升级到 v4 |
 
-## `nutui-react-taro` — 先查后写
+## nutui-react-taro — 先查后写
 
 指导 Agent 在编写 NutUI-React Taro 组件代码前，先通过 CLI 或 MCP 查询真实 API 与 Taro 示例，而不是沿用 H5 API 或凭记忆猜测。
 
@@ -29,7 +29,7 @@
 npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
-## `nutui-react-taro-v3-to-v4` — 大版本升级
+## nutui-react-taro-v3-to-v4 — 大版本升级
 
 指导 Agent 使用新增的 `migrate` 与 `diff` 能力，把 `@nutui/nutui-react-taro` 从 v3 升级到 v4。该 Skill 特别关注不会触发编译错误的样式、CSS 类名、Design Token、枚举值和默认值变化。
 

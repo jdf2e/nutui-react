@@ -114,7 +114,7 @@ nutui-react-taro diff 3 4 Empty --format json
 
 `--apply` only scans source files and outputs migration steps plus an agent prompt for the components actually used; it **does not modify files**. `matchedComponents` identifies components to update, while `componentsWithoutBreakingChanges` lists used components with no breaking change recorded in the current migration guide.
 
-Install the [`nutui-react-taro-v3-to-v4` Skill](/#/en-US/ai/skill) for an agent-guided workflow covering dependency upgrades, inventory, component-by-component edits, multi-platform builds, and visual verification.
+Install the [nutui-react-taro-v3-to-v4 Skill](/#/en-US/ai/skill) for an agent-guided workflow covering dependency upgrades, inventory, component-by-component edits, multi-platform builds, and visual verification.
 
 ## Usage with AI tools
 

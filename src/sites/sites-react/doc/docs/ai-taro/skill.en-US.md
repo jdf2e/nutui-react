@@ -13,7 +13,7 @@ Two Skills are available:
 | `nutui-react-taro` | Look up the API before writing NutUI-React Taro code, eliminating API hallucination |
 | `nutui-react-taro-v3-to-v4` | Systematically upgrade `@nutui/nutui-react-taro` from v3 to v4 |
 
-## `nutui-react-taro` — look up before writing
+## nutui-react-taro — look up before writing
 
 Guides the agent to query real APIs and Taro demos through the CLI or MCP before writing NutUI-React Taro code, rather than reusing H5 APIs or guessing from memory.
 
@@ -29,7 +29,7 @@ Guides the agent to query real APIs and Taro demos through the CLI or MCP before
 npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
-## `nutui-react-taro-v3-to-v4` — major-version upgrade
+## nutui-react-taro-v3-to-v4 — major-version upgrade
 
 Guides the agent through upgrading `@nutui/nutui-react-taro` from v3 to v4 with the new `migrate` and `diff` capabilities. It focuses on style, CSS class, Design Token, enum, and default-value changes that may not produce compile errors.
 

@@ -16,7 +16,7 @@
 | `nutui-react-v3-to-v4` | 将 `@nutui/nutui-react` 从 v3 系统升级到 v4 |
 | `nutui-react-to-taro` | 把 H5 项目从 `@nutui/nutui-react` 迁移到 `@nutui/nutui-react-taro`（Taro / 小程序） |
 
-## `nutui-react` — 先查后写
+## nutui-react — 先查后写
 
 指导 Agent 在写任何 NutUI-React 组件代码前，先用 CLI 查询真实 API，而非凭记忆猜测 Prop 或枚举值。
 
@@ -33,7 +33,7 @@
 npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
-## `nutui-react-v3-to-v4` — 大版本升级
+## nutui-react-v3-to-v4 — 大版本升级
 
 指导 Agent 使用 `migrate` 与 `diff` 能力，把 `@nutui/nutui-react` 从 v3 升级到 v4。
 
@@ -51,7 +51,7 @@ npx skills add jdf2e/nutui-react --skill nutui-react
 npx skills add jdf2e/nutui-react --skill nutui-react-v3-to-v4
 ```
 
-## `nutui-react-to-taro` — H5 迁移到 Taro
+## nutui-react-to-taro — H5 迁移到 Taro
 
 指导 Agent 把使用 `@nutui/nutui-react`（H5）的项目，迁移到 `@nutui/nutui-react-taro`（Taro 跨端 / 小程序）。两个包共用同一套组件，绝大多数组件一一对应，因此迁移高度规则化——Skill 负责把规则化改写与需要判断的语义改写编排成清晰流程。
 
