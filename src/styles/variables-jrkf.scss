@@ -914,7 +914,6 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-surface-1
 ) !default;
-$actionsheet-border-color: var(--nutui-actionsheet-border-color, none) !default;
 $actionsheet-border-radius: var(
   --nutui-actionsheet-border-radius,
   $radius-l
@@ -925,11 +924,11 @@ $actionsheet-item-text-align: var(
 ) !default;
 $actionsheet-item-border-bottom: var(
   --nutui-actionsheet-item-border-bottom,
-  none
+  $color-border
 ) !default;
 $actionsheet-item-line-height: var(
   --nutui-actionsheet-item-line-height,
-  24px
+  22px
 ) !default;
 $actionsheet-item-color: var(
   --nutui-actionsheet-item-color,
@@ -938,6 +937,47 @@ $actionsheet-item-color: var(
 $actionsheet-item-danger: var(
   --nutui-actionsheet-item-danger,
   $color-danger
+) !default;
+$actionsheet-header-padding: var(
+  --nutui-actionsheet-header-padding,
+  16px
+) !default;
+$actionsheet-title-color: var(
+  --nutui-actionsheet-title-color,
+  $color-title
+) !default;
+$actionsheet-title-font-size: var(
+  --nutui-actionsheet-title-font-size,
+  $font-size-xl
+) !default;
+$actionsheet-description-color: var(
+  --nutui-actionsheet-description-color,
+  $color-text-help
+) !default;
+$actionsheet-description-font-size: var(
+  --nutui-actionsheet-description-font-size,
+  $font-size-xxs
+) !default;
+$actionsheet-grid-padding: var(
+  --nutui-actionsheet-grid-padding,
+  16px
+) !default;
+$actionsheet-grid-gap: var(--nutui-actionsheet-grid-gap, 16px) !default;
+$actionsheet-grid-item-width: var(
+  --nutui-actionsheet-grid-item-width,
+  50px
+) !default;
+$actionsheet-grid-text-color: var(
+  --nutui-actionsheet-grid-text-color,
+  $color-text
+) !default;
+$actionsheet-grid-text-font-size: var(
+  --nutui-actionsheet-grid-text-font-size,
+  12px
+) !default;
+$actionsheet-grid-text-line-height: var(
+  --nutui-actionsheet-grid-text-line-height,
+  18px
 ) !default;
 
 //shortpassword（✅）
