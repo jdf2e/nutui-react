@@ -150,7 +150,7 @@ test('grid item keeps fixed width and column-gap adapts to columns', () => {
   )
   const grid = container.querySelector('.nut-actionsheet-grid') as HTMLElement
   expect(grid.style.columnGap).toContain(
-    'var(--nutui-actionsheet-grid-item-width, 50px)'
+    'var(--nutui-actionsheet-grid-item-width, calc(50px * var(--nut-scale-f, 1)))'
   )
   expect(grid.style.columnGap).toContain('/ 3')
 })
