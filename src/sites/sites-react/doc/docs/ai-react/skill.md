@@ -1,6 +1,6 @@
 # Skill
 
-本篇介绍两个 NutUI-React Agent Skill，以及它们各自解决的问题与安装方式。
+本篇介绍三个 NutUI-React Agent Skill，以及它们各自解决的问题与安装方式。
 
 ## 什么是 Skill？
 
@@ -8,14 +8,15 @@
 
 安装后，Agent 在遇到对应任务时会自动加载 Skill 并遵循其中的流程，无需你每次手动提示。兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 skills 协议的 Agent。
 
-目前提供两个 Skill：
+目前提供三个 Skill：
 
 | Skill | 用途 |
 | --- | --- |
 | `nutui-react` | 写 NutUI-React 代码时「先查后写」，消除 API 幻觉 |
+| `nutui-react-v3-to-v4` | 将 `@nutui/nutui-react` 从 v3 系统升级到 v4 |
 | `nutui-react-to-taro` | 把 H5 项目从 `@nutui/nutui-react` 迁移到 `@nutui/nutui-react-taro`（Taro / 小程序） |
 
-## `nutui-react` — 先查后写
+## nutui-react — 先查后写
 
 指导 Agent 在写任何 NutUI-React 组件代码前，先用 CLI 查询真实 API，而非凭记忆猜测 Prop 或枚举值。
 
@@ -32,7 +33,25 @@
 npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
-## `nutui-react-to-taro` — H5 迁移到 Taro
+## nutui-react-v3-to-v4 — 大版本升级
+
+指导 Agent 使用 `migrate` 与 `diff` 能力，把 `@nutui/nutui-react` 从 v3 升级到 v4。
+
+**它编排的迁移流程：**
+
+- 升级依赖前先征求用户确认，并核对锁文件与安装结果。
+- 用 `nutui-react migrate 3 4 --apply ./src --format json` 扫描项目，建立实际使用组件的迁移清单。
+- 对每个命中的组件结合 `migrate --component` 与 `diff 3 4`，同时核对官方迁移说明和 Props 精确差异。
+- 检查项目中针对 `.nut-*` 类名与 `--nutui-*` 变量的自定义样式覆盖。
+- 完成构建与视觉、交互验证；编译通过不等于迁移完成。
+
+**安装：**
+
+```bash
+npx skills add jdf2e/nutui-react --skill nutui-react-v3-to-v4
+```
+
+## nutui-react-to-taro — H5 迁移到 Taro
 
 指导 Agent 把使用 `@nutui/nutui-react`（H5）的项目，迁移到 `@nutui/nutui-react-taro`（Taro 跨端 / 小程序）。两个包共用同一套组件，绝大多数组件一一对应，因此迁移高度规则化——Skill 负责把规则化改写与需要判断的语义改写编排成清晰流程。
 
@@ -55,8 +74,8 @@ npx skills add jdf2e/nutui-react --skill nutui-react-to-taro
 
 三者复用同一份离线知识，只是调用协议不同：
 
-- **CLI** — Agent 主动敲命令查询。
-- **MCP** — 把同一份能力注册成 IDE 原生工具，在对话中按需自动调用。
+- **CLI** — Agent 主动运行命令查询知识、扫描项目或比较版本。
+- **MCP** — 把同一份查询、迁移和差异对比能力注册成 IDE 原生工具，在对话中按需自动调用。
 - **Skill** — 不提供新能力，而是告诉 Agent「何时、按什么顺序」调用 CLI / MCP，把流程固化下来。
 
 如果你的 IDE 支持 MCP，推荐同时启用 MCP 服务，让 Skill 里的查询步骤自动走 IDE 原生工具。

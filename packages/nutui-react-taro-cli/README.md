@@ -36,9 +36,16 @@ nutui-react-taro info Button --format json
 | `nutui-react-taro doc <Component>` | 查看组件完整文档（中文） |
 | `nutui-react-taro demo <Component> [name]` | 省略 `name` 列出全部示例；指定 `name`（如 `demo1`）输出源码 |
 | `nutui-react-taro token [Component]` | 查看 Design Token；省略组件名则列出全局 token |
+| `nutui-react-taro migrate [from] [to]` | 输出 vN→vM 迁移指南（默认 `3 4`）；`--component <C>` 看单组件，`--apply <dir>` 扫描项目生成迁移提示 |
+| `nutui-react-taro diff <v1> <v2> [Component]` | 跨版本 Props 差异对比（新增 / 移除 / 类型或默认值变更） |
 | `nutui-react-taro mcp` | 启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等 IDE 调用 |
 
-全局选项：`--format, -f <text\|json>`（默认 `text`）、`--help, -h`、`--version, -v`。
+全局选项：
+
+- `--format, -f <text\|json>`（默认 `text`）
+- `--nutui-version, --nv <version>`（目标 NutUI 版本，见下）
+- `--help, -h`
+- `--version, -v`（CLI 自身版本）
 
 示例：
 
@@ -49,13 +56,55 @@ nutui-react-taro doc Button
 nutui-react-taro demo Button          # 列出示例
 nutui-react-taro demo Button demo1    # 查看某个示例源码
 nutui-react-taro token Button
+nutui-react-taro migrate 3 4          # v3→v4 迁移指南
+nutui-react-taro migrate 3 4 --apply ./src --format json   # 扫描项目，生成给 Agent 的迁移提示
+nutui-react-taro diff 3.1.0 4.0.0-beta.7 Empty             # 跨版本 Props 差异
+```
+
+## 多版本
+
+CLI 随包内置多个 NutUI 大版本的离线快照（当前：`v3.0.20`、`v3.1.0`、`v4.0.0-beta.7`），可对同一台机器上不同 NutUI 版本给出对应的组件知识。
+
+用 `--nutui-version`（别名 `--nv`）指定目标版本，支持 `3`、`3.1.0`、`4.0.0-beta.7` 等写法：
+
+```bash
+nutui-react-taro --nv 3.1.0 info Button
+nutui-react-taro --nv 3 list
+nutui-react-taro --nv 4.0.0-beta.7 doc Cell
+```
+
+按以下顺序**自动检测**目标版本：
+
+1. `--nutui-version <v>` 显式指定；
+2. 项目 `node_modules/@nutui/nutui-react-taro/package.json` 的实际安装版本；
+3. 项目 `package.json` 的 `dependencies` / `devDependencies` / `peerDependencies` 声明（兼容 `^3.1.0`、`~3.1.0` 等）；
+4. 兜底到默认大版本（`v4`）的 latest。
+
+版本路由按 `major.minor` 粒度：请求 `3.0.5` 会落到该 minor 系列的最高 patch 快照 `v3.0.20`；请求的 minor 若高于已有，回退到该 major 最近的旧 minor。每次查询的输出都会标明实际命中的版本与来源。
+
+> 在项目里能自动推断版本时，优先不显式传 `--nutui-version`，让 CLI 自行检测更省心。`-v / --version` 语义保持不变，仍输出 CLI 自身版本。
+
+## 版本迁移（v3 → v4）
+
+两个命令支撑从 v3 升级到 v4，数据均随包离线分发：
+
+- `nutui-react-taro migrate 3 4` —— 输出**官方迁移文档**（从主仓 Taro 端 `migrate-from-v3.md` 抽取，随 v4 逐组件补充）。`--component <C>` 只看某组件；`--apply <dir>` 扫描项目、只输出实际用到组件的迁移步骤，并生成一段给 Code Agent 的定向提示。
+- `nutui-react-taro diff <v1> <v2> [Component]` —— 实时对比两个版本快照的 Props，列出新增 / 移除 / 类型或默认值变更（精确 `旧→新`）。
+
+二者**互补**：`migrate` 讲"为什么改、怎么改"（含样式 / CSS 类名 / Design Token），`diff` 给"API 层精确差了什么"。配套的 `nutui-react-taro-v3-to-v4` Skill 会编排整个升级流程（见下）。
+
+```bash
+nutui-react-taro migrate 3 4 --format json                 # 全量迁移清单
+nutui-react-taro migrate 3 4 --component Empty              # 只看 Empty
+nutui-react-taro migrate 3 4 --apply ./src --format json    # 扫描项目 + 生成 Agent 提示
+nutui-react-taro diff 3 4 Empty --format json               # Empty 的 Props 差异
 ```
 
 ## MCP（IDE 集成）
 
 CLI 是「Agent 主动敲命令」，MCP 则把同一份能力注册成 IDE 原生工具，让 Claude Code / Cursor / VS Code / Codex 在对话中**按需自动调用**，无需拼命令行字符串。二者复用同一份离线 meta 快照，等于给同一个知识库套了两种调用协议。
 
-`nutui-react-taro mcp` 启动一个 stdio MCP 服务，暴露 5 个只读工具与 2 个提示词：
+`nutui-react-taro mcp` 启动一个 stdio MCP 服务，暴露 7 个只读工具与 2 个提示词：
 
 | 工具 | 说明 |
 | --- | --- |
@@ -64,6 +113,8 @@ CLI 是「Agent 主动敲命令」，MCP 则把同一份能力注册成 IDE 原�
 | `nutui_doc` | 组件完整文档（中文） |
 | `nutui_demo` | Taro 示例列表 / 源码 |
 | `nutui_token` | Design Token（全局 / 组件级） |
+| `nutui_migrate` | vN→vM 迁移指南（可按组件 / 扫描目录） |
+| `nutui_diff` | 跨版本 Props 差异对比 |
 
 | 提示词 | 说明 |
 | --- | --- |
@@ -106,6 +157,14 @@ npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 [skills](https://github.com/vercel-labs/skills) 协议的 Agent。安装后，Agent 在遇到 NutUI React Taro 相关任务时会自动遵循「先查后写」的流程。
+
+### 升级 Skill：v3 → v4
+
+本包还内置一份 [升级 Skill](./skills/nutui-react-taro-v3-to-v4/SKILL.md)，指导 Agent 把 Taro 项目从 NutUI React Taro v3 升级到 v4。它编排「依赖升级 → `migrate --apply` 扫描项目 → 逐组件读 `migrate` + `diff` 改写 → 构建验证」的完整流程，并把 v3→v4 的关键事实讲清楚：破坏性变更集中在**样式 / CSS 类名 / Design Token / 枚举值 / 默认值**（如 Empty 的 `size`/`status`、Popover 的 `theme`、Toast 的 `duration`）。
+
+```bash
+npx skills add jdf2e/nutui-react --skill nutui-react-taro-v3-to-v4
+```
 
 ## 本地开发
 

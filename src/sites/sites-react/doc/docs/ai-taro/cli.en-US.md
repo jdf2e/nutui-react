@@ -11,6 +11,7 @@ It serves `@nutui/nutui-react-taro` (Taro cross-platform / mini-program). For H5
 ## Highlights
 
 - **Fully offline, zero API key** — Component metadata, docs, and demos are bundled at build time. Once installed, queries run locally in milliseconds with no network requests and no latency.
+- **Multi-version snapshots** — Bundles offline snapshots of multiple major versions (v3 / v4). Use `--nutui-version` to query the exact API of any version; when omitted, the CLI auto-detects the version your project uses.
 - **Structured output** — Every command supports `--format json` for agents to parse directly, instead of regex-matching text.
 - **Smart correction** — Component names are case-insensitive; typed `Buttn`? The CLI suggests `Button` based on edit distance rather than just erroring out.
 - **Taro-specific data** — Props and demos come from the Taro-side docs (`doc.taro.md` / `demos/taro`), which may differ from the H5 package.
@@ -45,6 +46,9 @@ nutui-react-taro demo Button              # List all Taro demo names for the com
 nutui-react-taro demo Button demo1        # View a demo's source
 nutui-react-taro token                    # Global Design Tokens
 nutui-react-taro token Button             # Component-level Design Tokens
+nutui-react-taro --nv 3.1.0 info Button   # Query a specific NutUI version's API (auto-detected if omitted)
+nutui-react-taro migrate 3 4 --apply ./src # Scan a project and generate v3 → v4 migration guidance
+nutui-react-taro diff 3 4 Empty           # Compare Empty props between v3 and v4
 nutui-react-taro mcp                      # Start a local MCP server for IDE integration
 ```
 
@@ -57,6 +61,8 @@ nutui-react-taro mcp                      # Start a local MCP server for IDE int
 | `nutui-react-taro doc <Component>` | Full component Markdown docs (Chinese) |
 | `nutui-react-taro demo <Component> [name]` | Omit `name` to list all demos; pass `name` (e.g. `demo1`) for source |
 | `nutui-react-taro token [Component]` | Design Tokens; omit the component name to list global tokens |
+| `nutui-react-taro migrate [from] [to]` | Print a major-version migration guide (defaults to `3 4`); use `--component <Component>` for one component or `--apply <dir>` to scan a project and generate migration guidance |
+| `nutui-react-taro diff <v1> <v2> [Component]` | Compare two version snapshots for added, removed, type-changed, and default-changed props |
 | `nutui-react-taro mcp` | Start a local MCP server (stdio) for Claude Code / Cursor / VS Code / Codex IDE integration |
 
 When a component name isn't found, the CLI returns a "did you mean" suggestion (e.g. `Buttn` → `Button`) — use it to correct the name rather than guessing.
@@ -66,12 +72,53 @@ When a component name isn't found, the CLI returns a "did you mean" suggestion (
 | Flag | Description | Default |
 | --- | --- | --- |
 | `--format, -f <text\|json>` | Output format; agents should prefer `json` | `text` |
+| `--nutui-version, --nv <version>` | Target NutUI version (e.g. `3`, `3.1.0`, `4.0.0-beta.7`) | Auto-detected |
 | `--help, -h` | Show help | - |
-| `--version, -v` | Print the CLI version | - |
+| `--version, -v` | Print the CLI's own version (not the NutUI version) | - |
+
+## Multi-version
+
+The CLI bundles offline snapshots of multiple NutUI major versions (currently `v3.0.20`, `v3.1.0`, `v4.0.0-beta.7`), so it can answer with the right component knowledge for whichever NutUI version a machine uses. Pass `--nutui-version` (alias `--nv`) to target a version — `3`, `3.1.0`, `4.0.0-beta.7`, etc. all work:
+
+```bash
+nutui-react-taro --nv 3.1.0 info Button
+nutui-react-taro --nv 3 list
+nutui-react-taro --nv 4.0.0-beta.7 doc Cell
+```
+
+When `--nutui-version` is omitted, the target version is **auto-detected** in this order:
+
+1. the `--nutui-version <v>` flag;
+2. the installed version in the project's `node_modules/@nutui/nutui-react-taro/package.json`;
+3. the `dependencies` / `devDependencies` / `peerDependencies` declaration in the project's `package.json` (handles `^3.1.0`, `~3.1.0`, etc.);
+4. a fallback to the default major version (`v4`) latest.
+
+Version routing is `major.minor`-grained: a request for `3.0.5` lands on the highest patch snapshot of that minor series, `v3.0.20`; a minor higher than any available falls back to the nearest older minor of that major. Every query reports the resolved version and its source (the header in `text` output, the `_meta` field in `json` output).
+
+> When the version can be inferred from the project, prefer not passing `--nutui-version` and let the CLI detect it. The `-v / --version` semantics stay unchanged — it still prints the CLI's own version.
+
+## Migrate from v3 to v4
+
+Both `migrate` and `diff` use offline data shipped with the CLI, but they answer different questions:
+
+- `migrate` reads the official migration guide and covers the reasoning and required edits, including styles, CSS class names, and Design Tokens that are not represented in props tables.
+- `diff` compares two version snapshots and precisely reports added, removed, type-changed, and default-changed props.
+
+Scan the project first, then inspect each affected component:
+
+```bash
+nutui-react-taro migrate 3 4 --apply ./src --format json
+nutui-react-taro migrate 3 4 --component Empty --format json
+nutui-react-taro diff 3 4 Empty --format json
+```
+
+`--apply` only scans source files and outputs migration steps plus an agent prompt for the components actually used; it **does not modify files**. `matchedComponents` identifies components to update, while `componentsWithoutBreakingChanges` lists used components with no breaking change recorded in the current migration guide.
+
+Install the [nutui-react-taro-v3-to-v4 Skill](/#/en-US/ai/skill) for an agent-guided workflow covering dependency upgrades, inventory, component-by-component edits, multi-platform builds, and visual verification.
 
 ## Usage with AI tools
 
-The CLI ships with a Skill file following the [Agent Skills](https://github.com/vercel-labs/skills) spec, distributed with the npm package. It guides the agent to call the right command at the right time — e.g. "look up props with `info` and grab a demo before writing a component" and "customize styles with `var(--nutui-*)` tokens instead of hardcoded colors".
+The CLI package ships with Skills that follow the [Agent Skills](https://github.com/vercel-labs/skills) spec. They cover both component development and v3 → v4 upgrades, guiding the agent to call the right command at the right time.
 
 Install into the current project (directly from the GitHub repo):
 
@@ -85,6 +132,7 @@ If your IDE supports MCP, the CLI can also run as an MCP server, registering the
 
 ## Learn more
 
+- [Skill](/#/en-US/ai/skill)
 - [MCP Server](/#/en-US/ai/mcp)
 - [LLMs.txt](/#/en-US/ai/llms)
 - [For Agents](/#/en-US/ai/for-agents)
