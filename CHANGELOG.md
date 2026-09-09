@@ -1,3 +1,9 @@
+# v3.0.23-cpp
+
+`2026-09-03`
+
+- 🪵 refactor(configprovider): 将 lodash.kebabcase 替换为 lodash-es (#3519)
+
 # v3.0.22-cpp
 
 `2026-08-28`
