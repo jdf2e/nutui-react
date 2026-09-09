@@ -46,6 +46,8 @@ nutui-react demo Button demo1        # 查看某个示例的源码
 nutui-react token                    # 全局 Design Token
 nutui-react token Button             # 组件级 Design Token
 nutui-react --nv 3.1.0 info Button   # 查指定 NutUI 版本的 API（省略则自动检测）
+nutui-react migrate 3 4 --apply ./src # 扫描项目并生成 v3 → v4 迁移提示
+nutui-react diff 3 4 Empty           # 对比 Empty 在 v3 / v4 的 Props 差异
 nutui-react mcp                      # 启动本地 MCP 服务，供 IDE 集成
 ```
 
@@ -58,6 +60,8 @@ nutui-react mcp                      # 启动本地 MCP 服务，供 IDE 集成
 | `nutui-react doc <Component> [--lang zh\|en]` | 组件完整 Markdown 文档，默认中文 |
 | `nutui-react demo <Component> [name]` | 省略 `name` 列出全部示例；指定 `name`（如 `demo1`）输出源码 |
 | `nutui-react token [Component]` | Design Token；省略组件名则列出全局 token |
+| `nutui-react migrate [from] [to]` | 输出大版本迁移指南（默认 `3 4`）；支持 `--component <Component>` 查看单组件，或 `--apply <dir>` 扫描项目并生成迁移提示 |
+| `nutui-react diff <v1> <v2> [Component]` | 对比两个版本快照的 Props 差异，包括新增、移除、类型和默认值变更 |
 | `nutui-react mcp` | 启动本地 MCP 服务（stdio），供 Claude Code / Cursor / VS Code / Codex 等 IDE 集成 |
 
 未命中组件名时，CLI 会给出「你是否想找」建议（如 `Buttn` → `Button`），据此纠正而非凭空猜测。
@@ -93,9 +97,28 @@ nutui-react --nv 4.0.0-beta.7 doc Cell
 
 > 在项目里能自动推断版本时，优先不显式传 `--nutui-version`，让 CLI 自行检测更省心。`-v / --version` 语义保持不变，仍输出 CLI 自身版本。
 
+## v3 → v4 迁移
+
+`migrate` 与 `diff` 都基于随 CLI 分发的离线数据，但用途不同：
+
+- `migrate` 读取官方迁移文档，说明为什么改、怎么改，并覆盖样式、CSS 类名和 Design Token 等 Props 表之外的变化。
+- `diff` 实时比较两个版本快照，精确列出 Props 的新增、移除、类型和默认值变化。
+
+推荐先扫描项目，再逐组件核对：
+
+```bash
+nutui-react migrate 3 4 --apply ./src --format json
+nutui-react migrate 3 4 --component Empty --format json
+nutui-react diff 3 4 Empty --format json
+```
+
+`--apply` 只扫描源码并输出项目实际使用组件的迁移步骤与 Agent 提示，**不会自动修改文件**。输出中的 `matchedComponents` 是需要重点处理的组件，`componentsWithoutBreakingChanges` 是已使用但当前迁移文档未记录破坏性变更的组件。
+
+完整升级流程可安装 [`nutui-react-v3-to-v4` Skill](/#/zh-CN/ai/skill)，由 Agent 按「升级依赖 → 扫描盘点 → 逐组件改写 → 构建与视觉验证」执行。
+
 ## 在 AI 工具中使用
 
-CLI 内置一份遵循 [Agent Skills](https://github.com/vercel-labs/skills) 规范的 Skill 文件，随 npm 包分发，指导 Agent 在正确的时机调用正确的命令——例如「写组件前先 `info` 查 Props、再 `demo` 拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
+CLI 随 npm 包分发遵循 [Agent Skills](https://github.com/vercel-labs/skills) 规范的 Skill，分别覆盖组件开发与 v3 → v4 升级流程，指导 Agent 在正确的时机调用正确的命令。
 
 安装到当前项目（从 GitHub 仓库直接安装）：
 

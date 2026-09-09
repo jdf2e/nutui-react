@@ -1,6 +1,6 @@
 # Skill
 
-This page introduces two NutUI-React Agent Skills, the problem each one solves, and how to install them.
+This page introduces three NutUI-React Agent Skills, the problem each one solves, and how to install them.
 
 ## What is a Skill?
 
@@ -8,11 +8,12 @@ A [Skill](https://github.com/vercel-labs/skills) is an instruction file followin
 
 Once installed, the agent automatically loads the Skill and follows its workflow when it hits a matching task, with no need for you to prompt it every time. Compatible with Claude Code / Cursor / VS Code / Codex and any agent that supports the skills protocol.
 
-Two Skills are available:
+Three Skills are available:
 
 | Skill | Purpose |
 | --- | --- |
 | `nutui-react` | Look up the API before writing NutUI-React code, eliminating API hallucination |
+| `nutui-react-v3-to-v4` | Systematically upgrade `@nutui/nutui-react` from v3 to v4 |
 | `nutui-react-to-taro` | Migrate an H5 project from `@nutui/nutui-react` to `@nutui/nutui-react-taro` (Taro / mini-program) |
 
 ## `nutui-react` — look up before writing
@@ -30,6 +31,24 @@ Guides the agent to query the real API with the CLI before writing any NutUI-Rea
 
 ```bash
 npx skills add jdf2e/nutui-react --skill nutui-react
+```
+
+## `nutui-react-v3-to-v4` — major-version upgrade
+
+Guides the agent through upgrading `@nutui/nutui-react` from v3 to v4 with the new `migrate` and `diff` capabilities. It focuses on style, CSS class, Design Token, enum, and default-value changes that may not produce compile errors.
+
+**Workflow:**
+
+- Ask for confirmation before upgrading dependencies, then verify the lockfile and installation result.
+- Run `nutui-react migrate 3 4 --apply ./src --format json` to inventory the components actually used by the project.
+- For every matched component, combine `migrate --component` with `diff 3 4` to check both the official migration guidance and exact prop changes.
+- Inspect custom styles targeting `.nut-*` classes and `--nutui-*` variables.
+- Validate builds, rendering, and interactions; a successful compilation alone does not complete the migration.
+
+**Install:**
+
+```bash
+npx skills add jdf2e/nutui-react --skill nutui-react-v3-to-v4
 ```
 
 ## `nutui-react-to-taro` — migrate H5 to Taro
@@ -55,8 +74,8 @@ npx skills add jdf2e/nutui-react --skill nutui-react-to-taro
 
 All three reuse the same offline knowledge — only the calling protocol differs:
 
-- **CLI** — the agent runs commands to query.
-- **MCP** — registers the same capabilities as IDE-native tools, called on demand in conversation.
+- **CLI** — the agent runs commands to query knowledge, scan a project, or compare versions.
+- **MCP** — registers the same query, migration, and diff capabilities as IDE-native tools, called on demand in conversation.
 - **Skill** — provides no new capability; it tells the agent _when and in what order_ to call the CLI / MCP, codifying the workflow.
 
 If your IDE supports MCP, enabling the MCP server alongside lets the Skill's query steps route through IDE-native tools automatically.

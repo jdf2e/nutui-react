@@ -10,7 +10,7 @@ The CLI is "the agent runs commands"; MCP registers the same capabilities as IDE
 
 ## Start the MCP server
 
-`nutui-react mcp` starts a local MCP server that communicates over stdio, exposing 5 read-only tools and 2 prompts. This command shouldn't be run directly in a terminal — configure it in your AI tool instead (see below).
+`nutui-react mcp` starts a local MCP server that communicates over stdio, exposing 7 read-only tools and 2 prompts. This command shouldn't be run directly in a terminal — configure it in your AI tool instead (see below).
 
 ### Tools
 
@@ -21,10 +21,14 @@ The CLI is "the agent runs commands"; MCP registers the same capabilities as IDE
 | `nutui_doc` | Get a component's full docs (`lang: zh\|en`) |
 | `nutui_demo` | Get a component's H5 demo list / source |
 | `nutui_token` | Query Design Tokens (global / component-level) |
+| `nutui_migrate` | Get a major-version migration guide, optionally filtered by component or project directory |
+| `nutui_diff` | Compare prop differences between two version snapshots |
 
 All tools are read-only, side-effect-free, and do not access the external network.
 
-Every tool accepts an optional `nutuiVersion` argument (e.g. `3.1.0`, `4.0.0-beta.7`) to target a NutUI major version; when omitted, the version your project uses is auto-detected, falling back to the default major. See the [CLI multi-version notes](/#/en-US/ai/cli).
+The first five component-knowledge tools accept an optional `nutuiVersion` argument (e.g. `3.1.0`, `4.0.0-beta.7`) to target a NutUI major version; when omitted, the version your project uses is auto-detected, falling back to the default major. See the [CLI multi-version notes](/#/en-US/ai/cli).
+
+`nutui_migrate` accepts optional `from`, `to`, `component`, and `applyDir` arguments. `applyDir` only scans the directory and returns migration steps; it does not modify files. `nutui_diff` requires `v1` and `v2`, with an optional `component` filter. They return the same structured data as the CLI's `migrate` and `diff` commands for agent-driven v3 → v4 upgrades.
 
 ### Prompts
 

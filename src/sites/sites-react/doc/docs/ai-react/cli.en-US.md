@@ -46,6 +46,8 @@ nutui-react demo Button demo1        # View a demo's source
 nutui-react token                    # Global Design Tokens
 nutui-react token Button             # Component-level Design Tokens
 nutui-react --nv 3.1.0 info Button   # Query a specific NutUI version's API (auto-detected if omitted)
+nutui-react migrate 3 4 --apply ./src # Scan a project and generate v3 → v4 migration guidance
+nutui-react diff 3 4 Empty           # Compare Empty props between v3 and v4
 nutui-react mcp                      # Start a local MCP server for IDE integration
 ```
 
@@ -58,6 +60,8 @@ nutui-react mcp                      # Start a local MCP server for IDE integrat
 | `nutui-react doc <Component> [--lang zh\|en]` | Full component Markdown docs (Chinese by default) |
 | `nutui-react demo <Component> [name]` | Omit `name` to list all demos; pass `name` (e.g. `demo1`) for source |
 | `nutui-react token [Component]` | Design Tokens; omit the component name to list global tokens |
+| `nutui-react migrate [from] [to]` | Print a major-version migration guide (defaults to `3 4`); use `--component <Component>` for one component or `--apply <dir>` to scan a project and generate migration guidance |
+| `nutui-react diff <v1> <v2> [Component]` | Compare two version snapshots for added, removed, type-changed, and default-changed props |
 | `nutui-react mcp` | Start a local MCP server (stdio) for Claude Code / Cursor / VS Code / Codex IDE integration |
 
 When a component name isn't found, the CLI returns a "did you mean" suggestion (e.g. `Buttn` → `Button`) — use it to correct the name rather than guessing.
@@ -93,9 +97,28 @@ Version routing is `major.minor`-grained: a request for `3.0.5` lands on the hig
 
 > When the version can be inferred from the project, prefer not passing `--nutui-version` and let the CLI detect it. The `-v / --version` semantics stay unchanged — it still prints the CLI's own version.
 
+## Migrate from v3 to v4
+
+Both `migrate` and `diff` use offline data shipped with the CLI, but they answer different questions:
+
+- `migrate` reads the official migration guide and covers the reasoning and required edits, including styles, CSS class names, and Design Tokens that are not represented in props tables.
+- `diff` compares two version snapshots and precisely reports added, removed, type-changed, and default-changed props.
+
+Scan the project first, then inspect each affected component:
+
+```bash
+nutui-react migrate 3 4 --apply ./src --format json
+nutui-react migrate 3 4 --component Empty --format json
+nutui-react diff 3 4 Empty --format json
+```
+
+`--apply` only scans source files and outputs migration steps plus an agent prompt for the components actually used; it **does not modify files**. `matchedComponents` identifies components to update, while `componentsWithoutBreakingChanges` lists used components with no breaking change recorded in the current migration guide.
+
+Install the [`nutui-react-v3-to-v4` Skill](/#/en-US/ai/skill) for an agent-guided workflow covering dependency upgrades, inventory, component-by-component edits, build checks, and visual verification.
+
 ## Usage with AI tools
 
-The CLI ships with a Skill file following the [Agent Skills](https://github.com/vercel-labs/skills) spec, distributed with the npm package. It guides the agent to call the right command at the right time — e.g. "look up props with `info` and grab a demo before writing a component" and "customize styles with `var(--nutui-*)` tokens instead of hardcoded colors".
+The CLI package ships with Skills that follow the [Agent Skills](https://github.com/vercel-labs/skills) spec. They cover both component development and v3 → v4 upgrades, guiding the agent to call the right command at the right time.
 
 Install into the current project (directly from the GitHub repo):
 
