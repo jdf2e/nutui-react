@@ -43,7 +43,7 @@
     &-slot-left,
     &-slot-right {
       position: absolute;
-      top: 16px;
+      top: $actionsheet-header-padding;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -244,7 +244,7 @@
   }
 
   .nut-actionsheet-collapse-arrow {
-    margin-right: 6px;
+    margin-right: 10.5px;
     margin-left: 0;
   }
 

@@ -122,11 +122,10 @@ export const ActionSheet: FunctionComponent<
 
   const renderGrid = () => {
     const cols = Number(columns) === 4 ? 4 : 5
-    const itemWidth = 'var(--nutui-actionsheet-grid-item-width, 50px)'
+    const itemWidth =
+      'var(--nutui-actionsheet-grid-item-width, calc(50px * var(--nut-scale-f, 1)))'
     const columnGap =
-      cols > 1
-        ? `calc((100% - ${cols} * ${itemWidth} * var(--nut-scale-f, 1)) / ${cols - 1})`
-        : '0'
+      cols > 1 ? `calc((100% - ${cols} * ${itemWidth}) / ${cols - 1})` : '0'
     return (
       <View
         className={`${classPrefix}-grid ${cols === 4 ? `${classPrefix}-grid-cols-4` : ''}`}
