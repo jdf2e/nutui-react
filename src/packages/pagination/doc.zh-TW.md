@@ -40,6 +40,46 @@ import { Pagination } from '@nutui/nutui-react'
 
 :::
 
+### 膠囊數字型
+
+將 mode 設置為 "lite" 且 indicatorType 為 "capsule"（默認），展示為白字加半透明遮罩背景的膠囊，常用於沉浸式圖片瀏覽場景，頁碼與滑動狀態實時同步。
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### 純文本型
+
+將 indicatorType 設置為 "text"，展示為純文本頁碼（18px 加粗），常見於沉浸的頂部導航區內居中展示。
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
+### 進度條指示型
+
+將 indicatorType 設置為 "progress"，以等分進度條展示當前所處幀，當前幀高亮。配合 Swiper 的 loop 可實現自動輪播的首尾循環無縫切換。
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
+
+:::
+
+### 膠囊數字型 & 進度條指示型
+
+部分場景中，膠囊數字型與進度條指示型可同時存在。
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
 ### 顯示省略號
 
 設置 force-ellipses 後會展示省略號按鈕，點擊後可以快速跳轉。
@@ -77,6 +117,8 @@ import { Pagination } from '@nutui/nutui-react'
 | value | 當前頁碼，受控值，與 onChange 搭配使用 | `number` | `-` |
 | defaultValue | 默認頁碼，非受控 | `number` | `1` |
 | mode | 顯示模式 | `multi` \| `simple` \| `lite` | `multi` |
+| indicatorType | 極簡模式（lite）下的指示符類型 | `capsule` \| `text` \| `progress` | `capsule` |
+| loop | 是否首尾循環切換（自動輪播場景） | `boolean` | `false` |
 | prev | 自定義上一頁按鈕內容 | `ReactNode` | `上一頁` |
 | next | 自定義下一頁按鈕內容 | `ReactNode` | `下一頁` |
 | total | 總記錄數 | `number` | `50` |
@@ -108,5 +150,17 @@ import { Pagination } from '@nutui/nutui-react'
 | \--nutui-pagination-lite-radius | lite模式下的圓角 | `12px` |
 | \--nutui-pagination-lite-background-color | lite模式下的默認背景色 | `var(--nutui-black-7)` |
 | \--nutui-pagination-lite-active-background-color | lite模式下的當前選中的背景色 | `var(--nutui-black-5)` |
+| \--nutui-pagination-capsule-background-color | 膠囊數字型背景色 | `$color-mask-part` |
+| \--nutui-pagination-capsule-color | 膠囊數字型文字色 | `$color-primary-text` |
+| \--nutui-pagination-capsule-radius | 膠囊數字型圓角 | `$radius-xs` |
+| \--nutui-pagination-capsule-padding | 膠囊數字型內邊距 | `4px 6px` |
+| \--nutui-pagination-capsule-font-size | 膠囊數字型字號 | `$font-size-xs` |
+| \--nutui-pagination-text-color | 純文本型文字色 | `$color-title` |
+| \--nutui-pagination-text-font-size | 純文本型字號 | `$font-size-xl` |
+| \--nutui-pagination-text-font-weight | 純文本型字重 | `600` |
+| \--nutui-pagination-progress-height | 進度條指示型高度 | `2px` |
+| \--nutui-pagination-progress-gap | 進度條指示型間距 | `$spacing-xxs` |
+| \--nutui-pagination-progress-active-color | 進度條當前幀填充色 | `$color-primary-text` |
+| \--nutui-pagination-progress-inactive-color | 進度條待切換幀填充色 | `var(--nutui-white-3)` |
 
 <Contribution name="Pagination" />
