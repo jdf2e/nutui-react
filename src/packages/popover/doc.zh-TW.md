@@ -10,7 +10,7 @@ import { Popover } from '@nutui/nutui-react'
 
 ## 示例代碼
 
-### 基礎用法
+### 氣泡類型
 
 :::demo
 
@@ -103,14 +103,18 @@ bottom-right  # 底部右側位置
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| type | 氣泡類型，`status` 狀態型（圖標+文案+關閉），`description` 說明型（僅文案） | `status` \| `description` | `status` |
 | list | 選項列表 | `PopoverList[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
-| location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
-| offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
-| arrowOffset | 小箭頭的偏移量 | `number` | `0` |
+| theme | 主題風格，默認 `dark` 為設計規範深色氣泡；`light` 為明亮風格（白底深字） | `light` \| `dark` | `dark` |
+| location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `FullPosition` | `bottom` |
+| offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 8]` |
+| arrowOffset | 小箭頭的偏移量 | `number` | `20` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
 | closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
+| autoShow | 是否自動彈出，需配合 `onOpen` 更新 `visible` | `boolean` | `false` |
+| duration | 自動關閉時長（ms），`0` 表示不自動關閉 | `number` | `0` |
 | targetId | 自定義目標元素 id | `string` | `-` |
 | onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
 | onSelect | 點擊選項時觸發 | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
@@ -142,13 +146,25 @@ PopoverList 屬性是一個由對象構成的數組，數組中的每個對象�
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-popover-border-radius | popover 內容區的 border 的圓角值 | `8px` |
-| \--nutui-popover-font-size | popover 內容區的 font-size 值 | `12px` |
-| \--nutui-popover-text-color | 選項區的文字顏色 | `$color-title` |
-| \--nutui-popover-content-background-color | 選項區的背景顏色 | `$white` |
-| \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
+| \--nutui-popover-border-radius | popover 內容區的圓角 | `6px` |
+| \--nutui-popover-font-size | popover 內容區的字號 | `12px` |
+| \--nutui-popover-text-color | 文案顏色 | `$color-primary-text` |
+| \--nutui-popover-content-background-color | 內容區背景色 | `$color-mask` |
+| \--nutui-popover-divider-color | 多選項之間的分割線顏色 | `rgba(255, 255, 255, 0.12)` |
 | \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disabled` |
-| \--nutui-popover-padding | 選項區菜單每一項的 padding 值 | `8px` |
-| \--nutui-popover-item-width | 選項區菜單每一項寬度值，超過寬度值後，會折行展示，保障信息的完整性 | `160px` |
+| \--nutui-popover-padding-horizontal | 內容區水平內邊距 | `8px` |
+| \--nutui-popover-padding-vertical | 內容區垂直內邊距 | `6px` |
+| \--nutui-popover-height | 氣泡高度 | `28px` |
+| \--nutui-popover-icon-size | 圖標尺寸 | `12px` |
+| \--nutui-popover-icon-color | 圖標顏色（80% 透明度） | `rgba(255, 255, 255, 0.8)` |
+| \--nutui-popover-status-max-width | 狀態型最大寬度 | `240px` |
+| \--nutui-popover-description-max-width | 說明型最大寬度 | `208px` |
+| \--nutui-popover-action-hotspot-size | 關閉按鈕觸控熱區尺寸 | `36px` |
+| \--nutui-popover-light-content-background-color | 明亮風格背景色 | `#ffffff` |
+| \--nutui-popover-light-text-color | 明亮風格文案顏色 | `$color-mask` |
+| \--nutui-popover-light-icon-color | 明亮風格圖標顏色（80% 透明度） | `rgba(17, 20, 26, 0.8)` |
+| \--nutui-popover-light-divider-color | 明亮風格分割線顏色 | `$color-border` |
+| \--nutui-popover-padding | 兼容舊版水平內邊距變量 | `8px` |
+| \--nutui-popover-item-width | 兼容舊版選項寬度，等同狀態型最大寬度 | `240px` |
 
 <Contribution name="Popover" />

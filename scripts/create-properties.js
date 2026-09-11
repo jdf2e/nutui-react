@@ -128,7 +128,9 @@ const genaratorWebTypes = () => {
 const writeWebTypes = () => {
   const typesData = genaratorWebTypes()
   const innerText = `${JSON.stringify(typesData, null, 2)}`
-  const componentWebTypespPath = path.resolve(__dirname, './properties.json')
+  // taro 端扫 doc.taro.md，输出 properties-taro.json，避免覆盖 H5 的 properties.json。
+  const outFile = argv === 'taro' ? './properties-taro.json' : './properties.json'
+  const componentWebTypespPath = path.resolve(__dirname, outFile)
   fs.writeFileSync(componentWebTypespPath, innerText)
 }
 

@@ -20,10 +20,17 @@
       .nut-noticebar-box-wrap {
         height: auto;
       }
+
+      .nut-noticebar-box-left-icon {
+        height: $noticebar-left-icon-wrap-width;
+        min-width: $noticebar-left-icon-wrap-width;
+      }
     }
 
     &-wrapable {
       .nut-noticebar-box-wrap {
+        flex: initial;
+
         .nut-noticebar-box-wrap-content {
           position: relative;
           white-space: normal;
@@ -51,32 +58,124 @@
 
     &-left-icon {
       display: flex;
+      align-items: center;
+      justify-content: center;
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
       margin-right: $noticebar-icon-gap;
       background-size: 100% 100%;
+
       .nut-icon {
-        color: $noticebar-color;
+        color: $noticebar-icon-color;
       }
+
+      img {
+        border-radius: $noticebar-left-icon-border-radius;
+      }
+    }
+
+    &-content-wrapper {
+      flex: 1;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    &-content-main {
+      display: flex;
+      align-items: center;
+    }
+
+    &-description {
+      font-size: $noticebar-description-font-size;
+      color: $noticebar-description-color;
+      line-height: $noticebar-description-line-height;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-tag {
+      display: flex;
+      align-items: center;
+      width: $noticebar-tag-size;
+      height: $noticebar-tag-size;
+      margin-left: $noticebar-tag-gap;
+      flex-shrink: 0;
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: $noticebar-action-max-width;
+      margin-left: $noticebar-action-gap;
+      font-size: $noticebar-action-font-size;
+      color: $color-primary;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     &-right-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $noticebar-right-icon-width;
-      margin-left: $noticebar-icon-gap;
+      width: $noticebar-close-size;
+      height: $noticebar-close-size;
+      margin-left: $noticebar-action-gap;
+      flex-shrink: 0;
+      cursor: pointer;
 
       .nut-icon {
-        width: 12px;
-        height: 12px;
-        color: $noticebar-color;
+        color: $noticebar-close-color;
       }
     }
 
     &-right-icon-default {
       width: $icon-size-12;
       height: $icon-size-12;
+    }
+
+    &-close-countdown {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $noticebar-close-size;
+      height: $noticebar-close-size;
+      background: conic-gradient(
+        $noticebar-close-ring-color 0% var(--progress),
+        $noticebar-close-ring-shadow-color var(--progress) 100%
+      );
+      border-radius: 50%;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: scale-px(1px);
+        background: $noticebar-background;
+        border-radius: 50%;
+      }
+    }
+
+    &-close-icon {
+      position: relative;
+      width: $noticebar-close-icon-size;
+      height: $noticebar-close-icon-size;
+      color: $noticebar-close-color;
+    }
+
+    &-left-icon--product {
+      height: scale-px(32px);
+      min-width: scale-px(32px);
+
+      img {
+        background: $white;
+        border-radius: $noticebar-left-icon-border-radius;
+      }
+    }
+
+    &-right {
+      flex-shrink: 0;
     }
 
     &-wrap {
@@ -158,11 +257,12 @@
       flex-direction: column;
     }
 
+    .nut-noticebar-box-description {
+      white-space: normal;
+    }
+
     .nut-noticebar-box-right-icon {
       align-self: center;
-      display: flex;
-      justify-content: center;
-      width: $noticebar-right-icon-width;
       margin-left: $noticebar-icon-gap;
     }
   }
@@ -196,7 +296,17 @@
 
     &-right-icon {
       margin-left: 0;
-      margin-right: $noticebar-icon-gap;
+      margin-right: $noticebar-action-gap;
+    }
+
+    &-tag {
+      margin-left: 0;
+      margin-right: $noticebar-tag-gap;
+    }
+
+    &-action {
+      margin-left: 0;
+      margin-right: $noticebar-action-gap;
     }
 
     .play {
@@ -224,6 +334,16 @@
     .nut-noticebar-box-right-icon {
       margin-left: 0;
       margin-right: $noticebar-icon-gap;
+    }
+
+    .nut-noticebar-box-tag {
+      margin-left: 0;
+      margin-right: $noticebar-tag-gap;
+    }
+
+    .nut-noticebar-box-action {
+      margin-left: 0;
+      margin-right: $noticebar-action-gap;
     }
   }
 }

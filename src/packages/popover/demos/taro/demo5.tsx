@@ -19,7 +19,6 @@ const Demo5 = () => {
     <>
       <Popover
         visible={customTarget}
-        theme="dark"
         targetId="popid"
         list={iconItemList}
         location="top-left"

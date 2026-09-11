@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar, Button } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
@@ -19,7 +20,7 @@ const Demo6 = () => {
           </>
         }
       />
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar
         content={textShort}
         wrap

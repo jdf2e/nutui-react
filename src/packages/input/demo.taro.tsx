@@ -18,6 +18,9 @@ import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 import Demo14 from './demos/taro/demo14'
+import Demo15 from './demos/taro/demo15'
+import Demo16 from './demos/taro/demo16'
+import Demo17 from './demos/taro/demo17'
 
 const InputDemo = () => {
   const [translated] = useTranslate({
@@ -55,6 +58,9 @@ const InputDemo = () => {
       text1: '文本',
       password1: '带密码可见',
       wordCount: '字数统计',
+      description: '辅助说明',
+      auxiliary: '辅助功能',
+      errorStatus: '错误状态',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -90,6 +96,9 @@ const InputDemo = () => {
       text1: 'Text',
       password1: 'Visible with password',
       wordCount: 'Word count',
+      description: 'Description',
+      auxiliary: 'Auxiliary action',
+      errorStatus: 'Error status',
     },
   })
 
@@ -128,6 +137,12 @@ const InputDemo = () => {
         <Demo13 />
         <View className="h2">{translated.border}</View>
         <Demo14 />
+        <View className="h2">{translated.description}</View>
+        <Demo15 />
+        <View className="h2">{translated.auxiliary}</View>
+        <Demo16 />
+        <View className="h2">{translated.errorStatus}</View>
+        <Demo17 />
       </ScrollView>
     </>
   )

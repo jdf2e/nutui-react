@@ -85,7 +85,6 @@ const Demo = () => {
         </div>
       </Picker>
       <Popover
-        theme="dark"
         visible={customPositon}
         targetId="pickerTarget2"
         list={positionList}

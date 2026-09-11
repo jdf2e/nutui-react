@@ -36,9 +36,14 @@ const Demo11 = () => {
               style={{
                 position: 'absolute',
                 display: 'flex',
-                width: pxTransform(26),
+                minWidth: pxTransform(36),
+                padding: `0 ${pxTransform(6)}`,
+                height: pxTransform(20),
+                border: '1px solid var(--nutui-color-background-overlay,#fff)',
                 backgroundColor: 'red',
                 borderRadius: pxTransform(10),
+                boxShadow:
+                  '0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 4px 5px 0 rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.12)',
                 justifyContent: 'center',
                 top: '50%',
                 left: '50%',
@@ -52,7 +57,7 @@ const Demo11 = () => {
                     ? {
                         height: pxTransform(18),
                         color: 'white',
-                        fontSize: pxTransform(10),
+                        fontSize: pxTransform(12),
                         lineHeight: 1,
                         textAlign: 'center',
                         paddingTop: pxTransform(4),
@@ -60,7 +65,7 @@ const Demo11 = () => {
                       }
                     : {
                         color: 'white',
-                        fontSize: pxTransform(10),
+                        fontSize: pxTransform(12),
                         lineHeight: pxTransform(18),
                         textAlign: 'center',
                       }

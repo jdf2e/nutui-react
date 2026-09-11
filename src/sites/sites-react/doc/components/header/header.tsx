@@ -88,6 +88,8 @@ const Header = () => {
   useEffect(() => {
     if (location.pathname.includes('/component')) {
       setActiveLink('组件')
+    } else if (location.pathname.includes('/ai/')) {
+      setActiveLink('AI')
     }
   }, [location])
   const toAnother = () => {

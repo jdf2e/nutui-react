@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # 完整拉取历史，方便 git 操作
 
@@ -36,22 +36,22 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 20
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 10
+          version: 10.34.5
 
       - name: Install Node Dependencies
         run: pnpm install
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
-          python-version: '3.10'
+          python-version: '3.14.7'
 
       - name: Install Python Dependencies
         run: |

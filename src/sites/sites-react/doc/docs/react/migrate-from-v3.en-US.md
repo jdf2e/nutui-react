@@ -78,3 +78,57 @@ npm install @nutui/nutui-react-taro
     - `status="empty"` → `status="search"` (generic empty) or another enum above
     - `status="error"` → `status="network"` or a custom `image`
   - Images load from CDN URLs at runtime; see `src/types/spec/empty/base.ts` for the mapping.
+
+### Popover
+
+> **No v3 compatibility in v4**: no prop aliases and no `.nut-popover-dark` class fallback. Migrate manually using the table below.
+
+- **New `type` bubble variant (breaking default behavior)**:
+  - Added `type`: `status` (icon + text + close) or `description` (text only).
+  - Default `status`; max width 240px for status, 208px for description.
+- **`theme` default changed (breaking)**:
+  - Default changed from `light` to `dark` (design-spec dark bubble).
+  - **Light style is preserved**: set `theme="light"` for the bright white-background style.
+  - Recommended migration:
+    - v3 default bright style → set `theme="light"` explicitly
+    - v3 `theme="dark"` → can remove the prop in v4 (already the default look)
+- **Visual spec updates**:
+  - **Common**: height 28px, font 12px, background `$color-mask`, text `$color-primary-text`, padding 6px vertical / 8px horizontal.
+  - **Status**: icon/close 12×12 at 80% opacity; close button touch hotspot at least 36×36px.
+  - **Description**: text only, 8px horizontal padding.
+- **CSS class name breaking changes**:
+  - Removed `.nut-popover-dark`; default styles match the design-spec dark bubble.
+  - Bright style uses `.nut-popover-light` (`theme="light"`).
+  - Added `.nut-popover--status` / `.nut-popover--description`.
+- **Theme variable updates**:
+  - Added `--nutui-popover-padding-horizontal`, `--nutui-popover-padding-vertical`, `--nutui-popover-height`, `--nutui-popover-icon-size`, `--nutui-popover-icon-color`, `--nutui-popover-status-max-width`, `--nutui-popover-description-max-width`, `--nutui-popover-action-hotspot-size`.
+  - `--nutui-popover-content-background-color` default changed from `#ffffff` to `$color-mask`; `--nutui-popover-text-color` from `$color-mask` to `$color-primary-text`.
+  - `--nutui-popover-item-width` default changed from `160px` to `240px` (same as status max width).
+
+### Skeleton
+
+- **`size` visual spec updates (compatible)**:
+  - `large` (title) height changed from `32px` to `28px`; `normal` (price) height from `24px` to `20px`; `small` (paragraph) stays `16px`; border radius stays `4px`.
+  - Size semantics: `small` for paragraph, `normal` for price, `large` for title.
+- **`duration` default changed (breaking default behavior)**:
+  - The shimmer sweep duration default changed from `0.6` (600ms) to `0.4` (400ms). To keep the original pace, pass `duration={0.6}` explicitly.
+- **Background token update**:
+  - `--nutui-skeleton-background` default fallback changed from `$color-background-sunken` to `$color-background`, following the `color-background` token in dark mode automatically.
+- **Shimmer visual redesign**:
+  - The loading shimmer changed from a dark horizontal-translate overlay to a white 30° diagonal light band (80px wide, gradient opacity 0% → 50% → 0%), sweeping left to right over 400ms and looping after a ~1s pause.
+
+### Range
+
+- **Thumb visual spec updates (compatible)**:
+  - Thumb size changed from `24px` to `20px` (`--nutui-range-button-width`, `--nutui-range-button-height`).
+  - Thumb border color changed from `$color-primary` to `$color-border` (`--nutui-range-button-border`).
+  - Thumb shadow changed from a single `0 1px 2px rgba(0,0,0,0.15)` to a softer three-layer shadow.
+- **Track color token update (compatible)**:
+  - `--nutui-range-inactive-color` (inactive track background) default fallback changed from `$color-primary-light-pressed` to `$color-background-component`, following the component background token in dark mode automatically.
+- **Disabled state implementation change (compatible)**:
+  - The disabled state changed from an overall `opacity: 0.54` to coloring the selected range with the new `--nutui-range-disabled-color` token (default `$color-primary-light-pressed`), avoiding the HarmonyOS issue where opacity is distributed to child layers.
+- **Bubble display (new)**:
+  - The `currentDescription` current value changed from plain text to a dark bubble (background `$color-mask`, text `$color-primary-text`, `6px` radius, with an arrow pointing to the thumb). The horizontal bubble sits above the thumb, and the vertical bubble sits to the right of the thumb. If you customized styles via `.nut-range-button-number`, note it now contains two inner layers: `.nut-range-button-number-body` (bubble body) and `.nut-range-button-number-arrow` (arrow).
+- **Range labels and marks updates (compatible)**:
+  - The left/right range label font size changed from `12px` to `16px` (`$font-size-md`), line height `24px`.
+  - The mark dot size changed from `11px` to `8px`, mark text font size from `12px` to `14px` with `24px` line height, distributed aligned to the mark dot center line.
