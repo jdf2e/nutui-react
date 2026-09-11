@@ -1,3 +1,34 @@
+# v4.0.0-beta.7
+
+`2026-08-31`
+
+- :sparkles: Feat v16 noticebar simple (#3491)
+- :bug: fix(deps): update all non-major dependencies (#3503)
+- 🪵 refactor(popover): v16适配 (#3492)
+
+# v4.0.0-beta.6
+
+`2026-08-10`
+
+- :sparkles: feat: 为 @nutui/nutui-react-taro 补齐 AI-Coding 能力(CLI / MCP / Skill + 站点文档) (#3500)
+- :bug: fix(Cascader): preserve normalized option keys (#3501)
+
+# v4.0.0-beta.5
+
+`2026-07-21`
+
+- :sparkles: feature: MCP Server + Skill (#3497)
+- :sparkles: feat: 新增组件样式结构(Semantic)文档,完善面向 AI Coding 的站点接入 (#3496)
+- :sparkles: feat: 新增面向 AI Coding 的 LLMs 文档生成 (#3495)
+
+# v4.0.0-beta.4
+
+`2026-06-18`
+
+- 📖 docs: 更新站点版本与 v16 组件 new 标识
+- 🪵 refactor(Rate): v16 适配 (#3487)
+- 🪵 refactor(Empty): v16适配 (#3486)
+
 # v4.0.0-beta.3
 
 `2026-06-12`

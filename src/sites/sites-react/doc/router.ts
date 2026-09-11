@@ -67,4 +67,25 @@ for (const path in modulesEnDocs) {
   });
 }
 
-export {routes, guideRoutes, guideEnRoutes}
+const aiRoutes: any[] = []
+const modulesAiDocs = import.meta.glob('/src/sites/sites-react/doc/docs/ai-react/*.md');
+for (const path in modulesAiDocs) {
+  if (path.includes('.en-US.md')) continue;
+  let name = (/docs\/ai-react\/(.*).md/.exec(path) as any[])[1];
+  aiRoutes.push({
+    path: `/zh-CN/ai/${name}`,
+    component: modulesAiDocs[path],
+    name
+  });
+}
+const modulesAiEnDocs = import.meta.glob('/src/sites/sites-react/doc/docs/ai-react/*.en-US.md');
+for (const path in modulesAiEnDocs) {
+  let name = (/docs\/ai-react\/(.*).en-US.md/.exec(path) as any[])[1];
+  aiRoutes.push({
+    path: `/en-US/ai/${name}`,
+    component: modulesAiEnDocs[path],
+    name: `en-${name}`
+  });
+}
+
+export {routes, guideRoutes, guideEnRoutes, aiRoutes}

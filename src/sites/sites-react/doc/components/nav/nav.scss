@@ -93,6 +93,20 @@
               font-weight: normal;
               font-size: 12px;
             }
+
+            .nav-new-tag {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              height: 15px;
+              padding: 0px 5px;
+              margin-left: 4px;
+              font-size: 9px;
+              color: #fff;
+              background: linear-gradient(90deg, #ff6034, #ee0a24);
+              border-radius: 8px;
+              font-weight: 600;
+            }
           }
 
           div {

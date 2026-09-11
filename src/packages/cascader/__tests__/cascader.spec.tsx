@@ -3,6 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CascaderOption } from '@nutui/nutui-react'
 import { Cascader } from '../cascader'
+import { normalizeOptions } from '../utils'
 
 const mockOptions = [
   {
@@ -86,6 +87,26 @@ const mockConvertOptions = [
 ]
 
 describe('Cascader', () => {
+  it('normalizes mapped fields after preserving unrelated option fields', () => {
+    const options = [{ text: '北京', value: '021' }]
+
+    expect(
+      normalizeOptions(options, {
+        textKey: 'text',
+        valueKey: 'text',
+        childrenKey: 'children',
+      })
+    ).toEqual([{ text: '北京', value: '北京', children: undefined }])
+
+    expect(
+      normalizeOptions(options, {
+        textKey: 'value',
+        valueKey: 'value',
+        childrenKey: 'children',
+      })
+    ).toEqual([{ text: '021', value: '021', children: undefined }])
+  })
+
   it('options', async () => {
     const { container } = render(
       <Cascader value={['福建', '福州', '鼓楼区']} options={mockOptions} />

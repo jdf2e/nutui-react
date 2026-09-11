@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
 import { FullPosition, SimpleValues, UITheme } from '../../base/atoms'
 
+export type PopoverType = 'status' | 'description'
+
 export interface PopoverList {
   key?: string
   name: string
@@ -21,6 +23,7 @@ export interface WrapperPosition {
 
 export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
   BaseProps & {
+    type: PopoverType
     theme: UITheme
     location: FullPosition
     list: PopoverList[]
@@ -31,6 +34,8 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     showArrow: boolean
     closeOnOutsideClick: boolean
     closeOnActionClick: boolean
+    autoShow: boolean
+    duration: number
     children?: ReactNode
     onClick: () => void
     onOpen: () => void

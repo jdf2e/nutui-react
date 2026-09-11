@@ -7,6 +7,9 @@ node_modules
 /dist
 /dist-demo
 /dist-site
+# meta 派生产物：components.json 由 generate:meta 产出、semantic.json 由 generate:semantic 产出、
+# 各平台 llms 由 generate:llms 产出（build:site / build:taro:site 前自动生成），整个目录均为构建产物，不落库
+/meta/
 /release
 /libs
 /jd/upload.js
@@ -61,6 +64,9 @@ pnpm-lock.*.yaml
 # local v4 upgrade workflow (personal, not for commit)
 .cursor/skills/nutui-component-v4-upgrade/
 .claude/commands/nutui-v4-upgrade.md
+.claude/nutui-*.json
 
 # Harmony CSS files
 src/packages/**/*.harmony.css
+
+.playwright-cli/

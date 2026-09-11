@@ -5,5 +5,6 @@ export type {
   TaroInputProps as InputProps,
   InputConfirmType,
   InputFormatTrigger,
+  InputStatus,
 } from '@/types'
 export default Input

@@ -3,10 +3,11 @@ import { Popover, Button, Space } from '@nutui/nutui-react'
 import { Tips, Close } from '@nutui/icons-react'
 
 const Demo = () => {
-  const [basic, setBasic] = useState(false)
-  const [dark, setDark] = useState(false)
-  const [index, setIndex] = useState(0)
-  const itemList = [
+  const [statusVisible, setStatusVisible] = useState(false)
+  const [descriptionVisible, setDescriptionVisible] = useState(false)
+  const [lightVisible, setLightVisible] = useState(false)
+  const [autoVisible, setAutoVisible] = useState(false)
+  const statusList = [
     {
       key: 'key1',
       name: '主要文案内容',
@@ -15,21 +16,26 @@ const Demo = () => {
         icon: <Close />,
         onClick: (e: any) => {
           e.stopPropagation()
-          index === 0 && basic && setBasic(false)
-          index === 1 && dark && setDark(false)
+          setStatusVisible(false)
         },
       },
+    },
+  ]
+  const descriptionList = [
+    {
+      key: 'key1',
+      name: '主要文案内容',
     },
   ]
   return (
     <Space>
       <Popover
-        visible={basic}
-        list={itemList}
+        visible={statusVisible}
+        type="status"
+        list={statusList}
         location="bottom-left"
         onClick={() => {
-          basic ? setBasic(false) : setBasic(true)
-          setIndex(0)
+          statusVisible ? setStatusVisible(false) : setStatusVisible(true)
         }}
         onOpen={() => {
           console.log('打开菜单时触发')
@@ -38,19 +44,47 @@ const Demo = () => {
           console.log('关闭菜单时触发')
         }}
       >
+        <Button type="primary">状态型</Button>
+      </Popover>
+      <Popover
+        visible={descriptionVisible}
+        type="description"
+        list={descriptionList}
+        location="bottom-left"
+        onClick={() => {
+          descriptionVisible
+            ? setDescriptionVisible(false)
+            : setDescriptionVisible(true)
+        }}
+      >
+        <Button type="primary">说明型</Button>
+      </Popover>
+      <Popover
+        visible={lightVisible}
+        type="status"
+        theme="light"
+        list={statusList}
+        location="bottom-left"
+        onClick={() => {
+          lightVisible ? setLightVisible(false) : setLightVisible(true)
+        }}
+      >
         <Button type="primary">明亮风格</Button>
       </Popover>
       <Popover
-        visible={dark}
-        list={itemList}
-        theme="dark"
+        autoShow
+        duration={5000}
+        visible={autoVisible}
+        type="description"
+        list={descriptionList}
         location="bottom-left"
+        onOpen={() => setAutoVisible(true)}
+        onClose={() => setAutoVisible(false)}
         onClick={() => {
-          dark ? setDark(false) : setDark(true)
-          setIndex(1)
+          autoVisible ? setAutoVisible(false) : setAutoVisible(true)
         }}
       >
-        <Button type="primary">暗黑风格</Button>
+        <Button type="primary">自动弹出</Button>
       </Popover>
     </Space>
   )

@@ -9,6 +9,7 @@ const Nav = () => {
   const [lang] = useLocale()
   const [fixed, setFixed] = useState(false)
   const [isGuide, setIsGuide] = useState(false)
+  const [isAi, setIsAi] = useState(false)
   const [activeName, setActiveName] = useState<string>('')
   const scrollNav = () => {
     let top = document.documentElement.scrollTop
@@ -31,6 +32,7 @@ const Nav = () => {
     } else {
       setIsGuide(false)
     }
+    setIsAi(location.pathname.includes('/ai/'))
     setActiveName(location.pathname.slice(location.pathname.lastIndexOf('/') + 1))
   }, [location])
   const changeNav = (_nav: any) => {
@@ -41,7 +43,62 @@ const Nav = () => {
   const isZh = lang === 'zh-CN'
   return (
     <div className={`doc-nav ${fixed ? 'fixed' : ''}`}>
-      {isGuide ? (
+      {isAi ? (
+        <ol>
+          <ul>
+            <li className={activeName === 'for-agents' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/for-agents`}
+              >
+                For Agents
+              </NavLink>
+            </li>
+            <li className={activeName === 'cli' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/cli`}
+              >
+                CLI
+              </NavLink>
+            </li>
+            <li className={activeName === 'mcp' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/mcp`}
+              >
+                MCP Server
+              </NavLink>
+            </li>
+            <li className={activeName === 'skill' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/skill`}
+              >
+                Skill
+              </NavLink>
+            </li>
+            <li className={activeName === 'llms' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/llms`}
+              >
+                LLMs.txt
+              </NavLink>
+            </li>
+          </ul>
+        </ol>
+      ) : isGuide ? (
         <ol>
           <ul>
             {docs.packages.map((_package) => (
@@ -88,6 +145,7 @@ const Nav = () => {
                         >
                           {cp.name}&nbsp;
                           <b>{lang === 'zh-CN' && cp.cName}</b>
+                          {cp.v16 && <span className="nav-new-tag">new</span>}
                         </NavLink>
                       </li>
                     )

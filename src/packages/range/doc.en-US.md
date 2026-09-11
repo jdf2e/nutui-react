@@ -146,13 +146,15 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-range-color | font color | `$color-title` |
-| \--nutui-range-margin | margin | `15px` |
+| \--nutui-range-margin | margin | `16px` |
 | \--nutui-range-height | stroke width | `4px` |
 | \--nutui-range-active-color | active color | `$color-primary` |
-| \--nutui-range-inactive-color | inactive color | `#fa958c` |
-| \--nutui-range-button-background | button background | `$white` |
-| \--nutui-range-button-width | button width | `24px` |
-| \--nutui-range-button-height | button height | `24px` |
-| \--nutui-range-button-border | button border | `1px solid $color-primary` |
+| \--nutui-range-disabled-color | disabled range color | `$color-primary-light-pressed` |
+| \--nutui-range-inactive-color | inactive color | `$color-background-component` |
+| \--nutui-range-button-background | button background | `$color-primary-text` |
+| \--nutui-range-button-width | button width | `20px` |
+| \--nutui-range-button-height | button height | `20px` |
+| \--nutui-range-button-border | button border | `1px solid $color-border` |
+| \--nutui-range-tick-size | tick dot size | `8px` |
 
 <Contribution name="Range" />

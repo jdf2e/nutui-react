@@ -20,15 +20,18 @@ import { useUuid } from '@/hooks/use-uuid'
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
-  theme: 'light',
+  type: 'status',
+  theme: 'dark',
   location: 'bottom',
   visible: false,
   offset: [0, 8],
-  arrowOffset: 0,
+  arrowOffset: 20,
   targetId: '',
   showArrow: true,
   closeOnOutsideClick: true,
   closeOnActionClick: true,
+  autoShow: false,
+  duration: 0,
   overlay: false,
   onClick: () => {},
   onOpen: () => {},
@@ -44,6 +47,7 @@ export const Popover: FunctionComponent<
   const {
     children,
     list,
+    type,
     theme,
     location,
     visible,
@@ -53,6 +57,8 @@ export const Popover: FunctionComponent<
     overlay,
     closeOnOutsideClick,
     closeOnActionClick,
+    autoShow,
+    duration,
     className,
     showArrow,
     style,
@@ -78,6 +84,22 @@ export const Popover: FunctionComponent<
       getWrapperPosition()
     }
   }, [visible])
+
+  useEffect(() => {
+    if (autoShow) {
+      onOpen?.()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (visible && duration > 0) {
+      const timer = setTimeout(() => {
+        onClick?.()
+        onClose?.()
+      }, duration)
+      return () => clearTimeout(timer)
+    }
+  }, [visible, duration, onClick, onClose])
 
   const uid = useUuid()
   const popoverId = `popover-${uid}`
@@ -121,8 +143,9 @@ export const Popover: FunctionComponent<
 
   const classes = classNames(
     classPrefix,
+    `${classPrefix}--${type}`,
     {
-      [`${classPrefix}-${theme}`]: theme === 'dark',
+      [`${classPrefix}-light`]: theme === 'light',
     },
     className
   )
@@ -151,6 +174,7 @@ export const Popover: FunctionComponent<
     }
     if (width) {
       const dir = rtl ? 'right' : 'left'
+      const edgeOffset = arrowOffset
       if (['bottom', 'top'].includes(direction)) {
         const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
         styles.top = pxTransform(top + h)
@@ -161,10 +185,10 @@ export const Popover: FunctionComponent<
           )
         }
         if (skew === 'left') {
-          styles.left = pxTransform(left + parallel)
+          styles.left = pxTransform(left + width / 2 - edgeOffset + parallel)
         }
         if (skew === 'right') {
-          styles.left = pxTransform(right + parallel)
+          styles.left = pxTransform(left + width / 2 + edgeOffset + parallel)
         }
       }
       if (['left', 'right'].includes(direction)) {
@@ -172,9 +196,7 @@ export const Popover: FunctionComponent<
           direction === 'left' ? -(popWidth + cross) : width + cross
         styles.left = pxTransform(left + contentW)
         if (!skew) {
-          styles.top = pxTransform(
-            top - popHeight / 2 + height / 2 - 4 + parallel
-          )
+          styles.top = pxTransform(top - popHeight / 2 + height / 2 + parallel)
         }
         if (skew === 'top') {
           styles.top = pxTransform(top + parallel)
@@ -193,35 +215,19 @@ export const Popover: FunctionComponent<
     const styles: CSSProperties = {}
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
-    const base = 16
+    const dir = rtl ? 'right' : 'left'
+    const dir2 = rtl ? 'left' : 'right'
+    const edgeOffset = arrowOffset
 
-    if (arrowOffset !== 0) {
-      const dir = rtl ? 'right' : 'left'
-      const dir2 = rtl ? 'left' : 'right'
-      if (['bottom', 'top'].includes(direction)) {
-        if (!skew) {
-          styles[dir] = `calc(50% + ${arrowOffset}px)`
-        }
-        if (skew === 'left') {
-          styles[dir] = `${base + arrowOffset}px`
-        }
-        if (skew === 'right') {
-          styles[dir2] = `${base - arrowOffset}px`
-        }
+    if (['bottom', 'top'].includes(direction)) {
+      if (skew === 'left') {
+        styles[dir] = `${edgeOffset}px`
       }
-
-      if (['left', 'right'].includes(direction)) {
-        if (!skew) {
-          styles.top = `calc(50% - ${arrowOffset}px)`
-        }
-        if (skew === 'top') {
-          styles.top = `${base - arrowOffset}px`
-        }
-        if (skew === 'bottom') {
-          styles.bottom = `${base + arrowOffset}px`
-        }
+      if (skew === 'right') {
+        styles[dir2] = `${edgeOffset}px`
       }
     }
+
     return styles
   }
 
