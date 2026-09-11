@@ -2126,6 +2126,55 @@ $pagination-lite-active-background-color: var(
   --nutui-pagination-lite-active-background-color,
   var(--nutui-black-5)
 ) !default;
+// pagination v16 indicator（胶囊数字型/纯文本型/进度条指示型）
+$pagination-capsule-background-color: var(
+  --nutui-pagination-capsule-background-color,
+  $color-mask-part
+) !default;
+$pagination-capsule-color: var(
+  --nutui-pagination-capsule-color,
+  $color-primary-text
+) !default;
+$pagination-capsule-radius: var(
+  --nutui-pagination-capsule-radius,
+  $radius-xs
+) !default;
+$pagination-capsule-padding: var(
+  --nutui-pagination-capsule-padding,
+  $spacing-xxs $spacing-xs
+) !default;
+$pagination-capsule-font-size: var(
+  --nutui-pagination-capsule-font-size,
+  $font-size-xs
+) !default;
+$pagination-text-color: var(
+  --nutui-pagination-text-color,
+  $color-title
+) !default;
+$pagination-text-font-size: var(
+  --nutui-pagination-text-font-size,
+  $font-size-xl
+) !default;
+$pagination-text-font-weight: var(
+  --nutui-pagination-text-font-weight,
+  600
+) !default;
+$pagination-progress-height: var(
+  --nutui-pagination-progress-height,
+  scale-px(2px)
+) !default;
+$pagination-progress-gap: var(
+  --nutui-pagination-progress-gap,
+  $spacing-xxs
+) !default;
+$pagination-progress-active-color: var(
+  --nutui-pagination-progress-active-color,
+  $color-primary-text
+) !default;
+$pagination-progress-inactive-color: var(
+  --nutui-pagination-progress-inactive-color,
+  var(--nutui-white-3)
+) !default;
 
 // tabs（✅）
 $tabs-titles-height: var(--nutui-tabs-titles-height, 32px) !default;
