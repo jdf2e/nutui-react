@@ -2133,10 +2133,18 @@ $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $white
 ) !default;
-$tabs-titles-gap: var(--nutui-tabs-titles-gap, 12px) !default;
+$tabs-titles-gap: var(--nutui-tabs-titles-gap, 8px) !default;
 $tabs-titles-font-size: var(
   --nutui-tabs-titles-font-size,
-  $font-size-base
+  $font-size-md
+) !default;
+$tabs-titles-item-font-family: var(
+  --nutui-tabs-titles-item-font-family,
+  PingFangSC-Semibold
+) !default;
+$tabs-titles-item-font-weight: var(
+  --nutui-tabs-titles-item-font-weight,
+  $font-weight-bold
 ) !default;
 $tabs-titles-item-min-width: var(
   --nutui-tabs-titles-item-min-width,
@@ -2154,9 +2162,13 @@ $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
   $font-weight-bold
 ) !default;
+$tabs-titles-item-active-font-family: var(
+  --nutui-tabs-titles-item-active-font-family,
+  PingFangSC-Semibold
+) !default;
 $tabs-titles-item-active-font-size: var(
   --nutui-tabs-titles-item-active-font-size,
-  $font-size-l
+  $font-size-md
 ) !default;
 $tabs-titles-item-active-background-color: var(
   --nutui-tabs-titles-item-active-background-color,

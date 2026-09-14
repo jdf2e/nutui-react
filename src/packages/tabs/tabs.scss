@@ -56,6 +56,8 @@
     line-height: $tabs-titles-height;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
+    font-family: $tabs-titles-item-font-family;
+    font-weight: $tabs-titles-item-font-weight;
     color: $tabs-titles-item-color;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -111,6 +113,8 @@
 
       .nut-tabs-titles-item-text {
         color: $tabs-titles-item-active-color;
+        font-family: $tabs-titles-item-active-font-family;
+        font-size: $tabs-titles-item-active-font-size;
         font-weight: $tabs-titles-item-active-font-weight;
       }
 
