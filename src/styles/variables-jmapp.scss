@@ -2187,13 +2187,29 @@ $tabs-tab-button-border-radius: var(
   --nutui-tabs-button-border-radius,
   $radius-xs
 ) !default;
+$tabs-tab-button-font-size: var(
+  --nutui-tabs-button-font-size,
+  $font-size-base
+) !default;
+$tabs-tab-button-active-font-size: var(
+  --nutui-tabs-button-active-font-size,
+  $font-size-base
+) !default;
+$tabs-tab-button-active-font-weight: var(
+  --nutui-tabs-button-active-font-weight,
+  $font-weight-bold
+) !default;
+$tabs-tab-button-background-color: var(
+  --nutui-tabs-button-background-color,
+  $color-background-overlay
+) !default;
 $tabs-tab-button-active-background-color: var(
   --nutui-tabs-button-active-background-color,
   $color-primary-light-pressed
 ) !default;
 $tabs-tab-button-active-border: var(
   --nutui-tabs-button-active-border,
-  1px solid $color-primary
+  inset 0 0 0 1px $color-primary
 ) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
@@ -2221,7 +2237,7 @@ $tabs-vertical-tab-line-height: var(
 ) !default;
 $tabs-titles-item-smile-bottom: var(
   --nutui-tabs-titles-item-smile-bottom,
-  -10px
+  -25%
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
 $tabs-tabpane-background-color: var(

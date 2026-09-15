@@ -237,7 +237,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-tabs-titles-height | height of titles in horizontal direction | `44px` |
+| \--nutui-tabs-titles-height | height of titles in horizontal direction | `36px` |
 | \--nutui-tabs-titles-background-color | Tab title background color | `$color-background` |
 | \--nutui-tabs-titles-gap | Tab title margin | `8px` |
 | \--nutui-tabs-titles-font-size | Tab title font size | `$font-size-md` |
@@ -250,12 +250,17 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-titles-item-active-font-family | Tab selected titles font family | `PingFangSC-Semibold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-md` |
 | \--nutui-tabs-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width | Horizontal active tab line width | `12px` |
+| \--nutui-tabs-tab-line-width | Horizontal active tab line width | `16px` |
 | \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `2px` |
 | \--nutui-tabs-tab-line-color | Horizontal line color | `$color-primary` |
 | \--nutui-tabs-line-bottom | Horizontal line distance | `15%` |
 | \--nutui-tabs-line-border-radius | rounded corners for horizontal lines | `2px` |
 | \--nutui-tabs-tab-line-opacity | Opacity of horizontal tabs | `1` |
+| \--nutui-tabs-button-border-radius | Border radius of button-type tabs | `6px` |
+| \--nutui-tabs-button-font-size | Font size of unselected button-type title | `$font-size-base` |
+| \--nutui-tabs-button-active-font-size | Font size of selected button-type title | `$font-size-base` |
+| \--nutui-tabs-button-active-font-weight | Font weight of selected button-type title | `$font-weight-bold` |
+| \--nutui-tabs-button-background-color | Background color of unselected button-type title | `$color-background-overlay` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |

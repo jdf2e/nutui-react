@@ -176,7 +176,7 @@
 
   &-button {
     .nut-tabs-titles-item {
-      padding: 0 10px;
+      padding: 0 4px;
       .nut-tabs-titles-item-text {
         flex: 1;
         height: 28px;
@@ -184,16 +184,20 @@
         align-items: center;
         justify-content: center;
         padding: 0 8px;
+        background: $tabs-tab-button-background-color;
+        border-radius: $tabs-tab-button-border-radius;
+        font-size: $tabs-tab-button-font-size;
+        font-weight: $font-weight;
+        color: $color-text;
       }
     }
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-text {
-        background: $color-default-light;
         color: $tabs-titles-item-active-color;
-        border-radius: $tabs-tab-button-border-radius;
-        font-weight: $font-weight-bold;
+        font-size: $tabs-tab-button-active-font-size;
+        font-weight: $tabs-tab-button-active-font-weight;
         background-color: $tabs-tab-button-active-background-color;
-        border: $tabs-tab-button-active-border;
+        box-shadow: $tabs-tab-button-active-border;
       }
     }
   }
@@ -269,7 +273,7 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        left: 10px;
+        left: 8px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
