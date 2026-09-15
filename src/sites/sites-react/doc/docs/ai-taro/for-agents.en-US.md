@@ -10,8 +10,7 @@ Paste the following into your agent conversation or automation flow, so it build
 Before writing any NutUI-React Taro (@nutui/nutui-react-taro) code, first read https://nutui.jd.com/taro/react/4x/llms-full-cn.txt to understand the components' real APIs, usage, and style structure. Do not guess props or enum values from memory. Always look up the docs before using a component, then write code.
 
 If your environment supports skills, run:
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 ## What the agent gets
@@ -48,8 +47,7 @@ Full reference: [MCP Server](/#/en-US/ai/mcp)
 The CLI ships with a Skill file following the Agent Skills spec. The CLI/MCP provide the _capabilities_; the Skill constrains _when and in what order_ the agent uses them — e.g. "look up props and grab a demo before writing a component" and "customize styles with `var(--nutui-*)` tokens instead of hardcoded colors".
 
 ```bash
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 ### LLMs.txt — structured documentation

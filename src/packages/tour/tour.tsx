@@ -158,7 +158,7 @@ export const Tour: FunctionComponent<
                   targetId="nut-tour-popid"
                   closeOnOutsideClick={false}
                   offset={item.popoverOffset || [0, 12]}
-                  arrowOffset={item.arrowOffset || 0}
+                  arrowOffset={item.arrowOffset || 20}
                 >
                   {/* placeholder don't delete <></> */}
                   <></>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { NoticeBar, Image } from '@nutui/nutui-react-taro'
 import { Failure } from '@nutui/icons-react-taro'
 
@@ -13,11 +14,11 @@ const Demo4 = () => {
       <NoticeBar closeable onClick={hello}>
         {text}
       </NoticeBar>
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
         {text}
       </NoticeBar>
-      <br />
+      <View style={{ height: 12 }} />
       <NoticeBar
         leftIcon={
           <Image

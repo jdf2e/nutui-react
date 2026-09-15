@@ -73,11 +73,10 @@ nutui-react mcp                      # 启动本地 MCP 服务，供 IDE 集成
 
 CLI 内置一份遵循 [Agent Skills](https://github.com/vercel-labs/skills) 规范的 Skill 文件，随 npm 包分发，指导 Agent 在正确的时机调用正确的命令——例如「写组件前先 `info` 查 Props、再 `demo` 拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
 
-安装到当前项目（skill 已随包 bundle，装好 CLI 后从本地路径安装）：
+安装到当前项目（从 GitHub 仓库直接安装）：
 
 ```bash
-npm i -D @nutui/nutui-react-cli
-npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
+npx skills add jdf2e/nutui-react --skill nutui-react
 ```
 
 安装后，Agent 在遇到 NutUI-React 相关任务时会自动遵循「先查后写」的流程。兼容 Claude Code / Cursor / VS Code / Codex 等所有支持 skills 协议的 Agent。
@@ -86,6 +85,7 @@ npx skills add ./node_modules/@nutui/nutui-react-cli/skills/nutui-react
 
 ## 了解更多
 
+- [Skill](/#/zh-CN/ai/skill)
 - [MCP Server](/#/zh-CN/ai/mcp)
 - [LLMs.txt](/#/zh-CN/ai/llms)
 - [For Agents](/#/zh-CN/ai/for-agents)

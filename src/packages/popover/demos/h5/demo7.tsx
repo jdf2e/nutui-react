@@ -21,7 +21,6 @@ const Demo7 = () => {
         <div style={{ height: 100 }} />
         <Popover
           className="demo-popover"
-          theme="dark"
           visible={visible}
           list={itemList}
           location="top-left"

@@ -12,8 +12,7 @@ const Demo3 = () => {
     {
       content: '支持一套代码同时开发多端小程序+H5',
       target: 'target3',
-      popoverOffset: [40, 12],
-      arrowOffset: -36,
+      popoverOffset: [0, 12],
     },
   ]
 

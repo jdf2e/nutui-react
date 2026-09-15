@@ -1,3 +1,11 @@
+# v4.0.0-beta.7
+
+`2026-08-31`
+
+- :sparkles: Feat v16 noticebar simple (#3491)
+- :bug: fix(deps): update all non-major dependencies (#3503)
+- 🪵 refactor(popover): v16适配 (#3492)
+
 # v4.0.0-beta.6
 
 `2026-08-10`

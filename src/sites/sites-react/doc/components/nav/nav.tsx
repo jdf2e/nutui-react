@@ -76,6 +76,16 @@ const Nav = () => {
                 MCP Server
               </NavLink>
             </li>
+            <li className={activeName === 'skill' ? 'active' : ''}>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isPending ? '' : isActive ? 'active' : ''
+                }
+                to={`${lang ? `/${lang}` : ''}/ai/skill`}
+              >
+                Skill
+              </NavLink>
+            </li>
             <li className={activeName === 'llms' ? 'active' : ''}>
               <NavLink
                 className={({ isActive, isPending }) =>

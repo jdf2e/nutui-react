@@ -16,6 +16,9 @@ import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
 import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
+import Demo12 from './demos/taro/demo12'
+import Demo13 from './demos/taro/demo13'
+import Demo14 from './demos/taro/demo14'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
@@ -31,6 +34,9 @@ const NoticeBarDemo = () => {
       complexAm: '纵向模式：自定义左侧图标',
       customAm: '纵向模式：自定义滚动内容，动态变更滚动内容',
       customRightIcon: '纵向模式：自定义右侧图标',
+      tagAndAction: '信息标与操作按钮',
+      autoClose: '自动关闭',
+      imageIcon: '自定义配图',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -44,6 +50,9 @@ const NoticeBarDemo = () => {
       complexAm: 'Vertical Scroll Complex Animation',
       customAm: 'Vertical Scroll Custom Style，Dynamic Change Scroll Content',
       customRightIcon: 'Vertical Scroll Custom Right Icon',
+      tagAndAction: 'Tag & Action Button',
+      autoClose: 'Auto Close',
+      imageIcon: 'Custom Image',
     },
   })
 
@@ -82,6 +91,12 @@ const NoticeBarDemo = () => {
         <View className="interstroll-list">
           <Demo11 />
         </View>
+        <View className="h2">{translated.tagAndAction}</View>
+        <Demo12 />
+        <View className="h2">{translated.imageIcon}</View>
+        <Demo14 />
+        <View className="h2">{translated.autoClose}</View>
+        <Demo13 />
       </ScrollView>
     </>
   )

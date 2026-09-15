@@ -91,6 +91,11 @@ page {
   --nutui-orange-11: #663300;
   --nutui-orange-12: #331a00;
 
+  // danger color
+  --nutui-danger-1: #ffedef;
+  --nutui-danger-2: #ff2159;
+  --nutui-danger-3: #d9114a;
+
   --nutui-red-1: #ffecec;
   --nutui-red-2: #ffd9d9;
   --nutui-red-3: #ffc6c6;
@@ -179,6 +184,9 @@ page {
   --nutui-color-danger-press: var(--nutui-red-9);
   --nutui-color-danger-disabled: var(--nutui-red-3);
   --nutui-color-danger-light: var(--nutui-red-1);
+  --nutui-color-error: var(--nutui-danger-2);
+  --nutui-color-error-light: var(--nutui-danger-1);
+  --nutui-color-error-pressed: var(--nutui-danger-3);
 
   --nutui-color-info: var(--nutui-info-6);
   --nutui-color-info-pressed: var(--nutui-info-7);

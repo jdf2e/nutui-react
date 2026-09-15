@@ -26,7 +26,7 @@ const Demo3 = () => {
     display: 'flex',
   } as any
   const itemStyle = {
-    marginTop: '10px',
+    margin: '10px 0',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',

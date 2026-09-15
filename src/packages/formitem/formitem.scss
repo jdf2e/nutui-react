@@ -54,6 +54,12 @@
 
       .nut-input-container {
         height: auto;
+
+        .nut-input-main {
+          height: auto;
+          padding: 0;
+          border: 0;
+        }
       }
 
       .nut-input-text {

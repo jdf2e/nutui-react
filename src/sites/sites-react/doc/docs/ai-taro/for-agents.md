@@ -10,8 +10,7 @@
 在编写任何 NutUI-React Taro（@nutui/nutui-react-taro）代码之前，请先阅读 https://nutui.jd.com/taro/react/4x/llms-full-cn.txt 理解组件的真实 API、用法与样式结构，不要凭记忆猜测 Prop 或枚举值。使用任何组件前先查文档，再写代码。
 
 如果你的环境支持 skills，请运行：
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 ## Agent 获得什么
@@ -48,8 +47,7 @@ CLI 同时可作为本地 MCP 服务运行，把同一份知识注册成 IDE 原
 CLI 内置一份遵循 Agent Skills 规范的 Skill 文件，随包分发。CLI/MCP 提供的是「能力」，Skill 则约束 Agent「什么时候、按什么顺序」用这些能力——例如「写组件前先查 Props 再拿示例」「定制样式用 `var(--nutui-*)` token 而非硬编码颜色」。
 
 ```bash
-npm i -D @nutui/nutui-react-taro-cli
-npx skills add ./node_modules/@nutui/nutui-react-taro-cli/skills/nutui-react-taro
+npx skills add jdf2e/nutui-react --skill nutui-react-taro
 ```
 
 ### LLMs.txt — 结构化文档

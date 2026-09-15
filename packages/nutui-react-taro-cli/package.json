@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro-cli",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "type": "module",
   "description": "NutUI React Taro 面向 AI Coding 的离线知识查询 CLI：list / info / doc / demo / token。",
   "keywords": [
@@ -26,7 +26,9 @@
   "files": [
     "dist",
     "data",
-    "skills"
+    "skills",
+    "README.md",
+    "docs"
   ],
   "engines": {
     "node": ">=18.12.0"
@@ -44,14 +46,14 @@
     "release:beta": "bumpp --preid beta && pnpm publish --tag beta"
   },
   "dependencies": {
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.3"
   },
   "devDependencies": {
     "@nutui/nutui-react-cli-core": "workspace:*",
-    "@types/node": "^22.5.5",
-    "@types/yargs": "^17.0.33",
-    "bumpp": "^9.5.2",
-    "tsup": "^8.3.0",
+    "@types/node": "^22.20.1",
+    "@types/yargs": "^17.0.35",
+    "bumpp": "^9.11.1",
+    "tsup": "^8.5.1",
     "typescript": "^5.6.2"
   }
 }

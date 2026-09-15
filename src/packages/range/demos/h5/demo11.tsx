@@ -14,13 +14,18 @@ const Demo11 = () => {
           <div
             style={{
               position: 'absolute',
-              width: '26px',
+              minWidth: '36px',
+              padding: '0 6px',
+              height: '20px',
               color: 'white',
-              fontSize: '10px',
+              fontSize: '12px',
               lineHeight: '18px',
               textAlign: 'center',
               backgroundColor: 'red',
+              border: '1px solid var(--nutui-color-background-overlay,#fff)',
               borderRadius: '10px',
+              boxShadow:
+                '0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 4px 5px 0 rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.12)',
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
