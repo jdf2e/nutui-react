@@ -200,6 +200,14 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 
 :::
 
+### Custom Tab Bar - Auxiliary Info
+
+:::demo
+
+<CodeBlock src='h5/demo24.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props

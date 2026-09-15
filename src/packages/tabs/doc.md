@@ -200,6 +200,14 @@ import { Tabs } from '@nutui/nutui-react'
 
 :::
 
+### 自定义标签栏-辅助信息
+
+:::demo
+
+<CodeBlock src='h5/demo24.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props

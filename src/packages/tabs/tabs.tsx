@@ -49,7 +49,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     onChange,
   })
 
-  const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
 
   const scrollDirection = (
@@ -71,13 +70,16 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
 
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
-    const titleItem = titleItemsRef.current
-    const titlesLength = titles.current.length
-    const itemLength = titleItem.length
-    if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
+    if (!nav) {
       return
     }
-    const title = titleItem[itemLength - titlesLength + index]
+    const titleItems = nav.querySelectorAll<HTMLElement>(
+      `.${classPrefix}-titles-item`
+    )
+    const title = titleItems[index]
+    if (!title) {
+      return
+    }
     let to = 0
     if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
@@ -166,7 +168,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
               return (
                 <div
                   key={item.value}
-                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
                     [`nut-tabs-titles-item-active`]:

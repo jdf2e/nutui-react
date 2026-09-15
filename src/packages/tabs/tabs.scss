@@ -34,12 +34,18 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
     }
   }
 
   &-right {
     justify-content: flex-end;
+    .nut-tabs-titles-item {
+      padding: 0 22px;
+    }
+  }
+
+  &-card#{&}-left {
     .nut-tabs-titles-item {
       padding: 0 22px;
     }
@@ -157,7 +163,7 @@
       &-active {
         .nut-tabs-titles-item-text,
         .nut-icon {
-          color: $color-title;
+          color: $tabs-titles-item-active-color;
           font-size: $tabs-titles-item-active-font-size;
         }
       }

@@ -198,6 +198,14 @@ import { Tabs } from '@nutui/nutui-react-taro'
 
 :::
 
+### 自定义标签栏-辅助信息
+
+:::demo
+
+<CodeBlock src='taro/demo24.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props
