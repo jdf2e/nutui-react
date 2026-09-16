@@ -6,6 +6,7 @@ const Demo8 = () => {
   return (
     <Tabs
       value={tabvalue}
+      style={{ '--nutui-tabs-titles-height': '40px' }}
       activeType="card"
       onChange={(value) => {
         setTabvalue(value)
