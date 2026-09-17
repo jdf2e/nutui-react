@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Progress } from '../progress'
@@ -53,7 +53,6 @@ test('should handle animation mode and duration', () => {
     'transition: width 500ms ease-in-out'
   )
 
-  // 测试动画完成回调
   rerender(
     <Progress
       percent={100}
@@ -65,4 +64,106 @@ test('should handle animation mode and duration', () => {
   setTimeout(() => {
     expect(onActiveEndMock).toHaveBeenCalled()
   }, 600)
+})
+
+// ==== video mode ====
+describe('Progress video mode', () => {
+  test('renders track/fill/thumb structure with is-static by default', () => {
+    const { container } = render(<Progress mode="video" percent={40} />)
+    const root = container.querySelector('.nut-progress--video')
+    expect(root).toBeTruthy()
+    expect(root?.classList.contains('is-static')).toBe(true)
+    expect(container.querySelector('.nut-progress-track')).toBeTruthy()
+    const fill = container.querySelector('.nut-progress-fill') as HTMLElement
+    expect(fill.style.width).toBe('40%')
+    const thumb = container.querySelector('.nut-progress-thumb') as HTMLElement
+    expect(thumb.style.left).toBe('40%')
+  })
+
+  test('applies is-paused state and renders paused icon', () => {
+    const { container } = render(
+      <Progress
+        mode="video"
+        percent={50}
+        status="paused"
+        pausedIcon={<span data-testid="paused-icon" />}
+      />
+    )
+    const root = container.querySelector('.nut-progress--video')
+    expect(root?.classList.contains('is-paused')).toBe(true)
+    expect(container.querySelector('[data-testid="paused-icon"]')).toBeTruthy()
+  })
+
+  test('hides thumb when showThumb=false', () => {
+    const { container } = render(
+      <Progress mode="video" percent={20} showThumb={false} />
+    )
+    expect(container.querySelector('.nut-progress-thumb')).toBeNull()
+  })
+
+  test('clamps percent to [min, max]', () => {
+    const { container, rerender } = render(
+      <Progress mode="video" percent={-50} />
+    )
+    const fill = () =>
+      container.querySelector('.nut-progress-fill') as HTMLElement
+    expect(fill().style.width).toBe('0%')
+    rerender(<Progress mode="video" percent={9999} />)
+    expect(fill().style.width).toBe('100%')
+  })
+
+  test('drag with mouse triggers onDragStart / onDragEnd and onChange', () => {
+    const onDragStart = vi.fn()
+    const onDragEnd = vi.fn()
+    const onChange = vi.fn()
+    const { container } = render(
+      <Progress
+        mode="video"
+        percent={0}
+        draggable
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
+        onChange={onChange}
+      />
+    )
+    const root = container.querySelector('.nut-progress--video') as HTMLElement
+    root.getBoundingClientRect = () =>
+      ({
+        left: 0,
+        top: 0,
+        right: 200,
+        bottom: 10,
+        width: 200,
+        height: 10,
+        x: 0,
+        y: 0,
+        toJSON: () => ({}),
+      }) as DOMRect
+
+    fireEvent.mouseDown(root, { clientX: 100 })
+    expect(onDragStart).toHaveBeenCalled()
+    expect(onChange).toHaveBeenCalledWith(50)
+    fireEvent.mouseUp(window, { clientX: 160 })
+    expect(onDragEnd).toHaveBeenCalledWith(80)
+  })
+
+  test('keyboard ArrowRight increments percent by step', () => {
+    const onChange = vi.fn()
+    const { container } = render(
+      <Progress
+        mode="video"
+        percent={50}
+        draggable
+        step={5}
+        onChange={onChange}
+      />
+    )
+    const root = container.querySelector('.nut-progress--video') as HTMLElement
+    fireEvent.keyDown(root, { key: 'ArrowRight' })
+    expect(onChange).toHaveBeenCalledWith(55)
+    fireEvent.keyDown(root, { key: 'Home' })
+    expect(onChange).toHaveBeenCalledWith(0)
+    fireEvent.keyDown(root, { key: 'End' })
+    expect(onChange).toHaveBeenCalledWith(100)
+  })
 })

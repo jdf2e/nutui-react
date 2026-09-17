@@ -59,6 +59,115 @@
   }
 }
 
+.nut-progress--video {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  touch-action: none;
+  user-select: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+  height: $progress-video-container-height;
+
+  &.is-static {
+    opacity: $progress-video-opacity-static;
+  }
+
+  &.is-paused {
+    opacity: $progress-video-opacity-paused;
+  }
+
+  &.is-active {
+    opacity: 1;
+  }
+
+  .nut-progress-track {
+    position: relative;
+    width: 100%;
+    height: $progress-video-height;
+    background: $progress-video-track-color;
+    border-radius: 999px;
+    overflow: visible;
+    transition: height 0.15s ease;
+  }
+  &.is-active .nut-progress-track {
+    height: $progress-video-active-height;
+  }
+
+  &.is-paused .nut-progress-track {
+    height: $progress-video-paused-height;
+  }
+
+  .nut-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: $progress-video-fill-color;
+    border-radius: 999px;
+    transition: width 0.1s linear;
+  }
+
+  .nut-progress-thumb {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    width: $progress-video-thumb-width;
+    height: $progress-video-thumb-height;
+    background: $progress-video-thumb-color;
+    border-radius: $progress-video-thumb-radius;
+    transform: translateX(-50%);
+    pointer-events: none;
+    transition:
+      width 0.15s ease,
+      height 0.15s ease,
+      border-radius 0.15s ease;
+  }
+
+  &.is-active .nut-progress-thumb {
+    width: $progress-video-thumb-active-width;
+    height: $progress-video-thumb-active-height;
+    border-radius: $progress-video-thumb-active-radius;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &.is-paused .nut-progress-thumb {
+    width: $progress-video-thumb-paused-width;
+    height: $progress-video-thumb-paused-height;
+    border-radius: $progress-video-thumb-paused-radius;
+  }
+
+  &.is-draggable {
+    cursor: pointer;
+    .nut-progress-thumb {
+      cursor: grab;
+    }
+    &.is-dragging .nut-progress-thumb {
+      cursor: grabbing;
+    }
+  }
+
+  &.is-dragging {
+    .nut-progress-fill {
+      transition: none;
+    }
+  }
+
+  .nut-progress-icon {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-right: 8px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+}
+
 [dir='rtl'] .nut-progress,
 .nut-rtl .nut-progress {
   &-text {
