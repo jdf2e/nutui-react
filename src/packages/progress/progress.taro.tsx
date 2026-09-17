@@ -1,7 +1,13 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
-import Taro, { PageInstance } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { PageInstance, createSelectorQuery } from '@tarojs/taro'
+import { ITouchEvent, View } from '@tarojs/components'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -16,10 +22,29 @@ const defaultProps = {
   animated: false,
   lazy: false,
   delay: 0,
+  mode: 'default',
+  status: 'static',
+  draggable: false,
+  showThumb: true,
+  min: 0,
+  max: 100,
 } as TaroProgressProps
 
+const clamp = (val: number, min: number, max: number) => {
+  if (Number.isNaN(val)) return min
+  if (val < min) return min
+  if (val > max) return max
+  return val
+}
+
+interface RectLike {
+  left: number
+  width: number
+}
+
 export const Progress: FunctionComponent<
-  Partial<TaroProgressProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TaroProgressProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
   const rtl = useRtl()
   const {
@@ -44,6 +69,19 @@ export const Progress: FunctionComponent<
     activeMode,
     duration,
     onActiveEnd,
+    mode,
+    status,
+    draggable,
+    showThumb,
+    pausedIcon,
+    min,
+    max,
+    step,
+    onChange,
+    onDragStart,
+    onDragging,
+    onDragEnd,
+    ariaLabel,
     ...rest
   } = {
     ...defaultProps,
@@ -63,7 +101,6 @@ export const Progress: FunctionComponent<
 
   const [displayPercent, setDispalyPercent] = useState(percent)
   const getStyles = () => {
-    // 基础样式
     const baseStyles = {
       height: strokeWidth && pxTransform(Number(strokeWidth)),
       borderRadius:
@@ -72,7 +109,6 @@ export const Progress: FunctionComponent<
     const transitionStyle = {
       transition: `width ${duration || 300}ms ease-in-out`,
     }
-
     return {
       outer: {
         width: '100%',
@@ -123,7 +159,7 @@ export const Progress: FunctionComponent<
   }, [percent, activeMode, duration])
 
   const [intersecting, setIntersecting] = useState(false)
-  const progressRef = useRef(null)
+  const progressRef = useRef<any>(null)
   const webObserver: any = useRef(null)
   const uuid = useUuid()
   const selector = `${classPrefix}-lazy-${uuid}`
@@ -146,8 +182,6 @@ export const Progress: FunctionComponent<
     }
   }, [intersecting])
   const handleWebObserver = () => {
-    /// web环境
-
     if (lazy) {
       webObserver.current = new IntersectionObserver(
         (entires, self) => {
@@ -165,7 +199,6 @@ export const Progress: FunctionComponent<
     handlePercent()
   }
   const handleOtherObserver = () => {
-    // 非web环境
     let observer: any = null
     if (lazy) {
       observer = Taro.createIntersectionObserver(
@@ -185,12 +218,116 @@ export const Progress: FunctionComponent<
   }
 
   useEffect(() => {
+    if (mode === 'video') return
     if (web()) {
       handleWebObserver()
     } else if (!harmony()) {
       handleOtherObserver()
     }
   }, [])
+
+  // ==== video mode ====
+  const minVal = min ?? 0
+  const maxVal = max ?? 100
+  const range = Math.max(maxVal - minVal, 1)
+  const normalized = clamp(((percent - minVal) / range) * 100, 0, 100)
+
+  const [dragging, setDragging] = useState(false)
+  const [previewPercent, setPreviewPercent] = useState(normalized)
+  const rectRef = useRef<RectLike | null>(null)
+
+  useEffect(() => {
+    if (!dragging) setPreviewPercent(normalized)
+  }, [normalized, dragging])
+
+  const getState = (): 'static' | 'paused' | 'active' => {
+    if (dragging) return 'active'
+    if (status === 'paused') return 'paused'
+    return 'static'
+  }
+  const state = getState()
+
+  const applyStep = (pct: number): number => {
+    if (!step || step <= 0) return pct
+    const stepInPct = (step / range) * 100
+    return Math.round(pct / stepInPct) * stepInPct
+  }
+
+  const measureRect = (): Promise<RectLike | null> => {
+    return new Promise((resolve) => {
+      if (web() && progressRef.current?.getBoundingClientRect) {
+        const r = progressRef.current.getBoundingClientRect()
+        resolve({ left: r.left, width: r.width })
+        return
+      }
+      createSelectorQuery()
+        .select(`#${selector}`)
+        .boundingClientRect()
+        .exec((res: any) => {
+          const r = res && res[0]
+          if (r) {
+            resolve({ left: r.left, width: r.width })
+          } else {
+            resolve(null)
+          }
+        })
+    })
+  }
+
+  const percentFromClientX = (clientX: number): number => {
+    const rect = rectRef.current
+    if (!rect || rect.width === 0) return normalized
+    const raw = ((clientX - rect.left) / rect.width) * 100
+    return clamp(applyStep(raw), 0, 100)
+  }
+
+  const emitChange = (pct: number) => {
+    const raw = minVal + (pct / 100) * range
+    const value = Math.round(raw * 1e6) / 1e6
+    onChange?.(value)
+  }
+
+  const handleTouchStart = useCallback(
+    async (e: ITouchEvent) => {
+      if (mode !== 'video' || !draggable) return
+      if (!e.touches || e.touches.length === 0) return
+      const clientX = e.touches[0].clientX
+      const rect = await measureRect()
+      rectRef.current = rect
+      setDragging(true)
+      const pct = percentFromClientX(clientX)
+      setPreviewPercent(pct)
+      onDragStart?.(minVal + (pct / 100) * range)
+      emitChange(pct)
+    },
+    [mode, draggable, minVal, range, step]
+  )
+
+  const handleTouchMove = useCallback(
+    (e: ITouchEvent) => {
+      if (mode !== 'video' || !dragging) return
+      if (!e.touches || e.touches.length === 0) return
+      const clientX = e.touches[0].clientX
+      const pct = percentFromClientX(clientX)
+      setPreviewPercent(pct)
+      onDragging?.(minVal + (pct / 100) * range)
+      emitChange(pct)
+    },
+    [mode, dragging, minVal, range, step, onDragging]
+  )
+
+  const handleTouchEnd = useCallback(
+    (e: ITouchEvent) => {
+      if (mode !== 'video' || !dragging) return
+      const touch = e.changedTouches && e.changedTouches[0]
+      const pct = touch ? percentFromClientX(touch.clientX) : previewPercent
+      setDragging(false)
+      rectRef.current = null
+      onDragEnd?.(minVal + (pct / 100) * range)
+    },
+    [mode, dragging, minVal, range, step, previewPercent, onDragEnd]
+  )
+
   const getTextStyle = () => {
     return rtl ? { right: '100%' } : { left: '100%' }
   }
@@ -215,6 +352,51 @@ export const Progress: FunctionComponent<
     }
     return style
   }
+
+  if (mode === 'video') {
+    const rootCls = classNames(
+      classPrefix,
+      `${classPrefix}--video`,
+      `is-${state}`,
+      {
+        'is-draggable': draggable,
+        'is-dragging': dragging,
+      },
+      className
+    )
+    const displayValue = dragging ? previewPercent : normalized
+    return (
+      <View
+        ref={progressRef}
+        id={selector}
+        className={rootCls}
+        style={style}
+        aria-label={ariaLabel}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        {...(rest as any)}
+      >
+        {status === 'paused' && pausedIcon && (
+          <View className={`${classPrefix}-icon`}>{pausedIcon}</View>
+        )}
+        <View className={`${classPrefix}-track`}>
+          <View
+            className={`${classPrefix}-fill`}
+            style={{ width: `${displayValue}%` }}
+          />
+          {showThumb && (
+            <View
+              className={`${classPrefix}-thumb`}
+              style={{ left: `${displayValue}%` }}
+            />
+          )}
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View
       ref={progressRef}
