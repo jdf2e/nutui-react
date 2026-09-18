@@ -41,7 +41,7 @@
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
     }
   }
 
@@ -273,6 +273,29 @@
   }
 }
 
+// 标题栏边缘留白:该端 item 外侧 padding 翻倍,使边缘留白 = 相邻 tab 间距
+// 均分补首尾两端,左对齐仅补左端,右对齐仅补右端;水平方向生效
+.nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 8px;
+    }
+  }
+}
+
 .nut-theme-dark {
   .nut-tabs-titles-card .nut-tabs-titles-item-active {
     &::before {
@@ -421,6 +444,33 @@
         right: auto;
         left: 0;
       }
+    }
+  }
+}
+
+// RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
+[dir='rtl'] .nut-tabs-horizontal,
+.nut-rtl .nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: $tabs-titles-gap;
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: $tabs-titles-gap;
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 4px;
+      padding-left: 8px;
     }
   }
 }
