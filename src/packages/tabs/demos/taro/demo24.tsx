@@ -33,6 +33,7 @@ const Demo24 = () => {
                 style={{
                   textAlign: 'center',
                   fontSize: pxTransform(11),
+                  fontWeight: '400',
                   lineHeight: pxTransform(16),
                   color: active
                     ? 'var(--nutui-tabs-titles-item-active-color, #ff0f23)'
