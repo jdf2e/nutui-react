@@ -208,6 +208,14 @@ import { Tabs } from '@nutui/nutui-react'
 
 :::
 
+### 左对齐-辅助操作
+
+:::demo
+
+<CodeBlock src='h5/demo25.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props

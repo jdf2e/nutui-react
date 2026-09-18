@@ -206,6 +206,14 @@ import { Tabs } from '@nutui/nutui-react-taro'
 
 :::
 
+### 左对齐-辅助操作
+
+:::demo
+
+<CodeBlock src='taro/demo25.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props

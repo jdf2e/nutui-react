@@ -208,6 +208,14 @@ When autoHeight is set to true, nut-tabs and nut-tabs\_\_content will change wit
 
 :::
 
+### Left Align - Auxiliary Operation
+
+:::demo
+
+<CodeBlock src='h5/demo25.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props

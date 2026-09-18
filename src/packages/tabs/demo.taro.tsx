@@ -29,6 +29,7 @@ import Demo21 from './demos/taro/demo21'
 import Demo22 from './demos/taro/demo22'
 import Demo23 from './demos/taro/demo23'
 import Demo24 from './demos/taro/demo24'
+import Demo25 from './demos/taro/demo25'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({
@@ -51,6 +52,7 @@ const TabsDemo = () => {
       title7: 'Title 字体尺寸：20px 12px',
       title8: '自定义标签栏',
       title15: '自定义标签栏-辅助信息',
+      title16: '左对齐-辅助操作',
       title9: 'Tabpane 自动高度',
       title10: 'CSS 粘性布局',
       title11: 'Title 左对齐',
@@ -77,6 +79,7 @@ const TabsDemo = () => {
       title7: 'Title FontSize: 20px 12px',
       title8: 'Custom Tab Bar',
       title15: 'Custom Tab Bar - Auxiliary Info',
+      title16: 'Left Align - Auxiliary Operation',
       title9: 'Tabpane Auto Height',
       title10: 'CSS Sticky',
       title11: 'Title Left Align',
@@ -145,6 +148,8 @@ const TabsDemo = () => {
         <Demo23 />
         <View className="h2">{translated.title15}</View>
         <Demo24 />
+        <View className="h2">{translated.title16}</View>
+        <Demo25 />
       </ScrollView>
     </>
   )
