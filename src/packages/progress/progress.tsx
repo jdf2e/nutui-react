@@ -176,6 +176,13 @@ export const Progress: FunctionComponent<
   const [previewPercent, setPreviewPercent] = useState(normalized)
   const rafId = useRef<number | null>(null)
   const rectRef = useRef<DOMRect | null>(null)
+  // 保存 startDrag 实际注册的处理器身份,确保卸载清理时能精确移除这些函数
+  const dragListenersRef = useRef<{
+    mousemove: (e: MouseEvent) => void
+    mouseup: (e: MouseEvent) => void
+    touchmove: (e: TouchEvent) => void
+    touchend: (e: TouchEvent) => void
+  } | null>(null)
 
   useEffect(() => {
     if (!dragging) {
@@ -236,10 +243,14 @@ export const Progress: FunctionComponent<
   )
 
   const cleanupDragListeners = () => {
-    window.removeEventListener('mousemove', handleMouseMove)
-    window.removeEventListener('mouseup', handleMouseUp)
-    window.removeEventListener('touchmove', handleTouchMove)
-    window.removeEventListener('touchend', handleTouchEnd)
+    const listeners = dragListenersRef.current
+    if (listeners) {
+      window.removeEventListener('mousemove', listeners.mousemove)
+      window.removeEventListener('mouseup', listeners.mouseup)
+      window.removeEventListener('touchmove', listeners.touchmove)
+      window.removeEventListener('touchend', listeners.touchend)
+      dragListenersRef.current = null
+    }
     if (rafId.current) {
       cancelAnimationFrame(rafId.current)
       rafId.current = null
@@ -271,10 +282,19 @@ export const Progress: FunctionComponent<
     setPreviewPercent(pct)
     onDragStart?.(minVal + (pct / 100) * range)
     emitChange(pct)
-    window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseup', handleMouseUp)
-    window.addEventListener('touchmove', handleTouchMove, { passive: false })
-    window.addEventListener('touchend', handleTouchEnd)
+    const listeners = {
+      mousemove: handleMouseMove,
+      mouseup: handleMouseUp,
+      touchmove: handleTouchMove,
+      touchend: handleTouchEnd,
+    }
+    dragListenersRef.current = listeners
+    window.addEventListener('mousemove', listeners.mousemove)
+    window.addEventListener('mouseup', listeners.mouseup)
+    window.addEventListener('touchmove', listeners.touchmove, {
+      passive: false,
+    })
+    window.addEventListener('touchend', listeners.touchend)
   }
 
   const handleMouseDown = (e: ReactMouseEvent) => {
@@ -340,7 +360,11 @@ export const Progress: FunctionComponent<
         aria-label={ariaLabel}
         aria-valuemin={minVal}
         aria-valuemax={maxVal}
-        aria-valuenow={clamp(percent, minVal, maxVal)}
+        aria-valuenow={
+          dragging
+            ? minVal + (previewPercent / 100) * range
+            : clamp(percent, minVal, maxVal)
+        }
         tabIndex={draggable ? 0 : -1}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}

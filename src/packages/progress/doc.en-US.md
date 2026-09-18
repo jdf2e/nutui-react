@@ -82,7 +82,7 @@ import { Progress } from '@nutui/nutui-react'
 
 ### Video Progress
 
-For video-player-like immersive scenarios. Default colors: track `rgba(255,255,255,0.1)`, fill `rgba(255,255,255,0.7)`, thumb `#FFFFFF`. The demo covers three states: static (dimmed), paused (medium intensity, paired with a play icon), and drag (highlighted, enlarged thumb).
+For video-player-like immersive scenarios. Default colors: track `rgba(255,255,255,0.2)`, fill `rgba(255,255,255,0.7)`, thumb `#FFFFFF`. The demo covers three states: static (dimmed), paused (medium intensity, paired with a play icon), and drag (highlighted, enlarged thumb).
 
 :::demo
 

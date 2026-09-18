@@ -64,7 +64,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  touch-action: none;
   user-select: none;
   outline: none;
   transition: opacity 0.2s ease;
@@ -140,6 +139,7 @@
   }
 
   &.is-draggable {
+    touch-action: none;
     cursor: pointer;
     .nut-progress-thumb {
       cursor: grab;

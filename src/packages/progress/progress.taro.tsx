@@ -235,6 +235,10 @@ export const Progress: FunctionComponent<
   const [dragging, setDragging] = useState(false)
   const [previewPercent, setPreviewPercent] = useState(normalized)
   const rectRef = useRef<RectLike | null>(null)
+  const draggingRef = useRef(false)
+  // 记录最近一次触摸的 clientX:await measureRect 期间提前派发的 touchmove
+  // 会因 rectRef 尚未就绪而无法正确换算,故缓存坐标,待 rect 就绪后补算
+  const lastClientXRef = useRef(0)
 
   useEffect(() => {
     if (!dragging) setPreviewPercent(normalized)
@@ -292,10 +296,17 @@ export const Progress: FunctionComponent<
       if (mode !== 'video' || !draggable) return
       if (!e.touches || e.touches.length === 0) return
       const clientX = e.touches[0].clientX
-      const rect = await measureRect()
-      rectRef.current = rect
+      // 同步置位拖动态:小程序 measureRect 为异步,await 期间已可能派发 touchmove,
+      // 若仅依赖异步的 setDragging 会丢弃起步阶段的 touchmove,故用 ref 立即生效供事件判断
+      draggingRef.current = true
+      lastClientXRef.current = clientX
       setDragging(true)
-      const pct = percentFromClientX(clientX)
+      const rect = await measureRect()
+      // await 期间可能已 touchEnd,此时不应再进入拖动流程
+      if (!draggingRef.current) return
+      rectRef.current = rect
+      // 以最近一次触摸坐标补算,覆盖 await 期间提前派发的 touchmove
+      const pct = percentFromClientX(lastClientXRef.current)
       setPreviewPercent(pct)
       onDragStart?.(minVal + (pct / 100) * range)
       emitChange(pct)
@@ -305,27 +316,31 @@ export const Progress: FunctionComponent<
 
   const handleTouchMove = useCallback(
     (e: ITouchEvent) => {
-      if (mode !== 'video' || !dragging) return
+      if (mode !== 'video' || !draggingRef.current) return
       if (!e.touches || e.touches.length === 0) return
       const clientX = e.touches[0].clientX
+      lastClientXRef.current = clientX
+      // rect 尚未就绪(measureRect 未完成),先缓存坐标,待 touchStart await 结束后补算
+      if (!rectRef.current) return
       const pct = percentFromClientX(clientX)
       setPreviewPercent(pct)
       onDragging?.(minVal + (pct / 100) * range)
       emitChange(pct)
     },
-    [mode, dragging, minVal, range, step, onDragging]
+    [mode, minVal, range, step, onDragging]
   )
 
   const handleTouchEnd = useCallback(
     (e: ITouchEvent) => {
-      if (mode !== 'video' || !dragging) return
+      if (mode !== 'video' || !draggingRef.current) return
       const touch = e.changedTouches && e.changedTouches[0]
       const pct = touch ? percentFromClientX(touch.clientX) : previewPercent
+      draggingRef.current = false
       setDragging(false)
       rectRef.current = null
       onDragEnd?.(minVal + (pct / 100) * range)
     },
-    [mode, dragging, minVal, range, step, previewPercent, onDragEnd]
+    [mode, minVal, range, step, previewPercent, onDragEnd]
   )
 
   const getTextStyle = () => {

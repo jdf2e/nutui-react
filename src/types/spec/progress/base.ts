@@ -36,7 +36,7 @@ export interface BaseProgress extends BaseProps {
   max?: number
   /** 拖动时的步长,未设置时按像素连续变化 */
   step?: number
-  /** 拖动结束后进度值变化的回调 */
+  /** 进度值变化的回调，拖动过程中连续触发 */
   onChange?: (percent: number) => void
   /** 拖动开始时的回调 */
   onDragStart?: (percent: number) => void
