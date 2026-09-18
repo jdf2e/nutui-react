@@ -16,6 +16,7 @@ const defaultProps = {
   disabled: false,
   autoSize: false,
   plain: false,
+  containerType: 'gray',
   status: 'default',
 } as TaroTextAreaProps
 export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
@@ -33,6 +34,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
     autoSize,
     style,
     plain,
+    containerType,
     status,
     viewId,
     onChange,
@@ -107,51 +109,54 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
             [`${classPrefix}-rtl`]: rtl,
             [`${classPrefix}-plain`]: plain,
             [`${classPrefix}-container`]: !plain,
+            [`${classPrefix}-container-${containerType}`]: !plain,
             [`${classPrefix}-${status}`]: status,
           },
           className
         )}
       >
-        <Textarea
-          {...rest}
-          ref={textareaRef}
-          nativeProps={{
-            style,
-            readOnly,
-            rows,
-            onCompositionStart: () => {
-              compositionRef.current = true
-            },
-            onCompositionEnd: () => {
-              compositionRef.current = false
-            },
-          }}
-          className={classNames(`${classPrefix}-textarea`, {
-            [`${classPrefix}-textarea-disabled`]: disabled,
-          })}
-          style={Taro.getEnv() === 'WEB' ? undefined : style}
-          disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
-          // @ts-ignore
-          value={innerValue}
-          onInput={handleChange}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          autoHeight={autoSize}
-          maxlength={maxLength}
-          placeholder={
-            placeholder !== undefined ? placeholder : locale.placeholder
-          }
-          showCount={showCount}
-        />
-        {showCount && (
-          <View
-            className={classNames(`${classPrefix}-limit`, {
-              [`${classPrefix}-limit-disabled`]: disabled,
+        <View className={`${classPrefix}-main`}>
+          <Textarea
+            {...rest}
+            ref={textareaRef}
+            nativeProps={{
+              style,
+              readOnly,
+              rows,
+              onCompositionStart: () => {
+                compositionRef.current = true
+              },
+              onCompositionEnd: () => {
+                compositionRef.current = false
+              },
+            }}
+            className={classNames(`${classPrefix}-textarea`, {
+              [`${classPrefix}-textarea-disabled`]: disabled,
             })}
-          >
-            {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
-          </View>
-        )}
+            style={Taro.getEnv() === 'WEB' ? undefined : style}
+            disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
+            // @ts-ignore
+            value={innerValue}
+            onInput={handleChange}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            autoHeight={autoSize}
+            maxlength={maxLength}
+            placeholder={
+              placeholder !== undefined ? placeholder : locale.placeholder
+            }
+            showCount={showCount}
+          />
+          {showCount && (
+            <View
+              className={classNames(`${classPrefix}-limit`, {
+                [`${classPrefix}-limit-disabled`]: disabled,
+              })}
+            >
+              {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
+            </View>
+          )}
+        </View>
       </View>
     </>
   )

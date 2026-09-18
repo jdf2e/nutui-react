@@ -5,14 +5,34 @@
   width: 100%;
   box-sizing: border-box;
   font-size: $font-size-base;
-  border-radius: $radius-s;
 
-  &-container {
-    padding: $textarea-padding;
-    background-color: $color-background-overlay;
+  &-main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: $radius-s;
   }
 
-  &-error {
+  &-plain &-main {
+    min-height: $textarea-plain-min-height;
+  }
+
+  &-container &-main {
+    min-height: $textarea-container-min-height;
+    padding: $textarea-padding;
+  }
+
+  &-container-gray &-main {
+    background-color: $textarea-container-gray-background-color;
+  }
+
+  &-container-white &-main {
+    background-color: $textarea-container-white-background-color;
+  }
+
+  &-error &-main {
     border: 0.5px solid $color-danger;
     background-color: $color-danger-light;
   }

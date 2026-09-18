@@ -837,9 +837,25 @@ $input-padding: var(--nutui-input-padding, 8px 12px) !default;
 // textarea（✅）
 
 $textarea-font: var(--nutui-textarea-font, $font-text) !default;
+$textarea-plain-min-height: var(
+  --nutui-textarea-plain-min-height,
+  44px
+) !default;
+$textarea-container-min-height: var(
+  --nutui-textarea-container-min-height,
+  60px
+) !default;
 $textarea-padding: var(
   --nutui-textarea-padding,
-  $spacing-base $spacing-xxxl
+  8px 12px
+) !default;
+$textarea-container-gray-background-color: var(
+  --nutui-textarea-container-gray-background-color,
+  var(--nutui-color-background-component, $color-background-sunken)
+) !default;
+$textarea-container-white-background-color: var(
+  --nutui-textarea-container-white-background-color,
+  $color-background-overlay
 ) !default;
 $textarea-limit-color: var(
   --nutui-textarea-limit-color,

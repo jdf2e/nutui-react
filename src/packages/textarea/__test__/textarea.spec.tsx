@@ -3,6 +3,8 @@ import * as React from 'react'
 import '@testing-library/jest-dom'
 import { render, fireEvent } from '@testing-library/react'
 import { useState } from 'react'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import TextArea from '@/packages/textarea'
 
 test('textarea props test', () => {
@@ -14,6 +16,94 @@ test('textarea props test', () => {
   )
   expect(container.querySelector('.nut-textarea-limit')?.innerHTML).toBe('4/20')
   expect(container).toMatchSnapshot()
+})
+
+test('textarea type test', () => {
+  const { container, rerender } = render(<TextArea />)
+  const textarea = container.querySelector('.nut-textarea')
+
+  expect(textarea).toHaveClass('nut-textarea-container')
+  expect(textarea).toHaveClass('nut-textarea-container-gray')
+  expect(container.querySelector('.nut-textarea-main')).toBeInTheDocument()
+
+  rerender(<TextArea containerType="white" />)
+  expect(textarea).toHaveClass('nut-textarea-container-white')
+  expect(textarea).not.toHaveClass('nut-textarea-container-gray')
+
+  rerender(<TextArea plain containerType="white" />)
+  expect(textarea).toHaveClass('nut-textarea-plain')
+  expect(textarea).not.toHaveClass('nut-textarea-container')
+  expect(textarea).not.toHaveClass('nut-textarea-container-white')
+})
+
+test('textarea defines type layout styles and tokens', () => {
+  const styles = readFileSync(
+    resolve(process.cwd(), 'src/packages/textarea/textarea.scss'),
+    'utf8'
+  )
+
+  expect(styles).toContain('&-plain &-main')
+  expect(styles).toContain('min-height: $textarea-plain-min-height')
+  expect(styles).toContain('&-container &-main')
+  expect(styles).toContain('min-height: $textarea-container-min-height')
+  expect(styles).toContain('padding: $textarea-padding')
+  expect(styles).toContain('&-container-gray &-main')
+  expect(styles).toContain(
+    'background-color: $textarea-container-gray-background-color'
+  )
+  expect(styles).toContain('&-container-white &-main')
+  expect(styles).toContain(
+    'background-color: $textarea-container-white-background-color'
+  )
+
+  const variableFiles = [
+    {
+      file: 'variables.scss',
+      plainMinHeight: 'scale-px(44px)',
+      containerMinHeight: 'scale-px(60px)',
+      padding: 'scale-px(8px) scale-px(12px)',
+    },
+    {
+      file: 'variables-jmapp.scss',
+      plainMinHeight: '44px',
+      containerMinHeight: '60px',
+      padding: '8px 12px',
+    },
+    {
+      file: 'variables-jrkf.scss',
+      plainMinHeight: '44px',
+      containerMinHeight: '60px',
+      padding: '8px 12px',
+    },
+    {
+      file: 'variables-daojia.scss',
+      plainMinHeight: '44px',
+      containerMinHeight: '60px',
+      padding: '8px 12px',
+    },
+  ]
+
+  variableFiles.forEach(
+    ({ file, plainMinHeight, containerMinHeight, padding }) => {
+      const variables = readFileSync(
+        resolve(process.cwd(), `src/styles/${file}`),
+        'utf8'
+      )
+
+      expect(variables).toContain('$textarea-plain-min-height:')
+      expect(variables).toContain('--nutui-textarea-plain-min-height')
+      expect(variables).toContain(plainMinHeight)
+      expect(variables).toContain('$textarea-container-min-height:')
+      expect(variables).toContain('--nutui-textarea-container-min-height')
+      expect(variables).toContain(containerMinHeight)
+      expect(variables).toContain('--nutui-textarea-padding')
+      expect(variables).toContain(padding)
+      expect(variables).toContain('$textarea-container-gray-background-color:')
+      expect(variables).toContain('var(--nutui-color-background-component)')
+      expect(variables).toContain('$textarea-container-white-background-color:')
+      expect(variables).toContain('$color-background-overlay')
+    }
+  )
 })
 
 test('textarea readOnly test', () => {

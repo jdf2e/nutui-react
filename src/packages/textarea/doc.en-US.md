@@ -89,7 +89,8 @@ import { TextArea } from '@nutui/nutui-react'
 | autoSize | whether to adapt the content height. | `boolean` | `false` |
 | readOnly | read only attribute | `boolean` | `false` |
 | disabled | disable attribute | `boolean` | `false` |
-| plain | mark textarea's container type, false is for `container`, true is for `纯文本型` | `boolean` | `false` |
+| plain | whether to use the plain type; ignores `containerType` when `true` | `boolean` | `false` |
+| containerType | container background type | `gray / white` | `gray` |
 | status | textarea status, with default and error | `default /\ error` | `default` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
 | onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
@@ -114,7 +115,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-textarea-padding | padding | `10px 25px` |
+| \--nutui-textarea-plain-min-height | plain type minimum height | `44px` |
+| \--nutui-textarea-container-min-height | container type minimum height | `60px` |
+| \--nutui-textarea-padding | container padding | `8px 12px` |
+| \--nutui-textarea-container-gray-background-color | gray container background | `color-background-component` |
+| \--nutui-textarea-container-white-background-color | white container background | `$color-background-overlay` |
 | \--nutui-textarea-text-color | text color | `$color-title` |
 | \--nutui-textarea-text-curror-color | caret color | `$color-title` |
 

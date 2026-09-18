@@ -1,5 +1,7 @@
 import { BaseProps } from '../../base/props'
 
+export type TextAreaContainerType = 'gray' | 'white'
+
 export interface BaseTextArea<EVENT = any> extends BaseProps {
   viewId: string
   value: string
@@ -12,6 +14,7 @@ export interface BaseTextArea<EVENT = any> extends BaseProps {
   disabled: boolean
   autoSize: boolean
   plain: boolean
+  containerType: TextAreaContainerType
   status: 'error' | 'default'
   onChange: (value: string) => void
   onBlur: (event: EVENT) => void

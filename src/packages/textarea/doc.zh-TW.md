@@ -88,7 +88,8 @@ import { TextArea } from '@nutui/nutui-react'
 | autoSize | 高度是否可拉伸 | `boolean` | `false` |
 | readOnly | 只讀屬性 | `boolean` | `false` |
 | disabled | 禁用屬性 | `boolean` | `false` |
-| plain | 標記文本域的容器類型，false 為容器型 `container`, true 為 `純文本型` | `boolean` | `false` |
+| plain | 是否使用純文本型；為 `true` 時忽略 `containerType` | `boolean` | `false` |
+| containerType | 容器型背景類型 | `gray / white` | `gray` |
 | status | 文本域狀態，可標記為 默認狀態 和 錯誤狀態 | `default /\ error` | `default` |
 | onChange | 輸入內容時觸發 | `(value) => void` | `-` |
 | onFocus | 聚焦時觸發 | `(event) => void` | `-` |
@@ -113,7 +114,11 @@ import { TextArea } from '@nutui/nutui-react'
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-textarea-padding | 內邊距 | `10px 25px` |
+| \--nutui-textarea-plain-min-height | 純文本型最小高度 | `44px` |
+| \--nutui-textarea-container-min-height | 容器型最小高度 | `60px` |
+| \--nutui-textarea-padding | 容器型內邊距 | `8px 12px` |
+| \--nutui-textarea-container-gray-background-color | 灰底容器背景色 | `color-background-component` |
+| \--nutui-textarea-container-white-background-color | 白底容器背景色 | `$color-background-overlay` |
 | \--nutui-textarea-text-color | 文本顏色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光標顏色 | `$color-title` |
 

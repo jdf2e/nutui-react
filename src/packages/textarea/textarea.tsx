@@ -21,6 +21,7 @@ const defaultProps = {
   disabled: false,
   autoSize: false,
   plain: false,
+  containerType: 'gray',
   status: 'default',
 } as WebTextAreaProps
 
@@ -47,6 +48,7 @@ export const TextArea = forwardRef(
       autoSize,
       style,
       plain,
+      containerType,
       status,
       onChange,
       onBlur,
@@ -126,45 +128,48 @@ export const TextArea = forwardRef(
               [`${classPrefix}-rtl`]: rtl,
               [`${classPrefix}-plain`]: plain,
               [`${classPrefix}-container`]: !plain,
+              [`${classPrefix}-container-${containerType}`]: !plain,
               [`${classPrefix}-${status}`]: status,
             },
             className
           )}
         >
-          <textarea
-            {...rest}
-            ref={textareaRef}
-            className={classNames(`${classPrefix}-textarea`, {
-              [`${classPrefix}-textarea-disabled`]: disabled,
-            })}
-            style={style}
-            disabled={disabled}
-            readOnly={readOnly}
-            value={innerValue}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            onCompositionEnd={() => {
-              compositionRef.current = false
-            }}
-            onCompositionStart={() => {
-              compositionRef.current = true
-            }}
-            rows={rows}
-            maxLength={maxLength === -1 ? undefined : maxLength}
-            placeholder={
-              placeholder !== undefined ? placeholder : locale.placeholder
-            }
-          />
-          {showCount && (
-            <div
-              className={classNames(`${classPrefix}-limit`, {
-                [`${classPrefix}-limit-disabled`]: disabled,
+          <div className={`${classPrefix}-main`}>
+            <textarea
+              {...rest}
+              ref={textareaRef}
+              className={classNames(`${classPrefix}-textarea`, {
+                [`${classPrefix}-textarea-disabled`]: disabled,
               })}
-            >
-              {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
-            </div>
-          )}
+              style={style}
+              disabled={disabled}
+              readOnly={readOnly}
+              value={innerValue}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              onFocus={handleFocus}
+              onCompositionEnd={() => {
+                compositionRef.current = false
+              }}
+              onCompositionStart={() => {
+                compositionRef.current = true
+              }}
+              rows={rows}
+              maxLength={maxLength === -1 ? undefined : maxLength}
+              placeholder={
+                placeholder !== undefined ? placeholder : locale.placeholder
+              }
+            />
+            {showCount && (
+              <div
+                className={classNames(`${classPrefix}-limit`, {
+                  [`${classPrefix}-limit-disabled`]: disabled,
+                })}
+              >
+                {innerValue.length}/{maxLength < 0 ? 0 : maxLength}
+              </div>
+            )}
+          </div>
         </div>
       </>
     )
