@@ -12,5 +12,5 @@ export interface BaseLoading<LOTTIE_PROPS = any> extends BaseProps {
 
   jsonData: any
   lottieProps: Partial<LOTTIE_PROPS>
-  textStyle: CSSProperties
+  textStyle?: CSSProperties
 }
