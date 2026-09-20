@@ -16,6 +16,8 @@ Three Skills are available:
 | `nutui-react-v3-to-v4` | Systematically upgrade `@nutui/nutui-react` from v3 to v4 |
 | `nutui-react-to-taro` | Migrate an H5 project from `@nutui/nutui-react` to `@nutui/nutui-react-taro` (Taro / mini-program) |
 
+> **Security note:** the install commands below (`npx skills add jdf2e/nutui-react ...`) resolve to this repository's default branch and run whatever `skills` CLI version `npx` picks up at install time — neither is pinned, so re-running the command later can silently fetch different code. For CI or any unattended install, pin both: `npx skills@<verified-version> add jdf2e/nutui-react#<tag-or-commit-sha> --skill <skill-name>`.
+
 ## nutui-react — look up before writing
 
 Guides the agent to query the real API with the CLI before writing any NutUI-React component code, instead of guessing props or enum values from memory.

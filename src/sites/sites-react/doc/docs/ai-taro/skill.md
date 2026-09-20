@@ -13,6 +13,8 @@
 | `nutui-react-taro` | 写 NutUI-React Taro 代码时「先查后写」，消除 API 幻觉 |
 | `nutui-react-taro-v3-to-v4` | 将 `@nutui/nutui-react-taro` 从 v3 系统升级到 v4 |
 
+> **安全提示：** 下方安装命令（`npx skills add jdf2e/nutui-react ...`）会解析到本仓库默认分支的最新代码，且 `skills` CLI 版本也未固定——同一条命令在不同时间执行可能拉取到不同内容。用于 CI 或无人值守安装时，请固定二者：`npx skills@<已验证的版本> add jdf2e/nutui-react#<tag-或-commit-sha> --skill <skill 名>`。
+
 ## nutui-react-taro — 先查后写
 
 指导 Agent 在编写 NutUI-React Taro 组件代码前，先通过 CLI 或 MCP 查询真实 API 与 Taro 示例，而不是沿用 H5 API 或凭记忆猜测。

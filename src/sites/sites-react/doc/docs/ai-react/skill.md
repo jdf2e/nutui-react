@@ -16,6 +16,8 @@
 | `nutui-react-v3-to-v4` | 将 `@nutui/nutui-react` 从 v3 系统升级到 v4 |
 | `nutui-react-to-taro` | 把 H5 项目从 `@nutui/nutui-react` 迁移到 `@nutui/nutui-react-taro`（Taro / 小程序） |
 
+> **安全提示：** 下方安装命令（`npx skills add jdf2e/nutui-react ...`）会解析到本仓库默认分支的最新代码，且 `skills` CLI 版本也未固定——同一条命令在不同时间执行可能拉取到不同内容。用于 CI 或无人值守安装时，请固定二者：`npx skills@<已验证的版本> add jdf2e/nutui-react#<tag-或-commit-sha> --skill <skill 名>`。
+
 ## nutui-react — 先查后写
 
 指导 Agent 在写任何 NutUI-React 组件代码前，先用 CLI 查询真实 API，而非凭记忆猜测 Prop 或枚举值。

@@ -13,6 +13,8 @@ Two Skills are available:
 | `nutui-react-taro` | Look up the API before writing NutUI-React Taro code, eliminating API hallucination |
 | `nutui-react-taro-v3-to-v4` | Systematically upgrade `@nutui/nutui-react-taro` from v3 to v4 |
 
+> **Security note:** the install commands below (`npx skills add jdf2e/nutui-react ...`) resolve to this repository's default branch and run whatever `skills` CLI version `npx` picks up at install time — neither is pinned, so re-running the command later can silently fetch different code. For CI or any unattended install, pin both: `npx skills@<verified-version> add jdf2e/nutui-react#<tag-or-commit-sha> --skill <skill-name>`.
+
 ## nutui-react-taro — look up before writing
 
 Guides the agent to query real APIs and Taro demos through the CLI or MCP before writing NutUI-React Taro code, rather than reusing H5 APIs or guessing from memory.
