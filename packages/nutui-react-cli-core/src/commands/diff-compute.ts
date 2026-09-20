@@ -51,10 +51,10 @@ export function diffComponent(
   const changed: RowChange[] = []
 
   for (const [key, row] of b) {
-    if (!a.has(key)) added.push(row)
+    if (!a.has(key)) added.push({ ...row, prop: key })
   }
   for (const [key, row] of a) {
-    if (!b.has(key)) removed.push(row)
+    if (!b.has(key)) removed.push({ ...row, prop: key })
   }
   for (const [key, ra] of a) {
     const rb = b.get(key)
@@ -85,7 +85,12 @@ export function diffMeta(
 ): ComponentDiff[] {
   const ids = componentId
     ? [componentId.toLowerCase()]
-    : [...new Set([...Object.keys(metaA.components), ...Object.keys(metaB.components)])].sort()
+    : [
+        ...new Set([
+          ...Object.keys(metaA.components),
+          ...Object.keys(metaB.components),
+        ]),
+      ].sort()
 
   const out: ComponentDiff[] = []
   for (const id of ids) {

@@ -3,7 +3,12 @@ import { diffComponent, diffMeta } from '../commands/diff-compute.js'
 import type { ApiTable, Component, Meta } from '../types.js'
 
 // 造一个只含 props 表的最小 Component。
-function comp(id: string, name: string, rows: ApiTable['rows'], subComponent: string | null = null): Component {
+function comp(
+  id: string,
+  name: string,
+  rows: ApiTable['rows'],
+  subComponent: string | null = null
+): Component {
   return {
     id,
     name,
@@ -16,7 +21,15 @@ function comp(id: string, name: string, rows: ApiTable['rows'], subComponent: st
     docs: { h5: null, enUS: null, zhTW: null, taro: null },
     demos: { h5: [], taro: [] },
     api: {
-      tables: [{ name: 'Props', kind: 'props', sourceComponent: id, subComponent, rows }],
+      tables: [
+        {
+          name: 'Props',
+          kind: 'props',
+          sourceComponent: id,
+          subComponent,
+          rows,
+        },
+      ],
     },
     tokens: [],
   }
@@ -55,8 +68,12 @@ describe('diffComponent', () => {
   })
 
   it('检测新增与移除的 prop', () => {
-    const v1 = comp('x', 'X', [{ prop: 'old', desc: '', type: 'string', default: '' }])
-    const v2 = comp('x', 'X', [{ prop: 'new', desc: '', type: 'string', default: '' }])
+    const v1 = comp('x', 'X', [
+      { prop: 'old', desc: '', type: 'string', default: '' },
+    ])
+    const v2 = comp('x', 'X', [
+      { prop: 'new', desc: '', type: 'string', default: '' },
+    ])
     const d = diffComponent('X', v1, v2)
     expect(d.added.map((r) => r.prop)).toEqual(['new'])
     expect(d.removed.map((r) => r.prop)).toEqual(['old'])
@@ -72,28 +89,103 @@ describe('diffComponent', () => {
   })
 
   it('组件仅在一版存在（v2 新增组件）：全部记为 added', () => {
-    const v2 = comp('n', 'New', [{ prop: 'a', desc: '', type: 'string', default: '' }])
+    const v2 = comp('n', 'New', [
+      { prop: 'a', desc: '', type: 'string', default: '' },
+    ])
     const d = diffComponent('New', undefined, v2)
     expect(d.added).toHaveLength(1)
   })
 
   it('子组件表的 prop 以 Sub.prop 作 key，不与主表混淆', () => {
-    const v1 = comp('x', 'X', [{ prop: 'value', desc: '', type: 'string', default: '' }], 'Item')
-    const v2 = comp('x', 'X', [{ prop: 'value', desc: '', type: 'number', default: '' }], 'Item')
+    const v1 = comp(
+      'x',
+      'X',
+      [{ prop: 'value', desc: '', type: 'string', default: '' }],
+      'Item'
+    )
+    const v2 = comp(
+      'x',
+      'X',
+      [{ prop: 'value', desc: '', type: 'number', default: '' }],
+      'Item'
+    )
     const d = diffComponent('X', v1, v2)
     expect(d.changed[0].prop).toBe('Item.value')
+  })
+
+  it('主表与子组件表同名 prop：added/removed 也保留 Sub.prop 限定名', () => {
+    // 主表新增 'value'，子组件表移除 'value'：二者同名但来源不同，输出必须能区分。
+    const v1: Component = {
+      ...comp('x', 'X', []),
+      api: {
+        tables: [
+          {
+            name: 'Props',
+            kind: 'props',
+            sourceComponent: 'x',
+            subComponent: null,
+            rows: [],
+          },
+          {
+            name: 'Item Props',
+            kind: 'props',
+            sourceComponent: 'x',
+            subComponent: 'Item',
+            rows: [{ prop: 'value', desc: '', type: 'string', default: '' }],
+          },
+        ],
+      },
+    }
+    const v2: Component = {
+      ...comp('x', 'X', []),
+      api: {
+        tables: [
+          {
+            name: 'Props',
+            kind: 'props',
+            sourceComponent: 'x',
+            subComponent: null,
+            rows: [{ prop: 'value', desc: '', type: 'string', default: '' }],
+          },
+          {
+            name: 'Item Props',
+            kind: 'props',
+            sourceComponent: 'x',
+            subComponent: 'Item',
+            rows: [],
+          },
+        ],
+      },
+    }
+    const d = diffComponent('X', v1, v2)
+    expect(d.added.map((r) => r.prop)).toEqual(['value'])
+    expect(d.removed.map((r) => r.prop)).toEqual(['Item.value'])
   })
 })
 
 describe('diffMeta', () => {
-  const metaA = meta({
-    empty: comp('empty', 'Empty', [{ prop: 'size', desc: '', type: 's', default: 'base' }]),
-    button: comp('button', 'Button', [{ prop: 'type', desc: '', type: 's', default: '' }]),
-  }, '3.1.0')
-  const metaB = meta({
-    empty: comp('empty', 'Empty', [{ prop: 'size', desc: '', type: 's', default: 'half' }]),
-    button: comp('button', 'Button', [{ prop: 'type', desc: '', type: 's', default: '' }]),
-  }, '4.0.0')
+  const metaA = meta(
+    {
+      empty: comp('empty', 'Empty', [
+        { prop: 'size', desc: '', type: 's', default: 'base' },
+      ]),
+      button: comp('button', 'Button', [
+        { prop: 'type', desc: '', type: 's', default: '' },
+      ]),
+    },
+    '3.1.0'
+  )
+  const metaB = meta(
+    {
+      empty: comp('empty', 'Empty', [
+        { prop: 'size', desc: '', type: 's', default: 'half' },
+      ]),
+      button: comp('button', 'Button', [
+        { prop: 'type', desc: '', type: 's', default: '' },
+      ]),
+    },
+    '4.0.0'
+  )
 
   it('只返回有差异的组件（Button 无变化被过滤）', () => {
     const diffs = diffMeta(metaA, metaB)
