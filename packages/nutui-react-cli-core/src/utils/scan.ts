@@ -66,13 +66,20 @@ export function extractComponents(content: string): string[] {
 }
 
 // stop() 由调用方在任一上限被触发时置位；walk 每层递归前检查，尽快终止遍历。
+// markTruncated：深度超限时单独回调标记，因为这一情况不经过 shouldStop()（shouldStop 只感知
+// 文件数/字节数），若不回调会导致深层目录被静默漏扫却不反映在 ScanResult.truncated 上。
 function walk(
   dir: string,
   depth: number,
   onFile: (file: string) => void,
-  shouldStop: () => boolean
+  shouldStop: () => boolean,
+  markTruncated: () => void
 ): void {
-  if (shouldStop() || depth > MAX_DEPTH) return
+  if (shouldStop()) return
+  if (depth > MAX_DEPTH) {
+    markTruncated()
+    return
+  }
   let entries: fs.Dirent[]
   try {
     entries = fs.readdirSync(dir, { withFileTypes: true })
@@ -89,7 +96,7 @@ function walk(
     const full = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       if (SKIP_DIRS.has(entry.name)) continue
-      walk(full, depth + 1, onFile, shouldStop)
+      walk(full, depth + 1, onFile, shouldStop, markTruncated)
     } else if (entry.isFile() && SOURCE_EXT.has(path.extname(entry.name))) {
       onFile(full)
     }
@@ -139,11 +146,15 @@ export function scanProject(dir: string): ScanResult {
     }
   }
 
+  const markTruncated = () => {
+    truncated = true
+  }
+
   const stat = fs.existsSync(dir) ? fs.statSync(dir) : null
   if (stat?.isFile()) {
     handle(dir)
   } else {
-    walk(dir, 0, handle, shouldStop)
+    walk(dir, 0, handle, shouldStop, markTruncated)
   }
 
   return {
