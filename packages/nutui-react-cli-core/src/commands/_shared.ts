@@ -30,7 +30,18 @@ export function resolveContext(
   })
   const snapshotDir = resolveSnapshotDir(config.dataDir, versionInfo.version)
   const meta = loadMetaByDir(snapshotDir)
-  return { meta, snapshotDir, versionInfo }
+  // resolveSnapshotDir 可能把请求版本（如 3.0.5）路由到另一个已有快照（如 v3.0.20）。
+  // 返回实际命中的快照版本，避免版本头/JSON _meta 报告请求版本却携带别的快照数据；
+  // 保留原始 source（flag/node_modules/package.json/fallback）不变。
+  const resolvedVersionInfo: VersionInfo =
+    meta.libVersion && meta.libVersion !== versionInfo.version
+      ? {
+          ...versionInfo,
+          version: meta.libVersion,
+          major: `v${meta.libVersion.split('.')[0]}`,
+        }
+      : versionInfo
+  return { meta, snapshotDir, versionInfo: resolvedVersionInfo }
 }
 
 // 文本格式的版本信息头，如 "NutUI React（H5）v3.1.0（来源：package.json）"。
