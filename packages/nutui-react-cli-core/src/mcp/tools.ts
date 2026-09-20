@@ -238,8 +238,11 @@ export function createToolHandler(config: CliConfig) {
     })
     const snapshotDir = resolveSnapshotDir(config.dataDir, versionInfo.version)
     const meta = loadMetaByDir(snapshotDir)
+    // resolveSnapshotDir 可能把请求/检测到的版本路由到另一个已有快照（如 3.0.5 → v3.0.20）。
+    // _meta.version 必须反映实际加载的快照版本，否则响应会用 3.0.5 标注却携带 v3.0.20 的数据。
+    // major 与 source 不受快照路由影响，保持不变。
     const _meta = {
-      version: versionInfo.version,
+      version: meta.libVersion || versionInfo.version,
       major: versionInfo.major,
       source: versionInfo.source,
     }
