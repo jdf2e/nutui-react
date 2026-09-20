@@ -251,53 +251,62 @@ export function sync(opts = {}) {
   const createdWorktrees = []
   const snapshots = []
 
-  for (const sel of finalSelected) {
-    console.log(`\n=== ${sel.tag}（${sel.major}）===`)
-    ensureTagLocally(cfg.repo, sel.tag)
-    const worktreeDir = addWorktree(sel.tag)
-    createdWorktrees.push(worktreeDir)
-    const p = repoPaths(worktreeDir)
-
-    preparePropertiesInWorktree(worktreeDir, p)
-
-    const res = buildMeta({
-      repoRoot: worktreeDir,
-      configPath: p.configPath,
-      propertiesPath: p.propertiesPath,
-      propertiesTaroPath: p.propertiesTaroPath,
-      packagesDir: p.packagesDir,
-      variablesPath: p.variablesPath,
-      pkgJsonPath: p.pkgJsonPath,
-      specDir: p.specDir,
-      cssVarPrefix: cfg.majors[sel.major].cssVarPrefix,
-      out: p.metaPath,
-    })
-    console.log(
-      `  ✅ meta：组件 ${res.componentCount}，有 API(H5) ${res.apiComponentCount}，token ${res.globalTokens}，libVersion ${res.libVersion}`
-    )
-
-    // 校验：meta 必须有 libVersion 且组件非空
-    if (!res.libVersion || res.componentCount === 0) {
-      throw new Error(`${sel.tag} 的 meta 校验失败：libVersion=${res.libVersion} componentCount=${res.componentCount}`)
+  const removeWorktree = (dir) => {
+    try {
+      git(['worktree', 'remove', dir, '--force'], { cwd: REPO_ROOT, stdio: 'pipe' })
+    } catch {
+      fs.rmSync(dir, { recursive: true, force: true })
     }
-
-    snapshots.push({
-      tag: sel.tag,
-      clean: sel.clean,
-      major: sel.major,
-      worktreeDir,
-      metaPath: p.metaPath,
-    })
   }
 
   const cleanup = () => {
-    for (const dir of createdWorktrees) {
-      try {
-        git(['worktree', 'remove', dir, '--force'], { cwd: REPO_ROOT, stdio: 'pipe' })
-      } catch {
-        fs.rmSync(dir, { recursive: true, force: true })
+    for (const dir of createdWorktrees) removeWorktree(dir)
+  }
+
+  try {
+    for (const sel of finalSelected) {
+      console.log(`\n=== ${sel.tag}（${sel.major}）===`)
+      ensureTagLocally(cfg.repo, sel.tag)
+      const worktreeDir = addWorktree(sel.tag)
+      createdWorktrees.push(worktreeDir)
+      const p = repoPaths(worktreeDir)
+
+      preparePropertiesInWorktree(worktreeDir, p)
+
+      const res = buildMeta({
+        repoRoot: worktreeDir,
+        configPath: p.configPath,
+        propertiesPath: p.propertiesPath,
+        propertiesTaroPath: p.propertiesTaroPath,
+        packagesDir: p.packagesDir,
+        variablesPath: p.variablesPath,
+        pkgJsonPath: p.pkgJsonPath,
+        specDir: p.specDir,
+        cssVarPrefix: cfg.majors[sel.major].cssVarPrefix,
+        out: p.metaPath,
+      })
+      console.log(
+        `  ✅ meta：组件 ${res.componentCount}，有 API(H5) ${res.apiComponentCount}，token ${res.globalTokens}，libVersion ${res.libVersion}`
+      )
+
+      // 校验：meta 必须有 libVersion 且组件非空
+      if (!res.libVersion || res.componentCount === 0) {
+        throw new Error(`${sel.tag} 的 meta 校验失败：libVersion=${res.libVersion} componentCount=${res.componentCount}`)
       }
+
+      snapshots.push({
+        tag: sel.tag,
+        clean: sel.clean,
+        major: sel.major,
+        worktreeDir,
+        metaPath: p.metaPath,
+      })
     }
+  } catch (err) {
+    // 本次 sync() 尚未把 cleanup 交给调用方，失败时需自行清理已创建的 worktree，
+    // 否则临时目录和 git worktree 记录会残留。
+    cleanup()
+    throw err
   }
 
   return { snapshots, versionsIndex, cleanup }
