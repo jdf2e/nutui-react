@@ -112,7 +112,7 @@ nutui-react migrate 3 4 --component Empty --format json
 nutui-react diff 3 4 Empty --format json
 ```
 
-`--apply` 只扫描源码并输出项目实际使用组件的迁移步骤与 Agent 提示，**不会自动修改文件**。输出中的 `matchedComponents` 是需要重点处理的组件，`componentsWithoutBreakingChanges` 是已使用但当前迁移文档未记录破坏性变更的组件。
+`--apply` 只扫描源码并输出项目实际使用组件的迁移步骤，**不会自动修改文件**。`text` 输出会额外附带一段「给代码 Agent 的指令」；`json` 输出不含这段提示文字，而是提供 `matchedComponents`（需要重点处理的组件）、`componentsWithoutBreakingChanges`（已使用但当前迁移文档未记录破坏性变更的组件），以及 `steps`（各组件迁移说明原文，Agent 提示即由此归纳而来）。
 
 完整升级流程可安装 [nutui-react-v3-to-v4 Skill](/#/zh-CN/ai/skill)，由 Agent 按「升级依赖 → 扫描盘点 → 逐组件改写 → 构建与视觉验证」执行。
 

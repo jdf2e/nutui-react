@@ -112,7 +112,7 @@ nutui-react migrate 3 4 --component Empty --format json
 nutui-react diff 3 4 Empty --format json
 ```
 
-`--apply` only scans source files and outputs migration steps plus an agent prompt for the components actually used; it **does not modify files**. `matchedComponents` identifies components to update, while `componentsWithoutBreakingChanges` lists used components with no breaking change recorded in the current migration guide.
+`--apply` only scans source files and outputs migration steps for the components actually used; it **does not modify files**. In `text` output this includes an extra agent-instruction block ("给代码 Agent 的指令"); `json` output does not include that prose block — instead, `matchedComponents` identifies components to update and `componentsWithoutBreakingChanges` lists used components with no breaking change recorded in the current migration guide, alongside `steps` (the raw per-component migration guide text) that an agent prompt would summarize.
 
 Install the [nutui-react-v3-to-v4 Skill](/#/en-US/ai/skill) for an agent-guided workflow covering dependency upgrades, inventory, component-by-component edits, build checks, and visual verification.
 
