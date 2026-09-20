@@ -86,9 +86,9 @@ nutui-react-taro --nv 3 list
 nutui-react-taro --nv 4.0.0-beta.7 doc Cell
 ```
 
-未指定 `--nutui-version` 时，按以下顺序**自动检测**目标版本：
+目标版本按以下顺序解析（某一来源缺失时，落到下一步）：
 
-1. `--nutui-version <v>` 显式指定；
+1. `--nutui-version <v>` 显式指定（若传入）；
 2. 项目 `node_modules/@nutui/nutui-react-taro/package.json` 的实际安装版本；
 3. 项目 `package.json` 的 `dependencies` / `devDependencies` / `peerDependencies` 声明（兼容 `^3.1.0`、`~3.1.0` 等）；
 4. 兜底到默认大版本（`v4`）的 latest。

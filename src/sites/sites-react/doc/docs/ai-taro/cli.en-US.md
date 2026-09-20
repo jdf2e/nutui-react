@@ -86,9 +86,9 @@ nutui-react-taro --nv 3 list
 nutui-react-taro --nv 4.0.0-beta.7 doc Cell
 ```
 
-When `--nutui-version` is omitted, the target version is **auto-detected** in this order:
+The target version is resolved in this order (falling through to the next step whenever a source is absent):
 
-1. the `--nutui-version <v>` flag;
+1. the `--nutui-version <v>` flag, if passed;
 2. the installed version in the project's `node_modules/@nutui/nutui-react-taro/package.json`;
 3. the `dependencies` / `devDependencies` / `peerDependencies` declaration in the project's `package.json` (handles `^3.1.0`, `~3.1.0`, etc.);
 4. a fallback to the default major version (`v4`) latest.
