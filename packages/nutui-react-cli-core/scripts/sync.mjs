@@ -44,7 +44,7 @@ function listRemoteTags(repo) {
     .map((line) => line.replace(/.*refs\/tags\//, ''))
 }
 
-// tag 串（可能带 v 前缀）→ { major:'v3', minor:'3.0', patch:0, prerelease:bool, raw }
+// tag 串（可能带 v 前缀）→ { major:'v3', minor:'3.0', patch:0, prerelease:bool, prereleaseId, raw }
 function parseTag(tag) {
   const clean = tag.replace(/^v/, '')
   const m = clean.match(/^(\d+)\.(\d+)\.(\d+)(?:-(.+))?$/)
@@ -57,7 +57,34 @@ function parseTag(tag) {
     minor: `${m[1]}.${m[2]}`,
     patch: Number(m[3]),
     prerelease: m[4] != null,
+    prereleaseId: m[4] ?? null,
   }
+}
+
+// 按语义版本规则比较两个预发布标识串（如 'beta.9' vs 'beta.10'）。
+// 逐个 `.` 分段比较：数字段按数值比较，非数字段按字符串比较；数字段小于非数字段。
+// 返回 >0 表示 a 更高，<0 表示 b 更高，0 表示相等。
+function comparePrereleaseId(a, b) {
+  const as = a.split('.')
+  const bs = b.split('.')
+  const len = Math.max(as.length, bs.length)
+  for (let i = 0; i < len; i++) {
+    const av = as[i]
+    const bv = bs[i]
+    if (av === undefined) return -1
+    if (bv === undefined) return 1
+    const an = /^\d+$/.test(av)
+    const bn = /^\d+$/.test(bv)
+    if (an && bn) {
+      const diff = Number(av) - Number(bv)
+      if (diff !== 0) return diff
+    } else if (an !== bn) {
+      return an ? -1 : 1
+    } else if (av !== bv) {
+      return av > bv ? 1 : -1
+    }
+  }
+  return 0
 }
 
 // 每 minor 取最高 patch。默认排除预发布；includePrerelease 为 true 时（如 v4 全 beta）
@@ -66,10 +93,12 @@ function buildMinorMap(tags, includePrerelease) {
   const parsed = tags.map(parseTag).filter(Boolean)
   const byMinor = new Map() // minor -> best parsed tag
   const better = (a, b) => {
-    // 稳定优先于预发布；同稳定性比 patch；patch 相同再比预发布串（beta.7 > beta.6）
+    // 稳定优先于预发布；同稳定性比 patch；patch 相同再按语义版本比较预发布标识
+    // （数值段按数值比较，故 beta.10 > beta.9，而非字符串比较）
     if (a.prerelease !== b.prerelease) return a.prerelease ? b : a
     if (a.patch !== b.patch) return a.patch > b.patch ? a : b
-    return (a.raw > b.raw ? a : b)
+    if (!a.prerelease) return a
+    return comparePrereleaseId(a.prereleaseId, b.prereleaseId) >= 0 ? a : b
   }
   for (const t of parsed) {
     if (t.prerelease && !includePrerelease) continue
