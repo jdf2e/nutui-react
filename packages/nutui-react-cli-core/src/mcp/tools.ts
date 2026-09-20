@@ -405,6 +405,15 @@ export function createToolHandler(config: CliConfig) {
           }
         } else if (compName) {
           sections = filterSections(parsed.sections, [compName])
+          if (!sections.length) {
+            return toMcpResult(
+              createError(
+                ErrorCodes.COMPONENT_NOT_FOUND,
+                `迁移文档中未找到组件「${compName}」。`,
+                `已覆盖：${parsed.sections.map((s) => s.component).join(' / ')}。`
+              )
+            )
+          }
         }
         return toMcpResult({
           _meta: { from: `v${fromMajor}`, to: `v${toMajor}`, libVersion: versionsIndex.majors[toKey].latest },
