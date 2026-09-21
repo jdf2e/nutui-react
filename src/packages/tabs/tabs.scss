@@ -43,6 +43,10 @@
     .nut-tabs-titles-item {
       padding: 0 8px;
     }
+
+    .nut-tabs-list {
+      justify-content: flex-end;
+    }
   }
 
   &-item {
@@ -214,6 +218,30 @@
           &::after {
             display: none;
           }
+        }
+      }
+    }
+  }
+
+  &-card.nut-tabs-titles-not-scrollable {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item-active {
+      // LTR 左对齐(及 RTL 左对齐类):末项一侧恢复肩部与间距
+      &:last-child {
+        margin-right: 24px;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    &.nut-tabs-titles-right .nut-tabs-titles-item-active {
+      // LTR 右对齐(及 RTL 右对齐类):首项一侧恢复肩部与间距
+      &:first-child {
+        margin-left: 24px;
+
+        &::before {
+          display: block;
         }
       }
     }
@@ -471,6 +499,43 @@
     &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
       padding-right: 4px;
       padding-left: 8px;
+    }
+  }
+}
+
+// RTL 卡片模式留白端镜像:对齐类(flex-start/flex-end)随书写方向翻转视觉端,
+// 贴边端/留白端与 DOM 首末项的对应关系同 LTR 相反,贴边侧直角、留白侧恢复肩部需按物理边重写
+[dir='rtl'] .nut-tabs-titles-card.nut-tabs-titles-not-scrollable,
+.nut-rtl .nut-tabs-titles-card.nut-tabs-titles-not-scrollable {
+  // RTL 左对齐类:内容贴视觉右端,首项贴边(直角在物理右侧)、末项邻留白
+  &:not(.nut-tabs-titles-right) .nut-tabs-titles-item-active {
+    &:first-child {
+      margin-left: 24px;
+      margin-right: 0;
+
+      &::before {
+        display: block;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // RTL 右对齐类:内容贴视觉左端,末项贴边(直角在物理左侧)、首项邻留白
+  &.nut-tabs-titles-right .nut-tabs-titles-item-active {
+    &:last-child {
+      margin-left: 0;
+      margin-right: 24px;
+
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: block;
+      }
     }
   }
 }
