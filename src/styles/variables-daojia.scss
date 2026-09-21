@@ -1331,7 +1331,7 @@ $tabs-tab-button-active-font-size: var(--nutui-tabs-button-active-font-size,
 $tabs-tab-button-active-font-weight: var(--nutui-tabs-button-active-font-weight,
     $font-weight-bold) !default;
 $tabs-tab-button-background-color: var(--nutui-tabs-button-background-color,
-    $color-background-overlay) !default;
+    var(--nutui-color-background-component)) !default;
 $tabs-tab-button-active-background-color: var(--nutui-tabs-button-active-background-color,
     $color-primary-light-pressed) !default;
 $tabs-tab-button-active-border: var(--nutui-tabs-button-active-border,

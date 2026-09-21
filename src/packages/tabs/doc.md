@@ -254,7 +254,7 @@ import { Tabs } from '@nutui/nutui-react'
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | 水平方向标题的高度 | `36px` |
-| \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background` |
+| \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background-overlay` |
 | \--nutui-tabs-titles-gap | Tab 标题的左右 margin | `8px` |
 | \--nutui-tabs-titles-font-size | Tab 标题的字号 | `$font-size-md` |
 | \--nutui-tabs-titles-item-font-family | Tab 标题的字体 | `PingFangSC-Semibold` |
@@ -276,7 +276,7 @@ import { Tabs } from '@nutui/nutui-react'
 | \--nutui-tabs-button-font-size | 按钮模式未选中标题的字号 | `$font-size-base` |
 | \--nutui-tabs-button-active-font-size | 按钮模式选中标题的字号 | `$font-size-base` |
 | \--nutui-tabs-button-active-font-weight | 按钮模式选中标题的字重 | `$font-weight-bold` |
-| \--nutui-tabs-button-background-color | 按钮模式未选中标题的背景色 | `$color-background-overlay` |
+| \--nutui-tabs-button-background-color | 按钮模式未选中标题的背景色 | `var(--nutui-color-background-component)` |
 | \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |

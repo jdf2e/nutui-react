@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { Tabs } from '@nutui/nutui-react-taro'
+import { Tabs, pxTransform } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const [tabvalue, setTabvalue] = useState<string | number>('0')
   return (
     <Tabs
       value={tabvalue}
-      style={{ '--nutui-tabs-titles-height': '40px' }}
+      style={{
+        '--nutui-tabs-titles-height': pxTransform(40),
+        '--nutui-tabs-titles-background-color':
+          'var(--nutui-color-background, #f2f3f5)',
+      }}
       activeType="card"
       onChange={(value) => {
         setTabvalue(value)

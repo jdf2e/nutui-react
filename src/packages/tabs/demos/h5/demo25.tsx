@@ -45,7 +45,15 @@ const Demo25 = () => {
         position: 'relative',
       }}
     >
-      <Tabs value={tabvalue} align="left" title={renderTitles}>
+      <Tabs
+        value={tabvalue}
+        align="left"
+        title={renderTitles}
+        style={{
+          '--nutui-tabs-titles-background-color':
+            'var(--nutui-color-background, #f2f3f5)',
+        }}
+      >
         {list.map((item) => (
           <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
             {item.title}
@@ -59,12 +67,13 @@ const Demo25 = () => {
           right: 0,
           display: 'flex',
           alignItems: 'center',
-          height: 'var(--nutui-tabs-titles-height, 36px)',
+          height:
+            'var(--nutui-tabs-titles-height, calc(36px * var(--nut-scale-f, 1)))',
         }}
       >
         <div
           style={{
-            width: '16px',
+            width: 'calc(16px * var(--nut-scale-f, 1))',
             height: '100%',
             background:
               'linear-gradient(to left, var(--nutui-color-background, #f0f2f7) 0%, transparent 100%)',
@@ -80,7 +89,10 @@ const Demo25 = () => {
             background: 'var(--nutui-color-background, #f0f2f7)',
           }}
         >
-          <Search width={18} height={18} />
+          <Search
+            width="calc(18px * var(--nut-scale-icon, 1))"
+            height="calc(18px * var(--nut-scale-icon, 1))"
+          />
         </div>
       </div>
     </div>

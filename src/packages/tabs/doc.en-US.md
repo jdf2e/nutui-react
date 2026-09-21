@@ -254,7 +254,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | height of titles in horizontal direction | `36px` |
-| \--nutui-tabs-titles-background-color | Tab title background color | `$color-background` |
+| \--nutui-tabs-titles-background-color | Tab title background color | `$color-background-overlay` |
 | \--nutui-tabs-titles-gap | Tab title margin | `8px` |
 | \--nutui-tabs-titles-font-size | Tab title font size | `$font-size-md` |
 | \--nutui-tabs-titles-item-font-family | Tab title font family | `PingFangSC-Semibold` |
@@ -276,7 +276,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-button-font-size | Font size of unselected button-type title | `$font-size-base` |
 | \--nutui-tabs-button-active-font-size | Font size of selected button-type title | `$font-size-base` |
 | \--nutui-tabs-button-active-font-weight | Font weight of selected button-type title | `$font-weight-bold` |
-| \--nutui-tabs-button-background-color | Background color of unselected button-type title | `$color-background-overlay` |
+| \--nutui-tabs-button-background-color | Background color of unselected button-type title | `var(--nutui-color-background-component)` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |

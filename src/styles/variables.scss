@@ -2108,7 +2108,7 @@ $pagination-lite-active-background-color: var(
 $tabs-titles-height: var(--nutui-tabs-titles-height, scale-px(36px)) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
-  $color-background
+  $color-background-overlay
 ) !default;
 $tabs-titles-gap: var(--nutui-tabs-titles-gap, scale-px(8px)) !default;
 $tabs-titles-font-size: var(
@@ -2178,7 +2178,7 @@ $tabs-tab-button-active-font-weight: var(
 ) !default;
 $tabs-tab-button-background-color: var(
   --nutui-tabs-button-background-color,
-  $color-background-overlay
+  var(--nutui-color-background-component)
 ) !default;
 $tabs-tab-button-active-background-color: var(
   --nutui-tabs-button-active-background-color,

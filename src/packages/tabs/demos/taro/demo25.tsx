@@ -45,7 +45,15 @@ const Demo25 = () => {
         position: 'relative',
       }}
     >
-      <Tabs value={tabvalue} align="left" title={renderTitles}>
+      <Tabs
+        value={tabvalue}
+        align="left"
+        title={renderTitles}
+        style={{
+          '--nutui-tabs-titles-background-color':
+            'var(--nutui-color-background, #f2f3f5)',
+        }}
+      >
         {list.map((item) => (
           <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
             {item.title}
@@ -59,7 +67,7 @@ const Demo25 = () => {
           right: 0,
           display: 'flex',
           alignItems: 'center',
-          height: 'var(--nutui-tabs-titles-height, 36px)',
+          height: `var(--nutui-tabs-titles-height, ${pxTransform(36)})`,
         }}
       >
         <View
@@ -80,7 +88,7 @@ const Demo25 = () => {
             background: 'var(--nutui-color-background, #f0f2f7)',
           }}
         >
-          <Search width={18} height={18} />
+          <Search width={pxTransform(18)} height={pxTransform(18)} />
         </View>
       </View>
     </View>

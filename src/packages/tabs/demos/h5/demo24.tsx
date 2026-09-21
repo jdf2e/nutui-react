@@ -12,7 +12,9 @@ const Demo24 = () => {
   return (
     <Tabs
       value={tabvalue}
-      style={{ '--nutui-tabs-titles-height': '44px' }}
+      style={{
+        '--nutui-tabs-titles-height': 'calc(44px * var(--nut-scale-f, 1))',
+      }}
       title={() => {
         return list.map((item) => {
           const active = tabvalue === item.paneKey
@@ -31,9 +33,9 @@ const Demo24 = () => {
               <span
                 style={{
                   textAlign: 'center',
-                  fontSize: '11px',
+                  fontSize: 'calc(11px * var(--nut-scale-font, 1))',
                   fontWeight: '400',
-                  lineHeight: '16px',
+                  lineHeight: 'calc(16px * var(--nut-scale-font, 1))',
                   color: active
                     ? 'var(--nutui-tabs-titles-item-active-color, #ff0f23)'
                     : 'var(--nutui-color-text, #505259)',
