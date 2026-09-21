@@ -8,13 +8,7 @@ import { SECRET } from '@/packages/form/useform'
 import { WebFormItemProps } from '@/types'
 
 type TextAlign =
-  | 'start'
-  | 'end'
-  | 'left'
-  | 'right'
-  | 'center'
-  | 'justify'
-  | 'match-parent'
+  'start' | 'end' | 'left' | 'right' | 'center' | 'justify' | 'match-parent'
 
 const defaultProps = {
   ...ComponentDefaults,

@@ -198,8 +198,9 @@ export const Toast: FunctionComponent<
   )
 }
 
-export interface ToastOptions
-  extends Partial<Omit<TaroToastProps, 'visible'>> {}
+export interface ToastOptions extends Partial<
+  Omit<TaroToastProps, 'visible'>
+> {}
 
 export function show(selector: string, options: ToastOptions) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
