@@ -13,9 +13,6 @@ const Demo25 = () => {
     { title: 'Tab6', paneKey: 'c6' },
   ]
 
-  const maskUrl =
-    'https://img20.360buyimg.com/img/jfs/t1/528620/16/3371/845/6aacb069F6a9923f5/0276020048fb8b3a.png'
-
   const renderTitles = () => {
     const items = list.map((item) => {
       const active = tabvalue === item.paneKey
@@ -46,7 +43,6 @@ const Demo25 = () => {
     <div
       style={{
         position: 'relative',
-        '--nutui-tabs-titles-background-color': '#fff',
       }}
     >
       <Tabs value={tabvalue} align="left" title={renderTitles}>
@@ -66,10 +62,13 @@ const Demo25 = () => {
           height: 'var(--nutui-tabs-titles-height, 36px)',
         }}
       >
-        <img
-          src={maskUrl}
-          alt=""
-          style={{ display: 'block', width: '16px', height: '100%' }}
+        <div
+          style={{
+            width: '16px',
+            height: '100%',
+            background:
+              'linear-gradient(to left, var(--nutui-color-background, #f0f2f7) 0%, transparent 100%)',
+          }}
         />
         <div
           style={{
@@ -78,7 +77,7 @@ const Demo25 = () => {
             justifyContent: 'center',
             height: '100%',
             width: 'calc(36px * var(--nut-scale-f, 1))',
-            background: 'var(--nutui-tabs-titles-background-color, #fff)',
+            background: 'var(--nutui-color-background, #f0f2f7)',
           }}
         >
           <Search width={18} height={18} />
