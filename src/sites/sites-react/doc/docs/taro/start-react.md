@@ -209,6 +209,8 @@ module.exports = {
           `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style`,
         // 自动加载 css 样式文件
         // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/css`
+        // 自动加载 css 样式文件（小程序专用，已移除 RTL 样式，体积更小）
+        // customStyleName: (name) => `@nutui/nutui-react-taro/dist/es/packages/${name.toLowerCase()}/style/mini`
 
         // JMAPP 主题
         // 自动加载 scss 样式文件
@@ -233,11 +235,14 @@ module.exports = {
 ```js
 {
   sass: {
-    data: '@import "@nutui/nutui-react-taro/dist/styles/variables.scss";'
-    // JMAPP 主题
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss';`
-    // JRKF 主题
-    // data: `@import '@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss';`
+    // resource 仅注入纯 Sass 变量/函数，不含实体 CSS 输出
+    resource: [
+      path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables.scss'),
+      // JMAPP 主题
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jmapp.scss'),
+      // JRKF 主题
+      // path.resolve(__dirname, 'node_modules/@nutui/nutui-react-taro/dist/styles/variables-jrkf.scss'),
+    ],
   }
 }
 ```

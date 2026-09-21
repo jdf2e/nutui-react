@@ -21,6 +21,16 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const require = createRequire(import.meta.url)
 const pxToScalePxInComponentScss = require('./px-to-scale-px-in-component-scss.cjs')
+
+// PostCSS plugin: remove .nut-rtl selectors for mini-program builds
+const stripRtlPlugin = {
+  postcssPlugin: 'strip-rtl',
+  Rule(rule) {
+    if (rule.selector && rule.selector.includes('.nut-rtl')) {
+      rule.remove()
+    }
+  },
+}
 const dist = 'release/taro/dist'
 const filePath = resolve(__dirname, '../package.json')
 const packageJson = JSON.parse(readFileSync(filePath, 'utf8'))
@@ -289,6 +299,11 @@ async function buildAllCSS(themeName = '') {
       }
     },
   })
+
+  // generate mini-program variant without RTL rules
+  const fullCss = await readFile(join(__dirname, `../${dist}/${themeStylePath}.css`), { encoding: 'utf8' })
+  const miniResult = await postcss([stripRtlPlugin]).process(fullCss, { from: undefined })
+  await dest(`${dist}/${themeStylePath}.mini.css`, miniResult.css)
 }
 
 async function buildThemeCSS() {
@@ -400,29 +415,41 @@ async function buildCSS(themeName = '') {
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/${base}`), postcssRes.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/${base}`), postcssRes.css)
 
-    const code = sass.compileString(variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
+    // strip CSS entity blocks (:root/page {}) from variables before per-component compile
+    // these blocks belong in the global style.css entry, not repeated in each component
+    const variablesSassOnly = variables.toString().replace(/:root\s*,?\s*\npage\s*\{[^}]*\}\n?/g, '')
+    const code = sass.compileString(variablesSassOnly + '\n' + postcssRes.css.replaceAll('../../../../', '../../'), {
       loadPaths: [loadPath],
     })
     await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.css`), code.css)
     await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.css`), code.css)
 
+    // strip .nut-rtl rules for mini-program — no RTL needed in weapp/jd/tt etc.
+    const miniCssResult = await postcss([stripRtlPlugin]).process(code.css, { from: undefined })
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
+    await dest(join(`${dist}/cjs`, cssPath, `${themeDir}/style.mini.css`), miniCssResult.css)
+
     const jsContent = []
     const cssContent = []
+    const miniContent = []
     atRules.forEach((rule) => {
       rule = rule.replaceAll('\'', '')
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
         jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
+        miniContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
       } else if (rule.startsWith('../') || rule.startsWith('./')) {
         const base = basename(rule)
         const ext = extname(base)
         const name = base.replace(ext, '')
         jsContent.push(`import '../../${name}/${themeDir}';`)
         cssContent.push(`import '../../${name}/${themeDir}/css';`)
+        miniContent.push(`import '../../${name}/${themeDir}/mini';`)
       }
     })
     jsContent.push(`import './${base}';`)
     cssContent.push(`import './style.css';`)
+    miniContent.push(`import './style.mini.css';`)
 
     await dest(
       join(`${dist}/cjs`, cssPath, `${themeDir}/index.js`),
@@ -435,6 +462,13 @@ async function buildCSS(themeName = '') {
     await dest(
       join(`${dist}/cjs`, cssPath, `${themeDir}/css.js`),
       cssContent.join('\n'),
+    )
+
+    // 写 mini 文件（小程序专用，无 RTL）
+    await dest(join(`${dist}/es`, cssPath, `${themeDir}/mini.js`), miniContent.join('\n'))
+    await dest(
+      join(`${dist}/cjs`, cssPath, `${themeDir}/mini.js`),
+      miniContent.join('\n'),
     )
   }
 }
@@ -489,8 +523,10 @@ async function buildHarmonyCSS(themeName = '') {
         return result
       })
     const themeDir = themeName ? `style-${themeName}` : 'style'
+    // strip CSS entity blocks from variables — same as buildCSS
+    const variablesSassOnly = variables.toString().replace(/:root\s*,?\s*\npage\s*\{[^}]*\}\n?/g, '')
     const code = sass.compileString(
-      variables + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
+      variablesSassOnly + '\n' + postcssRes.css.replaceAll('../../../../', '../../'),
       {
         loadPaths: [loadPath],
       },
