@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { BaseProps } from '../../base/props'
 import { Direction } from '../../base/atoms'
 
@@ -12,4 +12,5 @@ export interface BaseLoading<LOTTIE_PROPS = any> extends BaseProps {
 
   jsonData: any
   lottieProps: Partial<LOTTIE_PROPS>
+  textStyle?: CSSProperties
 }
