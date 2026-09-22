@@ -132,3 +132,20 @@ npm install @nutui/nutui-react-taro
 - **Range labels and marks updates (compatible)**:
   - The left/right range label font size changed from `12px` to `16px` (`$font-size-md`), line height `24px`.
   - The mark dot size changed from `11px` to `8px`, mark text font size from `12px` to `14px` with `24px` line height, distributed aligned to the mark dot center line.
+
+### ActionSheet (Feedback)
+
+- **`position` prop now takes effect (behavior change)**:
+  - Previously the component hardcoded the popup position to `bottom` and ignored an externally passed `position`. It now supports `top` / `bottom`, still defaulting to `bottom`. If you passed `position` before and relied on it being ignored, remove that prop.
+- **Default styling of bottom list items changed (behavior change)**:
+  - A default divider is now shown between list items: the default value of `--nutui-actionsheet-item-border-bottom` changed from `none` to `$color-border` (the last item has no divider). The item line height changed from `24px` to `22px`, the vertical padding from `10px` to `13px`, and the list container gained `16px` of horizontal padding. The cancel button no longer has a top divider or gap above it, and its line height is now `40px` with a `$font-size-md` font size. To keep the old divider-free look, set `--nutui-actionsheet-item-border-bottom` to `none`.
+- **`optionKey` now includes `icon` by default (behavior change)**:
+  - The default `optionKey` now includes `icon: 'icon'`. When items in a bottom-list `options` contain an `icon` field, the list automatically switches to a left-aligned icon list layout. If your data already has a field named `icon` that you do not want rendered as an icon, point `optionKey` at a different icon field name or remove that field.
+- **Header structure moved from Popup rendering to component self-rendering (compatible)**:
+  - The title and description are now rendered by ActionSheet itself, changing the DOM from `.nut-popup-title*` to `.nut-actionsheet-header*`. If you overrode the action sheet header via `.nut-popup-title` class names, migrate to `.nut-actionsheet-header`, `.nut-actionsheet-header-title`, and `.nut-actionsheet-header-description`.
+- **Removed CSS variable `--nutui-actionsheet-border-color` (breaking change)**:
+  - This variable previously set the color of the divider below the title and above the cancel button. Since the header is now self-rendered and the cancel button no longer has a top divider, the variable is no longer used and has been removed. If you customized the divider color via `--nutui-actionsheet-border-color`, use `--nutui-actionsheet-item-border-bottom` instead.
+- **Top popup and grid layout (new)**:
+  - Pop up from the top via `position="top"`; the content is displayed as a grid. `options` support an `icon` field (a string is rendered with `img`, or a custom node can be passed), and `columns` sets the number of columns (only `4` / `5`, default `5`). `cancelText` is rendered as a "collapse" button in top mode. The grid layout can also be used for bottom popups via `layout="grid"`.
+- **Header styling and close capabilities (new)**:
+  - Added `titleAlign` (`left` / `center`, default `center`; `description` only takes effect when `center`), `headerLeft`, and `headerRight` for customizing the left and right content of the header, as well as `closeable` / `closeIconPosition` to control the display and position of the close button. All of the above are purely additive and do not affect existing usage.
