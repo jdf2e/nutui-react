@@ -6,9 +6,9 @@ import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider/index.taro'
 import { pxTransform } from '@/utils/taro/px-transform'
-import { CellProps } from './types'
+import { TaroCellProps } from '@/types'
 
-interface CellTaroProps extends CellProps {
+interface CellTaroProps extends TaroCellProps {
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => void
@@ -19,6 +19,8 @@ const defaultProps = {
   title: null,
   description: null,
   extra: null,
+  icon: null,
+  content: null,
   radius: '6px',
   align: 'flex-start',
   clickable: false,
@@ -40,6 +42,8 @@ export const Cell: FunctionComponent<
     title,
     description,
     extra,
+    icon,
+    content,
     radius,
     align,
     isLast,
@@ -67,6 +71,48 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
+  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
+  const headerStyle = { alignItems: align }
+
+  const titleNode = title ? (
+    <View className={`${classPrefix}-title`}>{title}</View>
+  ) : null
+  const descriptionNode = description ? (
+    <View className={`${classPrefix}-description`}>{description}</View>
+  ) : null
+  const extraNode = extra ? (
+    <View className={`${classPrefix}-extra`}>{extra}</View>
+  ) : null
+
+  const renderInner = () => {
+    // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
+    if (content) {
+      return (
+        <View className={`${classPrefix}-body`}>
+          {title || extra ? (
+            <View className={`${classPrefix}-header`} style={headerStyle}>
+              {titleNode}
+              {extraNode}
+            </View>
+          ) : null}
+          {descriptionNode}
+          <View className={`${classPrefix}-content`}>{content}</View>
+        </View>
+      )
+    }
+    return (
+      <>
+        {title || description ? (
+          <View className={`${classPrefix}-body`}>
+            {titleNode}
+            {descriptionNode}
+          </View>
+        ) : null}
+        {extraNode}
+      </>
+    )
+  }
+
   return (
     <>
       <View
@@ -86,21 +132,10 @@ export const Cell: FunctionComponent<
       >
         {children || (
           <>
-            {title || description ? (
-              <View className={`${classPrefix}-left`}>
-                {title ? (
-                  <View className={`${classPrefix}-title`}>{title}</View>
-                ) : null}
-                {description ? (
-                  <View className={`${classPrefix}-description`}>
-                    {description}
-                  </View>
-                ) : null}
-              </View>
+            {icon ? (
+              <View className={`${classPrefix}-icon`}>{icon}</View>
             ) : null}
-            {extra ? (
-              <View className={`${classPrefix}-extra`}>{extra}</View>
-            ) : null}
+            {renderInner()}
           </>
         )}
       </View>

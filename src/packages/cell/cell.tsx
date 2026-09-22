@@ -4,24 +4,26 @@ import { ComponentDefaults } from '@/utils/typings'
 import CellGroup from '@/packages/cellgroup'
 import CellGroupContext from '@/packages/cellgroup/context'
 import { useRtl } from '@/packages/configprovider'
-import { CellProps } from './types'
+import { WebCellProps } from '@/types'
 
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
   description: null,
   extra: null,
+  icon: null,
+  content: null,
   radius: '6px',
   align: 'flex-start',
   clickable: false,
   isLast: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
-} as CellProps
+} as WebCellProps
 
 const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
-  Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
+  Partial<WebCellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > & { Group: typeof CellGroup } = (props) => {
   const ctx = useContext(CellGroupContext)
   const {
@@ -31,6 +33,8 @@ export const Cell: FunctionComponent<
     title,
     description,
     extra,
+    icon,
+    content,
     radius,
     align,
     isLast,
@@ -53,6 +57,48 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
+  // 结构 B 中标题与右侧区同行，纵向对齐需与根节点保持一致
+  const headerStyle = { alignItems: align }
+
+  const titleNode = title ? (
+    <div className={`${classPrefix}-title`}>{title}</div>
+  ) : null
+  const descriptionNode = description ? (
+    <div className={`${classPrefix}-description`}>{description}</div>
+  ) : null
+  const extraNode = extra ? (
+    <div className={`${classPrefix}-extra`}>{extra}</div>
+  ) : null
+
+  const renderInner = () => {
+    // 有 content 时说明文案与业务插槽需要通栏，改用 header + 通栏子块的结构
+    if (content) {
+      return (
+        <div className={`${classPrefix}-body`}>
+          {title || extra ? (
+            <div className={`${classPrefix}-header`} style={headerStyle}>
+              {titleNode}
+              {extraNode}
+            </div>
+          ) : null}
+          {descriptionNode}
+          <div className={`${classPrefix}-content`}>{content}</div>
+        </div>
+      )
+    }
+    return (
+      <>
+        {title || description ? (
+          <div className={`${classPrefix}-body`}>
+            {titleNode}
+            {descriptionNode}
+          </div>
+        ) : null}
+        {extraNode}
+      </>
+    )
+  }
+
   return (
     <>
       <div
@@ -72,21 +118,8 @@ export const Cell: FunctionComponent<
       >
         {children || (
           <>
-            {title || description ? (
-              <div className={`${classPrefix}-left`}>
-                {title ? (
-                  <div className={`${classPrefix}-title`}>{title}</div>
-                ) : null}
-                {description ? (
-                  <div className={`${classPrefix}-description`}>
-                    {description}
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
-            {extra ? (
-              <div className={`${classPrefix}-extra`}>{extra}</div>
-            ) : null}
+            {icon ? <div className={`${classPrefix}-icon`}>{icon}</div> : null}
+            {renderInner()}
           </>
         )}
       </div>

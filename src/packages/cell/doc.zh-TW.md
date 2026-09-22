@@ -88,11 +88,13 @@ import { Cell } from '@nutui/nutui-react'
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| title | 標題 | `ReactNode` | `-` |
-| description | 描述 | `ReactNode` | `-` |
-| extra | 右側描述 | `ReactNode` | `-` |
+| icon | 左側識別區，常用於圖標或頭像。尺寸由使用方決定，組件只負責間距與對齊 | `ReactNode` | `-` |
+| title | 標題，超出容器寬度時單行打點 | `ReactNode` | `-` |
+| description | 描述。未傳入 `content` 時位於標題下方；傳入 `content` 時通欄展示，不限行數 | `ReactNode` | `-` |
+| extra | 右側描述，按內容寬度自適應，與主信息區保持最小間距 | `ReactNode` | `-` |
+| content | 下掛通欄插槽（業務可替換內容區域），寬度撐滿內容區並與主信息左邊界對齊 | `ReactNode` | `-` |
 | radius | 圓角半徑 | `string` | `6px` |
-| align | 縱軸方向上的對齊方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| align | 縱軸方向上的對齊方式 | `flex-start` \| `center` \| `flex-end` \| `baseline` | `flex-start` |
 | clickable | 點擊的樣式反饋 | `boolean` | `false` |
 | onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
@@ -111,7 +113,9 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 單元格圓角大小 | `6px` |
-| \--nutui-cell-padding | 單元格內邊距 | `13px 16px` |
+| \--nutui-cell-padding | 單元格內邊距 | `16px` |
+| \--nutui-cell-icon-margin | 識別區與主信息區之間的間距 | `12px` |
+| \--nutui-cell-extra-margin | 主信息區與右側區域之間的最小間距 | `24px` |
 | \--nutui-cell-line-height | 單元格行高 | `20px` |
 | \--nutui-cell-divider-left | 單元格分割線左邊距 | `16px` |
 | \--nutui-cell-divider-right | 單元格分割線右邊距 | `16px` |

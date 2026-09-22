@@ -192,6 +192,8 @@ export type NutCSSVariables =
   | 'nutuiCellExtraColor'
   | 'nutuiCellBorderRadius'
   | 'nutuiCellPadding'
+  | 'nutuiCellIconMargin'
+  | 'nutuiCellExtraMargin'
   | 'nutuiCellLineHeight'
   | 'nutuiCellDividerRight'
   | 'nutuiCellDividerLeft'

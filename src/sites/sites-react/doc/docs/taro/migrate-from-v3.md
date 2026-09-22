@@ -149,3 +149,16 @@ npm install @nutui/nutui-react-taro
   - 通过 `position="top"` 从顶部弹出，内容以网格形式展示，`options` 支持 `icon` 字段（字符串使用 `Image` 渲染，也可传入自定义节点），可通过 `columns` 设置列数（仅支持 `4` / `5`，默认 `5`）；`cancelText` 在顶部模式下渲染为「点击收起」按钮。网格布局也可通过 `layout="grid"` 用于底部弹出。
 - **头部样式与关闭能力（新增）**：
   - 新增 `titleAlign`（`left` / `center`，默认 `center`，仅 `center` 时 `description` 生效）、`headerLeft`、`headerRight` 自定义头部左右内容，以及 `closeable` / `closeIconPosition` 控制关闭按钮的显示与位置。以上均为纯新增能力，不影响原有用法。
+
+### Cell (展示类)
+
+- **左侧区域类名由 `.nut-cell-left` 改为 `.nut-cell-body`（不兼容变更）**：
+  - 为承载新增的识别区（`icon`），原左侧内容区更名为主信息区。若此前通过 `.nut-cell-left` 覆盖过单元格样式，请改用 `.nut-cell-body`。
+- **单元格内边距调整为 `16px`（行为变更）**：
+  - `--nutui-cell-padding` 默认值由 `13px 16px` 调整为 `16px`，单元格整体高度会增加。若需维持原有间距，可显式设置 `--nutui-cell-padding: 13px 16px`。
+- **标题改为单行打点（行为变更）**：
+  - `title` 超长时不再换行，改为单行省略号截断。若需要多行标题，请在 `title` 中自行传入节点并覆盖截断样式。
+- **右侧区域不再参与拉伸（行为变更）**：
+  - `.nut-cell-extra` 由 `flex: 1` 改为按内容宽度自适应，并与主信息区保持 `24px` 最小间距（可通过 `--nutui-cell-extra-margin` 调整）。此前右侧内容较长时会与主信息区平分剩余空间，现在改为右侧优先占位、主信息区相应收窄，可能出现主标题被截断而右侧内容完整的观感变化。
+- **新增识别区与下挂插槽（新增）**：
+  - 新增 `icon` 属性用于渲染左侧识别区（图标或头像），组件只负责 `12px` 间距（`--nutui-cell-icon-margin`）与对齐，尺寸由使用方决定；新增 `content` 属性作为下挂通栏业务插槽，宽度撑满内容区并与主信息左边界对齐。传入 `content` 后，`description` 会由标题下方改为通栏展示。两项均为纯新增能力，不传时不影响原有用法。
