@@ -10,6 +10,10 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+import Demo9 from './demos/taro/demo9'
+import Demo10 from './demos/taro/demo10'
 
 const PaginationDemo = () => {
   const [translated] = useTranslate({
@@ -20,6 +24,10 @@ const PaginationDemo = () => {
       ellipse: '显示省略号',
       custom: '自定义按钮',
       uncontrolled: '非受控方式',
+      capsule: '胶囊数字型分页符',
+      text: '纯文本型分页符',
+      progress: '进度条指示型分页符',
+      combined: '胶囊数字型 & 进度条指示型分页符',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -28,6 +36,10 @@ const PaginationDemo = () => {
       ellipse: '顯示省略號',
       custom: '自定義按鈕',
       uncontrolled: '非受控方式',
+      capsule: '膠囊數字型分頁符',
+      text: '純文本型分頁符',
+      progress: '進度條指示型分頁符',
+      combined: '膠囊數字型 & 進度條指示型分頁符',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -36,6 +48,10 @@ const PaginationDemo = () => {
       ellipse: 'Show ellipsis',
       custom: 'Custom button',
       uncontrolled: 'Uncontrolled mode',
+      capsule: 'Capsule number indicator',
+      text: 'Plain text indicator',
+      progress: 'Progress bar indicator',
+      combined: 'Capsule & progress indicator',
     },
   })
 
@@ -67,6 +83,14 @@ const PaginationDemo = () => {
         <Cell>
           <Demo6 />
         </Cell>
+        <View className="h2">{translated.capsule}</View>
+        <Demo7 />
+        <View className="h2">{translated.text}</View>
+        <Demo8 />
+        <View className="h2">{translated.progress}</View>
+        <Demo9 />
+        <View className="h2">{translated.combined}</View>
+        <Demo10 />
       </ScrollView>
     </>
   )
