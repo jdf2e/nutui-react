@@ -67,23 +67,76 @@
 }
 
 .nut-pagination-lite {
-  height: $pagination-lite-height;
-  padding: 0 $spacing-xs;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+// 进度条指示型宿主需占满宽度以便 segment 等分
+.nut-pagination-lite-progress {
+  display: flex;
+  width: 100%;
+}
+
+// 胶囊数字型：白字 + 半透明遮罩背景 + 圆角胶囊
+.nut-pagination-capsule {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: $pagination-capsule-padding;
+  color: $pagination-capsule-color;
+  font-size: $pagination-capsule-font-size;
+  line-height: 1;
+  background-color: $pagination-capsule-background-color;
+  border-radius: $pagination-capsule-radius;
+}
+
+.nut-pagination-capsule-active,
+.nut-pagination-capsule-spliterator,
+.nut-pagination-capsule-default {
+  color: $pagination-capsule-color;
+  font-size: $pagination-capsule-font-size;
+}
+
+// 纯文本型：沉浸导航区居中，18px 600
+.nut-pagination-text {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: $pagination-text-color;
+  font-size: $pagination-text-font-size;
+  font-weight: $pagination-text-font-weight;
+  line-height: 1;
+}
+
+.nut-pagination-text-active,
+.nut-pagination-text-spliterator,
+.nut-pagination-text-default {
+  color: $pagination-text-color;
+  font-size: $pagination-text-font-size;
+  font-weight: $pagination-text-font-weight;
+}
+
+// 进度条指示型：等分 segment，当前帧高亮
+.nut-pagination-progress {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: $color-primary-text;
-  background-color: $pagination-lite-background-color;
-  border-radius: $pagination-lite-radius;
+  width: 100%;
+  column-gap: $pagination-progress-gap;
 }
 
-.nut-pagination-lite-active,
-.nut-pagination-lite-default {
-  font-size: $font-size-xs;
-  color: $pagination-lite-color;
+.nut-pagination-progress-item {
+  flex: 1 1 0;
+  min-width: 8px;
+  height: $pagination-progress-height;
+  border-radius: calc(#{$pagination-progress-height} / 2);
+  background-color: $pagination-progress-inactive-color;
+  transition: background-color 0.2s ease;
 }
 
-.nut-pagination-lite-spliterator {
-  font-size: $font-size-xs;
-  color: $pagination-lite-color;
+.nut-pagination-progress-item-active {
+  background-color: $pagination-progress-active-color;
 }

@@ -124,3 +124,93 @@ test('test uncontrolled mode', () => {
     container.querySelector('.nut-pagination-item-active')
   ).toHaveTextContent('4')
 })
+
+test('should render lite capsule indicator by default', () => {
+  const { container } = render(
+    <Pagination total={12} pageSize={1} mode="lite" defaultValue={2} />
+  )
+  const lite = container.querySelector('.nut-pagination-lite')
+  expect(lite).toHaveClass('nut-pagination-lite-capsule')
+  const capsule = container.querySelector('.nut-pagination-capsule')
+  expect(capsule).toBeInTheDocument()
+  expect(
+    container.querySelector('.nut-pagination-capsule-active')
+  ).toHaveTextContent('2')
+  expect(
+    container.querySelector('.nut-pagination-capsule-default')
+  ).toHaveTextContent('12')
+})
+
+test('should render lite text indicator', () => {
+  const { container } = render(
+    <Pagination
+      total={9}
+      pageSize={1}
+      mode="lite"
+      indicatorType="text"
+      defaultValue={1}
+    />
+  )
+  expect(container.querySelector('.nut-pagination-lite')).toHaveClass(
+    'nut-pagination-lite-text'
+  )
+  expect(
+    container.querySelector('.nut-pagination-text-active')
+  ).toHaveTextContent('1')
+  expect(
+    container.querySelector('.nut-pagination-text-default')
+  ).toHaveTextContent('9')
+})
+
+test('should render lite progress indicator with active segment', () => {
+  const { container } = render(
+    <Pagination
+      total={5}
+      pageSize={1}
+      mode="lite"
+      indicatorType="progress"
+      defaultValue={3}
+    />
+  )
+  const items = container.querySelectorAll('.nut-pagination-progress-item')
+  expect(items).toHaveLength(5)
+  const actives = container.querySelectorAll(
+    '.nut-pagination-progress-item-active'
+  )
+  expect(actives).toHaveLength(1)
+  expect(items[2]).toHaveClass('nut-pagination-progress-item-active')
+})
+
+test('should sync progress active segment when value changes', () => {
+  const { container, rerender } = render(
+    <Pagination
+      total={4}
+      pageSize={1}
+      mode="lite"
+      indicatorType="progress"
+      value={1}
+    />
+  )
+  let items = container.querySelectorAll('.nut-pagination-progress-item')
+  expect(items[0]).toHaveClass('nut-pagination-progress-item-active')
+  rerender(
+    <Pagination
+      total={4}
+      pageSize={1}
+      mode="lite"
+      indicatorType="progress"
+      value={4}
+    />
+  )
+  items = container.querySelectorAll('.nut-pagination-progress-item')
+  expect(items[3]).toHaveClass('nut-pagination-progress-item-active')
+})
+
+test('should apply loop class in lite mode', () => {
+  const { container } = render(
+    <Pagination total={3} pageSize={1} mode="lite" loop />
+  )
+  expect(container.querySelector('.nut-pagination-lite')).toHaveClass(
+    'nut-pagination-lite-loop'
+  )
+})
