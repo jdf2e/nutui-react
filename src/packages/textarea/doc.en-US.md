@@ -1,6 +1,6 @@
 # TextArea
 
-Enter or edit text in the text box, and limit the number of entries is supported.
+Enter or edit multiline text with character counting and over-limit feedback.
 
 ## Import
 
@@ -83,7 +83,7 @@ import { TextArea } from '@nutui/nutui-react'
 | value | input value, controlled | `string` | `-` |
 | defaultValue | input default value, uncontrolled | `string` | `-` |
 | placeholder | set placeholder prompt text | `string` | `please enter content` |
-| maxLength | limit the maximum input characters, no limit with `-1` | `number` | `140` |
+| maxLength | character validation threshold; input remains editable after exceeding it, no limit with `-1` | `number` | `140` |
 | rows | height of textarea, with priority higher than autoSize attribute | `number` | `2` |
 | showCount | whether textarea displays the input characters. Use | `boolean` | `false` |
 | autoSize | whether to adapt the content height. | `boolean` | `false` |
@@ -120,6 +120,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-textarea-padding | container padding | `8px 12px` |
 | \--nutui-textarea-container-gray-background-color | gray container background | `color-background-component` |
 | \--nutui-textarea-container-white-background-color | white container background | `$color-background-overlay` |
+| \--nutui-textarea-limit-error-color | over-limit count color | `$color-error` |
 | \--nutui-textarea-text-color | text color | `$color-title` |
 | \--nutui-textarea-text-curror-color | caret color | `$color-title` |
 

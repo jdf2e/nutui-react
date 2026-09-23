@@ -1,6 +1,6 @@
 # TextArea 文本域
 
-文本框內輸入或編輯文字，支持限制輸入數量。
+用於輸入或編輯可換行的長文本，支持字符統計和超限提示。
 
 ## 引入
 
@@ -82,7 +82,7 @@ import { TextArea } from '@nutui/nutui-react'
 | value | 輸入框內容，受控 | `string` | `-` |
 | defaultValue | 初始默認值，非受控 | `string` | `-` |
 | placeholder | 設置佔位提示文字 | `string` | `請輸入內容` |
-| maxLength | 限制最長輸入字符，-1 錶示無限制 | `number` | `140` |
+| maxLength | 字數校驗閾值，超出後仍可輸入，-1 表示無限制 | `number` | `140` |
 | rows | textarea 的行數 | `number` | `2` |
 | showCount | textarea 是否展示輸入字符。須配合`maxLength`使用 | `boolean` | `false` |
 | autoSize | 高度是否可拉伸 | `boolean` | `false` |
@@ -119,6 +119,7 @@ import { TextArea } from '@nutui/nutui-react'
 | \--nutui-textarea-padding | 容器型內邊距 | `8px 12px` |
 | \--nutui-textarea-container-gray-background-color | 灰底容器背景色 | `color-background-component` |
 | \--nutui-textarea-container-white-background-color | 白底容器背景色 | `$color-background-overlay` |
+| \--nutui-textarea-limit-error-color | 超限字數顏色 | `$color-error` |
 | \--nutui-textarea-text-color | 文本顏色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光標顏色 | `$color-title` |
 

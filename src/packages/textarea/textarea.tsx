@@ -58,22 +58,15 @@ export const TextArea = forwardRef(
 
     const classPrefix = 'nut-textarea'
     const textareaRef = useRef<any>(null)
-    const compositionRef = useRef(false)
     const rtl = useRtl()
-
-    const format = (value: string) => {
-      if (maxLength !== -1 && value.length > maxLength) {
-        return value.substring(0, maxLength)
-      }
-      return value
-    }
 
     const [innerValue, setInnerValue] = usePropsValue<string>({
       value,
       defaultValue,
-      finalValue: format(defaultValue),
+      finalValue: defaultValue,
       onChange,
     })
+    const isOverLimit = maxLength >= 0 && innerValue.length > maxLength
 
     useEffect(() => {
       if (autoSize) setContentHeight()
@@ -91,9 +84,7 @@ export const TextArea = forwardRef(
     }
 
     const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const text = event.target
-      const value = compositionRef.current ? text.value : format(text.value)
-      setInnerValue(value)
+      setInnerValue(event.target.value)
     }
 
     const isDisabled = () => disabled || readOnly
@@ -148,14 +139,7 @@ export const TextArea = forwardRef(
               onChange={handleChange}
               onBlur={handleBlur}
               onFocus={handleFocus}
-              onCompositionEnd={() => {
-                compositionRef.current = false
-              }}
-              onCompositionStart={() => {
-                compositionRef.current = true
-              }}
               rows={rows}
-              maxLength={maxLength === -1 ? undefined : maxLength}
               placeholder={
                 placeholder !== undefined ? placeholder : locale.placeholder
               }
@@ -163,6 +147,7 @@ export const TextArea = forwardRef(
             {showCount && (
               <div
                 className={classNames(`${classPrefix}-limit`, {
+                  [`${classPrefix}-limit-error`]: isOverLimit,
                   [`${classPrefix}-limit-disabled`]: disabled,
                 })}
               >

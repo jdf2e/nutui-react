@@ -857,6 +857,10 @@ $textarea-container-white-background-color: var(
   --nutui-textarea-container-white-background-color,
   $color-background-overlay
 ) !default;
+$textarea-limit-error-color: var(
+  --nutui-textarea-limit-error-color,
+  $color-error
+) !default;
 $textarea-limit-color: var(
   --nutui-textarea-limit-color,
   $color-text-help

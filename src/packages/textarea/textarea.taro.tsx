@@ -44,29 +44,21 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
   } = { ...defaultProps, ...props }
 
   const classPrefix = 'nut-textarea'
-  const compositionRef = useRef(false)
   const rtl = useRtl()
-
-  const format = (value: string) => {
-    if (maxLength !== -1 && value.length > maxLength) {
-      return value.substring(0, maxLength)
-    }
-    return value
-  }
 
   const [innerValue, setInnerValue] = usePropsValue<string>({
     value,
     defaultValue,
-    finalValue: format(defaultValue),
+    finalValue: defaultValue,
     onChange,
   })
+  const isOverLimit = maxLength >= 0 && innerValue.length > maxLength
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleChange = (event: BaseEventOrig) => {
     const text = event?.detail?.value
     if (text) {
-      const value = compositionRef.current ? text : format(text)
-      setInnerValue(value)
+      setInnerValue(text)
     } else {
       setInnerValue('')
     }
@@ -123,12 +115,6 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
               style,
               readOnly,
               rows,
-              onCompositionStart: () => {
-                compositionRef.current = true
-              },
-              onCompositionEnd: () => {
-                compositionRef.current = false
-              },
             }}
             className={classNames(`${classPrefix}-textarea`, {
               [`${classPrefix}-textarea-disabled`]: disabled,
@@ -141,7 +127,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
             onBlur={handleBlur}
             onFocus={handleFocus}
             autoHeight={autoSize}
-            maxlength={maxLength}
+            maxlength={-1}
             placeholder={
               placeholder !== undefined ? placeholder : locale.placeholder
             }
@@ -150,6 +136,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
           {showCount && (
             <View
               className={classNames(`${classPrefix}-limit`, {
+                [`${classPrefix}-limit-error`]: isOverLimit,
                 [`${classPrefix}-limit-disabled`]: disabled,
               })}
             >

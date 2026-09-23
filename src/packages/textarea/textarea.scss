@@ -43,6 +43,9 @@
     line-height: $font-size-base;
     margin-top: $spacing-base;
     color: $color-text-help;
+    &-error {
+      color: $textarea-limit-error-color;
+    }
     &-disabled {
       cursor: not-allowed;
       color: $color-text-disabled;

@@ -55,6 +55,9 @@ test('textarea defines type layout styles and tokens', () => {
   expect(styles).toContain(
     'background-color: $textarea-container-white-background-color'
   )
+  expect(styles).toMatch(
+    /&-limit\s*\{[\s\S]*?&-error\s*\{[\s\S]*?color: \$textarea-limit-error-color/
+  )
 
   const variableFiles = [
     {
@@ -102,8 +105,59 @@ test('textarea defines type layout styles and tokens', () => {
       expect(variables).toContain('var(--nutui-color-background-component)')
       expect(variables).toContain('$textarea-container-white-background-color:')
       expect(variables).toContain('$color-background-overlay')
+      expect(variables).toContain('$textarea-limit-error-color:')
+      expect(variables).toContain('--nutui-textarea-limit-error-color')
+      expect(variables).toContain('$color-error')
     }
   )
+})
+
+test('textarea keeps over-limit text and marks count as error', () => {
+  const handleChange = vi.fn()
+  const { container } = render(
+    <TextArea
+      defaultValue="京东多快"
+      showCount
+      maxLength={3}
+      onChange={handleChange}
+    />
+  )
+  const textarea = container.querySelector(
+    '.nut-textarea-textarea'
+  ) as HTMLTextAreaElement
+  const limit = container.querySelector('.nut-textarea-limit')
+
+  expect(textarea).toHaveValue('京东多快')
+  expect(textarea).not.toHaveAttribute('maxlength')
+  expect(limit).toHaveTextContent('4/3')
+  expect(limit).toHaveClass('nut-textarea-limit-error')
+
+  fireEvent.change(textarea, { target: { value: '京东多快好' } })
+
+  expect(textarea).toHaveValue('京东多快好')
+  expect(handleChange).toHaveBeenLastCalledWith('京东多快好')
+  expect(limit).toHaveTextContent('5/3')
+})
+
+test('textarea does not mark unlimited count as error', () => {
+  const { container } = render(
+    <TextArea defaultValue="京东多快好" showCount maxLength={-1} />
+  )
+
+  expect(container.querySelector('.nut-textarea-limit')).not.toHaveClass(
+    'nut-textarea-limit-error'
+  )
+})
+
+test('taro textarea disables native truncation', () => {
+  const taroTextarea = readFileSync(
+    resolve(process.cwd(), 'src/packages/textarea/textarea.taro.tsx'),
+    'utf8'
+  )
+
+  expect(taroTextarea).toContain('maxlength={-1}')
+  expect(taroTextarea).toMatch(/limit-error.+isOverLimit/)
+  expect(taroTextarea).not.toContain('const format =')
 })
 
 test('textarea readOnly test', () => {
