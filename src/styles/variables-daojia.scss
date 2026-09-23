@@ -351,7 +351,7 @@ $cell-title-font-size: var(--nutui-cell-title-font-size,
 $cell-description-font-size: var(--nutui-cell-description-font-size,
     $font-size-s) !default;
 $cell-description-color: var(--nutui-cell-description-color,
-    $color-text) !default;
+    $color-text-help) !default;
 $cell-extra-font-size: var(--nutui-cell-extra-font-size,
     $font-size-base) !default;
 $cell-extra-color: var(--nutui-cell-extra-color, $color-text) !default;
@@ -361,6 +361,14 @@ $cell-icon-margin: var(--nutui-cell-icon-margin, $spacing-xl) !default;
 $cell-extra-margin: var(
   --nutui-cell-extra-margin,
   scale-px(24px)
+) !default;
+$cell-description-margin: var(
+  --nutui-cell-description-margin,
+  scale-px(2px)
+) !default;
+$cell-content-margin: var(
+  --nutui-cell-content-margin,
+  scale-px(8px)
 ) !default;
 $cell-line-height: var(--nutui-cell-line-height, 20px) !default;
 $cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;

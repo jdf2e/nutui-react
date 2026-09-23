@@ -108,7 +108,7 @@ import { Cell } from '@nutui/nutui-react'
 | --- | --- | --- |
 | \--nutui-cell-title-color | 單元格標題字體顏色 | `$color-title` |
 | \--nutui-cell-title-font-size | 單元格標題字體大小 | `$font-size-base` |
-| \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text` |
+| \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text-help` |
 | \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-s` |
 | \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-base` |
@@ -116,6 +116,8 @@ import { Cell } from '@nutui/nutui-react'
 | \--nutui-cell-padding | 單元格內邊距 | `16px` |
 | \--nutui-cell-icon-margin | 識別區與主信息區之間的間距 | `12px` |
 | \--nutui-cell-extra-margin | 主信息區與右側區域之間的最小間距 | `24px` |
+| \--nutui-cell-description-margin | 標題與說明文案之間的間距 | `2px` |
+| \--nutui-cell-content-margin | 說明文案與內容區域之間的間距 | `8px` |
 | \--nutui-cell-line-height | 單元格行高 | `20px` |
 | \--nutui-cell-divider-left | 單元格分割線左邊距 | `16px` |
 | \--nutui-cell-divider-right | 單元格分割線右邊距 | `16px` |

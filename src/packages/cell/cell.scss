@@ -23,6 +23,8 @@
   &-icon {
     flex: none;
     margin-right: $cell-icon-margin;
+    font-size: 0;
+    line-height: 0;
   }
 
   &-body {
@@ -49,6 +51,18 @@
   &-description {
     font-size: $cell-description-font-size;
     color: $cell-description-color;
+  }
+
+  // 标题与说明文案的间距；标题在两种结构下层级不同，需分别覆盖
+  &-body > &-title + &-description,
+  &-header + &-description {
+    margin-top: $cell-description-margin;
+  }
+
+  // 说明文案与内容区域的间距；无说明文案时内容区紧随 header，沿用同一间距
+  &-description + &-content,
+  &-header + &-content {
+    margin-top: $cell-content-margin;
   }
 
   &-content {

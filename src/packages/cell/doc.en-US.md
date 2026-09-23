@@ -106,7 +106,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-cell-title-color | The cell title the font color | `$color-title` |
 | \--nutui-cell-title-font-size | The cell title the font size | `$font-size-base` |
-| \--nutui-cell-description-color | The cell describes the font color | `$color-text` |
+| \--nutui-cell-description-color | The cell describes the font color | `$color-text-help` |
 | \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-s` |
 | \--nutui-cell-extra-color | The right side of the cell describes the font color | `$color-text` |
 | \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-base` |
@@ -114,6 +114,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-padding | Inside margins of cells | `16px` |
 | \--nutui-cell-icon-margin | Gap between the leading area and the main area | `12px` |
 | \--nutui-cell-extra-margin | Minimum gap between the main area and the right area | `24px` |
+| \--nutui-cell-description-margin | Gap between the title and the description | `2px` |
+| \--nutui-cell-content-margin | Gap between the description and the content area | `8px` |
 | \--nutui-cell-line-height | The row height of the cell | `20px` |
 | \--nutui-cell-divider-left | Left margin of cell divider | `16px` |
 | \--nutui-cell-divider-right | ArrowRight margin of cell divider | `16px` |
