@@ -154,7 +154,6 @@ const idID: BaseLang = {
     pullingText: 'Tarik ke bawah untuk menyegarkan',
     canReleaseText: 'Rilis untuk menyegarkan',
     refreshingText: 'Memuat...',
-    completeText: 'Penyegaran berhasil',
   },
   tour: {
     prevStepText: 'Sebelumnya',

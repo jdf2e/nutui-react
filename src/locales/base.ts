@@ -138,7 +138,6 @@ export interface BaseLang {
     pullingText: string
     canReleaseText: string
     refreshingText: string
-    completeText: string
   }
   tour: {
     prevStepText: string

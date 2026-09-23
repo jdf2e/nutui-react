@@ -14,12 +14,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+  }
 
-      &-icons {
-        width: $pulltorefresh-icon-width;
-        height: $pulltorefresh-icon-height;
-        margin-bottom: 4px;
-      }
+  // 图标一律由图片承载，尺寸直接给到图片本身。
+  // 不要挂到内层的 -head-content-icons 上：那个节点是 inline 的，width/height 会被忽略；
+  // 而且 renderIcon 的返回值并不经过它，挂在那里会导致自定义图标按原始尺寸撑开。
+  // img: H5；image: 小程序；taro-image-core: Taro 的 H5 实现（默认 320x240，必须显式覆盖）
+  &-status-icon {
+    img,
+    image,
+    taro-image-core {
+      display: block;
+      width: $pulltorefresh-icon-width;
+      height: $pulltorefresh-icon-height;
+      object-fit: contain;
     }
   }
 
