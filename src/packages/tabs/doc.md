@@ -200,6 +200,22 @@ import { Tabs } from '@nutui/nutui-react'
 
 :::
 
+### 自定义标签栏-辅助信息
+
+:::demo
+
+<CodeBlock src='h5/demo24.tsx'></CodeBlock>
+
+:::
+
+### 左对齐-辅助操作
+
+:::demo
+
+<CodeBlock src='h5/demo25.tsx'></CodeBlock>
+
+:::
+
 ## Tabs
 
 ### Props
@@ -237,22 +253,30 @@ import { Tabs } from '@nutui/nutui-react'
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tabs-titles-height | 水平方向标题的高度 | `44px` |
-| \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background` |
-| \--nutui-tabs-title-gap | Tab 标题的左右 margin | `0px` |
-| \--nutui-tabs-titles-font-size | Tab 标题的字号 | `$font-size-base` |
+| \--nutui-tabs-titles-height | 水平方向标题的高度 | `36px` |
+| \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background-overlay` |
+| \--nutui-tabs-titles-gap | Tab 标题的左右 margin | `8px` |
+| \--nutui-tabs-titles-font-size | Tab 标题的字号 | `$font-size-md` |
+| \--nutui-tabs-titles-item-font-family | Tab 标题的字体 | `PingFangSC-Semibold` |
+| \--nutui-tabs-titles-item-font-weight | Tab 标题的字重 | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-min-width | 水平方向标题的最小宽度 | `50px` |
 | \--nutui-tabs-titles-item-color | Tab 标题的字色 | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab 选中标题的字色 | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 选中标题的字重 | `$font-weight-bold` |
-| \--nutui-tabs-titles-item-active-font-size | Tab 选中标题的字号 | `$font-size-l` |
+| \--nutui-tabs-titles-item-active-font-family | Tab 选中标题的字体 | `PingFangSC-Semibold` |
+| \--nutui-tabs-titles-item-active-font-size | Tab 选中标题的字号 | `$font-size-md` |
 | \--nutui-tabs-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width | 水平方向激活选项卡线条的宽度 | `12px` |
+| \--nutui-tabs-tab-line-width | 水平方向激活选项卡线条的宽度 | `16px` |
 | \--nutui-tabs-tab-line-height | 水平方向激活选项卡线条的高度 | `2px` |
 | \--nutui-tabs-tab-line-color | 水平方向线条颜色 | `$color-primary` |
 | \--nutui-tabs-line-bottom | 水平方向线条距离 | `15%` |
 | \--nutui-tabs-line-border-radius | 水平方向线的圆角 | `2px` |
 | \--nutui-tabs-tab-line-opacity | 水平方向线的透明度 | `1` |
+| \--nutui-tabs-button-border-radius | 按钮模式选项卡的圆角 | `6px` |
+| \--nutui-tabs-button-font-size | 按钮模式未选中标题的字号 | `$font-size-base` |
+| \--nutui-tabs-button-active-font-size | 按钮模式选中标题的字号 | `$font-size-base` |
+| \--nutui-tabs-button-active-font-weight | 按钮模式选中标题的字重 | `$font-weight-bold` |
+| \--nutui-tabs-button-background-color | 按钮模式未选中标题的背景色 | `var(--nutui-color-background-component)` |
 | \--nutui-tabs-vertical-titles-width | 垂直方向标题的宽度 | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方向标题的高度 | `40px` |
 | \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |

@@ -23,6 +23,8 @@ import Demo20 from './demos/h5/demo20'
 import Demo21 from './demos/h5/demo21'
 import Demo22 from './demos/h5/demo22'
 import Demo23 from './demos/h5/demo23'
+import Demo24 from './demos/h5/demo24'
+import Demo25 from './demos/h5/demo25'
 
 const TabsDemo = () => {
   const [translated] = useTranslate({
@@ -43,6 +45,8 @@ const TabsDemo = () => {
       title14: '滑动切换',
       title7: 'Title 字体尺寸：20px 12px',
       title8: '自定义标签栏',
+      title15: '自定义标签栏-辅助信息',
+      title16: '左对齐-辅助操作',
       title9: 'Tabpane 自动高度',
       title10: 'CSS 粘性布局',
       title11: 'Title 左对齐',
@@ -67,6 +71,8 @@ const TabsDemo = () => {
       title14: 'Slide To Switch',
       title7: 'Title FontSize: 20px 12px',
       title8: 'Custom Tab Bar',
+      title15: 'Custom Tab Bar - Auxiliary Info',
+      title16: 'Left Align - Auxiliary Operation',
       title9: 'Tabpane Auto Height',
       title10: 'CSS Sticky',
       title11: 'Title Left Align',
@@ -125,6 +131,10 @@ const TabsDemo = () => {
         <Demo22 />
         <h2>{translated.title8}</h2>
         <Demo23 />
+        <h2>{translated.title15}</h2>
+        <Demo24 />
+        <h2>{translated.title16}</h2>
+        <Demo25 />
       </div>
     </>
   )

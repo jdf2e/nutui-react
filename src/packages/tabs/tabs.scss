@@ -34,14 +34,18 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
     }
   }
 
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 22px;
+      padding: 0 8px;
+    }
+
+    .nut-tabs-list {
+      justify-content: flex-end;
     }
   }
 
@@ -56,6 +60,8 @@
     line-height: $tabs-titles-height;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
+    font-family: $tabs-titles-item-font-family;
+    font-weight: $tabs-titles-item-font-weight;
     color: $tabs-titles-item-color;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -111,6 +117,8 @@
 
       .nut-tabs-titles-item-text {
         color: $tabs-titles-item-active-color;
+        font-family: $tabs-titles-item-active-font-family;
+        font-size: $tabs-titles-item-active-font-size;
         font-weight: $tabs-titles-item-active-font-weight;
       }
 
@@ -153,7 +161,7 @@
       &-active {
         .nut-tabs-titles-item-text,
         .nut-icon {
-          color: $color-title;
+          color: $tabs-titles-item-active-color;
           font-size: $tabs-titles-item-active-font-size;
         }
       }
@@ -162,17 +170,86 @@
 
   &-card {
     .nut-tabs-titles-item {
+      padding: 0 8px;
+      flex-direction: column;
+      justify-content: center;
+      line-height: initial;
+      background: transparent;
+
       &-active {
+        position: relative;
+        z-index: 1;
+        margin: 0 24px;
         font-weight: $font-weight-bold;
-        background-color: $white;
-        border-radius: $radius-base $radius-base 0 0;
+        background-color: $tabs-titles-item-active-background-color;
+
+        &::before,
+        &::after {
+          position: absolute;
+          bottom: 0;
+          width: 24px;
+          height: 100%;
+          content: '';
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
+
+        &::before {
+          left: -24px;
+          background-image: url("data:image/svg+xml,%3Csvg fill='none' height='40' version='1.1' viewBox='0 0 24 40' width='24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg transform='matrix(-1,0,0,1,48,0)'%3E%3Cpath d='M0 0L1.5213693 0C5.2987967 0 8.5614691 2.6422062 9.3466406 6.3371301L15.15336 33.662868C15.938531 37.357792 19.201202 40 22.97863 40L24 40L22.98 40L0 40L0 0Z' fill='%23ffffff' transform='translate(24, 0)'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        &::after {
+          right: -24px;
+          background-image: url("data:image/svg+xml,%3Csvg fill='none' height='40' version='1.1' viewBox='0 0 24 40' width='24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M0 0L1.5213693 0C5.2987967 0 8.5614691 2.6422062 9.3466406 6.3371301L15.15336 33.662868C15.938531 37.357792 19.201202 40 22.97863 40L24 40L22.98 40L0 40L0 0Z' fill='%23ffffff'/%3E%3C/svg%3E");
+        }
+
+        &:first-child {
+          margin-left: 0;
+
+          &::before {
+            display: none;
+          }
+        }
+
+        &:last-child {
+          margin-right: 0;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &-card.nut-tabs-titles-not-scrollable {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item-active {
+      // LTR 左对齐(及 RTL 左对齐类):末项一侧恢复肩部与间距
+      &:last-child {
+        margin-right: 24px;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    &.nut-tabs-titles-right .nut-tabs-titles-item-active {
+      // LTR 右对齐(及 RTL 右对齐类):首项一侧恢复肩部与间距
+      &:first-child {
+        margin-left: 24px;
+
+        &::before {
+          display: block;
+        }
       }
     }
   }
 
   &-button {
     .nut-tabs-titles-item {
-      padding: 0 10px;
+      padding: 0 4px;
       .nut-tabs-titles-item-text {
         flex: 1;
         height: 28px;
@@ -180,16 +257,20 @@
         align-items: center;
         justify-content: center;
         padding: 0 8px;
+        background: $tabs-tab-button-background-color;
+        border-radius: $tabs-tab-button-border-radius;
+        font-size: $tabs-tab-button-font-size;
+        font-weight: $font-weight;
+        color: $color-text;
       }
     }
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-text {
-        background: $color-default-light;
         color: $tabs-titles-item-active-color;
-        border-radius: $tabs-tab-button-border-radius;
-        font-weight: $font-weight-bold;
+        font-size: $tabs-tab-button-active-font-size;
+        font-weight: $tabs-tab-button-active-font-weight;
         background-color: $tabs-tab-button-active-background-color;
-        border: $tabs-tab-button-active-border;
+        box-shadow: $tabs-tab-button-active-border;
       }
     }
   }
@@ -216,6 +297,41 @@
           display: none;
         }
       }
+    }
+  }
+}
+
+// 标题栏边缘留白:该端 item 外侧 padding 翻倍,使边缘留白 = 相邻 tab 间距
+// 均分补首尾两端,左对齐仅补左端,右对齐仅补右端;水平方向生效
+.nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 8px;
+    }
+  }
+}
+
+.nut-theme-dark {
+  .nut-tabs-titles-card .nut-tabs-titles-item-active {
+    &::before {
+      background-image: url("data:image/svg+xml,%3Csvg fill='none' height='40' version='1.1' viewBox='0 0 24 40' width='24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg transform='matrix(-1,0,0,1,48,0)'%3E%3Cpath d='M0 0L1.5213693 0C5.2987967 0 8.5614691 2.6422062 9.3466406 6.3371301L15.15336 33.662868C15.938531 37.357792 19.201202 40 22.97863 40L24 40L22.98 40L0 40L0 0Z' fill='%231f2226' transform='translate(24, 0)'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    &::after {
+      background-image: url("data:image/svg+xml,%3Csvg fill='none' height='40' version='1.1' viewBox='0 0 24 40' width='24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M0 0L1.5213693 0C5.2987967 0 8.5614691 2.6422062 9.3466406 6.3371301L15.15336 33.662868C15.938531 37.357792 19.201202 40 22.97863 40L24 40L22.98 40L0 40L0 0Z' fill='%231f2226'/%3E%3C/svg%3E");
     }
   }
 }
@@ -265,7 +381,7 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        left: 10px;
+        left: 8px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
@@ -355,6 +471,70 @@
       &::after {
         right: auto;
         left: 0;
+      }
+    }
+  }
+}
+
+// RTL 边缘留白镜像:视觉左端=物理右侧、视觉右端=物理左侧,翻转补端方向
+[dir='rtl'] .nut-tabs-horizontal,
+.nut-rtl .nut-tabs-horizontal {
+  .nut-tabs-titles:not(.nut-tabs-titles-right)
+    .nut-tabs-titles-item:first-child {
+    padding-left: $tabs-titles-gap;
+    padding-right: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+    padding-right: $tabs-titles-gap;
+    padding-left: calc(#{$tabs-titles-gap} * 2);
+  }
+
+  .nut-tabs-titles-button {
+    &:not(.nut-tabs-titles-right) .nut-tabs-titles-item:first-child {
+      padding-left: 4px;
+      padding-right: 8px;
+    }
+
+    &:not(.nut-tabs-titles-left) .nut-tabs-titles-item:last-child {
+      padding-right: 4px;
+      padding-left: 8px;
+    }
+  }
+}
+
+// RTL 卡片模式留白端镜像:对齐类(flex-start/flex-end)随书写方向翻转视觉端,
+// 贴边端/留白端与 DOM 首末项的对应关系同 LTR 相反,贴边侧直角、留白侧恢复肩部需按物理边重写
+[dir='rtl'] .nut-tabs-titles-card.nut-tabs-titles-not-scrollable,
+.nut-rtl .nut-tabs-titles-card.nut-tabs-titles-not-scrollable {
+  // RTL 左对齐类:内容贴视觉右端,首项贴边(直角在物理右侧)、末项邻留白
+  &:not(.nut-tabs-titles-right) .nut-tabs-titles-item-active {
+    &:first-child {
+      margin-left: 24px;
+      margin-right: 0;
+
+      &::before {
+        display: block;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // RTL 右对齐类:内容贴视觉左端,末项贴边(直角在物理左侧)、首项邻留白
+  &.nut-tabs-titles-right .nut-tabs-titles-item-active {
+    &:last-child {
+      margin-left: 0;
+      margin-right: 24px;
+
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: block;
       }
     }
   }

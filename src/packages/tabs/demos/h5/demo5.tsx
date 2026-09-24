@@ -11,6 +11,7 @@ const Demo5 = () => {
           setTabvalue(value)
         }}
         activeType="button"
+        style={{ fontFamily: 'PingFang SC' }}
       >
         <Tabs.TabPane title="Tab longitem"> Tab longitem </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>

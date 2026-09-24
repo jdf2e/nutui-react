@@ -1,4 +1,11 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import { ComponentDefaults } from '@/utils/typings'
@@ -49,8 +56,32 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
     onChange,
   })
 
-  const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
+
+  // 卡片模式下,标题栏可横向滑动时激活卡片贴合两端边缘;不可滑动时(全部 tab 放得下)
+  // 贴边端直角、留白端恢复双肩,依赖该标记切换样式
+  const [isScrollable, setIsScrollable] = useState(!align)
+  const measureScrollable = useCallback(() => {
+    if (activeType !== 'card' || direction !== 'horizontal' || !align) return
+    const nav = navRef.current
+    if (!nav) return
+    setIsScrollable(nav.scrollWidth - nav.clientWidth > 1)
+  }, [activeType, direction, align])
+
+  // 挂载后立即测量,避免首帧样式闪变
+  useLayoutEffect(() => {
+    measureScrollable()
+  }, [measureScrollable])
+
+  // 标题/内容变化后重新布局,再测一次;窗口尺寸变化时也重测
+  useEffect(() => {
+    raf(measureScrollable)
+  }, [children, measureScrollable])
+  useEffect(() => {
+    const onResize = () => raf(measureScrollable)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [measureScrollable])
 
   const scrollDirection = (
     nav: HTMLDivElement,
@@ -71,13 +102,16 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
 
   const scrollIntoView = (index: number, immediate?: boolean) => {
     const nav = navRef.current
-    const titleItem = titleItemsRef.current
-    const titlesLength = titles.current.length
-    const itemLength = titleItem.length
-    if (!nav || !titleItem || !titleItem[itemLength - titlesLength + index]) {
+    if (!nav) {
       return
     }
-    const title = titleItem[itemLength - titlesLength + index]
+    const titleItems = nav.querySelectorAll<HTMLElement>(
+      `.${classPrefix}-titles-item`
+    )
+    const title = titleItems[index]
+    if (!title) {
+      return
+    }
     let to = 0
     if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
@@ -129,6 +163,8 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
   const classesTitle = classNames(`${classPrefix}-titles`, {
     [`${classPrefix}-titles-${activeType}`]: activeType,
     [`${classPrefix}-titles-scrollable`]: true,
+    [`${classPrefix}-titles-not-scrollable`]:
+      activeType === 'card' && !isScrollable,
     [`${classPrefix}-titles-${align}`]: align,
   })
 
@@ -166,7 +202,6 @@ export const Tabs: FunctionComponent<Partial<WebTabsProps>> & {
               return (
                 <div
                   key={item.value}
-                  ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   onClick={() => tabChange(item)}
                   className={classNames(`${classPrefix}-titles-item`, {
                     [`nut-tabs-titles-item-active`]:

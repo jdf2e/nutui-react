@@ -2222,10 +2222,18 @@ $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $white
 ) !default;
-$tabs-titles-gap: var(--nutui-tabs-titles-gap, 12px) !default;
+$tabs-titles-gap: var(--nutui-tabs-titles-gap, 8px) !default;
 $tabs-titles-font-size: var(
   --nutui-tabs-titles-font-size,
-  $font-size-base
+  $font-size-md
+) !default;
+$tabs-titles-item-font-family: var(
+  --nutui-tabs-titles-item-font-family,
+  PingFangSC-Semibold
+) !default;
+$tabs-titles-item-font-weight: var(
+  --nutui-tabs-titles-item-font-weight,
+  $font-weight-bold
 ) !default;
 $tabs-titles-item-min-width: var(
   --nutui-tabs-titles-item-min-width,
@@ -2243,9 +2251,13 @@ $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
   $font-weight-bold
 ) !default;
+$tabs-titles-item-active-font-family: var(
+  --nutui-tabs-titles-item-active-font-family,
+  PingFangSC-Semibold
+) !default;
 $tabs-titles-item-active-font-size: var(
   --nutui-tabs-titles-item-active-font-size,
-  $font-size-l
+  $font-size-md
 ) !default;
 $tabs-titles-item-active-background-color: var(
   --nutui-tabs-titles-item-active-background-color,
@@ -2264,13 +2276,29 @@ $tabs-tab-button-border-radius: var(
   --nutui-tabs-button-border-radius,
   $radius-xs
 ) !default;
+$tabs-tab-button-font-size: var(
+  --nutui-tabs-button-font-size,
+  $font-size-base
+) !default;
+$tabs-tab-button-active-font-size: var(
+  --nutui-tabs-button-active-font-size,
+  $font-size-base
+) !default;
+$tabs-tab-button-active-font-weight: var(
+  --nutui-tabs-button-active-font-weight,
+  $font-weight-bold
+) !default;
+$tabs-tab-button-background-color: var(
+  --nutui-tabs-button-background-color,
+  var(--nutui-color-background-component)
+) !default;
 $tabs-tab-button-active-background-color: var(
   --nutui-tabs-button-active-background-color,
   $color-primary-light-pressed
 ) !default;
 $tabs-tab-button-active-border: var(
   --nutui-tabs-button-active-border,
-  1px solid $color-primary
+  inset 0 0 0 1px $color-primary
 ) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
@@ -2298,7 +2326,7 @@ $tabs-vertical-tab-line-height: var(
 ) !default;
 $tabs-titles-item-smile-bottom: var(
   --nutui-tabs-titles-item-smile-bottom,
-  -10px
+  -25%
 ) !default;
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
 $tabs-tabpane-background-color: var(
