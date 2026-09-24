@@ -24,8 +24,7 @@
     flex: none;
     margin-right: $cell-icon-margin;
     align-self: $cell-icon-align-self;
-    font-size: 0;
-    line-height: 0;
+    display: flex;
   }
 
   &-body {
