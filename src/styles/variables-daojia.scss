@@ -505,6 +505,8 @@ $textarea-container-white-background-color: var(--nutui-textarea-container-white
     $color-background-overlay) !default;
 $textarea-limit-error-color: var(--nutui-textarea-limit-error-color,
     $color-error) !default;
+$textarea-error-color: var(--nutui-textarea-error-color,
+    $color-error) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $color-title) !default;
 $textarea-text-curror-color: var(--nutui-textarea-text-curror-color,
     $color-primary) !default;

@@ -32,15 +32,22 @@
     background-color: $textarea-container-white-background-color;
   }
 
-  &-error &-main {
-    border: 0.5px solid $color-danger;
-    background-color: $color-danger-light;
+  &-description {
+    margin-top: $spacing-base;
+    font-size: $font-size-s;
+    line-height: $font-size-s;
+    color: $textarea-error-color;
+  }
+
+  &-error#{&}-container &-main {
+    background-color: $color-error-light;
+    box-shadow: inset 0 0 0 0.67px $textarea-error-color;
   }
 
   &-limit {
     text-align: right;
-    font-size: $font-size-base;
-    line-height: $font-size-base;
+    font-size: $font-size-s;
+    line-height: $font-size-s;
     margin-top: $spacing-base;
     color: $color-text-help;
     &-error {
@@ -57,7 +64,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 40px;
+    height: 44px;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -92,7 +99,15 @@
       color: $color-text-help;
     }
 
-    &-disabled {
+    .nut-textarea-readonly & {
+      pointer-events: none;
+      color: $color-text-help;
+      .taro-textarea {
+        color: $color-text-help;
+      }
+    }
+
+    .nut-textarea-disabled & {
       cursor: not-allowed;
       color: $color-text-disabled;
       &::placeholder {

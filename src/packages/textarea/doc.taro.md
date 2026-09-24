@@ -74,6 +74,14 @@ import { TextArea } from '@nutui/nutui-react-taro'
 
 :::
 
+### 错误状态
+
+:::demo
+
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
+
+:::
+
 ## TextArea
 
 ### Props
@@ -87,11 +95,12 @@ import { TextArea } from '@nutui/nutui-react-taro'
 | rows | textarea 的行数（仅支持H5） | `number` | `2` |
 | showCount | textarea 是否展示输入字符。须配合`maxLength`使用 | `boolean` | `false` |
 | autoSize | 高度是否可拉伸 | `boolean` | `false` |
-| readOnly | 只读属性 | `boolean` | `false` |
+| readOnly | 只读，禁止编辑和聚焦 | `boolean` | `false` |
 | disabled | 禁用属性 | `boolean` | `false` |
 | plain | 是否使用纯文本型；为 `true` 时忽略 `containerType` | `boolean` | `false` |
 | containerType | 容器型背景类型 | `gray / white` | `gray` |
 | status | 文本域状态，可标记为 默认状态 和 错误状态 | `default /\ error` | `default` |
+| description | 错误提示文字，仅 `status="error"` 时显示，位于文本域下方 | `ReactNode` | `-` |
 | onChange | 输入内容时触发 | `(value) => void` | `-` |
 | onFocus | 聚焦时触发 | `(event) => void` | `-` |
 | onBlur | 失焦时触发 | `(event) => void` | `-` |
@@ -121,7 +130,9 @@ import { TextArea } from '@nutui/nutui-react-taro'
 | \--nutui-textarea-container-gray-background-color | 灰底容器背景色 | `color-background-component` |
 | \--nutui-textarea-container-white-background-color | 白底容器背景色 | `$color-background-overlay` |
 | \--nutui-textarea-limit-error-color | 超限字数颜色 | `$color-error` |
+| \--nutui-textarea-error-color | 错误提示文字颜色 | `$color-error` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
+| \--nutui-textarea-text-line-height | 输入内容行高 | `20px` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
 
 <Contribution name="TextArea" />

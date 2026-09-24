@@ -861,6 +861,10 @@ $textarea-limit-error-color: var(
   --nutui-textarea-limit-error-color,
   $color-error
 ) !default;
+$textarea-error-color: var(
+  --nutui-textarea-error-color,
+  $color-error
+) !default;
 $textarea-limit-color: var(
   --nutui-textarea-limit-color,
   $color-text-help

@@ -23,6 +23,7 @@ const defaultProps = {
   plain: false,
   containerType: 'gray',
   status: 'default',
+  description: null,
 } as WebTextAreaProps
 
 export const TextArea = forwardRef(
@@ -50,6 +51,7 @@ export const TextArea = forwardRef(
       plain,
       containerType,
       status,
+      description,
       onChange,
       onBlur,
       onFocus,
@@ -90,7 +92,10 @@ export const TextArea = forwardRef(
     const isDisabled = () => disabled || readOnly
 
     const handleFocus = (event: FocusEvent<HTMLTextAreaElement>) => {
-      if (isDisabled()) return
+      if (isDisabled()) {
+        event.currentTarget.blur()
+        return
+      }
       onFocus?.(event)
     }
 
@@ -101,7 +106,9 @@ export const TextArea = forwardRef(
 
     useImperativeHandle(ref, () => ({
       clear: () => setInnerValue(''),
-      focus: () => textareaRef.current?.focus(),
+      focus: () => {
+        if (!disabled && !readOnly) textareaRef.current?.focus()
+      },
       blur: () => textareaRef.current?.blur(),
       get nativeElement() {
         return textareaRef.current
@@ -135,6 +142,7 @@ export const TextArea = forwardRef(
               style={style}
               disabled={disabled}
               readOnly={readOnly}
+              tabIndex={readOnly ? -1 : rest.tabIndex}
               value={innerValue}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -155,6 +163,9 @@ export const TextArea = forwardRef(
               </div>
             )}
           </div>
+          {status === 'error' && description != null && (
+            <div className={`${classPrefix}-description`}>{description}</div>
+          )}
         </div>
       </>
     )

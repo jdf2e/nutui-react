@@ -18,6 +18,7 @@ const defaultProps = {
   plain: false,
   containerType: 'gray',
   status: 'default',
+  description: null,
 } as TaroTextAreaProps
 export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
   const { locale } = useConfig()
@@ -36,6 +37,7 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
     plain,
     containerType,
     status,
+    description,
     viewId,
     onChange,
     onBlur,
@@ -81,7 +83,9 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
       clear: () => {
         setInnerValue('')
       },
-      focus: () => textareaRef.current?.focus(),
+      focus: () => {
+        if (!disabled && !readOnly) textareaRef.current?.focus()
+      },
       blur: () => textareaRef.current?.blur(),
       get nativeElement() {
         return textareaRef.current
@@ -115,6 +119,11 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
               style,
               readOnly,
               rows,
+              ...(readOnly && {
+                tabIndex: -1,
+                onFocus: (event: React.FocusEvent<HTMLTextAreaElement>) =>
+                  event.currentTarget.blur(),
+              }),
             }}
             className={classNames(`${classPrefix}-textarea`, {
               [`${classPrefix}-textarea-disabled`]: disabled,
@@ -144,6 +153,9 @@ export const TextArea = forwardRef((props: Partial<TaroTextAreaProps>, ref) => {
             </View>
           )}
         </View>
+        {status === 'error' && description != null && (
+          <View className={`${classPrefix}-description`}>{description}</View>
+        )}
       </View>
     </>
   )
