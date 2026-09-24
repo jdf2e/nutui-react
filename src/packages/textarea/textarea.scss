@@ -5,24 +5,54 @@
   width: 100%;
   box-sizing: border-box;
   font-size: $font-size-base;
-  border-radius: $radius-s;
 
-  &-container {
-    padding: $textarea-padding;
-    background-color: $color-background-overlay;
+  &-main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: $radius-s;
   }
 
-  &-error {
-    border: 0.5px solid $color-danger;
-    background-color: $color-danger-light;
+  &-plain &-main {
+    min-height: $textarea-plain-min-height;
+  }
+
+  &-container &-main {
+    min-height: $textarea-container-min-height;
+    padding: $textarea-padding;
+  }
+
+  &-container-gray &-main {
+    background-color: $textarea-container-gray-background-color;
+  }
+
+  &-container-white &-main {
+    background-color: $textarea-container-white-background-color;
+  }
+
+  &-description {
+    margin-top: $spacing-base;
+    font-size: $font-size-s;
+    line-height: $font-size-s;
+    color: $textarea-error-color;
+  }
+
+  &-error#{&}-container &-main {
+    background-color: $color-error-light;
+    box-shadow: inset 0 0 0 0.67px $textarea-error-color;
   }
 
   &-limit {
     text-align: right;
-    font-size: $font-size-base;
-    line-height: $font-size-base;
+    font-size: $font-size-s;
+    line-height: $font-size-s;
     margin-top: $spacing-base;
     color: $color-text-help;
+    &-error {
+      color: $textarea-limit-error-color;
+    }
     &-disabled {
       cursor: not-allowed;
       color: $color-text-disabled;
@@ -34,7 +64,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 40px;
+    height: 44px;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -69,7 +99,15 @@
       color: $color-text-help;
     }
 
-    &-disabled {
+    .nut-textarea-readonly & {
+      pointer-events: none;
+      color: $color-text-help;
+      .taro-textarea {
+        color: $color-text-help;
+      }
+    }
+
+    .nut-textarea-disabled & {
       cursor: not-allowed;
       color: $color-text-disabled;
       &::placeholder {
