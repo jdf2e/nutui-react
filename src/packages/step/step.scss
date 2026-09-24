@@ -139,19 +139,6 @@
 
   // 流程状态-完成
   &.nut-step-finish {
-    .nut-step-head-icon,
-    .nut-step-head-text {
-      background-color: $steps-enhanced-finish-head-background-color;
-    }
-
-    .nut-step-head-dot {
-      background-color: $steps-enhanced-finish-head-dot-background-color;
-    }
-
-    .nut-step-head-text {
-      color: $steps-enhanced-finish-head-text-color;
-    }
-
     .nut-step-head-icon {
       .nut-icon {
         color: $steps-finish-icon-color;
@@ -169,8 +156,7 @@
       color: $steps-business-title-color;
     }
 
-    .nut-step-description,
-    .nut-step-auxiliary {
+    .nut-step-description {
       color: $steps-business-description-color;
     }
 

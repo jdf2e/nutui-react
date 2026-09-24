@@ -49,15 +49,6 @@
           color: $steps-wait-description-color;
         }
       }
-
-      // 流程状态-完成
-      &.nut-step-finish {
-        .nut-step-title,
-        .nut-step-description,
-        .nut-step-auxiliary {
-          color: $steps-base-description-color;
-        }
-      }
     }
 
     &-single {
@@ -345,6 +336,25 @@
   &-horizontal-enhanced,
   &-vertical-enhanced {
     .nut-step-finish {
+      .nut-step-head-icon,
+      .nut-step-head-text {
+        background-color: $steps-enhanced-finish-head-background-color;
+      }
+
+      .nut-step-head-icon {
+        .nut-icon {
+          color: $steps-enhanced-finish-head-icon-color;
+        }
+      }
+
+      .nut-step-head-text {
+        color: $steps-enhanced-finish-head-text-color;
+      }
+
+      .nut-step-head-dot {
+        background-color: $steps-enhanced-finish-head-dot-background-color;
+      }
+
       .nut-step-title,
       .nut-step-description,
       .nut-step-auxiliary {
