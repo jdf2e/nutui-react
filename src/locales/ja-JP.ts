@@ -26,6 +26,7 @@ const jaJP: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: '指を離して更新',
+    pullUpText: '上にスワイプしてさらに読み込む',
     loadText: '読み込み中',
     loadMoreText: 'これ以上データはありません',
   },

@@ -863,9 +863,9 @@ $pulltorefresh-color-primary: var(--nutui-pulltorefresh-color-primary,
 
 //infiniteloading（✅）
 $infiniteloading-color: var(--nutui-infiniteloading-color,
-    $color-text-help) !default;
+    $color-text) !default;
 $infiniteloading-icon-size: var(--nutui-infiniteloading-icon-size,
-    24px) !default;
+    20px) !default;
 
 //range（✅）
 $range-color: var(--nutui-range-color, $color-title) !default;
