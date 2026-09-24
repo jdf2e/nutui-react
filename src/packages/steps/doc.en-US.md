@@ -104,6 +104,7 @@ import { Steps } from '@nutui/nutui-react'
 | --- | --- | --- | --- |
 | title | Title of the process step | `ReactNode` | `-` |
 | description | Descriptive text of process steps | `ReactNode` | `-` |
+| auxiliary | Auxiliary node information | `ReactNode` | `-` |
 | icon | Icon | `ReactNode` | `-` |
 | value | Index of process steps | `number` | `0` |
 | type | Step type | `text` \| `dot` \| `icon` | `text` |
@@ -164,5 +165,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-vertical-line-height | Vertical line height | `18px` |
 | \--nutui-steps-vertical-description-font-size | Vertical description font size | `$font-size-base` |
 | \--nutui-steps-vertical-description-margin | Vertical description margin | `0 0 1px` |
+| \--nutui-steps-vertical-auxiliary-font-size | Vertical auxiliary information font size | `$font-size-s` |
 
 <Contribution name="Steps" />

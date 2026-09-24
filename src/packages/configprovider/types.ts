@@ -1022,6 +1022,7 @@ export type NutCSSVariables =
   | 'nutuiToastTextFontWeight'
   | 'nutuiToastTitleFontWeight'
   | 'nutuiToastIconColor'
+  | 'nutuiStepsVerticalAuxiliaryFontSize'
   | 'nutuiBlack3'
   | 'nutuiSafeAreaMultiple'
   | 'nutuiIndicatorCurrent'

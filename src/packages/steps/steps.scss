@@ -73,7 +73,8 @@
         }
 
         &-title,
-        &-description {
+        &-description,
+        &-auxiliary {
           padding-left: 4px;
         }
 
@@ -261,6 +262,16 @@
         color: $color-title;
         font-size: $steps-vertical-description-font-size;
         box-sizing: border-box;
+      }
+
+      &-auxiliary {
+        margin: 0;
+        line-height: $steps-vertical-line-height;
+        color: $steps-base-description-color;
+        font-size: var(
+          --nutui-steps-vertical-auxiliary-font-size,
+          $font-size-s
+        );
       }
 
       &-head-dot-wrap,

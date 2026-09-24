@@ -13,6 +13,7 @@ const defaultProps = {
   ...ComponentDefaults,
   title: '',
   description: '',
+  auxiliary: '',
   value: 0,
   icon: null,
 } as WebStepProps
@@ -25,6 +26,7 @@ export const Step: FunctionComponent<
     children,
     title,
     description,
+    auxiliary,
     value,
     icon,
     className,
@@ -65,11 +67,11 @@ export const Step: FunctionComponent<
         {
           [`${classPrefix}-${currentStatus}`]: true,
           [`${classPrefix}-${type || parentType}`]: true,
-          [`${classPrefix}-special`]: description,
+          [`${classPrefix}-special`]: description || auxiliary,
         },
         className
       ),
-    [currentStatus, type, className]
+    [currentStatus, type, className, description, auxiliary]
   )
 
   // 头部渲染
@@ -92,7 +94,7 @@ export const Step: FunctionComponent<
 
   // 内容渲染
   const renderContent = useMemo(() => {
-    if (!title && !description) return null
+    if (!title && !description && !auxiliary) return null
 
     return (
       <div className={`${classPrefix}-main`}>
@@ -100,9 +102,12 @@ export const Step: FunctionComponent<
         {description && (
           <span className={`${classPrefix}-description`}>{description}</span>
         )}
+        {auxiliary && (
+          <span className={`${classPrefix}-auxiliary`}>{auxiliary}</span>
+        )}
       </div>
     )
-  }, [title, description])
+  }, [title, description, auxiliary])
 
   return (
     <div className={classes} {...restProps} onClick={handleClickStep}>

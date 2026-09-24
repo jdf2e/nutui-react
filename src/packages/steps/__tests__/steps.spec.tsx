@@ -209,6 +209,33 @@ describe('Steps', () => {
     expect(container.querySelectorAll('.nut-step-head-icon')).toHaveLength(1)
   })
 
+  test('should render auxiliary information', () => {
+    const { getByText } = render(
+      <Steps direction="horizontal" type="dot">
+        <Step
+          value={1}
+          title="订单已提交"
+          description="订单描述"
+          auxiliary="辅助信息"
+        />
+      </Steps>
+    )
+
+    expect(getByText('订单描述')).toHaveClass('nut-step-description')
+    expect(getByText('辅助信息')).toHaveClass('nut-step-auxiliary')
+  })
+
+  test('should keep auxiliary style with business status', () => {
+    const { container, getByText } = render(
+      <Steps direction="horizontal" status="business">
+        <Step value={1} title="业务步骤" auxiliary="业务说明" />
+      </Steps>
+    )
+
+    expect(container.querySelector('.nut-step-business')).toBeTruthy()
+    expect(getByText('业务说明')).toHaveClass('nut-step-auxiliary')
+  })
+
   test('should render different step states correctly', () => {
     const { container } = render(
       <Steps value={1} status="dynamic">

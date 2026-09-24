@@ -14,16 +14,18 @@ const defaultProps = {
   ...ComponentDefaults,
   title: '',
   description: '',
+  auxiliary: '',
   value: 0,
   icon: null,
 } as TaroStepProps
 export const Step: FunctionComponent<
   Partial<TaroStepProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
-  const { type, title, description, value, icon, className, style } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { type, title, description, auxiliary, value, icon, className, style } =
+    {
+      ...defaultProps,
+      ...props,
+    }
 
   const parent: any = useContext(DataContext)
   const {
@@ -56,11 +58,19 @@ export const Step: FunctionComponent<
         {
           [`${classPrefix}-${currentStatus}`]: true,
           [`${classPrefix}-${type || parentType}`]: true,
-          [`${classPrefix}-special`]: description,
+          [`${classPrefix}-special`]: description || auxiliary,
         },
         className
       ),
-    [currentStatus, type, className, description, classPrefix, parentType]
+    [
+      currentStatus,
+      type,
+      className,
+      description,
+      auxiliary,
+      classPrefix,
+      parentType,
+    ]
   )
 
   // 头部渲染
@@ -83,7 +93,7 @@ export const Step: FunctionComponent<
 
   // 内容渲染
   const renderContent = useMemo(() => {
-    if (!title && !description) return null
+    if (!title && !description && !auxiliary) return null
 
     return (
       <View className={`${classPrefix}-main`}>
@@ -91,9 +101,12 @@ export const Step: FunctionComponent<
         {description && (
           <View className={`${classPrefix}-description`}>{description}</View>
         )}
+        {auxiliary && (
+          <View className={`${classPrefix}-auxiliary`}>{auxiliary}</View>
+        )}
       </View>
     )
-  }, [title, description, classPrefix])
+  }, [title, description, auxiliary, classPrefix])
 
   return (
     <View className={classes} style={style} onClick={handleClickStep}>
