@@ -52,6 +52,11 @@
 
       // 流程状态-完成
       &.nut-step-finish {
+        .nut-step-title,
+        .nut-step-description,
+        .nut-step-auxiliary {
+          color: $steps-base-description-color;
+        }
       }
     }
 
@@ -70,6 +75,7 @@
           width: $steps-horizontal-item-padding-right;
           padding: $steps-horizontal-item-line-padding;
           box-sizing: border-box;
+          min-width: $steps-horizontal-single-line-min-length;
         }
 
         &-title,
@@ -116,6 +122,7 @@
           right: -50%;
           height: $steps-base-head-height;
           width: 100%;
+          min-width: $steps-horizontal-double-line-min-length;
 
           &-inner {
             /* #ifdef dynamic*/
@@ -268,10 +275,7 @@
         margin: 0;
         line-height: $steps-vertical-line-height;
         color: $steps-base-description-color;
-        font-size: var(
-          --nutui-steps-vertical-auxiliary-font-size,
-          $font-size-s
-        );
+        font-size: $steps-vertical-auxiliary-font-size;
       }
 
       &-head-dot-wrap,
@@ -341,21 +345,10 @@
   &-horizontal-enhanced,
   &-vertical-enhanced {
     .nut-step-finish {
-      .nut-step-head-icon,
-      .nut-step-head-text {
-        background-color: $steps-enhanced-finish-head-background-color;
-
-        .nut-icon {
-          color: $steps-enhanced-finish-head-icon-color;
-        }
-      }
-
-      .nut-step-head-text {
-        color: $steps-enhanced-finish-head-text-color;
-      }
-
-      .nut-step-head-dot {
-        background-color: $steps-enhanced-finish-head-dot-background-color;
+      .nut-step-title,
+      .nut-step-description,
+      .nut-step-auxiliary {
+        color: $steps-base-description-color;
       }
     }
   }

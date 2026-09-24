@@ -1551,6 +1551,14 @@ $steps-horizontal-item-special-3-padding-right: var(
   --nutui-steps-horizontal-item-special-3-padding-right,
   scale-px(9px)
 ) !default;
+$steps-horizontal-single-line-min-length: var(
+  --nutui-steps-horizontal-single-line-min-length,
+  scale-px(12px)
+) !default;
+$steps-horizontal-double-line-min-length: var(
+  --nutui-steps-horizontal-double-line-min-length,
+  scale-px(40px)
+) !default;
 $steps-vertical-item-padding-bottom: var(
   --nutui-steps-vertical-item-padding-bottom,
   scale-px(12px)
@@ -1574,6 +1582,10 @@ $steps-vertical-description-font-size: var(
 $steps-vertical-description-margin: var(
   --nutui-steps-vertical-description-margin,
   0 0 scale-px(1px)
+) !default;
+$steps-vertical-auxiliary-font-size: var(
+  --nutui-steps-vertical-auxiliary-font-size,
+  $font-size-s
 ) !default;
 
 // dialog（✅）
