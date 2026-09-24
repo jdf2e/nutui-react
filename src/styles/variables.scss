@@ -2090,6 +2090,75 @@ $progress-text-border-radius: var(
   --nutui-progress-text-border-radius,
   scale-px(5px)
 ) !default;
+$progress-video-track-color: var(
+  --nutui-progress-video-track-color,
+  rgba(255, 255, 255, 0.2)
+) !default;
+$progress-video-fill-color: var(
+  --nutui-progress-video-fill-color,
+  rgba(255, 255, 255, 0.7)
+) !default;
+$progress-video-thumb-color: var(
+  --nutui-progress-video-thumb-color,
+  #ffffff
+) !default;
+$progress-video-height: var(--nutui-progress-video-height, 1px) !default;
+$progress-video-active-height: var(
+  --nutui-progress-video-active-height,
+  scale-px(8px)
+) !default;
+$progress-video-paused-height: var(
+  --nutui-progress-video-paused-height,
+  scale-px(3px)
+) !default;
+$progress-video-thumb-width: var(
+  --nutui-progress-video-thumb-width,
+  scale-px(2px)
+) !default;
+$progress-video-thumb-height: var(
+  --nutui-progress-video-thumb-height,
+  1px
+) !default;
+$progress-video-thumb-radius: var(
+  --nutui-progress-video-thumb-radius,
+  0.5px
+) !default;
+$progress-video-thumb-active-width: var(
+  --nutui-progress-video-thumb-active-width,
+  scale-px(6px)
+) !default;
+$progress-video-thumb-active-height: var(
+  --nutui-progress-video-thumb-active-height,
+  scale-px(12px)
+) !default;
+$progress-video-thumb-active-radius: var(
+  --nutui-progress-video-thumb-active-radius,
+  scale-px(3px)
+) !default;
+$progress-video-thumb-paused-width: var(
+  --nutui-progress-video-thumb-paused-width,
+  scale-px(6px)
+) !default;
+$progress-video-thumb-paused-height: var(
+  --nutui-progress-video-thumb-paused-height,
+  scale-px(3px)
+) !default;
+$progress-video-thumb-paused-radius: var(
+  --nutui-progress-video-thumb-paused-radius,
+  scale-px(1.5px)
+) !default;
+$progress-video-opacity-static: var(
+  --nutui-progress-video-opacity-static,
+  0.6
+) !default;
+$progress-video-opacity-paused: var(
+  --nutui-progress-video-opacity-paused,
+  0.85
+) !default;
+$progress-video-container-height: var(
+  --nutui-progress-video-container-height,
+  68px
+) !default;
 
 //pagination（✅）
 $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
