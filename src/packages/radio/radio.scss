@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  min-height: scale-px(32px);
+  min-height: scale-px(22px);
 
   &.nut-radio-reverse {
     flex-direction: row-reverse;
@@ -16,7 +16,7 @@
   }
 
   &.nut-radio-nolabel {
-    min-width: scale-px(32px);
+    min-width: scale-px(22px);
     justify-content: center;
   }
 
