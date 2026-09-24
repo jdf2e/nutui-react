@@ -4,6 +4,7 @@ exports[`infiniteloading base 01 1`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -23,7 +24,21 @@ exports[`infiniteloading base 01 1`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -33,6 +48,7 @@ exports[`infiniteloading base 02 1`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="loading"
   >
     <div
       class="nut-infinite-top"
@@ -104,7 +120,19 @@ exports[`infiniteloading base 02 1`] = `
       <div
         class="nut-infinite-bottom-tips"
       >
-        加载中
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          加载中
+        </div>
       </div>
     </div>
   </div>
@@ -115,6 +143,7 @@ exports[`pull base 01 1`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -134,7 +163,21 @@ exports[`pull base 01 1`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -144,6 +187,7 @@ exports[`pull base 03 1`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -163,7 +207,21 @@ exports[`pull base 03 1`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -173,6 +231,7 @@ exports[`pull base 03 2`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -192,7 +251,21 @@ exports[`pull base 03 2`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -202,6 +275,7 @@ exports[`pull base 1`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -221,7 +295,21 @@ exports[`pull base 1`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -231,6 +319,7 @@ exports[`pull base 2`] = `
 <div>
   <div
     class="nut-infiniteloading nut-infiniteloading-default"
+    data-status="idle"
   >
     <div
       class="nut-infinite-top"
@@ -250,7 +339,21 @@ exports[`pull base 2`] = `
     >
       <div
         class="nut-infinite-bottom-tips"
-      />
+      >
+        <div
+          class="nut-infinite-bottom-icon"
+        >
+          <img
+            alt=""
+            src="https://img13.360buyimg.com/imagetools/jfs/t1/531639/14/4869/43793/0050ef01F4f6336ae/03e60c80c8d6f2c2.gif"
+          />
+        </div>
+        <div
+          class="nut-infinite-bottom-text"
+        >
+          上滑更多加载
+        </div>
+      </div>
     </div>
   </div>
 </div>

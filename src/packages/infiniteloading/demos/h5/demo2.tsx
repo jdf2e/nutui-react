@@ -74,22 +74,6 @@ const Demo2 = () => {
                 下拉刷新
               </>
             }
-            loadingText={
-              <>
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="nut-infinite-bottom-tips-icons"
-                >
-                  <circle cx="2" cy="12" r="2" fill="#E4E4E4" />
-                  <circle cx="12" cy="12" r="2" fill="#E4E4E4" />
-                  <circle cx="22" cy="12" r="2" fill="#E4E4E4" />
-                </svg>
-                加载中
-              </>
-            }
             target="refreshScroll"
             pullRefresh
             hasMore={refreshHasMore}

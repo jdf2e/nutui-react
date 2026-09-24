@@ -26,6 +26,7 @@ const zhCN: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: '松开刷新',
+    pullUpText: '上滑更多加载',
     loadText: '加载中',
     loadMoreText: '没有更多了',
   },

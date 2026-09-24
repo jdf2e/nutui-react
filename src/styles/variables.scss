@@ -1349,11 +1349,11 @@ $pulltorefresh-color-primary: var(
 //infiniteloading（✅）
 $infiniteloading-color: var(
   --nutui-infiniteloading-color,
-  $color-text-help
+  $color-text
 ) !default;
 $infiniteloading-icon-size: var(
   --nutui-infiniteloading-icon-size,
-  $font-size-xxl
+  scale-px(20px)
 ) !default;
 
 //range（✅）
