@@ -1,45 +1,44 @@
 import React, { useState } from 'react'
 import { Progress } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { PlayStart } from '@nutui/icons-react-taro'
 
-const cardStyle = {
-  padding: '16px 20px',
-  background: '#111',
-  borderRadius: '8px',
-  marginBottom: '12px',
+const cardStyle: React.CSSProperties = {
+  padding: '15px 18px',
+  background: '#999',
+  borderRadius: 8,
+  marginBottom: 12,
 }
 
-const labelStyle = {
-  color: 'rgba(255,255,255,0.6)',
-  fontSize: '12px',
-  marginBottom: '8px',
+const progressStyle: React.CSSProperties = {
+  height: 38,
 }
-
 const Demo10 = () => {
   const [percent, setPercent] = useState(20)
   return (
     <>
       <View style={cardStyle}>
-        <View style={labelStyle}>默认（静态）</View>
-        <Progress mode="video" status="static" percent={30} />
+        <Progress
+          mode="video"
+          status="static"
+          percent={30}
+          style={progressStyle}
+        />
       </View>
       <View style={cardStyle}>
-        <View style={labelStyle}>视频暂停</View>
         <Progress
           mode="video"
           status="paused"
           percent={55}
-          pausedIcon={<PlayStart color="#fff" width={16} height={16} />}
+          style={progressStyle}
         />
       </View>
       <View style={cardStyle}>
-        <View style={labelStyle}>拖动</View>
         <Progress
           mode="video"
           percent={percent}
           draggable
           onChange={(p) => setPercent(p)}
+          style={progressStyle}
         />
       </View>
     </>
