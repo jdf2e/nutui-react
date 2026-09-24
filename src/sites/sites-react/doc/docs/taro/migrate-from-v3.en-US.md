@@ -149,3 +149,16 @@ npm install @nutui/nutui-react-taro
   - Pop up from the top via `position="top"`; the content is displayed as a grid. `options` support an `icon` field (a string is rendered with `Image`, or a custom node can be passed), and `columns` sets the number of columns (only `4` / `5`, default `5`). `cancelText` is rendered as a "collapse" button in top mode. The grid layout can also be used for bottom popups via `layout="grid"`.
 - **Header styling and close capabilities (new)**:
   - Added `titleAlign` (`left` / `center`, default `center`; `description` only takes effect when `center`), `headerLeft`, and `headerRight` for customizing the left and right content of the header, as well as `closeable` / `closeIconPosition` to control the display and position of the close button. All of the above are purely additive and do not affect existing usage.
+
+### Cell (Display)
+
+- **Left area class renamed from `.nut-cell-left` to `.nut-cell-body` (breaking change)**:
+  - To make room for the new leading area (`icon`), the former left content area is now the main area. If you overrode cell styles via `.nut-cell-left`, migrate to `.nut-cell-body`.
+- **Cell padding changed to `16px` (behavior change)**:
+  - The default of `--nutui-cell-padding` changed from `13px 16px` to `16px`, so cells become slightly taller. To keep the previous spacing, set `--nutui-cell-padding: 13px 16px` explicitly.
+- **Title is now truncated on a single line (behavior change)**:
+  - An overlong `title` no longer wraps; it is truncated with an ellipsis on one line. If you need a multi-line title, pass your own node as `title` and override the truncation styles.
+- **Right area no longer stretches (behavior change)**:
+  - `.nut-cell-extra` changed from `flex: 1` to sizing to its content, keeping a `24px` minimum gap from the main area (tunable via `--nutui-cell-extra-margin`). Previously a long right area split the remaining space evenly with the main area; now the right area takes its space first and the main area shrinks accordingly, so you may see the title truncate while the right content stays complete.
+- **New leading area and full-width slot (new)**:
+  - Added the `icon` prop for the leading area (an icon or an avatar). The component only handles the `12px` gap (`--nutui-cell-icon-margin`) and alignment; sizing is up to you. Added the `content` prop as a full-width slot below the row, aligned with the main area's left edge. Once `content` is passed, `description` moves from below the title to a full-width row. Both are purely additive; omitting them does not affect existing usage.

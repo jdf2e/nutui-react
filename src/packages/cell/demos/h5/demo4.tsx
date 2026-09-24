@@ -1,9 +1,11 @@
 import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 
-const App = () => {
+const Demo4 = () => {
   return (
-    <Cell title="Switch" align="center" extra={<Switch defaultChecked />} />
+    <Cell>
+      <div>自定义内容</div>
+    </Cell>
   )
 }
-export default App
+export default Demo4

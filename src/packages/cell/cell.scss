@@ -20,11 +20,26 @@
     margin: 0;
   }
 
-  &-left {
+  &-icon {
+    flex: none;
+    margin-right: $cell-icon-margin;
+    align-self: $cell-icon-align-self;
+    display: flex;
+  }
+
+  &-body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     flex: 1;
+    min-width: 0;
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    min-width: 0;
   }
 
   &-title,
@@ -38,18 +53,56 @@
     color: $cell-description-color;
   }
 
+  // 标题与说明文案的间距；标题在两种结构下层级不同，需分别覆盖
+  &-body > &-title + &-description,
+  &-header + &-description {
+    margin-top: $cell-description-margin;
+  }
+
+  // 说明文案与内容区域的间距；无说明文案时内容区紧随 header，沿用同一间距
+  &-description + &-content,
+  &-header + &-content {
+    margin-top: $cell-content-margin;
+  }
+
+  &-content {
+    width: 100%;
+  }
+
   &-extra {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     flex: 1;
-    flex-shrink: 0;
     min-width: 0;
     word-break: break-all;
     font-size: $cell-extra-font-size;
     color: $cell-extra-color;
   }
+
+  // 与主信息区同行时改为按内容宽度自适应，并保证 24DP 最小间距；
+  // 无主信息区时右侧区独占整行并靠右，与旧行为一致
+  &-body + &-extra,
+  &-header > &-title + &-extra {
+    flex: none;
+    margin-left: $cell-extra-margin;
+  }
+
+  // 单行打点只作用于 Cell 自绘的标题，避免命中业务复用的同名类名（如 FormItem 的 label）
+  &-body > &-title,
+  &-header > &-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  // 结构 B 的标题与右侧区同行，需要参与伸缩才能触发打点
+  &-header > &-title {
+    flex: 1;
+    min-width: 0;
+  }
+
   &:active::before {
     opacity: 0.1;
   }
@@ -86,5 +139,18 @@
       padding-left: $cell-divider-right;
       padding-right: $cell-divider-left;
     }
+  }
+}
+
+[dir='rtl'] .nut-cell,
+.nut-rtl .nut-cell {
+  .nut-cell-icon {
+    margin-right: 0;
+    margin-left: $cell-icon-margin;
+  }
+  .nut-cell-body + .nut-cell-extra,
+  .nut-cell-header > .nut-cell-title + .nut-cell-extra {
+    margin-left: 0;
+    margin-right: $cell-extra-margin;
   }
 }

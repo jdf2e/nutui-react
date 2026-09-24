@@ -1,5 +1,74 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`block layout when content provided 1`] = `
+<div>
+  <div
+    class="nut-cell"
+    style="border-radius: 6px; align-items: flex-start;"
+  >
+    <div
+      class="nut-cell-body"
+    >
+      <div
+        class="nut-cell-header"
+        style="align-items: flex-start;"
+      >
+        <div
+          class="nut-cell-title"
+        >
+          我是标题
+        </div>
+        <div
+          class="nut-cell-extra"
+        >
+          辅助文案
+        </div>
+      </div>
+      <div
+        class="nut-cell-description"
+      >
+        我是描述
+      </div>
+      <div
+        class="nut-cell-content"
+      >
+        <div
+          class="custom-content"
+        >
+          可替换内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`icon renders before body 1`] = `
+<div>
+  <div
+    class="nut-cell"
+    style="border-radius: 6px; align-items: flex-start;"
+  >
+    <div
+      class="nut-cell-icon"
+    >
+      <div
+        class="custom-icon"
+      />
+    </div>
+    <div
+      class="nut-cell-body"
+    >
+      <div
+        class="nut-cell-title"
+      >
+        我是标题
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`prop  1`] = `
 <div>
   <div
@@ -7,7 +76,7 @@ exports[`prop  1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell-left"
+      class="nut-cell-body"
     >
       <div
         class="nut-cell-title"
@@ -32,7 +101,7 @@ exports[`prop title extra description test 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell-left"
+      class="nut-cell-body"
     >
       <div
         class="nut-cell-title"
@@ -61,7 +130,7 @@ exports[`slot default test 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell-left"
+      class="nut-cell-body"
     >
       <div
         class="nut-cell-title"
@@ -87,7 +156,7 @@ exports[`slot extra 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell-left"
+      class="nut-cell-body"
     >
       <div
         class="nut-cell-title"

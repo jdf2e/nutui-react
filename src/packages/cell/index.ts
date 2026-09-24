@@ -1,4 +1,4 @@
 import { Cell } from './cell'
 
-export type { CellProps, CellAlign } from './types'
+export type { WebCellProps as CellProps, CellAlign } from '@/types'
 export default Cell

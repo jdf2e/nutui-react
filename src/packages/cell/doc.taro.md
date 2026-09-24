@@ -18,7 +18,9 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义内容
+### 垂直居中
+
+通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
 
 :::demo
 
@@ -26,7 +28,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义标题区域
+### 自定义信息区+右侧区
 
 :::demo
 
@@ -34,7 +36,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义右侧区域
+### 完全自定义
 
 :::demo
 
@@ -42,32 +44,13 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::
 
-### 垂直居中
+### 分组用法
 
-通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+使用 `nut-cell-group` 支持 `title` 和 `description`
 
 :::demo
 
 <CodeBlock src='taro/demo5.tsx'></CodeBlock>
-
-:::
-
-### 链接 | 分组用法
-
-使用 `nut-cell-group` 支持 `title`和`extra`
-:::demo
-
-<CodeBlock src='taro/demo6.tsx'></CodeBlock>
-
-:::
-
-### 分组用法
-
-通过 `divider` 属性可以让单元格之间不显示下边线。
-
-:::demo
-
-<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -87,11 +70,13 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| title | 标题 | `ReactNode` | `-` |
-| description | 描述 | `ReactNode` | `-` |
-| extra | 右侧描述 | `ReactNode` | `-` |
+| icon | 左侧识别区，常用于图标或头像。尺寸由使用方决定，组件只负责间距与对齐 | `ReactNode` | `-` |
+| title | 标题，超出容器宽度时单行打点 | `ReactNode` | `-` |
+| description | 描述。未传入 `content` 时位于标题下方；传入 `content` 时通栏展示，不限行数 | `ReactNode` | `-` |
+| extra | 右侧描述，按内容宽度自适应，与主信息区保持最小间距 | `ReactNode` | `-` |
+| content | 下挂通栏插槽（业务可替换内容区域），宽度撑满内容区并与主信息左边界对齐 | `ReactNode` | `-` |
 | radius | 圆角半径 | `string` | `6px` |
-| align | 纵轴方向上的对齐方式 | `flex-start` \| `center` \| `flex-end` | `flex-start` |
+| align | 纵轴方向上的对齐方式 | `flex-start` \| `center` \| `flex-end` \| `baseline` | `flex-start` |
 | clickable | 点击的样式反馈 | `boolean` | `false` |
 | onClick | 点击事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
@@ -105,12 +90,17 @@ import { Cell } from '@nutui/nutui-react-taro'
 | --- | --- | --- |
 | \--nutui-cell-title-color | 单元格标题字体颜色 | `$color-title` |
 | \--nutui-cell-title-font-size | 单元格标题字体大小 | `$font-size-base` |
-| \--nutui-cell-description-color | 单元格描述字体颜色 | `$color-text` |
+| \--nutui-cell-description-color | 单元格描述字体颜色 | `$color-text-help` |
 | \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-s` |
 | \--nutui-cell-extra-color | 单元格右侧描述字体颜色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
-| \--nutui-cell-padding | 单元格内边距 | `13px 16px` |
+| \--nutui-cell-padding | 单元格内边距 | `16px` |
+| \--nutui-cell-icon-margin | 识别区与主信息区之间的间距 | `12px` |
+| \--nutui-cell-icon-align-self | 识别区图标的纵向对齐方式，设为 `flex-start` 可贴第一行标题 | `auto` |
+| \--nutui-cell-extra-margin | 主信息区与右侧区域之间的最小间距 | `24px` |
+| \--nutui-cell-description-margin | 标题与说明文案之间的间距 | `2px` |
+| \--nutui-cell-content-margin | 说明文案与内容区域之间的间距 | `8px` |
 | \--nutui-cell-line-height | 单元格行高 | `20px` |
 | \--nutui-cell-divider-left | 单元格分割线左边距 | `16px` |
 | \--nutui-cell-divider-right | 单元格分割线右边距 | `16px` |

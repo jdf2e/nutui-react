@@ -1,11 +1,12 @@
 import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react-taro'
+import { Cell } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
-const App = () => {
+const Demo4 = () => {
   return (
-    <Cell.Group>
-      <Cell title="Switch" align="center" extra={<Switch defaultChecked />} />
-    </Cell.Group>
+    <Cell>
+      <View>自定义内容</View>
+    </Cell>
   )
 }
-export default App
+export default Demo4
