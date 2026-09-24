@@ -58,8 +58,6 @@ export const Badge: FunctionComponent<Partial<WebBadgeProps>> = (props) => {
   const contentClasses = classNames({
     [`${classPrefix}-sup`]: isNumber() || isString() || dot,
     [`${classPrefix}-number`]: isNumber(),
-    [`${classPrefix}-one`]:
-      typeof getContent() === 'string' && `${getContent()}`?.length === 1,
     [`${classPrefix}-dot`]: dot,
     [`${classPrefix}-dot-${size}`]: dot,
     [`${classPrefix}-${fill}`]: fill === 'outline',

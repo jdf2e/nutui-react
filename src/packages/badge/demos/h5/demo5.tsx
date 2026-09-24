@@ -3,7 +3,7 @@ import { Avatar, Badge, Cell, ConfigProvider } from '@nutui/nutui-react'
 import React from 'react'
 
 const customTheme = {
-  nutuiBadgeBorderRadius: '12px 12px 12px 0',
+  nutuiBadgeBorderRadius: '4px 4px 4px 1px',
 }
 
 const Demo5 = () => {
